@@ -3,7 +3,7 @@ package ded_card;
 public class Personaggio {
     private String classe;
     private int lep, lv, dV, pf, forza, destrezza, costituzione, intelligenza, saggezza, carisma;
-    private double bab, tempra, riflessi, volonta, abilita;
+    private double bonusAttacBase, tempra, riflessi, volonta, abilita;
 
     public Personaggio() {
         this.classe = classe;
@@ -16,7 +16,7 @@ public class Personaggio {
         this.intelligenza = intelligenza;
         this.saggezza = saggezza;
         this.carisma = carisma;
-        this.bab = bab;
+        this.bonusAttacBase = bonusAttacBase;
         this.tempra = tempra;
         this.riflessi = riflessi;
         this.volonta = volonta;

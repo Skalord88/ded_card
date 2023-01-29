@@ -14,7 +14,7 @@ public class Livello {
     String classe;
     int lep=1, dV, pf, forza, destrezza, costituzione, intelligenza, saggezza, carisma;
 
-    double bab, tempra, riflessi, volonta, abilita;
+    double bonusAttacBase, tempra, riflessi, volonta, abilita;
 
     public void add_caratteristiche(int forza, int destrezza, int costituzione, int intelligenza, int saggezza, int carisma){
 
@@ -27,11 +27,11 @@ public class Livello {
         while(resultSet.next()){
             lep++;
             if (resultSet.getString("cl_bab").equals("a")){
-                bab = 1;
+                bonusAttacBase = 1;
             } else if(resultSet.getString("cl_bab").equals("m")){
-                bab = 0.75;
+                bonusAttacBase = 0.75;
             } else if (resultSet.getString("cl_bab").equals("b")){
-                bab = 0;
+                bonusAttacBase = 0;
             }
             if (resultSet.getString("cl_T").equals("a")){
                 tempra = 2.5;
@@ -74,11 +74,11 @@ public class Livello {
 
         while (resultSet.next()) {
             if (resultSet.getString("cl_bab").equals("a")) {
-                bab++;
+                bonusAttacBase++;
             } else if (resultSet.getString("cl_bab").equals("m")) {
-                bab += 0.75;
+                bonusAttacBase += 0.75;
             } else if (resultSet.getString("cl_bab").equals("b")) {
-                bab += 0.5;
+                bonusAttacBase += 0.5;
             }
 
             tempra +=0.5;
