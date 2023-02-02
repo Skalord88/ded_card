@@ -35,6 +35,11 @@
 		</dependency>
 	</dependencies>
 
+	<dependency>
+  <groupId>postgresql</groupId>
+  <artifactId>postgresql</artifactId>
+</dependency>
+
 	<build>
 		<plugins>
 			<plugin>

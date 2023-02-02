@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DedCardApplication",
+            "request": "launch",
+            "mainClass": "com.example.ded_card.DedCardApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch ClassesRun",
+            "request": "launch",
+            "mainClass": "ClassesRun",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-DemoApplication<demo>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
