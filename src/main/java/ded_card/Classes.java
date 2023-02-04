@@ -1,15 +1,18 @@
-import ded_card.Entity;
-import ded_card.Id;
+package ded_card;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Classes {
-    
-    
+
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
     private String name;
-    
     private String type;
 
     public Classes() {
@@ -35,7 +38,4 @@ public class Classes {
     public void setType(String type) {
         this.type = type;
     }
-
-
-
 }

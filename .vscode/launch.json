@@ -2,10 +2,13 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch DedCardApplication",
+            "name": "Spring Boot-DedCardApplication<ded_card>",
             "request": "launch",
-            "mainClass": "com.example.ded_card.DedCardApplication",
-            "projectName": ""
+            "cwd": "${workspaceFolder}",
+            "mainClass": "ded_card.ded_card.DedCardApplication",
+            "projectName": "ded_card",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         },
         {
             "type": "java",
@@ -14,15 +17,5 @@
             "mainClass": "ClassesRun",
             "projectName": ""
         },
-        {
-            "type": "java",
-            "name": "Spring Boot-DemoApplication<demo>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.demo.demo.DemoApplication",
-            "projectName": "demo",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        }
     ]
 }
