@@ -6,6 +6,7 @@ public class Classes {
     
     
     @Id
+    
     private Long id;
 
     private String name;

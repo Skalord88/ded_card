@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch DemoApplication",
+            "request": "launch",
+            "mainClass": "com.demo.demo.DemoApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Launch DedCardApplication",
             "request": "launch",
             "mainClass": "com.example.ded_card.DedCardApplication",
