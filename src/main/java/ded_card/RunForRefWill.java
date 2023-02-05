@@ -11,7 +11,7 @@ public class RunForRefWill {
     private ForRefWillRepo forRefWillRepo;
 
     @Autowired
-    public RunForRefWill(SavingThrowsRepo savingThrowsRepo){
+    public RunForRefWill(ForRefWillRepo forRefWillRepo){
         this.forRefWillRepo = forRefWillRepo;
     }
 
