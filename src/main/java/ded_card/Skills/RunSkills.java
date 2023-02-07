@@ -1,11 +1,11 @@
-package ded_card;
+package ded_card.Skills;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
 public class RunSkills {
     
     private SkillsRepo skillsRepo;
@@ -15,7 +15,7 @@ public class RunSkills {
         this.skillsRepo = skillsRepo;
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+    @GetMapping("dupa")
     public void runSkills(){
         Skills skills1 = new Skills("Appraise");
         skillsRepo.save(skills1);

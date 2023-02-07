@@ -1,4 +1,4 @@
-package ded_card;
+package ded_card.Skills;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
