@@ -21,14 +21,11 @@ public class RunClassesPG {
 
     @GetMapping("pgCl")
     public void runClassesPG(){
-        Skills test1 = skillsRepo.findByName("Climb");
+        Skills skill1 = skillsRepo.findByName("Climb");
+        ClassesPG barbarian = new ClassesPG();
+        barbarian.setSkills(skill1);
+        this.classesPGRepo.save(barbarian);
 
-        ClassesPG dupa = new ClassesPG();
-        dupa.setSkills(test1);
-        this.classesPGRepo.save(dupa);
-
-
-        System.out.println(test1);
     }
     
 }

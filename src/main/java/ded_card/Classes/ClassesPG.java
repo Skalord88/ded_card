@@ -18,11 +18,7 @@ public class ClassesPG {
 	private Integer id;
 
     private ClassesName classesName;
-    private double baseAttackBonus1;
-    private double baseAttackBonus2;
-    private double baseAttackBonus3;
-    private double baseAttackBonus4;
-    private double baseAttackBonus5;
+    private double baseAttackBonus;
     private double hitDies;
     private double skillsPoint;
     private double fortitude;
@@ -38,43 +34,11 @@ public class ClassesPG {
     }
 
     public double getBaseAttackBonus1() {
-        return baseAttackBonus1;
+        return baseAttackBonus;
     }
 
     public void setBaseAttackBonus1(double baseAttackBonus1) {
-        this.baseAttackBonus1 = baseAttackBonus1;
-    }
-
-    public double getBaseAttackBonus2() {
-        return baseAttackBonus2;
-    }
-
-    public void setBaseAttackBonus2(double baseAttackBonus2) {
-        this.baseAttackBonus2 = baseAttackBonus2;
-    }
-
-    public double getBaseAttackBonus3() {
-        return baseAttackBonus3;
-    }
-
-    public void setBaseAttackBonus3(double baseAttackBonus3) {
-        this.baseAttackBonus3 = baseAttackBonus3;
-    }
-
-    public double getBaseAttackBonus4() {
-        return baseAttackBonus4;
-    }
-
-    public void setBaseAttackBonus4(double baseAttackBonus4) {
-        this.baseAttackBonus4 = baseAttackBonus4;
-    }
-
-    public double getBaseAttackBonus5() {
-        return baseAttackBonus5;
-    }
-
-    public void setBaseAttackBonus5(double baseAttackBonus5) {
-        this.baseAttackBonus5 = baseAttackBonus5;
+        this.baseAttackBonus = baseAttackBonus1;
     }
 
     public double getHitDies() {
