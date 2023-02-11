@@ -1,97 +1,45 @@
 package ded_card.Classes;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import ded_card.Skills.Skills;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 
 @Entity
 public class ClassesPG {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private Integer classPgId;
 
-    private ClassesName classesName;
+    private ClassesName nameClassPg;
     private double baseAttackBonus;
-    private double hitDies;
-    private double skillsPoint;
-    private double fortitude;
-    private double reflex;
-    private double will;
-	
-    public ClassesName getClassesName() {
-        return classesName;
+
+    public ClassesName getNameClassPg() {
+        return nameClassPg;
     }
 
-    public void setClassesName(ClassesName classesName) {
-        this.classesName = classesName;
+    public void setNameClassPg(ClassesName nameClassPg) {
+        this.nameClassPg = nameClassPg;
+    }
+    
+    public Integer getClassPgId() {
+        return classPgId;
     }
 
-    public double getBaseAttackBonus1() {
+    public void setClassPgId(Integer classPgId) {
+        this.classPgId = classPgId;
+    }
+
+    public double getBaseAttackBonus() {
         return baseAttackBonus;
     }
 
-    public void setBaseAttackBonus1(double baseAttackBonus1) {
-        this.baseAttackBonus = baseAttackBonus1;
+    public void setBaseAttackBonus(double baseAttackBonus) {
+        this.baseAttackBonus = baseAttackBonus;
     }
 
-    public double getHitDies() {
-        return hitDies;
-    }
-
-    public void setHitDies(double hitDies) {
-        this.hitDies = hitDies;
-    }
-
-    public double getSkillsPoint() {
-        return skillsPoint;
-    }
-
-    public void setSkillsPoint(double skillsPoint) {
-        this.skillsPoint = skillsPoint;
-    }
-
-    public double getFortitude() {
-        return fortitude;
-    }
-
-    public void setFortitude(double fortitude) {
-        this.fortitude = fortitude;
-    }
-
-    public double getReflex() {
-        return reflex;
-    }
-
-    public void setReflex(double reflex) {
-        this.reflex = reflex;
-    }
-
-    public double getWill() {
-        return will;
-    }
-
-    public void setWill(double will) {
-        this.will = will;
-    }
-
-    public Set<Skills> getSkills() {
-        return skills;
-    }
-
-    @ManyToMany
-    private Set<Skills> skills = new HashSet<Skills>();
-        
-    public void setSkills(Skills skills) {
-        
-        this.skills.add(skills);
-
+    public ClassesPG() {
     }
 
 }

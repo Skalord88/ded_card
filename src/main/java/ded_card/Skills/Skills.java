@@ -9,25 +9,9 @@ import jakarta.persistence.Id;
 public class Skills {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer skillsId;
 
-    private String name;
+    private String skillsName;
 
-    public Skills() {
-    }
-
-    public Skills(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    
 }
