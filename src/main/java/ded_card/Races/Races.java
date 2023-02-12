@@ -1,6 +1,8 @@
 package ded_card.Races;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,7 +14,9 @@ public class Races {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer racesId;
 
+    @Enumerated (EnumType.STRING)
     private RacesName racesName;
+    @Enumerated (EnumType.STRING)
     private SubRacesName subRacesName;
     private int strenght;
 

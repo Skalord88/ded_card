@@ -1,7 +1,9 @@
-CREATE TABLE ClassesPg(
+CREATE TABLE Pg(
     classPgId serial PRIMARY KEY,
-	  nameClassPg VARCHAR(225),
-      baseAttackBonus INT        
+	  PgracesName VARCHAR(100),
+      PgsubRacesName VARCHAR(100),
+      Pgstrenght INT,
+      PgBaseAttackBonus INT       
 );
 
 CREATE TABLE Skills(
@@ -9,7 +11,7 @@ CREATE TABLE Skills(
     skillsName VARCHAR(50)
 );
 
-CREATE TABLE SubRace(
+CREATE TABLE Races(
     racesId serial PRIMARY KEY,
     racesName VARCHAR(100), 
     subRacesName VARCHAR(100),
