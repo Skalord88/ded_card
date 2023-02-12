@@ -1,19 +1,19 @@
 CREATE TABLE Pg(
-    classPgId serial PRIMARY KEY,
-	  PgracesName VARCHAR(100),
-      PgsubRacesName VARCHAR(100),
-      Pgstrenght INT,
-      PgBaseAttackBonus INT       
+    class_pg_id serial PRIMARY KEY,
+	  pg_races_name VARCHAR(100),
+      pg_sub_races_name VARCHAR(100),
+      pg_strenght INT,
+      pg_base_attack_bonus INT       
 );
 
 CREATE TABLE Skills(
-    skillsId serial PRIMARY KEY,
-    skillsName VARCHAR(50)
+    skills_id serial PRIMARY KEY,
+    skills_name VARCHAR(50)
 );
 
 CREATE TABLE Races(
-    racesId serial PRIMARY KEY,
-    racesName VARCHAR(100), 
-    subRacesName VARCHAR(100),
+    races_id serial PRIMARY KEY,
+    races_name VARCHAR(100), 
+    sub_races_name VARCHAR(100),
     strenght INT
 );

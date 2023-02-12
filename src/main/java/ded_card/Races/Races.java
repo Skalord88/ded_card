@@ -20,7 +20,6 @@ public class Races {
     private SubRacesName subRacesName;
     private int strenght;
 
-
     public RacesName getRacesName() {
         return racesName;
     }

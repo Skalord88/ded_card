@@ -1,12 +1,8 @@
 package ded_card.Classes;
 
-import java.util.List;
+//@Repository
+//public interface ClassesPGRepo extends JpaRepository<ClassesPG, Integer>{
 
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ClassesPGRepo extends
-JpaRepository<ClassesPG, Integer>{
-
-   List<ClassesPG> findByName(int bab);
+   //List<ClassesPG> findByName(int bab);
    
-}
+//}

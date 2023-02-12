@@ -1,9 +1,13 @@
 package ded_card.Races;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface RaceRepo extends JpaRepository<Races,Integer>{
 
-    Races findByName(String subRacesName);
+    List<Races> findBySubRacesName(SubRacesName subRacesName);
     
 }

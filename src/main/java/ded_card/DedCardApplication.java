@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DedCardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DedCardApplication.class, args); 
-    
+		SpringApplication.run(DedCardApplication.class, args);
+		
 	}
 }
