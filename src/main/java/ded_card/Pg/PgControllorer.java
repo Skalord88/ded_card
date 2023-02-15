@@ -11,22 +11,25 @@ import ded_card.Races.RaceRepo;
 import ded_card.Races.Races;
 import ded_card.Races.RacesName;
 import ded_card.Races.SubRacesName;
+import ded_card.mod.ModAbilities;
+import ded_card.mod.ModAbilitiesRepo;
 
 @RestController
 public class PgControllorer {
 
     @Autowired
     RaceRepo raceRepo;
+    ModAbilitiesRepo modAbilitiesRepo;
 
-    public PgControllorer(RaceRepo raceRepo){
+    public PgControllorer(RaceRepo raceRepo, ModAbilitiesRepo modAbilitiesRepo){
         
         this.raceRepo=raceRepo;
+        this.modAbilitiesRepo=modAbilitiesRepo;
         
     }
-
     
     @GetMapping("pg/{newPg}")
-    public Pg pgRace(@PathVariable("newPg")int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
+    public Pg pg(@PathVariable("newPg")int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
     int pgWisdom, int pgCharisma, RacesName racesName, SubRacesName subRacesName){
 
         Pg pg = new Pg();
@@ -63,6 +66,26 @@ public class PgControllorer {
         pg.setPgStrenght(pg.getPgIntelligence()+intelligence);
         pg.setPgStrenght(pg.getPgWisdom()+wisdom);
         pg.setPgStrenght(pg.getPgCharisma()+charisma);
+
+        int abilities = pg.getPgStrenght();
+        List<ModAbilities> modabilities = modAbilitiesRepo.findModAbilitiesByAbilities(abilities);
+        pg.setPgModStrenght(modabilities.get(0).getModAbilities());
+        
+        abilities = pg.getPgDextrity();
+        pg.setPgModDextrity(modabilities.get(0).getModAbilities());
+
+        abilities = pg.getPgConsitution();
+        pg.setPgModConsitution(modabilities.get(0).getModAbilities());
+
+        abilities = pg.getPgIntelligence();
+        pg.setPgModIntelligence(modabilities.get(0).getModAbilities());
+
+        abilities = pg.getPgWisdom();
+        pg.setPgModWisdom(modabilities.get(0).getModAbilities());
+        
+        abilities = pg.getPgCharisma();
+        pg.setPgModCharisma(modabilities.get(0).getModAbilities());
+
         return pg;
 
     }

@@ -20,11 +20,17 @@ public class Pg {
     @Enumerated (EnumType.STRING)
     private PgSubRacesName pgSubRacesName;
     private int pgStrenght;
+    private int pgModStrenght;
     private int pgDextrity;
+    private int pgModDextrity;
     private int pgConsitution;
+    private int pgModConsitution;
     private int pgIntelligence;
+    private int pgModIntelligence;
     private int pgWisdom;
+    private int pgModWisdom;
     private int pgCharisma;
+    private int pgModCharisma;
     private int pgBaseAttackBonus;
     private boolean appraise;
     private boolean balance;
@@ -59,11 +65,74 @@ public class Pg {
     private boolean use_magic_device;
     private boolean use_rope;
 
-    public PgRacesName getPgRacesName() {
-        return pgRacesName;
+   
+
+    public Pg(PgRacesName pgRacesName, PgSubRacesName pgSubRacesName, int pgStrenght, int pgModStrenght,
+            int pgDextrity, int pgModDextrity, int pgConsitution, int pgModConsitution, int pgIntelligence,
+            int pgModIntelligence, int pgWisdom, int pgModWisdom, int pgCharisma, int pgModCharisma,
+            int pgBaseAttackBonus, boolean appraise, boolean balance, boolean bluff, boolean climb,
+            boolean concentration, boolean craft, boolean decipher_script, boolean diplomacy, boolean disable_device,
+            boolean disguise, boolean escape_artist, boolean gather_information, boolean handle_animal, boolean heal,
+            boolean intimidate, boolean jump, boolean knowledge, boolean listen, boolean move_silently, boolean perform,
+            boolean profession, boolean ride, boolean search, boolean sense_motive, boolean sleight_of_hand,
+            boolean spellcraft, boolean spot, boolean survival, boolean swim, boolean tumble, boolean use_magic_device,
+            boolean use_rope) {
+        this.pgRacesName = pgRacesName;
+        this.pgSubRacesName = pgSubRacesName;
+        this.pgStrenght = pgStrenght;
+        this.pgModStrenght = pgModStrenght;
+        this.pgDextrity = pgDextrity;
+        this.pgModDextrity = pgModDextrity;
+        this.pgConsitution = pgConsitution;
+        this.pgModConsitution = pgModConsitution;
+        this.pgIntelligence = pgIntelligence;
+        this.pgModIntelligence = pgModIntelligence;
+        this.pgWisdom = pgWisdom;
+        this.pgModWisdom = pgModWisdom;
+        this.pgCharisma = pgCharisma;
+        this.pgModCharisma = pgModCharisma;
+        this.pgBaseAttackBonus = pgBaseAttackBonus;
+        this.appraise = appraise;
+        this.balance = balance;
+        this.bluff = bluff;
+        this.climb = climb;
+        this.concentration = concentration;
+        this.craft = craft;
+        this.decipher_script = decipher_script;
+        this.diplomacy = diplomacy;
+        this.disable_device = disable_device;
+        this.disguise = disguise;
+        this.escape_artist = escape_artist;
+        this.gather_information = gather_information;
+        this.handle_animal = handle_animal;
+        this.heal = heal;
+        this.intimidate = intimidate;
+        this.jump = jump;
+        this.knowledge = knowledge;
+        this.listen = listen;
+        this.move_silently = move_silently;
+        this.perform = perform;
+        this.profession = profession;
+        this.ride = ride;
+        this.search = search;
+        this.sense_motive = sense_motive;
+        this.sleight_of_hand = sleight_of_hand;
+        this.spellcraft = spellcraft;
+        this.spot = spot;
+        this.survival = survival;
+        this.swim = swim;
+        this.tumble = tumble;
+        this.use_magic_device = use_magic_device;
+        this.use_rope = use_rope;
     }
 
 
+
+
+
+    public PgRacesName getPgRacesName() {
+        return pgRacesName;
+    }
 
 
 
@@ -77,13 +146,9 @@ public class Pg {
 
 
 
-
-
     public PgSubRacesName getPgSubRacesName() {
         return pgSubRacesName;
     }
-
-
 
 
 
@@ -97,13 +162,9 @@ public class Pg {
 
 
 
-
-
     public int getPgStrenght() {
         return pgStrenght;
     }
-
-
 
 
 
@@ -117,13 +178,25 @@ public class Pg {
 
 
 
+    public int getPgModStrenght() {
+        return pgModStrenght;
+    }
+
+
+
+
+
+    public void setPgModStrenght(int pgModStrenght) {
+        this.pgModStrenght = pgModStrenght;
+    }
+
+
+
 
 
     public int getPgDextrity() {
         return pgDextrity;
     }
-
-
 
 
 
@@ -137,13 +210,25 @@ public class Pg {
 
 
 
+    public int getPgModDextrity() {
+        return pgModDextrity;
+    }
+
+
+
+
+
+    public void setPgModDextrity(int pgModDextrity) {
+        this.pgModDextrity = pgModDextrity;
+    }
+
+
+
 
 
     public int getPgConsitution() {
         return pgConsitution;
     }
-
-
 
 
 
@@ -157,13 +242,25 @@ public class Pg {
 
 
 
+    public int getPgModConsitution() {
+        return pgModConsitution;
+    }
+
+
+
+
+
+    public void setPgModConsitution(int pgModConsitution) {
+        this.pgModConsitution = pgModConsitution;
+    }
+
+
+
 
 
     public int getPgIntelligence() {
         return pgIntelligence;
     }
-
-
 
 
 
@@ -177,13 +274,25 @@ public class Pg {
 
 
 
+    public int getPgModIntelligence() {
+        return pgModIntelligence;
+    }
+
+
+
+
+
+    public void setPgModIntelligence(int pgModpgIntelligence) {
+        this.pgModIntelligence = pgModpgIntelligence;
+    }
+
+
+
 
 
     public int getPgWisdom() {
         return pgWisdom;
     }
-
-
 
 
 
@@ -197,13 +306,25 @@ public class Pg {
 
 
 
+    public int getPgModWisdom() {
+        return pgModWisdom;
+    }
+
+
+
+
+
+    public void setPgModWisdom(int pgModWisdom) {
+        this.pgModWisdom = pgModWisdom;
+    }
+
+
+
 
 
     public int getPgCharisma() {
         return pgCharisma;
     }
-
-
 
 
 
@@ -217,13 +338,25 @@ public class Pg {
 
 
 
+    public int getPgModCharisma() {
+        return pgModCharisma;
+    }
+
+
+
+
+
+    public void setPgModCharisma(int pgModCharisma) {
+        this.pgModCharisma = pgModCharisma;
+    }
+
+
+
 
 
     public int getPgBaseAttackBonus() {
         return pgBaseAttackBonus;
     }
-
-
 
 
 
@@ -237,173 +370,329 @@ public class Pg {
 
 
 
-
-
     public boolean isAppraise() {
         return appraise;
     }
+
+
+
+
 
     public void setAppraise(boolean appraise) {
         this.appraise = appraise;
     }
 
+
+
+
+
     public boolean isBalance() {
         return balance;
     }
+
+
+
+
 
     public void setBalance(boolean balance) {
         this.balance = balance;
     }
 
+
+
+
+
     public boolean isBluff() {
         return bluff;
     }
+
+
+
+
 
     public void setBluff(boolean bluff) {
         this.bluff = bluff;
     }
 
+
+
+
+
     public boolean isClimb() {
         return climb;
     }
+
+
+
+
 
     public void setClimb(boolean climb) {
         this.climb = climb;
     }
 
+
+
+
+
     public boolean isConcentration() {
         return concentration;
     }
+
+
+
+
 
     public void setConcentration(boolean concentration) {
         this.concentration = concentration;
     }
 
+
+
+
+
     public boolean isCraft() {
         return craft;
     }
+
+
+
+
 
     public void setCraft(boolean craft) {
         this.craft = craft;
     }
 
+
+
+
+
     public boolean isDecipher_script() {
         return decipher_script;
     }
+
+
+
+
 
     public void setDecipher_script(boolean decipher_script) {
         this.decipher_script = decipher_script;
     }
 
+
+
+
+
     public boolean isDiplomacy() {
         return diplomacy;
     }
+
+
+
+
 
     public void setDiplomacy(boolean diplomacy) {
         this.diplomacy = diplomacy;
     }
 
+
+
+
+
     public boolean isDisable_device() {
         return disable_device;
     }
+
+
+
+
 
     public void setDisable_device(boolean disable_device) {
         this.disable_device = disable_device;
     }
 
+
+
+
+
     public boolean isDisguise() {
         return disguise;
     }
+
+
+
+
 
     public void setDisguise(boolean disguise) {
         this.disguise = disguise;
     }
 
+
+
+
+
     public boolean isEscape_artist() {
         return escape_artist;
     }
+
+
+
+
 
     public void setEscape_artist(boolean escape_artist) {
         this.escape_artist = escape_artist;
     }
 
+
+
+
+
     public boolean isGather_information() {
         return gather_information;
     }
+
+
+
+
 
     public void setGather_information(boolean gather_information) {
         this.gather_information = gather_information;
     }
 
+
+
+
+
     public boolean isHandle_animal() {
         return handle_animal;
     }
+
+
+
+
 
     public void setHandle_animal(boolean handle_animal) {
         this.handle_animal = handle_animal;
     }
 
+
+
+
+
     public boolean isHeal() {
         return heal;
     }
+
+
+
+
 
     public void setHeal(boolean heal) {
         this.heal = heal;
     }
 
+
+
+
+
     public boolean isIntimidate() {
         return intimidate;
     }
+
+
+
+
 
     public void setIntimidate(boolean intimidate) {
         this.intimidate = intimidate;
     }
 
+
+
+
+
     public boolean isJump() {
         return jump;
     }
+
+
+
+
 
     public void setJump(boolean jump) {
         this.jump = jump;
     }
 
+
+
+
+
     public boolean isKnowledge() {
         return knowledge;
     }
+
+
+
+
 
     public void setKnowledge(boolean knowledge) {
         this.knowledge = knowledge;
     }
 
+
+
+
+
     public boolean isListen() {
         return listen;
     }
+
+
+
+
 
     public void setListen(boolean listen) {
         this.listen = listen;
     }
 
+
+
+
+
     public boolean isMove_silently() {
         return move_silently;
     }
+
+
+
+
 
     public void setMove_silently(boolean move_silently) {
         this.move_silently = move_silently;
     }
 
+
+
+
+
     public boolean isPerform() {
         return perform;
     }
+
+
+
+
 
     public void setPerform(boolean perform) {
         this.perform = perform;
     }
 
+
+
+
+
     public boolean isProfession() {
         return profession;
     }
-
-
 
 
 
@@ -417,13 +706,9 @@ public class Pg {
 
 
 
-
-
     public boolean isRide() {
         return ride;
     }
-
-
 
 
 
@@ -437,13 +722,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSearch() {
         return search;
     }
-
-
 
 
 
@@ -457,13 +738,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSense_motive() {
         return sense_motive;
     }
-
-
 
 
 
@@ -477,13 +754,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSleight_of_hand() {
         return sleight_of_hand;
     }
-
-
 
 
 
@@ -497,13 +770,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSpellcraft() {
         return spellcraft;
     }
-
-
 
 
 
@@ -517,13 +786,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSpot() {
         return spot;
     }
-
-
 
 
 
@@ -537,13 +802,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSurvival() {
         return survival;
     }
-
-
 
 
 
@@ -557,13 +818,9 @@ public class Pg {
 
 
 
-
-
     public boolean isSwim() {
         return swim;
     }
-
-
 
 
 
@@ -577,13 +834,9 @@ public class Pg {
 
 
 
-
-
     public boolean isTumble() {
         return tumble;
     }
-
-
 
 
 
@@ -597,13 +850,9 @@ public class Pg {
 
 
 
-
-
     public boolean isUse_magic_device() {
         return use_magic_device;
     }
-
-
 
 
 
@@ -617,13 +866,9 @@ public class Pg {
 
 
 
-
-
     public boolean isUse_rope() {
         return use_rope;
     }
-
-
 
 
 
@@ -637,65 +882,6 @@ public class Pg {
 
 
 
-
-
-    public Pg(PgRacesName pgRacesName, PgSubRacesName pgSubRacesName, int pgStrenght, int pgDextrity, int pgConsitution,
-            int pgIntelligence, int pgWisdom, int pgCharisma, int pgBaseAttackBonus, boolean appraise, boolean balance,
-            boolean bluff, boolean climb, boolean concentration, boolean craft, boolean decipher_script,
-            boolean diplomacy, boolean disable_device, boolean disguise, boolean escape_artist,
-            boolean gather_information, boolean handle_animal, boolean heal, boolean intimidate, boolean jump,
-            boolean knowledge, boolean listen, boolean move_silently, boolean perform, boolean profession, boolean ride,
-            boolean search, boolean sense_motive, boolean sleight_of_hand, boolean spellcraft, boolean spot,
-            boolean survival, boolean swim, boolean tumble, boolean use_magic_device, boolean use_rope) {
-        this.pgRacesName = pgRacesName;
-        this.pgSubRacesName = pgSubRacesName;
-        this.pgStrenght = pgStrenght;
-        this.pgDextrity = pgDextrity;
-        this.pgConsitution = pgConsitution;
-        this.pgIntelligence = pgIntelligence;
-        this.pgWisdom = pgWisdom;
-        this.pgCharisma = pgCharisma;
-        this.pgBaseAttackBonus = pgBaseAttackBonus;
-        this.appraise = appraise;
-        this.balance = balance;
-        this.bluff = bluff;
-        this.climb = climb;
-        this.concentration = concentration;
-        this.craft = craft;
-        this.decipher_script = decipher_script;
-        this.diplomacy = diplomacy;
-        this.disable_device = disable_device;
-        this.disguise = disguise;
-        this.escape_artist = escape_artist;
-        this.gather_information = gather_information;
-        this.handle_animal = handle_animal;
-        this.heal = heal;
-        this.intimidate = intimidate;
-        this.jump = jump;
-        this.knowledge = knowledge;
-        this.listen = listen;
-        this.move_silently = move_silently;
-        this.perform = perform;
-        this.profession = profession;
-        this.ride = ride;
-        this.search = search;
-        this.sense_motive = sense_motive;
-        this.sleight_of_hand = sleight_of_hand;
-        this.spellcraft = spellcraft;
-        this.spot = spot;
-        this.survival = survival;
-        this.swim = swim;
-        this.tumble = tumble;
-        this.use_magic_device = use_magic_device;
-        this.use_rope = use_rope;
-    }
-
-
-
-
-
-
-
     public Pg() {
     }
 
@@ -703,16 +889,7 @@ public class Pg {
 
 
 
-
-
-	public void setPgRacesName(RacesName racesName) {
+    public void setPgRacesName(RacesName racesName) {
 	}
-
-
-
-
-   
-
-
 
 }

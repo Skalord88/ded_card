@@ -58,7 +58,7 @@ public class Races {
     private int use_magic_device;
     private int use_rope;
 
-    
+
 
     public Races(RacesName racesName, SubRacesName subRacesName, int strenght, int dextrity, int consitution,
             int intelligence, int wisdom, int charisma, int appraise, int balance, int bluff, int climb,
@@ -606,5 +606,6 @@ public class Races {
 
     public Races() {
     }
-    
+
+
 }
