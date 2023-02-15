@@ -30,7 +30,6 @@ public class Races {
     private int climb;
     private int concentration;
     private int craft;
-    private int decipher_script;
     private int diplomacy;
     private int disable_device;
     private int disguise;
@@ -62,7 +61,7 @@ public class Races {
 
     public Races(RacesName racesName, SubRacesName subRacesName, int strenght, int dextrity, int consitution,
             int intelligence, int wisdom, int charisma, int appraise, int balance, int bluff, int climb,
-            int concentration, int craft, int decipher_script, int diplomacy, int disable_device, int disguise,
+            int concentration, int craft, int diplomacy, int disable_device, int disguise,
             int escape_artist, int gather_information, int handle_animal, int heal, int intimidate, int jump,
             int knowledge, int listen, int move_silently, int perform, int profession, int ride, int search,
             int sense_motive, int sleight_of_hand, int speak_language, int spellcraft, int spot, int survival, int swim,
@@ -81,7 +80,6 @@ public class Races {
         this.climb = climb;
         this.concentration = concentration;
         this.craft = craft;
-        this.decipher_script = decipher_script;
         this.diplomacy = diplomacy;
         this.disable_device = disable_device;
         this.disguise = disguise;
@@ -278,91 +276,53 @@ public class Races {
         this.craft = craft;
     }
 
-
-
-    public int getDecipher_script() {
-        return decipher_script;
-    }
-
-
-
-    public void setDecipher_script(int decipher_script) {
-        this.decipher_script = decipher_script;
-    }
-
-
-
     public int getDiplomacy() {
         return diplomacy;
     }
-
-
 
     public void setDiplomacy(int diplomacy) {
         this.diplomacy = diplomacy;
     }
 
-
-
     public int getDisable_device() {
         return disable_device;
     }
-
-
 
     public void setDisable_device(int disable_device) {
         this.disable_device = disable_device;
     }
 
-
-
     public int getDisguise() {
         return disguise;
     }
-
-
 
     public void setDisguise(int disguise) {
         this.disguise = disguise;
     }
 
-
-
     public int getEscape_artist() {
         return escape_artist;
     }
-
-
 
     public void setEscape_artist(int escape_artist) {
         this.escape_artist = escape_artist;
     }
 
-
-
     public int getGather_information() {
         return gather_information;
     }
-
-
 
     public void setGather_information(int gather_information) {
         this.gather_information = gather_information;
     }
 
-
-
     public int getHandle_animal() {
         return handle_animal;
     }
 
-
-
     public void setHandle_animal(int handle_animal) {
         this.handle_animal = handle_animal;
     }
-
-
 
     public int getHeal() {
         return heal;

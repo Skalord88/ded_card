@@ -4,7 +4,6 @@ INSERT INTO public.skills  (skillsName) VALUES('Bluff');
 INSERT INTO public.skills  (skillsName) VALUES('Climb');
 INSERT INTO public.skills  (skillsName) VALUES('Concentration');
 INSERT INTO public.skills  (skillsName) VALUES('Craft');
-INSERT INTO public.skills  (skillsName) VALUES('Decipher Script');
 INSERT INTO public.skills  (skillsName) VALUES('Diplomacy');
 INSERT INTO public.skills  (skillsName) VALUES('Disable Device');
 INSERT INTO public.skills  (skillsName) VALUES('Disguise');

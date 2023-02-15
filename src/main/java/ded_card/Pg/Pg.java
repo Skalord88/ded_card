@@ -38,7 +38,6 @@ public class Pg {
     private boolean climb;
     private boolean concentration;
     private boolean craft;
-    private boolean decipher_script;
     private boolean diplomacy;
     private boolean disable_device;
     private boolean disguise;
@@ -71,7 +70,7 @@ public class Pg {
             int pgDextrity, int pgModDextrity, int pgConsitution, int pgModConsitution, int pgIntelligence,
             int pgModIntelligence, int pgWisdom, int pgModWisdom, int pgCharisma, int pgModCharisma,
             int pgBaseAttackBonus, boolean appraise, boolean balance, boolean bluff, boolean climb,
-            boolean concentration, boolean craft, boolean decipher_script, boolean diplomacy, boolean disable_device,
+            boolean concentration, boolean craft, boolean diplomacy, boolean disable_device,
             boolean disguise, boolean escape_artist, boolean gather_information, boolean handle_animal, boolean heal,
             boolean intimidate, boolean jump, boolean knowledge, boolean listen, boolean move_silently, boolean perform,
             boolean profession, boolean ride, boolean search, boolean sense_motive, boolean sleight_of_hand,
@@ -98,7 +97,6 @@ public class Pg {
         this.climb = climb;
         this.concentration = concentration;
         this.craft = craft;
-        this.decipher_script = decipher_script;
         this.diplomacy = diplomacy;
         this.disable_device = disable_device;
         this.disguise = disguise;
@@ -294,10 +292,6 @@ public class Pg {
         return pgWisdom;
     }
 
-
-
-
-
     public void setPgWisdom(int pgWisdom) {
         this.pgWisdom = pgWisdom;
     }
@@ -318,185 +312,85 @@ public class Pg {
         this.pgModWisdom = pgModWisdom;
     }
 
-
-
-
-
     public int getPgCharisma() {
         return pgCharisma;
     }
-
-
-
-
 
     public void setPgCharisma(int pgCharisma) {
         this.pgCharisma = pgCharisma;
     }
 
-
-
-
-
     public int getPgModCharisma() {
         return pgModCharisma;
     }
-
-
-
-
 
     public void setPgModCharisma(int pgModCharisma) {
         this.pgModCharisma = pgModCharisma;
     }
 
-
-
-
-
     public int getPgBaseAttackBonus() {
         return pgBaseAttackBonus;
     }
-
-
-
-
 
     public void setPgBaseAttackBonus(int pgBaseAttackBonus) {
         this.pgBaseAttackBonus = pgBaseAttackBonus;
     }
 
-
-
-
-
     public boolean isAppraise() {
         return appraise;
     }
-
-
-
-
 
     public void setAppraise(boolean appraise) {
         this.appraise = appraise;
     }
 
-
-
-
-
     public boolean isBalance() {
         return balance;
     }
-
-
-
-
 
     public void setBalance(boolean balance) {
         this.balance = balance;
     }
 
-
-
-
-
     public boolean isBluff() {
         return bluff;
     }
-
-
-
-
 
     public void setBluff(boolean bluff) {
         this.bluff = bluff;
     }
 
-
-
-
-
     public boolean isClimb() {
         return climb;
     }
-
-
-
-
 
     public void setClimb(boolean climb) {
         this.climb = climb;
     }
 
-
-
-
-
     public boolean isConcentration() {
         return concentration;
     }
-
-
-
-
 
     public void setConcentration(boolean concentration) {
         this.concentration = concentration;
     }
 
-
-
-
-
     public boolean isCraft() {
         return craft;
     }
-
-
-
-
 
     public void setCraft(boolean craft) {
         this.craft = craft;
     }
 
-
-
-
-
-    public boolean isDecipher_script() {
-        return decipher_script;
-    }
-
-
-
-
-
-    public void setDecipher_script(boolean decipher_script) {
-        this.decipher_script = decipher_script;
-    }
-
-
-
-
-
     public boolean isDiplomacy() {
         return diplomacy;
     }
 
-
-
-
-
     public void setDiplomacy(boolean diplomacy) {
         this.diplomacy = diplomacy;
     }
-
-
-
-
 
     public boolean isDisable_device() {
         return disable_device;
@@ -510,25 +404,13 @@ public class Pg {
         this.disable_device = disable_device;
     }
 
-
-
-
-
     public boolean isDisguise() {
         return disguise;
     }
 
-
-
-
-
     public void setDisguise(boolean disguise) {
         this.disguise = disguise;
     }
-
-
-
-
 
     public boolean isEscape_artist() {
         return escape_artist;

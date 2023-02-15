@@ -15,7 +15,7 @@ public class ClassesPG {
 	private Integer classPgId;
 
     @Enumerated (EnumType.STRING)
-    private ClassesName nameClassPg;
+    private ClassesName nameClass;
     private boolean prestigeClass;
     private double baseAttackBonus;
     private double fortitude;
@@ -54,12 +54,12 @@ public class ClassesPG {
     private boolean use_magic_device;
     private boolean use_rope;
 
-    public ClassesName getNameClassPg() {
-        return nameClassPg;
+    public ClassesName getNameClass() {
+        return nameClass;
     }
 
-    public void setNameClassPg(ClassesName nameClassPg) {
-        this.nameClassPg = nameClassPg;
+    public void setNameClassPg(ClassesName nameClass) {
+        this.nameClass = nameClass;
     }
 
     public boolean isPrestigeClass() {
@@ -382,97 +382,49 @@ public class ClassesPG {
         this.sleight_of_hand = sleight_of_hand;
     }
 
-
-
-
-
     public boolean isSpellcraft() {
         return spellcraft;
     }
-
-
-
-
 
     public void setSpellcraft(boolean spellcraft) {
         this.spellcraft = spellcraft;
     }
 
-
-
-
-
     public boolean isSpot() {
         return spot;
     }
-
-
-
-
 
     public void setSpot(boolean spot) {
         this.spot = spot;
     }
 
-
-
-
-
     public boolean isSurvival() {
         return survival;
     }
-
-
-
-
 
     public void setSurvival(boolean survival) {
         this.survival = survival;
     }
 
-
-
-
-
     public boolean isSwim() {
         return swim;
     }
-
-
-
-
 
     public void setSwim(boolean swim) {
         this.swim = swim;
     }
 
-
-
-
-
     public boolean isTumble() {
         return tumble;
     }
-
-
-
-
 
     public void setTumble(boolean tumble) {
         this.tumble = tumble;
     }
 
-
-
-
-
     public boolean isUse_magic_device() {
         return use_magic_device;
     }
-
-
-
-
 
     public void setUse_magic_device(boolean use_magic_device) {
         this.use_magic_device = use_magic_device;
@@ -482,26 +434,18 @@ public class ClassesPG {
         return use_rope;
     }
 
-
-
-
-
     public void setUse_rope(boolean use_rope) {
         this.use_rope = use_rope;
     }
 
-
-
-
-
-    public ClassesPG(ClassesName nameClassPg, boolean prestigeClass, double baseAttackBonus, double fortitude, double reflex, double will,
+    public ClassesPG(ClassesName nameClass, boolean prestigeClass, double baseAttackBonus, double fortitude, double reflex, double will,
             boolean appraise, boolean balance, boolean bluff, boolean climb, boolean concentration, boolean craft,
             boolean diplomacy, boolean disable_device, boolean disguise, boolean escape_artist,
             boolean gather_information, boolean handle_animal, boolean heal, boolean intimidate, boolean jump,
             boolean knowledge, boolean listen, boolean move_silently, boolean perform, boolean profession, boolean ride,
             boolean search, boolean sense_motive, boolean sleight_of_hand, boolean spellcraft, boolean spot,
             boolean survival, boolean swim, boolean tumble, boolean use_magic_device, boolean use_rope) {
-        this.nameClassPg = nameClassPg;
+        this.nameClass = nameClass;
         this.prestigeClass = prestigeClass;
         this.baseAttackBonus = baseAttackBonus;
         this.fortitude = fortitude;
