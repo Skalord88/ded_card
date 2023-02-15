@@ -14,4 +14,19 @@ public class Skills {
 
     private String skillsName;
 
+    public String getSkillsName() {
+        return skillsName;
+    }
+
+    public void setSkillsName(String skillsName) {
+        this.skillsName = skillsName;
+    }
+
+    public Skills(String skillsName) {
+        this.skillsName = skillsName;
+    }
+
+    public Skills() {
+    }
+
 }

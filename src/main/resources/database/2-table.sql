@@ -1,3 +1,6 @@
+--liquibase formatted sql
+--changeset orzepowski:1
+
 INSERT INTO public.skills  (skillsName) VALUES('Appraise');
 INSERT INTO public.skills  (skillsName) VALUES('Balance');
 INSERT INTO public.skills  (skillsName) VALUES('Bluff');
