@@ -8,20 +8,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class ClassesPG {
+public class Classes {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer classPgId;
+	private Integer classId;
 
     @Enumerated (EnumType.STRING)
-    private ClassesName nameClass;
+    private ClassName className;
     private boolean prestigeClass;
     private double baseAttackBonus;
     private double fortitude;
     private double reflex;
     private double will;
-    private int skillPoints;
+    private double skillPoints;
     private boolean appraise;
     private boolean balance;
     private boolean bluff;
@@ -54,12 +54,12 @@ public class ClassesPG {
     private boolean use_magic_device;
     private boolean use_rope;
 
-    public ClassesName getNameClass() {
-        return nameClass;
+    public ClassName getClassName() {
+        return className;
     }
 
-    public void setNameClassPg(ClassesName nameClass) {
-        this.nameClass = nameClass;
+    public void setNameClassPg(ClassName className) {
+        this.className = className;
     }
 
     public boolean isPrestigeClass() {
@@ -106,7 +106,7 @@ public class ClassesPG {
         return skillPoints;
     }
 
-    public void setSkillPoints(int skillPoints) {
+    public void setSkillPoints(double skillPoints) {
         this.skillPoints = skillPoints;
     }
 
@@ -221,10 +221,6 @@ public class ClassesPG {
     public void setIntimidate(boolean intimidate) {
         this.intimidate = intimidate;
     }
-
-
-
-
 
     public boolean isJump() {
         return jump;
@@ -438,19 +434,20 @@ public class ClassesPG {
         this.use_rope = use_rope;
     }
 
-    public ClassesPG(ClassesName nameClass, boolean prestigeClass, double baseAttackBonus, double fortitude, double reflex, double will,
-            boolean appraise, boolean balance, boolean bluff, boolean climb, boolean concentration, boolean craft,
+    public Classes(ClassName className, boolean prestigeClass, double baseAttackBonus, double fortitude, double reflex, double will,
+            double skillPoints, boolean appraise, boolean balance, boolean bluff, boolean climb, boolean concentration, boolean craft,
             boolean diplomacy, boolean disable_device, boolean disguise, boolean escape_artist,
             boolean gather_information, boolean handle_animal, boolean heal, boolean intimidate, boolean jump,
             boolean knowledge, boolean listen, boolean move_silently, boolean perform, boolean profession, boolean ride,
             boolean search, boolean sense_motive, boolean sleight_of_hand, boolean spellcraft, boolean spot,
             boolean survival, boolean swim, boolean tumble, boolean use_magic_device, boolean use_rope) {
-        this.nameClass = nameClass;
+        this.className = className;
         this.prestigeClass = prestigeClass;
         this.baseAttackBonus = baseAttackBonus;
         this.fortitude = fortitude;
         this.reflex = reflex;
         this.will = will;
+        this.skillPoints = skillPoints;
         this.appraise = appraise;
         this.balance = balance;
         this.bluff = bluff;
@@ -484,7 +481,7 @@ public class ClassesPG {
         this.use_rope = use_rope;
     }
 
-    public ClassesPG() {
+    public Classes() {
     }
 
 }

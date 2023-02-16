@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface RaceRepo extends JpaRepository<Races,Integer>{
 
     List<Races> findAllSubRacesNameByRacesName(RacesName RacesName);
-    List<Races> findBySubRacesName(SubRacesName subRacesName);
+    List<Races> findSubRacesBySubRacesName(SubRacesName subRacesName);
         
 }

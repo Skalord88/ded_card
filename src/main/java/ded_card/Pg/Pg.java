@@ -32,7 +32,11 @@ public class Pg {
     private int pgModWisdom;
     private int pgCharisma;
     private int pgModCharisma;
-    private int pgBaseAttackBonus;
+    private double pgBaseAttackBonus;
+    private double pgFortitude;
+    private double pgReflex;
+    private double pgWill;
+    private double pgSkillPoints;
     private boolean appraise;
     private boolean balance;
     private boolean bluff;
@@ -65,18 +69,17 @@ public class Pg {
     private boolean use_magic_device;
     private boolean use_rope;
 
-   
-
-    public Pg(PgRacesName pgRacesName, PgSubRacesName pgSubRacesName, int pgStrenght, int pgModStrenght,
-            int pgDextrity, int pgModDextrity, int pgConsitution, int pgModConsitution, int pgIntelligence,
-            int pgModIntelligence, int pgWisdom, int pgModWisdom, int pgCharisma, int pgModCharisma,
-            int pgBaseAttackBonus, boolean appraise, boolean balance, boolean bluff, boolean climb,
-            boolean concentration, boolean craft, boolean diplomacy, boolean disable_device,
-            boolean disguise, boolean escape_artist, boolean gather_information, boolean handle_animal, boolean heal,
-            boolean intimidate, boolean jump, boolean knowledge, boolean listen, boolean move_silently, boolean perform,
-            boolean profession, boolean ride, boolean search, boolean sense_motive, boolean sleight_of_hand,
-            boolean spellcraft, boolean spot, boolean survival, boolean swim, boolean tumble, boolean use_magic_device,
-            boolean use_rope) {
+ 
+    public Pg(PgRacesName pgRacesName, PgSubRacesName pgSubRacesName, int pgStrenght, int pgModStrenght, int pgDextrity,
+            int pgModDextrity, int pgConsitution, int pgModConsitution, int pgIntelligence, int pgModIntelligence,
+            int pgWisdom, int pgModWisdom, int pgCharisma, int pgModCharisma, double pgBaseAttackBonus,
+            double pgFortitude, double pgReflex, double pgWill, double pgSkillPoints, boolean appraise, boolean balance,
+            boolean bluff, boolean climb, boolean concentration, boolean craft, boolean diplomacy,
+            boolean disable_device, boolean disguise, boolean escape_artist, boolean gather_information,
+            boolean handle_animal, boolean heal, boolean intimidate, boolean jump, boolean knowledge, boolean listen,
+            boolean move_silently, boolean perform, boolean profession, boolean ride, boolean search,
+            boolean sense_motive, boolean sleight_of_hand, boolean spellcraft, boolean spot, boolean survival,
+            boolean swim, boolean tumble, boolean use_magic_device, boolean use_rope) {
         this.pgRacesName = pgRacesName;
         this.pgSubRacesName = pgSubRacesName;
         this.pgStrenght = pgStrenght;
@@ -92,6 +95,10 @@ public class Pg {
         this.pgCharisma = pgCharisma;
         this.pgModCharisma = pgModCharisma;
         this.pgBaseAttackBonus = pgBaseAttackBonus;
+        this.pgFortitude = pgFortitude;
+        this.pgReflex = pgReflex;
+        this.pgWill = pgWill;
+        this.pgSkillPoints = pgSkillPoints;
         this.appraise = appraise;
         this.balance = balance;
         this.bluff = bluff;
@@ -125,169 +132,85 @@ public class Pg {
         this.use_rope = use_rope;
     }
 
-
-
-
-
     public PgRacesName getPgRacesName() {
         return pgRacesName;
     }
-
-
-
-
 
     public void setPgRacesName(PgRacesName pgRacesName) {
         this.pgRacesName = pgRacesName;
     }
 
-
-
-
-
     public PgSubRacesName getPgSubRacesName() {
         return pgSubRacesName;
     }
-
-
-
-
 
     public void setPgSubRacesName(PgSubRacesName pgSubRacesName) {
         this.pgSubRacesName = pgSubRacesName;
     }
 
-
-
-
-
     public int getPgStrenght() {
         return pgStrenght;
     }
-
-
-
-
 
     public void setPgStrenght(int pgStrenght) {
         this.pgStrenght = pgStrenght;
     }
 
-
-
-
-
     public int getPgModStrenght() {
         return pgModStrenght;
     }
-
-
-
-
 
     public void setPgModStrenght(int pgModStrenght) {
         this.pgModStrenght = pgModStrenght;
     }
 
-
-
-
-
     public int getPgDextrity() {
         return pgDextrity;
     }
-
-
-
-
 
     public void setPgDextrity(int pgDextrity) {
         this.pgDextrity = pgDextrity;
     }
 
-
-
-
-
     public int getPgModDextrity() {
         return pgModDextrity;
     }
-
-
-
-
 
     public void setPgModDextrity(int pgModDextrity) {
         this.pgModDextrity = pgModDextrity;
     }
 
-
-
-
-
     public int getPgConsitution() {
         return pgConsitution;
     }
-
-
-
-
 
     public void setPgConsitution(int pgConsitution) {
         this.pgConsitution = pgConsitution;
     }
 
-
-
-
-
     public int getPgModConsitution() {
         return pgModConsitution;
     }
-
-
-
-
 
     public void setPgModConsitution(int pgModConsitution) {
         this.pgModConsitution = pgModConsitution;
     }
 
-
-
-
-
     public int getPgIntelligence() {
         return pgIntelligence;
     }
-
-
-
-
 
     public void setPgIntelligence(int pgIntelligence) {
         this.pgIntelligence = pgIntelligence;
     }
 
-
-
-
-
     public int getPgModIntelligence() {
         return pgModIntelligence;
     }
 
-
-
-
-
-    public void setPgModIntelligence(int pgModpgIntelligence) {
-        this.pgModIntelligence = pgModpgIntelligence;
+    public void setPgModIntelligence(int pgModIntelligence) {
+        this.pgModIntelligence = pgModIntelligence;
     }
-
-
-
-
 
     public int getPgWisdom() {
         return pgWisdom;
@@ -297,17 +220,9 @@ public class Pg {
         this.pgWisdom = pgWisdom;
     }
 
-
-
-
-
     public int getPgModWisdom() {
         return pgModWisdom;
     }
-
-
-
-
 
     public void setPgModWisdom(int pgModWisdom) {
         this.pgModWisdom = pgModWisdom;
@@ -329,12 +244,44 @@ public class Pg {
         this.pgModCharisma = pgModCharisma;
     }
 
-    public int getPgBaseAttackBonus() {
+    public double getPgBaseAttackBonus() {
         return pgBaseAttackBonus;
     }
 
-    public void setPgBaseAttackBonus(int pgBaseAttackBonus) {
+    public void setPgBaseAttackBonus(double pgBaseAttackBonus) {
         this.pgBaseAttackBonus = pgBaseAttackBonus;
+    }
+
+    public double getPgFortitude() {
+        return pgFortitude;
+    }
+
+    public void setPgFortitude(double pgFortitude) {
+        this.pgFortitude = pgFortitude;
+    }
+
+    public double getPgReflex() {
+        return pgReflex;
+    }
+
+    public void setPgReflex(double pgReflex) {
+        this.pgReflex = pgReflex;
+    }
+
+    public double getPgWill() {
+        return pgWill;
+    }
+
+    public void setPgWill(double pgWill) {
+        this.pgWill = pgWill;
+    }
+
+    public double getPgSkillPoints() {
+        return pgSkillPoints;
+    }
+
+    public void setPgSkillPoints(double pgSkillPoints) {
+        this.pgSkillPoints = pgSkillPoints;
     }
 
     public boolean isAppraise() {
@@ -397,10 +344,6 @@ public class Pg {
         return disable_device;
     }
 
-
-
-
-
     public void setDisable_device(boolean disable_device) {
         this.disable_device = disable_device;
     }
@@ -445,311 +388,155 @@ public class Pg {
         this.heal = heal;
     }
 
-
-
-
-
     public boolean isIntimidate() {
         return intimidate;
     }
-
-
-
-
 
     public void setIntimidate(boolean intimidate) {
         this.intimidate = intimidate;
     }
 
-
-
-
-
     public boolean isJump() {
         return jump;
     }
-
-
-
-
 
     public void setJump(boolean jump) {
         this.jump = jump;
     }
 
-
-
-
-
     public boolean isKnowledge() {
         return knowledge;
     }
-
-
-
-
 
     public void setKnowledge(boolean knowledge) {
         this.knowledge = knowledge;
     }
 
-
-
-
-
     public boolean isListen() {
         return listen;
     }
-
-
-
-
 
     public void setListen(boolean listen) {
         this.listen = listen;
     }
 
-
-
-
-
     public boolean isMove_silently() {
         return move_silently;
     }
-
-
-
-
 
     public void setMove_silently(boolean move_silently) {
         this.move_silently = move_silently;
     }
 
-
-
-
-
     public boolean isPerform() {
         return perform;
     }
-
-
-
-
 
     public void setPerform(boolean perform) {
         this.perform = perform;
     }
 
-
-
-
-
     public boolean isProfession() {
         return profession;
     }
-
-
-
-
 
     public void setProfession(boolean profession) {
         this.profession = profession;
     }
 
-
-
-
-
     public boolean isRide() {
         return ride;
     }
-
-
-
-
 
     public void setRide(boolean ride) {
         this.ride = ride;
     }
 
-
-
-
-
     public boolean isSearch() {
         return search;
     }
-
-
-
-
 
     public void setSearch(boolean search) {
         this.search = search;
     }
 
-
-
-
-
     public boolean isSense_motive() {
         return sense_motive;
     }
-
-
-
-
 
     public void setSense_motive(boolean sense_motive) {
         this.sense_motive = sense_motive;
     }
 
-
-
-
-
     public boolean isSleight_of_hand() {
         return sleight_of_hand;
     }
-
-
-
-
 
     public void setSleight_of_hand(boolean sleight_of_hand) {
         this.sleight_of_hand = sleight_of_hand;
     }
 
-
-
-
-
     public boolean isSpellcraft() {
         return spellcraft;
     }
-
-
-
-
 
     public void setSpellcraft(boolean spellcraft) {
         this.spellcraft = spellcraft;
     }
 
-
-
-
-
     public boolean isSpot() {
         return spot;
     }
-
-
-
-
 
     public void setSpot(boolean spot) {
         this.spot = spot;
     }
 
-
-
-
-
     public boolean isSurvival() {
         return survival;
     }
-
-
-
-
 
     public void setSurvival(boolean survival) {
         this.survival = survival;
     }
 
-
-
-
-
     public boolean isSwim() {
         return swim;
     }
-
-
-
-
 
     public void setSwim(boolean swim) {
         this.swim = swim;
     }
 
-
-
-
-
     public boolean isTumble() {
         return tumble;
     }
-
-
-
-
 
     public void setTumble(boolean tumble) {
         this.tumble = tumble;
     }
 
-
-
-
-
     public boolean isUse_magic_device() {
         return use_magic_device;
     }
-
-
-
-
 
     public void setUse_magic_device(boolean use_magic_device) {
         this.use_magic_device = use_magic_device;
     }
 
-
-
-
-
     public boolean isUse_rope() {
         return use_rope;
     }
-
-
-
-
 
     public void setUse_rope(boolean use_rope) {
         this.use_rope = use_rope;
     }
 
-
-
-
-
     public Pg() {
     }
 
-
-
-
-
     public void setPgRacesName(RacesName racesName) {
 	}
-
-
-
-
 
     public void setPgSubRacesName(SubRacesName subRacesName) {
     }

@@ -3,12 +3,14 @@ package ded_card.Pg;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ded_card.Classes.ClassName;
+import ded_card.Classes.Classes;
+import ded_card.Classes.ClassesRepo;
 import ded_card.Races.RaceRepo;
 import ded_card.Races.Races;
 import ded_card.Races.RacesName;
@@ -23,15 +25,17 @@ public class PgControllorer {
     RaceRepo raceRepo;
     ModAbilitiesRepo modAbilitiesRepo;
     PgRepo pgRepo;
+    ClassesRepo classesRepo;
 
     public PgControllorer(RaceRepo raceRepo, ModAbilitiesRepo modAbilitiesRepo,
-    PgRepo pgRepo
+    PgRepo pgRepo, ClassesRepo classesRepo
     ){
         
         this.raceRepo=raceRepo;
         this.modAbilitiesRepo=modAbilitiesRepo;
         this.pgRepo=pgRepo;
-        
+        this.classesRepo=classesRepo;
+
     }
     
     ///{newPg}
@@ -39,8 +43,12 @@ public class PgControllorer {
     
     @PostMapping("/pg/newPg")
     @ResponseBody
-    public Pg pg(@RequestParam("Str") int pgStrenght, @RequestParam("Dex") int pgDextrity, @RequestParam("Con") int pgConsitution,@RequestParam("Int") int pgIntelligence,
-    @RequestParam("Wis") int pgWisdom, @RequestParam("Cha") int pgCharisma, @RequestParam("racesName") RacesName racesName, @RequestParam("subRacesName") SubRacesName subRacesName){
+    public Pg pg(
+    @RequestParam("Str") int pgStrenght, @RequestParam("Dex") int pgDextrity, @RequestParam("Con") int pgConsitution,
+    @RequestParam("Int") int pgIntelligence, @RequestParam("Wis") int pgWisdom, @RequestParam("Cha") int pgCharisma,
+    @RequestParam("racesName") RacesName racesName, @RequestParam("subRacesName") SubRacesName subRacesName,@RequestParam("class") ClassName nameClass,
+    @RequestParam("className") ClassName className
+    ){
 
         Pg pg = new Pg();
 
@@ -54,7 +62,7 @@ public class PgControllorer {
         pg.setPgWisdom(pgWisdom);
         pg.setPgCharisma(pgCharisma);
 
-        List <Races> subraces = raceRepo.findBySubRacesName(subRacesName);
+        List <Races> subraces = raceRepo.findSubRacesBySubRacesName(subRacesName);
 
         int strenght = subraces.get(0).getStrenght();
         int dextrity = subraces.get(0).getDextrity();
@@ -88,6 +96,21 @@ public class PgControllorer {
         
         abilities = pg.getPgCharisma();
         pg.setPgModCharisma(modabilities.get(0).getModAbilities());
+
+        List<Classes> classes = classesRepo.findBaseAttackBonusByClassName(className);
+
+        pg.setPgBaseAttackBonus(classes.get(0).getBaseAttackBonus()+pg.getPgModStrenght());
+        pg.setPgFortitude(classes.get(0).getFortitude()+pg.getPgModConsitution());
+        pg.setPgReflex(classes.get(0).getReflex()+pg.getPgModDextrity());
+        pg.setPgWill(classes.get(0).getWill()+pg.getPgModWisdom());
+        pg.setPgSkillPoints(classes.get(0).getSkillPoints()+pg.getPgIntelligence());
+
+        double skillPoints = pg.getPgSkillPoints();
+        if (skillPoints>0){
+            pg.setPgSkillPoints(skillPoints*4);
+        } else {
+            pg.setPgSkillPoints(4);
+        }
 
         return pgRepo.save(pg);
 
