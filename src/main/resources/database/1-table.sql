@@ -1,5 +1,5 @@
 CREATE TABLE modAbilities(
-    modAbilitiesId serial PRIMARY KEY,
+    mod_abilities_Id serial PRIMARY KEY,
     abilities INT,
     modAbilities INT,
     bonusSpell1 INT,
@@ -14,22 +14,22 @@ CREATE TABLE modAbilities(
 );
 
 CREATE TABLE pg(
-    pgId serial PRIMARY KEY,
-	  pgRacesName VARCHAR(100),
-      pgSubRacesName VARCHAR(100),
-      pgStrenght INT,
-      pgModpgStrenght INT,
-      pgDextrity INT,
-      pgModpgDextrity INT,
-      pgConsitution INT,
-      pgModpgConsitution INT,
-      pgIntelligence INT,
-      pgModpgIntelligence INT,
-      pgWisdom INT,
-      pgModpgWisdom INT,
-      pgCharisma INT,
-      pgModpgCharisma INT,
-      pgBaseAttackBonus INT,
+    pg_Id serial PRIMARY KEY,
+	  pg_Races_Name VARCHAR(100),
+      pg_SubRaces_Name VARCHAR(100),
+      pg_Strenght INT,
+      pg_Modpg_Strenght INT,
+      pg_Dextrity INT,
+      pg_Modpg_Dextrity INT,
+      pg_Consitution INT,
+      pg_Modpg_Consitution INT,
+      pg_Intelligence INT,
+      pg_Modpg_Intelligence INT,
+      pg_Wisdom INT,
+      pg_Modpg_Wisdom INT,
+      pg_Charisma INT,
+      pg_Modpg_Charisma INT,
+      pg_Base_Attack_Bonus INT,
       appraise boolean,
       balance boolean,
       bluff boolean,
@@ -64,9 +64,9 @@ CREATE TABLE pg(
 );
 
 CREATE TABLE races(
-    racesId serial PRIMARY KEY,
-    racesName VARCHAR(100), 
-    subRacesName VARCHAR(100),
+    races_Id serial PRIMARY KEY,
+    races_Name VARCHAR(100), 
+    sub_Races_Name VARCHAR(100),
     strenght INT,
     dextrity INT,
     consitution INT,
@@ -113,10 +113,10 @@ CREATE TABLE skills(
 );
 
 CREATE TABLE classes(
-    pgId serial PRIMARY KEY,
-    nameClassPg VARCHAR(100),
-    prestigeClass boolean,
-      pgBaseAttackBonus INT,
+    pg_Id serial PRIMARY KEY,
+    name_Class VARCHAR(100),
+    prestige_Class boolean,
+      base_Attack_Bonus INT,
       fortitude double precision,
       reflex double precision,
       will double precision,

@@ -3,8 +3,10 @@ package ded_card.Pg;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ded_card.Races.RaceRepo;
@@ -31,26 +33,19 @@ public class PgControllorer {
         this.pgRepo=pgRepo;
         
     }
-
+    
     ///{newPg}
     //@RequestParam("newPg")
     
-    @PostMapping("/pg/{newPg}")
-    public Pg pg(@RequestParam("newPg") int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
-    int pgWisdom, int pgCharisma, RacesName racesName, SubRacesName subRacesName){
+    @PostMapping("/pg/newPg")
+    @ResponseBody
+    public Pg pg(@RequestParam("Str") int pgStrenght, @RequestParam("Dex") int pgDextrity, @RequestParam("Con") int pgConsitution,@RequestParam("Int") int pgIntelligence,
+    @RequestParam("Wis") int pgWisdom, @RequestParam("Cha") int pgCharisma, @RequestParam("racesName") RacesName racesName, @RequestParam("subRacesName") SubRacesName subRacesName){
 
         Pg pg = new Pg();
 
         pg.setPgRacesName(racesName);
         pg.setPgSubRacesName(subRacesName);
-
-        List <Races> races = raceRepo.findAllSubRacesNameByRacesName(racesName);
-
-        for (Races x : races){
-
-            System.out.println(x.getSubRacesName());
-
-        }
 
         pg.setPgStrenght(pgStrenght);
         pg.setPgDextrity(pgDextrity);
