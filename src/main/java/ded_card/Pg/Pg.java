@@ -1,6 +1,7 @@
 package ded_card.Pg;
 
 import ded_card.Races.RacesName;
+import ded_card.Races.SubRacesName;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -416,57 +417,29 @@ public class Pg {
         return escape_artist;
     }
 
-
-
-
-
     public void setEscape_artist(boolean escape_artist) {
         this.escape_artist = escape_artist;
     }
-
-
-
-
 
     public boolean isGather_information() {
         return gather_information;
     }
 
-
-
-
-
     public void setGather_information(boolean gather_information) {
         this.gather_information = gather_information;
     }
-
-
-
-
 
     public boolean isHandle_animal() {
         return handle_animal;
     }
 
-
-
-
-
     public void setHandle_animal(boolean handle_animal) {
         this.handle_animal = handle_animal;
     }
 
-
-
-
-
     public boolean isHeal() {
         return heal;
     }
-
-
-
-
 
     public void setHeal(boolean heal) {
         this.heal = heal;
@@ -773,5 +746,12 @@ public class Pg {
 
     public void setPgRacesName(RacesName racesName) {
 	}
+
+
+
+
+
+    public void setPgSubRacesName(SubRacesName subRacesName) {
+    }
 
 }

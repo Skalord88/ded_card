@@ -3,8 +3,8 @@ package ded_card.Pg;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ded_card.Races.RaceRepo;
@@ -20,21 +20,29 @@ public class PgControllorer {
     @Autowired
     RaceRepo raceRepo;
     ModAbilitiesRepo modAbilitiesRepo;
+    PgRepo pgRepo;
 
-    public PgControllorer(RaceRepo raceRepo, ModAbilitiesRepo modAbilitiesRepo){
+    public PgControllorer(RaceRepo raceRepo, ModAbilitiesRepo modAbilitiesRepo,
+    PgRepo pgRepo
+    ){
         
         this.raceRepo=raceRepo;
         this.modAbilitiesRepo=modAbilitiesRepo;
+        this.pgRepo=pgRepo;
         
     }
+
+    ///{newPg}
+    //@RequestParam("newPg")
     
-    @GetMapping("pg/{newPg}")
-    public Pg pg(@PathVariable("newPg")int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
+    @PostMapping("pg")
+    public Pg pg( int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
     int pgWisdom, int pgCharisma, RacesName racesName, SubRacesName subRacesName){
 
         Pg pg = new Pg();
 
         pg.setPgRacesName(racesName);
+        pg.setPgSubRacesName(subRacesName);
 
         List <Races> races = raceRepo.findAllSubRacesNameByRacesName(racesName);
 
@@ -86,7 +94,7 @@ public class PgControllorer {
         abilities = pg.getPgCharisma();
         pg.setPgModCharisma(modabilities.get(0).getModAbilities());
 
-        return pg;
+        return pgRepo.save(pg);
 
     }
 
