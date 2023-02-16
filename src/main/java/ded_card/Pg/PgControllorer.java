@@ -35,8 +35,8 @@ public class PgControllorer {
     ///{newPg}
     //@RequestParam("newPg")
     
-    @PostMapping("pg")
-    public Pg pg( int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
+    @PostMapping("/pg/{newPg}")
+    public Pg pg(@RequestParam("newPg") int pgStrenght, int pgDextrity, int pgConsitution, int pgIntelligence,
     int pgWisdom, int pgCharisma, RacesName racesName, SubRacesName subRacesName){
 
         Pg pg = new Pg();
