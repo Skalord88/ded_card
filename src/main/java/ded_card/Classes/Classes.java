@@ -21,7 +21,7 @@ public class Classes {
     private double fortitude;
     private double reflex;
     private double will;
-    private double skillPoints;
+    private int skillPoints;
     private boolean appraise;
     private boolean balance;
     private boolean bluff;
@@ -102,11 +102,11 @@ public class Classes {
         this.will = will;
     }
 
-    public double getSkillPoints() {
+    public int getSkillPoints() {
         return skillPoints;
     }
 
-    public void setSkillPoints(double skillPoints) {
+    public void setSkillPoints(int skillPoints) {
         this.skillPoints = skillPoints;
     }
 
@@ -314,65 +314,33 @@ public class Classes {
         this.profession = profession;
     }
 
-
-
-
-
     public boolean isRide() {
         return ride;
     }
-
-
-
-
 
     public void setRide(boolean ride) {
         this.ride = ride;
     }
 
-
-
-
-
     public boolean isSearch() {
         return search;
     }
-
-
-
-
 
     public void setSearch(boolean search) {
         this.search = search;
     }
 
-
-
-
-
     public boolean isSense_motive() {
         return sense_motive;
     }
-
-
-
-
 
     public void setSense_motive(boolean sense_motive) {
         this.sense_motive = sense_motive;
     }
 
-
-
-
-
     public boolean isSleight_of_hand() {
         return sleight_of_hand;
     }
-
-
-
-
 
     public void setSleight_of_hand(boolean sleight_of_hand) {
         this.sleight_of_hand = sleight_of_hand;
@@ -435,7 +403,7 @@ public class Classes {
     }
 
     public Classes(ClassName className, boolean prestigeClass, double baseAttackBonus, double fortitude, double reflex, double will,
-            double skillPoints, boolean appraise, boolean balance, boolean bluff, boolean climb, boolean concentration, boolean craft,
+            int skillPoints, boolean appraise, boolean balance, boolean bluff, boolean climb, boolean concentration, boolean craft,
             boolean diplomacy, boolean disable_device, boolean disguise, boolean escape_artist,
             boolean gather_information, boolean handle_animal, boolean heal, boolean intimidate, boolean jump,
             boolean knowledge, boolean listen, boolean move_silently, boolean perform, boolean profession, boolean ride,

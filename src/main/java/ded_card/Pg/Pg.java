@@ -36,7 +36,7 @@ public class Pg {
     private double pgFortitude;
     private double pgReflex;
     private double pgWill;
-    private double pgSkillPoints;
+    private int pgSkillPoints;
     private boolean appraise;
     private boolean balance;
     private boolean bluff;
@@ -73,7 +73,7 @@ public class Pg {
     public Pg(PgRacesName pgRacesName, PgSubRacesName pgSubRacesName, int pgStrenght, int pgModStrenght, int pgDextrity,
             int pgModDextrity, int pgConsitution, int pgModConsitution, int pgIntelligence, int pgModIntelligence,
             int pgWisdom, int pgModWisdom, int pgCharisma, int pgModCharisma, double pgBaseAttackBonus,
-            double pgFortitude, double pgReflex, double pgWill, double pgSkillPoints, boolean appraise, boolean balance,
+            double pgFortitude, double pgReflex, double pgWill, int pgSkillPoints, boolean appraise, boolean balance,
             boolean bluff, boolean climb, boolean concentration, boolean craft, boolean diplomacy,
             boolean disable_device, boolean disguise, boolean escape_artist, boolean gather_information,
             boolean handle_animal, boolean heal, boolean intimidate, boolean jump, boolean knowledge, boolean listen,
@@ -276,11 +276,11 @@ public class Pg {
         this.pgWill = pgWill;
     }
 
-    public double getPgSkillPoints() {
+    public int getPgSkillPoints() {
         return pgSkillPoints;
     }
 
-    public void setPgSkillPoints(double pgSkillPoints) {
+    public void setPgSkillPoints(int pgSkillPoints) {
         this.pgSkillPoints = pgSkillPoints;
     }
 

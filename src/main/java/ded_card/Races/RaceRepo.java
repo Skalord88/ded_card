@@ -11,5 +11,6 @@ public interface RaceRepo extends JpaRepository<Races,Integer>{
 
     List<Races> findAllSubRacesNameByRacesName(RacesName RacesName);
     List<Races> findSubRacesBySubRacesName(SubRacesName subRacesName);
+    List<Races> findAppraiseBySubRacesName(SubRacesName subRacesName);
         
 }
