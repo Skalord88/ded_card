@@ -3,6 +3,7 @@ package ded_card.Pg;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,27 +38,60 @@ public class PgControllorer {
         this.classesRepo=classesRepo;
 
     }
-        
-    @PostMapping("/pg/newPg")
+
+    @PostMapping("/pg/ability/{id}")
     @ResponseBody
-    public Pg pg(
-    @RequestParam("Str") int pgStrenght, @RequestParam("Dex") int pgDextrity, @RequestParam("Con") int pgConsitution,
-    @RequestParam("Int") int pgIntelligence, @RequestParam("Wis") int pgWisdom, @RequestParam("Cha") int pgCharisma,
-    @RequestParam("racesName") RacesName racesName, @RequestParam("subRacesName") SubRacesName subRacesName,@RequestParam("class") ClassName nameClass,
-    @RequestParam("className") ClassName className
-    ){
+    public Pg pgAbility(@RequestParam("ability") AbilityDTO abilityDTO, @PathVariable int id){
 
         Pg pg = new Pg();
 
-        pg.setPgRacesName(racesName);
-        pg.setPgSubRacesName(subRacesName);
+        pgRepo.save(pg);
 
-        pg.setPgStrenght(pgStrenght);
-        pg.setPgDextrity(pgDextrity);
-        pg.setPgConsitution(pgConsitution);
-        pg.setPgIntelligence(pgIntelligence);
-        pg.setPgWisdom(pgWisdom);
-        pg.setPgCharisma(pgCharisma);
+        Pg currentPg = pgRepo.findByPgId(id).get(0);
+
+        currentPg.setPgStrenght(abilityDTO.streght);
+        currentPg.setPgDextrity(abilityDTO.dextrity);
+        currentPg.setPgConsitution(abilityDTO.constitution);
+        currentPg.setPgIntelligence(abilityDTO.intelligence);
+        currentPg.setPgWisdom(abilityDTO.wisdom);
+        currentPg.setPgCharisma(abilityDTO.charisma);
+
+        return pgRepo.save(pg);
+
+    }
+
+    @PostMapping("/pg/race/{id}")
+    @ResponseBody
+    public Pg pgRace(@RequestParam("race") RaceDTO raceDTO, @PathVariable int id){
+
+        Pg currentPg = pgRepo.findByPgId(1).get(0);
+        
+        currentPg.setRacesName(raceDTO.racesName);
+        currentPg.setSubRacesName(raceDTO.subRacesName);
+
+        SubRacesName subRaceName = currentPg.getSubRacesName();
+
+        List <Races> subRaceAb = raceRepo.findRaceAbilitiesBySubRacesName(subRaceName);
+
+        //if x = ability set ability +2
+
+        for ()
+
+        currentPg.getPgStrenght();
+        currentPg.getPgDextrity();
+        currentPg.getPgConsitution();
+        currentPg.get;
+        currentPg;
+        currentPg;
+
+        return pgRepo.save(currentPg);
+
+    }
+
+    
+    @PostMapping("/pg/class/{id}")
+    @ResponseBody
+    public Pg pgClass(@RequestParam("class") ClassName nameClass, @RequestParam("className") ClassName className){
 
         List <Races> subraces = raceRepo.findSubRacesBySubRacesName(subRacesName);
 
