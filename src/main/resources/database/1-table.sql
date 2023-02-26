@@ -15,60 +15,15 @@ CREATE TABLE modAbilities(
 
 CREATE TABLE pg(
     pg_Id serial PRIMARY KEY,
-	  pg_Races_Name VARCHAR(100),
-      pg_SubRaces_Name VARCHAR(100),
-      pg_Strenght INT,
-      pg_Modpg_Strenght INT,
-      pg_Dextrity INT,
-      pg_Modpg_Dextrity INT,
-      pg_Consitution INT,
-      pg_Modpg_Consitution INT,
-      pg_Intelligence INT,
-      pg_Modpg_Intelligence INT,
-      pg_Wisdom INT,
-      pg_Modpg_Wisdom INT,
-      pg_Charisma INT,
-      pg_Modpg_Charisma INT,
-      pg_Base_Attack_Bonus INT,
-      appraise boolean,
-      balance boolean,
-      bluff boolean,
-      climb boolean,
-      concentration boolean,
-      craft boolean,
-      diplomacy boolean,
-      disable_device boolean,
-      disguise boolean,
-      escape_artist boolean,
-      gather_information boolean,
-      handle_animal boolean,
-      heal boolean,
-      intimidate boolean,
-      jump boolean,
-      knowledge boolean,
-      listen boolean,
-      move_silently boolean,
-      perform boolean,
-      profession boolean,
-      ride boolean,
-      search boolean,
-      sense_motive boolean,
-      sleight_of_hand boolean,
-      spellcraft boolean,
-      spot boolean,
-      survival boolean,
-      swim boolean,
-      tumble boolean,
-      use_magic_device boolean,
-      use_rope boolean
+      pgName VARCHAR(100)
 );
 
 CREATE TABLE races(
     races_Id serial PRIMARY KEY,
     races_Name VARCHAR(100), 
     sub_Races_Name VARCHAR(100),
-    raceAbilities VARCHAR(6),
-    raceSkills VARCHAR(300),
+    raceAbilities VARCHAR(300),
+    raceSkills VARCHAR(300)
 );
 
 CREATE TABLE skills(

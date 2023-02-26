@@ -1,10 +1,5 @@
 package ded_card.Races;
 
-import java.util.Map;
-
-import org.postgresql.util.HStoreConverter;
-
-import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -28,9 +23,7 @@ public class Races {
     private RacesName racesName;
     @Enumerated (EnumType.STRING)
     private SubRacesName subRacesName;
-    private String raceAbilitiesJSON;
-    @Convert(converter = HStoreConverter.class)
-    private Map <String, Integer> raceAbilities;
-    private Map <String, Integer> raceSkills;
+    private String raceAbilities;
+    private String raceSkills;
 
 }
