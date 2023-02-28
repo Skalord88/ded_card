@@ -9,5 +9,5 @@
 		http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd">
 
-    <includeAll path="database"/>
+	<includeAll path="database" relativeToChangelogFile="true" />
 </databaseChangeLog >
