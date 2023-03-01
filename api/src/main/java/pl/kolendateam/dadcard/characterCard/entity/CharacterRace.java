@@ -1,20 +1,22 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@RequiredArgsConstructor
 public class CharacterRace {
 
     @Id
