@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.characterCard.dto.CharacterRaceDTO;
+import pl.kolendateam.dadcard.characterCard.entity.CharacterRace;
+import pl.kolendateam.dadcard.characterCard.repository.CharacterRaceRepository;
 
 @RestController
-@RequestMapping("race")
+@RequestMapping("character")
 public class CharacterRaceController {
     
 
@@ -23,8 +23,8 @@ public class CharacterRaceController {
     }
 
     @PostMapping(value="race",consumes = {"application/json"})
-    public CharacterRace createCharacterRace(@RequestBody RaceDTO raceDTO){
-        CharacterRace race = new CharacterRace (raceDTO.raceName,raceDTO.subRaceName);
+    public CharacterRace createCharacterRace(@RequestBody CharacterRaceDTO characterRaceDTO){
+        CharacterRace race = new CharacterRace (characterRaceDTO.raceName,characterRaceDTO.subRaceName);
 
         this.characterRaceRepository.save(race);
 

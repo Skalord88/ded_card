@@ -6,15 +6,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 
-@RequiredArgsConstructor
-@Setter
-@Getter
-@RequiredArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity
 public class CharacterRace {
 
