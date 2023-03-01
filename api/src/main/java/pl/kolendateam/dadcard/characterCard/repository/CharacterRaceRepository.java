@@ -2,11 +2,9 @@ package pl.kolendateam.dadcard.characterCard.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import pl.kolendateam.dadcard.characterCard.entity.CharacterCard;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @Repository
-public interface CharacterCardRepository extends JpaRepository<CharacterCard, Integer> {
+public interface CharacterRaceRepository extends JpaRepository<CharacterRace, Integer> {
 
-    
 }

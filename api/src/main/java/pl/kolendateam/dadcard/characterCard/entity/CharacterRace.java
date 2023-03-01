@@ -8,11 +8,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 
 @RequiredArgsConstructor
+@Setter
+@Getter
+@RequiredArgsConstructor
 @Entity
-public class CharacterCard {
+public class CharacterRace {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

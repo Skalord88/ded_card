@@ -11,24 +11,24 @@ import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 
 @RestController
-@RequestMapping("character-card")
-public class CharacterController {
+@RequestMapping("race")
+public class CharacterRaceController {
     
 
-    CharacterRepository characterRepository;
+    CharacterRaceRepository characterRaceRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository){
-        this.characterRepository = characterRepository;
+    public CharacterRaceController(CharacterRaceRepository characterRaceRepository){
+        this.characterRaceRepository = characterRaceRepository;
     }
 
-    @PostMapping(value="",consumes = {"application/json"})
-    public Character create(@RequestBody CharacterDTO characterDTO){
-        Character character = new Character(characterDTO.characterName,characterDTO.playerName);
+    @PostMapping(value="race",consumes = {"application/json"})
+    public CharacterRace createCharacterRace(@RequestBody RaceDTO raceDTO){
+        CharacterRace race = new CharacterRace (raceDTO.raceName,raceDTO.subRaceName);
 
-        this.characterRepository.save(character);
+        this.characterRaceRepository.save(race);
 
-        return character;
+        return race;
     }
 
 }

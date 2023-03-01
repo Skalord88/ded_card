@@ -1,6 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 
-public class CreateDTO {
+public class CharacterRaceDTO {
     public String raceName;
     public String subRaceName;
 }
