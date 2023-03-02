@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,22 @@ public class ListRaceController {
     }
 
     @GetMapping("/listrace")
-    public List <ListRace> getListRace(@RequestParam String raceName){
+    public HashSet <String> getListRace(){
+
+        List <ListRace> listRace = listRaceRepository.findAll();
+
+        HashSet <String> races = new HashSet<>();
+
+        for (ListRace x : listRace){
+            races.add(x.getRaceName());
+        }
+        
+        return races;
+        
+    }
+
+    @GetMapping("/listsubrace")
+    public List <ListRace> getListSubRace(@RequestParam String raceName){
 
         return listRaceRepository.findByRaceName(raceName);
 
