@@ -25,4 +25,28 @@ public class CharacterCard {
     @NonNull
     @Column(nullable=false)
     public String subRaceName;
+
+    @NonNull
+    @Column(nullable=false)
+    private int streght;
+
+    @NonNull
+    @Column(nullable=false)
+    private int dextrity;
+
+    @NonNull
+    @Column(nullable=false)
+    private int constitution;
+
+    @NonNull
+    @Column(nullable=false)
+    private int intelligence;
+
+    @NonNull
+    @Column(nullable=false)
+    private int wisdom;
+
+    @NonNull
+    @Column(nullable=false)
+    private int charisma;
 }
