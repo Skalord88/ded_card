@@ -29,5 +29,24 @@ public class CharacterClass {
     @NonNull
     @Column(nullable=false)
     public String className;
+
+
+    private String skill;
+
+
+    public Arraylist <CharacterSkill> getSkill(){
+
+        return new characterSkill(this.skill);
+
+    }
+
+    public void setSkill(Arraylist <CharacterSkill>  characterSkill){
+
+
+        this.skill = characterSkill.toString();
+
+    }
+
+
     
 }
