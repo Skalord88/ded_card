@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="9" author="oscar">
+      <createTable tableName="character_skill">
+        <column name="id" type="int" autoIncrement="true">
+          <constraints primaryKey="true"/>
+        </column>
+        <column name="skill_name" type="varchar(255)">
+          <constraints nullable="false"/>
+        </column>
+        <column name="skill_set" type="boolen">
+          <constraints nullable="false"/>
+        </column>
+        <column name="skill_value" type="int">
+          <constraints nullable="false"/>
+        </column>
+      </createTable>
+  </changeSet>
+</databaseChangeLog>

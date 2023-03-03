@@ -11,13 +11,12 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
 @RequiredArgsConstructor
-public class CharacterRace {
+public class ListClass {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +24,14 @@ public class CharacterRace {
 
     @NonNull
     @Column(nullable=false)
-    public String raceName;
+    private String className;
 
     @NonNull
     @Column(nullable=false)
-    public String subRaceName;
+    private String classRole;
+
+    @NonNull
+    @Column(nullable=false)
+    private String classSkill;
+    
 }
