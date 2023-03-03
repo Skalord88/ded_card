@@ -7,6 +7,5 @@ import pl.kolendateam.dadcard.characterCard.entity.CharacterCard;
 
 @Repository
 public interface CharacterCardRepository extends JpaRepository<CharacterCard, Integer> {
-
     
 }
