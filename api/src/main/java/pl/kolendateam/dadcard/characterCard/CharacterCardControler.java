@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.kolendateam.dadcard.characterCard.dto.CreateDTO;
 import pl.kolendateam.dadcard.characterCard.entity.CharacterCard;
-import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.characterCard.repository.CharacterCardRepository;
 
 @RestController
 @RequestMapping("character")
 public class CharacterCardControler {
 
-    CharacterRepository characterRepository;
+    CharacterCardRepository characterRepository;
 
     @Autowired
-    public CharacterCardControler(CharacterRepository characterRepository){
+    public CharacterCardControler(CharacterCardRepository characterRepository){
         this.characterRepository = characterRepository;
     }
 
