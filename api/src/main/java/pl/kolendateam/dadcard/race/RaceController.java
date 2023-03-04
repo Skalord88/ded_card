@@ -27,6 +27,6 @@ public class RaceController {
     public ArrayList<RaceBaseDTO> getAll() {
         List<Race> races = this.raceRepository.findAll();
 
-        return MaperListRaceToDTO.raceToRaceBaseDTO(races);
+        return MaperListRaceToDTO.toRaceBaseDTO(races);
     }
 }
