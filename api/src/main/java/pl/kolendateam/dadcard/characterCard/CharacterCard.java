@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.characterCard;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
