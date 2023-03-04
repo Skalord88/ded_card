@@ -26,7 +26,14 @@ public class CharacterCardController {
     @PostMapping(value = "ability",consumes = {"application/json"})
     public CharacterCard abilityCharacterCard(@RequestBody AbilityDTO abilityDTO){
 
-        CharacterCard ability = new CharacterCard(abilityDTO.streght,abilityDTO.dextrity,abilityDTO.constitution,abilityDTO.intelligence,abilityDTO.wisdom,abilityDTO.charisma);
+        CharacterCard ability = new CharacterCard();
+
+        ability.setStreght(abilityDTO.streght);
+        ability.setDextrity(abilityDTO.dextrity);
+        ability.setConstitution(abilityDTO.constitution);
+        ability.setIntelligence(abilityDTO.intelligence);
+        ability.setWisdom(abilityDTO.wisdom);
+        ability.setCharisma(abilityDTO.charisma);
 
         this.characterCardRepository.save(ability);
 
