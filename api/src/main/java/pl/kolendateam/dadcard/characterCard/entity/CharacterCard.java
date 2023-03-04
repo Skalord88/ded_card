@@ -11,7 +11,6 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,6 +21,22 @@ public class CharacterCard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+
+    @NonNull
+    @Column(nullable=false)
+    String characterName;
+
+    @NonNull
+    @Column(nullable=false)
+    String playerName;
+
+    @NonNull
+    @Column(nullable=false)
+    public String raceName;
+
+    @NonNull
+    @Column(nullable=false)
+    public String subRaceName;
 
     @NonNull
     @Column(nullable=false)
