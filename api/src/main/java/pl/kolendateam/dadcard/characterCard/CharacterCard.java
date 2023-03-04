@@ -15,12 +15,12 @@ import pl.kolendateam.dadcard.characterCard.repository.ListRaceRepository;
 
 @RestController
 @RequestMapping("list")
-public class ListRaceController {
+public class CharacterCard {
 
     ListRaceRepository listRaceRepository;
 
     @Autowired
-    public ListRaceController(ListRaceRepository listRaceRepository){
+    public CharacterCard(ListRaceRepository listRaceRepository){
         this.listRaceRepository = listRaceRepository;
     }
 
