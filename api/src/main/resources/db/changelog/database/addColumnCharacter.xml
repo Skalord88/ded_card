@@ -1,0 +1,19 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="5" author="damian">
+	<addColumn tableName="person" >
+		<column name="race" 
+			type="varchar(255)"/>  
+		<column name="sub_race"  
+			type="varchar(255)" /> 
+        <column name="region"  
+			type="varchar(255)" /> 
+        <column name="god"  
+			type="varchar(255)" /> 
+	</addColumn>  
+  </changeSet>
+</databaseChangeLog>

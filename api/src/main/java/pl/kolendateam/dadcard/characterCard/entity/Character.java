@@ -26,4 +26,12 @@ public class Character {
 
     @NonNull
     String playerName;
+
+    String race;
+
+    String subRace;
+
+    String region;
+
+    String god;
 }
