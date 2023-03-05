@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.clas.entity;
+package pl.kolendateam.dadcard.classCharacter.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,17 +15,17 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 @Entity
-public class Class {
+public class ClassCharacter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
     @NonNull
-    private String classType;
+    private String type;
 
     @NonNull
-    private String className;
+    private String name;
     
     @NonNull
     private String avatarUrl;

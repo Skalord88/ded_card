@@ -5,34 +5,34 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="7" author="oscar">
-          <insert tableName="class">  
-              <column  name="class_type"  value="base class"/>  
-              <column  name="class_name"  value="barbarian"/>
+          <insert tableName="class_character">  
+              <column  name="type"  value="base class"/>  
+              <column  name="name"  value="barbarian"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>  
-          <insert tableName="class">  
-            <column  name="class_type"  value="base class"/>  
-            <column  name="class_name"  value="bard"/>
+          <insert tableName="class_character">  
+            <column  name="type"  value="base class"/>  
+            <column  name="name"  value="bard"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
-          <insert tableName="class">  
-            <column  name="class_type"  value="base class"/>  
-            <column  name="class_name"  value="cleric"/>
+          <insert tableName="class_character">  
+            <column  name="type"  value="base class"/>  
+            <column  name="name"  value="cleric"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
-          <insert tableName="class">  
-            <column  name="class_type"  value="base class"/>  
-            <column  name="class_name"  value="druid"/>
+          <insert tableName="class_character">  
+            <column  name="type"  value="base class"/>  
+            <column  name="name"  value="druid"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
-          <insert tableName="class">  
-            <column  name="class_type"  value="base class"/>  
-            <column  name="class_name"  value="fighter"/>
+          <insert tableName="class_character">  
+            <column  name="type"  value="base class"/>  
+            <column  name="name"  value="fighter"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
-          <insert tableName="class">  
-            <column  name="class_type"  value="prestige class"/>  
-            <column  name="class_name"  value="archmage"/>
+          <insert tableName="class_character">  
+            <column  name="type"  value="prestige class"/>  
+            <column  name="name"  value="archmage"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
   </changeSet>

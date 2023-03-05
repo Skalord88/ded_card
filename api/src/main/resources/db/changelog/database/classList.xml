@@ -5,14 +5,14 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="6" author="oscar">
-      <createTable tableName="class">
+      <createTable tableName="class_character">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
-        <column name="class_type" type="varchar(255)">
+        <column name="type" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="class_name" type="varchar(255)">
+        <column name="name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
         <column name="avatar_url" type="varchar(255)">
