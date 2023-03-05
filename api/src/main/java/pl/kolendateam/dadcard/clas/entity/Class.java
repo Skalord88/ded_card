@@ -28,6 +28,6 @@ public class Class {
     private String className;
     
     @NonNull
-    private String avatarClassUrl;
+    private String avatarUrl;
 
 }
