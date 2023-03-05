@@ -33,6 +33,16 @@
             "projectName": "ded_card",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DadcardApplication<dadcard>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "pl.kolendateam.dadcard.DadcardApplication",
+            "projectName": "dadcard",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
