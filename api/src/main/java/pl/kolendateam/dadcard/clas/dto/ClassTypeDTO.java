@@ -8,15 +8,16 @@ import lombok.NoArgsConstructor;
 public class ClassTypeDTO {
 
     public String classType;
+    public String avatarClassTypeUrl;
 
     public ArrayList<ClassDTO> classes;
 
     public ClassTypeBaseDTO(Class class){
-        this.avatarClassUrl = class.getAvatarUrl();
-        this.raceName = class.getRacesName();
-        SubRaceBaseDTO tempSubRace = new SubRaceBaseDTO(race);
-        this.subRaces = new ArrayList<SubRaceBaseDTO>();
-        this.subRaces.add(tempSubRace);
+        this.avatarClassTypeUrl = class.getAvatarUrl();
+        this.classType = class.getClassType();
+        ClassBaseDTO tempClass = new ClassBaseDTO(class);
+        this.classes = new ArrayList<ClassesBaseDTO>();
+        this.classes.add(tempClass);
     }
     
 }

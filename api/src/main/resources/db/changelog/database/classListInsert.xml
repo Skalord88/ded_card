@@ -1,0 +1,39 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="7" author="oscar">
+          <insert tableName="class">  
+              <column  name="class_type"  value="base class"/>  
+              <column  name="class_name"  value="barbarian"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>  
+          <insert tableName="class">  
+            <column  name="class_type"  value="base class"/>  
+            <column  name="class_name"  value="bard"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class">  
+            <column  name="class_type"  value="base class"/>  
+            <column  name="class_name"  value="cleric"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert> 
+          <insert tableName="class">  
+            <column  name="class_type"  value="base class"/>  
+            <column  name="class_name"  value="druid"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert> 
+          <insert tableName="class">  
+            <column  name="class_type"  value="base class"/>  
+            <column  name="class_name"  value="fighter"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert> 
+          <insert tableName="class">  
+            <column  name="class_type"  value="prestige class"/>  
+            <column  name="class_name"  value="archmage"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert> 
+  </changeSet>
+</databaseChangeLog>

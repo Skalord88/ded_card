@@ -1,11 +1,9 @@
 package pl.kolendateam.dadcard.clas.dto;
 
-
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class ClassDTO {
-
     public int id;
     public String className;
     public String avatarUrl;
