@@ -13,7 +13,7 @@ public class ClassCharacterDTO {
 
     public ClassCharacterDTO(ClassCharacter classCharacter){
         this.avatarUrl = classCharacter.getAvatarUrl();
-        this.classType = classCharacter.getType();
+        this.classType = classCharacter.getType().getTypeEnum();
         this.className = classCharacter.getName();
         this.id = classCharacter.getId();
     }
