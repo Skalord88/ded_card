@@ -6,32 +6,32 @@
 
   <changeSet id="7" author="oscar">
           <insert tableName="class_character">  
-              <column  name="type"  value="base class"/>  
+              <column  name="type"  value="BASE_CLASS"/>  
               <column  name="name"  value="barbarian"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>  
           <insert tableName="class_character">  
-            <column  name="type"  value="base class"/>  
+            <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="bard"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="base class"/>  
+            <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="cleric"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
           <insert tableName="class_character">  
-            <column  name="type"  value="base class"/>  
+            <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="druid"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
           <insert tableName="class_character">  
-            <column  name="type"  value="base class"/>  
+            <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="fighter"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
           <insert tableName="class_character">  
-            <column  name="type"  value="prestige class"/>  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="archmage"/>
             <column  name="avatar_url"  value="address value"/>
           </insert> 
