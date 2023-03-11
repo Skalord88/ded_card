@@ -41,5 +41,5 @@ public class Race {
         joinColumns = @JoinColumn(name = "race_id"),
         inverseJoinColumns = @JoinColumn(name = "region_id")
     )
-    Set<Region> availableRegions = new HashSet<>();;
+    Set<Region> availableRegions = new HashSet<>();
 }
