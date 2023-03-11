@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.race;
+package pl.kolendateam.dadcard.race.repository;
 
 import org.springframework.stereotype.Repository;
 

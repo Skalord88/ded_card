@@ -1,0 +1,423 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="7" author="damian">
+              <insert tableName="region">  
+                  <column  name="id"  value="1"/>
+                  <column  name="name"  value="Chult"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="2"/>
+                  <column  name="name"  value="Galena Mountains"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="3"/>
+                  <column  name="name"  value="Great Glacier"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="4"/>
+                  <column  name="name"  value="Great Rift"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="5"/>
+                  <column  name="name"  value="Oldonnar"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="6"/>
+                  <column  name="name"  value="Smoking Mountains"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="7"/>
+                  <column  name="name"  value="Spine of the World"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="8"/>
+                  <column  name="name"  value="Turmish"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="9"/>
+                  <column  name="name"  value="Underdark (Darklands)"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="10"/>
+                  <column  name="name"  value="Underdark (Earthroot)"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="11"/>
+                  <column  name="name"  value="Underdark (Northdark)"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="12"/>
+                  <column  name="name"  value="Underdark (Old Shanatar)"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="13"/>
+                  <column  name="name"  value="Waterdeep"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="14"/>
+                  <column  name="name"  value="Chondalwood"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="15"/>
+                  <column  name="name"  value="Cormanthor"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="16"/>
+                  <column  name="name"  value="Elf, Star"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="17"/>
+                  <column  name="name"  value="Elven Court"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="18"/>
+                  <column  name="name"  value="Evereska"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="19"/>
+                  <column  name="name"  value="Evermeet"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="20"/>
+                  <column  name="name"  value="Forest of Amtar"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="21"/>
+                  <column  name="name"  value="Forest of Lethyr"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="22"/>
+                  <column  name="name"  value="High Forest"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="23"/>
+                  <column  name="name"  value="Menzoberranyr"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="24"/>
+                  <column  name="name"  value="Misty Vale"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="25"/>
+                  <column  name="name"  value="Outer Sea, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="26"/>
+                  <column  name="name"  value="Sildeyuir"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="27"/>
+                  <column  name="name"  value="Silverymoon"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="28"/>
+                  <column  name="name"  value="Snow Eagle Aerie"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="29"/>
+                  <column  name="name"  value="Wealdath, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="30"/>
+                  <column  name="name"  value="Yuirwood, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="31"/>
+                  <column  name="name"  value="Great Dale"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="32"/>
+                  <column  name="name"  value="Lantan"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="33"/>
+                  <column  name="name"  value="Rathgaunt Hills"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="34"/>
+                  <column  name="name"  value="Western Heartlands"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="35"/>
+                  <column  name="name"  value="Aglarond"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="36"/>
+                  <column  name="name"  value="Dalelands"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="37"/>
+                  <column  name="name"  value="Dambrath"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="38"/>
+                  <column  name="name"  value="Amn"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="39"/>
+                  <column  name="name"  value="Calimshan"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="40"/>
+                  <column  name="name"  value="Channath Vale"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="41"/>
+                  <column  name="name"  value="Luiren"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="42"/>
+                  <column  name="name"  value="North, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="43"/>
+                  <column  name="name"  value="Altumbel"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="44"/>
+                  <column  name="name"  value="Anauroch"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="45"/>
+                  <column  name="name"  value="Chessenta"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="46"/>
+                  <column  name="name"  value="Cormyr"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="47"/>
+                  <column  name="name"  value="Damara"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="48"/>
+                  <column  name="name"  value="Dragon Coast"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="49"/>
+                  <column  name="name"  value="Endless Wastes"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="50"/>
+                  <column  name="name"  value="Golden Water"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="51"/>
+                  <column  name="name"  value="Halruaa"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="52"/>
+                  <column  name="name"  value="Hordelands"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="53"/>
+                  <column  name="name"  value="Impiltur"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="54"/>
+                  <column  name="name"  value="Lake of Mists"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="55"/>
+                  <column  name="name"  value="Lake of Steam"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="56"/>
+                  <column  name="name"  value="Lapaliiya"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="57"/>
+                  <column  name="name"  value="Moonsea"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="58"/>
+                  <column  name="name"  value="Moonshae Isles"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="59"/>
+                  <column  name="name"  value="Mulhorand"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="60"/>
+                  <column  name="name"  value="Narfell"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="61"/>
+                  <column  name="name"  value="Nelanther Isles"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="62"/>
+                  <column  name="name"  value="Rashemen"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="63"/>
+                  <column  name="name"  value="Ride, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="64"/>
+                  <column  name="name"  value="Samarach"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="65"/>
+                  <column  name="name"  value="Sembia"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="66"/>
+                  <column  name="name"  value="Shaar, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="67"/>
+                  <column  name="name"  value="Shadovar"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="68"/>
+                  <column  name="name"  value="Shou Expatriate"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="69"/>
+                  <column  name="name"  value="Swagdar"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="70"/>
+                  <column  name="name"  value="Sword Coast, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="71"/>
+                  <column  name="name"  value="Tashalar"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="72"/>
+                  <column  name="name"  value="Tethyr"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="73"/>
+                  <column  name="name"  value="Tharsult"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="74"/>
+                  <column  name="name"  value="Thay"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="75"/>
+                  <column  name="name"  value="Thesk"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="76"/>
+                  <column  name="name"  value="Thindol"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="77"/>
+                  <column  name="name"  value="Unther"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="78"/>
+                  <column  name="name"  value="Uthgardt Tribesfolk"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="79"/>
+                  <column  name="name"  value="Vaasa"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="80"/>
+                  <column  name="name"  value="Vast, The"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="81"/>
+                  <column  name="name"  value="Vilhon Reach"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="82"/>
+                  <column  name="name"  value="Wizard's Reach"/>
+              </insert> 
+      
+              <insert tableName="region">  
+                  <column  name="id"  value="83"/>
+                  <column  name="name"  value="Silver Marches"/>
+              </insert> 
+  </changeSet>
+</databaseChangeLog>
