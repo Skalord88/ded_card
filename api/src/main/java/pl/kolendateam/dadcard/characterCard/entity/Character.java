@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import org.json.JSONArray;
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
-import pl.kolendateam.dadcard.characterCard.dto.AbilityMapperDTO;
 
 @NoArgsConstructor
 @Getter
@@ -38,7 +35,6 @@ public class Character {
     private String subRaceName;
 
     @NonNull
-    @Type(type = "json")
     @Column(columnDefinition = "json")
     private Abilitys abilitys;
 
