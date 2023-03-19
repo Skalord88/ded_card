@@ -38,6 +38,8 @@ public class Character {
     private String subRaceName;
 
     @NonNull
-    private JSONArray ability;
+    @Type(type = "json")
+    @Column(columnDefinition = "json")
+    private Abilitys abilitys;
 
 }
