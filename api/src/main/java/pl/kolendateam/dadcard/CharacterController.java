@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.AbilityMapperDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CharactertAbilityDTO;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 
 @RestController
@@ -21,6 +21,8 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 public class CharacterController {
     
     CharacterRepository characterRepository;
+    CharactertAbilityDTO charactertAbilityDTO;
+
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository){
@@ -39,9 +41,11 @@ public class CharacterController {
                 HttpStatus.NOT_FOUND, "Character Not Found");
         }
 
-        Character character = characterOpt.get();  
-        
-        // brakuje mi wywołać character.ability i nadać jej JSONArray zrobioną w AbilityMapperDTO
+        Character character = characterOpt.get();
+
+        String ability = AbilityMapperDTO.toMapAbilityDTO(abilityDTO);     
+
+        charactertAbilityDTO.setAbilityDTO(ability);
 
         this.characterRepository.save(character);
 

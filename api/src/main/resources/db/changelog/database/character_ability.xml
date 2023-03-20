@@ -6,7 +6,7 @@
 
   <changeSet id="8" author="oscar">
       <addColumn tableName="character">
-        <column name="ability" type="varchar(255)">
+        <column name="ability_list" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
       </addColumn>

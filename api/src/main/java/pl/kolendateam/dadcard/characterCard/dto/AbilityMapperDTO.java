@@ -8,7 +8,7 @@ import pl.kolendateam.dadcard.characterCard.entity.AbilityEnum;
 
 public class AbilityMapperDTO {
 
-    public static JSONArray toMapAbilityDTO(AbilityDTO abilityDTO){
+    public static String toMapAbilityDTO(AbilityDTO abilityDTO){
 
         HashMap <AbilityEnum,Integer> abilityMap = new HashMap();
 
@@ -20,8 +20,9 @@ public class AbilityMapperDTO {
         abilityMap.put(AbilityEnum.CHARISMA, abilityDTO.charisma);
 
         JSONArray jsonAbilityMap = new JSONArray(abilityMap);
+        String jsonAbilityString = jsonAbilityMap.toString();
 
-        return jsonAbilityMap;
+        return jsonAbilityString;
 
     }
 }

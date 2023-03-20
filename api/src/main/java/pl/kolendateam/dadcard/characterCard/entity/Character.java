@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import org.json.JSONArray;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,8 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
-import pl.kolendateam.dadcard.characterCard.dto.AbilityMapperDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CharactertAbilityDTO;
 
 @NoArgsConstructor
 @Getter
@@ -32,12 +29,12 @@ public class Character {
     String playerName;
 
     @NonNull
-    private String raceName;
+    private String abilityList;
 
-    @NonNull
-    private String subRaceName;
+    public void setAbilityList(CharactertAbilityDTO ability){
 
-    @NonNull
-    private JSONArray ability;
+        this.abilityList = ability.getAbility();
+
+    }
 
 }
