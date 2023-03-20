@@ -1,5 +1,10 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+import org.hibernate.type.SqlTypes;
+
+import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+
 
 @NoArgsConstructor
 @Getter
@@ -28,14 +34,7 @@ public class Character {
     @NonNull
     String playerName;
 
-    @NonNull
-    private String raceName;
-
-    @NonNull
-    private String subRaceName;
-
-    @NonNull
-    @Column(columnDefinition = "json")
+    @JdbcTypeCode(SqlTypes.JSON)
     private Abilitys abilitys;
 
 }

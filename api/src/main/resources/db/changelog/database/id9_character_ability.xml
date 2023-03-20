@@ -6,8 +6,8 @@
 
   <changeSet id="9" author="oscar">
       <addColumn tableName="character">
-        <column name="ability" type="varchar(255)">
-          <constraints nullable="false"/>
+        <column name="abilitys" type="jsonb">
+          <constraints nullable="true"/>
         </column>
       </addColumn>
   </changeSet>
