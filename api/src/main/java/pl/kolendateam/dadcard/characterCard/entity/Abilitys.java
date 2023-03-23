@@ -8,10 +8,12 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Abilitys implements Serializable{
-    String streght;
-    String dextrity;
-    String constitution;
-    String intelligence;
-    String wisdom;
-    String charisma;
+        
+    int streght;
+    int dextrity;
+    int constitution;
+    int intelligence;
+    int wisdom;
+    int charisma;
+
 }

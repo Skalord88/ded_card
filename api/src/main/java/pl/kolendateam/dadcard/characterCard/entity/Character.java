@@ -1,11 +1,8 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 import org.hibernate.type.SqlTypes;
 
-import io.hypersistence.utils.hibernate.type.json.JsonType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

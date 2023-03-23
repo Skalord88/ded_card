@@ -1,20 +1,23 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("character-card")
@@ -26,6 +29,21 @@ public class CharacterController {
     @Autowired
     public CharacterController(CharacterRepository characterRepository){
         this.characterRepository = characterRepository;
+    }
+
+    @GetMapping(value = "{id}")
+    @ResponseBody
+    public Character getCharacter(@PathVariable int id){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+        return character;
     }
 
     @PostMapping(value="",consumes = {"application/json"})
@@ -49,16 +67,17 @@ public class CharacterController {
         }
 
         Character character = characterOpt.get();  
+
+        Abilitys abilitys = new Abilitys();
+
+            abilitys.setStreght(abilityDTO.streght);
+            abilitys.setDextrity(abilityDTO.dextrity);
+            abilitys.setConstitution(abilityDTO.constitution);
+            abilitys.setIntelligence(abilityDTO.intelligence);
+            abilitys.setWisdom(abilityDTO.wisdom);
+            abilitys.setCharisma(abilityDTO.charisma);
         
-       
-        Abilitys test = new Abilitys();
-        test.setStreght("5");
-        test.setDextrity("5");
-        test.setConstitution("5");
-        test.setIntelligence("5");
-        test.setWisdom("5");
-        test.setCharisma("5");
-        character.setAbilitys(test);
+        character.setAbilitys(abilitys);
 
         this.characterRepository.save(character);
 
