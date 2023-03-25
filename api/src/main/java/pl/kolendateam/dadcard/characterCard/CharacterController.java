@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -47,7 +48,7 @@ public class CharacterController {
     }
 
     @PostMapping(value="",consumes = {"application/json"})
-    public Character create(@RequestBody CharacterDTO characterDTO){
+    public Character create(@RequestBody CreateCharacterDTO characterDTO){
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         this.characterRepository.save(character);
@@ -57,7 +58,7 @@ public class CharacterController {
 
 
     @PostMapping(value="{id}/ability",consumes = {"application/json"})
-    public Character setCharacterAbility(@PathVariable int id, @RequestBody AbilityDTO abilityDTO){
+    public CharacterDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilityDTO abilityDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -70,19 +71,18 @@ public class CharacterController {
 
         Abilitys abilitys = new Abilitys();
 
-            abilitys.setStreght(abilityDTO.streght);
-            abilitys.setDextrity(abilityDTO.dextrity);
-            abilitys.setConstitution(abilityDTO.constitution);
-            abilitys.setIntelligence(abilityDTO.intelligence);
-            abilitys.setWisdom(abilityDTO.wisdom);
-            abilitys.setCharisma(abilityDTO.charisma);
+        abilitys.setStreght(abilityDTO.streght);
+        abilitys.setDextrity(abilityDTO.dextrity);
+        abilitys.setConstitution(abilityDTO.constitution);
+        abilitys.setIntelligence(abilityDTO.intelligence);
+        abilitys.setWisdom(abilityDTO.wisdom);
+        abilitys.setCharisma(abilityDTO.charisma);
         
         character.setAbilitys(abilitys);
 
         this.characterRepository.save(character);
 
-        return character;
-
+        return new CharacterDTO(character);
     }
 
 }
