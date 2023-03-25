@@ -4,16 +4,21 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-
-  <changeSet id="3" author="damian">
-      <createTable tableName="character">
+  <changeSet id="6" author="damian">
+      <createTable tableName="region">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
-        <column name="character_name" type="varchar(255)">
+        <column name="name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="player_name" type="varchar(255)">
+      </createTable>
+
+     <createTable tableName="race_region">
+        <column name="race_id" type="int">
+          <constraints nullable="false"/>
+        </column>
+        <column name="region_id" type="int">
           <constraints nullable="false"/>
         </column>
       </createTable>

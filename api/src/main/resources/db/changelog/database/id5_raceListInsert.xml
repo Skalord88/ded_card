@@ -6,19 +6,148 @@
 
   <changeSet id="5" author="damian">
           <insert tableName="race">  
-              <column  name="races_name"  value="elf"/>  
-              <column  name="sub_race_name"  value="księżycowe elfy"/>
+              <column  name="id"  value="1"/> 
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Calishite"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>  
+          <insert tableName="race">
+              <column  name="id"  value="2"/>  
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Chondathan"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert> 
           <insert tableName="race">  
-              <column  name="races_name"  value="elf"/>  
-              <column  name="sub_race_name"  value="sloneczny elfy"/>
-              <column  name="avatar_url"  value="address value2"/>
-          </insert>  
+              <column  name="id"  value="3"/>
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Damara"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert> 
+          <insert tableName="race"> 
+          <column  name="id"  value="4"/> 
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Mulan"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race"> 
+          <column  name="id"  value="5"/> 
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Rashemi"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race"> 
+          <column  name="id"  value="6"/> 
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Tethyrian"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
           <insert tableName="race">  
-              <column  name="races_name"  value="ork"/>  
-              <column  name="sub_race_name"  value="krwawy ork"/>
-              <column  name="avatar_url"  value="address value2"/>
+          <column  name="id"  value="7"/>
+              <column  name="races_name"  value="Dwarf"/>  
+              <column  name="sub_race_name"  value="gold"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="8"/>
+              <column  name="races_name"  value="Dwarf"/>  
+              <column  name="sub_race_name"  value="gray"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="9"/>
+              <column  name="races_name"  value="Dwarf"/>  
+              <column  name="sub_race_name"  value="shield"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race"> 
+          <column  name="id"  value="10"/> 
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="drow"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="11"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="moon"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="12"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="sun"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="13"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="wild"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="14"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="wood"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="15"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="Half-elf"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="16"/>
+              <column  name="races_name"  value="Elf"/>  
+              <column  name="sub_race_name"  value="Half-elf drow"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="17"/>
+              <column  name="races_name"  value="Gnome"/>  
+              <column  name="sub_race_name"  value="deep"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">
+          <column  name="id"  value="18"/>
+              <column  name="races_name"  value="Gnome"/>  
+              <column  name="sub_race_name"  value="rock"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race"> 
+          <column  name="id"  value="19"/> 
+              <column  name="races_name"  value="Halfling"/>  
+              <column  name="sub_race_name"  value="other"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">
+          <column  name="id"  value="20"/>  
+              <column  name="races_name"  value="Orc"/>  
+              <column  name="sub_race_name"  value="Gray"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">
+          <column  name="id"  value="21"/>  
+              <column  name="races_name"  value="Orc"/>  
+              <column  name="sub_race_name"  value="Half-orc"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="22"/>
+              <column  name="races_name"  value="Orc"/>  
+              <column  name="sub_race_name"  value="Mountain"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="23"/>
+              <column  name="races_name"  value="Orc"/>  
+              <column  name="sub_race_name"  value="Orog"/>
+              <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="race">  
+          <column  name="id"  value="24"/>
+              <column  name="races_name"  value="Human"/>  
+              <column  name="sub_race_name"  value="Illuskan"/>
+              <column  name="avatar_url"  value="address value"/>
           </insert> 
   </changeSet>
 </databaseChangeLog>
