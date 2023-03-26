@@ -3,9 +3,11 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 
+@Setter
 @NoArgsConstructor
 public class CharacterDTO {
     public String characterName;
