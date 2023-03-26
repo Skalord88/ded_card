@@ -16,7 +16,7 @@
         <column name="player_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="class_pg" type="varchar(255)">
+        <column name="class_pg" type="jsonb">
           <constraints nullable="false"/>
         </column>
       </createTable>

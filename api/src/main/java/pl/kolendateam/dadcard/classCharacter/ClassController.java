@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
 @RestController
 @RequestMapping("class")

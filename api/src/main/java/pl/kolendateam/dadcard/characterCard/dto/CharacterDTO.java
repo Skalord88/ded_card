@@ -1,6 +1,9 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 
+import org.apache.commons.lang3.ObjectUtils.Null;
+
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 
