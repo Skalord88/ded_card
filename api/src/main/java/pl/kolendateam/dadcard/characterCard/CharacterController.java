@@ -1,25 +1,35 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.classCharacter.ClassRepository;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 
 @RestController
 @RequestMapping("character-card")
 public class CharacterController {
     
-
+    ClassRepository classRepository;
     CharacterRepository characterRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository){
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository){
         this.characterRepository = characterRepository;
+        this.classRepository = classRepository;
     }
 
     @PostMapping(value="",consumes = {"application/json"})
@@ -29,6 +39,39 @@ public class CharacterController {
         this.characterRepository.save(character);
 
         return character;
+    }
+
+    @PostMapping(value="{id}/class",consumes = {"application/json"})
+    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassCharacterDTO classCharacterDTO){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+        
+        Optional<ClassCharacter> classOpt = this.classRepository.findByNameEquals(classCharacterDTO.className);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Class Not Found");
+        } 
+
+        ClassCharacter classCharacter = classOpt.get();
+
+        ClassPg classPg = new ClassPg();
+
+        classPg.setName(classCharacter.getName());
+        classPg.setId(classCharacter.getId());
+        
+        character.setClassPg(classPg);
+
+        this.characterRepository.save(character);
+
+        return new CharacterDTO(character);
     }
 
 }

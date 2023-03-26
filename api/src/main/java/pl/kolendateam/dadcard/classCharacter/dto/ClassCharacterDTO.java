@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.classCharacter.dto;
 
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 
