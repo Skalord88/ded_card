@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import java.util.ArrayList;
+
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 
 @NoArgsConstructor
@@ -32,6 +35,6 @@ public class Character {
     String playerName;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    private ClassPg classPg;
+    ArrayList <ClassPg> classPg;
     
 }

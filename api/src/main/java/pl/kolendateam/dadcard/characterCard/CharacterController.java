@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.dto.CreateDTO;
+import pl.kolendateam.dadcard.characterCard.dto.MapperListClassPgToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.classCharacter.MaperListClassToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
 @RestController
-@RequestMapping("character")
+@RequestMapping("character-card")
 public class CharacterController {
     
     ClassRepository classRepository;
@@ -37,14 +41,13 @@ public class CharacterController {
     public CharacterDTO create(@RequestBody CharacterDTO characterDTO){
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
-        character.setClassPg(null);
         this.characterRepository.save(character);
 
-        return new CharacterDTO(character);
+        return characterDTO;
     }
 
     @PostMapping(value="{id}/class",consumes = {"application/json"})
-    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassCharacterDTO classCharacterDTO){
+    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPgDTO classPgDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -55,7 +58,8 @@ public class CharacterController {
 
         Character character = characterOpt.get();
         
-        Optional<ClassCharacter> classOpt = this.classRepository.findByNameEquals(classCharacterDTO.className);
+        Optional <ClassCharacter> classOpt = this.classRepository.findByName(classPgDTO.className);
+        // Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -63,17 +67,23 @@ public class CharacterController {
         } 
 
         ClassCharacter classCharacter = classOpt.get();
+        ArrayList <ClassPg> classPgList = new ArrayList<ClassPg>();
 
-        ClassPg classPg = new ClassPg();
+        ClassPg classPg = new ClassPg();     
 
         classPg.setName(classCharacter.getName());
         classPg.setId(classCharacter.getId());
+
+        for (ClassPg x : classPgList){
+            classPgList.add(x);
+        }
         
-        character.setClassPg(classPg);
+        character.setClassPg(classPgList);
 
         this.characterRepository.save(character);
 
-        return new CharacterDTO(character);
+        return new CharacterDTO (character);
+
     }
 
 }
