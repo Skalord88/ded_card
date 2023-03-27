@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+
 
 @NoArgsConstructor
 @Getter
@@ -26,7 +26,7 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    public int id;
 
     @NonNull
     String characterName;
@@ -35,6 +35,6 @@ public class Character {
     String playerName;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList <ClassPg> classPg;
-    
+    ArrayList <ClassPg> classPgArray;
+
 }

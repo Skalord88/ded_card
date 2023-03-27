@@ -8,8 +8,10 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ClassPg implements Serializable{
-
+    
     int id;
     String name;
+    int level;
+
     
 }

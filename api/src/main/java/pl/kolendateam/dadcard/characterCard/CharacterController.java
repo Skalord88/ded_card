@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.dto.MapperListClassPgToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.classCharacter.MaperListClassToDTO;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
@@ -67,23 +63,20 @@ public class CharacterController {
         } 
 
         ClassCharacter classCharacter = classOpt.get();
-        ArrayList <ClassPg> classPgList = new ArrayList<ClassPg>();
+        
+        for (ClassPg classPg : character.getClassPgArray()){
 
-        ClassPg classPg = new ClassPg();     
+            classPg.setName(classCharacter.getName());
+            classPg.setId(classCharacter.getId());
+            classPg.setLevel(1);
 
-        classPg.setName(classCharacter.getName());
-        classPg.setId(classCharacter.getId());
+            character.getClassPgArray().add(classPg);
 
-        for (ClassPg x : classPgList){
-            classPgList.add(x);
         }
         
-        character.setClassPg(classPgList);
-
         this.characterRepository.save(character);
-
+        
         return new CharacterDTO (character);
 
     }
-
 }
