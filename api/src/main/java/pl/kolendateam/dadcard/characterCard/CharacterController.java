@@ -63,20 +63,54 @@ public class CharacterController {
         } 
 
         ClassCharacter classCharacter = classOpt.get();
-        
-        for (ClassPg classPg : character.getClassPgArray()){
 
-            classPg.setName(classCharacter.getName());
-            classPg.setId(classCharacter.getId());
-            classPg.setLevel(1);
+        ArrayList <ClassPg> classPgList = new ArrayList<>();
 
-            character.getClassPgArray().add(classPg);
+            for (ClassPg classList : classPgList){
 
-        }
+                if(!classPgDTO.className.equals(classList.getName())){
+
+                    ClassPg clPg = new ClassPg();
+                    clPg.setName(classCharacter.getName());
+                    clPg.setId(classCharacter.getId());
+                    clPg.setLevel(1);
+                
+                    classPgList.add(clPg);
+
+                    character.setClassPgArray(classPgList);
+
+                } else {
+
+                    classList.setLevel(+1);
+                    
+                }
+
+            }
+
+        // ClassPg clPg = new ClassPg();
+
+        // clPg.setName(classCharacter.getName());
+        // clPg.setId(classCharacter.getId());
+        // clPg.setLevel(1);
+
+        // classPgList.add(clPg);
+
+        // for (ClassPg classList : character.getClassPgArray()){
+
+        //     ClassPg clPg = new ClassPg();
+
+        //     clPg.setName(classCharacter.getName());
+        //     clPg.setId(classCharacter.getId());
+        //     clPg.setLevel(1);
+
+        //     character.getClassPgArray().add(clPg);
+
+        // }
         
         this.characterRepository.save(character);
         
         return new CharacterDTO (character);
 
     }
+
 }

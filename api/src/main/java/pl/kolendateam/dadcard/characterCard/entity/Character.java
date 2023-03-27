@@ -34,6 +34,9 @@ public class Character {
     @NonNull
     String playerName;
 
+    // @JdbcTypeCode(SqlTypes.JSON)
+    // ClassPg classPg;
+
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList <ClassPg> classPgArray;
 

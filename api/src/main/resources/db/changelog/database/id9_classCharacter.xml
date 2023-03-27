@@ -6,6 +6,9 @@
 
   <changeSet id="9" author="oscar">
       <addColumn tableName="character">
+        <!-- <column name="class_pg" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
         <column name="class_pg_array" type="jsonb">
           <constraints nullable="true"/>
         </column>

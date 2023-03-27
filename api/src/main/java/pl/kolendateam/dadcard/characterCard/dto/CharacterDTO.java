@@ -10,12 +10,14 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 public class CharacterDTO {
     public String characterName;
     public String playerName;
-    public ArrayList <ClassPg> classPg;
+    // public ClassPg classPg;
+    public ArrayList <ClassPg> classPgList;
 
     public CharacterDTO(Character character){
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
-        this.classPg = character.getGetClassPgArray();
+        // this.classPg = character.getClassPg();
+        this.classPgList = character.getClassPgArray();
     }
     
 }

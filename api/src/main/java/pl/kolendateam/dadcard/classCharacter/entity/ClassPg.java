@@ -12,6 +12,5 @@ public class ClassPg implements Serializable{
     int id;
     String name;
     int level;
-
     
 }
