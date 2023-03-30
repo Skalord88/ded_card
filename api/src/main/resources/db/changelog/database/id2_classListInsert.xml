@@ -29,11 +29,111 @@
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="fighter"/>
             <column  name="avatar_url"  value="address value"/>
-          </insert> 
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="monk"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="paladin"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="ranger"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="rougue"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="sorcer"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="BASE_CLASS"/>  
+            <column  name="name"  value="wizard"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="arcane archer"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="arcane trickster"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>  
           <insert tableName="class_character">  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="archmage"/>
             <column  name="avatar_url"  value="address value"/>
-          </insert> 
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="assassin"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="blackguard"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="dragon discipline"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="duelist"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="dwarven defender"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="eldritch knight"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="hierophant"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="horizon walker"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="loremaster"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="mystic theurge"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="shadowdancer"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="thaumaturgist"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>            
   </changeSet>
 </databaseChangeLog>
