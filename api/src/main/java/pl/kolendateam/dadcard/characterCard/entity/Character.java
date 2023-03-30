@@ -39,10 +39,6 @@ public class Character {
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList <ClassPg> classPgArray;
-
-    public ArrayList <ClassPg> getClassPgArray(){
-        return this.classPgArray;
-    }
     
     public void addClassToPgArray(ClassPg classPg) {
         this.classPgArray.add(classPg);
