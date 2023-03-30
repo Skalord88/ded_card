@@ -21,7 +21,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 @Getter
 @Setter
 @Entity
-@RequiredArgsConstructor
 public class Character {
 
     @Id
@@ -34,14 +33,22 @@ public class Character {
     @NonNull
     String playerName;
 
-    // @JdbcTypeCode(SqlTypes.JSON)
-    // ClassPg classPg;
-
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList <ClassPg> classPgArray;
+    ArrayList<ClassPg> classPgArray;
+
+    public Character(String characterName, String playerName){
+        this.characterName = characterName;
+        this.playerName = playerName;
+        this.classPgArray = new ArrayList<>();
+    }
+
     
     public void addClassToPgArray(ClassPg classPg) {
         this.classPgArray.add(classPg);
+    }
+
+    public void incrementLevelClassForIndex(int index){
+        this.getClassPgArray().get(index).incrementLevel();
     }
    
 }

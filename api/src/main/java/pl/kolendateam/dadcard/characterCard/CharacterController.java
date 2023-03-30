@@ -54,10 +54,10 @@ public class CharacterController {
 
         Character character = characterOpt.get();
         
-        Optional <ClassCharacter> classOpt = this.classRepository.findByName(classPgDTO.className);
-        // Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
 
-        if(!characterOpt.isPresent()){
+        Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
+
+        if(!classOpt.isPresent()){
             throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Class Not Found");
         } 
@@ -65,26 +65,15 @@ public class CharacterController {
         ClassCharacter classCharacter = classOpt.get();
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
-                
-        for (ClassPg classList : classPgList){
-            boolean skipClassPg = false;
-            
-            if(classPgDTO.className.equals(classList.getName())){
-                classList.setLevel(+1);
-                skipClassPg = true;
-            }
-            
-            if(!skipClassPg){
-                
-                ClassPg clPg = new ClassPg();
-                clPg.setName(classCharacter.getName());
-                clPg.setId(classCharacter.getId());
-                clPg.setLevel(1);
-                character.addClassToPgArray(clPg);
 
-            }
-            
-        }
+        ClassPg clPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1); 
+        int indexClassInDB = clPg.findIndexInArrayById(classPgList);
+
+        if(indexClassInDB == -1){
+            character.addClassToPgArray(clPg);
+        }else{
+            character.incrementLevelClassForIndex(indexClassInDB);
+        }     
         
         this.characterRepository.save(character);
         return new CharacterDTO (character);
