@@ -64,53 +64,29 @@ public class CharacterController {
 
         ClassCharacter classCharacter = classOpt.get();
 
-        ArrayList <ClassPg> classPgList = new ArrayList<>();
-
-            for (ClassPg classList : classPgList){
-
-                if(!classPgDTO.className.equals(classList.getName())){
-
-                    ClassPg clPg = new ClassPg();
-                    clPg.setName(classCharacter.getName());
-                    clPg.setId(classCharacter.getId());
-                    clPg.setLevel(1);
+        ArrayList<ClassPg> classPgList = character.getClassPgArray();
                 
-                    classPgList.add(clPg);
-
-                    character.setClassPgArray(classPgList);
-
-                } else {
-
-                    classList.setLevel(+1);
-                    
-                }
+        for (ClassPg classList : classPgList){
+            boolean skipClassPg = false;
+            
+            if(classPgDTO.className.equals(classList.getName())){
+                classList.setLevel(+1);
+                skipClassPg = true;
+            }
+            
+            if(!skipClassPg){
+                
+                ClassPg clPg = new ClassPg();
+                clPg.setName(classCharacter.getName());
+                clPg.setId(classCharacter.getId());
+                clPg.setLevel(1);
+                character.addClassToPgArray(clPg);
 
             }
-
-        // ClassPg clPg = new ClassPg();
-
-        // clPg.setName(classCharacter.getName());
-        // clPg.setId(classCharacter.getId());
-        // clPg.setLevel(1);
-
-        // classPgList.add(clPg);
-
-        // for (ClassPg classList : character.getClassPgArray()){
-
-        //     ClassPg clPg = new ClassPg();
-
-        //     clPg.setName(classCharacter.getName());
-        //     clPg.setId(classCharacter.getId());
-        //     clPg.setLevel(1);
-
-        //     character.getClassPgArray().add(clPg);
-
-        // }
+            
+        }
         
         this.characterRepository.save(character);
-        
         return new CharacterDTO (character);
-
     }
-
 }
