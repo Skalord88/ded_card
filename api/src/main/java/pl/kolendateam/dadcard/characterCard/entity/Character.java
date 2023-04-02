@@ -12,9 +12,9 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 
 
 @NoArgsConstructor
@@ -36,12 +36,17 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPg> classPgArray;
 
+    int lep;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    SavingThrow savingThrow;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPgArray = new ArrayList<>();
+        this.savingThrow = new SavingThrow();
     }
-
     
     public void addClassToPgArray(ClassPg classPg) {
         this.classPgArray.add(classPg);
@@ -50,5 +55,31 @@ public class Character {
     public void incrementLevelClassForIndex(int index){
         this.getClassPgArray().get(index).incrementLevel();
     }
-   
+
+    public void incrementLep(){
+        this.lep +=1;
+    }
+
+    public void addSavingThrow(String stringSavingThrow){
+
+        SavingThrow sThrow = new SavingThrow();
+
+        int fortitude = sThrow.calculateFortitude(stringSavingThrow);
+        this.savingThrow.setFortitude(+fortitude);
+
+        int reflex = sThrow.calculateReflex(stringSavingThrow);
+        this.savingThrow.setReflex(+reflex);
+        
+        int will = sThrow.calculateWill(stringSavingThrow);
+        this.savingThrow.setWill(+will);
+
+    }
+
+    public void incrementSavingThrow(){
+        double sT = this.lep-1 * 0.5;
+        this.savingThrow.setFortitude(+(int)sT);
+        this.savingThrow.setReflex(+(int)sT);
+        this.savingThrow.setWill(+(int)sT);
+    }
+
 }

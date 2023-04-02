@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,14 @@ public class CharacterController {
     public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository){
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
+    }
+
+    @GetMapping(value="{id}")
+    public CharacterDTO show(@PathVariable int id){
+        
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        return new CharacterDTO (characterOpt.get());
     }
 
     @PostMapping(value="",consumes = {"application/json"})
@@ -66,16 +75,21 @@ public class CharacterController {
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
-        ClassPg clPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1); 
-        int indexClassInDB = clPg.findIndexInArrayById(classPgList);
+        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow()); 
+        int indexClassInDB = classPg.findIndexInArrayById(classPgList);
+        String stringSavingThrow = classPg.getSavingThrow();
 
         if(indexClassInDB == -1){
-            character.addClassToPgArray(clPg);
+            character.addClassToPgArray(classPg);
+            character.addSavingThrow(stringSavingThrow);           
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
-        }     
-        
+            character.incrementSavingThrow();
+        }
+
         this.characterRepository.save(character);
         return new CharacterDTO (character);
     }
+
+
 }

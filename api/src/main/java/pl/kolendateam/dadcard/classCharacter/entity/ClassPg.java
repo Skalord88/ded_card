@@ -17,7 +17,7 @@ public class ClassPg implements Serializable{
     int id;
     String name;
     int level;
-
+    String savingThrow;
 
     public void incrementLevel(){
         this.level +=1;
@@ -32,4 +32,5 @@ public class ClassPg implements Serializable{
 
         return -1;
     }
+
 }
