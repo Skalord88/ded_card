@@ -45,7 +45,7 @@ public class Character {
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPgArray = new ArrayList<>();
-        this.savingThrow = new SavingThrow();
+        // this.savingThrow = new SavingThrow();
     }
     
     public void addClassToPgArray(ClassPg classPg) {
@@ -60,26 +60,28 @@ public class Character {
         this.lep +=1;
     }
 
-    public void addSavingThrow(String stringSavingThrow){
-
-        SavingThrow sThrow = new SavingThrow();
-
-        int fortitude = sThrow.calculateFortitude(stringSavingThrow);
-        this.savingThrow.setFortitude(+fortitude);
-
-        int reflex = sThrow.calculateReflex(stringSavingThrow);
-        this.savingThrow.setReflex(+reflex);
-        
-        int will = sThrow.calculateWill(stringSavingThrow);
-        this.savingThrow.setWill(+will);
-
+    public double incST(String stringSavingThrow){
+        double bonus;
+        if(stringSavingThrow.charAt(0) == 'h'){
+            bonus = 2.5;
+        } else{
+            bonus = 0;
+        } return bonus;
     }
 
-    public void incrementSavingThrow(){
-        double sT = this.lep-1 * 0.5;
-        this.savingThrow.setFortitude(+(int)sT);
-        this.savingThrow.setReflex(+(int)sT);
-        this.savingThrow.setWill(+(int)sT);
+    public void addSavingThrow(ClassPg classPg){
+        if (classPg.getLevel()==1){
+            String stringSavingThrow = classPg.getSavingThrow();
+            double fortitude = this.getSavingThrow().getFortitude();
+            double bonus;
+            if(stringSavingThrow.charAt(0) == 'h'){
+                bonus = 2.5;
+            } else{bonus = 0;}
+            fortitude =+ bonus;
+            this.savingThrow.setFortitude(fortitude);
+        }else{
+            this.getSavingThrow().incrementSavingThrow();
+        }
     }
 
 }

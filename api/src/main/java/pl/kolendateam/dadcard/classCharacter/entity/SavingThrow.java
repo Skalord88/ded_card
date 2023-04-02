@@ -1,50 +1,58 @@
 package pl.kolendateam.dadcard.classCharacter.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @Setter
 @Getter
 @NoArgsConstructor
 public class SavingThrow {
 
-    int fortitude;
-    int reflex;
-    int will;
+    int fortitudeInt;
+    double fortitude;
+    int reflexInt;
+    double reflex;
+    int willInt;
+    double will;
 
-
-    public int calculateFortitude(String sT){
-
-            if(sT.charAt(0)=='h'){
-                fortitude = 2;
-            } else{
-                fortitude = 0;
-            }
-        return fortitude;
+    public SavingThrow(double fortitude, double reflex, double will) {
+        this.fortitude = fortitude;
+        this.reflex = reflex;
+        this.will = will;
     }
 
-    public int calculateReflex(String sT){
-
-            if(sT.charAt(1)=='h'){
-                reflex = 2;
-            } else{
-                reflex = 0;
-            }
-        return reflex;
+    public void incrementSavingThrow(){
+        this.fortitude =+0.5;
+        this.reflex =+0.5;
+        this.will =+0.5;
     }
 
-    public int calculateWill(String sT){
+    public void calculateFortitude(String stringSavingThrow){
+        if(stringSavingThrow.charAt(0)=='h'){
+            this.fortitude =+ 2.5;
+        } else{
+            this.fortitude =+ 0;
+        }
+        this.fortitudeInt = (int)this.fortitude; 
+    }
 
+    public void calculateReflex(String stringSavingThrow){
+        if(stringSavingThrow.charAt(1)=='h'){
+            this.reflex =+ 2.5;
+        } else{
+            this.reflex =+ 0;
+        } 
+        this.reflexInt = (int)this.reflex;
+    }
 
-            if(sT.charAt(2)=='h'){
-                will = 2;
-            } else{
-                will = 0;
-            }
-        return will;
+    public void calculateWill(String stringSavingThrow){
+        if(stringSavingThrow.charAt(2)=='h'){
+            this.will =+ 2.5;
+        } else{
+            this.will =+ 0;
+        }
+        this.willInt = (int)this.will;
     }
     
 }

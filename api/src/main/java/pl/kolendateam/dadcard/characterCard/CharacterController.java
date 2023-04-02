@@ -19,6 +19,7 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
 @RestController
@@ -62,7 +63,8 @@ public class CharacterController {
         }
 
         Character character = characterOpt.get();
-        
+        SavingThrow savingThrow = new SavingThrow(0,0,0);
+        character.setSavingThrow(savingThrow);
 
         Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
 
@@ -77,16 +79,14 @@ public class CharacterController {
 
         ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow()); 
         int indexClassInDB = classPg.findIndexInArrayById(classPgList);
-        String stringSavingThrow = classPg.getSavingThrow();
 
         if(indexClassInDB == -1){
-            character.addClassToPgArray(classPg);
-            character.addSavingThrow(stringSavingThrow);           
+            character.addClassToPgArray(classPg);           
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
-            character.incrementSavingThrow();
         }
-
+        character.incrementLep();
+        character.addSavingThrow(classPg);
         this.characterRepository.save(character);
         return new CharacterDTO (character);
     }

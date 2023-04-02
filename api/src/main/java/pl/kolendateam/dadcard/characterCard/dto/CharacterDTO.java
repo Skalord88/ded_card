@@ -3,10 +3,10 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPgListToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgListDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @NoArgsConstructor
 public class CharacterDTO {
