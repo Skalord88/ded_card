@@ -45,7 +45,7 @@ public class Character {
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPgArray = new ArrayList<>();
-        // this.savingThrow = new SavingThrow();
+        this.savingThrow = new SavingThrow();
     }
     
     public void addClassToPgArray(ClassPg classPg) {
@@ -60,28 +60,37 @@ public class Character {
         this.lep +=1;
     }
 
-    public double incST(String stringSavingThrow){
-        double bonus;
-        if(stringSavingThrow.charAt(0) == 'h'){
-            bonus = 2.5;
-        } else{
-            bonus = 0;
-        } return bonus;
-    }
+    public void addSTLevelOne(ClassPg classPg){
 
-    public void addSavingThrow(ClassPg classPg){
-        if (classPg.getLevel()==1){
-            String stringSavingThrow = classPg.getSavingThrow();
-            double fortitude = this.getSavingThrow().getFortitude();
+        String stringSavingThrow = classPg.getSavingThrow();
+
             double bonus;
             if(stringSavingThrow.charAt(0) == 'h'){
                 bonus = 2.5;
             } else{bonus = 0;}
-            fortitude =+ bonus;
-            this.savingThrow.setFortitude(fortitude);
-        }else{
-            this.getSavingThrow().incrementSavingThrow();
-        }
-    }
+            this.getSavingThrow().addSTFortitude(bonus);
 
+            if(stringSavingThrow.charAt(1) == 'h'){
+                bonus = 2.5;
+            } else{bonus = 0;}
+            this.getSavingThrow().addSTReflex(bonus);
+
+            if(stringSavingThrow.charAt(2) == 'h'){
+                bonus = 2.5;
+            } else{bonus = 0;}
+            this.getSavingThrow().addSTWill(bonus);            
+        }
+
+    public void incementST() {
+        this.getSavingThrow().incementSTFortitude();
+        this.getSavingThrow().incementSTReflex();
+        this.getSavingThrow().incementSTWill();
+    }
+    
+
+
+
+    // this.savingThrow.setFortitude(savingThrow.getFortitude()+0.5);
+    //         this.savingThrow.setReflex(savingThrow.getReflex()+0.5);
+    //         this.savingThrow.setWill(savingThrow.getWill()+0.5);
 }

@@ -22,37 +22,27 @@ public class SavingThrow {
         this.will = will;
     }
 
-    public void incrementSavingThrow(){
-        this.fortitude =+0.5;
-        this.reflex =+0.5;
-        this.will =+0.5;
+    public void addSTFortitude(double bonus){
+        this.fortitude =+ bonus;
     }
 
-    public void calculateFortitude(String stringSavingThrow){
-        if(stringSavingThrow.charAt(0)=='h'){
-            this.fortitude =+ 2.5;
-        } else{
-            this.fortitude =+ 0;
-        }
-        this.fortitudeInt = (int)this.fortitude; 
+    public void incementSTFortitude(){
+        this.fortitude =+ 0.5;
     }
 
-    public void calculateReflex(String stringSavingThrow){
-        if(stringSavingThrow.charAt(1)=='h'){
-            this.reflex =+ 2.5;
-        } else{
-            this.reflex =+ 0;
-        } 
-        this.reflexInt = (int)this.reflex;
+    public void addSTReflex(double bonus){
+        this.reflex =+ bonus;
     }
 
-    public void calculateWill(String stringSavingThrow){
-        if(stringSavingThrow.charAt(2)=='h'){
-            this.will =+ 2.5;
-        } else{
-            this.will =+ 0;
-        }
-        this.willInt = (int)this.will;
+    public void incementSTReflex(){
+        this.reflex =+ 0.5;
     }
-    
+
+    public void addSTWill(double bonus){
+        this.will =+ bonus;
+    }
+
+    public void incementSTWill(){
+        this.will =+ 0.5;
+    }
 }

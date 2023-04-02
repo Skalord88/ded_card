@@ -28,9 +28,15 @@ public class ClassPg implements Serializable{
             if(this.id == classPgList.get(i).getId()){
                 return i;
             }  
-        }
+        }return -1;
+    }
 
-        return -1;
+    public int findClassLevelById(ArrayList<ClassPg> classPgList){
+        for(int i = 0; i < classPgList.size(); i++) {
+            if(this.id == classPgList.get(i).getLevel()){
+                return i;
+            }  
+        } return 0;  
     }
 
 }

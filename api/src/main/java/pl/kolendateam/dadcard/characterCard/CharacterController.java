@@ -47,6 +47,10 @@ public class CharacterController {
     public CharacterDTO create(@RequestBody CharacterDTO characterDTO){
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
+        SavingThrow savingThrow = new SavingThrow(0, 0, 0);
+
+        character.setSavingThrow(savingThrow);
+
         this.characterRepository.save(character);
 
         return characterDTO;
@@ -63,8 +67,6 @@ public class CharacterController {
         }
 
         Character character = characterOpt.get();
-        SavingThrow savingThrow = new SavingThrow(0,0,0);
-        character.setSavingThrow(savingThrow);
 
         Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
 
@@ -85,8 +87,17 @@ public class CharacterController {
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
         }
+
+        int levelClass = classPg.getLevel();
+
+        if(levelClass == 1){
+            character.addSTLevelOne(classPg);
+        }else{
+            character.incementST();
+        }
+    
         character.incrementLep();
-        character.addSavingThrow(classPg);
+        
         this.characterRepository.save(character);
         return new CharacterDTO (character);
     }
