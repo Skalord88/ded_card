@@ -9,11 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SavingThrow {
 
-    int fortitudeInt;
     double fortitude;
-    int reflexInt;
     double reflex;
-    int willInt;
     double will;
 
     public SavingThrow(double fortitude, double reflex, double will) {
