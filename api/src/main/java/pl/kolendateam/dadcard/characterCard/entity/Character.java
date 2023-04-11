@@ -15,6 +15,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
+import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 
 @NoArgsConstructor
@@ -41,11 +42,15 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    ClassSkills classSkills;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPgArray = new ArrayList<>();
         this.savingThrow = new SavingThrow();
+        this.classSkills = new ClassSkills();
     }
     
     public void addClassToPgArray(ClassPg classPg) {
@@ -86,11 +91,4 @@ public class Character {
         this.getSavingThrow().incementSTReflex();
         this.getSavingThrow().incementSTWill();
     }
-    
-
-
-
-    // this.savingThrow.setFortitude(savingThrow.getFortitude()+0.5);
-    //         this.savingThrow.setReflex(savingThrow.getReflex()+0.5);
-    //         this.savingThrow.setWill(savingThrow.getWill()+0.5);
 }

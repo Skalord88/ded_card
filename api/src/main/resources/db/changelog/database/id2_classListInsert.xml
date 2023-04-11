@@ -5,85 +5,99 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="2" author="oscar">
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="1"/>  
               <column  name="type"  value="BASE_CLASS"/>  
               <column  name="name"  value="barbarian"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="saving_throw" value="hll"/>
           </insert>  
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="2"/>   
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="bard"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="3"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="cleric"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
           </insert> 
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="4"/>   
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="druid"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
           </insert> 
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="5"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="fighter"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="6"/>
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="monk"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhh"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="7"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="paladin"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="8"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="ranger"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="9"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="rougue"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhl"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="10"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="sorcerer"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="11"/>  
             <column  name="type"  value="BASE_CLASS"/>  
             <column  name="name"  value="wizard"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="12"/>  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="arcane archer"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
           </insert>
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="13"/>  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="arcane trickster"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
           </insert>  
-          <insert tableName="class_character">  
+          <insert tableName="class_character">
+            <column name="id" value="14"/>  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="archmage"/>
             <column  name="avatar_url"  value="address value"/>

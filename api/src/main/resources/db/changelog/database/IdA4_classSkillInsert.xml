@@ -1,0 +1,152 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="13" author="oscar">
+<!-- Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha),
+Jump (Str), Listen (Wis), Ride (Dex), Survival (Wis), and Swim (Str). -->
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="4"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="6"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="14"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="17"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="18"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="20"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="25"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="33"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="1"/>  
+        <column  name="skill_id"  value="34"/>  
+    </insert>
+    <!--Appraise (Int), Balance (Dex), Bluff (Cha), Climb (Str),
+        Concentration (Con), Craft (Int), Decipher Script (Int),
+        Diplomacy (Cha), Disguise (Cha), Escape Artist (Dex),
+        Gather Information (Cha), Hide (Dex), Jump (Str),
+        Knowledge (all skills, taken individually) (Int),
+        Listen (Wis), Move Silently (Dex), Perform (Cha),
+        Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex),
+        Speak Language (None), Spellcraft (Int), Swim (Str),
+        Tumble (Dex), and Use Magic Device (Cha). -->
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="1"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="2"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="3"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="4"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="5"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="6"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="7"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="9"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="12"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="13"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="16"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="18"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="19"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="21"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="22"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="23"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="24"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="27"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="29"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="30"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="31"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="34"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="35"/>  
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="36"/>  
+    </insert>
+</changeSet>
+</databaseChangeLog>
