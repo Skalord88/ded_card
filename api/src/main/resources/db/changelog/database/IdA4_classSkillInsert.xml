@@ -5,148 +5,137 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="13" author="oscar">
-<!-- Climb (Str), Craft (Int), Handle Animal (Cha), Intimidate (Cha),
-Jump (Str), Listen (Wis), Ride (Dex), Survival (Wis), and Swim (Str). -->
     <insert tableName="class_skills">
-        <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="4"/>  
+        <column name="class_id" value="1"/>  <!-- barbarian-->
+        <column  name="skill_id"  value="4"/>  <!-- Climb-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="6"/>  
+        <column  name="skill_id"  value="6"/>  <!-- Craft-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="14"/>  
+        <column  name="skill_id"  value="12"/>  <!-- Handle Animal-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="17"/>  
+        <column  name="skill_id"  value="15"/>  <!-- Intimidate-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="18"/>  
+        <column  name="skill_id"  value="16"/>  <!-- Jump -->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="20"/>  
+        <column  name="skill_id"  value="18"/>  <!-- Listen-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="25"/>  
+        <column  name="skill_id"  value="22"/>  <!-- Ride-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="33"/>  
+        <column  name="skill_id"  value="29"/>  <!-- Survival-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  
-        <column  name="skill_id"  value="34"/>  
+        <column  name="skill_id"  value="30"/>  <!-- Swim-->
     </insert>
-    <!--Appraise (Int), Balance (Dex), Bluff (Cha), Climb (Str),
-        Concentration (Con), Craft (Int), Decipher Script (Int),
-        Diplomacy (Cha), Disguise (Cha), Escape Artist (Dex),
-        Gather Information (Cha), Hide (Dex), Jump (Str),
-        Knowledge (all skills, taken individually) (Int),
-        Listen (Wis), Move Silently (Dex), Perform (Cha),
-        Profession (Wis), Sense Motive (Wis), Sleight of Hand (Dex),
-        Speak Language (None), Spellcraft (Int), Swim (Str),
-        Tumble (Dex), and Use Magic Device (Cha). -->
     <insert tableName="class_skills">
-        <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="1"/>  
+        <column name="class_id" value="2"/>  <!-- bard-->
+        <column  name="skill_id"  value="1"/>  <!-- Appraise-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="2"/>  
+        <column  name="skill_id"  value="2"/>  <!-- Balance-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="3"/>  
+        <column  name="skill_id"  value="3"/>  <!-- Bluff-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="4"/>  
+        <column  name="skill_id"  value="4"/>  <!-- Climb-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="5"/>  
+        <column  name="skill_id"  value="5"/>  <!-- Concentration-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="6"/>  
+        <column  name="skill_id"  value="6"/>  <!--Craft-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="7"/>  
+        <column  name="skill_id"  value="7"/>  <!-- Diplomacy-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="9"/>  
+        <column  name="skill_id"  value="9"/>  <!-- Disguise-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="12"/>  
+        <column  name="skill_id"  value="10"/> <!-- Escape Artist--> 
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="13"/>  
+        <column  name="skill_id"  value="11"/>  <!-- Gather Information-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="16"/>  
+        <column  name="skill_id"  value="14"/>  <!-- Hide-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="18"/>  
+        <column  name="skill_id"  value="16"/>  <!-- Jump-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="19"/>  
+        <column  name="skill_id"  value="17"/>  <!-- Know-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="21"/>  
+        <column  name="skill_id"  value="18"/>  <!-- Listen-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="22"/>  
+        <column  name="skill_id"  value="19"/>  <!-- Move sil-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="23"/>  
+        <column  name="skill_id"  value="20"/>  <!-- Perform-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="24"/>  
+        <column  name="skill_id"  value="21"/>  <!-- Profession-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="27"/>  
+        <column  name="skill_id"  value="24"/>  <!-- Sense Mot-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="29"/>  
+        <column  name="skill_id"  value="24"/>  <!-- Sleight of Hand-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="30"/>  
+        <column  name="skill_id"  value="26"/>  <!-- Speak  Lang-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="31"/>  
+        <column  name="skill_id"  value="27"/>  <!-- Spellcraft -->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="34"/>  
+        <column  name="skill_id"  value="30"/>  <!-- Swim-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="35"/>  
+        <column  name="skill_id"  value="31"/>  <!-- Tumble-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
-        <column  name="skill_id"  value="36"/>  
+        <column  name="skill_id"  value="32"/>  <!-- Use Magic Device-->
     </insert>
 </changeSet>
 </databaseChangeLog>
