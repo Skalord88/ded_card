@@ -106,10 +106,15 @@ public class Character {
     }
 
     public void createSkillsArray(List<Skills> skillsList) {
+
         for(int x = 0; x < skillsList.size(); x++){
-            this.classSkills.get(x).setNameSkill(skillsList.get(x).getName());
-            this.classSkills.get(x).setClassSkill(false);
-            this.classSkills.get(x).setSkillRank(0);
+
+            ClassSkills skill = new ClassSkills();
+            skill.setNameSkill(skillsList.get(x).getName());
+            skill.setClassSkill(false);
+            skill.setSkillRank(0);
+            
+            this.classSkills.add(skill);
         }
     }
 }

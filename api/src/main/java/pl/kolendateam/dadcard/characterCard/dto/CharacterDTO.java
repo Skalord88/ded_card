@@ -8,21 +8,25 @@ import pl.kolendateam.dadcard.classCharacter.MapperClassPgListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
+import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
 @NoArgsConstructor
 public class CharacterDTO {
     public String characterName;
     public String playerName;
-    public ArrayList <ClassPgListDTO> classPgDTOList;
+    public ArrayList <ClassPgListDTO> classPgList;
     public int lep;
-    public SavingThrowDTO savingThrowsDTO;
+    public SavingThrowDTO savingThrows;
+    public ArrayList <SkillsDTO> skillsList; 
 
     public CharacterDTO(Character character){
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
-        this.classPgDTOList = MapperClassPgListToDTO.toClassPgListDTO(character.getClassPgArray());
+        this.classPgList = MapperClassPgListToDTO.toClassPgListDTO(character.getClassPgArray());
         this.lep = character.getLep();
-        this.savingThrowsDTO = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
     }
     
 }

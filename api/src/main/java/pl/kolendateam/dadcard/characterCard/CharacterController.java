@@ -86,8 +86,10 @@ public class CharacterController {
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
+        character.createSkillsArray(skillsList);
+
         ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
-        character.createSkillsArray(skillsList); 
+         
         int indexClassInDB = classPg.findIndexInArrayById(classPgList);
 
         if(indexClassInDB == -1){
