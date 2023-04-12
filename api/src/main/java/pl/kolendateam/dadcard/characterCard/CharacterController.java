@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -28,11 +31,13 @@ public class CharacterController {
     
     ClassRepository classRepository;
     CharacterRepository characterRepository;
+    SkillsRepository skillsRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository){
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository,SkillsRepository skillsRepository){
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
+        this.skillsRepository = skillsRepository;
     }
 
     @GetMapping(value="{id}")
@@ -59,6 +64,8 @@ public class CharacterController {
     @PostMapping(value="{id}/class",consumes = {"application/json"})
     public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPgDTO classPgDTO){
 
+        List<Skills> skillsList = this.skillsRepository.findAll();
+
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
         if(!characterOpt.isPresent()){
@@ -79,11 +86,13 @@ public class CharacterController {
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
-        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow()); 
+        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
+        character.createSkillsArray(skillsList); 
         int indexClassInDB = classPg.findIndexInArrayById(classPgList);
 
         if(indexClassInDB == -1){
-            character.addClassToPgArray(classPg);           
+            character.addClassToPgArray(classPg);
+            character.setSkillsTruePgArray(classCharacter.getAvailableSkills());           
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
         }

@@ -1,6 +1,8 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -16,6 +18,7 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.skills.entity.Skills;
 
 
 @NoArgsConstructor
@@ -43,14 +46,14 @@ public class Character {
     SavingThrow savingThrow;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ClassSkills classSkills;
+    ArrayList<ClassSkills> classSkills;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPgArray = new ArrayList<>();
         this.savingThrow = new SavingThrow();
-        this.classSkills = new ClassSkills();
+        this.classSkills = new ArrayList<>();
     }
     
     public void addClassToPgArray(ClassPg classPg) {
@@ -90,5 +93,23 @@ public class Character {
         this.getSavingThrow().incementSTFortitude();
         this.getSavingThrow().incementSTReflex();
         this.getSavingThrow().incementSTWill();
+    }
+
+    public void setSkillsTruePgArray(Set<Skills> availableSkills) {
+        for(Skills skill : availableSkills){
+            for(ClassSkills classSkill : classSkills){
+                if(skill.getName().equals(classSkill.getNameSkill())){
+                    classSkill.setClassSkill(true);
+                }
+            }
+        }
+    }
+
+    public void createSkillsArray(List<Skills> skillsList) {
+        for(int x = 0; x < skillsList.size(); x++){
+            this.classSkills.get(x).setNameSkill(skillsList.get(x).getName());
+            this.classSkills.get(x).setClassSkill(false);
+            this.classSkills.get(x).setSkillRank(0);
+        }
     }
 }
