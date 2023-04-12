@@ -7,188 +7,168 @@
   <changeSet id="11" author="oscar">
     <insert tableName="skills">
         <column name="id" value="1"/>  
-        <column  name="name"  value="Appraise"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Appraise"/> <!-- wycenza--> 
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="2"/>  
         <column  name="name"  value="Balance"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="3"/>  
         <column  name="name"  value="Bluff"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="4"/>  
         <column  name="name"  value="Climb"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="1"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="5"/>  
         <column  name="name"  value="Concentration"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="3"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="6"/>  
         <column  name="name"  value="Craft"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="7"/>  
         <column  name="name"  value="Diplomacy"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="8"/>  
         <column  name="name"  value="Disable Device"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="9"/>
-        <column  name="name"  value="Disguise"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Disguise"/> <!-- przebieranie--> 
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="10"/>  
-        <column  name="name"  value="Concentration"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Escape Artist"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="11"/>  
-        <column  name="name"  value="Disguise"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Gather Information"/>  
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="12"/>  
-        <column  name="name"  value="Escape Artist"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Handle Animal"/>  
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="13"/>  
-        <column  name="name"  value="Gather Information"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Heal"/>  
+        <!-- <column  name="attribute"  value="5"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="14"/>  
-        <column  name="name"  value="Handle Animal"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Hide"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="15"/>  
-        <column  name="name"  value="Heal"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Intimidate"/>  
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="16"/>  
-        <column  name="name"  value="Hide"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Jump"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="17"/>  
-        <column  name="name"  value="Intimidate"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Knowledge"/>  
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="18"/>  
-        <column  name="name"  value="Jump"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Listen"/>  
+        <!-- <column  name="attribute"  value="5"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="19"/>  
-        <column  name="name"  value="Knowledge"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Move Silently"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="20"/>  
-        <column  name="name"  value="Listen"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Perform"/>  
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="21"/>  
-        <column  name="name"  value="Move Silently"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Profession"/>  
+        <!-- <column  name="attribute"  value="6"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="22"/>  
-        <column  name="name"  value="Listen"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Ride"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="23"/>  
-        <column  name="name"  value="Perform"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Search"/>  
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="24"/>  
-        <column  name="name"  value="Profession"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Sense Motive"/>  
+        <!-- <column  name="attribute"  value="5"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="25"/>  
-        <column  name="name"  value="Ride"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Sleight Of Hand"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="26"/>  
-        <column  name="name"  value="Search"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Speak Language"/>  
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="27"/>  
-        <column  name="name"  value="Sense Motive"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Spellcraft"/>  
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="28"/>  
-        <column  name="name"  value="Search"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Spot"/>  
+        <!-- <column  name="attribute"  value="5"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="29"/>  
-        <column  name="name"  value="Sleight Of Hand"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Survival"/>  
+        <!-- <column  name="attribute"  value="5"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="30"/>  
-        <column  name="name"  value="Speak Language"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Swim"/>  
+        <!-- <column  name="attribute"  value="1"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="31"/>  
-        <column  name="name"  value="Spellcraft"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Tumble"/>  
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="32"/>  
-        <column  name="name"  value="Spot"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <column  name="name"  value="Use Magic Device"/>  
+        <!-- <column  name="attribute"  value="4"/> -->
     </insert>
     <insert tableName="skills">
         <column name="id" value="33"/>  
-        <column  name="name"  value="Survival"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
-    </insert>
-    <insert tableName="skills">
-        <column name="id" value="34"/>  
-        <column  name="name"  value="Swim"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
-    </insert>
-    <insert tableName="skills">
-        <column name="id" value="35"/>  
-        <column  name="name"  value="Truble"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
-    </insert>
-    <insert tableName="skills">
-        <column name="id" value="36"/>  
-        <column  name="name"  value="Use Magic Device"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
-    </insert>
-    <insert tableName="skills">
-        <column name="id" value="37"/>  
         <column  name="name"  value="Use Rope"/>  
-        <!-- <column  name="attribute"  value="barbarian"/> -->
+        <!-- <column  name="attribute"  value="2"/> -->
     </insert>
 </changeSet>
 </databaseChangeLog>
