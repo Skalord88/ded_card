@@ -88,9 +88,9 @@ public class CharacterController {
             character.incrementLevelClassForIndex(indexClassInDB);
         }
 
-        int levelClass = classPg.getLevel();
+        int levelClassInDB = classPg.findLevelInArrayById(classPgList,classCharacter.getId());
 
-        if(levelClass == 1){
+        if(levelClassInDB == 1){
             character.addSTLevelOne(classPg);
         }else{
             character.incementST();

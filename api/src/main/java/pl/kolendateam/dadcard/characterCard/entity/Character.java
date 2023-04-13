@@ -68,29 +68,22 @@ public class Character {
             if(stringSavingThrow.charAt(0) == 'h'){
                 bonus = 2.5;
             } else{bonus = 0;}
-            this.getSavingThrow().addSTFortitude(bonus);
+            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
 
             if(stringSavingThrow.charAt(1) == 'h'){
                 bonus = 2.5;
             } else{bonus = 0;}
-            this.getSavingThrow().addSTReflex(bonus);
+            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
 
             if(stringSavingThrow.charAt(2) == 'h'){
                 bonus = 2.5;
             } else{bonus = 0;}
-            this.getSavingThrow().addSTWill(bonus);            
+            this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
         }
 
     public void incementST() {
-        this.getSavingThrow().incementSTFortitude();
-        this.getSavingThrow().incementSTReflex();
-        this.getSavingThrow().incementSTWill();
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
     }
-    
-
-
-
-    // this.savingThrow.setFortitude(savingThrow.getFortitude()+0.5);
-    //         this.savingThrow.setReflex(savingThrow.getReflex()+0.5);
-    //         this.savingThrow.setWill(savingThrow.getWill()+0.5);
 }
