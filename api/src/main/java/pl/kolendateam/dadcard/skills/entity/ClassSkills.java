@@ -9,6 +9,6 @@ public class ClassSkills {
 
     String nameSkill;
     boolean classSkill;
-    int skillRank;
+    double skillRank;
     
 }
