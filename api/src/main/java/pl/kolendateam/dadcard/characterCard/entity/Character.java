@@ -143,9 +143,11 @@ public class Character {
             if(check = true){
                 if(skill.isClassSkill()==true){
                     skill.setSkillRank(skillRank);
+                    this.skillPoints -= skillRank;
                 }
                 if(skill.isClassSkill()==false){
                     skill.setSkillRank(skillRank/2);
+                    this.skillPoints -= skillRank;
                 }
             }
         }
