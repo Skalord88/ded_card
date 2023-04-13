@@ -18,7 +18,8 @@ public class CharacterDTO {
     public ArrayList <ClassPgListDTO> classPgList;
     public int lep;
     public SavingThrowDTO savingThrows;
-    public ArrayList <SkillsDTO> skillsList; 
+    public double skillPoints;
+    public ArrayList <SkillsDTO> skillsList;
 
     public CharacterDTO(Character character){
         this.characterName = character.getCharacterName();
@@ -26,6 +27,7 @@ public class CharacterDTO {
         this.classPgList = MapperClassPgListToDTO.toClassPgListDTO(character.getClassPgArray());
         this.lep = character.getLep();
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.skillPoints = character.getSkillPoints();
         this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
     }
     

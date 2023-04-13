@@ -20,9 +20,6 @@ public class ClassCharacterDTO {
         this.classType = classCharacter.getType().getTypeEnum();
         this.className = classCharacter.getName();
         this.id = classCharacter.getId();
-        // SkillsDTO tempSkills = new SkillsDTO(classCharacter);
-        // this.classSkill = new ArrayList<SkillsDTo>();
-        // this.classSkill.add(tempSkills);
     }
     
 }

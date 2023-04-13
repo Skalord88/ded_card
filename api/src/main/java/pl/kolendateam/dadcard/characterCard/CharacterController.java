@@ -22,6 +22,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
@@ -86,6 +87,8 @@ public class CharacterController {
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
+        character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+
         character.createSkillsArray(skillsList);
 
         ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
@@ -108,8 +111,31 @@ public class CharacterController {
         }
     
         character.incrementLep();
+
+        character.calculateSkillPoints(classCharacter.getSkillPoints());
         
         this.characterRepository.save(character);
+        return new CharacterDTO (character);
+    }
+
+    @PostMapping(value="{id}/skill",consumes = {"application/json"})
+    public CharacterDTO buySkillClass(@PathVariable int id, @RequestBody SkillsDTO skillsDTO){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+
+        int lep = character.getLep();
+
+        character.buySkills(skillsDTO.nameSkill,lep,skillsDTO.skillRank);
+
+        this.characterRepository.save(character);
+
         return new CharacterDTO (character);
     }
 

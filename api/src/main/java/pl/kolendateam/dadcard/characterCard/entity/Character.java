@@ -48,6 +48,8 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
 
+    double skillPoints;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
@@ -116,5 +118,16 @@ public class Character {
             
             this.classSkills.add(skill);
         }
+    }
+
+    public void calculateSkillPointsFirstLevel(int skillPoints) {
+        this.skillPoints = skillPoints * 3;
+    }
+
+    public void calculateSkillPoints(int skillPoints) {
+        this.skillPoints += skillPoints;
+    }
+
+    public void buySkills(String nameSkill, int lep, int skillRank) {
     }
 }

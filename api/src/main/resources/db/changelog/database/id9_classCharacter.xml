@@ -15,6 +15,9 @@
         <column name="saving_throw" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="skill_points" type="double">
+          <constraints nullable="true"/>
+        </column>
         <column name="class_skills" type="jsonb">
           <constraints nullable="true"/>
         </column>

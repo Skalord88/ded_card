@@ -11,6 +11,7 @@
               <column  name="name"  value="barbarian"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="saving_throw" value="hll"/>
+              <column name="skill_points" value="4" />
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   
@@ -18,6 +19,7 @@
             <column  name="name"  value="bard"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
+            <column name="skill_points" value="6" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="3"/>  
@@ -25,6 +27,7 @@
             <column  name="name"  value="cleric"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
+            <column name="skill_points" value="2" />
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="4"/>   
@@ -32,6 +35,7 @@
             <column  name="name"  value="druid"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
+            <column name="skill_points" value="4" />
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -39,6 +43,7 @@
             <column  name="name"  value="fighter"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="6"/>
@@ -46,6 +51,7 @@
             <column  name="name"  value="monk"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhh"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="7"/>  
@@ -53,6 +59,7 @@
             <column  name="name"  value="paladin"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="8"/>  
@@ -60,6 +67,7 @@
             <column  name="name"  value="ranger"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
+            <column name="skill_points" value="6" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="9"/>  
@@ -67,6 +75,7 @@
             <column  name="name"  value="rougue"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhl"/>
+            <column name="skill_points" value="8" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="10"/>  
@@ -74,6 +83,7 @@
             <column  name="name"  value="sorcerer"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="11"/>  
@@ -81,6 +91,7 @@
             <column  name="name"  value="wizard"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="12"/>  
@@ -88,6 +99,7 @@
             <column  name="name"  value="arcane archer"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="13"/>  
@@ -95,6 +107,7 @@
             <column  name="name"  value="arcane trickster"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
+            <column name="skill_points" value="4" />
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="14"/>  
@@ -102,6 +115,7 @@
             <column  name="name"  value="archmage"/>
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
+            <column name="skill_points" value="2" />
           </insert>
           <!-- <insert tableName="class_character">  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
