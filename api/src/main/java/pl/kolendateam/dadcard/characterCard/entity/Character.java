@@ -129,5 +129,25 @@ public class Character {
     }
 
     public void buySkills(String nameSkill, int lep, int skillRank) {
+        for(ClassSkills skill : classSkills){
+            boolean check = true;
+            if(skillRank > lep+3){
+                check = false;
+            }
+            if(skill.isClassSkill()==true && skill.getSkillRank() >= lep+3){
+                check = false;
+            }
+            if(skill.isClassSkill()==false && skill.getSkillRank() >= lep/2+3){
+                check = false;
+            }
+            if(check = true){
+                if(skill.isClassSkill()==true){
+                    skill.setSkillRank(skillRank);
+                }
+                if(skill.isClassSkill()==false){
+                    skill.setSkillRank(skillRank/2);
+                }
+            }
+        }
     }
 }
