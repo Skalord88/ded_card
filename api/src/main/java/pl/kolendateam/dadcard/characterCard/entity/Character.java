@@ -120,34 +120,37 @@ public class Character {
         }
     }
 
-    public void calculateSkillPointsFirstLevel(int skillPoints) {
-        this.skillPoints = skillPoints * 3;
+    public void calculateSkillPointsFirstLevel(int skPoints) {
+        this.skillPoints = skPoints * 3;
     }
 
-    public void calculateSkillPoints(int skillPoints) {
-        this.skillPoints += skillPoints;
+    public void calculateSkillPoints(int skPoints) {
+        this.skillPoints += skPoints;
     }
 
-    public void buySkills(String nameSkill, int lep, int skillRank) {
+    public void buySkills(String nameSkill, int lep, int skPoints) {
         for(ClassSkills skill : classSkills){
-            boolean check = true;
-            if(skillRank > lep+3){
+            if(skill.getNameSkill().equals(nameSkill)){
+                boolean check = true;
+                if(skPoints > lep+3){
                 check = false;
-            }
-            if(skill.isClassSkill()==true && skill.getSkillRank() >= lep+3){
-                check = false;
-            }
-            if(skill.isClassSkill()==false && skill.getSkillRank() >= lep/2+3){
-                check = false;
-            }
-            if(check = true){
-                if(skill.isClassSkill()==true){
-                    skill.setSkillRank(skillRank);
-                    this.skillPoints -= skillRank;
                 }
-                if(skill.isClassSkill()==false){
-                    skill.setSkillRank(skillRank/2);
-                    this.skillPoints -= skillRank;
+                if(skill.isClassSkill()==true && skill.getSkillRank()>=lep+3){
+                check = false;
+                }
+                double doubleLEP = (lep+3)/2;
+                if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
+                check = false;
+                }
+                if(check == true){
+                    if(skill.isClassSkill()==true){
+                    skill.setSkillRank(+skPoints);
+                    this.skillPoints -= skPoints;
+                    }
+                    if(skill.isClassSkill()==false){
+                    skill.setSkillRank(+skPoints/2);
+                    this.skillPoints -= skPoints;
+                    }
                 }
             }
         }
