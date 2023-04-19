@@ -13,17 +13,17 @@ import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 public class CharacterDTO {
     public String characterName;
     public String playerName;
-    public ArrayList<ClassPcListDTO> classPcDTOList;
+    public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
-    public SavingThrowDTO savingThrowsDTO;
+    public SavingThrowDTO savingThrows;
     public int bab;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
-        this.classPcDTOList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
+        this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl();
-        this.savingThrowsDTO = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
         this.bab = (int) character.getBab();
     }
 
