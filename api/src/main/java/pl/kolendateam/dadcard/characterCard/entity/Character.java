@@ -100,7 +100,7 @@ public class Character {
     public void setSkillsTruePgArray(Set<Skills> availableSkills) {
         for(Skills skill : availableSkills){
             for(ClassSkills classSkill : classSkills){
-                if(skill.getName().equals(classSkill.getNameSkill())){
+                if(skill.getId() == classSkill.getIdSkill()){
                     classSkill.setClassSkill(true);
                 }
             }
@@ -112,6 +112,7 @@ public class Character {
         for(int x = 0; x < skillsList.size(); x++){
 
             ClassSkills skill = new ClassSkills();
+            skill.setIdSkill(skillsList.get(x).getId());
             skill.setNameSkill(skillsList.get(x).getName());
             skill.setClassSkill(false);
             skill.setSkillRank(0);
@@ -128,19 +129,22 @@ public class Character {
         this.skillPoints += skPoints;
     }
 
-    public void buySkills(String nameSkill, int lep, int skPoints) {
+    public void buySkills(int idSkill, int lep, int skPoints) {
         for(ClassSkills skill : classSkills){
-            if(skill.getNameSkill().equals(nameSkill)){
+            if(skill.getIdSkill() == idSkill){
                 boolean check = true;
+                if(this.skillPoints == 0){
+                    check = false;
+                }
                 if(skPoints > lep+3){
-                check = false;
+                    check = false;
                 }
                 if(skill.isClassSkill()==true && skill.getSkillRank()>=lep+3){
-                check = false;
+                    check = false;
                 }
                 double doubleLEP = (lep+3)/2;
                 if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
-                check = false;
+                    check = false;
                 }
                 if(check == true){
                     if(skill.isClassSkill()==true){
