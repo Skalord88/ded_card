@@ -13,9 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
-
 
 @NoArgsConstructor
 @Getter
@@ -34,63 +33,69 @@ public class Character {
     String playerName;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<ClassPg> classPgArray;
+    ArrayList<ClassPc> classPcArray;
 
-    int lep;
+    int ecl;
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
 
     double bab;
 
-    public Character(String characterName, String playerName){
+    public Character(String characterName, String playerName) {
         this.characterName = characterName;
         this.playerName = playerName;
-        this.classPgArray = new ArrayList<>();
+        this.classPcArray = new ArrayList<>();
         this.savingThrow = new SavingThrow();
     }
-    
-    public void addClassToPgArray(ClassPg classPg) {
-        this.classPgArray.add(classPg);
+
+    public void addClassToPcArray(ClassPc classPc) {
+        this.classPcArray.add(classPc);
     }
 
-    public void incrementLevelClassForIndex(int index){
-        this.getClassPgArray().get(index).incrementLevel();
+    public void incrementLevelClassForIndex(int index) {
+        this.getClassPcArray().get(index).incrementLevel();
     }
 
-    public void incrementLep(){
-        this.lep +=1;
+    public void incrementEcl() {
+        this.ecl += 1;
     }
 
-    public void addSTLevelOne(ClassPg classPg){
+    public void addSTLevelOne(ClassPc classPc) {
 
-        String stringSavingThrow = classPg.getSavingThrow();
+        String stringSavingThrow = classPc.getSavingThrow();
 
-            double bonus;
-            if(stringSavingThrow.charAt(0) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
-
-            if(stringSavingThrow.charAt(1) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
-
-            if(stringSavingThrow.charAt(2) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
+        double bonus;
+        if (stringSavingThrow.charAt(0) == 'h') {
+            bonus = 2.5;
+        } else {
+            bonus = 0;
         }
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
+
+        if (stringSavingThrow.charAt(1) == 'h') {
+            bonus = 2.5;
+        } else {
+            bonus = 0;
+        }
+        this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
+
+        if (stringSavingThrow.charAt(2) == 'h') {
+            bonus = 2.5;
+        } else {
+            bonus = 0;
+        }
+        this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
+    }
 
     public void incementST() {
-        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
-        this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
-        this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
     }
 
-    public void incrementBab(ClassPg classPg) {
-        double classBab = classPg.getClassBab();
+    public void incrementBab(ClassPc classPc) {
+        double classBab = classPc.getClassBab();
         this.bab += classBab;
     }
 }

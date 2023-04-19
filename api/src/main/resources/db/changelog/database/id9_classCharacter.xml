@@ -6,10 +6,10 @@
 
   <changeSet id="9" author="oscar">
       <addColumn tableName="character">
-        <column name="class_pg_array" type="jsonb">
+        <column name="class_p_array" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="lep" type="int">
+        <column name="ecl" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="saving_throw" type="jsonb">
