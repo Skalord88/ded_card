@@ -41,6 +41,8 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
 
+    double bab;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
@@ -85,5 +87,10 @@ public class Character {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
         this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
+    }
+
+    public void incrementBab(ClassPg classPg) {
+        double classBab = classPg.getClassBab();
+        this.bab += classBab;
     }
 }

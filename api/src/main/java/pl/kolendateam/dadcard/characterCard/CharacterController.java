@@ -79,7 +79,7 @@ public class CharacterController {
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
-        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow()); 
+        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow(),classCharacter.getClassBab()); 
         int indexClassInDB = classPg.findIndexInArrayById(classPgList);
 
         if(indexClassInDB == -1){
@@ -95,6 +95,8 @@ public class CharacterController {
         }else{
             character.incementST();
         }
+
+        character.incrementBab(classPg);
     
         character.incrementLep();
         

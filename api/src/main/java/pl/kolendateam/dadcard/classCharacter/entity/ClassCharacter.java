@@ -36,4 +36,7 @@ public class ClassCharacter {
     @NonNull
     String savingThrow;
 
+    @NonNull
+    double classBab;
+
 }

@@ -4,10 +4,15 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="9" author="oscar">
+  <changeSet id="14" author="oscar">
       <addColumn tableName="character">
         <column name="bab" type="double">
           <constraints nullable="true"/>
+        </column>
+      </addColumn>
+      <addColumn tableName="class_character">
+        <column name="bab" type="double">
+          <constraints nullable="false"/>
         </column>
       </addColumn>
   </changeSet>

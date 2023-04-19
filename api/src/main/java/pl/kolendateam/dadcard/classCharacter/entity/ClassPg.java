@@ -18,6 +18,7 @@ public class ClassPg implements Serializable{
     String name;
     int level;
     String savingThrow;
+    double classBab;
 
     public void incrementLevel(){
         this.level +=1;
