@@ -133,7 +133,7 @@ public class Character {
         for(ClassSkills skill : classSkills){
             if(skill.getIdSkill() == idSkill){
                 boolean check = true;
-                if(this.skillPoints == 0){
+                if(this.skillPoints > 1){
                     check = false;
                 }
                 if(skPoints > lep+3){
