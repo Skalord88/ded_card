@@ -129,20 +129,20 @@ public class Character {
         this.skillPoints += skPoints;
     }
 
-    public void buySkills(int idSkill, int lep, int skPoints) {
+    public void buySkills(int idSkill, int skPoints) {
         for(ClassSkills skill : classSkills){
             if(skill.getIdSkill() == idSkill){
                 boolean check = true;
-                if(this.skillPoints > 1){
+                if(skillPoints < 1){
                     check = false;
                 }
-                if(skPoints > lep+3){
+                if(skPoints > this.lep+3){
                     check = false;
                 }
-                if(skill.isClassSkill()==true && skill.getSkillRank()>=lep+3){
+                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.lep+3){
                     check = false;
                 }
-                double doubleLEP = (lep+3)/2;
+                double doubleLEP = (this.lep+3)/2;
                 if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
                     check = false;
                 }

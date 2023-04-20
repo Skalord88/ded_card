@@ -130,9 +130,7 @@ public class CharacterController {
 
         Character character = characterOpt.get();
 
-        int lep = character.getLep();
-
-        character.buySkills(skillsDTO.idSkill,lep,skillsDTO.skillRank);
+        character.buySkills(skillsDTO.idSkill,skillsDTO.skillRank);
 
         this.characterRepository.save(character);
 
