@@ -25,12 +25,15 @@ public class ClassCharacter {
 
     @NonNull
     @Enumerated(EnumType.STRING)
-    private TypeEnum type;
+    TypeEnum type;
 
     @NonNull
-    private String name;
+    String name;
     
     @NonNull
-    private String avatarUrl;
+    String avatarUrl;
+
+    @NonNull
+    String savingThrow;
 
 }

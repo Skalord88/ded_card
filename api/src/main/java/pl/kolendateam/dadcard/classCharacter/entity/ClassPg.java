@@ -17,7 +17,7 @@ public class ClassPg implements Serializable{
     int id;
     String name;
     int level;
-
+    String savingThrow;
 
     public void incrementLevel(){
         this.level +=1;
@@ -28,8 +28,14 @@ public class ClassPg implements Serializable{
             if(this.id == classPgList.get(i).getId()){
                 return i;
             }  
-        }
+        }return -1;
+    }
 
-        return -1;
+    public int findLevelInArrayById(ArrayList<ClassPg> classPgList, int id) {
+        for(ClassPg clPg : classPgList) {
+            if(this.id == id && clPg.getLevel() == 1){
+                return clPg.getLevel();
+            }
+        }return 0;
     }
 }

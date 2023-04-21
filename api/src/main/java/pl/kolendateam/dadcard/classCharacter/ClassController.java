@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
 @RestController

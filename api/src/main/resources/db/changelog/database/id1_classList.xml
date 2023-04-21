@@ -18,6 +18,9 @@
         <column name="avatar_url" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
+        <column name="saving_throw" type="varchar(255)">
+          <constraints nullable="false"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

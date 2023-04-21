@@ -16,13 +16,13 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
 @RestController
@@ -40,7 +40,7 @@ public class CharacterController {
 
     @GetMapping(value = "{id}")
     @ResponseBody
-    public Character getCharacter(@PathVariable int id){
+    public Character showCharacter(@PathVariable int id){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -57,6 +57,10 @@ public class CharacterController {
     public CharacterDTO create(@RequestBody CharacterDTO characterDTO){
         
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
+
+        SavingThrow savingThrow = new SavingThrow(0, 0, 0);
+
+        character.setSavingThrow(savingThrow);
 
         this.characterRepository.save(character);
 
@@ -101,29 +105,40 @@ public class CharacterController {
                 HttpStatus.NOT_FOUND, "Character Not Found");
         }
 
+        Character character = characterOpt.get();
+
         Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
 
         if(!classOpt.isPresent()){
             throw new ResponseStatusException(
                 HttpStatus.NOT_FOUND, "Class Not Found");
-        }
-        
-        Character character = characterOpt.get();
+        } 
 
         ClassCharacter classCharacter = classOpt.get();
 
         ArrayList<ClassPg> classPgList = character.getClassPgArray();
 
-        ClassPg clPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1); 
-        int indexClassInDB = clPg.findIndexInArrayById(classPgList);
+        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow()); 
+        int indexClassInDB = classPg.findIndexInArrayById(classPgList);
 
         if(indexClassInDB == -1){
-            character.addClassToPgArray(clPg);
+            character.addClassToPgArray(classPg);           
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
-        }     
+        }
+
+        int levelClassInDB = classPg.findLevelInArrayById(classPgList,classCharacter.getId());
+
+        if(levelClassInDB == 1){
+            character.addSavingThrowLevelOne(classPg);
+        }else{
+            character.incementSavingThrow();
+        }
+    
+        character.incrementLep();
         
         this.characterRepository.save(character);
         return new CharacterDTO (character);
     }
+
 }
