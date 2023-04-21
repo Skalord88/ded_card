@@ -40,6 +40,9 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Abilitys abilitys;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;

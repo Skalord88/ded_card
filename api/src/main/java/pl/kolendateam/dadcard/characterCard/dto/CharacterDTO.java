@@ -1,4 +1,9 @@
 package pl.kolendateam.dadcard.characterCard.dto;
+import java.util.ArrayList;
+import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 
 import java.util.ArrayList;
 
@@ -16,6 +21,8 @@ public class CharacterDTO {
     public ArrayList <ClassPgListDTO> classPgDTOList;
     public int lep;
     public SavingThrowDTO savingThrowsDTO;
+    public Abilitys ability;
+    public ArrayList <ClassPg> classPgList = new ArrayList<>();
 
     public CharacterDTO(Character character){
         this.characterName = character.getCharacterName();
@@ -23,6 +30,7 @@ public class CharacterDTO {
         this.classPgDTOList = MapperClassPgListToDTO.toClassPgListDTO(character.getClassPgArray());
         this.lep = character.getLep();
         this.savingThrowsDTO = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.ability = character.getAbilitys();
+        this.classPgList = character.getClassPgArray();
     }
-    
 }

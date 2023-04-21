@@ -33,7 +33,7 @@ public class ClassPg implements Serializable{
 
     public int findLevelInArrayById(ArrayList<ClassPg> classPgList, int id) {
         for(ClassPg clPg : classPgList) {
-            if(this.id == id && clPg.level == 1){
+            if(this.id == id && clPg.getLevel() == 1){
                 return clPg.getLevel();
             }
         }return 0;
