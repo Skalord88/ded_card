@@ -1,10 +1,8 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.util.ArrayList;
-
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +13,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
+import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 
 
 @NoArgsConstructor
@@ -60,28 +59,30 @@ public class Character {
         this.lep +=1;
     }
 
-    public void addSTLevelOne(ClassPg classPg){
+    public void addSavingThrowLevelOne(ClassPg classPg){
 
         String stringSavingThrow = classPg.getSavingThrow();
 
-            double bonus;
-            if(stringSavingThrow.charAt(0) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
+            double bonusFortitude;
+            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusFortitude = 2.5;
+            } else{bonusFortitude = 0;}
+            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
 
-            if(stringSavingThrow.charAt(1) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
+            double bonusReflex;
+            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusReflex = 2.5;
+            } else{bonusReflex = 0;}
+            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
 
-            if(stringSavingThrow.charAt(2) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
+            double bonusWill;
+            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusWill = 2.5;
+            } else{bonusWill = 0;}
+            this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
         }
 
-    public void incementST() {
+    public void incementSavingThrow() {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
         this.savingThrow.setWill(this.savingThrow.getWill()+0.5);

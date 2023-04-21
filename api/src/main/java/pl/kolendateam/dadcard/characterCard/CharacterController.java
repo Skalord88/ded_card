@@ -91,9 +91,9 @@ public class CharacterController {
         int levelClassInDB = classPg.findLevelInArrayById(classPgList,classCharacter.getId());
 
         if(levelClassInDB == 1){
-            character.addSTLevelOne(classPg);
+            character.addSavingThrowLevelOne(classPg);
         }else{
-            character.incementST();
+            character.incementSavingThrow();
         }
     
         character.incrementLep();
