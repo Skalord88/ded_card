@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pl.kolendateam.dadcard.race.dto.RegionBaseDTO;
-import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
 import pl.kolendateam.dadcard.race.entity.Region;
 
 public class MaperListRegionToDTO {
