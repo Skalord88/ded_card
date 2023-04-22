@@ -18,28 +18,4 @@ public class SavingThrow {
         this.reflex = reflex;
         this.will = will;
     }
-
-    public void addSTFortitude(double bonus){
-        this.fortitude =+ bonus;
-    }
-
-    public void incementSTFortitude(){
-        this.fortitude =+ 0.5;
-    }
-
-    public void addSTReflex(double bonus){
-        this.reflex =+ bonus;
-    }
-
-    public void incementSTReflex(){
-        this.reflex =+ 0.5;
-    }
-
-    public void addSTWill(double bonus){
-        this.will =+ bonus;
-    }
-
-    public void incementSTWill(){
-        this.will =+ 0.5;
-    }
 }

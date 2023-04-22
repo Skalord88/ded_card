@@ -31,12 +31,11 @@ public class ClassPg implements Serializable{
         }return -1;
     }
 
-    public int findClassLevelById(ArrayList<ClassPg> classPgList){
-        for(int i = 0; i < classPgList.size(); i++) {
-            if(this.id == classPgList.get(i).getLevel()){
-                return i;
-            }  
-        } return 0;  
+    public int findLevelInArrayById(ArrayList<ClassPg> classPgList, int id) {
+        for(ClassPg clPg : classPgList) {
+            if(this.id == id && clPg.getLevel() == 1){
+                return clPg.getLevel();
+            }
+        }return 0;
     }
-
 }

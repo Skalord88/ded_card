@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
@@ -30,5 +31,28 @@ public class ClassController {
         return MaperListClassToDTO.toClassCharacterDTO(classes);
 
     }
-    
+
+    public static ArrayList<ClassPgDTO> addClassToList(ClassCharacter classCharacter, Character character, String className) {
+        
+        ArrayList<ClassPgDTO> classPgListDTO = new ArrayList<ClassPgDTO>();
+                
+        for (ClassPgDTO classList : classPgListDTO){
+            boolean skipClassPg = false;
+            
+            if(className.equals(classCharacter.getName())){
+                classList.level = +1;
+                skipClassPg = true;
+            }
+            
+            if(!skipClassPg){
+                
+                ClassPgDTO clPg = new ClassPgDTO();
+                clPg.className.equals(classCharacter.getName());
+                clPg.id = classCharacter.getId();
+                clPg.level = 1;
+
+            }
+
+        } return classPgListDTO;
+    }
 }
