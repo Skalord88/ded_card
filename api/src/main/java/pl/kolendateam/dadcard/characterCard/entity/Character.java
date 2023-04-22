@@ -3,10 +3,8 @@ package pl.kolendateam.dadcard.characterCard.entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,6 +15,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
+import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -48,6 +47,9 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    private Abilitys abilitys;
+
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
@@ -68,31 +70,33 @@ public class Character {
         this.lep +=1;
     }
 
-    public void addSTLevelOne(ClassPg classPg){
+    public void addSavingThrowLevelOne(ClassPg classPg){
 
         String stringSavingThrow = classPg.getSavingThrow();
-
-            double bonus;
-            if(stringSavingThrow.charAt(0) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.getSavingThrow().addSTFortitude(bonus);
-
-            if(stringSavingThrow.charAt(1) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.getSavingThrow().addSTReflex(bonus);
-
-            if(stringSavingThrow.charAt(2) == 'h'){
-                bonus = 2.5;
-            } else{bonus = 0;}
-            this.getSavingThrow().addSTWill(bonus);            
-        }
-
-    public void incementST() {
-        this.getSavingThrow().incementSTFortitude();
-        this.getSavingThrow().incementSTReflex();
-        this.getSavingThrow().incementSTWill();
+    
+            double bonusFortitude;
+            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusFortitude = 2.5;
+            } else{bonusFortitude = 0;}
+            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
+    
+            double bonusReflex;
+            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusReflex = 2.5;
+            } else{bonusReflex = 0;}
+            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
+    
+            double bonusWill;
+            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusWill = 2.5;
+            } else{bonusWill = 0;}
+            this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
+            }
+    
+    public void incementSavingThrow() {
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
     }
 
     public void setSkillsTruePgArray(Set<Skills> availableSkills) {

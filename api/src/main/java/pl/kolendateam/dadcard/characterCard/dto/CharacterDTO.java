@@ -1,5 +1,4 @@
 package pl.kolendateam.dadcard.characterCard.dto;
-
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
@@ -28,5 +27,4 @@ public class CharacterDTO {
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
         this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
     }
-    
 }
