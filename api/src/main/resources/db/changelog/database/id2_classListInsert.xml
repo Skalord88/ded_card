@@ -12,6 +12,7 @@
               <column  name="avatar_url"  value="address value"/>
               <column  name="saving_throw" value="hll"/>
               <column  name="class_bab" value="1"/>
+              <column name="skill_points" value="4" />
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   
@@ -20,6 +21,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="6" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="3"/>  
@@ -28,6 +30,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="2" />
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="4"/>   
@@ -36,6 +39,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hlh"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="4" />
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -44,6 +48,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
             <column  name="class_bab" value="1"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
             <column name="id" value="6"/>   
@@ -52,6 +57,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhh"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="7"/>  
@@ -60,6 +66,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hll"/>
             <column  name="class_bab" value="1"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="8"/>  
@@ -68,6 +75,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
             <column  name="class_bab" value="1"/>
+            <column name="skill_points" value="6" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="9"/>  
@@ -76,6 +84,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhl"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="8" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="10"/>  
@@ -84,6 +93,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
             <column  name="class_bab" value="0.5"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="11"/>  
@@ -92,6 +102,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
             <column  name="class_bab" value="0.5"/>
+            <column name="skill_points" value="2" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="12"/>  
@@ -100,6 +111,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="hhl"/>
             <column  name="class_bab" value="1"/>
+            <column name="skill_points" value="4" />
           </insert>
           <insert tableName="class_character">
           <column name="id" value="13"/>  
@@ -108,6 +120,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="lhh"/>
             <column  name="class_bab" value="0.75"/>
+            <column name="skill_points" value="4" />
           </insert>  
           <insert tableName="class_character">
           <column name="id" value="14"/>  
@@ -116,6 +129,7 @@
             <column  name="avatar_url"  value="address value"/>
             <column  name="saving_throw" value="llh"/>
             <column  name="class_bab" value="0.5"/>
+            <column name="skill_points" value="2" />
           </insert>
           <!-- <insert tableName="class_character">  
             <column  name="type"  value="PRESTIGE_CLASS"/>  

@@ -32,28 +32,27 @@ public class ClassController {
 
     }
 
-    public static ArrayList<ClassPcDTO> addClassToList(ClassCharacter classCharacter, Character character,
-            String className) {
-
+    public static ArrayList<ClassPcDTO> addClassToList(ClassCharacter classCharacter, Character character, String className) {
+        
         ArrayList<ClassPcDTO> classPcListDTO = new ArrayList<ClassPcDTO>();
-
-        for (ClassPcDTO classList : classPcListDTO) {
+                
+        for (ClassPcDTO classList : classPcListDTO){
             boolean skipClassPc = false;
-
-            if (className.equals(classCharacter.getName())) {
+            
+            if(className.equals(classCharacter.getName())){
                 classList.level = +1;
                 skipClassPc = true;
             }
-
-            if (!skipClassPc) {
-
+            
+            if(!skipClassPc){
+                
                 ClassPcDTO clPc = new ClassPcDTO();
                 clPc.className.equals(classCharacter.getName());
                 clPc.id = classCharacter.getId();
                 clPc.level = 1;
-
+                
             }
-        }
-        return classPcListDTO;
+
+        } return classPcListDTO;
     }
 }

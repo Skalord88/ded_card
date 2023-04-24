@@ -48,6 +48,8 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
 
+    double skillPoints;
+    
     @JdbcTypeCode(SqlTypes.JSON)
     private Abilitys abilitys;
 
@@ -60,7 +62,7 @@ public class Character {
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
     }
-
+    
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
@@ -102,10 +104,20 @@ public class Character {
         this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
     }
 
+    public void setSkillsTruePcArray(Set<Skills> availableSkills) {
+        for(Skills skill : availableSkills){
+            for(ClassSkills classSkill : classSkills){
+                if(skill.getId() == classSkill.getIdSkill()){
+                    classSkill.setClassSkill(true);
+                }
+            }
+        }
+    }
+
     public void setSkillsTruecgArray(Set<Skills> availableSkills) {
         for(Skills skill : availableSkills){
             for(ClassSkills classSkill : classSkills){
-                if(skill.getName().equals(classSkill.getNameSkill())){
+                if(skill.getId() == classSkill.getIdSkill()){
                     classSkill.setClassSkill(true);
                 }
             }
@@ -113,15 +125,60 @@ public class Character {
     }
 
     public void createSkillsArray(List<Skills> skillsList) {
-
+        boolean check = true;
+        if(classSkills.isEmpty()){
+            check = false;
+        }
+        if(check == false){
         for(int x = 0; x < skillsList.size(); x++){
 
             ClassSkills skill = new ClassSkills();
-            skill.setNameSkill(skillsList.get(x).getName());
-            skill.setClassSkill(false);
-            skill.setSkillRank(0);
+                skill.setIdSkill(skillsList.get(x).getId());
+                skill.setNameSkill(skillsList.get(x).getName());
+                skill.setClassSkill(false);
+                skill.setSkillRank(0);
             
-            this.classSkills.add(skill);
+                this.classSkills.add(skill);
+            }
+        }
+    }
+
+    public void calculateSkillPointsFirstLevel(int skPoints) {
+        this.skillPoints = skPoints * 3;
+    }
+
+    public void calculateSkillPoints(int skPoints) {
+        this.skillPoints += skPoints;
+    }
+
+    public void buySkills(int idSkill, int skPoints) {
+        for(ClassSkills skill : classSkills){
+            if(skill.getIdSkill() == idSkill){
+                boolean check = true;
+                if(skillPoints < 1){
+                    check = false;
+                }
+                if(skPoints > this.ecl+3){
+                    check = false;
+                }
+                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.ecl+3){
+                    check = false;
+                }
+                double doubleLEP = (this.ecl+3)/2;
+                if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
+                    check = false;
+                }
+                if(check == true){
+                    if(skill.isClassSkill()==true){
+                    skill.setSkillRank(+skPoints);
+                    this.skillPoints -= skPoints;
+                    }
+                    if(skill.isClassSkill()==false){
+                    skill.setSkillRank(+skPoints/2);
+                    this.skillPoints -= skPoints;
+                    }
+                }
+            }
         }
     }
     

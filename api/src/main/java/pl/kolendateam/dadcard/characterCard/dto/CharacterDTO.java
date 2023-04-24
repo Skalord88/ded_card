@@ -7,6 +7,8 @@ import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
+import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
 @NoArgsConstructor
 public class CharacterDTO {
@@ -14,16 +16,20 @@ public class CharacterDTO {
     public String playerName;
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
-    public SavingThrowDTO savingThrows;
     public int bab;
+    public SavingThrowDTO savingThrows;
+    public double skillPoints;
+    public ArrayList <SkillsDTO> skillsList;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl();
-        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
         this.bab = (int) character.getBab();
+        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow());
+        this.skillPoints = character.getSkillPoints();
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
     }
 
 }

@@ -24,6 +24,9 @@
         <column name="class_bab" type="double">
           <constraints nullable="false"/>
         </column>
+        <column name="skill_points" type="int">
+          <constraints nullable="false"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

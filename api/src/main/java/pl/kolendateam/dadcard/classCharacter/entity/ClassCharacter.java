@@ -54,4 +54,7 @@ public class ClassCharacter {
     )
     Set<Skills> availableSkills = new HashSet<>();
 
+    @NonNull
+    int skillPoints;
+
 }
