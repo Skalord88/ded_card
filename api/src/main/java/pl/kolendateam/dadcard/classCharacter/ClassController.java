@@ -50,7 +50,7 @@ public class ClassController {
                 clPc.className.equals(classCharacter.getName());
                 clPc.id = classCharacter.getId();
                 clPc.level = 1;
-
+                
             }
 
         } return classPcListDTO;
