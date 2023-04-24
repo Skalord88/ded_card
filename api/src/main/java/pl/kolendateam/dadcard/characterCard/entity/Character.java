@@ -3,8 +3,10 @@ package pl.kolendateam.dadcard.characterCard.entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
@@ -37,7 +39,7 @@ public class Character {
     String playerName;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<ClassPg> classPgArray;
+    ArrayList<ClassPc> classPcArray;
 
     int lep;
 
@@ -55,25 +57,25 @@ public class Character {
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
-        this.classPgArray = new ArrayList<>();
+        this.classPcArray = new ArrayList<>();
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
     }
     
-    public void addClassToPgArray(ClassPg classPg) {
-        this.classPgArray.add(classPg);
+    public void addClassToPcArray(ClassPc classPc) {
+        this.classPcArray.add(classPc);
     }
 
     public void incrementLevelClassForIndex(int index){
-        this.getClassPgArray().get(index).incrementLevel();
+        this.getClassPcArray().get(index).incrementLevel();
     }
 
     public void incrementLep(){
         this.lep +=1;
     }
 
-    public void addSavingThrowLevelOne(ClassPg classPg){
-        String stringSavingThrow = classPg.getSavingThrow();
+    public void addSavingThrowLevelOne(ClassPc classPc){
+        String stringSavingThrow = classPc.getSavingThrow();
 
         double bonusFortitude;
         if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
@@ -100,7 +102,7 @@ public class Character {
         this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
     }
 
-    public void setSkillsTruePgArray(Set<Skills> availableSkills) {
+    public void setSkillsTruePcArray(Set<Skills> availableSkills) {
         for(Skills skill : availableSkills){
             for(ClassSkills classSkill : classSkills){
                 if(skill.getId() == classSkill.getIdSkill()){
@@ -119,7 +121,7 @@ public class Character {
         for(int x = 0; x < skillsList.size(); x++){
 
             ClassSkills skill = new ClassSkills();
-            skill.setIdSkill(skillsList.get(x).getId());
+                skill.setIdSkill(skillsList.get(x).getId());
                 skill.setNameSkill(skillsList.get(x).getName());
                 skill.setClassSkill(false);
                 skill.setSkillRank(0);
