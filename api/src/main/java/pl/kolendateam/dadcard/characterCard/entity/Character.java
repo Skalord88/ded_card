@@ -21,7 +21,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
-
 @NoArgsConstructor
 @Getter
 @Setter
@@ -41,7 +40,7 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
-    int lep;
+    int ecl;
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
@@ -53,6 +52,8 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     private Abilitys abilitys;
+
+    double bab;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -66,43 +67,54 @@ public class Character {
         this.classPcArray.add(classPc);
     }
 
-    public void incrementLevelClassForIndex(int index){
+    public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
     }
 
-    public void incrementLep(){
-        this.lep +=1;
+    public void incrementEcl() {
+        this.ecl += 1;
     }
 
     public void addSavingThrowLevelOne(ClassPc classPc){
+
         String stringSavingThrow = classPc.getSavingThrow();
-
-        double bonusFortitude;
-        if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonusFortitude = 2.5;
-        } else{bonusFortitude = 0;}
-        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
-
-        double bonusReflex;
-        if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonusReflex = 2.5;
-        } else{bonusReflex = 0;}
-        this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
-
-        double bonusWill;
-        if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonusWill = 2.5;
-        } else{bonusWill = 0;}
-        this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
+    
+            double bonusFortitude;
+            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusFortitude = 2.5;
+            } else{bonusFortitude = 0;}
+            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
+    
+            double bonusReflex;
+            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusReflex = 2.5;
+            } else{bonusReflex = 0;}
+            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
+    
+            double bonusWill;
+            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusWill = 2.5;
+            } else{bonusWill = 0;}
+            this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
     }
 
     public void incementSavingThrow() {
-        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+0.5);
-        this.savingThrow.setReflex(this.savingThrow.getReflex()+0.5);
-        this.savingThrow.setWill(this.savingThrow.getWill()+0.5);
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
     }
 
     public void setSkillsTruePcArray(Set<Skills> availableSkills) {
+        for(Skills skill : availableSkills){
+            for(ClassSkills classSkill : classSkills){
+                if(skill.getId() == classSkill.getIdSkill()){
+                    classSkill.setClassSkill(true);
+                }
+            }
+        }
+    }
+
+    public void setSkillsTruecgArray(Set<Skills> availableSkills) {
         for(Skills skill : availableSkills){
             for(ClassSkills classSkill : classSkills){
                 if(skill.getId() == classSkill.getIdSkill()){
@@ -146,13 +158,13 @@ public class Character {
                 if(skillPoints < 1){
                     check = false;
                 }
-                if(skPoints > this.lep+3){
+                if(skPoints > this.ecl+3){
                     check = false;
                 }
-                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.lep+3){
+                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.ecl+3){
                     check = false;
                 }
-                double doubleLEP = (this.lep+3)/2;
+                double doubleLEP = (this.ecl+3)/2;
                 if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
                     check = false;
                 }
@@ -168,5 +180,9 @@ public class Character {
                 }
             }
         }
+    }
+    
+    public void incrementBab(double classBab) {
+        this.bab += classBab;
     }
 }

@@ -9,8 +9,7 @@ public class MapperSavingThrowToDTO {
     SavingThrowDTO savingThrowDTO = new SavingThrowDTO(
         (int)savingThrow.getFortitude(),
         (int)savingThrow.getReflex(),
-        (int)savingThrow.getWill()
-        );      
+        (int)savingThrow.getWill());      
 
         return savingThrowDTO;
     } 

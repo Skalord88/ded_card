@@ -43,6 +43,9 @@ public class ClassCharacter {
     @NonNull
     String savingThrow;
 
+    @NonNull
+    double classBab;
+    
     @ManyToMany
     @JoinTable(
         name = "class_skills",

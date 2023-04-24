@@ -99,45 +99,50 @@ public class CharacterController {
         return new CharacterDTO(character);
     }
 
-    @PostMapping(value="{id}/class",consumes = {"application/json"})
-    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO){
+    @PostMapping(value = "{id}/class", consumes = { "application/json" })
+    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
-        if(!characterOpt.isPresent()){
+        if (!characterOpt.isPresent()) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Character Not Found");
+                    HttpStatus.NOT_FOUND, "Character Not Found");
         }
 
         Character character = characterOpt.get();
 
-        Optional <ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
+        Optional<ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
 
-        if(!classOpt.isPresent()){
+        if (!classOpt.isPresent()) {
             throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Class Not Found");
-            }
-        
+                    HttpStatus.NOT_FOUND, "Class Not Found");
+        }
+
         List <Skills> skillsList = this.skillsRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
-        character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
-
-        character.createSkillsArray(skillsList);
         if(character.getClassSkills().isEmpty()){
             character.createSkillsArray(skillsList);
         }
 
-        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
+        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow(),classCharacter.getClassBab());
+
+        character.incrementEcl();
+
+        if (character.getEcl() == 1){
+            character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+        } else {
+            character.calculateSkillPoints(classCharacter.getSkillPoints());
+        }
          
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
         if(indexClassInDB == -1){
             character.addClassToPcArray(classPc);
-            character.setSkillsTruePcArray(classCharacter.getAvailableSkills());           
+            character.setSkillsTruePcArray(classCharacter.getAvailableSkills()); 
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
         }
@@ -149,12 +154,11 @@ public class CharacterController {
         }else{
             character.incementSavingThrow();
         }
-    
-        character.incrementLep();
         
-        character.calculateSkillPoints(classCharacter.getSkillPoints());
+        character.incrementBab(classCharacter.getClassBab());
         
         this.characterRepository.save(character);
+
         return new CharacterDTO (character);
     }
 
@@ -173,6 +177,7 @@ public class CharacterController {
         character.buySkills(skillsDTO.idSkill, skillsDTO.skillRank);
 
         this.characterRepository.save(character);
-        return new CharacterDTO (character);
+        return new CharacterDTO(character);
     }
+
 }
