@@ -1,5 +1,4 @@
 package pl.kolendateam.dadcard.characterCard.dto;
-
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;

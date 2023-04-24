@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pl.kolendateam.dadcard.characterCard.dto.AbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
@@ -21,31 +23,26 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("character-card")
 public class CharacterController {
-
+    
     ClassRepository classRepository;
     CharacterRepository characterRepository;
+    SkillsRepository skillsRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository) {
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository,SkillsRepository skillsRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
+        this.skillsRepository = skillsRepository;
     }
 
-    @GetMapping(value = "{id}")
-    public CharacterDTO show(@PathVariable int id) {
-
-        Optional<Character> characterOpt = this.characterRepository.findById(id);
-
-        return new CharacterDTO(characterOpt.get());
-    }
-
-    @PostMapping(value = "", consumes = { "application/json" })
-    public CharacterDTO create(@RequestBody CharacterDTO characterDTO) {
-        Character character = new Character(characterDTO.characterName, characterDTO.playerName);
+    @PostMapping(value="",consumes = {"application/json"})
+    public CharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
+        Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
 
@@ -54,6 +51,48 @@ public class CharacterController {
         this.characterRepository.save(character);
 
         return characterDTO;
+    }
+
+    @GetMapping(value = "{id}")
+    public CharacterDTO showCharacter(@PathVariable int id){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+        return new CharacterDTO(character);
+    }
+
+    @PostMapping(value="{id}/ability",consumes = {"application/json"})
+    public CharacterDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilityDTO abilityDTO){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+        
+        Character character = characterOpt.get();  
+
+        Abilitys abilitys = new Abilitys();
+
+        abilitys.setStreght(abilityDTO.streght);
+        abilitys.setDextrity(abilityDTO.dextrity);
+        abilitys.setConstitution(abilityDTO.constitution);
+        abilitys.setIntelligence(abilityDTO.intelligence);
+        abilitys.setWisdom(abilityDTO.wisdom);
+        abilitys.setCharisma(abilityDTO.charisma);
+        
+        character.setAbilitys(abilitys);
+
+        this.characterRepository.save(character);
+
+        return new CharacterDTO(character);
     }
 
     @PostMapping(value = "{id}/class", consumes = { "application/json" })
@@ -92,12 +131,12 @@ public class CharacterController {
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
         if (levelClassInDB == 1) {
-            character.addSTLevelOne(classPc);
+            character.addSavingThrowLevelOne(classPc);
         } else {
-            character.incementST();
+            character.incementSavingThrow();
         }
 
-        character.incrementBab(classPc);
+        character.incrementBab(classCharacter.getClassBab());
 
         character.incrementEcl();
 
