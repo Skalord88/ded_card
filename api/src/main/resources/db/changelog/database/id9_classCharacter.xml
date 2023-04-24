@@ -6,13 +6,16 @@
 
   <changeSet id="9" author="oscar">
       <addColumn tableName="character">
-        <column name="class_pg_array" type="jsonb">
+        <column name="class_pc_array" type="jsonb">
           <constraints nullable="true"/>
         </column>
         <column name="lep" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="saving_throw" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="skill_points" type="double">
           <constraints nullable="true"/>
         </column>
         <column name="class_skills" type="jsonb">

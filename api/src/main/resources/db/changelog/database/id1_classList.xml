@@ -21,6 +21,9 @@
         <column name="saving_throw" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
+        <column name="skill_points" type="int">
+          <constraints nullable="false"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

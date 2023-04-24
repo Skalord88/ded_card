@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class ClassPg implements Serializable{
+public class ClassPc implements Serializable{
     
     int id;
     String name;
@@ -23,18 +23,18 @@ public class ClassPg implements Serializable{
         this.level +=1;
     }
 
-    public int findIndexInArrayById(ArrayList<ClassPg> classPgList){
-        for(int i = 0; i < classPgList.size(); i++) {
-            if(this.id == classPgList.get(i).getId()){
+    public int findIndexInArrayById(ArrayList<ClassPc> classPcList){
+        for(int i = 0; i < classPcList.size(); i++) {
+            if(this.id == classPcList.get(i).getId()){
                 return i;
             }  
         }return -1;
     }
 
-    public int findLevelInArrayById(ArrayList<ClassPg> classPgList, int id) {
-        for(ClassPg clPg : classPgList) {
-            if(this.id == id && clPg.getLevel() == 1){
-                return clPg.getLevel();
+    public int findLevelInArrayById(ArrayList<ClassPc> classPcList, int id) {
+        for(ClassPc clPc : classPcList) {
+            if(this.id == id && clPc.getLevel() == 1){
+                return clPc.getLevel();
             }
         }return 0;
     }

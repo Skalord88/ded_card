@@ -12,6 +12,7 @@ public class MapperSkillsToDTO {
 
         for(ClassSkills skill : skillList){
             SkillsDTO skillDTO = new SkillsDTO();
+                skillDTO.idSkill = skill.getIdSkill();
                 skillDTO.nameSkill = skill.getNameSkill();
                 skillDTO.classSkill = skill.isClassSkill();
                 skillDTO.skillRank = (int)skill.getSkillRank();

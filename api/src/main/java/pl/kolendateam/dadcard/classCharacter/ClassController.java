@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 
@@ -32,29 +32,27 @@ public class ClassController {
 
     }
 
-    public static ArrayList<ClassPgDTO> addClassToList(ClassCharacter classCharacter, Character character, String className) {
+    public static ArrayList<ClassPcDTO> addClassToList(ClassCharacter classCharacter, Character character, String className) {
         
-        ArrayList<ClassPgDTO> classPgListDTO = new ArrayList<ClassPgDTO>();
+        ArrayList<ClassPcDTO> classPcListDTO = new ArrayList<ClassPcDTO>();
                 
-        for (ClassPgDTO classList : classPgListDTO){
-            boolean skipClassPg = false;
+        for (ClassPcDTO classList : classPcListDTO){
+            boolean skipClassPc = false;
             
             if(className.equals(classCharacter.getName())){
                 classList.level = +1;
-                skipClassPg = true;
+                skipClassPc = true;
             }
             
-            if(!skipClassPg){
+            if(!skipClassPc){
                 
-                ClassPgDTO clPg = new ClassPgDTO();
-                clPg.className.equals(classCharacter.getName());
-                clPg.id = classCharacter.getId();
-                clPg.level = 1;
-
+                ClassPcDTO clPc = new ClassPcDTO();
+                clPc.className.equals(classCharacter.getName());
+                clPc.id = classCharacter.getId();
+                clPc.level = 1;
+                
             }
 
-        } return classPgListDTO;
-
+        } return classPcListDTO;
     }
-    
 }

@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClassPgListDTO {
+public class ClassPcListDTO {
 
     public String className;
     public int level;

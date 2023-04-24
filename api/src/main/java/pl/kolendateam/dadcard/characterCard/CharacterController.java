@@ -19,11 +19,12 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassPgDTO;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPg;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
@@ -36,7 +37,7 @@ public class CharacterController {
     SkillsRepository skillsRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository,SkillsRepository skillsRepository){
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository, SkillsRepository skillsRepository){
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.skillsRepository = skillsRepository;
@@ -44,10 +45,11 @@ public class CharacterController {
 
     @PostMapping(value="",consumes = {"application/json"})
     public CharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
+        
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
-
+        
         character.setSavingThrow(savingThrow);
 
         this.characterRepository.save(character);
@@ -98,7 +100,7 @@ public class CharacterController {
     }
 
     @PostMapping(value="{id}/class",consumes = {"application/json"})
-    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPgDTO classPgDTO){
+    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -109,7 +111,7 @@ public class CharacterController {
 
         Character character = characterOpt.get();
 
-        Optional <ClassCharacter> classOpt = this.classRepository.findById(classPgDTO.id);
+        Optional <ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
 
         if(!classOpt.isPresent()){
             throw new ResponseStatusException(
@@ -120,33 +122,56 @@ public class CharacterController {
 
         ClassCharacter classCharacter = classOpt.get();
 
-        ArrayList<ClassPg> classPgList = character.getClassPgArray();
+        ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
+        character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+
+        character.createSkillsArray(skillsList);
         if(character.getClassSkills().isEmpty()){
             character.createSkillsArray(skillsList);
         }
 
-        ClassPg classPg = new ClassPg(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
+        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow());
          
-        int indexClassInDB = classPg.findIndexInArrayById(classPgList);
+        int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
         if(indexClassInDB == -1){
-            character.addClassToPgArray(classPg);
-            character.setSkillsTruePgArray(classCharacter.getAvailableSkills());           
+            character.addClassToPcArray(classPc);
+            character.setSkillsTruePcArray(classCharacter.getAvailableSkills());           
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
         }
 
-        int levelClassInDB = classPg.findLevelInArrayById(classPgList,classCharacter.getId());
+        int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());
 
         if(levelClassInDB == 1){
-            character.addSavingThrowLevelOne(classPg);
+            character.addSavingThrowLevelOne(classPc);
         }else{
             character.incementSavingThrow();
         }
     
         character.incrementLep();
         
+        character.calculateSkillPoints(classCharacter.getSkillPoints());
+        
+        this.characterRepository.save(character);
+        return new CharacterDTO (character);
+    }
+
+    @PostMapping(value="{id}/skill",consumes = {"application/json"})
+    public CharacterDTO buyCharacterSkill(@PathVariable int id, @RequestBody SkillsDTO skillsDTO){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+
+        character.buySkills(skillsDTO.idSkill, skillsDTO.skillRank);
+
         this.characterRepository.save(character);
         return new CharacterDTO (character);
     }
