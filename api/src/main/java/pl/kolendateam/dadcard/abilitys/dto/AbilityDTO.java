@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.characterCard.dto;
+package pl.kolendateam.dadcard.abilitys.dto;
 
 public class AbilityDTO {
 

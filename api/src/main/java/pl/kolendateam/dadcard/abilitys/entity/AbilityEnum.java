@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.characterCard.entity;
+package pl.kolendateam.dadcard.abilitys.entity;
 
 public enum AbilityEnum {
 

@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+         <changeSet id="17" author="oscar">
+            <insert tableName="ability"> 
+                <column  name="id"  value="1"/> 
+                <column  name="name"  value="Streght"/>
+            </insert>
+            <insert tableName="ability"> 
+                <column  name="id"  value="2"/> 
+                <column  name="name"  value="Dextrity"/>
+            </insert>
+            <insert tableName="ability"> 
+                <column  name="id"  value="3"/> 
+                <column  name="name"  value="Constitution"/>
+            </insert>
+            <insert tableName="ability"> 
+                <column  name="id"  value="4"/> 
+                <column  name="name"  value="Intelligence"/>
+            </insert>
+            <insert tableName="ability"> 
+                <column  name="id"  value="5"/> 
+                <column  name="name"  value="Wisdom"/>
+            </insert>
+            <insert tableName="ability"> 
+                <column  name="id"  value="6"/> 
+                <column  name="name"  value="Charisma"/>
+            </insert>
+            </changeSet>
+        </databaseChangeLog>
