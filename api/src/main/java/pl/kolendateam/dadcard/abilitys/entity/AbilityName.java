@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import lombok.NonNull;
 
 @Entity
-public class Ability {
+public class AbilityName {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,8 +17,6 @@ public class Ability {
 
     @NonNull
     @Enumerated(EnumType.STRING)
-    AbilityEnum name;
-
-    
+    AbilityEnum name;   
 
 }

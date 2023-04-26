@@ -5,7 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="15" author="oscar">
-  <createTable tableName="ability">
+  <createTable tableName="ability_name">
         <column name="id" type="int">
           <constraints primaryKey="true"/>
         </column>
@@ -14,7 +14,7 @@
         </column>
       </createTable>
       <createTable tableName="ability_bonus">
-        <column name="id" type="int" autoIncrement="true">
+        <column name="id" type="int">
           <constraints primaryKey="true"/>
         </column>
         <column name="value" type="int">
