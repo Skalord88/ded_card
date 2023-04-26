@@ -35,7 +35,7 @@ public class Skills {
     @JoinTable(
         name = "skill_ability",
         joinColumns = @JoinColumn(name = "skill_id"),
-        inverseJoinColumns = @JoinColumn(name = "ability_id")
+        inverseJoinColumns = @JoinColumn(name = "ability_name_id")
     )
     Set<Skills> attributeOfSkills = new HashSet<>();
     

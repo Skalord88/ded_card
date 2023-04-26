@@ -5,27 +5,27 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
          <changeSet id="17" author="oscar">
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="1"/> 
                 <column  name="name"  value="Streght"/>
             </insert>
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="2"/> 
                 <column  name="name"  value="Dextrity"/>
             </insert>
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="3"/> 
                 <column  name="name"  value="Constitution"/>
             </insert>
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="4"/> 
                 <column  name="name"  value="Intelligence"/>
             </insert>
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="5"/> 
                 <column  name="name"  value="Wisdom"/>
             </insert>
-            <insert tableName="ability"> 
+            <insert tableName="ability_name"> 
                 <column  name="id"  value="6"/> 
                 <column  name="name"  value="Charisma"/>
             </insert>
