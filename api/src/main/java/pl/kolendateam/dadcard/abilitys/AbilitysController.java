@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import pl.kolendateam.dadcard.abilitys.dto.AbilityDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityBonus;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
@@ -34,7 +33,7 @@ public class AbilitysController {
     }
 
     @PostMapping(value="{id}/ability",consumes = {"application/json"})
-    public CharacterDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilityDTO abilityDTO){
+    public CharacterDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilitysDTO abilitysDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -47,14 +46,14 @@ public class AbilitysController {
 
         Abilitys abilitys = new Abilitys();
 
-        abilitys.setStreght(abilityDTO.streght);
-        abilitys.setDextrity(abilityDTO.dextrity);
-        abilitys.setConstitution(abilityDTO.constitution);
-        abilitys.setIntelligence(abilityDTO.intelligence);
-        abilitys.setWisdom(abilityDTO.wisdom);
-        abilitys.setCharisma(abilityDTO.charisma);
+        abilitys.setStreght(abilitysDTO.streght);
+        abilitys.setDextrity(abilitysDTO.dextrity);
+        abilitys.setConstitution(abilitysDTO.constitution);
+        abilitys.setIntelligence(abilitysDTO.intelligence);
+        abilitys.setWisdom(abilitysDTO.wisdom);
+        abilitys.setCharisma(abilitysDTO.charisma);
 
-        Optional<AbilityBonus> valueAbilityStreght = this.abilityBonusRepository.findBonusByValue(abilityDTO.streght);
+        Optional<AbilityBonus> valueAbilityStreght = this.abilityBonusRepository.findBonusByValue(abilitysDTO.streght);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -64,7 +63,7 @@ public class AbilitysController {
         AbilityBonus bonusAbilityStreght = valueAbilityStreght.get();
         abilitys.setStreghtBonus(bonusAbilityStreght.getBonus());
 
-        Optional<AbilityBonus> valueAbilityDextrity = this.abilityBonusRepository.findBonusByValue(abilityDTO.dextrity);
+        Optional<AbilityBonus> valueAbilityDextrity = this.abilityBonusRepository.findBonusByValue(abilitysDTO.dextrity);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -74,7 +73,7 @@ public class AbilitysController {
         AbilityBonus bonusAbilityDextrity = valueAbilityDextrity.get();
         abilitys.setDextrityBonus(bonusAbilityDextrity.getBonus());
 
-        Optional<AbilityBonus> valueAbilityConstitution = this.abilityBonusRepository.findBonusByValue(abilityDTO.constitution);
+        Optional<AbilityBonus> valueAbilityConstitution = this.abilityBonusRepository.findBonusByValue(abilitysDTO.constitution);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -84,7 +83,7 @@ public class AbilitysController {
         AbilityBonus bonusAbilityConstitution = valueAbilityConstitution.get();
         abilitys.setConstitutionBonus(bonusAbilityConstitution.getBonus());
 
-        Optional<AbilityBonus> valueAbilityIntelligence = this.abilityBonusRepository.findBonusByValue(abilityDTO.intelligence);
+        Optional<AbilityBonus> valueAbilityIntelligence = this.abilityBonusRepository.findBonusByValue(abilitysDTO.intelligence);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -94,7 +93,7 @@ public class AbilitysController {
         AbilityBonus bonusAbilityintelligence = valueAbilityIntelligence.get();
         abilitys.setIntelligenceBonus(bonusAbilityintelligence.getBonus());
 
-        Optional<AbilityBonus> valueAbilityWisdom = this.abilityBonusRepository.findBonusByValue(abilityDTO.wisdom);
+        Optional<AbilityBonus> valueAbilityWisdom = this.abilityBonusRepository.findBonusByValue(abilitysDTO.wisdom);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(
@@ -104,7 +103,7 @@ public class AbilitysController {
         AbilityBonus bonusAbilityWisdom = valueAbilityWisdom.get();
         abilitys.setWisdomBonus(bonusAbilityWisdom.getBonus());
 
-        Optional<AbilityBonus> valueAbilityCharisma = this.abilityBonusRepository.findBonusByValue(abilityDTO.charisma);
+        Optional<AbilityBonus> valueAbilityCharisma = this.abilityBonusRepository.findBonusByValue(abilitysDTO.charisma);
 
         if(!characterOpt.isPresent()){
             throw new ResponseStatusException(

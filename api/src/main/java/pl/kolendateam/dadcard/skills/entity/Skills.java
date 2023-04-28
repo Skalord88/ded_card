@@ -1,20 +1,18 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,12 +29,8 @@ public class Skills {
     @Nonnull
     String name;
 
-    @ManyToMany
-    @JoinTable(
-        name = "skill_ability",
-        joinColumns = @JoinColumn(name = "skill_id"),
-        inverseJoinColumns = @JoinColumn(name = "ability_name_id")
-    )
-    Set<Skills> attributeOfSkills = new HashSet<>();
+    @NonNull
+    @Enumerated(EnumType.STRING)
+    AbilityEnum ability;
     
 }

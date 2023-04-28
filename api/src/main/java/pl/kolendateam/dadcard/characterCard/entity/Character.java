@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
@@ -137,19 +138,38 @@ public class Character {
                 skill.setIdSkill(skillsList.get(x).getId());
                 skill.setNameSkill(skillsList.get(x).getName());
                 skill.setClassSkill(false);
-                skill.setSkillRank(0);
-            
+                AbilityEnum ability = skillsList.get(x).getAbility();
+                switch (ability) {
+                    case STRENGHT:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getStreghtBonus());
+                    break;
+                    case DEXTRITY:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getDextrityBonus());
+                    break;
+                    case CONSTITUTION:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getConstitutionBonus());
+                    break;
+                    case INTELLIGENCE:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getIntelligenceBonus());
+                    break;
+                    case WISDOM:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getWisdomBonus());
+                    break;
+                    case CHARISMA:
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.getCharismaBonus());
+                    break;
+                }
                 this.classSkills.add(skill);
             }
         }
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints = skPoints * 3;
+        this.skillPoints = (skPoints+abilitys.getIntelligenceBonus()) * 3;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += skPoints;
+        this.skillPoints += abilitys.getIntelligenceBonus()+skPoints;
     }
 
     public void buySkills(int idSkill, int skPoints) {
@@ -171,11 +191,11 @@ public class Character {
                 }
                 if(check == true){
                     if(skill.isClassSkill()==true){
-                    skill.setSkillRank(+skPoints);
+                    skill.setSkillRank(skill.getSkillRank()+skPoints);
                     this.skillPoints -= skPoints;
                     }
                     if(skill.isClassSkill()==false){
-                    skill.setSkillRank(+skPoints/2);
+                    skill.setSkillRank(skill.getSkillRank()+skPoints/2);
                     this.skillPoints -= skPoints;
                     }
                 }
