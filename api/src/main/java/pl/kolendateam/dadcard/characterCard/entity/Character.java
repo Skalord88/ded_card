@@ -216,28 +216,24 @@ public class Character {
 
         vita.setLife(this.abilitys.getConstitution());
         HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 1);
+        vitaMap.put(hitDice, 0);
         vita.setHitDices(vitaMap);
         vita.setHitPoints(hitDice+this.abilitys.getConstitutionBonus());
 
         this.vitality = vita;
     }
 
-    public void hitPointsNewLevel(int hitDice, int id) {
+    public void hitPointsNewLevel(int hitDice) {
 
-        //nie działa
+        Integer hD = vitality.hitDices.get(hitDice);
 
-        for(ClassPc clPc :classPcArray){
-            if(clPc.getLevel()==id){
-                for(int v : vitality.hitDices.keySet()){
-                    if(v==hitDice){
-                        this.vitality.hitDices.replace(hitDice,clPc.getLevel()+1);
-                }
-            }
-        } else {
-            this.vitality.hitDices.put(hitDice,1);
+        if(hD==null){
+            hD=1;
+        } else{
+            hD++;
         }
-    }
+            
+        this.vitality.hitDices.put(hitDice, hD);
 
         if(ecl % 2 == 0){
             this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
