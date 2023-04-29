@@ -35,6 +35,7 @@ public class ClassPc implements Serializable {
     }
 
     public int findLevelInArrayById(ArrayList<ClassPc> classPcList, int id) {
+        
         for (ClassPc clPc : classPcList) {
             if (this.id == id && clPc.level == 1) {
                 return clPc.getLevel();

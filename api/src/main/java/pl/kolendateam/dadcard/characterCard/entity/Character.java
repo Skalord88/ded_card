@@ -223,9 +223,21 @@ public class Character {
         this.vitality = vita;
     }
 
-    public void hitPointsNewLevel(int hitDice) {
+    public void hitPointsNewLevel(int hitDice, int id) {
 
-        vitality.hitDices.put(hitDice, vitality.hitDices.get(hitDice) + 1);
+        //nie działa
+
+        for(ClassPc clPc :classPcArray){
+            if(clPc.getLevel()==id){
+                for(int v : vitality.hitDices.keySet()){
+                    if(v==hitDice){
+                        this.vitality.hitDices.replace(hitDice,clPc.getLevel()+1);
+                }
+            }
+        } else {
+            this.vitality.hitDices.put(hitDice,1);
+        }
+    }
 
         if(ecl % 2 == 0){
             this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
