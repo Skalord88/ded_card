@@ -17,6 +17,7 @@ public class ClassPc implements Serializable {
     int id;
     String name;
     int level;
+    int hitDice;
     String savingThrow;
     double classBab;
 

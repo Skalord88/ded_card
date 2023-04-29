@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -43,6 +44,9 @@ public class Character {
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    Vitality vitality;
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
@@ -205,5 +209,28 @@ public class Character {
     
     public void incrementBab(double classBab) {
         this.bab += classBab;
+    }
+
+    public void hitPointsFirstLevel(int hitDice) {
+        Vitality vita = new Vitality();
+
+        vita.setLife(this.abilitys.getConstitution());
+        HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
+        vitaMap.put(hitDice, 1);
+        vita.setHitDices(vitaMap);
+        vita.setHitPoints(hitDice+this.abilitys.getConstitutionBonus());
+
+        this.vitality = vita;
+    }
+
+    public void hitPointsNewLevel(int hitDice) {
+
+        vitality.hitDices.put(hitDice, vitality.hitDices.get(hitDice) + 1);
+
+        if(ecl % 2 == 0){
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
+        } else {
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
+        }
     }
 }

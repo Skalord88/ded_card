@@ -41,6 +41,9 @@ public class ClassCharacter {
     String avatarUrl;
 
     @NonNull
+    int hitDice;
+
+    @NonNull
     String savingThrow;
 
     @NonNull
