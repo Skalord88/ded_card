@@ -6,7 +6,6 @@ import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
@@ -18,6 +17,7 @@ import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 public class CharacterDTO {
     public String characterName;
     public String playerName;
+    public String subRace;
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
@@ -31,6 +31,7 @@ public class CharacterDTO {
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
+        this.subRace = character.getSubRace();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl();

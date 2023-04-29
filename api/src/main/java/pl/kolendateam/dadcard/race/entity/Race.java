@@ -3,12 +3,16 @@ package pl.kolendateam.dadcard.race.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import org.json.JSONObject;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,6 +38,9 @@ public class Race {
     
     @NonNull
     String avatarUrl;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    JSONObject abilitys;
 
     @ManyToMany
     @JoinTable(

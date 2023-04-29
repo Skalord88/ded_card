@@ -21,6 +21,7 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -39,6 +40,8 @@ public class Character {
 
     @NonNull
     String playerName;
+
+    String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
@@ -240,5 +243,8 @@ public class Character {
         } else {
             this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
         }
+    }
+
+    public void setCharacterRace(Race race) {
     }
 }
