@@ -246,5 +246,6 @@ public class Character {
     }
 
     public void setCharacterRace(Race race) {
+        this.subRace = race.getSubRaceName();
     }
 }
