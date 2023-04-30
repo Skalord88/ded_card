@@ -241,4 +241,14 @@ public class Character {
             this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
         }
     }
+
+    public int streghtAttack() {
+        int streghtAttack = (int)bab+abilitys.getStreghtBonus();
+        return streghtAttack;
+    }
+
+    public int dextrityAttack() {
+        int dextrityAttack = (int)bab+abilitys.getDextrityBonus();
+        return dextrityAttack;
+    }
 }
