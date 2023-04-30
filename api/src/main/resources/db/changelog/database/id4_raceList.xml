@@ -15,9 +15,9 @@
         <column name="sub_race_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <!-- <column name="abilitys" type="jsonb">
+        <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>
-        </column> -->
+        </column>
         <column name="avatar_url" type="varchar(255)">
           <constraints nullable="false"/>
         </column>

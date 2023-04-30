@@ -1,7 +1,11 @@
 package pl.kolendateam.dadcard.race.entity;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
 @NoArgsConstructor
 @Getter
@@ -35,8 +40,8 @@ public class Race {
     @NonNull
     String avatarUrl;
 
-    // @JdbcTypeCode(SqlTypes.JSON)
-    // JSONObject abilitys;
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap <AbilityEnum,Integer> abilitys;
 
     @ManyToMany
     @JoinTable(
