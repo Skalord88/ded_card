@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.abilitys;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,65 +54,43 @@ public class AbilitysController {
         abilitys.setWisdom(abilitysDTO.wisdom);
         abilitys.setCharisma(abilitysDTO.charisma);
 
-        Optional<AbilityBonus> valueAbilityStreght = this.abilityBonusRepository.findBonusByValue(abilitysDTO.streght);
+        List <AbilityBonus> valueAbility = this.abilityBonusRepository.findAll();
 
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Streght Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.streght){
+                abilitys.setStreghtBonus(value.getBonus());
+            }
         }
 
-        AbilityBonus bonusAbilityStreght = valueAbilityStreght.get();
-        abilitys.setStreghtBonus(bonusAbilityStreght.getBonus());
-
-        Optional<AbilityBonus> valueAbilityDextrity = this.abilityBonusRepository.findBonusByValue(abilitysDTO.dextrity);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Dextrity Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.dextrity){
+                abilitys.setDextrityBonus(value.getBonus());
+            }
         }
 
-        AbilityBonus bonusAbilityDextrity = valueAbilityDextrity.get();
-        abilitys.setDextrityBonus(bonusAbilityDextrity.getBonus());
-
-        Optional<AbilityBonus> valueAbilityConstitution = this.abilityBonusRepository.findBonusByValue(abilitysDTO.constitution);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Constitution Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.constitution){
+                abilitys.setConstitutionBonus(value.getBonus());
+            }
         }
 
-        AbilityBonus bonusAbilityConstitution = valueAbilityConstitution.get();
-        abilitys.setConstitutionBonus(bonusAbilityConstitution.getBonus());
-
-        Optional<AbilityBonus> valueAbilityIntelligence = this.abilityBonusRepository.findBonusByValue(abilitysDTO.intelligence);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Intelligence Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.intelligence){
+                abilitys.setIntelligenceBonus(value.getBonus());
+            }
         }
 
-        AbilityBonus bonusAbilityintelligence = valueAbilityIntelligence.get();
-        abilitys.setIntelligenceBonus(bonusAbilityintelligence.getBonus());
-
-        Optional<AbilityBonus> valueAbilityWisdom = this.abilityBonusRepository.findBonusByValue(abilitysDTO.wisdom);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Wisdom Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.wisdom){
+                abilitys.setWisdomBonus(value.getBonus());
+            }
         }
 
-        AbilityBonus bonusAbilityWisdom = valueAbilityWisdom.get();
-        abilitys.setWisdomBonus(bonusAbilityWisdom.getBonus());
-
-        Optional<AbilityBonus> valueAbilityCharisma = this.abilityBonusRepository.findBonusByValue(abilitysDTO.charisma);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Charisma Not Found");
+        for(AbilityBonus value : valueAbility){
+            if(value.getValue()==abilitysDTO.charisma){
+                abilitys.setCharismaBonus(value.getBonus());
+            }
         }
-
-        AbilityBonus bonusAbilityCharisma = valueAbilityCharisma.get();
-        abilitys.setCharismaBonus(bonusAbilityCharisma.getBonus());
         
         character.setAbilitys(abilitys);
 
