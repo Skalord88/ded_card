@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.abilitys;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
-import pl.kolendateam.dadcard.abilitys.entity.AbilityBonus;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.abilitys.repository.AbilityBonusRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -25,12 +22,10 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 public class AbilitysController {
 
     CharacterRepository characterRepository;
-    AbilityBonusRepository abilityBonusRepository;
 
     @Autowired
-    AbilitysController(CharacterRepository characterRepository, AbilityBonusRepository abilityBonusRepository){
+    AbilitysController(CharacterRepository characterRepository){
         this.characterRepository = characterRepository;
-        this.abilityBonusRepository = abilityBonusRepository;
     }
 
     @PostMapping(value="{id}/ability",consumes = {"application/json"})
@@ -48,17 +43,11 @@ public class AbilitysController {
         Abilitys abilitys = new Abilitys();
 
         abilitys.setStreght(abilitysDTO.streght);
-        abilitys.setStreghtBonus((abilitysDTO.streght-10)/2);
         abilitys.setDextrity(abilitysDTO.dextrity);
-        abilitys.setDextrityBonus((abilitysDTO.dextrity-10)/2);
         abilitys.setConstitution(abilitysDTO.constitution);
-        abilitys.setConstitutionBonus((abilitysDTO.constitution-10)/2);
         abilitys.setIntelligence(abilitysDTO.intelligence);
-        abilitys.setIntelligenceBonus((abilitysDTO.intelligence-10)/2);
         abilitys.setWisdom(abilitysDTO.wisdom);
-        abilitys.setWisdomBonus((abilitysDTO.wisdom-10)/2);
         abilitys.setCharisma(abilitysDTO.charisma);
-        abilitys.setCharismaBonus((abilitysDTO.charisma-10)/2);
 
         character.setAbilitys(abilitys);
 
