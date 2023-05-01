@@ -13,16 +13,5 @@
           <constraints nullable="false"/>
         </column>
       </createTable>
-      <createTable tableName="ability_bonus">
-        <column name="id" type="int">
-          <constraints primaryKey="true"/>
-        </column>
-        <column name="value" type="int">
-          <constraints nullable="false"/>
-        </column>
-        <column name="bonus" type="int">
-          <constraints nullable="false"/>
-        </column>
-      </createTable>
   </changeSet>
 </databaseChangeLog>

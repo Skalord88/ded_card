@@ -48,50 +48,18 @@ public class AbilitysController {
         Abilitys abilitys = new Abilitys();
 
         abilitys.setStreght(abilitysDTO.streght);
+        abilitys.setStreghtBonus((abilitysDTO.streght-10)/2);
         abilitys.setDextrity(abilitysDTO.dextrity);
+        abilitys.setDextrityBonus((abilitysDTO.dextrity-10)/2);
         abilitys.setConstitution(abilitysDTO.constitution);
+        abilitys.setConstitutionBonus((abilitysDTO.constitution-10)/2);
         abilitys.setIntelligence(abilitysDTO.intelligence);
+        abilitys.setIntelligenceBonus((abilitysDTO.intelligence-10)/2);
         abilitys.setWisdom(abilitysDTO.wisdom);
+        abilitys.setWisdomBonus((abilitysDTO.wisdom-10)/2);
         abilitys.setCharisma(abilitysDTO.charisma);
+        abilitys.setCharismaBonus((abilitysDTO.charisma-10)/2);
 
-        List <AbilityBonus> valueAbility = this.abilityBonusRepository.findAll();
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.streght){
-                abilitys.setStreghtBonus(value.getBonus());
-            }
-        }
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.dextrity){
-                abilitys.setDextrityBonus(value.getBonus());
-            }
-        }
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.constitution){
-                abilitys.setConstitutionBonus(value.getBonus());
-            }
-        }
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.intelligence){
-                abilitys.setIntelligenceBonus(value.getBonus());
-            }
-        }
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.wisdom){
-                abilitys.setWisdomBonus(value.getBonus());
-            }
-        }
-
-        for(AbilityBonus value : valueAbility){
-            if(value.getValue()==abilitysDTO.charisma){
-                abilitys.setCharismaBonus(value.getBonus());
-            }
-        }
-        
         character.setAbilitys(abilitys);
 
         this.characterRepository.save(character);
