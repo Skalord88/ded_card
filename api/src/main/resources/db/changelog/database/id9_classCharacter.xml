@@ -15,6 +15,9 @@
         <column name="ecl" type="int">
           <constraints nullable="true"/>
         </column>
+        <column name="vitality" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
         <column name="saving_throw" type="jsonb">
           <constraints nullable="true"/>
         </column>

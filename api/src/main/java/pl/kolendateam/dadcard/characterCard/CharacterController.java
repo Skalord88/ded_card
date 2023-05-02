@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
@@ -47,7 +48,9 @@ public class CharacterController {
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
-        
+        Vitality vitality = new Vitality();
+
+        character.setVitality(vitality);
         character.setSavingThrow(savingThrow);
 
         this.characterRepository.save(character);
@@ -98,15 +101,18 @@ public class CharacterController {
             character.createSkillsArray(skillsList);
         }
 
-        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getSavingThrow(),classCharacter.getClassBab());
+        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getHitDice(),classCharacter.getSavingThrow(),classCharacter.getClassBab());
 
         character.incrementEcl();
 
         if (character.getEcl() == 1){
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+            character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
             character.calculateSkillPoints(classCharacter.getSkillPoints());
         }
+
+        character.hitPointsNewLevel(classCharacter.getHitDice());
          
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 

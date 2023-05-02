@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
@@ -19,6 +20,7 @@ public class CharacterDTO {
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
+    public VitalityDTO vitality;
     public int streghtAttack;
     public int dextrityAttack;
     public SavingThrowDTO savingThrows;
@@ -31,8 +33,9 @@ public class CharacterDTO {
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl();
-        this.streghtAttack = (int) character.getBab();
-        this.dextrityAttack = (int) character.getBab();
+        this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
+        this.streghtAttack = character.streghtAttack();
+        this.dextrityAttack = character.dextrityAttack();
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());

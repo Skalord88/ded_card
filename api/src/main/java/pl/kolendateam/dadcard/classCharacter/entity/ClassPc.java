@@ -17,6 +17,7 @@ public class ClassPc implements Serializable {
     int id;
     String name;
     int level;
+    int hitDice;
     String savingThrow;
     double classBab;
 
@@ -34,6 +35,7 @@ public class ClassPc implements Serializable {
     }
 
     public int findLevelInArrayById(ArrayList<ClassPc> classPcList, int id) {
+        
         for (ClassPc clPc : classPcList) {
             if (this.id == id && clPc.level == 1) {
                 return clPc.getLevel();
