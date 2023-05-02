@@ -31,8 +31,8 @@ public class CharacterDTO {
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl();
-        this.streghtAttack = (int) character.getBab()+character.getAbilitys().getStreghtBonus();
-        this.dextrityAttack = (int) character.getBab()+character.getAbilitys().getDextrityBonus();
+        this.streghtAttack = (int) character.getBab();
+        this.dextrityAttack = (int) character.getBab();
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());

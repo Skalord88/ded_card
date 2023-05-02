@@ -141,22 +141,22 @@ public class Character {
                 AbilityEnum ability = skillsList.get(x).getAbility();
                 switch (ability) {
                     case STRENGHT:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getStreghtBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusStreght(abilitys));
                     break;
                     case DEXTRITY:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getDextrityBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusDextrity(abilitys));
                     break;
                     case CONSTITUTION:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getConstitutionBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusConstitution(abilitys));
                     break;
                     case INTELLIGENCE:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getIntelligenceBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusIntelligence(abilitys));
                     break;
                     case WISDOM:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getWisdomBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusWisdom(abilitys));
                     break;
                     case CHARISMA:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getCharismaBonus());
+                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusCharisma(abilitys));
                     break;
                 }
                 this.classSkills.add(skill);
@@ -165,11 +165,11 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints = (skPoints+abilitys.getIntelligenceBonus()) * 3;
+        this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += abilitys.getIntelligenceBonus()+skPoints;
+        this.skillPoints += abilitys.bonusIntelligence(abilitys)+skPoints;
     }
 
     public void buySkills(int idSkill, int skPoints) {
