@@ -44,4 +44,5 @@ public class Abilitys implements Serializable{
         int bonusCharisma = (int)(abilitys.getCharisma()-10)/2;
         return bonusCharisma;
     }
+    
 }

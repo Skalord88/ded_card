@@ -54,6 +54,7 @@ public class AbilitysController {
         this.characterRepository.save(character);
 
         return new CharacterDTO(character);
+        
     }
     
 }
