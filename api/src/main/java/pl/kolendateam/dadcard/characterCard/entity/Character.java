@@ -164,7 +164,6 @@ public class Character {
         }
     }
 
-
     public void calculateSkillPointsFirstLevel(int skPoints) {
         this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
     }
