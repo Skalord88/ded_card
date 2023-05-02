@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -248,4 +250,16 @@ public class Character {
     public void setCharacterRace(Race race) {
         this.subRace = race.getSubRaceName();
     }
+
+    public void abilityRace(String abilitys) {
+        String jsonAbilitys = abilitys;
+        JSONObject objAbilitys = new JSONObject(jsonAbilitys);
+
+        JSONArray arrAbilitys = objAbilitys.getJSONArray().equals("objAbilitys");
+                for (int i = 0; i < arr.length(); i++)
+            {
+                String post_id = arr.getJSONObject(i).getString("post_id");
+            }
+
+        }
 }

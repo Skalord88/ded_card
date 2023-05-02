@@ -35,8 +35,7 @@ public class Race {
     @NonNull
     String avatarUrl;
 
-    // @JdbcTypeCode(SqlTypes.JSON)
-    // JSONObject abilitys;
+    String abilitys;
 
     @ManyToMany
     @JoinTable(
