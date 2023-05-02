@@ -11,5 +11,5 @@ public class ClassSkills {
     String nameSkill;
     boolean classSkill;
     double skillRank;
-    
+
 }

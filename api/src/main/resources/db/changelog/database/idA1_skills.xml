@@ -12,9 +12,9 @@
         <column name="name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <!-- <column name="attribute" type="varchar(255)">
+        <column name="ability" type="varchar(255)">
           <constraints nullable="false"/>
-        </column> -->
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

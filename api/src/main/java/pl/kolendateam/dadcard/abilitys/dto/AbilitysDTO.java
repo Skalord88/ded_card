@@ -1,6 +1,9 @@
-package pl.kolendateam.dadcard.characterCard.dto;
+package pl.kolendateam.dadcard.abilitys.dto;
 
-public class AbilityDTO {
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class AbilitysDTO {
 
     public int streght;
     public int dextrity;
