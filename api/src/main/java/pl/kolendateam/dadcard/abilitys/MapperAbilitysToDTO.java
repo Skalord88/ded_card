@@ -8,17 +8,11 @@ public class MapperAbilitysToDTO {
         
         AbilitysDTO abilitysDTO = new AbilitysDTO(
             abilitys.getStreght(),
-            abilitys.getStreghtBonus(),
             abilitys.getDextrity(),
-            abilitys.getDextrityBonus(),
             abilitys.getConstitution(),
-            abilitys.getConstitutionBonus(),
             abilitys.getIntelligence(),
-            abilitys.getIntelligenceBonus(),
             abilitys.getWisdom(),
-            abilitys.getWisdomBonus(),
-            abilitys.getCharisma(),
-            abilitys.getCharismaBonus()
+            abilitys.getCharisma()
             );
             
             return abilitysDTO;

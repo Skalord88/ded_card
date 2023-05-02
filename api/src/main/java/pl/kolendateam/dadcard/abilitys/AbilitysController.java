@@ -24,12 +24,10 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 public class AbilitysController {
 
     CharacterRepository characterRepository;
-    AbilityBonusRepository abilityBonusRepository;
 
     @Autowired
-    AbilitysController(CharacterRepository characterRepository, AbilityBonusRepository abilityBonusRepository){
+    AbilitysController(CharacterRepository characterRepository){
         this.characterRepository = characterRepository;
-        this.abilityBonusRepository = abilityBonusRepository;
     }
 
     @PostMapping(value="{id}/ability",consumes = {"application/json"})
@@ -53,66 +51,6 @@ public class AbilitysController {
         abilitys.setWisdom(abilitysDTO.wisdom);
         abilitys.setCharisma(abilitysDTO.charisma);
 
-        Optional<AbilityBonus> valueAbilityStreght = this.abilityBonusRepository.findBonusByValue(abilitysDTO.streght);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Streght Not Found");
-        }
-
-        AbilityBonus bonusAbilityStreght = valueAbilityStreght.get();
-        abilitys.setStreghtBonus(bonusAbilityStreght.getBonus());
-
-        Optional<AbilityBonus> valueAbilityDextrity = this.abilityBonusRepository.findBonusByValue(abilitysDTO.dextrity);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Dextrity Not Found");
-        }
-
-        AbilityBonus bonusAbilityDextrity = valueAbilityDextrity.get();
-        abilitys.setDextrityBonus(bonusAbilityDextrity.getBonus());
-
-        Optional<AbilityBonus> valueAbilityConstitution = this.abilityBonusRepository.findBonusByValue(abilitysDTO.constitution);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Constitution Not Found");
-        }
-
-        AbilityBonus bonusAbilityConstitution = valueAbilityConstitution.get();
-        abilitys.setConstitutionBonus(bonusAbilityConstitution.getBonus());
-
-        Optional<AbilityBonus> valueAbilityIntelligence = this.abilityBonusRepository.findBonusByValue(abilitysDTO.intelligence);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Intelligence Not Found");
-        }
-
-        AbilityBonus bonusAbilityintelligence = valueAbilityIntelligence.get();
-        abilitys.setIntelligenceBonus(bonusAbilityintelligence.getBonus());
-
-        Optional<AbilityBonus> valueAbilityWisdom = this.abilityBonusRepository.findBonusByValue(abilitysDTO.wisdom);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Wisdom Not Found");
-        }
-
-        AbilityBonus bonusAbilityWisdom = valueAbilityWisdom.get();
-        abilitys.setWisdomBonus(bonusAbilityWisdom.getBonus());
-
-        Optional<AbilityBonus> valueAbilityCharisma = this.abilityBonusRepository.findBonusByValue(abilitysDTO.charisma);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Value Charisma Not Found");
-        }
-
-        AbilityBonus bonusAbilityCharisma = valueAbilityCharisma.get();
-        abilitys.setCharismaBonus(bonusAbilityCharisma.getBonus());
-        
         character.setAbilitys(abilitys);
 
         this.characterRepository.save(character);

@@ -6,6 +6,9 @@
 
   <changeSet id="9" author="oscar">
       <addColumn tableName="character">
+        <column name="abilitys" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
         <column name="class_pc_array" type="jsonb">
           <constraints nullable="true"/>
         </column>
