@@ -17,31 +17,31 @@ public class Abilitys implements Serializable{
     int charisma;
 
     public int bonusStreght (Abilitys abilitys){
-        int bonusStreght = (abilitys.getStreght()-10)/2;
+        int bonusStreght = (int)(abilitys.getStreght()-10)/2;
         return bonusStreght;
     }
 
     public int bonusDextrity (Abilitys abilitys){
-        int bonusDextrity = (abilitys.getDextrity()-10)/2;
+        int bonusDextrity = (int)(abilitys.getDextrity()-10)/2;
         return bonusDextrity;
     }
 
     public int bonusConstitution (Abilitys abilitys){
-        int bonusConstitution = (abilitys.getConstitution()-10)/2;
+        int bonusConstitution = (int)(abilitys.getConstitution()-10)/2;
         return bonusConstitution;
     }
 
     public int bonusIntelligence (Abilitys abilitys){
-        int bonusIntelligence = (abilitys.getIntelligence()-10)/2;
+        int bonusIntelligence = (int)(abilitys.getIntelligence()-10)/2;
         return bonusIntelligence;
     }
 
     public int bonusWisdom (Abilitys abilitys){
-        int bonusWisdom = (abilitys.getWisdom()-10)/2;
+        int bonusWisdom = (int)(abilitys.getWisdom()-10)/2;
         return bonusWisdom;
     }
     public int bonusCharisma (Abilitys abilitys){
-        int bonusCharisma = (abilitys.getCharisma()-10)/2;
+        int bonusCharisma = (int)(abilitys.getCharisma()-10)/2;
         return bonusCharisma;
     }
 }
