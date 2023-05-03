@@ -45,14 +45,14 @@
           <column  name="id"  value="7"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gold"/>
-              <column  name="abilitys"  value="{CONSTITUTION:2/DEXTRITY:-2}"/>
+              <column  name="abilitys"  value="[{/DEXTRITY/:-2,/CONSTITUTION/:2}]"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="race">  
           <column  name="id"  value="8"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gray"/>
-              <column  name="abilitys"  value="{CONSTITUTION:2/CHARISMA:-4}"/>
+              <!-- <column  name="abilitys"  value="{CONSTITUTION:2/CHARISMA:-4}"/> -->
               <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="race">  

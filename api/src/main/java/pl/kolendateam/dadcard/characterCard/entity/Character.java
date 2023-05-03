@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.tomcat.util.json.JSONParser;
+import org.apache.tomcat.util.json.ParseException;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.json.JSONArray;
@@ -150,24 +152,6 @@ public class Character {
                 AbilityEnum ability = skillsList.get(x).getAbility();
                 switch (ability) {
                     case STRENGHT:
-<<<<<<< HEAD
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getStreghtBonus());
-                    break;
-                    case DEXTRITY:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getDextrityBonus());
-                    break;
-                    case CONSTITUTION:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getConstitutionBonus());
-                    break;
-                    case INTELLIGENCE:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getIntelligenceBonus());
-                    break;
-                    case WISDOM:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getWisdomBonus());
-                    break;
-                    case CHARISMA:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.getCharismaBonus());
-=======
                     skill.setSkillRank(skill.getSkillRank()+abilitys.bonusStreght(abilitys));
                     break;
                     case DEXTRITY:
@@ -184,7 +168,6 @@ public class Character {
                     break;
                     case CHARISMA:
                     skill.setSkillRank(skill.getSkillRank()+abilitys.bonusCharisma(abilitys));
->>>>>>> main
                     break;
                 }
                 this.classSkills.add(skill);
@@ -193,19 +176,11 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-<<<<<<< HEAD
-        this.skillPoints = (skPoints+abilitys.getIntelligenceBonus()) * 3;
-    }
-
-    public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += abilitys.getIntelligenceBonus()+skPoints;
-=======
         this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
     }
 
     public void calculateSkillPoints(int skPoints) {
         this.skillPoints += abilitys.bonusIntelligence(abilitys)+skPoints;
->>>>>>> main
     }
 
     public void buySkills(int idSkill, int skPoints) {
@@ -278,17 +253,44 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void abilityRace(String abilitys) {
-        String jsonAbilitys = abilitys;
-        JSONObject objAbilitys = new JSONObject(jsonAbilitys);
+    public void abilityRace(String raceAbilitys) throws ParseException {
 
-        JSONArray arrAbilitys = objAbilitys.getJSONArray().equals("objAbilitys");
-                for (int i = 0; i < arr.length(); i++)
-            {
-                String post_id = arr.getJSONObject(i).getString("post_id");
+        JSONArray jsonAbilityArray = new JSONArray();
+
+        JSONParser parser = new JSONParser(raceAbilitys);
+        Object obj = parser.parseArray();
+        jsonAbilityArray = (JSONArray)obj;
+
+        for (int a = 0; a <jsonAbilityArray.length(); a++){
+            JSONObject jsonAbilityObject = jsonAbilityArray.getJSONObject(a);
+
+            AbilityEnum raceAbEnum = (AbilityEnum) jsonAbilityObject.get(raceAbilitys);
+
+            int raceAb = jsonAbilityObject.getInt(raceAbilitys);
+            
+            switch (raceAbEnum) {
+                case STRENGHT:
+                this.abilitys.setStreght(+raceAb);
+                break;
+                case DEXTRITY:
+                this.abilitys.setDextrity(+raceAb);
+                break;
+                case CONSTITUTION:
+                this.abilitys.setConstitution(+raceAb);
+                break;
+                case INTELLIGENCE:
+                this.abilitys.setIntelligence(+raceAb);
+                break;
+                case WISDOM:
+                this.abilitys.setWisdom(+raceAb);
+                break;
+                case CHARISMA:
+                this.abilitys.setCharisma(+raceAb);
+                break;
             }
-
         }
+    }
+
     public int streghtAttack() {
         int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
         return streghtAttack;
