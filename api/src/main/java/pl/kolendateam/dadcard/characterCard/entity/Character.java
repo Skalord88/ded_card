@@ -258,12 +258,8 @@ public class Character {
         Gson gson = new Gson();
         Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
 
-        this.abilitys.setStreght(abilitys.getStreght()+jsonObjectAbilitys.getStreght());
-        this.abilitys.setDextrity(abilitys.getDextrity()+jsonObjectAbilitys.getDextrity());
-        this.abilitys.setConstitution(abilitys.getConstitution()+jsonObjectAbilitys.getConstitution());
-        this.abilitys.setIntelligence(abilitys.getIntelligence()+jsonObjectAbilitys.getIntelligence());
-        this.abilitys.setWisdom(abilitys.getWisdom()+jsonObjectAbilitys.getWisdom());
-        this.abilitys.setCharisma(abilitys.getCharisma()+jsonObjectAbilitys.getCharisma());
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {
