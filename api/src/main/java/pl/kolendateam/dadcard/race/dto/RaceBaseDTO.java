@@ -12,7 +12,6 @@ public class RaceBaseDTO {
 
     public ArrayList<SubRaceBaseDTO> subRaces;
 
-
     public RaceBaseDTO(Race race){
         this.avatarRaceUrl = race.getAvatarUrl();
         this.raceName = race.getRacesName();
