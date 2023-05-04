@@ -222,7 +222,7 @@ public class Character {
 
         vita.setLife(abilitys.getConstitution());
         HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 0);
+        vitaMap.put(hitDice, 1);
         vita.setHitDices(vitaMap);
         vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
 
@@ -241,11 +241,10 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        if(ecl % 2 == 0){
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2)+abilitys.bonusConstitution(abilitys));
-        } else {
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2+1)+abilitys.bonusConstitution(abilitys));
-        }
+        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+
+        this.vitality.setHitPoints(+hP);
+
     }
 
     public void setCharacterRace(Race race) {
@@ -259,7 +258,7 @@ public class Character {
         Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
 
         this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-        
+
     }
 
     public int streghtAttack() {
