@@ -17,6 +17,7 @@ import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 public class CharacterDTO {
     public String characterName;
     public String playerName;
+    public String race;
     public String subRace;
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
@@ -31,6 +32,7 @@ public class CharacterDTO {
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
+        this.race = character.getRace();
         this.subRace = character.getSubRace();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());

@@ -9,6 +9,9 @@
         <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="race" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
         <column name="sub_race" type="varchar(255)">
           <constraints nullable="true"/>
         </column>

@@ -5,12 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.tomcat.util.json.JSONParser;
-import org.apache.tomcat.util.json.ParseException;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -45,6 +43,7 @@ public class Character {
     @NonNull
     String playerName;
 
+    String race;
     String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
@@ -221,11 +220,11 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
         Vitality vita = new Vitality();
 
-        vita.setLife(this.abilitys.getConstitution());
+        vita.setLife(abilitys.getConstitution());
         HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
         vitaMap.put(hitDice, 0);
         vita.setHitDices(vitaMap);
-        vita.setHitPoints(hitDice+this.abilitys.bonusConstitution(abilitys));
+        vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
 
         this.vitality = vita;
     }
@@ -243,52 +242,28 @@ public class Character {
         this.vitality.hitDices.put(hitDice, hD);
 
         if(ecl % 2 == 0){
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2)+abilitys.bonusConstitution(abilitys));
         } else {
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2+1)+abilitys.bonusConstitution(abilitys));
         }
     }
 
     public void setCharacterRace(Race race) {
+        this.race = race.getRacesName();
         this.subRace = race.getSubRaceName();
     }
 
-    public void abilityRace(String raceAbilitys) throws ParseException {
+    public void addAbilityRace(String raceAbilitys) {
 
-        JSONArray jsonAbilityArray = new JSONArray();
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
 
-        JSONParser parser = new JSONParser(raceAbilitys);
-        Object obj = parser.parseArray();
-        jsonAbilityArray = (JSONArray)obj;
-
-        for (int a = 0; a <jsonAbilityArray.length(); a++){
-            JSONObject jsonAbilityObject = jsonAbilityArray.getJSONObject(a);
-
-            AbilityEnum raceAbEnum = (AbilityEnum) jsonAbilityObject.get(raceAbilitys);
-
-            int raceAb = jsonAbilityObject.getInt(raceAbilitys);
-            
-            switch (raceAbEnum) {
-                case STRENGHT:
-                this.abilitys.setStreght(+raceAb);
-                break;
-                case DEXTRITY:
-                this.abilitys.setDextrity(+raceAb);
-                break;
-                case CONSTITUTION:
-                this.abilitys.setConstitution(+raceAb);
-                break;
-                case INTELLIGENCE:
-                this.abilitys.setIntelligence(+raceAb);
-                break;
-                case WISDOM:
-                this.abilitys.setWisdom(+raceAb);
-                break;
-                case CHARISMA:
-                this.abilitys.setCharisma(+raceAb);
-                break;
-            }
-        }
+        this.abilitys.setStreght(abilitys.getStreght()+jsonObjectAbilitys.getStreght());
+        this.abilitys.setDextrity(abilitys.getDextrity()+jsonObjectAbilitys.getDextrity());
+        this.abilitys.setConstitution(abilitys.getConstitution()+jsonObjectAbilitys.getConstitution());
+        this.abilitys.setIntelligence(abilitys.getIntelligence()+jsonObjectAbilitys.getIntelligence());
+        this.abilitys.setWisdom(abilitys.getWisdom()+jsonObjectAbilitys.getWisdom());
+        this.abilitys.setCharisma(abilitys.getCharisma()+jsonObjectAbilitys.getCharisma());
     }
 
     public int streghtAttack() {

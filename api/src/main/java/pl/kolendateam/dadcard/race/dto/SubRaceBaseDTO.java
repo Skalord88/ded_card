@@ -13,7 +13,6 @@ public class SubRaceBaseDTO {
     public String avatarUrl;
     public Abilitys raceAbilitys;
 
-
     public SubRaceBaseDTO(Race race){
         this.avatarUrl = race.getAvatarUrl();
         this.subRacesName = race.getSubRaceName();
