@@ -8,7 +8,12 @@ import java.util.Set;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +30,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.skills.entity.RaceSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @NoArgsConstructor
@@ -261,6 +267,23 @@ public class Character {
 
     }
 
+    public void addSkillRace(String raceSkills) {
+
+        Gson gson = new Gson();
+
+        Type listRaceSkill = new TypeToken<List<RaceSkills>>(){}.getType();
+        List<RaceSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+
+        
+        for(ClassSkills clSk : classSkills){
+            for(RaceSkills raceSk : raceSkill){
+                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
+                    clSk.setSkillRank(clSk.getSkillRank()+raceSk.getValueSkill());
+                }
+            }
+        }
+    }
+
     public int streghtAttack() {
         int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
         return streghtAttack;
@@ -270,4 +293,6 @@ public class Character {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
     }
+
+    
 }

@@ -81,6 +81,7 @@ public class RaceController {
         Race race = raceOpt.get();
 
         character.addAbilityRace(race.getAbilitys());
+        character.addSkillRace(race.getSkills());
 
         character.setCharacterRace(race);
 
