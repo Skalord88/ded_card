@@ -210,15 +210,9 @@ public class Character {
     }
 
     public void hitPointsFirstLevel(int hitDice) {
-        Vitality vita = new Vitality();
 
-        vita.setLife(abilitys.getConstitution());
-        HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 1);
-        vita.setHitDices(vitaMap);
-        vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
-
-        this.vitality = vita;
+        this.vitality.createHPFirstLevel(hitDice,abilitys);
+        
     }
 
     public void hitPointsNewLevel(int hitDice) {
@@ -277,6 +271,20 @@ public class Character {
     public int dextrityAttack() {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
+    }
+
+    public void raceLevelAdjustment(int levelAdjustment) {
+        this.ecl = levelAdjustment;
+        this.vitality.createHPFirstLevel(4,abilitys);
+        if(levelAdjustment>1){
+            int levelAdjNextLevel = 1-levelAdjustment;
+            this.vitality.hitDices.put(4, levelAdjustment);
+            for(int l = 1; l < levelAdjNextLevel; l++){
+                int hP = vitality.hitPointsNewtLevel(4,vitality,abilitys,ecl);
+                this.vitality.setHitPoints(+hP);
+            }
+        }
+        this.skillPoints = 2*levelAdjustment;
     }
 
 }

@@ -39,6 +39,8 @@ public class Race {
 
     String skills;
 
+    int levelAdjustment;
+
     @ManyToMany
     @JoinTable(
         name = "race_region",
