@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +9,8 @@ import java.util.Set;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -30,7 +27,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
-import pl.kolendateam.dadcard.skills.entity.RaceSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @NoArgsConstructor
@@ -123,16 +119,6 @@ public class Character {
     }
 
     public void setSkillsTruePcArray(Set<Skills> availableSkills) {
-        for(Skills skill : availableSkills){
-            for(ClassSkills classSkill : classSkills){
-                if(skill.getId() == classSkill.getIdSkill()){
-                    classSkill.setClassSkill(true);
-                }
-            }
-        }
-    }
-
-    public void setSkillsTruecgArray(Set<Skills> availableSkills) {
         for(Skills skill : availableSkills){
             for(ClassSkills classSkill : classSkills){
                 if(skill.getId() == classSkill.getIdSkill()){
@@ -273,7 +259,6 @@ public class Character {
 
         Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
         List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
-
         
         for(ClassSkills clSk : classSkills){
             for(ClassSkills raceSk : raceSkill){
@@ -294,5 +279,4 @@ public class Character {
         return dextrityAttack;
     }
 
-    
 }
