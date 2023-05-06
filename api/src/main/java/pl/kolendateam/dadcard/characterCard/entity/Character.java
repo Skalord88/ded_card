@@ -271,14 +271,14 @@ public class Character {
 
         Gson gson = new Gson();
 
-        Type listRaceSkill = new TypeToken<List<RaceSkills>>(){}.getType();
-        List<RaceSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
 
         
         for(ClassSkills clSk : classSkills){
-            for(RaceSkills raceSk : raceSkill){
+            for(ClassSkills raceSk : raceSkill){
                 if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
-                    clSk.setSkillRank(clSk.getSkillRank()+raceSk.getValueSkill());
+                    clSk.setSkillRank(clSk.getSkillRank()+raceSk.getSkillRank());
                 }
             }
         }
