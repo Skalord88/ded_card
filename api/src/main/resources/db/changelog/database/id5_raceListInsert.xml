@@ -46,14 +46,16 @@
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gold"/>
               <column  name="abilitys"  value="{'dextrity':-2,'constitution':2}"/>
-              <column  name="skills"  value="[{'nameSkill':'Craft','skillRank':2},{'nameSkill':'Appraise','skillRank':2}]"/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Craft','skillRank':2},
+              {'nameSkill':'Appraise','skillRank':2}]"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="race">  
           <column  name="id"  value="8"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gray"/>
-              <column  name="abilitys"  value="{'constitution':2},{'charisma':-4}"/>
+              <column  name="abilitys"  value="{'constitution':2,'charisma':-4}"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="race">  
@@ -61,7 +63,9 @@
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="shield"/>
               <column  name="abilitys"  value="{'constitution':2,'charisma':-2}"/>
-              <column  name="skills"  value="[{'nameSkill':'Craft','skillRank':2},{'nameSkill':'Appraise','skillRank':2}]"/>
+              <column  name="skills" value="[
+              {'nameSkill':'Craft','skillRank':2},
+              {'nameSkill':'Appraise','skillRank':2}]"/>
               <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="race"> 
