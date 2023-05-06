@@ -31,6 +31,9 @@ public class SubRaceBaseDTO {
         this.raceAbilitys = jsonObjectAbilitys;
         Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
         ArrayList<ClassSkills> raceSkill = gson.fromJson(race.getSkills(),listRaceSkill);
-        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
+        if(raceSkill == null){
+            this.raceSkills = null;
+        } else {
+        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);}
     }
 }
