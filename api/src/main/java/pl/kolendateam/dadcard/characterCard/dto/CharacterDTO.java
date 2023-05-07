@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
+import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
+import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
@@ -25,6 +27,7 @@ public class CharacterDTO {
     public VitalityDTO vitality;
     public int streghtAttack;
     public int dextrityAttack;
+    public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
     public ArrayList <SkillsDTO> skillsList;
@@ -40,6 +43,7 @@ public class CharacterDTO {
         this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.streghtAttack = character.streghtAttack();
         this.dextrityAttack = character.dextrityAttack();
+        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());

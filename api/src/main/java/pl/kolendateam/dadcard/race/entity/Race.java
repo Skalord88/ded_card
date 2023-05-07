@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.race.entity;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -16,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 
 @NoArgsConstructor
 @Getter
@@ -39,6 +39,8 @@ public class Race {
     String abilitys;
 
     String skills;
+
+    ArmorClass armorClass;
 
     int levelAdjustment;
 

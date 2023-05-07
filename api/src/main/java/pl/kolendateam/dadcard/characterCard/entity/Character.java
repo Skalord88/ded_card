@@ -22,6 +22,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
@@ -59,6 +60,9 @@ public class Character {
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArmorClass armorClass;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
@@ -280,6 +284,16 @@ public class Character {
     public int dextrityAttack() {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
+    }
+
+    public void bonusDexArmorClass(Abilitys abilitys) {
+        ArmorClass aC = new ArmorClass();
+        this.armorClass = aC;
+        this.armorClass.setDextrityBonus(abilitys.bonusDextrity(abilitys));
+    }
+
+    public void raceBonusArmorClass(ArmorClass armorClass) {
+        this.armorClass.setNaturalArmor(armorClass.getNaturalArmor());
     }
 
 }

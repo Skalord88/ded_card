@@ -1,9 +1,11 @@
 package pl.kolendateam.dadcard.armorClass.dto;
 
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
-import pl.kolendateam.dadcard.armorClass.entity.armorClass;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
-public class armorClassDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ArmorClassDTO {
 
     public int dextrityBonus;
     public int sizeBonus;
@@ -13,9 +15,5 @@ public class armorClassDTO {
     public int deflectionBonuses;
     public int naturalArmor;
     public int dodgeBonus;
-
-    public ArmorClassDTO(ArmorClass armorClass){
-        this.dextrityBonus = armorClass.getDextrityBonus();
-    }
     
 }
