@@ -33,6 +33,9 @@
         <column name="skill_points" type="double">
           <constraints nullable="true"/>
         </column>
+        <column name="armor_class" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
         <column name="class_skills" type="jsonb">
           <constraints nullable="true"/>
         </column>
