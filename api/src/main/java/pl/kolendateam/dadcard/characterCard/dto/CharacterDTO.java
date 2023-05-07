@@ -36,7 +36,7 @@ public class CharacterDTO {
         this.subRace = character.getSubRace();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-        this.ecl = character.getEcl();
+        this.ecl = character.getEcl()+character.getLevelAdjustment();
         this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.streghtAttack = character.streghtAttack();
         this.dextrityAttack = character.dextrityAttack();

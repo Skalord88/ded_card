@@ -52,6 +52,7 @@ public class Character {
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
+    int levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
@@ -167,11 +168,11 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
+        this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += abilitys.bonusIntelligence(abilitys)+skPoints;
+        this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
     public void buySkills(int idSkill, int skPoints) {
@@ -209,9 +210,17 @@ public class Character {
         this.bab += classBab;
     }
 
+    public void raceLevelAdjustment(int lvAdj) {
+        this.levelAdjustment = lvAdj;
+        this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
+        this.skillPoints = lvAdj*2;
+    }
+
     public void hitPointsFirstLevel(int hitDice) {
 
-        this.vitality.createHPFirstLevel(hitDice,abilitys);
+        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
+
+        this.vitality = hP;
         
     }
 
@@ -227,9 +236,9 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsNewLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(+hP);
+        this.vitality.setHitPoints(hP);
 
     }
 
@@ -271,20 +280,6 @@ public class Character {
     public int dextrityAttack() {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
-    }
-
-    public void raceLevelAdjustment(int levelAdjustment) {
-        this.ecl = levelAdjustment;
-        this.vitality.createHPFirstLevel(4,abilitys);
-        if(levelAdjustment>1){
-            int levelAdjNextLevel = 1-levelAdjustment;
-            this.vitality.hitDices.put(4, levelAdjustment);
-            for(int l = 1; l < levelAdjNextLevel; l++){
-                int hP = vitality.hitPointsNewtLevel(4,vitality,abilitys,ecl);
-                this.vitality.setHitPoints(+hP);
-            }
-        }
-        this.skillPoints = 2*levelAdjustment;
     }
 
 }
