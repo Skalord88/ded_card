@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 
 @NoArgsConstructor
 @Getter
@@ -40,7 +39,7 @@ public class Race {
 
     String skills;
 
-    ArmorClass armorClass;
+    String armorClass;
 
     int levelAdjustment;
 

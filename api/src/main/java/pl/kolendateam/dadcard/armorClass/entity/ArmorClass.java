@@ -1,15 +1,12 @@
 package pl.kolendateam.dadcard.armorClass.entity;
 
-import java.io.Serializable;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class ArmorClass implements Serializable {
+public class ArmorClass {
 
-    int dextrityBonus;
     int sizeBonus;
     int armorBonus;
     int shildBonus;

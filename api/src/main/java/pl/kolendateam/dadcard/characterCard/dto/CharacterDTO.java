@@ -43,10 +43,10 @@ public class CharacterDTO {
         this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.streghtAttack = character.streghtAttack();
         this.dextrityAttack = character.dextrityAttack();
-        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
+        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys());
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
-        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());
     }
 
 }

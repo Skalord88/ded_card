@@ -61,7 +61,7 @@ public class AbilitysController {
         if(character.getClassSkills().isEmpty()){
             character.createSkillsArray(skillsList);
         }
-        character.bonusDexArmorClass(abilitys);
+        character.createArmorClass();
 
         this.characterRepository.save(character);
 

@@ -145,25 +145,26 @@ public class Character {
                 skill.setIdSkill(skillsList.get(x).getId());
                 skill.setNameSkill(skillsList.get(x).getName());
                 skill.setClassSkill(false);
+                skill.setSkillRank(0);
                 AbilityEnum ability = skillsList.get(x).getAbility();
                 switch (ability) {
                     case STRENGHT:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusStreght(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case DEXTRITY:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusDextrity(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case CONSTITUTION:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusConstitution(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case INTELLIGENCE:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusIntelligence(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case WISDOM:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusWisdom(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case CHARISMA:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusCharisma(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                 }
                 this.classSkills.add(skill);
@@ -263,14 +264,13 @@ public class Character {
     public void addSkillRace(String raceSkills) {
 
         Gson gson = new Gson();
-
         Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
         List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
         
         for(ClassSkills clSk : classSkills){
             for(ClassSkills raceSk : raceSkill){
                 if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
-                    clSk.setSkillRank(clSk.getSkillRank()+raceSk.getSkillRank());
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)raceSk.getSkillRank());
                 }
             }
         }
@@ -286,14 +286,18 @@ public class Character {
         return dextrityAttack;
     }
 
-    public void bonusDexArmorClass(Abilitys abilitys) {
+    public void createArmorClass() {
         ArmorClass aC = new ArmorClass();
         this.armorClass = aC;
-        this.armorClass.setDextrityBonus(abilitys.bonusDextrity(abilitys));
     }
 
-    public void raceBonusArmorClass(ArmorClass armorClass) {
-        this.armorClass.setNaturalArmor(armorClass.getNaturalArmor());
+    public void raceBonusArmorClass(String armorClass) {
+
+        Gson gson = new Gson();
+        ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
+
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+        
     }
 
 }

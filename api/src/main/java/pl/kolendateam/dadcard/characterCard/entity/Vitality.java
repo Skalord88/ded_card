@@ -21,7 +21,7 @@ public class Vitality {
 
         life = abilitys.getConstitution();            
         vitality.getHitDices().put(hD, +1);
-        hitPoints = vitality.getHitPoints()+hD+abilitys.bonusConstitution(abilitys);
+        hitPoints = vitality.getHitPoints()+hD;
 
         return vitality;
         

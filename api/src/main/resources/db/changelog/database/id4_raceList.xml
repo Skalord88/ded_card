@@ -24,7 +24,7 @@
         <column name="level_adjustment" type="int">
           <constraints nullable="true"/>
         </column>
-        <column name="armor_class" type="int">
+        <column name="armor_class" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
         <column name="avatar_url" type="varchar(255)">
