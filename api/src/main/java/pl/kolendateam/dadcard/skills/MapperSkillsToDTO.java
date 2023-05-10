@@ -43,7 +43,7 @@ public class MapperSkillsToDTO {
                 }
         
                 skillListDTO.add(skillDTO);
-        }
+            }
 
         return skillListDTO;
     }
