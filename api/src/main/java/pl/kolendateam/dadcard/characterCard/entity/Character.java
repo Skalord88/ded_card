@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -241,9 +240,9 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(hP);
+        this.vitality.setHitPoints(+hP);
 
     }
 
@@ -252,18 +251,10 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void addAbilityRace(String raceAbilitys) {
-
-        Gson gson = new Gson();
-        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
-
-        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-
-    }
-
     public void addSkillRace(String raceSkills) {
 
         Gson gson = new Gson();
+
         Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
         List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
         
@@ -274,6 +265,15 @@ public class Character {
                 }
             }
         }
+    }
+
+    public void addAbilityRace(String raceAbilitys) {
+
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
+
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {

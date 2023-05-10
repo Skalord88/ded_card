@@ -39,8 +39,12 @@ public class SubRaceBaseDTO {
         } else {
         this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
         }
+        if(race.getArmorClass() == null){
+            this.armorClass = null;
+        } else {
         ArmorClass jsonObjectArmorClass = gson.fromJson(race.getArmorClass(),ArmorClass.class);
-        this.armorClass = jsonObjectArmorClass;
+        this.armorClass = jsonObjectArmorClass;}
         this.levelAdjustment = race.getLevelAdjustment();
+        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
     }
 }
