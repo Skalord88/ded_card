@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -126,16 +128,6 @@ public class Character {
         }
     }
 
-    public void setSkillsTruecgArray(Set<Skills> availableSkills) {
-        for(Skills skill : availableSkills){
-            for(ClassSkills classSkill : classSkills){
-                if(skill.getId() == classSkill.getIdSkill()){
-                    classSkill.setClassSkill(true);
-                }
-            }
-        }
-    }
-
     public void createSkillsArray(List<Skills> skillsList) {
         boolean check = true;
         if(classSkills.isEmpty()){
@@ -241,16 +233,33 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        if(ecl % 2 == 0){
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2)+abilitys.bonusConstitution(abilitys));
-        } else {
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2+1)+abilitys.bonusConstitution(abilitys));
-        }
+        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+
+        this.vitality.setHitPoints(+hP);
+
     }
 
     public void setCharacterRace(Race race) {
         this.race = race.getRacesName();
         this.subRace = race.getSubRaceName();
+    }
+
+
+
+    public void addSkillRace(String raceSkills) {
+
+        Gson gson = new Gson();
+
+        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        
+        for(ClassSkills clSk : classSkills){
+            for(ClassSkills raceSk : raceSkill){
+                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
+                    clSk.setSkillRank(clSk.getSkillRank()+raceSk.getSkillRank());
+                }
+            }
+        }
     }
 
     public void addAbilityRace(String raceAbilitys) {
@@ -271,4 +280,5 @@ public class Character {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
     }
+
 }
