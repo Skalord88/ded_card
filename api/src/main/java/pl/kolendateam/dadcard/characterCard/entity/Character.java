@@ -244,14 +244,7 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void addAbilityRace(String raceAbilitys) {
 
-        Gson gson = new Gson();
-        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
-
-        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-
-    }
 
     public void addSkillRace(String raceSkills) {
 
@@ -267,6 +260,15 @@ public class Character {
                 }
             }
         }
+    }
+
+    public void addAbilityRace(String raceAbilitys) {
+
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
+
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {
