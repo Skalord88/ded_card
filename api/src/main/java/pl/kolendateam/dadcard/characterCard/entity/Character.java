@@ -241,10 +241,11 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
-
-        this.vitality.setHitPoints(+hP);
-
+        if(ecl % 2 == 0){
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2)+abilitys.bonusConstitution(abilitys));
+        } else {
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2+1)+abilitys.bonusConstitution(abilitys));
+        }
     }
 
     public void setCharacterRace(Race race) {
@@ -258,7 +259,7 @@ public class Character {
         Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
 
         this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-
+        
     }
 
     public int streghtAttack() {
