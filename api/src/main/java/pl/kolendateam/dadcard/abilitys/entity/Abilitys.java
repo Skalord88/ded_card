@@ -44,5 +44,17 @@ public class Abilitys implements Serializable{
         int bonusCharisma = (int)(abilitys.getCharisma()-10)/2;
         return bonusCharisma;
     }
+
+    public Abilitys addRaceAbilitys(Abilitys jsonObjectAbilitys, Abilitys abilitys) {
+
+        abilitys.streght += jsonObjectAbilitys.streght;
+        abilitys.dextrity += jsonObjectAbilitys.dextrity;
+        abilitys.constitution += jsonObjectAbilitys.constitution;
+        abilitys.intelligence += jsonObjectAbilitys.intelligence;
+        abilitys.wisdom += jsonObjectAbilitys.wisdom;
+        abilitys.charisma += jsonObjectAbilitys.charisma;
+        
+        return abilitys;
+    }
     
 }

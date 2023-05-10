@@ -8,6 +8,8 @@ import java.util.Set;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
+import com.google.gson.Gson;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,7 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -39,6 +42,9 @@ public class Character {
 
     @NonNull
     String playerName;
+
+    String race;
+    String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
@@ -214,11 +220,11 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
         Vitality vita = new Vitality();
 
-        vita.setLife(this.abilitys.getConstitution());
+        vita.setLife(abilitys.getConstitution());
         HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
         vitaMap.put(hitDice, 0);
         vita.setHitDices(vitaMap);
-        vita.setHitPoints(hitDice+this.abilitys.bonusConstitution(abilitys));
+        vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
 
         this.vitality = vita;
     }
@@ -236,10 +242,24 @@ public class Character {
         this.vitality.hitDices.put(hitDice, hD);
 
         if(ecl % 2 == 0){
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2)+abilitys.bonusConstitution(abilitys));
         } else {
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
+            this.vitality.setHitPoints(this.vitality.getHitPoints()+(hitDice/2+1)+abilitys.bonusConstitution(abilitys));
         }
+    }
+
+    public void setCharacterRace(Race race) {
+        this.race = race.getRacesName();
+        this.subRace = race.getSubRaceName();
+    }
+
+    public void addAbilityRace(String raceAbilitys) {
+
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
+
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {
