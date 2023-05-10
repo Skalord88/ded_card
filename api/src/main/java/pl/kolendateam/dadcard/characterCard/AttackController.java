@@ -46,12 +46,12 @@ public class AttackController {
 
         int resultat = attackVsArmorClassDTO.d20+character1.streghtAttack();
 
-        ArmorClassDTO armorClassTotal1 = MapperArmorClassDTO.toArmorClassDTO(
-            character1.getArmorClass(),character1.getAbilitys());
+        ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
+            character2.getArmorClass(),character2.getAbilitys());
 
             boolean isHit = false;
 
-        if(resultat >= armorClassTotal1.ACTotal(armorClassTotal1)){
+        if(resultat >= armorClassTotal2.ACTotal(armorClassTotal2)){
             isHit = true;
         }
 
