@@ -176,8 +176,14 @@
           <column  name="id"  value="23"/>
               <column  name="races_name"  value="Orc"/>  
               <column  name="sub_race_name"  value="Orog"/>
+              <column  name="abilitys"  value="{
+                'streght':6,'dextrity':-2,'wisdom':-2,'charisma':2}"/>
+              <column  name="armor_class"  value="{'naturalArmor':2}"/>
+              <column  name="skills" value="[
+              {'nameSkill':'Craft','skillRank':2},
+              {'nameSkill':'Appraise','skillRank':2}]"/>
               <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
+              <column  name="level_adjustment" value="2"/>
           </insert>
           <insert tableName="race">  
           <column  name="id"  value="24"/>

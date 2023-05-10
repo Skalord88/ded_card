@@ -40,6 +40,8 @@ public class Race {
 
     String skills;
 
+    String armorClass;
+
     int levelAdjustment;
 
     @ManyToMany

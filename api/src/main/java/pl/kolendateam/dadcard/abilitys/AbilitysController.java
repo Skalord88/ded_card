@@ -61,6 +61,7 @@ public class AbilitysController {
         if(character.getClassSkills().isEmpty()){
             character.createSkillsArray(skillsList);
         }
+        character.createArmorClass();
 
         this.characterRepository.save(character);
 

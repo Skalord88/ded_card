@@ -6,5 +6,6 @@ public class SkillsDTO {
     public String nameSkill;
     public boolean classSkill;
     public int skillRank;
+    public int skillAbility;
     
 }
