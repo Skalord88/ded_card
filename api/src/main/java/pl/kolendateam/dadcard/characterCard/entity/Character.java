@@ -222,7 +222,7 @@ public class Character {
 
         vita.setLife(abilitys.getConstitution());
         HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 0);
+        vitaMap.put(hitDice, 1);
         vita.setHitDices(vitaMap);
         vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
 

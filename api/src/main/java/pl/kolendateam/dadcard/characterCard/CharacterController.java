@@ -110,9 +110,8 @@ public class CharacterController {
             character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
             character.calculateSkillPoints(classCharacter.getSkillPoints());
+            character.hitPointsNewLevel(classCharacter.getHitDice());
         }
-
-        character.hitPointsNewLevel(classCharacter.getHitDice());
          
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
