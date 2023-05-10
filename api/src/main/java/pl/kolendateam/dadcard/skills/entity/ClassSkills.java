@@ -6,6 +6,7 @@ import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
 @Getter
 @Setter
+
 public class ClassSkills {
 
     int idSkill;
