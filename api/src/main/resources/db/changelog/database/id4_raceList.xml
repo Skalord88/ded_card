@@ -21,6 +21,9 @@
         <column name="skills" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
+        <column name="level_adjustment" type="int">
+          <constraints nullable="true"/>
+        </column>
         <column name="avatar_url" type="varchar(255)">
           <constraints nullable="false"/>
         </column>

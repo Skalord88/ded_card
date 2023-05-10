@@ -21,6 +21,9 @@
         <column name="ecl" type="int">
           <constraints nullable="true"/>
         </column>
+        <column name="level_adjustment" type="int">
+          <constraints nullable="true"/>
+        </column>
         <column name="vitality" type="jsonb">
           <constraints nullable="true"/>
         </column>

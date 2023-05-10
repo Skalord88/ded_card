@@ -21,6 +21,7 @@ public class SubRaceBaseDTO {
     public String avatarUrl;
     public Abilitys raceAbilitys;
     public ArrayList <RaceSkillsDTO> raceSkills;
+    public int levelAdjustment;
 
     public SubRaceBaseDTO(Race race){
         this.avatarUrl = race.getAvatarUrl();
@@ -34,6 +35,9 @@ public class SubRaceBaseDTO {
         if(raceSkill == null){
             this.raceSkills = null;
         } else {
-        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);}
+        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
+        }
+        this.levelAdjustment = race.getLevelAdjustment();
+        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
     }
 }

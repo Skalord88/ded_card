@@ -52,6 +52,7 @@ public class Character {
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
+    int levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
@@ -167,11 +168,11 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
+        this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += abilitys.bonusIntelligence(abilitys)+skPoints;
+        this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
     public void buySkills(int idSkill, int skPoints) {
@@ -209,16 +210,18 @@ public class Character {
         this.bab += classBab;
     }
 
+    public void raceLevelAdjustment(int lvAdj) {
+        this.levelAdjustment = lvAdj;
+        this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
+        this.skillPoints = lvAdj*2;
+    }
+
     public void hitPointsFirstLevel(int hitDice) {
-        Vitality vita = new Vitality();
 
-        vita.setLife(abilitys.getConstitution());
-        HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 1);
-        vita.setHitDices(vitaMap);
-        vita.setHitPoints(hitDice+abilitys.bonusConstitution(abilitys));
+        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
 
-        this.vitality = vita;
+        this.vitality = hP;
+        
     }
 
     public void hitPointsNewLevel(int hitDice) {
@@ -243,8 +246,6 @@ public class Character {
         this.race = race.getRacesName();
         this.subRace = race.getSubRaceName();
     }
-
-
 
     public void addSkillRace(String raceSkills) {
 

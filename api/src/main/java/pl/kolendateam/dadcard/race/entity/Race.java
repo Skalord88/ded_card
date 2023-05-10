@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.race.entity;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -39,6 +40,8 @@ public class Race {
 
     String skills;
 
+    int levelAdjustment;
+
     @ManyToMany
     @JoinTable(
         name = "race_region",
@@ -46,4 +49,5 @@ public class Race {
         inverseJoinColumns = @JoinColumn(name = "region_id")
     )
     Set<Region> availableRegions = new HashSet<>();
+
 }
