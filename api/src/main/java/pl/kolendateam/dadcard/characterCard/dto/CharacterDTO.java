@@ -52,7 +52,7 @@ public class CharacterDTO {
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
     }
 
 }
