@@ -236,24 +236,15 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(hP);
+        this.vitality.setHitPoints(+hP);
 
     }
 
     public void setCharacterRace(Race race) {
         this.race = race.getRacesName();
         this.subRace = race.getSubRaceName();
-    }
-
-    public void addAbilityRace(String raceAbilitys) {
-
-        Gson gson = new Gson();
-        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
-
-        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-
     }
 
     public void addSkillRace(String raceSkills) {
@@ -270,6 +261,15 @@ public class Character {
                 }
             }
         }
+    }
+
+    public void addAbilityRace(String raceAbilitys) {
+
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
+
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {

@@ -32,17 +32,14 @@ public class Vitality {
         return hP;
     }
 
-    public int hitPointsNewLevel(
-        int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+    public int hitPointsNewtLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
 
         int hP;
 
         if(ecl % 2 == 0){
-            hP = vitality.hitPoints+(hitDice/2)+abilitys.bonusConstitution
-            (abilitys);
+            hP = vitality.hitPoints+(hitDice/2)+abilitys.bonusConstitution(abilitys);
         } else {
-            hP = vitality.hitPoints+((hitDice/2)+1)+abilitys.bonusConstitution
-            (abilitys);
+            hP = vitality.hitPoints+((hitDice/2)+1)+abilitys.bonusConstitution(abilitys);
         }
         return hP;
 
@@ -63,5 +60,4 @@ public class Vitality {
         }
         return vita;
     }
-
 }

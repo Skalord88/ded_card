@@ -3,7 +3,6 @@ package pl.kolendateam.dadcard.race.dto;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -39,5 +38,6 @@ public class SubRaceBaseDTO {
         this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
         }
         this.levelAdjustment = race.getLevelAdjustment();
+        this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
     }
 }
