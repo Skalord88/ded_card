@@ -32,13 +32,14 @@ public class AttackController {
 
         List<Character> characterOpt = this.characterRepository.findAll();
 
-        Character character1 = new Character();
-        Character character2 = new Character();
+        Character character1= new Character();
+        Character character2= new Character();
 
         for(Character ch : characterOpt){
-            if(ch.id == attackVsArmorClassDTO.id){
+            if(ch.id == id){
                 character1 = ch;
             }
+            
             if(ch.id == attackVsArmorClassDTO.idA){
                 character2 = ch;
             }

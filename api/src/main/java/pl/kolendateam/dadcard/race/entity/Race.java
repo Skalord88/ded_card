@@ -42,7 +42,6 @@ public class Race {
     @NonNull
     String skills;
 
-    @NonNull
     String armorClass;
 
     int levelAdjustment;

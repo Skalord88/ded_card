@@ -1,10 +1,12 @@
 package pl.kolendateam.dadcard.armorClass.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class ArmorClass {
 
     int sizeBonus;
@@ -14,5 +16,12 @@ public class ArmorClass {
     int deflectionBonuses;
     int naturalArmor;
     int dodgeBonus;
+
+    public ArmorClass createArmorClass(){
+
+        ArmorClass aC = new ArmorClass();
+
+        return aC;
+    }
     
 }
