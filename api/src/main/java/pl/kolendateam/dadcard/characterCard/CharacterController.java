@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
-import pl.kolendateam.dadcard.skills.entity.Skills;
-import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -33,13 +30,11 @@ public class CharacterController {
     
     ClassRepository classRepository;
     CharacterRepository characterRepository;
-    SkillsRepository skillsRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository, SkillsRepository skillsRepository){
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository){
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
-        this.skillsRepository = skillsRepository;
     }
 
     @PostMapping(value="",consumes = {"application/json"})
@@ -91,15 +86,9 @@ public class CharacterController {
                     HttpStatus.NOT_FOUND, "Class Not Found");
         }
 
-        List <Skills> skillsList = this.skillsRepository.findAll();
-
         ClassCharacter classCharacter = classOpt.get();
 
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
-
-        if(character.getClassSkills().isEmpty()){
-            character.createSkillsArray(skillsList);
-        }
 
         ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getHitDice(),classCharacter.getSavingThrow(),classCharacter.getClassBab());
 
@@ -110,9 +99,8 @@ public class CharacterController {
             character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
             character.calculateSkillPoints(classCharacter.getSkillPoints());
+            character.hitPointsNewLevel(classCharacter.getHitDice());
         }
-
-        character.hitPointsNewLevel(classCharacter.getHitDice());
          
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 

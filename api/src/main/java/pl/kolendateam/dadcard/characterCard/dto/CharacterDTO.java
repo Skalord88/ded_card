@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
+import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
+import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
@@ -17,12 +19,15 @@ import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 public class CharacterDTO {
     public String characterName;
     public String playerName;
+    public String race;
+    public String subRace;
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
     public VitalityDTO vitality;
     public int streghtAttack;
     public int dextrityAttack;
+    public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
     public ArrayList <SkillsDTO> skillsList;
@@ -30,15 +35,24 @@ public class CharacterDTO {
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
         this.playerName = character.getPlayerName();
+        this.race = character.getRace();
+        this.subRace = character.getSubRace();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-        this.ecl = character.getEcl();
+        this.ecl = character.getEcl()+character.getLevelAdjustment();
         this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.streghtAttack = character.streghtAttack();
         this.dextrityAttack = character.dextrityAttack();
+        if(character.getArmorClass()==null){
+            this.armorClass = null;
+        } else {
+        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys());}
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
-        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills());
+        if(character.getClassSkills()==null){
+            this.skillsList = null;
+        } else {
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
     }
 
 }

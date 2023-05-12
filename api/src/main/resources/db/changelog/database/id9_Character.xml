@@ -9,10 +9,19 @@
         <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="race" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="sub_race" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
         <column name="class_pc_array" type="jsonb">
           <constraints nullable="true"/>
         </column>
         <column name="ecl" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="level_adjustment" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="vitality" type="jsonb">
@@ -22,6 +31,9 @@
           <constraints nullable="true"/>
         </column>
         <column name="skill_points" type="double">
+          <constraints nullable="true"/>
+        </column>
+        <column name="armor_class" type="jsonb">
           <constraints nullable="true"/>
         </column>
         <column name="class_skills" type="jsonb">

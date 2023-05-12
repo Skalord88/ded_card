@@ -1,12 +1,15 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,9 +21,11 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -40,16 +45,23 @@ public class Character {
     @NonNull
     String playerName;
 
+    String race;
+    String subRace;
+
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
+    int levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArmorClass armorClass;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
@@ -120,16 +132,6 @@ public class Character {
         }
     }
 
-    public void setSkillsTruecgArray(Set<Skills> availableSkills) {
-        for(Skills skill : availableSkills){
-            for(ClassSkills classSkill : classSkills){
-                if(skill.getId() == classSkill.getIdSkill()){
-                    classSkill.setClassSkill(true);
-                }
-            }
-        }
-    }
-
     public void createSkillsArray(List<Skills> skillsList) {
         boolean check = true;
         if(classSkills.isEmpty()){
@@ -142,25 +144,26 @@ public class Character {
                 skill.setIdSkill(skillsList.get(x).getId());
                 skill.setNameSkill(skillsList.get(x).getName());
                 skill.setClassSkill(false);
+                skill.setSkillRank(0);
                 AbilityEnum ability = skillsList.get(x).getAbility();
                 switch (ability) {
                     case STRENGHT:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusStreght(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case DEXTRITY:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusDextrity(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case CONSTITUTION:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusConstitution(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case INTELLIGENCE:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusIntelligence(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case WISDOM:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusWisdom(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                     case CHARISMA:
-                    skill.setSkillRank(skill.getSkillRank()+abilitys.bonusCharisma(abilitys));
+                    skill.setSkillAbility(ability);
                     break;
                 }
                 this.classSkills.add(skill);
@@ -169,11 +172,11 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints = (skPoints+abilitys.bonusIntelligence(abilitys)) * 3;
+        this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += abilitys.bonusIntelligence(abilitys)+skPoints;
+        this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
     public void buySkills(int idSkill, int skPoints) {
@@ -211,16 +214,18 @@ public class Character {
         this.bab += classBab;
     }
 
+    public void raceLevelAdjustment(int lvAdj) {
+        this.levelAdjustment = lvAdj;
+        this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
+        this.skillPoints = lvAdj*2;
+    }
+
     public void hitPointsFirstLevel(int hitDice) {
-        Vitality vita = new Vitality();
 
-        vita.setLife(this.abilitys.getConstitution());
-        HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        vitaMap.put(hitDice, 0);
-        vita.setHitDices(vitaMap);
-        vita.setHitPoints(hitDice+this.abilitys.bonusConstitution(abilitys));
+        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
 
-        this.vitality = vita;
+        this.vitality = hP;
+        
     }
 
     public void hitPointsNewLevel(int hitDice) {
@@ -235,11 +240,40 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        if(ecl % 2 == 0){
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2);
-        } else {
-            this.vitality.setHitPoints(this.vitality.getHitPoints()+hitDice/2+1);
+        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+
+        this.vitality.setHitPoints(+hP);
+
+    }
+
+    public void setCharacterRace(Race race) {
+        this.race = race.getRacesName();
+        this.subRace = race.getSubRaceName();
+    }
+
+    public void addSkillRace(String raceSkills) {
+
+        Gson gson = new Gson();
+
+        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        
+        for(ClassSkills clSk : classSkills){
+            for(ClassSkills raceSk : raceSkill){
+                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)raceSk.getSkillRank());
+                }
+            }
         }
+    }
+
+    public void addAbilityRace(String raceAbilitys) {
+
+        Gson gson = new Gson();
+        Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
+
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
+        
     }
 
     public int streghtAttack() {
@@ -251,4 +285,19 @@ public class Character {
         int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
         return dextrityAttack;
     }
+
+    public void createArmorClass() {
+        ArmorClass aC = new ArmorClass();
+        this.armorClass = aC;
+    }
+
+    public void raceBonusArmorClass(String armorClass) {
+
+        Gson gson = new Gson();
+        ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
+
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+        
+    }
+
 }

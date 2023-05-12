@@ -1,14 +1,15 @@
 package pl.kolendateam.dadcard.race.entity;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,17 @@ public class Race {
     @NonNull
     String avatarUrl;
 
+    @NonNull
+    String abilitys;
+
+    @NonNull
+    String skills;
+
+    @NonNull
+    String armorClass;
+
+    int levelAdjustment;
+
     @ManyToMany
     @JoinTable(
         name = "race_region",
@@ -42,4 +54,5 @@ public class Race {
         inverseJoinColumns = @JoinColumn(name = "region_id")
     )
     Set<Region> availableRegions = new HashSet<>();
+
 }
