@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
-import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO2;
+import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
@@ -27,7 +27,7 @@ public class CharacterDTO {
     public VitalityDTO vitality;
     public int streghtAttack;
     public int dextrityAttack;
-    public ArmorClassDTO2 armorClass;
+    public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
     public ArrayList <SkillsDTO> skillsList;
