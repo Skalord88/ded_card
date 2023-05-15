@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class ArmorClassDTO {
+public class ArmorClassDTO2 {
 
     public int dextrityBonus;
     public int sizeBonus;

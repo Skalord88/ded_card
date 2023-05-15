@@ -1,14 +1,14 @@
 package pl.kolendateam.dadcard.armorClass;
 
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
+import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO2;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 
 public class MapperArmorClassDTO {
 
-    public static ArmorClassDTO toArmorClassDTO(ArmorClass armorClass,Abilitys abilitys){
+    public static ArmorClassDTO2 toArmorClassDTO(ArmorClass armorClass,Abilitys abilitys){
 
-        ArmorClassDTO armorClassDTO = new ArmorClassDTO(
+        ArmorClassDTO2 armorClassDTO = new ArmorClassDTO2(
             abilitys.bonusDextrity(abilitys),
             armorClass.getSizeBonus(),
             armorClass.getArmorBonus(),
