@@ -10,7 +10,6 @@ public class AttackVsArmorClassDTO {
 
     public int streghtAttack;
     public int dextrityAttack;
-    public int armorClass;
 
     public int armorClassA;
     public boolean isHit;
@@ -20,11 +19,6 @@ public class AttackVsArmorClassDTO {
 
         this.streghtAttack = character1.streghtAttack();
         this.dextrityAttack = character1.dextrityAttack();
-
-        ArmorClassDTO armorClassTotal1 = MapperArmorClassDTO.toArmorClassDTO(
-            character1.getArmorClass(),character1.getAbilitys());
-
-        this.armorClass = armorClassTotal1.ACTotal(armorClassTotal1);
 
         ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
             character2.getArmorClass(),character2.getAbilitys());
