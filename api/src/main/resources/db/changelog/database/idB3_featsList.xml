@@ -62,7 +62,7 @@ You get a +2 bonus on all Handle Animal checks and Ride checks."/>
           <column  name="id"  value="6"/>
               <column  name="feat_name"  value="Armor Proficiency (Heavy)"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisites"  value="Armor Proficiency (light), Armor Proficiency (medium)."/>
+              <column  name="prerequisite"  value="Armor Proficiency (light), Armor Proficiency (medium)."/>
               <column  name="description" value="Benefit
 See Armor Proficiency (light).
 

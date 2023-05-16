@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,9 +27,11 @@ public class Feats {
     @Nonnull
     FeatsTypeEnum featsType;
 
+    String prerequisite;
+
     @Nonnull
     String description;
 
-    Skills skills;
+    String skills;
     
 }
