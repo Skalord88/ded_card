@@ -16,12 +16,5 @@ public class ArmorClass {
     int deflectionBonuses;
     int naturalArmor;
     int dodgeBonus;
-
-    public ArmorClass createArmorClass(){
-
-        ArmorClass aC = new ArmorClass();
-
-        return aC;
-    }
     
 }

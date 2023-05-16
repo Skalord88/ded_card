@@ -287,19 +287,15 @@ public class Character {
     }
 
     public void createArmorClass() {
-        
-        ArmorClass aC = armorClass.newEmptyArmorClass();
-        this.armorClass = aC;
+        this.armorClass = new ArmorClass();
     }
 
     public void raceBonusArmorClass(String armorClass) {
 
-            Gson gson = new Gson();
-            ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
+        Gson gson = new Gson();
+        ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
-            this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
-        }
-        
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
     }
-
+        
 }
