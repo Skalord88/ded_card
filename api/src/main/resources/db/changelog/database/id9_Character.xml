@@ -39,6 +39,9 @@
         <column name="class_skills" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="feats_list" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
       </addColumn>
   </changeSet>
 </databaseChangeLog>
