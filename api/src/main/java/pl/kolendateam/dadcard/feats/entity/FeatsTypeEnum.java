@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.feats.entity;
 
 public enum FeatsTypeEnum {
-    GENERAL ("general"),
+    GENERAL("general"),
     REGIONAL("regional"),
     ITEM_CREATION("item creation"),
     METAMAGIC("metamagic");
