@@ -56,10 +56,14 @@ public class FeatsController {
 
         if (!featsOpt.isPresent()) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Class Not Found");
+                    HttpStatus.NOT_FOUND, "Feats Not Found");
         }
 
         Feats feat = featsOpt.get();
+
+        if(feat.getSkills()!=null){
+            character.addSkill(feat.getSkills());
+        }
 
         character.setFeat(feat);
 

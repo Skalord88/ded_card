@@ -257,17 +257,17 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void addSkillRace(String raceSkills) {
+    public void addSkill(String skills) {
 
         Gson gson = new Gson();
 
-        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
-        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        Type listSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> skill = gson.fromJson(skills, listSkill);
         
         for(ClassSkills clSk : classSkills){
-            for(ClassSkills raceSk : raceSkill){
-                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
-                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)raceSk.getSkillRank());
+            for(ClassSkills sk : skill){
+                if(clSk.getNameSkill().equals(sk.getNameSkill())){
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)sk.getSkillRank());
                 }
             }
         }
@@ -307,7 +307,6 @@ public class Character {
     public void setFeat(Feats feat) {
 
         this.featsList.add(feat);
-        
     }
         
 }
