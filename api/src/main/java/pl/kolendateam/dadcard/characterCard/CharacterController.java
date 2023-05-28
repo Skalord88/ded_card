@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,8 @@ public class CharacterController {
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
-        Vitality vitality = new Vitality();
+        HashMap<Integer,Integer> vitaMap = new HashMap<>();
+        Vitality vitality = new Vitality(0,vitaMap,0);
 
         character.setVitality(vitality);
         character.setSavingThrow(savingThrow);

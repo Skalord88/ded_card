@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.util.HashMap;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,12 +11,19 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 
 public class Vitality {
 
     int life;
     HashMap <Integer,Integer> hitDices;
     int hitPoints;
+
+    
+
+    public Vitality(HashMap<Integer, Integer> hitDices) {
+        this.hitDices = hitDices;
+    }
 
     public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality){
 
@@ -24,7 +32,6 @@ public class Vitality {
         hitPoints = vitality.getHitPoints()+hD;
 
         return vitality;
-        
     }
 
     public int incrementHitPoints(int increment, Vitality vitality){
