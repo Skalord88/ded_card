@@ -19,7 +19,7 @@ public class Vitality {
 
     public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality){
 
-        life = abilitys.getConstitution();            
+        life = abilitys.getConstitution();
         vitality.getHitDices().put(hD, +1);
         hitPoints = vitality.getHitPoints()+hD;
 

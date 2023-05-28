@@ -8,9 +8,9 @@ public class MapperSavingThrowToDTO {
     public static SavingThrowDTO toSavingThrowDTO(SavingThrow savingThrow, Abilitys abilitys){
     
     SavingThrowDTO savingThrowDTO = new SavingThrowDTO(
-        (int)savingThrow.getFortitude()+abilitys.bonusConstitution(abilitys),
-        (int)savingThrow.getReflex()+abilitys.bonusDextrity(abilitys),
-        (int)savingThrow.getWill()+abilitys.bonusWisdom(abilitys)
+        (int)savingThrow.getFortitude(),
+        (int)savingThrow.getReflex(),
+        (int)savingThrow.getWill()
         );      
 
         return savingThrowDTO;

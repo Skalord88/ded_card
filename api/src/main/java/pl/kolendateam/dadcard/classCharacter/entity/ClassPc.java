@@ -2,11 +2,15 @@ package pl.kolendateam.dadcard.classCharacter.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 
 @AllArgsConstructor
 @Setter
@@ -35,12 +39,17 @@ public class ClassPc implements Serializable {
     }
 
     public int findLevelInArrayById(ArrayList<ClassPc> classPcList, int id) {
+
+        int levelOfClass=0;
         
         for (ClassPc clPc : classPcList) {
             if (this.id == id && clPc.level == 1) {
                 return clPc.getLevel();
             }
+            if (this.id == id){
+                levelOfClass = clPc.getLevel();
+            } 
         }
-        return 0;
+        return levelOfClass;
     }
 }
