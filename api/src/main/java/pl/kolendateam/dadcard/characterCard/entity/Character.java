@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,6 +31,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -50,6 +53,10 @@ public class Character {
 
     String race;
     String subRace;
+
+    @Enumerated(EnumType.STRING)
+    SizeEnum size;
+    int speed;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
@@ -324,11 +331,18 @@ public class Character {
                     HashSet <String> fList = fJ.getClassFeats();
                     for(String f : fList){
                         if(fL.getFeatName().equals(f)){
+                            if(fL.getSpeed()!=null){
+                                this.speed+=fL.getSpeed();
+                            }
                             this.featsList.add(fL);
                         }
                     }
                 }
             }
         }    
+    }
+
+    public void addSpeed(int speed) {
+        this.speed=speed;
     }
 }

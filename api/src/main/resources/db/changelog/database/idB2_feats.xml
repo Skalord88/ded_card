@@ -18,8 +18,11 @@
         <column name="prerequisite" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="description" type="varchar(1000)">
+        <column name="description" type="varchar(10000)">
           <constraints nullable="false"/>
+        </column>
+        <column name="speed" type="int">
+          <constraints nullable="true"/>
         </column>
         <column name="skills" type="varchar(255)">
           <constraints nullable="true"/>

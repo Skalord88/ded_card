@@ -4,7 +4,8 @@ public enum FeatsTypeEnum {
     GENERAL("general"),
     REGIONAL("regional"),
     ITEM_CREATION("item creation"),
-    METAMAGIC("metamagic");
+    METAMAGIC("metamagic"),
+    CLASS("class");
 
     private String featsTypeEnum;
 

@@ -9,6 +9,8 @@
               <column  name="id"  value="1"/> 
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Calishite"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>  
@@ -16,6 +18,8 @@
               <column  name="id"  value="2"/>  
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Chondathan"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert> 
@@ -23,6 +27,8 @@
               <column  name="id"  value="3"/>
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Damara"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert> 
@@ -30,6 +36,8 @@
           <column  name="id"  value="4"/> 
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Mulan"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -37,6 +45,8 @@
           <column  name="id"  value="5"/> 
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Rashemi"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -44,6 +54,8 @@
           <column  name="id"  value="6"/> 
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Tethyrian"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -51,6 +63,8 @@
           <column  name="id"  value="7"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gold"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="20"/>
               <column  name="abilitys"  value="{'dextrity':-2,'constitution':2}"/>
               <column  name="skills"  value="[
               {'nameSkill':'Craft','skillRank':2},
@@ -62,6 +76,8 @@
           <column  name="id"  value="8"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="gray"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="20"/>
               <column  name="abilitys"  value="{'constitution':2,'charisma':-4}"/>
               <column  name="skills"  value="[
               {'nameSkill':'Move Silently','skillRank':4},
@@ -74,6 +90,8 @@
           <column  name="id"  value="9"/>
               <column  name="races_name"  value="Dwarf"/>  
               <column  name="sub_race_name"  value="shield"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="20"/>
               <column  name="abilitys"  value="{'constitution':2,'charisma':-2}"/>
               <column  name="skills" value="[
               {'nameSkill':'Craft','skillRank':2},
@@ -85,6 +103,8 @@
           <column  name="id"  value="10"/> 
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="drow"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="2"/>
           </insert>
@@ -92,6 +112,8 @@
           <column  name="id"  value="11"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="moon"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -99,6 +121,8 @@
           <column  name="id"  value="12"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="sun"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -106,6 +130,8 @@
           <column  name="id"  value="13"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="wild"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -113,6 +139,8 @@
           <column  name="id"  value="14"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="wood"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -120,6 +148,8 @@
           <column  name="id"  value="15"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="Half-elf"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -127,6 +157,8 @@
           <column  name="id"  value="16"/>
               <column  name="races_name"  value="Elf"/>  
               <column  name="sub_race_name"  value="Half-elf drow"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -134,6 +166,8 @@
           <column  name="id"  value="17"/>
               <column  name="races_name"  value="Gnome"/>  
               <column  name="sub_race_name"  value="deep"/>
+              <column  name="size"  value="SMALL"/>
+              <column  name="speed"  value="20"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="4"/>
           </insert>
@@ -141,6 +175,8 @@
           <column  name="id"  value="18"/>
               <column  name="races_name"  value="Gnome"/>  
               <column  name="sub_race_name"  value="rock"/>
+              <column  name="size"  value="SMALL"/>
+              <column  name="speed"  value="20"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -148,6 +184,8 @@
           <column  name="id"  value="19"/> 
               <column  name="races_name"  value="Halfling"/>  
               <column  name="sub_race_name"  value="other"/>
+              <column  name="size"  value="SMALL"/>
+              <column  name="speed"  value="20"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -155,6 +193,8 @@
           <column  name="id"  value="20"/>  
               <column  name="races_name"  value="Orc"/>  
               <column  name="sub_race_name"  value="Gray"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="1"/>
           </insert>
@@ -162,6 +202,8 @@
           <column  name="id"  value="21"/>  
               <column  name="races_name"  value="Orc"/>  
               <column  name="sub_race_name"  value="Half-orc"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -169,6 +211,8 @@
           <column  name="id"  value="22"/>
               <column  name="races_name"  value="Orc"/>  
               <column  name="sub_race_name"  value="Mountain"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert>
@@ -176,6 +220,8 @@
           <column  name="id"  value="23"/>
               <column  name="races_name"  value="Orc"/>  
               <column  name="sub_race_name"  value="Orog"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="abilitys"  value="{
                 'streght':6,'dextrity':-2,'wisdom':-2,'charisma':2}"/>
               <column  name="armor_class"  value="{'naturalArmor':2}"/>
@@ -189,6 +235,8 @@
           <column  name="id"  value="24"/>
               <column  name="races_name"  value="Human"/>  
               <column  name="sub_race_name"  value="Illuskan"/>
+              <column  name="size"  value="MEDIUM"/>
+              <column  name="speed"  value="30"/>
               <column  name="avatar_url"  value="address value"/>
               <column  name="level_adjustment" value="0"/>
           </insert> 

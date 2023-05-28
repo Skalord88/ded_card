@@ -17,9 +17,14 @@
               <column name="class_feats_map" value="[
               {'level':1,'classFeats':[
               'Armor Proficiency (Light)',
-              'Armor Proficiency (Medium)']},
+              'Armor Proficiency (Medium)',
+              'Armor Proficiency (Heavy)',
+              'Fast movement',
+              'Illiteracy',
+              'Rage 1/day',
+              ]},
               {'level':2,'classFeats':[
-              'Armor Proficiency (Heavy)']}]"/>
+              'Uncanny dodge']}]"/>
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   

@@ -14,6 +14,7 @@ import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
@@ -23,6 +24,8 @@ public class CharacterDTO {
     public String playerName;
     public String race;
     public String subRace;
+    public SizeEnum size;
+    public int speed;
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
@@ -40,6 +43,8 @@ public class CharacterDTO {
         this.playerName = character.getPlayerName();
         this.race = character.getRace();
         this.subRace = character.getSubRace();
+        this.size = character.getSize();
+        this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl()+character.getLevelAdjustment();
