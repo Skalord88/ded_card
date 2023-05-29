@@ -13,8 +13,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +29,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
@@ -54,8 +53,7 @@ public class Character {
     String race;
     String subRace;
 
-    @Enumerated(EnumType.STRING)
-    SizeEnum size;
+    Size size;
     int speed;
 
     @JdbcTypeCode(SqlTypes.JSON)
@@ -346,20 +344,16 @@ public class Character {
         this.speed+=speed;
     }
 
-    public void sizeArmor(SizeEnum size){
-        switch (size) {
-            case TINY:
-            this.armorClass.setSizeBonus(2);
-            break;
-            case SMALL:
-            this.armorClass.setSizeBonus(1);
-            break;
-            case MEDIUM:
-            this.armorClass.setSizeBonus(0);
-            break;
-            case LARGE:
-            this.armorClass.setSizeBonus(-1);
-            break;
+    public void sizeCharacter(SizeEnum size) {
+        Size sizeNew = new Size();
+        sizeNew.sizeBonus(size);
+        this.size = sizeNew;
+        this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
+        for(ClassSkills skill : classSkills){
+            if(skill.getNameSkill().equals("hide")){
+                skill.setSkillDifferentBonus(+sizeNew.getHide());
+            }
         }
     }
+    
 }

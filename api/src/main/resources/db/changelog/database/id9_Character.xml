@@ -15,7 +15,7 @@
         <column name="sub_race" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="size" type="varchar(255)">
+        <column name="size" type="jsonb">
           <constraints nullable="true"/>
         </column>
         <column name="speed" type="int">

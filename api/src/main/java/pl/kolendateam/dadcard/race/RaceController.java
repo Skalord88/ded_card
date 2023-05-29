@@ -97,9 +97,7 @@ public class RaceController {
             character.raceBonusArmorClass(race.getArmorClass());
         }
 
-        character.setSize(race.getSize());
-        SizeEnum size = race.getSize();
-        character.sizeArmor(size);
+        character.sizeCharacter(race.getSize());
 
         character.addSpeed(race.getSpeed());
 
