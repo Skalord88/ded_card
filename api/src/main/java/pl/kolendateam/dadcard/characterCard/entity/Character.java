@@ -53,7 +53,9 @@ public class Character {
     String race;
     String subRace;
 
+    @JdbcTypeCode(SqlTypes.JSON)
     Size size;
+    
     int speed;
 
     @JdbcTypeCode(SqlTypes.JSON)

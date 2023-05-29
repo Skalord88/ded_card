@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -44,7 +45,7 @@ public class CharacterController {
     }
 
     @PostMapping(value="",consumes = {"application/json"})
-    public CharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
+    public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
         
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
@@ -57,7 +58,7 @@ public class CharacterController {
 
         this.characterRepository.save(character);
 
-        return characterDTO;
+        return new CreateCharacterDTO(character);
     }
 
     @GetMapping(value = "{id}")

@@ -21,7 +21,7 @@ public class AttackVsArmorClassDTO {
         this.dextrityAttack = character1.dextrityAttack();
 
         ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
-            character2.getArmorClass(),character2.getAbilitys());
+            character2.getArmorClass(),character2.getAbilitys(),character2.getSize());
         this.armorClassA = armorClassTotal2.ACTotal(armorClassTotal2);
         this.isHit = hit;
 
