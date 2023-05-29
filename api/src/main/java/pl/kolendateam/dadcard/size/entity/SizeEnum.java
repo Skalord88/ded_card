@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.size.entity;
 
 public enum SizeEnum {
-    TINY("tiny")
+    TINY("tiny"),
     SMALL("small"),
     MEDIUM("medium"),
     LARGE("large");
