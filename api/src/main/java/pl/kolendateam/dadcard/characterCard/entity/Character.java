@@ -343,6 +343,23 @@ public class Character {
     }
 
     public void addSpeed(int speed) {
-        this.speed=speed;
+        this.speed+=speed;
+    }
+
+    public void sizeArmor(SizeEnum size){
+        switch (size) {
+            case TINY:
+            this.armorClass.setSizeBonus(2);
+            break;
+            case SMALL:
+            this.armorClass.setSizeBonus(1);
+            break;
+            case MEDIUM:
+            this.armorClass.setSizeBonus(0);
+            break;
+            case LARGE:
+            this.armorClass.setSizeBonus(-1);
+            break;
+        }
     }
 }

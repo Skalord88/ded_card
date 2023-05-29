@@ -24,6 +24,7 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.Region;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @RestController
 @RequestMapping("race")
@@ -97,6 +98,8 @@ public class RaceController {
         }
 
         character.setSize(race.getSize());
+        SizeEnum size = race.getSize();
+        character.sizeArmor(size);
 
         character.addSpeed(race.getSpeed());
 
