@@ -292,16 +292,6 @@ public class Character {
         
     }
 
-    public int streghtAttack() {
-        int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
-        return streghtAttack;
-    }
-
-    public int dextrityAttack() {
-        int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
-        return dextrityAttack;
-    }
-
     public void createArmorClass() {
         this.armorClass = new ArmorClass();
     }
