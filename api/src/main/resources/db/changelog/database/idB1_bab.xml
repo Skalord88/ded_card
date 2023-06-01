@@ -9,6 +9,9 @@
         <column name="bab" type="double">
           <constraints nullable="true"/>
         </column>
+        <column name="grapple_bonus" type="int">
+          <constraints nullable="true"/>
+        </column>
       </addColumn>
   </changeSet>
 </databaseChangeLog>

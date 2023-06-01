@@ -81,6 +81,8 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
 
+    int grappleBonus;
+
     double bab;
 
     @JdbcTypeCode(SqlTypes.JSON)
