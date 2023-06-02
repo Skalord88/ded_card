@@ -1,14 +1,15 @@
 package pl.kolendateam.dadcard.attack.entity;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @NoArgsConstructor
 @Getter
-@Setter
-public class SpecialAttacks {
+@AllArgsConstructor
+public class SpecialAttacks implements Serializable{
 
     int bullRush;
     int charge;
@@ -17,14 +18,16 @@ public class SpecialAttacks {
     int overrun;
     int sunder;
 
-    public void addSpecialAttackFeat(SpecialAttacks spAtt, SpecialAttacks specialAttacks) {
+    public SpecialAttacks addSpecialAttackFeat(SpecialAttacks spAtt, SpecialAttacks characterSpecialAttacks) {
 
-        specialAttacks.bullRush += spAtt.bullRush;
-        specialAttacks.charge += spAtt.charge;
-        specialAttacks.disarm += spAtt.disarm;
-        specialAttacks.grapple += spAtt.grapple;
-        specialAttacks.overrun += spAtt.overrun;
-        specialAttacks.sunder += spAtt.sunder;
+        characterSpecialAttacks.bullRush += spAtt.bullRush;
+        characterSpecialAttacks.charge += spAtt.charge;
+        characterSpecialAttacks.disarm += spAtt.disarm;
+        characterSpecialAttacks.grapple += spAtt.grapple;
+        characterSpecialAttacks.overrun += spAtt.overrun;
+        characterSpecialAttacks.sunder += spAtt.sunder;
+
+        return characterSpecialAttacks;
 
     }
     

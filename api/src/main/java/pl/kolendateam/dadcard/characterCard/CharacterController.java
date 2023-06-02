@@ -53,7 +53,7 @@ public class CharacterController {
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
         HashMap<Integer,Integer> vitaMap = new HashMap<>();
         Vitality vitality = new Vitality(0,vitaMap,0);
-        SpecialAttacks specialAttacks = new SpecialAttacks();
+        SpecialAttacks specialAttacks = new SpecialAttacks(0,0,0,0,0,0);
 
         character.setVitality(vitality);
         character.setSavingThrow(savingThrow);

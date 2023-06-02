@@ -292,7 +292,7 @@ public class Character {
         Gson gson = new Gson();
         SpecialAttacks spAtt = gson.fromJson(specialAttacksFeat, SpecialAttacks.class);
 
-        this.specialAttacks.addSpecialAttackFeat(spAtt,this.specialAttacks);
+        this.specialAttacks.addSpecialAttackFeat(spAtt,specialAttacks);
         
     }
 
@@ -319,7 +319,11 @@ public class Character {
 
     public void setFeat(Feats feat) {
 
-        this.featsList.add(feat);
+        for(Feats ft : featsList){
+            if(!ft.getFeatName().equals(feat.getFeatName())){
+                this.featsList.add(feat);
+            }
+        }
     }
 
     public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
