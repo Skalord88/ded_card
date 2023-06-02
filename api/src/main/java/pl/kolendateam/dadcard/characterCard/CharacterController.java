@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -52,9 +53,11 @@ public class CharacterController {
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
         HashMap<Integer,Integer> vitaMap = new HashMap<>();
         Vitality vitality = new Vitality(0,vitaMap,0);
+        SpecialAttacks specialAttacks = new SpecialAttacks();
 
         character.setVitality(vitality);
         character.setSavingThrow(savingThrow);
+        character.setSpecialAttacks(specialAttacks);
 
         this.characterRepository.save(character);
 

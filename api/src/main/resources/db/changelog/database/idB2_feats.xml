@@ -27,6 +27,9 @@
         <column name="skills" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
+        <column name="special_attacks" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

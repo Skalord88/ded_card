@@ -37,5 +37,7 @@ public class Feats {
     String skills;
 
     Integer speed;
+
+    String specialAttacks;
     
 }
