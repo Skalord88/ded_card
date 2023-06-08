@@ -357,5 +357,9 @@ public class Character {
             }
         }
     }
+
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
+    }
     
 }
