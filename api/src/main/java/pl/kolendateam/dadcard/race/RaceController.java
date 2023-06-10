@@ -90,7 +90,8 @@ public class RaceController {
         character.raceLevelAdjustment(race.getLevelAdjustment());
 
         if(race.getArmorClass() != null){
-        character.raceBonusArmorClass(race.getArmorClass());}
+        character.raceBonusArmorClass(race.getArmorClass());
+        }
 
         character.setCharacterRace(race);
 
