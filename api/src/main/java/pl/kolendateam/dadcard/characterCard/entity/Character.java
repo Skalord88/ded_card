@@ -287,8 +287,7 @@ public class Character {
     }
 
     public void createArmorClass() {
-        ArmorClass aC = new ArmorClass();
-        this.armorClass = aC;
+        this.armorClass = new ArmorClass();
     }
 
     public void raceBonusArmorClass(String armorClass) {
@@ -297,7 +296,6 @@ public class Character {
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
-        
     }
-
+        
 }
