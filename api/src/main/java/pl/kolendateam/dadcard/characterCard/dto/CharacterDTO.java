@@ -8,15 +8,14 @@ import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperCharacterFeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.CharacterFeatsDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -40,7 +39,7 @@ public class CharacterDTO {
     public double skillPoints;
     public SpecialAttacksDTO specialAttacks;
     public ArrayList<SkillsDTO> skillsList;
-    public ArrayList<FeatsDTO> featsList;
+    public ArrayList<CharacterFeatsDTO> featsList;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
@@ -69,7 +68,7 @@ public class CharacterDTO {
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {
-            this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());}
+            this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());}
     }
 
 }

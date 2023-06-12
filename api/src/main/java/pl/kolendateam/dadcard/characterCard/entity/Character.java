@@ -27,6 +27,7 @@ import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
@@ -88,7 +89,7 @@ public class Character {
     double bab;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Feats> featsList;
+    ArrayList<CharacterFeat> featsList;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -317,37 +318,55 @@ public class Character {
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
     }
 
-    public void setFeat(Feats feat) {
+    public void buyFeat(Feats feat) {
 
-        for(Feats ft : featsList){
-            if(!ft.getFeatName().equals(feat.getFeatName())){
-                this.featsList.add(feat);
-            }
-        }
+        CharacterFeat characterFeat = new CharacterFeat(
+            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+            );
+
+        this.featsList.add(characterFeat);
     }
 
-    public void addFeats(int lv, List <Feats> featsListDB, String classFeatsMap) {
+    public void addFeatsFromClass(int lv, List <Feats> featsListFormDB, String classFeatsMap) {
 
         Gson gson = new Gson();
         Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
-
         List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
-        for(int fLIndex=0 ; fLIndex<featsJson.size() ; fLIndex++){
-            if(featsJson.get(fLIndex).getLevel()==lv){
-                for(Feats fL : featsListDB){
-                    HashSet <String> fList = featsJson.get(fLIndex).getClassFeats();
+
+        for(ClassFeats featFromJsonList : featsJson){
+            if(featFromJsonList.getLevel()==lv){
+                for(Feats fL : featsListFormDB){
+                    HashSet <String> fList = featFromJsonList.getClassFeats();
                     for(String f : fList){
-                        boolean checkFeat = true;
-                        if(checkFeat==true){  
-                            if(fL.getFeatName().equals(f)){
-                                if(fL.isDuplicate()==true){
-                                    fL.duplicateFeatCheck(fL);
-                                    if(fL.getSpeed()!=null){
-                                    this.speed+=fL.getSpeed();
+                        if(fL.getFeatName().equals(f)){
+                            if(fL.getSpeed()!=null){
+                                this.speed+=fL.getSpeed();
+                            }
+                            boolean check = true;
+                            if(featsList.isEmpty()){
+                                check = false;
+                            }
+                            if(check == false){
+                                for(int indexFeat = 0; indexFeat < featsList.size(); indexFeat++){
+                                    CharacterFeat newCharacterFeat = new CharacterFeat(
+                                    1,fL.getFeatName(),fL.getFeatSpecial(),fL.getDescription()
+                                );
+                                this.featsList.add(newCharacterFeat);
                                 }
-                                this.featsList.add(fL);
-                                checkFeat = false;
-                                //dodaj rage jeżeli nie ma, jak jest to dodaj 1 do rage
+                            } else {
+                                for(int indexFeat = 0; indexFeat < featsList.size(); indexFeat++){
+                                    // nie działa
+                                    if(!f.equals(featsList.get(indexFeat).getCharacterFeatName())){
+                                        CharacterFeat newCharacterFeat = new CharacterFeat(
+                                        1,fL.getFeatName(),fL.getFeatSpecial(),fL.getDescription()
+                                        );
+                                        this.featsList.add(newCharacterFeat);
+                                    } else {
+                                        if(fL.isDuplicate()==true){
+                                            featsList.get(indexFeat).incrementLevelOfFeat();
+                                            featsList.get(indexFeat).characterFeatSpecialCheck();
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -372,5 +391,5 @@ public class Character {
             }
         }
     }
-    
 }
+

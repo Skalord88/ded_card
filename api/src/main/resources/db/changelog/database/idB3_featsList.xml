@@ -85,11 +85,11 @@ Special:
 All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it."/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Armor Proficiency (Medium)"/>
-              <column  name="duplicate"  value="false"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Armor Proficiency (light)."/>
-              <column  name="description" value="Benefit:
+            <column  name="feat_name"  value="Armor Proficiency (Medium)"/>
+            <column  name="duplicate"  value="false"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="Armor Proficiency (light)."/>
+            <column  name="description" value="Benefit:
 See Armor Proficiency (light).
 
 Normal:

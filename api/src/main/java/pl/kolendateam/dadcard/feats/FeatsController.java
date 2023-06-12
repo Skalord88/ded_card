@@ -69,7 +69,7 @@ public class FeatsController {
             character.addSpecialAttacks(feat.getSpecialAttacks());
         }
 
-        character.setFeat(feat);
+        character.buyFeat(feat);
 
         this.characterRepository.save(character);
 

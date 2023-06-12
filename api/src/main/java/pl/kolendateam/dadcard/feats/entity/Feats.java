@@ -45,23 +45,5 @@ public class Feats implements Serializable{
     Integer speed;
 
     String specialAttacks;
-
-    public void duplicateFeatCheck(Feats feats) {
-        int specialFeatInt;
-        String specialFeatString;
-        switch (feats.getFeatName()){
-            case "Rage":
-            specialFeatInt = feats.getFeatSpecial().charAt(0);
-            specialFeatInt +=1;
-            specialFeatString = specialFeatInt+"/day";
-            feats.setFeatSpecial(specialFeatString);
-            break;
-            case "Trap sense":
-            specialFeatInt = feats.getFeatSpecial().charAt(1);
-            specialFeatInt +=1;
-            specialFeatString = "+"+specialFeatInt;
-            feats.setFeatSpecial(specialFeatString);
-            break;
-            }
-        }    
+    
 }

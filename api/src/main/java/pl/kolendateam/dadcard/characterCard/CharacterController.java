@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -130,8 +131,8 @@ public class CharacterController {
 
         int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());
 
-        character.addFeats(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
-
+        character.addFeatsFromClass(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
+        
         if(levelClassInDB == 1){
             character.addSavingThrowLevelOne(classPc);
         }else{

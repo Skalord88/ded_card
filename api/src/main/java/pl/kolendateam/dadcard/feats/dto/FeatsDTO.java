@@ -14,7 +14,6 @@ public class FeatsDTO {
     public String featSpecial;
     public FeatsTypeEnum featsType;
     public String prerequisite;
-    public boolean duplicate;
     public String description;
 
     public FeatsDTO(Feats feats){
@@ -23,7 +22,6 @@ public class FeatsDTO {
         this.featSpecial = feats.getFeatSpecial();
         this.featsType = feats.getFeatsType();
         this.prerequisite = feats.getPrerequisite();
-        this.duplicate = feats.isDuplicate();
         this.description = feats.getDescription();
     }
     
