@@ -81,20 +81,14 @@ public class RaceController {
         Race race = raceOpt.get();
 
         if(race.getAbilitys() != null){
-            character.addAbilityRace(race.getAbilitys());
-        }
-            
+            character.addAbilityRace(race.getAbilitys());}
         if(race.getSkills() != null){
-            character.addSkill(race.getSkills());
+            character.addSkillRace(race.getSkills());
         }
         
-        if(race.getLevelAdjustment() != 0){
-            character.raceLevelAdjustment(race.getLevelAdjustment());
-        }
+        character.raceLevelAdjustment(race.getLevelAdjustment());
 
-        if(race.getArmorClass() != null){
-            character.raceBonusArmorClass(race.getArmorClass());
-        }
+        character.raceBonusArmorClass(race.getArmorClass());
 
         character.setCharacterRace(race);
 
