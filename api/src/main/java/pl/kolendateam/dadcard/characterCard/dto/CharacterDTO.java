@@ -12,6 +12,8 @@ import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
@@ -30,7 +32,8 @@ public class CharacterDTO {
     public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
-    public ArrayList <SkillsDTO> skillsList;
+    public ArrayList<SkillsDTO> skillsList;
+    public ArrayList<FeatsDTO> featsList;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
@@ -46,13 +49,17 @@ public class CharacterDTO {
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {
-        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys());}
+            this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys());}
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+        if(character.getFeatsList()==null){
+            this.featsList = null;
+        } else {
+            this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());}
     }
 
 }

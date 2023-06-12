@@ -1,0 +1,112 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="16" author="oscar">
+          <insert tableName="feats">  
+          <column  name="id"  value="1"/>
+              <column  name="feat_name"  value="Acrobatic"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Jump checks and Tumble checks."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Jump','skillRank':2},
+              {'nameSkill':'Tumble','skillRank':2}]"/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="2"/>
+              <column  name="feat_name"  value="Agile"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Balance checks and Escape Artist checks."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Balance','skillRank':2},
+              {'nameSkill':'Escape Artist','skillRank':2}]"/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="3"/>
+              <column  name="feat_name"  value="Alertness"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Listen checks and Spot checks.
+Special:
+The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm’s reach."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Listen','skillRank':2},
+              {'nameSkill':'Spot','skillRank':2}]"/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="4"/>
+              <column  name="feat_name"  value="Alertness"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Balance checks and Escape Artist checks."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Balance','skillRank':2},
+              {'nameSkill':'Escape Artist','skillRank':2}]"/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="5"/>
+              <column  name="feat_name"  value="Animal Affinity"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Handle Animal checks and Ride checks."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Handle Animal','skillRank':2},
+              {'nameSkill':'Ride','skillRank':2}]"/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="6"/>
+              <column  name="feat_name"  value="Armor Proficiency (Heavy)"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="prerequisite"  value="Armor Proficiency (light), Armor Proficiency (medium)."/>
+              <column  name="description" value="Benefit:
+See Armor Proficiency (light).
+
+Normal:
+See Armor Proficiency (light).
+
+Special:
+Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it."/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="7"/>
+              <column  name="feat_name"  value="Armor Proficiency (Light)"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks.
+
+Normal:
+A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride.
+
+Special:
+All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it."/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="8"/>
+              <column  name="feat_name"  value="Armor Proficiency (Medium)"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="prerequisite"  value="Armor Proficiency (light)."/>
+              <column  name="description" value="Benefit:
+See Armor Proficiency (light).
+
+Normal:
+See Armor Proficiency (light).
+
+Special:
+Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."/>
+          </insert>
+          <insert tableName="feats">  
+          <column  name="id"  value="9"/>
+              <column  name="feat_name"  value="Athletic"/>
+              <column  name="feats_type"  value="GENERAL"/>
+              <column  name="description" value="Benefit:
+You get a +2 bonus on all Climb checks and Swim checks."/>
+              <column  name="skills"  value="[
+              {'nameSkill':'Climb','skillRank':2},
+              {'nameSkill':'Swim','skillRank':2}]"/>
+          </insert>
+    </changeSet>
+</databaseChangeLog>

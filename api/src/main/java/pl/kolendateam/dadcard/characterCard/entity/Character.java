@@ -25,6 +25,7 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
@@ -69,9 +70,12 @@ public class Character {
     double skillPoints;
     
     @JdbcTypeCode(SqlTypes.JSON)
-    private Abilitys abilitys;
+    Abilitys abilitys;
 
     double bab;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<Feats> featsList;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -79,6 +83,7 @@ public class Character {
         this.classPcArray = new ArrayList<>();
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
+        this.featsList = new ArrayList<>();
     }
     
     public void addClassToPcArray(ClassPc classPc) {
@@ -252,17 +257,17 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void addSkillRace(String raceSkills) {
+    public void addSkill(String skills) {
 
         Gson gson = new Gson();
 
-        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
-        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        Type listSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> skill = gson.fromJson(skills, listSkill);
         
         for(ClassSkills clSk : classSkills){
-            for(ClassSkills raceSk : raceSkill){
-                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
-                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)raceSk.getSkillRank());
+            for(ClassSkills sk : skill){
+                if(clSk.getNameSkill().equals(sk.getNameSkill())){
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)sk.getSkillRank());
                 }
             }
         }
@@ -297,6 +302,11 @@ public class Character {
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+    }
+
+    public void setFeat(Feats feat) {
+
+        this.featsList.add(feat);
     }
         
 }
