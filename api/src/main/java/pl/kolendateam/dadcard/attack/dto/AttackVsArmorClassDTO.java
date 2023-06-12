@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.attack.dto;
 
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -17,8 +18,9 @@ public class AttackVsArmorClassDTO {
     public AttackVsArmorClassDTO(
         Character character1, Character character2, boolean hit){
 
-        this.streghtAttack = character1.streghtAttack();
-        this.dextrityAttack = character1.dextrityAttack();
+        Abilitys ab1 = character1.getAbilitys();
+        this.streghtAttack = (int)character1.getBab()+ab1.bonusStreght(ab1)+character1.getSize().getBonusAttackAc();
+        this.dextrityAttack = (int)character1.getBab()+ab1.bonusDextrity(ab1)+character1.getSize().getBonusAttackAc();
 
         ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
             character2.getArmorClass(),character2.getAbilitys(),character2.getSize());

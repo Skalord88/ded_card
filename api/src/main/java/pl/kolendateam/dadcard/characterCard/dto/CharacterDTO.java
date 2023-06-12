@@ -51,8 +51,6 @@ public class CharacterDTO {
         if(character.getVitality()==null){
             this.vitality = null;
         } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
-        this.streghtAttack = character.streghtAttack();
-        this.dextrityAttack = character.dextrityAttack();
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {
@@ -62,7 +60,11 @@ public class CharacterDTO {
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+                this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+        if(character.getFeatsList()==null){
+            this.featsList = null;
+        } else {
+            this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());}
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {

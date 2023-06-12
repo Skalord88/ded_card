@@ -26,7 +26,6 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
-import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
@@ -240,7 +239,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -291,16 +289,6 @@ public class Character {
 
         this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
         
-    }
-
-    public int streghtAttack() {
-        int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
-        return streghtAttack;
-    }
-
-    public int dextrityAttack() {
-        int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
-        return dextrityAttack;
     }
 
     public void createArmorClass() {
