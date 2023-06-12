@@ -12,10 +12,16 @@
         <column name="feat_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
+        <column name="feat_special" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
         <column name="feats_type" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
         <column name="prerequisite" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="duplicate" type="boolean">
           <constraints nullable="true"/>
         </column>
         <column name="description" type="varchar(10000)">

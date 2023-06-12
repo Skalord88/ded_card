@@ -326,22 +326,30 @@ public class Character {
         }
     }
 
-    public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
+    public void addFeats(int lv, List <Feats> featsListDB, String classFeatsMap) {
 
         Gson gson = new Gson();
         Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
-        List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
-        for(ClassFeats fJ : featsJson){
-            if(fJ.getLevel()==lv){
-                for(Feats fL : featsList){
-                    HashSet <String> fList = fJ.getClassFeats();
+        List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+        for(int fLIndex=0 ; fLIndex<featsJson.size() ; fLIndex++){
+            if(featsJson.get(fLIndex).getLevel()==lv){
+                for(Feats fL : featsListDB){
+                    HashSet <String> fList = featsJson.get(fLIndex).getClassFeats();
                     for(String f : fList){
-                        if(fL.getFeatName().equals(f)){
-                            if(fL.getSpeed()!=null){
-                                this.speed+=fL.getSpeed();
+                        boolean checkFeat = true;
+                        if(checkFeat==true){  
+                            if(fL.getFeatName().equals(f)){
+                                if(fL.isDuplicate()==true){
+                                    fL.duplicateFeatCheck(fL);
+                                    if(fL.getSpeed()!=null){
+                                    this.speed+=fL.getSpeed();
+                                }
+                                this.featsList.add(fL);
+                                checkFeat = false;
+                                //dodaj rage jeżeli nie ma, jak jest to dodaj 1 do rage
+                                }
                             }
-                            this.featsList.add(fL);
                         }
                     }
                 }

@@ -21,10 +21,20 @@
               'Armor Proficiency (Heavy)',
               'Fast movement',
               'Illiteracy',
-              'Rage 1/day',
+              'Rage',
               ]},
               {'level':2,'classFeats':[
-              'Uncanny dodge']}]"/>
+              'Uncanny dodge'
+              ]},
+              {'level':3,'classFeats':[
+              'Trap sense'
+              ]},
+              {'level':4,'classFeats':[
+              'Rage'
+              ]},
+              {'level':5,'classFeats':[
+              'Improved uncanny dodge'
+              ]}]"/>
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   
@@ -39,7 +49,8 @@
               {'level':1,'classFeats':[
               'Armor Proficiency (Light)']},
               {'level':2,'classFeats':[
-              'Armor Proficiency (Medium)']}]"/>
+              'Armor Proficiency (Medium)']}
+              ]"/>
           </insert>
           <insert tableName="class_character">
             <column name="id" value="3"/>  
