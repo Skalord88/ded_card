@@ -14,7 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CharacterAbilityDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.skills.entity.Skills;
@@ -34,7 +34,7 @@ public class AbilitysController {
     }
 
     @PostMapping(value="{id}/ability",consumes = {"application/json"})
-    public CharacterDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilitysDTO abilitysDTO){
+    public CharacterAbilityDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilitysDTO abilitysDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -65,7 +65,7 @@ public class AbilitysController {
 
         this.characterRepository.save(character);
 
-        return new CharacterDTO(character);
+        return new CharacterAbilityDTO(character);
     }
     
 }

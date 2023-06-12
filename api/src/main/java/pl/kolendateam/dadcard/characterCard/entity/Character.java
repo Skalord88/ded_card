@@ -26,10 +26,15 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+<<<<<<< HEAD
+=======
 import pl.kolendateam.dadcard.feats.entity.Feats;
+>>>>>>> main
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.size.entity.Size;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -53,6 +58,11 @@ public class Character {
     String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
+    Size size;
+    
+    int speed;
+
+    @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
@@ -74,16 +84,22 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
+<<<<<<< HEAD
+=======
     Abilitys abilitys;
+>>>>>>> main
 
     double bab;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Feats> featsList;
 
+<<<<<<< HEAD
+=======
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Feats> featsList;
 
+>>>>>>> main
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
@@ -92,7 +108,10 @@ public class Character {
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
+<<<<<<< HEAD
+=======
         this.featsList = new ArrayList<>();
+>>>>>>> main
     }
     
     public void addClassToPcArray(ClassPc classPc) {
@@ -330,6 +349,9 @@ public class Character {
                     HashSet <String> fList = fJ.getClassFeats();
                     for(String f : fList){
                         if(fL.getFeatName().equals(f)){
+                            if(fL.getSpeed()!=null){
+                                this.speed+=fL.getSpeed();
+                            }
                             this.featsList.add(fL);
                         }
                     }
@@ -337,4 +359,25 @@ public class Character {
             }
         }    
     }
+
+    public void addSpeed(int speed) {
+        this.speed+=speed;
+    }
+
+    public void sizeCharacter(SizeEnum size) {
+        Size sizeNew = new Size();
+        sizeNew.sizeBonus(size);
+        this.size = sizeNew;
+        this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
+        for(ClassSkills skill : classSkills){
+            if(skill.getNameSkill().equals("hide")){
+                skill.setSkillDifferentBonus(+sizeNew.getHide());
+            }
+        }
+    }
+
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
+    }
+    
 }

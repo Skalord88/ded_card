@@ -35,5 +35,7 @@ public class Feats {
     String description;
 
     String skills;
+
+    Integer speed;
     
 }

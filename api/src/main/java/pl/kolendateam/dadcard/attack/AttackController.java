@@ -49,7 +49,7 @@ public class AttackController {
         int resultat = attackDTO.d20+character1.streghtAttack();
 
         ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
-            character2.getArmorClass(),character2.getAbilitys());
+            character2.getArmorClass(),character2.getAbilitys(),character2.getSize());
 
         boolean isHit = false;
 
