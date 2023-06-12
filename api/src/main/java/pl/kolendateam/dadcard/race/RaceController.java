@@ -83,7 +83,7 @@ public class RaceController {
         if(race.getAbilitys() != null){
             character.addAbilityRace(race.getAbilitys());}
         if(race.getSkills() != null){
-            character.addSkillRace(race.getSkills());
+            character.addSkill(race.getSkills());
         }
         
         character.raceLevelAdjustment(race.getLevelAdjustment());
