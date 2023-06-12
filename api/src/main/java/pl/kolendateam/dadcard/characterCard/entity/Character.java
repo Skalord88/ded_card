@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
@@ -73,8 +74,12 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
+    Abilitys abilitys;
 
     double bab;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<Feats> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Feats> featsList;
@@ -86,6 +91,7 @@ public class Character {
         this.vitality = new Vitality();
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
+        this.featsList = new ArrayList<>();
         this.featsList = new ArrayList<>();
     }
     
