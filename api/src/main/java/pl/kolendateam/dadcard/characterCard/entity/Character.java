@@ -239,7 +239,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -346,6 +345,10 @@ public class Character {
                 skill.setSkillDifferentBonus(+sizeNew.getHide());
             }
         }
+    }
+
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
     }
     
 }

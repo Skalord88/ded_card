@@ -43,7 +43,7 @@ public class CharacterDTO {
         this.playerName = character.getPlayerName();
         this.race = character.getRace();
         this.subRace = character.getSubRace();
-        this.size = character.getSize().getSize();
+        this.size = character.sizeCharacter();
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
@@ -60,7 +60,11 @@ public class CharacterDTO {
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+                this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+        if(character.getFeatsList()==null){
+            this.featsList = null;
+        } else {
+            this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());}
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {
