@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,6 +26,8 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
@@ -71,8 +74,12 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
+    Abilitys abilitys;
 
     double bab;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<Feats> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Feats> featsList;
@@ -81,8 +88,10 @@ public class Character {
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPcArray = new ArrayList<>();
+        this.vitality = new Vitality();
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
+        this.featsList = new ArrayList<>();
         this.featsList = new ArrayList<>();
     }
     
@@ -308,5 +317,24 @@ public class Character {
 
         this.featsList.add(feat);
     }
-        
+
+    public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
+
+        Gson gson = new Gson();
+        Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+        List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+
+        for(ClassFeats fJ : featsJson){
+            if(fJ.getLevel()==lv){
+                for(Feats fL : featsList){
+                    HashSet <String> fList = fJ.getClassFeats();
+                    for(String f : fList){
+                        if(fL.getFeatName().equals(f)){
+                            this.featsList.add(fL);
+                        }
+                    }
+                }
+            }
+        }    
+    }
 }

@@ -43,7 +43,9 @@ public class CharacterDTO {
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.ecl = character.getEcl()+character.getLevelAdjustment();
-        this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
+        if(character.getVitality()==null){
+            this.vitality = null;
+        } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
         this.streghtAttack = character.streghtAttack();
         this.dextrityAttack = character.dextrityAttack();
         if(character.getArmorClass()==null){

@@ -30,6 +30,10 @@
         <column name="skill_points" type="int">
           <constraints nullable="false"/>
         </column>
+        <column name="class_feats_map" type="varchar(1000)">
+          <constraints nullable="true"/>
+          <!-- <constraints nullable="false"/> -->
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

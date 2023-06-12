@@ -14,6 +14,12 @@
               <column  name="class_bab" value="1"/>
               <column name="skill_points" value="4" />
               <column name="hit_dice" value="12" />
+              <column name="class_feats_map" value="[
+              {'level':1,'classFeats':[
+              'Armor Proficiency (Light)',
+              'Armor Proficiency (Medium)']},
+              {'level':2,'classFeats':[
+              'Armor Proficiency (Heavy)']}]"/>
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   
@@ -24,6 +30,11 @@
             <column  name="class_bab" value="0.75"/>
             <column name="skill_points" value="6" />
             <column name="hit_dice" value="6" />
+            <column name="class_feats_map" value="[
+              {'level':1,'classFeats':[
+              'Armor Proficiency (Light)']},
+              {'level':2,'classFeats':[
+              'Armor Proficiency (Medium)']}]"/>
           </insert>
           <insert tableName="class_character">
             <column name="id" value="3"/>  
