@@ -14,10 +14,7 @@ import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
-<<<<<<< HEAD
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
-=======
->>>>>>> main
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
