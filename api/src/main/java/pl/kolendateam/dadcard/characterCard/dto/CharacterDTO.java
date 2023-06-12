@@ -31,8 +31,7 @@ public class CharacterDTO {
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
     public VitalityDTO vitality;
-    public int streghtAttack;
-    public int dextrityAttack;
+    public int bab;
     public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
@@ -45,7 +44,7 @@ public class CharacterDTO {
         this.playerName = character.getPlayerName();
         this.race = character.getRace();
         this.subRace = character.getSubRace();
-        this.size = character.getSize().getSize();
+        this.size = character.sizeCharacter();
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
@@ -53,6 +52,7 @@ public class CharacterDTO {
         if(character.getVitality()==null){
             this.vitality = null;
         } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
+        this.bab = (int)character.getBab();
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {

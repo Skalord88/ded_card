@@ -90,7 +90,7 @@ See Armor Proficiency (light).
 Special:
 Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."/>
           </insert>
-          <insert tableName="feats">  
+          <insert tableName="feats">
               <column  name="feat_name"  value="Athletic"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
@@ -99,7 +99,7 @@ You get a +2 bonus on all Climb checks and Swim checks."/>
               {'nameSkill':'Climb','skillRank':2},
               {'nameSkill':'Swim','skillRank':2}]"/>
           </insert>
-          <insert tableName="feats">  
+          <insert tableName="feats">
               <column  name="feat_name"  value="Fast movement"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
@@ -107,6 +107,7 @@ A barbarian’s land speed is faster than the norm for his race by +10 feet. Thi
               <column  name="speed"  value="10"/>
           </insert>
           <insert tableName="feats">  
+          <column  name="id"  value="11"/>
               <column  name="feat_name"  value="Illiteracy"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
@@ -114,7 +115,7 @@ Barbarians are the only characters who do not automatically know how to read and
 
 A barbarian who gains a level in any other class automatically gains literacy. Any other character who gains a barbarian level does not lose the literacy he or she already had."/>
           </insert>
-          <insert tableName="feats">  
+          <insert tableName="feats">
               <column  name="feat_name"  value="Rage 1/day"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
@@ -122,54 +123,11 @@ A barbarian can fly into a rage a certain number of times per day. In a rage, a 
 
 A barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action."/>
           </insert>
-          <insert tableName="feats">  
+          <insert tableName="feats">
               <column  name="feat_name"  value="Uncanny dodge"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
 At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Improved Bull Rush"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Str 13, Power Attack"/>
-              <column  name="description" value="Benefit:
-When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.
-
-Special
-A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
-              <column  name="special_attacks" value="{'bull_rush':4}"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Improved Disarm"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Int 13, Combat Expertise"/>
-              <column  name="description" value="Benefit
-You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent.
-
-Normal
-See the normal disarm rules.
-
-Special
-A fighter may select Improved Disarm as one of his fighter bonus feats.
-
-A monk may select Improved Disarm as a bonus feat at 6th level, even if she does not meet the prerequisites."/>
-            <column  name="special_attacks" value="{'disarm':4}"/>
-          </insert>
-          <insert tableName="feats">
-              <column  name="feat_name"  value="Improved Grapple"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Dex 13, Improved Unarmed Strike"/>
-              <column  name="description" value="Benefit
-You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple.
-
-Normal
-Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple.
-
-Special
-A fighter may select Improved Grapple as one of his fighter bonus feats.
-
-A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."/>
-            <column  name="special_attacks" value="{'grapple':4}"/>
           </insert>
     </changeSet>
 </databaseChangeLog>
