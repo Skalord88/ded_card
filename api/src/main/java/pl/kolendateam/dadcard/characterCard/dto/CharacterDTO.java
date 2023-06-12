@@ -14,10 +14,7 @@ import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
-<<<<<<< HEAD
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
-=======
->>>>>>> main
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
@@ -54,8 +51,6 @@ public class CharacterDTO {
         if(character.getVitality()==null){
             this.vitality = null;
         } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
-        this.streghtAttack = character.streghtAttack();
-        this.dextrityAttack = character.dextrityAttack();
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {
@@ -65,7 +60,11 @@ public class CharacterDTO {
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+                this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+        if(character.getFeatsList()==null){
+            this.featsList = null;
+        } else {
+            this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());}
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {

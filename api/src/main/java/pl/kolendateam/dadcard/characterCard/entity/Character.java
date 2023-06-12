@@ -26,10 +26,6 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
-<<<<<<< HEAD
-=======
-import pl.kolendateam.dadcard.feats.entity.Feats;
->>>>>>> main
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
@@ -84,22 +80,12 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
-<<<<<<< HEAD
-=======
-    Abilitys abilitys;
->>>>>>> main
 
     double bab;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Feats> featsList;
 
-<<<<<<< HEAD
-=======
-    @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Feats> featsList;
-
->>>>>>> main
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
@@ -108,10 +94,6 @@ public class Character {
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
-<<<<<<< HEAD
-=======
-        this.featsList = new ArrayList<>();
->>>>>>> main
     }
     
     public void addClassToPcArray(ClassPc classPc) {
@@ -257,7 +239,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -308,16 +289,6 @@ public class Character {
 
         this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
         
-    }
-
-    public int streghtAttack() {
-        int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
-        return streghtAttack;
-    }
-
-    public int dextrityAttack() {
-        int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
-        return dextrityAttack;
     }
 
     public void createArmorClass() {

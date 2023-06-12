@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.attack.dto.AttackDTO;
@@ -46,7 +47,12 @@ public class AttackController {
             }
         }
 
-        int resultat = attackDTO.d20+character1.streghtAttack();
+        Abilitys ab = character1.getAbilitys();
+        
+        int resultat = 
+        attackDTO.d20+(int)character1.getBab()+
+        ab.bonusStreght(ab)+
+        character1.getSize().getBonusAttackAc();
 
         ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
             character2.getArmorClass(),character2.getAbilitys(),character2.getSize());
