@@ -215,6 +215,7 @@ public class Character {
     }
 
     public void raceLevelAdjustment(int lvAdj) {
+        this.bab = (lvAdj*0.5)-0.5;
         this.levelAdjustment = lvAdj;
         this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
         this.skillPoints = lvAdj*2;
