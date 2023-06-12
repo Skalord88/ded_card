@@ -24,9 +24,7 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.Region;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
-import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
-import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @RestController
 @RequestMapping("race")
@@ -107,6 +105,8 @@ public class RaceController {
         if(race.getArmorClass() != null){
             character.raceBonusArmorClass(race.getArmorClass());
         }
+
+        character.sizeCharacter(race.getSize());
 
         character.addSpeed(race.getSpeed());
 

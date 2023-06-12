@@ -43,7 +43,7 @@ public class CharacterDTO {
         this.playerName = character.getPlayerName();
         this.race = character.getRace();
         this.subRace = character.getSubRace();
-        this.size = character.getSize().getSize();
+        this.size = character.sizeCharacter();
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
