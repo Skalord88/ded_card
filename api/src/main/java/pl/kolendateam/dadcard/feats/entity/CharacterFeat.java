@@ -11,16 +11,11 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CharacterFeat{
 
-    int levelOfFeat;
     String characterFeatName;
     String characterFeatSpecial;
     String characterFeatDescription;
 
-    public void incrementLevelOfFeat(){
-        this.levelOfFeat +=1;
-    }
-
-    public void firstFeatInList(Feats featInDB){
+    public void newFeatInList(Feats featInDB){
         
         characterFeatName = featInDB.getFeatName();
         characterFeatSpecial = featInDB.getFeatSpecial();
@@ -29,15 +24,17 @@ public class CharacterFeat{
     }
 
     public void characterFeatSpecialCheck() {
+
+        int numberFeat;
         
         switch (characterFeatName){
             case "Rage":
-            levelOfFeat +=1;
-            characterFeatSpecial = levelOfFeat+"/day";
+            numberFeat = characterFeatSpecial.charAt(0);
+            characterFeatSpecial = numberFeat+"/day";
             break;
             case "Trap sense":
-            levelOfFeat +=1;
-            this.characterFeatSpecial = "+"+levelOfFeat;
+            numberFeat = characterFeatSpecial.charAt(1);
+            this.characterFeatSpecial = "+"+numberFeat;
             break;
             } 
         }

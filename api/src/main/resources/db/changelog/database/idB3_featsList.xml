@@ -7,7 +7,6 @@
   <changeSet id="16" author="oscar">
           <insert tableName="feats">
               <column  name="feat_name"  value="Acrobatic"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Jump checks and Tumble checks."/>
@@ -17,7 +16,6 @@ You get a +2 bonus on all Jump checks and Tumble checks."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Agile"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Balance checks and Escape Artist checks."/>
@@ -27,7 +25,6 @@ You get a +2 bonus on all Balance checks and Escape Artist checks."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Alertness"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Listen checks and Spot checks.
@@ -39,7 +36,6 @@ The master of a familiar gains the benefit of the Alertness feat whenever the fa
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Alertness"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Balance checks and Escape Artist checks."/>
@@ -49,7 +45,6 @@ You get a +2 bonus on all Balance checks and Escape Artist checks."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Animal Affinity"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Handle Animal checks and Ride checks."/>
@@ -59,7 +54,6 @@ You get a +2 bonus on all Handle Animal checks and Ride checks."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Armor Proficiency (Heavy)"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="prerequisite"  value="Armor Proficiency (light), Armor Proficiency (medium)."/>
               <column  name="description" value="Benefit:
@@ -73,7 +67,6 @@ Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as 
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Armor Proficiency (Light)"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks.
@@ -86,7 +79,6 @@ All characters except wizards, sorcerers, and monks automatically have Armor Pro
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Armor Proficiency (Medium)"/>
-            <column  name="duplicate"  value="false"/>
             <column  name="feats_type"  value="GENERAL"/>
             <column  name="prerequisite"  value="Armor Proficiency (light)."/>
             <column  name="description" value="Benefit:
@@ -100,7 +92,6 @@ Fighters, barbarians, paladins, clerics, druids, and bards automatically have Ar
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Athletic"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="description" value="Benefit:
 You get a +2 bonus on all Climb checks and Swim checks."/>
@@ -110,7 +101,6 @@ You get a +2 bonus on all Climb checks and Swim checks."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Fast movement"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
 A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."/>
@@ -118,7 +108,6 @@ A barbarian’s land speed is faster than the norm for his race by +10 feet. Thi
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Illiteracy"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
 Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak.
@@ -129,7 +118,6 @@ A barbarian who gains a level in any other class automatically gains literacy. A
               <column  name="feat_name"  value="Rage"/>
               <column  name="feat_special"  value="0/day"/>
               <column  name="feats_type"  value="CLASS"/>
-              <column  name="duplicate"  value="true"/>
               <column  name="description" value="
 A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).
 
@@ -137,7 +125,6 @@ A barbarian can fly into a rage only once per encounter. At 1st level he can use
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Uncanny dodge"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
 At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."/>
@@ -146,20 +133,17 @@ At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he 
               <column  name="feat_name"  value="Trap sense"/>
               <column  name="feat_special"  value="+0"/>
               <column  name="feats_type"  value="CLASS"/>
-              <column  name="duplicate"  value="true"/>
               <column  name="description" value="
  Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved Uncanny Dodge"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
 At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved Bull Rush"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="prerequisite"  value="Str 13, Power Attack"/>
               <column  name="description" value="Benefit:
@@ -171,7 +155,6 @@ A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
           </insert>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved Disarm"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="prerequisite"  value="Int 13, Combat Expertise"/>
               <column  name="description" value="Benefit
@@ -188,7 +171,6 @@ A monk may select Improved Disarm as a bonus feat at 6th level, even if she does
           </insert>
           <insert tableName="feats">
               <column  name="feat_name"  value="Improved Grapple"/>
-              <column  name="duplicate"  value="false"/>
               <column  name="feats_type"  value="GENERAL"/>
               <column  name="prerequisite"  value="Dex 13, Improved Unarmed Strike"/>
               <column  name="description" value="Benefit

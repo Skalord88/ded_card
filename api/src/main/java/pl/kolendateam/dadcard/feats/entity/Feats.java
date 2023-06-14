@@ -35,8 +35,6 @@ public class Feats implements Serializable{
 
     String prerequisite;
 
-    boolean duplicate;
-
     @Nonnull
     String description;
 

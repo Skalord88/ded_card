@@ -321,7 +321,7 @@ public class Character {
     public void buyFeat(Feats feat) {
 
         CharacterFeat characterFeat = new CharacterFeat(
-            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+            feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
             );
 
         this.featsList.add(characterFeat);
@@ -341,7 +341,7 @@ public class Character {
                     for(String featString : fList){
                         if(featInList.getFeatName().equals(featString)){
                             CharacterFeat newCharFeat = new CharacterFeat();
-                            newCharFeat.firstFeatInList(featInList);
+                            newCharFeat.newFeatInList(featInList);
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }

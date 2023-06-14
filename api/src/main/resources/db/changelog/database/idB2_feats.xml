@@ -21,9 +21,6 @@
         <column name="prerequisite" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="duplicate" type="boolean">
-          <constraints nullable="true"/>
-        </column>
         <column name="description" type="varchar(10000)">
           <constraints nullable="false"/>
         </column>
