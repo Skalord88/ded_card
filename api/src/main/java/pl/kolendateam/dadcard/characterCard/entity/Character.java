@@ -327,54 +327,101 @@ public class Character {
         this.featsList.add(characterFeat);
     }
 
-    public void addFeatsFromClass(int lv, List <Feats> featsListFormDB, String classFeatsMap) {
+    public ArrayList<CharacterFeat> listFeatsFromClass(int lv, List <Feats> featsListInDB, String classFeatsMap) {
 
+        ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
         Gson gson = new Gson();
         Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
         List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
-        for(ClassFeats featFromJsonList : featsJson){
-            if(featFromJsonList.getLevel()==lv){
-                for(Feats fL : featsListFormDB){
-                    HashSet <String> fList = featFromJsonList.getClassFeats();
-                    for(String f : fList){
-                        if(fL.getFeatName().equals(f)){
-                            if(fL.getSpeed()!=null){
-                                this.speed+=fL.getSpeed();
-                            }
-                            boolean check = true;
-                            if(featsList.isEmpty()){
-                                check = false;
-                            }
-                            if(check == false){
-                                for(int indexFeat = 0; indexFeat < featsList.size(); indexFeat++){
-                                    CharacterFeat newCharacterFeat = new CharacterFeat(
-                                    1,fL.getFeatName(),fL.getFeatSpecial(),fL.getDescription()
-                                );
-                                this.featsList.add(newCharacterFeat);
-                                }
-                            } else {
-                                for(int indexFeat = 0; indexFeat < featsList.size(); indexFeat++){
-                                    // nie działa
-                                    if(!f.equals(featsList.get(indexFeat).getCharacterFeatName())){
-                                        CharacterFeat newCharacterFeat = new CharacterFeat(
-                                        1,fL.getFeatName(),fL.getFeatSpecial(),fL.getDescription()
-                                        );
-                                        this.featsList.add(newCharacterFeat);
-                                    } else {
-                                        if(fL.isDuplicate()==true){
-                                            featsList.get(indexFeat).incrementLevelOfFeat();
-                                            featsList.get(indexFeat).characterFeatSpecialCheck();
-                                        }
-                                    }
-                                }
-                            }
+        for(ClassFeats featInJson : featsJson){
+            if(featInJson.getLevel()==lv){
+                for(Feats featInList : featsListInDB){
+                    HashSet <String> fList = featInJson.getClassFeats();
+                    for(String featString : fList){
+                        if(featInList.getFeatName().equals(featString)){
+                            CharacterFeat newCharFeat = new CharacterFeat();
+                            newCharFeat.firstFeatInList(featInList);
+                            characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
                 }
             }
-        }    
+        }
+        return characterFeatsFromClassArray;
     }
+
+    public void addFeatsFromArray(ArrayList<CharacterFeat> characterFeatsFromClass){
+
+        boolean checkFeatInList = false;
+        if(this.featsList.isEmpty()==true){
+            for(CharacterFeat classFeat : characterFeatsFromClass){
+                classFeat.characterFeatSpecialCheck();
+                this.featsList.add(classFeat);
+            }
+            checkFeatInList = true;
+        }
+        if(checkFeatInList==false){
+            for(CharacterFeat feat : this.featsList){
+                for(CharacterFeat classFeat : characterFeatsFromClass){
+                    if(!feat.getCharacterFeatName().equals(classFeat.getCharacterFeatName())){
+                        this.featsList.add(classFeat);
+                    } else {
+                        feat.characterFeatSpecialCheck();
+                    }
+                }
+            }
+        }
+    }
+
+                    // for(String featString : fList){
+                    //     if(featInList.getFeatName().equals(featString)){
+                    //         if(featInList.getSpeed()!=null){
+                    //             this.speed+=featInList.getSpeed();
+                    //         }
+                    //         for(CharacterFeat charFeat :this.featsList){
+                    //             if(!charFeat.getCharacterFeatName().equals(featString)){
+                    //                 CharacterFeat newCharFeat = new CharacterFeat();
+                    //                 newCharFeat.firstFeatInList(featInList);
+                    //                 newCharFeat.characterFeatSpecialCheck();
+                    //                 this.featsList.add(newCharFeat);
+
+                    //             }
+                    //         }
+
+                            // boolean checkFeatInList = false;
+                            // if(featInList.isDuplicate()==true){
+                            //     for(CharacterFeat charFeat : this.featsList){
+                            //         charFeat.characterFeatSpecialCheck();
+                            //         checkFeatInList = true;
+                            //         if(checkFeatInList==false){
+                            //             CharacterFeat newCharFeat = new CharacterFeat();
+                            //             newCharFeat.firstFeatInList(featInList);
+                            //             newCharFeat.characterFeatSpecialCheck();
+                            //             this.featsList.add(newCharFeat);
+
+
+    // public void addFeatsFromClass(int lv, List <Feats> featsListFormDB, String classFeatsMap) {
+
+    //     Gson gson = new Gson();
+    //     Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+    //     List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+
+    //     for(ClassFeats featFromJsonList : featsJson){
+    //         if(featFromJsonList.getLevel()==lv){
+    //             for(Feats featInDB : featsListFormDB){
+    //                 for(String featInHashSet : featFromJsonList.getClassFeats()){
+    //                     CharacterFeat characterFeat = new CharacterFeat();
+    //                     if(featInHashSet.equals(featInDB.getFeatName())){
+    //                         characterFeat.firstFeatInList(featInDB);
+    //                         characterFeat.characterFeatSpecialCheck();
+    //                         this.featsList.add(characterFeat);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     public void addSpeed(int speed) {
         this.speed+=speed;

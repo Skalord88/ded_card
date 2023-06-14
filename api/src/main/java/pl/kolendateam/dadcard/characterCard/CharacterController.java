@@ -131,7 +131,9 @@ public class CharacterController {
 
         int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());
 
-        character.addFeatsFromClass(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
+        ArrayList<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
+
+        character.addFeatsFromArray(characterFeatsFromClass);
         
         if(levelClassInDB == 1){
             character.addSavingThrowLevelOne(classPc);

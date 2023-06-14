@@ -20,22 +20,26 @@ public class CharacterFeat{
         this.levelOfFeat +=1;
     }
 
+    public void firstFeatInList(Feats featInDB){
+        
+        characterFeatName = featInDB.getFeatName();
+        characterFeatSpecial = featInDB.getFeatSpecial();
+        characterFeatDescription = featInDB.getDescription();
+
+    }
+
     public void characterFeatSpecialCheck() {
         
-        int specialFeatInt;
-        
-        switch (this.characterFeatName){
+        switch (characterFeatName){
             case "Rage":
-            specialFeatInt = this.characterFeatSpecial.charAt(0);
-            specialFeatInt +=1;
-            this.characterFeatSpecial = specialFeatInt+"/day";
+            levelOfFeat +=1;
+            characterFeatSpecial = levelOfFeat+"/day";
             break;
             case "Trap sense":
-            specialFeatInt = this.characterFeatSpecial.charAt(1);
-            specialFeatInt +=1;
-            this.characterFeatSpecial = "+"+specialFeatInt;
+            levelOfFeat +=1;
+            this.characterFeatSpecial = "+"+levelOfFeat;
             break;
-            }
+            } 
         }
     
 }
