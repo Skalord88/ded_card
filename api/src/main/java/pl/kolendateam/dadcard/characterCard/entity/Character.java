@@ -321,7 +321,7 @@ public class Character {
     public void buyFeat(Feats feat) {
 
         CharacterFeat characterFeat = new CharacterFeat(
-            feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+            0,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
             );
 
         this.featsList.add(characterFeat);
