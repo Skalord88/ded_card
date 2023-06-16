@@ -133,7 +133,12 @@ public class CharacterController {
 
         ArrayList<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
 
-        character.addFeatsFromArray(characterFeatsFromClass);
+        //manca add feat 2 lv
+        if(character.getFeatsList().isEmpty()==true){
+            character.addFeatToList(characterFeatsFromClass);
+        } else {
+            character.addFeatsFromArray(characterFeatsFromClass);
+        }
         
         if(levelClassInDB == 1){
             character.addSavingThrowLevelOne(classPc);

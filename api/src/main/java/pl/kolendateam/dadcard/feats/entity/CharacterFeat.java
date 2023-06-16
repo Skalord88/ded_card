@@ -17,12 +17,14 @@ public class CharacterFeat{
     String characterFeatDescription;
 
     public void newFeatInList(Feats featInDB){
-        
+        levelOfFeat = 1;
         characterFeatName = featInDB.getFeatName();
         characterFeatSpecial = featInDB.getFeatSpecial();
         characterFeatDescription = featInDB.getDescription();
 
     }
+
+    
 
     public void characterFeatSpecialCheck() {
         

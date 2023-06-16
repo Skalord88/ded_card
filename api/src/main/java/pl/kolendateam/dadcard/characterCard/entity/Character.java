@@ -318,15 +318,6 @@ public class Character {
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
     }
 
-    public void buyFeat(Feats feat) {
-
-        CharacterFeat characterFeat = new CharacterFeat(
-            0,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
-            );
-
-        this.featsList.add(characterFeat);
-    }
-
     public ArrayList<CharacterFeat> listFeatsFromClass(int lv, List <Feats> featsListInDB, String classFeatsMap) {
 
         ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
@@ -353,25 +344,35 @@ public class Character {
 
     public void addFeatsFromArray(ArrayList<CharacterFeat> characterFeatsFromClass){
 
-        boolean checkFeatInList = false;
-        if(this.featsList.isEmpty()==true){
-            for(CharacterFeat classFeat : characterFeatsFromClass){
-                classFeat.characterFeatSpecialCheck();
-                this.featsList.add(classFeat);
-            }
-            checkFeatInList = true;
-        }
-        if(checkFeatInList==false){
-            for(CharacterFeat feat : this.featsList){
-                for(CharacterFeat classFeat : characterFeatsFromClass){
-                    if(!feat.getCharacterFeatName().equals(classFeat.getCharacterFeatName())){
-                        this.featsList.add(classFeat);
-                    } else {
-                        feat.characterFeatSpecialCheck();
+        //manca add feat 2 lv
+
+
+
+        for(CharacterFeat featFromClass : characterFeatsFromClass){
+            for(CharacterFeat featFromCharacter : this.featsList){
+                if(featFromClass.getCharacterFeatName().equals(featFromCharacter.getCharacterFeatName())){
+                    if(featFromClass.getCharacterFeatSpecial()!=null){
+                        featFromCharacter.characterFeatSpecialCheck();
                     }
+                } else {
+                    this.featsList.add(featFromClass);
                 }
             }
         }
+    }
+
+    public void addFeatToList(ArrayList<CharacterFeat> characterFeatsFromClass){
+        for(CharacterFeat charFeat : characterFeatsFromClass){
+            this.featsList.add(charFeat);
+        }
+    }
+
+    public void buyFeat(Feats feat) {
+
+        CharacterFeat characterFeat = new CharacterFeat(
+            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+            );
+        this.featsList.add(characterFeat);
     }
 
                     // for(String featString : fList){
