@@ -332,7 +332,7 @@ public class Character {
                     for(String featString : fList){
                         if(featInList.getFeatName().equals(featString)){
                             CharacterFeat newCharFeat = new CharacterFeat();
-                            newCharFeat.newFeatInList(featInList);
+                            newCharFeat.newFeat(featInList);
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -346,14 +346,11 @@ public class Character {
 
         //manca add feat 2 lv
 
-
-
         for(CharacterFeat featFromClass : characterFeatsFromClass){
-            for(CharacterFeat featFromCharacter : this.featsList){
+            ArrayList<CharacterFeat>featsOfCharacter=this.featsList;
+            for(CharacterFeat featFromCharacter : featsOfCharacter){
                 if(featFromClass.getCharacterFeatName().equals(featFromCharacter.getCharacterFeatName())){
-                    if(featFromClass.getCharacterFeatSpecial()!=null){
-                        featFromCharacter.characterFeatSpecialCheck();
-                    }
+                    featFromCharacter.characterFeatSpecialCheck();
                 } else {
                     this.featsList.add(featFromClass);
                 }
@@ -368,10 +365,8 @@ public class Character {
     }
 
     public void buyFeat(Feats feat) {
-
-        CharacterFeat characterFeat = new CharacterFeat(
-            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
-            );
+        CharacterFeat characterFeat = new CharacterFeat();
+        characterFeat.newFeat(feat);
         this.featsList.add(characterFeat);
     }
 

@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.feats.entity;
 
+import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,30 +18,27 @@ public class CharacterFeat{
     String characterFeatSpecial;
     String characterFeatDescription;
 
-    public void newFeatInList(Feats featInDB){
+    public void newFeat(Feats featInDB){
         levelOfFeat = 1;
         characterFeatName = featInDB.getFeatName();
         characterFeatSpecial = featInDB.getFeatSpecial();
         characterFeatDescription = featInDB.getDescription();
-
     }
-
-    
 
     public void characterFeatSpecialCheck() {
         
         switch (characterFeatName){
-            case "Rage":
-            levelOfFeat++; 
-            // numberFeat = characterFeatSpecial.charAt(0);
-            characterFeatSpecial = levelOfFeat+"/day";
-            break;
-            case "Trap sense":
-            levelOfFeat++;
-            // numberFeat = characterFeatSpecial.charAt(1);
-            this.characterFeatSpecial = "+"+levelOfFeat;
-            break;
-            } 
+            case "Rage" -> {
+                levelOfFeat++;
+                characterFeatSpecial = levelOfFeat+"/day";
+            }
+            case "Trap sense" -> {
+                levelOfFeat++;
+                characterFeatSpecial = "+"+levelOfFeat;
+            }
+            
+            default -> levelOfFeat = 1;
         }
+    }
     
 }
