@@ -346,8 +346,9 @@ public class Character {
 
         //manca add feat 2 lv
 
+        ArrayList<CharacterFeat>featsOfCharacter=this.featsList;
+        
         for(CharacterFeat featFromClass : characterFeatsFromClass){
-            ArrayList<CharacterFeat>featsOfCharacter=this.featsList;
             for(CharacterFeat featFromCharacter : featsOfCharacter){
                 if(featFromClass.getCharacterFeatName().equals(featFromCharacter.getCharacterFeatName())){
                     featFromCharacter.characterFeatSpecialCheck();

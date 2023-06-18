@@ -18,11 +18,11 @@ public class CharacterFeat{
     String characterFeatSpecial;
     String characterFeatDescription;
 
-    public void newFeat(Feats featInDB){
+    public void newFeat(Feats feat){
         levelOfFeat = 1;
-        characterFeatName = featInDB.getFeatName();
-        characterFeatSpecial = featInDB.getFeatSpecial();
-        characterFeatDescription = featInDB.getDescription();
+        characterFeatName = feat.getFeatName();
+        characterFeatSpecial = feat.getFeatSpecial();
+        characterFeatDescription = feat.getDescription();
     }
 
     public void characterFeatSpecialCheck() {
