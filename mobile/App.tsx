@@ -16,6 +16,10 @@ import CreateCharacter from './src/feature/CreateCharacter';
 
 
 function App(): JSX.Element {
+  if(__DEV__) {
+    import('./ReactotronConfig').then(() => console.log('Reactotron Configured'))
+  }
+  
   return (
    <NavigationContainer>
     <CreateCharacter/>
