@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.race.dto.RaceBaseDTO;
 import pl.kolendateam.dadcard.race.dto.RegionBaseDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
@@ -24,6 +24,7 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.Region;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @RestController
 @RequestMapping("race")
@@ -83,15 +84,22 @@ public class RaceController {
         if(race.getAbilitys() != null){
             character.addAbilityRace(race.getAbilitys());
         }
+            
         if(race.getSkills() != null){
-            character.addSkillRace(race.getSkills());
+            character.addSkill(race.getSkills());
         }
         
-        character.raceLevelAdjustment(race.getLevelAdjustment());
+        if(race.getLevelAdjustment() != 0){
+            character.raceLevelAdjustment(race.getLevelAdjustment());
+        }
 
         if(race.getArmorClass() != null){
-        character.raceBonusArmorClass(race.getArmorClass());
+            character.raceBonusArmorClass(race.getArmorClass());
         }
+
+        character.sizeCharacter(race.getSize());
+
+        character.addSpeed(race.getSpeed());
 
         character.setCharacterRace(race);
 

@@ -15,5 +15,17 @@ public class ArmorClassDTO {
     public int deflectionBonuses;
     public int naturalArmor;
     public int dodgeBonus;
+
+    public int ACTotal(ArmorClassDTO armorClassDTO) {
+        return 10+
+        dextrityBonus+
+        sizeBonus+
+        armorBonus+
+        shildBonus+
+        enhancementBonuses+
+        deflectionBonuses+
+        naturalArmor+
+        dodgeBonus;
+    }
     
 }

@@ -7,5 +7,6 @@ public class SkillsDTO {
     public boolean classSkill;
     public int skillRank;
     public int skillAbility;
+    public int skillBonus;
     
 }

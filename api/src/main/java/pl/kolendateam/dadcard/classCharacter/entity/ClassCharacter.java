@@ -60,4 +60,6 @@ public class ClassCharacter {
     @NonNull
     int skillPoints;
 
+    String classFeatsMap;
+
 }

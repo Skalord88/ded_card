@@ -15,6 +15,12 @@
         <column name="sub_race_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
+        <column name="size" type="varchar(255)">
+          <constraints nullable="false"/>
+        </column>
+        <column name="speed" type="int">
+          <constraints nullable="false"/>
+        </column>
         <column name="abilitys" type="varchar(255)">
           <constraints nullable="true"/>
         </column>

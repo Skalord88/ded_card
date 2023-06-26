@@ -1,6 +1,8 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -22,6 +25,8 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
 @RestController
@@ -30,27 +35,30 @@ public class CharacterController {
     
     ClassRepository classRepository;
     CharacterRepository characterRepository;
+    FeatsRepository featsRepository;
 
     @Autowired
-    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository){
+    public CharacterController(CharacterRepository characterRepository,ClassRepository classRepository,FeatsRepository featsRepository){
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
+        this.featsRepository = featsRepository;
     }
 
     @PostMapping(value="",consumes = {"application/json"})
-    public CharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
+    public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO){
         
         Character character = new Character(characterDTO.characterName,characterDTO.playerName);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
-        Vitality vitality = new Vitality();
+        HashMap<Integer,Integer> vitaMap = new HashMap<>();
+        Vitality vitality = new Vitality(0,vitaMap,0);
 
         character.setVitality(vitality);
         character.setSavingThrow(savingThrow);
 
         this.characterRepository.save(character);
 
-        return characterDTO;
+        return new CreateCharacterDTO(character);
     }
 
     @GetMapping(value = "{id}")
@@ -86,14 +94,20 @@ public class CharacterController {
                     HttpStatus.NOT_FOUND, "Class Not Found");
         }
 
+        List<Feats> featsList = this.featsRepository.findAll();
+
         ClassCharacter classCharacter = classOpt.get();
 
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
-        ClassPc classPc = new ClassPc(classCharacter.getId(),classCharacter.getName(),1,classCharacter.getHitDice(),classCharacter.getSavingThrow(),classCharacter.getClassBab());
+        ClassPc classPc = new ClassPc(
+            classCharacter.getId(),classCharacter.getName(),1,
+            classCharacter.getHitDice(),classCharacter.getSavingThrow(),
+            classCharacter.getClassBab()
+            );
 
         character.incrementEcl();
-
+        
         if (character.getEcl() == 1){
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
             character.hitPointsFirstLevel(classCharacter.getHitDice());
@@ -106,12 +120,14 @@ public class CharacterController {
 
         if(indexClassInDB == -1){
             character.addClassToPcArray(classPc);
-            character.setSkillsTruePcArray(classCharacter.getAvailableSkills()); 
+            character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
         }else{
             character.incrementLevelClassForIndex(indexClassInDB);
         }
 
         int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());
+
+        character.addFeats(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
 
         if(levelClassInDB == 1){
             character.addSavingThrowLevelOne(classPc);

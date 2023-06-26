@@ -4,35 +4,28 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="1" author="oscar">
-      <createTable tableName="class_character">
+  <changeSet id="15" author="oscar">
+      <createTable tableName="feats">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
-        <column name="type" type="varchar(255)">
+        <column name="feat_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="name" type="varchar(255)">
+        <column name="feats_type" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="avatar_url" type="varchar(255)">
-          <constraints nullable="false"/>
-        </column>
-        <column name="hit_dice" type="int">
+        <column name="prerequisite" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="saving_throw" type="varchar(255)">
+        <column name="description" type="varchar(10000)">
           <constraints nullable="false"/>
         </column>
-        <column name="class_bab" type="double">
-          <constraints nullable="false"/>
-        </column>
-        <column name="skill_points" type="int">
-          <constraints nullable="false"/>
-        </column>
-        <column name="class_feats_map" type="varchar(1000)">
+        <column name="speed" type="int">
           <constraints nullable="true"/>
-          <!-- <constraints nullable="false"/> -->
+        </column>
+        <column name="skills" type="varchar(255)">
+          <constraints nullable="true"/>
         </column>
       </createTable>
   </changeSet>

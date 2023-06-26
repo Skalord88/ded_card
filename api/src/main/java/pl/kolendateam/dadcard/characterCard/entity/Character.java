@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +26,11 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.size.entity.Size;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
@@ -49,6 +54,11 @@ public class Character {
     String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
+    Size size;
+    
+    int speed;
+
+    @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
     int ecl;
@@ -69,16 +79,21 @@ public class Character {
     double skillPoints;
     
     @JdbcTypeCode(SqlTypes.JSON)
-    private Abilitys abilitys;
+    Abilitys abilitys;
 
     double bab;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<Feats> featsList;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPcArray = new ArrayList<>();
+        this.vitality = new Vitality();
         this.savingThrow = new SavingThrow();
         this.classSkills = new ArrayList<>();
+        this.featsList = new ArrayList<>();
     }
     
     public void addClassToPcArray(ClassPc classPc) {
@@ -215,6 +230,7 @@ public class Character {
     }
 
     public void raceLevelAdjustment(int lvAdj) {
+        this.bab = (lvAdj*0.5)-0.5;
         this.levelAdjustment = lvAdj;
         this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
         this.skillPoints = lvAdj*2;
@@ -223,7 +239,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -251,17 +266,17 @@ public class Character {
         this.subRace = race.getSubRaceName();
     }
 
-    public void addSkillRace(String raceSkills) {
+    public void addSkill(String skills) {
 
         Gson gson = new Gson();
 
-        Type listRaceSkill = new TypeToken<List<ClassSkills>>(){}.getType();
-        List<ClassSkills> raceSkill = gson.fromJson(raceSkills, listRaceSkill);
+        Type listSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        List<ClassSkills> skill = gson.fromJson(skills, listSkill);
         
         for(ClassSkills clSk : classSkills){
-            for(ClassSkills raceSk : raceSkill){
-                if(clSk.getNameSkill().equals(raceSk.getNameSkill())){
-                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)raceSk.getSkillRank());
+            for(ClassSkills sk : skill){
+                if(clSk.getNameSkill().equals(sk.getNameSkill())){
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)sk.getSkillRank());
                 }
             }
         }
@@ -276,19 +291,8 @@ public class Character {
         
     }
 
-    public int streghtAttack() {
-        int streghtAttack = (int)bab+abilitys.bonusStreght(abilitys);
-        return streghtAttack;
-    }
-
-    public int dextrityAttack() {
-        int dextrityAttack = (int)bab+abilitys.bonusDextrity(abilitys);
-        return dextrityAttack;
-    }
-
     public void createArmorClass() {
-        ArmorClass aC = new ArmorClass();
-        this.armorClass = aC;
+        this.armorClass = new ArmorClass();
     }
 
     public void raceBonusArmorClass(String armorClass) {
@@ -297,7 +301,54 @@ public class Character {
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
-        
     }
 
+    public void setFeat(Feats feat) {
+
+        this.featsList.add(feat);
+    }
+
+    public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
+
+        Gson gson = new Gson();
+        Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+        List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+
+        for(ClassFeats fJ : featsJson){
+            if(fJ.getLevel()==lv){
+                for(Feats fL : featsList){
+                    HashSet <String> fList = fJ.getClassFeats();
+                    for(String f : fList){
+                        if(fL.getFeatName().equals(f)){
+                            if(fL.getSpeed()!=null){
+                                this.speed+=fL.getSpeed();
+                            }
+                            this.featsList.add(fL);
+                        }
+                    }
+                }
+            }
+        }    
+    }
+
+    public void addSpeed(int speed) {
+        this.speed+=speed;
+    }
+
+    public void sizeCharacter(SizeEnum size) {
+        Size sizeNew = new Size();
+        sizeNew.sizeBonus(size);
+        this.size = sizeNew;
+        this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
+        for(ClassSkills skill : classSkills){
+            if(skill.getNameSkill().equals("hide")){
+                skill.setSkillDifferentBonus(+sizeNew.getHide());
+            }
+        }
+    }
+
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
+    }
+    
 }

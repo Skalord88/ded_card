@@ -1,10 +1,11 @@
 package pl.kolendateam.dadcard.race.entity;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @NoArgsConstructor
 @Getter
@@ -37,12 +39,18 @@ public class Race {
     String avatarUrl;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
+    SizeEnum size;
+
+    @NonNull
+    int speed;
+
+    @NonNull
     String abilitys;
 
     @NonNull
     String skills;
 
-    @NonNull
     String armorClass;
 
     int levelAdjustment;

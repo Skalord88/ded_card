@@ -41,6 +41,7 @@ public class MapperSkillsToDTO {
                     skillDTO.skillAbility = abilitys.bonusCharisma(abilitys);
                     break;
                 }
+                skillDTO.skillBonus = skill.getSkillDifferentBonus();
         
                 skillListDTO.add(skillDTO);
             }
@@ -57,7 +58,7 @@ public class MapperSkillsToDTO {
                 skillDTO.skillRank = (int)skill.getSkillRank();
 
                 skillListDTO.add(skillDTO);
-        }
+            }
 
         return skillListDTO;
 
