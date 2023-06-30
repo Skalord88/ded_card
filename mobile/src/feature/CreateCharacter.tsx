@@ -1,9 +1,9 @@
-import { Text, View, TextInput, Button, Alert, StyleSheet } from "react-native";
+import { Text, View, TextInput, Button, StyleSheet } from "react-native";
 import { useForm, Controller } from "react-hook-form";
-import { useState } from "react";
-import { CreateCharacterEnum } from "../shered/characterEnum";
-import Reactotron from "reactotron-react-native";
-import axios from "axios";
+import { CreateCharacterEnum } from "../shered/enums/characterEnum";
+import { useStore } from "../shered/store";
+import { useNavigation } from "@react-navigation/native";
+import { StackEnum } from "../shered/enums/navigationEnum";
 
 export default function CreateCharacter() {
   const { control, handleSubmit, formState: { errors } } = useForm({
@@ -12,23 +12,15 @@ export default function CreateCharacter() {
       playerName: ''
     }
   });
-  const [vlaue, setValue] = useState([])
+  const [characterName, createNewUser] = useStore(
+    (state) => [state.characterName, state.createNewUser],
+  )
+  const navigation = useNavigation();
   
-  const postData = (data: { characterName: string; playerName: string; }) => {
-    const baseUrl = 'http://192.168.0.140:8080';
-    axios
-      .post(`${baseUrl}/character-card`, {
-        characterName: data.characterName,
-        playerName: data.playerName
-      })
-      .then(function (response) {
-        Reactotron.log(response.data);
-      })
-      .catch(function (error) {
-        Reactotron.log(error.message);
-      });
-  };
-  const onSubmit = (data: { characterName: string; playerName: string; }) => postData(data)
+  const submitNav = ()=>{
+    createNewUser
+    navigation.navigate(StackEnum.ABILITY)
+  }
 
 
   return (
@@ -72,7 +64,8 @@ export default function CreateCharacter() {
         />
         {errors.playerName && <Text style={styles.error}>Pole jest wymagane.</Text>}
       </View>
-      <Button title="Submit" onPress={handleSubmit(onSubmit)} />
+      <Button title="Submit" onPress={handleSubmit(submitNav)} />
+      
     </View>
   );
 }
@@ -93,7 +86,8 @@ const styles = StyleSheet.create ({
     paddingBottom:10,
     paddingLeft:20,
     paddingRight:20,
-    paddingTop:20
+    paddingTop:20,
+    backgroundColor:'#525252'
   }
 
 })

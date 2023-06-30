@@ -6,13 +6,9 @@
  */
 
 import React from 'react';
-import {
-  Text,
-  View,
-} from 'react-native';
+import {} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import CreateCharacter from './src/feature/CreateCharacter';
-
+import { StackNav } from './src/shered/navigation/StackNav';
 
 
 function App(): JSX.Element {
@@ -22,7 +18,7 @@ function App(): JSX.Element {
   
   return (
    <NavigationContainer>
-    <CreateCharacter/>
+    <StackNav/>
    </NavigationContainer>
   );
 }
