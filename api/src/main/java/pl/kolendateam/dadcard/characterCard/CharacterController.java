@@ -112,6 +112,7 @@ public class CharacterController {
 
         character.incrementEcl();
         
+        // skills
         if (character.getEcl() == 1){
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
             character.hitPointsFirstLevel(classCharacter.getHitDice());
@@ -119,7 +120,8 @@ public class CharacterController {
             character.calculateSkillPoints(classCharacter.getSkillPoints());
             character.hitPointsNewLevel(classCharacter.getHitDice());
         }
-         
+        
+        // class
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
         if(indexClassInDB == -1){
@@ -129,17 +131,9 @@ public class CharacterController {
             character.incrementLevelClassForIndex(indexClassInDB);
         }
 
-        int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());
+        int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());       
 
-        ArrayList<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(levelClassInDB,featsList,classCharacter.getClassFeatsMap());
-
-        //manca add feat 2 lv
-        if(character.getFeatsList().isEmpty()==true){
-            character.addFeatToList(characterFeatsFromClass);
-        } else {
-            character.addFeatsFromArray(characterFeatsFromClass);
-        }
-        
+        // saving throw
         if(levelClassInDB == 1){
             character.addSavingThrowLevelOne(classPc);
         }else{
@@ -148,6 +142,14 @@ public class CharacterController {
         
         character.incrementBab(classCharacter.getClassBab());
         
+        // feat
+        ArrayList<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+            levelClassInDB,featsList,classCharacter.getClassFeatsMap());
+            
+        for (CharacterFeat chFeat : characterFeatsFromClass){
+            character.addFeatToPc(chFeat);
+        }
+
         this.characterRepository.save(character);
 
         return new CharacterDTO (character);

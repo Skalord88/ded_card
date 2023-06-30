@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.feats.entity;
 
-import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,34 +12,41 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class CharacterFeat{
+public class CharacterFeat implements Serializable{
 
-    int levelOfFeat;
+    int id;
+    Integer levelOfFeat;
     String characterFeatName;
     String characterFeatSpecial;
     String characterFeatDescription;
 
-    public void newFeat(Feats feat){
-        levelOfFeat = 1;
-        characterFeatName = feat.getFeatName();
-        characterFeatSpecial = feat.getFeatSpecial();
-        characterFeatDescription = feat.getDescription();
+    public int findFeatIndexinArrayById(ArrayList<CharacterFeat> featPcList){
+        for (int i = 0; i < featPcList.size(); i ++){
+            if (this.id == featPcList.get(i).getId()){
+                return i;
+            }
+        } return -1;
     }
 
-    public void characterFeatSpecialCheck() {
-        
-        switch (characterFeatName){
+    public void incrementLevelFeat(){
+        this.levelOfFeat++;
+        String special;
+
+        switch (this.characterFeatName){
             case "Rage" -> {
-                levelOfFeat++;
-                characterFeatSpecial = levelOfFeat+"/day";
+                int bonus = (int) this.characterFeatSpecial.charAt(0);
+                bonus++;
+                special = bonus+"/day";
             }
             case "Trap sense" -> {
-                levelOfFeat++;
-                characterFeatSpecial = "+"+levelOfFeat;
+                int bonus = (int) this.characterFeatSpecial.charAt(0);
+                bonus++;
+                special = "+"+bonus;
             }
-            
-            default -> levelOfFeat = 1;
+            default -> {
+                special = null;
+            }
         }
+        this.characterFeatSpecial = special;
     }
-    
 }

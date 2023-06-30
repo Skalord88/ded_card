@@ -318,7 +318,8 @@ public class Character {
         this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
     }
 
-    public ArrayList<CharacterFeat> listFeatsFromClass(int lv, List <Feats> featsListInDB, String classFeatsMap) {
+    public ArrayList<CharacterFeat> listFeatsFromClass(
+        int lv, List <Feats> featsListInDB, String classFeatsMap) {
 
         ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
         Gson gson = new Gson();
@@ -331,8 +332,13 @@ public class Character {
                     HashSet <String> fList = featInJson.getClassFeats();
                     for(String featString : fList){
                         if(featInList.getFeatName().equals(featString)){
-                            CharacterFeat newCharFeat = new CharacterFeat();
-                            newCharFeat.newFeat(featInList);
+                            CharacterFeat newCharFeat = new CharacterFeat(
+                                featInList.getId(),
+                                1,
+                                featInList.getFeatName(),
+                                featInList.getFeatSpecial(),
+                                featInList.getDescription()
+                            );
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -342,83 +348,12 @@ public class Character {
         return characterFeatsFromClassArray;
     }
 
-    public void addFeatsFromArray(ArrayList<CharacterFeat> characterFeatsFromClass){
-
-        //manca add feat 2 lv
-
-        ArrayList<CharacterFeat>featsOfCharacter=this.featsList;
-        
-        for(CharacterFeat featFromClass : characterFeatsFromClass){
-            for(CharacterFeat featFromCharacter : featsOfCharacter){
-                if(featFromClass.getCharacterFeatName().equals(featFromCharacter.getCharacterFeatName())){
-                    featFromCharacter.characterFeatSpecialCheck();
-                } else {
-                    this.featsList.add(featFromClass);
-                }
-            }
-        }
-    }
-
-    public void addFeatToList(ArrayList<CharacterFeat> characterFeatsFromClass){
-        for(CharacterFeat charFeat : characterFeatsFromClass){
-            this.featsList.add(charFeat);
-        }
-    }
-
     public void buyFeat(Feats feat) {
-        CharacterFeat characterFeat = new CharacterFeat();
-        characterFeat.newFeat(feat);
+        CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
+            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+        );
         this.featsList.add(characterFeat);
     }
-
-                    // for(String featString : fList){
-                    //     if(featInList.getFeatName().equals(featString)){
-                    //         if(featInList.getSpeed()!=null){
-                    //             this.speed+=featInList.getSpeed();
-                    //         }
-                    //         for(CharacterFeat charFeat :this.featsList){
-                    //             if(!charFeat.getCharacterFeatName().equals(featString)){
-                    //                 CharacterFeat newCharFeat = new CharacterFeat();
-                    //                 newCharFeat.firstFeatInList(featInList);
-                    //                 newCharFeat.characterFeatSpecialCheck();
-                    //                 this.featsList.add(newCharFeat);
-
-                    //             }
-                    //         }
-
-                            // boolean checkFeatInList = false;
-                            // if(featInList.isDuplicate()==true){
-                            //     for(CharacterFeat charFeat : this.featsList){
-                            //         charFeat.characterFeatSpecialCheck();
-                            //         checkFeatInList = true;
-                            //         if(checkFeatInList==false){
-                            //             CharacterFeat newCharFeat = new CharacterFeat();
-                            //             newCharFeat.firstFeatInList(featInList);
-                            //             newCharFeat.characterFeatSpecialCheck();
-                            //             this.featsList.add(newCharFeat);
-
-
-    // public void addFeatsFromClass(int lv, List <Feats> featsListFormDB, String classFeatsMap) {
-
-    //     Gson gson = new Gson();
-    //     Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
-    //     List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
-
-    //     for(ClassFeats featFromJsonList : featsJson){
-    //         if(featFromJsonList.getLevel()==lv){
-    //             for(Feats featInDB : featsListFormDB){
-    //                 for(String featInHashSet : featFromJsonList.getClassFeats()){
-    //                     CharacterFeat characterFeat = new CharacterFeat();
-    //                     if(featInHashSet.equals(featInDB.getFeatName())){
-    //                         characterFeat.firstFeatInList(featInDB);
-    //                         characterFeat.characterFeatSpecialCheck();
-    //                         this.featsList.add(characterFeat);
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
 
     public void addSpeed(int speed) {
         this.speed+=speed;
@@ -435,5 +370,21 @@ public class Character {
             }
         }
     }
+
+
+    // 49 rage i 0 trap
+    public void addFeatToPc(CharacterFeat ft) {
+
+        if(ft.findFeatIndexinArrayById(featsList)>0){
+            for (CharacterFeat fPc : featsList){
+                if(fPc.getId()==ft.getId()){
+                    fPc.incrementLevelFeat();
+                }
+            }
+        } else {
+            featsList.add(ft);
+        }
+    }
+
 }
 
