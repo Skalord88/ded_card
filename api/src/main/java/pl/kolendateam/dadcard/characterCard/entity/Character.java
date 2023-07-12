@@ -26,7 +26,6 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
-import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
@@ -239,7 +238,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
