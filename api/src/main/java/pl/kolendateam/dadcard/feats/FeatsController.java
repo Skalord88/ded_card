@@ -65,6 +65,10 @@ public class FeatsController {
             character.addSkill(feat.getSkills());
         }
 
+        if(feat.getSpecialAttacks()!=null){
+            character.addSpecialAttacks(feat.getSpecialAttacks());
+        }
+
         character.setFeat(feat);
 
         this.characterRepository.save(character);

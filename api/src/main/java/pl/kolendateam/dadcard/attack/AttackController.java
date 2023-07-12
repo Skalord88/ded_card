@@ -64,6 +64,6 @@ public class AttackController {
         }
 
         return new AttackVsArmorClassDTO (character1,character2,isHit);
-     }
+    }
     
 }

@@ -9,6 +9,9 @@
         <column name="bab" type="double">
           <constraints nullable="true"/>
         </column>
+        <column name="special_attacks" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
       </addColumn>
   </changeSet>
 </databaseChangeLog>

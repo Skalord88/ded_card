@@ -23,10 +23,12 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -79,6 +81,9 @@ public class Character {
     
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    SpecialAttacks specialAttacks;
 
     double bab;
 
@@ -279,6 +284,15 @@ public class Character {
                 }
             }
         }
+    }
+
+    public void addSpecialAttacks(String specialAttacksFeat){
+
+        Gson gson = new Gson();
+        SpecialAttacks spAtt = gson.fromJson(specialAttacksFeat, SpecialAttacks.class);
+
+        this.specialAttacks.addSpecialAttackFeat(spAtt,this.specialAttacks);
+        
     }
 
     public void addAbilityRace(String raceAbilitys) {
