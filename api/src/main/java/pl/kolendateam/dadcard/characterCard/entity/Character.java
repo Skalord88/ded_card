@@ -243,7 +243,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
