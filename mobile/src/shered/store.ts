@@ -9,7 +9,6 @@ type State = {
   
   type Action = {
     createNewUser: (data:{ characterName: string; playerName:string}) => void,
-    getStatus: () => void
   }
   
  export const useStore = create<State & Action>((set,get) => ({
@@ -20,8 +19,5 @@ type State = {
         const user = await createUser(data)
         set({ characterName: data.characterName, playerName:data.playerName, status:user.status })
         return user
-    },
-    getStatus: ()=>{
-      get().status
     }
   }))
