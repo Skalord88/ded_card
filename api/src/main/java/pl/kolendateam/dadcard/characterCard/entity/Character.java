@@ -336,7 +336,6 @@ public class Character {
                                 featInList.getId(),
                                 1,
                                 featInList.getFeatName(),
-                                featInList.getFeatSpecial(),
                                 featInList.getDescription()
                             );
                             characterFeatsFromClassArray.add(newCharFeat);
@@ -350,7 +349,7 @@ public class Character {
 
     public void buyFeat(Feats feat) {
         CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
-            1,feat.getFeatName(),feat.getFeatSpecial(),feat.getDescription()
+            1,feat.getFeatName(),feat.getDescription()
         );
         this.featsList.add(characterFeat);
     }
@@ -371,10 +370,7 @@ public class Character {
         }
     }
 
-
-    // 49 rage i 0 trap
     public void addFeatToPc(CharacterFeat ft) {
-
         if(ft.findFeatIndexinArrayById(featsList)>0){
             for (CharacterFeat fPc : featsList){
                 if(fPc.getId()==ft.getId()){

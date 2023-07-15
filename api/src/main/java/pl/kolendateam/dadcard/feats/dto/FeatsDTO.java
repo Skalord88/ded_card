@@ -11,7 +11,6 @@ public class FeatsDTO {
 
     public int id;
     public String featName;
-    public String featSpecial;
     public FeatsTypeEnum featsType;
     public String prerequisite;
     public String description;
@@ -19,7 +18,6 @@ public class FeatsDTO {
     public FeatsDTO(Feats feats){
         this.id = feats.getId();
         this.featName = feats.getFeatName();
-        this.featSpecial = feats.getFeatSpecial();
         this.featsType = feats.getFeatsType();
         this.prerequisite = feats.getPrerequisite();
         this.description = feats.getDescription();

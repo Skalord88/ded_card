@@ -143,9 +143,9 @@ public class CharacterController {
         character.incrementBab(classCharacter.getClassBab());
         
         // feat
-        ArrayList<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-            levelClassInDB,featsList,classCharacter.getClassFeatsMap());
-            
+        List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+            levelClassInDB,featsList,classCharacter.getClassFeatsMap());   
+        
         for (CharacterFeat chFeat : characterFeatsFromClass){
             character.addFeatToPc(chFeat);
         }

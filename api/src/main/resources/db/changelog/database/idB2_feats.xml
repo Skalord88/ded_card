@@ -12,9 +12,6 @@
         <column name="feat_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="feat_special" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
         <column name="feats_type" type="varchar(255)">
           <constraints nullable="false"/>
         </column>

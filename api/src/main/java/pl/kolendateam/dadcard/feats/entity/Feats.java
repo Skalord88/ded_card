@@ -27,8 +27,6 @@ public class Feats implements Serializable{
     @Nonnull
     String featName;
 
-    String featSpecial;
-
     @NonNull
     @Enumerated(EnumType.STRING)
     FeatsTypeEnum featsType;

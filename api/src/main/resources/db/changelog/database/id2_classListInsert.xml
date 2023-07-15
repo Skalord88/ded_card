@@ -15,26 +15,27 @@
               <column name="skill_points" value="4" />
               <column name="hit_dice" value="12" />
               <column name="class_feats_map" value="[
-              {'level':1,'classFeats':[
-              'Armor Proficiency (Light)',
-              'Armor Proficiency (Medium)',
-              'Armor Proficiency (Heavy)',
-              'Fast movement',
-              'Illiteracy',
-              'Rage',
-              ]},
-              {'level':2,'classFeats':[
-              'Uncanny dodge'
-              ]},
-              {'level':3,'classFeats':[
-              'Trap sense'
-              ]},
-              {'level':4,'classFeats':[
-              'Rage'
-              ]},
-              {'level':5,'classFeats':[
-              'Improved uncanny dodge'
-              ]}]"/>
+              {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fast movement','Illiteracy','Rage']},
+              {'level':2,'classFeats':['Uncanny dodge']},
+              {'level':3,'classFeats':['Trap sense']},
+              {'level':4,'classFeats':['Rage']},
+              {'level':5,'classFeats':['Improved uncanny dodge']},
+              {'level':6,'classFeats':['Trap sense']},
+              {'level':7,'classFeats':['Damage reduction']},
+              {'level':8,'classFeats':['Rage']},
+              {'level':9,'classFeats':['Trap sense']},
+              {'level':10,'classFeats':['Damage reduction']},
+              {'level':11,'classFeats':['Greater rage']},
+              {'level':12,'classFeats':['Rage','Trap sense']},
+              {'level':13,'classFeats':['Damage reduction']},
+              {'level':14,'classFeats':['Indomitable will']},
+              {'level':15,'classFeats':['Trap sense']},
+              {'level':16,'classFeats':['Damage reduction','Rage']},
+              {'level':17,'classFeats':['Tireless rage']},
+              {'level':18,'classFeats':['Trap sense']},
+              {'level':19,'classFeats':['Damage reduction']},
+              {'level':20,'classFeats':['Mighty rage','Rage']}
+              ]"/>
           </insert>  
           <insert tableName="class_character">
             <column name="id" value="2"/>   

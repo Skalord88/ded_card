@@ -17,7 +17,6 @@ public class CharacterFeat implements Serializable{
     int id;
     Integer levelOfFeat;
     String characterFeatName;
-    String characterFeatSpecial;
     String characterFeatDescription;
 
     public int findFeatIndexinArrayById(ArrayList<CharacterFeat> featPcList){
@@ -30,23 +29,5 @@ public class CharacterFeat implements Serializable{
 
     public void incrementLevelFeat(){
         this.levelOfFeat++;
-        String special;
-
-        switch (this.characterFeatName){
-            case "Rage" -> {
-                int bonus = (int) this.characterFeatSpecial.charAt(0);
-                bonus++;
-                special = bonus+"/day";
-            }
-            case "Trap sense" -> {
-                int bonus = (int) this.characterFeatSpecial.charAt(0);
-                bonus++;
-                special = "+"+bonus;
-            }
-            default -> {
-                special = null;
-            }
-        }
-        this.characterFeatSpecial = special;
     }
 }

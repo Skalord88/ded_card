@@ -14,8 +14,15 @@ public class CharacterFeatsDTO {
 
     public CharacterFeatsDTO(CharacterFeat characterFeats){
         this.characterFeatName = characterFeats.getCharacterFeatName();
-        this.characterFeatSpecial = characterFeats.getCharacterFeatSpecial();
+        this.characterFeatSpecial = switch(characterFeats.getCharacterFeatName()){
+            case "Rage" -> 
+                characterFeats.getLevelOfFeat()+"/day";
+            case "Trap sense" -> 
+                "+"+characterFeats.getLevelOfFeat();
+            case "Damage reduction" ->
+                "DR"+characterFeats.getLevelOfFeat();
+            default -> null;
+        };
         this.characterFeatDescription = characterFeats.getCharacterFeatDescription();
-    }
-    
+    }    
 }
