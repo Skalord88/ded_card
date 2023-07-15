@@ -106,8 +106,7 @@ You get a +2 bonus on all Climb checks and Swim checks."/>
 A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."/>
               <column  name="speed"  value="10"/>
           </insert>
-          <insert tableName="feats">  
-          <column  name="id"  value="11"/>
+          <insert tableName="feats">
               <column  name="feat_name"  value="Illiteracy"/>
               <column  name="feats_type"  value="CLASS"/>
               <column  name="description" value="
