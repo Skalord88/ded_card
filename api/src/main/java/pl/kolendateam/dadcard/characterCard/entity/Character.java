@@ -244,7 +244,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -382,5 +381,53 @@ public class Character {
         }
     }
 
+    public void setFeat(Feats feat) {
+
+        this.featsList.add(feat);
+    }
+
+    public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
+
+        Gson gson = new Gson();
+        Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+        List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+
+        for(ClassFeats fJ : featsJson){
+            if(fJ.getLevel()==lv){
+                for(Feats fL : featsList){
+                    HashSet <String> fList = fJ.getClassFeats();
+                    for(String f : fList){
+                        if(fL.getFeatName().equals(f)){
+                            if(fL.getSpeed()!=null){
+                                this.speed+=fL.getSpeed();
+                            }
+                            this.featsList.add(fL);
+                        }
+                    }
+                }
+            }
+        }    
+    }
+
+    public void addSpeed(int speed) {
+        this.speed+=speed;
+    }
+
+    public void sizeCharacter(SizeEnum size) {
+        Size sizeNew = new Size();
+        sizeNew.sizeBonus(size);
+        this.size = sizeNew;
+        this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
+        for(ClassSkills skill : classSkills){
+            if(skill.getNameSkill().equals("hide")){
+                skill.setSkillDifferentBonus(+sizeNew.getHide());
+            }
+        }
+    }
+
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
+    }
+    
 }
 

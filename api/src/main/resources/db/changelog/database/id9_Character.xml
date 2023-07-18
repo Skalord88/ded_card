@@ -1,0 +1,53 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="9" author="oscar">
+      <addColumn tableName="character">
+        <column name="abilitys" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="race" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="sub_race" type="varchar(255)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="size" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="speed" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="class_pc_array" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="ecl" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="level_adjustment" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="vitality" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="saving_throw" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="skill_points" type="double">
+          <constraints nullable="true"/>
+        </column>
+        <column name="armor_class" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="class_skills" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="feats_list" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+      </addColumn>
+  </changeSet>
+</databaseChangeLog>
