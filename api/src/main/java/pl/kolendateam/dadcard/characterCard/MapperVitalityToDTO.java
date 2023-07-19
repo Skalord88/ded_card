@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import java.util.HashMap;
+
 import pl.kolendateam.dadcard.characterCard.dto.VitalityDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 

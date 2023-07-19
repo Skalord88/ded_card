@@ -244,7 +244,6 @@ public class Character {
     public void hitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
-
         this.vitality = hP;
         
     }
@@ -293,7 +292,7 @@ public class Character {
         Gson gson = new Gson();
         SpecialAttacks spAtt = gson.fromJson(specialAttacksFeat, SpecialAttacks.class);
 
-        this.specialAttacks.addSpecialAttackFeat(spAtt,specialAttacks);
+        this.specialAttacks.addSpecialAttackFeat(spAtt,this.specialAttacks);
         
     }
 
@@ -315,7 +314,7 @@ public class Character {
         Gson gson = new Gson();
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
-        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());  
     }
 
     public ArrayList<CharacterFeat> listFeatsFromClass(
@@ -370,6 +369,10 @@ public class Character {
         }
     }
 
+    public SizeEnum sizeCharacter(){
+        return this.size.getSize();
+    }
+
     public void addFeatToPc(CharacterFeat ft) {
         if(ft.findFeatIndexinArrayById(featsList)>0){
             for (CharacterFeat fPc : featsList){
@@ -381,6 +384,6 @@ public class Character {
             featsList.add(ft);
         }
     }
-
+    
 }
 

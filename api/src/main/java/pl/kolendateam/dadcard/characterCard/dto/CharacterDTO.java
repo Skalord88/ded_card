@@ -32,8 +32,7 @@ public class CharacterDTO {
     public ArrayList<ClassPcListDTO> classPcList;
     public int ecl;
     public VitalityDTO vitality;
-    public int streghtAttack;
-    public int dextrityAttack;
+    public int bab;
     public ArmorClassDTO armorClass;
     public SavingThrowDTO savingThrows;
     public double skillPoints;
@@ -46,7 +45,7 @@ public class CharacterDTO {
         this.playerName = character.getPlayerName();
         this.race = character.getRace();
         this.subRace = character.getSubRace();
-        this.size = character.getSize().getSize();
+        this.size = character.sizeCharacter();
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
@@ -54,21 +53,23 @@ public class CharacterDTO {
         if(character.getVitality()==null){
             this.vitality = null;
         } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
+        this.bab = (int)character.getBab();
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {
-            this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());}
+                this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());}
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.specialAttacks = MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+                    this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {
             this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());}
+
     }
 
 }
