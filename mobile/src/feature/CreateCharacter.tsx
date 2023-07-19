@@ -5,7 +5,7 @@ import { useStore } from "../shered/store";
 import { useNavigation } from "@react-navigation/native";
 import { StackEnum } from "../shered/enums/navigationEnum";
 
-export default function CreateCharacter(props:any ) {
+export default function CreateCharacter() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       characterName: '',
@@ -16,7 +16,7 @@ export default function CreateCharacter(props:any ) {
     (state) => [state.characterName, state.createNewUser],
   )
   const navigation = useNavigation();
-  const submitNav = (data: { characterName: string; playerName: string; })=>{
+  const submitNav = (data: { characterName: string; playerName: string; characterId:number})=>{
     createNewUser(data)
     navigation.navigate(StackEnum.ABILITY)
   }
