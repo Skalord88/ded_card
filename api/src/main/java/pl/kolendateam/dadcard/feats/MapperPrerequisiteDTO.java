@@ -1,21 +1,26 @@
 package pl.kolendateam.dadcard.feats;
 
-import com.google.gson.Gson;
-
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
 public class MapperPrerequisiteDTO {
     public static PrerequisiteDTO toPrerequisiteDTO(String prerequisite){
 
-        Gson gson = new Gson();
-        Prerequisite prereq = gson.fromJson(prerequisite, Prerequisite.class);
+        Prerequisite p = new Prerequisite();
+
+        p.jsonToPrerequisite(prerequisite);
+
         return new PrerequisiteDTO(
-            prereq.getRace(),
-            prereq.getAbility(),
-            prereq.getBab(),
-            prereq.getSkill(),
-            prereq.getFeats()
+            p.getRace(),
+            p.getSize(),
+            p.getSavingThrow(),
+            p.getArmorClass(),
+            p.getClassSkills(),
+            p.getAbility(),
+            p.getSpecialAttacks(),
+            p.getBab(),
+            p.getSkill(),
+            p.getFeats()
         );
     }
 

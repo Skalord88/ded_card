@@ -347,10 +347,18 @@ public class Character {
     }
 
     public void buyFeat(Feats feat) {
+
         CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
             1,feat.getFeatName(),feat.getDescription()
         );
-        this.featsList.add(characterFeat);
+
+        if(feat.getPrerequisite() != null){
+            this.featsList.add(characterFeat);
+        }
+        int prereqCheck = characterFeat.checkPrerequisite(feat,subRace,size,savingThrow,armorClass,classSkills,abilitys,specialAttacks,(int)bab,featsList);
+        if(prereqCheck == 1){
+            this.featsList.add(characterFeat);
+        }
     }
 
     public void addSpeed(int speed) {
