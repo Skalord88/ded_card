@@ -55,7 +55,8 @@ You get a +2 bonus on all Handle Animal checks and Ride checks."/>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Armor proficiency (heavy)"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Armor Proficiency (light), Armor Proficiency (medium)."/>
+              <column  name="prerequisite"  value="{
+                'feats':['Armor Proficiency (light)','Armor Proficiency (medium)']}"/>
               <column  name="description" value="Benefit:
 See Armor Proficiency (light).
 
@@ -80,7 +81,8 @@ All characters except wizards, sorcerers, and monks automatically have Armor Pro
           <insert tableName="feats">  
             <column  name="feat_name"  value="Armor proficiency (medium)"/>
             <column  name="feats_type"  value="GENERAL"/>
-            <column  name="prerequisite"  value="Armor proficiency (light)."/>
+            <column  name="prerequisite"  value="{
+                'feats':['Armor proficiency (light)']}"/>
             <column  name="description" value="Benefit:
 See Armor Proficiency (light).
 
@@ -162,7 +164,9 @@ A barbarian can fly into a rage only once per encounter. At 1st level he can use
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved bull rush"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Str 13, Power Attack"/>
+              <column  name="prerequisite"  value="{
+                'ability':{'streght':13},
+                'feat':['Power attack']}"/>
               <column  name="description" value="Benefit:
 When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.
 
@@ -173,7 +177,9 @@ A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved disarm"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Int 13, Combat Expertise"/>
+              <column  name="prerequisite"  value="{
+                'ability':{'intelligence':13},
+                'feat':['Combat expertise']}"/>
               <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent.
 
@@ -189,7 +195,9 @@ A monk may select Improved Disarm as a bonus feat at 6th level, even if she does
           <insert tableName="feats">
               <column  name="feat_name"  value="Improved grapple"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="Dex 13, Improved Unarmed Strike"/>
+              <column  name="prerequisite"  value="{
+                'ability':{'dextrity':13},
+                'feats':['Improved unarmed strike']}"/>
               <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple.
 
