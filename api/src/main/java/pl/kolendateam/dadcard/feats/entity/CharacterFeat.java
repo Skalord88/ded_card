@@ -47,21 +47,45 @@ public class CharacterFeat implements Serializable{
         Prerequisite p = new Prerequisite();
         p.jsonToPrerequisite(feat.getPrerequisite());
 
-        boolean check = false;
-
         for(String r : p.getRace()){
             if(subRace == r){
-                check = true;
+                return 1;
             }
         }
         if(p.getSize().equals(size.getSize())){
-            check = true;
-        }
-        check = savingThrow.checkPrerequisiteST(p.getSavingThrow());
-
-        if(check == true){
             return 1;
         }
+        if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
+            return 1;
+        }
+        if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
+            return 1;
+        }
+        int checkCS = 0;
+        for(ClassSkills prerequisiteCS : p.getClassSkills()){
+            for(ClassSkills cS : classSkills){
+                if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())){
+                    checkCS++;
+                }
+            }
+        }
+        if(checkCS == p.getClassSkills().size()){
+            return 1;
+        }
+        if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
+            return 1;
+        }
+
+        // p.getSpecialAttacks(),
+
+        if(bab >= p.getBab()){
+            return 1;
+        }
+        
+        // p.getSkill(),
+        // p.getFeats()
+
         return 0;
+
     }
 }

@@ -19,9 +19,15 @@ public class SavingThrow {
         this.will = will;
     }
 
-    public boolean checkPrerequisiteST(SavingThrow sT) {
+    public int checkPrerequisiteST(SavingThrow sT) {
+
+        if(fortitude >= sT.fortitude ||
+            reflex >= sT.reflex ||
+            will >= sT.will){
+            return 1;
+        }
         
-        return fortitude >= sT.fortitude || reflex >= sT.reflex || will >= sT.getWill();
+        return 0;
     
     }
 }

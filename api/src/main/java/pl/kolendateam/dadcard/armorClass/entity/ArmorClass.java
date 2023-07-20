@@ -17,4 +17,12 @@ public class ArmorClass {
     int naturalArmor;
     int dodgeBonus;
     
+    public int checkPrerequisiteAC(ArmorClass aC) {
+
+        if(aC.armorBonus > 0){
+            return 1;
+        }
+        return 0;
+    }
+    
 }
