@@ -45,54 +45,71 @@ public class CharacterFeat implements Serializable{
         Prerequisite p = new Prerequisite();
         p.jsonToPrerequisite(feat.getPrerequisite());
 
-        for(String r : p.getRace()){
-            if(subRace == r){
-                return 1;
-            }
-        }
+        boolean checkPrerequisite = false;
 
-        if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
-            return 1;
-        }
-
-        if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
-            return 1;
-        }
-        int checkCS = 0;
-        for(ClassSkills prerequisiteCS : p.getClassSkills()){
-            for(ClassSkills cS : classSkills){
-                if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
-                && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
-                ){
-                    checkCS++;
+        if(p.getRace()!=null){
+            for(String r : p.getRace()){
+                if(subRace == r){
+                    checkPrerequisite = true;
                 }
             }
         }
 
-        if(checkCS == p.getClassSkills().size()){
-            return 1;
+        if(p.getSavingThrow()!=null){
+            if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
+                checkPrerequisite = true;
+            }
         }
 
-        if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
-            return 1;
+        if(p.getArmorClass()!=null){
+            if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
+                checkPrerequisite = true;
+            }
+        }
+
+        if(p.getClassSkills()!=null){
+            int checkCS = 0;
+            for(ClassSkills prerequisiteCS : p.getClassSkills()){
+                for(ClassSkills cS : classSkills){
+                    if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
+                    && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
+                    ){
+                        checkCS++;
+                    }
+                }
+            }
+            if(checkCS == p.getClassSkills().size()){
+                checkPrerequisite = true;
+            }
+        }
+
+        if(p.getAbility()!=null){
+            if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
+                checkPrerequisite = true;
+            }
         }
 
         if(bab >= p.getBab()){
-            return 1;
+            checkPrerequisite = true;
         }
 
-        int checkF = 0;
-        for(String prerequisiteF : p.getFeats()){
-            for(CharacterFeat f : featsList){
-                if(prerequisiteF.equals(f.getCharacterFeatName())){
-                    checkF++;
+        if(p.getFeats()!=null){
+            int checkF = 0;
+            for(String prerequisiteF : p.getFeats()){
+                for(CharacterFeat f : featsList){
+                    if(prerequisiteF.equals(f.getCharacterFeatName())){
+                        checkF++;
+                    }
                 }
             }
-        }
-        if(checkF == p.getFeats().size()){
-            return 1;
+            if(checkF == p.getFeats().size()){
+                checkPrerequisite = true;
+            }
         }
 
+        if(checkPrerequisite == true){
+            return 1;
+        }
         return 0;
 
     }
