@@ -16,4 +16,12 @@ public class ClassSkills {
     int skillDifferentBonus;
     AbilityEnum skillAbility;
 
+    public int checkPrerequisiteCS(ClassSkills cs) {
+
+        if(skillRank >= cs.skillRank){
+            return 1;
+        }
+        return 0;
+    }
+
 }

@@ -11,7 +11,6 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
-import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @NoArgsConstructor
@@ -38,11 +37,10 @@ public class CharacterFeat implements Serializable{
     }
 
     public int checkPrerequisite(
-        Feats feat, String subRace, Size size,
+        Feats feat, String subRace,
         SavingThrow savingThrow, ArmorClass armorClass,
         ArrayList<ClassSkills> classSkills, Abilitys abilitys,
-        SpecialAttacks specialAttacks, int bab,
-        ArrayList<CharacterFeat> featsList) {
+        int bab,ArrayList<CharacterFeat> featsList) {
 
         Prerequisite p = new Prerequisite();
         p.jsonToPrerequisite(feat.getPrerequisite());
@@ -52,38 +50,48 @@ public class CharacterFeat implements Serializable{
                 return 1;
             }
         }
-        if(p.getSize().equals(size.getSize())){
-            return 1;
-        }
+
         if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
             return 1;
         }
+
         if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
             return 1;
         }
         int checkCS = 0;
         for(ClassSkills prerequisiteCS : p.getClassSkills()){
             for(ClassSkills cS : classSkills){
-                if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())){
+                if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
+                && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
+                ){
                     checkCS++;
                 }
             }
         }
+
         if(checkCS == p.getClassSkills().size()){
             return 1;
         }
+
         if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
             return 1;
         }
 
-        // p.getSpecialAttacks(),
-
         if(bab >= p.getBab()){
             return 1;
         }
-        
-        // p.getSkill(),
-        // p.getFeats()
+
+        int checkF = 0;
+        for(String prerequisiteF : p.getFeats()){
+            for(CharacterFeat f : featsList){
+                if(prerequisiteF.equals(f.getCharacterFeatName())){
+                    checkF++;
+                }
+            }
+        }
+        if(checkF == p.getFeats().size()){
+            return 1;
+        }
 
         return 0;
 

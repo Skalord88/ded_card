@@ -12,14 +12,11 @@ public class MapperPrerequisiteDTO {
 
         return new PrerequisiteDTO(
             p.getRace(),
-            p.getSize(),
             p.getSavingThrow(),
             p.getArmorClass(),
             p.getClassSkills(),
             p.getAbility(),
-            p.getSpecialAttacks(),
             p.getBab(),
-            p.getSkill(),
             p.getFeats()
         );
     }

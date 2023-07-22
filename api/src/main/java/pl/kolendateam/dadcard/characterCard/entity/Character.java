@@ -355,7 +355,7 @@ public class Character {
         if(feat.getPrerequisite() != null){
             this.featsList.add(characterFeat);
         }
-        int prereqCheck = characterFeat.checkPrerequisite(feat,subRace,size,savingThrow,armorClass,classSkills,abilitys,specialAttacks,(int)bab,featsList);
+        int prereqCheck = characterFeat.checkPrerequisite(feat,subRace,savingThrow,armorClass,classSkills,abilitys,(int)bab,featsList);
         if(prereqCheck == 1){
             this.featsList.add(characterFeat);
         }
