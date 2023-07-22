@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.feats.entity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.google.gson.Gson;
 
@@ -13,8 +12,8 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class Prerequisite {
 
@@ -31,15 +30,16 @@ public class Prerequisite {
         Gson gson = new Gson();
         Prerequisite p = gson.fromJson(prerequisite, Prerequisite.class);
 
+        // crea prerequisito vuoto
         return new Prerequisite(
-            p.getRace(),
-            p.getSavingThrow(),
-            p.getArmorClass(),
-            p.getClassSkills(),
-            p.getAbility(),
-            p.getBab(),
-            p.getFeats()
-        );
+            p.race,
+            p.savingThrow,
+            p.armorClass,
+            p.classSkills,
+            p.ability,
+            p.bab,
+            p.feats
+            );
     }
 
 
