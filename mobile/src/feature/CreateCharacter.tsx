@@ -12,13 +12,15 @@ export default function CreateCharacter() {
       playerName: ''
     }
   });
-  const [characterName, createNewUser] = useStore(
-    (state) => [state.characterName, state.createNewUser],
+  const [createNewUser] = useStore(
+    (state) => [state.createNewUser],
   )
   const navigation = useNavigation();
-  const submitNav = (data: { characterName: string; playerName: string; characterId:number})=>{
-    createNewUser(data)
-    navigation.navigate(StackEnum.ABILITY)
+  const submitNav = async (data: { characterName: string; playerName: string;})=>{
+   const id = await createNewUser(data)
+    if(id){
+      return navigation.navigate(StackEnum.ABILITY)
+    }
   }
 
   return (

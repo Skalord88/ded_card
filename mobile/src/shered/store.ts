@@ -13,12 +13,12 @@ type State = {
       intelligence: number,
       wisdom: number,
       charisma: number
-    }
+    },
   }
   
   type Action = {
-    createNewUser: (data:{ characterName: string; playerName:string;}) => void,
-    addAbility: (characterId:number,
+    createNewUser: (data:{ characterName: string; playerName:string;}) => Promise<number>,
+    addAbility: (
       data:{ 
           streght: number,
           dextrity: number,
@@ -44,11 +44,21 @@ type State = {
       charisma: 0
     },
     createNewUser: async (data: { characterName: string; playerName: string;}) => {
-        const user = await createUser(data)
-        set({ characterName: data.characterName, playerName:data.playerName, status:user.status,  characterId:user.data.characterId})
-        return user
+      try{ const user = await createUser(data) 
+        if(user.status === 200){
+          console.log(data)
+          set((state) => ({
+            ...state, 
+            characterName: data.characterName, 
+            playerName:data.playerName, 
+            characterId:user.data.characterId,
+          }))}
+          return user.data.characterId
+      } catch (err) {
+          console.log("Error",err)
+      }
     },
-    addAbility: async (characterId:number,
+    addAbility: async (
       data:{ 
           streght: number,
           dextrity: number,
@@ -57,7 +67,8 @@ type State = {
           wisdom: number,
           charisma: number
       }) => {
-        const ability = await addAbility(characterId, data)
+        const userId = get().characterId
+        const ability = await addAbility(userId, data)
         set({
           ability: {  
             streght: data.streght,
