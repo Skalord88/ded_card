@@ -26,7 +26,8 @@ export const Races = ()=> {
             <FlatList
                 data={data}
                 renderItem={({item}) => <ListOfRaces item={item}/>}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.raceName}
+                ItemSeparatorComponent={()=> <View style={{paddingBottom:10}}/>}
             />
         </View>
     )
@@ -34,12 +35,14 @@ export const Races = ()=> {
 
 const styles = StyleSheet.create ({
     box: {
-        backgroundColor:'#525252'
+        backgroundColor: '#18181bcc',
+        height:'100%'
     },
     title: {
-      fontSize:20,
+      fontSize:22,
       fontWeight:'800',
       color:'#fff',
       paddingLeft:20,
+      fontStyle:'italic'
     }
   })

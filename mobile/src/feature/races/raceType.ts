@@ -19,12 +19,14 @@ export interface ISubRace {
 }
 
 export interface IRaceAbilitys {
-    streght: number,
-    dextrity: number,
-    constitution: number,
-    intelligence: number,
-    wisdom: number,
-    charisma: number
+    item:{
+        streght: number,
+        dextrity: number,
+        constitution: number,
+        intelligence: number,
+        wisdom: number,
+        charisma: number
+    }
 }
 
 export interface IRaceSkills {

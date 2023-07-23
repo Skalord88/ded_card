@@ -1,12 +1,17 @@
 import React from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { ISubRace } from './raceType'
+import { RaceAbilitys } from './RaceAbilitys'
 
 
-export const SubRaces = ({item}:ISubRace) => {
+export const SubRaces = (item:ISubRace) => {
     return (
         <View>
-            <Text style={styles.title}>{item.subRacesName}</Text>
+            <Text style={styles.title}>{item.item.subRacesName}</Text>
+            {/* {item.item.raceAbilitys != null?
+                <RaceAbilitys item={item.item.raceAbilitys}/>
+                : <></>
+            } */}
         </View>
     )
 }
@@ -15,6 +20,6 @@ const styles = StyleSheet.create ({
     title: {
       fontSize:16,
       fontWeight:'800',
-      color:'#fff',
+      color:'green',
     }
   })
