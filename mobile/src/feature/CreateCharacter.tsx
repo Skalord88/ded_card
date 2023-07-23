@@ -5,20 +5,22 @@ import { useStore } from "../shered/store";
 import { useNavigation } from "@react-navigation/native";
 import { StackEnum } from "../shered/enums/navigationEnum";
 
-export default function CreateCharacter(props:any ) {
+export default function CreateCharacter() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       characterName: '',
       playerName: ''
     }
   });
-  const [characterName, createNewUser] = useStore(
-    (state) => [state.characterName, state.createNewUser],
+  const [createNewUser] = useStore(
+    (state) => [state.createNewUser],
   )
   const navigation = useNavigation();
-  const submitNav = (data: { characterName: string; playerName: string; })=>{
-    createNewUser(data)
-    navigation.navigate(StackEnum.ABILITY)
+  const submitNav = async (data: { characterName: string; playerName: string;})=>{
+   const id = await createNewUser(data)
+    if(id){
+      return navigation.navigate(StackEnum.ABILITY)
+    }
   }
 
   return (
@@ -32,7 +34,7 @@ export default function CreateCharacter(props:any ) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              placeholder="Imię postaci"
+              placeholder="Character name"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -40,7 +42,7 @@ export default function CreateCharacter(props:any ) {
           )}
           name={CreateCharacterEnum.CHARACTER_NAME}
         />
-        {errors.characterName && <Text style={styles.error}>Pole jest wymagane.</Text>}
+        {errors.characterName && <Text style={styles.error}>The field is required</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -52,7 +54,7 @@ export default function CreateCharacter(props:any ) {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              placeholder="Imię użytkownika"
+              placeholder="Player name"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -60,7 +62,7 @@ export default function CreateCharacter(props:any ) {
           )}
           name={CreateCharacterEnum.PLAYER_NAME}
         />
-        {errors.playerName && <Text style={styles.error}>Pole jest wymagane.</Text>}
+        {errors.playerName && <Text style={styles.error}>The field is required</Text>}
       </View>
       <Button title="Submit" onPress={handleSubmit(submitNav)} />
       
