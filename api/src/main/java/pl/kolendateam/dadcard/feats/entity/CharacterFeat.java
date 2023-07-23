@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.feats.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import com.google.gson.Gson;
 

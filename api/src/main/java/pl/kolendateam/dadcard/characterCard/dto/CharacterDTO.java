@@ -39,7 +39,7 @@ public class CharacterDTO {
     public double skillPoints;
     public SpecialAttacksDTO specialAttacks;
     public ArrayList<SkillsDTO> skillsList;
-    public HashSet<CharacterFeatsDTO> featsList;
+    public ArrayList<CharacterFeatsDTO> featsList;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
