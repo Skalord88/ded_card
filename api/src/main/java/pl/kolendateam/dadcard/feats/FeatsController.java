@@ -61,18 +61,19 @@ public class FeatsController {
 
         Feats feat = featsOpt.get();
 
-        if(feat.getSkills()!=null){
-            character.addSkill(feat.getSkills());
+        boolean buyed = character.buyFeat(feat);
+
+        if(buyed){
+            if(feat.getSkills()!=null){
+                character.addSkill(feat.getSkills());
+            }
+
+            if(feat.getSpecialAttacks()!=null){
+                character.addSpecialAttacks(feat.getSpecialAttacks());
+            }
+
+            this.characterRepository.save(character);
         }
-
-        if(feat.getSpecialAttacks()!=null){
-            character.addSpecialAttacks(feat.getSpecialAttacks());
-        }
-
-        character.buyFeat(feat);
-
-        this.characterRepository.save(character);
-
         return new CharacterDTO (character);
     }
 }

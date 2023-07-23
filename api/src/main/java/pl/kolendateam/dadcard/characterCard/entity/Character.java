@@ -346,7 +346,9 @@ public class Character {
         return characterFeatsFromClassArray;
     }
 
-    public void buyFeat(Feats feat) {
+    public boolean buyFeat(Feats feat) {
+
+        boolean buyed = false;
 
         CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
             1,feat.getFeatName(),feat.getDescription()
@@ -358,9 +360,10 @@ public class Character {
                 featPresten = true;
             }
         }
-        if(featPresten == false){
+        if(!featPresten){
             if(feat.getPrerequisite() == null){
                 this.featsList.add(characterFeat);
+                buyed = true;
             } else {
                 boolean prereqCheck = characterFeat.checkPrerequisite(
                     feat,
@@ -368,9 +371,11 @@ public class Character {
                     featsList);
                 if(prereqCheck){
                     this.featsList.add(characterFeat);
+                    buyed = true;
                 }
             }
         }
+        return buyed;
     }
 
     public void addSpeed(int speed) {

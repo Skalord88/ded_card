@@ -47,60 +47,34 @@ public class CharacterFeat implements Serializable{
 
         Prerequisite p = new Gson().fromJson(feat.getPrerequisite(), Prerequisite.class);
 
-        boolean checkPrerequisite = false;
         int ckeckTot = 0;
         int checkEvry = 0;
 
         if(p.getRace()!=null){
             ckeckTot++;
-        }
-        if(p.getSavingThrow()!=null){
-            ckeckTot++;
-        }
-        if(p.getArmorClass()!=null){
-            ckeckTot++;
-        }
-        if(p.getClassSkills()!=null){
-            ckeckTot++;
-        }
-        if(p.getAbility()!=null){
-            ckeckTot++;
-        }
-        if(bab >= p.getBab()){
-            ckeckTot++;
-        }
-        if(p.getFeats()!=null){
-            ckeckTot++;
-        }
-
-        if(p.getRace()!=null){
             for(String r : p.getRace()){
                 if(subRace == r){
-                    checkPrerequisite = true;
                     checkEvry++;
                 }
             }
         }
 
         if(p.getSavingThrow()!=null){
+            ckeckTot++;
             if(savingThrow.checkPrerequisiteST(p.getSavingThrow())){
-                checkPrerequisite = true;
                 checkEvry++;
-            } else {
-                checkPrerequisite = false;
             }
         }
 
         if(p.getArmorClass()!=null){
+            ckeckTot++;
             if(armorClass.checkPrerequisiteAC(p.getArmorClass())){
-                checkPrerequisite = true;
                 checkEvry++;
-            } else {
-                checkPrerequisite = false;
             }
         }
 
         if(p.getClassSkills()!=null){
+            ckeckTot++;
             int checkCS = 0;
             for(ClassSkills prerequisiteCS : p.getClassSkills()){
                 for(ClassSkills cS : classSkills){
@@ -111,31 +85,25 @@ public class CharacterFeat implements Serializable{
                     }
                 }
             }
-            if(checkCS == p.getClassSkills().size()){
-                checkPrerequisite = true;
-                checkEvry++;
-            } else {
-                checkPrerequisite = false;
+    
+        if(checkCS == p.getClassSkills().size()){
+            checkEvry++;
             }
         }
-
         if(p.getAbility()!=null){
+            ckeckTot++;
             if(abilitys.checkPrerequisiteAb(p.getAbility())){
-                checkPrerequisite = true;
                 checkEvry++;
-            } else {
-                checkPrerequisite = false;
             }
         }
 
         if(bab >= p.getBab()){
-            checkPrerequisite = true;
+            ckeckTot++;
             checkEvry++;
-        } else {
-                checkPrerequisite = false;
-            }
+        }
 
         if(p.getFeats()!=null){
+            ckeckTot++;
             int checkF = 0;
             for(String prerequisiteF : p.getFeats()){
                 for(CharacterFeat f : featsList){
@@ -145,17 +113,12 @@ public class CharacterFeat implements Serializable{
                 }
             }
             if(checkF == p.getFeats().length){
-                checkPrerequisite = true;
                 checkEvry++;
-            } else {
-                checkPrerequisite = false;
             }
         }
 
-        if(checkPrerequisite && checkEvry==ckeckTot){
-            return true;
-        }
-        return false;
+        return checkEvry==ckeckTot;
 
     }
+    
 }
