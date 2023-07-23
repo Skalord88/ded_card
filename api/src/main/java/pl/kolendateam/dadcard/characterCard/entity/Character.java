@@ -27,6 +27,7 @@ import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.race.entity.Race;
@@ -88,7 +89,7 @@ public class Character {
     double bab;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Feats> featsList;
+    ArrayList<CharacterFeat> featsList;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -313,35 +314,43 @@ public class Character {
         Gson gson = new Gson();
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
-        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());  
     }
 
-    public void setFeat(Feats feat) {
+    public ArrayList<CharacterFeat> listFeatsFromClass(
+        int lv, List <Feats> featsListInDB, String classFeatsMap) {
 
-        this.featsList.add(feat);
-    }
-
-    public void addFeats(int lv, List <Feats> featsList, String classFeatsMap) {
-
+        ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
         Gson gson = new Gson();
         Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
         List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
-        for(ClassFeats fJ : featsJson){
-            if(fJ.getLevel()==lv){
-                for(Feats fL : featsList){
-                    HashSet <String> fList = fJ.getClassFeats();
-                    for(String f : fList){
-                        if(fL.getFeatName().equals(f)){
-                            if(fL.getSpeed()!=null){
-                                this.speed+=fL.getSpeed();
-                            }
-                            this.featsList.add(fL);
+        for(ClassFeats featInJson : featsJson){
+            if(featInJson.getLevel()==lv){
+                for(Feats featInList : featsListInDB){
+                    HashSet <String> fList = featInJson.getClassFeats();
+                    for(String featString : fList){
+                        if(featInList.getFeatName().equals(featString)){
+                            CharacterFeat newCharFeat = new CharacterFeat(
+                                featInList.getId(),
+                                1,
+                                featInList.getFeatName(),
+                                featInList.getDescription()
+                            );
+                            characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
                 }
             }
-        }    
+        }
+        return characterFeatsFromClassArray;
+    }
+
+    public void buyFeat(Feats feat) {
+        CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
+            1,feat.getFeatName(),feat.getDescription()
+        );
+        this.featsList.add(characterFeat);
     }
 
     public void addSpeed(int speed) {
@@ -363,5 +372,18 @@ public class Character {
     public SizeEnum sizeCharacter(){
         return this.size.getSize();
     }
+
+    public void addFeatToPc(CharacterFeat ft) {
+        if(ft.findFeatIndexinArrayById(featsList)>0){
+            for (CharacterFeat fPc : featsList){
+                if(fPc.getId()==ft.getId()){
+                    fPc.incrementLevelFeat();
+                }
+            }
+        } else {
+            featsList.add(ft);
+        }
+    }
     
 }
+

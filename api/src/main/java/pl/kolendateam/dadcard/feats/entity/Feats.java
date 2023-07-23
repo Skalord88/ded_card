@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.feats.entity;
 
+import java.io.Serializable;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -16,7 +18,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Feats {
+public class Feats implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

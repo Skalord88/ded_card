@@ -86,7 +86,6 @@ public class RaceController {
         if(race.getAbilitys() != null){
             character.addAbilityRace(race.getAbilitys());
         }
-            
         if(race.getSkills() != null){
             character.addSkill(race.getSkills());
         }
@@ -105,10 +104,6 @@ public class RaceController {
         if(race.getArmorClass() != null){
             character.raceBonusArmorClass(race.getArmorClass());
         }
-
-        character.sizeCharacter(race.getSize());
-
-        character.addSpeed(race.getSpeed());
 
         character.setCharacterRace(race);
 
