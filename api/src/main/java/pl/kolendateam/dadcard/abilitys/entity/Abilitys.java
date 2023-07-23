@@ -57,7 +57,7 @@ public class Abilitys implements Serializable{
         return abilitys;
     }
 
-    public int checkPrerequisiteAb(Abilitys ab) {
+    public boolean checkPrerequisiteAb(Abilitys ab) {
 
         if(streght >= ab.streght ||
             dextrity >= ab.dextrity ||
@@ -66,9 +66,9 @@ public class Abilitys implements Serializable{
             wisdom >= ab.wisdom ||
             charisma >= ab.charisma
         ){
-            return 1;
+            return true;
         }
-        return 0;
+        return false;
     }
     
 }

@@ -362,11 +362,11 @@ public class Character {
             if(feat.getPrerequisite() == null){
                 this.featsList.add(characterFeat);
             } else {
-                int prereqCheck = characterFeat.checkPrerequisite(
+                boolean prereqCheck = characterFeat.checkPrerequisite(
                     feat,
                     subRace,savingThrow,armorClass,classSkills,abilitys,(int)bab,
                     featsList);
-                if(prereqCheck == 1){
+                if(prereqCheck){
                     this.featsList.add(characterFeat);
                 }
             }

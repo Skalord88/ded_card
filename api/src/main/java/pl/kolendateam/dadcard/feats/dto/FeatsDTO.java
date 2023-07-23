@@ -23,7 +23,8 @@ public class FeatsDTO {
         if(feats.getPrerequisite() == null){
             this.prerequisite = null;
         } else {
-        this.prerequisite = MapperPrerequisiteDTO.toPrerequisiteDTO(feats.getPrerequisite());}
+        this.prerequisite = MapperPrerequisiteDTO.toPrerequisiteDTO(feats.getPrerequisite());
+        }
         this.description = feats.getDescription();
     }
     
