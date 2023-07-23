@@ -147,11 +147,7 @@ public class CharacterController {
             levelClassInDB,featsList,classCharacter.getClassFeatsMap());   
         
         for (CharacterFeat chFeat : characterFeatsFromClass){
-            for (CharacterFeat chFeatInChar : character.getFeatsList()){
-                if(!chFeat.getCharacterFeatName().equals(chFeatInChar.getCharacterFeatName())){
-                    character.addFeatToPc(chFeat);
-                }
-            }
+            character.addFeatToPc(chFeat);
         }
 
         this.characterRepository.save(character);
