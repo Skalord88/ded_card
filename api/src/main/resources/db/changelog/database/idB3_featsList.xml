@@ -102,39 +102,39 @@ You get a +2 bonus on all Climb checks and Swim checks."/>
               {'nameSkill':'Swim','skillRank':2}]"/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Fast movement"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."/>
-              <column  name="speed"  value="10"/>
+            <column  name="feat_name"  value="Fast movement"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."/>
+            <column  name="speed"  value="10"/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Illiteracy"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak.
+            <column  name="feat_name"  value="Illiteracy"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak.
 
 A barbarian who gains a level in any other class automatically gains literacy. Any other character who gains a barbarian level does not lose the literacy he or she already had."/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Rage"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).
+            <column  name="feat_name"  value="Rage"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).
 
 A barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action."/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Uncanny dodge"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."/>
+            <column  name="feat_name"  value="Uncanny dodge"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Trap sense"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."/>
+            <column  name="feat_name"  value="Trap sense"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Improved uncanny dodge"/>
-              <column  name="feats_type"  value="CLASS"/>
-              <column  name="description" value="At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."/>
+            <column  name="feat_name"  value="Improved uncanny dodge"/>
+            <column  name="feats_type"  value="CLASS"/>
+            <column  name="description" value="At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."/>
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Damage reduction"/>
@@ -162,17 +162,17 @@ A barbarian can fly into a rage only once per encounter. At 1st level he can use
             <column  name="description" value="At 20th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +8, and his morale bonus on Will saves increases to +4. The penalty to AC remains at -2."/>
         </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Improved bull rush"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="{
+            <column  name="feat_name"  value="Improved bull rush"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
                 'ability':{'streght':13},
                 'feats':['Power attack']}"/>
-              <column  name="description" value="Benefit:
+            <column  name="description" value="Benefit:
 When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.
 
 Special
 A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
-              <column  name="special_attacks" value="{'bull_rush':4}"/>
+            <column  name="special_attacks" value="{'bull_rush':4}"/>
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Improved disarm"/>
@@ -180,7 +180,7 @@ A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
             <column  name="prerequisite"  value="{
                 'ability':{'intelligence':13},
                 'feats':['Combat expertise']}"/>
-              <column  name="description" value="Benefit:
+            <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent.
 
 Normal
@@ -193,12 +193,12 @@ A monk may select Improved Disarm as a bonus feat at 6th level, even if she does
             <column  name="special_attacks" value="{'disarm':4}"/>
           </insert>
           <insert tableName="feats">
-              <column  name="feat_name"  value="Improved grapple"/>
-              <column  name="feats_type"  value="GENERAL"/>
-             <column  name="prerequisite"  value="{
+            <column  name="feat_name"  value="Improved grapple"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
                 'ability':{'dextrity':13},
                 'feats':['Improved unarmed strike']}"/>
-              <column  name="description" value="Benefit:
+            <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple.
 
 Normal
@@ -227,5 +227,32 @@ A monk may select Improved Grapple as a bonus feat at 1st level, even if she doe
             Special
             A fighter may select Quick Draw as one of his fighter bonus feats."/>
         </insert>
+        <insert tableName="feats">
+            <column  name="feat_name"  value="Mounted archery"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
+                'classSkills':[{'nameSkill':'Ride','skillRank':1}],
+                'feats':['Mounted combat']
+            }"/>
+                <column  name="description" value="Benefit
+                The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running.
+                
+                Special
+                A fighter may select Mounted Archery as one of his fighter bonus feats."/>
+        </insert>
+        <insert tableName="feats">
+            <column  name="feat_name"  value="Mounted combat"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
+                'classSkills':[{'nameSkill':'Ride','skillRank':1}]
+            }"/>
+            <column  name="description" value="Benefit
+                Once per round when your mount is hit in combat, you may attempt a Ride check (as a reaction) to negate the hit. The hit is negated if your Ride check result is greater than the opponent’s attack roll. (Essentially, the Ride check result becomes the mount’s Armor Class if it’s higher than the mount’s regular AC.)
+                
+                Special
+                A fighter may select Mounted Combat as one of his fighter bonus feats.
+                "/>
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

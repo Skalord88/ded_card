@@ -79,7 +79,7 @@ public class CharacterFeat implements Serializable{
             for(ClassSkills prerequisiteCS : p.getClassSkills()){
                 for(ClassSkills cS : classSkills){
                     if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
-                    && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
+                    && prerequisiteCS.getSkillRank() <= cS.getSkillRank()
                     ){
                         checkCS++;
                     }

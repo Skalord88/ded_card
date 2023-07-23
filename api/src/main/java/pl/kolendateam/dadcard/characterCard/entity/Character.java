@@ -199,14 +199,14 @@ public class Character {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
-    public void buySkills(int idSkill, int skPoints) {
+    public void buySkills(int idSkill, double skPoints) {
         for(ClassSkills skill : classSkills){
             if(skill.getIdSkill() == idSkill){
                 boolean check = true;
                 if(skillPoints < 1){
                     check = false;
                 }
-                if(skPoints > this.ecl+3){
+                if((int)skPoints > this.ecl+3){
                     check = false;
                 }
                 if(skill.isClassSkill()==true && skill.getSkillRank()>=this.ecl+3){

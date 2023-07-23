@@ -27,11 +27,4 @@ public class Prerequisite implements Serializable{
     int bab;
     String[] feats;
 
-    public Prerequisite jsonToPrerequisite(String prerequisite){
-
-        Prerequisite p = new Gson().fromJson(prerequisite, Prerequisite.class);
-
-        return p;
-    }
-
 }
