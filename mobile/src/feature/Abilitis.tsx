@@ -63,7 +63,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.STREGTH}
         />
-        {errors.streght && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -88,7 +87,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.DEXTRITY}
         />
-        {errors.dextrity && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -113,7 +111,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.CONSTITUTION}
         />
-        {errors.constitution && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -138,7 +135,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.INTELLIGENCE}
         />
-        {errors.intelligence && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -163,7 +159,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.WISDOM}
         />
-        {errors.wisdom && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -188,7 +183,6 @@ export default function Abilitis() {
           )}
           name={AbilitisEnum.CHARISMA}
         />
-        {errors.charisma && <Text style={styles.error}>Pole jest wymagane.</Text>}
         </View>
         <Button title="Add abilitis" onPress={handleSubmit(submitNav)} />
     </ScrollView>

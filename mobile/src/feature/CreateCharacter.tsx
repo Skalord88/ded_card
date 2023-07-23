@@ -34,7 +34,7 @@ export default function CreateCharacter() {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              placeholder="Imię postaci"
+              placeholder="Character name"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -42,7 +42,7 @@ export default function CreateCharacter() {
           )}
           name={CreateCharacterEnum.CHARACTER_NAME}
         />
-        {errors.characterName && <Text style={styles.error}>Pole jest wymagane.</Text>}
+        {errors.characterName && <Text style={styles.error}>The field is required</Text>}
         </View>
         <View style={styles.box}>
         <Controller
@@ -54,7 +54,7 @@ export default function CreateCharacter() {
           render={({ field: { onChange, onBlur, value } }) => (
             <TextInput
               style={styles.input}
-              placeholder="Imię użytkownika"
+              placeholder="Player name"
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -62,7 +62,7 @@ export default function CreateCharacter() {
           )}
           name={CreateCharacterEnum.PLAYER_NAME}
         />
-        {errors.playerName && <Text style={styles.error}>Pole jest wymagane.</Text>}
+        {errors.playerName && <Text style={styles.error}>The field is required</Text>}
       </View>
       <Button title="Submit" onPress={handleSubmit(submitNav)} />
       
