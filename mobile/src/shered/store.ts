@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { addAbility, createUser } from './api'
+import { addAbility, createUser, getRaces } from './api'
 
 type State = {
     characterName: string,
@@ -27,7 +27,7 @@ type State = {
           wisdom: number,
           charisma: number,
       }
-      ) => void
+      ) => void,
   }
   
  export const useStore = create<State & Action>((set,get) => ({
@@ -78,5 +78,5 @@ type State = {
             charisma: data.charisma
         }})
         return ability
-      }
+      },
   }))

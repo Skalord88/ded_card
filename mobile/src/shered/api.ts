@@ -29,3 +29,7 @@ export const addAbility = (characterId:number,
         charisma: data.charisma
     })
 }
+
+export const getRaces = ()=> {
+    return axios.get(`${baseUrl}/race`)
+}

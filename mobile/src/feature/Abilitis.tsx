@@ -35,6 +35,7 @@ export default function Abilitis() {
         charisma: number,
     })=>{
     addAbility(data)
+    navigation.navigate(StackEnum.RACES)
   }
   
   return (

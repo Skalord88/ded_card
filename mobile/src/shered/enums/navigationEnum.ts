@@ -1,4 +1,5 @@
 export enum StackEnum {
-    CREATE_CHARACTER = "Stwórz postać",
-    ABILITY = "Umiejętności"
+    CREATE_CHARACTER = "Create character",
+    ABILITY = "Abilitys",
+    RACES = "Races"
 }
