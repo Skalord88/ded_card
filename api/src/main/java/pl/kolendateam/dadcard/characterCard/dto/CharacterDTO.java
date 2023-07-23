@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
@@ -38,7 +39,7 @@ public class CharacterDTO {
     public double skillPoints;
     public SpecialAttacksDTO specialAttacks;
     public ArrayList<SkillsDTO> skillsList;
-    public ArrayList<CharacterFeatsDTO> featsList;
+    public HashSet<CharacterFeatsDTO> featsList;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();

@@ -55,24 +55,8 @@ You get a +2 bonus on all Handle Animal checks and Ride checks."/>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Armor proficiency (heavy)"/>
               <column  name="feats_type"  value="GENERAL"/>
-            <!--
-                {
-                "race": [],
-                "savingThrow": {},
-                "armorClass": {},
-                "classSkills": [],
-                "ability": {},
-                "bab": 0,
-                "feats": []
-              }
-                'race': null,
-                'savingThrow': null,
-                'armorClass': null,
-                'classSkills': null,
-                'ability': null,
-            -->
               <column  name="prerequisite"  value="{
-                'feats':['Armor Proficiency (light)','Armor Proficiency (medium)']}"/>
+                'feats':['Armor proficiency (light)','Armor proficiency (medium)']}"/>
               <column  name="description" value="Benefit:
 See Armor Proficiency (light).
 
@@ -97,8 +81,8 @@ All characters except wizards, sorcerers, and monks automatically have Armor Pro
           <insert tableName="feats">  
             <column  name="feat_name"  value="Armor proficiency (medium)"/>
             <column  name="feats_type"  value="GENERAL"/>
-            <!-- <column  name="prerequisite"  value="{
-                'feats':['Armor proficiency (light)']}"/>-->
+            <column  name="prerequisite"  value="{
+                'feats':['Armor proficiency (light)']}"/>
             <column  name="description" value="Benefit:
 See Armor Proficiency (light).
 
@@ -180,9 +164,9 @@ A barbarian can fly into a rage only once per encounter. At 1st level he can use
           <insert tableName="feats">  
               <column  name="feat_name"  value="Improved bull rush"/>
               <column  name="feats_type"  value="GENERAL"/>
-              <!-- <column  name="prerequisite"  value="{
+              <column  name="prerequisite"  value="{
                 'ability':{'streght':13},
-                'feat':['Power attack']}"/> -->
+                'feats':['Power attack']}"/>
               <column  name="description" value="Benefit:
 When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.
 
@@ -191,11 +175,11 @@ A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
               <column  name="special_attacks" value="{'bull_rush':4}"/>
           </insert>
           <insert tableName="feats">  
-              <column  name="feat_name"  value="Improved disarm"/>
-              <column  name="feats_type"  value="GENERAL"/>
-             <!-- <column  name="prerequisite"  value="{
+            <column  name="feat_name"  value="Improved disarm"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
                 'ability':{'intelligence':13},
-                'feat':['Combat expertise']}"/> -->
+                'feats':['Combat expertise']}"/>
               <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent.
 
@@ -211,9 +195,9 @@ A monk may select Improved Disarm as a bonus feat at 6th level, even if she does
           <insert tableName="feats">
               <column  name="feat_name"  value="Improved grapple"/>
               <column  name="feats_type"  value="GENERAL"/>
-             <!-- <column  name="prerequisite"  value="{
+             <column  name="prerequisite"  value="{
                 'ability':{'dextrity':13},
-                'feats':['Improved unarmed strike']}"/> -->
+                'feats':['Improved unarmed strike']}"/>
               <column  name="description" value="Benefit:
 You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple.
 
@@ -226,5 +210,22 @@ A fighter may select Improved Grapple as one of his fighter bonus feats.
 A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."/>
             <column  name="special_attacks" value="{'grapple':4}"/>
           </insert>
+          <insert tableName="feats">  
+            <column  name="feat_name"  value="Quick Draw"/>
+            <column  name="feats_type"  value="GENERAL"/>
+            <column  name="prerequisite"  value="{
+              'bab':1}"/>
+            <column  name="description" value="
+            Benefit
+            You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action.
+            
+            A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow).
+            
+            Normal
+            Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action.
+            
+            Special
+            A fighter may select Quick Draw as one of his fighter bonus feats."/>
+        </insert>
     </changeSet>
 </databaseChangeLog>

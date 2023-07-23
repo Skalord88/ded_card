@@ -352,15 +352,23 @@ public class Character {
             1,feat.getFeatName(),feat.getDescription()
         );
 
-        if(feat.getPrerequisite() == null){
-            this.featsList.add(characterFeat);
-        } else {
-            int prereqCheck = characterFeat.checkPrerequisite(
-                feat,
-                //subRace,savingThrow,armorClass,classSkills,abilitys,(int)bab,
-                featsList);
-            if(prereqCheck == 1){
+        boolean featPresten = false;
+        for(CharacterFeat cF : this.featsList){
+            if(cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())){
+                featPresten = true;
+            }
+        }
+        if(featPresten == false){
+            if(feat.getPrerequisite() == null){
                 this.featsList.add(characterFeat);
+            } else {
+                int prereqCheck = characterFeat.checkPrerequisite(
+                    feat,
+                    subRace,savingThrow,armorClass,classSkills,abilitys,(int)bab,
+                    featsList);
+                if(prereqCheck == 1){
+                    this.featsList.add(characterFeat);
+                }
             }
         }
     }
