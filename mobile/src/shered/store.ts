@@ -46,7 +46,6 @@ type State = {
     createNewUser: async (data: { characterName: string; playerName: string;}) => {
       try{ const user = await createUser(data) 
         if(user.status === 200){
-          console.log(data)
           set((state) => ({
             ...state, 
             characterName: data.characterName, 
