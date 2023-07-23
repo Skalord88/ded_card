@@ -55,8 +55,23 @@ You get a +2 bonus on all Handle Animal checks and Ride checks."/>
           <insert tableName="feats">  
               <column  name="feat_name"  value="Armor proficiency (heavy)"/>
               <column  name="feats_type"  value="GENERAL"/>
+            <!--
+                {
+                "race": [],
+                "savingThrow": {},
+                "armorClass": {},
+                "classSkills": [],
+                "ability": {},
+                "bab": 0,
+                "feats": []
+              }
+                'race': null,
+                'savingThrow': null,
+                'armorClass': null,
+                'classSkills': null,
+                'ability': null,
+            -->
               <column  name="prerequisite"  value="{
-                'bab':4,
                 'feats':['Armor Proficiency (light)','Armor Proficiency (medium)']}"/>
               <column  name="description" value="Benefit:
 See Armor Proficiency (light).

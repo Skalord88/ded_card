@@ -13,12 +13,12 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 @NoArgsConstructor
 public class PrerequisiteDTO {
 
-    public ArrayList<String> race;
-    public SavingThrow savingThrow;
-    public ArmorClass armorClass;
-    public ArrayList<ClassSkills> classSkills;
-    public Abilitys ability;
-    public int bab;
-    public ArrayList<String> feats;
+    // public String[] race;
+    // public SavingThrow savingThrow;
+    // public ArmorClass armorClass;
+    // public ArrayList<ClassSkills> classSkills;
+    // public Abilitys ability;
+    // public int bab;
+    public String[] feats;
     
 }

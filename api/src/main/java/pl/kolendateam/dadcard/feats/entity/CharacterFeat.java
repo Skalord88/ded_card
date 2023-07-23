@@ -36,61 +36,63 @@ public class CharacterFeat implements Serializable{
     }
 
     public int checkPrerequisite(
-        Feats feat, String subRace,
-        SavingThrow savingThrow, ArmorClass armorClass,
-        ArrayList<ClassSkills> classSkills, Abilitys abilitys,
-        int bab,ArrayList<CharacterFeat> featsList) {
+        Feats feat,
+        // String subRace,
+        // SavingThrow savingThrow, ArmorClass armorClass,
+        // ArrayList<ClassSkills> classSkills, Abilitys abilitys,
+        //int bab,
+        ArrayList<CharacterFeat> featsList) {
 
         Prerequisite p = new Prerequisite();
         p.jsonToPrerequisite(feat.getPrerequisite());
 
         boolean checkPrerequisite = false;
 
-        if(p.getRace()!=null){
-            for(String r : p.getRace()){
-                if(subRace == r){
-                    checkPrerequisite = true;
-                }
-            }
-        }
+        // if(p.getRace()!=null){
+        //     for(String r : p.getRace()){
+        //         if(subRace == r){
+        //             checkPrerequisite = true;
+        //         }
+        //     }
+        // }
 
-        if(p.getSavingThrow()!=null){
-            if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
-                checkPrerequisite = true;
-            }
-        }
+        // if(p.getSavingThrow()!=null){
+        //     if(savingThrow.checkPrerequisiteST(p.getSavingThrow())==1){
+        //         checkPrerequisite = true;
+        //     }
+        // }
 
-        if(p.getArmorClass()!=null){
-            if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
-                checkPrerequisite = true;
-            }
-        }
+        // if(p.getArmorClass()!=null){
+        //     if(armorClass.checkPrerequisiteAC(p.getArmorClass())==1){
+        //         checkPrerequisite = true;
+        //     }
+        // }
 
-        if(p.getClassSkills()!=null){
-            int checkCS = 0;
-            for(ClassSkills prerequisiteCS : p.getClassSkills()){
-                for(ClassSkills cS : classSkills){
-                    if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
-                    && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
-                    ){
-                        checkCS++;
-                    }
-                }
-            }
-            if(checkCS == p.getClassSkills().size()){
-                checkPrerequisite = true;
-            }
-        }
+        // if(p.getClassSkills()!=null){
+        //     int checkCS = 0;
+        //     for(ClassSkills prerequisiteCS : p.getClassSkills()){
+        //         for(ClassSkills cS : classSkills){
+        //             if(prerequisiteCS.getNameSkill().equals(cS.getNameSkill())
+        //             && prerequisiteCS.getSkillRank() >= cS.getSkillRank()
+        //             ){
+        //                 checkCS++;
+        //             }
+        //         }
+        //     }
+        //     if(checkCS == p.getClassSkills().size()){
+        //         checkPrerequisite = true;
+        //     }
+        // }
 
-        if(p.getAbility()!=null){
-            if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
-                checkPrerequisite = true;
-            }
-        }
+        // if(p.getAbility()!=null){
+        //     if(abilitys.checkPrerequisiteAb(p.getAbility())==1){
+        //         checkPrerequisite = true;
+        //     }
+        // }
 
-        if(bab >= p.getBab()){
-            checkPrerequisite = true;
-        }
+        // if(bab >= p.getBab()){
+        //     checkPrerequisite = true;
+        // }
 
         if(p.getFeats()!=null){
             int checkF = 0;
@@ -101,7 +103,7 @@ public class CharacterFeat implements Serializable{
                     }
                 }
             }
-            if(checkF == p.getFeats().size()){
+            if(checkF == p.getFeats().length){
                 checkPrerequisite = true;
             }
         }
