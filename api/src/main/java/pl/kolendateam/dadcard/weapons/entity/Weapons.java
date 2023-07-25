@@ -1,17 +1,21 @@
 package pl.kolendateam.dadcard.weapons.entity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
+import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Weapons {
 
     int id;
     WeaponNameEnum name;
-    WeaponCategoriesEnum category;
     double cost;
-    HashMap<Integer,WeaponNumericEnum> damage;
+    WeaponNumericEnum damage;
     WeaponNumericEnum critical;
     WeaponNumericEnum rangeIncrement;
     double weight;

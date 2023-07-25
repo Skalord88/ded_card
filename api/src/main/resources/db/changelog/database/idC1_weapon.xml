@@ -12,9 +12,6 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="category" type="varchar(255)">
-                <constraints nullable="false"/>
-            </column>
             <column name="cost" type="double">
                 <constraints nullable="false"/>
             </column>
