@@ -33,3 +33,11 @@ export const addAbility = (characterId:number,
 export const getRaces = ()=> {
     return axios.get(`${baseUrl}/race`)
 }
+
+export const setRace = (id:number, raceId: number) => {
+    return axios.post(`${baseUrl}/race/${id}/race`,
+        {
+            id: raceId
+        }
+    )
+}

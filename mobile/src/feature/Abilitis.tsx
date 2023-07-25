@@ -1,22 +1,21 @@
 import { Text, View, StyleSheet, TextInput, Button } from "react-native";
 import { useStore } from "../shered/store";
-import reactotron from "reactotron-react-native";
 import { Controller, useForm } from "react-hook-form";
 import { AbilitisEnum } from "../shered/enums/characterEnum";
 import { useNavigation } from "@react-navigation/native";
 import { StackEnum } from "../shered/enums/navigationEnum";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView} from "react-native-gesture-handler";
 
 
 export default function Abilitis() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      streght: "0",
-      dextrity: "0",
-      constitution: "0",
-      intelligence: "0",
-      wisdom: "0",
-      charisma: "0"
+      streght: "",
+      dextrity: "",
+      constitution: "",
+      intelligence: "",
+      wisdom: "",
+      charisma: ""
     }
   });
 
@@ -52,7 +51,7 @@ export default function Abilitis() {
             <Text style={styles.title}>Strength</Text>
             <TextInput
               style={styles.input}
-              placeholder="strength"
+              placeholder="0"
               onBlur={onBlur}
               onChangeText={onChange}
               keyboardType = "number-pad"
@@ -76,7 +75,7 @@ export default function Abilitis() {
               <Text style={styles.title}>Dextrity</Text>
               <TextInput
                 style={styles.input}
-                placeholder="dextrity"
+                placeholder="0"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType = "number-pad"
@@ -100,7 +99,7 @@ export default function Abilitis() {
               <Text style={styles.title}>Constitution</Text>
               <TextInput
                 style={styles.input}
-                placeholder="constitution"
+                placeholder="0"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType = "number-pad"
@@ -124,7 +123,7 @@ export default function Abilitis() {
               <Text style={styles.title}>Intelligence</Text>
               <TextInput
                 style={styles.input}
-                placeholder="intelligence"
+                placeholder="0"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType = "number-pad"
@@ -148,7 +147,7 @@ export default function Abilitis() {
               <Text style={styles.title}>Wisdom</Text>
               <TextInput
                 style={styles.input}
-                placeholder="wisdom"
+                placeholder="0"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType = "number-pad"
@@ -172,7 +171,7 @@ export default function Abilitis() {
               <Text style={styles.title}>Charisma</Text>
               <TextInput
                 style={styles.input}
-                placeholder="charisma"
+                placeholder="0"
                 onBlur={onBlur}
                 onChangeText={onChange}
                 keyboardType = "number-pad"

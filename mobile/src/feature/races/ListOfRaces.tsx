@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { IListOfRaces } from './raceType'
 import { SubRaces } from './SubRaces'
 
@@ -10,15 +10,19 @@ export const ListOfRaces = ({item}:IListOfRaces) => {
         setOpen(isOpen => !isOpen)
     }
     return (
-        <View>
+        <View style={styles.wraper}>
             <TouchableOpacity key={item.raceName} onPress={seeSubRaces} style={styles.box}>
-                <Text style={styles.title}>{item.raceName}</Text>
+                <View style={{flexDirection:'row',  justifyContent:'center',}}>
+                    <Text style={styles.title}>{item.raceName}</Text>
+                    <Image source={{uri: isOpen ?'arrowup' : 'arrowdown'}} style={{width:20, height:20, marginLeft:5, marginTop:5}}/>
+                </View>
             </TouchableOpacity>
             {isOpen &&
                 <FlatList
                     data={item.subRaces}
                     renderItem={(el) => <SubRaces item={el.item}/>}
                     keyExtractor={item => item.item?.id.toString()}
+                    ItemSeparatorComponent={()=> <View style={{paddingBottom:10}}/>}
                 /> 
             }
         </View>
@@ -26,11 +30,17 @@ export const ListOfRaces = ({item}:IListOfRaces) => {
 }
 
 const styles = StyleSheet.create ({
+    wraper:{
+        borderRadius:60,
+        borderColor:"#fff",
+        justifyContent:'center',
+        padding:20,
+        backgroundColor: '#18181bcc',
+    },
     box:{
         borderWidth:1,
         borderRadius:20,
         borderColor:"#fff",
-        justifyContent:'center',
         padding:20
     },
     title: {

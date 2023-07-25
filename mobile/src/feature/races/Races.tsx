@@ -43,6 +43,7 @@ const styles = StyleSheet.create ({
       fontWeight:'800',
       color:'#fff',
       paddingLeft:20,
-      fontStyle:'italic'
+      fontStyle:'italic',
+      paddingBottom:10
     }
   })
