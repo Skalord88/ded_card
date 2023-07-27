@@ -18,7 +18,7 @@ public class WeaponsController {
     WeaponsRepository weaponsRepository;
 
     @Autowired
-    public WeaponsController(WeaponsRepository weaponsRepository){
+    WeaponsController(WeaponsRepository weaponsRepository){
         this.weaponsRepository = weaponsRepository;
     }
 

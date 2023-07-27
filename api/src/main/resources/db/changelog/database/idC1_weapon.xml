@@ -21,8 +21,8 @@
             <column name="critical" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="rangeIncrement" type="varchar(255)">
-                <constraints nullable="false"/>
+            <column name="range" type="int">
+                <constraints nullable="true"/>
             </column>
             <column name="weight" type="double">
                 <constraints nullable="false"/>
@@ -30,8 +30,8 @@
             <column name="type" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="specialAttacks" type="varchar(255)">
-                <constraints nullable="false"/>
+            <column name="special_attacks" type="varchar(255)">
+                <constraints nullable="true"/>
             </column>
             <column name="description" type="varchar(1000)">
                 <constraints nullable="false"/>
