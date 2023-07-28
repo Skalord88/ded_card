@@ -1,10 +1,10 @@
-package pl.kolendateam.dadcard.weapons;
+package pl.kolendateam.items.weapons;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import pl.kolendateam.dadcard.weapons.dto.WeaponsDTO;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
+import pl.kolendateam.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.items.weapons.entity.Weapons;
 
 public class MapperWeaponsDTO {
     public static ArrayList<WeaponsDTO> toWeaponsDTO(List<Weapons> weapons){

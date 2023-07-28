@@ -7,7 +7,7 @@
 <changeSet id="18" author="oscar">
 
     <insert tableName="weapons">
-        <column name="name" value="GAUNTLET"/>
+        <column name="weapon_name" value="GAUNTLET"/>
         <column name="cost" value="2"/>
         <column name="damage" value="D3"/>
         <column name="critical" value="X2"/>
@@ -16,7 +16,7 @@
         <column name="description" value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets."/>
     </insert>
     <insert tableName="weapons">
-        <column name="name" value="DAGGER"/>
+        <column name="weapon_name" value="DAGGER"/>
         <column name="cost" value="2"/>
         <column name="damage" value="D4"/>
         <column name="critical" value="X2_1920"/>
@@ -26,7 +26,7 @@
         <column name="description" value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)."/>
     </insert>
     <insert tableName="weapons">
-        <column name="name" value="LONGSPEAR"/>
+        <column name="weapon_name" value="LONGSPEAR"/>
         <column name="cost" value="5"/>
         <column name="damage" value="D8"/>
         <column name="critical" value="X3"/>
@@ -35,7 +35,7 @@
         <column name="description" value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character."/>
     </insert>
     <insert tableName="weapons">
-        <column name="name" value="JAVELIN"/>
+        <column name="weapon_name" value="JAVELIN"/>
         <column name="cost" value="1"/>
         <column name="damage" value="D6"/>
         <column name="critical" value="X2"/>
@@ -45,7 +45,7 @@
         <column name="description" value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon."/>
     </insert>
     <insert tableName="weapons">
-        <column name="name" value="GLAIVE"/>
+        <column name="weapon_name" value="GLAIVE"/>
         <column name="cost" value="8"/>
         <column name="damage" value="D10"/>
         <column name="critical" value="X3"/>
@@ -53,23 +53,7 @@
         <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']"/>
         <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
     </insert>
-    <!--
-    <insert tableName="weapons">
-        <column name="name" value="HAMMER_GNOME_HOOKED"/>
-        <column name="cost" value="20"/>
-        <column name="damage" value="D8_D6"/>
-        <column name="critical" value="X3X4"/>
-        <column name="range" value="NA"/>
-        <column name="weight" value="6"/>
-        <column name="type" value="['BLUDGEONING_PIERCING','EXOTIC','TWO_HANDED','DOUBLE']"/>
-        <column name="description" value="A gnome hooked hammer is a double weapon. You can fight with it as if fighting with two weapons, but if you do, you incur all the normal attack penalties associated with fighting with two weapons, just as if you were using a one-handed weapon and a light weapon. The hammer’s blunt head is a bludgeoning weapon that deals 1d6 points of damage (crit ×3). Its hook is a piercing weapon that deals 1d4 points of damage (crit ×4). You can use either head as the primary weapon. The other head is the offhand weapon. A creature wielding a gnome hooked hammer in one hand can’t use it as a double weapon—only one end of the weapon can be used in any given round.
-        
-        You can use a gnome hooked hammer to make trip attacks. If you are tripped during your own trip attempt, you can drop the gnome hooked hammer to avoid being tripped.
-        
-        Gnomes treat gnome hooked hammers as martial weapons."/>
-        <column name="specialAttacks" value=""/>
-        </insert>
-    -->
+
     <!--
         <insert tableName="weapons">
             <column  name="name"  value=""/>

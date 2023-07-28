@@ -64,6 +64,9 @@
         <column name="special_attacks" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="items" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.weapons.entity;
+package pl.kolendateam.items.weapons.entity;
 
 public enum WeaponNameEnum {
 

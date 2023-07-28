@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.weapons.entity;
+package pl.kolendateam.items.weapons.entity;
 
 import java.io.Serializable;
 
@@ -12,12 +12,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import pl.kolendateam.items.entity.Items;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Weapons implements Serializable{
+public class Weapons extends Items implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +26,7 @@ public class Weapons implements Serializable{
 
     @NonNull
     @Enumerated(EnumType.STRING)
-    WeaponNameEnum name;
-
-    double cost;
+    WeaponNameEnum weaponName;
 
     @NonNull
     @Enumerated(EnumType.STRING)
@@ -39,13 +38,9 @@ public class Weapons implements Serializable{
 
     Integer range;
 
-    double weight;
-
     @NonNull
     String type;
 
     String specialAttacks;
-
-    String description;
     
 }

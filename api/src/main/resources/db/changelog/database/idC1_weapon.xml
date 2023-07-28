@@ -9,7 +9,7 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(255)">
+            <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="cost" type="double">
