@@ -1,7 +1,4 @@
 package pl.kolendateam.items.weapons.entity;
-
-import java.io.Serializable;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,11 +11,12 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import pl.kolendateam.items.entity.Items;
 
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Weapons extends Items implements Serializable {
+public class Weapons extends Items {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -8,10 +8,10 @@ import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.items.weapons.entity.Weapons;
 import pl.kolendateam.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.items.weapons.entity.WeaponNumericEnum;
-import pl.kolendateam.items.weapons.entity.Weapons;
 
 @NoArgsConstructor
 @AllArgsConstructor

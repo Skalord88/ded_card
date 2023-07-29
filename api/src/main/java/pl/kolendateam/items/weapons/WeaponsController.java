@@ -28,8 +28,8 @@ public class WeaponsController {
     CharacterRepository characterRepository;
 
     @Autowired
-    WeaponsController(WeaponsRepository weaponsRepository,CharacterRepository characterRepository){
-        this.weaponsRepository = weaponsRepository;
+    WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
+        this.weaponsRepository = weaponRepository;
         this.characterRepository = characterRepository;
     }
 
@@ -55,7 +55,7 @@ public class WeaponsController {
 
         if (!weaponOpt.isPresent()) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Feats Not Found");
+                    HttpStatus.NOT_FOUND, "Weapon Not Found");
         }
 
         Weapons weapon = weaponOpt.get();

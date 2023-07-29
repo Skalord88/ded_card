@@ -35,7 +35,7 @@ import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
-import pl.kolendateam.items.weapons.entity.Weapons;
+import pl.kolendateam.items.entity.Items;
 
 @NoArgsConstructor
 @Getter
@@ -93,7 +93,7 @@ public class Character {
     ArrayList<CharacterFeat> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Weapons> items;
+    ArrayList<Items> items;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -415,7 +415,7 @@ public class Character {
         }
     }
 
-    public void buyWeapon(Weapons weapon) {
+    public void buyWeapon(Items weapon) {
         items.add(weapon);
     }
     
