@@ -12,9 +12,6 @@
             <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="cost" type="double">
-                <constraints nullable="false"/>
-            </column>
             <column name="damage" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
@@ -30,6 +27,9 @@
             <column name="type" type="varchar(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="cost" type="double">
+                <constraints nullable="false"/>
+            </column>
             <column name="special_attacks" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
@@ -39,29 +39,3 @@
         </createTable>
     </changeSet>
 </databaseChangeLog>
-
-<!-- CREATE TABLE Answer (
-    idAnswer SERIAL,
-    answerContent VARCHAR,
-    idQuestion INTEGER,
-    version INTEGER,
-
-    CONSTRAINT Answer_idAnswer_PK PRIMARY KEY (idAnswer),
-    CONSTRAINT Answer_idQuestion_FK FOREIGN KEY (idQuestion) REFERENCES Question(idQuestion)
-);
-
-
-CREATE TABLE MatchAnswer (
-    matchingAnswer VARCHAR NOT NULL,
-    version INTEGER,
-
-    CONSTRAINT MatchAnswer_idAnswer_PK PRIMARY KEY (idAnswer)       
-) INHERITS(Answer);
-
-
-CREATE TABLE TrueFalseAnswer (
-    isTrue BOOLEAN NOT NULL,
-    version INTEGER,
-
-    CONSTRAINT TrueFalseAnswer_idAnswer_PK PRIMARY KEY (idAnswer)   
-) INHERITS(Answer); -->

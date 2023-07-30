@@ -1,4 +1,4 @@
-package pl.kolendateam.items.weapons.dto;
+package pl.kolendateam.dadcard.weapons.dto;
 
 import java.lang.reflect.Type;
 
@@ -8,10 +8,10 @@ import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.items.weapons.entity.Weapons;
-import pl.kolendateam.items.weapons.entity.WeaponCategoriesEnum;
-import pl.kolendateam.items.weapons.entity.WeaponNameEnum;
-import pl.kolendateam.items.weapons.entity.WeaponNumericEnum;
+import pl.kolendateam.dadcard.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.weapons.entity.WeaponNameEnum;
+import pl.kolendateam.dadcard.weapons.entity.WeaponNumericEnum;
+import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 @NoArgsConstructor
 @AllArgsConstructor

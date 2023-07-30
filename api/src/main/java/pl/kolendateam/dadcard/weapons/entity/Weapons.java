@@ -1,4 +1,4 @@
-package pl.kolendateam.items.weapons.entity;
+package pl.kolendateam.dadcard.weapons.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,16 +9,16 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import pl.kolendateam.items.entity.Items;
-
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public class Weapons extends Items {
+public class Weapons {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
     @NonNull
     @Enumerated(EnumType.STRING)
@@ -33,37 +33,13 @@ public class Weapons extends Items {
     WeaponNumericEnum critical;
 
     Integer range;
+    double weight;
 
     @NonNull
     String type;
 
+    double cost;
     String specialAttacks;
+    String description;
     
 }
-
-// @MappedSuperClass
-// public abstract class AbstractAnswer{
-//     @Id
-//     protected Long idAnswer;
-
-//     @Column(name="answerContent")
-//     protected String answerContent;
-// }
-
-// @Entity
-// @Table(name="Answer")
-// public class Answer extends AbstractAnswer{
-
-// }
-
-// @Entity
-// @Table(name="MatchAnswer")
-// public class MatchAnswer extends AbstractAnswer{
-//     protected String matchingAnswer;
-// }
-
-// @Entity
-// @Table(name="TrueFalseAnswer")
-// public class TrueFalseAnswer extends AbstractAnswer{
-//     protected Boolean trueFalseAnswer;
-// }

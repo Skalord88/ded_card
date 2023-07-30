@@ -1,4 +1,4 @@
-package pl.kolendateam.items.weapons;
+package pl.kolendateam.dadcard.weapons;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,9 +16,9 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.items.weapons.dto.WeaponsDTO;
-import pl.kolendateam.items.weapons.entity.Weapons;
-import pl.kolendateam.items.weapons.repository.WeaponsRepository;
+import pl.kolendateam.dadcard.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.weapons.repository.WeaponsRepository;
 
 @RestController
 @RequestMapping("weapons")

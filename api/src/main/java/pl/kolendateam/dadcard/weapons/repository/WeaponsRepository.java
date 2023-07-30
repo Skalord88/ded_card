@@ -1,8 +1,8 @@
-package pl.kolendateam.items.weapons.repository;
+package pl.kolendateam.dadcard.weapons.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import pl.kolendateam.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 public interface WeaponsRepository extends JpaRepository<Weapons,Integer>{
     

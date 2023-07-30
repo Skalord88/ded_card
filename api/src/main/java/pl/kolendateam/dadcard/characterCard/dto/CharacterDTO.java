@@ -19,7 +19,7 @@ import pl.kolendateam.dadcard.feats.dto.CharacterFeatsDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
-import pl.kolendateam.items.entity.Items;
+import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 @NoArgsConstructor
 public class CharacterDTO {
@@ -40,7 +40,7 @@ public class CharacterDTO {
     public SpecialAttacksDTO specialAttacks;
     public ArrayList<SkillsDTO> skillsList;
     public ArrayList<CharacterFeatsDTO> featsList;
-    public ArrayList<Items> items;
+    public ArrayList<Weapons> items;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
