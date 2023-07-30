@@ -39,8 +39,7 @@ public class WeaponsDTO {
         if(w.getSpecialAttacks() == null){
             this.specialAttacks = null;
         } else {
-            Gson gson = new Gson();
-            SpecialAttacksDTO sAttacksDTO = gson.fromJson(w.getSpecialAttacks(), SpecialAttacksDTO.class);
+            SpecialAttacksDTO sAttacksDTO = new Gson().fromJson(w.getSpecialAttacks(), SpecialAttacksDTO.class);
             this.specialAttacks = sAttacksDTO;
         }
         Gson gson = new Gson();

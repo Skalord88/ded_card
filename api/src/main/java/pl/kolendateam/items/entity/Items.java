@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 @Inheritance
-public abstract class Items implements Serializable{
+public class Items implements Serializable{
 
     String name;
     double cost;
