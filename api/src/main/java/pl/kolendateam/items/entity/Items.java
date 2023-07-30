@@ -2,7 +2,10 @@ package pl.kolendateam.items.entity;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Inheritance;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,8 +13,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Inheritance
-public class Items implements Serializable{
+@MappedSuperclass
+public abstract class Items implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
 
     String name;
     double cost;

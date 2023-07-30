@@ -18,9 +18,7 @@ import pl.kolendateam.items.entity.Items;
 @Getter
 public class Weapons extends Items {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+
 
     @NonNull
     @Enumerated(EnumType.STRING)
@@ -42,3 +40,30 @@ public class Weapons extends Items {
     String specialAttacks;
     
 }
+
+// @MappedSuperClass
+// public abstract class AbstractAnswer{
+//     @Id
+//     protected Long idAnswer;
+
+//     @Column(name="answerContent")
+//     protected String answerContent;
+// }
+
+// @Entity
+// @Table(name="Answer")
+// public class Answer extends AbstractAnswer{
+
+// }
+
+// @Entity
+// @Table(name="MatchAnswer")
+// public class MatchAnswer extends AbstractAnswer{
+//     protected String matchingAnswer;
+// }
+
+// @Entity
+// @Table(name="TrueFalseAnswer")
+// public class TrueFalseAnswer extends AbstractAnswer{
+//     protected Boolean trueFalseAnswer;
+// }
