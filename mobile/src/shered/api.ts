@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'http://192.168.0.140:8080';
+const baseUrl = 'http://192.168.0.10:8080';
 
 export const createUser =  (data: {
      characterName: string; playerName: string;
@@ -40,4 +40,8 @@ export const setRace = (id:number, raceId: number) => {
             id: raceId
         }
     )
+}
+
+export const getClass = () => {
+    return axios.get(`${baseUrl}/class`)
 }

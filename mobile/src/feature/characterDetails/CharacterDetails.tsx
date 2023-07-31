@@ -1,9 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
+import { StackEnum } from '../../shered/enums/navigationEnum';
 
 
 export const CharacterDetails = ({route}:any) => {
     const { item } = route.params;
+    const navigation = useNavigation();
+
+    const goToClassList = () => {
+        navigation.navigate(StackEnum.CLASS);
+    }
+
 
     return (
         <View style={styles.wraper}>
@@ -12,6 +20,7 @@ export const CharacterDetails = ({route}:any) => {
             <Text style={styles.title}>{item.race}</Text>
             <Text style={styles.title}>{item.subRace}</Text>
             <Text style={styles.title}>Other informations....</Text>
+            <Button title="Go to class"  onPress={goToClassList} />
         </View>
     )
 }
