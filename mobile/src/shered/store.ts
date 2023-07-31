@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { addAbility, createUser } from './api'
+import { addAbility, createUser, getRaces, setRace } from './api'
 
 type State = {
     characterName: string,
@@ -12,8 +12,9 @@ type State = {
       constitution: number,
       intelligence: number,
       wisdom: number,
-      charisma: number
+      charisma: number,
     },
+    userWithDetails: any
   }
   
   type Action = {
@@ -27,7 +28,8 @@ type State = {
           wisdom: number,
           charisma: number,
       }
-      ) => void
+      ) => void,
+      setRaceGetDetails: (raceId:number) => Promise<any>
   }
   
  export const useStore = create<State & Action>((set,get) => ({
@@ -43,6 +45,7 @@ type State = {
       wisdom: 0,
       charisma: 0
     },
+    userWithDetails: [],
     createNewUser: async (data: { characterName: string; playerName: string;}) => {
       try{ const user = await createUser(data) 
         if(user.status === 200){
@@ -78,5 +81,18 @@ type State = {
             charisma: data.charisma
         }})
         return ability
+      },
+    setRaceGetDetails: async (raceId:number) => {
+      const userId = get().characterId
+      try{ const userWithDetails = await setRace(userId,raceId) 
+        if(userWithDetails.status === 200){
+          set((state) => ({
+            ...state, 
+            userWithDetails:userWithDetails.data,
+          }))}
+          return userWithDetails.data
+      } catch (err) {
+          console.log("Error",err)
       }
+    }
   }))
