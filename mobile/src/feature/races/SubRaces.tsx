@@ -7,17 +7,16 @@ import { StackEnum } from '../../shered/enums/navigationEnum'
 
 export const SubRaces = (item:ISubRace) => {
     const subRaceName = item.item.subRacesName
-    const uperCaseSubRaceName = subRaceName.charAt(0).toUpperCase() + subRaceName.slice(1)
     const navigation = useNavigation();
     const navToRaceAbilitis = () =>{
-        navigation.navigate(StackEnum.RACES_DETAILS, {name: uperCaseSubRaceName, item:item});
+        navigation.navigate(StackEnum.RACES_DETAILS, {name: subRaceName, item:item});
     }
 
     return (
         <View style={styles.box}>
             <TouchableOpacity key={item.item.id} onPress={navToRaceAbilitis}>
                 <View style={{flexDirection:'row',  justifyContent:'center',}}>
-                    <Text style={styles.title}>{uperCaseSubRaceName}</Text>
+                    <Text style={styles.title}>{subRaceName}</Text>
                     <Image source={{uri:'arrow_right_press'}} style={{width:20, height:20,}}/>
                 </View>
             </TouchableOpacity>
@@ -35,6 +34,7 @@ const styles = StyleSheet.create ({
       fontWeight:'800',
       color:'green',
       textAlign:'center',
-      marginRight:5
+      marginRight:5,
+      textTransform:'capitalize'
     }
   })

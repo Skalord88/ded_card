@@ -3,21 +3,23 @@ import React from 'react';
 import { Button, FlatList, StyleSheet, Text, View } from 'react-native'
 import { StackEnum } from '../../shered/enums/navigationEnum';
 import { LvlDetails } from './LvlDetails';
+import { useStore } from '../../shered/store';
 
 
 export const ClassDetails = ({route}:any) => {
     const { item, name } = route.params;
     const navigation = useNavigation();
 
-    const selectClass = () => {
-        navigation.navigate(StackEnum.CLASS);
+    const [ setClassUpdateDetails] = useStore(
+        (state) => [state.setClassUpdateDetails],
+    )
+
+    const setClass = async () => {
+      const data = await setClassUpdateDetails(item.item.id)
+      if(data){
+        return  navigation.navigate(StackEnum.CHARACTER_DETAILS, {item:data});
+      }
     }
-    // "classType": "base class",
-    // "className": "barbarian",
-    // "avatarUrl": "address value",
-    // "classSkill": null,
-    // "classFeats": [ "level": number,
-                // "classFeats": [] ]
 
     return (
         <View style={styles.wraper}>
@@ -31,7 +33,7 @@ export const ClassDetails = ({route}:any) => {
                 keyExtractor={item => item.level}
                 ItemSeparatorComponent={()=> <View style={{paddingBottom:10}}/>}
             />
-            <Button title="Select Class"  onPress={selectClass} />
+            <Button title="Select Class"  onPress={setClass} />
         </View>
     )
 }

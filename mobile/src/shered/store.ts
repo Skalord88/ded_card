@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { addAbility, createUser, getRaces, setRace } from './api'
+import { addAbility, createUser, getRaces, setClass, setRace } from './api'
 
 type State = {
     characterName: string,
@@ -14,7 +14,8 @@ type State = {
       wisdom: number,
       charisma: number,
     },
-    userWithDetails: any
+    userWithDetails: any,
+    show: boolean
   }
   
   type Action = {
@@ -29,7 +30,8 @@ type State = {
           charisma: number,
       }
       ) => void,
-      setRaceGetDetails: (raceId:number) => Promise<any>
+      setRaceGetDetails: (raceId:number) => Promise<any>,
+      setClassUpdateDetails: (classId:number) => Promise<any>
   }
   
  export const useStore = create<State & Action>((set,get) => ({
@@ -46,6 +48,7 @@ type State = {
       charisma: 0
     },
     userWithDetails: [],
+    show: true,
     createNewUser: async (data: { characterName: string; playerName: string;}) => {
       try{ const user = await createUser(data) 
         if(user.status === 200){
@@ -91,6 +94,20 @@ type State = {
             userWithDetails:userWithDetails.data,
           }))}
           return userWithDetails.data
+      } catch (err) {
+          console.log("Error",err)
+      }
+    },
+    setClassUpdateDetails: async (classId:number) => {
+      const userId = get().characterId
+      try{ const classWithDetails = await setClass(userId,classId) 
+        if(classWithDetails.status === 200){
+          set((state) => ({
+            ...state, 
+            userWithDetails:classWithDetails.data,
+            show:false
+          }))}
+          return classWithDetails.data
       } catch (err) {
           console.log("Error",err)
       }

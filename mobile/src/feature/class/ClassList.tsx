@@ -5,17 +5,16 @@ import { StackEnum } from '../../shered/enums/navigationEnum';
 
 
 export const ClassList = (item) => {
-    const [isOpen, setOpen] = useState(false);
     const navigation = useNavigation()
-    const upperClassName = item.item.className.charAt(0).toUpperCase() + item.item.className.slice(1)
+    const className = item.item.className
     const goToDetails = ()=>{
-        navigation.navigate(StackEnum.CLASS_DETAILS, {name: upperClassName, item:item});
+        navigation.navigate(StackEnum.CLASS_DETAILS, {name: className, item:item});
     }
     return (
         <View style={styles.wraper}>
             <TouchableOpacity key={item.id} onPress={goToDetails} style={styles.box}>
                 <View style={{flexDirection:'row',  justifyContent:'center',}}>
-                    <Text style={styles.title}>{upperClassName}</Text>
+                    <Text style={styles.title}>{className}</Text>
                     <Image source={{uri: 'arrow_right_press'}} style={{width:20, height:20, marginLeft:5, marginTop:5}}/>
                 </View>
             </TouchableOpacity>
@@ -41,6 +40,7 @@ const styles = StyleSheet.create ({
       fontSize:20,
       fontWeight:'800',
       color:'#fff',
-      textAlign:'center'
+      textAlign:'center',
+      textTransform:'capitalize'
     }
 })

@@ -45,3 +45,11 @@ export const setRace = (id:number, raceId: number) => {
 export const getClass = () => {
     return axios.get(`${baseUrl}/class`)
 }
+
+export const setClass = (characterId:number, classId:number) => {
+    return axios.post(`${baseUrl}/character-card/${characterId}/class`,
+        {
+            id: classId
+        }
+    )
+}
