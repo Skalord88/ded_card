@@ -6,15 +6,21 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
+import jakarta.validation.Valid;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.RequestDTO;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillListDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -44,7 +50,7 @@ public class SkillsController {
     }
 
     @PostMapping(value="{id}", consumes = {"application/json"})
-    public CharacterDTO buyCharacterSkill(@PathVariable int id, @RequestBody SkillsDTO skillsDTO){
+    public CharacterDTO buyCharacterSkill(@PathVariable int id, @Valid @RequestBody RequestDTO requestDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -55,10 +61,11 @@ public class SkillsController {
 
         Character character = characterOpt.get();
 
-        character.buySkills(skillsDTO.idSkill, skillsDTO.rankToAdd);
+        character.buySkills(requestDTO.id, requestDTO.rankToAdd);
 
         this.characterRepository.save(character);
         
         return new CharacterDTO(character);
     }
+
 }
