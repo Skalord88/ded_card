@@ -16,6 +16,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -77,6 +78,7 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
 
+    @PositiveOrZero(message = "couldn't be less that 0")
     double skillPoints;
     
     @JdbcTypeCode(SqlTypes.JSON)
@@ -210,10 +212,9 @@ public class Character {
                 }
                 if(check){
                     if(s.isClassSkill()){
-                        s.setSkillRank(s.getSkillRank()+1);
-                    }
-                    if(!s.isClassSkill()){
-                        s.setSkillRank(s.getSkillRank()+0.5);
+                        s.addSkillRank();
+                    } else {
+                        s.addSkillRankFalse();
                     }
                     skillPoints--;
                 }
@@ -221,36 +222,19 @@ public class Character {
         }
     }
 
-    // public void buySkills(int idSkill, int skPoints) {
-    //     for(ClassSkills skill : classSkills){
-    //         if(skill.getIdSkill() == idSkill){
-    //             boolean check = true;
-    //             if(skillPoints < 1){
-    //                 check = false;
-    //             }
-    //             if(skPoints > this.ecl+3){
-    //                 check = false;
-    //             }
-    //             if(skill.isClassSkill() && skill.getSkillRank()>=this.ecl+3){
-    //                 check = false;
-    //             }
-    //             double doubleLEP = (this.ecl+3)/2;
-    //             if(!skill.isClassSkill() && skill.getSkillRank()>=doubleLEP){
-    //                 check = false;
-    //             }
-    //             if(check){
-    //                 if(skill.isClassSkill()){
-    //                 skill.setSkillRank(skill.getSkillRank()+skPoints);
-    //                 this.skillPoints -= skPoints;
-    //                 }
-    //                 if(!skill.isClassSkill()){
-    //                 skill.setSkillRank(skill.getSkillRank()+(double)skPoints/2);
-    //                 this.skillPoints -= skPoints;
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
+    public void sellSkills(int idSkill){
+        for(ClassSkills s : classSkills){
+            if(s.getIdSkill() == idSkill){
+        
+                if(s.isClassSkill()){
+                    s.minusSkillRank();
+                } else {
+                    s.minusSkillRankFalse();
+                }
+                skillPoints++;
+            }
+        }
+    }
     
     public void incrementBab(double classBab) {
         this.bab += classBab;

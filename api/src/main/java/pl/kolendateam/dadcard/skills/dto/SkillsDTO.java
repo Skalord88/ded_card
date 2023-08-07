@@ -9,8 +9,6 @@ public class SkillsDTO {
     @NotNull
     public int idSkill;
     public String nameSkill;
-    
-    @NotNull
     public boolean classSkill;
 
     @PositiveOrZero

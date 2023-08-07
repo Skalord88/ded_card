@@ -16,4 +16,21 @@ public class ClassSkills {
     int skillDifferentBonus;
     AbilityEnum skillAbility;
 
+
+    public void addSkillRank(){
+        skillRank++;
+    }
+
+    public void addSkillRankFalse(){
+        skillRank+=0.5;
+    }
+
+    public void minusSkillRank(){
+        skillRank--;
+    }
+
+    public void minusSkillRankFalse(){
+        skillRank-=0.5;
+    }
+
 }

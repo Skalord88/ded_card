@@ -63,4 +63,23 @@ public class SkillsController {
         return new CharacterDTO(character);
     }
 
+    @PostMapping(value="{id}/minus", consumes = {"application/json"})
+    public CharacterDTO sellCharacterSkill(@PathVariable int id, @Valid @RequestBody SkillsDTO skillsDTO){
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if(!characterOpt.isPresent()){
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+
+        character.sellSkills(skillsDTO.idSkill);
+
+        this.characterRepository.save(character);
+        
+        return new CharacterDTO(character);
+    }
+
 }
