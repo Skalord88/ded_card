@@ -6,8 +6,10 @@ import java.util.List;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.skills.dto.RaceSkillsDTO;
+import pl.kolendateam.dadcard.skills.dto.SkillListDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.skills.entity.Skills;
 
 public class MapperSkillsToDTO {
     public static ArrayList<SkillsDTO> toSkillsDTO(ArrayList<ClassSkills> skillList,Abilitys abilitys){
@@ -42,6 +44,7 @@ public class MapperSkillsToDTO {
                     break;
                 }
                 skillDTO.skillBonus = skill.getSkillDifferentBonus();
+                skillDTO.ability = skill.getSkillAbility();
         
                 skillListDTO.add(skillDTO);
             }
@@ -62,6 +65,17 @@ public class MapperSkillsToDTO {
 
         return skillListDTO;
 
+    }
+
+    public static ArrayList<SkillListDTO> toSkillsDTOList(List<Skills> skillsList){
+    
+        ArrayList<SkillListDTO> skillListDTO = new ArrayList<>();
+
+        for(Skills sk : skillsList){
+            SkillListDTO skillDTO = new SkillListDTO(sk.getId(),sk.getName(),sk.getAbility());
+            skillListDTO.add(skillDTO);
+        }
+        return skillListDTO;
     }
     
 }

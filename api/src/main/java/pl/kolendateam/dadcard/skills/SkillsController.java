@@ -46,7 +46,7 @@ public class SkillsController {
     public ArrayList<SkillListDTO> getAll(){
         List<Skills> skills = this.skillsrepository.findAll();
 
-        return MapperSkillsListDTO.toSkillsDTOList(skills);
+        return MapperSkillsToDTO.toSkillsDTOList(skills);
     }
 
     @PostMapping(value="{id}", consumes = {"application/json"})
