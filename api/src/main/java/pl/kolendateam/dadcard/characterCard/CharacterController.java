@@ -28,7 +28,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
-import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
 @RestController
 @RequestMapping("character-card")
@@ -75,6 +74,7 @@ public class CharacterController {
         }
 
         Character character = characterOpt.get();
+        
         return new CharacterDTO(character);
     }
 
@@ -143,24 +143,6 @@ public class CharacterController {
         this.characterRepository.save(character);
 
         return new CharacterDTO (character);
-    }
-
-    @PostMapping(value="{id}/skill",consumes = {"application/json"})
-    public CharacterDTO buyCharacterSkill(@PathVariable int id, @RequestBody SkillsDTO skillsDTO){
-
-        Optional<Character> characterOpt = this.characterRepository.findById(id);
-
-        if(!characterOpt.isPresent()){
-            throw new ResponseStatusException(
-                HttpStatus.NOT_FOUND, "Character Not Found");
-        }
-
-        Character character = characterOpt.get();
-
-        character.buySkills(skillsDTO.idSkill, skillsDTO.skillRank);
-
-        this.characterRepository.save(character);
-        return new CharacterDTO(character);
     }
 
 }
