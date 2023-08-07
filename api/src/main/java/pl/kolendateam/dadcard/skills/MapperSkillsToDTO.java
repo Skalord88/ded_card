@@ -21,7 +21,7 @@ public class MapperSkillsToDTO {
                 skillDTO.idSkill = skill.getIdSkill();
                 skillDTO.nameSkill = skill.getNameSkill();
                 skillDTO.classSkill = skill.isClassSkill();
-                skillDTO.skillRank = (int)skill.getSkillRank();
+                skillDTO.skillRank = skill.getSkillRank();
                 AbilityEnum ability = skill.getSkillAbility();
                 switch (ability) {
                     case STRENGHT:

@@ -198,36 +198,59 @@ public class Character {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
-    public void buySkills(int idSkill, int skPoints) {
-        for(ClassSkills skill : classSkills){
-            if(skill.getIdSkill() == idSkill){
+    public void buySkills(int idSkill){
+        for(ClassSkills s : classSkills){
+            if(s.getIdSkill() == idSkill){
                 boolean check = true;
-                if(skillPoints < 1){
+                if(s.isClassSkill() && s.getSkillRank()>=ecl+3){
                     check = false;
                 }
-                if(skPoints > this.ecl+3){
+                if(!s.isClassSkill() && s.getSkillRank()>=((ecl+3)/2)){
                     check = false;
                 }
-                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.ecl+3){
-                    check = false;
-                }
-                double doubleLEP = (this.ecl+3)/2;
-                if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
-                    check = false;
-                }
-                if(check == true){
-                    if(skill.isClassSkill()==true){
-                    skill.setSkillRank(skill.getSkillRank()+skPoints);
-                    this.skillPoints -= skPoints;
+                if(check){
+                    if(s.isClassSkill()){
+                        s.setSkillRank(s.getSkillRank()+1);
                     }
-                    if(skill.isClassSkill()==false){
-                    skill.setSkillRank(skill.getSkillRank()+skPoints/2);
-                    this.skillPoints -= skPoints;
+                    if(!s.isClassSkill()){
+                        s.setSkillRank(s.getSkillRank()+0.5);
                     }
+                    skillPoints--;
                 }
             }
         }
     }
+
+    // public void buySkills(int idSkill, int skPoints) {
+    //     for(ClassSkills skill : classSkills){
+    //         if(skill.getIdSkill() == idSkill){
+    //             boolean check = true;
+    //             if(skillPoints < 1){
+    //                 check = false;
+    //             }
+    //             if(skPoints > this.ecl+3){
+    //                 check = false;
+    //             }
+    //             if(skill.isClassSkill() && skill.getSkillRank()>=this.ecl+3){
+    //                 check = false;
+    //             }
+    //             double doubleLEP = (this.ecl+3)/2;
+    //             if(!skill.isClassSkill() && skill.getSkillRank()>=doubleLEP){
+    //                 check = false;
+    //             }
+    //             if(check){
+    //                 if(skill.isClassSkill()){
+    //                 skill.setSkillRank(skill.getSkillRank()+skPoints);
+    //                 this.skillPoints -= skPoints;
+    //                 }
+    //                 if(!skill.isClassSkill()){
+    //                 skill.setSkillRank(skill.getSkillRank()+(double)skPoints/2);
+    //                 this.skillPoints -= skPoints;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     
     public void incrementBab(double classBab) {
         this.bab += classBab;
