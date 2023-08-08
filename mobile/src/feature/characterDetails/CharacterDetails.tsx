@@ -25,40 +25,43 @@ export const CharacterDetails = ({route}:any) => {
     )
 
     const updateLvl = async () => {
-        const data = await setRaceGetDetails(item.item.id)
-        return data
-      }
-
+        const id = item.classPcList.map(s=>s.id).unshift()
+        const data = await setRaceGetDetails(id)
+            return data
+    }
+console.log(item.classPcList)
     return (
         <View style={styles.wraper}>
             <Text style={styles.characterName}>Details of {item.characterName}</Text>
             <Text style={styles.title}>{item.playerName}</Text>
             <Text style={styles.title}>{item.race}</Text>
             <Text style={styles.title}>{item.subRace}</Text>
-            <Text style={styles.info}>Your Classes :</Text>
-            {item.classPcList &&<FlatList
-                data={item.classPcList}
-                renderItem={({item}) =>
-                    <View>
-                        <Text style={styles.title}>{item.className}</Text>
-                        <Text style={[styles.info,{paddingLeft:10,paddingRight:10,paddingBottom:10}]}>Your LVL :</Text>
-                        <View style={{flexDirection:'row',  justifyContent:'center',alignItems:'center'}}>
-                            
-                            <TouchableOpacity>
-                                <Image source={{uri:'minus'}} style={{height:30, width:30,}}/>
-                            </TouchableOpacity>
-                                <Text style={[styles.title,{paddingLeft:10,paddingRight:10,paddingBottom:10}]}>{item.level}</Text>
-                            <TouchableOpacity onPress={updateLvl}>
-                                <Image source={{uri:'plus'}} style={{height:30, width:30}}/>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                }
-                keyExtractor={item => item.className}
-                ItemSeparatorComponent={()=> <View style={{paddingBottom:10}}/>}
-            /> }
-           {show? <Button title="Add class"  onPress={goToClassList} />:<Button title="Add second class"  onPress={goToNewCreate} /> 
-           }
+            {item.classPcList &&
+                <View>
+                    <Text style={styles.info}>Your Classes :</Text>
+                    <FlatList
+                        data={item.classPcList}
+                        renderItem={({item}) =>
+                            <View>
+                                <Text style={styles.title}>{item.className}</Text>
+                                <Text style={[styles.info,{paddingLeft:10,paddingRight:10,paddingBottom:10}]}>Your LVL :</Text>
+                                <View style={{flexDirection:'row',  justifyContent:'center',alignItems:'center'}}>
+                                    <TouchableOpacity>
+                                        <Image source={{uri:'minus'}} style={{height:30, width:30,}}/>
+                                    </TouchableOpacity>
+                                        <Text style={[styles.title,{paddingLeft:10,paddingRight:10,paddingBottom:10}]}>{item.level}</Text>
+                                    <TouchableOpacity onPress={updateLvl}>
+                                        <Image source={{uri:'plus'}} style={{height:30, width:30}}/>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        }
+                        keyExtractor={item => item.className}
+                        ItemSeparatorComponent={()=> <View style={{paddingBottom:10}}/>}
+                    /> 
+                </View>
+            }
+           {show? <Button title="Add class"  onPress={goToClassList} />:<Button title="Add second class"  onPress={goToNewCreate} />}
         </View>
     )
 }
@@ -77,7 +80,8 @@ const styles = StyleSheet.create ({
       color:'#fff',
       textAlign:'center',
       paddingTop:10,
-      textTransform:'capitalize'
+      textTransform:'capitalize',
+      paddingBottom:10
     },
     characterName: {
         fontSize:25,
