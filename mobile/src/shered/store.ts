@@ -92,6 +92,7 @@ type State = {
           set((state) => ({
             ...state, 
             userWithDetails:userWithDetails.data,
+            show:true
           }))}
           return userWithDetails.data
       } catch (err) {
@@ -100,7 +101,7 @@ type State = {
     },
     setClassUpdateDetails: async (classId:number) => {
       const userId = get().characterId
-      try{ const classWithDetails = await setClass(userId,classId) 
+      try{ const classWithDetails = await setClass(userId,classId.toString()) 
         if(classWithDetails.status === 200){
           set((state) => ({
             ...state, 

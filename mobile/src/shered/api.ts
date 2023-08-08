@@ -1,5 +1,6 @@
 import axios from 'axios';
-const baseUrl = 'http://192.168.0.10:8080';
+// const baseUrl = 'https://kolendateam.alwaysdata.net';
+const baseUrl = 'http://192.168.0.140:8080';
 
 export const createUser =  (data: {
      characterName: string; playerName: string;
@@ -46,7 +47,7 @@ export const getClass = () => {
     return axios.get(`${baseUrl}/class`)
 }
 
-export const setClass = (characterId:number, classId:number) => {
+export const setClass = (characterId:number, classId:string) => {
     return axios.post(`${baseUrl}/character-card/${characterId}/class`,
         {
             id: classId

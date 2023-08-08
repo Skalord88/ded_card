@@ -14,7 +14,7 @@ export const SubRaces = (item:ISubRace) => {
 
     return (
         <View style={styles.box}>
-            <TouchableOpacity key={item.item.id} onPress={navToRaceAbilitis}>
+            <TouchableOpacity key={subRaceName} onPress={navToRaceAbilitis}>
                 <View style={{flexDirection:'row',  justifyContent:'center',}}>
                     <Text style={styles.title}>{subRaceName}</Text>
                     <Image source={{uri:'arrow_right_press'}} style={{width:20, height:20,}}/>
