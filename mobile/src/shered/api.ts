@@ -41,3 +41,12 @@ export const setRace = (id:number, raceId: number) => {
         }
     )
 }
+
+export const buySkills = (id:number,idSkill: number, skillRank:number )=> {
+    return axios.post(`${baseUrl}/character-card/${id}/skill`,
+        {
+            idSkill: idSkill,
+            skillRank: skillRank
+        }
+    )
+}

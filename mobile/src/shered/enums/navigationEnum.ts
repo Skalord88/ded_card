@@ -3,5 +3,6 @@ export enum StackEnum {
     ABILITY = "Abilitys",
     RACES = "Races",
     RACES_DETAILS = "RaceDetails",
-    CHARACTER_DETAILS = "CharacterDetails"
+    CHARACTER_DETAILS = "CharacterDetails",
+    BUYSKILLS = "Buy Skills"
 }
