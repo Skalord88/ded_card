@@ -47,9 +47,8 @@
             <column name="skill_points" value="6" />
             <column name="hit_dice" value="6" />
             <column name="class_feats_map" value="[
-              {'level':1,'classFeats':[
-              'Armor Proficiency (Light)'
-              ]}]"/>
+            {'level':1,'classFeats':['Armor proficiency (light)']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
             <column name="id" value="3"/>  

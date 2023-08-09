@@ -18,4 +18,16 @@ public class SavingThrow {
         this.reflex = reflex;
         this.will = will;
     }
+
+    public boolean checkPrerequisiteST(SavingThrow sT) {
+
+        if(fortitude >= sT.fortitude ||
+            reflex >= sT.reflex ||
+            will >= sT.will){
+            return true;
+        }
+        
+        return false;
+    
+    }
 }

@@ -5,7 +5,7 @@ public class SkillsDTO {
     public int idSkill;
     public String nameSkill;
     public boolean classSkill;
-    public int skillRank;
+    public double skillRank;
     public int skillAbility;
     public int skillBonus;
     
