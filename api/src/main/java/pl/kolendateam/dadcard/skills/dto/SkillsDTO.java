@@ -11,7 +11,7 @@ public class SkillsDTO {
     public String nameSkill;
     public boolean classSkill;
 
-    //@PositiveOrZero(message = "value should be positive or zero")
+    @PositiveOrZero(message = "value should be positive or zero")
     public double skillRank;
     
     @NotNull
