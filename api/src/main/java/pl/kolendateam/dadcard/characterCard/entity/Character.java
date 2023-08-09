@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +17,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -78,7 +80,6 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassSkills> classSkills;
 
-    @PositiveOrZero(message = "couldn't be less that 0")
     double skillPoints;
     
     @JdbcTypeCode(SqlTypes.JSON)
@@ -225,13 +226,21 @@ public class Character {
     public void sellSkills(int idSkill){
         for(ClassSkills s : classSkills){
             if(s.getIdSkill() == idSkill){
-        
-                if(s.isClassSkill()){
-                    s.minusSkillRank();
-                } else {
-                    s.minusSkillRankFalse();
+                boolean check = true;
+                if(s.isClassSkill() && 0 > s.getSkillRank()-1){
+                    check = false;
                 }
-                skillPoints++;
+                if(!s.isClassSkill() && 0 > s.getSkillRank()-0.5){
+                    check = false;
+                }
+                if(check){
+                    if(s.isClassSkill()){
+                        s.minusSkillRank();
+                    } else {
+                        s.minusSkillRankFalse();
+                    }
+                    skillPoints++;
+                }
             }
         }
     }

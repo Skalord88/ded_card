@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,11 +21,13 @@ import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillListDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("skills")
+@Validated
 public class SkillsController {
 
     
@@ -45,7 +48,9 @@ public class SkillsController {
     }
 
     @PostMapping(value="{id}", consumes = {"application/json"})
-    public CharacterDTO buyCharacterSkill(@PathVariable int id, @Valid @RequestBody SkillsDTO skillsDTO){
+    public CharacterDTO buyCharacterSkill(
+        @PathVariable int id, @Valid @RequestBody SkillsDTO skillsDTO){
+
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -61,10 +66,12 @@ public class SkillsController {
         this.characterRepository.save(character);
         
         return new CharacterDTO(character);
+
     }
 
     @PostMapping(value="{id}/minus", consumes = {"application/json"})
-    public CharacterDTO sellCharacterSkill(@PathVariable int id, @Valid @RequestBody SkillsDTO skillsDTO){
+    public CharacterDTO sellCharacterSkill(
+        @PathVariable int id, @Valid @RequestBody SkillsDTO skillsDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -80,6 +87,7 @@ public class SkillsController {
         this.characterRepository.save(character);
         
         return new CharacterDTO(character);
+
     }
 
 }

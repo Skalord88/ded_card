@@ -6,12 +6,12 @@ import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
 public class SkillsDTO {
 
-    @NotNull
+    @NotNull(message = "choose one ability")
     public int idSkill;
     public String nameSkill;
     public boolean classSkill;
 
-    @PositiveOrZero
+    //@PositiveOrZero(message = "value should be positive or zero")
     public double skillRank;
     
     @NotNull

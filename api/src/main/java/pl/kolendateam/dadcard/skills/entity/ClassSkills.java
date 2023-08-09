@@ -1,5 +1,8 @@
 package pl.kolendateam.dadcard.skills.entity;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
