@@ -39,7 +39,7 @@ public class Vitality {
         return hP;
     }
 
-    public int hitPointsNewtLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+    public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
 
         int hP;
 

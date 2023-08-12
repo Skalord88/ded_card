@@ -22,7 +22,10 @@ public class ClassPc implements Serializable {
     double classBab;
 
     public void incrementLevel() {
-        this.level += 1;
+        this.level++;
+    }
+    public void decrementLevel() {
+        this.level--;
     }
 
     public int findIndexInArrayById(ArrayList<ClassPc> classPcList) {

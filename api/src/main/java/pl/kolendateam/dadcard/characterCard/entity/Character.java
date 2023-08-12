@@ -104,9 +104,15 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
+    public void removeClassToPcArray(ClassPc classPc) {
+        this.classPcArray.remove(classPc);
+    }
 
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
+    }
+    public void decrementLevelClassForIndex(int index) {
+        this.getClassPcArray().get(index).decrementLevel();
     }
 
     public void incrementEcl() {
@@ -279,7 +285,7 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
 
         this.vitality.setHitPoints(+hP);
 
@@ -294,9 +300,12 @@ public class Character {
         } else{
             hD--;
         }
-            
+        if(hD == 0){
+            vitality.hitDices.remove(hitDice, hD);
+        }else{   
         this.vitality.hitDices.replace(hitDice,hD);
-
+        }
+        int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
         this.vitality.setHitPoints(-hP);
 
     }
