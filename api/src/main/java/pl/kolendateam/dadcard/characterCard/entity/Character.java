@@ -113,6 +113,10 @@ public class Character {
         this.ecl += 1;
     }
 
+    public void decrementEcl() {
+        this.ecl -= 1;
+    }
+
     public void addSavingThrowLevelOne(ClassPc classPc){
 
         String stringSavingThrow = classPc.getSavingThrow();
@@ -195,8 +199,16 @@ public class Character {
         this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
+    public void decalculateSkillPointsFirstLevel(int skPoints) {
+        this.skillPoints -= (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
+    }
+
     public void calculateSkillPoints(int skPoints) {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
+    }
+
+    public void decalculateSkillPoints(int skPoints) {
+        this.skillPoints -= skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
     public void buySkills(int idSkill, double skPoints) {
@@ -248,6 +260,13 @@ public class Character {
         
     }
 
+    public void resetHitPointsFirstLevel(int hitDice) {
+
+        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
+        this.vitality = hP;
+        
+    }
+
     public void hitPointsNewLevel(int hitDice) {
 
         Integer hD = vitality.hitDices.get(hitDice);
@@ -263,6 +282,22 @@ public class Character {
         int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
 
         this.vitality.setHitPoints(+hP);
+
+    }
+
+    public void hitPointsLastLevel(int hitDice) {
+
+        Integer hD = vitality.hitDices.get(hitDice);
+
+        if(hD==1){
+            hD=0;
+        } else{
+            hD--;
+        }
+            
+        this.vitality.hitDices.replace(hitDice,hD);
+
+        this.vitality.setHitPoints(-hP);
 
     }
 

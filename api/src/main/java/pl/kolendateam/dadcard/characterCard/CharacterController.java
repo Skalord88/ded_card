@@ -112,12 +112,90 @@ public class CharacterController {
 
         character.incrementEcl();
         
-        // skills
+        // skills & hp
         if (character.getEcl() == 1){
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
             character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
             character.calculateSkillPoints(classCharacter.getSkillPoints());
+            character.hitPointsNewLevel(classCharacter.getHitDice());
+        }
+        
+        // class
+        int indexClassInDB = classPc.findIndexInArrayById(classPcList);
+
+        if(indexClassInDB == -1){
+            character.addClassToPcArray(classPc);
+            character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
+        }else{
+            character.incrementLevelClassForIndex(indexClassInDB);
+        }
+
+        int levelClassInDB = classPc.findLevelInArrayById(classPcList,classCharacter.getId());       
+
+        // saving throw
+        if(levelClassInDB == 1){
+            character.addSavingThrowLevelOne(classPc);
+        }else{
+            character.incementSavingThrow();
+        }
+        
+        character.incrementBab(classCharacter.getClassBab());
+        
+        // feat
+        List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+            levelClassInDB,featsList,classCharacter.getClassFeatsMap());   
+        
+        for (CharacterFeat chFeat : characterFeatsFromClass){
+            character.addFeatToPc(chFeat);
+        }
+
+        this.characterRepository.save(character);
+
+        return new CharacterDTO (character);
+    }
+
+    @PostMapping(value = "{id}/minus_class", consumes = { "application/json" })
+    public CharacterDTO minusCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO) {
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+
+        Optional<ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
+
+        if (!classOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Class Not Found");
+        }
+
+        List<Feats> featsList = this.featsRepository.findAll();
+
+        ClassCharacter classCharacter = classOpt.get();
+
+        ArrayList<ClassPc> classPcList = character.getClassPcArray();
+
+        ClassPc classPc = new ClassPc(
+            classCharacter.getId(),classCharacter.getName(),1,
+            classCharacter.getHitDice(),classCharacter.getSavingThrow(),
+            classCharacter.getClassBab()
+            );
+
+        character.decrementEcl();
+        
+        // skills & hp
+        if (character.getEcl() == 1){
+            character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+            HashMap<Integer,Integer> vitaMap = new HashMap<>();
+            Vitality vitality = new Vitality(0,vitaMap,0);
+            character.setVitality(vitality);
+        } else {
+            character.decalculateSkillPoints(classCharacter.getSkillPoints());
             character.hitPointsNewLevel(classCharacter.getHitDice());
         }
         
