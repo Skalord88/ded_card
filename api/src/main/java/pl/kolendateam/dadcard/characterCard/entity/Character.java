@@ -146,6 +146,29 @@ public class Character {
             this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
     }
 
+    public void minusSavingThrowLevelOne(ClassPc classPc){
+
+        String stringSavingThrow = classPc.getSavingThrow();
+    
+            double bonusFortitude;
+            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusFortitude = 2.5;
+            } else{bonusFortitude = 0;}
+            this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonusFortitude);
+    
+            double bonusReflex;
+            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusReflex = 2.5;
+            } else{bonusReflex = 0;}
+            this.savingThrow.setReflex(this.savingThrow.getReflex()-bonusReflex);
+    
+            double bonusWill;
+            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+                bonusWill = 2.5;
+            } else{bonusWill = 0;}
+            this.savingThrow.setWill(this.savingThrow.getWill()-bonusWill);            
+    }
+
     public void incementSavingThrow() {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);

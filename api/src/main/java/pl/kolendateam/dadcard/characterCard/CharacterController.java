@@ -221,14 +221,15 @@ public class CharacterController {
 
         }
 
-        // jestes tu!!!
+       
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
-
+        // jestes tu!!!
         // saving throw
-        if (levelClassInDB == 1) {
-            character.addSavingThrowLevelOne(classPc);
-        } else {
+        if (levelClassInDB >= 1){
             character.incementSavingThrow();
+        }
+        if (levelClassInDB == 0){
+            character.minusSavingThrowLevelOne(classPc);
         }
 
         character.incrementBab(classCharacter.getClassBab());
