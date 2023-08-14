@@ -228,9 +228,9 @@ public class Character {
         this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
-    public void decalculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints -= (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
-    }
+    // public void decalculateSkillPointsFirstLevel(int skPoints) {
+    //     this.skillPoints -= (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
+    // }
 
     public void calculateSkillPoints(int skPoints) {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
@@ -319,19 +319,17 @@ public class Character {
 
     public void hitPointsLastLevel(int hitDice) {
 
-        Integer hD = vitality.hitDices.get(hitDice);
-
-        if(hD==1){
-            hD=0;
-        } else{
-            hD--;
-        }
-        if(hD == 0){
-            vitality.hitDices.remove(hitDice, hD);
-        }else{   
-        this.vitality.hitDices.replace(hitDice,hD);
+        for (Integer hD : vitality.getHitDices().keySet()){
+            if(hD == hitDice){
+                if(vitality.getHitDices().get(hD) == 1){
+                    vitality.getHitDices().remove(hD);
+                } else {
+                    vitality.getHitDices().put(hD, -1);
+                }
+            }
         }
         int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
+
         this.vitality.setHitPoints(-hP);
 
     }
@@ -512,12 +510,14 @@ public class Character {
     }
 
 	public void decrementClassFromList(int idClassInList) {
-        for(ClassPc cP : classPcArray){
-            if(cP.getId() == idClassInList){
-                if(cP.getId()==1){
-                    classPcArray.remove(cP);
-                } else {
-                    cP.decrementLevel();
+        if(!classPcArray.isEmpty()){
+            for(ClassPc cP : classPcArray){
+                if(cP.getId() == idClassInList){
+                    if(cP.getId()==1){
+                        classPcArray.remove(cP);
+                    } else {
+                        cP.decrementLevel();
+                    }
                 }
             }
         }

@@ -201,59 +201,65 @@ public class CharacterController {
         //     character.decrementLevelClassForIndex(indexClassInDB);
         // }
 
-        //tu jesteś
         // skillPoints & hp
-        if (character.getEcl() == 1) {
-            character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
-            HashMap<Integer, Integer> vitaMap = new HashMap<>();
-            Vitality vitality = new Vitality(0, vitaMap, 0);
-            character.setVitality(vitality);
+        if (character.getEcl() == 0){
+            character.setSkillPoints(0);
+            Vitality vita = new Vitality();
+            character.setVitality(vita);
         } else {
             character.decalculateSkillPoints(classCharacter.getSkillPoints());
-            character.hitPointsNewLevel(classCharacter.getHitDice());
+            character.hitPointsLastLevel(classCharacter.getHitDice());
         }
+        // if (character.getEcl() == 1) {
+        //     character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+        //     HashMap<Integer, Integer> vitaMap = new HashMap<>();
+        //     Vitality vitality = new Vitality(0, vitaMap, 0);
+        //     character.setVitality(vitality);
+        // } else {
+        //     character.decalculateSkillPoints(classCharacter.getSkillPoints());
+        //     character.hitPointsNewLevel(classCharacter.getHitDice());
+        // }
 
-
-
-
+        //tu jesteś
         // re-trueSkills
 
-        for (ClassPc cP : character.getClassPcArray()) {
-            for (ClassCharacter cC : allClassesList) {
-                if (cC.getId() == cP.getId()) {
-                    character.setSkillsTruePcArray(cC.getAvailableSkills());
-                }
-            }
+        // if(character.getClassPcArray()!=null){
+        //     for (ClassPc cP : character.getClassPcArray()) {
+        //         for (ClassCharacter cC : allClassesList) {
+        //             if (cC.getId() == cP.getId()) {
+        //                 character.setSkillsTruePcArray(cC.getAvailableSkills());
+        //             }
+        //         }
+        //     }
+        // }
+        // int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
-        }
- 
-        int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
-
-        // saving throw
-        if (levelClassInDB >= 1){
-            character.decementSavingThrow();
-        }
-        if (levelClassInDB == 0){
-            character.minusSavingThrowLevelOne(classPc);
-        }
+        // // saving throw
+        // if (levelClassInDB >= 1){
+        //     character.decementSavingThrow();
+        // }
+        // if (levelClassInDB == 0){
+        //     character.minusSavingThrowLevelOne(classPc);
+        // }
 
         character.decrementBab(classCharacter.getClassBab());
 
         // feat
-        HashMap<Integer,String> listOfFeatsOfAllCharacterClass = new HashMap<Integer,String>();
-        for(ClassPc cPc : character.getClassPcArray()){
-            for(ClassCharacter cC : allClassesList){
-                if(cPc.getId() == cC.getId()){
-                    listOfFeatsOfAllCharacterClass.put(cPc.getLevel(), cC.getClassFeatsMap());
-                }
-            }
-        }
+        // HashMap<Integer,String> listOfFeatsOfAllCharacterClass = new HashMap<Integer,String>();
+        // for(ClassPc cPc : character.getClassPcArray()){
+        //     for(ClassCharacter cC : allClassesList){
+        //         if(cPc.getId() == cC.getId()){
+        //             listOfFeatsOfAllCharacterClass.put(cPc.getLevel(), cC.getClassFeatsMap());
+        //         }
+        //     }
+        // }
 
-        character.minusFeatsForLevel(listOfFeatsOfAllCharacterClass);
+    //    character.minusFeatsForLevel(listOfFeatsOfAllCharacterClass);
 
         this.characterRepository.save(character);
 
         return new CharacterDTO(character);
+
     }
 
     @PostMapping(value = "{id}/skill", consumes = { "application/json" })
