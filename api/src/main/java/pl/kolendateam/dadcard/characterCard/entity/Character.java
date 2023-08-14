@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -104,15 +105,9 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
-    public void removeClassToPcArray(ClassPc classPc) {
-        this.classPcArray.remove(classPc);
-    }
 
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
-    }
-    public void decrementLevelClassForIndex(int index) {
-        this.getClassPcArray().get(index).decrementLevel();
     }
 
     public void incrementEcl() {
@@ -173,6 +168,11 @@ public class Character {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
         this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
+    }
+    public void decementSavingThrow() {
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() - 0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex() - 0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill() - 0.5);
     }
 
     public void setSkillsTruePcArray(Set<Skills> availableSkills) {
@@ -273,6 +273,9 @@ public class Character {
     
     public void incrementBab(double classBab) {
         this.bab += classBab;
+    }
+    public void decrementBab(double classBab) {
+        this.bab -= classBab;
     }
 
     public void raceLevelAdjustment(int lvAdj) {
@@ -476,6 +479,49 @@ public class Character {
             featsList.add(ft);
         }
     }
+
+    public void minusFeatsForLevel(HashMap<Integer,String> listOfFeatsOfAllCharacterClass) {
+    //in map of level class and all feats of these classes
+        for(Integer lv : listOfFeatsOfAllCharacterClass.keySet()){
+            // (this json create array of feats per level of class)
+            Gson gson = new Gson();
+            Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+            List<ClassFeats> featsJson = gson.fromJson(
+                listOfFeatsOfAllCharacterClass.get(lv), listFeats);
+
+    //check if level of class is less or equal in list of all class feats for repository
+            for(ClassPc cPc : classPcArray){
+                if(lv <= cPc.getLevel()){
+    //if yes, for any feat in array from repository, check if feats is already present in list of character feats
+                    for(ClassFeats cFJson : featsJson){
+                        for(CharacterFeat cF : featsList){
+                            if(cFJson.getClassFeats().equals(cF.getCharacterFeatName())){
+                                // and if is 1, delete feat form character feats
+                                if(cF.getLevelOfFeat() == 1){
+                                    featsList.remove(cF);
+                                } else {
+                                // else decrese level of feat
+                                    cF.decrementLevelFeat();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	public void decrementClassFromList(int idClassInList) {
+        for(ClassPc cP : classPcArray){
+            if(cP.getId() == idClassInList){
+                if(cP.getId()==1){
+                    classPcArray.remove(cP);
+                } else {
+                    cP.decrementLevel();
+                }
+            }
+        }
+	}
     
 }
 

@@ -36,6 +36,9 @@ public class CharacterFeat implements Serializable{
     public void incrementLevelFeat(){
         this.levelOfFeat++;
     }
+    public void decrementLevelFeat(){
+        this.levelOfFeat--;
+    }
 
     public boolean checkPrerequisite(
         Feats feat,

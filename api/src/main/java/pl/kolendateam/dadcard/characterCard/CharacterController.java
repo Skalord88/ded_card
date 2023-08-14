@@ -177,7 +177,7 @@ public class CharacterController {
         }
 
         List<Feats> featsList = this.featsRepository.findAll();
-        List<ClassCharacter> classesList = this.classRepository.findAll();
+        List<ClassCharacter> allClassesList = this.classRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
@@ -190,6 +190,18 @@ public class CharacterController {
 
         character.decrementEcl();
 
+        // class
+        character.decrementClassFromList(classCharacter.getId());
+
+        // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
+
+        // if (indexClassInDB == 1) {
+        //     character.removeClassToPcArray(classPc);
+        // } else {
+        //     character.decrementLevelClassForIndex(indexClassInDB);
+        // }
+
+        //tu jesteś
         // skillPoints & hp
         if (character.getEcl() == 1) {
             character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
@@ -201,46 +213,43 @@ public class CharacterController {
             character.hitPointsNewLevel(classCharacter.getHitDice());
         }
 
-        // class
-        int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
-        if (indexClassInDB == 1) {
-            character.removeClassToPcArray(classPc);
-        } else {
-            character.decrementLevelClassForIndex(indexClassInDB);
-        }
+
 
         // re-trueSkills
 
         for (ClassPc cP : character.getClassPcArray()) {
-            for (ClassCharacter cC : classesList) {
+            for (ClassCharacter cC : allClassesList) {
                 if (cC.getId() == cP.getId()) {
                     character.setSkillsTruePcArray(cC.getAvailableSkills());
                 }
             }
 
         }
-
-       
+ 
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
-        // jestes tu!!!
+
         // saving throw
         if (levelClassInDB >= 1){
-            character.incementSavingThrow();
+            character.decementSavingThrow();
         }
         if (levelClassInDB == 0){
             character.minusSavingThrowLevelOne(classPc);
         }
 
-        character.incrementBab(classCharacter.getClassBab());
+        character.decrementBab(classCharacter.getClassBab());
 
         // feat
-        List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-                levelClassInDB, featsList, classCharacter.getClassFeatsMap());
-
-        for (CharacterFeat chFeat : characterFeatsFromClass) {
-            character.addFeatToPc(chFeat);
+        HashMap<Integer,String> listOfFeatsOfAllCharacterClass = new HashMap<Integer,String>();
+        for(ClassPc cPc : character.getClassPcArray()){
+            for(ClassCharacter cC : allClassesList){
+                if(cPc.getId() == cC.getId()){
+                    listOfFeatsOfAllCharacterClass.put(cPc.getLevel(), cC.getClassFeatsMap());
+                }
+            }
         }
+
+        character.minusFeatsForLevel(listOfFeatsOfAllCharacterClass);
 
         this.characterRepository.save(character);
 
