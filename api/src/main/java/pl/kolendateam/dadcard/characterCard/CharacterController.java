@@ -21,6 +21,7 @@ import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
@@ -191,24 +192,28 @@ public class CharacterController {
         character.decrementEcl();
 
         // class
-        character.decrementClassFromList(classCharacter.getId());
+        int indexClassInDB = classPc.findIndexInArrayById(classPcList);
+        
+        if (indexClassInDB == 1){
+            character.removeClassFromPcArray(indexClassInDB);
+        }
+        if (indexClassInDB == -1){
 
-        // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-
-        // if (indexClassInDB == 1) {
-        //     character.removeClassToPcArray(classPc);
-        // } else {
-        //     character.decrementLevelClassForIndex(indexClassInDB);
-        // }
+        } else {
+            character.decrementLevelClassForIndex(indexClassInDB);
+        }
 
         // skillPoints & hp
-        if (character.getEcl() == 0){
-            character.setSkillPoints(0);
-            Vitality vita = new Vitality();
-            character.setVitality(vita);
-        } else {
-            character.decalculateSkillPoints(classCharacter.getSkillPoints());
-            character.hitPointsLastLevel(classCharacter.getHitDice());
+        if(indexClassInDB >= 0){
+            if (character.getEcl() == 0){
+                character.setSkillPoints(0);
+                HashMap <Integer,Integer> vitaHD = new HashMap<>();
+                Vitality vita = new Vitality(0,vitaHD,0);
+                character.setVitality(vita);
+            } else {
+                character.decalculateSkillPoints(classCharacter.getSkillPoints());
+                character.hitPointsLastLevel(classCharacter.getHitDice());
+            }
         }
         // if (character.getEcl() == 1) {
         //     character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());

@@ -105,15 +105,20 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
+    public void removeClassFromPcArray(int index) {
+        this.classPcArray.remove(index);
+    }
 
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
+    }
+    public void decrementLevelClassForIndex(int index) {
+        this.getClassPcArray().get(index).decrementLevel();
     }
 
     public void incrementEcl() {
         this.ecl += 1;
     }
-
     public void decrementEcl() {
         this.ecl -= 1;
     }
@@ -319,19 +324,17 @@ public class Character {
 
     public void hitPointsLastLevel(int hitDice) {
 
-        for (Integer hD : vitality.getHitDices().keySet()){
-            if(hD == hitDice){
-                if(vitality.getHitDices().get(hD) == 1){
-                    vitality.getHitDices().remove(hD);
-                } else {
-                    vitality.getHitDices().put(hD, -1);
-                }
+        for(Integer hD : vitality.hitDices.keySet()){
+            if(vitality.getHitDices().get(hD)==1){
+                vitality.hitDices.remove(hD);
+            } else {
+                vitality.hitDices.put(hitDice, vitality.getHitDices().get(hD)-1);
             }
         }
+
         int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(-hP);
-
+        this.vitality.setHitPoints(vitality.getHitPoints()-hP);
     }
 
     public void setCharacterRace(Race race) {
@@ -509,19 +512,5 @@ public class Character {
         }
     }
 
-	public void decrementClassFromList(int idClassInList) {
-        if(!classPcArray.isEmpty()){
-            for(ClassPc cP : classPcArray){
-                if(cP.getId() == idClassInList){
-                    if(cP.getId()==1){
-                        classPcArray.remove(cP);
-                    } else {
-                        cP.decrementLevel();
-                    }
-                }
-            }
-        }
-	}
-    
 }
 
