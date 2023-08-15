@@ -111,13 +111,11 @@ public class Character {
     // is not applicable for the arguments ()
     // ] with root cause
     
-    public void removeClassFromPcArray(int index) {
-        if(this.classPcArray.size() > 1){
-            this.classPcArray.get(index).remove();
-        }
-        if(this.classPcArray.size() <= 1){
-            this.classPcArray = new ArrayList<>();
-        }
+    public void removeClassFromPcArray(int indexClass) {
+
+        // if(this.getClassPcArray().size() >= 1){
+        this.getClassPcArray().remove(indexClass);
+
     }
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();

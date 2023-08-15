@@ -190,16 +190,12 @@ public class CharacterController {
 
         // class
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-
-        for(ClassPc clPc : character.getClassPcArray()){
-            if(clPc.getId() == classPc.getId()){
-                if(clPc.getLevel()==1){
-                    character.removeClassFromPcArray(indexClassInDB);
-                }
-                if(clPc.getLevel()>1){
-                    character.decrementLevelClassForIndex(indexClassInDB);
-                }
-            }
+        int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
+        if(levelClassInDB==1){
+            character.removeClassFromPcArray(indexClassInDB);
+        }
+        if(levelClassInDB>1){
+            character.decrementLevelClassForIndex(indexClassInDB);
         }
 
         // skillPoints & hp
