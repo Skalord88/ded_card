@@ -105,10 +105,20 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
-    public void removeClassFromPcArray(int index) {
-        this.classPcArray.remove(index);
-    }
 
+    // Unresolved compilation problem:
+    // The method remove(int) in the type ArrayList<ClassPc>
+    // is not applicable for the arguments ()
+    // ] with root cause
+    
+    public void removeClassFromPcArray(int index) {
+        if(this.classPcArray.size() > 1){
+            this.classPcArray.get(index).remove();
+        }
+        if(this.classPcArray.size() <= 1){
+            this.classPcArray = new ArrayList<>();
+        }
+    }
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
     }

@@ -9,7 +9,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 public class MaperListClassToDTO {
     public static ArrayList<ClassCharacterDTO> toClassCharacterDTO(List<ClassCharacter> classes){
 
-        ArrayList<ClassCharacterDTO> classesDTO = new ArrayList();
+        ArrayList<ClassCharacterDTO> classesDTO = new ArrayList<>();
 
         for (ClassCharacter classCharacter : classes) {
             
