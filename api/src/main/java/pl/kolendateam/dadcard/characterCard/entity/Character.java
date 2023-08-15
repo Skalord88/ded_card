@@ -105,17 +105,9 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
-
-    // Unresolved compilation problem:
-    // The method remove(int) in the type ArrayList<ClassPc>
-    // is not applicable for the arguments ()
-    // ] with root cause
     
     public void removeClassFromPcArray(int indexClass) {
-
-        // if(this.getClassPcArray().size() >= 1){
         this.getClassPcArray().remove(indexClass);
-
     }
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
@@ -326,7 +318,7 @@ public class Character {
 
         int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(+hP);
+        this.vitality.setHitPoints(hP);
 
     }
 
@@ -336,13 +328,15 @@ public class Character {
             if(vitality.getHitDices().get(hD)==1){
                 vitality.hitDices.remove(hD);
             } else {
-                vitality.hitDices.put(hitDice, vitality.getHitDices().get(hD)-1);
+                int lv = vitality.getHitDices().get(hD)-1;
+                vitality.hitDices.remove(hD);
+                vitality.hitDices.put(hitDice,lv);
             }
         }
 
-        int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsAtLastLevel(hitDice,vitality,abilitys,ecl); 
 
-        this.vitality.setHitPoints(vitality.getHitPoints()-hP);
+        this.vitality.setHitPoints(hP);
     }
 
     public void setCharacterRace(Race race) {

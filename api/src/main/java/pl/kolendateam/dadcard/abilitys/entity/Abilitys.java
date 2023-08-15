@@ -27,7 +27,7 @@ public class Abilitys implements Serializable{
     }
 
     public int bonusConstitution (Abilitys abilitys){
-        int bonusConstitution = (int)(abilitys.getConstitution()-10)/2;
+        int bonusConstitution = (abilitys.getConstitution()-10)/2;
         return bonusConstitution;
     }
 

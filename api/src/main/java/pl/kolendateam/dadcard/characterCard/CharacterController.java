@@ -205,6 +205,11 @@ public class CharacterController {
             Vitality vita = new Vitality(0,vitaHD,0);
             character.setVitality(vita);
         } else {
+
+        // java.util.ConcurrentModificationException: null
+        // at java.base/java.util.HashMap$HashIterator.nextNode(Unknown Source) ~[na:na]
+        // at java.base/java.util.HashMap$KeyIterator.next(Unknown Source) ~[na:na]
+        // at pl.kolendateam.dadcard.characterCard.entity.Character.hitPointsLastLevel(Character.java:327) ~[classes/:na]
             character.decalculateSkillPoints(classCharacter.getSkillPoints());
             character.hitPointsLastLevel(classCharacter.getHitDice());
         }
@@ -219,7 +224,6 @@ public class CharacterController {
         //     character.hitPointsNewLevel(classCharacter.getHitDice());
         // }
 
-        //tu jesteś
         // re-trueSkills
 
         // if(character.getClassPcArray()!=null){
