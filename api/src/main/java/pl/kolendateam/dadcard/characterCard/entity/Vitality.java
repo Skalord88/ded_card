@@ -54,17 +54,12 @@ public class Vitality {
 
         int hP;
 
-        if(ecl == 0){
-            hP = vitality.hitPoints+hitDice+abilitys.bonusConstitution
-            (abilitys);
+        if(ecl % 2 == 0){
+            hP = vitality.hitPoints-(((hitDice/2)+1)+abilitys.bonusConstitution
+            (abilitys));
         } else {
-            if(ecl % 2 == 0){
-                hP = vitality.hitPoints-(hitDice/2)+abilitys.bonusConstitution
-                (abilitys);
-            } else {
-                hP = vitality.hitPoints-((hitDice/2)+1)+abilitys.bonusConstitution
-                (abilitys);
-            }
+            hP = vitality.hitPoints-(((hitDice/2))+abilitys.bonusConstitution
+            (abilitys));
         }
         
         return hP;
@@ -85,5 +80,9 @@ public class Vitality {
             vita.hitPoints = 4+(lvAdjNext*2)+(lvAdjNext/2);
         }
         return vita;
+    }
+
+    public void removeHDClass(int hD){
+        this.hitDices.remove(hD);
     }
 }

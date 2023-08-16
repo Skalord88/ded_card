@@ -233,10 +233,6 @@ public class Character {
         this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
-    // public void decalculateSkillPointsFirstLevel(int skPoints) {
-    //     this.skillPoints -= (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
-    // }
-
     public void calculateSkillPoints(int skPoints) {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
@@ -324,14 +320,11 @@ public class Character {
 
     public void hitPointsLastLevel(int hitDice) {
 
-        for(Integer hD : vitality.hitDices.keySet()){
-            if(vitality.getHitDices().get(hD)==1){
-                vitality.hitDices.remove(hD);
-            } else {
-                int lv = vitality.getHitDices().get(hD)-1;
-                vitality.hitDices.remove(hD);
-                vitality.hitDices.put(hitDice,lv);
-            }
+        if(vitality.getHitDices().get(hitDice)==1){
+            vitality.removeHDClass(hitDice);
+        } else {
+            int lv = vitality.getHitDices().get(hitDice)-1;
+            vitality.hitDices.put(hitDice, lv);
         }
 
         int hP = vitality.hitPointsAtLastLevel(hitDice,vitality,abilitys,ecl); 

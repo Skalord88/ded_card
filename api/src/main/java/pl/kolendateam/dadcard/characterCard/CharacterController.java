@@ -30,6 +30,7 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @RestController
 @RequestMapping("character-card")
@@ -205,36 +206,22 @@ public class CharacterController {
             Vitality vita = new Vitality(0,vitaHD,0);
             character.setVitality(vita);
         } else {
-
-        // java.util.ConcurrentModificationException: null
-        // at java.base/java.util.HashMap$HashIterator.nextNode(Unknown Source) ~[na:na]
-        // at java.base/java.util.HashMap$KeyIterator.next(Unknown Source) ~[na:na]
-        // at pl.kolendateam.dadcard.characterCard.entity.Character.hitPointsLastLevel(Character.java:327) ~[classes/:na]
             character.decalculateSkillPoints(classCharacter.getSkillPoints());
             character.hitPointsLastLevel(classCharacter.getHitDice());
         }
 
-        // if (character.getEcl() == 1) {
-        //     character.decalculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
-        //     HashMap<Integer, Integer> vitaMap = new HashMap<>();
-        //     Vitality vitality = new Vitality(0, vitaMap, 0);
-        //     character.setVitality(vitality);
-        // } else {
-        //     character.decalculateSkillPoints(classCharacter.getSkillPoints());
-        //     character.hitPointsNewLevel(classCharacter.getHitDice());
-        // }
-
         // re-trueSkills
-
-        // if(character.getClassPcArray()!=null){
-        //     for (ClassPc cP : character.getClassPcArray()) {
-        //         for (ClassCharacter cC : allClassesList) {
-        //             if (cC.getId() == cP.getId()) {
-        //                 character.setSkillsTruePcArray(cC.getAvailableSkills());
-        //             }
-        //         }
-        //     }
-        // }
+        //non funziona tutto false!!
+        if(character.getClassPcArray()!=null){
+            for (ClassPc cP : character.getClassPcArray()) {
+                for (ClassCharacter cC : allClassesList) {
+                    if (cC.getId() == cP.getId()) {
+                        character.setSkillsTruePcArray(cC.getAvailableSkills());
+                    }
+                }
+            }
+        }
+        
         // int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
         // // saving throw
