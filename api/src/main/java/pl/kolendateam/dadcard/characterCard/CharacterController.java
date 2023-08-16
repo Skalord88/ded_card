@@ -190,6 +190,8 @@ public class CharacterController {
         character.decrementEcl();
 
         // class
+
+        // bard cały się kasuje, a barbar dobrze po -1
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
         if(levelClassInDB==1){
@@ -211,8 +213,7 @@ public class CharacterController {
         }
 
         // re-trueSkills
-        //non funziona tutto false!!
-        if(character.getClassPcArray()!=null){
+        if(character.getClassPcArray().size() != 0){
             for (ClassPc cP : character.getClassPcArray()) {
                 for (ClassCharacter cC : allClassesList) {
                     if (cC.getId() == cP.getId()) {
@@ -220,17 +221,17 @@ public class CharacterController {
                     }
                 }
             }
+        } else {
+            character.allSkillsFalse();
         }
-        
-        // int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
-        // // saving throw
-        // if (levelClassInDB >= 1){
-        //     character.decementSavingThrow();
-        // }
-        // if (levelClassInDB == 0){
-        //     character.minusSavingThrowLevelOne(classPc);
-        // }
+        // saving throw
+        if (levelClassInDB > 1){
+            character.decementSavingThrow();
+        }
+        if (levelClassInDB == 1){
+            character.minusSavingThrowLevelOne(classPc);
+        }
 
         character.decrementBab(classCharacter.getClassBab());
 

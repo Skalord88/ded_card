@@ -106,8 +106,8 @@ public class Character {
         this.classPcArray.add(classPc);
     }
     
-    public void removeClassFromPcArray(int indexClass) {
-        this.getClassPcArray().remove(indexClass);
+    public void removeClassFromPcArray(int index) {
+        this.getClassPcArray().remove(index);
     }
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
@@ -473,6 +473,12 @@ public class Character {
             }
         } else {
             featsList.add(ft);
+        }
+    }
+
+    public void allSkillsFalse() {
+        for(ClassSkills cS : classSkills){
+            cS.setClassSkill(false);
         }
     }
 
