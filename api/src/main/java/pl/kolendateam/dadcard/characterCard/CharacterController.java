@@ -187,13 +187,20 @@ public class CharacterController {
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
                 classCharacter.getClassBab());
 
+
+        // feat
+        int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
+        List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+                levelClassInDB, featsList, classCharacter.getClassFeatsMap());
+
+        for (CharacterFeat chFeat : characterFeatsFromClass) {
+            character.removeFeatFromPc(chFeat);
+        }
+
         character.decrementEcl();
 
         // class
-
-        // bard cały się kasuje, a barbar dobrze po -1
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-        int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
         if(levelClassInDB==1){
             character.removeClassFromPcArray(indexClassInDB);
         }
@@ -234,18 +241,6 @@ public class CharacterController {
         }
 
         character.decrementBab(classCharacter.getClassBab());
-
-        // feat
-        // HashMap<Integer,String> listOfFeatsOfAllCharacterClass = new HashMap<Integer,String>();
-        // for(ClassPc cPc : character.getClassPcArray()){
-        //     for(ClassCharacter cC : allClassesList){
-        //         if(cPc.getId() == cC.getId()){
-        //             listOfFeatsOfAllCharacterClass.put(cPc.getLevel(), cC.getClassFeatsMap());
-        //         }
-        //     }
-        // }
-
-    //    character.minusFeatsForLevel(listOfFeatsOfAllCharacterClass);
 
         this.characterRepository.save(character);
 

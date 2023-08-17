@@ -476,40 +476,21 @@ public class Character {
         }
     }
 
-    public void allSkillsFalse() {
-        for(ClassSkills cS : classSkills){
-            cS.setClassSkill(false);
+    public void removeFeatFromPc(CharacterFeat ft) {
+
+        int indexFeat = ft.findFeatIndexinArrayById(featsList);
+        if(indexFeat > -1){
+            if (featsList.get(indexFeat).getLevelOfFeat() == 1){
+                featsList.remove(indexFeat);
+            } else {
+                featsList.get(indexFeat).decrementLevelFeat();
+            }
         }
     }
 
-    public void minusFeatsForLevel(HashMap<Integer,String> listOfFeatsOfAllCharacterClass) {
-    //in map of level class and all feats of these classes
-        for(Integer lv : listOfFeatsOfAllCharacterClass.keySet()){
-            // (this json create array of feats per level of class)
-            Gson gson = new Gson();
-            Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
-            List<ClassFeats> featsJson = gson.fromJson(
-                listOfFeatsOfAllCharacterClass.get(lv), listFeats);
-
-    //check if level of class is less or equal in list of all class feats for repository
-            for(ClassPc cPc : classPcArray){
-                if(lv <= cPc.getLevel()){
-    //if yes, for any feat in array from repository, check if feats is already present in list of character feats
-                    for(ClassFeats cFJson : featsJson){
-                        for(CharacterFeat cF : featsList){
-                            if(cFJson.getClassFeats().equals(cF.getCharacterFeatName())){
-                                // and if is 1, delete feat form character feats
-                                if(cF.getLevelOfFeat() == 1){
-                                    featsList.remove(cF);
-                                } else {
-                                // else decrese level of feat
-                                    cF.decrementLevelFeat();
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+    public void allSkillsFalse() {
+        for(ClassSkills cS : classSkills){
+            cS.setClassSkill(false);
         }
     }
 

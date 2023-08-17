@@ -42,9 +42,6 @@ public class ClassPc implements Serializable {
         int levelOfClass=0;
         
         for (ClassPc clPc : classPcList) {
-            // if (this.id == id && clPc.level == 1) {
-            //     return clPc.getLevel();
-            // }
             if (this.id == id){
                 levelOfClass = clPc.getLevel();
             } 
