@@ -1,4 +1,4 @@
-package pl.kolendateam.items.entity;
+package pl.kolendateam.dadcard.items.entity;
 
 import java.io.Serializable;
 

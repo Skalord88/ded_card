@@ -5,12 +5,15 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="17" author="oscar">
-        <createTable tableName="weapons">
+        <createTable tableName="items">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="weapon_name" type="varchar(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="cost" type="double">
                 <constraints nullable="false"/>
@@ -39,29 +42,3 @@
         </createTable>
     </changeSet>
 </databaseChangeLog>
-
-<!-- CREATE TABLE Answer (
-    idAnswer SERIAL,
-    answerContent VARCHAR,
-    idQuestion INTEGER,
-    version INTEGER,
-
-    CONSTRAINT Answer_idAnswer_PK PRIMARY KEY (idAnswer),
-    CONSTRAINT Answer_idQuestion_FK FOREIGN KEY (idQuestion) REFERENCES Question(idQuestion)
-);
-
-
-CREATE TABLE MatchAnswer (
-    matchingAnswer VARCHAR NOT NULL,
-    version INTEGER,
-
-    CONSTRAINT MatchAnswer_idAnswer_PK PRIMARY KEY (idAnswer)       
-) INHERITS(Answer);
-
-
-CREATE TABLE TrueFalseAnswer (
-    isTrue BOOLEAN NOT NULL,
-    version INTEGER,
-
-    CONSTRAINT TrueFalseAnswer_idAnswer_PK PRIMARY KEY (idAnswer)   
-) INHERITS(Answer); -->
