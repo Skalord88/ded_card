@@ -124,45 +124,27 @@ public class Character {
     }
 
     public void addSavingThrowLevelOne(String stringSavingThrow){
-    
-        double bonus=0;
-        if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
 
-        bonus=0;
-        if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
 
-        bonus=0;
-        if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
+
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
     }
 
     public void minusSavingThrowLevelOne(String stringSavingThrow){
     
-        double bonus=0;
-        if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonus);
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonus);
 
-        bonus=0;
-        if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setReflex(this.savingThrow.getReflex()-bonus);
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setReflex(this.savingThrow.getReflex()-bonus);
 
-        bonus=0;
-        if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-            bonus = 2.5;
-        }
-        this.savingThrow.setWill(this.savingThrow.getWill()-bonus);            
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setWill(this.savingThrow.getWill()-bonus);            
     }
 
     public void incementSavingThrow() {
