@@ -29,7 +29,7 @@ public class WeaponsController {
     CharacterRepository characterRepository;
 
     @Autowired
-    WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
+    public WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
         this.weaponsRepository = weaponRepository;
         this.characterRepository = characterRepository;
     }
