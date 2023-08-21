@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
