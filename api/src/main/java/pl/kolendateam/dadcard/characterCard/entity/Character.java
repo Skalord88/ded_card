@@ -123,50 +123,46 @@ public class Character {
         this.ecl -= 1;
     }
 
-    public void addSavingThrowLevelOne(ClassPc classPc){
+    public void addSavingThrowLevelOne(String stringSavingThrow){
+    
+        double bonus=0;
+        if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
 
-        String stringSavingThrow = classPc.getSavingThrow();
-    
-            double bonusFortitude;
-            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusFortitude = 2.5;
-            } else{bonusFortitude = 0;}
-            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
-    
-            double bonusReflex;
-            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusReflex = 2.5;
-            } else{bonusReflex = 0;}
-            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
-    
-            double bonusWill;
-            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusWill = 2.5;
-            } else{bonusWill = 0;}
-            this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
+        bonus=0;
+        if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
+
+        bonus=0;
+        if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
     }
 
-    public void minusSavingThrowLevelOne(ClassPc classPc){
+    public void minusSavingThrowLevelOne(String stringSavingThrow){
+    
+        double bonus=0;
+        if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonus);
 
-        String stringSavingThrow = classPc.getSavingThrow();
-    
-            double bonusFortitude;
-            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusFortitude = 2.5;
-            } else{bonusFortitude = 0;}
-            this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonusFortitude);
-    
-            double bonusReflex;
-            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusReflex = 2.5;
-            } else{bonusReflex = 0;}
-            this.savingThrow.setReflex(this.savingThrow.getReflex()-bonusReflex);
-    
-            double bonusWill;
-            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusWill = 2.5;
-            } else{bonusWill = 0;}
-            this.savingThrow.setWill(this.savingThrow.getWill()-bonusWill);            
+        bonus=0;
+        if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setReflex(this.savingThrow.getReflex()-bonus);
+
+        bonus=0;
+        if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
+            bonus = 2.5;
+        }
+        this.savingThrow.setWill(this.savingThrow.getWill()-bonus);            
     }
 
     public void incementSavingThrow() {

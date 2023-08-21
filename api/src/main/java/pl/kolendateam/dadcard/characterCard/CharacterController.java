@@ -136,7 +136,7 @@ public class CharacterController {
 
         // saving throw
         if (levelClassInDB == 1) {
-            character.addSavingThrowLevelOne(classPc);
+            character.addSavingThrowLevelOne(classPc.getSavingThrow());
         } else {
             character.incementSavingThrow();
         }
@@ -237,7 +237,7 @@ public class CharacterController {
             character.decementSavingThrow();
         }
         if (levelClassInDB == 1){
-            character.minusSavingThrowLevelOne(classPc);
+            character.minusSavingThrowLevelOne(classPc.getSavingThrow());
         }
 
         character.decrementBab(classCharacter.getClassBab());
