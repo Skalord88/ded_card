@@ -5,7 +5,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="17" author="oscar">
-        <createTable tableName="weapons">
+        <createTable tableName="items">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
