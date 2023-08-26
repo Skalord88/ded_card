@@ -19,9 +19,6 @@ import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.weapons.repository.WeaponsRepository;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 
-
-
-
 @RestController
 @RequestMapping("weapons")
 public class WeaponsController {
@@ -44,32 +41,32 @@ public class WeaponsController {
 
     }
 
-    @PostMapping(value = "{id}", consumes = {"application/json"})
-    public CharacterDTO buyWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
-        Optional<Character> characterOpt = this.characterRepository.findById(id);
+    // @PostMapping(value = "{id}", consumes = {"application/json"})
+    // public CharacterDTO buyWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+    //     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
-        if (!characterOpt.isPresent()) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Character Not Found");
-        }
+    //     if (!characterOpt.isPresent()) {
+    //         throw new ResponseStatusException(
+    //                 HttpStatus.NOT_FOUND, "Character Not Found");
+    //     }
 
-        Optional<Weapons> weaponOpt = this.weaponsRepository.findById(wDTO.id);
+    //     Optional<Weapons> weaponOpt = this.weaponsRepository.findById(wDTO.id);
 
-        if (!weaponOpt.isPresent()) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Weapon Not Found");
-        }
+    //     if (!weaponOpt.isPresent()) {
+    //         throw new ResponseStatusException(
+    //                 HttpStatus.NOT_FOUND, "Weapon Not Found");
+    //     }
 
-        Weapons weapon = weaponOpt.get();
+    //     Weapons weapon = weaponOpt.get();
         
-        Character character = characterOpt.get();
+    //     Character character = characterOpt.get();
 
-        character.buyWeapon(weapon);
+    //     character.buyWeapon(weapon);
 
-        this.characterRepository.save(character);
+    //     this.characterRepository.save(character);
     
-        return new CharacterDTO (character);
+    //     return new CharacterDTO (character);
 
-    }
+    // }
 
 }
