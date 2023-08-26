@@ -12,6 +12,9 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
+            <column name="item_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>

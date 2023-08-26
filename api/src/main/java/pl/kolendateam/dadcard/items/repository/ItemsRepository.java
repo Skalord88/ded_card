@@ -1,12 +1,12 @@
 package pl.kolendateam.dadcard.items.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import pl.kolendateam.dadcard.items.entity.Items;
 
 
-@Repository
+@NoRepositoryBean
 public interface ItemsRepository extends JpaRepository<Items, Integer>{
     
 }

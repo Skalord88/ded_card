@@ -1,6 +1,12 @@
 package pl.kolendateam.dadcard.items.entity;
 
+import java.io.Serializable;
+
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,15 +17,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-public abstract class Items{
+//@DiscriminatorColumn(name="item_type",discriminatorType=DiscriminatorType.STRING)
+public abstract class Items implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+    @Enumerated(EnumType.STRING)
+    ItemTypeEnum itemType;
 
     String name;
     double cost;
