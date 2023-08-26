@@ -14,61 +14,62 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
-import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.weapons.repository.WeaponsRepository;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
+
+
+
 
 @RestController
 @RequestMapping("weapons")
 public class WeaponsController {
 
-    // WeaponsRepository weaponsRepository;
-    // CharacterRepository characterRepository;
+    WeaponsRepository weaponsRepository;
+    CharacterRepository characterRepository;
 
-    // @Autowired
-    // public WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
-    //     this.weaponsRepository = weaponRepository;
-    //     this.characterRepository = characterRepository;
-    // }
+    @Autowired
+    public WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
+        this.weaponsRepository = weaponRepository;
+        this.characterRepository = characterRepository;
+    }
 
-    // @GetMapping("")
-    // public List<WeaponsDTO> showWeaponsList(){
+    @GetMapping("")
+    public List<Weapons> showWeaponsList(){
 
-    //     List<Weapons> weaponsList = this.weaponsRepository.findItemTypeAsWeapon();
+        List<Weapons> weaponsList = this.weaponsRepository.findAll();
 
-    //     return MapperWeaponsDTO.toWeaponsDTO(weaponsList);
+        return weaponsList;
 
-    // }
+    }
 
-    // @PostMapping(value = "{id}", consumes = {"application/json"})
-    // public CharacterDTO buyWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
-    //     Optional<Character> characterOpt = this.characterRepository.findById(id);
+    @PostMapping(value = "{id}", consumes = {"application/json"})
+    public CharacterDTO buyWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
 
-    //     if (!characterOpt.isPresent()) {
-    //         throw new ResponseStatusException(
-    //                 HttpStatus.NOT_FOUND, "Character Not Found");
-    //     }
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
 
-    //     Optional<Weapons> weaponOpt = this.weaponsRepository.findItemById(wDTO.id);
+        Optional<Weapons> weaponOpt = this.weaponsRepository.findById(wDTO.id);
 
-    //     if (!weaponOpt.isPresent()) {
-    //         throw new ResponseStatusException(
-    //                 HttpStatus.NOT_FOUND, "Weapon Not Found");
-    //     }
+        if (!weaponOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Weapon Not Found");
+        }
 
-    //     Weapons weapon = weaponOpt.get();
+        Weapons weapon = weaponOpt.get();
         
-    //     Character character = characterOpt.get();
+        Character character = characterOpt.get();
 
-    //     character.buyWeapon(weapon);
+        character.buyWeapon(weapon);
 
-    //     this.characterRepository.save(character);
+        this.characterRepository.save(character);
     
-    //     return new CharacterDTO (character);
+        return new CharacterDTO (character);
 
-    // }
+    }
 
 }

@@ -58,6 +58,14 @@
         <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']"/>
         <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
     </insert>
+    <insert tableName="items">
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="Padded"/>
+        <column name="cost" value="5"/>
+        <column name="weight" value="10"/>
+        <column name="armor_class" value="1"/>
+        <column name="description" value="Light armor"/>
+    </insert>
 
     <!--
         <insert tableName="items">

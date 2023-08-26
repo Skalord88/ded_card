@@ -1,10 +1,9 @@
 package pl.kolendateam.dadcard.items.weapons.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import pl.kolendateam.dadcard.items.repository.ItemsRepository;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
-@Repository
-public interface WeaponsRepository extends ItemsRepository{
-
+public interface WeaponsRepository extends JpaRepository<Weapons, Integer> {
+    
 }

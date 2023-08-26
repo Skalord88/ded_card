@@ -5,8 +5,6 @@ import java.io.Serializable;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,15 +19,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-//@DiscriminatorColumn(name="item_type",discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorColumn(name="item_type",discriminatorType=DiscriminatorType.STRING)
 public abstract class Items implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-
-    @Enumerated(EnumType.STRING)
-    ItemTypeEnum itemType;
 
     String name;
     double cost;

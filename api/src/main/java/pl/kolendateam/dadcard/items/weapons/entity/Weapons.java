@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 import java.io.Serializable;
 
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -8,7 +9,6 @@ import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import pl.kolendateam.dadcard.items.entity.Items;
 
 
@@ -16,7 +16,7 @@ import pl.kolendateam.dadcard.items.entity.Items;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-//@DiscriminatorValue(value = "weapon")
+@DiscriminatorValue(value = "WEAPON")
 public class Weapons extends Items {
 
     @Enumerated(EnumType.STRING)
