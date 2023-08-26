@@ -31,6 +31,7 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -415,7 +416,7 @@ public class Character {
         }
     }
 
-    public void buyWeapon(Items weapon) {
+    public void buyWeapon(Weapons weapon) {
         items.add(weapon);
     }
     

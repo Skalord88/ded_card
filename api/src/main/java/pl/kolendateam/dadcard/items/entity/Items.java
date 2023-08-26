@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.items.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -13,14 +14,12 @@ import jakarta.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Setter
 @DiscriminatorColumn(name="item_type",discriminatorType=DiscriminatorType.STRING)
 public abstract class Items implements Serializable{
 
@@ -29,8 +28,8 @@ public abstract class Items implements Serializable{
     int id;
 
     String name;
-    double cost;
-    double weight;
+    BigDecimal cost;
+    BigDecimal weight;
     String description;
     
 }

@@ -18,7 +18,7 @@
             <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="cost" type="double">
+            <column name="cost" type="decimal">
                 <constraints nullable="true"/>
             </column>
             <column name="damage" type="varchar(255)">
@@ -30,7 +30,7 @@
             <column name="range" type="int">
                 <constraints nullable="true"/>
             </column>
-            <column name="weight" type="double">
+            <column name="weight" type="decimal">
                 <constraints nullable="false"/>
             </column>
             <column name="type" type="varchar(255)">
