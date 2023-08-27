@@ -40,7 +40,7 @@ public class CharacterDTO {
     public SpecialAttacksDTO specialAttacks;
     public ArrayList<SkillsDTO> skillsList;
     public ArrayList<CharacterFeatsDTO> featsList;
-    public ArrayList<Items> items;
+    public ArrayList<Object> items;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();

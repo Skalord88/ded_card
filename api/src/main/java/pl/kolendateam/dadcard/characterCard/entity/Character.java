@@ -94,7 +94,7 @@ public class Character {
     ArrayList<CharacterFeat> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Items> items;
+    ArrayList<Object> items;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -416,8 +416,19 @@ public class Character {
         }
     }
 
-    public void buyWeapon(Weapons weapon) {
+    public void buyWeapon(Items weapon) {
         items.add(weapon);
+    }
+
+    public int getItemIndex(List<Items> characterItem, int itemId){
+
+        for(int i = 0;  )
+
+        return -1;
+    }
+
+    public void sellWeapon(Items weapon) {
+        items.remove(weapon);
     }
     
 }

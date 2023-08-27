@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.weapons.repository.WeaponsRepository;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @RestController
 @RequestMapping("weapons")
@@ -33,11 +35,11 @@ public class WeaponsController {
     }
 
     @GetMapping("")
-    public List<Weapons> showWeaponsList(){
+    public List<WeaponsDTO> showWeaponsList(){
 
         List<Weapons> weaponsList = this.weaponsRepository.findAll();
 
-        return weaponsList;
+        return MapperWeaponsDTO.toWeaponsDTO(weaponsList);
 
     }
 
@@ -64,7 +66,37 @@ public class WeaponsController {
         character.buyWeapon(weapon);
 
         this.characterRepository.save(character);
-    
+
+        return new CharacterDTO (character);
+
+    }
+
+    @PostMapping(value = "{id}/sell", consumes = {"application/json"})
+    public CharacterDTO sellWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Optional<Weapons> weaponOpt = this.weaponsRepository.findById(wDTO.id);
+
+        if (!weaponOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Weapon Not Found");
+        }
+
+        Weapons weapon = weaponOpt.get();
+        
+        Character character = characterOpt.get();
+
+        int itemIndex = character.getItemIndex(character.getItems(), weapon.getId());
+
+        character.sellWeapon(itemIndex);
+
+        this.characterRepository.save(character);
+
         return new CharacterDTO (character);
 
     }
