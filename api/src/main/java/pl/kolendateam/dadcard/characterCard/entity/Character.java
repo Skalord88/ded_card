@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
@@ -416,19 +417,30 @@ public class Character {
         }
     }
 
-    public void buyWeapon(Items weapon) {
-        items.add(weapon);
+    public void buyItems(Object itemToBuy) {
+        this.items.add(itemToBuy);
     }
 
-    public int getItemIndex(List<Items> characterItem, int itemId){
-
-        for(int i = 0;  )
-
+    public int indexOfItem(){
+        for(int i = 0; i < this.items.size(); i++){
+            return this.items.indexOf(i);
+        }
         return -1;
     }
 
-    public void sellWeapon(Items weapon) {
-        items.remove(weapon);
+    public int weaponIndexInCharacter (int itemId){
+        for(int i = 0; i < this.items.size(); i++){
+            if(this.items.get(i) instanceof Weapons){
+                Weapons weapon = ((Weapons)this.items.get(i));
+                if(weapon.getId()==itemId){
+                    return this.items.indexOf(i);
+                };
+            }
+        } return -1;
+    }
+
+    public void sellItem(Object itemToSell) {
+        this.items.removeIf(i -> i == itemToSell);
     }
     
 }

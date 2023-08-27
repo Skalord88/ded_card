@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
@@ -63,7 +65,9 @@ public class WeaponsController {
         
         Character character = characterOpt.get();
 
-        character.buyWeapon(weapon);
+        Object itemToBuy = weapon;
+
+        character.buyItems(itemToBuy);
 
         this.characterRepository.save(character);
 
@@ -91,9 +95,7 @@ public class WeaponsController {
         
         Character character = characterOpt.get();
 
-        int itemIndex = character.getItemIndex(character.getItems(), weapon.getId());
-
-        character.sellWeapon(itemIndex);
+        character.sellItem(weapon);
 
         this.characterRepository.save(character);
 
