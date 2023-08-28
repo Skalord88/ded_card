@@ -95,7 +95,11 @@ public class WeaponsController {
         
         Character character = characterOpt.get();
 
-        character.sellItem(weapon);
+        List<Weapons> listOfWeapons = character.getItems();
+
+        int indexOfItem = character.indexOfItem(weapon.getId());
+
+        character.sellItem(indexOfItem);
 
         this.characterRepository.save(character);
 

@@ -421,26 +421,19 @@ public class Character {
         this.items.add(itemToBuy);
     }
 
-    public int indexOfItem(){
+    public int indexOfItem(int itemId){
+        
         for(int i = 0; i < this.items.size(); i++){
-            return this.items.indexOf(i);
+            Items item = (Items)this.items.get(i);
+            if(item.getId()==itemId){
+                return i;
+            }
         }
         return -1;
     }
 
-    public int weaponIndexInCharacter (int itemId){
-        for(int i = 0; i < this.items.size(); i++){
-            if(this.items.get(i) instanceof Weapons){
-                Weapons weapon = ((Weapons)this.items.get(i));
-                if(weapon.getId()==itemId){
-                    return this.items.indexOf(i);
-                };
-            }
-        } return -1;
-    }
-
-    public void sellItem(Object itemToSell) {
-        this.items.removeIf(i -> i == itemToSell);
+    public void sellItem(int itemId) {
+        this.items.remove(itemId);
     }
     
 }
