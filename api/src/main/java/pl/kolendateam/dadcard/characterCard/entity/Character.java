@@ -421,19 +421,8 @@ public class Character {
         this.items.add(itemToBuy);
     }
 
-    public int indexOfItem(int itemId){
-
-        for(int i = 0; i < this.items.size(); i++){
-            Items item = (Items)this.items.get(i);
-            if(item.getId()==itemId){
-                return ;
-            }
-        }
-        return -1;
-    }
-
-    public void sellItem(int itemId) {
-        this.items.remove(itemId);
+    public void sellItem(Object itemToSell) {
+        this.items.remove(itemToSell);
     }
     
 }

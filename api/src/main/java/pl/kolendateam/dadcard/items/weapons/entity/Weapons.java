@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.DiscriminatorValue;
@@ -9,6 +10,7 @@ import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import pl.kolendateam.dadcard.items.entity.Items;
 
 
@@ -16,6 +18,7 @@ import pl.kolendateam.dadcard.items.entity.Items;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Setter
 @DiscriminatorValue(value = "WEAPON")
 public class Weapons extends Items {
 
