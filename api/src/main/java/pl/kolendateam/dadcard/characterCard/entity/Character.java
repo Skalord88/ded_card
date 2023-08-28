@@ -422,11 +422,11 @@ public class Character {
     }
 
     public int indexOfItem(int itemId){
-        
+
         for(int i = 0; i < this.items.size(); i++){
             Items item = (Items)this.items.get(i);
             if(item.getId()==itemId){
-                return i;
+                return ;
             }
         }
         return -1;
