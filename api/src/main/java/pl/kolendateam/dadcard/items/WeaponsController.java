@@ -97,27 +97,21 @@ public class WeaponsController {
 
         Object itemToSell = weapon;
 
-        ArrayList<Object> listOfCharacter = character.getItems();
+        ArrayList<Object> ob = new ArrayList<>();
 
-        // Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ClassCastException:
-        // class java.util.LinkedHashMap cannot be cast to class pl.kolendateam.dadcard.items.weapons.entity.Weapons (java.util.LinkedHashMap is in module java.base of loader 'bootstrap';
-        // pl.kolendateam.dadcard.items.weapons.entity.Weapons is in unnamed module of loader 'app')] with root cause
-        // java.lang.ClassCastException: class java.util.LinkedHashMap cannot be cast to class pl.kolendateam.dadcard.items.weapons.entity.Weapons
-        // (java.util.LinkedHashMap is in module java.base of loader 'bootstrap'; pl.kolendateam.dadcard.items.weapons.entity.Weapons is in unnamed module of loader 'app')
-
-        for(Object w : listOfCharacter){
-            System.out.println("---");
-            Weapons wo = new Weapons();
-            wo = (Weapons)w;
-            System.out.println(wo.getId());
+        for(Object item : character.getItems()){
+            ob.add(item);
+            System.out.println(item);
         }
+
+        int i;
+        if(ob.contains((Object)weapon)){
+            i = ob.indexOf((Object)weapon);
+            System.out.println(i);
+        };
+
         System.out.println("---");
 
-        for(int i = 0; i < listOfCharacter.size(); i++){
-            System.out.println(i);
-            System.out.println(listOfCharacter.get(i));
-            
-        }
 
         //character.sellItem(itemToSell);
 

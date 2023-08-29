@@ -421,9 +421,19 @@ public class Character {
         this.items.add(itemToBuy);
     }
 
-    public void sellItem(Object itemToSell) {
-        this.items.remove(itemToSell);
+    public void sellItem(Object itemToSell){
+
+        for(Object i : this.items){
+            if(i.toString().equals(itemToSell.toString())){
+                this.items.remove(itemToSell);
+            }
+        }
+
     }
+
+    // public void sellItem(Object itemToSell) {
+    //     this.items.remove(itemToSell);
+    // }
     
 }
 
