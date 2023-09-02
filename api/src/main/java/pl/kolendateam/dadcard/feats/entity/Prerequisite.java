@@ -3,8 +3,6 @@ package pl.kolendateam.dadcard.feats.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import com.google.gson.Gson;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
