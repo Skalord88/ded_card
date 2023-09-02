@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
@@ -31,7 +30,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
@@ -421,19 +419,9 @@ public class Character {
         this.items.add(itemToBuy);
     }
 
-    public void sellItem(Object itemToSell){
-
-        for(Object i : this.items){
-            if(i.toString().equals(itemToSell.toString())){
-                this.items.remove(itemToSell);
-            }
-        }
-
+    public void sellItem(int indexToSell){
+        this.items.remove(indexToSell);
     }
 
-    // public void sellItem(Object itemToSell) {
-    //     this.items.remove(itemToSell);
-    // }
-    
 }
 

@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.items;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +16,6 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
@@ -65,9 +63,7 @@ public class WeaponsController {
         
         Character character = characterOpt.get();
 
-        Object itemToBuy = weapon;
-
-        character.buyItems(itemToBuy);
+        character.buyItems(weapon);
 
         this.characterRepository.save(character);
 
@@ -92,28 +88,12 @@ public class WeaponsController {
         }
 
         Weapons weapon = weaponOpt.get();
-        
+
         Character character = characterOpt.get();
 
-        Object itemToSell = weapon;
+        int indexOfItem = weapon.findItemIndexinArrayById(character.getItems(),weapon);
 
-        ArrayList<Object> ob = new ArrayList<>();
-
-        for(Object item : character.getItems()){
-            ob.add(item);
-            System.out.println(item);
-        }
-
-        int i;
-        if(ob.contains((Object)weapon)){
-            i = ob.indexOf((Object)weapon);
-            System.out.println(i);
-        };
-
-        System.out.println("---");
-
-
-        //character.sellItem(itemToSell);
+        character.sellItem(indexOfItem);
 
         this.characterRepository.save(character);
 

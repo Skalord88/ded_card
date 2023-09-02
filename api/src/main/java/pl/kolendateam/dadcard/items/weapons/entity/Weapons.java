@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
-import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.DiscriminatorValue;
@@ -39,5 +38,16 @@ public class Weapons extends Items {
     String type;
 
     String specialAttacks;
+
+    public int findItemIndexinArrayById(ArrayList<Object> items,Weapons weapon) {
+
+        for(int i = 0; i < items.size(); i++){
+            if(weapon.equals(items.get(i))){
+                return i;
+            }
+        }
+
+        return 0;
+    }
 
 }

@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.items.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -33,5 +34,13 @@ public abstract class Items implements Serializable{
     BigDecimal cost;
     BigDecimal weight;
     String description;
-    
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Items items = (Items) obj;
+        return id == items.id;
+    }
+
 }
