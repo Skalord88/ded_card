@@ -9,7 +9,7 @@ import pl.kolendateam.dadcard.race.entity.Region;
 public class MaperListRegionToDTO {
     public static ArrayList<RegionBaseDTO> toRegionBaseDTO(List<Region> regions){
 
-        ArrayList<RegionBaseDTO> regionsDTO = new ArrayList();
+        ArrayList<RegionBaseDTO> regionsDTO = new ArrayList<>();
 
         for (Region region : regions) {
             RegionBaseDTO tempRegion = new RegionBaseDTO(region);

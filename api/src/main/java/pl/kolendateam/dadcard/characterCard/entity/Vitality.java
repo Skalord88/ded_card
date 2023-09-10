@@ -29,17 +29,12 @@ public class Vitality {
 
         life = abilitys.getConstitution();
         vitality.getHitDices().put(hD, +1);
-        hitPoints = vitality.getHitPoints()+hD;
+        hitPoints = vitality.getHitPoints()+hD+abilitys.bonusConstitution(abilitys);
 
         return vitality;
     }
 
-    public int incrementHitPoints(int increment, Vitality vitality){
-        int hP = vitality.getHitPoints()+increment;
-        return hP;
-    }
-
-    public int hitPointsNewtLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+    public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
 
         int hP;
 
@@ -50,6 +45,23 @@ public class Vitality {
             hP = vitality.hitPoints+((hitDice/2)+1)+abilitys.bonusConstitution
             (abilitys);
         }
+
+        return hP;
+
+    }
+
+    public int hitPointsAtLastLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+
+        int hP;
+
+        if(ecl % 2 == 0){
+            hP = vitality.hitPoints-(((hitDice/2)+1)+abilitys.bonusConstitution
+            (abilitys));
+        } else {
+            hP = vitality.hitPoints-(((hitDice/2))+abilitys.bonusConstitution
+            (abilitys));
+        }
+        
         return hP;
 
     }
@@ -68,5 +80,9 @@ public class Vitality {
             vita.hitPoints = 4+(lvAdjNext*2)+(lvAdjNext/2);
         }
         return vita;
+    }
+
+    public void removeHDClass(int hD){
+        this.hitDices.remove(hD);
     }
 }
