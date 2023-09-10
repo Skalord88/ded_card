@@ -477,5 +477,8 @@ public class Character {
         }
     }
 
+    public void buyWeapon(Weapons weapon) {
+    }
+
 }
 
