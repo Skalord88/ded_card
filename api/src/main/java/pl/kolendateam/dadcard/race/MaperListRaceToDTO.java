@@ -10,7 +10,7 @@ import pl.kolendateam.dadcard.race.entity.Race;
 public class MaperListRaceToDTO {
     public static ArrayList<RaceBaseDTO> toRaceBaseDTO(List<Race> races){
 
-        ArrayList<RaceBaseDTO> racesDTO = new ArrayList();
+        ArrayList<RaceBaseDTO> racesDTO = new ArrayList<>();
 
         for (Race race : races) {
             boolean skipCreateRaceDTO = false;

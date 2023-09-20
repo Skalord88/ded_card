@@ -30,13 +30,11 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 @NoArgsConstructor
 @Getter
@@ -94,11 +92,7 @@ public class Character {
     ArrayList<CharacterFeat> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
-<<<<<<< HEAD
     ArrayList<Object> items;
-=======
-    ArrayList<Weapons> items;
->>>>>>> main
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -114,42 +108,57 @@ public class Character {
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
-
+    
+    public void removeClassFromPcArray(int index) {
+        this.getClassPcArray().remove(index);
+    }
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
+    }
+    public void decrementLevelClassForIndex(int index) {
+        this.getClassPcArray().get(index).decrementLevel();
     }
 
     public void incrementEcl() {
         this.ecl += 1;
     }
+    public void decrementEcl() {
+        this.ecl -= 1;
+    }
 
-    public void addSavingThrowLevelOne(ClassPc classPc){
+    public void addSavingThrowLevelOne(String stringSavingThrow){
 
-        String stringSavingThrow = classPc.getSavingThrow();
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
+
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
+
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
+    }
+
+    public void minusSavingThrowLevelOne(String stringSavingThrow){
     
-            double bonusFortitude;
-            if(stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusFortitude = 2.5;
-            } else{bonusFortitude = 0;}
-            this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonusFortitude);
-    
-            double bonusReflex;
-            if(stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusReflex = 2.5;
-            } else{bonusReflex = 0;}
-            this.savingThrow.setReflex(this.savingThrow.getReflex()+bonusReflex);
-    
-            double bonusWill;
-            if(stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)){
-                bonusWill = 2.5;
-            } else{bonusWill = 0;}
-            this.savingThrow.setWill(this.savingThrow.getWill()+bonusWill);            
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonus);
+
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setReflex(this.savingThrow.getReflex()-bonus);
+
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+    this.savingThrow.setWill(this.savingThrow.getWill()-bonus);            
     }
 
     public void incementSavingThrow() {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
         this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
+    }
+    public void decementSavingThrow() {
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() - 0.5);
+        this.savingThrow.setReflex(this.savingThrow.getReflex() - 0.5);
+        this.savingThrow.setWill(this.savingThrow.getWill() - 0.5);
     }
 
     public void setSkillsTruePcArray(Set<Skills> availableSkills) {
@@ -209,6 +218,10 @@ public class Character {
         this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
     }
 
+    public void decalculateSkillPoints(int skPoints) {
+        this.skillPoints -= skPoints+abilitys.bonusIntelligence(abilitys);
+    }
+
     public void buySkills(int idSkill, double skPoints) {
         for(ClassSkills skill : classSkills){
             if(skill.getIdSkill() == idSkill){
@@ -243,6 +256,9 @@ public class Character {
     public void incrementBab(double classBab) {
         this.bab += classBab;
     }
+    public void decrementBab(double classBab) {
+        this.bab -= classBab;
+    }
 
     public void raceLevelAdjustment(int lvAdj) {
         this.bab = (lvAdj*0.5)-0.5;
@@ -252,6 +268,13 @@ public class Character {
     }
 
     public void hitPointsFirstLevel(int hitDice) {
+
+        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
+        this.vitality = hP;
+        
+    }
+
+    public void resetHitPointsFirstLevel(int hitDice) {
 
         Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
         this.vitality = hP;
@@ -270,10 +293,24 @@ public class Character {
             
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsNewtLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
 
-        this.vitality.setHitPoints(+hP);
+        this.vitality.setHitPoints(hP);
 
+    }
+
+    public void hitPointsLastLevel(int hitDice) {
+
+        if(vitality.getHitDices().get(hitDice)==1){
+            vitality.removeHDClass(hitDice);
+        } else {
+            int lv = vitality.getHitDices().get(hitDice)-1;
+            vitality.hitDices.put(hitDice, lv);
+        }
+
+        int hP = vitality.hitPointsAtLastLevel(hitDice,vitality,abilitys,ecl); 
+
+        this.vitality.setHitPoints(hP);
     }
 
     public void setCharacterRace(Race race) {
@@ -417,6 +454,24 @@ public class Character {
             }
         } else {
             featsList.add(ft);
+        }
+    }
+
+    public void removeFeatFromPc(CharacterFeat ft) {
+
+        int indexFeat = ft.findFeatIndexinArrayById(featsList);
+        if(indexFeat > -1){
+            if (featsList.get(indexFeat).getLevelOfFeat() == 1){
+                featsList.remove(indexFeat);
+            } else {
+                featsList.get(indexFeat).decrementLevelFeat();
+            }
+        }
+    }
+
+    public void allSkillsFalse() {
+        for(ClassSkills cS : classSkills){
+            cS.setClassSkill(false);
         }
     }
 

@@ -19,7 +19,6 @@ import pl.kolendateam.dadcard.feats.dto.CharacterFeatsDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 @NoArgsConstructor
 public class CharacterDTO {

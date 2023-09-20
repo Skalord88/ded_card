@@ -7,7 +7,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 
 public class MapperClassPcListToDTO {
     public static ArrayList<ClassPcListDTO> toClassPcListDTO(ArrayList<ClassPc> classPcArray) {
-        ArrayList<ClassPcListDTO> classesDTO = new ArrayList();
+        ArrayList<ClassPcListDTO> classesDTO = new ArrayList<>();
 
         for (ClassPc classPc : classPcArray) {
 

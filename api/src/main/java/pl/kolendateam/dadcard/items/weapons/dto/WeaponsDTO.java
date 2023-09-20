@@ -50,6 +50,4 @@ public class WeaponsDTO {
         this.description = w.getDescription();
     }
 
-    
-    
 }
