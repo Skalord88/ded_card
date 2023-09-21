@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -91,7 +92,7 @@ public class WeaponsController {
 
         Character character = characterOpt.get();
 
-        int indexOfItem = weapon.findItemIndexinArrayById(character.getItems(),weapon);
+        int indexOfItem = weapon.findItemIndexinArrayById(character.getItems(), weapon);
 
         character.sellItem(indexOfItem);
 

@@ -30,6 +30,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -92,7 +93,7 @@ public class Character {
     ArrayList<CharacterFeat> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Object> items;
+    ArrayList<Items> items;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -475,7 +476,7 @@ public class Character {
         }
     }
 
-    public void buyItems(Object itemToBuy) {
+    public void buyItems(Items itemToBuy) {
         this.items.add(itemToBuy);
     }
 

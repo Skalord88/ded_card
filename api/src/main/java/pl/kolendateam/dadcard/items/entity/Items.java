@@ -2,6 +2,8 @@ package pl.kolendateam.dadcard.items.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Objects;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -23,7 +25,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @DiscriminatorColumn(name="item_type",discriminatorType=DiscriminatorType.STRING)
-public abstract class Items implements Serializable{
+public class Items implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,12 +36,13 @@ public abstract class Items implements Serializable{
     BigDecimal weight;
     String description;
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Items items = (Items) obj;
-        return id == items.id;
+    public int findItemIndexinArrayById(ArrayList<Items> items, Items w) {
+        for(int i = 0; i < items.size(); i++){
+            if(items.get(i).id == w.id){
+                return i;
+            }
+        }
+        return -1;
     }
 
 }
