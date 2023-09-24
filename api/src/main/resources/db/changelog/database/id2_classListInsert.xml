@@ -38,28 +38,40 @@
               ]"/>
           </insert>  
           <insert tableName="class_character">
-            <column name="id" value="2"/>   
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="bard"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="lhh"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="6" />
-            <column name="hit_dice" value="6" />
+            <column name="id" value="2"/>
+            <column name="type" value="BASE_CLASS"/>
+            <column name="name" value="bard"/>
+            <column name="avatar_url" value="address value"/>
+            <column name="saving_throw" value="lhh"/>
+            <column name="class_bab" value="0.75"/>
+            <column name="skill_points" value="6"/>
+            <column name="hit_dice" value="6"/>
             <column name="class_feats_map" value="[
-            {'level':1,'classFeats':['Armor proficiency (light)']}
+            {'level':1,'classFeats':['Armor proficiency (light)','Bardic music','Bardic knowledge','Countersong','Fascinate','Inspire courage']},
+            {'level':3,'classFeats':['Inspire competence']},
+            {'level':6,'classFeats':['Suggestion']},
+            {'level':8,'classFeats':['Inspire courage']},
+            {'level':9,'classFeats':['Inspire greatness']},
+            {'level':12,'classFeats':['Song of freedom']},
+            {'level':14,'classFeats':['Inspire courage']},
+            {'level':15,'classFeats':['Inspire heroics']},
+            {'level':18,'classFeats':['Mass suggestion']},
+            {'level':20,'classFeats':['Inspire courage']}
             ]"/>
-          </insert>
-          <insert tableName="class_character">
-            <column name="id" value="3"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="cleric"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hlh"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="2" />
-            <column name="hit_dice" value="8" />
-          </insert> 
+            </insert>
+            <insert tableName="class_character">
+              <column name="id" value="3"/>
+              <column name="type" value="BASE_CLASS"/>
+              <column name="name" value="cleric"/>
+              <column name="avatar_url" value="address value"/>
+              <column name="saving_throw" value="hlh"/>
+              <column name="class_bab" value="0.75"/>
+              <column name="skill_points" value="2"/>
+              <column name="hit_dice" value="8"/>
+              <column name="class_feats_map" value="[
+              {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Turn or rebuke undead']}
+              ]"/>
+              </insert>
           <insert tableName="class_character">
             <column name="id" value="4"/>   
             <column  name="type"  value="BASE_CLASS"/>  
@@ -69,6 +81,26 @@
             <column  name="class_bab" value="0.75"/>
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="8" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Animal companion','Nature sense','Wild empathy']},
+            {'level':2,'classFeats':['Woodland Stride']},
+            {'level':3,'classFeats':['Trackless Step']},
+            {'level':4,'classFeats':['Resist Nature s Lure']},
+            {'level':5,'classFeats':['Wild Shape']},
+            {'level':6,'classFeats':['Wild Shape']},
+            {'level':7,'classFeats':['Wild Shape']},
+            {'level':8,'classFeats':['Wild Shape']},
+            {'level':9,'classFeats':['Venom Immunity']},
+            {'level':10,'classFeats':['Wild Shape']},
+            {'level':11,'classFeats':['Wild Shape']},
+            {'level':12,'classFeats':['Wild Shape']},
+            {'level':13,'classFeats':['A Thousand Faces']},
+            {'level':14,'classFeats':['Wild Shape']},
+            {'level':15,'classFeats':['Timeless Body','Wild Shape']},
+            {'level':16,'classFeats':['Wild Shape']},
+            {'level':18,'classFeats':['Wild Shape']},
+            {'level':20,'classFeats':['Wild Shape']}
+            ]"/>
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -79,6 +111,19 @@
             <column  name="class_bab" value="1"/>
             <column name="skill_points" value="2" />
             <column name="hit_dice" value="10" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Bonus Feats']},
+            {'level':2,'classFeats':['Bonus Feats']},
+            {'level':4,'classFeats':['Bonus Feats']},
+            {'level':6,'classFeats':['Bonus Feats']},
+            {'level':8,'classFeats':['Bonus Feats']},
+            {'level':10,'classFeats':['Bonus Feats']},
+            {'level':12,'classFeats':['Bonus Feats']},
+            {'level':14,'classFeats':['Bonus Feats']},
+            {'level':16,'classFeats':['Bonus Feats']},
+            {'level':18,'classFeats':['Bonus Feats']},
+            {'level':20,'classFeats':['Bonus Feats']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
             <column name="id" value="6"/>   

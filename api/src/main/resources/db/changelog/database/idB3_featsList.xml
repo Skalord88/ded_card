@@ -5,161 +5,148 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="16" author="oscar">
-          <insert tableName="feats">
-              <column  name="feat_name"  value="Acrobatic"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Jump checks and Tumble checks."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Jump','skillRank':2},
-              {'nameSkill':'Tumble','skillRank':2}]"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Agile"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Balance checks and Escape Artist checks."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Balance','skillRank':2},
-              {'nameSkill':'Escape Artist','skillRank':2}]"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Alertness"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Listen checks and Spot checks.
-Special:
-The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm’s reach."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Listen','skillRank':2},
-              {'nameSkill':'Spot','skillRank':2}]"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Alertness"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Balance checks and Escape Artist checks."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Balance','skillRank':2},
-              {'nameSkill':'Escape Artist','skillRank':2}]"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Animal affinity"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Handle Animal checks and Ride checks."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Handle Animal','skillRank':2},
-              {'nameSkill':'Ride','skillRank':2}]"/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Armor proficiency (heavy)"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="prerequisite"  value="{
-                'feats':['Armor proficiency (light)','Armor proficiency (medium)']}"/>
-              <column  name="description" value="Benefit:
-See Armor Proficiency (light).
-
-Normal:
-See Armor Proficiency (light).
-
-Special:
-Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it."/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Armor proficiency (light)"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks.
-
-Normal:
-A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride.
-
-Special:
-All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it."/>
-          </insert>
-          <insert tableName="feats">  
-            <column  name="feat_name"  value="Armor proficiency (medium)"/>
-            <column  name="feats_type"  value="GENERAL"/>
-            <column  name="prerequisite"  value="{
-                'feats':['Armor proficiency (light)']}"/>
-            <column  name="description" value="Benefit:
-See Armor Proficiency (light).
-
-Normal:
-See Armor Proficiency (light).
-
-Special:
-Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."/>
-          </insert>
-          <insert tableName="feats">  
-              <column  name="feat_name"  value="Athletic"/>
-              <column  name="feats_type"  value="GENERAL"/>
-              <column  name="description" value="Benefit:
-You get a +2 bonus on all Climb checks and Swim checks."/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Climb','skillRank':2},
-              {'nameSkill':'Swim','skillRank':2}]"/>
-          </insert>
+    <insert tableName="feats">
+      <column  name="feat_name"  value="Acrobatic"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Jump checks and Tumble checks."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Jump','skillRank':2},
+      {'nameSkill':'Tumble','skillRank':2}]"/>
+    </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Agile"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Balance checks and Escape Artist checks."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Balance','skillRank':2},
+      {'nameSkill':'Escape Artist','skillRank':2}]"/>
+  </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Alertness"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Listen checks and Spot checks. Special:The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm’s reach."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Listen','skillRank':2},
+      {'nameSkill':'Spot','skillRank':2}]"/>
+  </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Alertness"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Balance checks and Escape Artist checks."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Balance','skillRank':2},
+      {'nameSkill':'Escape Artist','skillRank':2}]"/>
+  </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Animal affinity"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Handle Animal checks and Ride checks."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Handle Animal','skillRank':2},
+      {'nameSkill':'Ride','skillRank':2}]"/>
+  </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Armor proficiency (heavy)"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="prerequisite"  value="{
+        'feats':['Armor proficiency (light)','Armor proficiency (medium)']}"/>
+      <column  name="description" value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it."
+      />
+  </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Armor proficiency (light)"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks. Normal: A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride. Special: All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it."
+      />
+  </insert>
+    <insert tableName="feats">  
+      <column  name="feat_name"  value="Armor proficiency (medium)"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="prerequisite"  value="{
+          'feats':['Armor proficiency (light)']}"/>
+      <column  name="description" value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."
+      />
+    </insert>
+  <insert tableName="feats">  
+      <column  name="feat_name"  value="Athletic"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Benefit: You get a +2 bonus on all Climb checks and Swim checks."
+      />
+      <column  name="skills"  value="[
+      {'nameSkill':'Climb','skillRank':2},
+      {'nameSkill':'Swim','skillRank':2}]"/>
+  </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Fast movement"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."/>
+            <column  name="description" value="A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."
+            />
             <column  name="speed"  value="10"/>
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Illiteracy"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak.
-
-A barbarian who gains a level in any other class automatically gains literacy. Any other character who gains a barbarian level does not lose the literacy he or she already had."/>
+            <column  name="description" value="Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak. A barbarian who gains a level in any other class automatically gains literacy. Any other character who gains a barbarian level does not lose the literacy he or she already had."
+            />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Rage"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies).
-
-A barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action."/>
+            <column  name="description" value="A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies). A barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action."
+            />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Uncanny dodge"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."/>
+            <column  name="description" value="At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."
+            />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Trap sense"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."/>
+            <column  name="description" value="Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."
+            />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Improved uncanny dodge"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."/>
+            <column  name="description" value="At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."
+            />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Damage reduction"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 7th level, a barbarian gains Damage Reduction. Subtract 1 from the damage the barbarian takes each time he is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter (13th, 16th, and 19th level), this damage reduction rises by 1 point. Damage reduction can reduce damage to 0 but not below 0."/>
+            <column  name="description" value="At 7th level, a barbarian gains Damage Reduction. Subtract 1 from the damage the barbarian takes each time he is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter (13th, 16th, and 19th level), this damage reduction rises by 1 point. Damage reduction can reduce damage to 0 but not below 0."
+            />
         </insert>
         <insert tableName="feats">  
             <column  name="feat_name"  value="Greater rage"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 11th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +6, and his morale bonus on Will saves increases to +3. The penalty to AC remains at -2."/>
+            <column  name="description" value="At 11th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +6, and his morale bonus on Will saves increases to +3. The penalty to AC remains at -2."
+            />
         </insert>
         <insert tableName="feats">  
             <column  name="feat_name"  value="Indomitable will"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="While in a rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells. This bonus stacks with all other modifiers, including the morale bonus on Will saves he also receives during his rage."/>
+            <column  name="description" value="While in a rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells. This bonus stacks with all other modifiers, including the morale bonus on Will saves he also receives during his rage."
+            />
         </insert>
         <insert tableName="feats">  
             <column  name="feat_name"  value="Tireless rage"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 17th level and higher, a barbarian no longer becomes fatigued at the end of his rage."/>
+            <column  name="description" value="At 17th level and higher, a barbarian no longer becomes fatigued at the end of his rage."
+            />
         </insert>
         <insert tableName="feats">  
             <column  name="feat_name"  value="Mighty rage"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 20th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +8, and his morale bonus on Will saves increases to +4. The penalty to AC remains at -2."/>
+            <column  name="description" value="At 20th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +8, and his morale bonus on Will saves increases to +4. The penalty to AC remains at -2."
+            />
         </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Improved bull rush"/>
@@ -167,11 +154,8 @@ A barbarian can fly into a rage only once per encounter. At 1st level he can use
             <column  name="prerequisite"  value="{
                 'ability':{'streght':13},
                 'feats':['Power attack']}"/>
-            <column  name="description" value="Benefit:
-When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender.
-
-Special
-A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
+            <column  name="description" value="Benefit: When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender. Special A fighter may select Improved Bull Rush as one of his fighter bonus feats."
+            />
             <column  name="special_attacks" value="{'bull_rush':4}"/>
           </insert>
           <insert tableName="feats">  
@@ -180,16 +164,8 @@ A fighter may select Improved Bull Rush as one of his fighter bonus feats."/>
             <column  name="prerequisite"  value="{
                 'ability':{'intelligence':13},
                 'feats':['Combat expertise']}"/>
-            <column  name="description" value="Benefit:
-You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent.
-
-Normal
-See the normal disarm rules.
-
-Special
-A fighter may select Improved Disarm as one of his fighter bonus feats.
-
-A monk may select Improved Disarm as a bonus feat at 6th level, even if she does not meet the prerequisites."/>
+            <column  name="description" value="Benefit: You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent. Normal: See the normal disarm rules. Special: A fighter may select Improved Disarm as one of his fighter bonus feats. A monk may select Improved Disarm as a bonus feat at 6th level, even if she does not meet the prerequisites."
+            />
             <column  name="special_attacks" value="{'disarm':4}"/>
           </insert>
           <insert tableName="feats">
@@ -198,16 +174,8 @@ A monk may select Improved Disarm as a bonus feat at 6th level, even if she does
             <column  name="prerequisite"  value="{
                 'ability':{'dextrity':13},
                 'feats':['Improved unarmed strike']}"/>
-            <column  name="description" value="Benefit:
-You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple.
-
-Normal
-Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple.
-
-Special
-A fighter may select Improved Grapple as one of his fighter bonus feats.
-
-A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."/>
+            <column  name="description" value="Benefit: You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple. Normal: Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple. Special: A fighter may select Improved Grapple as one of his fighter bonus feats. A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."
+            />
             <column  name="special_attacks" value="{'grapple':4}"/>
           </insert>
           <insert tableName="feats">  
@@ -215,17 +183,8 @@ A monk may select Improved Grapple as a bonus feat at 1st level, even if she doe
             <column  name="feats_type"  value="GENERAL"/>
             <column  name="prerequisite"  value="{
               'bab':1}"/>
-            <column  name="description" value="
-            Benefit
-            You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action.
-            
-            A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow).
-            
-            Normal
-            Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action.
-            
-            Special
-            A fighter may select Quick Draw as one of his fighter bonus feats."/>
+            <column  name="description" value="Benefit: You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action. A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow). Normal: Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action. Special: A fighter may select Quick Draw as one of his fighter bonus feats."
+            />
         </insert>
         <insert tableName="feats">
             <column  name="feat_name"  value="Mounted archery"/>
@@ -234,11 +193,9 @@ A monk may select Improved Grapple as a bonus feat at 1st level, even if she doe
                 'classSkills':[{'nameSkill':'Ride','skillRank':1}],
                 'feats':['Mounted combat']
             }"/>
-                <column  name="description" value="Benefit
-                The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running.
+                <column  name="description" value="Benefit: The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running.
                 
-                Special
-                A fighter may select Mounted Archery as one of his fighter bonus feats."/>
+                Special: A fighter may select Mounted Archery as one of his fighter bonus feats."/>
         </insert>
         <insert tableName="feats">
             <column  name="feat_name"  value="Mounted combat"/>
@@ -253,6 +210,219 @@ A monk may select Improved Grapple as a bonus feat at 1st level, even if she doe
                 A fighter may select Mounted Combat as one of his fighter bonus feats.
                 "/>
         </insert>
+        <insert tableName="feats">
+          <column  name="feat_name"  value="Bardic music"/>
+          <column  name="feats_type"  value="CLASS"/>
+          <column  name="description" value="Once per day per bard level, a bard can use his song or poetics to produce magical effects on those around him (usually including himself, if desired). While these abilities fall under the category of bardic music and the descriptions discuss singing or playing instruments, they can all be activated by reciting poetry, chanting, singing lyrical songs, singing melodies, whistling, playing an instrument, or playing an instrument in combination with some spoken performance. Each ability requires both a minimum bard level and a minimum number of ranks in the Perform skill to qualify; if a bard does not have the required number of ranks in at least one Perform skill, he does not gain the bardic music ability until he acquires the needed ranks.
+
+          Starting a bardic music effect is a standard action. Some bardic music abilities require concentration, which means the bard must take a standard action each round to maintain the ability. Even while using bardic music that doesn’t require concentration, a bard cannot cast spells, activate magic items by spell completion (such as scrolls), spell trigger (such as wands), or command word. Just as for casting a spell with a verbal component, a deaf bard has a 20% chance to fail when attempting to use bardic music. If he fails, the attempt still counts against his daily limit.
+              "/>
+      </insert>
+      <insert tableName="feats">
+        <column  name="feat_name"  value="Bardic knowledge"/>
+        <column  name="feats_type"  value="CLASS"/>
+        <column  name="description" value="A bard may make a special bardic knowledge check with a bonus equal to his bard level + his Intelligence modifier to see whether he knows some relevant information about local notable people, legendary items, or noteworthy places. (If the bard has 5 or more ranks in Knowledge (history), he gains a +2 bonus on this check.)
+
+        A successful bardic knowledge check will not reveal the powers of a magic item but may give a hint as to its general function. A bard may not take 10 or take 20 on this check; this sort of knowledge is essentially random.
+        
+        DC	Type of Knowledge
+        10	Common, known by at least a substantial minority of the local population.
+        20	Uncommon but available, known by only a few people legends.
+        25	Obscure, known by few, hard to come by.
+        30	Extremely obscure, known by very few, possibly forgotten by most who once knew it, possibly known only by those who don’t understand the significance of the knowledge.
+            "/>
+    </insert>
+    <insert tableName="feats">
+      <column  name="feat_name"  value="Countersong"/>
+      <column  name="feats_type"  value="CLASS"/>
+      <column  name="description" value="
+      A bard with 3 or more ranks in a Perform skill can use his music or poetics to counter magical effects that depend on sound (but not spells that simply have verbal components). Each round of the countersong, he makes a Perform check. Any creature within 30 feet of the bard (including the bard himself) that is affected by a sonic or language-dependent magical attack may use the bard’s Perform check result in place of its saving throw if, after the saving throw is rolled, the Perform check result proves to be higher. If a creature within range of the countersong is already under the effect of a noninstantaneous sonic or language-dependent magical attack, it gains another saving throw against the effect each round it hears the countersong, but it must use the bard’s Perform check result for the save. Countersong has no effect against effects that don’t allow saves. The bard may keep up the countersong for 10 rounds.
+      "/>
+  </insert>
+  <insert tableName="feats">
+    <column  name="feat_name"  value="Fascinate"/>
+    <column  name="feats_type"  value="CLASS"/>
+    <column  name="description" value="
+    A bard with 3 or more ranks in a Perform skill can use his music or poetics to cause one or more creatures to become fascinated with him. Each creature to be fascinated must be within 90 feet, able to see and hear the bard, and able to pay attention to him. The bard must also be able to see the creature. The distraction of a nearby combat or other dangers prevents the ability from working. For every three levels a bard attains beyond 1st, he can target one additional creature with a single use of this ability.
+
+To use the ability, a bard makes a Perform check. His check result is the DC for each affected creature’s Will save against the effect. If a creature’s saving throw succeeds, the bard cannot attempt to fascinate that creature again for 24 hours. If its saving throw fails, the creature sits quietly and listens to the song, taking no other actions, for as long as the bard continues to play and concentrate (up to a maximum of 1 round per bard level). While fascinated, a target takes a -4 penalty on skill checks made as reactions, such as Listen and Spot checks. Any potential threat requires the bard to make another Perform check and allows the creature a new saving throw against a DC equal to the new Perform check result.
+
+Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a ranged weapon at the target, automatically breaks the effect. Fascinate is an enchantment (compulsion), mind-affecting ability."
+/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Inspire courage"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard with 3 or more ranks in a Perform skill can use song or poetics to inspire courage in his allies (including himself), bolstering them against fear and improving their combat abilities. To be affected, an ally must be able to hear the bard sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. An affected ally receives a +1 morale bonus on saving throws against charm and fear effects and a +1 morale bonus on attack and weapon damage rolls. At 8th level, and every six bard levels thereafter, this bonus increases by 1 (+2 at 8th, +3 at 14th, and +4 at 20th). Inspire courage is a mind-affecting ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Inspire competence"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard of 3rd level or higher with 6 or more ranks in a Perform skill can use his music or poetics to help an ally succeed at a task. The ally must be within 30 feet and able to see and hear the bard. The bard must also be able to see the ally.
+
+The ally gets a +2 competence bonus on skill checks with a particular skill as long as he or she continues to hear the bard’s music. Certain uses of this ability are infeasible. The effect lasts as long as the bard concentrates, up to a maximum of 2 minutes. A bard can’t inspire competence in himself. Inspire competence is a mind-affecting ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Suggestion"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard of 6th level or higher with 9 or more ranks in a Perform skill can make a suggestion (as the spell) to a creature that he has already fascinated. Using this ability does not break the bard’s concentration on the fascinate effect, nor does it allow a second saving throw against the fascinate effect.
+
+Making a suggestion doesn’t count against a bard’s daily limit on bardic music performances. A Will saving throw (DC 10 + ½ bard’s level + bard’s Cha modifier) negates the effect. This ability affects only a single creature (but see mass suggestion, below). Suggestion is an enchantment (compulsion), mind-affecting, language dependent ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Inspire greatness"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard of 9th level or higher with 12 or more ranks in a Perform skill can use music or poetics to inspire greatness in himself or a single willing ally within 30 feet, granting him or her extra fighting capability. For every three levels a bard attains beyond 9th, he can target one additional ally with a single use of this ability (two at 12th level, three at 15th, four at 18th). To inspire greatness, a bard must sing and an ally must hear him sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. A creature inspired with greatness gains 2 bonus Hit Dice (d10s), the commensurate number of temporary hit points (apply the target’s Constitution modifier, if any, to these bonus Hit Dice), a +2 competence bonus on attack rolls, and a +1 competence bonus on Fortitude saves. The bonus Hit Dice count as regular Hit Dice for determining the effect of spells that are Hit Dice dependant. Inspire greatness is a mind-affecting ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Song of freedom"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard of 12th level or higher with 15 or more ranks in a Perform skill can use music or poetics to create an effect equivalent to the break enchantment spell (caster level equals the character’s bard level). Using this ability requires 1 minute of uninterrupted concentration and music, and it functions on a single target within 30 feet. A bard can’t use song of freedom on himself.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Inspire heroics"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A bard of 15th level or higher with 18 or more ranks in a Perform skill can use music or poetics to inspire tremendous heroism in himself or a single willing ally within 30 feet. For every three bard levels the character attains beyond 15th, he can inspire heroics in one additional creature. To inspire heroics, a bard must sing and an ally must hear the bard sing for a full round. A creature so inspired gains a +4 morale bonus on saving throws and a +4 dodge bonus to AC. The effect lasts for as long as the ally hears the bard sing and for up to 5 rounds thereafter. Inspire heroics is a mind-affecting ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Mass suggestion"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  This ability functions like suggestion, above, except that a bard of 18th level or higher with 21 or more ranks in a Perform skill can make the suggestion simultaneously to any number of creatures that he has already fascinated. Mass suggestion is an enchantment (compulsion), mind-affecting, language-dependent ability.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Turn or rebuke undead"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Any cleric, regardless of alignment, has the power to affect undead creatures by channeling the power of his faith through his holy (or unholy) symbol (see Turn or Rebuke Undead).
+
+  A good cleric (or a neutral cleric who worships a good deity) can turn or destroy undead creatures. An evil cleric (or a neutral cleric who worships an evil deity) instead rebukes or commands such creatures. A neutral cleric of a neutral deity must choose whether his turning ability functions as that of a good cleric or an evil cleric. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric can cast spontaneous cure or inflict spells.
+  
+  A cleric may attempt to turn undead a number of times per day equal to 3 + his Charisma modifier. A cleric with 5 or more ranks in Knowledge (religion) gets a +2 bonus on turning checks against undead.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Animal Companion"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A druid may begin play with an animal companion selected from the following list: badger, camel, dire rat, dog, riding dog, eagle, hawk, horse (light or heavy), owl, pony, snake (Small or Medium viper), or wolf. If the campaign takes place wholly or partly in an aquatic environment, the following creatures are also available: porpoise, Medium shark, and squid. This animal is a loyal companion that accompanies the druid on her adventures as appropriate for its kind.
+
+  A 1st-level druid’s companion is completely typical for its kind except as noted below. As a druid advances in level, the animal’s power increases as shown on the table. If a druid releases her companion from service, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer. This ceremony can also replace an animal companion that has perished.
+  
+  A druid of 4th level or higher may select from alternative lists of animals. Should she select an animal companion from one of these alternative lists, the creature gains abilities as if the character’s druid level were lower than it actually is. Subtract the value indicated in the appropriate list header from the character’s druid level and compare the result with the druid level entry on the table to determine the animal companion’s powers. (If this adjustment would reduce the druid’s effective level to 0 or lower, she can’t have that animal as a companion.)
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Nature Sense"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A druid gains a +2 bonus on Knowledge (nature) and Survival checks.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Wild Empathy"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A druid can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The druid rolls 1d20 and adds her druid level and her Charisma modifier to determine the wild empathy check result.
+
+  The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.
+  
+  To use wild empathy, the druid and the animal must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time.
+  
+  A druid can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Woodland Stride"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Starting at 2nd level, a druid may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at her normal speed and without taking damage or suffering any other impairment. However, thorns, briars, and overgrown areas that have been magically manipulated to impede motion still affect her.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Trackless Step"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Starting at 3rd level, a druid leaves no trail in natural surroundings and cannot be tracked. She may choose to leave a trail if so desired.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Resist Nature s Lure"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like abilities of fey.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Wild Shape"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 5th level, a druid gains the ability to turn herself into any Small or Medium animal and back again once per day. Her options for new forms include all creatures with the animal type. This ability functions like the alternate form special ability, except as noted here. The effect lasts for 1 hour per druid level, or until she changes back. Changing form (to animal or back) is a standard action and doesn’t provoke an attack of opportunity. Each time you use wild shape, you regain lost hit points as if you had rested for a night.
+
+Any gear worn or carried by the druid melds into the new form and becomes nonfunctional. When the druid reverts to her true form, any objects previously melded into the new form reappear in the same location on her body that they previously occupied and are once again functional. Any new items worn in the assumed form fall off and land at the druid's feet.
+
+The form chosen must be that of an animal the druid is familiar with.
+
+A druid loses her ability to speak while in animal form because she is limited to the sounds that a normal, untrained animal can make, but she can communicate normally with other animals of the same general grouping as her new form. (The normal sound a wild parrot makes is a squawk, so changing to this form does not permit speech.)
+
+A druid can use this ability more times per day at 6th, 7th, 10th, 14th, and 18th level, as noted on Table: The Druid. In addition, she gains the ability to take the shape of a Large animal at 8th level, a Tiny animal at 11th level, and a Huge animal at 15th level.
+
+The new form’s Hit Dice can’t exceed the character’s druid level.
+
+At 12th level, a druid becomes able to use wild shape to change into a plant creature with the same size restrictions as for animal forms. (A druid can’t use this ability to take the form of a plant that isn’t a creature.)
+
+At 16th level, a druid becomes able to use wild shape to change into a Small, Medium, or Large elemental (air, earth, fire, or water) once per day. These elemental forms are in addition to her normal wild shape usage. In addition to the normal effects of wild shape, the druid gains all the elemental’s extraordinary, supernatural, and spell-like abilities. She also gains the elemental’s feats for as long as she maintains the wild shape, but she retains her own creature type.
+
+At 18th level, a druid becomes able to assume elemental form twice per day, and at 20th level she can do so three times per day. At 20th level, a druid may use this wild shape ability to change into a Huge elemental.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Venom Immunity"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 9th level, a druid gains immunity to all poisons.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="A Thousand Faces"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 13th level, a druid gains the ability to change her appearance at will, as if using the disguise self spell, but only while in her normal form. This affects the druid’s body but not her possessions. It is not an illusory effect, but a minor physical alteration of the druid’s appearance, within the limits described for the spell.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Timeless Body"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  After attaining 15th level, a druid no longer takes ability score penalties for aging and cannot be magically aged. Any penalties she may have already incurred, however, remain in place.
+
+  Bonuses still accrue, and the druid still dies of old age when her time is up.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Bonus Feats"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 1st level, a fighter gets a bonus combat-oriented feat in addition to the feat that any 1st-level character gets and the bonus feat granted to a human character. The fighter gains an additional bonus feat at 2nd level and every two fighter levels thereafter (4th, 6th, 8th, 10th, 12th, 14th, 16th, 18th, and 20th). These bonus feats must be drawn from the feats noted as fighter bonus feats. A fighter must still meet all prerequisites for a bonus feat, including ability score and base attack bonus minimums.
+
+  These bonus feats are in addition to the feat that a character of any class gets from advancing levels. A fighter is not limited to the list of fighter bonus feats when choosing these feats.
+  "/>
+</insert>
+
+
 
     </changeSet>
 </databaseChangeLog>

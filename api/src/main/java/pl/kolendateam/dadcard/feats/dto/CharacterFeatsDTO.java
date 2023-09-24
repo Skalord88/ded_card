@@ -21,6 +21,14 @@ public class CharacterFeatsDTO {
                 "+"+characterFeats.getLevelOfFeat();
             case "Damage reduction" ->
                 "DR"+characterFeats.getLevelOfFeat();
+            case "Inspire courage" ->
+                "+"+characterFeats.getLevelOfFeat();
+            case "Bonus Feats" ->
+                if(characterFeats.getLevelOfFeat()> 4){
+                    characterFeats.getLevelOfFeat();
+                }
+            case "Bonus Feats" ->
+                characterFeats.getLevelOfFeat()+" Bonus Feats";
             default -> null;
         };
         this.characterFeatDescription = characterFeats.getCharacterFeatDescription();
