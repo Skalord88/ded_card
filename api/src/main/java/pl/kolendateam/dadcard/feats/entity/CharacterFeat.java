@@ -20,7 +20,7 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 @AllArgsConstructor
 public class CharacterFeat implements Serializable{
 
-    int id;
+    short id;
     Integer levelOfFeat;
     String characterFeatName;
     String characterFeatDescription;
@@ -190,19 +190,19 @@ public class CharacterFeat implements Serializable{
 
         public String unarmedStrike(int levelOfFeat) {
         String stringFeatSpecial = "1d6";
-        if(levelOfFeat < 4){
+        if(levelOfFeat > 1){
             stringFeatSpecial = "1d8";
         }
-        if(levelOfFeat < 7){
+        if(levelOfFeat > 2){
             stringFeatSpecial = "1d10";
         }
-        if(levelOfFeat < 11){
+        if(levelOfFeat > 3){
             stringFeatSpecial = "2d6";
         }
-        if(levelOfFeat < 15){
+        if(levelOfFeat > 4){
             stringFeatSpecial = "2d8";
         }
-        if(levelOfFeat < 19){
+        if(levelOfFeat > 5){
             stringFeatSpecial = "2d10";
         }
         return stringFeatSpecial;
@@ -210,16 +210,16 @@ public class CharacterFeat implements Serializable{
 
     public String aCBonus(int levelOfFeat) {
         String stringFeatSpecial = "AC bonus +0";
-        if(levelOfFeat < 4){
+        if(levelOfFeat > 1){
             stringFeatSpecial = "AC bonus +1";
         }
-        if(levelOfFeat < 9){
+        if(levelOfFeat > 2){
             stringFeatSpecial = "AC bonus +2";
         }
-        if(levelOfFeat < 14){
+        if(levelOfFeat > 3){
             stringFeatSpecial = "AC bonus +3";
         }
-        if(levelOfFeat < 19){
+        if(levelOfFeat > 4){
             stringFeatSpecial = "AC bonus +4";
         }
         return stringFeatSpecial;
@@ -227,22 +227,22 @@ public class CharacterFeat implements Serializable{
 
         public String fastMovement(int levelOfFeat) {
         String stringFeatSpecial = "+0 ft.";
-        if(levelOfFeat < 2){
+        if(levelOfFeat > 1){
             stringFeatSpecial = "+10 ft.";
         }
-        if(levelOfFeat < 5){
+        if(levelOfFeat > 2){
             stringFeatSpecial = "+20 ft.";
         }
-        if(levelOfFeat < 8){
+        if(levelOfFeat > 3){
             stringFeatSpecial = "+30 ft.";
         }
-        if(levelOfFeat < 11){
+        if(levelOfFeat > 4){
             stringFeatSpecial = "+40 ft.";
         }
-        if(levelOfFeat < 14){
+        if(levelOfFeat > 5){
             stringFeatSpecial = "+50 ft.";
         }
-        if(levelOfFeat < 17){
+        if(levelOfFeat > 6){
             stringFeatSpecial = "+60 ft.";
         }
         return stringFeatSpecial;
@@ -250,34 +250,45 @@ public class CharacterFeat implements Serializable{
 
         public String slowFall(int levelOfFeat) {
         String stringFeatSpecial = "0 ft.";
-        if(levelOfFeat < 3){
+        if(levelOfFeat > 1){
             stringFeatSpecial = "20 ft.";
         }
-        if(levelOfFeat < 5){
+        if(levelOfFeat > 2){
             stringFeatSpecial = "30 ft.";
         }
-        if(levelOfFeat < 7){
+        if(levelOfFeat > 3){
             stringFeatSpecial = "40 ft.";
         }
-        if(levelOfFeat < 9){
+        if(levelOfFeat > 4){
             stringFeatSpecial = "50 ft.";
         }
-        if(levelOfFeat < 11){
+        if(levelOfFeat > 5){
             stringFeatSpecial = "60 ft.";
         }
-        if(levelOfFeat < 13){
+        if(levelOfFeat > 6){
             stringFeatSpecial = "70 ft.";
         }
-        if(levelOfFeat < 15){
+        if(levelOfFeat > 7){
             stringFeatSpecial = "80 ft.";
         }
-        if(levelOfFeat < 17){
+        if(levelOfFeat > 8){
             stringFeatSpecial = "90 ft.";
         }
-        if(levelOfFeat < 19){
+        if(levelOfFeat > 9){
             stringFeatSpecial = "any distance";
         }
         return stringFeatSpecial;
     }
+
+        public String kiStrike(int levelOfFeat) {
+            String stringFeatSpecial = "magic";
+        if(levelOfFeat > 1){
+            stringFeatSpecial = "magic and lawfull";
+        }
+        if(levelOfFeat > 2){
+            stringFeatSpecial = "magic, lawfull and adamantine";
+        }
+            return stringFeatSpecial;
+        }
     
 }

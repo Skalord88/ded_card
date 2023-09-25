@@ -12,23 +12,23 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ClassCharacter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     @NonNull
     @Enumerated(EnumType.STRING)
@@ -41,7 +41,7 @@ public class ClassCharacter {
     String avatarUrl;
 
     @NonNull
-    int hitDice;
+    byte hitDice;
 
     @NonNull
     String savingThrow;
@@ -58,7 +58,7 @@ public class ClassCharacter {
     Set<Skills> availableSkills = new HashSet<>();
 
     @NonNull
-    int skillPoints;
+    byte skillPoints;
 
     String classFeatsMap;
 

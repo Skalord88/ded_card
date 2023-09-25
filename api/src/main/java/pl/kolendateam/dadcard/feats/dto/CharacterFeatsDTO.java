@@ -25,8 +25,10 @@ public class CharacterFeatsDTO {
                 "+"+characterFeats.getLevelOfFeat();
             case "Wild Shape" -> 
                 characterFeats.wildShape(characterFeats.getLevelOfFeat());
-            case "Bonus Feats" ->
-                characterFeats.getLevelOfFeat()+" Bonus Feats";
+            case "Fighter Bonus Feats" ->
+                characterFeats.getLevelOfFeat()+" bonus feats";
+            case "Monk Bonus Feats" ->
+                characterFeats.getLevelOfFeat()+" bonus feats";
             case "Flurry of Blows" ->
                 characterFeats.flurryOfBlows(characterFeats.getLevelOfFeat());
             case "Unarmed Strike" ->

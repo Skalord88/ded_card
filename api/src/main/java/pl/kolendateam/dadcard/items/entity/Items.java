@@ -29,7 +29,7 @@ public class Items implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     String name;
     BigDecimal cost;

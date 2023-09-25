@@ -27,7 +27,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     @NonNull
     String racesName;
@@ -53,7 +53,7 @@ public class Race {
 
     String armorClass;
 
-    int levelAdjustment;
+    byte levelAdjustment;
 
     @ManyToMany
     @JoinTable(

@@ -22,7 +22,7 @@ public class Feats implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     @Nonnull
     String featName;

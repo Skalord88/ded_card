@@ -30,7 +30,6 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
-import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @RestController
 @RequestMapping("character-card")
@@ -107,7 +106,7 @@ public class CharacterController {
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
         ClassPc classPc = new ClassPc(
-                classCharacter.getId(), classCharacter.getName(), 1,
+                classCharacter.getId(), classCharacter.getName(), (byte) 1, 
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
                 classCharacter.getClassBab());
 
@@ -183,7 +182,7 @@ public class CharacterController {
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
         ClassPc classPc = new ClassPc(
-                classCharacter.getId(), classCharacter.getName(), 1,
+                classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
                 classCharacter.getClassBab());
 

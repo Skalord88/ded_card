@@ -45,7 +45,7 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public short id;
 
     @NonNull
     String characterName;
@@ -64,8 +64,8 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
-    int ecl;
-    int levelAdjustment;
+    short ecl;
+    byte levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
@@ -261,7 +261,7 @@ public class Character {
         this.bab -= classBab;
     }
 
-    public void raceLevelAdjustment(int lvAdj) {
+    public void raceLevelAdjustment(byte lvAdj) {
         this.bab = (lvAdj*0.5)-0.5;
         this.levelAdjustment = lvAdj;
         this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
@@ -447,7 +447,7 @@ public class Character {
     }
 
     public void addFeatToPc(CharacterFeat ft) {
-        if(ft.findFeatIndexinArrayById(featsList)>0){
+        if(ft.findFeatIndexinArrayById(featsList)>-1){
             for (CharacterFeat fPc : featsList){
                 if(fPc.getId()==ft.getId()){
                     fPc.incrementLevelFeat();

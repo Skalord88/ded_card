@@ -6,7 +6,7 @@
 
   <changeSet id="1" author="oscar">
       <createTable tableName="class_character">
-        <column name="id" type="int" autoIncrement="true">
+        <column name="id" type="SMALLINT" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="type" type="varchar(255)">
@@ -18,7 +18,7 @@
         <column name="avatar_url" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="hit_dice" type="int">
+        <column name="hit_dice" type="TINYINT">
           <constraints nullable="true"/>
         </column>
         <column name="saving_throw" type="varchar(255)">
@@ -27,7 +27,7 @@
         <column name="class_bab" type="double">
           <constraints nullable="false"/>
         </column>
-        <column name="skill_points" type="int">
+        <column name="skill_points" type="TINYINT">
           <constraints nullable="false"/>
         </column>
         <column name="class_feats_map" type="varchar(10000)">
