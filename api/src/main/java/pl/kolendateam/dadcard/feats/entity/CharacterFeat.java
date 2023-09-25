@@ -123,5 +123,161 @@ public class CharacterFeat implements Serializable{
         return checkEvry==ckeckTot;
 
     }
+
+    public String wildShape(int levelOfFeat){
+        String stringFeatSpecial = "";
+
+        if(levelOfFeat < 4){
+            stringFeatSpecial = levelOfFeat + "/day";
+        }
+        if(levelOfFeat == 4){
+            stringFeatSpecial = "3/day (Large)";
+        }
+        if(levelOfFeat == 5){
+            stringFeatSpecial = "4/day (Large)";
+        }
+        if(levelOfFeat == 6){
+            stringFeatSpecial = "4/day (Large and Tiny)";
+        }
+        if(levelOfFeat == 7){
+            stringFeatSpecial = "4/day (Large, Tiny and plant)";
+        }
+        if(levelOfFeat == 8){
+            stringFeatSpecial = "5/day (Large, Tiny and plant)";
+        }
+        if(levelOfFeat == 9){
+            stringFeatSpecial = "5/day (Large, Tiny, Huge and plant)";
+        }
+        if(levelOfFeat == 10){
+            stringFeatSpecial = "5/day (Large, Tiny, Huge and plant), 1/day (elemental)";
+        }
+        if(levelOfFeat == 11){
+            stringFeatSpecial = "6/day (Large, Tiny, Huge and plant), 2/day (elemental)";
+        }
+        if(levelOfFeat == 12){
+            stringFeatSpecial = "6/day (Large, Tiny, Huge and plant), 3/day (Huge elemental)";
+        }
+        return stringFeatSpecial;
+    }
+
+    public String flurryOfBlows(int levelOfFeat) {
+        String stringFeatSpecial = switch(levelOfFeat) {
+            case 1 -> "-2/-2";
+            case 2 -> "-1/-1";
+            case 3 -> "+0/+0";
+            case 4 -> "+1/+1";
+            case 5 -> "+2/+2";
+            case 6 -> "+3/+3";
+            case 7 -> "+4/+4";
+            case 8 -> "+5/+5/+0";
+            case 9 -> "+6/+6/+1";
+            case 10 -> "+7/+7/+2";
+            case 11 -> "+8/+8/+8/+3";
+            case 12 -> "+9/+9/+9/+4";
+            case 13 -> "+9/+9/+9/+4";
+            case 14 -> "+10/+10/+10/+5";
+            case 15 -> "+11/+11/+11/+6/+1";
+            case 16 -> "+12/+12/+12/+7/+2";
+            case 17 -> "+12/+12/+12/+7/+2";
+            case 18 -> "+13/+13/+13/+8/+3";
+            case 19 -> "+14/+14/+14/+9/+4";
+            case 20 -> "+15/+15/+15/+10/+5";
+            default -> "";
+        };
+        
+        return stringFeatSpecial;
+    }
+
+        public String unarmedStrike(int levelOfFeat) {
+        String stringFeatSpecial = "1d6";
+        if(levelOfFeat < 4){
+            stringFeatSpecial = "1d8";
+        }
+        if(levelOfFeat < 7){
+            stringFeatSpecial = "1d10";
+        }
+        if(levelOfFeat < 11){
+            stringFeatSpecial = "2d6";
+        }
+        if(levelOfFeat < 15){
+            stringFeatSpecial = "2d8";
+        }
+        if(levelOfFeat < 19){
+            stringFeatSpecial = "2d10";
+        }
+        return stringFeatSpecial;
+    }
+
+    public String aCBonus(int levelOfFeat) {
+        String stringFeatSpecial = "AC bonus +0";
+        if(levelOfFeat < 4){
+            stringFeatSpecial = "AC bonus +1";
+        }
+        if(levelOfFeat < 9){
+            stringFeatSpecial = "AC bonus +2";
+        }
+        if(levelOfFeat < 14){
+            stringFeatSpecial = "AC bonus +3";
+        }
+        if(levelOfFeat < 19){
+            stringFeatSpecial = "AC bonus +4";
+        }
+        return stringFeatSpecial;
+    }
+
+        public String fastMovement(int levelOfFeat) {
+        String stringFeatSpecial = "+0 ft.";
+        if(levelOfFeat < 2){
+            stringFeatSpecial = "+10 ft.";
+        }
+        if(levelOfFeat < 5){
+            stringFeatSpecial = "+20 ft.";
+        }
+        if(levelOfFeat < 8){
+            stringFeatSpecial = "+30 ft.";
+        }
+        if(levelOfFeat < 11){
+            stringFeatSpecial = "+40 ft.";
+        }
+        if(levelOfFeat < 14){
+            stringFeatSpecial = "+50 ft.";
+        }
+        if(levelOfFeat < 17){
+            stringFeatSpecial = "+60 ft.";
+        }
+        return stringFeatSpecial;
+    }
+
+        public String slowFall(int levelOfFeat) {
+        String stringFeatSpecial = "0 ft.";
+        if(levelOfFeat < 3){
+            stringFeatSpecial = "20 ft.";
+        }
+        if(levelOfFeat < 5){
+            stringFeatSpecial = "30 ft.";
+        }
+        if(levelOfFeat < 7){
+            stringFeatSpecial = "40 ft.";
+        }
+        if(levelOfFeat < 9){
+            stringFeatSpecial = "50 ft.";
+        }
+        if(levelOfFeat < 11){
+            stringFeatSpecial = "60 ft.";
+        }
+        if(levelOfFeat < 13){
+            stringFeatSpecial = "70 ft.";
+        }
+        if(levelOfFeat < 15){
+            stringFeatSpecial = "80 ft.";
+        }
+        if(levelOfFeat < 17){
+            stringFeatSpecial = "90 ft.";
+        }
+        if(levelOfFeat < 19){
+            stringFeatSpecial = "any distance";
+        }
+        return stringFeatSpecial;
+    }
     
 }

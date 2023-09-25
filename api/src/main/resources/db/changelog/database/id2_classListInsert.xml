@@ -112,17 +112,17 @@
             <column name="skill_points" value="2" />
             <column name="hit_dice" value="10" />
             <column name="class_feats_map" value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Bonus Feats']},
-            {'level':2,'classFeats':['Bonus Feats']},
-            {'level':4,'classFeats':['Bonus Feats']},
-            {'level':6,'classFeats':['Bonus Feats']},
-            {'level':8,'classFeats':['Bonus Feats']},
-            {'level':10,'classFeats':['Bonus Feats']},
-            {'level':12,'classFeats':['Bonus Feats']},
-            {'level':14,'classFeats':['Bonus Feats']},
-            {'level':16,'classFeats':['Bonus Feats']},
-            {'level':18,'classFeats':['Bonus Feats']},
-            {'level':20,'classFeats':['Bonus Feats']}
+            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fighter Bonus Feats']},
+            {'level':2,'classFeats':['Fighter Bonus Feats']},
+            {'level':4,'classFeats':['Fighter Bonus Feats']},
+            {'level':6,'classFeats':['Fighter Bonus Feats']},
+            {'level':8,'classFeats':['Fighter Bonus Feats']},
+            {'level':10,'classFeats':['Fighter Bonus Feats']},
+            {'level':12,'classFeats':['Fighter Bonus Feats']},
+            {'level':14,'classFeats':['Fighter Bonus Feats']},
+            {'level':16,'classFeats':['Fighter Bonus Feats']},
+            {'level':18,'classFeats':['Fighter Bonus Feats']},
+            {'level':20,'classFeats':['Fighter Bonus Feats']}
             ]"/>
           </insert>
           <insert tableName="class_character">
@@ -134,6 +134,28 @@
             <column  name="class_bab" value="0.75"/>
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="8" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Monk Bonus Feats','Flurry of Blows','Unarmed Strike']},
+            {'level':2,'classFeats':['Monk Bonus Feats','Evasion','Flurry of Blows']},
+            {'level':3,'classFeats':['Still Mind','Flurry of Blows','Fast Movement']},
+            {'level':4,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','Unarmed Strike']},
+            {'level':5,'classFeats':['Purity of Body','Flurry of Blows','AC Bonus']},
+            {'level':6,'classFeats':['Monk Bonus Feats','Slow Fall','Flurry of Blows','Fast Movement']},
+            {'level':7,'classFeats':['Wholeness of Body','Flurry of Blows']},
+            {'level':8,'classFeats':['Slow Fall','Flurry of Blows','Unarmed Strike']},
+            {'level':9,'classFeats':['Improved Evasion','Flurry of Blows','Fast Movement']},
+            {'level':10,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','AC Bonus']},
+            {'level':11,'classFeats':['Diamond Body','Greater Flurry','Flurry of Blows']},
+            {'level':12,'classFeats':['Abundant Step','Slow Fall','Flurry of Blows','Unarmed Strike','Fast Movement']},
+            {'level':13,'classFeats':['Diamond Soul','Flurry of Blows']},
+            {'level':14,'classFeats':['Slow Fall','Flurry of Blows']},
+            {'level':15,'classFeats':['Quivering Palm','Flurry of Blows','AC Bonus','Fast Movement']},
+            {'level':16,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','Unarmed Strike']},
+            {'level':17,'classFeats':['Timeless Body','Tongue of the Sun and Moon','Flurry of Blows']},
+            {'level':18,'classFeats':['Slow Fall','Flurry of Blows','Fast Movement']},
+            {'level':19,'classFeats':['Empty Body','Flurry of Blows']},
+            {'level':20,'classFeats':['Perfect Self','Slow Fall','Flurry of Blows','Unarmed Strike','AC Bonus']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="7"/>  
@@ -144,6 +166,21 @@
             <column  name="class_bab" value="1"/>
             <column name="skill_points" value="2" />
             <column name="hit_dice" value="10" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)',
+            'Armor proficiency (heavy)','Aura of Good','Detect Evil','Smite Evil']},
+            {'level':2,'classFeats':['Divine Grace','Lay on Hands']},
+            {'level':3,'classFeats':['Aura of Courage','Divine Health']},
+            {'level':4,'classFeats':['Turn Undead']},
+            {'level':5,'classFeats':['Smite Evil','Special Mount']},
+            {'level':6,'classFeats':['Remove Disease']},
+            {'level':9,'classFeats':['Remove Disease']},
+            {'level':10,'classFeats':['Smite Evil']},
+            {'level':12,'classFeats':['Remove Disease']},
+            {'level':15,'classFeats':['Remove Disease','Smite Evil']},
+            {'level':18,'classFeats':['Remove Disease']},
+            {'level':20,'classFeats':['Smite Evil']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="8"/>  
