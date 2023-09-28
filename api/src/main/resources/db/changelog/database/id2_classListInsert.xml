@@ -191,6 +191,23 @@
             <column  name="class_bab" value="1"/>
             <column name="skill_points" value="6" />
             <column name="hit_dice" value="8" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Favored Enemy','Track','Wild Empathy']},
+            {'level':2,'classFeats':['Combat Style']},
+            {'level':3,'classFeats':['Endurance']},
+            {'level':4,'classFeats':['Animal Companion']},
+            {'level':5,'classFeats':['Favored Enemy']},
+            {'level':6,'classFeats':['Improved Combat Style']},
+            {'level':7,'classFeats':['Woodland Stride']},
+            {'level':8,'classFeats':['Swift Tracker']},
+            {'level':9,'classFeats':['Evasion']},
+            {'level':10,'classFeats':['Favored Enemy']},
+            {'level':11,'classFeats':['Combat Style Mastery']},
+            {'level':13,'classFeats':['Camouflage']},
+            {'level':15,'classFeats':['Favored Enemy']},
+            {'level':17,'classFeats':['Hide in Plain Sight']},
+            {'level':20,'classFeats':['Favored Enemy']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="9"/>  
@@ -201,6 +218,26 @@
             <column  name="class_bab" value="0.75"/>
             <column name="skill_points" value="8" />
             <column name="hit_dice" value="6" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Sneak Attack','Trapfinding']},
+            {'level':2,'classFeats':['Evasion']},
+            {'level':3,'classFeats':['Sneak Attack','Trap Sense']},
+            {'level':4,'classFeats':['Uncanny Dodge']},
+            {'level':5,'classFeats':['Sneak Attack']},
+            {'level':6,'classFeats':['Trap Sense']},
+            {'level':7,'classFeats':['Sneak Attack']},
+            {'level':8,'classFeats':['Improved Uncanny Dodge']},
+            {'level':9,'classFeats':['Sneak Attack','Trap Sense']},
+            {'level':10,'classFeats':['Special Ability']},
+            {'level':11,'classFeats':['Sneak Attack']},
+            {'level':12,'classFeats':['Trap Sense']},
+            {'level':13,'classFeats':['Special Ability','Special Ability']},
+            {'level':15,'classFeats':['Sneak Attack','Trap Sense']},
+            {'level':16,'classFeats':['Special Ability']},
+            {'level':17,'classFeats':['Special Ability']},
+            {'level':18,'classFeats':['Trap Sense']},
+            {'level':19,'classFeats':['Sneak Attack','Special Ability']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="10"/>  

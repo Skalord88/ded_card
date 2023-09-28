@@ -101,21 +101,21 @@
             />
           </insert>
           <insert tableName="feats">  
-            <column  name="feat_name"  value="Uncanny dodge"/>
+            <column  name="feat_name"  value="Uncanny Dodge"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 2nd level, a barbarian retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a barbarian already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."
+            <column  name="description" value="Character retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a character already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."
             />
           </insert>
           <insert tableName="feats">  
-            <column  name="feat_name"  value="Trap sense"/>
+            <column  name="feat_name"  value="Trap Sense"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="Starting at 3rd level, a barbarian gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."
+            <column  name="description" value="Character gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three barbarian levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."
             />
           </insert>
           <insert tableName="feats">  
             <column  name="feat_name"  value="Improved uncanny dodge"/>
             <column  name="feats_type"  value="CLASS"/>
-            <column  name="description" value="At 5th level and higher, a barbarian can no longer be flanked. This defense denies a rogue the ability to sneak attack the barbarian by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."
+            <column  name="description" value="Character can no longer be flanked. This defense denies a rogue the ability to sneak attack the character by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."
             />
           </insert>
           <insert tableName="feats">  
@@ -636,6 +636,230 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
   <column  name="feats_type"  value="CLASS"/>
   <column  name="description" value="
   At 6th level, a paladin can produce a remove disease effect, as the spell, once per week. She can use this ability one additional time per week for every three levels after 6th (twice per week at 9th, three times at 12th, and so forth).
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Favored Enemy"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 1st level, a ranger may select a type of creature from among those given on Table: Ranger Favored Enemies. The ranger gains a +2 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks when using these skills against creatures of this type. Likewise, he gets a +2 bonus on weapon damage rolls against such creatures.
+
+  At 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy from those given on the table. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by 2.
+  
+  If the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table. If a specific creature falls into more than one category of favored enemy, the ranger’s bonuses do not stack; he simply uses whichever bonus is higher.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Track"/>
+  <column  name="feats_type"  value="GENERAL"/>
+  <column  name="description" value="
+  Benefit
+  To find tracks or to follow them for 1 mile requires a successful Survival check. You must make another Survival check every time the tracks become difficult to follow.
+  
+  You move at half your normal speed (or at your normal speed with a -5 penalty on the check, or at up to twice your normal speed with a -20 penalty on the check). The DC depends on the surface and the prevailing conditions, as given on Table: Track DC.
+  
+  Very Soft Ground
+  Any surface (fresh snow, thick dust, wet mud) that holds deep, clear impressions of footprints.
+  
+  Soft Ground
+  Any surface soft enough to yield to pressure, but firmer than wet mud or fresh snow, in which a creature leaves frequent but shallow footprints.
+  
+  Firm Ground
+  Most normal outdoor surfaces (such as lawns, fields, woods, and the like) or exceptionally soft or dirty indoor surfaces (thick rugs and very dirty or dusty floors). The creature might leave some traces (broken branches or tufts of hair), but it leaves only occasional or partial footprints.
+  
+  Hard Ground
+  Any surface that doesn’t hold footprints at all, such as bare rock or an indoor floor. Most streambeds fall into this category, since any footprints left behind are obscured or washed away. The creature leaves only traces (scuff marks or displaced pebbles).
+  
+  Several modifiers may apply to the Survival check, as given on Table: Track DC Modifiers.
+  
+  If you fail a Survival check, you can retry after 1 hour (outdoors) or 10 minutes (indoors) of searching.
+  
+  Normal
+  Without this feat, you can use the Survival skill to find tracks, but you can follow them only if the DC for the task is 10 or lower. Alternatively, you can use the Search skill to find a footprint or similar sign of a creature’s passage using the DCs given above, but you can’t use Search to follow tracks, even if someone else has already found them.
+  
+  Special
+  A ranger automatically has Track as a bonus feat. He need not select it.
+  
+  This feat does not allow you to find or follow the tracks made by a subject of a pass without trace spell.
+
+ Surface	Survival DC
+Very soft ground	5
+Soft ground	10
+Firm ground	15
+Hard ground	20
+
+
+Condition	Survival DC
+Modifier
+For a group of mixed sizes, apply only the modifier for the largest size category.
+Apply only the largest modifier from this category.
+Every three creatures in the group being tracked	-1
+Size of creature or creatures being tracked1	
+Fine	+8
+Diminutive	+4
+Tiny	+2
+Small	+1
+Medium	0
+Large	-1
+Huge	-2
+Gargantuan	-4
+Colossal	-8
+Every 24 hours since the trail was made	+1
+Every hour of rain since the trail was made	+1
+Fresh snow cover since the trail was made	+10
+Poor visibility2	
+Overcast or moonless night	+6
+Moonlight	+3
+Fog or precipitation	+3
+Tracked party hides trail (and moves at half speed)	+5
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Wild Empathy"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A ranger can improve the attitude of an animal. This ability functions just like a Diplomacy check to improve the attitude of a person. The ranger rolls 1d20 and adds his ranger level and his Charisma modifier to determine the wild empathy check result. The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.
+
+  To use wild empathy, the ranger and the animal must be able to study each other, which means that they must be within 30 feet of one another under normal visibility conditions. Generally, influencing an animal in this way takes 1 minute, but, as with influencing people, it might take more or less time.
+  
+  The ranger can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but he takes a -4 penalty on the check.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Combat Style"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 2nd level, a ranger must select one of two combat styles to pursue: archery or two-weapon combat. This choice affects the character’s class features but does not restrict his selection of feats or special abilities in any way.
+
+  If the ranger selects archery, he is treated as having the Rapid Shot feat, even if he does not have the normal prerequisites for that feat.
+  
+  If the ranger selects two-weapon combat, he is treated as having the Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
+  
+  The benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Endurance"/>
+  <column  name="feats_type"  value="GENERAL"/>
+  <column  name="description" value="
+  Benefit
+  You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued.
+  
+  Normal
+  A character without this feat who sleeps in medium or heavier armor is automatically fatigued the next day.
+  
+  Special
+  A ranger automatically gains Endurance as a bonus feat at 3rd level. He need not select it.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Improved Combat Style"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 6th level, a ranger’s aptitude in his chosen combat style (archery or two-weapon combat) improves. If he selected archery at 2nd level, he is treated as having the Manyshot feat, even if he does not have the normal prerequisites for that feat.
+
+  If the ranger selected two-weapon combat at 2nd level, he is treated as having the Improved Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
+  
+  As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Woodland Stride"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Starting at 7th level, a ranger may move through any sort of undergrowth (such as natural thorns, briars, overgrown areas, and similar terrain) at his normal speed and without taking damage or suffering any other impairment.
+
+  However, thorns, briars, and overgrown areas that are enchanted or magically manipulated to impede motion still affect him.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Swift Tracker"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Beginning at 8th level, a ranger can move at his normal speed while following tracks without taking the normal -5 penalty. He takes only a -10 penalty (instead of the normal -20) when moving at up to twice normal speed while tracking.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Combat Style Mastery"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 11th level, a ranger’s aptitude in his chosen combat style (archery or two-weapon combat) improves again. If he selected archery at 2nd level, he is treated as having the Improved Precise Shot feat, even if he does not have the normal prerequisites for that feat.
+
+  If the ranger selected two-weapon combat at 2nd level, he is treated as having the Greater Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
+  
+  As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Camouflage"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A ranger of 13th level or higher can use the Hide skill in any sort of natural terrain, even if the terrain doesn’t grant cover or concealment.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Hide in Plain Sight"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  While in any sort of natural terrain, a ranger of 17th level or higher can use the Hide skill even while being observed.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Sneak Attack"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.
+
+  The rogue’s attack deals extra damage any time her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and it increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied.
+  
+  Ranged attacks can count as sneak attacks only if the target is within 30 feet.
+  
+  With a sap (blackjack) or an unarmed strike, a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual -4 penalty.
+  
+  A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Trapfinding"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Rogues (and only rogues) can use the Search skill to locate traps when the task has a Difficulty Class higher than 20.
+
+  Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it.
+  
+  Rogues (and only rogues) can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it.
+  
+  A rogue who beats a trap’s DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Special Abilities"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  On attaining 10th level, and at every three levels thereafter (13th, 16th, and 19th), a rogue gains a special ability of her choice from among the following options.
+
+  Crippling Strike (Ex)
+  A rogue with this ability can sneak attack opponents with such precision that her blows weaken and hamper them. An opponent damaged by one of her sneak attacks also takes 2 points of Strength damage. Ability points lost to damage return on their own at the rate of 1 point per day for each damaged ability.
+  
+  Defensive Roll (Ex)
+  The rogue can roll with a potentially lethal blow to take less damage from it than she otherwise would. Once per day, when she would be reduced to 0 or fewer hit points by damage in combat (from a weapon or other blow, not a spell or special ability), the rogue can attempt to roll with the damage. To use this ability, the rogue must attempt a Reflex saving throw (DC = damage dealt). If the save succeeds, she takes only half damage from the blow; if it fails, she takes full damage. She must be aware of the attack and able to react to it in order to execute her defensive roll—if she is denied her Dexterity bonus to AC, she can’t use this ability. Since this effect would not normally allow a character to make a Reflex save for half damage, the rogue’s evasion ability does not apply to the defensive roll.
+  
+  Improved Evasion (Ex)
+  This ability works like evasion, except that while the rogue still takes no damage on a successful Reflex saving throw against attacks henceforth she takes only half damage on a failed save. A helpless rogue does not gain the benefit of improved evasion.
+  
+  Opportunist (Ex)
+  Once per round, the rogue can make an attack of opportunity against an opponent who has just been struck for damage in melee by another character. This attack counts as the rogue’s attack of opportunity for that round. Even a rogue with the Combat Reflexes feat can’t use the opportunist ability more than once per round.
+  
+  Skill Mastery
+  The rogue becomes so certain in the use of certain skills that she can use them reliably even under adverse conditions.
+  
+  Upon gaining this ability, she selects a number of skills equal to 3 + her Intelligence modifier. When making a skill check with one of these skills, she may take 10 even if stress and distractions would normally prevent her from doing so. A rogue may gain this special ability multiple times, selecting additional skills for it to apply to each time.
+  
+  Slippery Mind (Ex)
+  This ability represents the rogue’s ability to wriggle free from magical effects that would otherwise control or compel her. If a rogue with slippery mind is affected by an enchantment spell or effect and fails her saving throw, she can attempt it again 1 round later at the same DC. She gets only this one extra chance to succeed on her saving throw.
+  
+  Feat
+  A rogue may gain a bonus feat in place of a special ability.
   "/>
 </insert>
 
