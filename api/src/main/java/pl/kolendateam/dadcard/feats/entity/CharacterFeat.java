@@ -290,5 +290,22 @@ public class CharacterFeat implements Serializable{
         }
             return stringFeatSpecial;
         }
+
+        public String favoredEnemy(int levelOfFeat) {
+            String stringFeatSpecial = "1st favored enemy";
+        if(levelOfFeat > 1){
+            stringFeatSpecial = "2nd favored enemy";
+        }
+        if(levelOfFeat > 2){
+            stringFeatSpecial = "3rd favored enemy";
+        }
+        if(levelOfFeat > 3){
+            stringFeatSpecial = "4th favored enemy";
+        }
+        if(levelOfFeat > 4){
+            stringFeatSpecial = "5th favored enemy";
+        }
+            return stringFeatSpecial;
+        }
     
 }

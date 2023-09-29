@@ -862,7 +862,139 @@ Tracked party hides trail (and moves at half speed)	+5
   A rogue may gain a bonus feat in place of a special ability.
   "/>
 </insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Summon Familiar"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  A character can obtain a familiar. Doing so takes 24 hours and uses up magical materials that cost 100 gp. A familiar is a magical beast that resembles a small animal and is unusually tough and intelligent. The creature serves as a companion and servant.
 
+  The sorcerer chooses the kind of familiar he gets. As the sorcerer advances in level, his familiar also increases in power.
+  
+  If the familiar dies or is dismissed by the sorcerer, the sorcerer must attempt a DC 15 Fortitude saving throw. Failure means he loses 200 experience points per sorcerer level; success reduces the loss to one-half that amount. However, a sorcerer’s experience point total can never go below 0 as the result of a familiar’s demise or dismissal. A slain or dismissed familiar cannot be replaced for a year and day. A slain familiar can be raised from the dead just as a character can be, and it does not lose a level or a Constitution point when this happy event occurs.
+  
+  A character with more than one class that grants a familiar may have only one familiar at a time.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Scribe Scroll"/>
+  <column  name="feats_type"  value="GENERAL"/>
+  <column  name="description" value="
+  Prerequisite
+  Caster level 1st.
+  
+  Benefit
+  You can create a scroll of any spell that you know. Scribing a scroll takes one day for each 1,000 gp in its base price. The base price of a scroll is its spell level × its caster level × 25 gp. To scribe a scroll, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price.
+  
+  Any scroll that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when scribing the scroll.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Bonus Feat Wizard"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, she can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums.
+
+  These bonus feats are in addition to the feat that a character of any class gets from advancing levels. The wizard is not limited to the categories of item creation feats, metamagic feats, or Spell Mastery when choosing these feats.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Enhance Arrow"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 1st level, every nonmagical arrow an arcane archer nocks and lets fly becomes magical, gaining a +1 enhancement bonus. Unlike magic weapons created by normal means, the archer need not spend experience points or gold pieces to accomplish this task. However, an archer’s magic arrows only function for her. For every two levels the character advances past 1st level in the prestige class, the magic arrows she creates gain +1 greater potency (+1 at 1st level, +2 at 3rd level, +3 at 5th level, +4 at 7th level, and +5 at 9th level).
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Imbue Arrow"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 2nd level, an arcane archer gains the ability to place an area spell upon an arrow. When the arrow is fired, the spell’s area is centered on where the arrow lands, even if the spell could normally be centered only on the caster. This ability allows the archer to use the bow’s range rather than the spell’s range. It takes a standard action to cast the spell and fire the arrow. The arrow must be fired in the round the spell is cast, or the spell is wasted.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Seeker Arrow"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 4th level, an arcane archer can launch an arrow once per day at a target known to her within range, and the arrow travels to the target, even around corners. Only an unavoidable obstacle or the limit of the arrow’s range prevents the arrow’s flight. This ability negates cover and concealment modifiers, but otherwise the attack is rolled normally. Using this ability is a standard action (and shooting the arrow is part of the action).
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Phase Arrow"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 6th level, an arcane archer can launch an arrow once per day at a target known to her within range, and the arrow travels to the target in a straight path, passing through any nonmagical barrier or wall in its way. (Any magical barrier stops the arrow.) This ability negates cover, concealment, and even armor modifiers, but otherwise the attack is rolled normally.
+
+  Using this ability is a standard action (and shooting the arrow is part of the action).
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Hail of Arrows"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  In lieu of her regular attacks, once per day an arcane archer of 8th level or higher can fire an arrow at each and every target within range, to a maximum of one target for every arcane archer level she has earned. Each attack uses the archer’s primary attack bonus, and each enemy may only be targeted by a single arrow.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Arrow of Death"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  At 10th level, an arcane archer can create an arrow of death that forces the target, if damaged by the arrow’s attack, to make a DC 20 Fortitude save or be slain immediately. It takes one day to make an arrow of death, and the arrow only functions for the arcane archer who created it. The arrow of death lasts no longer than one year, and the archer can only have one such arrow in existence at a time.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Ranged Legerdemain"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  An arcane trickster can perform one of the following class skills at a range of 30 feet: Disable Device, Open Lock, or Sleight of Hand. Working at a distance increases the normal skill check DC by 5, and an arcane trickster cannot take 10 on this check. Any object to be manipulated must weigh 5 pounds or less.
+
+  An arcane trickster can use ranged legerdemain once per day initially, twice per day upon attaining 5th level, and three times per day at 9th level or higher. He can make only one ranged legerdemain skill check each day, and only if he has at least 1 rank in the skill being used.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="Impromptu Sneak Attack"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  Beginning at 3rd level, once per day an arcane trickster can declare one melee or ranged attack he makes to be a sneak attack (the target can be no more than 30 feet distant if the impromptu sneak attack is a ranged attack). The target of an impromptu sneak attack loses any Dexterity bonus to AC, but only against that attack. The power can be used against any target, but creatures that are not subject to critical hits take no extra damage (though they still lose any Dexterity bonus to AC against the attack).
+
+  At 7th level, an arcane trickster can use this ability twice per day.
+  "/>
+</insert>
+<insert tableName="feats">
+  <column  name="feat_name"  value="High Arcana"/>
+  <column  name="feats_type"  value="CLASS"/>
+  <column  name="description" value="
+  An archmage gains the opportunity to select a special ability from among those described below by permanently eliminating one existing spell slot (she cannot eliminate a spell slot of higher level than the highest-level spell she can cast). Each special ability has a minimum required spell slot level, as specified in its description.
+
+  An archmage may choose to eliminate a spell slot of a higher level than that required to gain a type of high arcana.
+  
+  Arcane Fire (Su)
+  The archmage gains the ability to change arcane spell energy into arcane fire, manifesting it as a bolt of raw magical energy. The bolt is a ranged touch attack with long range (400 feet + 40 feet/level of archmage) that deals 1d6 points of damage per class level of the archmage plus 1d6 points of damage per level of the spell used to create the effect. This ability costs one 9th-level spell slot.
+  
+  Arcane Reach (Su)
+  The archmage can use spells with a range of touch on a target up to 30 feet away. The archmage must make a ranged touch attack. Arcane reach can be selected a second time as a special ability, in which case the range increases to 60 feet. This ability costs one 7th-level spell slot.
+  
+  Mastery of Counterspelling
+  When the archmage counterspells a spell, it is turned back upon the caster as if it were fully affected by a spell turning spell. If the spell cannot be affected by spell turning, then it is merely counterspelled. This ability costs one 7th-level spell slot.
+  
+  Mastery of Elements
+  The archmage can alter an arcane spell when cast so that it utilizes a different element from the one it normally uses. This ability can only alter a spell with the acid, cold, fire, electricity, or sonic descriptor. The spell’s casting time is unaffected. The caster decides whether to alter the spell’s energy type and chooses the new energy type when he begins casting. This ability costs one 8th-level spell slot.
+  
+  Mastery of Shaping
+  The archmage can alter area and effect spells that use one of the following shapes: burst, cone, cylinder, emanation, or spread. The alteration consists of creating spaces within the spell’s area or effect that are not subject to the spell. The minimum dimension for these spaces is a 5-foot cube. Furthermore, any shapeable spells have a minimum dimension of 5 feet instead of 10 feet. This ability costs one 6th-level spell slot.
+  
+  Spell Power
+  This ability increases the archmage’s effective caster level by +1 (for purposes of determining level-dependent spell variables such as damage dice or range, and caster level checks only). This ability costs one 5th-level spell slot.
+  
+  Spell-Like Ability
+  An archmage who selects this type of high arcana can use one of her arcane spell slots (other than a slot expended to learn this or any other type of high arcana) to permanently prepare one of her arcane spells as a spell-like ability that can be used twice per day. The archmage does not use any components when casting the spell, although a spell that costs XP to cast still does so and a spell with a costly material component instead costs her 10 times that amount in XP. This ability costs one 5th-level spell slot.
+  
+  The spell-like ability normally uses a spell slot of the spell’s level, although the archmage can choose to make a spell modified by a metamagic feat into a spell-like ability at the appropriate spell level.
+  
+  The archmage may use an available higher-level spell slot in order to use the spell-like ability more often. Using a slot three levels higher than the chosen spell allows her to use the spell-like ability four times per day, and a slot six levels higher lets her use it six times per day.
+  
+  If spell-like ability is selected more than one time as a high arcana choice, this ability can apply to the same spell chosen the first time (increasing the number of times per day it can be used) or to a different spell.
+  "/>
+</insert>
 
 
 

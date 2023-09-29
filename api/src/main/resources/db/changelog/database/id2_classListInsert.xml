@@ -192,7 +192,7 @@
             <column name="skill_points" value="6" />
             <column name="hit_dice" value="8" />
             <column name="class_feats_map" value="[
-            {'level':1,'classFeats':['Favored Enemy','Track','Wild Empathy']},
+            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Favored Enemy','Track','Wild Empathy']},
             {'level':2,'classFeats':['Combat Style']},
             {'level':3,'classFeats':['Endurance']},
             {'level':4,'classFeats':['Animal Companion']},
@@ -248,6 +248,9 @@
             <column  name="class_bab" value="0.5"/>
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="4" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Scribe Scroll']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="11"/>  
@@ -258,6 +261,13 @@
             <column  name="class_bab" value="0.5"/>
             <column name="skill_points" value="2" />
             <column name="hit_dice" value="4" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Summon Familiar','Scribe Scroll']},
+            {'level':5,'classFeats':['Bonus Feat Wizard']},
+            {'level':10,'classFeats':['Bonus Feat Wizard']},
+            {'level':15,'classFeats':['Bonus Feat Wizard']},
+            {'level':20,'classFeats':['Bonus Feat Wizard']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="12"/>  
@@ -268,6 +278,18 @@
             <column  name="class_bab" value="1"/>
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="8" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Enhance Arrow']},
+            {'level':2,'classFeats':['Imbue Arrow']},
+            {'level':3,'classFeats':['Enhance Arrow']},
+            {'level':4,'classFeats':['Seeker Arrow']},
+            {'level':5,'classFeats':['Enhance Arrow']},
+            {'level':6,'classFeats':['Phase Arrow']},
+            {'level':7,'classFeats':['Enhance Arrow']},
+            {'level':8,'classFeats':['Hail of Arrows']},
+            {'level':9,'classFeats':['Enhance Arrow']},
+            {'level':10,'classFeats':['Arrow of Death']}
+            ]"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="13"/>  
@@ -278,6 +300,18 @@
             <column  name="class_bab" value="0.75"/>
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="4" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['Ranged Legerdemain']},
+            {'level':2,'classFeats':['Sneak Attack']},
+            {'level':3,'classFeats':['Impromptu Sneak Attack']},
+            {'level':4,'classFeats':['Sneak Attack']},
+            {'level':5,'classFeats':['Ranged Legerdemain']},
+            {'level':6,'classFeats':['Sneak Attack']},
+            {'level':7,'classFeats':['Impromptu Sneak Attack']},
+            {'level':8,'classFeats':['Sneak Attack']},
+            {'level':9,'classFeats':['Ranged Legerdemain']},
+            {'level':10,'classFeats':['Sneak Attack']}
+            ]"/>
           </insert>  
           <insert tableName="class_character">
           <column name="id" value="14"/>  
@@ -288,6 +322,13 @@
             <column  name="class_bab" value="0.5"/>
             <column name="skill_points" value="2" />
             <column name="hit_dice" value="4" />
+            <column name="class_feats_map" value="[
+            {'level':1,'classFeats':['High Arcana']},
+            {'level':2,'classFeats':['High Arcana']},
+            {'level':3,'classFeats':['High Arcana']},
+            {'level':4,'classFeats':['High Arcana']},
+            {'level':5,'classFeats':['High Arcana']}
+            ]"/>
           </insert>
           <!-- <insert tableName="class_character">  
             <column  name="type"  value="PRESTIGE_CLASS"/>  

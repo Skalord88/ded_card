@@ -39,6 +39,20 @@ public class CharacterFeatsDTO {
                 characterFeats.aCBonus(characterFeats.getLevelOfFeat());
             case "Ki Strike" ->
                 characterFeats.kiStrike(characterFeats.getLevelOfFeat());
+            case "Smite Evil" ->
+                characterFeats.getLevelOfFeat()+"/day";
+            case "Remove Disease" ->
+                characterFeats.getLevelOfFeat()+"/week";
+            case "Favored Enemy" ->
+                characterFeats.favoredEnemy(characterFeats.getLevelOfFeat());
+            case "Combat Style" ->
+                "archery or two-weapon combat";
+            case "Improved Combat Style" ->
+                "archery or two-weapon combat";
+            case "Combat Style Mastery" ->
+                "archery or two-weapon combat";
+            case "Sneak Attack" ->
+                characterFeats.getLevelOfFeat()+"d6";
             default -> null;
         };
         this.characterFeatDescription = characterFeats.getCharacterFeatDescription();
