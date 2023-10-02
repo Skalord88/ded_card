@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
@@ -22,7 +21,6 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
-@AllArgsConstructor
 @NoArgsConstructor
 public class CharacterDTO {
     public String characterName;

@@ -47,7 +47,7 @@ public class CharacterController {
         this.featsRepository = featsRepository;
     }
 
-    @PostMapping(value = "", consumes = {"application/json"})
+    @PostMapping(value = "", consumes = { "application/json" })
     public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO) {
 
         Character character = new Character(characterDTO.characterName, characterDTO.playerName);
