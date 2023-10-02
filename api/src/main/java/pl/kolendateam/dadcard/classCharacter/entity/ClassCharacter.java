@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Study;
 
 @NoArgsConstructor
 @Getter
@@ -56,6 +57,14 @@ public class ClassCharacter {
         inverseJoinColumns = @JoinColumn(name = "skill_id")
     )
     Set<Skills> availableSkills = new HashSet<>();
+
+    @ManyToMany
+    @JoinTable(
+        name = "class_study",
+        joinColumns = @JoinColumn(name = "class_id"),
+        inverseJoinColumns = @JoinColumn(name = "study_id")
+    )
+    Set<Study> availableStudy = new HashSet<>();
 
     @NonNull
     byte skillPoints;

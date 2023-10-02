@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-         <changeSet id="11" author="oscar">
+         <changeSet id="102" author="oscar">
             <insert tableName="skills">
                 <column name="id" value="1"/>  
                 <column  name="name"  value="Appraise"/> <!-- wycenza--> 
@@ -87,13 +87,13 @@
             </insert>
             <insert tableName="skills">
                 <column name="id" value="17"/>  
-                <column  name="name"  value="Knowledge"/>  
-                <column  name="ability"  value="INTELLIGENCE"/>
+                <column name="name"  value="Knowledge"/>  
+                <column name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="18"/>  
-                <column  name="name"  value="Listen"/>  
-                <column  name="ability"  value="WISDOM"/>
+                <column name="name"  value="Listen"/>  
+                <column name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="19"/>  

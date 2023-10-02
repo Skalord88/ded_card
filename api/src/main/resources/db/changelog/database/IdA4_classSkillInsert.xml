@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="13" author="oscar">
+  <changeSet id="104" author="oscar">
     <insert tableName="class_skills">
         <column name="class_id" value="1"/>  <!-- barbarian-->
         <column  name="skill_id"  value="4"/>  <!-- Climb-->
@@ -88,6 +88,14 @@
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  
         <column  name="skill_id"  value="16"/>  <!-- Jump-->
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="17"/>  <!-- Know-->
+    </insert>
+    <insert tableName="class_skills">
+        <column name="class_id" value="2"/>  
+        <column  name="skill_id"  value="17"/>  <!-- Know-->
     </insert>
     <insert tableName="class_skills">
         <column name="class_id" value="2"/>  

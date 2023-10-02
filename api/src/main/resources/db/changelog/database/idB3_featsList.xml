@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="16" author="oscar">
+  <changeSet id="202" author="oscar">
     <insert tableName="feats">
       <column  name="feat_name"  value="Acrobatic"/>
       <column  name="feats_type"  value="GENERAL"/>

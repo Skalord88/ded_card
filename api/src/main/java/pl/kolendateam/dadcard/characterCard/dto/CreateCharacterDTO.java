@@ -1,8 +1,10 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 
+@AllArgsConstructor
 @NoArgsConstructor
 public class CreateCharacterDTO {
     public int characterId;

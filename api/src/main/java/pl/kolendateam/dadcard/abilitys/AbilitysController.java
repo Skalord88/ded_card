@@ -33,7 +33,7 @@ public class AbilitysController {
         this.skillsRepository = skillsRepository;
     }
 
-    @PostMapping(value="{id}/ability",consumes = {"application/json"})
+    @PostMapping(value="{id}/ability", consumes = {"application/json"})
     public CharacterAbilityDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilitysDTO abilitysDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);

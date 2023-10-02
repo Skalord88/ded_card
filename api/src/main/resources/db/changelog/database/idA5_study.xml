@@ -4,15 +4,15 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="101" author="oscar">
-      <createTable tableName="skills">
+  <changeSet id="105" author="oscar">
+      <createTable tableName="study">
         <column name="id" type="SMALLINT" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
-        <column name="name" type="varchar(255)">
+        <column name="study_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="ability" type="varchar(255)">
+        <column name="related_skill" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
       </createTable>

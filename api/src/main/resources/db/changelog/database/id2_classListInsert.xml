@@ -249,7 +249,7 @@
             <column name="skill_points" value="4" />
             <column name="hit_dice" value="4" />
             <column name="class_feats_map" value="[
-            {'level':1,'classFeats':['Scribe Scroll']}
+            {'level':1,'classFeats':['Summon Familiar']}
             ]"/>
           </insert>
           <insert tableName="class_character">

@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -34,8 +35,10 @@ import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
+import pl.kolendateam.dadcard.skills.dto.ClassStudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Study;
 
 @NoArgsConstructor
 @Getter
@@ -183,6 +186,8 @@ public class Character {
             ClassSkills skill = new ClassSkills();
                 skill.setIdSkill(skillsList.get(x).getId());
                 skill.setNameSkill(skillsList.get(x).getName());
+                HashMap <Study,Integer> studyField = new HashMap<>();
+                skill.setFieldOfStudy(studyField);
                 skill.setClassSkill(false);
                 skill.setSkillRank(0);
                 AbilityEnum ability = skillsList.get(x).getAbility();
@@ -484,5 +489,27 @@ public class Character {
         this.items.remove(indexToSell);
     }
 
+    public void addStudyToCharacter(Set<Study> availableStudy, int[] classStudyId) {
+
+        HashMap<String,HashSet<Study>> choosenStudyMap = new HashMap<>();
+        HashSet<Study> choosenSkillStudy = new HashSet<>();
+        
+        for(int choosenStudy : classStudyId){
+            for(Study study : availableStudy){
+                if(choosenStudy == study.id){
+                    choosenSkillStudy.add(study);
+                }
+                choosenStudyMap.put(study.getRelatedSkill(),choosenSkillStudy);
+            }
+        }
+        
+        for(String skillToStudy : choosenStudyMap.keySet()){
+            for(ClassSkills cS : classSkills){
+                if(cS.getNameSkill().equals(skillToStudy)){
+                    cS.addStudyMapToSkill(choosenStudyMap.get(skillToStudy));
+                }
+            }
+        }
+    }
 }
 
