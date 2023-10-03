@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
@@ -21,6 +22,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
+@AllArgsConstructor
 @NoArgsConstructor
 public class CharacterDTO {
     public String characterName;
@@ -59,14 +61,14 @@ public class CharacterDTO {
         if(character.getArmorClass()==null){
             this.armorClass = null;
         } else {
-                this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());}
+            this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());}
         this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.specialAttacks = MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
         if(character.getClassSkills()==null){
             this.skillsList = null;
         } else {
-                    this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
+            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
         if(character.getFeatsList()==null){
             this.featsList = null;
         } else {

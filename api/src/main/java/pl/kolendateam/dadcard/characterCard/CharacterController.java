@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,7 +48,7 @@ public class CharacterController {
         this.featsRepository = featsRepository;
     }
 
-    @PostMapping(value = "", consumes = { "application/json" })
+    @PostMapping(value = "", consumes = "application/json;charset=UTF-8")
     public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO) {
 
         Character character = new Character(characterDTO.characterName, characterDTO.playerName);
@@ -134,7 +135,7 @@ public class CharacterController {
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
         // study
-        character.addStudyToCharacter(classCharacter.getAvailableStudy(),classPcDTO.classStudyId);
+        //character.addStudyToCharacter(classCharacter.getAvailableStudy(),classPcDTO.classStudyId);
 
         // saving throw
         if (levelClassInDB == 1) {

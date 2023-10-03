@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import pl.kolendateam.dadcard.skills.entity.Study;
 
+
 public class SkillsDTO {
 
     public int idSkill;
