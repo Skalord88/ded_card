@@ -31,6 +31,8 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -39,27 +41,33 @@ public class CharacterController {
     ClassRepository classRepository;
     CharacterRepository characterRepository;
     FeatsRepository featsRepository;
+    SkillsRepository skillsRepository;
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository,
-            FeatsRepository featsRepository) {
+            FeatsRepository featsRepository, SkillsRepository skillsRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.featsRepository = featsRepository;
+        this.skillsRepository = skillsRepository;
     }
 
-    @PostMapping(value = "", consumes = "application/json;charset=UTF-8")
-    public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO) {
+    @PostMapping(value = "", consumes = "application/json")
+    public CreateCharacterDTO createCharacter(@RequestBody CreateCharacterDTO createCharacterDTO) {
 
-        Character character = new Character(characterDTO.characterName, characterDTO.playerName);
+        Character character = new Character(createCharacterDTO.characterName, createCharacterDTO.playerName);
+
+        List <Skills> skillsList = this.skillsRepository.findAll();
+        character.createSkillsArray(skillsList);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
+        character.setSavingThrow(savingThrow);
+
         HashMap<Integer, Integer> vitaMap = new HashMap<>();
         Vitality vitality = new Vitality(0, vitaMap, 0);
-        SpecialAttacks specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-
         character.setVitality(vitality);
-        character.setSavingThrow(savingThrow);
+
+        SpecialAttacks specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
         character.setSpecialAttacks(specialAttacks);
 
         this.characterRepository.save(character);
@@ -135,7 +143,7 @@ public class CharacterController {
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
         // study
-        //character.addStudyToCharacter(classCharacter.getAvailableStudy(),classPcDTO.classStudyId);
+        character.addStudyToCharacter(classCharacter.getAvailableStudy());
 
         // saving throw
         if (levelClassInDB == 1) {
@@ -233,7 +241,11 @@ public class CharacterController {
             }
         } else {
             character.allSkillsFalse();
+            character.allKnowledgeZero();
         }
+
+        // study
+        character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
 
         // saving throw
         if (levelClassInDB > 1){

@@ -25,12 +25,14 @@ import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 public class AbilitysController {
 
     CharacterRepository characterRepository;
-    SkillsRepository skillsRepository;
+    //SkillsRepository skillsRepository;
 
     @Autowired
-    AbilitysController(CharacterRepository characterRepository,SkillsRepository skillsRepository){
+    AbilitysController(CharacterRepository characterRepository
+    //,SkillsRepository skillsRepository
+    ){
         this.characterRepository = characterRepository;
-        this.skillsRepository = skillsRepository;
+        //this.skillsRepository = skillsRepository;
     }
 
     @PostMapping(value="{id}/ability", consumes = {"application/json"})
@@ -56,11 +58,6 @@ public class AbilitysController {
 
         character.setAbilitys(abilitys);
 
-        List <Skills> skillsList = this.skillsRepository.findAll();
-
-        if(character.getClassSkills().isEmpty()){
-            character.createSkillsArray(skillsList);
-        }
         character.createArmorClass();
 
         this.characterRepository.save(character);

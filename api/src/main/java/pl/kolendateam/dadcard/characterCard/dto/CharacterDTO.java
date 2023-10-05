@@ -1,4 +1,5 @@
 package pl.kolendateam.dadcard.characterCard.dto;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class CharacterDTO {
+public class CharacterDTO implements Serializable {
     public String characterName;
     public String playerName;
     public String race;

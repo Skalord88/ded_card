@@ -183,15 +183,16 @@ public class Character {
         for(int x = 0; x < skillsList.size(); x++){
 
             ClassSkills skill = new ClassSkills();
-                skill.setIdSkill(skillsList.get(x).getId());
-                skill.setNameSkill(skillsList.get(x).getName());
-                HashMap <Study,Integer> studyField = new HashMap<>();
-                skill.setFieldOfStudy(studyField);
-                skill.setClassSkill(false);
-                skill.setSkillRank(0);
-                AbilityEnum ability = skillsList.get(x).getAbility();
-                switch (ability) {
-                    case STRENGHT:
+
+            skill.setIdSkill(skillsList.get(x).getId());
+            skill.setNameSkill(skillsList.get(x).getName());
+            HashMap <String,Integer> studyField = new HashMap<>();
+            skill.setFieldOfStudy(studyField);
+            skill.setClassSkill(false);
+            skill.setSkillRank(0);
+            AbilityEnum ability = skillsList.get(x).getAbility();
+            switch (ability) {
+                case STRENGHT:
                     skill.setSkillAbility(ability);
                     break;
                     case DEXTRITY:
@@ -488,25 +489,34 @@ public class Character {
         this.items.remove(indexToSell);
     }
 
-    public void addStudyToCharacter(Set<Study> availableStudy, int[] classStudyId) {
+    public void addStudyToCharacter(Set<Study> availableStudy) {
 
-        HashMap<String,HashSet<Study>> choosenStudyMap = new HashMap<>();
-        HashSet<Study> choosenSkillStudy = new HashSet<>();
-        
-        for(int choosenStudy : classStudyId){
-            for(Study study : availableStudy){
-                if(choosenStudy == study.id){
-                    choosenSkillStudy.add(study);
+        for(Study studyOfClass : availableStudy){
+            for(ClassSkills cS : classSkills){
+                if(studyOfClass.getRelatedSkill().equals(cS.getNameSkill())){
+                    cS.addStudyMapToSkill(studyOfClass);
                 }
-                choosenStudyMap.put(study.getRelatedSkill(),choosenSkillStudy);
             }
         }
-        
-        for(String skillToStudy : choosenStudyMap.keySet()){
-            for(ClassSkills cS : classSkills){
-                if(cS.getNameSkill().equals(skillToStudy)){
-                    cS.addStudyMapToSkill(choosenStudyMap.get(skillToStudy));
+    }
+
+	public void removeStudyFromCharacter(Set<Study> availableStudy) {
+        for(ClassSkills cS : classSkills){
+            if(!cS.getFieldOfStudy().isEmpty()){
+                for(Study study : availableStudy){
+                    if(study.getRelatedSkill().equals(cS.getNameSkill())){
+                        cS.removeStudyFromKnowledge(cS.getFieldOfStudy(),study.getStudyName());
+                    }
                 }
+            }
+        }
+	}
+
+    public void allKnowledgeZero() {
+        for(ClassSkills cS : classSkills){
+            if(!cS.getFieldOfStudy().isEmpty()){
+                HashMap<String,Integer> emptyKnow = new HashMap<>();
+                cS.setFieldOfStudy(emptyKnow);
             }
         }
     }
