@@ -42,7 +42,6 @@ public class Race {
     @Enumerated(EnumType.STRING)
     SizeEnum size;
 
-    @NonNull
     int speed;
 
     @NonNull

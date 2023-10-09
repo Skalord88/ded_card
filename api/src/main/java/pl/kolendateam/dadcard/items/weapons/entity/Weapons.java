@@ -1,8 +1,4 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
-import java.util.ArrayList;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
-
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

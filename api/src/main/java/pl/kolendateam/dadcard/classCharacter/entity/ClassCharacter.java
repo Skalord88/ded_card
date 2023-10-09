@@ -41,13 +41,11 @@ public class ClassCharacter {
     @NonNull
     String avatarUrl;
 
-    @NonNull
     byte hitDice;
 
     @NonNull
     String savingThrow;
 
-    @NonNull
     double classBab;
     
     @ManyToMany
@@ -66,7 +64,6 @@ public class ClassCharacter {
     )
     Set<Study> availableStudy = new HashSet<>();
 
-    @NonNull
     byte skillPoints;
 
     String classFeatsMap;
