@@ -20,6 +20,8 @@ public class ClassPc implements Serializable {
     byte hitDice;
     String savingThrow;
     double classBab;
+    String spellsPerDay;
+    String spellsKnown;
 
     public void incrementLevel() {
         this.level++;

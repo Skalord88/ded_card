@@ -33,6 +33,12 @@
         <column name="class_feats_map" type="varchar(10000)">
           <constraints nullable="true"/>
         </column>
+        <column name="spells_per_day" type="varchar(10)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="spells_known" type="varchar(10)">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

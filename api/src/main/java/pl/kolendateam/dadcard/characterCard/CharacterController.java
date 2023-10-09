@@ -116,7 +116,8 @@ public class CharacterController {
         ClassPc classPc = new ClassPc(
                 classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
-                classCharacter.getClassBab());
+                classCharacter.getClassBab(), classCharacter.getSpellsPerDay(),
+                classCharacter.getSpellsKnown());
 
         character.incrementEffectiveCharacterLv();
 
@@ -195,7 +196,8 @@ public class CharacterController {
         ClassPc classPc = new ClassPc(
                 classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
-                classCharacter.getClassBab());
+                classCharacter.getClassBab(), classCharacter.getSpellsPerDay(),
+                classCharacter.getSpellsKnown());
 
         // feat
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());

@@ -58,6 +58,8 @@
             {'level':18,'classFeats':['Mass suggestion']},
             {'level':20,'classFeats':['Inspire courage']}
             ]"/>
+            <column name="spells_per_day" value="bard"/>
+            <column name="spells_known" value="bard"/>
             </insert>
             <insert tableName="class_character">
               <column name="id" value="3"/>

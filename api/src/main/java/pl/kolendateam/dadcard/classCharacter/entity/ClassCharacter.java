@@ -68,4 +68,6 @@ public class ClassCharacter {
 
     String classFeatsMap;
 
+    String spellsPerDay;
+    String spellsKnown;
 }

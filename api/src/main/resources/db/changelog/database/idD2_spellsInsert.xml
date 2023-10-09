@@ -1,0 +1,139 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+<changeSet id="402" author="oscar">
+
+    <insert tableName="spells">
+        <column name="name" value="Acid Arrow"/>
+        <column name="school" value="['CONJURATION','CREATION','ACID']"/>
+        <column name="level" value="Sor/Wiz 2"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="LONG"/>
+        <column name="effect" value="One arrow of acid"/>
+        <column name="duration" value="1 round + 1 round per three levels"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        A magical arrow of acid springs from your hand and speeds to its target. You must succeed on a ranged touch attack to hit your target. The arrow deals 2d4 points of acid damage with no splash damage. For every three caster levels (to a maximum of 18th), the acid, unless somehow neutralized, lasts for another round, dealing another 2d4 points of damage in that round.
+
+        Material Component
+        Powdered rhubarb leaf and an adder’s stomach.
+        
+        Focus
+        A dart."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Acid Fog"/>
+        <column name="school" value="['CONJURATION','CREATION','ACID']"/>
+        <column name="level" value="Sor/Wiz 6, Water 7"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL','MATERIAL_DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="effect" value="Fog spreads in 20-ft. radius, 20 ft. high"/>
+        <column name="duration" value="1 round/level"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        Acid fog creates a billowing mass of misty vapors similar to that produced by a solid fog spell. In addition to slowing creatures down and obscuring sight, this spell’s vapors are highly acidic. Each round on your turn, starting when you cast the spell, the fog deals 2d6 points of acid damage to each creature and object within it.
+
+        Arcane Material Component
+        A pinch of dried, powdered peas combined with powdered animal hoof."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Acid Splash"/>
+        <column name="school" value="['CONJURATION','CREATION','ACID']"/>
+        <column name="level" value="Sor/Wiz 0"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="effect" value="One missile of acid"/>
+        <column name="duration" value="INSTANTANEOUS"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Acid Splash"/>
+        <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']"/>
+        <column name="level" value="Clr 2, Good 2, Luck 2"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="One missile of acid"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="YES_HARMLESS"/>
+        <column name="descriptive_text" value="Aid grants the target a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (to a maximum of 1d8+10 temporary hit points at caster level 10th)."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Air Walk"/>
+        <column name="school" value="['TRANSMUTATION','AIR']"/>
+        <column name="level" value="Air 4, Clr 4, Drd 4"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="Creature (Gargantuan or smaller) touched"/>
+        <column name="duration" value="TEN_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="YES_HARMLESS"/>
+        <column name="descriptive_text" value="The subject can tread on air as if walking on solid ground. Moving upward is similar to walking up a hill. The maximum upward or downward angle possible is 45 degrees, at a rate equal to one-half the air walker’s normal speed.
+
+        A strong wind (21+ mph) can push the subject along or hold it back. At the end of its turn each round, the wind blows the air walker 5 feet for each 5 miles per hour of wind speed. The creature may be subject to additional penalties in exceptionally strong or turbulent winds, such as loss of control over movement or physical damage from being buffeted about.
+        
+        Should the spell duration expire while the subject is still aloft, the magic fails slowly. The subject floats downward 60 feet per round for 1d6 rounds. If it reaches the ground in that amount of time, it lands safely. If not, it falls the rest of the distance, taking 1d6 points of damage per 10 feet of fall. Since dispelling a spell effectively ends it, the subject also descends in this way if the air walk spell is dispelled, but not if it is negated by an antimagic field.
+        
+        You can cast air walk on a specially trained mount so it can be ridden through the air. You can train a mount to move with the aid of air walk (counts as a trick; see Handle Animal skill) with one week of work and a DC 25 Handle Animal check."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Alarm"/>
+        <column name="school" value="['ABJURATION']"/>
+        <column name="level" value="Brd 1, Rgr 1, Sor/Wiz 1"/>
+        <column name="components" value="['VERBAL','SOMATIC','FOCUS_DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="20-ft.-radius emanation centered on a point in space"/>
+        <column name="duration" value="TWO_HOURS_PER_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="Alarm sounds a mental or audible alarm each time a creature of Tiny or larger size enters the warded area or touches it. A creature that speaks the password (determined by you at the time of casting) does not set off the alarm. You decide at the time of casting whether the alarm will be mental or audible.
+
+        Mental Alarm
+        A mental alarm alerts you (and only you) so long as you remain within 1 mile of the warded area. You note a single mental “ping” that awakens you from normal sleep but does not otherwise disturb concentration. A silence spell has no effect on a mental alarm.
+        
+        Audible Alarm
+        An audible alarm produces the sound of a hand bell, and anyone within 60 feet of the warded area can hear it clearly. Reduce the distance by 10 feet for each interposing closed door and by 20 feet for each substantial interposing wall.
+        
+        In quiet conditions, the ringing can be heard faintly as far as 180 feet away. The sound lasts for 1 round. Creatures within a silence spell cannot hear the ringing.
+        
+        Ethereal or astral creatures do not trigger the alarm.
+        
+        Alarm can be made permanent with a permanency spell.
+        
+        Arcane Focus
+        A tiny bell and a piece of very fine silver wire"/>
+    </insert>
+
+    <!--
+    <insert tableName="spells">
+        <column name="name" value=""/>
+        <column name="school" value="['']"/>
+        <column name="level" value=""/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
+        <column name="casting_time" value=""/>
+        <column name="range" value=""/>
+        <column name="effect" value=""/>
+        <column name="duration" value=""/>
+        <column name="saving_throw" value=""/>
+        <column name="spell_resistance" value=""/>
+        <column name="descriptive_text" value="
+        "/>
+    </insert>
+    -->
+
+    </changeSet>
+</databaseChangeLog>
