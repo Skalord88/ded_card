@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.skills.entity;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

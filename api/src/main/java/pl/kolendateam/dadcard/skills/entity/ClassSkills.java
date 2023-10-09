@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.skills.entity;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

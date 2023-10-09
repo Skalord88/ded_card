@@ -18,13 +18,7 @@ public class MapperSkillsToDTO {
             SkillsDTO skillDTO = new SkillsDTO();
                 skillDTO.idSkill = skill.getIdSkill();
                 skillDTO.nameSkill = skill.getNameSkill();
-                if(skill.getNameSkill().equals("Knowledge")
-                //|| skill.getNameSkill().equals("Perform")
-                //|| skill.getNameSkill().equals("Profession")
-                //|| skill.getNameSkill().equals("Speak Language")
-                ){
-                    skillDTO.fieldOfStudy = skill.getFieldOfStudy();
-                }
+                skillDTO.fieldOfStudy = skill.getFieldOfStudy();
                 skillDTO.classSkill = skill.isClassSkill();
                 skillDTO.skillRank = skill.getSkillRank();
                 AbilityEnum ability = skill.getSkillAbility();
