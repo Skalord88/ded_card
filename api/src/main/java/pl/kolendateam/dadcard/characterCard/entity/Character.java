@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -31,12 +30,12 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
 
 @NoArgsConstructor
 @Getter
@@ -94,7 +93,7 @@ public class Character {
     ArrayList<CharacterFeat> featsList;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<Weapons> items;
+    ArrayList<Items> items;
 
     public Character(String characterName, String playerName){
         this.characterName = characterName;
@@ -477,7 +476,12 @@ public class Character {
         }
     }
 
-    public void buyWeapon(Weapons weapon) {
+    public void buyItems(Items itemToBuy) {
+        this.items.add(itemToBuy);
+    }
+
+    public void sellItem(int indexToSell){
+        this.items.remove(indexToSell);
     }
 
 }

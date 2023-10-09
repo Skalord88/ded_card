@@ -1,5 +1,6 @@
-package pl.kolendateam.dadcard.weapons;
+package pl.kolendateam.dadcard.items;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,9 +17,10 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.weapons.dto.WeaponsDTO;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
-import pl.kolendateam.dadcard.weapons.repository.WeaponsRepository;
+import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.items.weapons.repository.WeaponsRepository;
 
 @RestController
 @RequestMapping("weapons")
@@ -28,7 +30,7 @@ public class WeaponsController {
     CharacterRepository characterRepository;
 
     @Autowired
-    WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
+    public WeaponsController(WeaponsRepository weaponRepository,CharacterRepository characterRepository){
         this.weaponsRepository = weaponRepository;
         this.characterRepository = characterRepository;
     }
@@ -62,10 +64,40 @@ public class WeaponsController {
         
         Character character = characterOpt.get();
 
-        character.buyWeapon(weapon);
+        character.buyItems(weapon);
 
         this.characterRepository.save(character);
-    
+
+        return new CharacterDTO (character);
+
+    }
+
+    @PostMapping(value = "{id}/sell", consumes = {"application/json"})
+    public CharacterDTO sellWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Optional<Weapons> weaponOpt = this.weaponsRepository.findById(wDTO.id);
+
+        if (!weaponOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Weapon Not Found");
+        }
+
+        Weapons weapon = weaponOpt.get();
+
+        Character character = characterOpt.get();
+
+        int indexOfItem = weapon.findItemIndexinArrayById(character.getItems(), weapon);
+
+        character.sellItem(indexOfItem);
+
+        this.characterRepository.save(character);
+
         return new CharacterDTO (character);
 
     }

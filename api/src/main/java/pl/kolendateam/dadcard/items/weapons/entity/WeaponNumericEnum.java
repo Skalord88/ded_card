@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.weapons.entity;
+package pl.kolendateam.dadcard.items.weapons.entity;
 
 public enum WeaponNumericEnum {
 
@@ -8,14 +8,14 @@ public enum WeaponNumericEnum {
     D2("D2"),
     D3("D3"),
     D4("D4"),
-    Dd4("Dd4"),
+    DD4("DD4"),
     D6("D6"),
-    Dd6("Dd6"),
+    DD6("DD6"),
     D6_D6("D6_D6"),
     D8("D8"),
     D8_D6("D8_D6"),
     D8_D8("D8_D8"),
-    Na("Na"),
+    NA("NA"),
     D20("D20"),
     D100("D100"),
     X2("X2"),

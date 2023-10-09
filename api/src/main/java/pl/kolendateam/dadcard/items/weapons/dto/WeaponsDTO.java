@@ -1,6 +1,7 @@
-package pl.kolendateam.dadcard.weapons.dto;
+package pl.kolendateam.dadcard.items.weapons.dto;
 
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -8,10 +9,10 @@ import com.google.gson.reflect.TypeToken;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.dadcard.weapons.entity.WeaponCategoriesEnum;
-import pl.kolendateam.dadcard.weapons.entity.WeaponNameEnum;
-import pl.kolendateam.dadcard.weapons.entity.WeaponNumericEnum;
-import pl.kolendateam.dadcard.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,11 +20,11 @@ public class WeaponsDTO {
 
     public int id;
     public WeaponNameEnum name;
-    public double cost;
+    public BigDecimal cost;
     public WeaponNumericEnum damage;
     public WeaponNumericEnum critical;
     public Integer range;
-    public double weight;
+    public BigDecimal weight;
     public WeaponCategoriesEnum[] type;
     public SpecialAttacksDTO specialAttacks;
     public String description;
@@ -49,6 +50,4 @@ public class WeaponsDTO {
         this.description = w.getDescription();
     }
 
-    
-    
 }
