@@ -16,52 +16,46 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 public class Vitality {
 
     int life;
-    HashMap <Integer,Integer> hitDices;
+    HashMap<Integer, Integer> hitDices;
     int hitPoints;
-
-    
 
     public Vitality(HashMap<Integer, Integer> hitDices) {
         this.hitDices = hitDices;
     }
 
-    public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality){
+    public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality) {
 
         life = abilitys.getConstitution();
         vitality.getHitDices().put(hD, +1);
-        hitPoints = vitality.getHitPoints()+hD+abilitys.bonusConstitution(abilitys);
+        hitPoints = vitality.getHitPoints() + hD + abilitys.bonusConstitution(abilitys);
 
         return vitality;
     }
 
-    public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+    public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
 
         int hP;
 
-        if(ecl % 2 == 0){
-            hP = vitality.hitPoints+(hitDice/2)+abilitys.bonusConstitution
-            (abilitys);
+        if (effectiveCharacterLv % 2 == 0) {
+            hP = vitality.hitPoints + (hitDice / 2) + abilitys.bonusConstitution(abilitys);
         } else {
-            hP = vitality.hitPoints+((hitDice/2)+1)+abilitys.bonusConstitution
-            (abilitys);
+            hP = vitality.hitPoints + ((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys);
         }
 
         return hP;
 
     }
 
-    public int hitPointsAtLastLevel(int hitDice, Vitality vitality, Abilitys abilitys, int ecl) {
+    public int hitPointsAtLastLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
 
         int hP;
 
-        if(ecl % 2 == 0){
-            hP = vitality.hitPoints-(((hitDice/2)+1)+abilitys.bonusConstitution
-            (abilitys));
+        if (effectiveCharacterLv % 2 == 0) {
+            hP = vitality.hitPoints - (((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys));
         } else {
-            hP = vitality.hitPoints-(((hitDice/2))+abilitys.bonusConstitution
-            (abilitys));
+            hP = vitality.hitPoints - (((hitDice / 2)) + abilitys.bonusConstitution(abilitys));
         }
-        
+
         return hP;
 
     }
@@ -69,20 +63,20 @@ public class Vitality {
     public Vitality setRaceLevelAdjustmentHP(int lvAdj, Vitality vitality, Abilitys abilitys) {
         Vitality vita = new Vitality();
         vita.life = abilitys.getConstitution();
-        HashMap <Integer,Integer> vitaMap = new HashMap<Integer,Integer>();
-        if(lvAdj==0){
+        HashMap<Integer, Integer> vitaMap = new HashMap<Integer, Integer>();
+        if (lvAdj == 0) {
             vita.setHitDices(vitaMap);
             vita.hitPoints = 0;
         } else {
             vitaMap.put(4, lvAdj);
             vita.setHitDices(vitaMap);
-            int lvAdjNext = lvAdj-1;
-            vita.hitPoints = 4+(lvAdjNext*2)+(lvAdjNext/2);
+            int lvAdjNext = lvAdj - 1;
+            vita.hitPoints = 4 + (lvAdjNext * 2) + (lvAdjNext / 2);
         }
         return vita;
     }
 
-    public void removeHDClass(int hD){
+    public void removeHDClass(int hD) {
         this.hitDices.remove(hD);
     }
 }

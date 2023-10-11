@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.abilitys;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,20 +16,17 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterAbilityDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.skills.entity.Skills;
-import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("")
 public class AbilitysController {
 
     CharacterRepository characterRepository;
-    SkillsRepository skillsRepository;
 
     @Autowired
-    AbilitysController(CharacterRepository characterRepository,SkillsRepository skillsRepository){
+    AbilitysController(CharacterRepository characterRepository
+    ){
         this.characterRepository = characterRepository;
-        this.skillsRepository = skillsRepository;
     }
 
     @PostMapping(value="{id}/ability", consumes = {"application/json"})
@@ -56,11 +52,6 @@ public class AbilitysController {
 
         character.setAbilitys(abilitys);
 
-        List <Skills> skillsList = this.skillsRepository.findAll();
-
-        if(character.getClassSkills().isEmpty()){
-            character.createSkillsArray(skillsList);
-        }
         character.createArmorClass();
 
         this.characterRepository.save(character);

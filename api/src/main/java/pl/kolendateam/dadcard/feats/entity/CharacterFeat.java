@@ -125,39 +125,40 @@ public class CharacterFeat implements Serializable{
     }
 
     public String wildShape(int levelOfFeat){
-        String stringFeatSpecial = "";
 
         if(levelOfFeat < 4){
-            stringFeatSpecial = levelOfFeat + "/day";
+            return levelOfFeat + "/day";
         }
         if(levelOfFeat == 4){
-            stringFeatSpecial = "3/day (Large)";
+            return "3/day (Large)";
         }
         if(levelOfFeat == 5){
-            stringFeatSpecial = "4/day (Large)";
+            return "4/day (Large)";
         }
         if(levelOfFeat == 6){
-            stringFeatSpecial = "4/day (Large and Tiny)";
+            return "4/day (Large and Tiny)";
         }
         if(levelOfFeat == 7){
-            stringFeatSpecial = "4/day (Large, Tiny and plant)";
+            return "4/day (Large, Tiny and plant)";
         }
         if(levelOfFeat == 8){
-            stringFeatSpecial = "5/day (Large, Tiny and plant)";
+            return "5/day (Large, Tiny and plant)";
         }
         if(levelOfFeat == 9){
-            stringFeatSpecial = "5/day (Large, Tiny, Huge and plant)";
+            return "5/day (Large, Tiny, Huge and plant)";
         }
         if(levelOfFeat == 10){
-            stringFeatSpecial = "5/day (Large, Tiny, Huge and plant), 1/day (elemental)";
+            return "5/day (Large, Tiny, Huge and plant), 1/day (elemental)";
         }
         if(levelOfFeat == 11){
-            stringFeatSpecial = "6/day (Large, Tiny, Huge and plant), 2/day (elemental)";
+            return "6/day (Large, Tiny, Huge and plant), 2/day (elemental)";
         }
-        if(levelOfFeat == 12){
-            stringFeatSpecial = "6/day (Large, Tiny, Huge and plant), 3/day (Huge elemental)";
+        if(levelOfFeat >= 12){
+            return "6/day (Large, Tiny, Huge and plant), 3/day (Huge elemental)";
         }
-        return stringFeatSpecial;
+
+        return "";
+
     }
 
     public String flurryOfBlows(int levelOfFeat) {
@@ -188,96 +189,28 @@ public class CharacterFeat implements Serializable{
         return stringFeatSpecial;
     }
 
-        public String unarmedStrike(int levelOfFeat) {
-        String stringFeatSpecial = "1d6";
-        if(levelOfFeat > 1){
-            stringFeatSpecial = "1d8";
+    public String unarmedStrike(int levelOfFeat) {
+        if(levelOfFeat < 4){
+            return "1d" + (5 + levelOfFeat * 2 - 1);
+        } else {
+            return "2d" + ((levelOfFeat -1) * 2);
         }
-        if(levelOfFeat > 2){
-            stringFeatSpecial = "1d10";
-        }
-        if(levelOfFeat > 3){
-            stringFeatSpecial = "2d6";
-        }
-        if(levelOfFeat > 4){
-            stringFeatSpecial = "2d8";
-        }
-        if(levelOfFeat > 5){
-            stringFeatSpecial = "2d10";
-        }
-        return stringFeatSpecial;
     }
 
     public String aCBonus(int levelOfFeat) {
-        String stringFeatSpecial = "AC bonus +0";
-        if(levelOfFeat > 1){
-            stringFeatSpecial = "AC bonus +1";
-        }
-        if(levelOfFeat > 2){
-            stringFeatSpecial = "AC bonus +2";
-        }
-        if(levelOfFeat > 3){
-            stringFeatSpecial = "AC bonus +3";
-        }
-        if(levelOfFeat > 4){
-            stringFeatSpecial = "AC bonus +4";
-        }
-        return stringFeatSpecial;
+        return "AC bonus +" + (levelOfFeat-1);
     }
 
-        public String fastMovement(int levelOfFeat) {
-        String stringFeatSpecial = "+0 ft.";
-        if(levelOfFeat > 1){
-            stringFeatSpecial = "+10 ft.";
-        }
-        if(levelOfFeat > 2){
-            stringFeatSpecial = "+20 ft.";
-        }
-        if(levelOfFeat > 3){
-            stringFeatSpecial = "+30 ft.";
-        }
-        if(levelOfFeat > 4){
-            stringFeatSpecial = "+40 ft.";
-        }
-        if(levelOfFeat > 5){
-            stringFeatSpecial = "+50 ft.";
-        }
-        if(levelOfFeat > 6){
-            stringFeatSpecial = "+60 ft.";
-        }
-        return stringFeatSpecial;
+    public String fastMovement(int levelOfFeat) {
+        return "+" + (levelOfFeat-1)*10+ "ft.";
     }
 
         public String slowFall(int levelOfFeat) {
-        String stringFeatSpecial = "0 ft.";
-        if(levelOfFeat > 1){
-            stringFeatSpecial = "20 ft.";
+        if (levelOfFeat < 9) {
+            return "+" + (10 + 10 * levelOfFeat) + "ft";
+        } else {
+            return "any distance";
         }
-        if(levelOfFeat > 2){
-            stringFeatSpecial = "30 ft.";
-        }
-        if(levelOfFeat > 3){
-            stringFeatSpecial = "40 ft.";
-        }
-        if(levelOfFeat > 4){
-            stringFeatSpecial = "50 ft.";
-        }
-        if(levelOfFeat > 5){
-            stringFeatSpecial = "60 ft.";
-        }
-        if(levelOfFeat > 6){
-            stringFeatSpecial = "70 ft.";
-        }
-        if(levelOfFeat > 7){
-            stringFeatSpecial = "80 ft.";
-        }
-        if(levelOfFeat > 8){
-            stringFeatSpecial = "90 ft.";
-        }
-        if(levelOfFeat > 9){
-            stringFeatSpecial = "any distance";
-        }
-        return stringFeatSpecial;
     }
 
         public String kiStrike(int levelOfFeat) {
@@ -292,20 +225,15 @@ public class CharacterFeat implements Serializable{
         }
 
         public String favoredEnemy(int levelOfFeat) {
-            String stringFeatSpecial = "1st favored enemy";
-        if(levelOfFeat > 1){
-            stringFeatSpecial = "2nd favored enemy";
+        if(levelOfFeat == 1){
+            return "1st favored enemy";
+        } else if (levelOfFeat == 2) {
+            return "2nd favored enemy";
+        } else if(levelOfFeat == 3){
+            return "3rd favored enemy";
+        } else {
+            return levelOfFeat + "th favored enemy";
         }
-        if(levelOfFeat > 2){
-            stringFeatSpecial = "3rd favored enemy";
-        }
-        if(levelOfFeat > 3){
-            stringFeatSpecial = "4th favored enemy";
-        }
-        if(levelOfFeat > 4){
-            stringFeatSpecial = "5th favored enemy";
-        }
-            return stringFeatSpecial;
-        }
+    }
     
 }

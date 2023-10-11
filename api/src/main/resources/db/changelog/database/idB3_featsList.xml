@@ -954,7 +954,7 @@ Tracked party hides trail (and moves at half speed)	+5
   <column  name="feat_name"  value="Impromptu Sneak Attack"/>
   <column  name="feats_type"  value="CLASS"/>
   <column  name="description" value="
-  Beginning at 3rd level, once per day an arcane trickster can declare one melee or ranged attack he makes to be a sneak attack (the target can be no more than 30 feet distant if the impromptu sneak attack is a ranged attack). The target of an impromptu sneak attack loses any Dexterity bonus to AC, but only against that attack. The power can be used against any target, but creatures that are not subject to critical hits take no extra damage (though they still lose any Dexterity bonus to AC against the attack).
+  Beginning at 3rd level, once per day an arcane trickster can deffectiveCharacterLvare one melee or ranged attack he makes to be a sneak attack (the target can be no more than 30 feet distant if the impromptu sneak attack is a ranged attack). The target of an impromptu sneak attack loses any Dexterity bonus to AC, but only against that attack. The power can be used against any target, but creatures that are not subject to critical hits take no extra damage (though they still lose any Dexterity bonus to AC against the attack).
 
   At 7th level, an arcane trickster can use this ability twice per day.
   "/>

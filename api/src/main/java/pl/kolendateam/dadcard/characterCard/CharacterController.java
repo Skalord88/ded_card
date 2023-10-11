@@ -7,7 +7,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +30,8 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -39,27 +40,33 @@ public class CharacterController {
     ClassRepository classRepository;
     CharacterRepository characterRepository;
     FeatsRepository featsRepository;
+    SkillsRepository skillsRepository;
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository,
-            FeatsRepository featsRepository) {
+            FeatsRepository featsRepository, SkillsRepository skillsRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.featsRepository = featsRepository;
+        this.skillsRepository = skillsRepository;
     }
 
-    @PostMapping(value = "", consumes = "application/json;charset=UTF-8")
-    public CreateCharacterDTO createCharacter(@RequestBody CharacterDTO characterDTO) {
+    @PostMapping(value = "", consumes = "application/json")
+    public CreateCharacterDTO createCharacter(@RequestBody CreateCharacterDTO createCharacterDTO) {
 
-        Character character = new Character(characterDTO.characterName, characterDTO.playerName);
+        Character character = new Character(createCharacterDTO.characterName, createCharacterDTO.playerName);
+
+        List<Skills> skillsList = this.skillsRepository.findAll();
+        character.createSkillsArray(skillsList);
 
         SavingThrow savingThrow = new SavingThrow(0, 0, 0);
+        character.setSavingThrow(savingThrow);
+
         HashMap<Integer, Integer> vitaMap = new HashMap<>();
         Vitality vitality = new Vitality(0, vitaMap, 0);
-        SpecialAttacks specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-
         character.setVitality(vitality);
-        character.setSavingThrow(savingThrow);
+
+        SpecialAttacks specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
         character.setSpecialAttacks(specialAttacks);
 
         this.characterRepository.save(character);
@@ -107,14 +114,14 @@ public class CharacterController {
         ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
         ClassPc classPc = new ClassPc(
-                classCharacter.getId(), classCharacter.getName(), (byte) 1, 
+                classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
                 classCharacter.getClassBab());
 
-        character.incrementEcl();
+        character.incrementEffectiveCharacterLv();
 
         // skills & hp
-        if (character.getEcl() == 1) {
+        if (character.getEffectiveCharacterLv() == 1) {
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
             character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
@@ -135,7 +142,7 @@ public class CharacterController {
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
 
         // study
-        //character.addStudyToCharacter(classCharacter.getAvailableStudy(),classPcDTO.classStudyId);
+        character.addStudyToCharacter(classCharacter.getAvailableStudy());
 
         // saving throw
         if (levelClassInDB == 1) {
@@ -190,7 +197,6 @@ public class CharacterController {
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
                 classCharacter.getClassBab());
 
-
         // feat
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
         List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
@@ -200,22 +206,22 @@ public class CharacterController {
             character.removeFeatFromPc(chFeat);
         }
 
-        character.decrementEcl();
+        character.decrementEffectiveCharacterLv();
 
         // class
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-        if(levelClassInDB==1){
+        if (levelClassInDB == 1) {
             character.removeClassFromPcArray(indexClassInDB);
         }
-        if(levelClassInDB>1){
+        if (levelClassInDB > 1) {
             character.decrementLevelClassForIndex(indexClassInDB);
         }
 
         // skillPoints & hp
-        if (character.getEcl() == 0){
+        if (character.getEffectiveCharacterLv() == 0) {
             character.setSkillPoints(0);
-            HashMap <Integer,Integer> vitaHD = new HashMap<>();
-            Vitality vita = new Vitality(0,vitaHD,0);
+            HashMap<Integer, Integer> vitaHD = new HashMap<>();
+            Vitality vita = new Vitality(0, vitaHD, 0);
             character.setVitality(vita);
         } else {
             character.decalculateSkillPoints(classCharacter.getSkillPoints());
@@ -223,7 +229,7 @@ public class CharacterController {
         }
 
         // re-trueSkills
-        if(character.getClassPcArray().size() != 0){
+        if (character.getClassPcArray().size() != 0) {
             for (ClassPc cP : character.getClassPcArray()) {
                 for (ClassCharacter cC : allClassesList) {
                     if (cC.getId() == cP.getId()) {
@@ -233,13 +239,17 @@ public class CharacterController {
             }
         } else {
             character.allSkillsFalse();
+            character.allKnowledgeZero();
         }
 
+        // study
+        character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
+
         // saving throw
-        if (levelClassInDB > 1){
+        if (levelClassInDB > 1) {
             character.decementSavingThrow();
         }
-        if (levelClassInDB == 1){
+        if (levelClassInDB == 1) {
             character.minusSavingThrowLevelOne(classPc.getSavingThrow());
         }
 

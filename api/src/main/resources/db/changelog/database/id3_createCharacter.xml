@@ -34,7 +34,7 @@
         <column name="class_pc_array" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="ecl" type="SMALLINT">
+        <column name="effective_character_lv" type="SMALLINT">
           <constraints nullable="true"/>
         </column>
         <column name="level_adjustment" type="TINYINT">
