@@ -4,9 +4,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="15" author="oscar">
+  <changeSet id="201" author="oscar">
       <createTable tableName="feats">
-        <column name="id" type="int" autoIncrement="true">
+        <column name="id" type="SMALLINT" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="feat_name" type="varchar(255)">
@@ -18,7 +18,7 @@
         <column name="prerequisite" type="varchar(1000)">
           <constraints nullable="true"/>
         </column>
-        <column name="description" type="varchar(10000)">
+        <column name="description" type="varchar(90000)">
           <constraints nullable="false"/>
         </column>
         <column name="speed" type="int">

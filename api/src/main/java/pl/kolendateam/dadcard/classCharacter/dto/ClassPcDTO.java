@@ -8,5 +8,6 @@ public class ClassPcDTO {
     public int id;
     public String className;
     public int level;
+    public int[] classStudyId;
 
 }

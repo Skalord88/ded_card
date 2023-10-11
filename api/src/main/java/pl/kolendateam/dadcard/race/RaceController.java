@@ -83,6 +83,8 @@ public class RaceController {
 
         character.sizeCharacter(race.getSize());
 
+        character.addSpeed(race.getSpeed());
+
         if(race.getAbilitys() != null){
             character.addAbilityRace(race.getAbilitys());
         }

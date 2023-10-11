@@ -12,23 +12,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Study;
 
 @NoArgsConstructor
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ClassCharacter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     @NonNull
     @Enumerated(EnumType.STRING)
@@ -40,13 +41,11 @@ public class ClassCharacter {
     @NonNull
     String avatarUrl;
 
-    @NonNull
-    int hitDice;
+    byte hitDice;
 
     @NonNull
     String savingThrow;
 
-    @NonNull
     double classBab;
     
     @ManyToMany
@@ -57,8 +56,15 @@ public class ClassCharacter {
     )
     Set<Skills> availableSkills = new HashSet<>();
 
-    @NonNull
-    int skillPoints;
+    @ManyToMany
+    @JoinTable(
+        name = "class_study",
+        joinColumns = @JoinColumn(name = "class_id"),
+        inverseJoinColumns = @JoinColumn(name = "study_id")
+    )
+    Set<Study> availableStudy = new HashSet<>();
+
+    byte skillPoints;
 
     String classFeatsMap;
 

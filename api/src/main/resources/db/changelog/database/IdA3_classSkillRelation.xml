@@ -4,12 +4,12 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="12" author="oscar">
+  <changeSet id="103" author="oscar">
       <createTable tableName="class_skills">
-        <column name="class_id" type="int">
+        <column name="class_id" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
-        <column name="skill_id" type="int">
+        <column name="skill_id" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
       </createTable>

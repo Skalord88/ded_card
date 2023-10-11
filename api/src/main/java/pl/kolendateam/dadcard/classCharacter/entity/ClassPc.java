@@ -14,10 +14,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ClassPc implements Serializable {
 
-    int id;
+    short id;
     String name;
-    int level;
-    int hitDice;
+    byte level;
+    byte hitDice;
     String savingThrow;
     double classBab;
 
@@ -37,7 +37,7 @@ public class ClassPc implements Serializable {
         return -1;
     }
 
-    public int findLevelInArrayById(ArrayList<ClassPc> classPcList, int id) {
+    public int findLevelInArrayById(ArrayList<ClassPc> classPcList, short id) {
 
         int levelOfClass=0;
         

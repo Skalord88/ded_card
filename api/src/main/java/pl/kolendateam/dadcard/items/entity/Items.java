@@ -3,7 +3,6 @@ package pl.kolendateam.dadcard.items.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
@@ -29,7 +28,7 @@ public class Items implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    short id;
 
     String name;
     BigDecimal cost;

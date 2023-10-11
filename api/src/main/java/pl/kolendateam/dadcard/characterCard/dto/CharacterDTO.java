@@ -1,6 +1,9 @@
 package pl.kolendateam.dadcard.characterCard.dto;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
@@ -21,8 +24,9 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 
+@AllArgsConstructor
 @NoArgsConstructor
-public class CharacterDTO {
+public class CharacterDTO implements Serializable {
     public String characterName;
     public String playerName;
     public String race;
@@ -31,7 +35,7 @@ public class CharacterDTO {
     public int speed;
     public AbilitysDTO abilitys;
     public ArrayList<ClassPcListDTO> classPcList;
-    public int ecl;
+    public int effectiveCharacterLv;
     public VitalityDTO vitality;
     public int bab;
     public ArmorClassDTO armorClass;
@@ -51,26 +55,33 @@ public class CharacterDTO {
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-        this.ecl = character.getEcl()+character.getLevelAdjustment();
-        if(character.getVitality()==null){
+        this.effectiveCharacterLv = character.getEffectiveCharacterLv() + character.getLevelAdjustment();
+        if (character.getVitality() == null) {
             this.vitality = null;
-        } else {this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());}
-        this.bab = (int)character.getBab();
-        if(character.getArmorClass()==null){
+        } else {
+            this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
+        }
+        this.bab = (int) character.getBab();
+        if (character.getArmorClass() == null) {
             this.armorClass = null;
         } else {
-                this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());}
-        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
+            this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(), character.getAbilitys(),
+                    character.getSize());
+        }
+        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),
+                character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.specialAttacks = MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-        if(character.getClassSkills()==null){
+        if (character.getClassSkills() == null) {
             this.skillsList = null;
         } else {
-                    this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(),character.getAbilitys());}
-        if(character.getFeatsList()==null){
+            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(), character.getAbilitys());
+        }
+        if (character.getFeatsList() == null) {
             this.featsList = null;
         } else {
-            this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());}
+            this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+        }
         this.items = character.getItems();
     }
 

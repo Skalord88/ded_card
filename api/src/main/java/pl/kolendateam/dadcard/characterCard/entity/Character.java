@@ -36,6 +36,10 @@ import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+<<<<<<< HEAD
+import pl.kolendateam.dadcard.skills.entity.Study;
+=======
+>>>>>>> main
 
 @NoArgsConstructor
 @Getter
@@ -45,7 +49,7 @@ public class Character {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    public short id;
 
     @NonNull
     String characterName;
@@ -58,14 +62,14 @@ public class Character {
 
     @JdbcTypeCode(SqlTypes.JSON)
     Size size;
-    
+
     int speed;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
-    int ecl;
-    int levelAdjustment;
+    short effectiveCharacterLv;
+    byte levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
@@ -80,7 +84,7 @@ public class Character {
     ArrayList<ClassSkills> classSkills;
 
     double skillPoints;
-    
+
     @JdbcTypeCode(SqlTypes.JSON)
     Abilitys abilitys;
 
@@ -95,7 +99,7 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Items> items;
 
-    public Character(String characterName, String playerName){
+    public Character(String characterName, String playerName) {
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPcArray = new ArrayList<>();
@@ -105,50 +109,53 @@ public class Character {
         this.featsList = new ArrayList<>();
         this.items = new ArrayList<>();
     }
-    
+
     public void addClassToPcArray(ClassPc classPc) {
         this.classPcArray.add(classPc);
     }
-    
+
     public void removeClassFromPcArray(int index) {
         this.getClassPcArray().remove(index);
     }
+
     public void incrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).incrementLevel();
     }
+
     public void decrementLevelClassForIndex(int index) {
         this.getClassPcArray().get(index).decrementLevel();
     }
 
-    public void incrementEcl() {
-        this.ecl += 1;
-    }
-    public void decrementEcl() {
-        this.ecl -= 1;
+    public void incrementEffectiveCharacterLv() {
+        this.effectiveCharacterLv += 1;
     }
 
-    public void addSavingThrowLevelOne(String stringSavingThrow){
-
-    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude()+bonus);
-
-    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setReflex(this.savingThrow.getReflex()+bonus);
-
-    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setWill(this.savingThrow.getWill()+bonus);            
+    public void decrementEffectiveCharacterLv() {
+        this.effectiveCharacterLv -= 1;
     }
 
-    public void minusSavingThrowLevelOne(String stringSavingThrow){
-    
-    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude()-bonus);
+    public void addSavingThrowLevelOne(String stringSavingThrow) {
 
-    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setReflex(this.savingThrow.getReflex()-bonus);
+        double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
 
-    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
-    this.savingThrow.setWill(this.savingThrow.getWill()-bonus);            
+        bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
+
+        bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
+    }
+
+    public void minusSavingThrowLevelOne(String stringSavingThrow) {
+
+        double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setFortitude(this.savingThrow.getFortitude() - bonus);
+
+        bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setReflex(this.savingThrow.getReflex() - bonus);
+
+        bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0) ? 2.5 : 0;
+        this.savingThrow.setWill(this.savingThrow.getWill() - bonus);
     }
 
     public void incementSavingThrow() {
@@ -156,6 +163,7 @@ public class Character {
         this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
         this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
     }
+
     public void decementSavingThrow() {
         this.savingThrow.setFortitude(this.savingThrow.getFortitude() - 0.5);
         this.savingThrow.setReflex(this.savingThrow.getReflex() - 0.5);
@@ -163,9 +171,9 @@ public class Character {
     }
 
     public void setSkillsTruePcArray(Set<Skills> availableSkills) {
-        for(Skills skill : availableSkills){
-            for(ClassSkills classSkill : classSkills){
-                if(skill.getId() == classSkill.getIdSkill()){
+        for (Skills skill : availableSkills) {
+            for (ClassSkills classSkill : classSkills) {
+                if (skill.getId() == classSkill.getIdSkill()) {
                     classSkill.setClassSkill(true);
                 }
             }
@@ -174,37 +182,40 @@ public class Character {
 
     public void createSkillsArray(List<Skills> skillsList) {
         boolean check = true;
-        if(classSkills.isEmpty()){
+        if (classSkills.isEmpty()) {
             check = false;
         }
-        if(check == false){
-        for(int x = 0; x < skillsList.size(); x++){
+        if (check == false) {
+            for (Skills skillDB : skillsList) {
 
-            ClassSkills skill = new ClassSkills();
-                skill.setIdSkill(skillsList.get(x).getId());
-                skill.setNameSkill(skillsList.get(x).getName());
+                ClassSkills skill = new ClassSkills();
+
+                skill.setIdSkill(skillDB.getId());
+                skill.setNameSkill(skillDB.getName());
+                HashMap<String, Integer> studyField = new HashMap<>();
+                skill.setFieldOfStudy(studyField);
                 skill.setClassSkill(false);
                 skill.setSkillRank(0);
-                AbilityEnum ability = skillsList.get(x).getAbility();
+                AbilityEnum ability = skillDB.getAbility();
                 switch (ability) {
                     case STRENGHT:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                     case DEXTRITY:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                     case CONSTITUTION:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                     case INTELLIGENCE:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                     case WISDOM:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                     case CHARISMA:
-                    skill.setSkillAbility(ability);
-                    break;
+                        skill.setSkillAbility(ability);
+                        break;
                 }
                 this.classSkills.add(skill);
             }
@@ -212,89 +223,91 @@ public class Character {
     }
 
     public void calculateSkillPointsFirstLevel(int skPoints) {
-        this.skillPoints += (skPoints+abilitys.bonusIntelligence(abilitys)) * 4;
+        this.skillPoints += (skPoints + abilitys.bonusIntelligence(abilitys)) * 4;
     }
 
     public void calculateSkillPoints(int skPoints) {
-        this.skillPoints += skPoints+abilitys.bonusIntelligence(abilitys);
+        this.skillPoints += skPoints + abilitys.bonusIntelligence(abilitys);
     }
 
     public void decalculateSkillPoints(int skPoints) {
-        this.skillPoints -= skPoints+abilitys.bonusIntelligence(abilitys);
+        this.skillPoints -= skPoints + abilitys.bonusIntelligence(abilitys);
     }
 
     public void buySkills(int idSkill, double skPoints) {
-        for(ClassSkills skill : classSkills){
-            if(skill.getIdSkill() == idSkill){
+        for (ClassSkills skill : classSkills) {
+            if (skill.getIdSkill() == idSkill) {
                 boolean check = true;
-                if(skillPoints < 1){
+                if (skillPoints < 1) {
                     check = false;
                 }
-                if((int)skPoints > this.ecl+3){
+                if ((int) skPoints > this.effectiveCharacterLv + 3) {
                     check = false;
                 }
-                if(skill.isClassSkill()==true && skill.getSkillRank()>=this.ecl+3){
+                if (skill.isClassSkill() == true
+                        && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
                     check = false;
                 }
-                double doubleLEP = (this.ecl+3)/2;
-                if(skill.isClassSkill()==false && skill.getSkillRank()>=(int)doubleLEP){
+                double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
+                if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
                     check = false;
                 }
-                if(check == true){
-                    if(skill.isClassSkill()==true){
-                    skill.setSkillRank(skill.getSkillRank()+skPoints);
-                    this.skillPoints -= skPoints;
+                if (check == true) {
+                    if (skill.isClassSkill() == true) {
+                        skill.setSkillRank(skill.getSkillRank() + skPoints);
+                        this.skillPoints -= skPoints;
                     }
-                    if(skill.isClassSkill()==false){
-                    skill.setSkillRank(skill.getSkillRank()+skPoints/2);
-                    this.skillPoints -= skPoints;
+                    if (skill.isClassSkill() == false) {
+                        skill.setSkillRank(skill.getSkillRank() + skPoints / 2);
+                        this.skillPoints -= skPoints;
                     }
                 }
             }
         }
     }
-    
+
     public void incrementBab(double classBab) {
         this.bab += classBab;
     }
+
     public void decrementBab(double classBab) {
         this.bab -= classBab;
     }
 
-    public void raceLevelAdjustment(int lvAdj) {
-        this.bab = (lvAdj*0.5)-0.5;
+    public void raceLevelAdjustment(byte lvAdj) {
+        this.bab = (lvAdj * 0.5) - 0.5;
         this.levelAdjustment = lvAdj;
-        this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj,vitality,abilitys);
-        this.skillPoints = lvAdj*2;
+        this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
+        this.skillPoints = lvAdj * 2;
     }
 
     public void hitPointsFirstLevel(int hitDice) {
 
-        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
+        Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
         this.vitality = hP;
-        
+
     }
 
     public void resetHitPointsFirstLevel(int hitDice) {
 
-        Vitality hP = vitality.createHPFirstLevel(hitDice,abilitys,vitality);
+        Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
         this.vitality = hP;
-        
+
     }
 
     public void hitPointsNewLevel(int hitDice) {
 
         Integer hD = vitality.hitDices.get(hitDice);
 
-        if(hD==null){
-            hD=1;
-        } else{
+        if (hD == null) {
+            hD = 1;
+        } else {
             hD++;
         }
-            
+
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsAtNewLevel(hitDice,vitality,abilitys,ecl);
+        int hP = vitality.hitPointsAtNewLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
 
         this.vitality.setHitPoints(hP);
 
@@ -302,14 +315,14 @@ public class Character {
 
     public void hitPointsLastLevel(int hitDice) {
 
-        if(vitality.getHitDices().get(hitDice)==1){
+        if (vitality.getHitDices().get(hitDice) == 1) {
             vitality.removeHDClass(hitDice);
         } else {
-            int lv = vitality.getHitDices().get(hitDice)-1;
+            int lv = vitality.getHitDices().get(hitDice) - 1;
             vitality.hitDices.put(hitDice, lv);
         }
 
-        int hP = vitality.hitPointsAtLastLevel(hitDice,vitality,abilitys,ecl); 
+        int hP = vitality.hitPointsAtLastLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
 
         this.vitality.setHitPoints(hP);
     }
@@ -323,25 +336,26 @@ public class Character {
 
         Gson gson = new Gson();
 
-        Type listSkill = new TypeToken<List<ClassSkills>>(){}.getType();
+        Type listSkill = new TypeToken<List<ClassSkills>>() {
+        }.getType();
         List<ClassSkills> skill = gson.fromJson(skills, listSkill);
-        
-        for(ClassSkills clSk : classSkills){
-            for(ClassSkills sk : skill){
-                if(clSk.getNameSkill().equals(sk.getNameSkill())){
-                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+(int)sk.getSkillRank());
+
+        for (ClassSkills clSk : classSkills) {
+            for (ClassSkills sk : skill) {
+                if (clSk.getNameSkill().equals(sk.getNameSkill())) {
+                    clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus() + (int) sk.getSkillRank());
                 }
             }
         }
     }
 
-    public void addSpecialAttacks(String specialAttacksFeat){
+    public void addSpecialAttacks(String specialAttacksFeat) {
 
         Gson gson = new Gson();
         SpecialAttacks spAtt = gson.fromJson(specialAttacksFeat, SpecialAttacks.class);
 
-        this.specialAttacks.addSpecialAttackFeat(spAtt,this.specialAttacks);
-        
+        this.specialAttacks.addSpecialAttackFeat(spAtt, this.specialAttacks);
+
     }
 
     public void addAbilityRace(String raceAbilitys) {
@@ -349,8 +363,8 @@ public class Character {
         Gson gson = new Gson();
         Abilitys jsonObjectAbilitys = gson.fromJson(raceAbilitys, Abilitys.class);
 
-        this.abilitys.addRaceAbilitys(jsonObjectAbilitys,abilitys);
-        
+        this.abilitys.addRaceAbilitys(jsonObjectAbilitys, abilitys);
+
     }
 
     public void createArmorClass() {
@@ -362,29 +376,29 @@ public class Character {
         Gson gson = new Gson();
         ArmorClass jsonObjectArmorClass = gson.fromJson(armorClass, ArmorClass.class);
 
-        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());  
+        this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
     }
 
     public ArrayList<CharacterFeat> listFeatsFromClass(
-        int lv, List <Feats> featsListInDB, String classFeatsMap) {
+            int lv, List<Feats> featsListInDB, String classFeatsMap) {
 
         ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
         Gson gson = new Gson();
-        Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
+        Type listFeats = new TypeToken<List<ClassFeats>>() {
+        }.getType();
         List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
-        for(ClassFeats featInJson : featsJson){
-            if(featInJson.getLevel()==lv){
-                for(Feats featInList : featsListInDB){
-                    HashSet <String> fList = featInJson.getClassFeats();
-                    for(String featString : fList){
-                        if(featInList.getFeatName().equals(featString)){
+        for (ClassFeats featInJson : featsJson) {
+            if (featInJson.getLevel() == lv) {
+                for (Feats featInList : featsListInDB) {
+                    HashSet<String> fList = featInJson.getClassFeats();
+                    for (String featString : fList) {
+                        if (featInList.getFeatName().equals(featString)) {
                             CharacterFeat newCharFeat = new CharacterFeat(
-                                featInList.getId(),
-                                1,
-                                featInList.getFeatName(),
-                                featInList.getDescription()
-                            );
+                                    featInList.getId(),
+                                    1,
+                                    featInList.getFeatName(),
+                                    featInList.getDescription());
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -399,25 +413,24 @@ public class Character {
         boolean buyed = false;
 
         CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
-            1,feat.getFeatName(),feat.getDescription()
-        );
+                1, feat.getFeatName(), feat.getDescription());
 
         boolean featPresten = false;
-        for(CharacterFeat cF : this.featsList){
-            if(cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())){
+        for (CharacterFeat cF : this.featsList) {
+            if (cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())) {
                 featPresten = true;
             }
         }
-        if(!featPresten){
-            if(feat.getPrerequisite() == null){
+        if (!featPresten) {
+            if (feat.getPrerequisite() == null) {
                 this.featsList.add(characterFeat);
                 buyed = true;
             } else {
                 boolean prereqCheck = characterFeat.checkPrerequisite(
-                    feat,
-                    subRace,savingThrow,armorClass,classSkills,abilitys,(int)bab,
-                    featsList);
-                if(prereqCheck){
+                        feat,
+                        subRace, savingThrow, armorClass, classSkills, abilitys, (int) bab,
+                        featsList);
+                if (prereqCheck) {
                     this.featsList.add(characterFeat);
                     buyed = true;
                 }
@@ -427,7 +440,7 @@ public class Character {
     }
 
     public void addSpeed(int speed) {
-        this.speed+=speed;
+        this.speed += speed;
     }
 
     public void sizeCharacter(SizeEnum size) {
@@ -435,21 +448,21 @@ public class Character {
         sizeNew.sizeBonus(size);
         this.size = sizeNew;
         this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
-        for(ClassSkills skill : classSkills){
-            if(skill.getNameSkill().equals("hide")){
+        for (ClassSkills skill : classSkills) {
+            if (skill.getNameSkill().equals("hide")) {
                 skill.setSkillDifferentBonus(+sizeNew.getHide());
             }
         }
     }
 
-    public SizeEnum sizeCharacter(){
+    public SizeEnum sizeCharacter() {
         return this.size.getSize();
     }
 
     public void addFeatToPc(CharacterFeat ft) {
-        if(ft.findFeatIndexinArrayById(featsList)>0){
-            for (CharacterFeat fPc : featsList){
-                if(fPc.getId()==ft.getId()){
+        if (ft.findFeatIndexinArrayById(featsList) > -1) {
+            for (CharacterFeat fPc : featsList) {
+                if (fPc.getId() == ft.getId()) {
                     fPc.incrementLevelFeat();
                 }
             }
@@ -461,8 +474,8 @@ public class Character {
     public void removeFeatFromPc(CharacterFeat ft) {
 
         int indexFeat = ft.findFeatIndexinArrayById(featsList);
-        if(indexFeat > -1){
-            if (featsList.get(indexFeat).getLevelOfFeat() == 1){
+        if (indexFeat > -1) {
+            if (featsList.get(indexFeat).getLevelOfFeat() == 1) {
                 featsList.remove(indexFeat);
             } else {
                 featsList.get(indexFeat).decrementLevelFeat();
@@ -471,7 +484,7 @@ public class Character {
     }
 
     public void allSkillsFalse() {
-        for(ClassSkills cS : classSkills){
+        for (ClassSkills cS : classSkills) {
             cS.setClassSkill(false);
         }
     }
@@ -480,9 +493,39 @@ public class Character {
         this.items.add(itemToBuy);
     }
 
-    public void sellItem(int indexToSell){
+    public void sellItem(int indexToSell) {
         this.items.remove(indexToSell);
     }
 
-}
+    public void addStudyToCharacter(Set<Study> availableStudy) {
 
+        for (Study studyOfClass : availableStudy) {
+            for (ClassSkills cS : classSkills) {
+                if (studyOfClass.getRelatedSkill().equals(cS.getNameSkill())) {
+                    cS.addStudyMapToSkill(studyOfClass);
+                }
+            }
+        }
+    }
+
+    public void removeStudyFromCharacter(Set<Study> availableStudy) {
+        for (ClassSkills cS : classSkills) {
+            if (!cS.getFieldOfStudy().isEmpty()) {
+                for (Study study : availableStudy) {
+                    if (study.getRelatedSkill().equals(cS.getNameSkill())) {
+                        cS.removeStudyFromKnowledge(cS.getFieldOfStudy(), study.getStudyName());
+                    }
+                }
+            }
+        }
+    }
+
+    public void allKnowledgeZero() {
+        for (ClassSkills cS : classSkills) {
+            if (!cS.getFieldOfStudy().isEmpty()) {
+                HashMap<String, Integer> emptyKnow = new HashMap<>();
+                cS.setFieldOfStudy(emptyKnow);
+            }
+        }
+    }
+}

@@ -6,7 +6,7 @@
 
   <changeSet id="6" author="damian">
       <createTable tableName="region">
-        <column name="id" type="int" autoIncrement="true">
+        <column name="id" type="SMALLINT" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="name" type="varchar(255)">
@@ -15,10 +15,10 @@
       </createTable>
 
      <createTable tableName="race_region">
-        <column name="race_id" type="int">
+        <column name="race_id" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
-        <column name="region_id" type="int">
+        <column name="region_id" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
       </createTable>
