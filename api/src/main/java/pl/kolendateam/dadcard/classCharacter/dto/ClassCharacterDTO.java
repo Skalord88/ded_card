@@ -22,11 +22,7 @@ public class ClassCharacterDTO {
         this.classType = classCharacter.getType().getTypeEnum();
         this.className = classCharacter.getName();
         this.id = classCharacter.getId();
-        if(classCharacter.getClassFeatsMap()==null){
-            this.classFeats = null;
-        } else {
-            this.classFeats = MapperClassFeatsDTO.toClassFeatsDTO(classCharacter.getClassFeatsMap());
-        }
+        this.classFeats = MapperClassFeatsDTO.toClassFeatsDTO(classCharacter.getClassFeatsMap());
     }
     
 }

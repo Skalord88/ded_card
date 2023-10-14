@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -31,6 +32,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
@@ -66,7 +68,7 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
-    short effectiveCharacterLv;
+    short characterLevel;
     byte levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
@@ -125,11 +127,11 @@ public class Character {
     }
 
     public void incrementEffectiveCharacterLv() {
-        this.effectiveCharacterLv += 1;
+        this.characterLevel += 1;
     }
 
     public void decrementEffectiveCharacterLv() {
-        this.effectiveCharacterLv -= 1;
+        this.characterLevel -= 1;
     }
 
     public void addSavingThrowLevelOne(String stringSavingThrow) {
@@ -239,14 +241,14 @@ public class Character {
                 if (skillPoints < 1) {
                     check = false;
                 }
-                if ((int) skPoints > this.effectiveCharacterLv + 3) {
+                if ((int) skPoints > this.characterLevel + 3) {
                     check = false;
                 }
                 if (skill.isClassSkill() == true
-                        && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
+                        && skill.getSkillRank() >= this.characterLevel + 3) {
                     check = false;
                 }
-                double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
+                double doubleLEP = (this.characterLevel + 3) / 2;
                 if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
                     check = false;
                 }
@@ -305,7 +307,7 @@ public class Character {
 
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsAtNewLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
+        int hP = vitality.hitPointsAtNewLevel(hitDice, vitality, abilitys, characterLevel);
 
         this.vitality.setHitPoints(hP);
 
@@ -320,7 +322,7 @@ public class Character {
             vitality.hitDices.put(hitDice, lv);
         }
 
-        int hP = vitality.hitPointsAtLastLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
+        int hP = vitality.hitPointsAtLastLevel(hitDice, vitality, abilitys, characterLevel);
 
         this.vitality.setHitPoints(hP);
     }
@@ -396,7 +398,9 @@ public class Character {
                                     featInList.getId(),
                                     1,
                                     featInList.getFeatName(),
-                                    featInList.getDescription());
+                                    featInList.getDescription(),
+                                    featInList.getFeatsType()
+                                    );
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -410,16 +414,21 @@ public class Character {
 
         boolean buyed = false;
 
-        CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
-                1, feat.getFeatName(), feat.getDescription());
+        if(feat.getFeatsType() == FeatsTypeEnum.CLASS){
+            return false;
+        }
 
-        boolean featPresten = false;
+        CharacterFeat characterFeat = new CharacterFeat(
+            feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
+
+        boolean featPresent = false;
         for (CharacterFeat cF : this.featsList) {
             if (cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())) {
-                featPresten = true;
+                featPresent = true;
             }
         }
-        if (!featPresten) {
+
+        if (!featPresent) {
             if (feat.getPrerequisite() == null) {
                 this.featsList.add(characterFeat);
                 buyed = true;

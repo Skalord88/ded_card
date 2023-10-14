@@ -68,7 +68,9 @@ public class FeatsController {
                 character.addSkill(feat.getSkills());
             }
 
-            character.addSpeed(feat.getSpeed());
+            if(feat.getSpeed()!=null){
+                character.addSpeed(feat.getSpeed());
+            }
 
             if(feat.getSpecialAttacks()!=null){
                 character.addSpecialAttacks(feat.getSpecialAttacks());

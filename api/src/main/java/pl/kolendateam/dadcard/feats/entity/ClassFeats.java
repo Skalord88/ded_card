@@ -15,5 +15,5 @@ public class ClassFeats {
 
     int level;
     HashSet <String> classFeats;
-    
+
 }

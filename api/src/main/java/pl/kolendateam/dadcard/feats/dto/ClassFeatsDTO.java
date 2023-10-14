@@ -11,5 +11,5 @@ public class ClassFeatsDTO {
 
     public int level;
     public HashSet <String> classFeats;
-    
+
 }
