@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import lombok.Getter;
 import lombok.Setter;
+import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 
 @Setter
 @Getter
@@ -15,6 +16,17 @@ public class Abilitys implements Serializable{
     int intelligence;
     int wisdom;
     int charisma;
+
+        public void setCharacterAbility(AbilitysDTO abilitysDTO) {
+
+        streght = abilitysDTO.streght;
+        dextrity = abilitysDTO.dextrity;
+        constitution = abilitysDTO.constitution;
+        intelligence = abilitysDTO.intelligence;
+        wisdom = abilitysDTO.wisdom;
+        charisma = abilitysDTO.charisma;
+    
+    }
 
     public int bonusStreght (Abilitys abilitys){
         int bonusStreght = (int)(abilitys.getStreght()-10)/2;
@@ -66,5 +78,5 @@ public class Abilitys implements Serializable{
             wisdom >= abilitys.wisdom &&
             charisma >= abilitys.charisma;
     }
-    
+
 }
