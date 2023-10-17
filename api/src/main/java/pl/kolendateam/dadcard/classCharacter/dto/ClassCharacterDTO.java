@@ -20,7 +20,7 @@ public class ClassCharacterDTO {
     public ClassCharacterDTO(ClassCharacter classCharacter){
         this.avatarUrl = classCharacter.getAvatarUrl();
         this.classType = classCharacter.getType().getTypeEnum();
-        this.className = classCharacter.getName();
+        this.className = classCharacter.getName().toString();
         this.id = classCharacter.getId();
         if(classCharacter.getClassFeatsMap()==null){
             this.classFeats = null;

@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.spells;
+package pl.kolendateam.dadcard.spells.entity;
 
 public enum SpellsEnum {
 
@@ -42,6 +42,7 @@ public enum SpellsEnum {
     MIND_AFFECTING,
     SONIC,
     WATER,
+    LUCK,
     VERBAL,
     SOMATIC,
     MATERIAL,
@@ -68,6 +69,15 @@ public enum SpellsEnum {
     YES,
     NO,
     NONE,
-    YES_HARMLESS
+    YES_HARMLESS,
+    BARD,
+    CLERIC,
+    DRUID,
+    PALADIN,
+    RANGER,
+    SORCERER_WIZARD,
+    ASSASSIN,
+    BLACKGUARD
+
 
 }

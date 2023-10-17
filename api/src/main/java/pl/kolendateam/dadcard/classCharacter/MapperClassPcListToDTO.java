@@ -11,7 +11,7 @@ public class MapperClassPcListToDTO {
 
         for (ClassPc classPc : classPcArray) {
 
-            ClassPcListDTO classPcListDTO = new ClassPcListDTO(classPc.getName(), classPc.getLevel());
+            ClassPcListDTO classPcListDTO = new ClassPcListDTO(classPc.getName().toString(), classPc.getLevel());
             classesDTO.add(classPcListDTO);
         }
 

@@ -18,7 +18,7 @@
             <column name="level" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="components" type="varchar(255)">
+            <!-- <column name="components" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
             <column name="casting_time" type="varchar(255)">
@@ -33,7 +33,7 @@
             <column name="target" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="duration" type="decimal">
+            <column name="duration" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
             <column name="saving_throw" type="varchar(255)">
@@ -44,7 +44,7 @@
             </column>
             <column name="descriptive_text" type="varchar(1000)">
                 <constraints nullable="true"/>
-            </column>
+            </column> -->
         </createTable>
     </changeSet>
 </databaseChangeLog>

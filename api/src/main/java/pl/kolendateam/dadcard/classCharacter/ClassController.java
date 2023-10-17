@@ -39,7 +39,7 @@ public class ClassController {
         for (ClassPcDTO classList : classPcListDTO){
             boolean skipClassPc = false;
             
-            if(className.equals(classCharacter.getName())){
+            if(className.equals(classCharacter.getName().toString())){
                 classList.level = +1;
                 skipClassPc = true;
             }
@@ -47,7 +47,7 @@ public class ClassController {
             if(!skipClassPc){
                 
                 ClassPcDTO clPc = new ClassPcDTO();
-                clPc.className.equals(classCharacter.getName());
+                clPc.className.equals(classCharacter.getName().toString());
                 clPc.id = classCharacter.getId();
                 clPc.level = 1;
                 

@@ -3,9 +3,12 @@ package pl.kolendateam.dadcard.classCharacter.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @AllArgsConstructor
@@ -15,7 +18,11 @@ import lombok.Setter;
 public class ClassPc implements Serializable {
 
     short id;
-    String name;
+
+    @NonNull
+    @Enumerated(EnumType.STRING)
+    EnumClass name;
+    
     byte level;
     byte hitDice;
     String savingThrow;

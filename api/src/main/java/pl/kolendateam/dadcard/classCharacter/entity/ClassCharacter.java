@@ -36,7 +36,8 @@ public class ClassCharacter {
     TypeEnum type;
 
     @NonNull
-    String name;
+    @Enumerated(EnumType.STRING)
+    EnumClass name;
     
     @NonNull
     String avatarUrl;
