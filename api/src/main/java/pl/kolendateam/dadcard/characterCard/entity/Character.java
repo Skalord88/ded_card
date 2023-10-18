@@ -38,6 +38,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @NoArgsConstructor
 @Getter
@@ -97,6 +98,10 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Items> items;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap<SpellsEnum,String[]> magic;
+    //magic class, [day spells, know spells]
+
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
         this.playerName = playerName;
@@ -106,6 +111,7 @@ public class Character {
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.magic = new HashMap<>();
     }
 
     public void addClassToPcArray(ClassPc classPc) {

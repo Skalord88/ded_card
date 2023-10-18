@@ -7,6 +7,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 public class SpellsDTO {
 
+    public int id;
     public String name;
     public SpellsEnum[] school;
     public SpellLevel[] level;
@@ -21,6 +22,7 @@ public class SpellsDTO {
     public String descriptiveText;
 
     public SpellsDTO(Spells spell) {
+        this.id = spell.getId();
         this.name = spell.getName();
         this.school = MapperSpellsDTO.toSpellEnumArray(spell.getSchool());
         this.level = MapperSpellsDTO.toSpellLevelArray(spell.getLevel());
