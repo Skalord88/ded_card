@@ -1,10 +1,16 @@
 package pl.kolendateam.dadcard.spells;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
+import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 public class MapperSpellsDTO {
 
@@ -17,6 +23,24 @@ public class MapperSpellsDTO {
         }
         
         return spellsDTOList;
+    }
+
+    public static SpellsEnum[] toSpellEnumArray(String enumSpell) {
+
+        Gson gson = new Gson();
+        Type enumSpellArrayJson = new TypeToken<SpellsEnum[]>() {}.getType();
+        SpellsEnum[] enumSpellArray = gson.fromJson(enumSpell, enumSpellArrayJson);
+
+        return enumSpellArray;
+    }
+
+    public static SpellLevel[] toSpellLevelArray(String enumSpell) {
+
+        Gson gson = new Gson();
+        Type enumSpellArrayJson = new TypeToken<SpellLevel[]>() {}.getType();
+        SpellLevel[] levelSpellArray = gson.fromJson(enumSpell, enumSpellArrayJson);
+
+        return levelSpellArray;
     }
 
 }

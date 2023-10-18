@@ -17,13 +17,15 @@ import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 public class SpellsController {
     
     SpellsRepository spellsRepository;
-    CharacterRepository characterRepository;
+    //CharacterRepository characterRepository;
 
     @Autowired
     public SpellsController(
-        SpellsRepository spellsRepository,CharacterRepository characterRepository){
+        SpellsRepository spellsRepository
+        //,CharacterRepository characterRepository
+        ){
         this.spellsRepository = spellsRepository;
-        this.characterRepository = characterRepository;
+        //this.characterRepository = characterRepository;
     }
 
     @GetMapping("")

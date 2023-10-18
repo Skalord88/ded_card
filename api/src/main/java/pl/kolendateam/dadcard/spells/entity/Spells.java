@@ -3,8 +3,6 @@ package pl.kolendateam.dadcard.spells.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,8 +24,8 @@ public class Spells implements Serializable {
 
     String name;
 
-    // @Enumerated(EnumType.STRING)
-    // SpellsEnum[] school;
+     @Enumerated(EnumType.STRING)
+     SpellsEnum[] school;
     
     String school;
     String level;

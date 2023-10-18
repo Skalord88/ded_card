@@ -10,7 +10,7 @@
         <column name="name" value="Acid Arrow"/>
         <column name="school" value="['CONJURATION','CREATION','ACID']"/>
         <column name="level" value="[{'level':2,'classDomain':'SORCERER_WIZARD'}]"/>
-        <!-- <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
         <column name="casting_time" value="ONE_STANDARD_ACTION"/>
         <column name="range" value="LONG"/>
         <column name="effect" value="One arrow of acid"/>
@@ -24,9 +24,9 @@
         Powdered rhubarb leaf and an adder’s stomach.
         
         Focus
-        A dart."/> -->
+        A dart."/>
     </insert>
-    <!-- <insert tableName="spells">
+    <insert tableName="spells">
         <column name="name" value="Acid Fog"/>
         <column name="school" value="['CONJURATION','CREATION','ACID']"/>
         <column name="level" value="[{'level':6,'classDomain':'SORCERER_WIZARD'},{'level':7,'classDomain':'WATER'}]"/>
@@ -56,8 +56,8 @@
         <column name="spell_resistance" value="NO"/>
         <column name="descriptive_text" value="
         You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage."/>
-    </insert> -->
-    <!-- <insert tableName="spells">
+    </insert>
+    <insert tableName="spells">
         <column name="name" value="Acid Splash"/>
         <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']"/>
         <column name="level" value="[{'level':2,'classDomain':'CLERIC'},{'level':2,'classDomain':'GOOD'},{'level':2,'classDomain':'LUCK'}]"/>
@@ -69,8 +69,8 @@
         <column name="saving_throw" value="NONE"/>
         <column name="spell_resistance" value="YES_HARMLESS"/>
         <column name="descriptive_text" value="Aid grants the target a +1 morale bonus on attack rolls and saves against fear effects, plus temporary hit points equal to 1d8 + caster level (to a maximum of 1d8+10 temporary hit points at caster level 10th)."/>
-    </insert> -->
-    <!-- <insert tableName="spells">
+    </insert>
+    <insert tableName="spells">
         <column name="name" value="Air Walk"/>
         <column name="school" value="['TRANSMUTATION','AIR']"/>
         <column name="level" value="[{'level':4,'classDomain':'AIR'},{'level':4,'classDomain':'CLERIC'},{'level':4,'classDomain':'DRUID'}]"/>
@@ -88,8 +88,8 @@
         Should the spell duration expire while the subject is still aloft, the magic fails slowly. The subject floats downward 60 feet per round for 1d6 rounds. If it reaches the ground in that amount of time, it lands safely. If not, it falls the rest of the distance, taking 1d6 points of damage per 10 feet of fall. Since dispelling a spell effectively ends it, the subject also descends in this way if the air walk spell is dispelled, but not if it is negated by an antimagic field.
         
         You can cast air walk on a specially trained mount so it can be ridden through the air. You can train a mount to move with the aid of air walk (counts as a trick; see Handle Animal skill) with one week of work and a DC 25 Handle Animal check."/>
-    </insert> -->
-    <!-- <insert tableName="spells">
+    </insert>
+    <insert tableName="spells">
         <column name="name" value="Alarm"/>
         <column name="school" value="['ABJURATION']"/>
         <column name="level" value="[{'level':1,'classDomain':'BARD'},{'level':1,'classDomain':'RANGER'},{'level':1,'classDomain':'SORCERER_WIZARD'}]"/>
@@ -116,8 +116,7 @@
         
         Arcane Focus
         A tiny bell and a piece of very fine silver wire"/>
-    </insert> -->
-
+    </insert>
     <!--
     <insert tableName="spells">
         <column name="name" value=""/>
