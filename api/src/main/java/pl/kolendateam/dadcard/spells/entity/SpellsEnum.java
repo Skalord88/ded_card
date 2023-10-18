@@ -77,7 +77,9 @@ public enum SpellsEnum {
     RANGER,
     SORCERER_WIZARD,
     ASSASSIN,
-    BLACKGUARD
+    BLACKGUARD,
+    KNOWN,
+    DAY
 
 
 }

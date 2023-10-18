@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="403" author="oscar">
+        <createTable tableName="spells_table">
+            <column name="id_table" type="TINYINT" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="magic_class" type="varchar(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="spells_day_known" type="varchar(5)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="spells_in_level" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,79 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+<changeSet id="404" author="oscar">
+
+    <insert tableName="spells">
+        <column name="magic_class" value="BARD"/>
+        <column name="spells_day_known" value="DAY"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells': [2]},
+        {'level':2,'spells': [3,0]},
+        {'level':3,'spells': [3,1]},
+        {'level':4,'spells': [3,2,0]},
+        {'level':5,'spells': [3,3,1]},
+        {'level':6,'spells': [3,3,2]},
+        {'level':7,'spells': [3,3,2,0]},
+        {'level':8,'spells': [3,3,3,1]},
+        {'level':9,'spells': [3,3,3,2]},
+        {'level':10,'spells':[3,3,3,2,0]},
+        {'level':11,'spells':[3,3,3,3,1]},
+        {'level':12,'spells':[3,3,3,3,2]},
+        {'level':13,'spells':[3,3,3,3,2,0]},
+        {'level':14,'spells':[4,3,3,3,3,1]},
+        {'level':15,'spells':[4,4,3,3,3,2]},
+        {'level':16,'spells':[4,4,4,3,3,2,0]},
+        {'level':17,'spells':[4,4,4,4,3,3,1]},
+        {'level':18,'spells':[4,4,4,4,4,3,2]},
+        {'level':19,'spells':[4,4,4,4,4,4,3]},
+        {'level':20,'spells':[4,4,4,4,4,4,4]},
+        ]"/>
+    </insert>
+    <insert tableName="spells">
+        <column name="magic_class" value="BARD"/>
+        <column name="spells_day_known" value="KNOWN"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells': [4]},
+        {'level':2,'spells': [5,2]},
+        {'level':3,'spells': [6,3]},
+        {'level':4,'spells': [6,3,2]},
+        {'level':5,'spells': [6,4,3]},
+        {'level':6,'spells': [6,4,3]},
+        {'level':7,'spells': [6,4,4,2]},
+        {'level':8,'spells': [6,4,4,3]},
+        {'level':9,'spells': [6,4,4,3]},
+        {'level':10,'spells':[6,4,4,4,2]},
+        {'level':11,'spells':[6,4,4,4,3]},
+        {'level':12,'spells':[6,4,4,4,3]},
+        {'level':13,'spells':[6,4,4,4,4,2]},
+        {'level':14,'spells':[6,4,4,4,4,3]},
+        {'level':15,'spells':[6,4,4,4,4,3]},
+        {'level':16,'spells':[6,5,4,4,4,4,2]},
+        {'level':17,'spells':[6,5,5,4,4,4,3]},
+        {'level':18,'spells':[6,5,5,5,4,4,3]},
+        {'level':19,'spells':[6,5,5,5,5,4,4]},
+        {'level':20,'spells':[6,5,5,5,5,5,4]},
+        ]"/>
+    </insert>
+    <!--
+    <insert tableName="spells">
+        <column name="name" value=""/>
+        <column name="school" value="['']"/>
+        <column name="level" value="[{'level': ,'classDomain':' ','level': ,'classDomain':' '}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
+        <column name="casting_time" value=""/>
+        <column name="range" value=""/>
+        <column name="effect" value=""/>
+        <column name="duration" value=""/>
+        <column name="saving_throw" value=""/>
+        <column name="spell_resistance" value=""/>
+        <column name="descriptive_text" value="
+        "/>
+    </insert>
+    -->
+
+    </changeSet>
+</databaseChangeLog>

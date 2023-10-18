@@ -67,6 +67,9 @@
         <column name="items" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="magic" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>
