@@ -18,7 +18,7 @@
             <column name="level" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <!-- <column name="components" type="varchar(255)">
+            <column name="components" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
             <column name="casting_time" type="varchar(255)">
@@ -42,9 +42,9 @@
             <column name="spell_resistance" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="descriptive_text" type="varchar(1000)">
+            <column name="descriptive_text" type="varchar(5000)">
                 <constraints nullable="true"/>
-            </column> -->
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

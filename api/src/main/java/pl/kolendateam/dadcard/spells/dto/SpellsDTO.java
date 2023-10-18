@@ -15,7 +15,7 @@ public class SpellsDTO {
     public SpellsEnum range;
     public String target;
     public String effect;
-    public SpellsEnum duration;
+    public String duration;
     public SpellsEnum savingThrow;
     public SpellsEnum spellResistance;
     public String descriptiveText;
@@ -24,6 +24,14 @@ public class SpellsDTO {
         this.name = spell.getName();
         this.school = MapperSpellsDTO.toSpellEnumArray(spell.getSchool());
         this.level = MapperSpellsDTO.toSpellLevelArray(spell.getLevel());
+        this.components = MapperSpellsDTO.toSpellEnumArray(spell.getComponents());
+        this.castingTime = spell.getCastingTime();
+        this.range = spell.getRange();
+        this.effect = spell.getEffect();
+        this.duration = spell.getDuration();
+        this.savingThrow = spell.getSavingThrow();
+        this.spellResistance = spell.getSpellResistance();
+        this.descriptiveText = spell.getDescriptiveText();
     }
     
 }
