@@ -9,22 +9,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
+import pl.kolendateam.dadcard.spells.dto.SpellsTableDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
+import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
 @RestController
 @RequestMapping("spells")
 public class SpellsController {
     
     SpellsRepository spellsRepository;
+    SpellsTableRepository spellsTableRepository;
     //CharacterRepository characterRepository;
 
     @Autowired
     public SpellsController(
         SpellsRepository spellsRepository
+        ,SpellsTableRepository spellsTableRepository
         //,CharacterRepository characterRepository
         ){
         this.spellsRepository = spellsRepository;
+        this.spellsTableRepository = spellsTableRepository;
         //this.characterRepository = characterRepository;
     }
 
@@ -34,6 +40,15 @@ public class SpellsController {
     List<Spells> spellsList = this.spellsRepository.findAll();
 
     return MapperSpellsDTO.toSpellsDTO(spellsList);
+
+    }
+
+    @GetMapping("/spellstable")
+    public List<SpellsTableDTO> showSpellsTableList(){
+
+    List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
+
+    return MapperSpellsTableDTO.toSpellsTableDTO(spellsTableList);
 
     }
 

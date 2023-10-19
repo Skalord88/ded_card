@@ -75,6 +75,8 @@ public enum SpellsEnum {
     DRUID,
     PALADIN,
     RANGER,
+    SORCERER,
+    WIZARD,
     SORCERER_WIZARD,
     ASSASSIN,
     BLACKGUARD,
