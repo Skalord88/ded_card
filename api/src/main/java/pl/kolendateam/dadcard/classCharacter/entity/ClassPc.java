@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @AllArgsConstructor
 @Setter
@@ -27,8 +28,12 @@ public class ClassPc implements Serializable {
     byte hitDice;
     String savingThrow;
     double classBab;
-    String spellsPerDay;
-    String spellsKnown;
+
+    @Enumerated(EnumType.STRING)
+    EnumClass spellsPerDay;
+
+    @Enumerated(EnumType.STRING)
+    EnumClass spellsKnown;
 
     public void incrementLevel() {
         this.level++;

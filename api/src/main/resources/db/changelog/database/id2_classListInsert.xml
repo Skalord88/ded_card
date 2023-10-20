@@ -58,8 +58,8 @@
             {'level':18,'classFeats':['Mass suggestion']},
             {'level':20,'classFeats':['Inspire courage']}
             ]"/>
-            <column name="spells_per_day" value="bard"/>
-            <column name="spells_known" value="bard"/>
+            <column name="spells_per_day" value="BARD"/>
+            <column name="spells_known" value="BARD"/>
             </insert>
             <insert tableName="class_character">
               <column name="id" value="3"/>
@@ -73,6 +73,7 @@
               <column name="class_feats_map" value="[
               {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Turn or rebuke undead']}
               ]"/>
+              <column name="spells_per_day" value="CLERIC"/>
               </insert>
           <insert tableName="class_character">
             <column name="id" value="4"/>   
@@ -103,6 +104,7 @@
             {'level':18,'classFeats':['Wild Shape']},
             {'level':20,'classFeats':['Wild Shape']}
             ]"/>
+            <column name="spells_per_day" value="CLERIC"/>
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -183,6 +185,7 @@
             {'level':18,'classFeats':['Remove Disease']},
             {'level':20,'classFeats':['Smite Evil']}
             ]"/>
+            <column name="spells_per_day" value="PALADIN"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="8"/>  
@@ -210,6 +213,7 @@
             {'level':17,'classFeats':['Hide in Plain Sight']},
             {'level':20,'classFeats':['Favored Enemy']}
             ]"/>
+            <column name="spells_per_day" value="PALADIN"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="9"/>  
@@ -253,6 +257,8 @@
             <column name="class_feats_map" value="[
             {'level':1,'classFeats':['Summon Familiar']}
             ]"/>
+            <column name="spells_per_day" value="SORCERER"/>
+            <column name="spells_known" value="SORCERER"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="11"/>  
@@ -270,6 +276,7 @@
             {'level':15,'classFeats':['Bonus Feat Wizard']},
             {'level':20,'classFeats':['Bonus Feat Wizard']}
             ]"/>
+            <column name="spells_per_day" value="WIZARD"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="12"/>  

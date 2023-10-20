@@ -9,10 +9,10 @@
             <column name="id_table" type="TINYINT" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="magic_class" type="varchar(50)">
+            <column name="magic_class" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="spells_day_known" type="varchar(50)">
+            <column name="spells_day_known" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
             <column name="spells_in_level" type="varchar(1000)">

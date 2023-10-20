@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
@@ -38,7 +39,11 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
+import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
 @NoArgsConstructor
 @Getter
@@ -99,7 +104,7 @@ public class Character {
     ArrayList<Items> items;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<SpellsEnum,String[]> magic;
+    HashMap<EnumClass,Integer[]> magic;
     //magic class, [day spells, know spells]
 
     public Character(String characterName, String playerName) {
@@ -529,6 +534,37 @@ public class Character {
             if (!cS.getFieldOfStudy().isEmpty()) {
                 HashMap<String, Integer> emptyKnow = new HashMap<>();
                 cS.setFieldOfStudy(emptyKnow);
+            }
+        }
+    }
+
+    public void addMagic(List<SpellsTable> spellsTableList,EnumClass spellDay, EnumClass spellKnown) {
+
+        for(SpellsTable table : spellsTableList){
+            ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(table.getSpellsInLevel());
+            if(table.getSpellsDayKnown() != null){
+                for(ClassPc classPc : classPcArray){
+
+                    if(table.getSpellsDayKnown() == SpellsEnum.DAY &&
+                        table.getMagicClass() == classPc.getSpellsPerDay()){
+
+                    for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
+                        if(classPc.getLevel() == spellsInThisLevel.getLevel()){
+                            this.magic.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            }
+                        }
+                    }
+
+                    if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+                        table.getMagicClass() == classPc.getSpellsKnown()){
+                            
+                    for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
+                        if(classPc.getLevel() == spellsInThisLevel.getLevel()){
+                            this.magic.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            }
+                        }
+                    }
+                }
             }
         }
     }

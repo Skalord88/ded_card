@@ -32,6 +32,8 @@ import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
+import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -41,14 +43,16 @@ public class CharacterController {
     CharacterRepository characterRepository;
     FeatsRepository featsRepository;
     SkillsRepository skillsRepository;
+    SpellsTableRepository spellsTableRepository;
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository,
-            FeatsRepository featsRepository, SkillsRepository skillsRepository) {
+            FeatsRepository featsRepository, SkillsRepository skillsRepository, SpellsTableRepository spellsTableRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.featsRepository = featsRepository;
         this.skillsRepository = skillsRepository;
+        this.spellsTableRepository = spellsTableRepository;
     }
 
     @PostMapping(value = "", consumes = "application/json")
@@ -108,6 +112,7 @@ public class CharacterController {
         }
 
         List<Feats> featsList = this.featsRepository.findAll();
+        List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
@@ -161,6 +166,9 @@ public class CharacterController {
         for (CharacterFeat chFeat : characterFeatsFromClass) {
             character.addFeatToPc(chFeat);
         }
+
+        //magic
+        character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
 
         this.characterRepository.save(character);
 
