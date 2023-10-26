@@ -67,7 +67,10 @@
         <column name="items" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="magic" type="jsonb">
+        <column name="magic_per_day" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <column name="magic_known" type="jsonb">
           <constraints nullable="true"/>
         </column>
       </createTable>

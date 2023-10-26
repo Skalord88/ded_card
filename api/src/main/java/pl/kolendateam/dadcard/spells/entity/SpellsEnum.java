@@ -81,7 +81,9 @@ public enum SpellsEnum {
     ASSASSIN,
     BLACKGUARD,
     KNOWN,
-    DAY
+    DAY,
+    ALL,
+    BOOK
 
 
 }

@@ -35,5 +35,5 @@ public class SpellsDTO {
         this.spellResistance = spell.getSpellResistance();
         this.descriptiveText = spell.getDescriptiveText();
     }
-    
+
 }

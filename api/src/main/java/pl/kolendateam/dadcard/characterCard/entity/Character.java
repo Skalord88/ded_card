@@ -40,7 +40,6 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
-import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -104,8 +103,11 @@ public class Character {
     ArrayList<Items> items;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass,Integer[]> magic;
-    //magic class, [day spells, know spells]
+    HashMap<EnumClass,Integer[]> magicPerDay;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap<EnumClass,Integer[]> magicKnown;
+
 
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
@@ -116,7 +118,8 @@ public class Character {
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
         this.items = new ArrayList<>();
-        this.magic = new HashMap<>();
+        this.magicPerDay = new HashMap<>();
+        this.magicKnown = new HashMap<>();
     }
 
     public void addClassToPcArray(ClassPc classPc) {
@@ -550,9 +553,13 @@ public class Character {
 
                     for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
                         if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                            this.magic.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
                             }
                         }
+                    }
+
+                    if(table.getSpellsDayKnown().toString().equals("ALL")){
+                        this.magicKnown.put(classPc.getName(), null);
                     }
 
                     if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
@@ -560,7 +567,7 @@ public class Character {
                             
                     for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
                         if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                            this.magic.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
                             }
                         }
                     }

@@ -47,7 +47,8 @@ public class CharacterDTO implements Serializable {
     public ArrayList<SkillsDTO> skillsList;
     public ArrayList<CharacterFeatsDTO> featsList;
     public ArrayList<Items> items;
-    public HashMap <EnumClass,Integer[]> magic;
+    public HashMap <EnumClass,Integer[]> magicPerDay;
+    public HashMap <EnumClass,Integer[]> magicKnown;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
@@ -86,7 +87,8 @@ public class CharacterDTO implements Serializable {
             this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
         }
         this.items = character.getItems();
-        this.magic = character.getMagic();
+        this.magicPerDay = character.getMagicPerDay();
+        this.magicKnown = character.getMagicKnown();
     }
 
 }

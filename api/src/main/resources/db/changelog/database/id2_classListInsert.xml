@@ -74,6 +74,7 @@
               {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Turn or rebuke undead']}
               ]"/>
               <column name="spells_per_day" value="CLERIC"/>
+              <column name="spells_known" value="ALL"/>
               </insert>
           <insert tableName="class_character">
             <column name="id" value="4"/>   
@@ -104,7 +105,8 @@
             {'level':18,'classFeats':['Wild Shape']},
             {'level':20,'classFeats':['Wild Shape']}
             ]"/>
-            <column name="spells_per_day" value="CLERIC"/>
+            <column name="spells_per_day" value="DRUID"/>
+            <column name="spells_known" value="ALL"/>
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -186,6 +188,7 @@
             {'level':20,'classFeats':['Smite Evil']}
             ]"/>
             <column name="spells_per_day" value="PALADIN"/>
+            <column name="spells_known" value="ALL"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="8"/>  
@@ -214,6 +217,7 @@
             {'level':20,'classFeats':['Favored Enemy']}
             ]"/>
             <column name="spells_per_day" value="PALADIN"/>
+            <column name="spells_known" value="ALL"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="9"/>  
@@ -277,6 +281,7 @@
             {'level':20,'classFeats':['Bonus Feat Wizard']}
             ]"/>
             <column name="spells_per_day" value="WIZARD"/>
+            <column name="spells_known" value="BOOK"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="12"/>  
