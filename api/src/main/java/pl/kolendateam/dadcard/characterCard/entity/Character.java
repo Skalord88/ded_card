@@ -541,7 +541,7 @@ public class Character {
         }
     }
 
-    public void addMagic(List<SpellsTable> spellsTableList,EnumClass spellDay, EnumClass spellKnown) {
+    public void addMagic(List<SpellsTable> spellsTableList, SpellsEnum spellDay, SpellsEnum spellKnown) {
 
         for(SpellsTable table : spellsTableList){
             ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(table.getSpellsInLevel());
@@ -556,10 +556,6 @@ public class Character {
                             this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
                             }
                         }
-                    }
-
-                    if(table.getSpellsDayKnown().toString().equals("ALL")){
-                        this.magicKnown.put(classPc.getName(), null);
                     }
 
                     if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&

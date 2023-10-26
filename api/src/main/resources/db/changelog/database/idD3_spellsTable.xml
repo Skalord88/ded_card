@@ -15,7 +15,7 @@
             <column name="spells_day_known" type="varchar(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="spells_in_level" type="varchar(1000)">
+            <column name="spells_in_level" type="varchar(2000)">
                 <constraints nullable="true"/>
             </column>
         </createTable>

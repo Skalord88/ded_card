@@ -30,10 +30,10 @@ public class ClassPc implements Serializable {
     double classBab;
 
     @Enumerated(EnumType.STRING)
-    EnumClass spellsPerDay;
+    SpellsEnum spellsPerDay;
 
     @Enumerated(EnumType.STRING)
-    EnumClass spellsKnown;
+    SpellsEnum spellsKnown;
 
     public void incrementLevel() {
         this.level++;

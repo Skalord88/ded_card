@@ -71,8 +71,8 @@ public class ClassCharacter {
     String classFeatsMap;
 
     @Enumerated(EnumType.STRING)
-    EnumClass spellsPerDay;
+    SpellsEnum spellsPerDay;
 
     @Enumerated(EnumType.STRING)
-    EnumClass spellsKnown;
+    SpellsEnum spellsKnown;
 }

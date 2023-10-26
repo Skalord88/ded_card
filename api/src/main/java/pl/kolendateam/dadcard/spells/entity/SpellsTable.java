@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,7 +25,7 @@ public class SpellsTable implements Serializable {
     byte idTable;
 
     @Enumerated(EnumType.STRING)
-    EnumClass magicClass;
+    SpellsEnum magicClass;
 
     @Enumerated(EnumType.STRING)
     SpellsEnum spellsDayKnown;

@@ -84,6 +84,32 @@
         ]"/>
     </insert>
     <insert tableName="spells_table">
+        <column name="magic_class" value="CLERIC"/>
+        <column name="spells_day_known" value="KNOWN"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells':  [null,null]},
+        {'level':2,'spells':  [null,null]},
+        {'level':3,'spells':  [null,null,null]},
+        {'level':4,'spells':  [null,null,null]},
+        {'level':5,'spells':  [null,null,null,null]},
+        {'level':6,'spells':  [null,null,null,null]},
+        {'level':7,'spells':  [null,null,null,null,null]},
+        {'level':8,'spells':  [null,null,null,null,null]},
+        {'level':9,'spells':  [null,null,null,null,null,null]},
+        {'level':10,'spells': [null,null,null,null,null,null]},
+        {'level':11,'spells': [null,null,null,null,null,null,null]},
+        {'level':12,'spells': [null,null,null,null,null,null,null]},
+        {'level':13,'spells': [null,null,null,null,null,null,null,null]},
+        {'level':14,'spells': [null,null,null,null,null,null,null,null]},
+        {'level':15,'spells': [null,null,null,null,null,null,null,null,null]},
+        {'level':16,'spells': [null,null,null,null,null,null,null,null,null]},
+        {'level':17,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':18,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':19,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':20,'spells': [null,null,null,null,null,null,null,null,null,null]}
+        ]"/>
+    </insert>
+    <!-- <insert tableName="spells_table">
         <column name="magic_class" value="DRUID"/>
         <column name="spells_day_known" value="DAY"/>
         <column name="spells_in_level" value="[
@@ -108,7 +134,33 @@
         {'level':19,'spells': [6,5,5,5,5,5,4,4,3,3]},
         {'level':20,'spells': [6,5,5,5,5,5,4,4,4,4]}
         ]"/>
-    </insert>
+    </insert> -->
+    <!-- <insert tableName="spells_table">
+        <column name="magic_class" value="DRUID"/>
+        <column name="spells_day_known" value="KNOWN"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells':  [null,null]},
+        {'level':2,'spells':  [null,null]},
+        {'level':3,'spells':  [null,null,null]},
+        {'level':4,'spells':  [null,null,null]},
+        {'level':5,'spells':  [null,null,null,null]},
+        {'level':6,'spells':  [null,null,null,null]},
+        {'level':7,'spells':  [null,null,null,null,null]},
+        {'level':8,'spells':  [null,null,null,null,null]},
+        {'level':9,'spells':  [null,null,null,null,null,null]},
+        {'level':10,'spells': [null,null,null,null,null,null]},
+        {'level':11,'spells': [null,null,null,null,null,null,null]},
+        {'level':12,'spells': [null,null,null,null,null,null,null]},
+        {'level':13,'spells': [null,null,null,null,null,null,null,null]},
+        {'level':14,'spells': [null,null,null,null,null,null,null,null]},
+        {'level':15,'spells': [null,null,null,null,null,null,null,null,null]},
+        {'level':16,'spells': [null,null,null,null,null,null,null,null,null]},
+        {'level':17,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':18,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':19,'spells': [null,null,null,null,null,null,null,null,null,null]},
+        {'level':20,'spells': [null,null,null,null,null,null,null,null,null,null]}
+        ]"/>
+    </insert> -->
     <insert tableName="spells_table">
         <column name="magic_class" value="PALADIN"/>
         <column name="spells_day_known" value="DAY"/>
@@ -130,6 +182,29 @@
         {'level':18,'spells': [3,2,2,1]},
         {'level':19,'spells': [3,3,3,2]},
         {'level':20,'spells': [3,3,3,3]}
+        ]"/>
+    </insert>
+    <insert tableName="spells_table">
+        <column name="magic_class" value="PALADIN"/>
+        <column name="spells_day_known" value="KNOWN"/>
+        <column name="spells_in_level" value="[
+        {'level':4,'spells': [null]},
+        {'level':5,'spells': [null]},
+        {'level':6,'spells': [null]},
+        {'level':7,'spells': [null]},
+        {'level':8,'spells': [null,null]},
+        {'level':9,'spells': [null,null]},
+        {'level':10,'spells': [null,null]},
+        {'level':11,'spells': [null,null,null]},
+        {'level':12,'spells': [null,null,null]},
+        {'level':13,'spells': [null,null,null]},
+        {'level':14,'spells': [null,null,null,null]},
+        {'level':15,'spells': [null,null,null,null]},
+        {'level':16,'spells': [null,null,null,null]},
+        {'level':17,'spells': [null,null,null,null]},
+        {'level':18,'spells': [null,null,null,null]},
+        {'level':19,'spells': [null,null,null,null]},
+        {'level':20,'spells': [null,null,null,null]}
         ]"/>
     </insert>
     <insert tableName="spells_table">
@@ -184,7 +259,7 @@
         {'level':20,'spells': [9,5,5,4,4,4,3,3,3,3]}
         ]"/>
     </insert>
-    <insert tableName="spells_table">
+    <!-- <insert tableName="spells_table">
         <column name="magic_class" value="WIZARD"/>
         <column name="spells_day_known" value="DAY"/>
         <column name="spells_in_level" value="[
@@ -209,10 +284,10 @@
         {'level':19,'spells': [4,4,4,4,4,4,4,4,3,3]},
         {'level':20,'spells': [4,4,4,4,4,4,4,4,4,4]}
         ]"/>
-    </insert>
+    </insert> -->
     <insert tableName="spells_table">
-        <column name="magic_class" value="WIZARD"/>
-        <column name="spells_day_known" value="BOOK"/>
+        <column name="magic_class" value="BOOK"/>
+        <column name="spells_day_known" value="KNOWN"/>
         <column name="spells_in_level" value="[
         {'level':1,'spells': [null,2]},
         {'level':2,'spells': [null,4]},
