@@ -39,6 +39,9 @@
         <column name="spells_known" type="varchar(10)">
           <constraints nullable="true"/>
         </column>
+        <column name="spells_domain" type="varchar(20)">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

@@ -35,6 +35,9 @@ public class ClassPc implements Serializable {
     @Enumerated(EnumType.STRING)
     SpellsEnum spellsKnown;
 
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spells_domain;
+
     public void incrementLevel() {
         this.level++;
     }

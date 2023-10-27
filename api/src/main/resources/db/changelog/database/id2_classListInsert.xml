@@ -60,6 +60,7 @@
             ]"/>
             <column name="spells_per_day" value="BARD"/>
             <column name="spells_known" value="BARD"/>
+            <column name="spells_domain" value="BARD"/>
             </insert>
             <insert tableName="class_character">
               <column name="id" value="3"/>
@@ -75,6 +76,7 @@
               ]"/>
               <column name="spells_per_day" value="CLERIC"/>
               <column name="spells_known" value="CLERIC"/>
+              <column name="spells_domain" value="CLERIC"/>
               </insert>
           <insert tableName="class_character">
             <column name="id" value="4"/>   
@@ -107,6 +109,7 @@
             ]"/>
             <column name="spells_per_day" value="CLERIC"/>
             <column name="spells_known" value="CLERIC"/>
+            <column name="spells_domain" value="DRUID"/>
           </insert> 
           <insert tableName="class_character">
             <column name="id" value="5"/>  
@@ -189,6 +192,7 @@
             ]"/>
             <column name="spells_per_day" value="PALADIN"/>
             <column name="spells_known" value="PALADIN"/>
+            <column name="spells_domain" value="PALADIN"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="8"/>  
@@ -218,6 +222,7 @@
             ]"/>
             <column name="spells_per_day" value="PALADIN"/>
             <column name="spells_known" value="PALADIN"/>
+            <column name="spells_domain" value="RANGER"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="9"/>  
@@ -263,6 +268,7 @@
             ]"/>
             <column name="spells_per_day" value="SORCERER"/>
             <column name="spells_known" value="SORCERER"/>
+            <column name="spells_domain" value="SORCERER_WIZARD"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="11"/>  
@@ -282,6 +288,7 @@
             ]"/>
             <column name="spells_per_day" value="CLERIC"/>
             <column name="spells_known" value="BOOK"/>
+            <column name="spells_domain" value="SORCERER_WIZARD"/>
           </insert>
           <insert tableName="class_character">
           <column name="id" value="12"/>  

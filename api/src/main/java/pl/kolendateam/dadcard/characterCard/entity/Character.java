@@ -108,6 +108,9 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     HashMap<EnumClass,Integer[]> magicKnown;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap<EnumClass,HashSet<Integer>> spellsKnown;
+
 
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
@@ -120,6 +123,7 @@ public class Character {
         this.items = new ArrayList<>();
         this.magicPerDay = new HashMap<>();
         this.magicKnown = new HashMap<>();
+        this.spellsKnown = new HashMap<>();
     }
 
     public void addClassToPcArray(ClassPc classPc) {
@@ -564,6 +568,8 @@ public class Character {
                     for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
                         if(classPc.getLevel() == spellsInThisLevel.getLevel()){
                             this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            HashSet<Integer> newSpellsHashSet = new HashSet<>();
+                            this.spellsKnown.put(classPc.getName(), newSpellsHashSet);
                             }
                         }
                     }
@@ -577,5 +583,40 @@ public class Character {
         this.magicKnown.remove(name);
         this.magicPerDay.remove(name);
         
+    }
+
+    public void addSpells(int[] idSpells, ArrayList<Integer> classesSpells, int idClass){
+
+        EnumClass classToSelect = null;
+        
+        for(ClassPc classPc : this.classPcArray){
+            if(classPc.getId() == idClass){
+                classToSelect = classPc.getName();
+            }
+        }
+
+        for(EnumClass classInMap : this.magicKnown.keySet()){
+            if(classToSelect != null &&
+                classInMap == classToSelect){
+
+                for(int idSpell : idSpells){
+                    for(Integer classesSpell : classesSpells){
+                        if(idSpell == classesSpell){
+                            this.spellsKnown.get(classToSelect).add(idSpell);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public SpellsEnum characterGetClassNameById(int idClass) {
+
+        for(ClassPc clPc : this.classPcArray){
+            if(idClass == clPc.getId()){
+                return clPc.getSpells_domain();
+            }
+        }
+        return null;
     }
 }

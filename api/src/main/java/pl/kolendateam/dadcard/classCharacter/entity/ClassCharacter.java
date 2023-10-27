@@ -75,4 +75,7 @@ public class ClassCharacter {
 
     @Enumerated(EnumType.STRING)
     SpellsEnum spellsKnown;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsDomain;
 }

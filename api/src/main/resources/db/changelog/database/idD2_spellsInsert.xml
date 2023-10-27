@@ -57,7 +57,7 @@
         You fire a small orb of acid at the target. You must succeed on a ranged touch attack to hit your target. The orb deals 1d3 points of acid damage."/>
     </insert>
     <insert tableName="spells">
-        <column name="name" value="Acid Splash"/>
+        <column name="name" value="Aid"/>
         <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']"/>
         <column name="level" value="[{'level':2,'classDomain':'CLERIC'},{'level':2,'classDomain':'GOOD'},{'level':2,'classDomain':'LUCK'}]"/>
         <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>

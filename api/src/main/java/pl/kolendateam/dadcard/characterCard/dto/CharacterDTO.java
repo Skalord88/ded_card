@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -50,6 +51,7 @@ public class CharacterDTO implements Serializable {
     public ArrayList<Items> items;
     public HashMap <EnumClass,Integer[]> magicPerDay;
     public HashMap <EnumClass,Integer[]> magicKnown;
+    public HashMap <EnumClass,HashSet<Integer>> spellsKnown;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
@@ -90,6 +92,7 @@ public class CharacterDTO implements Serializable {
         this.items = character.getItems();
         this.magicPerDay = character.getMagicPerDay();
         this.magicKnown = character.getMagicKnown();
+        this.spellsKnown = character.getSpellsKnown();
     }
 
 }
