@@ -196,6 +196,7 @@ public class CharacterController {
 
         List<Feats> featsList = this.featsRepository.findAll();
         List<ClassCharacter> allClassesList = this.classRepository.findAll();
+        List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
@@ -222,6 +223,8 @@ public class CharacterController {
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
         if (levelClassInDB == 1) {
             character.removeClassFromPcArray(indexClassInDB);
+            //remove magic table, if class is 0
+            character.removeMagicClass(classPc.getName());
         }
         if (levelClassInDB > 1) {
             character.decrementLevelClassForIndex(indexClassInDB);
@@ -263,6 +266,15 @@ public class CharacterController {
             character.minusSavingThrowLevelOne(classPc.getSavingThrow());
         }
 
+        //magic
+        if (character.getClassPcArray() == null){
+            character.setMagicKnown(null);
+            character.setMagicPerDay(null);
+        } else {
+        character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
+        }
+
+        //base attack bonus
         character.decrementBab(classCharacter.getClassBab());
 
         this.characterRepository.save(character);

@@ -571,4 +571,11 @@ public class Character {
             }
         }
     }
+
+    public void removeMagicClass(EnumClass name) {
+
+        this.magicKnown.remove(name);
+        this.magicPerDay.remove(name);
+        
+    }
 }
