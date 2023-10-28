@@ -63,32 +63,14 @@ public class CharacterDTO implements Serializable {
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
         this.effectiveCharacterLv = character.getEffectiveCharacterLv() + character.getLevelAdjustment();
-        if (character.getVitality() == null) {
-            this.vitality = null;
-        } else {
-            this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-        }
+        this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.bab = (int) character.getBab();
-        if (character.getArmorClass() == null) {
-            this.armorClass = null;
-        } else {
-            this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(), character.getAbilitys(),
-                    character.getSize());
-        }
-        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),
-                character.getAbilitys());
+        this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());
+        this.savingThrows = MapperSavingThrowToDTO.toSavingThrowDTO(character.getSavingThrow(),character.getAbilitys());
         this.skillPoints = character.getSkillPoints();
         this.specialAttacks = MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-        if (character.getClassSkills() == null) {
-            this.skillsList = null;
-        } else {
-            this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(), character.getAbilitys());
-        }
-        if (character.getFeatsList() == null) {
-            this.featsList = null;
-        } else {
-            this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
-        }
+        this.skillsList = MapperSkillsToDTO.toSkillsDTO(character.getClassSkills(), character.getAbilitys());
+        this.featsList = MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
         this.items = character.getItems();
         this.magicPerDay = character.getMagicPerDay();
         this.magicKnown = character.getMagicKnown();

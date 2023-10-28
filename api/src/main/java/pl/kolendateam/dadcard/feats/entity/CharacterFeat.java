@@ -24,6 +24,7 @@ public class CharacterFeat implements Serializable{
     Integer levelOfFeat;
     String characterFeatName;
     String characterFeatDescription;
+    FeatsTypeEnum featsType;
 
     public int findFeatIndexinArrayById(ArrayList<CharacterFeat> featPcList){
         for (int i = 0; i < featPcList.size(); i ++){

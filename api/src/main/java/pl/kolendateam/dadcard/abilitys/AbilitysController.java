@@ -43,12 +43,7 @@ public class AbilitysController {
 
         Abilitys abilitys = new Abilitys();
 
-        abilitys.setStreght(abilitysDTO.streght);
-        abilitys.setDextrity(abilitysDTO.dextrity);
-        abilitys.setConstitution(abilitysDTO.constitution);
-        abilitys.setIntelligence(abilitysDTO.intelligence);
-        abilitys.setWisdom(abilitysDTO.wisdom);
-        abilitys.setCharisma(abilitysDTO.charisma);
+        abilitys.setCharacterAbility(abilitysDTO);
 
         character.setAbilitys(abilitys);
 
@@ -57,6 +52,7 @@ public class AbilitysController {
         this.characterRepository.save(character);
 
         return new CharacterAbilityDTO(character);
+
     }
     
 }

@@ -56,10 +56,6 @@ public class CharacterController {
     }
 
     @PostMapping(value = "", consumes = "application/json")
-    public CreateCharacterDTO createCharacter(@RequestBody CreateCharacterDTO createCharacterDTO) {
-
-        Character character = new Character(createCharacterDTO.characterName, createCharacterDTO.playerName);
-
         List<Skills> skillsList = this.skillsRepository.findAll();
         character.createSkillsArray(skillsList);
 

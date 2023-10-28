@@ -20,5 +20,5 @@ public class PrerequisiteDTO {
     public Abilitys ability;
     public int bab;
     public String[] feats;
-    
+
 }
