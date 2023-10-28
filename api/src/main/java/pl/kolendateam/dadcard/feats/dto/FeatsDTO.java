@@ -20,11 +20,7 @@ public class FeatsDTO {
         this.id = feats.getId();
         this.featName = feats.getFeatName();
         this.featsType = feats.getFeatsType();
-        if(feats.getPrerequisite() == null){
-            this.prerequisite = null;
-        } else {
         this.prerequisite = MapperPrerequisiteDTO.toPrerequisiteDTO(feats.getPrerequisite());
-        }
         this.description = feats.getDescription();
     }
     

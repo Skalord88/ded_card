@@ -8,17 +8,18 @@ import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 public class MapperPrerequisiteDTO {
     public static PrerequisiteDTO toPrerequisiteDTO(String prerequisite){
 
+        if(prerequisite!=null){
         Prerequisite p = new Gson().fromJson(prerequisite, Prerequisite.class);
 
-        return new PrerequisiteDTO(
-            p.getRace(),
-            p.getSavingThrow(),
-            p.getArmorClass(),
-            p.getClassSkills(),
-            p.getAbility(),
-            p.getBab(),
-            p.getFeats()
-        );
+            return new PrerequisiteDTO(
+                p.getRace(),
+                p.getSavingThrow(),
+                p.getArmorClass(),
+                p.getClassSkills(),
+                p.getAbility(),
+                p.getBab(),
+                p.getFeats()
+            );
+        } return null;
     }
-
 }

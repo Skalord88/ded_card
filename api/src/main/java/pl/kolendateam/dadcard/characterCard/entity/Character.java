@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,16 +32,14 @@ import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
-<<<<<<< HEAD
 import pl.kolendateam.dadcard.skills.entity.Study;
-=======
->>>>>>> main
 
 @NoArgsConstructor
 @Getter
@@ -398,7 +398,9 @@ public class Character {
                                     featInList.getId(),
                                     1,
                                     featInList.getFeatName(),
-                                    featInList.getDescription());
+                                    featInList.getDescription(),
+                                    featInList.getFeatsType()
+                                    );
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -412,16 +414,21 @@ public class Character {
 
         boolean buyed = false;
 
-        CharacterFeat characterFeat = new CharacterFeat(feat.getId(),
-                1, feat.getFeatName(), feat.getDescription());
+        if(feat.getFeatsType() == FeatsTypeEnum.CLASS){
+            return false;
+        }
 
-        boolean featPresten = false;
+        CharacterFeat characterFeat = new CharacterFeat(
+            feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
+
+        boolean featPresent = false;
         for (CharacterFeat cF : this.featsList) {
             if (cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())) {
-                featPresten = true;
+                featPresent = true;
             }
         }
-        if (!featPresten) {
+
+        if (!featPresent) {
             if (feat.getPrerequisite() == null) {
                 this.featsList.add(characterFeat);
                 buyed = true;

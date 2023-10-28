@@ -37,9 +37,7 @@ public class Feats implements Serializable{
     String description;
 
     String skills;
-
     Integer speed;
-
     String specialAttacks;
-    
+
 }
