@@ -121,7 +121,7 @@ public class CharacterController {
         character.incrementEffectiveCharacterLv();
 
         // skills & hp
-        if (character.getCharacterLevel() == 1) {
+        if (character.getEffectiveCharacterLv() == 1) {
             character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
             character.hitPointsFirstLevel(classCharacter.getHitDice());
         } else {
@@ -218,7 +218,7 @@ public class CharacterController {
         }
 
         // skillPoints & hp
-        if (character.getCharacterLevel() == 0) {
+        if (character.getEffectiveCharacterLv() == 0) {
             character.setSkillPoints(0);
             HashMap<Integer, Integer> vitaHD = new HashMap<>();
             Vitality vita = new Vitality(0, vitaHD, 0);

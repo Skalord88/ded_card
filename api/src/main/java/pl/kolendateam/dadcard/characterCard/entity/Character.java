@@ -68,7 +68,7 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<ClassPc> classPcArray;
 
-    short characterLevel;
+    short effectiveCharacterLv;
     byte levelAdjustment;
 
     @JdbcTypeCode(SqlTypes.JSON)
@@ -127,11 +127,11 @@ public class Character {
     }
 
     public void incrementEffectiveCharacterLv() {
-        this.characterLevel += 1;
+        this.effectiveCharacterLv += 1;
     }
 
     public void decrementEffectiveCharacterLv() {
-        this.characterLevel -= 1;
+        this.effectiveCharacterLv -= 1;
     }
 
     public void addSavingThrowLevelOne(String stringSavingThrow) {
@@ -241,14 +241,14 @@ public class Character {
                 if (skillPoints < 1) {
                     check = false;
                 }
-                if ((int) skPoints > this.characterLevel + 3) {
+                if ((int) skPoints > this.effectiveCharacterLv + 3) {
                     check = false;
                 }
                 if (skill.isClassSkill() == true
-                        && skill.getSkillRank() >= this.characterLevel + 3) {
+                        && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
                     check = false;
                 }
-                double doubleLEP = (this.characterLevel + 3) / 2;
+                double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
                 if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
                     check = false;
                 }
@@ -307,7 +307,7 @@ public class Character {
 
         this.vitality.hitDices.put(hitDice, hD);
 
-        int hP = vitality.hitPointsAtNewLevel(hitDice, vitality, abilitys, characterLevel);
+        int hP = vitality.hitPointsAtNewLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
 
         this.vitality.setHitPoints(hP);
 
@@ -322,7 +322,7 @@ public class Character {
             vitality.hitDices.put(hitDice, lv);
         }
 
-        int hP = vitality.hitPointsAtLastLevel(hitDice, vitality, abilitys, characterLevel);
+        int hP = vitality.hitPointsAtLastLevel(hitDice, vitality, abilitys, effectiveCharacterLv);
 
         this.vitality.setHitPoints(hP);
     }
