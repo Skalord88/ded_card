@@ -1,10 +1,7 @@
 package pl.kolendateam.dadcard.spells.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import com.google.gson.Gson;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

@@ -72,7 +72,9 @@ public enum SpellsEnum {
     YES_HARMLESS,
     BARD,
     CLERIC,
+    DRUID,
     PALADIN,
+    RANGER,
     SORCERER,
     WIZARD,
     SORCERER_WIZARD,
@@ -81,6 +83,5 @@ public enum SpellsEnum {
     KNOWN,
     DAY,
     BOOK
-
 
 }

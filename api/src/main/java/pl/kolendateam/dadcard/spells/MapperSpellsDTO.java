@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
@@ -41,6 +42,23 @@ public class MapperSpellsDTO {
         SpellLevel[] levelSpellArray = gson.fromJson(enumSpell, enumSpellArrayJson);
 
         return levelSpellArray;
+    }
+
+    public static List<SpellsDTO> toClassSpellsDTO(List<Spells> spellsList, SpellsEnum className) {
+
+        ArrayList<SpellsDTO> spellsDTOList = new ArrayList<>();
+        for(Spells spell : spellsList){
+            SpellLevel[] listLevels = MapperSpellsInLevel.toSpellLevelArray(spell.getLevel());
+
+            for(SpellLevel sp : listLevels){
+                if(sp.getClassDomain() == className){
+                    SpellsDTO spellDTO = new SpellsDTO(spell);
+                    spellsDTOList.add(spellDTO);
+                }
+            }
+        }
+
+        return spellsDTOList;
     }
 
 }

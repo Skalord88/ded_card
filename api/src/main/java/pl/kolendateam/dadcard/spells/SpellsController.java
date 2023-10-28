@@ -17,7 +17,10 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
+import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsTableDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
@@ -33,16 +36,19 @@ public class SpellsController {
     SpellsRepository spellsRepository;
     SpellsTableRepository spellsTableRepository;
     CharacterRepository characterRepository;
+    ClassRepository classRepository;
 
     @Autowired
     public SpellsController(
         SpellsRepository spellsRepository
         ,SpellsTableRepository spellsTableRepository
         ,CharacterRepository characterRepository
+        ,ClassRepository classRepository
         ){
         this.spellsRepository = spellsRepository;
         this.spellsTableRepository = spellsTableRepository;
         this.characterRepository = characterRepository;
+        this.classRepository = classRepository;
     }
 
     @GetMapping("")
@@ -54,12 +60,37 @@ public class SpellsController {
 
     }
 
-    @GetMapping("/spellstable")
-    public List<SpellsTableDTO> showSpellsTableList(){
+    @GetMapping("{id}/spellstable")
+    public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable int id){
 
     List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
+    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
 
-    return MapperSpellsTableDTO.toSpellsTableDTO(spellsTableList);
+    if (!classOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Class Not Found");
+        }
+    
+    ClassCharacter classFromId = classOpt.get();
+
+    return MapperSpellsTableDTO.toClassSpellsDTO(spellsTableList, classFromId.getSpellsKnown(), classFromId.getSpellsPerDay());
+
+    }
+
+    @GetMapping("{id}")
+    public List<SpellsDTO> showSpellsClassList(@PathVariable int id){
+
+    List<Spells> spellsList = this.spellsRepository.findAll();
+    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
+
+    if (!classOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Class Not Found");
+        }
+
+    ClassCharacter classFromId = classOpt.get();
+
+    return MapperSpellsDTO.toClassSpellsDTO(spellsList, classFromId.getSpellsDomain());
 
     }
 
@@ -87,15 +118,10 @@ public class SpellsController {
                 if(spellToAdd != null){
                     classesSpells.add(spellToAdd);
                 }
-
             }
-
-            for(Integer idInList : classesSpells){
-                System.out.println(idInList);
-            }
-            
         character.addSpells(SpellsAddDTO.spells,classesSpells,SpellsAddDTO.idClass);
-    }
+        }
+
         this.characterRepository.save(character);
 
         return new CharacterDTO (character);
