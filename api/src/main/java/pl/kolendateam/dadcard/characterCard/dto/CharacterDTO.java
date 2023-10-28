@@ -55,7 +55,7 @@ public class CharacterDTO implements Serializable {
         this.speed = character.getSpeed();
         this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
         this.classPcList = MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-        this.effectiveCharacterLv = character.getCharacterLevel() + character.getLevelAdjustment();
+        this.effectiveCharacterLv = character.getEffectiveCharacterLv() + character.getLevelAdjustment();
         this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
         this.bab = (int) character.getBab();
         this.armorClass = MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass(),character.getAbilitys(),character.getSize());
