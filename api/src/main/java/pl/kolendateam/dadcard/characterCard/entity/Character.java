@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
@@ -584,36 +585,6 @@ public class Character {
         }
     }
 
-    // public void addMagicCells(EnumClass className){
-    //         if(this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(className)){
-    //             ArrayList<SpellsInCharLevel> spellsInChar = new ArrayList<>();
-    //             for(int i = 0; i == this.magicKnown.get(className).length-1; i++){
-    //                 SpellsInCharLevel sICL = new SpellsInCharLevel();
-    //                 sICL.setLevel(i);
-    //                 ArrayList<Integer> emptyListOfSpells = new ArrayList<>();
-    //                 sICL.setSpells(emptyListOfSpells);
-    //                 spellsInChar.add(sICL);
-    //             }
-    //             this.spellsKnown.put(className,spellsInChar);
-    //         }
-    //         else {
-    //             if(this.spellsKnown.containsKey(className)){
-    //             ArrayList<SpellsInCharLevel> spellsInChar = new ArrayList<>();
-    //             int lenght = this.magicKnown.get(className).length-1;
-    //             for(int i = 0; i == lenght; i++){
-    //                 if(i > lenght){
-    //                     SpellsInCharLevel sICL = new SpellsInCharLevel();
-    //                     sICL.setLevel(i);
-    //                     ArrayList<Integer> emptyListOfSpells = new ArrayList<>();
-    //                     sICL.setSpells(emptyListOfSpells);
-    //                     spellsInChar.add(sICL);
-    //                 }
-    //             }
-    //             this.spellsKnown.put(className,spellsInChar);
-    //         }
-    //     }
-    // }
-
     public void removeMagicClass(EnumClass name) {
 
         this.magicKnown.remove(name);
@@ -657,11 +628,17 @@ public class Character {
         return null;
     }
 
-    public void createMagicCells(EnumClass className) {
-        SpellsInCharLevel sInCharLevel = new SpellsInCharLevel(0,new ArrayList<>());
-        ArrayList<SpellsInCharLevel> listOFCharSpells = new ArrayList<>();
-        listOFCharSpells.add(sInCharLevel);
-        this.spellsKnown.put(className,listOFCharSpells);
+    public void createMagicCells(int maxLvSpells, EnumClass className) {
+        int i = 0;
+        ArrayList<SpellsInCharLevel> listSpellsCells = new ArrayList<>();
+        do {
+            SpellsInCharLevel sInCharLevel = new SpellsInCharLevel(i, new ArrayList<>());
+            listSpellsCells.add(sInCharLevel);
+            i++;
+        } while (i > maxLvSpells);
+
+        this.spellsKnown.replace(className,listSpellsCells);
+
     }
 
 }

@@ -19,7 +19,6 @@ import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.characterCard.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
@@ -173,8 +172,9 @@ public class CharacterController {
 
         //magicKnown
         // if(indexClassInDB == -1){
+        int maxLvSpells = character.getMagicKnown().get(classCharacter.getName()).length;
         if(classCharacter.getSpellsKnown() != null){
-            character.createMagicCells(classCharacter.getName());
+            character.createMagicCells(maxLvSpells, classCharacter.getName());
         }
 
         this.characterRepository.save(character);
