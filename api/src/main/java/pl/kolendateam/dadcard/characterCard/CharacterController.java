@@ -19,6 +19,7 @@ import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.characterCard.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.characterCard.entity.Vitality;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
@@ -169,6 +170,12 @@ public class CharacterController {
 
         //magic
         character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
+
+        //magicKnown
+        // if(indexClassInDB == -1){
+        if(classCharacter.getSpellsKnown() != null){
+            character.createMagicCells(classCharacter.getName());
+        }
 
         this.characterRepository.save(character);
 

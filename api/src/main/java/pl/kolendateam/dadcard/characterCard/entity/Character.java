@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,7 +41,6 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
-import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -558,31 +556,26 @@ public class Character {
     public void addMagic(List<SpellsTable> spellsTableList, SpellsEnum spellDay, SpellsEnum spellKnown) {
 
         for(SpellsTable table : spellsTableList){
-            ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(table.getSpellsInLevel());
-            if(table.getSpellsDayKnown() != null){
-                for(ClassPc classPc : classPcArray){
+        ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(table.getSpellsInLevel());
+        if(table.getSpellsDayKnown() != null){
+            for(ClassPc classPc : classPcArray){
 
-                    if(table.getSpellsDayKnown() == SpellsEnum.DAY &&
-                        table.getMagicClass() == classPc.getSpellsPerDay()){
+                if(table.getSpellsDayKnown() == SpellsEnum.DAY &&
+                    table.getMagicClass() == classPc.getSpellsPerDay()){
 
-                    for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
-                        if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                            this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
-                            }
+                for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
+                    if(classPc.getLevel() == spellsInThisLevel.getLevel()){
+                        this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
                         }
                     }
+                }
 
-                    if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-                        table.getMagicClass() == classPc.getSpellsKnown()){
-                            
-                    for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
-                        if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                            this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
-                            SpellsInCharLevel newCellsLevel = new SpellsInCharLevel();
-                            this.spellsKnown = newCellsLevel.newLevel(
-                                classPc.getName(),
-                                this.magicKnown.get(classPc.getName()),
-                                this.spellsKnown.get(classPc.getName()));
+                if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+                    table.getMagicClass() == classPc.getSpellsKnown()){
+                        
+                for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
+                    if(classPc.getLevel() == spellsInThisLevel.getLevel()){
+                        this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
                             }
                         }
                     }
@@ -590,6 +583,36 @@ public class Character {
             }
         }
     }
+
+    // public void addMagicCells(EnumClass className){
+    //         if(this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(className)){
+    //             ArrayList<SpellsInCharLevel> spellsInChar = new ArrayList<>();
+    //             for(int i = 0; i == this.magicKnown.get(className).length-1; i++){
+    //                 SpellsInCharLevel sICL = new SpellsInCharLevel();
+    //                 sICL.setLevel(i);
+    //                 ArrayList<Integer> emptyListOfSpells = new ArrayList<>();
+    //                 sICL.setSpells(emptyListOfSpells);
+    //                 spellsInChar.add(sICL);
+    //             }
+    //             this.spellsKnown.put(className,spellsInChar);
+    //         }
+    //         else {
+    //             if(this.spellsKnown.containsKey(className)){
+    //             ArrayList<SpellsInCharLevel> spellsInChar = new ArrayList<>();
+    //             int lenght = this.magicKnown.get(className).length-1;
+    //             for(int i = 0; i == lenght; i++){
+    //                 if(i > lenght){
+    //                     SpellsInCharLevel sICL = new SpellsInCharLevel();
+    //                     sICL.setLevel(i);
+    //                     ArrayList<Integer> emptyListOfSpells = new ArrayList<>();
+    //                     sICL.setSpells(emptyListOfSpells);
+    //                     spellsInChar.add(sICL);
+    //                 }
+    //             }
+    //             this.spellsKnown.put(className,spellsInChar);
+    //         }
+    //     }
+    // }
 
     public void removeMagicClass(EnumClass name) {
 
@@ -616,7 +639,7 @@ public class Character {
                 for(int idSpell : idSpells){
                     for(Integer classesSpell : classesSpells){
                         if(idSpell == classesSpell){
-                            this.spellsKnown.get(classToSelect).add(idSpell);
+                            this.spellsKnown.get(classToSelect);
                         }
                     }
                 }
@@ -633,4 +656,12 @@ public class Character {
         }
         return null;
     }
+
+    public void createMagicCells(EnumClass className) {
+        SpellsInCharLevel sInCharLevel = new SpellsInCharLevel(0,new ArrayList<>());
+        ArrayList<SpellsInCharLevel> listOFCharSpells = new ArrayList<>();
+        listOFCharSpells.add(sInCharLevel);
+        this.spellsKnown.put(className,listOFCharSpells);
+    }
+
 }

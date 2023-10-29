@@ -15,6 +15,7 @@ import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.characterCard.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
@@ -51,7 +52,7 @@ public class CharacterDTO implements Serializable {
     public ArrayList<Items> items;
     public HashMap <EnumClass,Integer[]> magicPerDay;
     public HashMap <EnumClass,Integer[]> magicKnown;
-    public HashMap <EnumClass,HashSet<Integer>> spellsKnown;
+    public HashMap <EnumClass,ArrayList<SpellsInCharLevel>> spellsKnown;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();
