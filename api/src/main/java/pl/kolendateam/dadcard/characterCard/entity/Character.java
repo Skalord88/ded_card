@@ -42,6 +42,7 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -111,7 +112,7 @@ public class Character {
     HashMap<EnumClass,Integer[]> magicKnown;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass,HashSet<Integer>> spellsKnown;
+    HashMap<EnumClass,ArrayList<SpellsInCharLevel>> spellsKnown;
 
 
     public Character(String characterName, String playerName) {
@@ -577,8 +578,11 @@ public class Character {
                     for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
                         if(classPc.getLevel() == spellsInThisLevel.getLevel()){
                             this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
-                            HashSet<Integer> newSpellsHashSet = new HashSet<>();
-                            this.spellsKnown.put(classPc.getName(), newSpellsHashSet);
+                            SpellsInCharLevel newCellsLevel = new SpellsInCharLevel();
+                            this.spellsKnown = newCellsLevel.newLevel(
+                                classPc.getName(),
+                                this.magicKnown.get(classPc.getName()),
+                                this.spellsKnown.get(classPc.getName()));
                             }
                         }
                     }
@@ -591,6 +595,7 @@ public class Character {
 
         this.magicKnown.remove(name);
         this.magicPerDay.remove(name);
+        this.spellsKnown.remove(name);
         
     }
 
