@@ -15,7 +15,6 @@ import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.characterCard.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
@@ -28,6 +27,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 
 @AllArgsConstructor
 @NoArgsConstructor

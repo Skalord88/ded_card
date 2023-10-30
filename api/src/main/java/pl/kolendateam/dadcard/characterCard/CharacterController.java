@@ -32,6 +32,7 @@ import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
+import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
@@ -169,12 +170,17 @@ public class CharacterController {
 
         //magic
         character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
+        int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length-1;
 
         //magicKnown
-        // if(indexClassInDB == -1){
-        int maxLvSpells = character.getMagicKnown().get(classCharacter.getName()).length;
         if(classCharacter.getSpellsKnown() != null){
-            character.createMagicCells(maxLvSpells, classCharacter.getName());
+            if(character.getSpellsKnown().get(classCharacter.getName()).isEmpty()){
+                character.addSpellsKnown(sizeMagic,classCharacter.getName());
+            } else {
+                if(character.checkLvSpellsKnown(sizeMagic,classCharacter.getName())){
+                    character.addNewSpellsKnown(sizeMagic,classCharacter.getName());
+                }
+            }
         }
 
         this.characterRepository.save(character);

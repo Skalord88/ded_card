@@ -22,7 +22,6 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
-import pl.kolendateam.dadcard.spells.dto.SpellsTableDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;

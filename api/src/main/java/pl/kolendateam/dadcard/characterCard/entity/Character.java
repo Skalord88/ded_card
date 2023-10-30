@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
@@ -43,6 +42,7 @@ import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
@@ -577,6 +577,9 @@ public class Character {
                 for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
                     if(classPc.getLevel() == spellsInThisLevel.getLevel()){
                         this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
+                        if(this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(classPc.getName())){
+                                this.spellsKnown.put(classPc.getName(), new ArrayList<>());
+                                }
                             }
                         }
                     }
@@ -628,17 +631,30 @@ public class Character {
         return null;
     }
 
-    public void createMagicCells(int maxLvSpells, EnumClass className) {
-        int i = 0;
-        ArrayList<SpellsInCharLevel> listSpellsCells = new ArrayList<>();
-        do {
-            SpellsInCharLevel sInCharLevel = new SpellsInCharLevel(i, new ArrayList<>());
-            listSpellsCells.add(sInCharLevel);
-            i++;
-        } while (i > maxLvSpells);
+    public void addSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+        do{
+            SpellsInCharLevel sICK = new SpellsInCharLevel();
+            sICK.setLevel(sizeMagic);
+            sICK.setSpells(new ArrayList<>());
+            this.spellsKnown.get(name).add(sICK);
+            sizeMagic--;
+        } while (sizeMagic == 0);
+    }
 
-        this.spellsKnown.replace(className,listSpellsCells);
+    public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name){
+        SpellsInCharLevel sICK = new SpellsInCharLevel();
+        sICK.setLevel(sizeMagic);
+        sICK.setSpells(new ArrayList<>());
+        this.spellsKnown.get(name).add(sICK);
+    }
 
+    public boolean checkLvSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+        for(SpellsInCharLevel spellCellLv : this.spellsKnown.get(name)){
+            if(sizeMagic <= spellCellLv.getLevel()){
+                return false;
+            }
+        }
+        return true;
     }
 
 }
