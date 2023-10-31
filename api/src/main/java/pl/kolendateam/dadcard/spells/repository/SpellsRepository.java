@@ -7,5 +7,5 @@ import pl.kolendateam.dadcard.spells.entity.Spells;
 
 @Repository
 public interface SpellsRepository extends JpaRepository<Spells, Integer> {
-    
+
 }

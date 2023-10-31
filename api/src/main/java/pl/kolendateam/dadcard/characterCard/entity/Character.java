@@ -593,35 +593,28 @@ public class Character {
         this.magicKnown.remove(name);
         this.magicPerDay.remove(name);
         this.spellsKnown.remove(name);
-        
+
     }
 
-    public void addSpells(int[] idSpells, ArrayList<Integer> classesSpells, int idClass){
-
-        EnumClass classToSelect = null;
-        
-        for(ClassPc classPc : this.classPcArray){
-            if(classPc.getId() == idClass){
-                classToSelect = classPc.getName();
-            }
-        }
-
-        for(EnumClass classInMap : this.magicKnown.keySet()){
-            if(classToSelect != null &&
-                classInMap == classToSelect){
-
-                for(int idSpell : idSpells){
-                    for(Integer classesSpell : classesSpells){
-                        if(idSpell == classesSpell){
-                            this.spellsKnown.get(classToSelect);
-                        }
-                    }
-                }
+    public void addSpells(int idSpells, EnumClass classNameE, int lv){
+        for(SpellsInCharLevel spellCharClass : this.spellsKnown.get(classNameE)){
+            if(spellCharClass.getLevel() == lv){
+                spellCharClass.getSpells().add(idSpells);
             }
         }
     }
 
-    public SpellsEnum characterGetClassNameById(int idClass) {
+    public EnumClass characterGetClassEnumById(int idClass) {
+
+        for(ClassPc clPc : this.classPcArray){
+            if(idClass == clPc.getId()){
+                return clPc.getName();
+            }
+        }
+        return null;
+    }
+
+    public SpellsEnum characterGetSpellClassById(int idClass) {
 
         for(ClassPc clPc : this.classPcArray){
             if(idClass == clPc.getId()){
@@ -655,6 +648,17 @@ public class Character {
             }
         }
         return true;
+    }
+
+    public HashMap<EnumClass,Integer> getAllCasterAndMaxLv() {
+
+        HashMap<EnumClass,Integer> listOfCasterMaxLv = new HashMap<>();
+
+        for(EnumClass enumClass : this.spellsKnown.keySet()){
+            Integer sizeInt = this.spellsKnown.get(enumClass).size();
+            listOfCasterMaxLv.put(enumClass, sizeInt);
+        }
+        return listOfCasterMaxLv;
     }
 
 }

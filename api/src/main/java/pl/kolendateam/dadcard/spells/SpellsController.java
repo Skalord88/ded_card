@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.spells;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
@@ -103,22 +105,26 @@ public class SpellsController {
                     HttpStatus.NOT_FOUND, "Character Not Found");
         }
 
+        Character character = characterOpt.get();
+
         List<Spells> spellsList = this.spellsRepository.findAll();
 
-        Character character = characterOpt.get();
-        ArrayList<Integer> classesSpells = new ArrayList<>();
-
-        SpellsEnum spellClassE = character.characterGetClassNameById(SpellsAddDTO.idClass);
+        SpellsEnum spellClassE = character.characterGetSpellClassById(SpellsAddDTO.idClass);
+        EnumClass classNameE = character.characterGetClassEnumById(SpellsAddDTO.idClass);
+        int maxLv = character.getMagicKnown().get(classNameE).length;
+        Integer lv = 0;
 
         if(spellClassE != null){
             for(Spells spell : spellsList){
-                Integer spellToAdd = spell.selectSpellsForClass(character.getMagicKnown(), spellClassE);
-
+                Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
                 if(spellToAdd != null){
-                    classesSpells.add(spellToAdd);
+                    lv = spell.selectSpellByLv(spell);
+                }
+                
+                if(spellToAdd != null){
+                    character.addSpells(spellToAdd,classNameE,lv);
                 }
             }
-        character.addSpells(SpellsAddDTO.spells,classesSpells,SpellsAddDTO.idClass);
         }
 
         this.characterRepository.save(character);

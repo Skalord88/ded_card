@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.spells.entity;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 
 @Entity
@@ -50,22 +48,22 @@ public class Spells implements Serializable {
 
     String descriptiveText;
 
-    public Integer selectSpellsForClass(HashMap<EnumClass,Integer[]> knownSpells, SpellsEnum spellClassEnum){
+    public Integer selectSpellsForClass(SpellsEnum spellClassE, int maxLv){
 
-        SpellLevel[] spellsOfClass = MapperSpellsInLevel.toSpellLevelArray(this.level);
-        
+        SpellLevel[] spellsOfClass = MapperSpellsInLevel.toSpellLevelArray(this.level);        
         for(SpellLevel levelAndClassFromSpell : spellsOfClass){
-            
-            for (EnumClass classEnumFromMap : knownSpells.keySet()){
-
-                if(levelAndClassFromSpell.getClassDomain() == spellClassEnum){
-                    if(levelAndClassFromSpell.getLevel() <= knownSpells.size()){
-                        return this.getId();
-                    }
-                }
+            if(levelAndClassFromSpell.getLevel() <= maxLv &&
+                levelAndClassFromSpell.getClassDomain() == spellClassE){
+                return this.getId();
             }
-        }
-        return null;
+        } return null;
     }
 
+    public Integer selectSpellByLv(Spells spellToAdd) {
+        SpellLevel[] spellsOfClass = MapperSpellsInLevel.toSpellLevelArray(this.level);        
+        for(SpellLevel levelAndClassFromSpell : spellsOfClass){
+            return levelAndClassFromSpell.getLevel();
+            }
+        return null;
+    }
 }
