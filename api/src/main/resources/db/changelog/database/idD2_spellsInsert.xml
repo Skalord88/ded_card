@@ -33,7 +33,7 @@
         <column name="casting_time" value="ONE_STANDARD_ACTION"/>
         <column name="range" value="MEDIUM"/>
         <column name="effect" value="Fog spreads in 20 ft. radius, 20 ft. high"/>
-        <column name="duration" value="1 round/level"/>
+        <column name="duration" value="ONE_ROUND_LEVEL"/>
         <column name="saving_throw" value="NONE"/>
         <column name="spell_resistance" value="NO"/>
         <column name="descriptive_text" value="
@@ -116,7 +116,142 @@
         Arcane Focus
         A tiny bell and a piece of very fine silver wire"/>
     </insert>
-    <!--
+    <insert tableName="spells">
+        <column name="name" value="Align Weapon"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':1,'classDomain':'CLERIC'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="Weapon touched or fifty projectiles (all of which must be in contact with each other at the time of casting)"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="WILL_NEGATES_HARMLESS_OBJECT"/>
+        <column name="spell_resistance" value="YES_HARMLESS_OBJECT"/>
+        <column name="descriptive_text" value="Align weapon makes a weapon good, evil, lawful, or chaotic, as you choose. A weapon that is aligned can bypass the damage reduction of certain creatures. This spell has no effect on a weapon that already has an alignment.
+
+        You can’t cast this spell on a natural weapon, such as an unarmed strike.
+        
+        When you make a weapon good, evil, lawful, or chaotic, align weapon is a good, evil, lawful, or chaotic spell, respectively."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Alter Self"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':2,'classDomain':'BARD'},{'level':2,'classDomain':'SORCERER_WIZARD'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="PERSONAL"/>
+        <column name="target" value="You"/>
+        <column name="duration" value="TEN_MINUTE_PER_LEVEL"/>
+        <column name="descriptive_text" value="You assume the form of a creature of the same type as your normal form. The new form must be within one size category of your normal size. The maximum HD of an assumed form is equal to your caster level, to a maximum of 5 HD at 5th level. You can change into a member of your own kind or even into yourself.
+
+        You retain your own ability scores. Your class and level, hit points, alignment, base attack bonus, and base save bonuses all remain the same. You retain all supernatural and spell-like special attacks and qualities of your normal form, except for those requiring a body part that the new form does not have (such as a mouth for a breath weapon or eyes for a gaze attack).
+        
+        You keep all extraordinary special attacks and qualities derived from class levels, but you lose any from your normal form that are not derived from class levels.
+        
+        If the new form is capable of speech, you can communicate normally. You retain any spellcasting ability you had in your original form, but the new form must be able to speak intelligibly (that is, speak a language) to use verbal components and must have limbs capable of fine manipulation to use somatic or material components.
+        
+        You acquire the physical qualities of the new form while retaining your own mind. Physical qualities include natural size, mundane movement capabilities (such as burrowing, climbing, walking, swimming, and flight with wings, to a maximum speed of 120 feet for flying or 60 feet for nonflying movement), natural armor bonus, natural weapons (such as claws, bite, and so on), racial skill bonuses, racial bonus feats, and any gross physical qualities (presence or absence of wings, number of extremities, and so forth). A body with extra limbs does not allow you to make more attacks (or more advantageous two-weapon attacks) than normal.
+        
+        You do not gain any extraordinary special attacks or special qualities not noted above under physical qualities, such as darkvision, low-light vision, blindsense, blindsight, fast healing, regeneration, scent, and so forth.
+        
+        You do not gain any supernatural special attacks, special qualities, or spell-like abilities of the new form. Your creature type and subtype (if any) remain the same regardless of your new form. You cannot take the form of any creature with a template, even if that template doesn’t change the creature type or subtype.
+        
+        You can freely designate the new form’s minor physical qualities (such as hair color, hair texture, and skin color) within the normal ranges for a creature of that kind. The new form’s significant physical qualities (such as height, weight, and gender) are also under your control, but they must fall within the norms for the new form’s kind. You are effectively disguised as an average member of the new form’s race. If you use this spell to create a disguise, you get a +10 bonus on your Disguise check.
+        
+        When the change occurs, your equipment, if any, either remains worn or held by the new form (if it is capable of wearing or holding the item), or melds into the new form and becomes nonfunctional. When you revert to your true form, any objects previously melded into the new form reappear in the same location on your body they previously occupied and are once again functional. Any new items you wore in the assumed form and can’t wear in your normal form fall off and land at your feet; any that you could wear in either form or carry in a body part common to both forms at the time of reversion are still held in the same way. Any part of the body or piece of equipment that is separated from the whole reverts to its true form."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Analyze Dweomer"/>
+        <column name="school" value="['DIVINATION']"/>
+        <column name="level" value="[{'level':6,'classDomain':'BARD'},{'level':6,'classDomain':'SORCERER_WIZARD'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One object or creature per caster level"/>
+        <column name="duration" value="ONE_ROUND_LEVEL"/>
+        <column name="saving_throw" value="NONE_WILL_NEGATES"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="You discern all spells and magical properties present in a number of creatures or objects. Each round, you may examine a single creature or object that you can see as a free action. In the case of a magic item, you learn its functions, how to activate its functions (if appropriate), and how many charges are left (if it uses charges). In the case of an object or creature with active spells cast upon it, you learn each spell, its effect, and its caster level.
+
+        An attended object may attempt a Will save to resist this effect if its holder so desires. If the save succeeds, you learn nothing about the object except what you can discern by looking at it. An object that makes its save cannot be affected by any other analyze dweomer spells for 24 hours.
+        
+        Analyze dweomer does not function when used on an artifact.
+        
+        Focus
+        A tiny lens of ruby or sapphire set in a small golden loop. The gemstone must be worth at least 1,500 gp."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animal Growth"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':5,'classDomain':'DRUID'},{'level':4,'classDomain':'RANGER'},{'level':5,'classDomain':'SORCERER_WIZARD'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="target" value="Up to one animal (Gargantuan or smaller) per two levels, no two of which can be more than 30 ft. apart"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="FORTITUDE_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="A number of animals grow to twice their normal size and eight times their normal weight. This alteration changes each animal’s size category to the next largest, grants it a +8 size bonus to Strength and a +4 size bonus to Constitution (and thus an extra 2 hit points per HD), and imposes a -2 size penalty to Dexterity. The creature’s existing natural armor bonus increases by 2. The size change also affects the animal’s modifier to AC and attack rolls and its base damage. The animal’s space and reach change as appropriate to the new size, but its speed does not change.
+
+        The spell also grants each subject damage reduction 10/magic and a +4 resistance bonus on saving throws. If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it— the spell cannot be used to crush a creature by increasing its size.
+        
+        All equipment worn or carried by an animal is similarly enlarged by the spell, though this change has no effect on the magical properties of any such equipment.
+        
+        Any enlarged item that leaves the enlarged creature’s possession instantly returns to its normal size.
+        
+        The spell gives no means of command or influence over the enlarged animals.
+        
+        Multiple magical effects that increase size do not stack."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animal Messenger"/>
+        <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']"/>
+        <column name="level" value="[{'level':2,'classDomain':'BARD'},{'level':2,'classDomain':'DRUID'},{'level':1,'classDomain':'RANGER'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One Tiny animal"/>
+        <column name="duration" value="ONE_DAY_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="You compel a Tiny animal to go to a spot you designate. The most common use for this spell is to get an animal to carry a message to your allies. The animal cannot be one tamed or trained by someone else, including such creatures as familiars and animal companions.
+
+        Using some type of food desirable to the animal as a lure, you call the animal to you. It advances and awaits your bidding. You can mentally impress on the animal a certain place well known to you or an obvious landmark. The directions must be simple, because the animal depends on your knowledge and can’t find a destination on its own. You can attach some small item or note to the messenger. The animal then goes to the designated location and waits there until the duration of the spell expires, whereupon it resumes its normal activities.
+        
+        During this period of waiting, the messenger allows others to approach it and remove any scroll or token it carries. The intended recipient gains no special ability to communicate with the animal or read any attached message (if it’s written in a language he or she doesn’t know, for example).
+        
+        Material Component
+        A morsel of food the animal likes."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animal Shapes"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':7,'classDomain':'ANIMAL'},{'level':8,'classDomain':'DRUID'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="Up to one willing creature per level, all within 30 ft. of each other"/>
+        <column name="duration" value="ONE_HOURS_PER_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="YES_HARMLESS"/>
+        <column name="descriptive_text" value="You transform up to one willing creature per caster level into an animal of your choice; the spell has no effect on unwilling creatures. Use the alternate form special ability to determine each target’s new abilities. All creatures must take the same kind of animal form. Recipients remain in the animal form until the spell expires or until you dismiss it for all recipients. In addition, an individual subject may choose to resume its normal form as a full-round action; doing so ends the spell for that subject alone. The maximum HD of an assumed form is equal to the subject’s HD or your caster level, whichever is lower, to a maximum of 20 HD at 20th level."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animal Trance"/>
+        <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING','SONIC']"/>
+        <column name="level" value="[{'level':2,'classDomain':'BARD'},{'level':2,'classDomain':'DRUID'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="Animals or magical beasts with Intelligence 1 or 2"/>
+        <column name="duration" value="CONCENTRATION"/>
+        <column name="saving_throw" value="WILL_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="Your swaying motions and music (or singing, or chanting) compel animals and magical beasts to do nothing but watch you. Only a creature with an Intelligence score of 1 or 2 can be fascinated by this spell. Roll 2d6 to determine the total number of HD worth of creatures that you fascinate. The closest targets are selected first until no more targets within range can be affected.
+
+        A magical beast, a dire animal, or an animal trained to attack or guard is allowed a saving throw; an animal not trained to attack or guard is not."/>
+    </insert>
+        <!--
     <insert tableName="spells">
         <column name="name" value=""/>
         <column name="school" value="['']"/>
