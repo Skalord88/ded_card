@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
 @Repository
-public interface SpellsTableRepository extends JpaRepository<SpellsTable, Integer> {
+public interface SpellsTableRepository extends JpaRepository<SpellsTable, Byte> {
     
 }

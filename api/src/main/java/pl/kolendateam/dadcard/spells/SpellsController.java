@@ -62,7 +62,7 @@ public class SpellsController {
     }
 
     @GetMapping("{id}/spellstable")
-    public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable int id){
+    public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable short id){
 
     List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
     Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
@@ -79,7 +79,7 @@ public class SpellsController {
     }
 
     @GetMapping("{id}")
-    public List<SpellsDTO> showSpellsClassList(@PathVariable int id){
+    public List<SpellsDTO> showSpellsClassList(@PathVariable short id){
 
     List<Spells> spellsList = this.spellsRepository.findAll();
     Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
@@ -96,7 +96,7 @@ public class SpellsController {
     }
 
     @PostMapping(value = "{id}/addspells", consumes = {"application/json"})
-    public CharacterDTO addSpellsKnown(@PathVariable int id, @RequestBody SpellsAddDTO SpellsAddDTO){
+    public CharacterDTO addSpellsKnown(@PathVariable short id, @RequestBody SpellsAddDTO SpellsAddDTO){
         
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

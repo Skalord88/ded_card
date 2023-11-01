@@ -7,6 +7,6 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface RaceRepository extends JpaRepository<Race, Integer>{
+public interface RaceRepository extends JpaRepository<Race, Short>{
     
 }

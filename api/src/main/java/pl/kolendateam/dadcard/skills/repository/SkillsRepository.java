@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 
 @Repository
-public interface SkillsRepository extends JpaRepository<Skills, Integer>{
+public interface SkillsRepository extends JpaRepository<Skills, Short>{
     
 }

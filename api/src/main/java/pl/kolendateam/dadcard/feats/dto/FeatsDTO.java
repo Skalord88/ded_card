@@ -10,7 +10,7 @@ import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 @AllArgsConstructor
 public class FeatsDTO {
 
-    public int id;
+    public short id;
     public String featName;
     public FeatsTypeEnum featsType;
     public PrerequisiteDTO prerequisite;

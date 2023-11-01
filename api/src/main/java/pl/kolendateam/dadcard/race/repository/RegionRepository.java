@@ -7,6 +7,6 @@ import pl.kolendateam.dadcard.race.entity.Region;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 @Repository
-public interface RegionRepository extends JpaRepository<Region, Integer>{
+public interface RegionRepository extends JpaRepository<Region, Short>{
     
 }

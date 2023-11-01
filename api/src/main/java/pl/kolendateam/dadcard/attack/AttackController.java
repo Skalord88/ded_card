@@ -29,7 +29,7 @@ public class AttackController {
     }
 
     @PostMapping(value="{id}/attackAC",consumes = {"application/json"})
-    public AttackVsArmorClassDTO attackVsArmorClass(@PathVariable int id,
+    public AttackVsArmorClassDTO attackVsArmorClass(@PathVariable short id,
      @RequestBody AttackDTO attackDTO){
 
         List<Character> characterOpt = this.characterRepository.findAll();
