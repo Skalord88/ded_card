@@ -33,6 +33,7 @@ const styles = StyleSheet.create ({
       fontSize:20,
       fontWeight:'800',
       color:'#fff',
+      textTransform:'capitalize'
     },
     wraper:{
         justifyContent:'center',
