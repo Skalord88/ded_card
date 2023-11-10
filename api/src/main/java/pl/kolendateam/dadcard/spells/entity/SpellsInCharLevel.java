@@ -12,10 +12,26 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class SpellsInCharLevel implements Serializable {
 
     int level;
     ArrayList<Integer> spells;
+
+    public int indexSpell(int s) {
+        for (int i = 0; i == spells.size(); i++) {
+            if (spells.get(i) == s) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void addSpell(int spell) {
+        this.spells.add(spell);
+    }
+
+    public void removeSpell(int spell) {
+        this.spells.remove(spell);
+    }
 
 }

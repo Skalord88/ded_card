@@ -32,7 +32,6 @@ import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
-import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
@@ -48,7 +47,8 @@ public class CharacterController {
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository,
-            FeatsRepository featsRepository, SkillsRepository skillsRepository, SpellsTableRepository spellsTableRepository) {
+            FeatsRepository featsRepository, SkillsRepository skillsRepository,
+            SpellsTableRepository spellsTableRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.featsRepository = featsRepository;
@@ -168,17 +168,17 @@ public class CharacterController {
             character.addFeatToPc(chFeat);
         }
 
-        //magic
-        character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
-        int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length-1;
+        // magic
+        character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
+        int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length - 1;
 
-        //magicKnown
-        if(classCharacter.getSpellsKnown() != null){
-            if(character.getSpellsKnown().get(classCharacter.getName()).isEmpty()){
-                character.addSpellsKnown(sizeMagic,classCharacter.getName());
+        // magicKnown
+        if (classCharacter.getSpellsKnown() != null) {
+            if (character.getSpellsKnown().get(classCharacter.getName()).isEmpty()) {
+                character.addSpellsKnown(sizeMagic, classCharacter.getName());
             } else {
-                if(character.checkLvSpellsKnown(sizeMagic,classCharacter.getName())){
-                    character.addNewSpellsKnown(sizeMagic,classCharacter.getName());
+                if (character.checkLvSpellsKnown(sizeMagic, classCharacter.getName())) {
+                    character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
                 }
             }
         }
@@ -236,7 +236,7 @@ public class CharacterController {
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
         if (levelClassInDB == 1) {
             character.removeClassFromPcArray(indexClassInDB);
-            //remove magic table, if class is 0
+            // remove magic table, if class is 0
             character.removeMagicClass(classPc.getName());
         }
         if (levelClassInDB > 1) {
@@ -279,15 +279,15 @@ public class CharacterController {
             character.minusSavingThrowLevelOne(classPc.getSavingThrow());
         }
 
-        //magic
-        if (character.getClassPcArray() == null){
+        // magic
+        if (character.getClassPcArray() == null) {
             character.setMagicKnown(null);
             character.setMagicPerDay(null);
         } else {
-        character.addMagic(spellsTableList,classCharacter.getSpellsPerDay(),classCharacter.getSpellsKnown());
+            character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
         }
 
-        //base attack bonus
+        // base attack bonus
         character.decrementBab(classCharacter.getClassBab());
 
         this.characterRepository.save(character);

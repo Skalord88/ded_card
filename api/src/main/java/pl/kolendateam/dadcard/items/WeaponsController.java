@@ -44,7 +44,7 @@ public class WeaponsController {
 
     }
 
-    @PostMapping(value = "{id}", consumes = {"application/json"})
+    @PostMapping(value = "{id}/buy", consumes = {"application/json"})
     public CharacterDTO buyWeapons(@PathVariable short id, @RequestBody WeaponsDTO wDTO){
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

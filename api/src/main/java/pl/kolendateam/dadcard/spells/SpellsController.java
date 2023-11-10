@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.spells;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +31,7 @@ import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 @RestController
 @RequestMapping("spells")
 public class SpellsController {
-    
+
     SpellsRepository spellsRepository;
     SpellsTableRepository spellsTableRepository;
     CharacterRepository characterRepository;
@@ -41,11 +39,8 @@ public class SpellsController {
 
     @Autowired
     public SpellsController(
-        SpellsRepository spellsRepository
-        ,SpellsTableRepository spellsTableRepository
-        ,CharacterRepository characterRepository
-        ,ClassRepository classRepository
-        ){
+            SpellsRepository spellsRepository, SpellsTableRepository spellsTableRepository,
+            CharacterRepository characterRepository, ClassRepository classRepository) {
         this.spellsRepository = spellsRepository;
         this.spellsTableRepository = spellsTableRepository;
         this.characterRepository = characterRepository;
@@ -53,51 +48,52 @@ public class SpellsController {
     }
 
     @GetMapping("")
-    public List<SpellsDTO> showSpellsList(){
+    public List<SpellsDTO> showSpellsList() {
 
-    List<Spells> spellsList = this.spellsRepository.findAll();
+        List<Spells> spellsList = this.spellsRepository.findAll();
 
-    return MapperSpellsDTO.toSpellsDTO(spellsList);
+        return MapperSpellsDTO.toSpellsDTO(spellsList);
 
     }
 
     @GetMapping("{id}/spellstable")
-    public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable short id){
+    public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable short id) {
 
-    List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
-    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
+        List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
+        Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
 
-    if (!classOpt.isPresent()) {
+        if (!classOpt.isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Class Not Found");
         }
-    
-    ClassCharacter classFromId = classOpt.get();
 
-    return MapperSpellsTableDTO.toClassSpellsDTO(spellsTableList, classFromId.getSpellsKnown(), classFromId.getSpellsPerDay());
+        ClassCharacter classFromId = classOpt.get();
+
+        return MapperSpellsTableDTO.toClassSpellsDTO(spellsTableList, classFromId.getSpellsKnown(),
+                classFromId.getSpellsPerDay());
 
     }
 
     @GetMapping("{id}")
-    public List<SpellsDTO> showSpellsClassList(@PathVariable short id){
+    public List<SpellsDTO> showSpellsClassList(@PathVariable short id) {
 
-    List<Spells> spellsList = this.spellsRepository.findAll();
-    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
+        List<Spells> spellsList = this.spellsRepository.findAll();
+        Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
 
-    if (!classOpt.isPresent()) {
+        if (!classOpt.isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "Class Not Found");
         }
 
-    ClassCharacter classFromId = classOpt.get();
+        ClassCharacter classFromId = classOpt.get();
 
-    return MapperSpellsDTO.toClassSpellsDTO(spellsList, classFromId.getSpellsDomain());
+        return MapperSpellsDTO.toClassSpellsDTO(spellsList, classFromId.getSpellsDomain());
 
     }
 
-    @PostMapping(value = "{id}/addspells", consumes = {"application/json"})
-    public CharacterDTO addSpellsKnown(@PathVariable short id, @RequestBody SpellsAddDTO SpellsAddDTO){
-        
+    @PostMapping(value = "{id}/addspells", consumes = { "application/json" })
+    public CharacterDTO addSpellsKnown(@PathVariable short id, @RequestBody SpellsAddDTO SpellsAddDTO) {
+
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
         if (!characterOpt.isPresent()) {
@@ -114,22 +110,41 @@ public class SpellsController {
         int maxLv = character.getMagicKnown().get(classNameE).length;
         Integer lv = 0;
 
-        if(spellClassE != null){
-            for(Spells spell : spellsList){
+        if (spellClassE != null) {
+            for (Spells spell : spellsList) {
                 Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
-                if(spellToAdd != null){
+                if (spellToAdd != null) {
                     lv = spell.selectSpellByLv(spell);
                 }
-                
-                if(spellToAdd != null){
-                    character.addSpells(spellToAdd,classNameE,lv);
+
+                if (spellToAdd != null) {
+                    character.addSpells(spellToAdd, classNameE, lv);
+                    this.characterRepository.save(character);
                 }
             }
         }
 
+        return new CharacterDTO(character);
+    }
+
+    @PostMapping(value = "{id}/sellspells", consumes = { "application/json" })
+    public CharacterDTO removeSpellsKnown(@PathVariable short id, @RequestBody SpellsAddDTO SpellsAddDTO) {
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+
+        EnumClass classNameE = character.characterGetClassEnumById(SpellsAddDTO.idClass);
+        character.removeSepll(classNameE, SpellsAddDTO.spells);
+
         this.characterRepository.save(character);
 
-        return new CharacterDTO (character);
+        return new CharacterDTO(character);
     }
 
 }

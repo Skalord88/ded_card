@@ -105,14 +105,13 @@ public class Character {
     ArrayList<Items> items;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass,Integer[]> magicPerDay;
+    HashMap<EnumClass, Integer[]> magicPerDay;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass,Integer[]> magicKnown;
+    HashMap<EnumClass, Integer[]> magicKnown;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass,ArrayList<SpellsInCharLevel>> spellsKnown;
-
+    HashMap<EnumClass, ArrayList<SpellsInCharLevel>> spellsKnown;
 
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
@@ -417,8 +416,7 @@ public class Character {
                                     1,
                                     featInList.getFeatName(),
                                     featInList.getDescription(),
-                                    featInList.getFeatsType()
-                                    );
+                                    featInList.getFeatsType());
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -432,12 +430,12 @@ public class Character {
 
         boolean buyed = false;
 
-        if(feat.getFeatsType() == FeatsTypeEnum.CLASS){
+        if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
             return false;
         }
 
         CharacterFeat characterFeat = new CharacterFeat(
-            feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
+                feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
 
         boolean featPresent = false;
         for (CharacterFeat cF : this.featsList) {
@@ -556,29 +554,31 @@ public class Character {
 
     public void addMagic(List<SpellsTable> spellsTableList, SpellsEnum spellDay, SpellsEnum spellKnown) {
 
-        for(SpellsTable table : spellsTableList){
-        ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(table.getSpellsInLevel());
-        if(table.getSpellsDayKnown() != null){
-            for(ClassPc classPc : classPcArray){
+        for (SpellsTable table : spellsTableList) {
+            ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel
+                    .toSpellsInLevel(table.getSpellsInLevel());
+            if (table.getSpellsDayKnown() != null) {
+                for (ClassPc classPc : classPcArray) {
 
-                if(table.getSpellsDayKnown() == SpellsEnum.DAY &&
-                    table.getMagicClass() == classPc.getSpellsPerDay()){
+                    if (table.getSpellsDayKnown() == SpellsEnum.DAY &&
+                            table.getMagicClass() == classPc.getSpellsPerDay()) {
 
-                for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
-                    if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                        this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
+                        for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+                            if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+                                this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            }
                         }
                     }
-                }
 
-                if(table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-                    table.getMagicClass() == classPc.getSpellsKnown()){
-                        
-                for(SpellsInLevel spellsInThisLevel : spellsInLevelFromDB){
-                    if(classPc.getLevel() == spellsInThisLevel.getLevel()){
-                        this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
-                        if(this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(classPc.getName())){
-                                this.spellsKnown.put(classPc.getName(), new ArrayList<>());
+                    if (table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+                            table.getMagicClass() == classPc.getSpellsKnown()) {
+
+                        for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+                            if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+                                this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
+                                if (this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(classPc.getName())) {
+                                    ArrayList<SpellsInCharLevel> spellsInCharLevels = new ArrayList<>();
+                                    this.spellsKnown.put(classPc.getName(), spellsInCharLevels);
                                 }
                             }
                         }
@@ -596,18 +596,19 @@ public class Character {
 
     }
 
-    public void addSpells(int idSpells, EnumClass classNameE, int lv){
-        for(SpellsInCharLevel spellCharClass : this.spellsKnown.get(classNameE)){
-            if(spellCharClass.getLevel() == lv){
-                spellCharClass.getSpells().add(idSpells);
+    public void addSpells(int idSpells, EnumClass classNameE, int lv) {
+
+        for (SpellsInCharLevel spellCharClass : this.spellsKnown.get(classNameE)) {
+            if (spellCharClass.getLevel() == lv) {
+                spellCharClass.addSpell();
             }
         }
     }
 
     public EnumClass characterGetClassEnumById(int idClass) {
 
-        for(ClassPc clPc : this.classPcArray){
-            if(idClass == clPc.getId()){
+        for (ClassPc clPc : this.classPcArray) {
+            if (idClass == clPc.getId()) {
                 return clPc.getName();
             }
         }
@@ -616,8 +617,8 @@ public class Character {
 
     public SpellsEnum characterGetSpellClassById(int idClass) {
 
-        for(ClassPc clPc : this.classPcArray){
-            if(idClass == clPc.getId()){
+        for (ClassPc clPc : this.classPcArray) {
+            if (idClass == clPc.getId()) {
                 return clPc.getSpells_domain();
             }
         }
@@ -625,7 +626,7 @@ public class Character {
     }
 
     public void addSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
-        do{
+        do {
             SpellsInCharLevel sICK = new SpellsInCharLevel();
             sICK.setLevel(sizeMagic);
             sICK.setSpells(new ArrayList<>());
@@ -634,7 +635,7 @@ public class Character {
         } while (sizeMagic == 0);
     }
 
-    public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name){
+    public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
         SpellsInCharLevel sICK = new SpellsInCharLevel();
         sICK.setLevel(sizeMagic);
         sICK.setSpells(new ArrayList<>());
@@ -642,23 +643,35 @@ public class Character {
     }
 
     public boolean checkLvSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
-        for(SpellsInCharLevel spellCellLv : this.spellsKnown.get(name)){
-            if(sizeMagic <= spellCellLv.getLevel()){
+        for (SpellsInCharLevel spellCellLv : this.spellsKnown.get(name)) {
+            if (sizeMagic <= spellCellLv.getLevel()) {
                 return false;
             }
         }
         return true;
     }
 
-    public HashMap<EnumClass,Integer> getAllCasterAndMaxLv() {
+    public HashMap<EnumClass, Integer> getAllCasterAndMaxLv() {
 
-        HashMap<EnumClass,Integer> listOfCasterMaxLv = new HashMap<>();
+        HashMap<EnumClass, Integer> listOfCasterMaxLv = new HashMap<>();
 
-        for(EnumClass enumClass : this.spellsKnown.keySet()){
+        for (EnumClass enumClass : this.spellsKnown.keySet()) {
             Integer sizeInt = this.spellsKnown.get(enumClass).size();
             listOfCasterMaxLv.put(enumClass, sizeInt);
         }
         return listOfCasterMaxLv;
+    }
+
+    public void removeSepll(EnumClass classNameE, int[] spells) {
+
+        for (int spell : spells) {
+            for (SpellsInCharLevel level : this.spellsKnown.get(classNameE)) {
+                int index = level.indexSpell(spell);
+                if (index != -1) {
+                    level.removeSpell(index);
+                }
+            }
+        }
     }
 
 }
