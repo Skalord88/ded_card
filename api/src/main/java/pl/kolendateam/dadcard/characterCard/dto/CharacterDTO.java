@@ -3,7 +3,6 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -26,7 +25,6 @@ import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
-import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 
 @AllArgsConstructor

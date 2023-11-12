@@ -111,19 +111,22 @@ public class SpellsController {
         Integer lv = 0;
 
         if (spellClassE != null) {
-            for (Spells spell : spellsList) {
-                Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
-                if (spellToAdd != null) {
-                    lv = spell.selectSpellByLv(spell);
-                }
+            for (int s : SpellsAddDTO.spells){
+                for (Spells spell : spellsList) {
+                    if(s == spell.getId()){
+                        Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
+                        if (spellToAdd != null) {
+                            lv = spell.selectSpellByLv(spell);
+                        }
 
-                if (spellToAdd != null) {
-                    character.addSpells(spellToAdd, classNameE, lv);
-                    this.characterRepository.save(character);
+                        if (spellToAdd != null) {
+                            character.addSpells(spellToAdd, classNameE, lv);
+                            this.characterRepository.save(character);
+                        }
+                    }
                 }
             }
         }
-
         return new CharacterDTO(character);
     }
 

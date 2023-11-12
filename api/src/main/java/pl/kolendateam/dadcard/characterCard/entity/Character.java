@@ -596,12 +596,10 @@ public class Character {
 
     }
 
-    public void addSpells(int idSpells, EnumClass classNameE, int lv) {
+    public void addSpells(int spellToAdd, EnumClass classNameE, int lv) {
 
         for (SpellsInCharLevel spellCharClass : this.spellsKnown.get(classNameE)) {
-            if (spellCharClass.getLevel() == lv) {
-                spellCharClass.addSpell();
-            }
+            spellCharClass.addSpell(spellToAdd, lv);
         }
     }
 
@@ -627,18 +625,14 @@ public class Character {
 
     public void addSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
         do {
-            SpellsInCharLevel sICK = new SpellsInCharLevel();
-            sICK.setLevel(sizeMagic);
-            sICK.setSpells(new ArrayList<>());
+            SpellsInCharLevel sICK = new SpellsInCharLevel(sizeMagic);
             this.spellsKnown.get(name).add(sICK);
             sizeMagic--;
         } while (sizeMagic == 0);
     }
 
     public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
-        SpellsInCharLevel sICK = new SpellsInCharLevel();
-        sICK.setLevel(sizeMagic);
-        sICK.setSpells(new ArrayList<>());
+        SpellsInCharLevel sICK = new SpellsInCharLevel(sizeMagic);
         this.spellsKnown.get(name).add(sICK);
     }
 
