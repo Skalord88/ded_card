@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.spells;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,7 @@ import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
@@ -108,7 +110,7 @@ public class SpellsController {
         SpellsEnum spellClassE = character.characterGetSpellClassById(SpellsAddDTO.idClass);
         EnumClass classNameE = character.characterGetClassEnumById(SpellsAddDTO.idClass);
         int maxLv = character.getMagicKnown().get(classNameE).length;
-        Integer lv = 0;
+        int lv = 0;
 
         if (spellClassE != null) {
             for (int s : SpellsAddDTO.spells){
@@ -121,12 +123,53 @@ public class SpellsController {
 
                         if (spellToAdd != null) {
                             character.addSpells(spellToAdd, classNameE, lv);
-                            this.characterRepository.save(character);
                         }
                     }
                 }
             }
         }
+
+        // ArrayList<Integer>[] spellsInLevel = new ArrayList [10];
+
+        // for (int i = 0; i < 10; i++){
+        //     spellsInLevel[i] = new ArrayList<Integer>();
+        // }
+
+        // for(int s : SpellsAddDTO.spells){
+        //     for (Spells spell : spellsList){
+        //         if(spell.getId() == s){
+        //             Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
+        //             if(spellToAdd != null){
+                        
+        //             }
+        //         }
+        //     }
+        // }
+
+        // for(int j = 0; j < 10; j++){
+        //     for(int i = 0; i == spellsInLevel[j].size(); i++){
+        //         if(!spellsInLevel[j].isEmpty()){
+        //             SpellsInCharLevel sICL = new SpellsInCharLevel(j, spellsInLevel[j]);
+        //             character.addSpellForLevel(sICL, classNameE);
+        //             this.characterRepository.save(character);
+        //         }
+        //     }
+        // }
+
+        // ArrayList<Integer> spellsLists = new ArrayList<>();
+
+        // for(int i : SpellsAddDTO.spells){
+        //     spellsLists.add(i);
+        // }
+
+        // SpellsInCharLevel sICL = new SpellsInCharLevel(0, spellsLists);
+
+        // character.getSpellsKnown().get(classNameE).add(sICL);
+
+        // character.getSpellsKnown().put(classNameE, character.addSpellsFromList(
+        //     spellsList, SpellsAddDTO.spells, spellClassE, classNameE, maxLv));
+
+        this.characterRepository.save(character);
         return new CharacterDTO(character);
     }
 
@@ -143,7 +186,7 @@ public class SpellsController {
         Character character = characterOpt.get();
 
         EnumClass classNameE = character.characterGetClassEnumById(SpellsAddDTO.idClass);
-        character.removeSepll(classNameE, SpellsAddDTO.spells);
+        // character.removeSepll(classNameE, SpellsAddDTO.spells);
 
         this.characterRepository.save(character);
 

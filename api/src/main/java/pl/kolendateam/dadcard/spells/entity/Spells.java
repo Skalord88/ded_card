@@ -66,4 +66,5 @@ public class Spells implements Serializable {
             }
         return null;
     }
+
 }

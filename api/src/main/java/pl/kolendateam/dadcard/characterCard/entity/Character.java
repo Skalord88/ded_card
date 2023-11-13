@@ -41,6 +41,7 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
@@ -111,7 +112,7 @@ public class Character {
     HashMap<EnumClass, Integer[]> magicKnown;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    HashMap<EnumClass, ArrayList<SpellsInCharLevel>> spellsKnown;
+    ArrayList<SpellsInCharLevel> spellsKnown;
 
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
@@ -124,7 +125,7 @@ public class Character {
         this.items = new ArrayList<>();
         this.magicPerDay = new HashMap<>();
         this.magicKnown = new HashMap<>();
-        this.spellsKnown = new HashMap<>();
+        this.spellsKnown = new ArrayList<>();
     }
 
     public void addClassToPcArray(ClassPc classPc) {
@@ -576,10 +577,10 @@ public class Character {
                         for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
                             if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                                 this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
-                                if (this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(classPc.getName())) {
-                                    ArrayList<SpellsInCharLevel> spellsInCharLevels = new ArrayList<>();
-                                    this.spellsKnown.put(classPc.getName(), spellsInCharLevels);
-                                }
+                                // if (this.spellsKnown.isEmpty() || !this.spellsKnown.containsKey(classPc.getName())) {
+                                //     ArrayList<SpellsInCharLevel> spellsInCharLevels = new ArrayList<>();
+                                //     this.spellsKnown.put(classPc.getName(), spellsInCharLevels);
+                                // }
                             }
                         }
                     }
@@ -594,13 +595,6 @@ public class Character {
         this.magicPerDay.remove(name);
         this.spellsKnown.remove(name);
 
-    }
-
-    public void addSpells(int spellToAdd, EnumClass classNameE, int lv) {
-
-        for (SpellsInCharLevel spellCharClass : this.spellsKnown.get(classNameE)) {
-            spellCharClass.addSpell(spellToAdd, lv);
-        }
     }
 
     public EnumClass characterGetClassEnumById(int idClass) {
@@ -623,49 +617,119 @@ public class Character {
         return null;
     }
 
-    public void addSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+    public boolean getClassSpellsKnown(EnumClass className) {
+        for (SpellsInCharLevel sICLinDB : this.spellsKnown){
+            if(sICLinDB.getCaster() == className){
+                return sICLinDB.getCaster() == className;
+            }
+        } return false;
+    }
+
+    public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
+
+        SpellsInCharLevel sICK = new SpellsInCharLevel(name);
         do {
-            SpellsInCharLevel sICK = new SpellsInCharLevel(sizeMagic);
-            this.spellsKnown.get(name).add(sICK);
+            sICK.getSpells().put(sizeMagic, new ArrayList<>());
             sizeMagic--;
         } while (sizeMagic == 0);
+        this.spellsKnown.add(sICK);
+
     }
 
-    public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
-        SpellsInCharLevel sICK = new SpellsInCharLevel(sizeMagic);
-        this.spellsKnown.get(name).add(sICK);
-    }
+    public void addSpellKnown(int sizeMagic, EnumClass name){
 
-    public boolean checkLvSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
-        for (SpellsInCharLevel spellCellLv : this.spellsKnown.get(name)) {
-            if (sizeMagic <= spellCellLv.getLevel()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public HashMap<EnumClass, Integer> getAllCasterAndMaxLv() {
-
-        HashMap<EnumClass, Integer> listOfCasterMaxLv = new HashMap<>();
-
-        for (EnumClass enumClass : this.spellsKnown.keySet()) {
-            Integer sizeInt = this.spellsKnown.get(enumClass).size();
-            listOfCasterMaxLv.put(enumClass, sizeInt);
-        }
-        return listOfCasterMaxLv;
-    }
-
-    public void removeSepll(EnumClass classNameE, int[] spells) {
-
-        for (int spell : spells) {
-            for (SpellsInCharLevel level : this.spellsKnown.get(classNameE)) {
-                int index = level.indexSpell(spell);
-                if (index != -1) {
-                    level.removeSpell(index);
-                }
+        for(SpellsInCharLevel sICKinDB : this.spellsKnown){
+            if(sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic){
+                sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
             }
         }
     }
+
+    public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
+
+        for(SpellsInCharLevel sICK : this.spellsKnown){
+            if(sICK.getCaster() == classNameE){
+                sICK.getSpells().get(lv).add(spellToAdd);
+            }
+        }
+    }
+
+
+
+    // public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+    //     SpellsInCharLevel sICK = new SpellsInCharLevel(sizeMagic);
+    //     this.spellsKnown.get(name).add(sICK);
+    // }
+
+    // public boolean checkLvSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+    //     for (SpellsInCharLevel spellCellLv : this.spellsKnown.get(name)) {
+    //         if (sizeMagic <= spellCellLv.getLevel()) {
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    // public HashMap<EnumClass, Integer> getAllCasterAndMaxLv() {
+
+    //     HashMap<EnumClass, Integer> listOfCasterMaxLv = new HashMap<>();
+
+    //     for (EnumClass enumClass : this.spellsKnown.keySet()) {
+    //         Integer sizeInt = this.spellsKnown.get(enumClass).size();
+    //         listOfCasterMaxLv.put(enumClass, sizeInt);
+    //     }
+    //     return listOfCasterMaxLv;
+    // }
+
+    // public void removeSepll(EnumClass classNameE, int[] spells) {
+
+    //     for (int spell : spells) {
+    //         for (SpellsInCharLevel level : this.spellsKnown.get(classNameE)) {
+    //             int index = level.indexSpell(spell);
+    //             if (index != -1) {
+    //                 level.removeSpell(index);
+    //             }
+    //         }
+    //     }
+    // }
+
+    // public ArrayList<SpellsInCharLevel> addSpellsFromList(
+    //     List<Spells> spellsList,
+    //     int[] spellsAddDTO,
+    //     SpellsEnum spellClassE,
+    //     EnumClass classNameE,
+    //     int maxLv) {
+
+    //     Integer lv = 0;
+
+    //     ArrayList<SpellsInCharLevel> knowInChar = this.spellsKnown.get(classNameE);
+
+    //     if(spellClassE != null){
+    //         for (int s : spellsAddDTO){
+    //             for (Spells spell : spellsList){
+    //                 if(s == spell.getId()){
+    //                     Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
+    //                     if (spellToAdd != null){
+    //                         lv = spell.selectSpellByLv(spell);
+    //                     }
+
+    //                     if (spellToAdd != null){
+                            
+    //                         for (SpellsInCharLevel spellCharClass : knowInChar) {
+    //                             spellCharClass.addSpell(spellToAdd, lv);
+    //                             knowInChar.add(spellCharClass);
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     } return knowInChar;
+    // }
+
+    // public void addSpellForLevel(SpellsInCharLevel sICL, EnumClass classNameE) {
+
+    //     this.spellsKnown.get(classNameE).add(sICL);
+
+    // }
 
 }

@@ -50,7 +50,7 @@ public class CharacterDTO implements Serializable {
     public ArrayList<Items> items;
     public HashMap <EnumClass,Integer[]> magicPerDay;
     public HashMap <EnumClass,Integer[]> magicKnown;
-    public HashMap <EnumClass,ArrayList<SpellsInCharLevel>> spellsKnown;
+    public ArrayList<SpellsInCharLevel> spellsKnown;
 
     public CharacterDTO(Character character) {
         this.characterName = character.getCharacterName();

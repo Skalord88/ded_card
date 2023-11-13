@@ -172,15 +172,25 @@ public class CharacterController {
         character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
         int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length - 1;
 
+        
+        // if (classCharacter.getSpellsKnown() != null) {
+        //     for(int i = 0; i == character.getSpellsKnown().size(); i++){
+        //         if(character.getSpellsKnown().get(i).getCaster() == classCharacter.getName()){
+        //             character.addSpellsKnown(sizeMagic, classCharacter.getName());
+        //         } else {
+        //         if (character.checkLvSpellsKnown(sizeMagic, classCharacter.getName())) {
+        //             character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
+        //         }
+        //     }
+        // }
+
         // magicKnown
-        if (classCharacter.getSpellsKnown() != null) {
-            if (character.getSpellsKnown().get(classCharacter.getName()).isEmpty()) {
-                character.addSpellsKnown(sizeMagic, classCharacter.getName());
-            } else {
-                if (character.checkLvSpellsKnown(sizeMagic, classCharacter.getName())) {
-                    character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
-                }
-            }
+        boolean findClassInSpellKnown = character.getClassSpellsKnown(classCharacter.getName());
+
+        if(findClassInSpellKnown) {
+            character.addSpellKnown(sizeMagic, classCharacter.getName());
+        } else {
+            character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
         }
 
         this.characterRepository.save(character);
