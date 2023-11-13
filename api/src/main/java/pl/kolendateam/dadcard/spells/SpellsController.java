@@ -129,46 +129,6 @@ public class SpellsController {
             }
         }
 
-        // ArrayList<Integer>[] spellsInLevel = new ArrayList [10];
-
-        // for (int i = 0; i < 10; i++){
-        //     spellsInLevel[i] = new ArrayList<Integer>();
-        // }
-
-        // for(int s : SpellsAddDTO.spells){
-        //     for (Spells spell : spellsList){
-        //         if(spell.getId() == s){
-        //             Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
-        //             if(spellToAdd != null){
-                        
-        //             }
-        //         }
-        //     }
-        // }
-
-        // for(int j = 0; j < 10; j++){
-        //     for(int i = 0; i == spellsInLevel[j].size(); i++){
-        //         if(!spellsInLevel[j].isEmpty()){
-        //             SpellsInCharLevel sICL = new SpellsInCharLevel(j, spellsInLevel[j]);
-        //             character.addSpellForLevel(sICL, classNameE);
-        //             this.characterRepository.save(character);
-        //         }
-        //     }
-        // }
-
-        // ArrayList<Integer> spellsLists = new ArrayList<>();
-
-        // for(int i : SpellsAddDTO.spells){
-        //     spellsLists.add(i);
-        // }
-
-        // SpellsInCharLevel sICL = new SpellsInCharLevel(0, spellsLists);
-
-        // character.getSpellsKnown().get(classNameE).add(sICL);
-
-        // character.getSpellsKnown().put(classNameE, character.addSpellsFromList(
-        //     spellsList, SpellsAddDTO.spells, spellClassE, classNameE, maxLv));
-
         this.characterRepository.save(character);
         return new CharacterDTO(character);
     }
@@ -186,7 +146,7 @@ public class SpellsController {
         Character character = characterOpt.get();
 
         EnumClass classNameE = character.characterGetClassEnumById(SpellsAddDTO.idClass);
-        // character.removeSepll(classNameE, SpellsAddDTO.spells);
+        character.removeSpell(classNameE, SpellsAddDTO.spells);
 
         this.characterRepository.save(character);
 

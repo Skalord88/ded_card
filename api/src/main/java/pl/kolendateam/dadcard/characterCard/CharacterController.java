@@ -172,18 +172,6 @@ public class CharacterController {
         character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
         int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length - 1;
 
-        
-        // if (classCharacter.getSpellsKnown() != null) {
-        //     for(int i = 0; i == character.getSpellsKnown().size(); i++){
-        //         if(character.getSpellsKnown().get(i).getCaster() == classCharacter.getName()){
-        //             character.addSpellsKnown(sizeMagic, classCharacter.getName());
-        //         } else {
-        //         if (character.checkLvSpellsKnown(sizeMagic, classCharacter.getName())) {
-        //             character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
-        //         }
-        //     }
-        // }
-
         // magicKnown
         boolean findClassInSpellKnown = character.getClassSpellsKnown(classCharacter.getName());
 

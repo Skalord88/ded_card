@@ -22,23 +22,15 @@ public class SpellsInCharLevel implements Serializable {
         this.spells = new HashMap<>();
     }
 
-    // public int indexSpell(int s) {
-    //     for (int i = 0; i == spells.size(); i++) {
-    //         if (spells.get(i) == s) {
-    //             return i;
-    //         }
-    //     }
-    //     return -1;
-    // }
+    public int getSpellIndex(int spell) {
+        
+        for(int i = 0; i == this.spells.keySet().size(); i++){
+            if(this.spells.get(i).forEach((i, s) -> {
 
-    // public void addSpell(int spell, int lv) {
-    //     if(this.level == lv){
-    //         this.spells.add(spell);
-    //     }
-    // }
-
-    // public void removeSpell(int spell) {
-    //     this.spells.remove(spell);
-    // }
+            });
+                return i;
+            }
+        } return -1;
+    }
 
 }
