@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.spells;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +24,6 @@ import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
-import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
