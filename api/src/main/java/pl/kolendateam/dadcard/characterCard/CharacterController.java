@@ -56,6 +56,11 @@ public class CharacterController {
         this.spellsTableRepository = spellsTableRepository;
     }
 
+    @GetMapping
+    public String characterCardGet() {
+        return "character-card.html";
+    }
+
     @PostMapping(value = "", consumes = "application/json")
     public CreateCharacterDTO createCharacter(@RequestBody CreateCharacterDTO createCharacterDTO) {
 
