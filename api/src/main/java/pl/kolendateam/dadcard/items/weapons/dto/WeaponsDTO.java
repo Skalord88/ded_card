@@ -18,7 +18,7 @@ import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 @AllArgsConstructor
 public class WeaponsDTO {
 
-    public int id;
+    public short id;
     public WeaponNameEnum name;
     public BigDecimal cost;
     public WeaponNumericEnum damage;

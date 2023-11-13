@@ -14,7 +14,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,6 +26,7 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
@@ -40,6 +40,12 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
+import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
+import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
 @NoArgsConstructor
 @Getter
@@ -99,6 +105,15 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<Items> items;
 
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap<EnumClass, Integer[]> magicPerDay;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    HashMap<EnumClass, Integer[]> magicKnown;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<SpellsInCharLevel> spellsKnown;
+
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
         this.playerName = playerName;
@@ -108,6 +123,9 @@ public class Character {
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
         this.items = new ArrayList<>();
+        this.magicPerDay = new HashMap<>();
+        this.magicKnown = new HashMap<>();
+        this.spellsKnown = new ArrayList<>();
     }
 
     public void addClassToPcArray(ClassPc classPc) {
@@ -399,8 +417,7 @@ public class Character {
                                     1,
                                     featInList.getFeatName(),
                                     featInList.getDescription(),
-                                    featInList.getFeatsType()
-                                    );
+                                    featInList.getFeatsType());
                             characterFeatsFromClassArray.add(newCharFeat);
                         }
                     }
@@ -414,12 +431,12 @@ public class Character {
 
         boolean buyed = false;
 
-        if(feat.getFeatsType() == FeatsTypeEnum.CLASS){
+        if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
             return false;
         }
 
         CharacterFeat characterFeat = new CharacterFeat(
-            feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
+                feat.getId(), 1, feat.getFeatName(), feat.getDescription(), feat.getFeatsType());
 
         boolean featPresent = false;
         for (CharacterFeat cF : this.featsList) {
@@ -532,6 +549,119 @@ public class Character {
             if (!cS.getFieldOfStudy().isEmpty()) {
                 HashMap<String, Integer> emptyKnow = new HashMap<>();
                 cS.setFieldOfStudy(emptyKnow);
+            }
+        }
+    }
+
+    public void addMagic(List<SpellsTable> spellsTableList, SpellsEnum spellDay, SpellsEnum spellKnown) {
+
+        for (SpellsTable table : spellsTableList) {
+            ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel
+                    .toSpellsInLevel(table.getSpellsInLevel());
+            if (table.getSpellsDayKnown() != null) {
+                for (ClassPc classPc : classPcArray) {
+
+                    if (table.getSpellsDayKnown() == SpellsEnum.DAY &&
+                            table.getMagicClass() == classPc.getSpellsPerDay()) {
+
+                        for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+                            if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+                                this.magicPerDay.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            }
+                        }
+                    }
+
+                    if (table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+                            table.getMagicClass() == classPc.getSpellsKnown()) {
+
+                        for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+                            if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+                                this.magicKnown.put(classPc.getName(), spellsInThisLevel.getSpells());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void removeMagicClass(EnumClass name) {
+
+        this.magicKnown.remove(name);
+        this.magicPerDay.remove(name);
+        this.spellsKnown.remove(name);
+
+    }
+
+    public EnumClass characterGetClassEnumById(int idClass) {
+
+        for (ClassPc clPc : this.classPcArray) {
+            if (idClass == clPc.getId()) {
+                return clPc.getName();
+            }
+        }
+        return null;
+    }
+
+    public SpellsEnum characterGetSpellClassById(int idClass) {
+
+        for (ClassPc clPc : this.classPcArray) {
+            if (idClass == clPc.getId()) {
+                return clPc.getSpells_domain();
+            }
+        }
+        return null;
+    }
+
+    public boolean getClassSpellsKnown(EnumClass className) {
+        for (SpellsInCharLevel sICLinDB : this.spellsKnown){
+            if(sICLinDB.getCaster() == className){
+                return sICLinDB.getCaster() == className;
+            }
+        } return false;
+    }
+
+    public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
+
+        SpellsInCharLevel sICK = new SpellsInCharLevel(name);
+        do {
+            sICK.getSpells().put(sizeMagic, new ArrayList<>());
+            sizeMagic--;
+        } while (sizeMagic == 0);
+        this.spellsKnown.add(sICK);
+
+    }
+
+    public void addSpellKnown(int sizeMagic, EnumClass name){
+
+        for(SpellsInCharLevel sICKinDB : this.spellsKnown){
+            if(sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic){
+                sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
+            }
+        }
+    }
+
+    public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
+
+        for(SpellsInCharLevel sICK : this.spellsKnown){
+            if(sICK.getCaster() == classNameE){
+                sICK.getSpells().forEach((i, a)->{
+                    if(i == lv){
+                        a.add(spellToAdd);
+                    }
+                });
+            }
+        }
+    }
+
+    public void removeSpell(EnumClass classNameE, int[] spells) {
+
+        for(int spell : spells){
+            for(SpellsInCharLevel sICL : this.spellsKnown){
+                if(sICL.getCaster()==classNameE){
+                    sICL.getSpells().forEach((i, sp) -> 
+                        sp.removeIf(s -> s == spell));
+                }
             }
         }
     }

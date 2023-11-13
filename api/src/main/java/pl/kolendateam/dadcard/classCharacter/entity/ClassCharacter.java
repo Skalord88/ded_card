@@ -19,6 +19,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @NoArgsConstructor
 @Getter
@@ -36,7 +37,8 @@ public class ClassCharacter {
     TypeEnum type;
 
     @NonNull
-    String name;
+    @Enumerated(EnumType.STRING)
+    EnumClass name;
     
     @NonNull
     String avatarUrl;
@@ -68,4 +70,12 @@ public class ClassCharacter {
 
     String classFeatsMap;
 
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsPerDay;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsKnown;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsDomain;
 }

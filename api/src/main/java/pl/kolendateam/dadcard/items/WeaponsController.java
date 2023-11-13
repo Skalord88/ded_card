@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.items;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,8 +43,8 @@ public class WeaponsController {
 
     }
 
-    @PostMapping(value = "{id}", consumes = {"application/json"})
-    public CharacterDTO buyWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+    @PostMapping(value = "{id}/buy", consumes = {"application/json"})
+    public CharacterDTO buyWeapons(@PathVariable short id, @RequestBody WeaponsDTO wDTO){
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
         if (!characterOpt.isPresent()) {
@@ -73,7 +72,7 @@ public class WeaponsController {
     }
 
     @PostMapping(value = "{id}/sell", consumes = {"application/json"})
-    public CharacterDTO sellWeapons(@PathVariable int id, @RequestBody WeaponsDTO wDTO){
+    public CharacterDTO sellWeapons(@PathVariable short id, @RequestBody WeaponsDTO wDTO){
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
         if (!characterOpt.isPresent()) {

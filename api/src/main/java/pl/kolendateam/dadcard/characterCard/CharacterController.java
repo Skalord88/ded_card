@@ -32,6 +32,8 @@ import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
+import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
 @RestController
 @RequestMapping("character-card")
@@ -41,14 +43,17 @@ public class CharacterController {
     CharacterRepository characterRepository;
     FeatsRepository featsRepository;
     SkillsRepository skillsRepository;
+    SpellsTableRepository spellsTableRepository;
 
     @Autowired
     public CharacterController(CharacterRepository characterRepository, ClassRepository classRepository,
-            FeatsRepository featsRepository, SkillsRepository skillsRepository) {
+            FeatsRepository featsRepository, SkillsRepository skillsRepository,
+            SpellsTableRepository spellsTableRepository) {
         this.characterRepository = characterRepository;
         this.classRepository = classRepository;
         this.featsRepository = featsRepository;
         this.skillsRepository = skillsRepository;
+        this.spellsTableRepository = spellsTableRepository;
     }
 
     @PostMapping(value = "", consumes = "application/json")
@@ -75,7 +80,7 @@ public class CharacterController {
     }
 
     @GetMapping(value = "{id}")
-    public CharacterDTO showCharacter(@PathVariable int id) {
+    public CharacterDTO showCharacter(@PathVariable short id) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -89,7 +94,7 @@ public class CharacterController {
     }
 
     @PostMapping(value = "{id}/class", consumes = { "application/json" })
-    public CharacterDTO setCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO) {
+    public CharacterDTO setCharacterClass(@PathVariable short id, @RequestBody ClassPcDTO classPcDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -108,6 +113,7 @@ public class CharacterController {
         }
 
         List<Feats> featsList = this.featsRepository.findAll();
+        List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
@@ -116,7 +122,8 @@ public class CharacterController {
         ClassPc classPc = new ClassPc(
                 classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
-                classCharacter.getClassBab());
+                classCharacter.getClassBab(), classCharacter.getSpellsPerDay(),
+                classCharacter.getSpellsKnown(), classCharacter.getSpellsDomain());
 
         character.incrementEffectiveCharacterLv();
 
@@ -161,13 +168,26 @@ public class CharacterController {
             character.addFeatToPc(chFeat);
         }
 
+        // magic
+        character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
+        int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length - 1;
+
+        // magicKnown
+        boolean findClassInSpellKnown = character.getClassSpellsKnown(classCharacter.getName());
+
+        if(findClassInSpellKnown) {
+            character.addSpellKnown(sizeMagic, classCharacter.getName());
+        } else {
+            character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
+        }
+
         this.characterRepository.save(character);
 
         return new CharacterDTO(character);
     }
 
     @PostMapping(value = "{id}/minus_class", consumes = { "application/json" })
-    public CharacterDTO minusCharacterClass(@PathVariable int id, @RequestBody ClassPcDTO classPcDTO) {
+    public CharacterDTO minusCharacterClass(@PathVariable short id, @RequestBody ClassPcDTO classPcDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -187,6 +207,7 @@ public class CharacterController {
 
         List<Feats> featsList = this.featsRepository.findAll();
         List<ClassCharacter> allClassesList = this.classRepository.findAll();
+        List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
         ClassCharacter classCharacter = classOpt.get();
 
@@ -195,7 +216,8 @@ public class CharacterController {
         ClassPc classPc = new ClassPc(
                 classCharacter.getId(), classCharacter.getName(), (byte) 1,
                 classCharacter.getHitDice(), classCharacter.getSavingThrow(),
-                classCharacter.getClassBab());
+                classCharacter.getClassBab(), classCharacter.getSpellsPerDay(),
+                classCharacter.getSpellsKnown(), classCharacter.getSpellsDomain());
 
         // feat
         int levelClassInDB = classPc.findLevelInArrayById(classPcList, classCharacter.getId());
@@ -212,6 +234,8 @@ public class CharacterController {
         int indexClassInDB = classPc.findIndexInArrayById(classPcList);
         if (levelClassInDB == 1) {
             character.removeClassFromPcArray(indexClassInDB);
+            // remove magic table, if class is 0
+            character.removeMagicClass(classPc.getName());
         }
         if (levelClassInDB > 1) {
             character.decrementLevelClassForIndex(indexClassInDB);
@@ -253,6 +277,15 @@ public class CharacterController {
             character.minusSavingThrowLevelOne(classPc.getSavingThrow());
         }
 
+        // magic
+        if (character.getClassPcArray() == null) {
+            character.setMagicKnown(null);
+            character.setMagicPerDay(null);
+        } else {
+            character.addMagic(spellsTableList, classCharacter.getSpellsPerDay(), classCharacter.getSpellsKnown());
+        }
+
+        // base attack bonus
         character.decrementBab(classCharacter.getClassBab());
 
         this.characterRepository.save(character);
@@ -262,7 +295,7 @@ public class CharacterController {
     }
 
     @PostMapping(value = "{id}/skill", consumes = { "application/json" })
-    public CharacterDTO buyCharacterSkill(@PathVariable int id, @RequestBody SkillsDTO skillsDTO) {
+    public CharacterDTO buyCharacterSkill(@PathVariable short id, @RequestBody SkillsDTO skillsDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

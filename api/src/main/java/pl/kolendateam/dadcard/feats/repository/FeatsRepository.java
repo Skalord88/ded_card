@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 
 @Repository
-public interface FeatsRepository extends JpaRepository<Feats, Integer>{
+public interface FeatsRepository extends JpaRepository<Feats, Short>{
     
 }

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SkillsDTO {
 
-    public int idSkill;
+    public short idSkill;
     public String nameSkill;
     public HashMap <String,Integer> fieldOfStudy;
     public boolean classSkill;
