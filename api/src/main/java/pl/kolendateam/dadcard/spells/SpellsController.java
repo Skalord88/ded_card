@@ -130,6 +130,7 @@ public class SpellsController {
         }
 
         this.characterRepository.save(character);
+        
         return new CharacterDTO(character);
     }
 

@@ -22,15 +22,4 @@ public class SpellsInCharLevel implements Serializable {
         this.spells = new HashMap<>();
     }
 
-    public int getSpellIndex(int spell) {
-        
-        for(int i = 0; i == this.spells.keySet().size(); i++){
-            if(this.spells.get(i).forEach((i, s) -> {
-
-            });
-                return i;
-            }
-        } return -1;
-    }
-
 }

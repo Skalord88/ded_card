@@ -659,12 +659,8 @@ public class Character {
         for(int spell : spells){
             for(SpellsInCharLevel sICL : this.spellsKnown){
                 if(sICL.getCaster()==classNameE){
-                    sICL.getSpells().forEach((i, sp) -> {
-                        int indexSpell = sICL.getSpellIndex(spell);
-                        if(indexSpell != -1){
-                            sp.remove(indexSpell);
-                        }
-                    });
+                    sICL.getSpells().forEach((i, sp) -> 
+                        sp.removeIf(s -> s == spell));
                 }
             }
         }
