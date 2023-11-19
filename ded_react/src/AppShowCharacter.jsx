@@ -19,18 +19,34 @@ export function AppShowCharacter(){
         fetchData();
     }, []);
 
-    const grapple = char.bab;
-
     return (
         <div>            
             <p>name: {char.characterName}</p>
             <p>player: {char.playerName}</p>
             <p>race: {char.race}, {char.subRace}</p>
             <p>size: {char.size}, speed: {char.speed}</p>
-            <p>abilitys:</p>
-            <p>grapple: {grapple}</p>
-            {console.log(char.abilitys)}
             <p>base attack bonus: {char.bab}</p>
+            <p>abilitys: {char.abilitys?.strenght?
+                <>
+                <li>STR: {char.abilitys.strenght}</li>
+                <li>DEX: {char.abilitys.dextrity}</li>
+                <li>CONS: {char.abilitys.constitution}</li>
+                <li>INT: {char.abilitys.intelligence}</li>
+                <li>WIS: {char.abilitys.wisdom}</li>
+                <li>CHA: {char.abilitys.charisma}</li>
+                </>
+            :<div>...loading abilitys...</div>}
+            </p>
+            <p>classes:{char.classPcList?.className?
+                <>
+                {char.classPcList.map((c, index) => {
+                    return(
+                    <li key={index}>{c.className} {c.level}</li>
+                )})}
+                </>
+            :<div>...loading class...</div>}
+            </p>
+            <p>ECL: {char.effectiveCharacterLv}</p>
         </div>
         
     )
