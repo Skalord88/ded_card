@@ -2,16 +2,14 @@ import { useEffect, useState } from "react"
 
 export function AppShowCharacter(){
 
-    //let idChar = 1;
-    const URL = 'http://192.168.0.105:8080/character-card/1';
+    let idChar = 1;
+    const URL = 'http://localhost:8080/character-card/'+idChar;
 
     const [char, setChar] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = (await fetch(URL), {
-                mode: 'no-cors'
-              })
+            const result = await fetch(URL)
             result.json()
             .then(json => {
                 setChar(json)
@@ -37,7 +35,7 @@ export function AppShowCharacter(){
                 <li>WIS: {char.abilitys.wisdom}</li>
                 <li>CHA: {char.abilitys.charisma}</li>
                 </>
-            :<div>...loading abilitys...</div>}
+            :<>...loading abilitys...</>}
             </p>
             <p>classes:{char.classPcList?.className?
                 <>
@@ -46,9 +44,47 @@ export function AppShowCharacter(){
                     <li key={index}>{c.className} {c.level}</li>
                 )})}
                 </>
-            :<div>...loading class...</div>}
+                :<>...loading class...</>}
             </p>
             <p>ECL: {char.effectiveCharacterLv}</p>
+            <p>life: {char.vitality?.life?
+                <>{char.vitality.life}</>
+                :<>...loading life...</>}
+            </p>
+            <p>hit dice: {char.vitality?.hitDices?.index?
+            <p>{char.vitality.hitDices.map((h, index) => {
+                return(
+                    <div key={index}>{index} {h}</div>
+                )
+                })}</p>
+                :<>...loading hit dice...</>}
+            </p>
+            <p>hit points: {char.vitality?.hitPoints?
+                <>{char.vitality.hitPoints}</>
+                :<>loading...hit point...</>}
+            </p>
+            <p>AC: {char.armorClass?.dextrityBonus?
+                <>{10 + 
+                char.armorClass.dextrityBonus + char.armorClass.sizeBonus +
+                char.armorClass.armorBonus + char.armorClass.shildBonus +
+                char.armorClass.enhancementBonuses + char.armorClass.deflectionBonuses +
+                char.armorClass.deflectionBonuses + char.armorClass.dodgeBonus
+                }, touch: {
+                10 +
+                char.armorClass.dextrityBonus + char.armorClass.sizeBonus +
+                char.armorClass.deflectionBonuses + char.armorClass.dodgeBonus
+                }, flat-footed: {
+                10 +
+                char.armorClass.sizeBonus + char.armorClass.armorBonus +
+                char.armorClass.shildBonus + char.armorClass.enhancementBonuses
+                }</>
+                :<>...loading armor class...</>}    
+            </p>
+            <p>saving throw: {char.savingThrow?.fortitude?
+                <>fort: {char.savingThrow.fortitude}, ref: {char.savingThrow.reflex}, will: {char.savingThrow.will}</>
+                :<>...loading saving throw...</>}
+            </p>
+            
         </div>
         
     )
