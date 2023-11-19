@@ -2,14 +2,16 @@ import { useEffect, useState } from "react"
 
 export function AppShowCharacter(){
 
-    let idChar = 1;
-    const URL = 'http://localhost:8080/character-card/'+idChar;
+    //let idChar = 1;
+    const URL = 'http://192.168.0.105:8080/character-card/1';
 
     const [char, setChar] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
-            const result = await fetch(URL)
+            const result = (await fetch(URL), {
+                mode: 'no-cors'
+              })
             result.json()
             .then(json => {
                 setChar(json)
