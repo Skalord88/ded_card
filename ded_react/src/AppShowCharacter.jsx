@@ -9,7 +9,9 @@ export function AppShowCharacter(){
     const [char, setChar] = useState("");
     const [abilitys, setAbilitys] = useState("");
     const [classes, setClasses] = useState("");
-    const [hitDices, setHitDices] = useState(new Map())
+    const [vitality, setVitality] = useState("");
+    const [skills, setSkills] = useState("");
+    const [feats, setFeats] = useState("")
 
     useEffect(() => {
         axios
@@ -18,18 +20,22 @@ export function AppShowCharacter(){
             setChar(response.data);
             setAbilitys(response.data.abilitys);
             setClasses(response.data.classPcList);
-            setHitDices(response.data.vitality)
+            setVitality(response.data.vitality);
+            setSkills(response.data.skillsList);
+            setFeats(response.data.featsList)
             console.log("API CALLED");
         });
     }, []);
+
+    const grapple = char.bab + (Math.floor((abilitys.streght-10)/2));
 
     return (
         <div>            
             <p>name: {char.characterName}</p>
             <p>player: {char.playerName}</p>
             <p>race: {char.race}, {char.subRace}</p>
-            <p>size: {char.size}, speed: {char.speed}</p>
-            <p>base attack bonus: {char.bab}</p>
+            <p>size: {char.size}, speed: {char.speed} ft. / {char.speed/5} squares</p>
+            <p>base attack bonus: +{char.bab}, grapple: {grapple >0 ? '+' : ''}{grapple}</p>
             <p>abilitys: {abilitys?
                 <>
                 <li>STR: {abilitys.streght}</li>
@@ -41,7 +47,7 @@ export function AppShowCharacter(){
                 </>
             :<>...loading abilitys...</>}
             </p>
-            <p>classes: {classes?
+            <p>ecl: {char.effectiveCharacterLv} {classes?
                 <>
                 {char.classPcList.map((c, index) => {
                     return(
@@ -50,23 +56,14 @@ export function AppShowCharacter(){
                 </>
                 :<>...loading class...</>}
             </p>
-            <p>ECL: {char.effectiveCharacterLv}</p>
-            <p>life: {char.vitality?.life?
-                <>{char.vitality.life}</>
-                :<>...loading life...</>}
-            </p>
-            <p>hit dice: {char.vitality?
-            <p>{hitDices.hitDices.map((k, v) => {
-                return (
-                    <p>{k}:{v}</p>
-                    );
-            })}</p>
+            <p>hit dice: {char.vitality?.hitDices?
+            <>{Object.entries(vitality.hitDices).map(([k,v]) => {
+                return(
+                    <>{v}d{k}{abilitys.constitution>=0? '+' : '-'}{Math.floor(v*((abilitys.constitution-10)/2))} ({char.vitality.hitPoints} hp), life: {char.vitality.life}</>
+                )
+            })}</>
             :<p>...loading vitality...</p>
-        }</p>
-            <p>hit points: {char.vitality?.hitPoints?
-                <>{char.vitality.hitPoints}</>
-                :<>loading...hit point...</>}
-            </p>
+            }</p>
             <p>AC: {char.armorClass?.dextrityBonus?
                 <>{10 + 
                 char.armorClass.dextrityBonus + char.armorClass.sizeBonus +
@@ -84,10 +81,25 @@ export function AppShowCharacter(){
                 }</>
                 :<>...loading armor class...</>}    
             </p>
-            <p>saving throw: {char.savingThrow?.fortitude?
-                <>fort: {char.savingThrow.fortitude}, ref: {char.savingThrow.reflex}, will: {char.savingThrow.will}</>
+            <p>saving throw: {char.savingThrows?
+                <>fort: {char.savingThrows.fortitude}, ref: {char.savingThrows.reflex}, will: {char.savingThrows.will}</>
                 :<>...loading saving throw...</>}
             </p>
+            <p>skills points: {char.skillPoints} {skills?
+            <>{skills.map((s, index) => {
+                return(
+                <div key={index}>{s.classSkill===true? '(x)' : '(o)'} {s.nameSkill} {Math.floor(s.skillRank+s.skillAbility+s.skillBonus)}</div>
+            )})}</>
+            :<>...loading skills point...</>
+            }</p>
+            <p>feats: {feats?
+            <>{feats.map((f, index) => {
+                return(
+                    <li key={index}>{f.characterFeatName} {f.characterFeatSpecial===null? "" : f.characterFeatSpecial}</li>
+                )
+            })}</>
+            :<>...loading feats...</>    
+            }</p>
             
         </div>
         
