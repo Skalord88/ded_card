@@ -1,45 +1,52 @@
-import React, {Component, useState} from "react"
+import React, { useEffect, useState} from 'react'
+import axios from 'axios'
 
 export function AppCreateCharacter() {
 
-    const [inputName, setInputName] = useState("name")
-    const [inputPlayer, setInputPlayer] = useState("player")
+    const URL = 'http://localhost:8080/character-card';
 
-    let onChange = (event) =>{
-        const newValue = event.target.value;
-        setInputName(newValue)
-        setInputPlayer(newValue)
+    const char = {characterName : '', playerName : ''}
+
+    const [inputData, setInputData] = useState(char)
+
+    const handleData = (e) => {
+        setInputData({...inputData, [e.target.name]:e.target.value})
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post(URL, inputData)
+        .then((response) => {console.log(response)})
     }
 
-    // postData() {
+    const [charList, setCharList] = useState('')
 
-    //     try {
-    //         let name = await fetch('http://localhost:8080/character-card', {
-    //             method: 'post',
-    //             mode: 'no-cors',
-    //             headers: {
-    //                 'Accept': 'application/json',
-    //                 'Content-type': 'application/json'
-    //             },
-    //             body: JSON.stringify({
-    //                 characterName: inputName,
-    //                 playerName: inputPlayer
-    //             })
-    //         })
-    //     } catch (error) {
-    //         console.log(e)
-    //     }
-    // }
-
-    
+    useEffect(() => {
+        axios
+        .get(URL)
+        .then((response) => {
+            setCharList(response.data)
+        });
+    }, [])
 
     return (
         <>
-            <div>
-            <input placeholder="Character Name" onChange={onChange}></input>
-            <input placeholder="Player" onChange={onChange}></input>
-            </div>
-            <p><button onClick={this.postData()}>create</button></p>
+            <>
+                <form>
+                    <input type='text' placeholder="Character Name" onChange={handleData} name="characterName" value={inputData.characterName}></input>
+                    <input type='text' placeholder="Player" onChange={handleData} name="playerName" value={inputData.playerName}></input>
+                <p>
+                    <button onClick={handleSubmit}>create</button>
+                </p>
+                </form>
+        </>
+        <>
+            list of characters:
+            {charList?
+            <>{charList.map((c, index) => {
+                return (
+                <li key={index}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></li>
+            )})}</>
+            :<div>...loading characters...</div>}</>
         </>
     )
 }

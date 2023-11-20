@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios';
+import axios from 'axios'
 
-export function AppShowCharacter(){
+export function AppShowCharacter() {
 
     let idChar = 1;
     const URL = 'http://localhost:8080/character-card/'+idChar;
@@ -31,8 +31,7 @@ export function AppShowCharacter(){
 
     return (
         <div>            
-            <p>name: {char.characterName}</p>
-            <p>player: {char.playerName}</p>
+            <p>name: {char.characterName} / player: {char.playerName}</p>
             <p>race: {char.race}, {char.subRace}</p>
             <p>size: {char.size}, speed: {char.speed} ft. / {char.speed/5} squares</p>
             <p>base attack bonus: +{char.bab}, grapple: {grapple >0 ? '+' : ''}{grapple}</p>
