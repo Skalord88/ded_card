@@ -59,8 +59,18 @@ public class CharacterController {
     }
 
     @GetMapping
-    public String characterCardGet() {
-        return "character-card.html";
+    public ArrayList<CreateCharacterDTO> characterCardGet() {
+
+        List<Character> characterList = this.characterRepository.findAll();
+
+        ArrayList<CreateCharacterDTO> characterListDTO = new ArrayList<>();
+
+        for(Character character : characterList){
+            CreateCharacterDTO characterDTO = new CreateCharacterDTO(character);
+            characterListDTO.add(characterDTO);
+        }
+
+        return characterListDTO;
     }
 
     @PostMapping(value = "", consumes = "application/json")
