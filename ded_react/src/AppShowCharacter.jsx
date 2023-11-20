@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 export function AppShowCharacter(){
 
     let idChar = 1;
     const URL = 'http://localhost:8080/character-card/'+idChar;
 
-    const [char, setChar] = useState(0);
+    const [char, setChar] = useState("");
+    const [abilitys, setAbilitys] = useState("");
+    const [classes, setClasses] = useState("");
+    const [hitDices, setHitDices] = useState(new Map())
 
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await fetch(URL)
-            result.json()
-            .then(json => {
-                setChar(json)
-                console.log(json)
-            })
-        }
-        fetchData();
+        axios
+        .get(URL)
+        .then((response) => {
+            setChar(response.data);
+            setAbilitys(response.data.abilitys);
+            setClasses(response.data.classPcList);
+            setHitDices(response.data.vitality)
+            console.log("API CALLED");
+        });
     }, []);
 
     return (
@@ -26,18 +30,18 @@ export function AppShowCharacter(){
             <p>race: {char.race}, {char.subRace}</p>
             <p>size: {char.size}, speed: {char.speed}</p>
             <p>base attack bonus: {char.bab}</p>
-            <p>abilitys: {char.abilitys?.strenght?
+            <p>abilitys: {abilitys?
                 <>
-                <li>STR: {char.abilitys.strenght}</li>
-                <li>DEX: {char.abilitys.dextrity}</li>
-                <li>CONS: {char.abilitys.constitution}</li>
-                <li>INT: {char.abilitys.intelligence}</li>
-                <li>WIS: {char.abilitys.wisdom}</li>
-                <li>CHA: {char.abilitys.charisma}</li>
+                <li>STR: {abilitys.streght}</li>
+                <li>DEX: {abilitys.dextrity}</li>
+                <li>CONS: {abilitys.constitution}</li>
+                <li>INT: {abilitys.intelligence}</li>
+                <li>WIS: {abilitys.wisdom}</li>
+                <li>CHA: {abilitys.charisma}</li>
                 </>
             :<>...loading abilitys...</>}
             </p>
-            <p>classes:{char.classPcList?.className?
+            <p>classes: {classes?
                 <>
                 {char.classPcList.map((c, index) => {
                     return(
@@ -51,14 +55,14 @@ export function AppShowCharacter(){
                 <>{char.vitality.life}</>
                 :<>...loading life...</>}
             </p>
-            <p>hit dice: {char.vitality?.hitDices?.index?
-            <p>{char.vitality.hitDices.map((h, index) => {
-                return(
-                    <div key={index}>{index} {h}</div>
-                )
-                })}</p>
-                :<>...loading hit dice...</>}
-            </p>
+            <p>hit dice: {char.vitality?
+            <p>{hitDices.hitDices.map((k, v) => {
+                return (
+                    <p>{k}:{v}</p>
+                    );
+            })}</p>
+            :<p>...loading vitality...</p>
+        }</p>
             <p>hit points: {char.vitality?.hitPoints?
                 <>{char.vitality.hitPoints}</>
                 :<>loading...hit point...</>}
