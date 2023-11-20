@@ -28,6 +28,8 @@ export function AppCreateCharacter() {
         });
     }, [])
 
+    const URLchar = 'http://localhost:8080/character-card/'+1;
+
     return (
         <>
             <>
@@ -44,7 +46,7 @@ export function AppCreateCharacter() {
             {charList?
             <>{charList.map((c, index) => {
                 return (
-                <li key={index}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></li>
+                <li key={index}><a href={URLchar}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></a></li>
             )})}</>
             :<div>...loading characters...</div>}</>
         </>
