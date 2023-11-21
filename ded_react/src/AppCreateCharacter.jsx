@@ -1,4 +1,5 @@
 import React, { useEffect, useState} from 'react'
+import { AppAbilityCharacter } from './AppAbilityCharacter'
 import axios from 'axios'
 
 export function AppCreateCharacter() {
@@ -28,7 +29,7 @@ export function AppCreateCharacter() {
         });
     }, [])
 
-    const URLchar = 'http://localhost:8080/character-card/'+1;
+    const URLchar = 'http://localhost:8080/ability/';
 
     return (
         <>
@@ -40,13 +41,14 @@ export function AppCreateCharacter() {
                     <button onClick={handleSubmit}>create</button>
                 </p>
                 </form>
-        </>
+            </>
         <>
             list of characters:
             {charList?
             <>{charList.map((c, index) => {
+                console.log(URLchar+c.characterId+'/ability')
                 return (
-                <li key={index}><a href={URLchar}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></a></li>
+                <li key={index}><a href={URLchar+c.characterId}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></a></li>
             )})}</>
             :<div>...loading characters...</div>}</>
         </>

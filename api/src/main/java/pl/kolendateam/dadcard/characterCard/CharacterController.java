@@ -110,7 +110,7 @@ public class CharacterController {
         return new CharacterDTO(character);
     }
 
-    @PostMapping(value = "{id}/class", consumes = { "application/json" })
+    @PostMapping(value = "class/{id}", consumes = { "application/json" })
     public CharacterDTO setCharacterClass(@PathVariable short id, @RequestBody ClassPcDTO classPcDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
@@ -203,7 +203,7 @@ public class CharacterController {
         return new CharacterDTO(character);
     }
 
-    @PostMapping(value = "{id}/minus_class", consumes = { "application/json" })
+    @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
     public CharacterDTO minusCharacterClass(@PathVariable short id, @RequestBody ClassPcDTO classPcDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
@@ -311,7 +311,7 @@ public class CharacterController {
 
     }
 
-    @PostMapping(value = "{id}/skill", consumes = { "application/json" })
+    @PostMapping(value = "skill/{id}", consumes = { "application/json" })
     public CharacterDTO buyCharacterSkill(@PathVariable short id, @RequestBody SkillsDTO skillsDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);

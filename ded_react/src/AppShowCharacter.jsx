@@ -39,7 +39,7 @@ export function AppShowCharacter() {
                 <>
                 <li>STR: {abilitys.streght}</li>
                 <li>DEX: {abilitys.dextrity}</li>
-                <li>CONS: {abilitys.constitution}</li>
+                <li>CON: {abilitys.constitution}</li>
                 <li>INT: {abilitys.intelligence}</li>
                 <li>WIS: {abilitys.wisdom}</li>
                 <li>CHA: {abilitys.charisma}</li>
