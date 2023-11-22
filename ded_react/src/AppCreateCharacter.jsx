@@ -1,5 +1,4 @@
-import React, { useEffect, useState} from 'react'
-import { AppAbilityCharacter } from './AppAbilityCharacter'
+import React, { useState} from 'react'
 import axios from 'axios'
 
 export function AppCreateCharacter() {
@@ -19,18 +18,6 @@ export function AppCreateCharacter() {
         .then((response) => {console.log(response)})
     }
 
-    const [charList, setCharList] = useState('')
-
-    useEffect(() => {
-        axios
-        .get(URL)
-        .then((response) => {
-            setCharList(response.data)
-        });
-    }, [])
-
-    const URLchar = 'http://localhost:8080/ability/';
-
     return (
         <>
             <>
@@ -42,15 +29,6 @@ export function AppCreateCharacter() {
                 </p>
                 </form>
             </>
-        <>
-            list of characters:
-            {charList?
-            <>{charList.map((c, index) => {
-                console.log(URLchar+c.characterId+'/ability')
-                return (
-                <li key={index}><a href={URLchar+c.characterId}>character:<b>{c.characterName}</b> / player:<b>{c.playerName}</b></a></li>
-            )})}</>
-            :<div>...loading characters...</div>}</>
         </>
     )
 }

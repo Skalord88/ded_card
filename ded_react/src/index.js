@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AppShowCharacter } from './AppShowCharacter';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppLayout } from './AppLayout'
+import { AppListOfCharacters } from './AppListOfCharacters';
 import { AppCreateCharacter } from './AppCreateCharacter';
 import { AppAbilityCharacter } from './AppAbilityCharacter'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <AppCreateCharacter />
-  </React.StrictMode>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="" element={<AppLayout />}>
+          <Route path="CharacterCreation" element={<AppCreateCharacter />} />
+          <Route path="CharactersList" element={<AppListOfCharacters />} />
+          <Route path="ability" element={<AppAbilityCharacter />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+
+  // <React.StrictMode>
+  //   <AppCreateCharacter />
+  // </React.StrictMode>
 );
