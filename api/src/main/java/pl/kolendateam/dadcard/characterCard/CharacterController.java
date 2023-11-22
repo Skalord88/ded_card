@@ -58,7 +58,7 @@ public class CharacterController {
         this.spellsTableRepository = spellsTableRepository;
     }
 
-    @GetMapping
+    @GetMapping(value = "/list")
     public ArrayList<CreateCharacterDTO> characterCardGet() {
 
         List<Character> characterList = this.characterRepository.findAll();
