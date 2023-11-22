@@ -7,6 +7,6 @@ import { AppAbilityCharacter } from './AppAbilityCharacter'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AppAbilityCharacter />
+    <AppCreateCharacter />
   </React.StrictMode>
 );
