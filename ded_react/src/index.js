@@ -14,7 +14,7 @@ root.render(
         <Route path="" element={<AppLayout />}>
           <Route path="CharacterCreation" element={<AppCreateCharacter />} />
           <Route path="CharactersList" element={<AppListOfCharacters />} />
-          <Route path="ability" element={<AppAbilityCharacter />} />
+          <Route path="CharacterAbility" element={<AppAbilityCharacter />} />
         </Route>
       </Routes>
     </BrowserRouter>

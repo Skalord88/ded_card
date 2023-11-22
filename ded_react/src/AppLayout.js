@@ -11,6 +11,12 @@ export const AppLayout = () => {
           <li>
             <Link to="CharactersList">List of characters</Link>
           </li>
+          <li>
+            <Link to="ClassesList">List of classes</Link>
+          </li>
+          <li>
+            <Link to="FeatsList">List of feats</Link>
+          </li>
         </ul>
       </nav>
 
