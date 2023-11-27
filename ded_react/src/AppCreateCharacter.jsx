@@ -20,15 +20,13 @@ export function AppCreateCharacter() {
 
     return (
         <>
-            <>
-                <form>
-                    <input type='text' placeholder="Character Name" onChange={handleData} name="characterName" value={inputData.characterName}></input>
-                    <input type='text' placeholder="Player" onChange={handleData} name="playerName" value={inputData.playerName}></input>
-                <p>
-                    <button onClick={handleSubmit}>create</button>
-                </p>
-                </form>
-            </>
+            <form>
+                <input type='text' placeholder="Character Name" onChange={handleData} name="characterName" value={inputData.characterName}></input>
+                <input type='text' placeholder="Player" onChange={handleData} name="playerName" value={inputData.playerName}></input>
+            <p>
+                <button onClick={handleSubmit}>create</button>
+            </p>
+            </form>
         </>
     )
 }

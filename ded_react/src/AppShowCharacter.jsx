@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export function AppShowCharacter() {
+export function AppShowCharacter({ idChar }) {
 
-    let idChar = 1;
     const URL = 'http://localhost:8080/character-card/'+idChar;
 
     const [char, setChar] = useState("");
@@ -25,6 +24,7 @@ export function AppShowCharacter() {
             setFeats(response.data.featsList)
             console.log("API CALLED");
         });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const grapple = char.bab + (Math.floor((abilitys.streght-10)/2));

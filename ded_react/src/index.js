@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AppLayout } from './AppLayout'
-import { AppListOfCharacters } from './AppListOfCharacters';
+import { AppLayout } from './AppLayout';
 import { AppCreateCharacter } from './AppCreateCharacter';
-import { AppAbilityCharacter } from './AppAbilityCharacter'
+import { AppListOfCharacters } from './AppListOfCharacters'
+import { AppShowCharacter } from './AppShowCharacter'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,14 +13,11 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="" element={<AppLayout />}>
-          <Route path="CharacterCreation" element={<AppCreateCharacter />} />
+          <Route path="CreateCharacter" element={<AppCreateCharacter />} />
           <Route path="CharactersList" element={<AppListOfCharacters />} />
-          <Route path="CharacterAbility" element={<AppAbilityCharacter />} />
+          <Route path="character/:idChar" element={<AppShowCharacter />} />
         </Route>
       </Routes>
     </BrowserRouter>
 
-  // <React.StrictMode>
-  //   <AppCreateCharacter />
-  // </React.StrictMode>
 );
