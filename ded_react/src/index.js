@@ -10,12 +10,14 @@ import { AppShowCharacter } from './AppShowCharacter'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
+
+
     <BrowserRouter>
       <Routes>
         <Route path="" element={<AppLayout />}>
           <Route path="CreateCharacter" element={<AppCreateCharacter />} />
           <Route path="CharactersList" element={<AppListOfCharacters />} />
-          <Route path="character/:idChar" element={<AppShowCharacter />} />
+          <Route path="/:idChar" children={<AppShowCharacter />} />
         </Route>
       </Routes>
     </BrowserRouter>

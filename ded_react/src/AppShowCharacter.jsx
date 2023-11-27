@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export function AppShowCharacter({ idChar }) {
+export function AppShowCharacter(props) {
 
-    const URL = 'http://localhost:8080/character-card/'+idChar;
+    const URL = 'http://localhost:8080/character-card/'+props.match.params.idChar
 
     const [char, setChar] = useState("");
     const [abilitys, setAbilitys] = useState("");
