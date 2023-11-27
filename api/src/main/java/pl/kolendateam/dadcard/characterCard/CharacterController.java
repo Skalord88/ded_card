@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
@@ -30,6 +32,7 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
@@ -80,16 +83,6 @@ public class CharacterController {
 
         List<Skills> skillsList = this.skillsRepository.findAll();
         character.createSkillsArray(skillsList);
-
-        SavingThrow savingThrow = new SavingThrow(0, 0, 0);
-        character.setSavingThrow(savingThrow);
-
-        HashMap<Integer, Integer> vitaMap = new HashMap<>();
-        Vitality vitality = new Vitality(0, vitaMap, 0);
-        character.setVitality(vitality);
-
-        SpecialAttacks specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-        character.setSpecialAttacks(specialAttacks);
 
         this.characterRepository.save(character);
 

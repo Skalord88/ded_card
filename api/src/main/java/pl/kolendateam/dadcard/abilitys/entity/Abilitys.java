@@ -3,11 +3,13 @@ package pl.kolendateam.dadcard.abilitys.entity;
 import java.io.Serializable;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 
 @Setter
 @Getter
+@NoArgsConstructor
 public class Abilitys implements Serializable{
     
     int streght;

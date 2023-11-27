@@ -62,41 +62,38 @@ public class Character {
     @NonNull
     String playerName;
 
-    String race;
-    String subRace;
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArrayList<ClassPc> classPcArray;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Size size;
 
-    int speed;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<ClassPc> classPcArray;
-
-    short effectiveCharacterLv;
-    byte levelAdjustment;
+    String race;
+    String subRace;
 
     @JdbcTypeCode(SqlTypes.JSON)
     Vitality vitality;
+
+    int speed;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    ArmorClass armorClass;
+
+    double bab;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    SpecialAttacks specialAttacks;
 
     @JdbcTypeCode(SqlTypes.JSON)
     SavingThrow savingThrow;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    ArmorClass armorClass;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    ArrayList<ClassSkills> classSkills;
+    Abilitys abilitys;
 
     double skillPoints;
 
     @JdbcTypeCode(SqlTypes.JSON)
-    Abilitys abilitys;
-
-    @JdbcTypeCode(SqlTypes.JSON)
-    SpecialAttacks specialAttacks;
-
-    double bab;
+    ArrayList<ClassSkills> classSkills;
 
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<CharacterFeat> featsList;
@@ -113,12 +110,19 @@ public class Character {
     @JdbcTypeCode(SqlTypes.JSON)
     ArrayList<SpellsInCharLevel> spellsKnown;
 
+    short effectiveCharacterLv;
+    byte levelAdjustment;
+
     public Character(String characterName, String playerName) {
         this.characterName = characterName;
         this.playerName = playerName;
         this.classPcArray = new ArrayList<>();
-        this.vitality = new Vitality();
-        this.savingThrow = new SavingThrow();
+        this.size = new Size();
+        this.vitality = new Vitality(0, new HashMap<>(), 0);
+        this.armorClass = new ArmorClass();
+        this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
+        this.savingThrow = new SavingThrow(0,0,0);
+        this.abilitys = new Abilitys();
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
         this.items = new ArrayList<>();
