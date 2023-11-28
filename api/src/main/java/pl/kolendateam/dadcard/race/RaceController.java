@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
+@CrossOrigin
 @RestController
 @RequestMapping("race")
 public class RaceController {
@@ -53,7 +55,7 @@ public class RaceController {
 
         if(!raceOpt.isPresent()){
             throw new ResponseStatusException(
-           HttpStatus.NOT_FOUND, "Race Not Found");
+            HttpStatus.NOT_FOUND, "Race Not Found");
         }
 
         List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());

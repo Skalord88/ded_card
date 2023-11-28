@@ -22,7 +22,7 @@ export function Classes() {
         })
         axios.get(URLcharList).then((response) => {
             setClassesList(response.data);
-        });
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
