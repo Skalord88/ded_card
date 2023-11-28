@@ -7,7 +7,7 @@ export function Races() {
     let { charId } = useParams();
     const URLchar = 'http://localhost:8080/character-card/'+charId;
     const URLraceList = 'http://localhost:8080/race';
-    const URLrace = URLraceList+'/'+charId+'/race';
+    const URLrace = 'localhost:8080/race/'+charId+'/race';
 
     const charRace = {
         id : ''
@@ -15,20 +15,16 @@ export function Races() {
 
     const [char, setChar] = useState("");
     const [races, setRaces] = useState("");
-    const [subRaces, setSubRaces] = useState([]);
-    const [subRacesAbility, setSubRacesAbility] = useState("");
     const [inputData, setInputData] = useState(charRace)
     const [change, setChange] = useState(false)
 
     useEffect(() => {
         axios.get(URLchar).then((response) => {
             setChar(response.data)
-            setSubRaces([response.data.subRaces])
-            setSubRacesAbility(subRaces.raceAbilitys)
-        })
+        });
         axios.get(URLraceList).then((response) => {
             setRaces(response.data)
-        })
+        });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -44,34 +40,39 @@ export function Races() {
 
     return (
         <>
-            <div>{char.characterName}</div>
-            <p></p>
+        <p>
+            {char.characterName} <>{change===true?
+            <button onClick={handleSubmit}>
+                <Link to={'/class/'+char.characterId}>to classes</Link></button>
+                :<>...choose race</>}</>
+        </p>
             <div>
                 {races? 
                 <>{races.map((r, index) => {
                     return(
-                    <div key={index}>{r.raceName} {subRaces?
-                    <p>{r.subRaces.map((sr, indexSR) => {
+                    <div key={index}><b>{r.raceName}</b> {r.subRaces?
+                    <ul>{r.subRaces.map((sr, indexSR) => {
                         return(
                             <li key={indexSR}>
-                                {sr.subRacesName}
-                                {subRacesAbility?
-                                <p>
-                                <li>{subRacesAbility.streght? <></>:<>no</>}</li>
-                                <li>{subRacesAbility.dextrity? <></>:<></>}</li>
-                                <li>{subRacesAbility.constitution? <></>:<></>}</li>
-                                <li>{subRacesAbility.intelligence? <></>:<></>}</li>
-                                <li>{subRacesAbility.wisdom? <></>:<></>}</li>
-                                <li>{subRacesAbility.charisma? <></>:<></>}</li>
-                                </p>
-                                :<>...loading abilitys...</>
+                                <><button onClick={handleData}>{sr.subRacesName}</button></>: {sr.raceAbilitys?
+                                <>
+                                <>{sr.raceAbilitys.streght? <>str:{sr.raceAbilitys.streght>0? <>+{sr.raceAbilitys.streght}</>:<>{sr.raceAbilitys.streght}</>} </>:<></>}</>
+                                <>{sr.raceAbilitys.dextrity? <>dex:{sr.raceAbilitys.dextrity>0? <>+{sr.raceAbilitys.dextrity}</>:<>{sr.raceAbilitys.dextrity}</>} </>:<></>}</>
+                                <>{sr.raceAbilitys.constitution? <>con:{sr.raceAbilitys.constitution>0? <>+{sr.raceAbilitys.constitution}</>:<>{sr.raceAbilitys.constitution}</>} </>:<></>}</>
+                                <>{sr.raceAbilitys.intelligence? <>int:{sr.raceAbilitys.intelligence>0? <>+{sr.raceAbilitys.intelligence}</>:<>{sr.raceAbilitys.intelligence}</>} </>:<></>}</>
+                                <>{sr.raceAbilitys.wisdom? <>wis:{sr.raceAbilitys.wisdom>0? <>+{sr.raceAbilitys.wisdom}</>:<>{sr.raceAbilitys.wisdom}</>} </>:<></>}</>
+                                <>{sr.raceAbilitys.charisma? <>cha:{sr.raceAbilitys.charisma>0? <>+{sr.raceAbilitys.charisma}</>:<>{sr.raceAbilitys.charisma}</>} </>:<></>}</>
+                                </>
+                                :<></>
                                 }
-                                {sr.levelAdjustment===0? <></>:<>, lva:{sr.levelAdjustment}</>}</li>
-                    )})}</p>
+                                {sr.levelAdjustment===0? <></>:<> lva:{sr.levelAdjustment}</>}
+                                
+                                </li>
+                    )})}</ul>
                     :<p>...loading sub races...</p>
                     }</div>
                 )})}</>
-                :<>...loading races...</>
+                :<p>...loading races...</p>
             }
             </div>
         </>
