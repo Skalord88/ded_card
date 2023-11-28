@@ -6,10 +6,10 @@ export const AppLayout = () => {
       <nav>
         <ul>
           <li>
-            <Link to="CreateCharacter">Character creation</Link>
+            <Link to="create">Character creation</Link>
           </li>
           <li>
-            <Link to="CharactersList">List of characters</Link>
+            <Link to="list">List of characters</Link>
           </li>
         </ul>
       </nav>

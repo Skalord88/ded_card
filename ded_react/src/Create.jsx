@@ -1,13 +1,16 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
-export function AppCreateCharacter() {
+export function Create() {
 
     const URL = 'http://localhost:8080/character-card';
 
     const char = {characterName : '', playerName : ''}
+    const navigate = useNavigate();
 
     const [inputData, setInputData] = useState(char)
+    const [charId, setCharId] = useState('')
 
     const handleData = (e) => {
         setInputData({...inputData, [e.target.name]:e.target.value})
@@ -15,7 +18,8 @@ export function AppCreateCharacter() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(URL, inputData)
-        .then((response) => {console.log(response)})
+        .then((response) => {console.log(response, setCharId(response.data.characterId))})
+        .navigate('/class' + charId)
     }
 
     return (

@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 
-export function AppShowCharacter(props) {
+export function Show() {
 
-    const URL = 'http://localhost:8080/character-card/'+props.match.params.idChar
+    let { charId } = useParams();
+    const URL = 'http://localhost:8080/character-card/'+charId;
 
     const [char, setChar] = useState("");
     const [abilitys, setAbilitys] = useState("");
@@ -22,7 +24,6 @@ export function AppShowCharacter(props) {
             setVitality(response.data.vitality);
             setSkills(response.data.skillsList);
             setFeats(response.data.featsList)
-            console.log("API CALLED");
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -105,5 +106,3 @@ export function AppShowCharacter(props) {
     )
 
 }
-
-export default AppShowCharacter;
