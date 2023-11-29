@@ -29,7 +29,8 @@ export function Races() {
     }, []);
 
     const handleData = (e) => {
-        setInputData({...inputData, [e.target.name]:e.target.value})
+        setInputData({...inputData, [e.target.name] : e.target.value})
+        console.log(e.target.name, e.target.value)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,7 +55,7 @@ export function Races() {
                     <ul>{r.subRaces.map((sr, indexSR) => {
                         return(
                             <li key={indexSR}>
-                                <><button onClick={handleData}>{sr.subRacesName}</button></>: {sr.raceAbilitys?
+                                <><button type='number' onClick={handleData} name="id" value={sr.id}>{sr.subRacesName}</button></>: {sr.raceAbilitys?
                                 <>
                                 <>{sr.raceAbilitys.streght? <>str:{sr.raceAbilitys.streght>0? <>+{sr.raceAbilitys.streght}</>:<>{sr.raceAbilitys.streght}</>} </>:<></>}</>
                                 <>{sr.raceAbilitys.dextrity? <>dex:{sr.raceAbilitys.dextrity>0? <>+{sr.raceAbilitys.dextrity}</>:<>{sr.raceAbilitys.dextrity}</>} </>:<></>}</>
