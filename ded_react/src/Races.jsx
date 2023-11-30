@@ -17,13 +17,20 @@ export function Races() {
     const [change, setChange] = useState(false)
 
     useEffect(() => {
-        axios.get(URLchar).then((response) => {
-            setChar(response.data)
-        });
-        axios.get(URLraceList).then((response) => {
-            setRaces(response.data)
-        });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const fetchData = async () => {
+            try {
+                const resURLchar = await axios.get(URLchar);
+                setChar(resURLchar.data)
+
+                const resCharList = await axios.get(URLraceList);
+                setRaces(resCharList.data)
+
+            } catch (error){
+                console.error(error)
+            }
+        }
+        fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleData = (e) => {

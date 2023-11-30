@@ -21,15 +21,23 @@ export function Abilitys() {
     const [change, setChange] = useState(false)
 
     useEffect(() => {
-        axios.get(URL).then((response) => {
-            setChar(response.data)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const fetchData = async () => {
+            try {
+                const resCharList = await axios.get(URL);
+                setChar(resCharList.data)
+
+            } catch (error){
+                console.error(error)
+            }
+        }
+        fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleData = (e) => {
         setInputData({...inputData, [e.target.name]:e.target.value})
     }
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(URL, inputData)

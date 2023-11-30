@@ -18,7 +18,6 @@ export function Create() {
         e.preventDefault();
         axios.post(URL, inputData)
         .then((response) => {setCharId(response.data.characterId)})
-        .then((response) => {console.log(charId)})
     }
 
     return (

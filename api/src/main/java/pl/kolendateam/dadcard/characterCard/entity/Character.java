@@ -668,4 +668,11 @@ public class Character {
             }
         }
     }
+
+    public boolean magicClass(SpellsEnum spellsPerDay) {
+        if(spellsPerDay==null){
+            return false;
+        }
+        return true;
+    }
 }
