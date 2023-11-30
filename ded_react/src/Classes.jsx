@@ -1,68 +1,76 @@
-import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export function Classes() {
 
-    let { charId } = useParams();
-    const URLcharList = "http://localhost:8080/class"
-    const URLchar = "http://localhost:8080/class/"+charId;
+    const { charId } = useParams();
+    const URLchar = 'http://localhost:8080/character-card/'+charId;
+    const URLclassList = 'http://localhost:8080/class'
+    const URLclassAdd = 'http://localhost:8080/character-card/class/'+charId;
 
-    const chosen = {id : ''}
+    const chosen = ''
+    const chosenClass = ''
 
-    const [classPc, setInputData] = useState(chosen);
+    const [classPcId, setInputId] = useState(chosen);
+    const [classPcName, setInputName] = useState(chosenClass);
     const [char, setChar] = useState("");
-    const [classesList, setClassesList] = useState("");
-    const [classes, setClasses] = useState("");
+    const [classesList, setClassesList] = useState([]);
 
     useEffect(() => {
-        axios.get(URLchar).then((response) => {
-            setChar(response.data);
-            setClasses(response.data.classPcList);
-        })
-        axios.get(URLcharList).then((response) => {
-            setClassesList(response.data);
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const fetchData = async () => {
+            try {
+                const resCharList = await axios.get(URLclassList);
+                setClassesList(resCharList.data)
+
+                const resChar = await axios.get(URLchar);
+                setChar(resChar.data)
+            } catch (error){
+                console.error(error)
+            }
+        }
+        fetchData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleData = (e) => {
-        setInputData({...classPc, [e.target.name]:e.target.value})
+        setInputId(e.target.name)
+        setInputName(e.target.value)
+        console.log(e.target.name, e.target.value, URLclassAdd)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post(URLchar, classPc)
+        axios.post(URLclassAdd, {id : classPcId})
         .then((response) => {console.log(response)})
     }
 
     return (
         <>
-            <></>
-            <p>name: {char.characterName} / character classes: {!classes===''?
-            <>{classes.map((cl, index) => {
+        <p>
+            {char.characterName}
+            <p>
+                {classPcName?<>choosen: {classPcName} <button onClick={handleSubmit}>+</button></>:<>choose one</>}
+            </p> {char.classPcList===null?
+            <>{char.classPcList.map((c, index) => {
                 return(
-                    <li key={index}>{cl.className} {cl.level}</li>
+                    <li key={index}>{c.name}</li>
                 )
             })}</>
-            :<>no classes</>
+            :<>no classes in character</>
+        }
+        </p>
+            <div>
+                <p>{chosen.value===''?
+                <></>
+                :<></>
             }</p>
-            <p>classes: {classesList?
-            <>
-                {classesList.map((cl, index) => {
-                    return(
-                        <form>
-                        <button onClick={handleData} key={index}>name: {cl.className} {cl.classType}</button>
-                        <>
-                        {chosen===''?
-                        <></>
-                        :<button onClick={handleSubmit}>chose</button>
-                        }</>
-                        </form>
-                    )
-                })}
-            </>
-            :<>...loading classes...</>
-            }</p>
+            {classesList.map((cl, index) => {
+                return(
+                    <>
+                    <button onClick={handleData} name={cl.id} value={cl.className}>+</button> <lu key={index}>{cl.classType}, {cl.className}</lu><p></p>
+                    </>
+            )})}
+            </div>
         </>
     )
 

@@ -4,14 +4,12 @@ import { useParams, Link } from 'react-router-dom';
 
 export function Races() {
 
-    let { charId } = useParams();
+    const { charId } = useParams();
     const URLchar = 'http://localhost:8080/character-card/'+charId;
     const URLraceList = 'http://localhost:8080/race';
-    const URLrace = 'localhost:8080/race/'+charId+'/race';
+    const URLrace = URLraceList+'/'+charId+'/race';
 
-    const charRace = {
-        id : ''
-        }
+    const charRace = { id : '' }
 
     const [char, setChar] = useState("");
     const [races, setRaces] = useState("");
@@ -30,13 +28,12 @@ export function Races() {
 
     const handleData = (e) => {
         setInputData({...inputData, [e.target.name] : e.target.value})
-        console.log(e.target.name, e.target.value)
+        setChange(true)
     }
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(URLrace, inputData)
         .then((response) => {console.log(response)})
-        .then(setChange(true))
     }
 
     return (
@@ -44,7 +41,7 @@ export function Races() {
         <p>
             {char.characterName} <>{change===true?
             <button onClick={handleSubmit}>
-                <Link to={'/class/'+char.characterId}>to classes</Link></button>
+                <Link to={'/class/'+charId}>to classes</Link></button>
                 :<>...choose race</>}</>
         </p>
             <div>
@@ -55,7 +52,7 @@ export function Races() {
                     <ul>{r.subRaces.map((sr, indexSR) => {
                         return(
                             <li key={indexSR}>
-                                <><button type='number' onClick={handleData} name="id" value={sr.id}>{sr.subRacesName}</button></>: {sr.raceAbilitys?
+                                <><button type='number' onClick={handleData} name="id" value={sr.id}>{sr.subRacesName}</button> {sr.id}</>: {sr.raceAbilitys?
                                 <>
                                 <>{sr.raceAbilitys.streght? <>str:{sr.raceAbilitys.streght>0? <>+{sr.raceAbilitys.streght}</>:<>{sr.raceAbilitys.streght}</>} </>:<></>}</>
                                 <>{sr.raceAbilitys.dextrity? <>dex:{sr.raceAbilitys.dextrity>0? <>+{sr.raceAbilitys.dextrity}</>:<>{sr.raceAbilitys.dextrity}</>} </>:<></>}</>

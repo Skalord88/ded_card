@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 
 export function Abilitys() {
 
-    let { charId } = useParams();
+    const { charId } = useParams();
     const URL = 'http://localhost:8080/ability/'+charId;
 
     const charAbilitys = {
@@ -76,7 +76,7 @@ export function Abilitys() {
                 <>{change===false?
                 <button onClick={handleSubmit}>set</button>
                 :<>
-                <button> <Link to={"/race/"+char.characterId}>to race</Link></button>
+                <button> <Link to={"/race/"+charId}>to race</Link></button>
                 </>
             }</>
             </p>
