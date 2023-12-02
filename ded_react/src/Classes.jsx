@@ -10,10 +10,11 @@ export function Classes() {
     const URLclassAdd = 'http://localhost:8080/character-card/class/'+charId;
     const URLclassSell = 'http://localhost:8080/character-card/minus_class/'+charId;
 
-    const [classPcId, setInputId] = useState('');
-    const [classPcName, setInputName] = useState('');
     const [char, setChar] = useState('');
     const [classesList, setClassesList] = useState([]);
+    const [sign, setSign] = useState('');
+    const [classPcId, setInputId] = useState('');
+    const [classPcName, setInputName] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,35 +33,42 @@ export function Classes() {
     }, []);
 
     const handleData = (e) => {
-        setInputId(e.target.name)
-        setInputName(e.target.value)
+        const buttonArray = e.target.value.split(',');
+        
+        if(Array.isArray(buttonArray) && buttonArray.length > 0){
+            setSign(buttonArray[0]);
+            setInputId(buttonArray[1]);
+            setInputName(buttonArray[2])
+        }
     }
 
-    const handletAdd = (e) => {
+    const handleSign = (e) => {
         e.preventDefault();
-        axios.post(URLclassAdd, {id : classPcId})
-        window.location.reload(false)
+        try{
+        if(sign==='+'){
+            axios.post(URLclassAdd, {id : classPcId})
+        } else if(sign==='-'){
+            axios.post(URLclassSell, {id : classPcId})
+        }
+    } catch (error){
+        console.log(error)
     }
-
-    const handleMinus = (e) => {
-        e.preventDefault();
-        setInputId(e.target.value);
-        axios.post(URLclassSell, {id : classPcId});
         window.location.reload(false)
     }
 
     return (
         <>
-
             {char.characterName}
-            <p>
-                {classPcName?<>choosen: {classPcName} <button onClick={handletAdd}>+</button></>:<>choose one</>}
-            </p>
+            <div>
+                {classPcName?<>choosen: {classPcName} <button onClick={handleSign}>proceed</button></>:<>choose one</>}
+            </div>
         <ul>
-                {char.classPcList?
+            {char.classPcList?
             <>{char.classPcList.map((c, index) => {
                 return(
-                    <li key={index}><button onClick={handleData} name={c.id} value={c.className}>-</button> {c.className} {c.level}</li>
+                    c.level===0?
+                    <></>
+                    :<li key={index}><button onClick={handleData} value={['-', c.id, c.className]}>-</button> {c.className} {c.level}</li>
                 )
             })}</>
             :<>no classes in character</>
@@ -69,7 +77,7 @@ export function Classes() {
                 <p></p>
                     {classesList.map((cl, index) => {
                         return(
-                        <div key={index}><button onClick={handleData} name={cl.id} value={cl.className}>+</button> {cl.classType}, {cl.className}</div>
+                        <div key={index}><button value={['+', cl.id, cl.className]} onClick={handleData}>+</button> {cl.classType}, {cl.className}</div>
                 )})}
             </div>
         </>
