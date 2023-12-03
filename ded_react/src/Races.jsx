@@ -59,7 +59,7 @@ export function Races() {
                     <ul>{r.subRaces.map((sr, indexSR) => {
                         return(
                             <li key={indexSR}>
-                                <><button type='number' onClick={handleData} name="id" value={sr.id}>{sr.subRacesName}</button> {sr.id}</>: {sr.raceAbilitys?
+                                <><button type='number' onClick={handleData} name="id" value={sr.id}>{sr.subRacesName}</button></>: {sr.raceAbilitys?
                                 <>
                                 <>{sr.raceAbilitys.streght? <>str:{sr.raceAbilitys.streght>0? <>+{sr.raceAbilitys.streght}</>:<>{sr.raceAbilitys.streght}</>} </>:<></>}</>
                                 <>{sr.raceAbilitys.dextrity? <>dex:{sr.raceAbilitys.dextrity>0? <>+{sr.raceAbilitys.dextrity}</>:<>{sr.raceAbilitys.dextrity}</>} </>:<></>}</>

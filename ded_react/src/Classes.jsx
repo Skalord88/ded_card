@@ -62,6 +62,7 @@ export function Classes() {
             <div>
                 {classPcName?<>choosen: {classPcName} <button onClick={handleSign}>proceed</button></>:<>choose one</>}
             </div>
+            <div></div>
         <ul>
             {char.classPcList?
             <>{char.classPcList.map((c, index) => {

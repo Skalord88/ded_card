@@ -8,6 +8,7 @@ import { Show } from './Show';
 import { Abilitys } from './Abilitys';
 import { Races } from './Races';
 import { Classes } from './Classes';
+import { Skills } from './Skills';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,7 +22,8 @@ root.render(
           <Route path='/:charId' element={<Show />} />
           <Route path='/abilitys/:charId' element={<Abilitys />} />
           <Route path='/race/:charId' element={<Races />} />
-          <Route path='/class/:charId' element={<Classes />} /> 
+          <Route path='/class/:charId' element={<Classes />} />
+          <Route path='/skill/:charId' element={<Skills />} />
         </Route>
       </Routes>
     </BrowserRouter>
