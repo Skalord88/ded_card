@@ -28,7 +28,6 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
-import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -301,24 +300,6 @@ public class CharacterController {
 
         return new CharacterDTO(character);
 
-    }
-
-    @PostMapping(value = "skill/{id}", consumes = { "application/json" })
-    public CharacterDTO buyCharacterSkill(@PathVariable short id, @RequestBody SkillsDTO skillsDTO) {
-
-        Optional<Character> characterOpt = this.characterRepository.findById(id);
-
-        if (!characterOpt.isPresent()) {
-            throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "Character Not Found");
-        }
-
-        Character character = characterOpt.get();
-
-        character.buySkills(skillsDTO.idSkill, skillsDTO.skillRank);
-
-        this.characterRepository.save(character);
-        return new CharacterDTO(character);
     }
 
 }

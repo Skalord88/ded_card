@@ -15,16 +15,21 @@ export function Show() {
     const [feats, setFeats] = useState("")
 
     useEffect(() => {
-        axios
-        .get(URL)
-        .then((response) => {
-            setChar(response.data);
-            setAbilitys(response.data.abilitys);
-            setClasses(response.data.classPcList);
-            setVitality(response.data.vitality);
-            setSkills(response.data.skillsList);
-            setFeats(response.data.featsList)
-        });
+        const fetchData = async () => {
+            try {
+                const resURL = await axios.get(URL);
+                setChar(resURL.data);
+                setAbilitys(resURL.data.abilitys);
+                setClasses(resURL.data.classPcList);
+                setVitality(resURL.data.vitality);
+                setSkills(resURL.data.skillsList);
+                setFeats(resURL.data.featsList)
+
+            } catch(error) {
+                console.log(error)
+            }
+        }
+        fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -88,14 +93,23 @@ export function Show() {
             <p>skills points: {char.skillPoints} {skills?
             <>{skills.map((s, index) => {
                 return(
-                <div key={index}>{s.classSkill===true? '(x)' : '(o)'} {s.nameSkill} {Math.floor(s.skillRank+s.skillAbility+s.skillBonus)}</div>
+                <div key={index}>{s.classSkill===true? '(x)' : '(o)'} {s.nameSkill} {Math.floor(s.skillRank+s.skillAbility+s.skillBonus)} {s.fieldOfStudy?
+                <>{Object.entries(s.fieldOfStudy).map((sf) => {
+                    return(
+                        <lu>
+                            <li key={index}>{sf[0]} : {sf[1]}</li>
+                        </lu>
+                    )
+                })}</>
+                :<></>
+                }</div>
             )})}</>
             :<>...loading skills point...</>
             }</p>
             <p>feats: {feats?
             <>{feats.map((f, index) => {
                 return(
-                    <li key={index}>{f.characterFeatName} {f.characterFeatSpecial===null? "" : f.characterFeatSpecial}</li>
+                    <li key={index}>{f.characterFeatName} {f.characterFeatSpecial===null? <></> : f.characterFeatSpecial}</li>
                 )
             })}</>
             :<>...loading feats...</>    

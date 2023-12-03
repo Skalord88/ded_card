@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.mapping.Array;
 import org.hibernate.type.SqlTypes;
 
 import com.google.gson.Gson;
@@ -37,6 +38,7 @@ import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
+import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
@@ -253,38 +255,6 @@ public class Character {
 
     public void decalculateSkillPoints(int skPoints) {
         this.skillPoints -= skPoints + abilitys.bonusIntelligence(abilitys);
-    }
-
-    public void buySkills(int idSkill, double skPoints) {
-        for (ClassSkills skill : classSkills) {
-            if (skill.getIdSkill() == idSkill) {
-                boolean check = true;
-                if (skillPoints < 1) {
-                    check = false;
-                }
-                if ((int) skPoints > this.effectiveCharacterLv + 3) {
-                    check = false;
-                }
-                if (skill.isClassSkill() == true
-                        && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
-                    check = false;
-                }
-                double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
-                if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
-                    check = false;
-                }
-                if (check == true) {
-                    if (skill.isClassSkill() == true) {
-                        skill.setSkillRank(skill.getSkillRank() + skPoints);
-                        this.skillPoints -= skPoints;
-                    }
-                    if (skill.isClassSkill() == false) {
-                        skill.setSkillRank(skill.getSkillRank() + skPoints / 2);
-                        this.skillPoints -= skPoints;
-                    }
-                }
-            }
-        }
     }
 
     public void incrementBab(double classBab) {
@@ -674,5 +644,63 @@ public class Character {
             return false;
         }
         return true;
+    }
+
+    public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
+        for(SkillToAddDTO skillToAddDTO : skillsToAddDTO){
+            for (ClassSkills skill : classSkills) {
+                if (skill.getIdSkill() == skillToAddDTO.idSkill) {
+                    boolean check = true;
+                    if (this.skillPoints < 1) {
+                        check = false;
+                    }
+                    if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
+                        check = false;
+                    }
+                    if (skill.isClassSkill() == true
+                            && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
+                        check = false;
+                    }
+                    double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
+                    if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
+                        check = false;
+                    }
+                    if (check == true) {
+                        if (skill.isClassSkill() == true) {
+                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank);
+                            
+                        }
+                        if (skill.isClassSkill() == false) {
+                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank / 2);
+                        }
+                        this.skillPoints -= skillToAddDTO.skillRank;
+                    }
+                }
+            }
+        }
+    }
+
+    public void sellSkills(ArrayList<SkillToAddDTO> skillsToAddDTO) {
+        for(SkillToAddDTO skillToAddDTO : skillsToAddDTO){
+            for (ClassSkills skill : this.classSkills) {
+
+            if (skill.getIdSkill() == skillToAddDTO.idSkill &&
+                skill.getSkillRank() < skillToAddDTO.skillRank) {
+
+                if(skillToAddDTO.skillRank > 1){
+
+                    if(skill.isClassSkill()){
+                        skill.setSkillRank(-skillToAddDTO.skillRank);
+                    } else {
+                        skill.setSkillRank(-(skillToAddDTO.skillRank/2));
+                    }
+
+                }
+                
+                this.skillPoints += skillToAddDTO.skillRank;
+                
+                }
+            }
+        }
     }
 }
