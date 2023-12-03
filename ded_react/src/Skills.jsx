@@ -26,11 +26,29 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    let num = 1;
+    let arrayNum = [];
+    for(let n = 0; n = char.effectiveCharacterLv+3; n++){
+        arrayNum.push(num);
+        num++;
+    }
+    console.log(arrayNum.length)
+
     return (
         <>
         <div>{char.characterName}, skills points: {char.skillPoints}</div>
-        <p></p>
+        <label for="browser">Choose your browser from the list:</label>
+            <input list="browsers" name="browser" id="browser"/>
+            <datalist id="browsers"/>
+                <option value="Edge"/>
+                <option value="Firefox"/>
+                <option value="Chrome"/>
+                <option value="Opera"/>
+                <option value="Safari"/>
+        <input type="submit"/>
         <>{skills?
+        <fieldset>
+            <legend>skills</legend>
         <div>
             {skills.map((s,index) => {
                 return(
@@ -38,6 +56,7 @@ export function Skills() {
                 )
             })}
         </div>
+        </fieldset>
         :<div>...</div>
         }</>
         </>
