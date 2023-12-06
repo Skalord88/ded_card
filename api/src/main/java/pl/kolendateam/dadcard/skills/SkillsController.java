@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.skills;
 
-import java.util.Optional;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +17,6 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
-import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 
 @RestController
