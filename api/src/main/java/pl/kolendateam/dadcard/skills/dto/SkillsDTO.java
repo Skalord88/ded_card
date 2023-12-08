@@ -14,5 +14,10 @@ public class SkillsDTO {
     public double skillRank;
     public int skillAbility;
     public int skillBonus;
+
+    public SkillsDTO(short id, String name) {
+        this.idSkill = id;
+        this.nameSkill = name;
+    }
     
 }

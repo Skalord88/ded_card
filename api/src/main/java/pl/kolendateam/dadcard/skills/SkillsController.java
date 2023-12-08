@@ -2,10 +2,12 @@ package pl.kolendateam.dadcard.skills;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +18,14 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
+import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
+
 
 @RestController
 @CrossOrigin
@@ -33,6 +41,16 @@ public class SkillsController {
         this.characterRepository = characterRepository;
         this.skillsRepository = skillsRepository;
     }
+
+    @GetMapping("/list")
+    public List<SkillsDTO> getSkillsList() {
+
+        List<Skills> listSkills = skillsRepository.findAll();
+
+        return MapperSkillsToDTO.toSkillsNameDTO(listSkills);
+
+    }
+    
 
     @PostMapping(value = "{id}", consumes = { "application/json" })
     public CharacterDTO buyCharacterSkill(@PathVariable short id, @RequestBody ArrayList<SkillToAddDTO> skillsToAdd) {

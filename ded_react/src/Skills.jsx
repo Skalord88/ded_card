@@ -6,63 +6,54 @@ export function Skills() {
 
     let { charId } = useParams();
     const URL = 'http://localhost:8080/character-card/'+charId;
+    const URLskills = 'http://localhost:8080/skills/list'
 
-    let [skill, setSkill] = useState({
-        idSkill: '',
-        skillRank: ''
-    });
-    
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        setSkill(prevSkill => ({
-        ...prevSkill,
-        idSkill: name,
-        skillRank: value
-        }));
-    };
-
-    const [char, setChar] = useState("");
-    const [skills, setSkills] = useState("");
-    let skillsToAdd = []
+    const addSkill = {
+        id : '',
+        rank : ''
+    }
+    const [char, setChar] = useState('');
+    const [skills, setSkills] = useState('');
+    let [input, setInput] = useState(addSkill)
+    const [skillsList, setSkillsList] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const resURL = await axios.get(URL);
+                const resURLskills = await axios.get(URLskills);
                 
-                setChar(resURL.data)
+                setChar(resURL.data);
                 setSkills(resURL.data.skillsList);
-
-                let skillsToAdd = skills.map(s => {
-                    setSkill(prevSkill => ({
-                        ...prevSkill,
-                        idSkill : s.idSkill,
-                        skillRank : ''
-                    }))
-                })
-
+                setSkillsList(resURLskills.data);
+                
             } catch(error) {
                 console.log(error)
             }
         }
         fetchData()
-        char.skillsList.map((s) => {
-            setSkill(prevSkill => ({
-                ...prevSkill,
-                idSkill: s.idSkill,
-                skillRank: ''
-                }));
-                skillsToAdd.push(skill)
-        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    let skill;
 
-    // const addSkill = (e) => {
-    //     skillToAdd.push(inputData)
-    //     console.log(skillToAdd)
-    // }
+    let skillsToAdd = skillsList.map((s) => {
+        skill = {
+            idSkill : s.idSkill,
+            skillRank : 0
+        }
+    });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        skillsToAdd.forEach((s) => {
+            if ( name === s.idSkill ) {
+                s.skillRank = value
+            }
+        })
+        console.log(skillsToAdd)
+    };
 
     return (
         <>
@@ -101,12 +92,10 @@ export function Skills() {
                                 <input
                                 type="number"
                                 name={s.idSkill}
-                                value={skill.skillRank}
+                                value={input.rank}
                                 onChange={handleInputChange}
-                                placeholder="Inserisci l'id della skill"
+                                placeholder="0"
                                 />
-                                
-                                <strong>Stato attuale della skill:</strong> {JSON.stringify(skill)}
                                 </div>
                         )})}
                     </td>
