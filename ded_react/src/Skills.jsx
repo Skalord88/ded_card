@@ -7,8 +7,24 @@ export function Skills() {
     let { charId } = useParams();
     const URL = 'http://localhost:8080/character-card/'+charId;
 
+    let [skill, setSkill] = useState({
+        idSkill: '',
+        skillRank: ''
+    });
+    
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+
+        setSkill(prevSkill => ({
+        ...prevSkill,
+        idSkill: name,
+        skillRank: value
+        }));
+    };
+
     const [char, setChar] = useState("");
     const [skills, setSkills] = useState("");
+    let skillsToAdd = []
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,13 +34,35 @@ export function Skills() {
                 setChar(resURL.data)
                 setSkills(resURL.data.skillsList);
 
+                let skillsToAdd = skills.map(s => {
+                    setSkill(prevSkill => ({
+                        ...prevSkill,
+                        idSkill : s.idSkill,
+                        skillRank : ''
+                    }))
+                })
+
             } catch(error) {
                 console.log(error)
             }
         }
         fetchData()
+        char.skillsList.map((s) => {
+            setSkill(prevSkill => ({
+                ...prevSkill,
+                idSkill: s.idSkill,
+                skillRank: ''
+                }));
+                skillsToAdd.push(skill)
+        })
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+
+    // const addSkill = (e) => {
+    //     skillToAdd.push(inputData)
+    //     console.log(skillToAdd)
+    // }
 
     return (
         <>
@@ -59,7 +97,17 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'><button>+</button><button>-</button></div>
+                            <div key={index} align='center'>
+                                <input
+                                type="number"
+                                name={s.idSkill}
+                                value={skill.skillRank}
+                                onChange={handleInputChange}
+                                placeholder="Inserisci l'id della skill"
+                                />
+                                
+                                <strong>Stato attuale della skill:</strong> {JSON.stringify(skill)}
+                                </div>
                         )})}
                     </td>
                     <td>

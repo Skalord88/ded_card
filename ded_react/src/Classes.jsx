@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 
 export function Classes() {
 
@@ -40,6 +40,7 @@ export function Classes() {
             setInputId(buttonArray[1]);
             setInputName(buttonArray[2])
         }
+        console.log(char.classPcList)
     }
 
     const handleSign = (e) => {
@@ -53,16 +54,18 @@ export function Classes() {
     } catch (error){
         console.log(error)
     }
-        window.location.reload(false)
+        window.location.reload(false)        
     }
 
     return (
         <>
-            {char.characterName}
+            <p>{char.characterName}</p>
             <div>
                 {classPcName?<>choosen: {classPcName} <button onClick={handleSign}>proceed</button></>:<>choose one</>}
             </div>
-            <div></div>
+            <div>
+                {char.classPcList? <button><Link to='/skill/:id'>to skills</Link></button>:<></>}
+            </div>
         <ul>
             {char.classPcList?
             <>{char.classPcList.map((c, index) => {
