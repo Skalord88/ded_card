@@ -6,26 +6,21 @@ export function Skills() {
 
     let { charId } = useParams();
     const URL = 'http://localhost:8080/character-card/'+charId;
-    const URLskills = 'http://localhost:8080/skills/list'
 
-    const addSkill = {
-        id : '',
-        rank : ''
-    }
     const [char, setChar] = useState('');
     const [skills, setSkills] = useState('');
-    let [input, setInput] = useState(addSkill)
-    const [skillsList, setSkillsList] = useState([])
+    const [skillsToAdd, setSkillsToAdd] = useState('')
+    let [count, setCount] = useState(0)
+    let [add, setAdd] = useState([false, true])
+
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const resURL = await axios.get(URL);
-                const resURLskills = await axios.get(URLskills);
                 
                 setChar(resURL.data);
                 setSkills(resURL.data.skillsList);
-                setSkillsList(resURLskills.data);
                 
             } catch(error) {
                 console.log(error)
@@ -35,29 +30,45 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    let skill;
-
-    let skillsToAdd = skillsList.map((s) => {
-        skill = {
-            idSkill : s.idSkill,
-            skillRank : 0
-        }
-    });
-
-    const handleInputChange = (event) => {
-        const { name, value } = event.target;
-
-        skillsToAdd.forEach((s) => {
-            if ( name === s.idSkill ) {
-                s.skillRank = value
-            }
+    const handleIdSkill = (e) => {
+        const { name, value } = e.target
+        setSkillsToAdd({
+            idSkill : name,
+            skPoints : 0
         })
         console.log(skillsToAdd)
-    };
+    }
+
+    const handleRankSkill = (e) => {
+        const { name, value } = e.target
+
+        setSkillsToAdd({
+            idSkill : name,
+            skPoints : value
+        })
+
+        setCount(char.skillPoints - value)
+
+        if(value > 0){
+            setAdd([true, true])
+        } else if(value < 0){
+            setAdd([true, false])
+        }
+
+
+        console.log(skillsToAdd, add)
+    }
+
 
     return (
         <>
-        <div>{char.characterName}, skills points: {char.skillPoints}</div>
+        <div>{char.characterName}, skills points: {char.skillPoints} / {count} remaining</div>
+        <div>
+            {skillsToAdd?
+            <input type='number' placeholder="0" onChange={handleRankSkill} name={skillsToAdd.idSkill} value={skillsToAdd.skPoints}></input>
+            :<></>}
+        </div>
+        <div>{add===true?<button>add</button>:<></>}</div>
         <>{skills?
         <fieldset>
             <legend>skills</legend>
@@ -76,26 +87,20 @@ export function Skills() {
                     <td>
                         {skills.map((s,index) => {
                             return(
-                                <div key={index} align='center'>{s.classSkill?<>x</>:<>o</>}</div>
+                                <div key={index} align='center'>
+                                    {s.classSkill?<>x</>:<>o</>}
+                                </div>
                             )})}
                     </td>
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='left'>{s.nameSkill}</div>
-                        )})}
-                    </td>
-                    <td>
-                    {skills.map((s,index) => {
-                        return(
-                            <div key={index} align='center'>
-                                <input
-                                type="number"
+                            <div key={index} align='left'>
+                                <button
                                 name={s.idSkill}
-                                value={input.rank}
-                                onChange={handleInputChange}
-                                placeholder="0"
-                                />
+                                value={s.nameSkill}
+                                onClick={handleIdSkill}
+                                >{s.nameSkill}</button>
                                 </div>
                         )})}
                     </td>
