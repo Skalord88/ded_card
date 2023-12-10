@@ -72,7 +72,11 @@ export function Classes() {
                 return(
                     c.level===0?
                     <></>
-                    :<li key={index}><button onClick={handleData} value={['-', c.id, c.className]}>-</button> {c.className} {c.level}</li>
+                    :<li key={index}>
+                        <button
+                        onClick={handleData}
+                        value={['-', c.id, c.className]}
+                        >-</button> {c.className} {c.level}</li>
                 )
             })}</>
             :<>no classes in character</>
@@ -81,7 +85,11 @@ export function Classes() {
                 <p></p>
                     {classesList.map((cl, index) => {
                         return(
-                        <div key={index}><button value={['+', cl.id, cl.className]} onClick={handleData}>+</button> {cl.classType}, {cl.className}</div>
+                        <div key={index}>
+                            <button
+                            value={['+', cl.id, cl.className]}
+                            onClick={handleData}>
+                                +</button> {cl.classType}, {cl.className}</div>
                 )})}
             </div>
         </>

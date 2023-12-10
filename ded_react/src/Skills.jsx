@@ -9,9 +9,17 @@ export function Skills() {
 
     const [char, setChar] = useState('');
     const [skills, setSkills] = useState('');
-    const [skillsToAdd, setSkillsToAdd] = useState('')
-    let [count, setCount] = useState(0)
-    let [add, setAdd] = useState([false, true])
+    const [skillsToAdd, setSkillsToAdd] = useState('');
+    const [skillToChange, setSkillToChange] = useState('');
+    const [listToAdd, setListToAdd] = useState('')
+    const [actualSkillsPoints, setActualSkillsPoints] = useState(0)
+
+    const [id, setId] = useState('')
+    const [skCl, setSkCl] = useState('')
+    const [rank, setRank] = useState(0)
+
+    let [count, setCount] = useState(0);
+    let [add, setAdd] = useState([false, true]);
 
 
     useEffect(() => {
@@ -21,6 +29,8 @@ export function Skills() {
                 
                 setChar(resURL.data);
                 setSkills(resURL.data.skillsList);
+                setActualSkillsPoints(resURL.data.skillPoints)
+                setCount(resURL.data.skillPoints)
                 
             } catch(error) {
                 console.log(error)
@@ -31,41 +41,83 @@ export function Skills() {
     }, []);
 
     const handleIdSkill = (e) => {
-        const { name, value } = e.target
+        const buttonArray = e.target.value.split(',');
+        if(Array.isArray(buttonArray) && buttonArray.length > 0){
         setSkillsToAdd({
-            idSkill : name,
-            skPoints : 0
-        })
-        console.log(skillsToAdd)
+            idSkill : buttonArray[0],
+            skClass : buttonArray[1],
+            skillRank : rank
+        })}
+
+        setSkillToChange(buttonArray[2])
+        
     }
 
     const handleRankSkill = (e) => {
-        const { name, value } = e.target
+        const buttonArray = e.target.value.split(',');
+        if(Array.isArray(buttonArray) && buttonArray.length > 0){
 
-        setSkillsToAdd({
-            idSkill : name,
-            skPoints : value
-        })
+            setId(buttonArray[0])
+            setSkCl(buttonArray[1])
+            if(buttonArray[2]){
+                if(buttonArray[1]){
+                    setRank(rank++)
+                } else {
+                    setRank(rank + 0.5)
+                }
+            } else {
+                if(!buttonArray[1]){
+                    setRank(rank--)
+                } else {
+                    setRank(rank - 0.5)
+                }
+            }
+        }
 
-        setCount(char.skillPoints - value)
+        setCount(actualSkillsPoints - rank)
 
-        if(value > 0){
+        if(rank > 0){
             setAdd([true, true])
-        } else if(value < 0){
+        } else if(rank < 0){
             setAdd([true, false])
         }
 
-
-        console.log(skillsToAdd, add)
     }
 
+    console.log(buttonArray, count, rank)
+
+    const handleAdd = () => {
+
+        setSkillsToAdd({
+            idSkill : id,
+            skClass : skCl,
+            skillRank : rank
+        })
+        
+        setListToAdd([...listToAdd, skillsToAdd])
+        setActualSkillsPoints(prev => prev - skillsToAdd.skPoints)
+        setSkillsToAdd('')
+        setRank(0)
+    }
 
     return (
         <>
-        <div>{char.characterName}, skills points: {char.skillPoints} / {count} remaining</div>
+        <div>{char.characterName}, skills points: {actualSkillsPoints} / {count} rmng pts</div>
         <div>
             {skillsToAdd?
-            <input type='number' placeholder="0" onChange={handleRankSkill} name={skillsToAdd.idSkill} value={skillsToAdd.skPoints}></input>
+            <>
+            {skillToChange}
+            {rank}
+            <button
+            value={[skillsToAdd.idSkill,skillsToAdd.skClass,true]}
+            onClick={handleRankSkill}
+            >+</button>
+            <button
+            value={[skillsToAdd.idSkill,skillsToAdd.skClass,false]}
+            onClick={handleRankSkill}
+            >-</button>
+            <button onClick={handleAdd}>add</button>
+            </>
             :<></>}
         </div>
         <div>{add===true?<button>add</button>:<></>}</div>
@@ -74,7 +126,7 @@ export function Skills() {
             <legend>skills</legend>
         <div>
             <table>
-                <tr>
+                <thead>
                     <th>CS</th>
                     <th align='left'>skill</th>
                     <th align='center'>add/rmv</th>
@@ -82,8 +134,8 @@ export function Skills() {
                     <th align='center'>rnk</th>
                     <th align='center'>abi</th>
                     <th align='center'>dif</th>
-                </tr>
-                <tr>
+                </thead>
+                <tbody>
                     <td>
                         {skills.map((s,index) => {
                             return(
@@ -97,8 +149,7 @@ export function Skills() {
                         return(
                             <div key={index} align='left'>
                                 <button
-                                name={s.idSkill}
-                                value={s.nameSkill}
+                                value={[s.idSkill, s.classSkill, s.nameSkill]}
                                 onClick={handleIdSkill}
                                 >{s.nameSkill}</button>
                                 </div>
@@ -107,28 +158,36 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>{s.skillRank+s.skillAbility+s.skillBonus}</div>
+                            <div key={index} align='center'>
+                                {s.skillRank+s.skillAbility+s.skillBonus}
+                            </div>
                         )})}
                     </td>
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>{s.skillRank}</div>
+                            <div key={index} align='center'>
+                                {s.skillRank}
+                            </div>
                         )})}
                     </td>
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>{s.skillAbility}</div>
+                            <div key={index} align='center'>
+                                {s.skillAbility}
+                            </div>
                         )})}
                     </td>
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>{s.skillBonus}</div>
+                            <div key={index} align='center'>
+                                {s.skillBonus}
+                            </div>
                         )})}
                     </td>
-                </tr>
+                </tbody>
             </table>
         </div>
         </fieldset>
