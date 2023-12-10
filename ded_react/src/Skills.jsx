@@ -16,7 +16,7 @@ export function Skills() {
 
     const [id, setId] = useState('')
     const [skCl, setSkCl] = useState('')
-    const [rank, setRank] = useState(0)
+    let [rank, setRank] = useState(0)
 
     let [count, setCount] = useState(0);
     let [add, setAdd] = useState([false, true]);
@@ -50,49 +50,45 @@ export function Skills() {
         })}
 
         setSkillToChange(buttonArray[2])
-        
+
     }
+
+    console.log(skillsToAdd)
 
     const handleRankSkill = (e) => {
-        const buttonArray = e.target.value.split(',');
-        if(Array.isArray(buttonArray) && buttonArray.length > 0){
+        
+        const sign = e.target.value
 
-            setId(buttonArray[0])
-            setSkCl(buttonArray[1])
-            if(buttonArray[2]){
-                if(buttonArray[1]){
-                    setRank(rank++)
-                } else {
-                    setRank(rank + 0.5)
-                }
-            } else {
-                if(!buttonArray[1]){
-                    setRank(rank--)
-                } else {
-                    setRank(rank - 0.5)
-                }
-            }
+        let updateSkill = 0;
+
+        let actualRank = skillsToAdd.skillRank
+
+        if(skillsToAdd.skClass && sign){
+            updateSkill = {...skillsToAdd, skillRank : +1}
+        } else if (skillsToAdd.skClass && !sign) {
+            updateSkill = {...skillsToAdd, skillRank : -1}
+        } else if (!skillsToAdd.skClass && sign){
+            updateSkill = {...skillsToAdd, skillRank : +0.5}
+        } else if (!skillsToAdd.skClass && !sign){
+            updateSkill = {...skillsToAdd, skillRank : -0.5}
         }
 
-        setCount(actualSkillsPoints - rank)
+        setSkillsToAdd(updateSkill)
 
-        if(rank > 0){
-            setAdd([true, true])
-        } else if(rank < 0){
-            setAdd([true, false])
-        }
+
+        // setCount(actualSkillsPoints - rank)
+
+        // if(rank > 0){
+        //     setAdd([true, true])
+        // } else if(rank < 0){
+        //     setAdd([true, false])
+        // }
 
     }
 
-    console.log(buttonArray, count, rank)
+    console.log(skillsToAdd)
 
     const handleAdd = () => {
-
-        setSkillsToAdd({
-            idSkill : id,
-            skClass : skCl,
-            skillRank : rank
-        })
         
         setListToAdd([...listToAdd, skillsToAdd])
         setActualSkillsPoints(prev => prev - skillsToAdd.skPoints)
@@ -109,11 +105,11 @@ export function Skills() {
             {skillToChange}
             {rank}
             <button
-            value={[skillsToAdd.idSkill,skillsToAdd.skClass,true]}
+            value={true}
             onClick={handleRankSkill}
             >+</button>
             <button
-            value={[skillsToAdd.idSkill,skillsToAdd.skClass,false]}
+            value={false}
             onClick={handleRankSkill}
             >-</button>
             <button onClick={handleAdd}>add</button>
