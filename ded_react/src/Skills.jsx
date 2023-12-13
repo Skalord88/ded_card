@@ -7,24 +7,13 @@ export function Skills() {
 
     let { charId } = useParams();
     const URL = 'http://localhost:8080/character-card/'+charId;
+    const URLskillSet = 'http://localhost:8080/skills/'+charId;
 
-    //1
     const [char, setChar] = useState('')
     const [skills, setSkills] = useState([])
-    const [skill, setSkill] = useState({});
     const [actualSkillsPoints, setActualSkillsPoints] = useState(0)
-    const [maxSkLv, setMaxSkLv] = useState(0)
-
-    //6
-    const [skillName, setSkillName] = useState('')
-    const [listToAdd, setListToAdd] = useState('')
-    
-// 8
-    const [id, setId] = useState(0)
-    const [skCl, setSkCl] = useState('')
-    const [rank, setRank] = useState(0)
-    const [count, setCount] = useState(0)
-//11
+    const [maxSkillsPoints, setMaxSkillsPoints] = useState(0)
+    const [maxSkillLv, setMaxSkillLv] = useState(0)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,12 +21,12 @@ export function Skills() {
             try {
                 
                 const resURL = await axios.get(URL)
-                
+
                 setChar(resURL.data)
                 setSkills(resURL.data.skillsList)
-                setMaxSkLv(resURL.data.effectiveCharacterLv + 3)
+                setMaxSkillLv(resURL.data.effectiveCharacterLv + 3)
                 setActualSkillsPoints(resURL.data.skillPoints)
-                setCount(resURL.data.skillPoints)
+                setMaxSkillsPoints(resURL.data.skillPoints)
                 
             } catch(error) {
                 console.log(error)
@@ -47,99 +36,81 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-
-    // const handleFilter = (e) => {
-
-    //     let value = e.target.value;
-
-    //     console.log('value:', value, 'skills:',skills)
-
-    //     let filtered = skills.find(sk => sk.idSkill===value);
-    //     setSkill(filtered);
-    //     console.log(filtered)
-
-    // }
-    
-    const handleIdSkill = (e) => {
-
-        const existingSkill = skills.find(element => element.idSkill === JSON.parse(e.target.value));
-
-        setId(existingSkill.idSkill)
-        setSkillName(existingSkill.nameSkill)
-
-    }
-
     const handleAddRank = (e) => {
 
-        const updateSkills = skills.map(s => {
+        setSkills((prevSkills) =>
+            prevSkills.map((skill) =>
+                skill.idSkill === JSON.parse(e.target.value)?
+                skill.classSkill && skill.skillRank < maxSkillLv?
+                { ...skill, skillRank: skill.skillRank + 1 } :
+                skill.skillRank < maxSkillLv/2?
+                { ...skill, skillRank: skill.skillRank + 0.5 } :
+                skill :
+                skill
+        ))
+        skills.map((skill) =>
+            // se id = id
+            skill.idSkill === JSON.parse(e.target.value)?
+            // se class skill = true e rank < max
+            skill.classSkill && skill.skillRank < maxSkillLv?
+            setActualSkillsPoints(points => points - 1) :
+            skill.skillRank < maxSkillLv/2?
+            setActualSkillsPoints(points => points - 1) :
+            setActualSkillsPoints(points => points) :
+            setActualSkillsPoints(points => points)
+        )
+    };
 
-            if(s.idSkill===id){
-                if(-maxSkLv < (count - actualSkillsPoints)){
-                    if(s.classSkill){
-                        s.skillRank++
-                        setCount(count - 1)
-                    } else {
-                        setRank(s.skillRank + 0.5)
-                        setCount(count - 1)
-                    }
-                }
-            }
-        })
+    const handleDelRank = (e) => {
 
-        setSkills(updateSkills)
-
-        // if(-maxSkLv < (count - actualSkillsPoints)){
-        //     if(skill.classSkill){
-        //         setRank(skill.skillRank + 1)
-        //         setCount(count - 1)
-        //     } else {
-        //         setRank(skill.skillRank + 0.5)
-        //         setCount(count - 1)
-        //     }
-        // }
-    }
-    const handleDelRank = () => {
-        if(actualSkillsPoints > count){
-            if(JSON.parse(skCl)){
-                setRank(rank - 1)
-                setCount(count + 1)
-            } else {
-                setRank(rank - 0.5)
-                setCount(count + 1)
-            }
-        }
-    }
-
-    // console.log(id, skCl, rank, (count - actualSkillsPoints))
+        setSkills((prevSkills) =>
+            prevSkills.map((skill) =>
+                skill.idSkill === JSON.parse(e.target.value)?
+                skill.classSkill && skill.skillRank > 0?
+                { ...skill, skillRank: skill.skillRank - 1 } :
+                skill.skillRank > 0?
+                { ...skill, skillRank: skill.skillRank - 0.5 } :
+                skill :
+                skill
+        ))
+        skills.map((skill) =>
+            skill.idSkill === JSON.parse(e.target.value) &&
+            actualSkillsPoints < maxSkillsPoints &&
+            skill.skillRank > 0?
+            setActualSkillsPoints(points => points + 1) :
+            setActualSkillsPoints(points => points)
+        )
+    };
 
     const handleChange = () => {
 
-        // let existingSkill = skills.find(element => element.idSkill === id);
+        const skillUp = []
 
-        // setSkill(existingSkill)
+        skills.forEach(s => {
+            const skill = {
+                idSkill : s.idSkill,
+                skillRank : s.skillRank
+            }
+            skillUp.push(skill)
+        })
 
-        setActualSkillsPoints(prev => prev + (count - actualSkillsPoints))
-        setId('')
-        setRank(0)
+        try{
+            axios.post((URLskillSet, skillUp))
+        } catch (error){
+            console.log(error)
+        }
+        console.log(skillUp)
+        // window.location.reload(false)
+
     }
+    
 
     const realodPage = () => window.location.reload(false)
 
     return (
         <>
         <div>
-            {char.characterName}, skills points: {actualSkillsPoints} / {count} rmng pts <button onClick={realodPage}>reload</button>
-        </div>
-        <div>
-            {id?
-            <>
-            {skillName} {rank}
-            <button onClick={handleAddRank}>+</button>
-            <button onClick={handleDelRank}>-</button>
-            <button onClick={handleChange}>change</button>
-            </>
-            :
-            <></>}
+            {char.characterName}, skills points: {actualSkillsPoints} <button onClick={handleChange}>set Skills</button> <button onClick={realodPage}>reload</button>
         </div>
         <>
         {skills?
@@ -169,10 +140,15 @@ export function Skills() {
                     {skills.map((s,index) => {
                         return(
                             <div key={index} align='left'>
+                                {s.nameSkill}
                                 <button
                                 value={s.idSkill}
-                                onClick={handleIdSkill}
-                                >{s.nameSkill}</button>
+                                onClick={handleAddRank}
+                                >+</button>
+                                <button
+                                value={s.idSkill}
+                                onClick={handleDelRank}
+                                >-</button>
                             </div>
                         )})}
                     </td>
