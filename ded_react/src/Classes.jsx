@@ -64,7 +64,7 @@ export function Classes() {
                 {classPcName?<>choosen: {classPcName} <button onClick={handleSign}>proceed</button></>:<>choose one</>}
             </div>
             <div>
-                {char.classPcList? <button><Link to='/skill/:id'>to skills</Link></button>:<></>}
+                {char.classPcList? <button><Link to={'/skill/'+charId}>to skills</Link></button>:<></>}
             </div>
         <ul>
             {char.classPcList?

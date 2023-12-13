@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export function Skills() {
 
-    let { charId } = useParams();
+    const { charId } = useParams();
     const URL = 'http://localhost:8080/character-card/'+charId;
     const URLskillSet = 'http://localhost:8080/skills/'+charId;
 
@@ -85,25 +85,35 @@ export function Skills() {
     const handleChange = () => {
 
         const skillUp = []
+        let skill = {}
 
         skills.forEach(s => {
-            const skill = {
+            s.classSkill && s.skillRank > 0?
+            skill = { 
                 idSkill : s.idSkill,
                 skillRank : s.skillRank
+            } : skill = {
+                idSkill : s.idSkill,
+                skillRank : s.skillRank*2
             }
             skillUp.push(skill)
         })
+
+        console.log('skillUp:', skillUp)
 
         try{
             axios.post((URLskillSet, skillUp))
         } catch (error){
             console.log(error)
         }
-        console.log(skillUp)
+
+        
+
         // window.location.reload(false)
 
     }
     
+    console.log('skills:', skills)
 
     const realodPage = () => window.location.reload(false)
 
