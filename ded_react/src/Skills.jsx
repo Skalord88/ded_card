@@ -102,14 +102,16 @@ export function Skills() {
         console.log('skillUp:', skillUp)
 
         try{
-            axios.post((URLskillSet, skillUp))
+            axios.post(URLskillSet, skillUp)
         } catch (error){
             console.log(error)
         }
 
-        
+        window.location.reload(false)
 
-        // window.location.reload(false)
+        axios.get(URL)
+
+        setSkills(resURL.data.skillsList)
 
     }
     
