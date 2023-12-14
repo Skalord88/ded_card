@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+
 import axios from 'axios'
 
 export function Skills() {
@@ -106,9 +107,11 @@ export function Skills() {
             console.log(error)
         }
 
+        window.location.reload(false)
+
         axios.get(URL)
 
-        setSkills(URL.data.skillsList)
+        setSkills(resURL.data.skillsList)
 
     }
     

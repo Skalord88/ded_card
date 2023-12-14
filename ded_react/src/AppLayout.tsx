@@ -1,0 +1,21 @@
+import React, { FC } from "react";
+import { Outlet, Link } from "react-router-dom";
+
+export const AppLayout: FC = () => {
+  return (
+    <>
+      <nav>
+        <ul>
+          <li>
+            <Link to="create">Character creation</Link>
+          </li>
+          <li>
+            <Link to="list">List of characters</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Outlet />
+    </>
+  );
+};
