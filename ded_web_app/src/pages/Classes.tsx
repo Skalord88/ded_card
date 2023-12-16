@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 
 import { urlChar, urlClassList, urlClassAdd, urlClassSell } from '../components/url'
-import { characterPc, classPc } from '../components/interfaces';
+import { characterPc } from '../components/interfaces';
 import { characterEmpty } from '../components/variables';
 
 export function Classes() {
@@ -43,7 +43,7 @@ export function Classes() {
         id = e[1];
         setInputName(e[2])
 
-        console.log(e[0])
+        console.log(e[0], e[1], e[2], e[3])
     }
 
     const handleSign = (e: any) => {
@@ -71,14 +71,14 @@ export function Classes() {
             </div>
         <ul>
             {char.classPcList?
-            <>{char.classPcList.map((c: classPc, index) => {
+            <>{char.classPcList.map((c: any, index: number) => {
                 return(
                     c.level===0?
                     <></>
                     :<li key={index}>
                         <button
-                        onClick={handleData(['-'])}
-                        >-</button> {c.className} {c.level}</li>
+                        onClick={() => handleData(['+', c.id, c.className, c.level])}>
+                            -</button> {c.className} {c.level}</li>
                 )
             })}</>
             :<>no classes in character</>
@@ -89,8 +89,7 @@ export function Classes() {
                         return(
                         <div key={index}>
                             <button
-                            value={['+', cl.id, cl.className]}
-                            onClick={handleData}>
+                            onClick={() => handleData(['+', cl.id, cl.className, cl.level])}>
                                 +</button> {cl.classType}, {cl.className}</div>
                 )})}
             </div>

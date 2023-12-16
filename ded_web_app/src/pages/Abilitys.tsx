@@ -9,19 +9,21 @@ export function Abilitys() {
 
     const { charId } = useParams();
 
-    const [abilitys, setInputData] = useState<abilitys>( abilitysEmpty )
+    const [abilitys, setAbilitys] = useState<abilitys>( abilitysEmpty )
     let change: boolean = false
 
-    const handleData = (e:any) => {
-        setInputData({...abilitys, [e.target.name]:e.target.value})
+    const handleData = (e: any) => {
+        setAbilitys({...abilitys, [e.target.name]: e.target.value})
     }
-    
-    const handleSubmit = (e:any) => {
+
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         axios.post(urlAb + charId, abilitys)
         .then((response) => {console.log(response)})
         change = true
     }
+
+    console.log(charId)
 
     return (
         <>
@@ -31,7 +33,14 @@ export function Abilitys() {
                     <th align='left'>ability</th>
                 </tr>
                 <tr>
-                    <td><input type='number' onChange={handleData} name="streght" value={abilitys.streght}></input></td>
+                    <td>
+                    <input
+                    type='number'
+                    onChange={handleData}
+                    name="streght"
+                    value={abilitys.streght}
+                    />
+                    </td>
                     <td align='left'>streght</td>
                 </tr>
                 <tr>
