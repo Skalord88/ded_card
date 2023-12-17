@@ -93,6 +93,11 @@ export interface skill {
     skillBonus: number
 }
 
+export interface skillToServer {
+    idSkill: number,
+    skillRank: number
+}
+
 export interface feat {
     characterFeatName: string,
     characterFeatSpecial: string,

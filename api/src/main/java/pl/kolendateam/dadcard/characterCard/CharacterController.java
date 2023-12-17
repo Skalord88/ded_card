@@ -98,7 +98,9 @@ public class CharacterController {
     }
 
     @PostMapping(value = "class/{id}", consumes = { "application/json" })
-    public CharacterDTO setCharacterClass(@PathVariable short id, @RequestBody ClassPcDTO classPcDTO) {
+    public CharacterDTO setCharacterClass(
+        @PathVariable short id, @RequestBody ClassPcDTO classPcDTO
+        ) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

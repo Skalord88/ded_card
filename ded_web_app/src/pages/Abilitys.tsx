@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useSearchParams } from 'react-router-dom'
 import { abilitys } from '../components/interfaces'
 import { urlAb } from '../components/url'
 import { abilitysEmpty } from '../components/variables'
@@ -10,7 +10,7 @@ export function Abilitys() {
     const { charId } = useParams();
 
     const [abilitys, setAbilitys] = useState<abilitys>( abilitysEmpty )
-    let change: boolean = false
+    const [change, setChange] = useState<boolean>( false )
 
     const handleData = (e: any) => {
         setAbilitys({...abilitys, [e.target.name]: e.target.value})
@@ -20,10 +20,10 @@ export function Abilitys() {
         e.preventDefault();
         axios.post(urlAb + charId, abilitys)
         .then((response) => {console.log(response)})
-        change = true
+        setChange(true)
     }
 
-    console.log(charId)
+    console.log(charId, change)
 
     return (
         <>

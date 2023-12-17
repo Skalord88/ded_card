@@ -64,7 +64,9 @@ public class RaceController {
     }
 
     @PostMapping(value = "{id}/race", consumes = { "application/json" })
-    public CharacterDTO setSubRaceToCharacter(@PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO){
+    public CharacterDTO setSubRaceToCharacter(
+        @PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO
+        ){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

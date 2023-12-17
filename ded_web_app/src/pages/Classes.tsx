@@ -12,8 +12,8 @@ export function Classes() {
 
     const [char, setChar] = useState< characterPc >( characterEmpty );
     const [classesList, setClassesList] = useState([]);
-    let sign: string = '';
-    let id: number = -1;
+    const [sign, setSign] = useState('')
+    const [id, setId] = useState(-1)
 
     const [classPcName, setInputName] = useState('');
 
@@ -39,11 +39,10 @@ export function Classes() {
 
     const handleData = (e: any) => {
 
-        sign = e[0];
-        id = e[1];
+        setSign(e[0])
+        setId(e[1])
         setInputName(e[2])
 
-        console.log(e[0], e[1], e[2], e[3])
     }
 
     const handleSign = (e: any) => {
@@ -77,7 +76,7 @@ export function Classes() {
                     <></>
                     :<li key={index}>
                         <button
-                        onClick={() => handleData(['+', c.id, c.className, c.level])}>
+                        onClick={() => handleData(['-', c.id, c.className, c.level])}>
                             -</button> {c.className} {c.level}</li>
                 )
             })}</>

@@ -39,6 +39,7 @@ export function Races() {
     const handleData = (e:any) => {
         setInputData({...inputData, [e.target.name] : e.target.value})
         setChange(true)
+        console.log(e.target)
     }
     const handleSubmit = (e:any) => {
         e.preventDefault();
