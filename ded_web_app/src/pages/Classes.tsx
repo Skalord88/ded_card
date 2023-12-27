@@ -50,13 +50,14 @@ export function Classes() {
         try{
         if(sign==='+'){
             axios.post(urlClassAdd + charId, {id : id})
+            window.location.reload()
         } else if(sign==='-'){
             axios.post(urlClassSell + charId, {id : id})
+            window.location.reload()
         }
     } catch (error){
         console.log(error)
-    }
-        window.location.reload()        
+        }       
     }
 
     return (
@@ -76,8 +77,12 @@ export function Classes() {
                     <></>
                     :<li key={index}>
                         <button
-                        onClick={() => handleData(['-', c.id, c.className, c.level])}>
-                            -</button> {c.className} {c.level}</li>
+                        onClick={() => handleData(['+', c.id, c.className, c.level])}
+                        >+</button>
+                        <button
+                        onClick={() => handleData(['-', c.id, c.className, c.level])}
+                        >-</button> {c.className} {c.level}
+                    </li>
                 )
             })}</>
             :<>no classes in character</>

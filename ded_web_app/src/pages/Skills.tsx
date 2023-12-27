@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import axios from 'axios'
-import { characterPc, skill, skillToServer } from '../components/interfaces';
-import { characterEmpty } from '../components/variables';
+import { characterPc, serverSkill, skill, skillToServer } from '../components/interfaces';
+import { characterEmpty, skillEmpty } from '../components/variables';
 
 export function Skills() {
 
@@ -38,7 +38,7 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleAddRank = (e) => {
+    const handleAddRank = (e: any) => {
 
         setSkills((prevSkills) =>
             prevSkills.map((skill) =>
@@ -87,7 +87,7 @@ export function Skills() {
     const handleChange = () => {
 
         const skillUp: skillToServer[] = []
-        let skill: skillToServer = {}
+        let skill: serverSkill = skillEmpty
 
         skills.forEach(s => {
             s.classSkill && s.skillRank > 0?
@@ -104,7 +104,7 @@ export function Skills() {
         console.log('skillUp:', skillUp)
 
         try{
-            axios.post((URLskillSet, skillUp))
+            axios.post(URLskillSet, skillUp)
         } catch (error){
             console.log(error)
         }
@@ -114,10 +114,8 @@ export function Skills() {
         // window.location.reload(false)
 
     }
-    
-    console.log('skills:', skills)
 
-    const realodPage = () => window.location.reload(false)
+    const realodPage = () => window.location.reload()
 
     return (
         <>
@@ -143,7 +141,7 @@ export function Skills() {
                     <td>
                         {skills.map((s,index) => {
                             return(
-                                <div key={index} align='center'>
+                                <div key={index} style={{ textAlign: 'center' }}>
                                     {s.classSkill?<>x</>:<>o</>}
                                 </div>
                             )})}
@@ -151,7 +149,7 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='left'>
+                            <div key={index} style={{ textAlign: 'left' }}>
                                 {s.nameSkill}
                                 <button
                                 value={s.idSkill}
@@ -167,7 +165,7 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>
+                            <div key={index} style={{ textAlign: 'center' }}>
                                 {s.skillRank+s.skillAbility+s.skillBonus}
                             </div>
                         )})}
@@ -176,7 +174,7 @@ export function Skills() {
                         <>
                         {skills.map((s, index) => {
                             return(
-                                <div key={index} align='center'>
+                                <div key={index} style={{ textAlign: 'center' }}>
                                     {s.skillRank}
                                 </div>
                             )
@@ -186,7 +184,7 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>
+                            <div key={index} style={{ textAlign: 'center' }}>
                                 {s.skillAbility}
                             </div>
                         )})}
@@ -194,7 +192,7 @@ export function Skills() {
                     <td>
                     {skills.map((s,index) => {
                         return(
-                            <div key={index} align='center'>
+                            <div key={index} style={{ textAlign: 'center' }}>
                                 {s.skillBonus}
                             </div>
                         )})}

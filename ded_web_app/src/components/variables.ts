@@ -1,4 +1,4 @@
-import { characterPc, abilitys } from '../components/interfaces'
+import { characterPc, abilitys, subRaces, armorClass, serverSkill } from '../components/interfaces'
 
 export const characterEmpty: characterPc = {
     
@@ -73,12 +73,28 @@ export const abilitysEmpty: abilitys = {
 
 }
 
-export interface subRaces {
+export const armorClassEmpty: armorClass = {
+    dextrityBonus: 0,
+    sizeBonus: 0,
+    armorBonus: 0,
+    shildBonus: 0,
+    enhancementBonuses: 0,
+    deflectionBonuses: 0,
+    naturalArmor: 0,
+    dodgeBonus: 0
+}
+
+export const emptySubRaces: subRaces = {
     id: 0,
     subRacesName: '',
     avatarUrl: '',
-    raceAbilitys: {},
+    raceAbilitys: abilitysEmpty,
     raceSkills: [],
-    armorClass: {},
+    armorClass: armorClassEmpty,
     levelAdjustment: 0
+}
+
+export const skillEmpty: serverSkill = {
+    idSkill : 0,
+    skillRank : -1
 }

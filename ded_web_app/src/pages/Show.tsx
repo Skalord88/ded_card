@@ -15,7 +15,7 @@ export function Show() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const resURL = await axios.get(urlChar + charId);
+                const resURL = await axios.get(urlChar + '/' + charId);
                 setChar(resURL.data);
 
             } catch(error) {
@@ -57,27 +57,24 @@ export function Show() {
             <p>hit dice: {char.vitality?.hitDices?
             <>{Object.entries(char.vitality.hitDices).map(([k,v]) => {
                 return(
-                    <>{v}d{k}{char.abilitys.constitution>=0? '+' : '-'}{Math.floor(v*((char.abilitys.constitution-10)/2))} ({char.vitality.hitPoints} hp), life: {char.vitality.life}</>
+                    <>{v}d{k}{char.abilitys.constitution>=0? '+' : '-'}{Math.floor(v*((char.abilitys.constitution-10)/2))}, </>
                 )
-            })}</>
+            })}
+            life: {char.vitality.life},
+             hp: {char.vitality.hitPoints}
+            </>
             :<p>...loading vitality...</p>
             }</p>
-            <p>AC: {char.armorClass?.dextrityBonus?
-                <>{10 + 
-                char.armorClass.dextrityBonus + char.armorClass.sizeBonus +
-                char.armorClass.armorBonus + char.armorClass.shildBonus +
-                char.armorClass.enhancementBonuses + char.armorClass.deflectionBonuses +
-                char.armorClass.deflectionBonuses + char.armorClass.dodgeBonus
-                }, touch: {
-                10 +
-                char.armorClass.dextrityBonus + char.armorClass.sizeBonus +
-                char.armorClass.deflectionBonuses + char.armorClass.dodgeBonus
-                }, flat-footed: {
-                10 +
-                char.armorClass.sizeBonus + char.armorClass.armorBonus +
-                char.armorClass.shildBonus + char.armorClass.enhancementBonuses
-                }</>
-                :<>...loading armor class...</>}    
+            <p>
+            AC: 10
+             {char.armorClass.dextrityBonus > 0? '+ dextrity ' + char.armorClass.dextrityBonus : ''}
+             {char.armorClass.sizeBonus > 0? '+ size ' + char.armorClass.sizeBonus : ''}
+             {char.armorClass.armorBonus > 0? '+ armor ' + char.armorClass.armorBonus : ''}
+             {char.armorClass.shildBonus > 0? '+ shild ' + char.armorClass.shildBonus : ''}
+             {char.armorClass.enhancementBonuses > 0? '+ enhancement ' + char.armorClass.enhancementBonuses : ''}
+             {char.armorClass.deflectionBonuses > 0? '+ deflection ' + char.armorClass.deflectionBonuses : ''}
+             {char.armorClass.naturalArmor > 0? '+ natural ' + char.armorClass.naturalArmor : ''}
+             {char.armorClass.dodgeBonus > 0? '+ dodge ' + char.armorClass.dodgeBonus : ''}
             </p>
             <p>saving throw: {char.savingThrows?
                 <>fort: {char.savingThrows.fortitude}, ref: {char.savingThrows.reflex}, will: {char.savingThrows.will}</>

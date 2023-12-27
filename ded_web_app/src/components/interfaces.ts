@@ -110,7 +110,7 @@ export interface races {
     subRaces: subRaces[]
 }
 
-export interface subRaces {
+export type subRaces = {
     id: number,
     subRacesName: string,
     avatarUrl: string,
@@ -118,4 +118,9 @@ export interface subRaces {
     raceSkills: skill[],
     armorClass: armorClass,
     levelAdjustment: number
+}
+
+export type serverSkill = {
+    idSkill : number,
+    skillRank : number
 }
