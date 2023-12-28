@@ -36,12 +36,12 @@ export function Show() {
             <p>base attack bonus: +{char.bab}, grapple: {grapple >0 ? '+' : ''}{grapple}</p>
             <p>abilitys: {char.abilitys?
                 <>
-                <li>STR: {char.abilitys.streght}</li>
-                <li>DEX: {char.abilitys.dextrity}</li>
-                <li>CON: {char.abilitys.constitution}</li>
-                <li>INT: {char.abilitys.intelligence}</li>
-                <li>WIS: {char.abilitys.wisdom}</li>
-                <li>CHA: {char.abilitys.charisma}</li>
+                <li>STR: {char.abilitys.streght} {Math.floor((char.abilitys.streght-10)/2)>=0? '+' + Math.floor((char.abilitys.streght-10)/2) : Math.floor((char.abilitys.streght-10)/2)}</li>
+                <li>DEX: {char.abilitys.dextrity} {Math.floor((char.abilitys.dextrity-10)/2)>=0? '+' + Math.floor((char.abilitys.dextrity-10)/2) : Math.floor((char.abilitys.dextrity-10)/2)}</li>
+                <li>CON: {char.abilitys.constitution} {Math.floor((char.abilitys.constitution-10)/2)>=0? '+' + Math.floor((char.abilitys.constitution-10)/2) : Math.floor((char.abilitys.constitution-10)/2)}</li>
+                <li>INT: {char.abilitys.intelligence} {Math.floor((char.abilitys.intelligence-10)/2)>=0? '+' + Math.floor((char.abilitys.intelligence-10)/2) : Math.floor((char.abilitys.intelligence-10)/2)}</li>
+                <li>WIS: {char.abilitys.wisdom} {Math.floor((char.abilitys.wisdom-10)/2)>=0? '+' + Math.floor((char.abilitys.wisdom-10)/2) : Math.floor((char.abilitys.wisdom-10)/2)}</li>
+                <li>CHA: {char.abilitys.charisma} {Math.floor((char.abilitys.charisma-10)/2)>=0? '+' + Math.floor((char.abilitys.charisma-10)/2) : Math.floor((char.abilitys.charisma-10)/2)}</li>
                 </>
             :<>...loading abilitys...</>}
             </p>
@@ -67,14 +67,14 @@ export function Show() {
             }</p>
             <p>
             AC: 10
-             {char.armorClass.dextrityBonus > 0? '+ dextrity ' + char.armorClass.dextrityBonus : ''}
-             {char.armorClass.sizeBonus > 0? '+ size ' + char.armorClass.sizeBonus : ''}
-             {char.armorClass.armorBonus > 0? '+ armor ' + char.armorClass.armorBonus : ''}
-             {char.armorClass.shildBonus > 0? '+ shild ' + char.armorClass.shildBonus : ''}
-             {char.armorClass.enhancementBonuses > 0? '+ enhancement ' + char.armorClass.enhancementBonuses : ''}
-             {char.armorClass.deflectionBonuses > 0? '+ deflection ' + char.armorClass.deflectionBonuses : ''}
-             {char.armorClass.naturalArmor > 0? '+ natural ' + char.armorClass.naturalArmor : ''}
-             {char.armorClass.dodgeBonus > 0? '+ dodge ' + char.armorClass.dodgeBonus : ''}
+             {char.armorClass.dextrityBonus > 0? ' + dextrity ' + char.armorClass.dextrityBonus : ''}
+             {char.armorClass.sizeBonus > 0? ' + size ' + char.armorClass.sizeBonus : ''}
+             {char.armorClass.armorBonus > 0? ' + armor ' + char.armorClass.armorBonus : ''}
+             {char.armorClass.shildBonus > 0? ' + shild ' + char.armorClass.shildBonus : ''}
+             {char.armorClass.enhancementBonuses > 0? ' + enhancement ' + char.armorClass.enhancementBonuses : ''}
+             {char.armorClass.deflectionBonuses > 0? ' + deflection ' + char.armorClass.deflectionBonuses : ''}
+             {char.armorClass.naturalArmor > 0? ' + natural ' + char.armorClass.naturalArmor : ''}
+             {char.armorClass.dodgeBonus > 0? ' + dodge ' + char.armorClass.dodgeBonus : ''}
             </p>
             <p>saving throw: {char.savingThrows?
                 <>fort: {char.savingThrows.fortitude}, ref: {char.savingThrows.reflex}, will: {char.savingThrows.will}</>
