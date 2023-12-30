@@ -123,7 +123,7 @@ public class Character {
         this.vitality = new Vitality(0, new HashMap<>(), 0);
         this.armorClass = new ArmorClass();
         this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-        this.savingThrow = new SavingThrow(0,0,0);
+        this.savingThrow = new SavingThrow(0, 0, 0);
         this.abilitys = new Abilitys();
         this.classSkills = new ArrayList<>();
         this.featsList = new ArrayList<>();
@@ -587,11 +587,12 @@ public class Character {
     }
 
     public boolean getClassSpellsKnown(EnumClass className) {
-        for (SpellsInCharLevel sICLinDB : this.spellsKnown){
-            if(sICLinDB.getCaster() == className){
+        for (SpellsInCharLevel sICLinDB : this.spellsKnown) {
+            if (sICLinDB.getCaster() == className) {
                 return sICLinDB.getCaster() == className;
             }
-        } return false;
+        }
+        return false;
     }
 
     public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
@@ -605,10 +606,10 @@ public class Character {
 
     }
 
-    public void addSpellKnown(int sizeMagic, EnumClass name){
+    public void addSpellKnown(int sizeMagic, EnumClass name) {
 
-        for(SpellsInCharLevel sICKinDB : this.spellsKnown){
-            if(sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic){
+        for (SpellsInCharLevel sICKinDB : this.spellsKnown) {
+            if (sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic) {
                 sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
             }
         }
@@ -616,10 +617,10 @@ public class Character {
 
     public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
 
-        for(SpellsInCharLevel sICK : this.spellsKnown){
-            if(sICK.getCaster() == classNameE){
-                sICK.getSpells().forEach((i, a)->{
-                    if(i == lv){
+        for (SpellsInCharLevel sICK : this.spellsKnown) {
+            if (sICK.getCaster() == classNameE) {
+                sICK.getSpells().forEach((i, a) -> {
+                    if (i == lv) {
                         a.add(spellToAdd);
                     }
                 });
@@ -629,51 +630,52 @@ public class Character {
 
     public void removeSpell(EnumClass classNameE, int[] spells) {
 
-        for(int spell : spells){
-            for(SpellsInCharLevel sICL : this.spellsKnown){
-                if(sICL.getCaster()==classNameE){
-                    sICL.getSpells().forEach((i, sp) -> 
-                        sp.removeIf(s -> s == spell));
+        for (int spell : spells) {
+            for (SpellsInCharLevel sICL : this.spellsKnown) {
+                if (sICL.getCaster() == classNameE) {
+                    sICL.getSpells().forEach((i, sp) -> sp.removeIf(s -> s == spell));
                 }
             }
         }
     }
 
     public boolean magicClass(SpellsEnum spellsPerDay) {
-        if(spellsPerDay==null){
+        if (spellsPerDay == null) {
             return false;
         }
         return true;
     }
 
     public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
-        for(SkillToAddDTO skillToAddDTO : skillsToAddDTO){
+        double actualSkillPoints = this.skillPoints;
+        for (SkillToAddDTO skill : skillsToAddDTO) {
+            actualSkillPoints -= skill.skillRank;
+        }
+        for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
             for (ClassSkills skill : classSkills) {
                 if (skill.getIdSkill() == skillToAddDTO.idSkill) {
                     boolean check = true;
-                    if (this.skillPoints < 1) {
+                    if (actualSkillPoints < 0) {
                         check = false;
                     }
                     if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
-                        check = false;
+                    check = false;
                     }
-                    if (skill.isClassSkill() == true
-                            && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
-                        check = false;
-                    }
-                    double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
-                    if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
-                        check = false;
-                    }
+                    // if (skill.isClassSkill() == true
+                    // && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
+                    // check = false;
+                    // }
+                    // double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
+                    // if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
+                    //     check = false;
+                    // }
                     if (check == true) {
                         if (skill.isClassSkill() == true) {
-                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank);
-                            
+                            skill.setSkillRank(skillToAddDTO.skillRank);
                         }
                         if (skill.isClassSkill() == false) {
-                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank / 2);
+                            skill.setSkillRank(skillToAddDTO.skillRank / 2);
                         }
-                        this.skillPoints -= skillToAddDTO.skillRank;
                     }
                 }
             }
@@ -681,24 +683,24 @@ public class Character {
     }
 
     public void sellSkills(ArrayList<SkillToAddDTO> skillsToAddDTO) {
-        for(SkillToAddDTO skillToAddDTO : skillsToAddDTO){
+        for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
             for (ClassSkills skill : this.classSkills) {
 
-            if (skill.getIdSkill() == skillToAddDTO.idSkill &&
-                skill.getSkillRank() < skillToAddDTO.skillRank) {
+                if (skill.getIdSkill() == skillToAddDTO.idSkill &&
+                        skill.getSkillRank() < skillToAddDTO.skillRank) {
 
-                if(skillToAddDTO.skillRank > 1){
+                    if (skillToAddDTO.skillRank > 1) {
 
-                    if(skill.isClassSkill()){
-                        skill.setSkillRank(-skillToAddDTO.skillRank);
-                    } else {
-                        skill.setSkillRank(-(skillToAddDTO.skillRank/2));
+                        if (skill.isClassSkill()) {
+                            skill.setSkillRank(-skillToAddDTO.skillRank);
+                        } else {
+                            skill.setSkillRank(-(skillToAddDTO.skillRank / 2));
+                        }
+
                     }
 
-                }
-                
-                this.skillPoints += skillToAddDTO.skillRank;
-                
+                    this.skillPoints += skillToAddDTO.skillRank;
+
                 }
             }
         }

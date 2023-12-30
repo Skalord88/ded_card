@@ -18,9 +18,10 @@ export function Skills() {
 
   const [char, setChar] = useState<characterPc>(characterEmpty);
   const [skills, setSkills] = useState<skill[]>([]);
-  const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
-  const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
-  const [maxSkillLv, setMaxSkillLv] = useState(0);
+  const [actualSkillsPoints, setActualSkillsPoints] = useState<number>(0);
+  const [maxSkillsPoints, setMaxSkillsPoints] = useState<number>(0);
+  const [maxSkillLv, setMaxSkillLv] = useState<number>(0);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,16 +30,18 @@ export function Skills() {
 
         setChar(resURL.data);
         setSkills(resURL.data.skillsList);
-        setMaxSkillLv(resURL.data.effectiveCharacterLv + 3);
-        setActualSkillsPoints(resURL.data.skillPoints);
+        setMaxSkillLv(resURL.data.effectiveCharacterLv + 3)
         setMaxSkillsPoints(resURL.data.skillPoints);
+        setActualSkillsPoints(resURL.data.skillPoints)
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData();
+    fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [maxSkillsPoints]);
+
+  // skills.forEach((s) => {setActualSkillsPoints(maxSkillsPoints - s.skillRank)})
 
   const handleAddRank = (e: any) => {
     setSkills((prevSkills) =>
@@ -103,7 +106,7 @@ export function Skills() {
       skillUp.push(skill);
     });
 
-    console.log("skillUp:", skillUp);
+    // console.log("skillUp:", skillUp);
 
     try {
       axios.post(URLskillSet, skillUp);
@@ -112,14 +115,13 @@ export function Skills() {
     }
   };
 
-  const realodPage = () => window.location.reload();
+  // const realodPage = () => window.location.reload();
 
   return (
     <>
       <p>
         {char.characterName}, skills points: {actualSkillsPoints}{" "}
-        <button onClick={handleChange}>set Skills</button>{" "}
-        <button onClick={realodPage}>reload</button>
+        <button onClick={handleChange}>set Skills</button>
       </p>
       <>
         {skills ? (
@@ -129,9 +131,9 @@ export function Skills() {
                   <th>CS</th>
                   <th>skill</th>
                   <th>tot</th>
-                  <th>add/rmv</th>
                   <th>rnk</th>
                   <th>abi</th>
+                  <th>bns</th>
                 </thead>
                 <tbody>
                   <td>

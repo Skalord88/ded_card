@@ -1,9 +1,9 @@
 table {
-  border: 1px solid #666;
+  border: 1px solid #000000;
   height: 100%;
   width: auto;
 }
-th, td {
+td {
   border: 1px solid #666;
   text-align: center;
 }

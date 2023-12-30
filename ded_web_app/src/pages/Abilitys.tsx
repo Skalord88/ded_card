@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { useParams, Link, useSearchParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { abilitys } from '../components/interfaces'
 import { urlAb } from '../components/url'
 import { abilitysEmpty } from '../components/variables'
