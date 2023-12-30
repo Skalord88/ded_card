@@ -647,6 +647,8 @@ public class Character {
     }
 
     public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
+        // gli skill points massimi devono rimanere invariati e separatamente va ricalcolato il pool degli attuali
+        int count = 0;
         for(SkillToAddDTO skillToAddDTO : skillsToAddDTO){
             for (ClassSkills skill : classSkills) {
                 if (skill.getIdSkill() == skillToAddDTO.idSkill) {
@@ -657,27 +659,29 @@ public class Character {
                     if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
                         check = false;
                     }
-                    if (skill.isClassSkill() == true
-                            && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
-                        check = false;
-                    }
-                    double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
-                    if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
-                        check = false;
-                    }
+                    // if (skill.isClassSkill() == true
+                    //         && skill.getSkillRank() >= this.effectiveCharacterLv + 3) {
+                    //     check = false;
+                    // }
+                    // double doubleLEP = (this.effectiveCharacterLv + 3) / 2;
+                    // if (skill.isClassSkill() == false && skill.getSkillRank() >= (int) doubleLEP) {
+                    //     check = false;
+                    // }
                     if (check == true) {
                         if (skill.isClassSkill() == true) {
-                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank);
+                            skill.setSkillRank(skillToAddDTO.skillRank);
                             
                         }
                         if (skill.isClassSkill() == false) {
-                            skill.setSkillRank(skill.getSkillRank() + skillToAddDTO.skillRank / 2);
+                            skill.setSkillRank(skillToAddDTO.skillRank / 2);
+                        
                         }
-                        this.skillPoints -= skillToAddDTO.skillRank;
                     }
+                    count += skillToAddDTO.skillRank;
                 }
             }
         }
+        this.skillPoints -= count;
     }
 
     public void sellSkills(ArrayList<SkillToAddDTO> skillsToAddDTO) {
@@ -700,6 +704,15 @@ public class Character {
                 this.skillPoints += skillToAddDTO.skillRank;
                 
                 }
+            }
+        }
+    }
+
+    public void zeroSkillsRank() {
+        for(ClassSkills classSkill : this.classSkills) {
+            classSkill.setSkillRank(0);
+            if(!classSkill.getFieldOfStudy().isEmpty()){
+                classSkill.zeroStudyRank();
             }
         }
     }

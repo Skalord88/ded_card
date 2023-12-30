@@ -9,7 +9,7 @@ import {
   skillToServer,
 } from "../components/interfaces";
 import { characterEmpty, skillEmpty } from "../components/variables";
-import '../css/style.css';
+import "../css/style.css";
 
 export function Skills() {
   const { charId } = useParams();
@@ -21,6 +21,7 @@ export function Skills() {
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
+  const [change, setChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,40 +33,49 @@ export function Skills() {
         setMaxSkillLv(resURL.data.effectiveCharacterLv + 3);
         setActualSkillsPoints(resURL.data.skillPoints);
         setMaxSkillsPoints(resURL.data.skillPoints);
+
       } catch (error) {
         console.log(error);
       }
+
     };
     fetchData();
+    if(maxSkillsPoints <= 0){
+        setChange(true)
+    }
+    console.log(change)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAddRank = (e: any) => {
-    setSkills((prevSkills) =>
-      prevSkills.map((skill) =>
-        skill.idSkill === JSON.parse(e.target.value)
-          ? skill.classSkill && skill.skillRank < maxSkillLv
-            ? { ...skill, skillRank: skill.skillRank + 1 }
-            : skill.skillRank < maxSkillLv / 2
-            ? { ...skill, skillRank: skill.skillRank + 0.5 }
+    if (actualSkillsPoints > 0) {
+      setSkills((prevSkills) =>
+        prevSkills.map((skill) =>
+          skill.idSkill === JSON.parse(e.target.value)
+            ? skill.classSkill && skill.skillRank < maxSkillLv
+              ? { ...skill, skillRank: skill.skillRank + 1 }
+              : skill.skillRank < maxSkillLv / 2
+              ? { ...skill, skillRank: skill.skillRank + 0.5 }
+              : skill
             : skill
-          : skill
-      )
-    );
-    skills.map((skill) =>
-      // se id = id
-      skill.idSkill === JSON.parse(e.target.value)
-        ? // se class skill = true e rank < max
-          skill.classSkill && skill.skillRank < maxSkillLv
-          ? setActualSkillsPoints((points) => points - 1)
-          : skill.skillRank < maxSkillLv / 2
-          ? setActualSkillsPoints((points) => points - 1)
+        )
+      );
+      skills.map((skill) =>
+        // se id = id
+        skill.idSkill === JSON.parse(e.target.value)
+          ? // se class skill = true e rank < max
+            skill.classSkill && skill.skillRank < maxSkillLv
+            ? setActualSkillsPoints((points) => points - 1)
+            : skill.skillRank < maxSkillLv / 2
+            ? setActualSkillsPoints((points) => points - 1)
+            : setActualSkillsPoints((points) => points)
           : setActualSkillsPoints((points) => points)
-        : setActualSkillsPoints((points) => points)
-    );
+      );
+    }
   };
 
   const handleDelRank = (e: any) => {
+    if(change){
     setSkills((prevSkills) =>
       prevSkills.map((skill) =>
         skill.idSkill === JSON.parse(e.target.value)
@@ -83,7 +93,7 @@ export function Skills() {
       skill.skillRank > 0
         ? setActualSkillsPoints((points) => points + 1)
         : setActualSkillsPoints((points) => points)
-    );
+    )}
   };
 
   const handleChange = () => {
@@ -103,100 +113,84 @@ export function Skills() {
       skillUp.push(skill);
     });
 
-    console.log("skillUp:", skillUp);
-
     try {
       axios.post(URLskillSet, skillUp);
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   };
-
-  const realodPage = () => window.location.reload();
 
   return (
     <>
       <p>
-        {char.characterName}, skills points: {actualSkillsPoints}{" "}
-        <button onClick={handleChange}>set Skills</button>{" "}
-        <button onClick={realodPage}>reload</button>
+        {char.characterName}, skills points: {actualSkillsPoints + " "}
+        <button onClick={handleChange}>set Skills </button>
       </p>
       <>
         {skills ? (
-            <p>
-              <table>
-                <thead>
-                  <th>CS</th>
-                  <th>skill</th>
-                  <th>tot</th>
-                  <th>add/rmv</th>
-                  <th>rnk</th>
-                  <th>abi</th>
-                </thead>
-                <tbody>
-                  <td>
+          <p>
+            <table>
+              <thead>
+                <th>CS</th>
+                <th>skill</th>
+                <th>tot</th>
+                <th>add/rmv</th>
+                <th>rnk</th>
+                <th>abi</th>
+              </thead>
+              <tbody>
+                <td>
+                  {skills.map((s, index) => {
+                    return (
+                      <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
+                    );
+                  })}
+                </td>
+                <td>
+                  {skills.map((s, index) => {
+                    return (
+                      <div key={index}>
+                        {s.nameSkill}
+                        <button value={s.idSkill} onClick={handleAddRank}>
+                          +
+                        </button>
+                        <button value={s.idSkill} onClick={handleDelRank}>
+                          -
+                        </button>
+                      </div>
+                    );
+                  })}
+                </td>
+                <td>
+                  {skills.map((s, index) => {
+                    return (
+                      <div key={index}>
+                        {s.skillRank + s.skillAbility + s.skillBonus}
+                      </div>
+                    );
+                  })}
+                </td>
+                <td>
+                  <>
                     {skills.map((s, index) => {
-                      return (
-                        <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
-                      );
+                      return <div key={index}>{s.skillRank}</div>;
                     })}
-                  </td>
-                  <td>
-                    {skills.map((s, index) => {
-                      return (
-                        <div key={index}>
-                          {s.nameSkill}
-                          <button value={s.idSkill} onClick={handleAddRank}>
-                            +
-                          </button>
-                          <button value={s.idSkill} onClick={handleDelRank}>
-                            -
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    {skills.map((s, index) => {
-                      return (
-                        <div key={index}>
-                          {s.skillRank + s.skillAbility + s.skillBonus}
-                        </div>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    <>
-                      {skills.map((s, index) => {
-                        return (
-                          <div key={index}>
-                            {s.skillRank}
-                          </div>
-                        );
-                      })}
-                    </>
-                  </td>
-                  <td>
-                    {skills.map((s, index) => {
-                      return (
-                        <div key={index}>
-                          {s.skillAbility}
-                        </div>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    {skills.map((s, index) => {
-                      return (
-                        <div key={index}>
-                          {s.skillBonus}
-                        </div>
-                      );
-                    })}
-                  </td>
-                </tbody>
-              </table>
-            </p>
+                  </>
+                </td>
+                <td>
+                  {skills.map((s, index) => {
+                    return <div key={index}>{s.skillAbility}</div>;
+                  })}
+                </td>
+                <td>
+                  {skills.map((s, index) => {
+                    return <div key={index}>{s.skillBonus}</div>;
+                  })}
+                </td>
+              </tbody>
+            </table>
+          </p>
         ) : (
           <div>...</div>
         )}

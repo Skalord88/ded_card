@@ -55,11 +55,11 @@ export function Races() {
                 <Link to={'/class/'+charId}>to classes</Link></button>
                 :<>...choose race</>}</>
         </p>
-            <div>
+            <p>
                 {races? 
                 <>{races.map((r: races, index: number) => {
                     return(
-                    <div key={index}><b>{r.raceName}</b> {r.subRaces?
+                    <p key={index}><b>{r.raceName}</b> {r.subRaces?
                     <ul>{r.subRaces.map((sr: subRaces, indexSR: number) => {
                         return(
                             <li key={indexSR}>
@@ -79,11 +79,11 @@ export function Races() {
                                 </li>
                     )})}</ul>
                     :<p>...loading sub races...</p>
-                    }</div>
+                    }</p>
                 )})}</>
                 :<p>...loading races...</p>
             }
-            </div>
+            </p>
         </>
     );
 }
