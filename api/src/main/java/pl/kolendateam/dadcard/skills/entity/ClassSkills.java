@@ -6,6 +6,7 @@ import java.util.HashMap;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.val;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
 @Getter
@@ -27,6 +28,12 @@ public class ClassSkills implements Serializable {
 
     public void removeStudyFromKnowledge(HashMap<String, Integer> fieldOfStudy, String study) {
         fieldOfStudy.remove(study);
+    }
+
+    public void zeroStudyRank() {
+        for(String v : fieldOfStudy.keySet()){
+            fieldOfStudy.put(v,0);
+        }
     }
 
 }

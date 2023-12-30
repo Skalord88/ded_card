@@ -263,6 +263,7 @@ public class CharacterController {
         }
 
         // re-trueSkills
+        character.zeroSkillsRank();
         if (character.getClassPcArray().size() != 0) {
             for (ClassPc cP : character.getClassPcArray()) {
                 for (ClassCharacter cC : allClassesList) {
