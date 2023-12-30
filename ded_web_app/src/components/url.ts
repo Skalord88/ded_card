@@ -18,3 +18,6 @@ export const urlClassAdd: string =
 
 export const urlClassSell: string = 
 'http://localhost:8080/character-card/minus_class/';
+
+export const urlSkillSet: string = 
+'http://localhost:8080/skills/';

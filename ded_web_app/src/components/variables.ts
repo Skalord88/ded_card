@@ -64,12 +64,12 @@ export const characterEmpty: characterPc = {
 
 export const abilitysEmpty: abilitys = {
 
-    streght: 0,
-    dextrity: 0,
-    constitution: 0,
-    intelligence: 0,
-    wisdom: 0,
-    charisma: 0
+    streght: 10,
+    dextrity: 10,
+    constitution: 10,
+    intelligence: 10,
+    wisdom: 10,
+    charisma: 10
 
 }
 

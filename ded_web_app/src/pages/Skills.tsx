@@ -10,11 +10,10 @@ import {
 } from "../components/interfaces";
 import { characterEmpty, skillEmpty } from "../components/variables";
 import "../css/style.css";
+import { urlChar, urlSkillSet } from "../components/url";
 
 export function Skills() {
   const { charId } = useParams();
-  const URL = "http://localhost:8080/character-card/" + charId;
-  const URLskillSet = "http://localhost:8080/skills/" + charId;
 
   const [char, setChar] = useState<characterPc>(characterEmpty);
   const [skills, setSkills] = useState<skill[]>([]);
@@ -25,52 +24,49 @@ export function Skills() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const resURL = await axios.get(URL);
+        const resURL = await axios.get(urlChar + "/" + charId);
 
         setChar(resURL.data);
         setSkills(resURL.data.skillsList);
         setMaxSkillLv(resURL.data.effectiveCharacterLv + 3);
         setMaxSkillsPoints(resURL.data.skillPoints);
-        
       } catch (error) {
         console.log(error);
       }
     };
-    fetchData()
+    fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    skills.forEach(s => setActualSkillsPoints(maxSkillsPoints - s.skillRank))
-    // // Calculate actualSkillsPoints whenever skills or maxSkillsPoints change
-    // const totalSkillPoints = skills.reduce((total, skill) => total + skill.skillRank, 0);
-    // setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
-  }, [skills]);
+    const totalSkillPoints = skills.reduce(
+      (total, skill) =>
+        !skill.classSkill
+          ? total + skill.skillRank * 2
+          : total + skill.skillRank,
+      0
+    );
+    if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
+      setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [maxSkillsPoints, skills]);
 
   const handleAddRank = (e: any) => {
-    setSkills((prevSkills) =>
-      prevSkills.map((skill) =>
-        skill.idSkill === JSON.parse(e.target.value)
-          ? skill.classSkill && skill.skillRank < maxSkillLv
-            ? { ...skill, skillRank: skill.skillRank + 1 }
-            : skill.skillRank < maxSkillLv / 2
-            ? { ...skill, skillRank: skill.skillRank + 0.5 }
+    if (actualSkillsPoints > 0) {
+      setSkills((prevSkills) =>
+        prevSkills.map((skill) =>
+          skill.idSkill === JSON.parse(e.target.value)
+            ? skill.classSkill && skill.skillRank < maxSkillLv
+              ? { ...skill, skillRank: skill.skillRank + 1 }
+              : skill.skillRank < maxSkillLv / 2
+              ? { ...skill, skillRank: skill.skillRank + 0.5 }
+              : skill
             : skill
-          : skill
+        )
       )
-    );
-    skills.map((skill) =>
-      // se id = id
-      skill.idSkill === JSON.parse(e.target.value)
-        ? // se class skill = true e rank < max
-          skill.classSkill && skill.skillRank < maxSkillLv
-          ? setActualSkillsPoints((points) => points - 1)
-          : skill.skillRank < maxSkillLv / 2
-          ? setActualSkillsPoints((points) => points - 1)
-          : setActualSkillsPoints((points) => points)
-        : setActualSkillsPoints((points) => points)
-    );
-  };
+    }
+  }
 
   const handleDelRank = (e: any) => {
     setSkills((prevSkills) =>
@@ -83,15 +79,8 @@ export function Skills() {
             : skill
           : skill
       )
-    );
-    skills.map((skill) =>
-      skill.idSkill === JSON.parse(e.target.value) &&
-      actualSkillsPoints < maxSkillsPoints &&
-      skill.skillRank > 0
-        ? setActualSkillsPoints((points) => points + 1)
-        : setActualSkillsPoints((points) => points)
-    );
-  };
+    )
+  }
 
   const handleChange = () => {
     const skillUp: skillToServer[] = [];
@@ -111,7 +100,7 @@ export function Skills() {
     });
 
     try {
-      axios.post(URLskillSet, skillUp);
+      axios.post(urlSkillSet + charId, skillUp);
     } catch (error) {
       console.log(error);
     }
