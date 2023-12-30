@@ -8,10 +8,11 @@ import { Abilitys } from './pages/Abilitys';
 import { Races } from './pages/Races';
 import { Classes } from './pages/Classes';
 import { Skills } from './pages/Skills';
+import { StrictMode } from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-
+<StrictMode>
   <BrowserRouter>
       <Routes>
         <Route path="/" element={<AppLayout />}>
@@ -25,4 +26,5 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
+  </StrictMode>
 );

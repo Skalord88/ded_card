@@ -21,7 +21,6 @@ export function Skills() {
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
-  const [change, setChange] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,51 +30,49 @@ export function Skills() {
         setChar(resURL.data);
         setSkills(resURL.data.skillsList);
         setMaxSkillLv(resURL.data.effectiveCharacterLv + 3);
-        setActualSkillsPoints(resURL.data.skillPoints);
         setMaxSkillsPoints(resURL.data.skillPoints);
-
+        
       } catch (error) {
         console.log(error);
       }
-
     };
-    fetchData();
-    if(maxSkillsPoints <= 0){
-        setChange(true)
-    }
-    console.log(change)
+    fetchData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    skills.forEach(s => setActualSkillsPoints(maxSkillsPoints - s.skillRank))
+    // // Calculate actualSkillsPoints whenever skills or maxSkillsPoints change
+    // const totalSkillPoints = skills.reduce((total, skill) => total + skill.skillRank, 0);
+    // setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
+  }, [skills]);
+
   const handleAddRank = (e: any) => {
-    if (actualSkillsPoints > 0) {
-      setSkills((prevSkills) =>
-        prevSkills.map((skill) =>
-          skill.idSkill === JSON.parse(e.target.value)
-            ? skill.classSkill && skill.skillRank < maxSkillLv
-              ? { ...skill, skillRank: skill.skillRank + 1 }
-              : skill.skillRank < maxSkillLv / 2
-              ? { ...skill, skillRank: skill.skillRank + 0.5 }
-              : skill
-            : skill
-        )
-      );
-      skills.map((skill) =>
-        // se id = id
+    setSkills((prevSkills) =>
+      prevSkills.map((skill) =>
         skill.idSkill === JSON.parse(e.target.value)
-          ? // se class skill = true e rank < max
-            skill.classSkill && skill.skillRank < maxSkillLv
-            ? setActualSkillsPoints((points) => points - 1)
+          ? skill.classSkill && skill.skillRank < maxSkillLv
+            ? { ...skill, skillRank: skill.skillRank + 1 }
             : skill.skillRank < maxSkillLv / 2
-            ? setActualSkillsPoints((points) => points - 1)
-            : setActualSkillsPoints((points) => points)
+            ? { ...skill, skillRank: skill.skillRank + 0.5 }
+            : skill
+          : skill
+      )
+    );
+    skills.map((skill) =>
+      // se id = id
+      skill.idSkill === JSON.parse(e.target.value)
+        ? // se class skill = true e rank < max
+          skill.classSkill && skill.skillRank < maxSkillLv
+          ? setActualSkillsPoints((points) => points - 1)
+          : skill.skillRank < maxSkillLv / 2
+          ? setActualSkillsPoints((points) => points - 1)
           : setActualSkillsPoints((points) => points)
-      );
-    }
+        : setActualSkillsPoints((points) => points)
+    );
   };
 
   const handleDelRank = (e: any) => {
-    if(change){
     setSkills((prevSkills) =>
       prevSkills.map((skill) =>
         skill.idSkill === JSON.parse(e.target.value)
@@ -93,7 +90,7 @@ export function Skills() {
       skill.skillRank > 0
         ? setActualSkillsPoints((points) => points + 1)
         : setActualSkillsPoints((points) => points)
-    )}
+    );
   };
 
   const handleChange = () => {
@@ -125,7 +122,7 @@ export function Skills() {
     <>
       <p>
         {char.characterName}, skills points: {actualSkillsPoints + " "}
-        <button onClick={handleChange}>set Skills </button>
+        <button onClick={handleChange}>set Skills</button>
       </p>
       <>
         {skills ? (
