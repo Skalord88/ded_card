@@ -27,6 +27,6 @@ public class Study implements Serializable {
     String studyName;
 
     @NonNull
-    String relatedSkill;
+    short idSkill;
 
 }

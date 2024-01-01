@@ -7,8 +7,10 @@ import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.skills.dto.RaceSkillsDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Study;
 
 public class MapperSkillsToDTO {
     public static ArrayList<SkillsDTO> toSkillsDTO(ArrayList<ClassSkills> skillList,Abilitys abilitys){
@@ -78,6 +80,18 @@ public class MapperSkillsToDTO {
         }
 
         return skillListDTO;
+    }
+
+    public static List<StudyDTO> toStudyDTO(List<Study> listStudy, List<Skills> listSkills) {
+        List<StudyDTO> studyListDTO = new ArrayList<>();
+        listStudy.forEach(st -> {
+            listSkills.forEach(sk -> {
+                if(sk.getId() == st.getIdSkill()){
+                StudyDTO studyDTO = new StudyDTO(st.getStudyName(), sk.getName());
+                studyListDTO.add(studyDTO);
+            }});
+        });
+        return studyListDTO;
     }
 
 }

@@ -18,13 +18,13 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.items.weapons.MapperWeaponsDTO;
-import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
+import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
+import pl.kolendateam.dadcard.skills.repository.StudyRepository;
 
 
 @RestController
@@ -34,12 +34,14 @@ public class SkillsController {
 
     CharacterRepository characterRepository;
     SkillsRepository skillsRepository;
+    StudyRepository studyRepository;
 
     @Autowired
     public SkillsController(CharacterRepository characterRepository,
-    SkillsRepository skillsRepository){
+    SkillsRepository skillsRepository, StudyRepository studyRepository){
         this.characterRepository = characterRepository;
         this.skillsRepository = skillsRepository;
+        this.studyRepository = studyRepository;
     }
 
     @GetMapping("/list")
@@ -48,6 +50,16 @@ public class SkillsController {
         List<Skills> listSkills = skillsRepository.findAll();
 
         return MapperSkillsToDTO.toSkillsNameDTO(listSkills);
+
+    }
+
+    @GetMapping("/studylist")
+    public List<StudyDTO> getStudyList() {
+
+        List<Study> listStudy = studyRepository.findAll();
+        List<Skills> listSkills = skillsRepository.findAll();
+
+        return MapperSkillsToDTO.toStudyDTO(listStudy, listSkills);
 
     }
     
@@ -70,8 +82,8 @@ public class SkillsController {
         return new CharacterDTO(character);
     }
 
-    @PostMapping(value = "remove/{id}", consumes = { "application/json" })
-    public CharacterDTO sellCharacterSkill(@PathVariable short id, @RequestBody ArrayList<SkillToAddDTO> skillsToAdd) {
+    @PostMapping(value = "study/{id}", consumes = { "application/json" })
+    public CharacterDTO addStudyToSkill(@PathVariable short id, @RequestBody ArrayList<StudyDTO> studyToAdd) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -82,7 +94,7 @@ public class SkillsController {
 
         Character character = characterOpt.get();
 
-        character.sellSkills(skillsToAdd);
+        character.addStudy(studyToAdd);
 
         this.characterRepository.save(character);
         return new CharacterDTO(character);

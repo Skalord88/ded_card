@@ -64,9 +64,9 @@ export function Skills() {
               : skill
             : skill
         )
-      )
+      );
     }
-  }
+  };
 
   const handleDelRank = (e: any) => {
     setSkills((prevSkills) =>
@@ -79,8 +79,8 @@ export function Skills() {
             : skill
           : skill
       )
-    )
-  }
+    );
+  };
 
   const handleChange = () => {
     const skillUp: skillToServer[] = [];
@@ -144,6 +144,17 @@ export function Skills() {
                         <button value={s.idSkill} onClick={handleDelRank}>
                           -
                         </button>
+                        <div>
+                        {Object.entries(s.fieldOfStudy).map((sf) => {
+                          return (
+                            <>
+                              <div key={index}>
+                                {sf[0]} : {sf[1]}
+                              </div>
+                            </>
+                          );
+                        })}
+                        </div>
                       </div>
                     );
                   })}

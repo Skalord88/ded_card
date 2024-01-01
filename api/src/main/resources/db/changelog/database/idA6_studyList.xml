@@ -8,32 +8,32 @@
             <insert tableName="study">
                 <column name="id" value="1"/>  
                 <column  name="study_name"  value="Arcana"/> 
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
             <insert tableName="study">
                 <column name="id" value="2"/>  
                 <column  name="study_name"  value="Architecture"/>  
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
             <insert tableName="study">
                 <column name="id" value="3"/>  
                 <column  name="study_name"  value="History"/>  
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
             <insert tableName="study">
                 <column name="id" value="4"/>  
                 <column  name="study_name"  value="Nature"/>  
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
             <insert tableName="study">
                 <column name="id" value="5"/>  
                 <column  name="study_name"  value="Religion"/>  
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
             <insert tableName="study">
                 <column name="id" value="6"/>  
                 <column  name="study_name"  value="Plane"/>  
-                <column  name="related_skill"  value="Knowledge"/>
+                <column  name="id_skill"  value="17"/>
             </insert>
         </changeSet>
         </databaseChangeLog>

@@ -39,6 +39,7 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
+import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
@@ -689,30 +690,6 @@ public class Character {
         }
     }
 
-    public void sellSkills(ArrayList<SkillToAddDTO> skillsToAddDTO) {
-        for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
-            for (ClassSkills skill : this.classSkills) {
-
-                if (skill.getIdSkill() == skillToAddDTO.idSkill &&
-                        skill.getSkillRank() < skillToAddDTO.skillRank) {
-
-                    if (skillToAddDTO.skillRank > 1) {
-
-                        if (skill.isClassSkill()) {
-                            skill.setSkillRank(-skillToAddDTO.skillRank);
-                        } else {
-                            skill.setSkillRank(-(skillToAddDTO.skillRank / 2));
-                        }
-
-                    }
-
-                    this.skillPoints += skillToAddDTO.skillRank;
-
-                }
-            }
-        }
-    }
-
     public void zeroSkillsRank() {
         for (ClassSkills classSkill : this.classSkills) {
             classSkill.setSkillRank(0);
@@ -720,5 +697,17 @@ public class Character {
                 classSkill.zeroStudyRank();
             }
         }
+    }
+
+    public void addStudy(ArrayList<StudyDTO> studyToAdd) {
+
+        studyToAdd.forEach(study -> {
+            classSkills.forEach(skill -> {
+                if(study.idSkill == skill.getIdSkill()){
+                    skill.getFieldOfStudy().put(study.study, 0);
+                }
+            });
+        });
+
     }
 }
