@@ -129,35 +129,61 @@ export function Skills() {
                 <td>
                   {skills.map((s, index) => {
                     return (
+                      Object.entries(s.fieldOfStudy).map?
+                      <>
+                      {Object.entries(s.fieldOfStudy).map((sf) => {
+                            return (
+                              <>
+                                <div key={index}>
+                                  <>x</>
+                                </div>
+                              </>
+                      )})}
+                      </>
+                      :
+                      <>
                       <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
+                      </>
                     );
                   })}
                 </td>
                 <td>
                   {skills.map((s, index) => {
-                    return (
-                      <div key={index}>
-                        {s.nameSkill}
-                        <button value={s.idSkill} onClick={handleAddRank}>
-                          +
-                        </button>
-                        <button value={s.idSkill} onClick={handleDelRank}>
-                          -
-                        </button>
-                        <div>
-                        {Object.entries(s.fieldOfStudy).map((sf) => {
-                          return (
-                            <>
-                              <div key={index}>
-                                {sf[0]} : {sf[1]}
-                              </div>
-                            </>
-                          );
-                        })}
-                        </div>
-                      </div>
-                    );
-                  })}
+                    return(
+                      s.nameSkill === 'Craft' || s.nameSkill === 'Knowledge' || s.nameSkill === 'Profession' ||  s.nameSkill === 'Perform'?
+                    <>
+                    <div key={index}>
+                      {s.nameSkill}
+                      <input type='text'></input>
+                      <button
+                      value={s.idSkill}
+                      onClick={handleAddRank}>
+                        +
+                      </button>
+                      <button
+                      value={s.idSkill}
+                      onClick={handleDelRank}>
+                        -
+                      </button>
+                    </div>
+                    </>
+                    :
+                    <>
+                    <div>
+                      {s.nameSkill}
+                      <button
+                      value={s.idSkill}
+                      onClick={handleAddRank}>
+                        +
+                      </button>
+                      <button
+                      value={s.idSkill}
+                      onClick={handleDelRank}>
+                        -
+                      </button>
+                    </div>
+                    </>
+                    )})}
                 </td>
                 <td>
                   {skills.map((s, index) => {

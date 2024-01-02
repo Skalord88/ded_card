@@ -499,7 +499,7 @@ public class Character {
 
         for (Study studyOfClass : availableStudy) {
             for (ClassSkills cS : classSkills) {
-                if (studyOfClass.getRelatedSkill().equals(cS.getNameSkill())) {
+                if (studyOfClass.getId() == cS.getIdSkill()) {
                     cS.addStudyMapToSkill(studyOfClass);
                 }
             }
@@ -510,7 +510,7 @@ public class Character {
         for (ClassSkills cS : classSkills) {
             if (!cS.getFieldOfStudy().isEmpty()) {
                 for (Study study : availableStudy) {
-                    if (study.getRelatedSkill().equals(cS.getNameSkill())) {
+                    if (study.getId() == cS.getIdSkill()) {
                         cS.removeStudyFromKnowledge(cS.getFieldOfStudy(), study.getStudyName());
                     }
                 }
@@ -703,11 +703,10 @@ public class Character {
 
         studyToAdd.forEach(study -> {
             classSkills.forEach(skill -> {
-                if(study.idSkill == skill.getIdSkill()){
+                if(study.id == skill.getIdSkill()){
                     skill.getFieldOfStudy().put(study.study, 0);
                 }
             });
         });
-
     }
 }
