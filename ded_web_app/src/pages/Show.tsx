@@ -1,21 +1,25 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-import { characterPc } from "../components/interfaces";
-import { characterEmpty } from "../components/variables";
+import { characterPc, skill } from "../components/interfaces";
 import { urlChar } from "../components/url";
+import { characterEmpty, skillNull } from "../components/variables";
+
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>(characterEmpty);
+  const [skills, setSkills] = useState<skill[]>([]);
+  const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
+  const [know, setKnow] = useState<skill>(skillNull);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         setChar(resURL.data);
+        setSkills(resURL.data.skillsList);
       } catch (error) {
         console.log(error);
       }
@@ -23,6 +27,14 @@ export function Show() {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const skNoStudy = skills.filter(s => ![6, 17].includes(s.idSkill));
+    setSkillsNoStudy(skNoStudy);
+    // const kn: skill 
+    skills.find((s) => s.idSkill === 17);
+    // setKnow(kn)
+  }, [skills]);
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
@@ -161,38 +173,33 @@ export function Show() {
           <>...loading saving throw...</>
         )}
       </p>
-      <p>
+      <>
         skills points: {char.skillPoints}{" "}
-        {char.skillsList ? (
+        {char.skillsList ?
           <>
-            {char.skillsList.map((s, index) => {
-              return (
-                <div key={index}>
-                  {s.classSkill === true ? "(x)" : "(o)"} {s.nameSkill}{" "}
-                  {Math.floor(s.skillRank + s.skillAbility + s.skillBonus)}{" "}
-                  {s.fieldOfStudy ? (
-                    <>
-                      {Object.entries(s.fieldOfStudy).map((sf) => {
-                        return (
-                          <>
-                            <li key={index}>
-                              {sf[0]} : {sf[1]}
-                            </li>
-                          </>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <></>
-                  )}
+            <div className="container">
+              <div className='row'>
+                <div className='column'>
+                  {skillsNoStudy.map((sNs, index) => {
+                    return (
+                      <div key={index}>{sNs.classSkill ? 'x' : 'o'} {sNs.nameSkill} {sNs.skillRank}</div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </>
-        ) : (
-          <>...loading skills point...</>
-        )}
-      </p>
+                <div className="column">
+                  {Object.entries(know.fieldOfStudy).map((k, index) => {
+                    return (
+                      <div key={index}>
+                        {k[0]} : {k[1]}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </> :
+          <>...loading skills point...</>}
+      </>
       <p>
         feats:{" "}
         {char.featsList ? (

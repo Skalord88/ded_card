@@ -80,7 +80,7 @@ export interface abilitys {
     charisma: number
 }
 
-export interface skill {
+export type skill = {
     idSkill: number,
     nameSkill: string,
     fieldOfStudy: {
