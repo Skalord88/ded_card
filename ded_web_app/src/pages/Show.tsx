@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { characterPc, skill, fieldOfStudy } from "../components/interfaces";
+import { characterPc, skill } from "../components/interfaces";
 import { urlChar } from "../components/url";
-import { characterEmpty, skillNull } from "../components/variables";
+import { characterEmpty, map, skillNull } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
@@ -202,10 +202,8 @@ export function Show() {
           })}
         </div>
         <div className="row">
-          knowledge:
-          {know ? (
-            <>
-              {know.fieldOfStudy.forEach((k,v) => {
+          <>
+              {know?.fieldOfStudy.forEach((k, v) => {
                 return (
                   <div className="column">
                     {k} : {v}
@@ -213,9 +211,6 @@ export function Show() {
                 );
               })}
             </>
-          ) : (
-            <></>
-          )}
         </div>
       </div>
     </>

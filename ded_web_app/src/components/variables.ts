@@ -99,7 +99,7 @@ export const skillEmpty: serverSkill = {
     skillRank : -1
 }
 
-let map = new Map<string, number>()
+export const map = new Map<string, number>()
 
 export const skillNull: skill = {
     idSkill: 0,
@@ -109,9 +109,4 @@ export const skillNull: skill = {
     skillRank: 0,
     skillAbility: 0,
     skillBonus: 0
-}
-
-export const emptyFieldOfStudy = {
-    key: '',
-    value: 0
 }

@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
   characterPc,
-  fieldOfStudy,
   serverSkill,
   skill,
   skillToServer,
@@ -12,7 +11,6 @@ import {
 import { characterEmpty, skillEmpty, skillNull } from "../components/variables";
 import "../css/style.css";
 import { urlChar, urlSkillSet } from "../components/url";
-import { Map } from "typescript";
 
 export function Skills() {
   const { charId } = useParams();
@@ -94,12 +92,12 @@ export function Skills() {
   };
 
   // const handleAddStudy = (e: any) => {
-    
+
   //   if (actualSkillsPoints > 0) {
   //     // Ensure know.fieldOfStudy is initialized and is of type Map
   //     if (know?.fieldOfStudy instanceof Map) {
   //       const newMap = new Map<string, number>(know.fieldOfStudy);
-  
+
   //       newMap.forEach((value, key) => {
   //         if (key === e.target.value) {
   //           let newVal = 0;
@@ -111,7 +109,7 @@ export function Skills() {
   //           newMap.set(key, newVal);
   //         }
   //       });
-  
+
   //       // If needed, you can assign newMap back to know.fieldOfStudy
   //       know.fieldOfStudy = newMap;
   //     } else {
@@ -162,117 +160,119 @@ export function Skills() {
         {char.characterName}, skills points: {actualSkillsPoints + " "}
         <button onClick={handleChange}>set Skills</button>
       </p>
-      {skills ? (<></>):(<></>)}
+      {skills? (<>
       <div className="container">
-        
-            <div className="row">
-              <table>
-                <thead>
-                  <th>CS</th>
-                  <th>skill</th>
-                  <th>tot</th>
-                  <th>rnk</th>
-                  <th>abi</th>
-                  <th>bns</th>
-                </thead>
-                <tbody>
-                  <td>
-                    {skillsNoStudy.map((s, index) => {
-                      return (
-                        <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    {skillsNoStudy.map((s, index) => {
-                      return (
-                        <>
-                          <div key={index}>
-                            {s.nameSkill}
-                            <button value={s.idSkill} onClick={handleAddRank}>
-                              +
-                            </button>
-                            <button value={s.idSkill} onClick={handleDelRank}>
-                              -
-                            </button>
-                          </div>
-                        </>
-                      );
-                    })}
-                  </td>
-                  <td>
-                    {skillsNoStudy.map((s, index) => {
-                      return (
-                        <div key={index}>
-                          {s.skillRank + s.skillAbility + s.skillBonus}
-                        </div>
-                      );
-                    })}
-                  </td>
-                  <td>
+        <div className="row">
+          <table>
+            <thead>
+              <th>CS</th>
+              <th>skill</th>
+              <th>tot</th>
+              <th>rnk</th>
+              <th>abi</th>
+              <th>bns</th>
+            </thead>
+            <tbody>
+              <td>
+                {skillsNoStudy.map((s, index) => {
+                  return (
+                    <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
+                  );
+                })}
+              </td>
+              <td>
+                {skillsNoStudy.map((s, index) => {
+                  return (
                     <>
-                      {skillsNoStudy.map((s, index) => {
-                        return <div key={index}>{s.skillRank}</div>;
-                      })}
+                      <div key={index}>
+                        {s.nameSkill}
+                        <button value={s.idSkill} onClick={handleAddRank}>
+                          +
+                        </button>
+                        <button value={s.idSkill} onClick={handleDelRank}>
+                          -
+                        </button>
+                      </div>
                     </>
-                  </td>
-                  <td>
-                    {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skillAbility}</div>;
-                    })}
-                  </td>
-                  <td>
-                    {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skillBonus}</div>;
-                    })}
-                  </td>
-                </tbody>
-              </table>
-            </div>
-            <div className="row">
-              {know? (
-              <table>
-                <thead>
-                  <th>knowledge</th>
-                  <th>tot</th>
-                  <th>rnk</th>
-                  <th>abi</th>
-                  <th>bns</th>
-                </thead>
-                <tbody>
-                  <td>
-                    <>
+                  );
+                })}
+              </td>
+              <td>
+                {skillsNoStudy.map((s, index) => {
+                  return (
+                    <div key={index}>
+                      {s.skillRank + s.skillAbility + s.skillBonus}
+                    </div>
+                  );
+                })}
+              </td>
+              <td>
+                <>
+                  {skillsNoStudy.map((s, index) => {
+                    return <div key={index}>{s.skillRank}</div>;
+                  })}
+                </>
+              </td>
+              <td>
+                {skillsNoStudy.map((s, index) => {
+                  return <div key={index}>{s.skillAbility}</div>;
+                })}
+              </td>
+              <td>
+                {skillsNoStudy.map((s, index) => {
+                  return <div key={index}>{s.skillBonus}</div>;
+                })}
+              </td>
+            </tbody>
+          </table>
+        </div>
+        <div className="row">
+          {know ? (
+            <table>
+              <thead>
+                <th>knowledge</th>
+                <th>tot</th>
+                <th>rnk</th>
+                <th>abi</th>
+                <th>bns</th>
+              </thead>
+              <tbody>
+                <td>
+                  <>
                     {know.fieldOfStudy.forEach((k, v) => {
-                      {k}
+                      // eslint-disable-next-line no-lone-blocks
+                      {
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                        k;
+                      }
                     })}
-                    </>
-                  </td>
-                  <td>
-                    <>
+                  </>
+                </td>
+                <td>
+                  <>
                     {know.fieldOfStudy.forEach((k, v) => {
-                      {v}
+                      // eslint-disable-next-line no-lone-blocks
+                      {
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                        v;
+                      }
                     })}
-                    </>
-                  </td>
-                  <td>
-                    <>
-                    {know.skillAbility}
-                    </>
-                  </td>
-                  <td>
-                    <>
-                    {know.skillBonus}
-                    </>
-                  </td>
-                </tbody>
-              </table>
-              ):(<></>)}
-              
-            </div>
-        ) : (
-          <div>...loading skills...</div>
-        )}
+                  </>
+                </td>
+                <td>
+                  <>{know.skillAbility}</>
+                </td>
+                <td>
+                  <>{know.skillBonus}</>
+                </td>
+              </tbody>
+            </table>
+          ) : (
+            <></>
+          )}
+        </div>
       </div>
+    </>) : (<></>)}
     </>
   );
 }
