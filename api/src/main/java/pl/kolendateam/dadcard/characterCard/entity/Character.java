@@ -497,13 +497,13 @@ public class Character {
 
     public void addStudyToCharacter(Set<Study> availableStudy) {
 
-        for (Study studyOfClass : availableStudy) {
-            for (ClassSkills cS : classSkills) {
-                if (studyOfClass.getId() == cS.getIdSkill()) {
-                    cS.addStudyMapToSkill(studyOfClass);
+        this.classSkills.forEach(cSkill -> {
+            availableStudy.forEach(study -> {
+                if(cSkill.getIdSkill() == study.getIdSkill()){
+                    cSkill.addStudyMapToSkill(study);
                 }
-            }
-        }
+            });
+        });
     }
 
     public void removeStudyFromCharacter(Set<Study> availableStudy) {

@@ -14,6 +14,12 @@ button {
 .container {
   display: flex;
 }
-.column {
+.row {
   flex: 1;
+}
+.column {
+  display: flex;
+}
+div {
+  height: auto;
 }

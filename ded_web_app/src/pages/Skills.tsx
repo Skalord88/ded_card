@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import {
   characterPc,
+  fieldOfStudy,
   serverSkill,
   skill,
   skillToServer,
@@ -20,6 +21,8 @@ export function Skills() {
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
+  const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
+  const [know, setKnow] = useState<skill | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +55,13 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxSkillsPoints, skills]);
 
+  useEffect(() => {
+    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
+    setSkillsNoStudy(skNoStudy);
+    const kn = skills.find((k) => k.idSkill === 17);
+    setKnow(kn);
+  }, [skills]);
+
   const handleAddRank = (e: any) => {
     if (actualSkillsPoints > 0) {
       setSkills((prevSkills) =>
@@ -81,6 +91,36 @@ export function Skills() {
       )
     );
   };
+
+  const handleAddStudy = (e: any) => {
+    if (actualSkillsPoints > 0) {
+      let upSkill: fieldOfStudy
+
+      Object.entries(know?.fieldOfStudy).map(study => {
+        upSkill.key = study[0],
+        upSkill.value = e.target.value
+      })
+
+      // for(const [key, value] of Object.entries(know?.fieldOfStudy)){
+        
+
+          
+        }
+      }
+      
+ 
+    //       skill.idSkill === JSON.parse(e.target.value)
+    //         ? skill.classSkill && skill.skillRank < maxSkillLv
+    //           ? { ...skill, skillRank: skill.skillRank + 1 }
+    //           : skill.skillRank < maxSkillLv / 2
+    //           ? { ...skill, skillRank: skill.skillRank + 0.5 }
+    //           : skill
+    //         : skill
+    //     )
+    //   );
+    // }
+    }
+  }
 
   const handleChange = () => {
     const skillUp: skillToServer[] = [];
@@ -113,111 +153,164 @@ export function Skills() {
         {char.characterName}, skills points: {actualSkillsPoints + " "}
         <button onClick={handleChange}>set Skills</button>
       </p>
-      <>
+      <div className="container">
         {skills ? (
-          <p>
-            <table>
-              <thead>
-                <th>CS</th>
-                <th>skill</th>
-                <th>tot</th>
-                <th>add/rmv</th>
-                <th>rnk</th>
-                <th>abi</th>
-              </thead>
-              <tbody>
-                <td>
-                  {skills.map((s, index) => {
-                    return (
-                      Object.entries(s.fieldOfStudy).map?
-                      <>
-                      {Object.entries(s.fieldOfStudy).map((sf) => {
-                            return (
-                              <>
-                                <div key={index}>
-                                  <>x</>
-                                </div>
-                              </>
-                      )})}
-                      </>
-                      :
-                      <>
-                      <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
-                      </>
-                    );
-                  })}
-                </td>
-                <td>
-                  {skills.map((s, index) => {
-                    return(
-                      s.nameSkill === 'Craft' || s.nameSkill === 'Knowledge' || s.nameSkill === 'Profession' ||  s.nameSkill === 'Perform'?
-                    <>
-                    <div key={index}>
-                      {s.nameSkill}
-                      <input type='text'></input>
-                      <button
-                      value={s.idSkill}
-                      onClick={handleAddRank}>
-                        +
-                      </button>
-                      <button
-                      value={s.idSkill}
-                      onClick={handleDelRank}>
-                        -
-                      </button>
-                    </div>
-                    </>
-                    :
-                    <>
-                    <div>
-                      {s.nameSkill}
-                      <button
-                      value={s.idSkill}
-                      onClick={handleAddRank}>
-                        +
-                      </button>
-                      <button
-                      value={s.idSkill}
-                      onClick={handleDelRank}>
-                        -
-                      </button>
-                    </div>
-                    </>
-                    )})}
-                </td>
-                <td>
-                  {skills.map((s, index) => {
-                    return (
-                      <div key={index}>
-                        {s.skillRank + s.skillAbility + s.skillBonus}
-                      </div>
-                    );
-                  })}
-                </td>
-                <td>
-                  <>
-                    {skills.map((s, index) => {
-                      return <div key={index}>{s.skillRank}</div>;
+          <>
+            <div className="row">
+              <table>
+                <thead>
+                  <th>CS</th>
+                  <th>skill</th>
+                  <th>tot</th>
+                  <th>rnk</th>
+                  <th>abi</th>
+                  <th>bns</th>
+                </thead>
+                <tbody>
+                  <td>
+                    {skillsNoStudy.map((s, index) => {
+                      return (
+                        <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
+                      );
                     })}
-                  </>
-                </td>
-                <td>
-                  {skills.map((s, index) => {
-                    return <div key={index}>{s.skillAbility}</div>;
-                  })}
-                </td>
-                <td>
-                  {skills.map((s, index) => {
-                    return <div key={index}>{s.skillBonus}</div>;
-                  })}
-                </td>
-              </tbody>
-            </table>
-          </p>
+                  </td>
+                  <td>
+                    {skillsNoStudy.map((s, index) => {
+                      return (
+                        <>
+                          <div key={index}>
+                            {s.nameSkill}
+                            <button value={s.idSkill} onClick={handleAddRank}>
+                              +
+                            </button>
+                            <button value={s.idSkill} onClick={handleDelRank}>
+                              -
+                            </button>
+                          </div>
+                        </>
+                      );
+                    })}
+                  </td>
+                  <td>
+                    {skillsNoStudy.map((s, index) => {
+                      return (
+                        <div key={index}>
+                          {s.skillRank + s.skillAbility + s.skillBonus}
+                        </div>
+                      );
+                    })}
+                  </td>
+                  <td>
+                    <>
+                      {skillsNoStudy.map((s, index) => {
+                        return <div key={index}>{s.skillRank}</div>;
+                      })}
+                    </>
+                  </td>
+                  <td>
+                    {skillsNoStudy.map((s, index) => {
+                      return <div key={index}>{s.skillAbility}</div>;
+                    })}
+                  </td>
+                  <td>
+                    {skillsNoStudy.map((s, index) => {
+                      return <div key={index}>{s.skillBonus}</div>;
+                    })}
+                  </td>
+                </tbody>
+              </table>
+            </div>
+            <div className="row">
+              <table>
+                <thead>
+                  <th>skill</th>
+                  <th>tot</th>
+                  <th>rnk</th>
+                  <th>abi</th>
+                  <th>bns</th>
+                </thead>
+                <tbody>
+                  <td>
+                    <>
+                      {know ? (
+                        <>
+                          {Object.entries(know.fieldOfStudy).map((k) => {
+                            return <div>
+                              {k[0]}
+                              <button value={17} onClick={handleAddRank}>
+                              +
+                            </button>
+                            <button value={17} onClick={handleDelRank}>
+                              -
+                            </button>
+                              </div>;
+                          })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  </td>
+                  <td>
+                    <>
+                      {know ? (
+                        <>
+                          {Object.entries(know.fieldOfStudy).map((k) => {
+                            return <div>{k[1]}</div>;
+                          })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  </td>
+                  <td>
+                    <>
+                    {know ? (
+                        <>
+                          {Object.entries(know.fieldOfStudy).map((k) => {
+                            return <div>{k[1]}</div>;
+                          })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  </td>
+                  <td>
+                    <>
+                    {know ? (
+                        <>
+                          {Object.entries(know.fieldOfStudy).map((k) => {
+                            return <div>{know.skillRank}</div>;
+                          })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  </td>
+                  <td>
+                    <>
+                    {know ? (
+                        <>
+                          {Object.entries(know.fieldOfStudy).map((k) => {
+                            return <div>{know.skillAbility}</div>;
+                          })}
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </>
+                  </td>
+                </tbody>
+              </table>
+            </div>
+          </>
         ) : (
-          <div>...</div>
+          <div>...loading skills...</div>
         )}
-      </>
+      </div>
     </>
   );
 }

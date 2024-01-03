@@ -124,3 +124,8 @@ export type serverSkill = {
     idSkill : number,
     skillRank : number
 }
+
+export type fieldOfStudy = {
+    key: string,
+    value: number
+}

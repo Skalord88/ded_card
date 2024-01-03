@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { characterPc, skill } from "../components/interfaces";
+import { characterPc, skill, fieldOfStudy } from "../components/interfaces";
 import { urlChar } from "../components/url";
-import { characterEmpty, skillNull } from "../components/variables";
+import { characterEmpty } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
@@ -11,7 +11,7 @@ export function Show() {
   const [char, setChar] = useState<characterPc>(characterEmpty);
   const [skills, setSkills] = useState<skill[]>([]);
   const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
-  const [know, setKnow] = useState<skill>(skillNull);
+  const [know, setKnow] = useState<skill | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +30,9 @@ export function Show() {
   useEffect(() => {
     const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
     setSkillsNoStudy(skNoStudy);
-    // const kn: skill
-    skills.find((s) => s.idSkill === 17);
-    // setKnow(kn)
+    const kn = skills.find(k => k.idSkill === 17)
+    setKnow(kn)
+    
   }, [skills]);
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
@@ -172,55 +172,50 @@ export function Show() {
           <>...loading saving throw...</>
         )}
       </p>
-      <>
-        feats:
-          {char.featsList ? (
-            <>
-              {char.featsList.map((f, index) => {
-                return (
-                  <li key={index}>
-                    {f.characterFeatName}{" "}
-                    {f.characterFeatSpecial === null ? (
-                      <></>
-                    ) : (
-                      f.characterFeatSpecial
-                    )}
-                  </li>
-                );
-              })}
-            </>
-          ) : (
-            <>...loading feats...</>
-          )}
-      </>
-      <p>
-        <p>skills points: {char.skillPoints}</p>
-        <p>
-          {char.skillsList ? (
-            <div className="container">
-              {skillsNoStudy.map((sNs, index) => {
-                return (
-                  <div className="column" key={index}>
-
-                    {sNs.classSkill ? "x" : "o"} {sNs.nameSkill} {sNs.skillRank}
-
-                  </div>
-                );
-              })}
-
-              {Object.entries(know.fieldOfStudy).map((k, index) => {
-                return (
-                  <div className="column" key={index}>
-                    {k[0]} : {k[1]}
-                  </div>
-                );
-              })}
+      <div className="container">
+        {char.featsList ? (
+          <div className="row">
+            feats:
+            {char.featsList.map((f, index) => {
+              return (
+                <div className="column" key={index}>
+                  {f.characterFeatName}{" "}
+                  {f.characterFeatSpecial === null ? (
+                    <></>
+                  ) : (
+                    f.characterFeatSpecial
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <>...loading feats...</>
+        )}
+        <div className="row">
+          skills:
+          {skillsNoStudy.map((s, index) => {
+            return (
+              <div className="column" key={index}>
+                {s.classSkill ? "x" : "o"} {s.nameSkill} {s.skillRank}
+              </div>
+            );
+          })}
+        </div>
+        <div className="row">
+          knowledge:
+            {know?
+          <>{Object.entries(know.fieldOfStudy).map(k => {
+            return(
+            <div className="column">
+              {k[0]} : {k[1]}
             </div>
-          ) : (
-            <>...loading skills point...</>
-          )}
-        </p>
-      </p>
+            )})}</>
+          :  
+          <></>
+          }
+        </div>
+      </div>
     </>
   );
 }

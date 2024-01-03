@@ -111,3 +111,8 @@ export const skillNull: skill = {
     skillAbility: 0,
     skillBonus: 0
 }
+
+export const emptyFieldOfStudy = {
+    key: '',
+    value: 0
+}
