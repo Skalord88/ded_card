@@ -11,6 +11,9 @@ button {
   height: auto;
   width: auto;
 }
-div {
-  height: 25px;
+.container {
+  display: flex;
+}
+.column {
+  flex: 1;
 }

@@ -5,7 +5,6 @@ import { characterPc, skill } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, skillNull } from "../components/variables";
 
-
 export function Show() {
   let { charId } = useParams();
 
@@ -29,9 +28,9 @@ export function Show() {
   }, []);
 
   useEffect(() => {
-    const skNoStudy = skills.filter(s => ![6, 17].includes(s.idSkill));
+    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
     setSkillsNoStudy(skNoStudy);
-    // const kn: skill 
+    // const kn: skill
     skills.find((s) => s.idSkill === 17);
     // setKnow(kn)
   }, [skills]);
@@ -39,7 +38,7 @@ export function Show() {
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
   return (
-    <div>
+    <>
       <p>
         name: {char.characterName} / player: {char.playerName}
       </p>
@@ -174,53 +173,54 @@ export function Show() {
         )}
       </p>
       <>
-        skills points: {char.skillPoints}{" "}
-        {char.skillsList ?
-          <>
-            <div className="container">
-              <div className='row'>
-                <div className='column'>
-                  {skillsNoStudy.map((sNs, index) => {
-                    return (
-                      <div key={index}>{sNs.classSkill ? 'x' : 'o'} {sNs.nameSkill} {sNs.skillRank}</div>
-                    );
-                  })}
-                </div>
-                <div className="column">
-                  {Object.entries(know.fieldOfStudy).map((k, index) => {
-                    return (
-                      <div key={index}>
-                        {k[0]} : {k[1]}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </> :
-          <>...loading skills point...</>}
+        feats:
+          {char.featsList ? (
+            <>
+              {char.featsList.map((f, index) => {
+                return (
+                  <li key={index}>
+                    {f.characterFeatName}{" "}
+                    {f.characterFeatSpecial === null ? (
+                      <></>
+                    ) : (
+                      f.characterFeatSpecial
+                    )}
+                  </li>
+                );
+              })}
+            </>
+          ) : (
+            <>...loading feats...</>
+          )}
       </>
       <p>
-        feats:{" "}
-        {char.featsList ? (
-          <>
-            {char.featsList.map((f, index) => {
-              return (
-                <li key={index}>
-                  {f.characterFeatName}{" "}
-                  {f.characterFeatSpecial === null ? (
-                    <></>
-                  ) : (
-                    f.characterFeatSpecial
-                  )}
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <>...loading feats...</>
-        )}
+        <p>skills points: {char.skillPoints}</p>
+        <p>
+          {char.skillsList ? (
+            <div className="container">
+              {skillsNoStudy.map((sNs, index) => {
+                return (
+                  <div className="column" key={index}>
+
+                    {sNs.classSkill ? "x" : "o"} {sNs.nameSkill} {sNs.skillRank}
+
+                  </div>
+                );
+              })}
+
+              {Object.entries(know.fieldOfStudy).map((k, index) => {
+                return (
+                  <div className="column" key={index}>
+                    {k[0]} : {k[1]}
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            <>...loading skills point...</>
+          )}
+        </p>
       </p>
-    </div>
+    </>
   );
 }
