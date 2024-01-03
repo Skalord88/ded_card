@@ -9,9 +9,10 @@ import {
   skill,
   skillToServer,
 } from "../components/interfaces";
-import { characterEmpty, skillEmpty } from "../components/variables";
+import { characterEmpty, skillEmpty, skillNull } from "../components/variables";
 import "../css/style.css";
 import { urlChar, urlSkillSet } from "../components/url";
+import { Map } from "typescript";
 
 export function Skills() {
   const { charId } = useParams();
@@ -22,7 +23,7 @@ export function Skills() {
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
   const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
-  const [know, setKnow] = useState<skill | undefined>();
+  const [know, setKnow] = useState<skill | undefined>(skillNull);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,35 +93,43 @@ export function Skills() {
     );
   };
 
-  const handleAddStudy = (e: any) => {
-    if (actualSkillsPoints > 0) {
-      let upSkill: fieldOfStudy
+  // const handleAddStudy = (e: any) => {
+    
+  //   if (actualSkillsPoints > 0) {
+  //     // Ensure know.fieldOfStudy is initialized and is of type Map
+  //     if (know?.fieldOfStudy instanceof Map) {
+  //       const newMap = new Map<string, number>(know.fieldOfStudy);
+  
+  //       newMap.forEach((value, key) => {
+  //         if (key === e.target.value) {
+  //           let newVal = 0;
+  //           if (know.classSkill) {
+  //             newVal = value + 1;
+  //           } else {
+  //             newVal = value + 0.5;
+  //           }
+  //           newMap.set(key, newVal);
+  //         }
+  //       });
+  
+  //       // If needed, you can assign newMap back to know.fieldOfStudy
+  //       know.fieldOfStudy = newMap;
+  //     } else {
+  //       console.error('know.fieldOfStudy is not a Map');
+  //     }
+  //   }
+  // }
 
-      Object.entries(know?.fieldOfStudy).map(study => {
-        upSkill.key = study[0],
-        upSkill.value = e.target.value
-      })
-
-      // for(const [key, value] of Object.entries(know?.fieldOfStudy)){
-        
-
-          
-        }
-      }
-      
- 
-    //       skill.idSkill === JSON.parse(e.target.value)
-    //         ? skill.classSkill && skill.skillRank < maxSkillLv
-    //           ? { ...skill, skillRank: skill.skillRank + 1 }
-    //           : skill.skillRank < maxSkillLv / 2
-    //           ? { ...skill, skillRank: skill.skillRank + 0.5 }
-    //           : skill
-    //         : skill
-    //     )
-    //   );
-    // }
-    }
-  }
+  //       skill.idSkill === JSON.parse(e.target.value)
+  //         ? skill.classSkill && skill.skillRank < maxSkillLv
+  //           ? { ...skill, skillRank: skill.skillRank + 1 }
+  //           : skill.skillRank < maxSkillLv / 2
+  //           ? { ...skill, skillRank: skill.skillRank + 0.5 }
+  //           : skill
+  //         : skill
+  //     )
+  //   );
+  // }
 
   const handleChange = () => {
     const skillUp: skillToServer[] = [];
@@ -153,9 +162,9 @@ export function Skills() {
         {char.characterName}, skills points: {actualSkillsPoints + " "}
         <button onClick={handleChange}>set Skills</button>
       </p>
+      {skills ? (<></>):(<></>)}
       <div className="container">
-        {skills ? (
-          <>
+        
             <div className="row">
               <table>
                 <thead>
@@ -221,9 +230,10 @@ export function Skills() {
               </table>
             </div>
             <div className="row">
+              {know? (
               <table>
                 <thead>
-                  <th>skill</th>
+                  <th>knowledge</th>
                   <th>tot</th>
                   <th>rnk</th>
                   <th>abi</th>
@@ -232,81 +242,33 @@ export function Skills() {
                 <tbody>
                   <td>
                     <>
-                      {know ? (
-                        <>
-                          {Object.entries(know.fieldOfStudy).map((k) => {
-                            return <div>
-                              {k[0]}
-                              <button value={17} onClick={handleAddRank}>
-                              +
-                            </button>
-                            <button value={17} onClick={handleDelRank}>
-                              -
-                            </button>
-                              </div>;
-                          })}
-                        </>
-                      ) : (
-                        <></>
-                      )}
+                    {know.fieldOfStudy.forEach((k, v) => {
+                      {k}
+                    })}
                     </>
                   </td>
                   <td>
                     <>
-                      {know ? (
-                        <>
-                          {Object.entries(know.fieldOfStudy).map((k) => {
-                            return <div>{k[1]}</div>;
-                          })}
-                        </>
-                      ) : (
-                        <></>
-                      )}
+                    {know.fieldOfStudy.forEach((k, v) => {
+                      {v}
+                    })}
                     </>
                   </td>
                   <td>
                     <>
-                    {know ? (
-                        <>
-                          {Object.entries(know.fieldOfStudy).map((k) => {
-                            return <div>{k[1]}</div>;
-                          })}
-                        </>
-                      ) : (
-                        <></>
-                      )}
+                    {know.skillAbility}
                     </>
                   </td>
                   <td>
                     <>
-                    {know ? (
-                        <>
-                          {Object.entries(know.fieldOfStudy).map((k) => {
-                            return <div>{know.skillRank}</div>;
-                          })}
-                        </>
-                      ) : (
-                        <></>
-                      )}
-                    </>
-                  </td>
-                  <td>
-                    <>
-                    {know ? (
-                        <>
-                          {Object.entries(know.fieldOfStudy).map((k) => {
-                            return <div>{know.skillAbility}</div>;
-                          })}
-                        </>
-                      ) : (
-                        <></>
-                      )}
+                    {know.skillBonus}
                     </>
                   </td>
                 </tbody>
               </table>
+              ):(<></>)}
+              
             </div>
-          </>
         ) : (
           <div>...loading skills...</div>
         )}

@@ -83,10 +83,7 @@ export interface abilitys {
 export type skill = {
     idSkill: number,
     nameSkill: string,
-    fieldOfStudy: {
-        key: string,
-        value: number
-    },
+    fieldOfStudy: Map<string, number>,
     classSkill: boolean,
     skillRank: number,
     skillAbility: number,

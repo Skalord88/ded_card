@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { characterPc, skill, fieldOfStudy } from "../components/interfaces";
 import { urlChar } from "../components/url";
-import { characterEmpty } from "../components/variables";
+import { characterEmpty, skillNull } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
@@ -11,7 +11,7 @@ export function Show() {
   const [char, setChar] = useState<characterPc>(characterEmpty);
   const [skills, setSkills] = useState<skill[]>([]);
   const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
-  const [know, setKnow] = useState<skill | undefined>();
+  const [know, setKnow] = useState<skill | undefined>(skillNull);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +30,8 @@ export function Show() {
   useEffect(() => {
     const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
     setSkillsNoStudy(skNoStudy);
-    const kn = skills.find(k => k.idSkill === 17)
-    setKnow(kn)
-    
+    const kn = skills.find((k) => k.idSkill === 17);
+    setKnow(kn);
   }, [skills]);
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
@@ -204,16 +203,19 @@ export function Show() {
         </div>
         <div className="row">
           knowledge:
-            {know?
-          <>{Object.entries(know.fieldOfStudy).map(k => {
-            return(
-            <div className="column">
-              {k[0]} : {k[1]}
-            </div>
-            )})}</>
-          :  
-          <></>
-          }
+          {know ? (
+            <>
+              {know.fieldOfStudy.forEach((k,v) => {
+                return (
+                  <div className="column">
+                    {k} : {v}
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
