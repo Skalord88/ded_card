@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { characterPc, skill } from "../components/interfaces";
+import { characterPc, mapStudy, skill } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, map, skillNull } from "../components/variables";
+import { MapStudy } from "../components/MapStudy";
 
 export function Show() {
   let { charId } = useParams();
@@ -12,6 +13,7 @@ export function Show() {
   const [skills, setSkills] = useState<skill[]>([]);
   const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
   const [know, setKnow] = useState<skill | undefined>(skillNull);
+  const [study, setStudy] = useState<mapStudy | undefined>()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -202,15 +204,8 @@ export function Show() {
           })}
         </div>
         <div className="row">
-          <>
-              {know?.fieldOfStudy.forEach((k, v) => {
-                return (
-                  <div className="column">
-                    {k} : {v}
-                  </div>
-                );
-              })}
-            </>
+          {know?.fieldOfStudy?
+          <MapStudy mapStudy={know?.fieldOfStudy} />:<></>}
         </div>
       </div>
     </>

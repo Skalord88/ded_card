@@ -90,6 +90,10 @@ export type skill = {
     skillBonus: number
 }
 
+export interface mapStudy {
+    mapStudy: Map<string, number>
+}
+
 export interface skillToServer {
     idSkill: number,
     skillRank: number
