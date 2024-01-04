@@ -1,18 +1,9 @@
 import React from "react";
+import { skill } from "./interfaces";
 
 type mapStudy = {
   mapStudy: [[string, number]];
 };
-
-type skill = {
-  idSkill: number,
-  nameSkill: string,
-  fieldOfStudy: Map<string, number>,
-  classSkill: boolean,
-  skillRank: number,
-  skillAbility: number,
-  skillBonus: number
-}
 
 export const MapStudy: React.FC<mapStudy> = ({ mapStudy }) => {
   return (
@@ -27,18 +18,28 @@ export const MapStudy: React.FC<mapStudy> = ({ mapStudy }) => {
   );
 };
 
-export const MapStudyUp: React.FC<skill> = ((sk) => {
+export const MapStudyUp: React.FC<skill> = ({ skill }) => {
+
   return (
     <table>
       <thead>
-        <th>{sk.nameSkill}</th>
-        <th>tot</th>
-        <th>rnk</th>
-        <th>abi</th>
-        <th>bns</th>
+        <tr>
+          <th>
+            {skill.nameSkill}
+          </th>
+          <th>tot</th>
+          <th>rnk</th>
+          <th>abi</th>
+          <th>bns</th>
+        </tr>
       </thead>
       <tbody>
-        <td></td>
+        <td>{Object.entries(skill.fieldOfStudy).map(s => (
+        <div>
+          <>{s[0]} {s[1]}</>
+        </div>
+        ))}
+        </td>
         <td></td>
         <td></td>
         <td></td>
@@ -46,4 +47,4 @@ export const MapStudyUp: React.FC<skill> = ((sk) => {
       </tbody>
     </table>
     )
-  });
+  };

@@ -194,7 +194,7 @@ export function Skills() {
               {know ? (
                 <>
                   {" "}
-                  <MapStudyUp skill={know} />{" "}
+                  <MapStudyUp skill = {Object.entries(know)} />{" "}
                 </>
               ) : (
                 <></>
