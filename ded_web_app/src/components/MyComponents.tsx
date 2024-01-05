@@ -1,11 +1,22 @@
 import React from "react";
-import { skill } from "./interfaces";
 
-type mapStudy = {
+type MapStudy = {
   mapStudy: [[string, number]];
 };
 
-export const MapStudy: React.FC<mapStudy> = ({ mapStudy }) => {
+type SkillProps = {
+  skill: {
+    idSkill: number;
+    nameSkill: string;
+    fieldOfStudy: MapStudy;
+    classSkill: boolean;
+    skillRank: number;
+    skillAbility: number;
+    skillBonus: number;
+  };
+};
+
+export const MapStudy: React.FC<MapStudy> = ({ mapStudy }) => {
   return (
     <div className="row">
       knowledge:
@@ -18,15 +29,12 @@ export const MapStudy: React.FC<mapStudy> = ({ mapStudy }) => {
   );
 };
 
-export const MapStudyUp: React.FC<skill> = ({ skill }) => {
-
+export const MapStudyUp: React.FC<SkillProps> = ({ skill }) => {
   return (
     <table>
       <thead>
         <tr>
-          <th>
-            {skill.nameSkill}
-          </th>
+          <th>{skill.nameSkill}</th>
           <th>tot</th>
           <th>rnk</th>
           <th>abi</th>
@@ -34,11 +42,13 @@ export const MapStudyUp: React.FC<skill> = ({ skill }) => {
         </tr>
       </thead>
       <tbody>
-        <td>{Object.entries(skill.fieldOfStudy).map(s => (
-        <div>
-          <>{s[0]} {s[1]}</>
-        </div>
-        ))}
+        <td>
+        <>{Object.entries(skill.fieldOfStudy).map((st) => {
+              <div>
+                {st[0]} {st[1]}
+              </div>
+            })}
+            </>
         </td>
         <td></td>
         <td></td>
@@ -46,5 +56,5 @@ export const MapStudyUp: React.FC<skill> = ({ skill }) => {
         <td></td>
       </tbody>
     </table>
-    )
-  };
+  );
+};

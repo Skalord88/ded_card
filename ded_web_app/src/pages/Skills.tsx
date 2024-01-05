@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
-import { MapStudy, MapStudyUp } from "../components/MyComponents";
+import { MapStudyUp } from "../components/MyComponents";
 import {
   characterPc,
   serverSkill,
@@ -194,7 +194,7 @@ export function Skills() {
               {know ? (
                 <>
                   {" "}
-                  <MapStudyUp skill = {Object.entries(know)} />{" "}
+                  <MapStudyUp skill = {know} />{" "}
                 </>
               ) : (
                 <></>
