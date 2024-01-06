@@ -205,7 +205,7 @@ export function Show() {
         {know ? (
           <>
             {" "}
-            <MapStudy mapStudy={Object.entries(know.fieldOfStudy)} />
+            <MapStudy mapStudy={know.fieldOfStudy} />
           </>
         ) : (
           <></>

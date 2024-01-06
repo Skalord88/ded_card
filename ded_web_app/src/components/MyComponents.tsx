@@ -2,23 +2,26 @@ import React from "react";
 import { skill } from "./interfaces";
 
 type mapStudy = {
-  mapStudy: [[string, number]];
+  mapStudy: {[name:string]:any};
 };
 
 export const MapStudy: React.FC<mapStudy> = ({ mapStudy }) => {
   return (
     <div className="row">
       knowledge:
-      {mapStudy.map((k) => (
+      {Object.keys(mapStudy).map((k,index) => (
         <div className="column">
-          {k[0]} : {k[1]}
+          {k} : {mapStudy[k]}
         </div>
       ))}
     </div>
   );
 };
 
-export const MapStudyUp: React.FC<skill> = ({ skill }) => {
+type SkillP = {
+  skill:skill;
+}
+export const MapStudyUp: React.FC<SkillP> = ({ skill }) => {
 
   return (
     <table>
