@@ -2,27 +2,26 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
-import { MapStudy, MapStudyUp } from "../components/MyComponents";
+import { MapOfStudyUp } from "../components/MyComponents";
 import {
   characterPc,
   serverSkill,
-  skill,
-  skillToServer,
-} from "../components/interfaces";
+  SkillProps,
+  skillToServer} from "../components/interfaces";
 import { urlChar, urlSkillSet } from "../components/url";
-import { characterEmpty, skillEmpty, skillNull } from "../components/variables";
+import { characterEmpty, skillEmpty } from "../components/variables";
 import "../css/style.css";
 
 export function Skills() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>(characterEmpty);
-  const [skills, setSkills] = useState<skill[]>([]);
+  const [skills, setSkills] = useState<SkillProps[]>([]);
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
-  const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
-  const [know, setKnow] = useState<skill | undefined>(skillNull);
+  const [skillsNoStudy, setSkillsNoStudy] = useState<SkillProps[]>([]);
+  const [know, setKnow] = useState<SkillProps>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,9 +43,9 @@ export function Skills() {
   useEffect(() => {
     const totalSkillPoints = skills.reduce(
       (total, skill) =>
-        !skill.classSkill
-          ? total + skill.skillRank * 2
-          : total + skill.skillRank,
+        !skill.skill.classSkill
+          ? total + skill.skill.skillRank * 2
+          : total + skill.skill.skillRank,
       0
     );
     if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
@@ -56,9 +55,9 @@ export function Skills() {
   }, [maxSkillsPoints, skills]);
 
   useEffect(() => {
-    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
+    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.skill.idSkill));
     setSkillsNoStudy(skNoStudy);
-    const kn = skills.find((k) => k.idSkill === 17);
+    const kn = skills.find((k) => k.skill.idSkill === 17);
     setKnow(kn);
   }, [skills]);
 
@@ -66,11 +65,11 @@ export function Skills() {
     if (actualSkillsPoints > 0) {
       setSkills((prevSkills) =>
         prevSkills.map((skill) =>
-          skill.idSkill === JSON.parse(e.target.value)
-            ? skill.classSkill && skill.skillRank < maxSkillLv
-              ? { ...skill, skillRank: skill.skillRank + 1 }
-              : skill.skillRank < maxSkillLv / 2
-              ? { ...skill, skillRank: skill.skillRank + 0.5 }
+          skill.skill.idSkill === JSON.parse(e.target.value)
+            ? skill.skill.classSkill && skill.skill.skillRank < maxSkillLv
+              ? { ...skill, skillRank: skill.skill.skillRank + 1 }
+              : skill.skill.skillRank < maxSkillLv / 2
+              ? { ...skill, skillRank: skill.skill.skillRank + 0.5 }
               : skill
             : skill
         )
@@ -81,11 +80,11 @@ export function Skills() {
   const handleDelRank = (e: any) => {
     setSkills((prevSkills) =>
       prevSkills.map((skill) =>
-        skill.idSkill === JSON.parse(e.target.value)
-          ? skill.classSkill && skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skillRank - 1 }
-            : skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skillRank - 0.5 }
+        skill.skill.idSkill === JSON.parse(e.target.value)
+          ? skill.skill.classSkill && skill.skill.skillRank > 0
+            ? { ...skill, skillRank: skill.skill.skillRank - 1 }
+            : skill.skill.skillRank > 0
+            ? { ...skill, skillRank: skill.skill.skillRank - 0.5 }
             : skill
           : skill
       )
@@ -97,14 +96,14 @@ export function Skills() {
     let skill: serverSkill = skillEmpty;
 
     skills.forEach((s) => {
-      s.classSkill && s.skillRank > 0
+      s.skill.classSkill && s.skill.skillRank > 0
         ? (skill = {
-            idSkill: s.idSkill,
-            skillRank: s.skillRank,
+            idSkill: s.skill.idSkill,
+            skillRank: s.skill.skillRank,
           })
         : (skill = {
-            idSkill: s.idSkill,
-            skillRank: s.skillRank * 2,
+            idSkill: s.skill.idSkill,
+            skillRank: s.skill.skillRank * 2,
           });
       skillUp.push(skill);
     });
@@ -140,7 +139,7 @@ export function Skills() {
                   <td>
                     {skillsNoStudy.map((s, index) => {
                       return (
-                        <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
+                        <div key={index}>{s.skill.classSkill ? <>x</> : <>o</>}</div>
                       );
                     })}
                   </td>
@@ -149,11 +148,11 @@ export function Skills() {
                       return (
                         <>
                           <div key={index}>
-                            {s.nameSkill}
-                            <button value={s.idSkill} onClick={handleAddRank}>
+                            {s.skill.nameSkill}
+                            <button value={s.skill.idSkill} onClick={handleAddRank}>
                               +
                             </button>
-                            <button value={s.idSkill} onClick={handleDelRank}>
+                            <button value={s.skill.idSkill} onClick={handleDelRank}>
                               -
                             </button>
                           </div>
@@ -165,7 +164,7 @@ export function Skills() {
                     {skillsNoStudy.map((s, index) => {
                       return (
                         <div key={index}>
-                          {s.skillRank + s.skillAbility + s.skillBonus}
+                          {s.skill.skillRank + s.skill.skillAbility + s.skill.skillBonus}
                         </div>
                       );
                     })}
@@ -173,28 +172,28 @@ export function Skills() {
                   <td>
                     <>
                       {skillsNoStudy.map((s, index) => {
-                        return <div key={index}>{s.skillRank}</div>;
+                        return <div key={index}>{s.skill.skillRank}</div>;
                       })}
                     </>
                   </td>
                   <td>
                     {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skillAbility}</div>;
+                      return <div key={index}>{s.skill.skillAbility}</div>;
                     })}
                   </td>
                   <td>
                     {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skillBonus}</div>;
+                      return <div key={index}>{s.skill.skillBonus}</div>;
                     })}
                   </td>
                 </tbody>
               </table>
             </div>
             <div className="row">
-              {know ? (
+              {know?.skill.fieldOfStudy ? (
                 <>
                   {" "}
-                  <MapStudyUp skill = {Object.entries(know)} />{" "}
+                  <MapOfStudyUp skill ={know.skill} />{" "}
                 </>
               ) : (
                 <></>

@@ -1,25 +1,32 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MapStudy } from "../components/MyComponents";
-import { characterPc, skill } from "../components/interfaces";
+import { MapOfStudy } from "../components/MyComponents";
+import { characterPc, SkillProps } from "../components/interfaces";
 import { urlChar } from "../components/url";
-import { characterEmpty, skillNull } from "../components/variables";
+import { characterEmpty, emptySkill } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>(characterEmpty);
-  const [skills, setSkills] = useState<skill[]>([]);
-  const [skillsNoStudy, setSkillsNoStudy] = useState<skill[]>([]);
-  const [know, setKnow] = useState<skill | undefined>(skillNull);
+  const [skills, setSkills] = useState<SkillProps[]>([emptySkill]);
+  const [skillsNoStudy, setSkillsNoStudy] = useState<SkillProps[]>([]);
+  // const [know, setKnow] = useState<SkillProps | undefined>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
-        setChar(resURL.data);
-        setSkills(resURL.data.skillsList);
+
+        if(char.id>0){
+        setChar(resURL.data)};
+        if(Array.isArray(resURL.data.skillsList)){
+          const skillData = resURL.data.skillsList;
+          setSkills(skillData);
+        }
+
+        console.log(skills)
       } catch (error) {
         console.log(error);
       }
@@ -28,12 +35,14 @@ export function Show() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.idSkill));
-    setSkillsNoStudy(skNoStudy);
-    const kn = skills.find((k) => k.idSkill === 17);
-    setKnow(kn);
-  }, [skills]);
+  // useEffect(() => {
+
+    // const skNoStudy = skills.filter((s) => s.skill && ![6, 17].includes(s.skill.idSkill));
+    // setSkillsNoStudy(skNoStudy);
+
+    // const kn = skills.find((k) => k.skill.idSkill === 17);
+    // setKnow(kn);
+  // }, [char, skills]);
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
@@ -194,22 +203,16 @@ export function Show() {
         )}
         <div className="row">
           skills:
+          <>{skills.length > 0 ? <></> : <>loading skill...</>}</>
           {skillsNoStudy.map((s, index) => {
             return (
               <div className="column" key={index}>
-                {s.classSkill ? "x" : "o"} {s.nameSkill} {s.skillRank}
+                {s.skill.classSkill ? "x" : "o"} {s.skill.nameSkill}{" "}
+                {s.skill.skillRank}
               </div>
             );
           })}
         </div>
-        {know ? (
-          <>
-            {" "}
-            <MapStudy mapStudy={know.fieldOfStudy} />
-          </>
-        ) : (
-          <></>
-        )}
       </div>
     </>
   );
