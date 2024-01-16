@@ -1,5 +1,5 @@
 import React from "react";
-import { MapStudy, SkillProps } from "./interfaces";
+import { MapStudy, MapOfStudyUpProps } from "./interfaces";
 
 export const MapOfStudy: React.FC<MapStudy> = ({ mapStudy }) => {
   return (
@@ -14,31 +14,16 @@ export const MapOfStudy: React.FC<MapStudy> = ({ mapStudy }) => {
   );
 };
 
-export const MapOfStudyUp: React.FC<SkillProps> = ({ skill }) => {
+export const MapOfStudyUp: React.FC<MapOfStudyUpProps> = ({ skills }) => {
 
-  return (
-    <table>
-      <thead>
-        <tr>
-          <th>{skill.nameSkill}</th>
-          <th>tot</th>
-          <th>rnk</th>
-          <th>abi</th>
-          <th>bns</th>
-        </tr>
-      </thead>
-      <tbody>
-        <td>
-        <>
-        <MapOfStudy mapStudy={skill.fieldOfStudy}/>
-        </>
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tbody>
-    </table>
-  );
-};
-
+  return(
+    <>
+    skill:
+    {Object.entries(skills.map((skill, index) => {
+      <div key={index}>
+        {skill.nameSkill}: {skill.skillRank + skill.skillAbility + skill.skillBonus}
+      </div>
+    }))}
+    </>
+  )
+}

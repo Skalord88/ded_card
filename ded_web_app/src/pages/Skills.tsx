@@ -5,18 +5,18 @@ import axios from "axios";
 import { MapOfStudyUp } from "../components/MyComponents";
 import {
   characterPc,
+  MapOfStudyUpProps,
   serverSkill,
   SkillProps,
   skillToServer} from "../components/interfaces";
 import { urlChar, urlSkillSet } from "../components/url";
-import { characterEmpty, skillEmpty } from "../components/variables";
 import "../css/style.css";
 
 export function Skills() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>(characterEmpty);
-  const [skills, setSkills] = useState<SkillProps[]>([]);
+  const [char, setChar] = useState<characterPc>( );
+  const [skills, setSkills] = useState<MapOfStudyUpProps | undefined>();
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);
@@ -41,85 +41,85 @@ export function Skills() {
   }, []);
 
   useEffect(() => {
-    const totalSkillPoints = skills.reduce(
+    const totalSkillPoints = skills?.skills.reduce(
       (total, skill) =>
-        !skill.skill.classSkill
-          ? total + skill.skill.skillRank * 2
-          : total + skill.skill.skillRank,
+        !skill.classSkill
+          ? total + skill.skillRank * 2
+          : total + skill.skillRank,
       0
     );
-    if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
-      setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
-    }
+    // if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
+    //   setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxSkillsPoints, skills]);
 
-  useEffect(() => {
-    const skNoStudy = skills.filter((s) => ![6, 17].includes(s.skill.idSkill));
-    setSkillsNoStudy(skNoStudy);
-    const kn = skills.find((k) => k.skill.idSkill === 17);
-    setKnow(kn);
-  }, [skills]);
+  // useEffect(() => {
+  //   const skNoStudy = skills.filter((s) => ![6, 17].includes(s.skill.idSkill));
+  //   setSkillsNoStudy(skNoStudy);
+  //   const kn = skills.find((k) => k.skill.idSkill === 17);
+  //   setKnow(kn);
+  // }, [skills]);
 
   const handleAddRank = (e: any) => {
-    if (actualSkillsPoints > 0) {
-      setSkills((prevSkills) =>
-        prevSkills.map((skill) =>
-          skill.skill.idSkill === JSON.parse(e.target.value)
-            ? skill.skill.classSkill && skill.skill.skillRank < maxSkillLv
-              ? { ...skill, skillRank: skill.skill.skillRank + 1 }
-              : skill.skill.skillRank < maxSkillLv / 2
-              ? { ...skill, skillRank: skill.skill.skillRank + 0.5 }
-              : skill
-            : skill
-        )
-      );
-    }
+    // if (actualSkillsPoints > 0) {
+    //   setSkills((prevSkills) =>
+    //     prevSkills.map((skill) =>
+    //       skill.skill.idSkill === JSON.parse(e.target.value)
+    //         ? skill.skill.classSkill && skill.skill.skillRank < maxSkillLv
+    //           ? { ...skill, skillRank: skill.skill.skillRank + 1 }
+    //           : skill.skill.skillRank < maxSkillLv / 2
+    //           ? { ...skill, skillRank: skill.skill.skillRank + 0.5 }
+    //           : skill
+    //         : skill
+    //     )
+    //   );
+    // }
   };
 
   const handleDelRank = (e: any) => {
-    setSkills((prevSkills) =>
-      prevSkills.map((skill) =>
-        skill.skill.idSkill === JSON.parse(e.target.value)
-          ? skill.skill.classSkill && skill.skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skill.skillRank - 1 }
-            : skill.skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skill.skillRank - 0.5 }
-            : skill
-          : skill
-      )
-    );
+    // setSkills((prevSkills) =>
+    //   prevSkills.map((skill) =>
+    //     skill.skill.idSkill === JSON.parse(e.target.value)
+    //       ? skill.skill.classSkill && skill.skill.skillRank > 0
+    //         ? { ...skill, skillRank: skill.skill.skillRank - 1 }
+    //         : skill.skill.skillRank > 0
+    //         ? { ...skill, skillRank: skill.skill.skillRank - 0.5 }
+    //         : skill
+    //       : skill
+    //   )
+    // );
   };
 
   const handleChange = () => {
-    const skillUp: skillToServer[] = [];
-    let skill: serverSkill = skillEmpty;
+    // const skillUp: skillToServer[] = [];
+    // let skill: serverSkill = skillEmpty;
 
-    skills.forEach((s) => {
-      s.skill.classSkill && s.skill.skillRank > 0
-        ? (skill = {
-            idSkill: s.skill.idSkill,
-            skillRank: s.skill.skillRank,
-          })
-        : (skill = {
-            idSkill: s.skill.idSkill,
-            skillRank: s.skill.skillRank * 2,
-          });
-      skillUp.push(skill);
-    });
+    // skills.forEach((s) => {
+    //   s.skill.classSkill && s.skill.skillRank > 0
+    //     ? (skill = {
+    //         idSkill: s.skill.idSkill,
+    //         skillRank: s.skill.skillRank,
+    //       })
+    //     : (skill = {
+    //         idSkill: s.skill.idSkill,
+    //         skillRank: s.skill.skillRank * 2,
+    //       });
+    //   skillUp.push(skill);
+    // });
 
-    try {
-      axios.post(urlSkillSet + charId, skillUp);
-    } catch (error) {
-      console.log(error);
-    }
-    window.location.reload();
+    // try {
+    //   axios.post(urlSkillSet + charId, skillUp);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    // window.location.reload();
   };
 
   return (
     <>
       <p>
-        {char.characterName}, skills points: {actualSkillsPoints + " "}
+        {char?.characterName}, skills points: {actualSkillsPoints + " "}
         <button onClick={handleChange}>set Skills</button>
       </p>
       {skills ? (
@@ -139,7 +139,7 @@ export function Skills() {
                   <td>
                     {skillsNoStudy.map((s, index) => {
                       return (
-                        <div key={index}>{s.skill.classSkill ? <>x</> : <>o</>}</div>
+                        <div key={index}>{s.classSkill ? <>x</> : <>o</>}</div>
                       );
                     })}
                   </td>
@@ -148,11 +148,11 @@ export function Skills() {
                       return (
                         <>
                           <div key={index}>
-                            {s.skill.nameSkill}
-                            <button value={s.skill.idSkill} onClick={handleAddRank}>
+                            {s.nameSkill}
+                            <button value={s.idSkill} onClick={handleAddRank}>
                               +
                             </button>
-                            <button value={s.skill.idSkill} onClick={handleDelRank}>
+                            <button value={s.idSkill} onClick={handleDelRank}>
                               -
                             </button>
                           </div>
@@ -164,7 +164,7 @@ export function Skills() {
                     {skillsNoStudy.map((s, index) => {
                       return (
                         <div key={index}>
-                          {s.skill.skillRank + s.skill.skillAbility + s.skill.skillBonus}
+                          {s.skillRank + s.skillAbility + s.skillBonus}
                         </div>
                       );
                     })}
@@ -172,29 +172,26 @@ export function Skills() {
                   <td>
                     <>
                       {skillsNoStudy.map((s, index) => {
-                        return <div key={index}>{s.skill.skillRank}</div>;
+                        return <div key={index}>{s.skillRank}</div>;
                       })}
                     </>
                   </td>
                   <td>
                     {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skill.skillAbility}</div>;
+                      return <div key={index}>{s.skillAbility}</div>;
                     })}
                   </td>
                   <td>
                     {skillsNoStudy.map((s, index) => {
-                      return <div key={index}>{s.skill.skillBonus}</div>;
+                      return <div key={index}>{s.skillBonus}</div>;
                     })}
                   </td>
                 </tbody>
               </table>
             </div>
             <div className="row">
-              {know?.skill.fieldOfStudy ? (
-                <>
-                  {" "}
-                  <MapOfStudyUp skill ={know.skill} />{" "}
-                </>
+              {know ? (
+                <></>
               ) : (
                 <></>
               )}

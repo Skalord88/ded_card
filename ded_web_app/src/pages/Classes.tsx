@@ -9,12 +9,11 @@ import {
   urlClassSell,
 } from "../components/url";
 import { characterPc } from "../components/interfaces";
-import { characterEmpty } from "../components/variables";
 
 export function Classes() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>(characterEmpty);
+  const [char, setChar] = useState<characterPc>();
   const [classesList, setClassesList] = useState([]);
   const [sign, setSign] = useState("");
   const [id, setId] = useState(-1);
@@ -59,7 +58,7 @@ export function Classes() {
 
   return (
     <>
-      <p>{char.characterName}</p>
+      <p>{char?.characterName}</p>
       <div>
         {classPcName ? (
           <>
@@ -70,7 +69,7 @@ export function Classes() {
         )}
       </div>
       <div>
-        {char.classPcList.length > 0 ? (
+        {char?.classPcList ? (
           <button>
             <Link to={"/skill/" + charId}>to skills</Link>
           </button>
@@ -79,7 +78,7 @@ export function Classes() {
         )}
       </div>
       <ul>
-        {char.classPcList ? (
+        {char?.classPcList? (
           <>
             {char.classPcList.map((c: any, index: number) => {
               return c.level === 0 ? (

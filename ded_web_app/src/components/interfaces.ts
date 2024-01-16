@@ -14,7 +14,7 @@ export interface characterPc {
   savingThrows: savingThrows;
   abilitys: abilitys;
   skillPoints: number;
-  skillsList: SkillProps[];
+  skillsList: MapOfStudyUpProps;
   featsList: feat[];
   items: [];
   magicPerDay: {};
@@ -85,16 +85,20 @@ export type MapStudy = {
 };
 
 export type SkillProps = {
-  skill: {
-    idSkill: number;
-    nameSkill: string;
-    fieldOfStudy: MapStudy;
-    classSkill: boolean;
-    skillRank: number;
-    skillAbility: number;
-    skillBonus: number;
-  };
-};
+  
+  idSkill: number,
+  nameSkill: string,
+  fieldOfStudy: MapStudy,
+  classSkill: boolean,
+  skillRank: number,
+  skillAbility: number,
+  skillBonus: number,
+
+}
+
+export type MapOfStudyUpProps = {
+  skills: SkillProps[];
+}
 
 export interface skillToServer {
   idSkill: number;

@@ -1,4 +1,4 @@
-import { characterPc, abilitys, subRaces, armorClass, serverSkill, SkillProps } from '../components/interfaces'
+import {  abilitys, subRaces, armorClass, serverSkill, characterPc } from '../components/interfaces'
 
 export const characterEmpty: characterPc = {
     
@@ -51,7 +51,7 @@ export const characterEmpty: characterPc = {
         charisma: 0
     },
     skillPoints: 0,
-    skillsList: [],
+    skillsList: {skills: []},
     featsList: [],
     items: [],
     magicPerDay: {},
@@ -98,18 +98,3 @@ export const skillEmpty: serverSkill = {
     idSkill : 0,
     skillRank : -1
 }
-
-export const emptySkill: SkillProps = {
-    skill: {
-        idSkill: 0,
-        nameSkill: '',
-        fieldOfStudy: {
-            mapStudy: {}
-        }, classSkill: false,
-        skillRank: 0,
-        skillAbility: 0,
-        skillBonus: 0
-    }
-}
-
-export const map = new Map<string, number>()

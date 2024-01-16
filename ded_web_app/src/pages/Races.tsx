@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 
 import { urlChar, urlRaceList } from '../components/url'
 import { characterPc, races, subRaces } from '../components/interfaces'
-import { characterEmpty } from '../components/variables'
+
 
 export function Races() {
 
@@ -12,7 +12,7 @@ export function Races() {
 
     const charRace = { id : '' }
 
-    const [char, setChar] = useState< characterPc >( characterEmpty );
+    const [char, setChar] = useState< characterPc >( );
     const [races, setRaces] = useState< races[] >();
     const [inputData, setInputData] = useState(charRace)
     const [change, setChange] = useState(false)
@@ -50,7 +50,7 @@ export function Races() {
     return (
         <>
         <p>
-            {char.characterName} <>{change===true?
+            {char?.characterName} <>{change===true?
             <button onClick={handleSubmit}>
                 <Link to={'/class/'+charId}>to classes</Link></button>
                 :<>...choose race</>}</>
