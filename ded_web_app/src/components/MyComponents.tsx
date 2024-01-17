@@ -15,13 +15,16 @@ export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
     <div className="row">
       study:
         {skills.map((sk, index) => (
-            <div className="container">
+            <div className="column">
+              <div className="row" key={index}>
             {sk.nameSkill}
             {Object.entries(sk.fieldOfStudy).map(st => 
-              <>
+              <li>
               {st[0]} : {st[1]}
-              </>
+              </li>
+              
               )}
+              </div>
             </div>
         ))}
     </div>

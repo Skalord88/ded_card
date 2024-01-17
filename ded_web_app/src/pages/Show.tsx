@@ -13,7 +13,6 @@ export function Show() {
   const [skills, setSkills] = useState<SkillProps[]>([])
   const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({skills});
   const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfSkills>({skills});
-  // const [skillsStudy, setSkillsStudy] = useState<SkillProps[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,11 +32,11 @@ export function Show() {
   useEffect(() => {
 
     const skStudy: SkillProps[] = skills.filter(
-      sk => sk.idSkill===6 || sk.idSkill===17 || sk.idSkill===21
+      sk => Object.entries(sk.fieldOfStudy).length>0
     )
     console.log(skStudy)
     const skNoStudy: SkillProps[] = skills.filter(
-      sk => sk.idSkill!==6 && sk.idSkill!==17 && sk.idSkill!==21
+      sk => ![6,17,21].includes(sk.idSkill)
     )
     console.log(skNoStudy)
 
