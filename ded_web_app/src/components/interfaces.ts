@@ -14,7 +14,7 @@ export interface characterPc {
   savingThrows: savingThrows;
   abilitys: abilitys;
   skillPoints: number;
-  skillsList: MapOfStudyUpProps;
+  skillsList: MapOfSkills;
   featsList: feat[];
   items: [];
   magicPerDay: {};
@@ -88,7 +88,7 @@ export type SkillProps = {
   
   idSkill: number,
   nameSkill: string,
-  fieldOfStudy: MapStudy,
+  fieldOfStudy: Record<string, number>,
   classSkill: boolean,
   skillRank: number,
   skillAbility: number,
@@ -96,7 +96,7 @@ export type SkillProps = {
 
 }
 
-export type MapOfStudyUpProps = {
+export type MapOfSkills = {
   skills: SkillProps[];
 }
 

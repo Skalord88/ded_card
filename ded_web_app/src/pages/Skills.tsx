@@ -2,21 +2,19 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
-import { MapOfStudyUp } from "../components/MyComponents";
 import {
   characterPc,
-  MapOfStudyUpProps,
-  serverSkill,
-  SkillProps,
-  skillToServer} from "../components/interfaces";
-import { urlChar, urlSkillSet } from "../components/url";
+  MapOfSkills,
+  SkillProps
+  } from "../components/interfaces";
+import { urlChar } from "../components/url";
 import "../css/style.css";
 
 export function Skills() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>( );
-  const [skills, setSkills] = useState<MapOfStudyUpProps | undefined>();
+  const [skills, setSkills] = useState<MapOfSkills | undefined>();
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);

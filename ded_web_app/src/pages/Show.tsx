@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MapOfStudyUp } from "../components/MyComponents";
-import { characterPc, MapOfStudyUpProps, SkillProps } from "../components/interfaces";
+import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
+import { characterPc, MapOfSkills, SkillProps } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty } from "../components/variables";
 
@@ -10,7 +10,9 @@ export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>( characterEmpty );
-  const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfStudyUpProps>(characterEmpty.skillsList);
+  const [skills, setSkills] = useState<SkillProps[]>([])
+  const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({skills});
+  const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfSkills>({skills});
   // const [skillsStudy, setSkillsStudy] = useState<SkillProps[]>();
 
   useEffect(() => {
@@ -18,11 +20,7 @@ export function Show() {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         setChar(resURL.data);
-
-        const skKnow =
-        char.skillsList.skills.filter(sk => sk.idSkill === 17)
-
-        setSkillsNoStudy(skKnow)
+        setSkills(resURL.data.skillsList)
 
       } catch (error) {
         console.log(error);
@@ -34,21 +32,24 @@ export function Show() {
 
   useEffect(() => {
 
-    // setSkillsNoStudy(char.skillsList)
-    console.log(skillsNoStudy)
-    
+    const skStudy: SkillProps[] = skills.filter(
+      sk => sk.idSkill===6 || sk.idSkill===17 || sk.idSkill===21
+    )
+    console.log(skStudy)
+    const skNoStudy: SkillProps[] = skills.filter(
+      sk => sk.idSkill!==6 && sk.idSkill!==17 && sk.idSkill!==21
+    )
+    console.log(skNoStudy)
 
-    // const skStudy: SkillProps[] = char.skillsList.filter(sk =>
-    //   sk.idSkill === 6 ||
-    //   sk.idSkill === 17||
-    //   sk.idSkill === 21
-    // )
+    const mapStudy: MapOfSkills = {skills: skStudy}
+    setSkillsStudy(mapStudy)
+    console.log(mapStudy)
 
-    // setSkillsStudy(skStudy)
-    // console.log(skStudy)
+    const mapNoStudy: MapOfSkills = {skills: skNoStudy}
+    setSkillsNoStudy(mapNoStudy)
+    console.log(mapNoStudy)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [char]);
+  }, [skills]);
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
@@ -208,10 +209,10 @@ export function Show() {
           <>...loading feats...</>
         )}
         <div className="row">
-          
+          <MapOfSkillsNoStudy skills={skillsNoStudy.skills}/>
         </div>
-        <div className="row">
-          study:
+        <div className="container">
+          <MapOfStudy skills={ skillsStudy.skills }/>
         </div>
       </div>
     </>
