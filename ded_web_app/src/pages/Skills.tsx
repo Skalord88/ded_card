@@ -56,7 +56,7 @@ export function Skills() {
 
   useEffect(() => {
     const skStudy: SkillProps[] = skills.filter(
-      (sk) => Object.entries(sk.fieldOfStudy).length > 0
+      (sk) => [6, 17, 21].includes(sk.idSkill)
     );
     console.log(skStudy);
     const skNoStudy: SkillProps[] = skills.filter(
@@ -137,7 +137,7 @@ export function Skills() {
       {skills ? (
         <>
           <div className="container">
-            <div className="row">
+            <div className="column">
               <table>
                 <thead>
                   <th>CS</th>
@@ -201,20 +201,16 @@ export function Skills() {
                 </tbody>
               </table>
             </div>
+            <div className="column">
+              <table>
+                <MapOfStudy skills={skillsStudy.skills} />
+              </table>
+            </div>
           </div>
-
-          
         </>
       ) : (
         <></>
       )}
-      <div className="container">
-        <div className="row">
-            <table>
-              <MapOfStudy skills={skillsStudy.skills} />
-            </table>
-          </div>
-          </div>
     </>
   );
 }
