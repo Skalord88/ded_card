@@ -1,7 +1,6 @@
-import React from 'react';
 import { Outlet, Link } from "react-router-dom";
 
-function AppLayout() {
+export function AppLayout() {
   return (
     <>
       <nav>
@@ -19,5 +18,3 @@ function AppLayout() {
     </>
   )
 };
-
-export default AppLayout;
