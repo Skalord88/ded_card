@@ -703,8 +703,8 @@ public class Character {
 
         studyToAdd.forEach(study -> {
             classSkills.forEach(skill -> {
-                if(study.id == skill.getIdSkill()){
-                    skill.getFieldOfStudy().put(study.study, 0);
+                if(study.idSkill == skill.getIdSkill()){
+                    skill.getFieldOfStudy().put(study.study, study.rank);
                 }
             });
         });

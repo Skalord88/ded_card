@@ -87,7 +87,7 @@ public class MapperSkillsToDTO {
         listStudy.forEach(st -> {
             listSkills.forEach(sk -> {
                 if(sk.getId() == st.getIdSkill()){
-                StudyDTO studyDTO = new StudyDTO(st.getStudyName(), sk.getName());
+                StudyDTO studyDTO = new StudyDTO(st.getId(), st.getStudyName(), sk.getName());
                 studyListDTO.add(studyDTO);
             }});
         });
