@@ -88,12 +88,18 @@ export type SkillProps = {
   
   idSkill: number,
   nameSkill: string,
-  fieldOfStudy: Record<string, number>,
+  fieldOfStudy: Study[],
   classSkill: boolean,
   skillRank: number,
   skillAbility: number,
   skillBonus: number,
 
+}
+
+export type Study = {
+  idStudy: number,
+  study: string,
+  rank: number,
 }
 
 export type MapOfSkills = {

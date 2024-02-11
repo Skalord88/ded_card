@@ -11,7 +11,7 @@ import {
 } from "../components/interfaces";
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
-import { MapOfStudy } from "../components/MyComponents";
+import { MapOfStudy, MapUpdateOfStudy } from "../components/MyComponents";
 
 export function Skills() {
   const { charId } = useParams();
@@ -203,7 +203,7 @@ export function Skills() {
             </div>
             <div className="column">
               <table>
-                <MapOfStudy skills={skillsStudy.skills} />
+                <MapUpdateOfStudy skills={skillsStudy.skills} />
               </table>
             </div>
           </div>
