@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.skills;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.skills.dto.RaceSkillsDTO;
@@ -13,85 +12,91 @@ import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
 public class MapperSkillsToDTO {
-    public static ArrayList<SkillsDTO> toSkillsDTO(ArrayList<ClassSkills> skillList,Abilitys abilitys){
 
-        ArrayList<SkillsDTO> skillListDTO = new ArrayList<>();
+  public static ArrayList<SkillsDTO> toSkillsDTO(
+    ArrayList<ClassSkills> skillList,
+    Abilitys abilitys
+  ) {
+    ArrayList<SkillsDTO> skillListDTO = new ArrayList<>();
 
-        for(ClassSkills skill : skillList){
-            SkillsDTO skillDTO = new SkillsDTO();
-                skillDTO.idSkill = skill.getIdSkill();
-                skillDTO.nameSkill = skill.getNameSkill();
-                skillDTO.fieldOfStudy = skill.getFieldOfStudy();
-                skillDTO.classSkill = skill.isClassSkill();
-                skillDTO.skillRank = skill.getSkillRank();
-                AbilityEnum ability = skill.getSkillAbility();
-                switch (ability) {
-                    case STRENGHT:
-                    skillDTO.skillAbility = abilitys.bonusStreght(abilitys);
-                    break;
-                    case DEXTRITY:
-                    skillDTO.skillAbility = abilitys.bonusDextrity(abilitys);
-                    break;
-                    case CONSTITUTION:
-                    skillDTO.skillAbility = abilitys.bonusConstitution(abilitys);
-                    break;
-                    case INTELLIGENCE:
-                    skillDTO.skillAbility = abilitys.bonusIntelligence(abilitys);
-                    break;
-                    case WISDOM:
-                    skillDTO.skillAbility = abilitys.bonusWisdom(abilitys);
-                    break;
-                    case CHARISMA:
-                    skillDTO.skillAbility = abilitys.bonusCharisma(abilitys);
-                    break;
-                }
-                skillDTO.skillBonus = skill.getSkillDifferentBonus();
-        
-                skillListDTO.add(skillDTO);
-            }
+    for (ClassSkills skill : skillList) {
+      SkillsDTO skillDTO = new SkillsDTO();
+      skillDTO.idSkill = skill.getIdSkill();
+      skillDTO.nameSkill = skill.getNameSkill();
+      skillDTO.fieldOfStudy =
+        MapperStudyToDTO.toStudyListDTO(skill.getFieldOfStudy());
+      skillDTO.classSkill = skill.isClassSkill();
+      skillDTO.skillRank = skill.getSkillRank();
+      AbilityEnum ability = skill.getSkillAbility();
+      switch (ability) {
+        case STRENGHT:
+          skillDTO.skillAbility = abilitys.bonusStreght(abilitys);
+          break;
+        case DEXTRITY:
+          skillDTO.skillAbility = abilitys.bonusDextrity(abilitys);
+          break;
+        case CONSTITUTION:
+          skillDTO.skillAbility = abilitys.bonusConstitution(abilitys);
+          break;
+        case INTELLIGENCE:
+          skillDTO.skillAbility = abilitys.bonusIntelligence(abilitys);
+          break;
+        case WISDOM:
+          skillDTO.skillAbility = abilitys.bonusWisdom(abilitys);
+          break;
+        case CHARISMA:
+          skillDTO.skillAbility = abilitys.bonusCharisma(abilitys);
+          break;
+      }
+      skillDTO.skillBonus = skill.getSkillDifferentBonus();
 
-        return skillListDTO;
+      skillListDTO.add(skillDTO);
     }
 
-    public static ArrayList<RaceSkillsDTO> toRaceSkillsDTO(List<ClassSkills> skillList){
+    return skillListDTO;
+  }
 
-        ArrayList<RaceSkillsDTO> skillListDTO = new ArrayList<>();
-        for(ClassSkills skill : skillList){
-            RaceSkillsDTO skillDTO = new RaceSkillsDTO();
-                skillDTO.nameSkill = skill.getNameSkill();
-                skillDTO.skillRank = (int)skill.getSkillRank();
+  public static ArrayList<RaceSkillsDTO> toRaceSkillsDTO(
+    List<ClassSkills> skillList
+  ) {
+    ArrayList<RaceSkillsDTO> skillListDTO = new ArrayList<>();
+    for (ClassSkills skill : skillList) {
+      RaceSkillsDTO skillDTO = new RaceSkillsDTO();
+      skillDTO.nameSkill = skill.getNameSkill();
+      skillDTO.skillRank = (int) skill.getSkillRank();
 
-                skillListDTO.add(skillDTO);
-            }
-
-        return skillListDTO;
-
+      skillListDTO.add(skillDTO);
     }
 
-    public static List<SkillsDTO> toSkillsNameDTO(List<Skills> skills){
+    return skillListDTO;
+  }
 
-        List<SkillsDTO> skillListDTO = new ArrayList<>();
+  public static List<SkillsDTO> toSkillsNameDTO(List<Skills> skills) {
+    List<SkillsDTO> skillListDTO = new ArrayList<>();
 
-        for(Skills skill : skills){
+    for (Skills skill : skills) {
+      SkillsDTO skDTO = new SkillsDTO(skill.getId(), skill.getName());
+      skillListDTO.add(skDTO);
+    }
 
-            SkillsDTO skDTO = new SkillsDTO(skill.getId(), skill.getName());
-            skillListDTO.add(skDTO);
+    return skillListDTO;
+  }
 
+  public static List<StudyDTO> toStudyDTO(
+    List<Study> listStudy,
+    List<Skills> listSkills
+  ) {
+    List<StudyDTO> studyListDTO = new ArrayList<>();
+
+    for (Study study : listStudy) {
+      for (Skills skill : listSkills) {
+        if (study.getIdSkill() == skill.getId()) {
+          StudyDTO studyDTO = new StudyDTO(study, skill);
+
+          studyListDTO.add(studyDTO);
         }
-
-        return skillListDTO;
+      }
     }
-
-    public static List<StudyDTO> toStudyDTO(List<Study> listStudy, List<Skills> listSkills) {
-        List<StudyDTO> studyListDTO = new ArrayList<>();
-        listStudy.forEach(st -> {
-            listSkills.forEach(sk -> {
-                if(sk.getId() == st.getIdSkill()){
-                StudyDTO studyDTO = new StudyDTO(st.getId(), st.getStudyName(), sk.getName());
-                studyListDTO.add(studyDTO);
-            }});
-        });
-        return studyListDTO;
-    }
-
+    return studyListDTO;
+  }
 }

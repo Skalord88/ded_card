@@ -15,6 +15,9 @@
         <column name="id_skill" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
+        <column name="rank" type="INTEGER">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

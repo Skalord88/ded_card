@@ -19,18 +19,16 @@ import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 @Getter
 @Setter
 @Entity
-
 public class Skills {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    short id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  short id;
 
-    @Nonnull
-    String name;
+  @Nonnull
+  String name;
 
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    AbilityEnum ability;
-    
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  AbilityEnum ability;
 }
