@@ -25,58 +25,49 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
   skills,
   onChange
 }) => {
-  const [skillsList, setRank] = useState<SkillProps[]>(skills);
+  const [skillsList, setRank] = useState<SkillProps[]>([]);
 
   useEffect(() => {
-    console.log(skillsList)
-  },[skillsList])
+    setRank(skills)
+  },[skills])
 
   const addRank = (e: any) => {
-    const updatedSkillsList = skillsList.map(skill => {
-      skill.fieldOfStudy.forEach(study => {
-          if (study.idStudy === e.target.value) {
-              study.rank++
-          }
-      })
-      return skill; // Return the skill after updating its fieldOfStudy
-  });
-  console.log(updatedSkillsList)
-  setRank(updatedSkillsList);
-  }
+    console.log(e[0], e[1])
+    let listaStudy: Study[] = [];
+    skillsList.map((skill) => {
+      if (skill.idSkill === e[0]) {
+        listaStudy = skill.fieldOfStudy;
+      } return skill;
+    });
 
-  const dellRank = (e: any) => {
+    listaStudy.map((study) => {
+      if(study.idStudy === e[1]) {
+        study.rank ++;
+      } return study;
+    });
 
-    const updatedSkillsList = skillsList.map(skill => {
-      skill.fieldOfStudy.forEach(study => {
-          if (study.idStudy === e.target.value) {
-              study.rank--
-          }
-      })
-      return skill; // Return the skill after updating its fieldOfStudy
-  });
-  setRank(updatedSkillsList);
-
-  }
-
-  // useEffect(() => {
-  //   onChange(skillsList);
-  
-  // },[skillsList]);
+    setRank((prevStudy) =>
+      prevStudy.map((skill) =>
+        skill.idSkill === e[0]
+          ? { ...skill, fieldOfStudy: listaStudy }
+          : skill
+      )
+    );
+  };
 
   return (
     <div className="row">
       study:
-      {skills.map((sk, index) => (
+      {skillsList.map((sk, index) => (
         <div className="column">
           <div className="row" key={index}>
             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
             {sk.fieldOfStudy.map((st, index) => (
               <div className="row" key={index}>
-                {st.study} : {sk.skillRank}
-                <button value={st.idStudy} onClick={addRank}>
+                {sk.idSkill} {st.idStudy} {st.study} : {sk.skillRank}
+                <button onClick={() => addRank([sk.idSkill, st.idStudy])}>
                   +
                 </button>
-                <button value={st.rank} onClick={dellRank}>-</button>
               </div>
             ))}
           </div>
