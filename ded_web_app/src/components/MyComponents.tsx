@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MapOfSkills, SkillProps, Study } from "./interfaces";
+import { MapOfSkills, MapUpdateSkills, SkillProps, Study } from "./interfaces";
 
 export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
   return (
@@ -21,23 +21,47 @@ export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
   );
 };
 
-export const MapUpdateOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
+export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
+  skills,
+  onChange
+}) => {
   const [skillsList, setRank] = useState<SkillProps[]>(skills);
 
+  useEffect(() => {
+    console.log(skillsList)
+  },[skillsList])
+
   const addRank = (e: any) => {
+    const updatedSkillsList = skillsList.map(skill => {
+      skill.fieldOfStudy.forEach(study => {
+          if (study.idStudy === e.target.value) {
+              study.rank++
+          }
+      })
+      return skill; // Return the skill after updating its fieldOfStudy
+  });
+  console.log(updatedSkillsList)
+  setRank(updatedSkillsList);
+  }
 
-    // const lista: Study[] = skillsList.forEach((sk) => {
-    //   if (sk.idSkill === e.target.value) {
-    //     sk.skillRank++;
-    //   }
-    // });
-  };
+  const dellRank = (e: any) => {
 
-  // const minRank = (e: any) => {
+    const updatedSkillsList = skillsList.map(skill => {
+      skill.fieldOfStudy.forEach(study => {
+          if (study.idStudy === e.target.value) {
+              study.rank--
+          }
+      })
+      return skill; // Return the skill after updating its fieldOfStudy
+  });
+  setRank(updatedSkillsList);
 
-  //   setRank(e.target.value--)
+  }
 
-  // }
+  // useEffect(() => {
+  //   onChange(skillsList);
+  
+  // },[skillsList]);
 
   return (
     <div className="row">
@@ -52,7 +76,7 @@ export const MapUpdateOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
                 <button value={st.idStudy} onClick={addRank}>
                   +
                 </button>
-                {/* <button value={st.rank} onClick={minRank}>-</button> */}
+                <button value={st.rank} onClick={dellRank}>-</button>
               </div>
             ))}
           </div>

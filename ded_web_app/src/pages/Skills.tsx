@@ -9,9 +9,10 @@ import {
   SkillProps,
   skillToServer,
 } from "../components/interfaces";
+
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
-import { MapOfStudy, MapUpdateOfStudy } from "../components/MyComponents";
+import { MapUpdateOfStudy } from "../components/MyComponents";
 
 export function Skills() {
   const { charId } = useParams();
@@ -203,7 +204,7 @@ export function Skills() {
             </div>
             <div className="column">
               <table>
-                <MapUpdateOfStudy skills={skillsStudy.skills} />
+                <MapUpdateOfStudy skills={skillsStudy.skills} onChange={handleChange} />
               </table>
             </div>
           </div>
