@@ -98,6 +98,7 @@ export type SkillProps = {
 
 export type Study = {
   idStudy: number,
+  idSkill: number,
   study: string,
   rank: number,
 }
@@ -108,7 +109,7 @@ export type MapOfSkills = {
 
 export type MapUpdateSkills = {
   skills: SkillProps[];
-  onChange: (newSkills: SkillProps[]) => void;
+  onChange: (newStudy: Study[]) => void;
 }
 
 export interface skillToServer {

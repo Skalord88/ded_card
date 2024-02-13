@@ -81,6 +81,32 @@ public class SkillsController {
     return new CharacterDTO(character);
   }
 
+  @PostMapping("study/add")
+  public void postMethodName(@RequestBody ArrayList<StudyDTO> newStudyList) {
+    List<Study> listStudy = studyRepository.findAll();
+
+    // int lastId = listStudy.size() + 1;
+    boolean check = true;
+
+    for (StudyDTO newStudy : newStudyList) {
+      check = true;
+      // newStudy.idStudy = (short) lastId;
+      for (Study studyInDB : listStudy) {
+        if (
+          newStudy.idStudy == studyInDB.getId() &&
+          newStudy.study == studyInDB.getStudyName()
+        ) {
+          check = false;
+        }
+      }
+      if (check == true) {
+        Study study = new Study(newStudy);
+        this.studyRepository.save(study);
+        // lastId++;
+      }
+    }
+  }
+
   @PostMapping(value = "study/{id}", consumes = { "application/json" })
   public CharacterDTO addStudyToSkill(
     @PathVariable short id,

@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 
 @Getter
 @Setter
@@ -31,4 +32,9 @@ public class Study implements Serializable {
 
   @Nullable
   Integer rank;
+
+  public Study(StudyDTO newStudy) {
+    this.studyName = newStudy.study;
+    this.idSkill = newStudy.idSkill;
+  }
 }

@@ -25,34 +25,32 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
   skills,
   onChange
 }) => {
-  const [skillsList, setRank] = useState<SkillProps[]>([]);
+  const [skillsList, setRank] = useState<SkillProps[]>(skills);
 
   useEffect(() => {
-    setRank(skills)
-  },[skills])
+    setRank(skills);
+  }, [skills]);
 
   const addRank = (e: any) => {
-    console.log(e[0], e[1])
+    
     let listaStudy: Study[] = [];
     skillsList.map((skill) => {
       if (skill.idSkill === e[0]) {
         listaStudy = skill.fieldOfStudy;
-      } return skill;
+      }
+      return skill;
     });
 
     listaStudy.map((study) => {
-      if(study.idStudy === e[1]) {
-        study.rank ++;
-      } return study;
+      if (study.idStudy === e[1]) {
+        study.rank++;
+      }
+      return study;
     });
 
-    setRank((prevStudy) =>
-      prevStudy.map((skill) =>
-        skill.idSkill === e[0]
-          ? { ...skill, fieldOfStudy: listaStudy }
-          : skill
-      )
-    );
+    console.log(listaStudy)
+
+    onChange(listaStudy);
   };
 
   return (
@@ -64,7 +62,7 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
             {sk.fieldOfStudy.map((st, index) => (
               <div className="row" key={index}>
-                {sk.idSkill} {st.idStudy} {st.study} : {sk.skillRank}
+                {st.study} : {sk.skillRank}
                 <button onClick={() => addRank([sk.idSkill, st.idStudy])}>
                   +
                 </button>

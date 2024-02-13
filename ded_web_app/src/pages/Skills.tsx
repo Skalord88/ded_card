@@ -8,9 +8,10 @@ import {
   serverSkill,
   SkillProps,
   skillToServer,
+  Study,
 } from "../components/interfaces";
 
-import { urlChar, urlSkillSet } from "../components/url";
+import { urlChar, urlSkillSet, urlStudySet } from "../components/url";
 import "../css/style.css";
 import { MapUpdateOfStudy } from "../components/MyComponents";
 
@@ -103,6 +104,14 @@ export function Skills() {
       )
     );
   };
+
+  const handleStudy = (studyUpdate: Study[]) => {
+    try {
+      axios.post(urlStudySet + charId, studyUpdate);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const handleChange = () => {
     const skillUp: skillToServer[] = [];
@@ -204,7 +213,7 @@ export function Skills() {
             </div>
             <div className="column">
               <table>
-                <MapUpdateOfStudy skills={skillsStudy.skills} onChange={handleChange} />
+                <MapUpdateOfStudy skills={skillsStudy.skills} onChange={handleStudy} />
               </table>
             </div>
           </div>
