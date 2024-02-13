@@ -84,16 +84,25 @@ public class SkillsController {
   @PostMapping("study/add")
   public void postMethodName(@RequestBody ArrayList<StudyDTO> newStudyList) {
     List<Study> listStudy = studyRepository.findAll();
+
+    ArrayList<Study> studyToAdd = new ArrayList<>();
     int lastId = listStudy.size();
 
     for (StudyDTO newStudy : newStudyList) {
-      lastId++;
+      boolean check = false;
+      for (Study studyInDB : listStudy) {
+        if (studyInDB.getStudyName().equals(newStudy.study)) {
+          check = true;
+          break;
+        }
+      }
 
-      //cerca se c'e' gia' il nome della skill
-
-      Study study = new Study((short) lastId, newStudy);
-      this.studyRepository.save(study);
+      if (!check) {
+        lastId++;
+        studyToAdd.add(new Study((short) lastId, newStudy));
+      }
     }
+    this.studyRepository.saveAll(studyToAdd);
   }
 
   @PostMapping(value = "study/{id}", consumes = { "application/json" })
