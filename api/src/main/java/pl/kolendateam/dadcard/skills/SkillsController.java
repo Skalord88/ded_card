@@ -84,26 +84,15 @@ public class SkillsController {
   @PostMapping("study/add")
   public void postMethodName(@RequestBody ArrayList<StudyDTO> newStudyList) {
     List<Study> listStudy = studyRepository.findAll();
-
-    // int lastId = listStudy.size() + 1;
-    boolean check = true;
+    int lastId = listStudy.size();
 
     for (StudyDTO newStudy : newStudyList) {
-      check = true;
-      // newStudy.idStudy = (short) lastId;
-      for (Study studyInDB : listStudy) {
-        if (
-          newStudy.idStudy == studyInDB.getId() &&
-          newStudy.study == studyInDB.getStudyName()
-        ) {
-          check = false;
-        }
-      }
-      if (check == true) {
-        Study study = new Study(newStudy);
-        this.studyRepository.save(study);
-        // lastId++;
-      }
+      lastId++;
+
+      //cerca se c'e' gia' il nome della skill
+
+      Study study = new Study((short) lastId, newStudy);
+      this.studyRepository.save(study);
     }
   }
 

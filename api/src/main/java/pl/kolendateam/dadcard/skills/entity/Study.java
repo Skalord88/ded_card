@@ -21,7 +21,7 @@ import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 public class Study implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  // @GeneratedValue(strategy = GenerationType.IDENTITY)
   short id;
 
   @Nonnull
@@ -33,7 +33,8 @@ public class Study implements Serializable {
   @Nullable
   Integer rank;
 
-  public Study(StudyDTO newStudy) {
+  public Study(short lastId, StudyDTO newStudy) {
+    this.id = lastId;
     this.studyName = newStudy.study;
     this.idSkill = newStudy.idSkill;
   }
