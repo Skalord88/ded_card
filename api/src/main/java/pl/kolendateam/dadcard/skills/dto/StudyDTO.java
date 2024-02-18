@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.skills.dto;
 
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.skills.entity.ClassStudy;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
@@ -11,7 +12,7 @@ public class StudyDTO {
   public short idSkill;
   public String skill;
   public String study;
-  public Integer rank;
+  public int rank;
 
   public StudyDTO(Study study, Skills skill) {
     this.idStudy = study.getId();
@@ -20,7 +21,7 @@ public class StudyDTO {
     this.skill = skill.getName();
   }
 
-  public StudyDTO(Study study) {
+  public StudyDTO(ClassStudy study) {
     this.idSkill = study.getIdSkill();
     this.idStudy = study.getId();
     this.study = study.getStudyName();

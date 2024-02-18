@@ -36,7 +36,7 @@ export function Races() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleData = (e:any) => {
+    const handleData = (e: any) => {
         setInputData({...inputData, [e.target.name] : e.target.value})
         setChange(true)
         console.log(e.target)

@@ -1,4 +1,4 @@
-import {  abilitys, subRaces, armorClass, serverSkill, characterPc } from '../components/interfaces'
+import {  abilitys, subRaces, armorClass, serverSkill, characterPc, Study, AddStudy } from '../components/interfaces'
 
 export const characterEmpty: characterPc = {
     
@@ -97,4 +97,9 @@ export const emptySubRaces: subRaces = {
 export const skillEmpty: serverSkill = {
     idSkill : 0,
     skillRank : -1
+}
+
+export const studyEmpty: AddStudy = {
+    idSkill : 0,
+    study: ""
 }

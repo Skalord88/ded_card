@@ -37,6 +37,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.skills.entity.ClassStudy;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
@@ -227,7 +228,7 @@ public class Character {
 
         skill.setIdSkill(skillDB.getId());
         skill.setNameSkill(skillDB.getName());
-        HashSet<Study> studyField = new HashSet<>();
+        HashSet<ClassStudy> studyField = new HashSet<>();
         skill.setFieldOfStudy(studyField);
         skill.setClassSkill(false);
         skill.setSkillRank(0);
@@ -551,7 +552,7 @@ public class Character {
   public void allKnowledgeZero() {
     for (ClassSkills cS : classSkills) {
       if (!cS.getFieldOfStudy().isEmpty()) {
-        HashSet<Study> emptyKnow = new HashSet<>();
+        HashSet<ClassStudy> emptyKnow = new HashSet<>();
         cS.setFieldOfStudy(emptyKnow);
       }
     }
@@ -726,12 +727,6 @@ public class Character {
     for (StudyDTO studyDTO : studyToAdd) {
       for (ClassSkills skill : this.classSkills) {
         if (studyDTO.idSkill == skill.getIdSkill()) {
-          // Study addedStudy = new Study(
-          //   studyDTO.idStudy,
-          //   studyDTO.study,
-          //   skill.getIdSkill(),
-          //   studyDTO.rank
-          // );
           skill
             .getFieldOfStudy()
             .forEach(study -> {

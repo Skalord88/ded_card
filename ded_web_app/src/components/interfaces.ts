@@ -103,6 +103,11 @@ export type Study = {
   rank: number,
 }
 
+export type AddStudy = {
+  idSkill: number,
+  study: string
+}
+
 export type MapOfSkills = {
   skills: SkillProps[];
 }

@@ -15,11 +15,9 @@ import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class Study implements Serializable {
+public class ClassStudy implements Serializable {
 
   @Id
-  // @GeneratedValue(strategy = GenerationType.IDENTITY)
   short id;
 
   @Nonnull
@@ -28,17 +26,22 @@ public class Study implements Serializable {
   @Nonnull
   short idSkill;
 
-  // int rank;
+  String skillName;
 
-  public Study(short lastId, StudyDTO newStudy) {
+  int rank;
+
+  public ClassStudy(short lastId, StudyDTO newStudy) {
     this.id = lastId;
     this.studyName = newStudy.study;
     this.idSkill = newStudy.idSkill;
+    this.skillName = newStudy.skill;
   }
-  // public Study(short newId, String newStudy, short newIdSkill, int newRank) {
-  //   this.id = newId;
-  //   this.studyName = newStudy;
-  //   this.idSkill = newIdSkill;
-  //   this.rank = newRank;
-  // }
+
+  public ClassStudy(Study st, String skName) {
+    this.id = st.getId();
+    this.studyName = st.getStudyName();
+    this.idSkill = st.getIdSkill();
+    this.skillName = skName;
+    this.rank = 0;
+  }
 }

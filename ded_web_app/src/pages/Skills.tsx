@@ -60,19 +60,17 @@ export function Skills() {
     const skStudy: SkillProps[] = skills.filter(
       (sk) => [6, 17, 21].includes(sk.idSkill)
     );
-    console.log(skStudy);
+
     const skNoStudy: SkillProps[] = skills.filter(
       (sk) => ![6, 17, 21].includes(sk.idSkill)
     );
-    console.log(skNoStudy);
 
     const mapStudy: MapOfSkills = { skills: skStudy };
     setSkillsStudy(mapStudy);
-    console.log(mapStudy);
 
     const mapNoStudy: MapOfSkills = { skills: skNoStudy };
     setSkillsNoStudy(mapNoStudy);
-    console.log(mapNoStudy);
+
   }, [skills]);
 
   const handleAddRank = (e: any) => {

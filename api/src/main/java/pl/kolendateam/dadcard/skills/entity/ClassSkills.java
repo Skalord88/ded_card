@@ -14,22 +14,11 @@ public class ClassSkills implements Serializable {
 
   short idSkill;
   String nameSkill;
-  Set<Study> fieldOfStudy;
+  Set<ClassStudy> fieldOfStudy;
   boolean classSkill;
   double skillRank;
   int skillDifferentBonus;
   AbilityEnum skillAbility;
-
-  // public void addStudyMapToSkill(Study studyOfClass) {
-  //   if (studyOfClass.getRank() == null) {
-  //     studyOfClass.setRank(0);
-  //   }
-  //   this.fieldOfStudy.forEach(study -> {
-  //       if (studyOfClass.getId() != study.getId()) {
-  //         this.fieldOfStudy.add(studyOfClass);
-  //       }
-  //     });
-  // }
 
   public void removeStudyFromKnowledge(int idToRemove) {
     this.fieldOfStudy.forEach(study -> {
@@ -46,24 +35,16 @@ public class ClassSkills implements Serializable {
   }
 
   public void addStudyToFieldOfStudy(Study st) {
-    if (this.fieldOfStudy.isEmpty()) {
-      st.rank = 0;
-      this.fieldOfStudy.add(st);
-    } else {
-      boolean check = false;
-      for (Study study : this.fieldOfStudy) {
-        if (study.id != st.id) {
-          st.rank = 0;
-          check = true;
-          break;
-        }
-        if (check) {
-          this.fieldOfStudy.add(st);
-          System.out.println("study add to character" + this.getNameSkill());
-        } else {
-          System.out.println("study already present");
-        }
+    boolean check = true;
+    for (ClassStudy study : this.fieldOfStudy) {
+      if (study.getId() == st.getId()) {
+        check = false;
+        break;
       }
+    }
+    if (check) {
+      ClassStudy classStudy = new ClassStudy(st, this.nameSkill);
+      this.fieldOfStudy.add(classStudy);
     }
   }
 }
