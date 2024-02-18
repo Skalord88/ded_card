@@ -525,13 +525,13 @@ public class Character {
   }
 
   public void addStudyToCharacter(Set<Study> availableStudy) {
-    availableStudy.forEach(study -> {
-      this.classSkills.forEach(classSkill -> {
-          if (classSkill.getIdSkill() == study.getIdSkill()) {
-            classSkill.addStudyMapToSkill(study);
-          }
-        });
-    });
+    for (ClassSkills clSk : this.classSkills) {
+      for (Study st : availableStudy) {
+        if (clSk.getIdSkill() == st.getIdSkill()) {
+          clSk.addStudyToFieldOfStudy(st);
+        }
+      }
+    }
   }
 
   public void removeStudyFromCharacter(Set<Study> availableStudy) {
@@ -726,20 +726,17 @@ public class Character {
     for (StudyDTO studyDTO : studyToAdd) {
       for (ClassSkills skill : this.classSkills) {
         if (studyDTO.idSkill == skill.getIdSkill()) {
-          Study addedStudy = new Study(
-            studyDTO.idStudy,
-            studyDTO.study,
-            studyDTO.idSkill,
-            studyDTO.rank
-          );
+          // Study addedStudy = new Study(
+          //   studyDTO.idStudy,
+          //   studyDTO.study,
+          //   skill.getIdSkill(),
+          //   studyDTO.rank
+          // );
           skill
             .getFieldOfStudy()
             .forEach(study -> {
-              if (
-                addedStudy.getId() != study.getId() &&
-                !addedStudy.getStudyName().equals(study.getStudyName())
-              ) {
-                skill.addStudyMapToSkill(addedStudy);
+              if (studyDTO.idStudy == study.getId()) {
+                study.setRank(studyDTO.rank);
               }
             });
         }

@@ -38,4 +38,11 @@ public class Study implements Serializable {
     this.studyName = newStudy.study;
     this.idSkill = newStudy.idSkill;
   }
+
+  public Study(short newId, String newStudy, short newIdSkill, int newRank) {
+    this.id = newId;
+    this.studyName = newStudy;
+    this.idSkill = newIdSkill;
+    this.rank = newRank;
+  }
 }
