@@ -114,7 +114,11 @@ export type MapOfSkills = {
 
 export type MapUpdateSkills = {
   skills: SkillProps[];
-  onChange: (newStudy: Study[]) => void;
+  skillToChange: number;
+  studyToChange: number;
+  onChange: (
+    newSkill: number,
+    newStudy: number) => void;
 }
 
 export interface skillToServer {
