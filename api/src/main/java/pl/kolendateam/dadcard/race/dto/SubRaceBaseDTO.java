@@ -17,7 +17,7 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @NoArgsConstructor
 public class SubRaceBaseDTO {
-    public int id;
+    public short id;
     public String subRacesName;
     public String avatarUrl;
     public Abilitys raceAbilitys;

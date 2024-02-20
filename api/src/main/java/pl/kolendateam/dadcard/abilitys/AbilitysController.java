@@ -4,6 +4,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +20,8 @@ import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 
 @RestController
-@RequestMapping("")
+@CrossOrigin
+@RequestMapping("ability")
 public class AbilitysController {
 
     CharacterRepository characterRepository;
@@ -29,8 +32,22 @@ public class AbilitysController {
         this.characterRepository = characterRepository;
     }
 
-    @PostMapping(value="{id}/ability", consumes = {"application/json"})
-    public CharacterAbilityDTO setCharacterAbility(@PathVariable int id, @RequestBody AbilitysDTO abilitysDTO){
+    @GetMapping(value = "{id}")
+    public CharacterAbilityDTO showCharacterAbility(@PathVariable short id) {
+
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "Character Not Found");
+        }
+
+        Character character = characterOpt.get();
+        return new CharacterAbilityDTO(character);
+    }
+
+    @PostMapping(value="{id}", consumes = {"application/json"})
+    public CharacterAbilityDTO setCharacterAbility(@PathVariable short id, @RequestBody AbilitysDTO abilitysDTO){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

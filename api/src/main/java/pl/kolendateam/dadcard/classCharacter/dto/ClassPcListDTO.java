@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClassPcListDTO {
 
+    public int id;
     public String className;
     public int level;
 

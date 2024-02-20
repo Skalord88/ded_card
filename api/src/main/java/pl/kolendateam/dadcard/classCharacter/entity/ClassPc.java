@@ -3,10 +3,14 @@ package pl.kolendateam.dadcard.classCharacter.entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @AllArgsConstructor
 @Setter
@@ -15,11 +19,24 @@ import lombok.Setter;
 public class ClassPc implements Serializable {
 
     short id;
-    String name;
+
+    @NonNull
+    @Enumerated(EnumType.STRING)
+    EnumClass name;
+    
     byte level;
     byte hitDice;
     String savingThrow;
     double classBab;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsPerDay;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spellsKnown;
+
+    @Enumerated(EnumType.STRING)
+    SpellsEnum spells_domain;
 
     public void incrementLevel() {
         this.level++;

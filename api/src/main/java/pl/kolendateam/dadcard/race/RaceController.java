@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
+@CrossOrigin
 @RestController
 @RequestMapping("race")
 public class RaceController {
@@ -48,12 +50,12 @@ public class RaceController {
     }
 
     @GetMapping("{id}/region")
-    public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable int id){
+    public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable short id){
         Optional<Race> raceOpt = this.raceRepository.findById(id);
 
         if(!raceOpt.isPresent()){
             throw new ResponseStatusException(
-           HttpStatus.NOT_FOUND, "Race Not Found");
+            HttpStatus.NOT_FOUND, "Race Not Found");
         }
 
         List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
@@ -62,7 +64,9 @@ public class RaceController {
     }
 
     @PostMapping(value = "{id}/race", consumes = { "application/json" })
-    public CharacterDTO setSubRaceToCharacter(@PathVariable int id, @RequestBody SubRaceBaseDTO subRaceBaseDTO){
+    public CharacterDTO setSubRaceToCharacter(
+        @PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO
+        ){
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 

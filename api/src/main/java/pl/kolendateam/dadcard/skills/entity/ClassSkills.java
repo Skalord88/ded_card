@@ -1,8 +1,7 @@
 package pl.kolendateam.dadcard.skills.entity;
 
 import java.io.Serializable;
-import java.util.HashMap;
-
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,20 +12,39 @@ import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 @NoArgsConstructor
 public class ClassSkills implements Serializable {
 
-    short idSkill;
-    String nameSkill;
-    HashMap <String,Integer> fieldOfStudy;
-    boolean classSkill;
-    double skillRank;
-    int skillDifferentBonus;
-    AbilityEnum skillAbility;
+  short idSkill;
+  String nameSkill;
+  Set<ClassStudy> fieldOfStudy;
+  boolean classSkill;
+  double skillRank;
+  int skillDifferentBonus;
+  AbilityEnum skillAbility;
 
-    public void addStudyMapToSkill(Study studyOfClass) {
-        fieldOfStudy.put(studyOfClass.getStudyName(),+0);
+  public void removeStudyFromKnowledge(int idToRemove) {
+    this.fieldOfStudy.forEach(study -> {
+        if (study.id == idToRemove) {
+          fieldOfStudy.remove(study);
+        }
+      });
+  }
+
+  public void zeroStudyRank() {
+    this.fieldOfStudy.forEach(study -> {
+        study.setRank(0);
+      });
+  }
+
+  public void addStudyToFieldOfStudy(Study st) {
+    boolean check = true;
+    for (ClassStudy study : this.fieldOfStudy) {
+      if (study.getId() == st.getId()) {
+        check = false;
+        break;
+      }
     }
-
-    public void removeStudyFromKnowledge(HashMap<String, Integer> fieldOfStudy, String study) {
-        fieldOfStudy.remove(study);
+    if (check) {
+      ClassStudy classStudy = new ClassStudy(st, this.nameSkill);
+      this.fieldOfStudy.add(classStudy);
     }
-
+  }
 }

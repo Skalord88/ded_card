@@ -1,16 +1,15 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import java.io.Serializable;
-
+import io.micrometer.common.lang.Nullable;
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 
 @Getter
 @Setter
@@ -19,14 +18,27 @@ import lombok.Setter;
 @Entity
 public class Study implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public short id;
+  @Id
+  // @GeneratedValue(strategy = GenerationType.IDENTITY)
+  short id;
 
-    @NonNull
-    String studyName;
+  @Nonnull
+  String studyName;
 
-    @NonNull
-    String relatedSkill;
+  @Nonnull
+  short idSkill;
 
+  // int rank;
+
+  public Study(short lastId, StudyDTO newStudy) {
+    this.id = lastId;
+    this.studyName = newStudy.study;
+    this.idSkill = newStudy.idSkill;
+  }
+  // public Study(short newId, String newStudy, short newIdSkill, int newRank) {
+  //   this.id = newId;
+  //   this.studyName = newStudy;
+  //   this.idSkill = newIdSkill;
+  //   this.rank = newRank;
+  // }
 }

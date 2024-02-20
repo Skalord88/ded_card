@@ -1,0 +1,22 @@
+table {
+  border: 1px solid #666;
+  height: 100%;
+  width: auto;
+}
+th, td {
+  border: 1px solid #666;
+  text-align: center;
+}
+button {
+  height: auto;
+  width: auto;
+}
+.container {
+  display: flex;
+}
+.row {
+  flex: 1;
+}
+.column {
+  display: flex;
+}

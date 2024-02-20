@@ -42,7 +42,7 @@ public class FeatsController {
     }
 
     @PostMapping(value = "{id}", consumes = { "application/json" })
-    public CharacterDTO setFeatsCharacter(@PathVariable int id, @RequestBody FeatsDTO featsDTO) {
+    public CharacterDTO setFeatsCharacter(@PathVariable short id, @RequestBody FeatsDTO featsDTO) {
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
         if (!characterOpt.isPresent()) {

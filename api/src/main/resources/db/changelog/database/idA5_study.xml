@@ -12,7 +12,7 @@
         <column name="study_name" type="varchar(255)">
           <constraints nullable="false"/>
         </column>
-        <column name="related_skill" type="varchar(255)">
+        <column name="id_skill" type="SMALLINT">
           <constraints nullable="false"/>
         </column>
       </createTable>
