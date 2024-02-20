@@ -8,7 +8,8 @@ import {
   serverSkill,
   SkillProps,
   skillToServer,
-  Study
+  Study,
+  StudyUp
 } from "../components/interfaces";
 
 import { urlChar, urlSkillSet } from "../components/url";
@@ -25,8 +26,14 @@ export function Skills() {
   const [skills, setSkills] = useState<SkillProps[]>([]);
   const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({ skills });
   const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfSkills>({ skills });
-  const [idStudy, setIdStudy] = useState(0);
-  const [idSkill, setIdSkill] = useState(0);
+  const [studyToAdd, setStudyToAdd] = useState<StudyUp>({
+    idSkill: 0,
+    idStudy: 0
+  });
+  const [studyToDel, setStudyToDel] = useState<StudyUp>({
+    idSkill: 0,
+    idStudy: 0
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,13 +53,16 @@ export function Skills() {
   }, []);
 
   useEffect(() => {
-    const totalSkillPoints = skills.reduce(
+    let totalSkillPoints = skills.reduce(
       (total, skill) =>
         !skill.classSkill
           ? total + skill.skillRank * 2
           : total + skill.skillRank,
       0
     );
+
+    console.log(totalSkillPoints);
+
     if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
       setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
     }
@@ -74,20 +84,17 @@ export function Skills() {
     setSkillsNoStudy(mapNoStudy);
   }, [skills]);
 
-  const handleAddRank = (skillToChange: number, studyToChange: number) => {
-    
-    setIdSkill(skillToChange);
-    setIdStudy(studyToChange);
-
-    console.log(skillToChange, studyToChange);
+  const handleAddRank = (newStudy: StudyUp) => {
+    setStudyToAdd(newStudy);
 
     if (actualSkillsPoints > 0) {
-      if (studyToChange === -1) {
+      if (newStudy.idStudy === -1) {
         setSkills((prevSkills) =>
           prevSkills.map((skill) =>
-            skill.idSkill === skillToChange
-              ? skill.classSkill && skill.skillRank < maxSkillLv
-                ? { ...skill, skillRank: skill.skillRank + 1 }
+            skill.idSkill === newStudy.idSkill
+              ? skill.classSkill
+              && skill.skillRank < maxSkillLv
+                ? { ...skill, skillRank: skill.skillRank++ }
                 : skill.skillRank < maxSkillLv / 2
                 ? { ...skill, skillRank: skill.skillRank + 0.5 }
                 : skill
@@ -95,63 +102,63 @@ export function Skills() {
           )
         );
       } else {
-        // let listaStudy: Study[] = [];
-        // skills.map((skill) => {
-        //   if (skill.idSkill === skillToChange) {
-        //     listaStudy = skill.fieldOfStudy;
-        //   }
-        //   return listaStudy;
-        // });
-
-        // listaStudy.map((study) => {
-        //   if (study.idStudy === studyToChange) {
-        //     if (study.rank < maxSkillLv) {
-        //       study.rank++;
-        //     }
-        //   }
-        //   return listaStudy;
-        // });
-
-        // console.log(listaStudy);
-
-        setSkills(
-          (prevSkill) =>
-            prevSkill.map((skill) =>
-              skill.idSkill === skillToChange
-                ? {
-                    ...skill,
-                    fieldOfStudy: skill.fieldOfStudy.map((study) =>
-                      study.idStudy === studyToChange
-                        ? { ...study, rank: study.rank++ }
-                        : study
-                    )
-                  }
-                : skill
-            )
-          // prevSkill.map((skill) =>
-          //   skill.idSkill === skillToChange
-          //     ? { ...skill,
-          //        skillRank: skill.skillRank++,
-          //        fieldOfStudy: listaStudy }
-          //     : skill
-          // )
+        setSkills((prevSkill) =>
+          prevSkill.map((skill) =>
+            skill.idSkill === newStudy.idSkill
+            && skill.skillRank < maxSkillLv
+              ? {
+                  ...skill,
+                  skillRank: skill.skillRank++,
+                  fieldOfStudy: skill.fieldOfStudy.map((study) =>
+                    study.idStudy === newStudy.idStudy
+                    && study.rank < maxSkillLv
+                      ? { ...study, rank: study.rank++ }
+                      : study
+                  )
+                }
+              : skill
+          )
         );
       }
+      setStudyToAdd({ ...studyToAdd, idSkill: 0, idStudy: 0 });
     }
   };
 
-  const handleDelRank = (e: any) => {
-    setSkills((prevSkills) =>
-      prevSkills.map((skill) =>
-        skill.idSkill === e[0]
-          ? skill.classSkill && skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skillRank - 1 }
-            : skill.skillRank > 0
-            ? { ...skill, skillRank: skill.skillRank - 0.5 }
+  const handleDelRank = (newStudy: StudyUp) => {
+    setStudyToDel(newStudy);
+    if (newStudy.idStudy === -1) {
+      setSkills((prevSkills) =>
+        prevSkills.map((skill) =>
+          skill.idSkill === newStudy.idSkill
+            ? skill.classSkill
+            && skill.skillRank > 0
+              ? { ...skill, skillRank: skill.skillRank-- }
+              : skill.skillRank > 0
+              ? { ...skill, skillRank: skill.skillRank - 0.5 }
+              : skill
             : skill
-          : skill
-      )
-    );
+        )
+      );
+    } else {
+      setSkills((prevSkill) =>
+        prevSkill.map((skill) =>
+          skill.idSkill === newStudy.idSkill
+          && skill.skillRank > 0
+            ? {
+                ...skill,
+                skillRank: skill.skillRank--,
+                fieldOfStudy: skill.fieldOfStudy.map((study) =>
+                  study.idStudy === newStudy.idStudy
+                  && study.rank > 0
+                    ? { ...study, rank: study.rank-- }
+                    : study
+                )
+              }
+            : skill
+        )
+      );
+    }
+    setStudyToDel({ ...studyToAdd, idSkill: 0, idStudy: 0 });
   };
 
   const handleChange = () => {
@@ -219,11 +226,23 @@ export function Skills() {
                           <div key={index}>
                             {s.nameSkill}
                             <button
-                              onClick={() => handleAddRank(s.idSkill, -1)}
+                              onClick={() =>
+                                handleAddRank({
+                                  idSkill: s.idSkill,
+                                  idStudy: -1
+                                })
+                              }
                             >
                               +
                             </button>
-                            <button onClick={() => handleDelRank([s.idSkill])}>
+                            <button
+                              onClick={() =>
+                                handleDelRank({
+                                  idSkill: s.idSkill,
+                                  idStudy: -1
+                                })
+                              }
+                            >
                               -
                             </button>
                           </div>
@@ -264,9 +283,10 @@ export function Skills() {
               <table>
                 <MapUpdateOfStudy
                   skills={skillsStudy.skills}
-                  skillToChange={idSkill}
-                  studyToChange={idStudy}
-                  onChange={handleAddRank}
+                  studyAdd={studyToAdd}
+                  studyDel={studyToDel}
+                  onRankAdd={handleAddRank}
+                  onRankDel={handleDelRank}
                 />
               </table>
             </div>

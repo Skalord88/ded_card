@@ -8,13 +8,13 @@ import {
   urlClassAdd,
   urlClassSell,
 } from "../components/url";
-import { characterPc } from "../components/interfaces";
+import { ClassPc, characterPc } from "../components/interfaces";
 
 export function Classes() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>();
-  const [classesList, setClassesList] = useState([]);
+  const [classesList, setClassesList] = useState<ClassPc[]>([]);
   const [sign, setSign] = useState("");
   const [id, setId] = useState(-1);
 
@@ -35,6 +35,10 @@ export function Classes() {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+
+  },[classesList])
 
   const handleData = (e: any) => {
     setSign(e[0]);

@@ -2,7 +2,7 @@ export interface characterPc {
   id: number;
   characterName: string;
   playerName: string;
-  classPcList: classPc[];
+  classPcList: ClassPc[];
   size: string;
   race: string;
   subRace: string;
@@ -30,7 +30,7 @@ export interface character {
   playerName: string;
 }
 
-export interface classPc {
+export type ClassPc = {
   id: number;
   className: number;
   level: number;
@@ -85,7 +85,7 @@ export type MapStudy = {
 };
 
 export type SkillProps = {
-  
+
   idSkill: number,
   nameSkill: string,
   fieldOfStudy: Study[],
@@ -112,13 +112,18 @@ export type MapOfSkills = {
   skills: SkillProps[];
 }
 
+export type StudyUp = {
+  idSkill: number, idStudy: number
+}
+
 export type MapUpdateSkills = {
   skills: SkillProps[];
-  skillToChange: number;
-  studyToChange: number;
-  onChange: (
-    newSkill: number,
-    newStudy: number) => void;
+  studyAdd: StudyUp;
+  studyDel: StudyUp;
+  onRankAdd: (
+    newStudy: StudyUp) => void;
+  onRankDel: (
+    newStudy: StudyUp) => void;
 }
 
 export interface skillToServer {
@@ -130,6 +135,12 @@ export interface feat {
   characterFeatName: string;
   characterFeatSpecial: string;
   characterFeatDescription: string;
+}
+
+export type ChosenRace = {
+  id: number,
+  race: string,
+  sub: string
 }
 
 export interface races {

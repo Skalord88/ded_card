@@ -4,7 +4,8 @@ import {
   MapOfSkills,
   MapUpdateSkills,
   SkillProps,
-  Study
+  Study,
+  StudyUp
 } from "./interfaces";
 import { studyEmpty } from "./variables";
 
@@ -30,15 +31,18 @@ export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
 
 export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
   skills,
-  skillToChange,
-  studyToChange,
-  onChange
+  studyAdd,
+  studyDel,
+  onRankAdd,
+  onRankDel
 }) => {
   const [skillsList, setRank] = useState<SkillProps[]>(skills);
+    // ---- zostawic!
   // const [newStudy, setNewStudy] = useState<AddStudy>(studyEmpty);
   // const [studySelected, setStudySelected] = useState<AddStudy[]>([]);
-  const [idSkill, setIdSkill] = useState(skillToChange);
-  const [idStudy, setIdStudy] = useState(studyToChange);
+    // ---- zostawic!
+  const [studyToAdd, setToAdd] = useState<StudyUp>(studyAdd);
+  const [studyToDel, setToDel] = useState<StudyUp>(studyDel);
 
   useEffect(() => {
     setRank(skills);
@@ -46,15 +50,20 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
 
 
   const addRank = (newSkill: number, newStudy: number) => {
-    setIdSkill(newSkill);
-    setIdStudy(newStudy)
+    setToAdd({ ...studyToAdd, idSkill: newSkill, idStudy: newStudy})
+  };
 
+  const delRank = (newSkill: number, newStudy: number) => {
+    setToDel({ ...studyToDel, idSkill: newSkill, idStudy: newStudy})
   };
 
   useEffect(() => {
-    onChange(idSkill, idStudy);
-    // console.log(idSkill, idStudy)
-  },[idStudy])
+    onRankAdd(studyToAdd)
+  },[studyToAdd])
+
+  useEffect(() => {
+    onRankDel(studyToDel);
+  },[studyToDel])
 
   // ---- zostawic!
   // const handleStudyName = (e: any) => {
@@ -109,6 +118,9 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
                   {st.study} : {st.rank}
                   <button onClick={() => addRank(sk.idSkill, st.idStudy)}>
                     +
+                  </button>
+                  <button onClick={() => delRank(sk.idSkill, st.idStudy)}>
+                    -
                   </button>
                 </div>
               </>
