@@ -6,13 +6,13 @@ import {
   characterPc,
   MapOfSkills,
   serverSkill,
+  ServerStudy,
   SkillProps,
   skillToServer,
-  Study,
   StudyUp
 } from "../components/interfaces";
 
-import { urlChar, urlSkillSet } from "../components/url";
+import { urlChar, urlSkillSet, urlStudySet } from "../components/url";
 import "../css/style.css";
 import { MapUpdateOfStudy } from "../components/MyComponents";
 
@@ -61,10 +61,21 @@ export function Skills() {
       0
     );
 
+    let totalStudyPoints = 0;
+    skills.forEach(
+      (skill) => 
+      skill.fieldOfStudy.length > 0
+      ? totalStudyPoints = skill.fieldOfStudy.reduce(
+        (totalSt, study) => 
+        totalSt + study.rank, 0
+      )
+      : 0
+    )
+
     console.log(totalSkillPoints);
 
     if (totalSkillPoints >= 0 || maxSkillsPoints < totalSkillPoints) {
-      setActualSkillsPoints(maxSkillsPoints - totalSkillPoints);
+      setActualSkillsPoints(maxSkillsPoints - totalSkillPoints - totalStudyPoints);
     }
   }, [maxSkillsPoints, skills]);
 
@@ -92,8 +103,7 @@ export function Skills() {
         setSkills((prevSkills) =>
           prevSkills.map((skill) =>
             skill.idSkill === newStudy.idSkill
-              ? skill.classSkill
-              && skill.skillRank < maxSkillLv
+              ? skill.classSkill && skill.skillRank < maxSkillLv
                 ? { ...skill, skillRank: skill.skillRank++ }
                 : skill.skillRank < maxSkillLv / 2
                 ? { ...skill, skillRank: skill.skillRank + 0.5 }
@@ -105,13 +115,13 @@ export function Skills() {
         setSkills((prevSkill) =>
           prevSkill.map((skill) =>
             skill.idSkill === newStudy.idSkill
-            && skill.skillRank < maxSkillLv
-              ? {
+              //  && skill.skillRank < maxSkillLv
+              ?  {
                   ...skill,
-                  skillRank: skill.skillRank++,
+                  // skillRank: skill.skillRank++,
                   fieldOfStudy: skill.fieldOfStudy.map((study) =>
-                    study.idStudy === newStudy.idStudy
-                    && study.rank < maxSkillLv
+                    study.idStudy === newStudy.idStudy &&
+                    study.rank < maxSkillLv
                       ? { ...study, rank: study.rank++ }
                       : study
                   )
@@ -130,8 +140,7 @@ export function Skills() {
       setSkills((prevSkills) =>
         prevSkills.map((skill) =>
           skill.idSkill === newStudy.idSkill
-            ? skill.classSkill
-            && skill.skillRank > 0
+            ? skill.classSkill && skill.skillRank > 0
               ? { ...skill, skillRank: skill.skillRank-- }
               : skill.skillRank > 0
               ? { ...skill, skillRank: skill.skillRank - 0.5 }
@@ -143,13 +152,13 @@ export function Skills() {
       setSkills((prevSkill) =>
         prevSkill.map((skill) =>
           skill.idSkill === newStudy.idSkill
-          && skill.skillRank > 0
+          //  && skill.skillRank > 0
             ? {
                 ...skill,
-                skillRank: skill.skillRank--,
+                // skillRank: skill.skillRank--,
                 fieldOfStudy: skill.fieldOfStudy.map((study) =>
                   study.idStudy === newStudy.idStudy
-                  && study.rank > 0
+                   && study.rank > 0
                     ? { ...study, rank: study.rank-- }
                     : study
                 )
@@ -165,6 +174,9 @@ export function Skills() {
     const skillUp: skillToServer[] = [];
     let skill: serverSkill;
 
+    const studyToServer: ServerStudy[] = [];
+    let studyServer: ServerStudy;
+
     skills.forEach((s) => {
       s.classSkill && s.skillRank > 0
         ? (skill = {
@@ -175,11 +187,30 @@ export function Skills() {
             idSkill: s.idSkill,
             skillRank: s.skillRank * 2
           });
+      if (s.fieldOfStudy.length > 0)
+        s.fieldOfStudy.forEach((study) => {
+          studyServer = {
+            idStudy: study.idStudy,
+            idSkill: study.idSkill,
+            rank: study.rank
+          };
+          studyToServer.push(studyServer);
+
+          console.log(studyServer);
+        });
+
       skillUp.push(skill);
     });
 
     try {
       axios.post(urlSkillSet + charId, skillUp);
+    } catch (error) {
+      console.log(error);
+    }
+
+    try {
+      axios.post(urlStudySet + charId, studyToServer)
+      console.log(studyToServer);
     } catch (error) {
       console.log(error);
     }

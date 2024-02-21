@@ -103,6 +103,12 @@ export type Study = {
   rank: number,
 }
 
+export type ServerStudy = {
+  idStudy: number,
+  idSkill: number,
+  rank: number,
+}
+
 export type AddStudy = {
   idSkill: number,
   study: string

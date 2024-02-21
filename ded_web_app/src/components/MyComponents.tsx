@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
-  AddStudy,
   MapOfSkills,
   MapUpdateSkills,
   SkillProps,
-  Study,
   StudyUp
 } from "./interfaces";
-import { studyEmpty } from "./variables";
 
 export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
   return (
