@@ -24,3 +24,6 @@ export const urlSkillSet: string =
 
 export const urlStudySet: string =
 'localhost:8080/skills/study/';
+
+export const urlFeats: string =
+'localhost:8080/feats';

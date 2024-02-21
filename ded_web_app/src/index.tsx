@@ -9,6 +9,7 @@ import { List } from './pages/List';
 import { Races } from './pages/Races';
 import { Show } from "./pages/Show";
 import { Skills } from './pages/Skills';
+import { Feats } from './pages/Feats';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -23,6 +24,7 @@ root.render(
         <Route path='/race/:charId' element={<Races />} />
         <Route path='/class/:charId' element={<Classes />} />
         <Route path='/skill/:charId' element={<Skills />} />
+        <Route path='/feat/:charId' element={<Feats />} />
         </Route>
       </Routes>
     </BrowserRouter>
