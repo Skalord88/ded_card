@@ -203,17 +203,14 @@ export function Skills() {
     });
 
     try {
-      axios.post(urlSkillSet + charId, skillUp);
+      axios.post(urlSkillSet + charId, skillUp)
+      .then(() => {
+        return axios.post(urlStudySet + charId, studyToServer);
+      })
     } catch (error) {
       console.log(error);
     }
 
-    try {
-      axios.post(urlStudySet + charId, studyToServer)
-      console.log(studyToServer);
-    } catch (error) {
-      console.log(error);
-    }
     window.location.reload();
   };
 
