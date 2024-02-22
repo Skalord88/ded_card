@@ -16,7 +16,7 @@ export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
             {sk.fieldOfStudy.map((st, index) => (
               <div className="row" key={index}>
-                {st.study} : {sk.skillRank}
+                {st.study} : {sk.skillRank + st.rank}
               </div>
             ))}
           </div>

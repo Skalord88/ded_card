@@ -93,6 +93,8 @@ export function Skills() {
 
     const mapNoStudy: MapOfSkills = { skills: skNoStudy };
     setSkillsNoStudy(mapNoStudy);
+
+    console.log(skills)
   }, [skills]);
 
   const handleAddRank = (newStudy: StudyUp) => {
@@ -211,7 +213,7 @@ export function Skills() {
       console.log(error);
     }
 
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (

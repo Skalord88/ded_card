@@ -211,7 +211,7 @@ export function Show() {
           <MapOfSkillsNoStudy skills={skillsNoStudy.skills}/>
         </div>
         <div className="container">
-          <MapOfStudy skills={ skillsStudy.skills }/>
+          <MapOfStudy skills={skillsStudy.skills}/>
         </div>
       </div>
     </>
