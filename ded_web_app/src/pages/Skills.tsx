@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
 import {
@@ -197,6 +197,9 @@ export function Skills() {
           maxSkillLv +
           " "}
         <button onClick={handleChange}>set Skills</button>
+        <button>
+          <Link to={"/feat/" + charId}>to feats</Link>
+        </button>
       </p>
       {skills ? (
         <>

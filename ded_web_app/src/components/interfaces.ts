@@ -137,6 +137,14 @@ export interface feat {
   characterFeatDescription: string;
 }
 
+export interface serverFeat {
+  id: number;
+  featName: string;
+  featsType: string;
+  prerequisite: string;
+  description: string;
+}
+
 export type ChosenRace = {
   id: number,
   race: string,

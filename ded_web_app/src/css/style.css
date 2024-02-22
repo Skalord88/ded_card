@@ -13,10 +13,13 @@ button {
 }
 .container {
   display: flex;
+  flex-direction: row;
 }
 .row {
   flex: 1;
+  flex-direction: row
 }
 .column {
   display: flex;
+  flex-direction: column
 }
