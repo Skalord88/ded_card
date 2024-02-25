@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.feats;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class FeatsController {
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setFeatsCharacter(
     @PathVariable short id,
-    @RequestBody FeatsDTO featsDTO
+    @RequestBody ArrayList<FeatsDTO> featsDTOList
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -59,34 +60,27 @@ public class FeatsController {
 
     Character character = characterOpt.get();
 
-    Optional<Feats> featsOpt = this.featsRepository.findById(featsDTO.id);
+    List<Feats> featsFromDB = this.featsRepository.findAll();
 
-    if (!featsOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Feats Not Found"
-      );
-    }
+    featsFromDB.forEach(feat -> {
+      boolean buyed = character.buyFeat(feat);
 
-    Feats feat = featsOpt.get();
+      if (buyed) {
+        if (feat.getSkills() != null) {
+          character.addSkill(feat.getSkills());
+        }
 
-    boolean buyed = character.buyFeat(feat);
+        if (feat.getSpeed() != null) {
+          character.addSpeed(feat.getSpeed());
+        }
 
-    if (buyed) {
-      if (feat.getSkills() != null) {
-        character.addSkill(feat.getSkills());
+        if (feat.getSpecialAttacks() != null) {
+          character.addSpecialAttacks(feat.getSpecialAttacks());
+        }
       }
+    });
+    this.characterRepository.save(character);
 
-      if (feat.getSpeed() != null) {
-        character.addSpeed(feat.getSpeed());
-      }
-
-      if (feat.getSpecialAttacks() != null) {
-        character.addSpecialAttacks(feat.getSpecialAttacks());
-      }
-
-      this.characterRepository.save(character);
-    }
     return new CharacterDTO(character);
   }
 }

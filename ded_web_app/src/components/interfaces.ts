@@ -145,6 +145,10 @@ export interface serverFeat {
   description: string;
 }
 
+export type FeatsId = {
+  id: number
+}
+
 export type ChosenRace = {
   id: number,
   race: string,

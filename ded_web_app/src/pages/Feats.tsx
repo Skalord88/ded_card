@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { urlChar, urlFeats } from "../components/url";
 import { useParams } from "react-router-dom";
-import { characterPc, serverFeat } from "../components/interfaces";
+import { FeatsId, characterPc, serverFeat } from "../components/interfaces";
 
 export function Feats() {
   const { charId } = useParams();
@@ -11,6 +11,7 @@ export function Feats() {
   const [featsGeneral, setFeatsGeneral] = useState<serverFeat[]>([]);
   const [elcFeats, setElcFeats] = useState(0);
   const [selectFeat, setSelectFeat] = useState<serverFeat>();
+  const [featsToAdd, setFeatsToAdd] = useState<serverFeat[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,14 +29,18 @@ export function Feats() {
   }, []);
 
   useEffect(() => {
-    let generalFeats: serverFeat[] = featsList.filter((feat) =>
-      "GENERAL".includes(feat.featsType)
+    // let generalFeats: serverFeat[] = featsList.filter((feat) =>
+    //   "GENERAL".includes(feat.featsType)
+    // );
+
+    let listChar = char?.featsList.map((feat) => feat.characterFeatName);
+
+    let generalNotChar: serverFeat[] = featsList.filter((feat) =>
+      !listChar?.includes(feat.featName) && "GENERAL".includes(feat.featsType)
     );
 
-    setFeatsGeneral(generalFeats);
-
-    console.log(generalFeats);
-  }, [featsList]);
+    setFeatsGeneral(generalNotChar);
+  }, [featsList, featsToAdd]);
 
   useEffect(() => {
     if (char?.effectiveCharacterLv) {
@@ -46,8 +51,34 @@ export function Feats() {
 
   const handleSelect = (e: serverFeat) => {
     setSelectFeat(e);
+  };
 
-    console.log(e.prerequisite);
+  const handleAdd = (e: serverFeat) => {
+    if (featsToAdd.length < elcFeats) {
+      featsGeneral.forEach((feat) => {
+        if (feat.id === e.id) {
+          setFeatsToAdd((prevFeat) => [...prevFeat, e]);
+        }
+      });
+    }
+  };
+
+  const handleRemove = (e: number) => {
+    const list = featsToAdd.filter((feat) => feat.id !== e);
+
+    // console.log(e, list);
+
+    setFeatsToAdd(list);
+  };
+
+  const handleSubmit = () => {
+    let list: FeatsId[] = featsToAdd.map((feat) => ({ id: feat.id }))
+
+    console.log(list)
+
+    axios.post(urlFeats + "/" + charId, list);
+
+    window.location.reload();
   };
 
   return (
@@ -91,6 +122,28 @@ export function Feats() {
               )}
                 </div> */}
               <div>{selectFeat.description}</div>
+              <button onClick={() => handleAdd(selectFeat)}>Add</button>
+            </>
+          ) : (
+            <></>
+          )}
+        </div>
+        <div>
+          {featsToAdd.length > 0 ? (
+            <>
+              added feats <button onClick={handleSubmit}>add feats</button>
+              {featsToAdd.map((feat, index) => {
+                return (
+                  <>
+                    <div key={index}>
+                      {feat.featName}
+                      <button onClick={() => handleRemove(feat.id)}>
+                        remove
+                      </button>
+                    </div>
+                  </>
+                );
+              })}
             </>
           ) : (
             <></>
