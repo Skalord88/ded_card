@@ -36,7 +36,8 @@ export function Feats() {
     let listChar = char?.featsList.map((feat) => feat.characterFeatName);
 
     let generalNotChar: serverFeat[] = featsList.filter((feat) =>
-      !listChar?.includes(feat.featName) && "GENERAL".includes(feat.featsType)
+      !listChar?.includes(feat.featName)
+       && "GENERAL".includes(feat.featsType)
     );
 
     setFeatsGeneral(generalNotChar);

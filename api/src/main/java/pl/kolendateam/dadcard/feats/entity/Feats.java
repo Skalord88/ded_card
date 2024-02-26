@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.feats.entity;
 
-import java.io.Serializable;
-
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -9,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -18,26 +17,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Feats implements Serializable{
+public class Feats implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    short id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  int id;
 
-    @Nonnull
-    String featName;
+  @Nonnull
+  String featName;
 
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    FeatsTypeEnum featsType;
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  FeatsTypeEnum featsType;
 
-    String prerequisite;
+  String prerequisite;
 
-    @Nonnull
-    String description;
+  @Nonnull
+  String description;
 
-    String skills;
-    Integer speed;
-    String specialAttacks;
+  String skills;
+  Integer speed;
+  String specialAttacks;
 
+  public Feats(int idDTO) {
+    this.id = idDTO;
+  }
 }

@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
+import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
@@ -422,6 +423,14 @@ public class Character {
 
   public boolean buyFeat(Feats feat) {
     boolean buyed = false;
+
+    // Feats feat = new Feats(
+    //   featDTO.id,
+    //   featDTO.featName,
+    //   featDTO.featsType,
+    //   featDTO.prerequisite,
+    //   featDTO.description
+    // );
 
     if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
       return false;

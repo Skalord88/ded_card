@@ -60,7 +60,14 @@ public class FeatsController {
 
     Character character = characterOpt.get();
 
-    List<Feats> featsFromDB = this.featsRepository.findAll();
+    List<Integer> checkListFeat = new ArrayList<>();
+
+    for (FeatsDTO featDTO : featsDTOList) {
+      int idDTO = featDTO.id;
+      checkListFeat.add(idDTO);
+    }
+
+    List<Feats> featsFromDB = this.featsRepository.findAllByIdIn(checkListFeat);
 
     featsFromDB.forEach(feat -> {
       boolean buyed = character.buyFeat(feat);
