@@ -16,6 +16,7 @@ export interface characterPc {
   skillPoints: number;
   skillsList: MapOfSkills;
   featsList: feat[];
+  levelFeatsList: feat[];
   items: [];
   magicPerDay: {};
   magicKnown: {};

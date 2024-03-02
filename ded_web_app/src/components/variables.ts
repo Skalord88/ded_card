@@ -53,6 +53,7 @@ export const characterEmpty: characterPc = {
     skillPoints: 0,
     skillsList: {skills: []},
     featsList: [],
+    levelFeatsList: [],
     items: [],
     magicPerDay: {},
     magicKnown: {},

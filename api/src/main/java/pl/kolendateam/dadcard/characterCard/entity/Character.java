@@ -427,14 +427,6 @@ public class Character {
   public boolean buyFeat(Feats feat) {
     boolean buyed = false;
 
-    // Feats feat = new Feats(
-    //   featDTO.id,
-    //   featDTO.featName,
-    //   featDTO.featsType,
-    //   featDTO.prerequisite,
-    //   featDTO.description
-    // );
-
     if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
       return false;
     }
@@ -448,7 +440,7 @@ public class Character {
     );
 
     boolean featPresent = false;
-    for (CharacterFeat cF : this.featsList) {
+    for (CharacterFeat cF : this.levelFeatsList) {
       if (
         cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
       ) {
@@ -458,7 +450,7 @@ public class Character {
 
     if (!featPresent) {
       if (feat.getPrerequisite() == null) {
-        this.featsList.add(characterFeat);
+        this.levelFeatsList.add(characterFeat);
         buyed = true;
       } else {
         boolean prereqCheck = characterFeat.checkPrerequisite(

@@ -58,6 +58,9 @@
         <column name="feats_list" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="level_feats_list" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
         <column name="bab" type="double">
           <constraints nullable="true"/>
         </column>

@@ -8,6 +8,7 @@ export function Feats() {
   const { charId } = useParams();
   const [char, setChar] = useState<characterPc>();
   const [featsList, setFeatsList] = useState<serverFeat[]>([]);
+  const [levelFeatsList, setLevelFeatsList] = useState<serverFeat[]>([]);
   const [featsGeneral, setFeatsGeneral] = useState<serverFeat[]>([]);
   const [elcFeats, setElcFeats] = useState(0);
   const [selectFeat, setSelectFeat] = useState<serverFeat>();
@@ -21,6 +22,9 @@ export function Feats() {
 
         const resFeats = await axios.get(urlFeats);
         setFeatsList(resFeats.data);
+
+        const resLevelFeats = await axios.get(urlFeats);
+        setLevelFeatsList(resLevelFeats.data);
       } catch (error) {
         console.error(error);
       }
@@ -35,13 +39,13 @@ export function Feats() {
 
     let listChar = char?.featsList.map((feat) => feat.characterFeatName);
 
-    let generalNotChar: serverFeat[] = featsList.filter((feat) =>
-      !listChar?.includes(feat.featName)
-       && "GENERAL".includes(feat.featsType)
+    let generalNotChar: serverFeat[] = featsList.filter(
+      (feat) =>
+        !listChar?.includes(feat.featName) && "GENERAL".includes(feat.featsType)
     );
 
     setFeatsGeneral(generalNotChar);
-  }, [featsList, featsToAdd]);
+  }, [featsList, levelFeatsList, featsToAdd]);
 
   useEffect(() => {
     if (char?.effectiveCharacterLv) {
@@ -73,9 +77,9 @@ export function Feats() {
   };
 
   const handleSubmit = () => {
-    let list: FeatsId[] = featsToAdd.map((feat) => ({ id: feat.id }))
+    let list: FeatsId[] = featsToAdd.map((feat) => ({ id: feat.id }));
 
-    console.log(list)
+    console.log(list);
 
     axios.post(urlFeats + "/" + charId, list);
 
@@ -85,16 +89,35 @@ export function Feats() {
   return (
     <>
       <div className="container">
-        <div>{elcFeats}</div>
+        <div>
+          {elcFeats === levelFeatsList.length ? (
+            <div>add {elcFeats} feat</div>
+          ) : (
+            <div>all feats added</div>
+          )}
+        </div>
 
         <div>
-          {char?.featsList.map((feat, index) => {
-            return (
-              <>
-                <div key={index}>{feat.characterFeatName}</div>
-              </>
-            );
-          })}
+          <div className="column">
+            ---Class Feats---
+            {char?.featsList.map((feat, index) => {
+              return (
+                <>
+                  <div key={index}>{feat.characterFeatName}</div>
+                </>
+              );
+            })}
+          </div>
+          <div className="column">
+            ---Level Feats---
+            {char?.levelFeatsList.map((feat, index) => {
+              return (
+                <>
+                  <div key={index}>{feat.characterFeatName}</div>
+                </>
+              );
+            })}
+          </div>
         </div>
         <div>
           {featsGeneral ? (

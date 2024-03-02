@@ -90,7 +90,9 @@ public class CharacterDTO implements Serializable {
     this.featsList =
       MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
     this.levelFeatsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+      MapperCharacterFeatsDTO.toCharacterFeatsDTO(
+        character.getLevelFeatsList()
+      );
     this.items = character.getItems();
     this.magicPerDay = character.getMagicPerDay();
     this.magicKnown = character.getMagicKnown();
