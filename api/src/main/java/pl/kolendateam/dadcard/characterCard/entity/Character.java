@@ -26,7 +26,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
@@ -100,6 +99,9 @@ public class Character {
   ArrayList<CharacterFeat> featsList;
 
   @JdbcTypeCode(SqlTypes.JSON)
+  ArrayList<CharacterFeat> levelFeatsList;
+
+  @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<Items> items;
 
   @JdbcTypeCode(SqlTypes.JSON)
@@ -126,6 +128,7 @@ public class Character {
     this.abilitys = new Abilitys();
     this.classSkills = new ArrayList<>();
     this.featsList = new ArrayList<>();
+    this.levelFeatsList = new ArrayList<>();
     this.items = new ArrayList<>();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
@@ -469,7 +472,7 @@ public class Character {
           featsList
         );
         if (prereqCheck) {
-          this.featsList.add(characterFeat);
+          this.levelFeatsList.add(characterFeat);
           buyed = true;
         }
       }
