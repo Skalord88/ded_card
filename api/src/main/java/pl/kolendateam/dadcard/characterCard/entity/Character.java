@@ -742,4 +742,17 @@ public class Character {
       }
     }
   }
+
+  public int getFeatIndex(int idFeat) {
+    for (int i = 0; i < this.levelFeatsList.size(); i++) {
+      if (this.id == this.levelFeatsList.get(i).getId()) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  public void deleteFeatFromList(int index) {
+    this.levelFeatsList.remove(index);
+  }
 }

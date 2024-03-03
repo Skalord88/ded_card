@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { urlChar, urlFeats } from "../components/url";
 import { useParams } from "react-router-dom";
-import { FeatsId, characterPc, serverFeat } from "../components/interfaces";
+import { FeatsId, characterPc, feat, serverFeat } from "../components/interfaces";
+import { urlChar, urlFeats } from "../components/url";
 
 export function Feats() {
   const { charId } = useParams();
@@ -11,6 +11,7 @@ export function Feats() {
   const [levelFeatsList, setLevelFeatsList] = useState<serverFeat[]>([]);
   const [featsGeneral, setFeatsGeneral] = useState<serverFeat[]>([]);
   const [elcFeats, setElcFeats] = useState(0);
+  const [lvFeats, setLvFeats] = useState(0);
   const [selectFeat, setSelectFeat] = useState<serverFeat>();
   const [featsToAdd, setFeatsToAdd] = useState<serverFeat[]>([]);
 
@@ -22,9 +23,6 @@ export function Feats() {
 
         const resFeats = await axios.get(urlFeats);
         setFeatsList(resFeats.data);
-
-        const resLevelFeats = await axios.get(urlFeats);
-        setLevelFeatsList(resLevelFeats.data);
       } catch (error) {
         console.error(error);
       }
@@ -33,10 +31,6 @@ export function Feats() {
   }, []);
 
   useEffect(() => {
-    // let generalFeats: serverFeat[] = featsList.filter((feat) =>
-    //   "GENERAL".includes(feat.featsType)
-    // );
-
     let listChar = char?.featsList.map((feat) => feat.characterFeatName);
 
     let generalNotChar: serverFeat[] = featsList.filter(
@@ -53,6 +47,23 @@ export function Feats() {
       setElcFeats(numberOfFeats);
     }
   }, [char]);
+
+  useEffect(() => {
+    let featsInLevel: serverFeat[] = [];
+    if (char?.levelFeatsList) {
+      char.levelFeatsList.forEach((feat) => {
+        featsList.forEach((featFromList) => {
+          // console.log(featFromList.featName)
+          if (feat.characterFeatName === featFromList.featName) {
+            featsInLevel.push(featFromList);
+          }
+        });
+      });
+
+      setLevelFeatsList(featsInLevel);
+      setLvFeats(featsInLevel.length);
+    }
+  }, [char, featsList]);
 
   const handleSelect = (e: serverFeat) => {
     setSelectFeat(e);
@@ -71,29 +82,34 @@ export function Feats() {
   const handleRemove = (e: number) => {
     const list = featsToAdd.filter((feat) => feat.id !== e);
 
-    // console.log(e, list);
-
     setFeatsToAdd(list);
   };
 
   const handleSubmit = () => {
     let list: FeatsId[] = featsToAdd.map((feat) => ({ id: feat.id }));
 
-    console.log(list);
-
     axios.post(urlFeats + "/" + charId, list);
 
     window.location.reload();
+  };
+
+  const handleDeleteFeat = (e: number) => {
+
+    const feat = {id: e};
+
+    axios.post(urlFeats + "/remove/" + charId, feat);
+    // console.log(urlFeats + "/remove/" + charId, {id: e});
+    // window.location.reload();
   };
 
   return (
     <>
       <div className="container">
         <div>
-          {elcFeats === levelFeatsList.length ? (
-            <div>add {elcFeats} feat</div>
-          ) : (
+          {elcFeats === lvFeats ? (
             <div>all feats added</div>
+          ) : (
+            <div>add {elcFeats - lvFeats} feat</div>
           )}
         </div>
 
@@ -110,10 +126,13 @@ export function Feats() {
           </div>
           <div className="column">
             ---Level Feats---
-            {char?.levelFeatsList.map((feat, index) => {
+            {levelFeatsList.map((feat, index) => {
               return (
                 <>
-                  <div key={index}>{feat.characterFeatName}</div>
+                  <div key={index}>
+                    {feat.featName}
+                    <button onClick={() => handleDeleteFeat(feat.id)}>-</button>
+                  </div>
                 </>
               );
             })}

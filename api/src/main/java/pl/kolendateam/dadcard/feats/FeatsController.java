@@ -90,4 +90,29 @@ public class FeatsController {
 
     return new CharacterDTO(character);
   }
+
+  @PostMapping(value = "remove/{id}", consumes = { "application/json" })
+  public CharacterDTO delFeatsCharacter(
+    @PathVariable short id,
+    @RequestBody FeatsDTO featDTO
+  ) {
+    Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+    if (!characterOpt.isPresent()) {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
+    }
+
+    Character character = characterOpt.get();
+
+    int featIndex = character.getFeatIndex(featDTO.id);
+
+    if (featIndex != -1) {
+      character.deleteFeatFromList(featIndex);
+    }
+
+    return new CharacterDTO(character);
+  }
 }
