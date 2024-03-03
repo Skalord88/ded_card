@@ -142,8 +142,18 @@ export interface serverFeat {
   id: number;
   featName: string;
   featsType: string;
-  prerequisite: string;
+  prerequisite: Prerequisite;
   description: string;
+}
+
+export type Prerequisite = {
+  ability: abilitys;
+  armorClass: armorClass;
+  bab: number;
+  classSkills: object;
+  feats: string[];
+  race: string;
+  savingThrow: savingThrows;
 }
 
 export type FeatsId = {

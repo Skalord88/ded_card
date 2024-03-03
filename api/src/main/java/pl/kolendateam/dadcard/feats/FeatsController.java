@@ -113,6 +113,8 @@ public class FeatsController {
       character.deleteFeatFromList(featIndex);
     }
 
+    this.characterRepository.save(character);
+
     return new CharacterDTO(character);
   }
 }

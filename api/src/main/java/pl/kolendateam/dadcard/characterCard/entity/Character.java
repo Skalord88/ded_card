@@ -745,7 +745,7 @@ public class Character {
 
   public int getFeatIndex(int idFeat) {
     for (int i = 0; i < this.levelFeatsList.size(); i++) {
-      if (this.id == this.levelFeatsList.get(i).getId()) {
+      if (idFeat == this.levelFeatsList.get(i).getId()) {
         return i;
       }
     }

@@ -8,7 +8,6 @@ import {
   serverSkill,
   SkillProps,
   skillToServer,
-  Study,
   StudyUp
 } from "../components/interfaces";
 
