@@ -47,30 +47,25 @@ export function Feats() {
       }
     });
 
+    let checkPrereq: serverFeat[] = generalNotChar.filter((feat) => {
+      if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
+          return listChar?.some(charFeat => feat.prerequisite.feats.includes(charFeat));
+      }
+      return false;
+  });
 
-    /// prawie udało się
-    generalNotChar.forEach((feat) => {
-      if(feat.prerequisite !== null || feat.prerequisite.feat !== null){
-      feat.prerequisite.feats.forEach((preFeat) => {
-        console.log(preFeat + " / " + feat.featName);
+    console.log(checkPrereq);
 
-        let check = false;
-
-        if (preFeat === feat.featName) {
-          check = true;
-        } else {
-          check = false;
-        }
-
-        if (check) {
-          prerequisite.push(feat);
-        }
-
-      });}
-    });
+    checkPrereq.forEach(feat => prerequisite.push(feat))
 
     setFeatsGeneral(prerequisite);
-  }, [featsList, levelFeatsList, featsToAdd]);
+  }, [
+    featsList,
+    levelFeatsList,
+    featsToAdd,
+    char?.featsList,
+    char?.levelFeatsList
+  ]);
 
   useEffect(() => {
     if (char?.effectiveCharacterLv) {
