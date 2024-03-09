@@ -66,7 +66,30 @@
         <column name="armor_class" value="1"/>
         <column name="description" value="Light armor"/>
     </insert>
+    <insert tableName="items">
+        <column name="item_type" value="WONDROUS_ITEM"/>
+        <column name="name" value="Feather token, anchor"/>
+        <column name="cost" value="50"/>
+        <column name="weight" value="0"/>
+        <column name="description" value="Each of these items is a small feather that has a power to suit a special need. The kinds of tokens are described below. Each token is usable once.
 
+        Anchor
+        A token useful to moor a craft in water so as to render it immobile for up to one day."/>
+    </insert>
+    <insert tableName="items">
+        <column name="item_type" value="WONDROUS_ITEM"/>
+        <column name="name" value="Universal Solvent"/>
+        <column name="cost" value="50"/>
+        <column name="weight" value="0"/>
+        <column name="description" value="This substance has the unique property of being able to dissolve sovereign glue and tanglefoot bags. Applying the solvent is a standard action."/>
+    </insert>
+    <insert tableName="items">
+        <column name="item_type" value="WONDROUS_ITEM"/>
+        <column name="name" value="Elixir of Love"/>
+        <column name="cost" value="150"/>
+        <column name="weight" value="0"/>
+        <column name="description" value="This sweet-tasting liquid causes the character drinking it to become charmed with the first creature she sees after consuming the draft (as charm person—the drinker must be a humanoid of Medium or smaller size, Will DC 14 negates). The charm effects wear off in 1d3 hours."/>
+    </insert>
     <!--
         <insert tableName="items">
             <column name="item_type" value="WEAPON"/>

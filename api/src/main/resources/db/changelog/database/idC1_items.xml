@@ -15,6 +15,9 @@
             <column name="item_type" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
+            <column name="armor_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
@@ -41,9 +44,6 @@
             </column>
             <column name="description" type="varchar(1000)">
                 <constraints nullable="false"/>
-            </column>
-            <column name="armor_name" type="varchar(255)">
-                <constraints nullable="true"/>
             </column>
             <column name="armor_class" type="int">
                 <constraints nullable="true"/>
