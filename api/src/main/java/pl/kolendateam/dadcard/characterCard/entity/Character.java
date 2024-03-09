@@ -439,8 +439,18 @@ public class Character {
       feat.getFeatsType()
     );
 
+    ArrayList<CharacterFeat> allFeats = new ArrayList<>();
+
+    this.featsList.forEach(charFeat -> {
+        allFeats.add(charFeat);
+      });
+
+    this.levelFeatsList.forEach(lvFeat -> {
+        allFeats.add(lvFeat);
+      });
+
     boolean featPresent = false;
-    for (CharacterFeat cF : this.levelFeatsList) {
+    for (CharacterFeat cF : allFeats) {
       if (
         cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
       ) {
@@ -461,7 +471,7 @@ public class Character {
           classSkills,
           abilitys,
           (int) bab,
-          featsList
+          allFeats
         );
         if (prereqCheck) {
           this.levelFeatsList.add(characterFeat);
@@ -754,5 +764,12 @@ public class Character {
 
   public void deleteFeatFromList(int index) {
     this.levelFeatsList.remove(index);
+  }
+
+  public boolean checkNumberOfLevelFeats() {
+    if (this.levelFeatsList.size() < 1 + (this.effectiveCharacterLv / 3)) {
+      return true;
+    }
+    return false;
   }
 }

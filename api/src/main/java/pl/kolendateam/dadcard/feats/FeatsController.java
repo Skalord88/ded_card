@@ -60,33 +60,36 @@ public class FeatsController {
 
     Character character = characterOpt.get();
 
-    List<Integer> checkListFeat = new ArrayList<>();
+    if (character.checkNumberOfLevelFeats()) {
+      List<Integer> checkListFeat = new ArrayList<>();
 
-    for (FeatsDTO featDTO : featsDTOList) {
-      int idDTO = featDTO.id;
-      checkListFeat.add(idDTO);
-    }
-
-    List<Feats> featsFromDB = this.featsRepository.findAllByIdIn(checkListFeat);
-
-    featsFromDB.forEach(feat -> {
-      boolean buyed = character.buyFeat(feat);
-
-      if (buyed) {
-        if (feat.getSkills() != null) {
-          character.addSkill(feat.getSkills());
-        }
-
-        if (feat.getSpeed() != null) {
-          character.addSpeed(feat.getSpeed());
-        }
-
-        if (feat.getSpecialAttacks() != null) {
-          character.addSpecialAttacks(feat.getSpecialAttacks());
-        }
+      for (FeatsDTO featDTO : featsDTOList) {
+        int idDTO = featDTO.id;
+        checkListFeat.add(idDTO);
       }
-    });
-    this.characterRepository.save(character);
+
+      List<Feats> featsFromDB =
+        this.featsRepository.findAllByIdIn(checkListFeat);
+
+      featsFromDB.forEach(feat -> {
+        boolean buyed = character.buyFeat(feat);
+
+        if (buyed) {
+          if (feat.getSkills() != null) {
+            character.addSkill(feat.getSkills());
+          }
+
+          if (feat.getSpeed() != null) {
+            character.addSpeed(feat.getSpeed());
+          }
+
+          if (feat.getSpecialAttacks() != null) {
+            character.addSpecialAttacks(feat.getSpecialAttacks());
+          }
+        }
+      });
+      this.characterRepository.save(character);
+    }
 
     return new CharacterDTO(character);
   }

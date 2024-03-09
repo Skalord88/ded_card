@@ -47,16 +47,22 @@ export function Feats() {
       }
     });
 
-    let checkPrereq: serverFeat[] = generalNotChar.filter((feat) => {
+    generalNotChar.forEach((feat) => {
       if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
-          return listChar?.some(charFeat => feat.prerequisite.feats.includes(charFeat));
+        console.log(feat.featName);
+        let check = 0;
+        feat.prerequisite.feats.forEach((prerFeat) => {
+          listChar?.forEach((charFeat) => {
+            charFeat === prerFeat ? check++ : (check += 0);
+            console.log(check, feat.featName, feat.prerequisite.feats.length)
+            if (check === feat.prerequisite.feats.length) {
+              prerequisite.push(feat)
+            }
+          });
+        });
       }
       return false;
-  });
-
-    console.log(checkPrereq);
-
-    checkPrereq.forEach(feat => prerequisite.push(feat))
+    });
 
     setFeatsGeneral(prerequisite);
   }, [
