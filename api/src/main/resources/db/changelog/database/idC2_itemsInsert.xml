@@ -7,6 +7,7 @@
 <changeSet id="302" author="oscar">
 
     <insert tableName="items">
+        <column name="name" value="Gauntlet"/>
         <column name="item_type" value="WEAPON"/>
         <column name="weapon_name" value="GAUNTLET"/>
         <column name="cost" value="2"/>
@@ -17,6 +18,7 @@
         <column name="description" value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets."/>
     </insert>
     <insert tableName="items">
+        <column name="name" value="Dagger"/>
         <column name="item_type" value="WEAPON"/>
         <column name="weapon_name" value="DAGGER"/>
         <column name="cost" value="2"/>
@@ -28,6 +30,7 @@
         <column name="description" value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)."/>
     </insert>
     <insert tableName="items">
+        <column name="name" value="Long spear"/>
         <column name="item_type" value="WEAPON"/>
         <column name="weapon_name" value="LONGSPEAR"/>
         <column name="cost" value="5"/>
@@ -38,6 +41,7 @@
         <column name="description" value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character."/>
     </insert>
     <insert tableName="items">
+        <column name="name" value="Javelin"/>
         <column name="item_type" value="WEAPON"/>
         <column name="weapon_name" value="JAVELIN"/>
         <column name="cost" value="1"/>
@@ -49,6 +53,7 @@
         <column name="description" value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon."/>
     </insert>
     <insert tableName="items">
+        <column name="name" value="Glaive"/>
         <column name="item_type" value="WEAPON"/>
         <column name="weapon_name" value="GLAIVE"/>
         <column name="cost" value="8"/>
@@ -59,8 +64,9 @@
         <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
     </insert>
     <insert tableName="items">
+        <column name="name" value="Padded"/>
         <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="Padded"/>
+        <column name="armor_name" value="PADDED"/>
         <column name="cost" value="5"/>
         <column name="weight" value="10"/>
         <column name="armor_class" value="1"/>

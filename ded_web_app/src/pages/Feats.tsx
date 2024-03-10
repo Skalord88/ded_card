@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { FeatsId, characterPc, serverFeat } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
 
@@ -137,7 +137,14 @@ export function Feats() {
       <div className="container">
         <div>
           {elcFeats === lvFeats ? (
+            <>
             <div>all feats added</div>
+            <div>
+              <button>
+                <Link to={'/item/' + charId}>to items</Link>
+              </button>
+            </div>
+            </>
           ) : (
             <div>add {elcFeats - lvFeats} feat</div>
           )}

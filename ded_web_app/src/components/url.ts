@@ -27,3 +27,6 @@ export const urlStudySet: string =
 
 export const urlFeats: string =
 'http://localhost:8080/feats';
+
+export const urlItems: string =
+'http://localhost:8080/item/all';

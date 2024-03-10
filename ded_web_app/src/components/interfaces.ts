@@ -186,3 +186,24 @@ export type serverSkill = {
   idSkill: number;
   skillRank: number;
 };
+
+export type Item = {
+  id: number;
+  name: string;
+  cost: number;
+  weight: number;
+  description: string;
+  itemType: string;
+}
+
+export interface Armor extends Item {
+  armorClass: armorClass;
+}
+
+export interface Weapon extends Item {
+  damage: string;
+  critical: string;
+  range: number;
+  type: string[];
+  specialAttacks: string;
+}
