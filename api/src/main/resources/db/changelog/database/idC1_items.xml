@@ -48,6 +48,18 @@
             <column name="armor_class" type="int">
                 <constraints nullable="true"/>
             </column>
+            <column name="armor_type" type="varchar(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="max_dex" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="penality" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="failure" type="int">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

@@ -70,7 +70,11 @@
         <column name="cost" value="5"/>
         <column name="weight" value="10"/>
         <column name="armor_class" value="1"/>
-        <column name="description" value="Light armor"/>
+        <column name="armor_type" value="LIGHT_ARMOR"/>
+        <column name="max_dex" value="8"/>
+        <column name="penality" value="0"/>
+        <column name="failure" value="5"/>
+        <column name="description" value="Taka se, ale lekka."/>
     </insert>
     <insert tableName="items">
         <column name="item_type" value="WONDROUS_ITEM"/>

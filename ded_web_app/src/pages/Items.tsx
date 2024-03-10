@@ -5,66 +5,58 @@ import axios from "axios";
 import { urlChar, urlItems } from "../components/url";
 
 export function Items() {
-    const { charId } = useParams();
+  const { charId } = useParams();
 
-    const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<characterPc>();
 
-    const [items, setItems] = useState<Item[]>([])
-    const [armors, setArmors] = useState<Armor[]>([])
-    const [weapons, setWeapons] = useState<Weapon[]>([])
+  const [items, setItems] = useState<Item[]>([]);
+  const [armors, setArmors] = useState<Armor[]>([]);
+  const [weapons, setWeapons] = useState<Weapon[]>([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const resChar = await axios.get(urlChar + "/" + charId);
-                setChar(resChar.data)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resChar = await axios.get(urlChar + "/" + charId);
+        setChar(resChar.data);
 
-                const resItems = await axios.get(urlItems);
-                setItems(resItems.data)
-            } catch (error) {
-                console.log(error)
-            }
-        };
-        fetchData();
-    }, []);
+        const resItems = await axios.get(urlItems);
+        setItems(resItems.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
-    useEffect(() => {
-
-        let armorsList: Armor[] = items.filter(
-            item => {if(item.itemType === "ARMOR"){
-                return item
-            }}) as Armor[];
-        setArmors(armorsList);
-
-        let weaponsList: Weapon[] = items.filter(
-            item => {if(item.itemType === "WEAPON"){
-                return item
-            }}) as Weapon[];
-        setWeapons(weaponsList);
-    },[items])
-
-    return (
-        <>
+  return (
+    <>
+      <div className="container">
+        <div>{char?.characterName}</div>
         <div>
-            {char?.characterName}
+          Armors:
+          {armors.map((armor) => {
+            return <ul>{armor.name}</ul>;
+          })}
         </div>
         <div>
-            Armors:
-            {armors.map(armor => {
-                return (
-                    /// non funzia AC
-                    <ul>{armor.name} {armor.armorClass.armorBonus}</ul>
-                )
-            })}
+          Weapons:
+          {weapons.map((weapon) => {
+            return <ul>{weapon.name}</ul>;
+          })}
         </div>
         <div>
-            Weapons:
-            {weapons.map(weapon => {
-                return (
-                    <ul>{weapon.name}</ul>
-                )
-            })}
+          All items:
+          {items.map((item) => {
+            return (
+              <>
+                <ul>---{item.name}</ul>
+                <div>{item.description}</div>
+                <div>Price:{item.cost}</div>
+              </>
+            );
+          })}
         </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }

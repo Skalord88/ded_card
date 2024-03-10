@@ -197,7 +197,11 @@ export type Item = {
 }
 
 export interface Armor extends Item {
-  armorClass: armorClass;
+  armorClass: number;
+  armorType: string;
+  maxDex: number;
+  penality: number;
+  failure: number;
 }
 
 export interface Weapon extends Item {
