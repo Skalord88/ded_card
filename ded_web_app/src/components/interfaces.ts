@@ -187,6 +187,13 @@ export type serverSkill = {
   skillRank: number;
 };
 
+export type ItemsList = {
+  armorsList: Armor[];
+  weaponsList: Weapon[];
+  wonderousItems: WonderousItems[];
+
+}
+
 export type Item = {
   id: number;
   name: string;
@@ -211,3 +218,5 @@ export interface Weapon extends Item {
   type: string[];
   specialAttacks: string;
 }
+
+export interface WonderousItems extends Item {}

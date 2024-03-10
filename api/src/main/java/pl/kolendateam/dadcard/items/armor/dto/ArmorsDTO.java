@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 
-public class ArmorDTO {
+public class ArmorsDTO {
 
   public int id;
   public ArmorsEnum armorName;
@@ -17,7 +17,7 @@ public class ArmorDTO {
   public int failure;
   public String description;
 
-  public ArmorDTO(Armors item) {
+  public ArmorsDTO(Armors item) {
     this.id = item.getId();
     this.armorName = item.getArmorName();
     this.armorClass = item.getArmorClass();
