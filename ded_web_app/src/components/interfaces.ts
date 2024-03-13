@@ -192,8 +192,7 @@ export type serverSkill = {
 export type ItemsList = {
   armorsList: Armor[];
   weaponsList: Weapon[];
-  wonderousItems: WonderousItems[];
-
+  wonderousItems: WonderousItem[];
 }
 
 export type Item = {
@@ -214,6 +213,15 @@ export interface Armor extends Item {
   failure: number;
 }
 
+export interface Shild extends Item {
+  shildName: string;
+  armorClass: number;
+  armorType: string;
+  maxDex: number;
+  penality: number;
+  failure: number;
+}
+
 export interface Weapon extends Item {
   damage: string;
   critical: string;
@@ -222,4 +230,38 @@ export interface Weapon extends Item {
   specialAttacks: string;
 }
 
-export interface WonderousItems extends Item {}
+export interface WonderousItem extends Item {}
+
+export type Inventory = {
+  armor: Armor;
+  shild: Shild;
+  weaponOne: Weapon;
+  weaponTwo: Weapon;
+  weaponThree: Weapon;
+  weaponFour: Weapon;
+  weaponFive: Weapon;
+  weaponList: Weapon[];
+  body: {
+    head: WonderousItem;
+    arms: WonderousItem;
+    hands: [WonderousItem,WonderousItem];
+    neck: WonderousItem;
+    cloth: WonderousItem;
+    legs: WonderousItem;
+  }
+  backpack: WonderousItem[];
+}
+
+export type Attacks = {
+  baseAttackBonus: number,
+  setOne: {
+    firstHand: Weapon,
+    secondHand: Weapon,
+    additionalWeapon: Weapon
+  },
+  setTwo: {
+    firstHand: Weapon,
+    secondHand: Weapon,
+    additionalWeapon: Weapon  
+  }
+}

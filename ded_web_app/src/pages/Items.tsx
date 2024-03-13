@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Item, ItemsList, characterPc } from "../components/interfaces";
+import { Armor, Inventory, Item, ItemsList, Weapon, characterPc } from "../components/interfaces";
 import { urlChar, urlItems } from "../components/url";
+import { emptyInventory, noneArmor, noneWeapon } from "../components/variables";
 
 export function Items() {
   const { charId } = useParams();
@@ -11,7 +12,7 @@ export function Items() {
 
   const [items, setItems] = useState<ItemsList>();
 
-  const [equipment, setEquipment] = useState<Item[]>([]);
+  const [equipment, setEquipment] = useState<Inventory>();
   const [tresure, setTresure] = useState<number>(0);
 
   useEffect(() => {
@@ -30,58 +31,60 @@ export function Items() {
   }, []);
 
   useEffect(() => {
+    if (char?.items)
+    {
+      let charInventory: Inventory = emptyInventory;
+      char.items.forEach(item => {
+        if(item.itemType === "ARMOR"){
+          charInventory.armor = item as Armor
+        }
+        if(charInventory.weaponOne.id === 0
+           && item.itemType ==="WEAPON"){
+          charInventory.weaponOne = item as Weapon
+        }
+      })
+    setEquipment(charInventory);
+}
+    if (char?.treasure) setTresure(char?.treasure);
+  }, [char]);
 
-    if(char?.items) setEquipment(char.items)
+  // const handleBuyArmor = (e: Item) => {
+  //   if (armor.id !== e.id) {
+  //     setTresure(tresure + armor.cost - e.cost);
+  //   }
+  //   setArmor(e as Armor);
+  // };
 
-    if(char?.treasure) setTresure(char?.treasure);
-  },[char])
-
-  const handleBuy = (e: [number, Item]) => {
-
-    setTresure(tresure - e[0]);
-
-    let equip: Item[] = equipment;
-    equip.push(e[1])
-    setEquipment(equip);
-
-  }
+  const handleBuyWeapon = (e: Item) => {
+    
+    
+  };
 
   return (
     <>
-    <div>quanti soldi ho? {tresure}</div>
+      <div>{tresure} gp</div>
       <div className="container">
-        
         <div className="column">
-          Armors:
-          {equipment.map(item => {
-            return(
-              <>
-              <div>{item.itemType === "ARMOR"?
-            item.name
-            :
-            <>...select an armor...</>  
-            }</div>
-              </>
-            )
-          })}
-          {items?.armorsList.map((armor) => {
+          Armor:
+          {armor?.armorName}
+        
+          {items?.armorsList.map((armor, index) => {
             return (
               <>
-                <div>
-                  <button
-                  onClick={() => handleBuy([armor.cost, armor])}
-                  >+</button>{armor.name} / {armor.itemType} / {armor.description}
+                <div key={index}>
+                  <button onClick={() => handleBuyArmor(armor)}>+</button>
+                  {armor.name} / {armor.itemType} / {armor.description}
                 </div>
               </>
             );
           })}
         </div>
         <div className="column">
-          Weapons:
-          {items?.weaponsList.map((weapon) => {
+          Weapon:
+          {items?.weaponsList.map((weapon, index) => {
             return (
               <>
-                <div>
+                <div key={index}>
                   {weapon.name} / {weapon.description}
                 </div>
               </>

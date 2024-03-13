@@ -1,4 +1,4 @@
-import {  abilitys, subRaces, armorClass, serverSkill, characterPc, Study, AddStudy } from '../components/interfaces'
+import {  abilitys, subRaces, armorClass, serverSkill, characterPc, Study, AddStudy, Armor, Weapon, WonderousItem, Shild, Inventory } from '../components/interfaces'
 
 export const characterEmpty: characterPc = {
     
@@ -106,3 +106,76 @@ export const studyEmpty: AddStudy = {
     idSkill : 0,
     study: ""
 }
+
+export const noneArmor: Armor = {
+    id: 0,
+    name: "none",
+    cost: 0,
+    weight: 0,
+    description: "no armor",
+    itemType: "none",
+    armorName: "none",
+    armorClass: 0,
+    armorType: "none",
+    maxDex: 100,
+    penality: 0,
+    failure: 0
+  }
+
+  export const noneShild: Shild = {
+    id: 0,
+    name: "none",
+    cost: 0,
+    weight: 0,
+    description: "no armor",
+    itemType: "none",
+    shildName: "none",
+    armorClass: 0,
+    armorType: "none",
+    maxDex: 100,
+    penality: 0,
+    failure: 0
+  }
+
+  export const noneWeapon: Weapon = {
+    id: 0,
+    name: "none",
+    cost: 0,
+    weight: 0,
+    description: "no armor",
+    itemType: "none",
+    damage: "none",
+    critical: "none",
+    range: 0,
+    type: [],
+    specialAttacks: "none"
+  }
+
+  export const noneItem: WonderousItem = {
+      id: 0,
+      name: 'none',
+      cost: 0,
+      weight: 0,
+      description: 'no item',
+      itemType: 'none'
+  }
+
+  export const emptyInventory: Inventory = {
+    armor: noneArmor,
+    shild: noneShild,
+    weaponOne: noneWeapon,
+    weaponTwo: noneWeapon,
+    weaponThree: noneWeapon,
+    weaponFour: noneWeapon,
+    weaponFive: noneWeapon,
+    weaponList: [],
+    body: {
+      head: noneItem,
+      arms: noneItem,
+      hands: [noneItem,noneItem],
+      neck: noneItem,
+      cloth: noneItem,
+      legs: noneItem
+    },
+    backpack: []
+  }
