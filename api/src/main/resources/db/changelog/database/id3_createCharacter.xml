@@ -79,6 +79,12 @@
         <column name="spells_known" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="experience" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="treasure" type="int">
+          <constraints nullable="true"/>
+        </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>

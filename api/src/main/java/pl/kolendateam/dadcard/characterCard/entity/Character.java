@@ -23,6 +23,8 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.classCharacter.entity.Dices;
+import pl.kolendateam.dadcard.classCharacter.entity.DicesEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
@@ -115,6 +117,8 @@ public class Character {
 
   short effectiveCharacterLv;
   byte levelAdjustment;
+  int experience;
+  int treasure;
 
   public Character(String characterName, String playerName) {
     this.characterName = characterName;
@@ -771,5 +775,64 @@ public class Character {
       return true;
     }
     return false;
+  }
+
+  public void setCharacterExperience() {
+    int exp = this.experience;
+
+    exp = exp + (this.effectiveCharacterLv * 1000);
+
+    this.experience = exp;
+  }
+
+  public void setFirstLevelGold(String initialGold) {
+    Gson gson = new Gson();
+    Type arrayGold = new TypeToken<String[]>() {}.getType();
+    String[] diceGold = gson.fromJson(initialGold, arrayGold);
+
+    int number = Integer.parseInt(diceGold[0]);
+    DicesEnum diceTyp = DicesEnum.valueOf(diceGold[1]);
+    int multiply = Integer.parseInt(diceGold[2]);
+
+    Dices d = new Dices();
+
+    int resGold = d.throwDices(number, diceTyp);
+
+    this.treasure = resGold * multiply;
+  }
+
+  public void setLevelGold() {
+    this.treasure =
+      switch (this.effectiveCharacterLv) {
+        case 0 -> 0;
+        case 2 -> 900;
+        case 3 -> 2700;
+        case 4 -> 5400;
+        case 5 -> 9000;
+        case 6 -> 13000;
+        case 7 -> 19000;
+        case 8 -> 27000;
+        case 9 -> 36000;
+        case 10 -> 49000;
+        case 11 -> 66000;
+        case 12 -> 88000;
+        case 13 -> 110000;
+        case 14 -> 150000;
+        case 15 -> 200000;
+        case 16 -> 260000;
+        case 17 -> 340000;
+        case 18 -> 440000;
+        case 19 -> 580000;
+        case 20 -> 760000;
+        default -> 0;
+      };
+  }
+
+  public void emptyItems() {
+    this.items = new ArrayList<>();
+  }
+
+  public void setZeroExp() {
+    this.experience = 0;
   }
 }

@@ -59,7 +59,9 @@ export const characterEmpty: characterPc = {
     magicKnown: {},
     spellsKnown: [],
     levelAdjustment: 0,
-    effectiveCharacterLv: 0
+    effectiveCharacterLv: 0,
+    experience: 0,
+    treasure: 0
 
 }
 

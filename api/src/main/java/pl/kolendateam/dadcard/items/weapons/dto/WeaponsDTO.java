@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
@@ -18,6 +19,7 @@ public class WeaponsDTO {
 
   public short id;
   public WeaponNameEnum name;
+  public ItemTypeEnum itemType;
   public BigDecimal cost;
   public WeaponNumericEnum damage;
   public WeaponNumericEnum critical;
@@ -30,6 +32,7 @@ public class WeaponsDTO {
   public WeaponsDTO(Weapons w) {
     this.id = w.getId();
     this.name = w.getWeaponName();
+    this.itemType = ItemTypeEnum.WEAPON;
     this.cost = w.getCost();
     this.damage = w.getDamage();
     this.critical = w.getCritical();

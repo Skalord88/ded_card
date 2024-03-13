@@ -17,12 +17,14 @@ export interface characterPc {
   skillsList: MapOfSkills;
   featsList: feat[];
   levelFeatsList: feat[];
-  items: [];
+  items: Item[];
   magicPerDay: {};
   magicKnown: {};
   spellsKnown: [];
   levelAdjustment: number;
   effectiveCharacterLv: number;
+  experience: number;
+  treasure: number;
 }
 
 export interface character {
@@ -204,6 +206,7 @@ export type Item = {
 }
 
 export interface Armor extends Item {
+  armorName: string;
   armorClass: number;
   armorType: string;
   maxDex: number;

@@ -221,6 +221,16 @@ public class CharacterController {
       }
     }
 
+    // experience
+    character.setCharacterExperience();
+
+    // gold
+    if (character.getEffectiveCharacterLv() == 1) {
+      character.setFirstLevelGold(classCharacter.getInitialGold());
+    } else {
+      character.setLevelGold();
+    }
+
     this.characterRepository.save(character);
 
     return new CharacterDTO(character);
@@ -351,6 +361,25 @@ public class CharacterController {
 
     // base attack bonus
     character.decrementBab(classCharacter.getClassBab());
+
+    // experience
+    if (character.getEffectiveCharacterLv() == 0) {
+      character.setZeroExp();
+    } else {
+      character.setCharacterExperience();
+    }
+
+    // gold
+    if (character.getEffectiveCharacterLv() == 1) {
+      character.setFirstLevelGold(classCharacter.getInitialGold());
+    } else {
+      character.setLevelGold();
+    }
+
+    // items
+    if (character.getEffectiveCharacterLv() == 0) {
+      character.emptyItems();
+    }
 
     this.characterRepository.save(character);
 

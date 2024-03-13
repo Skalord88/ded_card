@@ -54,6 +54,8 @@ public class CharacterDTO implements Serializable {
   public ArrayList<SpellsInCharLevel> spellsKnown;
   public int levelAdjustment;
   public int effectiveCharacterLv;
+  public int experience;
+  public int treasure;
 
   public CharacterDTO(Character character) {
     this.id = character.getId();
@@ -99,5 +101,7 @@ public class CharacterDTO implements Serializable {
     this.spellsKnown = character.getSpellsKnown();
     this.effectiveCharacterLv = character.getEffectiveCharacterLv();
     this.levelAdjustment = character.getLevelAdjustment();
+    this.experience = character.getExperience();
+    this.treasure = character.getTreasure();
   }
 }

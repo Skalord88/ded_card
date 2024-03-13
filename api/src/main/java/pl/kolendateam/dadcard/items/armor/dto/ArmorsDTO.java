@@ -3,10 +3,13 @@ package pl.kolendateam.dadcard.items.armor.dto;
 import java.math.BigDecimal;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
 public class ArmorsDTO {
 
   public int id;
+  public String name;
+  public ItemTypeEnum itemType;
   public ArmorsEnum armorName;
   public int armorClass;
   public BigDecimal cost;
@@ -19,6 +22,8 @@ public class ArmorsDTO {
 
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
+    this.name = item.getName();
+    this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = item.getArmorName();
     this.armorClass = item.getArmorClass();
     this.cost = item.getCost();
