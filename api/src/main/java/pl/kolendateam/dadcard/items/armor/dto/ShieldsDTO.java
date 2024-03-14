@@ -2,10 +2,10 @@ package pl.kolendateam.dadcard.items.armor.dto;
 
 import java.math.BigDecimal;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
-import pl.kolendateam.dadcard.items.armor.entity.Shilds;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
-public class ShildsDTO {
+public class ShieldsDTO {
 
   public int id;
   public String name;
@@ -20,10 +20,10 @@ public class ShildsDTO {
   public int failure;
   public String description;
 
-  public ShildsDTO(Shilds item) {
+  public ShieldsDTO(Shields item) {
     this.id = item.getId();
     this.name = item.getName();
-    this.itemType = ItemTypeEnum.ARMOR;
+    this.itemType = ItemTypeEnum.SHIELD;
     this.shieldName = item.getShieldName();
     this.armorClass = item.getArmorClass();
     this.cost = item.getCost();

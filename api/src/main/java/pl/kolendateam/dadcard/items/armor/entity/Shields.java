@@ -7,6 +7,7 @@ import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 
 @Entity
@@ -14,7 +15,10 @@ import pl.kolendateam.dadcard.items.entity.Items;
 @AllArgsConstructor
 @Getter
 @DiscriminatorValue(value = "SHIELD")
-public class Shilds extends Items {
+public class Shields extends Items {
+
+  // @Enumerated(EnumType.STRING)
+  // ItemTypeEnum itemsType;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum shieldName;

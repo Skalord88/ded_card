@@ -20,6 +20,8 @@ import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperCharacterFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.CharacterFeatsDTO;
+import pl.kolendateam.dadcard.items.MapperItemsDTO;
+import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
@@ -49,6 +51,7 @@ public class CharacterDTO implements Serializable {
   public ArrayList<CharacterFeatsDTO> featsList;
   public ArrayList<CharacterFeatsDTO> levelFeatsList;
   public ArrayList<Items> items;
+  public InventoryDTO inventory;
   public HashMap<EnumClass, Integer[]> magicPerDay;
   public HashMap<EnumClass, Integer[]> magicKnown;
   public ArrayList<SpellsInCharLevel> spellsKnown;
@@ -96,6 +99,7 @@ public class CharacterDTO implements Serializable {
         character.getLevelFeatsList()
       );
     this.items = character.getItems();
+    this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
     this.magicPerDay = character.getMagicPerDay();
     this.magicKnown = character.getMagicKnown();
     this.spellsKnown = character.getSpellsKnown();

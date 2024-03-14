@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
-public class WonderousItemsDTO {
+public class WondrousItemsDTO {
 
   public short id;
   public String name;
@@ -13,7 +13,7 @@ public class WonderousItemsDTO {
   public BigDecimal weight;
   public String description;
 
-  public WonderousItemsDTO(WondrousItems item) {
+  public WondrousItemsDTO(WondrousItems item) {
     this.id = item.getId();
     this.name = item.getName();
     this.itemType = ItemTypeEnum.WONDROUS_ITEM;

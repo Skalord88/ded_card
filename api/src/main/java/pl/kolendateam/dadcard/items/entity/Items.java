@@ -16,6 +16,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
+import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -37,6 +40,27 @@ public class Items implements Serializable {
   BigDecimal cost;
   BigDecimal weight;
   String description;
+
+  public Items(ArmorsDTO armor) {
+    this.id = (short) armor.id;
+    this.cost = armor.cost;
+    this.weight = armor.weight;
+    this.description = armor.description;
+  }
+
+  public Items(ShieldsDTO shild) {
+    this.id = (short) shild.id;
+    this.cost = shild.cost;
+    this.weight = shild.weight;
+    this.description = shild.description;
+  }
+
+  public Items(WeaponsDTO weapon) {
+    this.id = (short) weapon.id;
+    this.cost = weapon.cost;
+    this.weight = weapon.weight;
+    this.description = weapon.description;
+  }
 
   public String getItemType() {
     return this.getClass().getAnnotation(DiscriminatorValue.class).value();

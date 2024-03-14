@@ -32,6 +32,8 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
+import pl.kolendateam.dadcard.items.dto.InventoryDTO;
+import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
@@ -107,6 +109,9 @@ public class Character {
   ArrayList<Items> items;
 
   @JdbcTypeCode(SqlTypes.JSON)
+  Inventory inventory;
+
+  @JdbcTypeCode(SqlTypes.JSON)
   HashMap<EnumClass, Integer[]> magicPerDay;
 
   @JdbcTypeCode(SqlTypes.JSON)
@@ -134,6 +139,7 @@ public class Character {
     this.featsList = new ArrayList<>();
     this.levelFeatsList = new ArrayList<>();
     this.items = new ArrayList<>();
+    this.inventory = new Inventory();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
     this.spellsKnown = new ArrayList<>();
@@ -834,5 +840,29 @@ public class Character {
 
   public void setZeroExp() {
     this.experience = 0;
+  }
+
+  public void addItemsToCharacterInventory(InventoryDTO inventoryDTO) {
+    if (inventoryDTO.armor.id != 0) {
+      this.items.add(new Items(inventoryDTO.armor));
+    }
+    if (inventoryDTO.shield.id != 0) {
+      this.items.add(new Items(inventoryDTO.shield));
+    }
+    if (inventoryDTO.weaponOne.id != 0) {
+      this.items.add(new Items(inventoryDTO.weaponOne));
+    }
+    if (inventoryDTO.weaponTwo.id != 0) {
+      this.items.add(new Items(inventoryDTO.weaponTwo));
+    }
+    if (inventoryDTO.weaponThree.id != 0) {
+      this.items.add(new Items(inventoryDTO.weaponThree));
+    }
+    if (inventoryDTO.weaponFour.id != 0) {
+      this.items.add(new Items(inventoryDTO.weaponFour));
+    }
+    if (inventoryDTO.weaponFive.id != 0) {
+      this.items.add(new Items(inventoryDTO.weaponFive));
+    }
   }
 }

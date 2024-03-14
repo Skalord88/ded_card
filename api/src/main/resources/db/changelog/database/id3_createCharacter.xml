@@ -70,6 +70,9 @@
         <column name="items" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <column name="inventory" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
         <column name="magic_per_day" type="jsonb">
           <constraints nullable="true"/>
         </column>

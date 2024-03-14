@@ -1,4 +1,5 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
+
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -8,8 +9,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
-
 
 @Entity
 @NoArgsConstructor
@@ -19,22 +20,24 @@ import pl.kolendateam.dadcard.items.entity.Items;
 @DiscriminatorValue(value = "WEAPON")
 public class Weapons extends Items {
 
-    @Enumerated(EnumType.STRING)
-    WeaponNameEnum weaponName;
+  // @Enumerated(EnumType.STRING)
+  // ItemTypeEnum itemsType;
 
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    WeaponNumericEnum damage;
+  @Enumerated(EnumType.STRING)
+  WeaponNameEnum weaponName;
 
-    @NonNull
-    @Enumerated(EnumType.STRING)
-    WeaponNumericEnum critical;
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  WeaponNumericEnum damage;
 
-    Integer range;
+  @NonNull
+  @Enumerated(EnumType.STRING)
+  WeaponNumericEnum critical;
 
-    @NonNull
-    String type;
+  Integer range;
 
-    String specialAttacks;
+  @NonNull
+  String type;
 
+  String specialAttacks;
 }
