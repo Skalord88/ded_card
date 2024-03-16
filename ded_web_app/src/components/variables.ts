@@ -1,7 +1,7 @@
-import {  abilitys, subRaces, armorClass, serverSkill, characterPc, Study, AddStudy, Armor, Weapon, WonderousItem, Shild, Inventory } from '../components/interfaces'
+import { AddStudy, Armor, Inventory, Shield, Weapon, WonderousItem, abilitys, armorClass, characterPc, serverSkill, subRaces } from '../components/interfaces'
 
 export const characterEmpty: characterPc = {
-    
+
     id: 0,
     characterName: '',
     playerName: '',
@@ -22,7 +22,7 @@ export const characterEmpty: characterPc = {
         dextrityBonus: 0,
         sizeBonus: 0,
         armorBonus: 0,
-        shildBonus: 0,
+        shieldBonus: 0,
         enhancementBonuses: 0,
         deflectionBonuses: 0,
         naturalArmor: 0,
@@ -51,10 +51,164 @@ export const characterEmpty: characterPc = {
         charisma: 0
     },
     skillPoints: 0,
-    skillsList: {skills: []},
+    skillsList: { skills: [] },
     featsList: [],
     levelFeatsList: [],
     items: [],
+    inventory: {
+        armor: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            armorName: "none",
+            armorClass: 0,
+            armorType: "none",
+            maxDex: 100,
+            penality: 0,
+            failure: 0
+        },
+        shield: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            shieldName: "none",
+            armorClass: 0,
+            armorType: "none",
+            maxDex: 100,
+            penality: 0,
+            failure: 0
+        },
+        weaponOne: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            damage: "none",
+            critical: "none",
+            range: 0,
+            type: [],
+            specialAttacks: "none"
+        },
+        weaponTwo: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            damage: "none",
+            critical: "none",
+            range: 0,
+            type: [],
+            specialAttacks: "none"
+        },
+        weaponThree: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            damage: "none",
+            critical: "none",
+            range: 0,
+            type: [],
+            specialAttacks: "none"
+        },
+        weaponFour: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            damage: "none",
+            critical: "none",
+            range: 0,
+            type: [],
+            specialAttacks: "none"
+        },
+        weaponFive: {
+            id: 0,
+            name: "none",
+            cost: 0,
+            weight: 0,
+            description: "no armor",
+            itemType: "none",
+            damage: "none",
+            critical: "none",
+            range: 0,
+            type: [],
+            specialAttacks: "none"
+        },
+        weaponList: [],
+        body: {
+            head: {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            },
+            arms: {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            },
+            hands: [{
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            }, {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            }],
+            neck: {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            },
+            cloth: {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            },
+            legs: {
+                id: 0,
+                name: 'none',
+                cost: 0,
+                weight: 0,
+                description: 'no item',
+                itemType: 'none'
+            }
+        },
+        backpack: []
+    },
     magicPerDay: {},
     magicKnown: {},
     spellsKnown: [],
@@ -80,7 +234,7 @@ export const armorClassEmpty: armorClass = {
     dextrityBonus: 0,
     sizeBonus: 0,
     armorBonus: 0,
-    shildBonus: 0,
+    shieldBonus: 0,
     enhancementBonuses: 0,
     deflectionBonuses: 0,
     naturalArmor: 0,
@@ -98,14 +252,20 @@ export const emptySubRaces: subRaces = {
 }
 
 export const skillEmpty: serverSkill = {
-    idSkill : 0,
-    skillRank : -1
+    idSkill: 0,
+    skillRank: -1
 }
 
 export const studyEmpty: AddStudy = {
-    idSkill : 0,
+    idSkill: 0,
     study: ""
 }
+
+export const emptyItemsList = {
+    armorsList: [],
+    weaponsList: [],
+    wonderousItems: []
+  }
 
 export const noneArmor: Armor = {
     id: 0,
@@ -120,49 +280,49 @@ export const noneArmor: Armor = {
     maxDex: 100,
     penality: 0,
     failure: 0
-  }
+}
 
-  export const noneShild: Shild = {
+export const noneShield: Shield = {
     id: 0,
     name: "none",
     cost: 0,
     weight: 0,
     description: "no armor",
     itemType: "none",
-    shildName: "none",
+    shieldName: "none",
     armorClass: 0,
     armorType: "none",
     maxDex: 100,
     penality: 0,
     failure: 0
-  }
+}
 
-  export const noneWeapon: Weapon = {
+export const noneWeapon: Weapon = {
     id: 0,
     name: "none",
     cost: 0,
     weight: 0,
     description: "no armor",
     itemType: "none",
-    damage: "none",
+    damage: "d0",
     critical: "none",
     range: 0,
     type: [],
     specialAttacks: "none"
-  }
+}
 
-  export const noneItem: WonderousItem = {
-      id: 0,
-      name: 'none',
-      cost: 0,
-      weight: 0,
-      description: 'no item',
-      itemType: 'none'
-  }
+export const noneItem: WonderousItem = {
+    id: 0,
+    name: 'none',
+    cost: 0,
+    weight: 0,
+    description: 'no item',
+    itemType: 'none'
+}
 
-  export const emptyInventory: Inventory = {
+export const emptyInventory: Inventory = {
     armor: noneArmor,
-    shild: noneShild,
+    shield: noneShield,
     weaponOne: noneWeapon,
     weaponTwo: noneWeapon,
     weaponThree: noneWeapon,
@@ -170,12 +330,12 @@ export const noneArmor: Armor = {
     weaponFive: noneWeapon,
     weaponList: [],
     body: {
-      head: noneItem,
-      arms: noneItem,
-      hands: [noneItem,noneItem],
-      neck: noneItem,
-      cloth: noneItem,
-      legs: noneItem
+        head: noneItem,
+        arms: noneItem,
+        hands: [noneItem, noneItem],
+        neck: noneItem,
+        cloth: noneItem,
+        legs: noneItem
     },
     backpack: []
-  }
+}

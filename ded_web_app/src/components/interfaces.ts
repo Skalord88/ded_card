@@ -18,6 +18,7 @@ export interface characterPc {
   featsList: feat[];
   levelFeatsList: feat[];
   items: Item[];
+  inventory: Inventory,
   magicPerDay: {};
   magicKnown: {};
   spellsKnown: [];
@@ -61,7 +62,7 @@ export interface armorClass {
   dextrityBonus: number;
   sizeBonus: number;
   armorBonus: number;
-  shildBonus: number;
+  shieldBonus: number;
   enhancementBonuses: number;
   deflectionBonuses: number;
   naturalArmor: number;
@@ -213,8 +214,8 @@ export interface Armor extends Item {
   failure: number;
 }
 
-export interface Shild extends Item {
-  shildName: string;
+export interface Shield extends Item {
+  shieldName: string;
   armorClass: number;
   armorType: string;
   maxDex: number;
@@ -234,7 +235,7 @@ export interface WonderousItem extends Item {}
 
 export type Inventory = {
   armor: Armor;
-  shild: Shild;
+  shield: Shield;
   weaponOne: Weapon;
   weaponTwo: Weapon;
   weaponThree: Weapon;
@@ -264,4 +265,12 @@ export type Attacks = {
     secondHand: Weapon,
     additionalWeapon: Weapon  
   }
+}
+
+export type CharInventory = {
+  inventory: Inventory
+  items: ItemsList
+  updateInventory: (
+    newInventory: Inventory,
+    newGold: number ) => void;
 }

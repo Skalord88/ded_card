@@ -2,14 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
-import { characterPc, MapOfSkills, SkillProps } from "../components/interfaces";
+import { Inventory, MapOfSkills, SkillProps, characterPc } from "../components/interfaces";
 import { urlChar } from "../components/url";
-import { characterEmpty } from "../components/variables";
+import { characterEmpty, emptyInventory } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>( characterEmpty );
+  const [inventory, setInventory] = useState<Inventory>( emptyInventory );
   const [skills, setSkills] = useState<SkillProps[]>([])
   const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({skills});
   const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfSkills>({skills});
@@ -49,6 +50,12 @@ export function Show() {
     console.log(mapNoStudy)
 
   }, [skills]);
+
+  useEffect(() => {
+
+    
+
+  },[char.inventory])
 
   const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
@@ -160,8 +167,8 @@ export function Show() {
         {char.armorClass.armorBonus > 0
           ? " + armor " + char.armorClass.armorBonus
           : ""}
-        {char.armorClass.shildBonus > 0
-          ? " + shild " + char.armorClass.shildBonus
+        {char.armorClass.shieldBonus > 0
+          ? " + shield " + char.armorClass.shieldBonus
           : ""}
         {char.armorClass.enhancementBonuses > 0
           ? " + enhancement " + char.armorClass.enhancementBonuses
@@ -212,6 +219,21 @@ export function Show() {
         </div>
         <div className="container">
           <MapOfStudy skills={ skillsStudy.skills }/>
+        </div>
+        <div className="row">
+          <div className="column">
+            armor: {inventory.armor.armorName} +{inventory.armor.armorClass}
+          <div/>
+          <div className="column">
+            shield: {inventory.shield.shieldName} +{inventory.shield.armorClass}
+          </div>
+          <div className="column">
+            weapon I: {inventory.weaponOne.name} {inventory.weaponOne.damage}
+          </div>
+          <div className="column">
+            weapon II: {inventory.weaponTwo.name} {inventory.weaponTwo.damage}
+          </div>
+          </div>
         </div>
       </div>
     </>
