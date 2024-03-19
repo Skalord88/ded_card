@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -26,6 +28,9 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.items.entity.Inventory;
+import pl.kolendateam.dadcard.items.repository.InventoryRepository;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -41,20 +46,25 @@ public class CharacterController {
   FeatsRepository featsRepository;
   SkillsRepository skillsRepository;
   SpellsTableRepository spellsTableRepository;
+  InventoryRepository inventoryRepository;
+  ItemsRepository itemsRepository;
 
   @Autowired
   public CharacterController(
-    CharacterRepository characterRepository,
-    ClassRepository classRepository,
-    FeatsRepository featsRepository,
-    SkillsRepository skillsRepository,
-    SpellsTableRepository spellsTableRepository
-  ) {
+      CharacterRepository characterRepository,
+      ClassRepository classRepository,
+      FeatsRepository featsRepository,
+      SkillsRepository skillsRepository,
+      SpellsTableRepository spellsTableRepository,
+      InventoryRepository inventoryRepository,
+      ItemsRepository itemsRepository) {
     this.characterRepository = characterRepository;
     this.classRepository = classRepository;
     this.featsRepository = featsRepository;
     this.skillsRepository = skillsRepository;
     this.spellsTableRepository = spellsTableRepository;
+    this.inventoryRepository = inventoryRepository;
+    this.itemsRepository = itemsRepository;
   }
 
   @GetMapping(value = "/list")
@@ -73,12 +83,11 @@ public class CharacterController {
 
   @PostMapping(value = "", consumes = "application/json")
   public CreateCharacterDTO createCharacter(
-    @RequestBody CreateCharacterDTO createCharacterDTO
-  ) {
+      @RequestBody CreateCharacterDTO createCharacterDTO) {
+
     Character character = new Character(
-      createCharacterDTO.characterName,
-      createCharacterDTO.playerName
-    );
+        createCharacterDTO.characterName,
+        createCharacterDTO.playerName);
 
     List<Skills> skillsList = this.skillsRepository.findAll();
     character.createSkillsArray(skillsList);
@@ -94,39 +103,44 @@ public class CharacterController {
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
     }
 
     Character character = characterOpt.get();
-    return new CharacterDTO(character);
+
+    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    if (!inventoryOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Inventory Not Found");
+    }
+
+    Inventory characterInventory = inventoryOpt.get();
+
+    return new CharacterDTO(character, characterInventory);
   }
 
   @PostMapping(value = "class/{id}", consumes = { "application/json" })
   public CharacterDTO setCharacterClass(
-    @PathVariable short id,
-    @RequestBody ClassPcDTO classPcDTO
-  ) {
+      @PathVariable short id,
+      @RequestBody ClassPcDTO classPcDTO) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
     }
 
     Character character = characterOpt.get();
 
-    Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.id);
+    Optional<ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
 
     if (!classOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Class Not Found");
     }
 
     List<Feats> featsList = this.featsRepository.findAll();
@@ -137,16 +151,15 @@ public class CharacterController {
     ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
     ClassPc classPc = new ClassPc(
-      classCharacter.getId(),
-      classCharacter.getName(),
-      (byte) 1,
-      classCharacter.getHitDice(),
-      classCharacter.getSavingThrow(),
-      classCharacter.getClassBab(),
-      classCharacter.getSpellsPerDay(),
-      classCharacter.getSpellsKnown(),
-      classCharacter.getSpellsDomain()
-    );
+        classCharacter.getId(),
+        classCharacter.getName(),
+        (byte) 1,
+        classCharacter.getHitDice(),
+        classCharacter.getSavingThrow(),
+        classCharacter.getClassBab(),
+        classCharacter.getSpellsPerDay(),
+        classCharacter.getSpellsKnown(),
+        classCharacter.getSpellsDomain());
 
     character.incrementEffectiveCharacterLv();
 
@@ -170,9 +183,8 @@ public class CharacterController {
     }
 
     int levelClassInDB = classPc.findLevelInArrayById(
-      classPcList,
-      classCharacter.getId()
-    );
+        classPcList,
+        classCharacter.getId());
 
     // study
     character.addStudyToCharacter(classCharacter.getAvailableStudy());
@@ -188,10 +200,9 @@ public class CharacterController {
 
     // feat
     List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-      levelClassInDB,
-      featsList,
-      classCharacter.getClassFeatsMap()
-    );
+        levelClassInDB,
+        featsList,
+        classCharacter.getClassFeatsMap());
 
     for (CharacterFeat chFeat : characterFeatsFromClass) {
       character.addFeatToPc(chFeat);
@@ -202,17 +213,14 @@ public class CharacterController {
 
     if (magicClass) {
       character.addMagic(
-        spellsTableList,
-        classCharacter.getSpellsPerDay(),
-        classCharacter.getSpellsKnown()
-      );
-      int sizeMagic =
-        character.getMagicKnown().get(classCharacter.getName()).length - 1;
+          spellsTableList,
+          classCharacter.getSpellsPerDay(),
+          classCharacter.getSpellsKnown());
+      int sizeMagic = character.getMagicKnown().get(classCharacter.getName()).length - 1;
 
       // magicKnown
       boolean findClassInSpellKnown = character.getClassSpellsKnown(
-        classCharacter.getName()
-      );
+          classCharacter.getName());
 
       if (findClassInSpellKnown) {
         character.addSpellKnown(sizeMagic, classCharacter.getName());
@@ -238,28 +246,24 @@ public class CharacterController {
 
   @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
   public CharacterDTO minusCharacterClass(
-    @PathVariable short id,
-    @RequestBody ClassPcDTO classPcDTO
-  ) {
+      @PathVariable short id,
+      @RequestBody ClassPcDTO classPcDTO) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
     }
 
     Character character = characterOpt.get();
 
-    Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.id);
+    Optional<ClassCharacter> classOpt = this.classRepository.findById(classPcDTO.id);
 
     if (!classOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Class Not Found");
     }
 
     List<Feats> featsList = this.featsRepository.findAll();
@@ -271,27 +275,24 @@ public class CharacterController {
     ArrayList<ClassPc> classPcList = character.getClassPcArray();
 
     ClassPc classPc = new ClassPc(
-      classCharacter.getId(),
-      classCharacter.getName(),
-      (byte) 1,
-      classCharacter.getHitDice(),
-      classCharacter.getSavingThrow(),
-      classCharacter.getClassBab(),
-      classCharacter.getSpellsPerDay(),
-      classCharacter.getSpellsKnown(),
-      classCharacter.getSpellsDomain()
-    );
+        classCharacter.getId(),
+        classCharacter.getName(),
+        (byte) 1,
+        classCharacter.getHitDice(),
+        classCharacter.getSavingThrow(),
+        classCharacter.getClassBab(),
+        classCharacter.getSpellsPerDay(),
+        classCharacter.getSpellsKnown(),
+        classCharacter.getSpellsDomain());
 
     // feat
     int levelClassInDB = classPc.findLevelInArrayById(
-      classPcList,
-      classCharacter.getId()
-    );
+        classPcList,
+        classCharacter.getId());
     List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-      levelClassInDB,
-      featsList,
-      classCharacter.getClassFeatsMap()
-    );
+        levelClassInDB,
+        featsList,
+        classCharacter.getClassFeatsMap());
 
     for (CharacterFeat chFeat : characterFeatsFromClass) {
       character.removeFeatFromPc(chFeat);
@@ -353,10 +354,9 @@ public class CharacterController {
       character.setMagicPerDay(null);
     } else {
       character.addMagic(
-        spellsTableList,
-        classCharacter.getSpellsPerDay(),
-        classCharacter.getSpellsKnown()
-      );
+          spellsTableList,
+          classCharacter.getSpellsPerDay(),
+          classCharacter.getSpellsKnown());
     }
 
     // base attack bonus
@@ -378,7 +378,7 @@ public class CharacterController {
 
     // items
     if (character.getEffectiveCharacterLv() == 0) {
-      character.emptyItems();
+      character.emptyInventory();
     }
 
     this.characterRepository.save(character);

@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.items;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -20,13 +22,14 @@ import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
+import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
-import pl.kolendateam.dadcard.items.wondrous_items.repository.WondrousItemsRepository;
 
 @CrossOrigin
 @RestController
@@ -34,17 +37,16 @@ import pl.kolendateam.dadcard.items.wondrous_items.repository.WondrousItemsRepos
 public class ItemsController {
 
   ItemsRepository itemsRepository;
-  WondrousItemsRepository wondrousItemsRepository;
+  InventoryRepository inventoryRepository;
   CharacterRepository characterRepository;
 
   @Autowired
   public ItemsController(
-    ItemsRepository itemsRepository,
-    WondrousItemsRepository wondrousItemsRepository,
-    CharacterRepository characterRepository
-  ) {
+      ItemsRepository itemsRepository,
+      InventoryRepository inventoryRepository,
+      CharacterRepository characterRepository) {
     this.itemsRepository = itemsRepository;
-    this.wondrousItemsRepository = wondrousItemsRepository;
+    this.inventoryRepository = inventoryRepository;
     this.characterRepository = characterRepository;
   }
 
@@ -64,8 +66,7 @@ public class ItemsController {
         weaponsDTOList.add(MapperItemsDTO.toWeaponDTO((Weapons) item));
       } else if (item instanceof WondrousItems) {
         wonderousItemsDTOList.add(
-          MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item)
-        );
+            MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item));
       }
     });
 
@@ -76,24 +77,54 @@ public class ItemsController {
     return itemsDTOList;
   }
 
-  @PostMapping(value = "{id}", consumes = { "application/json" })
-  public CharacterDTO setInventory(
-    @PathVariable short id,
-    @RequestBody InventoryDTO inventoryDTO
-  ) {
-    Optional<Character> characterOpt = this.characterRepository.findById(id);
+  @GetMapping("inventory/{id}")
+  public InventoryDTO getCharacterInventory(
+      @PathVariable short id) {
 
+    Optional<Character> characterOpt = this.characterRepository.findById(id);
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
     }
-
     Character character = characterOpt.get();
+
+    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    if (!inventoryOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
+    }
+    Inventory characterInventory = inventoryOpt.get();
+
+    return new InventoryDTO(characterInventory);
+  }
+
+  @PostMapping(value = "{id}", consumes = { "application/json" })
+  public CharacterDTO changeInventory(
+      @PathVariable short id,
+      @RequestBody InventoryDTO inventoryDTO) {
+
+    Optional<Character> characterOpt = this.characterRepository.findById(id);
+    if (!characterOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
+    }
+    Character character = characterOpt.get();
+
+    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    if (!inventoryOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
+    }
+    Inventory characterInventory = inventoryOpt.get();
 
     character.addItemsToCharacterInventory(inventoryDTO);
 
-    return new CharacterDTO(character);
+    this.characterRepository.save(character);
+
+    return new CharacterDTO(character, characterInventory);
   }
 }

@@ -1,10 +1,10 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import io.micrometer.common.lang.Nullable;
+import java.io.Serializable;
+
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,9 +36,9 @@ public class Study implements Serializable {
     this.idSkill = newStudy.idSkill;
   }
   // public Study(short newId, String newStudy, short newIdSkill, int newRank) {
-  //   this.id = newId;
-  //   this.studyName = newStudy;
-  //   this.idSkill = newIdSkill;
-  //   this.rank = newRank;
+  // this.id = newId;
+  // this.studyName = newStudy;
+  // this.idSkill = newIdSkill;
+  // this.rank = newRank;
   // }
 }

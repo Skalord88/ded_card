@@ -11,4 +11,6 @@ public enum ItemTypeEnum {
   STAFF,
   WAND,
   WONDROUS_ITEM,
+  COMMON_ITEM,
+  ITEM
 }

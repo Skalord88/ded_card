@@ -1,23 +1,29 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
@@ -34,7 +40,6 @@ import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -105,10 +110,8 @@ public class Character {
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<CharacterFeat> levelFeatsList;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<Items> items;
-
-  @JdbcTypeCode(SqlTypes.JSON)
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "inventory_id", referencedColumnName = "id")
   Inventory inventory;
 
   @JdbcTypeCode(SqlTypes.JSON)
@@ -138,7 +141,6 @@ public class Character {
     this.classSkills = new ArrayList<>();
     this.featsList = new ArrayList<>();
     this.levelFeatsList = new ArrayList<>();
-    this.items = new ArrayList<>();
     this.inventory = new Inventory();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
@@ -170,40 +172,34 @@ public class Character {
   }
 
   public void addSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) ==
-      ValueEnum.HIGH.getValueEnum().charAt(0)
-      ? 2.5
-      : 0;
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)
+        ? 2.5
+        : 0;
     this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
 
-    bonus =
-      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
 
-    bonus =
-      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
   }
 
   public void minusSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) ==
-      ValueEnum.HIGH.getValueEnum().charAt(0)
-      ? 2.5
-      : 0;
+    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)
+        ? 2.5
+        : 0;
     this.savingThrow.setFortitude(this.savingThrow.getFortitude() - bonus);
 
-    bonus =
-      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setReflex(this.savingThrow.getReflex() - bonus);
 
-    bonus =
-      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setWill(this.savingThrow.getWill() - bonus);
@@ -295,8 +291,7 @@ public class Character {
   public void raceLevelAdjustment(byte lvAdj) {
     this.bab = (lvAdj * 0.5) - 0.5;
     this.levelAdjustment = lvAdj;
-    this.vitality =
-      vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
+    this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
     this.skillPoints = lvAdj * 2;
   }
 
@@ -322,11 +317,10 @@ public class Character {
     this.vitality.hitDices.put(hitDice, hD);
 
     int hP = vitality.hitPointsAtNewLevel(
-      hitDice,
-      vitality,
-      abilitys,
-      effectiveCharacterLv
-    );
+        hitDice,
+        vitality,
+        abilitys,
+        effectiveCharacterLv);
 
     this.vitality.setHitPoints(hP);
   }
@@ -340,11 +334,10 @@ public class Character {
     }
 
     int hP = vitality.hitPointsAtLastLevel(
-      hitDice,
-      vitality,
-      abilitys,
-      effectiveCharacterLv
-    );
+        hitDice,
+        vitality,
+        abilitys,
+        effectiveCharacterLv);
 
     this.vitality.setHitPoints(hP);
   }
@@ -357,15 +350,15 @@ public class Character {
   public void addSkill(String skills) {
     Gson gson = new Gson();
 
-    Type listSkill = new TypeToken<List<ClassSkills>>() {}.getType();
+    Type listSkill = new TypeToken<List<ClassSkills>>() {
+    }.getType();
     List<ClassSkills> skill = gson.fromJson(skills, listSkill);
 
     for (ClassSkills clSk : classSkills) {
       for (ClassSkills sk : skill) {
         if (clSk.getNameSkill().equals(sk.getNameSkill())) {
           clSk.setSkillDifferentBonus(
-            clSk.getSkillDifferentBonus() + (int) sk.getSkillRank()
-          );
+              clSk.getSkillDifferentBonus() + (int) sk.getSkillRank());
         }
       }
     }
@@ -374,9 +367,8 @@ public class Character {
   public void addSpecialAttacks(String specialAttacksFeat) {
     Gson gson = new Gson();
     SpecialAttacks spAtt = gson.fromJson(
-      specialAttacksFeat,
-      SpecialAttacks.class
-    );
+        specialAttacksFeat,
+        SpecialAttacks.class);
 
     this.specialAttacks.addSpecialAttackFeat(spAtt, this.specialAttacks);
   }
@@ -395,21 +387,20 @@ public class Character {
   public void raceBonusArmorClass(String armorClass) {
     Gson gson = new Gson();
     ArmorClass jsonObjectArmorClass = gson.fromJson(
-      armorClass,
-      ArmorClass.class
-    );
+        armorClass,
+        ArmorClass.class);
 
     this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
   }
 
   public ArrayList<CharacterFeat> listFeatsFromClass(
-    int lv,
-    List<Feats> featsListInDB,
-    String classFeatsMap
-  ) {
+      int lv,
+      List<Feats> featsListInDB,
+      String classFeatsMap) {
     ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
     Gson gson = new Gson();
-    Type listFeats = new TypeToken<List<ClassFeats>>() {}.getType();
+    Type listFeats = new TypeToken<List<ClassFeats>>() {
+    }.getType();
     List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
     for (ClassFeats featInJson : featsJson) {
@@ -419,12 +410,11 @@ public class Character {
           for (String featString : fList) {
             if (featInList.getFeatName().equals(featString)) {
               CharacterFeat newCharFeat = new CharacterFeat(
-                featInList.getId(),
-                1,
-                featInList.getFeatName(),
-                featInList.getDescription(),
-                featInList.getFeatsType()
-              );
+                  featInList.getId(),
+                  1,
+                  featInList.getFeatName(),
+                  featInList.getDescription(),
+                  featInList.getFeatsType());
               characterFeatsFromClassArray.add(newCharFeat);
             }
           }
@@ -442,28 +432,25 @@ public class Character {
     }
 
     CharacterFeat characterFeat = new CharacterFeat(
-      feat.getId(),
-      1,
-      feat.getFeatName(),
-      feat.getDescription(),
-      feat.getFeatsType()
-    );
+        feat.getId(),
+        1,
+        feat.getFeatName(),
+        feat.getDescription(),
+        feat.getFeatsType());
 
     ArrayList<CharacterFeat> allFeats = new ArrayList<>();
 
     this.featsList.forEach(charFeat -> {
-        allFeats.add(charFeat);
-      });
+      allFeats.add(charFeat);
+    });
 
     this.levelFeatsList.forEach(lvFeat -> {
-        allFeats.add(lvFeat);
-      });
+      allFeats.add(lvFeat);
+    });
 
     boolean featPresent = false;
     for (CharacterFeat cF : allFeats) {
-      if (
-        cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
-      ) {
+      if (cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())) {
         featPresent = true;
       }
     }
@@ -474,15 +461,14 @@ public class Character {
         buyed = true;
       } else {
         boolean prereqCheck = characterFeat.checkPrerequisite(
-          feat,
-          subRace,
-          savingThrow,
-          armorClass,
-          classSkills,
-          abilitys,
-          (int) bab,
-          allFeats
-        );
+            feat,
+            subRace,
+            savingThrow,
+            armorClass,
+            classSkills,
+            abilitys,
+            (int) bab,
+            allFeats);
         if (prereqCheck) {
           this.levelFeatsList.add(characterFeat);
           buyed = true;
@@ -541,14 +527,6 @@ public class Character {
     }
   }
 
-  public void buyItems(Items itemToBuy) {
-    this.items.add(itemToBuy);
-  }
-
-  public void sellItem(int indexToSell) {
-    this.items.remove(indexToSell);
-  }
-
   public void addStudyToCharacter(Set<Study> availableStudy) {
     for (ClassSkills clSk : this.classSkills) {
       for (Study st : availableStudy) {
@@ -561,16 +539,16 @@ public class Character {
 
   public void removeStudyFromCharacter(Set<Study> availableStudy) {
     this.classSkills.forEach(skill -> {
-        if (!skill.getFieldOfStudy().isEmpty()) {
-          skill
+      if (!skill.getFieldOfStudy().isEmpty()) {
+        skill
             .getFieldOfStudy()
             .forEach(study -> {
               if (study.getId() == skill.getIdSkill()) {
                 skill.removeStudyFromKnowledge(study.getId());
               }
             });
-        }
-      });
+      }
+    });
   }
 
   public void allKnowledgeZero() {
@@ -583,40 +561,32 @@ public class Character {
   }
 
   public void addMagic(
-    List<SpellsTable> spellsTableList,
-    SpellsEnum spellDay,
-    SpellsEnum spellKnown
-  ) {
+      List<SpellsTable> spellsTableList,
+      SpellsEnum spellDay,
+      SpellsEnum spellKnown) {
     for (SpellsTable table : spellsTableList) {
       ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(
-        table.getSpellsInLevel()
-      );
+          table.getSpellsInLevel());
       if (table.getSpellsDayKnown() != null) {
         for (ClassPc classPc : classPcArray) {
-          if (
-            table.getSpellsDayKnown() == SpellsEnum.DAY &&
-            table.getMagicClass() == classPc.getSpellsPerDay()
-          ) {
+          if (table.getSpellsDayKnown() == SpellsEnum.DAY &&
+              table.getMagicClass() == classPc.getSpellsPerDay()) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicPerDay.put(
                     classPc.getName(),
-                    spellsInThisLevel.getSpells()
-                  );
+                    spellsInThisLevel.getSpells());
               }
             }
           }
 
-          if (
-            table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-            table.getMagicClass() == classPc.getSpellsKnown()
-          ) {
+          if (table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+              table.getMagicClass() == classPc.getSpellsKnown()) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicKnown.put(
                     classPc.getName(),
-                    spellsInThisLevel.getSpells()
-                  );
+                    spellsInThisLevel.getSpells());
               }
             }
           }
@@ -669,9 +639,7 @@ public class Character {
 
   public void addSpellKnown(int sizeMagic, EnumClass name) {
     for (SpellsInCharLevel sICKinDB : this.spellsKnown) {
-      if (
-        sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic
-      ) {
+      if (sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic) {
         sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
       }
     }
@@ -681,12 +649,12 @@ public class Character {
     for (SpellsInCharLevel sICK : this.spellsKnown) {
       if (sICK.getCaster() == classNameE) {
         sICK
-          .getSpells()
-          .forEach((i, a) -> {
-            if (i == lv) {
-              a.add(spellToAdd);
-            }
-          });
+            .getSpells()
+            .forEach((i, a) -> {
+              if (i == lv) {
+                a.add(spellToAdd);
+              }
+            });
       }
     }
   }
@@ -752,12 +720,12 @@ public class Character {
       for (ClassSkills skill : this.classSkills) {
         if (studyDTO.idSkill == skill.getIdSkill()) {
           skill
-            .getFieldOfStudy()
-            .forEach(study -> {
-              if (studyDTO.idStudy == study.getId()) {
-                study.setRank(studyDTO.rank);
-              }
-            });
+              .getFieldOfStudy()
+              .forEach(study -> {
+                if (studyDTO.idStudy == study.getId()) {
+                  study.setRank(studyDTO.rank);
+                }
+              });
         }
       }
     }
@@ -793,7 +761,8 @@ public class Character {
 
   public void setFirstLevelGold(String initialGold) {
     Gson gson = new Gson();
-    Type arrayGold = new TypeToken<String[]>() {}.getType();
+    Type arrayGold = new TypeToken<String[]>() {
+    }.getType();
     String[] diceGold = gson.fromJson(initialGold, arrayGold);
 
     int number = Integer.parseInt(diceGold[0]);
@@ -808,34 +777,29 @@ public class Character {
   }
 
   public void setLevelGold() {
-    this.treasure =
-      switch (this.effectiveCharacterLv) {
-        case 0 -> 0;
-        case 2 -> 900;
-        case 3 -> 2700;
-        case 4 -> 5400;
-        case 5 -> 9000;
-        case 6 -> 13000;
-        case 7 -> 19000;
-        case 8 -> 27000;
-        case 9 -> 36000;
-        case 10 -> 49000;
-        case 11 -> 66000;
-        case 12 -> 88000;
-        case 13 -> 110000;
-        case 14 -> 150000;
-        case 15 -> 200000;
-        case 16 -> 260000;
-        case 17 -> 340000;
-        case 18 -> 440000;
-        case 19 -> 580000;
-        case 20 -> 760000;
-        default -> 0;
-      };
-  }
-
-  public void emptyItems() {
-    this.items = new ArrayList<>();
+    this.treasure = switch (this.effectiveCharacterLv) {
+      case 0 -> 0;
+      case 2 -> 900;
+      case 3 -> 2700;
+      case 4 -> 5400;
+      case 5 -> 9000;
+      case 6 -> 13000;
+      case 7 -> 19000;
+      case 8 -> 27000;
+      case 9 -> 36000;
+      case 10 -> 49000;
+      case 11 -> 66000;
+      case 12 -> 88000;
+      case 13 -> 110000;
+      case 14 -> 150000;
+      case 15 -> 200000;
+      case 16 -> 260000;
+      case 17 -> 340000;
+      case 18 -> 440000;
+      case 19 -> 580000;
+      case 20 -> 760000;
+      default -> 0;
+    };
   }
 
   public void setZeroExp() {
@@ -843,26 +807,11 @@ public class Character {
   }
 
   public void addItemsToCharacterInventory(InventoryDTO inventoryDTO) {
-    if (inventoryDTO.armor.id != 0) {
-      this.items.add(new Items(inventoryDTO.armor));
-    }
-    if (inventoryDTO.shield.id != 0) {
-      this.items.add(new Items(inventoryDTO.shield));
-    }
-    if (inventoryDTO.weaponOne.id != 0) {
-      this.items.add(new Items(inventoryDTO.weaponOne));
-    }
-    if (inventoryDTO.weaponTwo.id != 0) {
-      this.items.add(new Items(inventoryDTO.weaponTwo));
-    }
-    if (inventoryDTO.weaponThree.id != 0) {
-      this.items.add(new Items(inventoryDTO.weaponThree));
-    }
-    if (inventoryDTO.weaponFour.id != 0) {
-      this.items.add(new Items(inventoryDTO.weaponFour));
-    }
-    if (inventoryDTO.weaponFive.id != 0) {
-      this.items.add(new Items(inventoryDTO.weaponFive));
-    }
+    this.inventory.addToInventory(inventoryDTO);
   }
+
+  public void emptyInventory() {
+    this.inventory = new Inventory();
+  }
+
 }

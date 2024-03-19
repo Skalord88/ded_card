@@ -1,5 +1,12 @@
 package pl.kolendateam.dadcard.items.entity;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.DiscriminatorValue;
@@ -9,9 +16,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +23,7 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -26,15 +31,13 @@ import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 @AllArgsConstructor
 @Getter
 @Setter
-@DiscriminatorColumn(
-  name = "item_type",
-  discriminatorType = DiscriminatorType.STRING
-)
+@DiscriminatorColumn(name = "item_type", discriminatorType = DiscriminatorType.STRING)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Items implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
+  int id;
 
   String name;
   BigDecimal cost;
@@ -42,28 +45,47 @@ public class Items implements Serializable {
   String description;
 
   public Items(ArmorsDTO armor) {
-    this.id = (short) armor.id;
+    this.id = armor.id;
+    this.name = armor.name;
     this.cost = armor.cost;
     this.weight = armor.weight;
     this.description = armor.description;
   }
 
-  public Items(ShieldsDTO shild) {
-    this.id = (short) shild.id;
-    this.cost = shild.cost;
-    this.weight = shild.weight;
-    this.description = shild.description;
+  public Items(ShieldsDTO shield) {
+    this.id = shield.id;
+    this.name = shield.name;
+    this.cost = shield.cost;
+    this.weight = shield.weight;
+    this.description = shield.description;
   }
 
   public Items(WeaponsDTO weapon) {
-    this.id = (short) weapon.id;
+    this.id = weapon.id;
+    this.name = weapon.name.toString();
     this.cost = weapon.cost;
     this.weight = weapon.weight;
     this.description = weapon.description;
   }
 
-  public String getItemType() {
-    return this.getClass().getAnnotation(DiscriminatorValue.class).value();
+  public Items(WondrousItemsDTO item) {
+    this.id = item.id;
+    this.name = item.name;
+    this.cost = item.cost;
+    this.weight = item.weight;
+    this.description = item.description;
+  }
+
+  @JsonProperty("itemType")
+  public ItemTypeEnum getItemType() {
+    String item = this.getClass().getAnnotation(DiscriminatorValue.class).value();
+
+    ItemTypeEnum itemEnum = ItemTypeEnum.valueOf(item);
+
+    return itemEnum;
+  }
+
+  public void setItemType(ItemTypeEnum itemType) {
   }
 
   public int findItemIndexinArrayById(ArrayList<Items> items, Items w) {
@@ -74,4 +96,9 @@ public class Items implements Serializable {
     }
     return -1;
   }
+
+  public Items(int idZero) {
+    this.id = idZero;
+  }
+
 }

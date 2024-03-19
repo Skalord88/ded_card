@@ -11,16 +11,16 @@ public class ArmorClass {
 
     int sizeBonus;
     int armorBonus;
-    int shildBonus;
+    int shieldBonus;
     int enhancementBonuses;
     int deflectionBonuses;
     int naturalArmor;
     int dodgeBonus;
-    
+
     public boolean checkPrerequisiteAC(ArmorClass aC) {
 
         return aC.armorBonus > 0;
-    
+
     }
-    
+
 }

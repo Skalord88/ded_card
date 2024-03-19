@@ -37,7 +37,7 @@ public class RaceController {
     CharacterRepository characterRepository;
 
     @Autowired
-    RaceController(RaceRepository raceRepository,CharacterRepository characterRepository) {
+    RaceController(RaceRepository raceRepository, CharacterRepository characterRepository) {
         this.raceRepository = raceRepository;
         this.characterRepository = characterRepository;
     }
@@ -50,12 +50,12 @@ public class RaceController {
     }
 
     @GetMapping("{id}/region")
-    public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable short id){
+    public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable short id) {
         Optional<Race> raceOpt = this.raceRepository.findById(id);
 
-        if(!raceOpt.isPresent()){
+        if (!raceOpt.isPresent()) {
             throw new ResponseStatusException(
-            HttpStatus.NOT_FOUND, "Race Not Found");
+                    HttpStatus.NOT_FOUND, "Race Not Found");
         }
 
         List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
@@ -65,8 +65,7 @@ public class RaceController {
 
     @PostMapping(value = "{id}/race", consumes = { "application/json" })
     public CharacterDTO setSubRaceToCharacter(
-        @PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO
-        ){
+            @PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO) {
 
         Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -89,25 +88,25 @@ public class RaceController {
 
         character.addSpeed(race.getSpeed());
 
-        if(race.getAbilitys() != null){
+        if (race.getAbilitys() != null) {
             character.addAbilityRace(race.getAbilitys());
         }
-        if(race.getSkills() != null){
+        if (race.getSkills() != null) {
             character.addSkill(race.getSkills());
         }
 
-        ArrayList <ClassSkills> findHide = character.getClassSkills();
-        for(ClassSkills clSk : findHide){
-            if(clSk.getNameSkill().equals("Hide")){
-                clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus()+character.getSize().getHide());
+        ArrayList<ClassSkills> findHide = character.getClassSkills();
+        for (ClassSkills clSk : findHide) {
+            if (clSk.getNameSkill().equals("Hide")) {
+                clSk.setSkillDifferentBonus(clSk.getSkillDifferentBonus() + character.getSize().getHide());
             }
         }
-        
-        if(race.getLevelAdjustment() != 0){
+
+        if (race.getLevelAdjustment() != 0) {
             character.raceLevelAdjustment(race.getLevelAdjustment());
         }
 
-        if(race.getArmorClass() != null){
+        if (race.getArmorClass() != null) {
             character.raceBonusArmorClass(race.getArmorClass());
         }
 
@@ -115,6 +114,6 @@ public class RaceController {
 
         this.characterRepository.save(character);
 
-        return new CharacterDTO (character);
+        return new CharacterDTO(character);
     }
 }

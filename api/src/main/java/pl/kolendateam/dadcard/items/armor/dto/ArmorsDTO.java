@@ -1,11 +1,17 @@
 package pl.kolendateam.dadcard.items.armor.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
-public class ArmorsDTO {
+@AllArgsConstructor
+@NoArgsConstructor
+public class ArmorsDTO implements Serializable {
 
   public int id;
   public String name;
@@ -19,6 +25,10 @@ public class ArmorsDTO {
   public int penality;
   public int failure;
   public String description;
+
+  public ArmorsDTO(int idZero) {
+    this.id = idZero;
+  }
 
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
@@ -34,4 +44,5 @@ public class ArmorsDTO {
     this.failure = item.getFailure();
     this.description = item.getDescription();
   }
+
 }

@@ -6,7 +6,7 @@
 
     <changeSet id="301" author="oscar">
         <createTable tableName="items">
-            <column name="id" type="SMALLINT" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(255)">
@@ -37,7 +37,7 @@
                 <constraints nullable="true"/>
             </column>
             <column name="weight" type="decimal">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="type" type="varchar(255)">
                 <constraints nullable="true"/>
@@ -46,7 +46,7 @@
                 <constraints nullable="true"/>
             </column>
             <column name="description" type="varchar(1000)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="armor_class" type="int">
                 <constraints nullable="true"/>

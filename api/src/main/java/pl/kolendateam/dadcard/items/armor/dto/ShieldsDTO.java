@@ -1,10 +1,13 @@
 package pl.kolendateam.dadcard.items.armor.dto;
 
 import java.math.BigDecimal;
+
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
+@NoArgsConstructor
 public class ShieldsDTO {
 
   public int id;
@@ -33,5 +36,9 @@ public class ShieldsDTO {
     this.penality = item.getPenality();
     this.failure = item.getFailure();
     this.description = item.getDescription();
+  }
+
+  public ShieldsDTO(int idZero) {
+    this.id = idZero;
   }
 }

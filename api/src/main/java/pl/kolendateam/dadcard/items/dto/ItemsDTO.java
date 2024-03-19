@@ -1,16 +1,24 @@
 package pl.kolendateam.dadcard.items.dto;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.entity.Items;
 
-public class ItemsDTO {
+@NoArgsConstructor
+public class ItemsDTO implements Serializable {
 
-  public short id;
+  public int id;
   public String name;
   public BigDecimal cost;
   public BigDecimal weight;
   public String description;
   public String itemType;
+
+  public ItemsDTO(int idZero) {
+    this.id = idZero;
+  }
 
   public ItemsDTO(Items item) {
     this.id = item.getId();
@@ -18,6 +26,7 @@ public class ItemsDTO {
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.description = item.getDescription();
-    this.itemType = item.getItemType();
+    this.itemType = item.getItemType().toString();
   }
+
 }

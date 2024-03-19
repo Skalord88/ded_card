@@ -1,0 +1,47 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="303" author="oscar">
+
+        <createTable tableName="inventory">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="armor_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="shield_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_id_one" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_id_two" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_id_three" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_id_four" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="weapon_id_five" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="head_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="neck_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="cloth_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="legs_id" type="int">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
