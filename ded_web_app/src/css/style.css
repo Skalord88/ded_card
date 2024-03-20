@@ -12,14 +12,18 @@ button {
   width: auto;
 }
 .container {
-  display: flex;
-  /* flex-direction: row; */
+  display: grid;
+  align-content: space-around;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
 }
-.row {
-  flex: 1;
-  flex-direction: row
+.container-item {
+  padding: 20px;
+  box-shadow: 2px 2px 4px grey;
 }
-.column {
-  display: flex;
-  flex-direction: column
+.container-table {
+  display: grid;
+  align-content: space-around;
+  grid-template-columns: auto auto auto auto auto auto;
+  padding: 4px;
 }

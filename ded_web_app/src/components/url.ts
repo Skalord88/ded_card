@@ -30,3 +30,6 @@ export const urlFeats: string =
 
 export const urlItems: string =
 'http://localhost:8080/item/all';
+
+export const urlInventory: string =
+'http://localhost:8080/item/inventory/';

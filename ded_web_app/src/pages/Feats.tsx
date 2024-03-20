@@ -49,14 +49,13 @@ export function Feats() {
 
     generalNotChar.forEach((feat) => {
       if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
-        console.log(feat.featName);
         let check = 0;
         feat.prerequisite.feats.forEach((prerFeat) => {
           listChar?.forEach((charFeat) => {
             charFeat === prerFeat ? check++ : (check += 0);
-            console.log(check, feat.featName, feat.prerequisite.feats.length)
+
             if (check === feat.prerequisite.feats.length) {
-              prerequisite.push(feat)
+              prerequisite.push(feat);
             }
           });
         });
@@ -135,23 +134,23 @@ export function Feats() {
   return (
     <>
       <div className="container">
-        <div>
+        <div className="container-item">
           {elcFeats === lvFeats ? (
             <>
-            <div>all feats added</div>
-            <div>
-              <button>
-                <Link to={'/item/' + charId}>to items</Link>
-              </button>
-            </div>
+              <div>all feats added</div>
+              <div>
+                <button>
+                  <Link to={"/item/" + charId}>to items</Link>
+                </button>
+              </div>
             </>
           ) : (
             <div>add {elcFeats - lvFeats} feat</div>
           )}
         </div>
 
-        <div>
-          <div>
+        <div className="container-item">
+          <div className="container-item">
             ---Class Feats---
             {char?.featsList.map((feat, index) => {
               return (
@@ -162,7 +161,7 @@ export function Feats() {
               );
             })}
           </div>
-          <div>
+          <div className="container-item">
             ---Level Feats---
             {levelFeatsList.map((feat, index) => {
               return (
@@ -177,13 +176,13 @@ export function Feats() {
             })}
           </div>
         </div>
-        <div>
+        <div className="container-item">
           {featsGeneral ? (
             <>
               {featsGeneral?.map((feat: serverFeat, index) => {
                 return (
                   <>
-                    <div key={index}>
+                    <div className="container-item" key={index}>
                       <button onClick={() => handleSelect(feat)}>
                         {feat.featName}
                       </button>
@@ -198,21 +197,18 @@ export function Feats() {
         </div>
         <div>
           {selectFeat ? (
-            <>
+            <div className="container-item">
               <div>{selectFeat.featName}</div>
-              {/* <div>{Object.entries(selectFeat.prerequisite).forEach(([p, pname]) =>
-              )}
-                </div> */}
               <div>{selectFeat.description}</div>
               <button onClick={() => handleAdd(selectFeat)}>Add</button>
-            </>
+            </div>
           ) : (
-            <></>
+            <div></div>
           )}
         </div>
         <div>
           {featsToAdd.length > 0 ? (
-            <>
+            <div className="container-item">
               added feats <button onClick={handleSubmit}>add feats</button>
               {featsToAdd.map((feat, index) => {
                 return (
@@ -226,9 +222,9 @@ export function Feats() {
                   </>
                 );
               })}
-            </>
+            </div>
           ) : (
-            <></>
+            <div></div>
           )}
         </div>
       </div>

@@ -1,25 +1,18 @@
 import React, { useEffect, useState } from "react";
 import {
-  AddStudy,
   Armor,
   CharInventory,
   Inventory,
   Item,
+  ItemToBuy,
   MapOfSkills,
   MapUpdateSkills,
   Shield,
   SkillProps,
-  Study,
   StudyUp,
   Weapon
 } from "./interfaces";
-import {
-  emptyInventory,
-  noneArmor,
-  noneShield,
-  noneWeapon,
-  studyEmpty
-} from "./variables";
+import { noneArmor, noneShield, noneWeapon } from "./variables";
 
 export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
   return (
@@ -133,6 +126,40 @@ export const MapOfSkillsNoStudy: React.FC<MapOfSkills> = ({ skills }) => {
   );
 };
 
+export const BuyItemInventory: React.FC<ItemToBuy> = ({
+  item,
+  type,
+  items,
+  buyItem,
+  sellItem
+}) => {
+  const selectItem = (i: Item, type: string) => {
+    buyItem(i, type);
+  };
+  const deselect = (i: Item, type: string) => {
+    sellItem(i, type);
+  };
+  return (
+    <>
+      <div className="column">
+        {item.name}
+        <button onClick={() => deselect(item, type)}>-</button>
+      </div>
+      <div>{item.description}</div>
+      <div>
+        {items.map((it, index) => {
+          return (
+            <div key={index}>
+              {it.name} {it.cost}
+              <button onClick={() => selectItem(it, type)}>+</button>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
 export const MapOfInventory: React.FC<CharInventory> = ({
   inventory,
   items,
@@ -154,7 +181,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "shield") {
       setTresure(+equipment.shield.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -163,7 +189,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "one") {
       setTresure(+equipment.weaponOne.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -172,7 +197,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "two") {
       setTresure(+equipment.weaponTwo.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -181,7 +205,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "three") {
       setTresure(+equipment.weaponThree.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -190,7 +213,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "four") {
       setTresure(+equipment.weaponFour.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -199,7 +221,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       };
       setEquipment(updatedInventory);
     }
-
     if (type === "five") {
       setTresure(+equipment.weaponFive.cost - e.cost);
       const updatedInventory: Inventory = {
@@ -209,7 +230,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       setEquipment(updatedInventory);
     }
   };
-
   const handleSellItem = (e: Item, type: string) => {
     if (type === "armor") {
       setTresure(+e.cost);
@@ -277,67 +297,73 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 
   return (
     <>
-      <div className="row">
-        Armor: {inventory.armor.armorName}
-        {inventory.armor.id !== 0 ? (
-          <>
-            <button onClick={() => handleSellItem(inventory.armor, "armor")}>
-              -
-            </button>
-          </>
-        ) : (
-          <></>
-        )}
-        <>
-          {items.armorsList.map((armor, index) => {
-            return (
-              <>
-                <div key={index}>
-                  <button onClick={() => handleBuyItem(armor, "armor")}>
-                    +
-                  </button>
-                  {armor.armorName} {armor.cost}gp
-                </div>
-              </>
-            );
-          })}
-        </>
-      </div>
-      <div className="row">
-        Shield: {inventory.shield.shieldName}
-        {inventory.shield.id !== 0 ? (
-          <>
-            <button>-</button>
-          </>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div className="row">
-        <div className="row">
-          Weapon I: {inventory.weaponOne.name}
-          {inventory.weaponOne.id !== 0 ? (
-            <>
-              <button
-                onClick={() => handleSellItem(inventory.weaponOne, "one")}
-              >
-                -
-              </button>
-            </>
-          ) : (
-            <></>
-          )}
-          {items.weaponsList.map((weapon, index) => {
-            return (
-              <div key={index}>
-                {weapon.name} {weapon.cost}gp
-                <button onClick={() => handleBuyItem(weapon, "one")}>+</button>
-              </div>
-            );
-          })}
+      <div className="container">
+        <div className="container-item">
+          ---Armor:
+          <BuyItemInventory
+            item={equipment.armor}
+            items={items.armorsList}
+            type={"armor"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
         </div>
-        <div className="row">Weapon II: {inventory.weaponTwo.name}</div>
-        <div className="row">Weapon III: {inventory.weaponThree.name}</div>
+        <div className="container-item">---Shield:</div>
+      </div>
+      <div className="container">
+        <div className="container-item">
+          ---Weapon I:
+          <BuyItemInventory
+            item={equipment.weaponOne}
+            items={items.weaponsList}
+            type={"one"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div className="container-item">
+          ---Weapon II:
+          <BuyItemInventory
+            item={equipment.weaponTwo}
+            items={items.weaponsList}
+            type={"two"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div className="container-item">
+          ---Weapon III:
+          <BuyItemInventory
+            item={equipment.weaponThree}
+            items={items.weaponsList}
+            type={"three"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div className="container-item">
+          ---Weapon IV:
+          <BuyItemInventory
+            item={equipment.weaponFour}
+            items={items.weaponsList}
+            type={"four"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div className="container-item">
+          ---Weapon V:
+          <BuyItemInventory
+            item={equipment.weaponFive}
+            items={items.weaponsList}
+            type={"five"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+      </div>
+      <div className="container">
+        <div className="container-item">Head: {inventory.head.name}</div>
       </div>
     </>
   );

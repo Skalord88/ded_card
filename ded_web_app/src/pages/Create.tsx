@@ -27,21 +27,22 @@ export function Create() {
         .then((response) => {setCharId(response.data.characterId)})
     }
 
-    console.log(charId)
-
     return (
-        <>
+        <div className='container'>
+            <div className='container-item'>
             <form>
                 <input type='text' placeholder="Character Name" onChange={handleData} name="characterName" value={inputData.characterName}></input>
                 <input type='text' placeholder="Player" onChange={handleData} name="playerName" value={inputData.playerName}></input>
-            <p>
-                <>{charId > -1?
+            
+
+                <div>{charId > -1?
                 <button> <Link to={'/abilitys/' + charId}>to abilitys</Link></button>
                 :<button onClick={handleSubmit}>create</button>
                 
-            }</>
-            </p>
+            }</div>
+
             </form>
-        </>
+            </div>
+        </div>
     )
 }

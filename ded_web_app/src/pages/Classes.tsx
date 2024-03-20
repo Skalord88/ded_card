@@ -6,7 +6,7 @@ import {
   urlChar,
   urlClassList,
   urlClassAdd,
-  urlClassSell,
+  urlClassSell
 } from "../components/url";
 import { ClassPc, characterPc } from "../components/interfaces";
 
@@ -36,9 +36,7 @@ export function Classes() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-
-  },[classesList])
+  useEffect(() => {}, [classesList]);
 
   const handleData = (e: any) => {
     setSign(e[0]);
@@ -62,70 +60,76 @@ export function Classes() {
 
   return (
     <>
-      <p>{char?.characterName}</p>
-      <div>
-        {classPcName ? (
-          <>
-            choosen: {classPcName} <button onClick={handleSign}>proceed</button>
-          </>
-        ) : (
-          <>choose one</>
-        )}
-      </div>
-      <div>
-        {char?.classPcList ? (
-          <button>
-            <Link to={"/skill/" + charId}>to skills</Link>
-          </button>
-        ) : (
-          <></>
-        )}
-      </div>
-      <ul>
-        {char?.classPcList? (
-          <>
-            {char.classPcList.map((c: any, index: number) => {
-              return c.level === 0 ? (
-                <></>
-              ) : (
-                <li key={index}>
-                  <button
-                    onClick={() =>
-                      handleData(["+", c.id, c.className, c.level])
-                    }
-                  >
-                    +
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleData(["-", c.id, c.className, c.level])
-                    }
-                  >
-                    -
-                  </button>{" "}
-                  {c.className} {c.level}
-                </li>
-              );
-            })}
-          </>
-        ) : (
-          <>no classes in character</>
-        )}
-      </ul>
-      <div>
-        <p></p>
-        {classesList.map((cl: any, index) => {
-          return (
-            <div key={index}>
-              <button
-                onClick={() => handleData(["+", cl.id, cl.className, cl.level])}
-              >
-                +
-              </button>{" "}
-              {cl.classType}, {cl.className}
-            </div>
-          );
-        })}
+      <div className="container">
+        <div className="container-item">
+          <div>
+            {classPcName ? (
+              <>
+                choosen: {classPcName}{" "}
+                <button onClick={handleSign}>proceed</button>
+              </>
+            ) : (
+              <>choose one</>
+            )}
+          </div>
+          
+          <div>
+            {char?.classPcList ? (
+              <>
+                {char.classPcList.map((c: any, index: number) => {
+                  return c.level === 0 ? (
+                    <></>
+                  ) : (
+                    <div className="container-item" key={index}>
+                      <button
+                        onClick={() =>
+                          handleData(["+", c.id, c.className, c.level])
+                        }
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleData(["-", c.id, c.className, c.level])
+                        }
+                      >
+                        -
+                      </button>{" "}
+                      {c.className} {c.level}
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <>no classes in character</>
+            )}
+          </div>
+          <div className="container-item">
+            {char?.classPcList ? (
+              <button>
+                <Link to={"/skill/" + charId}>to skills</Link>
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
+        </div>
+        <div className="container-item">
+          {classesList.map((cl: any, index) => {
+            return (
+              <div key={index}>
+                <button
+                  onClick={() =>
+                    handleData(["+", cl.id, cl.className, cl.level])
+                  }
+                >
+                  +
+                </button>{" "}
+                {cl.classType}, {cl.className}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );

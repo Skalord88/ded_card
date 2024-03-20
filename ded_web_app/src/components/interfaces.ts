@@ -241,16 +241,13 @@ export type Inventory = {
   weaponThree: Weapon;
   weaponFour: Weapon;
   weaponFive: Weapon;
-  weaponList: Weapon[];
-  body: {
-    head: WonderousItem;
-    arms: WonderousItem;
-    hands: [WonderousItem,WonderousItem];
-    neck: WonderousItem;
-    cloth: WonderousItem;
-    legs: WonderousItem;
-  }
   backpack: WonderousItem[];
+  head: WonderousItem;
+  neck: WonderousItem;
+  // arms: WonderousItem;
+  hands: WonderousItem[];
+  cloth: WonderousItem;
+  legs: WonderousItem;
 }
 
 export type Attacks = {
@@ -273,4 +270,16 @@ export type CharInventory = {
   updateInventory: (
     newInventory: Inventory,
     newGold: number ) => void;
+}
+
+export type ItemToBuy = {
+  item: Item,
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string ) => void;
+  sellItem: (
+    newItem: Item,
+    type: string ) => void;
 }
