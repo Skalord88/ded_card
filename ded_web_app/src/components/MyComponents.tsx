@@ -5,69 +5,65 @@ import {
   Inventory,
   Item,
   ItemToBuy,
-  MapOfSkills,
-  MapUpdateSkills,
   Shield,
-  SkillProps,
-  StudyUp,
   Weapon
 } from "./interfaces";
 import { noneArmor, noneShield, noneWeapon } from "./variables";
 
-export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
-  return (
-    <div className="row">
-      study:
-      {skills.map((sk, index) => (
-        <div className="column">
-          <div className="row" key={index}>
-            {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
-            {sk.fieldOfStudy.map((st, index) => (
-              <div className="row" key={index}>
-                {st.study} : {sk.skillRank}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+// export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
+//   return (
+//     <div className="row">
+//       study:
+//       {skills.map((sk, index) => (
+//         <div className="column">
+//           <div className="row" key={index}>
+//             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
+//             {sk.fieldOfStudy.map((st, index) => (
+//               <div className="row" key={index}>
+//                 {st.study} : {sk.skillRank}
+//               </div>
+//             ))}
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
-  skills,
-  studyAdd,
-  studyDel,
-  onRankAdd,
-  onRankDel
-}) => {
-  const [skillsList, setRank] = useState<SkillProps[]>(skills);
-  // ---- zostawic!
-  // const [newStudy, setNewStudy] = useState<AddStudy>(studyEmpty);
-  // const [studySelected, setStudySelected] = useState<AddStudy[]>([]);
-  // ---- zostawic!
-  const [studyToAdd, setToAdd] = useState<StudyUp>(studyAdd);
-  const [studyToDel, setToDel] = useState<StudyUp>(studyDel);
+// export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
+//   skills,
+//   studyAdd,
+//   studyDel,
+//   onRankAdd,
+//   onRankDel
+// }) => {
+//   const [skillsList, setRank] = useState<SkillProps[]>(skills);
+//   // ---- zostawic!
+//   // const [newStudy, setNewStudy] = useState<AddStudy>(studyEmpty);
+//   // const [studySelected, setStudySelected] = useState<AddStudy[]>([]);
+//   // ---- zostawic!
+//   const [studyToAdd, setToAdd] = useState<StudyUp>(studyAdd);
+//   const [studyToDel, setToDel] = useState<StudyUp>(studyDel);
 
-  useEffect(() => {
-    setRank(skills);
-  }, [skills]);
+//   useEffect(() => {
+//     setRank(skills);
+//   }, [skills]);
 
-  const addRank = (newSkill: number, newStudy: number) => {
-    setToAdd({ ...studyToAdd, idSkill: newSkill, idStudy: newStudy });
-  };
+//   const addRank = (newSkill: number, newStudy: number) => {
+//     setToAdd({ ...studyToAdd, idSkill: newSkill, idStudy: newStudy });
+//   };
 
-  const delRank = (newSkill: number, newStudy: number) => {
-    setToDel({ ...studyToDel, idSkill: newSkill, idStudy: newStudy });
-  };
+//   const delRank = (newSkill: number, newStudy: number) => {
+//     setToDel({ ...studyToDel, idSkill: newSkill, idStudy: newStudy });
+//   };
 
-  useEffect(() => {
-    onRankAdd(studyToAdd);
-  }, [studyToAdd]);
+//   useEffect(() => {
+//     onRankAdd(studyToAdd);
+//   }, [studyToAdd]);
 
-  useEffect(() => {
-    onRankDel(studyToDel);
-  }, [studyToDel]);
+//   useEffect(() => {
+//     onRankDel(studyToDel);
+//   }, [studyToDel]);
 
   // ---- zostawic!
   // const handleStudyName = (e: any) => {
@@ -86,45 +82,45 @@ export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
   // }, [newStudy.idSkill]);
   // ---- zostawic!
 
-  return (
-    <div className="row">
-      study:
-      {skillsList.map((sk, index) => (
-        <div className="column">
-          <div className="row" key={index}>
-            {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
-            {sk.fieldOfStudy.map((st, index) => (
-              <>
-                <div className="row" key={index}>
-                  {st.study} : {st.rank}
-                  <button onClick={() => addRank(sk.idSkill, st.idStudy)}>
-                    +
-                  </button>
-                  <button onClick={() => delRank(sk.idSkill, st.idStudy)}>
-                    -
-                  </button>
-                </div>
-              </>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="row">
+//       study:
+//       {skillsList.map((sk, index) => (
+//         <div className="column">
+//           <div className="row" key={index}>
+//             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
+//             {sk.fieldOfStudy.map((st, index) => (
+//               <>
+//                 <div className="row" key={index}>
+//                   {st.study} : {st.rank}
+//                   <button onClick={() => addRank(sk.idSkill, st.idStudy)}>
+//                     +
+//                   </button>
+//                   <button onClick={() => delRank(sk.idSkill, st.idStudy)}>
+//                     -
+//                   </button>
+//                 </div>
+//               </>
+//             ))}
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };
 
-export const MapOfSkillsNoStudy: React.FC<MapOfSkills> = ({ skills }) => {
-  return (
-    <>
-      skill:
-      {skills.map((sk, index) => (
-        <div className="row" key={index}>
-          {sk.nameSkill} : {sk.skillRank + sk.skillAbility + sk.skillBonus}
-        </div>
-      ))}
-    </>
-  );
-};
+// export const MapOfSkillsNoStudy: React.FC<MapOfSkills> = ({ skills }) => {
+//   return (
+//     <>
+//       skill:
+//       {skills.map((sk, index) => (
+//         <div className="row" key={index}>
+//           {sk.nameSkill} : {sk.skillRank + sk.skillAbility + sk.skillBonus}
+//         </div>
+//       ))}
+//     </>
+//   );
+// };
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,

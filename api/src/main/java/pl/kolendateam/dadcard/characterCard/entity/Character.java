@@ -676,35 +676,57 @@ public class Character {
     return true;
   }
 
-  public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
-    double actualSkillPoints = this.skillPoints;
+  public void buySkills(SkillToAddDTO skillsToAddDTO) {
 
-    for (SkillToAddDTO skill : skillsToAddDTO) {
-      actualSkillPoints -= skill.skillRank;
-    }
+    this.skillPoints = skillsToAddDTO.skillPoints;
 
-    for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
-      for (ClassSkills skill : classSkills) {
-        if (skill.getIdSkill() == skillToAddDTO.idSkill) {
-          boolean check = true;
-          if (actualSkillPoints < 0) {
-            check = false;
-          }
-          if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
-            check = false;
-          }
-          if (check == true) {
-            if (skill.isClassSkill() == true) {
-              skill.setSkillRank(skillToAddDTO.skillRank);
+    skillsToAddDTO.skillDTO.forEach(skillDTO -> {
+      this.classSkills.forEach(skill -> {
+        if (skillDTO.fieldOfStudy.size() > 0) {
+          skillDTO.fieldOfStudy.forEach(study -> {
+            if (study.idSkill == skill.getIdSkill()) {
+              skill.addRankStudy(study);
             }
-            if (skill.isClassSkill() == false) {
-              skill.setSkillRank(skillToAddDTO.skillRank / 2);
-            }
+          });
+        } else {
+          if (skill.getIdSkill() == skillDTO.idSkill) {
+            skill.addRankSkill(skillDTO.skillRank);
           }
         }
-      }
-    }
+      });
+    });
+
   }
+
+  // public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
+  // double actualSkillPoints = this.skillPoints;
+
+  // for (SkillToAddDTO skill : skillsToAddDTO) {
+  // actualSkillPoints -= skill.skillRank;
+  // }
+
+  // for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
+  // for (ClassSkills skill : classSkills) {
+  // if (skill.getIdSkill() == skillToAddDTO.idSkill) {
+  // boolean check = true;
+  // if (actualSkillPoints < 0) {
+  // check = false;
+  // }
+  // if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
+  // check = false;
+  // }
+  // if (check == true) {
+  // if (skill.isClassSkill() == true) {
+  // skill.setSkillRank(skillToAddDTO.skillRank);
+  // }
+  // if (skill.isClassSkill() == false) {
+  // skill.setSkillRank(skillToAddDTO.skillRank / 2);
+  // }
+  // }
+  // }
+  // }
+  // }
+  // }
 
   public void zeroSkillsRank() {
     for (ClassSkills classSkill : this.classSkills) {

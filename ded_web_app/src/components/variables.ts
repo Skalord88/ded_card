@@ -169,7 +169,7 @@ export const emptySubRaces: subRaces = {
 }
 
 export const skillEmpty: serverSkill = {
-    idSkill: 0,
+    skillDTO: [],
     skillRank: -1
 }
 

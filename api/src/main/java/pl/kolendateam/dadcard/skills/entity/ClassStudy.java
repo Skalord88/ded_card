@@ -44,4 +44,12 @@ public class ClassStudy implements Serializable {
     this.skillName = skName;
     this.rank = 0;
   }
+
+  public ClassStudy(StudyDTO studyDTO) {
+    this.id = studyDTO.idStudy;
+    this.studyName = studyDTO.study;
+    this.idSkill = studyDTO.idSkill;
+    this.rank = studyDTO.rank;
+  }
+
 }

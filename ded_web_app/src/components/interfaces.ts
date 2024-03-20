@@ -131,8 +131,8 @@ export type MapUpdateSkills = {
 }
 
 export interface skillToServer {
-  idSkill: number;
-  skillRank: number;
+  skillDTO: SkillProps[];
+  skillPoints: number;
 }
 
 export interface feat {
@@ -186,7 +186,7 @@ export type subRaces = {
 };
 
 export type serverSkill = {
-  idSkill: number;
+  skillDTO: SkillProps[];
   skillRank: number;
 };
 

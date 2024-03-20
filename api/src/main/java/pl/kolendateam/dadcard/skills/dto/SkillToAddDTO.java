@@ -1,8 +1,10 @@
 package pl.kolendateam.dadcard.skills.dto;
 
+import java.util.List;
+
 public class SkillToAddDTO {
 
-    public int idSkill;
-    public double skillRank;
-    
+    public List<SkillsDTO> skillDTO;
+    public double skillPoints;
+
 }

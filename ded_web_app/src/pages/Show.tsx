@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
+// import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
 import {
   Inventory,
   MapOfSkills,
@@ -211,10 +211,10 @@ export function Show() {
           <>...loading feats...</>
         )}
         <div className="container-item">
-          <MapOfSkillsNoStudy skills={skillsNoStudy.skills} />
+          {/* <MapOfSkillsNoStudy skills={skillsNoStudy.skills} /> */}
         </div>
         <div className="container-item">
-          <MapOfStudy skills={skillsStudy.skills} />
+          {/* <MapOfStudy skills={skillsStudy.skills} /> */}
         </div>
         <div className="container-item">
           <div>
