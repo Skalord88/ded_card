@@ -2,11 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
-import {
-  characterPc,
-  serverSkill,
-  SkillProps
-} from "../components/interfaces";
+import { characterPc, serverSkill, SkillProps } from "../components/interfaces";
 
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
@@ -88,7 +84,7 @@ export function Skills() {
                   ...actualSkill,
                   fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
                     study.idStudy === studyId && study.rank < maxSkillLv
-                      ? { ...study, rank: study.rank+1 }
+                      ? { ...study, rank: study.rank + 1 }
                       : study
                   )
                 }
@@ -100,13 +96,14 @@ export function Skills() {
   };
 
   const handleDelRank = (skillId: number, studyId: number) => {
+
     if (studyId === -1) {
       setSkills((updatedSkills) =>
         updatedSkills.map((actualSkill) =>
           actualSkill.skillRank > 0
             ? actualSkill.idSkill === skillId
               ? actualSkill.classSkill
-                ? { ...actualSkill, skillRank: actualSkill.skillRank-- }
+                ? { ...actualSkill, skillRank: actualSkill.skillRank - 1 }
                 : { ...actualSkill, skillRank: actualSkill.skillRank - 0.5 }
               : actualSkill
             : actualSkill
@@ -114,18 +111,19 @@ export function Skills() {
       );
     } else {
       setSkills((updatedSkills) =>
-        updatedSkills.map((actualSkill) =>
-          actualSkill.idSkill === skillId
-            ? {
-                ...actualSkill,
-                fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
-                  study.idStudy === studyId && study.rank > 0
-                    ? { ...study, rank: study.rank-- }
-                    : study
-                )
-              }
-            : actualSkill
-        )
+        updatedSkills.map((actualSkill) => {
+          if (actualSkill.idSkill === skillId) {
+            return {
+              ...actualSkill,
+              fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
+                study.idStudy === studyId && study.rank > 0
+                  ? { ...study, rank: study.rank - 1 }
+                  : study
+              )
+            };
+          }
+          return actualSkill;
+        })
       );
     }
   };
@@ -134,29 +132,15 @@ export function Skills() {
     let skillToSend: serverSkill = {
       skillDTO: [],
       skillRank: 0
-    }
+    };
 
-    skills.forEach(skill => {
-      skillToSend.skillDTO.push(skill)
-    })
+    skills.forEach((skill) => {
+      skillToSend.skillDTO.push(skill);
+    });
 
     skillToSend.skillRank = actualSkillsPoints;
 
-    // skills.forEach((s) => {
-    //   s.classSkill && s.skillRank > 0
-    //     ? (skill = {
-    //         idSkill: s.idSkill,
-    //         skillRank: s.skillRank
-    //       })
-    //     : (skill = {
-    //         idSkill: s.idSkill,
-    //         skillRank: s.skillRank * 2
-    //       });
-    //   skillUp.push(skill);
-    // });
-
     try {
-      // console.log(skillToSend)
       axios.post(urlSkillSet + charId, skillToSend);
     } catch (error) {
       console.log(error);
@@ -236,9 +220,12 @@ export function Skills() {
                                 +
                               </button>
                               <button
-                              onClick={() =>
-                                handleDelRank(skill.idSkill, study.idStudy)
-                              }>-</button>
+                                onClick={() =>
+                                  handleDelRank(skill.idSkill, study.idStudy)
+                                }
+                              >
+                                -
+                              </button>
                               {study.study}
                             </div>
                             <div>

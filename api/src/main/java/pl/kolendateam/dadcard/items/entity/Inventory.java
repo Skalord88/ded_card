@@ -70,6 +70,10 @@ public class Inventory {
   @JoinColumn(name = "neck_id", referencedColumnName = "id")
   WondrousItems neck;
 
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "arms_id", referencedColumnName = "id")
+  WondrousItems arms;
+
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(name = "hands", joinColumns = @JoinColumn(name = "inventory_id"), inverseJoinColumns = @JoinColumn(name = "items_id"))
   List<WondrousItems> hands;
@@ -95,6 +99,7 @@ public class Inventory {
     WondrousItems item = new WondrousItems(4);
     this.head = item;
     this.neck = item;
+    this.arms = item;
     this.hands = new ArrayList<WondrousItems>();
     this.cloth = item;
     this.legs = item;
@@ -156,6 +161,12 @@ public class Inventory {
       this.neck = (WondrousItems) new Items();
       neck.setId(0);
     }
+    if (inventoryDTO.arms != null) {
+      this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
+    } else {
+      this.arms = (WondrousItems) new Items();
+      arms.setId(0);
+    }
     if (inventoryDTO.cloth != null) {
       this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
     } else {
@@ -170,19 +181,19 @@ public class Inventory {
     }
   }
 
-  public List<Items> listAllItems() {
-    List<Items> listItems = new ArrayList<>();
+  // public List<Items> listAllItems() {
+  // List<Items> listItems = new ArrayList<>();
 
-    listItems.add(this.armor);
-    listItems.add(this.shield);
-    listItems.add(this.weaponOne);
-    listItems.add(this.weaponTwo);
-    listItems.add(this.weaponThree);
-    listItems.add(this.weaponFour);
-    listItems.add(this.weaponFive);
+  // listItems.add(this.armor);
+  // listItems.add(this.shield);
+  // listItems.add(this.weaponOne);
+  // listItems.add(this.weaponTwo);
+  // listItems.add(this.weaponThree);
+  // listItems.add(this.weaponFour);
+  // listItems.add(this.weaponFive);
 
-    return listItems;
-  }
+  // return listItems;
+  // }
 
   public void addToInventory(InventoryDTO inventoryDTO) {
 
@@ -215,6 +226,9 @@ public class Inventory {
     }
     if (inventoryDTO.neck != null) {
       this.neck = MapperItems.toWondrousItems(inventoryDTO.neck);
+    }
+    if (inventoryDTO.arms != null) {
+      this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
     }
     if (inventoryDTO.hands != null) {
       this.hands = MapperItems.toListItems(inventoryDTO.hands);

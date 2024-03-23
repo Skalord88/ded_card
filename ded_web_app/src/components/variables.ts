@@ -62,8 +62,9 @@ export const emptyInventory: Inventory = {
     weaponFive: noneWeapon,
     backpack: [],
     head: noneItem,
-    hands: [noneItem, noneItem],
     neck: noneItem,
+    arms: noneItem,
+    hands: [],
     cloth: noneItem,
     legs: noneItem
     

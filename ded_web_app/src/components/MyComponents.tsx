@@ -10,118 +10,6 @@ import {
 } from "./interfaces";
 import { noneArmor, noneShield, noneWeapon } from "./variables";
 
-// export const MapOfStudy: React.FC<MapOfSkills> = ({ skills }) => {
-//   return (
-//     <div className="row">
-//       study:
-//       {skills.map((sk, index) => (
-//         <div className="column">
-//           <div className="row" key={index}>
-//             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
-//             {sk.fieldOfStudy.map((st, index) => (
-//               <div className="row" key={index}>
-//                 {st.study} : {sk.skillRank}
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export const MapUpdateOfStudy: React.FC<MapUpdateSkills> = ({
-//   skills,
-//   studyAdd,
-//   studyDel,
-//   onRankAdd,
-//   onRankDel
-// }) => {
-//   const [skillsList, setRank] = useState<SkillProps[]>(skills);
-//   // ---- zostawic!
-//   // const [newStudy, setNewStudy] = useState<AddStudy>(studyEmpty);
-//   // const [studySelected, setStudySelected] = useState<AddStudy[]>([]);
-//   // ---- zostawic!
-//   const [studyToAdd, setToAdd] = useState<StudyUp>(studyAdd);
-//   const [studyToDel, setToDel] = useState<StudyUp>(studyDel);
-
-//   useEffect(() => {
-//     setRank(skills);
-//   }, [skills]);
-
-//   const addRank = (newSkill: number, newStudy: number) => {
-//     setToAdd({ ...studyToAdd, idSkill: newSkill, idStudy: newStudy });
-//   };
-
-//   const delRank = (newSkill: number, newStudy: number) => {
-//     setToDel({ ...studyToDel, idSkill: newSkill, idStudy: newStudy });
-//   };
-
-//   useEffect(() => {
-//     onRankAdd(studyToAdd);
-//   }, [studyToAdd]);
-
-//   useEffect(() => {
-//     onRankDel(studyToDel);
-//   }, [studyToDel]);
-
-  // ---- zostawic!
-  // const handleStudyName = (e: any) => {
-  //   setNewStudy({ ...newStudy, study: e.target.value });
-  // };
-
-  // const handleNewStudy = (e: any) => {
-  //   setNewStudy({ ...newStudy, idSkill: e.target.vale });
-  // };
-
-  // useEffect(() => {
-  //   if (newStudy.idSkill !== 0) {
-  //     setStudySelected([...studySelected, newStudy]);
-  //     setNewStudy({ ...newStudy, idSkill: 0, study: "" });
-  //   }
-  // }, [newStudy.idSkill]);
-  // ---- zostawic!
-
-//   return (
-//     <div className="row">
-//       study:
-//       {skillsList.map((sk, index) => (
-//         <div className="column">
-//           <div className="row" key={index}>
-//             {sk.nameSkill} {sk.skillBonus + sk.skillAbility}
-//             {sk.fieldOfStudy.map((st, index) => (
-//               <>
-//                 <div className="row" key={index}>
-//                   {st.study} : {st.rank}
-//                   <button onClick={() => addRank(sk.idSkill, st.idStudy)}>
-//                     +
-//                   </button>
-//                   <button onClick={() => delRank(sk.idSkill, st.idStudy)}>
-//                     -
-//                   </button>
-//                 </div>
-//               </>
-//             ))}
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export const MapOfSkillsNoStudy: React.FC<MapOfSkills> = ({ skills }) => {
-//   return (
-//     <>
-//       skill:
-//       {skills.map((sk, index) => (
-//         <div className="row" key={index}>
-//           {sk.nameSkill} : {sk.skillRank + sk.skillAbility + sk.skillBonus}
-//         </div>
-//       ))}
-//     </>
-//   );
-// };
-
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
   type,
@@ -143,9 +31,9 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
       </div>
       <div>{item.description}</div>
       <div>
-        {items.map((it, index) => {
+        {items.map((it) => {
           return (
-            <div key={index}>
+            <div>
               {it.name} {it.cost}
               <button onClick={() => selectItem(it, type)}>+</button>
             </div>
@@ -169,31 +57,38 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   }, [tresure]);
 
   const handleBuyItem = (e: Item, type: string) => {
+    console.log(e)
     if (type === "armor") {
-      setTresure(+equipment.armor.cost - e.cost);
+      setTresure(+equipment.armor.cost);
       const updatedInventory: Inventory = {
         ...equipment,
         armor: e as Armor
       };
+      setTresure(-e.cost);
       setEquipment(updatedInventory);
     }
     if (type === "shield") {
-      setTresure(+equipment.shield.cost - e.cost);
+      console.log(e)
+      setTresure(+equipment.shield.cost);
       const updatedInventory: Inventory = {
         ...equipment,
         shield: e as Shield
       };
+      setTresure(-e.cost);
       setEquipment(updatedInventory);
     }
     if (type === "one") {
-      setTresure(+equipment.weaponOne.cost - e.cost);
+      console.log(e)
+      setTresure(+equipment.weaponOne.cost);
       const updatedInventory: Inventory = {
         ...equipment,
         weaponOne: e as Weapon
       };
+      setTresure(-e.cost);
       setEquipment(updatedInventory);
     }
     if (type === "two") {
+      console.log(e)
       setTresure(+equipment.weaponTwo.cost - e.cost);
       const updatedInventory: Inventory = {
         ...equipment,
@@ -202,6 +97,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       setEquipment(updatedInventory);
     }
     if (type === "three") {
+      console.log(e)
       setTresure(+equipment.weaponThree.cost - e.cost);
       const updatedInventory: Inventory = {
         ...equipment,
@@ -210,6 +106,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       setEquipment(updatedInventory);
     }
     if (type === "four") {
+      console.log(e)
       setTresure(+equipment.weaponFour.cost - e.cost);
       const updatedInventory: Inventory = {
         ...equipment,
@@ -224,6 +121,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         weaponFive: e as Weapon
       };
       setEquipment(updatedInventory);
+      console.log(updatedInventory)
     }
   };
   const handleSellItem = (e: Item, type: string) => {

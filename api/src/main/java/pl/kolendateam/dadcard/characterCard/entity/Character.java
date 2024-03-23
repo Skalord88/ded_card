@@ -678,7 +678,7 @@ public class Character {
 
   public void buySkills(SkillToAddDTO skillsToAddDTO) {
 
-    this.skillPoints = skillsToAddDTO.skillPoints;
+    // this.skillPoints = skillsToAddDTO.skillPoints;
 
     skillsToAddDTO.skillDTO.forEach(skillDTO -> {
       this.classSkills.forEach(skill -> {

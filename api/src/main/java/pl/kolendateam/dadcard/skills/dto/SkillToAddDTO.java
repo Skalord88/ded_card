@@ -5,6 +5,6 @@ import java.util.List;
 public class SkillToAddDTO {
 
     public List<SkillsDTO> skillDTO;
-    public double skillPoints;
+    // public double skillPoints;
 
 }

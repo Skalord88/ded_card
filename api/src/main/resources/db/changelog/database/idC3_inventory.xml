@@ -36,6 +36,9 @@
             <column name="neck_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="arms_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="cloth_id" type="int">
                 <constraints nullable="true" />
             </column>

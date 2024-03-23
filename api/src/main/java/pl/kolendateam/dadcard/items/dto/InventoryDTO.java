@@ -27,6 +27,7 @@ public class InventoryDTO implements Serializable {
   public ArrayList<WondrousItemsDTO> backpack;
   public WondrousItemsDTO head;
   public WondrousItemsDTO neck;
+  public WondrousItemsDTO arms;
   public ArrayList<WondrousItemsDTO> hands;
   public WondrousItemsDTO cloth;
   public WondrousItemsDTO legs;
@@ -79,6 +80,11 @@ public class InventoryDTO implements Serializable {
       this.neck = MapperItemsDTO.toWondrousItemsDTO(inventory.getNeck());
     } else {
       this.head = new WondrousItemsDTO(4);
+    }
+    if (inventory.getArms() != null) {
+      this.arms = MapperItemsDTO.toWondrousItemsDTO(inventory.getArms());
+    } else {
+      this.arms = new WondrousItemsDTO(4);
     }
     if (inventory.getHands() != null) {
       this.hands = MapperItemsDTO.toListItemsDTO(inventory.getHands());
