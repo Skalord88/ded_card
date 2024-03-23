@@ -19,7 +19,9 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
+import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
@@ -56,12 +58,15 @@ public class ItemsController {
 
     ItemsListDTO itemsDTOList = new ItemsListDTO();
     ArrayList<ArmorsDTO> armorDTOList = new ArrayList<>();
+    ArrayList<ShieldsDTO> shieldsDTOList = new ArrayList<>();
     ArrayList<WeaponsDTO> weaponsDTOList = new ArrayList<>();
     ArrayList<WondrousItemsDTO> wonderousItemsDTOList = new ArrayList<>();
 
     itemsList.forEach(item -> {
       if (item instanceof Armors) {
         armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) item));
+      } else if (item instanceof Shields) {
+        shieldsDTOList.add(MapperItemsDTO.toShieldDTO((Shields) item));
       } else if (item instanceof Weapons) {
         weaponsDTOList.add(MapperItemsDTO.toWeaponDTO((Weapons) item));
       } else if (item instanceof WondrousItems) {
@@ -71,6 +76,7 @@ public class ItemsController {
     });
 
     itemsDTOList.setListOfArmors(armorDTOList);
+    itemsDTOList.setListOfShields(shieldsDTOList);
     itemsDTOList.setListOfWeapons(weaponsDTOList);
     itemsDTOList.setListOfWonderousItem(wonderousItemsDTOList);
 
@@ -121,9 +127,22 @@ public class ItemsController {
     }
     Inventory characterInventory = inventoryOpt.get();
 
-    character.addItemsToCharacterInventory(inventoryDTO);
+    characterInventory.addToInventory(inventoryDTO);
 
-    this.characterRepository.save(character);
+    // character.addItemsToCharacterInventory(inventoryDTO);
+
+    System.out.println(
+        "/ armor:" + characterInventory.getArmor().getId()
+            + "/ shield:" + characterInventory.getShield().getId()
+            + "/ I:" + characterInventory.getWeaponOne().getId()
+            + "/ II:" + characterInventory.getWeaponTwo().getId()
+            + "/ III:" + characterInventory.getWeaponThree().getId()
+            + "/ head:" + characterInventory.getHead().getId()
+            + "/ legs:" + characterInventory.getLegs().getId()
+            + "/ neck:" + characterInventory.getNeck().getId());
+
+    // this.inventoryRepository.save(characterInventory);
+    // this.characterRepository.save(character);
 
     return new CharacterDTO(character, characterInventory);
   }

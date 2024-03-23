@@ -1,8 +1,6 @@
 package pl.kolendateam.dadcard.items.dto;
 
 import java.io.Serializable;
-
-import java.util.List;
 import java.util.ArrayList;
 
 import lombok.NoArgsConstructor;
@@ -12,11 +10,11 @@ import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
-import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @NoArgsConstructor
 public class InventoryDTO implements Serializable {
 
+  public int id;
   public ArmorsDTO armor;
   public ShieldsDTO shield;
   public WeaponsDTO weaponOne;
@@ -33,6 +31,9 @@ public class InventoryDTO implements Serializable {
   public WondrousItemsDTO legs;
 
   public InventoryDTO(Inventory inventory) {
+
+    this.id = inventory.getId();
+
     if (inventory.getArmor() != null) {
       this.armor = MapperItemsDTO.toArmorDTO(inventory.getArmor());
     } else {

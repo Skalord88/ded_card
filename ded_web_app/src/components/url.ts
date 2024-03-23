@@ -33,3 +33,6 @@ export const urlItems: string =
 
 export const urlInventory: string =
 'http://localhost:8080/item/inventory/';
+
+export const urlItemsBuy: string =
+'http://localhost:8080/item/';

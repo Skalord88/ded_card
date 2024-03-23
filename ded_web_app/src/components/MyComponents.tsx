@@ -25,11 +25,12 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
   };
   return (
     <>
-      <div className="column">
+      <div>
         {item.name}
         <button onClick={() => deselect(item, type)}>-</button>
       </div>
       <div>{item.description}</div>
+      <div></div>
       <div>
         {items.map((it) => {
           return (
@@ -54,138 +55,120 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 
   useEffect(() => {
     updateInventory(equipment, tresure);
-  }, [tresure]);
+  }, [equipment, tresure]);
 
   const handleBuyItem = (e: Item, type: string) => {
-    console.log(e)
+    
     if (type === "armor") {
-      setTresure(+equipment.armor.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.armor.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         armor: e as Armor
-      };
-      setTresure(-e.cost);
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "shield") {
       console.log(e)
-      setTresure(+equipment.shield.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(tresure + equipment.shield.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         shield: e as Shield
-      };
-      setTresure(-e.cost);
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "one") {
-      console.log(e)
-      setTresure(+equipment.weaponOne.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.weaponOne.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponOne: e as Weapon
-      };
-      setTresure(-e.cost);
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "two") {
       console.log(e)
-      setTresure(+equipment.weaponTwo.cost - e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.weaponTwo.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponTwo: e as Weapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "three") {
       console.log(e)
-      setTresure(+equipment.weaponThree.cost - e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.weaponThree.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponThree: e as Weapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "four") {
       console.log(e)
-      setTresure(+equipment.weaponFour.cost - e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.weaponFour.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponFour: e as Weapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
     if (type === "five") {
-      setTresure(+equipment.weaponFive.cost - e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setTresure(+ equipment.weaponFive.cost - e.cost);
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponFive: e as Weapon
-      };
-      setEquipment(updatedInventory);
-      console.log(updatedInventory)
+      }))
     }
   };
   const handleSellItem = (e: Item, type: string) => {
     if (type === "armor") {
-      setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+
+      setTresure(+e.cost)
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         armor: noneArmor
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "shield") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         shield: noneShield
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "one") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponOne: noneWeapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "two") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponTwo: noneWeapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "three") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponThree: noneWeapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "four") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponFour: noneWeapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
 
     if (type === "five") {
       setTresure(+e.cost);
-      const updatedInventory: Inventory = {
-        ...equipment,
+      setEquipment(updateInventory => ({
+        ...updateInventory,
         weaponFive: noneWeapon
-      };
-      setEquipment(updatedInventory);
+      }))
     }
   };
 
@@ -202,7 +185,15 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div className="container-item">---Shield:</div>
+        <div className="container-item">---Shield:
+        <BuyItemInventory
+          item={equipment.shield}
+          items={items.shieldList}
+          type={'shield'}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        </div>
       </div>
       <div className="container">
         <div className="container-item">
@@ -257,7 +248,16 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
       </div>
       <div className="container">
-        <div className="container-item">Head: {inventory.head.name}</div>
+        <div className="container-item">
+          Head:
+          <BuyItemInventory
+            item={equipment.head}
+            items={items.wonderousItems}
+            type={"head"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+          </div>
       </div>
     </>
   );

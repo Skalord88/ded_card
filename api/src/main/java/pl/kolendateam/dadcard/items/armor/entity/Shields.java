@@ -18,7 +18,6 @@ import pl.kolendateam.dadcard.items.entity.Items;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@JsonIgnoreProperties(ignoreUnknown = true)
 @DiscriminatorValue(value = "SHIELD")
 public class Shields extends Items {
 
@@ -34,7 +33,6 @@ public class Shields extends Items {
   int penality;
   int failure;
 
-  @JsonCreator
   public Shields(ShieldsDTO shield) {
     super(
         (short) shield.id,

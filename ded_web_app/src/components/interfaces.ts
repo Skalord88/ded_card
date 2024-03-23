@@ -192,6 +192,7 @@ export type serverSkill = {
 
 export type ItemsList = {
   armorsList: Armor[];
+  shieldList: Shield[];
   weaponsList: Weapon[];
   wonderousItems: WonderousItem[];
 }
@@ -224,6 +225,7 @@ export interface Shield extends Item {
 }
 
 export interface Weapon extends Item {
+  weaponName: string;
   damage: string;
   critical: string;
   range: number;

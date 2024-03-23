@@ -181,20 +181,6 @@ public class Inventory {
     }
   }
 
-  // public List<Items> listAllItems() {
-  // List<Items> listItems = new ArrayList<>();
-
-  // listItems.add(this.armor);
-  // listItems.add(this.shield);
-  // listItems.add(this.weaponOne);
-  // listItems.add(this.weaponTwo);
-  // listItems.add(this.weaponThree);
-  // listItems.add(this.weaponFour);
-  // listItems.add(this.weaponFive);
-
-  // return listItems;
-  // }
-
   public void addToInventory(InventoryDTO inventoryDTO) {
 
     if (inventoryDTO.armor != null) {
@@ -237,7 +223,7 @@ public class Inventory {
       this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
     }
     if (inventoryDTO.legs != null) {
-      this.legs = MapperItems.toWondrousItems(inventoryDTO.neck);
+      this.legs = MapperItems.toWondrousItems(inventoryDTO.legs);
     }
 
   }

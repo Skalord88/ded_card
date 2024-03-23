@@ -1,56 +1,57 @@
 import { AddStudy, Armor, Inventory, Shield, Weapon, WonderousItem, abilitys, armorClass, characterPc, serverSkill, subRaces } from '../components/interfaces'
 
 export const noneArmor: Armor = {
-    id: 0,
-    name: "none",
+    id: 2,
+    name: "No Armor",
     cost: 0,
     weight: 0,
-    description: "no armor",
-    itemType: "none",
-    armorName: "none",
+    description: "Naked",
+    itemType: "ARMOR",
+    armorName: "NO_ARMOR",
     armorClass: 0,
-    armorType: "none",
+    armorType: "NO_ARMOR",
     maxDex: 100,
     penality: 0,
     failure: 0
 }
 
 export const noneShield: Shield = {
-    id: 0,
-    name: "none",
+    id: 3,
+    name: "No Shield",
     cost: 0,
     weight: 0,
-    description: "no armor",
-    itemType: "none",
-    shieldName: "none",
+    description: "Naked",
+    itemType: "SHIELD",
+    shieldName: "NO_SHIELD",
     armorClass: 0,
-    armorType: "none",
+    armorType: "SHIELD",
     maxDex: 100,
     penality: 0,
     failure: 0
 }
 
 export const noneWeapon: Weapon = {
-    id: 0,
-    name: "none",
+    id: 1,
+    name: "Unarmed strike",
+    itemType: "WEAPON",
+    weaponName: "UNARMED_STRIKE",
     cost: 0,
     weight: 0,
-    description: "no armor",
-    itemType: "none",
-    damage: "d0",
-    critical: "none",
+    description: "A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike.",
+    damage: "D3",
+    critical: "X2",
     range: 0,
-    type: [],
-    specialAttacks: "none"
+    type: ['BLUDGEONING','SIMPLE','UNARMED'],
+    specialAttacks: ''
 }
 
 export const noneItem: WonderousItem = {
-    id: 0,
-    name: 'none',
+    id: 4,
+    name: 'no_item',
     cost: 0,
     weight: 0,
-    description: 'no item',
-    itemType: 'none'
+    description: '',
+    itemType: 'WONDROUS_ITEM'
 }
 export const emptyInventory: Inventory = {
     armor: noneArmor,
@@ -181,6 +182,7 @@ export const studyEmpty: AddStudy = {
 
 export const emptyItemsList = {
     armorsList: [],
+    shieldList: [],
     weaponsList: [],
     wonderousItems: []
   }

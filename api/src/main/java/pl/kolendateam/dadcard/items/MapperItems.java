@@ -49,9 +49,11 @@ public class MapperItems {
     public static List<WondrousItems> toListItems(ArrayList<WondrousItemsDTO> list) {
         ArrayList<WondrousItems> itemsList = new ArrayList<WondrousItems>();
 
-        list.forEach(item -> {
-            itemsList.add(new WondrousItems(item.id));
-        });
+        if (list.size() > 0) {
+            list.forEach(item -> {
+                itemsList.add(new WondrousItems(item.id));
+            });
+        }
 
         return itemsList;
     }
