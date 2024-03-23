@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import pl.kolendateam.dadcard.items.MapperItems;
@@ -24,6 +25,7 @@ import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode
 public class Inventory {
 
   @Id
@@ -105,125 +107,185 @@ public class Inventory {
     this.legs = item;
   }
 
-  public Inventory(InventoryDTO inventoryDTO) {
+  // public Inventory(InventoryDTO inventoryDTO) {
+
+  // if (inventoryDTO.armor != null) {
+  // this.armor = MapperItems.toArmor(inventoryDTO.armor);
+  // } else {
+  // this.armor = (Armors) new Items();
+  // armor.setId(0);
+  // }
+  // if (inventoryDTO.shield != null) {
+  // this.shield = MapperItems.toShield(inventoryDTO.shield);
+  // } else {
+  // this.shield = (Shields) new Items();
+  // shield.setId(0);
+  // }
+  // if (inventoryDTO.weaponOne != null) {
+  // this.weaponOne = MapperItems.toWeapon(inventoryDTO.weaponOne);
+  // } else {
+  // this.weaponOne = (Weapons) new Items();
+  // weaponOne.setId(0);
+  // }
+  // if (inventoryDTO.weaponTwo != null) {
+  // this.weaponTwo = MapperItems.toWeapon(inventoryDTO.weaponTwo);
+  // } else {
+  // this.weaponTwo = (Weapons) new Items();
+  // weaponTwo.setId(0);
+  // }
+  // if (inventoryDTO.weaponThree != null) {
+  // this.weaponThree = MapperItems.toWeapon(inventoryDTO.weaponThree);
+  // } else {
+  // this.weaponThree = (Weapons) new Items();
+  // weaponThree.setId(0);
+  // }
+  // if (inventoryDTO.weaponFour != null) {
+  // this.weaponFour = MapperItems.toWeapon(inventoryDTO.weaponFour);
+  // } else {
+  // this.weaponFour = (Weapons) new Items();
+  // weaponFour.setId(0);
+  // }
+  // if (inventoryDTO.weaponFive != null) {
+  // this.weaponFive = MapperItems.toWeapon(inventoryDTO.weaponFive);
+  // } else {
+  // this.weaponFive = (Weapons) new Items();
+  // weaponFive.setId(0);
+  // }
+  // if (inventoryDTO.head != null) {
+  // this.head = MapperItems.toWondrousItems(inventoryDTO.head);
+  // } else {
+  // this.head = (WondrousItems) new Items();
+  // head.setId(0);
+  // }
+  // if (inventoryDTO.neck != null) {
+  // this.neck = MapperItems.toWondrousItems(inventoryDTO.neck);
+  // } else {
+  // this.neck = (WondrousItems) new Items();
+  // neck.setId(0);
+  // }
+  // if (inventoryDTO.arms != null) {
+  // this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
+  // } else {
+  // this.arms = (WondrousItems) new Items();
+  // arms.setId(0);
+  // }
+  // if (inventoryDTO.cloth != null) {
+  // this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
+  // } else {
+  // this.cloth = (WondrousItems) new Items();
+  // cloth.setId(0);
+  // }
+  // if (inventoryDTO.legs != null) {
+  // this.legs = MapperItems.toWondrousItems(inventoryDTO.neck);
+  // } else {
+  // this.legs = (WondrousItems) new Items();
+  // legs.setId(0);
+  // }
+  // }
+
+  public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
 
     if (inventoryDTO.armor != null) {
-      this.armor = MapperItems.toArmor(inventoryDTO.armor);
-    } else {
-      this.armor = (Armors) new Items();
-      armor.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.armor.id) {
+          this.armor = (Armors) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.shield != null) {
-      this.shield = MapperItems.toShield(inventoryDTO.shield);
-    } else {
-      this.shield = (Shields) new Items();
-      shield.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.shield.id) {
+          this.shield = (Shields) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.weaponOne != null) {
-      this.weaponOne = MapperItems.toWeapon(inventoryDTO.weaponOne);
-    } else {
-      this.weaponOne = (Weapons) new Items();
-      weaponOne.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.weaponOne.id) {
+          this.weaponOne = (Weapons) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.weaponTwo != null) {
-      this.weaponTwo = MapperItems.toWeapon(inventoryDTO.weaponTwo);
-    } else {
-      this.weaponTwo = (Weapons) new Items();
-      weaponTwo.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.weaponTwo.id) {
+          this.weaponTwo = (Weapons) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.weaponThree != null) {
-      this.weaponThree = MapperItems.toWeapon(inventoryDTO.weaponThree);
-    } else {
-      this.weaponThree = (Weapons) new Items();
-      weaponThree.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.weaponThree.id) {
+          this.weaponThree = (Weapons) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.weaponFour != null) {
-      this.weaponFour = MapperItems.toWeapon(inventoryDTO.weaponFour);
-    } else {
-      this.weaponFour = (Weapons) new Items();
-      weaponFour.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.weaponFour.id) {
+          this.weaponFour = (Weapons) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.weaponFive != null) {
-      this.weaponFive = MapperItems.toWeapon(inventoryDTO.weaponFive);
-    } else {
-      this.weaponFive = (Weapons) new Items();
-      weaponFive.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.weaponFive.id) {
+          this.weaponFive = (Weapons) item;
+          break;
+        }
+      }
+    }
+    if (inventoryDTO.backpack != null || inventoryDTO.backpack.size() > 0) {
+      this.backpack = MapperItems.toListItems(inventoryDTO.backpack, itemsList);
     }
     if (inventoryDTO.head != null) {
-      this.head = MapperItems.toWondrousItems(inventoryDTO.head);
-    } else {
-      this.head = (WondrousItems) new Items();
-      head.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.head.id) {
+          this.head = (WondrousItems) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.neck != null) {
-      this.neck = MapperItems.toWondrousItems(inventoryDTO.neck);
-    } else {
-      this.neck = (WondrousItems) new Items();
-      neck.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.neck.id) {
+          this.neck = (WondrousItems) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.arms != null) {
-      this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
-    } else {
-      this.arms = (WondrousItems) new Items();
-      arms.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.arms.id) {
+          this.arms = (WondrousItems) item;
+          break;
+        }
+      }
+    }
+    if (inventoryDTO.hands != null || inventoryDTO.hands.size() > 0) {
+      this.hands = MapperItems.toListItems(inventoryDTO.hands, itemsList);
     }
     if (inventoryDTO.cloth != null) {
-      this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
-    } else {
-      this.cloth = (WondrousItems) new Items();
-      cloth.setId(0);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.cloth.id) {
+          this.cloth = (WondrousItems) item;
+          break;
+        }
+      }
     }
     if (inventoryDTO.legs != null) {
-      this.legs = MapperItems.toWondrousItems(inventoryDTO.neck);
-    } else {
-      this.legs = (WondrousItems) new Items();
-      legs.setId(0);
-    }
-  }
-
-  public void addToInventory(InventoryDTO inventoryDTO) {
-
-    if (inventoryDTO.armor != null) {
-      this.armor = MapperItems.toArmor(inventoryDTO.armor);
-    }
-    if (inventoryDTO.shield != null) {
-      this.shield = MapperItems.toShield(inventoryDTO.shield);
-    }
-    if (inventoryDTO.weaponOne != null) {
-      this.weaponOne = MapperItems.toWeapon(inventoryDTO.weaponOne);
-    }
-    if (inventoryDTO.weaponTwo != null) {
-      this.weaponTwo = MapperItems.toWeapon(inventoryDTO.weaponTwo);
-    }
-    if (inventoryDTO.weaponThree != null) {
-      this.weaponThree = MapperItems.toWeapon(inventoryDTO.weaponThree);
-    }
-    if (inventoryDTO.weaponFour != null) {
-      this.weaponFour = MapperItems.toWeapon(inventoryDTO.weaponFour);
-    }
-    if (inventoryDTO.weaponFive != null) {
-      this.weaponFive = MapperItems.toWeapon(inventoryDTO.weaponFive);
-    }
-    if (inventoryDTO.backpack != null) {
-      this.backpack = MapperItems.toListItems(inventoryDTO.backpack);
-    }
-    if (inventoryDTO.head != null) {
-      this.head = MapperItems.toWondrousItems(inventoryDTO.head);
-    }
-    if (inventoryDTO.neck != null) {
-      this.neck = MapperItems.toWondrousItems(inventoryDTO.neck);
-    }
-    if (inventoryDTO.arms != null) {
-      this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
-    }
-    if (inventoryDTO.hands != null) {
-      this.hands = MapperItems.toListItems(inventoryDTO.hands);
-    }
-    if (inventoryDTO.cloth != null) {
-      this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
-    }
-    if (inventoryDTO.legs != null) {
-      this.legs = MapperItems.toWondrousItems(inventoryDTO.legs);
+      for (Items item : itemsList) {
+        if (item.id == inventoryDTO.legs.id) {
+          this.legs = (WondrousItems) item;
+          break;
+        }
+      }
     }
 
   }

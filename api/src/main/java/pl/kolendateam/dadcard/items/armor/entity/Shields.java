@@ -34,12 +34,7 @@ public class Shields extends Items {
   int failure;
 
   public Shields(ShieldsDTO shield) {
-    super(
-        (short) shield.id,
-        shield.name,
-        shield.cost,
-        shield.weight,
-        shield.description);
+    super(shield);
     this.shieldName = shield.shieldName;
     this.armorClass = shield.armorClass;
     this.armorType = shield.armorType;

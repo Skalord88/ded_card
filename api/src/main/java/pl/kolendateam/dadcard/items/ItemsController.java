@@ -125,23 +125,16 @@ public class ItemsController {
           HttpStatus.NOT_FOUND,
           "Character Not Found");
     }
+
+    List<Items> itemsList = this.itemsRepository.findAll();
+
     Inventory characterInventory = inventoryOpt.get();
 
-    characterInventory.addToInventory(inventoryDTO);
+    characterInventory.addToInventory(inventoryDTO, itemsList);
 
     // character.addItemsToCharacterInventory(inventoryDTO);
 
-    System.out.println(
-        "/ armor:" + characterInventory.getArmor().getId()
-            + "/ shield:" + characterInventory.getShield().getId()
-            + "/ I:" + characterInventory.getWeaponOne().getId()
-            + "/ II:" + characterInventory.getWeaponTwo().getId()
-            + "/ III:" + characterInventory.getWeaponThree().getId()
-            + "/ head:" + characterInventory.getHead().getId()
-            + "/ legs:" + characterInventory.getLegs().getId()
-            + "/ neck:" + characterInventory.getNeck().getId());
-
-    // this.inventoryRepository.save(characterInventory);
+    this.inventoryRepository.save(characterInventory);
     // this.characterRepository.save(character);
 
     return new CharacterDTO(character, characterInventory);

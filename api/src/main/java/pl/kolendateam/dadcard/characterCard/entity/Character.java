@@ -828,9 +828,9 @@ public class Character {
     this.experience = 0;
   }
 
-  public void addItemsToCharacterInventory(InventoryDTO inventoryDTO) {
-    this.inventory.addToInventory(inventoryDTO);
-  }
+  // public void addItemsToCharacterInventory(InventoryDTO inventoryDTO) {
+  // this.inventory.addToInventory(inventoryDTO);
+  // }
 
   public void emptyInventory() {
     this.inventory = new Inventory();

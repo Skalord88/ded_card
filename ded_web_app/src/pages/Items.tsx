@@ -39,6 +39,8 @@ export function Items() {
     fetchData();
   }, []);
 
+  // useEffect, per ogni item togli gold
+
   useEffect(() => {
     let updatedItems: ItemsList = items;
   
@@ -66,9 +68,9 @@ export function Items() {
 
     console.log(equipment)
 
-    // axios.post(urlItemsBuy + charId, equipment);
+    axios.post(urlItemsBuy + charId, equipment);
 
-    // window.location.reload();
+    window.location.reload();
   }
 
   return (

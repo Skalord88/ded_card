@@ -17,6 +17,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,12 +33,12 @@ import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 @Getter
 @Setter
 @DiscriminatorColumn(name = "item_type", discriminatorType = DiscriminatorType.STRING)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@EqualsAndHashCode
 public class Items implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+  Integer id;
 
   String name;
   BigDecimal cost;

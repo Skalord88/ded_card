@@ -6,8 +6,10 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
@@ -15,7 +17,6 @@ import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 @Entity
 @Getter
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
 @DiscriminatorValue(value = "WEAPON")
 public class Weapons extends Items {
 
@@ -32,19 +33,16 @@ public class Weapons extends Items {
   String type;
   String specialAttacks;
 
-  public Weapons(WeaponsDTO weaponOne) {
-    super(
-        (short) weaponOne.id,
-        weaponOne.name,
-        weaponOne.cost,
-        weaponOne.weight,
-        weaponOne.description);
-    this.weaponName = weaponOne.weaponName;
-    this.damage = weaponOne.damage;
-    this.critical = weaponOne.critical;
-    this.range = weaponOne.range;
-    this.type = weaponOne.type.toString();
-    this.specialAttacks = weaponOne.specialAttacks.toString();
+  public Weapons(WeaponsDTO weapon) {
+    super(weapon);
+    this.weaponName = weapon.weaponName;
+    this.damage = weapon.damage;
+    this.critical = weapon.critical;
+    this.range = weapon.range;
+    this.type = weapon.type.toString();
+    if (weapon.specialAttacks != null) {
+      this.specialAttacks = MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
+    }
   }
 
   public void setItemType(ItemTypeEnum itemType) {

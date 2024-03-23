@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 
@@ -36,6 +37,15 @@ public class Armors extends Items {
 
   public Armors(int idZero) {
     super(idZero);
+  }
+
+  public Armors(ArmorsDTO armorDTO) {
+    super(armorDTO);
+    this.armorName = armorDTO.armorName;
+    this.armorType = armorDTO.armorType;
+    this.maxDex = armorDTO.maxDex;
+    this.penality = armorDTO.penality;
+    this.failure = armorDTO.failure;
   }
 
 }
