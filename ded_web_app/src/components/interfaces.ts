@@ -243,11 +243,11 @@ export type Inventory = {
   weaponThree: Weapon;
   weaponFour: Weapon;
   weaponFive: Weapon;
-  backpack: [];
+  backpack: Item[];
   head: WonderousItem;
   neck: WonderousItem;
   arms: WonderousItem;
-  hands: [];
+  hands: Item[];
   cloth: WonderousItem;
   legs: WonderousItem;
 }

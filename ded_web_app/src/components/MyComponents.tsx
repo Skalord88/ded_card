@@ -60,7 +60,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   const handleBuyItem = (e: Item, type: string) => {
     
     if (type === "armor") {
-      setTresure(+ equipment.armor.cost - e.cost);
+      // setTresure(+ equipment.armor.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         armor: e as Armor
@@ -68,45 +68,42 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
     if (type === "shield") {
       console.log(e)
-      setTresure(tresure + equipment.shield.cost - e.cost);
+      // setTresure(tresure + equipment.shield.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         shield: e as Shield
       }))
     }
     if (type === "one") {
-      setTresure(+ equipment.weaponOne.cost - e.cost);
+      // setTresure(+ equipment.weaponOne.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponOne: e as Weapon
       }))
     }
     if (type === "two") {
-      console.log(e)
-      setTresure(+ equipment.weaponTwo.cost - e.cost);
+      // setTresure(+ equipment.weaponTwo.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponTwo: e as Weapon
       }))
     }
     if (type === "three") {
-      console.log(e)
-      setTresure(+ equipment.weaponThree.cost - e.cost);
+      // setTresure(+ equipment.weaponThree.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponThree: e as Weapon
       }))
     }
     if (type === "four") {
-      console.log(e)
-      setTresure(+ equipment.weaponFour.cost - e.cost);
+      // setTresure(+ equipment.weaponFour.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponFour: e as Weapon
       }))
     }
     if (type === "five") {
-      setTresure(+ equipment.weaponFive.cost - e.cost);
+      // setTresure(+ equipment.weaponFive.cost - e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponFive: e as Weapon
@@ -116,7 +113,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   const handleSellItem = (e: Item, type: string) => {
     if (type === "armor") {
 
-      setTresure(+e.cost)
+      // setTresure(+e.cost)
       setEquipment(updateInventory => ({
         ...updateInventory,
         armor: noneArmor
@@ -124,7 +121,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "shield") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         shield: noneShield
@@ -132,7 +129,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "one") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponOne: noneWeapon
@@ -140,7 +137,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "two") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponTwo: noneWeapon
@@ -148,7 +145,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "three") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponThree: noneWeapon
@@ -156,7 +153,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "four") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponFour: noneWeapon
@@ -164,7 +161,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "five") {
-      setTresure(+e.cost);
+      // setTresure(+e.cost);
       setEquipment(updateInventory => ({
         ...updateInventory,
         weaponFive: noneWeapon

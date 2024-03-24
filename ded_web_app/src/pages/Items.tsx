@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Armor, Inventory, ItemsList, characterPc } from "../components/interfaces";
+import { Armor, Inventory, Item, ItemsList, characterPc } from "../components/interfaces";
 import { urlChar, urlInventory, urlItems, urlItemsBuy } from "../components/url";
 import {
   characterEmpty,
@@ -39,7 +39,39 @@ export function Items() {
     fetchData();
   }, []);
 
-  // useEffect, per ogni item togli gold
+  const sizeAndGold = (e: Item[]) => {
+    let gold = 0
+    if(e.length > 0){
+    gold = e.reduce(
+      (total, item) => total + item.cost,
+      0
+    ) } else {
+      return gold;
+    }
+    return gold;
+  }
+
+  useEffect(() => {
+    equipment?
+    setTresure(
+      tresure
+      - equipment.armor.cost
+      - equipment.weaponOne.cost
+      - equipment.weaponTwo.cost
+      - equipment.weaponThree.cost
+      - equipment.weaponFour.cost
+      - equipment.weaponFive.cost
+      - sizeAndGold(equipment.backpack)
+      - equipment.head.cost
+      - equipment.neck.cost
+      - equipment.arms.cost
+      - sizeAndGold(equipment.hands)
+      - equipment.cloth.cost
+      - equipment.legs.cost
+      )
+    :
+    setTresure(tresure)
+  },[equipment])
 
   useEffect(() => {
     let updatedItems: ItemsList = items;

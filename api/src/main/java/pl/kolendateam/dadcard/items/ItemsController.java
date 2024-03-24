@@ -132,10 +132,7 @@ public class ItemsController {
 
     characterInventory.addToInventory(inventoryDTO, itemsList);
 
-    // character.addItemsToCharacterInventory(inventoryDTO);
-
     this.inventoryRepository.save(characterInventory);
-    // this.characterRepository.save(character);
 
     return new CharacterDTO(character, characterInventory);
   }
