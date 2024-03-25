@@ -12,13 +12,14 @@ export interface characterPc {
   bab: number;
   specialAttacks: specialAttacks;
   savingThrows: savingThrows;
-  abilitys: abilitys;
+  abilitys: Abilitys;
   skillPoints: number;
   skillsList: MapOfSkills;
   featsList: feat[];
   levelFeatsList: feat[];
   items: Item[];
-  inventory: Inventory,
+  inventoryId: number;
+  inventory: Inventory;
   magicPerDay: {};
   magicKnown: {};
   spellsKnown: [];
@@ -75,7 +76,7 @@ export interface savingThrows {
   will: number;
 }
 
-export interface abilitys {
+export type Abilitys = {
   streght: number;
   dextrity: number;
   constitution: number;
@@ -150,7 +151,7 @@ export interface serverFeat {
 }
 
 export type Prerequisite = {
-  ability: abilitys;
+  ability: Abilitys;
   armorClass: armorClass;
   bab: number;
   classSkills: object;
@@ -165,8 +166,7 @@ export type FeatsId = {
 
 export type ChosenRace = {
   id: number,
-  race: string,
-  sub: string
+  subRacesName: string
 }
 
 export interface races {
@@ -179,7 +179,7 @@ export type subRaces = {
   id: number;
   subRacesName: string;
   avatarUrl: string;
-  raceAbilitys: abilitys;
+  raceAbilitys: Abilitys;
   raceSkills: SkillProps[];
   armorClass: armorClass;
   levelAdjustment: number;
@@ -309,4 +309,25 @@ export type Backpack = {
   sellItem: (
     newItem: Item,
     type: string ) => void;
+}
+
+export type CharAttack = {
+  inventory: Inventory,
+  bab: number
+  ability: Abilitys
+}
+
+export type CharBab = {
+  bab: number,
+  ability: Abilitys,
+  weapon: Weapon
+}
+
+export type SelectWeapon = {
+  inventory: Inventory,
+  where: string,
+  selectWeapon: (
+    newWeapon: Weapon,
+    where: string
+  ) => void
 }

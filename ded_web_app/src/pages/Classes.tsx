@@ -72,8 +72,9 @@ export function Classes() {
               <>choose one</>
             )}
           </div>
-          
+
           <div>
+            <div>efective level: {char?.effectiveCharacterLv}</div>
             {char?.classPcList ? (
               <>
                 {char.classPcList.map((c: any, index: number) => {

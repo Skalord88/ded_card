@@ -9,16 +9,17 @@ import {
   races,
   subRaces
 } from "../components/interfaces";
+import { emptySubRaces } from "../components/variables";
 
 export function Races() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<characterPc>();
   const [races, setRaces] = useState<races[]>();
+  const [selectedRace, setSelected] = useState<String>('')
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
     id: 0,
-    race: "",
-    sub: ""
+    subRacesName: ''
   });
   const [change, setChange] = useState(false);
 
@@ -38,19 +39,13 @@ export function Races() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleData = (race: ChosenRace) => {
-    setChosenRace({
-      ...chosenRace,
-      id: race.id,
-      race: race.race,
-      sub: race.sub
-    });
+  const handleData = (subRace: subRaces, race: string) => {
+    setSelected(race)
+    setChosenRace({id: subRace.id, subRacesName: subRace.subRacesName});
     setChange(true);
   };
-  const handleSubmit = (e: any) => {
-    axios.post(urlRaceList + "/" + charId + "/race", e).then((response) => {
-      console.log(response);
-    });
+  const handleSubmit = (e: ChosenRace) => {
+    axios.post(urlRaceList + "/" + charId, e)
   };
 
   return (
@@ -58,8 +53,8 @@ export function Races() {
       <div className="container">
         {change === true ? (
           <div>
-            {chosenRace.race}, {chosenRace.sub}{" "}
-            <button onClick={() => handleSubmit(chosenRace.id)}>
+            {chosenRace?.subRacesName}, {selectedRace}
+            <button onClick={() => handleSubmit(chosenRace)}>
               <Link to={"/class/" + charId}>to classes</Link>
             </button>
           </div>
@@ -81,11 +76,7 @@ export function Races() {
                               <>
                                 <button
                                   onClick={() =>
-                                    handleData({
-                                      id: sr.id,
-                                      race: r.raceName,
-                                      sub: sr.subRacesName
-                                    })
+                                    handleData(sr, r.raceName)
                                   }
                                 >
                                   {sr.subRacesName}

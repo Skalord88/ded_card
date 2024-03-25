@@ -1,17 +1,28 @@
 import React, { useEffect, useState } from "react";
 import {
   Armor,
+  Attacks,
   Backpack,
+  CharAttack,
+  CharBab,
   CharInventory,
   Inventory,
   Item,
   ItemToBuy,
   Rings,
+  SelectWeapon,
   Shield,
   Weapon,
   WonderousItem
 } from "./interfaces";
-import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
+import {
+  emptyAttack,
+  noneArmor,
+  noneItem,
+  noneShield,
+  noneWeapon
+} from "./variables";
+import { Attack, AttackI, BonusAbilities } from "./functions";
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
@@ -37,7 +48,7 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
       <div>
         {items.map((it) => {
           return (
-            <div>
+            <div key={it.id}>
               {it.name} {it.cost}
               <button onClick={() => selectItem(it, type)}>+</button>
             </div>
@@ -79,7 +90,7 @@ export const BuyBackpack: React.FC<Backpack> = ({
       <div>
         {items.map((it) => {
           return (
-            <div>
+            <div key={it.id}>
               {it.name} {it.cost}
               <button onClick={() => selectItem(it, type)}>+</button>
             </div>
@@ -108,22 +119,32 @@ export const BuyRings: React.FC<Rings> = ({
       <div>
         <ul>
           {item[0]?.name}
-          <button onClick={() => deselect(item[0], type)}>-</button>
+          <button onClick={() => deselect(item[0], type + "0")}>-</button>
+          <div>
+            {items.map((it) => {
+              return (
+                <div key={it.id}>
+                  {it.name} {it.cost}
+                  <button onClick={() => selectItem(it, type + "0")}>+</button>
+                </div>
+              );
+            })}
+          </div>
         </ul>
         <ul>
           {item[1]?.name}
-          <button onClick={() => deselect(item[1], type)}>-</button>
+          <button onClick={() => deselect(item[1], type + "1")}>-</button>
+          <div>
+            {items.map((it) => {
+              return (
+                <div key={it.id}>
+                  {it.name} {it.cost}
+                  <button onClick={() => selectItem(it, type + "1")}>+</button>
+                </div>
+              );
+            })}
+          </div>
         </ul>
-        <div>
-          {items.map((it) => {
-            return (
-              <div>
-                {it.name} {it.cost}
-                <button onClick={() => selectItem(it, type)}>+</button>
-              </div>
-            );
-          })}
-        </div>
       </div>
     </>
   );
@@ -136,7 +157,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   updateInventory
 }) => {
   const [equipment, setEquipment] = useState<Inventory>(inventory);
-  const [actualTresure, setActual] = useState<number>(actual);
+  const actualTresure = actual;
 
   useEffect(() => {
     updateInventory(equipment);
@@ -212,9 +233,17 @@ export const MapOfInventory: React.FC<CharInventory> = ({
           arms: e as Item
         }));
       }
-      if (type === "hands") {
-        let zaino = equipment.backpack;
-        zaino.push(e as Item);
+      if (type === "hands0") {
+        let zaino = equipment.hands;
+        zaino[0] = e as Item;
+        setEquipment((updateInventory) => ({
+          ...updateInventory,
+          backpack: zaino
+        }));
+      }
+      if (type === "hands1") {
+        let zaino = equipment.hands;
+        zaino[1] = e as Item;
         setEquipment((updateInventory) => ({
           ...updateInventory,
           backpack: zaino
@@ -318,12 +347,20 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       }));
     }
 
-    if (type === "hands") {
-      let ring = equipment.backpack.filter((item) => item.id !== e.id);
+    if (type === "hands0") {
+      let ring = equipment.hands;
 
-      if (ring.length === 0 || !ring) {
-        ring.push(noneItem);
-      }
+      ring[0] = noneItem;
+
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        backpack: ring as WonderousItem[]
+      }));
+    }
+    if (type === "hands1") {
+      let ring = equipment.hands;
+
+      ring[1] = noneItem;
 
       setEquipment((updateInventory) => ({
         ...updateInventory,
@@ -479,6 +516,301 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
+      </div>
+    </>
+  );
+};
+
+export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) => {
+  const [equip, setEquip] = useState<Inventory>(inventory);
+  const [attack, setAttack] = useState<Attacks>(emptyAttack);
+
+  useEffect(() => {
+    attack.baseAttackBonus = bab;
+    setAttack(attack);
+  }, []);
+
+  const setAttackInSet = (newWeapon: Weapon, where: string) => {
+    let att = { ...attack };
+
+    switch (where) {
+      case "set11":
+        att.setOne.firstHand = newWeapon;
+        break;
+      case "set12":
+        att.setOne.secondHand = newWeapon;
+        break;
+      case "set13":
+        att.setOne.additionalWeapon = newWeapon;
+        break;
+      case "set21":
+        att.setTwo.firstHand = newWeapon;
+        break;
+      case "set22":
+        att.setTwo.secondHand = newWeapon;
+        break;
+      case "set23":
+        att.setTwo.additionalWeapon = newWeapon;
+    }
+    setAttack(att);
+  };
+
+  return (
+    <>
+      <div className="container-item">
+        <div className="container">
+          <div>
+            first hand: {attack.setOne.firstHand.name}
+            <MapBab
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setOne.firstHand}
+              />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set11"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+          <div>
+            second hand: {attack.setOne.secondHand.name}
+            <MapBab
+            bab={attack.baseAttackBonus}
+            ability={ability}
+            weapon={attack.setOne.secondHand}
+            />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set12"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+          <div></div>
+          <div>
+            additional weapon: {attack.setOne.additionalWeapon.name}
+            <MapBab
+            bab={attack.baseAttackBonus}
+            ability={ability}
+            weapon={attack.setOne.additionalWeapon}
+            />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set13"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+        </div>
+      </div>
+      <div className="container-item">
+        <div className="container">
+          <div>
+            first hand: {attack.setTwo.firstHand.name}
+            <MapBab
+            bab={attack.baseAttackBonus}
+            ability={ability}
+            weapon={attack.setTwo.firstHand}
+            />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set21"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+          <div>
+            second hand: {attack.setTwo.secondHand.name}
+            <MapBab
+            bab={attack.baseAttackBonus}
+            ability={ability}
+            weapon={attack.setTwo.secondHand}
+            />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set22"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+          <div></div>
+          <div>
+            additional weapon: {attack.setTwo.additionalWeapon.name}
+            <MapBab
+            bab={attack.baseAttackBonus}
+            ability={ability}
+            weapon={attack.setTwo.additionalWeapon}
+            />
+            <ListOfWeapons
+              inventory={equip}
+              where={"set23"}
+              selectWeapon={setAttackInSet}
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const MapBab: React.FC<CharBab> = ({ bab, ability, weapon }) => {
+
+  
+  
+  return (
+    <>
+      {bab > 15 ? (
+        <>
+        <div className="container-table">
+          <div>melee: </div>
+          <div>{Attack(bab, true, weapon, ability, 'STR', 0)}</div>
+          <div>{Attack(bab, true, weapon, ability, 'STR', 5)}</div>
+          <div>{Attack(bab, true, weapon, ability, 'STR', 10)}</div>
+          <div>{Attack(bab, true, weapon, ability, 'STR', 15)}</div>
+          <div></div>
+          <div>distance: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>melee two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        </>
+      ) : bab > 10 ? (
+        <>
+          <div className="container-table">
+          <div>melee: </div>
+          <div>{Attack(bab, true, weapon, ability, 'STR', 0)}</div>
+          <div>/ {Attack(bab, true, weapon, ability, 'STR', 5)}</div>
+          <div>/ {Attack(bab, true, weapon, ability, 'STR', 10)}</div>
+          <div></div>
+          <div></div>
+          <div>distance: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>melee two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        </>
+      ) : bab > 5 ? (
+        <>
+          <div className="container-table">
+          <div>melee: </div>
+          <div>{bab + BonusAbilities(ability, 'STR')}</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>melee two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance two hands: </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        </>
+      ) : (
+        <>
+        <div className="container-table">
+          <div>melee: </div>
+          <div>{bab + BonusAbilities(ability, 'STR')}</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance: </div>
+          <div>{bab + BonusAbilities(ability, 'DEX')}</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>melee two hands: </div>
+          <div>{bab + BonusAbilities(ability, 'STR')}</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div>distance two hands: </div>
+          <div>{bab + BonusAbilities(ability, 'DEX')}</div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        </>
+      )}
+    </>
+  );
+};
+
+export const ListOfWeapons: React.FC<SelectWeapon> = ({
+  inventory,
+  where,
+  selectWeapon
+}) => {
+  const [selected, setSelected] = useState<Weapon>(noneWeapon);
+
+  const select = (w: Weapon) => {
+    setSelected(w);
+  };
+
+  useEffect(() => {
+    selectWeapon(selected, where);
+  }, [selected]);
+  return (
+    <>
+      <div>
+        {inventory.weaponOne.name}
+        <button onClick={() => select(inventory.weaponOne)}>+</button>
+      </div>
+      <div>
+        {inventory.weaponTwo.name}
+        <button onClick={() => select(inventory.weaponTwo)}>+</button>
+      </div>
+      <div>
+        {inventory.weaponThree.name}
+        <button onClick={() => select(inventory.weaponThree)}>+</button>
+      </div>
+      <div>
+        {inventory.weaponFour.name}
+        <button onClick={() => select(inventory.weaponFour)}>+</button>
+      </div>
+      <div>
+        {inventory.weaponFive.name}
+        <button onClick={() => select(inventory.weaponFive)}>+</button>
       </div>
     </>
   );

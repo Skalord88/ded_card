@@ -1,11 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Armor, Inventory, Item, ItemsList, characterPc } from "../components/interfaces";
 import { urlChar, urlInventory, urlItems, urlItemsBuy } from "../components/url";
 import {
-  characterEmpty,
-  emptyInventory,
   emptyItemsList
 } from "../components/variables";
 import { MapOfInventory } from "../components/MyComponents";
@@ -29,8 +27,9 @@ export function Items() {
         const resItems = await axios.get(urlItems);
         setItems(resItems.data);
 
-        const resInventory = await axios.get(urlInventory + '1');
-
+        const resInventory = await axios.get(
+          urlInventory + charId
+        );
         setEquipment(resInventory.data);
 
       } catch (error) {
@@ -112,6 +111,12 @@ export function Items() {
           <div>
             <button onClick={confirmItems}>set Items</button>
           </div>
+        </div>
+        <div className="container-item">
+          <div>
+            <button>
+              <Link to={'/attack/'+ charId}>to Attack</Link>
+            </button></div>
         </div>
       </div>
       <div>

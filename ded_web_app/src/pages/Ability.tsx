@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { abilitys } from "../components/interfaces";
+import { Abilitys } from "../components/interfaces";
 import { urlAb } from "../components/url";
 import { abilitysEmpty } from "../components/variables";
 
-export function Abilitys() {
+export function Ability() {
   const { charId } = useParams();
 
-  const [abilitys, setAbilitys] = useState<abilitys>(abilitysEmpty);
+  const [abilitys, setAbilitys] = useState<Abilitys>(abilitysEmpty);
   const [change, setChange] = useState<boolean>(false);
 
   const handleData = (e: any) => {

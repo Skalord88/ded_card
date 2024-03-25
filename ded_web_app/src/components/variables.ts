@@ -1,4 +1,4 @@
-import { AddStudy, Armor, Inventory, Shield, Weapon, WonderousItem, abilitys, armorClass, characterPc, serverSkill, subRaces } from '../components/interfaces'
+import { AddStudy, Armor, Attacks, Inventory, Shield, Weapon, WonderousItem, Abilitys, armorClass, characterPc, serverSkill, subRaces } from '../components/interfaces'
 
 export const noneArmor: Armor = {
     id: 2,
@@ -47,7 +47,7 @@ export const noneWeapon: Weapon = {
 
 export const noneItem: WonderousItem = {
     id: 4,
-    name: 'no_item',
+    name: 'No item',
     cost: 0,
     weight: 0,
     description: '',
@@ -127,6 +127,7 @@ export const characterEmpty: characterPc = {
     featsList: [],
     levelFeatsList: [],
     items: [],
+    inventoryId: 0,
     inventory: emptyInventory,
     magicPerDay: {},
     magicKnown: {},
@@ -138,7 +139,7 @@ export const characterEmpty: characterPc = {
 
 }
 
-export const abilitysEmpty: abilitys = {
+export const abilitysEmpty: Abilitys = {
 
     streght: 10,
     dextrity: 10,
@@ -185,7 +186,21 @@ export const emptyItemsList = {
     shieldList: [],
     weaponsList: [],
     wonderousItems: []
-  }
+}
+
+export const emptyAttack: Attacks = {
+    baseAttackBonus: 0,
+    setOne: {
+        firstHand: noneWeapon,
+        secondHand: noneWeapon,
+        additionalWeapon: noneWeapon
+    },
+    setTwo: {
+        firstHand: noneWeapon,
+        secondHand: noneWeapon,
+        additionalWeapon: noneWeapon
+    }
+}
 
 
 

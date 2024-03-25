@@ -63,7 +63,7 @@ public class RaceController {
         return MaperListRegionToDTO.toRegionBaseDTO(regions);
     }
 
-    @PostMapping(value = "{id}/race", consumes = { "application/json" })
+    @PostMapping(value = "{id}", consumes = { "application/json" })
     public CharacterDTO setSubRaceToCharacter(
             @PathVariable short id, @RequestBody SubRaceBaseDTO subRaceBaseDTO) {
 

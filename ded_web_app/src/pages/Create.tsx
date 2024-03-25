@@ -36,7 +36,7 @@ export function Create() {
             
 
                 <div>{charId > -1?
-                <button> <Link to={'/abilitys/' + charId}>to abilitys</Link></button>
+                <button> <Link to={'/ability/' + charId}>to abilitys</Link></button>
                 :<button onClick={handleSubmit}>create</button>
                 
             }</div>
