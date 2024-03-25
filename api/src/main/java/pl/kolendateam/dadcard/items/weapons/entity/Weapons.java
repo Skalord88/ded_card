@@ -1,12 +1,9 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
@@ -40,8 +37,10 @@ public class Weapons extends Items {
     this.critical = weapon.critical;
     this.range = weapon.range;
     this.type = weapon.type.toString();
-    if (weapon.specialAttacks != null) {
+    if (weapon.specialAttacks != null || !weapon.specialAttacks.equals("")) {
       this.specialAttacks = MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
+    } else {
+      this.specialAttacks = null;
     }
   }
 

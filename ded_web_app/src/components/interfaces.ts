@@ -269,13 +269,38 @@ export type Attacks = {
 export type CharInventory = {
   inventory: Inventory
   items: ItemsList
+  actual: number
   updateInventory: (
     newInventory: Inventory,
-    newGold: number ) => void;
+    ) => void;
 }
 
 export type ItemToBuy = {
   item: Item,
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string ) => void;
+  sellItem: (
+    newItem: Item,
+    type: string ) => void;
+}
+
+export type Rings = {
+  item: Item[],
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string ) => void;
+  sellItem: (
+    newItem: Item,
+    type: string ) => void;
+}
+
+export type Backpack = {
+  item: Item[],
   items: Item[],
   type: string,
   buyItem: (

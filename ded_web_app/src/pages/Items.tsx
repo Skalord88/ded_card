@@ -18,6 +18,7 @@ export function Items() {
   const [itemsToBuy, setitemsToBuy] = useState<ItemsList>(emptyItemsList);
   const [equipment, setEquipment] = useState<Inventory>();
   const [tresure, setTresure] = useState<number>(0);
+  const [actualTresure, setActualTresure] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,44 +53,44 @@ export function Items() {
   }
 
   useEffect(() => {
-    equipment?
-    setTresure(
-      tresure
-      - equipment.armor.cost
-      - equipment.weaponOne.cost
-      - equipment.weaponTwo.cost
-      - equipment.weaponThree.cost
-      - equipment.weaponFour.cost
-      - equipment.weaponFive.cost
-      - sizeAndGold(equipment.backpack)
-      - equipment.head.cost
-      - equipment.neck.cost
-      - equipment.arms.cost
-      - sizeAndGold(equipment.hands)
-      - equipment.cloth.cost
-      - equipment.legs.cost
-      )
-    :
-    setTresure(tresure)
-  },[equipment])
+    let gold = 0
+    if(equipment){
+      gold =
+        - equipment.armor.cost
+        - equipment.weaponOne.cost     
+        - equipment.weaponTwo.cost
+        - equipment.weaponThree.cost
+        - equipment.weaponFour.cost
+        - equipment.weaponFive.cost
+        - sizeAndGold(equipment.backpack)
+        - equipment.head.cost
+        - equipment.neck.cost
+        - equipment.arms.cost
+        - sizeAndGold(equipment.hands)
+        - equipment.cloth.cost
+        - equipment.legs.cost
+    }
+
+    setActualTresure(tresure + gold)
+
+  }, [tresure, equipment])
 
   useEffect(() => {
     let updatedItems: ItemsList = items;
   
     updatedItems = {
-      armorsList: items.armorsList.filter(item => item.cost <= tresure),
-      shieldList: items.shieldList.filter(item => item.cost <= tresure),
-      weaponsList: items.weaponsList.filter(item => item.cost <= tresure),
-      wonderousItems: items.wonderousItems.filter(item => item.cost <= tresure)
+      armorsList: items.armorsList.filter(item => item.cost <= actualTresure),
+      shieldList: items.shieldList.filter(item => item.cost <= actualTresure),
+      weaponsList: items.weaponsList.filter(item => item.cost <= actualTresure),
+      wonderousItems: items.wonderousItems.filter(item => item.cost <= actualTresure)
     }
 
     setitemsToBuy(updatedItems);
 
-  },[items, tresure])
+  },[items, actualTresure])
 
-  const handleInventory = (newInventory: Inventory, newGold: number) => {
+  const handleInventory = (newInventory: Inventory) => {
     setEquipment(newInventory);
-    setTresure(tresure + newGold);
   };
 
   useEffect(() => {
@@ -97,8 +98,6 @@ export function Items() {
   }, [char]);
 
   const confirmItems = () => {
-
-    console.log(equipment)
 
     axios.post(urlItemsBuy + charId, equipment);
 
@@ -109,7 +108,7 @@ export function Items() {
     <>
       <div className="container">
         <div className="container-item">
-          {tresure} gp
+          {actualTresure}gp / {tresure}gp
           <div>
             <button onClick={confirmItems}>set Items</button>
           </div>
@@ -121,6 +120,7 @@ export function Items() {
         <MapOfInventory
           inventory={equipment}
           items={itemsToBuy}
+          actual={actualTresure}
           updateInventory={handleInventory}
         />
         </>

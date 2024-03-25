@@ -97,12 +97,15 @@ public class Inventory {
     this.weaponThree = weapon;
     this.weaponFour = weapon;
     this.weaponFive = weapon;
-    this.backpack = new ArrayList<WondrousItems>();
     WondrousItems item = new WondrousItems(4);
+    this.backpack = new ArrayList<WondrousItems>();
+    backpack.add(item);
     this.head = item;
     this.neck = item;
     this.arms = item;
     this.hands = new ArrayList<WondrousItems>();
+    hands.add(item);
+    hands.add(item);
     this.cloth = item;
     this.legs = item;
   }

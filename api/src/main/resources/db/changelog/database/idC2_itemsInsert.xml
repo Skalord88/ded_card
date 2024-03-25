@@ -14,9 +14,8 @@
         <column name="critical" value="X2"/>
         <column name="weight" value="0"/>
         <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']"/>
-        <column name="description" value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls.
-
-        An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike."/>
+        <column name="special_attacks"  value=""/>
+        <column name="description" value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike."/>
     </insert>
     <insert tableName="items">
         <column name="name" value="No Armor"/>
@@ -60,6 +59,7 @@
         <column name="critical" value="X2"/>
         <column name="weight" value="1"/>
         <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']"/>
+        <column name="special_attacks"  value=""/>
         <column name="description" value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets."/>
     </insert>
     <insert tableName="items">
@@ -72,6 +72,7 @@
         <column name="range" value="10"/>
         <column name="weight" value="1"/>
         <column name="type" value="['PIERCING_OR_SLASHING','SIMPLE','LIGHT']"/>
+        <column name="special_attacks"  value=""/>
         <column name="description" value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)."/>
     </insert>
     <insert tableName="items">
@@ -83,6 +84,7 @@
         <column name="critical" value="X3"/>
         <column name="weight" value="9"/>
         <column name="type" value="['PIERCING','SIMPLE','TWO_HANDED']"/>
+        <column name="special_attacks"  value=""/>
         <column name="description" value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character."/>
     </insert>
     <insert tableName="items">
@@ -95,6 +97,7 @@
         <column name="range" value="30"/>
         <column name="weight" value="2"/>
         <column name="type" value="['PIERCING','SIMPLE','RANGED']"/>
+        <column name="special_attacks"  value=""/>
         <column name="description" value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon."/>
     </insert>
     <insert tableName="items">
@@ -106,6 +109,7 @@
         <column name="critical" value="X3"/>
         <column name="weight" value="10"/>
         <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']"/>
+        <column name="special_attacks" value=""/>
         <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
     </insert>
     <insert tableName="items">
@@ -126,10 +130,7 @@
         <column name="name" value="Feather token, anchor"/>
         <column name="cost" value="50"/>
         <column name="weight" value="0"/>
-        <column name="description" value="Each of these items is a small feather that has a power to suit a special need. The kinds of tokens are described below. Each token is usable once.
-
-        Anchor
-        A token useful to moor a craft in water so as to render it immobile for up to one day."/>
+        <column name="description" value="Each of these items is a small feather that has a power to suit a special need. The kinds of tokens are described below. Each token is usable once. Anchor A token useful to moor a craft in water so as to render it immobile for up to one day."/>
     </insert>
     <insert tableName="items">
         <column name="item_type" value="WONDROUS_ITEM"/>
@@ -155,7 +156,7 @@
             <column  name="rangeIncrement"  value=""/>
             <column  name="weight"  value=""/>
             <column  name="type"  value=""/>
-            <column  name="specialAttacks"  value=""/>
+            <column  name="special_attacks"  value=""/>
             <column  name="description"  value=""/>
         </insert>
     -->
