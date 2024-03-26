@@ -22,7 +22,7 @@ import {
   noneShield,
   noneWeapon
 } from "./variables";
-import { Attack, AttackI, BonusAbilities } from "./functions";
+import { AttackMelee, AttackRanged, WeaponTwoHanded } from "./functions";
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
@@ -521,7 +521,11 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   );
 };
 
-export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) => {
+export const MapOfAttack: React.FC<CharAttack> = ({
+  inventory,
+  bab,
+  ability
+}) => {
   const [equip, setEquip] = useState<Inventory>(inventory);
   const [attack, setAttack] = useState<Attacks>(emptyAttack);
 
@@ -565,7 +569,8 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
               bab={attack.baseAttackBonus}
               ability={ability}
               weapon={attack.setOne.firstHand}
-              />
+              position={{ pose: true, twoHanded: true }}
+            />
             <ListOfWeapons
               inventory={equip}
               where={"set11"}
@@ -575,11 +580,15 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
           <div>
             second hand: {attack.setOne.secondHand.name}
             <MapBab
-            bab={attack.baseAttackBonus}
-            ability={ability}
-            weapon={attack.setOne.secondHand}
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setOne.secondHand}
+              position={{
+                pose: false,
+                twoHanded: WeaponTwoHanded(attack.setOne.firstHand)
+              }}
             />
-            <ListOfWeapons
+            <ListOfOneHandWeapons
               inventory={equip}
               where={"set12"}
               selectWeapon={setAttackInSet}
@@ -589,11 +598,12 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
           <div>
             additional weapon: {attack.setOne.additionalWeapon.name}
             <MapBab
-            bab={attack.baseAttackBonus}
-            ability={ability}
-            weapon={attack.setOne.additionalWeapon}
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setOne.additionalWeapon}
+              position={{ pose: true, twoHanded: true }}
             />
-            <ListOfWeapons
+            <ListOfOneHandWeapons
               inventory={equip}
               where={"set13"}
               selectWeapon={setAttackInSet}
@@ -606,9 +616,10 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
           <div>
             first hand: {attack.setTwo.firstHand.name}
             <MapBab
-            bab={attack.baseAttackBonus}
-            ability={ability}
-            weapon={attack.setTwo.firstHand}
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setTwo.firstHand}
+              position={{ pose: true, twoHanded: true }}
             />
             <ListOfWeapons
               inventory={equip}
@@ -619,11 +630,15 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
           <div>
             second hand: {attack.setTwo.secondHand.name}
             <MapBab
-            bab={attack.baseAttackBonus}
-            ability={ability}
-            weapon={attack.setTwo.secondHand}
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setTwo.secondHand}
+              position={{
+                pose: false,
+                twoHanded: WeaponTwoHanded(attack.setTwo.firstHand)
+              }}
             />
-            <ListOfWeapons
+            <ListOfOneHandWeapons
               inventory={equip}
               where={"set22"}
               selectWeapon={setAttackInSet}
@@ -633,11 +648,12 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
           <div>
             additional weapon: {attack.setTwo.additionalWeapon.name}
             <MapBab
-            bab={attack.baseAttackBonus}
-            ability={ability}
-            weapon={attack.setTwo.additionalWeapon}
+              bab={attack.baseAttackBonus}
+              ability={ability}
+              weapon={attack.setTwo.additionalWeapon}
+              position={{ pose: true, twoHanded: true }}
             />
-            <ListOfWeapons
+            <ListOfOneHandWeapons
               inventory={equip}
               where={"set23"}
               selectWeapon={setAttackInSet}
@@ -649,127 +665,129 @@ export const MapOfAttack: React.FC<CharAttack> = ({ inventory, bab, ability }) =
   );
 };
 
-export const MapBab: React.FC<CharBab> = ({ bab, ability, weapon }) => {
-
-  
-  
+export const MapBab: React.FC<CharBab> = ({
+  bab,
+  ability,
+  weapon,
+  position
+}) => {
   return (
     <>
       {bab > 15 ? (
         <>
-        <div className="container-table">
-          <div>melee: </div>
-          <div>{Attack(bab, true, weapon, ability, 'STR', 0)}</div>
-          <div>{Attack(bab, true, weapon, ability, 'STR', 5)}</div>
-          <div>{Attack(bab, true, weapon, ability, 'STR', 10)}</div>
-          <div>{Attack(bab, true, weapon, ability, 'STR', 15)}</div>
-          <div></div>
-          <div>distance: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>melee two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+          <div className="container-table">
+            <div>melee: </div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 0)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 5)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 10)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 15)}</div>
+            <div></div>
+            <div>distance: </div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 0)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 5)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 10)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 15)}</div>
+            <div></div>
+            <div>melee two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </>
       ) : bab > 10 ? (
         <>
           <div className="container-table">
-          <div>melee: </div>
-          <div>{Attack(bab, true, weapon, ability, 'STR', 0)}</div>
-          <div>/ {Attack(bab, true, weapon, ability, 'STR', 5)}</div>
-          <div>/ {Attack(bab, true, weapon, ability, 'STR', 10)}</div>
-          <div></div>
-          <div></div>
-          <div>distance: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>melee two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+            <div>melee: </div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 0)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 5)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 10)}</div>
+            <div></div>
+            <div></div>
+            <div>distance: </div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 0)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 5)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 10)}</div>
+            <div></div>
+            <div></div>
+            <div>melee two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </>
       ) : bab > 5 ? (
         <>
           <div className="container-table">
-          <div>melee: </div>
-          <div>{bab + BonusAbilities(ability, 'STR')}</div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>melee two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance two hands: </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+            <div>melee: </div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 0)}</div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 5)}</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance: </div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 0)}</div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 5)}</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>melee two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </>
       ) : (
         <>
-        <div className="container-table">
-          <div>melee: </div>
-          <div>{bab + BonusAbilities(ability, 'STR')}</div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance: </div>
-          <div>{bab + BonusAbilities(ability, 'DEX')}</div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>melee two hands: </div>
-          <div>{bab + BonusAbilities(ability, 'STR')}</div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div>distance two hands: </div>
-          <div>{bab + BonusAbilities(ability, 'DEX')}</div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+          <div className="container-table">
+            <div>melee: </div>
+            <div>{AttackMelee(bab, position, weapon, ability, "STR", 0)}</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance: </div>
+            <div>{AttackRanged(bab, position, weapon, ability, "DEX", 0)}</div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>melee two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div>distance two hands: </div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </>
       )}
     </>
@@ -812,6 +830,66 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
         {inventory.weaponFive.name}
         <button onClick={() => select(inventory.weaponFive)}>+</button>
       </div>
+    </>
+  );
+};
+
+export const ListOfOneHandWeapons: React.FC<SelectWeapon> = ({
+  inventory,
+  where,
+  selectWeapon
+}) => {
+  const [selected, setSelected] = useState<Weapon>(noneWeapon);
+
+  const select = (w: Weapon) => {
+    setSelected(w);
+  };
+
+  useEffect(() => {
+    selectWeapon(selected, where);
+  }, [selected]);
+  return (
+    <>
+      {WeaponTwoHanded(inventory.weaponOne) ? (
+        <></>
+      ) : (
+        <div>
+          {inventory.weaponOne.name}
+          <button onClick={() => select(inventory.weaponOne)}>+</button>
+        </div>
+      )}
+      {WeaponTwoHanded(inventory.weaponTwo) ? (
+        <></>
+      ) : (
+        <div>
+          {inventory.weaponTwo.name}
+          <button onClick={() => select(inventory.weaponTwo)}>+</button>
+        </div>
+      )}
+      {WeaponTwoHanded(inventory.weaponThree) ? (
+        <></>
+      ) : (
+        <div>
+          {inventory.weaponThree.name}
+          <button onClick={() => select(inventory.weaponThree)}>+</button>
+        </div>
+      )}
+      {WeaponTwoHanded(inventory.weaponFour) ? (
+        <></>
+      ) : (
+        <div>
+          {inventory.weaponFour.name}
+          <button onClick={() => select(inventory.weaponFour)}>+</button>
+        </div>
+      )}
+      {WeaponTwoHanded(inventory.weaponFive) ? (
+        <></>
+      ) : (
+        <div>
+          {inventory.weaponFive.name}
+          <button onClick={() => select(inventory.weaponFive)}>+</button>
+        </div>
+      )}
     </>
   );
 };

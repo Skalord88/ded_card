@@ -320,7 +320,13 @@ export type CharAttack = {
 export type CharBab = {
   bab: number,
   ability: Abilitys,
-  weapon: Weapon
+  weapon: Weapon,
+  position: Position
+}
+
+export type Position = {
+  pose: boolean,
+  twoHanded: boolean
 }
 
 export type SelectWeapon = {

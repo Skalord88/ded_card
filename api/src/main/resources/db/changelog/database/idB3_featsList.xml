@@ -33,15 +33,6 @@
       {'nameSkill':'Spot','skillRank':2}]"/>
   </insert>
   <insert tableName="feats">  
-      <column  name="feat_name"  value="Alertness"/>
-      <column  name="feats_type"  value="GENERAL"/>
-      <column  name="description" value="Benefit: You get a +2 bonus on all Balance checks and Escape Artist checks."
-      />
-      <column  name="skills"  value="[
-      {'nameSkill':'Balance','skillRank':2},
-      {'nameSkill':'Escape Artist','skillRank':2}]"/>
-  </insert>
-  <insert tableName="feats">  
       <column  name="feat_name"  value="Animal affinity"/>
       <column  name="feats_type"  value="GENERAL"/>
       <column  name="description" value="Benefit: You get a +2 bonus on all Handle Animal checks and Ride checks."

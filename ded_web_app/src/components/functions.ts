@@ -1,4 +1,4 @@
-import { Abilitys, Weapon } from "./interfaces"
+import { Abilitys, Position, Weapon } from "./interfaces"
 
 export function BonusAbilities(ab: Abilitys, which: string) {
     switch(which){
@@ -20,38 +20,69 @@ export function WeaponRanged(weapon: Weapon) {
     return weapon.type.includes("RANGED");
 }
 
-export function Attack(
+export function WeaponThrown(weapon: Weapon) {
+    return weapon.type.includes("THROWN");
+}
+
+export function WeaponTwoHanded(weapon: Weapon) {
+    return weapon.type.includes("TWO_HANDED");
+}
+
+export function ListOneHand(weapons: Weapon[]) {
+    weapons.filter(weapon => !WeaponTwoHanded(weapon))
+}
+
+export function AttackMelee(
     bab: number,
-    hand: boolean,
+    position: Position,
     weapon: Weapon,
     ab: Abilitys,
     whichAb: string,
     nAtt: number
 ) {
-    console.log(WeaponRanged(weapon), bab + BonusAbilities(ab, whichAb))
-    let bonus =
-    !hand
-    ? WeaponRanged(weapon) === false
-    ? bab + BonusAbilities(ab, whichAb)
-    : -100
-    : -100
-
-    // if(!bonus){return false}
-    return bonus? bonus - nAtt : bonus;
+    // se la posizione e' seconda mano e l'arma 1 e' grande
+    if(!position.pose && position.twoHanded){return false}
+    // se l'arma e' a distanza
+    if(WeaponRanged(weapon)){return false}
+    // torna bab + car - n. attacchi
+    return bab + BonusAbilities(ab, whichAb) - nAtt
 }
 
-export function AttackI(
+export function AttackRanged(
+    bab: number,
+    position: Position,
+    weapon: Weapon,
+    ab: Abilitys,
+    whichAb: string,
+    nAtt: number
+) {
+    // se la posizione e' seconda mano e l'arma 1 e' grande
+    if(!position.pose && position.twoHanded){return false}
+    // se l'arma e' a distanza
+    if(!WeaponRanged(weapon)) return false;
+    // torna bab + car - n. attacchi
+    return bab + BonusAbilities(ab, whichAb) - nAtt;
+}
+
+// da fare
+export function AttackIMelee(
     bab: number,
     weapon: Weapon,
     hand: boolean,
     ab: Abilitys,
     whichAb: string,
+    nAtt: number,
     feat: boolean
 ) {
-    
+    if(!hand) return false;
+    if(WeaponRanged(weapon)) return false;
+    let bonus = -6;
+    if(WeaponLight(weapon)) bonus+=2
+    return bab + BonusAbilities(ab, whichAb) - nAtt + bonus;
 }
 
-export function AttackII(
+// da fare
+export function AttackIIMelee(
     bab: number,
     weapon: Weapon,
     hand: boolean,
