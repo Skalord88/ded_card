@@ -326,7 +326,8 @@ export type CharBab = {
 
 export type Position = {
   pose: boolean,
-  twoHanded: boolean
+  twoHanded: boolean,
+  light: boolean
 }
 
 export type SelectWeapon = {
