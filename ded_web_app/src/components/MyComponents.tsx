@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   Armor,
   Attacks,
+  AttacksList,
   Backpack,
   CharAttack,
   CharBab,
@@ -27,9 +28,12 @@ import {
   AttackIIRanged,
   AttackMelee,
   AttackRanged,
+  SetInventory,
+  SetSetWeaponListFromDB,
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
+import axios from "axios";
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
@@ -531,48 +535,82 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 export const MapOfAttack: React.FC<CharAttack> = ({
   inventory,
   bab,
-  ability
+  ability,
+  weapons,
+  setListOfAttack
 }) => {
   const [equip, setEquip] = useState<Inventory>(inventory);
   const [attack, setAttack] = useState<Attacks>(emptyAttack);
+  const [listOfWeapons, setListOfWeapons] = useState<Weapon[]>(weapons)
 
+  console.log(listOfWeapons)
   useEffect(() => {
-    attack.baseAttackBonus = bab;
-    setAttack(attack);
-  }, []);
+    setAttack({...attack,
+      baseAttackBonus: bab})
+    setEquip(equip);
+    
+  }, [equip]);
+
+  // setta la list of weapons secondo l'ordine stabilito dalla lista degli attacchi
+
+  const listOfAttacks = () => {
+    setListOfAttack(equip.characterAttacks)
+  }
 
   const setAttackInSet = (newWeapon: Weapon, where: string) => {
     let att = { ...attack };
+    let attackList = { ...equip };
 
     switch (where) {
       case "set11":
         att.setOne.firstHand = newWeapon;
+        attackList.characterAttacks[0] = newWeapon.id;
+        if (WeaponTwoHanded(newWeapon)) attackList.characterAttacks[1] = 1;
         break;
       case "set12":
         att.setOne.secondHand = newWeapon;
+        attackList.characterAttacks[1] = newWeapon.id;
         break;
       case "set13":
         att.setOne.additionalWeapon = newWeapon;
+        attackList.characterAttacks[2] = newWeapon.id;
         break;
       case "set21":
         att.setTwo.firstHand = newWeapon;
+        attackList.characterAttacks[3] = newWeapon.id;
+        if (WeaponTwoHanded(newWeapon)) attackList.characterAttacks[4] = 1;
         break;
       case "set22":
         att.setTwo.secondHand = newWeapon;
+        attackList.characterAttacks[4] = newWeapon.id;
         break;
       case "set23":
         att.setTwo.additionalWeapon = newWeapon;
+        attackList.characterAttacks[5] = newWeapon.id;
+        break;
     }
     setAttack(att);
+    setEquip(attackList);
   };
 
   return (
     <>
+      <div>
+      
+        {equip.characterAttacks? 
+        <>
+        <>{equip.characterAttacks.map((id) => "/" + id)}</>
+        <>{weapons.map(w => w.id)}</>
+        <button onClick={() => listOfAttacks()}>set Attacks</button>
+        </>
+         : <></>}
+        
+        </div>
       <div className="container-item">
         Set I
         <div className="container">
           <div>
-            first hand: {attack.setOne.firstHand.name}
+            first hand: {attack.setOne.firstHand?.name}
             <MapBab
               weapon={attack.setOne.firstHand}
               bab={attack.baseAttackBonus}

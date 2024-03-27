@@ -1,4 +1,5 @@
-import { Abilitys, Position, Weapon } from "./interfaces"
+import { Abilitys, Attacks, Inventory, Position, Weapon } from "./interfaces"
+import { noneWeapon } from "./variables";
 
 export function SignNumber(number: number): string {
     const sign = number >= 0? '+' : '';
@@ -105,8 +106,50 @@ export function AttackIIRanged(
     // se l'arma e' a 2 mani
     if(position.twoHanded){return false}
     // torna bab + car - n. attacchi
-    if(position.pose && !position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -6}
-    if(!position.pose && !position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -10}
-    if(position.pose && position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -4}
-    if(!position.pose && position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -8}
+    if(position.pose && !position.light){
+        return bab + BonusAbilities(ab, whichAb) - nAtt -6}
+    if(!position.pose && !position.light){
+        return bab + BonusAbilities(ab, whichAb) - nAtt -10}
+    if(position.pose && position.light){
+        return bab + BonusAbilities(ab, whichAb) - nAtt -4}
+    if(!position.pose && position.light){
+        return bab + BonusAbilities(ab, whichAb) - nAtt -8}
+}
+
+export function SetSetWeaponListFromDB(
+    inventory: Inventory
+) : Weapon[] {
+    return [
+        inventory.weaponOne, 
+        inventory.weaponTwo, 
+        inventory.weaponThree, 
+        inventory.weaponFour, 
+        inventory.weaponFive
+    ]
+}
+
+export function SetInventory(
+    bab: number,
+    idList: number[],
+    weaponsList: Weapon[]
+) {
+    return {
+        baseAttackBonus: bab,
+    setOne: {
+        firstHand: weaponsList.find(
+            weapon => idList[0] === weapon.id),
+        secondHand: weaponsList.find(
+            weapon => idList[1] === weapon.id),
+        additionalWeapon: weaponsList.find(
+            weapon => idList[2] === weapon.id)
+    },
+    setTwo: {
+        firstHand: weaponsList.find(
+            weapon => idList[3] === weapon.id),
+        secondHand: weaponsList.find(
+            weapon => idList[4] === weapon.id),
+        additionalWeapon: weaponsList.find(
+            weapon => idList[5] === weapon.id)
+        }
+    }
 }

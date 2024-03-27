@@ -103,6 +103,8 @@ export function Items() {
     window.location.reload();
   }
 
+  console.log(equipment?.characterAttacks)
+
   return (
     <>
       <div className="container">

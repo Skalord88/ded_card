@@ -67,9 +67,8 @@ export const emptyInventory: Inventory = {
     arms: noneItem,
     hands: [],
     cloth: noneItem,
-    legs: noneItem
-    
-    
+    legs: noneItem,
+    characterAttacks: []
 }
 
 export const characterEmpty: characterPc = {

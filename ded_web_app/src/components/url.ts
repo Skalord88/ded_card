@@ -36,3 +36,6 @@ export const urlInventory: string =
 
 export const urlItemsBuy: string =
 'http://localhost:8080/item/';
+
+export const urlAttacks: string =
+'http://localhost:8080/item/attack/'

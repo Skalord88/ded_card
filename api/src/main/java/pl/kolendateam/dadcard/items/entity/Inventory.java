@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import pl.kolendateam.dadcard.attack.dto.CharacterAttacksDTO;
 import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
@@ -88,6 +89,8 @@ public class Inventory {
   @JoinColumn(name = "legs_id", referencedColumnName = "id")
   WondrousItems legs;
 
+  int[] characterAttacks;
+
   public Inventory() {
     this.armor = new Armors(2);
     this.shield = new Shields(3);
@@ -108,83 +111,8 @@ public class Inventory {
     hands.add(item);
     this.cloth = item;
     this.legs = item;
+    this.characterAttacks = new int[] { 1, 1, 1, 1, 1, 1 };
   }
-
-  // public Inventory(InventoryDTO inventoryDTO) {
-
-  // if (inventoryDTO.armor != null) {
-  // this.armor = MapperItems.toArmor(inventoryDTO.armor);
-  // } else {
-  // this.armor = (Armors) new Items();
-  // armor.setId(0);
-  // }
-  // if (inventoryDTO.shield != null) {
-  // this.shield = MapperItems.toShield(inventoryDTO.shield);
-  // } else {
-  // this.shield = (Shields) new Items();
-  // shield.setId(0);
-  // }
-  // if (inventoryDTO.weaponOne != null) {
-  // this.weaponOne = MapperItems.toWeapon(inventoryDTO.weaponOne);
-  // } else {
-  // this.weaponOne = (Weapons) new Items();
-  // weaponOne.setId(0);
-  // }
-  // if (inventoryDTO.weaponTwo != null) {
-  // this.weaponTwo = MapperItems.toWeapon(inventoryDTO.weaponTwo);
-  // } else {
-  // this.weaponTwo = (Weapons) new Items();
-  // weaponTwo.setId(0);
-  // }
-  // if (inventoryDTO.weaponThree != null) {
-  // this.weaponThree = MapperItems.toWeapon(inventoryDTO.weaponThree);
-  // } else {
-  // this.weaponThree = (Weapons) new Items();
-  // weaponThree.setId(0);
-  // }
-  // if (inventoryDTO.weaponFour != null) {
-  // this.weaponFour = MapperItems.toWeapon(inventoryDTO.weaponFour);
-  // } else {
-  // this.weaponFour = (Weapons) new Items();
-  // weaponFour.setId(0);
-  // }
-  // if (inventoryDTO.weaponFive != null) {
-  // this.weaponFive = MapperItems.toWeapon(inventoryDTO.weaponFive);
-  // } else {
-  // this.weaponFive = (Weapons) new Items();
-  // weaponFive.setId(0);
-  // }
-  // if (inventoryDTO.head != null) {
-  // this.head = MapperItems.toWondrousItems(inventoryDTO.head);
-  // } else {
-  // this.head = (WondrousItems) new Items();
-  // head.setId(0);
-  // }
-  // if (inventoryDTO.neck != null) {
-  // this.neck = MapperItems.toWondrousItems(inventoryDTO.neck);
-  // } else {
-  // this.neck = (WondrousItems) new Items();
-  // neck.setId(0);
-  // }
-  // if (inventoryDTO.arms != null) {
-  // this.arms = MapperItems.toWondrousItems(inventoryDTO.arms);
-  // } else {
-  // this.arms = (WondrousItems) new Items();
-  // arms.setId(0);
-  // }
-  // if (inventoryDTO.cloth != null) {
-  // this.cloth = MapperItems.toWondrousItems(inventoryDTO.cloth);
-  // } else {
-  // this.cloth = (WondrousItems) new Items();
-  // cloth.setId(0);
-  // }
-  // if (inventoryDTO.legs != null) {
-  // this.legs = MapperItems.toWondrousItems(inventoryDTO.neck);
-  // } else {
-  // this.legs = (WondrousItems) new Items();
-  // legs.setId(0);
-  // }
-  // }
 
   public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
 
@@ -291,6 +219,11 @@ public class Inventory {
       }
     }
 
+  }
+
+  public void settAttacks(CharacterAttacksDTO characterAttacksDTO) {
+    int[] listOfAttacks = characterAttacksDTO.attacksDTO;
+    this.characterAttacks = listOfAttacks;
   }
 
 }

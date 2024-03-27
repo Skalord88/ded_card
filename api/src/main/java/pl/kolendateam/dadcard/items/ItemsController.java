@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pl.kolendateam.dadcard.attack.dto.CharacterAttacksDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -131,6 +132,35 @@ public class ItemsController {
     Inventory characterInventory = inventoryOpt.get();
 
     characterInventory.addToInventory(inventoryDTO, itemsList);
+
+    this.inventoryRepository.save(characterInventory);
+
+    return new CharacterDTO(character, characterInventory);
+  }
+
+  @PostMapping(value = "attack/{id}", consumes = { "application/json" })
+  public CharacterDTO setAttack(
+      @PathVariable short id,
+      @RequestBody CharacterAttacksDTO characterAttacksDTO) {
+
+    Optional<Character> characterOpt = this.characterRepository.findById(id);
+    if (!characterOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
+    }
+    Character character = characterOpt.get();
+
+    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    if (!inventoryOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Character Not Found");
+    }
+
+    Inventory characterInventory = inventoryOpt.get();
+
+    characterInventory.settAttacks(characterAttacksDTO);
 
     this.inventoryRepository.save(characterInventory);
 

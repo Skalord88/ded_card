@@ -250,6 +250,11 @@ export type Inventory = {
   hands: Item[];
   cloth: WonderousItem;
   legs: WonderousItem;
+  characterAttacks: number[];
+}
+
+export type AttacksList = {
+  characterAttacks: number[]
 }
 
 export type Attacks = {
@@ -313,8 +318,12 @@ export type Backpack = {
 
 export type CharAttack = {
   inventory: Inventory,
-  bab: number
-  ability: Abilitys
+  bab: number,
+  ability: Abilitys,
+  weapons: Weapon[],
+  setListOfAttack: (
+    newList: number[]
+  ) => void
 }
 
 export type CharBab = {

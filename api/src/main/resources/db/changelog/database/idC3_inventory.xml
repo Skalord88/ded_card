@@ -45,6 +45,9 @@
             <column name="legs_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="character_attacks" type="INTEGER[]">
+                <constraints nullable="true" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
