@@ -3,6 +3,8 @@ package pl.kolendateam.dadcard.items;
 import java.util.ArrayList;
 import java.util.List;
 
+import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
+import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
@@ -50,6 +52,10 @@ public class MapperItemsDTO {
     });
 
     return itemsListDTO;
+  }
+
+  public static AttacksDTO toAttacksDTO(Attacks characterAttacks) {
+    return new AttacksDTO(characterAttacks);
   }
 
 }

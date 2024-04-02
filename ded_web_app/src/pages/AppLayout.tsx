@@ -15,6 +15,6 @@ export function AppLayout() {
       </nav>
 
       <Outlet />
-    </>
+      </>
   );
 }

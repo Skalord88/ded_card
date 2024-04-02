@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 // import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
 import {
+  CharacterPc,
   Inventory,
   MapOfSkills,
-  SkillProps,
-  characterPc
+  SkillProps
 } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
@@ -14,7 +14,7 @@ import { characterEmpty, emptyInventory } from "../components/variables";
 export function Show() {
   let { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>(characterEmpty);
+  const [char, setChar] = useState<CharacterPc>(characterEmpty);
   const [inventory, setInventory] = useState<Inventory>(emptyInventory);
   const [skills, setSkills] = useState<SkillProps[]>([]);
   const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({ skills });

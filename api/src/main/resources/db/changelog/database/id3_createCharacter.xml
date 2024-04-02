@@ -70,6 +70,9 @@
         <column name="inventory_id" type="int">
           <constraints nullable="true"/>
         </column>
+        <column name="attacks_id" type="int">
+          <constraints nullable="true"/>
+        </column>
         <column name="magic_per_day" type="jsonb">
           <constraints nullable="true"/>
         </column>
@@ -86,12 +89,5 @@
           <constraints nullable="true"/>
         </column>
       </createTable>
-
-  <!-- <addForeignKeyConstraint baseTableName="character"
-                                 baseColumnNames="id_inventory"
-                                 constraintName="FK_character_inventory"
-                                 referencedTableName="inventory"
-                                 referencedColumnNames="id_inventory"
-                                /> -->
     </changeSet>
 </databaseChangeLog>

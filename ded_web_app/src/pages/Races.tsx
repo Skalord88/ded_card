@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import { urlChar, urlRaceList } from "../components/url";
 import {
+  CharacterPc,
   ChosenRace,
-  characterPc,
   races,
   subRaces
 } from "../components/interfaces";
-import { emptySubRaces } from "../components/variables";
+import { urlChar, urlRaceList } from "../components/url";
 
 export function Races() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [races, setRaces] = useState<races[]>();
   const [selectedRace, setSelected] = useState<String>('')
   const [chosenRace, setChosenRace] = useState<ChosenRace>({

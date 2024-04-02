@@ -3,46 +3,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="303" author="oscar">
+    <changeSet id="306" author="oscar">
 
-        <createTable tableName="inventory">
+        <createTable tableName="attacks">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
-            <column name="armor_id" type="int">
+            <column name="attacks_id_onefirst" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="shield_id" type="int">
+            <column name="attacks_id_onesecond" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="weapon_id_one" type="int">
+            <column name="attacks_id_oneadditional" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="weapon_id_two" type="int">
+            <column name="attacks_id_twofirst" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="weapon_id_three" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="weapon_id_four" type="int">
+            <column name="attacks_id_twosecond" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="weapon_id_five" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="head_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="neck_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="arms_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="cloth_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="legs_id" type="int">
+            <column name="attacks_id_twoadditional" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>

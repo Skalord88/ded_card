@@ -27,6 +27,7 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.Dices;
@@ -113,6 +114,10 @@ public class Character {
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
   Inventory inventory;
 
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "attacks_id", referencedColumnName = "id")
+  Attacks attacks;
+
   @JdbcTypeCode(SqlTypes.JSON)
   HashMap<EnumClass, Integer[]> magicPerDay;
 
@@ -141,6 +146,7 @@ public class Character {
     this.featsList = new ArrayList<>();
     this.levelFeatsList = new ArrayList<>();
     this.inventory = new Inventory();
+    this.attacks = new Attacks();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
     this.spellsKnown = new ArrayList<>();

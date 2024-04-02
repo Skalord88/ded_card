@@ -15,7 +15,6 @@ import jakarta.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import pl.kolendateam.dadcard.attack.dto.CharacterAttacksDTO;
 import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
@@ -89,8 +88,6 @@ public class Inventory {
   @JoinColumn(name = "legs_id", referencedColumnName = "id")
   WondrousItems legs;
 
-  int[] characterAttacks;
-
   public Inventory() {
     this.armor = new Armors(2);
     this.shield = new Shields(3);
@@ -111,7 +108,6 @@ public class Inventory {
     hands.add(item);
     this.cloth = item;
     this.legs = item;
-    this.characterAttacks = new int[] { 1, 1, 1, 1, 1, 1 };
   }
 
   public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
@@ -219,11 +215,6 @@ public class Inventory {
       }
     }
 
-  }
-
-  public void settAttacks(CharacterAttacksDTO characterAttacksDTO) {
-    int[] listOfAttacks = characterAttacksDTO.attacksDTO;
-    this.characterAttacks = listOfAttacks;
   }
 
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import axios from "axios";
-import { characterPc, serverSkill, SkillProps } from "../components/interfaces";
+import { CharacterPc, serverSkill, SkillProps } from "../components/interfaces";
 
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
@@ -10,7 +10,7 @@ import "../css/style.css";
 export function Skills() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxSkillLv, setMaxSkillLv] = useState(0);

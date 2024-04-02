@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import pl.kolendateam.dadcard.attack.entity.Attacks;
+import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -47,6 +49,7 @@ public class CharacterController {
   SkillsRepository skillsRepository;
   SpellsTableRepository spellsTableRepository;
   InventoryRepository inventoryRepository;
+  AttacksRepository attacksRepository;
   ItemsRepository itemsRepository;
 
   @Autowired
@@ -57,6 +60,7 @@ public class CharacterController {
       SkillsRepository skillsRepository,
       SpellsTableRepository spellsTableRepository,
       InventoryRepository inventoryRepository,
+      AttacksRepository attacksRepository,
       ItemsRepository itemsRepository) {
     this.characterRepository = characterRepository;
     this.classRepository = classRepository;
@@ -64,6 +68,7 @@ public class CharacterController {
     this.skillsRepository = skillsRepository;
     this.spellsTableRepository = spellsTableRepository;
     this.inventoryRepository = inventoryRepository;
+    this.attacksRepository = attacksRepository;
     this.itemsRepository = itemsRepository;
   }
 
@@ -118,7 +123,16 @@ public class CharacterController {
 
     Inventory characterInventory = inventoryOpt.get();
 
-    return new CharacterDTO(character, characterInventory);
+    Optional<Attacks> attacksOpt = this.attacksRepository.findById(character.getAttacks().getId());
+    if (!inventoryOpt.isPresent()) {
+      throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Inventory Not Found");
+    }
+
+    Attacks characterAttacks = attacksOpt.get();
+
+    return new CharacterDTO(character, characterInventory, characterAttacks);
   }
 
   @PostMapping(value = "class/{id}", consumes = { "application/json" })

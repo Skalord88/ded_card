@@ -1,13 +1,12 @@
-import { Abilitys, Attacks, Inventory, Position, Weapon } from "./interfaces"
-import { noneWeapon } from "./variables";
+import { Abilitys, Inventory, Position, Weapon } from "./interfaces"
 
 export function SignNumber(number: number): string {
-    const sign = number >= 0? '+' : '';
+    const sign = number >= 0 ? '+' : '';
     return sign;
 }
 
 export function BonusAbilities(ab: Abilitys, which: string) {
-    switch(which){
+    switch (which) {
         case 'STR': return Math.floor((ab.streght - 10) / 2);
         case 'DEX': return Math.floor((ab.dextrity - 10) / 2);
         case 'COS': return Math.floor((ab.constitution - 10) / 2);
@@ -15,7 +14,7 @@ export function BonusAbilities(ab: Abilitys, which: string) {
         case 'WIS': return Math.floor((ab.wisdom - 10) / 2);
         case 'CHA': return Math.floor((ab.charisma - 10) / 2);
         default: return 0;
-    } 
+    }
 }
 
 export function WeaponLight(weapon: Weapon): boolean {
@@ -47,9 +46,9 @@ export function AttackMelee(
     nAtt: number
 ) {
     // se l'arma e' a distanza
-    if(WeaponRanged(weapon)){return false}
+    if (WeaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
-    if(!position.pose && position.twoHanded){return false}
+    if (!position.pose && position.twoHanded) { return false }
     // torna bab + car - n. attacchi
     return bab + BonusAbilities(ab, whichAb) - nAtt
 }
@@ -63,9 +62,9 @@ export function AttackRanged(
     nAtt: number
 ) {
     // se l'arma e' a distanza
-    if(!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
+    if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
-    if(!position.pose && position.twoHanded){return false}
+    if (!position.pose && position.twoHanded) { return false }
     // torna bab + car - n. attacchi
     return bab + BonusAbilities(ab, whichAb) - nAtt;
 }
@@ -79,16 +78,16 @@ export function AttackIIMelee(
     nAtt: number
 ) {
     // se l'arma e' a distanza
-    if(WeaponRanged(weapon)){return false}
+    if (WeaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
-    if(!position.pose && position.twoHanded){return false}
+    if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
-    if(position.twoHanded){return false}
+    if (position.twoHanded) { return false }
     // torna bab + car - n. attacchi
-    if(position.pose && !position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -6}
-    if(!position.pose && !position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -10}
-    if(position.pose && position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -4}
-    if(!position.pose && position.light){return bab + BonusAbilities(ab, whichAb) - nAtt -8}
+    if (position.pose && !position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 6 }
+    if (!position.pose && !position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 10 }
+    if (position.pose && position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 4 }
+    if (!position.pose && position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 8 }
 }
 
 export function AttackIIRanged(
@@ -100,56 +99,77 @@ export function AttackIIRanged(
     nAtt: number
 ) {
     // se l'arma e' a distanza
-    if(!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
+    if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
-    if(!position.pose && position.twoHanded){return false}
+    if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
-    if(position.twoHanded){return false}
+    if (position.twoHanded) { return false }
     // torna bab + car - n. attacchi
-    if(position.pose && !position.light){
-        return bab + BonusAbilities(ab, whichAb) - nAtt -6}
-    if(!position.pose && !position.light){
-        return bab + BonusAbilities(ab, whichAb) - nAtt -10}
-    if(position.pose && position.light){
-        return bab + BonusAbilities(ab, whichAb) - nAtt -4}
-    if(!position.pose && position.light){
-        return bab + BonusAbilities(ab, whichAb) - nAtt -8}
+    if (position.pose && !position.light) {
+        return bab + BonusAbilities(ab, whichAb) - nAtt - 6
+    }
+    if (!position.pose && !position.light) {
+        return bab + BonusAbilities(ab, whichAb) - nAtt - 10
+    }
+    if (position.pose && position.light) {
+        return bab + BonusAbilities(ab, whichAb) - nAtt - 4
+    }
+    if (!position.pose && position.light) {
+        return bab + BonusAbilities(ab, whichAb) - nAtt - 8
+    }
 }
 
 export function SetSetWeaponListFromDB(
     inventory: Inventory
-) : Weapon[] {
+): Weapon[] {
     return [
-        inventory.weaponOne, 
-        inventory.weaponTwo, 
-        inventory.weaponThree, 
-        inventory.weaponFour, 
+        inventory.weaponOne,
+        inventory.weaponTwo,
+        inventory.weaponThree,
+        inventory.weaponFour,
         inventory.weaponFive
     ]
 }
 
-export function SetInventory(
+export function SetWeaponNotOne(
+    weapons: Weapon[],
+    idWeapon: number
+): Weapon[] {
+
+    const index = weapons.findIndex(w => w.id === idWeapon)
+    let lista = weapons;
+    if(index < -1) {
+        lista = weapons.splice(index)
+    }
+    return lista
+}
+
+export function SetAttacksFromWeapons(
     bab: number,
     idList: number[],
     weaponsList: Weapon[]
 ) {
-    return {
-        baseAttackBonus: bab,
-    setOne: {
-        firstHand: weaponsList.find(
-            weapon => idList[0] === weapon.id),
-        secondHand: weaponsList.find(
-            weapon => idList[1] === weapon.id),
-        additionalWeapon: weaponsList.find(
-            weapon => idList[2] === weapon.id)
-    },
-    setTwo: {
-        firstHand: weaponsList.find(
-            weapon => idList[3] === weapon.id),
-        secondHand: weaponsList.find(
-            weapon => idList[4] === weapon.id),
-        additionalWeapon: weaponsList.find(
-            weapon => idList[5] === weapon.id)
+    if (idList[0] && weaponsList[0]) {
+        return {
+            baseAttackBonus: bab,
+            setOne: {
+                firstHand: weaponsList.find
+                    (w => idList.includes(w.id)),
+                secondHand: weaponsList.find
+                    (w => idList.includes(w.id)),
+                additionalWeapon: weaponsList.find
+                    (w => idList.includes(w.id))
+            },
+            setTwo: {
+                firstHand: weaponsList.find
+                    (w => idList.includes(w.id)),
+                secondHand: weaponsList.find
+                    (w => idList.includes(w.id)),
+                additionalWeapon: weaponsList.find
+                    (w => idList.includes(w.id))
+            }
         }
+    } else {
+        return undefined
     }
 }

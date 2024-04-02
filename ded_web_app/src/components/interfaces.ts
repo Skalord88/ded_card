@@ -1,4 +1,4 @@
-export interface characterPc {
+export type CharacterPc = {
   id: number;
   characterName: string;
   playerName: string;
@@ -320,7 +320,6 @@ export type CharAttack = {
   inventory: Inventory,
   bab: number,
   ability: Abilitys,
-  weapons: Weapon[],
   setListOfAttack: (
     newList: number[]
   ) => void
@@ -342,6 +341,16 @@ export type Position = {
 export type SelectWeapon = {
   inventory: Inventory,
   where: string,
+  selectWeapon: (
+    newWeapon: Weapon,
+    where: string
+  ) => void
+}
+
+export type SelectOffWeapon = {
+  inventory: Inventory,
+  where: string,
+  WeaponOne: Weapon,
   selectWeapon: (
     newWeapon: Weapon,
     where: string

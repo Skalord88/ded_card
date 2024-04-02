@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
+import { CharacterPc, ClassPc } from "../components/interfaces";
 import {
   urlChar,
-  urlClassList,
   urlClassAdd,
+  urlClassList,
   urlClassSell
 } from "../components/url";
-import { ClassPc, characterPc } from "../components/interfaces";
 
 export function Classes() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [classesList, setClassesList] = useState<ClassPc[]>([]);
   const [sign, setSign] = useState("");
   const [id, setId] = useState(-1);

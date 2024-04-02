@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { FeatsId, characterPc, serverFeat } from "../components/interfaces";
+import { CharacterPc, FeatsId, serverFeat } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
 
 export function Feats() {
   const { charId } = useParams();
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [featsList, setFeatsList] = useState<serverFeat[]>([]);
   const [levelFeatsList, setLevelFeatsList] = useState<serverFeat[]>([]);
   const [featsGeneral, setFeatsGeneral] = useState<serverFeat[]>([]);

@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Armor, Inventory, Item, ItemsList, characterPc } from "../components/interfaces";
+import { MapOfInventory } from "../components/MyComponents";
+import { CharacterPc, Inventory, Item, ItemsList } from "../components/interfaces";
 import { urlChar, urlInventory, urlItems, urlItemsBuy } from "../components/url";
 import {
   emptyItemsList
 } from "../components/variables";
-import { MapOfInventory } from "../components/MyComponents";
 
 export function Items() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [items, setItems] = useState<ItemsList>(emptyItemsList);
   const [itemsToBuy, setitemsToBuy] = useState<ItemsList>(emptyItemsList);
   const [equipment, setEquipment] = useState<Inventory>();

@@ -1,4 +1,4 @@
-import { AddStudy, Armor, Attacks, Inventory, Shield, Weapon, WonderousItem, Abilitys, armorClass, characterPc, serverSkill, subRaces } from '../components/interfaces'
+import { Abilitys, AddStudy, Armor, Attacks, CharacterPc, Inventory, Shield, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
 
 export const noneArmor: Armor = {
     id: 2,
@@ -71,7 +71,7 @@ export const emptyInventory: Inventory = {
     characterAttacks: []
 }
 
-export const characterEmpty: characterPc = {
+export const characterEmpty: CharacterPc = {
 
     id: 0,
     characterName: '',
