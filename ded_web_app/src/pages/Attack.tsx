@@ -2,8 +2,9 @@ import axios from "axios";
 import { MapOfAttack } from "../components/MyComponents";
 import { urlAttacks, urlChar } from "../components/url";
 import { useEffect, useState } from "react";
-import { CharacterPc } from "../components/interfaces";
+import { Attacks, CharacterPc } from "../components/interfaces";
 import { useParams } from "react-router-dom";
+import { emptyAttacks } from "../components/variables";
 
 export function Attack() {
 
@@ -24,8 +25,8 @@ export function Attack() {
     fetchData();
   }, []);
 
-  const setAttackInDB = (e: number[]) => {
-    axios.post(urlAttacks + char?.id, {attacksDTO: e});
+  const setAttackInDB = (attacks: Attacks) => {
+    axios.post(urlAttacks + char?.id, attacks);
   }
 
   return (
@@ -52,6 +53,7 @@ export function Attack() {
               {char?.inventory?
                 <MapOfAttack
                 inventory={char?.inventory}
+                attacks={emptyAttacks}
                 bab={char?.bab}
                 ability={char?.abilitys}
                 setListOfAttack={setAttackInDB}

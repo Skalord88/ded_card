@@ -20,6 +20,8 @@ export type CharacterPc = {
   items: Item[];
   inventoryId: number;
   inventory: Inventory;
+  attacksId: number;
+  attacks: Attacks;
   magicPerDay: {};
   magicKnown: {};
   spellsKnown: [];
@@ -250,25 +252,15 @@ export type Inventory = {
   hands: Item[];
   cloth: WonderousItem;
   legs: WonderousItem;
-  characterAttacks: number[];
-}
-
-export type AttacksList = {
-  characterAttacks: number[]
 }
 
 export type Attacks = {
-  baseAttackBonus: number,
-  setOne: {
-    firstHand: Weapon,
-    secondHand: Weapon,
-    additionalWeapon: Weapon
-  },
-  setTwo: {
-    firstHand: Weapon,
-    secondHand: Weapon,
-    additionalWeapon: Weapon  
-  }
+  firstAttackSetOne: Weapon,
+  secondAttackSetOne: Weapon,
+  additionalAttackSetOne: Weapon,
+  firstAttackSetTwo: Weapon,
+  secondAttackSetTwo: Weapon,
+  additionalAttackSetTwo: Weapon
 }
 
 export type CharInventory = {
@@ -318,10 +310,11 @@ export type Backpack = {
 
 export type CharAttack = {
   inventory: Inventory,
+  attacks: Attacks,
   bab: number,
   ability: Abilitys,
   setListOfAttack: (
-    newList: number[]
+    newAttacks: Attacks
   ) => void
 }
 

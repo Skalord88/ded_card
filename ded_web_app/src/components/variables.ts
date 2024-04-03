@@ -67,8 +67,16 @@ export const emptyInventory: Inventory = {
     arms: noneItem,
     hands: [],
     cloth: noneItem,
-    legs: noneItem,
-    characterAttacks: []
+    legs: noneItem
+}
+
+export const emptyAttacks: Attacks = {
+    firstAttackSetOne: noneWeapon,
+    secondAttackSetOne: noneWeapon,
+    additionalAttackSetOne: noneWeapon,
+    firstAttackSetTwo: noneWeapon,
+    secondAttackSetTwo: noneWeapon,
+    additionalAttackSetTwo: noneWeapon
 }
 
 export const characterEmpty: CharacterPc = {
@@ -128,6 +136,8 @@ export const characterEmpty: CharacterPc = {
     items: [],
     inventoryId: 0,
     inventory: emptyInventory,
+    attacksId: 0,
+    attacks: emptyAttacks,
     magicPerDay: {},
     magicKnown: {},
     spellsKnown: [],
@@ -185,20 +195,6 @@ export const emptyItemsList = {
     shieldList: [],
     weaponsList: [],
     wonderousItems: []
-}
-
-export const emptyAttack: Attacks = {
-    baseAttackBonus: 0,
-    setOne: {
-        firstHand: noneWeapon,
-        secondHand: noneWeapon,
-        additionalWeapon: noneWeapon
-    },
-    setTwo: {
-        firstHand: noneWeapon,
-        secondHand: noneWeapon,
-        additionalWeapon: noneWeapon
-    }
 }
 
 

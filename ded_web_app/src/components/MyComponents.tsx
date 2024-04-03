@@ -527,143 +527,132 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 
 export const MapOfAttack: React.FC<CharAttack> = ({
   inventory,
+  attacks,
   bab,
   ability,
   setListOfAttack
 }) => {
-  const [equip, setEquip] = useState<Inventory>(inventory);
-  const [attack, setAttack] = useState<Attacks>({
-    baseAttackBonus: bab,
-    setOne: {
-      firstHand: noneWeapon,
-      secondHand: noneWeapon,
-      additionalWeapon: noneWeapon
-    },
-    setTwo: {
-      firstHand: noneWeapon,
-      secondHand: noneWeapon,
-      additionalWeapon: noneWeapon
-    }
-  });
-  console.log(equip.characterAttacks);
+  const [attack, setAttack] = useState<Attacks>(attacks);
 
   const listOfAttacks = () => {
-    setListOfAttack(equip.characterAttacks);
+    setListOfAttack(attack);
+    console.log(attack)
   };
 
   const setAttackInSet = (newWeapon: Weapon, where: string) => {
     let att = { ...attack };
-    let attackList = { ...equip };
 
     switch (where) {
       case "set11":
-        att.setOne.firstHand = newWeapon;
-        attackList.characterAttacks[0] = newWeapon.id;
-        if (WeaponTwoHanded(newWeapon)) attackList.characterAttacks[1] = 1;
+        att.firstAttackSetOne = newWeapon;
         break;
       case "set12":
-        att.setOne.secondHand = newWeapon;
-        attackList.characterAttacks[1] = newWeapon.id;
+        att.secondAttackSetOne = newWeapon;
         break;
       case "set13":
-        att.setOne.additionalWeapon = newWeapon;
-        attackList.characterAttacks[2] = newWeapon.id;
+        att.additionalAttackSetOne = newWeapon;
         break;
       case "set21":
-        att.setTwo.firstHand = newWeapon;
-        attackList.characterAttacks[3] = newWeapon.id;
-        if (WeaponTwoHanded(newWeapon)) attackList.characterAttacks[4] = 1;
+        att.firstAttackSetTwo = newWeapon;
         break;
       case "set22":
-        att.setTwo.secondHand = newWeapon;
-        attackList.characterAttacks[4] = newWeapon.id;
+        att.secondAttackSetTwo = newWeapon;
         break;
       case "set23":
-        att.setTwo.additionalWeapon = newWeapon;
-        attackList.characterAttacks[5] = newWeapon.id;
+        att.additionalAttackSetTwo = newWeapon;
         break;
     }
     setAttack(att);
-    setEquip(attackList);
   };
 
   return (
     <>
       <div>
-        {equip.characterAttacks ? (
-          <>
-            <>{equip.characterAttacks.map((id) => "/" + id)}</>
-            <button onClick={() => listOfAttacks()}>set Attacks</button>
-          </>
-        ) : (
-          <></>
-        )}
+        <button onClick={() => listOfAttacks()}>set Attacks</button>
       </div>
       <div className="container-item">
         Set I
         <div className="container">
           <div>
-            first hand: {attack.setOne.firstHand.name}
+            <div>
+              {attack.firstAttackSetOne ? (
+                <>first hand: {attack.firstAttackSetOne.name}</>
+              ) : (
+                <>first hand: ...selsect weapon...</>
+              )}
+            </div>
             <MapBab
-              weapon={attack.setOne.firstHand}
-              bab={attack.baseAttackBonus}
+              weapon={attack.firstAttackSetOne}
+              bab={bab}
               ability={ability}
               position={{
                 pose: true,
-                twoHanded: WeaponTwoHanded(attack.setOne.firstHand),
-                light: WeaponLight(attack.setOne.secondHand)
+                twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
+                light: WeaponLight(attack.secondAttackSetOne)
               }}
             />
             <ListOfWeapons
-              inventory={equip}
+              inventory={inventory}
               where={"set11"}
               selectWeapon={setAttackInSet}
             />
           </div>
           <div>
-            {WeaponTwoHanded(attack.setOne.firstHand) ? (
+            {WeaponTwoHanded(attack.firstAttackSetOne) ? (
               <>second hand: ---</>
             ) : (
-              <>second hand: {attack.setOne.secondHand.name}</>
+              <>
+                {attack.secondAttackSetOne ? (
+                  <>second hand: {attack.secondAttackSetOne.name}</>
+                ) : (
+                  <>second hand: ...selsect weapon... </>
+                )}
+              </>
             )}
             <MapBab
-              weapon={attack.setOne.secondHand}
-              bab={attack.baseAttackBonus}
+              weapon={attack.secondAttackSetOne}
+              bab={bab}
               ability={ability}
               position={{
                 pose: false,
-                twoHanded: WeaponTwoHanded(attack.setOne.firstHand),
-                light: WeaponLight(attack.setOne.secondHand)
+                twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
+                light: WeaponLight(attack.secondAttackSetOne)
               }}
             />
-            {WeaponTwoHanded(attack.setOne.firstHand) ? (
+            {WeaponTwoHanded(attack.firstAttackSetOne) ? (
               <></>
             ) : (
               <ListOfOneHandWeapons
-                inventory={equip}
+                inventory={inventory}
                 where={"set12"}
-                WeaponOne={attack.setOne.firstHand}
+                WeaponOne={attack.firstAttackSetOne}
                 selectWeapon={setAttackInSet}
               />
             )}
           </div>
           <div></div>
           <div>
-            additional weapon: {attack.setOne.additionalWeapon.name}
+            <>
+              {attack.additionalAttackSetOne ? (
+                <>additional weapon: {attack.additionalAttackSetOne.name}</>
+              ) : (
+                <>additional weapon: ...select weapon...</>
+              )}
+            </>
             <MapBab
-              bab={attack.baseAttackBonus}
+              bab={bab}
               ability={ability}
-              weapon={attack.setOne.additionalWeapon}
+              weapon={attack.additionalAttackSetOne}
               position={{
                 pose: true,
-                twoHanded: WeaponTwoHanded(attack.setOne.firstHand),
-                light: WeaponLight(attack.setOne.secondHand)
+                twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
+                light: WeaponLight(attack.firstAttackSetOne)
               }}
             />
             <ListOfOneHandWeapons
-              inventory={equip}
+              inventory={inventory}
               where={"set13"}
-              WeaponOne={attack.setOne.firstHand}
+              WeaponOne={attack.firstAttackSetOne}
               selectWeapon={setAttackInSet}
             />
           </div>
@@ -673,67 +662,87 @@ export const MapOfAttack: React.FC<CharAttack> = ({
         Set II
         <div className="container">
           <div>
-            first hand: {attack.setTwo.firstHand.name}
+            <>
+              {attack.secondAttackSetTwo ? (
+                <>first hand: {attack.secondAttackSetTwo.name}</>
+              ) : (
+                <>first hand: ...selsect weapon...</>
+              )}
+            </>
+
             <MapBab
-              bab={attack.baseAttackBonus}
+              bab={bab}
               ability={ability}
-              weapon={attack.setTwo.firstHand}
+              weapon={attack.secondAttackSetTwo}
               position={{
                 pose: true,
-                twoHanded: WeaponTwoHanded(attack.setOne.firstHand),
-                light: WeaponLight(attack.setTwo.secondHand)
+                twoHanded: WeaponTwoHanded(attack.secondAttackSetTwo),
+                light: WeaponLight(attack.secondAttackSetTwo)
               }}
             />
             <ListOfWeapons
-              inventory={equip}
+              inventory={inventory}
               where={"set21"}
               selectWeapon={setAttackInSet}
             />
           </div>
           <div>
-            {WeaponTwoHanded(attack.setTwo.firstHand) ? (
+            {WeaponTwoHanded(attack.secondAttackSetTwo) ? (
               <>second hand: ---</>
             ) : (
-              <>second hand: {attack.setTwo.secondHand.name}</>
+              <>
+                {attack.secondAttackSetTwo ? (
+                  <>second hand: {attack.secondAttackSetTwo.name}</>
+                ) : (
+                  <>second hand: ...select weapon...</>
+                )}
+              </>
             )}
             <MapBab
-              weapon={attack.setTwo.secondHand}
-              bab={attack.baseAttackBonus}
+              weapon={attack.secondAttackSetTwo}
+              bab={bab}
               ability={ability}
               position={{
                 pose: false,
-                twoHanded: WeaponTwoHanded(attack.setTwo.firstHand),
-                light: WeaponLight(attack.setTwo.secondHand)
+                twoHanded: WeaponTwoHanded(attack.firstAttackSetTwo),
+                light: WeaponLight(attack.secondAttackSetTwo)
               }}
             />
-            {WeaponTwoHanded(attack.setTwo.firstHand) ? (
+            {WeaponTwoHanded(attack.secondAttackSetTwo) ? (
               <></>
             ) : (
               <ListOfOneHandWeapons
-                inventory={equip}
+                inventory={inventory}
                 where={"set22"}
-                WeaponOne={attack.setTwo.firstHand}
+                WeaponOne={attack.secondAttackSetTwo}
                 selectWeapon={setAttackInSet}
               />
             )}
           </div>
           <div></div>
           <div>
-            additional weapon: {attack.setTwo.additionalWeapon.name}
+            <>
+              {attack.additionalAttackSetTwo ? (
+                <>additional weapon: {attack.additionalAttackSetTwo.name}</>
+              ) : (
+                <>additional weapon: ...select weapon...</>
+              )}
+            </>
+
             <MapBab
-              bab={attack.baseAttackBonus}
+              bab={bab}
               ability={ability}
-              weapon={attack.setTwo.additionalWeapon}
+              weapon={attack.additionalAttackSetTwo}
               position={{
                 pose: true,
-                twoHanded: WeaponTwoHanded(attack.setOne.firstHand),
-                light: WeaponLight(attack.setTwo.secondHand)
+                twoHanded: WeaponTwoHanded(attack.firstAttackSetTwo),
+                light: WeaponLight(attack.secondAttackSetTwo)
               }}
             />
             <ListOfOneHandWeapons
-              inventory={equip}
+              inventory={inventory}
               where={"set23"}
-              WeaponOne={attack.setTwo.firstHand}
+              WeaponOne={attack.secondAttackSetTwo}
               selectWeapon={setAttackInSet}
             />
           </div>
