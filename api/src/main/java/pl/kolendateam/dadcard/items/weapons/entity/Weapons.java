@@ -37,7 +37,7 @@ public class Weapons extends Items {
     this.critical = weapon.critical;
     this.range = weapon.range;
     this.type = weapon.type.toString();
-    if (weapon.specialAttacks != null || !weapon.specialAttacks.equals("")) {
+    if (weapon.specialAttacks != null) {
       this.specialAttacks = MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
     } else {
       this.specialAttacks = null;

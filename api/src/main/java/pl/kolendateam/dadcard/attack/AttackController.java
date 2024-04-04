@@ -23,19 +23,26 @@ import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
+
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("attack")
 public class AttackController {
 
     CharacterRepository characterRepository;
+    ItemsRepository itemsRepository;
     AttacksRepository attacksRepository;
 
     @Autowired
     AttackController(
             CharacterRepository characterRepository,
+            ItemsRepository itemsRepository,
             AttacksRepository attacksRepository) {
         this.characterRepository = characterRepository;
+        this.itemsRepository = itemsRepository;
         this.attacksRepository = attacksRepository;
     }
 
@@ -76,6 +83,29 @@ public class AttackController {
         return new AttackVsArmorClassDTO(character1, character2, isHit);
     }
 
+    @GetMapping(value = "{id}")
+    public CharacterDTO getAttack(
+            @PathVariable short id) {
+        Optional<Character> characterOpt = this.characterRepository.findById(id);
+        if (!characterOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Character Not Found");
+        }
+        Character character = characterOpt.get();
+
+        Optional<Attacks> attacksOpt = this.attacksRepository.findById(character.getAttacks().getId());
+        if (!attacksOpt.isPresent()) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Character Not Found");
+        }
+
+        Attacks characterAttacks = attacksOpt.get();
+
+        return new CharacterDTO(character, characterAttacks);
+    }
+
     @PostMapping(value = "{id}", consumes = { "application/json" })
     public CharacterDTO setAttack(
             @PathVariable short id,
@@ -89,16 +119,18 @@ public class AttackController {
         }
         Character character = characterOpt.get();
 
-        Optional<Attacks> attacksOpt = this.attacksRepository.findById(character.getInventory().getId());
+        Optional<Attacks> attacksOpt = this.attacksRepository.findById(character.getAttacks().getId());
         if (!attacksOpt.isPresent()) {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND,
                     "Character Not Found");
         }
 
+        List<Items> itemsList = this.itemsRepository.findAll();
+
         Attacks characterAttacks = attacksOpt.get();
 
-        characterAttacks.setCharactersAttacks(characterAttacksDTO);
+        characterAttacks.setCharactersAttacks(characterAttacksDTO, itemsList);
 
         this.attacksRepository.save(characterAttacks);
 

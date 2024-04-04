@@ -232,7 +232,7 @@ export interface Weapon extends Item {
   critical: string;
   range: number;
   type: string[];
-  specialAttacks: string;
+  specialAttacks: string | null;
 }
 
 export interface WonderousItem extends Item {}

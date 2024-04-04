@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.attack.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -10,11 +11,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.items.MapperItems;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @Getter
@@ -22,6 +25,7 @@ import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Attacks implements Serializable {
 
     @Id
@@ -52,15 +56,56 @@ public class Attacks implements Serializable {
     @JoinColumn(name = "attacks_id_twoadditional", referencedColumnName = "id")
     Weapons additionalAttackSetTwo;
 
-    public void setCharactersAttacks(AttacksDTO characterAttacksDTO) {
+    public void setCharactersAttacks(AttacksDTO characterAttacksDTO, List<Items> itemsList) {
 
-        this.firstAttackSetOne = MapperItems.toWeapon(characterAttacksDTO.firstAttackSetOne);
-        this.secondAttackSetOne = MapperItems.toWeapon(characterAttacksDTO.secondAttackSetOne);
-        this.additionalAttackSetOne = MapperItems.toWeapon(characterAttacksDTO.additionalAttackSetOne);
-        this.firstAttackSetTwo = MapperItems.toWeapon(characterAttacksDTO.firstAttackSetTwo);
-        this.secondAttackSetTwo = MapperItems.toWeapon(characterAttacksDTO.secondAttackSetTwo);
-        this.additionalAttackSetTwo = MapperItems.toWeapon(characterAttacksDTO.secondAttackSetTwo);
-
+        if (characterAttacksDTO.firstAttackSetOne != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.firstAttackSetOne.id) {
+                    this.firstAttackSetOne = (Weapons) item;
+                    break;
+                }
+            }
+        }
+        if (characterAttacksDTO.secondAttackSetOne != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.secondAttackSetOne.id) {
+                    this.secondAttackSetOne = (Weapons) item;
+                    break;
+                }
+            }
+        }
+        if (characterAttacksDTO.additionalAttackSetOne != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.additionalAttackSetOne.id) {
+                    this.additionalAttackSetOne = (Weapons) item;
+                    break;
+                }
+            }
+        }
+        if (characterAttacksDTO.firstAttackSetTwo != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.firstAttackSetTwo.id) {
+                    this.firstAttackSetTwo = (Weapons) item;
+                    break;
+                }
+            }
+        }
+        if (characterAttacksDTO.secondAttackSetTwo != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.secondAttackSetTwo.id) {
+                    this.secondAttackSetTwo = (Weapons) item;
+                    break;
+                }
+            }
+        }
+        if (characterAttacksDTO.additionalAttackSetTwo != null) {
+            for (Items item : itemsList) {
+                if (item.getId() == characterAttacksDTO.additionalAttackSetTwo.id) {
+                    this.additionalAttackSetTwo = (Weapons) item;
+                    break;
+                }
+            }
+        }
     }
 
 }

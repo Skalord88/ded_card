@@ -536,7 +536,6 @@ export const MapOfAttack: React.FC<CharAttack> = ({
 
   const listOfAttacks = () => {
     setListOfAttack(attack);
-    console.log(attack)
   };
 
   const setAttackInSet = (newWeapon: Weapon, where: string) => {
@@ -567,9 +566,6 @@ export const MapOfAttack: React.FC<CharAttack> = ({
 
   return (
     <>
-      <div>
-        <button onClick={() => listOfAttacks()}>set Attacks</button>
-      </div>
       <div className="container-item">
         Set I
         <div className="container">
@@ -895,6 +891,9 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
   selectWeapon
 }) => {
   const [selected, setSelected] = useState<Weapon>(noneWeapon);
+  const [listOfWeapons, setListOfWeapons] = useState<Weapon[]>(
+    SetSetWeaponListFromDB(inventory)
+  );
 
   const select = (w: Weapon) => {
     setSelected(w);
@@ -905,7 +904,15 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
   }, [selected]);
   return (
     <>
-      <div>
+    {listOfWeapons.map(weapon => {
+      return(
+        <div>
+          {weapon.name}
+          <button onClick={() => select(weapon)}>+</button>
+        </div>
+      )
+    })}
+      {/* <div>
         {inventory.weaponOne.name}
         <button onClick={() => select(inventory.weaponOne)}>+</button>
       </div>
@@ -924,7 +931,7 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
       <div>
         {inventory.weaponFive.name}
         <button onClick={() => select(inventory.weaponFive)}>+</button>
-      </div>
+      </div> */}
     </>
   );
 };
@@ -937,7 +944,7 @@ export const ListOfOneHandWeapons: React.FC<SelectOffWeapon> = ({
 }) => {
   const [selected, setSelected] = useState<Weapon>(noneWeapon);
   const [listOfWeapons, setListOfWeapons] = useState<Weapon[]>(
-    SetWeaponNotOne(SetSetWeaponListFromDB(inventory), WeaponOne.id)
+    SetWeaponNotOne(SetSetWeaponListFromDB(inventory), WeaponOne)
   );
 
   const select = (w: Weapon) => {

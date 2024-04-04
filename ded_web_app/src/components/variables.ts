@@ -42,7 +42,7 @@ export const noneWeapon: Weapon = {
     critical: "X2",
     range: 0,
     type: ['BLUDGEONING','SIMPLE','UNARMED'],
-    specialAttacks: ''
+    specialAttacks: null
 }
 
 export const noneItem: WonderousItem = {

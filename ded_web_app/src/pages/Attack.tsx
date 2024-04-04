@@ -11,12 +11,15 @@ export function Attack() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>()
+  const [attack, setAttack] = useState<Attacks>(emptyAttacks)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
+
+        setAttack(resChar.data.attacks)
 
       } catch (error) {
         console.error(error);
@@ -25,8 +28,19 @@ export function Attack() {
     fetchData();
   }, []);
 
-  const setAttackInDB = (attacks: Attacks) => {
-    axios.post(urlAttacks + char?.id, attacks);
+  // useEffect(() => {
+  //   if(char?.attacks.firstAttackSetOne.name){
+  //     console.log(char?.attacks.firstAttackSetOne)
+  //     setAttack(char.attacks)
+  //   }
+  // },[char?.attacks])
+
+  const setAttackInDB = (newAttacks: Attacks) => {
+    setAttack(newAttacks);
+  }
+
+  const confirmAttack = () => {
+    axios.post(urlAttacks + charId, attack);
   }
 
   return (
@@ -50,10 +64,11 @@ export function Attack() {
             }
             </div>
             <div className="container-item">
+              <button onClick={confirmAttack}>set Attacks</button>
               {char?.inventory?
                 <MapOfAttack
                 inventory={char?.inventory}
-                attacks={emptyAttacks}
+                attacks={attack}
                 bab={char?.bab}
                 ability={char?.abilitys}
                 setListOfAttack={setAttackInDB}

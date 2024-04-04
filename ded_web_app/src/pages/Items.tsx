@@ -27,10 +27,10 @@ export function Items() {
         const resItems = await axios.get(urlItems);
         setItems(resItems.data);
 
-        const resInventory = await axios.get(
-          urlInventory + charId
-        );
-        setEquipment(resInventory.data);
+        // const resInventory = await axios.get(
+        //   urlInventory + charId
+        // );
+        setEquipment(resChar.data.inventory);
 
       } catch (error) {
         console.log(error);
@@ -97,6 +97,8 @@ export function Items() {
   }, [char]);
 
   const confirmItems = () => {
+
+    console.log(equipment)
 
     axios.post(urlItemsBuy + charId, equipment);
 

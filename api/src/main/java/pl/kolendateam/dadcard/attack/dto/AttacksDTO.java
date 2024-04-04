@@ -10,6 +10,7 @@ import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 @NoArgsConstructor
 public class AttacksDTO implements Serializable {
 
+    public int id;
     public WeaponsDTO firstAttackSetOne;
     public WeaponsDTO secondAttackSetOne;
     public WeaponsDTO additionalAttackSetOne;
@@ -18,6 +19,9 @@ public class AttacksDTO implements Serializable {
     public WeaponsDTO additionalAttackSetTwo;
 
     public AttacksDTO(Attacks characterAttacks) {
+
+        this.id = characterAttacks.getId();
+
         if (characterAttacks.getFirstAttackSetOne() != null) {
             this.firstAttackSetOne = MapperItemsDTO.toWeaponDTO(characterAttacks.getFirstAttackSetOne());
         } else {

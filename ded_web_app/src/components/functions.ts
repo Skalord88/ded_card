@@ -132,16 +132,16 @@ export function SetSetWeaponListFromDB(
 }
 
 export function SetWeaponNotOne(
-    weapons: Weapon[],
-    idWeapon: number
+    listOfWeapons: Weapon[],
+    weaponSelected: Weapon
 ): Weapon[] {
 
-    const index = weapons.findIndex(w => w.id === idWeapon)
-    let lista = weapons;
-    if(index < -1) {
-        lista = weapons.splice(index)
+    const indexToRemove: number = listOfWeapons.indexOf(weaponSelected);
+    
+    if(indexToRemove !== -1){
+        listOfWeapons.filter(w => w !== weaponSelected)
     }
-    return lista
+    return listOfWeapons;
 }
 
 export function SetAttacksFromWeapons(
