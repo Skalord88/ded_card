@@ -332,7 +332,7 @@ export type Position = {
 }
 
 export type SelectWeapon = {
-  inventory: Inventory,
+  list: Weapon[],
   where: string,
   selectWeapon: (
     newWeapon: Weapon,
@@ -341,9 +341,9 @@ export type SelectWeapon = {
 }
 
 export type SelectOffWeapon = {
-  inventory: Inventory,
+  indexOne: number,
+  list: Weapon[],
   where: string,
-  WeaponOne: Weapon,
   selectWeapon: (
     newWeapon: Weapon,
     where: string

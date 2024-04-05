@@ -28,13 +28,6 @@ export function Attack() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   if(char?.attacks.firstAttackSetOne.name){
-  //     console.log(char?.attacks.firstAttackSetOne)
-  //     setAttack(char.attacks)
-  //   }
-  // },[char?.attacks])
-
   const setAttackInDB = (newAttacks: Attacks) => {
     setAttack(newAttacks);
   }
