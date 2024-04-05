@@ -34,6 +34,7 @@ export function Attack() {
 
   const confirmAttack = () => {
     axios.post(urlAttacks + charId, attack);
+    window.location.reload();
   }
 
   return (

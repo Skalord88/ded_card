@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MapOfInventory } from "../components/MyComponents";
 import { CharacterPc, Inventory, Item, ItemsList } from "../components/interfaces";
-import { urlChar, urlInventory, urlItems, urlItemsBuy } from "../components/url";
+import { urlChar, urlItems, urlItemsBuy } from "../components/url";
 import {
   emptyItemsList
 } from "../components/variables";
@@ -26,10 +26,6 @@ export function Items() {
 
         const resItems = await axios.get(urlItems);
         setItems(resItems.data);
-
-        // const resInventory = await axios.get(
-        //   urlInventory + charId
-        // );
         setEquipment(resChar.data.inventory);
 
       } catch (error) {
@@ -97,8 +93,6 @@ export function Items() {
   }, [char]);
 
   const confirmItems = () => {
-
-    console.log(equipment)
 
     axios.post(urlItemsBuy + charId, equipment);
 
