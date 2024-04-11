@@ -13,7 +13,7 @@
         <column name="damage" value="D3"/>
         <column name="critical" value="X2"/>
         <column name="weight" value="0"/>
-        <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']"/>
+        <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED','LIGHT']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike."/>
     </insert>
@@ -125,6 +125,9 @@
         <column name="special_attacks" value=""/>
         <column name="description" value="You need at least two hands to use a bow, regardless of its size. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when you use a composite shortbow (see below) but not a regular shortbow."/>
     </insert>
+
+    <!-- ARMOR -->
+    <!-- LIGHT_ARMOR -->
     <insert tableName="items">
         <column name="name" value="Padded"/>
         <column name="item_type" value="ARMOR"/>
@@ -137,7 +140,281 @@
         <column name="penality" value="0"/>
         <column name="failure" value="5"/>
         <column name="description" value="Taka se, ale lekka."/>
+        <column name="material" value="LEATHER"/>
     </insert>
+    <insert tableName="items">
+        <column name="name" value="Leather"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="LEATHER"/>
+        <column name="cost" value="10"/>
+        <column name="weight" value="15"/>
+        <column name="armor_class" value="2"/>
+        <column name="armor_type" value="LIGHT_ARMOR"/>
+        <column name="max_dex" value="6"/>
+        <column name="penality" value="0"/>
+        <column name="failure" value="10"/>
+        <column name="description" value="Taka se, ale lekka."/>
+        <column name="material" value="LEATHER"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Studded leather"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="STUDDED_LEATHER"/>
+        <column name="cost" value="25"/>
+        <column name="weight" value="20"/>
+        <column name="armor_class" value="3"/>
+        <column name="armor_type" value="LIGHT_ARMOR"/>
+        <column name="max_dex" value="5"/>
+        <column name="penality" value="-1"/>
+        <column name="failure" value="15"/>
+        <column name="description" value="Taka se, ale lekka."/>
+        <column name="material" value="LEATHER"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Chain shirt"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="CHAIN_SHIRT"/>
+        <column name="cost" value="100"/>
+        <column name="weight" value="25"/>
+        <column name="armor_class" value="4"/>
+        <column name="armor_type" value="LIGHT_ARMOR"/>
+        <column name="max_dex" value="4"/>
+        <column name="penality" value="-2"/>
+        <column name="failure" value="20"/>
+        <column name="description" value="A chain shirt comes with a steel cap."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <!-- MEDIUM_ARMOR -->
+    <insert tableName="items">
+        <column name="name" value="Hide"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="HIDE"/>
+        <column name="cost" value="15"/>
+        <column name="weight" value="25"/>
+        <column name="armor_class" value="3"/>
+        <column name="armor_type" value="MEDIUM_ARMOR"/>
+        <column name="max_dex" value="4"/>
+        <column name="penality" value="-3"/>
+        <column name="failure" value="20"/>
+        <column name="description" value="Taka se, ale lekka."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Scale mail"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="SCALE_MAIL"/>
+        <column name="cost" value="50"/>
+        <column name="weight" value="30"/>
+        <column name="armor_class" value="4"/>
+        <column name="armor_type" value="MEDIUM_ARMOR"/>
+        <column name="max_dex" value="3"/>
+        <column name="penality" value="-4"/>
+        <column name="failure" value="25"/>
+        <column name="description" value="Taka se, ale lekka."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Chainmail"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="CHAINMAIL"/>
+        <column name="cost" value="150"/>
+        <column name="weight" value="40"/>
+        <column name="armor_class" value="5"/>
+        <column name="armor_type" value="MEDIUM_ARMOR"/>
+        <column name="max_dex" value="2"/>
+        <column name="penality" value="-5"/>
+        <column name="failure" value="30"/>
+        <column name="description" value="The suit includes gauntlets."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Breastplate"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="BREASTPLATE"/>
+        <column name="cost" value="200"/>
+        <column name="weight" value="30"/>
+        <column name="armor_class" value="5"/>
+        <column name="armor_type" value="MEDIUM_ARMOR"/>
+        <column name="max_dex" value="3"/>
+        <column name="penality" value="-4"/>
+        <column name="failure" value="25"/>
+        <column name="description" value="It comes with a helmet and greaves."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <!-- HEAVY_ARMOR -->
+    <insert tableName="items">
+        <column name="name" value="Splint mail"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="SPLINT_MAIL"/>
+        <column name="cost" value="200"/>
+        <column name="weight" value="45"/>
+        <column name="armor_class" value="6"/>
+        <column name="armor_type" value="HEAVY_ARMOR"/>
+        <column name="max_dex" value="0"/>
+        <column name="penality" value="-7"/>
+        <column name="failure" value="40"/>
+        <column name="description" value="The suit includes gauntlets."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Banded mail"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="BANDED_MAIL"/>
+        <column name="cost" value="250"/>
+        <column name="weight" value="35"/>
+        <column name="armor_class" value="6"/>
+        <column name="armor_type" value="HEAVY_ARMOR"/>
+        <column name="max_dex" value="1"/>
+        <column name="penality" value="-6"/>
+        <column name="failure" value="35"/>
+        <column name="description" value="The suit includes gauntlets."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Half-plate"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="HALF_PLATE"/>
+        <column name="cost" value="600"/>
+        <column name="weight" value="50"/>
+        <column name="armor_class" value="7"/>
+        <column name="armor_type" value="HEAVY_ARMOR"/>
+        <column name="max_dex" value="0"/>
+        <column name="penality" value="-7"/>
+        <column name="failure" value="40"/>
+        <column name="description" value="The suit includes gauntlets."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Full plate"/>
+        <column name="item_type" value="ARMOR"/>
+        <column name="armor_name" value="FULL_PLATE"/>
+        <column name="cost" value="1500"/>
+        <column name="weight" value="50"/>
+        <column name="armor_class" value="8"/>
+        <column name="armor_type" value="HEAVY_ARMOR"/>
+        <column name="max_dex" value="1"/>
+        <column name="penality" value="-6"/>
+        <column name="failure" value="35"/>
+        <column name="description" value="The suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4×100) gold pieces."/>
+        <column name="material" value="METAL"/>
+    </insert>
+
+    <!-- SHIELD -->
+    <insert tableName="items">
+        <column name="name" value="Buckler"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="BUCKLER"/>
+        <column name="cost" value="15"/>
+        <column name="weight" value="5"/>
+        <column name="armor_class" value="1"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="100"/>
+        <column name="penality" value="-1"/>
+        <column name="failure" value="5"/>
+        <column name="description" value="This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon (whether you are using an off-hand weapon or using your off hand to help wield a two-handed weapon), but you take a -1 penalty on attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off hand and for fighting with two weapons. In any case, if you use a weapon in your off hand, you don’t get the buckler’s AC bonus for the rest of the round.
+
+        You can’t bash someone with a buckler."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Shield, light wooden"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="SHIELD_LIGHT_WOODEN"/>
+        <column name="cost" value="3"/>
+        <column name="weight" value="5"/>
+        <column name="armor_class" value="1"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="100"/>
+        <column name="penality" value="-1"/>
+        <column name="failure" value="5"/>
+        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+
+        Wooden or Steel
+        Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
+        
+        Shield Bash Attacks
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
+        <column name="material" value="WOOD"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Shield, light steel"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="SHIELD_LIGHT_STEEL"/>
+        <column name="cost" value="9"/>
+        <column name="weight" value="6"/>
+        <column name="armor_class" value="1"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="100"/>
+        <column name="penality" value="-1"/>
+        <column name="failure" value="5"/>
+        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+
+        Wooden or Steel
+        Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
+        
+        Shield Bash Attacks
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Shield, heavy wooden"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="SHIELD_HEAVY_WOODEN"/>
+        <column name="cost" value="7"/>
+        <column name="weight" value="10"/>
+        <column name="armor_class" value="2"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="100"/>
+        <column name="penality" value="-2"/>
+        <column name="failure" value="15"/>
+        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+
+        Wooden or Steel
+        Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
+        
+        Shield Bash Attacks
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
+        <column name="material" value="WOOD"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Shield, heavy steel"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="SHIELD_HEAVY_STEEL"/>
+        <column name="cost" value="20"/>
+        <column name="weight" value="15"/>
+        <column name="armor_class" value="2"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="100"/>
+        <column name="penality" value="-2"/>
+        <column name="failure" value="15"/>
+        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+
+        Wooden or Steel
+        Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
+        
+        Shield Bash Attacks
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
+        <column name="material" value="METAL"/>
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Shield, tower"/>
+        <column name="item_type" value="SHIELD"/>
+        <column name="shield_name" value="SHIELD_TOWER"/>
+        <column name="cost" value="30"/>
+        <column name="weight" value="45"/>
+        <column name="armor_class" value="4"/>
+        <column name="armor_type" value="SHIELD"/>
+        <column name="max_dex" value="2"/>
+        <column name="penality" value="-10"/>
+        <column name="failure" value="50"/>
+        <column name="description" value="This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to your AC. However, you can instead use it as total cover, though you must give up your attacks to do so. The shield does not, however, provide cover against targeted spells; a spellcaster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else.
+
+        When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield’s encumbrance."/>
+        <column name="material" value="WOOD"/>
+    </insert>
+
+    <!-- WONDEROUS ITEMS -->
+
     <insert tableName="items">
         <column name="item_type" value="WONDROUS_ITEM"/>
         <column name="name" value="Feather token, anchor"/>

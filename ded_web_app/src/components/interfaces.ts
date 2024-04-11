@@ -87,6 +87,10 @@ export type Abilitys = {
   charisma: number;
 }
 
+export type AbilitysFromChar = {
+  abilitys: Abilitys
+}
+
 export type MapStudy = {
   mapStudy: { [name: string]: any };
 };
@@ -309,7 +313,7 @@ export type Backpack = {
 }
 
 export type CharAttack = {
-  inventory: Inventory,
+  inventory: Weapon[],
   attacks: Attacks,
   bab: number,
   ability: Abilitys,
@@ -348,4 +352,14 @@ export type SelectOffWeapon = {
     newWeapon: Weapon,
     where: string
   ) => void
+}
+
+export type ArmorInCharacter = {
+  charArmor: armorClass,
+  charInventory: Inventory
+}
+
+export type SignAndNumber = {
+  sign: string,
+  number: number
 }

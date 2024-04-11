@@ -27,3 +27,9 @@ button {
   grid-template-columns: auto auto auto auto auto auto;
   padding: 4px;
 }
+.container-table-ten {
+  display: grid;
+  align-content: space-around;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+  padding: 2px;
+}

@@ -10,6 +10,8 @@ import {
 } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
+import { AbilitysComponent, CharacterArmor } from "../components/MyComponents";
+import { BonusAbilities } from "../components/functions";
 
 export function Show() {
   let { charId } = useParams();
@@ -71,45 +73,12 @@ export function Show() {
         </div>
 
         <div className="container-item">
-          abilitys:{" "}
+          abilitys:
           {char.abilitys ? (
             <>
-              <li>
-                STR: {char.abilitys.streght}{" "}
-                {Math.floor((char.abilitys.streght - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.streght - 10) / 2)
-                  : Math.floor((char.abilitys.streght - 10) / 2)}
-              </li>
-              <li>
-                DEX: {char.abilitys.dextrity}{" "}
-                {Math.floor((char.abilitys.dextrity - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.dextrity - 10) / 2)
-                  : Math.floor((char.abilitys.dextrity - 10) / 2)}
-              </li>
-              <li>
-                CON: {char.abilitys.constitution}{" "}
-                {Math.floor((char.abilitys.constitution - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.constitution - 10) / 2)
-                  : Math.floor((char.abilitys.constitution - 10) / 2)}
-              </li>
-              <li>
-                INT: {char.abilitys.intelligence}{" "}
-                {Math.floor((char.abilitys.intelligence - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.intelligence - 10) / 2)
-                  : Math.floor((char.abilitys.intelligence - 10) / 2)}
-              </li>
-              <li>
-                WIS: {char.abilitys.wisdom}{" "}
-                {Math.floor((char.abilitys.wisdom - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.wisdom - 10) / 2)
-                  : Math.floor((char.abilitys.wisdom - 10) / 2)}
-              </li>
-              <li>
-                CHA: {char.abilitys.charisma}{" "}
-                {Math.floor((char.abilitys.charisma - 10) / 2) >= 0
-                  ? "+" + Math.floor((char.abilitys.charisma - 10) / 2)
-                  : Math.floor((char.abilitys.charisma - 10) / 2)}
-              </li>
+              <AbilitysComponent
+              abilitys = {char.abilitys}
+              />
             </>
           ) : (
             <>...loading abilitys...</>
@@ -153,31 +122,10 @@ export function Show() {
           )}
         </div>
         <div className="container-item">
-          AC: 10
-          {char.armorClass.dextrityBonus > 0
-            ? " + dextrity " + char.armorClass.dextrityBonus
-            : ""}
-          {char.armorClass.sizeBonus > 0
-            ? " + size " + char.armorClass.sizeBonus
-            : ""}
-          {char.armorClass.armorBonus > 0
-            ? " + armor " + char.armorClass.armorBonus
-            : ""}
-          {char.armorClass.shieldBonus > 0
-            ? " + shield " + char.armorClass.shieldBonus
-            : ""}
-          {char.armorClass.enhancementBonuses > 0
-            ? " + enhancement " + char.armorClass.enhancementBonuses
-            : ""}
-          {char.armorClass.deflectionBonuses > 0
-            ? " + deflection " + char.armorClass.deflectionBonuses
-            : ""}
-          {char.armorClass.naturalArmor > 0
-            ? " + natural " + char.armorClass.naturalArmor
-            : ""}
-          {char.armorClass.dodgeBonus > 0
-            ? " + dodge " + char.armorClass.dodgeBonus
-            : ""}
+          <CharacterArmor
+            charArmor={char.armorClass}
+            charInventory={char.inventory}
+          />
         </div>
         <div className="container-item">
           saving throw:{" "}

@@ -1,10 +1,11 @@
 import axios from "axios";
-import { MapOfAttack } from "../components/MyComponents";
+import { CharacterArmor, MapOfAttack } from "../components/MyComponents";
 import { urlAttacks, urlChar } from "../components/url";
 import { useEffect, useState } from "react";
-import { Attacks, CharacterPc } from "../components/interfaces";
+import { Attacks, CharacterPc, Weapon } from "../components/interfaces";
 import { useParams } from "react-router-dom";
 import { emptyAttacks } from "../components/variables";
+import { SetSetWeaponListFromDB } from "../components/functions";
 
 export function Attack() {
 
@@ -12,14 +13,15 @@ export function Attack() {
 
   const [char, setChar] = useState<CharacterPc>()
   const [attack, setAttack] = useState<Attacks>(emptyAttacks)
+  const [listFromDB, setListFromDB] = useState<Weapon[]>([])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
-
-        setAttack(resChar.data.attacks)
+        setAttack(resChar.data.attacks);
+        setListFromDB(SetSetWeaponListFromDB(resChar.data.inventory));
 
       } catch (error) {
         console.error(error);
@@ -43,6 +45,7 @@ export function Attack() {
             <div className="container-item">
               {char?
               <>
+              <div className="container-item">
               <div>{char?.characterName}</div>
               <div>bab: +{char?.bab}</div>
               <div>armor: {char?.inventory.armor.name}</div>
@@ -52,6 +55,13 @@ export function Attack() {
               <div>III: {char?.inventory.weaponThree.name}</div>
               <div>IV: {char?.inventory.weaponFour.name}</div>
               <div>V: {char?.inventory.weaponFive.name}</div>
+              </div>
+              <div className="container-item">
+                <CharacterArmor
+                  charArmor={char.armorClass}
+                  charInventory={char.inventory}
+                />
+              </div>
               </>
               :
               <>...loading character...</>  
@@ -59,9 +69,9 @@ export function Attack() {
             </div>
             <div className="container-item">
               <button onClick={confirmAttack}>set Attacks</button>
-              {char?.inventory?
+              {char && attack?
                 <MapOfAttack
-                inventory={char?.inventory}
+                inventory={listFromDB}
                 attacks={attack}
                 bab={char?.bab}
                 ability={char?.abilitys}

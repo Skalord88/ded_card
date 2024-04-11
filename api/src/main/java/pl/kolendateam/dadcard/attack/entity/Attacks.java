@@ -13,17 +13,14 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
-import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
 public class Attacks implements Serializable {
@@ -55,6 +52,16 @@ public class Attacks implements Serializable {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "attacks_id_twoadditional", referencedColumnName = "id")
     Weapons additionalAttackSetTwo;
+
+    public Attacks() {
+        Weapons weapon = new Weapons(1);
+        this.firstAttackSetOne = weapon;
+        this.secondAttackSetOne = weapon;
+        this.additionalAttackSetOne = weapon;
+        this.firstAttackSetTwo = weapon;
+        this.secondAttackSetTwo = weapon;
+        this.additionalAttackSetTwo = weapon;
+    }
 
     public void setCharactersAttacks(AttacksDTO characterAttacksDTO, List<Items> itemsList) {
 

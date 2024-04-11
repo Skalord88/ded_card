@@ -1,6 +1,8 @@
-import { Abilitys, Inventory, Position, Weapon } from "./interfaces"
+import { Abilitys, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
-export function SignNumber(number: number): string {
+export function SignNumber(
+    number: number
+    ): string {
     const sign = number >= 0 ? '+' : '';
     return sign;
 }
@@ -15,6 +17,23 @@ export function BonusAbilities(ab: Abilitys, which: string) {
         case 'CHA': return Math.floor((ab.charisma - 10) / 2);
         default: return 0;
     }
+}
+
+export function SignAndCount(
+    numbers: number[]
+    ): SignAndNumber {
+
+    let num: number = numbers.reduce(
+        (total, n) => total + n,
+        0
+    )
+
+    const res = {
+        sign: SignNumber(num),
+        number: num
+    }
+
+    return res;
 }
 
 export function WeaponLight(weapon: Weapon): boolean {
@@ -171,3 +190,16 @@ export function SetAttacksFromWeapons(
         return undefined
     }
 }
+
+export function CountArmor(
+    armor: armorClass,
+    inventory: Inventory
+): number {
+    return 10 
+        + armor.armorBonus + armor.shieldBonus 
+        + armor.sizeBonus + armor.dextrityBonus 
+        + armor.naturalArmor + armor.deflectionBonuses 
+        + armor.dodgeBonus + inventory.armor.armorClass 
+        + inventory.shield.armorClass
+}
+

@@ -106,6 +106,52 @@ public class ItemsController {
     return new InventoryDTO(characterInventory);
   }
 
+  @PostMapping(value = "/change", consumes = { "application/json" })
+  public ItemsListDTO changeItem(@RequestBody List<ArmorsDTO> listArmorDTO) {
+
+    List<Items> itemsList = this.itemsRepository.findAll();
+    int lastId = itemsList.size();
+
+    ItemsListDTO itemsDTOList = new ItemsListDTO();
+    ArrayList<ArmorsDTO> armorDTOList = new ArrayList<>();
+
+    itemsList.forEach(item -> {
+      if (item instanceof Armors) {
+        armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) item));
+      }
+    });
+
+    for (ArmorsDTO armorDTO : listArmorDTO) {
+      Armors armorFromDTO = MapperItems.toArmor(armorDTO);
+
+      boolean check = false;
+      for (ArmorsDTO arDTO : armorDTOList) {
+        if (arDTO.id == armorFromDTO.getId()) {
+          Armors panc = MapperItems.toArmor(arDTO);
+          if (armorFromDTO.hashCode() != panc.hashCode()) {
+            check = true;
+            break;
+          }
+        }
+      }
+
+      if (check) {
+        lastId++;
+        armorFromDTO.setId(lastId);
+        armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) armorFromDTO));
+        itemsRepository.save(armorFromDTO);
+      }
+    }
+    ;
+
+    itemsDTOList.setListOfArmors(armorDTOList);
+    // itemsDTOList.setListOfShields(shieldsDTOList);
+    // itemsDTOList.setListOfWeapons(weaponsDTOList);
+    // itemsDTOList.setListOfWonderousItem(wonderousItemsDTOList);
+
+    return itemsDTOList;
+  }
+
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO changeInventory(
       @PathVariable short id,

@@ -21,9 +21,6 @@
             <column name="attacks_id_twofirst" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="weapon_id_three" type="int">
-                <constraints nullable="true" />
-            </column>
             <column name="attacks_id_twosecond" type="int">
                 <constraints nullable="true" />
             </column>

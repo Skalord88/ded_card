@@ -11,6 +11,7 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
 @Entity
 @Getter
@@ -32,6 +33,9 @@ public class Armors extends Items {
   int penality;
   int failure;
 
+  @Enumerated(EnumType.STRING)
+  MaterialEnum material;
+
   public void setItemType(ItemTypeEnum itemType) {
   }
 
@@ -46,6 +50,7 @@ public class Armors extends Items {
     this.maxDex = armorDTO.maxDex;
     this.penality = armorDTO.penality;
     this.failure = armorDTO.failure;
+    this.material = armorDTO.material;
   }
 
 }

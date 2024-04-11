@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,6 +26,7 @@ public class ArmorsDTO implements Serializable {
   public int penality;
   public int failure;
   public String description;
+  public MaterialEnum material;
 
   public ArmorsDTO(int idZero) {
     this.id = idZero;
@@ -43,6 +45,7 @@ public class ArmorsDTO implements Serializable {
     this.penality = item.getPenality();
     this.failure = item.getFailure();
     this.description = item.getDescription();
+    this.material = item.getMaterial();
   }
 
 }

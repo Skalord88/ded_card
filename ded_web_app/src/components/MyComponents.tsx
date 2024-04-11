@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {
+  AbilitysFromChar,
   Armor,
+  ArmorInCharacter,
   Attacks,
   Backpack,
   CharAttack,
@@ -22,11 +24,67 @@ import {
   AttackIIRanged,
   AttackMelee,
   AttackRanged,
+  BonusAbilities,
   IndexWeaponOne,
-  SetSetWeaponListFromDB,
+  SignAndCount,
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
+
+export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
+  return (
+    <div className="container">
+      <div>
+        <li>STR: </li>
+      </div>
+      <div>{abilitys.streght}</div>
+      <div>
+        {SignAndCount([abilitys.streght]).sign}
+        {BonusAbilities(abilitys, "STR")}
+      </div>
+      <div>
+        <li>DEX: </li>
+      </div>
+      <div>{abilitys.dextrity}</div>
+      <div>
+        {SignAndCount([abilitys.dextrity]).sign}
+        {BonusAbilities(abilitys, "DEX")}
+      </div>
+      <div>
+        <li>COS: </li>
+      </div>
+      <div>{abilitys.constitution}</div>
+      <div>
+        {SignAndCount([abilitys.constitution]).sign}
+        {BonusAbilities(abilitys, "COS")}
+      </div>
+      <div>
+        <li>INT: </li>
+      </div>
+      <div>{abilitys.intelligence}</div>
+      <div>
+        {SignAndCount([abilitys.intelligence]).sign}
+        {BonusAbilities(abilitys, "INT")}
+      </div>
+      <div>
+        <li>WIS: </li>
+      </div>
+      <div>{abilitys.wisdom}</div>
+      <div>
+        {SignAndCount([abilitys.wisdom]).sign}
+        {BonusAbilities(abilitys, "WIS")}
+      </div>
+      <div>
+        <li>CHA: </li>
+      </div>
+      <div>{abilitys.charisma}</div>
+      <div>
+        {SignAndCount([abilitys.charisma]).sign}
+        {BonusAbilities(abilitys, "CHA")}
+      </div>
+    </div>
+  );
+};
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
@@ -533,20 +591,19 @@ export const MapOfAttack: React.FC<CharAttack> = ({
   setListOfAttack
 }) => {
   const [attack, setAttack] = useState<Attacks>(attacks);
-  const listOfWeapons = SetSetWeaponListFromDB(inventory);
-  const [indexFirstSetOne, setIndexFirstSetOne] = useState<number>(-1)
-  const [indexFirstSetTwo, setIndexFirstSetTwo] = useState<number>(-1)
+  const [indexFirstSetOne, setIndexFirstSetOne] = useState<number>(-1);
+  const [indexFirstSetTwo, setIndexFirstSetTwo] = useState<number>(-1);
 
   useEffect(() => {
     setListOfAttack(attack);
-  },[attack]);
+  }, [attack]);
 
   useEffect(() => {
-    let indexOne = IndexWeaponOne(listOfWeapons, attack.firstAttackSetOne)
+    let indexOne = IndexWeaponOne(inventory, attack.firstAttackSetOne);
     setIndexFirstSetOne(indexOne);
-    let indexTwo = IndexWeaponOne(listOfWeapons, attack.firstAttackSetTwo)
-    setIndexFirstSetTwo(indexTwo)
-  },[attack.firstAttackSetOne,attack.firstAttackSetTwo])
+    let indexTwo = IndexWeaponOne(inventory, attack.firstAttackSetTwo);
+    setIndexFirstSetTwo(indexTwo);
+  }, [attack.firstAttackSetOne, attack.firstAttackSetTwo]);
 
   const setAttackInSet = (newWeapon: Weapon, where: string) => {
     let att = { ...attack };
@@ -598,7 +655,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               }}
             />
             <ListOfWeapons
-              list={listOfWeapons}
+              list={inventory}
               where={"set11"}
               selectWeapon={setAttackInSet}
             />
@@ -630,7 +687,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
             ) : (
               <ListOfOneHandWeapons
                 indexOne={indexFirstSetOne}
-                list={listOfWeapons}
+                list={inventory}
                 where={"set12"}
                 selectWeapon={setAttackInSet}
               />
@@ -657,7 +714,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
             />
             <ListOfOneHandWeapons
               indexOne={indexFirstSetOne}
-              list={listOfWeapons}
+              list={inventory}
               where={"set13"}
               selectWeapon={setAttackInSet}
             />
@@ -687,7 +744,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               }}
             />
             <ListOfWeapons
-              list={listOfWeapons}
+              list={inventory}
               where={"set21"}
               selectWeapon={setAttackInSet}
             />
@@ -719,7 +776,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
             ) : (
               <ListOfOneHandWeapons
                 indexOne={indexFirstSetTwo}
-                list={listOfWeapons}
+                list={inventory}
                 where={"set22"}
                 selectWeapon={setAttackInSet}
               />
@@ -747,7 +804,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
             />
             <ListOfOneHandWeapons
               indexOne={indexFirstSetTwo}
-              list={listOfWeapons}
+              list={inventory}
               where={"set23"}
               selectWeapon={setAttackInSet}
             />
@@ -954,5 +1011,89 @@ export const ListOfOneHandWeapons: React.FC<SelectOffWeapon> = ({
     </>
   ) : (
     <></>
+  );
+};
+
+export const CharacterArmor: React.FC<ArmorInCharacter> = ({
+  charArmor,
+  charInventory
+}) => {
+  return (
+    <div className="container-table-ten">
+      <div>AC</div>
+      <div>10</div>
+      <div>
+        <div>
+          {
+            SignAndCount([charArmor.armorBonus, charInventory.armor.armorClass])
+              .sign
+          }
+          {
+            SignAndCount([charArmor.armorBonus, charInventory.armor.armorClass])
+              .number
+          }
+        </div>
+        <div>arm</div>
+      </div>
+      <div>
+        <div>
+          {
+            SignAndCount([
+              charArmor.shieldBonus,
+              charInventory.shield.armorClass
+            ]).sign
+          }
+          {
+            SignAndCount([
+              charArmor.shieldBonus,
+              charInventory.shield.armorClass
+            ]).number
+          }
+        </div>
+        <div>shl</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([charArmor.sizeBonus]).sign}
+          {SignAndCount([charArmor.sizeBonus]).number}
+        </div>
+        <div>siz</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([charArmor.dextrityBonus]).sign}
+          {SignAndCount([charArmor.dextrityBonus]).number}
+        </div>
+        <div>dex</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([charArmor.armorBonus]).sign}
+          {SignAndCount([charArmor.armorBonus]).number}
+        </div>
+        <div>nat</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([charArmor.deflectionBonuses]).sign}
+          {SignAndCount([charArmor.deflectionBonuses]).number}
+        </div>
+        <div>def</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([charArmor.dodgeBonus]).sign}
+          {SignAndCount([charArmor.dodgeBonus]).number}
+        </div>
+        <div>ddg</div>
+      </div>
+      <div>
+        <div>
+          {SignAndCount([0]).sign}
+          {SignAndCount([0]).number}
+        </div>
+        <div>oth</div>
+      </div>
+    </div>
   );
 };

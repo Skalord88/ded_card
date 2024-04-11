@@ -63,6 +63,9 @@
             <column name="failure" type="int">
                 <constraints nullable="true"/>
             </column>
+            <column name="material" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
