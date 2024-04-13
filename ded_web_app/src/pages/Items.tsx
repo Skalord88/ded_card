@@ -52,20 +52,22 @@ export function Items() {
     let gold = 0
     if(equipment){
       gold =
-        - equipment.armor.cost
-        - (equipment.armor.enchantment? equipment.armor.enchantment as number * 100 : 0)
-        - equipment.weaponOne.cost     
-        - equipment.weaponTwo.cost
-        - equipment.weaponThree.cost
-        - equipment.weaponFour.cost
-        - equipment.weaponFive.cost
+        - EnchantmentCost([
+          equipment.armor,
+          equipment.shield,
+          equipment.weaponOne,
+          equipment.weaponTwo,
+          equipment.weaponThree,
+          equipment.weaponFour,
+          equipment.weaponFive,
+        ])
         - sizeAndGold(equipment.backpack)
         - equipment.head.cost
         - equipment.neck.cost
         - equipment.arms.cost
         - sizeAndGold(equipment.hands)
         - equipment.cloth.cost
-        - equipment.legs.cost
+        - equipment.legs.cost        
     }
 
     setActualTresure(tresure + gold)

@@ -221,7 +221,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: number | boolean;
+  enchantment: number;
 }
 
 export interface Shield extends Item {
@@ -231,7 +231,7 @@ export interface Shield extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: number | boolean;
+  enchantment: number;
 }
 
 export interface Weapon extends Item {
@@ -241,7 +241,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   specialAttacks: string | null;
-  enchantment: number | boolean;
+  enchantment: number;
 }
 
 export interface WonderousItem extends Item {}
@@ -279,6 +279,22 @@ export type CharInventory = {
   updateInventory: (
     newInventory: Inventory,
     ) => void;
+}
+
+export type ArmorWeaponToBuy = {
+  item: Item,
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string ) => void;
+  sellItem: (
+    newItem: Item,
+    type: string ) => void;
+  enchantItem: (
+    newItem: Armor | Shield | Weapon,
+    enchantment: number,
+    type: string ) => void;
 }
 
 export type ItemToBuy = {

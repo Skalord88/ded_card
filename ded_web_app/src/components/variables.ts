@@ -13,7 +13,7 @@ export const noneArmor: Armor = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: false
+    enchantment: 0
 }
 
 export const noneShield: Shield = {
@@ -29,7 +29,7 @@ export const noneShield: Shield = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: false
+    enchantment: 0
 }
 
 export const noneWeapon: Weapon = {
@@ -45,7 +45,7 @@ export const noneWeapon: Weapon = {
     range: 0,
     type: ['BLUDGEONING','SIMPLE','UNARMED'],
     specialAttacks: null,
-    enchantment: false
+    enchantment: 0
 }
 
 export const noneItem: WonderousItem = {

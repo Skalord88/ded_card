@@ -3,6 +3,7 @@ import {
   AbilitysFromChar,
   Armor,
   ArmorInCharacter,
+  ArmorWeaponToBuy,
   Attacks,
   Backpack,
   CharAttack,
@@ -25,6 +26,7 @@ import {
   AttackMelee,
   AttackRanged,
   BonusAbilities,
+  EnchantedName,
   IndexWeaponOne,
   SignAndCount,
   WeaponLight,
@@ -87,6 +89,115 @@ export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   );
 };
 
+export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
+  item,
+  items,
+  type,
+  buyItem,
+  sellItem,
+  enchantItem
+}) => {
+  const selectItem = (i: Item, type: string) => {
+    buyItem(i, type);
+  };
+  const deselect = (i: Item, type: string) => {
+    sellItem(i, type);
+  };
+  const enchant = (i: Armor | Shield | Weapon, e: number, type: string) => {
+    enchantItem(i, e, type);
+  };
+
+  return (
+    <>
+      {item? (
+        <>
+          <div>
+            {item.name}
+            <button onClick={() => deselect(item, type)}>-</button>
+          </div>
+          {"enchantment" in item ? (
+            <Dropdown as={ButtonGroup}>
+              <Button variant="succes">Enchantment</Button>
+
+              <Dropdown.Toggle split variant="succes" id="enchantemt-drop">
+                +
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, -1, type)
+                  }
+                >
+                  prf
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 0, type)
+                  }
+                >
+                  0
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 1, type)
+                  }
+                >
+                  1
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 2, type)
+                  }
+                >
+                  2
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 3, type)
+                  }
+                >
+                  3
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 4, type)
+                  }
+                >
+                  4
+                </Dropdown.Item>
+                <Dropdown.Item
+                  onClick={() =>
+                    enchant(item as Armor | Shield | Weapon, 5, type)
+                  }
+                >
+                  5
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            
+          ) : (
+            <></>
+          )}
+          <div>{item.description}</div>
+        </>
+      ) : (
+        <></>
+      )}
+
+      <div>
+        {items.map((it) => {
+          return (
+            <div key={it.id}>
+              {it.name} {it.cost}
+              <button onClick={() => selectItem(it, type)}>+</button>
+            </div>
+          );
+        })}
+      </div>
+    </>
+  );
+};
+
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
   items,
@@ -100,30 +211,7 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
   const deselect = (i: Item, type: string) => {
     sellItem(i, type);
   };
-  const enchant = (i: Armor | Shield | Weapon, en: number, type: string) => {
-    if (en === -1) {
-      const newItem: Armor | Shield | Weapon = {
-        ...i,
-        enchantment: en,
-        name: "pft " + item.name
-      };
-      selectItem(newItem, type);
-    } else if (en === 0) {
-      const newItem: Armor | Shield | Weapon = {
-        ...i,
-        name: item.name
-      };
-      selectItem(newItem, type);
-    } else {
-      const newItem: Armor | Shield | Weapon = {
-        ...i,
-        enchantment: en,
-        name: item.name + "+" + en
-      };
-      selectItem(newItem, type);
-      if('enchantment' in item) console.log(newItem.enchantment)
-    }
-  };
+
   return (
     <>
       <div>
@@ -132,66 +220,6 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
       </div>
       <div>{item.description}</div>
       <div></div>
-      {"enchantment" in item && item.enchantment ? (
-        <Dropdown as={ButtonGroup}>
-          <Button variant="succes">Enchantment</Button>
-
-          <Dropdown.Toggle split variant="succes" id="enchantemt-drop">+</Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, -1, type)
-              }
-            >
-              prf
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 0, type)
-              }
-            >
-              0
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 1, type)
-              }
-            >
-              1
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 2, type)
-              }
-            >
-              2
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 3, type)
-              }
-            >
-              3
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 4, type)
-              }
-            >
-              4
-            </Dropdown.Item>
-            <Dropdown.Item
-              onClick={() =>
-                enchant(item as Armor | Shield | Weapon, 5, type)
-              }
-            >
-              5
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      ) : (
-        <></>
-      )}
 
       <div>
         {items.map((it) => {
@@ -531,80 +559,137 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       }));
     }
   };
+  const handleEnchantItem = (
+    e: Armor | Shield | Weapon,
+    en: number,
+    type: string
+  ) => {
+    if (type === "armor") {
+      e.enchantment = en;
+
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        armor: e as Armor
+      }));
+    }
+    if (type === "shield") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        shield: e as Shield
+      }));
+    }
+    if (type === "one") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        weaponOne: e as Weapon
+      }));
+    }
+    if (type === "two") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        weaponTwo: e as Weapon
+      }));
+    }
+    if (type === "three") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        weaponThree: e as Weapon
+      }));
+    }
+    if (type === "four") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        weaponFour: e as Weapon
+      }));
+    }
+    if (type === "five") {
+      setEquipment((updateInventory) => ({
+        ...updateInventory,
+        weaponFive: e as Weapon
+      }));
+    }
+  };
 
   return (
     <>
       <div className="container">
         <div className="container-item">
           ---Armor:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.armor}
             items={items.armorsList}
             type={"armor"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
           ---Shield:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.shield}
             items={items.shieldList}
             type={"shield"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
       </div>
       <div className="container">
         <div className="container-item">
           ---Weapon I:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.weaponOne}
             items={items.weaponsList}
             type={"one"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
           ---Weapon II:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.weaponTwo}
             items={items.weaponsList}
             type={"two"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
           ---Weapon III:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.weaponThree}
             items={items.weaponsList}
             type={"three"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
           ---Weapon IV:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.weaponFour}
             items={items.weaponsList}
             type={"four"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
           ---Weapon V:
-          <BuyItemInventory
+          <BuyEnchantedItemInventory
             item={equipment.weaponFive}
             items={items.weaponsList}
             type={"five"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
+            enchantItem={handleEnchantItem}
           />
         </div>
       </div>
