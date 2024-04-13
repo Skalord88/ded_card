@@ -7,6 +7,7 @@ import { urlChar, urlItems, urlItemsBuy } from "../components/url";
 import {
   emptyItemsList
 } from "../components/variables";
+import { EnchantmentCost } from "../components/functions";
 
 export function Items() {
   const { charId } = useParams();
@@ -52,6 +53,7 @@ export function Items() {
     if(equipment){
       gold =
         - equipment.armor.cost
+        - (equipment.armor.enchantment? equipment.armor.enchantment as number * 100 : 0)
         - equipment.weaponOne.cost     
         - equipment.weaponTwo.cost
         - equipment.weaponThree.cost

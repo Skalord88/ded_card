@@ -27,6 +27,7 @@ public class ArmorsDTO implements Serializable {
   public int failure;
   public String description;
   public MaterialEnum material;
+  public int enchantment;
 
   public ArmorsDTO(int idZero) {
     this.id = idZero;
@@ -46,6 +47,7 @@ public class ArmorsDTO implements Serializable {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
+    this.enchantment = item.getEnchantment();
   }
 
 }

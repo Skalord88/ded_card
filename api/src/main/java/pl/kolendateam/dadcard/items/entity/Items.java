@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 
@@ -99,6 +100,10 @@ public class Items implements Serializable {
 
   public Items(int idZero) {
     this.id = idZero;
+  }
+
+  public Items(ItemsDTO itemDTO) {
+    // TODO Auto-generated constructor stub
   }
 
 }

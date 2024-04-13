@@ -36,6 +36,8 @@ public class Armors extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
+  int enchantment;
+
   public void setItemType(ItemTypeEnum itemType) {
   }
 
@@ -51,6 +53,7 @@ public class Armors extends Items {
     this.penality = armorDTO.penality;
     this.failure = armorDTO.failure;
     this.material = armorDTO.material;
+    this.enchantment = armorDTO.enchantment;
   }
 
 }

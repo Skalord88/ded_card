@@ -30,6 +30,7 @@ import {
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
+import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 
 export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   return (
@@ -88,8 +89,8 @@ export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
-  type,
   items,
+  type,
   buyItem,
   sellItem
 }) => {
@@ -99,6 +100,30 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
   const deselect = (i: Item, type: string) => {
     sellItem(i, type);
   };
+  const enchant = (i: Armor | Shield | Weapon, en: number, type: string) => {
+    if (en === -1) {
+      const newItem: Armor | Shield | Weapon = {
+        ...i,
+        enchantment: en,
+        name: "pft " + item.name
+      };
+      selectItem(newItem, type);
+    } else if (en === 0) {
+      const newItem: Armor | Shield | Weapon = {
+        ...i,
+        name: item.name
+      };
+      selectItem(newItem, type);
+    } else {
+      const newItem: Armor | Shield | Weapon = {
+        ...i,
+        enchantment: en,
+        name: item.name + "+" + en
+      };
+      selectItem(newItem, type);
+      if('enchantment' in item) console.log(newItem.enchantment)
+    }
+  };
   return (
     <>
       <div>
@@ -107,6 +132,67 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
       </div>
       <div>{item.description}</div>
       <div></div>
+      {"enchantment" in item && item.enchantment ? (
+        <Dropdown as={ButtonGroup}>
+          <Button variant="succes">Enchantment</Button>
+
+          <Dropdown.Toggle split variant="succes" id="enchantemt-drop">+</Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, -1, type)
+              }
+            >
+              prf
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 0, type)
+              }
+            >
+              0
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 1, type)
+              }
+            >
+              1
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 2, type)
+              }
+            >
+              2
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 3, type)
+              }
+            >
+              3
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 4, type)
+              }
+            >
+              4
+            </Dropdown.Item>
+            <Dropdown.Item
+              onClick={() =>
+                enchant(item as Armor | Shield | Weapon, 5, type)
+              }
+            >
+              5
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      ) : (
+        <></>
+      )}
+
       <div>
         {items.map((it) => {
           return (
@@ -134,6 +220,7 @@ export const BuyBackpack: React.FC<Backpack> = ({
   const deselect = (i: Item, type: string) => {
     sellItem(i, type);
   };
+
   return (
     <>
       <div>
@@ -141,9 +228,11 @@ export const BuyBackpack: React.FC<Backpack> = ({
           return (
             <>
               <ul>
-                {i.name}
-                <button onClick={() => deselect(i, type)}>-</button>
-                {i.description}
+                <div>{i.name}</div>
+                <div>
+                  <button onClick={() => deselect(i, type)}>-</button>
+                </div>
+                <div>{i.description}</div>
               </ul>
             </>
           );

@@ -1,8 +1,8 @@
-import { Abilitys, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Armor, Inventory, Position, Shield, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
-    ): string {
+): string {
     const sign = number >= 0 ? '+' : '';
     return sign;
 }
@@ -21,7 +21,7 @@ export function BonusAbilities(ab: Abilitys, which: string) {
 
 export function SignAndCount(
     numbers: number[]
-    ): SignAndNumber {
+): SignAndNumber {
 
     let num: number = numbers.reduce(
         (total, n) => total + n,
@@ -195,11 +195,96 @@ export function CountArmor(
     armor: armorClass,
     inventory: Inventory
 ): number {
-    return 10 
-        + armor.armorBonus + armor.shieldBonus 
-        + armor.sizeBonus + armor.dextrityBonus 
-        + armor.naturalArmor + armor.deflectionBonuses 
-        + armor.dodgeBonus + inventory.armor.armorClass 
+    return 10
+        + armor.armorBonus + armor.shieldBonus
+        + armor.sizeBonus + armor.dextrityBonus
+        + armor.naturalArmor + armor.deflectionBonuses
+        + armor.dodgeBonus + inventory.armor.armorClass
         + inventory.shield.armorClass
+}
+
+export function CostOfEnchant(
+    enchantment: number,
+    type: string
+): number {
+    if(type === 'Arm'){
+        switch (enchantment){
+            case -1: return 150
+            case 1: return 1000
+            case 2: return 4000
+            case 3: return 9000
+            case 4: return 16000
+            case 5: return 25000
+        }
+    }
+    if(type === 'Wep'){
+        switch (enchantment){
+            case -1: return 300
+            case 1: return 2000
+            case 2: return 8000
+            case 3: return 18000
+            case 4: return 32000
+            case 5: return 50000
+        }
+    }
+    return 0;
+}
+
+export function EnchantmentCost(
+    items: any[]
+): number {
+    let total: number = 0;
+    items.forEach(item => {
+        if (item.itemType === 'ARMOR' || item.itemType === 'SHIELD') {
+            switch (item.enchantment) {
+                case -1:
+                    total +=
+                    -CostOfEnchant(item.enchantment, 'Arm')
+                    + CostOfEnchant(-1, 'Arm')
+                    break;
+                case 0:
+                    total -= CostOfEnchant(item.enchantment, 'Arm')
+                    break;
+                case 1:
+                    total += 1000
+                    break;
+                case 2:
+                    total += 4000
+                    break;
+                case 3:
+                    total += 9000
+                    break;
+                case 4:
+                    total += 16000
+                    break;
+                case 5:
+                    total += 25000
+                    break;
+            }
+        } else {
+            switch (item.enchantment) {
+                case -1:
+                    total += 300
+                    break;
+                case 1:
+                    total += 2000
+                    break;
+                case 2:
+                    total += 8000
+                    break;
+                case 3:
+                    total += 18000
+                    break;
+                case 4:
+                    total += 32000
+                    break;
+                case 5:
+                    total += 50000
+                    break;
+            }
+        }
+
+    })
+    return total;
 }
 

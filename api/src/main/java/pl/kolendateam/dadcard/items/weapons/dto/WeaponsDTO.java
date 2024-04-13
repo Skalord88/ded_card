@@ -30,6 +30,7 @@ public class WeaponsDTO implements Serializable {
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
+  public int enchantment;
 
   public WeaponsDTO(int idZero) {
     this.id = idZero;
@@ -58,6 +59,7 @@ public class WeaponsDTO implements Serializable {
     WeaponCategoriesEnum[] typ = gson.fromJson(w.getType(), listWeaponType);
     this.type = typ;
     this.description = w.getDescription();
+    this.enchantment = w.getEnchantment();
   }
 
 }

@@ -1,3 +1,5 @@
+import { BlobOptions } from "buffer";
+
 export type CharacterPc = {
   id: number;
   characterName: string;
@@ -219,6 +221,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
+  enchantment: number | boolean;
 }
 
 export interface Shield extends Item {
@@ -228,6 +231,7 @@ export interface Shield extends Item {
   maxDex: number;
   penality: number;
   failure: number;
+  enchantment: number | boolean;
 }
 
 export interface Weapon extends Item {
@@ -237,6 +241,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   specialAttacks: string | null;
+  enchantment: number | boolean;
 }
 
 export interface WonderousItem extends Item {}

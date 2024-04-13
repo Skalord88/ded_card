@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.items;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +29,6 @@ import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
-import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
-import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @CrossOrigin
 @RestController
@@ -57,30 +54,8 @@ public class ItemsController {
     List<Items> itemsList = this.itemsRepository.findAll();
 
     ItemsListDTO itemsDTOList = new ItemsListDTO();
-    ArrayList<ArmorsDTO> armorDTOList = new ArrayList<>();
-    ArrayList<ShieldsDTO> shieldsDTOList = new ArrayList<>();
-    ArrayList<WeaponsDTO> weaponsDTOList = new ArrayList<>();
-    ArrayList<WondrousItemsDTO> wonderousItemsDTOList = new ArrayList<>();
 
-    itemsList.forEach(item -> {
-      if (item instanceof Armors) {
-        armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) item));
-      } else if (item instanceof Shields) {
-        shieldsDTOList.add(MapperItemsDTO.toShieldDTO((Shields) item));
-      } else if (item instanceof Weapons) {
-        weaponsDTOList.add(MapperItemsDTO.toWeaponDTO((Weapons) item));
-      } else if (item instanceof WondrousItems) {
-        wonderousItemsDTOList.add(
-            MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item));
-      }
-    });
-
-    itemsDTOList.setListOfArmors(armorDTOList);
-    itemsDTOList.setListOfShields(shieldsDTOList);
-    itemsDTOList.setListOfWeapons(weaponsDTOList);
-    itemsDTOList.setListOfWonderousItem(wonderousItemsDTOList);
-
-    return itemsDTOList;
+    return itemsDTOList.createListOfItemsDTO(itemsList, itemsDTOList);
   }
 
   @GetMapping("inventory/{id}")
@@ -107,49 +82,68 @@ public class ItemsController {
   }
 
   @PostMapping(value = "/change", consumes = { "application/json" })
-  public ItemsListDTO changeItem(@RequestBody List<ArmorsDTO> listArmorDTO) {
+  public ItemsListDTO changeItem(@RequestBody ItemsListDTO itemListDTO) {
 
     List<Items> itemsList = this.itemsRepository.findAll();
     int lastId = itemsList.size();
 
-    ItemsListDTO itemsDTOList = new ItemsListDTO();
-    ArrayList<ArmorsDTO> armorDTOList = new ArrayList<>();
-
-    itemsList.forEach(item -> {
-      if (item instanceof Armors) {
-        armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) item));
-      }
-    });
-
-    for (ArmorsDTO armorDTO : listArmorDTO) {
-      Armors armorFromDTO = MapperItems.toArmor(armorDTO);
-
-      boolean check = false;
-      for (ArmorsDTO arDTO : armorDTOList) {
-        if (arDTO.id == armorFromDTO.getId()) {
-          Armors panc = MapperItems.toArmor(arDTO);
-          if (armorFromDTO.hashCode() != panc.hashCode()) {
-            check = true;
-            break;
+    boolean check = false;
+    if (itemListDTO.armorsList != null) {
+      for (ArmorsDTO armorFromListDTO : itemListDTO.armorsList) {
+        for (Items item : itemsList) {
+          if (armorFromListDTO.id == item.getId()) {
+            Armors newArmor = MapperItems.toArmor(armorFromListDTO);
+            if (newArmor.hashCode() != item.hashCode()) {
+              check = true;
+            }
+            if (check) {
+              lastId++;
+              newArmor.setId(lastId);
+              itemsRepository.save(newArmor);
+              check = false;
+            }
           }
         }
       }
-
-      if (check) {
-        lastId++;
-        armorFromDTO.setId(lastId);
-        armorDTOList.add(MapperItemsDTO.toArmorDTO((Armors) armorFromDTO));
-        itemsRepository.save(armorFromDTO);
+    }
+    if (itemListDTO.shieldList != null) {
+      for (ShieldsDTO shieldFromListDTO : itemListDTO.shieldList) {
+        for (Items item : itemsList) {
+          if (shieldFromListDTO.id == item.getId()) {
+            Shields newShield = MapperItems.toShield(shieldFromListDTO);
+            if (newShield.hashCode() != item.hashCode()) {
+              check = true;
+            }
+            if (check) {
+              lastId++;
+              newShield.setId(lastId);
+              itemsRepository.save(newShield);
+              check = false;
+            }
+          }
+        }
       }
     }
-    ;
+    if (itemListDTO.weaponsList != null) {
+      for (WeaponsDTO weaponFromListDTO : itemListDTO.weaponsList) {
+        for (Items item : itemsList) {
+          if (weaponFromListDTO.id == item.getId()) {
+            Weapons newWeapon = MapperItems.toWeapon(weaponFromListDTO);
+            if (newWeapon.hashCode() != item.hashCode()) {
+              check = true;
+            }
+            if (check) {
+              lastId++;
+              newWeapon.setId(lastId);
+              itemsRepository.save(newWeapon);
+              check = false;
+            }
+          }
+        }
+      }
+    }
 
-    itemsDTOList.setListOfArmors(armorDTOList);
-    // itemsDTOList.setListOfShields(shieldsDTOList);
-    // itemsDTOList.setListOfWeapons(weaponsDTOList);
-    // itemsDTOList.setListOfWonderousItem(wonderousItemsDTOList);
-
-    return itemsDTOList;
+    return itemListDTO;
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })

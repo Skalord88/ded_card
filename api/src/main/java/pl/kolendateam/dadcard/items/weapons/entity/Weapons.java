@@ -1,5 +1,14 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.mapping.Array;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,6 +38,7 @@ public class Weapons extends Items {
   Integer range;
   String type;
   String specialAttacks;
+  int enchantment;
 
   public Weapons(WeaponsDTO weapon) {
     super(weapon);
@@ -36,12 +46,17 @@ public class Weapons extends Items {
     this.damage = weapon.damage;
     this.critical = weapon.critical;
     this.range = weapon.range;
-    this.type = weapon.type.toString();
+    ArrayList<String> arry = new ArrayList<>();
+    for (WeaponCategoriesEnum wC : weapon.type) {
+      arry.add("'" + wC.toString() + "'");
+    }
+    this.type = arry.toString();
     if (weapon.specialAttacks != null) {
       this.specialAttacks = MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
     } else {
       this.specialAttacks = null;
     }
+    this.enchantment = weapon.enchantment;
   }
 
   public void setItemType(ItemTypeEnum itemType) {
