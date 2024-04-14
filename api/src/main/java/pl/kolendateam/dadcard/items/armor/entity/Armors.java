@@ -41,7 +41,7 @@ public class Armors extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
   Enchantment enchantment;
 
@@ -64,26 +64,17 @@ public class Armors extends Items {
     if (armorDTO.enchantment == null) {
       armorDTO.enchantment = null;
     } else {
-      this.enchantment = MapperEnchantment.toEnchantment(armorDTO.enchantment.id);
+      this.enchantment = MapperEnchantment.toEnchantment(armorDTO.enchantment);
     }
   }
 
-  public boolean checkEqual(Armors item) {
+  public boolean checkEqualItem(Armors arm) {
 
-    if (this.armorType == item.armorType) {
-      if (this.maxDex == item.maxDex) {
-        if (this.penality == item.penality) {
-          if (this.failure == item.failure) {
-            if (this.material == item.material) {
-              if (this.enchantment.hashCode() == item.enchantment.hashCode()) {
-                return true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return false;
+    return this.getEnchantment().equals(arm.getEnchantment()) &&
+        this.getArmorType().equals(arm.getArmorType()) &&
+        this.getFailure() == arm.getFailure() &&
+        this.getPenality() == arm.getPenality() &&
+        this.getMaterial().equals(arm.getMaterial());
   }
 
 }

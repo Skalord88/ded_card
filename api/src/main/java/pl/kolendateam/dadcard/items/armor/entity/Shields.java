@@ -36,12 +36,12 @@ public class Shields extends Items {
   int penality;
   int failure;
 
-  @Enumerated(EnumType.STRING)
-  MaterialEnum material;
-
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
   Enchantment enchantment;
+
+  @Enumerated(EnumType.STRING)
+  MaterialEnum material;
 
   public Shields(ShieldsDTO shield) {
     super(shield);
@@ -54,26 +54,9 @@ public class Shields extends Items {
     if (shield.enchantment == null) {
       this.enchantment = null;
     } else {
-      MapperEnchantment.toEnchantment(shield.enchantment.id);
+      MapperEnchantment.toEnchantment(shield.enchantment);
     }
-  }
-
-  public boolean checkEqual(Shields item) {
-
-    if (this.armorType == item.armorType) {
-      if (this.maxDex == item.maxDex) {
-        if (this.penality == item.penality) {
-          if (this.failure == item.penality) {
-            if (this.material == item.material) {
-              if (this.enchantment.hashCode() == item.enchantment.hashCode()) {
-                return true;
-              }
-            }
-          }
-        }
-      }
-    }
-    return false;
+    this.material = shield.material;
   }
 
   public void setItemType(ItemTypeEnum itemType) {

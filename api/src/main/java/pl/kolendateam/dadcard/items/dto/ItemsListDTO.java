@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.items.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
@@ -14,6 +15,7 @@ import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
+@NoArgsConstructor
 public class ItemsListDTO {
 
   public ArrayList<ArmorsDTO> armorsList;

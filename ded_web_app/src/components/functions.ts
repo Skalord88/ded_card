@@ -1,4 +1,4 @@
-import { Abilitys, Armor, Inventory, Item, Position, Shield, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number

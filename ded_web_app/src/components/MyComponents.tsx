@@ -9,6 +9,7 @@ import {
   CharAttack,
   CharBab,
   CharInventory,
+  Enchantment,
   Inventory,
   Item,
   ItemToBuy,
@@ -104,7 +105,7 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   const deselect = (i: Armor | Shield | Weapon, type: string) => {
     sellItem(i, type);
   };
-  const enchant = (i: Armor | Shield | Weapon, e: number, type: string) => {
+  const enchant = (i: Armor | Shield | Weapon, e: Enchantment, type: string) => {
     enchantItem(i, e, type);
   };
 
@@ -116,6 +117,7 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
             {NameEnchanted(item)}
             <button onClick={() => deselect(item, type)}>-</button>
           </div>
+          <div>{item.material}</div>
           <div>
             {ItemNoEnchanted(item) ? (
               <>
@@ -133,49 +135,49 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
                 <Dropdown.Menu>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, -1, type)
+                      enchant(item as Armor | Shield | Weapon, {id: -1, enchantment: -1}, type)
                     }
                   >
                     prf
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 0, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 0, enchantment: 0}, type)
                     }
                   >
                     0
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 1, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 1, enchantment: 1}, type)
                     }
                   >
                     1
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 2, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 2, enchantment: 2}, type)
                     }
                   >
                     2
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 3, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 3, enchantment: 3}, type)
                     }
                   >
                     3
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 4, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 4, enchantment: 4}, type)
                     }
                   >
                     4
                   </Dropdown.Item>
                   <Dropdown.Item
                     onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, 5, type)
+                      enchant(item as Armor | Shield | Weapon, {id: 5, enchantment: 5}, type)
                     }
                   >
                     5
@@ -589,7 +591,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   };
   const handleEnchantItem = (
     e: Armor | Shield | Weapon,
-    en: number,
+    en: Enchantment,
     type: string
   ) => {
     if (type === "armor") {

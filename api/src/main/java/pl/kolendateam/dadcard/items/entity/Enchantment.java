@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 
 @Getter
 @Setter
@@ -21,8 +22,9 @@ public class Enchantment implements Serializable {
 
     int enchantment;
 
-    public Enchantment(int id) {
-        this.id = id;
+    public Enchantment(EnchantmentDTO enchantmentDTO) {
+        this.id = enchantmentDTO.id;
+        this.enchantment = enchantmentDTO.enchantment;
     }
 
 }

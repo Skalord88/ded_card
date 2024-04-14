@@ -11,8 +11,8 @@ public class MapperEnchantment {
                 enchantment);
     }
 
-    public static Enchantment toEnchantment(int id) {
-        return new Enchantment(id);
+    public static Enchantment toEnchantment(EnchantmentDTO enchantmentDTO) {
+        return new Enchantment(enchantmentDTO);
     }
 
 }

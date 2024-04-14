@@ -56,4 +56,13 @@ public class MapperItems {
         return itemsList;
     }
 
+    public static List<Weapons> toListOfWeapons(ArrayList<WeaponsDTO> weaponsListDTO) {
+        ArrayList<Weapons> weaponsList = new ArrayList<>();
+        weaponsListDTO.forEach(weaponDTO -> {
+            Weapons weaponFromDTO = MapperItems.toWeapon(weaponDTO);
+            weaponsList.add(weaponFromDTO);
+        });
+        return weaponsList;
+    }
+
 }

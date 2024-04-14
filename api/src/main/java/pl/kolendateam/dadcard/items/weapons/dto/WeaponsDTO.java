@@ -12,6 +12,7 @@ import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
@@ -33,6 +34,7 @@ public class WeaponsDTO implements Serializable {
   public SpecialAttacksDTO specialAttacks;
   public String description;
   public EnchantmentDTO enchantment;
+  public MaterialEnum material;
 
   public WeaponsDTO(int idZero) {
     this.id = idZero;
@@ -66,6 +68,7 @@ public class WeaponsDTO implements Serializable {
     } else {
       this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
     }
+    this.material = item.getMaterial();
   }
 
 }

@@ -7,8 +7,8 @@ import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
-import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
 @NoArgsConstructor
 public class ShieldsDTO {
@@ -26,6 +26,7 @@ public class ShieldsDTO {
   public int failure;
   public String description;
   public EnchantmentDTO enchantment;
+  public MaterialEnum material;
 
   public ShieldsDTO(Shields item) {
     this.id = item.getId();
@@ -45,6 +46,7 @@ public class ShieldsDTO {
     } else {
       this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
     }
+    this.material = item.getMaterial();
   }
 
   public ShieldsDTO(int idZero) {

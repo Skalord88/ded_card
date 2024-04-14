@@ -100,6 +100,7 @@ export function Items() {
   useEffect(() => {
 
     if(equipment){
+      console.log(equipment.weaponOne.enchantment)
       setNewItems({
         armorsList: [equipment.armor],
         shieldList: [equipment.shield],
