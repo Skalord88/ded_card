@@ -9,6 +9,8 @@ import com.google.gson.reflect.TypeToken;
 
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.items.MapperEnchantment;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
@@ -30,36 +32,40 @@ public class WeaponsDTO implements Serializable {
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
-  public int enchantment;
+  public EnchantmentDTO enchantment;
 
   public WeaponsDTO(int idZero) {
     this.id = idZero;
   }
 
-  public WeaponsDTO(Weapons w) {
-    this.id = w.getId();
-    this.name = w.getName();
-    this.weaponName = w.getWeaponName();
+  public WeaponsDTO(Weapons item) {
+    this.id = item.getId();
+    this.name = item.getName();
+    this.weaponName = item.getWeaponName();
     this.itemType = ItemTypeEnum.WEAPON;
-    this.cost = w.getCost();
-    this.damage = w.getDamage();
-    this.critical = w.getCritical();
-    this.range = w.getRange();
-    this.weight = w.getWeight();
-    if (w.getSpecialAttacks() == null) {
+    this.cost = item.getCost();
+    this.damage = item.getDamage();
+    this.critical = item.getCritical();
+    this.range = item.getRange();
+    this.weight = item.getWeight();
+    if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;
     } else {
       SpecialAttacksDTO sAttacksDTO = new Gson()
-          .fromJson(w.getSpecialAttacks(), SpecialAttacksDTO.class);
+          .fromJson(item.getSpecialAttacks(), SpecialAttacksDTO.class);
       this.specialAttacks = sAttacksDTO;
     }
     Gson gson = new Gson();
     Type listWeaponType = new TypeToken<WeaponCategoriesEnum[]>() {
     }.getType();
-    WeaponCategoriesEnum[] typ = gson.fromJson(w.getType(), listWeaponType);
+    WeaponCategoriesEnum[] typ = gson.fromJson(item.getType(), listWeaponType);
     this.type = typ;
-    this.description = w.getDescription();
-    this.enchantment = w.getEnchantment();
+    this.description = item.getDescription();
+    if (item.getEnchantment() == null) {
+      this.enchantment = null;
+    } else {
+      this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+    }
   }
 
 }

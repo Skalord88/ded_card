@@ -14,10 +14,11 @@ export function Items() {
 
   const [char, setChar] = useState<CharacterPc>();
   const [items, setItems] = useState<ItemsList>(emptyItemsList);
-  const [itemsToBuy, setitemsToBuy] = useState<ItemsList>(emptyItemsList);
+  const [itemsToBuy, setItemsToBuy] = useState<ItemsList>(emptyItemsList);
   const [equipment, setEquipment] = useState<Inventory>();
   const [tresure, setTresure] = useState<number>(0);
   const [actualTresure, setActualTresure] = useState<number>(0);
+  const [newItems, setNewItems] = useState<ItemsList>(emptyItemsList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +85,7 @@ export function Items() {
       wonderousItems: items.wonderousItems.filter(item => item.cost <= actualTresure)
     }
 
-    setitemsToBuy(updatedItems);
+    setItemsToBuy(updatedItems);
 
   },[items, actualTresure])
 
@@ -96,9 +97,29 @@ export function Items() {
     if (char?.treasure) setTresure(char.treasure);
   }, [char]);
 
+  useEffect(() => {
+
+    if(equipment){
+      setNewItems({
+        armorsList: [equipment.armor],
+        shieldList: [equipment.shield],
+        weaponsList: [
+          equipment.weaponOne,
+          equipment.weaponTwo,
+          equipment.weaponThree,
+          equipment.weaponFour,
+          equipment.weaponFive
+        ],
+        wonderousItems: []
+      });
+    }
+  },[equipment])
+
   const confirmItems = () => {
 
-    axios.post(urlItemsBuy + charId, equipment);
+    // axios.post(urlItemsBuy + charId, equipment);
+
+    axios.post(urlItemsBuy + 'change', newItems);
 
     window.location.reload();
   }

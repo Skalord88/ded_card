@@ -87,22 +87,24 @@ public class ItemsController {
     List<Items> itemsList = this.itemsRepository.findAll();
     int lastId = itemsList.size();
 
-    boolean check = false;
+    boolean find = false;
     if (itemListDTO.armorsList != null) {
       for (ArmorsDTO armorFromListDTO : itemListDTO.armorsList) {
         for (Items item : itemsList) {
-          if (armorFromListDTO.id == item.getId()) {
+          if (item.getId() == armorFromListDTO.id) {
             Armors newArmor = MapperItems.toArmor(armorFromListDTO);
-            if (newArmor.hashCode() != item.hashCode()) {
-              check = true;
-            }
-            if (check) {
-              lastId++;
-              newArmor.setId(lastId);
-              itemsRepository.save(newArmor);
-              check = false;
+            if (!newArmor.checkEqual((Armors) item)) {
+              find = true;
+              break;
             }
           }
+        }
+        if (find) {
+          lastId++;
+          Armors newArmor = MapperItems.toArmor(armorFromListDTO);
+          newArmor.setId(lastId);
+          itemsRepository.save(newArmor);
+          find = false;
         }
       }
     }
@@ -111,16 +113,18 @@ public class ItemsController {
         for (Items item : itemsList) {
           if (shieldFromListDTO.id == item.getId()) {
             Shields newShield = MapperItems.toShield(shieldFromListDTO);
-            if (newShield.hashCode() != item.hashCode()) {
-              check = true;
-            }
-            if (check) {
-              lastId++;
-              newShield.setId(lastId);
-              itemsRepository.save(newShield);
-              check = false;
+            if (!newShield.checkEqual((Shields) item)) {
+              find = true;
+              break;
             }
           }
+        }
+        if (find) {
+          lastId++;
+          Shields newShields = MapperItems.toShield(shieldFromListDTO);
+          newShields.setId(lastId);
+          itemsRepository.save(newShields);
+          find = false;
         }
       }
     }
@@ -129,16 +133,18 @@ public class ItemsController {
         for (Items item : itemsList) {
           if (weaponFromListDTO.id == item.getId()) {
             Weapons newWeapon = MapperItems.toWeapon(weaponFromListDTO);
-            if (newWeapon.hashCode() != item.hashCode()) {
-              check = true;
-            }
-            if (check) {
-              lastId++;
-              newWeapon.setId(lastId);
-              itemsRepository.save(newWeapon);
-              check = false;
+            if (!newWeapon.checkEqual((Weapons) item)) {
+              find = true;
+              break;
             }
           }
+        }
+        if (find) {
+          lastId++;
+          Weapons newWeapon = MapperItems.toWeapon(weaponFromListDTO);
+          newWeapon.setId(lastId);
+          itemsRepository.save(newWeapon);
+          find = false;
         }
       }
     }

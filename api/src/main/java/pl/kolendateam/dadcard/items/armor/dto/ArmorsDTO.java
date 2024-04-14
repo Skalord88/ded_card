@@ -5,8 +5,10 @@ import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
@@ -27,7 +29,7 @@ public class ArmorsDTO implements Serializable {
   public int failure;
   public String description;
   public MaterialEnum material;
-  public int enchantment;
+  public EnchantmentDTO enchantment;
 
   public ArmorsDTO(int idZero) {
     this.id = idZero;
@@ -47,7 +49,11 @@ public class ArmorsDTO implements Serializable {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
-    this.enchantment = item.getEnchantment();
+    if (item.getEnchantment() == null) {
+      this.enchantment = null;
+    } else {
+      this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+    }
   }
 
 }

@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="301" author="oscar">
+    <changeSet id="303" author="oscar">
         <createTable tableName="items">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -66,7 +66,7 @@
             <column name="material" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="enchantment" type="int">
+            <column name="enchantment_id" type="int">
                 <constraints nullable="true"/>
             </column>
         </createTable>

@@ -1,18 +1,21 @@
 package pl.kolendateam.dadcard.items.armor.entity;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
 @Entity
 @NoArgsConstructor
@@ -33,6 +36,13 @@ public class Shields extends Items {
   int penality;
   int failure;
 
+  @Enumerated(EnumType.STRING)
+  MaterialEnum material;
+
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
+  Enchantment enchantment;
+
   public Shields(ShieldsDTO shield) {
     super(shield);
     this.shieldName = shield.shieldName;
@@ -41,6 +51,29 @@ public class Shields extends Items {
     this.maxDex = shield.maxDex;
     this.penality = shield.penality;
     this.failure = shield.failure;
+    if (shield.enchantment == null) {
+      this.enchantment = null;
+    } else {
+      MapperEnchantment.toEnchantment(shield.enchantment.id);
+    }
+  }
+
+  public boolean checkEqual(Shields item) {
+
+    if (this.armorType == item.armorType) {
+      if (this.maxDex == item.maxDex) {
+        if (this.penality == item.penality) {
+          if (this.failure == item.penality) {
+            if (this.material == item.material) {
+              if (this.enchantment.hashCode() == item.enchantment.hashCode()) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
   }
 
   public void setItemType(ItemTypeEnum itemType) {
@@ -49,4 +82,5 @@ public class Shields extends Items {
   public Shields(int idZero) {
     super(idZero);
   }
+
 }

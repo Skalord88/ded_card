@@ -282,14 +282,14 @@ export type CharInventory = {
 }
 
 export type ArmorWeaponToBuy = {
-  item: Item,
+  item: Armor | Shield | Weapon,
   items: Item[],
   type: string,
   buyItem: (
-    newItem: Item,
+    newItem: Armor | Shield | Weapon,
     type: string ) => void;
   sellItem: (
-    newItem: Item,
+    newItem: Armor | Shield | Weapon,
     type: string ) => void;
   enchantItem: (
     newItem: Armor | Shield | Weapon,

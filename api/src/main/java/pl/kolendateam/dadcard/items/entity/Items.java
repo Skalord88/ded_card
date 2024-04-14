@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.DiscriminatorValue;
@@ -15,6 +16,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -100,10 +103,6 @@ public class Items implements Serializable {
 
   public Items(int idZero) {
     this.id = idZero;
-  }
-
-  public Items(ItemsDTO itemDTO) {
-    // TODO Auto-generated constructor stub
   }
 
 }

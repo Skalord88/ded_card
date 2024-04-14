@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-<changeSet id="302" author="oscar">
+<changeSet id="304" author="oscar">
     <insert tableName="items">
         <column name="name" value="Unarmed strike"/>
         <column name="item_type" value="WEAPON"/>
@@ -16,7 +16,7 @@
         <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED','LIGHT']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike."/>
-        <column name="enchantment" value="0"/>
+        
     </insert>
     <insert tableName="items">
         <column name="name" value="No Armor"/>
@@ -30,7 +30,7 @@
         <column name="penality" value="0"/>
         <column name="failure" value="0"/>
         <column name="description" value="Naked"/>
-        <column name="enchantment" value="0"/>
+       
     </insert>
     <insert tableName="items">
         <column name="name" value="No Shield"/>
@@ -44,7 +44,7 @@
         <column name="penality" value="0"/>
         <column name="failure" value="0"/>
         <column name="description" value="Naked"/>
-        <column name="enchantment" value="0"/>
+        
     </insert>
     <insert tableName="items">
         <column name="name" value="No item"/>
@@ -64,7 +64,7 @@
         <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Dagger"/>
@@ -78,7 +78,7 @@
         <column name="type" value="['PIERCING_OR_SLASHING','SIMPLE','LIGHT','THROWN']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Long spear"/>
@@ -91,7 +91,7 @@
         <column name="type" value="['PIERCING','SIMPLE','TWO_HANDED']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Javelin"/>
@@ -105,7 +105,7 @@
         <column name="type" value="['PIERCING','SIMPLE','THROWN']"/>
         <column name="special_attacks"  value=""/>
         <column name="description" value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Glaive"/>
@@ -118,7 +118,7 @@
         <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']"/>
         <column name="special_attacks" value=""/>
         <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shortbow"/>
@@ -132,7 +132,7 @@
         <column name="type" value="['PIERCING','TWO_HANDED','RANGED']"/>
         <column name="special_attacks" value=""/>
         <column name="description" value="You need at least two hands to use a bow, regardless of its size. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when you use a composite shortbow (see below) but not a regular shortbow."/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
 
     <!-- ARMOR -->
@@ -150,7 +150,7 @@
         <column name="failure" value="5"/>
         <column name="description" value="Taka se, ale lekka."/>
         <column name="material" value="LEATHER"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Leather"/>
@@ -165,7 +165,7 @@
         <column name="failure" value="10"/>
         <column name="description" value="Taka se, ale lekka."/>
         <column name="material" value="LEATHER"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Studded leather"/>
@@ -180,7 +180,7 @@
         <column name="failure" value="15"/>
         <column name="description" value="Taka se, ale lekka."/>
         <column name="material" value="LEATHER"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Chain shirt"/>
@@ -195,7 +195,7 @@
         <column name="failure" value="20"/>
         <column name="description" value="A chain shirt comes with a steel cap."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <!-- MEDIUM_ARMOR -->
     <insert tableName="items">
@@ -211,7 +211,7 @@
         <column name="failure" value="20"/>
         <column name="description" value="Taka se, ale lekka."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Scale mail"/>
@@ -226,7 +226,7 @@
         <column name="failure" value="25"/>
         <column name="description" value="Taka se, ale lekka."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Chainmail"/>
@@ -241,7 +241,7 @@
         <column name="failure" value="30"/>
         <column name="description" value="The suit includes gauntlets."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Breastplate"/>
@@ -256,7 +256,7 @@
         <column name="failure" value="25"/>
         <column name="description" value="It comes with a helmet and greaves."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <!-- HEAVY_ARMOR -->
     <insert tableName="items">
@@ -272,7 +272,7 @@
         <column name="failure" value="40"/>
         <column name="description" value="The suit includes gauntlets."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Banded mail"/>
@@ -287,7 +287,7 @@
         <column name="failure" value="35"/>
         <column name="description" value="The suit includes gauntlets."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Half-plate"/>
@@ -302,7 +302,7 @@
         <column name="failure" value="40"/>
         <column name="description" value="The suit includes gauntlets."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Full plate"/>
@@ -317,7 +317,7 @@
         <column name="failure" value="35"/>
         <column name="description" value="The suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4×100) gold pieces."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
 
     <!-- SHIELD -->
@@ -336,7 +336,7 @@
 
         You can’t bash someone with a buckler."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shield, light wooden"/>
@@ -357,7 +357,7 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
         <column name="material" value="WOOD"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shield, light steel"/>
@@ -378,7 +378,7 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shield, heavy wooden"/>
@@ -399,7 +399,7 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
         <column name="material" value="WOOD"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shield, heavy steel"/>
@@ -420,7 +420,7 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
         <column name="material" value="METAL"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
     <insert tableName="items">
         <column name="name" value="Shield, tower"/>
@@ -437,7 +437,7 @@
 
         When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield’s encumbrance."/>
         <column name="material" value="WOOD"/>
-        <column name="enchantment" value="0"/>
+        <column name="enchantment_id" value="0"/>
     </insert>
 
     <!-- WONDEROUS ITEMS -->

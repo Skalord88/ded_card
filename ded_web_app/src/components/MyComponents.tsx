@@ -26,13 +26,14 @@ import {
   AttackMelee,
   AttackRanged,
   BonusAbilities,
-  EnchantedName,
   IndexWeaponOne,
+  ItemNoEnchanted,
+  NameEnchanted,
   SignAndCount,
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
-import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
+import { Button, ButtonGroup, Dropdown, DropdownButton, DropdownToggle } from "react-bootstrap";
 
 export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   return (
@@ -97,10 +98,10 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   sellItem,
   enchantItem
 }) => {
-  const selectItem = (i: Item, type: string) => {
+  const selectItem = (i: Armor | Shield | Weapon, type: string) => {
     buyItem(i, type);
   };
-  const deselect = (i: Item, type: string) => {
+  const deselect = (i: Armor | Shield | Weapon, type: string) => {
     sellItem(i, type);
   };
   const enchant = (i: Armor | Shield | Weapon, e: number, type: string) => {
@@ -109,90 +110,117 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
 
   return (
     <>
-      {item? (
+      {item ? (
         <>
           <div>
-            {item.name}
+            {NameEnchanted(item)}
             <button onClick={() => deselect(item, type)}>-</button>
           </div>
-          {"enchantment" in item ? (
-            <Dropdown as={ButtonGroup}>
-              <Button variant="succes">Enchantment</Button>
+          <div>
+            {ItemNoEnchanted(item) ? (
+              <>
+              <div>
+              <Dropdown as={ButtonGroup}>
+                <Button variant="succes">
+                  <div>Enchantment</div></Button>
 
-              <Dropdown.Toggle split variant="succes" id="enchantemt-drop">
-                +
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, -1, type)
-                  }
+                <Dropdown.Toggle 
+                  split variant="succes" 
+                  id="enchantemt-drop"
                 >
-                  prf
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 0, type)
-                  }
-                >
-                  0
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 1, type)
-                  }
-                >
-                  1
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 2, type)
-                  }
-                >
-                  2
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 3, type)
-                  }
-                >
-                  3
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 4, type)
-                  }
-                >
-                  4
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() =>
-                    enchant(item as Armor | Shield | Weapon, 5, type)
-                  }
-                >
-                  5
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            
-          ) : (
-            <></>
-          )}
+                  +
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, -1, type)
+                    }
+                  >
+                    prf
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 0, type)
+                    }
+                  >
+                    0
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 1, type)
+                    }
+                  >
+                    1
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 2, type)
+                    }
+                  >
+                    2
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 3, type)
+                    }
+                  >
+                    3
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 4, type)
+                    }
+                  >
+                    4
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() =>
+                      enchant(item as Armor | Shield | Weapon, 5, type)
+                    }
+                  >
+                    5
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              </div>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
           <div>{item.description}</div>
         </>
       ) : (
         <></>
       )}
-
-      <div>
+  <div>
+      <Dropdown>
+        <DropdownToggle
+          variant='success'
+          id='dropdown-basic'  
+        >
+          Chose Item
+        </DropdownToggle>
+        <Dropdown.Menu>
         {items.map((it) => {
           return (
-            <div key={it.id}>
-              {it.name} {it.cost}
-              <button onClick={() => selectItem(it, type)}>+</button>
-            </div>
+            <Dropdown.Item>
+              <div key={it.id}>
+                {it.name} {it.cost}
+                <button
+                  onClick={() =>
+                    selectItem(it as Armor | Shield | Weapon, type)
+                  }
+                >
+                  +
+                </button>
+              </div>
+            </Dropdown.Item>
+            
           );
-        })}
+          
+        })}</Dropdown.Menu>
+      </Dropdown>
       </div>
     </>
   );
@@ -566,43 +594,48 @@ export const MapOfInventory: React.FC<CharInventory> = ({
   ) => {
     if (type === "armor") {
       e.enchantment = en;
-
       setEquipment((updateInventory) => ({
         ...updateInventory,
         armor: e as Armor
       }));
     }
     if (type === "shield") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         shield: e as Shield
       }));
     }
     if (type === "one") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         weaponOne: e as Weapon
       }));
     }
     if (type === "two") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         weaponTwo: e as Weapon
       }));
     }
     if (type === "three") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         weaponThree: e as Weapon
       }));
     }
     if (type === "four") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         weaponFour: e as Weapon
       }));
     }
     if (type === "five") {
+      e.enchantment = en;
       setEquipment((updateInventory) => ({
         ...updateInventory,
         weaponFive: e as Weapon

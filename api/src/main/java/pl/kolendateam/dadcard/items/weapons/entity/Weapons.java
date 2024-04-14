@@ -1,23 +1,22 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
-import org.hibernate.mapping.Array;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
+import pl.kolendateam.dadcard.items.MapperEnchantment;
+import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 
 @Entity
@@ -38,7 +37,13 @@ public class Weapons extends Items {
   Integer range;
   String type;
   String specialAttacks;
-  int enchantment;
+
+  @Enumerated(EnumType.STRING)
+  MaterialEnum material;
+
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
+  Enchantment enchantment;
 
   public Weapons(WeaponsDTO weapon) {
     super(weapon);
@@ -56,7 +61,22 @@ public class Weapons extends Items {
     } else {
       this.specialAttacks = null;
     }
-    this.enchantment = weapon.enchantment;
+    if (weapon.enchantment == null) {
+      this.enchantment = null;
+    } else {
+      MapperEnchantment.toEnchantment(weapon.enchantment.id);
+    }
+  }
+
+  public boolean checkEqual(Weapons item) {
+
+    if (this.material == item.material) {
+      if (this.enchantment.hashCode() == item.enchantment.hashCode()) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   public void setItemType(ItemTypeEnum itemType) {

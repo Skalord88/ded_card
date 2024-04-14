@@ -260,3 +260,21 @@ export function EnchantmentCost(
     return total;
 }
 
+export function NameEnchanted(
+    item: any
+): string {
+    if (item.enchantment < 0) {return 'pft ' + item.name}
+    if (item.enchantment > 0) {return item.name + '+' + item.enchantment}
+    return item.name
+}
+
+export function ItemNoEnchanted(
+    item: any
+): boolean {
+    if (
+        item.armorName === 'NO_ARMOR' ||
+        item.shieldName === 'NO_SHIELD' ||
+        item.weaponName === 'UNARMED_STRIKE'
+    ) {return false}
+    return true;
+}

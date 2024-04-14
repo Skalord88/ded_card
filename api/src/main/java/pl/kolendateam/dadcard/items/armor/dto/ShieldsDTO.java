@@ -3,8 +3,11 @@ package pl.kolendateam.dadcard.items.armor.dto;
 import java.math.BigDecimal;
 
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
 @NoArgsConstructor
@@ -22,6 +25,7 @@ public class ShieldsDTO {
   public int penality;
   public int failure;
   public String description;
+  public EnchantmentDTO enchantment;
 
   public ShieldsDTO(Shields item) {
     this.id = item.getId();
@@ -36,6 +40,11 @@ public class ShieldsDTO {
     this.penality = item.getPenality();
     this.failure = item.getFailure();
     this.description = item.getDescription();
+    if (item.getEnchantment() == null) {
+      this.enchantment = null;
+    } else {
+      this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+    }
   }
 
   public ShieldsDTO(int idZero) {
