@@ -207,14 +207,13 @@ export function EnchantedName(
     item: any
 ): string {
     let itemName: string = '';
-    if (item.enchantment < 0) {
+    if (item.enchantment?.enchantment < 0) {
         itemName = 'pft ' + item.name
-    } else if (item.enchantment === 0) {
+    } else if (item.enchantment?.enchantment === 0) {
         itemName = item.name
     } else {
-        itemName = item.name + '+' + item.enchantment
+        itemName = item.name + '+' + item.enchantment?.enchantment
     }
-    console.log(itemName)
     return itemName;
 }
 
@@ -225,21 +224,21 @@ export function CostOfEnchant(
     if (type === 'Armor') {
         switch (enchantment) {
             case -1: return 150
-            case 1: return 1000
-            case 2: return 4000
-            case 3: return 9000
-            case 4: return 16000
-            case 5: return 25000
+            case 1: return 1150
+            case 2: return 4150
+            case 3: return 9150
+            case 4: return 16150
+            case 5: return 25150
         }
     }
     if (type === 'Weapn') {
         switch (enchantment) {
             case -1: return 300
-            case 1: return 2000
-            case 2: return 8000
-            case 3: return 18000
-            case 4: return 32000
-            case 5: return 50000
+            case 1: return 2300
+            case 2: return 8300
+            case 3: return 18300
+            case 4: return 32300
+            case 5: return 50300
         }
     }
     return 0;
@@ -251,9 +250,9 @@ export function EnchantmentCost(
     let total: number = 0
     items.forEach(item => {
         if (item.itemType === 'ARMOR' || item.itemType === 'SHIELD') {
-            total += item.cost + CostOfEnchant(item.enchantment, 'Armor')
+            total += item.cost + CostOfEnchant(item.enchantment?.enchantment, 'Armor')
         } else {
-            total += item.cost + CostOfEnchant(item.enchantment, 'Weapn')
+            total += item.cost + CostOfEnchant(item.enchantment?.enchantment, 'Weapn')
         }
 
     })
@@ -263,8 +262,8 @@ export function EnchantmentCost(
 export function NameEnchanted(
     item: any
 ): string {
-    if (item.enchantment < 0) {return 'pft ' + item.name}
-    if (item.enchantment > 0) {return item.name + '+' + item.enchantment}
+    if (item.enchantment?.enchantment < 0) {return 'pft ' + item.name}
+    if (item.enchantment?.enchantment > 0) {return item.name + '+' + item.enchantment?.enchantment}
     return item.name
 }
 
@@ -277,4 +276,14 @@ export function ItemNoEnchanted(
         item.weaponName === 'UNARMED_STRIKE'
     ) {return false}
     return true;
+}
+
+export function ItemEnchantedAndNoEnchanted(
+    item: any
+): boolean {
+    if (
+        item.enchantment?.enchantment === 0 &&
+        ItemNoEnchanted(item)
+    ) {return true}
+    return false
 }

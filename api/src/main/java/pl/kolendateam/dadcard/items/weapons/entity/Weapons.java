@@ -38,12 +38,12 @@ public class Weapons extends Items {
   String type;
   String specialAttacks;
 
-  @ManyToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
-  Enchantment enchantment;
-
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
+
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
+  Enchantment enchantment;
 
   public Weapons(WeaponsDTO weapon) {
     super(weapon);
@@ -61,12 +61,13 @@ public class Weapons extends Items {
     } else {
       this.specialAttacks = null;
     }
+    this.material = weapon.material;
     if (weapon.enchantment == null) {
       this.enchantment = null;
     } else {
-      MapperEnchantment.toEnchantment(weapon.enchantment);
+      this.enchantment = MapperEnchantment.toEnchantment(weapon.enchantment);
     }
-    this.material = weapon.material;
+
   }
 
   public void setItemType(ItemTypeEnum itemType) {

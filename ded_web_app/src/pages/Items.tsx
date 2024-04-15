@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapOfInventory } from "../components/MyComponents";
+import { MapOfInventory, MapOfItemChange } from "../components/MyComponents";
 import { CharacterPc, Inventory, Item, ItemsList } from "../components/interfaces";
 import { urlChar, urlItems, urlItemsBuy } from "../components/url";
 import {
@@ -98,9 +98,7 @@ export function Items() {
   }, [char]);
 
   useEffect(() => {
-
     if(equipment){
-      console.log(equipment.weaponOne.enchantment)
       setNewItems({
         armorsList: [equipment.armor],
         shieldList: [equipment.shield],
@@ -116,15 +114,14 @@ export function Items() {
     }
   },[equipment])
 
-  const confirmItems = () => {
-
-    // axios.post(urlItemsBuy + charId, equipment);
-
+  const createItems = () => {
     axios.post(urlItemsBuy + 'change', newItems);
-
     window.location.reload();
   }
-
+  const confirmItems = () => {
+    axios.post(urlItemsBuy + charId, equipment);
+    window.location.reload();
+  }
 
   return (
     <>
@@ -140,6 +137,14 @@ export function Items() {
             <button>
               <Link to={'/attack/'+ charId}>to Attack</Link>
             </button></div>
+        </div>
+        <div className="container-item">
+          <div>
+            <MapOfItemChange
+              list={items}
+              createNew={createItems}
+            />
+          </div>
         </div>
       </div>
       <div>

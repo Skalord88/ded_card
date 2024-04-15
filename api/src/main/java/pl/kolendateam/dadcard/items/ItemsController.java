@@ -79,9 +79,9 @@ public class ItemsController {
   }
 
   @PostMapping(value = "/change", consumes = { "application/json" })
-  public ItemsListDTO changeItem(@RequestBody ItemsListDTO itemListDTO) {
+  public List<Items> changeItem(@RequestBody ItemsListDTO itemListDTO) {
 
-    if (itemListDTO.armorsList != null && itemListDTO.armorsList.size() > 0) {
+    if (itemListDTO.armorsList != null && !itemListDTO.armorsList.isEmpty()) {
       Armors newArmor = MapperItems.toArmor(itemListDTO.armorsList.get(0));
       Optional<Armors> existingArmor = this.itemsRepository
           .findArmorsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
@@ -90,13 +90,12 @@ public class ItemsController {
               newArmor.getFailure(),
               newArmor.getPenality(),
               newArmor.getMaterial());
-
       if (!existingArmor.isPresent()) {
         newArmor.setId(null);
         this.itemsRepository.save(newArmor);
       }
     }
-    if (itemListDTO.shieldList != null && itemListDTO.shieldList.size() > 0) {
+    if (itemListDTO.shieldList != null && !itemListDTO.shieldList.isEmpty()) {
       Shields newShield = MapperItems.toShield(itemListDTO.shieldList.get(0));
       Optional<Shields> existingShield = this.itemsRepository
           .findShieldsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
@@ -110,7 +109,7 @@ public class ItemsController {
         this.itemsRepository.save(newShield);
       }
     }
-    if (itemListDTO.weaponsList != null && itemListDTO.weaponsList.size() > 0) {
+    if (itemListDTO.weaponsList != null && !itemListDTO.weaponsList.isEmpty()) {
       List<Weapons> listOfWeapons = MapperItems.toListOfWeapons(itemListDTO.weaponsList);
       listOfWeapons.forEach(weapon -> {
         Optional<Weapons> existingWeapon = this.itemsRepository
@@ -123,7 +122,7 @@ public class ItemsController {
         }
       });
     }
-    return itemListDTO;
+    return this.itemsRepository.findAll();
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })

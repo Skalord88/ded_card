@@ -294,10 +294,6 @@ export type ArmorWeaponToBuy = {
   sellItem: (
     newItem: Armor | Shield | Weapon,
     type: string ) => void;
-  enchantItem: (
-    newItem: Armor | Shield | Weapon,
-    enchantment: Enchantment,
-    type: string ) => void;
 }
 
 export type ItemToBuy = {
@@ -334,6 +330,12 @@ export type Backpack = {
   sellItem: (
     newItem: Item,
     type: string ) => void;
+}
+
+export type ItemToChange = {
+  list: ItemsList,
+  createNew: (
+    newItem: Item ) => void;
 }
 
 export type CharAttack = {

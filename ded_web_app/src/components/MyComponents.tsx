@@ -13,6 +13,7 @@ import {
   Inventory,
   Item,
   ItemToBuy,
+  ItemToChange,
   Rings,
   SelectOffWeapon,
   SelectWeapon,
@@ -27,14 +28,16 @@ import {
   AttackMelee,
   AttackRanged,
   BonusAbilities,
+  EnchantedName,
+  EnchantmentCost,
   IndexWeaponOne,
-  ItemNoEnchanted,
+  ItemEnchantedAndNoEnchanted,
   NameEnchanted,
   SignAndCount,
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
-import { Button, ButtonGroup, Dropdown, DropdownButton, DropdownToggle } from "react-bootstrap";
+import { Button, ButtonGroup, Dropdown, DropdownToggle } from "react-bootstrap";
 
 export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   return (
@@ -96,17 +99,17 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   items,
   type,
   buyItem,
-  sellItem,
-  enchantItem
+  sellItem
 }) => {
+  const [open, setOpen] = useState<boolean>(false);
+  const toggleOpen = () => {
+    setOpen((open) => !open);
+  };
   const selectItem = (i: Armor | Shield | Weapon, type: string) => {
     buyItem(i, type);
   };
   const deselect = (i: Armor | Shield | Weapon, type: string) => {
     sellItem(i, type);
-  };
-  const enchant = (i: Armor | Shield | Weapon, e: Enchantment, type: string) => {
-    enchantItem(i, e, type);
   };
 
   return (
@@ -117,112 +120,41 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
             {NameEnchanted(item)}
             <button onClick={() => deselect(item, type)}>-</button>
           </div>
-          <div>{item.material}</div>
-          <div>
-            {ItemNoEnchanted(item) ? (
-              <>
-              <div>
-              <Dropdown as={ButtonGroup}>
-                <Button variant="succes">
-                  <div>Enchantment</div></Button>
-
-                <Dropdown.Toggle 
-                  split variant="succes" 
-                  id="enchantemt-drop"
-                >
-                  +
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: -1, enchantment: -1}, type)
-                    }
-                  >
-                    prf
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 0, enchantment: 0}, type)
-                    }
-                  >
-                    0
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 1, enchantment: 1}, type)
-                    }
-                  >
-                    1
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 2, enchantment: 2}, type)
-                    }
-                  >
-                    2
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 3, enchantment: 3}, type)
-                    }
-                  >
-                    3
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 4, enchantment: 4}, type)
-                    }
-                  >
-                    4
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    onClick={() =>
-                      enchant(item as Armor | Shield | Weapon, {id: 5, enchantment: 5}, type)
-                    }
-                  >
-                    5
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              </div>
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
           <div>{item.description}</div>
         </>
       ) : (
         <></>
       )}
-  <div>
-      <Dropdown>
-        <DropdownToggle
-          variant='success'
-          id='dropdown-basic'  
-        >
-          Chose Item
-        </DropdownToggle>
-        <Dropdown.Menu>
-        {items.map((it) => {
-          return (
-            <Dropdown.Item>
-              <div key={it.id}>
-                {it.name} {it.cost}
-                <button
-                  onClick={() =>
-                    selectItem(it as Armor | Shield | Weapon, type)
-                  }
-                >
-                  +
-                </button>
-              </div>
-            </Dropdown.Item>
-            
-          );
-          
-        })}</Dropdown.Menu>
-      </Dropdown>
+      <div>
+        <Dropdown show={open} onToggle={toggleOpen}>
+          <DropdownToggle
+            variant="success"
+            id="dropdown-basic"
+            onClick={() => toggleOpen()}
+          >
+            Choose Item
+          </DropdownToggle>
+          <Dropdown.Menu className="drop">
+            {open ? (
+              <>
+                {items.map((it) => (
+                  <Dropdown.Item key={it.id}>
+                    <div>
+                      {NameEnchanted(it)} {EnchantmentCost([it])}
+                      <button
+                        onClick={() =>
+                          selectItem(it as Armor | Shield | Weapon, type)
+                        }
+                      >
+                        +
+                      </button>
+                    </div>
+                  </Dropdown.Item>
+                ))}
+              </>
+            ) : null}
+          </Dropdown.Menu>
+        </Dropdown>
       </div>
     </>
   );
@@ -354,6 +286,159 @@ export const BuyRings: React.FC<Rings> = ({
             })}
           </div>
         </ul>
+      </div>
+    </>
+  );
+};
+
+export const MapOfItemChange: React.FC<ItemToChange> = ({
+  list,
+  createNew
+}) => {
+  const [item, setItem] = useState<Armor | Shield | Weapon>();
+  const [open, setOpen] = useState<boolean>(false);
+  const toggleOpen = () => {
+    setOpen((open) => !open);
+  };
+
+  const enchant = (e: Enchantment) => {
+    if (item) {
+      setItem({
+        ...item,
+        enchantment: e
+      });
+    }
+  };
+
+  const enchantItems = [
+    {
+      enchantment: { id: -1, enchantment: -1 },
+      text: "pft"
+    },
+    {
+      enchantment: { id: 0, enchantment: 0 },
+      text: "-"
+    },
+    {
+      enchantment: { id: 1, enchantment: 1 },
+      text: "+1"
+    },
+    {
+      enchantment: { id: 2, enchantment: 2 },
+      text: "+2"
+    },
+    {
+      enchantment: { id: 3, enchantment: 3 },
+      text: "+3"
+    },
+    {
+      enchantment: { id: 4, enchantment: 4 },
+      text: "+4"
+    },
+    {
+      enchantment: { id: 5, enchantment: 5 },
+      text: "+5"
+    }
+  ];
+
+  const selectItem = (i: any) => {
+    setItem(i);
+  };
+  const create = (i: any) => {
+    createNew(i);
+  };
+
+  return (
+    <>
+      {item ? (
+        <>
+          <div className="container-table">
+            <div>{EnchantedName(item)}</div>
+            <div>{EnchantmentCost([item])} gp</div>
+            <div>
+              <Dropdown show={open} onToggle={toggleOpen}>
+                <Dropdown.Toggle
+                  split
+                  variant="succes"
+                  id="enchantemt-drop"
+                  onClick={() => toggleOpen()}
+                >
+                  Enchantment
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="drop">
+                  {open ? (
+                    <>
+                      {enchantItems.map((enItem) => (
+                        <Dropdown.Item
+                          onClick={() => enchant(enItem.enchantment)}
+                        >
+                          <div>{enItem.text}</div>
+                        </Dropdown.Item>
+                      ))}
+                    </>
+                  ) : (
+                    null
+                  )}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+            <div>
+              <button onClick={() => create(item)}>create</button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+      <div className="container-table">
+        <div className="container-list">
+          {list.armorsList.map((armor) => (
+            <>
+              {ItemEnchantedAndNoEnchanted(armor) ? (
+                <>
+                  <div>{EnchantedName(armor)}</div>
+                  <div>
+                    <button onClick={() => selectItem(armor)}>+</button>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </>
+          ))}
+        </div>
+        <div className="container-list">
+          {list.shieldList.map((shield) => (
+            <>
+              {ItemEnchantedAndNoEnchanted(shield) ? (
+                <>
+                  <div>{EnchantedName(shield)}</div>
+                  <div>
+                    <button onClick={() => selectItem(shield)}>+</button>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </>
+          ))}
+        </div>
+        <div className="container-list">
+          {list.weaponsList.map((weapon) => (
+            <>
+              {ItemEnchantedAndNoEnchanted(weapon) ? (
+                <>
+                  <div>{EnchantedName(weapon)}</div>
+                  <div>
+                    <button onClick={() => selectItem(weapon)}>+</button>
+                  </div>
+                </>
+              ) : (
+                <></>
+              )}
+            </>
+          ))}
+        </div>
       </div>
     </>
   );
@@ -589,61 +674,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       }));
     }
   };
-  const handleEnchantItem = (
-    e: Armor | Shield | Weapon,
-    en: Enchantment,
-    type: string
-  ) => {
-    if (type === "armor") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        armor: e as Armor
-      }));
-    }
-    if (type === "shield") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        shield: e as Shield
-      }));
-    }
-    if (type === "one") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        weaponOne: e as Weapon
-      }));
-    }
-    if (type === "two") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        weaponTwo: e as Weapon
-      }));
-    }
-    if (type === "three") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        weaponThree: e as Weapon
-      }));
-    }
-    if (type === "four") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        weaponFour: e as Weapon
-      }));
-    }
-    if (type === "five") {
-      e.enchantment = en;
-      setEquipment((updateInventory) => ({
-        ...updateInventory,
-        weaponFive: e as Weapon
-      }));
-    }
-  };
 
   return (
     <>
@@ -656,7 +686,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"armor"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
@@ -667,7 +696,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"shield"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
       </div>
@@ -680,7 +708,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"one"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
@@ -691,7 +718,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"two"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
@@ -702,7 +728,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"three"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
@@ -713,7 +738,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"four"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
         <div className="container-item">
@@ -724,7 +748,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             type={"five"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
-            enchantItem={handleEnchantItem}
           />
         </div>
       </div>

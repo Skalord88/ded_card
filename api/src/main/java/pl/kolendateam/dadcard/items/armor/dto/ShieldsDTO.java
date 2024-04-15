@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.items.armor.dto;
 
 import java.math.BigDecimal;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
@@ -10,6 +11,7 @@ import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
+@AllArgsConstructor
 @NoArgsConstructor
 public class ShieldsDTO {
 

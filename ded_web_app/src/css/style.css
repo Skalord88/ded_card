@@ -27,11 +27,19 @@ button {
   grid-template-columns: auto auto auto auto auto auto;
   padding: 4px;
 }
+.container-list {
+  display: grid;
+  align-content: start;
+  grid-template-columns: auto auto;
+}
 .container-table-ten {
   display: grid;
   align-content: space-around;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
   padding: 2px;
+}
+.drop {
+  background-color:whitesmoke;
 }
 
 

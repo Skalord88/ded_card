@@ -251,6 +251,73 @@
 
         A magical beast, a dire animal, or an animal trained to attack or guard is allowed a saving throw; an animal not trained to attack or guard is not."/>
     </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animate Dead"/>
+        <column name="school" value="['NECROMANCY','EVIL']"/>
+        <column name="level" value="[{'level':3,'classDomain':'CLERIC'},{'level':4,'classDomain':'SORCERER_WIZARD'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="One or more corpses touched"/>
+        <column name="duration" value="INSTANTANEOUS"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="This spell turns the bones or bodies of dead creatures into undead skeletons or zombies that follow your spoken commands.
+
+        The undead can follow you, or they can remain in an area and attack any creature (or just a specific kind of creature) entering the place. They remain animated until they are destroyed. (A destroyed skeleton or zombie can’t be animated again.)
+        
+        Regardless of the type of undead you create with this spell, you can’t create more HD of undead than twice your caster level with a single casting of animate dead. (The desecrate spell doubles this limit)
+        
+        The undead you create remain under your control indefinitely. No matter how many times you use this spell, however, you can control only 4 HD worth of undead creatures per caster level. If you exceed this number, all the newly created creatures fall under your control, and any excess undead from previous castings become uncontrolled. (You choose which creatures are released.) If you are a cleric, any undead you might command by virtue of your power to command or rebuke undead do not count toward the limit.
+        
+        Skeletons
+        A skeleton can be created only from a mostly intact corpse or skeleton. The corpse must have bones. If a skeleton is made from a corpse, the flesh falls off the bones.
+        
+        Zombies
+        A zombie can be created only from a mostly intact corpse. The corpse must be that of a creature with a true anatomy.
+        
+        Material Component
+        You must place a black onyx gem worth at least 25 gp per Hit Die of the undead into the mouth or eye socket of each corpse you intend to animate. The magic of the spell turns these gems into worthless, burned-out shells."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animate Objects"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':6,'classDomain':'BARD'},{'level':6,'classDomain':'CLERIC'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="target" value="One Small object per caster level; see text"/>
+        <column name="duration" value="ONE_ROUND_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="You imbue inanimate objects with mobility and a semblance of life. Each such animated object then immediately attacks whomever or whatever you initially designate.
+
+        An animated object can be of any nonmagical material. You may animate one Small or smaller object or an equivalent number of larger objects per caster level. A Medium object counts as two Small or smaller objects, a Large object as four, a Huge object as eight, a Gargantuan object as sixteen, and a Colossal object as thirty-two. You can change the designated target or targets as a move action, as if directing an active spell.
+        
+        This spell cannot animate objects carried or worn by a creature.
+        
+        Animate objects can be made permanent with a permanency spell."/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Animate Objects"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{'level':6,'classDomain':'BARD'},{'level':6,'classDomain':'CLERIC'}]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="target" value="One Small object per caster level; see text"/>
+        <column name="duration" value="ONE_ROUND_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="You imbue inanimate plants with mobility and a semblance of life. Each animated plant then immediately attacks whomever or whatever you initially designate as though it were an animated object of the appropriate size category. You may animate one Large or smaller plant, or an equivalent number of larger plants, per three caster levels. A Huge plant counts as two Large or smaller plants, a Gargantuan plant as four, and a Colossal plant as eight. You can change the designated target or targets as a move action, as if directing an active spell.
+
+        Use the statistics for animated objects, except that plants smaller than Large usually don’t have hardness.
+        
+        Animate plants cannot affect plant creatures, nor does it affect nonliving vegetable material.
+        
+        Entangle
+        Alternatively, you may imbue all plants within range with a degree of mobility, which allows them to entwine around creatures in the area. This usage of the spell duplicates the effect of an entangle spell. Spell resistance does not keep creatures from being entangled. This effect lasts 1 hour per caster level."/>
+    </insert>
         <!--
     <insert tableName="spells">
         <column name="name" value=""/>

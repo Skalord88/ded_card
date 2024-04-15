@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
@@ -18,6 +19,7 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
+@AllArgsConstructor
 @NoArgsConstructor
 public class WeaponsDTO implements Serializable {
 
