@@ -180,8 +180,8 @@
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="10 min./level (D)" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You assume the form of a creature of the same type as your normal form. 
                 The new form must be within one size category of your normal size. The maximum HD of an assumed form is equal to your caster level, to a maximum of 5 HD at 5th level. You can change into a member of your own kind or even into yourself.     
@@ -633,8 +633,8 @@
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="1 min./level (D)" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell makes your eyes glow blue and allows you to see magical auras within 120 feet of you. The effect is similar to that of a detect magic spell, but arcane sight does not require concentration and discerns aura location and power more quickly.
                             
@@ -657,10 +657,10 @@
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
+            <column name="duration" value="null" />
             <column name="saving_throw"
-                value="" />
-            <column name="spell_resistance" value="" />
+                value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like arcane sight, except that you automatically know which spells or magical effects are active upon any individual or object you see.
                                 
@@ -763,8 +763,8 @@
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="Instantaneous" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="An augury can tell you whether a particular action will bring good or bad results for you in the immediate future.
 
@@ -947,9 +947,9 @@
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="Mass bear?s endurance works like bear?s endurance, except that it affects multiple creatures." />
         </insert>
@@ -1256,8 +1256,8 @@
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="1 round/level (D)" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You ?blink? back and forth between the Material Plane and the Ethereal Plane. You look as though you?re winking in and out of reality very quickly and at random.
                 
@@ -1289,7 +1289,8 @@
         <insert tableName="spells">
             <column name="name" value="Blur" />
             <column name="school" value="['ILLUSION','GLAMER']" />
-            <column name="level" value="[{'level':2,'classDomain':'BARD'},{'level':2,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="level"
+                value="[{'level':2,'classDomain':'BARD'},{'level':2,'classDomain':'SORCERER_WIZARD'}]" />
             <column name="components" value="['VERBAL']" />
             <column name="casting_time" value="ONE_STANDARD_ACTION" />
             <column name="range" value="TOUCH" />
@@ -1365,9 +1366,9 @@
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like bull?s strength, except that it affects multiple creatures." />
         </insert>
@@ -1427,9 +1428,9 @@
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions 
                 like call lightning, except that each bolt deals 5d6 points of electricity damage (or 5d10 if created outdoors in a stormy area), and you may call a maximum of 15 bolts." />
@@ -1509,9 +1510,9 @@
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like cat?s grace, except that it affects multiple creatures." />
         </insert>
@@ -1617,9 +1618,9 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="One animal" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like charm person, except that it affects a creature of the animal type." />
         </insert>
@@ -1636,8 +1637,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="One living creature" />
             <column name="duration" value="One day/level" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like charm person, except that the effect is not restricted by creature type or size." />
         </insert>
@@ -1654,8 +1655,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="null" />
             <column name="duration" value="One day/level" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like charm monster, except that mass charm monster affects a number of creatures whose combined HD do not exceed twice your level, or at least one creature regardless of HD. If there are more potential targets than you can affect, you choose them one at a time until you choose a creature with too many HD." />
         </insert>
@@ -1790,9 +1791,9 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like interposing hand, except that the hand can interpose itself, push, or strike one opponent that you select. The floating hand can move as far as 60 feet and can attack in the same round. Since this hand is directed by you, its ability to notice or attack invisible or concealed creatures is no better than yours.
 
@@ -1976,8 +1977,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="null" />
             <column name="duration" value="1 round/level" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like command, except that up to one creature per level may be affected, and the activities continue beyond 1 round. At the start of each commanded creature’s action after the first, it gets another Will save to attempt to break free from the spell. Each creature must receive the same command." />
         </insert>
@@ -2039,8 +2040,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="1 round/level" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You contact your deity—or agents thereof —and ask questions that can be answered by a simple yes or no. (A cleric of no particular deity contacts a philosophically allied deity.) You are allowed one such question per caster level. The answers given are correct within the limits of the entity’s knowledge. “Unclear” is a legitimate answer, because powerful beings of the Outer Planes are not necessarily omniscient. In cases where a one-word answer would be misleading or contrary to the deity’s interests, a short phrase (five words or less) may be given as an answer instead.
 
@@ -2065,8 +2066,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="Instantaneous" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You become one with nature, attaining knowledge of the surrounding territory. You instantly gain knowledge of as many as three facts from among the following subjects: the ground or terrain, plants, minerals, bodies of water, people, general animal population, presence of woodland creatures, presence of powerful unnatural creatures, or even the general state of the natural setting.
 
@@ -2085,8 +2086,8 @@ A bit of fur; a piece of amber, glass, or a crystal rod; plus one silver pin for
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="10 min./level" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You can understand the spoken words of creatures or read otherwise incomprehensible written messages. In either case, you must touch the creature or the writing. The ability to read does not necessarily impart insight into the material, merely its literal meaning. The spell enables you to understand or read an unknown language, not speak or write it.
 
@@ -2161,8 +2162,8 @@ A pinch of soot and a few grains of salt." />
             <column name="effect" value="null" />
             <column name="target" value="One living creature" />
             <column name="duration" value="ONE_ROUND" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell causes a single creature to become confused for 1 round. See the confusion spell, above, to determine the exact effect on the subject." />
         </insert>
@@ -2204,8 +2205,8 @@ A pinch of soot and a few grains of salt." />
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="Concentration" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You send your mind to another plane of existence (an Elemental Plane or some plane farther removed) in order to receive advice and information from powers there. (See the accompanying table for possible consequences and results of the attempt.) The powers reply in a language you understand, but they resent such contact and give only brief answers to your questions. (All questions are answered with “yes,” “no,” “maybe,” “never,” “irrelevant,” or some other one-word answer.)
 
@@ -2272,8 +2273,8 @@ A pinch of soot and a few grains of salt." />
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="One day/level (D) or until discharged" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You can place another spell upon your person so that it comes into effect under some condition you dictate when casting contingency. The contingency spell and the companion spell are cast at the same time. The 10-minute casting time is the minimum total for both castings; if the companion spell has a casting time longer than 10 minutes, use that instead.
 
@@ -2418,9 +2419,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like interposing hand, except that the hand can interpose itself, push, or crush one opponent that you select.
 
@@ -2450,9 +2451,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like cure light wounds, except that it cures 4d8 points of damage +1 point per caster level (maximum +20)." />
         </insert>
@@ -2468,9 +2469,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like mass cure light wounds, except that it cures 4d8 points of damage +1 point per caster level (maximum +40)." />
         </insert>
@@ -2486,9 +2487,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like cure light wounds, except that it cures only 1 point of damage." />
         </insert>
@@ -2504,9 +2505,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like cure light wounds, except that it cures 2d8 points of damage +1 point per caster level (maximum +10)." />
         </insert>
@@ -2522,9 +2523,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like mass cure light wounds, except that it cures 2d8 points of damage +1 point per caster level (maximum +30)." />
         </insert>
@@ -2540,9 +2541,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like cure light wounds, except that it cures 3d8 points of damage +1 point per caster level (maximum +15)." />
         </insert>
@@ -2558,9 +2559,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like mass cure light wounds, except that it cures 3d8 points of damage +1 point per caster level (maximum +35)." />
         </insert>
@@ -2711,9 +2712,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="One living creature of 6 HD or less" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like daze, but daze monster can affect any one living creature of any type. Creatures of 7 or more HD are not affected." />
         </insert>
@@ -2788,9 +2789,9 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like sleep, except that it affects 10 HD of creatures." />
         </insert>
@@ -2806,8 +2807,8 @@ A pinch of soot and a few grains of salt." />
             <column name="effect" value="null" />
             <column name="target" value="null" />
             <column name="duration" value="One day/level (D)" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like darkness, except that the object radiates shadowy illumination in a 60-foot radius and the darkness lasts longer.
 
@@ -2845,8 +2846,8 @@ A pinch of soot and a few grains of salt." />
             <column name="effect" value="null" />
             <column name="target" value="null" />
             <column name="duration" value="5 rounds or less; see text" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like fireball, except that it is more powerful and can detonate up to 5 rounds after the spell is cast. The burst of flame deals 1d6 points of fire damage per caster level (maximum 20d6).
 
@@ -2863,7 +2864,7 @@ A pinch of soot and a few grains of salt." />
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
+            <column name="duration" value="null" />
             <column name="saving_throw" value="Will partial" />
             <column name="spell_resistance" value="Yes" />
             <column name="descriptive_text"
@@ -2981,9 +2982,9 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like detect evil, except that it detects the auras of chaotic creatures, clerics of chaotic deities, chaotic spells, and chaotic magic items, and you are vulnerable to an overwhelming chaotic aura if you are lawful." />
         </insert>
@@ -3050,9 +3051,9 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like detect evil, except that it detects the auras of good creatures, clerics or paladins of good deities, good spells, and good magic items, and you are vulnerable to an overwhelming good aura if you are evil. Healing potions, antidotes, and similar beneficial items are not good." />
         </insert>
@@ -3067,9 +3068,9 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
             <column name="area" value="null" />
             <column name="effect" value="null" />
             <column name="target" value="null" />
-            <column name="duration" value="" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="This spell functions like detect evil, except that it detects the auras of lawful creatures, clerics of lawful deities, lawful spells, and lawful magic items, and you are vulnerable to an overwhelming lawful aura if you are chaotic." />
         </insert>
@@ -3476,8 +3477,8 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
             <column name="effect" value="null" />
             <column name="target" value="You" />
             <column name="duration" value="10 min./level (D)" />
-            <column name="saving_throw" value="" />
-            <column name="spell_resistance" value="" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
             <column name="descriptive_text"
                 value="You make yourself—including clothing, armor, weapons, and equipment—look different. You can seem 1 foot shorter or taller, thin, fat, or in between. You cannot change your body type. Otherwise, the extent of the apparent change is up to you. You could add or obscure a minor feature or look like an entirely different person.
 
@@ -3489,7 +3490,7 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
         </insert>
 
         <insert tableName="spells">
-            <column name="name" value="" />
+            <column name="name" value="null" />
             <column name="school" value="[Disintegrate]" />
             <column name="level"
                 value="[{'level':7,'classDomain':'DESTRUCTION'},{'level':6,'classDomain':'SORCERER_WIZARD'}]" />
@@ -3533,6 +3534,378 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
                 value="This spell forces an extraplanar creature back to its proper plane if it fails a special Will save (DC = spell’s save DC - creature’s HD + your caster level). If the spell is successful, the creature is instantly whisked away, but there is a 20% chance of actually sending the subject to a plane other than its own." />
         </insert>
 
+        <insert tableName="spells">
+            <column name="name" value="Dispel Chaos" />
+            <column name="school" value="['ABJURATION','LAWFUL']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'CLERIC'},{'level':5,'classDomain':'LAW'},{'level':4,'classDomain':'PALADIN'}]" />
+            <column name="components" value="null" />
+            <column name="casting_time" value="null" />
+            <column name="range" value="null" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="This spell functions like dispel evil, except that you are surrounded by constant, blue, lawful energy, and the spell affects chaotic creatures and spells rather than evil ones." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dispel Evil" />
+            <column name="school" value="['ABJURATION','GOOD']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'CLERIC'},{'level':5,'classDomain':'GOOD'},{'level':4,'classDomain':'PALADIN'}]" />
+            <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="TOUCH" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="1 round/level or until discharged, whichever comes first" />
+            <column name="saving_throw" value="See text" />
+            <column name="spell_resistance" value="See text" />
+            <column name="descriptive_text"
+                value="Shimmering, white, holy energy surrounds you. This power has three effects.
+
+            First, you gain a +4 deflection bonus to AC against attacks by evil creatures.
+            
+            Second, on making a successful melee touch attack against an evil creature from another plane, you can choose to drive that creature back to its home plane. The creature can negate the effects with a successful Will save (spell resistance applies). This use discharges and ends the spell.
+            
+            Third, with a touch you can automatically dispel any one enchantment spell cast by an evil creature or any one evil spell. Exception: Spells that can’t be dispelled by dispel magic also can’t be dispelled by dispel evil. Saving throws and spell resistance do not apply to this effect. This use discharges and ends the spell." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dispel Good" />
+            <column name="school" value="['ABJURATION','EVIL']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'CLERIC'},{'level':5,'classDomain':'EVIL'}]" />
+            <column name="components" value="null" />
+            <column name="casting_time" value="null" />
+            <column name="range" value="null" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="This spell functions like dispel evil, except that you are surrounded by dark, wavering, unholy energy, and the spell affects good creatures and spells rather than evil ones." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dispel Law" />
+            <column name="school" value="['ABJURATION','CHAOTIC']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'CHAOS'},{'level':5,'classDomain':'CLERIC'}]" />
+            <column name="components" value="null" />
+            <column name="casting_time" value="null" />
+            <column name="range" value="null" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="This spell functions like dispel evil, except that you are surrounded by flickering, yellow, chaotic energy, and the spell affects lawful creatures and spells rather than evil ones." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dispel Magic" />
+            <column name="school" value="['ABJURATION']" />
+            <column name="level"
+                value="[{'level':3,'classDomain':'BARD'},{'level':3,'classDomain':'CLERIC'},{'level':4,'classDomain':'DRUID'},{'level':3,'classDomain':'MAGIC'},{'level':3,'classDomain':'PALADIN'},{'level':3,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="MEDIUM" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="Instantaneous" />
+            <column name="saving_throw" value="None" />
+            <column name="spell_resistance" value="NO" />
+            <column name="descriptive_text"
+                value="You can use dispel magic to end ongoing spells that have been cast on a creature or object, to temporarily suppress the magical abilities of a magic item, to end ongoing spells (or at least their effects) within an area, or to counter another spellcaster’s spell. A dispelled spell ends as if its duration had expired. Some spells, as detailed in their descriptions, can’t be defeated by dispel magic. Dispel magic can dispel (but not counter) spell-like effects just as it does spells.
+
+                Note: The effect of a spell with an instantaneous duration can’t be dispelled, because the magical effect is already over before the dispel magic can take effect.
+                
+                You choose to use dispel magic in one of three ways: a targeted dispel, an area dispel, or a counterspell:
+                
+                Targeted Dispel
+                One object, creature, or spell is the target of the dispel magic spell. You make a dispel check (1d20 + your caster level, maximum +10) against the spell or against each ongoing spell currently in effect on the object or creature. The DC for this dispel check is 11 + the spell’s caster level. If you succeed on a particular check, that spell is dispelled; if you fail, that spell remains in effect.
+                
+                If you target an object or creature that is the effect of an ongoing spell (such as a monster summoned by monster summoning), you make a dispel check to end the spell that conjured the object or creature.
+                
+                If the object that you target is a magic item, you make a dispel check against the item’s caster level. If you succeed, all the item’s magical properties are suppressed for 1d4 rounds, after which the item recovers on its own. A suppressed item becomes nonmagical for the duration of the effect. An interdimensional interface (such as a bag of holding) is temporarily closed. A magic item’s physical properties are unchanged: A suppressed magic sword is still a sword (a masterwork sword, in fact). Artifacts and deities are unaffected by mortal magic such as this.
+                
+                You automatically succeed on your dispel check against any spell that you cast yourself.
+                
+                Area Dispel
+                When dispel magic is used in this way, the spell affects everything within a 20-foot radius.
+                
+                For each creature within the area that is the subject of one or more spells, you make a dispel check against the spell with the highest caster level. If that check fails, you make dispel checks against progressively weaker spells until you dispel one spell (which discharges the dispel magic spell so far as that target is concerned) or until you fail all your checks. The creature’s magic items are not affected.
+                
+                For each object within the area that is the target of one or more spells, you make dispel checks as with creatures. Magic items are not affected by an area dispel.
+                
+                For each ongoing area or effect spell whose point of origin is within the area of the dispel magic spell, you can make a dispel check to dispel the spell.
+                
+                For each ongoing spell whose area overlaps that of the dispel magic spell, you can make a dispel check to end the effect, but only within the overlapping area.
+                
+                If an object or creature that is the effect of an ongoing spell (such as a monster summoned by monster summoning) is in the area, you can make a dispel check to end the spell that conjured that object or creature (returning it whence it came) in addition to attempting to dispel spells targeting the creature or object.
+                
+                You may choose to automatically succeed on dispel checks against any spell that you have cast.
+                
+                Counterspell
+                When dispel magic is used in this way, the spell targets a spellcaster and is cast as a counterspell. Unlike a true counterspell, however, dispel magic may not work; you must make a dispel check to counter the other spellcaster’s spell." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dispel Magic, Greater" />
+            <column name="school" value="['ABJURATION']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'BARD'},{'level':6,'classDomain':'CLERIC'},{'level':6,'classDomain':'DRUID'},{'level':6,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="null" />
+            <column name="casting_time" value="null" />
+            <column name="range" value="null" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="This spell functions like dispel magic, except that the maximum caster level on your dispel check is +20 instead of +10.
+
+                    Additionally, greater dispel magic has a chance to dispel any effect that remove curse can remove, even if dispel magic can’t dispel that effect." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Displacement" />
+            <column name="school" value="['ILLUSION','GLAMER']" />
+            <column name="level"
+                value="[{'level':3,'classDomain':'BARD'},{'level':3,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="['VERBAL','MATERIAL']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="TOUCH" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="Creature touched" />
+            <column name="duration" value="1 round/level (D)" />
+            <column name="saving_throw" value="Will negates (harmless)" />
+            <column name="spell_resistance" value="Yes (harmless)" />
+            <column name="descriptive_text"
+                value="The subject of this spell appears to be about 2 feet away from its true location. The creature benefits from a 50% miss chance as if it had total concealment. However, unlike actual total concealment, displacement does not prevent enemies from targeting the creature normally. True seeing reveals its true location.
+
+                        Material Component
+                        A small strip of leather twisted into a loop." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Disrupt Undead" />
+            <column name="school" value="['NECROMANCY']" />
+            <column name="level" value="[{'level':0,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="CLOSE" />
+            <column name="area" value="null" />
+            <column name="effect" value="Ray" />
+            <column name="target" value="null" />
+            <column name="duration" value="Instantaneous" />
+            <column name="saving_throw" value="None" />
+            <column name="spell_resistance" value="Yes" />
+            <column name="descriptive_text"
+                value="You direct a ray of positive energy. You must make a ranged touch attack to hit, and if the ray hits an undead creature, it deals 1d6 points of damage to it." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Disrupting Weapon" />
+            <column name="school" value="['TRANSMUTATION']" />
+            <column name="level" value="[{'level':5,'classDomain':'CLERIC'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="TOUCH" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="null" />
+            <column name="duration" value="1 round/level" />
+            <column name="saving_throw" value="Will negates (harmless, object); see text" />
+            <column name="spell_resistance" value="Yes (harmless, object)" />
+            <column name="descriptive_text"
+                value="This spell makes a melee weapon deadly to undead. Any undead creature with HD equal to or less than your caster level must succeed on a Will save or be destroyed utterly if struck in combat with this weapon. Spell resistance does not apply against the destruction effect." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Divination" />
+            <column name="school" value="['DIVINATION']" />
+            <column name="level"
+                value="[{'level':4,'classDomain':'CLERIC'},{'level':4,'classDomain':'KNOWLEDGE'}]" />
+            <column name="components" value="['VERBAL','SOMATIC','MATERIAL']" />
+            <column name="casting_time" value="TEN_MINUTES" />
+            <column name="range" value="PERSONAL" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="You" />
+            <column name="duration" value="Instantaneous" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="Similar to augury but more powerful, a divination spell can provide you with a useful piece of advice in reply to a question concerning a specific goal, event, or activity that is to occur within one week. The advice can be as simple as a short phrase, or it might take the form of a cryptic rhyme or omen. If your party doesn’t act on the information, the conditions may change so that the information is no longer useful. The base chance for a correct divination is 70% + 1% per caster level, to a maximum of 90%. If the dice roll fails, you know the spell failed, unless specific magic yielding false information is at work.
+
+                            As with augury, multiple divinations about the same topic by the same caster use the same dice result as the first divination spell and yield the same answer each time.
+                            
+                            Material Component
+                            Incense and a sacrificial offering appropriate to your religion, together worth at least 25 gp." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Divine Favor" />
+            <column name="school" value="['EVOCATION']" />
+            <column name="level"
+                value="[{'level':1,'classDomain':'CLERIC'},{'level':1,'classDomain':'PALADIN'}]" />
+            <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="PERSONAL" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="You" />
+            <column name="duration" value="ONE_MINUTE" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="Calling upon the strength and wisdom of a deity, you gain a +1 luck bonus on attack and weapon damage rolls for every three caster levels you have (at least +1, maximum +3). The bonus doesn’t apply to spell damage." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Divine Power" />
+            <column name="school" value="['EVOCATION']" />
+            <column name="level"
+                value="[{'level':4,'classDomain':'CLERIC'},{'level':4,'classDomain':'WAR'}]" />
+            <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="PERSONAL" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="You" />
+            <column name="duration" value="1 round/level" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="Calling upon the divine power of your patron, you imbue yourself with strength and skill in combat. Your base attack bonus becomes equal to your character level (which may give you additional attacks), you gain a +6 enhancement bonus to Strength, and you gain 1 temporary hit point per caster level." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dominate Animal" />
+            <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']" />
+            <column name="level"
+                value="[{'level':3,'classDomain':'ANIMAL'},{'level':3,'classDomain':'DRUID'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_ROUND" />
+            <column name="range" value="CLOSE" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="One animal" />
+            <column name="duration" value="1 round/level" />
+            <column name="saving_throw" value="Will negates" />
+            <column name="spell_resistance" value="Yes" />
+            <column name="descriptive_text"
+                value="You can enchant an animal and direct it with simple commands such as “Attack,” “Run,” and “Fetch.” Suicidal or self-destructive commands (including an order to attack a creature two or more size categories larger than the dominated animal) are simply ignored.
+
+                                Dominate animal establishes a mental link between you and the subject creature. The animal can be directed by silent mental command as long as it remains in range. You need not see the creature to control it. You do not receive direct sensory input from the creature, but you know what it is experiencing. Because you are directing the animal with your own intelligence, it may be able to undertake actions normally beyond its own comprehension. You need not concentrate exclusively on controlling the creature unless you are trying to direct it to do something it normally couldn’t do. Changing your instructions or giving a dominated creature a new command is the equivalent of redirecting a spell, so it is a move action." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dominate Monster" />
+            <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']" />
+            <column name="level" value="[{'level':9,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="null" />
+            <column name="casting_time" value="null" />
+            <column name="range" value="null" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="One creature" />
+            <column name="duration" value="null" />
+            <column name="saving_throw" value="null" />
+            <column name="spell_resistance" value="null" />
+            <column name="descriptive_text"
+                value="This spell functions like dominate person, except that the spell is not restricted by creature type." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dominate Person" />
+            <column name="school" value="['ENCHANTMENT','COMPULSION','MIND_AFFECTING']" />
+            <column name="level"
+                value="[{'level':4,'classDomain':'BARD'},{'level':5,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_ROUND" />
+            <column name="range" value="CLOSE" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="One humanoid" />
+            <column name="duration" value="One day/level" />
+            <column name="saving_throw" value="Will negates" />
+            <column name="spell_resistance" value="Yes" />
+            <column name="descriptive_text"
+                value="You can control the actions of any humanoid creature through a telepathic link that you establish with the subject’s mind.
+
+                                    If you and the subject have a common language, you can generally force the subject to perform as you desire, within the limits of its abilities. If no common language exists, you can communicate only basic commands, such as “Come here,” “Go there,” “Fight,” and “Stand still.” You know what the subject is experiencing, but you do not receive direct sensory input from it, nor can it communicate with you telepathically.
+                            
+                                    Once you have given a dominated creature a command, it continues to attempt to carry out that command to the exclusion of all other activities except those necessary for day-to-day survival (such as sleeping, eating, and so forth). Because of this limited range of activity, a Sense Motive check against DC 15 (rather than DC 25) can determine that the subject’s behavior is being influenced by an enchantment effect (see the Sense Motive skill description).
+                            
+                                    Changing your instructions or giving a dominated creature a new command is the equivalent of redirecting a spell, so it is a move action.
+                            
+                                    By concentrating fully on the spell (a standard action), you can receive full sensory input as interpreted by the mind of the subject, though it still can’t communicate with you. You can’t actually see through the subject’s eyes, so it’s not as good as being there yourself, but you still get a good idea of what’s going on.
+                            
+                                    Subjects resist this control, and any subject forced to take actions against its nature receives a new saving throw with a +2 bonus. Obviously self-destructive orders are not carried out. Once control is established, the range at which it can be exercised is unlimited, as long as you and the subject are on the same plane. You need not see the subject to control it.
+                            
+                                    If you don’t spend at least 1 round concentrating on the spell each day, the subject receives a new saving throw to throw off the domination.
+                            
+                                    Protection from evil or a similar spell can prevent you from exercising control or using the telepathic link while the subject is so warded, but such an effect neither prevents the establishment of domination nor dispels it." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Doom" />
+            <column name="school" value="['NECROMANCY','FEAR','MIND_AFFECTING']" />
+            <column name="level" value="[{'level':1,'classDomain':'CLERIC'}]" />
+            <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']" />
+            <column name="casting_time" value="ONE_STANDARD_ACTION" />
+            <column name="range" value="MEDIUM" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="One living creature" />
+            <column name="duration" value="1 min./level" />
+            <column name="saving_throw" value="Will negates" />
+            <column name="spell_resistance" value="Yes" />
+            <column name="descriptive_text"
+                value="This spell fills a single subject with a feeling of horrible dread that causes it to become shaken." />
+        </insert>
+
+        <insert tableName="spells">
+            <column name="name" value="Dream" />
+            <column name="school" value="['ILLUSION','PHANTASM','MIND_AFFECTING']" />
+            <column name="level"
+                value="[{'level':5,'classDomain':'BARD'},{'level':5,'classDomain':'SORCERER_WIZARD'}]" />
+            <column name="components" value="['VERBAL','SOMATIC']" />
+            <column name="casting_time" value="ONE_MINUTE" />
+            <column name="range" value="UNLIMITED" />
+            <column name="area" value="null" />
+            <column name="effect" value="null" />
+            <column name="target" value="One living creature touched" />
+            <column name="duration" value="See text" />
+            <column name="saving_throw" value="None" />
+            <column name="spell_resistance" value="Yes" />
+            <column name="descriptive_text"
+                value="You, or a messenger touched by you, sends a phantasmal message to others in the form of a dream. At the beginning of the spell, you must name the recipient or identify him or her by some title that leaves no doubt as to identity. The messenger then enters a trance, appears in the intended recipient’s dream, and delivers the message. The message can be of any length, and the recipient remembers it perfectly upon waking. The communication is one-way. The recipient cannot ask questions or offer information, nor can the messenger gain any information by observing the dreams of the recipient.
+
+                                        Once the message is delivered, the messenger’s mind returns instantly to its body. The duration of the spell is the time required for the messenger to enter the recipient’s dream and deliver the message.
+                                        
+                                        If the recipient is awake when the spell begins, the messenger can choose to wake up (ending the spell) or remain in the trance. The messenger can remain in the trance until the recipient goes to sleep, then enter the recipient’s dream and deliver the message as normal. A messenger that is disturbed during the trance comes awake, ending the spell.
+                                        
+                                        Creatures who don’t sleep (such as elves, but not half-elves) or don’t dream cannot be contacted by this spell.
+                                        
+                                        The messenger is unaware of its own surroundings or of the activities around it while in the trance. It is defenseless both physically and mentally (always fails any saving throw) while in the trance." />
+        </insert>
         <!--
     <insert tableName="spells">
         <column name="name" value=""/>
