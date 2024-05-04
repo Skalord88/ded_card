@@ -15,6 +15,7 @@ public class SpellsDTO {
   public SpellsEnum castingTime;
   public SpellsEnum range;
   public String target;
+  public String area;
   public String effect;
   public String duration;
   public String savingThrow;
@@ -29,6 +30,8 @@ public class SpellsDTO {
     this.components = MapperSpellsDTO.toSpellEnumArray(spell.getComponents());
     this.castingTime = spell.getCastingTime();
     this.range = spell.getRange();
+    this.target = spell.getTarget();
+    this.area = spell.getArea();
     this.effect = spell.getEffect();
     this.duration = spell.getDuration();
     this.savingThrow = spell.getSavingThrow();

@@ -1,5 +1,3 @@
-import { BlobOptions } from "buffer";
-
 export type CharacterPc = {
   id: number;
   characterName: string;
@@ -24,9 +22,9 @@ export type CharacterPc = {
   inventory: Inventory;
   attacksId: number;
   attacks: Attacks;
-  magicPerDay: {};
-  magicKnown: {};
-  spellsKnown: [];
+  magicPerDay: MagicClass;
+  magicKnown: MagicClass;
+  books: Book[];
   levelAdjustment: number;
   effectiveCharacterLv: number;
   experience: number;
@@ -43,6 +41,10 @@ export type ClassPc = {
   id: number;
   className: number;
   level: number;
+}
+
+export type MagicClass = {
+  [key: string]: number[]
 }
 
 export interface vitality {
@@ -247,7 +249,7 @@ export interface Weapon extends Item {
   material: string | null
 }
 
-export interface WonderousItem extends Item {}
+export interface WonderousItem extends Item { }
 
 export type Inventory = {
   armor: Armor;
@@ -281,7 +283,7 @@ export type CharInventory = {
   actual: number
   updateInventory: (
     newInventory: Inventory,
-    ) => void;
+  ) => void;
 }
 
 export type ArmorWeaponToBuy = {
@@ -290,10 +292,10 @@ export type ArmorWeaponToBuy = {
   type: string,
   buyItem: (
     newItem: Armor | Shield | Weapon,
-    type: string ) => void;
+    type: string) => void;
   sellItem: (
     newItem: Armor | Shield | Weapon,
-    type: string ) => void;
+    type: string) => void;
 }
 
 export type ItemToBuy = {
@@ -302,10 +304,10 @@ export type ItemToBuy = {
   type: string,
   buyItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
   sellItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
 }
 
 export type Rings = {
@@ -314,10 +316,10 @@ export type Rings = {
   type: string,
   buyItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
   sellItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
 }
 
 export type Backpack = {
@@ -326,16 +328,16 @@ export type Backpack = {
   type: string,
   buyItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
   sellItem: (
     newItem: Item,
-    type: string ) => void;
+    type: string) => void;
 }
 
 export type ItemToChange = {
   list: ItemsList,
   createNew: (
-    newItem: Item ) => void;
+    newItem: Item) => void;
 }
 
 export type CharAttack = {
@@ -393,4 +395,45 @@ export type SignAndNumber = {
 export type Enchantment = {
   id: number,
   enchantment: number
+}
+
+export type SpellLevel = {
+  level: number,
+  classDomain: string
+}
+
+export type Spell = {
+  id: number,
+  name: string,
+  school: string[],
+  level: SpellLevel[] | null,
+  components: string[] | null,
+  castingTime: string | null,
+  range: string | null,
+  target: string | null,
+  area: string | null,
+  effect: string | null,
+  duration: string | null,
+  savingThrow: string | null,
+  spellResistance: string | null,
+  descriptiveText: string | null
+}
+
+export type SpellsList = {
+  list: Spell[],
+  lvSpell: number,
+  pgClass: string
+  selectSpell: (
+    newSpell: Spell
+  ) => void
+}
+
+export type Book = {
+  caster: string,
+  level: number,
+  spells: Spell[]
+}
+
+export type BooksFromChar = {
+  books: Book[]
 }

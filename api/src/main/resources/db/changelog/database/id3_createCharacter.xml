@@ -7,7 +7,7 @@
 
   <changeSet id="3" author="damian">
       <createTable tableName="character">
-        <column name="id" type="SMALLINT" autoIncrement="true">
+        <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="character_name" type="varchar(255)">
@@ -79,9 +79,12 @@
         <column name="magic_known" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="spells_known" type="jsonb">
+        <column name="books" type="jsonb">
           <constraints nullable="true"/>
         </column>
+        <!-- <column name="spells_known" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
         <column name="experience" type="int">
           <constraints nullable="true"/>
         </column>

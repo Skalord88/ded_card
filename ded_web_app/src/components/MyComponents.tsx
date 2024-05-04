@@ -1,27 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  AbilitysFromChar,
-  Armor,
-  ArmorInCharacter,
-  ArmorWeaponToBuy,
-  Attacks,
-  Backpack,
-  CharAttack,
-  CharBab,
-  CharInventory,
-  Enchantment,
-  Inventory,
-  Item,
-  ItemToBuy,
-  ItemToChange,
-  Rings,
-  SelectOffWeapon,
-  SelectWeapon,
-  Shield,
-  Weapon,
-  WonderousItem
-} from "./interfaces";
-import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
+import { Dropdown, DropdownToggle } from "react-bootstrap";
 import {
   AttackIIMelee,
   AttackIIRanged,
@@ -34,10 +12,37 @@ import {
   ItemEnchantedAndNoEnchanted,
   NameEnchanted,
   SignAndCount,
+  SortedBooks,
+  SpellsFilter,
   WeaponLight,
   WeaponTwoHanded
 } from "./functions";
-import { Button, ButtonGroup, Dropdown, DropdownToggle } from "react-bootstrap";
+import {
+  AbilitysFromChar,
+  Armor,
+  ArmorInCharacter,
+  ArmorWeaponToBuy,
+  Attacks,
+  Backpack,
+  BooksFromChar,
+  CharAttack,
+  CharBab,
+  CharInventory,
+  Enchantment,
+  Inventory,
+  Item,
+  ItemToBuy,
+  ItemToChange,
+  Rings,
+  SelectOffWeapon,
+  SelectWeapon,
+  Shield,
+  Spell,
+  SpellsList,
+  Weapon,
+  WonderousItem
+} from "./interfaces";
+import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
 
 export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   return (
@@ -376,9 +381,7 @@ export const MapOfItemChange: React.FC<ItemToChange> = ({
                         </Dropdown.Item>
                       ))}
                     </>
-                  ) : (
-                    null
-                  )}
+                  ) : null}
                 </Dropdown.Menu>
               </Dropdown>
             </div>
@@ -1329,3 +1332,60 @@ export const CharacterArmor: React.FC<ArmorInCharacter> = ({
     </div>
   );
 };
+
+export const MagicKnown: React.FC<SpellsList> = ({
+  list,
+  lvSpell,
+  pgClass,
+  selectSpell
+}) => {
+
+  const AddSpell = (s: Spell) => {
+    selectSpell(s)
+  }
+  
+  return (
+    <>
+      {list ? (
+        <>
+          {list.map((spell, index) => (
+            <div key={index}>
+              {spell.level?.map((domain) => (
+                <>
+                  {domain.level === lvSpell &&
+                  domain.classDomain === SpellsFilter(pgClass) ? (
+                    <div>{spell.id} {spell.name} <button
+                      onClick={() => AddSpell(spell)}
+                    >+</button></div>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ))}
+            </div>
+          ))}
+        </>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+};
+
+export const CharacterBooks: React.FC<BooksFromChar> = ({
+  books
+}) => {
+  return(
+    <div  className="container-table-nine">
+      {SortedBooks(books).map(
+        (book, index) => (
+        <div key={index}>
+          <div>{book.caster} level.{book.level}</div>
+          <div>{book.spells.map(book => (
+            <>---{book}---</>
+          ))}</div>
+        </div>
+      ))}
+    </div>
+  )
+}

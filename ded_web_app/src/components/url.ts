@@ -39,3 +39,6 @@ export const urlItemsBuy: string =
 
 export const urlAttacks: string =
     'http://localhost:8080/attack/';
+
+export const urlSpellsList: string =
+    'http://localhost:8080/spells'

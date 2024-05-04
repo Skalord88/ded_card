@@ -12,6 +12,7 @@ import { Skills } from './pages/Skills';
 import { Feats } from './pages/Feats';
 import { Items } from './pages/Items';
 import { Attack } from './pages/Attack';
+import { Magic } from './pages/Magic';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -29,6 +30,7 @@ root.render(
         <Route path='/feat/:charId' element={<Feats />} />
         <Route path='item/:charId' element={<Items />} />
         <Route path='/attack/:charId' element={<Attack />} />
+        <Route path='/magic/:charId' element={<Magic />} />
         </Route>
       </Routes>
     </BrowserRouter>

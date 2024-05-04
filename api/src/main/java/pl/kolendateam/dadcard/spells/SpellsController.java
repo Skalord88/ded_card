@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,6 +27,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
+@CrossOrigin
 @RestController
 @RequestMapping("spells")
 public class SpellsController {
@@ -133,7 +135,7 @@ public class SpellsController {
             }
 
             if (spellToAdd != null) {
-              character.addSpells(spellToAdd, classNameE, lv);
+              // character.addSpells(spellToAdd, classNameE, lv);
             }
           }
         }
@@ -164,7 +166,7 @@ public class SpellsController {
     EnumClass classNameE = character.characterGetClassEnumById(
       SpellsAddDTO.idClass
     );
-    character.removeSpell(classNameE, SpellsAddDTO.spells);
+    // character.removeSpell(classNameE, SpellsAddDTO.spells);
 
     this.characterRepository.save(character);
 

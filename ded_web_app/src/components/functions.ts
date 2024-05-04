@@ -1,4 +1,4 @@
-import { Abilitys, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Book, Inventory, Position, SignAndNumber, Spell, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -262,8 +262,8 @@ export function EnchantmentCost(
 export function NameEnchanted(
     item: any
 ): string {
-    if (item.enchantment?.enchantment < 0) {return 'pft ' + item.name}
-    if (item.enchantment?.enchantment > 0) {return item.name + '+' + item.enchantment?.enchantment}
+    if (item.enchantment?.enchantment < 0) { return 'pft ' + item.name }
+    if (item.enchantment?.enchantment > 0) { return item.name + '+' + item.enchantment?.enchantment }
     return item.name
 }
 
@@ -274,7 +274,7 @@ export function ItemNoEnchanted(
         item.armorName === 'NO_ARMOR' ||
         item.shieldName === 'NO_SHIELD' ||
         item.weaponName === 'UNARMED_STRIKE'
-    ) {return false}
+    ) { return false }
     return true;
 }
 
@@ -284,6 +284,31 @@ export function ItemEnchantedAndNoEnchanted(
     if (
         item.enchantment?.enchantment === 0 &&
         ItemNoEnchanted(item)
-    ) {return true}
+    ) { return true }
     return false
+}
+
+export function SpellsFilter(
+    pgClass: string
+): string {
+
+    if (pgClass === "WIZARD" || pgClass === "SORCERER") {
+        return "SORCERER_WIZARD"
+    }
+
+    return pgClass;
+
+}
+
+export function AllSpell(
+    num: number | null
+): string | number {
+    if (num === null) return "all"
+    return num;
+}
+
+export function SortedBooks(
+    books: Book[]
+): Book[] {
+    return books.sort((a, b) => a.caster.localeCompare(b.caster));
 }

@@ -32,6 +32,12 @@ button {
   align-content: start;
   grid-template-columns: auto auto;
 }
+.container-table-nine {
+  display: grid;
+  align-content: space-around;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto;
+  padding: 2px;
+}
 .container-table-ten {
   display: grid;
   align-content: space-around;

@@ -1,11 +1,6 @@
 package pl.kolendateam.dadcard.items.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.DiscriminatorValue;
@@ -15,6 +10,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +20,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
-import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 
@@ -32,7 +29,10 @@ import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 @AllArgsConstructor
 @Getter
 @Setter
-@DiscriminatorColumn(name = "item_type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(
+  name = "item_type",
+  discriminatorType = DiscriminatorType.STRING
+)
 @EqualsAndHashCode
 public class Items implements Serializable {
 
@@ -79,15 +79,15 @@ public class Items implements Serializable {
 
   @JsonProperty("itemType")
   public ItemTypeEnum getItemType() {
-    String item = this.getClass().getAnnotation(DiscriminatorValue.class).value();
+    String item =
+      this.getClass().getAnnotation(DiscriminatorValue.class).value();
 
     ItemTypeEnum itemEnum = ItemTypeEnum.valueOf(item);
 
     return itemEnum;
   }
 
-  public void setItemType(ItemTypeEnum itemType) {
-  }
+  public void setItemType(ItemTypeEnum itemType) {}
 
   public int findItemIndexinArrayById(ArrayList<Items> items, Items w) {
     for (int i = 0; i < items.size(); i++) {
@@ -101,5 +101,4 @@ public class Items implements Serializable {
   public Items(int idZero) {
     this.id = idZero;
   }
-
 }

@@ -38,6 +38,7 @@ public class Spells implements Serializable {
   String effect;
   String duration;
   String area;
+  String target;
   String savingThrow;
   String spellResistance;
 

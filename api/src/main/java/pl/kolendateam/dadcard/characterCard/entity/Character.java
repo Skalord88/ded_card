@@ -1,29 +1,27 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
@@ -50,8 +48,8 @@ import pl.kolendateam.dadcard.skills.entity.ClassStudy;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
-import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
@@ -63,7 +61,7 @@ public class Character {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public short id;
+  public int id;
 
   @NonNull
   String characterName;
@@ -124,8 +122,12 @@ public class Character {
   @JdbcTypeCode(SqlTypes.JSON)
   HashMap<EnumClass, Integer[]> magicKnown;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<SpellsInCharLevel> spellsKnown;
+  @OneToMany(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "character_id", referencedColumnName = "id")
+  List<Book> books;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArrayList<SpellsInCharLevel> spellsKnown;
 
   short effectiveCharacterLv;
   byte levelAdjustment;
@@ -149,7 +151,8 @@ public class Character {
     this.attacks = new Attacks();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
-    this.spellsKnown = new ArrayList<>();
+    this.books = new ArrayList<>();
+    // this.spellsKnown = new ArrayList<>();
   }
 
   public void addClassToPcArray(ClassPc classPc) {
@@ -177,34 +180,40 @@ public class Character {
   }
 
   public void addSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
+    double bonus = stringSavingThrow.charAt(0) ==
+      ValueEnum.HIGH.getValueEnum().charAt(0)
+      ? 2.5
+      : 0;
     this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
 
-    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus =
+      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
 
-    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus =
+      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
   }
 
   public void minusSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
+    double bonus = stringSavingThrow.charAt(0) ==
+      ValueEnum.HIGH.getValueEnum().charAt(0)
+      ? 2.5
+      : 0;
     this.savingThrow.setFortitude(this.savingThrow.getFortitude() - bonus);
 
-    bonus = stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus =
+      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setReflex(this.savingThrow.getReflex() - bonus);
 
-    bonus = stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+    bonus =
+      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
         ? 2.5
         : 0;
     this.savingThrow.setWill(this.savingThrow.getWill() - bonus);
@@ -296,7 +305,8 @@ public class Character {
   public void raceLevelAdjustment(byte lvAdj) {
     this.bab = (lvAdj * 0.5) - 0.5;
     this.levelAdjustment = lvAdj;
-    this.vitality = vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
+    this.vitality =
+      vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
     this.skillPoints = lvAdj * 2;
   }
 
@@ -322,10 +332,11 @@ public class Character {
     this.vitality.hitDices.put(hitDice, hD);
 
     int hP = vitality.hitPointsAtNewLevel(
-        hitDice,
-        vitality,
-        abilitys,
-        effectiveCharacterLv);
+      hitDice,
+      vitality,
+      abilitys,
+      effectiveCharacterLv
+    );
 
     this.vitality.setHitPoints(hP);
   }
@@ -339,10 +350,11 @@ public class Character {
     }
 
     int hP = vitality.hitPointsAtLastLevel(
-        hitDice,
-        vitality,
-        abilitys,
-        effectiveCharacterLv);
+      hitDice,
+      vitality,
+      abilitys,
+      effectiveCharacterLv
+    );
 
     this.vitality.setHitPoints(hP);
   }
@@ -355,15 +367,15 @@ public class Character {
   public void addSkill(String skills) {
     Gson gson = new Gson();
 
-    Type listSkill = new TypeToken<List<ClassSkills>>() {
-    }.getType();
+    Type listSkill = new TypeToken<List<ClassSkills>>() {}.getType();
     List<ClassSkills> skill = gson.fromJson(skills, listSkill);
 
     for (ClassSkills clSk : classSkills) {
       for (ClassSkills sk : skill) {
         if (clSk.getNameSkill().equals(sk.getNameSkill())) {
           clSk.setSkillDifferentBonus(
-              clSk.getSkillDifferentBonus() + (int) sk.getSkillRank());
+            clSk.getSkillDifferentBonus() + (int) sk.getSkillRank()
+          );
         }
       }
     }
@@ -372,8 +384,9 @@ public class Character {
   public void addSpecialAttacks(String specialAttacksFeat) {
     Gson gson = new Gson();
     SpecialAttacks spAtt = gson.fromJson(
-        specialAttacksFeat,
-        SpecialAttacks.class);
+      specialAttacksFeat,
+      SpecialAttacks.class
+    );
 
     this.specialAttacks.addSpecialAttackFeat(spAtt, this.specialAttacks);
   }
@@ -392,20 +405,21 @@ public class Character {
   public void raceBonusArmorClass(String armorClass) {
     Gson gson = new Gson();
     ArmorClass jsonObjectArmorClass = gson.fromJson(
-        armorClass,
-        ArmorClass.class);
+      armorClass,
+      ArmorClass.class
+    );
 
     this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
   }
 
   public ArrayList<CharacterFeat> listFeatsFromClass(
-      int lv,
-      List<Feats> featsListInDB,
-      String classFeatsMap) {
+    int lv,
+    List<Feats> featsListInDB,
+    String classFeatsMap
+  ) {
     ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
     Gson gson = new Gson();
-    Type listFeats = new TypeToken<List<ClassFeats>>() {
-    }.getType();
+    Type listFeats = new TypeToken<List<ClassFeats>>() {}.getType();
     List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
     for (ClassFeats featInJson : featsJson) {
@@ -415,11 +429,12 @@ public class Character {
           for (String featString : fList) {
             if (featInList.getFeatName().equals(featString)) {
               CharacterFeat newCharFeat = new CharacterFeat(
-                  featInList.getId(),
-                  1,
-                  featInList.getFeatName(),
-                  featInList.getDescription(),
-                  featInList.getFeatsType());
+                featInList.getId(),
+                1,
+                featInList.getFeatName(),
+                featInList.getDescription(),
+                featInList.getFeatsType()
+              );
               characterFeatsFromClassArray.add(newCharFeat);
             }
           }
@@ -437,25 +452,28 @@ public class Character {
     }
 
     CharacterFeat characterFeat = new CharacterFeat(
-        feat.getId(),
-        1,
-        feat.getFeatName(),
-        feat.getDescription(),
-        feat.getFeatsType());
+      feat.getId(),
+      1,
+      feat.getFeatName(),
+      feat.getDescription(),
+      feat.getFeatsType()
+    );
 
     ArrayList<CharacterFeat> allFeats = new ArrayList<>();
 
     this.featsList.forEach(charFeat -> {
-      allFeats.add(charFeat);
-    });
+        allFeats.add(charFeat);
+      });
 
     this.levelFeatsList.forEach(lvFeat -> {
-      allFeats.add(lvFeat);
-    });
+        allFeats.add(lvFeat);
+      });
 
     boolean featPresent = false;
     for (CharacterFeat cF : allFeats) {
-      if (cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())) {
+      if (
+        cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
+      ) {
         featPresent = true;
       }
     }
@@ -466,14 +484,15 @@ public class Character {
         buyed = true;
       } else {
         boolean prereqCheck = characterFeat.checkPrerequisite(
-            feat,
-            subRace,
-            savingThrow,
-            armorClass,
-            classSkills,
-            abilitys,
-            (int) bab,
-            allFeats);
+          feat,
+          subRace,
+          savingThrow,
+          armorClass,
+          classSkills,
+          abilitys,
+          (int) bab,
+          allFeats
+        );
         if (prereqCheck) {
           this.levelFeatsList.add(characterFeat);
           buyed = true;
@@ -544,16 +563,16 @@ public class Character {
 
   public void removeStudyFromCharacter(Set<Study> availableStudy) {
     this.classSkills.forEach(skill -> {
-      if (!skill.getFieldOfStudy().isEmpty()) {
-        skill
+        if (!skill.getFieldOfStudy().isEmpty()) {
+          skill
             .getFieldOfStudy()
             .forEach(study -> {
               if (study.getId() == skill.getIdSkill()) {
                 skill.removeStudyFromKnowledge(study.getId());
               }
             });
-      }
-    });
+        }
+      });
   }
 
   public void allKnowledgeZero() {
@@ -566,44 +585,46 @@ public class Character {
   }
 
   public void addMagic(
-      List<SpellsTable> spellsTableList,
-      SpellsEnum spellDay,
-      SpellsEnum spellKnown) {
+    List<SpellsTable> spellsTableList,
+    SpellsEnum spellDay,
+    SpellsEnum spellKnown
+  ) {
     for (SpellsTable table : spellsTableList) {
       ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(
-          table.getSpellsInLevel());
+        table.getSpellsInLevel()
+      );
       if (table.getSpellsDayKnown() != null) {
-        for (ClassPc classPc : classPcArray) {
-          if (table.getSpellsDayKnown() == SpellsEnum.DAY &&
-              table.getMagicClass() == classPc.getSpellsPerDay()) {
+        for (ClassPc classPc : this.classPcArray) {
+          if (
+            table.getSpellsDayKnown() == SpellsEnum.DAY &&
+            table.getMagicClass() == classPc.getSpellsPerDay()
+          ) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicPerDay.put(
                     classPc.getName(),
-                    spellsInThisLevel.getSpells());
+                    spellsInThisLevel.getSpells()
+                  );
               }
             }
           }
 
-          if (table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-              table.getMagicClass() == classPc.getSpellsKnown()) {
+          if (
+            table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+            table.getMagicClass() == classPc.getSpellsKnown()
+          ) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicKnown.put(
                     classPc.getName(),
-                    spellsInThisLevel.getSpells());
+                    spellsInThisLevel.getSpells()
+                  );
               }
             }
           }
         }
       }
     }
-  }
-
-  public void removeMagicClass(EnumClass name) {
-    this.magicKnown.remove(name);
-    this.magicPerDay.remove(name);
-    this.spellsKnown.remove(name);
   }
 
   public EnumClass characterGetClassEnumById(int idClass) {
@@ -625,54 +646,57 @@ public class Character {
   }
 
   public boolean getClassSpellsKnown(EnumClass className) {
-    for (SpellsInCharLevel sICLinDB : this.spellsKnown) {
-      if (sICLinDB.getCaster() == className) {
-        return sICLinDB.getCaster() == className;
+    for (Book book : this.books) {
+      if (book.getCaster() == className) {
+        return book.getCaster() == className;
       }
     }
     return false;
   }
 
-  public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
-    SpellsInCharLevel sICK = new SpellsInCharLevel(name);
-    do {
-      sICK.getSpells().put(sizeMagic, new ArrayList<>());
-      sizeMagic--;
-    } while (sizeMagic == 0);
-    this.spellsKnown.add(sICK);
-  }
+  // public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
+  //   SpellsInCharLevel sICK = new SpellsInCharLevel(name);
+  //   do {
+  //     sICK.getSpells().put(sizeMagic, new ArrayList<>());
+  //     sizeMagic--;
+  //   } while (sizeMagic == 0);
+  //   this.spellsKnown.add(sICK);
+  // }
 
-  public void addSpellKnown(int sizeMagic, EnumClass name) {
-    for (SpellsInCharLevel sICKinDB : this.spellsKnown) {
-      if (sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic) {
-        sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
-      }
-    }
-  }
+  // public void addSpellKnown(int sizeMagic, EnumClass name) {
+  //   for (Book book : this.books) {
+  //     if (
+  //       book.getCaster() == name && book.getSpellsBook().size() == sizeMagic
+  //     ) {
+  //       book.setLevel(sizeMagic);
+  //       book.getSpells().put(sizeMagic, new ArrayList<>());
+  //     }
+  //   }
+  // }
 
-  public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
-    for (SpellsInCharLevel sICK : this.spellsKnown) {
-      if (sICK.getCaster() == classNameE) {
-        sICK
-            .getSpells()
-            .forEach((i, a) -> {
-              if (i == lv) {
-                a.add(spellToAdd);
-              }
-            });
-      }
-    }
-  }
+  // public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
+  //   for (SpellsInCharLevel sICK : this.spellsKnown) {
+  //     if (sICK.getCaster() == classNameE) {
+  //       sICK
+  //         .getSpells()
+  //         .forEach((i, a) -> {
+  //           if (i == lv) {
+  //             a.add(spellToAdd);
+  //           }
+  //         });
+  //     }
+  //   }
+  // }
 
-  public void removeSpell(EnumClass classNameE, int[] spells) {
-    for (int spell : spells) {
-      for (SpellsInCharLevel sICL : this.spellsKnown) {
-        if (sICL.getCaster() == classNameE) {
-          sICL.getSpells().forEach((i, sp) -> sp.removeIf(s -> s == spell));
-        }
-      }
-    }
-  }
+  // public void removeSpell(EnumClass classNameE, int[] spells) {
+  //   for (int spell : spells) {
+  //     for (SpellsInCharLevel sICL : this.spellsKnown) {
+  //       if (sICL.getCaster() == classNameE) {
+  //         sICL.getSpells().forEach((i, sp) -> sp.removeIf(s -> s == spell));
+  //       }
+  //     }
+  //   }
+  // }
 
   public boolean magicClass(SpellsEnum spellsPerDay) {
     if (spellsPerDay == null) {
@@ -682,25 +706,23 @@ public class Character {
   }
 
   public void buySkills(SkillToAddDTO skillsToAddDTO) {
-
     // this.skillPoints = skillsToAddDTO.skillPoints;
 
     skillsToAddDTO.skillDTO.forEach(skillDTO -> {
       this.classSkills.forEach(skill -> {
-        if (skillDTO.fieldOfStudy.size() > 0) {
-          skillDTO.fieldOfStudy.forEach(study -> {
-            if (study.idSkill == skill.getIdSkill()) {
-              skill.addRankStudy(study);
+          if (skillDTO.fieldOfStudy.size() > 0) {
+            skillDTO.fieldOfStudy.forEach(study -> {
+              if (study.idSkill == skill.getIdSkill()) {
+                skill.addRankStudy(study);
+              }
+            });
+          } else {
+            if (skill.getIdSkill() == skillDTO.idSkill) {
+              skill.addRankSkill(skillDTO.skillRank);
             }
-          });
-        } else {
-          if (skill.getIdSkill() == skillDTO.idSkill) {
-            skill.addRankSkill(skillDTO.skillRank);
           }
-        }
-      });
+        });
     });
-
   }
 
   // public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
@@ -747,12 +769,12 @@ public class Character {
       for (ClassSkills skill : this.classSkills) {
         if (studyDTO.idSkill == skill.getIdSkill()) {
           skill
-              .getFieldOfStudy()
-              .forEach(study -> {
-                if (studyDTO.idStudy == study.getId()) {
-                  study.setRank(studyDTO.rank);
-                }
-              });
+            .getFieldOfStudy()
+            .forEach(study -> {
+              if (studyDTO.idStudy == study.getId()) {
+                study.setRank(studyDTO.rank);
+              }
+            });
         }
       }
     }
@@ -788,8 +810,7 @@ public class Character {
 
   public void setFirstLevelGold(String initialGold) {
     Gson gson = new Gson();
-    Type arrayGold = new TypeToken<String[]>() {
-    }.getType();
+    Type arrayGold = new TypeToken<String[]>() {}.getType();
     String[] diceGold = gson.fromJson(initialGold, arrayGold);
 
     int number = Integer.parseInt(diceGold[0]);
@@ -804,29 +825,30 @@ public class Character {
   }
 
   public void setLevelGold() {
-    this.treasure = switch (this.effectiveCharacterLv) {
-      case 0 -> 0;
-      case 2 -> 900;
-      case 3 -> 2700;
-      case 4 -> 5400;
-      case 5 -> 9000;
-      case 6 -> 13000;
-      case 7 -> 19000;
-      case 8 -> 27000;
-      case 9 -> 36000;
-      case 10 -> 49000;
-      case 11 -> 66000;
-      case 12 -> 88000;
-      case 13 -> 110000;
-      case 14 -> 150000;
-      case 15 -> 200000;
-      case 16 -> 260000;
-      case 17 -> 340000;
-      case 18 -> 440000;
-      case 19 -> 580000;
-      case 20 -> 760000;
-      default -> 0;
-    };
+    this.treasure =
+      switch (this.effectiveCharacterLv) {
+        case 0 -> 0;
+        case 2 -> 900;
+        case 3 -> 2700;
+        case 4 -> 5400;
+        case 5 -> 9000;
+        case 6 -> 13000;
+        case 7 -> 19000;
+        case 8 -> 27000;
+        case 9 -> 36000;
+        case 10 -> 49000;
+        case 11 -> 66000;
+        case 12 -> 88000;
+        case 13 -> 110000;
+        case 14 -> 150000;
+        case 15 -> 200000;
+        case 16 -> 260000;
+        case 17 -> 340000;
+        case 18 -> 440000;
+        case 19 -> 580000;
+        case 20 -> 760000;
+        default -> 0;
+      };
   }
 
   public void setZeroExp() {
@@ -837,4 +859,87 @@ public class Character {
     this.inventory = new Inventory();
   }
 
+  public void addSpellKnown(int sizeMagic, @NonNull EnumClass name) {
+    boolean present = false;
+    for (Book charBook : this.books) {
+      if (charBook.getCaster() == name && charBook.getLevel() == sizeMagic) {
+        present = true;
+      }
+    }
+    if (!present) {
+      Book book = new Book(sizeMagic, name);
+      this.books.add(book);
+    }
+  }
+
+  public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+    for (int i = 0; i < sizeMagic; i++) {
+      Book book = new Book(i, name);
+      this.books.add(book);
+    }
+  }
+
+  public int getSizeMagic(@NonNull EnumClass name) {
+    if (this.magicKnown.get(name) != null) {
+      return this.magicKnown.get(name).length;
+    }
+    return -1;
+  }
+
+  // public void removeBook(
+  //   int sizeMagic,
+  //   int levelInDB,
+  //   @NonNull EnumClass name
+  // ) {
+  //   for (int i = 0; i < this.books.size(); i++) {
+  //     if (levelInDB > 1) {
+  //       if (
+  //         this.books.get(i).getCaster() == name &&
+  //         this.books.get(i).getLevel() > sizeMagic
+  //       ) {
+  //         this.books.remove(i);
+  //       }
+  //     }
+  //     if (levelInDB == 1) {
+  //       if (this.books.get(i).getCaster() == name) {
+  //         this.books.remove(i);
+  //       }
+  //     }
+  //   }
+  // }
+
+  public void removePerDayKnow(@NonNull EnumClass name) {
+    this.magicPerDay.remove(name);
+    this.magicKnown.remove(name);
+  }
+
+  public void removeBook(@NonNull EnumClass name) {
+    for (int i = 0; i < this.books.size(); i++) {
+      if (name == this.books.get(i).getCaster()) {
+        this.books.remove(i);
+        i--;
+      }
+    }
+  }
+
+  public void decrementBooks(int sizeMagic, @NonNull EnumClass name) {
+    for (int i = 0; i < this.books.size(); i++) {
+      if (
+        this.books.get(i).getCaster() == name &&
+        this.books.get(i).getLevel() == sizeMagic
+      ) {
+        this.books.remove(i);
+        i--;
+      }
+    }
+  }
+
+  public int findLevelInClassesById(short id) {
+    for (ClassPc classPc : classPcArray) {
+      if (classPc.getId() == id) {
+        return classPc.getLevel();
+      }
+    }
+    return -1;
+  }
 }
