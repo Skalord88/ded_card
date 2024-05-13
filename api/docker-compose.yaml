@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.9'
 services:
   postgres:
     image: postgres:10.5
@@ -28,14 +28,14 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=postgres
-    command: ["./wait-for-it.sh", "postgres:5432", "--", "liquibase", "--changeLogFile=changelog.xml", "--url=jdbc:postgresql://postgres:5432/postgres", "--username=postgres", "--password=postgres", "update"]
+    command: ["./wait-for-it.sh", "postgres:5438", "--", "liquibase", "--changeLogFile=changelog.xml", "--url=jdbc:postgresql://postgres:5432/postgres", "--username=postgres", "--password=postgres", "update"]
 
-  frontend:
-    build:
-      context: C:\Users\skalo\OneDrive\Documenti\ded_card\ded_web_app
-      dockerfile: Dockerfile
-    restart: always
-    ports:
-      - '3000:3000'
-    environment:
-      - REACT_APP_API_URL=http://backend:8080/api
+  # frontend:
+  #   build:
+  #     context: C:\Users\skalo\OneDrive\Documenti\ded_card\ded_web_app
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
+  #   environment:
+  #     - REACT_APP_API_URL=http://backend:8080/api
