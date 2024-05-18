@@ -123,7 +123,7 @@ public class SpellsController {
       SpellsAddDTO.idClass
     );
     int maxLv = character.getMagicKnown().get(classNameE).length;
-    int lv = 0;
+    // int lv = 0;
 
     if (spellClassE != null) {
       for (int s : SpellsAddDTO.spells) {
@@ -131,7 +131,7 @@ public class SpellsController {
           if (s == spell.getId()) {
             Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
             if (spellToAdd != null) {
-              lv = spell.selectSpellByLv(spell);
+              // lv = spell.selectSpellByLv(spell);
             }
 
             if (spellToAdd != null) {
@@ -163,9 +163,9 @@ public class SpellsController {
 
     Character character = characterOpt.get();
 
-    EnumClass classNameE = character.characterGetClassEnumById(
-      SpellsAddDTO.idClass
-    );
+    // EnumClass classNameE = character.characterGetClassEnumById(
+    //   SpellsAddDTO.idClass
+    // );
     // character.removeSpell(classNameE, SpellsAddDTO.spells);
 
     this.characterRepository.save(character);

@@ -1,10 +1,9 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import io.micrometer.common.lang.Nullable;
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import java.io.Serializable;
+
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
