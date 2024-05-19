@@ -35,6 +35,19 @@ services:
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
 
+  frontend:
+    build:
+      context: C:/Users/skalo/OneDrive/Documenti/ded_card/ded_web_app
+      dockerfile: Dockerfile
+    container_name: front_ded_card
+    restart: always
+    networks:
+      - backend
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+
 networks:
   backend:
     driver: bridge
