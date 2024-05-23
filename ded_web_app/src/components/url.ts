@@ -1,44 +1,47 @@
+const url: string =
+    'http://3.76.215.24:8080/'
+
 export const urlChar: string =
-    'http://localhost:8080/character-card';
+    url + 'character-card';
 
 export const urlCharList: string =
     urlChar + '/list';
 
 export const urlAb: string =
-    'http://localhost:8080/ability/';
+    url + 'ability/';
 
 export const urlRaceList: string =
-    'http://localhost:8080/race';
+    url + 'race';
 
 export const urlClassList: string =
-    'http://localhost:8080/class';
+    url + 'class';
 
 export const urlClassAdd: string =
-    'http://localhost:8080/character-card/class/';
+    url + 'character-card/class/';
 
 export const urlClassSell: string =
-    'http://localhost:8080/character-card/minus_class/';
+    url + 'character-card/minus_class/';
 
 export const urlSkillSet: string =
-    'http://localhost:8080/skills/';
+    url + 'skills/';
 
 export const urlStudySet: string =
-    'localhost:8080/skills/study/';
+    url + 'skills/study/';
 
 export const urlFeats: string =
-    'http://localhost:8080/feats';
+    url + 'feats';
 
 export const urlItems: string =
-    'http://localhost:8080/item/all';
+    url + 'item/all';
 
 export const urlInventory: string =
-    'http://localhost:8080/item/inventory/';
+    url + 'item/inventory/';
 
 export const urlItemsBuy: string =
-    'http://localhost:8080/item/';
+    url + 'item/';
 
 export const urlAttacks: string =
-    'http://localhost:8080/attack/';
+    url + 'attack/';
 
 export const urlSpellsList: string =
-    'http://localhost:8080/spells'
+    url + 'spells'

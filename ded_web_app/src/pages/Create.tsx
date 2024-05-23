@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { urlChar } from "../components/url";
 
 export function Create() {
-  const URL = "http://localhost:8080/character-card";
+  // const URL = "http://localhost:8080/character-card";
 
   const [inputData, setInputData] = useState<{
     characterName: string;
@@ -20,7 +21,7 @@ export function Create() {
   };
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    axios.post(URL, inputData).then((response) => {
+    axios.post(urlChar, inputData).then((response) => {
       setCharId(response.data.characterId);
     });
   };
