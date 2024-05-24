@@ -3,49 +3,57 @@ table {
   height: 100%;
   width: auto;
 }
-th, td {
+
+th,
+td {
   border: 1px solid #666;
   text-align: center;
 }
+
 button {
   height: auto;
   width: auto;
 }
+
 .container {
   display: grid;
   align-content: space-around;
   grid-template-columns: auto auto auto;
   padding: 10px;
 }
+
 .container-item {
   padding: 20px;
   box-shadow: 2px 2px 4px grey;
 }
+
 .container-table {
   display: grid;
   align-content: space-around;
   grid-template-columns: auto auto auto auto auto auto;
   padding: 4px;
 }
+
 .container-list {
   display: grid;
   align-content: start;
   grid-template-columns: auto auto;
 }
+
 .container-table-nine {
   display: grid;
   align-content: space-around;
   grid-template-columns: auto auto auto auto auto auto auto auto auto;
   padding: 2px;
 }
+
 .container-table-ten {
   display: grid;
   align-content: space-around;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
   padding: 2px;
 }
+
 .drop {
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
-
-

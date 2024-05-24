@@ -1,5 +1,6 @@
 const url: string =
-    'http://3.76.215.24:8080/'
+    // 'http://3.76.215.24:8080/'
+    'http://localhost:8080/'
 
 export const urlChar: string =
     url + 'character-card';

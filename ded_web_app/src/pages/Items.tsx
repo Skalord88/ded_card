@@ -9,7 +9,7 @@ import {
 } from "../components/variables";
 import { EnchantmentCost } from "../components/functions";
 
-export function Items() {
+export const Items = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
