@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { character } from "../components/interfaces";
 import { urlCharList } from "../components/url";
+import { Footer } from "./Footer";
 
-export const List = () => {
+export const List: React.FC = () => {
   const [charList, setCharList] = useState([]);
 
   useEffect(() => {
@@ -16,52 +17,30 @@ export const List = () => {
 
   return (
     <>
-      <div className="rpgui-container">
-        <h1>Containers</h1>
-        <p>
-          This example shows the built-in containers and frames. Containers are
-          just fancy divs used for rpgui elements.
-        </p>
-
-        <div className="rpgui-container.framed">
-          <p>class:rpgui-container framed</p>
-        </div>
-
-        <div className="rpgui-container.framed-golden">
-          <p>class:rpgui-container framed-golden</p>
-        </div>
-
-        <div className="rpgui-container.framed-golden-2">
-          <p>class:rpgui-container framed-golden-2</p>
-        </div>
-
-        <div className="rpgui-container.framed-grey">
-          <p>class:rpgui-container framed-grey</p>
-        </div>
-      </div>
-      <div className="rpgui-container.framed-grey">
-        {charList.length > 0 ? (
-          <div className="rpgui-container.framed">
-            list of characters:
+    
+      {charList.length > 0 ? (
+        <div id="list" className="rpgui-container-framed">
+          <p>list of characters:</p>
+          <ol type="I">
             {charList.map((c: character, index: number) => {
               return (
                 <>
-                  <ol type="I">
-                    <li key={index}>
-                      <Link to={"/" + c.characterId}>
-                        character: <b>{c.characterName}</b> / player:{" "}
-                        <b>{c.playerName}</b>
-                      </Link>
-                    </li>
-                  </ol>
+                  <li key={index}>
+                    <Link to={"/" + c.characterId}>
+                      character: <b>{c.characterName}</b> / player:{" "}
+                      <b>{c.playerName}</b>
+                    </Link>
+                  </li>
                 </>
               );
             })}
-          </div>
-        ) : (
-          <div className="container-item">...loading characters...</div>
-        )}
-      </div>
+          </ol>
+        </div>
+        
+      ) : (
+        <div className="rpgui-container-framed">...loading characters...</div>
+      )}
     </>
+    
   );
-}
+};

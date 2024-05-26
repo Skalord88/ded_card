@@ -150,7 +150,6 @@ export function Skills() {
 
   return (
     <>
-      <div className="container">
         <div className="container-item">
           skills points:{" "}
           {actualSkillsPoints + " / " + maxSkillsPoints + " / " + maxSkillLv}
@@ -161,7 +160,6 @@ export function Skills() {
             <Link to={"/feat/" + charId}>to feats</Link>
           </button>
         </div>
-      </div>
       <div className="container">
         <div className="container-item">
           <div className="container-table">

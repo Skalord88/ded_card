@@ -10,15 +10,15 @@ import {
 } from "../components/interfaces";
 import { urlChar, urlRaceList } from "../components/url";
 
-export function Races() {
+export const Races = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
   const [races, setRaces] = useState<races[]>();
-  const [selectedRace, setSelected] = useState<String>('')
+  const [selectedRace, setSelected] = useState<String>("");
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
     id: 0,
-    subRacesName: ''
+    subRacesName: ""
   });
   const [change, setChange] = useState(false);
 
@@ -39,160 +39,166 @@ export function Races() {
   }, []);
 
   const handleData = (subRace: subRaces, race: string) => {
-    setSelected(race)
-    setChosenRace({id: subRace.id, subRacesName: subRace.subRacesName});
+    setSelected(race);
+    setChosenRace({ id: subRace.id, subRacesName: subRace.subRacesName });
     setChange(true);
   };
   const handleSubmit = (e: ChosenRace) => {
-    axios.post(urlRaceList + "/" + charId, e)
+    axios.post(urlRaceList + "/" + charId, e);
   };
 
   return (
     <>
-      <div className="container">
-        {change === true ? (
-          <div>
-            {chosenRace?.subRacesName}, {selectedRace}
-            <button onClick={() => handleSubmit(chosenRace)}>
-              <Link to={"/class/" + charId}>to classes</Link>
-            </button>
-          </div>
-        ) : (
-          <div>...choose race</div>
-        )}
+      {change === true ? (
+        <p>
+          {chosenRace?.subRacesName}, {selectedRace}{" "}
+          <button
+            className="rpgui-button"
+            onClick={() => handleSubmit(chosenRace)}
+          >
+            <Link to={"/class/" + charId}>to classes</Link>
+          </button>
+        </p>
+      ) : (
+        <p>...choose race</p>
+      )}
+
+      {races ? (
         <>
-          {races ? (
-            <div className="container">
-              {races.map((r: races, index: number) => {
-                return (
-                  <div className="container-item" key={index}>
-                    <b>{r.raceName}</b>{" "}
-                    {r.subRaces ? (
-                      <ul>
-                        {r.subRaces.map((sr: subRaces, indexSR: number) => {
-                          return (
-                            <li key={indexSR}>
+          {races.map((r: races, index: number) => {
+            return (
+              <div
+                className="rpgui-container-framed-grey"
+                key={index}
+                style={{ float: "left", width: "50%" }}
+              >
+                <p>{r.raceName}:</p>{" "}
+                {r.subRaces ? (
+                  <ul className="rpgui-list-imp" style={{ height: 90 }}>
+                    {r.subRaces.map((sr: subRaces, indexSR: number) => {
+                      return (
+                        <li
+                          key={indexSR}
+                          className="data-rpguivalue"
+                          onClick={() => handleData(sr, r.raceName)}
+                        >
+                          {" "}
+                          {sr.subRacesName}
+                          {sr.raceAbilitys ? (
+                            <>
                               <>
-                                <button
-                                  onClick={() =>
-                                    handleData(sr, r.raceName)
-                                  }
-                                >
-                                  {sr.subRacesName}
-                                </button>
+                                {sr.raceAbilitys.streght ? (
+                                  <>
+                                    {" "}
+                                    str:
+                                    {sr.raceAbilitys.streght > 0 ? (
+                                      <>+{sr.raceAbilitys.streght}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.streght}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
                               </>
-                              :{" "}
-                              {sr.raceAbilitys ? (
-                                <>
+                              <>
+                                {sr.raceAbilitys.dextrity ? (
                                   <>
-                                    {sr.raceAbilitys.streght ? (
-                                      <>
-                                        str:
-                                        {sr.raceAbilitys.streght > 0 ? (
-                                          <>+{sr.raceAbilitys.streght}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.streght}</>
-                                        )}{" "}
-                                      </>
+                                    {" "}
+                                    dex:
+                                    {sr.raceAbilitys.dextrity > 0 ? (
+                                      <>+{sr.raceAbilitys.dextrity}</>
                                     ) : (
-                                      <></>
-                                    )}
+                                      <>{sr.raceAbilitys.dextrity}</>
+                                    )}{" "}
                                   </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.constitution ? (
                                   <>
-                                    {sr.raceAbilitys.dextrity ? (
-                                      <>
-                                        dex:
-                                        {sr.raceAbilitys.dextrity > 0 ? (
-                                          <>+{sr.raceAbilitys.dextrity}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.dextrity}</>
-                                        )}{" "}
-                                      </>
+                                    {" "}
+                                    con:
+                                    {sr.raceAbilitys.constitution > 0 ? (
+                                      <>+{sr.raceAbilitys.constitution}</>
                                     ) : (
-                                      <></>
-                                    )}
+                                      <>{sr.raceAbilitys.constitution}</>
+                                    )}{" "}
                                   </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.intelligence ? (
                                   <>
-                                    {sr.raceAbilitys.constitution ? (
-                                      <>
-                                        con:
-                                        {sr.raceAbilitys.constitution > 0 ? (
-                                          <>+{sr.raceAbilitys.constitution}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.constitution}</>
-                                        )}{" "}
-                                      </>
+                                    {" "}
+                                    int:
+                                    {sr.raceAbilitys.intelligence > 0 ? (
+                                      <>+{sr.raceAbilitys.intelligence}</>
                                     ) : (
-                                      <></>
-                                    )}
+                                      <>{sr.raceAbilitys.intelligence}</>
+                                    )}{" "}
                                   </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.wisdom ? (
                                   <>
-                                    {sr.raceAbilitys.intelligence ? (
-                                      <>
-                                        int:
-                                        {sr.raceAbilitys.intelligence > 0 ? (
-                                          <>+{sr.raceAbilitys.intelligence}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.intelligence}</>
-                                        )}{" "}
-                                      </>
+                                    {" "}
+                                    wis:
+                                    {sr.raceAbilitys.wisdom > 0 ? (
+                                      <>+{sr.raceAbilitys.wisdom}</>
                                     ) : (
-                                      <></>
-                                    )}
+                                      <>{sr.raceAbilitys.wisdom}</>
+                                    )}{" "}
                                   </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.charisma ? (
                                   <>
-                                    {sr.raceAbilitys.wisdom ? (
-                                      <>
-                                        wis:
-                                        {sr.raceAbilitys.wisdom > 0 ? (
-                                          <>+{sr.raceAbilitys.wisdom}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.wisdom}</>
-                                        )}{" "}
-                                      </>
+                                    {" "}
+                                    cha:
+                                    {sr.raceAbilitys.charisma > 0 ? (
+                                      <>+{sr.raceAbilitys.charisma}</>
                                     ) : (
-                                      <></>
-                                    )}
+                                      <>{sr.raceAbilitys.charisma}</>
+                                    )}{" "}
                                   </>
-                                  <>
-                                    {sr.raceAbilitys.charisma ? (
-                                      <>
-                                        cha:
-                                        {sr.raceAbilitys.charisma > 0 ? (
-                                          <>+{sr.raceAbilitys.charisma}</>
-                                        ) : (
-                                          <>{sr.raceAbilitys.charisma}</>
-                                        )}{" "}
-                                      </>
-                                    ) : (
-                                      <></>
-                                    )}
-                                  </>
-                                </>
-                              ) : (
-                                <></>
-                              )}
-                              {sr.levelAdjustment === 0 ? (
-                                <></>
-                              ) : (
-                                <> lva:{sr.levelAdjustment}</>
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    ) : (
-                      <p>...loading sub races...</p>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            <p>...loading races...</p>
-          )}
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                            </>
+                          ) : (
+                            <></>
+                          )}
+                          {sr.levelAdjustment === 0 ? (
+                            <></>
+                          ) : (
+                            <> lva:{sr.levelAdjustment}</>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <p>...loading sub races...</p>
+                )}
+              </div>
+            );
+          })}
         </>
-      </div>
+      ) : (
+        <p>...loading races...</p>
+      )}
     </>
   );
-}
+};

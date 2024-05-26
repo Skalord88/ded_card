@@ -10,7 +10,7 @@ import {
   urlClassSell
 } from "../components/url";
 
-export function Classes() {
+export const Classes = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
@@ -60,78 +60,73 @@ export function Classes() {
 
   return (
     <>
-      <div className="container">
-        <div className="container-item">
-          <div>
-            {classPcName ? (
-              <>
-                choosen: {classPcName}{" "}
-                <button onClick={handleSign}>proceed</button>
-              </>
-            ) : (
-              <>choose one</>
-            )}
-          </div>
+      <div className="rpgui-container-framed-grey">
+        {classPcName ? (
+          <p>
+            choosen: {classPcName}{" "}
+            <button className="rpgui-button" onClick={handleSign}>
+              proceed
+            </button>
+          </p>
+        ) : (
+          <p>...choose one</p>
+        )}
 
-          <div>
-            <div>effective level: {char?.effectiveCharacterLv}</div>
-            {char?.classPcList ? (
-              <>
-                {char.classPcList.map((c: any, index: number) => {
-                  return c.level === 0 ? (
-                    <></>
-                  ) : (
-                    <div className="container-item" key={index}>
-                      <button
-                        onClick={() =>
-                          handleData(["+", c.id, c.className, c.level])
-                        }
-                      >
-                        +
-                      </button>
-                      <button
-                        onClick={() =>
-                          handleData(["-", c.id, c.className, c.level])
-                        }
-                      >
-                        -
-                      </button>{" "}
-                      {c.className} {c.level}
-                    </div>
-                  );
-                })}
-              </>
-            ) : (
-              <>no classes in character</>
-            )}
-          </div>
-          <div className="container-item">
-            {char?.classPcList ? (
-              <button>
-                <Link to={"/skill/" + charId}>to skills</Link>
-              </button>
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
-        <div className="container-item">
-          {classesList.map((cl: any, index) => {
-            return (
-              <div key={index}>
-                <button
-                  onClick={() =>
-                    handleData(["+", cl.id, cl.className, cl.level])
-                  }
-                >
-                  +
-                </button>{" "}
-                {cl.classType}, {cl.className}
-              </div>
-            );
-          })}
-        </div>
+        <p>effective level: {char?.effectiveCharacterLv}</p>
+        {char?.classPcList ? (
+          <>
+            {char.classPcList.map((c: any, index: number) => {
+              return c.level === 0 ? (
+                <></>
+              ) : (
+                <div key={index}>
+                  <p>
+                    <button
+                      className="rpgui-button"
+                      onClick={() =>
+                        handleData(["+", c.id, c.className, c.level])
+                      }
+                    >
+                      +
+                    </button>
+                    <button
+                      className="rpgui-button"
+                      onClick={() =>
+                        handleData(["-", c.id, c.className, c.level])
+                      }
+                    >
+                      -
+                    </button>{" "}
+                    {c.className} {c.level}{" "}
+                  </p>
+                </div>
+              );
+            })}
+          </>
+        ) : (
+          <p>no classes in character</p>
+        )}
+        {char?.classPcList ? (
+          <button className="rpgui-button">
+            <Link to={"/skill/" + charId}>to skills</Link>
+          </button>
+        ) : (
+          <p></p>
+        )}
       </div>
+      <ul className="rpgui-list-imp" style={{ height: 200 }}>
+        {classesList.map((cl: any, index) => {
+          return (
+            <li
+              key={index}
+              className="data-rpguivalue"
+              onClick={() => handleData(["+", cl.id, cl.className, cl.level])}
+            >
+              {cl.classType}, {cl.className}
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
-}
+};

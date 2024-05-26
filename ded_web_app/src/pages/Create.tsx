@@ -3,9 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { urlChar } from "../components/url";
 
-export function Create() {
-  // const URL = "http://localhost:8080/character-card";
-
+export const Create = () => {
   const [inputData, setInputData] = useState<{
     characterName: string;
     playerName: string;
@@ -27,36 +25,40 @@ export function Create() {
   };
 
   return (
-    <div className="container">
-      <div className="container-item">
-        <form>
-          <input
-            type="text"
-            placeholder="Character Name"
-            onChange={handleData}
-            name="characterName"
-            value={inputData.characterName}
-          ></input>
-          <input
-            type="text"
-            placeholder="Player"
-            onChange={handleData}
-            name="playerName"
-            value={inputData.playerName}
-          ></input>
+    <>
+        <div className="rpgui-container-framed">
+          <form>
+            <input
+              className="rpgui-content-input"
+              type="text"
+              placeholder="Character Name"
+              onChange={handleData}
+              name="characterName"
+              value={inputData.characterName}
+            />
+            <input
+              className="rpgui-content-input"
+              type="text"
+              placeholder="Player"
+              onChange={handleData}
+              name="playerName"
+              value={inputData.playerName}
+            />
 
-          <div>
-            {charId > -1 ? (
-              <button>
-                {" "}
-                <Link to={"/ability/" + charId}>to abilitys</Link>
-              </button>
-            ) : (
-              <button onClick={handleSubmit}>create</button>
-            )}
-          </div>
-        </form>
-      </div>
-    </div>
+            <div>
+              {charId > -1 ? (
+                <button className="rpgui-button">
+                  {" "}
+                  <Link to={"/ability/" + charId}>to abilitys</Link>
+                </button>
+              ) : (
+                <button className="rpgui-button" onClick={handleSubmit}>
+                  create
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+    </>
   );
-}
+};
