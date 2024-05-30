@@ -9,16 +9,21 @@ import {
   urlClassList,
   urlClassSell
 } from "../components/url";
+import { Dropdown } from "../components/Dropdown";
 
 export const Classes = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
   const [classesList, setClassesList] = useState<ClassPc[]>([]);
-  const [sign, setSign] = useState("");
-  const [id, setId] = useState(-1);
+  const [sign, setSign] = useState<string>("");
+  const [id, setId] = useState<number>(-1);
+  const [option, setOption] = useState({
+    id: -1,
+    sign: ""
+  })
 
-  const [classPcName, setInputName] = useState("");
+  const [classPcName, setInputName] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +41,21 @@ export const Classes = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {}, [classesList]);
+  useEffect(() => {
+    const list: ClassPc[] = classesList.filter(
+      (classe) =>
+        option.id !== classe.id
+    )
+    setClassesList(list)
+  }, [option]);
+
+  const handleOption = (e: ClassPc) => {
+    setOption(prevOption => ({
+      ...prevOption,
+      id: e.id,
+      sign: "+"
+    }))
+  }
 
   const handleData = (e: any) => {
     setSign(e[0]);
@@ -44,22 +63,26 @@ export const Classes = () => {
     setInputName(e[2]);
   };
 
-  const handleSign = (e: any) => {
-    e.preventDefault();
+  const handleSign = () => {
+    
+    if (option.id !== -1 && option.sign !== ""){
     try {
-      if (sign === "+") {
-        axios.post(urlClassAdd + charId, { id: id });
-      } else if (sign === "-") {
-        axios.post(urlClassSell + charId, { id: id });
+      if (option.sign === "+") {
+        axios.post(urlClassAdd + charId, { id: option.id });
+      } else if (option.sign === "-") {
+        axios.post(urlClassSell + charId, { id: option.id });
       }
     } catch (error) {
       console.log(error);
-    }
+    }}
     window.location.reload();
   };
 
   return (
     <>
+    <p>D{char?.vitality.hitDices.key} {char?.vitality.hitDices.value}</p>
+    <p>{char?.bab}</p>
+    <div><p>{char?.savingThrows.fortitude} / {char?.savingThrows.reflex} / {char?.savingThrows.will}</p></div>
       <div className="rpgui-container-framed-grey">
         {classPcName ? (
           <p>
@@ -73,33 +96,50 @@ export const Classes = () => {
         )}
 
         <p>effective level: {char?.effectiveCharacterLv}</p>
+        <div>
+        <div style={{float:'left', width: '15%'}}>
+        <Dropdown
+         options={classesList}
+         onSelect={handleOption}
+        />
+      </div>
+      <button
+       className="rpgui-button"
+       onClick={() => handleSign} 
+      >+</button>
+      </div>
         {char?.classPcList ? (
           <>
             {char.classPcList.map((c: any, index: number) => {
               return c.level === 0 ? (
                 <></>
               ) : (
-                <div key={index}>
-                  <p>
-                    <button
-                      className="rpgui-button"
-                      onClick={() =>
-                        handleData(["+", c.id, c.className, c.level])
-                      }
-                    >
-                      +
-                    </button>
-                    <button
-                      className="rpgui-button"
-                      onClick={() =>
-                        handleData(["-", c.id, c.className, c.level])
-                      }
-                    >
-                      -
-                    </button>{" "}
-                    {c.className} {c.level}{" "}
-                  </p>
-                </div>
+                <>
+                  <div
+                    className="flex-container rpgui-container-framed"
+                    key={index}
+                  >
+                    <p>
+                      <button
+                        className="rpgui-button"
+                        onClick={() =>
+                          handleData(["+", c.id, c.className, c.level])
+                        }
+                      >
+                        +
+                      </button>
+                      <button
+                        className="rpgui-button"
+                        onClick={() =>
+                          handleData(["-", c.id, c.className, c.level])
+                        }
+                      >
+                        -
+                      </button>{" "}
+                      {c.className} {c.level}{" "}
+                    </p>
+                  </div>
+                </>
               );
             })}
           </>
@@ -107,26 +147,16 @@ export const Classes = () => {
           <p>no classes in character</p>
         )}
         {char?.classPcList ? (
-          <button className="rpgui-button">
-            <Link to={"/skill/" + charId}>to skills</Link>
-          </button>
+          <div>
+            <button className="rpgui-button">
+              <Link to={"/skill/" + charId}>to skills</Link>
+            </button>
+          </div>
         ) : (
           <p></p>
         )}
       </div>
-      <ul className="rpgui-list-imp" style={{ height: 200 }}>
-        {classesList.map((cl: any, index) => {
-          return (
-            <li
-              key={index}
-              className="data-rpguivalue"
-              onClick={() => handleData(["+", cl.id, cl.className, cl.level])}
-            >
-              {cl.classType}, {cl.className}
-            </li>
-          );
-        })}
-      </ul>
+      
     </>
   );
 };

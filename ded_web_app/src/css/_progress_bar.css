@@ -19,7 +19,7 @@
     height: 42px;
     width: 40px;
     left: 0px;
-    background-image: url('img/progress-bar-left.png');
+    background-image: url('../img/progress-bar-left.png');
     background-size: 100% 100%;
 }
 
@@ -30,7 +30,7 @@
     height: 42px;
     width: 40px;
     right: 0px;
-    background-image: url('img/progress-bar-right.png');
+    background-image: url('../img/progress-bar-right.png');
     background-size: 100% 100%;
 }
 
@@ -41,7 +41,7 @@
     height: 42px;
     left: 40px;
     right: 40px;
-    background-image: url('img/progress-bar-track.png');
+    background-image: url('../img/progress-bar-track.png');
     background-repeat: repeat-x;
     background-size: 36px 100%;
 }
@@ -55,7 +55,7 @@
     bottom: 8px;
     left: 0;
     width: 100%;
-    background-image: url('img/progress.png');
+    background-image: url('../img/progress.png');
     background-repeat: repeat-x;
     background-size: 36px 100%;
 }
@@ -63,17 +63,17 @@
 /* progress bar - blue color */
 .rpgui-progress-fill.blue
 {
-    background-image: url('img/progress-blue.png');
+    background-image: url('../img/progress-blue.png');
 }
 
 /* progress bar - green color */
 .rpgui-progress-fill.green
 {
-    background-image: url('img/progress-green.png');
+    background-image: url('../img/progress-green.png');
 }
 
 /* progress bar - red color */
 .rpgui-progress-fill.red
 {
-    background-image: url('img/progress-red.png');
+    background-image: url('../img/progress-red.png');
 }

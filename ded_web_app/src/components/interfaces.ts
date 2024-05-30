@@ -39,6 +39,7 @@ export interface character {
 
 export type ClassPc = {
   id: number;
+  classType: number;
   className: number;
   level: number;
 }

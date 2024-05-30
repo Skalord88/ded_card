@@ -2,7 +2,7 @@
 @import '_misc';
 
 @import '_button';
-/*@import 'checkbox'; */
+@import '_checkbox';
 @import '_content';
 @import '_containers_and_frames';
 @import '_cursor';
@@ -12,10 +12,10 @@
 @import '_input';
 @import '_list';
 @import '_paragraphs_and_headers';
-/*@import 'progress_bar';
-@import 'radio'; */
+@import '_progress_bar';
+@import '_radio';
 @import '_scrollbars'; 
-/* @import 'disabled'; */
+@import '_disabled';
 @import '_slider'; 
 
 body
@@ -23,8 +23,7 @@ body
     background-color: black;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-rows: auto auto;
-    padding: 10px;
+.flex-container {
+    display: inline-block;
+    vertical-align: top;
   }

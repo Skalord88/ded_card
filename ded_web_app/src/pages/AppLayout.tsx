@@ -6,8 +6,8 @@ export const AppLayout: React.FC = () => {
     <>
       <div
         className="rpgui-content rpgui-cursor-default"
-        style={{ overflowY:'scroll' }}
-       >
+        style={{ overflowY: "scroll" }}
+      >
         <header></header>
         <div id="nav" className="rpgui-container-framed-golden-2">
           <nav>
@@ -22,13 +22,13 @@ export const AppLayout: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div id="body" className="inner rpgui-container framed rpgui-container-framed-grey">
-        <main>
+        <div id="body" className="inner rpgui-container-famed">
+          <main>
             <br></br>
-              <Outlet />
+            <Outlet />
             <br></br>
             <Footer />
-        </main>
+          </main>
         </div>
       </div>
     </>
