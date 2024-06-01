@@ -10,20 +10,14 @@ import {
   urlClassSell
 } from "../components/url";
 import { Dropdown } from "../components/Dropdown";
+import { CharSummary } from "../components/CharSummary";
 
 export const Classes = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
   const [classesList, setClassesList] = useState<ClassPc[]>([]);
-  const [sign, setSign] = useState<string>("");
-  const [id, setId] = useState<number>(-1);
-  const [option, setOption] = useState({
-    id: -1,
-    sign: ""
-  })
-
-  const [classPcName, setInputName] = useState<string>("");
+  const [option, setOption] = useState<{ id: number; sign: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,119 +27,99 @@ export const Classes = () => {
 
         const resClassList = await axios.get(urlClassList);
         setClassesList(resClassList.data);
+
+        setOption({ id: -1, sign: "" });
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const list: ClassPc[] = classesList.filter(
+    let list: ClassPc[] = [];
+
+    list = classesList.filter((classe) => option?.id !== classe.id);
+
+    list = list.filter(
       (classe) =>
-        option.id !== classe.id
-    )
-    setClassesList(list)
+        !char?.classPcList.some((classInChar) => classInChar.id === classe.id)
+    );
+
+    char?.classPcList.forEach((classInList) =>
+      list.filter((inList) => classInList.id !== inList.id)
+    );
+    setClassesList(list);
   }, [option]);
 
   const handleOption = (e: ClassPc) => {
-    setOption(prevOption => ({
+    setOption((prevOption) => ({
       ...prevOption,
       id: e.id,
       sign: "+"
-    }))
-  }
+    }));
+  };
 
-  const handleData = (e: any) => {
-    setSign(e[0]);
-    setId(e[1]);
-    setInputName(e[2]);
+  const handleData = (e: [string, ClassPc]) => {
+    setOption({ id: e[1].id, sign: e[0] });
   };
 
   const handleSign = () => {
-    
-    if (option.id !== -1 && option.sign !== ""){
-    try {
-      if (option.sign === "+") {
-        axios.post(urlClassAdd + charId, { id: option.id });
-      } else if (option.sign === "-") {
-        axios.post(urlClassSell + charId, { id: option.id });
+    if (option) {
+      try {
+        if (option.sign === "+") {
+          axios.post(urlClassAdd + charId, { id: option.id });
+        } else if (option.sign === "-") {
+          axios.post(urlClassSell + charId, { id: option.id });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
-    }}
+    }
     window.location.reload();
   };
 
   return (
     <>
-    <p>D{char?.vitality.hitDices.key} {char?.vitality.hitDices.value}</p>
-    <p>{char?.bab}</p>
-    <div><p>{char?.savingThrows.fortitude} / {char?.savingThrows.reflex} / {char?.savingThrows.will}</p></div>
+      <CharSummary character={char} />
       <div className="rpgui-container-framed-grey">
-        {classPcName ? (
-          <p>
-            choosen: {classPcName}{" "}
-            <button className="rpgui-button" onClick={handleSign}>
-              proceed
-            </button>
-          </p>
-        ) : (
-          <p>...choose one</p>
-        )}
-
-        <p>effective level: {char?.effectiveCharacterLv}</p>
         <div>
-        <div style={{float:'left', width: '15%'}}>
-        <Dropdown
-         options={classesList}
-         onSelect={handleOption}
-        />
-      </div>
-      <button
-       className="rpgui-button"
-       onClick={() => handleSign} 
-      >+</button>
-      </div>
-        {char?.classPcList ? (
-          <>
-            {char.classPcList.map((c: any, index: number) => {
-              return c.level === 0 ? (
-                <></>
-              ) : (
-                <>
-                  <div
-                    className="flex-container rpgui-container-framed"
-                    key={index}
-                  >
-                    <p>
+          <div style={{ width: 400 }}>
+            <Dropdown options={classesList} onSelect={handleOption} />
+          </div>
+          <button className="rpgui-button" onClick={() => handleSign()}>
+            <p>change</p>
+          </button>
+        </div>
+        <div className="rpgui-center">
+          {char?.classPcList ? (
+            <>
+              {char.classPcList.map((c: ClassPc, index: number) => {
+                return c.level === 0 ? (
+                  <div></div>
+                ) : (
+                  <div className="rpgui-container-framed-grey" style={{width: "40%"}}>
                       <button
-                        className="rpgui-button"
-                        onClick={() =>
-                          handleData(["+", c.id, c.className, c.level])
-                        }
+                        className="rpgui-button-golden-small"
+                        onClick={() => handleData(["+", c])}
                       >
-                        +
+                        <p>+</p>
                       </button>
                       <button
-                        className="rpgui-button"
-                        onClick={() =>
-                          handleData(["-", c.id, c.className, c.level])
-                        }
+                        className="rpgui-button-golden-small"
+                        onClick={() => handleData(["-", c])}
                       >
-                        -
+                        <p>-</p>
                       </button>{" "}
-                      {c.className} {c.level}{" "}
-                    </p>
+                      {c.className} {c.level}
                   </div>
-                </>
-              );
-            })}
-          </>
-        ) : (
-          <p>no classes in character</p>
-        )}
+                );
+              })}
+            </>
+          ) : (
+            <p>no classes in character</p>
+          )}
+        </div>
         {char?.classPcList ? (
           <div>
             <button className="rpgui-button">
@@ -156,7 +130,6 @@ export const Classes = () => {
           <p></p>
         )}
       </div>
-      
     </>
   );
 };

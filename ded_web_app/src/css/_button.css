@@ -55,7 +55,7 @@
 }
 
 /* golden button style */
-.rpgui-button.golden {
+.rpgui-button-golden {
 
 	/* hide button default stuff */
 	background-color: Transparent;
@@ -81,6 +81,34 @@
     padding-top: 5px;
     padding-left: 35px;
     padding-right: 35px;
+    overflow: visible;
+}
+
+/* golden button style */
+.rpgui-button-golden-small {
+
+	/* hide button default stuff */
+	background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+
+	/* background */
+	background: url("../img/button-golden.png") no-repeat no-repeat;
+	background-clip: padding-box;
+	background-origin: padding-box;
+	background-position: center;
+	background-size: 100% 80%;
+
+	/* default size and display */
+    height: 50px;
+
+
+    /* padding */
+    /* padding-top: 5px; */
+    padding-left: 15px;
+    padding-right: 15px;
     overflow: visible;
 }
 

@@ -1,10 +1,10 @@
-import { Abilitys, Book, Inventory, Position, SignAndNumber, Spell, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Book, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
 ): string {
-    const sign = number >= 0 ? '+' : '';
-    return sign;
+    if(number < 0) {return ""}
+    return "+";
 }
 
 export function BonusAbilities(ab: Abilitys, which: string) {

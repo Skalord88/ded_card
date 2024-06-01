@@ -8,27 +8,48 @@ export const AppLayout: React.FC = () => {
         className="rpgui-content rpgui-cursor-default"
         style={{ overflowY: "scroll" }}
       >
-        <header></header>
-        <div id="nav" className="rpgui-container-framed-golden-2">
-          <nav>
-            <ul>
-              <li>
-                <Link to="create">Character creation</Link>
-              </li>
+        <div
+          className="rpgui-container-framed"
+          style={{
+            width: "80%",
+            position: "relative",
+            marginRight: "auto",
+            marginTop: 20,
+            marginBottom: 20,
+            marginLeft: "auto",
+            minWidth: "40%"
+          }}
+        >
+          <header></header>
+          <div id="nav" className="rpgui-center rpgui-container-framed-golden-2">
+            <nav>
+              <Link to="create">
+                <button className="rpgui-button" style={{ width: "32%" }}>
+                  <p>Character creation</p>
+                </button>
+              </Link>
 
-              <li>
-                <Link to="list">List of characters</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div id="body" className="inner rpgui-container-famed">
-          <main>
-            <br></br>
-            <Outlet />
-            <br></br>
-            <Footer />
-          </main>
+              <Link to="list">
+                <button className="rpgui-button" style={{ width: "32%" }}>
+                  <p>List of characters</p>
+                </button>
+              </Link>
+
+              <Link to="list">
+                <button className="rpgui-button" style={{ width: "32%" }}>
+                  <p>Fight!</p>
+                </button>
+              </Link>
+            </nav>
+          </div>
+          <div id="body" className="rpgui-container-famed">
+            <main>
+              <br></br>
+              <Outlet />
+              <br></br>
+              <Footer />
+            </main>
+          </div>
         </div>
       </div>
     </>

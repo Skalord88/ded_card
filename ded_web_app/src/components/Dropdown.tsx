@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ClassPc } from "./interfaces";
 
 export interface DropdownProps {
@@ -18,18 +18,19 @@ export const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
 
   const handleMouseLeave = () => {
     setIsOpen(false);
-};
+  };
 
   return (
     <div
         className="rpgui-dropdown-imp"
+        style={{minWidth: 100}}
         onMouseLeave={handleMouseLeave}
         >
       <p
         className="rpgui-dropdown-imp-header"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <label>{'>'}</label>
+        {'> '}
         {selectedOption?.className}
       </p>
       {isOpen && (

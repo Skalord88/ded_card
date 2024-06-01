@@ -145,7 +145,7 @@ export const characterEmpty: CharacterPc = {
         charisma: 0
     },
     skillPoints: 0,
-    skillsList: { skills: [] },
+    skillsList: [],
     featsList: [],
     levelFeatsList: [],
     items: [],

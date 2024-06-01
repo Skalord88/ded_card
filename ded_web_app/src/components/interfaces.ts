@@ -14,7 +14,7 @@ export type CharacterPc = {
   savingThrows: savingThrows;
   abilitys: Abilitys;
   skillPoints: number;
-  skillsList: MapOfSkills;
+  skillsList: SkillProps[];
   featsList: feat[];
   levelFeatsList: feat[];
   items: Item[];
