@@ -6,6 +6,7 @@ import { CharacterPc, serverSkill, SkillProps } from "../components/interfaces";
 
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
+import { CharSummary } from "../components/CharSummary";
 
 export function Skills() {
   const { charId } = useParams();
@@ -96,7 +97,6 @@ export function Skills() {
   };
 
   const handleDelRank = (skillId: number, studyId: number) => {
-
     if (studyId === -1) {
       setSkills((updatedSkills) =>
         updatedSkills.map((actualSkill) =>
@@ -150,100 +150,128 @@ export function Skills() {
 
   return (
     <>
-        <div className="container-item">
-          skills points:{" "}
-          {actualSkillsPoints + " / " + maxSkillsPoints + " / " + maxSkillLv}
-          <div>
-            <button onClick={handleChange}>set Skills</button>
-          </div>
-          <button>
-            <Link to={"/feat/" + charId}>to feats</Link>
-          </button>
+      <CharSummary character={char} />
+      <div>
+        <p className="rpgui-container-framed-golden"
+        style={{ width: "fit-content"}}
+        >skills points:{" "}
+        {actualSkillsPoints + " / " + maxSkillsPoints + " / " + maxSkillLv}
+        
+        <div>
+          <button className="rpgui-button" onClick={handleChange}><p>set Skills</p></button>
         </div>
-      <div className="container">
-        <div className="container-item">
-          <div className="container-table">
-            <div>CS</div>
-            <div>skill</div>
-            <div>tot</div>
-            <div>rnk</div>
-            <div>abi</div>
-            <div>bns</div>
-            {skills.map((skill) => {
-              return (
+        <button className="rpgui-button">
+          <Link to={"/feat/" + charId}>to feats</Link>
+        </button>
+        </p>
+      </div>
+      <div
+        className="grid-table rpgui-container-framed-golden"
+        style={{ width: 700 }}
+      >
+        <div style={{ textAlign: "center" }}>CS</div>
+        <div>skill</div>
+        <div style={{ textAlign: "center" }}>tot</div>
+        <div style={{ textAlign: "center" }}>rnk</div>
+        <div style={{ textAlign: "center" }}>abi</div>
+        <div style={{ textAlign: "center" }}>bns</div>
+        {skills.map((skill) => {
+          return (
+            <>
+              {skill.fieldOfStudy.length === 0 ? (
                 <>
-                  {skill.fieldOfStudy.length === 0 ? (
-                    <>
-                      <div>{skill.classSkill ? <>x</> : <>o</>}</div>
-                      <div>
-                        <button
-                          onClick={() => handleAddRank(skill.idSkill, -1)}
-                        >
-                          +
-                        </button>
-                        <button
-                          onClick={() => handleDelRank(skill.idSkill, -1)}
-                        >
-                          -
-                        </button>
-                        {skill.nameSkill}
-                      </div>
-                      <div>
-                        {skill.skillRank +
-                          skill.skillBonus +
-                          skill.skillAbility}
-                      </div>
-                      <div>{skill.skillRank}</div>
-                      <div>{skill.skillBonus}</div>
-                      <div>{skill.skillAbility}</div>
-                    </>
-                  ) : (
-                    <>
-                      <div>{skill.classSkill ? <>x</> : <>o</>}</div>
-                      <div>{skill.nameSkill}</div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      <div></div>
-                      {skill.fieldOfStudy.map((study) => {
-                        return (
-                          <>
-                            <div></div>
-                            <div>
-                              <button
-                                onClick={() =>
-                                  handleAddRank(skill.idSkill, study.idStudy)
-                                }
-                              >
-                                +
-                              </button>
-                              <button
-                                onClick={() =>
-                                  handleDelRank(skill.idSkill, study.idStudy)
-                                }
-                              >
-                                -
-                              </button>
-                              {study.study}
-                            </div>
-                            <div>
-                              {study.rank +
-                                skill.skillBonus +
-                                skill.skillAbility}
-                            </div>
-                            <div>{study.rank}</div>
-                            <div>{skill.skillBonus}</div>
-                            <div>{skill.skillAbility}</div>
-                          </>
-                        );
-                      })}
-                    </>
-                  )}
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.classSkill ? <>{">"}</> : <></>}
+                  </div>
+                  <div
+                    className="rpgui-container-framed-grey-mini"
+                    style={{ minWidth: 330, textAlign: "left" }}
+                  >
+                    <button
+                      className="rpgui-button-golden-mini"
+                      onClick={() => handleAddRank(skill.idSkill, -1)}
+                    >
+                      +
+                    </button>
+                    <button
+                      className="rpgui-button-golden-mini"
+                      onClick={() => handleDelRank(skill.idSkill, -1)}
+                    >
+                      -
+                    </button>
+                    {skill.nameSkill}
+                  </div>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {Math.floor(skill.skillRank + skill.skillBonus + skill.skillAbility)}
+                  </div>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.skillRank}
+                  </div>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.skillBonus}
+                  </div>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.skillAbility}
+                  </div>
                 </>
-              );
-            })}
-          </div>
-        </div>
+              ) : (
+                <>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.classSkill ? <>{'>'}</> : <></>}
+                  </div>
+                  <div className="rpgui-container-framed-grey-mini">
+                    {skill.nameSkill}
+                  </div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  {skill.fieldOfStudy.map((study) => {
+                    return (
+                      <>
+                        <div></div>
+                        <div
+                          className="rpgui-container-framed-grey-mini"
+                          style={{ textAlign: "left" }}
+                        >
+                          <button
+                            className="rpgui-button-golden-mini"
+                            onClick={() =>
+                              handleAddRank(skill.idSkill, study.idStudy)
+                            }
+                          >
+                            +
+                          </button>
+                          <button
+                            className="rpgui-button-golden-mini"
+                            onClick={() =>
+                              handleDelRank(skill.idSkill, study.idStudy)
+                            }
+                          >
+                            -
+                          </button>
+                          {study.study}
+                        </div>
+                        <div className="rpgui-container-framed-grey-mini">
+                          {study.rank + skill.skillBonus + skill.skillAbility}
+                        </div>
+                        <div className="rpgui-container-framed-grey-mini">
+                          {study.rank}
+                        </div>
+                        <div className="rpgui-container-framed-grey-mini">
+                          {skill.skillBonus}
+                        </div>
+                        <div className="rpgui-container-framed-grey-mini">
+                          {skill.skillAbility}
+                        </div>
+                      </>
+                    );
+                  })}
+                </>
+              )}
+            </>
+          );
+        })}
       </div>
     </>
   );

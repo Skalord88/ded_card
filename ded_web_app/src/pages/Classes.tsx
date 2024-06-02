@@ -11,6 +11,7 @@ import {
 } from "../components/url";
 import { Dropdown } from "../components/Dropdown";
 import { CharSummary } from "../components/CharSummary";
+import { emptyClass } from "../components/variables";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -88,17 +89,27 @@ export const Classes = () => {
             <Dropdown options={classesList} onSelect={handleOption} />
           </div>
           <button className="rpgui-button" onClick={() => handleSign()}>
-            <p>change</p>
+            <p>add class</p>
           </button>
         </div>
-        <div className="rpgui-center">
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap"
+          }}
+        >
           {char?.classPcList ? (
             <>
               {char.classPcList.map((c: ClassPc, index: number) => {
                 return c.level === 0 ? (
                   <div></div>
                 ) : (
-                  <div className="rpgui-container-framed-grey" style={{width: "40%"}}>
+                  <div
+                    key={index}
+                    className="rpgui-container-framed-golden"
+                    style={{ minWidth: 530 }}
+                  >
+                    <p>
                       <button
                         className="rpgui-button-golden-small"
                         onClick={() => handleData(["+", c])}
@@ -111,7 +122,41 @@ export const Classes = () => {
                       >
                         <p>-</p>
                       </button>{" "}
-                      {c.className} {c.level}
+                      {c.className}
+                      {option?.id !== c.id ? (
+                        <> {c.level} </>
+                      ) : (
+                        <>
+                          {option.sign === "+" ? (
+                            <>
+                              {" ("}
+                              {c.level}
+                              {") "}
+                              {c.level + 1}{" "}
+                              <button
+                                className="rpgui-button-golden-small"
+                                onClick={() => handleSign()}
+                              >
+                                <p>change</p>
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              {" ("}
+                              {c.level}
+                              {") "}
+                              {c.level - 1}{" "}
+                              <button
+                                className="rpgui-button-golden-small"
+                                onClick={() => handleSign()}
+                              >
+                                <p>change</p>
+                              </button>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </p>
                   </div>
                 );
               })}

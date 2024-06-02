@@ -27,3 +27,12 @@ body
     display: inline-block;
     vertical-align: top;
 }
+
+.grid-table {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 1.0em;
+	line-height: 22px;
+}

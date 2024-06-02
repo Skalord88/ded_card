@@ -84,6 +84,31 @@
 	background-position: center;
 }
 
+.rpgui-container-framed-golden-2-mini
+{
+	/* border */
+	border-style: solid;
+	border-image-source: url("../img/border-image-golden2.png");
+	border-image-repeat: repeat;
+	border-image-slice: 8 8 8 8;
+	border-image-width: 8px;
+	border-width: 6px;
+	padding: 6px;
+
+	/* internal border */
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+	/* background */
+	background: url("../img/background-image-golden2.png") repeat repeat;
+	background-clip: padding-box;
+	background-origin: padding-box;
+	background-position: center;
+
+	text-align: center;
+}
+
 /* game div with soft grey background image*/
 .rpgui-container-framed-grey
 {
@@ -108,4 +133,26 @@
 	background-clip: padding-box;
 	background-origin: padding-box;
 	background-position: center;
+}
+
+.rpgui-container-framed-grey-mini
+{
+	position: relative;
+
+	/* border */
+	border-style: solid;
+	border-image-source: url("../img/border-image-grey.png");
+	border-image-repeat: repeat;
+	border-image-slice: 2 2 2 2;
+	border-image-width: 4px;
+	border-width: 4px;
+	padding: 4px;
+
+	/* internal border */
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+	text-align: center;
+
 }

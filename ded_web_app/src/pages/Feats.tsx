@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { CharacterPc, FeatsId, serverFeat } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
+import { FeatsList } from "../components/FeatsList";
 
 export function Feats() {
   const { charId } = useParams();
@@ -133,100 +134,93 @@ export function Feats() {
 
   return (
     <>
-      <div className="container">
-        <div className="container-item">
-          {elcFeats === lvFeats ? (
+      <div style={{ display: "flex" }}>
+        {elcFeats === lvFeats ? (
+          <>
+            <div id="remFeatsAdded" className="rpgui-container-framed-golden">
+              all feats added
+            </div>
+            <button>
+              <Link to={"/item/" + charId}>to items</Link>
+            </button>
+          </>
+        ) : (
+          <div id="remFeats" className="rpgui-container-framed-golden">
+            <p>add {elcFeats - lvFeats} feat</p>
+          </div>
+        )}
+      </div>
+      <div id="classFeats">
+        <h2>---Class Feats---</h2>
+        <FeatsList feat={char?.featsList} />
+      </div>
+      <div
+        id="featsAdded"
+        style={{
+          display: "flex",
+          justifyContent: "flex-end"
+        }}
+      >
+        <h2>---Level Feats---</h2>
+        {levelFeatsList.map((feat, index) => {
+          return (
             <>
-              <div>all feats added</div>
-              <div>
-                <button>
-                  <Link to={"/item/" + charId}>to items</Link>
-                </button>
+              <div key={index}>
+                ---{feat.featName}
+                <button onClick={() => handleDeleteFeat(feat.id)}>-</button>
               </div>
+              <div key={index}>{feat.description}</div>
             </>
-          ) : (
-            <div>add {elcFeats - lvFeats} feat</div>
-          )}
-        </div>
-
-        <div className="container-item">
-          <div className="container-item">
-            ---Class Feats---
-            {char?.featsList.map((feat, index) => {
+          );
+        })}
+      </div>
+      <>
+        {featsGeneral ? (
+          <>
+            {featsGeneral?.map((feat: serverFeat, index) => {
               return (
-                <>
-                  <div key={index}>---{feat.characterFeatName}---</div>
-                  <div key={index}>{feat.characterFeatDescription}</div>
-                </>
+                <div>
+                  <button key={index} onClick={() => handleSelect(feat)}>
+                    {feat.featName}
+                  </button>
+                </div>
               );
             })}
-          </div>
-          <div className="container-item">
-            ---Level Feats---
-            {levelFeatsList.map((feat, index) => {
+          </>
+        ) : (
+          <>...loading feats...</>
+        )}
+      </>
+      <>
+        {selectFeat ? (
+          <>
+            <div>{selectFeat.featName}</div>
+            <button onClick={() => handleAdd(selectFeat)}>Add</button>
+          </>
+        ) : (
+          <></>
+        )}
+      </>
+      <div>
+        {featsToAdd.length > 0 ? (
+          <div>
+            added feats <button onClick={handleSubmit}>add feats</button>
+            {featsToAdd.map((feat, index) => {
               return (
                 <>
                   <div key={index}>
-                    ---{feat.featName}
-                    <button onClick={() => handleDeleteFeat(feat.id)}>-</button>
+                    {feat.featName}
+                    <button onClick={() => handleRemove(feat.id)}>
+                      remove
+                    </button>
                   </div>
-                  <div key={index}>{feat.description}</div>
                 </>
               );
             })}
           </div>
-        </div>
-        <div className="container-item">
-          {featsGeneral ? (
-            <>
-              {featsGeneral?.map((feat: serverFeat, index) => {
-                return (
-                  <>
-                    <div className="container-item" key={index}>
-                      <button onClick={() => handleSelect(feat)}>
-                        {feat.featName}
-                      </button>
-                    </div>
-                  </>
-                );
-              })}
-            </>
-          ) : (
-            <>...loading feats...</>
-          )}
-        </div>
-        <div>
-          {selectFeat ? (
-            <div className="container-item">
-              <div>{selectFeat.featName}</div>
-              <div>{selectFeat.description}</div>
-              <button onClick={() => handleAdd(selectFeat)}>Add</button>
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div>
-          {featsToAdd.length > 0 ? (
-            <div className="container-item">
-              added feats <button onClick={handleSubmit}>add feats</button>
-              {featsToAdd.map((feat, index) => {
-                return (
-                  <>
-                    <div key={index}>
-                      {feat.featName}
-                      <button onClick={() => handleRemove(feat.id)}>
-                        remove
-                      </button>
-                    </div>
-                  </>
-                );
-              })}
-            </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

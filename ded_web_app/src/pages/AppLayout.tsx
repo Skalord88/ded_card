@@ -1,5 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
-import { Footer } from "./Footer";
+import { Link, Outlet } from "react-router-dom";
+import { Footer } from "../components/Footer";
 
 export const AppLayout: React.FC = () => {
   return (
@@ -11,32 +11,31 @@ export const AppLayout: React.FC = () => {
         <div
           className="rpgui-container-framed"
           style={{
-            width: "80%",
+            width: 960,
             position: "relative",
             marginRight: "auto",
             marginTop: 20,
             marginBottom: 20,
-            marginLeft: "auto",
-            minWidth: "40%"
+            marginLeft: "auto"
           }}
         >
           <header></header>
           <div id="nav" className="rpgui-center rpgui-container-framed-golden-2">
             <nav>
               <Link to="create">
-                <button className="rpgui-button" style={{ width: "32%" }}>
+                <button className="rpgui-button" style={{ width: "auto" }}>
                   <p>Character creation</p>
                 </button>
               </Link>
 
               <Link to="list">
-                <button className="rpgui-button" style={{ width: "32%" }}>
+                <button className="rpgui-button" style={{ width: "auto" }}>
                   <p>List of characters</p>
                 </button>
               </Link>
 
               <Link to="list">
-                <button className="rpgui-button" style={{ width: "32%" }}>
+                <button className="rpgui-button" style={{ width: "auto" }}>
                   <p>Fight!</p>
                 </button>
               </Link>

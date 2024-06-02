@@ -112,6 +112,31 @@
     overflow: visible;
 }
 
+.rpgui-button-golden-mini {
+
+	/* hide button default stuff */
+	background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    overflow: hidden;
+    outline: none;
+
+	/* background */
+	background: url("../img/button-golden.png") no-repeat no-repeat;
+	background-clip: padding-box;
+	background-origin: padding-box;
+	background-position: center;
+	background-size: 100% 80%;
+
+	/* default size and display */
+    height: 24px;
+    
+
+
+    /* padding */
+    overflow: visible;
+}
+
 /* button hover */
 .rpgui-button.golden.hover,
 .rpgui-button.golden:hover {

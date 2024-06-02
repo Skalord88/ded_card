@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { character } from "../components/interfaces";
 import { urlCharList } from "../components/url";
-import { Footer } from "./Footer";
 
 export const List: React.FC = () => {
   const [charList, setCharList] = useState([]);
@@ -22,10 +21,10 @@ export const List: React.FC = () => {
         <div id="list" className="rpgui-container-framed">
           <p>list of characters:</p>
           <ol type="I">
-            {charList.map((c: character, index: number) => {
+            {charList.map((c: character) => {
               return (
                 <>
-                  <li key={index}>
+                  <li key={c.characterId}>
                     <Link to={"/" + c.characterId}>
                       character: <b>{c.characterName}</b> / player:{" "}
                       <b>{c.playerName}</b>
