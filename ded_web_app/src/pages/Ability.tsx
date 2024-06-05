@@ -37,12 +37,17 @@ export function Ability() {
 
   return (
     <>
-      <div className="rpgui-container-framed flex-container">
+      <div 
+        className="rpgui-container-framed flex-container"
+        style={{ minWidth: "50%"}}
+        >
         <p>
           STR:
           <input
             className="rpgui-content-input"
-            style={{ float: "initial", width: "12%" }}
+            style={{
+               float: "initial",
+               width: "12%" }}
             type="number"
             onChange={handleData}
             name="streght"
@@ -119,7 +124,7 @@ export function Ability() {
         <p>
           {change === false ? (
             <button className="rpgui-button" onClick={handleSubmit}>
-              set
+              <p>set</p>
             </button>
           ) : (
             <>

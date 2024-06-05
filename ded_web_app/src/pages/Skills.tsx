@@ -167,7 +167,7 @@ export function Skills() {
       </div>
       <div
         className="grid-table rpgui-container-framed-golden"
-        style={{ width: 700 }}
+        style={{ width: "80%" }}
       >
         <div style={{ textAlign: "center" }}>CS</div>
         <div>skill</div>

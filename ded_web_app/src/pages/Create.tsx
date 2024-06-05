@@ -53,7 +53,7 @@ export const Create = () => {
                 </button>
               ) : (
                 <button className="rpgui-button" onClick={handleSubmit}>
-                  create
+                  <p>create</p>
                 </button>
               )}
             </div>

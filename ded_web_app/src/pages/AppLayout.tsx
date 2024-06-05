@@ -11,31 +11,31 @@ export const AppLayout: React.FC = () => {
         <div
           className="rpgui-container-framed"
           style={{
-            width: 960,
+            width: "80%",
             position: "relative",
+            marginLeft: "auto",
             marginRight: "auto",
             marginTop: 20,
             marginBottom: 20,
-            marginLeft: "auto"
           }}
         >
           <header></header>
           <div id="nav" className="rpgui-center rpgui-container-framed-golden-2">
             <nav>
               <Link to="create">
-                <button className="rpgui-button" style={{ width: "auto" }}>
+                <button className="rpgui-button">
                   <p>Character creation</p>
                 </button>
               </Link>
 
               <Link to="list">
-                <button className="rpgui-button" style={{ width: "auto" }}>
+                <button className="rpgui-button">
                   <p>List of characters</p>
                 </button>
               </Link>
 
               <Link to="list">
-                <button className="rpgui-button" style={{ width: "auto" }}>
+                <button className="rpgui-button">
                   <p>Fight!</p>
                 </button>
               </Link>

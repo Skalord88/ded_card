@@ -85,7 +85,7 @@ export const Classes = () => {
       <CharSummary character={char} />
       <div className="rpgui-container-framed-grey">
         <div>
-          <div style={{ width: 400 }}>
+          <div style={{ width: "50%" }}>
             <Dropdown options={classesList} onSelect={handleOption} />
           </div>
           <button className="rpgui-button" onClick={() => handleSign()}>
@@ -107,7 +107,7 @@ export const Classes = () => {
                   <div
                     key={index}
                     className="rpgui-container-framed-golden"
-                    style={{ minWidth: 530 }}
+                    style={{ width: "50%" }}
                   >
                     <p>
                       <button
