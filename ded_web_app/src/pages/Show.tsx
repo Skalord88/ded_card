@@ -10,8 +10,9 @@ import {
 } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
-import { AbilitysComponent, CharacterArmor } from "../components/MyComponents";
-import { BonusAbilities } from "../components/functions";
+import { CharacterArmor } from "../components/MyComponents";
+import { SignNumber } from "../components/functions";
+import { AbilitysComponent, BaseAttack, CharacterData, ClassExpGold, Initiative } from "../components/CharacterData";
 
 export function Show() {
   let { charId } = useParams();
@@ -57,126 +58,129 @@ export function Show() {
 
   return (
     <>
-      <div className="container">
-        <div className="container-item">
-          name: {char.characterName} / player: {char.playerName}
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 3 }}>
+          <CharacterData char={char} />
+          <div style={{ display: "flex" }}>
+            <div style={{ flex: 1 }}>
+            <ClassExpGold char={char} />
+            </div>
+            <div style={{ flex: 1 }}>
+            <BaseAttack char={char}/>
+            </div>
+          </div>
+          
+          <div className="rpgui-container-framed-grey">AC</div>
+          <div className="rpgui-container-framed-grey">ST</div>
         </div>
-        <div className="container-item">
-          race: {char.race}, {char.subRace}
+        <div style={{ flex: 1 }}>
+          <div className="rpgui-container-framed-grey">
+            <h2 className="rpgui-container-framed-golden-2">Speed</h2>
+            <p>
+              <div>{char.speed} ft.</div>
+              <div>{char.speed / 5} squares</div>
+            </p>
+          </div>
+          <AbilitysComponent abilitys={char.abilitys}/>
+          <div className="rpgui-container-framed-grey">Hp</div>
+          <Initiative char={char}/>
         </div>
-        <div className="container-item">
-          size: {char.size}, speed: {char.speed} ft. / {char.speed / 5} squares
-        </div>
-        <div className="container-item">
-          base attack bonus: +{char.bab}, grapple: {grapple > 0 ? "+" : ""}
-          {grapple}
-        </div>
-
-        <div className="container-item">
-          abilitys:
-          {char.abilitys ? (
-            <>
-              <AbilitysComponent
-              abilitys = {char.abilitys}
-              />
-            </>
-          ) : (
-            <>...loading abilitys...</>
-          )}
-        </div>
-        <div className="container-item">
-          ecl: {char.effectiveCharacterLv}{" "}
-          {char.classPcList ? (
-            <>
-              {char.classPcList.map((c, index) => {
-                return (
-                  <li key={index}>
-                    {c.className} {c.level}
-                  </li>
-                );
-              })}
-            </>
-          ) : (
-            <>...loading class...</>
-          )}
-        </div>
-        <div className="container-item">
-          hit dice:{" "}
-          {char.vitality?.hitDices ? (
-            <>
-              {Object.entries(char.vitality.hitDices).map(([k, v]) => {
-                return (
-                  <>
-                    {v}d{k}
-                    {char.abilitys.constitution >= 0 ? "+" : "-"}
-                    {Math.floor(
-                      v * ((char.abilitys.constitution - 10) / 2)
-                    )},{" "}
-                  </>
-                );
-              })}
-              life: {char.vitality.life}, hp: {char.vitality.hitPoints}
-            </>
-          ) : (
-            <div className="container-item">...loading vitality...</div>
-          )}
-        </div>
-        <div className="container-item">
-          <CharacterArmor
-            charArmor={char.armorClass}
-            charInventory={char.inventory}
-          />
-        </div>
-        <div className="container-item">
-          saving throw:{" "}
-          {char.savingThrows ? (
-            <>
-              fort: {char.savingThrows.fortitude}, ref:{" "}
-              {char.savingThrows.reflex}, will: {char.savingThrows.will}
-            </>
-          ) : (
-            <>...loading saving throw...</>
-          )}
-        </div>
-
-        {char.featsList ? (
-          <div className="container-item">
-            feats:
-            {char.featsList.map((f, index) => {
+      </div>
+      <div className="rpgui-container-framed-golden">
+        
+      </div>
+      <div className="container-item">
+        ecl: {char.effectiveCharacterLv}{" "}
+        {char.classPcList ? (
+          <>
+            {char.classPcList.map((c, index) => {
               return (
-                <div key={index}>
-                  {f.characterFeatName}{" "}
-                  {f.characterFeatSpecial === null ? (
-                    <></>
-                  ) : (
-                    f.characterFeatSpecial
-                  )}
-                </div>
+                <li key={index}>
+                  {c.className} {c.level}
+                </li>
               );
             })}
-          </div>
+          </>
         ) : (
-          <>...loading feats...</>
+          <>...loading class...</>
         )}
+      </div>
+      <div className="container-item">
+        hit dice:{" "}
+        {char.vitality?.hitDices ? (
+          <>
+            {Object.entries(char.vitality.hitDices).map(([k, v]) => {
+              return (
+                <>
+                  {v}d{k}
+                  {char.abilitys.constitution >= 0 ? "+" : "-"}
+                  {Math.floor(
+                    v * ((char.abilitys.constitution - 10) / 2)
+                  )},{" "}
+                </>
+              );
+            })}
+            life: {char.vitality.life}, hp: {char.vitality.hitPoints}
+          </>
+        ) : (
+          <div className="container-item">...loading vitality...</div>
+        )}
+      </div>
+      <div className="container-item">
+        <CharacterArmor
+          charArmor={char.armorClass}
+          charInventory={char.inventory}
+        />
+      </div>
+      <div className="container-item">
+        saving throw:{" "}
+        {char.savingThrows ? (
+          <>
+            fort: {char.savingThrows.fortitude}, ref: {char.savingThrows.reflex}
+            , will: {char.savingThrows.will}
+          </>
+        ) : (
+          <>...loading saving throw...</>
+        )}
+      </div>
+
+      {char.featsList ? (
         <div className="container-item">
-          {/* <MapOfSkillsNoStudy skills={skillsNoStudy.skills} /> */}
+          feats:
+          {char.featsList.map((f, index) => {
+            return (
+              <div key={index}>
+                {f.characterFeatName}{" "}
+                {f.characterFeatSpecial === null ? (
+                  <></>
+                ) : (
+                  f.characterFeatSpecial
+                )}
+              </div>
+            );
+          })}
         </div>
-        <div className="container-item">
-          {/* <MapOfStudy skills={skillsStudy.skills} /> */}
+      ) : (
+        <>...loading feats...</>
+      )}
+      <div className="container-item">
+        {/* <MapOfSkillsNoStudy skills={skillsNoStudy.skills} /> */}
+      </div>
+      <div className="container-item">
+        {/* <MapOfStudy skills={skillsStudy.skills} /> */}
+      </div>
+      <div className="container-item">
+        <div>
+          armor: {inventory.armor.armorName} +{inventory.armor.armorClass}
         </div>
-        <div className="container-item">
-          <div>
-            armor: {inventory.armor.armorName} +{inventory.armor.armorClass}
-          </div>
-          <div>
-            shield: {inventory.shield.shieldName} +{inventory.shield.armorClass}
-          </div>{" "}
-          <div>
-            weapon I: {inventory.weaponOne.name} {inventory.weaponOne.damage}
-          </div>
-          <div>
-            weapon II: {inventory.weaponTwo.name} {inventory.weaponTwo.damage}
-          </div>
+        <div>
+          shield: {inventory.shield.shieldName} +{inventory.shield.armorClass}
+        </div>{" "}
+        <div>
+          weapon I: {inventory.weaponOne.name} {inventory.weaponOne.damage}
+        </div>
+        <div>
+          weapon II: {inventory.weaponTwo.name} {inventory.weaponTwo.damage}
         </div>
       </div>
     </>

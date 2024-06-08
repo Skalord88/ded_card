@@ -28,9 +28,18 @@ body
     vertical-align: top;
 }
 
-.grid-table {
+.grid-table-six {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 1.0em;
+	line-height: 22px;
+}
+
+.grid-table-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	font-size: 1.0em;

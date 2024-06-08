@@ -49,7 +49,7 @@ export const Create = () => {
               {charId > -1 ? (
                 <button className="rpgui-button">
                   {" "}
-                  <Link to={"/ability/" + charId}>to abilitys</Link>
+                  <Link to={"/ability/" + charId}><p>to abilitys</p></Link>
                 </button>
               ) : (
                 <button className="rpgui-button" onClick={handleSubmit}>

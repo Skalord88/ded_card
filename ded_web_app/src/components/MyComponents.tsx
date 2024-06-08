@@ -44,60 +44,7 @@ import {
 } from "./interfaces";
 import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
 
-export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
-  return (
-    <div className="container">
-      <div>
-        <li>STR: </li>
-      </div>
-      <div>{abilitys.streght}</div>
-      <div>
-        {SignAndCount([abilitys.streght]).sign}
-        {BonusAbilities(abilitys, "STR")}
-      </div>
-      <div>
-        <li>DEX: </li>
-      </div>
-      <div>{abilitys.dextrity}</div>
-      <div>
-        {SignAndCount([abilitys.dextrity]).sign}
-        {BonusAbilities(abilitys, "DEX")}
-      </div>
-      <div>
-        <li>COS: </li>
-      </div>
-      <div>{abilitys.constitution}</div>
-      <div>
-        {SignAndCount([abilitys.constitution]).sign}
-        {BonusAbilities(abilitys, "COS")}
-      </div>
-      <div>
-        <li>INT: </li>
-      </div>
-      <div>{abilitys.intelligence}</div>
-      <div>
-        {SignAndCount([abilitys.intelligence]).sign}
-        {BonusAbilities(abilitys, "INT")}
-      </div>
-      <div>
-        <li>WIS: </li>
-      </div>
-      <div>{abilitys.wisdom}</div>
-      <div>
-        {SignAndCount([abilitys.wisdom]).sign}
-        {BonusAbilities(abilitys, "WIS")}
-      </div>
-      <div>
-        <li>CHA: </li>
-      </div>
-      <div>{abilitys.charisma}</div>
-      <div>
-        {SignAndCount([abilitys.charisma]).sign}
-        {BonusAbilities(abilitys, "CHA")}
-      </div>
-    </div>
-  );
-};
+
 
 export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   item,
@@ -1339,11 +1286,10 @@ export const MagicKnown: React.FC<SpellsList> = ({
   pgClass,
   selectSpell
 }) => {
-
   const AddSpell = (s: Spell) => {
-    selectSpell(s)
-  }
-  
+    selectSpell(s);
+  };
+
   return (
     <>
       {list ? (
@@ -1354,9 +1300,10 @@ export const MagicKnown: React.FC<SpellsList> = ({
                 <>
                   {domain.level === lvSpell &&
                   domain.classDomain === SpellsFilter(pgClass) ? (
-                    <div>{spell.id} {spell.name} <button
-                      onClick={() => AddSpell(spell)}
-                    >+</button></div>
+                    <div>
+                      {spell.id} {spell.name}{" "}
+                      <button onClick={() => AddSpell(spell)}>+</button>
+                    </div>
                   ) : (
                     <></>
                   )}
@@ -1372,20 +1319,21 @@ export const MagicKnown: React.FC<SpellsList> = ({
   );
 };
 
-export const CharacterBooks: React.FC<BooksFromChar> = ({
-  books
-}) => {
-  return(
-    <div  className="container-table-nine">
-      {SortedBooks(books).map(
-        (book, index) => (
+export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
+  return (
+    <div className="container-table-nine">
+      {SortedBooks(books).map((book, index) => (
         <div key={index}>
-          <div>{book.caster} level.{book.level}</div>
-          <div>{book.spells.map(book => (
-            <>---{book}---</>
-          ))}</div>
+          <div>
+            {book.caster} level.{book.level}
+          </div>
+          <div>
+            {book.spells.map((book) => (
+              <>---{book}---</>
+            ))}
+          </div>
         </div>
       ))}
     </div>
-  )
-}
+  );
+};

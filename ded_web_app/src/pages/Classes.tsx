@@ -11,7 +11,6 @@ import {
 } from "../components/url";
 import { Dropdown } from "../components/Dropdown";
 import { CharSummary } from "../components/CharSummary";
-import { emptyClass } from "../components/variables";
 
 export const Classes = () => {
   const { charId } = useParams();
