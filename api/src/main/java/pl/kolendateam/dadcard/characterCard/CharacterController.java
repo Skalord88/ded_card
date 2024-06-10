@@ -108,8 +108,17 @@ public class CharacterController {
     return new CreateCharacterDTO(character);
   }
 
+  @PostMapping("/remove")
+  public void removeCharacter(@RequestBody int id) {
+    if (characterRepository.existsById(id)) {
+      characterRepository.deleteById(id);
+    } else {
+      throw new RuntimeException("Character not found");
+    }
+  }
+
   @GetMapping(value = "{id}")
-  public CharacterDTO showCharacter(@PathVariable short id) {
+  public CharacterDTO showCharacter(@PathVariable int id) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
@@ -148,7 +157,7 @@ public class CharacterController {
 
   @PostMapping(value = "class/{id}", consumes = { "application/json" })
   public CharacterDTO setCharacterClass(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody ClassPcDTO classPcDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
@@ -283,7 +292,7 @@ public class CharacterController {
 
   @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
   public CharacterDTO minusCharacterClass(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody ClassPcDTO classPcDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);

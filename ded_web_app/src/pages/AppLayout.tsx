@@ -22,23 +22,19 @@ export const AppLayout: React.FC = () => {
           <header></header>
           <div id="nav" className="rpgui-center rpgui-container-framed-golden-2">
             <nav>
+
               <Link to="create">
-                <button className="rpgui-button">
-                  <p>Character creation</p>
-                </button>
+                  <button className="rpgui-button">Character creation</button>
               </Link>
 
               <Link to="list">
-                <button className="rpgui-button">
-                  <p>List of characters</p>
-                </button>
+                  <button className="rpgui-button">List of characters</button>
               </Link>
 
-              <Link to="list">
-                <button className="rpgui-button">
-                  <p>Fight!</p>
-                </button>
+              <Link to="fight">
+                  <button className="rpgui-button">Fight!</button>
               </Link>
+
             </nav>
           </div>
           <div id="body" className="rpgui-container-famed">

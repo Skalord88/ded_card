@@ -191,6 +191,16 @@ export function SetAttacksFromWeapons(
     }
 }
 
+export function CountMonsterArmor(
+    armor: armorClass
+): number {
+    return 10
+        + armor.armorBonus + armor.shieldBonus
+        + armor.sizeBonus + armor.dextrityBonus
+        + armor.naturalArmor + armor.deflectionBonuses
+        + armor.dodgeBonus
+}
+
 export function CountArmor(
     armor: armorClass,
     inventory: Inventory

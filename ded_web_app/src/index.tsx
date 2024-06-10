@@ -13,6 +13,7 @@ import { Feats } from './pages/Feats';
 import { Items } from './pages/Items';
 import { Attack } from './pages/Attack';
 import { Magic } from './pages/Magic';
+import { Fight } from './pages/Fight';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
@@ -21,6 +22,7 @@ root.render(
       <Routes>
         <Route path="/" element={<AppLayout />}>
         <Route path="list" element={<List />} />
+        <Route path="fight" element={<Fight />} />
         <Route path="create" element={<Create />} />
         <Route path='/:charId' element={<Show />} />
         <Route path='/ability/:charId' element={<Ability />} />

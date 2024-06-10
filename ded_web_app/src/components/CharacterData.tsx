@@ -1,7 +1,6 @@
 import { BonusAbilities, SignAndCount } from "./functions";
 import { AbilitysFromChar, CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
-import { read } from "fs";
 
 export interface CharProps {
   char: CharacterPc;

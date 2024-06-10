@@ -35,9 +35,10 @@ public class SkillsController {
 
   @Autowired
   public SkillsController(
-      CharacterRepository characterRepository,
-      SkillsRepository skillsRepository,
-      StudyRepository studyRepository) {
+    CharacterRepository characterRepository,
+    SkillsRepository skillsRepository,
+    StudyRepository studyRepository
+  ) {
     this.characterRepository = characterRepository;
     this.skillsRepository = skillsRepository;
     this.studyRepository = studyRepository;
@@ -60,14 +61,16 @@ public class SkillsController {
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO buyCharacterSkill(
-      @PathVariable short id,
-      @RequestBody SkillToAddDTO skillsToAdd) {
+    @PathVariable int id,
+    @RequestBody SkillToAddDTO skillsToAdd
+  ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
 
     Character character = characterOpt.get();
@@ -104,14 +107,16 @@ public class SkillsController {
 
   @PostMapping(value = "study/{id}", consumes = { "application/json" })
   public CharacterDTO addStudyToSkill(
-      @PathVariable short id,
-      @RequestBody ArrayList<StudyDTO> studyToAdd) {
+    @PathVariable int id,
+    @RequestBody ArrayList<StudyDTO> studyToAdd
+  ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
 
     Character character = characterOpt.get();

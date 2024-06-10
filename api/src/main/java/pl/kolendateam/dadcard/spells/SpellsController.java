@@ -100,7 +100,7 @@ public class SpellsController {
 
   @PostMapping(value = "{id}/addspells", consumes = { "application/json" })
   public CharacterDTO addSpellsKnown(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody SpellsAddDTO SpellsAddDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
@@ -149,7 +149,7 @@ public class SpellsController {
 
   @PostMapping(value = "{id}/sellspells", consumes = { "application/json" })
   public CharacterDTO removeSpellsKnown(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody SpellsAddDTO SpellsAddDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);

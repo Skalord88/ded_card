@@ -8,6 +8,9 @@ export const urlChar: string =
 export const urlCharList: string =
     urlChar + '/list';
 
+export const urlCharRemove: string =
+    urlChar + '/remove';
+
 export const urlAb: string =
     url + 'ability/';
 

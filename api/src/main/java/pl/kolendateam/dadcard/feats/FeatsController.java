@@ -30,8 +30,9 @@ public class FeatsController {
 
   @Autowired
   public FeatsController(
-      FeatsRepository featsRepository,
-      CharacterRepository characterRepository) {
+    FeatsRepository featsRepository,
+    CharacterRepository characterRepository
+  ) {
     this.featsRepository = featsRepository;
     this.characterRepository = characterRepository;
   }
@@ -45,14 +46,16 @@ public class FeatsController {
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setFeatsCharacter(
-      @PathVariable short id,
-      @RequestBody ArrayList<FeatsDTO> featsDTOList) {
+    @PathVariable int id,
+    @RequestBody ArrayList<FeatsDTO> featsDTOList
+  ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
 
     Character character = characterOpt.get();
@@ -65,7 +68,8 @@ public class FeatsController {
         checkListFeat.add(idDTO);
       }
 
-      List<Feats> featsFromDB = this.featsRepository.findAllByIdIn(checkListFeat);
+      List<Feats> featsFromDB =
+        this.featsRepository.findAllByIdIn(checkListFeat);
 
       featsFromDB.forEach(feat -> {
         boolean buyed = character.buyFeat(feat);
@@ -92,14 +96,16 @@ public class FeatsController {
 
   @PostMapping(value = "remove/{id}", consumes = { "application/json" })
   public CharacterDTO delFeatsCharacter(
-      @PathVariable short id,
-      @RequestBody FeatsDTO featDTO) {
+    @PathVariable int id,
+    @RequestBody FeatsDTO featDTO
+  ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
 
     Character character = characterOpt.get();

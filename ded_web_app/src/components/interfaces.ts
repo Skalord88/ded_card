@@ -1,3 +1,5 @@
+import { Initiative } from "./CharacterData";
+
 export type CharacterPc = {
   id: number;
   characterName: string;
@@ -29,6 +31,40 @@ export type CharacterPc = {
   effectiveCharacterLv: number;
   experience: number;
   treasure: number;
+}
+
+export type Monster = {
+  id: number;
+  characterName: string;
+  classPcList: MonsterClass[];
+  size: string;
+  race: string;
+  subRace: string;
+  speed: number;
+  initiative: number,
+  armorClass: armorClass;
+  attacks: MonsterAttack[];
+  savingThrows: savingThrows;
+  abilitys: Abilitys;
+  skillsList: MonsterSkill[];
+  featsList: string[];
+  items: string[];
+  spellResistence: number;
+  effectiveCharacterLv: number;
+}
+
+export type MonsterAttack = {
+  attack: number[], weapon: string, damage:string, critic: string
+}
+
+export type MonsterClass = {
+  lv: number;
+  hd: number;
+}
+
+export type MonsterSkill = {
+  sk: string,
+  pnt: number
 }
 
 export interface character {

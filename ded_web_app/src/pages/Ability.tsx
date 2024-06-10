@@ -8,7 +8,6 @@ import {
   BonusAbilities,
   SignNumber
 } from "../components/functions";
-import { CharSummary } from "../components/CharSummary";
 
 export function Ability() {
   const { charId } = useParams();
@@ -38,7 +37,7 @@ export function Ability() {
   return (
     <>
       <div 
-        className="rpgui-container-framed flex-container"
+        className="rpgui-container-framed-golden flex-container"
         style={{ minWidth: "50%"}}
         >
         <p>

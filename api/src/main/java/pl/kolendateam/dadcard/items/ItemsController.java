@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.items;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
@@ -38,9 +36,10 @@ public class ItemsController {
 
   @Autowired
   public ItemsController(
-      ItemsRepository itemsRepository,
-      InventoryRepository inventoryRepository,
-      CharacterRepository characterRepository) {
+    ItemsRepository itemsRepository,
+    InventoryRepository inventoryRepository,
+    CharacterRepository characterRepository
+  ) {
     this.itemsRepository = itemsRepository;
     this.inventoryRepository = inventoryRepository;
     this.characterRepository = characterRepository;
@@ -56,22 +55,23 @@ public class ItemsController {
   }
 
   @GetMapping("inventory/{id}")
-  public InventoryDTO getCharacterInventory(
-      @PathVariable short id) {
-
+  public InventoryDTO getCharacterInventory(@PathVariable int id) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
     Character character = characterOpt.get();
 
-    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    Optional<Inventory> inventoryOpt =
+      this.inventoryRepository.findById(character.getInventory().getId());
     if (!inventoryOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
     Inventory characterInventory = inventoryOpt.get();
 
@@ -80,16 +80,16 @@ public class ItemsController {
 
   @PostMapping(value = "/change", consumes = { "application/json" })
   public List<Items> changeItem(@RequestBody ItemsListDTO itemListDTO) {
-
     if (itemListDTO.armorsList != null && !itemListDTO.armorsList.isEmpty()) {
       Armors newArmor = MapperItems.toArmor(itemListDTO.armorsList.get(0));
-      Optional<Armors> existingArmor = this.itemsRepository
-          .findArmorsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
-              newArmor.getEnchantment(),
-              newArmor.getArmorType(),
-              newArmor.getFailure(),
-              newArmor.getPenality(),
-              newArmor.getMaterial());
+      Optional<Armors> existingArmor =
+        this.itemsRepository.findArmorsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
+            newArmor.getEnchantment(),
+            newArmor.getArmorType(),
+            newArmor.getFailure(),
+            newArmor.getPenality(),
+            newArmor.getMaterial()
+          );
       if (!existingArmor.isPresent()) {
         newArmor.setId(null);
         this.itemsRepository.save(newArmor);
@@ -97,25 +97,29 @@ public class ItemsController {
     }
     if (itemListDTO.shieldList != null && !itemListDTO.shieldList.isEmpty()) {
       Shields newShield = MapperItems.toShield(itemListDTO.shieldList.get(0));
-      Optional<Shields> existingShield = this.itemsRepository
-          .findShieldsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
-              newShield.getEnchantment(),
-              newShield.getArmorType(),
-              newShield.getFailure(),
-              newShield.getPenality(),
-              newShield.getMaterial());
+      Optional<Shields> existingShield =
+        this.itemsRepository.findShieldsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
+            newShield.getEnchantment(),
+            newShield.getArmorType(),
+            newShield.getFailure(),
+            newShield.getPenality(),
+            newShield.getMaterial()
+          );
       if (!existingShield.isPresent()) {
         newShield.setId(null);
         this.itemsRepository.save(newShield);
       }
     }
     if (itemListDTO.weaponsList != null && !itemListDTO.weaponsList.isEmpty()) {
-      List<Weapons> listOfWeapons = MapperItems.toListOfWeapons(itemListDTO.weaponsList);
+      List<Weapons> listOfWeapons = MapperItems.toListOfWeapons(
+        itemListDTO.weaponsList
+      );
       listOfWeapons.forEach(weapon -> {
-        Optional<Weapons> existingWeapon = this.itemsRepository
-            .findWeaponsByEnchantmentAndMaterial(
-                weapon.getEnchantment(),
-                weapon.getMaterial());
+        Optional<Weapons> existingWeapon =
+          this.itemsRepository.findWeaponsByEnchantmentAndMaterial(
+              weapon.getEnchantment(),
+              weapon.getMaterial()
+            );
         if (!existingWeapon.isPresent()) {
           weapon.setId(null);
           this.itemsRepository.save(weapon);
@@ -127,22 +131,25 @@ public class ItemsController {
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO changeInventory(
-      @PathVariable short id,
-      @RequestBody InventoryDTO inventoryDTO) {
-
+    @PathVariable int id,
+    @RequestBody InventoryDTO inventoryDTO
+  ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
     Character character = characterOpt.get();
 
-    Optional<Inventory> inventoryOpt = this.inventoryRepository.findById(character.getInventory().getId());
+    Optional<Inventory> inventoryOpt =
+      this.inventoryRepository.findById(character.getInventory().getId());
     if (!inventoryOpt.isPresent()) {
       throw new ResponseStatusException(
-          HttpStatus.NOT_FOUND,
-          "Character Not Found");
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
     }
 
     List<Items> itemsList = this.itemsRepository.findAll();
@@ -155,5 +162,4 @@ public class ItemsController {
 
     return new CharacterDTO(character, characterInventory);
   }
-
 }

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { character } from "../components/interfaces";
-import { urlCharList } from "../components/url";
+import { urlCharList, urlCharRemove } from "../components/url";
 
 export const List: React.FC = () => {
   const [charList, setCharList] = useState([]);
@@ -13,6 +13,16 @@ export const List: React.FC = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleDelete = (e: number) => {
+    try {
+      axios.post(urlCharRemove, {id: e})
+    } catch (error) {
+      console.log(error);
+    }
+    console.log(e)
+    // window.location.reload();
+  }
 
   return (
     <>
@@ -29,6 +39,7 @@ export const List: React.FC = () => {
                       character: <b>{c.characterName}</b> / player:{" "}
                       <b>{c.playerName}</b>
                     </Link>
+                    <button onClick={() => handleDelete(c.characterId)}>remove</button>
                   </li>
                 </>
               );
