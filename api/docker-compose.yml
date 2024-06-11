@@ -23,24 +23,9 @@ services:
       - backend
     ports:
       - '8080:8080'
-    # environment:
-    #   SPRING_DATASOURCE_URL: jdbc:postgresql://dedpostgres.cb8k82mms3o8.eu-central-1.rds.amazonaws.com:5432/postgres
-      # SPRING_DATASOURCE_USERNAME: postgres
-      # SPRING_DATASOURCE_PASSWORD: postgres
-
-  # frontend:
-  #   image: skalord88/api-frontend:latest
-  #   restart: always
-  #   networks:
-  #     - backend
-  #   ports:
-  #     - '3000:3000'
-  #   depends_on:
-  #     - api
 
 networks:
   backend:
-    # driver: bridge  
 
 volumes:
   postgres_data:

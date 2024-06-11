@@ -5,7 +5,7 @@ import {
   AttackIIRanged,
   AttackMelee,
   AttackRanged,
-  BonusAbilities,
+  CountArmor,
   EnchantedName,
   EnchantmentCost,
   IndexWeaponOne,
@@ -18,7 +18,6 @@ import {
   WeaponTwoHanded
 } from "./functions";
 import {
-  AbilitysFromChar,
   Armor,
   ArmorInCharacter,
   ArmorWeaponToBuy,
@@ -43,8 +42,6 @@ import {
   WonderousItem
 } from "./interfaces";
 import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
-
-
 
 export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   item,
@@ -1200,81 +1197,97 @@ export const CharacterArmor: React.FC<ArmorInCharacter> = ({
   charArmor,
   charInventory
 }) => {
+  const tot = CountArmor(charArmor, charInventory);
   return (
-    <div className="container-table-ten">
-      <div>AC</div>
-      <div>10</div>
-      <div>
-        <div>
-          {
-            SignAndCount([charArmor.armorBonus, charInventory.armor.armorClass])
-              .sign
-          }
-          {
-            SignAndCount([charArmor.armorBonus, charInventory.armor.armorClass])
-              .number
-          }
+    <div className="rpgui-container-framed-grey">
+      <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
+      <div style={{ display: "flex" }}>
+        <div className="rpgui-container-framed-grey">
+          <p>AC</p>
         </div>
-        <div>arm</div>
-      </div>
-      <div>
-        <div>
-          {
-            SignAndCount([
-              charArmor.shieldBonus,
-              charInventory.shield.armorClass
-            ]).sign
-          }
-          {
-            SignAndCount([
-              charArmor.shieldBonus,
-              charInventory.shield.armorClass
-            ]).number
-          }
+        <div className="rpgui-container-framed-grey">
+          <p>{tot}</p>
         </div>
-        <div>shl</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([charArmor.sizeBonus]).sign}
-          {SignAndCount([charArmor.sizeBonus]).number}
+        <div className="rpgui-container-framed-grey">
+          <p>
+            <div>
+              {
+                SignAndCount([
+                  charArmor.armorBonus,
+                  charInventory.armor.armorClass
+                ]).sign
+              }
+              {
+                SignAndCount([
+                  charArmor.armorBonus,
+                  charInventory.armor.armorClass
+                ]).number
+              }
+            </div>
+            <div>arm</div>
+          </p>
         </div>
-        <div>siz</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([charArmor.dextrityBonus]).sign}
-          {SignAndCount([charArmor.dextrityBonus]).number}
+        <div className="rpgui-container-framed-grey">
+          <p>
+            <div>
+              {
+                SignAndCount([
+                  charArmor.shieldBonus,
+                  charInventory.shield.armorClass
+                ]).sign
+              }
+              {
+                SignAndCount([
+                  charArmor.shieldBonus,
+                  charInventory.shield.armorClass
+                ]).number
+              }
+            </div>
+            <div>shl</div>
+          </p>
         </div>
-        <div>dex</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([charArmor.armorBonus]).sign}
-          {SignAndCount([charArmor.armorBonus]).number}
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([charArmor.sizeBonus]).sign}
+            {SignAndCount([charArmor.sizeBonus]).number}
+          </div>
+          <div>siz</div>
         </div>
-        <div>nat</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([charArmor.deflectionBonuses]).sign}
-          {SignAndCount([charArmor.deflectionBonuses]).number}
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([charArmor.dextrityBonus]).sign}
+            {SignAndCount([charArmor.dextrityBonus]).number}
+          </div>
+          <div>dex</div>
         </div>
-        <div>def</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([charArmor.dodgeBonus]).sign}
-          {SignAndCount([charArmor.dodgeBonus]).number}
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([charArmor.armorBonus]).sign}
+            {SignAndCount([charArmor.armorBonus]).number}
+          </div>
+          <div>nat</div>
         </div>
-        <div>ddg</div>
-      </div>
-      <div>
-        <div>
-          {SignAndCount([0]).sign}
-          {SignAndCount([0]).number}
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([charArmor.deflectionBonuses]).sign}
+            {SignAndCount([charArmor.deflectionBonuses]).number}
+          </div>
+          <div>def</div>
         </div>
-        <div>oth</div>
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([charArmor.dodgeBonus]).sign}
+            {SignAndCount([charArmor.dodgeBonus]).number}
+          </div>
+          <div>ddg</div>
+        </div>
+        <div className="rpgui-container-framed-grey">
+          <div>
+            {SignAndCount([0]).sign}
+            {SignAndCount([0]).number}
+          </div>
+          <div>oth</div>
+        </div>
       </div>
     </div>
   );

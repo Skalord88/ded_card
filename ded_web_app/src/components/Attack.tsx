@@ -5,7 +5,6 @@ import {
   SzithMorcaneSentryTwo
 } from "./Monsters";
 import { Monster, MonsterAttack } from "./interfaces";
-import { randomInt } from "crypto";
 import { CountMonsterArmor } from "./functions";
 
 export function FightAttack() {

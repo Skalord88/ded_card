@@ -24,17 +24,17 @@ export const AppLayout: React.FC = () => {
             <nav>
 
               <Link to="create">
-                  <button className="rpgui-button">Character creation</button>
+                  <button className="rpgui-button"><p>Character creation</p></button>
               </Link>
 
               <Link to="list">
-                  <button className="rpgui-button">List of characters</button>
+                  <button className="rpgui-button"><p>List of characters</p></button>
               </Link>
 
               <Link to="fight">
-                  <button className="rpgui-button">Fight!</button>
+                  <button className="rpgui-button"><p>Fight!</p></button>
               </Link>
-
+              
             </nav>
           </div>
           <div id="body" className="rpgui-container-famed">
