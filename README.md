@@ -4,10 +4,10 @@ The goal was to develop a web application for creating character sheets for Dung
 
 ## Actual status
 ### PC version:
-abilities selection
-race selection
-class selection
-skills selection
+- abilities selection
+- race selection
+- class selection
+- skills selection
 
 ## Technologies
 - Java
