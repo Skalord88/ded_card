@@ -63,8 +63,6 @@ export function Show() {
 
   useEffect(() => {}, [char.inventory]);
 
-  const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
-
   return (
     <>
       <div style={{ display: "flex", position: "relative" }}>
