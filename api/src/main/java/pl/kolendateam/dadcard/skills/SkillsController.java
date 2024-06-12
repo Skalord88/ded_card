@@ -61,8 +61,8 @@ public class SkillsController {
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO buyCharacterSkill(
-    @PathVariable short id,
-    @RequestBody ArrayList<SkillToAddDTO> skillsToAdd
+    @PathVariable int id,
+    @RequestBody SkillToAddDTO skillsToAdd
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -107,7 +107,7 @@ public class SkillsController {
 
   @PostMapping(value = "study/{id}", consumes = { "application/json" })
   public CharacterDTO addStudyToSkill(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody ArrayList<StudyDTO> studyToAdd
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);

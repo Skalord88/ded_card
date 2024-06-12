@@ -2,10 +2,14 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,8 +25,11 @@ import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.classCharacter.entity.Dices;
+import pl.kolendateam.dadcard.classCharacter.entity.DicesEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
@@ -30,7 +37,7 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -41,8 +48,8 @@ import pl.kolendateam.dadcard.skills.entity.ClassStudy;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
+import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
-import pl.kolendateam.dadcard.spells.entity.SpellsInCharLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
@@ -54,7 +61,7 @@ public class Character {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public short id;
+  public int id;
 
   @NonNull
   String characterName;
@@ -101,8 +108,13 @@ public class Character {
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<CharacterFeat> levelFeatsList;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<Items> items;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "inventory_id", referencedColumnName = "id")
+  Inventory inventory;
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "attacks_id", referencedColumnName = "id")
+  Attacks attacks;
 
   @JdbcTypeCode(SqlTypes.JSON)
   HashMap<EnumClass, Integer[]> magicPerDay;
@@ -110,11 +122,17 @@ public class Character {
   @JdbcTypeCode(SqlTypes.JSON)
   HashMap<EnumClass, Integer[]> magicKnown;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<SpellsInCharLevel> spellsKnown;
+  @OneToMany(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "character_id", referencedColumnName = "id")
+  List<Book> books;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArrayList<SpellsInCharLevel> spellsKnown;
 
   short effectiveCharacterLv;
   byte levelAdjustment;
+  int experience;
+  int treasure;
 
   public Character(String characterName, String playerName) {
     this.characterName = characterName;
@@ -129,10 +147,12 @@ public class Character {
     this.classSkills = new ArrayList<>();
     this.featsList = new ArrayList<>();
     this.levelFeatsList = new ArrayList<>();
-    this.items = new ArrayList<>();
+    this.inventory = new Inventory();
+    this.attacks = new Attacks();
     this.magicPerDay = new HashMap<>();
     this.magicKnown = new HashMap<>();
-    this.spellsKnown = new ArrayList<>();
+    this.books = new ArrayList<>();
+    // this.spellsKnown = new ArrayList<>();
   }
 
   public void addClassToPcArray(ClassPc classPc) {
@@ -531,14 +551,6 @@ public class Character {
     }
   }
 
-  public void buyItems(Items itemToBuy) {
-    this.items.add(itemToBuy);
-  }
-
-  public void sellItem(int indexToSell) {
-    this.items.remove(indexToSell);
-  }
-
   public void addStudyToCharacter(Set<Study> availableStudy) {
     for (ClassSkills clSk : this.classSkills) {
       for (Study st : availableStudy) {
@@ -582,7 +594,7 @@ public class Character {
         table.getSpellsInLevel()
       );
       if (table.getSpellsDayKnown() != null) {
-        for (ClassPc classPc : classPcArray) {
+        for (ClassPc classPc : this.classPcArray) {
           if (
             table.getSpellsDayKnown() == SpellsEnum.DAY &&
             table.getMagicClass() == classPc.getSpellsPerDay()
@@ -615,12 +627,6 @@ public class Character {
     }
   }
 
-  public void removeMagicClass(EnumClass name) {
-    this.magicKnown.remove(name);
-    this.magicPerDay.remove(name);
-    this.spellsKnown.remove(name);
-  }
-
   public EnumClass characterGetClassEnumById(int idClass) {
     for (ClassPc clPc : this.classPcArray) {
       if (idClass == clPc.getId()) {
@@ -640,56 +646,57 @@ public class Character {
   }
 
   public boolean getClassSpellsKnown(EnumClass className) {
-    for (SpellsInCharLevel sICLinDB : this.spellsKnown) {
-      if (sICLinDB.getCaster() == className) {
-        return sICLinDB.getCaster() == className;
+    for (Book book : this.books) {
+      if (book.getCaster() == className) {
+        return book.getCaster() == className;
       }
     }
     return false;
   }
 
-  public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
-    SpellsInCharLevel sICK = new SpellsInCharLevel(name);
-    do {
-      sICK.getSpells().put(sizeMagic, new ArrayList<>());
-      sizeMagic--;
-    } while (sizeMagic == 0);
-    this.spellsKnown.add(sICK);
-  }
+  // public void addNewSpellsKnown(int sizeMagic, EnumClass name) {
+  //   SpellsInCharLevel sICK = new SpellsInCharLevel(name);
+  //   do {
+  //     sICK.getSpells().put(sizeMagic, new ArrayList<>());
+  //     sizeMagic--;
+  //   } while (sizeMagic == 0);
+  //   this.spellsKnown.add(sICK);
+  // }
 
-  public void addSpellKnown(int sizeMagic, EnumClass name) {
-    for (SpellsInCharLevel sICKinDB : this.spellsKnown) {
-      if (
-        sICKinDB.getCaster() == name && sICKinDB.getSpells().size() == sizeMagic
-      ) {
-        sICKinDB.getSpells().put(sizeMagic, new ArrayList<>());
-      }
-    }
-  }
+  // public void addSpellKnown(int sizeMagic, EnumClass name) {
+  //   for (Book book : this.books) {
+  //     if (
+  //       book.getCaster() == name && book.getSpellsBook().size() == sizeMagic
+  //     ) {
+  //       book.setLevel(sizeMagic);
+  //       book.getSpells().put(sizeMagic, new ArrayList<>());
+  //     }
+  //   }
+  // }
 
-  public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
-    for (SpellsInCharLevel sICK : this.spellsKnown) {
-      if (sICK.getCaster() == classNameE) {
-        sICK
-          .getSpells()
-          .forEach((i, a) -> {
-            if (i == lv) {
-              a.add(spellToAdd);
-            }
-          });
-      }
-    }
-  }
+  // public void addSpells(Integer spellToAdd, EnumClass classNameE, int lv) {
+  //   for (SpellsInCharLevel sICK : this.spellsKnown) {
+  //     if (sICK.getCaster() == classNameE) {
+  //       sICK
+  //         .getSpells()
+  //         .forEach((i, a) -> {
+  //           if (i == lv) {
+  //             a.add(spellToAdd);
+  //           }
+  //         });
+  //     }
+  //   }
+  // }
 
-  public void removeSpell(EnumClass classNameE, int[] spells) {
-    for (int spell : spells) {
-      for (SpellsInCharLevel sICL : this.spellsKnown) {
-        if (sICL.getCaster() == classNameE) {
-          sICL.getSpells().forEach((i, sp) -> sp.removeIf(s -> s == spell));
-        }
-      }
-    }
-  }
+  // public void removeSpell(EnumClass classNameE, int[] spells) {
+  //   for (int spell : spells) {
+  //     for (SpellsInCharLevel sICL : this.spellsKnown) {
+  //       if (sICL.getCaster() == classNameE) {
+  //         sICL.getSpells().forEach((i, sp) -> sp.removeIf(s -> s == spell));
+  //       }
+  //     }
+  //   }
+  // }
 
   public boolean magicClass(SpellsEnum spellsPerDay) {
     if (spellsPerDay == null) {
@@ -698,35 +705,55 @@ public class Character {
     return true;
   }
 
-  public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
-    double actualSkillPoints = this.skillPoints;
+  public void buySkills(SkillToAddDTO skillsToAddDTO) {
+    // this.skillPoints = skillsToAddDTO.skillPoints;
 
-    for (SkillToAddDTO skill : skillsToAddDTO) {
-      actualSkillPoints -= skill.skillRank;
-    }
-
-    for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
-      for (ClassSkills skill : classSkills) {
-        if (skill.getIdSkill() == skillToAddDTO.idSkill) {
-          boolean check = true;
-          if (actualSkillPoints < 0) {
-            check = false;
-          }
-          if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
-            check = false;
-          }
-          if (check == true) {
-            if (skill.isClassSkill() == true) {
-              skill.setSkillRank(skillToAddDTO.skillRank);
-            }
-            if (skill.isClassSkill() == false) {
-              skill.setSkillRank(skillToAddDTO.skillRank / 2);
+    skillsToAddDTO.skillDTO.forEach(skillDTO -> {
+      this.classSkills.forEach(skill -> {
+          if (skillDTO.fieldOfStudy.size() > 0) {
+            skillDTO.fieldOfStudy.forEach(study -> {
+              if (study.idSkill == skill.getIdSkill()) {
+                skill.addRankStudy(study);
+              }
+            });
+          } else {
+            if (skill.getIdSkill() == skillDTO.idSkill) {
+              skill.addRankSkill(skillDTO.skillRank);
             }
           }
-        }
-      }
-    }
+        });
+    });
   }
+
+  // public void buySkills(List<SkillToAddDTO> skillsToAddDTO) {
+  // double actualSkillPoints = this.skillPoints;
+
+  // for (SkillToAddDTO skill : skillsToAddDTO) {
+  // actualSkillPoints -= skill.skillRank;
+  // }
+
+  // for (SkillToAddDTO skillToAddDTO : skillsToAddDTO) {
+  // for (ClassSkills skill : classSkills) {
+  // if (skill.getIdSkill() == skillToAddDTO.idSkill) {
+  // boolean check = true;
+  // if (actualSkillPoints < 0) {
+  // check = false;
+  // }
+  // if ((int) skillToAddDTO.skillRank > this.effectiveCharacterLv + 3) {
+  // check = false;
+  // }
+  // if (check == true) {
+  // if (skill.isClassSkill() == true) {
+  // skill.setSkillRank(skillToAddDTO.skillRank);
+  // }
+  // if (skill.isClassSkill() == false) {
+  // skill.setSkillRank(skillToAddDTO.skillRank / 2);
+  // }
+  // }
+  // }
+  // }
+  // }
+  // }
 
   public void zeroSkillsRank() {
     for (ClassSkills classSkill : this.classSkills) {
@@ -771,5 +798,148 @@ public class Character {
       return true;
     }
     return false;
+  }
+
+  public void setCharacterExperience() {
+    int exp = this.experience;
+
+    exp = exp + (this.effectiveCharacterLv * 1000);
+
+    this.experience = exp;
+  }
+
+  public void setFirstLevelGold(String initialGold) {
+    Gson gson = new Gson();
+    Type arrayGold = new TypeToken<String[]>() {}.getType();
+    String[] diceGold = gson.fromJson(initialGold, arrayGold);
+
+    int number = Integer.parseInt(diceGold[0]);
+    DicesEnum diceTyp = DicesEnum.valueOf(diceGold[1]);
+    int multiply = Integer.parseInt(diceGold[2]);
+
+    Dices d = new Dices();
+
+    int resGold = d.throwDices(number, diceTyp);
+
+    this.treasure = resGold * multiply;
+  }
+
+  public void setLevelGold() {
+    this.treasure =
+      switch (this.effectiveCharacterLv) {
+        case 0 -> 0;
+        case 2 -> 900;
+        case 3 -> 2700;
+        case 4 -> 5400;
+        case 5 -> 9000;
+        case 6 -> 13000;
+        case 7 -> 19000;
+        case 8 -> 27000;
+        case 9 -> 36000;
+        case 10 -> 49000;
+        case 11 -> 66000;
+        case 12 -> 88000;
+        case 13 -> 110000;
+        case 14 -> 150000;
+        case 15 -> 200000;
+        case 16 -> 260000;
+        case 17 -> 340000;
+        case 18 -> 440000;
+        case 19 -> 580000;
+        case 20 -> 760000;
+        default -> 0;
+      };
+  }
+
+  public void setZeroExp() {
+    this.experience = 0;
+  }
+
+  public void emptyInventory() {
+    this.inventory = new Inventory();
+  }
+
+  public void addSpellKnown(int sizeMagic, @NonNull EnumClass name) {
+    boolean present = false;
+    for (Book charBook : this.books) {
+      if (charBook.getCaster() == name && charBook.getLevel() == sizeMagic) {
+        present = true;
+      }
+    }
+    if (!present) {
+      Book book = new Book(sizeMagic, name);
+      this.books.add(book);
+    }
+  }
+
+  public void addNewSpellsKnown(int sizeMagic, @NonNull EnumClass name) {
+    for (int i = 0; i < sizeMagic; i++) {
+      Book book = new Book(i, name);
+      this.books.add(book);
+    }
+  }
+
+  public int getSizeMagic(@NonNull EnumClass name) {
+    if (this.magicKnown.get(name) != null) {
+      return this.magicKnown.get(name).length;
+    }
+    return -1;
+  }
+
+  // public void removeBook(
+  //   int sizeMagic,
+  //   int levelInDB,
+  //   @NonNull EnumClass name
+  // ) {
+  //   for (int i = 0; i < this.books.size(); i++) {
+  //     if (levelInDB > 1) {
+  //       if (
+  //         this.books.get(i).getCaster() == name &&
+  //         this.books.get(i).getLevel() > sizeMagic
+  //       ) {
+  //         this.books.remove(i);
+  //       }
+  //     }
+  //     if (levelInDB == 1) {
+  //       if (this.books.get(i).getCaster() == name) {
+  //         this.books.remove(i);
+  //       }
+  //     }
+  //   }
+  // }
+
+  public void removePerDayKnow(@NonNull EnumClass name) {
+    this.magicPerDay.remove(name);
+    this.magicKnown.remove(name);
+  }
+
+  public void removeBook(@NonNull EnumClass name) {
+    for (int i = 0; i < this.books.size(); i++) {
+      if (name == this.books.get(i).getCaster()) {
+        this.books.remove(i);
+        i--;
+      }
+    }
+  }
+
+  public void decrementBooks(int sizeMagic, @NonNull EnumClass name) {
+    for (int i = 0; i < this.books.size(); i++) {
+      if (
+        this.books.get(i).getCaster() == name &&
+        this.books.get(i).getLevel() == sizeMagic
+      ) {
+        this.books.remove(i);
+        i--;
+      }
+    }
+  }
+
+  public int findLevelInClassesById(short id) {
+    for (ClassPc classPc : classPcArray) {
+      if (classPc.getId() == id) {
+        return classPc.getLevel();
+      }
+    }
+    return -1;
   }
 }

@@ -1,25 +1,47 @@
-table {
-  border: 1px solid #666;
-  height: 100%;
-  width: auto;
+@import '_imports';
+@import '_misc';
+
+@import '_button';
+@import '_checkbox';
+@import '_content';
+@import '_containers_and_frames';
+@import '_cursor';
+@import '_dropdown';
+@import '_hr';
+@import '_icon';
+@import '_input';
+@import '_list';
+@import '_paragraphs_and_headers';
+@import '_progress_bar';
+@import '_radio';
+@import '_scrollbars'; 
+@import '_disabled';
+@import '_slider'; 
+
+body
+{
+    background-color: black;
 }
-th, td {
-  border: 1px solid #666;
-  text-align: center;
+
+.flex-container {
+    display: inline-block;
+    vertical-align: top;
 }
-button {
-  height: auto;
-  width: auto;
+
+.grid-table-six {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 1.0em;
+	line-height: 22px;
 }
-.container {
-  display: flex;
-  flex-direction: row;
-}
-.row {
-  flex: 1;
-  flex-direction: row
-}
-.column {
-  display: flex;
-  flex-direction: column
+
+.grid-table-three {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	font-size: 1.0em;
+	line-height: 22px;
 }

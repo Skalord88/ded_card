@@ -1,29 +1,48 @@
-export const urlChar: string = 
-'http://localhost:8080/character-card';
+const url: string =
+    // 'http://3.76.215.24:8080/'
+    'http://localhost:8080/'
 
-export const urlCharList: string = 
-urlChar + '/list';
+export const urlChar: string =
+    url + 'character-card';
 
-export const urlAb: string = 
-'http://localhost:8080/ability/';
+export const urlCharList: string =
+    urlChar + '/list';
 
-export const urlRaceList: string = 
-'http://localhost:8080/race';
+export const urlAb: string =
+    url + 'ability/';
 
-export const urlClassList: string = 
-'http://localhost:8080/class';
+export const urlRaceList: string =
+    url + 'race';
 
-export const urlClassAdd: string = 
-'http://localhost:8080/character-card/class/';
+export const urlClassList: string =
+    url + 'class';
 
-export const urlClassSell: string = 
-'http://localhost:8080/character-card/minus_class/';
+export const urlClassAdd: string =
+    url + 'character-card/class/';
 
-export const urlSkillSet: string = 
-'http://localhost:8080/skills/';
+export const urlClassSell: string =
+    url + 'character-card/minus_class/';
+
+export const urlSkillSet: string =
+    url + 'skills/';
 
 export const urlStudySet: string =
-'localhost:8080/skills/study/';
+    url + 'skills/study/';
 
 export const urlFeats: string =
-'http://localhost:8080/feats';
+    url + 'feats';
+
+export const urlItems: string =
+    url + 'item/all';
+
+export const urlInventory: string =
+    url + 'item/inventory/';
+
+export const urlItemsBuy: string =
+    url + 'item/';
+
+export const urlAttacks: string =
+    url + 'attack/';
+
+export const urlSpellsList: string =
+    url + 'spells'

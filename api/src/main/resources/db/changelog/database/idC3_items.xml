@@ -1,0 +1,74 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="303" author="oscar">
+        <createTable tableName="items">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="item_type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="armor_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="shield_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="weapon_name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cost" type="decimal">
+                <constraints nullable="true"/>
+            </column>
+            <column name="damage" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="critical" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="range" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="weight" type="decimal">
+                <constraints nullable="true"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="special_attacks" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="varchar(1000)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="armor_class" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="armor_type" type="varchar(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="max_dex" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="penality" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="failure" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="material" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="enchantment_id" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

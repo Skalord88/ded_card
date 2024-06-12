@@ -1,4 +1,6 @@
-export interface characterPc {
+import { Initiative } from "./CharacterData";
+
+export type CharacterPc = {
   id: number;
   characterName: string;
   playerName: string;
@@ -12,17 +14,57 @@ export interface characterPc {
   bab: number;
   specialAttacks: specialAttacks;
   savingThrows: savingThrows;
-  abilitys: abilitys;
+  abilitys: Abilitys;
   skillPoints: number;
-  skillsList: MapOfSkills;
+  skillsList: SkillProps[];
   featsList: feat[];
   levelFeatsList: feat[];
-  items: [];
-  magicPerDay: {};
-  magicKnown: {};
-  spellsKnown: [];
+  items: Item[];
+  inventoryId: number;
+  inventory: Inventory;
+  attacksId: number;
+  attacks: Attacks;
+  magicPerDay: MagicClass;
+  magicKnown: MagicClass;
+  books: Book[];
   levelAdjustment: number;
   effectiveCharacterLv: number;
+  experience: number;
+  treasure: number;
+}
+
+export type Monster = {
+  id: number;
+  characterName: string;
+  classPcList: MonsterClass[];
+  size: string;
+  race: string;
+  subRace: string;
+  speed: number;
+  initiative: number,
+  armorClass: armorClass;
+  attacks: MonsterAttack[];
+  savingThrows: savingThrows;
+  abilitys: Abilitys;
+  skillsList: MonsterSkill[];
+  featsList: string[];
+  items: string[];
+  spellResistence: number;
+  effectiveCharacterLv: number;
+}
+
+export type MonsterAttack = {
+  attack: number[], weapon: string, damage:string, critic: string
+}
+
+export type MonsterClass = {
+  lv: number;
+  hd: number;
+}
+
+export type MonsterSkill = {
+  sk: string,
+  pnt: number
 }
 
 export interface character {
@@ -33,8 +75,13 @@ export interface character {
 
 export type ClassPc = {
   id: number;
+  classType: number;
   className: number;
   level: number;
+}
+
+export type MagicClass = {
+  [key: string]: number[]
 }
 
 export interface vitality {
@@ -59,7 +106,7 @@ export interface armorClass {
   dextrityBonus: number;
   sizeBonus: number;
   armorBonus: number;
-  shildBonus: number;
+  shieldBonus: number;
   enhancementBonuses: number;
   deflectionBonuses: number;
   naturalArmor: number;
@@ -72,13 +119,17 @@ export interface savingThrows {
   will: number;
 }
 
-export interface abilitys {
+export type Abilitys = {
   streght: number;
   dextrity: number;
   constitution: number;
   intelligence: number;
   wisdom: number;
   charisma: number;
+}
+
+export type AbilitysFromChar = {
+  abilitys: Abilitys
 }
 
 export type MapStudy = {
@@ -128,8 +179,8 @@ export type MapUpdateSkills = {
 }
 
 export interface skillToServer {
-  idSkill: number;
-  skillRank: number;
+  skillDTO: SkillProps[];
+  skillPoints: number;
 }
 
 export interface feat {
@@ -147,7 +198,7 @@ export interface serverFeat {
 }
 
 export type Prerequisite = {
-  ability: abilitys;
+  ability: Abilitys;
   armorClass: armorClass;
   bab: number;
   classSkills: object;
@@ -162,8 +213,7 @@ export type FeatsId = {
 
 export type ChosenRace = {
   id: number,
-  race: string,
-  sub: string
+  subRacesName: string
 }
 
 export interface races {
@@ -176,13 +226,251 @@ export type subRaces = {
   id: number;
   subRacesName: string;
   avatarUrl: string;
-  raceAbilitys: abilitys;
+  raceAbilitys: Abilitys;
   raceSkills: SkillProps[];
   armorClass: armorClass;
   levelAdjustment: number;
 };
 
 export type serverSkill = {
-  idSkill: number;
+  skillDTO: SkillProps[];
   skillRank: number;
 };
+
+export type ItemsList = {
+  armorsList: Armor[];
+  shieldList: Shield[];
+  weaponsList: Weapon[];
+  wonderousItems: WonderousItem[];
+}
+
+export type Item = {
+  id: number;
+  name: string;
+  cost: number;
+  weight: number;
+  description: string;
+  itemType: string;
+}
+
+export interface Armor extends Item {
+  armorName: string;
+  armorClass: number;
+  armorType: string;
+  maxDex: number;
+  penality: number;
+  failure: number;
+  enchantment: Enchantment;
+  material: string | null
+}
+
+export interface Shield extends Item {
+  shieldName: string;
+  armorClass: number;
+  armorType: string;
+  maxDex: number;
+  penality: number;
+  failure: number;
+  enchantment: Enchantment;
+  material: string | null
+}
+
+export interface Weapon extends Item {
+  weaponName: string;
+  damage: string;
+  critical: string;
+  range: number;
+  type: string[];
+  specialAttacks: string | null;
+  enchantment: Enchantment;
+  material: string | null
+}
+
+export interface WonderousItem extends Item { }
+
+export type Inventory = {
+  armor: Armor;
+  shield: Shield;
+  weaponOne: Weapon;
+  weaponTwo: Weapon;
+  weaponThree: Weapon;
+  weaponFour: Weapon;
+  weaponFive: Weapon;
+  backpack: Item[];
+  head: WonderousItem;
+  neck: WonderousItem;
+  arms: WonderousItem;
+  hands: Item[];
+  cloth: WonderousItem;
+  legs: WonderousItem;
+}
+
+export type Attacks = {
+  firstAttackSetOne: Weapon,
+  secondAttackSetOne: Weapon,
+  additionalAttackSetOne: Weapon,
+  firstAttackSetTwo: Weapon,
+  secondAttackSetTwo: Weapon,
+  additionalAttackSetTwo: Weapon
+}
+
+export type CharInventory = {
+  inventory: Inventory
+  items: ItemsList
+  actual: number
+  updateInventory: (
+    newInventory: Inventory,
+  ) => void;
+}
+
+export type ArmorWeaponToBuy = {
+  item: Armor | Shield | Weapon,
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Armor | Shield | Weapon,
+    type: string) => void;
+  sellItem: (
+    newItem: Armor | Shield | Weapon,
+    type: string) => void;
+}
+
+export type ItemToBuy = {
+  item: Item,
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string) => void;
+  sellItem: (
+    newItem: Item,
+    type: string) => void;
+}
+
+export type Rings = {
+  item: Item[],
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string) => void;
+  sellItem: (
+    newItem: Item,
+    type: string) => void;
+}
+
+export type Backpack = {
+  item: Item[],
+  items: Item[],
+  type: string,
+  buyItem: (
+    newItem: Item,
+    type: string) => void;
+  sellItem: (
+    newItem: Item,
+    type: string) => void;
+}
+
+export type ItemToChange = {
+  list: ItemsList,
+  createNew: (
+    newItem: Item) => void;
+}
+
+export type CharAttack = {
+  inventory: Weapon[],
+  attacks: Attacks,
+  bab: number,
+  ability: Abilitys,
+  setListOfAttack: (
+    newAttacks: Attacks
+  ) => void
+}
+
+export type CharBab = {
+  bab: number,
+  ability: Abilitys,
+  weapon: Weapon,
+  position: Position
+}
+
+export type Position = {
+  pose: boolean,
+  twoHanded: boolean,
+  light: boolean
+}
+
+export type SelectWeapon = {
+  list: Weapon[],
+  where: string,
+  selectWeapon: (
+    newWeapon: Weapon,
+    where: string
+  ) => void
+}
+
+export type SelectOffWeapon = {
+  indexOne: number,
+  list: Weapon[],
+  where: string,
+  selectWeapon: (
+    newWeapon: Weapon,
+    where: string
+  ) => void
+}
+
+export type ArmorInCharacter = {
+  charArmor: armorClass,
+  charInventory: Inventory
+}
+
+export type SignAndNumber = {
+  sign: string,
+  number: number
+}
+
+export type Enchantment = {
+  id: number,
+  enchantment: number
+}
+
+export type SpellLevel = {
+  level: number,
+  classDomain: string
+}
+
+export type Spell = {
+  id: number,
+  name: string,
+  school: string[],
+  level: SpellLevel[] | null,
+  components: string[] | null,
+  castingTime: string | null,
+  range: string | null,
+  target: string | null,
+  area: string | null,
+  effect: string | null,
+  duration: string | null,
+  savingThrow: string | null,
+  spellResistance: string | null,
+  descriptiveText: string | null
+}
+
+export type SpellsList = {
+  list: Spell[],
+  lvSpell: number,
+  pgClass: string
+  selectSpell: (
+    newSpell: Spell
+  ) => void
+}
+
+export type Book = {
+  caster: string,
+  level: number,
+  spells: Spell[]
+}
+
+export type BooksFromChar = {
+  books: Book[]
+}

@@ -1,0 +1,32 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="308" author="oscar">
+
+        <createTable tableName="attacks">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="attacks_id_onefirst" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="attacks_id_onesecond" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="attacks_id_oneadditional" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="attacks_id_twofirst" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="attacks_id_twosecond" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="attacks_id_twoadditional" type="int">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @Repository
-public interface CharacterRepository extends JpaRepository<Character, Short> {
-    
-}
+public interface CharacterRepository
+  extends JpaRepository<Character, Integer> {}

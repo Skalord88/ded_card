@@ -1,24 +1,23 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
+import { CharacterPc, ClassPc } from "../components/interfaces";
 import {
   urlChar,
-  urlClassList,
   urlClassAdd,
-  urlClassSell,
+  urlClassList,
+  urlClassSell
 } from "../components/url";
-import { ClassPc, characterPc } from "../components/interfaces";
+import { Dropdown } from "../components/Dropdown";
+import { CharSummary } from "../components/CharSummary";
 
-export function Classes() {
+export const Classes = () => {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [classesList, setClassesList] = useState<ClassPc[]>([]);
-  const [sign, setSign] = useState("");
-  const [id, setId] = useState(-1);
-
-  const [classPcName, setInputName] = useState("");
+  const [option, setOption] = useState<{ id: number; sign: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,105 +27,153 @@ export function Classes() {
 
         const resClassList = await axios.get(urlClassList);
         setClassesList(resClassList.data);
+
+        setOption({ id: -1, sign: "" });
       } catch (error) {
         console.error(error);
       }
     };
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
+    let list: ClassPc[] = [];
 
-  },[classesList])
+    list = classesList.filter((classe) => option?.id !== classe.id);
 
-  const handleData = (e: any) => {
-    setSign(e[0]);
-    setId(e[1]);
-    setInputName(e[2]);
+    list = list.filter(
+      (classe) =>
+        !char?.classPcList.some((classInChar) => classInChar.id === classe.id)
+    );
+
+    char?.classPcList.forEach((classInList) =>
+      list.filter((inList) => classInList.id !== inList.id)
+    );
+    setClassesList(list);
+  }, [option]);
+
+  const handleOption = (e: ClassPc) => {
+    setOption((prevOption) => ({
+      ...prevOption,
+      id: e.id,
+      sign: "+"
+    }));
   };
 
-  const handleSign = (e: any) => {
-    e.preventDefault();
-    try {
-      if (sign === "+") {
-        axios.post(urlClassAdd + charId, { id: id });
-      } else if (sign === "-") {
-        axios.post(urlClassSell + charId, { id: id });
+  const handleData = (e: [string, ClassPc]) => {
+    setOption({ id: e[1].id, sign: e[0] });
+  };
+
+  const handleSign = () => {
+    if (option) {
+      try {
+        if (option.sign === "+") {
+          axios.post(urlClassAdd + charId, { id: option.id });
+        } else if (option.sign === "-") {
+          axios.post(urlClassSell + charId, { id: option.id });
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
     window.location.reload();
   };
 
   return (
     <>
-      <p>{char?.characterName}</p>
-      <div>
-        {classPcName ? (
-          <>
-            choosen: {classPcName} <button onClick={handleSign}>proceed</button>
-          </>
-        ) : (
-          <>choose one</>
-        )}
-      </div>
-      <div>
-        {char?.classPcList ? (
-          <button>
-            <Link to={"/skill/" + charId}>to skills</Link>
+      <CharSummary character={char} />
+      <div className="rpgui-container-framed-grey">
+        <div>
+          <div style={{ width: "50%" }}>
+            <Dropdown options={classesList} onSelect={handleOption} />
+          </div>
+          <button className="rpgui-button" onClick={() => handleSign()}>
+            <p>add class</p>
           </button>
-        ) : (
-          <></>
-        )}
-      </div>
-      <ul>
-        {char?.classPcList? (
-          <>
-            {char.classPcList.map((c: any, index: number) => {
-              return c.level === 0 ? (
-                <></>
-              ) : (
-                <li key={index}>
-                  <button
-                    onClick={() =>
-                      handleData(["+", c.id, c.className, c.level])
-                    }
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap"
+          }}
+        >
+          {char?.classPcList ? (
+            <>
+              {char.classPcList.map((c: ClassPc, index: number) => {
+                return c.level === 0 ? (
+                  <div></div>
+                ) : (
+                  <div
+                    key={index}
+                    className="rpgui-container-framed-golden"
+                    style={{ width: "50%" }}
                   >
-                    +
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleData(["-", c.id, c.className, c.level])
-                    }
-                  >
-                    -
-                  </button>{" "}
-                  {c.className} {c.level}
-                </li>
-              );
-            })}
-          </>
+                    <p>
+                      <button
+                        className="rpgui-button-golden-small"
+                        onClick={() => handleData(["+", c])}
+                      >
+                        <p>+</p>
+                      </button>
+                      <button
+                        className="rpgui-button-golden-small"
+                        onClick={() => handleData(["-", c])}
+                      >
+                        <p>-</p>
+                      </button>{" "}
+                      {c.className}
+                      {option?.id !== c.id ? (
+                        <> {c.level} </>
+                      ) : (
+                        <>
+                          {option.sign === "+" ? (
+                            <>
+                              {" ("}
+                              {c.level}
+                              {") "}
+                              {c.level + 1}{" "}
+                              <button
+                                className="rpgui-button-golden-small"
+                                onClick={() => handleSign()}
+                              >
+                                <p>change</p>
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              {" ("}
+                              {c.level}
+                              {") "}
+                              {c.level - 1}{" "}
+                              <button
+                                className="rpgui-button-golden-small"
+                                onClick={() => handleSign()}
+                              >
+                                <p>change</p>
+                              </button>
+                            </>
+                          )}
+                        </>
+                      )}
+                    </p>
+                  </div>
+                );
+              })}
+            </>
+          ) : (
+            <p>no classes in character</p>
+          )}
+        </div>
+        {char?.classPcList ? (
+          <div>
+            <button className="rpgui-button">
+              <Link to={"/skill/" + charId}>to skills</Link>
+            </button>
+          </div>
         ) : (
-          <>no classes in character</>
+          <p></p>
         )}
-      </ul>
-      <div>
-        <p></p>
-        {classesList.map((cl: any, index) => {
-          return (
-            <div key={index}>
-              <button
-                onClick={() => handleData(["+", cl.id, cl.className, cl.level])}
-              >
-                +
-              </button>{" "}
-              {cl.classType}, {cl.className}
-            </div>
-          );
-        })}
       </div>
     </>
   );
-}
+};

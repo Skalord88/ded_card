@@ -77,4 +77,6 @@ public class ClassCharacter {
 
   @Enumerated(EnumType.STRING)
   SpellsEnum spellsDomain;
+
+  String initialGold;
 }

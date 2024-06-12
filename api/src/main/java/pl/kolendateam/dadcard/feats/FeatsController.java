@@ -46,7 +46,7 @@ public class FeatsController {
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setFeatsCharacter(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody ArrayList<FeatsDTO> featsDTOList
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
@@ -96,7 +96,7 @@ public class FeatsController {
 
   @PostMapping(value = "remove/{id}", consumes = { "application/json" })
   public CharacterDTO delFeatsCharacter(
-    @PathVariable short id,
+    @PathVariable int id,
     @RequestBody FeatsDTO featDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);

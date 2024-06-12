@@ -27,6 +27,9 @@
             <column name="range" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
+            <column name="area" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="effect" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
@@ -42,7 +45,7 @@
             <column name="spell_resistance" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="descriptive_text" type="varchar(5000)">
+            <column name="descriptive_text" type="varchar(10000)">
                 <constraints nullable="true"/>
             </column>
         </createTable>

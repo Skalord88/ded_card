@@ -1,213 +1,204 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import { urlChar, urlRaceList } from "../components/url";
 import {
-    ChosenRace,
-    characterPc,
-    races,
-    subRaces
+  CharacterPc,
+  ChosenRace,
+  races,
+  subRaces
 } from "../components/interfaces";
+import { urlChar, urlRaceList } from "../components/url";
 
-export function Races() {
-    const { charId } = useParams();
+export const Races = () => {
+  const { charId } = useParams();
 
-    const [char, setChar] = useState<characterPc>();
-    const [races, setRaces] = useState<races[]>();
-    const [chosenRace, setChosenRace] = useState<ChosenRace>({
-        id: 0,
-        race: "",
-        sub: ""
-    });
-    const [change, setChange] = useState(false);
+  const [char, setChar] = useState<CharacterPc>();
+  const [races, setRaces] = useState<races[]>();
+  const [selectedRace, setSelected] = useState<String>("");
+  const [chosenRace, setChosenRace] = useState<ChosenRace>({
+    id: 0,
+    subRacesName: ""
+  });
+  const [change, setChange] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const resChar = await axios.get(urlChar + "/" + charId);
-                setChar(resChar.data);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resChar = await axios.get(urlChar + "/" + charId);
+        setChar(resChar.data);
 
-                const resRaceList = await axios.get(urlRaceList);
-                setRaces(resRaceList.data);
-
-                console.log(resChar.data, resRaceList.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-        fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    const handleData = (race: ChosenRace) => {
-        setChosenRace({
-            ...chosenRace,
-            id: race.id,
-            race: race.race,
-            sub: race.sub
-        });
-        setChange(true);
+        const resRaceList = await axios.get(urlRaceList);
+        setRaces(resRaceList.data);
+      } catch (error) {
+        console.error(error);
+      }
     };
-    const handleSubmit = (e: any) => {
-        axios.post(urlRaceList + "/" + charId + "/race", e).then((response) => {
-            console.log(response);
-        });
-    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    return (
+  const handleData = (subRace: subRaces, race: string) => {
+    setSelected(race);
+    setChosenRace({ id: subRace.id, subRacesName: subRace.subRacesName });
+    setChange(true);
+  };
+  const handleSubmit = (e: ChosenRace) => {
+    axios.post(urlRaceList + "/" + charId, e);
+  };
+
+  return (
+    <>
+      {change === true ? (
+        <p>
+          {chosenRace?.subRacesName}, {selectedRace}{" "}
+          <button
+            className="rpgui-button"
+            onClick={() => handleSubmit(chosenRace)}
+          >
+            <Link to={"/class/" + charId}>to classes</Link>
+          </button>
+        </p>
+      ) : (
+        <p>...choose race</p>
+      )}
+
+      {races ? (
         <>
-            <p>
-                {char?.characterName}{" "}
-                <>
-                    {change === true ? (
-                        <>
-                            {chosenRace.race}, {chosenRace.sub}{" "}
-                            <button onClick={() => handleSubmit(chosenRace.id)}>
-                                <Link to={"/class/" + charId}>to classes</Link>
-                            </button>
-                        </>
-                    ) : (
-                        <>...choose race</>
-                    )}
-                </>
-            </p>
-            <p>
-                {races ? (
-                    <>
-                        {races.map((r: races, index: number) => {
-                            return (
-                                <p key={index}>
-                                    <b>{r.raceName}</b>{" "}
-                                    {r.subRaces ? (
-                                        <ul>
-                                            {r.subRaces.map((sr: subRaces, indexSR: number) => {
-                                                return (
-                                                    <li key={indexSR}>
-                                                        <>
-                                                            <button
-                                                                onClick={() =>
-                                                                    handleData({
-                                                                        id: sr.id,
-                                                                        race: r.raceName,
-                                                                        sub: sr.subRacesName
-                                                                    })
-                                                                }
-                                                            >
-                                                                {sr.subRacesName}
-                                                            </button>
-                                                        </>
-                                                        :{" "}
-                                                        {sr.raceAbilitys ? (
-                                                            <>
-                                                                <>
-                                                                    {sr.raceAbilitys.streght ? (
-                                                                        <>
-                                                                            str:
-                                                                            {sr.raceAbilitys.streght > 0 ? (
-                                                                                <>+{sr.raceAbilitys.streght}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.streght}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                                <>
-                                                                    {sr.raceAbilitys.dextrity ? (
-                                                                        <>
-                                                                            dex:
-                                                                            {sr.raceAbilitys.dextrity > 0 ? (
-                                                                                <>+{sr.raceAbilitys.dextrity}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.dextrity}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                                <>
-                                                                    {sr.raceAbilitys.constitution ? (
-                                                                        <>
-                                                                            con:
-                                                                            {sr.raceAbilitys.constitution > 0 ? (
-                                                                                <>+{sr.raceAbilitys.constitution}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.constitution}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                                <>
-                                                                    {sr.raceAbilitys.intelligence ? (
-                                                                        <>
-                                                                            int:
-                                                                            {sr.raceAbilitys.intelligence > 0 ? (
-                                                                                <>+{sr.raceAbilitys.intelligence}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.intelligence}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                                <>
-                                                                    {sr.raceAbilitys.wisdom ? (
-                                                                        <>
-                                                                            wis:
-                                                                            {sr.raceAbilitys.wisdom > 0 ? (
-                                                                                <>+{sr.raceAbilitys.wisdom}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.wisdom}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                                <>
-                                                                    {sr.raceAbilitys.charisma ? (
-                                                                        <>
-                                                                            cha:
-                                                                            {sr.raceAbilitys.charisma > 0 ? (
-                                                                                <>+{sr.raceAbilitys.charisma}</>
-                                                                            ) : (
-                                                                                <>{sr.raceAbilitys.charisma}</>
-                                                                            )}{" "}
-                                                                        </>
-                                                                    ) : (
-                                                                        <></>
-                                                                    )}
-                                                                </>
-                                                            </>
-                                                        ) : (
-                                                            <></>
-                                                        )}
-                                                        {sr.levelAdjustment === 0 ? (
-                                                            <></>
-                                                        ) : (
-                                                            <> lva:{sr.levelAdjustment}</>
-                                                        )}
-                                                    </li>
-                                                );
-                                            })}
-                                        </ul>
+          {races.map((r: races, index: number) => {
+            return (
+              <div
+                className="rpgui-container-framed-grey"
+                key={index}
+                style={{ float: "left", width: "50%" }}
+              >
+                <p>{r.raceName}:</p>{" "}
+                {r.subRaces ? (
+                  <ul className="rpgui-list-imp" style={{ height: 90 }}>
+                    {r.subRaces.map((sr: subRaces, indexSR: number) => {
+                      return (
+                        <li
+                          key={indexSR}
+                          className="data-rpguivalue"
+                          onClick={() => handleData(sr, r.raceName)}
+                        >
+                          {" "}
+                          {sr.subRacesName}
+                          {sr.raceAbilitys ? (
+                            <>
+                              <>
+                                {sr.raceAbilitys.streght ? (
+                                  <>
+                                    {" "}
+                                    str:
+                                    {sr.raceAbilitys.streght > 0 ? (
+                                      <>+{sr.raceAbilitys.streght}</>
                                     ) : (
-                                        <p>...loading sub races...</p>
-                                    )}
-                                </p>
-                            );
-                        })}
-                    </>
+                                      <>{sr.raceAbilitys.streght}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.dextrity ? (
+                                  <>
+                                    {" "}
+                                    dex:
+                                    {sr.raceAbilitys.dextrity > 0 ? (
+                                      <>+{sr.raceAbilitys.dextrity}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.dextrity}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.constitution ? (
+                                  <>
+                                    {" "}
+                                    con:
+                                    {sr.raceAbilitys.constitution > 0 ? (
+                                      <>+{sr.raceAbilitys.constitution}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.constitution}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.intelligence ? (
+                                  <>
+                                    {" "}
+                                    int:
+                                    {sr.raceAbilitys.intelligence > 0 ? (
+                                      <>+{sr.raceAbilitys.intelligence}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.intelligence}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.wisdom ? (
+                                  <>
+                                    {" "}
+                                    wis:
+                                    {sr.raceAbilitys.wisdom > 0 ? (
+                                      <>+{sr.raceAbilitys.wisdom}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.wisdom}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                              <>
+                                {sr.raceAbilitys.charisma ? (
+                                  <>
+                                    {" "}
+                                    cha:
+                                    {sr.raceAbilitys.charisma > 0 ? (
+                                      <>+{sr.raceAbilitys.charisma}</>
+                                    ) : (
+                                      <>{sr.raceAbilitys.charisma}</>
+                                    )}{" "}
+                                  </>
+                                ) : (
+                                  <></>
+                                )}
+                              </>
+                            </>
+                          ) : (
+                            <></>
+                          )}
+                          {sr.levelAdjustment === 0 ? (
+                            <></>
+                          ) : (
+                            <> lva:{sr.levelAdjustment}</>
+                          )}
+                        </li>
+                      );
+                    })}
+                  </ul>
                 ) : (
-                    <p>...loading races...</p>
+                  <p>...loading sub races...</p>
                 )}
-            </p>
+              </div>
+            );
+          })}
         </>
-    );
-}
+      ) : (
+        <p>...loading races...</p>
+      )}
+    </>
+  );
+};

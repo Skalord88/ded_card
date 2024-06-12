@@ -7,7 +7,7 @@
 
   <changeSet id="3" author="damian">
       <createTable tableName="character">
-        <column name="id" type="SMALLINT" autoIncrement="true">
+        <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="character_name" type="varchar(255)">
@@ -67,7 +67,10 @@
         <column name="special_attacks" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="items" type="jsonb">
+        <column name="inventory_id" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="attacks_id" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="magic_per_day" type="jsonb">
@@ -76,9 +79,18 @@
         <column name="magic_known" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="spells_known" type="jsonb">
+        <column name="books" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+        <!-- <column name="spells_known" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
+        <column name="experience" type="int">
+          <constraints nullable="true"/>
+        </column>
+        <column name="treasure" type="int">
           <constraints nullable="true"/>
         </column>
       </createTable>
-  </changeSet>
+    </changeSet>
 </databaseChangeLog>

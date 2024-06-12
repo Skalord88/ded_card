@@ -1,18 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { FeatsId, characterPc, serverFeat } from "../components/interfaces";
+import { Link, useParams } from "react-router-dom";
+import { CharacterPc, FeatsId, serverFeat } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
+import {
+  FeatsList,
+  ServerFeatsList,
+  ServerFeatsToDelete
+} from "../components/FeatsList";
 
 export function Feats() {
   const { charId } = useParams();
-  const [char, setChar] = useState<characterPc>();
+  const [char, setChar] = useState<CharacterPc>();
   const [featsList, setFeatsList] = useState<serverFeat[]>([]);
   const [levelFeatsList, setLevelFeatsList] = useState<serverFeat[]>([]);
   const [featsGeneral, setFeatsGeneral] = useState<serverFeat[]>([]);
   const [elcFeats, setElcFeats] = useState(0);
   const [lvFeats, setLvFeats] = useState(0);
-  const [selectFeat, setSelectFeat] = useState<serverFeat>();
   const [featsToAdd, setFeatsToAdd] = useState<serverFeat[]>([]);
 
   useEffect(() => {
@@ -49,14 +53,13 @@ export function Feats() {
 
     generalNotChar.forEach((feat) => {
       if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
-        console.log(feat.featName);
         let check = 0;
         feat.prerequisite.feats.forEach((prerFeat) => {
           listChar?.forEach((charFeat) => {
             charFeat === prerFeat ? check++ : (check += 0);
-            console.log(check, feat.featName, feat.prerequisite.feats.length)
+
             if (check === feat.prerequisite.feats.length) {
-              prerequisite.push(feat)
+              prerequisite.push(feat);
             }
           });
         });
@@ -96,12 +99,8 @@ export function Feats() {
     }
   }, [char, featsList]);
 
-  const handleSelect = (e: serverFeat) => {
-    setSelectFeat(e);
-  };
-
   const handleAdd = (e: serverFeat) => {
-    if (featsToAdd.length < elcFeats) {
+    if (featsToAdd.length <= elcFeats && !featsToAdd.includes(e)) {
       featsGeneral.forEach((feat) => {
         if (feat.id === e.id) {
           setFeatsToAdd((prevFeat) => [...prevFeat, e]);
@@ -112,7 +111,6 @@ export function Feats() {
 
   const handleRemove = (e: number) => {
     const list = featsToAdd.filter((feat) => feat.id !== e);
-
     setFeatsToAdd(list);
   };
 
@@ -134,96 +132,75 @@ export function Feats() {
 
   return (
     <>
-      <div className="container">
-        <div>
-          {elcFeats === lvFeats ? (
-            <div>all feats added</div>
-          ) : (
-            <div>add {elcFeats - lvFeats} feat</div>
-          )}
-        </div>
+      <div style={{ display: "flex" }}>
+        {elcFeats === lvFeats ? (
+          <>
+            <div id="remFeatsAdded" className="rpgui-container-framed-golden">
+              <p>
+                all feats added{" "}
+                <button className="rpgui-button">
+                  <Link to={"/item/" + charId}>
+                    <p>to items</p>
+                  </Link>
+                </button>
+              </p>
+            </div>
+          </>
+        ) : (
+          <div
+            id="remFeats"
+            className="rpgui-container-framed-golden"
+            style={{ flex: 1 }}
+          >
+            <p>add {elcFeats - lvFeats - featsToAdd.length} feat</p>
+          </div>
+        )}
 
-        <div>
-          <div>
-            ---Class Feats---
-            {char?.featsList.map((feat, index) => {
-              return (
-                <>
-                  <div key={index}>---{feat.characterFeatName}---</div>
-                  <div key={index}>{feat.characterFeatDescription}</div>
-                </>
-              );
-            })}
-          </div>
-          <div>
-            ---Level Feats---
-            {levelFeatsList.map((feat, index) => {
-              return (
-                <>
-                  <div key={index}>
-                    ---{feat.featName}
-                    <button onClick={() => handleDeleteFeat(feat.id)}>-</button>
-                  </div>
-                  <div key={index}>{feat.description}</div>
-                </>
-              );
-            })}
-          </div>
-        </div>
-        <div>
-          {featsGeneral ? (
+        <div className="rpgui-container-framed-grey" style={{ flex: 4 }}>
+          {featsToAdd.length > 0 && levelFeatsList.length < elcFeats ? (
             <>
-              {featsGeneral?.map((feat: serverFeat, index) => {
-                return (
-                  <>
-                    <div key={index}>
-                      <button onClick={() => handleSelect(feat)}>
-                        {feat.featName}
-                      </button>
-                    </div>
-                  </>
-                );
-              })}
-            </>
-          ) : (
-            <>...loading feats...</>
-          )}
-        </div>
-        <div>
-          {selectFeat ? (
-            <>
-              <div>{selectFeat.featName}</div>
-              {/* <div>{Object.entries(selectFeat.prerequisite).forEach(([p, pname]) =>
-              )}
-                </div> */}
-              <div>{selectFeat.description}</div>
-              <button onClick={() => handleAdd(selectFeat)}>Add</button>
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-        <div>
-          {featsToAdd.length > 0 ? (
-            <>
-              added feats <button onClick={handleSubmit}>add feats</button>
               {featsToAdd.map((feat, index) => {
+                const isLast = index === featsToAdd.length - 1;
                 return (
                   <>
-                    <div key={index}>
-                      {feat.featName}
-                      <button onClick={() => handleRemove(feat.id)}>
-                        remove
-                      </button>
+                    <div key={index} onClick={() => handleRemove(feat.id)}>
+                      <p>{feat.featName}
+                      {!isLast && ", "}
+                      </p>
                     </div>
                   </>
                 );
               })}
+              <p>
+                <button className="rpgui-button" onClick={handleSubmit}>
+                  <p>add feats</p>
+                </button>
+              </p>
             </>
           ) : (
             <></>
           )}
         </div>
+      </div>
+      <div
+        id="classFeats"
+        style={{
+          display: "flex",
+          width: "100%",
+          flexDirection: "row"
+        }}
+      >
+        <ServerFeatsList
+          feats={featsGeneral}
+          title={"General Feats"}
+          selectFeat={handleAdd}
+        />
+        <ServerFeatsToDelete
+          feats={levelFeatsList}
+          title="Level Feats"
+          deleteFeat={handleDeleteFeat}
+        />
+        <FeatsList feats={char?.featsList} title="Class Feats" />
       </div>
     </>
   );
