@@ -1,6 +1,8 @@
-import { BonusAbilities } from "./functions";
+import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
+import { DeleteButton } from "./DeleteButton";
+import { urlChar } from "./url";
 
 export interface CharProps {
   char: CharacterPc;
@@ -9,55 +11,34 @@ export interface CharProps {
 export const CharacterData: React.FC<CharProps> = ({ char }) => {
   return (
     <>
-      <div className="rpgui-container-framed-grey">
+      <div
+        className="rpgui-container-framed-grey"
+        style={{
+          gridColumn: "1 / span 2",
+          gridRow: 1
+        }}
+      >
         <h2 className="rpgui-container-framed-golden-2">Character Data</h2>
         <div style={{ display: "flex" }}>
-          <div style={{ flex: 1, textAlign: "right" }}>
-            <p>
-              <div className="rpgui-container-framed-grey">Pg Name:</div>
-              <div className="rpgui-container-framed-grey">Player Name:</div>
-              <div className="rpgui-container-framed-grey">Region:</div>
-              <div className="rpgui-container-framed-grey">Race:</div>
-              <div className="rpgui-container-framed-grey">Age:</div>
-              <div className="rpgui-container-framed-grey">Aligment:</div>
-            </p>
+          <div style={{ flex: 1 }}>
+            <p>Pg Name:</p>
+            <p>Ply Name:</p>
+            <p>Region:</p>
+            <p>Race:</p>
+            <p>Age:</p>
+            <p>Aligment:</p>
           </div>
-          <div style={{ flex: 3 }}>
+          <div style={{ flex: 2 }}>
+            <p>{char.characterName}</p>
+            <p>{char.playerName}</p>
+            <p>Amn</p>
             <p>
-              <div className="rpgui-container-framed-grey">
-                {char.characterName}
-              </div>
-              <div className="rpgui-container-framed-grey">
-                {char.playerName}
-              </div>
-              <div className="rpgui-container-framed-grey">region</div>
-              <div className="rpgui-container-framed-grey">
-                {char.race}, {char.subRace}
-              </div>
-              <div style={{ display: "flex" }}>
-                <div style={{ flex: 1 }}>
-                  <div className="rpgui-container-framed-grey">15</div>
-                  <div className="rpgui-container-framed-grey">CHEV</div>
-                </div>
-                <div style={{ flex: 1, textAlign: "right" }}>
-                  <div className="rpgui-container-framed-grey">High:</div>
-                  <div className="rpgui-container-framed-grey">Size:</div>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div className="rpgui-container-framed-grey">45</div>
-                  <div className="rpgui-container-framed-grey">{char.size}</div>
-                </div>
-                <div style={{ flex: 1, textAlign: "right" }}>
-                  <div className="rpgui-container-framed-grey">Weight:</div>
-                  <div className="rpgui-container-framed-grey">Gender:</div>
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div className="rpgui-container-framed-grey">60kg</div>
-                  <div className="rpgui-container-framed-grey">M</div>
-                </div>
-              </div>
+              {char.race}, {char.subRace}
             </p>
+            <p>15</p>
+            <p>CHGD</p>
           </div>
+          <div style={{flex:3}}><DeleteButton url={urlChar} /></div>
         </div>
       </div>
     </>
@@ -74,51 +55,49 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 
   return (
     <>
-      <div className="rpgui-container-framed-grey">
-        <h2 className="rpgui-container-framed-golden-2">Class and Experience</h2>
-        <div style={{ display: "flex" }}>
-          <div>
-            <p>LEP: {char.effectiveCharacterLv}</p>
-            <p>
-              exp: {char.effectiveCharacterLv * 1000 - char.experience} / next
-              lv: {char.experience}
-            </p>
-          </div>
-        </div>
+      <div
+        className="rpgui-container-framed-grey"
+        style={{
+          gridColumn: 1,
+          gridRow: 2
+        }}
+      >
+        <h2 className="rpgui-container-framed-golden-2">
+          Class and Experience
+        </h2>
 
+        <div>
+          <p>LEP: {char.effectiveCharacterLv}</p>
+          <p>
+            exp: {char.effectiveCharacterLv * 1000 - char.experience} / next lv:{" "}
+            {char.experience}
+          </p>{" "}
+        </div>
         <div style={{ display: "flex" }}>
-          <div style={{ flex: 1 }}>
-            <p>
-              {cl.map((classe) => {
-                return (
-                  <>
-                    <div key={classe.id} style={{ display: "flex" }}>
-                      <div className="rpgui-container-framed-grey">
-                        {classe.className}
-                      </div>
-                      <div className="rpgui-container-framed-grey">
-                        {classe.level}
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-              {cp.map((classe) => {
-                return (
-                  <>
-                    <div key={classe.id} style={{ display: "flex" }}>
-                      <div className="rpgui-container-framed-grey">
-                        {classe.className}
-                      </div>
-                      <div className="rpgui-container-framed-grey">
-                        {classe.level}
-                      </div>
-                    </div>
-                  </>
-                );
-              })}
-            </p>
-          </div>
+          {cl.map((classe) => {
+            return (
+              <>
+                <p style={{ flex: 3 }} className="rpgui-container-framed-grey">
+                  {classe.className}
+                </p>
+                <p style={{ flex: 1 }} className="rpgui-container-framed-grey">
+                  {classe.level}
+                </p>
+              </>
+            );
+          })}
+          {cp.map((classe) => {
+            return (
+              <>
+                <p style={{ flex: 3 }} className="rpgui-container-framed-grey">
+                  {classe.className}
+                </p>
+                <p style={{ flex: 1 }} className="rpgui-container-framed-grey">
+                  {classe.level}
+                </p>
+              </>
+            );
+          })}
         </div>
       </div>
     </>
@@ -126,36 +105,52 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export const BaseAttack: React.FC<CharProps> = ({ char }) => {
+  const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
 
-    const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
-
-    return(
-        <>
-            <div className="rpgui-container-framed-grey">
-                <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
-                <p>base attack bonus: {SignNumber(char.bab)}{char.bab}, grapple:{" "} {grapple > 0 ? "+" : ""}{grapple}</p>
-                <p>STR att: {
-                    SignNumber(char.bab + BonusAbilities(char.abilitys, "STR"))
-                    }{
-                        char.bab + BonusAbilities(char.abilitys, "STR")
-                        }{" "}
-                / DEX att: {
-                    SignNumber(char.bab + BonusAbilities(char.abilitys, "DEX"))
-                    }{
-                        char.bab + BonusAbilities(char.abilitys, "DEX")
-                        }
-                </p>
-            </div>
-        </>
-    )
-}; 
+  return (
+    <>
+      <div
+        className="rpgui-container-framed-grey"
+        style={{
+          gridColumn: 2,
+          gridRow: 2
+        }}
+      >
+        <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
+        <p>
+          bs atk bns: {SignNumber(char.bab)}
+          {char.bab}
+        </p>
+        <p>
+          grapple: {grapple > 0 ? "+" : ""}
+          {grapple}
+        </p>
+        <p>
+          STR att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "STR"))}
+          {char.bab + BonusAbilities(char.abilitys, "STR")}
+        </p>
+        <p>
+          DEX att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "DEX"))}
+          {char.bab + BonusAbilities(char.abilitys, "DEX")}
+        </p>
+      </div>
+    </>
+  );
+};
 
 export const Initiative: React.FC<CharProps> = ({ char }) => {
-    return(
-        <>
-            <div className="rpgui-container-framed-grey">
-                <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
-            </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="rpgui-container-framed-grey"
+      style={{
+        gridColumn: 3,
+        gridRow: 4
+      }}
+      >
+        <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
+        <h2>{SignAndCount([BonusAbilities(char.abilitys, "DEX")]).sign} {BonusAbilities(char.abilitys, "DEX")}</h2>
+        
+      </div>
+    </>
+  );
+};

@@ -6,6 +6,7 @@ import {
   AttackMelee,
   AttackRanged,
   CountArmor,
+  CountInCharArmor,
   EnchantedName,
   EnchantmentCost,
   IndexWeaponOne,
@@ -1198,98 +1199,41 @@ export const CharacterArmor: React.FC<ArmorInCharacter> = ({
   charInventory
 }) => {
   const tot = CountArmor(charArmor, charInventory);
+
+  const armor = CountInCharArmor(charArmor, charInventory)
+  
   return (
-    <div className="rpgui-container-framed-grey">
+    <div className="rpgui-container-framed-grey"
+    style={{
+      gridColumn: "1 / span 3",
+      gridRow: 5
+      }}
+    >
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
       <div style={{ display: "flex" }}>
         <div className="rpgui-container-framed-grey">
-          <p>AC</p>
+        
+        <p style={{ flex:1 }}>{tot}</p>
+        <p style={{ flex:1 }}>
+          AC
+        </p>
         </div>
-        <div className="rpgui-container-framed-grey">
-          <p>{tot}</p>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <p>
-            <div>
-              {
-                SignAndCount([
-                  charArmor.armorBonus,
-                  charInventory.armor.armorClass
-                ]).sign
-              }
-              {
-                SignAndCount([
-                  charArmor.armorBonus,
-                  charInventory.armor.armorClass
-                ]).number
-              }
-            </div>
-            <div>arm</div>
-          </p>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <p>
-            <div>
-              {
-                SignAndCount([
-                  charArmor.shieldBonus,
-                  charInventory.shield.armorClass
-                ]).sign
-              }
-              {
-                SignAndCount([
-                  charArmor.shieldBonus,
-                  charInventory.shield.armorClass
-                ]).number
-              }
-            </div>
-            <div>shl</div>
-          </p>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([charArmor.sizeBonus]).sign}
-            {SignAndCount([charArmor.sizeBonus]).number}
-          </div>
-          <div>siz</div>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([charArmor.dextrityBonus]).sign}
-            {SignAndCount([charArmor.dextrityBonus]).number}
-          </div>
-          <div>dex</div>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([charArmor.armorBonus]).sign}
-            {SignAndCount([charArmor.armorBonus]).number}
-          </div>
-          <div>nat</div>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([charArmor.deflectionBonuses]).sign}
-            {SignAndCount([charArmor.deflectionBonuses]).number}
-          </div>
-          <div>def</div>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([charArmor.dodgeBonus]).sign}
-            {SignAndCount([charArmor.dodgeBonus]).number}
-          </div>
-          <div>ddg</div>
-        </div>
-        <div className="rpgui-container-framed-grey">
-          <div>
-            {SignAndCount([0]).sign}
-            {SignAndCount([0]).number}
-          </div>
-          <div>oth</div>
-        </div>
+        {armor.map(
+          ar => {
+            return (
+              <>
+              <div key={ar.id} className="rpgui-container-framed-grey">
+              <p style={{ flex:1 }}>
+                {ar.value} 
+              </p>
+              <p style={{ flex:1 }}>{ar.text}</p>
+              </div>
+              </>
+            )
+          }
+        )}
       </div>
-    </div>
+      </div>
   );
 };
 

@@ -9,12 +9,10 @@ export const DeleteButton: React.FC<ButtonText> = ({ url }) => {
   const { charId } = useParams();
 
   const handleDelete = async () => {
-    await axios.delete(url + "/" + charId + "/remove");
-    // history
-    
+    await axios.delete(url + "/" + charId + "/remove");    
   };
   return (
-    <div className="rpgui-center rpgui-container-framed-grey">
+    <div>
 
 <Link to={"/list"}>
         <button

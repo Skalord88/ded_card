@@ -18,50 +18,72 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
   };
   return (
     <>
-      <div className="rpgui-container-framed-grey">
+      <div
+        className="rpgui-container-framed-grey"
+        style={{
+          gridColumn: "1 / span 2",
+          gridRow: "3 / span 2"
+        }}
+      >
         <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
-        <div style={{ display: "flex" }}>
-          <div style={{ flex: 3 }}>
-            <div className="grid-table-six">
+        <div style={{ display: "grid" }}>
+          <div
+            style={{
+              gridColumn: 1,
+              gridRow: 1
+            }}
+          >
+            <p className="rpgui-center" style={{ display:"grid" }}>
+
               <div></div>
-              <div className="rpgui-container-framed-grey">TOT</div>
-              <div className="rpgui-container-framed-grey">VALUE</div>
-              <div className="rpgui-container-framed-grey">ABILITY</div>
-              <div className="rpgui-container-framed-grey">OTHER</div>
-              <div className="rpgui-container-framed-grey">///</div>
+              <div>tot</div>
+              <div>val</div>
+              <div>abi</div>
+              <div>oth</div>
+              <div style={{gridColumn:6}}></div>
 
-              <div className="rpgui-container-framed-grey">fortitude:</div>
-              <div className="rpgui-container-framed-grey">{saving.forTot}</div>
-              <div className="rpgui-container-framed-grey">{saving.for}</div>
-              <div className="rpgui-container-framed-grey">{saving.forAb}</div>
-              <div className="rpgui-container-framed-grey">{saving.forOther}</div>
-              <div className="rpgui-container-framed-grey"></div>
-             
 
-              <div className="rpgui-container-framed-grey">reflex:</div>
-              <div className="rpgui-container-framed-grey">{saving.refTot}</div>
-              <div className="rpgui-container-framed-grey">{saving.ref}</div>
-              <div className="rpgui-container-framed-grey">{saving.refAb}</div>
-              <div className="rpgui-container-framed-grey">{saving.refOther}</div>
-              
-              <div className="rpgui-container-framed-grey"></div>
+              <div>for:</div>
+              <div style={{ backgroundColor: "grey"}}>{saving.forTot}</div>
+              <div>{saving.for}</div>
+              <div>{saving.forAb}</div>
+              <div>
+                {saving.forOther}
+              </div>
+              <div></div>
 
-              <div className="rpgui-container-framed-grey">will:</div>
-              <div className="rpgui-container-framed-grey">
+              <div>ref:</div>
+              <div style={{ backgroundColor: "grey"}}>{saving.refTot}</div>
+              <div>{saving.ref}</div>
+              <div>{saving.refAb}</div>
+              <div>
+                {saving.refOther}
+              </div>
+
+              <div></div>
+
+              <div>wil:</div>
+              <div style={{ backgroundColor: "grey"}}>
                 {saving.willTot}
               </div>
-              <div className="rpgui-container-framed-grey">{saving.will}</div>
-              <div className="rpgui-container-framed-grey">{saving.willAb}</div>
-              <div className="rpgui-container-framed-grey">{saving.willOther}</div>
-              <div className="rpgui-container-framed-grey"></div>
-            </div>
+              <div>{saving.will}</div>
+              <div>{saving.willAb}</div>
+              <div>
+                {saving.willOther}
+              </div>
+              <div></div>
+            </p>
           </div>
-          <div style={{ flex: 1 }}>
-            <div className="rpgui-container-framed-grey">
-                <p>Special:</p>
-            </div>
+          <div
+            className="rpgui-container-framed-grey"
+            style={{
+              gridColumn: 2,
+              gridRow: "1 / span 2"
+            }}
+          >Special:
           </div>
         </div>
+        <div>Spell Resistence:</div>
       </div>
     </>
   );

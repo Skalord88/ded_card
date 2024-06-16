@@ -1,4 +1,4 @@
-import { Abilitys, Book, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, ArmorInCharacter, Book, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -211,6 +211,88 @@ export function CountArmor(
         + armor.naturalArmor + armor.deflectionBonuses
         + armor.dodgeBonus + inventory.armor.armorClass
         + inventory.shield.armorClass
+}
+
+export interface inCharArmor {
+    id: number,
+    value: number,
+    text: string
+}
+
+export function CountInCharArmor(
+    charArmor: armorClass,
+    charInventory: Inventory
+): inCharArmor[] {
+    let inCharArmor: inCharArmor[] = [];
+
+    let idN: number = 0;
+
+    let arm: number
+    charInventory.armor.enchantment !== null?
+    arm = charArmor.armorBonus + charInventory.armor.armorClass
+    + charInventory.armor.enchantment.enchantment
+    : arm = charArmor.armorBonus + charInventory.armor.armorClass;
+    
+    let shi: number
+    charInventory.shield.enchantment !== null?
+    shi = charArmor.shieldBonus + charInventory.shield.armorClass
+    + charInventory.shield.enchantment.enchantment
+    : shi = charArmor.shieldBonus + charInventory.shield.armorClass
+    const dex: number = charArmor.dextrityBonus;
+    const def: number = charArmor.deflectionBonuses;
+    const nat: number = charArmor.naturalArmor;
+    const dod: number = charArmor.dodgeBonus;
+
+    if (arm !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: arm,
+            text: "armor"
+        })
+        idN ++
+    }
+    if (shi !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: shi,
+            text: "shield"
+        })
+        idN ++
+    }
+    if (dex !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: dex,
+            text: "dextrity"
+        })
+        idN ++
+    }
+    if (def !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: def,
+            text: "deflection"
+        })
+        idN ++
+    }
+    if (nat !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: nat,
+            text: "natural"
+        })
+        idN ++
+    }
+    if (dod !== 0){
+        inCharArmor.push({
+            id: idN,
+            value: dod,
+            text: "dodge"
+        })
+        idN ++
+    }
+
+    return inCharArmor;
 }
 
 export function EnchantedName(

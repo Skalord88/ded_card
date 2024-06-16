@@ -10,7 +10,7 @@ import {
 } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
-import { CharacterArmor } from "../components/MyComponents";
+import { CharacterArmor, MapOfAttack } from "../components/MyComponents";
 import {
   BaseAttack,
   CharacterData,
@@ -22,6 +22,7 @@ import { SpeedComponent } from "../components/SpeedComponent";
 import { AbilitysComponent } from "../components/AbilitysComponent";
 import { HpComponent } from "../components/HpComponent";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
+import { MapOfAttackComponent } from "../components/MapOfAttackComponent";
 
 export function Show() {
   let { charId } = useParams();
@@ -65,35 +66,20 @@ export function Show() {
 
   return (
     <>
-      <div style={{ display: "flex", position: "relative" }}>
-        <div style={{ flex: 3 }}>
-          <CharacterData char={char} />
-          <div style={{ display: "flex" }}>
-            <div style={{ flex: 1 }}>
-              <ClassExpGold char={char} />
-            </div>
-            <div style={{ flex: 1 }}>
-              <BaseAttack char={char} />
-            </div>
-          </div>
-
-          <CharacterArmor
+      <div style={{ display: "grid" }}>
+        <CharacterData char={char} />
+        <AbilitysComponent abilitys={char.abilitys} />
+        <ClassExpGold char={char} />
+        <BaseAttack char={char} />
+        <SavingThrowComponent char={char} />
+        <HpComponent char={char} />
+        <Initiative char={char} />
+        <CharacterArmor
           charArmor={char.armorClass}
           charInventory={char.inventory}
         />
-          <SavingThrowComponent char={char} />
-        </div>
-        <div style={{ flex: 1 }}>
-          <DeleteButton url={urlChar} />
-          <AbilitysComponent abilitys={char.abilitys} />
-          <SpeedComponent char={char} />
-          <HpComponent char={char} />
-          <Initiative char={char} />
-        </div>
-      </div>
-
-      <div className="container-item">
-        
+        <SpeedComponent char={char} />
+        <MapOfAttackComponent char={char} />
       </div>
     </>
   );
