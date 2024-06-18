@@ -12,7 +12,6 @@ import {
   IndexWeaponOne,
   ItemEnchantedAndNoEnchanted,
   NameEnchanted,
-  SignAndCount,
   SortedBooks,
   SpellsFilter,
   WeaponLight,
@@ -42,7 +41,7 @@ import {
   Weapon,
   WonderousItem
 } from "./interfaces";
-import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
+import { enchantItems, noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
 
 export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   item,
@@ -236,157 +235,6 @@ export const BuyRings: React.FC<Rings> = ({
             })}
           </div>
         </ul>
-      </div>
-    </>
-  );
-};
-
-export const MapOfItemChange: React.FC<ItemToChange> = ({
-  list,
-  createNew
-}) => {
-  const [item, setItem] = useState<Armor | Shield | Weapon>();
-  const [open, setOpen] = useState<boolean>(false);
-  const toggleOpen = () => {
-    setOpen((open) => !open);
-  };
-
-  const enchant = (e: Enchantment) => {
-    if (item) {
-      setItem({
-        ...item,
-        enchantment: e
-      });
-    }
-  };
-
-  const enchantItems = [
-    {
-      enchantment: { id: -1, enchantment: -1 },
-      text: "pft"
-    },
-    {
-      enchantment: { id: 0, enchantment: 0 },
-      text: "-"
-    },
-    {
-      enchantment: { id: 1, enchantment: 1 },
-      text: "+1"
-    },
-    {
-      enchantment: { id: 2, enchantment: 2 },
-      text: "+2"
-    },
-    {
-      enchantment: { id: 3, enchantment: 3 },
-      text: "+3"
-    },
-    {
-      enchantment: { id: 4, enchantment: 4 },
-      text: "+4"
-    },
-    {
-      enchantment: { id: 5, enchantment: 5 },
-      text: "+5"
-    }
-  ];
-
-  const selectItem = (i: any) => {
-    setItem(i);
-  };
-  const create = (i: any) => {
-    createNew(i);
-  };
-
-  return (
-    <>
-      {item ? (
-        <>
-          <div className="container-table">
-            <div>{EnchantedName(item)}</div>
-            <div>{EnchantmentCost([item])} gp</div>
-            <div>
-              <Dropdown show={open} onToggle={toggleOpen}>
-                <Dropdown.Toggle
-                  split
-                  variant="succes"
-                  id="enchantemt-drop"
-                  onClick={() => toggleOpen()}
-                >
-                  Enchantment
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="drop">
-                  {open ? (
-                    <>
-                      {enchantItems.map((enItem) => (
-                        <Dropdown.Item
-                          onClick={() => enchant(enItem.enchantment)}
-                        >
-                          <div>{enItem.text}</div>
-                        </Dropdown.Item>
-                      ))}
-                    </>
-                  ) : null}
-                </Dropdown.Menu>
-              </Dropdown>
-            </div>
-            <div>
-              <button onClick={() => create(item)}>create</button>
-            </div>
-          </div>
-        </>
-      ) : (
-        <></>
-      )}
-      <div className="container-table">
-        <div className="container-list">
-          {list.armorsList.map((armor) => (
-            <>
-              {ItemEnchantedAndNoEnchanted(armor) ? (
-                <>
-                  <div>{EnchantedName(armor)}</div>
-                  <div>
-                    <button onClick={() => selectItem(armor)}>+</button>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          ))}
-        </div>
-        <div className="container-list">
-          {list.shieldList.map((shield) => (
-            <>
-              {ItemEnchantedAndNoEnchanted(shield) ? (
-                <>
-                  <div>{EnchantedName(shield)}</div>
-                  <div>
-                    <button onClick={() => selectItem(shield)}>+</button>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          ))}
-        </div>
-        <div className="container-list">
-          {list.weaponsList.map((weapon) => (
-            <>
-              {ItemEnchantedAndNoEnchanted(weapon) ? (
-                <>
-                  <div>{EnchantedName(weapon)}</div>
-                  <div>
-                    <button onClick={() => selectItem(weapon)}>+</button>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          ))}
-        </div>
       </div>
     </>
   );

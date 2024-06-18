@@ -1,4 +1,4 @@
-import { Abilitys, ArmorInCharacter, Book, Inventory, Position, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -295,6 +295,17 @@ export function CountInCharArmor(
     return inCharArmor;
 }
 
+export function OnlyEnchantedName(
+    enchantment: number
+): string {
+    if (enchantment < 0) {
+        return "pft"
+    } else if (enchantment === 0) {
+        return "-"
+    }
+    return "+" + enchantment
+}
+
 export function EnchantedName(
     item: any
 ): string {
@@ -404,3 +415,10 @@ export function SortedBooks(
 ): Book[] {
     return books.sort((a, b) => a.caster.localeCompare(b.caster));
 }
+
+export function updateEnchantment(item: Armor | Shield | Weapon, newEnchantment: Enchantment): Armor | Shield | Weapon {
+    return {
+      ...item,
+      enchantment: newEnchantment
+    };
+  }

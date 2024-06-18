@@ -41,32 +41,67 @@ export function Attack() {
 
   return (
     <>
-      <div className="container">
-            <div className="container-item">
+      <div className="rpgui-container-framed-grey">
               {char?
               <>
-              <div className="container-item">
-              <div>{char?.characterName}</div>
-              <div>bab: +{char?.bab}</div>
-              <div>armor: {char?.inventory.armor.name}</div>
-              <div>shield: {char?.inventory.shield.name}</div>
-              <div>I: {char?.inventory.weaponOne.name}</div>
-              <div>II: {char?.inventory.weaponTwo.name}</div>
-              <div>III: {char?.inventory.weaponThree.name}</div>
-              <div>IV: {char?.inventory.weaponFour.name}</div>
-              <div>V: {char?.inventory.weaponFive.name}</div>
+              <div style={{display:"grid"}}>
+              <div
+              style={{
+                gridColumn: 1,
+                gridRow: 1
+              }}
+              >bab: +{char?.bab}</div>
+              <div
+              style={{
+                gridColumn: 1,
+                gridRow: 2
+              }}
+              >armor: {char?.inventory.armor.name}</div>
+              <div
+              style={{
+                gridColumn: 1,
+                gridRow: 3
+              }}
+              >shield: {char?.inventory.shield.name}</div>
+              <div
+              style={{
+                gridColumn: 2,
+                gridRow: 1
+              }}
+              >I: {char?.inventory.weaponOne.name}</div>
+              <div
+              style={{
+                gridColumn: 2,
+                gridRow: 2
+              }}
+              >II: {char?.inventory.weaponTwo.name}</div>
+              <div
+              style={{
+                gridColumn: 2,
+                gridRow: 3
+              }}
+              >III: {char?.inventory.weaponThree.name}</div>
+              <div
+              style={{
+                gridColumn: 2,
+                gridRow: 4
+              }}
+              >IV: {char?.inventory.weaponFour.name}</div>
+              <div
+              style={{
+                gridColumn: 2,
+                gridRow: 5
+              }}
+              >V: {char?.inventory.weaponFive.name}</div>
               </div>
-              <div className="container-item">
                 <CharacterArmor
                   charArmor={char.armorClass}
                   charInventory={char.inventory}
                 />
-              </div>
               </>
               :
               <>...loading character...</>  
             }
-            </div>
             <div className="container-item">
               <button onClick={confirmAttack}>set Attacks</button>
               {char && attack?

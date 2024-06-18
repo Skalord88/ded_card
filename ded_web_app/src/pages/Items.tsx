@@ -1,13 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapOfInventory, MapOfItemChange } from "../components/MyComponents";
-import { CharacterPc, Inventory, Item, ItemsList } from "../components/interfaces";
-import { urlChar, urlItems, urlItemsBuy } from "../components/url";
+import { MapOfInventory } from "../components/MyComponents";
 import {
-  emptyItemsList
-} from "../components/variables";
+  CharacterPc,
+  Inventory,
+  Item,
+  ItemsList
+} from "../components/interfaces";
+import { urlChar, urlItems, urlItemsBuy } from "../components/url";
+import { emptyItemsList } from "../components/variables";
 import { EnchantmentCost } from "../components/functions";
+import { DropdownItems } from "../components/Dropdown";
 
 export const Items = () => {
   const { charId } = useParams();
@@ -29,7 +33,6 @@ export const Items = () => {
         const resItems = await axios.get(urlItems);
         setItems(resItems.data);
         setEquipment(resChar.data.inventory);
-
       } catch (error) {
         console.log(error);
       }
@@ -38,56 +41,56 @@ export const Items = () => {
   }, []);
 
   const sizeAndGold = (e: Item[]) => {
-    let gold = 0
-    if(e.length > 0){
-    gold = e.reduce(
-      (total, item) => total + item.cost,
-      0
-    ) } else {
+    let gold = 0;
+    if (e.length > 0) {
+      gold = e.reduce((total, item) => total + item.cost, 0);
+    } else {
       return gold;
     }
     return gold;
-  }
+  };
 
   useEffect(() => {
-    let gold = 0
-    if(equipment){
+    let gold = 0;
+    if (equipment) {
       gold =
-        - EnchantmentCost([
+        -EnchantmentCost([
           equipment.armor,
           equipment.shield,
           equipment.weaponOne,
           equipment.weaponTwo,
           equipment.weaponThree,
           equipment.weaponFour,
-          equipment.weaponFive,
-        ])
-        - sizeAndGold(equipment.backpack)
-        - equipment.head.cost
-        - equipment.neck.cost
-        - equipment.arms.cost
-        - sizeAndGold(equipment.hands)
-        - equipment.cloth.cost
-        - equipment.legs.cost        
+          equipment.weaponFive
+        ]) -
+        sizeAndGold(equipment.backpack) -
+        equipment.head.cost -
+        equipment.neck.cost -
+        equipment.arms.cost -
+        sizeAndGold(equipment.hands) -
+        equipment.cloth.cost -
+        equipment.legs.cost;
     }
 
-    setActualTresure(tresure + gold)
-
-  }, [tresure, equipment])
+    setActualTresure(tresure + gold);
+  }, [tresure, equipment]);
 
   useEffect(() => {
     let updatedItems: ItemsList = items;
-  
+
     updatedItems = {
-      armorsList: items.armorsList.filter(item => item.cost <= actualTresure),
-      shieldList: items.shieldList.filter(item => item.cost <= actualTresure),
-      weaponsList: items.weaponsList.filter(item => item.cost <= actualTresure),
-      wonderousItems: items.wonderousItems.filter(item => item.cost <= actualTresure)
-    }
+      armorsList: items.armorsList.filter((item) => item.cost <= actualTresure),
+      shieldList: items.shieldList.filter((item) => item.cost <= actualTresure),
+      weaponsList: items.weaponsList.filter(
+        (item) => item.cost <= actualTresure
+      ),
+      wonderousItems: items.wonderousItems.filter(
+        (item) => item.cost <= actualTresure
+      )
+    };
 
     setItemsToBuy(updatedItems);
-
-  },[items, actualTresure])
+  }, [items, actualTresure]);
 
   const handleInventory = (newInventory: Inventory) => {
     setEquipment(newInventory);
@@ -98,7 +101,7 @@ export const Items = () => {
   }, [char]);
 
   useEffect(() => {
-    if(equipment){
+    if (equipment) {
       setNewItems({
         armorsList: [equipment.armor],
         shieldList: [equipment.shield],
@@ -112,55 +115,54 @@ export const Items = () => {
         wonderousItems: []
       });
     }
-  },[equipment])
+  }, [equipment]);
 
   const createItems = () => {
-    axios.post(urlItemsBuy + 'change', newItems);
+    axios.post(urlItemsBuy + "change", newItems);
     window.location.reload();
-  }
+  };
   const confirmItems = () => {
     axios.post(urlItemsBuy + charId, equipment);
     window.location.reload();
-  }
+  };
 
   return (
     <>
-      <div className="container">
-        <div className="container-item">
-          {actualTresure}gp / {tresure}gp
-          <div>
-            <button onClick={confirmItems}>set Items</button>
-          </div>
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 1 }}>
+          <p>
+            {actualTresure}gp / {tresure}gp
+          </p>
         </div>
-        <div className="container-item">
-          <div>
-            <button>
-              <Link to={'/attack/'+ charId}>to Attack</Link>
-            </button></div>
+        <div style={{ flex: 1 }}>
+          <button className="rpgui-button" onClick={confirmItems}>
+            <p>set Items</p>
+          </button>
         </div>
-        <div className="container-item">
-          <div>
-            <MapOfItemChange
-              list={items}
-              createNew={createItems}
-            />
-          </div>
+
+        <div style={{ flex: 1 }}>
+          <button className="rpgui-button">
+            <Link to={"/attack/" + charId}>to Attack</Link>
+          </button>
         </div>
       </div>
-      <div>
-        {equipment?
+      <DropdownItems
+      options={items}
+      onCreate={createItems}
+      />
+
+      {equipment ? (
         <>
-        <MapOfInventory
-          inventory={equipment}
-          items={itemsToBuy}
-          actual={actualTresure}
-          updateInventory={handleInventory}
-        />
+          <MapOfInventory
+            inventory={equipment}
+            items={itemsToBuy}
+            actual={actualTresure}
+            updateInventory={handleInventory}
+          />
         </>
-        :
+      ) : (
         <>...loading equipment...</>
-        }
-      </div>
+      )}
     </>
   );
-}
+};

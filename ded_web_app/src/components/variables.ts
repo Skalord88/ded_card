@@ -1,4 +1,4 @@
-import { Abilitys, AddStudy, Armor, Attacks, CharacterPc, ClassPc, Inventory, Shield, Spell, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
+import { Abilitys, AddStudy, Armor, Attacks, CharacterPc, ClassPc, Enchantment, Inventory, Shield, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
 
 export const noneArmor: Armor = {
     id: 2,
@@ -13,10 +13,7 @@ export const noneArmor: Armor = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: {
-        id: 0,
-        enchantment: 0
-    },
+    enchantment: { id: 0, enchantment: 0 },
     material: null
 }
 
@@ -33,10 +30,7 @@ export const noneShield: Shield = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: {
-        id: 0,
-        enchantment: 0
-    },
+    enchantment: { id: 0, enchantment: 0 },
     material: null
 }
 
@@ -51,12 +45,9 @@ export const noneWeapon: Weapon = {
     damage: "D3",
     critical: "X2",
     range: 0,
-    type: ['BLUDGEONING','SIMPLE','UNARMED'],
+    type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
     specialAttacks: null,
-    enchantment: {
-        id: 0,
-        enchantment: 0
-    },
+    enchantment: { id: 0, enchantment: 0 },
     material: null
 }
 
@@ -222,3 +213,15 @@ export const emptyClass: ClassPc = {
     className: -1,
     level: 0
 }
+
+export const enchantItems: Enchantment[] = [
+
+    { id: -1, enchantment: -1 },
+    { id: 0, enchantment: 0 },
+    { id: 1, enchantment: 1 },
+    { id: 2, enchantment: 2 },
+    { id: 3, enchantment: 3 },
+    { id: 4, enchantment: 4 },
+    { id: 5, enchantment: 5 },
+
+];

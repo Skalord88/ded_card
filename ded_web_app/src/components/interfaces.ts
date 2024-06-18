@@ -430,8 +430,7 @@ export type SignAndNumber = {
 }
 
 export type Enchantment = {
-  id: number,
-  enchantment: number
+  id: number, enchantment: number
 }
 
 export type SpellLevel = {
