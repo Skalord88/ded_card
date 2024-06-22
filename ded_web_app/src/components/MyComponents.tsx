@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown, DropdownToggle } from "react-bootstrap";
 import {
   AttackIIMelee,
   AttackIIRanged,
@@ -7,15 +6,13 @@ import {
   AttackRanged,
   CountArmor,
   CountInCharArmor,
-  EnchantedName,
-  EnchantmentCost,
   IndexWeaponOne,
-  ItemEnchantedAndNoEnchanted,
   NameEnchanted,
   SortedBooks,
   SpellsFilter,
   WeaponLight,
-  WeaponTwoHanded
+  WeaponTwoHanded,
+  addToDrop
 } from "./functions";
 import {
   Armor,
@@ -27,11 +24,9 @@ import {
   CharAttack,
   CharBab,
   CharInventory,
-  Enchantment,
   Inventory,
   Item,
   ItemToBuy,
-  ItemToChange,
   Rings,
   SelectOffWeapon,
   SelectWeapon,
@@ -41,70 +36,52 @@ import {
   Weapon,
   WonderousItem
 } from "./interfaces";
-import { enchantItems, noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
+import { noneArmor, noneItem, noneShield, noneWeapon } from "./variables";
+import { DropdownComponent } from "./Dropdown";
 
 export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   item,
   items,
   type,
+  text,
   buyItem,
   sellItem
 }) => {
-  const [open, setOpen] = useState<boolean>(false);
-  const toggleOpen = () => {
-    setOpen((open) => !open);
+  const selectItem = (option: Armor | Shield | Weapon) => {
+    buyItem(option, option.itemType);
   };
-  const selectItem = (i: Armor | Shield | Weapon, type: string) => {
-    buyItem(i, type);
+  const deselect = (option: Armor | Shield | Weapon) => {
+    sellItem(option, option.itemType);
   };
-  const deselect = (i: Armor | Shield | Weapon, type: string) => {
-    sellItem(i, type);
-  };
+
+  const listOfItems = addToDrop(items, "items")
 
   return (
     <>
       {item ? (
         <>
-          <div>
-            {NameEnchanted(item)}
-            <button onClick={() => deselect(item, type)}>-</button>
+          <div
+            className="rpgui-container-framed-grey"
+            style={{ display: "flex" }}
+          >
+            <div style={{ flex: 1 }}>
+              <p>{text} </p>{" "}
+              <h1 onClick={() => deselect(item as any)}>
+                {NameEnchanted(item)}{" "}
+              </h1>
+              <DropdownComponent
+                options={listOfItems}
+                action={selectItem}
+              />
+            </div>
+            <div style={{ flex: 3 }}>
+              <p>{item.description}</p>
+            </div>
           </div>
-          <div>{item.description}</div>
         </>
       ) : (
         <></>
       )}
-      <div>
-        <Dropdown show={open} onToggle={toggleOpen}>
-          <DropdownToggle
-            variant="success"
-            id="dropdown-basic"
-            onClick={() => toggleOpen()}
-          >
-            Choose Item
-          </DropdownToggle>
-          <Dropdown.Menu className="drop">
-            {open ? (
-              <>
-                {items.map((it) => (
-                  <Dropdown.Item key={it.id}>
-                    <div>
-                      {NameEnchanted(it)} {EnchantmentCost([it])}
-                      <button
-                        onClick={() =>
-                          selectItem(it as Armor | Shield | Weapon, type)
-                        }
-                      >
-                        +
-                      </button>
-                    </div>
-                  </Dropdown.Item>
-                ))}
-              </>
-            ) : null}
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
     </>
   );
 };
@@ -125,7 +102,7 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
 
   return (
     <>
-      <div>
+      <div className="rpgui-container-framed-grey">
         {item.name}
         <button onClick={() => deselect(item, type)}>-</button>
       </div>
@@ -473,139 +450,124 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 
   return (
     <>
-      <div className="container">
-        <div className="container-item">
-          ---Armor:
-          <BuyEnchantedItemInventory
-            item={equipment.armor}
-            items={items.armorsList}
-            type={"armor"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div className="container-item">
-          ---Shield:
-          <BuyEnchantedItemInventory
-            item={equipment.shield}
-            items={items.shieldList}
-            type={"shield"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-      </div>
-      <div className="container">
-        <div className="container-item">
-          ---Weapon I:
-          <BuyEnchantedItemInventory
-            item={equipment.weaponOne}
-            items={items.weaponsList}
-            type={"one"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div className="container-item">
-          ---Weapon II:
-          <BuyEnchantedItemInventory
-            item={equipment.weaponTwo}
-            items={items.weaponsList}
-            type={"two"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div className="container-item">
-          ---Weapon III:
-          <BuyEnchantedItemInventory
-            item={equipment.weaponThree}
-            items={items.weaponsList}
-            type={"three"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div className="container-item">
-          ---Weapon IV:
-          <BuyEnchantedItemInventory
-            item={equipment.weaponFour}
-            items={items.weaponsList}
-            type={"four"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div className="container-item">
-          ---Weapon V:
-          <BuyEnchantedItemInventory
-            item={equipment.weaponFive}
-            items={items.weaponsList}
-            type={"five"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-      </div>
-      <div className="container">
-        <div className="container-item">
-          ---Backpack:
-          <BuyBackpack
-            item={equipment.backpack}
-            items={items.wonderousItems}
-            type={"backpack"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Head:
-          <BuyItemInventory
-            item={equipment.head}
-            items={items.wonderousItems}
-            type={"head"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Neck:
-          <BuyItemInventory
-            item={equipment.neck}
-            items={items.wonderousItems}
-            type={"neck"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Arms:
-          <BuyItemInventory
-            item={equipment.arms}
-            items={items.wonderousItems}
-            type={"arms"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Hands:
-          <BuyRings
-            item={equipment.hands}
-            items={items.wonderousItems}
-            type={"hands"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Cloth:
-          <BuyItemInventory
-            item={equipment.cloth}
-            items={items.wonderousItems}
-            type={"cloth"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-          ---Legs:
-          <BuyItemInventory
-            item={equipment.legs}
-            items={items.wonderousItems}
-            type={"legs"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
+      <div
+        className="rpgui-container-framed-grey"
+        style={{
+          display: "grid"
+        }}
+      >
+        <BuyEnchantedItemInventory
+          item={equipment.armor}
+          items={items.armorsList}
+          type={"armor"}
+          text={"---Armor:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.shield}
+          items={items.shieldList}
+          type={"shield"}
+          text={"---Shield:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.weaponOne}
+          items={items.weaponsList}
+          type={"one"}
+          text={"---Weapon I:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.weaponTwo}
+          items={items.weaponsList}
+          type={"two"}
+          text={"---Weapon II:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.weaponThree}
+          items={items.weaponsList}
+          type={"three"}
+          text={"---Weapon III:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.weaponFour}
+          items={items.weaponsList}
+          type={"four"}
+          text={"---Weapon IV:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        <BuyEnchantedItemInventory
+          item={equipment.weaponFive}
+          items={items.weaponsList}
+          type={"five"}
+          text={"---Weapon V:"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Backpack:
+        <BuyBackpack
+          item={equipment.backpack}
+          items={items.wonderousItems}
+          type={"backpack"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Head:
+        <BuyItemInventory
+          item={equipment.head}
+          items={items.wonderousItems}
+          type={"head"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Neck:
+        <BuyItemInventory
+          item={equipment.neck}
+          items={items.wonderousItems}
+          type={"neck"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Arms:
+        <BuyItemInventory
+          item={equipment.arms}
+          items={items.wonderousItems}
+          type={"arms"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Hands:
+        <BuyRings
+          item={equipment.hands}
+          items={items.wonderousItems}
+          type={"hands"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Cloth:
+        <BuyItemInventory
+          item={equipment.cloth}
+          items={items.wonderousItems}
+          type={"cloth"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
+        ---Legs:
+        <BuyItemInventory
+          item={equipment.legs}
+          items={items.wonderousItems}
+          type={"legs"}
+          buyItem={handleBuyItem}
+          sellItem={handleSellItem}
+        />
       </div>
     </>
   );
@@ -1048,40 +1010,34 @@ export const CharacterArmor: React.FC<ArmorInCharacter> = ({
 }) => {
   const tot = CountArmor(charArmor, charInventory);
 
-  const armor = CountInCharArmor(charArmor, charInventory)
-  
+  const armor = CountInCharArmor(charArmor, charInventory);
+
   return (
-    <div className="rpgui-container-framed-grey"
-    style={{
-      gridColumn: "1 / span 3",
-      gridRow: 5
+    <div
+      className="rpgui-container-framed-grey"
+      style={{
+        gridColumn: "1 / span 3",
+        gridRow: 5
       }}
     >
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
       <div style={{ display: "flex" }}>
         <div className="rpgui-container-framed-grey">
-        
-        <p style={{ flex:1 }}>{tot}</p>
-        <p style={{ flex:1 }}>
-          AC
-        </p>
+          <p style={{ flex: 1 }}>{tot}</p>
+          <p style={{ flex: 1 }}>AC</p>
         </div>
-        {armor.map(
-          ar => {
-            return (
-              <>
+        {armor.map((ar) => {
+          return (
+            <>
               <div key={ar.id} className="rpgui-container-framed-grey">
-              <p style={{ flex:1 }}>
-                {ar.value} 
-              </p>
-              <p style={{ flex:1 }}>{ar.text}</p>
+                <p style={{ flex: 1 }}>{ar.value}</p>
+                <p style={{ flex: 1 }}>{ar.text}</p>
               </div>
-              </>
-            )
-          }
-        )}
+            </>
+          );
+        })}
       </div>
-      </div>
+    </div>
   );
 };
 

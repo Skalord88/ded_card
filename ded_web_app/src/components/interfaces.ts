@@ -260,7 +260,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: Enchantment;
+  enchantment?: Enchantment;
   material: string | null
 }
 
@@ -271,7 +271,7 @@ export interface Shield extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: Enchantment;
+  enchantment?: Enchantment;
   material: string | null
 }
 
@@ -282,7 +282,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   specialAttacks: string | null;
-  enchantment: Enchantment;
+  enchantment?: Enchantment;
   material: string | null
 }
 
@@ -327,6 +327,7 @@ export type ArmorWeaponToBuy = {
   item: Armor | Shield | Weapon,
   items: Item[],
   type: string,
+  text: string,
   buyItem: (
     newItem: Armor | Shield | Weapon,
     type: string) => void;

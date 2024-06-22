@@ -9,7 +9,7 @@ import {
   urlClassList,
   urlClassSell
 } from "../components/url";
-import { DropdownClass } from "../components/Dropdown";
+import { DropdownClass, DropdownComponent } from "../components/Dropdown";
 import { CharSummary } from "../components/CharSummary";
 
 export const Classes = () => {
@@ -85,7 +85,10 @@ export const Classes = () => {
       <div className="rpgui-container-framed-grey">
         <div>
           <div style={{ width: "50%" }}>
-            <DropdownClass options={classesList} onSelect={handleOption} />
+            <DropdownClass 
+              options={classesList}
+              action={handleOption}
+            />
           </div>
           <button className="rpgui-button" onClick={() => handleSign()}>
             <p>add class</p>

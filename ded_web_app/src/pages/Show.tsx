@@ -10,14 +10,13 @@ import {
 } from "../components/interfaces";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
-import { CharacterArmor, MapOfAttack } from "../components/MyComponents";
+import { CharacterArmor } from "../components/MyComponents";
 import {
   BaseAttack,
   CharacterData,
   ClassExpGold,
   Initiative
 } from "../components/CharacterData";
-import { DeleteButton } from "../components/DeleteButton";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { AbilitysComponent } from "../components/AbilitysComponent";
 import { HpComponent } from "../components/HpComponent";

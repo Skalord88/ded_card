@@ -7,80 +7,109 @@ import {
   Shield,
   Weapon
 } from "./interfaces";
-import { enchantItems } from "./variables";
-import { EnchantmentCost, NameEnchanted, OnlyEnchantedName, updateEnchantment } from "./functions";
+import { emptyItemsList, enchantItems } from "./variables";
+import {
+  EnchantmentCost,
+  NameEnchanted,
+  addToDrop,
+  itemInDrop,
+  updateEnchantment
+} from "./functions";
+import { AddedNewItems } from "./AddedNewItems";
 
-export interface DropdownClassProps {
-  options: ClassPc[];
-  onSelect: (option: ClassPc) => void;
+export interface DropdownProps {
+  options: itemInDrop[];
+  action: (option: any) => void;
 }
 
-export const DropdownClass: React.FC<DropdownClassProps> = ({
+export const DropdownComponent: React.FC<DropdownProps> = ({
   options,
-  onSelect
+  action
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<ClassPc>();
-
-  const handleSelect = (option: ClassPc) => {
-    setSelectedOption(option);
-    onSelect(option);
+  const [dropItem, setDropItem] = useState<itemInDrop>();
+  const selectItem = (option: itemInDrop) => {
+    action(option.item);
     setIsOpen(false);
+    setDropItem(option);
   };
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
 
   return (
-    <div className="rpgui-dropdown-imp" onMouseLeave={handleMouseLeave}>
-      <p
-        className="rpgui-dropdown-imp-header"
-        onClick={() => setIsOpen(!isOpen)}
+    <>
+      <div
+        className="rpgui-dropdown-imp"
+        onMouseLeave={handleMouseLeave}
+        style={{ flex: 1 }}
       >
-        {"> "}
-        {selectedOption?.className}
-      </p>
-      {isOpen && (
-        <ul
-          className="rpgui-dropdown-imp"
-          style={{
-            position: "absolute",
-            width: "310px",
-            display: "block"
-          }}
+        <p
+          className="rpgui-dropdown-imp-header"
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {options.map((option) => (
-            <li key={option.id} onClick={() => handleSelect(option)}>
-              {option.className}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+          {">"}
+          {dropItem?.name}
+        </p>
+        {isOpen && (
+          <ul
+            className="rpgui-dropdown-imp"
+            style={{
+              position: "absolute",
+              display: "block"
+            }}
+          >
+            {options.map((o, index) => (
+              <li key={index} onClick={() => selectItem(o)}>
+                {o.name}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </>
+  );
+};
+
+export interface DropdownClassProms {
+  options: ClassPc[];
+  action: (option: ClassPc) => void;
+}
+
+export const DropdownClass: React.FC<DropdownClassProms> = ({
+  options,
+  action
+}) => {
+  const handleSelect = (option: ClassPc) => {
+    action(option);
+  };
+
+  const listOfClass = addToDrop(options, "class");
+
+  return (
+    <>
+      <DropdownComponent options={listOfClass} action={handleSelect} />
+    </>
   );
 };
 
 export interface DropdownItemsProps {
   options: ItemsList;
-  onCreate: (newOption: Armor | Shield | Weapon) => void;
 }
 
-export const DropdownItems: React.FC<DropdownItemsProps> = ({
-   options,
-   onCreate
-  }) => {
-  const [selected, setSelected] = useState<Armor[] | Shield[] | Weapon[]>([]);
-  const [filterText, setFilterText] = useState<string>("-");
+export const DropdownItems: React.FC<DropdownItemsProps> = ({ options }) => {
+  const [selected, setSelected] = useState<itemInDrop[]>([]);
+  const [filterText, setFilterText] = useState<string>();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [item, setItem] = useState<Armor | Shield | Weapon>();
+  const [item, setItem] = useState<Armor | Shield | Weapon | undefined>();
 
   const handleMouseLeave = () => {
     setIsOpen(false);
   };
 
   const handleFilter = (text: string, list: Armor[] | Shield[] | Weapon[]) => {
-    setSelected(list);
+    setSelected(addToDrop(list, "items"));
     setFilterText(text);
     setIsOpen(false);
   };
@@ -137,27 +166,58 @@ export const DropdownItems: React.FC<DropdownItemsProps> = ({
         </div>
         <DropdownSelectedItem options={selected} onSelect={setItem} />
       </div>
+      {item? <AddItemCreated item={item} /> : <></>}
+      
+    </>
+  );
+};
 
-      {item ? (
+export interface AddItemCreatedProps {
+  item: Armor | Shield | Weapon ;
+}
+
+export const AddItemCreated: React.FC<AddItemCreatedProps> = ({ item }) => {
+  const [newItems, setNewItems] = useState<ItemsList>(emptyItemsList);
+  const [i, setItem] = useState<Armor | Shield | Weapon | undefined>(item)
+
+  const createItems = (e: any) => {
+    setNewItems((prevItems) => {
+      const updatedItems = { ...prevItems };
+
+      if (e.itemType === "ARMOR") updatedItems.armorsList.push(e as Armor);
+      if (e.itemType === "SHIELD") updatedItems.shieldList.push(e as Shield);
+      if (e.itemType === "WEAPON") updatedItems.weaponsList.push(e as Weapon);
+
+      return updatedItems;
+    });
+  };
+
+  useEffect(() => {
+    setItem(i)
+  },[i])
+
+  return (
+    <>
+      {i? (
         <>
-          <br></br>
-          <div className="rpgui-center rpgui-container-framed-golden">
-            <p>
-              {NameEnchanted(item)} {EnchantmentCost([item])}gp
-            </p>
-            <button className="rpgui-button" onClick={() => onCreate(item)}><p>abb</p></button>
-          </div>
+          <p>{NameEnchanted(i)} {EnchantmentCost([i])} gp</p>
+          
+          <button className="rpgui-button" onClick={() => createItems(item)}>
+            <p>abb</p>
+          </button>
           <br></br>
         </>
-      ) : (
+       ) : (
         <></>
       )}
+
+      <AddedNewItems newItemsList={newItems} />
     </>
   );
 };
 
 export interface DropdownSelectedItemsProps {
-  options: Armor[] | Shield[] | Weapon[];
+  options: itemInDrop[];
   onSelect: (option: Armor | Shield | Weapon) => void;
 }
 
@@ -165,22 +225,16 @@ export const DropdownSelectedItem: React.FC<DropdownSelectedItemsProps> = ({
   options,
   onSelect
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedOption, setSelectedOption] = useState<
     Armor | Shield | Weapon
   >();
 
   const handleSelect = (option: Armor | Shield | Weapon) => {
     setSelectedOption(option);
-    setIsOpen(false);
   };
 
-  const handleMouseLeave = () => {
-    setIsOpen(false);
-  };
-
-  const handleEnchantem = (e: Enchantment) => {
-    if (selectedOption) {
+  const handleEnchantem = (e: any) => {
+    if (selectedOption && e) {
       let item: Armor | Shield | Weapon = updateEnchantment(selectedOption, e);
       setSelectedOption(item);
     }
@@ -196,115 +250,18 @@ export const DropdownSelectedItem: React.FC<DropdownSelectedItemsProps> = ({
 
   return (
     <>
-      <div
-        className="rpgui-dropdown-imp"
-        onMouseLeave={handleMouseLeave}
-        style={{ flex: 1 }}
-      >
-        <p
-          className="rpgui-dropdown-imp-header"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {"> "}
-          {selectedOption?.name}
-        </p>
-        {isOpen && (
-          <ul
-            className="rpgui-dropdown-imp"
-            style={{
-              position: "absolute",
-              width: "auto",
-              display: "block"
-            }}
-          >
-            {options.map((option, index) => (
-              <>
-                <li key={index} onClick={() => handleSelect(option)}>
-                  {option.name}
-                </li>
-              </>
-            ))}
-          </ul>
-        )}
-      </div>
+      <DropdownComponent
+        options={addToDrop(options, "items")}
+        action={handleSelect}
+      />
       {selectedOption ? (
-        <DropdownEnchantemnts
-          option={selectedOption}
-          onSelect={handleEnchantem}
+        <DropdownComponent 
+          options={addToDrop(enchantItems, "enchant")}
+          action={handleEnchantem}
         />
       ) : (
         <></>
       )}
     </>
-  );
-};
-
-export interface DropdownEnchantemntsProps {
-  option: Armor | Shield | Weapon;
-  onSelect: (newEnchantment: Enchantment) => void;
-}
-
-export const DropdownEnchantemnts: React.FC<DropdownEnchantemntsProps> = ({
-  option,
-  onSelect
-}) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedOption, setSelectedOption] = useState<Enchantment>({
-    id: 0,
-    enchantment: 0
-  });
-
-  const handleEnchantem = (e: Enchantment) => {
-    setSelectedOption(e);
-    onSelect(e);
-    setIsOpen(false);
-  };
-
-  const handleMouseLeave = () => {
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    setSelectedOption({
-      id: 0,
-      enchantment: 0
-    })
-  },[option])
-
-  return (
-    <div
-      className="rpgui-dropdown-imp"
-      onMouseLeave={handleMouseLeave}
-      style={{ flex: 1 }}
-    >
-      <p
-        className="rpgui-dropdown-imp-header"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {"> "}
-        {OnlyEnchantedName(selectedOption.enchantment)}
-      </p>
-      {isOpen && (
-        <ul
-          className="rpgui-dropdown-imp"
-          style={{
-            position: "absolute",
-            width: "20%",
-            display: "block"
-          }}
-        >
-          {enchantItems.map((option) => (
-            <>
-              <li
-                key={option.id}
-                onClick={() => handleEnchantem(option)}
-              >
-                {OnlyEnchantedName(option.enchantment)}
-              </li>
-            </>
-          ))}
-        </ul>
-      )}
-    </div>
   );
 };

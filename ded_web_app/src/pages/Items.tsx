@@ -22,7 +22,6 @@ export const Items = () => {
   const [equipment, setEquipment] = useState<Inventory>();
   const [tresure, setTresure] = useState<number>(0);
   const [actualTresure, setActualTresure] = useState<number>(0);
-  const [newItems, setNewItems] = useState<ItemsList>(emptyItemsList);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,12 +61,12 @@ export const Items = () => {
           equipment.weaponThree,
           equipment.weaponFour,
           equipment.weaponFive
-        ]) -
-        sizeAndGold(equipment.backpack) -
+        ])
+        -sizeAndGold(equipment.backpack) -
         equipment.head.cost -
         equipment.neck.cost -
-        equipment.arms.cost -
-        sizeAndGold(equipment.hands) -
+        equipment.arms.cost
+        -sizeAndGold(equipment.hands) -
         equipment.cloth.cost -
         equipment.legs.cost;
     }
@@ -100,27 +99,23 @@ export const Items = () => {
     if (char?.treasure) setTresure(char.treasure);
   }, [char]);
 
-  useEffect(() => {
-    if (equipment) {
-      setNewItems({
-        armorsList: [equipment.armor],
-        shieldList: [equipment.shield],
-        weaponsList: [
-          equipment.weaponOne,
-          equipment.weaponTwo,
-          equipment.weaponThree,
-          equipment.weaponFour,
-          equipment.weaponFive
-        ],
-        wonderousItems: []
-      });
-    }
-  }, [equipment]);
+  // useEffect(() => {
+  //   if (equipment) {
+  //     setNewItems({
+  //       armorsList: [equipment.armor],
+  //       shieldList: [equipment.shield],
+  //       weaponsList: [
+  //         equipment.weaponOne,
+  //         equipment.weaponTwo,
+  //         equipment.weaponThree,
+  //         equipment.weaponFour,
+  //         equipment.weaponFive
+  //       ],
+  //       wonderousItems: []
+  //     });
+  //   }
+  // }, [equipment]);
 
-  const createItems = () => {
-    axios.post(urlItemsBuy + "change", newItems);
-    window.location.reload();
-  };
   const confirmItems = () => {
     axios.post(urlItemsBuy + charId, equipment);
     window.location.reload();
@@ -146,10 +141,9 @@ export const Items = () => {
           </button>
         </div>
       </div>
-      <DropdownItems
-      options={items}
-      onCreate={createItems}
-      />
+      <div className="rpgui-container-framed-golden">
+        <DropdownItems options={items} />
+      </div>
 
       {equipment ? (
         <>

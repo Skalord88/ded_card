@@ -1,9 +1,9 @@
-import { Abilitys, Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, armorClass } from "./interfaces"
+import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
 ): string {
-    if(number < 0) {return ""}
+    if (number < 0) { return "" }
     return "+";
 }
 
@@ -228,68 +228,68 @@ export function CountInCharArmor(
     let idN: number = 0;
 
     let arm: number
-    charInventory.armor.enchantment !== null?
-    arm = charArmor.armorBonus + charInventory.armor.armorClass
-    + charInventory.armor.enchantment.enchantment
-    : arm = charArmor.armorBonus + charInventory.armor.armorClass;
-    
+    charInventory.armor.enchantment ?
+        arm = charArmor.armorBonus + charInventory.armor.armorClass
+        + charInventory.armor.enchantment.enchantment
+        : arm = charArmor.armorBonus + charInventory.armor.armorClass;
+
     let shi: number
-    charInventory.shield.enchantment !== null?
-    shi = charArmor.shieldBonus + charInventory.shield.armorClass
-    + charInventory.shield.enchantment.enchantment
-    : shi = charArmor.shieldBonus + charInventory.shield.armorClass
+    charInventory.shield.enchantment ?
+        shi = charArmor.shieldBonus + charInventory.shield.armorClass
+        + charInventory.shield.enchantment.enchantment
+        : shi = charArmor.shieldBonus + charInventory.shield.armorClass
     const dex: number = charArmor.dextrityBonus;
     const def: number = charArmor.deflectionBonuses;
     const nat: number = charArmor.naturalArmor;
     const dod: number = charArmor.dodgeBonus;
 
-    if (arm !== 0){
+    if (arm !== 0) {
         inCharArmor.push({
             id: idN,
             value: arm,
             text: "armor"
         })
-        idN ++
+        idN++
     }
-    if (shi !== 0){
+    if (shi !== 0) {
         inCharArmor.push({
             id: idN,
             value: shi,
             text: "shield"
         })
-        idN ++
+        idN++
     }
-    if (dex !== 0){
+    if (dex !== 0) {
         inCharArmor.push({
             id: idN,
             value: dex,
             text: "dextrity"
         })
-        idN ++
+        idN++
     }
-    if (def !== 0){
+    if (def !== 0) {
         inCharArmor.push({
             id: idN,
             value: def,
             text: "deflection"
         })
-        idN ++
+        idN++
     }
-    if (nat !== 0){
+    if (nat !== 0) {
         inCharArmor.push({
             id: idN,
             value: nat,
             text: "natural"
         })
-        idN ++
+        idN++
     }
-    if (dod !== 0){
+    if (dod !== 0) {
         inCharArmor.push({
             id: idN,
             value: dod,
             text: "dodge"
         })
-        idN ++
+        idN++
     }
 
     return inCharArmor;
@@ -348,17 +348,18 @@ export function CostOfEnchant(
 }
 
 export function EnchantmentCost(
-    items: any[]
+    items: Armor []| Shield []| Weapon []
 ): number {
     let total: number = 0
+    if (items)
     items.forEach(item => {
-        if (item.itemType === 'ARMOR' || item.itemType === 'SHIELD') {
-            total += item.cost + CostOfEnchant(item.enchantment?.enchantment, 'Armor')
+        if (item.enchantment) if(item.itemType === 'ARMOR' || item.itemType === 'SHIELD') {
+            total += item.cost + CostOfEnchant(item.enchantment.enchantment, 'Armor')
         } else {
-            total += item.cost + CostOfEnchant(item.enchantment?.enchantment, 'Weapn')
-        }
+            total += item.cost + CostOfEnchant(item.enchantment.enchantment, 'Weapn')
+        }}
 
-    })
+    )
     return total;
 }
 
@@ -418,7 +419,49 @@ export function SortedBooks(
 
 export function updateEnchantment(item: Armor | Shield | Weapon, newEnchantment: Enchantment): Armor | Shield | Weapon {
     return {
-      ...item,
-      enchantment: newEnchantment
+        ...item,
+        enchantment: newEnchantment
     };
-  }
+}
+
+export interface itemInDrop {
+    name: string
+    item: any
+}
+
+export function addToDrop(options: any[], text: string): itemInDrop[] {
+    if (text === "class") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.className,
+                    item: o as ClassPc
+                }
+            }
+        )
+        return list
+    }
+    if (text === "items") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Armor | Shield | Weapon | WonderousItem
+                }
+            }
+        )
+        return list
+    }
+    if (text === "enchant") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: OnlyEnchantedName(o.enchantment),
+                    item: o as Enchantment
+                }
+            }
+        )
+        return list
+    }
+    return []
+}
