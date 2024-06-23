@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { EnchantedName, EnchantmentCost } from "./functions";
-import { Armor, ItemsList, Shield, Weapon } from "./interfaces";
-import { urlItemsBuy } from "./url";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { EnchantedName, EnchantmentCost } from "../../Enchantment/Functions/EnchantmentFunctions";
+import { Armor, ItemsList, Shield, Weapon } from "../../interfaces";
+import { urlItemsBuy } from "../../url";
 
 export interface AddedNewItemsProns {
   newItemsList: ItemsList;
 }
 
-export const AddedNewItems: React.FC<AddedNewItemsProns> = ({
+export const ListOfNewItems: React.FC<AddedNewItemsProns> = ({
   newItemsList
 }) => {
   const [listNewItems, setListNewItems] = useState<ItemsList>(newItemsList);
@@ -45,60 +45,75 @@ export const AddedNewItems: React.FC<AddedNewItemsProns> = ({
 
   return (
     <>
+    
+      <div style={{ display: "flex" }}>
       {listNewItems.armorsList.length > 0 ? (
         <>
+          <div style={{flex:1}}>
+            <p>New Armors:</p>
           {listNewItems.armorsList.map((item) => {
             return (
-              <div key={item.id}>
-                <p onClick={() => remove(item)}>
-                  {EnchantedName(item)} {EnchantmentCost([item])} gp
-                </p>
+              <div className="rpgui-list-imp" style={{height:100}} key={item.id}>
+                <li onClick={() => remove(item)}>
+                  {EnchantedName(item)} {EnchantmentCost([item])}gp
+                </li>
               </div>
             );
           })}
+          </div>
         </>
       ) : (
         <></>
       )}
       {listNewItems.shieldList.length > 0 ? (
         <>
+          <div style={{flex:1}}>
+            <p>New Shields:</p>
           {listNewItems.shieldList.map((item) => {
             return (
-              <div key={item.id}>
-                <p onClick={() => remove(item)}>
-                  {EnchantedName(item)} {EnchantmentCost([item])} gp
-                </p>
+              <div className="rpgui-list-imp" style={{height:100}} key={item.id}>
+                <li onClick={() => remove(item)}>
+                {EnchantedName(item)} {EnchantmentCost([item])}gp
+                </li>
               </div>
             );
           })}
+          </div>
         </>
       ) : (
         <></>
       )}
       {listNewItems.weaponsList.length > 0 ? (
         <>
+          <div style={{flex:1}}>
+            <p>New Weapon:</p>
           {listNewItems.weaponsList.map((item) => {
             return (
-              <div key={item.id}>
-                <p onClick={() => remove(item)}>
-                  {EnchantedName(item)} {EnchantmentCost([item])} gp
-                </p>
+              <div className="rpgui-list-imp" style={{height:100}} key={item.id}>
+                <li onClick={() => remove(item)}>
+                {EnchantedName(item)} {EnchantmentCost([item])}gp
+                </li>
               </div>
             );
           })}
+          </div>
         </>
       ) : (
         <></>
       )}
+      </div>
       {
         listNewItems.armorsList.length > 0
         || listNewItems.shieldList.length > 0
         || listNewItems.weaponsList.length > 0  ?
-        <div><button onClick={createItems}>addNewItems</button></div>
+        <div>
+          <button className="rpgui-button" onClick={createItems}>
+            <p>addNewItems</p>
+          </button>
+        </div>
         :
         <></>
       }
-      
     </>
   );
 };

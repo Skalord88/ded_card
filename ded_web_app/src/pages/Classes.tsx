@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { CharSummary } from "../components/CharSummary";
 import { CharacterPc, ClassPc } from "../components/interfaces";
 import {
   urlChar,
@@ -9,8 +10,7 @@ import {
   urlClassList,
   urlClassSell
 } from "../components/url";
-import { DropdownClass, DropdownComponent } from "../components/Dropdown";
-import { CharSummary } from "../components/CharSummary";
+import { DropdownClass } from "../components/ClassPc/DropdownClass";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -87,7 +87,7 @@ export const Classes = () => {
           <div style={{ width: "50%" }}>
             <DropdownClass 
               options={classesList}
-              action={handleOption}
+              onAction={handleOption}
             />
           </div>
           <button className="rpgui-button" onClick={() => handleSign()}>

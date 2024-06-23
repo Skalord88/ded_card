@@ -1,5 +1,3 @@
-import { Initiative } from "./CharacterData";
-
 export type CharacterPc = {
   id: number;
   characterName: string;
@@ -312,15 +310,6 @@ export type Attacks = {
   firstAttackSetTwo: Weapon,
   secondAttackSetTwo: Weapon,
   additionalAttackSetTwo: Weapon
-}
-
-export type CharInventory = {
-  inventory: Inventory
-  items: ItemsList
-  actual: number
-  updateInventory: (
-    newInventory: Inventory,
-  ) => void;
 }
 
 export type ArmorWeaponToBuy = {

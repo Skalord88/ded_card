@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapOfInventory } from "../components/MyComponents";
+import { EnchantmentCost } from "../components/Enchantment/Functions/EnchantmentFunctions";
 import {
   CharacterPc,
   Inventory,
@@ -10,17 +10,20 @@ import {
 } from "../components/interfaces";
 import { urlChar, urlItems, urlItemsBuy } from "../components/url";
 import { emptyItemsList } from "../components/variables";
-import { EnchantmentCost } from "../components/functions";
-import { DropdownItems } from "../components/Dropdown";
+import { CreateNewItems } from "../components/Items/CreateNewItems/CreateNewItems";
+import { MapOfInventory } from "../components/Items/Inventory/MapOfInventory";
 
 export const Items = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
   const [items, setItems] = useState<ItemsList>(emptyItemsList);
-  const [itemsToBuy, setItemsToBuy] = useState<ItemsList>(emptyItemsList);
   const [equipment, setEquipment] = useState<Inventory>();
   const [tresure, setTresure] = useState<number>(0);
+
+  // in base ai soldi attuali, calcola cosa puoi comprare
+  const [itemsToBuy, setItemsToBuy] = useState<ItemsList>(emptyItemsList);
+  // in base a cosa hai comprato, calcola quanti soldi hai
   const [actualTresure, setActualTresure] = useState<number>(0);
 
   useEffect(() => {
@@ -49,6 +52,7 @@ export const Items = () => {
     return gold;
   };
 
+  // in base a cosa hai comprato, calcola quanti soldi hai
   useEffect(() => {
     let gold = 0;
     if (equipment) {
@@ -74,6 +78,7 @@ export const Items = () => {
     setActualTresure(tresure + gold);
   }, [tresure, equipment]);
 
+  // in base ai soldi attuali, calcola cosa puoi comprare
   useEffect(() => {
     let updatedItems: ItemsList = items;
 
@@ -141,9 +146,8 @@ export const Items = () => {
           </button>
         </div>
       </div>
-      <div className="rpgui-container-framed-golden">
-        <DropdownItems options={items} />
-      </div>
+      
+      <CreateNewItems options={items} />
 
       {equipment ? (
         <>

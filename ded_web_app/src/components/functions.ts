@@ -1,4 +1,5 @@
-import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass } from "./interfaces"
+import { OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
+import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -295,82 +296,6 @@ export function CountInCharArmor(
     return inCharArmor;
 }
 
-export function OnlyEnchantedName(
-    enchantment: number
-): string {
-    if (enchantment < 0) {
-        return "pft"
-    } else if (enchantment === 0) {
-        return "-"
-    }
-    return "+" + enchantment
-}
-
-export function EnchantedName(
-    item: any
-): string {
-    let itemName: string = '';
-    if (item.enchantment?.enchantment < 0) {
-        itemName = 'pft ' + item.name
-    } else if (item.enchantment?.enchantment === 0) {
-        itemName = item.name
-    } else {
-        itemName = item.name + '+' + item.enchantment?.enchantment
-    }
-    return itemName;
-}
-
-export function CostOfEnchant(
-    enchantment: number,
-    type: string
-): number {
-    if (type === 'Armor') {
-        switch (enchantment) {
-            case -1: return 150
-            case 1: return 1150
-            case 2: return 4150
-            case 3: return 9150
-            case 4: return 16150
-            case 5: return 25150
-        }
-    }
-    if (type === 'Weapn') {
-        switch (enchantment) {
-            case -1: return 300
-            case 1: return 2300
-            case 2: return 8300
-            case 3: return 18300
-            case 4: return 32300
-            case 5: return 50300
-        }
-    }
-    return 0;
-}
-
-export function EnchantmentCost(
-    items: Armor []| Shield []| Weapon []
-): number {
-    let total: number = 0
-    if (items)
-    items.forEach(item => {
-        if (item.enchantment) if(item.itemType === 'ARMOR' || item.itemType === 'SHIELD') {
-            total += item.cost + CostOfEnchant(item.enchantment.enchantment, 'Armor')
-        } else {
-            total += item.cost + CostOfEnchant(item.enchantment.enchantment, 'Weapn')
-        }}
-
-    )
-    return total;
-}
-
-export function NameEnchanted(
-    item: any
-): string {
-    if (item.enchantment?.enchantment < 0) { return 'pft ' + item.name }
-    if (item.enchantment?.enchantment > 0) { return item.name + '+' + item.enchantment?.enchantment }
-    return item.name
-}
-
 export function ItemNoEnchanted(
     item: any
 ): boolean {
@@ -417,19 +342,23 @@ export function SortedBooks(
     return books.sort((a, b) => a.caster.localeCompare(b.caster));
 }
 
-export function updateEnchantment(item: Armor | Shield | Weapon, newEnchantment: Enchantment): Armor | Shield | Weapon {
-    return {
-        ...item,
-        enchantment: newEnchantment
-    };
-}
-
 export interface itemInDrop {
     name: string
     item: any
 }
 
 export function addToDrop(options: any[], text: string): itemInDrop[] {
+    if (text === "list") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.text,
+                    item: o.list
+                }
+            }
+        )
+        return list
+    }
     if (text === "class") {
         let list: itemInDrop[] = options.map(
             o => {

@@ -19,6 +19,10 @@
     background-image: url('../img/icons/shield.png');
 }
 
+.rpgui-icon.armor {
+    background-image: url('../img/icons/armor.png');
+}
+
 .rpgui-icon.exclamation {
     background-image: url('../img/icons/exclamation.png');
 }
