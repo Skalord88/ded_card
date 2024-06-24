@@ -16,7 +16,8 @@
 @import '_radio';
 @import '_scrollbars'; 
 @import '_disabled';
-@import '_slider'; 
+@import '_slider';
+@import '_pop'; 
 
 body
 {

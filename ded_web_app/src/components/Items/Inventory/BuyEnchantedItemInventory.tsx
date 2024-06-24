@@ -4,6 +4,7 @@ import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions"
 import { addToDrop } from "../../functions";
 import { Armor, ArmorWeaponToBuy, Shield, Weapon } from "../../interfaces";
 import "../../../css/style.css";
+import { Popup } from "../../Popup/Popup";
 
 export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
   item,
@@ -15,11 +16,11 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
 }) => {
   const [selected, setSelected] = useState<Armor | Shield | Weapon>(item);
   const selectItem = (option: Armor | Shield | Weapon) => {
-    buyItem(option, option.itemType);
+    buyItem(option, type);
     setSelected(option);
   };
   const deselect = (option: Armor | Shield | Weapon) => {
-    sellItem(option, option.itemType);
+    sellItem(option, type);
   };
 
   const listOfItems = addToDrop(items, "items");
@@ -35,22 +36,21 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
             <div>
               <p>{text}</p>
             </div>
-            <div>
-              <p onClick={() => deselect(selected as any)}>
-                {EnchantedName(selected)}
-              </p>
+            <div onClick={() => deselect(selected as any)}>
+              <Popup
+                text={EnchantedName(selected)}
+                popText={selected.description}
+              />
             </div>
             <div style={{ gridRow: 2, gridColumn: 2 }}>
               <DropdownComponent options={listOfItems} onAction={selectItem} />
             </div>
             {type === "armor" ? (
               <div style={{ gridRow: 2 }} className="rpgui-icon armor"></div>
+            ) : type === "shield" ? (
+              <div style={{ gridRow: 2 }} className="rpgui-icon shield"></div>
             ) : (
-              type === "shield"? (<div style={{ gridRow: 2 }} className="rpgui-icon shield"></div>
-
-              ) : (
-              <div style={{ gridRow: 2 }} className="rpgui-icon sword"></div>)
-              
+              <div style={{ gridRow: 2 }} className="rpgui-icon sword"></div>
             )}
           </div>
         </>

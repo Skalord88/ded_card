@@ -3,6 +3,7 @@ import { DropdownComponent } from "../../DropDown/DropDown";
 import {
   EnchantedName,
   EnchantmentCost,
+  FilterZeroEnchantment,
   SetEnchantemtOnItem
 } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { addToDrop, itemInDrop } from "../../functions";
@@ -33,9 +34,9 @@ export const CreateNewItems: React.FC<CreateNewItemsProps> = ({ options }) => {
   };
 
   const filter = [
-    { text: "armor", list: options.armorsList },
-    { text: "shield", list: options.shieldList },
-    { text: "weapon", list: options.weaponsList }
+    { text: "armor", list: FilterZeroEnchantment(options.armorsList) },
+    { text: "shield", list: FilterZeroEnchantment(options.shieldList) },
+    { text: "weapon", list: FilterZeroEnchantment(options.weaponsList) }
   ];
   const enchantments = addToDrop(enchantItems, "enchant");
 

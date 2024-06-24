@@ -83,10 +83,10 @@ export const Items = () => {
     let updatedItems: ItemsList = items;
 
     updatedItems = {
-      armorsList: items.armorsList.filter((item) => item.cost <= actualTresure),
-      shieldList: items.shieldList.filter((item) => item.cost <= actualTresure),
+      armorsList: items.armorsList.filter((item) => EnchantmentCost([item]) <= actualTresure),
+      shieldList: items.shieldList.filter((item) => EnchantmentCost([item]) <= actualTresure),
       weaponsList: items.weaponsList.filter(
-        (item) => item.cost <= actualTresure
+        (item) => EnchantmentCost([item]) <= actualTresure
       ),
       wonderousItems: items.wonderousItems.filter(
         (item) => item.cost <= actualTresure
@@ -103,23 +103,6 @@ export const Items = () => {
   useEffect(() => {
     if (char?.treasure) setTresure(char.treasure);
   }, [char]);
-
-  // useEffect(() => {
-  //   if (equipment) {
-  //     setNewItems({
-  //       armorsList: [equipment.armor],
-  //       shieldList: [equipment.shield],
-  //       weaponsList: [
-  //         equipment.weaponOne,
-  //         equipment.weaponTwo,
-  //         equipment.weaponThree,
-  //         equipment.weaponFour,
-  //         equipment.weaponFive
-  //       ],
-  //       wonderousItems: []
-  //     });
-  //   }
-  // }, [equipment]);
 
   const confirmItems = () => {
     axios.post(urlItemsBuy + charId, equipment);

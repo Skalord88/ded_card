@@ -1,4 +1,4 @@
-import { Armor, Enchantment, Shield, Weapon } from "../../interfaces";
+import { Armor, Enchantment, Shield, Weapon, WonderousItem } from "../../interfaces";
 
 export function SetEnchantemtOnItem(
   enchantment: Enchantment,
@@ -10,7 +10,13 @@ export function SetEnchantemtOnItem(
   };
 }
 
-export function EnchantedName(item: Armor | Shield | Weapon): string {
+export function FilterZeroEnchantment(
+  list: (Armor | Shield | Weapon)[]
+): (Armor | Shield | Weapon)[] {
+  return list.filter(item => item.enchantment && item.enchantment?.id === 0)
+}
+
+export function EnchantedName(item: Armor | Shield | Weapon ): string {
   let itemName: string = item.name;
   if (item) {
     if (item.enchantment) {

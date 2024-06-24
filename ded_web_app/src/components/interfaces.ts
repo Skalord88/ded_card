@@ -326,9 +326,10 @@ export type ArmorWeaponToBuy = {
 }
 
 export type ItemToBuy = {
-  item: Item,
-  items: Item[],
+  item: Armor | Shield | Weapon | WonderousItem,
+  items: Armor [] | Shield [] | Weapon [] | WonderousItem [],
   type: string,
+  text: string,
   buyItem: (
     newItem: Item,
     type: string) => void;
@@ -338,21 +339,10 @@ export type ItemToBuy = {
 }
 
 export type Rings = {
-  item: Item[],
-  items: Item[],
+  item: WonderousItem[],
+  items: WonderousItem[],
   type: string,
-  buyItem: (
-    newItem: Item,
-    type: string) => void;
-  sellItem: (
-    newItem: Item,
-    type: string) => void;
-}
-
-export type Backpack = {
-  item: Item[],
-  items: Item[],
-  type: string,
+  text: string,
   buyItem: (
     newItem: Item,
     type: string) => void;

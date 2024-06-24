@@ -1,4 +1,4 @@
-import { OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
+import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass } from "./interfaces"
 
 export function SignNumber(
@@ -324,9 +324,7 @@ export function SpellsFilter(
     if (pgClass === "WIZARD" || pgClass === "SORCERER") {
         return "SORCERER_WIZARD"
     }
-
     return pgClass;
-
 }
 
 export function AllSpell(
@@ -372,9 +370,10 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
     }
     if (text === "items") {
         let list: itemInDrop[] = options.map(
+            
             o => {
                 return {
-                    name: o.name,
+                    name: EnchantedName(o),
                     item: o as Armor | Shield | Weapon | WonderousItem
                 }
             }
@@ -387,6 +386,17 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
                 return {
                     name: OnlyEnchantedName(o.enchantment),
                     item: o as Enchantment
+                }
+            }
+        )
+        return list
+    }
+    if (text === "normal") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as WonderousItem
                 }
             }
         )

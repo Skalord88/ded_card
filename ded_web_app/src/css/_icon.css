@@ -23,6 +23,10 @@
     background-image: url('../img/icons/armor.png');
 }
 
+.rpgui-icon.backpack {
+    background-image: url('../img/icons/backpack.png');
+}
+
 .rpgui-icon.exclamation {
     background-image: url('../img/icons/exclamation.png');
 }
