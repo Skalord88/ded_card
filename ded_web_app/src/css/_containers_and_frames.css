@@ -12,6 +12,20 @@
 	overflow: show;
 }
 
+@media (max-width: 900px) {
+    .rpgui-container-framed {
+        font-size: 80%;
+		padding: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .rpgui-container-framed {
+        font-size: 50%;
+		padding: 2px;
+    }
+}
+
 /* game div with background image*/
 .rpgui-container-framed
 {

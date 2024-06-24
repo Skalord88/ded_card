@@ -27,7 +27,7 @@ body
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-    min-width: 740px;
+    /* min-width: 740px; */
     max-width: 900px;
     margin-top: 20px;
     margin-bottom: 20px;
