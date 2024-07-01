@@ -1,5 +1,5 @@
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
-import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass } from "./interfaces"
+import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -363,6 +363,17 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
                 return {
                     name: o.className,
                     item: o as ClassPc
+                }
+            }
+        )
+        return list
+    }
+    if (text === "race") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.raceName,
+                    item: o as subRaces
                 }
             }
         )

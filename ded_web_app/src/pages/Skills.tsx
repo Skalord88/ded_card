@@ -7,6 +7,7 @@ import { CharacterPc, serverSkill, SkillProps } from "../components/interfaces";
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
 import { CharSummary } from "../components/CharSummary";
+import { SkillsTableComponent } from "../components/Skills/SkillsTableComponent";
 
 export function Skills() {
   const { charId } = useParams();
@@ -14,8 +15,8 @@ export function Skills() {
   const [char, setChar] = useState<CharacterPc>();
   const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
-  const [maxSkillLv, setMaxSkillLv] = useState(0);
-  const [skills, setSkills] = useState<SkillProps[]>([]);
+  const [maxToSpentPoints, SetMaxToSpentPoints] = useState(0);
+  const [skills, setSkills] = useState<SkillProps[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,7 +25,7 @@ export function Skills() {
 
         setChar(resURL.data);
         setSkills(resURL.data.skillsList);
-        setMaxSkillLv(resURL.data.effectiveCharacterLv + 3);
+        SetMaxToSpentPoints(resURL.data.effectiveCharacterLv + 3);
         setMaxSkillsPoints(resURL.data.skillPoints);
       } catch (error) {
         console.log(error);
@@ -34,138 +35,155 @@ export function Skills() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    let totalSkillPoints = skills.reduce(
-      (total, skill) =>
-        skill.classSkill
-          ? total + skill.skillRank
-          : total + skill.skillRank * 2,
-      0
-    );
-    let totalStudyPoints = 0;
-    skills.forEach(
-      (skill) =>
-        (totalStudyPoints += skill.fieldOfStudy.reduce(
-          (total, study) => total + study.rank,
-          0
-        ))
-    );
+  // useEffect(() => {
+  //   let totalSkillPoints = skills?.reduce(
+  //     (total, skill) =>
+  //       skill.classSkill
+  //         ? total + skill.skillRank
+  //         : total + skill.skillRank * 2,
+  //     0
+  //   );
+  //   let totalStudyPoints = 0;
+  //   skills?.forEach(
+  //     (skill) =>
+  //       (totalStudyPoints += skill.fieldOfStudy.reduce(
+  //         (total, study) => total + study.rank,
+  //         0
+  //       ))
+  //   );
 
-    if (
-      totalSkillPoints + totalStudyPoints >= 0 ||
-      maxSkillsPoints < totalSkillPoints + totalStudyPoints
-    ) {
-      setActualSkillsPoints(
-        maxSkillsPoints - (totalSkillPoints + totalStudyPoints)
-      );
-    }
-  }, [maxSkillsPoints, skills]);
+  //   if (
+  //     totalSkillPoints? + totalStudyPoints >= 0 ||
+  //     maxSkillsPoints < totalSkillPoints + totalStudyPoints
+  //   ) {
+  //     setActualSkillsPoints(
+  //       maxSkillsPoints - (totalSkillPoints? + totalStudyPoints)
+  //     );
+  //   }
+  // }, [maxSkillsPoints, skills]);
 
-  const handleAddRank = (skillId: number, studyId: number) => {
-    if (studyId === -1) {
-      setSkills((updatedSkills) =>
-        updatedSkills.map((actualSkill) =>
-          actualSkillsPoints > 0
-            ? actualSkill.idSkill === skillId
-              ? actualSkill.classSkill && actualSkill.skillRank < maxSkillLv
-                ? { ...actualSkill, skillRank: actualSkill.skillRank++ }
-                : actualSkill.skillRank < maxSkillLv / 2
-                ? { ...actualSkill, skillRank: actualSkill.skillRank + 0.5 }
-                : actualSkill
-              : actualSkill
-            : actualSkill
-        )
-      );
-    } else {
-      setSkills((updatedSkills) =>
-        updatedSkills.map((actualSkill) =>
-          actualSkillsPoints > 0
-            ? actualSkill.idSkill === skillId
-              ? {
-                  ...actualSkill,
-                  fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
-                    study.idStudy === studyId && study.rank < maxSkillLv
-                      ? { ...study, rank: study.rank + 1 }
-                      : study
-                  )
-                }
-              : actualSkill
-            : actualSkill
-        )
-      );
-    }
-  };
+  // const handleAddRank = (skillId: number, studyId: number) => {
+  //   if (studyId === -1) {
+  //     setSkills((updatedSkills) =>
+  //       updatedSkills?.map((actualSkill) =>
+  //         actualSkillsPoints > 0
+  //           ? actualSkill.idSkill === skillId
+  //             ? actualSkill.classSkill && actualSkill.skillRank < maxSkillLv
+  //               ? { ...actualSkill, skillRank: actualSkill.skillRank++ }
+  //               : actualSkill.skillRank < maxSkillLv / 2
+  //               ? { ...actualSkill, skillRank: actualSkill.skillRank + 0.5 }
+  //               : actualSkill
+  //             : actualSkill
+  //           : actualSkill
+  //       )
+  //     );
+  //   } else {
+  //     setSkills((updatedSkills) =>
+  //       updatedSkills?.map((actualSkill) =>
+  //         actualSkillsPoints > 0
+  //           ? actualSkill.idSkill === skillId
+  //             ? {
+  //                 ...actualSkill,
+  //                 fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
+  //                   study.idStudy === studyId && study.rank < maxSkillLv
+  //                     ? { ...study, rank: study.rank + 1 }
+  //                     : study
+  //                 )
+  //               }
+  //             : actualSkill
+  //           : actualSkill
+  //       )
+  //     );
+  //   }
+  // };
 
-  const handleDelRank = (skillId: number, studyId: number) => {
-    if (studyId === -1) {
-      setSkills((updatedSkills) =>
-        updatedSkills.map((actualSkill) =>
-          actualSkill.skillRank > 0
-            ? actualSkill.idSkill === skillId
-              ? actualSkill.classSkill
-                ? { ...actualSkill, skillRank: actualSkill.skillRank - 1 }
-                : { ...actualSkill, skillRank: actualSkill.skillRank - 0.5 }
-              : actualSkill
-            : actualSkill
-        )
-      );
-    } else {
-      setSkills((updatedSkills) =>
-        updatedSkills.map((actualSkill) => {
-          if (actualSkill.idSkill === skillId) {
-            return {
-              ...actualSkill,
-              fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
-                study.idStudy === studyId && study.rank > 0
-                  ? { ...study, rank: study.rank - 1 }
-                  : study
-              )
-            };
-          }
-          return actualSkill;
-        })
-      );
-    }
-  };
+  // const handleDelRank = (skillId: number, studyId: number) => {
+  //   if (studyId === -1) {
+  //     setSkills((updatedSkills) =>
+  //       updatedSkills?.map((actualSkill) =>
+  //         actualSkill.skillRank > 0
+  //           ? actualSkill.idSkill === skillId
+  //             ? actualSkill.classSkill
+  //               ? { ...actualSkill, skillRank: actualSkill.skillRank - 1 }
+  //               : { ...actualSkill, skillRank: actualSkill.skillRank - 0.5 }
+  //             : actualSkill
+  //           : actualSkill
+  //       )
+  //     );
+  //   } else {
+  //     setSkills((updatedSkills) =>
+  //       updatedSkills?.map((actualSkill) => {
+  //         if (actualSkill.idSkill === skillId) {
+  //           return {
+  //             ...actualSkill,
+  //             fieldOfStudy: actualSkill.fieldOfStudy.map((study) =>
+  //               study.idStudy === studyId && study.rank > 0
+  //                 ? { ...study, rank: study.rank - 1 }
+  //                 : study
+  //             )
+  //           };
+  //         }
+  //         return actualSkill;
+  //       })
+  //     );
+  //   }
+  // };
 
-  const handleChange = () => {
-    let skillToSend: serverSkill = {
-      skillDTO: [],
-      skillRank: 0
-    };
+  // const handleChange = () => {
+  //   let skillToSend: serverSkill = {
+  //     skillDTO: [],
+  //     skillRank: 0
+  //   };
 
-    skills.forEach((skill) => {
-      skillToSend.skillDTO.push(skill);
-    });
+  //   skills?.forEach((skill) => {
+  //     skillToSend.skillDTO.push(skill);
+  //   });
 
-    skillToSend.skillRank = actualSkillsPoints;
+  //   skillToSend.skillRank = actualSkillsPoints;
 
-    try {
-      axios.post(urlSkillSet + charId, skillToSend);
-    } catch (error) {
-      console.log(error);
-    }
-    window.location.reload();
-  };
+  //   try {
+  //     axios.post(urlSkillSet + charId, skillToSend);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   window.location.reload();
+  // };
 
   return (
     <>
       <CharSummary character={char} />
       <div>
-        <p className="rpgui-container-framed-golden"
-        style={{ width: "fit-content"}}
-        >skills points:{" "}
-        {actualSkillsPoints + " / " + maxSkillsPoints + " / " + maxSkillLv}
-        
-        <div>
+        <p
+          className="rpgui-container-framed-golden"
+          style={{ width: "fit-content" }}
+        >
+          skills points:{" "}
+          {actualSkillsPoints +
+            " / " +
+            maxSkillsPoints +
+            " / " +
+            maxToSpentPoints}
+          {/* <div>
           <button className="rpgui-button" onClick={handleChange}><p>set Skills</p></button>
-        </div>
-        <button className="rpgui-button">
-          <Link to={"/feat/" + charId}>to feats</Link>
-        </button>
+        </div> */}
+          <button className="rpgui-button">
+            <Link to={"/feat/" + charId}>to feats</Link>
+          </button>
         </p>
       </div>
-      <div
+      {skills ? (
+        <p>
+          <SkillsTableComponent
+            skills={skills}
+            maxSkillsPoints={maxSkillsPoints}
+            maxToSpentPoints={maxToSpentPoints}
+          />
+        </p>
+      ) : (
+        <></>
+      )}
+
+      {/* <div
         className="grid-table-six rpgui-container-framed-golden"
         style={{ width: "80%" }}
       >
@@ -271,8 +289,8 @@ export function Skills() {
               )}
             </>
           );
-        })}
-      </div>
+        })} */}
+      {/* </div> */}
     </>
   );
 }

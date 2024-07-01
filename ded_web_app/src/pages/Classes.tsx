@@ -108,8 +108,6 @@ export const Classes = () => {
                 ) : (
                   <div
                     key={index}
-                    className="rpgui-container-framed-grey"
-                    style={{ width: "50%" }}
                   >
                     <p>
                       <button

@@ -33,6 +33,20 @@
     padding-right: 35px;
 }
 
+@media (max-width: 900px) {
+    .rpgui-button {
+        font-size: 80%;
+		padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .rpgui-button {
+        font-size: 65%;
+		padding: 6px;
+    }
+}
+
 /* button hover */
 .rpgui-button.hover,
 .rpgui-button:hover {

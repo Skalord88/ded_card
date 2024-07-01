@@ -15,14 +15,14 @@
 @media (max-width: 900px) {
     .rpgui-container-framed {
         font-size: 80%;
-		padding: 8px;
+		padding: 10px;
     }
 }
 
 @media (max-width: 600px) {
     .rpgui-container-framed {
-        font-size: 50%;
-		padding: 2px;
+        font-size: 65%;
+		padding: 6px;
     }
 }
 
@@ -33,7 +33,7 @@
 	border-style: solid;
 	border-image-source: url("../img/border-image.png");
 	border-image-repeat: repeat;
-	border-image-slice: 6 6 6 6;
+	border-image-slice: 10 10 10 10;
 	border-image-width: 18px;
 	border-width: 15px;
 	padding: 12px;
@@ -169,4 +169,29 @@
 
 	text-align: center;
 
+}
+
+.rpgui-container-framed-grey-mini
+{
+	position: relative;
+
+	/* border */
+	border-style: solid;
+	border-image-source: url("../img/border-image-grey.png");
+	border-image-repeat: repeat;
+	border-image-slice: 2 2 2 2;
+	border-image-width: 4px;
+	border-width: 4px;
+	padding: 4px;
+
+	/* internal border */
+	box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+
+	/* background */
+	background: url("../img/background-image-grey.png") repeat repeat;
+	background-clip: padding-box;
+	background-origin: padding-box;
+	background-position: center;
 }

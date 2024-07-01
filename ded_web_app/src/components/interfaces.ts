@@ -52,7 +52,7 @@ export type Monster = {
 }
 
 export type MonsterAttack = {
-  attack: number[], weapon: string, damage:string, critic: string
+  attack: number[], weapon: string, damage: string, critic: string
 }
 
 export type MonsterClass = {
@@ -146,6 +146,18 @@ export type SkillProps = {
 
 }
 
+export type OneSkill = {
+  skill: SkillProps
+}
+
+export type OneSkillProps = {
+  skill: SkillProps
+  maxSkillsPoints: number
+  spentSkillPnts: number
+  maxToSpentPoints: number
+  updateRank: (newRank: SkillProps) => void;
+}
+
 export type Study = {
   idStudy: number,
   idSkill: number,
@@ -153,9 +165,22 @@ export type Study = {
   rank: number,
 }
 
+export type OneStudy = {
+  study: Study
+  skillAbility: number
+  skillBonus: number
+}
+
 export type AddStudy = {
   idSkill: number,
   study: string
+}
+
+export type OneStudyProps = {
+  study: Study
+  skillAbility: number
+  skillBonus: number
+  updateRank: (newRank: number) => void;
 }
 
 export type MapOfSkills = {
@@ -327,7 +352,7 @@ export type ArmorWeaponToBuy = {
 
 export type ItemToBuy = {
   item: Armor | Shield | Weapon | WonderousItem,
-  items: Armor [] | Shield [] | Weapon [] | WonderousItem [],
+  items: Armor[] | Shield[] | Weapon[] | WonderousItem[],
   type: string,
   text: string,
   buyItem: (
