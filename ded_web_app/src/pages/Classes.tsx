@@ -102,6 +102,9 @@ export const Classes = () => {
         >
           {char?.classPcList ? (
             <>
+
+              <DropdownComponent options={addToDrop(classesList, "class")} onAction={handleOption}/>
+
               {char.classPcList.map((c: ClassPc, index: number) => {
                 return c.level === 0 ? (
                   <div></div>
