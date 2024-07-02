@@ -14,6 +14,12 @@ export type SkillsTableProps = {
   maxToSpentPoints: number;
 };
 
+export interface newSkillRank {
+  index: number,
+  indexStudy: number,
+  newRank: number
+}
+
 export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
   skills,
   maxSkillsPoints,
@@ -22,11 +28,17 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
   const [skillsTable, setSkillsTable] = useState<SkillProps[]>(skills);
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
 
-  const updateRank = (index: number, newRank: SkillProps) => {
+  const updateRank = (newSkillRank: newSkillRank) => {
     setSkillsTable((prevSkills) => {
+      if(newSkillRank.indexStudy !== null){
       const updatedSkills = [...prevSkills];
-      updatedSkills[index] = newRank;
-      return updatedSkills;
+      updatedSkills[index] = newSkillRank.newRank;
+      return updatedSkills;}
+      else {
+        const updatedSkills = [...prevSkills];
+        updatedSkills[index].fieldOfStudy[indexStudy].rank = newSkillRank.newRank
+        return updatedSkills;
+      }
     });
   };
 
@@ -86,11 +98,12 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
                 <>
                   <SkillSkillsTableComponent
                     key={index}
+                    skillIndex={index}
                     skill={skill}
                     maxSkillsPoints={maxSkillsPoints}
                     maxToSpentPoints={maxToSpentPoints}
                     spentSkillPnts={spentSkillPnts}
-                    updateRank={(newSkill: SkillProps) => updateRank(index, newSkill)}
+                    updateRank={(newSkillRank: newSkillRank) => updateRank(newSkillRank)}
                   />
                 </>
               );
@@ -105,33 +118,34 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
 };
 
 export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
+  skillIndex,
   skill,
   maxSkillsPoints,
   spentSkillPnts,
   maxToSpentPoints,
   updateRank
 }) => {
-  const [oneSkill, setOneSkill] = useState<SkillProps>(skill)
-  const updateRankStudy = (index: number, newRank: number) => {
-    setOneSkill((prevSkill) => {
-      const updatedSkills = prevSkill;
-      updatedSkills.fieldOfStudy[index].rank = newRank;
-      return updatedSkills;
-    });
-  };
+  // const [oneSkill, setOneSkill] = useState<SkillProps>(skill)
+  // const updateRankStudy = (index: number, newRank: number) => {
+  //   setOneSkill((prevSkill) => {
+  //     const updatedSkills = prevSkill;
+  //     updatedSkills.fieldOfStudy[index].rank = newRank;
+  //     return updatedSkills;
+  //   });
+  // };
   return (
     <>
       {skill.fieldOfStudy.length > 0 ? (
         <>
           <ClassSkillSkillsTableComponent skill={skill} />
           <div className="rpgui-container-framed-grey-mini">
-            {oneSkill.nameSkill}
+            {skill.nameSkill}
           </div>
           <div></div>
           <div></div>
           <div></div>
           <div></div>
-          {oneSkill.fieldOfStudy.map((study: Study, index: number) => {
+          {skill.fieldOfStudy.map((study: Study, index: number) => {
             return (
               <>
                 <div></div>
@@ -139,16 +153,20 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                   {study.study}
                 </div>
                 <StudyTotSkillsTableComponent
+                  key={index}
+                  skillIndex={skillIndex}
                   study={study}
                   skillAbility={skill.skillAbility}
                   skillBonus={skill.skillBonus}
-                  updateRank={(newRank: number) => updateRankStudy(index, newRank)}
+                  updateRank={(newSkillRank: newSkillRank) => updateRank(skillIndex, index, newSkillRank)}
                 />
                 <StudyRnkSkillsTableComponent
+                  key={index}
                   study={study}
+                  skillIndex={skillIndex}
                   skillAbility={skill.skillAbility}
                   skillBonus={skill.skillBonus}
-                  updateRank={(newRank: number) => updateRankStudy(index, newRank)}
+                  updateRank={(newSkillRank: newSkillRank) => updateRank(skillIndex, index, newSkillRank)}
                 />
                 <StudyAbiSkillsTableComponent
                   study={study}
@@ -175,14 +193,14 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
             maxSkillsPoints={maxSkillsPoints}
             maxToSpentPoints={maxToSpentPoints}
             spentSkillPnts={spentSkillPnts}
-            updateRank={updateRank}
+            updateRank={(newSkillRank: newSkillRank) => updateRank(skillIndex, null, newSkillRank)}
           />
           <SkillRnkSkillsTableComponent
             skill={skill}
             maxSkillsPoints={maxSkillsPoints}
             maxToSpentPoints={maxToSpentPoints}
             spentSkillPnts={spentSkillPnts}
-            updateRank={updateRank}
+            updateRank={(newSkillRank: newSkillRank) => updateRank(skillIndex, null, newSkillRank)}
           />
           <SkillAbiSkillsTableComponent skill={skill} />
           <SkillBnsSkillsTableComponent skill={skill} />
@@ -212,6 +230,7 @@ export const ClassSkillSkillsTableComponent: React.FC<OneSkill> = ({
 };
 
 export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
+  skillIndex,
   skill,
   updateRank
 }) => {
@@ -223,14 +242,14 @@ export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
 
   const minRank = () => {
     if (rank - 1 >= 0 || rank - 0.5 >= 0) {
-      setRank((prevRank) => {
+      updateRank((prevRank) => {
         if (skill.classSkill) {
           const newRank = prevRank - 1;
-          updateRank(newRank);
+          updateRank(skillIndex, null, newRank);
           return newRank;
         } else {
           const newRank = prevRank - 0.5;
-          updateRank(newRank);
+          updateRank(skillIndex, null, newRank);
           return newRank;
         }
       });
@@ -243,12 +262,13 @@ export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
       className="rpgui-container-framed-grey-mini"
       style={{ color: "orange" }}
     >
-      {skill.skillRank + skill.skillAbility + skill.skillBonus}
+      {rank + skill.skillAbility + skill.skillBonus}
     </div>
   );
 };
 
 export const SkillRnkSkillsTableComponent: React.FC<OneSkillProps> = ({
+  skillIndex,
   skill,
   spentSkillPnts,
   maxToSpentPoints,
@@ -264,11 +284,11 @@ export const SkillRnkSkillsTableComponent: React.FC<OneSkillProps> = ({
         setRank((prevRank) => {
           if (skill.classSkill) {
             const newRank = prevRank + 1;
-            updateRank(newRank);
+            updateRank(skillIndex, null, newRank);
             return newRank;
           } else {
             const newRank = prevRank + 0.5;
-            updateRank(newRank);
+            updateRank(skillIndex, null, newRank);
             return newRank;
           }
         });
@@ -311,16 +331,22 @@ export const SkillBnsSkillsTableComponent: React.FC<OneSkill> = ({ skill }) => {
 };
 
 export const StudyTotSkillsTableComponent: React.FC<OneStudyProps> = ({
+  skillIndex,
   study,
+
   skillAbility,
   skillBonus,
+
+  spentSkillPnts,
+  maxToSpentPoints,
+  maxSkillsPoints,
   updateRank
 }) => {
   const [rank, setRank] = useState<number>(study.rank);
   const minRank = () => {
     setRank((prevRank) => {
       const newRank = prevRank - 1;
-      updateRank(newRank);
+      updateRank(skillIndex, newRank);
       return newRank;
     });
   };
@@ -336,17 +362,26 @@ export const StudyTotSkillsTableComponent: React.FC<OneStudyProps> = ({
 };
 
 export const StudyRnkSkillsTableComponent: React.FC<OneStudyProps> = ({
+  skillIndex,
   study,
+  spentSkillPnts,
+  maxToSpentPoints,
+  maxSkillsPoints,
   updateRank
 }) => {
   const [rank, setRank] = useState<number>(study.rank);
 
   const addRank = () => {
-    setRank((prevRank) => {
-      const newRank = prevRank + 1;
-      updateRank(newRank);
-      return newRank;
-    });
+    if (spentSkillPnts !== maxSkillsPoints)
+      if (rank + 1 <= maxToSpentPoints) {
+        setRank((prevRank) => {
+
+            const newRank = prevRank + 1;
+            updateRank(skillIndex, newRank);
+            return newRank;
+
+        });
+      }
   };
 
   return (

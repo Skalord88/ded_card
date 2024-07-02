@@ -151,6 +151,7 @@ export type OneSkill = {
 }
 
 export type OneSkillProps = {
+  skillIndex: number
   skill: SkillProps
   maxSkillsPoints: number
   spentSkillPnts: number
@@ -177,6 +178,7 @@ export type AddStudy = {
 }
 
 export type OneStudyProps = {
+  skillIndex: number
   study: Study
   skillAbility: number
   skillBonus: number
