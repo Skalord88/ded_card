@@ -151,6 +151,7 @@ export type OneSkill = {
 }
 
 export type OneSkillProps = {
+  skillIndex: number
   skill: SkillProps
   maxSkillsPoints: number
   spentSkillPnts: number
