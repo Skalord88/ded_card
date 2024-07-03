@@ -180,6 +180,9 @@ export type OneStudyProps = {
   study: Study
   skillAbility: number
   skillBonus: number
+  maxSkillsPoints: number
+  spentSkillPnts: number
+  maxToSpentPoints: number
   updateRank: (newRank: number) => void;
 }
 

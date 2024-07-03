@@ -11,6 +11,8 @@ import {
   urlClassSell
 } from "../components/url";
 import { DropdownClass } from "../components/ClassPc/DropdownClass";
+import { DropdownComponent } from "../components/DropDown/DropDown";
+import { addToDrop } from "../components/functions";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -103,7 +105,7 @@ export const Classes = () => {
           {char?.classPcList ? (
             <>
 
-              <DropdownComponent options={addToDrop(classesList, "class")} onAction={handleOption}/>
+              {/* <DropdownComponent options={addToDrop(classesList, "class")} onAction={handleOption}/> */}
 
               {char.classPcList.map((c: ClassPc, index: number) => {
                 return c.level === 0 ? (
