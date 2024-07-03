@@ -1,12 +1,22 @@
-import {
-  OneSkill,
-  OneSkillProps,
-  OneStudy,
-  OneStudyProps,
-  SkillProps,
-  Study
-} from "../interfaces";
 import { useEffect, useState } from "react";
+import {
+  OneSkillProps,
+  SkillProps,
+  Study,
+  serverSkill
+} from "../interfaces";
+import { StudyTotSkillsTableComponent } from "./Study/StudyTotSkillsTableComponent";
+import { ClassSkillSkillsTableComponent } from "./ClassSkillSkillsTableComponent";
+import { SkillTotSkillsTableComponent } from "./SkillTotSkillsTableComponent";
+import { SkillRnkSkillsTableComponent } from "./SkillRnkSkillsTableComponent";
+import { SkillAbiSkillsTableComponent } from "./SkillAbiSkillsTableComponent";
+import { SkillBnsSkillsTableComponent } from "./SkillBnsSkillsTableComponent";
+import { StudyRnkSkillsTableComponent } from "./Study/StudyRnkSkillsTableComponent";
+import { StudyAbiSkillsTableComponent } from "./Study/StudyAbiSkillsTableComponent";
+import { StudyBnsSkillsTableComponent } from "./Study/StudyBnsSkillsTableComponent";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { urlSkillSet } from "../url";
 
 export type SkillsTableProps = {
   skills: SkillProps[];
@@ -19,52 +29,89 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
   maxSkillsPoints,
   maxToSpentPoints
 }) => {
+  const { charId } = useParams();
   const [skillsTable, setSkillsTable] = useState<SkillProps[]>(skills);
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
 
-  const updateRank = (index: number, newRank: SkillProps) => {
+  const updateRank = (
+    indexSkill: number,
+    indexStudy: number | null,
+    newRank: number
+  ) => {
     setSkillsTable((prevSkills) => {
       const updatedSkills = [...prevSkills];
 
-      if (updatedSkills[index].fieldOfStudy.length === 0) {
-        updatedSkills[index] = newRank;
+      if (indexStudy === null) {
+        updatedSkills[indexSkill].skillRank = newRank;
       } else {
-        const totalRank = updatedSkills[index].fieldOfStudy.reduce(
-          (total, study) => {
-            return total + study.rank;
-          },
-          0
-        );
+        updatedSkills[indexSkill].fieldOfStudy[indexStudy].rank = newRank;
       }
-
       return updatedSkills;
     });
   };
 
   useEffect(() => {
-    let tot = skillsTable?.reduce(
-      (total, skill) =>
-        skill.classSkill
-          ? total + skill.skillRank
-          : total + skill.skillRank * 2,
-      0
-    );
-
-    tot = skillsTable?.reduce((total, skill) => {
-      if (skill.fieldOfStudy.length > 0)
+    const tot = skillsTable.reduce((total, skill) => {
+      let skillTotal = skill.classSkill
+        ? skill.skillRank
+        : skill.skillRank * 2;
+      if (skill.fieldOfStudy.length > 0) {
         skill.fieldOfStudy.forEach((study) => {
-          total += study.rank;
+          skillTotal += study.rank;
         });
-      return total;
+      }
+      return total + skillTotal;
     }, 0);
 
     setSpentSkillPnts(tot);
   }, [skillsTable]);
 
+  const handleChange = () => {
+      interface skillDTO {
+        idSkill: number
+        skillRank: number
+        fieldOfStudy: {
+          idStudy: number
+          idSkill: number
+          rank: number
+        }[]
+      };
+  
+      const skillsToAdd: skillDTO[] = skills?.map((skill) => {
+        if (skill.fieldOfStudy.length > 0)
+        return {
+          idSkill: skill.idSkill,
+          skillRank: 0,
+          fieldOfStudy: skill.fieldOfStudy.map(
+            (st) => ({
+              idStudy: st.idStudy, idSkill: skill.idSkill, rank: st.rank
+            })
+          )
+        }
+        else {
+          return {
+          idSkill: skill.idSkill,
+          skillRank: skill.skillRank,
+          fieldOfStudy: []}
+        }
+      });
+
+      console.log(skillsToAdd)
+  
+      try {
+        axios.post(urlSkillSet + charId, skillsToAdd);
+      } catch (error) {
+        console.log(error);
+      }
+      window.location.reload();
+    };
+
   return (
     <>
-      <div>
-        {maxSkillsPoints} pnts / {spentSkillPnts} spent
+      <div className="rpgui-container-framed-golden">
+        {spentSkillPnts} spent / {maxSkillsPoints} toSpent / {maxToSpentPoints} maxRank
+        <button className="rpgui-button" onClick={handleChange}><p>confirm</p></button>
+        <button className="rpgui-button"><p>to Feats</p></button>
       </div>
       <div
         style={{
@@ -97,13 +144,14 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
                 <>
                   <SkillSkillsTableComponent
                     key={index}
+                    indexSkill={index}
                     skill={skill}
+                    indexStudy={null}
+                    study={null}
                     maxSkillsPoints={maxSkillsPoints}
-                    maxToSpentPoints={maxToSpentPoints}
                     spentSkillPnts={spentSkillPnts}
-                    updateRank={(newSkill: SkillProps) =>
-                      updateRank(index, newSkill)
-                    }
+                    maxToSpentPoints={maxToSpentPoints}
+                    updateRank={updateRank}
                   />
                 </>
               );
@@ -118,293 +166,117 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
 };
 
 export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
+  indexSkill,
   skill,
   maxSkillsPoints,
   spentSkillPnts,
   maxToSpentPoints,
   updateRank
 }) => {
-  const [oneSkill, setOneSkill] = useState<SkillProps>(skill);
-  const updateRankStudy = (index: number, newRank: number) => {
-    setOneSkill((prevSkill) => {
-      const updatedSkills = prevSkill;
-      updatedSkills.fieldOfStudy[index].rank = newRank;
-      return updatedSkills;
-    });
-  };
   return (
     <>
-      {skill.fieldOfStudy.length > 0 ? (
+      {skill !== null ? (
         <>
-          <ClassSkillSkillsTableComponent skill={skill} />
-          <div className="rpgui-container-framed-grey-mini">
-            {oneSkill.nameSkill}
-          </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          {oneSkill.fieldOfStudy.map((study: Study, index: number) => {
-            return (
-              <>
-                <div></div>
-                <div className="rpgui-container-framed-grey-mini">
-                  {study.study}
-                </div>
-                <StudyTotSkillsTableComponent
-                  study={study}
-                  skillAbility={skill.skillAbility}
-                  skillBonus={skill.skillBonus}
-                  maxSkillsPoints={maxSkillsPoints}
-                  spentSkillPnts={spentSkillPnts}
-                  maxToSpentPoints={maxToSpentPoints}
-                  updateRank={(newRank: number) =>
-                    updateRankStudy(index, newRank)
-                  }
-                />
-                <StudyRnkSkillsTableComponent
-                  study={study}
-                  skillAbility={skill.skillAbility}
-                  skillBonus={skill.skillBonus}
-                  maxSkillsPoints={maxSkillsPoints}
-                  spentSkillPnts={spentSkillPnts}
-                  maxToSpentPoints={maxToSpentPoints}
-                  updateRank={(newRank: number) =>
-                    updateRankStudy(index, newRank)
-                  }
-                />
-                <StudyAbiSkillsTableComponent
-                  study={study}
-                  skillAbility={skill.skillAbility}
-                  skillBonus={skill.skillBonus}
-                />
-                <StudyBnsSkillsTableComponent
-                  study={study}
-                  skillAbility={skill.skillAbility}
-                  skillBonus={skill.skillBonus}
-                />
-              </>
-            );
-          })}
+          {skill.fieldOfStudy.length > 0 ? (
+            <>
+              <ClassSkillSkillsTableComponent skill={skill} />
+              <div className="rpgui-container-framed-grey-mini">
+                {skill.nameSkill}
+              </div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              {skill.fieldOfStudy.map((study: Study, index: number) => {
+                return (
+                  <>
+                    <div></div>
+                    <div className="rpgui-container-framed-grey-mini">
+                      {study.study}
+                    </div>
+                    <StudyTotSkillsTableComponent
+                      key={indexSkill + "." + index + " Tot"}
+                      indexSkill={indexSkill}
+                      skill={skill}
+                      indexStudy={index}
+                      study={study}
+                      maxSkillsPoints={maxSkillsPoints}
+                      spentSkillPnts={spentSkillPnts}
+                      maxToSpentPoints={maxToSpentPoints}
+                      updateRank={updateRank}
+                    />
+                    <StudyRnkSkillsTableComponent
+                      key={indexSkill + "." + index + " Rnk"}
+                      indexSkill={indexSkill}
+                      skill={skill}
+                      indexStudy={index}
+                      study={study}
+                      maxSkillsPoints={maxSkillsPoints}
+                      spentSkillPnts={spentSkillPnts}
+                      maxToSpentPoints={maxToSpentPoints}
+                      updateRank={updateRank}
+                    />
+                    <StudyAbiSkillsTableComponent
+                      key={indexSkill + "." + index + " Abi"}
+                      study={study}
+                      skillAbility={skill.skillAbility}
+                      skillBonus={skill.skillBonus}
+                    />
+                    <StudyBnsSkillsTableComponent
+                      key={indexSkill + "." + index + " Bns"}
+                      study={study}
+                      skillAbility={skill.skillAbility}
+                      skillBonus={skill.skillBonus}
+                    />
+                  </>
+                );
+              })}
+            </>
+          ) : (
+            <>
+              <ClassSkillSkillsTableComponent
+                key={indexSkill + " cs"}
+                skill={skill}
+              />
+              <div className="rpgui-container-framed-grey-mini">
+                {skill.nameSkill}
+              </div>
+              <SkillTotSkillsTableComponent
+                key={indexSkill + " Tot"}
+                indexSkill={indexSkill}
+                skill={skill}
+                indexStudy={null}
+                study={null}
+                maxSkillsPoints={maxSkillsPoints}
+                maxToSpentPoints={maxToSpentPoints}
+                spentSkillPnts={spentSkillPnts}
+                updateRank={updateRank}
+              />
+              <SkillRnkSkillsTableComponent
+                key={indexSkill + " Rnk"}
+                indexSkill={indexSkill}
+                skill={skill}
+                indexStudy={null}
+                study={null}
+                maxSkillsPoints={maxSkillsPoints}
+                maxToSpentPoints={maxToSpentPoints}
+                spentSkillPnts={spentSkillPnts}
+                updateRank={updateRank}
+              />
+              <SkillAbiSkillsTableComponent
+                key={indexSkill + " Abi"}
+                skill={skill}
+              />
+              <SkillBnsSkillsTableComponent
+                key={indexSkill + " Bns"}
+                skill={skill}
+              />
+            </>
+          )}
         </>
       ) : (
-        <>
-          <ClassSkillSkillsTableComponent skill={skill} />
-          <div className="rpgui-container-framed-grey-mini">
-            {skill.nameSkill}
-          </div>
-          <SkillTotSkillsTableComponent
-            skill={skill}
-            maxSkillsPoints={maxSkillsPoints}
-            maxToSpentPoints={maxToSpentPoints}
-            spentSkillPnts={spentSkillPnts}
-            updateRank={updateRank}
-          />
-          <SkillRnkSkillsTableComponent
-            skill={skill}
-            maxSkillsPoints={maxSkillsPoints}
-            maxToSpentPoints={maxToSpentPoints}
-            spentSkillPnts={spentSkillPnts}
-            updateRank={updateRank}
-          />
-          <SkillAbiSkillsTableComponent skill={skill} />
-          <SkillBnsSkillsTableComponent skill={skill} />
-        </>
+        <></>
       )}
     </>
   );
-};
-
-export const ClassSkillSkillsTableComponent: React.FC<OneSkill> = ({
-  skill
-}) => {
-  return (
-    <>
-      {skill.classSkill ? (
-        <div key={skill.idSkill} className="rpgui-container-framed-grey-mini">
-          {">"}
-        </div>
-      ) : (
-        <div
-          key={skill.idSkill}
-          className="rpgui-container-framed-grey-mini"
-        ></div>
-      )}
-    </>
-  );
-};
-
-export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
-  skill,
-  updateRank
-}) => {
-  const [oneSkill, setSkill] = useState<SkillProps>(skill);
-
-  useEffect(() => {
-    setSkill(skill);
-  }, [skill]);
-
-  const minRank = () => {
-    setSkill((prevSkill) => {
-      let newRank = prevSkill.skillRank;
-
-      if (prevSkill.skillRank - 1 >= 0 && skill.classSkill) {
-        newRank -= 1;
-      } else if (prevSkill.skillRank - 0.5 >= 0) {
-        newRank -= 0.5;
-      }
-
-      if (newRank !== prevSkill.skillRank) {
-        const updatedSkill = { ...prevSkill, skillRank: newRank };
-        updateRank(updatedSkill);
-      }
-
-      return prevSkill;
-    });
-  };
-
-  return (
-    <div
-      onClick={minRank}
-      className="rpgui-container-framed-grey-mini"
-      style={{ color: "orange" }}
-    >
-      {oneSkill.skillRank + skill.skillAbility + skill.skillBonus}
-    </div>
-  );
-};
-
-export const SkillRnkSkillsTableComponent: React.FC<OneSkillProps> = ({
-  skill,
-  spentSkillPnts,
-  maxToSpentPoints,
-  maxSkillsPoints,
-  updateRank
-}) => {
-  const [oneSkill, setSkill] = useState<SkillProps>(skill);
-
-  const addRank = () => {
-    if (spentSkillPnts !== maxSkillsPoints) {
-      if (
-        oneSkill.skillRank + 1 <= maxToSpentPoints ||
-        oneSkill.skillRank + 0.5 <= maxToSpentPoints
-      ) {
-        setSkill((prevSkill) => {
-          let newRank;
-          if (prevSkill.classSkill) {
-            newRank = prevSkill.skillRank + 1;
-          } else {
-            newRank = prevSkill.skillRank + 0.5;
-          }
-
-          const updatedSkill = { ...prevSkill, skillRank: newRank };
-          updateRank(updatedSkill);
-          return updatedSkill;
-        });
-      }
-    }
-  };
-
-  useEffect(() => {
-    setSkill(oneSkill);
-  }, [oneSkill]);
-
-  return (
-    <>
-      <div
-        onClick={addRank}
-        className="rpgui-container-framed-grey-mini"
-        style={{ color: "yellow" }}
-      >
-        {oneSkill.skillRank}
-      </div>
-    </>
-  );
-};
-
-export const SkillAbiSkillsTableComponent: React.FC<OneSkill> = ({ skill }) => {
-  return (
-    <>
-      <div className="rpgui-container-framed-grey-mini">
-        {skill.skillAbility}
-      </div>
-    </>
-  );
-};
-
-export const SkillBnsSkillsTableComponent: React.FC<OneSkill> = ({ skill }) => {
-  return (
-    <>
-      <div className="rpgui-container-framed-grey-mini">{skill.skillBonus}</div>
-    </>
-  );
-};
-
-export const StudyTotSkillsTableComponent: React.FC<OneStudyProps> = ({
-  study,
-  skillAbility,
-  skillBonus,
-  maxSkillsPoints,
-  spentSkillPnts,
-  maxToSpentPoints,
-  updateRank
-}) => {
-  const [oneStudy, setStudy] = useState<Study>(study);
-  const minRank = () => {
-    setStudy((prevStudy) => {
-      let newRank = prevStudy.rank
-
-      if(maxSkillsPoints < 0 && spentSkillPnts <= prevStudy.rank && maxToSpentPoints !== 0)
-        newRank += 1;
-      const updatedStudy = {...prevStudy, rank: newRank}
-      updateRank(newRank);
-      return prevStudy;
-    });
-  };
-  return (
-    <div
-      className="rpgui-container-framed-grey-mini"
-      style={{ color: "orange" }}
-      onClick={minRank}
-    >
-      {oneStudy.rank + skillAbility + skillBonus}
-    </div>
-  );
-};
-
-export const StudyRnkSkillsTableComponent: React.FC<OneStudyProps> = ({
-  study,
-  updateRank
-}) => {
-  const [rank, setRank] = useState<number>(study.rank);
-
-  const addRank = () => {
-    setRank((prevRank) => {
-      const newRank = prevRank + 1;
-      updateRank(newRank);
-      return newRank;
-    });
-  };
-
-  return (
-    <div
-      className="rpgui-container-framed-grey-mini"
-      style={{ color: "yellow" }}
-      onClick={addRank}
-    >
-      {rank}
-    </div>
-  );
-};
-
-export const StudyAbiSkillsTableComponent: React.FC<OneStudy> = ({
-  skillAbility
-}) => {
-  return <div className="rpgui-container-framed-grey-mini">{skillAbility}</div>;
-};
-
-export const StudyBnsSkillsTableComponent: React.FC<OneStudy> = ({
-  skillBonus
-}) => {
-  return <div className="rpgui-container-framed-grey-mini">{skillBonus}</div>;
 };

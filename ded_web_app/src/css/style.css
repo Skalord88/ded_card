@@ -32,7 +32,7 @@ body
     margin-bottom: 20px;
 }
 
-.grid-table-six {
+/* .grid-table-six {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     color: white;
@@ -48,4 +48,4 @@ body
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	font-size: 1.0em;
 	line-height: 22px;
-}
+} */

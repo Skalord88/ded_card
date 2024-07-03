@@ -151,12 +151,14 @@ export type OneSkill = {
 }
 
 export type OneSkillProps = {
-  skillIndex: number
+  indexSkill: number
   skill: SkillProps
+  indexStudy: number | null
+  study: Study | null
   maxSkillsPoints: number
   spentSkillPnts: number
   maxToSpentPoints: number
-  updateRank: (newRank: SkillProps) => void;
+  updateRank: (indexSkill: number, indexStudy: number | null, newRank: number) => void;
 }
 
 export type Study = {
@@ -177,15 +179,15 @@ export type AddStudy = {
   study: string
 }
 
-export type OneStudyProps = {
-  study: Study
-  skillAbility: number
-  skillBonus: number
-  maxSkillsPoints: number
-  spentSkillPnts: number
-  maxToSpentPoints: number
-  updateRank: (newRank: number) => void;
-}
+// export type OneStudyProps = {
+//   study: Study
+//   skillAbility: number
+//   skillBonus: number
+//   maxSkillsPoints: number
+//   spentSkillPnts: number
+//   maxToSpentPoints: number
+//   updateRank: (newRank: number) => void;
+// }
 
 export type MapOfSkills = {
   skills: SkillProps[];

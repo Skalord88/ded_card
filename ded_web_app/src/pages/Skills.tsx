@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import axios from "axios";
-import { CharacterPc, serverSkill, SkillProps } from "../components/interfaces";
+import { CharacterPc, SkillProps } from "../components/interfaces";
 
-import { urlChar, urlSkillSet } from "../components/url";
+import { urlChar } from "../components/url";
 import "../css/style.css";
 import { CharSummary } from "../components/CharSummary";
 import { SkillsTableComponent } from "../components/Skills/SkillsTableComponent";
@@ -13,7 +13,6 @@ export function Skills() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [actualSkillsPoints, setActualSkillsPoints] = useState(0);
   const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
   const [maxToSpentPoints, SetMaxToSpentPoints] = useState(0);
   const [skills, setSkills] = useState<SkillProps[]>();
@@ -152,28 +151,11 @@ export function Skills() {
   return (
     <>
       <CharSummary character={char} />
-      <div>
-        <p
-          className="rpgui-container-framed-golden"
-          style={{ width: "fit-content" }}
-        >
-          skills points:{" "}
-          {actualSkillsPoints +
-            " / " +
-            maxSkillsPoints +
-            " / " +
-            maxToSpentPoints}
-          {/* <div>
-          <button className="rpgui-button" onClick={handleChange}><p>set Skills</p></button>
-        </div> */}
-          <button className="rpgui-button">
-            <Link to={"/feat/" + charId}>to feats</Link>
-          </button>
-        </p>
-      </div>
+      
       {skills ? (
         <p>
           <SkillsTableComponent
+            key={"skillsTable"}
             skills={skills}
             maxSkillsPoints={maxSkillsPoints}
             maxToSpentPoints={maxToSpentPoints}
