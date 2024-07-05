@@ -706,8 +706,6 @@ public class Character {
   }
 
   public void buySkills(SkillToAddDTO skillsToAddDTO) {
-    // this.skillPoints = skillsToAddDTO.skillPoints;
-
     skillsToAddDTO.skillDTO.forEach(skillDTO -> {
       this.classSkills.forEach(skill -> {
           if (skillDTO.fieldOfStudy.size() > 0) {
