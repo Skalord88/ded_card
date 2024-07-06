@@ -13,7 +13,7 @@ import { SkillBnsSkillsTableComponent } from "./SkillBnsSkillsTableComponent";
 import { StudyRnkSkillsTableComponent } from "./Study/StudyRnkSkillsTableComponent";
 import { StudyAbiSkillsTableComponent } from "./Study/StudyAbiSkillsTableComponent";
 import { StudyBnsSkillsTableComponent } from "./Study/StudyBnsSkillsTableComponent";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { urlSkillSet } from "../url";
 import { SkillDTO } from "./interface/SkillsInterface";
@@ -105,7 +105,9 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
       <div className="rpgui-container-framed-golden">
         {spentSkillPnts} spent / {maxSkillsPoints} toSpent / {maxToSpentPoints} maxRank
         <button className="rpgui-button" onClick={handleChange}><p>confirm</p></button>
-        <button className="rpgui-button"><p>to Feats</p></button>
+        <Link to={"/feat/" + charId}>
+          <button className="rpgui-button"><p>to Feats</p></button>
+        </Link>
       </div>
       <div
         style={{
