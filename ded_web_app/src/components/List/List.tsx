@@ -26,12 +26,12 @@ export const ListOfSomething: React.FC<ListProps> = ({
             <p>{text}</p>
             <div
              className="rpgui-list-imp" 
-             style={{ height: "auto", maxHeight: 100, fontSize:"75%"
+             style={{ height: "auto", maxHeight: 100, fontSize:"60%"
             }}>
-              {items.map((i) => {
+              {items.map((i, index) => {
                 return (
-                  <li key={i.id} onClick={() => handleSelect({item: i, name: text})}>
-                    {EnchantedName(i)} {i.subRacesName}
+                  <li key={index} onClick={() => handleSelect({item: i, name: text})}>
+                    {EnchantedName(i)} {i.subRacesName} {i.featName} {i.characterFeatName}
                   </li>
                 );
               })}

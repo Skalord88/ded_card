@@ -1,3 +1,5 @@
+import { feat } from "./Feats/Interface/FeatInterface";
+
 export type CharacterPc = {
   id: number;
   characterName: string;
@@ -210,30 +212,6 @@ export type MapUpdateSkills = {
 export interface skillToServer {
   skillDTO: SkillProps[];
   skillPoints: number;
-}
-
-export interface feat {
-  characterFeatName: string;
-  characterFeatSpecial: string;
-  characterFeatDescription: string;
-}
-
-export interface serverFeat {
-  id: number;
-  featName: string;
-  featsType: string;
-  prerequisite: Prerequisite;
-  description: string;
-}
-
-export type Prerequisite = {
-  ability: Abilitys;
-  armorClass: armorClass;
-  bab: number;
-  classSkills: object;
-  feats: string[];
-  race: string;
-  savingThrow: savingThrows;
 }
 
 export type FeatsId = {

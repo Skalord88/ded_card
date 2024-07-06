@@ -1,5 +1,6 @@
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
-import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces"
+import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
+import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces"
 
 export function SignNumber(
     number: number
@@ -357,6 +358,19 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
         )
         return list
     }
+    if (text === "feat") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                const nameFeat = (o as serverFeat).featName || (o as feat).characterFeatName;
+                const feat = o as serverFeat | feat;
+                return {
+                    name: nameFeat,
+                    item: feat
+                }
+            }
+        )
+        return list
+    }
     if (text === "class") {
         let list: itemInDrop[] = options.map(
             o => {
@@ -381,7 +395,7 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
     }
     if (text === "items") {
         let list: itemInDrop[] = options.map(
-            
+
             o => {
                 return {
                     name: EnchantedName(o),

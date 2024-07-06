@@ -27,25 +27,7 @@ body
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 900px;
+    max-width: 1000px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
-/* .grid-table-six {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
-}
-
-.grid-table-three {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
-} */

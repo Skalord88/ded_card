@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { CharacterPc, FeatsId, serverFeat } from "../components/interfaces";
-import { urlChar, urlFeats } from "../components/url";
 import {
-  FeatsList,
-  ServerFeatsList,
-  ServerFeatsToDelete
-} from "../components/FeatsList";
+  ServerFeatsList
+} from "../components/Feats/ServerFeatsList";
+import { serverFeat } from "../components/Feats/Interface/FeatInterface";
+import { ServerFeatsToDelete } from "../components/Feats/ServerFeatsToDelete";
+import { CharacterPc, FeatsId } from "../components/interfaces";
+import { urlChar, urlFeats } from "../components/url";
+import { addToDrop } from "../components/functions";
 
 export function Feats() {
   const { charId } = useParams();
@@ -58,7 +59,7 @@ export function Feats() {
           listChar?.forEach((charFeat) => {
             charFeat === prerFeat ? check++ : (check += 0);
 
-            if (check === feat.prerequisite.feats.length) {
+            if (check === feat.prerequisite?.feats.length) {
               prerequisite.push(feat);
             }
           });
@@ -200,7 +201,7 @@ export function Feats() {
           title="Level Feats"
           deleteFeat={handleDeleteFeat}
         />
-        <FeatsList feats={char?.featsList} title="Class Feats" />
+        <ServerFeatsList feats={char?.featsList} title="Class Feats" selectFeat={()=> undefined}/>
       </div>
     </>
   );
