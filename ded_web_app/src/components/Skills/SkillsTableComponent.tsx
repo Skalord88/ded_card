@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import {
   OneSkillProps,
   SkillProps,
-  Study,
-  serverSkill
+  Study
 } from "../interfaces";
 import { StudyTotSkillsTableComponent } from "./Study/StudyTotSkillsTableComponent";
 import { ClassSkillSkillsTableComponent } from "./ClassSkillSkillsTableComponent";
@@ -17,6 +16,7 @@ import { StudyBnsSkillsTableComponent } from "./Study/StudyBnsSkillsTableCompone
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { urlSkillSet } from "../url";
+import { SkillDTO } from "./interface/SkillsInterface";
 
 export type SkillsTableProps = {
   skills: SkillProps[];
@@ -66,45 +66,39 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
     setSpentSkillPnts(tot);
   }, [skillsTable]);
 
-  const handleChange = () => {
-      interface skillDTO {
-        idSkill: number
-        skillRank: number
-        fieldOfStudy: {
-          idStudy: number
-          idSkill: number
-          rank: number
-        }[]
+  
+      const handleChange = () => {
+        const mapSkillsToDTO: SkillDTO[] = skills?.map((skill) => {
+          if (skill.fieldOfStudy.length > 0)
+            return {
+              idSkill: skill.idSkill,
+              skillRank: 0,
+              fieldOfStudy: skill.fieldOfStudy.map((st) => ({
+                idStudy: st.idStudy,
+                idSkill: skill.idSkill,
+                rank: st.rank
+              }))
+            };
+          else {
+            return {
+              idSkill: skill.idSkill,
+              skillRank: skill.skillRank,
+              fieldOfStudy: []
+            };
+          }
+        });
+    
+        const skillDTO: { skillDTO: SkillDTO[] } = { skillDTO: mapSkillsToDTO };
+    
+        console.log(skillDTO);
+    
+        try {
+          axios.post(urlSkillSet + charId, skillDTO);
+        } catch (error) {
+          console.log(error);
+        }
+        window.location.reload();
       };
-  
-      const skillsToAdd: skillDTO[] = skills?.map((skill) => {
-        if (skill.fieldOfStudy.length > 0)
-        return {
-          idSkill: skill.idSkill,
-          skillRank: 0,
-          fieldOfStudy: skill.fieldOfStudy.map(
-            (st) => ({
-              idStudy: st.idStudy, idSkill: skill.idSkill, rank: st.rank
-            })
-          )
-        }
-        else {
-          return {
-          idSkill: skill.idSkill,
-          skillRank: skill.skillRank,
-          fieldOfStudy: []}
-        }
-      });
-
-      console.log(skillsToAdd)
-  
-      try {
-        axios.post(urlSkillSet + charId, skillsToAdd);
-      } catch (error) {
-        console.log(error);
-      }
-      window.location.reload();
-    };
 
   return (
     <>
