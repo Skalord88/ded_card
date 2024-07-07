@@ -49,9 +49,7 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
               <div style={{ gridRow: 2 }} className="rpgui-icon neck"></div>
             ) : type === "arms" ? (
               <div style={{ gridRow: 2 }} className="rpgui-icon arms"></div>
-            )  : type === "hands" ? (
-              <div style={{ gridRow: 2 }} className="rpgui-icon hands"></div>
-            )  : type === "cloth" ? (
+            ) : type === "cloth" ? (
               <div style={{ gridRow: 2 }} className="rpgui-icon cloth"></div>
             ) : (
               <div style={{ gridRow: 2 }} className="rpgui-icon shoes"></div>
