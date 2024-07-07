@@ -33,15 +33,16 @@ export const BuyBackpack: React.FC<Backpack> = ({
       <div className="rpgui-container-framed-grey" style={{ display: "grid" }}>
         <div style={{ gridRow: 1, gridColumn: 1 }}>
           <p>{text}</p>
-        </div>
-
-        <div style={{ gridRow: 1, gridColumn: 2 }}>
           <DropdownComponent
             options={listOfItems}
             onAction={selectItem}
           />
         </div>
-        <div style={{ gridRow: 2, gridColumn: "2 / span 2" }}>
+
+        <div style={{ gridRow: 1, gridColumn: 2 }}>
+          
+        </div>
+        <div style={{ gridRow: 1, gridColumn: "2 / span 3" }}>
           <ListOfSomething
             items={item}
             text={"Backpack:"}

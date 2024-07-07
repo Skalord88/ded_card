@@ -1,11 +1,13 @@
 import { Rings, Item } from "../../interfaces";
+import { BuyItemInventory } from "./BuyItemInventory";
 
 export const BuyRings: React.FC<Rings> = ({
-    item,
-    type,
-    items,
-    buyItem,
-    sellItem
+  item,
+  items,
+  text,
+  type,
+  buyItem,
+  sellItem
   }) => {
     const selectItem = (i: Item, type: string) => {
       buyItem(i, type);
@@ -15,6 +17,13 @@ export const BuyRings: React.FC<Rings> = ({
     };
     return (
       <>
+        <BuyItemInventory 
+          item={item[0]}
+          items={items}
+          text={text}
+          buyItem={selectItem}
+          sellItem={deselect} type={type + "0"}
+        />
         <div>
           <ul>
             {item[0]?.name}
@@ -31,7 +40,7 @@ export const BuyRings: React.FC<Rings> = ({
             </div>
           </ul>
           <div className="rpgui-icon hands"></div>
-          <div className="rpgui-icon hands"></div>
+          
           <ul>
             {item[1]?.name}
             <button onClick={() => deselect(item[1], type + "1")}>-</button>
@@ -46,7 +55,7 @@ export const BuyRings: React.FC<Rings> = ({
               })}
             </div>
           </ul>
-          
+          <div className="rpgui-icon hands"></div>
         </div>
       </>
     );

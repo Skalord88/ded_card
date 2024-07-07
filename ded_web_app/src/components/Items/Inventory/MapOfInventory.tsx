@@ -188,7 +188,6 @@ export const MapOfInventory: React.FC<CharInventory> = ({
     }
 
     if (type === "backpack") {
-
       let zaino = equipment.backpack.filter((item) => item.id !== e.id);
 
       if (zaino.length === 0 || !zaino) {
@@ -285,7 +284,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 2, gridColumn: "1 / span 2" }}>
+        <div style={{ gridRow: 2, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon I"}
             item={equipment.weaponOne}
@@ -353,66 +352,71 @@ export const MapOfInventory: React.FC<CharInventory> = ({
           />
         </div>
         <div style={{ gridRow: 6, gridColumn: 1 }}>
-        <BuyItemInventory
-          key={"Head"}
-          item={equipment.head}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"head"}
-          text={"Head:"}
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
+          <BuyItemInventory
+            key={"Head"}
+            item={equipment.head}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"head"}
+            text={"Head:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
         </div>
-
-        <BuyItemInventory
-          key={"Neck"}
-          item={equipment.neck}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"neck"}
-          text={"Neck:"}
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
-
-        <BuyItemInventory
-          key={"Arms"}
-          item={equipment.arms}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"arms"}
-          text={"Arms:"}
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
-
-        <BuyRings
-          key={"Hands"}
-          item={equipment.hands}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"hands"}
-          text={"Hands:"}
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
-
-        <BuyItemInventory
-          key={"Cloth"}
-          item={equipment.cloth}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"cloth"}
-          text={"Cloth:"}
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
-
-        <BuyItemInventory
-          key={"Legs"}
-          item={equipment.legs}
-          items={FilterNoItem(items.wonderousItems)}
-          type={"legs"}
-          text="Legs"
-          buyItem={handleBuyItem}
-          sellItem={handleSellItem}
-        />
+        <div style={{ gridRow: 6, gridColumn: 2 }}>
+          <BuyItemInventory
+            key={"Neck"}
+            item={equipment.neck}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"neck"}
+            text={"Neck:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 7, gridColumn: 1 }}>
+          <BuyItemInventory
+            key={"Arms"}
+            item={equipment.arms}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"arms"}
+            text={"Arms:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 7, gridColumn: 2 }}>
+          <BuyRings
+            key={"Hands"}
+            item={equipment.hands}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"hands"}
+            text={"Hands:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 8, gridColumn: 1 }}>
+          <BuyItemInventory
+            key={"Cloth"}
+            item={equipment.cloth}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"cloth"}
+            text={"Cloth:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 8, gridColumn: 2 }}>
+          <BuyItemInventory
+            key={"Legs"}
+            item={equipment.legs}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"legs"}
+            text="Legs"
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
       </div>
     </>
   );

@@ -10,7 +10,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   options,
   onAction
 }) => {
-  const [dropItem, setDropItem] = useState<itemInDrop>();
+  const [dropItem, setDropItem] = useState<itemInDrop>(options[0]);
 
   const selectItem = (option: itemInDrop) => {
     onAction(option.item);
@@ -30,10 +30,17 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
           className=" rpgui-dropdown-imp rpgui-dropdown-imp-header"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <label>▼ </label> {dropItem?.name}
+          <label>▼</label> {dropItem?.name}
         </p>
         {isOpen && (
-          <ul className="rpgui-dropdown-imp" style={{ fontSize: "75%" }}>
+          <ul
+            className="rpgui-dropdown-imp"
+            style={{
+              position: "absolute",
+              width: "400px",
+              fontSize: "75%"
+            }}
+          >
             {options.map((o, index) => (
               <>
                 <li key={index} onClick={() => selectItem(o)}>
