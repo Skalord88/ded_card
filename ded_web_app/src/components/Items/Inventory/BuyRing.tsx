@@ -30,6 +30,8 @@ export const BuyRings: React.FC<Rings> = ({
               })}
             </div>
           </ul>
+          <div className="rpgui-icon hands"></div>
+          <div className="rpgui-icon hands"></div>
           <ul>
             {item[1]?.name}
             <button onClick={() => deselect(item[1], type + "1")}>-</button>
@@ -44,6 +46,7 @@ export const BuyRings: React.FC<Rings> = ({
               })}
             </div>
           </ul>
+          
         </div>
       </>
     );

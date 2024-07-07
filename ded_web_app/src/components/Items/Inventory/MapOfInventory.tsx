@@ -265,6 +265,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
       >
         <div>
           <BuyEnchantedItemInventory
+            key="Armor"
             item={equipment.armor}
             items={items.armorsList}
             type={"armor"}
@@ -275,6 +276,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
         <div style={{ gridColumn: 2 }}>
           <BuyEnchantedItemInventory
+            key={"Shield"}
             item={equipment.shield}
             items={items.shieldList}
             type={"shield"}
@@ -283,8 +285,9 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 2 }}>
+        <div style={{ gridRow: 2, gridColumn: "1 / span 2" }}>
           <BuyEnchantedItemInventory
+            key={"Weapon I"}
             item={equipment.weaponOne}
             items={items.weaponsList}
             type={"one"}
@@ -295,6 +298,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
         <div style={{ gridRow: 3 }}>
           <BuyEnchantedItemInventory
+            key={"Weapon II"}
             item={equipment.weaponTwo}
             items={items.weaponsList}
             type={"two"}
@@ -305,6 +309,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
         <div style={{ gridRow: 3, gridColumn: 2 }}>
           <BuyEnchantedItemInventory
+            key={"Weapon III"}
             item={equipment.weaponThree}
             items={items.weaponsList}
             type={"three"}
@@ -315,6 +320,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
         <div style={{ gridRow: 4 }}>
           <BuyEnchantedItemInventory
+            key={"Weapon IV"}
             item={equipment.weaponFour}
             items={items.weaponsList}
             type={"four"}
@@ -325,6 +331,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         </div>
         <div style={{ gridRow: 4, gridColumn: 2 }}>
           <BuyEnchantedItemInventory
+            key={"Weapon V"}
             item={equipment.weaponFive}
             items={items.weaponsList}
             type={"five"}
@@ -336,6 +343,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
 
         <div style={{ gridRow: 5, gridColumn: "1 / span 2" }}>
           <BuyBackpack
+            key={"Backpack"}
             item={equipment.backpack}
             items={FilterNoItem(items.wonderousItems)}
             type={"backpack"}
@@ -344,7 +352,9 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
+        <div style={{ gridRow: 6, gridColumn: 1 }}>
         <BuyItemInventory
+          key={"Head"}
           item={equipment.head}
           items={FilterNoItem(items.wonderousItems)}
           type={"head"}
@@ -352,8 +362,10 @@ export const MapOfInventory: React.FC<CharInventory> = ({
           buyItem={handleBuyItem}
           sellItem={handleSellItem}
         />
+        </div>
 
         <BuyItemInventory
+          key={"Neck"}
           item={equipment.neck}
           items={FilterNoItem(items.wonderousItems)}
           type={"neck"}
@@ -363,6 +375,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         />
 
         <BuyItemInventory
+          key={"Arms"}
           item={equipment.arms}
           items={FilterNoItem(items.wonderousItems)}
           type={"arms"}
@@ -372,6 +385,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         />
 
         <BuyRings
+          key={"Hands"}
           item={equipment.hands}
           items={FilterNoItem(items.wonderousItems)}
           type={"hands"}
@@ -381,6 +395,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         />
 
         <BuyItemInventory
+          key={"Cloth"}
           item={equipment.cloth}
           items={FilterNoItem(items.wonderousItems)}
           type={"cloth"}
@@ -390,6 +405,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         />
 
         <BuyItemInventory
+          key={"Legs"}
           item={equipment.legs}
           items={FilterNoItem(items.wonderousItems)}
           type={"legs"}
