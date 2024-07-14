@@ -136,6 +136,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         }));
       }
     }
+    console.log(equipment)
   };
   const handleSellItem = (e: Item, type: string) => {
     if (type === "armor") {
@@ -253,6 +254,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         legs: noneItem
       }));
     }
+  console.log(equipment)
   };
 
   return (
@@ -262,7 +264,29 @@ export const MapOfInventory: React.FC<CharInventory> = ({
           display: "grid"
         }}
       >
-        <div>
+        <div style={{ gridRow: 1, gridColumn: 2 }}>
+          <BuyItemInventory
+            key={"Head"}
+            item={equipment.head}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"head"}
+            text={"Head:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 2, gridColumn: 2 }}>
+          <BuyItemInventory
+            key={"Neck"}
+            item={equipment.neck}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"neck"}
+            text={"Neck:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 3, gridColumn: 2 }}>
           <BuyEnchantedItemInventory
             key="Armor"
             item={equipment.armor}
@@ -273,7 +297,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridColumn: 2 }}>
+        <div style={{ gridRow: 3, gridColumn: 3 }}>
           <BuyEnchantedItemInventory
             key={"Shield"}
             item={equipment.shield}
@@ -284,7 +308,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 2, gridColumn: 1 }}>
+        <div style={{ gridRow: 1, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon I"}
             item={equipment.weaponOne}
@@ -295,7 +319,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 3 }}>
+        <div style={{ gridRow: 2, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon II"}
             item={equipment.weaponTwo}
@@ -306,7 +330,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 3, gridColumn: 2 }}>
+        <div style={{ gridRow: 3, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon III"}
             item={equipment.weaponThree}
@@ -317,7 +341,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 4 }}>
+        <div style={{ gridRow: 4, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon IV"}
             item={equipment.weaponFour}
@@ -328,7 +352,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 4, gridColumn: 2 }}>
+        <div style={{ gridRow: 5, gridColumn: 1 }}>
           <BuyEnchantedItemInventory
             key={"Weapon V"}
             item={equipment.weaponFive}
@@ -340,7 +364,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
           />
         </div>
 
-        <div style={{ gridRow: 5, gridColumn: "1 / span 2" }}>
+        <div style={{ gridRow: 6, gridColumn: "1 / span 3" }}>
           <BuyBackpack
             key={"Backpack"}
             item={equipment.backpack}
@@ -351,29 +375,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 6, gridColumn: 1 }}>
-          <BuyItemInventory
-            key={"Head"}
-            item={equipment.head}
-            items={FilterNoItem(items.wonderousItems)}
-            type={"head"}
-            text={"Head:"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div style={{ gridRow: 6, gridColumn: 2 }}>
-          <BuyItemInventory
-            key={"Neck"}
-            item={equipment.neck}
-            items={FilterNoItem(items.wonderousItems)}
-            type={"neck"}
-            text={"Neck:"}
-            buyItem={handleBuyItem}
-            sellItem={handleSellItem}
-          />
-        </div>
-        <div style={{ gridRow: 7, gridColumn: 1 }}>
+        <div style={{ gridRow: 2, gridColumn: 3 }}>
           <BuyItemInventory
             key={"Arms"}
             item={equipment.arms}
@@ -384,18 +386,29 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 7, gridColumn: 2 }}>
+        <div style={{ gridRow: 4, gridColumn: 3 }}>
           <BuyRings
             key={"Hands"}
             item={equipment.hands}
             items={FilterNoItem(items.wonderousItems)}
-            type={"hands"}
+            type={"hands"+0}
             text={"Hands:"}
             buyItem={handleBuyItem}
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 8, gridColumn: 1 }}>
+        <div style={{ gridRow: 5, gridColumn: 3 }}>
+          <BuyRings
+            key={"Hands"}
+            item={equipment.hands}
+            items={FilterNoItem(items.wonderousItems)}
+            type={"hands"+1}
+            text={"Hands:"}
+            buyItem={handleBuyItem}
+            sellItem={handleSellItem}
+          />
+        </div>
+        <div style={{ gridRow: 4, gridColumn: 2 }}>
           <BuyItemInventory
             key={"Cloth"}
             item={equipment.cloth}
@@ -406,7 +419,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
             sellItem={handleSellItem}
           />
         </div>
-        <div style={{ gridRow: 8, gridColumn: 2 }}>
+        <div style={{ gridRow: 5, gridColumn: 2 }}>
           <BuyItemInventory
             key={"Legs"}
             item={equipment.legs}

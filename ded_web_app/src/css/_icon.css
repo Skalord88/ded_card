@@ -58,22 +58,35 @@
 .rpgui-icon.helmet-slot {
     background-image: url('../img/icons/helmet-slot.png');
 }
-.rpgui-icon.helmet {
-    background-image: url('../img/icons/helmet.png');
+
+.rpgui-icon.head {
+    background-image: url('../img/icons/head.png');
 }
+
 .rpgui-icon.neck {
     background-image: url('../img/icons/neck.png');
 }
 
-.rpgui-icon.hands {
-    background-image: url('../img/icons/hands.png');
+.rpgui-icon.hands0 {
+    background-image: url('../img/icons/hands0.png');
 }
+
+.rpgui-icon.hands1 {
+    background-image: url('../img/icons/hands1.png');
+}
+
 .rpgui-icon.arms {
     background-image: url('../img/icons/arms.png');
 }
+
 .rpgui-icon.cloth {
     background-image: url('../img/icons/cloth.png');
 }
+
+.rpgui-icon.legs {
+    background-image: url('../img/icons/legs.png');
+}
+
 .rpgui-icon.ring-slot {
     background-image: url('../img/icons/ring-slot.png');
 }
@@ -86,9 +99,6 @@
     background-image: url('../img/icons/magic-slot.png');
 }
 
-.rpgui-icon.shoes {
-    background-image: url('../img/icons/shoes.png');
-}
 .rpgui-icon.shoes-slot {
     background-image: url('../img/icons/shoes-slot.png');
 }

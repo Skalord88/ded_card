@@ -43,7 +43,7 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
               />
             </div>
             <div style={{ gridRow: 2, gridColumn: 2 }}>
-              <DropdownComponent options={listOfItems} onAction={selectItem} />
+              <DropdownComponent options={listOfItems} onAction={selectItem} key={"drop" + type}/>
             </div>
             {type === "armor" ? (
               <div style={{ gridRow: 2 }} className="rpgui-icon armor"></div>

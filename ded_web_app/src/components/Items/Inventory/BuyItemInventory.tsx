@@ -3,6 +3,7 @@ import { addToDrop } from "../../functions";
 import { ItemToBuy, Item, WonderousItem } from "../../interfaces";
 import { Popup } from "../../Popup/Popup";
 import { DropdownComponent } from "../../DropDown/DropDown";
+import { noneItem } from "../../variables";
 
 export const BuyItemInventory: React.FC<ItemToBuy> = ({
   item,
@@ -18,10 +19,12 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
     setSelected(option);
   };
   const deselect = (option: WonderousItem | Item) => {
+    setSelected(noneItem)
     sellItem(option, type);
   };
 
   const listOfItems = addToDrop(items, "items");
+  const textIcon = "rpgui-icon " + type;
 
   return (
     <>
@@ -35,25 +38,12 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
               <p>{text}</p>
             </div>
             <div onClick={() => deselect(selected as any)}>
-              <Popup
-                text={selected.name}
-                popText={selected.description}
-              />
+              <Popup text={selected.name} popText={selected.description} />
             </div>
-            <div style={{ gridRow: 2, gridColumn: 2 }}>
-              <DropdownComponent options={listOfItems} onAction={selectItem} />
+            <div style={{ gridRow: 2, gridColumn: 2 }} >
+              <DropdownComponent options={listOfItems} onAction={selectItem} key={"drop " + type}/>
             </div>
-            {type === "head" ? (
-              <div style={{ gridRow: 2 }} className="rpgui-icon helmet"></div>
-            ) : type === "neck" ? (
-              <div style={{ gridRow: 2 }} className="rpgui-icon neck"></div>
-            ) : type === "arms" ? (
-              <div style={{ gridRow: 2 }} className="rpgui-icon arms"></div>
-            ) : type === "cloth" ? (
-              <div style={{ gridRow: 2 }} className="rpgui-icon cloth"></div>
-            ) : (
-              <div style={{ gridRow: 2 }} className="rpgui-icon shoes"></div>
-            )}
+            <div style={{ gridRow: 2 }} className={textIcon}></div>
           </div>
         </>
       ) : (
