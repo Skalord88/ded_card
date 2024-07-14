@@ -10,12 +10,12 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   options,
   onAction
 }) => {
-  const [dropItem, setDropItem] = useState<itemInDrop>(options[0]);
+  const [dropItem, setDropItem] = useState<itemInDrop | undefined>();
 
   const selectItem = (option: itemInDrop) => {
     onAction(option.item);
     setIsOpen(false);
-    setDropItem(option);
+    setDropItem(undefined);
   };
 
   const [isOpen, setIsOpen] = useState<boolean>(false);

@@ -136,7 +136,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         }));
       }
     }
-    console.log(equipment)
+    // console.log(equipment)
   };
   const handleSellItem = (e: Item, type: string) => {
     if (type === "armor") {
@@ -254,7 +254,7 @@ export const MapOfInventory: React.FC<CharInventory> = ({
         legs: noneItem
       }));
     }
-  console.log(equipment)
+  // console.log(equipment)
   };
 
   return (

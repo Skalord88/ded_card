@@ -38,7 +38,10 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
               <p>{text}</p>
             </div>
             <div onClick={() => deselect(selected as any)}>
+
               <Popup text={selected.name} popText={selected.description} />
+
+              
             </div>
             <div style={{ gridRow: 2, gridColumn: 2 }} >
               <DropdownComponent options={listOfItems} onAction={selectItem} key={"drop " + type}/>
