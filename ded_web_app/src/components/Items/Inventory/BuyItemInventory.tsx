@@ -19,7 +19,7 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
     setSelected(option);
   };
   const deselect = (option: WonderousItem | Item) => {
-    setSelected(noneItem)
+    setSelected(noneItem);
     sellItem(option, type);
   };
 
@@ -38,13 +38,14 @@ export const BuyItemInventory: React.FC<ItemToBuy> = ({
               <p>{text}</p>
             </div>
             <div onClick={() => deselect(selected as any)}>
-
               <Popup text={selected.name} popText={selected.description} />
-
-              
             </div>
-            <div style={{ gridRow: 2, gridColumn: 2 }} >
-              <DropdownComponent options={listOfItems} onAction={selectItem} key={"drop " + type}/>
+            <div style={{ gridRow: 2, gridColumn: 2 }}>
+              <DropdownComponent
+                options={listOfItems}
+                onAction={selectItem}
+                key={"drop " + type}
+              />
             </div>
             <div style={{ gridRow: 2 }} className={textIcon}></div>
           </div>

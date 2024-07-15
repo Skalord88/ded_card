@@ -14,7 +14,6 @@ services:
       - backend
     volumes: 
       - ./postgres-data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
   api:
     image: skalord88/api:latest
