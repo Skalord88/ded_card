@@ -3,6 +3,8 @@ import { CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
 import { DeleteButton } from "./DeleteButton";
 import { urlChar } from "./url";
+import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { D12Popup } from "./Popup/DicePopup/D12Popup";
 
 export interface CharProps {
   char: CharacterPc;
@@ -122,8 +124,8 @@ export const BaseAttack: React.FC<CharProps> = ({ char }) => {
           {char.bab}
         </p>
         <p>
-          grapple: {grapple > 0 ? "+" : ""}
-          {grapple}
+          <D20Popup text={"grapple: "} value={grapple} critic={false} />
+          {grapple > 0 ? "+" : ""} {grapple}
         </p>
         <p>
           STR att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "STR"))}
@@ -148,7 +150,9 @@ export const Initiative: React.FC<CharProps> = ({ char }) => {
       }}
       >
         <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
-        <h2>{SignAndCount([BonusAbilities(char.abilitys, "DEX")]).sign} {BonusAbilities(char.abilitys, "DEX")}</h2>
+        <div>
+          <D12Popup text="init: " value={BonusAbilities(char.abilitys, "DEX")} />
+        {SignAndCount([BonusAbilities(char.abilitys, "DEX")]).sign} {BonusAbilities(char.abilitys, "DEX")}</div>
         
       </div>
     </>

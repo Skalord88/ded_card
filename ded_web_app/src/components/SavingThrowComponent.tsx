@@ -1,5 +1,6 @@
 import { CharProps } from "./CharacterData";
 import { BonusAbilities } from "./functions";
+import { D20Popup } from "./Popup/DicePopup/D20Popup";
 
 export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
   const saving = {
@@ -43,7 +44,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
               <div style={{gridColumn:6}}></div>
 
 
-              <div>for:</div>
+              <D20Popup text="for: " value={saving.forTot} critic={false} />
               <div style={{ backgroundColor: "grey"}}>{saving.forTot}</div>
               <div>{saving.for}</div>
               <div>{saving.forAb}</div>
@@ -52,7 +53,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
               </div>
               <div></div>
 
-              <div>ref:</div>
+              <D20Popup text="ref: " value={saving.refTot} critic={false} />
               <div style={{ backgroundColor: "grey"}}>{saving.refTot}</div>
               <div>{saving.ref}</div>
               <div>{saving.refAb}</div>
@@ -62,7 +63,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
 
               <div></div>
 
-              <div>wil:</div>
+              <D20Popup text="will: " value={saving.willTot} critic={false} />
               <div style={{ backgroundColor: "grey"}}>
                 {saving.willTot}
               </div>
