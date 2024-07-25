@@ -1,4 +1,4 @@
-import { BonusAbilities } from "./functions";
+import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
 import { DeleteButton } from "./DeleteButton";
@@ -93,12 +93,11 @@ export const BaseAttack: React.FC<CharProps> = ({ char }) => {
     <>
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
       <p>
-        bs atk bns: {SignNumber(char.bab)}
-        {char.bab}
+        bs atk bns: {SignAndCount([char.bab]).sign}{SignAndCount([char.bab]).number}
       </p>
       <p>
         <D20Popup textOrWeapon={"grapple: "} value={grapple} />
-        {grapple > 0 ? "+" : ""} {grapple}
+        {SignAndCount([grapple]).sign}{SignAndCount([grapple]).number}
       </p>
       <p>
         STR att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "STR"))}
