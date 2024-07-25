@@ -1,11 +1,12 @@
 import axios from "axios";
-import { CharacterArmor, MapOfAttack } from "../components/MyComponents";
+import { MapOfAttack } from "../components/MyComponents";
 import { urlAttacks, urlChar } from "../components/url";
 import { useEffect, useState } from "react";
 import { Attacks, CharacterPc, Weapon } from "../components/interfaces";
 import { useParams } from "react-router-dom";
 import { emptyAttacks } from "../components/variables";
 import { SetSetWeaponListFromDB } from "../components/functions";
+import { CharacterArmor } from "../components/Armor/CharacterArmor";
 
 export function Attack() {
 

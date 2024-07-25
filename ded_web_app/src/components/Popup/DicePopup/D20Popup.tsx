@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
-import { Critic } from "../../Dice/Critic";
+import { Hit } from "../../Dice/Hit";
+import { Weapon } from "../../interfaces";
+import { Damage } from "../../Dice/Damage";
 
 export interface DicePopupProps {
-  text: string;
+  textOrWeapon: string | Weapon;
   value: number;
-  critic: boolean;
 }
 
-export const D20Popup: React.FC<DicePopupProps> = ({ text, value, critic }) => {
+export const D20Popup: React.FC<DicePopupProps> = ({ textOrWeapon, value }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -28,14 +29,29 @@ export const D20Popup: React.FC<DicePopupProps> = ({ text, value, critic }) => {
         onMouseLeave={() => togglePopup(false)}
         style={{ color: "yellow" }}
       >
-        {text}
+        {typeof textOrWeapon === "string" ? (
+          <>{textOrWeapon}</>
+        ) : (
+          <>{textOrWeapon.name}</>
+        )}
         <span
-          style={{ width: 200 }}
+          style={{ width: 160 }}
           className={`popuptext rpgui-container-framed ${
             showPopup ? "show" : ""
           }`}
         >
-          <Critic critic={critic} dice={dice} value={value}/>
+          {typeof textOrWeapon === "string" ? (
+            <>
+              {dice} + {value} = {dice + value}
+            </>
+          ) : (
+            <Hit weapon={textOrWeapon} dice={dice} value={value} />
+          )}
+          {typeof textOrWeapon === "string" ? (
+            <></>
+          ) : (
+            <Damage dice={dice} weapon={textOrWeapon} />
+          )}
         </span>
       </div>
     </>

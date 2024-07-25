@@ -33,7 +33,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({ text, value }) => {
             showPopup ? "show" : ""
           }`}
         >
-          {value} + {dice} = {value + dice}
+          {dice} + {value} = {value + dice}
         </span>
       </div>
     </>

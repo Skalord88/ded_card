@@ -1,27 +1,27 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import { MapOfSkillsNoStudy, MapOfStudy } from "../components/MyComponents";
+import { AbilitysComponent } from "../components/AbilitysComponent";
+import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
+import {
+  BaseAttack,
+  CharacterData,
+  ClassExpGold
+} from "../components/CharacterData";
+import { HpComponent } from "../components/HpComponent";
+import { Initiative } from "../components/Initiative/Initiative";
 import {
   CharacterPc,
   Inventory,
   MapOfSkills,
   SkillProps
 } from "../components/interfaces";
+import { SavingThrowComponent } from "../components/SavingThrowComponent";
+import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
-import { CharacterArmor } from "../components/MyComponents";
-import {
-  BaseAttack,
-  CharacterData,
-  ClassExpGold,
-  Initiative
-} from "../components/CharacterData";
-import { SpeedComponent } from "../components/SpeedComponent";
-import { AbilitysComponent } from "../components/AbilitysComponent";
-import { HpComponent } from "../components/HpComponent";
-import { SavingThrowComponent } from "../components/SavingThrowComponent";
-import { MapOfAttackComponent } from "../components/MapOfAttackComponent";
+import { CharacterArmor } from "../components/Armor/CharacterArmor";
+import { DeleteButton } from "../components/DeleteButton";
 
 export function Show() {
   let { charId } = useParams();
@@ -66,19 +66,115 @@ export function Show() {
   return (
     <>
       <div style={{ display: "grid" }}>
-        <CharacterData char={char} />
-        <AbilitysComponent abilitys={char.abilitys} />
-        <ClassExpGold char={char} />
-        <BaseAttack char={char} />
-        <SavingThrowComponent char={char} />
-        <HpComponent char={char} />
-        <Initiative char={char} />
-        <CharacterArmor
-          charArmor={char.armorClass}
-          charInventory={char.inventory}
-        />
-        <SpeedComponent char={char} />
-        <MapOfAttackComponent char={char} />
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 2",
+            gridRow: 1
+          }}
+        ></div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 3,
+            gridRow: 1
+          }}
+        >
+          <DeleteButton url={urlChar} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 2",
+            gridRow: 2
+          }}
+        >
+          <CharacterData char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 3,
+            gridRow: "2 / span 3"
+          }}
+        >
+          <AbilitysComponent abilitys={char.abilitys} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 1,
+            gridRow: "3 / span 2"
+          }}
+        >
+          <ClassExpGold char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 2,
+            gridRow: 3
+          }}
+        >
+          <BaseAttack char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 2,
+            gridRow: 4
+          }}
+        >
+          <Initiative char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 2",
+            gridRow: 5
+          }}
+        >
+          <SavingThrowComponent char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 3,
+            gridRow: 5
+          }}
+        >
+          <HpComponent char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 3,
+            gridRow: 6
+          }}
+        >
+          <SpeedComponent char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 2",
+            gridRow: 6
+          }}
+        >
+          <CharacterArmor
+            charArmor={char.armorClass}
+            charInventory={char.inventory}
+          />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 3",
+            gridRow: 7
+          }}
+        >
+          <MapOfAttackComponent char={char} />
+        </div>
       </div>
     </>
   );

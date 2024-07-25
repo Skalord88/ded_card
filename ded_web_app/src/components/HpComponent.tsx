@@ -3,12 +3,7 @@ import { BonusAbilities, SignAndCount } from "./functions";
 
 export const HpComponent: React.FC<CharProps> = ({ char }) => {
   return (
-    <div className="rpgui-container-framed-grey"
-    style={{
-          gridColumn: 3,
-          gridRow: 3
-          }}
-    >
+    <>
       <h2 className="rpgui-container-framed-golden-2">Hit Dice</h2>
       <div style={{ display: "flex", fontSize: "80%" }}>
         {Object.entries(char.vitality.hitDices).map((hd) => {
@@ -28,6 +23,6 @@ export const HpComponent: React.FC<CharProps> = ({ char }) => {
           Hit Points: {char.vitality.hitPoints} / Life: {char.vitality.life}
         </p>
       </div>
-    </div>
+    </>
   );
 };

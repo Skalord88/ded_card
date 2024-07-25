@@ -49,13 +49,6 @@ export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
   
     return (
       <>
-        <div
-          className="rpgui-container-framed-grey"
-          style={{
-            gridColumn: 3,
-            gridRow: "1 / span 2" 
-          }}
-          >
           <h2 className="rpgui-container-framed-golden-2">Abilities</h2>
           {ab.map((ability) => {
             return (
@@ -87,7 +80,6 @@ export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
               </>
             );
           })}
-        </div>
       </>
     );
   };
