@@ -28,7 +28,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({ text, value }) => {
       >
         {text}
         <span
-          style={{ width: 200 }}
+          style={{ width: 200, textAlign: "center" }}
           className={`popuptext rpgui-container-framed ${
             showPopup ? "show" : ""
           }`}

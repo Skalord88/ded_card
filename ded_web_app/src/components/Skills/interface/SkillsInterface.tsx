@@ -1,3 +1,5 @@
+import { SkillProps } from "../../interfaces";
+
 export type SkillDTO = {
   idSkill: number;
   skillRank: number;
@@ -7,3 +9,7 @@ export type SkillDTO = {
     rank: number;
   }[];
 };
+
+export type SkillShowProps = {
+  skills: SkillProps[]
+}

@@ -7,7 +7,7 @@ export const Initiative: React.FC<CharProps> = ({ char }) => {
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
-      <p>
+      <p style={{ textAlign: "center"}}>
         <D12Popup text={init} value={BonusAbilities(char.abilitys, "DEX")} />{" "}
       </p>
     </>

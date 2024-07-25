@@ -2,12 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AbilitysComponent } from "../components/AbilitysComponent";
+import { CharacterArmor } from "../components/Armor/CharacterArmor";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import {
   BaseAttack,
   CharacterData,
   ClassExpGold
 } from "../components/CharacterData";
+import { DeleteButton } from "../components/DeleteButton";
 import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import {
@@ -17,11 +19,10 @@ import {
   SkillProps
 } from "../components/interfaces";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
+import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { characterEmpty, emptyInventory } from "../components/variables";
-import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { DeleteButton } from "../components/DeleteButton";
 
 export function Show() {
   let { charId } = useParams();
@@ -174,6 +175,17 @@ export function Show() {
           }}
         >
           <MapOfAttackComponent char={char} />
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: "1 / span 2",
+            gridRow: 8
+          }}
+        >
+          <p>
+            <SkillShowComponent key={"skillsTable"} skills={skills} />
+          </p>
         </div>
       </div>
     </>

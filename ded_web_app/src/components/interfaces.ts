@@ -163,6 +163,13 @@ export type OneSkillProps = {
   updateRank: (indexSkill: number, indexStudy: number | null, newRank: number) => void;
 }
 
+export type ShowOneSkillProps = {
+  indexSkill: number
+  skill: SkillProps
+  indexStudy: number | null
+  study: Study | null
+}
+
 export type Study = {
   idStudy: number,
   idSkill: number,
