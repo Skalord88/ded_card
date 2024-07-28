@@ -87,7 +87,7 @@
         <column name="magic_class" value="CLERIC"/>
         <column name="spells_day_known" value="KNOWN"/>
         <column name="spells_in_level" value="[
-        {'level':1,'spells':  [-1,-1]},
+        {'level':1,'spells':  [null,null]},
         {'level':2,'spells':  [null,null]},
         {'level':3,'spells':  [null,null,null]},
         {'level':4,'spells':  [null,null,null]},
@@ -136,23 +136,23 @@
         <column name="magic_class" value="PALADIN"/>
         <column name="spells_day_known" value="KNOWN"/>
         <column name="spells_in_level" value="[
-        {'level':4,'spells': [null]},
-        {'level':5,'spells': [null]},
-        {'level':6,'spells': [null]},
-        {'level':7,'spells': [null]},
-        {'level':8,'spells': [null,null]},
-        {'level':9,'spells': [null,null]},
-        {'level':10,'spells': [null,null]},
-        {'level':11,'spells': [null,null,null]},
-        {'level':12,'spells': [null,null,null]},
-        {'level':13,'spells': [null,null,null]},
-        {'level':14,'spells': [null,null,null,null]},
-        {'level':15,'spells': [null,null,null,null]},
-        {'level':16,'spells': [null,null,null,null]},
-        {'level':17,'spells': [null,null,null,null]},
-        {'level':18,'spells': [null,null,null,null]},
-        {'level':19,'spells': [null,null,null,null]},
-        {'level':20,'spells': [null,null,null,null]}
+        {'level':4,'spells': [-1,null]},
+        {'level':5,'spells': [-1,null]},
+        {'level':6,'spells': [-1,null]},
+        {'level':7,'spells': [-1,null]},
+        {'level':8,'spells': [-1,null,null]},
+        {'level':9,'spells': [-1,null,null]},
+        {'level':10,'spells': [-1,null,null]},
+        {'level':11,'spells': [-1,null,null,null]},
+        {'level':12,'spells': [-1,null,null,null]},
+        {'level':13,'spells': [-1,null,null,null]},
+        {'level':14,'spells': [-1,null,null,null,null]},
+        {'level':15,'spells': [-1,null,null,null,null]},
+        {'level':16,'spells': [-1,null,null,null,null]},
+        {'level':17,'spells': [-1,null,null,null,null]},
+        {'level':18,'spells': [-1,null,null,null,null]},
+        {'level':19,'spells': [-1,null,null,null,null]},
+        {'level':20,'spells': [-1,null,null,null,null]}
         ]"/>
     </insert>
     <insert tableName="spells_table">
@@ -211,8 +211,8 @@
         <column name="magic_class" value="BOOK"/>
         <column name="spells_day_known" value="KNOWN"/>
         <column name="spells_in_level" value="[
-        {'level':1,'spells': [-1,2]},
-        {'level':2,'spells': [-1,4]},
+        {'level':1,'spells': [null,2]},
+        {'level':2,'spells': [null,4]},
         {'level':3,'spells': [null,4,2]},
         {'level':4,'spells': [null,4,4]},
         {'level':5,'spells': [null,4,4,2]},
@@ -231,6 +231,38 @@
         {'level':18,'spells': [null,4,4,4,4,4,4,4,4,4]},
         {'level':19,'spells': [null,4,4,4,4,4,4,4,4,6]},
         {'level':20,'spells': [null,4,4,4,4,4,4,4,4,8]}
+        ]"/>
+    </insert>
+    <insert tableName="spells_table">
+        <column name="magic_class" value="ASSASIN"/>
+        <column name="spells_day_known" value="DAY"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells': [-1,0]},
+        {'level':2,'spells': [-1,1]},
+        {'level':3,'spells': [-1,2,0]},
+        {'level':4,'spells': [-1,3,1]},
+        {'level':5,'spells': [-1,3,2,0]},
+        {'level':6,'spells': [-1,3,3,1]},
+        {'level':7,'spells': [-1,3,3,2,0]},
+        {'level':8,'spells': [-1,3,3,3,1]},
+        {'level':9,'spells': [-1,3,3,3,2]},
+        {'level':10,'spells': [-1,3,3,3,3]}
+        ]"/>
+    </insert>
+    <insert tableName="spells_table">
+        <column name="magic_class" value="ASSASIN"/>
+        <column name="spells_day_known" value="KNOWN"/>
+        <column name="spells_in_level" value="[
+        {'level':1,'spells': [-1,2]},
+        {'level':2,'spells': [-1,3]},
+        {'level':3,'spells': [-1,3,2]},
+        {'level':4,'spells': [-1,4,3]},
+        {'level':5,'spells': [-1,4,3,2]},
+        {'level':6,'spells': [-1,4,4,3]},
+        {'level':7,'spells': [-1,4,4,3,2]},
+        {'level':8,'spells': [-1,4,4,4,3]},
+        {'level':9,'spells': [-1,4,4,4,3]},
+        {'level':10,'spells': [-1,4,4,4,4]}
         ]"/>
     </insert>
 

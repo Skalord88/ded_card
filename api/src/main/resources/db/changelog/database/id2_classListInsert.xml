@@ -1,20 +1,20 @@
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="2" author="oscar">
-          <insert tableName="class_character">
-            <column name="id" value="1"/>  
-              <column  name="type"  value="BASE_CLASS"/>  
-              <column  name="name"  value="BARBARIAN"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="saving_throw" value="hll"/>
-              <column  name="class_bab" value="1"/>
-              <column name="skill_points" value="4" />
-              <column name="hit_dice" value="12" />
-              <column name="class_feats_map" value="[
+    <insert tableName="class_character">
+      <column name="id" value="1" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="BARBARIAN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="12" />
+      <column name="class_feats_map"
+        value="[
               {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fast movement','Illiteracy','Rage']},
               {'level':2,'classFeats':['Uncanny dodge']},
               {'level':3,'classFeats':['Trap sense']},
@@ -35,19 +35,20 @@
               {'level':18,'classFeats':['Trap sense']},
               {'level':19,'classFeats':['Damage reduction']},
               {'level':20,'classFeats':['Mighty rage','Rage']}
-              ]"/>
-              <column name="initial_gold" value="[4,D4,10]"/>
-          </insert>  
-          <insert tableName="class_character">
-            <column name="id" value="2"/>
-            <column name="type" value="BASE_CLASS"/>
-            <column name="name" value="BARD"/>
-            <column name="avatar_url" value="address value"/>
-            <column name="saving_throw" value="lhh"/>
-            <column name="class_bab" value="0.75"/>
-            <column name="skill_points" value="6"/>
-            <column name="hit_dice" value="6"/>
-            <column name="class_feats_map" value="[
+              ]" />
+      <column name="initial_gold" value="[4,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="2" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="BARD" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="6" />
+      <column name="hit_dice" value="6" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Armor proficiency (light)','Bardic music','Bardic knowledge','Countersong','Fascinate','Inspire courage']},
             {'level':3,'classFeats':['Inspire competence']},
             {'level':6,'classFeats':['Suggestion']},
@@ -58,39 +59,41 @@
             {'level':15,'classFeats':['Inspire heroics']},
             {'level':18,'classFeats':['Mass suggestion']},
             {'level':20,'classFeats':['Inspire courage']}
-            ]"/>
-            <column name="spells_per_day" value="BARD"/>
-            <column name="spells_known" value="BARD"/>
-            <column name="spells_domain" value="BARD"/>
-            <column name="initial_gold" value="[4,D4,10]"/>
-            </insert>
-            <insert tableName="class_character">
-              <column name="id" value="3"/>
-              <column name="type" value="BASE_CLASS"/>
-              <column name="name" value="CLERIC"/>
-              <column name="avatar_url" value="address value"/>
-              <column name="saving_throw" value="hlh"/>
-              <column name="class_bab" value="0.75"/>
-              <column name="skill_points" value="2"/>
-              <column name="hit_dice" value="8"/>
-              <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="BARD" />
+      <column name="spells_known" value="BARD" />
+      <column name="spells_domain" value="BARD" />
+      <column name="initial_gold" value="[4,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="3" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="CLERIC" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="8" />
+      <column name="class_feats_map"
+        value="[
               {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Turn or rebuke undead']}
-              ]"/>
-              <column name="spells_per_day" value="CLERIC"/>
-              <column name="spells_known" value="CLERIC"/>
-              <column name="spells_domain" value="CLERIC"/>
-              <column name="initial_gold" value="[5,D4,10]"/>
-              </insert>
-          <insert tableName="class_character">
-            <column name="id" value="4"/>   
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="DRUID"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hlh"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="4" />
-            <column name="hit_dice" value="8" />
-            <column name="class_feats_map" value="[
+              ]" />
+      <column name="spells_per_day" value="CLERIC" />
+      <column name="spells_known" value="CLERIC" />
+      <column name="spells_domain" value="CLERIC" />
+      <column name="initial_gold" value="[5,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="4" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="DRUID" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Animal companion','Nature sense','Wild empathy']},
             {'level':2,'classFeats':['Woodland Stride']},
             {'level':3,'classFeats':['Trackless Step']},
@@ -109,22 +112,23 @@
             {'level':16,'classFeats':['Wild Shape']},
             {'level':18,'classFeats':['Wild Shape']},
             {'level':20,'classFeats':['Wild Shape']}
-            ]"/>
-            <column name="spells_per_day" value="CLERIC"/>
-            <column name="spells_known" value="CLERIC"/>
-            <column name="spells_domain" value="DRUID"/>
-            <column name="initial_gold" value="[2,D4,10]"/>
-          </insert> 
-          <insert tableName="class_character">
-            <column name="id" value="5"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="FIGHTER"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hll"/>
-            <column  name="class_bab" value="1"/>
-            <column name="skill_points" value="2" />
-            <column name="hit_dice" value="10" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="CLERIC" />
+      <column name="spells_known" value="CLERIC" />
+      <column name="spells_domain" value="DRUID" />
+      <column name="initial_gold" value="[2,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="5" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="FIGHTER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fighter Bonus Feats']},
             {'level':2,'classFeats':['Fighter Bonus Feats']},
             {'level':4,'classFeats':['Fighter Bonus Feats']},
@@ -136,19 +140,20 @@
             {'level':16,'classFeats':['Fighter Bonus Feats']},
             {'level':18,'classFeats':['Fighter Bonus Feats']},
             {'level':20,'classFeats':['Fighter Bonus Feats']}
-            ]"/>
-            <column name="initial_gold" value="[6,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-            <column name="id" value="6"/>   
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="MONK"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hhh"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="4" />
-            <column name="hit_dice" value="8" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="6" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="MONK" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Monk Bonus Feats','Flurry of Blows','Unarmed Strike']},
             {'level':2,'classFeats':['Monk Bonus Feats','Evasion','Flurry of Blows']},
             {'level':3,'classFeats':['Still Mind','Flurry of Blows','Fast Movement']},
@@ -169,19 +174,20 @@
             {'level':18,'classFeats':['Slow Fall','Flurry of Blows','Fast Movement']},
             {'level':19,'classFeats':['Empty Body','Flurry of Blows']},
             {'level':20,'classFeats':['Perfect Self','Slow Fall','Flurry of Blows','Unarmed Strike','AC Bonus']}
-            ]"/>
-            <column name="initial_gold" value="[5,D4,1]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="7"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="PALADIN"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hll"/>
-            <column  name="class_bab" value="1"/>
-            <column name="skill_points" value="2" />
-            <column name="hit_dice" value="10" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="initial_gold" value="[5,D4,1]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="7" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="PALADIN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)',
             'Armor proficiency (heavy)','Aura of Good','Detect Evil','Smite Evil']},
             {'level':2,'classFeats':['Divine Grace','Lay on Hands']},
@@ -195,22 +201,23 @@
             {'level':15,'classFeats':['Remove Disease','Smite Evil']},
             {'level':18,'classFeats':['Remove Disease']},
             {'level':20,'classFeats':['Smite Evil']}
-            ]"/>
-            <column name="spells_per_day" value="PALADIN"/>
-            <column name="spells_known" value="PALADIN"/>
-            <column name="spells_domain" value="PALADIN"/>
-            <column name="initial_gold" value="[6,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="8"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="RANGER"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hhl"/>
-            <column  name="class_bab" value="1"/>
-            <column name="skill_points" value="6" />
-            <column name="hit_dice" value="8" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="PALADIN" />
+      <column name="spells_known" value="PALADIN" />
+      <column name="spells_domain" value="PALADIN" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="8" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="RANGER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhl" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="6" />
+      <column name="hit_dice" value="8" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Favored Enemy','Track','Wild Empathy']},
             {'level':2,'classFeats':['Combat Style']},
             {'level':3,'classFeats':['Endurance']},
@@ -226,22 +233,23 @@
             {'level':15,'classFeats':['Favored Enemy']},
             {'level':17,'classFeats':['Hide in Plain Sight']},
             {'level':20,'classFeats':['Favored Enemy']}
-            ]"/>
-            <column name="spells_per_day" value="PALADIN"/>
-            <column name="spells_known" value="PALADIN"/>
-            <column name="spells_domain" value="RANGER"/>
-            <column name="initial_gold" value="[6,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="9"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="ROGUE"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="lhl"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="8" />
-            <column name="hit_dice" value="6" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="PALADIN" />
+      <column name="spells_known" value="PALADIN" />
+      <column name="spells_domain" value="RANGER" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="9" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="ROGUE" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhl" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="8" />
+      <column name="hit_dice" value="6" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Sneak Attack','Trapfinding']},
             {'level':2,'classFeats':['Evasion']},
             {'level':3,'classFeats':['Sneak Attack','Trap Sense']},
@@ -260,57 +268,60 @@
             {'level':17,'classFeats':['Special Ability']},
             {'level':18,'classFeats':['Trap Sense']},
             {'level':19,'classFeats':['Sneak Attack','Special Ability']}
-            ]"/>
-            <column name="initial_gold" value="[5,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="10"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="SORCERER"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="llh"/>
-            <column  name="class_bab" value="0.5"/>
-            <column name="skill_points" value="4" />
-            <column name="hit_dice" value="4" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="initial_gold" value="[5,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="10" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="SORCERER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="4" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Summon Familiar']}
-            ]"/>
-            <column name="spells_per_day" value="SORCERER"/>
-            <column name="spells_known" value="SORCERER"/>
-            <column name="spells_domain" value="SORCERER_WIZARD"/>
-            <column name="initial_gold" value="[3,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="11"/>  
-            <column  name="type"  value="BASE_CLASS"/>  
-            <column  name="name"  value="WIZARD"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="llh"/>
-            <column  name="class_bab" value="0.5"/>
-            <column name="skill_points" value="2" />
-            <column name="hit_dice" value="4" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="SORCERER" />
+      <column name="spells_known" value="SORCERER" />
+      <column name="spells_domain" value="SORCERER_WIZARD" />
+      <column name="initial_gold" value="[3,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="11" />
+      <column name="type" value="BASE_CLASS" />
+      <column name="name" value="WIZARD" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="4" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Summon Familiar','Scribe Scroll']},
             {'level':5,'classFeats':['Bonus Feat Wizard']},
             {'level':10,'classFeats':['Bonus Feat Wizard']},
             {'level':15,'classFeats':['Bonus Feat Wizard']},
             {'level':20,'classFeats':['Bonus Feat Wizard']}
-            ]"/>
-            <column name="spells_per_day" value="CLERIC"/>
-            <column name="spells_known" value="BOOK"/>
-            <column name="spells_domain" value="SORCERER_WIZARD"/>
-            <column name="initial_gold" value="[3,D4,10]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="12"/>  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
-            <column  name="name"  value="ARCANE_ARCHER"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="hhl"/>
-            <column  name="class_bab" value="1"/>
-            <column name="skill_points" value="4" />
-            <column name="hit_dice" value="8" />
-            <column name="class_feats_map" value="[
+            ]" />
+      <column name="spells_per_day" value="CLERIC" />
+      <column name="spells_known" value="BOOK" />
+      <column name="spells_domain" value="SORCERER_WIZARD" />
+      <column name="initial_gold" value="[3,D4,10]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="12" />
+      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCANE_ARCHER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhl" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Enhance Arrow']},
             {'level':2,'classFeats':['Imbue Arrow']},
             {'level':3,'classFeats':['Enhance Arrow']},
@@ -321,18 +332,19 @@
             {'level':8,'classFeats':['Hail of Arrows']},
             {'level':9,'classFeats':['Enhance Arrow']},
             {'level':10,'classFeats':['Arrow of Death']}
-            ]"/>
-          </insert>
-          <insert tableName="class_character">
-          <column name="id" value="13"/>  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
-            <column  name="name"  value="ARCANE_TRICKSTER"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="lhh"/>
-            <column  name="class_bab" value="0.75"/>
-            <column name="skill_points" value="4" />
-            <column name="hit_dice" value="4" />
-            <column name="class_feats_map" value="[
+            ]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="13" />
+      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCANE_TRICKSTER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="4" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['Ranged Legerdemain']},
             {'level':2,'classFeats':['Sneak Attack']},
             {'level':3,'classFeats':['Impromptu Sneak Attack']},
@@ -343,26 +355,54 @@
             {'level':8,'classFeats':['Sneak Attack']},
             {'level':9,'classFeats':['Ranged Legerdemain']},
             {'level':10,'classFeats':['Sneak Attack']}
-            ]"/>
-          </insert>  
-          <insert tableName="class_character">
-          <column name="id" value="14"/>  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
-            <column  name="name"  value="ARCHMAGE"/>
-            <column  name="avatar_url"  value="address value"/>
-            <column  name="saving_throw" value="llh"/>
-            <column  name="class_bab" value="0.5"/>
-            <column name="skill_points" value="2" />
-            <column name="hit_dice" value="4" />
-            <column name="class_feats_map" value="[
+            ]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="14" />
+      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCHMAGE" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="4" />
+      <column name="class_feats_map"
+        value="[
             {'level':1,'classFeats':['High Arcana']},
             {'level':2,'classFeats':['High Arcana']},
             {'level':3,'classFeats':['High Arcana']},
             {'level':4,'classFeats':['High Arcana']},
             {'level':5,'classFeats':['High Arcana']}
-            ]"/>
-          </insert>
-          <!-- <insert tableName="class_character">  
+            ]" />
+    </insert>
+    <insert tableName="class_character">
+      <column name="id" value="15" />
+      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ASSASSIN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhl" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="6" />
+      <column name="spells_per_day" value="ASSASSIN" />
+      <column name="spells_known" value="ASSASSIN" />
+      <column name="spells_domain" value="ASSASSIN" />
+      <column name="class_feats_map"
+        value="[
+            {'level':1,'classFeats':['Sneak attack','Death attack','Poison use']},
+            {'level':2,'classFeats':['Save against poison','Uncanny dodge']},
+            {'level':3,'classFeats':['Sneak attack']},
+            {'level':4,'classFeats':['Save against poison']},
+            {'level':5,'classFeats':['Improved uncanny dodge','Sneak attack']},
+            {'level':6,'classFeats':['Save against poison']},
+            {'level':7,'classFeats':['Sneak Attack']},
+            {'level':8,'classFeats':['Save against poison','Hide in plain sight']},
+            {'level':9,'classFeats':['Sneak Attack']},
+            {'level':10,'classFeats':['Save against poison']}
+            ]" />
+    </insert>
+
+    <!-- <insert tableName="class_character">  
             <column  name="type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="assassin"/>
             <column  name="avatar_url"  value="address value"/>
