@@ -398,7 +398,7 @@
             {'level':7,'classFeats':['Sneak Attack']},
             {'level':8,'classFeats':['Save against poison','Hide in plain sight']},
             {'level':9,'classFeats':['Sneak Attack']},
-            {'level':10,'classFeats':['Save against poison']}
+            {'level':10,'classFeats':['Save against poison']} 
             ]" />
     </insert>
 
