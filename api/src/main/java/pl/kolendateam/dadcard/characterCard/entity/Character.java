@@ -72,7 +72,11 @@ public class Character {
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<ClassPc> classPcArray;
 
-  @JdbcTypeCode(SqlTypes.JSON)
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // Size size;
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "size_id", referencedColumnName = "id")
   Size size;
 
   String race;
@@ -510,7 +514,7 @@ public class Character {
     Size sizeNew = new Size();
     sizeNew.sizeBonus(size);
     this.size = sizeNew;
-    this.armorClass.setSizeBonus(sizeNew.getBonusAttackAc());
+    this.armorClass.setSizeBonus(sizeNew.getBonus());
     for (ClassSkills skill : classSkills) {
       if (skill.getNameSkill().equals("hide")) {
         skill.setSkillDifferentBonus(+sizeNew.getHide());

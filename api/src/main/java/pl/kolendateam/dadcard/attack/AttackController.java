@@ -72,7 +72,7 @@ public class AttackController {
       attackDTO.d20 +
       (int) character1.getBab() +
       ab.bonusStreght(ab) +
-      character1.getSize().getBonusAttackAc();
+      character1.getSize().getBonus();
 
     ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
       character2.getArmorClass(),

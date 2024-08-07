@@ -13,9 +13,9 @@
             <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" />
             <column name="race" value="Halfling"/>
             <column name="sub_race" value="Lightfoot"/>
-            <column name="size" value="null"/>
+            <column name="size_id" value="4" />
             <column name="speed" value="20"/>
-            <column name="class_pc_array" value="null" />
+            <column name="class_pc_array" value="[]" />
             <!-- [{
                 'id': 9,
                 'className': 'ROGUE',
@@ -31,7 +31,7 @@
             }]"/> -->
             <column name="effective_character_lv" value="10"/>
             <column name="level_adjustment" value="0"/>
-            <column name="vitality" value="null" />
+            <column name="vitality" value="{}" />
             <!-- {
                 'life': 13,
                 'hitDices': {
@@ -42,19 +42,19 @@
                 'hitPoints': 58
             }
                 " /> -->
-            <column name="saving_throw" value="null"/>
+            <column name="saving_throw" value="{}"/>
             <column name="skill_points" value="0"/>
-            <column name="armor_class" value="null"/>
-            <column name="class_skills" value="null"/>
-            <column name="feats_list" value="null"/>
-            <column name="level_feats_list" value="null"/>
+            <column name="armor_class" value="{}"/>
+            <column name="class_skills" value="[]"/>
+            <column name="feats_list" value="[]"/>
+            <column name="level_feats_list" value="[]"/>
             <column name="bab" value="0"/>
-            <column name="special_attacks" value="null"/>
-            <column name="inventory_id" value="null"/>
-            <column name="attacks_id" value="null"/>
-            <column name="magic_per_day" value="null"/>
-            <column name="magic_known" value="null"/>
-            <column name="books" value="null"/>
+            <column name="special_attacks" value="{}"/>
+            <column name="inventory_id" value="100"/>
+            <column name="attacks_id" value="100"/>
+            <column name="magic_per_day" value="{}"/>
+            <column name="magic_known" value="{}"/>
+            <column name="books" value="[]"/>
             <column name="experience" value="0"/>
             <column name="treasure" value="0"/>
         </insert>
