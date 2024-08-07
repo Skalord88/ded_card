@@ -1,0 +1,24 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="309" author="oscar">
+
+        <insert tableName="inventory">
+            <column name="id" value="100" />
+            <column name="armor_id" value="2" />
+            <column name="shield_id" value="3" />
+            <column name="weapon_id_one" value="1" />
+            <column name="weapon_id_two" value="1" />
+            <column name="weapon_id_three" value="1" />
+            <column name="weapon_id_four" value="1" />
+            <column name="weapon_id_five" value="1" />
+            <column name="head_id" value="4" />
+            <column name="neck_id" value="4" />
+            <column name="arms_id" value="4" />
+            <column name="cloth_id" value="4" />
+            <column name="legs_id" value="4" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

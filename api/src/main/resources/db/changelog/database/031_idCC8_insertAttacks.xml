@@ -1,0 +1,18 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="312" author="oscar">
+
+        <insert tableName="attacks">
+            <column name="id" value="100" />
+            <column name="attacks_id_onefirst" value="1" />
+            <column name="attacks_id_onesecond" value="1" />
+            <column name="attacks_id_oneadditional" value="1" />
+            <column name="attacks_id_twofirst" value="1" />
+            <column name="attacks_id_twosecond" value="1" />
+            <column name="attacks_id_twoadditional" value="1" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
