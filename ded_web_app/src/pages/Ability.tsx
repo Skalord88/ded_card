@@ -40,6 +40,7 @@ export function Ability() {
         className="rpgui-container-framed-golden flex-container"
         style={{ minWidth: "50%"}}
         >
+        <p>ID: {charId}</p>
         <p>
           STR:
           <input

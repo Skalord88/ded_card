@@ -8,57 +8,55 @@
             <column name="id" value="100"/>
             <column name="character_name" value="Puli"/>
             <column name="player_name" value="Paulina"/>
-            <column name="abilitys" value="{
-                &quot;streght&quot;: 12,
-                &quot;dextrity&quot;: 20,
-                &quot;constitution&quot;: 12,
-                &quot;intelligence&quot;: 13,
-                &quot;wisdom&quot;: 8,
-                &quot;charisma&quot;: 10
-            }"/>
+            <!-- <column name="abilitys" value="{'strength': 10, 'dextrity': 10, 'constitution': 10, 'intelligence': 10, 'wisdom': 10, 'charisma': 10}" /> -->
+            <!-- <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" /> -->
+            <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" />
             <column name="race" value="Halfling"/>
             <column name="sub_race" value="Lightfoot"/>
-            <column name="size" value="SMALL"/>
+            <column name="size" value="null"/>
             <column name="speed" value="20"/>
-            <column name="class_pc_array" value="[{
-                &quot;id&quot;: 9,
-                &quot;className&quot;: &quot;ROGUE&quot;,
-                &quot;level&quot;: 6
+            <column name="class_pc_array" value="null" />
+            <!-- [{
+                'id': 9,
+                'className': 'ROGUE',
+                'level': 6
             },{
-                &quot;id&quot;: 5,
-                &quot;className&quot;: &quot;FIGHTER&quot;,
-                &quot;level&quot;: 2
+                'id': 5,
+                'className': 'FIGHTER',
+                'level': 2
             },{
-                &quot;id&quot;: 11,
-                &quot;className&quot;: &quot;WIZARD&quot;,
-                &quot;level&quot;: 2
-            }]"/>
+                'id': 11,
+                'className': 'WIZARD',
+                'level': 2
+            }]"/> -->
             <column name="effective_character_lv" value="10"/>
             <column name="level_adjustment" value="0"/>
-            <column name="vitality" value="{
-                &quot;life&quot;: 13,
-                &quot;hitDices&quot;: {
-                    &quot;6&quot;: 6,
-                    &quot;10&quot;: 2,
-                    &quot;4&quot;: 2
+            <column name="vitality" value="null" />
+            <!-- {
+                'life': 13,
+                'hitDices': {
+                    '6': 6,
+                    '10': 2,
+                    '4': 2
                 },
-                &quot;hitPoints&quot;: 58
-            }"/>
+                'hitPoints': 58
+            }
+                " /> -->
             <column name="saving_throw" value="null"/>
-            <column name="skill_points" value="null"/>
+            <column name="skill_points" value="0"/>
             <column name="armor_class" value="null"/>
             <column name="class_skills" value="null"/>
             <column name="feats_list" value="null"/>
             <column name="level_feats_list" value="null"/>
-            <column name="bab" value="null"/>
+            <column name="bab" value="0"/>
             <column name="special_attacks" value="null"/>
             <column name="inventory_id" value="null"/>
             <column name="attacks_id" value="null"/>
             <column name="magic_per_day" value="null"/>
             <column name="magic_known" value="null"/>
             <column name="books" value="null"/>
-            <column name="experience" value="null"/>
-            <column name="treasure" value="null"/>
+            <column name="experience" value="0"/>
+            <column name="treasure" value="0"/>
         </insert>
     </changeSet>
 </databaseChangeLog>

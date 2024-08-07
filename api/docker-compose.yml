@@ -1,4 +1,4 @@
-# version: '3.8'
+version: latest
 services:
   db:
     image: postgres:10.5
@@ -9,7 +9,7 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5432:5432'
+      - '5433:5432'
     networks:
       - backend
     volumes: 
