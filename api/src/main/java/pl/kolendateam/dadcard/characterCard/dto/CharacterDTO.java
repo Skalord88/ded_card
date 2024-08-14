@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -41,8 +42,9 @@ public class CharacterDTO implements Serializable {
   public String playerName;
   public ArrayList<ClassPcListDTO> classPcList;
   public SizeEnum size;
-  public String race;
-  public String subRace;
+  public SubRaceBaseDTO race;
+  // public String race;
+  // public String subRace;
   public VitalityDTO vitality;
   public int speed;
   public ArmorClassDTO armorClass;
@@ -75,8 +77,9 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     this.size = character.sizeCharacter();
-    this.race = character.getRace();
-    this.subRace = character.getSubRace();
+    this.race = new SubRaceBaseDTO(character.getRace());
+    // this.race = character.getRace();
+    // this.subRace = character.getSubRace();
     this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
@@ -127,8 +130,9 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     this.size = character.sizeCharacter();
-    this.race = character.getRace();
-    this.subRace = character.getSubRace();
+    this.race = new SubRaceBaseDTO(character.getRace());
+    // this.race = character.getRace();
+    // this.subRace = character.getSubRace();
     this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
@@ -177,8 +181,8 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     this.size = character.sizeCharacter();
-    this.race = character.getRace();
-    this.subRace = character.getSubRace();
+    // this.race = character.getRace();
+    // this.subRace = character.getSubRace();
     this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
@@ -231,8 +235,9 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     this.size = character.sizeCharacter();
-    this.race = character.getRace();
-    this.subRace = character.getSubRace();
+    this.race = new SubRaceBaseDTO(character.getRace());
+    // this.race = character.getRace();
+    // this.subRace = character.getSubRace();
     this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =

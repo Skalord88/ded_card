@@ -11,8 +11,7 @@
             <!-- <column name="abilitys" value="{'strength': 10, 'dextrity': 10, 'constitution': 10, 'intelligence': 10, 'wisdom': 10, 'charisma': 10}" /> -->
             <!-- <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" /> -->
             <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" />
-            <column name="race" value="Halfling"/>
-            <column name="sub_race" value="Lightfoot"/>
+            <column name="race_id" value="19" />
             <column name="size_id" value="4" />
             <column name="speed" value="20"/>
             <column name="class_pc_array" value="[]" />

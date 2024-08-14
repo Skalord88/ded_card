@@ -192,14 +192,15 @@ public class CharacterController {
 
     ClassPc classPc = new ClassPc(
       classCharacter.getId(),
-      classCharacter.getName(),
-      (byte) 1,
-      classCharacter.getHitDice(),
-      classCharacter.getSavingThrow(),
-      classCharacter.getClassBab(),
-      classCharacter.getSpellsPerDay(),
-      classCharacter.getSpellsKnown(),
-      classCharacter.getSpellsDomain()
+      1
+      // classCharacter.getName(),
+      // (byte) 1,
+      // classCharacter.getHitDice(),
+      // classCharacter.getSavingThrow(),
+      // classCharacter.getClassBab(),
+      // classCharacter.getSpellsPerDay(),
+      // classCharacter.getSpellsKnown(),
+      // classCharacter.getSpellsDomain()
     );
 
     character.incrementEffectiveCharacterLv();
@@ -233,7 +234,7 @@ public class CharacterController {
 
     // saving throw
     if (levelClassInDB == 1) {
-      character.addSavingThrowLevelOne(classPc.getSavingThrow());
+      // character.addSavingThrowLevelOne(classPc.getSavingThrow());
     } else if (levelClassInDB > 1) {
       character.incementSavingThrow();
     }
@@ -328,14 +329,15 @@ public class CharacterController {
 
     ClassPc classPc = new ClassPc(
       classCharacter.getId(),
-      classCharacter.getName(),
-      (byte) 1,
-      classCharacter.getHitDice(),
-      classCharacter.getSavingThrow(),
-      classCharacter.getClassBab(),
-      classCharacter.getSpellsPerDay(),
-      classCharacter.getSpellsKnown(),
-      classCharacter.getSpellsDomain()
+      1
+      // classCharacter.getName(),
+      // (byte) 1,
+      // classCharacter.getHitDice(),
+      // classCharacter.getSavingThrow(),
+      // classCharacter.getClassBab(),
+      // classCharacter.getSpellsPerDay(),
+      // classCharacter.getSpellsKnown(),
+      // classCharacter.getSpellsDomain()
     );
 
     // feat

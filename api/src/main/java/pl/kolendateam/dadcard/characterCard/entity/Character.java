@@ -79,8 +79,12 @@ public class Character {
   @JoinColumn(name = "size_id", referencedColumnName = "id")
   Size size;
 
-  String race;
-  String subRace;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "race_id", referencedColumnName = "id")
+  Race race;
+
+  // String race;
+  // String subRace;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Vitality vitality;
@@ -363,9 +367,14 @@ public class Character {
     this.vitality.setHitPoints(hP);
   }
 
+  // public void setCharacterRace(Race race) {
+  //   this.race = race.getRacesName();
+  //   this.subRace = race.getSubRaceName();
+  // }
+
   public void setCharacterRace(Race race) {
-    this.race = race.getRacesName();
-    this.subRace = race.getSubRaceName();
+    this.race = race;
+    // this.subRace = race.getSubRaceName();
   }
 
   public void addSkill(String skills) {
@@ -489,7 +498,7 @@ public class Character {
       } else {
         boolean prereqCheck = characterFeat.checkPrerequisite(
           feat,
-          subRace,
+          race,
           savingThrow,
           armorClass,
           classSkills,
@@ -510,17 +519,18 @@ public class Character {
     this.speed += speed;
   }
 
-  public void sizeCharacter(SizeEnum size) {
-    Size sizeNew = new Size();
-    sizeNew.sizeBonus(size);
-    this.size = sizeNew;
-    this.armorClass.setSizeBonus(sizeNew.getBonus());
-    for (ClassSkills skill : classSkills) {
-      if (skill.getNameSkill().equals("hide")) {
-        skill.setSkillDifferentBonus(+sizeNew.getHide());
-      }
-    }
-  }
+  // public void sizeCharacter(Size size) {
+
+  // Size sizeNew = new Size();
+  // sizeNew.sizeBonus(size);
+  // this.size = sizeNew;
+  // this.armorClass.setSizeBonus(sizeNew.getBonus());
+  // for (ClassSkills skill : classSkills) {
+  //   if (skill.getNameSkill().equals("hide")) {
+  //     skill.setSkillDifferentBonus(+sizeNew.getHide());
+  //   }
+  // }
+  // }
 
   public SizeEnum sizeCharacter() {
     return this.size.getSize();

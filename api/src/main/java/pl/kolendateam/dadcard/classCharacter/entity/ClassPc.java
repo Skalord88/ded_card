@@ -19,23 +19,25 @@ public class ClassPc implements Serializable {
 
   short id;
 
-  @NonNull
-  @Enumerated(EnumType.STRING)
-  EnumClass name;
+  // @NonNull
+  // @Enumerated(EnumType.STRING)
+  // EnumClass name;
 
-  byte level;
-  byte hitDice;
-  String savingThrow;
-  double classBab;
+  int level;
+  ClassCharacter classCharacter;
 
-  @Enumerated(EnumType.STRING)
-  SpellsEnum spellsPerDay;
+  // byte hitDice;
+  // String savingThrow;
+  // double classBab;
 
-  @Enumerated(EnumType.STRING)
-  SpellsEnum spellsKnown;
+  // @Enumerated(EnumType.STRING)
+  // SpellsEnum spellsPerDay;
 
-  @Enumerated(EnumType.STRING)
-  SpellsEnum spells_domain;
+  // @Enumerated(EnumType.STRING)
+  // SpellsEnum spellsKnown;
+
+  // @Enumerated(EnumType.STRING)
+  // SpellsEnum spells_domain;
 
   public void incrementLevel() {
     this.level++;

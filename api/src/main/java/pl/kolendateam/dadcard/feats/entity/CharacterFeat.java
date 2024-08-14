@@ -10,6 +10,7 @@ import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
+import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @NoArgsConstructor
@@ -43,7 +44,7 @@ public class CharacterFeat implements Serializable {
 
   public boolean checkPrerequisite(
     Feats feat,
-    String subRace,
+    Race subRace,
     SavingThrow savingThrow,
     ArmorClass armorClass,
     ArrayList<ClassSkills> classSkills,
@@ -60,7 +61,7 @@ public class CharacterFeat implements Serializable {
     if (p.getRace() != null) {
       ckeckTot++;
       for (String r : p.getRace()) {
-        if (subRace == r) {
+        if (subRace.getSubRaceName() == r) {
           checkEvry++;
         }
       }

@@ -19,13 +19,10 @@
         <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="race" type="varchar(255)">
+        <column name="race_id" type="SMALLINT">
           <constraints nullable="true"/>
         </column>
-        <column name="sub_race" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-        <column name="size_id" type="int">
+        <column name="size_id" type="TINYINT">
           <constraints nullable="true"/>
         </column>
         <column name="speed" type="int">

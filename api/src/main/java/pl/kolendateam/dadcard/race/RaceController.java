@@ -89,7 +89,9 @@ public class RaceController {
     Character character = characterOpt.get();
     Race race = raceOpt.get();
 
-    character.sizeCharacter(race.getSize());
+    character.setSize(race.getSize());
+
+    // character.sizeCharacter(race.getSize());
 
     character.addSpeed(race.getSpeed());
 
