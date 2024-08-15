@@ -26,6 +26,7 @@ import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
+import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
@@ -47,6 +48,7 @@ public class CharacterController {
 
   ClassRepository classRepository;
   CharacterRepository characterRepository;
+  ClassPcRepository classPcRepository;
   FeatsRepository featsRepository;
   SkillsRepository skillsRepository;
   SpellsTableRepository spellsTableRepository;
@@ -59,6 +61,7 @@ public class CharacterController {
   public CharacterController(
     CharacterRepository characterRepository,
     ClassRepository classRepository,
+    ClassPcRepository classPcRepository,
     FeatsRepository featsRepository,
     SkillsRepository skillsRepository,
     SpellsTableRepository spellsTableRepository,
@@ -69,6 +72,7 @@ public class CharacterController {
   ) {
     this.characterRepository = characterRepository;
     this.classRepository = classRepository;
+    this.classPcRepository = classPcRepository;
     this.featsRepository = featsRepository;
     this.skillsRepository = skillsRepository;
     this.spellsTableRepository = spellsTableRepository;
@@ -148,13 +152,20 @@ public class CharacterController {
     if (!inventoryOpt.isPresent()) {
       throw new ResponseStatusException(
         HttpStatus.NOT_FOUND,
-        "Inventory Not Found"
+        "Attacks Not Found"
       );
     }
 
     Attacks characterAttacks = attacksOpt.get();
 
-    return new CharacterDTO(character, characterInventory, characterAttacks);
+    List<ClassPc> characterClassList = this.classPcRepository.findAll();
+
+    return new CharacterDTO(
+      character,
+      characterInventory,
+      characterAttacks,
+      characterClassList
+    );
   }
 
   @PostMapping(value = "class/{id}", consumes = { "application/json" })
@@ -188,11 +199,9 @@ public class CharacterController {
 
     ClassCharacter classCharacter = classOpt.get();
 
-    ArrayList<ClassPc> classPcList = character.getClassPcArray();
+    List<ClassPc> classPcList = character.getClassPcArray();
 
     ClassPc classPc = new ClassPc(
-      classCharacter.getId(),
-      1
       // classCharacter.getName(),
       // (byte) 1,
       // classCharacter.getHitDice(),
@@ -325,11 +334,11 @@ public class CharacterController {
 
     ClassCharacter classCharacter = classOpt.get();
 
-    ArrayList<ClassPc> classPcList = character.getClassPcArray();
+    List<ClassPc> classPcList = character.getClassPcArray();
 
     ClassPc classPc = new ClassPc(
-      classCharacter.getId(),
-      1
+      1,
+      classCharacter
       // classCharacter.getName(),
       // (byte) 1,
       // classCharacter.getHitDice(),
@@ -385,7 +394,7 @@ public class CharacterController {
     if (character.getClassPcArray().size() != 0) {
       for (ClassPc cP : character.getClassPcArray()) {
         for (ClassCharacter cC : allClassesList) {
-          if (cC.getId() == cP.getId()) {
+          if (cC.getId() == cP.getClassCharacter().getId()) {
             character.setSkillsTruePcArray(cC.getAvailableSkills());
           }
         }
@@ -403,7 +412,9 @@ public class CharacterController {
       character.decementSavingThrow();
     }
     if (levelClassInDB == 1) {
-      character.minusSavingThrowLevelOne(classPc.getSavingThrow());
+      character.minusSavingThrowLevelOne(
+        classPc.getClassCharacter().getSavingThrow()
+      );
     }
 
     // magic

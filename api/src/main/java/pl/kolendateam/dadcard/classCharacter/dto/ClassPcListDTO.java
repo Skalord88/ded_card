@@ -7,8 +7,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ClassPcListDTO {
 
-    public int id;
-    public String className;
-    public int level;
-
+  public int id;
+  public String type;
+  public String className;
+  public int level;
+  public byte hitDice;
+  public double classBab;
+  public String savingThrow;
+  public byte skillPoints;
 }

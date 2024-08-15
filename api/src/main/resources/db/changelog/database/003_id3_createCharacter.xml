@@ -28,9 +28,9 @@
         <column name="speed" type="int">
           <constraints nullable="true"/>
         </column>
-        <column name="class_pc_array" type="jsonb">
+        <!-- <column name="class_pc" type="jsonb">
           <constraints nullable="true"/>
-        </column>
+        </column> -->
         <column name="effective_character_lv" type="SMALLINT">
           <constraints nullable="true"/>
         </column>

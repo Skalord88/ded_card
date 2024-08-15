@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
@@ -19,6 +20,7 @@ import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
 import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperCharacterFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.CharacterFeatsDTO;
@@ -227,13 +229,14 @@ public class CharacterDTO implements Serializable {
   public CharacterDTO(
     Character character,
     Inventory characterInventory,
-    Attacks characterAttacks
+    Attacks characterAttacks,
+    List<ClassPc> characterClassList
   ) {
     this.id = character.getId();
     this.characterName = character.getCharacterName();
     this.playerName = character.getPlayerName();
     this.classPcList =
-      MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
+      MapperClassPcListToDTO.toClassPcListDTO(characterClassList);
     this.size = character.sizeCharacter();
     this.race = new SubRaceBaseDTO(character.getRace());
     // this.race = character.getRace();

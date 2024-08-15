@@ -1,31 +1,56 @@
 package pl.kolendateam.dadcard.classCharacter.entity;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
-import java.util.ArrayList;
-import lombok.AllArgsConstructor;
+import java.util.List;
+import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
-import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
-@AllArgsConstructor
 @Setter
 @Getter
 @NoArgsConstructor
+@Entity
 public class ClassPc implements Serializable {
 
-  short id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  int id;
+
+  int level;
+
+  @ManyToOne
+  @JoinColumn(name = "character_id", referencedColumnName = "id")
+  Character character;
+
+  @ManyToOne
+  @JoinColumn(name = "class_character_id", referencedColumnName = "id")
+  ClassCharacter classCharacter;
+
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "class_pc_array",
+  //   joinColumns = @JoinColumn(name = "class_character_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "character_id")
+  // )
+  // ClassCharacter classCharacter;
+
+  // @OneToOne(cascade = CascadeType.PERSIST)
+  // @JoinColumn(name = "character_id", referencedColumnName = "id")
+  // Character character;
+
+  // short id;
 
   // @NonNull
   // @Enumerated(EnumType.STRING)
   // EnumClass name;
-
-  int level;
-  ClassCharacter classCharacter;
-
   // byte hitDice;
   // String savingThrow;
   // double classBab;
@@ -39,6 +64,11 @@ public class ClassPc implements Serializable {
   // @Enumerated(EnumType.STRING)
   // SpellsEnum spells_domain;
 
+  public ClassPc(int lv, ClassCharacter classPg) {
+    this.level = lv;
+    this.classCharacter = classPg;
+  }
+
   public void incrementLevel() {
     this.level++;
   }
@@ -47,18 +77,20 @@ public class ClassPc implements Serializable {
     this.level--;
   }
 
-  public int findIndexInArrayById(ArrayList<ClassPc> classPcList) {
+  public int findIndexInArrayById(List<ClassPc> classPcList) {
     for (int i = 0; i < classPcList.size(); i++) {
-      if (this.id == classPcList.get(i).getId()) {
+      if (
+        this.classCharacter.getId() == classPcList.get(i).classCharacter.getId()
+      ) {
         return i;
       }
     }
     return -1;
   }
 
-  public int findLevelInArrayById(ArrayList<ClassPc> classPcList, short id) {
+  public int findLevelInArrayById(List<ClassPc> classPcList, int id) {
     for (ClassPc clPc : classPcList) {
-      if (this.id == id) {
+      if (this.classCharacter.getId() == id) {
         return clPc.getLevel();
       }
     }

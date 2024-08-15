@@ -8,13 +8,17 @@
             <column name="id" value="100"/>
             <column name="character_name" value="Puli"/>
             <column name="player_name" value="Paulina"/>
-            <!-- <column name="abilitys" value="{'strength': 10, 'dextrity': 10, 'constitution': 10, 'intelligence': 10, 'wisdom': 10, 'charisma': 10}" /> -->
-            <!-- <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" /> -->
-            <column name="abilitys" value="{&quot;strength&quot;: 10, &quot;dextrity&quot;: 10, &quot;constitution&quot;: 10, &quot;intelligence&quot;: 10, &quot;wisdom&quot;: 10, &quot;charisma&quot;: 10}" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 10,
+                &quot;dextrity&quot;: 10, 
+                &quot;constitution&quot;: 10, 
+                &quot;intelligence&quot;: 10, 
+                &quot;wisdom&quot;: 10, 
+                &quot;charisma&quot;: 10
+            }" />
             <column name="race_id" value="19" />
             <column name="size_id" value="4" />
             <column name="speed" value="20"/>
-            <column name="class_pc_array" value="[]" />
             <!-- [{
                 'id': 9,
                 'className': 'ROGUE',

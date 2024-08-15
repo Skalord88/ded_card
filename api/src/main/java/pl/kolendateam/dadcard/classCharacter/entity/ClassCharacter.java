@@ -9,8 +9,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,11 +27,12 @@ import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 @Setter
 @AllArgsConstructor
 @Entity
-public class ClassCharacter {
+@Table(name = "class_character")
+public class ClassCharacter implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
+  int id;
 
   @NonNull
   @Enumerated(EnumType.STRING)

@@ -6,7 +6,7 @@
 
   <changeSet id="107" author="oscar">
       <createTable tableName="class_study">
-        <column name="class_id" type="SMALLINT">
+        <column name="class_id" type="int">
           <constraints nullable="false"/>
         </column>
         <column name="study_id" type="SMALLINT">

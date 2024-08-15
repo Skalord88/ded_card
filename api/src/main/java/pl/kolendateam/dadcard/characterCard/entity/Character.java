@@ -8,6 +8,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.lang.reflect.Type;
@@ -69,8 +71,20 @@ public class Character {
   @NonNull
   String playerName;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<ClassPc> classPcArray;
+  @OneToMany(
+    mappedBy = "character",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
+  )
+  List<ClassPc> classPcArray;
+
+  // @ManyToMany(cascade = CascadeType.MERGE)
+  // @JoinTable(
+  //   name = "class_pc",
+  //   joinColumns = @JoinColumn(name = "character_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "class_character_id")
+  // )
+  // List<ClassPc> classPcArray;
 
   // @JdbcTypeCode(SqlTypes.JSON)
   // Size size;
@@ -611,12 +625,13 @@ public class Character {
         for (ClassPc classPc : this.classPcArray) {
           if (
             table.getSpellsDayKnown() == SpellsEnum.DAY &&
-            table.getMagicClass() == classPc.getSpellsPerDay()
+            table.getMagicClass() ==
+            classPc.getClassCharacter().getSpellsPerDay()
           ) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicPerDay.put(
-                    classPc.getName(),
+                    classPc.getClassCharacter().getName(),
                     spellsInThisLevel.getSpells()
                   );
               }
@@ -625,12 +640,13 @@ public class Character {
 
           if (
             table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-            table.getMagicClass() == classPc.getSpellsKnown()
+            table.getMagicClass() ==
+            classPc.getClassCharacter().getSpellsKnown()
           ) {
             for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
               if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
                 this.magicKnown.put(
-                    classPc.getName(),
+                    classPc.getClassCharacter().getName(),
                     spellsInThisLevel.getSpells()
                   );
               }
@@ -643,8 +659,8 @@ public class Character {
 
   public EnumClass characterGetClassEnumById(int idClass) {
     for (ClassPc clPc : this.classPcArray) {
-      if (idClass == clPc.getId()) {
-        return clPc.getName();
+      if (idClass == clPc.getClassCharacter().getId()) {
+        return clPc.getClassCharacter().getName();
       }
     }
     return null;
@@ -652,8 +668,8 @@ public class Character {
 
   public SpellsEnum characterGetSpellClassById(int idClass) {
     for (ClassPc clPc : this.classPcArray) {
-      if (idClass == clPc.getId()) {
-        return clPc.getSpells_domain();
+      if (idClass == clPc.getClassCharacter().getId()) {
+        return clPc.getClassCharacter().getSpellsDomain();
       }
     }
     return null;
@@ -946,9 +962,9 @@ public class Character {
     }
   }
 
-  public int findLevelInClassesById(short id) {
+  public int findLevelInClassesById(int id) {
     for (ClassPc classPc : classPcArray) {
-      if (classPc.getId() == id) {
+      if (classPc.getClassCharacter().getId() == id) {
         return classPc.getLevel();
       }
     }

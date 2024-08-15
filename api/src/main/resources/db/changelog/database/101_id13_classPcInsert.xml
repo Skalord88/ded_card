@@ -1,0 +1,23 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="13" author="oscar">
+        <insert tableName="class_pc">
+            <column name="level" value="6" />
+            <column name="character_id" value="100" />
+            <column name="class_character_id" value="9" />
+        </insert>
+        <insert tableName="class_pc">
+            <column name="level" value="2" />
+            <column name="character_id" value="100" />
+            <column name="class_character_id" value="5" />
+        </insert>
+        <insert tableName="class_pc">
+            <column name="level" value="2" />
+            <column name="character_id" value="100" />
+            <column name="class_character_id" value="11" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
