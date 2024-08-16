@@ -6,7 +6,7 @@
 
 
   <changeSet id="3" author="damian">
-      <createTable tableName="character">
+      <createTable tableName="character_card">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
@@ -28,7 +28,7 @@
         <column name="speed" type="int">
           <constraints nullable="true"/>
         </column>
-        <!-- <column name="class_pc" type="jsonb">
+        <!-- <column name="class_pc" type="int">
           <constraints nullable="true"/>
         </column> -->
         <column name="effective_character_lv" type="SMALLINT">

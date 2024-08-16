@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="4" author="oscar">
-        <insert tableName="character">
+        <insert tableName="character_card">
             <column name="id" value="100"/>
             <column name="character_name" value="Puli"/>
             <column name="player_name" value="Paulina"/>

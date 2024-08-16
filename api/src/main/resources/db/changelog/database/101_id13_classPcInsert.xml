@@ -6,17 +6,17 @@
     <changeSet id="13" author="oscar">
         <insert tableName="class_pc">
             <column name="level" value="6" />
-            <column name="character_id" value="100" />
+            <column name="character_card_id" value="100" />
             <column name="class_character_id" value="9" />
         </insert>
         <insert tableName="class_pc">
             <column name="level" value="2" />
-            <column name="character_id" value="100" />
+            <column name="character_card_id" value="100" />
             <column name="class_character_id" value="5" />
         </insert>
         <insert tableName="class_pc">
             <column name="level" value="2" />
-            <column name="character_id" value="100" />
+            <column name="character_card_id" value="100" />
             <column name="class_character_id" value="11" />
         </insert>
     </changeSet>

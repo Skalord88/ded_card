@@ -5,19 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
+@Table(name = "class_pc")
 public class ClassPc implements Serializable {
 
   @Id
@@ -27,12 +28,20 @@ public class ClassPc implements Serializable {
   int level;
 
   @ManyToOne
-  @JoinColumn(name = "character_id", referencedColumnName = "id")
-  Character character;
+  @JoinColumn(name = "class_character_id")
+  ClassCharacter classCharacter;
 
   @ManyToOne
-  @JoinColumn(name = "class_character_id", referencedColumnName = "id")
-  ClassCharacter classCharacter;
+  @JoinColumn(name = "character_card_id")
+  Character character;
+
+  // @ManyToOne
+  // @JoinColumn(name = "character_id", referencedColumnName = "id")
+  // Character character;
+
+  // @ManyToOne
+  // @JoinColumn(name = "class_character_id", referencedColumnName = "id")
+  // ClassCharacter classCharacter;
 
   // @ManyToMany
   // @JoinTable(
@@ -79,9 +88,7 @@ public class ClassPc implements Serializable {
 
   public int findIndexInArrayById(List<ClassPc> classPcList) {
     for (int i = 0; i < classPcList.size(); i++) {
-      if (
-        this.classCharacter.getId() == classPcList.get(i).classCharacter.getId()
-      ) {
+      if (this.classCharacter.getId() == classPcList.get(i).getId()) {
         return i;
       }
     }

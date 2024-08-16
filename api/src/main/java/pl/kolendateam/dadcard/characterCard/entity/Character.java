@@ -8,10 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -59,6 +58,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 @Getter
 @Setter
 @Entity
+@Table(name = "character_card")
 public class Character {
 
   @Id
@@ -72,11 +72,19 @@ public class Character {
   String playerName;
 
   @OneToMany(
-    mappedBy = "character",
+    mappedBy = "character_card",
     cascade = CascadeType.ALL,
     orphanRemoval = true
   )
   List<ClassPc> classPcArray;
+
+  // @ManyToMany(cascade = CascadeType.MERGE)
+  // @JoinTable(
+  //   name = "class_pc",
+  //   joinColumns = @JoinColumn(name = "character_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "class_pc_id")
+  // )
+  // List<ClassPc> classPcArray;
 
   // @ManyToMany(cascade = CascadeType.MERGE)
   // @JoinTable(

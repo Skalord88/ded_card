@@ -11,7 +11,7 @@
             <column name="level" type="INT">
                 <constraints nullable="false" />
             </column>
-            <column name="character_id" type="INT">
+            <column name="character_card_id" type="INT">
                 <constraints nullable="false" />
             </column>
             <column name="class_character_id" type="INT">
@@ -19,4 +19,19 @@
             </column>
         </createTable>
     </changeSet>
+
+    <!-- <changeSet id="13" author="oscar">
+        <addForeignKeyConstraint
+            constraintName="fk_class_character"
+            baseTableName="class_pc"
+            baseColumnNames="class_character_id"
+            referencedTableName="class_character"
+            referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+            constraintName="fk_character"
+            baseTableName="class_pc"
+            baseColumnNames="character_id"
+            referencedTableName="character"
+            referencedColumnNames="id"/>
+    </changeSet> -->
 </databaseChangeLog>
