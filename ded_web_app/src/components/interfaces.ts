@@ -78,6 +78,10 @@ export type ClassPc = {
   classType: number;
   className: number;
   level: number;
+  hitDice: number;
+  classBab: number;
+  savingThrow: string;
+  skillPoints: number;
 }
 
 export type MagicClass = {

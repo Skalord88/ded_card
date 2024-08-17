@@ -72,7 +72,7 @@ public class Character {
   String playerName;
 
   @OneToMany(
-    mappedBy = "character_card",
+    mappedBy = "character",
     cascade = CascadeType.ALL,
     orphanRemoval = true
   )

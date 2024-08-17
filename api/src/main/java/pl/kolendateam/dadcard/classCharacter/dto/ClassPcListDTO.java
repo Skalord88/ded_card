@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class ClassPcListDTO {
 
   public int id;
-  public String type;
+  public String classType;
   public String className;
   public int level;
   public byte hitDice;
