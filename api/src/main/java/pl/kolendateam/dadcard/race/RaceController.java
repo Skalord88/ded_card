@@ -105,8 +105,8 @@ public class RaceController {
     ArrayList<ClassSkills> findHide = character.getClassSkills();
     for (ClassSkills clSk : findHide) {
       if (clSk.getNameSkill().equals("Hide")) {
-        clSk.setSkillDifferentBonus(
-          clSk.getSkillDifferentBonus() + character.getSize().getHide()
+        clSk.setSkillBonus(
+          clSk.getSkillBonus() + character.getSize().getHide()
         );
       }
     }

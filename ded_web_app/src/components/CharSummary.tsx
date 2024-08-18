@@ -13,28 +13,28 @@ export const CharSummary: React.FC<SummaryProps> = ({ character }) => {
     will: 0
   });
 
-  useEffect(() => {
-    if (character?.abilitys)
-      setSaving((prevSaving) => ({
-        ...prevSaving,
-        fortitude:
-          BonusAbilities(character.abilitys, "COS") +
-          character.savingThrows.fortitude,
-        reflex:
-          BonusAbilities(character.abilitys, "DEX") +
-          character.savingThrows.reflex,
-        will:
-          BonusAbilities(character.abilitys, "WIS") +
-          character.savingThrows.will
-      }));
-  }, [character]);
+  // useEffect(() => {
+  //   if (character?.abilitys)
+  //     setSaving((prevSaving) => ({
+  //       ...prevSaving,
+  //       fortitude:
+  //         BonusAbilities(character.abilitys, "COS") +
+  //         character.savingThrows.fortitude,
+  //       reflex:
+  //         BonusAbilities(character.abilitys, "DEX") +
+  //         character.savingThrows.reflex,
+  //       will:
+  //         BonusAbilities(character.abilitys, "WIS") +
+  //         character.savingThrows.will
+  //     }));
+  // }, [character]);
 
   return (
     <>
       {character ? (
         <div className="rpgui-container-framed-grey">
           <p>Effective Level: {character.effectiveCharacterLv}</p>
-          <p>
+          {/* <p>
             Hit Points: {character.vitality.hitPoints} / Life:{" "}
             {character.vitality.life}
             {" / < "}
@@ -46,11 +46,11 @@ export const CharSummary: React.FC<SummaryProps> = ({ character }) => {
               </>
             ))}
             {">"}
-          </p>
-          <p>
+          </p> */}
+          {/* <p>
             Base Attack Bonus: {SignNumber(character.bab)}
             {character.bab}
-          </p>
+          </p> */}
           <p>
             Fort: {SignNumber(saving.fortitude)}
             {saving?.fortitude}

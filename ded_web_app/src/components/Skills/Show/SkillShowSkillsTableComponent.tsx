@@ -33,7 +33,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
                   <>
                     <div></div>
                     <div className="rpgui-container-framed-grey-mini">
-                      <D20Popup textOrWeapon={study.study} value={study.rank + skill.skillAbility} />
+                      <D20Popup textOrWeapon={study.study} value={Math.floor(study.rank) + skill.skillAbility} />
                     </div>
                     <ShowStudyTotSkillsTableComponent
                       key={indexSkill + "." + index + " Tot"}

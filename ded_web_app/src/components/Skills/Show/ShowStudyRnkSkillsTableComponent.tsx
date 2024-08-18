@@ -8,7 +8,7 @@ export const ShowStudyRnkSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
       <div
         className="rpgui-container-framed-grey-mini"
       >
-        {study? <>{study.rank}</> : <></>}
+        {study? <>{Math.floor(study.rank)}</> : <></>}
       </div>
     );
   };

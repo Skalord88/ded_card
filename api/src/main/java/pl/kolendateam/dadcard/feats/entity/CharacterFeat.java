@@ -45,11 +45,11 @@ public class CharacterFeat implements Serializable {
   public boolean checkPrerequisite(
     Feats feat,
     Race subRace,
-    SavingThrow savingThrow,
+    // SavingThrow savingThrow,
     ArmorClass armorClass,
     ArrayList<ClassSkills> classSkills,
     Abilitys abilitys,
-    int bab,
+    // int bab,
     ArrayList<CharacterFeat> featsList
   ) {
     Prerequisite p = new Gson()
@@ -67,12 +67,12 @@ public class CharacterFeat implements Serializable {
       }
     }
 
-    if (p.getSavingThrow() != null) {
-      ckeckTot++;
-      if (savingThrow.checkPrerequisiteST(p.getSavingThrow())) {
-        checkEvry++;
-      }
-    }
+    // if (p.getSavingThrow() != null) {
+    //   ckeckTot++;
+    //   if (savingThrow.checkPrerequisiteST(p.getSavingThrow())) {
+    //     checkEvry++;
+    //   }
+    // }
 
     if (p.getArmorClass() != null) {
       ckeckTot++;
@@ -106,10 +106,10 @@ public class CharacterFeat implements Serializable {
       }
     }
 
-    if (bab >= p.getBab()) {
-      ckeckTot++;
-      checkEvry++;
-    }
+    // if (bab >= p.getBab()) {
+    //   ckeckTot++;
+    //   checkEvry++;
+    // }
 
     if (p.getFeats() != null) {
       ckeckTot++;

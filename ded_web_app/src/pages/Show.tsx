@@ -153,7 +153,7 @@ export function Show() {
             gridRow: 6
           }}
         >
-          {/* <SpeedComponent char={char} />
+          <SpeedComponent char={char} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -185,7 +185,7 @@ export function Show() {
         >
           <p>
             <SkillShowComponent key={"skillsTable"} skills={skills} />
-          </p>*/}
+          </p>
         </div> 
       </div>
     </>

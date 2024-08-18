@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import { emptyAttacks } from "../components/variables";
 import { SetSetWeaponListFromDB } from "../components/functions";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
+import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 
 export function Attack() {
 
@@ -15,6 +16,7 @@ export function Attack() {
   const [char, setChar] = useState<CharacterPc>()
   const [attack, setAttack] = useState<Attacks>(emptyAttacks)
   const [listFromDB, setListFromDB] = useState<Weapon[]>([])
+  const [bab, setBab] = useState<number>(0)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,6 +25,7 @@ export function Attack() {
         setChar(resChar.data);
         setAttack(resChar.data.attacks);
         setListFromDB(SetSetWeaponListFromDB(resChar.data.inventory));
+        setBab(CountBabFromClassPc(resChar.data))
 
       } catch (error) {
         console.error(error);
@@ -51,7 +54,7 @@ export function Attack() {
                 gridColumn: 1,
                 gridRow: 1
               }}
-              >bab: +{char?.bab}</div>
+              >bab: +{bab}</div>
               <div
               style={{
                 gridColumn: 1,
@@ -105,11 +108,11 @@ export function Attack() {
             }
             <div className="container-item">
               <button onClick={confirmAttack}>set Attacks</button>
-              {char && attack?
+              {char && attack ?
                 <MapOfAttack
                 inventory={listFromDB}
                 attacks={attack}
-                bab={char?.bab}
+                bab={bab}
                 ability={char?.abilitys}
                 setListOfAttack={setAttackInDB}
                 />

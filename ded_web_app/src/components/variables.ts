@@ -86,12 +86,11 @@ export const emptyAttacks: Attacks = {
 }
 
 export const characterEmpty: CharacterPc = {
-
     id: 0,
     characterName: '',
     playerName: '',
     classPcList: [],
-    size: '',
+    // size: '',
     race: {
         id: 0,
         subRacesName: '',
@@ -107,16 +106,16 @@ export const characterEmpty: CharacterPc = {
             grapple: 0
         }
     },
-    subRace: '',
-    vitality: {
-        life: 0,
-        hitDices: [{
-            first: false,
-            lv: 0,
-            dice: 0
-        }],
-        hitPoints: 0
-    },
+    // subRace: '',
+    // vitality: {
+    //     life: 0,
+    //     hitDices: [{
+    //         first: false,
+    //         lv: 0,
+    //         dice: 0
+    //     }],
+    //     hitPoints: 0
+    // },
     speed: 0,
     armorClass: {
         dextrityBonus: 0,
@@ -128,7 +127,7 @@ export const characterEmpty: CharacterPc = {
         naturalArmor: 0,
         dodgeBonus: 0
     },
-    bab: 0,
+    // bab: 0,
     specialAttacks: {
         bullRush: 0,
         charge: 0,
@@ -137,11 +136,11 @@ export const characterEmpty: CharacterPc = {
         overrun: 0,
         sunder: 0
     },
-    savingThrows: {
-        fortitude: 0,
-        reflex: 0,
-        will: 0
-    },
+    // savingThrows: {
+    //     fortitude: 0,
+    //     reflex: 0,
+    //     will: 0
+    // },
     abilitys: {
         strength: 0,
         dextrity: 0,
@@ -150,7 +149,7 @@ export const characterEmpty: CharacterPc = {
         wisdom: 0,
         charisma: 0
     },
-    skillPoints: 0,
+    // skillPoints: 0,
     skillsList: [],
     featsList: [],
     levelFeatsList: [],
@@ -169,8 +168,8 @@ export const characterEmpty: CharacterPc = {
     levelAdjustment: 0,
     effectiveCharacterLv: 0,
     experience: 0,
-    treasure: 0
-
+    treasure: 0,
+    skillPoints: 0
 }
 
 export const abilitysEmpty: Abilitys = {

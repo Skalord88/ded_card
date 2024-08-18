@@ -19,39 +19,35 @@
             <column name="race_id" value="19" />
             <column name="size_id" value="4" />
             <column name="speed" value="20"/>
-            <!-- [{
-                'id': 9,
-                'className': 'ROGUE',
-                'level': 6
-            },{
-                'id': 5,
-                'className': 'FIGHTER',
-                'level': 2
-            },{
-                'id': 11,
-                'className': 'WIZARD',
-                'level': 2
-            }]"/> -->
             <column name="effective_character_lv" value="10"/>
             <column name="level_adjustment" value="0"/>
-            <column name="vitality" value="{}" />
-            <!-- {
-                'life': 13,
-                'hitDices': {
-                    '6': 6,
-                    '10': 2,
-                    '4': 2
-                },
-                'hitPoints': 58
-            }
-                " /> -->
-            <column name="saving_throw" value="{}"/>
-            <column name="skill_points" value="0"/>
+            <!-- <column name="vitality" value="{}" /> -->
+            <!-- <column name="saving_throw" value="{}"/> -->
+            <!-- <column name="skill_points" value="0"/> -->
             <column name="armor_class" value="{}"/>
-            <column name="class_skills" value="[]"/>
+            <column name="class_skills" value="[
+        {
+            &quot;idSkill&quot;: 1,
+            &quot;nameSkill&quot;: &quot;Appraise&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 2.5,
+            &quot;skillAbilityBonus&quot;: 0,
+            &quot;skillAbility&quot;: &quot;INTELLIGENCE&quot;,
+            &quot;skillBonus&quot;: 0
+        },{
+            &quot;idSkill&quot;: 2,
+            &quot;nameSkill&quot;: &quot;Balance&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: true,
+            &quot;skillRank&quot;: 4,
+            &quot;skillAbilityBonus&quot;: 0,
+            &quot;skillAbility&quot;: &quot;DEXTRITY&quot;,
+            &quot;skillBonus&quot;: 0
+            }]"/>
             <column name="feats_list" value="[]"/>
             <column name="level_feats_list" value="[]"/>
-            <column name="bab" value="0"/>
+            <!-- <column name="bab" value="0"/> -->
             <column name="special_attacks" value="{}"/>
             <column name="inventory_id" value="100"/>
             <column name="attacks_id" value="100"/>

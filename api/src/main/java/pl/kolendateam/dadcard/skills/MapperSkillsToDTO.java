@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.skills;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
@@ -23,32 +24,37 @@ public class MapperSkillsToDTO {
       SkillsDTO skillDTO = new SkillsDTO();
       skillDTO.idSkill = skill.getIdSkill();
       skillDTO.nameSkill = skill.getNameSkill();
-      skillDTO.fieldOfStudy =
-        MapperStudyToDTO.toStudyListDTO(skill.getFieldOfStudy());
+      if (skill.getFieldOfStudy() == null) {
+        skillDTO.fieldOfStudy = new HashSet<>();
+      } else {
+        skillDTO.fieldOfStudy =
+          MapperStudyToDTO.toStudyListDTO(skill.getFieldOfStudy());
+      }
       skillDTO.classSkill = skill.isClassSkill();
       skillDTO.skillRank = skill.getSkillRank();
+      skillDTO.skillAbilityBonus = skill.getSkillAbilityBonus();
       AbilityEnum ability = skill.getSkillAbility();
       switch (ability) {
         case STRENGHT:
-          skillDTO.skillAbility = abilitys.bonusStreght(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
           break;
         case DEXTRITY:
-          skillDTO.skillAbility = abilitys.bonusDextrity(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
           break;
         case CONSTITUTION:
-          skillDTO.skillAbility = abilitys.bonusConstitution(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
           break;
         case INTELLIGENCE:
-          skillDTO.skillAbility = abilitys.bonusIntelligence(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
           break;
         case WISDOM:
-          skillDTO.skillAbility = abilitys.bonusWisdom(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
           break;
         case CHARISMA:
-          skillDTO.skillAbility = abilitys.bonusCharisma(abilitys);
+          skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
           break;
       }
-      skillDTO.skillBonus = skill.getSkillDifferentBonus();
+      skillDTO.skillBonus = skill.getSkillBonus();
 
       skillListDTO.add(skillDTO);
     }

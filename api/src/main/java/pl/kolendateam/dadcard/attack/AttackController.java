@@ -46,73 +46,73 @@ public class AttackController {
     this.attacksRepository = attacksRepository;
   }
 
-  @PostMapping(value = "{id}/attackAC", consumes = { "application/json" })
-  public AttackVsArmorClassDTO attackVsArmorClass(
-    @PathVariable short id,
-    @RequestBody AttackDTO attackDTO
-  ) {
-    List<Character> characterOpt = this.characterRepository.findAll();
+  // @PostMapping(value = "{id}/attackAC", consumes = { "application/json" })
+  // public AttackVsArmorClassDTO attackVsArmorClass(
+  //   @PathVariable short id,
+  //   @RequestBody AttackDTO attackDTO
+  // ) {
+  //   List<Character> characterOpt = this.characterRepository.findAll();
 
-    Character character1 = new Character();
-    Character character2 = new Character();
+  //   Character character1 = new Character();
+  //   Character character2 = new Character();
 
-    for (Character ch : characterOpt) {
-      if (ch.id == id) {
-        character1 = ch;
-      }
+  //   for (Character ch : characterOpt) {
+  //     if (ch.id == id) {
+  //       character1 = ch;
+  //     }
 
-      if (ch.id == attackDTO.idA) {
-        character2 = ch;
-      }
-    }
+  //     if (ch.id == attackDTO.idA) {
+  //       character2 = ch;
+  //     }
+  //   }
 
-    Abilitys ab = character1.getAbilitys();
+  //   Abilitys ab = character1.getAbilitys();
 
-    int resultat =
-      attackDTO.d20 +
-      (int) character1.getBab() +
-      ab.bonusStreght(ab) +
-      character1.getSize().getBonus();
+  //   int resultat =
+  //     attackDTO.d20 +
+  //     (int) character1.getBab() +
+  //     ab.bonusStreght(ab) +
+  //     character1.getSize().getBonus();
 
-    ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
-      character2.getArmorClass(),
-      character2.getAbilitys(),
-      character2.getSize()
-    );
+  //   ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
+  //     character2.getArmorClass(),
+  //     character2.getAbilitys(),
+  //     character2.getSize()
+  //   );
 
-    boolean isHit = false;
+  //   boolean isHit = false;
 
-    if (resultat >= armorClassTotal2.ACTotal(armorClassTotal2)) {
-      isHit = true;
-    }
+  //   if (resultat >= armorClassTotal2.ACTotal(armorClassTotal2)) {
+  //     isHit = true;
+  //   }
 
-    return new AttackVsArmorClassDTO(character1, character2, isHit);
-  }
+  //   return new AttackVsArmorClassDTO(character1, character2, isHit);
+  // }
 
-  @GetMapping(value = "{id}")
-  public CharacterDTO getAttack(@PathVariable int id) {
-    Optional<Character> characterOpt = this.characterRepository.findById(id);
-    if (!characterOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
-    }
-    Character character = characterOpt.get();
+  // @GetMapping(value = "{id}")
+  // public CharacterDTO getAttack(@PathVariable int id) {
+  //   Optional<Character> characterOpt = this.characterRepository.findById(id);
+  //   if (!characterOpt.isPresent()) {
+  //     throw new ResponseStatusException(
+  //       HttpStatus.NOT_FOUND,
+  //       "Character Not Found"
+  //     );
+  //   }
+  //   Character character = characterOpt.get();
 
-    Optional<Attacks> attacksOpt =
-      this.attacksRepository.findById(character.getAttacks().getId());
-    if (!attacksOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
-    }
+  //   Optional<Attacks> attacksOpt =
+  //     this.attacksRepository.findById(character.getAttacks().getId());
+  //   if (!attacksOpt.isPresent()) {
+  //     throw new ResponseStatusException(
+  //       HttpStatus.NOT_FOUND,
+  //       "Character Not Found"
+  //     );
+  //   }
 
-    Attacks characterAttacks = attacksOpt.get();
+  //   Attacks characterAttacks = attacksOpt.get();
 
-    return new CharacterDTO(character, characterAttacks);
-  }
+  //   return new CharacterDTO(character, characterAttacks);
+  // }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setAttack(

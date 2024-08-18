@@ -11,7 +11,8 @@ public class SkillsDTO {
   public Set<StudyDTO> fieldOfStudy;
   public boolean classSkill;
   public double skillRank;
-  public int skillAbility;
+  public int skillAbilityBonus;
+  public String skillAbility;
   public int skillBonus;
 
   public SkillsDTO(short id, String name) {

@@ -88,7 +88,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export const BaseAttack: React.FC<CharProps> = ({ char }) => {
-  const bab = CountBabFromClassPc(char.classPcList)
+  const bab = CountBabFromClassPc(char)
   const grapple = bab + Math.floor((char.abilitys.strength - 10) / 2);
 
   return (

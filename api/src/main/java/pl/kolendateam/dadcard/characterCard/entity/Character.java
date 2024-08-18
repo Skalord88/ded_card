@@ -78,25 +78,6 @@ public class Character {
   )
   List<ClassPc> classPcArray;
 
-  // @ManyToMany(cascade = CascadeType.MERGE)
-  // @JoinTable(
-  //   name = "class_pc",
-  //   joinColumns = @JoinColumn(name = "character_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "class_pc_id")
-  // )
-  // List<ClassPc> classPcArray;
-
-  // @ManyToMany(cascade = CascadeType.MERGE)
-  // @JoinTable(
-  //   name = "class_pc",
-  //   joinColumns = @JoinColumn(name = "character_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "class_character_id")
-  // )
-  // List<ClassPc> classPcArray;
-
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // Size size;
-
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "size_id", referencedColumnName = "id")
   Size size;
@@ -105,29 +86,26 @@ public class Character {
   @JoinColumn(name = "race_id", referencedColumnName = "id")
   Race race;
 
-  // String race;
-  // String subRace;
-
-  @JdbcTypeCode(SqlTypes.JSON)
-  Vitality vitality;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // Vitality vitality;
 
   int speed;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArmorClass armorClass;
 
-  double bab;
+  // double bab;
 
   @JdbcTypeCode(SqlTypes.JSON)
   SpecialAttacks specialAttacks;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  SavingThrow savingThrow;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SavingThrow savingThrow;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Abilitys abilitys;
 
-  double skillPoints;
+  // double skillPoints;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<ClassSkills> classSkills;
@@ -169,10 +147,10 @@ public class Character {
     this.playerName = playerName;
     this.classPcArray = new ArrayList<>();
     this.size = new Size();
-    this.vitality = new Vitality(0, new HashMap<>(), 0);
+    // this.vitality = new Vitality(0, new HashMap<>(), 0);
     this.armorClass = new ArmorClass();
     this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-    this.savingThrow = new SavingThrow(0, 0, 0);
+    // this.savingThrow = new SavingThrow(0, 0, 0);
     this.abilitys = new Abilitys();
     this.classSkills = new ArrayList<>();
     this.featsList = new ArrayList<>();
@@ -209,57 +187,57 @@ public class Character {
     this.effectiveCharacterLv -= 1;
   }
 
-  public void addSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) ==
-      ValueEnum.HIGH.getValueEnum().charAt(0)
-      ? 2.5
-      : 0;
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
+  // public void addSavingThrowLevelOne(String stringSavingThrow) {
+  //   double bonus = stringSavingThrow.charAt(0) ==
+  //     ValueEnum.HIGH.getValueEnum().charAt(0)
+  //     ? 2.5
+  //     : 0;
+  //   this.savingThrow.setFortitude(this.savingThrow.getFortitude() + bonus);
 
-    bonus =
-      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
-    this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
+  //   bonus =
+  //     stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+  //       ? 2.5
+  //       : 0;
+  //   this.savingThrow.setReflex(this.savingThrow.getReflex() + bonus);
 
-    bonus =
-      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
-    this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
-  }
+  //   bonus =
+  //     stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+  //       ? 2.5
+  //       : 0;
+  //   this.savingThrow.setWill(this.savingThrow.getWill() + bonus);
+  // }
 
-  public void minusSavingThrowLevelOne(String stringSavingThrow) {
-    double bonus = stringSavingThrow.charAt(0) ==
-      ValueEnum.HIGH.getValueEnum().charAt(0)
-      ? 2.5
-      : 0;
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude() - bonus);
+  // public void minusSavingThrowLevelOne(String stringSavingThrow) {
+  //   double bonus = stringSavingThrow.charAt(0) ==
+  //     ValueEnum.HIGH.getValueEnum().charAt(0)
+  //     ? 2.5
+  //     : 0;
+  //   this.savingThrow.setFortitude(this.savingThrow.getFortitude() - bonus);
 
-    bonus =
-      stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
-    this.savingThrow.setReflex(this.savingThrow.getReflex() - bonus);
+  //   bonus =
+  //     stringSavingThrow.charAt(1) == ValueEnum.HIGH.getValueEnum().charAt(0)
+  //       ? 2.5
+  //       : 0;
+  //   this.savingThrow.setReflex(this.savingThrow.getReflex() - bonus);
 
-    bonus =
-      stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
-        ? 2.5
-        : 0;
-    this.savingThrow.setWill(this.savingThrow.getWill() - bonus);
-  }
+  //   bonus =
+  //     stringSavingThrow.charAt(2) == ValueEnum.HIGH.getValueEnum().charAt(0)
+  //       ? 2.5
+  //       : 0;
+  //   this.savingThrow.setWill(this.savingThrow.getWill() - bonus);
+  // }
 
-  public void incementSavingThrow() {
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
-    this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
-    this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
-  }
+  // public void incementSavingThrow() {
+  //   this.savingThrow.setFortitude(this.savingThrow.getFortitude() + 0.5);
+  //   this.savingThrow.setReflex(this.savingThrow.getReflex() + 0.5);
+  //   this.savingThrow.setWill(this.savingThrow.getWill() + 0.5);
+  // }
 
-  public void decementSavingThrow() {
-    this.savingThrow.setFortitude(this.savingThrow.getFortitude() - 0.5);
-    this.savingThrow.setReflex(this.savingThrow.getReflex() - 0.5);
-    this.savingThrow.setWill(this.savingThrow.getWill() - 0.5);
-  }
+  // public void decementSavingThrow() {
+  //   this.savingThrow.setFortitude(this.savingThrow.getFortitude() - 0.5);
+  //   this.savingThrow.setReflex(this.savingThrow.getReflex() - 0.5);
+  //   this.savingThrow.setWill(this.savingThrow.getWill() - 0.5);
+  // }
 
   public void setSkillsTruePcArray(Set<Skills> availableSkills) {
     for (Skills skill : availableSkills) {
@@ -312,82 +290,82 @@ public class Character {
     }
   }
 
-  public void calculateSkillPointsFirstLevel(int skPoints) {
-    this.skillPoints += (skPoints + abilitys.bonusIntelligence(abilitys)) * 4;
-  }
+  // public void calculateSkillPointsFirstLevel(int skPoints) {
+  //   this.skillPoints += (skPoints + abilitys.bonusIntelligence(abilitys)) * 4;
+  // }
 
-  public void calculateSkillPoints(int skPoints) {
-    this.skillPoints += skPoints + abilitys.bonusIntelligence(abilitys);
-  }
+  // public void calculateSkillPoints(int skPoints) {
+  //   this.skillPoints += skPoints + abilitys.bonusIntelligence(abilitys);
+  // }
 
-  public void decalculateSkillPoints(int skPoints) {
-    this.skillPoints -= skPoints + abilitys.bonusIntelligence(abilitys);
-  }
+  // public void decalculateSkillPoints(int skPoints) {
+  //   this.skillPoints -= skPoints + abilitys.bonusIntelligence(abilitys);
+  // }
 
-  public void incrementBab(double classBab) {
-    this.bab += classBab;
-  }
+  // public void incrementBab(double classBab) {
+  //   this.bab += classBab;
+  // }
 
-  public void decrementBab(double classBab) {
-    this.bab -= classBab;
-  }
+  // public void decrementBab(double classBab) {
+  //   this.bab -= classBab;
+  // }
 
   public void raceLevelAdjustment(byte lvAdj) {
-    this.bab = (lvAdj * 0.5) - 0.5;
-    this.levelAdjustment = lvAdj;
-    this.vitality =
-      vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
-    this.skillPoints = lvAdj * 2;
+    // this.bab = (lvAdj * 0.5) - 0.5;
+    this.levelAdjustment += lvAdj;
+    // this.vitality =
+    //   vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
+    // this.skillPoints = lvAdj * 2;
   }
 
-  public void hitPointsFirstLevel(int hitDice) {
-    Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
-    this.vitality = hP;
-  }
+  // public void hitPointsFirstLevel(int hitDice) {
+  //   Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
+  //   this.vitality = hP;
+  // }
 
-  public void resetHitPointsFirstLevel(int hitDice) {
-    Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
-    this.vitality = hP;
-  }
+  // public void resetHitPointsFirstLevel(int hitDice) {
+  //   Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
+  //   this.vitality = hP;
+  // }
 
-  public void hitPointsNewLevel(int hitDice) {
-    Integer hD = vitality.hitDices.get(hitDice);
+  // public void hitPointsNewLevel(int hitDice) {
+  //   Integer hD = vitality.hitDices.get(hitDice);
 
-    if (hD == null) {
-      hD = 1;
-    } else {
-      hD++;
-    }
+  //   if (hD == null) {
+  //     hD = 1;
+  //   } else {
+  //     hD++;
+  //   }
 
-    this.vitality.hitDices.put(hitDice, hD);
+  //   this.vitality.hitDices.put(hitDice, hD);
 
-    int hP = vitality.hitPointsAtNewLevel(
-      hitDice,
-      vitality,
-      abilitys,
-      effectiveCharacterLv
-    );
+  //   int hP = vitality.hitPointsAtNewLevel(
+  //     hitDice,
+  //     vitality,
+  //     abilitys,
+  //     effectiveCharacterLv
+  //   );
 
-    this.vitality.setHitPoints(hP);
-  }
+  //   this.vitality.setHitPoints(hP);
+  // }
 
-  public void hitPointsLastLevel(int hitDice) {
-    if (vitality.getHitDices().get(hitDice) == 1) {
-      vitality.removeHDClass(hitDice);
-    } else {
-      int lv = vitality.getHitDices().get(hitDice) - 1;
-      vitality.hitDices.put(hitDice, lv);
-    }
+  // public void hitPointsLastLevel(int hitDice) {
+  //   if (vitality.getHitDices().get(hitDice) == 1) {
+  //     vitality.removeHDClass(hitDice);
+  //   } else {
+  //     int lv = vitality.getHitDices().get(hitDice) - 1;
+  //     vitality.hitDices.put(hitDice, lv);
+  //   }
 
-    int hP = vitality.hitPointsAtLastLevel(
-      hitDice,
-      vitality,
-      abilitys,
-      effectiveCharacterLv
-    );
+  //   int hP = vitality.hitPointsAtLastLevel(
+  //     hitDice,
+  //     vitality,
+  //     abilitys,
+  //     effectiveCharacterLv
+  //   );
 
-    this.vitality.setHitPoints(hP);
-  }
+  //   this.vitality.setHitPoints(hP);
+  // }
 
   // public void setCharacterRace(Race race) {
   //   this.race = race.getRacesName();
@@ -408,9 +386,7 @@ public class Character {
     for (ClassSkills clSk : classSkills) {
       for (ClassSkills sk : skill) {
         if (clSk.getNameSkill().equals(sk.getNameSkill())) {
-          clSk.setSkillDifferentBonus(
-            clSk.getSkillDifferentBonus() + (int) sk.getSkillRank()
-          );
+          clSk.setSkillBonus(clSk.getSkillBonus() + (int) sk.getSkillRank());
         }
       }
     }
@@ -521,11 +497,11 @@ public class Character {
         boolean prereqCheck = characterFeat.checkPrerequisite(
           feat,
           race,
-          savingThrow,
+          // savingThrow,
           armorClass,
           classSkills,
           abilitys,
-          (int) bab,
+          // (int) bab,
           allFeats
         );
         if (prereqCheck) {
@@ -554,9 +530,9 @@ public class Character {
   // }
   // }
 
-  public SizeEnum sizeCharacter() {
-    return this.size.getSize();
-  }
+  // public SizeEnum sizeCharacter() {
+  //   return this.size.getSize();
+  // }
 
   public void addFeatToPc(CharacterFeat ft) {
     if (ft.findFeatIndexinArrayById(featsList) > -1) {

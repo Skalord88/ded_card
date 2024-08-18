@@ -10,7 +10,7 @@ export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
         className="rpgui-container-framed-grey-mini"
         style={{ color: "orange" }}
       >
-        {study? <>{study.rank + skill.skillAbility + skill.skillBonus} </> : <></>}
+        {study? <>{Math.floor(study.rank) + skill.skillAbility + skill.skillBonus} </> : <></>}
       </div>
     );
   };

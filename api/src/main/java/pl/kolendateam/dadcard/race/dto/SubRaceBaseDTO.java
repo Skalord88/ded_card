@@ -19,6 +19,7 @@ import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 public class SubRaceBaseDTO {
 
   public short id;
+  public String racesName;
   public String subRacesName;
   public String avatarUrl;
   public Abilitys raceAbilitys;
@@ -29,6 +30,7 @@ public class SubRaceBaseDTO {
 
   public SubRaceBaseDTO(Race race) {
     this.avatarUrl = race.getAvatarUrl();
+    this.racesName = race.getRacesName();
     this.subRacesName = race.getSubRaceName();
     this.id = race.getId();
     Gson gson = new Gson();

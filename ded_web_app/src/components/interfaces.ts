@@ -7,15 +7,15 @@ export type CharacterPc = {
   characterName: string;
   playerName: string;
   classPcList: ClassPc[];
-  size: string;
+  // size: string;
   race: Race;
-  subRace: string;
-  vitality: vitality;
+  // subRace: string;
+  // vitality: vitality;
   speed: number;
   armorClass: armorClass;
-  bab: number;
+  // bab: number;
   specialAttacks: specialAttacks;
-  savingThrows: savingThrows;
+  // savingThrows: savingThrows;
   abilitys: Abilitys;
   skillPoints: number;
   skillsList: SkillProps[];
@@ -147,8 +147,9 @@ export type SkillProps = {
   fieldOfStudy: Study[],
   classSkill: boolean,
   skillRank: number,
-  skillAbility: number,
+  skillAbilityBonus: number,
   skillBonus: number,
+  skillAbility: number
 
 }
 

@@ -215,13 +215,13 @@ public class CharacterController {
     character.incrementEffectiveCharacterLv();
 
     // skills & hp
-    if (character.getEffectiveCharacterLv() == 1) {
-      character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
-      character.hitPointsFirstLevel(classCharacter.getHitDice());
-    } else {
-      character.calculateSkillPoints(classCharacter.getSkillPoints());
-      character.hitPointsNewLevel(classCharacter.getHitDice());
-    }
+    // if (character.getEffectiveCharacterLv() == 1) {
+    //   character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
+    //   character.hitPointsFirstLevel(classCharacter.getHitDice());
+    // } else {
+    //   character.calculateSkillPoints(classCharacter.getSkillPoints());
+    //   character.hitPointsNewLevel(classCharacter.getHitDice());
+    // }
 
     // class
     int indexClassInDB = classPc.findIndexInArrayById(classPcList);
@@ -242,13 +242,13 @@ public class CharacterController {
     character.addStudyToCharacter(classCharacter.getAvailableStudy());
 
     // saving throw
-    if (levelClassInDB == 1) {
-      // character.addSavingThrowLevelOne(classPc.getSavingThrow());
-    } else if (levelClassInDB > 1) {
-      character.incementSavingThrow();
-    }
+    // if (levelClassInDB == 1) {
+    // character.addSavingThrowLevelOne(classPc.getSavingThrow());
+    // } else if (levelClassInDB > 1) {
+    //   character.incementSavingThrow();
+    // }
 
-    character.incrementBab(classCharacter.getClassBab());
+    // character.incrementBab(classCharacter.getClassBab());
 
     // feat
     List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
@@ -385,15 +385,15 @@ public class CharacterController {
     }
 
     // skillPoints & hp
-    if (character.getEffectiveCharacterLv() == 0) {
-      character.setSkillPoints(0);
-      HashMap<Integer, Integer> vitaHD = new HashMap<>();
-      Vitality vita = new Vitality(0, vitaHD, 0);
-      character.setVitality(vita);
-    } else {
-      character.decalculateSkillPoints(classCharacter.getSkillPoints());
-      character.hitPointsLastLevel(classCharacter.getHitDice());
-    }
+    // if (character.getEffectiveCharacterLv() == 0) {
+    //   character.setSkillPoints(0);
+    //   HashMap<Integer, Integer> vitaHD = new HashMap<>();
+    //   Vitality vita = new Vitality(0, vitaHD, 0);
+    //   character.setVitality(vita);
+    // } else {
+    //   character.decalculateSkillPoints(classCharacter.getSkillPoints());
+    //   character.hitPointsLastLevel(classCharacter.getHitDice());
+    // }
 
     // re-trueSkills
     character.zeroSkillsRank();
@@ -414,14 +414,14 @@ public class CharacterController {
     character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
 
     // saving throw
-    if (levelClassInDB > 1) {
-      character.decementSavingThrow();
-    }
-    if (levelClassInDB == 1) {
-      character.minusSavingThrowLevelOne(
-        classPc.getClassCharacter().getSavingThrow()
-      );
-    }
+    // if (levelClassInDB > 1) {
+    //   character.decementSavingThrow();
+    // }
+    // if (levelClassInDB == 1) {
+    //   character.minusSavingThrowLevelOne(
+    //     classPc.getClassCharacter().getSavingThrow()
+    //   );
+    // }
 
     // magic
     if (
@@ -453,7 +453,7 @@ public class CharacterController {
       }
     }
     // base attack bonus
-    character.decrementBab(classCharacter.getClassBab());
+    // character.decrementBab(classCharacter.getClassBab());
 
     // experience
     if (character.getEffectiveCharacterLv() == 0) {
