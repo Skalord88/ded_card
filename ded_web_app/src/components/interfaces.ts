@@ -1,5 +1,6 @@
 import { feat } from "./Feats/Interface/FeatInterface";
 import { Race } from "./Race/Interfaces";
+import { HitDices } from "./Vita/Functions";
 
 export type CharacterPc = {
   id: number;
@@ -92,11 +93,7 @@ export type MagicClass = {
 
 export interface vitality {
   life: number;
-  hitDices: {
-    first: boolean;
-    lv: number;
-    dice: number;
-  };
+  hitDices: HitDices[];
   hitPoints: number;
 }
 

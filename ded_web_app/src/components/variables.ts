@@ -110,11 +110,11 @@ export const characterEmpty: CharacterPc = {
     subRace: '',
     vitality: {
         life: 0,
-        hitDices: {
+        hitDices: [{
             first: false,
             lv: 0,
             dice: 0
-        },
+        }],
         hitPoints: 0
     },
     speed: 0,
