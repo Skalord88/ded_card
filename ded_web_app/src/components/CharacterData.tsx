@@ -4,6 +4,7 @@ import { SignNumber } from "../components/functions";
 import { DeleteButton } from "./DeleteButton";
 import { urlChar } from "./url";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { CountBabFromClassPc } from "./Attack/Bab/Functions";
 
 export interface CharProps {
   char: CharacterPc;
@@ -27,7 +28,7 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
           <p>{char.playerName}</p>
           <p>Amn</p>
           <p>
-            {char.race}, {char.subRace}
+            {char.race.subRacesName}
           </p>
           <p>15</p>
           <p>CHGD</p>
@@ -57,25 +58,25 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         </p>{" "}
       </div>
       <div style={{ display: "flex" }}>
-        {cl.map((classe) => {
+        {cl.map((classe, index) => {
           return (
             <>
-              <p style={{ flex: 3 }} className="rpgui-container-framed-grey">
+              <p key={index} style={{ flex: 3 }} className="rpgui-container-framed-grey">
                 {classe.className}
               </p>
-              <p style={{ flex: 1 }} className="rpgui-container-framed-grey">
+              <p key={index + '.' + index} style={{ flex: 1 }} className="rpgui-container-framed-grey">
                 {classe.level}
               </p>
             </>
           );
         })}
-        {cp.map((classe) => {
+        {cp.map((classe, index) => {
           return (
             <>
-              <p style={{ flex: 3 }} className="rpgui-container-framed-grey">
+              <p key={index} style={{ flex: 3 }} className="rpgui-container-framed-grey">
                 {classe.className}
               </p>
-              <p style={{ flex: 1 }} className="rpgui-container-framed-grey">
+              <p key={index + '.' + index} style={{ flex: 1 }} className="rpgui-container-framed-grey">
                 {classe.level}
               </p>
             </>
@@ -87,25 +88,26 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export const BaseAttack: React.FC<CharProps> = ({ char }) => {
-  const grapple = char.bab + Math.floor((char.abilitys.streght - 10) / 2);
+  const bab = CountBabFromClassPc(char.classPcList)
+  const grapple = bab + Math.floor((char.abilitys.strength - 10) / 2);
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
       <p>
-        bs atk bns: {SignAndCount([char.bab]).sign}{SignAndCount([char.bab]).number}
+        bs atk bns: {SignAndCount([bab]).sign}{SignAndCount([bab]).number}
       </p>
       <p>
         <D20Popup textOrWeapon={"grapple: "} value={grapple} />
         {SignAndCount([grapple]).sign}{SignAndCount([grapple]).number}
       </p>
       <p>
-        STR att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "STR"))}
-        {char.bab + BonusAbilities(char.abilitys, "STR")}
+        STR att: {SignNumber(bab + BonusAbilities(char.abilitys, "STR"))}
+        {bab + BonusAbilities(char.abilitys, "STR")}
       </p>
       <p>
-        DEX att: {SignNumber(char.bab + BonusAbilities(char.abilitys, "DEX"))}
-        {char.bab + BonusAbilities(char.abilitys, "DEX")}
+        DEX att: {SignNumber(bab + BonusAbilities(char.abilitys, "DEX"))}
+        {bab + BonusAbilities(char.abilitys, "DEX")}
       </p>
     </>
   );

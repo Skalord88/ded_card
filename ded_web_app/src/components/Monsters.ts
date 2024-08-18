@@ -25,7 +25,7 @@ export const SzithMorcaneSentryOne: Monster = {
     ],
   savingThrows: {fortitude: 6, reflex: 4, will: 2},
   abilitys: {
-    streght: 16,
+    strength: 16,
   dextrity: 15,
   constitution: 12,
   intelligence: 14,
@@ -68,7 +68,7 @@ export const SzithMorcaneSentryTwo: Monster = {
     ],
   savingThrows: {fortitude: 5, reflex: 3, will: 1},
   abilitys: {
-    streght: 16,
+    strength: 16,
   dextrity: 15,
   constitution: 12,
   intelligence: 14,
@@ -110,7 +110,7 @@ export const SzithMorcaneSentryThree: Monster = {
     ],
     savingThrows: {fortitude: 6, reflex: 4, will: 2},
   abilitys: {
-    streght: 15,
+    strength: 15,
   dextrity: 16,
   constitution: 12,
   intelligence: 14,

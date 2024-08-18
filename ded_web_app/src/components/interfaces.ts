@@ -1,4 +1,5 @@
 import { feat } from "./Feats/Interface/FeatInterface";
+import { Race } from "./Race/Interfaces";
 
 export type CharacterPc = {
   id: number;
@@ -6,7 +7,7 @@ export type CharacterPc = {
   playerName: string;
   classPcList: ClassPc[];
   size: string;
-  race: string;
+  race: Race;
   subRace: string;
   vitality: vitality;
   speed: number;
@@ -78,6 +79,7 @@ export type ClassPc = {
   classType: number;
   className: number;
   level: number;
+  firstClass: boolean;
   hitDice: number;
   classBab: number;
   savingThrow: string;
@@ -91,8 +93,9 @@ export type MagicClass = {
 export interface vitality {
   life: number;
   hitDices: {
-    key: number;
-    value: number;
+    first: boolean;
+    lv: number;
+    dice: number;
   };
   hitPoints: number;
 }
@@ -124,7 +127,7 @@ export interface savingThrows {
 }
 
 export type Abilitys = {
-  streght: number;
+  strength: number;
   dextrity: number;
   constitution: number;
   intelligence: number;

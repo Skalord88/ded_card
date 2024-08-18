@@ -12,7 +12,7 @@ export const HpComponent: React.FC<CharProps> = ({ char }) => {
               <p>
                 {hd[1]}d{hd[0]}{" "}
                 {SignAndCount([char.abilitys.constitution]).sign}
-                {BonusAbilities(char.abilitys, "COS") * hd[1]}
+                {/* {BonusAbilities(char.abilitys, "COS") * hd[1]} */}
               </p>
             </div>
           );

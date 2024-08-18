@@ -18,6 +18,7 @@ public class MapperClassPcListToDTO {
         classPc.getClassCharacter().getType().toString(),
         classPc.getClassCharacter().getName().toString(),
         classPc.getLevel(),
+        classPc.getFirstClass(),
         classPc.getClassCharacter().getHitDice(),
         classPc.getClassCharacter().getClassBab(),
         classPc.getClassCharacter().getSavingThrow(),

@@ -11,7 +11,7 @@ export function SignNumber(
 
 export function BonusAbilities(ab: Abilitys, which: string) {
     switch (which) {
-        case 'STR': return Math.floor((ab.streght - 10) / 2);
+        case 'STR': return Math.floor((ab.strength - 10) / 2);
         case 'DEX': return Math.floor((ab.dextrity - 10) / 2);
         case 'COS': return Math.floor((ab.constitution - 10) / 2);
         case 'INT': return Math.floor((ab.intelligence - 10) / 2);

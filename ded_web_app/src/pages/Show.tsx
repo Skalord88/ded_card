@@ -144,7 +144,7 @@ export function Show() {
             gridRow: 5
           }}
         >
-          <HpComponent char={char} />
+          {/* <HpComponent char={char} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -185,8 +185,8 @@ export function Show() {
         >
           <p>
             <SkillShowComponent key={"skillsTable"} skills={skills} />
-          </p>
-        </div>
+          </p>*/}
+        </div> 
       </div>
     </>
   );

@@ -11,6 +11,9 @@
             <column name="level" type="INT">
                 <constraints nullable="false" />
             </column>
+            <column name="first_class" type="BOOLEAN">
+                <constraints nullable="false" />
+            </column>
             <column name="character_card_id" type="INT">
                 <constraints nullable="false" />
             </column>

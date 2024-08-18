@@ -51,7 +51,7 @@ export function Ability() {
             type="number"
             onChange={handleData}
             name="streght"
-            value={abilitys.streght}
+            value={abilitys.strength}
           />{" "}
           {SignNumber(BonusAbilities(abilitys, "STR"))}
           {BonusAbilities(abilitys, "STR")} streght

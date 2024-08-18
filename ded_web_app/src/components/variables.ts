@@ -92,13 +92,28 @@ export const characterEmpty: CharacterPc = {
     playerName: '',
     classPcList: [],
     size: '',
-    race: '',
+    race: {
+        id: 0,
+        subRacesName: '',
+        raceAbilitys: null,
+        raceSkills: null,
+        armorClass: null,
+        levelAdjustment: 0,
+        size: {
+            id: 0,
+            size: 0,
+            bonus: 0,
+            hide: 0,
+            grapple: 0
+        }
+    },
     subRace: '',
     vitality: {
         life: 0,
         hitDices: {
-            key: 0,
-            value: 0
+            first: false,
+            lv: 0,
+            dice: 0
         },
         hitPoints: 0
     },
@@ -128,7 +143,7 @@ export const characterEmpty: CharacterPc = {
         will: 0
     },
     abilitys: {
-        streght: 0,
+        strength: 0,
         dextrity: 0,
         constitution: 0,
         intelligence: 0,
@@ -160,7 +175,7 @@ export const characterEmpty: CharacterPc = {
 
 export const abilitysEmpty: Abilitys = {
 
-    streght: 10,
+    strength: 10,
     dextrity: 10,
     constitution: 10,
     intelligence: 10,
@@ -211,7 +226,12 @@ export const emptyClass: ClassPc = {
     id: -1,
     classType: -1,
     className: -1,
-    level: 0
+    level: 0,
+    firstClass: false,
+    hitDice: 0,
+    classBab: 0,
+    savingThrow: 'lll',
+    skillPoints: 0
 }
 
 export const enchantItems: Enchantment[] = [

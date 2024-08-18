@@ -1,28 +1,31 @@
 import { CharProps } from "./CharacterData";
 import { BonusAbilities, SignAndCount } from "./functions";
+import { savingThrows } from "./interfaces";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { CountSavingThrowFromClassPc } from "./Saving/Functions";
 
 export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
+  const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList)
   const saving = {
-    for: SignAndCount([char.savingThrows.fortitude]),
+    for: SignAndCount([sT.fortitude]),
     forTot: SignAndCount([
-      char.savingThrows.fortitude,
+      sT.fortitude,
       BonusAbilities(char.abilitys, "COS")
     ]),
     forAb: SignAndCount([BonusAbilities(char.abilitys, "COS")]),
     forOther: 0,
     ///
-    ref: SignAndCount([char.savingThrows.reflex]),
+    ref: SignAndCount([sT.reflex]),
     refTot: SignAndCount([
-      char.savingThrows.reflex,
+      sT.reflex,
       BonusAbilities(char.abilitys, "DEX")
     ]),
     refAb: SignAndCount([BonusAbilities(char.abilitys, "DEX")]),
     refOther: 0,
     ///
-    will: SignAndCount([char.savingThrows.will]),
+    will: SignAndCount([sT.will]),
     willTot: SignAndCount([
-      char.savingThrows.will,
+      sT.will,
       BonusAbilities(char.abilitys, "WIS")
     ]),
     willAb: SignAndCount([BonusAbilities(char.abilitys, "WIS")]),

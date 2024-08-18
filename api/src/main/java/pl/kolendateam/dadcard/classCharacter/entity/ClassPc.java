@@ -26,6 +26,7 @@ public class ClassPc implements Serializable {
   int id;
 
   int level;
+  boolean firstClass;
 
   @ManyToOne
   @JoinColumn(name = "class_character_id")
@@ -34,6 +35,10 @@ public class ClassPc implements Serializable {
   @ManyToOne
   @JoinColumn(name = "character_card_id")
   Character character;
+
+  public boolean getFirstClass() {
+    return this.firstClass;
+  }
 
   // @ManyToOne
   // @JoinColumn(name = "character_id", referencedColumnName = "id")
@@ -73,8 +78,9 @@ public class ClassPc implements Serializable {
   // @Enumerated(EnumType.STRING)
   // SpellsEnum spells_domain;
 
-  public ClassPc(int lv, ClassCharacter classPg) {
+  public ClassPc(int lv, boolean first, ClassCharacter classPg) {
     this.level = lv;
+    this.firstClass = first;
     this.classCharacter = classPg;
   }
 

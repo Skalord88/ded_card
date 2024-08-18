@@ -11,6 +11,7 @@ public class ClassPcListDTO {
   public String classType;
   public String className;
   public int level;
+  public boolean firstClass;
   public byte hitDice;
   public double classBab;
   public String savingThrow;
