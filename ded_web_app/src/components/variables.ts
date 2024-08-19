@@ -1,4 +1,5 @@
-import { Abilitys, AddStudy, Armor, Attacks, CharacterPc, ClassPc, Enchantment, Inventory, Item, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
+import { Abilitys, Armor, Attacks, CharacterPc, ClassPc, Enchantment, Inventory, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
+import { AddStudy } from './Skills/interface/SkillsInterface'
 
 export const noneArmor: Armor = {
     id: 2,
@@ -106,16 +107,6 @@ export const characterEmpty: CharacterPc = {
             grapple: 0
         }
     },
-    // subRace: '',
-    // vitality: {
-    //     life: 0,
-    //     hitDices: [{
-    //         first: false,
-    //         lv: 0,
-    //         dice: 0
-    //     }],
-    //     hitPoints: 0
-    // },
     speed: 0,
     armorClass: {
         dextrityBonus: 0,
@@ -136,11 +127,6 @@ export const characterEmpty: CharacterPc = {
         overrun: 0,
         sunder: 0
     },
-    // savingThrows: {
-    //     fortitude: 0,
-    //     reflex: 0,
-    //     will: 0
-    // },
     abilitys: {
         strength: 0,
         dextrity: 0,
@@ -149,7 +135,6 @@ export const characterEmpty: CharacterPc = {
         wisdom: 0,
         charisma: 0
     },
-    // skillPoints: 0,
     skillsList: [],
     featsList: [],
     levelFeatsList: [],

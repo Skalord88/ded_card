@@ -1,7 +1,10 @@
-import { OneStudy } from "../../interfaces";
+import { AbilityBackgroundColor } from "../../Abilitys/Colors";
+import { OneStudy } from "../interface/SkillsInterface";
 
 export const StudyAbiSkillsTableComponent: React.FC<OneStudy> = ({
+    ability,
     skillAbility
   }) => {
-    return <div className="rpgui-container-framed-grey-mini">{skillAbility}</div>;
+    const color: string = AbilityBackgroundColor(ability)
+    return <div className={color}>{skillAbility}</div>;
   };

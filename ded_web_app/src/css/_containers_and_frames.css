@@ -195,3 +195,35 @@
 	background-origin: padding-box;
 	background-position: center;
 }
+
+.rpgui-container-framed-grey-mini.strenght
+{
+	/* background */
+	background: url("../img/background-image-red.png") repeat repeat;
+}
+
+.rpgui-container-framed-grey-mini.dexterity
+{
+	/* background */
+	background: url("../img/background-image-green.png") repeat repeat;
+}
+.rpgui-container-framed-grey-mini.constitution
+{
+	/* background */
+	background: url("../img/background-image-yellow.png") repeat repeat;
+}
+.rpgui-container-framed-grey-mini.intelligence
+{
+	/* background */
+	background: url("../img/background-image-blue.png") repeat repeat;
+}
+.rpgui-container-framed-grey-mini.wisdom
+{
+	/* background */
+	background: url("../img/background-image-greylght.png") repeat repeat;
+}
+.rpgui-container-framed-grey-mini.charisma
+{
+	/* background */
+	background: url("../img/background-image-pink.png") repeat repeat;
+}

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { OneSkillProps } from "../interfaces";
+import { OneSkillProps } from "./interface/SkillsInterface";
 
 export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
     indexSkill,
     skill,
+    size,
     updateRank
   }) => {
     const [rank, setRank] = useState<number>(skill.skillRank);
@@ -36,7 +37,7 @@ export const SkillTotSkillsTableComponent: React.FC<OneSkillProps> = ({
         className="rpgui-container-framed-grey-mini"
         style={{ color: "orange" }}
       >
-        {rank + skill.skillAbility + skill.skillBonus}
+        {rank + skill.skillAbility + skill.skillBonus + size}
       </div>
     );
   };

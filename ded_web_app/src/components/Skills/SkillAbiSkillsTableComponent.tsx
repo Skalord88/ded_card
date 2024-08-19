@@ -1,11 +1,14 @@
-import { OneSkill } from "../interfaces";
+import { AbilityBackgroundColor } from "../Abilitys/Colors";
+import { OneSkill } from "./interface/SkillsInterface";
 
-export const SkillAbiSkillsTableComponent: React.FC<OneSkill> = ({ skill }) => {
-    return (
-      <>
-        <div className="rpgui-container-framed-grey-mini">
-          {skill.skillAbility}
-        </div>
-      </>
-    );
-  };
+export const SkillAbiSkillsTableComponent: React.FC<OneSkill> = ({
+  skill,
+  abilitys
+}) => {
+  const color: string = AbilityBackgroundColor(skill.skillAbility)
+  return (
+    <>
+      <div className={color}>{abilitys}</div>
+    </>
+  );
+};

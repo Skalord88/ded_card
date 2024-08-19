@@ -1,22 +1,20 @@
 package pl.kolendateam.dadcard.abilitys.entity;
 
 public enum AbilityEnum {
+  STRENGHT("Streght"),
+  DEXTERITY("Dexterity"),
+  CONSTITUTION("Constitution"),
+  INTELLIGENCE("Intelligence"),
+  WISDOM("Wisdom"),
+  CHARISMA("Charisma");
 
-    STRENGHT("Streght"),
-    DEXTRITY("Dextrity"),
-    CONSTITUTION("Constitution"),
-    INTELLIGENCE("Intelligence"),
-    WISDOM("Wisdom"),
-    CHARISMA("Charisma");
+  private String abilityEnum;
 
-    private String abilityEnum;
+  public String getAbilityEnum() {
+    return abilityEnum;
+  }
 
-    public String getAbilityEnum(){
-        return abilityEnum;
-    }
-
-    private AbilityEnum(String abilityEnum){
-        this.abilityEnum = abilityEnum; 
-    }
-    
+  private AbilityEnum(String abilityEnum) {
+    this.abilityEnum = abilityEnum;
+  }
 }

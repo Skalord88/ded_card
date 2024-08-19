@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
-import { SkillProps } from "../interfaces";
+import { CharProps } from "../interfaces";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { urlSkillSet } from "../url";
-import { SkillDTO } from "./interface/SkillsInterface";
+import { SkillDTO, SkillProps } from "./interface/SkillsInterface";
 import { SkillSkillsTableComponent } from "./SkillSkillsTableComponent";
+import { CountLevelFromClass } from "../Level/Functions";
+import { SkillPointsFromClass } from "./functions/Functions";
 
-export type SkillsTableProps = {
-  skills: SkillProps[];
-  maxSkillsPoints: number;
-  maxToSpentPoints: number;
-};
-
-export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
-  skills,
-  maxSkillsPoints,
-  maxToSpentPoints
+export const SkillsTableComponent: React.FC<CharProps> = ({
+  char
 }) => {
   const { charId } = useParams();
-  const [skillsTable, setSkillsTable] = useState<SkillProps[]>(skills);
+  const [skillsTable, setSkillsTable] = useState<SkillProps[]>(char.skillsList);
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
+  const maxSkillsPoints: number = CountLevelFromClass(char.classPcList) + 3
+  const maxToSpentPoints: number = SkillPointsFromClass(char.classPcList)
+  const hideBonus: number = char.race.size.hide
 
   const updateRank = (
     indexSkill: number,
@@ -53,7 +50,7 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
   }, [skillsTable]);
 
   const handleChange = () => {
-    const mapSkillsToDTO: SkillDTO[] = skills?.map((skill) => {
+    const mapSkillsToDTO: SkillDTO[] = skillsTable?.map((skill) => {
       if (skill.fieldOfStudy.length > 0)
         return {
           idSkill: skill.idSkill,
@@ -137,6 +134,8 @@ export const SkillsTableComponent: React.FC<SkillsTableProps> = ({
                     maxSkillsPoints={maxSkillsPoints}
                     spentSkillPnts={spentSkillPnts}
                     maxToSpentPoints={maxToSpentPoints}
+                    abilitys={0}
+                    size={hideBonus}
                     updateRank={updateRank}
                   />
                 </>

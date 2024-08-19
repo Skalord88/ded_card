@@ -18,7 +18,7 @@ public class ClassSkills implements Serializable {
   Set<ClassStudy> fieldOfStudy;
   boolean classSkill;
   double skillRank;
-  int skillAbilityBonus;
+  // int skillAbilityBonus;
   AbilityEnum skillAbility;
   int skillBonus;
 

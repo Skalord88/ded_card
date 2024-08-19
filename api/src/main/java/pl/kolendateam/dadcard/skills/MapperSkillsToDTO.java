@@ -3,7 +3,6 @@ package pl.kolendateam.dadcard.skills;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.skills.dto.RaceSkillsDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -32,28 +31,28 @@ public class MapperSkillsToDTO {
       }
       skillDTO.classSkill = skill.isClassSkill();
       skillDTO.skillRank = skill.getSkillRank();
-      skillDTO.skillAbilityBonus = skill.getSkillAbilityBonus();
-      AbilityEnum ability = skill.getSkillAbility();
-      switch (ability) {
-        case STRENGHT:
-          skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
-          break;
-        case DEXTRITY:
-          skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
-          break;
-        case CONSTITUTION:
-          skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
-          break;
-        case INTELLIGENCE:
-          skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
-          break;
-        case WISDOM:
-          skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
-          break;
-        case CHARISMA:
-          skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
-          break;
-      }
+      skillDTO.skillAbility = skill.getSkillAbility();
+      // AbilityEnum ability = skill.getSkillAbility();
+      // switch (ability) {
+      //   case STRENGHT:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
+      //     break;
+      //   case DEXTERITY:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
+      //     break;
+      //   case CONSTITUTION:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
+      //     break;
+      //   case INTELLIGENCE:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
+      //     break;
+      //   case WISDOM:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
+      //     break;
+      //   case CHARISMA:
+      //     skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
+      //     break;
+      // }
       skillDTO.skillBonus = skill.getSkillBonus();
 
       skillListDTO.add(skillDTO);
@@ -81,7 +80,11 @@ public class MapperSkillsToDTO {
     List<SkillsDTO> skillListDTO = new ArrayList<>();
 
     for (Skills skill : skills) {
-      SkillsDTO skDTO = new SkillsDTO(skill.getId(), skill.getName());
+      SkillsDTO skDTO = new SkillsDTO(
+        skill.getId(),
+        skill.getName(),
+        skill.getAbility()
+      );
       skillListDTO.add(skDTO);
     }
 

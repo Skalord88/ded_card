@@ -2,19 +2,20 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
-import { CharacterPc, SkillProps } from "../components/interfaces";
+import { CharacterPc } from "../components/interfaces";
 
 import { urlChar } from "../components/url";
 import "../css/style.css";
 import { CharSummary } from "../components/CharSummary";
 import { SkillsTableComponent } from "../components/Skills/SkillsTableComponent";
+import { SkillProps } from "../components/Skills/interface/SkillsInterface";
 
 export function Skills() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
-  const [maxToSpentPoints, SetMaxToSpentPoints] = useState(0);
+  // const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
+  // const [maxToSpentPoints, SetMaxToSpentPoints] = useState(0);
   const [skills, setSkills] = useState<SkillProps[]>();
 
   useEffect(() => {
@@ -24,8 +25,8 @@ export function Skills() {
 
         setChar(resURL.data);
         setSkills(resURL.data.skillsList);
-        SetMaxToSpentPoints(resURL.data.effectiveCharacterLv + 3);
-        setMaxSkillsPoints(resURL.data.skillPoints);
+        // SetMaxToSpentPoints(resURL.data.effectiveCharacterLv + 3);
+        // setMaxSkillsPoints(resURL.data.skillPoints);
       } catch (error) {
         console.log(error);
       }
@@ -38,13 +39,11 @@ export function Skills() {
     <>
       <CharSummary character={char} />
 
-      {skills ? (
+      {char ? (
         <p>
           <SkillsTableComponent
             key={"skillsTable"}
-            skills={skills}
-            maxSkillsPoints={maxSkillsPoints}
-            maxToSpentPoints={maxToSpentPoints}
+            char={char}
           />
         </p>
       ) : (

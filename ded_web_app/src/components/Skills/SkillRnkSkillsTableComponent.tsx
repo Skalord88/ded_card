@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { OneSkillProps } from "../interfaces";
+import { OneSkillProps } from "./interface/SkillsInterface";
 
 export const SkillRnkSkillsTableComponent: React.FC<OneSkillProps> = ({
     indexSkill,

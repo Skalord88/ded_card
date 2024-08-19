@@ -1,24 +1,13 @@
+import { BonusAbilities } from "./Abilitys/Functions";
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces"
+import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
 
 export function SignNumber(
     number: number
 ): string {
     if (number < 0) { return "" }
     return "+";
-}
-
-export function BonusAbilities(ab: Abilitys, which: string) {
-    switch (which) {
-        case 'STR': return Math.floor((ab.strength - 10) / 2);
-        case 'DEX': return Math.floor((ab.dextrity - 10) / 2);
-        case 'COS': return Math.floor((ab.constitution - 10) / 2);
-        case 'INT': return Math.floor((ab.intelligence - 10) / 2);
-        case 'WIS': return Math.floor((ab.wisdom - 10) / 2);
-        case 'CHA': return Math.floor((ab.charisma - 10) / 2);
-        default: return 0;
-    }
 }
 
 export function SignAndCount(
@@ -429,3 +418,5 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
     }
     return []
 }
+
+export { BonusAbilities };

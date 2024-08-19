@@ -1,4 +1,4 @@
-import { OneStudy } from "../../interfaces";
+import { OneStudy } from "../interface/SkillsInterface";
 
 export const StudyBnsSkillsTableComponent: React.FC<OneStudy> = ({
     skillBonus

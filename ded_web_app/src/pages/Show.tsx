@@ -13,32 +13,25 @@ import { DeleteButton } from "../components/DeleteButton";
 import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import {
-  CharacterPc,
-  Inventory,
-  MapOfSkills,
-  SkillProps
+  CharacterPc
 } from "../components/interfaces";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
-import { characterEmpty, emptyInventory } from "../components/variables";
+import { characterEmpty } from "../components/variables";
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>(characterEmpty);
-  const [inventory, setInventory] = useState<Inventory>(emptyInventory);
-  const [skills, setSkills] = useState<SkillProps[]>([]);
-  const [skillsStudy, setSkillsStudy] = useState<MapOfSkills>({ skills });
-  const [skillsNoStudy, setSkillsNoStudy] = useState<MapOfSkills>({ skills });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         setChar(resURL.data);
-        setSkills(resURL.data.skillsList);
+        // setSkills(resURL.data.skillsList);
       } catch (error) {
         console.log(error);
       }
@@ -47,20 +40,20 @@ export function Show() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    const skStudy: SkillProps[] = skills.filter(
-      (sk) => Object.entries(sk.fieldOfStudy).length > 0
-    );
-    const skNoStudy: SkillProps[] = skills.filter(
-      (sk) => ![6, 17, 21].includes(sk.idSkill)
-    );
+  // useEffect(() => {
+  //   const skStudy: SkillProps[] = skills.filter(
+  //     (sk) => Object.entries(sk.fieldOfStudy).length > 0
+  //   );
+  //   const skNoStudy: SkillProps[] = skills.filter(
+  //     (sk) => ![6, 17, 21].includes(sk.idSkill)
+  //   );
 
-    const mapStudy: MapOfSkills = { skills: skStudy };
-    setSkillsStudy(mapStudy);
+  //   const mapStudy: MapOfSkills = { skills: skStudy };
+  //   setSkillsStudy(mapStudy);
 
-    const mapNoStudy: MapOfSkills = { skills: skNoStudy };
-    setSkillsNoStudy(mapNoStudy);
-  }, [skills]);
+  //   const mapNoStudy: MapOfSkills = { skills: skNoStudy };
+  //   setSkillsNoStudy(mapNoStudy);
+  // }, [skills]);
 
   useEffect(() => {}, [char.inventory]);
 
@@ -184,7 +177,7 @@ export function Show() {
           }}
         >
           <p>
-            <SkillShowComponent key={"skillsTable"} skills={skills} />
+            <SkillShowComponent key={"skillsTable"} char={char} />
           </p>
         </div> 
       </div>

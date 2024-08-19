@@ -269,7 +269,7 @@ public class Character {
           case STRENGHT:
             skill.setSkillAbility(ability);
             break;
-          case DEXTRITY:
+          case DEXTERITY:
             skill.setSkillAbility(ability);
             break;
           case CONSTITUTION:

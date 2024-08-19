@@ -1,4 +1,4 @@
-import { ShowOneSkillProps } from "../../interfaces";
+import { ShowOneSkillProps } from "../interface/SkillsInterface";
 
 export const ShowStudyRnkSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
     study

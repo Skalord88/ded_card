@@ -27,9 +27,7 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
           <p>{char.characterName}</p>
           <p>{char.playerName}</p>
           <p>Amn</p>
-          <p>
-            {char.race.subRacesName}
-          </p>
+          <p>{char.race.subRacesName}</p>
           <p>15</p>
           <p>CHGD</p>
         </div>
@@ -57,14 +55,31 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
           {char.experience}
         </p>{" "}
       </div>
-      <div style={{ display: "flex" }}>
+      <div 
+      // style={{ display: "grid" }}
+      >
         {cl.map((classe, index) => {
           return (
             <>
-              <p key={index} style={{ flex: 3 }} className="rpgui-container-framed-grey">
+              <p
+                key={index}
+                // style={{
+                //   gridColumn: "1 / span 2",
+                //   gridRow: 1
+                // }}
+                // className="rpgui-container-framed-grey"
+              >
                 {classe.className}
-              </p>
-              <p key={index + '.' + index} style={{ flex: 1 }} className="rpgui-container-framed-grey">
+                {" "}
+              {/* </p>
+              <p
+                key={index + "." + index}
+                style={{
+                  gridColumn: 3,
+                  gridRow: 1
+                }}
+                className="rpgui-container-framed-grey"
+              > */}
                 {classe.level}
               </p>
             </>
@@ -73,10 +88,25 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         {cp.map((classe, index) => {
           return (
             <>
-              <p key={index} style={{ flex: 3 }} className="rpgui-container-framed-grey">
+              <p
+                key={index}
+                // style={{
+                //   gridColumn: "1 / span 2",
+                //   gridRow: 1
+                // }}
+                // className="rpgui-container-framed-grey"
+              >
                 {classe.className}
-              </p>
-              <p key={index + '.' + index} style={{ flex: 1 }} className="rpgui-container-framed-grey">
+                {" "}
+              {/* </p>
+              <p
+                key={index + "." + index}
+                style={{
+                  gridColumn: 3,
+                  gridRow: 1
+                }}
+                className="rpgui-container-framed-grey"
+              > */}
                 {classe.level}
               </p>
             </>
@@ -88,18 +118,23 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export const BaseAttack: React.FC<CharProps> = ({ char }) => {
-  const bab = CountBabFromClassPc(char)
-  const grapple = bab + Math.floor((char.abilitys.strength - 10) / 2);
+  const bab = CountBabFromClassPc(char);
+  const grapple =
+    bab +
+    Math.floor((char.abilitys.strength - 10) / 2) +
+    char.race.size.grapple;
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
       <p>
-        bs atk bns: {SignAndCount([bab]).sign}{SignAndCount([bab]).number}
+        bs atk bns: {SignAndCount([bab]).sign}
+        {SignAndCount([bab]).number}
       </p>
       <p>
         <D20Popup textOrWeapon={"grapple: "} value={grapple} />
-        {SignAndCount([grapple]).sign}{SignAndCount([grapple]).number}
+        {SignAndCount([grapple]).sign}
+        {SignAndCount([grapple]).number}
       </p>
       <p>
         STR att: {SignNumber(bab + BonusAbilities(char.abilitys, "STR"))}

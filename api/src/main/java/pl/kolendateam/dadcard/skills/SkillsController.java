@@ -47,7 +47,6 @@ public class SkillsController {
   @GetMapping("/list")
   public List<SkillsDTO> getSkillsList() {
     List<Skills> listSkills = skillsRepository.findAll();
-
     return MapperSkillsToDTO.toSkillsNameDTO(listSkills);
   }
 

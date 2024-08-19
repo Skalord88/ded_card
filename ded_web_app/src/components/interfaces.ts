@@ -1,5 +1,6 @@
 import { feat } from "./Feats/Interface/FeatInterface";
 import { Race } from "./Race/Interfaces";
+import { SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
 export type CharacterPc = {
@@ -33,6 +34,10 @@ export type CharacterPc = {
   effectiveCharacterLv: number;
   experience: number;
   treasure: number;
+}
+
+export type CharProps = {
+  char: CharacterPc;
 }
 
 export type Monster = {
@@ -134,96 +139,6 @@ export type Abilitys = {
 
 export type AbilitysFromChar = {
   abilitys: Abilitys
-}
-
-export type MapStudy = {
-  mapStudy: { [name: string]: any };
-};
-
-export type SkillProps = {
-
-  idSkill: number,
-  nameSkill: string,
-  fieldOfStudy: Study[],
-  classSkill: boolean,
-  skillRank: number,
-  skillAbilityBonus: number,
-  skillBonus: number,
-  skillAbility: number
-
-}
-
-export type OneSkill = {
-  skill: SkillProps
-}
-
-export type OneSkillProps = {
-  indexSkill: number
-  skill: SkillProps
-  indexStudy: number | null
-  study: Study | null
-  maxSkillsPoints: number
-  spentSkillPnts: number
-  maxToSpentPoints: number
-  updateRank: (indexSkill: number, indexStudy: number | null, newRank: number) => void;
-}
-
-export type ShowOneSkillProps = {
-  indexSkill: number
-  skill: SkillProps
-  indexStudy: number | null
-  study: Study | null
-}
-
-export type Study = {
-  idStudy: number,
-  idSkill: number,
-  study: string,
-  rank: number,
-}
-
-export type OneStudy = {
-  study: Study
-  skillAbility: number
-  skillBonus: number
-}
-
-export type AddStudy = {
-  idSkill: number,
-  study: string
-}
-
-// export type OneStudyProps = {
-//   study: Study
-//   skillAbility: number
-//   skillBonus: number
-//   maxSkillsPoints: number
-//   spentSkillPnts: number
-//   maxToSpentPoints: number
-//   updateRank: (newRank: number) => void;
-// }
-
-export type MapOfSkills = {
-  skills: SkillProps[];
-}
-
-export type StudyUp = {
-  idSkill: number, idStudy: number
-}
-
-export type MapUpdateSkills = {
-  skills: SkillProps[];
-  studyAdd: StudyUp;
-  studyDel: StudyUp;
-  onRankAdd: (
-    newStudy: StudyUp) => void;
-  onRankDel: (
-    newStudy: StudyUp) => void;
-}
-
-export interface skillToServer {
-  skillDTO: SkillProps[];
-  skillPoints: number;
 }
 
 export type FeatsId = {

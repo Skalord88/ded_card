@@ -5,57 +5,384 @@
 
     <changeSet id="4" author="oscar">
         <insert tableName="character_card">
-            <column name="id" value="100"/>
-            <column name="character_name" value="Puli"/>
-            <column name="player_name" value="Paulina"/>
-            <column name="abilitys" value="{
+            <column name="id" value="100" />
+            <column name="character_name" value="Puli" />
+            <column name="player_name" value="Paulina" />
+            <column name="abilitys"
+                value="{
                 &quot;strength&quot;: 10,
-                &quot;dextrity&quot;: 10, 
-                &quot;constitution&quot;: 10, 
-                &quot;intelligence&quot;: 10, 
-                &quot;wisdom&quot;: 10, 
-                &quot;charisma&quot;: 10
+                &quot;dextrity&quot;: 15, 
+                &quot;constitution&quot;: 13, 
+                &quot;intelligence&quot;: 14, 
+                &quot;wisdom&quot;: 8, 
+                &quot;charisma&quot;: 12
             }" />
             <column name="race_id" value="19" />
             <column name="size_id" value="4" />
-            <column name="speed" value="20"/>
-            <column name="effective_character_lv" value="10"/>
-            <column name="level_adjustment" value="0"/>
+            <column name="speed" value="20" />
+            <column name="effective_character_lv" value="10" />
+            <column name="level_adjustment" value="0" />
             <!-- <column name="vitality" value="{}" /> -->
             <!-- <column name="saving_throw" value="{}"/> -->
             <!-- <column name="skill_points" value="0"/> -->
-            <column name="armor_class" value="{}"/>
-            <column name="class_skills" value="[
-        {
+            <column name="armor_class" value="{}" />
+            <column name="class_skills"
+                value="[
+                {
             &quot;idSkill&quot;: 1,
             &quot;nameSkill&quot;: &quot;Appraise&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 2.5,
-            &quot;skillAbilityBonus&quot;: 0,
-            &quot;skillAbility&quot;: &quot;INTELLIGENCE&quot;,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
             &quot;skillBonus&quot;: 0
-        },{
+        },
+        {
             &quot;idSkill&quot;: 2,
             &quot;nameSkill&quot;: &quot;Balance&quot;,
             &quot;fieldOfStudy&quot;: null,
-            &quot;classSkill&quot;: true,
-            &quot;skillRank&quot;: 4,
-            &quot;skillAbilityBonus&quot;: 0,
-            &quot;skillAbility&quot;: &quot;DEXTRITY&quot;,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
             &quot;skillBonus&quot;: 0
-            }]"/>
-            <column name="feats_list" value="[]"/>
-            <column name="level_feats_list" value="[]"/>
+        },
+        {
+            &quot;idSkill&quot;: 3,
+            &quot;nameSkill&quot;: &quot;Bluff&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 4,
+            &quot;nameSkill&quot;: &quot;Climb&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 0,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 5,
+            &quot;nameSkill&quot;: &quot;Concentration&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 2,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 6,
+            &quot;nameSkill&quot;: &quot;Craft&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 7,
+            &quot;nameSkill&quot;: &quot;Diplomacy&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 8,
+            &quot;nameSkill&quot;: &quot;Disable Device&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 9,
+            &quot;nameSkill&quot;: &quot;Disguise&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 10,
+            &quot;nameSkill&quot;: &quot;Escape Artist&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 11,
+            &quot;nameSkill&quot;: &quot;Gather Information&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 12,
+            &quot;nameSkill&quot;: &quot;Handle Animal&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 13,
+            &quot;nameSkill&quot;: &quot;Heal&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 4,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 14,
+            &quot;nameSkill&quot;: &quot;Hide&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 15,
+            &quot;nameSkill&quot;: &quot;Intimidate&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 16,
+            &quot;nameSkill&quot;: &quot;Jump&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 0,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 17,
+            &quot;nameSkill&quot;: &quot;Knowledge&quot;,
+            &quot;fieldOfStudy&quot;: [
+                {
+                    &quot;id&quot; : 1,
+                    &quot;studyName&quot; : &quot;Arcana&quot;,
+                    &quot;idSkill&quot; : 17,
+                    &quot;skillName&quot; : &quot;Knowledge&quot;,
+                    &quot;rank&quot; : 2
+            },{
+                    &quot;id&quot; : 7,
+                    &quot;studyName&quot; : &quot;Amn&quot;,
+                    &quot;idSkill&quot; : 17,
+                    &quot;skillName&quot; : &quot;Knowledge&quot;,
+                    &quot;rank&quot; : 4
+                }
+            ],
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 18,
+            &quot;nameSkill&quot;: &quot;Listen&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 4,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 19,
+            &quot;nameSkill&quot;: &quot;Move Silently&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 20,
+            &quot;nameSkill&quot;: &quot;Perform&quot;,
+            &quot;fieldOfStudy&quot;: [],
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 21,
+            &quot;nameSkill&quot;: &quot;Profession&quot;,
+            &quot;fieldOfStudy&quot;: [],
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 22,
+            &quot;nameSkill&quot;: &quot;Ride&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 23,
+            &quot;nameSkill&quot;: &quot;Search&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 24,
+            &quot;nameSkill&quot;: &quot;Sense Motive&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 4,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 25,
+            &quot;nameSkill&quot;: &quot;Sleight Of Hand&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 26,
+            &quot;nameSkill&quot;: &quot;Speak Language&quot;,
+            &quot;fieldOfStudy&quot;: [],
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 27,
+            &quot;nameSkill&quot;: &quot;Spellcraft&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 3,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 28,
+            &quot;nameSkill&quot;: &quot;Spot&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 4,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 29,
+            &quot;nameSkill&quot;: &quot;Survival&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 4,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 30,
+            &quot;nameSkill&quot;: &quot;Swim&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 0,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 31,
+            &quot;nameSkill&quot;: &quot;Tumble&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 32,
+            &quot;nameSkill&quot;: &quot;Use Magic Device&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 5,
+            &quot;skillBonus&quot;: 0
+        },
+        {
+            &quot;idSkill&quot;: 33,
+            &quot;nameSkill&quot;: &quot;Use Rope&quot;,
+            &quot;fieldOfStudy&quot;: null,
+            &quot;classSkill&quot;: false,
+            &quot;skillRank&quot;: 0,
+            
+            &quot;skillAbility&quot;: 1,
+            &quot;skillBonus&quot;: 0
+        }]" />
+            <column name="feats_list" value="[]" />
+            <column name="level_feats_list" value="[]" />
             <!-- <column name="bab" value="0"/> -->
-            <column name="special_attacks" value="{}"/>
-            <column name="inventory_id" value="100"/>
-            <column name="attacks_id" value="100"/>
-            <column name="magic_per_day" value="{}"/>
-            <column name="magic_known" value="{}"/>
-            <column name="books" value="[]"/>
-            <column name="experience" value="0"/>
-            <column name="treasure" value="0"/>
+            <column name="special_attacks" value="{}" />
+            <column name="inventory_id" value="100" />
+            <column name="attacks_id" value="100" />
+            <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" />
+            <column name="books" value="[]" />
+            <column name="experience" value="0" />
+            <column name="treasure" value="0" />
         </insert>
     </changeSet>
 </databaseChangeLog>

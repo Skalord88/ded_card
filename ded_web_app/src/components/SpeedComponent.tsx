@@ -1,8 +1,6 @@
-import { CharacterPc } from "./interfaces";
+import { CharacterPc, CharProps } from "./interfaces";
 
-export interface CharProps {
-  char: CharacterPc;
-}
+
 
 export const SpeedComponent: React.FC<CharProps> = ({ char }) => {
   return (
