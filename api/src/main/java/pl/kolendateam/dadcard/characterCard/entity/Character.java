@@ -96,8 +96,8 @@ public class Character {
 
   // double bab;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  SpecialAttacks specialAttacks;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SpecialAttacks specialAttacks;
 
   // @JdbcTypeCode(SqlTypes.JSON)
   // SavingThrow savingThrow;
@@ -149,7 +149,7 @@ public class Character {
     this.size = new Size();
     // this.vitality = new Vitality(0, new HashMap<>(), 0);
     this.armorClass = new ArmorClass();
-    this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
+    // this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
     // this.savingThrow = new SavingThrow(0, 0, 0);
     this.abilitys = new Abilitys();
     this.classSkills = new ArrayList<>();
@@ -392,15 +392,15 @@ public class Character {
     }
   }
 
-  public void addSpecialAttacks(String specialAttacksFeat) {
-    Gson gson = new Gson();
-    SpecialAttacks spAtt = gson.fromJson(
-      specialAttacksFeat,
-      SpecialAttacks.class
-    );
+  // public void addSpecialAttacks(String specialAttacksFeat) {
+  //   Gson gson = new Gson();
+  //   SpecialAttacks spAtt = gson.fromJson(
+  //     specialAttacksFeat,
+  //     SpecialAttacks.class
+  //   );
 
-    this.specialAttacks.addSpecialAttackFeat(spAtt, this.specialAttacks);
-  }
+  //   this.specialAttacks.addSpecialAttackFeat(spAtt, this.specialAttacks);
+  // }
 
   public void addAbilityRace(String raceAbilitys) {
     Gson gson = new Gson();

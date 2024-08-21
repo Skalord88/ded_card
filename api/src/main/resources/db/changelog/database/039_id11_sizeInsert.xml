@@ -9,63 +9,63 @@
             <column name="size" value="FINE" />
             <column name="bonus" value="4" />
             <column name="hide" value="16" />
-            <column name="grapple" value="-16" />
+            <!-- <column name="grapple" value="-16" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="2" />
             <column name="size" value="DIMINUTIVE" />
             <column name="bonus" value="3" />
             <column name="hide" value="12" />
-            <column name="grapple" value="-12" />
+            <!-- <column name="grapple" value="-12" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="3" />
             <column name="size" value="TINY" />
             <column name="bonus" value="2" />
             <column name="hide" value="8" />
-            <column name="grapple" value="-8" />
+            <!-- <column name="grapple" value="-8" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="4" />
             <column name="size" value="SMALL" />
             <column name="bonus" value="1" />
             <column name="hide" value="4" />
-            <column name="grapple" value="-4" />
+            <!-- <column name="grapple" value="-4" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="5" />
             <column name="size" value="MEDIUM" />
             <column name="bonus" value="0" />
             <column name="hide" value="0" />
-            <column name="grapple" value="0" />
+            <!-- <column name="grapple" value="0" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="6" />
             <column name="size" value="LARGE" />
             <column name="bonus" value="-1" />
             <column name="hide" value="-4" />
-            <column name="grapple" value="4" />
+            <!-- <column name="grapple" value="4" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="7" />
             <column name="size" value="HUGE" />
             <column name="bonus" value="-2" />
             <column name="hide" value="-8" />
-            <column name="grapple" value="8" />
+            <!-- <column name="grapple" value="8" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="8" />
             <column name="size" value="GARGANTUAN" />
             <column name="bonus" value="-3" />
             <column name="hide" value="-12" />
-            <column name="grapple" value="12" />
+            <!-- <column name="grapple" value="12" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="9" />
             <column name="size" value="COLOSSAL" />
             <column name="bonus" value="-4" />
             <column name="hide" value="-16" />
-            <column name="grapple" value="16" />
+            <!-- <column name="grapple" value="16" /> -->
         </insert>
     </changeSet>
 </databaseChangeLog>

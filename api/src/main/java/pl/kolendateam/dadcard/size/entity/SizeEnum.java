@@ -1,18 +1,23 @@
 package pl.kolendateam.dadcard.size.entity;
 
 public enum SizeEnum {
-    TINY("tiny"),
-    SMALL("small"),
-    MEDIUM("medium"),
-    LARGE("large");
+  FINE("fine"),
+  DIMINUTIVE("diminutive"),
+  TINY("tiny"),
+  SMALL("small"),
+  MEDIUM("medium"),
+  LARGE("large"),
+  HUGE("huge"),
+  GARGANTUAN("gargantuan"),
+  COLOSSAL("colossal");
 
-    private String sizeEnum;
+  private String sizeEnum;
 
-    private SizeEnum(String sizeEnum){
-        this.sizeEnum = sizeEnum;
-    }
+  private SizeEnum(String sizeEnum) {
+    this.sizeEnum = sizeEnum;
+  }
 
-    public String getSizeEnum(){
-        return sizeEnum;
-    }
+  public String getSizeEnum() {
+    return sizeEnum;
+  }
 }

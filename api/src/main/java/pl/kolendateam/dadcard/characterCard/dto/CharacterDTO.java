@@ -51,7 +51,7 @@ public class CharacterDTO implements Serializable {
   public int speed;
   public ArmorClassDTO armorClass;
   // public int bab;
-  public SpecialAttacksDTO specialAttacks;
+  // public SpecialAttacksDTO specialAttacks;
   // public SavingThrowDTO savingThrows;
   public AbilitysDTO abilitys;
   // public double skillPoints;
@@ -91,8 +91,8 @@ public class CharacterDTO implements Serializable {
         character.getSize()
       );
     // this.bab = (int) character.getBab();
-    this.specialAttacks =
-      MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
+    // this.specialAttacks =
+    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
     // this.savingThrows =
     //   MapperSavingThrowToDTO.toSavingThrowDTO(
     //     character.getSavingThrow(),
@@ -144,8 +144,8 @@ public class CharacterDTO implements Serializable {
         character.getSize()
       );
     // this.bab = (int) character.getBab();
-    this.specialAttacks =
-      MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
+    // this.specialAttacks =
+    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
     // this.savingThrows =
     //   MapperSavingThrowToDTO.toSavingThrowDTO(
     //     character.getSavingThrow(),
@@ -194,8 +194,8 @@ public class CharacterDTO implements Serializable {
         character.getSize()
       );
     // this.bab = (int) character.getBab();
-    this.specialAttacks =
-      MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
+    // this.specialAttacks =
+    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
     // this.savingThrows =
     //   MapperSavingThrowToDTO.toSavingThrowDTO(
     //     character.getSavingThrow(),
@@ -250,8 +250,8 @@ public class CharacterDTO implements Serializable {
         character.getSize()
       );
     // this.bab = (int) character.getBab();
-    this.specialAttacks =
-      MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
+    // this.specialAttacks =
+    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
     // this.savingThrows =
     // MapperSavingThrowToDTO.toSavingThrowDTO(
     // character.getSavingThrow(),

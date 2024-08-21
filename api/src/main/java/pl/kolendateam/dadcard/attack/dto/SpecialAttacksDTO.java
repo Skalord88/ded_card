@@ -7,11 +7,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SpecialAttacksDTO {
 
-    public int bullRush;
-    public int charge;
-    public int disarm;
-    public int grapple;
-    public int overrun;
-    public int sunder;
-    
+  int id;
+  String name;
+  int bonus;
+  String[] target;
+  // public int bullRush;
+  // public int charge;
+  // public int disarm;
+  // public int grapple;
+  // public int overrun;
+  // public int sunder;
+
 }
