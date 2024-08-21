@@ -22,11 +22,5 @@
             <column name="character_card_id" value="100" />
             <column name="class_character_id" value="11" />
         </insert>
-        <insert tableName="class_pc">
-            <column name="level" value="4" />
-            <column name="first_class" value="false" />
-            <column name="character_card_id" value="100" />
-            <column name="class_character_id" value="100" />
-        </insert>
     </changeSet>
 </databaseChangeLog>

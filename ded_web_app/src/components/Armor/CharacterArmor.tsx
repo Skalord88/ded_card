@@ -6,7 +6,6 @@ export const CharacterArmor: React.FC<ArmorInCharacter> = ({
     charInventory
   }) => {
     const tot = CountArmor(charArmor, charInventory);
-  
     const armor = CountInCharArmor(charArmor, charInventory);
   
     return (

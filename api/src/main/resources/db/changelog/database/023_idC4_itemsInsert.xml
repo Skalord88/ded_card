@@ -1,475 +1,743 @@
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-<changeSet id="304" author="oscar">
-    <insert tableName="items">
-        <column name="name" value="Unarmed strike"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="UNARMED_STRIKE"/>
-        <column name="cost" value="0"/>
-        <column name="damage" value="D3"/>
-        <column name="critical" value="X2"/>
-        <column name="weight" value="0"/>
-        <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED','LIGHT']"/>
-        <column name="special_attacks"  value=""/>
-        <column name="description" value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike."/>
-        
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="No Armor"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="NO_ARMOR"/>
-        <column name="cost" value="0"/>
-        <column name="weight" value="0"/>
-        <column name="armor_class" value="0"/>
-        <column name="armor_type" value="NO_ARMOR"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="0"/>
-        <column name="failure" value="0"/>
-        <column name="description" value="Naked"/>
-       
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="No Shield"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="NO_SHIELD"/>
-        <column name="cost" value="0"/>
-        <column name="weight" value="0"/>
-        <column name="armor_class" value="0"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="0"/>
-        <column name="failure" value="0"/>
-        <column name="description" value="Naked"/>
-        
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="No item"/>
-        <column name="item_type" value="WONDROUS_ITEM"/>
-        <column name="cost" value="0"/>
-        <column name="weight" value="0"/>
-        <column name="description" value=""/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Gauntlet"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="GAUNTLET"/>
-        <column name="cost" value="2"/>
-        <column name="damage" value="D3"/>
-        <column name="critical" value="X2"/>
-        <column name="weight" value="1"/>
-        <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']"/>
-        <column name="special_attacks"  value=""/>
-        <column name="description" value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Dagger"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="DAGGER"/>
-        <column name="cost" value="2"/>
-        <column name="damage" value="D4"/>
-        <column name="critical" value="X2_1920"/>
-        <column name="range" value="10"/>
-        <column name="weight" value="1"/>
-        <column name="type" value="['PIERCING_OR_SLASHING','SIMPLE','LIGHT','THROWN']"/>
-        <column name="special_attacks"  value=""/>
-        <column name="description" value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Long spear"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="LONGSPEAR"/>
-        <column name="cost" value="5"/>
-        <column name="damage" value="D8"/>
-        <column name="critical" value="X3"/>
-        <column name="weight" value="9"/>
-        <column name="type" value="['PIERCING','SIMPLE','TWO_HANDED']"/>
-        <column name="special_attacks"  value=""/>
-        <column name="description" value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Javelin"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="JAVELIN"/>
-        <column name="cost" value="1"/>
-        <column name="damage" value="D6"/>
-        <column name="critical" value="X2"/>
-        <column name="range" value="30"/>
-        <column name="weight" value="2"/>
-        <column name="type" value="['PIERCING','SIMPLE','THROWN']"/>
-        <column name="special_attacks"  value=""/>
-        <column name="description" value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Glaive"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="GLAIVE"/>
-        <column name="cost" value="8"/>
-        <column name="damage" value="D10"/>
-        <column name="critical" value="X3"/>
-        <column name="weight" value="10"/>
-        <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']"/>
-        <column name="special_attacks" value=""/>
-        <column name="description" value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shortbow"/>
-        <column name="item_type" value="WEAPON"/>
-        <column name="weapon_name" value="SHORTBOW"/>
-        <column name="cost" value="30"/>
-        <column name="damage" value="D6"/>
-        <column name="critical" value="X3"/>
-        <column name="range" value="30"/>
-        <column name="weight" value="3"/>
-        <column name="type" value="['PIERCING','TWO_HANDED','RANGED']"/>
-        <column name="special_attacks" value=""/>
-        <column name="description" value="You need at least two hands to use a bow, regardless of its size. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when you use a composite shortbow (see below) but not a regular shortbow."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
+    <changeSet id="304" author="oscar">
+        <insert tableName="items">
+            <column name="name" value="Unarmed strike" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="UNARMED_STRIKE" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D3" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0" />
+            <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike." />
 
-    <!-- ARMOR -->
-    <!-- LIGHT_ARMOR -->
-    <insert tableName="items">
-        <column name="name" value="Padded"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="PADDED"/>
-        <column name="cost" value="5"/>
-        <column name="weight" value="10"/>
-        <column name="armor_class" value="1"/>
-        <column name="armor_type" value="LIGHT_ARMOR"/>
-        <column name="max_dex" value="8"/>
-        <column name="penality" value="0"/>
-        <column name="failure" value="5"/>
-        <column name="description" value="Taka se, ale lekka."/>
-        <column name="material" value="LEATHER"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Leather"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="LEATHER"/>
-        <column name="cost" value="10"/>
-        <column name="weight" value="15"/>
-        <column name="armor_class" value="2"/>
-        <column name="armor_type" value="LIGHT_ARMOR"/>
-        <column name="max_dex" value="6"/>
-        <column name="penality" value="0"/>
-        <column name="failure" value="10"/>
-        <column name="description" value="Taka se, ale lekka."/>
-        <column name="material" value="LEATHER"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Studded leather"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="STUDDED_LEATHER"/>
-        <column name="cost" value="25"/>
-        <column name="weight" value="20"/>
-        <column name="armor_class" value="3"/>
-        <column name="armor_type" value="LIGHT_ARMOR"/>
-        <column name="max_dex" value="5"/>
-        <column name="penality" value="-1"/>
-        <column name="failure" value="15"/>
-        <column name="description" value="Taka se, ale lekka."/>
-        <column name="material" value="LEATHER"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Chain shirt"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="CHAIN_SHIRT"/>
-        <column name="cost" value="100"/>
-        <column name="weight" value="25"/>
-        <column name="armor_class" value="4"/>
-        <column name="armor_type" value="LIGHT_ARMOR"/>
-        <column name="max_dex" value="4"/>
-        <column name="penality" value="-2"/>
-        <column name="failure" value="20"/>
-        <column name="description" value="A chain shirt comes with a steel cap."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <!-- MEDIUM_ARMOR -->
-    <insert tableName="items">
-        <column name="name" value="Hide"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="HIDE"/>
-        <column name="cost" value="15"/>
-        <column name="weight" value="25"/>
-        <column name="armor_class" value="3"/>
-        <column name="armor_type" value="MEDIUM_ARMOR"/>
-        <column name="max_dex" value="4"/>
-        <column name="penality" value="-3"/>
-        <column name="failure" value="20"/>
-        <column name="description" value="Taka se, ale lekka."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Scale mail"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="SCALE_MAIL"/>
-        <column name="cost" value="50"/>
-        <column name="weight" value="30"/>
-        <column name="armor_class" value="4"/>
-        <column name="armor_type" value="MEDIUM_ARMOR"/>
-        <column name="max_dex" value="3"/>
-        <column name="penality" value="-4"/>
-        <column name="failure" value="25"/>
-        <column name="description" value="Taka se, ale lekka."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Chainmail"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="CHAINMAIL"/>
-        <column name="cost" value="150"/>
-        <column name="weight" value="40"/>
-        <column name="armor_class" value="5"/>
-        <column name="armor_type" value="MEDIUM_ARMOR"/>
-        <column name="max_dex" value="2"/>
-        <column name="penality" value="-5"/>
-        <column name="failure" value="30"/>
-        <column name="description" value="The suit includes gauntlets."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Breastplate"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="BREASTPLATE"/>
-        <column name="cost" value="200"/>
-        <column name="weight" value="30"/>
-        <column name="armor_class" value="5"/>
-        <column name="armor_type" value="MEDIUM_ARMOR"/>
-        <column name="max_dex" value="3"/>
-        <column name="penality" value="-4"/>
-        <column name="failure" value="25"/>
-        <column name="description" value="It comes with a helmet and greaves."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <!-- HEAVY_ARMOR -->
-    <insert tableName="items">
-        <column name="name" value="Splint mail"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="SPLINT_MAIL"/>
-        <column name="cost" value="200"/>
-        <column name="weight" value="45"/>
-        <column name="armor_class" value="6"/>
-        <column name="armor_type" value="HEAVY_ARMOR"/>
-        <column name="max_dex" value="0"/>
-        <column name="penality" value="-7"/>
-        <column name="failure" value="40"/>
-        <column name="description" value="The suit includes gauntlets."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Banded mail"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="BANDED_MAIL"/>
-        <column name="cost" value="250"/>
-        <column name="weight" value="35"/>
-        <column name="armor_class" value="6"/>
-        <column name="armor_type" value="HEAVY_ARMOR"/>
-        <column name="max_dex" value="1"/>
-        <column name="penality" value="-6"/>
-        <column name="failure" value="35"/>
-        <column name="description" value="The suit includes gauntlets."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Half-plate"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="HALF_PLATE"/>
-        <column name="cost" value="600"/>
-        <column name="weight" value="50"/>
-        <column name="armor_class" value="7"/>
-        <column name="armor_type" value="HEAVY_ARMOR"/>
-        <column name="max_dex" value="0"/>
-        <column name="penality" value="-7"/>
-        <column name="failure" value="40"/>
-        <column name="description" value="The suit includes gauntlets."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Full plate"/>
-        <column name="item_type" value="ARMOR"/>
-        <column name="armor_name" value="FULL_PLATE"/>
-        <column name="cost" value="1500"/>
-        <column name="weight" value="50"/>
-        <column name="armor_class" value="8"/>
-        <column name="armor_type" value="HEAVY_ARMOR"/>
-        <column name="max_dex" value="1"/>
-        <column name="penality" value="-6"/>
-        <column name="failure" value="35"/>
-        <column name="description" value="The suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4×100) gold pieces."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="No Armor" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="NO_ARMOR" />
+            <column name="cost" value="0" />
+            <column name="weight" value="0" />
+            <column name="armor_class" value="0" />
+            <column name="armor_type" value="NO_ARMOR" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="0" />
+            <column name="failure" value="0" />
+            <column name="description" value="Naked" />
 
-    <!-- SHIELD -->
-    <insert tableName="items">
-        <column name="name" value="Buckler"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="BUCKLER"/>
-        <column name="cost" value="15"/>
-        <column name="weight" value="5"/>
-        <column name="armor_class" value="1"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="-1"/>
-        <column name="failure" value="5"/>
-        <column name="description" value="This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon (whether you are using an off-hand weapon or using your off hand to help wield a two-handed weapon), but you take a -1 penalty on attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off hand and for fighting with two weapons. In any case, if you use a weapon in your off hand, you don’t get the buckler’s AC bonus for the rest of the round.
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="No Shield" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="NO_SHIELD" />
+            <column name="cost" value="0" />
+            <column name="weight" value="0" />
+            <column name="armor_class" value="0" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="0" />
+            <column name="failure" value="0" />
+            <column name="description" value="Naked" />
 
-        You can’t bash someone with a buckler."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shield, light wooden"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="SHIELD_LIGHT_WOODEN"/>
-        <column name="cost" value="3"/>
-        <column name="weight" value="5"/>
-        <column name="armor_class" value="1"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="-1"/>
-        <column name="failure" value="5"/>
-        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="No item" />
+            <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="cost" value="0" />
+            <column name="weight" value="0" />
+            <column name="description" value="" />
+        </insert>
+
+        <!-- WEAPONS -->
+        <!-- SIMPLE -->
+        <insert tableName="items">
+            <column name="name" value="Gauntlet" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GAUNTLET" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D3" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="1" />
+            <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-2" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Dagger" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="DAGGER" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="10" />
+            <column name="weight" value="1" />
+            <column name="type" value="['PIERCING_OR_SLASHING','SIMPLE','LIGHT','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Dagger, punching" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="DAGGER_PUNCHING" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X3" />
+            <column name="weight" value="1" />
+            <column name="type" value="['PIERCING','SIMPLE','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="You get a +2 bonus on Sleight of Hand checks made to conceal a dagger on your body (see the Sleight of Hand skill)." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-2" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Gauntlet, spiked" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GAUNTLET_SPIKED" />
+            <column name="cost" value="5" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="1" />
+            <column name="type" value="['PIERCING','SIMPLE','UNARMED','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-2" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Mace, light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="JAVELIN" />
+            <column name="cost" value="5" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="4" />
+            <column name="type" value="['BLUDGEONING','SIMPLE','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Sickle" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SICKLE" />
+            <column name="cost" value="6" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="2" />
+            <column name="type" value="['SIMPLE','SLASHING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Club" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CLUB" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="3" />
+            <column name="type" value="['SIMPLE','BLUDGEONING','ONE_HANDED','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="10" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Mace, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="MACE_HEAVY" />
+            <column name="cost" value="12" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="8" />
+            <column name="type" value="['SIMPLE','ONE_HANDED','BLUDGEONING']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Morningstar" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="MORNINGSTAR" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="6" />
+            <column name="type" value="['SIMPLE','ONE_HANDED','BLUDGEONING_PIERCING']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shortspear" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHORTSPEAR" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="3" />
+            <column name="type" value="['SIMPLE','ONE_HANDED','PIERCING','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="20" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Long spear" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="LONGSPEAR" />
+            <column name="cost" value="5" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="weight" value="9" />
+            <column name="type" value="['PIERCING','SIMPLE','TWO_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="A longspear has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe. If you use a ready action to set a longspear against a charge, you deal double damage on a successful hit against a charging character." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Quarterstaff" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="QUARTERSTAFF" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D6_D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="4" />
+            <column name="type" value="['SIMPLE','BLUDGEONING','ONE_HANDED','TWO_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Spear" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SPEAR" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="weight" value="6" />
+            <column name="type" value="['SIMPLE','PIERCING','TWO_HANDED','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="20" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Crossbow, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CROSSBOW_HEAVY" />
+            <column name="cost" value="50" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X2_1920" />
+            <column name="weight" value="8" />
+            <column name="type" value="['SIMPLE','PIERCING','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="120" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Bolts, crossbow" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="BOLT_CROSSBOW" />
+            <column name="cost" value="0.1" />
+            <column name="damage" value="NA" />
+            <column name="critical" value="NA" />
+            <column name="weight" value="0.1" />
+            <column name="type" value="['SIMPLE','PIERCING','PROJECTILE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Crossbow, light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CROSSBOW_LIGHT" />
+            <column name="cost" value="35" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2_1920" />
+            <column name="weight" value="4" />
+            <column name="type" value="['SIMPLE','PIERCING','RANGED','TWO_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="80" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Dart" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="DART" />
+            <column name="cost" value="0.5" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0.5" />
+            <column name="type" value="['SIMPLE','PIERCING','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="20" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Javelin" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="JAVELIN" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="range" value="30" />
+            <column name="weight" value="2" />
+            <column name="type" value="['PIERCING','SIMPLE','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sling" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SLING" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0" />
+            <column name="type" value="['SIMPLE','BLUDGEONING','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="LEATHER" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="50" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Bullets, sling" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="BULLETS_SLING" />
+            <column name="cost" value="0.01" />
+            <column name="damage" value="NA" />
+            <column name="critical" value="NA" />
+            <column name="weight" value="5" />
+            <column name="type" value="['SIMPLE','BLUDGEONING','PROJECTILE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+            <column name="range" value="-1" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Glaive" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GLAIVE" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X3" />
+            <column name="weight" value="10" />
+            <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shortbow" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHORTBOW" />
+            <column name="cost" value="30" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X3" />
+            <column name="range" value="30" />
+            <column name="weight" value="3" />
+            <column name="type" value="['PIERCING','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="You need at least two hands to use a bow, regardless of its size. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when you use a composite shortbow (see below) but not a regular shortbow." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+
+        <!-- ARMOR -->
+        <!-- LIGHT_ARMOR -->
+        <insert tableName="items">
+            <column name="name" value="Padded" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="PADDED" />
+            <column name="cost" value="5" />
+            <column name="weight" value="10" />
+            <column name="armor_class" value="1" />
+            <column name="armor_type" value="LIGHT_ARMOR" />
+            <column name="max_dex" value="8" />
+            <column name="penality" value="0" />
+            <column name="failure" value="5" />
+            <column name="description" value="Taka se, ale lekka." />
+            <column name="material" value="LEATHER" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Leather" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="LEATHER" />
+            <column name="cost" value="10" />
+            <column name="weight" value="15" />
+            <column name="armor_class" value="2" />
+            <column name="armor_type" value="LIGHT_ARMOR" />
+            <column name="max_dex" value="6" />
+            <column name="penality" value="0" />
+            <column name="failure" value="10" />
+            <column name="description" value="Taka se, ale lekka." />
+            <column name="material" value="LEATHER" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Studded leather" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="STUDDED_LEATHER" />
+            <column name="cost" value="25" />
+            <column name="weight" value="20" />
+            <column name="armor_class" value="3" />
+            <column name="armor_type" value="LIGHT_ARMOR" />
+            <column name="max_dex" value="5" />
+            <column name="penality" value="-1" />
+            <column name="failure" value="15" />
+            <column name="description" value="Taka se, ale lekka." />
+            <column name="material" value="LEATHER" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Chain shirt" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="CHAIN_SHIRT" />
+            <column name="cost" value="100" />
+            <column name="weight" value="25" />
+            <column name="armor_class" value="4" />
+            <column name="armor_type" value="LIGHT_ARMOR" />
+            <column name="max_dex" value="4" />
+            <column name="penality" value="-2" />
+            <column name="failure" value="20" />
+            <column name="description" value="A chain shirt comes with a steel cap." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <!-- MEDIUM_ARMOR -->
+        <insert tableName="items">
+            <column name="name" value="Hide" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="HIDE" />
+            <column name="cost" value="15" />
+            <column name="weight" value="25" />
+            <column name="armor_class" value="3" />
+            <column name="armor_type" value="MEDIUM_ARMOR" />
+            <column name="max_dex" value="4" />
+            <column name="penality" value="-3" />
+            <column name="failure" value="20" />
+            <column name="description" value="Taka se, ale lekka." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Scale mail" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="SCALE_MAIL" />
+            <column name="cost" value="50" />
+            <column name="weight" value="30" />
+            <column name="armor_class" value="4" />
+            <column name="armor_type" value="MEDIUM_ARMOR" />
+            <column name="max_dex" value="3" />
+            <column name="penality" value="-4" />
+            <column name="failure" value="25" />
+            <column name="description" value="Taka se, ale lekka." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Chainmail" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="CHAINMAIL" />
+            <column name="cost" value="150" />
+            <column name="weight" value="40" />
+            <column name="armor_class" value="5" />
+            <column name="armor_type" value="MEDIUM_ARMOR" />
+            <column name="max_dex" value="2" />
+            <column name="penality" value="-5" />
+            <column name="failure" value="30" />
+            <column name="description" value="The suit includes gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Breastplate" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="BREASTPLATE" />
+            <column name="cost" value="200" />
+            <column name="weight" value="30" />
+            <column name="armor_class" value="5" />
+            <column name="armor_type" value="MEDIUM_ARMOR" />
+            <column name="max_dex" value="3" />
+            <column name="penality" value="-4" />
+            <column name="failure" value="25" />
+            <column name="description" value="It comes with a helmet and greaves." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <!-- HEAVY_ARMOR -->
+        <insert tableName="items">
+            <column name="name" value="Splint mail" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="SPLINT_MAIL" />
+            <column name="cost" value="200" />
+            <column name="weight" value="45" />
+            <column name="armor_class" value="6" />
+            <column name="armor_type" value="HEAVY_ARMOR" />
+            <column name="max_dex" value="0" />
+            <column name="penality" value="-7" />
+            <column name="failure" value="40" />
+            <column name="description" value="The suit includes gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Banded mail" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="BANDED_MAIL" />
+            <column name="cost" value="250" />
+            <column name="weight" value="35" />
+            <column name="armor_class" value="6" />
+            <column name="armor_type" value="HEAVY_ARMOR" />
+            <column name="max_dex" value="1" />
+            <column name="penality" value="-6" />
+            <column name="failure" value="35" />
+            <column name="description" value="The suit includes gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Half-plate" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="HALF_PLATE" />
+            <column name="cost" value="600" />
+            <column name="weight" value="50" />
+            <column name="armor_class" value="7" />
+            <column name="armor_type" value="HEAVY_ARMOR" />
+            <column name="max_dex" value="0" />
+            <column name="penality" value="-7" />
+            <column name="failure" value="40" />
+            <column name="description" value="The suit includes gauntlets." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Full plate" />
+            <column name="item_type" value="ARMOR" />
+            <column name="armor_name" value="FULL_PLATE" />
+            <column name="cost" value="1500" />
+            <column name="weight" value="50" />
+            <column name="armor_class" value="8" />
+            <column name="armor_type" value="HEAVY_ARMOR" />
+            <column name="max_dex" value="1" />
+            <column name="penality" value="-6" />
+            <column name="failure" value="35" />
+            <column name="description"
+                value="The suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4×100) gold pieces." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+
+        <!-- SHIELD -->
+        <insert tableName="items">
+            <column name="name" value="Buckler" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="BUCKLER" />
+            <column name="cost" value="15" />
+            <column name="weight" value="5" />
+            <column name="armor_class" value="1" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="-1" />
+            <column name="failure" value="5" />
+            <column name="description"
+                value="This small metal shield is worn strapped to your forearm. You can use a bow or crossbow without penalty while carrying it. You can also use your shield arm to wield a weapon (whether you are using an off-hand weapon or using your off hand to help wield a two-handed weapon), but you take a -1 penalty on attack rolls while doing so. This penalty stacks with those that may apply for fighting with your off hand and for fighting with two weapons. In any case, if you use a weapon in your off hand, you don’t get the buckler’s AC bonus for the rest of the round.
+
+        You can’t bash someone with a buckler." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, light wooden" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="SHIELD_LIGHT_WOODEN" />
+            <column name="cost" value="3" />
+            <column name="weight" value="5" />
+            <column name="armor_class" value="1" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="-1" />
+            <column name="failure" value="5" />
+            <column name="description"
+                value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
 
         Wooden or Steel
         Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
         
         Shield Bash Attacks
-        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shield, light steel"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="SHIELD_LIGHT_STEEL"/>
-        <column name="cost" value="9"/>
-        <column name="weight" value="6"/>
-        <column name="armor_class" value="1"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="-1"/>
-        <column name="failure" value="5"/>
-        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, light steel" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="SHIELD_LIGHT_STEEL" />
+            <column name="cost" value="9" />
+            <column name="weight" value="6" />
+            <column name="armor_class" value="1" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="-1" />
+            <column name="failure" value="5" />
+            <column name="description"
+                value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
 
         Wooden or Steel
         Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
         
         Shield Bash Attacks
-        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shield, heavy wooden"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="SHIELD_HEAVY_WOODEN"/>
-        <column name="cost" value="7"/>
-        <column name="weight" value="10"/>
-        <column name="armor_class" value="2"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="-2"/>
-        <column name="failure" value="15"/>
-        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, heavy wooden" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="SHIELD_HEAVY_WOODEN" />
+            <column name="cost" value="7" />
+            <column name="weight" value="10" />
+            <column name="armor_class" value="2" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="-2" />
+            <column name="failure" value="15" />
+            <column name="description"
+                value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
 
         Wooden or Steel
         Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
         
         Shield Bash Attacks
-        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shield, heavy steel"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="SHIELD_HEAVY_STEEL"/>
-        <column name="cost" value="20"/>
-        <column name="weight" value="15"/>
-        <column name="armor_class" value="2"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="100"/>
-        <column name="penality" value="-2"/>
-        <column name="failure" value="15"/>
-        <column name="description" value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, heavy steel" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="SHIELD_HEAVY_STEEL" />
+            <column name="cost" value="20" />
+            <column name="weight" value="15" />
+            <column name="armor_class" value="2" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="100" />
+            <column name="penality" value="-2" />
+            <column name="failure" value="15" />
+            <column name="description"
+                value="You strap a shield to your forearm and grip it with your hand. A light shield’s weight lets you carry other items in that hand, although you cannot use weapons with it.
 
         Wooden or Steel
         Wooden and steel shields offer the same basic protection, though they respond differently to special attacks.
         
         Shield Bash Attacks
-        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right."/>
-        <column name="material" value="METAL"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
-    <insert tableName="items">
-        <column name="name" value="Shield, tower"/>
-        <column name="item_type" value="SHIELD"/>
-        <column name="shield_name" value="SHIELD_TOWER"/>
-        <column name="cost" value="30"/>
-        <column name="weight" value="45"/>
-        <column name="armor_class" value="4"/>
-        <column name="armor_type" value="SHIELD"/>
-        <column name="max_dex" value="2"/>
-        <column name="penality" value="-10"/>
-        <column name="failure" value="50"/>
-        <column name="description" value="This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to your AC. However, you can instead use it as total cover, though you must give up your attacks to do so. The shield does not, however, provide cover against targeted spells; a spellcaster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else.
+        You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
+            <column name="material" value="METAL" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, tower" />
+            <column name="item_type" value="SHIELD" />
+            <column name="shield_name" value="SHIELD_TOWER" />
+            <column name="cost" value="30" />
+            <column name="weight" value="45" />
+            <column name="armor_class" value="4" />
+            <column name="armor_type" value="SHIELD" />
+            <column name="max_dex" value="2" />
+            <column name="penality" value="-10" />
+            <column name="failure" value="50" />
+            <column name="description"
+                value="This massive wooden shield is nearly as tall as you are. In most situations, it provides the indicated shield bonus to your AC. However, you can instead use it as total cover, though you must give up your attacks to do so. The shield does not, however, provide cover against targeted spells; a spellcaster can cast a spell on you by targeting the shield you are holding. You cannot bash with a tower shield, nor can you use your shield hand for anything else.
 
-        When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield’s encumbrance."/>
-        <column name="material" value="WOOD"/>
-        <column name="enchantment_id" value="0"/>
-    </insert>
+        When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield’s encumbrance." />
+            <column name="material" value="WOOD" />
+            <column name="enchantment_id" value="0" />
+        </insert>
 
-    <!-- WONDEROUS ITEMS -->
+        <!-- WONDEROUS ITEMS -->
 
-    <insert tableName="items">
-        <column name="item_type" value="WONDROUS_ITEM"/>
-        <column name="name" value="Feather token, anchor"/>
-        <column name="cost" value="50"/>
-        <column name="weight" value="0"/>
-        <column name="description" value="Each of these items is a small feather that has a power to suit a special need. The kinds of tokens are described below. Each token is usable once. Anchor A token useful to moor a craft in water so as to render it immobile for up to one day."/>
-    </insert>
-    <insert tableName="items">
-        <column name="item_type" value="WONDROUS_ITEM"/>
-        <column name="name" value="Universal Solvent"/>
-        <column name="cost" value="50"/>
-        <column name="weight" value="0"/>
-        <column name="description" value="This substance has the unique property of being able to dissolve sovereign glue and tanglefoot bags. Applying the solvent is a standard action."/>
-    </insert>
-    <insert tableName="items">
-        <column name="item_type" value="WONDROUS_ITEM"/>
-        <column name="name" value="Elixir of Love"/>
-        <column name="cost" value="150"/>
-        <column name="weight" value="0"/>
-        <column name="description" value="This sweet-tasting liquid causes the character drinking it to become charmed with the first creature she sees after consuming the draft (as charm person—the drinker must be a humanoid of Medium or smaller size, Will DC 14 negates). The charm effects wear off in 1d3 hours."/>
-    </insert>
-    <!--
+        <insert tableName="items">
+            <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="name" value="Feather token, anchor" />
+            <column name="cost" value="50" />
+            <column name="weight" value="0" />
+            <column name="description"
+                value="Each of these items is a small feather that has a power to suit a special need. The kinds of tokens are described below. Each token is usable once. Anchor A token useful to moor a craft in water so as to render it immobile for up to one day." />
+        </insert>
+        <insert tableName="items">
+            <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="name" value="Universal Solvent" />
+            <column name="cost" value="50" />
+            <column name="weight" value="0" />
+            <column name="description"
+                value="This substance has the unique property of being able to dissolve sovereign glue and tanglefoot bags. Applying the solvent is a standard action." />
+        </insert>
+        <insert tableName="items">
+            <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="name" value="Elixir of Love" />
+            <column name="cost" value="150" />
+            <column name="weight" value="0" />
+            <column name="description"
+                value="This sweet-tasting liquid causes the character drinking it to become charmed with the first creature she sees after consuming the draft (as charm person—the drinker must be a humanoid of Medium or smaller size, Will DC 14 negates). The charm effects wear off in 1d3 hours." />
+        </insert>
+        <!--
         <insert tableName="items">
             <column name="item_type" value="WEAPON"/>
             <column  name="name"  value=""/>

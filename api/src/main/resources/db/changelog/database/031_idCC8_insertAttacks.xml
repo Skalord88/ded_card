@@ -7,12 +7,12 @@
 
         <insert tableName="attacks">
             <column name="id" value="100" />
-            <column name="attacks_id_onefirst" value="1" />
-            <column name="attacks_id_onesecond" value="1" />
-            <column name="attacks_id_oneadditional" value="1" />
-            <column name="attacks_id_twofirst" value="1" />
-            <column name="attacks_id_twosecond" value="1" />
-            <column name="attacks_id_twoadditional" value="1" />
+            <column name="attacks_id_onefirst" value="23" />
+            <column name="attacks_id_onesecond" value="13" />
+            <column name="attacks_id_oneadditional" value="14" />
+            <column name="attacks_id_twofirst" value="6" />
+            <column name="attacks_id_twosecond" value="6" />
+            <column name="attacks_id_twoadditional" value="9" />
         </insert>
     </changeSet>
 </databaseChangeLog>
