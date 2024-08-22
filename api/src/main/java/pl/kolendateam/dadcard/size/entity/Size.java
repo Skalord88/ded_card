@@ -1,22 +1,21 @@
 package pl.kolendateam.dadcard.size.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
+import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @Entity
 @Getter
@@ -32,17 +31,16 @@ public class Size implements Serializable {
   @Enumerated(EnumType.STRING)
   SizeEnum size;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(
-    name = "size_attack",
-    joinColumns = @JoinColumn(name = "size_id"),
-    inverseJoinColumns = @JoinColumn(name = "special_attacks_id")
-  )
-  List<SpecialAttacks> specialAttacks;
+  @JdbcTypeCode(SqlTypes.JSON)
+  SpecialAttacks specialAttacks;
 
-  int bonus;
-  int hide;
-  int grapple;
+  @JdbcTypeCode(SqlTypes.JSON)
+  ClassSkills skill;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  ArmorClass armorBonus;
+
+  int bab;
   // public void sizeBonus(SizeEnum sizeEnum) {
   //   this.size = sizeEnum;
 

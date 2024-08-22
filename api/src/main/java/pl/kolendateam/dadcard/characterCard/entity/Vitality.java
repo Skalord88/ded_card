@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
 import java.util.HashMap;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,71 +11,69 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Vitality {
 
-    int life;
-    HashMap<Integer, Integer> hitDices;
-    int hitPoints;
+  int life;
+  HashMap<Integer, Integer> hitDices;
+  int hitPoints;
+  // public Vitality(HashMap<Integer, Integer> hitDices) {
+  //     this.hitDices = hitDices;
+  // }
 
-    public Vitality(HashMap<Integer, Integer> hitDices) {
-        this.hitDices = hitDices;
-    }
+  // public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality) {
 
-    public Vitality createHPFirstLevel(int hD, Abilitys abilitys, Vitality vitality) {
+  //     life = abilitys.getConstitution();
+  //     vitality.getHitDices().put(hD, +1);
+  //     hitPoints = vitality.getHitPoints() + hD + abilitys.bonusConstitution(abilitys);
 
-        life = abilitys.getConstitution();
-        vitality.getHitDices().put(hD, +1);
-        hitPoints = vitality.getHitPoints() + hD + abilitys.bonusConstitution(abilitys);
+  //     return vitality;
+  // }
 
-        return vitality;
-    }
+  // public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
 
-    public int hitPointsAtNewLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
+  //     int hP;
 
-        int hP;
+  //     if (effectiveCharacterLv % 2 == 0) {
+  //         hP = vitality.hitPoints + (hitDice / 2) + abilitys.bonusConstitution(abilitys);
+  //     } else {
+  //         hP = vitality.hitPoints + ((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys);
+  //     }
 
-        if (effectiveCharacterLv % 2 == 0) {
-            hP = vitality.hitPoints + (hitDice / 2) + abilitys.bonusConstitution(abilitys);
-        } else {
-            hP = vitality.hitPoints + ((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys);
-        }
+  //     return hP;
 
-        return hP;
+  // }
 
-    }
+  // public int hitPointsAtLastLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
 
-    public int hitPointsAtLastLevel(int hitDice, Vitality vitality, Abilitys abilitys, int effectiveCharacterLv) {
+  //     int hP;
 
-        int hP;
+  //     if (effectiveCharacterLv % 2 == 0) {
+  //         hP = vitality.hitPoints - (((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys));
+  //     } else {
+  //         hP = vitality.hitPoints - (((hitDice / 2)) + abilitys.bonusConstitution(abilitys));
+  //     }
 
-        if (effectiveCharacterLv % 2 == 0) {
-            hP = vitality.hitPoints - (((hitDice / 2) + 1) + abilitys.bonusConstitution(abilitys));
-        } else {
-            hP = vitality.hitPoints - (((hitDice / 2)) + abilitys.bonusConstitution(abilitys));
-        }
+  //     return hP;
 
-        return hP;
+  // }
 
-    }
+  // public Vitality setRaceLevelAdjustmentHP(int lvAdj, Vitality vitality, Abilitys abilitys) {
+  //     Vitality vita = new Vitality();
+  //     vita.life = abilitys.getConstitution();
+  //     HashMap<Integer, Integer> vitaMap = new HashMap<Integer, Integer>();
+  //     if (lvAdj == 0) {
+  //         vita.setHitDices(vitaMap);
+  //         vita.hitPoints = 0;
+  //     } else {
+  //         vitaMap.put(4, lvAdj);
+  //         vita.setHitDices(vitaMap);
+  //         int lvAdjNext = lvAdj - 1;
+  //         vita.hitPoints = 4 + (lvAdjNext * 2) + (lvAdjNext / 2);
+  //     }
+  //     return vita;
+  // }
 
-    public Vitality setRaceLevelAdjustmentHP(int lvAdj, Vitality vitality, Abilitys abilitys) {
-        Vitality vita = new Vitality();
-        vita.life = abilitys.getConstitution();
-        HashMap<Integer, Integer> vitaMap = new HashMap<Integer, Integer>();
-        if (lvAdj == 0) {
-            vita.setHitDices(vitaMap);
-            vita.hitPoints = 0;
-        } else {
-            vitaMap.put(4, lvAdj);
-            vita.setHitDices(vitaMap);
-            int lvAdjNext = lvAdj - 1;
-            vita.hitPoints = 4 + (lvAdjNext * 2) + (lvAdjNext / 2);
-        }
-        return vita;
-    }
-
-    public void removeHDClass(int hD) {
-        this.hitDices.remove(hD);
-    }
+  // public void removeHDClass(int hD) {
+  //     this.hitDices.remove(hD);
+  // }
 }

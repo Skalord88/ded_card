@@ -1,7 +1,18 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,37 +22,24 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
-import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.Dices;
 import pl.kolendateam.dadcard.classCharacter.entity.DicesEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
-import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
-import pl.kolendateam.dadcard.classCharacter.entity.ValueEnum;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.race.entity.Race;
-import pl.kolendateam.dadcard.size.entity.Size;
-import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
@@ -78,9 +76,9 @@ public class Character {
   )
   List<ClassPc> classPcArray;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "size_id", referencedColumnName = "id")
-  Size size;
+  // @OneToOne(cascade = CascadeType.PERSIST)
+  // @JoinColumn(name = "size_id", referencedColumnName = "id")
+  // Size size;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "race_id", referencedColumnName = "id")
@@ -146,7 +144,7 @@ public class Character {
     this.characterName = characterName;
     this.playerName = playerName;
     this.classPcArray = new ArrayList<>();
-    this.size = new Size();
+    // this.size = new Size();
     // this.vitality = new Vitality(0, new HashMap<>(), 0);
     this.armorClass = new ArmorClass();
     // this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);

@@ -11,13 +11,16 @@
             <column name="size" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
-            <column name="bonus" type="INT">
+            <column name="special_attacks" type="jsonb">
                 <constraints nullable="true" />
             </column>
-            <column name="hide" type="INT">
+            <column name="skill" type="jsonb">
                 <constraints nullable="true" />
             </column>
-            <column name="grapple" type="INT">
+            <column name="armor_bonus" type="jsonb">
+                <constraints nullable="true" />
+            </column>
+            <column name="bab" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>

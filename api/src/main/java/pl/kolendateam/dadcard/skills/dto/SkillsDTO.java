@@ -21,4 +21,9 @@ public class SkillsDTO {
     this.nameSkill = name;
     this.skillAbility = ability;
   }
+
+  public SkillsDTO(short id, int bonus) {
+    this.idSkill = id;
+    this.skillBonus = bonus;
+  }
 }

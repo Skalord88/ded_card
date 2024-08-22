@@ -1,10 +1,6 @@
 package pl.kolendateam.dadcard.attack.dto;
 
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
-import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @NoArgsConstructor
 public class AttackVsArmorClassDTO {

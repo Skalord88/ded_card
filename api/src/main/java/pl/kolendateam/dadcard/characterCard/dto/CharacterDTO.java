@@ -10,16 +10,11 @@ import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
-import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
-import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
-import pl.kolendateam.dadcard.characterCard.MapperVitalityToDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
-import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
-import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperCharacterFeatsDTO;
@@ -29,7 +24,6 @@ import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
-import pl.kolendateam.dadcard.size.entity.SizeEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
@@ -85,11 +79,7 @@ public class CharacterDTO implements Serializable {
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(
-        character.getArmorClass(),
-        character.getAbilitys(),
-        character.getSize()
-      );
+      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -138,11 +128,7 @@ public class CharacterDTO implements Serializable {
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(
-        character.getArmorClass(),
-        character.getAbilitys(),
-        character.getSize()
-      );
+      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -188,11 +174,7 @@ public class CharacterDTO implements Serializable {
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(
-        character.getArmorClass(),
-        character.getAbilitys(),
-        character.getSize()
-      );
+      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -244,11 +226,7 @@ public class CharacterDTO implements Serializable {
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
     this.speed = character.getSpeed();
     this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(
-        character.getArmorClass(),
-        character.getAbilitys(),
-        character.getSize()
-      );
+      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());

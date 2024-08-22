@@ -9,16 +9,16 @@ public class MapperSpecialAttacks {
     SpecialAttacks specialAttacks
   ) {
     SpecialAttacksDTO specialAttacksDTO = new SpecialAttacksDTO(
-      specialAttacks.getId(),
-      specialAttacks.getName(),
-      specialAttacks.getBonus(),
-      specialAttacks.getTarget()
-      // specialAttacks.getBullRush(),
-      // specialAttacks.getCharge(),
-      // specialAttacks.getDisarm(),
-      // specialAttacks.getGrapple(),
-      // specialAttacks.getOverrun(),
-      // specialAttacks.getSunder()
+      // specialAttacks.getId(),
+      // specialAttacks.getName(),
+      // specialAttacks.getBonus(),
+      // specialAttacks.getTarget()
+      specialAttacks.getBullRush(),
+      specialAttacks.getCharge(),
+      specialAttacks.getDisarm(),
+      specialAttacks.getGrapple(),
+      specialAttacks.getOverrun(),
+      specialAttacks.getSunder()
     );
     return specialAttacksDTO;
   }

@@ -82,10 +82,9 @@ public class FeatsController {
           if (feat.getSpeed() != null) {
             character.addSpeed(feat.getSpeed());
           }
-
-          if (feat.getSpecialAttacks() != null) {
-            character.addSpecialAttacks(feat.getSpecialAttacks());
-          }
+          // if (feat.getSpecialAttacks() != null) {
+          //   character.addSpecialAttacks(feat.getSpecialAttacks());
+          // }
         }
       });
       this.characterRepository.save(character);

@@ -23,7 +23,6 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.Region;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
-import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @CrossOrigin
 @RestController
@@ -89,7 +88,7 @@ public class RaceController {
     Character character = characterOpt.get();
     Race race = raceOpt.get();
 
-    character.setSize(race.getSize());
+    // character.setSize(race.getSize());
 
     // character.sizeCharacter(race.getSize());
 
@@ -102,14 +101,14 @@ public class RaceController {
       character.addSkill(race.getSkills());
     }
 
-    ArrayList<ClassSkills> findHide = character.getClassSkills();
-    for (ClassSkills clSk : findHide) {
-      if (clSk.getNameSkill().equals("Hide")) {
-        clSk.setSkillBonus(
-          clSk.getSkillBonus() + character.getSize().getHide()
-        );
-      }
-    }
+    // ArrayList<ClassSkills> findHide = character.getClassSkills();
+    // for (ClassSkills clSk : findHide) {
+    //   if (clSk.getNameSkill().equals("Hide")) {
+    //     clSk.setSkillBonus(
+    //       clSk.getSkillBonus() + character.getSize().getHide()
+    //     );
+    //   }
+    // }
 
     if (race.getLevelAdjustment() != 0) {
       character.raceLevelAdjustment(race.getLevelAdjustment());

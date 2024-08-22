@@ -13,6 +13,10 @@ import pl.kolendateam.dadcard.skills.entity.Study;
 
 public class MapperSkillsToDTO {
 
+  public static SkillsDTO toOneSkillDTO(ClassSkills skill) {
+    return new SkillsDTO(skill.getIdSkill(), skill.getSkillBonus());
+  }
+
   public static ArrayList<SkillsDTO> toSkillsDTO(
     ArrayList<ClassSkills> skillList,
     Abilitys abilitys

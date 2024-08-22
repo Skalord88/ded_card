@@ -22,9 +22,9 @@
         <column name="race_id" type="SMALLINT">
           <constraints nullable="true"/>
         </column>
-        <column name="size_id" type="TINYINT">
+        <!-- <column name="size_id" type="TINYINT">
           <constraints nullable="true"/>
-        </column>
+        </column> -->
         <column name="speed" type="int">
           <constraints nullable="true"/>
         </column>

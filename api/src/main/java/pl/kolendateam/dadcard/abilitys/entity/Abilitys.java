@@ -27,35 +27,35 @@ public class Abilitys implements Serializable {
     charisma = abilitysDTO.charisma;
   }
 
-  public int bonusStreght(Abilitys abilitys) {
-    int bonusStreght = (int) (abilitys.getStrength() - 10) / 2;
-    return bonusStreght;
-  }
+  // public int bonusStreght(Abilitys abilitys) {
+  //   int bonusStreght = (int) (abilitys.getStrength() - 10) / 2;
+  //   return bonusStreght;
+  // }
 
-  public int bonusDextrity(Abilitys abilitys) {
-    int bonusDextrity = (int) (abilitys.getDextrity() - 10) / 2;
-    return bonusDextrity;
-  }
+  // public int bonusDextrity(Abilitys abilitys) {
+  //   int bonusDextrity = (int) (abilitys.getDextrity() - 10) / 2;
+  //   return bonusDextrity;
+  // }
 
-  public int bonusConstitution(Abilitys abilitys) {
-    int bonusConstitution = (abilitys.getConstitution() - 10) / 2;
-    return bonusConstitution;
-  }
+  // public int bonusConstitution(Abilitys abilitys) {
+  //   int bonusConstitution = (abilitys.getConstitution() - 10) / 2;
+  //   return bonusConstitution;
+  // }
 
-  public int bonusIntelligence(Abilitys abilitys) {
-    int bonusIntelligence = (int) (abilitys.getIntelligence() - 10) / 2;
-    return bonusIntelligence;
-  }
+  // public int bonusIntelligence(Abilitys abilitys) {
+  //   int bonusIntelligence = (int) (abilitys.getIntelligence() - 10) / 2;
+  //   return bonusIntelligence;
+  // }
 
-  public int bonusWisdom(Abilitys abilitys) {
-    int bonusWisdom = (int) (abilitys.getWisdom() - 10) / 2;
-    return bonusWisdom;
-  }
+  // public int bonusWisdom(Abilitys abilitys) {
+  //   int bonusWisdom = (int) (abilitys.getWisdom() - 10) / 2;
+  //   return bonusWisdom;
+  // }
 
-  public int bonusCharisma(Abilitys abilitys) {
-    int bonusCharisma = (int) (abilitys.getCharisma() - 10) / 2;
-    return bonusCharisma;
-  }
+  // public int bonusCharisma(Abilitys abilitys) {
+  //   int bonusCharisma = (int) (abilitys.getCharisma() - 10) / 2;
+  //   return bonusCharisma;
+  // }
 
   public Abilitys addRaceAbilitys(
     Abilitys jsonObjectAbilitys,
