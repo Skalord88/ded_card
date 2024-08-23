@@ -11,7 +11,10 @@
             <column name="size" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
-            <column name="special_attacks" type="jsonb">
+            <column name="modifiers" type="jsonb">
+                <constraints nullable="true" />
+            </column>
+            <!-- <column name="special_attacks" type="jsonb">
                 <constraints nullable="true" />
             </column>
             <column name="skill" type="jsonb">
@@ -22,7 +25,7 @@
             </column>
             <column name="bab" type="int">
                 <constraints nullable="true" />
-            </column>
+            </column> -->
         </createTable>
     </changeSet>
 </databaseChangeLog>

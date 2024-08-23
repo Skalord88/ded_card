@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.modifier;
+package pl.kolendateam.dadcard.modifier.entity;
 
 public enum ModifierEnum {
   ABILITY_MODIFIER,

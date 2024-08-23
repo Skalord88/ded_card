@@ -7,15 +7,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
-import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
-import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Entity
 @Getter
@@ -32,15 +31,17 @@ public class Size implements Serializable {
   SizeEnum size;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  SpecialAttacks specialAttacks;
+  List<ModifierBonus> modifiers;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SpecialAttacks specialAttacks;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ClassSkills skill;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ClassSkills skill;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArmorClass armorBonus;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArmorClass armorBonus;
 
-  int bab;
+  // int bab;
   // public void sizeBonus(SizeEnum sizeEnum) {
   //   this.size = sizeEnum;
 
