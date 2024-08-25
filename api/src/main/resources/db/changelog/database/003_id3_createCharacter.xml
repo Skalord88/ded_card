@@ -19,34 +19,7 @@
         <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="race_id" type="SMALLINT">
-          <constraints nullable="true"/>
-        </column>
-        <!-- <column name="size_id" type="TINYINT">
-          <constraints nullable="true"/>
-        </column> -->
-        <column name="speed" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <!-- <column name="class_pc" type="int">
-          <constraints nullable="true"/>
-        </column> -->
-        <column name="effective_character_lv" type="SMALLINT">
-          <constraints nullable="true"/>
-        </column>
-        <column name="level_adjustment" type="TINYINT">
-          <constraints nullable="true"/>
-        </column>
-        <!-- <column name="vitality" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
-        <column name="saving_throw" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <!-- <column name="skill_points" type="double">
-          <constraints nullable="true"/>
-        </column> -->
-        <column name="armor_class" type="jsonb">
+        <column name="sub_race_id" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="class_skills" type="jsonb">
@@ -58,9 +31,6 @@
         <column name="level_feats_list" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <!-- <column name="bab" type="double">
-          <constraints nullable="true"/>
-        </column> -->
         <column name="special_attacks" type="jsonb">
           <constraints nullable="true"/>
         </column>
@@ -79,15 +49,48 @@
         <column name="books" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <!-- <column name="spells_known" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
         <column name="experience" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="treasure" type="int">
           <constraints nullable="true"/>
         </column>
+        <!-- <column name="size_id" type="TINYINT">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="speed" type="int">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="class_pc" type="int">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="effective_character_lv" type="SMALLINT">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="level_adjustment" type="TINYINT">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="vitality" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="saving_throw" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="skill_points" type="double">
+          <constraints nullable="true"/>
+        </column> -->
+        <!-- <column name="armor_class" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
+        
+        <!-- <column name="bab" type="double">
+          <constraints nullable="true"/>
+        </column> -->
+        
+        <!-- <column name="spells_known" type="jsonb">
+          <constraints nullable="true"/>
+        </column> -->
+        
       </createTable>
     </changeSet>
 </databaseChangeLog>

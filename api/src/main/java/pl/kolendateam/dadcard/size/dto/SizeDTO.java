@@ -1,6 +1,6 @@
 package pl.kolendateam.dadcard.size.dto;
 
-import java.util.List;
+import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonusDTO;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
@@ -12,7 +12,7 @@ public class SizeDTO {
 
   public int id;
   public SizeEnum size;
-  public List<ModifierDTO> modifiers;
+  public Set<ModifierDTO> modifiers;
 
   // public SpecialAttacksDTO specialAttacks;
   // public SkillsDTO skills;

@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.modifier;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
@@ -11,8 +11,8 @@ public class MapperModifierBonusDTO {
     return new ModifierDTO(mod);
   }
 
-  public static List<ModifierDTO> toListModifierDTO(List<ModifierBonus> mods) {
-    List<ModifierDTO> listOfModifierDTO = new ArrayList<>();
+  public static Set<ModifierDTO> toListModifierDTO(Set<ModifierBonus> mods) {
+    Set<ModifierDTO> listOfModifierDTO = new HashSet<>();
     mods.forEach(mod -> {
       ModifierDTO modDTO = new ModifierDTO(mod);
       listOfModifierDTO.add(modDTO);

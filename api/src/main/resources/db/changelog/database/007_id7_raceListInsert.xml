@@ -1,244 +1,64 @@
-<databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-
-  <changeSet id="7" author="damian">
-          <insert tableName="race">  
-              <column  name="id"  value="1"/> 
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Calishite"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>  
-          <insert tableName="race">
-              <column  name="id"  value="2"/>  
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Chondathan"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert> 
-          <insert tableName="race">  
-              <column  name="id"  value="3"/>
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Damara"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert> 
-          <insert tableName="race"> 
-          <column  name="id"  value="4"/> 
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Mulan"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race"> 
-          <column  name="id"  value="5"/> 
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Rashemi"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race"> 
-          <column  name="id"  value="6"/> 
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Tethyrian"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="7"/>
-              <column  name="races_name"  value="Dwarf"/>  
-              <column  name="sub_race_name"  value="gold"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="20"/>
-              <column  name="abilitys"  value="{'dextrity':-2,'constitution':2}"/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Craft','skillRank':2},
-              {'nameSkill':'Appraise','skillRank':2}]"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="8"/>
-              <column  name="races_name"  value="Dwarf"/>  
-              <column  name="sub_race_name"  value="gray"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="20"/>
-              <column  name="abilitys"  value="{'constitution':2,'charisma':-4}"/>
-              <column  name="skills"  value="[
-              {'nameSkill':'Move Silently','skillRank':4},
-              {'nameSkill':'Spot','skillRank':1},
-              {'nameSkill':'Listen','skillRank':1}]"/>
-              <column  name="level_adjustment" value="2"/>
-              <column  name="avatar_url"  value="address value"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="9"/>
-              <column  name="races_name"  value="Dwarf"/>  
-              <column  name="sub_race_name"  value="shield"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="20"/>
-              <column  name="abilitys"  value="{'constitution':2,'charisma':-2}"/>
-              <column  name="skills" value="[
-              {'nameSkill':'Craft','skillRank':2},
-              {'nameSkill':'Appraise','skillRank':2}]"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race"> 
-          <column  name="id"  value="10"/> 
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="drow"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="2"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="11"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="moon"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="12"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="sun"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="13"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="wild"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="14"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="wood"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="15"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="Half-elf"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="16"/>
-              <column  name="races_name"  value="Elf"/>  
-              <column  name="sub_race_name"  value="Half-elf drow"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="17"/>
-              <column  name="races_name"  value="Gnome"/>  
-              <column  name="sub_race_name"  value="deep"/>
-              <column  name="size_id"  value="4"/>
-              <column  name="speed"  value="20"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="4"/>
-          </insert>
-          <insert tableName="race">
-          <column  name="id"  value="18"/>
-              <column  name="races_name"  value="Gnome"/>  
-              <column  name="sub_race_name"  value="rock"/>
-              <column  name="size_id"  value="4"/>
-              <column  name="speed"  value="20"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race"> 
-          <column  name="id"  value="19"/> 
-              <column  name="races_name"  value="Halfling"/>  
-              <column  name="sub_race_name"  value="other"/>
-              <column  name="size_id"  value="4"/>
-              <column  name="speed"  value="20"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">
-          <column  name="id"  value="20"/>  
-              <column  name="races_name"  value="Orc"/>  
-              <column  name="sub_race_name"  value="Gray"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="1"/>
-          </insert>
-          <insert tableName="race">
-          <column  name="id"  value="21"/>  
-              <column  name="races_name"  value="Orc"/>  
-              <column  name="sub_race_name"  value="Half-orc"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="22"/>
-              <column  name="races_name"  value="Orc"/>  
-              <column  name="sub_race_name"  value="Mountain"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="23"/>
-              <column  name="races_name"  value="Orc"/>  
-              <column  name="sub_race_name"  value="Orog"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="abilitys"  value="{
-                'streght':6,'dextrity':-2,'wisdom':-2,'charisma':2}"/>
-              <column  name="armor_class"  value="{'naturalArmor':2}"/>
-              <column  name="skills" value="[
-              {'nameSkill':'Craft','skillRank':2},
-              {'nameSkill':'Appraise','skillRank':2}]"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="2"/>
-          </insert>
-          <insert tableName="race">  
-          <column  name="id"  value="24"/>
-              <column  name="races_name"  value="Human"/>  
-              <column  name="sub_race_name"  value="Illuskan"/>
-              <column  name="size_id"  value="5"/>
-              <column  name="speed"  value="30"/>
-              <column  name="avatar_url"  value="address value"/>
-              <column  name="level_adjustment" value="0"/>
-          </insert> 
-  </changeSet>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="7" author="oscar">
+        <insert tableName="race">
+            <column name="race_name" value="Halfling" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [4]          
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [16]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [19]            
+            },{            
+            &quot;modifier&quot; : &quot;SAVING&quot;,            
+            &quot;bonus&quot; : 1,            
+            &quot;targets&quot; : []            
+            },{            
+            &quot;modifier&quot; : &quot;MORALE_MODIFIER&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;FEAR&quot;]            
+            },{            
+            &quot;modifier&quot; : &quot;BAB&quot;,            
+            &quot;bonus&quot; : 1,            
+            &quot;targets&quot; : [&quot;THROW&quot;,&quot;SLING&quot;]            
+            }
+            ]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+    </changeSet>
 </databaseChangeLog>
+
+<!-- <insert tableName="race">
+            <column name="race_name" value="Human" />
+            <column name="modifiers" value="[
+            {            
+            &quot;modifier&quot; : &quot;SPEED&quot;,            
+            &quot;bonus&quot; : 30,            
+            &quot;targets&quot; : []            
+            },{            
+            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,            
+            &quot;bonus&quot; : 1,            
+            &quot;targets&quot; : []            
+            },{            
+            &quot;modifier&quot; : &quot;EXTRA_SKILLS_POINTS&quot;,            
+            &quot;bonus&quot; : 4,            
+            &quot;targets&quot; : []            
+            }
+            ]" />
+            <column name="avatar_url" value="address value" />
+        </insert> -->

@@ -7,7 +7,7 @@ public class ModifierDTO {
 
   public ModifierEnum modifier;
   public int bonus;
-  public String[] targets;
+  public ModifierEnum[] targets;
 
   public ModifierDTO(ModifierBonus mod) {
     this.modifier = mod.getModifier();

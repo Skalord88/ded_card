@@ -8,8 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
-import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
-import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -23,7 +21,7 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
-import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
+import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
@@ -38,12 +36,12 @@ public class CharacterDTO implements Serializable {
   public String playerName;
   public ArrayList<ClassPcListDTO> classPcList;
   // public SizeEnum size;
-  public SubRaceBaseDTO race;
+  public SubRaceDTO race;
   // public String race;
   // public String subRace;
   // public VitalityDTO vitality;
-  public int speed;
-  public ArmorClassDTO armorClass;
+  // public int speed;
+  // public ArmorClassDTO armorClass;
   // public int bab;
   // public SpecialAttacksDTO specialAttacks;
   // public SavingThrowDTO savingThrows;
@@ -73,13 +71,13 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     // this.size = character.sizeCharacter();
-    this.race = new SubRaceBaseDTO(character.getRace());
+    this.race = new SubRaceDTO(character.getRace());
     // this.race = character.getRace();
     // this.subRace = character.getSubRace();
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    this.speed = character.getSpeed();
-    this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
+    // this.speed = character.getSpeed();
+    // this.armorClass =
+    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -109,8 +107,8 @@ public class CharacterDTO implements Serializable {
     this.magicKnown = character.getMagicKnown();
     this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
     // this.spellsKnown = character.getSpellsKnown();
-    this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    this.levelAdjustment = character.getLevelAdjustment();
+    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
+    // this.levelAdjustment = character.getLevelAdjustment();
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }
@@ -122,13 +120,13 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
     // this.size = character.sizeCharacter();
-    this.race = new SubRaceBaseDTO(character.getRace());
+    this.race = new SubRaceDTO(character.getRace());
     // this.race = character.getRace();
     // this.subRace = character.getSubRace();
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    this.speed = character.getSpeed();
-    this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
+    // this.speed = character.getSpeed();
+    // this.armorClass =
+    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -156,8 +154,8 @@ public class CharacterDTO implements Serializable {
     this.magicKnown = character.getMagicKnown();
     this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
     // this.spellsKnown = character.getSpellsKnown();
-    this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    this.levelAdjustment = character.getLevelAdjustment();
+    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
+    // this.levelAdjustment = character.getLevelAdjustment();
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }
@@ -172,9 +170,9 @@ public class CharacterDTO implements Serializable {
     // this.race = character.getRace();
     // this.subRace = character.getSubRace();
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    this.speed = character.getSpeed();
-    this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
+    // this.speed = character.getSpeed();
+    // this.armorClass =
+    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -202,8 +200,8 @@ public class CharacterDTO implements Serializable {
     this.magicKnown = character.getMagicKnown();
     this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
     // this.spellsKnown = character.getSpellsKnown();
-    this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    this.levelAdjustment = character.getLevelAdjustment();
+    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
+    // this.levelAdjustment = character.getLevelAdjustment();
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }
@@ -220,13 +218,13 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassPcListToDTO.toClassPcListDTO(characterClassList);
     // this.size = character.sizeCharacter();
-    this.race = new SubRaceBaseDTO(character.getRace());
+    this.race = new SubRaceDTO(character.getRace());
     // this.race = character.getRace();
     // this.subRace = character.getSubRace();
     // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    this.speed = character.getSpeed();
-    this.armorClass =
-      MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
+    // this.speed = character.getSpeed();
+    // this.armorClass =
+    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
     // this.bab = (int) character.getBab();
     // this.specialAttacks =
     //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
@@ -256,8 +254,8 @@ public class CharacterDTO implements Serializable {
     this.magicKnown = character.getMagicKnown();
     this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
     // this.spellsKnown = character.getSpellsKnown();
-    this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    this.levelAdjustment = character.getLevelAdjustment();
+    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
+    // this.levelAdjustment = character.getLevelAdjustment();
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }

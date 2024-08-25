@@ -1121,6 +1121,25 @@ If a death attack is attempted and fails (the victim makes her save) or if the a
       The assassin gains a natural saving throw bonus to all poisons gained at 2nd level that increases by +1 for every two additional levels the assassin gains.
       "/>
     </insert>
+    <insert tableName="feats">
+      <column  name="feat_name"  value="Darkvision"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="
+      You can see in the dark up to 60 feet. Darkvision is black and white only, but it is otherwise like normal sight, and can function just fine with no light at all.
+      "/>
+    </insert>
+    <insert tableName="feats">
+      <column  name="feat_name"  value="Stonecunning"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="
+      This ability grants a dwarf a +2 racial bonus on Search checks to notice unusual stonework, such as sliding walls, stonework traps, new construction (even when built to match the old), unsafe stone surfaces, shaky stone ceilings, and the like. Something that isn’t stone but that is disguised as stone also counts as unusual stonework. A dwarf who merely comes within 10 feet of unusual stonework can make a Search check as if he were actively searching, and a dwarf can use the Search skill to find stonework traps as a rogue can. A dwarf can also intuit depth, sensing his approximate depth underground as naturally as a human can sense which way is up.
+      "/>
+    </insert>
+    <insert tableName="feats">
+      <column  name="feat_name"  value="Light Sensitivity"/>
+      <column  name="feats_type"  value="GENERAL"/>
+      <column  name="description" value="Dazzled in bright sunlight or within the radius of a daylight spell"/>
+    </insert>
 
   </changeSet>
 </databaseChangeLog>

@@ -9,21 +9,21 @@
             <column name="size" value="FINE" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : -16,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 16,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -16}" />
@@ -36,21 +36,21 @@
             <column name="size" value="DIMINUTIVE" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : -12,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 12,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 3,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : 3,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -12}" />
@@ -63,21 +63,21 @@
             <column name="size" value="TINY" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : -8,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 8,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -8}" />
@@ -90,21 +90,21 @@
             <column name="size" value="SMALL" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -4}" />
@@ -126,21 +126,21 @@
             <column name="size" value="LARGE" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -1,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : -1,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 4}" />
@@ -153,21 +153,21 @@
             <column name="size" value="HUGE" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : 8,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -8,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -2,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : -2,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 8}" />
@@ -180,21 +180,21 @@
             <column name="size" value="GARGANTUAN" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : 12,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -12,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -3,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : -3,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 12}" />
@@ -207,21 +207,21 @@
             <column name="size" value="COLOSSAL" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
             &quot;bonus&quot; : 16,
-            &quot;targets&quot; : [&quot;grapple&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -16,
-            &quot;targets&quot; : [&quot;skill&quot;,14]
+            &quot;targets&quot; : [14]
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [&quot;armor&quot;]
+            &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;SIZE_MODIFIER&quot;,
+            &quot;modifier&quot; : &quot;BAB&quot;,
             &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [&quot;bab&quot;]
+            &quot;targets&quot; : []
             }
             ]" />
             <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 16}" />

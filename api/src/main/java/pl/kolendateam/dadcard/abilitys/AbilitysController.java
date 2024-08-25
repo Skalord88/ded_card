@@ -66,7 +66,7 @@ public class AbilitysController {
 
     character.setAbilitys(abilitys);
 
-    character.createArmorClass();
+    // character.createArmorClass();
 
     this.characterRepository.save(character);
 

@@ -1,18 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.entity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,13 +11,20 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.Dices;
@@ -39,7 +35,7 @@ import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
@@ -69,41 +65,19 @@ public class Character {
   @NonNull
   String playerName;
 
+  @JdbcTypeCode(SqlTypes.JSON)
+  Abilitys abilitys;
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "sub_race_id", referencedColumnName = "id")
+  SubRace race;
+
   @OneToMany(
     mappedBy = "character",
     cascade = CascadeType.ALL,
     orphanRemoval = true
   )
   List<ClassPc> classPcArray;
-
-  // @OneToOne(cascade = CascadeType.PERSIST)
-  // @JoinColumn(name = "size_id", referencedColumnName = "id")
-  // Size size;
-
-  @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "race_id", referencedColumnName = "id")
-  Race race;
-
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // Vitality vitality;
-
-  int speed;
-
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArmorClass armorClass;
-
-  // double bab;
-
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // SpecialAttacks specialAttacks;
-
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // SavingThrow savingThrow;
-
-  @JdbcTypeCode(SqlTypes.JSON)
-  Abilitys abilitys;
-
-  // double skillPoints;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<ClassSkills> classSkills;
@@ -132,13 +106,36 @@ public class Character {
   @JoinColumn(name = "character_id", referencedColumnName = "id")
   List<Book> books;
 
+  int experience;
+  int treasure;
+
+  // @OneToOne(cascade = CascadeType.PERSIST)
+  // @JoinColumn(name = "size_id", referencedColumnName = "id")
+  // Size size;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // Vitality vitality;
+
+  // int speed;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArmorClass armorClass;
+
+  // double bab;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SpecialAttacks specialAttacks;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SavingThrow savingThrow;
+
+  // double skillPoints;
+
   // @JdbcTypeCode(SqlTypes.JSON)
   // ArrayList<SpellsInCharLevel> spellsKnown;
 
-  short effectiveCharacterLv;
-  byte levelAdjustment;
-  int experience;
-  int treasure;
+  // short effectiveCharacterLv;
+  // byte levelAdjustment;
 
   public Character(String characterName, String playerName) {
     this.characterName = characterName;
@@ -146,7 +143,7 @@ public class Character {
     this.classPcArray = new ArrayList<>();
     // this.size = new Size();
     // this.vitality = new Vitality(0, new HashMap<>(), 0);
-    this.armorClass = new ArmorClass();
+    // this.armorClass = new ArmorClass();
     // this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
     // this.savingThrow = new SavingThrow(0, 0, 0);
     this.abilitys = new Abilitys();
@@ -177,13 +174,13 @@ public class Character {
     this.getClassPcArray().get(index).decrementLevel();
   }
 
-  public void incrementEffectiveCharacterLv() {
-    this.effectiveCharacterLv += 1;
-  }
+  // public void incrementEffectiveCharacterLv() {
+  //   this.effectiveCharacterLv += 1;
+  // }
 
-  public void decrementEffectiveCharacterLv() {
-    this.effectiveCharacterLv -= 1;
-  }
+  // public void decrementEffectiveCharacterLv() {
+  //   this.effectiveCharacterLv -= 1;
+  // }
 
   // public void addSavingThrowLevelOne(String stringSavingThrow) {
   //   double bonus = stringSavingThrow.charAt(0) ==
@@ -308,13 +305,13 @@ public class Character {
   //   this.bab -= classBab;
   // }
 
-  public void raceLevelAdjustment(byte lvAdj) {
-    // this.bab = (lvAdj * 0.5) - 0.5;
-    this.levelAdjustment += lvAdj;
-    // this.vitality =
-    //   vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
-    // this.skillPoints = lvAdj * 2;
-  }
+  // public void raceLevelAdjustment(byte lvAdj) {
+  // this.bab = (lvAdj * 0.5) - 0.5;
+  // this.levelAdjustment += lvAdj;
+  // this.vitality =
+  //   vitality.setRaceLevelAdjustmentHP(lvAdj, vitality, abilitys);
+  // this.skillPoints = lvAdj * 2;
+  // }
 
   // public void hitPointsFirstLevel(int hitDice) {
   //   Vitality hP = vitality.createHPFirstLevel(hitDice, abilitys, vitality);
@@ -370,7 +367,7 @@ public class Character {
   //   this.subRace = race.getSubRaceName();
   // }
 
-  public void setCharacterRace(Race race) {
+  public void setCharacterRace(SubRace race) {
     this.race = race;
     // this.subRace = race.getSubRaceName();
   }
@@ -407,19 +404,19 @@ public class Character {
     this.abilitys.addRaceAbilitys(jsonObjectAbilitys, abilitys);
   }
 
-  public void createArmorClass() {
-    this.armorClass = new ArmorClass();
-  }
+  // public void createArmorClass() {
+  //   this.armorClass = new ArmorClass();
+  // }
 
-  public void raceBonusArmorClass(String armorClass) {
-    Gson gson = new Gson();
-    ArmorClass jsonObjectArmorClass = gson.fromJson(
-      armorClass,
-      ArmorClass.class
-    );
+  // public void raceBonusArmorClass(String armorClass) {
+  //   Gson gson = new Gson();
+  //   ArmorClass jsonObjectArmorClass = gson.fromJson(
+  //     armorClass,
+  //     ArmorClass.class
+  //   );
 
-    this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
-  }
+  //   this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
+  // }
 
   public ArrayList<CharacterFeat> listFeatsFromClass(
     int lv,
@@ -496,7 +493,7 @@ public class Character {
           feat,
           race,
           // savingThrow,
-          armorClass,
+          // armorClass,
           classSkills,
           abilitys,
           // (int) bab,
@@ -511,9 +508,9 @@ public class Character {
     return buyed;
   }
 
-  public void addSpeed(int speed) {
-    this.speed += speed;
-  }
+  // public void addSpeed(int speed) {
+  //   this.speed += speed;
+  // }
 
   // public void sizeCharacter(Size size) {
 
@@ -803,20 +800,20 @@ public class Character {
     this.levelFeatsList.remove(index);
   }
 
-  public boolean checkNumberOfLevelFeats() {
-    if (this.levelFeatsList.size() < 1 + (this.effectiveCharacterLv / 3)) {
-      return true;
-    }
-    return false;
-  }
+  // public boolean checkNumberOfLevelFeats() {
+  //   if (this.levelFeatsList.size() < 1 + (this.effectiveCharacterLv / 3)) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
-  public void setCharacterExperience() {
-    int exp = this.experience;
+  // public void setCharacterExperience() {
+  //   int exp = this.experience;
 
-    exp = exp + (this.effectiveCharacterLv * 1000);
+  //   exp = exp + (this.effectiveCharacterLv * 1000);
 
-    this.experience = exp;
-  }
+  //   this.experience = exp;
+  // }
 
   public void setFirstLevelGold(String initialGold) {
     Gson gson = new Gson();
@@ -834,32 +831,32 @@ public class Character {
     this.treasure = resGold * multiply;
   }
 
-  public void setLevelGold() {
-    this.treasure =
-      switch (this.effectiveCharacterLv) {
-        case 0 -> 0;
-        case 2 -> 900;
-        case 3 -> 2700;
-        case 4 -> 5400;
-        case 5 -> 9000;
-        case 6 -> 13000;
-        case 7 -> 19000;
-        case 8 -> 27000;
-        case 9 -> 36000;
-        case 10 -> 49000;
-        case 11 -> 66000;
-        case 12 -> 88000;
-        case 13 -> 110000;
-        case 14 -> 150000;
-        case 15 -> 200000;
-        case 16 -> 260000;
-        case 17 -> 340000;
-        case 18 -> 440000;
-        case 19 -> 580000;
-        case 20 -> 760000;
-        default -> 0;
-      };
-  }
+  // public void setLevelGold() {
+  //   this.treasure =
+  //     switch (this.effectiveCharacterLv) {
+  //       case 0 -> 0;
+  //       case 2 -> 900;
+  //       case 3 -> 2700;
+  //       case 4 -> 5400;
+  //       case 5 -> 9000;
+  //       case 6 -> 13000;
+  //       case 7 -> 19000;
+  //       case 8 -> 27000;
+  //       case 9 -> 36000;
+  //       case 10 -> 49000;
+  //       case 11 -> 66000;
+  //       case 12 -> 88000;
+  //       case 13 -> 110000;
+  //       case 14 -> 150000;
+  //       case 15 -> 200000;
+  //       case 16 -> 260000;
+  //       case 17 -> 340000;
+  //       case 18 -> 440000;
+  //       case 19 -> 580000;
+  //       case 20 -> 760000;
+  //       default -> 0;
+  //     };
+  // }
 
   public void setZeroExp() {
     this.experience = 0;

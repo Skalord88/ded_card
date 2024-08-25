@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.race.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,33 +8,43 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.size.entity.Size;
 
-@NoArgsConstructor
+@Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
-@Entity
-public class Race implements Serializable {
+@NoArgsConstructor
+@AllArgsConstructor
+public class SubRace implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
   @NonNull
-  String raceName;
+  String subRaceName;
+
+  @OneToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "race_id", referencedColumnName = "id")
+  Race race;
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "size_id", referencedColumnName = "id")
+  Size size;
 
   String avatarUrl;
 
@@ -42,18 +53,19 @@ public class Race implements Serializable {
 
   @ManyToMany
   @JoinTable(
-    name = "race_feats",
-    joinColumns = @JoinColumn(name = "race_id"),
+    name = "sub_race_feats",
+    joinColumns = @JoinColumn(name = "sub_race_id"),
     inverseJoinColumns = @JoinColumn(name = "feats_id")
   )
-  Set<Feats> raceFeats = new HashSet<>();
-  // int speed;
+  Set<Feats> subRaceFeats = new HashSet<>();
 
-  // @NonNull
-  // String abilitys;
+  @ManyToMany
+  @JoinTable(
+    name = "race_region",
+    joinColumns = @JoinColumn(name = "sub_race_id"),
+    inverseJoinColumns = @JoinColumn(name = "region_id")
+  )
+  Set<Region> availableRegions = new HashSet<>();
 
-  // @NonNull
-  // String skills;
-
-  // String armorClass;
+  byte levelAdjustment;
 }

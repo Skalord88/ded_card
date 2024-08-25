@@ -2,33 +2,48 @@ package pl.kolendateam.dadcard.race;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import pl.kolendateam.dadcard.race.dto.RaceBaseDTO;
-import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
+import pl.kolendateam.dadcard.race.dto.RaceDTO;
+import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.race.entity.SubRace;
 
 public class MaperListRaceToDTO {
-    public static ArrayList<RaceBaseDTO> toRaceBaseDTO(List<Race> races){
 
-        ArrayList<RaceBaseDTO> racesDTO = new ArrayList<>();
+  public static ArrayList<RaceDTO> toListRaceDTO(List<Race> races) {
+    ArrayList<RaceDTO> racesDTO = new ArrayList<>();
 
-        for (Race race : races) {
-            boolean skipCreateRaceDTO = false;
+    races.forEach(race -> {
+      RaceDTO raceDTO = new RaceDTO(race);
+      racesDTO.add(raceDTO);
+    });
+    return racesDTO;
+    // for (Race race : races) {
+    //   boolean skipCreateRaceDTO = false;
 
-            for (RaceBaseDTO raceDTO : racesDTO) {
-                if (raceDTO.raceName.equals(race.getRacesName())) { 
-                    SubRaceBaseDTO tempSubRace = new SubRaceBaseDTO(race);
-                    raceDTO.subRaces.add(tempSubRace);
-                    skipCreateRaceDTO = true;
-                }
-            }
+    //   for (RaceDTO raceDTO : racesDTO) {
+    //     if (raceDTO.id == race.getId()) {
+    //       SubRaceDTO tempSubRace = new SubRaceDTO(race);
+    //       raceDTO.subRaces.add(tempSubRace);
+    //       skipCreateRaceDTO = true;
+    //     }
+    //   }
 
-            if(!skipCreateRaceDTO){
-                RaceBaseDTO tempRace = new RaceBaseDTO(race);
-                racesDTO.add(tempRace);
-            }
-        }
+    //   if (!skipCreateRaceDTO) {
+    //     RaceBaseDTO tempRace = new RaceBaseDTO(race);
+    //     racesDTO.add(tempRace);
+    //   }
+    // }
 
-        return racesDTO;
-    }
+    // return racesDTO;
+  }
+
+  public static ArrayList<SubRaceDTO> toListSubRaceDTO(List<SubRace> races) {
+    ArrayList<SubRaceDTO> racesDTO = new ArrayList<>();
+
+    races.forEach(race -> {
+      SubRaceDTO raceDTO = new SubRaceDTO(race);
+      racesDTO.add(raceDTO);
+    });
+    return racesDTO;
+  }
 }

@@ -211,7 +211,7 @@ public class CharacterController {
       // classCharacter.getSpellsDomain()
     );
 
-    character.incrementEffectiveCharacterLv();
+    // character.incrementEffectiveCharacterLv();
 
     // skills & hp
     // if (character.getEffectiveCharacterLv() == 1) {
@@ -287,14 +287,14 @@ public class CharacterController {
     }
 
     // experience
-    character.setCharacterExperience();
+    // character.setCharacterExperience();
 
     // gold
-    if (character.getEffectiveCharacterLv() == 1) {
-      character.setFirstLevelGold(classCharacter.getInitialGold());
-    } else {
-      character.setLevelGold();
-    }
+    // if (character.getEffectiveCharacterLv() == 1) {
+    //   character.setFirstLevelGold(classCharacter.getInitialGold());
+    // } else {
+    //   character.setLevelGold();
+    // }
 
     this.characterRepository.save(character);
 
@@ -372,7 +372,7 @@ public class CharacterController {
       character.removeFeatFromPc(chFeat);
     }
 
-    character.decrementEffectiveCharacterLv();
+    // character.decrementEffectiveCharacterLv();
 
     // class
     int indexClassInDB = classPc.findIndexInArrayById(classPcList);
@@ -455,23 +455,23 @@ public class CharacterController {
     // character.decrementBab(classCharacter.getClassBab());
 
     // experience
-    if (character.getEffectiveCharacterLv() == 0) {
-      character.setZeroExp();
-    } else {
-      character.setCharacterExperience();
-    }
+    // if (character.getEffectiveCharacterLv() == 0) {
+    //   character.setZeroExp();
+    // } else {
+    //   character.setCharacterExperience();
+    // }
 
     // gold
-    if (character.getEffectiveCharacterLv() == 1) {
-      character.setFirstLevelGold(classCharacter.getInitialGold());
-    } else {
-      character.setLevelGold();
-    }
+    // if (character.getEffectiveCharacterLv() == 1) {
+    //   character.setFirstLevelGold(classCharacter.getInitialGold());
+    // } else {
+    //   character.setLevelGold();
+    // }
 
     // items
-    if (character.getEffectiveCharacterLv() == 0) {
-      character.emptyInventory();
-    }
+    // if (character.getEffectiveCharacterLv() == 0) {
+    //   character.emptyInventory();
+    // }
 
     this.characterRepository.save(character);
 

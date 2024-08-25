@@ -16,13 +16,13 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.race.dto.RaceBaseDTO;
-import pl.kolendateam.dadcard.race.dto.RegionBaseDTO;
-import pl.kolendateam.dadcard.race.dto.SubRaceBaseDTO;
+import pl.kolendateam.dadcard.race.dto.RaceDTO;
+import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.race.entity.Race;
-import pl.kolendateam.dadcard.race.entity.Region;
+import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
+import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
 
 @CrossOrigin
 @RestController
@@ -30,42 +30,52 @@ import pl.kolendateam.dadcard.race.repository.RegionRepository;
 public class RaceController {
 
   RaceRepository raceRepository;
+  SubRaceRepository subRaceRepository;
   RegionRepository regionRepository;
   CharacterRepository characterRepository;
 
   @Autowired
   RaceController(
     RaceRepository raceRepository,
-    CharacterRepository characterRepository
+    CharacterRepository characterRepository,
+    SubRaceRepository subRaceRepository
   ) {
     this.raceRepository = raceRepository;
     this.characterRepository = characterRepository;
+    this.subRaceRepository = subRaceRepository;
   }
 
   @GetMapping("")
-  public ArrayList<RaceBaseDTO> getAll() {
+  public ArrayList<RaceDTO> getAll() {
     List<Race> races = this.raceRepository.findAll();
 
-    return MaperListRaceToDTO.toRaceBaseDTO(races);
+    return MaperListRaceToDTO.toListRaceDTO(races);
   }
 
-  @GetMapping("{id}/region")
-  public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable short id) {
-    Optional<Race> raceOpt = this.raceRepository.findById(id);
+  @GetMapping("sub")
+  public ArrayList<SubRaceDTO> getAllSub() {
+    List<SubRace> races = this.subRaceRepository.findAll();
 
-    if (!raceOpt.isPresent()) {
-      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Race Not Found");
-    }
-
-    List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
-
-    return MaperListRegionToDTO.toRegionBaseDTO(regions);
+    return MaperListRaceToDTO.toListSubRaceDTO(races);
   }
+
+  // @GetMapping("{id}/region")
+  // public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable int id) {
+  //   Optional<Race> raceOpt = this.raceRepository.findById(id);
+
+  //   if (!raceOpt.isPresent()) {
+  //     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Race Not Found");
+  //   }
+
+  //   List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
+
+  //   return MaperListRegionToDTO.toRegionBaseDTO(regions);
+  // }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setSubRaceToCharacter(
     @PathVariable int id,
-    @RequestBody SubRaceBaseDTO subRaceBaseDTO
+    @RequestBody SubRaceDTO subRaceBaseDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -76,7 +86,8 @@ public class RaceController {
       );
     }
 
-    Optional<Race> raceOpt = this.raceRepository.findById(subRaceBaseDTO.id);
+    Optional<SubRace> raceOpt =
+      this.subRaceRepository.findById(subRaceBaseDTO.id);
 
     if (!characterOpt.isPresent()) {
       throw new ResponseStatusException(
@@ -86,20 +97,20 @@ public class RaceController {
     }
 
     Character character = characterOpt.get();
-    Race race = raceOpt.get();
+    SubRace race = raceOpt.get();
 
     // character.setSize(race.getSize());
 
     // character.sizeCharacter(race.getSize());
 
-    character.addSpeed(race.getSpeed());
+    // character.addSpeed(race.getSpeed());
 
-    if (race.getAbilitys() != null) {
-      character.addAbilityRace(race.getAbilitys());
-    }
-    if (race.getSkills() != null) {
-      character.addSkill(race.getSkills());
-    }
+    // if (race.getAbilitys() != null) {
+    //   character.addAbilityRace(race.getAbilitys());
+    // }
+    // if (race.getSkills() != null) {
+    //   character.addSkill(race.getSkills());
+    // }
 
     // ArrayList<ClassSkills> findHide = character.getClassSkills();
     // for (ClassSkills clSk : findHide) {
@@ -110,13 +121,13 @@ public class RaceController {
     //   }
     // }
 
-    if (race.getLevelAdjustment() != 0) {
-      character.raceLevelAdjustment(race.getLevelAdjustment());
-    }
+    // if (race.getLevelAdjustment() != 0) {
+    //   character.raceLevelAdjustment(race.getLevelAdjustment());
+    // }
 
-    if (race.getArmorClass() != null) {
-      character.raceBonusArmorClass(race.getArmorClass());
-    }
+    // if (race.getArmorClass() != null) {
+    //   character.raceBonusArmorClass(race.getArmorClass());
+    // }
 
     character.setCharacterRace(race);
 

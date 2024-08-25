@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,7 +32,7 @@ public class Size implements Serializable {
   SizeEnum size;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  List<ModifierBonus> modifiers;
+  Set<ModifierBonus> modifiers;
   // @JdbcTypeCode(SqlTypes.JSON)
   // SpecialAttacks specialAttacks;
 

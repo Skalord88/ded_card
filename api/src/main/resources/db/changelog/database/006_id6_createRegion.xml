@@ -13,14 +13,5 @@
           <constraints nullable="false"/>
         </column>
       </createTable>
-
-     <createTable tableName="race_region">
-        <column name="race_id" type="SMALLINT">
-          <constraints nullable="false"/>
-        </column>
-        <column name="region_id" type="SMALLINT">
-          <constraints nullable="false"/>
-        </column>
-      </createTable>
   </changeSet>
 </databaseChangeLog>

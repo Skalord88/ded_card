@@ -4,18 +4,27 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="5" author="oscar">
-      <createTable tableName="race">
+  <changeSet id="16" author="damian">
+      <createTable tableName="sub_race">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
-        <column name="race_name" type="varchar(255)">
+        <column name="sub_race_name" type="varchar(255)">
           <constraints nullable="false"/>
+        </column>
+        <column name="race_id" type="int">
+          <constraints nullable="false"/>
+        </column>
+        <column name="size_id" type="TINYINT">
+          <constraints nullable="false"/>
+        </column>
+        <column name="avatar_url" type="varchar(255)">
+          <constraints nullable="true"/>
         </column>
         <column name="modifiers" type="jsonb" >
           <constraints nullable="true"/>
         </column>
-        <column name="avatar_url" type="varchar(255)">
+        <column name="level_adjustment" type="TINYINT">
           <constraints nullable="true"/>
         </column>
       </createTable>

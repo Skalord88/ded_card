@@ -8,9 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
-import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.entity.ClassSkills;
 
 @NoArgsConstructor
@@ -44,9 +43,9 @@ public class CharacterFeat implements Serializable {
 
   public boolean checkPrerequisite(
     Feats feat,
-    Race subRace,
+    SubRace subRace,
     // SavingThrow savingThrow,
-    ArmorClass armorClass,
+    // ArmorClass armorClass,
     ArrayList<ClassSkills> classSkills,
     Abilitys abilitys,
     // int bab,
@@ -58,14 +57,14 @@ public class CharacterFeat implements Serializable {
     int ckeckTot = 0;
     int checkEvry = 0;
 
-    if (p.getRace() != null) {
-      ckeckTot++;
-      for (String r : p.getRace()) {
-        if (subRace.getSubRaceName() == r) {
-          checkEvry++;
-        }
-      }
-    }
+    // if (p.getRace() != null) {
+    //   ckeckTot++;
+    //   for (String r : p.getRace()) {
+    //     if (subRace.getSubRaceName() == r) {
+    //       checkEvry++;
+    //     }
+    //   }
+    // }
 
     // if (p.getSavingThrow() != null) {
     //   ckeckTot++;
@@ -74,12 +73,12 @@ public class CharacterFeat implements Serializable {
     //   }
     // }
 
-    if (p.getArmorClass() != null) {
-      ckeckTot++;
-      if (armorClass.checkPrerequisiteAC(p.getArmorClass())) {
-        checkEvry++;
-      }
-    }
+    // if (p.getArmorClass() != null) {
+    //   ckeckTot++;
+    //   if (armorClass.checkPrerequisiteAC(p.getArmorClass())) {
+    //     checkEvry++;
+    //   }
+    // }
 
     if (p.getClassSkills() != null) {
       ckeckTot++;

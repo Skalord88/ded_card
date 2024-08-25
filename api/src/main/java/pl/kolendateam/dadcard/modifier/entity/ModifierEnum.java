@@ -16,6 +16,44 @@ public enum ModifierEnum {
   RACIAL_BONUS,
   RESISTANCE_BONUS,
   SACRED_MODIFIER,
+
+  // ability
+  STRENGHT,
+  DEXTERITY,
+  CONSTITUTION,
+  INTELLIGENCE,
+  WISDOM,
+  CHARISMA,
+
+  // armor
   SHIELD_BONUS,
   SIZE_MODIFIER,
+  ARMOR_SIZE,
+
+  // attack
+  GRAPPLE,
+  BAB,
+  THROW,
+  SLING,
+
+  // movment
+  SPEED,
+  FLY,
+  SWIM,
+
+  // skills
+  SKILL,
+  EXTRA_SKILLS_POINTS,
+
+  // feat
+  EXTRA_FEAT,
+
+  // saving
+  SAVING,
+  FORTITUDE,
+  REFLEX,
+  WILL,
+
+  // immunity
+  FEAR,
 }
