@@ -21,7 +21,14 @@
         <column name="description" type="varchar(90000)">
           <constraints nullable="false"/>
         </column>
-        <column name="speed" type="int">
+        <column name="modifiers" type="jsonb">
+          <constraints nullable="true"/>
+        </column>
+      </createTable>
+  </changeSet>
+</databaseChangeLog>
+
+<!-- <column name="speed" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="skills" type="varchar(255)">
@@ -29,7 +36,4 @@
         </column>
         <column name="special_attacks" type="varchar(255)">
           <constraints nullable="true"/>
-        </column>
-      </createTable>
-  </changeSet>
-</databaseChangeLog>
+        </column> -->

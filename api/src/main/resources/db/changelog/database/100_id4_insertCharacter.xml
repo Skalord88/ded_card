@@ -18,13 +18,6 @@
                 &quot;charisma&quot;: 12
             }" />
             <column name="sub_race_id" value="1" />
-            <!-- <column name="speed" value="20" /> -->
-            <!-- <column name="effective_character_lv" value="10" /> -->
-            <!-- <column name="level_adjustment" value="0" /> -->
-            <!-- <column name="vitality" value="{}" /> -->
-            <!-- <column name="saving_throw" value="{}"/> -->
-            <!-- <column name="skill_points" value="0"/> -->
-            <!-- <column name="armor_class" value="{}" /> -->
             <column name="class_skills"
                 value="[
                 {

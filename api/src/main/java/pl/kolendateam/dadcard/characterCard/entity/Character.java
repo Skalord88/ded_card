@@ -31,7 +31,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.Dices;
 import pl.kolendateam.dadcard.classCharacter.entity.DicesEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
-import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Inventory;
@@ -418,37 +417,37 @@ public class Character {
   //   this.armorClass.setNaturalArmor(jsonObjectArmorClass.getNaturalArmor());
   // }
 
-  public ArrayList<CharacterFeat> listFeatsFromClass(
-    int lv,
-    List<Feats> featsListInDB,
-    String classFeatsMap
-  ) {
-    ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
-    Gson gson = new Gson();
-    Type listFeats = new TypeToken<List<ClassFeats>>() {}.getType();
-    List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
+  // public ArrayList<CharacterFeat> listFeatsFromClass(
+  //   int lv,
+  //   List<Feats> featsListInDB,
+  //   String classFeatsMap
+  // ) {
+  //   ArrayList<CharacterFeat> characterFeatsFromClassArray = new ArrayList<CharacterFeat>();
+  //   Gson gson = new Gson();
+  //   Type listFeats = new TypeToken<List<ClassFeats>>() {}.getType();
+  //   List<ClassFeats> featsJson = gson.fromJson(classFeatsMap, listFeats);
 
-    for (ClassFeats featInJson : featsJson) {
-      if (featInJson.getLevel() == lv) {
-        for (Feats featInList : featsListInDB) {
-          HashSet<String> fList = featInJson.getClassFeats();
-          for (String featString : fList) {
-            if (featInList.getFeatName().equals(featString)) {
-              CharacterFeat newCharFeat = new CharacterFeat(
-                featInList.getId(),
-                1,
-                featInList.getFeatName(),
-                featInList.getDescription(),
-                featInList.getFeatsType()
-              );
-              characterFeatsFromClassArray.add(newCharFeat);
-            }
-          }
-        }
-      }
-    }
-    return characterFeatsFromClassArray;
-  }
+  //   for (ClassFeats featInJson : featsJson) {
+  //     if (featInJson.getLevel() == lv) {
+  //       for (Feats featInList : featsListInDB) {
+  //         HashSet<String> fList = featInJson.getClassFeats();
+  //         for (String featString : fList) {
+  //           if (featInList.getFeatName().equals(featString)) {
+  //             CharacterFeat newCharFeat = new CharacterFeat(
+  //               featInList.getId(),
+  //               1,
+  //               featInList.getFeatName(),
+  //               featInList.getDescription(),
+  //               featInList.getFeatsType()
+  //             );
+  //             characterFeatsFromClassArray.add(newCharFeat);
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  //   return characterFeatsFromClassArray;
+  // }
 
   public boolean buyFeat(Feats feat) {
     boolean buyed = false;

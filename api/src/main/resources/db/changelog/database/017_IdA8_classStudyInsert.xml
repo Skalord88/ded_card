@@ -6,91 +6,91 @@
 
   <changeSet id="108" author="oscar">
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  <!-- bard-->
+        <column name="class_character_id" value="2"/>  <!-- bard-->
         <column  name="study_id"  value="1"/>  <!-- Arcana-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  
+        <column name="class_character_id" value="2"/>  
         <column  name="study_id"  value="2"/>  <!-- Architecture-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  
+        <column name="class_character_id" value="2"/>  
         <column  name="study_id"  value="3"/>  <!-- History-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  
+        <column name="class_character_id" value="2"/>  
         <column  name="study_id"  value="3"/>  <!-- Nature-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  
+        <column name="class_character_id" value="2"/>  
         <column  name="study_id"  value="4"/>  <!-- Religion-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="2"/>  
+        <column name="class_character_id" value="2"/>  
         <column  name="study_id"  value="5"/>  <!-- Plane-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="3"/>  <!-- cleric-->
+        <column name="class_character_id" value="3"/>  <!-- cleric-->
         <column  name="study_id"  value="3"/>  <!-- History-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="3"/>
+        <column name="class_character_id" value="3"/>
         <column  name="study_id"  value="5"/>  <!-- Religion-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="3"/>
+        <column name="class_character_id" value="3"/>
         <column  name="study_id"  value="6"/>  <!-- Plane-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="4"/>  <!-- druid-->
+        <column name="class_character_id" value="4"/>  <!-- druid-->
         <column  name="study_id"  value="4"/>  <!-- Nature-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="6"/>  <!-- monk-->
+        <column name="class_character_id" value="6"/>  <!-- monk-->
         <column  name="study_id"  value="1"/>  <!-- Arcana-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="6"/>
+        <column name="class_character_id" value="6"/>
         <column  name="study_id"  value="5"/>  <!-- Religion-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="7"/>  <!-- paladin-->
+        <column name="class_character_id" value="7"/>  <!-- paladin-->
         <column  name="study_id"  value="3"/>  <!-- History-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="7"/>
+        <column name="class_character_id" value="7"/>
         <column  name="study_id"  value="5"/>  <!-- Religion-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="8"/>  <!-- ranger-->
+        <column name="class_character_id" value="8"/>  <!-- ranger-->
         <column  name="study_id"  value="4"/>  <!-- Nature-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="10"/>  <!-- sorcerers-->
+        <column name="class_character_id" value="10"/>  <!-- sorcerers-->
         <column  name="study_id"  value="1"/>  <!-- Arcana-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  <!-- wizard-->
+        <column name="class_character_id" value="11"/>  <!-- wizard-->
         <column  name="study_id"  value="1"/>  <!-- Arcana-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  
+        <column name="class_character_id" value="11"/>  
         <column  name="study_id"  value="2"/>  <!-- Architecture-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  
+        <column name="class_character_id" value="11"/>  
         <column  name="study_id"  value="3"/>  <!-- History-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  
+        <column name="class_character_id" value="11"/>  
         <column  name="study_id"  value="3"/>  <!-- Nature-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  
+        <column name="class_character_id" value="11"/>  
         <column  name="study_id"  value="4"/>  <!-- Religion-->
     </insert>
     <insert tableName="class_study">
-        <column name="class_id" value="11"/>  
+        <column name="class_character_id" value="11"/>  
         <column  name="study_id"  value="5"/>  <!-- Plane-->
     </insert>
 

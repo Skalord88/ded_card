@@ -26,8 +26,8 @@ public class RaceDTO {
     this.modifiers =
       MapperModifierBonusDTO.toListModifierDTO(race.getModifiers());
     this.feats = MapperFeatsDTO.toFeatsSetDTO(race.getRaceFeats());
-    // SubRaceBaseDTO tempSubRace = new SubRaceBaseDTO(race);
-    // this.subRaces = new ArrayList<SubRaceBaseDTO>();
-    // this.subRaces.add(tempSubRace);
   }
 }
+// SubRaceBaseDTO tempSubRace = new SubRaceBaseDTO(race);
+// this.subRaces = new ArrayList<SubRaceBaseDTO>();
+// this.subRaces.add(tempSubRace);

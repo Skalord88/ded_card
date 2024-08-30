@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.classCharacter.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,6 +20,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -55,7 +59,7 @@ public class ClassCharacter implements Serializable {
   @ManyToMany
   @JoinTable(
     name = "class_skills",
-    joinColumns = @JoinColumn(name = "class_id"),
+    joinColumns = @JoinColumn(name = "class_character_id"),
     inverseJoinColumns = @JoinColumn(name = "skill_id")
   )
   Set<Skills> availableSkills = new HashSet<>();
@@ -63,14 +67,21 @@ public class ClassCharacter implements Serializable {
   @ManyToMany
   @JoinTable(
     name = "class_study",
-    joinColumns = @JoinColumn(name = "class_id"),
+    joinColumns = @JoinColumn(name = "class_character_id"),
     inverseJoinColumns = @JoinColumn(name = "study_id")
   )
   Set<Study> availableStudy = new HashSet<>();
 
   byte skillPoints;
 
-  String classFeatsMap;
+  @OneToMany(
+    mappedBy = "classCharacter",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
+  )
+  Set<ClassFeats> availableFeats = new HashSet<>();
+
+  // String classFeatsMap;
 
   @Enumerated(EnumType.STRING)
   SpellsEnum spellsPerDay;

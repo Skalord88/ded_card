@@ -133,6 +133,11 @@ public class RaceController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 }

@@ -77,7 +77,12 @@ public class SkillsController {
     character.buySkills(skillsToAdd);
 
     this.characterRepository.save(character);
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 
   @PostMapping("study/add")
@@ -123,6 +128,11 @@ public class SkillsController {
     character.addStudy(studyToAdd);
 
     this.characterRepository.save(character);
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 }

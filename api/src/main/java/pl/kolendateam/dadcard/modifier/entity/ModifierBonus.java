@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.modifier.entity;
 
 import java.io.Serializable;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,9 +15,13 @@ import org.hibernate.type.SqlTypes;
 public class ModifierBonus implements Serializable {
 
   ModifierEnum modifier;
-
   int bonus;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] targets;
 }
+// {
+//   &quot;modifier&quot; : &quot;SKILL&quot;,
+//   &quot;bonus&quot; : 4,
+//   &quot;targets&quot; : [14]
+// }

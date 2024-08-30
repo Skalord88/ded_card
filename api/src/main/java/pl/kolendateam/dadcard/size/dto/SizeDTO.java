@@ -24,10 +24,10 @@ public class SizeDTO {
     this.size = size.getSize();
     this.modifiers =
       MapperModifierBonusDTO.toListModifierDTO(size.getModifiers());
-    // this.specialAttacks =
-    //   MapperSpecialAttacks.toSpecialAttacksDTO(size.getSpecialAttacks());
-    // this.skills = MapperSkillsToDTO.toOneSkillDTO(size.getSkill());
-    // this.armor = MapperArmorClassDTO.toArmorClassDTO(size.getArmorBonus());
-    // this.bab = size.getBab();
   }
 }
+// this.specialAttacks =
+//   MapperSpecialAttacks.toSpecialAttacksDTO(size.getSpecialAttacks());
+// this.skills = MapperSkillsToDTO.toOneSkillDTO(size.getSkill());
+// this.armor = MapperArmorClassDTO.toArmorClassDTO(size.getArmorBonus());
+// this.bab = size.getBab();

@@ -144,7 +144,12 @@ public class SpellsController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 
   @PostMapping(value = "{id}/sellspells", consumes = { "application/json" })
@@ -170,6 +175,11 @@ public class SpellsController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 }

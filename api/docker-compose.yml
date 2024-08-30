@@ -16,7 +16,8 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
 
   api:
-    image: skalord88/api:latest
+    image: api
+    # image: skalord88/api:latest
     depends_on:
       - db
     networks:

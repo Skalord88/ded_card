@@ -11,7 +11,7 @@ import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.classCharacter.MapperClassPcListToDTO;
+import pl.kolendateam.dadcard.classCharacter.MapperClassFeatsDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
@@ -35,176 +35,21 @@ public class CharacterDTO implements Serializable {
   public String characterName;
   public String playerName;
   public ArrayList<ClassPcListDTO> classPcList;
-  // public SizeEnum size;
   public SubRaceDTO race;
-  // public String race;
-  // public String subRace;
-  // public VitalityDTO vitality;
-  // public int speed;
-  // public ArmorClassDTO armorClass;
-  // public int bab;
-  // public SpecialAttacksDTO specialAttacks;
-  // public SavingThrowDTO savingThrows;
   public AbilitysDTO abilitys;
-  // public double skillPoints;
   public ArrayList<SkillsDTO> skillsList;
   public ArrayList<CharacterFeatsDTO> featsList;
   public ArrayList<CharacterFeatsDTO> levelFeatsList;
   public ArrayList<Items> items;
-  public int inventoryId;
   public InventoryDTO inventory;
-  public int attacksId;
   public AttacksDTO attacks;
   public HashMap<EnumClass, Integer[]> magicPerDay;
   public HashMap<EnumClass, Integer[]> magicKnown;
   public ArrayList<BookDTO> books;
-  // public ArrayList<SpellsInCharLevel> spellsKnown;
   public int levelAdjustment;
   public int effectiveCharacterLv;
   public int experience;
   public int treasure;
-
-  public CharacterDTO(Character character) {
-    this.id = character.getId();
-    this.characterName = character.getCharacterName();
-    this.playerName = character.getPlayerName();
-    this.classPcList =
-      MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-    // this.size = character.sizeCharacter();
-    this.race = new SubRaceDTO(character.getRace());
-    // this.race = character.getRace();
-    // this.subRace = character.getSubRace();
-    // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    // this.speed = character.getSpeed();
-    // this.armorClass =
-    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
-    // this.bab = (int) character.getBab();
-    // this.specialAttacks =
-    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-    // this.savingThrows =
-    //   MapperSavingThrowToDTO.toSavingThrowDTO(
-    //     character.getSavingThrow(),
-    //     character.getAbilitys()
-    //   );
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
-    // this.skillPoints = character.getSkillPoints();
-    this.skillsList =
-      MapperSkillsToDTO.toSkillsDTO(
-        character.getClassSkills(),
-        character.getAbilitys()
-      );
-    this.featsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
-    this.levelFeatsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(
-        character.getLevelFeatsList()
-      );
-    this.inventoryId = character.getInventory().getId();
-    this.inventory = null;
-    this.inventoryId = character.getAttacks().getId();
-    this.inventory = null;
-    this.magicPerDay = character.getMagicPerDay();
-    this.magicKnown = character.getMagicKnown();
-    this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
-    // this.spellsKnown = character.getSpellsKnown();
-    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    // this.levelAdjustment = character.getLevelAdjustment();
-    this.experience = character.getExperience();
-    this.treasure = character.getTreasure();
-  }
-
-  public CharacterDTO(Character character, Inventory characterInventory) {
-    this.id = character.getId();
-    this.characterName = character.getCharacterName();
-    this.playerName = character.getPlayerName();
-    this.classPcList =
-      MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-    // this.size = character.sizeCharacter();
-    this.race = new SubRaceDTO(character.getRace());
-    // this.race = character.getRace();
-    // this.subRace = character.getSubRace();
-    // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    // this.speed = character.getSpeed();
-    // this.armorClass =
-    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
-    // this.bab = (int) character.getBab();
-    // this.specialAttacks =
-    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-    // this.savingThrows =
-    //   MapperSavingThrowToDTO.toSavingThrowDTO(
-    //     character.getSavingThrow(),
-    //     character.getAbilitys()
-    //   );
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
-    // this.skillPoints = character.getSkillPoints();
-    this.skillsList =
-      MapperSkillsToDTO.toSkillsDTO(
-        character.getClassSkills(),
-        character.getAbilitys()
-      );
-    this.featsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
-    this.levelFeatsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(
-        character.getLevelFeatsList()
-      );
-    this.inventoryId = character.getInventory().getId();
-    this.inventory = MapperItemsDTO.toInventoryDTO(characterInventory);
-    this.magicPerDay = character.getMagicPerDay();
-    this.magicKnown = character.getMagicKnown();
-    this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
-    // this.spellsKnown = character.getSpellsKnown();
-    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    // this.levelAdjustment = character.getLevelAdjustment();
-    this.experience = character.getExperience();
-    this.treasure = character.getTreasure();
-  }
-
-  public CharacterDTO(Character character, Attacks characterAttacks) {
-    this.id = character.getId();
-    this.characterName = character.getCharacterName();
-    this.playerName = character.getPlayerName();
-    this.classPcList =
-      MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
-    // this.size = character.sizeCharacter();
-    // this.race = character.getRace();
-    // this.subRace = character.getSubRace();
-    // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    // this.speed = character.getSpeed();
-    // this.armorClass =
-    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
-    // this.bab = (int) character.getBab();
-    // this.specialAttacks =
-    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-    // this.savingThrows =
-    //   MapperSavingThrowToDTO.toSavingThrowDTO(
-    //     character.getSavingThrow(),
-    //     character.getAbilitys()
-    //   );
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
-    // this.skillPoints = character.getSkillPoints();
-    this.skillsList =
-      MapperSkillsToDTO.toSkillsDTO(
-        character.getClassSkills(),
-        character.getAbilitys()
-      );
-    this.featsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
-    this.levelFeatsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(
-        character.getLevelFeatsList()
-      );
-    this.attacksId = character.getAttacks().getId();
-    this.attacks = MapperItemsDTO.toAttacksDTO(characterAttacks);
-    this.magicPerDay = character.getMagicPerDay();
-    this.magicKnown = character.getMagicKnown();
-    this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
-    // this.spellsKnown = character.getSpellsKnown();
-    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    // this.levelAdjustment = character.getLevelAdjustment();
-    this.experience = character.getExperience();
-    this.treasure = character.getTreasure();
-  }
 
   public CharacterDTO(
     Character character,
@@ -215,26 +60,9 @@ public class CharacterDTO implements Serializable {
     this.id = character.getId();
     this.characterName = character.getCharacterName();
     this.playerName = character.getPlayerName();
-    this.classPcList =
-      MapperClassPcListToDTO.toClassPcListDTO(characterClassList);
-    // this.size = character.sizeCharacter();
+    this.classPcList = MapperClassFeatsDTO.toClassPcListDTO(characterClassList);
     this.race = new SubRaceDTO(character.getRace());
-    // this.race = character.getRace();
-    // this.subRace = character.getSubRace();
-    // this.vitality = MapperVitalityToDTO.toVitalityDTO(character.getVitality());
-    // this.speed = character.getSpeed();
-    // this.armorClass =
-    //   MapperArmorClassDTO.toArmorClassDTO(character.getArmorClass());
-    // this.bab = (int) character.getBab();
-    // this.specialAttacks =
-    //   MapperSpecialAttacks.toSpecialAttacksDTO(character.getSpecialAttacks());
-    // this.savingThrows =
-    // MapperSavingThrowToDTO.toSavingThrowDTO(
-    // character.getSavingThrow(),
-    //   character.getAbilitys()
-    // );
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
-    // this.skillPoints = character.getSkillPoints();
     this.skillsList =
       MapperSkillsToDTO.toSkillsDTO(
         character.getClassSkills(),
@@ -246,17 +74,94 @@ public class CharacterDTO implements Serializable {
       MapperCharacterFeatsDTO.toCharacterFeatsDTO(
         character.getLevelFeatsList()
       );
-    this.inventoryId = character.getInventory().getId();
     this.inventory = MapperItemsDTO.toInventoryDTO(characterInventory);
-    this.attacksId = character.getAttacks().getId();
     this.attacks = MapperItemsDTO.toAttacksDTO(characterAttacks);
     this.magicPerDay = character.getMagicPerDay();
     this.magicKnown = character.getMagicKnown();
     this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
-    // this.spellsKnown = character.getSpellsKnown();
-    // this.effectiveCharacterLv = character.getEffectiveCharacterLv();
-    // this.levelAdjustment = character.getLevelAdjustment();
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }
 }
+// public CharacterDTO(Character character) {
+//   this.id = character.getId();
+//   this.characterName = character.getCharacterName();
+//   this.playerName = character.getPlayerName();
+//   this.classPcList =
+//     MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
+//   this.race = new SubRaceDTO(character.getRace());
+//   this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+//   this.skillsList =
+//     MapperSkillsToDTO.toSkillsDTO(
+//       character.getClassSkills(),
+//       character.getAbilitys()
+//     );
+//   this.featsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+//   this.levelFeatsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(
+//       character.getLevelFeatsList()
+//     );
+//   this.inventoryId = character.getInventory().getId();
+//   this.inventory = null;
+//   this.inventoryId = character.getAttacks().getId();
+//   this.inventory = null;
+//   this.magicPerDay = character.getMagicPerDay();
+//   this.magicKnown = character.getMagicKnown();
+//   this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
+//   this.experience = character.getExperience();
+//   this.treasure = character.getTreasure();
+// }
+// public CharacterDTO(Character character, Inventory characterInventory) {
+//   this.id = character.getId();
+//   this.characterName = character.getCharacterName();
+//   this.playerName = character.getPlayerName();
+//   this.classPcList =
+//     MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
+//   this.race = new SubRaceDTO(character.getRace());
+//   this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+//   this.skillsList =
+//     MapperSkillsToDTO.toSkillsDTO(
+//       character.getClassSkills(),
+//       character.getAbilitys()
+//     );
+//   this.featsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+//   this.levelFeatsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(
+//       character.getLevelFeatsList()
+//     );
+//   this.inventoryId = character.getInventory().getId();
+//   this.inventory = MapperItemsDTO.toInventoryDTO(characterInventory);
+//   this.magicPerDay = character.getMagicPerDay();
+//   this.magicKnown = character.getMagicKnown();
+//   this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
+//   this.experience = character.getExperience();
+//   this.treasure = character.getTreasure();
+// }
+// public CharacterDTO(Character character, Attacks characterAttacks) {
+//   this.id = character.getId();
+//   this.characterName = character.getCharacterName();
+//   this.playerName = character.getPlayerName();
+//   this.classPcList =
+//     MapperClassPcListToDTO.toClassPcListDTO(character.getClassPcArray());
+//   this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+//   this.skillsList =
+//     MapperSkillsToDTO.toSkillsDTO(
+//       character.getClassSkills(),
+//       character.getAbilitys()
+//     );
+//   this.featsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+//   this.levelFeatsList =
+//     MapperCharacterFeatsDTO.toCharacterFeatsDTO(
+//       character.getLevelFeatsList()
+//     );
+//   this.attacksId = character.getAttacks().getId();
+//   this.attacks = MapperItemsDTO.toAttacksDTO(characterAttacks);
+//   this.magicPerDay = character.getMagicPerDay();
+//   this.magicKnown = character.getMagicKnown();
+//   this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
+//   this.experience = character.getExperience();
+//   this.treasure = character.getTreasure();
+// }

@@ -13,10 +13,13 @@ public class MapperModifierBonusDTO {
 
   public static Set<ModifierDTO> toListModifierDTO(Set<ModifierBonus> mods) {
     Set<ModifierDTO> listOfModifierDTO = new HashSet<>();
-    mods.forEach(mod -> {
-      ModifierDTO modDTO = new ModifierDTO(mod);
-      listOfModifierDTO.add(modDTO);
-    });
+    if (mods != null) {
+      mods.forEach(mod -> {
+        ModifierDTO modDTO = new ModifierDTO(mod);
+        listOfModifierDTO.add(modDTO);
+      });
+      return listOfModifierDTO;
+    }
     return listOfModifierDTO;
   }
 }

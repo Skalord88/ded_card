@@ -8,10 +8,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @NoArgsConstructor
 @Getter
@@ -35,11 +39,13 @@ public class Feats implements Serializable {
   @Nonnull
   String description;
 
-  String skills;
-  Integer speed;
-  String specialAttacks;
+  @JdbcTypeCode(SqlTypes.JSON)
+  Set<ModifierBonus> modifiers;
 
   public Feats(int idDTO) {
     this.id = idDTO;
   }
 }
+// String skills;
+// Integer speed;
+// String specialAttacks;

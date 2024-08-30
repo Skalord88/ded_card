@@ -250,15 +250,15 @@ public class CharacterController {
     // character.incrementBab(classCharacter.getClassBab());
 
     // feat
-    List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-      levelClassInDB,
-      featsList,
-      classCharacter.getClassFeatsMap()
-    );
+    // List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+    //   levelClassInDB,
+    //   featsList,
+    //   classCharacter.getClassFeatsMap()
+    // );
 
-    for (CharacterFeat chFeat : characterFeatsFromClass) {
-      character.addFeatToPc(chFeat);
-    }
+    // for (CharacterFeat chFeat : characterFeatsFromClass) {
+    //   character.addFeatToPc(chFeat);
+    // }
 
     // magic
     boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
@@ -298,7 +298,12 @@ public class CharacterController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 
   @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
@@ -362,15 +367,15 @@ public class CharacterController {
     //   classPcList,
     //   classCharacter.getId()
     // );
-    List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-      levelClassInDB,
-      featsList,
-      classCharacter.getClassFeatsMap()
-    );
+    // List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
+    //   levelClassInDB,
+    //   featsList,
+    //   classCharacter.getClassFeatsMap()
+    // );
 
-    for (CharacterFeat chFeat : characterFeatsFromClass) {
-      character.removeFeatFromPc(chFeat);
-    }
+    // for (CharacterFeat chFeat : characterFeatsFromClass) {
+    //   character.removeFeatFromPc(chFeat);
+    // }
 
     // character.decrementEffectiveCharacterLv();
 
@@ -475,6 +480,11 @@ public class CharacterController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 }

@@ -29,31 +29,77 @@ public enum ModifierEnum {
   SHIELD_BONUS,
   SIZE_MODIFIER,
   ARMOR_SIZE,
+  NO_ARMOR,
+  LIGHT_ARMOR,
+  MEDIUM_ARMOR,
+  HEAVY_ARMOR,
 
   // attack
   GRAPPLE,
+  BULL_RUSH,
+  DISARM,
   BAB,
   THROW,
   SLING,
+  MOUNTED_RANGED,
 
   // movment
   SPEED,
   FLY,
   SWIM,
+  NATURE,
+  FALL,
 
   // skills
   SKILL,
+  STUDY,
   EXTRA_SKILLS_POINTS,
 
   // feat
   EXTRA_FEAT,
+  FIGHTER,
+  MONK,
+  RANGER,
+  ROGUE,
 
   // saving
   SAVING,
   FORTITUDE,
   REFLEX,
   WILL,
+  ENCHANTMENT,
+  FEY,
 
   // immunity
+  IMMUNITY,
   FEAR,
+  PISON,
+  DISEASES,
+  POISON,
+  MAGIC,
+  NATURAL,
+
+  // active
+  RAGE,
+  BARDIC_MUSIC,
+  BARDIC_KNOWLEDGE,
+  TURN_UNDEAD,
+  WILD_EMPATHY,
+  WILD_SHAPE,
+  FLURRY_BLOWS,
+  KI_STRIKE,
+  QUIVERING_PALM,
+  SMITE,
+  LAY_ON_HANDS,
+  FAVORED_ENEMY,
+  SNEAK_ATTACK,
+
+  // defence
+  UNCANNY_DODGE,
+  DAMAGE_REDUCTION,
+  SPELL_RESISTANCE,
+  EVASION,
+
+  // targets
+  TRAP,
 }

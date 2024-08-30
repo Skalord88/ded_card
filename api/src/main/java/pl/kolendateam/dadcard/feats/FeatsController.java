@@ -74,9 +74,9 @@ public class FeatsController {
       boolean buyed = character.buyFeat(feat);
 
       if (buyed) {
-        if (feat.getSkills() != null) {
-          character.addSkill(feat.getSkills());
-        }
+        // if (feat.getSkills() != null) {
+        //   character.addSkill(feat.getSkills());
+        // }
         // if (feat.getSpeed() != null) {
         //   character.addSpeed(feat.getSpeed());
         // }
@@ -88,7 +88,12 @@ public class FeatsController {
     this.characterRepository.save(character);
     // }
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 
   @PostMapping(value = "remove/{id}", consumes = { "application/json" })
@@ -115,6 +120,11 @@ public class FeatsController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(character);
+    return new CharacterDTO(
+      character,
+      character.getInventory(),
+      character.getAttacks(),
+      character.getClassPcArray()
+    );
   }
 }
