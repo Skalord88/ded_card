@@ -1,5 +1,5 @@
-import { feat } from "./Feats/Interface/FeatInterface";
-import { Race } from "./Race/Interfaces";
+import { ClassFeats, Feat, feat } from "./Feats/Interface/FeatInterface";
+import { Race, SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
@@ -8,24 +8,12 @@ export type CharacterPc = {
   characterName: string;
   playerName: string;
   classPcList: ClassPc[];
-  // size: string;
-  race: Race;
-  // subRace: string;
-  // vitality: vitality;
-  speed: number;
-  armorClass: armorClass;
-  // bab: number;
-  specialAttacks: specialAttacks;
-  // savingThrows: savingThrows;
+  race: SubRace;
   abilitys: Abilitys;
-  skillPoints: number;
   skillsList: SkillProps[];
-  featsList: feat[];
-  levelFeatsList: feat[];
+  featsList: Feat[];
   items: Item[];
-  inventoryId: number;
   inventory: Inventory;
-  attacksId: number;
   attacks: Attacks;
   magicPerDay: MagicClass;
   magicKnown: MagicClass;
@@ -35,6 +23,14 @@ export type CharacterPc = {
   experience: number;
   treasure: number;
 }
+
+// speed: number;
+// armorClass: armorClass;
+// specialAttacks: specialAttacks;
+// skillPoints: number;
+// levelFeatsList: feat[];
+// inventoryId: number;
+// attacksId: number;
 
 export type CharProps = {
   char: CharacterPc;
@@ -90,6 +86,7 @@ export type ClassPc = {
   classBab: number;
   savingThrow: string;
   skillPoints: number;
+  feats: Feat[];
 }
 
 export type MagicClass = {

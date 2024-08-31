@@ -1,4 +1,5 @@
 import { CharacterPc } from "../../interfaces";
+import { CountBab } from "../../Modifiers/Bab/Function";
 
 export function CountBabFromClassPc(
     char: CharacterPc): number {
@@ -7,5 +8,5 @@ export function CountBabFromClassPc(
     (total, cl) => 
         total + cl.classBab * cl.level, 0));
 
-    return babFromClass + char.race.size.bonus
+    return babFromClass + CountBab(char);
 }

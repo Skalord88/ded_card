@@ -5,7 +5,13 @@
             <column name="sub_race_name" value="Lightfoot" />
             <column name="race_id" value="1" />
             <column name="size_id" value="4" />
-            <column name="modifiers" value="[]" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;SPEED&quot;
+            &quot;bonus&quot; : 20;
+            &quot;targets&quot; : []
+            }
+            ]" />
             <column name="level_adjustment" value="0" />
         </insert>
     </changeSet>

@@ -1,4 +1,5 @@
 import { Abilitys, armorClass, savingThrows } from "../../interfaces";
+import { Modifiers } from "../../Modifiers/ModifierInterface";
 
 export type feat = {
   characterFeatName: string;
@@ -43,4 +44,20 @@ export interface ServerFeatsPronsDelete {
 
 export type SelectedFeatProps = {
   feat: serverFeat | feat
+}
+
+export type ClassFeats = {
+  level: number;
+  feat: Feat;
+  classId: number;
+  className: string;
+}
+
+export type Feat = {
+  id: number;
+  featName: string;
+  featsType: string;
+  prerequisite: string;
+  modifiers: Modifiers[];
+  description: string
 }

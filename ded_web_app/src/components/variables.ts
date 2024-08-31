@@ -91,41 +91,25 @@ export const characterEmpty: CharacterPc = {
     characterName: '',
     playerName: '',
     classPcList: [],
-    // size: '',
     race: {
         id: 0,
+        race: {
+            id: 0,
+            raceName: '',
+            avatarRaceUrl: '',
+            modifiers: []
+        },
         subRacesName: '',
-        raceAbilitys: null,
-        raceSkills: null,
-        armorClass: null,
+        avatarUrl: '',
+        modifiers: [],
+        raceFeats: [],
         levelAdjustment: 0,
         size: {
-            id: 0,
+            id:0,
             size: 0,
-            bonus: 0,
-            hide: 0,
-            grapple: 0
-        }
-    },
-    speed: 0,
-    armorClass: {
-        dextrityBonus: 0,
-        sizeBonus: 0,
-        armorBonus: 0,
-        shieldBonus: 0,
-        enhancementBonuses: 0,
-        deflectionBonuses: 0,
-        naturalArmor: 0,
-        dodgeBonus: 0
-    },
-    // bab: 0,
-    specialAttacks: {
-        bullRush: 0,
-        charge: 0,
-        disarm: 0,
-        grapple: 0,
-        overrun: 0,
-        sunder: 0
+            modifiers: []
+        },
+        availableRegions: []
     },
     abilitys: {
         strength: 0,
@@ -135,13 +119,11 @@ export const characterEmpty: CharacterPc = {
         wisdom: 0,
         charisma: 0
     },
+    
     skillsList: [],
     featsList: [],
-    levelFeatsList: [],
     items: [],
-    inventoryId: 0,
     inventory: emptyInventory,
-    attacksId: 0,
     attacks: emptyAttacks,
     magicPerDay: {},
     magicKnown: {},
@@ -153,8 +135,7 @@ export const characterEmpty: CharacterPc = {
     levelAdjustment: 0,
     effectiveCharacterLv: 0,
     experience: 0,
-    treasure: 0,
-    skillPoints: 0
+    treasure: 0
 }
 
 export const abilitysEmpty: Abilitys = {
@@ -179,15 +160,15 @@ export const armorClassEmpty: armorClass = {
     dodgeBonus: 0
 }
 
-export const emptySubRaces: subRaces = {
-    id: 0,
-    subRacesName: '',
-    avatarUrl: '',
-    raceAbilitys: abilitysEmpty,
-    raceSkills: [],
-    armorClass: armorClassEmpty,
-    levelAdjustment: 0
-}
+// export const emptySubRaces: subRaces = {
+//     id: 0,
+//     subRacesName: '',
+//     avatarUrl: '',
+//     raceAbilitys: abilitysEmpty,
+//     raceSkills: [],
+//     armorClass: armorClassEmpty,
+//     levelAdjustment: 0
+// }
 
 export const skillEmpty: serverSkill = {
     skillDTO: [],
@@ -215,7 +196,8 @@ export const emptyClass: ClassPc = {
     hitDice: 0,
     classBab: 0,
     savingThrow: 'lll',
-    skillPoints: 0
+    skillPoints: 0,
+    feats: []
 }
 
 export const enchantItems: Enchantment[] = [

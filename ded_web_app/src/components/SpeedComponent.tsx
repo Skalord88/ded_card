@@ -1,17 +1,19 @@
-import { CharacterPc, CharProps } from "./interfaces";
+import { CharProps } from "./interfaces";
+import { CountSpeed } from "./Modifiers/Speed/Function";
 
 
 
 export const SpeedComponent: React.FC<CharProps> = ({ char }) => {
+  const speed = CountSpeed(char);
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Speed</h2>
 
       <div>
-        <p>{char.speed} ft.</p>
+        <p>{speed} ft.</p>
       </div>
       <div>
-        <p>{char.speed / 5} squares</p>
+        <p>{speed / 5} squares</p>
       </div>
     </>
   );

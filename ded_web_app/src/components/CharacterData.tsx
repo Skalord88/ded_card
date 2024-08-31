@@ -5,6 +5,7 @@ import { DeleteButton } from "./DeleteButton";
 import { urlChar } from "./url";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { CountBabFromClassPc } from "./Attack/Bab/Functions";
+import { CountGrapple } from "./Modifiers/Grapple/Function";
 
 export interface CharProps {
   char: CharacterPc;
@@ -122,7 +123,7 @@ export const BaseAttack: React.FC<CharProps> = ({ char }) => {
   const grapple =
     bab +
     Math.floor((char.abilitys.strength - 10) / 2) +
-    char.race.size.grapple;
+    CountGrapple(char);
 
   return (
     <>
