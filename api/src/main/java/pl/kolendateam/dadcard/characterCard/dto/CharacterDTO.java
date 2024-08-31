@@ -64,10 +64,7 @@ public class CharacterDTO implements Serializable {
     this.race = new SubRaceDTO(character.getRace());
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
     this.skillsList =
-      MapperSkillsToDTO.toSkillsDTO(
-        character.getClassSkills(),
-        character.getAbilitys()
-      );
+      MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());
     this.featsList =
       MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
     this.levelFeatsList =

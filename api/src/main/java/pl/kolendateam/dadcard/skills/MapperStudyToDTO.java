@@ -9,10 +9,12 @@ public class MapperStudyToDTO {
 
   public static Set<StudyDTO> toStudyListDTO(Set<ClassStudy> listStudy) {
     Set<StudyDTO> listOfStudyDTO = new HashSet<>();
-    listStudy.forEach(st -> {
-      StudyDTO stListDTO = new StudyDTO(st);
-      listOfStudyDTO.add(stListDTO);
-    });
+    if (listStudy != null) {
+      listStudy.forEach(st -> {
+        StudyDTO stListDTO = new StudyDTO(st);
+        listOfStudyDTO.add(stListDTO);
+      });
+    }
     return listOfStudyDTO;
   }
 }

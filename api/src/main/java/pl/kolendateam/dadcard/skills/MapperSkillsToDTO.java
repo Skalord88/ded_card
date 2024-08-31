@@ -14,7 +14,13 @@ import pl.kolendateam.dadcard.skills.entity.Study;
 public class MapperSkillsToDTO {
 
   public static SkillsDTO toOneSkillDTO(ClassSkills skill) {
-    return new SkillsDTO(skill.getIdSkill(), skill.getSkillBonus());
+    return new SkillsDTO(
+      skill.getIdSkill(),
+      skill.getNameSkill(),
+      skill.getSkillAbility(),
+      skill.getSkillBonus(),
+      skill.getFieldOfStudy()
+    );
   }
 
   public static ArrayList<SkillsDTO> toSkillsDTO(
@@ -36,27 +42,7 @@ public class MapperSkillsToDTO {
       skillDTO.classSkill = skill.isClassSkill();
       skillDTO.skillRank = skill.getSkillRank();
       skillDTO.skillAbility = skill.getSkillAbility();
-      // AbilityEnum ability = skill.getSkillAbility();
-      // switch (ability) {
-      //   case STRENGHT:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
-      //     break;
-      //   case DEXTERITY:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
-      //     break;
-      //   case CONSTITUTION:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
-      //     break;
-      //   case INTELLIGENCE:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
-      //     break;
-      //   case WISDOM:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
-      //     break;
-      //   case CHARISMA:
-      //     skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
-      //     break;
-      // }
+
       skillDTO.skillBonus = skill.getSkillBonus();
 
       skillListDTO.add(skillDTO);
@@ -80,21 +66,6 @@ public class MapperSkillsToDTO {
     return skillListDTO;
   }
 
-  public static List<SkillsDTO> toSkillsNameDTO(List<Skills> skills) {
-    List<SkillsDTO> skillListDTO = new ArrayList<>();
-
-    for (Skills skill : skills) {
-      SkillsDTO skDTO = new SkillsDTO(
-        skill.getId(),
-        skill.getName(),
-        skill.getAbility()
-      );
-      skillListDTO.add(skDTO);
-    }
-
-    return skillListDTO;
-  }
-
   public static List<StudyDTO> toStudyDTO(
     List<Study> listStudy,
     List<Skills> listSkills
@@ -112,4 +83,69 @@ public class MapperSkillsToDTO {
     }
     return studyListDTO;
   }
+
+  public static ArrayList<SkillsDTO> toSkillsListDTO(
+    ArrayList<ClassSkills> classSkills
+  ) {
+    ArrayList<SkillsDTO> skillsListDTO = new ArrayList<>();
+
+    if (classSkills != null) {
+      classSkills.forEach(skill -> {
+        skillsListDTO.add(
+          new SkillsDTO(
+            skill.getIdSkill(),
+            skill.getNameSkill(),
+            skill.getSkillAbility(),
+            skill.getSkillRank(),
+            skill.getFieldOfStudy()
+          )
+        );
+      });
+    }
+    return skillsListDTO;
+  }
+
+  public static List<SkillsDTO> toSkillsNameDTO(List<Skills> listSkills) {
+    List<SkillsDTO> skillsNameListDTO = new ArrayList<>();
+    if (listSkills != null) {
+      listSkills.forEach(skill -> {
+        SkillsDTO skillDTO = new SkillsDTO(skill);
+        skillsNameListDTO.add(skillDTO);
+      });
+    }
+    return skillsNameListDTO;
+  }
 }
+// AbilityEnum ability = skill.getSkillAbility();
+// switch (ability) {
+//   case STRENGHT:
+//     skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
+//     break;
+//   case DEXTERITY:
+//     skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
+//     break;
+//   case CONSTITUTION:
+//     skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
+//     break;
+//   case INTELLIGENCE:
+//     skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
+//     break;
+//   case WISDOM:
+//     skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
+//     break;
+//   case CHARISMA:
+//     skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
+//     break;
+// }
+// public static List<SkillsDTO> toSkillsNameDTO(List<Skills> skills) {
+//   List<SkillsDTO> skillListDTO = new ArrayList<>();
+//   for (Skills skill : skills) {
+//     SkillsDTO skDTO = new SkillsDTO(
+//       skill.getId(),
+//       skill.getName(),
+//       skill.getAbility()
+//     );
+//     skillListDTO.add(skDTO);
+//   }
+//   return skillListDTO;
+// }
