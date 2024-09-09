@@ -1,9 +1,9 @@
 import { OneSkill } from "./interface/SkillsInterface";
 
-export const SkillBnsSkillsTableComponent: React.FC<OneSkill> = ({ skill, size }) => {
+export const SkillBnsSkillsTableComponent: React.FC<OneSkill> = ({ bonus }) => {
     return (
       <>
-        <div className="rpgui-container-framed-grey-mini">{skill.skillBonus + size}</div>
+        <div className="rpgui-container-framed-grey-mini">{bonus}</div>
       </>
     );
   };

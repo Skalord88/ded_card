@@ -1,23 +1,54 @@
-import { Abilitys } from "../Abilitys/Interface";
-import { BonusAbilities, SignAndCount } from "../functions";
+import { SignAndCount } from "../functions";
 import { D12Popup } from "../Popup/DicePopup/D12Popup";
 
 export type InitiativeProps = {
-  abilitys: Abilitys,
-  initiative: number
-}
+  initiativeDex: number;
+  initiativeMod: number;
+};
 
-export const Initiative: React.FC<InitiativeProps> = ({ abilitys, initiative }) => {
-  const init: string = 
-    SignAndCount([BonusAbilities(abilitys, "DEX")]).sign +
-    (BonusAbilities(abilitys, "DEX") + initiative)
+export const Initiative: React.FC<InitiativeProps> = ({
+  initiativeDex,
+  initiativeMod
+}) => {
+  const totInit: number = initiativeDex + initiativeMod;
+  const init: string =
+    SignAndCount([initiativeDex, initiativeMod]).sign +
+    (initiativeDex + initiativeMod);
+
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
-      <p style={{ textAlign: "center"}}>
-        dex: <D12Popup text={init} value={BonusAbilities(abilitys, "DEX")} />{" "}
-        bonus: {initiative}
-      </p>
+      <div style={{ display: "flex" }}>
+        <div className="rpgui-container-framed-grey">
+          <p style={{ flex: 1 }}>
+            <D12Popup textOrWeapon="tot:" value={totInit} modifiers={[]} /> {init}
+          </p>
+        </div>
+        {initiativeDex !== 0 ? (
+          <>
+            <div className="rpgui-container-framed-grey">
+              <p style={{ flex: 1 }}>
+                dex: {SignAndCount([initiativeDex]).sign}
+                {initiativeDex}
+              </p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+        {initiativeMod !== 0 ? (
+          <>
+            <div className="rpgui-container-framed-grey">
+              <p style={{ flex: 1 }}>
+                bns: {SignAndCount([initiativeMod]).sign}
+                {initiativeMod}
+              </p>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
+      </div>
     </>
   );
 };

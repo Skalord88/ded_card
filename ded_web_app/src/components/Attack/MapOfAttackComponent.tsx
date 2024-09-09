@@ -19,6 +19,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"I.1"}
               textOrWeapon={char.attacks.firstAttackSetOne}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}
@@ -29,6 +30,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"I.2"}
               textOrWeapon={char.attacks.secondAttackSetOne}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}
@@ -39,6 +41,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"I.11"}
               textOrWeapon={char.attacks.additionalAttackSetOne}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}
@@ -52,6 +55,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"II.1"}
               textOrWeapon={char.attacks.firstAttackSetTwo}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}
@@ -62,6 +66,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"II.2"}
               textOrWeapon={char.attacks.secondAttackSetTwo}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}
@@ -72,6 +77,7 @@ export const MapOfAttackComponent: React.FC<CharProps> = ({ char }) => {
               key={"II.11"}
               textOrWeapon={char.attacks.additionalAttackSetTwo}
               value={bab}
+              modifiers={[]}
             />{" "}
             {SignAndCount([bab]).sign}
             {bab}

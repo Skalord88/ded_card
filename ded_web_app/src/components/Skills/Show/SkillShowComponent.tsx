@@ -1,8 +1,19 @@
-import { CharProps } from "../../CharacterData";
+import { Abilitys } from "../../Abilitys/Interface";
+import { CharacterPc } from "../../interfaces";
+import { FindInMoreLengthModifier } from "../../Modifiers/Function";
+import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { SkillProps } from "../interface/SkillsInterface";
 import { SkillShowSkillsTableComponent } from "./SkillShowSkillsTableComponent";
 
-export const SkillShowComponent: React.FC<CharProps> = ({ char }) => {
+export type SkillShowComponentProps = {
+  char: CharacterPc,
+  abilitys: Abilitys,
+  modifications: Modifiers[]
+}
+
+export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({ char, abilitys, modifications }) => {
+  const listOneModSkills: Modifiers[] = FindInMoreLengthModifier(modifications, 'SKILL')
+
   return (
     <>
       <div
@@ -40,8 +51,8 @@ export const SkillShowComponent: React.FC<CharProps> = ({ char }) => {
                     skill={skill}
                     indexStudy={null}
                     study={null}
-                    abilitys={char.abilitys}
-                    size={0}
+                    abilitys={abilitys}
+                    modifiers={listOneModSkills}
                   />
                 </>
               );

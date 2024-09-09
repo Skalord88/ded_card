@@ -15,23 +15,26 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,            
             &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [4]          
+            &quot;targets&quot; : [&quot;CLIMB&quot;]          
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,            
             &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [16]            
+            &quot;targets&quot; : [&quot;JUMP&quot;]            
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,            
             &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [19]            
+            &quot;targets&quot; : [&quot;MOVE_SILENTLY&quot;]            
             },{            
             &quot;modifier&quot; : &quot;SAVING&quot;,            
             &quot;bonus&quot; : 1,            
             &quot;targets&quot; : []            
             },{            
-            &quot;modifier&quot; : &quot;MORALE_MODIFIER&quot;,            
+            &quot;modifier&quot; : &quot;SAVING&quot;,            
             &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;FEAR&quot;]            
+            &quot;targets&quot; : [
+                &quot;MORALE_MODIFIER&quot;,
+                &quot;FEAR&quot;
+                ]            
             },{            
             &quot;modifier&quot; : &quot;BAB&quot;,            
             &quot;bonus&quot; : 1,            

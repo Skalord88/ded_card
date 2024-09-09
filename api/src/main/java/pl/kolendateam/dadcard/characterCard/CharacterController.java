@@ -27,7 +27,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
-import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;

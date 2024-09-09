@@ -34,7 +34,6 @@ export function CountHitPoints(
     if (hD.first) {
       hitPoints += hD.dice;
       hitPoints += (hD.lv - 1) * hD.dice / 2;
-      console.log(hitPoints)
     } else {
       hitPoints += hD.dice * hD.lv / 2;
     }
@@ -44,7 +43,6 @@ export function CountHitPoints(
   let totLv: number = listHitDices.reduce((total, hD) => (total += hD.lv), 0);
   const dispairBonusHits: number = Math.floor((totLv - 1) / 2);
   const constitutionBonusHits: number = constitutionBonus * totLv;
-  console.log(totLv, dispairBonusHits, constitutionBonusHits)
 
   return hitPoints + dispairBonusHits + constitutionBonusHits;
 }

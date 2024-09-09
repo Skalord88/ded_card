@@ -1,5 +1,5 @@
+import { OneSkillModBonusNumber } from "../Modifiers/Skills/Function";
 import { ClassSkillSkillsTableComponent } from "./ClassSkillSkillsTableComponent";
-import { IsHide } from "./functions/Functions";
 import { OneSkillProps, Study } from "./interface/SkillsInterface";
 import { SkillAbiSkillsTableComponent } from "./SkillAbiSkillsTableComponent";
 import { SkillBnsSkillsTableComponent } from "./SkillBnsSkillsTableComponent";
@@ -17,7 +17,6 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
   spentSkillPnts,
   maxToSpentPoints,
   abilitys,
-  size,
   updateRank
 }) => {
   return (
@@ -29,7 +28,7 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
               <>
                 {skill.fieldOfStudy.length > 0 ? (
                   <>
-                    <ClassSkillSkillsTableComponent skill={skill} abilitys={0} size={0} />
+                    <ClassSkillSkillsTableComponent skill={skill} abilitys={0} bonus={0} />
                     <div className="rpgui-container-framed-grey-mini">
                       {skill.nameSkill}
                     </div>
@@ -54,7 +53,6 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                             spentSkillPnts={spentSkillPnts}
                             maxToSpentPoints={maxToSpentPoints}
                             abilitys={0}
-                            size={0}
                             updateRank={updateRank}
                           />
                           <StudyRnkSkillsTableComponent
@@ -67,7 +65,6 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                             spentSkillPnts={spentSkillPnts}
                             maxToSpentPoints={maxToSpentPoints}
                             abilitys={0}
-                            size={0}
                             updateRank={updateRank}
                           />
                           <StudyAbiSkillsTableComponent
@@ -94,7 +91,7 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                       key={indexSkill + " cs"}
                       skill={skill}
                       abilitys={0}
-                      size={0}
+                      bonus={0}
                     />
                     <div className="rpgui-container-framed-grey-mini">
                       {skill.nameSkill}
@@ -109,7 +106,6 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                       maxToSpentPoints={maxToSpentPoints}
                       spentSkillPnts={spentSkillPnts}
                       abilitys={abilitys}
-                      size={ IsHide(skill.nameSkill)? size : 0 }
                       updateRank={updateRank}
                     />
                     <SkillRnkSkillsTableComponent
@@ -122,20 +118,19 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                       maxToSpentPoints={maxToSpentPoints}
                       spentSkillPnts={spentSkillPnts}
                       abilitys={0}
-                      size={0}
                       updateRank={updateRank}
                     />
                     <SkillAbiSkillsTableComponent
                       key={indexSkill + " Abi"}
                       skill={skill}
                       abilitys={abilitys}
-                      size={0}
+                      bonus={0}
                     />
                     <SkillBnsSkillsTableComponent
                       key={indexSkill + " Bns"}
                       skill={skill}
                       abilitys={0}
-                      size={ IsHide(skill.nameSkill)? size : 0 }
+                      bonus={0}
                     />
                   </>
                 )}

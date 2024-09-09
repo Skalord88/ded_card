@@ -1,8 +1,13 @@
+import { Abilitys } from "./Abilitys/Interface";
 import { CharProps } from "./CharacterData";
 import { BonusAbilities, SignAndCount } from "./functions";
+import { CharacterPc } from "./interfaces";
 import { CountHitDicesFromClassPc, CountHitPoints } from "./Vita/Functions";
-
-export const HpComponent: React.FC<CharProps> = ({ char }) => {
+export type HpComponentProps = {
+  char: CharacterPc,
+  abilitys: Abilitys
+}
+export const HpComponent: React.FC<HpComponentProps> = ({ char, abilitys }) => {
   const listHitDices = CountHitDicesFromClassPc(char.classPcList);
   return (
     <>
@@ -20,8 +25,8 @@ export const HpComponent: React.FC<CharProps> = ({ char }) => {
       </div>
       <div>
         <p>
-          Hit Points: {char.abilitys.constitution} / Life:{" "}
-          {CountHitPoints(BonusAbilities(char.abilitys, 'COS'), listHitDices)}
+          Hit Points: {abilitys.constitution} / Life:{" "}
+          {CountHitPoints(BonusAbilities(abilitys, 'COS'), listHitDices)}
         </p>
       </div>
     </>

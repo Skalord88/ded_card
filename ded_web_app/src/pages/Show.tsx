@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AbilitysComponent } from "../components/AbilitysComponent";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import {
   BaseAttack,
   CharacterData,
@@ -20,47 +19,38 @@ import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { characterEmpty } from "../components/variables";
-import { AbilitysAndModifiers } from "../components/Abilitys/Functions";
+import { AbilitysAndModifiers, BonusAbilities } from "../components/Abilitys/Functions";
+import { CheckInAllModifications, FindInOneLengthModifier } from "../components/Modifiers/Function";
+import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { Abilitys } from "../components/Abilitys/Interface";
-import { InitiativeAndModifiers } from "../components/Modifiers/Initiative.tsx/Function";
+import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>(characterEmpty);
-  const abilitys: Abilitys = AbilitysAndModifiers(char)
-  const initiative: number = InitiativeAndModifiers(char)
+  const modifications: Modifiers[] = CheckInAllModifications(char)
+  const abilitys: Abilitys = AbilitysAndModifiers(char, modifications)
+  const initiativeDex: number = BonusAbilities(abilitys, 'DEX')
+  const initiativeMod: number = FindInOneLengthModifier(modifications, 'INITIATIVE')
+  const bab: number = CountBabFromClassPc(char) + FindInOneLengthModifier(modifications, "BAB");
+  const grapple: number = bab + BonusAbilities(char.abilitys, "STR") + FindInOneLengthModifier(modifications, "GRAPPLE");
+  const strenghtAtt = bab + BonusAbilities(abilitys, 'STR')
+  const dextrityAtt = bab + BonusAbilities(abilitys, 'DEX')
+  const speed = FindInOneLengthModifier(modifications, 'SPEED')
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         setChar(resURL.data);
-        // setSkills(resURL.data.skillsList);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // useEffect(() => {
-  //   const skStudy: SkillProps[] = skills.filter(
-  //     (sk) => Object.entries(sk.fieldOfStudy).length > 0
-  //   );
-  //   const skNoStudy: SkillProps[] = skills.filter(
-  //     (sk) => ![6, 17, 21].includes(sk.idSkill)
-  //   );
-
-  //   const mapStudy: MapOfSkills = { skills: skStudy };
-  //   setSkillsStudy(mapStudy);
-
-  //   const mapNoStudy: MapOfSkills = { skills: skNoStudy };
-  //   setSkillsNoStudy(mapNoStudy);
-  // }, [skills]);
-
-  useEffect(() => {}, [char.inventory]);
+  }, [charId]);
 
   return (
     <>
@@ -115,7 +105,7 @@ export function Show() {
             gridRow: 3
           }}
         >
-          <BaseAttack char={char} abilitys={abilitys} />
+          <BaseAttack bab={bab} grapple={grapple} strenghtAtt={strenghtAtt} dextrityAtt={dextrityAtt} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -124,7 +114,7 @@ export function Show() {
             gridRow: 4
           }}
         >
-          <Initiative abilitys={abilitys} initiative={initiative} />
+          <Initiative initiativeDex={initiativeDex} initiativeMod={initiativeMod} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -133,7 +123,7 @@ export function Show() {
             gridRow: 5
           }}
         >
-          <SavingThrowComponent char={char} />
+          <SavingThrowComponent char={char} modifications={modifications} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -142,21 +132,13 @@ export function Show() {
             gridRow: 5
           }}
         >
-          <HpComponent char={char} />
+          <HpComponent char={char} abilitys={abilitys} />
         </div>
+        
         <div
           className="rpgui-container-framed-grey"
           style={{
-            gridColumn: 3,
-            gridRow: 6
-          }}
-        >
-          <SpeedComponent char={char} />
-        </div>
-        <div
-          className="rpgui-container-framed-grey"
-          style={{
-            gridColumn: "1 / span 2",
+            gridColumn: "1 / span 3",
             gridRow: 6
           }}
         >
@@ -181,9 +163,18 @@ export function Show() {
           }}
         >
           <p>
-            <SkillShowComponent key={"skillsTable"} char={char} />
+            <SkillShowComponent key={"skillsTable"} char={char} abilitys={abilitys} modifications={modifications} />
           </p>
-        </div> 
+        </div>
+        <div
+          className="rpgui-container-framed-grey"
+          style={{
+            gridColumn: 3,
+            gridRow: 8
+          }}
+        >
+          <SpeedComponent speed={speed} />
+        </div>
       </div>
     </>
   );

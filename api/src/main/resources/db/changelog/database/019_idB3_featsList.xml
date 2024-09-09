@@ -15,11 +15,11 @@
             {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [16]
+            &quot;targets&quot; : [&quot;JUMP&quot;]
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [31]
+            &quot;targets&quot; : [&quot;TUMBLE&quot;]
             }
       ]" />
     </insert>
@@ -34,11 +34,11 @@
             {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [2]
+            &quot;targets&quot; : [&quot;BALANCE&quot;]
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [10]
+            &quot;targets&quot; : [&quot;ESCAPE_ARTIST&quot;]
             }
       ]" />
     </insert>
@@ -53,11 +53,11 @@
             {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [18]
+            &quot;targets&quot; : [&quot;LISTEN&quot;]
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [28]
+            &quot;targets&quot; : [&quot;SPOT&quot;]
             }
       ]" />
     </insert>
@@ -72,11 +72,11 @@
             {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [12]
+            &quot;targets&quot; : [&quot;HANDLE_ANIMAL&quot;]
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [22]
+            &quot;targets&quot; : [&quot;RIDE&quot;]
             }
       ]" />
     </insert>
@@ -117,12 +117,12 @@
       {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [4]
+            &quot;targets&quot; : [&quot;CLIMB&quot;]
             },
             {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [30]
+            &quot;targets&quot; : [&quot;SWIM&quot;]
             }
       ]" />
     </insert>
@@ -626,7 +626,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
       {
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [29]
+            &quot;targets&quot; : [&quot;SURVIVAL&quot;]
             },{
             &quot;modifier&quot; : &quot;STUDY&quot;,
             &quot;bonus&quot; : 2,

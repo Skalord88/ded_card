@@ -9,7 +9,3 @@ export function SkillPointsFromClass(classList: ClassPc[]): number {
         ,0
     )
 }
-
-export function IsHide(skill: string): boolean {
-    return skill === 'hide' || skill === 'HIDE'|| skill === 'Hide'? true : false
-}

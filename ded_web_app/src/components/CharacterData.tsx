@@ -121,24 +121,14 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
   );
 };
 
-export const BaseAttack: React.FC<ModifiedCharProps> = ({ char, abilitys }) => {
+export type BaseAttackProp = {
+  bab: number,
+  grapple: number
+  strenghtAtt: number
+  dextrityAtt: number
+}
 
-  const bab =
-    CountBabFromClassPc(char) +
-    FindBabModifiers(CheckInAllModifications(char, "bab"))[0];
-
-  const grapple =
-    bab +
-    BonusAbilities(char.abilitys, "STR") +
-    FindModifiersGrapple(CheckInAllModifications(char, "grapple"))[0];
-
-  const strenghtAtt =
-    bab +
-    BonusAbilities(abilitys, 'STR')
-    
-  const dextrityAtt =
-    bab +
-    BonusAbilities(abilitys, "DEX")
+export const BaseAttack: React.FC<BaseAttackProp> = ({ bab, grapple, strenghtAtt, dextrityAtt }) => {
 
   return (
     <>
@@ -148,7 +138,7 @@ export const BaseAttack: React.FC<ModifiedCharProps> = ({ char, abilitys }) => {
         {SignAndCount([bab]).number}
       </p>
       <p>
-        <D20Popup textOrWeapon={"grapple: "} value={grapple} />
+        <D20Popup textOrWeapon={"grapple: "} value={grapple} modifiers={[]} />
         {SignAndCount([grapple]).sign}
         {SignAndCount([grapple]).number}
       </p>

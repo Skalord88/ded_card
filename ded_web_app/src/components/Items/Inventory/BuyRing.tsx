@@ -11,7 +11,6 @@ export const BuyRings: React.FC<Rings> = ({
   }) => {
     const position: number = Number(type.charAt(6))
     const selectItem = (i: Item, type: string) => {
-      console.log(type)
       buyItem(i, type);
     };
     const deselect = (option: WonderousItem | Item) => {

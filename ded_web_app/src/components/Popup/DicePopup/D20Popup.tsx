@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
 import { Hit } from "../../Dice/Hit";
-import { Weapon } from "../../interfaces";
 import { Damage } from "../../Dice/Damage";
+import { FormattingText } from "../../Formatting/Function";
+import { DicePopupProps } from "./Interface";
 
-export interface DicePopupProps {
-  textOrWeapon: string | Weapon;
-  value: number;
-}
-
-export const D20Popup: React.FC<DicePopupProps> = ({ textOrWeapon, value }) => {
+export const D20Popup: React.FC<DicePopupProps> = ({
+  textOrWeapon,
+  value,
+  modifiers
+}) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -35,14 +35,24 @@ export const D20Popup: React.FC<DicePopupProps> = ({ textOrWeapon, value }) => {
           <>{textOrWeapon.name}</>
         )}
         <span
-          style={{ width: 200, textAlign: "center" }}
+          style={{ width: 300, textAlign: "center" }}
           className={`popuptext rpgui-container-framed ${
             showPopup ? "show" : ""
           }`}
         >
           {typeof textOrWeapon === "string" ? (
             <>
-              {dice} + {value} = {dice + value}
+              <p>
+                {dice} + {value} = {dice + value}
+              </p>
+              {modifiers.map((mod) => {
+                return (
+                  <p style={{ color: "yellow" }}>
+                    {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
+                    {mod.targets[1]? " vs " + FormattingText(mod.targets[1]) : ""}
+                  </p>
+                );
+              })}
             </>
           ) : (
             <Hit weapon={textOrWeapon} dice={dice} value={value} />

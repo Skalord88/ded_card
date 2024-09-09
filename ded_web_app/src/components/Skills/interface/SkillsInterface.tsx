@@ -1,4 +1,5 @@
 import { Abilitys } from "../../Abilitys/Interface";
+import { Modifiers } from "../../Modifiers/ModifierInterface";
 
 export type SkillDTO = {
   idSkill: number;
@@ -33,7 +34,7 @@ export type SkillProps = {
 export type OneSkill = {
   skill: SkillProps
   abilitys: number
-  size: number
+  bonus: number
 }
 
 export type OneSkillProps = {
@@ -45,7 +46,6 @@ export type OneSkillProps = {
   spentSkillPnts: number
   maxToSpentPoints: number
   abilitys: number
-  size: number
   updateRank: (indexSkill: number, indexStudy: number | null, newRank: number) => void;
 }
 
@@ -55,7 +55,7 @@ export type ShowTableSkillProps = {
   indexStudy: number | null
   study: Study | null
   abilitys: Abilitys | null
-  size: number
+  modifiers: Modifiers[]
 }
 
 export type ShowOneSkillProps = {
@@ -64,7 +64,8 @@ export type ShowOneSkillProps = {
   indexStudy: number | null
   study: Study | null
   abilitys: number
-  size: number
+  bonus: number
+  modifiers: Modifiers[]
 }
 
 export type Study = {

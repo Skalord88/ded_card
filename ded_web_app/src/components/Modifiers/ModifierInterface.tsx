@@ -10,4 +10,5 @@ export type Modifiers = {
 export type ModifiedCharProps = {
     char: CharacterPc,
     abilitys: Abilitys
+    bab: number
   }

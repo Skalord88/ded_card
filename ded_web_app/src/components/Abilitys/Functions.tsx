@@ -1,13 +1,8 @@
 import { CharacterPc } from "../interfaces";
 import {
-  FindCharismaModification,
-  FindConstitutionModification,
-  FindDextrityModification,
-  FindIntelligenceModification,
-  FindStrenghtModification,
-  FindWisdomModification
 } from "../Modifiers/Ability/Function";
-import { CheckInAllModifications } from "../Modifiers/Function";
+import { FindInOneLengthModifier } from "../Modifiers/Function";
+import { Modifiers } from "../Modifiers/ModifierInterface";
 import { Abilitys } from "./Interface";
 
 export function AbilityAbbreviation(ability: string): string {
@@ -48,25 +43,25 @@ export function BonusAbilities(ab: Abilitys, which: string) {
   }
 }
 
-export function AbilitysAndModifiers(char: CharacterPc): Abilitys {
+export function AbilitysAndModifiers(char: CharacterPc, modifications: Modifiers[]): Abilitys {
   return {
     strength:
       char.abilitys.strength +
-      FindStrenghtModification(CheckInAllModifications(char, "ability"))[0],
+      FindInOneLengthModifier(modifications, "STRENGHT"),
     dextrity:
       char.abilitys.dextrity +
-      FindDextrityModification(CheckInAllModifications(char, "ability"))[0],
-    constitution: (char.abilitys.constitution += FindConstitutionModification(
-      CheckInAllModifications(char, "ability")
-    )[0]),
-    intelligence: (char.abilitys.intelligence += FindIntelligenceModification(
-      CheckInAllModifications(char, "ability")
-    )[0]),
-    wisdom: (char.abilitys.wisdom += FindWisdomModification(
-      CheckInAllModifications(char, "ability")
-    )[0]),
-    charisma: (char.abilitys.charisma += FindCharismaModification(
-      CheckInAllModifications(char, "ability")
-    )[0])
+      FindInOneLengthModifier(modifications, "DEXTERITY"),
+    constitution: 
+      char.abilitys.constitution + 
+      FindInOneLengthModifier(modifications, "CONSTITUTION"),
+    intelligence:
+      char.abilitys.intelligence + 
+      FindInOneLengthModifier(modifications, "INTELLIGENCE"),
+    wisdom: 
+      char.abilitys.wisdom + 
+      FindInOneLengthModifier(modifications, "WISDOM"),
+    charisma: 
+      char.abilitys.charisma +
+      FindInOneLengthModifier(modifications, "CHARISMA"),
   };
 }

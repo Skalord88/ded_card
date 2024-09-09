@@ -15,7 +15,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 16,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 4,
@@ -38,7 +38,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 12,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 3,
@@ -61,7 +61,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 8,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 2,
@@ -84,7 +84,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : 1,
@@ -112,7 +112,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -1,
@@ -135,7 +135,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -8,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -2,
@@ -158,7 +158,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -12,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -3,
@@ -181,7 +181,7 @@
             },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : -16,
-            &quot;targets&quot; : [14]
+            &quot;targets&quot; : [&quot;HIDE&quot;]
             },{
             &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
             &quot;bonus&quot; : -4,

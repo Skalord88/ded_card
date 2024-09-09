@@ -7,167 +7,167 @@
          <changeSet id="102" author="oscar">
             <insert tableName="skills">
                 <column name="id" value="1"/>  
-                <column  name="name"  value="Appraise"/> <!-- wycenza--> 
+                <column  name="name"  value="APPRAISE"/> <!-- wycenza--> 
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="2"/>  
-                <column  name="name"  value="Balance"/>  
+                <column  name="name"  value="BALANCE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="3"/>  
-                <column  name="name"  value="Bluff"/>  
+                <column  name="name"  value="BLUFF"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="4"/>  
-                <column  name="name"  value="Climb"/>  
+                <column  name="name"  value="CLIMB"/>  
                 <column  name="ability"  value="STRENGHT"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="5"/>  
-                <column  name="name"  value="Concentration"/>  
+                <column  name="name"  value="CONCENTRATION"/>  
                 <column  name="ability"  value="CONSTITUTION"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="6"/>  
-                <column  name="name"  value="Craft"/>  
+                <column  name="name"  value="CRAFT"/>  
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="7"/>  
-                <column  name="name"  value="Diplomacy"/>  
+                <column  name="name"  value="DIPLOMACY"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="8"/>  
-                <column  name="name"  value="Disable Device"/>  
+                <column  name="name"  value="DISABLE_DEVICE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="9"/>
-                <column  name="name"  value="Disguise"/> <!-- przebieranie--> 
+                <column  name="name"  value="DISGUISE"/> <!-- przebieranie--> 
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="10"/>  
-                <column  name="name"  value="Escape Artist"/>  
+                <column  name="name"  value="ESCAPE_ARTIST"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="11"/>  
-                <column  name="name"  value="Gather Information"/>  
+                <column  name="name"  value="GATHER_INFORMATION"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="12"/>  
-                <column  name="name"  value="Handle Animal"/>  
+                <column  name="name"  value="HANDLE_ANIMAL"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="13"/>  
-                <column  name="name"  value="Heal"/>  
+                <column  name="name"  value="HEAL"/>  
                 <column  name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="14"/>  
-                <column  name="name"  value="Hide"/>  
+                <column  name="name"  value="HIDE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="15"/>  
-                <column  name="name"  value="Intimidate"/>  
+                <column  name="name"  value="INTIMIDATE"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="16"/>  
-                <column  name="name"  value="Jump"/>  
+                <column  name="name"  value="JUMP"/>  
                 <column  name="ability"  value="STRENGHT"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="17"/>  
-                <column name="name"  value="Knowledge"/>  
+                <column name="name"  value="KNOWLEDGE"/>  
                 <column name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="18"/>  
-                <column name="name"  value="Listen"/>  
+                <column name="name"  value="LISTEN"/>  
                 <column name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="19"/>  
-                <column  name="name"  value="Move Silently"/>  
+                <column  name="name"  value="MOVE_SILENTLY"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="20"/>  
-                <column  name="name"  value="Perform"/>  
+                <column  name="name"  value="PERFORM"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="21"/>  
-                <column  name="name"  value="Profession"/>  
+                <column  name="name"  value="PROFESSION"/>  
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="22"/>  
-                <column  name="name"  value="Ride"/>  
+                <column  name="name"  value="RIDE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="23"/>  
-                <column  name="name"  value="Search"/>  
+                <column  name="name"  value="SEARCH"/>  
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="24"/>  
-                <column  name="name"  value="Sense Motive"/>  
+                <column  name="name"  value="SENSE_MOTIVE"/>  
                 <column  name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="25"/>  
-                <column  name="name"  value="Sleight Of Hand"/>  
+                <column  name="name"  value="SLEIGHT_OF_HAND"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="26"/>  
-                <column  name="name"  value="Speak Language"/>  
+                <column  name="name"  value="SPEAK_LANGUAGE"/>  
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="27"/>  
-                <column  name="name"  value="Spellcraft"/>  
+                <column  name="name"  value="SPELLCRAFT"/>  
                 <column  name="ability"  value="INTELLIGENCE"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="28"/>  
-                <column  name="name"  value="Spot"/>  
+                <column  name="name"  value="SPOT"/>  
                 <column  name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="29"/>  
-                <column  name="name"  value="Survival"/>  
+                <column  name="name"  value="SURVIVAL"/>  
                 <column  name="ability"  value="WISDOM"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="30"/>  
-                <column  name="name"  value="Swim"/>  
+                <column  name="name"  value="SWIM"/>  
                 <column  name="ability"  value="STRENGHT"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="31"/>  
-                <column  name="name"  value="Tumble"/>  
+                <column  name="name"  value="TUMBLE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="32"/>  
-                <column  name="name"  value="Use Magic Device"/>  
+                <column  name="name"  value="USE_MAGIC_DEVICE"/>  
                 <column  name="ability"  value="CHARISMA"/>
             </insert>
             <insert tableName="skills">
                 <column name="id" value="33"/>  
-                <column  name="name"  value="Use Rope"/>  
+                <column  name="name"  value="USE_ROPE"/>  
                 <column  name="ability"  value="DEXTERITY"/>
             </insert>
         </changeSet>

@@ -72,7 +72,6 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
 
     const skillDTO: { skillDTO: SkillDTO[] } = { skillDTO: mapSkillsToDTO };
 
-    console.log(skillDTO);
 
     try {
       axios.post(urlSkillSet + charId, skillDTO);
@@ -135,7 +134,6 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
                     spentSkillPnts={spentSkillPnts}
                     maxToSpentPoints={maxToSpentPoints}
                     abilitys={0}
-                    size={0}
                     updateRank={updateRank}
                   />
                 </>

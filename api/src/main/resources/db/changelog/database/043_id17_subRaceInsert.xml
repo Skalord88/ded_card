@@ -7,8 +7,8 @@
             <column name="size_id" value="4" />
             <column name="modifiers" value="[
             {
-            &quot;modifier&quot; : &quot;SPEED&quot;
-            &quot;bonus&quot; : 20;
+            &quot;modifier&quot; : &quot;SPEED&quot;,
+            &quot;bonus&quot; : 20,
             &quot;targets&quot; : []
             }
             ]" />

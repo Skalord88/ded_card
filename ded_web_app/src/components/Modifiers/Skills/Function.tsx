@@ -1,22 +1,25 @@
-import { Modifiers } from "../ModifierInterface"
+import { FormattingText } from "../../Formatting/Function";
+import { Modifiers } from "../ModifierInterface";
 
-export function SkillBonusModification(modifications: Modifiers[], idSkill: number): [number, string] {
-
-    const mod = modifications.find((mod) => mod.modifier === "SKILL");
-        switch(mod?.targets.length) {
-            case 1: return CountSkillBonusInModification(mod, idSkill)
-            case 2: return CountSpecificSkillBonusInModification(mod, idSkill)
-        }
-    return [0, ""];
+export function OneSkillModBonus(
+  modifiers: Modifiers[],
+  skillName: string
+): Modifiers[] {
+  return modifiers.filter(
+    (mod) => mod.targets[0] === skillName
+  );
 }
 
-export function CountSkillBonusInModification
-(mod :Modifiers, skillId :number): [number, string] {
-    if (Number(mod.targets[0]) === skillId) return [mod.bonus, ""]
-    return [0, ""];
-}
-
-export function CountSpecificSkillBonusInModification (mod :Modifiers, skillId :number): [number, string] {
-    if (Number(mod.targets[0]) === skillId) return [mod.bonus, mod.targets[0]]
-    return [0, ""];
+export function OneSkillModBonusNumber(
+  modifiers: Modifiers[],
+  skillName: string
+): number {
+  return modifiers.reduce(
+    (total, mod) =>
+      FormattingText(mod.targets[0]) 
+      === FormattingText(skillName)
+        ? total + mod.bonus
+        : total,
+    0
+  );
 }
