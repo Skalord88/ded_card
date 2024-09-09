@@ -41,7 +41,7 @@ export const SkillShowComponent: React.FC<CharProps> = ({ char }) => {
                     indexStudy={null}
                     study={null}
                     abilitys={char.abilitys}
-                    size={char.race.size.hide}
+                    size={0}
                   />
                 </>
               );

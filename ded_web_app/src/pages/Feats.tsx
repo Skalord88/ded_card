@@ -8,7 +8,6 @@ import { serverFeat } from "../components/Feats/Interface/FeatInterface";
 import { ServerFeatsToDelete } from "../components/Feats/ServerFeatsToDelete";
 import { CharacterPc, FeatsId } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
-import { addToDrop } from "../components/functions";
 
 export function Feats() {
   const { charId } = useParams();
@@ -35,47 +34,47 @@ export function Feats() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    let listChar = char?.featsList.map((feat) => feat.characterFeatName);
-    char?.levelFeatsList.forEach((feat) =>
-      listChar?.push(feat.characterFeatName)
-    );
+  // useEffect(() => {
+    // let listChar = char?.featsList.map((feat) => feat.characterFeatName);
+    // char?.levelFeatsList.forEach((feat) =>
+    //   listChar?.push(feat.characterFeatName)
+    // );
 
-    let generalNotChar: serverFeat[] = featsList.filter(
-      (feat) =>
-        !listChar?.includes(feat.featName) && "GENERAL".includes(feat.featsType)
-    );
+    // let generalNotChar: serverFeat[] = featsList.filter(
+    //   (feat) =>
+    //     !listChar?.includes(feat.featName) && "GENERAL".includes(feat.featsType)
+    // );
 
-    let prerequisite: serverFeat[] = generalNotChar.filter((feat) => {
-      if (feat.prerequisite === null || feat.prerequisite.feats === null) {
-        return feat;
-      }
-    });
+    // let prerequisite: serverFeat[] = generalNotChar.filter((feat) => {
+    //   if (feat.prerequisite === null || feat.prerequisite.feats === null) {
+    //     return feat;
+    //   }
+    // });
 
-    generalNotChar.forEach((feat) => {
-      if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
-        let check = 0;
-        feat.prerequisite.feats.forEach((prerFeat) => {
-          listChar?.forEach((charFeat) => {
-            charFeat === prerFeat ? check++ : (check += 0);
+    // generalNotChar.forEach((feat) => {
+    //   if (feat.prerequisite !== null && feat.prerequisite.feats !== null) {
+    //     let check = 0;
+    //     feat.prerequisite.feats.forEach((prerFeat) => {
+    //       listChar?.forEach((charFeat) => {
+    //         charFeat === prerFeat ? check++ : (check += 0);
 
-            if (check === feat.prerequisite?.feats.length) {
-              prerequisite.push(feat);
-            }
-          });
-        });
-      }
-      return false;
-    });
+    //         if (check === feat.prerequisite?.feats.length) {
+    //           prerequisite.push(feat);
+    //         }
+    //       });
+    //     });
+    //   }
+    //   return false;
+    // });
 
-    setFeatsGeneral(prerequisite);
-  }, [
-    featsList,
-    levelFeatsList,
-    featsToAdd,
-    char?.featsList,
-    char?.levelFeatsList
-  ]);
+  //   setFeatsGeneral(prerequisite);
+  // }, [
+  //   featsList,
+  //   levelFeatsList,
+  //   featsToAdd,
+  //   char?.featsList,
+    // char?.levelFeatsList
+  // ]);
 
   useEffect(() => {
     if (char?.effectiveCharacterLv) {
@@ -84,21 +83,21 @@ export function Feats() {
     }
   }, [char]);
 
-  useEffect(() => {
-    let featsInLevel: serverFeat[] = [];
-    if (char?.levelFeatsList) {
-      char.levelFeatsList.forEach((feat) => {
-        featsList.forEach((featFromList) => {
-          if (feat.characterFeatName === featFromList.featName) {
-            featsInLevel.push(featFromList);
-          }
-        });
-      });
+  // useEffect(() => {
+  //   let featsInLevel: serverFeat[] = [];
+  //   if (char?.levelFeatsList) {
+  //     char.levelFeatsList.forEach((feat) => {
+  //       featsList.forEach((featFromList) => {
+  //         if (feat.characterFeatName === featFromList.featName) {
+  //           featsInLevel.push(featFromList);
+  //         }
+  //       });
+  //     });
 
-      setLevelFeatsList(featsInLevel);
-      setLvFeats(featsInLevel.length);
-    }
-  }, [char, featsList]);
+  //     setLevelFeatsList(featsInLevel);
+  //     setLvFeats(featsInLevel.length);
+  //   }
+  // }, [char, featsList]);
 
   const handleAdd = (e: serverFeat) => {
     if (featsToAdd.length <= elcFeats && !featsToAdd.includes(e)) {
@@ -201,7 +200,7 @@ export function Feats() {
           title="Level Feats"
           deleteFeat={handleDeleteFeat}
         />
-        <ServerFeatsList feats={char?.featsList} title="Class Feats" selectFeat={()=> undefined}/>
+        {/* <ServerFeatsList feats={char?.featsList} title="Class Feats" selectFeat={()=> undefined}/> */}
       </div>
     </>
   );

@@ -3,19 +3,16 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import {
-  CharacterPc,
   ChosenRace,
-  races,
-  subRaces
+  // races,
 } from "../components/interfaces";
-import { urlChar, urlRaceList } from "../components/url";
-import { ListOfSomething } from "../components/List/List";
+import { urlRaceList } from "../components/url";
 import { itemInDrop } from "../components/functions";
 
 export const Races = () => {
   const { charId } = useParams();
 
-  const [races, setRaces] = useState<races[]>();
+  // const [races, setRaces] = useState<races[]>();
   const [selectedRace, setSelected] = useState<String>("");
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
     id: 0,
@@ -27,7 +24,7 @@ export const Races = () => {
     const fetchData = async () => {
       try {
         const resRaceList = await axios.get(urlRaceList);
-        setRaces(resRaceList.data);
+        // setRaces(resRaceList.data);
       } catch (error) {
         console.error(error);
       }
@@ -60,7 +57,7 @@ export const Races = () => {
       ) : (
         <p>...choose race</p>
       )}
-      {races?.map(race => {
+      {/* {races?.map(race => {
         return(
           <>
             <ListOfSomething
@@ -70,7 +67,7 @@ export const Races = () => {
             />
           </>
         )
-      })}
+      })} */}
   </>
   )
   

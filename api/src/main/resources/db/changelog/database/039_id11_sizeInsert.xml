@@ -26,10 +26,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -16}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: 16}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : 4}" />
-            <column name="bab" value="4" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="2" />
@@ -53,10 +49,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -12}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: 12}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : 3}" />
-            <column name="bab" value="3" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="3" />
@@ -80,10 +72,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -8}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: 8}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : 2}" />
-            <column name="bab" value="2" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="4" />
@@ -107,19 +95,11 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : -4}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: 4}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : 1}" />
-            <column name="bab" value="1" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="5" />
             <column name="size" value="MEDIUM" />
             <column name="modifiers" value="[]" />
-            <!-- <column name="special_attacks" value="{}" />
-            <column name="skill" value="{}" />
-            <column name="armor_bonus" value="{}" />
-            <column name="bab" value="0" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="6" />
@@ -143,10 +123,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 4}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: -4}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : -1}" />
-            <column name="bab" value="1" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="7" />
@@ -170,10 +146,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 8}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: -8}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : -2}" />
-            <column name="bab" value="2" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="8" />
@@ -197,10 +169,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 12}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: -12}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : -3}" />
-            <column name="bab" value="3" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="9" />
@@ -224,10 +192,6 @@
             &quot;targets&quot; : []
             }
             ]" />
-            <!-- <column name="special_attacks" value="{&quot;grapple&quot; : 16}" />
-            <column name="skill" value="{&quot;idSkill&quot;: 14, &quot;skillBonus&quot;: -16}" />
-            <column name="armor_bonus" value="{&quot;sizeBonus&quot; : -4}" />
-            <column name="bab" value="3" /> -->
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -16,7 +16,7 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
   const maxSkillsPoints: number = CountLevelFromClass(char.classPcList) + 3
   const maxToSpentPoints: number = SkillPointsFromClass(char.classPcList)
-  const hideBonus: number = char.race.size.hide
+  // const hideBonus: number = char.race.size
 
   const updateRank = (
     indexSkill: number,
@@ -135,7 +135,7 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
                     spentSkillPnts={spentSkillPnts}
                     maxToSpentPoints={maxToSpentPoints}
                     abilitys={0}
-                    size={hideBonus}
+                    size={0}
                     updateRank={updateRank}
                   />
                 </>

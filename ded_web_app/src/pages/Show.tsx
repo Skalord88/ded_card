@@ -20,11 +20,16 @@ import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { characterEmpty } from "../components/variables";
+import { AbilitysAndModifiers } from "../components/Abilitys/Functions";
+import { Abilitys } from "../components/Abilitys/Interface";
+import { InitiativeAndModifiers } from "../components/Modifiers/Initiative.tsx/Function";
 
 export function Show() {
   let { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>(characterEmpty);
+  const abilitys: Abilitys = AbilitysAndModifiers(char)
+  const initiative: number = InitiativeAndModifiers(char)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -92,7 +97,7 @@ export function Show() {
             gridRow: "2 / span 3"
           }}
         >
-          <AbilitysComponent abilitys={char.abilitys} />
+          <AbilitysComponent abilitys={abilitys} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -110,7 +115,7 @@ export function Show() {
             gridRow: 3
           }}
         >
-          <BaseAttack char={char} />
+          <BaseAttack char={char} abilitys={abilitys} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -119,7 +124,7 @@ export function Show() {
             gridRow: 4
           }}
         >
-          <Initiative char={char} />
+          <Initiative abilitys={abilitys} initiative={initiative} />
         </div>
         <div
           className="rpgui-container-framed-grey"
@@ -156,8 +161,7 @@ export function Show() {
           }}
         >
           <CharacterArmor
-            charArmor={char.armorClass}
-            charInventory={char.inventory}
+            char={char}
           />
         </div>
         <div
@@ -167,7 +171,7 @@ export function Show() {
             gridRow: 7
           }}
         >
-          <MapOfAttackComponent char={char} />
+          {/* <MapOfAttackComponent char={char} /> */}
         </div>
         <div
           className="rpgui-container-framed-grey"

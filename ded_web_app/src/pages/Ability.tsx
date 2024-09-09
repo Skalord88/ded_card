@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { Abilitys } from "../components/interfaces";
 import { urlAb } from "../components/url";
 import { abilitysEmpty } from "../components/variables";
 import {
   BonusAbilities,
   SignNumber
 } from "../components/functions";
+import { Abilitys } from "../components/Abilitys/Interface";
 
 export function Ability() {
   const { charId } = useParams();

@@ -1,7 +1,8 @@
 import { BonusAbilities } from "./Abilitys/Functions";
+import { Abilitys } from "./Abilitys/Interface";
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Abilitys, Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
+import { Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
 
 export function SignNumber(
     number: number
@@ -14,7 +15,7 @@ export function SignAndCount(
     numbers: number[]
 ): SignAndNumber {
 
-    let num: number = numbers.reduce(
+    const num: number = numbers.reduce(
         (total, n) => total + n,
         0
     )

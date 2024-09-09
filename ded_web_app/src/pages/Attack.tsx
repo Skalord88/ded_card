@@ -98,10 +98,9 @@ export function Attack() {
               }}
               >V: {char?.inventory.weaponFive.name}</div>
               </div>
-                <CharacterArmor
-                  charArmor={char.armorClass}
-                  charInventory={char.inventory}
-                />
+                {/* <CharacterArmor
+                  char
+                /> */}
               </>
               :
               <>...loading character...</>  

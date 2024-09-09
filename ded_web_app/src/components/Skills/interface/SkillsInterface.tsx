@@ -1,4 +1,4 @@
-import { Abilitys } from "../../interfaces";
+import { Abilitys } from "../../Abilitys/Interface";
 
 export type SkillDTO = {
   idSkill: number;

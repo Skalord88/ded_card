@@ -35,7 +35,11 @@
             },{            
             &quot;modifier&quot; : &quot;BAB&quot;,            
             &quot;bonus&quot; : 1,            
-            &quot;targets&quot; : [&quot;THROW&quot;,&quot;SLING&quot;]            
+            &quot;targets&quot; : [&quot;THROW&quot;]            
+            },{            
+            &quot;modifier&quot; : &quot;BAB&quot;,            
+            &quot;bonus&quot; : 1,            
+            &quot;targets&quot; : [&quot;SLING&quot;]            
             }
             ]" />
             <column name="avatar_url" value="address value" />

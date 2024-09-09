@@ -1,20 +1,17 @@
-import { CharacterPc } from "../../interfaces";
-import { Size } from "../../Size/Interfaces";
 import { Modifiers } from "../ModifierInterface";
 
-export function CountBab(char: CharacterPc): number{
-    let bab: number = CountSizeBab(char.race.size);
-
-    return bab;
+export function BabBonusModification(modifiers: Modifiers[]): [number, string] {
+  const mod = modifiers.find((mod) => mod.modifier === "BAB");
+    return mod ? [mod.bonus, ''] : [0, ''];
+}
+export function FindBabModifiers(modifiers: [number, string][]
+): [number, string] {
+  const mod = modifiers.find((mod) => mod[1] === "BAB");
+  return mod ? [mod[0], ""] : [0, ""];
 }
 
-export function CountModifiersBab(modifiers: Modifiers[]): number{
-    const bab = modifiers.reduce((total, modifier) => {
-        return modifier.modifier === 'BAB' ? total + modifier.bonus : total;
-    }, 0);
-    return bab;
-}
-
-export function CountSizeBab(size: Size): number{
-    return CountModifiersBab(size.modifiers)
+export function CountSpecificBabBonusInModification(
+  mod: Modifiers
+): [number, string] {
+  return [mod.bonus, mod.targets[0]];
 }

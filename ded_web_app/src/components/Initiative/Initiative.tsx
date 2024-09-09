@@ -1,14 +1,22 @@
-import { CharProps } from "../CharacterData";
+import { Abilitys } from "../Abilitys/Interface";
 import { BonusAbilities, SignAndCount } from "../functions";
 import { D12Popup } from "../Popup/DicePopup/D12Popup";
 
-export const Initiative: React.FC<CharProps> = ({ char }) => {
-  const init: string = SignAndCount([BonusAbilities(char.abilitys, "DEX")]).sign + BonusAbilities(char.abilitys, "DEX")
+export type InitiativeProps = {
+  abilitys: Abilitys,
+  initiative: number
+}
+
+export const Initiative: React.FC<InitiativeProps> = ({ abilitys, initiative }) => {
+  const init: string = 
+    SignAndCount([BonusAbilities(abilitys, "DEX")]).sign +
+    (BonusAbilities(abilitys, "DEX") + initiative)
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
       <p style={{ textAlign: "center"}}>
-        <D12Popup text={init} value={BonusAbilities(char.abilitys, "DEX")} />{" "}
+        dex: <D12Popup text={init} value={BonusAbilities(abilitys, "DEX")} />{" "}
+        bonus: {initiative}
       </p>
     </>
   );

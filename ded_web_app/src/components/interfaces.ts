@@ -1,5 +1,6 @@
-import { ClassFeats, Feat, feat } from "./Feats/Interface/FeatInterface";
-import { Race, SubRace } from "./Race/Interfaces";
+import { Abilitys } from "./Abilitys/Interface";
+import { Feat } from "./Feats/Interface/FeatInterface";
+import { SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
@@ -125,15 +126,6 @@ export interface savingThrows {
   will: number;
 }
 
-export type Abilitys = {
-  strength: number;
-  dextrity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
-}
-
 export type AbilitysFromChar = {
   abilitys: Abilitys
 }
@@ -147,11 +139,11 @@ export type ChosenRace = {
   subRacesName: string
 }
 
-export interface races {
-  raceName: string;
-  avatarRaceUrl: string;
-  subRaces: subRaces[];
-}
+// export interface races {
+//   raceName: string;
+//   avatarRaceUrl: string;
+//   subRaces: subRaces[];
+// }
 
 export type subRaces = {
   id: number;
@@ -191,7 +183,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment?: Enchantment;
+  enchantment: Enchantment | null;
   material: string | null
 }
 

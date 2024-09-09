@@ -1,32 +1,28 @@
-import { CountArmor, CountInCharArmor } from "../functions";
-import { ArmorInCharacter } from "../interfaces";
+import { CharProps } from "../interfaces";
+import { ArmorList } from "./ArmorInterface";
+import { CalculateArmorInChar } from "./Function";
 
-export const CharacterArmor: React.FC<ArmorInCharacter> = ({
-    charArmor,
-    charInventory
-  }) => {
-    const tot = CountArmor(charArmor, charInventory);
-    const armor = CountInCharArmor(charArmor, charInventory);
-  
-    return (
-      <>
-        <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
-        <div style={{ display: "flex" }}>
-          <div className="rpgui-container-framed-grey">
-            <p style={{ flex: 1 }}>{tot}</p>
-            <p style={{ flex: 1 }}>AC</p>
-          </div>
-          {armor.map((ar) => {
-            return (
-              <>
-                <div key={ar.id} className="rpgui-container-framed-grey">
-                  <p style={{ flex: 1 }}>{ar.value}</p>
-                  <p style={{ flex: 1 }}>{ar.text}</p>
-                </div>
-              </>
-            );
-          })}
-        </div>
-        </>
-    );
-  };
+export const CharacterArmor: React.FC<CharProps> = ({ char }) => {
+  const listOfArmor: ArmorList = CalculateArmorInChar(char);
+
+  return (
+    <>
+      <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
+      <div style={{ display: "flex" }}>
+        {listOfArmor.map((ar) => {
+          return (
+            <>
+              <div className="rpgui-container-framed-grey">
+                <p style={{ flex: 1 }}>
+                  {ar.sign}
+                  {ar.bonus}
+                </p>
+                <p style={{ flex: 1 }}>{ar.text}</p>
+              </div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
+};

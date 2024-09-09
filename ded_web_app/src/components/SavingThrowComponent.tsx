@@ -1,35 +1,41 @@
 import { CharProps } from "./CharacterData";
 import { BonusAbilities, SignAndCount } from "./functions";
 import { savingThrows } from "./interfaces";
+import { CheckInAllModifications } from "./Modifiers/Function";
+import { FindSavingModifiers } from "./Modifiers/Saving/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { CountSavingThrowFromClassPc } from "./Saving/Functions";
 
 export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
   const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList)
+  const bonusOtherAll: number = FindSavingModifiers(CheckInAllModifications(char, 'saving'))[0]
   const saving = {
     for: SignAndCount([sT.fortitude]),
     forTot: SignAndCount([
       sT.fortitude,
-      BonusAbilities(char.abilitys, "COS")
+      BonusAbilities(char.abilitys, "COS"),
+      bonusOtherAll
     ]),
     forAb: SignAndCount([BonusAbilities(char.abilitys, "COS")]),
-    forOther: 0,
+    forOther: SignAndCount([bonusOtherAll]),
     ///
     ref: SignAndCount([sT.reflex]),
     refTot: SignAndCount([
       sT.reflex,
-      BonusAbilities(char.abilitys, "DEX")
+      BonusAbilities(char.abilitys, "DEX"),
+      bonusOtherAll
     ]),
     refAb: SignAndCount([BonusAbilities(char.abilitys, "DEX")]),
-    refOther: 0,
+    refOther: SignAndCount([bonusOtherAll]),
     ///
     will: SignAndCount([sT.will]),
     willTot: SignAndCount([
       sT.will,
-      BonusAbilities(char.abilitys, "WIS")
+      BonusAbilities(char.abilitys, "WIS"),
+      bonusOtherAll
     ]),
     willAb: SignAndCount([BonusAbilities(char.abilitys, "WIS")]),
-    willOther: 0
+    willOther: SignAndCount([bonusOtherAll])
   };
   return (
     <>
@@ -66,7 +72,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
                 {saving.forAb.sign}
                 {saving.forAb.number}
               </div>
-              <div>{saving.forOther}</div>
+              <div>{saving.forOther.sign}{saving.forOther.number}</div>
               <div></div>
 
               <D20Popup
@@ -85,7 +91,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
                 {saving.refAb.sign}
                 {saving.refAb.number}
               </div>
-              <div>{saving.refOther}</div>
+              <div>{saving.refOther.sign}{saving.refOther.number}</div>
 
               <div></div>
 
@@ -105,7 +111,7 @@ export const SavingThrowComponent: React.FC<CharProps> = ({ char }) => {
                 {saving.willAb.sign}
                 {saving.willAb.number}
               </div>
-              <div>{saving.willOther}</div>
+              <div>{saving.willOther.sign}{saving.willOther.number}</div>
               <div></div>
             </p>
           </div>

@@ -17,6 +17,7 @@ import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Entity
 @Getter
@@ -29,14 +30,8 @@ public class Armors extends Items {
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorName;
 
-  int armorClass;
-
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
-
-  int maxDex;
-  int penality;
-  int failure;
 
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
@@ -45,8 +40,12 @@ public class Armors extends Items {
   @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
   Enchantment enchantment;
 
-  public void setItemType(ItemTypeEnum itemType) {
-  }
+  int armorClass;
+  int maxDex;
+  int penality;
+  int failure;
+
+  public void setItemType(ItemTypeEnum itemType) {}
 
   public Armors(int idZero) {
     super(idZero);
@@ -69,12 +68,12 @@ public class Armors extends Items {
   }
 
   public boolean checkEqualItem(Armors arm) {
-
-    return this.getEnchantment().equals(arm.getEnchantment()) &&
-        this.getArmorType().equals(arm.getArmorType()) &&
-        this.getFailure() == arm.getFailure() &&
-        this.getPenality() == arm.getPenality() &&
-        this.getMaterial().equals(arm.getMaterial());
+    return (
+      this.getEnchantment().equals(arm.getEnchantment()) &&
+      this.getArmorType().equals(arm.getArmorType()) &&
+      this.getFailure() == arm.getFailure() &&
+      this.getPenality() == arm.getPenality() &&
+      this.getMaterial().equals(arm.getMaterial())
+    );
   }
-
 }

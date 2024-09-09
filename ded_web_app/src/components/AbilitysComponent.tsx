@@ -1,7 +1,9 @@
+import { AbilitysProps } from "./Abilitys/Interface";
 import { BonusAbilities, SignAndCount } from "./functions";
-import { AbilitysFromChar } from "./interfaces";
 
-export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
+export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
+
+
   const ab = [
     {
       id: 1,
@@ -61,16 +63,10 @@ export const AbilitysComponent: React.FC<AbilitysFromChar> = ({ abilitys }) => {
               >
                 <p>{ability.text}</p>
               </div>
-              <div
-                className="rpgui-container-framed-grey"
-                style={{ flex: 1 }}
-              >
+              <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
                 <p>{ability.value}</p>
               </div>
-              <div
-                className="rpgui-container-framed-grey"
-                style={{ flex: 1 }}
-              >
+              <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
                 <p>
                   {ability.bonusSing}
                   {ability.bonus}

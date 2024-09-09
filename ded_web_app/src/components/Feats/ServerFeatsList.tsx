@@ -11,7 +11,6 @@ export const ServerFeatsList: React.FC<ServerFeatsProns> = ({
   const [selected, setSelected] = useState<serverFeat | feat | null>();
 
   const handleDescription = (e: itemInDrop) => {
-    console.log(e);
     setSelected(e.item.item);
     selectFeat(e.item.item);
   };

@@ -17,6 +17,7 @@ services:
 
   api:
     image: api
+    restart: always
     # image: skalord88/api:latest
     depends_on:
       - db

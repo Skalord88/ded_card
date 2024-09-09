@@ -1,11 +1,16 @@
 import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
-import { DeleteButton } from "./DeleteButton";
-import { urlChar } from "./url";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { CountBabFromClassPc } from "./Attack/Bab/Functions";
-import { CountGrapple } from "./Modifiers/Grapple/Function";
+import { CheckInAllModifications } from "./Modifiers/Function";
+import { FindModifiersGrapple } from "./Modifiers/Grapple/Function";
+import { FindBabModifiers } from "./Modifiers/Bab/Function";
+import {
+} from "./Modifiers/Ability/Function";
+import { AbilitysAndModifiers } from "./Abilitys/Functions";
+import { Abilitys } from "./Abilitys/Interface";
+import { ModifiedCharProps } from "./Modifiers/ModifierInterface";
 
 export interface CharProps {
   char: CharacterPc;
@@ -56,7 +61,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
           {char.experience}
         </p>{" "}
       </div>
-      <div 
+      <div
       // style={{ display: "grid" }}
       >
         {cl.map((classe, index) => {
@@ -70,9 +75,8 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
                 // }}
                 // className="rpgui-container-framed-grey"
               >
-                {classe.className}
-                {" "}
-              {/* </p>
+                {classe.className}{" "}
+                {/* </p>
               <p
                 key={index + "." + index}
                 style={{
@@ -97,9 +101,8 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
                 // }}
                 // className="rpgui-container-framed-grey"
               >
-                {classe.className}
-                {" "}
-              {/* </p>
+                {classe.className}{" "}
+                {/* </p>
               <p
                 key={index + "." + index}
                 style={{
@@ -118,12 +121,24 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
   );
 };
 
-export const BaseAttack: React.FC<CharProps> = ({ char }) => {
-  const bab = CountBabFromClassPc(char);
+export const BaseAttack: React.FC<ModifiedCharProps> = ({ char, abilitys }) => {
+
+  const bab =
+    CountBabFromClassPc(char) +
+    FindBabModifiers(CheckInAllModifications(char, "bab"))[0];
+
   const grapple =
     bab +
-    Math.floor((char.abilitys.strength - 10) / 2) +
-    CountGrapple(char);
+    BonusAbilities(char.abilitys, "STR") +
+    FindModifiersGrapple(CheckInAllModifications(char, "grapple"))[0];
+
+  const strenghtAtt =
+    bab +
+    BonusAbilities(abilitys, 'STR')
+    
+  const dextrityAtt =
+    bab +
+    BonusAbilities(abilitys, "DEX")
 
   return (
     <>
@@ -138,12 +153,12 @@ export const BaseAttack: React.FC<CharProps> = ({ char }) => {
         {SignAndCount([grapple]).number}
       </p>
       <p>
-        STR att: {SignNumber(bab + BonusAbilities(char.abilitys, "STR"))}
-        {bab + BonusAbilities(char.abilitys, "STR")}
+        STR att: {SignNumber(strenghtAtt)}
+        {strenghtAtt}
       </p>
       <p>
-        DEX att: {SignNumber(bab + BonusAbilities(char.abilitys, "DEX"))}
-        {bab + BonusAbilities(char.abilitys, "DEX")}
+        DEX att: {SignNumber(dextrityAtt)}
+        {dextrityAtt}
       </p>
     </>
   );

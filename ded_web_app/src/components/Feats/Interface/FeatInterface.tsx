@@ -1,4 +1,5 @@
-import { Abilitys, armorClass, savingThrows } from "../../interfaces";
+import { Abilitys } from "../../Abilitys/Interface";
+import { armorClass, savingThrows } from "../../interfaces";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
 
 export type feat = {
