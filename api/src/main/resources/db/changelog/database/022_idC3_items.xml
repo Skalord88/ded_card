@@ -48,7 +48,10 @@
             <column name="description" type="varchar(1000)">
                 <constraints nullable="true"/>
             </column>
-            <column name="armor_class" type="int">
+            <!-- <column name="armor_class" type="int">
+                <constraints nullable="true"/>
+            </column> -->
+            <column name="modifiers" type="jsonb">
                 <constraints nullable="true"/>
             </column>
             <column name="armor_type" type="varchar(40)">

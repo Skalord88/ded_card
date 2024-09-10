@@ -2,6 +2,7 @@ import { AbilityAbbreviation, BonusAbilities } from "../../Abilitys/Functions";
 import {
   OneSkillModBonusNumber
 } from "../../Modifiers/Skills/Function";
+import { OneStudyModBonus, OneStudyModBonusNumber } from "../../Modifiers/Skills/Study/Function";
 import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { ClassSkillSkillsTableComponent } from "../ClassSkillSkillsTableComponent";
 import { ShowTableSkillProps, Study } from "../interface/SkillsInterface";
@@ -20,7 +21,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
   abilitys,
   modifiers
 }) => {
-  const bonus = OneSkillModBonusNumber(modifiers, skill.nameSkill)
+  const bonus = OneSkillModBonusNumber(modifiers.listSkills, skill.nameSkill)
   return (
     <>
       {skill && abilitys ? (
@@ -48,9 +49,9 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                             abilitys,
                             AbilityAbbreviation(skill.skillAbility)
                           ) +
-                          skill.skillBonus
+                          OneStudyModBonusNumber(modifiers.listSkills, study.study)
                         }
-                        modifiers={[]}
+                        modifiers={OneStudyModBonus(modifiers.listSkills, study.study)}
                       />
                     </div>
                     <ShowStudyTotSkillsTableComponent
@@ -63,8 +64,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                         abilitys,
                         AbilityAbbreviation(skill.skillAbility)
                       )}
-                      bonus={0}
-                      modifiers={[]}
+                      bonus={OneStudyModBonusNumber(modifiers.listSkills, study.study)}
                     />
                     <ShowStudyRnkSkillsTableComponent
                       key={indexSkill + "." + index + " Rnk"}
@@ -74,15 +74,15 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                       skill={skill}
                       abilitys={0}
                       bonus={0}
-                      modifiers={[]}
                     />
                     <StudyAbiSkillsTableComponent
                       key={indexSkill + "." + index + " Abi"}
                       study={study}
                       ability={skill.skillAbility}
-                      skillAbility={BonusAbilities(
-                        abilitys,
-                        AbilityAbbreviation(skill.skillAbility)
+                      skillAbility={
+                        BonusAbilities(
+                          abilitys,
+                          AbilityAbbreviation(skill.skillAbility)
                       )}
                       skillBonus={0}
                     />
@@ -91,7 +91,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                       study={study}
                       ability={skill.skillAbility}
                       skillAbility={0}
-                      skillBonus={skill.skillBonus}
+                      skillBonus={OneStudyModBonusNumber(modifiers.listSkills, study.study)}
                     />
                   </>
                 );
@@ -132,7 +132,6 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                       AbilityAbbreviation(skill.skillAbility)
                     )}
                     bonus={bonus}
-                    modifiers={[]}
                   />
                   <ShowSkillRnkSkillsTableComponent
                     key={indexSkill + " Rnk"}
@@ -142,7 +141,6 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                     study={null}
                     abilitys={0}
                     bonus={bonus}
-                    modifiers={[]}
                   />
                   <SkillAbiSkillsTableComponent
                     key={indexSkill + " Abi"}

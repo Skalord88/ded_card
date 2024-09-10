@@ -24,6 +24,7 @@ import { CheckInAllModifications, FindInOneLengthModifier } from "../components/
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
+import { ArmorModifiers } from "../components/Armor/ArmorInterface";
 
 export function Show() {
   let { charId } = useParams();
@@ -35,10 +36,17 @@ export function Show() {
   const initiativeMod: number = FindInOneLengthModifier(modifications, 'INITIATIVE')
   const bab: number = CountBabFromClassPc(char) + FindInOneLengthModifier(modifications, "BAB");
   const grapple: number = bab + BonusAbilities(char.abilitys, "STR") + FindInOneLengthModifier(modifications, "GRAPPLE");
-  const strenghtAtt = bab + BonusAbilities(abilitys, 'STR')
-  const dextrityAtt = bab + BonusAbilities(abilitys, 'DEX')
-  const speed = FindInOneLengthModifier(modifications, 'SPEED')
-
+  const strenghtAtt: number = bab + BonusAbilities(abilitys, 'STR')
+  const dextrityAtt: number = bab + BonusAbilities(abilitys, 'DEX')
+  const speed: number = FindInOneLengthModifier(modifications, 'SPEED')
+  const armorModifiers: ArmorModifiers = {
+    size: FindInOneLengthModifier(modifications, 'ARMOR_SIZE'),
+    armor: FindInOneLengthModifier(modifications, 'ARMOR_BONUS'),
+    shiled: FindInOneLengthModifier(modifications, 'SHIELD_BONUS'),
+    dodge: FindInOneLengthModifier(modifications, 'DODGE_BONUS'),
+    natural: FindInOneLengthModifier(modifications, 'NATURAL_ARMOR_BONUS'),
+    deflection: FindInOneLengthModifier(modifications, 'DEFLECTION_BONUS'),
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -144,6 +152,8 @@ export function Show() {
         >
           <CharacterArmor
             char={char}
+            abilitys={abilitys}
+            armorModifiers={armorModifiers}
           />
         </div>
         <div
@@ -159,7 +169,7 @@ export function Show() {
           className="rpgui-container-framed-grey"
           style={{
             gridColumn: "1 / span 2",
-            gridRow: 8
+            gridRow: "8 / span 2"
           }}
         >
           <p>

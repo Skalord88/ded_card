@@ -7,15 +7,20 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Entity
 @NoArgsConstructor
@@ -27,7 +32,10 @@ public class Shields extends Items {
   @Enumerated(EnumType.STRING)
   ArmorsEnum shieldName;
 
-  int armorClass;
+  @JdbcTypeCode(SqlTypes.JSON)
+  Set<ModifierBonus> modifiers;
+
+  // int armorClass;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
@@ -46,7 +54,7 @@ public class Shields extends Items {
   public Shields(ShieldsDTO shield) {
     super(shield);
     this.shieldName = shield.shieldName;
-    this.armorClass = shield.armorClass;
+    this.modifiers = MapperModifierBonus.toListModifier(shield.modifiers);
     this.armorType = shield.armorType;
     this.maxDex = shield.maxDex;
     this.penality = shield.penality;
@@ -57,14 +65,11 @@ public class Shields extends Items {
     } else {
       this.enchantment = MapperEnchantment.toEnchantment(shield.enchantment);
     }
-
   }
 
-  public void setItemType(ItemTypeEnum itemType) {
-  }
+  public void setItemType(ItemTypeEnum itemType) {}
 
   public Shields(int idZero) {
     super(idZero);
   }
-
 }

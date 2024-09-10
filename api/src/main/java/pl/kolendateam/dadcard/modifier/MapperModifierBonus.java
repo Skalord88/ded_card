@@ -5,7 +5,7 @@ import java.util.Set;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
-public class MapperModifierBonusDTO {
+public class MapperModifierBonus {
 
   public static ModifierDTO toModifierDTO(ModifierBonus mod) {
     return new ModifierDTO(mod);
@@ -22,4 +22,22 @@ public class MapperModifierBonusDTO {
     }
     return listOfModifierDTO;
   }
+
+  public static Set<ModifierBonus> toListModifier(Set<ModifierDTO> mods) {
+    Set<ModifierBonus> listOfModifier = new HashSet<>();
+    if (mods != null) {
+      mods.forEach(mod -> {
+        ModifierBonus m = new ModifierBonus(mod);
+        listOfModifier.add(m);
+      });
+      return listOfModifier;
+    }
+    return listOfModifier;
+  }
+  //   public static Set<ModifierBonus> toListModifier(Set<ModifierBonus> modifier) {
+  //     // TODO Auto-generated method stub
+  //     throw new UnsupportedOperationException(
+  //       "Unimplemented method 'toListModifier'"
+  //     );
+  //   }
 }

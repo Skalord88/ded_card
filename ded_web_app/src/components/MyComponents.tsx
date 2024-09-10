@@ -4,8 +4,6 @@ import {
   AttackIIRanged,
   AttackMelee,
   AttackRanged,
-  CountArmor,
-  CountInCharArmor,
   IndexWeaponOne,
   SortedBooks,
   SpellsFilter,

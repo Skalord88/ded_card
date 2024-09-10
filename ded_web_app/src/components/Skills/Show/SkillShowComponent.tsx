@@ -6,13 +6,25 @@ import { SkillProps } from "../interface/SkillsInterface";
 import { SkillShowSkillsTableComponent } from "./SkillShowSkillsTableComponent";
 
 export type SkillShowComponentProps = {
-  char: CharacterPc,
-  abilitys: Abilitys,
-  modifications: Modifiers[]
-}
+  char: CharacterPc;
+  abilitys: Abilitys;
+  modifications: Modifiers[];
+};
 
-export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({ char, abilitys, modifications }) => {
-  const listOneModSkills: Modifiers[] = FindInMoreLengthModifier(modifications, 'SKILL')
+export type ListModSkillsStudies = {
+  listSkills: Modifiers[],
+  listStudies: Modifiers[]
+};
+
+export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
+  char,
+  abilitys,
+  modifications
+}) => {
+  const listModSkillsStudies: ListModSkillsStudies = {
+    listSkills: FindInMoreLengthModifier(modifications, "SKILL")  || [],
+    listStudies: FindInMoreLengthModifier(modifications, "STUDY")  || []
+  };
 
   return (
     <>
@@ -52,7 +64,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({ char, ab
                     indexStudy={null}
                     study={null}
                     abilitys={abilitys}
-                    modifiers={listOneModSkills}
+                    modifiers={listModSkillsStudies}
                   />
                 </>
               );

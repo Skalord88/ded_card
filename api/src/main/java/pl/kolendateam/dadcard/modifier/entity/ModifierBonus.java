@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,9 +20,10 @@ public class ModifierBonus implements Serializable {
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] targets;
+
+  public ModifierBonus(ModifierDTO mod) {
+    this.modifier = mod.modifier;
+    this.bonus = mod.bonus;
+    this.targets = mod.targets;
+  }
 }
-// {
-//   &quot;modifier&quot; : &quot;SKILL&quot;,
-//   &quot;bonus&quot; : 4,
-//   &quot;targets&quot; : [14]
-// }

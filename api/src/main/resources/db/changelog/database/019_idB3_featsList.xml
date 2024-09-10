@@ -630,7 +630,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
             },{
             &quot;modifier&quot; : &quot;STUDY&quot;,
             &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [4]
+            &quot;targets&quot; : [&quot;NATURE&quot;]
             }
     ]" />
     </insert>

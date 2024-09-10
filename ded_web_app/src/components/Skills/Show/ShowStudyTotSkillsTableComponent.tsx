@@ -1,9 +1,9 @@
 import { ShowOneSkillProps } from "../interface/SkillsInterface";
 
 export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
-  skill,
   study,
-  abilitys
+  abilitys,
+  bonus
 }) => {
   return (
     <>
@@ -11,11 +11,13 @@ export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
         className="rpgui-container-framed-grey-mini"
         style={{ color: "orange" }}
       >
-        {study && abilitys ? (
+        {study ? (
           <>
-            {Math.floor(study.rank) +
+            {Math.floor(
+              study.rank +
               abilitys +
-              skill.skillBonus}{" "}
+              bonus
+              )}{" "}
           </>
         ) : (
           <></>

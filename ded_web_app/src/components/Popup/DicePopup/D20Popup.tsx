@@ -4,6 +4,7 @@ import { Hit } from "../../Dice/Hit";
 import { Damage } from "../../Dice/Damage";
 import { FormattingText } from "../../Formatting/Function";
 import { DicePopupProps } from "./Interface";
+import { Throw } from "../../Dice/Throw";
 
 export const D20Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,
@@ -42,9 +43,8 @@ export const D20Popup: React.FC<DicePopupProps> = ({
         >
           {typeof textOrWeapon === "string" ? (
             <>
-              <p>
-                {dice} + {value} = {dice + value}
-              </p>
+              <Throw dice={dice} value={value} />
+              
               {modifiers.map((mod) => {
                 return (
                   <p style={{ color: "yellow" }}>

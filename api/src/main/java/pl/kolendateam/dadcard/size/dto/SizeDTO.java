@@ -2,7 +2,7 @@ package pl.kolendateam.dadcard.size.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonusDTO;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -22,8 +22,7 @@ public class SizeDTO {
   public SizeDTO(Size size) {
     this.id = size.getId();
     this.size = size.getSize();
-    this.modifiers =
-      MapperModifierBonusDTO.toListModifierDTO(size.getModifiers());
+    this.modifiers = MapperModifierBonus.toListModifierDTO(size.getModifiers());
   }
 }
 // this.specialAttacks =

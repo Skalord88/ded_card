@@ -1,5 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
+import { ListModSkillsStudies } from "../Show/SkillShowComponent";
 
 export type SkillDTO = {
   idSkill: number;
@@ -55,7 +56,7 @@ export type ShowTableSkillProps = {
   indexStudy: number | null
   study: Study | null
   abilitys: Abilitys | null
-  modifiers: Modifiers[]
+  modifiers: ListModSkillsStudies
 }
 
 export type ShowOneSkillProps = {
@@ -65,7 +66,6 @@ export type ShowOneSkillProps = {
   study: Study | null
   abilitys: number
   bonus: number
-  modifiers: Modifiers[]
 }
 
 export type Study = {

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonusDTO;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
 @NoArgsConstructor
@@ -26,7 +26,7 @@ public class FeatsDTO {
     this.featName = feats.getFeatName();
     this.featsType = feats.getFeatsType();
     this.modifiers =
-      MapperModifierBonusDTO.toListModifierDTO(feats.getModifiers());
+      MapperModifierBonus.toListModifierDTO(feats.getModifiers());
     this.prerequisite =
       MapperPrerequisiteDTO.toPrerequisiteDTO(feats.getPrerequisite());
     this.description = feats.getDescription();

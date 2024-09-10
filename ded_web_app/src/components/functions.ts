@@ -193,17 +193,17 @@ export function CountMonsterArmor(
         + armor.dodgeBonus
 }
 
-export function CountArmor(
-    armor: armorClass,
-    inventory: Inventory
-): number {
-    return 10
-        + armor.armorBonus + armor.shieldBonus
-        + armor.sizeBonus + armor.dextrityBonus
-        + armor.naturalArmor + armor.deflectionBonuses
-        + armor.dodgeBonus + inventory.armor.armorClass
-        + inventory.shield.armorClass
-}
+// export function CountArmor(
+//     armor: armorClass,
+//     inventory: Inventory
+// ): number {
+//     return 10
+//         + armor.armorBonus + armor.shieldBonus
+//         + armor.sizeBonus + armor.dextrityBonus
+//         + armor.naturalArmor + armor.deflectionBonuses
+//         + armor.dodgeBonus + inventory.armor.armorClass
+//         + inventory.shield.armorClass
+// }
 
 export interface inCharArmor {
     id: number,
@@ -211,81 +211,81 @@ export interface inCharArmor {
     text: string
 }
 
-export function CountInCharArmor(
-    charArmor: armorClass,
-    charInventory: Inventory
-): inCharArmor[] {
-    let inCharArmor: inCharArmor[] = [];
+// export function CountInCharArmor(
+//     charArmor: armorClass,
+//     charInventory: Inventory
+// ): inCharArmor[] {
+//     let inCharArmor: inCharArmor[] = [];
 
-    let idN: number = 0;
+//     let idN: number = 0;
 
-    let arm: number
-    charInventory.armor.enchantment ?
-        arm = charArmor.armorBonus + charInventory.armor.armorClass
-        + charInventory.armor.enchantment.enchantment
-        : arm = charArmor.armorBonus + charInventory.armor.armorClass;
+//     let arm: number
+//     charInventory.armor.enchantment ?
+//         arm = charArmor.armorBonus + charInventory.armor.armorClass
+//         + charInventory.armor.enchantment.enchantment
+//         : arm = charArmor.armorBonus + charInventory.armor.armorClass;
 
-    let shi: number
-    charInventory.shield.enchantment ?
-        shi = charArmor.shieldBonus + charInventory.shield.armorClass
-        + charInventory.shield.enchantment.enchantment
-        : shi = charArmor.shieldBonus + charInventory.shield.armorClass
-    const dex: number = charArmor.dextrityBonus;
-    const def: number = charArmor.deflectionBonuses;
-    const nat: number = charArmor.naturalArmor;
-    const dod: number = charArmor.dodgeBonus;
+//     let shi: number
+//     charInventory.shield.enchantment ?
+//         shi = charArmor.shieldBonus + charInventory.shield.armorClass
+//         + charInventory.shield.enchantment.enchantment
+//         : shi = charArmor.shieldBonus + charInventory.shield.armorClass
+//     const dex: number = charArmor.dextrityBonus;
+//     const def: number = charArmor.deflectionBonuses;
+//     const nat: number = charArmor.naturalArmor;
+//     const dod: number = charArmor.dodgeBonus;
 
-    if (arm !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: arm,
-            text: "armor"
-        })
-        idN++
-    }
-    if (shi !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: shi,
-            text: "shield"
-        })
-        idN++
-    }
-    if (dex !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: dex,
-            text: "dextrity"
-        })
-        idN++
-    }
-    if (def !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: def,
-            text: "deflection"
-        })
-        idN++
-    }
-    if (nat !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: nat,
-            text: "natural"
-        })
-        idN++
-    }
-    if (dod !== 0) {
-        inCharArmor.push({
-            id: idN,
-            value: dod,
-            text: "dodge"
-        })
-        idN++
-    }
+//     if (arm !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: arm,
+//             text: "armor"
+//         })
+//         idN++
+//     }
+//     if (shi !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: shi,
+//             text: "shield"
+//         })
+//         idN++
+//     }
+//     if (dex !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: dex,
+//             text: "dextrity"
+//         })
+//         idN++
+//     }
+//     if (def !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: def,
+//             text: "deflection"
+//         })
+//         idN++
+//     }
+//     if (nat !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: nat,
+//             text: "natural"
+//         })
+//         idN++
+//     }
+//     if (dod !== 0) {
+//         inCharArmor.push({
+//             id: idN,
+//             value: dod,
+//             text: "dodge"
+//         })
+//         idN++
+//     }
 
-    return inCharArmor;
-}
+//     return inCharArmor;
+// }
 
 export function ItemNoEnchanted(
     item: any

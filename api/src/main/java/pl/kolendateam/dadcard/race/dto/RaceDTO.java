@@ -4,7 +4,7 @@ import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonusDTO;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.race.entity.Race;
 
@@ -23,8 +23,7 @@ public class RaceDTO {
     this.id = race.getId();
     this.avatarRaceUrl = race.getAvatarUrl();
     this.raceName = race.getRaceName();
-    this.modifiers =
-      MapperModifierBonusDTO.toListModifierDTO(race.getModifiers());
+    this.modifiers = MapperModifierBonus.toListModifierDTO(race.getModifiers());
     this.feats = MapperFeatsDTO.toFeatsSetDTO(race.getRaceFeats());
   }
 }

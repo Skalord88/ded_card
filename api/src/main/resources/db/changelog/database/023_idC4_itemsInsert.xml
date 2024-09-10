@@ -24,7 +24,12 @@
             <column name="armor_name" value="NO_ARMOR" />
             <column name="cost" value="0" />
             <column name="weight" value="0" />
-            <column name="armor_class" value="0" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 0,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="0" /> -->
             <column name="armor_type" value="NO_ARMOR" />
             <column name="max_dex" value="100" />
             <column name="penality" value="0" />
@@ -38,7 +43,12 @@
             <column name="shield_name" value="NO_SHIELD" />
             <column name="cost" value="0" />
             <column name="weight" value="0" />
-            <column name="armor_class" value="0" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,            
+                &quot;bonus&quot; : 0,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="0" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="0" />
@@ -407,7 +417,11 @@
             <column name="armor_name" value="PADDED" />
             <column name="cost" value="5" />
             <column name="weight" value="10" />
-            <column name="armor_class" value="1" />
+            <column name="modifiers" value="[{
+            &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+            &quot;bonus&quot; : 1,            
+            &quot;targets&quot; : []            
+            }]"/>
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="8" />
             <column name="penality" value="0" />
@@ -422,7 +436,12 @@
             <column name="armor_name" value="LEATHER" />
             <column name="cost" value="10" />
             <column name="weight" value="15" />
-            <column name="armor_class" value="2" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 2,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="6" />
             <column name="penality" value="0" />
@@ -437,7 +456,12 @@
             <column name="armor_name" value="STUDDED_LEATHER" />
             <column name="cost" value="25" />
             <column name="weight" value="20" />
-            <column name="armor_class" value="3" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 3,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="3" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="5" />
             <column name="penality" value="-1" />
@@ -452,7 +476,12 @@
             <column name="armor_name" value="CHAIN_SHIRT" />
             <column name="cost" value="100" />
             <column name="weight" value="25" />
-            <column name="armor_class" value="4" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 4,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="4" />
             <column name="penality" value="-2" />
@@ -468,7 +497,12 @@
             <column name="armor_name" value="HIDE" />
             <column name="cost" value="15" />
             <column name="weight" value="25" />
-            <column name="armor_class" value="3" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 3,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="3" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="4" />
             <column name="penality" value="-3" />
@@ -483,7 +517,12 @@
             <column name="armor_name" value="SCALE_MAIL" />
             <column name="cost" value="50" />
             <column name="weight" value="30" />
-            <column name="armor_class" value="4" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 4,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="3" />
             <column name="penality" value="-4" />
@@ -498,7 +537,12 @@
             <column name="armor_name" value="CHAINMAIL" />
             <column name="cost" value="150" />
             <column name="weight" value="40" />
-            <column name="armor_class" value="5" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 5,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="5" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="2" />
             <column name="penality" value="-5" />
@@ -513,7 +557,12 @@
             <column name="armor_name" value="BREASTPLATE" />
             <column name="cost" value="200" />
             <column name="weight" value="30" />
-            <column name="armor_class" value="5" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 5,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="5" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="3" />
             <column name="penality" value="-4" />
@@ -529,7 +578,12 @@
             <column name="armor_name" value="SPLINT_MAIL" />
             <column name="cost" value="200" />
             <column name="weight" value="45" />
-            <column name="armor_class" value="6" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 6,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="6" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="0" />
             <column name="penality" value="-7" />
@@ -544,7 +598,12 @@
             <column name="armor_name" value="BANDED_MAIL" />
             <column name="cost" value="250" />
             <column name="weight" value="35" />
-            <column name="armor_class" value="6" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 6,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="6" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="1" />
             <column name="penality" value="-6" />
@@ -559,7 +618,12 @@
             <column name="armor_name" value="HALF_PLATE" />
             <column name="cost" value="600" />
             <column name="weight" value="50" />
-            <column name="armor_class" value="7" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 7,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="7" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="0" />
             <column name="penality" value="-7" />
@@ -574,7 +638,12 @@
             <column name="armor_name" value="FULL_PLATE" />
             <column name="cost" value="1500" />
             <column name="weight" value="50" />
-            <column name="armor_class" value="8" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+                &quot;bonus&quot; : 8,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="8" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="1" />
             <column name="penality" value="-6" />
@@ -592,7 +661,12 @@
             <column name="shield_name" value="BUCKLER" />
             <column name="cost" value="15" />
             <column name="weight" value="5" />
-            <column name="armor_class" value="1" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+                &quot;bonus&quot; : 1,
+                &quot;targets&quot; : []
+                }]"/>
+            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -610,7 +684,12 @@
             <column name="shield_name" value="SHIELD_LIGHT_WOODEN" />
             <column name="cost" value="3" />
             <column name="weight" value="5" />
-            <column name="armor_class" value="1" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,            
+                &quot;bonus&quot; : 1,            
+                &quot;targets&quot; : []            
+                }]"/>
+            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -632,7 +711,12 @@
             <column name="shield_name" value="SHIELD_LIGHT_STEEL" />
             <column name="cost" value="9" />
             <column name="weight" value="6" />
-            <column name="armor_class" value="1" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+                &quot;bonus&quot; : 1,
+                &quot;targets&quot; : []
+                }]"/>
+            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -654,7 +738,12 @@
             <column name="shield_name" value="SHIELD_HEAVY_WOODEN" />
             <column name="cost" value="7" />
             <column name="weight" value="10" />
-            <column name="armor_class" value="2" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+                &quot;bonus&quot; : 2,
+                &quot;targets&quot; : []
+                }]"/>
+            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-2" />
@@ -676,7 +765,12 @@
             <column name="shield_name" value="SHIELD_HEAVY_STEEL" />
             <column name="cost" value="20" />
             <column name="weight" value="15" />
-            <column name="armor_class" value="2" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+                &quot;bonus&quot; : 2,
+                &quot;targets&quot; : []
+                }]"/>
+            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-2" />
@@ -698,7 +792,12 @@
             <column name="shield_name" value="SHIELD_TOWER" />
             <column name="cost" value="30" />
             <column name="weight" value="45" />
-            <column name="armor_class" value="4" />
+            <column name="modifiers" value="[{
+                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+                &quot;bonus&quot; : 4,
+                &quot;targets&quot; : []
+                }]"/>
+            <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="2" />
             <column name="penality" value="-10" />

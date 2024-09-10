@@ -1,5 +1,6 @@
 import { Abilitys } from "./Abilitys/Interface";
 import { Feat } from "./Feats/Interface/FeatInterface";
+import { Modifiers } from "./Modifiers/ModifierInterface";
 import { SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
@@ -178,7 +179,8 @@ export type Item = {
 
 export interface Armor extends Item {
   armorName: string;
-  armorClass: number;
+  modifiers: Modifiers[]
+  // armorClass: number;
   armorType: string;
   maxDex: number;
   penality: number;
@@ -189,7 +191,8 @@ export interface Armor extends Item {
 
 export interface Shield extends Item {
   shieldName: string;
-  armorClass: number;
+  modifiers: Modifiers[]
+  // armorClass: number;
   armorType: string;
   maxDex: number;
   penality: number;

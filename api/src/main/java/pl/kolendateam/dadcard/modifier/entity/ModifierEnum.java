@@ -3,15 +3,11 @@ package pl.kolendateam.dadcard.modifier.entity;
 public enum ModifierEnum {
   ABILITY_MODIFIER,
   ALCHEMICAL_BONUS,
-  ARMOR_BONUS,
   CIRCUMSTANCE_MODIFIER,
   COMPETENCE_MODIFIER,
-  DEFLECTION_BONUS,
-  DODGE_BONUS,
   INSIGHT_BONUS,
   LUCK_MODIFIER,
   MORALE_MODIFIER,
-  NATURAL_ARMOR_BONUS,
   PROFANE_MODIFIER,
   RACIAL_BONUS,
   RESISTANCE_BONUS,
@@ -26,9 +22,13 @@ public enum ModifierEnum {
   CHARISMA,
 
   // armor
-  SHIELD_BONUS,
-  SIZE_MODIFIER,
-  ARMOR_SIZE,
+  SHIELD_BONUS, //+
+  SIZE_MODIFIER, //+
+  ARMOR_SIZE, //+
+  DODGE_BONUS, //+
+  ARMOR_BONUS, //+
+  NATURAL_ARMOR_BONUS, //+
+  DEFLECTION_BONUS, //+
   NO_ARMOR,
   LIGHT_ARMOR,
   MEDIUM_ARMOR,
@@ -46,7 +46,6 @@ public enum ModifierEnum {
   // movment
   SPEED,
   FLY,
-  NATURE,
   FALL,
 
   // skills
@@ -86,6 +85,14 @@ public enum ModifierEnum {
   TUMBLE,
   USE_MAGIC_DEVICE,
   USE_ROPE,
+
+  // study
+  ARCANA,
+  ARCHITECTURE,
+  HISTORY,
+  NATURE,
+  RELIGION,
+  PLANE,
 
   // feat
   EXTRA_FEAT,

@@ -1,7 +1,7 @@
 import { FormattingText } from "../../../Formatting/Function";
 import { Modifiers } from "../../ModifierInterface";
 
-export function OneSkillModBonus(
+export function OneStudyModBonus(
     modifiers: Modifiers[],
     studyName: string
   ): Modifiers[] {
@@ -10,7 +10,7 @@ export function OneSkillModBonus(
     );
   }
   
-  export function OneSkillModBonusNumber(
+  export function OneStudyModBonusNumber(
     modifiers: Modifiers[],
     studyName: string
   ): number {
