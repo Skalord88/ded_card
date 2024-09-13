@@ -5,8 +5,11 @@ export const TotalArmor: React.FC<ArmorModifiersProps> = ({ armorModifiers }) =>
       <>
         <div className="rpgui-container-framed-grey">
           <p style={{ flex: 1 }}>
-            {10 + armorModifiers.size + armorModifiers.armor + armorModifiers.shiled 
-            + armorModifiers.natural + armorModifiers.dodge + armorModifiers.deflection}
+            {
+            10 + 
+            armorModifiers.armor + armorModifiers.shiled + armorModifiers.dextrity +
+            armorModifiers.size + armorModifiers.natural + armorModifiers.dodge + armorModifiers.deflection
+            }
           </p>
           <p style={{ flex: 1, backgroundColor: 'gray' }}>total</p>
         </div>

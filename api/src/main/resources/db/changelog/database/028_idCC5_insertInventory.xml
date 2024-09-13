@@ -7,13 +7,13 @@
 
         <insert tableName="inventory">
             <column name="id" value="100" />
-            <column name="armor_id" value="30" />
-            <column name="shield_id" value="39" />
-            <column name="weapon_id_one" value="23" />
-            <column name="weapon_id_two" value="13" />
-            <column name="weapon_id_three" value="14" />
-            <column name="weapon_id_four" value="9" />
-            <column name="weapon_id_five" value="6" />
+            <column name="armor_id" value="48" />
+            <column name="shield_id" value="49" />
+            <column name="weapon_id_one" value="50" />
+            <column name="weapon_id_two" value="51" />
+            <column name="weapon_id_three" value="52" />
+            <column name="weapon_id_four" value="5" />
+            <column name="weapon_id_five" value="1" />
             <column name="head_id" value="4" />
             <column name="neck_id" value="4" />
             <column name="arms_id" value="4" />

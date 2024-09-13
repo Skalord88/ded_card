@@ -542,7 +542,6 @@
                 &quot;bonus&quot; : 5,            
                 &quot;targets&quot; : []            
                 }]"/>
-            <!-- <column name="armor_class" value="5" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="2" />
             <column name="penality" value="-5" />
@@ -850,6 +849,75 @@
             <column  name="description"  value=""/>
         </insert>
     -->
+    <insert tableName="items">
+        <column name="name" value="Elfic Chain+2" />
+        <column name="item_type" value="ARMOR" />
+        <column name="armor_name" value="CHAINMAIL" />
+        <column name="cost" value="150" />
+        <column name="weight" value="10" />
+        <column name="modifiers" value="[{
+            &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,            
+            &quot;bonus&quot; : 5,            
+            &quot;targets&quot; : []            
+            }]"/>
+        <column name="armor_type" value="LIGHT_ARMOR" />
+        <column name="max_dex" value="4" />
+        <column name="penality" value="-2" />
+        <column name="failure" value="20" />
+        <column name="description" value="The suit includes gauntlets." />
+        <column name="material" value="MITHRAL" />
+        <column name="enchantment_id" value="2" />
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Buckler+1" />
+        <column name="item_type" value="SHIELD" />
+        <column name="shield_name" value="BUCKLER" />
+        <column name="cost" value="15" />
+        <column name="weight" value="5" />
+        <column name="modifiers" value="[{
+            &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,
+            &quot;bonus&quot; : 1,
+            &quot;targets&quot; : []
+            }]"/>
+        <!-- <column name="armor_class" value="1" /> -->
+        <column name="armor_type" value="SHIELD" />
+        <column name="max_dex" value="100" />
+        <column name="penality" value="0" />
+        <column name="failure" value="5" />
+        <column name="description"
+            value="" />
+        <column name="material" value="METAL" />
+        <column name="enchantment_id" value="1" />
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Sling+1" />
+        <column name="item_type" value="WEAPON" />
+        <column name="weapon_name" value="SLING" />
+        <column name="cost" value="0" />
+        <column name="damage" value="D4" />
+        <column name="critical" value="X2" />
+        <column name="weight" value="0" />
+        <column name="type" value="['SIMPLE','BLUDGEONING','RANGED']" />
+        <column name="special_attacks" value="" />
+        <column name="description" value="" />
+        <column name="material" value="LEATHER" />
+        <column name="enchantment_id" value="1" />
+        <column name="range" value="50" />
+    </insert>
+    <insert tableName="items">
+        <column name="name" value="Sword, short perfect" />
+        <column name="item_type" value="WEAPON" />
+        <column name="weapon_name" value="SPEAR" />
+        <column name="cost" value="10" />
+        <column name="damage" value="D6" />
+        <column name="critical" value="X2_1920" />
+        <column name="weight" value="2" />
+        <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
+        <column name="special_attacks" value="" />
+        <column name="description" value="" />
+        <column name="material" value="METAL" />
+        <column name="enchantment_id" value="-1" />
+    </insert>
 
     </changeSet>
 </databaseChangeLog>

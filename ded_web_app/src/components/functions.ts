@@ -1,5 +1,4 @@
 import { BonusAbilities } from "./Abilitys/Functions";
-import { Abilitys } from "./Abilitys/Interface";
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
 import { Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
@@ -32,15 +31,15 @@ export function WeaponLight(weapon: Weapon): boolean {
     return weapon.type.includes("LIGHT");
 }
 
-export function WeaponRanged(weapon: Weapon) {
+export function WeaponRanged(weapon: Weapon): boolean {
     return weapon.type.includes("RANGED");
 }
 
-export function WeaponThrown(weapon: Weapon) {
+export function WeaponThrown(weapon: Weapon): boolean {
     return weapon.type.includes("THROWN");
 }
 
-export function WeaponTwoHanded(weapon: Weapon) {
+export function WeaponTwoHanded(weapon: Weapon): boolean {
     return weapon.type.includes("TWO_HANDED");
 }
 
@@ -52,82 +51,74 @@ export function AttackMelee(
     weapon: Weapon,
     bab: number,
     position: Position,
-    ab: Abilitys,
-    whichAb: string,
     nAtt: number
-) {
+): number | false {
     // se l'arma e' a distanza
     if (WeaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
-    // torna bab + car - n. attacchi
-    return bab + BonusAbilities(ab, whichAb) - nAtt
+    // torna strAtt/dexAtt - n. attacchi
+    const result = bab - nAtt;
+    return result;
 }
 
 export function AttackRanged(
     weapon: Weapon,
     bab: number,
     position: Position,
-    ab: Abilitys,
-    whichAb: string,
     nAtt: number
-) {
+): number | false {
     // se l'arma e' a distanza
     if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
-    // torna bab + car - n. attacchi
-    return bab + BonusAbilities(ab, whichAb) - nAtt;
+    // torna strAtt/dexAtt - n. attacchi
+    const result = bab - nAtt;
+    return result;
 }
 
 export function AttackIIMelee(
     weapon: Weapon,
     bab: number,
     position: Position,
-    ab: Abilitys,
-    whichAb: string,
     nAtt: number
-) {
+): number | false {
     // se l'arma e' a distanza
     if (WeaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
     if (position.twoHanded) { return false }
-    // torna bab + car - n. attacchi
-    if (position.pose && !position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 6 }
-    if (!position.pose && !position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 10 }
-    if (position.pose && position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 4 }
-    if (!position.pose && position.light) { return bab + BonusAbilities(ab, whichAb) - nAtt - 8 }
+    // torna strAtt/dexAtt - n. attacchi
+    let result: number = 0;
+    if (position.pose && position.light) {result = bab - nAtt - 4}
+    if (position.pose && !position.light) {result = bab - nAtt - 6}
+    if (!position.pose && position.light) {result = bab - nAtt - 8}
+    if (!position.pose && !position.light) {result = bab - nAtt - 10}
+    
+    return result;
 }
 
 export function AttackIIRanged(
     weapon: Weapon,
     bab: number,
     position: Position,
-    ab: Abilitys,
-    whichAb: string,
     nAtt: number
-) {
+): number | false {
     // se l'arma e' a distanza
     if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
     if (position.twoHanded) { return false }
-    // torna bab + car - n. attacchi
-    if (position.pose && !position.light) {
-        return bab + BonusAbilities(ab, whichAb) - nAtt - 6
-    }
-    if (!position.pose && !position.light) {
-        return bab + BonusAbilities(ab, whichAb) - nAtt - 10
-    }
-    if (position.pose && position.light) {
-        return bab + BonusAbilities(ab, whichAb) - nAtt - 4
-    }
-    if (!position.pose && position.light) {
-        return bab + BonusAbilities(ab, whichAb) - nAtt - 8
-    }
+    // torna strAtt/dexAtt - n. attacchi
+    let result: number = 0;
+    if (position.pose && position.light) {result = bab - nAtt - 4}
+    if (position.pose && !position.light) {result = bab - nAtt - 6}
+    if (!position.pose && position.light) {result = bab - nAtt - 8}
+    if (!position.pose && !position.light) {result = bab - nAtt - 10}
+    
+    return result;
 }
 
 export function SetSetWeaponListFromDB(

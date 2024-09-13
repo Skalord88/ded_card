@@ -1,16 +1,27 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
 import { FormattingText } from "../../Formatting/Function";
-import { DicePopupProps } from "./Interface";
-import { ThrowDice } from "../../Dice/ThrowDice";
+import { DicePopupWeaponProps } from "./Interface";
+import { WeaponThrowDice } from "../../Dice/WeaponThrowDice";
 
-export const D20Popup: React.FC<DicePopupProps> = ({
-  textOrWeapon,
-  value,
+export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
+  type,
+  bab,
+  increments,
   modifiers
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
+
+  const dices: number[] = increments.map(
+    inc => ThrowDice20()
+  )
+  let attacks: number[] = [];
+  for (let i = 0; i < increments.length; i++) {
+    for (let b = 0; b < bab.length; b++) {
+      attacks.push(bab[b])
+    }
+  }
 
   const togglePopup = (show: boolean) => {
     if (show) {
@@ -28,9 +39,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
         onMouseLeave={() => togglePopup(false)}
         style={{ color: "yellow" }}
       >
-
-          <>{textOrWeapon}</>
-
+      {type}
         <span
           style={{ width: 300, textAlign: "center" }}
           className={`popuptext rpgui-container-framed ${
@@ -38,12 +47,13 @@ export const D20Popup: React.FC<DicePopupProps> = ({
           }`}
         >
           <>
-            <ThrowDice dice={dice} value={value} />
+            
+            <WeaponThrowDice dices={dices} values={attacks} />
 
             {modifiers.map((mod) => {
               return (
                 <p style={{ color: "yellow" }}>
-                  {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
+                  
                   {mod.targets[1]
                     ? " vs " + FormattingText(mod.targets[1])
                     : ""}
@@ -51,6 +61,8 @@ export const D20Popup: React.FC<DicePopupProps> = ({
               );
             })}
           </>
+
+          {/* <Damage dice={dice} weapon={weapon} /> */}
         </span>
       </div>
     </>

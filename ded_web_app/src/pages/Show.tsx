@@ -20,11 +20,13 @@ import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { characterEmpty } from "../components/variables";
 import { AbilitysAndModifiers, BonusAbilities } from "../components/Abilitys/Functions";
-import { CheckInAllModifications, FindInOneLengthModifier } from "../components/Modifiers/Function";
+import { CheckInAllModifications, FindInMoreLengthModifier, FindInOneLengthModifier } from "../components/Modifiers/Function";
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 import { ArmorModifiers } from "../components/Armor/ArmorInterface";
+import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
+import { MaxDextrityCount } from "../components/Armor/Function";
 
 export function Show() {
   let { charId } = useParams();
@@ -35,18 +37,21 @@ export function Show() {
   const initiativeDex: number = BonusAbilities(abilitys, 'DEX')
   const initiativeMod: number = FindInOneLengthModifier(modifications, 'INITIATIVE')
   const bab: number = CountBabFromClassPc(char) + FindInOneLengthModifier(modifications, "BAB");
+  const specificBab: Modifiers[] = FindInMoreLengthModifier(modifications, "BAB");
   const grapple: number = bab + BonusAbilities(char.abilitys, "STR") + FindInOneLengthModifier(modifications, "GRAPPLE");
   const strenghtAtt: number = bab + BonusAbilities(abilitys, 'STR')
   const dextrityAtt: number = bab + BonusAbilities(abilitys, 'DEX')
   const speed: number = FindInOneLengthModifier(modifications, 'SPEED')
   const armorModifiers: ArmorModifiers = {
     size: FindInOneLengthModifier(modifications, 'ARMOR_SIZE'),
-    armor: FindInOneLengthModifier(modifications, 'ARMOR_BONUS'),
-    shiled: FindInOneLengthModifier(modifications, 'SHIELD_BONUS'),
+    armor: FindInOneLengthModifier(modifications, 'ARMOR_BONUS') + char.inventory.armor.enchantment.enchantment,
+    shiled: FindInOneLengthModifier(modifications, 'SHIELD_BONUS') + char.inventory.shield.enchantment.enchantment,
+    dextrity: MaxDextrityCount(BonusAbilities(abilitys, 'DEX'), char.inventory.armor.maxDex),
     dodge: FindInOneLengthModifier(modifications, 'DODGE_BONUS'),
     natural: FindInOneLengthModifier(modifications, 'NATURAL_ARMOR_BONUS'),
     deflection: FindInOneLengthModifier(modifications, 'DEFLECTION_BONUS'),
   }
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -152,7 +157,6 @@ export function Show() {
         >
           <CharacterArmor
             char={char}
-            abilitys={abilitys}
             armorModifiers={armorModifiers}
           />
         </div>
@@ -163,7 +167,7 @@ export function Show() {
             gridRow: 7
           }}
         >
-          {/* <MapOfAttackComponent char={char} /> */}
+          <MapOfAttackComponent char={char} bab={bab} strenghtAtt={strenghtAtt} dextrityAtt={dextrityAtt} specific={specificBab} />
         </div>
         <div
           className="rpgui-container-framed-grey"

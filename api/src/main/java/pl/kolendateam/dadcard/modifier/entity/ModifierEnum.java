@@ -39,7 +39,7 @@ public enum ModifierEnum {
   BULL_RUSH,
   DISARM,
   BAB,
-  THROW,
+  THROWN,
   SLING,
   MOUNTED_RANGED,
 

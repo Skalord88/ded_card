@@ -1,6 +1,4 @@
-import { Abilitys } from "../Abilitys/Interface";
-import { CharacterPc, CharProps } from "../interfaces";
-import { Modifiers } from "../Modifiers/ModifierInterface";
+import { CharacterPc } from "../interfaces";
 import { ArmorList, ArmorModifiers } from "./ArmorInterface";
 import { Contact } from "./Contact";
 import { Failure } from "./Failure";
@@ -10,17 +8,14 @@ import { TotalArmor } from "./TotalArmor";
 
 export type CharacterArmorProps = {
   char: CharacterPc;
-  abilitys: Abilitys;
   armorModifiers: ArmorModifiers;
 };
 export const CharacterArmor: React.FC<CharacterArmorProps> = ({
   char,
-  abilitys,
   armorModifiers
 }) => {
   const listOfArmor: ArmorList = CalculateArmorInChar(
     char,
-    abilitys,
     armorModifiers
   );
 
@@ -49,11 +44,11 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({
             </>
           );
         })}
-        <div style={{ display: "flex" }}>
+        <div className="rpgui-container-framed-grey">
+          <p style={{ flex: 1 }}></p></div>
           <Failure inventory={char.inventory} />
           <FlatFooted armorModifiers={armorModifiers} />
           <Contact armorModifiers={armorModifiers} />
-        </div>
       </div>
     </>
   );

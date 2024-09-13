@@ -185,7 +185,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: Enchantment | null;
+  enchantment: Enchantment;
   material: string | null
 }
 
@@ -197,7 +197,7 @@ export interface Shield extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment?: Enchantment;
+  enchantment: Enchantment;
   material: string | null
 }
 
@@ -208,7 +208,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   specialAttacks: string | null;
-  enchantment?: Enchantment;
+  enchantment: Enchantment;
   material: string | null
 }
 
@@ -297,9 +297,11 @@ export type CharAttack = {
 
 export type CharBab = {
   bab: number,
-  ability: Abilitys,
+  strenghtAtt: number,
+  dextrityAtt: number,
   weapon: Weapon,
   position: Position
+  specific: Modifiers[]
 }
 
 export type Position = {
@@ -338,7 +340,8 @@ export type SignAndNumber = {
 }
 
 export type Enchantment = {
-  id: number, enchantment: number
+  id: number,
+  enchantment: number
 }
 
 export type SpellLevel = {

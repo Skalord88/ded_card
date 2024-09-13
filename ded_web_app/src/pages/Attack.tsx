@@ -1,13 +1,12 @@
 import axios from "axios";
-import { MapOfAttack } from "../components/MyComponents";
 import { urlAttacks, urlChar } from "../components/url";
 import { useEffect, useState } from "react";
 import { Attacks, CharacterPc, Weapon } from "../components/interfaces";
 import { useParams } from "react-router-dom";
 import { emptyAttacks } from "../components/variables";
 import { SetSetWeaponListFromDB } from "../components/functions";
-import { CharacterArmor } from "../components/Armor/CharacterArmor";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
+import { MapOfAttack } from "../components/Attack/MapOfAttack";
 
 export function Attack() {
 
@@ -98,9 +97,6 @@ export function Attack() {
               }}
               >V: {char?.inventory.weaponFive.name}</div>
               </div>
-                {/* <CharacterArmor
-                  char
-                /> */}
               </>
               :
               <>...loading character...</>  

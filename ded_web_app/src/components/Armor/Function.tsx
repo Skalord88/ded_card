@@ -1,10 +1,11 @@
-import { Abilitys } from "../Abilitys/Interface";
 import { FormattingText } from "../Formatting/Function";
-import { BonusAbilities, SignAndCount } from "../functions";
+import { SignAndCount } from "../functions";
 import { CharacterPc } from "../interfaces";
 import { ArmorList, ArmorModifiers } from "./ArmorInterface";
 
-export function CalculateArmorInChar(char: CharacterPc, abilitys: Abilitys, armorModifiers: ArmorModifiers): ArmorList {
+export function CalculateArmorInChar(
+  char: CharacterPc, armorModifiers: ArmorModifiers
+): ArmorList {
 
   let armorList: ArmorList = [];
   armorList.push({
@@ -20,8 +21,8 @@ export function CalculateArmorInChar(char: CharacterPc, abilitys: Abilitys, armo
     item: char.inventory.shield.name
   });
   armorList.push({
-    sign: SignAndCount([abilitys.dextrity]).sign,
-    bonus: char.inventory.armor.penality < abilitys.dextrity ? BonusAbilities(abilitys, 'DEX') : char.inventory.armor.penality,
+    sign: SignAndCount([armorModifiers.dextrity]).sign,
+    bonus: armorModifiers.dextrity,
     text: "dextrity",
     item: ""
   });
@@ -51,4 +52,8 @@ export function CalculateArmorInChar(char: CharacterPc, abilitys: Abilitys, armo
   });
 
   return armorList;
+}
+
+export function MaxDextrityCount (dextrity: number, max: number): number {
+  return max < dextrity? max : dextrity;
 }
