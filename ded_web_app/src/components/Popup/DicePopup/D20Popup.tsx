@@ -21,38 +21,27 @@ export const D20Popup: React.FC<DicePopupProps> = ({
   };
 
   return (
-    <>
-      <div
-        className="popup"
-        onClick={() => togglePopup(true)}
-        onMouseLeave={() => togglePopup(false)}
-        style={{ color: "yellow" }}
+    <div
+      className="popup"
+      onClick={() => togglePopup(true)}
+      onMouseLeave={() => togglePopup(false)}
+      style={{ color: "yellow" }}
+    >
+      {textOrWeapon}
+  
+      <span
+        style={{ width: 300, textAlign: "center" }}
+        className={`popuptext rpgui-container-framed ${showPopup ? "show" : ""}`}
       >
-
-          <>{textOrWeapon}</>
-
-        <span
-          style={{ width: 300, textAlign: "center" }}
-          className={`popuptext rpgui-container-framed ${
-            showPopup ? "show" : ""
-          }`}
-        >
-          <>
-            <ThrowDice dice={dice} value={value} />
-
-            {modifiers.map((mod) => {
-              return (
-                <p style={{ color: "yellow" }}>
-                  {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
-                  {mod.targets[1]
-                    ? " vs " + FormattingText(mod.targets[1])
-                    : ""}
-                </p>
-              );
-            })}
-          </>
-        </span>
-      </div>
-    </>
+        <ThrowDice dice={dice} value={value} />
+        {modifiers.map((mod, index) => (
+          <p key={index} style={{ color: "yellow" }}>
+            {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
+            {mod.targets[1] ? " vs " + FormattingText(mod.targets[1]) : ""}
+          </p>
+        ))}
+      </span>
+    </div>
   );
+  
 };

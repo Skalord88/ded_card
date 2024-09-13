@@ -1,11 +1,16 @@
+import { Weapon } from "../interfaces";
+import { CriticalHit } from "./Functions";
+
 export type WeaponThrowDiceProps = {
   dices: number[];
   values: number[];
+  weapon: Weapon;
 };
 
 export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   dices,
-  values
+  values,
+  weapon
 }) => {
   let results: { dice: number; value: number }[] = [];
 
@@ -16,7 +21,11 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   return (
     <>
       {results.map((res, index) => {
-        return (
+        return res.dice === CriticalHit(weapon.critical) ? (
+          <p style={{ color: "red" }} key={index}>
+            {res.dice} + {res.value} = {res.dice + res.value}
+          </p>
+        ) : (
           <p key={index}>
             {res.dice} + {res.value} = {res.dice + res.value}
           </p>

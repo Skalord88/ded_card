@@ -12,8 +12,10 @@
             <column name="damage" value="D3" />
             <column name="critical" value="X2" />
             <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED','LIGHT']" />
             <column name="special_attacks" value="" />
+            <column name="range" value="-2" />
             <column name="description"
                 value="A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike." />
 
@@ -74,6 +76,7 @@
             <column name="damage" value="D3" />
             <column name="critical" value="X2" />
             <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['BLUDGEONING','SIMPLE','UNARMED']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -91,6 +94,7 @@
             <column name="critical" value="X2_1920" />
             <column name="range" value="10" />
             <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING_OR_SLASHING','SIMPLE','LIGHT','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -106,6 +110,7 @@
             <column name="damage" value="D4" />
             <column name="critical" value="X3" />
             <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -122,6 +127,7 @@
             <column name="damage" value="D4" />
             <column name="critical" value="X2" />
             <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','UNARMED','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -139,6 +145,7 @@
             <column name="damage" value="D6" />
             <column name="critical" value="X2" />
             <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['BLUDGEONING','SIMPLE','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -155,6 +162,7 @@
             <column name="damage" value="D6" />
             <column name="critical" value="X2" />
             <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','SLASHING','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -170,6 +178,7 @@
             <column name="damage" value="D6" />
             <column name="critical" value="X2" />
             <column name="weight" value="3" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','BLUDGEONING','ONE_HANDED','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -185,6 +194,7 @@
             <column name="damage" value="D8" />
             <column name="critical" value="X2" />
             <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','ONE_HANDED','BLUDGEONING']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -201,6 +211,7 @@
             <column name="damage" value="D8" />
             <column name="critical" value="X2" />
             <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','ONE_HANDED','BLUDGEONING_PIERCING']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -216,6 +227,7 @@
             <column name="damage" value="D6" />
             <column name="critical" value="X2" />
             <column name="weight" value="3" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','ONE_HANDED','PIERCING','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -232,6 +244,7 @@
             <column name="damage" value="D8" />
             <column name="critical" value="X3" />
             <column name="weight" value="9" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','TWO_HANDED']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -248,6 +261,7 @@
             <column name="damage" value="D6_D6" />
             <column name="critical" value="X2" />
             <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','BLUDGEONING','ONE_HANDED','TWO_HANDED']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -263,6 +277,7 @@
             <column name="damage" value="D8" />
             <column name="critical" value="X3" />
             <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','PIERCING','TWO_HANDED','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -278,6 +293,7 @@
             <column name="damage" value="D10" />
             <column name="critical" value="X2_1920" />
             <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','PIERCING','TWO_HANDED','RANGED']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -293,6 +309,7 @@
             <column name="damage" value="NA" />
             <column name="critical" value="NA" />
             <column name="weight" value="0.1" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','PIERCING','PROJECTILE']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -308,6 +325,7 @@
             <column name="damage" value="D8" />
             <column name="critical" value="X2_1920" />
             <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','PIERCING','RANGED','TWO_HANDED']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -323,6 +341,7 @@
             <column name="damage" value="D4" />
             <column name="critical" value="X2" />
             <column name="weight" value="0.5" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','PIERCING','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -339,6 +358,7 @@
             <column name="critical" value="X2" />
             <column name="range" value="30" />
             <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','THROWN']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -354,6 +374,7 @@
             <column name="damage" value="D4" />
             <column name="critical" value="X2" />
             <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','BLUDGEONING','RANGED']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -369,6 +390,7 @@
             <column name="damage" value="NA" />
             <column name="critical" value="NA" />
             <column name="weight" value="5" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SIMPLE','BLUDGEONING','PROJECTILE']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
@@ -385,6 +407,7 @@
             <column name="damage" value="D10" />
             <column name="critical" value="X3" />
             <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -401,6 +424,7 @@
             <column name="critical" value="X3" />
             <column name="range" value="30" />
             <column name="weight" value="3" />
+            <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','TWO_HANDED','RANGED']" />
             <column name="special_attacks" value="" />
             <column name="description"
@@ -890,28 +914,30 @@
         <column name="enchantment_id" value="1" />
     </insert>
     <insert tableName="items">
-        <column name="name" value="Sling+1" />
+        <column name="name" value="Halfling Sling+1" />
         <column name="item_type" value="WEAPON" />
         <column name="weapon_name" value="SLING" />
-        <column name="cost" value="0" />
-        <column name="damage" value="D4" />
-        <column name="critical" value="X2" />
-        <column name="weight" value="0" />
-        <column name="type" value="['SIMPLE','BLUDGEONING','RANGED']" />
+        <column name="cost" value="25" />
+        <column name="damage" value="D6" />
+        <column name="critical" value="X4" />
+        <column name="weight" value="0.45" />
+        <column name="size" value="SMALL" />
+        <column name="type" value="['EXOTIC','BLUDGEONING','RANGED']" />
         <column name="special_attacks" value="" />
         <column name="description" value="" />
         <column name="material" value="LEATHER" />
         <column name="enchantment_id" value="1" />
-        <column name="range" value="50" />
+        <column name="range" value="15" />
     </insert>
     <insert tableName="items">
         <column name="name" value="Sword, short perfect" />
         <column name="item_type" value="WEAPON" />
-        <column name="weapon_name" value="SPEAR" />
+        <column name="weapon_name" value="SWORD_SHORT" />
         <column name="cost" value="10" />
         <column name="damage" value="D6" />
         <column name="critical" value="X2_1920" />
         <column name="weight" value="2" />
+        <column name="size" value="MEDIUM" />
         <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
         <column name="special_attacks" value="" />
         <column name="description" value="" />

@@ -42,6 +42,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                     <div></div>
                     <div className="rpgui-container-framed-grey-mini">
                       <D20Popup
+                        key={index}
                         textOrWeapon={study.study}
                         value={
                           Math.floor(study.rank) +
@@ -109,6 +110,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                 <>
                   <div className="rpgui-container-framed-grey-mini">
                     <D20Popup
+                    key={skill.idSkill}
                       textOrWeapon={skill.nameSkill}
                       value={
                         skill.skillRank +

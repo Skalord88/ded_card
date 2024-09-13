@@ -52,30 +52,22 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Abilities</h2>
-      {ab.map((ability) => {
-        return (
-          <>
-            <div key={ability.id} style={{ display: "flex" }}>
-              <div
-                key={ability.id}
-                className="rpgui-container-framed-grey"
-                style={{ flex: 1 }}
-              >
-                <p>{ability.text}</p>
-              </div>
-              <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
-                <p>{ability.value}</p>
-              </div>
-              <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
-                <p>
-                  {ability.bonusSing}
-                  {ability.bonus}
-                </p>
-              </div>
-            </div>
-          </>
-        );
-      })}
+      {ab.map((ability) => (
+        <div key={ability.id} style={{ display: "flex" }}>
+          <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
+            <p>{ability.text}</p>
+          </div>
+          <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
+            <p>{ability.value}</p>
+          </div>
+          <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
+            <p>
+              {ability.bonusSing}
+              {ability.bonus}
+            </p>
+          </div>
+        </div>
+      ))}
     </>
   );
 };

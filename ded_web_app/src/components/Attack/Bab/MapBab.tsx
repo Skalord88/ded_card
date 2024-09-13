@@ -5,10 +5,14 @@ import {
   AttackIIRanged,
   WeaponRanged,
   SignAndCount,
-  WeaponThrown
+  WeaponThrown,
+  WeaponTwoHanded
 } from "../../functions";
 import { CharBab, Position, Weapon } from "../../interfaces";
-import { FindWeaponToModified, ModifiedWeaponBabBonus } from "../../Modifiers/Bab/Function";
+import {
+  FindWeaponToModified,
+  ModifiedWeaponBabBonus
+} from "../../Modifiers/Bab/Function";
 import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
 
 const AttackOptions: React.FC<{
@@ -28,14 +32,13 @@ const AttackOptions: React.FC<{
   increments,
   attackFn
 }) => {
-
   const checkType = (typeToCheck: string) => {
-    if (typeToCheck === 'distance') return dextrityAtt;
-    if (typeToCheck === 'distance two hands') return dextrityAtt;
+    if (typeToCheck === "distance") return dextrityAtt;
+    if (typeToCheck === "distance two hands") return dextrityAtt;
     return strenghtAtt;
-  }
-  
-  let bonus: number =  checkType(type);
+  };
+
+  let bonus: number = checkType(type);
 
   const attacks: number[] = increments.map((inc) =>
     attackFn(weapon, bonus, position, inc)
@@ -55,7 +58,7 @@ const AttackOptions: React.FC<{
         <>
           {SignAndCount([att]).sign}
           {att}
-          {attacks.length-1 > index ? <>{"/"}</> : <></>}
+          {attacks.length - 1 > index ? <>{"/"}</> : <></>}
         </>
       ))}
     </>
@@ -77,10 +80,16 @@ export const MapBab: React.FC<CharBab> = ({
     return [0];
   };
 
-  const ench = weapon.enchantment? weapon.enchantment.enchantment === -1 ? 1 : weapon.enchantment.enchantment : 0
+  const ench = weapon.enchantment
+    ? weapon.enchantment.enchantment === -1
+      ? 1
+      : weapon.enchantment.enchantment
+    : 0;
 
-  const strenghtAttModified = strenghtAtt + FindWeaponToModified(specific, weapon) + ench
-  const dextrityAttModified = dextrityAtt + FindWeaponToModified(specific, weapon) + ench
+  const strenghtAttModified =
+    strenghtAtt + FindWeaponToModified(specific, weapon) + ench;
+  const dextrityAttModified =
+    dextrityAtt + FindWeaponToModified(specific, weapon) + ench;
 
   const attacksIncrements = getIncrements(bab);
 
@@ -91,15 +100,15 @@ export const MapBab: React.FC<CharBab> = ({
           <></>
         ) : (
           <>
-          <AttackOptions
-            type="melee"
-            weapon={weapon}
-            strenghtAtt={strenghtAttModified}
-            dextrityAtt={dextrityAttModified}
-            position={position}
-            increments={attacksIncrements}
-            attackFn={AttackMelee}
-          />
+            <AttackOptions
+              type="melee"
+              weapon={weapon}
+              strenghtAtt={strenghtAttModified}
+              dextrityAtt={dextrityAttModified}
+              position={position}
+              increments={attacksIncrements}
+              attackFn={AttackMelee}
+            />
           </>
         )}
       </div>
@@ -119,7 +128,7 @@ export const MapBab: React.FC<CharBab> = ({
         )}
       </div>
       <div style={{ gridColumn: 1, gridRow: 2 }}>
-        {WeaponRanged(weapon) ? (
+        {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? (
           <></>
         ) : (
           <AttackOptions

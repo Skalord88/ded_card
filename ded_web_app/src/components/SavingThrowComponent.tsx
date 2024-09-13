@@ -24,6 +24,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     "SAVING"
   );
   const saving = {
+    idFor: 1,
     for: SignAndCount([sT.fortitude]),
     forTot: SignAndCount([
       sT.fortitude,
@@ -33,6 +34,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     forAb: SignAndCount([BonusAbilities(char.abilitys, "COS")]),
     forOther: SignAndCount([savingBonusAll]),
     ///
+    idRef: 2,
     ref: SignAndCount([sT.reflex]),
     refTot: SignAndCount([
       sT.reflex,
@@ -42,6 +44,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     refAb: SignAndCount([BonusAbilities(char.abilitys, "DEX")]),
     refOther: SignAndCount([savingBonusAll]),
     ///
+    idWill: 3,
     will: SignAndCount([sT.will]),
     willTot: SignAndCount([
       sT.will,
@@ -75,11 +78,11 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
             <div>oth</div>
             <div style={{ gridColumn: 6 }}></div>
 
-            <D20Popup 
-              textOrWeapon="for: " 
+            <D20Popup
+              textOrWeapon="for: "
               value={saving.forTot.number}
               modifiers={listOfBonus}
-             />
+            />
             <div style={{ backgroundColor: "grey" }}>
               {saving.forTot.sign}
               {saving.forTot.number}
@@ -98,7 +101,12 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
             </div>
             <div></div>
 
-            <D20Popup textOrWeapon="ref: " value={saving.refTot.number} modifiers={listOfBonus} />
+            <D20Popup
+              key={saving.idRef}
+              textOrWeapon="ref: "
+              value={saving.refTot.number}
+              modifiers={listOfBonus}
+            />
             <div style={{ backgroundColor: "grey" }}>
               {saving.refTot.sign}
               {saving.refTot.number}
@@ -118,7 +126,12 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
 
             <div></div>
 
-            <D20Popup textOrWeapon="will: " value={saving.willTot.number} modifiers={listOfBonus} />
+            <D20Popup
+              key={saving.idWill}
+              textOrWeapon="will: "
+              value={saving.willTot.number}
+              modifiers={listOfBonus}
+            />
             <div style={{ backgroundColor: "grey" }}>
               {saving.willTot.sign}
               {saving.willTot.number}
@@ -151,7 +164,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
               {listOfBonus.map((mod) => {
                 return (
                   <p>
-                    {FormattingText(mod.targets[0])}{" - " + FormattingText(mod.targets[1])} {mod.bonus}
+                    {FormattingText(mod.targets[0])}
+                    {" - " + FormattingText(mod.targets[1])} {mod.bonus}
                   </p>
                 );
               })}
@@ -161,7 +175,9 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
           )}
         </div>
       </div>
-      <div><p>Spell Resistence:</p></div>
+      <div>
+        <p>Spell Resistence:</p>
+      </div>
     </>
   );
 };

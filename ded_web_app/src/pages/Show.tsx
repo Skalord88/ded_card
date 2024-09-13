@@ -12,7 +12,10 @@ import { DeleteButton } from "../components/DeleteButton";
 import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import {
-  CharacterPc
+  Attacks,
+  CharacterPc,
+  Inventory,
+  Item
 } from "../components/interfaces";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
@@ -27,6 +30,7 @@ import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 import { ArmorModifiers } from "../components/Armor/ArmorInterface";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import { MaxDextrityCount } from "../components/Armor/Function";
+import { reSizeWeapon } from "../components/Size/Function";
 
 export function Show() {
   let { charId } = useParams();
@@ -51,6 +55,23 @@ export function Show() {
     natural: FindInOneLengthModifier(modifications, 'NATURAL_ARMOR_BONUS'),
     deflection: FindInOneLengthModifier(modifications, 'DEFLECTION_BONUS'),
   }
+  const inventory: Inventory = {...char.inventory,
+    weaponOne: reSizeWeapon(char.race.size, char.inventory.weaponOne),
+    weaponTwo: reSizeWeapon(char.race.size, char.inventory.weaponTwo),
+    weaponThree: reSizeWeapon(char.race.size, char.inventory.weaponThree),
+    weaponFour: reSizeWeapon(char.race.size, char.inventory.weaponFour),
+    weaponFive: reSizeWeapon(char.race.size, char.inventory.weaponFive),
+  }
+  const attacks: Attacks = {
+    ...char.attacks,
+    firstAttackSetOne: reSizeWeapon(char.race.size, char.attacks.firstAttackSetOne),
+    secondAttackSetOne: reSizeWeapon(char.race.size, char.attacks.secondAttackSetOne),
+    additionalAttackSetOne: reSizeWeapon(char.race.size, char.attacks.additionalAttackSetOne),
+
+    firstAttackSetTwo: reSizeWeapon(char.race.size, char.attacks.firstAttackSetTwo),
+    secondAttackSetTwo: reSizeWeapon(char.race.size, char.attacks.secondAttackSetTwo),
+    additionalAttackSetTwo: reSizeWeapon(char.race.size, char.attacks.additionalAttackSetTwo),
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,7 +88,7 @@ export function Show() {
 
   return (
     <>
-      <div style={{ display: "grid" }}>
+      <div style={{ display: "grid", scale: '95%', justifyContent: 'center' }}>
         <div
           className="rpgui-container-framed-grey"
           style={{
@@ -167,7 +188,7 @@ export function Show() {
             gridRow: 7
           }}
         >
-          <MapOfAttackComponent char={char} bab={bab} strenghtAtt={strenghtAtt} dextrityAtt={dextrityAtt} specific={specificBab} />
+          <MapOfAttackComponent attacks={attacks} bab={bab} strenghtAtt={strenghtAtt} dextrityAtt={dextrityAtt} specific={specificBab} />
         </div>
         <div
           className="rpgui-container-framed-grey"

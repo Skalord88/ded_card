@@ -13,9 +13,9 @@ export const HpComponent: React.FC<HpComponentProps> = ({ char, abilitys }) => {
     <>
       <h2 className="rpgui-container-framed-golden-2">Hit Dice</h2>
       <div style={{ display: "flex", fontSize: "80%" }}>
-        {listHitDices.map((hD) => {
+        {listHitDices.map((hD, index) => {
           return (
-            <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
+            <div key={index} className="rpgui-container-framed-grey" style={{ flex: 1 }}>
               <p>
                 {hD.lv}D{hD.dice}
               </p>

@@ -15,16 +15,25 @@
 @media (max-width: 900px) {
     .rpgui-container-framed {
         font-size: 80%;
-		padding: 10px;
+		padding: 14px;
     }
 }
 
 @media (max-width: 600px) {
     .rpgui-container-framed {
-        font-size: 65%;
-		padding: 6px;
+		/* scale: 80%; */
+        font-size: 80%;
+		padding: 8px;
     }
 }
+
+/* @media (max-width: 768px) {
+	.your-grid-class {
+	  grid-template-columns: 1fr;
+	  grid-template-rows: auto;
+	}
+  } */
+  
 
 /* game div with background image*/
 .rpgui-container-framed

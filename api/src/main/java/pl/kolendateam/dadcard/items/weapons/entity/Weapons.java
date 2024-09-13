@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
-import java.util.ArrayList;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -9,6 +7,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
@@ -18,6 +17,7 @@ import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @Entity
 @Getter
@@ -39,6 +39,9 @@ public class Weapons extends Items {
   String specialAttacks;
 
   @Enumerated(EnumType.STRING)
+  SizeEnum size;
+
+  @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
   @ManyToOne(cascade = CascadeType.MERGE)
@@ -56,8 +59,10 @@ public class Weapons extends Items {
       arry.add("'" + wC.toString() + "'");
     }
     this.type = arry.toString();
+    this.size = weapon.size;
     if (weapon.specialAttacks != null) {
-      this.specialAttacks = MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
+      this.specialAttacks =
+        MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
     } else {
       this.specialAttacks = null;
     }
@@ -67,14 +72,11 @@ public class Weapons extends Items {
     } else {
       this.enchantment = MapperEnchantment.toEnchantment(weapon.enchantment);
     }
-
   }
 
-  public void setItemType(ItemTypeEnum itemType) {
-  }
+  public void setItemType(ItemTypeEnum itemType) {}
 
   public Weapons(int idZero) {
     super(idZero);
   }
-
 }

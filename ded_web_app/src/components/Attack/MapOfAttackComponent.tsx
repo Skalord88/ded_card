@@ -1,18 +1,18 @@
 import { WeaponLight, WeaponTwoHanded } from "../functions";
-import { CharacterPc } from "../interfaces";
+import { Attacks, CharacterPc } from "../interfaces";
 import { Modifiers } from "../Modifiers/ModifierInterface";
 import { MapBab } from "./Bab/MapBab";
 
 export type MapOfAttackComponentProps = {
-  char: CharacterPc;
+  attacks: Attacks;
   bab: number;
   strenghtAtt: number;
   dextrityAtt: number;
-  specific: Modifiers[]
+  specific: Modifiers[];
 };
 
 export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
-  char,
+  attacks,
   bab,
   strenghtAtt,
   dextrityAtt,
@@ -26,35 +26,37 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
           <p>set I</p>
         </div>
         <p style={{ gridColumn: 1, gridRow: 2 }}>
-          I.1 {char.attacks.firstAttackSetOne.name}
+          I.1 {attacks.firstAttackSetOne.name}
           <MapBab
+            key={"I.1"}
             bab={bab}
-            weapon={char.attacks.firstAttackSetOne}
+            weapon={attacks.firstAttackSetOne} //firstAttackSetOne
             strenghtAtt={strenghtAtt}
             dextrityAtt={dextrityAtt}
             position={{
               pose: true,
-              twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetOne),
-              light: WeaponLight(char.attacks.secondAttackSetOne)
+              twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
+              light: WeaponLight(attacks.secondAttackSetOne)
             }}
             specific={specific}
           />
         </p>
         <p style={{ gridColumn: 2, gridRow: 2 }}>
-          {WeaponTwoHanded(char.attacks.firstAttackSetOne) ? (
+          {WeaponTwoHanded(attacks.firstAttackSetOne) ? (
             <>I.2 ---</>
           ) : (
             <>
-              I.2 {char.attacks.secondAttackSetOne.name}
+              I.2 {attacks.secondAttackSetOne.name}
               <MapBab
+                key={"I.2"}
                 bab={bab}
-                weapon={char.attacks.secondAttackSetOne}
+                weapon={attacks.secondAttackSetOne}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
                 position={{
                   pose: false,
-                  twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetOne),
-                  light: WeaponLight(char.attacks.secondAttackSetOne)
+                  twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
+                  light: WeaponLight(attacks.secondAttackSetOne)
                 }}
                 specific={specific}
               />
@@ -62,55 +64,63 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
           )}
         </p>
         <p style={{ gridColumn: 1, gridRow: 3 }}>
-          I.11 {char.attacks.additionalAttackSetOne.name}
-          <MapBab
-            bab={bab}
-            strenghtAtt={strenghtAtt}
-            dextrityAtt={dextrityAtt}
-            weapon={char.attacks.additionalAttackSetOne}
-            position={{
-              pose: true,
-              twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetOne),
-              light: WeaponLight(char.attacks.secondAttackSetOne)
-            }}
-            specific={specific}
-          />
+          {WeaponTwoHanded(attacks.additionalAttackSetOne) ? (
+            <>I.11 ---</>
+          ) : (
+            <>
+              I.11 {attacks.additionalAttackSetOne.name}
+              <MapBab
+                key={"I.11"}
+                bab={bab}
+                strenghtAtt={strenghtAtt}
+                dextrityAtt={dextrityAtt}
+                weapon={attacks.additionalAttackSetOne}
+                position={{
+                  pose: true,
+                  twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
+                  light: WeaponLight(attacks.secondAttackSetOne)
+                }}
+                specific={specific}
+              />
+            </>
+          )}
         </p>
-
 
         <div style={{ gridColumn: 1, gridRow: 4 }}>
           <p>set II</p>
         </div>
         <p style={{ gridColumn: 1, gridRow: 5 }}>
-          II.1 {char.attacks.firstAttackSetTwo.name}
+          II.1 {attacks.firstAttackSetTwo.name}
           <MapBab
+            key={"II.1"}
             bab={bab}
             strenghtAtt={strenghtAtt}
             dextrityAtt={dextrityAtt}
-            weapon={char.attacks.firstAttackSetTwo}
+            weapon={attacks.firstAttackSetTwo}
             position={{
               pose: true,
-              twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetTwo),
-              light: WeaponLight(char.attacks.secondAttackSetTwo)
+              twoHanded: WeaponTwoHanded(attacks.firstAttackSetTwo),
+              light: WeaponLight(attacks.secondAttackSetTwo)
             }}
             specific={specific}
           />
         </p>
         <p style={{ gridColumn: 2, gridRow: 5 }}>
-          {WeaponTwoHanded(char.attacks.firstAttackSetTwo) ? (
+          {WeaponTwoHanded(attacks.firstAttackSetTwo) ? (
             <>II.2 ---</>
           ) : (
             <>
-              II.2 {char.attacks.secondAttackSetTwo.name}
+              II.2 {attacks.secondAttackSetTwo.name}
               <MapBab
-                weapon={char.attacks.secondAttackSetTwo}
+                key={"II.2"}
+                weapon={attacks.secondAttackSetTwo}
                 bab={bab}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
                 position={{
                   pose: false,
-                  twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetTwo),
-                  light: WeaponLight(char.attacks.secondAttackSetTwo)
+                  twoHanded: WeaponTwoHanded(attacks.firstAttackSetTwo),
+                  light: WeaponLight(attacks.secondAttackSetTwo)
                 }}
                 specific={specific}
               />
@@ -118,19 +128,26 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
           )}
         </p>
         <p style={{ gridColumn: 1, gridRow: 6 }}>
-          II.11 {char.attacks.additionalAttackSetTwo.name}
-          <MapBab
-            bab={bab}
-            strenghtAtt={strenghtAtt}
-            dextrityAtt={dextrityAtt}
-            weapon={char.attacks.additionalAttackSetTwo}
-            position={{
-              pose: true,
-              twoHanded: WeaponTwoHanded(char.attacks.firstAttackSetTwo),
-              light: WeaponLight(char.attacks.secondAttackSetTwo)
-            }}
-            specific={specific}
-          />
+          {WeaponTwoHanded(attacks.additionalAttackSetTwo) ? (
+            <>II.11 ---</>
+          ) : (
+            <>
+              II.11 {attacks.additionalAttackSetTwo.name}
+              <MapBab
+                key={"II.11"}
+                bab={bab}
+                strenghtAtt={strenghtAtt}
+                dextrityAtt={dextrityAtt}
+                weapon={attacks.additionalAttackSetTwo}
+                position={{
+                  pose: true,
+                  twoHanded: WeaponTwoHanded(attacks.firstAttackSetTwo),
+                  light: WeaponLight(attacks.secondAttackSetTwo)
+                }}
+                specific={specific}
+              />
+            </>
+          )}
         </p>
       </div>
     </>

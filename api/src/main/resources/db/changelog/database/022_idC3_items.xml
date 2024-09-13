@@ -39,6 +39,9 @@
             <column name="weight" type="decimal">
                 <constraints nullable="true"/>
             </column>
+            <column name="size" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
             <column name="type" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
@@ -48,9 +51,6 @@
             <column name="description" type="varchar(1000)">
                 <constraints nullable="true"/>
             </column>
-            <!-- <column name="armor_class" type="int">
-                <constraints nullable="true"/>
-            </column> -->
             <column name="modifiers" type="jsonb">
                 <constraints nullable="true"/>
             </column>

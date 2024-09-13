@@ -180,7 +180,6 @@ export type Item = {
 export interface Armor extends Item {
   armorName: string;
   modifiers: Modifiers[]
-  // armorClass: number;
   armorType: string;
   maxDex: number;
   penality: number;
@@ -207,6 +206,7 @@ export interface Weapon extends Item {
   critical: string;
   range: number;
   type: string[];
+  size: string;
   specialAttacks: string | null;
   enchantment: Enchantment;
   material: string | null

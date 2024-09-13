@@ -14,41 +14,32 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({
   char,
   armorModifiers
 }) => {
-  const listOfArmor: ArmorList = CalculateArmorInChar(
-    char,
-    armorModifiers
-  );
+  const listOfArmor: ArmorList = CalculateArmorInChar(char, armorModifiers);
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
       <div style={{ display: "flex" }}>
-        <TotalArmor armorModifiers={armorModifiers}/>
-        {listOfArmor.map((ar) => {
-          return (
-            <>
-              {ar.bonus > 0 ? (
-                <>
-                  <div className="rpgui-container-framed-grey">
-                    <p style={{ flex: 1 }}>
-                      {ar.sign}
-                      {ar.bonus}
-                    </p>
-                    <p style={{ flex: 1 }}>{ar.text}</p>
-                    <p style={{ flex: 1 }}>{ar.item}</p>
-                  </div>
-                </>
-              ) : (
-                <></>
-              )}
-            </>
-          );
+        <TotalArmor armorModifiers={armorModifiers} />
+        {listOfArmor.map((ar, index) => {
+          return ar.bonus > 0 ? (
+            <div key={index} className="rpgui-container-framed-grey">
+              <p style={{ flex: 1 }}>
+                {ar.sign}
+                {ar.bonus}
+              </p>
+              <p style={{ flex: 1 }}>{ar.text}</p>
+              <p style={{ flex: 1 }}>{ar.item}</p>
+            </div>
+          ) : null;
         })}
+
         <div className="rpgui-container-framed-grey">
-          <p style={{ flex: 1 }}></p></div>
-          <Failure inventory={char.inventory} />
-          <FlatFooted armorModifiers={armorModifiers} />
-          <Contact armorModifiers={armorModifiers} />
+          <p style={{ flex: 1 }}></p>
+        </div>
+        <Failure inventory={char.inventory} />
+        <FlatFooted armorModifiers={armorModifiers} />
+        <Contact armorModifiers={armorModifiers} />
       </div>
     </>
   );

@@ -4,5 +4,6 @@ export type ThrowDiceProps = {
 }
 
 export const ThrowDice: React.FC<ThrowDiceProps> = ({ dice, value }) => {
-    return <p>{dice} + {value} = {dice + value}</p>
-}
+    return <div>{dice} + {value} = {dice + value}</div>;
+  };
+  

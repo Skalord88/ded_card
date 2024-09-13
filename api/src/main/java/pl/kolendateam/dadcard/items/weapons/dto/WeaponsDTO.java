@@ -1,12 +1,10 @@
 package pl.kolendateam.dadcard.items.weapons.dto;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
@@ -18,6 +16,7 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,6 +31,7 @@ public class WeaponsDTO implements Serializable {
   public WeaponNumericEnum critical;
   public Integer range;
   public BigDecimal weight;
+  public SizeEnum size;
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
@@ -52,25 +52,25 @@ public class WeaponsDTO implements Serializable {
     this.critical = item.getCritical();
     this.range = item.getRange();
     this.weight = item.getWeight();
+    this.size = item.getSize();
     if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;
     } else {
       SpecialAttacksDTO sAttacksDTO = new Gson()
-          .fromJson(item.getSpecialAttacks(), SpecialAttacksDTO.class);
+        .fromJson(item.getSpecialAttacks(), SpecialAttacksDTO.class);
       this.specialAttacks = sAttacksDTO;
     }
     Gson gson = new Gson();
-    Type listWeaponType = new TypeToken<WeaponCategoriesEnum[]>() {
-    }.getType();
+    Type listWeaponType = new TypeToken<WeaponCategoriesEnum[]>() {}.getType();
     WeaponCategoriesEnum[] typ = gson.fromJson(item.getType(), listWeaponType);
     this.type = typ;
     this.description = item.getDescription();
     if (item.getEnchantment() == null) {
       this.enchantment = null;
     } else {
-      this.enchantment = MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+      this.enchantment =
+        MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
     }
     this.material = item.getMaterial();
   }
-
 }
