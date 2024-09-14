@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {
-  AttackIIMelee,
-  AttackIIRanged,
-  AttackMelee,
-  AttackRanged,
-  IndexWeaponOne,
   SortedBooks,
   SpellsFilter,
-  WeaponLight,
   WeaponTwoHanded
 } from "./functions";
 import {
-  ArmorInCharacter,
-  Attacks,
   BooksFromChar,
-  CharAttack,
-  CharBab,
   SelectOffWeapon,
   SelectWeapon,
   Spell,
@@ -23,7 +13,6 @@ import {
   Weapon
 } from "./interfaces";
 import { noneWeapon } from "./variables";
-import { MapBab } from "./Attack/Bab/MapBab";
 
 
 

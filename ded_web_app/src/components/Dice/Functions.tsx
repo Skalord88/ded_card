@@ -75,26 +75,26 @@ export function DiceText(dice: string): string {
 // X2_1820("X2_1820"),
 // X3X4("X3X4");
 
-export function DamageDice(damage: string): number[] {
+export function DamageDice(damage: string, dmg: number): number[] {
   switch (damage) {
     case "D2":
-      return [ThrowDice2()];
+      return [ThrowDice2() + dmg];
     case "D3":
-      return [ThrowDice3()];
+      return [ThrowDice3() + dmg];
     case "D4":
-      return [ThrowDice4()];
+      return [ThrowDice4() + dmg];
     case "DD4":
-      return [ThrowDice4(), ThrowDice4()];
+      return [ThrowDice4() + ThrowDice4() + dmg];
     case "D6":
-      return [ThrowDice6()];
+      return [ThrowDice6() + dmg];
     case "DD6":
-      return [ThrowDice6(), ThrowDice6()];
+      return [ThrowDice6() + ThrowDice6() + dmg];
     case "D8":
-      return [ThrowDice8()];
+      return [ThrowDice8() + dmg];
     case "D10":
-      return [ThrowDice10()];
+      return [ThrowDice10() + dmg];
     case "D12":
-      return [ThrowDice12()];
+      return [ThrowDice12() + dmg];
     default:
       return [0];
   }
@@ -114,35 +114,35 @@ export function CriticalHit(critic: string): number {
       return 20;
   }
 }
-export function CriticalDamage(weapon: Weapon): number[] {
+export function CriticalDamage(weapon: Weapon, dmg:number): number[] {
   switch (weapon.critical) {
     case "X2":
       return [
-        TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage))
+        TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, dmg))
       ];
     case "X3":
       return [
-        TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage)) 
-        + TotDamageDice(DamageDice(weapon.damage)) 
+        TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, 0)) 
+        + TotDamageDice(DamageDice(weapon.damage, dmg))
       ];
     case "X4":
       return [
-        TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage)) 
-        + TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage))
+        TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, 0)) 
+        + TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, dmg))
       ];
     case "X2_1920":
       return [
-        TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage))
+        TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, dmg))
       ];
     case "X2_1820":
       return [
-        TotDamageDice(DamageDice(weapon.damage))
-        + TotDamageDice(DamageDice(weapon.damage))
+        TotDamageDice(DamageDice(weapon.damage, 0))
+        + TotDamageDice(DamageDice(weapon.damage, dmg))
       ];
     default:
       return [0];

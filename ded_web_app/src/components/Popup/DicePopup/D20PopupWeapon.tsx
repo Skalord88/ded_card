@@ -8,6 +8,7 @@ import { WeaponDamageDice } from "../../Dice/WeaponDamageDice";
 export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
   type,
   bab,
+  dmg,
   increments,
   modifiers,
   weapon
@@ -52,7 +53,7 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
                 <WeaponThrowDice dices={dices} values={attacks} weapon={weapon} />
               </div>
               <div style={{ gridColumn: 2 }}>
-                <WeaponDamageDice dices={dices} weapon={weapon} />
+                <WeaponDamageDice dices={dices} weapon={weapon} dmg={dmg} />
               </div>
             </div>
             {modifiers.map((mod) => {

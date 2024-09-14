@@ -53,18 +53,18 @@ export const SpeedComponent: React.FC<SpeedComponentProps> = ({ speed }) => {
 
       <p style={{backgroundColor:"grey"}}>one hour</p>
       <div>
-        <p>move: {Math.floor(speed * 0.36)}km</p>
+        <p>move: {Math.floor(speed * 0.30)}km</p>
       </div>
       <div>
-        <p>rapid: {Math.floor(speed * 0.72)}km</p>
+        <p>rapid: {Math.floor(speed * 0.60)}km</p>
       </div>
 
-      <p style={{backgroundColor:"grey"}}>one day</p>
+      <p style={{backgroundColor:"grey"}}>one day - 6 hours</p>
       <div>
-        <p>move: {Math.floor(speed * 0.36 * 8)}km</p>
+        <p>move: {Math.floor(speed * 0.30 * 6)}km</p>
       </div>
       <div>
-        <p>rapid: {Math.floor(speed * 0.72 * 8)}km</p>
+        <p>rapid: {Math.floor(speed * 0.60 * 6)}km</p>
       </div>
     </>
   );

@@ -295,15 +295,6 @@ export type CharAttack = {
   ) => void
 }
 
-export type CharBab = {
-  bab: number,
-  strenghtAtt: number,
-  dextrityAtt: number,
-  weapon: Weapon,
-  position: Position
-  specific: Modifiers[]
-}
-
 export type Position = {
   pose: boolean,
   twoHanded: boolean,

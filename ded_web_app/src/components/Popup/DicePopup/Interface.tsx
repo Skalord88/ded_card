@@ -10,6 +10,7 @@ export type DicePopupWeaponProps = {
   type: string;
   weapon: Weapon;
   bab: number[];
+  dmg: number;
   increments: number[];
   modifiers: Modifiers[];
 };

@@ -20,7 +20,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
         onMouseEnter={() => togglePopup(true)}
         onMouseLeave={() => togglePopup(false)}
       >
-        <p>{text}</p>
+        <>{text}</>
         <span
           style={{ width: 400 }}
           className={`popuptext rpgui-container-framed ${

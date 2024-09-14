@@ -67,6 +67,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               <MapBab
                 weapon={attack.firstAttackSetOne}
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 position={{
@@ -97,6 +98,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               <MapBab
                 weapon={attack.secondAttackSetOne}
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 position={{
@@ -128,6 +130,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               </>
               <MapBab
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 weapon={attack.additionalAttackSetOne}
@@ -160,6 +163,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
   
               <MapBab
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 weapon={attack.secondAttackSetTwo}
@@ -190,6 +194,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               <MapBab
                 weapon={attack.secondAttackSetTwo}
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 position={{
@@ -221,6 +226,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
   
               <MapBab
                 bab={bab}
+                strenght={0}
                 strenghtAtt={bab}
                 dextrityAtt={bab}
                 weapon={attack.additionalAttackSetTwo}

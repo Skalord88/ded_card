@@ -8,31 +8,37 @@ import {
   WeaponThrown,
   WeaponTwoHanded
 } from "../../functions";
-import { CharBab, Position, Weapon } from "../../interfaces";
-import {
-  FindWeaponToModified,
-  ModifiedWeaponBabBonus
-} from "../../Modifiers/Bab/Function";
+import { Position, Weapon } from "../../interfaces";
+import { FindWeaponToModified } from "../../Modifiers/Bab/Function";
+import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
 
-const AttackOptions: React.FC<{
+export type AttackOptionsProps = {
   type: string;
   weapon: Weapon;
+  dmg: number;
   strenghtAtt: number;
   dextrityAtt: number;
   position: Position;
   increments: number[];
   attackFn: Function;
-}> = ({
+};
+
+export const AttackOptions: React.FC<AttackOptionsProps> = ({
   type,
   weapon,
+  dmg,
   strenghtAtt,
   dextrityAtt,
   position,
   increments,
   attackFn
 }) => {
-  const checkType = (typeToCheck: string) => {
+  // const checkDamageBonus = (strenght: number, position: Position): number => {
+  //   if(position.)
+  // }
+
+  const checkType = (typeToCheck: string): number => {
     if (typeToCheck === "distance") return dextrityAtt;
     if (typeToCheck === "distance two hands") return dextrityAtt;
     return strenghtAtt;
@@ -51,6 +57,7 @@ const AttackOptions: React.FC<{
         weapon={weapon}
         increments={increments}
         bab={attacks}
+        dmg={dmg}
         modifiers={[]}
       />
       :
@@ -60,13 +67,24 @@ const AttackOptions: React.FC<{
           {att}
           {attacks.length - 1 > index ? <>{"/"}</> : <></>}
         </>
-      ))}
+      ))} {weapon.damage}{SignAndCount([dmg]).sign}{dmg}
     </>
   );
 };
 
-export const MapBab: React.FC<CharBab> = ({
+export type MapBabProps = {
+  bab: number;
+  strenght: number;
+  strenghtAtt: number;
+  dextrityAtt: number;
+  weapon: Weapon;
+  position: Position;
+  specific: Modifiers[];
+};
+
+export const MapBab: React.FC<MapBabProps> = ({
   bab,
+  strenght,
   strenghtAtt,
   dextrityAtt,
   weapon,
@@ -79,6 +97,7 @@ export const MapBab: React.FC<CharBab> = ({
     if (bab > 5) return [0, 5];
     return [0];
   };
+  const attacksIncrements = getIncrements(bab);
 
   const ench = weapon.enchantment
     ? weapon.enchantment.enchantment === -1
@@ -91,10 +110,14 @@ export const MapBab: React.FC<CharBab> = ({
   const dextrityAttModified =
     dextrityAtt + FindWeaponToModified(specific, weapon) + ench;
 
-  const attacksIncrements = getIncrements(bab);
+  const enchDmg =
+    weapon.enchantment.enchantment < 0 ? 0 : weapon.enchantment.enchantment;
+
+  const twoHandDmg: number = position.twoHanded? strenght + Math.floor(strenght / 2) + enchDmg : strenght + enchDmg
+  const dmgTwoHand: number = twoHandDmg < strenght + enchDmg? strenght + enchDmg : twoHandDmg;
 
   return (
-    <div className="rpgui-container-framed-grey" style={{ display: "grid" }}>
+    <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
         {WeaponRanged(weapon) ? (
           <></>
@@ -103,6 +126,7 @@ export const MapBab: React.FC<CharBab> = ({
             <AttackOptions
               type="melee"
               weapon={weapon}
+              dmg={dmgTwoHand}
               strenghtAtt={strenghtAttModified}
               dextrityAtt={dextrityAttModified}
               position={position}
@@ -117,6 +141,7 @@ export const MapBab: React.FC<CharBab> = ({
           <AttackOptions
             type="distance"
             weapon={weapon}
+            dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
             dextrityAtt={dextrityAttModified}
@@ -134,6 +159,7 @@ export const MapBab: React.FC<CharBab> = ({
           <AttackOptions
             type="melee two hands"
             weapon={weapon}
+            dmg={Math.floor(strenght / 2) + enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
             dextrityAtt={dextrityAttModified}
@@ -147,6 +173,7 @@ export const MapBab: React.FC<CharBab> = ({
           <AttackOptions
             type="distance two hands"
             weapon={weapon}
+            dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
             dextrityAtt={dextrityAttModified}

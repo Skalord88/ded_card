@@ -1,11 +1,12 @@
 import { WeaponLight, WeaponTwoHanded } from "../functions";
-import { Attacks, CharacterPc } from "../interfaces";
+import { Attacks } from "../interfaces";
 import { Modifiers } from "../Modifiers/ModifierInterface";
 import { MapBab } from "./Bab/MapBab";
 
 export type MapOfAttackComponentProps = {
   attacks: Attacks;
   bab: number;
+  strenght: number;
   strenghtAtt: number;
   dextrityAtt: number;
   specific: Modifiers[];
@@ -14,6 +15,7 @@ export type MapOfAttackComponentProps = {
 export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
   attacks,
   bab,
+  strenght,
   strenghtAtt,
   dextrityAtt,
   specific
@@ -23,14 +25,15 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
       <div style={{ display: "grid" }}>
         <div style={{ gridColumn: 1, gridRow: 1 }}>
-          <p>set I</p>
+          <p style={{backgroundColor:'grey'}}>set I</p>
         </div>
-        <p style={{ gridColumn: 1, gridRow: 2 }}>
+        <p style={{ gridColumn: 2, gridRow: 2 }}>
           I.1 {attacks.firstAttackSetOne.name}
           <MapBab
             key={"I.1"}
             bab={bab}
-            weapon={attacks.firstAttackSetOne} //firstAttackSetOne
+            strenght={strenght}
+            weapon={attacks.firstAttackSetOne}
             strenghtAtt={strenghtAtt}
             dextrityAtt={dextrityAtt}
             position={{
@@ -41,7 +44,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
             specific={specific}
           />
         </p>
-        <p style={{ gridColumn: 2, gridRow: 2 }}>
+        <p style={{ gridColumn: 3, gridRow: 2 }}>
           {WeaponTwoHanded(attacks.firstAttackSetOne) ? (
             <>I.2 ---</>
           ) : (
@@ -50,6 +53,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
               <MapBab
                 key={"I.2"}
                 bab={bab}
+                strenght={strenght}
                 weapon={attacks.secondAttackSetOne}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
@@ -63,7 +67,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
             </>
           )}
         </p>
-        <p style={{ gridColumn: 1, gridRow: 3 }}>
+        <p style={{ gridColumn: 2, gridRow: 3 }}>
           {WeaponTwoHanded(attacks.additionalAttackSetOne) ? (
             <>I.11 ---</>
           ) : (
@@ -72,6 +76,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
               <MapBab
                 key={"I.11"}
                 bab={bab}
+                strenght={strenght}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
                 weapon={attacks.additionalAttackSetOne}
@@ -87,13 +92,14 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
         </p>
 
         <div style={{ gridColumn: 1, gridRow: 4 }}>
-          <p>set II</p>
+          <p style={{backgroundColor:'grey'}}>set II</p>
         </div>
-        <p style={{ gridColumn: 1, gridRow: 5 }}>
+        <p style={{ gridColumn: 2, gridRow: 5 }}>
           II.1 {attacks.firstAttackSetTwo.name}
           <MapBab
             key={"II.1"}
             bab={bab}
+            strenght={strenght}
             strenghtAtt={strenghtAtt}
             dextrityAtt={dextrityAtt}
             weapon={attacks.firstAttackSetTwo}
@@ -105,7 +111,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
             specific={specific}
           />
         </p>
-        <p style={{ gridColumn: 2, gridRow: 5 }}>
+        <p style={{ gridColumn: 3, gridRow: 5 }}>
           {WeaponTwoHanded(attacks.firstAttackSetTwo) ? (
             <>II.2 ---</>
           ) : (
@@ -115,6 +121,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                 key={"II.2"}
                 weapon={attacks.secondAttackSetTwo}
                 bab={bab}
+                strenght={strenght}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
                 position={{
@@ -127,7 +134,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
             </>
           )}
         </p>
-        <p style={{ gridColumn: 1, gridRow: 6 }}>
+        <p style={{ gridColumn: 2, gridRow: 6 }}>
           {WeaponTwoHanded(attacks.additionalAttackSetTwo) ? (
             <>II.11 ---</>
           ) : (
@@ -136,6 +143,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
               <MapBab
                 key={"II.11"}
                 bab={bab}
+                strenght={strenght}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
                 weapon={attacks.additionalAttackSetTwo}
