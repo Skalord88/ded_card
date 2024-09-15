@@ -1680,6 +1680,30 @@ If a death attack is attempted and fails (the victim makes her save) or if the a
       <column name="description"
         value="Dazzled in bright sunlight or within the radius of a daylight spell" />
     </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Sneak Attack with halfling sling" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="
+  If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.
+
+  The rogue’s attack deals extra damage any time her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and it increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied.
+  
+  Ranged attacks can count as sneak attacks only if the target is within 30 feet.
+  
+  With a sap (blackjack) or an unarmed strike, a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual -4 penalty.
+  
+  A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
+  " />
+  <column name="modifiers"
+        value="[
+      {
+            &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
+            &quot;bonus&quot; : 1,
+            &quot;targets&quot; : [&quot;HALFLING_SLING&quot;]
+            } 
+    ]" />
+    </insert>
 
   </changeSet>
 </databaseChangeLog>

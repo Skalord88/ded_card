@@ -42,6 +42,7 @@ public enum ModifierEnum {
   THROWN,
   SLING,
   MOUNTED_RANGED,
+  HALFLING_SLING,
 
   // movment
   SPEED,
