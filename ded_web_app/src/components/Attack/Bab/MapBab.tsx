@@ -67,7 +67,10 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
           {att}
           {attacks.length - 1 > index ? <>{"/"}</> : <></>}
         </>
-      ))} {weapon.damage}{SignAndCount([dmg]).sign}{dmg}
+      ))}{" "}
+      {weapon.damage}
+      {SignAndCount([dmg]).sign}
+      {dmg}
     </>
   );
 };
@@ -113,8 +116,11 @@ export const MapBab: React.FC<MapBabProps> = ({
   const enchDmg =
     weapon.enchantment.enchantment < 0 ? 0 : weapon.enchantment.enchantment;
 
-  const twoHandDmg: number = position.twoHanded? strenght + Math.floor(strenght / 2) + enchDmg : strenght + enchDmg
-  const dmgTwoHand: number = twoHandDmg < strenght + enchDmg? strenght + enchDmg : twoHandDmg;
+  const twoHandDmg: number = position.twoHanded
+    ? strenght + Math.floor(strenght / 2) + enchDmg
+    : strenght + enchDmg;
+  const dmgTwoHand: number =
+    twoHandDmg < strenght + enchDmg ? strenght + enchDmg : twoHandDmg;
 
   return (
     <div style={{ display: "grid" }}>
@@ -156,16 +162,22 @@ export const MapBab: React.FC<MapBabProps> = ({
         {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? (
           <></>
         ) : (
-          <AttackOptions
-            type="melee two hands"
-            weapon={weapon}
-            dmg={Math.floor(strenght / 2) + enchDmg}
-            position={position}
-            strenghtAtt={strenghtAttModified}
-            dextrityAtt={dextrityAttModified}
-            increments={attacksIncrements}
-            attackFn={AttackIIMelee}
-          />
+          <>
+            {position.twoHanded ? (
+              <></>
+            ) : (
+              <AttackOptions
+                type="melee two hands"
+                weapon={weapon}
+                dmg={Math.floor(strenght / 2) + enchDmg}
+                position={position}
+                strenghtAtt={strenghtAttModified}
+                dextrityAtt={dextrityAttModified}
+                increments={attacksIncrements}
+                attackFn={AttackIIMelee}
+              />
+            )}
+          </>
         )}
       </div>
       <div style={{ gridColumn: 2, gridRow: 2 }}>

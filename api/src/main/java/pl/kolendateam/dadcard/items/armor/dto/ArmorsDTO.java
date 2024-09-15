@@ -34,10 +34,6 @@ public class ArmorsDTO implements Serializable {
   public MaterialEnum material;
   public EnchantmentDTO enchantment;
 
-  public ArmorsDTO(int idZero) {
-    this.id = idZero;
-  }
-
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
     this.name = item.getName();

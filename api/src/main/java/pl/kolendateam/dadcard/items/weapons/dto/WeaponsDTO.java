@@ -38,9 +38,9 @@ public class WeaponsDTO implements Serializable {
   public EnchantmentDTO enchantment;
   public MaterialEnum material;
 
-  public WeaponsDTO(int idZero) {
-    this.id = idZero;
-  }
+  // public WeaponsDTO(int idZero) {
+  //   this.id = idZero;
+  // }
 
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();

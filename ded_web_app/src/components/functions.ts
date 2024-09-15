@@ -9,6 +9,16 @@ export function SignNumber(
     if (number < 0) { return "" }
     return "+";
 }
+export function SignNumberEnchant(
+    number: number
+): string {
+    switch(number){
+        case -2: return ""
+        case -1: return "prf"
+        case 0: return ""
+        default: return "+" + number
+    }
+}
 
 export function SignAndCount(
     numbers: number[]

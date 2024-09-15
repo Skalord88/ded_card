@@ -22,7 +22,6 @@ public class ShieldsDTO {
   public ItemTypeEnum itemType;
   public ArmorsEnum shieldName;
   public Set<ModifierDTO> modifiers;
-  // public int armorClass;
   public BigDecimal cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
@@ -53,9 +52,5 @@ public class ShieldsDTO {
         MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
     }
     this.material = item.getMaterial();
-  }
-
-  public ShieldsDTO(int idZero) {
-    this.id = idZero;
   }
 }

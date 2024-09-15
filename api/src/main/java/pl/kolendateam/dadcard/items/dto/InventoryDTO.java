@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.items.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
@@ -31,43 +30,42 @@ public class InventoryDTO implements Serializable {
   public WondrousItemsDTO legs;
 
   public InventoryDTO(Inventory inventory) {
-
     this.id = inventory.getId();
 
     if (inventory.getArmor() != null) {
       this.armor = MapperItemsDTO.toArmorDTO(inventory.getArmor());
     } else {
-      this.armor = new ArmorsDTO(2);
+      this.armor = null;
     }
     if (inventory.getShield() != null) {
       this.shield = MapperItemsDTO.toShieldDTO(inventory.getShield());
     } else {
-      this.shield = new ShieldsDTO(3);
+      this.shield = null;
     }
     if (inventory.getWeaponOne() != null) {
       this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
     } else {
-      this.weaponOne = new WeaponsDTO(1);
+      this.weaponOne = null;
     }
     if (inventory.getWeaponTwo() != null) {
       this.weaponTwo = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
     } else {
-      this.weaponTwo = new WeaponsDTO(1);
+      this.weaponTwo = null;
     }
     if (inventory.getWeaponThree() != null) {
       this.weaponThree = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
     } else {
-      this.weaponThree = new WeaponsDTO(1);
+      this.weaponThree = null;
     }
     if (inventory.getWeaponFour() != null) {
       this.weaponFour = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
     } else {
-      this.weaponFour = new WeaponsDTO(1);
+      this.weaponFour = null;
     }
     if (inventory.getWeaponFive() != null) {
       this.weaponFive = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
     } else {
-      this.weaponFive = new WeaponsDTO(1);
+      this.weaponFive = null;
     }
     if (inventory.getBackpack() != null) {
       this.backpack = MapperItemsDTO.toListItemsDTO(inventory.getBackpack());
@@ -75,17 +73,17 @@ public class InventoryDTO implements Serializable {
     if (inventory.getHead() != null) {
       this.head = MapperItemsDTO.toWondrousItemsDTO(inventory.getHead());
     } else {
-      this.head = new WondrousItemsDTO(4);
+      this.head = null;
     }
     if (inventory.getNeck() != null) {
       this.neck = MapperItemsDTO.toWondrousItemsDTO(inventory.getNeck());
     } else {
-      this.head = new WondrousItemsDTO(4);
+      this.head = null;
     }
     if (inventory.getArms() != null) {
       this.arms = MapperItemsDTO.toWondrousItemsDTO(inventory.getArms());
     } else {
-      this.arms = new WondrousItemsDTO(4);
+      this.arms = null;
     }
     if (inventory.getHands() != null) {
       this.hands = MapperItemsDTO.toListItemsDTO(inventory.getHands());
@@ -93,13 +91,10 @@ public class InventoryDTO implements Serializable {
     if (inventory.getCloth() != null) {
       this.cloth = MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth());
     } else {
-      this.head = new WondrousItemsDTO(4);
+      this.head = null;
     }
     if (inventory.getLegs() != null) {
       this.legs = MapperItemsDTO.toWondrousItemsDTO(inventory.getLegs());
-    } else {
-      this.head = new WondrousItemsDTO(4);
     }
   }
-
 }

@@ -7,6 +7,10 @@
 <changeSet id="302" author="oscar">
 
     <insert tableName="enchantment">
+        <column name='id' value="-2"/>
+        <column name="enchantment" value="-2"/>
+    </insert>
+    <insert tableName="enchantment">
         <column name='id' value="-1"/>
         <column name="enchantment" value="-1"/>
     </insert>

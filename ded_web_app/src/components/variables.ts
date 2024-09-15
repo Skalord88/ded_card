@@ -52,7 +52,7 @@ export const noneWeapon: Weapon = {
     range: 0,
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
     specialAttacks: null,
-    enchantment: { id: 0, enchantment: 0 },
+    enchantment: { id: -2, enchantment: -2 },
     material: null
 }
 
@@ -110,7 +110,7 @@ export const characterEmpty: CharacterPc = {
         levelAdjustment: 0,
         size: {
             id:0,
-            size: 0,
+            size: '',
             modifiers: []
         },
         availableRegions: []

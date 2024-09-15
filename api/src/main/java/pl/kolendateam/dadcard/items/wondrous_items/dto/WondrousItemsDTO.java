@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.items.wondrous_items.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
@@ -24,9 +23,5 @@ public class WondrousItemsDTO implements Serializable {
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.description = item.getDescription();
-  }
-
-  public WondrousItemsDTO(int idZero) {
-    this.id = idZero;
   }
 }

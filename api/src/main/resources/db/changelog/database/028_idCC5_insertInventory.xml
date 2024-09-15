@@ -11,9 +11,8 @@
             <column name="shield_id" value="49" />
             <column name="weapon_id_one" value="50" />
             <column name="weapon_id_two" value="51" />
-            <column name="weapon_id_three" value="52" />
-            <column name="weapon_id_four" value="5" />
-            <column name="weapon_id_five" value="1" />
+            <column name="weapon_id_three" value="5" />
+            <column name="weapon_id_four" value="1" />
             <column name="head_id" value="4" />
             <column name="neck_id" value="4" />
             <column name="arms_id" value="4" />

@@ -33,16 +33,33 @@ import {
 } from "../components/Modifiers/Function";
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
-import { reSizeWeapon } from "../components/Size/Function";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
-import { characterEmpty } from "../components/variables";
+import { reSizeWeapon } from "../components/Size/Function";
+import { noneWeapon } from "../components/variables";
+import { CalculateInventoryWeight, CalculateWeight } from "../components/Items/Inventory/Function";
 
-export function Show() {
+export const Show = () => {
   let { charId } = useParams();
 
-  const [char, setChar] = useState<CharacterPc>(characterEmpty);
+  const [char, setChar] = useState<CharacterPc>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resURL = await axios.get(urlChar + "/" + charId);
+        setChar(resURL.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [charId]);
+  
+  if (!char) return <>...character loading...</>;
+
   const modifications: Modifiers[] = CheckInAllModifications(char);
   const abilitys: Abilitys = AbilitysAndModifiers(char, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
@@ -82,12 +99,15 @@ export function Show() {
   };
   const inventory: Inventory = {
     ...char.inventory,
-    weaponOne: reSizeWeapon(char.race.size, char.inventory.weaponOne),
-    weaponTwo: reSizeWeapon(char.race.size, char.inventory.weaponTwo),
-    weaponThree: reSizeWeapon(char.race.size, char.inventory.weaponThree),
-    weaponFour: reSizeWeapon(char.race.size, char.inventory.weaponFour),
-    weaponFive: reSizeWeapon(char.race.size, char.inventory.weaponFive)
+    armor: char.inventory.armor,
+    weaponOne: char.inventory.weaponOne? reSizeWeapon(char.race.size, char.inventory.weaponOne) : reSizeWeapon(char.race.size, noneWeapon),
+    weaponTwo: char.inventory.weaponTwo? reSizeWeapon(char.race.size, char.inventory.weaponTwo) : reSizeWeapon(char.race.size, noneWeapon),
+    weaponThree: char.inventory.weaponThree? reSizeWeapon(char.race.size, char.inventory.weaponThree) : reSizeWeapon(char.race.size, noneWeapon),
+    weaponFour: char.inventory.weaponFour? reSizeWeapon(char.race.size, char.inventory.weaponFour) : reSizeWeapon(char.race.size, noneWeapon),
+    weaponFive: char.inventory.weaponFive? reSizeWeapon(char.race.size, char.inventory.weaponFive) : reSizeWeapon(char.race.size, noneWeapon),
   };
+  const weight: number = CalculateInventoryWeight(inventory);
+  const carrying: [string, number] = CalculateWeight(abilitys.strength, char.race.size.id, weight)
   const attacks: Attacks = {
     ...char.attacks,
     firstAttackSetOne: reSizeWeapon(
@@ -102,7 +122,7 @@ export function Show() {
       char.race.size,
       char.attacks.additionalAttackSetOne
     ),
-    //
+    
     firstAttackSetTwo: reSizeWeapon(
       char.race.size,
       char.attacks.firstAttackSetTwo
@@ -117,21 +137,9 @@ export function Show() {
     )
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resURL = await axios.get(urlChar + "/" + charId);
-        setChar(resURL.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [charId]);
-
   return (
     <>
+    {char?<>
       <div
         style={{
           display: "grid",
@@ -255,7 +263,7 @@ export function Show() {
             gridColumn: "1 / span 3",
             gridRow: 8
           }}
-        ><InventoryComponent inventory={inventory}/></div>
+        ><InventoryComponent inventory={inventory} carrying={carrying} /></div>
         <div
           key="skills"
           className="rpgui-container-framed-grey"
@@ -284,6 +292,7 @@ export function Show() {
           <SpeedComponent speed={speed} />
         </div>
       </div>
+      </>:<></>}
     </>
   );
 }

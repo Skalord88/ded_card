@@ -1,8 +1,5 @@
 package pl.kolendateam.dadcard.items.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,6 +9,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -61,7 +60,11 @@ public class Inventory {
   Weapons weaponFive;
 
   @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(name = "backpack", joinColumns = @JoinColumn(name = "inventory_id"), inverseJoinColumns = @JoinColumn(name = "items_id"))
+  @JoinTable(
+    name = "backpack",
+    joinColumns = @JoinColumn(name = "inventory_id"),
+    inverseJoinColumns = @JoinColumn(name = "items_id")
+  )
   List<WondrousItems> backpack;
 
   @ManyToOne(cascade = CascadeType.MERGE)
@@ -77,7 +80,11 @@ public class Inventory {
   WondrousItems arms;
 
   @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(name = "hands", joinColumns = @JoinColumn(name = "inventory_id"), inverseJoinColumns = @JoinColumn(name = "items_id"))
+  @JoinTable(
+    name = "hands",
+    joinColumns = @JoinColumn(name = "inventory_id"),
+    inverseJoinColumns = @JoinColumn(name = "items_id")
+  )
   List<WondrousItems> hands;
 
   @ManyToOne(cascade = CascadeType.MERGE)
@@ -111,7 +118,6 @@ public class Inventory {
   }
 
   public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
-
     if (inventoryDTO.armor != null) {
       for (Items item : itemsList) {
         if (item.id == inventoryDTO.armor.id) {
@@ -214,7 +220,5 @@ public class Inventory {
         }
       }
     }
-
   }
-
 }

@@ -2,18 +2,19 @@ import { Weapon } from "../interfaces";
 import { Size } from "./Interfaces";
 
 export function reSizeWeapon(size: Size, weapon: Weapon): Weapon {
-  let updatedWeapon = { ...weapon };
+  let updatedWeapon: Weapon = { ...weapon };
 
   if (updatedWeapon.type !== null) {
-    updatedWeapon = updatedWeapon.type.includes("UNARMED")
-      ? (updatedWeapon = damageReSize(size.size.toString(), updatedWeapon))
-      : updatedWeapon;
+    if (updatedWeapon.type.includes("UNARMED")) {
+      updatedWeapon = damageReSize(size.size, updatedWeapon);
+    }
     if (size.id === 4 && updatedWeapon.size === "MEDIUM") {
-      updatedWeapon = reSizeBySizeWeapon("MEDIUM", weapon);
+      updatedWeapon = reSizeBySizeWeapon("MEDIUM", updatedWeapon);
     }
   }
   return updatedWeapon;
 }
+
 
 export function reSizeBySizeWeapon(size: string, weapon: Weapon): Weapon {
   let updatedWeapon = { ...weapon };
@@ -23,50 +24,50 @@ export function reSizeBySizeWeapon(size: string, weapon: Weapon): Weapon {
     );
     updatedWeapon.type.push("TWO_HANDED");
   }
-
   return updatedWeapon;
 }
 
 export function damageReSize(size: string, weapon: Weapon): Weapon {
+  let updatedWeapon = { ...weapon };
   if (size === "SMALL") {
-    switch (weapon.damage) {
+    switch (updatedWeapon.damage) {
       case "D3":
-        weapon.damage = "D2";
+        updatedWeapon.damage = "D2";
         break;
-      case 'D4': weapon.damage = 'D3'
+      case 'D4': updatedWeapon.damage = 'D3'
         break;
-      case 'D6': weapon.damage = 'D4'
+      case 'D6': updatedWeapon.damage = 'D4'
         break;
-      case 'D8': weapon.damage = 'D6'
+      case 'D8': updatedWeapon.damage = 'D6'
         break;
       default:
-        weapon.damage = weapon.damage;
+        updatedWeapon.damage = updatedWeapon.damage;
         break;
     }
-    weapon.size = "SMALL";
-    weapon.weight = weapon.weight / 2;
+    updatedWeapon.size = "SMALL";
+    updatedWeapon.weight = weapon.weight / 2;
   }
   if (size === "HUGE") {
-    switch (weapon.damage) {
+    switch (updatedWeapon.damage) {
       case "D3":
-        weapon.damage = "D4";
+        updatedWeapon.damage = "D4";
         break;
       case "D4":
-        weapon.damage = "D6";
+        updatedWeapon.damage = "D6";
         break;
       case "D6":
-        weapon.damage = "D8";
+        updatedWeapon.damage = "D8";
         break;
       case "D8":
-        weapon.damage = "DD6";
+        updatedWeapon.damage = "DD6";
         break;
       default:
-        weapon.damage = weapon.damage;
+        updatedWeapon.damage = updatedWeapon.damage;
         break;
     }
-    weapon.size = "HUGE";
-    weapon.weight = weapon.weight * 2
+    updatedWeapon.size = "HUGE";
+    updatedWeapon.weight = updatedWeapon.weight * 2
   }
 
-  return weapon;
+  return updatedWeapon;
 }
