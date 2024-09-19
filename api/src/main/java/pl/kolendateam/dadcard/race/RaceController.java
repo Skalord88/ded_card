@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
@@ -73,7 +73,7 @@ public class RaceController {
   // }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
-  public CharacterDTO setSubRaceToCharacter(
+  public CreateCharacterDTO setSubRaceToCharacter(
     @PathVariable int id,
     @RequestBody SubRaceDTO subRaceBaseDTO
   ) {
@@ -99,45 +99,40 @@ public class RaceController {
     Character character = characterOpt.get();
     SubRace race = raceOpt.get();
 
-    // character.setSize(race.getSize());
-
-    // character.sizeCharacter(race.getSize());
-
-    // character.addSpeed(race.getSpeed());
-
-    // if (race.getAbilitys() != null) {
-    //   character.addAbilityRace(race.getAbilitys());
-    // }
-    // if (race.getSkills() != null) {
-    //   character.addSkill(race.getSkills());
-    // }
-
-    // ArrayList<ClassSkills> findHide = character.getClassSkills();
-    // for (ClassSkills clSk : findHide) {
-    //   if (clSk.getNameSkill().equals("Hide")) {
-    //     clSk.setSkillBonus(
-    //       clSk.getSkillBonus() + character.getSize().getHide()
-    //     );
-    //   }
-    // }
-
-    // if (race.getLevelAdjustment() != 0) {
-    //   character.raceLevelAdjustment(race.getLevelAdjustment());
-    // }
-
-    // if (race.getArmorClass() != null) {
-    //   character.raceBonusArmorClass(race.getArmorClass());
-    // }
-
     character.setCharacterRace(race);
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
-    );
+    return new CreateCharacterDTO(character);
   }
+  // character.setSize(race.getSize());
+
+  // character.sizeCharacter(race.getSize());
+
+  // character.addSpeed(race.getSpeed());
+
+  // if (race.getAbilitys() != null) {
+  //   character.addAbilityRace(race.getAbilitys());
+  // }
+  // if (race.getSkills() != null) {
+  //   character.addSkill(race.getSkills());
+  // }
+
+  // ArrayList<ClassSkills> findHide = character.getClassSkills();
+  // for (ClassSkills clSk : findHide) {
+  //   if (clSk.getNameSkill().equals("Hide")) {
+  //     clSk.setSkillBonus(
+  //       clSk.getSkillBonus() + character.getSize().getHide()
+  //     );
+  //   }
+  // }
+
+  // if (race.getLevelAdjustment() != 0) {
+  //   character.raceLevelAdjustment(race.getLevelAdjustment());
+  // }
+
+  // if (race.getArmorClass() != null) {
+  //   character.raceBonusArmorClass(race.getArmorClass());
+  // }
+
 }

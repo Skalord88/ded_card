@@ -27,16 +27,13 @@ public class Feats implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  @Nonnull
   String featName;
 
-  @NonNull
   @Enumerated(EnumType.STRING)
   FeatsTypeEnum featsType;
 
   String prerequisite;
 
-  @Nonnull
   String description;
 
   @JdbcTypeCode(SqlTypes.JSON)

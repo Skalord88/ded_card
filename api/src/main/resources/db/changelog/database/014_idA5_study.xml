@@ -10,10 +10,10 @@
           <constraints primaryKey="true"/>
         </column>
         <column name="study_name" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="id_skill" type="SMALLINT">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
       </createTable>
   </changeSet>

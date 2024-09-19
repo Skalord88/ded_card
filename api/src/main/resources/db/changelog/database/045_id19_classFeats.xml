@@ -9,13 +9,13 @@
                 <constraints primaryKey="true"/>
               </column>
             <column name="level" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="class_character_id" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="feats_id" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
         </createTable>
     </changeSet>

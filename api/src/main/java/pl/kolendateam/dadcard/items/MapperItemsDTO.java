@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.items;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
@@ -41,10 +40,15 @@ public class MapperItemsDTO {
   }
 
   public static InventoryDTO toInventoryDTO(Inventory inventory) {
+    if (inventory != null) {
+      return new InventoryDTO();
+    }
     return new InventoryDTO(inventory);
   }
 
-  public static ArrayList<WondrousItemsDTO> toListItemsDTO(List<WondrousItems> backpack) {
+  public static ArrayList<WondrousItemsDTO> toListItemsDTO(
+    List<WondrousItems> backpack
+  ) {
     ArrayList<WondrousItemsDTO> itemsListDTO = new ArrayList<WondrousItemsDTO>();
 
     backpack.forEach(item -> {
@@ -55,7 +59,9 @@ public class MapperItemsDTO {
   }
 
   public static AttacksDTO toAttacksDTO(Attacks characterAttacks) {
+    if (characterAttacks != null) {
+      return new AttacksDTO();
+    }
     return new AttacksDTO(characterAttacks);
   }
-
 }

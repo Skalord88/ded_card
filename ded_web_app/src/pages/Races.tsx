@@ -2,21 +2,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import {
-  ChosenRace,
-  // races,
-} from "../components/interfaces";
 import { urlRaceList } from "../components/url";
-import { itemInDrop } from "../components/functions";
+import { SubRace } from "../components/Race/Interfaces";
+import { ListOfSomething } from "../components/List/List";
+
+export type ChosenRace = {
+  id: number
+}
 
 export const Races = () => {
   const { charId } = useParams();
 
-  // const [races, setRaces] = useState<races[]>();
-  const [selectedRace, setSelected] = useState<String>("");
+  const [races, setRaces] = useState<SubRace[]>();
+  const [selectedRace, setSelected] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
-    id: 0,
-    subRacesName: ""
+    id: 0
   });
   const [change, setChange] = useState(false);
 
@@ -24,7 +24,7 @@ export const Races = () => {
     const fetchData = async () => {
       try {
         const resRaceList = await axios.get(urlRaceList);
-        // setRaces(resRaceList.data);
+        setRaces(resRaceList.data);
       } catch (error) {
         console.error(error);
       }
@@ -33,23 +33,25 @@ export const Races = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRace = (sRace: itemInDrop) => {
-    setSelected(sRace.name)
-    setChosenRace({ id: sRace.item.id, subRacesName: sRace.item.subRacesName });
+  const handleRace = (sRace: {name: string
+    item: SubRace}) => {
+    setSelected(sRace.item)
+    setChosenRace({ id: sRace.item.id });
+    
     setChange(true);
   };
-  const handleSubmit = (e: ChosenRace) => {
-    axios.post(urlRaceList + "/" + charId, e);
+  const handleSubmit = () => {
+    if (change) axios.post(urlRaceList + "/" + charId, chosenRace);
   };
 
   return (
     <>
       {change === true ? (
         <p>
-          {chosenRace?.subRacesName}, {selectedRace}{" "}
+          {selectedRace?.race.raceName}, {selectedRace?.subRacesName}{" "}
           <button
             className="rpgui-button"
-            onClick={() => handleSubmit(chosenRace)}
+            onClick={() => handleSubmit()}
           >
             <Link to={"/class/" + charId}>to classes</Link>
           </button>
@@ -57,17 +59,17 @@ export const Races = () => {
       ) : (
         <p>...choose race</p>
       )}
-      {/* {races?.map(race => {
+      {races?.map(race => {
         return(
           <>
             <ListOfSomething
-              items={race.subRaces}
-              text={race.raceName}
+              items={races}
+              text={race.race.raceName}
               onSelect={handleRace}
             />
           </>
         )
-      })} */}
+      })}
   </>
   )
   

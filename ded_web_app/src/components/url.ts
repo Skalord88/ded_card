@@ -11,8 +11,11 @@ export const urlCharList: string =
 export const urlAb: string =
     url + 'ability/';
 
+export const urlRace: string =
+    url + 'race'
+
 export const urlRaceList: string =
-    url + 'race';
+    url + 'race/sub';
 
 export const urlClassList: string =
     url + 'class';

@@ -25,10 +25,6 @@ public class SubRaceDTO {
   public SizeDTO size;
   public Set<RegionBaseDTO> availableRegions;
 
-  // public Abilitys raceAbilitys;
-  // public ArrayList<RaceSkillsDTO> raceSkills;
-  // public ArmorClass armorClass;
-
   public SubRaceDTO(SubRace subRace) {
     this.id = subRace.getId();
     this.race = MapperRaceToDTO.toRaceDTO(subRace.getRace());
@@ -41,30 +37,5 @@ public class SubRaceDTO {
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
     this.availableRegions =
       MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
-    // Gson gson = new Gson();
-    // Abilitys jsonObjectAbilitys = gson.fromJson(
-    //   race.getAbilitys(),
-    //   Abilitys.class
-    // );
-    // this.raceAbilitys = jsonObjectAbilitys;
-    // Type listRaceSkill = new TypeToken<List<ClassSkills>>() {}.getType();
-    // ArrayList<ClassSkills> raceSkill = gson.fromJson(
-    //   race.getSkills(),
-    //   listRaceSkill
-    // );
-    // if (raceSkill == null) {
-    //   this.raceSkills = null;
-    // } else {
-    //   this.raceSkills = MapperSkillsToDTO.toRaceSkillsDTO(raceSkill);
-    // }
-    // if (race.getArmorClass() == null) {
-    //   this.armorClass = null;
-    // } else {
-    //   ArmorClass jsonObjectArmorClass = gson.fromJson(
-    //     race.getArmorClass(),
-    //     ArmorClass.class
-    //   );
-    //   this.armorClass = jsonObjectArmorClass;
-    // }
   }
 }

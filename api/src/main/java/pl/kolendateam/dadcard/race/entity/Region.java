@@ -14,10 +14,10 @@ import lombok.Setter;
 @Setter
 @Entity
 public class Region {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    short id;
 
-    @Nonnull
-    String name;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  short id;
+
+  String name;
 }

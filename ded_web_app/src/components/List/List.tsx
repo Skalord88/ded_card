@@ -26,7 +26,7 @@ export const ListOfSomething: React.FC<ListProps> = ({
             <p>{text}</p>
             <div
              className="rpgui-list-imp" 
-             style={{ height: "auto", maxHeight: 100, fontSize:"60%"
+             style={{ height: "auto", maxHeight: 100, fontSize:"80%"
             }}>
               {items.map((i, index) => {
                 return (

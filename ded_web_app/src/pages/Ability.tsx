@@ -15,16 +15,15 @@ export function Ability() {
   const [abilitys, setAbilitys] = useState<Abilitys>(abilitysEmpty);
   const [change, setChange] = useState<boolean>(false);
 
-  const handleData = (e: any) => {
-    if (e.target.value >= 0) {
-      setAbilitys((newAbility) => ({
-        ...newAbility,
-        [e.target.name]: e.target.value
+  const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(e.target.value);
+    if (value >= 0) {
+      setAbilitys((prevAbilities: Abilitys) => ({
+        ...prevAbilities,
+        [e.target.name]: value
       }));
     }
   };
-
-  useEffect(() => {}, [abilitys]);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -35,7 +34,6 @@ export function Ability() {
   };
 
   return (
-    <>
       <div 
         className="rpgui-container-framed-golden flex-container"
         style={{ minWidth: "50%"}}
@@ -50,7 +48,7 @@ export function Ability() {
                width: "12%" }}
             type="number"
             onChange={handleData}
-            name="streght"
+            name="strength"
             value={abilitys.strength}
           />{" "}
           {SignNumber(BonusAbilities(abilitys, "STR"))}
@@ -136,6 +134,5 @@ export function Ability() {
           )}
         </p>
       </div>
-    </>
   );
 }

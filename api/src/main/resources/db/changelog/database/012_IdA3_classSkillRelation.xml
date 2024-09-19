@@ -7,10 +7,10 @@
   <changeSet id="103" author="oscar">
       <createTable tableName="class_skills">
         <column name="class_character_id" type="int">
-          <constraints nullable="false"/>
+          <constraints nullable="false" />
         </column>
         <column name="skill_id" type="SMALLINT">
-          <constraints nullable="false"/>
+          <constraints nullable="true" />
         </column>
       </createTable>
   </changeSet>

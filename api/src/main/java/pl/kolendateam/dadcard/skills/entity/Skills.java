@@ -25,10 +25,8 @@ public class Skills {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   short id;
 
-  @Nonnull
   String name;
 
-  @NonNull
   @Enumerated(EnumType.STRING)
   AbilityEnum ability;
 }

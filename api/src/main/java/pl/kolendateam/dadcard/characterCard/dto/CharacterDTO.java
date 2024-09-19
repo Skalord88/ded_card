@@ -21,6 +21,7 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -38,7 +39,7 @@ public class CharacterDTO implements Serializable {
   public SubRaceDTO race;
   public AbilitysDTO abilitys;
   public ArrayList<SkillsDTO> skillsList;
-  public ArrayList<CharacterFeatsDTO> featsList;
+  // public ArrayList<CharacterFeatsDTO> featsList;
   public ArrayList<CharacterFeatsDTO> levelFeatsList;
   public ArrayList<Items> items;
   public InventoryDTO inventory;
@@ -61,12 +62,16 @@ public class CharacterDTO implements Serializable {
     this.characterName = character.getCharacterName();
     this.playerName = character.getPlayerName();
     this.classPcList = MapperClassFeatsDTO.toClassPcListDTO(characterClassList);
-    this.race = new SubRaceDTO(character.getRace());
+    if (character.getRace() != null) {
+      this.race = MapperRaceToDTO.toSubRaceDTO(character.getRace());
+    } else {
+      this.race = new SubRaceDTO();
+    }
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
     this.skillsList =
       MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());
-    this.featsList =
-      MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
+    // this.featsList =
+    //   MapperCharacterFeatsDTO.toCharacterFeatsDTO(character.getFeatsList());
     this.levelFeatsList =
       MapperCharacterFeatsDTO.toCharacterFeatsDTO(
         character.getLevelFeatsList()

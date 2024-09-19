@@ -10,10 +10,10 @@
                 <constraints primaryKey="true"/>
             </column>
             <column name="magic_class" type="varchar(10)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="spells_day_known" type="varchar(10)">
-                <constraints nullable="false"/>
+                <constraints nullable="true"/>
             </column>
             <column name="spells_in_level" type="varchar(2000)">
                 <constraints nullable="true"/>

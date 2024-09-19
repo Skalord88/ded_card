@@ -58,10 +58,8 @@ public class Character {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   public int id;
 
-  @NonNull
   String characterName;
 
-  @NonNull
   String playerName;
 
   @JdbcTypeCode(SqlTypes.JSON)
@@ -139,13 +137,9 @@ public class Character {
   public Character(String characterName, String playerName) {
     this.characterName = characterName;
     this.playerName = playerName;
-    this.classPcArray = new ArrayList<>();
-    // this.size = new Size();
-    // this.vitality = new Vitality(0, new HashMap<>(), 0);
-    // this.armorClass = new ArmorClass();
-    // this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
-    // this.savingThrow = new SavingThrow(0, 0, 0);
     this.abilitys = new Abilitys();
+    this.race = new SubRace();
+    this.classPcArray = new ArrayList<>();
     this.classSkills = new ArrayList<>();
     this.featsList = new ArrayList<>();
     this.levelFeatsList = new ArrayList<>();
@@ -155,6 +149,11 @@ public class Character {
     this.magicKnown = new HashMap<>();
     this.books = new ArrayList<>();
     // this.spellsKnown = new ArrayList<>();
+    // this.size = new Size();
+    // this.vitality = new Vitality(0, new HashMap<>(), 0);
+    // this.armorClass = new ArmorClass();
+    // this.specialAttacks = new SpecialAttacks(0, 0, 0, 0, 0, 0);
+    // this.savingThrow = new SavingThrow(0, 0, 0);
   }
 
   public void addClassToPcArray(ClassPc classPc) {
@@ -284,6 +283,10 @@ public class Character {
     }
   }
 
+  public void setCharacterRace(SubRace race) {
+    this.race = race;
+  }
+
   // public void calculateSkillPointsFirstLevel(int skPoints) {
   //   this.skillPoints += (skPoints + abilitys.bonusIntelligence(abilitys)) * 4;
   // }
@@ -365,11 +368,6 @@ public class Character {
   //   this.race = race.getRacesName();
   //   this.subRace = race.getSubRaceName();
   // }
-
-  public void setCharacterRace(SubRace race) {
-    this.race = race;
-    // this.subRace = race.getSubRaceName();
-  }
 
   public void addSkill(String skills) {
     Gson gson = new Gson();

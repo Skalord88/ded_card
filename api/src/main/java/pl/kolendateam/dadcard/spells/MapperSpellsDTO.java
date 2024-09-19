@@ -67,8 +67,11 @@ public class MapperSpellsDTO {
 
   public static ArrayList<BookDTO> toBooksDTO(List<Book> books) {
     ArrayList<BookDTO> booksDTO = new ArrayList<>();
-    for (Book book : books) {
-      booksDTO.add(new BookDTO(book));
+
+    if (books != null) {
+      for (Book book : books) {
+        booksDTO.add(new BookDTO(book));
+      }
     }
     return booksDTO;
   }

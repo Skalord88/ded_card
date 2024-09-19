@@ -11,10 +11,10 @@
           <constraints primaryKey="true"/>
         </column>
         <column name="character_name" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="player_name" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="abilitys" type="jsonb">
           <constraints nullable="true"/>

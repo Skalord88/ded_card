@@ -6,10 +6,10 @@
     <changeSet id="306" author="oscar">
         <createTable tableName="backpack">
             <column name="inventory_id" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="items_id" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
         </createTable>
     </changeSet>

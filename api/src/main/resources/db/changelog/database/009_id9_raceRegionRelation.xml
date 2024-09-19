@@ -7,10 +7,10 @@
 
         <createTable tableName="race_region">
             <column name="sub_race_id" type="int">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
             <column name="region_id" type="SMALLINT">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
         </createTable>
 

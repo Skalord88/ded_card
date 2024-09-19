@@ -10,16 +10,16 @@
           <constraints primaryKey="true"/>
         </column>
         <column name="feat_name" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="feats_type" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="prerequisite" type="varchar(1000)">
           <constraints nullable="true"/>
         </column>
         <column name="description" type="varchar(90000)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="modifiers" type="jsonb">
           <constraints nullable="true"/>

@@ -10,13 +10,13 @@
           <constraints primaryKey="true"/>
         </column>
         <column name="sub_race_name" type="varchar(255)">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="race_id" type="int">
           <constraints nullable="false"/>
         </column>
         <column name="size_id" type="TINYINT">
-          <constraints nullable="false"/>
+          <constraints nullable="true"/>
         </column>
         <column name="avatar_url" type="varchar(255)">
           <constraints nullable="true"/>

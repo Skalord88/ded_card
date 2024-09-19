@@ -37,13 +37,15 @@ public class MaperListRaceToDTO {
     // return racesDTO;
   }
 
-  public static ArrayList<SubRaceDTO> toListSubRaceDTO(List<SubRace> races) {
+  public static ArrayList<SubRaceDTO> toListSubRaceDTO(List<SubRace> subRaces) {
     ArrayList<SubRaceDTO> racesDTO = new ArrayList<>();
 
-    races.forEach(race -> {
-      SubRaceDTO raceDTO = new SubRaceDTO(race);
-      racesDTO.add(raceDTO);
-    });
+    if (subRaces != null) {
+      subRaces.forEach(race -> {
+        SubRaceDTO raceDTO = new SubRaceDTO(race);
+        racesDTO.add(raceDTO);
+      });
+    }
     return racesDTO;
   }
 }

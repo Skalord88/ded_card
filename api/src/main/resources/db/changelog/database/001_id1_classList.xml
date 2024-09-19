@@ -9,25 +9,25 @@
         <constraints primaryKey="true" />
       </column>
       <column name="type" type="varchar(255)">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="name" type="varchar(255)">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="avatar_url" type="varchar(255)">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="hit_dice" type="TINYINT">
         <constraints nullable="true" />
       </column>
       <column name="saving_throw" type="varchar(255)">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="class_bab" type="double">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="skill_points" type="TINYINT">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="class_feats_map" type="varchar(10000)">
         <constraints nullable="true" />

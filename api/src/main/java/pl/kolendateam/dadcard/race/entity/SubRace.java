@@ -2,12 +2,14 @@ package pl.kolendateam.dadcard.race.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
@@ -35,10 +37,9 @@ public class SubRace implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  @NonNull
   String subRaceName;
 
-  @OneToOne(cascade = CascadeType.MERGE)
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
   @JoinColumn(name = "race_id", referencedColumnName = "id")
   Race race;
 

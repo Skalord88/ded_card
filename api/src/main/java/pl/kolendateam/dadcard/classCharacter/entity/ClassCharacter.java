@@ -38,20 +38,16 @@ public class ClassCharacter implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  @NonNull
   @Enumerated(EnumType.STRING)
   TypeEnum type;
 
-  @NonNull
   @Enumerated(EnumType.STRING)
   EnumClass name;
 
-  @NonNull
   String avatarUrl;
 
   byte hitDice;
 
-  @NonNull
   String savingThrow;
 
   double classBab;
