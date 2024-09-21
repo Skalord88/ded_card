@@ -12,9 +12,10 @@
             <constraints nullable="false"/>
           </column>
         </createTable>
+
+        <insert tableName="sub_race_feats">
+          <column name="sub_race_id" value="1" />
+          <column name="feats_id" value="106" />
+      </insert>
     </changeSet>
 </databaseChangeLog>
-<!-- <insert tableName="sub_race_feats">
-            <column name="sub_race_id" value="2" />
-            <column name="feats_id" value="107" />
-        </insert> -->

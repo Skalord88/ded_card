@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SignNumber } from "../functions";
+import { SignAndCount, SignNumber } from "../functions";
 import { CharacterPc, ClassPc, savingThrows } from "../interfaces";
 import { AbSummary } from "./AbSummary";
 import { SubRace } from "../Race/Interfaces";
@@ -12,7 +12,7 @@ import { AbilitysAndModifiers, BonusAbilities } from "../Abilitys/Functions";
 import { Abilitys } from "../Abilitys/Interface";
 import { Saving, SavingProps } from "../Saving/Saving";
 import { CountSavingThrowFromClassPc } from "../Saving/Functions";
-import { SavingSummary, SavingSummaryOnlyChar } from "./SavingSummary";
+import { SavingSummary } from "./SavingSummary";
 import { FormattingText } from "../Formatting/Function";
 
 export interface SummaryProps {
@@ -24,8 +24,6 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
   const [modifiers, setModifiers] = useState<Modifiers[]>();
   const [abilitys, setAbilitys] = useState<Abilitys>();
   const [classi, setClassi] = useState<ClassPc[]>([]);
-  const [sT, setST] = useState<savingThrows>();
-  const [savingBonusAll, setSavingBonusAll] = useState<number>(0);
   const [saving, setSaving] = useState<SavingProps>();
 
   useEffect(() => {
@@ -55,19 +53,25 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
         ]);
       }
     }
-  }, [race]);
+  }, [classi, race, character]);
+
+  useEffect(() => {
+    let sT: savingThrows = {fortitude: 0, reflex: 0, will: 0}
+    if(classi)sT = CountSavingThrowFromClassPc(classi)
+    let savingBonusAll: number = 0
+    if(modifiers) savingBonusAll = FindInOneLengthModifier(
+      modifiers,
+      "SAVING"
+    )
+
+    setSaving( Saving(character, sT, savingBonusAll) )
+  },[character, classi, modifiers])
 
   useEffect(() => {
     if (modifiers) {
       setAbilitys(AbilitysAndModifiers(character.abilitys, modifiers));
-      setSavingBonusAll(FindInOneLengthModifier(modifiers, "SAVING"));
-      setST(CountSavingThrowFromClassPc(classi));
     }
-  }, [modifiers, classi, character]);
-
-  useEffect(() => {
-    if (sT && savingBonusAll) setSaving(Saving(character, sT, savingBonusAll));
-  }, [character, sT, savingBonusAll]);
+  }, [character.abilitys, modifiers]);
 
   return (
     <>
@@ -84,15 +88,8 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
           )}
           <p>Effective Level: {character.effectiveCharacterLv}</p>
 
-          {saving ? (
-            <SavingSummary saving={saving} />
-          ) : (
-            <SavingSummaryOnlyChar
-              fortitude={BonusAbilities(character.abilitys, "COS")}
-              reflex={BonusAbilities(character.abilitys, "DEX")}
-              will={BonusAbilities(character.abilitys, "WIS")}
-            />
-          )}
+          <SavingSummary saving={saving} />
+
           {modifiers ? (
             <p>
               <div style={{ display: "flex", flexDirection: "row" }}>

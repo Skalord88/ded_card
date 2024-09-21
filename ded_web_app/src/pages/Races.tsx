@@ -41,12 +41,12 @@ export const Races = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRace = (sRace: { name: string; item: SubRace }) => {
-    if (selectedRace?.id !== chosenRace.id) {
-      setSelected(sRace.item);
-      setChosenRace({ id: sRace.item.id })
-    };
+  useEffect(() => {
+    if (selectedRace) setChosenRace({ id: selectedRace?.id });
+  }, [selectedRace]);
 
+  const handleRace = (sRace: { name: string; item: SubRace }) => {
+    setSelected(sRace.item);
     setChange(true);
   };
   const handleSubmit = () => {
@@ -55,16 +55,12 @@ export const Races = () => {
 
   return (
     <>
-      {char ? (
-        <CharSummary
-          character={char}
-          race={selectedRace}
-        />
-      ) : null}
-      <p>ch:{chosenRace.id} / sel:{selectedRace?.id}</p>
+      {char ? <CharSummary character={char} race={selectedRace} /> : null}
+      <p>
+        ch:{chosenRace.id} / sel:{selectedRace?.id}
+      </p>
       {change === true ? (
         <p>
-          
           {selectedRace?.race.raceName}, {selectedRace?.subRacesName}{" "}
           <button className="rpgui-button" onClick={() => handleSubmit()}>
             <Link to={"/class/" + charId}>to classes</Link>

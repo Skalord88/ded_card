@@ -1,8 +1,7 @@
-import { savingThrows } from "../interfaces"
 import { SavingProps } from "../Saving/Saving"
 
 export type SavingSummaryProps = {
-    saving: SavingProps
+    saving: SavingProps | undefined
 }
 
 export const SavingSummary: React.FC<SavingSummaryProps> = ({ saving }) => {
@@ -13,18 +12,6 @@ export const SavingSummary: React.FC<SavingSummaryProps> = ({ saving }) => {
             {saving?.refTot.number}
             {" / Will: "}
             {saving?.willTot.number}
-          </p>
-    )
-}
-
-export const SavingSummaryOnlyChar: React.FC<savingThrows> = ({ fortitude, reflex, will }) => {
-    return(
-        <p>
-            Fort: {fortitude}
-            {" / Ref: "}
-            {reflex}
-            {" / Will: "}
-            {will}
           </p>
     )
 }

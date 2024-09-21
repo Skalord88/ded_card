@@ -3,10 +3,41 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="7" author="oscar">
         <insert tableName="race">
+            <column name="race_name" value="Orcs" />
+            <column name="modifiers"
+                value="[
+            {
+            &quot;modifier&quot; : &quot;SPEED&quot;,
+            &quot;bonus&quot; : 30,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
+            &quot;bonus&quot; : 4,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;INTELLIGENCE&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;WISDOM&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []
+            }]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
             <column name="race_name" value="Halfling" />
             <column name="modifiers"
                 value="[
             {
+            &quot;modifier&quot; : &quot;SPEED&quot;,
+            &quot;bonus&quot; : 20,
+            &quot;targets&quot; : []
+            },{
             &quot;modifier&quot; : &quot;STRENGHT&quot;,            
             &quot;bonus&quot; : -2,            
             &quot;targets&quot; : []            
