@@ -1,3 +1,3 @@
-export function FormattingText(text: string) {
-    return text.replace("_", " ").toLowerCase()
+export function FormattingText(text: string): string {
+  return (text || "").replace("_", " ").toLowerCase()
 }

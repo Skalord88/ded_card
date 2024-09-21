@@ -282,9 +282,6 @@
             &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         }]" />
-            <column name="feats_list" value="[]" />
-            <column name="level_feats_list" value="[]" />
-            <!-- <column name="bab" value="0"/> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="100" />
             <column name="attacks_id" value="100" />

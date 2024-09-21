@@ -17,35 +17,16 @@ public class MaperListRaceToDTO {
       racesDTO.add(raceDTO);
     });
     return racesDTO;
-    // for (Race race : races) {
-    //   boolean skipCreateRaceDTO = false;
-
-    //   for (RaceDTO raceDTO : racesDTO) {
-    //     if (raceDTO.id == race.getId()) {
-    //       SubRaceDTO tempSubRace = new SubRaceDTO(race);
-    //       raceDTO.subRaces.add(tempSubRace);
-    //       skipCreateRaceDTO = true;
-    //     }
-    //   }
-
-    //   if (!skipCreateRaceDTO) {
-    //     RaceBaseDTO tempRace = new RaceBaseDTO(race);
-    //     racesDTO.add(tempRace);
-    //   }
-    // }
-
-    // return racesDTO;
   }
 
   public static ArrayList<SubRaceDTO> toListSubRaceDTO(List<SubRace> subRaces) {
     ArrayList<SubRaceDTO> racesDTO = new ArrayList<>();
 
-    if (subRaces != null) {
-      subRaces.forEach(race -> {
-        SubRaceDTO raceDTO = new SubRaceDTO(race);
-        racesDTO.add(raceDTO);
-      });
-    }
+    subRaces.forEach(sub -> {
+      SubRaceDTO raceDTO = new SubRaceDTO(sub);
+      racesDTO.add(raceDTO);
+    });
+
     return racesDTO;
   }
 }

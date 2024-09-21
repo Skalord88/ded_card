@@ -15,7 +15,7 @@
         <column name="race_id" type="int">
           <constraints nullable="false"/>
         </column>
-        <column name="size_id" type="TINYINT">
+        <column name="size_id" type="int">
           <constraints nullable="true"/>
         </column>
         <column name="avatar_url" type="varchar(255)">

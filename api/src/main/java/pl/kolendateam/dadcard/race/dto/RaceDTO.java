@@ -17,8 +17,6 @@ public class RaceDTO {
   public Set<ModifierDTO> modifiers;
   public Set<FeatsDTO> feats;
 
-  // public ArrayList<SubRaceBaseDTO> subRaces;
-
   public RaceDTO(Race race) {
     this.id = race.getId();
     this.avatarRaceUrl = race.getAvatarUrl();
@@ -27,6 +25,3 @@ public class RaceDTO {
     this.feats = MapperFeatsDTO.toFeatsSetDTO(race.getRaceFeats());
   }
 }
-// SubRaceBaseDTO tempSubRace = new SubRaceBaseDTO(race);
-// this.subRaces = new ArrayList<SubRaceBaseDTO>();
-// this.subRaces.add(tempSubRace);

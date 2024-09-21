@@ -61,7 +61,7 @@ export const Show = () => {
   if (!char) return <>...character loading...</>;
 
   const modifications: Modifiers[] = CheckInAllModifications(char);
-  const abilitys: Abilitys = AbilitysAndModifiers(char, modifications);
+  const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
   const dextrity: number = BonusAbilities(abilitys, "DEX");
   const initiativeMod: number = FindInOneLengthModifier(

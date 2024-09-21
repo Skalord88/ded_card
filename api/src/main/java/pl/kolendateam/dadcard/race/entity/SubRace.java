@@ -10,7 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -18,7 +17,6 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -29,8 +27,8 @@ import pl.kolendateam.dadcard.size.entity.Size;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class SubRace implements Serializable {
 
   @Id
@@ -43,14 +41,14 @@ public class SubRace implements Serializable {
   @JoinColumn(name = "race_id", referencedColumnName = "id")
   Race race;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne
   @JoinColumn(name = "size_id", referencedColumnName = "id")
   Size size;
 
   String avatarUrl;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  Set<ModifierBonus> modifiers = new HashSet<>();
 
   @ManyToMany
   @JoinTable(

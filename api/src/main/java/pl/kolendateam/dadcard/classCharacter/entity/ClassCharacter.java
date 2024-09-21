@@ -18,10 +18,8 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -76,8 +74,6 @@ public class ClassCharacter implements Serializable {
     orphanRemoval = true
   )
   Set<ClassFeats> availableFeats = new HashSet<>();
-
-  // String classFeatsMap;
 
   @Enumerated(EnumType.STRING)
   SpellsEnum spellsPerDay;

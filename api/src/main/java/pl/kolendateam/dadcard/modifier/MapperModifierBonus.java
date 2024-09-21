@@ -34,10 +34,4 @@ public class MapperModifierBonus {
     }
     return listOfModifier;
   }
-  //   public static Set<ModifierBonus> toListModifier(Set<ModifierBonus> modifier) {
-  //     // TODO Auto-generated method stub
-  //     throw new UnsupportedOperationException(
-  //       "Unimplemented method 'toListModifier'"
-  //     );
-  //   }
 }

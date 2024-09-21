@@ -10,6 +10,7 @@ import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
 public class Race implements Serializable {
 
   @Id
@@ -42,4 +44,8 @@ public class Race implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "feats_id")
   )
   Set<Feats> raceFeats = new HashSet<>();
+
+  public Race(int n) {
+    this.id = n;
+  }
 }

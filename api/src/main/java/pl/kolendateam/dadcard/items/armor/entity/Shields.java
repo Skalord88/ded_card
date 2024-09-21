@@ -35,8 +35,6 @@ public class Shields extends Items {
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers;
 
-  // int armorClass;
-
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
 

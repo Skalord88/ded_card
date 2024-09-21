@@ -40,7 +40,7 @@ public class MapperItemsDTO {
   }
 
   public static InventoryDTO toInventoryDTO(Inventory inventory) {
-    if (inventory != null) {
+    if (inventory == null) {
       return new InventoryDTO();
     }
     return new InventoryDTO(inventory);
@@ -59,7 +59,7 @@ public class MapperItemsDTO {
   }
 
   public static AttacksDTO toAttacksDTO(Attacks characterAttacks) {
-    if (characterAttacks != null) {
+    if (characterAttacks == null) {
       return new AttacksDTO();
     }
     return new AttacksDTO(characterAttacks);

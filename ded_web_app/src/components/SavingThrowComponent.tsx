@@ -8,6 +8,7 @@ import {
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { CountSavingThrowFromClassPc } from "./Saving/Functions";
+import { Saving } from "./Saving/Saving";
 
 export type SavingThrowComponentProps = {
   char: CharacterPc;
@@ -23,37 +24,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     modifications,
     "SAVING"
   );
-  const saving = {
-    idFor: 1,
-    for: SignAndCount([sT.fortitude]),
-    forTot: SignAndCount([
-      sT.fortitude,
-      BonusAbilities(char.abilitys, "COS"),
-      savingBonusAll
-    ]),
-    forAb: SignAndCount([BonusAbilities(char.abilitys, "COS")]),
-    forOther: SignAndCount([savingBonusAll]),
-    ///
-    idRef: 2,
-    ref: SignAndCount([sT.reflex]),
-    refTot: SignAndCount([
-      sT.reflex,
-      BonusAbilities(char.abilitys, "DEX"),
-      savingBonusAll
-    ]),
-    refAb: SignAndCount([BonusAbilities(char.abilitys, "DEX")]),
-    refOther: SignAndCount([savingBonusAll]),
-    ///
-    idWill: 3,
-    will: SignAndCount([sT.will]),
-    willTot: SignAndCount([
-      sT.will,
-      BonusAbilities(char.abilitys, "WIS"),
-      savingBonusAll
-    ]),
-    willAb: SignAndCount([BonusAbilities(char.abilitys, "WIS")]),
-    willOther: SignAndCount([savingBonusAll])
-  };
+  const saving = Saving(char, sT, savingBonusAll)
 
   const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
     modifications,

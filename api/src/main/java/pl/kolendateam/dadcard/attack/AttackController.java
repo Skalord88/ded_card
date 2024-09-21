@@ -78,10 +78,11 @@ public class AttackController {
     List<ClassPc> emptyClassList = new ArrayList<ClassPc>();
 
     return new CharacterDTO(
-      character,
-      emptyInventory,
-      characterAttacks,
-      emptyClassList
+      character
+      // ,
+      // emptyInventory,
+      // characterAttacks,
+      // emptyClassList
     );
   }
 }

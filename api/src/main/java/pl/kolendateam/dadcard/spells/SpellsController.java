@@ -145,10 +145,11 @@ public class SpellsController {
     this.characterRepository.save(character);
 
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 
@@ -176,10 +177,11 @@ public class SpellsController {
     this.characterRepository.save(character);
 
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 }

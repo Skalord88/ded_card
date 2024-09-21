@@ -71,6 +71,10 @@ public class ClassPc implements Serializable {
     }
     return -1;
   }
+
+  public void subtractLevel(int actualLevelAdjustment) {
+    this.level -= actualLevelAdjustment;
+  }
 }
 // @ManyToOne
 // @JoinColumn(name = "character_id", referencedColumnName = "id")

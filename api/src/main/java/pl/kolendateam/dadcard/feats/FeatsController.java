@@ -89,10 +89,11 @@ public class FeatsController {
     // }
 
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 
@@ -112,19 +113,20 @@ public class FeatsController {
 
     Character character = characterOpt.get();
 
-    int featIndex = character.getFeatIndex(featDTO.id);
+    // int featIndex = character.getFeatIndex(featDTO.id);
 
-    if (featIndex != -1) {
-      character.deleteFeatFromList(featIndex);
-    }
+    // if (featIndex != -1) {
+    //   character.deleteFeatFromList(featIndex);
+    // }
 
     this.characterRepository.save(character);
 
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 }

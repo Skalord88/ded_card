@@ -135,12 +135,6 @@ export type FeatsId = {
   id: number
 }
 
-// export interface races {
-//   raceName: string;
-//   avatarRaceUrl: string;
-//   subRaces: subRaces[];
-// }
-
 export type subRaces = {
   id: number;
   subRacesName: string;

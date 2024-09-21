@@ -16,14 +16,10 @@ public class MapperFeatsDTO {
 
   public static ArrayList<FeatsDTO> toFeatsDTO(List<Feats> feats) {
     ArrayList<FeatsDTO> featsDTOList = new ArrayList<>();
-    if (feats != null) {
-      for (Feats feat : feats) {
-        FeatsDTO featsDTO = new FeatsDTO(feat);
-        featsDTOList.add(featsDTO);
-      }
-
-      return featsDTOList;
-    }
+    feats.forEach(feat -> {
+      FeatsDTO featsDTO = new FeatsDTO(feat);
+      featsDTOList.add(featsDTO);
+    });
     return featsDTOList;
   }
 

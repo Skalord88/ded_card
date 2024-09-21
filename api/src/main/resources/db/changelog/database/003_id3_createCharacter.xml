@@ -25,12 +25,6 @@
         <column name="class_skills" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="feats_list" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="level_feats_list" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
         <column name="special_attacks" type="jsonb">
           <constraints nullable="true"/>
         </column>

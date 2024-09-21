@@ -161,10 +161,11 @@ public class ItemsController {
     this.inventoryRepository.save(characterInventory);
 
     return new CharacterDTO(
-      character,
-      characterInventory,
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // characterInventory,
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 }

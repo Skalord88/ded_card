@@ -5,7 +5,7 @@
 
     <changeSet id="10" author="oscar">
         <createTable tableName="size">
-            <column name="id" type="TINYINT" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="size" type="varchar(50)">

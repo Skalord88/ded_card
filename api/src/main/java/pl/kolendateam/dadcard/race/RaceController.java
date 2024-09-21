@@ -54,23 +54,10 @@ public class RaceController {
 
   @GetMapping("sub")
   public ArrayList<SubRaceDTO> getAllSub() {
-    List<SubRace> races = this.subRaceRepository.findAll();
+    List<SubRace> subRaces = this.subRaceRepository.findAll();
 
-    return MaperListRaceToDTO.toListSubRaceDTO(races);
+    return MaperListRaceToDTO.toListSubRaceDTO(subRaces);
   }
-
-  // @GetMapping("{id}/region")
-  // public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable int id) {
-  //   Optional<Race> raceOpt = this.raceRepository.findById(id);
-
-  //   if (!raceOpt.isPresent()) {
-  //     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Race Not Found");
-  //   }
-
-  //   List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
-
-  //   return MaperListRegionToDTO.toRegionBaseDTO(regions);
-  // }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CreateCharacterDTO setSubRaceToCharacter(
@@ -105,34 +92,13 @@ public class RaceController {
 
     return new CreateCharacterDTO(character);
   }
-  // character.setSize(race.getSize());
-
-  // character.sizeCharacter(race.getSize());
-
-  // character.addSpeed(race.getSpeed());
-
-  // if (race.getAbilitys() != null) {
-  //   character.addAbilityRace(race.getAbilitys());
-  // }
-  // if (race.getSkills() != null) {
-  //   character.addSkill(race.getSkills());
-  // }
-
-  // ArrayList<ClassSkills> findHide = character.getClassSkills();
-  // for (ClassSkills clSk : findHide) {
-  //   if (clSk.getNameSkill().equals("Hide")) {
-  //     clSk.setSkillBonus(
-  //       clSk.getSkillBonus() + character.getSize().getHide()
-  //     );
-  //   }
-  // }
-
-  // if (race.getLevelAdjustment() != 0) {
-  //   character.raceLevelAdjustment(race.getLevelAdjustment());
-  // }
-
-  // if (race.getArmorClass() != null) {
-  //   character.raceBonusArmorClass(race.getArmorClass());
-  // }
-
 }
+// @GetMapping("{id}/region")
+// public ArrayList<RegionBaseDTO> getRegionsForRace(@PathVariable int id) {
+//   Optional<Race> raceOpt = this.raceRepository.findById(id);
+//   if (!raceOpt.isPresent()) {
+//     throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Race Not Found");
+//   }
+//   List<Region> regions = List.copyOf(raceOpt.get().getAvailableRegions());
+//   return MaperListRegionToDTO.toRegionBaseDTO(regions);
+// }

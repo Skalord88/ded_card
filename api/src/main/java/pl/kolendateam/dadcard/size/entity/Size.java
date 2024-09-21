@@ -7,7 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,59 +20,21 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Size implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  byte id;
+  int id;
 
   @Enumerated(EnumType.STRING)
   SizeEnum size;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // SpecialAttacks specialAttacks;
+  Set<ModifierBonus> modifiers = new HashSet<>();
 
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // ClassSkills skill;
-
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // ArmorClass armorBonus;
-
-  // int bab;
-  // public void sizeBonus(SizeEnum sizeEnum) {
-  //   this.size = sizeEnum;
-
-  //   int bonusSize = 0;
-  //   int hideSize = 0;
-  //   int grappleSize = 0;
-  //   switch (size) {
-  //     case TINY:
-  //       bonusSize = 2;
-  //       hideSize = 8;
-  //       grappleSize = -8;
-  //       break;
-  //     case SMALL:
-  //       bonusSize = 1;
-  //       hideSize = 4;
-  //       grappleSize = -4;
-  //       break;
-  //     case MEDIUM:
-  //       bonusSize = 0;
-  //       hideSize = 0;
-  //       grappleSize = 0;
-  //       break;
-  //     case LARGE:
-  //       bonusSize = -1;
-  //       hideSize = -4;
-  //       grappleSize = 4;
-  //       break;
-  //   }
-  //   this.bonus = bonusSize;
-  //   this.hide = hideSize;
-  //   this.grapple = grappleSize;
-  // }
+  public Size(int n) {
+    this.id = n;
+  }
 }

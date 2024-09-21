@@ -1,16 +1,8 @@
-import { BonusAbilities, SignAndCount } from "./functions";
-import { CharacterPc, ClassPc } from "./interfaces";
 import { SignNumber } from "../components/functions";
+import { SignAndCount } from "./functions";
+import { CharacterPc, ClassPc } from "./interfaces";
+import { } from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
-import { CountBabFromClassPc } from "./Attack/Bab/Functions";
-import { CheckInAllModifications } from "./Modifiers/Function";
-import { FindModifiersGrapple } from "./Modifiers/Grapple/Function";
-import { FindBabModifiers } from "./Modifiers/Bab/Function";
-import {
-} from "./Modifiers/Ability/Function";
-import { AbilitysAndModifiers } from "./Abilitys/Functions";
-import { Abilitys } from "./Abilitys/Interface";
-import { ModifiedCharProps } from "./Modifiers/ModifierInterface";
 
 export interface CharProps {
   char: CharacterPc;

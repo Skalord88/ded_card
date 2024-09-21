@@ -2,17 +2,22 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { urlRaceList } from "../components/url";
-import { SubRace } from "../components/Race/Interfaces";
 import { ListOfSomething } from "../components/List/List";
+import { SubRace } from "../components/Race/Interfaces";
+import { CharSummary } from "../components/Summary/CharSummary";
+import { CharacterPc } from "../components/interfaces";
+import { urlChar, urlRace, urlRaceList } from "../components/url";
+import { Modifiers } from "../components/Modifiers/ModifierInterface";
+import { FindAllModifications } from "../components/Modifiers/Function";
 
 export type ChosenRace = {
-  id: number
-}
+  id: number;
+};
 
 export const Races = () => {
   const { charId } = useParams();
 
+  const [char, setChar] = useState<CharacterPc>();
   const [races, setRaces] = useState<SubRace[]>();
   const [selectedRace, setSelected] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
@@ -23,6 +28,9 @@ export const Races = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const resChar = await axios.get(urlChar + "/" + charId);
+        setChar(resChar.data);
+
         const resRaceList = await axios.get(urlRaceList);
         setRaces(resRaceList.data);
       } catch (error) {
@@ -33,34 +41,40 @@ export const Races = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRace = (sRace: {name: string
-    item: SubRace}) => {
-    setSelected(sRace.item)
-    setChosenRace({ id: sRace.item.id });
-    
+  const handleRace = (sRace: { name: string; item: SubRace }) => {
+    if (selectedRace?.id !== chosenRace.id) {
+      setSelected(sRace.item);
+      setChosenRace({ id: sRace.item.id })
+    };
+
     setChange(true);
   };
   const handleSubmit = () => {
-    if (change) axios.post(urlRaceList + "/" + charId, chosenRace);
+    if (change) axios.post(urlRace + "/" + charId, chosenRace);
   };
 
   return (
     <>
+      {char ? (
+        <CharSummary
+          character={char}
+          race={selectedRace}
+        />
+      ) : null}
+      <p>ch:{chosenRace.id} / sel:{selectedRace?.id}</p>
       {change === true ? (
         <p>
+          
           {selectedRace?.race.raceName}, {selectedRace?.subRacesName}{" "}
-          <button
-            className="rpgui-button"
-            onClick={() => handleSubmit()}
-          >
+          <button className="rpgui-button" onClick={() => handleSubmit()}>
             <Link to={"/class/" + charId}>to classes</Link>
           </button>
         </p>
       ) : (
         <p>...choose race</p>
       )}
-      {races?.map(race => {
-        return(
+      {races?.map((race) => {
+        return (
           <>
             <ListOfSomething
               items={races}
@@ -68,11 +82,8 @@ export const Races = () => {
               onSelect={handleRace}
             />
           </>
-        )
+        );
       })}
-  </>
-  )
-  
-}
-                      
-
+    </>
+  );
+};

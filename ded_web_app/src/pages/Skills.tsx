@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CharacterPc } from "../components/interfaces";
 
-import { urlChar } from "../components/url";
-import "../css/style.css";
-import { CharSummary } from "../components/CharSummary";
 import { SkillsTableComponent } from "../components/Skills/SkillsTableComponent";
 import { SkillProps } from "../components/Skills/interface/SkillsInterface";
+import { CharSummary } from "../components/Summary/CharSummary";
+import { urlChar } from "../components/url";
+import "../css/style.css";
 
 export function Skills() {
   const { charId } = useParams();
@@ -37,18 +37,18 @@ export function Skills() {
 
   return (
     <>
-      <CharSummary character={char} />
-
+      
       {char ? (
+        <>
+        <CharSummary character={char} race={undefined} />
         <p>
           <SkillsTableComponent
             key={"skillsTable"}
             char={char}
           />
         </p>
-      ) : (
-        <></>
-      )}
+        </>
+      ) : null}
     </>
   );
 }

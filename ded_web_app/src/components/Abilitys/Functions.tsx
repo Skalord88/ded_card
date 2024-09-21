@@ -43,25 +43,25 @@ export function BonusAbilities(ab: Abilitys, which: string) {
   }
 }
 
-export function AbilitysAndModifiers(char: CharacterPc, modifications: Modifiers[]): Abilitys {
+export function AbilitysAndModifiers(abilitys: Abilitys, modifications: Modifiers[]): Abilitys {
   return {
     strength:
-      char.abilitys.strength +
+      abilitys.strength +=
       FindInOneLengthModifier(modifications, "STRENGHT"),
     dextrity:
-      char.abilitys.dextrity +
+      abilitys.dextrity +=
       FindInOneLengthModifier(modifications, "DEXTERITY"),
     constitution: 
-      char.abilitys.constitution + 
+      abilitys.constitution +=
       FindInOneLengthModifier(modifications, "CONSTITUTION"),
     intelligence:
-      char.abilitys.intelligence + 
+      abilitys.intelligence +=
       FindInOneLengthModifier(modifications, "INTELLIGENCE"),
     wisdom: 
-      char.abilitys.wisdom + 
+      abilitys.wisdom +=
       FindInOneLengthModifier(modifications, "WISDOM"),
     charisma: 
-      char.abilitys.charisma +
+      abilitys.charisma +=
       FindInOneLengthModifier(modifications, "CHARISMA"),
   };
 }

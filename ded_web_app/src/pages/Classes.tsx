@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { CharSummary } from "../components/CharSummary";
+import { DropdownClass } from "../components/ClassPc/DropdownClass";
+import { CharSummary } from "../components/Summary/CharSummary";
 import { CharacterPc, ClassPc } from "../components/interfaces";
 import {
   urlChar,
@@ -10,9 +11,6 @@ import {
   urlClassList,
   urlClassSell
 } from "../components/url";
-import { DropdownClass } from "../components/ClassPc/DropdownClass";
-import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop } from "../components/functions";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -81,9 +79,12 @@ export const Classes = () => {
     window.location.reload();
   };
 
+  console.log(char)
+
   return (
     <>
-      <CharSummary character={char} />
+      {char? <CharSummary character={char} race={undefined} /> : null}
+      
       <div className="rpgui-container-framed-grey">
         <div>
           <div style={{ width: "50%" }}>
@@ -104,8 +105,6 @@ export const Classes = () => {
         >
           {char?.classPcList ? (
             <>
-
-              {/* <DropdownComponent options={addToDrop(classesList, "class")} onAction={handleOption}/> */}
 
               {char.classPcList.map((c: ClassPc, index: number) => {
                 return c.level === 0 ? (

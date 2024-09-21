@@ -78,10 +78,11 @@ public class SkillsController {
 
     this.characterRepository.save(character);
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 
@@ -129,10 +130,11 @@ public class SkillsController {
 
     this.characterRepository.save(character);
     return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
+      character
+      // ,
+      // character.getInventory(),
+      // character.getAttacks(),
+      // character.getClassPcArray()
     );
   }
 }

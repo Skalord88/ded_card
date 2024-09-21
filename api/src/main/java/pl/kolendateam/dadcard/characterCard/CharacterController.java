@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
@@ -29,9 +28,10 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
-import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
+import pl.kolendateam.dadcard.race.repository.RaceRepository;
+import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.spells.entity.Book;
@@ -134,36 +134,7 @@ public class CharacterController {
 
     Character character = characterOpt.get();
 
-    Optional<Inventory> inventoryOpt =
-      this.inventoryRepository.findById(character.getInventory().getId());
-    if (!inventoryOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Inventory Not Found"
-      );
-    }
-
-    Inventory characterInventory = inventoryOpt.get();
-
-    Optional<Attacks> attacksOpt =
-      this.attacksRepository.findById(character.getAttacks().getId());
-    if (!inventoryOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Attacks Not Found"
-      );
-    }
-
-    Attacks characterAttacks = attacksOpt.get();
-
-    List<ClassPc> characterClassList = this.classPcRepository.findAll();
-
-    return new CharacterDTO(
-      character,
-      characterInventory,
-      characterAttacks,
-      characterClassList
-    );
+    return new CharacterDTO(character);
   }
 
   @PostMapping(value = "class/{id}", consumes = { "application/json" })
@@ -285,24 +256,9 @@ public class CharacterController {
       }
     }
 
-    // experience
-    // character.setCharacterExperience();
-
-    // gold
-    // if (character.getEffectiveCharacterLv() == 1) {
-    //   character.setFirstLevelGold(classCharacter.getInitialGold());
-    // } else {
-    //   character.setLevelGold();
-    // }
-
     this.characterRepository.save(character);
 
-    return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
-    );
+    return new CharacterDTO(character);
   }
 
   @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
@@ -479,11 +435,6 @@ public class CharacterController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(
-      character,
-      character.getInventory(),
-      character.getAttacks(),
-      character.getClassPcArray()
-    );
+    return new CharacterDTO(character);
   }
 }
