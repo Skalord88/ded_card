@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { SignAndCount, SignNumber } from "../functions";
-import { CharacterPc, ClassPc, savingThrows } from "../interfaces";
+import { CharacterPc, savingThrows } from "../interfaces";
 import { AbSummary } from "./AbSummary";
 import { SubRace } from "../Race/Interfaces";
 import {
@@ -8,12 +7,15 @@ import {
   FindInOneLengthModifier
 } from "../Modifiers/Function";
 import { Modifiers } from "../Modifiers/ModifierInterface";
-import { AbilitysAndModifiers, BonusAbilities } from "../Abilitys/Functions";
+import { AbilitysAndModifiers } from "../Abilitys/Functions";
 import { Abilitys } from "../Abilitys/Interface";
 import { Saving, SavingProps } from "../Saving/Saving";
-import { CountSavingThrowFromClassPc } from "../Saving/Functions";
+import {
+  CountSavingThrowFromAdjClass
+} from "../Saving/Functions";
 import { SavingSummary } from "./SavingSummary";
-import { FormattingText } from "../Formatting/Function";
+import { ModifierSummary } from "./ModifierSummary";
+import { FeatsSummary } from "./FeatsSummary";
 
 export interface SummaryProps {
   character: CharacterPc;
@@ -22,8 +24,8 @@ export interface SummaryProps {
 
 export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
   const [modifiers, setModifiers] = useState<Modifiers[]>();
+  const [noAbilitysMod, setNoAbilitysMod] = useState<Modifiers[]>([]);
   const [abilitys, setAbilitys] = useState<Abilitys>();
-  const [classi, setClassi] = useState<ClassPc[]>([]);
   const [saving, setSaving] = useState<SavingProps>();
 
   useEffect(() => {
@@ -36,36 +38,41 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
         ])
       );
       if (race.levelAdjustment > 0) {
-        setClassi([
-          ...classi,
-          {
-            id: 0,
-            classType: 0,
-            className: 0,
-            level: race.levelAdjustment,
-            firstClass: false,
-            hitDice: 4,
-            classBab: 0.5,
-            savingThrow: "lll",
-            skillPoints: 2,
-            feats: []
-          }
-        ]);
       }
     }
-  }, [classi, race, character]);
+  }, [race, character]);
 
   useEffect(() => {
-    let sT: savingThrows = {fortitude: 0, reflex: 0, will: 0}
-    if(classi)sT = CountSavingThrowFromClassPc(classi)
-    let savingBonusAll: number = 0
-    if(modifiers) savingBonusAll = FindInOneLengthModifier(
-      modifiers,
-      "SAVING"
-    )
+    if (modifiers) {
+      setNoAbilitysMod(
+        modifiers?.filter(
+          (mod) =>
+            ![
+              "STRENGHT",
+              "DEXTERITY",
+              "CONSTITUTION",
+              "INTELLIGENCE",
+              "WISDOM",
+              "CHARISMA"
+            ].some((ability) => mod.modifier.includes(ability))
+        )
+      );
+    }
+  }, [modifiers]);
 
-    setSaving( Saving(character, sT, savingBonusAll) )
-  },[character, classi, modifiers])
+  useEffect(() => {
+    let sTAdj: savingThrows = { fortitude: 0, reflex: 0, will: 0 };
+    if (race) sTAdj = CountSavingThrowFromAdjClass(race?.levelAdjustment);
+    let savingBonusAll: number = 0;
+    if (modifiers) {
+      savingBonusAll = FindInOneLengthModifier(modifiers, "SAVING");
+      abilitys
+        ? setSaving(Saving(abilitys, sTAdj, savingBonusAll, modifiers))
+        : setSaving(
+            Saving(character.abilitys, sTAdj, savingBonusAll, modifiers)
+          );
+    }
+  }, [abilitys, character.abilitys, modifiers, race]);
 
   useEffect(() => {
     if (modifiers) {
@@ -78,33 +85,16 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
       {character ? (
         <div className="rpgui-container-framed-grey">
           {abilitys ? (
-            <p>
-              <AbSummary abilitys={abilitys} />
-            </p>
+            <AbSummary abilitys={abilitys} />
           ) : (
-            <p>
-              <AbSummary abilitys={character.abilitys} />
-            </p>
+            <AbSummary abilitys={character.abilitys} />
           )}
-          <p>Effective Level: {character.effectiveCharacterLv}</p>
 
           <SavingSummary saving={saving} />
 
-          {modifiers ? (
-            <p>
-              <div style={{ display: "flex", flexDirection: "row" }}>
-                {modifiers.map((m, index) => {
-                  const lastIndex = modifiers.length;
-                  return (
-                    <>
-                      {FormattingText(m.modifier)}: {FormattingText(m.targets[0])}.{FormattingText(m.targets[1])} {m.bonus}{" "}
-                      {lastIndex - 1 !== index ? " / " : ""}
-                    </>
-                  );
-                })}
-              </div>
-            </p>
-          ) : null}
+          {noAbilitysMod ? <ModifierSummary modifiers={noAbilitysMod} /> : null}
+
+          {race ? <FeatsSummary feats={race?.raceFeats} /> : null}
           <p>
             {" "}
             Skills:

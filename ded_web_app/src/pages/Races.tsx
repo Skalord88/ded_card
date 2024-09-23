@@ -7,8 +7,6 @@ import { SubRace } from "../components/Race/Interfaces";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
-import { Modifiers } from "../components/Modifiers/ModifierInterface";
-import { FindAllModifications } from "../components/Modifiers/Function";
 
 export type ChosenRace = {
   id: number;
@@ -19,6 +17,8 @@ export const Races = () => {
 
   const [char, setChar] = useState<CharacterPc>();
   const [races, setRaces] = useState<SubRace[]>();
+  const [racePerRace, setRacePerRace] =
+    useState<{ race: string; sub: SubRace[] }[]>();
   const [selectedRace, setSelected] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
     id: 0
@@ -42,6 +42,35 @@ export const Races = () => {
   }, []);
 
   useEffect(() => {
+    if (races) {
+      const NumberOfRaces: { race: string; sub: SubRace[] }[] = races.reduce(
+        (acc, currentRace) => {
+          // Cerca se esiste già un gruppo per la stessa razza
+          const existingRaceGroup = acc.find(
+            (group) => group.race === currentRace.race.raceName
+          );
+
+          if (existingRaceGroup) {
+            // Aggiungi la sottorazza al gruppo esistente
+            existingRaceGroup.sub.push(currentRace);
+          } else {
+            // Crea un nuovo gruppo per la razza
+            acc.push({
+              race: currentRace.race.raceName,
+              sub: [currentRace] // Aggiungi la prima sottorazza
+            });
+          }
+
+          return acc;
+        },
+        [] as { race: string; sub: SubRace[] }[]
+      );
+
+      setRacePerRace(NumberOfRaces);
+    }
+  }, [races]);
+
+  useEffect(() => {
     if (selectedRace) setChosenRace({ id: selectedRace?.id });
   }, [selectedRace]);
 
@@ -56,9 +85,6 @@ export const Races = () => {
   return (
     <>
       {char ? <CharSummary character={char} race={selectedRace} /> : null}
-      <p>
-        ch:{chosenRace.id} / sel:{selectedRace?.id}
-      </p>
       {change === true ? (
         <p>
           {selectedRace?.race.raceName}, {selectedRace?.subRacesName}{" "}
@@ -69,17 +95,18 @@ export const Races = () => {
       ) : (
         <p>...choose race</p>
       )}
-      {races?.map((race) => {
+      <div style={{display: "grid", gridTemplateColumns: 'auto auto auto'}}>
+      {racePerRace?.map((race) => {
         return (
           <>
             <ListOfSomething
-              items={races}
-              text={race.race.raceName}
+              items={race.sub}
+              text={race.race}
               onSelect={handleRace}
             />
           </>
         );
-      })}
+      })}</div>
     </>
   );
 };

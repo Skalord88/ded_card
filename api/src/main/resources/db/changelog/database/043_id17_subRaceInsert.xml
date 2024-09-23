@@ -4,8 +4,36 @@
     <changeSet id="17" author="damian">
 
         <insert tableName="sub_race">
-            <column name="sub_race_name" value="Half-Orc" />
+            <column name="sub_race_name" value="Moon Elf" />
             <column name="race_id" value="1" />
+            <column name="size_id" value="5" />
+            <column name="modifiers"
+                value="[]" />
+            <column name="level_adjustment" value="0" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Drow" />
+            <column name="race_id" value="1" />
+            <column name="size_id" value="5" />
+            <column name="modifiers"
+                value="[{
+            &quot;modifier&quot; : &quot;INTELLIGENCE&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;WILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            }]" />
+            <column name="level_adjustment" value="2" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Half-Orc" />
+            <column name="race_id" value="2" />
             <column name="size_id" value="5" />
             <column name="modifiers"
                 value="[{
@@ -21,7 +49,7 @@
         </insert>
         <insert tableName="sub_race">
             <column name="sub_race_name" value="Lightfoot" />
-            <column name="race_id" value="2" />
+            <column name="race_id" value="3" />
             <column name="size_id" value="4" />
             <column name="modifiers"
                 value="[]" />

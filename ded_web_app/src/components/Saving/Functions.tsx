@@ -23,3 +23,22 @@ export function CountSavingThrowFromClassPc(
 
         return sT;
     }
+export function CountSavingThrowFromAdjClass(
+    level: number): savingThrows {
+
+        let sT: savingThrows = {
+            fortitude: 0,
+            reflex: 0,
+            will: 0
+        }
+
+            sT.fortitude += 0.5 * (level)
+            sT.reflex += 0.5 * (level)
+            sT.will += 0.5 * (level)
+
+            sT.fortitude = Math.floor(sT.fortitude)
+            sT.reflex =  Math.floor(sT.reflex)
+            sT.will = Math.floor(sT.will)
+
+        return sT;
+    }

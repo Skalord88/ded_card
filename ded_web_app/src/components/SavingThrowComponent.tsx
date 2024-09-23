@@ -1,3 +1,4 @@
+import { Abilitys } from "./Abilitys/Interface";
 import { FormattingText } from "./Formatting/Function";
 import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc, savingThrows } from "./interfaces";
@@ -12,11 +13,13 @@ import { Saving } from "./Saving/Saving";
 
 export type SavingThrowComponentProps = {
   char: CharacterPc;
+  abilitys: Abilitys;
   modifications: Modifiers[];
 };
 
 export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   char,
+  abilitys,
   modifications
 }) => {
   const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList);
@@ -24,7 +27,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     modifications,
     "SAVING"
   );
-  const saving = Saving(char, sT, savingBonusAll)
+  const saving = Saving(abilitys, sT, savingBonusAll, modifications)
 
   const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
     modifications,

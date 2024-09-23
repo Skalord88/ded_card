@@ -1,21 +1,34 @@
 <databaseChangeLog
-    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="18" author="oscar">
-        <createTable tableName="sub_race_feats">
-          <column name="sub_race_id" type="int">
-            <constraints nullable="false"/>
-          </column>
-          <column name="feats_id" type="int">
-            <constraints nullable="false"/>
-          </column>
-        </createTable>
+  <changeSet id="18" author="oscar">
+    <createTable tableName="sub_race_feats">
+      <column name="sub_race_id" type="int">
+        <constraints nullable="false" />
+      </column>
+      <column name="feats_id" type="int">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
 
-        <insert tableName="sub_race_feats">
-          <column name="sub_race_id" value="1" />
-          <column name="feats_id" value="106" />
-      </insert>
-    </changeSet>
+
+    <insert tableName="sub_race_feats">
+      <column name="sub_race_id" value="3" />
+      <column name="feats_id" value="106" />
+    </insert>
+    <insert tableName="sub_race_feats">
+      <column name="sub_race_id" value="2" />
+      <column name="feats_id" value="1001" />
+    </insert>
+    <insert tableName="sub_race_feats">
+      <column name="sub_race_id" value="2" />
+      <column name="feats_id" value="106" />
+    </insert>
+    <insert tableName="sub_race_feats">
+      <column name="sub_race_id" value="2" />
+      <column name="feats_id" value="1002" />
+    </insert>
+  </changeSet>
 </databaseChangeLog>

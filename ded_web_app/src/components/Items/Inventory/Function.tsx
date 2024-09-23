@@ -54,7 +54,6 @@ export function CalculateWeight(strenght: number, size: number, inventoryWeight:
         case 8: w = w.map(x => x * 8); break;
         case 9: w = w.map(x => x * 12); break;
     }
-    console.log(strenght, w)
 
     if (inventoryWeight < w[0]) return ['light load', inventoryWeight]
     if (inventoryWeight < w[1]) return ['medium load', inventoryWeight]

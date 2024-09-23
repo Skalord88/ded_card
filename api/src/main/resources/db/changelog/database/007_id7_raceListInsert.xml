@@ -1,11 +1,47 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="7" author="oscar">
         <insert tableName="race">
+            <column name="race_name" value="Elf" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;SPEED&quot;,
+            &quot;bonus&quot; : 30,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;IMMUNITY&quot;,            
+            &quot;bonus&quot; : 0,            
+            &quot;targets&quot; : [&quot;SLEEP&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SAVING&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;ENCHANTMENT&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;LISTEN&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;SEARCH&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;SPOT&quot;]            
+            }]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
             <column name="race_name" value="Orcs" />
-            <column name="modifiers"
-                value="[
+            <column name="modifiers" value="[
             {
             &quot;modifier&quot; : &quot;SPEED&quot;,
             &quot;bonus&quot; : 30,
@@ -31,8 +67,7 @@
         </insert>
         <insert tableName="race">
             <column name="race_name" value="Halfling" />
-            <column name="modifiers"
-                value="[
+            <column name="modifiers" value="[
             {
             &quot;modifier&quot; : &quot;SPEED&quot;,
             &quot;bonus&quot; : 20,

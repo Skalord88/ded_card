@@ -79,8 +79,6 @@ export const Classes = () => {
     window.location.reload();
   };
 
-  console.log(char)
-
   return (
     <>
       {char? <CharSummary character={char} race={undefined} /> : null}

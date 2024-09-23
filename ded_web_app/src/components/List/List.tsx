@@ -21,13 +21,14 @@ export const ListOfSomething: React.FC<ListProps> = ({
       {items.length > 0 ? (
         <>
           <div style={{ flex: 1 }}>
-            <p>{text}</p>
+            <h4>{text}</h4>
             <div
               className="rpgui-list-imp"
-              style={{ height: "auto", maxHeight: 100, fontSize: "80%" }}
+              style={{ minHeight: 100 , maxHeight: 180 }}
             >
+
               {items.map((i, index) => {
-                return i.race.raceName === text ? (
+                return (
                   <li
                     key={index}
                     onClick={() => handleSelect({ item: i, name: text })}
@@ -35,13 +36,13 @@ export const ListOfSomething: React.FC<ListProps> = ({
                     {EnchantedName(i)} {i.subRacesName} {i.featName}{" "}
                     {i.characterFeatName}
                   </li>
-                ) : null;
+                );
               })}
             </div>
           </div>
         </>
       ) : (
-        <></>
+        null
       )}
     </>
   );

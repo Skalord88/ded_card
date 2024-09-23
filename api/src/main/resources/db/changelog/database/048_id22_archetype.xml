@@ -1,0 +1,25 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="22" author="oscar">
+    <createTable tableName="archetype">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="archetype_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="modifiers" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="level_adjustment" type="TINYINT">
+        <constraints nullable="true" />
+      </column>
+      <column name="avatar_url" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

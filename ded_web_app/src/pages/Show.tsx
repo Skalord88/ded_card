@@ -219,7 +219,7 @@ export const Show = () => {
             gridRow: 5
           }}
         >
-          <SavingThrowComponent char={char} modifications={modifications} />
+          <SavingThrowComponent char={char} abilitys={abilitys} modifications={modifications} />
         </div>
         <div
           className="rpgui-container-framed-grey"

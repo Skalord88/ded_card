@@ -397,7 +397,7 @@
 
           Starting a bardic music effect is a standard action. Some bardic music abilities require concentration, which means the bard must take a standard action each round to maintain the ability. Even while using bardic music that doesn’t require concentration, a bard cannot cast spells, activate magic items by spell completion (such as scrolls), spell trigger (such as wands), or command word. Just as for casting a spell with a verbal component, a deaf bard has a 20% chance to fail when attempting to use bardic music. If he fails, the attempt still counts against his daily limit.
               " />
-              <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -420,7 +420,7 @@
         25	Obscure, known by few, hard to come by.
         30	Extremely obscure, known by very few, possibly forgotten by most who once knew it, possibly known only by those who don’t understand the significance of the knowledge.
             " />
-            <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_KNOWLEDGE&quot;,
@@ -472,7 +472,7 @@ Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming
         value="
   A bard with 3 or more ranks in a Perform skill can use song or poetics to inspire courage in his allies (including himself), bolstering them against fear and improving their combat abilities. To be affected, an ally must be able to hear the bard sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. An affected ally receives a +1 morale bonus on saving throws against charm and fear effects and a +1 morale bonus on attack and weapon damage rolls. At 8th level, and every six bard levels thereafter, this bonus increases by 1 (+2 at 8th, +3 at 14th, and +4 at 20th). Inspire courage is a mind-affecting ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -490,7 +490,7 @@ Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming
 
 The ally gets a +2 competence bonus on skill checks with a particular skill as long as he or she continues to hear the bard’s music. Certain uses of this ability are infeasible. The effect lasts as long as the bard concentrates, up to a maximum of 2 minutes. A bard can’t inspire competence in himself. Inspire competence is a mind-affecting ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -508,7 +508,7 @@ The ally gets a +2 competence bonus on skill checks with a particular skill as l
 
 Making a suggestion doesn’t count against a bard’s daily limit on bardic music performances. A Will saving throw (DC 10 + ½ bard’s level + bard’s Cha modifier) negates the effect. This ability affects only a single creature (but see mass suggestion, below). Suggestion is an enchantment (compulsion), mind-affecting, language dependent ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -524,7 +524,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
         value="
   A bard of 9th level or higher with 12 or more ranks in a Perform skill can use music or poetics to inspire greatness in himself or a single willing ally within 30 feet, granting him or her extra fighting capability. For every three levels a bard attains beyond 9th, he can target one additional ally with a single use of this ability (two at 12th level, three at 15th, four at 18th). To inspire greatness, a bard must sing and an ally must hear him sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. A creature inspired with greatness gains 2 bonus Hit Dice (d10s), the commensurate number of temporary hit points (apply the target’s Constitution modifier, if any, to these bonus Hit Dice), a +2 competence bonus on attack rolls, and a +1 competence bonus on Fortitude saves. The bonus Hit Dice count as regular Hit Dice for determining the effect of spells that are Hit Dice dependant. Inspire greatness is a mind-affecting ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -540,7 +540,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
         value="
   A bard of 12th level or higher with 15 or more ranks in a Perform skill can use music or poetics to create an effect equivalent to the break enchantment spell (caster level equals the character’s bard level). Using this ability requires 1 minute of uninterrupted concentration and music, and it functions on a single target within 30 feet. A bard can’t use song of freedom on himself.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -557,7 +557,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
   A bard of 15th
    level or higher with 18 or more ranks in a Perform skill can use music or poetics to inspire tremendous heroism in himself or a single willing ally within 30 feet. For every three bard levels the character attains beyond 15th, he can inspire heroics in one additional creature. To inspire heroics, a bard must sing and an ally must hear the bard sing for a full round. A creature so inspired gains a +4 morale bonus on saving throws and a +4 dodge bonus to AC. The effect lasts for as long as the ally hears the bard sing and for up to 5 rounds thereafter. Inspire heroics is a mind-affecting ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -573,7 +573,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
         value="
   This ability functions like suggestion, above, except that a bard of 18th level or higher with 21 or more ranks in a Perform skill can make the suggestion simultaneously to any number of creatures that he has already fascinated. Mass suggestion is an enchantment (compulsion), mind-affecting, language-dependent ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
@@ -593,7 +593,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
   
   A cleric may attempt to turn undead a number of times per day equal to 3 + his Charisma modifier. A cleric with 5 or more ranks in Knowledge (religion) gets a +2 bonus on turning checks against undead.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
@@ -621,7 +621,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
         value="
   A druid gains a +2 bonus on Knowledge (nature) and Survival checks.
   " />
-    <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SKILL&quot;,
@@ -647,7 +647,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
   
   A druid can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;WILD_EMPATHY&quot;,
@@ -667,7 +667,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
   However, thorns, briars, and overgrown areas that have been magically manipulated 
   to impede motion still affect her.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SPEED&quot;,
@@ -692,7 +692,7 @@ Making a suggestion doesn’t count against a bard’s daily limit on bardic mus
         value="
   Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like abilities of fey.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SAVING&quot;,
@@ -724,7 +724,7 @@ At 16th level, a druid becomes able to use wild shape to change into a Small, Me
 
 At 18th level, a druid becomes able to assume elemental form twice per day, and at 20th level she can do so three times per day. At 20th level, a druid may use this wild shape ability to change into a Huge elemental.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;WILD_SHAPE&quot;,
@@ -740,7 +740,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 9th level, a druid gains immunity to all poisons.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -776,7 +776,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
 
   These bonus feats are in addition to the feat that a character of any class gets from advancing levels. A fighter is not limited to the list of fighter bonus feats when choosing these feats.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -792,7 +792,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 1st level, a monk may select either Improved Grapple or Stunning Fist as a bonus feat. At 2nd level, she may select either Combat Reflexes or Deflect Arrows as a bonus feat. At 6th level, she may select either Improved Disarm or Improved Trip as a bonus feat. A monk need not have any of the prerequisites normally required for these feats to select them.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -812,7 +812,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
   
   In the case of the quarterstaff, each end counts as a separate weapon for the purpose of using the flurry of blows ability. Even though the quarterstaff requires two hands to use, a monk may still intersperse unarmed strikes with quarterstaff strikes, assuming that she has enough attacks in her flurry of blows routine to do so.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;FLURRY_BLOWS&quot;,
@@ -841,7 +841,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   A successful Reflex saving throw against an attack that normally deals half damage on a successful save, she instead takes no damage. Evasion can be used only if character is wearing light armor or no armor. A helpless character does not gain the benefit of evasion.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EVASION&quot;,
@@ -857,7 +857,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   A monk of 3rd level or higher gains a +2 bonus on saving throws against spells and effects from the school of enchantment.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SAVING&quot;,
@@ -873,7 +873,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 4th level, a monk’s unarmed attacks are empowered with ki. Her unarmed attacks are treated as magic weapons for the purpose of dealing damage to creatures with damage reduction. Ki strike improves with the character’s monk level. At 10th level, her unarmed attacks are also treated as lawful weapons for the purpose of dealing damage to creatures with damage reduction. At 16th level, her unarmed attacks are treated as adamantine weapons for the purpose of dealing damage to creatures with damage reduction and bypassing hardness.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;KI_STRIKE&quot;,
@@ -889,7 +889,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 4th level or higher, a monk within arm’s reach of a wall can use it to slow her descent. When first using this ability, she takes damage as if the fall were 20 feet shorter than it actually is. The monk’s ability to slow her fall (that is, to reduce the effective distance of the fall when next to a wall) improves with her monk level until at 20th level she can use a nearby wall to slow her descent and fall any distance without harm.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;FALL&quot;,
@@ -903,7 +903,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
       <column name="feats_type" value="CLASS" />
       <column name="description"
         value="At 5th level, a monk gains immunity to all diseases except for supernatural and magical diseases." />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -919,7 +919,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 5th level, a monk gains immunity to all diseases except for supernatural and magical diseases.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -935,7 +935,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   A character’s evasion ability improves. She still takes no damage on a successful Reflex saving throw against attacks, but henceforth she takes only half damage on a failed save. A helpless character does not gain the benefit of improved evasion.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EVASION&quot;,
@@ -951,7 +951,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 11th level, a monk gains immunity to poisons of all kinds.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -967,7 +967,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   When a monk reaches 11th level, her flurry of blows ability improves. In addition to the standard single extra attack she gets from flurry of blows, she gets a second extra attack at her full base attack bonus.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;FLURRY_BLOWS&quot;,
@@ -991,7 +991,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   At 13th level, a monk gains spell resistance equal to her current monk level + 10. In order to affect the monk with a spell, a spellcaster must get a result on a caster level check (1d20 + caster level) that equals or exceeds the monk’s spell resistance.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,
@@ -1007,7 +1007,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
         value="
   Starting at 15th level, a monk can set up vibrations within the body of another creature that can thereafter be fatal if the monk so desires. She can use this quivering palm attack once a week, and she must announce her intent before making her attack roll. Constructs, oozes, plants, undead, incorporeal creatures, and creatures immune to critical hits cannot be affected. Otherwise, if the monk strikes successfully and the target takes damage from the blow, the quivering palm attack succeeds. Thereafter the monk can try to slay the victim at any later time, as long as the attempt is made within a number of days equal to her monk level. To make such an attempt, the monk merely wills the target to die (a free action), and unless the target makes a Fortitude saving throw (DC 10 + ½ the monk’s level + the monk’s Wis modifier), it dies. If the saving throw is successful, the target is no longer in danger from that particular quivering palm attack, but it may still be affected by another one at a later time.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;QUIVERING_PALM&quot;,
@@ -1056,7 +1056,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
   Unlike other outsiders, the monk can still be brought back from the dead as if she were a member 
   of her previous creature type.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
@@ -1090,7 +1090,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
 
 At 5th level, and at every five levels thereafter, the paladin may smite evil one additional time per day, as indicated on Table: The Paladin, to a maximum of five times per day at 20th level.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SMITE&quot;,
@@ -1106,7 +1106,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
         value="
   At 2nd level, a paladin gains a bonus equal to her Charisma bonus (if any) on all saving throws.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SAVING&quot;,
@@ -1124,7 +1124,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
 
   Alternatively, a paladin can use any or all of this healing power to deal damage to undead creatures. Using lay on hands in this way requires a successful melee touch attack and doesn’t provoke an attack of opportunity. The paladin decides how many of her daily allotment of points to use as damage after successfully touching an undead creature.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;LAY_ON_HANDS&quot;,
@@ -1142,7 +1142,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
 
   This ability functions while the paladin is conscious, but not if she is unconscious or dead.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -1158,7 +1158,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
         value="
   At 3rd level, a paladin gains immunity to all diseases, including supernatural and magical diseases.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
@@ -1174,7 +1174,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
         value="
   When a paladin reaches 4th level, she gains the supernatural ability to turn undead. She may use this ability a number of times per day equal to 3 + her Charisma modifier. She turns undead as a cleric of three levels lower would.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
@@ -1216,7 +1216,7 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
   
   If the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table. If a specific creature falls into more than one category of favored enemy, the ranger’s bonuses do not stack; he simply uses whichever bonus is higher.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;FAVORED_ENEMY&quot;,
@@ -1305,7 +1305,7 @@ Tracked party hides trail (and moves at half speed)	+5
   
   The benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -1328,7 +1328,7 @@ Tracked party hides trail (and moves at half speed)	+5
   Special
   A ranger automatically gains Endurance as a bonus feat at 3rd level. He need not select it.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SAVING&quot;,
@@ -1348,7 +1348,7 @@ Tracked party hides trail (and moves at half speed)	+5
   
   As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -1378,7 +1378,7 @@ Tracked party hides trail (and moves at half speed)	+5
   
   As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -1418,7 +1418,7 @@ Tracked party hides trail (and moves at half speed)	+5
   
   A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
@@ -1471,7 +1471,7 @@ Tracked party hides trail (and moves at half speed)	+5
   Feat
   A rogue may gain a bonus feat in place of a special ability.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
@@ -1514,7 +1514,7 @@ Tracked party hides trail (and moves at half speed)	+5
   Any scroll that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when scribing the scroll.
   " />
     </insert>
-    
+
     <insert tableName="feats">
       <column name="feat_name" value="Bonus Feat Wizard" />
       <column name="feats_type" value="CLASS" />
@@ -1695,7 +1695,7 @@ If a death attack is attempted and fails (the victim makes her save) or if the a
   
   A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
   " />
-  <column name="modifiers"
+      <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
@@ -1703,6 +1703,67 @@ If a death attack is attempted and fails (the victim makes her save) or if the a
             &quot;targets&quot; : [&quot;HALFLING_SLING&quot;]
             } 
     ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Low-Light Vision" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Characters with low-light vision have eyes that are so sensitive to light that they can see twice as far as normal in dim light. Low-light vision is color vision. A spellcaster with low-light vision can read a scroll as long as even the tiniest candle flame is next to her as a source of light.
+
+Characters with low-light vision can see outdoors on a moonlit night as well as they can during the day."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Find secret doors" />
+      <column name="feats_type" value="RACIAL" />
+      <column name="description"
+        value="An elf who merely passes within 5 feet of a secret or concealed door is entitled to a Search check to notice it as if she were actively looking for it."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="1000" />
+      <column name="feat_name" value="Elven Martial Weapon Proficiency" />
+      <column name="feats_type" value="RACIAL" />
+      <column name="description"
+        value="Elves receive the Martial Weapon Proficiency feats for the longsword, rapier, longbow (including composite longbow), and shortbow (including composite shortbow) as bonus feats." />
+      <column name="modifiers"
+      value="[
+    {
+          &quot;modifier&quot; : &quot;MARTIAL&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;LONGSWORD&quot;,&quot;RAPIER&quot;,&quot;SHORTBOW&quot;,&quot;SHORTBOW_COMPOSITE&quot;,&quot;LONGBOW&quot;,&quot;LONGBOW_COMPOSITE&quot;]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="1001" />
+      <column name="feat_name" value="Drow Martial Weapon Proficiency" />
+      <column name="feats_type" value="RACIAL" />
+      <column name="description"
+        value="Drow receive the Martial Weapon Proficiency feats for the shortsword, rapier as bonus feats." />
+      <column name="modifiers"
+      value="[
+    {
+          &quot;modifier&quot; : &quot;MARTIAL&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SWORD_SHORT&quot;,&quot;RAPIER&quot;]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="1002" />
+      <column name="feat_name" value="Drow Exotic Weapon Proficiency" />
+      <column name="feats_type" value="RACIAL" />
+      <column name="description"
+        value="Drow receive the Exotic Weapon Proficiency feats for the hand-crossbow as bonus feats." />
+      <column name="modifiers"
+      value="[
+    {
+          &quot;modifier&quot; : &quot;MARTIAL&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;CROSSBOW_HAND&quot;]
+          } 
+  ]" />
     </insert>
 
   </changeSet>
