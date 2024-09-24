@@ -20,6 +20,13 @@ export type SubRace = {
     size: Size;
     availableRegions: Region[]
 }
+export type Archetype = {
+    id: number,
+    archetypeName: string;
+    modifiers: Modifiers[],
+    archetypeFeats: Feat[],
+    levelAdjustment: number;
+}
 
 export type Region = {
     id: number;

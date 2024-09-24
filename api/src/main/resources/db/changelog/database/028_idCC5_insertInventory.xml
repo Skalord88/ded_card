@@ -19,5 +19,20 @@
             <column name="cloth_id" value="4" />
             <column name="legs_id" value="4" />
         </insert>
+        <insert tableName="inventory">
+            <column name="id" value="101" />
+            <column name="armor_id" value="52" />
+            <column name="shield_id" value="42" />
+            <column name="weapon_id_one" value="53" />
+            <column name="weapon_id_two" value="54" />
+            <column name="weapon_id_three" value="55" />
+            <column name="weapon_id_four" value="5" />
+            <column name="weapon_id_five" value="1" />
+            <column name="head_id" value="4" />
+            <column name="neck_id" value="4" />
+            <column name="arms_id" value="4" />
+            <column name="cloth_id" value="4" />
+            <column name="legs_id" value="4" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

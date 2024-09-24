@@ -4,7 +4,7 @@
     <changeSet id="17" author="damian">
 
         <insert tableName="sub_race">
-            <column name="sub_race_name" value="Moon Elf" />
+            <column name="sub_race_name" value="Moon Elf" /> <!-- 1-->
             <column name="race_id" value="1" />
             <column name="size_id" value="5" />
             <column name="modifiers"
@@ -12,7 +12,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
         <insert tableName="sub_race">
-            <column name="sub_race_name" value="Drow" />
+            <column name="sub_race_name" value="Drow" /> <!-- 2-->
             <column name="race_id" value="1" />
             <column name="size_id" value="5" />
             <column name="modifiers"
@@ -32,7 +32,7 @@
             <column name="level_adjustment" value="2" />
         </insert>
         <insert tableName="sub_race">
-            <column name="sub_race_name" value="Half-Orc" />
+            <column name="sub_race_name" value="Half-Orc" /> <!-- 3-->
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
             <column name="modifiers"
@@ -48,11 +48,47 @@
             <column name="level_adjustment" value="0" />
         </insert>
         <insert tableName="sub_race">
-            <column name="sub_race_name" value="Lightfoot" />
+            <column name="sub_race_name" value="Lightfoot" /> <!-- 4-->
             <column name="race_id" value="3" />
             <column name="size_id" value="4" />
             <column name="modifiers"
                 value="[]" />
+            <column name="level_adjustment" value="0" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Half-Elf" /> <!-- 5-->
+            <column name="race_id" value="1" />
+            <column name="size_id" value="5" />
+            <column name="modifiers"
+                value="[{
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,
+            &quot;bonus&quot; : -2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : -1,            
+            &quot;targets&quot; : [&quot;LISTEN&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : -1,            
+            &quot;targets&quot; : [&quot;SEARCH&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : -1,            
+            &quot;targets&quot; : [&quot;SPOT&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;GATHER_INFORMATION&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;DIPLOMACY&quot;]            
+            }]" />
             <column name="level_adjustment" value="0" />
         </insert>
     </changeSet>

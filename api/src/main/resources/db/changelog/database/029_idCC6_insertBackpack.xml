@@ -12,5 +12,14 @@
             <column name="inventory_id" value="100" />
             <column name="items_id" value="4" />
         </insert>
+
+        <insert tableName="backpack">
+            <column name="inventory_id" value="101" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="101" />
+            <column name="items_id" value="4" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

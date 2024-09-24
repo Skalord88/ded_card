@@ -1,90 +1,53 @@
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
 
   <changeSet id="3" author="damian">
-      <createTable tableName="character_card">
-        <column name="id" type="int" autoIncrement="true">
-          <constraints primaryKey="true"/>
-        </column>
-        <column name="character_name" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-        <column name="player_name" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-        <column name="abilitys" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="sub_race_id" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <column name="class_skills" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="special_attacks" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="inventory_id" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <column name="attacks_id" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <column name="magic_per_day" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="magic_known" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="books" type="jsonb">
-          <constraints nullable="true"/>
-        </column>
-        <column name="experience" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <column name="treasure" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <!-- <column name="size_id" type="TINYINT">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="speed" type="int">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="class_pc" type="int">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="effective_character_lv" type="SMALLINT">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="level_adjustment" type="TINYINT">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="vitality" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="saving_throw" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="skill_points" type="double">
-          <constraints nullable="true"/>
-        </column> -->
-        <!-- <column name="armor_class" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
-        
-        <!-- <column name="bab" type="double">
-          <constraints nullable="true"/>
-        </column> -->
-        
-        <!-- <column name="spells_known" type="jsonb">
-          <constraints nullable="true"/>
-        </column> -->
-        
-      </createTable>
-    </changeSet>
+    <createTable tableName="character_card">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="character_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="player_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="abilitys" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="sub_race_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="class_skills" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="special_attacks" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="inventory_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="attacks_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="magic_per_day" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="magic_known" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="books" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="experience" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="treasure" type="int">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
+  </changeSet>
 </databaseChangeLog>

@@ -23,11 +23,23 @@ export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
     (list, feat) => list.concat(feat.modifiers ? feat.modifiers : []),
     []
   );
+  const modifiersFromArchetypes: Modifiers[] = char.archetypes.reduce<
+    Modifiers[]
+  >(
+    (list, archetype) =>
+      list.concat(
+        ...archetype.modifiers.flatMap((mod) =>
+          mod ? mod : []
+        )
+      ),
+    []
+  );
   
   const modifiersFromCharacter: Modifiers[] = FindAllModifications([
     char.race.size.modifiers,
     char.race.modifiers,
     char.race.race.modifiers,
+    modifiersFromArchetypes,
     modifiersFromFeats,
     modifiersFromClasses,
     char.inventory.armor.modifiers,

@@ -3,6 +3,8 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
@@ -16,7 +18,9 @@ import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
+import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
+import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.skills.MapperSkillsToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
@@ -32,6 +36,7 @@ public class CharacterDTO implements Serializable {
   public String playerName;
   public ArrayList<ClassPcListDTO> classPcList;
   public SubRaceDTO race;
+  public Set<ArchetypeDTO> archetypes;
   public AbilitysDTO abilitys;
   public ArrayList<SkillsDTO> skillsList;
   public ArrayList<FeatsDTO> featsList;
@@ -52,6 +57,8 @@ public class CharacterDTO implements Serializable {
     this.classPcList =
       MapperClassFeatsDTO.toClassPcListDTO(character.getClassPcArray());
     this.race = MapperRaceToDTO.toSubRaceDTO(character.getRace());
+    this.archetypes =
+      MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList());
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
     this.skillsList =
       MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());

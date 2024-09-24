@@ -43,6 +43,14 @@ public class Archetype implements Serializable {
   )
   Set<Feats> archetypeFeats = new HashSet<>();
 
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "archetype_attacks",
+  //   joinColumns = @JoinColumn(name = "archetype_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "feats_id")
+  // )
+  // Set<Feats> archetypeAttacks = new HashSet<>();
+
   byte levelAdjustment;
 
   String avatarUrl;

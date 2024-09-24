@@ -16,10 +16,13 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
+import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.SubRace;
+import pl.kolendateam.dadcard.race.repository.ArchetypeRepository;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
 import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
@@ -32,17 +35,20 @@ public class RaceController {
   RaceRepository raceRepository;
   SubRaceRepository subRaceRepository;
   RegionRepository regionRepository;
+  ArchetypeRepository archetypeRepository;
   CharacterRepository characterRepository;
 
   @Autowired
   RaceController(
     RaceRepository raceRepository,
     CharacterRepository characterRepository,
-    SubRaceRepository subRaceRepository
+    SubRaceRepository subRaceRepository,
+    ArchetypeRepository archetypeRepository
   ) {
     this.raceRepository = raceRepository;
     this.characterRepository = characterRepository;
     this.subRaceRepository = subRaceRepository;
+    this.archetypeRepository = archetypeRepository;
   }
 
   @GetMapping("")
@@ -57,6 +63,13 @@ public class RaceController {
     List<SubRace> subRaces = this.subRaceRepository.findAll();
 
     return MaperListRaceToDTO.toListSubRaceDTO(subRaces);
+  }
+
+  @GetMapping("archetype")
+  public ArrayList<ArchetypeDTO> getAllArche() {
+    List<Archetype> archetypes = this.archetypeRepository.findAll();
+
+    return MaperListRaceToDTO.toListArchetypeDTO(archetypes);
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })

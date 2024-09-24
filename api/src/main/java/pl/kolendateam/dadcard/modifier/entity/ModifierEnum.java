@@ -113,12 +113,15 @@ public enum ModifierEnum {
   // immunity
   IMMUNITY,
   FEAR,
-  PISON,
   DISEASES,
   POISON,
   MAGIC,
   NATURAL,
   SLEEP,
+  ACID,
+  COLD,
+  ELECTRICITY,
+  FIRE,
 
   // active
   RAGE,
@@ -138,7 +141,10 @@ public enum ModifierEnum {
   // defence
   UNCANNY_DODGE,
   DAMAGE_REDUCTION,
+  DAMAGE_REDUCTION_11,
+  DAMAGE_REDUCTION_12,
   SPELL_RESISTANCE,
+  HD,
   EVASION,
 
   // targets

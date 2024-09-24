@@ -115,6 +115,7 @@ export const characterEmpty: CharacterPc = {
         },
         availableRegions: []
     },
+    archetypes: [],
     abilitys: {
         strength: 0,
         dextrity: 0,

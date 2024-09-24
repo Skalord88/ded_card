@@ -1,7 +1,7 @@
 import { Abilitys } from "./Abilitys/Interface";
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { Modifiers } from "./Modifiers/ModifierInterface";
-import { SubRace } from "./Race/Interfaces";
+import { Archetype, SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
@@ -11,6 +11,7 @@ export type CharacterPc = {
   playerName: string;
   classPcList: ClassPc[];
   race: SubRace;
+  archetypes: Archetype[]
   abilitys: Abilitys;
   skillsList: SkillProps[];
   featsList: Feat[];

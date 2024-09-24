@@ -14,5 +14,14 @@
             <column name="attacks_id_twosecond" value="1" />
             <column name="attacks_id_twoadditional" value="5" />
         </insert>
+        <insert tableName="attacks">
+            <column name="id" value="101" />
+            <column name="attacks_id_onefirst" value="52" />
+            <column name="attacks_id_onesecond" value="5" />
+            <column name="attacks_id_oneadditional" value="54" />
+            <column name="attacks_id_twofirst" value="54" />
+            <column name="attacks_id_twosecond" value="55" />
+            <column name="attacks_id_twoadditional" value="5" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

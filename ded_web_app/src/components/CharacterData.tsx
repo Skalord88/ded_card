@@ -3,6 +3,7 @@ import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import { } from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { Archetype } from "./Race/Interfaces";
 
 export interface CharProps {
   char: CharacterPc;
@@ -18,14 +19,17 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
           <p>Ply Name:</p>
           <p>Region:</p>
           <p>Race:</p>
+          {char.archetypes.length > 0 ? <p>Archetypes:</p> : null}
           <p>Age:</p>
           <p>Aligment:</p>
         </div>
         <div style={{ flex: 2 }}>
           <p>{char.characterName}</p>
           <p>{char.playerName}</p>
-          <p>Amn</p>
+          <p>---</p>
           <p>{char.race.subRacesName}</p>
+          {char.archetypes.length > 0 ? 
+            <ArchetypesData archetypes={char.archetypes}/> : null}
           <p>15</p>
           <p>CHGD</p>
         </div>
@@ -33,6 +37,19 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
     </>
   );
 };
+
+export type ArchetypesDataProps = {
+  archetypes: Archetype[]
+}
+
+export const ArchetypesData: React.FC<ArchetypesDataProps> = ({ archetypes }) => {
+return(
+  <p style={{ display: "flex", flexDirection: "row" }}>
+    {archetypes.map((a, index) => {
+      return <>{a.archetypeName}{index === archetypes.length - 1? null : ", "}</>
+    })}
+  </p>
+)}
 
 export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
   const cl: ClassPc[] = char.classPcList.filter(

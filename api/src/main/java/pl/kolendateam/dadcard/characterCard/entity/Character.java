@@ -37,6 +37,7 @@ import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Inventory;
+import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
@@ -71,6 +72,14 @@ public class Character implements Serializable {
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "sub_race_id", referencedColumnName = "id")
   SubRace race;
+
+  @ManyToMany
+  @JoinTable(
+    name = "character_archetypes",
+    joinColumns = @JoinColumn(name = "character_card_id"),
+    inverseJoinColumns = @JoinColumn(name = "archetype_id")
+  )
+  Set<Archetype> archetypesList = new HashSet<>();
 
   @OneToMany(
     mappedBy = "character",

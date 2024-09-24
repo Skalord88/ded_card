@@ -1,0 +1,93 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="24" author="oscar">
+    <insert tableName="archetype">
+      <column name="archetype_name" value="Half-Dragon" />
+      <column name="level_adjustment" value="3" />
+      <column name="avatar_url" value="" />
+      <column name="modifiers"
+        value="[
+      {
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,
+            &quot;bonus&quot; : 8,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;INTELLIGENCE&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;NATURAL_ARMOR_BONUS&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            }
+      ]" />
+    </insert>
+    <insert tableName="archetype">
+      <column name="archetype_name" value="Half-Fiend" />
+      <column name="level_adjustment" value="4" />
+      <column name="avatar_url" value="" />
+      <column name="modifiers" value="[
+      {
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;INTELLIGENCE&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;NATURAL_ARMOR_BONUS&quot;,
+            &quot;bonus&quot; : 1,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;FLY&quot;,
+            &quot;bonus&quot; : 0,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
+            &quot;bonus&quot; : 0,
+            &quot;targets&quot; : [&quot;POISON&quot;]
+            },{
+            &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
+            &quot;bonus&quot; : 10,
+            &quot;targets&quot; : [&quot;ACID&quot;,&quot;COLD&quot;,&quot;ELECTRICITY&quot;,&quot;FIRE&quot;]
+            },{
+            &quot;modifier&quot; : &quot;DAMAGE_REDUCTION_11&quot;,
+            &quot;bonus&quot; : 5,
+            &quot;targets&quot; : [&quot;MAGIC&quot;]
+            },{
+            &quot;modifier&quot; : &quot;DAMAGE_REDUCTION_12&quot;,
+            &quot;bonus&quot; : 10,
+            &quot;targets&quot; : [&quot;MAGIC&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,
+            &quot;bonus&quot; : 10,
+            &quot;targets&quot; : [&quot;HD&quot;]
+            }
+            ]" />
+    </insert>
+  </changeSet>
+</databaseChangeLog>
