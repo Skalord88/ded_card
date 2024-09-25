@@ -4,11 +4,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="21" author="oscar">
-        <createTable tableName="character_feats">
+        <createTable tableName="feats_pc">
+            <column name="id" type="INT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
             <column name="character_card_id" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="feats_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="selected" type="jsonb">
                 <constraints nullable="true" />
             </column>
         </createTable>

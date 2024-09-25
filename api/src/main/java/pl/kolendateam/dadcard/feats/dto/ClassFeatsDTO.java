@@ -19,8 +19,6 @@ public class ClassFeatsDTO {
   public int classId;
   public EnumClass className;
 
-  // public HashSet <String> classFeats;
-
   public ClassFeatsDTO(ClassFeats classFeat) {
     this.level = classFeat.getLevel();
     this.feat = MapperFeatsDTO.toFeatDTO(classFeat.getFeats());

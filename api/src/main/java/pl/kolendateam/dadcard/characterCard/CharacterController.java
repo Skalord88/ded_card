@@ -30,8 +30,6 @@ import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
-import pl.kolendateam.dadcard.race.repository.RaceRepository;
-import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
 import pl.kolendateam.dadcard.skills.entity.Skills;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.spells.entity.Book;

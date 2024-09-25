@@ -9,8 +9,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 
 public class MapperFeatsDTO {
 
@@ -55,5 +57,16 @@ public class MapperFeatsDTO {
 
   public static FeatsDTO toFeatDTO(Feats feat) {
     return new FeatsDTO(feat);
+  }
+
+  public static ArrayList<FeatsPcDTO> toFeatsPcDTO(List<FeatsPc> featsList) {
+    ArrayList<FeatsPcDTO> featsPcDTO = new ArrayList<>();
+    if (featsList != null) {
+      featsList.forEach(featPc -> {
+        FeatsPcDTO featPcDTO = new FeatsPcDTO(featPc);
+        featsPcDTO.add(featPcDTO);
+      });
+    }
+    return featsPcDTO;
   }
 }

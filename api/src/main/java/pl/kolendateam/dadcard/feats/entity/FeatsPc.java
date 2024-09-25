@@ -6,33 +6,33 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
-@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-@Table(name = "class_feats")
-public class ClassFeats implements Serializable {
+public class FeatsPc implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  int level;
-
   @ManyToOne
-  @JoinColumn(name = "class_character_id")
-  ClassCharacter classCharacter;
+  @JoinColumn(name = "character_card_id")
+  Character character;
 
   @ManyToOne
   @JoinColumn(name = "feats_id")
-  Feats feats;
+  Feats feat;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  ModifierEnum[] selected;
 }

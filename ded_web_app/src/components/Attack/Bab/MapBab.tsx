@@ -125,9 +125,7 @@ export const MapBab: React.FC<MapBabProps> = ({
   return (
     <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
-        {WeaponRanged(weapon) ? (
-          <></>
-        ) : (
+        {WeaponRanged(weapon) ? null : (
           <>
             <AttackOptions
               type="melee"
@@ -154,18 +152,12 @@ export const MapBab: React.FC<MapBabProps> = ({
             increments={attacksIncrements}
             attackFn={AttackRanged}
           />
-        ) : (
-          <></>
-        )}
+        ) : null}
       </div>
       <div style={{ gridColumn: 1, gridRow: 2 }}>
-        {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? (
-          <></>
-        ) : (
+        {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? null : (
           <>
-            {position.twoHanded ? (
-              <></>
-            ) : (
+            {position.twoHanded ? null : (
               <AttackOptions
                 type="melee two hands"
                 weapon={weapon}
@@ -181,7 +173,8 @@ export const MapBab: React.FC<MapBabProps> = ({
         )}
       </div>
       <div style={{ gridColumn: 2, gridRow: 2 }}>
-        {WeaponRanged(weapon) || WeaponThrown(weapon) ? (
+        {WeaponTwoHanded(weapon) ? null : WeaponRanged(weapon) ||
+          WeaponThrown(weapon) ? (
           <AttackOptions
             type="distance two hands"
             weapon={weapon}
@@ -192,9 +185,7 @@ export const MapBab: React.FC<MapBabProps> = ({
             increments={attacksIncrements}
             attackFn={AttackIIRanged}
           />
-        ) : (
-          <></>
-        )}
+        ) : null}
       </div>
     </div>
   );

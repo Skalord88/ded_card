@@ -33,8 +33,8 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.classCharacter.entity.Dices;
 import pl.kolendateam.dadcard.classCharacter.entity.DicesEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
-import pl.kolendateam.dadcard.feats.entity.CharacterFeat;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.race.entity.Archetype;
@@ -91,13 +91,12 @@ public class Character implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ArrayList<ClassSkills> classSkills;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(
-    name = "character_feats",
-    joinColumns = @JoinColumn(name = "character_card_id"),
-    inverseJoinColumns = @JoinColumn(name = "feats_id")
+  @OneToMany(
+    mappedBy = "character",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
   )
-  List<Feats> featsList;
+  List<FeatsPc> featsList;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
@@ -235,24 +234,24 @@ public class Character implements Serializable {
       return false;
     }
 
-    CharacterFeat characterFeat = new CharacterFeat(
-      feat.getId(),
-      1,
-      feat.getFeatName(),
-      feat.getDescription(),
-      feat.getFeatsType()
-    );
+    // CharacterFeat characterFeat = new CharacterFeat(
+    //   feat.getId(),
+    //   1,
+    //   feat.getFeatName(),
+    //   feat.getDescription(),
+    //   feat.getFeatsType()
+    // );
 
-    ArrayList<CharacterFeat> allFeats = new ArrayList<>();
+    // ArrayList<CharacterFeat> allFeats = new ArrayList<>();
 
-    boolean featPresent = false;
-    for (CharacterFeat cF : allFeats) {
-      if (
-        cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
-      ) {
-        featPresent = true;
-      }
-    }
+    // boolean featPresent = false;
+    // for (CharacterFeat cF : allFeats) {
+    //   if (
+    //     cF.getCharacterFeatName().equals(characterFeat.getCharacterFeatName())
+    //   ) {
+    //     featPresent = true;
+    //   }
+    // }
 
     return buyed;
   }

@@ -46,6 +46,8 @@ export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
     char.inventory.shield.modifiers,
   ]);
 
+  console.log(modifiersFromCharacter)
+
   return modifiersFromCharacter;
 }
 

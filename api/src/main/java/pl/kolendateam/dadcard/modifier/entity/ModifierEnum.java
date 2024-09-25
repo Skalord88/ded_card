@@ -151,6 +151,9 @@ public enum ModifierEnum {
   TRAP,
 
   // weapon
+  IMPROVED_CRITICAL,
+  WEAPON_SPECIALIZATION,
+  WEAPON_FOUS,
   SIMPLE,
   MARTIAL,
   EXOTIC,

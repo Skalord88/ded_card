@@ -15,7 +15,7 @@ import pl.kolendateam.dadcard.classCharacter.MapperClassFeatsDTO;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
@@ -39,7 +39,7 @@ public class CharacterDTO implements Serializable {
   public Set<ArchetypeDTO> archetypes;
   public AbilitysDTO abilitys;
   public ArrayList<SkillsDTO> skillsList;
-  public ArrayList<FeatsDTO> featsList;
+  public ArrayList<FeatsPcDTO> featsList;
   public InventoryDTO inventory;
   public AttacksDTO attacks;
   public HashMap<EnumClass, Integer[]> magicPerDay;
@@ -62,7 +62,7 @@ public class CharacterDTO implements Serializable {
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
     this.skillsList =
       MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());
-    this.featsList = MapperFeatsDTO.toFeatsDTO(character.getFeatsList());
+    this.featsList = MapperFeatsDTO.toFeatsPcDTO(character.getFeatsList());
     this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
     this.attacks = MapperItemsDTO.toAttacksDTO(character.getAttacks());
     this.magicPerDay = character.getMagicPerDay();

@@ -27,14 +27,6 @@ export type CharacterPc = {
   treasure: number;
 }
 
-// speed: number;
-// armorClass: armorClass;
-// specialAttacks: specialAttacks;
-// skillPoints: number;
-// levelFeatsList: feat[];
-// inventoryId: number;
-// attacksId: number;
-
 export type CharProps = {
   char: CharacterPc;
 }

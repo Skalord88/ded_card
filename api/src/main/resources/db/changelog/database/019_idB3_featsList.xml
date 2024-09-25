@@ -1721,13 +1721,335 @@ Characters with low-light vision can see outdoors on a moonlit night as well as 
       />
     </insert>
     <insert tableName="feats">
+      <column name="feat_name" value="Weapon Focus" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for purposes of this feat.
+
+Prerequisites
+Proficiency with selected weapon, base attack bonus +1.
+
+Benefit
+You gain a +1 bonus on all attack rolls you make using the selected weapon.
+
+Special
+You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.
+
+A fighter may select Weapon Focus as one of his fighter bonus feats. He must have Weapon Focus with a weapon to gain the Weapon Specialization feat for that weapon."
+      />
+      <column name="modifiers"
+        value="[
+    {
+          &quot;modifier&quot; : &quot;WEAPON_FOUS&quot;,
+          &quot;bonus&quot; : 1,
+          &quot;targets&quot; : [
+            &quot;GAUNTLET&quot;,
+            &quot;UNARMED_STRIKE&quot;,
+            &quot;DAGGER&quot;,
+            &quot;DAGGER_PUNCHING&quot;,
+            &quot;GAUNTLET_SPIKED&quot;,
+            &quot;MACE_LIGHT&quot;,
+            &quot;SICKLE&quot;,
+            &quot;CLUB&quot;,
+            &quot;MACE_HEAVY&quot;,
+            &quot;MORNINGSTAR&quot;,
+            &quot;SHORTSPEAR&quot;,
+            &quot;LONGSPEAR&quot;,
+            &quot;QUARTERSTAFF&quot;,
+            &quot;SPEAR&quot;,
+            &quot;CROSSBOW_HEAVY&quot;,
+            &quot;CROSSBOW_LIGHT&quot;,
+            &quot;DART&quot;,
+            &quot;JAVELIN&quot;,
+            &quot;SLING&quot;,
+            &quot;BULLETS_SLING&quot;,
+            &quot;AXE_THROWING&quot;,
+            &quot;HAMMER_LIGHT&quot;,
+            &quot;HANDAXE&quot;,
+            &quot;KUKRI&quot;,
+            &quot;PICK_LIGHT&quot;,
+            &quot;SAP&quot;,
+            &quot;SHIELD_LIGHT&quot;,
+            &quot;SPIKED_ARMOR&quot;,
+            &quot;SPIKED_SHIELD_LIGHT&quot;,
+            &quot;SWORD_SHORT&quot;,
+            &quot;BATTLEAXE&quot;,
+            &quot;FLAIL&quot;,
+            &quot;LONGSWORD&quot;,
+            &quot;PICK_HEAVY&quot;,
+            &quot;RAPIER&quot;,
+            &quot;SCIMITAR&quot;,
+            &quot;SHIELD_HEAVY&quot;,
+            &quot;SPIKED_SHIELD_HEAVY&quot;,
+            &quot;TRIDENT&quot;,
+            &quot;WARHAMMER&quot;,
+            &quot;FALCHION&quot;,
+            &quot;GLAIVE&quot;,
+            &quot;GREATAXE&quot;,
+            &quot;GREATCLUB&quot;,
+            &quot;FLAIL_HEAVY&quot;,
+            &quot;GREATSWORD&quot;,
+            &quot;GUISARME&quot;,
+            &quot;HALBERD&quot;,
+            &quot;LANCE&quot;,
+            &quot;RANSEUR&quot;,
+            &quot;SCYTHE&quot;,
+            &quot;LONGBOW&quot;,
+            &quot;LONGBOW_COMPOSITE&quot;,
+            &quot;SHORTBOW&quot;,
+            &quot;SHORTBOW_COMPOSITE&quot;,
+            &quot;KAMA&quot;,
+            &quot;NUNCHAKU&quot;,
+            &quot;SAI&quot;,
+            &quot;SIANGHAM&quot;,
+            &quot;SWORD_BASTARD&quot;,
+            &quot;WARAXE_DWARVEN&quot;,
+            &quot;WHIP&quot;,
+            &quot;AXE_ORC_DOUBLE&quot;,
+            &quot;CHAIN_SPIKED&quot;,
+            &quot;FLAIL_DIRE&quot;,
+            &quot;HAMMER_GNOME_HOOKED&quot;,
+            &quot;SWORD_TWO_BLADED&quot;,
+            &quot;URGROSH_DWARVEN&quot;,
+            &quot;BOLAS&quot;,
+            &quot;CROSSBOW_HAND&quot;,
+            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
+            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
+            &quot;NET&quot;,
+            &quot;SHURIKEN&quot;
+          ]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Weapon Specialization" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Choose one type of weapon for which you have already selected the Weapon Focus feat. You can also choose unarmed strike or grapple as your weapon for purposes of this feat. You deal extra damage when using this weapon.
+
+Prerequisites
+Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th.
+
+Benefit
+You gain a +2 bonus on all damage rolls you make using the selected weapon.
+
+Special
+You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.
+
+A fighter may select Weapon Specialization as one of his fighter bonus feats."
+      />
+      <column name="modifiers"
+        value="[
+    {
+          &quot;modifier&quot; : &quot;WEAPON_SPECIALIZATION&quot;,
+          &quot;bonus&quot; : 2,
+          &quot;targets&quot; : [
+            &quot;GAUNTLET&quot;,
+            &quot;UNARMED_STRIKE&quot;,
+            &quot;DAGGER&quot;,
+            &quot;DAGGER_PUNCHING&quot;,
+            &quot;GAUNTLET_SPIKED&quot;,
+            &quot;MACE_LIGHT&quot;,
+            &quot;SICKLE&quot;,
+            &quot;CLUB&quot;,
+            &quot;MACE_HEAVY&quot;,
+            &quot;MORNINGSTAR&quot;,
+            &quot;SHORTSPEAR&quot;,
+            &quot;LONGSPEAR&quot;,
+            &quot;QUARTERSTAFF&quot;,
+            &quot;SPEAR&quot;,
+            &quot;CROSSBOW_HEAVY&quot;,
+            &quot;CROSSBOW_LIGHT&quot;,
+            &quot;DART&quot;,
+            &quot;JAVELIN&quot;,
+            &quot;SLING&quot;,
+            &quot;BULLETS_SLING&quot;,
+            &quot;AXE_THROWING&quot;,
+            &quot;HAMMER_LIGHT&quot;,
+            &quot;HANDAXE&quot;,
+            &quot;KUKRI&quot;,
+            &quot;PICK_LIGHT&quot;,
+            &quot;SAP&quot;,
+            &quot;SHIELD_LIGHT&quot;,
+            &quot;SPIKED_ARMOR&quot;,
+            &quot;SPIKED_SHIELD_LIGHT&quot;,
+            &quot;SWORD_SHORT&quot;,
+            &quot;BATTLEAXE&quot;,
+            &quot;FLAIL&quot;,
+            &quot;LONGSWORD&quot;,
+            &quot;PICK_HEAVY&quot;,
+            &quot;RAPIER&quot;,
+            &quot;SCIMITAR&quot;,
+            &quot;SHIELD_HEAVY&quot;,
+            &quot;SPIKED_SHIELD_HEAVY&quot;,
+            &quot;TRIDENT&quot;,
+            &quot;WARHAMMER&quot;,
+            &quot;FALCHION&quot;,
+            &quot;GLAIVE&quot;,
+            &quot;GREATAXE&quot;,
+            &quot;GREATCLUB&quot;,
+            &quot;FLAIL_HEAVY&quot;,
+            &quot;GREATSWORD&quot;,
+            &quot;GUISARME&quot;,
+            &quot;HALBERD&quot;,
+            &quot;LANCE&quot;,
+            &quot;RANSEUR&quot;,
+            &quot;SCYTHE&quot;,
+            &quot;LONGBOW&quot;,
+            &quot;LONGBOW_COMPOSITE&quot;,
+            &quot;SHORTBOW&quot;,
+            &quot;SHORTBOW_COMPOSITE&quot;,
+            &quot;KAMA&quot;,
+            &quot;NUNCHAKU&quot;,
+            &quot;SAI&quot;,
+            &quot;SIANGHAM&quot;,
+            &quot;SWORD_BASTARD&quot;,
+            &quot;WARAXE_DWARVEN&quot;,
+            &quot;WHIP&quot;,
+            &quot;AXE_ORC_DOUBLE&quot;,
+            &quot;CHAIN_SPIKED&quot;,
+            &quot;FLAIL_DIRE&quot;,
+            &quot;HAMMER_GNOME_HOOKED&quot;,
+            &quot;SWORD_TWO_BLADED&quot;,
+            &quot;URGROSH_DWARVEN&quot;,
+            &quot;BOLAS&quot;,
+            &quot;CROSSBOW_HAND&quot;,
+            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
+            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
+            &quot;NET&quot;,
+            &quot;SHURIKEN&quot;
+          ]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Improved Critical" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Choose one type of weapon.
+
+Prerequisite
+Proficient with weapon, base attack bonus +8.
+
+Benefit
+When using the weapon you selected, your threat range is doubled.
+
+Special
+You can gain Improved Critical multiple times. The effects do not stack. Each time you take the feat, it applies to a new type of weapon.
+
+This effect doesn’t stack with any other effect that expands the threat range of a weapon.
+
+A fighter may select Improved Critical as one of his fighter bonus feats."
+      />
+      <column name="modifiers"
+        value="[
+    {
+          &quot;modifier&quot; : &quot;IMPROVED_CRITICAL&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [
+            &quot;GAUNTLET&quot;,
+            &quot;UNARMED_STRIKE&quot;,
+            &quot;DAGGER&quot;,
+            &quot;DAGGER_PUNCHING&quot;,
+            &quot;GAUNTLET_SPIKED&quot;,
+            &quot;MACE_LIGHT&quot;,
+            &quot;SICKLE&quot;,
+            &quot;CLUB&quot;,
+            &quot;MACE_HEAVY&quot;,
+            &quot;MORNINGSTAR&quot;,
+            &quot;SHORTSPEAR&quot;,
+            &quot;LONGSPEAR&quot;,
+            &quot;QUARTERSTAFF&quot;,
+            &quot;SPEAR&quot;,
+            &quot;CROSSBOW_HEAVY&quot;,
+            &quot;CROSSBOW_LIGHT&quot;,
+            &quot;DART&quot;,
+            &quot;JAVELIN&quot;,
+            &quot;SLING&quot;,
+            &quot;BULLETS_SLING&quot;,
+            &quot;AXE_THROWING&quot;,
+            &quot;HAMMER_LIGHT&quot;,
+            &quot;HANDAXE&quot;,
+            &quot;KUKRI&quot;,
+            &quot;PICK_LIGHT&quot;,
+            &quot;SAP&quot;,
+            &quot;SHIELD_LIGHT&quot;,
+            &quot;SPIKED_ARMOR&quot;,
+            &quot;SPIKED_SHIELD_LIGHT&quot;,
+            &quot;SWORD_SHORT&quot;,
+            &quot;BATTLEAXE&quot;,
+            &quot;FLAIL&quot;,
+            &quot;LONGSWORD&quot;,
+            &quot;PICK_HEAVY&quot;,
+            &quot;RAPIER&quot;,
+            &quot;SCIMITAR&quot;,
+            &quot;SHIELD_HEAVY&quot;,
+            &quot;SPIKED_SHIELD_HEAVY&quot;,
+            &quot;TRIDENT&quot;,
+            &quot;WARHAMMER&quot;,
+            &quot;FALCHION&quot;,
+            &quot;GLAIVE&quot;,
+            &quot;GREATAXE&quot;,
+            &quot;GREATCLUB&quot;,
+            &quot;FLAIL_HEAVY&quot;,
+            &quot;GREATSWORD&quot;,
+            &quot;GUISARME&quot;,
+            &quot;HALBERD&quot;,
+            &quot;LANCE&quot;,
+            &quot;RANSEUR&quot;,
+            &quot;SCYTHE&quot;,
+            &quot;LONGBOW&quot;,
+            &quot;LONGBOW_COMPOSITE&quot;,
+            &quot;SHORTBOW&quot;,
+            &quot;SHORTBOW_COMPOSITE&quot;,
+            &quot;KAMA&quot;,
+            &quot;NUNCHAKU&quot;,
+            &quot;SAI&quot;,
+            &quot;SIANGHAM&quot;,
+            &quot;SWORD_BASTARD&quot;,
+            &quot;WARAXE_DWARVEN&quot;,
+            &quot;WHIP&quot;,
+            &quot;AXE_ORC_DOUBLE&quot;,
+            &quot;CHAIN_SPIKED&quot;,
+            &quot;FLAIL_DIRE&quot;,
+            &quot;HAMMER_GNOME_HOOKED&quot;,
+            &quot;SWORD_TWO_BLADED&quot;,
+            &quot;URGROSH_DWARVEN&quot;,
+            &quot;BOLAS&quot;,
+            &quot;CROSSBOW_HAND&quot;,
+            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
+            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
+            &quot;NET&quot;,
+            &quot;SHURIKEN&quot;
+          ]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Improved Shield Bash" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Prerequisite
+Shield Proficiency.
+
+Benefit
+When you perform a shield bash, you may still apply the shield’s shield bonus to your AC.
+
+Normal
+Without this feat, a character who performs a shield bash loses the shield’s shield bonus to AC until his or her next turn.
+
+Special
+A fighter may select Improved Shield Bash as one of his fighter bonus feats."
+      />
+    </insert>
+    <insert tableName="feats">
       <column name="id" value="1000" />
       <column name="feat_name" value="Elven Martial Weapon Proficiency" />
       <column name="feats_type" value="RACIAL" />
       <column name="description"
         value="Elves receive the Martial Weapon Proficiency feats for the longsword, rapier, longbow (including composite longbow), and shortbow (including composite shortbow) as bonus feats." />
       <column name="modifiers"
-      value="[
+        value="[
     {
           &quot;modifier&quot; : &quot;MARTIAL&quot;,
           &quot;bonus&quot; : 0,
@@ -1742,7 +2064,7 @@ Characters with low-light vision can see outdoors on a moonlit night as well as 
       <column name="description"
         value="Drow receive the Martial Weapon Proficiency feats for the shortsword, rapier as bonus feats." />
       <column name="modifiers"
-      value="[
+        value="[
     {
           &quot;modifier&quot; : &quot;MARTIAL&quot;,
           &quot;bonus&quot; : 0,
@@ -1757,7 +2079,7 @@ Characters with low-light vision can see outdoors on a moonlit night as well as 
       <column name="description"
         value="Drow receive the Exotic Weapon Proficiency feats for the hand-crossbow as bonus feats." />
       <column name="modifiers"
-      value="[
+        value="[
     {
           &quot;modifier&quot; : &quot;MARTIAL&quot;,
           &quot;bonus&quot; : 0,

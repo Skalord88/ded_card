@@ -321,7 +321,7 @@
             &quot;nameSkill&quot;: &quot;Balance&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 2,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -329,7 +329,7 @@
             &quot;nameSkill&quot;: &quot;Bluff&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 10,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;CHARISMA&quot;
         },
         {
@@ -337,7 +337,7 @@
             &quot;nameSkill&quot;: &quot;Climb&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 3,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;STRENGHT&quot;
         },
         {
@@ -353,7 +353,7 @@
             &quot;nameSkill&quot;: &quot;Craft&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 3,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;INTELLIGENCE&quot;
         },
         {
@@ -369,7 +369,7 @@
             &quot;nameSkill&quot;: &quot;Disable Device&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 15,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -385,7 +385,7 @@
             &quot;nameSkill&quot;: &quot;Escape Artist&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 6,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -417,7 +417,7 @@
             &quot;nameSkill&quot;: &quot;Hide&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 9,
+            &quot;skillRank&quot;: 14,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -425,7 +425,7 @@
             &quot;nameSkill&quot;: &quot;Intimidate&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 8,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;CHARISMA&quot;
         },
         {
@@ -433,7 +433,7 @@
             &quot;nameSkill&quot;: &quot;Jump&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 3,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;STRENGHT&quot;
         },
         {
@@ -455,7 +455,7 @@
             &quot;nameSkill&quot;: &quot;Move Silently&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 10,
+            &quot;skillRank&quot;: 14,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -487,7 +487,7 @@
             &quot;nameSkill&quot;: &quot;Search&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 14,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;INTELLIGENCE&quot;
         },
         {
@@ -503,7 +503,7 @@
             &quot;nameSkill&quot;: &quot;Sleight Of Hand&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 1,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -519,7 +519,7 @@
             &quot;nameSkill&quot;: &quot;Spellcraft&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 3,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;INTELLIGENCE&quot;
         },
         {
@@ -527,7 +527,7 @@
             &quot;nameSkill&quot;: &quot;Spot&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 6,
+            &quot;skillRank&quot;: 14,
             &quot;skillAbility&quot;: &quot;WISDOM&quot;
         },
         {
@@ -535,7 +535,7 @@
             &quot;nameSkill&quot;: &quot;Survival&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 0,
+            &quot;skillRank&quot;: 11,
             &quot;skillAbility&quot;: &quot;WISDOM&quot;
         },
         {
@@ -551,7 +551,7 @@
             &quot;nameSkill&quot;: &quot;Tumble&quot;,
             &quot;fieldOfStudy&quot;: null,
             &quot;classSkill&quot;: false,
-            &quot;skillRank&quot;: 2,
+            &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         },
         {
@@ -566,7 +566,7 @@
             &quot;idSkill&quot;: 33,
             &quot;nameSkill&quot;: &quot;Use Rope&quot;,
             &quot;fieldOfStudy&quot;: null,
-            &quot;classSkill&quot;: false,
+            &quot;classSkill&quot;: true,
             &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
         }]" />

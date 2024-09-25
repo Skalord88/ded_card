@@ -971,7 +971,7 @@
     <insert tableName="items">
         <column name="name" value="Composite Bow(+2)" />
         <column name="item_type" value="WEAPON" />
-        <column name="weapon_name" value="SWORD_SHORT" />
+        <column name="weapon_name" value="LONGBOW_COMPOSITE" />
         <column name="cost" value="300" />
         <column name="damage" value="D8" />
         <column name="critical" value="X3" />
@@ -982,7 +982,7 @@
         <column name="special_attacks" value="" />
         <column name="description" value="" />
         <column name="material" value="WOOD" />
-        <column name="enchantment_id" value="0" />
+        <column name="enchantment_id" value="1" />
     </insert>
     <insert tableName="items">
         <column name="name" value="Sword, long perfect" />

@@ -62,3 +62,7 @@ export type Feat = {
   modifiers: Modifiers[];
   description: string
 }
+export type FeatPc = {
+  feat: Feat;
+  selected: string[];
+}
