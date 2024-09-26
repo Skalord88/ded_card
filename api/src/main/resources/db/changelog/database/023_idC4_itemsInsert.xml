@@ -978,6 +978,11 @@
         <column name="range" value="110" />
         <column name="weight" value="3" />
         <column name="size" value="MEDIUM" />
+        <column name="modifiers" value="[{
+            &quot;modifier&quot; : &quot;COMPOSITE&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            }]"/>
         <column name="type" value="['MARTIAL','RANGED','PIERCING','TWO_HANDED']" />
         <column name="special_attacks" value="" />
         <column name="description" value="" />

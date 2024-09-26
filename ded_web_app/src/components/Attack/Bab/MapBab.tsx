@@ -10,6 +10,7 @@ import {
 } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
 import { FindWeaponToModified } from "../../Modifiers/Bab/Function";
+import { FindInOneLengthModifier } from "../../Modifiers/Function";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
 
@@ -34,10 +35,6 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
   increments,
   attackFn
 }) => {
-  // const checkDamageBonus = (strenght: number, position: Position): number => {
-  //   if(position.)
-  // }
-
   const checkType = (typeToCheck: string): number => {
     if (typeToCheck === "distance") return dextrityAtt;
     if (typeToCheck === "distance two hands") return dextrityAtt;
@@ -82,7 +79,7 @@ export type MapBabProps = {
   dextrityAtt: number;
   weapon: Weapon;
   position: Position;
-  specific: Modifiers[];
+  specific: Modifiers[][];
 };
 
 export const MapBab: React.FC<MapBabProps> = ({
@@ -102,19 +99,30 @@ export const MapBab: React.FC<MapBabProps> = ({
   };
   const attacksIncrements = getIncrements(bab);
 
-  const ench = weapon.enchantment
-    ? weapon.enchantment.enchantment === -1
-      ? 1
-      : weapon.enchantment.enchantment
-    : 0;
+  const getEnchant = (enchant: number) => {
+    if (enchant === null) return 0;
+    if (enchant === -2) return 0;
+    if (enchant === -1) return 1;
+    if (enchant === 0) return 0;
+    if (enchant < 0) return enchant;
+    return 0;
+  };
 
-  const strenghtAttModified =
-    strenghtAtt + FindWeaponToModified(specific, weapon) + ench;
-  const dextrityAttModified =
-    dextrityAtt + FindWeaponToModified(specific, weapon) + ench;
+  const ench = getEnchant(weapon.enchantment.enchantment);
 
-  const enchDmg =
-    weapon.enchantment.enchantment < 0 ? 0 : weapon.enchantment.enchantment;
+  const strenghtAttModified: number =
+    strenghtAtt + FindWeaponToModified(specific[0], weapon) + ench;
+
+  const dextrityAttModified: number =
+    dextrityAtt + FindWeaponToModified(specific[0], weapon) + ench;
+
+  const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
+
+  const enchDmg: number =
+    weapon.enchantment.enchantment < 0
+      ? 0 + FindWeaponToModified(specific[1], weapon) + compo
+      : weapon.enchantment.enchantment +
+        FindWeaponToModified(specific[1], weapon) + compo;
 
   const twoHandDmg: number = position.twoHanded
     ? strenght + Math.floor(strenght / 2) + enchDmg

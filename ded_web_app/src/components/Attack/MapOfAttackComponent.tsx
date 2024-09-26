@@ -9,7 +9,7 @@ export type MapOfAttackComponentProps = {
   strenght: number;
   strenghtAtt: number;
   dextrityAtt: number;
-  specific: Modifiers[];
+  specific: Modifiers[][];
 };
 
 export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({

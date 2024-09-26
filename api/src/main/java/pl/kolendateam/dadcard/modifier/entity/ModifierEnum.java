@@ -151,6 +151,8 @@ public enum ModifierEnum {
   TRAP,
 
   // weapon
+  DAMAGE,
+  COMPOSITE,
   IMPROVED_CRITICAL,
   WEAPON_SPECIALIZATION,
   WEAPON_FOUS,

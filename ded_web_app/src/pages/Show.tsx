@@ -72,14 +72,18 @@ export const Show = () => {
     CountBabFromClassPc(char) + FindInOneLengthModifier(modifications, "BAB");
   const specificBab: Modifiers[] = FindInMoreLengthModifier(
     modifications,
-    "BAB"
+    ["BAB", "WEAPON_FOUS"]
+  );
+  const specificDmg: Modifiers[] = FindInMoreLengthModifier(
+    modifications,
+    ["WEAPON_SPECIALIZATION"]
   );
   const grapple: number =
     bab +
     BonusAbilities(char.abilitys, "STR") +
     FindInOneLengthModifier(modifications, "GRAPPLE");
-  const strenghtAtt: number = bab + BonusAbilities(abilitys, "STR");
-  const dextrityAtt: number = bab + BonusAbilities(abilitys, "DEX");
+  const strenghtAtt: number = bab + strenght;
+  const dextrityAtt: number = bab + dextrity;
   const speed: number = FindInOneLengthModifier(modifications, "SPEED");
   const armorModifiers: ArmorModifiers = {
     size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
@@ -253,7 +257,7 @@ export const Show = () => {
             strenght={strenght}
             strenghtAtt={strenghtAtt}
             dextrityAtt={dextrityAtt}
-            specific={specificBab}
+            specific={[specificBab, specificDmg]}
           />
         </div>
         <div

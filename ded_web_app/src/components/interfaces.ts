@@ -1,5 +1,5 @@
 import { Abilitys } from "./Abilitys/Interface";
-import { Feat } from "./Feats/Interface/FeatInterface";
+import { Feat, FeatPc } from "./Feats/Interface/FeatInterface";
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { Archetype, SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
@@ -14,7 +14,7 @@ export type CharacterPc = {
   archetypes: Archetype[]
   abilitys: Abilitys;
   skillsList: SkillProps[];
-  featsList: Feat[];
+  featsList: FeatPc[];
   items: Item[];
   inventory: Inventory;
   attacks: Attacks;
@@ -173,7 +173,6 @@ export interface Armor extends Item {
 export interface Shield extends Item {
   shieldName: string;
   modifiers: Modifiers[]
-  // armorClass: number;
   armorType: string;
   maxDex: number;
   penality: number;
@@ -189,6 +188,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   size: string;
+  modifiers: Modifiers[];
   specialAttacks: string | null;
   enchantment: Enchantment;
   material: string | null

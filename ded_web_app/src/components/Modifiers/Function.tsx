@@ -20,21 +20,27 @@ export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
     []
   );
   const modifiersFromFeats: Modifiers[] = char.featsList.reduce<Modifiers[]>(
-    (list, feat) => list.concat(feat.modifiers ? feat.modifiers : []),
-    []
-  );
-  const modifiersFromArchetypes: Modifiers[] = char.archetypes.reduce<
-    Modifiers[]
-  >(
-    (list, archetype) =>
+    (list, feat) =>
       list.concat(
-        ...archetype.modifiers.flatMap((mod) =>
-          mod ? mod : []
+        feat.feat.modifiers.flatMap((f) =>
+          f.targets.length > 3
+            ? [
+                { modifier: f.modifier, bonus: f.bonus, targets: feat.selected }
+              ]
+            : []
         )
       ),
     []
   );
-  
+
+  const modifiersFromArchetypes: Modifiers[] = char.archetypes.reduce<
+    Modifiers[]
+  >(
+    (list, archetype) =>
+      list.concat(...archetype.modifiers.flatMap((mod) => (mod ? mod : []))),
+    []
+  );
+
   const modifiersFromCharacter: Modifiers[] = FindAllModifications([
     char.race.size.modifiers,
     char.race.modifiers,
@@ -43,10 +49,8 @@ export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
     modifiersFromFeats,
     modifiersFromClasses,
     char.inventory.armor.modifiers,
-    char.inventory.shield.modifiers,
+    char.inventory.shield.modifiers
   ]);
-
-  console.log(modifiersFromCharacter)
 
   return modifiersFromCharacter;
 }
@@ -66,10 +70,9 @@ export function FindInOneLengthModifier(
 
 export function FindInMoreLengthModifier(
   modifications: Modifiers[],
-  type: string
+  type: string | string[]
 ): Modifiers[] {
   return modifications.filter(
-    (mod) => mod.targets.length > 0 
-    && mod.modifier === type
+    (mod) => mod.targets.length > 0 && type.includes(mod.modifier)
   );
 }

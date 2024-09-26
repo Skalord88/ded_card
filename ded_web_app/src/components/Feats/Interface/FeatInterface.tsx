@@ -60,8 +60,9 @@ export type Feat = {
   featsType: string;
   prerequisite: string;
   modifiers: Modifiers[];
-  description: string
+  description: string;
 }
+
 export type FeatPc = {
   feat: Feat;
   selected: string[];

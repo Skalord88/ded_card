@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
@@ -16,6 +17,9 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
+import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @AllArgsConstructor
@@ -32,6 +36,7 @@ public class WeaponsDTO implements Serializable {
   public Integer range;
   public BigDecimal weight;
   public SizeEnum size;
+  public Set<ModifierDTO> modifiers;
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
@@ -49,6 +54,7 @@ public class WeaponsDTO implements Serializable {
     this.range = item.getRange();
     this.weight = item.getWeight();
     this.size = item.getSize();
+    this.modifiers = MapperModifierBonus.toListModifierDTO(item.getModifiers());
     if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;
     } else {

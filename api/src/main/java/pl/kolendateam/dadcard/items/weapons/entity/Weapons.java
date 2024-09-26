@@ -8,8 +8,11 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import java.util.ArrayList;
+import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.entity.Enchantment;
@@ -17,6 +20,8 @@ import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @Entity
@@ -44,6 +49,9 @@ public class Weapons extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
+  @JdbcTypeCode(SqlTypes.JSON)
+  Set<ModifierBonus> modifiers;
+
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
   Enchantment enchantment;
@@ -67,6 +75,7 @@ public class Weapons extends Items {
       this.specialAttacks = null;
     }
     this.material = weapon.material;
+    this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
     if (weapon.enchantment == null) {
       this.enchantment = null;
     } else {

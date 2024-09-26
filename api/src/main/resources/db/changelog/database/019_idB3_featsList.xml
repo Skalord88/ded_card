@@ -745,7 +745,7 @@ At 18th level, a druid becomes able to assume elemental form twice per day, and 
       {
             &quot;modifier&quot; : &quot;IMMUNITY&quot;,
             &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;PISON&quot;]
+            &quot;targets&quot; : [&quot;POISON&quot;]
             } 
     ]" />
     </insert>

@@ -23,7 +23,6 @@ public class ArmorsDTO implements Serializable {
   public ItemTypeEnum itemType;
   public ArmorsEnum armorName;
   public Set<ModifierDTO> modifiers;
-  // public int armorClass;
   public BigDecimal cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
