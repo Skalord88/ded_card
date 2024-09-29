@@ -138,6 +138,14 @@ public enum ModifierEnum {
   FAVORED_ENEMY,
   SNEAK_ATTACK,
 
+  // favored
+  VAMPIER,
+  UNDEAD,
+  GIANT,
+  FIRE_GIANT,
+  HUMANOID,
+  GNOLL,
+
   // defence
   UNCANNY_DODGE,
   DAMAGE_REDUCTION,

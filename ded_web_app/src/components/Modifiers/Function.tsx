@@ -1,3 +1,4 @@
+import { Feat } from "../Feats/Interface/FeatInterface";
 import { CharacterPc } from "../interfaces";
 import { Modifiers } from "./ModifierInterface";
 
@@ -7,31 +8,30 @@ export function FindAllModifications(
   return modifications.reduce((lists, modList) => lists.concat(modList), []);
 }
 
-export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
-  const modifiersFromClasses: Modifiers[] = char.classPcList.reduce<
-    Modifiers[]
-  >(
-    (list, classe) =>
-      list.concat(
-        ...classe.feats.flatMap((feat) =>
-          feat.modifiers ? feat.modifiers : []
-        )
-      ),
-    []
-  );
-  const modifiersFromFeats: Modifiers[] = char.featsList.reduce<Modifiers[]>(
-    (list, feat) =>
-      list.concat(
-        feat.feat.modifiers.flatMap((f) =>
-          f.targets.length > 3
-            ? [
-                { modifier: f.modifier, bonus: f.bonus, targets: feat.selected }
-              ]
-            : []
-        )
-      ),
-    []
-  );
+export function CheckInAllModifications(char: CharacterPc, feats: Feat[]): Modifiers[] {
+
+  const allModFeats: Modifiers[] = feats.flatMap(f => f.modifiers);
+
+  // let modifiersFromClasses: Modifiers[] = [];
+  // char.classPcList.forEach((cl) =>
+  //   cl.feats.forEach((f) =>
+  //     f.level <= cl.level
+  //       ? f.feat.modifiers.forEach((mod) => modifiersFromClasses.push(mod))
+  //       : []
+  //   )
+  // );
+
+  // const modifiersFromFeats: Modifiers[] = char.featsList.reduce<Modifiers[]>(
+  //   (list, feat) =>
+  //     list.concat(
+  //       feat.feat.modifiers.flatMap((f) =>
+  //         f.targets.length > 3
+  //           ? [{ modifier: f.modifier, bonus: f.bonus, targets: feat.selected }]
+  //           : []
+  //       )
+  //     ),
+  //   []
+  // );
 
   const modifiersFromArchetypes: Modifiers[] = char.archetypes.reduce<
     Modifiers[]
@@ -46,8 +46,9 @@ export function CheckInAllModifications(char: CharacterPc): Modifiers[] {
     char.race.modifiers,
     char.race.race.modifiers,
     modifiersFromArchetypes,
-    modifiersFromFeats,
-    modifiersFromClasses,
+    allModFeats,
+    // modifiersFromFeats,
+    // modifiersFromClasses,
     char.inventory.armor.modifiers,
     char.inventory.shield.modifiers
   ]);

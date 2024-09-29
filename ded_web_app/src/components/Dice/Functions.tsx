@@ -48,6 +48,20 @@ export function DiceText(dice: string): string {
       return "d10";
     case "D12":
       return "d12";
+    case "X2":
+      return "x2";
+    case "X2_1920":
+      return "19-20/×2";
+    case "X2_1820":
+      return "18-20/x2";
+    case "X3":
+      return "x3";
+    case "X3_1920":
+      return "19-20/x3";
+    case "X4":
+      return "x4";
+    case "X4_1920":
+      return "19-20/x4";
     default:
       return "d0";
   }
@@ -104,14 +118,18 @@ export function TotDamageDice(damage: number[]): number {
     (total, n) => total + n, 0
   )
 }
-export function CriticalHit(critic: string): number {
+export function CriticalHit(critic: string): number[] {
   switch (critic) {
     case "X2_1920":
-      return 19 | 20;
+      return [19, 20];
     case "X2_1820":
-      return 18 | 19 | 20;
+      return [18, 19, 20];
+    case "X3_1920":
+      return [19, 20];
+    case "X4_1920":
+      return [19, 20];
     default:
-      return 20;
+      return [20];
   }
 }
 export function CriticalDamage(weapon: Weapon, dmg:number): number[] {

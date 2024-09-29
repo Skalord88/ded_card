@@ -969,7 +969,7 @@
         <column name="enchantment_id" value="1" />
     </insert>
     <insert tableName="items">
-        <column name="name" value="Composite Bow(+2)" />
+        <column name="name" value="Composite Bow(+2)+1" />
         <column name="item_type" value="WEAPON" />
         <column name="weapon_name" value="LONGBOW_COMPOSITE" />
         <column name="cost" value="300" />

@@ -12,7 +12,7 @@ export function SignNumber(
 export function SignNumberEnchant(
     number: number
 ): string {
-    switch(number){
+    switch (number) {
         case -2: return ""
         case -1: return "prf"
         case 0: return ""
@@ -91,7 +91,8 @@ export function AttackIIMelee(
     weapon: Weapon,
     bab: number,
     position: Position,
-    nAtt: number
+    nAtt: number,
+    twoFeat: boolean
 ): number | false {
     // se l'arma e' a distanza
     if (WeaponRanged(weapon)) { return false }
@@ -100,20 +101,25 @@ export function AttackIIMelee(
     // se l'arma e' a 2 mani
     if (position.twoHanded) { return false }
     // torna strAtt/dexAtt - n. attacchi
-    let result: number = 0;
-    if (position.pose && position.light) {result = bab - nAtt - 4}
-    if (position.pose && !position.light) {result = bab - nAtt - 6}
-    if (!position.pose && position.light) {result = bab - nAtt - 8}
-    if (!position.pose && !position.light) {result = bab - nAtt - 10}
-    
-    return result;
+    if (!twoFeat) {
+        if (position.pose && !position.light) { return bab - nAtt - 6 }
+        if (!position.pose && !position.light) {return bab - nAtt - 10}
+        if (position.pose && position.light) { return bab - nAtt - 4}
+        if (!position.pose && position.light) {return bab - nAtt - 8}
+    } else {
+        if (position.pose && position.light) { return bab - nAtt - 2 }
+        if (!position.pose && !position.light) { return bab - nAtt - 4 }
+        if (!position.pose && position.light) { return bab - nAtt - 2 }
+    }
+    return 0;
 }
 
 export function AttackIIRanged(
     weapon: Weapon,
     bab: number,
     position: Position,
-    nAtt: number
+    nAtt: number,
+    twoFeat: boolean
 ): number | false {
     // se l'arma e' a distanza
     if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
@@ -122,13 +128,17 @@ export function AttackIIRanged(
     // se l'arma e' a 2 mani
     if (position.twoHanded) { return false }
     // torna strAtt/dexAtt - n. attacchi
-    let result: number = 0;
-    if (position.pose && position.light) {result = bab - nAtt - 4}
-    if (position.pose && !position.light) {result = bab - nAtt - 6}
-    if (!position.pose && position.light) {result = bab - nAtt - 8}
-    if (!position.pose && !position.light) {result = bab - nAtt - 10}
-    
-    return result;
+    if (!twoFeat) {
+        if (position.pose && !position.light) { return bab - nAtt - 6 }
+        if (!position.pose && !position.light) {return bab - nAtt - 10}
+        if (position.pose && position.light) { return bab - nAtt - 4}
+        if (!position.pose && position.light) {return bab - nAtt - 8}
+    } else {
+        if (position.pose && position.light) { return bab - nAtt - 2 }
+        if (!position.pose && !position.light) { return bab - nAtt - 4 }
+        if (!position.pose && position.light) { return bab - nAtt - 2 }
+    }
+    return 0;
 }
 
 export function SetSetWeaponListFromDB(

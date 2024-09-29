@@ -16,7 +16,7 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
-  const dices: number[] = increments.map((inc) => ThrowDice20());
+  const dices: number[] = bab.map((inc) => ThrowDice20());
   let attacks: number[] = [];
   for (let i = 0; i < increments.length; i++) {
     for (let b = 0; b < bab.length; b++) {
@@ -31,6 +31,8 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
     }
     setShowPopup(show);
   };
+
+  console.log(modifiers)
 
   return (
     <>
@@ -56,15 +58,11 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
                 <WeaponDamageDice dices={dices} weapon={weapon} dmg={dmg} />
               </div>
             </div>
-            {modifiers.map((mod) => {
-              return (
-                <p style={{ color: "yellow" }}>
-                  {mod.targets[1]
-                    ? " vs " + FormattingText(mod.targets[1])
-                    : ""}
-                </p>
-              );
-            })}
+            {modifiers.map(mod => (
+              <p style={{ color: "yellow" }}>
+                vs {FormattingText(mod.targets[0])} +{mod.targets.length * 2}dmg
+              </p>
+            ))}
           </>
         </span>
       </div>

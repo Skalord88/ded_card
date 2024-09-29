@@ -10,6 +10,7 @@ export type MapOfAttackComponentProps = {
   strenghtAtt: number;
   dextrityAtt: number;
   specific: Modifiers[][];
+  specificFghFeats: number[];
 };
 
 export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
@@ -18,7 +19,8 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
   strenght,
   strenghtAtt,
   dextrityAtt,
-  specific
+  specific,
+  specificFghFeats
 }) => {
   return (
     <>
@@ -42,6 +44,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
               light: WeaponLight(attacks.secondAttackSetOne)
             }}
             specific={specific}
+            specificFghFeats={specificFghFeats}
           />
         </p>
         <p style={{ gridColumn: 3, gridRow: 2 }}>
@@ -63,6 +66,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                   light: WeaponLight(attacks.secondAttackSetOne)
                 }}
                 specific={specific}
+                specificFghFeats={specificFghFeats}
               />
             </>
           )}
@@ -86,6 +90,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                   light: WeaponLight(attacks.secondAttackSetOne)
                 }}
                 specific={specific}
+                specificFghFeats={specificFghFeats}
               />
             </>
           )}
@@ -109,6 +114,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
               light: WeaponLight(attacks.secondAttackSetTwo)
             }}
             specific={specific}
+            specificFghFeats={specificFghFeats}
           />
         </p>
         <p style={{ gridColumn: 3, gridRow: 5 }}>
@@ -130,6 +136,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                   light: WeaponLight(attacks.secondAttackSetTwo)
                 }}
                 specific={specific}
+                specificFghFeats={specificFghFeats}
               />
             </>
           )}
@@ -153,6 +160,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                   light: WeaponLight(attacks.secondAttackSetTwo)
                 }}
                 specific={specific}
+                specificFghFeats={specificFghFeats}
               />
             </>
           )}

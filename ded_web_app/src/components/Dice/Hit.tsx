@@ -10,7 +10,7 @@ export type CriticProps = {
 export const Hit: React.FC<CriticProps> = ({ weapon, dice, value }) => {
   return (
     <>
-          {dice === CriticalHit(weapon.critical) ? (
+          {CriticalHit(weapon.critical).includes(dice) ? (
             <>
               <span style={{ color: "red" }}>{dice}</span> + {value} {"= "}
               {dice + value} critic!!

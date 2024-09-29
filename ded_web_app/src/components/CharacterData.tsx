@@ -1,7 +1,7 @@
 import { SignNumber } from "../components/functions";
 import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
-import { } from "./Modifiers/Ability/Function";
+import {} from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { Archetype } from "./Race/Interfaces";
 
@@ -28,8 +28,9 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
           <p>{char.playerName}</p>
           <p>---</p>
           <p>{char.race.subRacesName}</p>
-          {char.archetypes.length > 0 ? 
-            <ArchetypesData archetypes={char.archetypes}/> : null}
+          {char.archetypes.length > 0 ? (
+            <ArchetypesData archetypes={char.archetypes} />
+          ) : null}
           <p>15</p>
           <p>CHGD</p>
         </div>
@@ -39,17 +40,25 @@ export const CharacterData: React.FC<CharProps> = ({ char }) => {
 };
 
 export type ArchetypesDataProps = {
-  archetypes: Archetype[]
-}
+  archetypes: Archetype[];
+};
 
-export const ArchetypesData: React.FC<ArchetypesDataProps> = ({ archetypes }) => {
-return(
-  <p style={{ display: "flex", flexDirection: "row" }}>
-    {archetypes.map((a, index) => {
-      return <>{a.archetypeName}{index === archetypes.length - 1? null : ", "}</>
-    })}
-  </p>
-)}
+export const ArchetypesData: React.FC<ArchetypesDataProps> = ({
+  archetypes
+}) => {
+  return (
+    <p style={{ display: "flex", flexDirection: "row" }}>
+      {archetypes.map((a, index) => {
+        return (
+          <>
+            {a.archetypeName}
+            {index === archetypes.length - 1 ? null : ", "}
+          </>
+        );
+      })}
+    </p>
+  );
+};
 
 export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
   const cl: ClassPc[] = char.classPcList.filter(
@@ -131,14 +140,18 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export type BaseAttackProp = {
-  bab: number,
-  grapple: number
-  strenghtAtt: number
-  dextrityAtt: number
-}
+  bab: number;
+  grapple: number;
+  strenghtAtt: number;
+  dextrityAtt: number;
+};
 
-export const BaseAttack: React.FC<BaseAttackProp> = ({ bab, grapple, strenghtAtt, dextrityAtt }) => {
-
+export const BaseAttack: React.FC<BaseAttackProp> = ({
+  bab,
+  grapple,
+  strenghtAtt,
+  dextrityAtt
+}) => {
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
@@ -148,15 +161,25 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ bab, grapple, strenghtAtt
       </p>
       <p>
         <D20Popup textOrWeapon={"grapple: "} value={grapple} modifiers={[]} />
-        {SignAndCount([grapple]).sign}
-        {SignAndCount([grapple]).number}
+        {SignNumber(grapple)}
+        {grapple}
       </p>
       <p>
-        STR att: {SignNumber(strenghtAtt)}
+        <D20Popup
+          textOrWeapon={"STR att: "}
+          value={strenghtAtt}
+          modifiers={[]}
+        />
+        {SignNumber(strenghtAtt)}
         {strenghtAtt}
       </p>
       <p>
-        DEX att: {SignNumber(dextrityAtt)}
+        <D20Popup
+          textOrWeapon={"DEX att: "}
+          value={dextrityAtt}
+          modifiers={[]}
+        />
+        {SignNumber(dextrityAtt)}
         {dextrityAtt}
       </p>
     </>

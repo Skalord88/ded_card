@@ -21,7 +21,7 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   return (
     <>
       {results.map((res, index) => {
-        return res.dice === CriticalHit(weapon.critical) ? (
+        return CriticalHit(weapon.critical).includes(res.dice) ? (
           <p style={{ color: "red" }} key={index}>
             {res.dice} + {res.value} = {res.dice + res.value}
           </p>

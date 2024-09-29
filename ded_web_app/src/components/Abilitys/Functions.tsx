@@ -1,6 +1,4 @@
-import { CharacterPc } from "../interfaces";
-import {
-} from "../Modifiers/Ability/Function";
+import { } from "../Modifiers/Ability/Function";
 import { FindInOneLengthModifier } from "../Modifiers/Function";
 import { Modifiers } from "../Modifiers/ModifierInterface";
 import { Abilitys } from "./Interface";

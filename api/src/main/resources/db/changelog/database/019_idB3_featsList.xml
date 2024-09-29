@@ -1225,6 +1225,23 @@ At 5th level, and at every five levels thereafter, the paladin may smite evil on
             } 
     ]" />
     </insert>
+    <!-- , {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;BLUFF&quot;, &quot;FAVORED_ENEMY&quot;]
+            } , {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;LISTEN&quot;, &quot;FAVORED_ENEMY&quot;]
+            } , {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;SENSE_MOTIVE&quot;, &quot;FAVORED_ENEMY&quot;]
+            } , {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;SPOT&quot;, &quot;FAVORED_ENEMY&quot;]
+            }  -->
     <insert tableName="feats">
       <column name="feat_name" value="Track" />
       <column name="feats_type" value="GENERAL" />
@@ -2040,6 +2057,97 @@ Without this feat, a character who performs a shield bash loses the shield’s s
 
 Special
 A fighter may select Improved Shield Bash as one of his fighter bonus feats."
+      />
+    </insert>
+    
+    <insert tableName="feats">
+      <column name="feat_name" value="Two-Weapon Fighting" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="You can fight with a weapon in each hand. You can make one extra attack each round with the second weapon.
+
+Prerequisite
+Dex 15.
+
+Benefit
+Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See the Two-Weapon Fighting special attack.
+
+Normal
+If you wield a second weapon in your off hand, you can get one extra attack per round with that weapon. When fighting in this way you suffer a -6 penalty with your regular attack or attacks with your primary hand and a -10 penalty to the attack with your off hand. If your off-hand weapon is light the penalties are reduced by 2 each. (An unarmed strike is always considered light.)
+
+Special
+A 2nd-level ranger who has chosen the two-weapon combat style is treated as having Two-Weapon Fighting, even if he does not have the prerequisite for it, but only when he is wearing light or no armor.
+
+A fighter may select Two-Weapon Fighting as one of his fighter bonus feats."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Improved Two-Weapon Fighting" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Prerequisites
+Dex 17, Two-Weapon Fighting, base attack bonus +6.
+
+Benefit
+In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a -5 penalty. See the Two-Weapon Fighting special attack.
+
+Normal
+Without this feat, you can only get a single extra attack with an off-hand weapon.
+
+Special
+A fighter may select Improved Two-Weapon Fighting as one of his fighter bonus feats.
+
+A 6th-level ranger who has chosen the two-weapon combat style is treated as having Improved Two-Weapon Fighting, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Greater Two-Weapon Fighting" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="
+Prerequisites
+Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11.
+
+Benefit
+You get a third attack with your off-hand weapon, albeit at a -10 penalty. See the Two-Weapon Fighting special attack.
+
+Special
+A fighter may select Greater Two-Weapon Fighting as one of his fighter bonus feats.
+
+An 11th-level ranger who has chosen the two-weapon combat style is treated as having Greater Two-Weapon Fighting, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Two-Weapon Defense" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="
+        Prerequisites
+        Dex 15, Two-Weapon Fighting.
+
+        Benefit
+        When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. See the Two-Weapon Fighting special attack.
+
+        When you are fighting defensively or using the total defense action, this shield bonus increases to +2.
+
+        Special
+        A fighter may select Two-Weapon Defense as one of his fighter bonus feats."
+      />
+    </insert>
+    <insert tableName="feats">
+      <column name="feat_name" value="Weapon Finesse" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Prerequisite
+Base attack bonus +1.
+
+Benefit
+With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls.
+
+Special
+A fighter may select Weapon Finesse as one of his fighter bonus feats.
+
+Natural weapons are always considered light weapons."
       />
     </insert>
     <insert tableName="feats">

@@ -1,5 +1,5 @@
 import { Abilitys } from "./Abilitys/Interface";
-import { Feat, FeatPc } from "./Feats/Interface/FeatInterface";
+import { ClassFeats, Feat, FeatPc } from "./Feats/Interface/FeatInterface";
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { Archetype, SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
@@ -81,7 +81,7 @@ export type ClassPc = {
   classBab: number;
   savingThrow: string;
   skillPoints: number;
-  feats: Feat[];
+  feats: ClassFeats[];
 }
 
 export type MagicClass = {

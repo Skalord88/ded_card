@@ -13,7 +13,7 @@ export type ShieldInventoryComponentProps = {
     return (
       <>
       <div style={{ gridColumn: 1 }}>
-            <p style={{backgroundColor: 'grey'}}>Name</p>
+            <p style={{backgroundColor: 'grey'}}>Shield</p>
               <p><Popup text={shield.name} popText={shield.description} /></p>
           </div>
           <div style={{ gridColumn: 2 }}>

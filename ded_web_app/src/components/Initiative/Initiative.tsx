@@ -19,35 +19,35 @@ export const Initiative: React.FC<InitiativeProps> = ({
     <>
       <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
       <div style={{ display: "flex" }}>
-        <div className="rpgui-container-framed-grey">
+        <div>
           <p style={{ flex: 1 }}>
-            <D12Popup textOrWeapon="tot:" value={totInit} modifiers={[]} /> {init}
+            <D12Popup textOrWeapon="tot:" value={totInit} modifiers={[]} />
           </p>
         </div>
         {initiativeDex !== 0 ? (
           <>
-            <div className="rpgui-container-framed-grey">
+            <div>
               <p style={{ flex: 1 }}>
-                dex: {SignAndCount([initiativeDex]).sign}
-                {initiativeDex}
+                {SignAndCount([initiativeDex]).sign}
+                {initiativeDex}{' dex'}
               </p>
             </div>
           </>
-        ) : (
-          <></>
-        )}
+        ) : 
+          null
+        }
         {initiativeMod !== 0 ? (
           <>
-            <div className="rpgui-container-framed-grey">
+            <div>
               <p style={{ flex: 1 }}>
-                bns: {SignAndCount([initiativeMod]).sign}
-                {initiativeMod}
+                {SignAndCount([initiativeMod]).sign}
+                {initiativeMod}{' bns'}
               </p>
             </div>
           </>
-        ) : (
-          <></>
-        )}
+        ) : 
+          null
+        }
       </div>
     </>
   );

@@ -4,73 +4,14 @@ import {
   AttackIIMelee,
   AttackIIRanged,
   WeaponRanged,
-  SignAndCount,
   WeaponThrown,
-  WeaponTwoHanded
-} from "../../functions";
+  WeaponTwoHanded} from "../../functions";
 import { Position, Weapon } from "../../interfaces";
+import { ChangeCritWithFeat } from "../../Items/Functions/Functions";
 import { FindWeaponToModified } from "../../Modifiers/Bab/Function";
 import { FindInOneLengthModifier } from "../../Modifiers/Function";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
-import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
-
-export type AttackOptionsProps = {
-  type: string;
-  weapon: Weapon;
-  dmg: number;
-  strenghtAtt: number;
-  dextrityAtt: number;
-  position: Position;
-  increments: number[];
-  attackFn: Function;
-};
-
-export const AttackOptions: React.FC<AttackOptionsProps> = ({
-  type,
-  weapon,
-  dmg,
-  strenghtAtt,
-  dextrityAtt,
-  position,
-  increments,
-  attackFn
-}) => {
-  const checkType = (typeToCheck: string): number => {
-    if (typeToCheck === "distance") return dextrityAtt;
-    if (typeToCheck === "distance two hands") return dextrityAtt;
-    return strenghtAtt;
-  };
-
-  let bonus: number = checkType(type);
-
-  const attacks: number[] = increments.map((inc) =>
-    attackFn(weapon, bonus, position, inc)
-  );
-
-  return (
-    <>
-      <D20PopupWeapon
-        type={type}
-        weapon={weapon}
-        increments={increments}
-        bab={attacks}
-        dmg={dmg}
-        modifiers={[]}
-      />
-      :
-      {attacks.map((att, index) => (
-        <>
-          {SignAndCount([att]).sign}
-          {att}
-          {attacks.length - 1 > index ? <>{"/"}</> : <></>}
-        </>
-      ))}{" "}
-      {weapon.damage}
-      {SignAndCount([dmg]).sign}
-      {dmg}
-    </>
-  );
-};
+import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {
   bab: number;
@@ -80,6 +21,7 @@ export type MapBabProps = {
   weapon: Weapon;
   position: Position;
   specific: Modifiers[][];
+  specificFghFeats: number[];
 };
 
 export const MapBab: React.FC<MapBabProps> = ({
@@ -89,7 +31,8 @@ export const MapBab: React.FC<MapBabProps> = ({
   dextrityAtt,
   weapon,
   position,
-  specific
+  specific,
+  specificFghFeats
 }) => {
   const getIncrements = (bab: number) => {
     if (bab > 15) return [0, 5, 10, 15];
@@ -111,24 +54,28 @@ export const MapBab: React.FC<MapBabProps> = ({
   const ench = getEnchant(weapon.enchantment.enchantment);
 
   const strenghtAttModified: number =
-    strenghtAtt + FindWeaponToModified(specific[0], weapon) + ench;
+    strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
   const dextrityAttModified: number =
-    dextrityAtt + FindWeaponToModified(specific[0], weapon) + ench;
+    dextrityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
   const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
 
   const enchDmg: number =
     weapon.enchantment.enchantment < 0
-      ? 0 + FindWeaponToModified(specific[1], weapon) + compo
+      ? 0 + FindWeaponToModified(specific[1], weapon).bonus + compo
       : weapon.enchantment.enchantment +
-        FindWeaponToModified(specific[1], weapon) + compo;
+        FindWeaponToModified(specific[1], weapon).bonus + compo;
 
   const twoHandDmg: number = position.twoHanded
     ? strenght + Math.floor(strenght / 2) + enchDmg
     : strenght + enchDmg;
   const dmgTwoHand: number =
     twoHandDmg < strenght + enchDmg ? strenght + enchDmg : twoHandDmg;
+
+  const critWeapon: Weapon = ChangeCritWithFeat(weapon,
+    FindWeaponToModified(specific[2], weapon).find
+  )
 
   return (
     <div style={{ display: "grid" }}>
@@ -137,13 +84,15 @@ export const MapBab: React.FC<MapBabProps> = ({
           <>
             <AttackOptions
               type="melee"
-              weapon={weapon}
+              weapon={critWeapon}
               dmg={dmgTwoHand}
               strenghtAtt={strenghtAttModified}
               dextrityAtt={dextrityAttModified}
               position={position}
               increments={attacksIncrements}
               attackFn={AttackMelee}
+              specificFghFeats={specificFghFeats}
+              specificTarget={specific[3]}
             />
           </>
         )}
@@ -152,13 +101,15 @@ export const MapBab: React.FC<MapBabProps> = ({
         {WeaponRanged(weapon) || WeaponThrown(weapon) ? (
           <AttackOptions
             type="distance"
-            weapon={weapon}
+            weapon={critWeapon}
             dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
             dextrityAtt={dextrityAttModified}
             increments={attacksIncrements}
             attackFn={AttackRanged}
+            specificFghFeats={specificFghFeats}
+            specificTarget={specific[3]}
           />
         ) : null}
       </div>
@@ -168,13 +119,15 @@ export const MapBab: React.FC<MapBabProps> = ({
             {position.twoHanded ? null : (
               <AttackOptions
                 type="melee two hands"
-                weapon={weapon}
+                weapon={critWeapon}
                 dmg={Math.floor(strenght / 2) + enchDmg}
                 position={position}
                 strenghtAtt={strenghtAttModified}
                 dextrityAtt={dextrityAttModified}
                 increments={attacksIncrements}
                 attackFn={AttackIIMelee}
+                specificFghFeats={specificFghFeats}
+                specificTarget={specific[3]}
               />
             )}
           </>
@@ -185,13 +138,15 @@ export const MapBab: React.FC<MapBabProps> = ({
           WeaponThrown(weapon) ? (
           <AttackOptions
             type="distance two hands"
-            weapon={weapon}
+            weapon={critWeapon}
             dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
             dextrityAtt={dextrityAttModified}
             increments={attacksIncrements}
             attackFn={AttackIIRanged}
+            specificFghFeats={specificFghFeats}
+            specificTarget={specific[3]}
           />
         ) : null}
       </div>

@@ -48,6 +48,7 @@ export type SelectedFeatProps = {
 }
 
 export type ClassFeats = {
+  modifiers: any;
   level: number;
   feat: Feat;
   classId: number;
@@ -59,7 +60,7 @@ export type Feat = {
   featName: string;
   featsType: string;
   prerequisite: string;
-  modifiers: Modifiers[];
+  modifiers: Modifiers[] ;
   description: string;
 }
 

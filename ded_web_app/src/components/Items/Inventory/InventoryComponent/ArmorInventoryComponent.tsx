@@ -20,11 +20,11 @@ export type ArmorInventoryComponentProps = {
     return (
       <>
       <div style={{ gridColumn: 1 }}>
-            <p style={{backgroundColor: 'grey'}}>Name</p>
+            <p style={{backgroundColor: 'grey'}}>Armor</p>
               <p><Popup text={armor.name} popText={armor.description} /></p>
           </div>
           <div style={{ gridColumn: 2 }}>
-            <p style={{backgroundColor: 'grey'}}>Armor Type</p>
+            <p style={{backgroundColor: 'grey'}}>Ar.Type</p>
             <p>{FormattingText(armor.armorType)}</p>
           </div>
           <div style={{ gridColumn: 3 }}>
@@ -32,7 +32,7 @@ export type ArmorInventoryComponentProps = {
             <p>{SignAndCount([armor.enchantment.enchantment]).sign}{armor.enchantment.enchantment}</p>
           </div>
           <div style={{ gridColumn: 4 }}>
-            <p style={{backgroundColor: 'grey'}}>Max Dex</p>
+            <p style={{backgroundColor: 'grey'}}>MaxDex</p>
             <p>{armor.maxDex}</p>
           </div>
           <div style={{ gridColumn: 5 }}>

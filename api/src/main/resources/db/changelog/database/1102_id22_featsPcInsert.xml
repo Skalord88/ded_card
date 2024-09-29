@@ -25,5 +25,35 @@
                 &quot;LONGSWORD&quot;
             ]" />
         </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="115" />
+            <column name="selected" value="[]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="116" />
+            <column name="selected" value="[]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="117" />
+            <column name="selected" value="[]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="78" />
+            <column name="selected" value="[&quot;VAMPIER&quot;,&quot;VAMPIER&quot;]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="78" />
+            <column name="selected" value="[&quot;GNOLL&quot;,&quot;GNOLL&quot;,&quot;GNOLL&quot;]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="78" />
+            <column name="selected" value="[&quot;FIRE_GIANT&quot;]" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
