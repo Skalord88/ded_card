@@ -137,8 +137,6 @@ export const characterEmpty: CharacterPc = {
         level: 0,
         spells: []
     }],
-    levelAdjustment: 0,
-    effectiveCharacterLv: 0,
     experience: 0,
     treasure: 0
 }

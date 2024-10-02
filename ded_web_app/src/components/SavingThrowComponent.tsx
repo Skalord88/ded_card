@@ -8,6 +8,7 @@ import {
 } from "./Modifiers/Function";
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { FindAllAdjLevel } from "./Race/Function";
 import { CountSavingThrowFromClassPc } from "./Saving/Functions";
 import { Saving } from "./Saving/Saving";
 
@@ -22,12 +23,18 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   abilitys,
   modifications
 }) => {
+  const lvAdjsaving: number = FindAllAdjLevel(char)
   const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList);
   const savingBonusAll: number = FindInOneLengthModifier(
     modifications,
     "SAVING"
   );
-  const saving = Saving(abilitys, sT, savingBonusAll, modifications)
+  const saving = Saving(abilitys, 
+    {fortitude: sT.fortitude + (lvAdjsaving * 0.5),
+      reflex: sT.reflex + (lvAdjsaving * 0.5),
+      will: sT.will + (lvAdjsaving * 0.5)
+    },
+     savingBonusAll, modifications)
 
   const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
     modifications,

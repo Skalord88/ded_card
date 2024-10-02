@@ -13,18 +13,13 @@
             </column>
         </createTable>
 
-
         <insert tableName="character_archetypes">
-            <column name="character_card_id" value="100" />
+            <column name="character_card_id" value="102" />
             <column name="archetype_id" value="1" />
         </insert>
-        <!-- <insert tableName="character_archetypes">
-            <column name="character_card_id" value="100" />
+        <insert tableName="character_archetypes">
+            <column name="character_card_id" value="103" />
             <column name="archetype_id" value="2" />
         </insert>
-        <insert tableName="character_feats">
-            <column name="character_card_id" value="100" />
-            <column name="archetype_id" value="3" />
-        </insert> -->
     </changeSet>
 </databaseChangeLog>

@@ -48,7 +48,7 @@ public class ArmorsDTO implements Serializable {
     this.description = item.getDescription();
     this.material = item.getMaterial();
     if (item.getEnchantment() == null) {
-      this.enchantment = null;
+      this.enchantment = new EnchantmentDTO(0, 0);
     } else {
       this.enchantment =
         MapperEnchantment.toEnchantmentDTO(item.getEnchantment());

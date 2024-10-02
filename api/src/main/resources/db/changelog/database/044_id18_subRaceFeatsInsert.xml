@@ -30,5 +30,9 @@
       <column name="sub_race_id" value="2" />
       <column name="feats_id" value="1002" />
     </insert>
+    <insert tableName="sub_race_feats">
+      <column name="sub_race_id" value="6" />
+      <column name="feats_id" value="106" />
+    </insert>
   </changeSet>
 </databaseChangeLog>

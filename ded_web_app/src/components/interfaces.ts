@@ -21,8 +21,6 @@ export type CharacterPc = {
   magicPerDay: MagicClass;
   magicKnown: MagicClass;
   books: Book[];
-  levelAdjustment: number;
-  effectiveCharacterLv: number;
   experience: number;
   treasure: number;
 }

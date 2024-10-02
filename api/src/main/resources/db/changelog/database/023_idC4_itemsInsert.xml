@@ -491,7 +491,6 @@
                 &quot;bonus&quot; : 3,            
                 &quot;targets&quot; : []            
                 }]"/>
-            <!-- <column name="armor_class" value="3" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="5" />
             <column name="penality" value="-1" />
@@ -1019,6 +1018,77 @@
         <column name="material" value="WOOD" />
         <column name="enchantment_id" value="0" />
     </insert>
+
+    <!-- Niesia -->
+    <insert tableName="items">
+        <column name="name" value="Studded leather+1" />
+        <column name="item_type" value="ARMOR" />
+        <column name="armor_name" value="STUDDED_LEATHER" />
+        <column name="cost" value="25" />
+        <column name="weight" value="20" />
+        <column name="modifiers" value="[{
+        &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,
+        &quot;bonus&quot; : 3,
+        &quot;targets&quot; : []
+        }]"/>
+        <column name="armor_type" value="LIGHT_ARMOR" />
+        <column name="max_dex" value="5" />
+        <column name="penality" value="-1" />
+        <column name="failure" value="15" />
+        <column name="description" value="Taka se, ale lekka." />
+        <column name="material" value="LEATHER" />
+        <column name="enchantment_id" value="1" />
+        </insert>
+        
+        <insert tableName="items">
+        <column name="name" value="Shortspear+1" />
+        <column name="item_type" value="WEAPON" />
+        <column name="weapon_name" value="SHORTSPEAR" />
+        <column name="cost" value="1" />
+        <column name="damage" value="D6" />
+        <column name="critical" value="X2" />
+        <column name="weight" value="3" />
+        <column name="size" value="MEDIUM" />
+        <column name="type" value="['SIMPLE','ONE_HANDED','PIERCING','THROWN']" />
+        <column name="special_attacks" value="" />
+        <column name="description" value="" />
+        <column name="material" value="WOOD" />
+        <column name="enchantment_id" value="1" />
+        <column name="range" value="20" />
+        </insert>
+        
+        <insert tableName="items">
+        <column name="name" value="Sword, long" />
+        <column name="item_type" value="WEAPON" />
+        <column name="weapon_name" value="LONGSWORD" />
+        <column name="cost" value="15" />
+        <column name="damage" value="D8" />
+        <column name="critical" value="X2_1920" />
+        <column name="weight" value="4" />
+        <column name="size" value="MEDIUM" />
+        <column name="type" value="['MARTIAL','SLASHING','ONE_HANDED']" />
+        <column name="special_attacks" value="" />
+        <column name="description" value="" />
+        <column name="material" value="METAL" />
+        <column name="enchantment_id" value="0" />
+        </insert>
+        
+        <insert tableName="items">
+        <column name="name" value="Long Bow" />
+        <column name="item_type" value="WEAPON" />
+        <column name="weapon_name" value="LONGBOW_COMPOSITE" />
+        <column name="cost" value="75" />
+        <column name="damage" value="D8" />
+        <column name="critical" value="X3" />
+        <column name="range" value="100" />
+        <column name="weight" value="3" />
+        <column name="size" value="MEDIUM" />
+        <column name="type" value="['MARTIAL','RANGED','PIERCING','TWO_HANDED']" />
+        <column name="special_attacks" value="" />
+        <column name="description" value="" />
+        <column name="material" value="WOOD" />
+        <column name="enchantment_id" value="0" />
+        </insert>
 
     </changeSet>
 </databaseChangeLog>

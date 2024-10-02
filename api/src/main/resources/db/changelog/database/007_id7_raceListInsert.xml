@@ -111,6 +111,16 @@
             ]" />
             <column name="avatar_url" value="address value" />
         </insert>
+        <insert tableName="race">
+            <column name="race_name" value="Monstruos Humanoid" /> <!-- 4-->
+            <column name="modifiers" value="[]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
+            <column name="race_name" value="Spirit Folk" /> <!-- 5-->
+            <column name="modifiers" value="[]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
 

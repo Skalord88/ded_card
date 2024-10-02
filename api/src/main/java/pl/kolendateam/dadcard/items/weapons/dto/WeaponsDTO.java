@@ -19,7 +19,6 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @AllArgsConstructor
@@ -68,7 +67,7 @@ public class WeaponsDTO implements Serializable {
     this.type = typ;
     this.description = item.getDescription();
     if (item.getEnchantment() == null) {
-      this.enchantment = null;
+      this.enchantment = new EnchantmentDTO(0, 0);
     } else {
       this.enchantment =
         MapperEnchantment.toEnchantmentDTO(item.getEnchantment());

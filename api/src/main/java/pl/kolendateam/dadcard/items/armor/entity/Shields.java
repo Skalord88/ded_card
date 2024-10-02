@@ -15,6 +15,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
@@ -59,7 +60,7 @@ public class Shields extends Items {
     this.failure = shield.failure;
     this.material = shield.material;
     if (shield.enchantment == null) {
-      this.enchantment = null;
+      this.enchantment =  new Enchantment(0, 0);
     } else {
       this.enchantment = MapperEnchantment.toEnchantment(shield.enchantment);
     }

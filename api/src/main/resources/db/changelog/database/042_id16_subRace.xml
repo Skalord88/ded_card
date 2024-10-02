@@ -24,7 +24,7 @@
         <column name="modifiers" type="jsonb" >
           <constraints nullable="true"/>
         </column>
-        <column name="level_adjustment" type="TINYINT">
+        <column name="level_adjustment" type="int">
           <constraints nullable="true"/>
         </column>
       </createTable>

@@ -1,8 +1,10 @@
 import { SignNumber } from "../components/functions";
+import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import {} from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { FindAllAdjLevel } from "./Race/Function";
 import { Archetype } from "./Race/Interfaces";
 
 export interface CharProps {
@@ -61,6 +63,9 @@ export const ArchetypesData: React.FC<ArchetypesDataProps> = ({
 };
 
 export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
+  const adjLv: number = FindAllAdjLevel(char);
+  const totLv: number =
+    adjLv + char.classPcList.reduce((total, cl) => total + cl.level, 0);
   const cl: ClassPc[] = char.classPcList.filter(
     (classe) => classe.classType === 1
   );
@@ -73,37 +78,27 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
       <h2 className="rpgui-container-framed-golden-2">Class and Experience</h2>
 
       <div>
-        <p>LEP: {char.effectiveCharacterLv}</p>
+        <p>LEP: {totLv}</p>
         <p>
-          exp: {char.effectiveCharacterLv * 1000 - char.experience} / next lv:{" "}
-          {char.experience}
+          exp: {char.experience} / next lv:{" "}
+          {(totLv + 1) * 1000 - char.experience}
         </p>{" "}
       </div>
       <div
       // style={{ display: "grid" }}
       >
+        {char.race.levelAdjustment > 0 ? (
+          <p>{char.race.subRacesName + " " + char.race.levelAdjustment}</p>
+        ) : null}
+        {char.archetypes.map(arch => (
+          arch.levelAdjustment > 0?
+          <p>{arch.archetypeName + " " + arch.levelAdjustment}</p> : null
+        ))}
         {cl.map((classe, index) => {
           return (
             <>
-              <p
-                key={index}
-                // style={{
-                //   gridColumn: "1 / span 2",
-                //   gridRow: 1
-                // }}
-                // className="rpgui-container-framed-grey"
-              >
-                {classe.className}{" "}
-                {/* </p>
-              <p
-                key={index + "." + index}
-                style={{
-                  gridColumn: 3,
-                  gridRow: 1
-                }}
-                className="rpgui-container-framed-grey"
-              > */}
-                {classe.level}
+              <p key={index}>
+                {classe.className + " " + classe.level}
               </p>
             </>
           );

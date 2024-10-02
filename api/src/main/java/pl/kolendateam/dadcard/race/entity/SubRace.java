@@ -66,5 +66,5 @@ public class SubRace implements Serializable {
   )
   Set<Region> availableRegions = new HashSet<>();
 
-  byte levelAdjustment;
+  Integer levelAdjustment;
 }

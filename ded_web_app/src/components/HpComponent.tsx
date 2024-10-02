@@ -1,13 +1,15 @@
 import { Abilitys } from "./Abilitys/Interface";
 import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc } from "./interfaces";
-import { CountHitDicesFromClassPc, CountHitPoints } from "./Vita/Functions";
+import { FindAllAdjLevel } from "./Race/Function";
+import { CountHitDicesFromAdj, CountHitDicesFromClassPc, CountHitPoints, HitDices } from "./Vita/Functions";
 export type HpComponentProps = {
   char: CharacterPc;
   abilitys: Abilitys;
 };
 export const HpComponent: React.FC<HpComponentProps> = ({ char, abilitys }) => {
-  const listHitDices = CountHitDicesFromClassPc(char.classPcList);
+  const listHitDices: HitDices[] = CountHitDicesFromClassPc(char.classPcList);
+  const adjListHitDices: HitDices[] = CountHitDicesFromAdj(FindAllAdjLevel(char), listHitDices)
   const totLv = char.classPcList.reduce((tot, lv) => tot + lv.level, 0)
   const cos = SignAndCount([BonusAbilities(abilitys, "COS")])
   return (
@@ -16,21 +18,21 @@ export const HpComponent: React.FC<HpComponentProps> = ({ char, abilitys }) => {
       <div>
         <p style={{ display: "flex" }}>
           Hit Dices:
-          {listHitDices.map((hD, index) => {
+          {adjListHitDices.map((hD, index) => {
             return (
               <div key={index}>
                 {hD.lv}D{hD.dice}
-                {cos.sign}{cos.number * totLv}
-                {index === listHitDices.length - 1 ? null : ","}
+                {cos.sign}{cos.number * hD.lv}
+                {index === adjListHitDices.length - 1 ? null : ","}
               </div>
             );
           })}
         </p>
       </div>
       <div>
-        <p>Hit Points: {abilitys.constitution}</p>
+        <p>Life: {abilitys.constitution}</p>
         <p>
-          Life: {CountHitPoints(BonusAbilities(abilitys, "COS"), listHitDices)}
+          Hit Points: {CountHitPoints(cos.number, adjListHitDices)}
         </p>
         <p>
           dmg: <input placeholder="" type="number" />

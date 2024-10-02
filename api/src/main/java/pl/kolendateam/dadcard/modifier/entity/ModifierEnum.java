@@ -122,6 +122,7 @@ public enum ModifierEnum {
   COLD,
   ELECTRICITY,
   FIRE,
+  WATER,
 
   // active
   RAGE,
@@ -154,6 +155,7 @@ public enum ModifierEnum {
   SPELL_RESISTANCE,
   HD,
   EVASION,
+  LEVEL,
 
   // targets
   TRAP,

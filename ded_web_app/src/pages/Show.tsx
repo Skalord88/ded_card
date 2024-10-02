@@ -36,13 +36,14 @@ import {
   FindInOneLengthModifier
 } from "../components/Modifiers/Function";
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
+import { adjClass } from "../components/Race/AdjClass";
+import { FindAllAdjLevel } from "../components/Race/Function";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { reSizeWeapon } from "../components/Size/Function";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { noneWeapon } from "../components/variables";
-import { ChangeCritWithFeat } from "../components/Items/Functions/Functions";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -86,6 +87,11 @@ export const Show = () => {
     "BAB",
     "WEAPON_FOUS"
   ]);
+
+  const adjLevel: number = FindAllAdjLevel(char);
+
+  const adjBab: number = Math.floor(bab + (adjLevel * adjClass.classBab))
+
   const specificDmg: Modifiers[] = FindInMoreLengthModifier(modifications, [
     "WEAPON_SPECIALIZATION"
   ]);
@@ -98,11 +104,11 @@ export const Show = () => {
 
   const specificFghFeats: number[] = FindFightingFeats(char.featsList);
   const grapple: number =
-    bab +
+  adjBab +
     BonusAbilities(char.abilitys, "STR") +
     FindInOneLengthModifier(modifications, "GRAPPLE");
-  const strenghtAtt: number = bab + strenght;
-  const dextrityAtt: number = bab + dextrity;
+  const strenghtAtt: number = adjBab + strenght;
+  const dextrityAtt: number = adjBab + dextrity;
   const speed: number = FindInOneLengthModifier(modifications, "SPEED");
   const armorModifiers: ArmorModifiers = {
     size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
@@ -235,7 +241,7 @@ export const Show = () => {
               }}
             >
               <BaseAttack
-                bab={bab}
+                bab={adjBab}
                 grapple={grapple}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
@@ -294,7 +300,7 @@ export const Show = () => {
             >
               <MapOfAttackComponent
                 attacks={attacks}
-                bab={bab}
+                bab={adjBab}
                 strenght={strenght}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}

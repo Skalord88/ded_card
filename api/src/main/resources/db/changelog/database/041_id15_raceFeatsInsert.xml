@@ -21,5 +21,9 @@
           <column name="race_id" value="1" />
           <column name="feats_id" value="1000" />
       </insert>
+        <insert tableName="race_feats">
+          <column name="race_id" value="5" />
+          <column name="feats_id" value="110" />
+      </insert>
     </changeSet>
 </databaseChangeLog>

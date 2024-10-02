@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="13" author="oscar">
+        <!-- Puli -->
         <insert tableName="class_pc">
             <column name="level" value="6" />
             <column name="first_class" value="true" />
@@ -28,7 +29,7 @@
             <column name="character_card_id" value="100" />
             <column name="class_character_id" value="11" />
         </insert>
-
+            <!-- Rysio -->
         <insert tableName="class_pc">
             <column name="level" value="10" />
             <column name="first_class" value="true" />
@@ -41,5 +42,20 @@
             <column name="character_card_id" value="101" />
             <column name="class_character_id" value="9" />
         </insert>
+            <!-- Niesia -->
+        <insert tableName="class_pc">
+            <column name="level" value="7" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="102" />
+            <column name="class_character_id" value="4" />
+        </insert>
+        <!-- Michał -->
+        <insert tableName="class_pc">
+            <column name="level" value="9" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="103" />
+            <column name="class_character_id" value="3" />
+            </insert>
+
     </changeSet>
 </databaseChangeLog>

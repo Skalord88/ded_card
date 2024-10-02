@@ -91,6 +91,84 @@
             }]" />
             <column name="level_adjustment" value="0" />
         </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Hagspawn" /> <!-- 6-->
+            <column name="race_id" value="4" />
+            <column name="size_id" value="5" />
+            <column name="modifiers" value="[{
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;SPEED&quot;,            
+            &quot;bonus&quot; : 30,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,            
+            &quot;bonus&quot; : 11,            
+            &quot;targets&quot; : [&quot;LEVEL&quot;]            
+            }
+            ]" />
+            <column name="level_adjustment" value="2" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Moutain Spirit Folk" /> <!-- 7 -->
+            <column name="race_id" value="5" />
+            <column name="size_id" value="5" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;SPEED&quot;,            
+            &quot;bonus&quot; : 30,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 8,            
+            &quot;targets&quot; : [&quot;CLIMB&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;BALANCE&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;JUMP&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;TUMBLE&quot;]            
+            }
+            ]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="River Spirit Folk" /> <!-- 8 -->
+            <column name="race_id" value="5" />
+            <column name="size_id" value="5" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;SPEED&quot;,            
+            &quot;bonus&quot; : 30,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,            
+            &quot;bonus&quot; : 8,            
+            &quot;targets&quot; : [&quot;SWIM&quot;]            
+            },{
+            &quot;modifier&quot; : &quot;SAVING&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : [&quot;WATER&quot;]            
+            }
+            ]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
 

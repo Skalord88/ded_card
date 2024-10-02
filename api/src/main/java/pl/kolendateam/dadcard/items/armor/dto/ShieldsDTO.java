@@ -46,7 +46,7 @@ public class ShieldsDTO {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     if (item.getEnchantment() == null) {
-      this.enchantment = null;
+      this.enchantment = new EnchantmentDTO(0, 0);
     } else {
       this.enchantment =
         MapperEnchantment.toEnchantmentDTO(item.getEnchantment());

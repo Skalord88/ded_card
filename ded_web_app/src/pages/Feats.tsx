@@ -76,12 +76,12 @@ export function Feats() {
     // char?.levelFeatsList
   // ]);
 
-  useEffect(() => {
-    if (char?.effectiveCharacterLv) {
-      let numberOfFeats = 1 + Math.floor(char.effectiveCharacterLv / 3);
-      setElcFeats(numberOfFeats);
-    }
-  }, [char]);
+  // useEffect(() => {
+  //   if (char?.effectiveCharacterLv) {
+  //     let numberOfFeats = 1 + Math.floor(char.effectiveCharacterLv / 3);
+  //     setElcFeats(numberOfFeats);
+  //   }
+  // }, [char]);
 
   // useEffect(() => {
   //   let featsInLevel: serverFeat[] = [];

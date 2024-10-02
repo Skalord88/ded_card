@@ -32,8 +32,6 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
     setShowPopup(show);
   };
 
-  console.log(modifiers)
-
   return (
     <>
       <div

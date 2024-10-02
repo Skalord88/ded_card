@@ -33,16 +33,47 @@ export function CountHitPoints(
   listHitDices.forEach((hD) => {
     if (hD.first) {
       hitPoints += hD.dice;
-      hitPoints += (hD.lv - 1) * hD.dice / 2;
+      hitPoints += ((hD.lv - 1) * hD.dice) / 2;
     } else {
-      hitPoints += hD.dice * hD.lv / 2;
+      hitPoints += (hD.dice * hD.lv) / 2;
     }
-    
   });
-  
+
   let totLv: number = listHitDices.reduce((total, hD) => (total += hD.lv), 0);
   const dispairBonusHits: number = Math.floor((totLv - 1) / 2);
   const constitutionBonusHits: number = constitutionBonus * totLv;
 
   return hitPoints + dispairBonusHits + constitutionBonusHits;
+}
+
+export function CountHitDicesFromAdj(
+  lvAdj: number,
+  listHitDices: HitDices[]
+): HitDices[] {
+  let find = false;
+
+  if (lvAdj > 0) {
+    const nuovaLista = listHitDices.map((hD) => {
+      if (hD.dice === 4) {
+        find = true;
+        return {
+          ...hD,
+          lv: hD.lv + lvAdj
+        };
+      }
+      return hD;
+    });
+
+    if (!find) {
+      nuovaLista.push({
+        first: false,
+        lv: lvAdj,
+        dice: 4
+      });
+    }
+
+    return nuovaLista;
+  } else {
+    return listHitDices;
+  }
 }

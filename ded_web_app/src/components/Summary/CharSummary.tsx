@@ -16,6 +16,7 @@ import {
 import { SavingSummary } from "./SavingSummary";
 import { ModifierSummary } from "./ModifierSummary";
 import { FeatsSummary } from "./FeatsSummary";
+import { FindAllAdjLevel } from "../Race/Function";
 
 export interface SummaryProps {
   character: CharacterPc;
@@ -61,8 +62,8 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
   }, [modifiers]);
 
   useEffect(() => {
-    let sTAdj: savingThrows = { fortitude: 0, reflex: 0, will: 0 };
-    if (race) sTAdj = CountSavingThrowFromAdjClass(race?.levelAdjustment);
+    const sTAdj = CountSavingThrowFromAdjClass(FindAllAdjLevel(character));
+    
     let savingBonusAll: number = 0;
     if (modifiers) {
       savingBonusAll = FindInOneLengthModifier(modifiers, "SAVING");

@@ -15,6 +15,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.items.MapperEnchantment;
+import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
@@ -77,7 +78,7 @@ public class Weapons extends Items {
     this.material = weapon.material;
     this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
     if (weapon.enchantment == null) {
-      this.enchantment = null;
+      this.enchantment = new Enchantment(0, 0);
     } else {
       this.enchantment = MapperEnchantment.toEnchantment(weapon.enchantment);
     }

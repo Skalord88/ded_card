@@ -21,7 +21,7 @@ public class SubRaceDTO {
   public String avatarUrl;
   public Set<ModifierDTO> modifiers;
   public Set<FeatsDTO> raceFeats;
-  public int levelAdjustment;
+  public Integer levelAdjustment;
   public SizeDTO size;
   public Set<RegionBaseDTO> availableRegions;
 
@@ -33,7 +33,8 @@ public class SubRaceDTO {
     this.modifiers =
       MapperModifierBonus.toListModifierDTO(subRace.getModifiers());
     this.raceFeats = MapperFeatsDTO.toFeatsSetDTO(subRace.getSubRaceFeats());
-    this.levelAdjustment = subRace.getLevelAdjustment();
+    this.levelAdjustment =
+      subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
     this.availableRegions =
       MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
