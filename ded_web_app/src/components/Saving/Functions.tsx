@@ -18,10 +18,6 @@ export function CountSavingThrowFromClassPc(
     sT.fortitude += 0.5 * (cl.level - 1);
     sT.reflex += 0.5 * (cl.level - 1);
     sT.will += 0.5 * (cl.level - 1);
-
-    sT.fortitude = Math.floor(sT.fortitude);
-    sT.reflex = Math.floor(sT.reflex);
-    sT.will = Math.floor(sT.will);
   });
 
   return sT;

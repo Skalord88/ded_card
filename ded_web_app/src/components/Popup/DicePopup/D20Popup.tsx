@@ -37,7 +37,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
         {modifiers.map((mod, index) => (
           <p key={index} style={{ color: "yellow" }}>
             {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
-            {mod.targets.length > 0? "vs " + FormattingText(mod.targets.toString()) : null}
+            {mod.targets.length > 0? "vs " + FormattingText(mod.targets[1]? mod.targets[1] + ', ' : '' + mod.targets[0]) : null}
           </p>
         ))}
       </span>

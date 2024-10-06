@@ -73,13 +73,13 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
     (classe) => classe.classType !== 1
   );
 
-  let exp = 0
-  for (let i = 0; i < totLv; i++){
-    exp = exp + (i * 1000)
+  let exp = 0;
+  for (let i = 0; i < totLv; i++) {
+    exp = exp + i * 1000;
   }
-  let expNext = 0
-  for (let i = 1; i <= totLv; i++){
-    expNext = expNext + (i * 1000)
+  let expNext = 0;
+  for (let i = 1; i <= totLv; i++) {
+    expNext = expNext + i * 1000;
   }
 
   return (
@@ -98,16 +98,15 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         {char.race.levelAdjustment > 0 ? (
           <p>{char.race.subRacesName + " " + char.race.levelAdjustment}</p>
         ) : null}
-        {char.archetypes.map(arch => (
-          arch.levelAdjustment > 0?
-          <p>{arch.archetypeName + " " + arch.levelAdjustment}</p> : null
-        ))}
+        {char.archetypes.map((arch) =>
+          arch.levelAdjustment > 0 ? (
+            <p>{arch.archetypeName + " " + arch.levelAdjustment}</p>
+          ) : null
+        )}
         {cl.map((classe, index) => {
           return (
             <>
-              <p key={index}>
-                {classe.className + " " + classe.level}
-              </p>
+              <p key={index}>{classe.className + " " + classe.level}</p>
             </>
           );
         })}
@@ -157,34 +156,38 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({
 }) => {
   return (
     <>
+    <div>
       <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
-      <p>
-        bs atk bns: {SignAndCount([bab]).sign}
-        {SignAndCount([bab]).number}
-      </p>
-      <p>
-        <D20Popup textOrWeapon={"grapple: "} value={grapple} modifiers={[]} />
-        {SignNumber(grapple)}
-        {grapple}
-      </p>
-      <p>
-        <D20Popup
-          textOrWeapon={"STR att: "}
-          value={strenghtAtt}
-          modifiers={[]}
-        />
-        {SignNumber(strenghtAtt)}
-        {strenghtAtt}
-      </p>
-      <p>
-        <D20Popup
-          textOrWeapon={"DEX att: "}
-          value={dextrityAtt}
-          modifiers={[]}
-        />
-        {SignNumber(dextrityAtt)}
-        {dextrityAtt}
-      </p>
+      
+        <p>
+          bs atk bns: {SignAndCount([bab]).sign}
+          {SignAndCount([bab]).number}
+        </p>
+        <p>
+          <D20Popup textOrWeapon={"grapple: "} value={grapple} modifiers={[]} />
+          {SignNumber(grapple)}
+          {grapple}
+        </p>
+
+        <p>
+          <D20Popup
+            textOrWeapon={"STR att: "}
+            value={strenghtAtt}
+            modifiers={[]}
+          />
+          {SignNumber(strenghtAtt)}
+          {strenghtAtt}
+        </p>
+        <p>
+          <D20Popup
+            textOrWeapon={"DEX att: "}
+            value={dextrityAtt}
+            modifiers={[]}
+          />
+          {SignNumber(dextrityAtt)}
+          {dextrityAtt}
+        </p>
+      </div>
     </>
   );
 };

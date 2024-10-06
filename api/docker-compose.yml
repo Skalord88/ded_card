@@ -16,9 +16,9 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
 
   api:
-    # image: api:latest
+    image: api:latest
     
-    image: skalord88/api:latest
+    # image: skalord88/api:latest
     # restart: always
     depends_on:
       - db

@@ -181,7 +181,51 @@ export const Show = () => {
 
   return (
     <>
-      {char ? (
+      {window.innerWidth <= 768 ? (
+        <>
+          <DeleteButton url={urlChar} />
+          <CharacterData char={char} />
+          <AbilitysComponent abilitys={abilitys} />
+          <ClassExpGold char={char} />
+          <BaseAttack
+            bab={adjBab}
+            grapple={grapple}
+            strenghtAtt={strenghtAtt}
+            dextrityAtt={dextrityAtt}
+          />
+          <Initiative initiativeDex={dextrity} initiativeMod={initiativeMod} />
+          <SavingThrowComponent
+            char={char}
+            abilitys={abilitys}
+            modifications={modifications}
+          />
+          <HpComponent char={char} abilitys={abilitys} />
+          <CharacterArmor char={char} armorModifiers={armorModifiers} />
+          <MapOfAttackComponent
+            attacks={attacks}
+            bab={adjBab}
+            strenght={strenght}
+            strenghtAtt={strenghtAtt}
+            dextrityAtt={dextrityAtt}
+            specific={[
+              specificBab,
+              specificDmg,
+              specificCrit,
+              specificFavEnemy
+            ]}
+            specificFghFeats={specificFghFeats}
+          />
+          <InventoryComponent inventory={inventory} carrying={carrying} />
+          <SkillShowComponent
+            key={"skillsTable"}
+            char={char}
+            abilitys={abilitys}
+            modifications={modifications}
+          />
+          <SpeedComponent speed={speed} />
+          <FeatsComponent feats={feats} />
+          </>
+      ) : (
         <>
           <div
             style={{
@@ -361,8 +405,6 @@ export const Show = () => {
             </div>
           </div>
         </>
-      ) : (
-        <></>
       )}
     </>
   );

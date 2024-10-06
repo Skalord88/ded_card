@@ -1,6 +1,4 @@
 import { Abilitys } from "./Abilitys/Interface";
-import { FormattingText } from "./Formatting/Function";
-import { BonusAbilities, SignAndCount } from "./functions";
 import { CharacterPc, savingThrows } from "./interfaces";
 import {
   FindInMoreLengthModifier,
@@ -10,7 +8,7 @@ import { Modifiers } from "./Modifiers/ModifierInterface";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { FindAllAdjLevel } from "./Race/Function";
 import { CountSavingThrowFromClassPc } from "./Saving/Functions";
-import { Saving } from "./Saving/Saving";
+import { Saving, SavingProps } from "./Saving/Saving";
 
 export type SavingThrowComponentProps = {
   char: CharacterPc;
@@ -23,142 +21,87 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   abilitys,
   modifications
 }) => {
-  const lvAdjsaving: number = FindAllAdjLevel(char)
+  const lvAdjsaving: number = FindAllAdjLevel(char);
   const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList);
   const savingBonusAll: number = FindInOneLengthModifier(
     modifications,
     "SAVING"
   );
-  const saving = Saving(abilitys, 
-    {fortitude: sT.fortitude + Math.floor(lvAdjsaving * 0.5),
-      reflex: sT.reflex + Math.floor(lvAdjsaving * 0.5),
-      will: sT.will + Math.floor(lvAdjsaving * 0.5)
+  const saving: SavingProps[] = Saving(
+    abilitys,
+    {
+      fortitude: Math.floor(sT.fortitude + lvAdjsaving * 0.5),
+      reflex: Math.floor(sT.reflex + lvAdjsaving * 0.5),
+      will: Math.floor(sT.will + lvAdjsaving * 0.5)
     },
-     savingBonusAll, modifications)
+    savingBonusAll,
+    modifications
+  );
 
   const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
     modifications,
     "SAVING"
   );
+  const listOfSpellResistance: Modifiers[] = FindInMoreLengthModifier(
+    modifications,
+    "SPELL_RESISTANCE"
+  );
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
-      <div style={{ display: "grid" }}>
-        <div
-          style={{
-            gridColumn: 1,
-            gridRow: 1
-          }}
-        >
-          <p className="rpgui-center" style={{ display: "grid" }}>
-            <div></div>
-            <div>tot</div>
-            <div>val</div>
-            <div>abi</div>
-            <div>oth</div>
-            <div style={{ gridColumn: 6 }}></div>
 
-            <D20Popup
-              textOrWeapon="for: "
-              value={saving.forTot.number}
-              modifiers={listOfBonus}
-            />
-            <div style={{ backgroundColor: "grey" }}>
-              {saving.forTot.sign}
-              {saving.forTot.number}
-            </div>
-            <div>
-              {saving.for.sign}
-              {saving.for.number}
-            </div>
-            <div>
-              {saving.forAb.sign}
-              {saving.forAb.number}
-            </div>
-            <div>
-              {saving.forOther.sign}
-              {saving.forOther.number}
-            </div>
-            <div></div>
+      <SavingThrowOne save={saving[0]} listOfBonus={listOfBonus} />
+      <SavingThrowOne save={saving[1]} listOfBonus={listOfBonus} />
+      <SavingThrowOne save={saving[2]} listOfBonus={listOfBonus} />
 
-            <D20Popup
-              key={saving.idRef}
-              textOrWeapon="ref: "
-              value={saving.refTot.number}
-              modifiers={listOfBonus}
-            />
-            <div style={{ backgroundColor: "grey" }}>
-              {saving.refTot.sign}
-              {saving.refTot.number}
-            </div>
-            <div>
-              {saving.ref.sign}
-              {saving.ref.number}
-            </div>
-            <div>
-              {saving.refAb.sign}
-              {saving.refAb.number}
-            </div>
-            <div>
-              {saving.refOther.sign}
-              {saving.refOther.number}
-            </div>
-
-            <div></div>
-
-            <D20Popup
-              key={saving.idWill}
-              textOrWeapon="will: "
-              value={saving.willTot.number}
-              modifiers={listOfBonus}
-            />
-            <div style={{ backgroundColor: "grey" }}>
-              {saving.willTot.sign}
-              {saving.willTot.number}
-            </div>
-            <div>
-              {saving.will.sign}
-              {saving.will.number}
-            </div>
-            <div>
-              {saving.willAb.sign}
-              {saving.willAb.number}
-            </div>
-            <div>
-              {saving.willOther.sign}
-              {saving.willOther.number}
-            </div>
-            <div></div>
-          </p>
-        </div>
-        <div
-          className="rpgui-container-framed-grey"
-          style={{
-            gridColumn: 2,
-            gridRow: "1 / span 2"
-          }}
-        >
-          <p>Special:</p>
-          {listOfBonus ? (
-            <>
-              {listOfBonus.map((mod) => {
-                return (
-                  <p>
-                    {FormattingText(mod.targets[0])}
-                    {" - " + FormattingText(mod.targets[1])} {mod.bonus}
-                  </p>
-                );
-              })}
-            </>
-          ) : (
-            <></>
-          )}
-        </div>
-      </div>
-      <div>
-        <p>Spell Resistence:</p>
+      <div style={{ display: "flex" }}>
+        <p>
+          Spell Resistence:{" "}
+          {listOfSpellResistance.map((sR) => (
+            <p>{sR.bonus}</p>
+          ))}
+        </p>
       </div>
     </>
+  );
+};
+
+export type SavingThrowOneProps = {
+  save: SavingProps;
+  listOfBonus: Modifiers[];
+};
+
+export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
+  save,
+  listOfBonus
+}) => {
+  return (
+    <div style={{ display: "flex" }}>
+      <p>
+        <D20Popup
+          key={save.id}
+          textOrWeapon={save.text + ":"}
+          value={save.tot.number}
+          modifiers={listOfBonus}
+        />
+      </p>
+      <p>
+        {save.tot.sign}
+        {save.tot.number}
+      </p>
+      <p>
+        ({save.save.sign}
+        {save.save.number} save)
+      </p>
+      <p>
+        ({save.ab.sign}
+        {save.ab.number} ab)
+      </p>
+      <p>
+        ({save.other.sign}
+        {save.other.number} oth)
+      </p>
+    </div>
   );
 };

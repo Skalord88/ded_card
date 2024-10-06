@@ -42,5 +42,6 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({
         <Contact armorModifiers={armorModifiers} />
       </div>
     </>
+    
   );
 };

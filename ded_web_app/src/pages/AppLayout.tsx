@@ -12,30 +12,30 @@ export const AppLayout: React.FC = () => {
       >
         <div className="inner rpgui-container-framed">
           <header></header>
-          <div
+          <nav
             id="nav"
             className="rpgui-center rpgui-container-framed-golden-2"
           >
-            <nav>
-              <Link to="create">
-                <button className="rpgui-button">
-                  <p>Character creation</p>
-                </button>
-              </Link>
+            <Link to="create">
+              <button className="rpgui-button">
+                <p>Character creation</p>
+              </button>
+            </Link>
 
-              <Link to="list">
-                <button className="rpgui-button">
-                  <p>List of characters</p>
-                </button>
-              </Link>
+            <Link to="list">
+              <button className="rpgui-button">
+                <p>List of characters</p>
+              </button>
+            </Link>
 
-              <Link to="fight">
-                <button className="rpgui-button">
-                  <p>Fight!</p>
-                </button>
-              </Link>
-            </nav>
-          </div>
+            <Link to="fight">
+              <button className="rpgui-button">
+                <p>Fight!</p>
+              </button>
+            </Link>
+          </nav>
+          
+          
           <div id="body" className="rpgui-content-framed">
             <Outlet />
             <br></br>

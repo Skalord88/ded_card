@@ -27,7 +27,7 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
   const [modifiers, setModifiers] = useState<Modifiers[]>();
   const [noAbilitysMod, setNoAbilitysMod] = useState<Modifiers[]>([]);
   const [abilitys, setAbilitys] = useState<Abilitys>();
-  const [saving, setSaving] = useState<SavingProps>();
+  const [saving, setSaving] = useState<SavingProps[]>();
 
   useEffect(() => {
     if (race) {

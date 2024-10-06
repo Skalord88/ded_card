@@ -1,27 +1,35 @@
 import { Abilitys } from "../Abilitys/Interface";
 import { SignAndCount, BonusAbilities } from "../functions";
-import { CharacterPc, savingThrows, SignAndNumber } from "../interfaces";
+import { savingThrows, SignAndNumber } from "../interfaces";
 import { FindInOneLengthModifier } from "../Modifiers/Function";
 import { Modifiers } from "../Modifiers/ModifierInterface";
 
+// export type SavingProps = {
+//   idFor: number;
+//   for: SignAndNumber;
+//   forTot: SignAndNumber;
+//   forAb: SignAndNumber;
+//   forOther: SignAndNumber;
+//   ///
+//   idRef: number;
+//   ref: SignAndNumber;
+//   refTot: SignAndNumber;
+//   refAb: SignAndNumber;
+//   refOther: SignAndNumber;
+//   ///
+//   idWill: number;
+//   will: SignAndNumber;
+//   willTot: SignAndNumber;
+//   willAb: SignAndNumber;
+//   willOther: SignAndNumber;
+// };
 export type SavingProps = {
-  idFor: number;
-  for: SignAndNumber;
-  forTot: SignAndNumber;
-  forAb: SignAndNumber;
-  forOther: SignAndNumber;
-  ///
-  idRef: number;
-  ref: SignAndNumber;
-  refTot: SignAndNumber;
-  refAb: SignAndNumber;
-  refOther: SignAndNumber;
-  ///
-  idWill: number;
-  will: SignAndNumber;
-  willTot: SignAndNumber;
-  willAb: SignAndNumber;
-  willOther: SignAndNumber;
+  id: number;
+  text: string,
+  save: SignAndNumber;
+  tot: SignAndNumber;
+  ab: SignAndNumber;
+  other: SignAndNumber;
 };
 
 export const Saving = (
@@ -29,39 +37,46 @@ export const Saving = (
   sT: savingThrows,
   savingBonusAll: number,
   modifiers: Modifiers[]
-): SavingProps => {
-  return {
-    idFor: 1,
-    for: SignAndCount([sT.fortitude]),
-    forTot: SignAndCount([
-      sT.fortitude,
-      BonusAbilities(abilitys, "COS"),
-      savingBonusAll,
-      FindInOneLengthModifier(modifiers, "FORTITUDE")
-    ]),
-    forAb: SignAndCount([BonusAbilities(abilitys, "COS")]),
-    forOther: SignAndCount([savingBonusAll]),
-    ///
-    idRef: 2,
-    ref: SignAndCount([sT.reflex]),
-    refTot: SignAndCount([
-      sT.reflex,
-      BonusAbilities(abilitys, "DEX"),
-      savingBonusAll,
-      FindInOneLengthModifier(modifiers, "REFLEX")
-    ]),
-    refAb: SignAndCount([BonusAbilities(abilitys, "DEX")]),
-    refOther: SignAndCount([savingBonusAll]),
-    ///
-    idWill: 3,
-    will: SignAndCount([sT.will]),
-    willTot: SignAndCount([
-      sT.will,
-      BonusAbilities(abilitys, "WIS"),
-      savingBonusAll,
-      FindInOneLengthModifier(modifiers, "WILL")
-    ]),
-    willAb: SignAndCount([BonusAbilities(abilitys, "WIS")]),
-    willOther: SignAndCount([savingBonusAll])
-  };
+): SavingProps[] => {
+  return [
+    {
+      id: 1,
+      text: 'for',
+      save: SignAndCount([sT.fortitude]),
+      tot: SignAndCount([
+        sT.fortitude,
+        BonusAbilities(abilitys, "COS"),
+        savingBonusAll,
+        FindInOneLengthModifier(modifiers, "FORTITUDE")
+      ]),
+      ab: SignAndCount([BonusAbilities(abilitys, "COS")]),
+      other: SignAndCount([savingBonusAll])
+    },
+    {
+      id: 2,
+      text: 'ref',
+      save: SignAndCount([sT.reflex]),
+      tot: SignAndCount([
+        sT.reflex,
+        BonusAbilities(abilitys, "DEX"),
+        savingBonusAll,
+        FindInOneLengthModifier(modifiers, "REFLEX")
+      ]),
+      ab: SignAndCount([BonusAbilities(abilitys, "DEX")]),
+      other: SignAndCount([savingBonusAll])
+    },
+    {
+      id: 3,
+      text: 'will',
+      save: SignAndCount([sT.will]),
+      tot: SignAndCount([
+        sT.will,
+        BonusAbilities(abilitys, "WIS"),
+        savingBonusAll,
+        FindInOneLengthModifier(modifiers, "WILL")
+      ]),
+      ab: SignAndCount([BonusAbilities(abilitys, "WIS")]),
+      other: SignAndCount([savingBonusAll])
+    }
+  ];
 };

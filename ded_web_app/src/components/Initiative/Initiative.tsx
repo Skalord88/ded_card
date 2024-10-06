@@ -11,9 +11,9 @@ export const Initiative: React.FC<InitiativeProps> = ({
   initiativeMod
 }) => {
   const totInit: number = initiativeDex + initiativeMod;
-  const init: string =
-    SignAndCount([initiativeDex, initiativeMod]).sign +
-    (initiativeDex + initiativeMod);
+  // const init: string =
+  //   SignAndCount([initiativeDex, initiativeMod]).sign +
+  //   (initiativeDex + initiativeMod);
 
   return (
     <>

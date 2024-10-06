@@ -11,6 +11,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ feats }) => {
 
   return (
     <>
+      <h2 className="rpgui-container-framed-golden-2">Feats</h2>
       {featsOneTime.map((f) => (
         <p>
           <Popup
