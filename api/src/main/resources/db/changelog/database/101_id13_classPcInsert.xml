@@ -29,7 +29,7 @@
             <column name="character_card_id" value="100" />
             <column name="class_character_id" value="11" />
         </insert>
-            <!-- Rysio -->
+        <!-- Rysio -->
         <insert tableName="class_pc">
             <column name="level" value="10" />
             <column name="first_class" value="true" />
@@ -42,7 +42,7 @@
             <column name="character_card_id" value="101" />
             <column name="class_character_id" value="9" />
         </insert>
-            <!-- Niesia -->
+        <!-- Niesia -->
         <insert tableName="class_pc">
             <column name="level" value="7" />
             <column name="first_class" value="true" />
@@ -55,7 +55,28 @@
             <column name="first_class" value="true" />
             <column name="character_card_id" value="103" />
             <column name="class_character_id" value="3" />
-            </insert>
+        </insert>
+        <!-- Andrzej -->
+        <insert tableName="class_pc">
+            <column name="level" value="11" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="104" />
+            <column name="class_character_id" value="6" />
+        </insert>
+        <!-- Madzia -->
+        <insert tableName="class_pc">
+            <column name="level" value="10" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="105" />
+            <column name="class_character_id" value="11" />
+        </insert>
+        <!-- Mirek -->
+        <insert tableName="class_pc">
+            <column name="level" value="11" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="106" />
+            <column name="class_character_id" value="2" />
+        </insert>
 
     </changeSet>
 </databaseChangeLog>

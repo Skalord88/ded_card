@@ -25,19 +25,46 @@
         <insert tableName="backpack">
             <column name="inventory_id" value="102" />
             <column name="items_id" value="4" />
-            </insert>
-            <insert tableName="backpack">
+        </insert>
+        <insert tableName="backpack">
             <column name="inventory_id" value="102" />
             <column name="items_id" value="4" />
-            </insert>
+        </insert>
 
-            <insert tableName="backpack">
-                <column name="inventory_id" value="103" />
-                <column name="items_id" value="4" />
-                </insert>
-                <insert tableName="backpack">
-                <column name="inventory_id" value="103" />
-                <column name="items_id" value="4" />
-                </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="103" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="103" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="backpack">
+            <column name="inventory_id" value="104" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="104" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="backpack">
+            <column name="inventory_id" value="105" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="105" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="backpack">
+            <column name="inventory_id" value="106" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="backpack">
+            <column name="inventory_id" value="106" />
+            <column name="items_id" value="4" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

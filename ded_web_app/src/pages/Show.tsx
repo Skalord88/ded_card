@@ -73,7 +73,7 @@ export const Show = () => {
   ]);
 
   const modifications: Modifiers[] = CheckInAllModifications(char, feats);
-  
+
   const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
   const dextrity: number = BonusAbilities(abilitys, "DEX");
@@ -90,7 +90,7 @@ export const Show = () => {
 
   const adjLevel: number = FindAllAdjLevel(char);
 
-  const adjBab: number = Math.floor(bab + (adjLevel * adjClass.classBab))
+  const adjBab: number = Math.floor(bab + adjLevel * adjClass.classBab);
 
   const specificDmg: Modifiers[] = FindInMoreLengthModifier(modifications, [
     "WEAPON_SPECIALIZATION"
@@ -98,15 +98,14 @@ export const Show = () => {
   const specificCrit: Modifiers[] = FindInMoreLengthModifier(modifications, [
     "IMPROVED_CRITICAL"
   ]);
-  const specificFavEnemy: Modifiers[] = FindInMoreLengthModifier(modifications, 
+  const specificFavEnemy: Modifiers[] = FindInMoreLengthModifier(
+    modifications,
     "FAVORED_ENEMY"
   );
 
   const specificFghFeats: number[] = FindFightingFeats(char.featsList);
   const grapple: number =
-  adjBab +
-    BonusAbilities(char.abilitys, "STR") +
-    FindInOneLengthModifier(modifications, "GRAPPLE");
+    adjBab + strenght + FindInOneLengthModifier(modifications, "GRAPPLE");
   const strenghtAtt: number = adjBab + strenght;
   const dextrityAtt: number = adjBab + dextrity;
   const speed: number = FindInOneLengthModifier(modifications, "SPEED");
@@ -304,7 +303,12 @@ export const Show = () => {
                 strenght={strenght}
                 strenghtAtt={strenghtAtt}
                 dextrityAtt={dextrityAtt}
-                specific={[specificBab, specificDmg, specificCrit, specificFavEnemy]}
+                specific={[
+                  specificBab,
+                  specificDmg,
+                  specificCrit,
+                  specificFavEnemy
+                ]}
                 specificFghFeats={specificFghFeats}
               />
             </div>

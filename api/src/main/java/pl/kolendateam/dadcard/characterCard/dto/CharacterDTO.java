@@ -3,7 +3,6 @@ package pl.kolendateam.dadcard.characterCard.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -45,8 +44,6 @@ public class CharacterDTO implements Serializable {
   public HashMap<EnumClass, Integer[]> magicPerDay;
   public HashMap<EnumClass, Integer[]> magicKnown;
   public ArrayList<BookDTO> books;
-  public int levelAdjustment;
-  public int effectiveCharacterLv;
   public int experience;
   public int treasure;
 

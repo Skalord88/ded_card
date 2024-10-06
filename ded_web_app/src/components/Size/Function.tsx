@@ -2,6 +2,7 @@ import { Weapon } from "../interfaces";
 import { Size } from "./Interfaces";
 
 export function reSizeWeapon(size: Size, weapon: Weapon): Weapon {
+  console.log(weapon)
   let updatedWeapon: Weapon = { ...weapon };
 
   if (updatedWeapon.type !== null) {

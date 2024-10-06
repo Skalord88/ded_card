@@ -30,9 +30,9 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
     "SAVING"
   );
   const saving = Saving(abilitys, 
-    {fortitude: sT.fortitude + (lvAdjsaving * 0.5),
-      reflex: sT.reflex + (lvAdjsaving * 0.5),
-      will: sT.will + (lvAdjsaving * 0.5)
+    {fortitude: sT.fortitude + Math.floor(lvAdjsaving * 0.5),
+      reflex: sT.reflex + Math.floor(lvAdjsaving * 0.5),
+      will: sT.will + Math.floor(lvAdjsaving * 0.5)
     },
      savingBonusAll, modifications)
 

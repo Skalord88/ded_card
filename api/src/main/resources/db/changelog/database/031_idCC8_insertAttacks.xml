@@ -26,22 +26,52 @@
 
         <insert tableName="attacks">
             <column name="id" value="102" />
-            <column name="attacks_id_onefirst" value="5" />
-            <column name="attacks_id_onesecond" value="5" />
-            <column name="attacks_id_oneadditional" value="5" />
-            <column name="attacks_id_twofirst" value="5" />
-            <column name="attacks_id_twosecond" value="5" />
-            <column name="attacks_id_twoadditional" value="5" />
-            </insert>
+            <column name="attacks_id_onefirst" value="57" />
+            <column name="attacks_id_onesecond" value="1" />
+            <column name="attacks_id_oneadditional" value="58" />
+            <column name="attacks_id_twofirst" value="59" />
+            <column name="attacks_id_twosecond" value="1" />
+            <column name="attacks_id_twoadditional" value="1" />
+        </insert>
 
-            <insert tableName="attacks">
-                <column name="id" value="103" />
-                <column name="attacks_id_onefirst" value="5" />
-                <column name="attacks_id_onesecond" value="1" />
-                <column name="attacks_id_oneadditional" value="1" />
-                <column name="attacks_id_twofirst" value="5" />
-                <column name="attacks_id_twosecond" value="1" />
-                <column name="attacks_id_twoadditional" value="1" />
-                </insert>
+        <insert tableName="attacks">
+            <column name="id" value="103" />
+            <column name="attacks_id_onefirst" value="57" />
+            <column name="attacks_id_onesecond" value="55" />
+            <column name="attacks_id_oneadditional" value="8" />
+            <column name="attacks_id_twofirst" value="61" />
+            <column name="attacks_id_twosecond" value="55" />
+            <column name="attacks_id_twoadditional" value="8" />
+        </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="104" />
+            <column name="attacks_id_onefirst" value="1" />
+            <column name="attacks_id_onesecond" value="1" />
+            <column name="attacks_id_oneadditional" value="1" />
+            <column name="attacks_id_twofirst" value="1" />
+            <column name="attacks_id_twosecond" value="1" />
+            <column name="attacks_id_twoadditional" value="1" />
+        </insert>
+        
+        <insert tableName="attacks">
+            <column name="id" value="105" />
+            <column name="attacks_id_onefirst" value="62" />
+            <column name="attacks_id_onesecond" value="1" />
+            <column name="attacks_id_oneadditional" value="6" />
+            <column name="attacks_id_twofirst" value="16" />
+            <column name="attacks_id_twosecond" value="16" />
+            <column name="attacks_id_twoadditional" value="1" />
+        </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="106" />
+            <column name="attacks_id_onefirst" value="62" />
+            <column name="attacks_id_onesecond" value="5" />
+            <column name="attacks_id_oneadditional" value="6" />
+            <column name="attacks_id_twofirst" value="63" />
+            <column name="attacks_id_twosecond" value="1" />
+            <column name="attacks_id_twoadditional" value="5" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

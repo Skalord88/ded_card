@@ -36,7 +36,7 @@ export const WeaponDamageDice: React.FC<WeaponDamageDiceProps> = ({
       {totalDamage.map((d) => {
         return CriticalHit(weapon.critical).includes(d.dice) ? (
           <p style={{ color: "red" }}>
-            {d.text} {d.crit}
+            {d.text} {weapon.critical} {d.crit}
           </p>
         ) : (
           <p>

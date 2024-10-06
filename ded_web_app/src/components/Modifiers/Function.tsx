@@ -5,52 +5,37 @@ import { Modifiers } from "./ModifierInterface";
 export function FindAllModifications(
   modifications: Modifiers[][]
 ): Modifiers[] {
-  return modifications.reduce((lists, modList) => lists.concat(modList), []);
-}
-
-export function CheckInAllModifications(char: CharacterPc, feats: Feat[]): Modifiers[] {
-
-  const allModFeats: Modifiers[] = feats.flatMap(f => f.modifiers);
-
-  // let modifiersFromClasses: Modifiers[] = [];
-  // char.classPcList.forEach((cl) =>
-  //   cl.feats.forEach((f) =>
-  //     f.level <= cl.level
-  //       ? f.feat.modifiers.forEach((mod) => modifiersFromClasses.push(mod))
-  //       : []
-  //   )
-  // );
-
-  // const modifiersFromFeats: Modifiers[] = char.featsList.reduce<Modifiers[]>(
-  //   (list, feat) =>
-  //     list.concat(
-  //       feat.feat.modifiers.flatMap((f) =>
-  //         f.targets.length > 3
-  //           ? [{ modifier: f.modifier, bonus: f.bonus, targets: feat.selected }]
-  //           : []
-  //       )
-  //     ),
-  //   []
-  // );
-
-  const modifiersFromArchetypes: Modifiers[] = char.archetypes.reduce<
-    Modifiers[]
-  >(
-    (list, archetype) =>
-      list.concat(...archetype.modifiers.flatMap((mod) => (mod ? mod : []))),
+  return modifications.reduce(
+    (lists, modList) => (modList ? lists.concat(modList) : []),
     []
   );
+}
+
+export function CheckInAllModifications(
+  char: CharacterPc,
+  feats: Feat[]
+): Modifiers[] {
+  let allModFeats: Modifiers[] = [];
+  let modifiersFromArchetypes: Modifiers[] = [];
+
+  if (feats !== null && feats.length > 0)
+    allModFeats = feats.flatMap((f) => (f.modifiers ? f.modifiers : []));
+
+  if (char.archetypes !== null && char.archetypes.length > 0)
+    modifiersFromArchetypes = char.archetypes.reduce<Modifiers[]>(
+      (list, archetype) =>
+        list.concat(...archetype.modifiers.flatMap((mod) => (mod ? mod : []))),
+      []
+    );
 
   const modifiersFromCharacter: Modifiers[] = FindAllModifications([
-    char.race.size.modifiers,
-    char.race.modifiers,
-    char.race.race.modifiers,
+    char.race.size.modifiers.length > 0? char.race.size.modifiers : [],
+    char.race.modifiers.length > 0? char.race.modifiers : [],
+    char.race.race.modifiers.length > 0? char.race.race.modifiers : [],
     modifiersFromArchetypes,
     allModFeats,
-    // modifiersFromFeats,
-    // modifiersFromClasses,
-    char.inventory.armor.modifiers,
-    char.inventory.shield.modifiers
+    char.inventory.armor.modifiers.length > 0? char.inventory.armor.modifiers : [],
+    char.inventory.shield.modifiers.length > 0? char.inventory.shield.modifiers : []
   ]);
 
   return modifiersFromCharacter;

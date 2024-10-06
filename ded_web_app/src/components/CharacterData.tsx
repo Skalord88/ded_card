@@ -73,6 +73,15 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
     (classe) => classe.classType !== 1
   );
 
+  let exp = 0
+  for (let i = 0; i < totLv; i++){
+    exp = exp + (i * 1000)
+  }
+  let expNext = 0
+  for (let i = 1; i <= totLv; i++){
+    expNext = expNext + (i * 1000)
+  }
+
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Class and Experience</h2>
@@ -80,9 +89,8 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
       <div>
         <p>LEP: {totLv}</p>
         <p>
-          exp: {char.experience} / next lv:{" "}
-          {(totLv + 1) * 1000 - char.experience}
-        </p>{" "}
+          {exp} xp / {expNext - exp} to / {expNext} next
+        </p>
       </div>
       <div
       // style={{ display: "grid" }}

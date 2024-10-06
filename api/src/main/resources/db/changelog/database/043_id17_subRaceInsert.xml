@@ -112,6 +112,10 @@
             &quot;bonus&quot; : 30,            
             &quot;targets&quot; : []            
             },{
+            &quot;modifier&quot; : &quot;NATURAL_ARMOR_BONUS&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            },{
             &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,            
             &quot;bonus&quot; : 11,            
             &quot;targets&quot; : [&quot;LEVEL&quot;]            
@@ -165,6 +169,23 @@
             &quot;modifier&quot; : &quot;SAVING&quot;,            
             &quot;bonus&quot; : 2,            
             &quot;targets&quot; : [&quot;WATER&quot;]            
+            }
+            ]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="sub_race_name" value="Star Elf" /> <!-- 9 -->
+            <column name="race_id" value="1" />
+            <column name="size_id" value="5" />
+            <column name="modifiers" value="[
+            {
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,            
+            &quot;bonus&quot; : -2,            
+            &quot;targets&quot; : []            
+            },{
+            &quot;modifier&quot; : &quot;CHARISMA&quot;,            
+            &quot;bonus&quot; : 2,            
+            &quot;targets&quot; : []            
             }
             ]" />
             <column name="avatar_url" value="address value" />

@@ -1,6 +1,6 @@
 import { DiceText } from "../../Dice/Functions";
-import { WeaponLight, SignAndCount } from "../../functions";
-import { Weapon, Position } from "../../interfaces";
+import { SignAndCount, WeaponLight } from "../../functions";
+import { Position, Weapon } from "../../interfaces";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
 
@@ -47,13 +47,14 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
     if (
       !position.pose &&
       type.includes("two hands") &&
-      specificFghFeats.includes(116 && 117 && 118)
+      [116, 117, 118].every(val => specificFghFeats.includes(val))
+
     )
       return [attacks[0], attacks[1], attacks[2]];
     if (
       !position.pose &&
       type.includes("two hands") &&
-      specificFghFeats.includes(116 && 117)
+      [116, 117].every(val => specificFghFeats.includes(val))
     )
       return [attacks[0], attacks[1]];
     if (!position.pose && type.includes("two hands")) return [attacks[0]];

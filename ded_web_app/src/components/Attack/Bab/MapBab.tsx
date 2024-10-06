@@ -97,7 +97,7 @@ export const MapBab: React.FC<MapBabProps> = ({
           </>
         )}
       </div>
-      <div style={{ gridColumn: 2, gridRow: 1 }}>
+      <div style={{ gridColumn: 1, gridRow: 3 }}>
         {WeaponRanged(weapon) || WeaponThrown(weapon) ? (
           <AttackOptions
             type="distance"
@@ -133,7 +133,7 @@ export const MapBab: React.FC<MapBabProps> = ({
           </>
         )}
       </div>
-      <div style={{ gridColumn: 2, gridRow: 2 }}>
+      <div style={{ gridColumn: 1, gridRow: 4 }}>
         {WeaponTwoHanded(weapon) ? null : WeaponRanged(weapon) ||
           WeaponThrown(weapon) ? (
           <AttackOptions

@@ -5,39 +5,66 @@
 
     <changeSet id="310" author="oscar">
         <insert tableName="hands">
-            <column name="inventory_id" value="100"/>
-            <column name="items_id" value="4"/>
+            <column name="inventory_id" value="100" />
+            <column name="items_id" value="4" />
         </insert>
         <insert tableName="hands">
-            <column name="inventory_id" value="100"/>
-            <column name="items_id" value="4"/>
-        </insert>
-
-        <insert tableName="hands">
-            <column name="inventory_id" value="101"/>
-            <column name="items_id" value="4"/>
-        </insert>
-        <insert tableName="hands">
-            <column name="inventory_id" value="101"/>
-            <column name="items_id" value="4"/>
+            <column name="inventory_id" value="100" />
+            <column name="items_id" value="4" />
         </insert>
 
         <insert tableName="hands">
-            <column name="inventory_id" value="102"/>
-            <column name="items_id" value="4"/>
-            </insert>
-            <insert tableName="hands">
-            <column name="inventory_id" value="102"/>
-            <column name="items_id" value="4"/>
-            </insert>
+            <column name="inventory_id" value="101" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="101" />
+            <column name="items_id" value="4" />
+        </insert>
 
-            <insert tableName="hands">
-                <column name="inventory_id" value="103"/>
-                <column name="items_id" value="4"/>
-                </insert>
-                <insert tableName="hands">
-                <column name="inventory_id" value="103"/>
-                <column name="items_id" value="4"/>
-                </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="102" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="102" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="hands">
+            <column name="inventory_id" value="103" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="103" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="hands">
+            <column name="inventory_id" value="104" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="104" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="hands">
+            <column name="inventory_id" value="105" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="105" />
+            <column name="items_id" value="4" />
+        </insert>
+
+        <insert tableName="hands">
+            <column name="inventory_id" value="106" />
+            <column name="items_id" value="4" />
+        </insert>
+        <insert tableName="hands">
+            <column name="inventory_id" value="106" />
+            <column name="items_id" value="4" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
