@@ -11,13 +11,13 @@ export function CalculateArmorInChar(
   armorList.push({
     sign: SignAndCount([armorModifiers.armor]).sign,
     bonus: armorModifiers.armor,
-    text: "armor,",
+    text: "armor",
     item: char.inventory.armor.name
   });
   armorList.push({
     sign: SignAndCount([armorModifiers.shiled]).sign,
     bonus: armorModifiers.shiled,
-    text: "shield,",
+    text: "shield",
     item: char.inventory.shield.name
   });
   armorList.push({
@@ -29,7 +29,7 @@ export function CalculateArmorInChar(
   armorList.push({
     sign: SignAndCount([armorModifiers.size]).sign,
     bonus: armorModifiers.size,
-    text: "size,",
+    text: "size",
     item: FormattingText(char.race.size.size.toString())
   });
   armorList.push({

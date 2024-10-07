@@ -12,16 +12,14 @@ export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
         style={{ color: "orange" }}
       >
         {study ? (
-          <>
+          <p>
             {Math.floor(
               study.rank +
               abilitys +
               bonus
               )}{" "}
-          </>
-        ) : (
-          <></>
-        )}
+          </p>
+        ) : <p>0</p>}
       </div>
     </>
   );

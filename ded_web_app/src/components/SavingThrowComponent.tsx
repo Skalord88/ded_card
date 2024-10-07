@@ -50,18 +50,37 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "auto auto auto auto auto"
+        }}
+      >
+        <div>
+          <p></p>
+        </div>
+        <div>
+          <p>tot</p>
+        </div>
+        <div>
+          <p>save</p>
+        </div>
+        <div>
+          <p>ab</p>
+        </div>
+        <div>
+          <p>other</p>
+        </div>
 
-      <SavingThrowOne save={saving[0]} listOfBonus={listOfBonus} />
-      <SavingThrowOne save={saving[1]} listOfBonus={listOfBonus} />
-      <SavingThrowOne save={saving[2]} listOfBonus={listOfBonus} />
-
+        <SavingThrowOne save={saving[0]} listOfBonus={listOfBonus} />
+        <SavingThrowOne save={saving[1]} listOfBonus={listOfBonus} />
+        <SavingThrowOne save={saving[2]} listOfBonus={listOfBonus} />
+      </div>
       <div style={{ display: "flex" }}>
-        <p>
-          Spell Resistence:{" "}
           {listOfSpellResistance.map((sR) => (
-            <p>{sR.bonus}</p>
+            sR.bonus > 0?
+            <p>Spell Resistence: {sR.bonus}</p> : null
           ))}
-        </p>
       </div>
     </>
   );
@@ -77,31 +96,41 @@ export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
   listOfBonus
 }) => {
   return (
-    <div style={{ display: "flex" }}>
-      <p>
-        <D20Popup
-          key={save.id}
-          textOrWeapon={save.text + ":"}
-          value={save.tot.number}
-          modifiers={listOfBonus}
-        />
-      </p>
-      <p>
-        {save.tot.sign}
-        {save.tot.number}
-      </p>
-      <p>
-        ({save.save.sign}
-        {save.save.number} save)
-      </p>
-      <p>
-        ({save.ab.sign}
-        {save.ab.number} ab)
-      </p>
-      <p>
-        ({save.other.sign}
-        {save.other.number} oth)
-      </p>
-    </div>
+    <>
+      <div>
+        <p>
+          <D20Popup
+            key={save.id}
+            textOrWeapon={save.text + ":"}
+            value={save.tot.number}
+            modifiers={listOfBonus}
+          />
+        </p>
+      </div>
+      <div>
+        <p style={{color: "orange"}}>
+          {save.tot.sign}
+          {save.tot.number}
+        </p>
+      </div>
+      <div>
+        <p>
+          {save.save.sign}
+          {save.save.number}
+        </p>
+      </div>
+      <div>
+        <p>
+          {save.ab.sign}
+          {save.ab.number}
+        </p>
+      </div>
+      <div>
+        <p>
+          {save.other.sign}
+          {save.other.number}
+        </p>
+      </div>
+    </>
   );
 };

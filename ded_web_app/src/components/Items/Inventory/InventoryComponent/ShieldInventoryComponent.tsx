@@ -1,47 +1,67 @@
-import { FormattingText } from "../../../Formatting/Function"
-import { SignAndCount } from "../../../functions"
-import { Shield } from "../../../interfaces"
-import { Popup } from "../../../Popup/Popup"
+import { FormattingText } from "../../../Formatting/Function";
+import { SignAndCount } from "../../../functions";
+import { Shield } from "../../../interfaces";
+import { Popup } from "../../../Popup/Popup";
 
 export type ShieldInventoryComponentProps = {
-    shield: Shield
-  }
-  
-  export const ShieldInventoryComponent: React.FC<ShieldInventoryComponentProps> = ({
-    shield
-  }) => {
-    return (
-      <>
-      <div style={{ gridColumn: 1 }}>
-            <p style={{backgroundColor: 'grey'}}>Shield</p>
-              <p><Popup text={shield.name} popText={shield.description} /></p>
-          </div>
-          <div style={{ gridColumn: 2 }}>
-            <p style={{backgroundColor: 'grey'}}>Armor Type</p>
-            <p>{FormattingText(shield.armorType)}</p>
-          </div>
-          <div style={{ gridColumn: 3 }}>
-            <p style={{backgroundColor: 'grey'}}>Enchantment</p>
-            <p>{SignAndCount([shield.enchantment.enchantment]).sign}{shield.enchantment.enchantment}</p>
-          </div>
+  shield: Shield;
+};
 
-          <div style={{ gridColumn: 5 }}>
-            <p style={{backgroundColor: 'grey'}}>Material</p>
-            <p>{shield.material}</p>
-          </div>
-          <div style={{ gridColumn: 6 }}>
-            <p style={{backgroundColor: 'grey'}}>Penality</p>
-            <p>{shield.penality}</p>
-          </div>
-          <div style={{ gridColumn: 7 }}>
-            <p style={{backgroundColor: 'grey'}}>Failure</p>
-            <p>{shield.failure}%</p>
-          </div>
-          <div style={{ gridColumn: 9 }}>
-            <p style={{backgroundColor: 'grey'}}>Weight</p>
-            <p>{shield.weight}</p>
-          </div>
-          </>
-    )
-  }
-  
+export const ShieldInventoryComponent: React.FC<
+  ShieldInventoryComponentProps
+> = ({ shield }) => {
+  return (
+    <>
+      <div style={{ gridColumn: 1 }}>
+        <p style={{ backgroundColor: "grey" }}>Shield</p>
+        <p>
+          <Popup text={shield.name} popText={shield.description} />
+        </p>
+      </div>
+      <div style={{ gridColumn: 2 }}>
+        <p style={{ backgroundColor: "grey" }}>Armor Type</p>
+        <p>{FormattingText(shield.armorType)}</p>
+      </div>
+      <div style={{ gridColumn: 3 }}>
+        <p style={{ backgroundColor: "grey" }}>Enchantment</p>
+        <p>
+          {SignAndCount([shield.enchantment.enchantment]).sign}
+          {shield.enchantment.enchantment}
+        </p>
+      </div>
+
+      <div style={{ gridColumn: 5 }}>
+        <p style={{ backgroundColor: "grey" }}>Material</p>
+        <p>{shield.material}</p>
+      </div>
+      <div style={{ gridColumn: 6 }}>
+        <p style={{ backgroundColor: "grey" }}>Penality</p>
+        <p>{shield.penality}</p>
+      </div>
+      <div style={{ gridColumn: 7 }}>
+        <p style={{ backgroundColor: "grey" }}>Failure</p>
+        <p>{shield.failure}%</p>
+      </div>
+      <div style={{ gridColumn: 9 }}>
+        <p style={{ backgroundColor: "grey" }}>Weight</p>
+        <p>{shield.weight}</p>
+      </div>
+    </>
+  );
+};
+export const MiniShieldInventoryComponent: React.FC<
+  ShieldInventoryComponentProps
+> = ({ shield }) => {
+  return (
+    <>
+      {shield.id === 3 ? null : (
+        <>
+          <p>
+            <Popup text={shield.name} popText={shield.description} />
+          </p>
+          <p></p>
+        </>
+      )}
+    </>
+  );
+};

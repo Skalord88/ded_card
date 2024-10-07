@@ -8,7 +8,7 @@ export const SkillAbiSkillsTableComponent: React.FC<OneSkill> = ({
   const color: string = AbilityBackgroundColor(skill.skillAbility)
   return (
     <>
-      <div className={color}>{abilitys}</div>
+      <div className={color} style={{ color: "white" }}>{abilitys}</div>
     </>
   );
 };

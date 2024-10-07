@@ -8,7 +8,7 @@ export type WeightInventoryComponentProps = {
     
     return (
       <>
-        <div style={{ gridColumn: '6 / span 3', textAlign: "right" }}>
+        <div style={{ textAlign: "right" }}>
           <p>{carrying[0]}, {carrying[1]}lb</p>
         </div>
       </>

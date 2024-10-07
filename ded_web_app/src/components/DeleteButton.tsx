@@ -12,14 +12,15 @@ export const DeleteButton: React.FC<ButtonText> = ({ url }) => {
     await axios.delete(url + "/" + charId + "/remove");
   };
   return (
+    <div className="rpgui-center">
     <Link to={"/list"}>
       <button
         className="rpgui-button"
-        style={{ width: "100%" }}
         onClick={() => handleDelete()}
       >
         <p>DELETE</p>
       </button>
     </Link>
+    </div>
   );
 };

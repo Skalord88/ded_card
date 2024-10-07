@@ -33,35 +33,6 @@
     padding-right: 35px;
 }
 
-/* @media (max-width: 900px) {
-    .rpgui-button {
-        font-size: 80%;
-		padding: 10px;
-    }
-}
-
-@media (max-width: 600px) {
-    .rpgui-button {
-        font-size: 65%;
-		padding: 6px;
-    }
-} */
-
-@media (max-width: 768px) {
-    .mobile-flex {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: stretch;
-    }
-  
-    .mobile-flex > div {
-      width: 100%;
-      margin-bottom: 10px;
-    }
-  }
-  
-
 /* button hover */
 .rpgui-button.hover,
 .rpgui-button:hover {

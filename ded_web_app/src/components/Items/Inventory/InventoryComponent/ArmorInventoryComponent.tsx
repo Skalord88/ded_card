@@ -7,7 +7,7 @@ export type ArmorInventoryComponentProps = {
     armor: Armor
   }
   
-  export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = ({
+export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = ({
     armor
   }) => {
     const armorSpeed = (armor: Armor): number => {
@@ -55,6 +55,17 @@ export type ArmorInventoryComponentProps = {
             <p style={{backgroundColor: 'grey'}}>Weight</p>
             <p>{armor.weight}</p>
           </div>
+          </>
+    )
+  }
+export const MiniArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = ({
+    armor
+  }) => {
+    return (
+      <>
+            <p><Popup text={armor.name} popText={armor.description} /></p>
+            <p>{armor.maxDex}</p>
+            <p>{armor.penality}</p>
           </>
     )
   }

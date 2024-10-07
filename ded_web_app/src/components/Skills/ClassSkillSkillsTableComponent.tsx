@@ -8,14 +8,15 @@ export const ClassSkillSkillsTableComponent: React.FC<OneSkill> = ({
       <>
         {skill.classSkill ? (
           <div key={skill.idSkill} className='rpgui-container-framed-grey-mini'>
-            {">"}
+            <p>{">"}</p>
           </div>
         ) : (
           <div
             key={skill.idSkill}
             className='rpgui-container-framed-grey-mini'
           ></div>
-        )}
+        )
+        }
       </>
     );
   };

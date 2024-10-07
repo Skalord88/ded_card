@@ -12,8 +12,9 @@ export type SkillShowComponentProps = {
 };
 
 export type ListModSkillsStudies = {
-  listSkills: Modifiers[],
-  listStudies: Modifiers[]
+  listSkills: Modifiers[];
+  listStudies: Modifiers[];
+  penality: number
 };
 
 export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
@@ -22,8 +23,9 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
   modifications
 }) => {
   const listModSkillsStudies: ListModSkillsStudies = {
-    listSkills: FindInMoreLengthModifier(modifications, "SKILL")  || [],
-    listStudies: FindInMoreLengthModifier(modifications, "STUDY")  || []
+    listSkills: FindInMoreLengthModifier(modifications, "SKILL") || [],
+    listStudies: FindInMoreLengthModifier(modifications, "STUDY") || [],
+    penality: char.inventory.armor.penality + char.inventory.shield.penality
   };
 
   return (
@@ -34,44 +36,86 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
           gridTemplateColumns: "8% 50% 12% 10% 10% 10%"
         }}
       >
-        <div className="rpgui-container-framed-grey-mini">
-          <p>cs</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>Skill</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>tot</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>rnk</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>abi</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>bns</p>
-        </div>
-        {char.skillsList ? (
+        {window.innerWidth <= 768 ? (
           <>
-            {char.skillsList.map((skill: SkillProps, index: number) => {
-              return (
-                <>
-                  <SkillShowSkillsTableComponent
-                    key={index}
-                    indexSkill={index}
-                    skill={skill}
-                    indexStudy={null}
-                    study={null}
-                    abilitys={abilitys}
-                    modifiers={listModSkillsStudies}
-                  />
-                </>
-              );
-            })}
+            <div className="rpgui-container-framed-grey-mini">
+              <p></p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>Skill</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>tot</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>rk</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>ab</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>bn</p>
+            </div>
+            {char.skillsList ? (
+              <>
+                {char.skillsList.map((skill: SkillProps, index: number) => {
+                  return (
+                    <>
+                      <SkillShowSkillsTableComponent
+                        key={index}
+                        indexSkill={index}
+                        skill={skill}
+                        indexStudy={null}
+                        study={null}
+                        abilitys={abilitys}
+                        modifiers={listModSkillsStudies}
+                      />
+                    </>
+                  );
+                })}
+              </>
+            ) : null}
           </>
         ) : (
-          <></>
+          <>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>cs</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>Skill</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>tot</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>rnk</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>abi</p>
+            </div>
+            <div className="rpgui-container-framed-grey-mini">
+              <p>bns</p>
+            </div>
+            {char.skillsList ? (
+              <>
+                {char.skillsList.map((skill: SkillProps, index: number) => {
+                  return (
+                    <>
+                      <SkillShowSkillsTableComponent
+                        key={index}
+                        indexSkill={index}
+                        skill={skill}
+                        indexStudy={null}
+                        study={null}
+                        abilitys={abilitys}
+                        modifiers={listModSkillsStudies}
+                      />
+                    </>
+                  );
+                })}
+              </>
+            ) : null}
+          </>
         )}
       </div>
     </>

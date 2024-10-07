@@ -23,3 +23,25 @@ export function OneSkillModBonusNumber(
     0
   );
 }
+export function SkillsIsPenal(
+  skillName: string,
+  penalty: number
+): number {
+  if (skillName === 'Swim') {
+    return penalty * 2;
+  }
+
+  const penalizedSkills = [
+    'Balance',
+    'Climb',
+    'Escape Artist',
+    'Hide',
+    'Jump',
+    'Move Silently',
+    'Sleight Of Hand',
+    'Tumble'
+  ];
+
+  return penalizedSkills.includes(skillName) ? penalty : 0;
+}
+
