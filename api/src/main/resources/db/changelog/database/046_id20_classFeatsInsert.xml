@@ -644,6 +644,9 @@
             <column name="level" value="2" />
             <column name="class_character_id" value="8" />
             <column name="feats_id" value="80" /> <!-- Combat Style -->
+            <column name="list_of_bonus" value="[
+            { &quot;type&quot;: &quot;Feats&quot;, &quot;id&quot;: 116 }
+            ]" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
@@ -876,20 +879,87 @@
             <column name="class_character_id" value="11" />
             <column name="feats_id" value="93" /> <!-- Bonus Feat Wizard -->
         </insert>
+        <!-- Warsling Sniper -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- snek halfling -->
+            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="2" />
+            <column name="class_character_id" value="16" />
+            <column name="feats_id" value="128" /> <!-- Sniper's Vision -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- snek halfling -->
+            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="4" />
+            <column name="class_character_id" value="16" />
+            <column name="feats_id" value="114" /> <!-- Improved Critical -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- snek halfling -->
+            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="6" />
+            <column name="class_character_id" value="16" />
+            <column name="feats_id" value="129" /> <!-- Improved Ricochet -->
+        </insert>
+        <!-- Stormlord -->
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="121" /> <!-- Electricity Resistance -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="2" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="122" /> <!-- Shock weapon -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="3" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="123" /> <!-- Storm Walk -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="4" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="121" /> <!-- Electricity Resistance -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="5" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="124" /> <!-- Thundering Weapon -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="6" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="124" /> <!-- Storm Ride -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="7" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="121" /> <!-- Electricity Resistance -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="8" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="126" /> <!-- Shocking Burst Weapon -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="9" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="121" /> <!-- Electricity Resistance -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="10" />
+            <column name="class_character_id" value="17" />
+            <column name="feats_id" value="127" /> <!-- Elemental Conflagration -->
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -405,7 +405,7 @@
     <insert tableName="class_character">
       <column name="id" value="16" />
       <column name="type" value="PRESTIGE_CLASS" />
-      <column name="name" value="SNIPER_SLINGER" />
+      <column name="name" value="WARSLING_SNIPER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhl" />
       <column name="class_bab" value="1" />
@@ -415,14 +415,14 @@
         value="[]" />
     </insert>
     <insert tableName="class_character">
-      <column name="id" value="100" />
-      <column name="type" value="BASE_CLASS" />
-      <column name="name" value="ADJ_CLASS" />
+      <column name="id" value="17" />
+      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="name" value="STORMLORD" />
       <column name="avatar_url" value="address value" />
-      <column name="saving_throw" value="lll" />
-      <column name="class_bab" value="0.5" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
       <column name="skill_points" value="2" />
-      <column name="hit_dice" value="4" />
+      <column name="hit_dice" value="8" />
       <column name="class_feats_map"
         value="[]" />
     </insert>

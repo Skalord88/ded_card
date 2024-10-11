@@ -55,10 +55,27 @@
             <column name="feats_id" value="78" />
             <column name="selected" value="[&quot;FIRE_GIANT&quot;]" />
         </insert>
+
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="112" />
+            <column name="selected" value="[
+                &quot;SHORTSPEAR&quot;
+            ]" />
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="113" />
+            <column name="selected" value="[
+                &quot;SHORTSPEAR&quot;
+            ]" />
+        </insert>
+        
         <insert tableName="feats_pc">
             <column name="character_card_id" value="104" />
             <column name="feats_id" value="120" />
             <column name="selected" value="[]" />
         </insert>
+        
     </changeSet>
 </databaseChangeLog>

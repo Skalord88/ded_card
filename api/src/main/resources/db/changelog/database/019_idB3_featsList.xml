@@ -1697,27 +1697,18 @@ If a death attack is attempted and fails (the victim makes her save) or if the a
       <column name="description"
         value="Dazzled in bright sunlight or within the radius of a daylight spell" />
     </insert>
+    <!-- Warsling Sniper -->
     <insert tableName="feats">
-      <column name="feat_name" value="Sneak Attack with halfling sling" />
+      <column name="feat_name" value="Warsling Sneak Attack" />
       <column name="feats_type" value="CLASS" />
       <column name="description"
-        value="
-  If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.
-
-  The rogue’s attack deals extra damage any time her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and it increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied.
-  
-  Ranged attacks can count as sneak attacks only if the target is within 30 feet.
-  
-  With a sap (blackjack) or an unarmed strike, a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual -4 penalty.
-  
-  A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
-  " />
+        value="Any time the warsling sniper's target would be denied his Dexterity bonus to AC (regardless of whether he actually has a Dexterity bonus), her ranged sneak attack with the warsling deals extra damage. This extra damage is +1d6 at 1st level, and increases by an additional 1d6 every other level after that (+2d6 at 3rd level and +3d6 at 5th level). Ranged attacks only count as sneak attacks if the target is within 30 feet. In every other way, this ability is identical to the rogue's sneak attack. If the character has the sneak attack ability from another class, the bonuses stack." />
       <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
             &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;HALFLING_SLING&quot;]
+            &quot;targets&quot; : [&quot;WARSLING&quot;]
             } 
     ]" />
     </insert>
@@ -2037,7 +2028,8 @@ A fighter may select Improved Critical as one of his fighter bonus feats."
             &quot;CROSSBOW_REPEATING_HEAVY&quot;,
             &quot;CROSSBOW_REPEATING_LIGHT&quot;,
             &quot;NET&quot;,
-            &quot;SHURIKEN&quot;
+            &quot;SHURIKEN&quot;,
+            &quot;WARSLING&quot;
           ]
           } 
   ]" />
@@ -2148,6 +2140,77 @@ Special
 A fighter may select Weapon Finesse as one of his fighter bonus feats.
 
 Natural weapons are always considered light weapons."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 121-->
+      <column name="feat_name" value="Electricity Resistance" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="As the stormlord gains levels in this prestige class, he becomes increasingly resistant to electrical energy, gaining electricity resistance in the amount given on the table."
+      />
+      <column name="modifiers"
+        value="[
+    {
+          &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
+          &quot;bonus&quot; : 5,
+          &quot;targets&quot; : [&quot;ELECTRICITY&quot;]
+          } 
+  ]" />
+    </insert>
+    <insert tableName="feats"> <!-- 122-->
+      <column name="feat_name" value="Shock weapon" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 2nd level, any spear or javelin used by a stormlord is treated as a shock weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 123-->
+      <column name="feat_name" value="Storm Walk" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 3rd level, a stormlord (and his mount, if any) can walk or ride through storms (natural or magical) at his regular movement rate, completely unaffected by high winds (including gust of wind), pounding precipitation or waves, objects driven by the wind (which always seem to miss him), great claps of thunder, natural bolts of lightning, or any other natural symptom of Talos's fury."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 124-->
+      <column name="feat_name" value="Thundering Weapon" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 5th level, any spear or javelin a stormlord uses is treated as a thundering weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord. Its effects stack with the stormlord's shock weapon ability."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 125-->
+      <column name="feat_name" value="Storm Ride" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 6th level, a stormlord gains the ability to fly during any storm as if using the fly spell. Adverse wind conditions do not affect him; for example, even hurricane-force winds cannot knock him down or blow him away when flying."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 126-->
+      <column name="feat_name" value="Shocking Burst Weapon" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 8th level, any spear or javelin used by a stormlord is treated as a shocking burst weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord. Its effects stack with the stormlord's thundering weapon ability."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 127-->
+      <column name="feat_name" value="Elemental Conflagration" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="Upon reaching 10th level, a stormlord gains the ability to summon a quartet of Huge elementals once per tenday. These four elementals are summoned as if using the summon monster IX spell, except that each elemental is of a different type (air, earth, fire, water)."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 128-->
+      <column name="feat_name" value="Sniper's Vision" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 2nd level, warsling snipers gain a +2 bonus on sling attacks against targets with some degree of cover; this bonus effectively reduces the benefit of cover because the warsling sniper is adept at aiming for the exposed part of the foe. Furthermore, if a skiprock sniper misses the target due to concealment, she can reroll the miss chance percentile roll to see if she actually hit."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 129-->
+      <column name="feat_name" value="Improved Ricochet" />
+      <column name="feats_type" value="CLASS" />
+      <column name="description"
+        value="At 6th level, the sniper's expertise with the warsling becomes so advanced that when she bounces a skiprock off one target to hit another, the second attack roll is made without the normal -2 penalty. This ability may be used once per round."
       />
     </insert>
     <insert tableName="feats">

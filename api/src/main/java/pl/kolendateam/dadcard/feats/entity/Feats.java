@@ -41,6 +41,3 @@ public class Feats implements Serializable {
     this.id = idDTO;
   }
 }
-// String skills;
-// Integer speed;
-// String specialAttacks;

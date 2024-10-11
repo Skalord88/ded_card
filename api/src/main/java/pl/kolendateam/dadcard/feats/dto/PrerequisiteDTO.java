@@ -1,24 +1,18 @@
 package pl.kolendateam.dadcard.feats.dto;
 
-import java.util.ArrayList;
-
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
-import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
-import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
-import pl.kolendateam.dadcard.skills.entity.ClassSkills;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrerequisiteDTO {
 
-    public String[] race;
-    public SavingThrow savingThrow;
-    public ArmorClass armorClass;
-    public ArrayList<ClassSkills> classSkills;
-    public Abilitys ability;
-    public int bab;
-    public String[] feats;
+  public String type;
+  public int id;
 
+  public PrerequisiteDTO(Prerequisite pre) {
+    this.type = pre.getType();
+    this.id = pre.getId();
+  }
 }

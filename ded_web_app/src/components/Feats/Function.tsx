@@ -12,7 +12,6 @@ export function GroupAllFeats(feats: (FeatPc | Feat | ClassPc)[]): Feat[] {
                 id: f.feat.id,
                 featName: f.feat.featName,
                 featsType: f.feat.featsType,
-                prerequisite: f.feat.prerequisite,
                 modifiers: f.selected.length > 0 && modifiersExist ? {
                     modifier: f.feat.modifiers[0].modifier,
                     bonus: f.feat.modifiers[0].bonus,

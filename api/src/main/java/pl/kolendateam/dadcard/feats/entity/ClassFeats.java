@@ -8,10 +8,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 
 @AllArgsConstructor
@@ -35,4 +38,7 @@ public class ClassFeats implements Serializable {
   @ManyToOne
   @JoinColumn(name = "feats_id")
   Feats feats;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  List<Prerequisite> listOfBonus;
 }

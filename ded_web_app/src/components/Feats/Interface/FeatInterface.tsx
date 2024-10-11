@@ -12,19 +12,8 @@ export type serverFeat = {
   id: number;
   featName: string;
   featsType: string;
-  prerequisite: Prerequisite | null;
   description: string;
 }
-
-export type Prerequisite = {
-  ability: Abilitys;
-  armorClass: armorClass;
-  bab: number;
-  classSkills: object;
-  feats: string[];
-  race: string;
-  savingThrow: savingThrows;
-};
 
 export interface FeatProps {
   feats: feat[] | undefined;
@@ -53,13 +42,13 @@ export type ClassFeats = {
   feat: Feat;
   classId: number;
   className: string;
+  listOfBonus: Prerequisite[]
 }
 
 export type Feat = {
   id: number;
   featName: string;
   featsType: string;
-  prerequisite: string;
   modifiers: Modifiers[] ;
   description: string;
 }
@@ -67,4 +56,9 @@ export type Feat = {
 export type FeatPc = {
   feat: Feat;
   selected: string[];
+}
+
+export type Prerequisite = {
+  type: string;
+  id: number;
 }

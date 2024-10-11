@@ -17,6 +17,9 @@
             <column name="feats_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="list_of_bonus" type="jsonb">
+                <constraints nullable="true" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
