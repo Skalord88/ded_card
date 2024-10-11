@@ -47,23 +47,24 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
             showPopup ? "show" : ""
           }`}
         >
-          <>
-            <div style={{ display: "grid" }}>
-              <div style={{ gridColumn: 1 }}>
-                <WeaponThrowDice dices={dices} values={attacks} weapon={weapon} />
-              </div>
-              <div style={{ gridColumn: 2 }}>
-                <WeaponDamageDice dices={dices} weapon={weapon} dmg={dmg} />
-              </div>
+          <div style={{ display: "grid" }}>
+            <div style={{ gridColumn: 1 }}>
+              <WeaponThrowDice dices={dices} values={attacks} weapon={weapon} />
             </div>
-            {modifiers.map(mod => (
-              <p style={{ color: "yellow" }}>
-                vs {FormattingText(mod.targets[0])} +{mod.targets.length * 2}dmg
-              </p>
-            ))}
-          </>
+            <div style={{ gridColumn: 2 }}>
+              <WeaponDamageDice dices={dices} weapon={weapon} dmg={dmg} />
+            </div>
+          </div>
+          {modifiers.map((mod, index) => (
+            <div key={index}>
+              <span style={{ color: "yellow" }}>
+                vs {FormattingText(mod.targets[0])} +{mod.targets.length * 2} dmg
+              </span>
+            </div>
+          ))}
         </span>
       </div>
     </>
   );
+  
 };

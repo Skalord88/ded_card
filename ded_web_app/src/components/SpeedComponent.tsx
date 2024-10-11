@@ -7,7 +7,7 @@ export const SpeedComponent: React.FC<SpeedComponentProps> = ({ speed }) => {
     <>
       <h2 className="rpgui-container-framed-golden-2">Speed</h2>
 
-      <p style={{backgroundColor:"grey"}}>tactic</p>
+      <div><p style={{backgroundColor:"grey"}}>tactic</p></div>
       <div>
         <p>
           move: {speed}ft. / {speed / 5}s

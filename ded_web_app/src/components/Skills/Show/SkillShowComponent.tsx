@@ -58,19 +58,17 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
             </div>
             {char.skillsList ? (
               <>
-                {char.skillsList.map((skill: SkillProps, index: number) => {
+                {char.skillsList.map((skill: SkillProps) => {
                   return (
-                    <>
                       <SkillShowSkillsTableComponent
-                        key={index}
-                        indexSkill={index}
+                        key={skill.idSkill}
+                        indexSkill={skill.idSkill}
                         skill={skill}
                         indexStudy={null}
                         study={null}
                         abilitys={abilitys}
                         modifiers={listModSkillsStudies}
                       />
-                    </>
                   );
                 })}
               </>
@@ -98,19 +96,17 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
             </div>
             {char.skillsList ? (
               <>
-                {char.skillsList.map((skill: SkillProps, index: number) => {
+                {char.skillsList.map((skill: SkillProps) => {
                   return (
-                    <>
                       <SkillShowSkillsTableComponent
-                        key={index}
-                        indexSkill={index}
+                        key={skill.idSkill}
+                        indexSkill={skill.idSkill}
                         skill={skill}
                         indexStudy={null}
                         study={null}
                         abilitys={abilitys}
                         modifiers={listModSkillsStudies}
                       />
-                    </>
                   );
                 })}
               </>

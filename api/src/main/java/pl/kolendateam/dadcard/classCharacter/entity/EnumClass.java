@@ -27,4 +27,5 @@ public enum EnumClass {
   SHADOWDANCER,
   THAUMATURGIST,
   WARSLING_SNIPER,
+  STORMLORD,
 }

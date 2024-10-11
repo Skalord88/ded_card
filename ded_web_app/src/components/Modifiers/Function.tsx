@@ -1,4 +1,4 @@
-import { Feat } from "../Feats/Interface/FeatInterface";
+import { Feat, FeatsToShow } from "../Feats/Interface/FeatInterface";
 import { CharacterPc } from "../interfaces";
 import { Modifiers } from "./ModifierInterface";
 
@@ -13,7 +13,7 @@ export function FindAllModifications(
 
 export function CheckInAllModifications(
   char: CharacterPc,
-  feats: Feat[]
+  feats: FeatsToShow[]
 ): Modifiers[] {
   let allModFeats: Modifiers[] = [];
   let modifiersFromArchetypes: Modifiers[] = [];

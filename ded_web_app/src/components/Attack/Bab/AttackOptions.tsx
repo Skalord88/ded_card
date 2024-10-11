@@ -47,14 +47,13 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
     if (
       !position.pose &&
       type.includes("two hands") &&
-      [116, 117, 118].every(val => specificFghFeats.includes(val))
-
+      [116, 117, 118].every((val) => specificFghFeats.includes(val))
     )
       return [attacks[0], attacks[1], attacks[2]];
     if (
       !position.pose &&
       type.includes("two hands") &&
-      [116, 117].every(val => specificFghFeats.includes(val))
+      [116, 117].every((val) => specificFghFeats.includes(val))
     )
       return [attacks[0], attacks[1]];
     if (!position.pose && type.includes("two hands")) return [attacks[0]];
@@ -75,11 +74,10 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
       />
       :
       {attOneTwo.map((att, index) => (
-        <>
+        <span key={index}>
           {SignAndCount([att]).sign}
           {att}
-          {attOneTwo.length - 1 > index ? <>{"/"}</> : <></>}
-        </>
+          {attOneTwo.length - 1 > index ? <>{"/"}</> : null}</span>
       ))}{" "}
       {weapon.damage}
       {SignAndCount([dmg]).sign}

@@ -25,5 +25,6 @@ public class FeatsDTO {
     this.featsType = feats.getFeatsType();
     this.modifiers =
       MapperModifierBonus.toListModifierDTO(feats.getModifiers());
+    this.description = feats.getDescription();
   }
 }

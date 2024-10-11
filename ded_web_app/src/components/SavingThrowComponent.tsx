@@ -71,17 +71,17 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         <div>
           <p>other</p>
         </div>
-
-        <SavingThrowOne save={saving[0]} listOfBonus={listOfBonus} />
-        <SavingThrowOne save={saving[1]} listOfBonus={listOfBonus} />
-        <SavingThrowOne save={saving[2]} listOfBonus={listOfBonus} />
+        {saving.map((save) => (
+          <SavingThrowOne key={save.id} save={save} listOfBonus={listOfBonus} />
+        ))}
       </div>
-      <div style={{ display: "flex" }}>
-          {listOfSpellResistance.map((sR) => (
-            sR.bonus > 0?
-            <p>Spell Resistence: {sR.bonus}</p> : null
-          ))}
-      </div>
+        {listOfSpellResistance.map((sR, index) =>
+          sR.bonus > 0 ? (
+            <div key={index}>
+              <p>Spell Resistence: {sR.bonus}</p>
+            </div>
+          ) : null
+        )}
     </>
   );
 };
@@ -100,7 +100,6 @@ export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
       <div>
         <p>
           <D20Popup
-            key={save.id}
             textOrWeapon={save.text + ":"}
             value={save.tot.number}
             modifiers={listOfBonus}
@@ -108,7 +107,7 @@ export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
         </p>
       </div>
       <div>
-        <p style={{color: "orange"}}>
+        <p style={{ color: "orange" }}>
           {save.tot.sign}
           {save.tot.number}
         </p>

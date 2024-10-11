@@ -34,16 +34,16 @@ export const D12Popup: React.FC<DicePopupProps> = ({
             showPopup ? "show" : ""
           }`}
         >
-          <p>
+          <span>
             {dice} + {value} = {dice + value}
-          </p>
+          </span>
           {modifiers.map((mod) => {
             return (
               <>
-                <p style={{ color: "yellow" }}>
+                <span style={{ color: "yellow" }}>
                   {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus} vs{" "}
                   {FormattingText(mod.targets[1])}
-                </p>
+                </span>
               </>
             );
           })}

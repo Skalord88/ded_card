@@ -21,7 +21,7 @@ import { DeleteButton } from "../components/DeleteButton";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
 import { FindFightingFeats } from "../components/Feats/FindFightingFeats";
 import { GroupAllFeats } from "../components/Feats/Function";
-import { Feat } from "../components/Feats/Interface/FeatInterface";
+import { FeatsToShow } from "../components/Feats/Interface/FeatInterface";
 import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import { Attacks, CharacterPc, Inventory } from "../components/interfaces";
@@ -65,7 +65,7 @@ export const Show = () => {
 
   if (!char) return <>...character loading...</>;
 
-  const feats: Feat[] = GroupAllFeats([
+  const feats: FeatsToShow[] = GroupAllFeats([
     ...char.featsList,
     ...char.race.raceFeats,
     ...char.archetypes.flatMap((ar) => ar.archetypeFeats),
@@ -374,14 +374,11 @@ export const Show = () => {
                 gridRow: "9 / span 2"
               }}
             >
-              <p>
                 <SkillShowComponent
-                  key={"skillsTable"}
                   char={char}
                   abilitys={abilitys}
                   modifications={modifications}
                 />
-              </p>
             </div>
             <div
               key="speed"
@@ -394,7 +391,7 @@ export const Show = () => {
               <SpeedComponent speed={speed} />
             </div>
             <div
-              key="speed"
+              key="feats"
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: 3,

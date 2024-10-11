@@ -81,7 +81,6 @@ export const MapBab: React.FC<MapBabProps> = ({
     <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
         {WeaponRanged(weapon) ? null : (
-          <>
             <AttackOptions
               type="melee"
               weapon={critWeapon}
@@ -94,7 +93,6 @@ export const MapBab: React.FC<MapBabProps> = ({
               specificFghFeats={specificFghFeats}
               specificTarget={specific[3]}
             />
-          </>
         )}
       </div>
       <div style={{ gridColumn: 1, gridRow: 3 }}>

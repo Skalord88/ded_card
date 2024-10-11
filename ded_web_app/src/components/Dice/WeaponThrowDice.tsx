@@ -22,13 +22,13 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
     <>
       {results.map((res, index) => {
         return CriticalHit(weapon.critical).includes(res.dice) ? (
-          <p style={{ color: "red" }} key={index}>
-            {res.dice} + {res.value} = {res.dice + res.value}
+          <p key={index} style={{ color: "red" }}>
+              {res.dice} + {res.value} = {res.dice + res.value}
           </p>
         ) : (
           <p key={index}>
-            {res.dice} + {res.value} = {res.dice + res.value}
-          </p>
+              {res.dice} + {res.value} = {res.dice + res.value}
+            </p>
         );
       })}
     </>

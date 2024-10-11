@@ -28,20 +28,26 @@ export const D20Popup: React.FC<DicePopupProps> = ({
       style={{ color: "yellow" }}
     >
       {textOrWeapon}
-  
+
       <span
         style={{ width: 300, textAlign: "center" }}
-        className={`popuptext rpgui-container-framed ${showPopup ? "show" : ""}`}
+        className={`popuptext rpgui-container-framed ${
+          showPopup ? "show" : ""
+        }`}
       >
         <ThrowDice dice={dice} value={value} />
         {modifiers.map((mod, index) => (
-          <p key={index} style={{ color: "yellow" }}>
-            {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
-            {mod.targets.length > 0? "vs " + FormattingText(mod.targets[1]? mod.targets[1] + ', ' : '' + mod.targets[0]) : null}
-          </p>
+          <span key={index} style={{ color: "yellow" }}>
+              {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
+              {mod.targets.length > 0
+                ? "vs " +
+                  FormattingText(
+                    mod.targets[1] ? mod.targets[1] + ", " : "" + mod.targets[0]
+                  )
+                : null}
+          </span>
         ))}
       </span>
     </div>
   );
-  
 };

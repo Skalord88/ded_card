@@ -19,7 +19,7 @@ export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
               bonus
               )}{" "}
           </p>
-        ) : <p>0</p>}
+        ) : <div> <p>0</p> </div>}
       </div>
     </>
   );

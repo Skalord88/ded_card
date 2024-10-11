@@ -62,3 +62,9 @@ export type Prerequisite = {
   type: string;
   id: number;
 }
+
+export type FeatsToShow = {
+  feat: Feat,
+  modifiers: Modifiers[],
+  listOfBonus: Prerequisite[]
+}

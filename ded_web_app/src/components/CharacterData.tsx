@@ -49,16 +49,18 @@ export const ArchetypesData: React.FC<ArchetypesDataProps> = ({
   archetypes
 }) => {
   return (
-    <p style={{ display: "flex", flexDirection: "row" }}>
+    <>
       {archetypes.map((a, index) => {
         return (
-          <>
-            {a.archetypeName}
-            {index === archetypes.length - 1 ? null : ", "}
-          </>
+          <div key={index}>
+            <p>
+              {a.archetypeName}
+              {index === archetypes.length - 1 ? null : ", "}
+            </p>
+          </div>
         );
       })}
-    </p>
+    </>
   );
 };
 
@@ -92,48 +94,31 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
           {exp} xp / {expNext - exp} to / {expNext} next
         </p>
       </div>
-      <div
-      // style={{ display: "grid" }}
-      >
+      <div>
         {char.race.levelAdjustment > 0 ? (
           <p>{char.race.subRacesName + " " + char.race.levelAdjustment}</p>
         ) : null}
-        {char.archetypes.map((arch) =>
+        {char.archetypes.map((arch, index) =>
           arch.levelAdjustment > 0 ? (
-            <p>{arch.archetypeName + " " + arch.levelAdjustment}</p>
+            <div key={index}>
+              <p>{arch.archetypeName + " " + arch.levelAdjustment}</p>
+            </div>
           ) : null
         )}
         {cl.map((classe, index) => {
           return (
-            <>
-              <p key={index}>{classe.className + " " + classe.level}</p>
-            </>
+            <div key={index}>
+              <p>{classe.className + " " + classe.level}</p>
+            </div>
           );
         })}
         {cp.map((classe, index) => {
           return (
-            <>
-              <p
-                key={index}
-                // style={{
-                //   gridColumn: "1 / span 2",
-                //   gridRow: 1
-                // }}
-                // className="rpgui-container-framed-grey"
-              >
-                {classe.className}{" "}
-                {/* </p>
-              <p
-                key={index + "." + index}
-                style={{
-                  gridColumn: 3,
-                  gridRow: 1
-                }}
-                className="rpgui-container-framed-grey"
-              > */}
-                {classe.level}
+            <div key={index}>
+              <p>
+                {classe.className} {classe.level}
               </p>
-            </>
+            </div>
           );
         })}
       </div>
@@ -156,18 +141,24 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({
 }) => {
   return (
     <>
-    <div>
-      <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
-      
+      <div>
+        <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
+
         <p>
           bs atk bns: {SignAndCount([bab]).sign}
           {SignAndCount([bab]).number}
         </p>
-        <p>
-          <D20Popup textOrWeapon={"grapple: "} value={grapple} modifiers={[]} />
-          {SignNumber(grapple)}
-          {grapple}
-        </p>
+        <div>
+          <p>
+            <D20Popup
+              textOrWeapon={"grapple: "}
+              value={grapple}
+              modifiers={[]}
+            />
+            {SignNumber(grapple)}
+            {grapple}
+          </p>
+        </div>
 
         <p>
           <D20Popup
