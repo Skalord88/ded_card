@@ -89,5 +89,21 @@
             }
             ]" />
     </insert>
+    <insert tableName="archetype">
+      <column name="archetype_name" value="Vampire" />
+      <column name="level_adjustment" value="8" />
+      <column name="avatar_url" value="" />
+      <column name="modifiers" value="[
+      {
+            &quot;modifier&quot; : &quot;STRENGHT&quot;,
+            &quot;bonus&quot; : 6,
+            &quot;targets&quot; : []
+            },{
+            &quot;modifier&quot; : &quot;DEXTERITY&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : []
+            }
+            ]" />
+    </insert>
   </changeSet>
 </databaseChangeLog>

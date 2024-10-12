@@ -5,9 +5,9 @@ import java.util.List;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
-public class MapperListOfBonus {
+public class MapperPrerequisiteBonus {
 
-  public static List<PrerequisiteDTO> toListOfBonusDTO(
+  public static List<PrerequisiteDTO> toPrerequisiteBonusDTO(
     List<Prerequisite> listOfBonus
   ) {
     List<PrerequisiteDTO> listOfBonusDTO = new ArrayList<>();

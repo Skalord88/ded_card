@@ -1,10 +1,11 @@
 import { Abilitys } from "../Abilitys/Interface";
+import { Prerequisite } from "../Feats/Interface/FeatInterface";
 import { CharacterPc } from "../interfaces";
 
 export type Modifiers = {
     modifier: string;
     bonus: number;
-    targets: string[];
+    targets: Prerequisite[];
 }
 
 export type ModifiedCharProps = {

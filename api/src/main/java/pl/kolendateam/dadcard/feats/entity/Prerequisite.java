@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class Prerequisite implements Serializable {
 
   String type;
-  int id;
+  int value;
 }

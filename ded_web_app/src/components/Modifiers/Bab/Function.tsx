@@ -1,3 +1,4 @@
+import { Prerequisite } from "../../Feats/Interface/FeatInterface";
 import { Weapon } from "../../interfaces";
 import { Modifiers } from "../ModifierInterface";
 
@@ -14,12 +15,12 @@ export function FindBabModifiers(modifiers: [number, string][]
 export function CountSpecificBabBonusInModification(
   mod: Modifiers
 ): [number, string] {
-  return [mod.bonus, mod.targets[0]];
+  return [mod.bonus, mod.targets[0].type];
 }
 // 
-export function ModifiedWeaponBabBonus(list: string[], weapon: Weapon): boolean {
-  if(list.includes(weapon.weaponName)) return true
-  if(list.some(l => weapon.type.includes(l))) return true
+export function ModifiedWeaponBabBonus(list: Prerequisite[], weapon: Weapon): boolean {
+  if(list[0].value === weapon.id) return true
+  // if(list.some(l => weapon.type.includes(l))) return true
   return false
 }
 

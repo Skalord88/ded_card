@@ -1,5 +1,4 @@
 import { SignNumber } from "../components/functions";
-import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import {} from "./Modifiers/Ability/Function";

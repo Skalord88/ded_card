@@ -8,21 +8,21 @@
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="112" />
             <column name="selected" value="[
-                &quot;LONGSWORD&quot;
+                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
             ]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="113" />
             <column name="selected" value="[
-                &quot;LONGSWORD&quot;
+                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
             ]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="114" />
             <column name="selected" value="[
-                &quot;LONGSWORD&quot;
+                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
             ]" />
         </insert>
         <insert tableName="feats_pc">
@@ -43,17 +43,26 @@
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="78" />
-            <column name="selected" value="[&quot;VAMPIER&quot;,&quot;VAMPIER&quot;]" />
+            <column name="selected" value="[
+            {&quot;type&quot;:&quot;archetype&quot;, &quot;value&quot; : 3},
+            {&quot;type&quot;:&quot;archetype&quot;, &quot;value&quot; : 3}
+            ]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="78" />
-            <column name="selected" value="[&quot;GNOLL&quot;,&quot;GNOLL&quot;,&quot;GNOLL&quot;]" />
+            <column name="selected" value="[
+            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001},
+            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001},
+            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001}
+            ]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="78" />
-            <column name="selected" value="[&quot;FIRE_GIANT&quot;]" />
+            <column name="selected" value="[
+            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1000}
+            ]" />
         </insert>
 
         <insert tableName="feats_pc">

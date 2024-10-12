@@ -121,6 +121,12 @@
             <column name="modifiers" value="[]" />
             <column name="avatar_url" value="address value" />
         </insert>
+        <insert tableName="race">
+            <column name="id" value="1000" /> <!-- 1000-->
+            <column name="race_name" value="Giant" />
+            <column name="modifiers" value="[]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
 

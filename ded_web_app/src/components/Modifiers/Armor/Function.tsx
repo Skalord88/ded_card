@@ -16,5 +16,5 @@ export function FindArmorSizeModification(
 export function CountSpecificArmorBonusInModification(
   mod: Modifiers
 ): [number, string] {
-  return [mod.bonus, mod.targets[0]];
+  return [mod.bonus, mod.targets[0].type];
 }

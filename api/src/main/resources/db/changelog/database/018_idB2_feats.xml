@@ -15,25 +15,15 @@
         <column name="feats_type" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="prerequisite" type="varchar(1000)">
-          <constraints nullable="true"/>
-        </column>
         <column name="description" type="varchar(90000)">
           <constraints nullable="true"/>
         </column>
-        <column name="modifiers" type="jsonb">
+        <column name="prerequisite" type="json">
+          <constraints nullable="true"/>
+        </column>
+        <column name="modifiers" type="json">
           <constraints nullable="true"/>
         </column>
       </createTable>
   </changeSet>
 </databaseChangeLog>
-
-<!-- <column name="speed" type="int">
-          <constraints nullable="true"/>
-        </column>
-        <column name="skills" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-        <column name="special_attacks" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column> -->

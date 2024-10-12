@@ -9,10 +9,10 @@ import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 public class PrerequisiteDTO {
 
   public String type;
-  public int id;
+  public int value;
 
   public PrerequisiteDTO(Prerequisite pre) {
     this.type = pre.getType();
-    this.id = pre.getId();
+    this.value = pre.getValue();
   }
 }

@@ -55,12 +55,12 @@ export type Feat = {
 
 export type FeatPc = {
   feat: Feat;
-  selected: string[];
+  selected: Prerequisite[];
 }
 
 export type Prerequisite = {
   type: string;
-  id: number;
+  value: number;
 }
 
 export type FeatsToShow = {

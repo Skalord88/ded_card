@@ -6,7 +6,7 @@ export function OneStudyModBonus(
     studyName: string
   ): Modifiers[] {
     return modifiers.filter(
-      (mod) => mod.targets[0] === studyName
+      (mod) => mod.targets[0].type === studyName
     );
   }
   
@@ -16,7 +16,7 @@ export function OneStudyModBonus(
   ): number {
     return modifiers.reduce(
       (total, mod) =>
-        FormattingText(mod.targets[0]) 
+        FormattingText(mod.targets[0].type) 
         === FormattingText(studyName)
           ? total + mod.bonus
           : total,

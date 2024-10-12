@@ -6,7 +6,7 @@ export function OneSkillModBonus(
   skillName: string
 ): Modifiers[] {
   return modifiers.filter(
-    (mod) => mod.targets[0] === skillName
+    (mod) => mod.targets[0].type === skillName
   );
 }
 
@@ -16,7 +16,7 @@ export function OneSkillModBonusNumber(
 ): number {
   return modifiers.reduce(
     (total, mod) =>
-      FormattingText(mod.targets[0]) 
+      FormattingText(mod.targets[0].type) 
       === FormattingText(skillName)
         ? total + mod.bonus
         : total,

@@ -645,7 +645,8 @@
             <column name="class_character_id" value="8" />
             <column name="feats_id" value="80" /> <!-- Combat Style -->
             <column name="list_of_bonus" value="[
-            { &quot;type&quot;: &quot;Feats&quot;, &quot;id&quot;: 116 }
+            { &quot;type&quot;: &quot;Feats&quot;, &quot;value&quot;: 116 },
+            { &quot;type&quot;: &quot;Feats&quot;, &quot;value&quot;: 130 }
             ]" />
         </insert>
         <insert tableName="class_feats">

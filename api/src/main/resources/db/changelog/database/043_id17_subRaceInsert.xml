@@ -190,6 +190,22 @@
             ]" />
             <column name="avatar_url" value="address value" />
         </insert>
+        <insert tableName="sub_race">
+            <column name="id" value="1000" />
+            <column name="sub_race_name" value="Fire Giant" />
+            <column name="race_id" value="1000" />
+            <column name="size_id" value="6" />
+            <column name="modifiers" value="[]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="sub_race">
+            <column name="id" value="1001" />
+            <column name="sub_race_name" value="Gnoll" />
+            <column name="race_id" value="4" />
+            <column name="size_id" value="5" />
+            <column name="modifiers" value="[]" />
+            <column name="avatar_url" value="address value" />
+        </insert>
     </changeSet>
 </databaseChangeLog>
 

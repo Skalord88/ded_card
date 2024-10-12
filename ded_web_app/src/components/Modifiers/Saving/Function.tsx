@@ -6,7 +6,7 @@ export function SavingBonusModification(
   const mod = modifiers.find((mod) => mod.modifier === "SAVING");
   return mod
     ? mod.targets.length > 1
-      ? [mod.bonus, mod.targets[1]]
+      ? [mod.bonus, mod.targets[1].type]
       : [mod.bonus, ""]
     : [0, ""];
 }

@@ -84,8 +84,10 @@
       <column name="feat_name" value="Armor proficiency (heavy)" />
       <column name="feats_type" value="GENERAL" />
       <column name="prerequisite"
-        value="{
-        'feats':['Armor proficiency (light)','Armor proficiency (medium)']}" />
+        value="[
+        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 6},
+        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 7}
+        ]" />
       <column name="description"
         value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it."
       />
@@ -100,8 +102,10 @@
     <insert tableName="feats">
       <column name="feat_name" value="Armor proficiency (medium)" />
       <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite" value="{
-          'feats':['Armor proficiency (light)']}" />
+      <column name="prerequisite"
+        value="[
+          {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 6}
+      ]" />
       <column name="description"
         value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."
       />
@@ -118,8 +122,7 @@
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : [&quot;CLIMB&quot;]
-            },
-            {
+            },{
             &quot;modifier&quot; : &quot;SKILL&quot;,
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : [&quot;SWIM&quot;]
@@ -291,9 +294,10 @@
       <column name="feat_name" value="Improved bull rush" />
       <column name="feats_type" value="GENERAL" />
       <column name="prerequisite"
-        value="{
-                'ability':{'streght':13},
-                'feats':['Power attack']}" />
+        value="[
+        {&quot;type&quot;:&quot;streght&quot;, &quot;value&quot;: 13},
+        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 131}
+                ]" />
       <column name="description"
         value="Benefit: When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender. Special A fighter may select Improved Bull Rush as one of his fighter bonus feats."
       />
@@ -310,9 +314,10 @@
       <column name="feat_name" value="Improved disarm" />
       <column name="feats_type" value="GENERAL" />
       <column name="prerequisite"
-        value="{
-                'ability':{'intelligence':13},
-                'feats':['Combat expertise']}" />
+        value="[
+        {&quot;type&quot;:&quot;intelligence&quot;, &quot;value&quot;: 13},
+        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 132}
+                ]" />
       <column name="description"
         value="Benefit: You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent. Normal: See the normal disarm rules. Special: A fighter may select Improved Disarm as one of his fighter bonus feats. A monk may select Improved Disarm as a bonus feat at 6th level, even if she does not meet the prerequisites."
       />
@@ -328,10 +333,6 @@
     <insert tableName="feats">
       <column name="feat_name" value="Improved grapple" />
       <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="{
-                'ability':{'dextrity':13},
-                'feats':['Improved unarmed strike']}" />
       <column name="description"
         value="Benefit: You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple. Normal: Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple. Special: A fighter may select Improved Grapple as one of his fighter bonus feats. A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."
       />
@@ -347,8 +348,10 @@
     <insert tableName="feats">
       <column name="feat_name" value="Quick Draw" />
       <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite" value="{
-              'bab':1}" />
+      <column name="prerequisite"
+        value="[
+        {&quot;type&quot;:&quot;bab&quot;, &quot;bonus&quot;: 1}
+              ]" />
       <column name="description"
         value="Benefit: You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action. A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow). Normal: Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action. Special: A fighter may select Quick Draw as one of his fighter bonus feats."
       />
@@ -356,11 +359,11 @@
     <insert tableName="feats">
       <column name="feat_name" value="Mounted archery" />
       <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
+      <!-- <column name="prerequisite"
         value="{
                 'classSkills':[{'nameSkill':'Ride','skillRank':1}],
                 'feats':['Mounted combat']
-            }" />
+            }" /> -->
       <column name="description"
         value="Benefit: The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running.
                 
@@ -377,10 +380,10 @@
     <insert tableName="feats">
       <column name="feat_name" value="Mounted combat" />
       <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
+      <!-- <column name="prerequisite"
         value="{
                 'classSkills':[{'nameSkill':'Ride','skillRank':1}]
-            }" />
+            }" /> -->
       <column name="description"
         value="Benefit
                 Once per round when your mount is hit in combat, you may attempt a Ride check (as a reaction) to negate the hit. The hit is negated if your Ride check result is greater than the opponent’s attack roll. (Essentially, the Ride check result becomes the mount’s Armor Class if it’s higher than the mount’s regular AC.)
@@ -2051,7 +2054,7 @@ Special
 A fighter may select Improved Shield Bash as one of his fighter bonus feats."
       />
     </insert>
-    
+
     <insert tableName="feats">
       <column name="feat_name" value="Two-Weapon Fighting" />
       <column name="feats_type" value="GENERAL" />
@@ -2211,6 +2214,58 @@ Natural weapons are always considered light weapons."
       <column name="feats_type" value="CLASS" />
       <column name="description"
         value="At 6th level, the sniper's expertise with the warsling becomes so advanced that when she bounces a skiprock off one target to hit another, the second attack roll is made without the normal -2 penalty. This ability may be used once per round."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 130-->
+      <column name="feat_name" value="Rapid Shot" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="description"
+        value="Prerequisites
+          Dex 13, Point Blank Shot.
+
+          Benefit
+          You can get one extra attack per round with a ranged weapon. The attack is at your highest base attack bonus, but each attack you make in that round (the extra one and the normal ones) takes a -2 penalty. You must use the full attack action to use this feat.
+
+          Special
+          A fighter may select Rapid Shot as one of his fighter bonus feats.
+
+          A 2nd-level ranger who has chosen the archery combat style is treated as having Rapid Shot, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 131-->
+      <column name="feat_name" value="Power Attack" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="prerequisite"
+        value="[
+          {&quot;type&quot;:&quot;streght&quot;, &quot;value&quot;: 13}
+        ]"/>
+      <column name="description"
+        value="
+          Benefit
+          On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn.
+
+          Special
+          If you attack with a two-handed weapon, or with a one-handed weapon wielded in two hands, instead add twice the number subtracted from your attack rolls. You can’t add the bonus from Power Attack to the damage dealt with a light weapon (except with unarmed strikes or natural weapon attacks), even though the penalty on attack rolls still applies. (Normally, you treat a double weapon as a one-handed weapon and a light weapon. If you choose to use a double weapon like a two-handed weapon, attacking with only one end of it in a round, you treat it as a two-handed weapon.)
+
+          A fighter may select Power Attack as one of his fighter bonus feats."
+      />
+    </insert>
+    <insert tableName="feats"> <!-- 132-->
+      <column name="feat_name" value="Combat Expertise" />
+      <column name="feats_type" value="GENERAL" />
+      <column name="prerequisite"
+        value="[
+          {&quot;type&quot;:&quot;intelligence&quot;, &quot;value&quot;: 13}
+        ]"/>
+      <column name="description"
+        value="Benefit
+          When you use the attack action or the full attack action in melee, you can take a penalty of as much as -5 on your attack roll and add the same number (+5 or less) as a dodge bonus to your Armor Class. This number may not exceed your base attack bonus. The changes to attack rolls and Armor Class last until your next action.
+
+          Normal
+          A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class.
+
+          Special
+          A fighter may select Combat Expertise as one of his fighter bonus feats."
       />
     </insert>
     <insert tableName="feats">
