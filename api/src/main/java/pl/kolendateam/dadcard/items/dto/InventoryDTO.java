@@ -34,36 +34,37 @@ public class InventoryDTO implements Serializable {
 
     if (inventory.getArmor() != null) {
       this.armor = MapperItemsDTO.toArmorDTO(inventory.getArmor());
+      // this.armor = MapperItemsDTO.toArmorDTO(inventory.getArmor());
     } else {
       this.armor = null;
     }
     if (inventory.getShield() != null) {
-      this.shield = MapperItemsDTO.toShieldDTO(inventory.getShield());
+      // this.shield = MapperItemsDTO.toShieldDTO(inventory.getShield());
     } else {
       this.shield = null;
     }
     if (inventory.getWeaponOne() != null) {
-      this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
+      // this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
     } else {
       this.weaponOne = null;
     }
     if (inventory.getWeaponTwo() != null) {
-      this.weaponTwo = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
+      // this.weaponTwo = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
     } else {
       this.weaponTwo = null;
     }
     if (inventory.getWeaponThree() != null) {
-      this.weaponThree = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
+      // this.weaponThree = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
     } else {
       this.weaponThree = null;
     }
     if (inventory.getWeaponFour() != null) {
-      this.weaponFour = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
+      // this.weaponFour = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
     } else {
       this.weaponFour = null;
     }
     if (inventory.getWeaponFive() != null) {
-      this.weaponFive = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
+      // this.weaponFive = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
     } else {
       this.weaponFive = null;
     }

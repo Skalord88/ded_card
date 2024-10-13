@@ -9,8 +9,8 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.dadcard.items.MapperEnchantment;
-import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
@@ -29,7 +29,7 @@ public class WeaponsDTO implements Serializable {
   public String name;
   public WeaponNameEnum weaponName;
   public ItemTypeEnum itemType;
-  public BigDecimal cost;
+  public double cost;
   public WeaponNumericEnum damage;
   public WeaponNumericEnum critical;
   public Integer range;
@@ -66,12 +66,12 @@ public class WeaponsDTO implements Serializable {
     WeaponCategoriesEnum[] typ = gson.fromJson(item.getType(), listWeaponType);
     this.type = typ;
     this.description = item.getDescription();
-    if (item.getEnchantment() == null) {
-      this.enchantment = new EnchantmentDTO(0, 0);
-    } else {
-      this.enchantment =
-        MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
-    }
+    // if (item.getEnchantment() == null) {
+    //   this.enchantment = new EnchantmentDTO(0, 0);
+    // } else {
+    //   this.enchantment =
+    //     MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+    // }
     this.material = item.getMaterial();
   }
 }

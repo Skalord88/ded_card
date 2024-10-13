@@ -41,7 +41,7 @@ public class Items implements Serializable {
   Integer id;
 
   String name;
-  BigDecimal cost;
+  double cost;
   BigDecimal weight;
   String description;
 

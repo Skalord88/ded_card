@@ -1,0 +1,49 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="27" author="oscar">
+        <createTable tableName="enchanted_items">
+            <column name="id" type="int" autoIncrement="true">
+              <constraints primaryKey="true" />
+            </column>
+            <column name="items_id" type="int">
+              <constraints nullable="true" />
+            </column>
+            <column name="material" type="varchar(255)">
+              <constraints nullable="true" />
+            </column>
+            <column name="modifiers" type="json">
+              <constraints nullable="true" />
+            </column>
+            <column name="cost" type="FLOAT">
+              <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
+              <constraints nullable="true" />
+            </column>
+          </createTable>
+
+        <createTable tableName="enchanted_list">
+            <column name="enchanted_items_id" type="int">
+              <constraints nullable="true" />
+            </column>
+            <column name="enchantment_id" type="int">
+              <constraints nullable="true" />
+            </column>
+        </createTable>
+        
+        <insert tableName="enchanted_items">
+            <column name="id" value="1" />
+            <column name="items_id" value="38" />
+            <column name="material" value="ADAMANTINE" />
+            <column name="cost" value="15000" />
+        </insert>
+
+        <insert tableName="enchanted_list">
+            <column name="enchanted_items_id" value="1" />
+            <column name="enchantment_id" value="2" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

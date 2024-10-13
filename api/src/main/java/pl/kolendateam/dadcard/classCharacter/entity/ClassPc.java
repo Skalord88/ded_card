@@ -76,32 +76,3 @@ public class ClassPc implements Serializable {
     this.level -= actualLevelAdjustment;
   }
 }
-// @ManyToOne
-// @JoinColumn(name = "character_id", referencedColumnName = "id")
-// Character character;
-// @ManyToOne
-// @JoinColumn(name = "class_character_id", referencedColumnName = "id")
-// ClassCharacter classCharacter;
-// @ManyToMany
-// @JoinTable(
-//   name = "class_pc_array",
-//   joinColumns = @JoinColumn(name = "class_character_id"),
-//   inverseJoinColumns = @JoinColumn(name = "character_id")
-// )
-// ClassCharacter classCharacter;
-// @OneToOne(cascade = CascadeType.PERSIST)
-// @JoinColumn(name = "character_id", referencedColumnName = "id")
-// Character character;
-// short id;
-// @NonNull
-// @Enumerated(EnumType.STRING)
-// EnumClass name;
-// byte hitDice;
-// String savingThrow;
-// double classBab;
-// @Enumerated(EnumType.STRING)
-// SpellsEnum spellsPerDay;
-// @Enumerated(EnumType.STRING)
-// SpellsEnum spellsKnown;
-// @Enumerated(EnumType.STRING)
-// SpellsEnum spells_domain;

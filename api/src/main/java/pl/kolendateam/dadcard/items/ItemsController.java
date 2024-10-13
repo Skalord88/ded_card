@@ -82,48 +82,48 @@ public class ItemsController {
   public List<Items> changeItem(@RequestBody ItemsListDTO itemListDTO) {
     if (itemListDTO.armorsList != null && !itemListDTO.armorsList.isEmpty()) {
       Armors newArmor = MapperItems.toArmor(itemListDTO.armorsList.get(0));
-      Optional<Armors> existingArmor =
-        this.itemsRepository.findArmorsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
-            newArmor.getEnchantment(),
-            newArmor.getArmorType(),
-            newArmor.getFailure(),
-            newArmor.getPenality(),
-            newArmor.getMaterial()
-          );
-      if (!existingArmor.isPresent()) {
-        newArmor.setId(null);
-        this.itemsRepository.save(newArmor);
-      }
+      // Optional<Armors> existingArmor =
+      // this.itemsRepository.findArmorsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
+      // newArmor.getEnchantment(),
+      // newArmor.getArmorType(),
+      // newArmor.getFailure(),
+      // newArmor.getPenality(),
+      // newArmor.getMaterial()
+      // );
+      // if (!existingArmor.isPresent()) {
+      //   newArmor.setId(null);
+      //   this.itemsRepository.save(newArmor);
+      // }
     }
     if (itemListDTO.shieldList != null && !itemListDTO.shieldList.isEmpty()) {
       Shields newShield = MapperItems.toShield(itemListDTO.shieldList.get(0));
-      Optional<Shields> existingShield =
-        this.itemsRepository.findShieldsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
-            newShield.getEnchantment(),
-            newShield.getArmorType(),
-            newShield.getFailure(),
-            newShield.getPenality(),
-            newShield.getMaterial()
-          );
-      if (!existingShield.isPresent()) {
-        newShield.setId(null);
-        this.itemsRepository.save(newShield);
-      }
+      // Optional<Shields> existingShield =
+      // this.itemsRepository.findShieldsByEnchantmentAndArmorTypeAndFailureAndPenalityAndMaterial(
+      // newShield.getEnchantment(),
+      // newShield.getArmorType(),
+      // newShield.getFailure(),
+      // newShield.getPenality(),
+      // newShield.getMaterial()
+      // );
+      // if (!existingShield.isPresent()) {
+      //   newShield.setId(null);
+      //   this.itemsRepository.save(newShield);
+      // }
     }
     if (itemListDTO.weaponsList != null && !itemListDTO.weaponsList.isEmpty()) {
       List<Weapons> listOfWeapons = MapperItems.toListOfWeapons(
         itemListDTO.weaponsList
       );
       listOfWeapons.forEach(weapon -> {
-        Optional<Weapons> existingWeapon =
-          this.itemsRepository.findWeaponsByEnchantmentAndMaterial(
-              weapon.getEnchantment(),
-              weapon.getMaterial()
-            );
-        if (!existingWeapon.isPresent()) {
-          weapon.setId(null);
-          this.itemsRepository.save(weapon);
-        }
+        // Optional<Weapons> existingWeapon =
+        // this.itemsRepository.findWeaponsByEnchantmentAndMaterial(
+        // weapon.getEnchantment(),
+        // weapon.getMaterial()
+        // );
+        // if (!existingWeapon.isPresent()) {
+        //   weapon.setId(null);
+        //   this.itemsRepository.save(weapon);
+        // }
       });
     }
     return this.itemsRepository.findAll();

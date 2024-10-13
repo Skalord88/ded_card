@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
@@ -22,7 +22,7 @@ public class ShieldsDTO {
   public ItemTypeEnum itemType;
   public ArmorsEnum shieldName;
   public Set<ModifierDTO> modifiers;
-  public BigDecimal cost;
+  public double cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
   public int maxDex;
@@ -45,12 +45,12 @@ public class ShieldsDTO {
     this.penality = item.getPenality();
     this.failure = item.getFailure();
     this.description = item.getDescription();
-    if (item.getEnchantment() == null) {
-      this.enchantment = new EnchantmentDTO(0, 0);
-    } else {
-      this.enchantment =
-        MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
-    }
+    // if (item.getEnchantment() == null) {
+    //   this.enchantment = new EnchantmentDTO(0, 0);
+    // } else {
+    //   this.enchantment =
+    //     MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
+    // }
     this.material = item.getMaterial();
   }
 }

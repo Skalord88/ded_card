@@ -18,6 +18,7 @@ import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
@@ -33,31 +34,31 @@ public class Inventory {
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "armor_id", referencedColumnName = "id")
-  Armors armor;
+  EnchantedItems armor;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "shield_id", referencedColumnName = "id")
-  Shields shield;
+  EnchantedItems shield;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_one", referencedColumnName = "id")
-  Weapons weaponOne;
+  EnchantedItems weaponOne;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_two", referencedColumnName = "id")
-  Weapons weaponTwo;
+  EnchantedItems weaponTwo;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_three", referencedColumnName = "id")
-  Weapons weaponThree;
+  EnchantedItems weaponThree;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_four", referencedColumnName = "id")
-  Weapons weaponFour;
+  EnchantedItems weaponFour;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_five", referencedColumnName = "id")
-  Weapons weaponFive;
+  EnchantedItems weaponFive;
 
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
@@ -96,9 +97,9 @@ public class Inventory {
   WondrousItems legs;
 
   public Inventory() {
-    this.armor = new Armors(2);
-    this.shield = new Shields(3);
-    Weapons weapon = new Weapons(1);
+    this.armor = new EnchantedItems();
+    this.shield = new EnchantedItems();
+    EnchantedItems weapon = new EnchantedItems();
     this.weaponOne = weapon;
     this.weaponTwo = weapon;
     this.weaponThree = weapon;
@@ -118,62 +119,62 @@ public class Inventory {
   }
 
   public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
-    if (inventoryDTO.armor != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.armor.id) {
-          this.armor = (Armors) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.shield != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.shield.id) {
-          this.shield = (Shields) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.weaponOne != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.weaponOne.id) {
-          this.weaponOne = (Weapons) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.weaponTwo != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.weaponTwo.id) {
-          this.weaponTwo = (Weapons) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.weaponThree != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.weaponThree.id) {
-          this.weaponThree = (Weapons) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.weaponFour != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.weaponFour.id) {
-          this.weaponFour = (Weapons) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.weaponFive != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.weaponFive.id) {
-          this.weaponFive = (Weapons) item;
-          break;
-        }
-      }
-    }
+    // if (inventoryDTO.armor != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.armor.id) {
+    //       this.armor = (EnchantedItems) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.shield != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.shield.id) {
+    //       this.shield = (Shields) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.weaponOne != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.weaponOne.id) {
+    //       this.weaponOne = (Weapons) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.weaponTwo != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.weaponTwo.id) {
+    //       this.weaponTwo = (Weapons) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.weaponThree != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.weaponThree.id) {
+    //       this.weaponThree = (Weapons) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.weaponFour != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.weaponFour.id) {
+    //       this.weaponFour = (Weapons) item;
+    //       break;
+    //     }
+    //   }
+    // }
+    // if (inventoryDTO.weaponFive != null) {
+    //   for (Items item : itemsList) {
+    //     if (item.id == inventoryDTO.weaponFive.id) {
+    //       this.weaponFive = (Weapons) item;
+    //       break;
+    //     }
+    //   }
+    // }
     if (inventoryDTO.backpack != null || inventoryDTO.backpack.size() > 0) {
       this.backpack = MapperItems.toListItems(inventoryDTO.backpack, itemsList);
     }

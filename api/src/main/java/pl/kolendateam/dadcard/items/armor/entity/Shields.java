@@ -13,10 +13,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.items.MapperEnchantment;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
-import pl.kolendateam.dadcard.items.dto.EnchantmentDTO;
-import pl.kolendateam.dadcard.items.entity.Enchantment;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
@@ -46,9 +46,9 @@ public class Shields extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
-  Enchantment enchantment;
+  // @ManyToOne(cascade = CascadeType.MERGE)
+  // @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
+  // Enchantment enchantment;
 
   public Shields(ShieldsDTO shield) {
     super(shield);
@@ -59,11 +59,11 @@ public class Shields extends Items {
     this.penality = shield.penality;
     this.failure = shield.failure;
     this.material = shield.material;
-    if (shield.enchantment == null) {
-      this.enchantment =  new Enchantment(0, 0);
-    } else {
-      this.enchantment = MapperEnchantment.toEnchantment(shield.enchantment);
-    }
+    // if (shield.enchantment == null) {
+    //   this.enchantment =  new Enchantment(0, 0);
+    // } else {
+    //   this.enchantment = MapperEnchantment.toEnchantment(shield.enchantment);
+    // }
   }
 
   public void setItemType(ItemTypeEnum itemType) {}

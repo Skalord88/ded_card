@@ -69,14 +69,14 @@
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="112" />
             <column name="selected" value="[
-                &quot;SHORTSPEAR&quot;
+                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 14}
             ]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="113" />
             <column name="selected" value="[
-                &quot;SHORTSPEAR&quot;
+                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 14}
             ]" />
         </insert>
         

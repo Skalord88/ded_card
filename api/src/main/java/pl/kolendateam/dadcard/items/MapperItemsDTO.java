@@ -10,6 +10,7 @@ import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
@@ -63,5 +64,12 @@ public class MapperItemsDTO {
       return new AttacksDTO();
     }
     return new AttacksDTO(characterAttacks);
+  }
+
+  public static ArmorsDTO toArmorDTO(EnchantedItems armor) {
+    if (armor == null) {
+      return new ArmorsDTO();
+    }
+    return new ArmorsDTO(armor);
   }
 }

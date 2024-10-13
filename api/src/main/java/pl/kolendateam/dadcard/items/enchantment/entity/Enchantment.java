@@ -1,49 +1,45 @@
-package pl.kolendateam.dadcard.feats.entity;
+package pl.kolendateam.dadcard.items.enchantment.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-@Table(name = "feats")
-public class Feats implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Enchantment implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  String featName;
+  int enchantment;
 
   @Enumerated(EnumType.STRING)
-  FeatsTypeEnum featsType;
-
-  String description;
+  ItemAbilityEnum ability;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  List<Prerequisite> prerequisite = new ArrayList<>();
+  Set<ModifierBonus> modifiers;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers = new HashSet<>();
+  int cost;
 
-  public Feats(int idDTO) {
-    this.id = idDTO;
+  public Enchantment(EnchantmentDTO enchantmentDTO) {
+    this.id = enchantmentDTO.id;
+    this.enchantment = enchantmentDTO.enchantment;
   }
 }

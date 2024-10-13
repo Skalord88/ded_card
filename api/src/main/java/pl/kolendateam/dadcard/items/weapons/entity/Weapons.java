@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
-import pl.kolendateam.dadcard.items.MapperEnchantment;
-import pl.kolendateam.dadcard.items.entity.Enchantment;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
+import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
@@ -52,10 +52,6 @@ public class Weapons extends Items {
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
-  Enchantment enchantment;
-
   public Weapons(WeaponsDTO weapon) {
     super(weapon);
     this.weaponName = weapon.weaponName;
@@ -76,11 +72,11 @@ public class Weapons extends Items {
     }
     this.material = weapon.material;
     this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
-    if (weapon.enchantment == null) {
-      this.enchantment = new Enchantment(0, 0);
-    } else {
-      this.enchantment = MapperEnchantment.toEnchantment(weapon.enchantment);
-    }
+    // if (weapon.enchantment == null) {
+    //   this.enchantment = new Enchantment(0, 0);
+    // } else {
+    //   this.enchantment = MapperEnchantment.toEnchantment(weapon.enchantment);
+    // }
   }
 
   public void setItemType(ItemTypeEnum itemType) {}

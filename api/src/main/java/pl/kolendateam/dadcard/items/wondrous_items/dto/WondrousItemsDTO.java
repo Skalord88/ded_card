@@ -12,7 +12,7 @@ public class WondrousItemsDTO implements Serializable {
   public int id;
   public String name;
   public ItemTypeEnum itemType;
-  public BigDecimal cost;
+  public double cost;
   public BigDecimal weight;
   public String description;
 
