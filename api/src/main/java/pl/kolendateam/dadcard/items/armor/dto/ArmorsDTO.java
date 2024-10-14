@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -52,23 +51,23 @@ public class ArmorsDTO implements Serializable {
     this.material = item.getMaterial();
   }
 
-  public ArmorsDTO(EnchantedItems armor) {
-    ArmorsDTO armorDTO = new ArmorsDTO((Armors) armor.getItem());
+  public ArmorsDTO(EnchantedItems item) {
+    ArmorsDTO armorDTO = new ArmorsDTO((Armors) item.getItem());
     Set<ModifierDTO> setOfMods = new HashSet<>();
     if (armorDTO.modifiers != null) {
       armorDTO.modifiers.forEach(ar -> {
         setOfMods.add(ar);
       });
     }
-    if (armor.getModifiers() != null) {
-      armor
+    if (item.getModifiers() != null) {
+      item
         .getModifiers()
         .forEach(ar -> {
           setOfMods.add(MapperModifierBonus.toModifierDTO(ar));
         });
     }
-    this.id = armor.getItem().getId();
-    this.name = armor.getItem().getName();
+    this.id = item.getItem().getId();
+    this.name = item.getItem().getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = armorDTO.armorName;
     this.modifiers = setOfMods;
@@ -79,6 +78,8 @@ public class ArmorsDTO implements Serializable {
     this.penality = armorDTO.penality;
     this.failure = armorDTO.failure;
     this.description = armorDTO.description;
-    this.material = armor.getMaterial();
+    this.material = item.getMaterial();
+    this.enchantmentList =
+      MapperEnchantment.toEnchantmentDTOSet(item.getEnchantmentList());
   }
 }

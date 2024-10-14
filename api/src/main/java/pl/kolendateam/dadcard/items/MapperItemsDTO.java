@@ -21,29 +21,32 @@ import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 public class MapperItemsDTO {
 
   public static ArmorsDTO toArmorDTO(Armors item) {
+    if (item == null) return null;
     return new ArmorsDTO(item);
   }
 
   public static ShieldsDTO toShieldDTO(Shields item) {
+    if (item == null) return null;
     return new ShieldsDTO(item);
   }
 
   public static WeaponsDTO toWeaponDTO(Weapons item) {
+    if (item == null) return null;
     return new WeaponsDTO(item);
   }
 
   public static ItemsDTO toItemsDTO(Items item) {
+    if (item == null) return null;
     return new ItemsDTO(item);
   }
 
   public static WondrousItemsDTO toWondrousItemsDTO(WondrousItems item) {
+    if (item == null) return null;
     return new WondrousItemsDTO(item);
   }
 
   public static InventoryDTO toInventoryDTO(Inventory inventory) {
-    if (inventory == null) {
-      return new InventoryDTO();
-    }
+    if (inventory == null) return new InventoryDTO();
     return new InventoryDTO(inventory);
   }
 
@@ -66,10 +69,18 @@ public class MapperItemsDTO {
     return new AttacksDTO(characterAttacks);
   }
 
-  public static ArmorsDTO toArmorDTO(EnchantedItems armor) {
-    if (armor == null) {
-      return new ArmorsDTO();
-    }
-    return new ArmorsDTO(armor);
+  public static ArmorsDTO toArmorDTO(EnchantedItems item) {
+    if (item == null) return new ArmorsDTO();
+    return new ArmorsDTO(item);
+  }
+
+  public static ShieldsDTO toShieldDTO(EnchantedItems item) {
+    if (item == null) return new ShieldsDTO();
+    return new ShieldsDTO(item);
+  }
+
+  public static WeaponsDTO toWeaponDTO(EnchantedItems item) {
+    if (item == null) return new WeaponsDTO();
+    return new WeaponsDTO(item);
   }
 }

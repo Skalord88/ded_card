@@ -5,12 +5,16 @@ import com.google.gson.reflect.TypeToken;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
@@ -39,8 +43,8 @@ public class WeaponsDTO implements Serializable {
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
-  public EnchantmentDTO enchantment;
   public MaterialEnum material;
+  public Set<EnchantmentDTO> enchantmentList;
 
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();
@@ -66,12 +70,38 @@ public class WeaponsDTO implements Serializable {
     WeaponCategoriesEnum[] typ = gson.fromJson(item.getType(), listWeaponType);
     this.type = typ;
     this.description = item.getDescription();
-    // if (item.getEnchantment() == null) {
-    //   this.enchantment = new EnchantmentDTO(0, 0);
-    // } else {
-    //   this.enchantment =
-    //     MapperEnchantment.toEnchantmentDTO(item.getEnchantment());
-    // }
     this.material = item.getMaterial();
+  }
+
+  public WeaponsDTO(EnchantedItems item) {
+    WeaponsDTO weaponDTO = new WeaponsDTO((Weapons) item.getItem());
+    Set<ModifierDTO> setOfMods = new HashSet<>();
+    if (weaponDTO.modifiers != null) {
+      weaponDTO.modifiers.forEach(it -> {
+        setOfMods.add(it);
+      });
+    }
+    if (item.getModifiers() != null) {
+      item
+        .getModifiers()
+        .forEach(it -> {
+          setOfMods.add(MapperModifierBonus.toModifierDTO(it));
+        });
+    }
+    this.id = item.getItem().getId();
+    this.name = item.getItem().getName();
+    this.itemType = ItemTypeEnum.WEAPON;
+    this.weaponName = weaponDTO.weaponName;
+    this.modifiers = setOfMods;
+    this.cost = weaponDTO.cost;
+    this.weight = weaponDTO.weight;
+    this.size = weaponDTO.size;
+    this.modifiers = setOfMods;
+    this.type = weaponDTO.type;
+    this.specialAttacks = weaponDTO.specialAttacks;
+    this.description = weaponDTO.description;
+    this.material = item.getMaterial();
+    this.enchantmentList =
+      MapperEnchantment.toEnchantmentDTOSet(item.getEnchantmentList());
   }
 }
