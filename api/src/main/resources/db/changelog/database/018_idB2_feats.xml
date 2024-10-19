@@ -12,18 +12,24 @@
         <column name="feat_name" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="feats_type" type="varchar(255)">
+        <column name="prerequisites" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="description" type="varchar(90000)">
+        <column name="benefit" type="varchar(1000)">
           <constraints nullable="true"/>
         </column>
-        <column name="prerequisite" type="json">
+        <column name="normal" type="varchar(1000)">
+          <constraints nullable="true"/>
+        </column>
+        <column name="special" type="varchar(500)">
           <constraints nullable="true"/>
         </column>
         <column name="modifiers" type="json">
           <constraints nullable="true"/>
         </column>
+        <!-- <column name="feats_type" type="json">
+          <constraints nullable="true"/>
+        </column> -->
       </createTable>
   </changeSet>
 </databaseChangeLog>

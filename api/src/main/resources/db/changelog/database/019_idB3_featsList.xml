@@ -1,2318 +1,774 @@
-<databaseChangeLog
-  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-
-  <changeSet id="202" author="oscar">
-    <insert tableName="feats">
-      <column name="feat_name" value="Acrobatic" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You get a +2 bonus on all Jump checks and Tumble checks."
-      />
-      <column name="modifiers"
-        value="[
-            {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;JUMP&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;TUMBLE&quot;]
-            }
-      ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Agile" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You get a +2 bonus on all Balance checks and Escape Artist checks."
-      />
-      <column name="modifiers"
-        value="[
-            {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;BALANCE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;ESCAPE_ARTIST&quot;]
-            }
-      ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Alertness" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You get a +2 bonus on all Listen checks and Spot checks. Special:The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm’s reach."
-      />
-      <column name="modifiers"
-        value="[
-            {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;LISTEN&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SPOT&quot;]
-            }
-      ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Animal affinity" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You get a +2 bonus on all Handle Animal checks and Ride checks."
-      />
-      <column name="modifiers"
-        value="[
-            {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;HANDLE_ANIMAL&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;RIDE&quot;]
-            }
-      ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Armor proficiency (heavy)" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 6},
-        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 7}
-        ]" />
-      <column name="description"
-        value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Armor proficiency (light)" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks. Normal: A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride. Special: All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it."
-      />
-    </insert>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+<changeSet id="202" author="oscar">
+  <insert tableName="feats">
+    <column name="feat_name" value="Acrobatic [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Jump checks and Tumble checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Agile [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Balance checks and Escape Artist checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Alertness [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Listen checks and Spot checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm�s reach." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Animal Affinity [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Handle Animal checks and Ride checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Armor Proficiency (Heavy) [General]" />
+      <column name="prerequisites" value="Armor Proficiency (light), Armor Proficiency (medium)." />
+      <column name="benefit" value="See Armor Proficiency (light)." />
+      <column name="normal" value="See Armor Proficiency (light)." />
+      <column name="special" value="Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Armor Proficiency (Light) [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks." />
+      <column name="normal" value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
+      <column name="special" value="All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Armor Proficiency (Medium) [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="See Armor Proficiency (light)." />
+      <column name="normal" value="See Armor Proficiency (light)." />
+      <column name="special" value="Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Athletic [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Climb checks and Swim checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Augment Summoning [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Each creature you conjure with any summon spell gains a +4 enhancement bonus to Strength and Constitution for the duration of the spell that summoned it." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Blind-Fight [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="In melee, every time you miss because of concealment, you can reroll your miss chance percentile roll one time to see if you actually hit." />
+      <column name="normal" value="Regular attack roll modifiers for invisible attackers trying to hit you apply, and you lose your Dexterity bonus to AC. The speed reduction for darkness and poor visibility also applies." />
+      <column name="special" value="The Blind-Fight feat is of no use against a character who is the subject of a blink spell." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Brew Potion [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level � its caster level � 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Cleave [General]" />
+      <column name="prerequisites" value="Str 13, Power Attack." />
+      <column name="benefit" value="If you deal a creature enough damage to make it drop (typically by dropping it to below 0 hit points or killing it), you get an immediate, extra melee attack against another creature within reach. You cannot take a 5-foot step before making this extra attack. The extra attack is with the same weapon and at the same bonus as the attack that dropped the previous creature. You can use this ability once per round." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Cleave as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Combat Casting [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while you are grappling or pinned." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Combat Expertise [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When you use the attack action or the full attack action in melee, you can take a penalty of as much as -5 on your attack roll and add the same number (+5 or less) as a dodge bonus to your Armor Class. This number may not exceed your base attack bonus. The changes to attack rolls and Armor Class last until your next action." />
+      <column name="normal" value="A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class." />
+      <column name="special" value="A fighter may select Combat Expertise as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Combat Reflexes [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You may make a number of additional attacks of opportunity equal to your Dexterity bonus." />
+      <column name="normal" value="A character without this feat can make only one attack of opportunity per round and can�t make attacks of opportunity while flat-footed." />
+      <column name="special" value="The Combat Reflexes feat does not allow a rogue to use her opportunist ability more than once per round." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Craft Magic Arms And Armor [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features� total price in XP and use up raw materials costing one-half of this total price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Craft Rod [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create any rod whose prerequisites you meet. Crafting a rod takes one day for each 1,000 gp in its base price. To craft a rod, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Craft Staff [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create any staff whose prerequisites you meet." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Craft Wand [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create a wand of any 4th-level or lower spell that you know. Crafting a wand takes one day for each 1,000 gp in its base price. The base price of a wand is its caster level � the spell level � 750 gp. To craft a wand, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price. A newly created wand has 50 charges." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Craft Wondrous Item [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create any wondrous item whose prerequisites you meet. Enchanting a wondrous item takes one day for each 1,000 gp in its price. To enchant a wondrous item, you must spend 1/25 of the item�s price in XP and use up raw materials costing half of this price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Deceitful [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Disguise checks and Forgery checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Deflect Arrows [General]" />
+      <column name="prerequisites" value="Dex 13, Improved Unarmed Strike." />
+      <column name="benefit" value="You must have at least one hand free (holding nothing) to use this feat. Once per round when you would normally be hit with a ranged weapon, you may deflect it so that you take no damage from it. You must be aware of the attack and not flat-footed." />
+      <column name="normal" value="null" />
+      <column name="special" value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Deft Hands [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Sleight of Hand checks and Use Rope checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Diehard [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When reduced to between -1 and -9 hit points, you automatically become stable. You don�t have to roll d% to see if you lose 1 hit point each round." />
+      <column name="normal" value="A character without this feat who is reduced to between -1 and -9 hit points is unconscious and dying." />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Diligent [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Appraise checks and Decipher Script checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Dodge [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="During your action, you designate an opponent and receive a +1 dodge bonus to Armor Class against attacks from that opponent. You can select a new opponent on any action." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Dodge as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Empower Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="All variable, numeric effects of an empowered spell are increased by one-half." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Endurance [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued." />
+      <column name="normal" value="A character without this feat who sleeps in medium or heavier armor is automatically fatigued the next day." />
+      <column name="special" value="A ranger automatically gains Endurance as a bonus feat at 3rd level. He need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Enlarge Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can alter a spell with a range of close, medium, or long to increase its range by 100%. An enlarged spell with a range of close now has a range of 50 ft. + 5 ft./level, while medium-range spells have a range of 200 ft. + 20 ft./level and long-range spells have a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot one level higher than the spell�s actual level." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Eschew Materials [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can cast any spell that has a material component costing 1 gp or less without needing that component. (The casting of the spell still provokes attacks of opportunity as normal.) If the spell requires a material component that costs more than 1 gp, you must have the material component at hand to cast the spell, just as normal." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Exotic Weapon Proficiency [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You make attack rolls with the weapon normally." />
+      <column name="normal" value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
+      <column name="special" value="You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon. Proficiency with the bastard sword or the dwarven waraxe has an additional prerequisite of Str 13." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Extend Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="An extended spell lasts twice as long as normal. A spell with a duration of concentration, instantaneous, or permanent is not affected by this feat. An extended spell uses up a spell slot one level higher than the spell�s actual level." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Extra Turning [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Each time you take this feat, you can use your ability to turn or rebuke creatures four more times per day than normal." />
+      <column name="normal" value="Without this feat, a character can typically turn or rebuke undead (or other creatures) a number of times per day equal to 3 + his or her Charisma modifier." />
+      <column name="special" value="You can gain Extra Turning multiple times. Its effects stack. Each time you take the feat, you can use each of your turning or rebuking abilities four additional times per day." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Far Shot [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When you use a projectile weapon, such as a bow, its range increment increases by one-half (multiply by 1?). When you use a thrown weapon, its range increment is doubled." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Far Shot as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Forge Ring [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Great Cleave [General]" />
+      <column name="prerequisites" value="Str 13, Cleave, Power Attack, base attack bonus +4." />
+      <column name="benefit" value="This feat works like Cleave, except that there is no limit to the number of times you can use it per round." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Great Cleave as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Great Fortitude [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Fortitude saving throws." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Greater Spell Focus [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select. This bonus stacks with the bonus from Spell Focus." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic to which you already have applied the Spell Focus feat." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Greater Spell Penetration [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature�s spell resistance. This bonus stacks with the one from Spell Penetration." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Greater Two-Weapon Fighting [General]" />
+      <column name="prerequisites" value="Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11." />
+      <column name="benefit" value="You get a third attack with your off-hand weapon, albeit at a -10 penalty. See the Two-Weapon Fighting special attack." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Greater Two-Weapon Fighting as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Greater Weapon Focus [General]" />
+      <column name="prerequisites" value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 8th." />
+      <column name="benefit" value="You gain a +1 bonus on all attack rolls you make using the selected weapon. This bonus stacks with other bonuses on attack rolls, including the one from Weapon Focus (see below)." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain Greater Weapon Focus multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Greater Weapon Specialization [General]" />
+      <column name="prerequisites" value="Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, fighter level 12th." />
+      <column name="benefit" value="You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus stacks with other bonuses on damage rolls, including the one from Weapon Specialization (see below)." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain Greater Weapon Specialization multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Heighten Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="A heightened spell has a higher spell level than normal (up to a maximum of 9th level). Unlike other metamagic feats, Heighten Spell actually increases the effective level of the spell that it modifies. All effects dependent on spell level (such as saving throw DCs and ability to penetrate a lesser globe of invulnerability) are calculated according to the heightened level. The heightened spell is as difficult to prepare and cast as a spell of its effective level." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Bull Rush [General]" />
+      <column name="prerequisites" value="Str 13, Power Attack." />
+      <column name="benefit" value="When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Improved Bull Rush as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Counterspell [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When counterspelling, you may use a spell of the same school that is one or more spell levels higher than the target spell." />
+      <column name="normal" value="Without this feat, you may counter a spell only with the same spell or with a spell specifically designated as countering the target spell." />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Critical [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When using the weapon you selected, your threat range is doubled." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain Improved Critical multiple times. The effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Disarm [General]" />
+      <column name="prerequisites" value="Int 13, Combat Expertise." />
+      <column name="benefit" value="You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent." />
+      <column name="normal" value="See the normal disarm rules." />
+      <column name="special" value="A fighter may select Improved Disarm as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Familiar [General]" />
+      <column name="prerequisites" value="Ability to acquire a new familiar, compatible alignment, sufficiently high level (see below)." />
+      <column name="benefit" value="When choosing a familiar, the creatures listed below are also available to the spellcaster. The spellcaster may choose a familiar with an alignment up to one step away on each of the alignment axes (lawful through chaotic, good through evil)." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Feint [General]" />
+      <column name="prerequisites" value="Int 13, Combat Expertise." />
+      <column name="benefit" value="You can make a Bluff check to feint in combat as a move action." />
+      <column name="normal" value="Feinting in combat is a standard action." />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Grapple [General]" />
+      <column name="prerequisites" value="Dex 13, Improved Unarmed Strike." />
+      <column name="benefit" value="You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple." />
+      <column name="normal" value="Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple." />
+      <column name="special" value="A fighter may select Improved Grapple as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Initiative [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +4 bonus on initiative checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Improved Initiative as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Overrun [General]" />
+      <column name="prerequisites" value="Str 13, Power Attack." />
+      <column name="benefit" value="When you attempt to overrun an opponent, the target may not choose to avoid you. You also gain a +4 bonus on your Strength check to knock down your opponent." />
+      <column name="normal" value="Without this feat, the target of an overrun can choose to avoid you or to block you." />
+      <column name="special" value="A fighter may select Improved Overrun as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Precise Shot [General]" />
+      <column name="prerequisites" value="Dex 19, Point Blank Shot, Precise Shot, base attack bonus +11." />
+      <column name="benefit" value="Your ranged attacks ignore the AC bonus granted to targets by anything less than total cover, and the miss chance granted to targets by anything less than total concealment. Total cover and total concealment provide their normal benefits against your ranged attacks." />
+      <column name="normal" value="See the normal rules on the effects of cover and concealment. Without this feat, a character who shoots or throws a ranged weapon at a target involved in a grapple must roll randomly to see which grappling combatant the attack strikes." />
+      <column name="special" value="A fighter may select Improved Precise Shot as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Shield Bash [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When you perform a shield bash, you may still apply the shield�s shield bonus to your AC." />
+      <column name="normal" value="Without this feat, a character who performs a shield bash loses the shield�s shield bonus to AC until his or her next turn." />
+      <column name="special" value="A fighter may select Improved Shield Bash as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Sunder [General]" />
+      <column name="prerequisites" value="Str 13, Power Attack." />
+      <column name="benefit" value="When you strike at an object held or carried by an opponent (such as a weapon or shield), you do not provoke an attack of opportunity." />
+      <column name="normal" value="Without this feat, you provoke an attack of opportunity when you strike at an object held or carried by another character." />
+      <column name="special" value="A fighter may select Improved Sunder as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Trip [General]" />
+      <column name="prerequisites" value="Int 13, Combat Expertise." />
+      <column name="benefit" value="You do not provoke an attack of opportunity when you attempt to trip an opponent while you are unarmed. You also gain a +4 bonus on your Strength check to trip your opponent." />
+      <column name="normal" value="Without this feat, you provoke an attack of opportunity when you attempt to trip an opponent while you are unarmed." />
+      <column name="special" value="At 6th level, a monk may select Improved Trip as a bonus feat, even if she does not have the prerequisites." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Turning [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You turn or rebuke creatures as if you were one level higher than you are in the class that grants you the ability." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Two-Weapon Fighting [General]" />
+      <column name="prerequisites" value="Dex 17, Two-Weapon Fighting, base attack bonus +6." />
+      <column name="benefit" value="In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a -5 penalty. See the Two-Weapon Fighting special attack." />
+      <column name="normal" value="Without this feat, you can only get a single extra attack with an off-hand weapon." />
+      <column name="special" value="A fighter may select Improved Two-Weapon Fighting as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Improved Unarmed Strike [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You are considered to be armed even when unarmed �that is, you do not provoke attacks or opportunity from armed opponents when you attack them while unarmed. However, you still get an attack of opportunity against any opponent who makes an unarmed attack on you." />
+      <column name="normal" value="Without this feat, you are considered unarmed when attacking with an unarmed strike, and you can deal only nonlethal damage with such an attack." />
+      <column name="special" value="A monk automatically gains Improved Unarmed Strike as a bonus feat at 1st level. She need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Investigator [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Gather Information checks and Search checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Iron Will [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Will saving throws." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Leadership [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="null" />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Lightning Reflexes [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Reflex saving throws." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Magical Aptitude [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Spellcraft checks and Use Magic Device checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Manyshot [General]" />
+      <column name="prerequisites" value="Dex 17, Point Blank Shot, Rapid Shot, base attack bonus +6" />
+      <column name="benefit" value="As a standard action, you may fire two arrows at a single opponent within 30 feet. Both arrows use the same attack roll (with a -4 penalty) to determine success and deal damage normally (but see Special)." />
+      <column name="normal" value="null" />
+      <column name="special" value="Regardless of the number of arrows you fire, you apply precision-based damage only once. If you score a critical hit, only the first arrow fired deals critical damage; all others deal regular damage." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Martial Weapon Proficiency [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You make attack rolls with the selected weapon normally." />
+      <column name="normal" value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
+      <column name="special" value="Barbarians, fighters, paladins, and rangers are proficient with all martial weapons. They need not select this feat." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Maximize Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="All variable, numeric effects of a spell modified by this feat are maximized. Saving throws and opposed rolls are not affected, nor are spells without random variables. A maximized spell uses up a spell slot three levels higher than the spell�s actual level." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Mobility [General]" />
+      <column name="prerequisites" value="Dex 13, Dodge." />
+      <column name="benefit" value="You get a +4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Mobility as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Mounted Archery [General]" />
+      <column name="prerequisites" value="Ride 1 rank, Mounted Combat." />
+      <column name="benefit" value="The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Mounted Archery as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Mounted Combat [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Once per round when your mount is hit in combat, you may attempt a Ride check (as a reaction) to negate the hit. The hit is negated if your Ride check result is greater than the opponent�s attack roll. (Essentially, the Ride check result becomes the mount�s Armor Class if it�s higher than the mount�s regular AC.)" />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Mounted Combat as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Natural Spell [General]" />
+      <column name="prerequisites" value="Wis 13, wild shape ability." />
+      <column name="benefit" value="You can complete the verbal and somatic components of spells while in a wild shape. You substitute various noises and gestures for the normal verbal and somatic components of a spell." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Negotiator [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Diplomacy checks and Sense Motive checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Nimble Fingers [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Disable Device checks and Open Lock checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Persuasive [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Bluff checks and Intimidate checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Point Blank Shot [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Point Blank Shot as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Power Attack [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn." />
+      <column name="normal" value="null" />
+      <column name="special" value="If you attack with a two-handed weapon, or with a one-handed weapon wielded in two hands, instead add twice the number subtracted from your attack rolls. You can�t add the bonus from Power Attack to the damage dealt with a light weapon (except with unarmed strikes or natural weapon attacks), even though the penalty on attack rolls still applies. (Normally, you treat a double weapon as a one-handed weapon and a light weapon. If you choose to use a double weapon like a two-handed weapon, attacking with only one end of it in a round, you treat it as a two-handed weapon.)" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Precise Shot [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty on your attack roll." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Precise Shot as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Quick Draw [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action." />
+      <column name="normal" value="Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action." />
+      <column name="special" value="A fighter may select Quick Draw as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Quicken Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Casting a quickened spell is an swift action. You can perform another action, even casting another spell, in the same round as you cast a quickened spell. You may cast only one quickened spell per round. A spell whose casting time is more than 1 full round action cannot be quickened. A quickened spell uses up a spell slot four levels higher than the spell�s actual level. Casting a quickened spell doesn�t provoke an attack of opportunity." />
+      <column name="normal" value="null" />
+      <column name="special" value="This feat can�t be applied to any spell cast spontaneously (including sorcerer spells, bard spells, and cleric or druid spells cast spontaneously), since applying a metamagic feat to a spontaneously cast spell automatically increases the casting time to a full-round action." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Rapid Reload [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity." />
+      <column name="normal" value="A character without this feat needs a move action to reload a hand or light crossbow, or a full-round action to reload a heavy crossbow." />
+      <column name="special" value="You can gain Rapid Reload multiple times. Each time you take the feat, it applies to a new type of crossbow." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Rapid Shot [General]" />
+      <column name="prerequisites" value="Dex 13, Point Blank Shot." />
+      <column name="benefit" value="You can get one extra attack per round with a ranged weapon. The attack is at your highest base attack bonus, but each attack you make in that round (the extra one and the normal ones) takes a -2 penalty. You must use the full attack action to use this feat." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Rapid Shot as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Ride-By Attack [General]" />
+      <column name="prerequisites" value="Ride 1 rank, Mounted Combat." />
+      <column name="benefit" value="When you are mounted and use the charge action, you may move and attack as if with a standard charge and then move again (continuing the straight line of the charge). Your total movement for the round can�t exceed double your mounted speed. You and your mount do not provoke an attack of opportunity from the opponent that you attack." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Ride-By Attack as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Run [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Jump skill description), you gain a +4 bonus on your Jump check. While running, you retain your Dexterity bonus to AC." />
+      <column name="normal" value="You move four times your speed while running (if wearing medium, light, or no armor and carrying no more than a medium load) or three times your speed (if wearing heavy armor or carrying a heavy load), and you lose your Dexterity bonus to AC." />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Scribe Scroll [Item Creation]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can create a scroll of any spell that you know. Scribing a scroll takes one day for each 1,000 gp in its base price. The base price of a scroll is its spell level � its caster level � 25 gp. To scribe a scroll, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Self-Sufficient [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Heal checks and Survival checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Shield Proficiency [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can use a shield and take only the standard penalties." />
+      <column name="normal" value="When you are using a shield with which you are not proficient, you take the shield�s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride checks." />
+      <column name="special" value="Barbarians, bards, clerics, druids, fighters, paladins, and rangers automatically have Shield Proficiency as a bonus feat. They need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Shot On The Run [General]" />
+      <column name="prerequisites" value="Dex 13, Dodge, Mobility, Point Blank Shot, base attack bonus +4." />
+      <column name="benefit" value="When using the attack action with a ranged weapon, you can move both before and after the attack, provided that your total distance moved is not greater than your speed." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Shot on the Run as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Silent Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="A silent spell can be cast with no verbal components. Spells without verbal components are not affected. A silent spell uses up a spell slot one level higher than the spell�s actual level." />
+      <column name="normal" value="null" />
+      <column name="special" value="Bard spells cannot be enhanced by this metamagic feat." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Simple Weapon Proficiency [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You make attack rolls with simple weapons normally." />
+      <column name="normal" value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
+      <column name="special" value="All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Skill Focus [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +3 bonus on all checks involving that skill." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new skill." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Snatch Arrows [General]" />
+      <column name="prerequisites" value="Dex 15, Deflect Arrows, Improved Unarmed Strike." />
+      <column name="benefit" value="When using the Deflect Arrows feat you may catch the weapon instead of just deflecting it. Thrown weapons can immediately be thrown back at the original attacker (even though it isn�t your turn) or kept for later use." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Snatch Arrows as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Spell Focus [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Spell Mastery [Special]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Each time you take this feat, choose a number of spells equal to your Intelligence modifier that you already know. From that point on, you can prepare these spells without referring to a spellbook." />
+      <column name="normal" value="Without this feat, you must use a spellbook to prepare all your spells, except read magic." />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Spell Penetration [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature�s spell resistance." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Spirited Charge [General]" />
+      <column name="prerequisites" value="Ride 1 rank, Mounted Combat, Ride-By Attack." />
+      <column name="benefit" value="When mounted and using the charge action, you deal double damage with a melee weapon (or triple damage with a lance)." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Spirited Charge as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Spring Attack [General]" />
+      <column name="prerequisites" value="Dex 13, Dodge, Mobility, base attack bonus +4." />
+      <column name="benefit" value="When using the attack action with a melee weapon, you can move both before and after the attack, provided that your total distance moved is not greater than your speed. Moving in this way does not provoke an attack of opportunity from the defender you attack, though it might provoke attacks of opportunity from other creatures, if appropriate. You can�t use this feat if you are wearing heavy armor." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Spring Attack as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Stealthy [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You get a +2 bonus on all Hide checks and Move Silently checks." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Still Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="A stilled spell can be cast with no somatic components." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Stunning Fist [General]" />
+      <column name="prerequisites" value="Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8." />
+      <column name="benefit" value="You must declare that you are using this feat before you make your attack roll (thus, a failed attack roll ruins the attempt). Stunning Fist forces a foe damaged by your unarmed attack to make a Fortitude saving throw (DC 10 + ? your character level + your Wis modifier), in addition to dealing damage normally. A defender who fails this saving throw is stunned for 1 round (until just before your next action). A stunned creature drops everything held, can�t take actions, takes a -2 penalty to AC, and loses his Dexterity bonus to AC. You may attempt a stunning attack once per day for every four levels you have attained (but see Special), and no more than once per round. Constructs, oozes, plants, undead, incorporeal creatures, and creatures immune to critical hits cannot be stunned." />
+      <column name="normal" value="null" />
+      <column name="special" value="A monk may select Stunning Fist as a bonus feat at 1st level, even if she does not meet the prerequisites. A monk who selects this feat may attempt a stunning attack a number of times per day equal to her monk level, plus one more time per day for every four levels she has in classes other than monk." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Toughness [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You gain +3 hit points." />
+      <column name="normal" value="null" />
+      <column name="special" value="A character may gain this feat multiple times. Its effects stack." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Tower Shield Proficiency [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can use a tower shield and suffer only the standard penalties." />
+      <column name="normal" value="A character who is using a shield with which he or she is not proficient takes the shield�s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride." />
+      <column name="special" value="Fighters automatically have Tower Shield Proficiency as a bonus feat. They need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Track [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="To find tracks or to follow them for 1 mile requires a successful Survival check. You must make another Survival check every time the tracks become difficult to follow." />
+      <column name="normal" value="Without this feat, you can use the Survival skill to find tracks, but you can follow them only if the DC for the task is 10 or lower. Alternatively, you can use the Search skill to find a footprint or similar sign of a creature�s passage using the DCs given above, but you can�t use Search to follow tracks, even if someone else has already found them." />
+      <column name="special" value="A ranger automatically has Track as a bonus feat. He need not select it." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Trample [General]" />
+      <column name="prerequisites" value="Ride 1 rank, Mounted Combat." />
+      <column name="benefit" value="When you attempt to overrun an opponent while mounted, your target may not choose to avoid you. Your mount may make one hoof attack against any target you knock down, gaining the standard +4 bonus on attack rolls against prone targets." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Trample as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Two-Weapon Defense [General]" />
+      <column name="prerequisites" value="Dex 15, Two-Weapon Fighting." />
+      <column name="benefit" value="When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. See the Two-Weapon Fighting special attack." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Two-Weapon Defense as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Two-Weapon Fighting [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See the Two-Weapon Fighting special attack." />
+      <column name="normal" value="If you wield a second weapon in your off hand, you can get one extra attack per round with that weapon. When fighting in this way you suffer a -6 penalty with your regular attack or attacks with your primary hand and a -10 penalty to the attack with your off hand. If your off-hand weapon is light the penalties are reduced by 2 each. (An unarmed strike is always considered light.)" />
+      <column name="special" value="A 2nd-level ranger who has chosen the two-weapon combat style is treated as having Two-Weapon Fighting, even if he does not have the prerequisite for it, but only when he is wearing light or no armor." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Weapon Finesse [General]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Weapon Finesse as one of his fighter bonus feats." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Weapon Focus [General]" />
+      <column name="prerequisites" value="Proficiency with selected weapon, base attack bonus +1." />
+      <column name="benefit" value="You gain a +1 bonus on all attack rolls you make using the selected weapon." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Weapon Specialization [General]" />
+      <column name="prerequisites" value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." />
+      <column name="benefit" value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+      <column name="normal" value="null" />
+      <column name="special" value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+    </insert>
+    <insert tableName="feats">
+    <column name="feat_name" value="Whirlwind Attack [General]" />
+      <column name="prerequisites" value="Dex 13, Int 13, Combat Expertise, Dodge, Mobility, Spring Attack, base attack bonus +4." />
+      <column name="benefit" value="When you use the full attack action, you can give up your regular attacks and instead make one melee attack at your full base attack bonus against each opponent within reach." />
+      <column name="normal" value="null" />
+      <column name="special" value="A fighter may select Whirlwind Attack as one of his fighter bonus feats." />
+    </insert>
     <insert tableName="feats">
-      <column name="feat_name" value="Armor proficiency (medium)" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-          {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 6}
-      ]" />
-      <column name="description"
-        value="Benefit: See Armor Proficiency (light). Normal: See Armor Proficiency (light). Special: Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Athletic" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You get a +2 bonus on all Climb checks and Swim checks."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;CLIMB&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;SWIM&quot;]
-            }
-      ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Fast movement" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="A barbarian’s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian’s speed because of any load carried or armor worn."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SPEED&quot;,
-            &quot;bonus&quot; : 10,
-            &quot;targets&quot; : [&quot;HEAVY_ARMOR&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Illiteracy" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Barbarians are the only characters who do not automatically know how to read and write. A barbarian may spend 2 skill points to gain the ability to read and write all languages he is able to speak. A barbarian who gains a level in any other class automatically gains literacy. Any other character who gains a barbarian level does not lose the literacy he or she already had."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Rage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="A barbarian can fly into a rage a certain number of times per day. In a rage, a barbarian temporarily gains a +4 bonus to Strength, a +4 bonus to Constitution, and a +2 morale bonus on Will saves, but he takes a -2 penalty to Armor Class. The increase in Constitution increases the barbarian’s hit points by 2 points per level, but these hit points go away at the end of the rage when his Constitution score drops back to normal. (These extra hit points are not lost first the way temporary hit points are.) While raging, a barbarian cannot use any Charisma-, Dexterity-, or Intelligence-based skills (except for Balance, Escape Artist, Intimidate, and Ride), the Concentration skill, or any abilities that require patience or concentration, nor can he cast spells or activate magic items that require a command word, a spell trigger (such as a wand), or spell completion (such as a scroll) to function. He can use any feat he has except Combat Expertise, item creation feats, and metamagic feats. A fit of rage lasts for a number of rounds equal to 3 + the character’s (newly improved) Constitution modifier. A barbarian may prematurely end his rage. At the end of the rage, the barbarian loses the rage modifiers and restrictions and becomes fatigued (-2 penalty to Strength, -2 penalty to Dexterity, can’t charge or run) for the duration of the current encounter (unless he is a 17th-level barbarian, at which point this limitation no longer applies). A barbarian can fly into a rage only once per encounter. At 1st level he can use his rage ability once per day. At 4th level and every four levels thereafter, he can use it one additional time per day (to a maximum of six times per day at 20th level). Entering a rage takes no time itself, but a barbarian can do it only during his action, not in response to someone else’s action."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;RAGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Uncanny Dodge" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Character retains his Dexterity bonus to AC (if any) even if he is caught flat-footed or struck by an invisible attacker. However, he still loses his Dexterity bonus to AC if immobilized. If a character already has uncanny dodge from a different class, he automatically gains improved uncanny dodge instead."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;UNCANNY_DODGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Trap Sense" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Character gains a +1 bonus on Reflex saves made to avoid traps and a +1 dodge bonus to AC against attacks made by traps. These bonuses rise by +1 every three class levels thereafter (6th, 9th, 12th, 15th, and 18th level). Trap sense bonuses gained from multiple classes stack."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;REFLEX&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;TRAP&quot;]
-            },{
-            &quot;modifier&quot; : &quot;DODGE_BONUS&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;TRAP&quot;]
-            }
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved uncanny dodge" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Character can no longer be flanked. This defense denies a rogue the ability to sneak attack the character by flanking him, unless the attacker has at least four more rogue levels than the target has barbarian levels. If a character already has uncanny dodge from a second class, the character automatically gains improved uncanny dodge instead, and the levels from the classes that grant uncanny dodge stack to determine the minimum level a rogue must be to flank the character."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;UNCANNY_DODGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Damage reduction" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 7th level, a barbarian gains Damage Reduction. Subtract 1 from the damage the barbarian takes each time he is dealt damage from a weapon or a natural attack. At 10th level, and every three barbarian levels thereafter (13th, 16th, and 19th level), this damage reduction rises by 1 point. Damage reduction can reduce damage to 0 but not below 0."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Greater rage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 11th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +6, and his morale bonus on Will saves increases to +3. The penalty to AC remains at -2."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;RAGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Indomitable will" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="While in a rage, a barbarian of 14th level or higher gains a +4 bonus on Will saves to resist enchantment spells. This bonus stacks with all other modifiers, including the morale bonus on Will saves he also receives during his rage."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;RAGE&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;ENCHANTMENT&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Tireless rage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 17th level and higher, a barbarian no longer becomes fatigued at the end of his rage."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;RAGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Mighty rage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 20th level, a barbarian’s bonuses to Strength and Constitution during his rage each increase to +8, and his morale bonus on Will saves increases to +4. The penalty to AC remains at -2."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;RAGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved bull rush" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-        {&quot;type&quot;:&quot;streght&quot;, &quot;value&quot;: 13},
-        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 131}
-                ]" />
-      <column name="description"
-        value="Benefit: When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender. Special A fighter may select Improved Bull Rush as one of his fighter bonus feats."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BULL_RUSH&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved disarm" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-        {&quot;type&quot;:&quot;intelligence&quot;, &quot;value&quot;: 13},
-        {&quot;type&quot;:&quot;feats&quot;, &quot;value&quot;: 132}
-                ]" />
-      <column name="description"
-        value="Benefit: You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent. Normal: See the normal disarm rules. Special: A fighter may select Improved Disarm as one of his fighter bonus feats. A monk may select Improved Disarm as a bonus feat at 6th level, even if she does not meet the prerequisites."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;DISARM&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved grapple" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Benefit: You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple. Normal: Without this feat, you provoke an attack of opportunity when you make a touch attack to start a grapple. Special: A fighter may select Improved Grapple as one of his fighter bonus feats. A monk may select Improved Grapple as a bonus feat at 1st level, even if she does not meet the prerequisites."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Quick Draw" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-        {&quot;type&quot;:&quot;bab&quot;, &quot;value&quot;: 1}
-              ]" />
-      <column name="description"
-        value="Benefit: You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action. A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow). Normal: Without this feat, you may draw a weapon as a move action, or (if your base attack bonus is +1 or higher) as a free action as part of movement. Without this feat, you can draw a hidden weapon as a standard action. Special: A fighter may select Quick Draw as one of his fighter bonus feats."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Mounted archery" />
-      <column name="feats_type" value="GENERAL" />
-      <!-- <column name="prerequisite"
-        value="{
-                'classSkills':[{'nameSkill':'Ride','skillRank':1}],
-                'feats':['Mounted combat']
-            }" /> -->
-      <column name="description"
-        value="Benefit: The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running.
-                
-                Special: A fighter may select Mounted Archery as one of his fighter bonus feats." />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;MOUNTED_RANGED&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Mounted combat" />
-      <column name="feats_type" value="GENERAL" />
-      <!-- <column name="prerequisite"
-        value="{
-                'classSkills':[{'nameSkill':'Ride','skillRank':1}]
-            }" /> -->
-      <column name="description"
-        value="Benefit
-                Once per round when your mount is hit in combat, you may attempt a Ride check (as a reaction) to negate the hit. The hit is negated if your Ride check result is greater than the opponent’s attack roll. (Essentially, the Ride check result becomes the mount’s Armor Class if it’s higher than the mount’s regular AC.)
-                
-                Special
-                A fighter may select Mounted Combat as one of his fighter bonus feats.
-                " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Bardic music" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Once per day per bard level, a bard can use his song or poetics to produce magical effects on those around him (usually including himself, if desired). While these abilities fall under the category of bardic music and the descriptions discuss singing or playing instruments, they can all be activated by reciting poetry, chanting, singing lyrical songs, singing melodies, whistling, playing an instrument, or playing an instrument in combination with some spoken performance. Each ability requires both a minimum bard level and a minimum number of ranks in the Perform skill to qualify; if a bard does not have the required number of ranks in at least one Perform skill, he does not gain the bardic music ability until he acquires the needed ranks.
-
-          Starting a bardic music effect is a standard action. Some bardic music abilities require concentration, which means the bard must take a standard action each round to maintain the ability. Even while using bardic music that doesn’t require concentration, a bard cannot cast spells, activate magic items by spell completion (such as scrolls), spell trigger (such as wands), or command word. Just as for casting a spell with a verbal component, a deaf bard has a 20% chance to fail when attempting to use bardic music. If he fails, the attempt still counts against his daily limit.
-              " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Bardic knowledge" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="A bard may make a special bardic knowledge check with a bonus equal to his bard level + his Intelligence modifier to see whether he knows some relevant information about local notable people, legendary items, or noteworthy places. (If the bard has 5 or more ranks in Knowledge (history), he gains a +2 bonus on this check.)
-
-        A successful bardic knowledge check will not reveal the powers of a magic item but may give a hint as to its general function. A bard may not take 10 or take 20 on this check; this sort of knowledge is essentially random.
-        
-        DC	Type of Knowledge
-        10	Common, known by at least a substantial minority of the local population.
-        20	Uncommon but available, known by only a few people legends.
-        25	Obscure, known by few, hard to come by.
-        30	Extremely obscure, known by very few, possibly forgotten by most who once knew it, possibly known only by those who don’t understand the significance of the knowledge.
-            " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_KNOWLEDGE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Countersong" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-      A bard with 3 or more ranks in a Perform skill can use his music or poetics to counter magical effects that depend on sound (but not spells that simply have verbal components). Each round of the countersong, he makes a Perform check. Any creature within 30 feet of the bard (including the bard himself) that is affected by a sonic or language-dependent magical attack may use the bard’s Perform check result in place of its saving throw if, after the saving throw is rolled, the Perform check result proves to be higher. If a creature within range of the countersong is already under the effect of a noninstantaneous sonic or language-dependent magical attack, it gains another saving throw against the effect each round it hears the countersong, but it must use the bard’s Perform check result for the save. Countersong has no effect against effects that don’t allow saves. The bard may keep up the countersong for 10 rounds.
-      " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Fascinate" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-    A bard with 3 or more ranks in a Perform skill can use his music or poetics to cause one or more creatures to become fascinated with him. Each creature to be fascinated must be within 90 feet, able to see and hear the bard, and able to pay attention to him. The bard must also be able to see the creature. The distraction of a nearby combat or other dangers prevents the ability from working. For every three levels a bard attains beyond 1st, he can target one additional creature with a single use of this ability.
-
-To use the ability, a bard makes a Perform check. His check result is the DC for each affected creature’s Will save against the effect. If a creature’s saving throw succeeds, the bard cannot attempt to fascinate that creature again for 24 hours. If its saving throw fails, the creature sits quietly and listens to the song, taking no other actions, for as long as the bard continues to play and concentrate (up to a maximum of 1 round per bard level). While fascinated, a target takes a -4 penalty on skill checks made as reactions, such as Listen and Spot checks. Any potential threat requires the bard to make another Perform check and allows the creature a new saving throw against a DC equal to the new Perform check result.
-
-Any obvious threat, such as someone drawing a weapon, casting a spell, or aiming a ranged weapon at the target, automatically breaks the effect. Fascinate is an enchantment (compulsion), mind-affecting ability."
-      />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Inspire courage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard with 3 or more ranks in a Perform skill can use song or poetics to inspire courage in his allies (including himself), bolstering them against fear and improving their combat abilities. To be affected, an ally must be able to hear the bard sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. An affected ally receives a +1 morale bonus on saving throws against charm and fear effects and a +1 morale bonus on attack and weapon damage rolls. At 8th level, and every six bard levels thereafter, this bonus increases by 1 (+2 at 8th, +3 at 14th, and +4 at 20th). Inspire courage is a mind-affecting ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Inspire competence" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard of 3rd level or higher with 6 or more ranks in a Perform skill can use his music or poetics to help an ally succeed at a task. The ally must be within 30 feet and able to see and hear the bard. The bard must also be able to see the ally.
-
-The ally gets a +2 competence bonus on skill checks with a particular skill as long as he or she continues to hear the bard’s music. Certain uses of this ability are infeasible. The effect lasts as long as the bard concentrates, up to a maximum of 2 minutes. A bard can’t inspire competence in himself. Inspire competence is a mind-affecting ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Suggestion" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard of 6th level or higher with 9 or more ranks in a Perform skill can make a suggestion (as the spell) to a creature that he has already fascinated. Using this ability does not break the bard’s concentration on the fascinate effect, nor does it allow a second saving throw against the fascinate effect.
-
-Making a suggestion doesn’t count against a bard’s daily limit on bardic music performances. A Will saving throw (DC 10 + ½ bard’s level + bard’s Cha modifier) negates the effect. This ability affects only a single creature (but see mass suggestion, below). Suggestion is an enchantment (compulsion), mind-affecting, language dependent ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Inspire greatness" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard of 9th level or higher with 12 or more ranks in a Perform skill can use music or poetics to inspire greatness in himself or a single willing ally within 30 feet, granting him or her extra fighting capability. For every three levels a bard attains beyond 9th, he can target one additional ally with a single use of this ability (two at 12th level, three at 15th, four at 18th). To inspire greatness, a bard must sing and an ally must hear him sing. The effect lasts for as long as the ally hears the bard sing and for 5 rounds thereafter. A creature inspired with greatness gains 2 bonus Hit Dice (d10s), the commensurate number of temporary hit points (apply the target’s Constitution modifier, if any, to these bonus Hit Dice), a +2 competence bonus on attack rolls, and a +1 competence bonus on Fortitude saves. The bonus Hit Dice count as regular Hit Dice for determining the effect of spells that are Hit Dice dependant. Inspire greatness is a mind-affecting ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Song of freedom" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard of 12th level or higher with 15 or more ranks in a Perform skill can use music or poetics to create an effect equivalent to the break enchantment spell (caster level equals the character’s bard level). Using this ability requires 1 minute of uninterrupted concentration and music, and it functions on a single target within 30 feet. A bard can’t use song of freedom on himself.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Inspire heroics" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A bard of 15th
-   level or higher with 18 or more ranks in a Perform skill can use music or poetics to inspire tremendous heroism in himself or a single willing ally within 30 feet. For every three bard levels the character attains beyond 15th, he can inspire heroics in one additional creature. To inspire heroics, a bard must sing and an ally must hear the bard sing for a full round. A creature so inspired gains a +4 morale bonus on saving throws and a +4 dodge bonus to AC. The effect lasts for as long as the ally hears the bard sing and for up to 5 rounds thereafter. Inspire heroics is a mind-affecting ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Mass suggestion" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  This ability functions like suggestion, above, except that a bard of 18th level or higher with 21 or more ranks in a Perform skill can make the suggestion simultaneously to any number of creatures that he has already fascinated. Mass suggestion is an enchantment (compulsion), mind-affecting, language-dependent ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;BARDIC_MUSIC&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Turn or rebuke undead" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Any cleric, regardless of alignment, has the power to affect undead creatures by channeling the power of his faith through his holy (or unholy) symbol (see Turn or Rebuke Undead).
-
-  A good cleric (or a neutral cleric who worships a good deity) can turn or destroy undead creatures. An evil cleric (or a neutral cleric who worships an evil deity) instead rebukes or commands such creatures. A neutral cleric of a neutral deity must choose whether his turning ability functions as that of a good cleric or an evil cleric. Once this choice is made, it cannot be reversed. This decision also determines whether the cleric can cast spontaneous cure or inflict spells.
-  
-  A cleric may attempt to turn undead a number of times per day equal to 3 + his Charisma modifier. A cleric with 5 or more ranks in Knowledge (religion) gets a +2 bonus on turning checks against undead.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
-            &quot;bonus&quot; : 3,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Animal Companion" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A druid may begin play with an animal companion selected from the following list: badger, camel, dire rat, dog, riding dog, eagle, hawk, horse (light or heavy), owl, pony, snake (Small or Medium viper), or wolf. If the campaign takes place wholly or partly in an aquatic environment, the following creatures are also available: porpoise, Medium shark, and squid. This animal is a loyal companion that accompanies the druid on her adventures as appropriate for its kind.
-
-  A 1st-level druid’s companion is completely typical for its kind except as noted below. As a druid advances in level, the animal’s power increases as shown on the table. If a druid releases her companion from service, she may gain a new one by performing a ceremony requiring 24 uninterrupted hours of prayer. This ceremony can also replace an animal companion that has perished.
-  
-  A druid of 4th level or higher may select from alternative lists of animals. Should she select an animal companion from one of these alternative lists, the creature gains abilities as if the character’s druid level were lower than it actually is. Subtract the value indicated in the appropriate list header from the character’s druid level and compare the result with the druid level entry on the table to determine the animal companion’s powers. (If this adjustment would reduce the druid’s effective level to 0 or lower, she can’t have that animal as a companion.)
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Nature Sense" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A druid gains a +2 bonus on Knowledge (nature) and Survival checks.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SURVIVAL&quot;]
-            },{
-            &quot;modifier&quot; : &quot;STUDY&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;NATURE&quot;]
-            }
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Wild Empathy" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A druid can improve the attitude of an animal. This ability functions just like a Diplomacy check made to improve the attitude of a person. The druid rolls 1d20 and adds her druid level and her Charisma modifier to determine the wild empathy check result.
-
-  The typical domestic animal has a starting attitude of indifferent, while wild animals are usually unfriendly.
-  
-  To use wild empathy, the druid and the animal must be able to study each other, which means that they must be within 30 feet of one another under normal conditions. Generally, influencing an animal in this way takes 1 minute but, as with influencing people, it might take more or less time.
-  
-  A druid can also use this ability to influence a magical beast with an Intelligence score of 1 or 2, but she takes a -4 penalty on the check.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;WILD_EMPATHY&quot;,
-            &quot;bonus&quot; : 3,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Woodland Stride" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Starting at 2nd level, a druid may move through any sort of undergrowth 
-  (such as natural thorns, briars, overgrown areas, and similar terrain) 
-  at her normal speed and without taking damage or suffering any other impairment. 
-  However, thorns, briars, and overgrown areas that have been magically manipulated 
-  to impede motion still affect her.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SPEED&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;NATURE&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Trackless Step" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Starting at 3rd level, a druid leaves no trail in natural surroundings and cannot be tracked. 
-  She may choose to leave a trail if so desired.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Resist Nature's Lure" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like abilities of fey.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SAVING&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;FEY&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Wild Shape" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 5th level, a druid gains the ability to turn herself into any Small or Medium animal and back again once per day. Her options for new forms include all creatures with the animal type. This ability functions like the alternate form special ability, except as noted here. The effect lasts for 1 hour per druid level, or until she changes back. Changing form (to animal or back) is a standard action and doesn’t provoke an attack of opportunity. Each time you use wild shape, you regain lost hit points as if you had rested for a night.
-
-Any gear worn or carried by the druid melds into the new form and becomes nonfunctional. When the druid reverts to her true form, any objects previously melded into the new form reappear in the same location on her body that they previously occupied and are once again functional. Any new items worn in the assumed form fall off and land at the druid's feet.
-
-The form chosen must be that of an animal the druid is familiar with.
-
-A druid loses her ability to speak while in animal form because she is limited to the sounds that a normal, untrained animal can make, but she can communicate normally with other animals of the same general grouping as her new form. (The normal sound a wild parrot makes is a squawk, so changing to this form does not permit speech.)
-
-A druid can use this ability more times per day at 6th, 7th, 10th, 14th, and 18th level, as noted on Table: The Druid. In addition, she gains the ability to take the shape of a Large animal at 8th level, a Tiny animal at 11th level, and a Huge animal at 15th level.
-
-The new form’s Hit Dice can’t exceed the character’s druid level.
-
-At 12th level, a druid becomes able to use wild shape to change into a plant creature with the same size restrictions as for animal forms. (A druid can’t use this ability to take the form of a plant that isn’t a creature.)
-
-At 16th level, a druid becomes able to use wild shape to change into a Small, Medium, or Large elemental (air, earth, fire, or water) once per day. These elemental forms are in addition to her normal wild shape usage. In addition to the normal effects of wild shape, the druid gains all the elemental’s extraordinary, supernatural, and spell-like abilities. She also gains the elemental’s feats for as long as she maintains the wild shape, but she retains her own creature type.
-
-At 18th level, a druid becomes able to assume elemental form twice per day, and at 20th level she can do so three times per day. At 20th level, a druid may use this wild shape ability to change into a Huge elemental.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;WILD_SHAPE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Venom Immunity" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 9th level, a druid gains immunity to all poisons.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;POISON&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="A Thousand Faces" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 13th level, a druid gains the ability to change her appearance at will, as if using the disguise self spell, but only while in her normal form. This affects the druid’s body but not her possessions. It is not an illusory effect, but a minor physical alteration of the druid’s appearance, within the limits described for the spell.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Timeless Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  After attaining 15th level, a druid no longer takes ability score penalties for aging and cannot be magically aged. Any penalties she may have already incurred, however, remain in place.
-
-  Bonuses still accrue, and the druid still dies of old age when her time is up.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Fighter Bonus Feats" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 1st level, a fighter gets a bonus combat-oriented feat in addition to the feat that any 1st-level character gets and the bonus feat granted to a human character. The fighter gains an additional bonus feat at 2nd level and every two fighter levels thereafter (4th, 6th, 8th, 10th, 12th, 14th, 16th, 18th, and 20th). These bonus feats must be drawn from the feats noted as fighter bonus feats. A fighter must still meet all prerequisites for a bonus feat, including ability score and base attack bonus minimums.
-
-  These bonus feats are in addition to the feat that a character of any class gets from advancing levels. A fighter is not limited to the list of fighter bonus feats when choosing these feats.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;FIGHTER&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Monk Bonus Feats" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 1st level, a monk may select either Improved Grapple or Stunning Fist as a bonus feat. At 2nd level, she may select either Combat Reflexes or Deflect Arrows as a bonus feat. At 6th level, she may select either Improved Disarm or Improved Trip as a bonus feat. A monk need not have any of the prerequisites normally required for these feats to select them.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;MONK&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Flurry of Blows" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  When unarmored, a monk may strike with a flurry of blows at the expense of accuracy. When doing so, she may make one extra attack in a round at her highest base attack bonus, but this attack takes a -2 penalty, as does each other attack made that round. The resulting modified base attack bonuses are shown in the Flurry of Blows Attack Bonus column on Table: The Monk. This penalty applies for 1 round, so it also affects attacks of opportunity the monk might make before her next action. When a monk reaches 5th level, the penalty lessens to -1, and at 9th level it disappears. A monk must use a full attack action to strike with a flurry of blows.
-
-  When using flurry of blows, a monk may attack only with unarmed strikes or with special monk weapons (kama, nunchaku, quarterstaff, sai, shuriken, and siangham). She may attack with unarmed strikes and special monk weapons interchangeably as desired. When using weapons as part of a flurry of blows, a monk applies her Strength bonus (not Str bonus × 1½ or ×½) to her damage rolls for all successful attacks, whether she wields a weapon in one or both hands. The monk can’t use any weapon other than a special monk weapon as part of a flurry of blows.
-  
-  In the case of the quarterstaff, each end counts as a separate weapon for the purpose of using the flurry of blows ability. Even though the quarterstaff requires two hands to use, a monk may still intersperse unarmed strikes with quarterstaff strikes, assuming that she has enough attacks in her flurry of blows routine to do so.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;FLURRY_BLOWS&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Unarmed Strike" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 1st level, a monk gains Improved Unarmed Strike as a bonus feat. A monk’s attacks may be with either fist interchangeably or even from elbows, knees, and feet. This means that a monk may even make unarmed strikes with her hands full. There is no such thing as an off-hand attack for a monk striking unarmed. A monk may thus apply her full Strength bonus on damage rolls for all her unarmed strikes.
-
-  Usually a monk’s unarmed strikes deal lethal damage, but she can choose to deal nonlethal damage instead with no penalty on her attack roll. She has the same choice to deal lethal or nonlethal damage while grappling.
-  
-  A monk’s unarmed strike is treated both as a manufactured weapon and a natural weapon for the purpose of spells and effects that enhance or improve either manufactured weapons or natural weapons.
-  
-  A monk also deals more damage with her unarmed strikes than a normal person would, as shown on Table: The Monk. The unarmed damage on Table: The Monk is for Medium monks. A Small monk deals less damage than the amount given there with her unarmed attacks, while a Large monk deals more damage; see Table: Small or Large Monk Unarmed Damage.  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Evasion" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A successful Reflex saving throw against an attack that normally deals half damage on a successful save, she instead takes no damage. Evasion can be used only if character is wearing light armor or no armor. A helpless character does not gain the benefit of evasion.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EVASION&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Still Mind" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A monk of 3rd level or higher gains a +2 bonus on saving throws against spells and effects from the school of enchantment.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SAVING&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;ENCHANTMENT&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Ki Strike" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 4th level, a monk’s unarmed attacks are empowered with ki. Her unarmed attacks are treated as magic weapons for the purpose of dealing damage to creatures with damage reduction. Ki strike improves with the character’s monk level. At 10th level, her unarmed attacks are also treated as lawful weapons for the purpose of dealing damage to creatures with damage reduction. At 16th level, her unarmed attacks are treated as adamantine weapons for the purpose of dealing damage to creatures with damage reduction and bypassing hardness.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;KI_STRIKE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Slow Fall" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 4th level or higher, a monk within arm’s reach of a wall can use it to slow her descent. When first using this ability, she takes damage as if the fall were 20 feet shorter than it actually is. The monk’s ability to slow her fall (that is, to reduce the effective distance of the fall when next to a wall) improves with her monk level until at 20th level she can use a nearby wall to slow her descent and fall any distance without harm.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;FALL&quot;,
-            &quot;bonus&quot; : 20,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Purity of Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 5th level, a monk gains immunity to all diseases except for supernatural and magical diseases." />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;DISEASES&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Wholeness of Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 5th level, a monk gains immunity to all diseases except for supernatural and magical diseases.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;DISEASES&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved Evasion" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A character’s evasion ability improves. She still takes no damage on a successful Reflex saving throw against attacks, but henceforth she takes only half damage on a failed save. A helpless character does not gain the benefit of improved evasion.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EVASION&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Diamond Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 11th level, a monk gains immunity to poisons of all kinds.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;POISON&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Greater Flurry" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  When a monk reaches 11th level, her flurry of blows ability improves. In addition to the standard single extra attack she gets from flurry of blows, she gets a second extra attack at her full base attack bonus.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;FLURRY_BLOWS&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Abundant Step" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 12th level or higher, a monk can slip magically between spaces, as if using the spell dimension door, once per day. Her caster level for this effect is one-half her monk level (rounded down).
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Diamond Soul" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 13th level, a monk gains spell resistance equal to her current monk level + 10. In order to affect the monk with a spell, a spellcaster must get a result on a caster level check (1d20 + caster level) that equals or exceeds the monk’s spell resistance.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,
-            &quot;bonus&quot; : 10,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Quivering Palm" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Starting at 15th level, a monk can set up vibrations within the body of another creature that can thereafter be fatal if the monk so desires. She can use this quivering palm attack once a week, and she must announce her intent before making her attack roll. Constructs, oozes, plants, undead, incorporeal creatures, and creatures immune to critical hits cannot be affected. Otherwise, if the monk strikes successfully and the target takes damage from the blow, the quivering palm attack succeeds. Thereafter the monk can try to slay the victim at any later time, as long as the attempt is made within a number of days equal to her monk level. To make such an attempt, the monk merely wills the target to die (a free action), and unless the target makes a Fortitude saving throw (DC 10 + ½ the monk’s level + the monk’s Wis modifier), it dies. If the saving throw is successful, the target is no longer in danger from that particular quivering palm attack, but it may still be affected by another one at a later time.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;QUIVERING_PALM&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Timeless Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Upon attaining 17th level, a monk no longer takes penalties to her ability scores for aging and cannot be magically aged. Any such penalties that she has already taken, however, remain in place. Bonuses still accrue, and the monk still dies of old age when her time is up.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Tongue of the Sun and Moon" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A monk of 17th level or higher can speak with any living creature.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Empty Body" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 19th level, a monk gains the ability to assume an ethereal state for 1 round 
-  per monk level per day, as though using the spell etherealness. She may go ethereal 
-  on a number of different occasions during any single day, as long as the total number 
-  of rounds spent in an ethereal state does not exceed her monk level.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Perfect Self" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 20th level, a monk becomes a magical creature. She is forevermore treated as an 
-  outsider rather than as a humanoid (or whatever the monk’s creature type was) for the 
-  purpose of spells and magical effects. Additionally, the monk gains damage reduction 10/magic, 
-  which allows her to ignore the first 10 points of damage from any attack made by a nonmagical 
-  weapon or by any natural attack made by a creature that doesn’t have similar damage reduction. 
-  Unlike other outsiders, the monk can still be brought back from the dead as if she were a member 
-  of her previous creature type.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
-            &quot;bonus&quot; : 10,
-            &quot;targets&quot; : [&quot;MAGIC&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Aura of Good" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  The power of a paladin’s aura of good (see the detect good spell) is equal to her paladin level.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Detect Evil" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At will, a paladin can use detect evil, as the spell.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Smite Evil" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Once per day, a paladin may attempt to smite evil with one normal melee attack. She adds her Charisma bonus (if any) to her attack roll and deals 1 extra point of damage per paladin level. If the paladin accidentally smites a creature that is not evil, the smite has no effect, but the ability is still used up for that day.
-
-At 5th level, and at every five levels thereafter, the paladin may smite evil one additional time per day, as indicated on Table: The Paladin, to a maximum of five times per day at 20th level.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SMITE&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Divine Grace" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 2nd level, a paladin gains a bonus equal to her Charisma bonus (if any) on all saving throws.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SAVING&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;CHARISMA&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Lay on Hands" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Beginning at 2nd level, a paladin with a Charisma score of 12 or higher can heal wounds (her own or those of others) by touch. Each day she can heal a total number of hit points of damage equal to her paladin level × her Charisma bonus. A paladin may choose to divide her healing among multiple recipients, and she doesn’t have to use it all at once. Using lay on hands is a standard action.
-
-  Alternatively, a paladin can use any or all of this healing power to deal damage to undead creatures. Using lay on hands in this way requires a successful melee touch attack and doesn’t provoke an attack of opportunity. The paladin decides how many of her daily allotment of points to use as damage after successfully touching an undead creature.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;LAY_ON_HANDS&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Aura of Courage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Beginning at 3rd level, a paladin is immune to fear (magical or otherwise). Each ally within 10 feet of her gains a +4 morale bonus on saving throws against fear effects.
-
-  This ability functions while the paladin is conscious, but not if she is unconscious or dead.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;FEAR&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Divine Health" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 3rd level, a paladin gains immunity to all diseases, including supernatural and magical diseases.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : [&quot;DISEASES&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Turn Undead" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  When a paladin reaches 4th level, she gains the supernatural ability to turn undead. She may use this ability a number of times per day equal to 3 + her Charisma modifier. She turns undead as a cleric of three levels lower would.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Special Mount" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Upon reaching 5th level, a paladin gains the service of an unusually intelligent, strong, and loyal steed to serve her in her crusade against evil. This mount is usually a heavy warhorse (for a Medium paladin) or a warpony (for a Small paladin).
-
-  Once per day, as a full-round action, a paladin may magically call her mount from the celestial realms in which it resides. This ability is the equivalent of a spell of a level equal to one-third the paladin’s level. The mount immediately appears adjacent to the paladin and remains for 2 hours per paladin level; it may be dismissed at any time as a free action. The mount is the same creature each time it is summoned, though the paladin may release a particular mount from service.
-  
-  Each time the mount is called, it appears in full health, regardless of any damage it may have taken previously. The mount also appears wearing or carrying any gear it had when it was last dismissed. Calling a mount is a conjuration (calling) effect.
-  
-  Should the paladin’s mount die, it immediately disappears, leaving behind any equipment it was carrying. The paladin may not summon another mount for thirty days or until she gains a paladin level, whichever comes first, even if the mount is somehow returned from the dead. During this thirty-day period, the paladin takes a -1 penalty on attack and weapon damage rolls.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Remove Disease" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 6th level, a paladin can produce a remove disease effect, as the spell, once per week. She can use this ability one additional time per week for every three levels after 6th (twice per week at 9th, three times at 12th, and so forth).
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Favored Enemy" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 1st level, a ranger may select a type of creature from among those given on Table: Ranger Favored Enemies. The ranger gains a +2 bonus on Bluff, Listen, Sense Motive, Spot, and Survival checks when using these skills against creatures of this type. Likewise, he gets a +2 bonus on weapon damage rolls against such creatures.
-
-  At 5th level and every five levels thereafter (10th, 15th, and 20th level), the ranger may select an additional favored enemy from those given on the table. In addition, at each such interval, the bonus against any one favored enemy (including the one just selected, if so desired) increases by 2.
-  
-  If the ranger chooses humanoids or outsiders as a favored enemy, he must also choose an associated subtype, as indicated on the table. If a specific creature falls into more than one category of favored enemy, the ranger’s bonuses do not stack; he simply uses whichever bonus is higher.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;FAVORED_ENEMY&quot;,
-            &quot;bonus&quot; : 0,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <!-- , {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;BLUFF&quot;, &quot;FAVORED_ENEMY&quot;]
-            } , {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;LISTEN&quot;, &quot;FAVORED_ENEMY&quot;]
-            } , {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SENSE_MOTIVE&quot;, &quot;FAVORED_ENEMY&quot;]
-            } , {
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SPOT&quot;, &quot;FAVORED_ENEMY&quot;]
-            }  -->
-    <insert tableName="feats">
-      <column name="feat_name" value="Track" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-  Benefit
-  To find tracks or to follow them for 1 mile requires a successful Survival check. You must make another Survival check every time the tracks become difficult to follow.
-  
-  You move at half your normal speed (or at your normal speed with a -5 penalty on the check, or at up to twice your normal speed with a -20 penalty on the check). The DC depends on the surface and the prevailing conditions, as given on Table: Track DC.
-  
-  Very Soft Ground
-  Any surface (fresh snow, thick dust, wet mud) that holds deep, clear impressions of footprints.
-  
-  Soft Ground
-  Any surface soft enough to yield to pressure, but firmer than wet mud or fresh snow, in which a creature leaves frequent but shallow footprints.
-  
-  Firm Ground
-  Most normal outdoor surfaces (such as lawns, fields, woods, and the like) or exceptionally soft or dirty indoor surfaces (thick rugs and very dirty or dusty floors). The creature might leave some traces (broken branches or tufts of hair), but it leaves only occasional or partial footprints.
-  
-  Hard Ground
-  Any surface that doesn’t hold footprints at all, such as bare rock or an indoor floor. Most streambeds fall into this category, since any footprints left behind are obscured or washed away. The creature leaves only traces (scuff marks or displaced pebbles).
-  
-  Several modifiers may apply to the Survival check, as given on Table: Track DC Modifiers.
-  
-  If you fail a Survival check, you can retry after 1 hour (outdoors) or 10 minutes (indoors) of searching.
-  
-  Normal
-  Without this feat, you can use the Survival skill to find tracks, but you can follow them only if the DC for the task is 10 or lower. Alternatively, you can use the Search skill to find a footprint or similar sign of a creature’s passage using the DCs given above, but you can’t use Search to follow tracks, even if someone else has already found them.
-  
-  Special
-  A ranger automatically has Track as a bonus feat. He need not select it.
-  
-  This feat does not allow you to find or follow the tracks made by a subject of a pass without trace spell.
-
- Surface	Survival DC
-Very soft ground	5
-Soft ground	10
-Firm ground	15
-Hard ground	20
-
-
-Condition	Survival DC
-Modifier
-For a group of mixed sizes, apply only the modifier for the largest size category.
-Apply only the largest modifier from this category.
-Every three creatures in the group being tracked	-1
-Size of creature or creatures being tracked1	
-Fine	+8
-Diminutive	+4
-Tiny	+2
-Small	+1
-Medium	0
-Large	-1
-Huge	-2
-Gargantuan	-4
-Colossal	-8
-Every 24 hours since the trail was made	+1
-Every hour of rain since the trail was made	+1
-Fresh snow cover since the trail was made	+10
-Poor visibility2	
-Overcast or moonless night	+6
-Moonlight	+3
-Fog or precipitation	+3
-Tracked party hides trail (and moves at half speed)	+5
-  " />
-    </insert>
-
-    <insert tableName="feats">
-      <column name="feat_name" value="Combat Style" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 2nd level, a ranger must select one of two combat styles to pursue: archery or two-weapon combat. This choice affects the character’s class features but does not restrict his selection of feats or special abilities in any way.
-
-  If the ranger selects archery, he is treated as having the Rapid Shot feat, even if he does not have the normal prerequisites for that feat.
-  
-  If the ranger selects two-weapon combat, he is treated as having the Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
-  
-  The benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;RANGER&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Endurance" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-  Benefit
-  You gain a +4 bonus on the following checks and saves: Swim checks made to resist nonlethal damage, Constitution checks made to continue running, Constitution checks made to avoid nonlethal damage from a forced march, Constitution checks made to hold your breath, Constitution checks made to avoid nonlethal damage from starvation or thirst, Fortitude saves made to avoid nonlethal damage from hot or cold environments, and Fortitude saves made to resist damage from suffocation. Also, you may sleep in light or medium armor without becoming fatigued.
-  
-  Normal
-  A character without this feat who sleeps in medium or heavier armor is automatically fatigued the next day.
-  
-  Special
-  A ranger automatically gains Endurance as a bonus feat at 3rd level. He need not select it.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SAVING&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;NATURAL&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved Combat Style" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 6th level, a ranger’s aptitude in his chosen combat style (archery or two-weapon combat) improves. If he selected archery at 2nd level, he is treated as having the Manyshot feat, even if he does not have the normal prerequisites for that feat.
-
-  If the ranger selected two-weapon combat at 2nd level, he is treated as having the Improved Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
-  
-  As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;RANGER&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Swift Tracker" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-        Beginning at 8th level, a ranger can move at his normal speed while following 
-        tracks without taking the normal -5 penalty. He takes only a -10 penalty 
-        (instead of the normal -20) when moving at up to twice normal speed while tracking.
-        " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Combat Style Mastery" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 11th level, a ranger’s aptitude in his chosen combat style (archery or two-weapon combat) improves again. If he selected archery at 2nd level, he is treated as having the Improved Precise Shot feat, even if he does not have the normal prerequisites for that feat.
-
-  If the ranger selected two-weapon combat at 2nd level, he is treated as having the Greater Two-Weapon Fighting feat, even if he does not have the normal prerequisites for that feat.
-  
-  As before, the benefits of the ranger’s chosen style apply only when he wears light or no armor. He loses all benefits of his combat style when wearing medium or heavy armor.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;RANGER&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Camouflage" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A ranger of 13th level or higher can use the Hide skill in any sort of natural terrain, even if the terrain doesn’t grant cover or concealment.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Hide in Plain Sight" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  While in any sort of natural terrain, a ranger of 17th level or higher can use the Hide skill even while being observed.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Sneak Attack" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  If a rogue can catch an opponent when he is unable to defend himself effectively from her attack, she can strike a vital spot for extra damage.
-
-  The rogue’s attack deals extra damage any time her target would be denied a Dexterity bonus to AC (whether the target actually has a Dexterity bonus or not), or when the rogue flanks her target. This extra damage is 1d6 at 1st level, and it increases by 1d6 every two rogue levels thereafter. Should the rogue score a critical hit with a sneak attack, this extra damage is not multiplied.
-  
-  Ranged attacks can count as sneak attacks only if the target is within 30 feet.
-  
-  With a sap (blackjack) or an unarmed strike, a rogue can make a sneak attack that deals nonlethal damage instead of lethal damage. She cannot use a weapon that deals lethal damage to deal nonlethal damage in a sneak attack, not even with the usual -4 penalty.
-  
-  A rogue can sneak attack only living creatures with discernible anatomies—undead, constructs, oozes, plants, and incorporeal creatures lack vital areas to attack. Any creature that is immune to critical hits is not vulnerable to sneak attacks. The rogue must be able to see the target well enough to pick out a vital spot and must be able to reach such a spot. A rogue cannot sneak attack while striking a creature with concealment or striking the limbs of a creature whose vitals are beyond reach.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : []
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Trapfinding" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Rogues (and only rogues) can use the Search skill to locate traps when the task has a Difficulty Class higher than 20.
-
-  Finding a nonmagical trap has a DC of at least 20, or higher if it is well hidden. Finding a magic trap has a DC of 25 + the level of the spell used to create it.
-  
-  Rogues (and only rogues) can use the Disable Device skill to disarm magic traps. A magic trap generally has a DC of 25 + the level of the spell used to create it.
-  
-  A rogue who beats a trap’s DC by 10 or more with a Disable Device check can study a trap, figure out how it works, and bypass it (with her party) without disarming it.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Special Abilities" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  On attaining 10th level, and at every three levels thereafter (13th, 16th, and 19th), a rogue gains a special ability of her choice from among the following options.
-
-  Crippling Strike (Ex)
-  A rogue with this ability can sneak attack opponents with such precision that her blows weaken and hamper them. An opponent damaged by one of her sneak attacks also takes 2 points of Strength damage. Ability points lost to damage return on their own at the rate of 1 point per day for each damaged ability.
-  
-  Defensive Roll (Ex)
-  The rogue can roll with a potentially lethal blow to take less damage from it than she otherwise would. Once per day, when she would be reduced to 0 or fewer hit points by damage in combat (from a weapon or other blow, not a spell or special ability), the rogue can attempt to roll with the damage. To use this ability, the rogue must attempt a Reflex saving throw (DC = damage dealt). If the save succeeds, she takes only half damage from the blow; if it fails, she takes full damage. She must be aware of the attack and able to react to it in order to execute her defensive roll—if she is denied her Dexterity bonus to AC, she can’t use this ability. Since this effect would not normally allow a character to make a Reflex save for half damage, the rogue’s evasion ability does not apply to the defensive roll.
-  
-  Improved Evasion (Ex)
-  This ability works like evasion, except that while the rogue still takes no damage on a successful Reflex saving throw against attacks henceforth she takes only half damage on a failed save. A helpless rogue does not gain the benefit of improved evasion.
-  
-  Opportunist (Ex)
-  Once per round, the rogue can make an attack of opportunity against an opponent who has just been struck for damage in melee by another character. This attack counts as the rogue’s attack of opportunity for that round. Even a rogue with the Combat Reflexes feat can’t use the opportunist ability more than once per round.
-  
-  Skill Mastery
-  The rogue becomes so certain in the use of certain skills that she can use them reliably even under adverse conditions.
-  
-  Upon gaining this ability, she selects a number of skills equal to 3 + her Intelligence modifier. When making a skill check with one of these skills, she may take 10 even if stress and distractions would normally prevent her from doing so. A rogue may gain this special ability multiple times, selecting additional skills for it to apply to each time.
-  
-  Slippery Mind (Ex)
-  This ability represents the rogue’s ability to wriggle free from magical effects that would otherwise control or compel her. If a rogue with slippery mind is affected by an enchantment spell or effect and fails her saving throw, she can attempt it again 1 round later at the same DC. She gets only this one extra chance to succeed on her saving throw.
-  
-  Feat
-  A rogue may gain a bonus feat in place of a special ability.
-  " />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;ROGUE&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Summon Familiar" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  A character can obtain a familiar. Doing so takes 24 hours and uses up magical materials that cost 100 gp. A familiar is a magical beast that resembles a small animal and is unusually tough and intelligent. The creature serves as a companion and servant.
-
-  The sorcerer chooses the kind of familiar he gets. As the sorcerer advances in level, his familiar also increases in power.
-  
-  If the familiar dies or is dismissed by the sorcerer, the sorcerer must attempt a DC 15 Fortitude saving throw. Failure means he loses 200 experience points per sorcerer level; success reduces the loss to one-half that amount. However, a sorcerer’s experience point total can never go below 0 as the result of a familiar’s demise or dismissal. A slain or dismissed familiar cannot be replaced for a year and day. A slain familiar can be raised from the dead just as a character can be, and it does not lose a level or a Constitution point when this happy event occurs.
-  
-  A character with more than one class that grants a familiar may have only one familiar at a time.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Eschew Materials" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="You can cast any spell that has a material component costing 1 gp or less without needing that component. (The casting of the spell still provokes attacks of opportunity as normal.) If the spell requires a material component that costs more than 1 gp, you must have the material component at hand to cast the spell, just as normal." />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Scribe Scroll" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-  Prerequisite
-  Caster level 1st.
-  
-  Benefit
-  You can create a scroll of any spell that you know. Scribing a scroll takes one day for each 1,000 gp in its base price. The base price of a scroll is its spell level × its caster level × 25 gp. To scribe a scroll, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price.
-  
-  Any scroll that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when scribing the scroll.
-  " />
-    </insert>
-
-    <insert tableName="feats">
-      <column name="feat_name" value="Bonus Feat Wizard" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 5th, 10th, 15th, and 20th level, a wizard gains a bonus feat. At each such opportunity, she can choose a metamagic feat, an item creation feat, or Spell Mastery. The wizard must still meet all prerequisites for a bonus feat, including caster level minimums.
-
-  These bonus feats are in addition to the feat that a character of any class gets from advancing levels. The wizard is not limited to the categories of item creation feats, metamagic feats, or Spell Mastery when choosing these feats.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Enhance Arrow" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 1st level, every nonmagical arrow an arcane archer nocks and lets fly becomes magical, gaining a +1 enhancement bonus. Unlike magic weapons created by normal means, the archer need not spend experience points or gold pieces to accomplish this task. However, an archer’s magic arrows only function for her. For every two levels the character advances past 1st level in the prestige class, the magic arrows she creates gain +1 greater potency (+1 at 1st level, +2 at 3rd level, +3 at 5th level, +4 at 7th level, and +5 at 9th level).
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Imbue Arrow" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 2nd level, an arcane archer gains the ability to place an area spell upon an arrow. When the arrow is fired, the spell’s area is centered on where the arrow lands, even if the spell could normally be centered only on the caster. This ability allows the archer to use the bow’s range rather than the spell’s range. It takes a standard action to cast the spell and fire the arrow. The arrow must be fired in the round the spell is cast, or the spell is wasted.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Seeker Arrow" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 4th level, an arcane archer can launch an arrow once per day at a target known to her within range, and the arrow travels to the target, even around corners. Only an unavoidable obstacle or the limit of the arrow’s range prevents the arrow’s flight. This ability negates cover and concealment modifiers, but otherwise the attack is rolled normally. Using this ability is a standard action (and shooting the arrow is part of the action).
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Phase Arrow" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 6th level, an arcane archer can launch an arrow once per day at a target known to her within range, and the arrow travels to the target in a straight path, passing through any nonmagical barrier or wall in its way. (Any magical barrier stops the arrow.) This ability negates cover, concealment, and even armor modifiers, but otherwise the attack is rolled normally.
-
-  Using this ability is a standard action (and shooting the arrow is part of the action).
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Hail of Arrows" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  In lieu of her regular attacks, once per day an arcane archer of 8th level or higher can fire an arrow at each and every target within range, to a maximum of one target for every arcane archer level she has earned. Each attack uses the archer’s primary attack bonus, and each enemy may only be targeted by a single arrow.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Arrow of Death" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  At 10th level, an arcane archer can create an arrow of death that forces the target, if damaged by the arrow’s attack, to make a DC 20 Fortitude save or be slain immediately. It takes one day to make an arrow of death, and the arrow only functions for the arcane archer who created it. The arrow of death lasts no longer than one year, and the archer can only have one such arrow in existence at a time.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Ranged Legerdemain" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  An arcane trickster can perform one of the following class skills at a range of 30 feet: Disable Device, Open Lock, or Sleight of Hand. Working at a distance increases the normal skill check DC by 5, and an arcane trickster cannot take 10 on this check. Any object to be manipulated must weigh 5 pounds or less.
-
-  An arcane trickster can use ranged legerdemain once per day initially, twice per day upon attaining 5th level, and three times per day at 9th level or higher. He can make only one ranged legerdemain skill check each day, and only if he has at least 1 rank in the skill being used.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Impromptu Sneak Attack" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  Beginning at 3rd level, once per day an arcane trickster can deffectiveCharacterLvare one melee or ranged attack he makes to be a sneak attack (the target can be no more than 30 feet distant if the impromptu sneak attack is a ranged attack). The target of an impromptu sneak attack loses any Dexterity bonus to AC, but only against that attack. The power can be used against any target, but creatures that are not subject to critical hits take no extra damage (though they still lose any Dexterity bonus to AC against the attack).
-
-  At 7th level, an arcane trickster can use this ability twice per day.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="High Arcana" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-  An archmage gains the opportunity to select a special ability from among those described below by permanently eliminating one existing spell slot (she cannot eliminate a spell slot of higher level than the highest-level spell she can cast). Each special ability has a minimum required spell slot level, as specified in its description.
-
-  An archmage may choose to eliminate a spell slot of a higher level than that required to gain a type of high arcana.
-  
-  Arcane Fire (Su)
-  The archmage gains the ability to change arcane spell energy into arcane fire, manifesting it as a bolt of raw magical energy. The bolt is a ranged touch attack with long range (400 feet + 40 feet/level of archmage) that deals 1d6 points of damage per class level of the archmage plus 1d6 points of damage per level of the spell used to create the effect. This ability costs one 9th-level spell slot.
-  
-  Arcane Reach (Su)
-  The archmage can use spells with a range of touch on a target up to 30 feet away. The archmage must make a ranged touch attack. Arcane reach can be selected a second time as a special ability, in which case the range increases to 60 feet. This ability costs one 7th-level spell slot.
-  
-  Mastery of Counterspelling
-  When the archmage counterspells a spell, it is turned back upon the caster as if it were fully affected by a spell turning spell. If the spell cannot be affected by spell turning, then it is merely counterspelled. This ability costs one 7th-level spell slot.
-  
-  Mastery of Elements
-  The archmage can alter an arcane spell when cast so that it utilizes a different element from the one it normally uses. This ability can only alter a spell with the acid, cold, fire, electricity, or sonic descriptor. The spell’s casting time is unaffected. The caster decides whether to alter the spell’s energy type and chooses the new energy type when he begins casting. This ability costs one 8th-level spell slot.
-  
-  Mastery of Shaping
-  The archmage can alter area and effect spells that use one of the following shapes: burst, cone, cylinder, emanation, or spread. The alteration consists of creating spaces within the spell’s area or effect that are not subject to the spell. The minimum dimension for these spaces is a 5-foot cube. Furthermore, any shapeable spells have a minimum dimension of 5 feet instead of 10 feet. This ability costs one 6th-level spell slot.
-  
-  Spell Power
-  This ability increases the archmage’s effective caster level by +1 (for purposes of determining level-dependent spell variables such as damage dice or range, and caster level checks only). This ability costs one 5th-level spell slot.
-  
-  Spell-Like Ability
-  An archmage who selects this type of high arcana can use one of her arcane spell slots (other than a slot expended to learn this or any other type of high arcana) to permanently prepare one of her arcane spells as a spell-like ability that can be used twice per day. The archmage does not use any components when casting the spell, although a spell that costs XP to cast still does so and a spell with a costly material component instead costs her 10 times that amount in XP. This ability costs one 5th-level spell slot.
-  
-  The spell-like ability normally uses a spell slot of the spell’s level, although the archmage can choose to make a spell modified by a metamagic feat into a spell-like ability at the appropriate spell level.
-  
-  The archmage may use an available higher-level spell slot in order to use the spell-like ability more often. Using a slot three levels higher than the chosen spell allows her to use the spell-like ability four times per day, and a slot six levels higher lets her use it six times per day.
-  
-  If spell-like ability is selected more than one time as a high arcana choice, this ability can apply to the same spell chosen the first time (increasing the number of times per day it can be used) or to a different spell.
-  " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Death attack" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-      If an assassin studies his victim for 3 rounds and then makes a sneak attack with a melee weapon that successfully deals damage, the sneak attack has the additional effect of possibly either paralyzing or killing the target (assassin’s choice). While studying the victim, the assassin can undertake other actions so long as his attention stays focused on the target and the target does not detect the assassin or recognize the assassin as an enemy. If the victim of such an attack fails a Fortitude save (DC 10 + the assassin’s class level + the assassin’s Int modifier) against the kill effect, she dies. If the saving throw fails against the paralysis effect, the victim is rendered helpless and unable to act for 1d6 rounds plus 1 round per level of the assassin. If the victim’s saving throw succeeds, the attack is just a normal sneak attack. Once the assassin has completed the 3 rounds of study, he must make the death attack within the next 3 rounds.
-
-If a death attack is attempted and fails (the victim makes her save) or if the assassin does not launch the attack within 3 rounds of completing the study, 3 new rounds of study are required before he can attempt another death attack.
-      " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Poison use" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-      Assassins are trained in the use of poison and never risk accidentally poisoning themselves when applying poison to a blade.
-      " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Save against poison" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="
-      The assassin gains a natural saving throw bonus to all poisons gained at 2nd level that increases by +1 for every two additional levels the assassin gains.
-      " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Darkvision" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-      You can see in the dark up to 60 feet. Darkvision is black and white only, but it is otherwise like normal sight, and can function just fine with no light at all.
-      " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Stonecunning" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-      This ability grants a dwarf a +2 racial bonus on Search checks to notice unusual stonework, such as sliding walls, stonework traps, new construction (even when built to match the old), unsafe stone surfaces, shaky stone ceilings, and the like. Something that isn’t stone but that is disguised as stone also counts as unusual stonework. A dwarf who merely comes within 10 feet of unusual stonework can make a Search check as if he were actively searching, and a dwarf can use the Search skill to find stonework traps as a rogue can. A dwarf can also intuit depth, sensing his approximate depth underground as naturally as a human can sense which way is up.
-      " />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Light Sensitivity" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Dazzled in bright sunlight or within the radius of a daylight spell" />
-    </insert>
-    <!-- Warsling Sniper -->
-    <insert tableName="feats">
-      <column name="feat_name" value="Warsling Sneak Attack" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Any time the warsling sniper's target would be denied his Dexterity bonus to AC (regardless of whether he actually has a Dexterity bonus), her ranged sneak attack with the warsling deals extra damage. This extra damage is +1d6 at 1st level, and increases by an additional 1d6 every other level after that (+2d6 at 3rd level and +3d6 at 5th level). Ranged attacks only count as sneak attacks if the target is within 30 feet. In every other way, this ability is identical to the rogue's sneak attack. If the character has the sneak attack ability from another class, the bonuses stack." />
-      <column name="modifiers"
-        value="[
-      {
-            &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : [&quot;WARSLING&quot;]
-            } 
-    ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Low-Light Vision" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Characters with low-light vision have eyes that are so sensitive to light that they can see twice as far as normal in dim light. Low-light vision is color vision. A spellcaster with low-light vision can read a scroll as long as even the tiniest candle flame is next to her as a source of light.
-
-Characters with low-light vision can see outdoors on a moonlit night as well as they can during the day."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Find secret doors" />
-      <column name="feats_type" value="RACIAL" />
-      <column name="description"
-        value="An elf who merely passes within 5 feet of a secret or concealed door is entitled to a Search check to notice it as if she were actively looking for it."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Weapon Focus" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Choose one type of weapon. You can also choose unarmed strike or grapple (or ray, if you are a spellcaster) as your weapon for purposes of this feat.
-
-Prerequisites
-Proficiency with selected weapon, base attack bonus +1.
-
-Benefit
-You gain a +1 bonus on all attack rolls you make using the selected weapon.
-
-Special
-You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.
-
-A fighter may select Weapon Focus as one of his fighter bonus feats. He must have Weapon Focus with a weapon to gain the Weapon Specialization feat for that weapon."
-      />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;WEAPON_FOUS&quot;,
-          &quot;bonus&quot; : 1,
-          &quot;targets&quot; : [
-            &quot;GAUNTLET&quot;,
-            &quot;UNARMED_STRIKE&quot;,
-            &quot;DAGGER&quot;,
-            &quot;DAGGER_PUNCHING&quot;,
-            &quot;GAUNTLET_SPIKED&quot;,
-            &quot;MACE_LIGHT&quot;,
-            &quot;SICKLE&quot;,
-            &quot;CLUB&quot;,
-            &quot;MACE_HEAVY&quot;,
-            &quot;MORNINGSTAR&quot;,
-            &quot;SHORTSPEAR&quot;,
-            &quot;LONGSPEAR&quot;,
-            &quot;QUARTERSTAFF&quot;,
-            &quot;SPEAR&quot;,
-            &quot;CROSSBOW_HEAVY&quot;,
-            &quot;CROSSBOW_LIGHT&quot;,
-            &quot;DART&quot;,
-            &quot;JAVELIN&quot;,
-            &quot;SLING&quot;,
-            &quot;BULLETS_SLING&quot;,
-            &quot;AXE_THROWING&quot;,
-            &quot;HAMMER_LIGHT&quot;,
-            &quot;HANDAXE&quot;,
-            &quot;KUKRI&quot;,
-            &quot;PICK_LIGHT&quot;,
-            &quot;SAP&quot;,
-            &quot;SHIELD_LIGHT&quot;,
-            &quot;SPIKED_ARMOR&quot;,
-            &quot;SPIKED_SHIELD_LIGHT&quot;,
-            &quot;SWORD_SHORT&quot;,
-            &quot;BATTLEAXE&quot;,
-            &quot;FLAIL&quot;,
-            &quot;LONGSWORD&quot;,
-            &quot;PICK_HEAVY&quot;,
-            &quot;RAPIER&quot;,
-            &quot;SCIMITAR&quot;,
-            &quot;SHIELD_HEAVY&quot;,
-            &quot;SPIKED_SHIELD_HEAVY&quot;,
-            &quot;TRIDENT&quot;,
-            &quot;WARHAMMER&quot;,
-            &quot;FALCHION&quot;,
-            &quot;GLAIVE&quot;,
-            &quot;GREATAXE&quot;,
-            &quot;GREATCLUB&quot;,
-            &quot;FLAIL_HEAVY&quot;,
-            &quot;GREATSWORD&quot;,
-            &quot;GUISARME&quot;,
-            &quot;HALBERD&quot;,
-            &quot;LANCE&quot;,
-            &quot;RANSEUR&quot;,
-            &quot;SCYTHE&quot;,
-            &quot;LONGBOW&quot;,
-            &quot;LONGBOW_COMPOSITE&quot;,
-            &quot;SHORTBOW&quot;,
-            &quot;SHORTBOW_COMPOSITE&quot;,
-            &quot;KAMA&quot;,
-            &quot;NUNCHAKU&quot;,
-            &quot;SAI&quot;,
-            &quot;SIANGHAM&quot;,
-            &quot;SWORD_BASTARD&quot;,
-            &quot;WARAXE_DWARVEN&quot;,
-            &quot;WHIP&quot;,
-            &quot;AXE_ORC_DOUBLE&quot;,
-            &quot;CHAIN_SPIKED&quot;,
-            &quot;FLAIL_DIRE&quot;,
-            &quot;HAMMER_GNOME_HOOKED&quot;,
-            &quot;SWORD_TWO_BLADED&quot;,
-            &quot;URGROSH_DWARVEN&quot;,
-            &quot;BOLAS&quot;,
-            &quot;CROSSBOW_HAND&quot;,
-            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
-            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
-            &quot;NET&quot;,
-            &quot;SHURIKEN&quot;
-          ]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Weapon Specialization" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Choose one type of weapon for which you have already selected the Weapon Focus feat. You can also choose unarmed strike or grapple as your weapon for purposes of this feat. You deal extra damage when using this weapon.
-
-Prerequisites
-Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th.
-
-Benefit
-You gain a +2 bonus on all damage rolls you make using the selected weapon.
-
-Special
-You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon.
-
-A fighter may select Weapon Specialization as one of his fighter bonus feats."
-      />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;WEAPON_SPECIALIZATION&quot;,
-          &quot;bonus&quot; : 2,
-          &quot;targets&quot; : [
-            &quot;GAUNTLET&quot;,
-            &quot;UNARMED_STRIKE&quot;,
-            &quot;DAGGER&quot;,
-            &quot;DAGGER_PUNCHING&quot;,
-            &quot;GAUNTLET_SPIKED&quot;,
-            &quot;MACE_LIGHT&quot;,
-            &quot;SICKLE&quot;,
-            &quot;CLUB&quot;,
-            &quot;MACE_HEAVY&quot;,
-            &quot;MORNINGSTAR&quot;,
-            &quot;SHORTSPEAR&quot;,
-            &quot;LONGSPEAR&quot;,
-            &quot;QUARTERSTAFF&quot;,
-            &quot;SPEAR&quot;,
-            &quot;CROSSBOW_HEAVY&quot;,
-            &quot;CROSSBOW_LIGHT&quot;,
-            &quot;DART&quot;,
-            &quot;JAVELIN&quot;,
-            &quot;SLING&quot;,
-            &quot;BULLETS_SLING&quot;,
-            &quot;AXE_THROWING&quot;,
-            &quot;HAMMER_LIGHT&quot;,
-            &quot;HANDAXE&quot;,
-            &quot;KUKRI&quot;,
-            &quot;PICK_LIGHT&quot;,
-            &quot;SAP&quot;,
-            &quot;SHIELD_LIGHT&quot;,
-            &quot;SPIKED_ARMOR&quot;,
-            &quot;SPIKED_SHIELD_LIGHT&quot;,
-            &quot;SWORD_SHORT&quot;,
-            &quot;BATTLEAXE&quot;,
-            &quot;FLAIL&quot;,
-            &quot;LONGSWORD&quot;,
-            &quot;PICK_HEAVY&quot;,
-            &quot;RAPIER&quot;,
-            &quot;SCIMITAR&quot;,
-            &quot;SHIELD_HEAVY&quot;,
-            &quot;SPIKED_SHIELD_HEAVY&quot;,
-            &quot;TRIDENT&quot;,
-            &quot;WARHAMMER&quot;,
-            &quot;FALCHION&quot;,
-            &quot;GLAIVE&quot;,
-            &quot;GREATAXE&quot;,
-            &quot;GREATCLUB&quot;,
-            &quot;FLAIL_HEAVY&quot;,
-            &quot;GREATSWORD&quot;,
-            &quot;GUISARME&quot;,
-            &quot;HALBERD&quot;,
-            &quot;LANCE&quot;,
-            &quot;RANSEUR&quot;,
-            &quot;SCYTHE&quot;,
-            &quot;LONGBOW&quot;,
-            &quot;LONGBOW_COMPOSITE&quot;,
-            &quot;SHORTBOW&quot;,
-            &quot;SHORTBOW_COMPOSITE&quot;,
-            &quot;KAMA&quot;,
-            &quot;NUNCHAKU&quot;,
-            &quot;SAI&quot;,
-            &quot;SIANGHAM&quot;,
-            &quot;SWORD_BASTARD&quot;,
-            &quot;WARAXE_DWARVEN&quot;,
-            &quot;WHIP&quot;,
-            &quot;AXE_ORC_DOUBLE&quot;,
-            &quot;CHAIN_SPIKED&quot;,
-            &quot;FLAIL_DIRE&quot;,
-            &quot;HAMMER_GNOME_HOOKED&quot;,
-            &quot;SWORD_TWO_BLADED&quot;,
-            &quot;URGROSH_DWARVEN&quot;,
-            &quot;BOLAS&quot;,
-            &quot;CROSSBOW_HAND&quot;,
-            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
-            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
-            &quot;NET&quot;,
-            &quot;SHURIKEN&quot;
-          ]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved Critical" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Choose one type of weapon.
-
-Prerequisite
-Proficient with weapon, base attack bonus +8.
-
-Benefit
-When using the weapon you selected, your threat range is doubled.
-
-Special
-You can gain Improved Critical multiple times. The effects do not stack. Each time you take the feat, it applies to a new type of weapon.
-
-This effect doesn’t stack with any other effect that expands the threat range of a weapon.
-
-A fighter may select Improved Critical as one of his fighter bonus feats."
-      />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;IMPROVED_CRITICAL&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [
-            &quot;GAUNTLET&quot;,
-            &quot;UNARMED_STRIKE&quot;,
-            &quot;DAGGER&quot;,
-            &quot;DAGGER_PUNCHING&quot;,
-            &quot;GAUNTLET_SPIKED&quot;,
-            &quot;MACE_LIGHT&quot;,
-            &quot;SICKLE&quot;,
-            &quot;CLUB&quot;,
-            &quot;MACE_HEAVY&quot;,
-            &quot;MORNINGSTAR&quot;,
-            &quot;SHORTSPEAR&quot;,
-            &quot;LONGSPEAR&quot;,
-            &quot;QUARTERSTAFF&quot;,
-            &quot;SPEAR&quot;,
-            &quot;CROSSBOW_HEAVY&quot;,
-            &quot;CROSSBOW_LIGHT&quot;,
-            &quot;DART&quot;,
-            &quot;JAVELIN&quot;,
-            &quot;SLING&quot;,
-            &quot;BULLETS_SLING&quot;,
-            &quot;AXE_THROWING&quot;,
-            &quot;HAMMER_LIGHT&quot;,
-            &quot;HANDAXE&quot;,
-            &quot;KUKRI&quot;,
-            &quot;PICK_LIGHT&quot;,
-            &quot;SAP&quot;,
-            &quot;SHIELD_LIGHT&quot;,
-            &quot;SPIKED_ARMOR&quot;,
-            &quot;SPIKED_SHIELD_LIGHT&quot;,
-            &quot;SWORD_SHORT&quot;,
-            &quot;BATTLEAXE&quot;,
-            &quot;FLAIL&quot;,
-            &quot;LONGSWORD&quot;,
-            &quot;PICK_HEAVY&quot;,
-            &quot;RAPIER&quot;,
-            &quot;SCIMITAR&quot;,
-            &quot;SHIELD_HEAVY&quot;,
-            &quot;SPIKED_SHIELD_HEAVY&quot;,
-            &quot;TRIDENT&quot;,
-            &quot;WARHAMMER&quot;,
-            &quot;FALCHION&quot;,
-            &quot;GLAIVE&quot;,
-            &quot;GREATAXE&quot;,
-            &quot;GREATCLUB&quot;,
-            &quot;FLAIL_HEAVY&quot;,
-            &quot;GREATSWORD&quot;,
-            &quot;GUISARME&quot;,
-            &quot;HALBERD&quot;,
-            &quot;LANCE&quot;,
-            &quot;RANSEUR&quot;,
-            &quot;SCYTHE&quot;,
-            &quot;LONGBOW&quot;,
-            &quot;LONGBOW_COMPOSITE&quot;,
-            &quot;SHORTBOW&quot;,
-            &quot;SHORTBOW_COMPOSITE&quot;,
-            &quot;KAMA&quot;,
-            &quot;NUNCHAKU&quot;,
-            &quot;SAI&quot;,
-            &quot;SIANGHAM&quot;,
-            &quot;SWORD_BASTARD&quot;,
-            &quot;WARAXE_DWARVEN&quot;,
-            &quot;WHIP&quot;,
-            &quot;AXE_ORC_DOUBLE&quot;,
-            &quot;CHAIN_SPIKED&quot;,
-            &quot;FLAIL_DIRE&quot;,
-            &quot;HAMMER_GNOME_HOOKED&quot;,
-            &quot;SWORD_TWO_BLADED&quot;,
-            &quot;URGROSH_DWARVEN&quot;,
-            &quot;BOLAS&quot;,
-            &quot;CROSSBOW_HAND&quot;,
-            &quot;CROSSBOW_REPEATING_HEAVY&quot;,
-            &quot;CROSSBOW_REPEATING_LIGHT&quot;,
-            &quot;NET&quot;,
-            &quot;SHURIKEN&quot;,
-            &quot;WARSLING&quot;
-          ]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved Shield Bash" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Prerequisite
-Shield Proficiency.
-
-Benefit
-When you perform a shield bash, you may still apply the shield’s shield bonus to your AC.
-
-Normal
-Without this feat, a character who performs a shield bash loses the shield’s shield bonus to AC until his or her next turn.
-
-Special
-A fighter may select Improved Shield Bash as one of his fighter bonus feats."
-      />
-    </insert>
-
-    <insert tableName="feats">
-      <column name="feat_name" value="Two-Weapon Fighting" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="You can fight with a weapon in each hand. You can make one extra attack each round with the second weapon.
-
-Prerequisite
-Dex 15.
-
-Benefit
-Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See the Two-Weapon Fighting special attack.
-
-Normal
-If you wield a second weapon in your off hand, you can get one extra attack per round with that weapon. When fighting in this way you suffer a -6 penalty with your regular attack or attacks with your primary hand and a -10 penalty to the attack with your off hand. If your off-hand weapon is light the penalties are reduced by 2 each. (An unarmed strike is always considered light.)
-
-Special
-A 2nd-level ranger who has chosen the two-weapon combat style is treated as having Two-Weapon Fighting, even if he does not have the prerequisite for it, but only when he is wearing light or no armor.
-
-A fighter may select Two-Weapon Fighting as one of his fighter bonus feats."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Improved Two-Weapon Fighting" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Prerequisites
-Dex 17, Two-Weapon Fighting, base attack bonus +6.
-
-Benefit
-In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a -5 penalty. See the Two-Weapon Fighting special attack.
-
-Normal
-Without this feat, you can only get a single extra attack with an off-hand weapon.
-
-Special
-A fighter may select Improved Two-Weapon Fighting as one of his fighter bonus feats.
-
-A 6th-level ranger who has chosen the two-weapon combat style is treated as having Improved Two-Weapon Fighting, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Greater Two-Weapon Fighting" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-Prerequisites
-Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11.
-
-Benefit
-You get a third attack with your off-hand weapon, albeit at a -10 penalty. See the Two-Weapon Fighting special attack.
-
-Special
-A fighter may select Greater Two-Weapon Fighting as one of his fighter bonus feats.
-
-An 11th-level ranger who has chosen the two-weapon combat style is treated as having Greater Two-Weapon Fighting, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Two-Weapon Defense" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="
-        Prerequisites
-        Dex 15, Two-Weapon Fighting.
-
-        Benefit
-        When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. See the Two-Weapon Fighting special attack.
-
-        When you are fighting defensively or using the total defense action, this shield bonus increases to +2.
-
-        Special
-        A fighter may select Two-Weapon Defense as one of his fighter bonus feats."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Weapon Finesse" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Prerequisite
-Base attack bonus +1.
-
-Benefit
-With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls.
-
-Special
-A fighter may select Weapon Finesse as one of his fighter bonus feats.
-
-Natural weapons are always considered light weapons."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 121-->
-      <column name="feat_name" value="Electricity Resistance" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="As the stormlord gains levels in this prestige class, he becomes increasingly resistant to electrical energy, gaining electricity resistance in the amount given on the table."
-      />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;DAMAGE_REDUCTION&quot;,
-          &quot;bonus&quot; : 5,
-          &quot;targets&quot; : [&quot;ELECTRICITY&quot;]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats"> <!-- 122-->
-      <column name="feat_name" value="Shock weapon" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 2nd level, any spear or javelin used by a stormlord is treated as a shock weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 123-->
-      <column name="feat_name" value="Storm Walk" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 3rd level, a stormlord (and his mount, if any) can walk or ride through storms (natural or magical) at his regular movement rate, completely unaffected by high winds (including gust of wind), pounding precipitation or waves, objects driven by the wind (which always seem to miss him), great claps of thunder, natural bolts of lightning, or any other natural symptom of Talos's fury."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 124-->
-      <column name="feat_name" value="Thundering Weapon" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 5th level, any spear or javelin a stormlord uses is treated as a thundering weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord. Its effects stack with the stormlord's shock weapon ability."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 125-->
-      <column name="feat_name" value="Storm Ride" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 6th level, a stormlord gains the ability to fly during any storm as if using the fly spell. Adverse wind conditions do not affect him; for example, even hurricane-force winds cannot knock him down or blow him away when flying."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 126-->
-      <column name="feat_name" value="Shocking Burst Weapon" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 8th level, any spear or javelin used by a stormlord is treated as a shocking burst weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord. Its effects stack with the stormlord's thundering weapon ability."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 127-->
-      <column name="feat_name" value="Elemental Conflagration" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="Upon reaching 10th level, a stormlord gains the ability to summon a quartet of Huge elementals once per tenday. These four elementals are summoned as if using the summon monster IX spell, except that each elemental is of a different type (air, earth, fire, water)."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 128-->
-      <column name="feat_name" value="Sniper's Vision" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 2nd level, warsling snipers gain a +2 bonus on sling attacks against targets with some degree of cover; this bonus effectively reduces the benefit of cover because the warsling sniper is adept at aiming for the exposed part of the foe. Furthermore, if a skiprock sniper misses the target due to concealment, she can reroll the miss chance percentile roll to see if she actually hit."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 129-->
-      <column name="feat_name" value="Improved Ricochet" />
-      <column name="feats_type" value="CLASS" />
-      <column name="description"
-        value="At 6th level, the sniper's expertise with the warsling becomes so advanced that when she bounces a skiprock off one target to hit another, the second attack roll is made without the normal -2 penalty. This ability may be used once per round."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 130-->
-      <column name="feat_name" value="Rapid Shot" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="description"
-        value="Prerequisites
-          Dex 13, Point Blank Shot.
-
-          Benefit
-          You can get one extra attack per round with a ranged weapon. The attack is at your highest base attack bonus, but each attack you make in that round (the extra one and the normal ones) takes a -2 penalty. You must use the full attack action to use this feat.
-
-          Special
-          A fighter may select Rapid Shot as one of his fighter bonus feats.
-
-          A 2nd-level ranger who has chosen the archery combat style is treated as having Rapid Shot, even if he does not have the prerequisites for it, but only when he is wearing light or no armor."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 131-->
-      <column name="feat_name" value="Power Attack" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-          {&quot;type&quot;:&quot;streght&quot;, &quot;value&quot;: 13}
-        ]"/>
-      <column name="description"
-        value="
-          Benefit
-          On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn.
-
-          Special
-          If you attack with a two-handed weapon, or with a one-handed weapon wielded in two hands, instead add twice the number subtracted from your attack rolls. You can’t add the bonus from Power Attack to the damage dealt with a light weapon (except with unarmed strikes or natural weapon attacks), even though the penalty on attack rolls still applies. (Normally, you treat a double weapon as a one-handed weapon and a light weapon. If you choose to use a double weapon like a two-handed weapon, attacking with only one end of it in a round, you treat it as a two-handed weapon.)
-
-          A fighter may select Power Attack as one of his fighter bonus feats."
-      />
-    </insert>
-    <insert tableName="feats"> <!-- 132-->
-      <column name="feat_name" value="Combat Expertise" />
-      <column name="feats_type" value="GENERAL" />
-      <column name="prerequisite"
-        value="[
-          {&quot;type&quot;:&quot;intelligence&quot;, &quot;value&quot;: 13}
-        ]"/>
-      <column name="description"
-        value="Benefit
-          When you use the attack action or the full attack action in melee, you can take a penalty of as much as -5 on your attack roll and add the same number (+5 or less) as a dodge bonus to your Armor Class. This number may not exceed your base attack bonus. The changes to attack rolls and Armor Class last until your next action.
-
-          Normal
-          A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class.
-
-          Special
-          A fighter may select Combat Expertise as one of his fighter bonus feats."
-      />
-    </insert>
-    <insert tableName="feats">
-      <column name="id" value="1000" />
-      <column name="feat_name" value="Elven Martial Weapon Proficiency" />
-      <column name="feats_type" value="RACIAL" />
-      <column name="description"
-        value="Elves receive the Martial Weapon Proficiency feats for the longsword, rapier, longbow (including composite longbow), and shortbow (including composite shortbow) as bonus feats." />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;MARTIAL&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;LONGSWORD&quot;,&quot;RAPIER&quot;,&quot;SHORTBOW&quot;,&quot;SHORTBOW_COMPOSITE&quot;,&quot;LONGBOW&quot;,&quot;LONGBOW_COMPOSITE&quot;]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="id" value="1001" />
-      <column name="feat_name" value="Drow Martial Weapon Proficiency" />
-      <column name="feats_type" value="RACIAL" />
-      <column name="description"
-        value="Drow receive the Martial Weapon Proficiency feats for the shortsword, rapier as bonus feats." />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;MARTIAL&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;SWORD_SHORT&quot;,&quot;RAPIER&quot;]
-          } 
-  ]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="id" value="1002" />
-      <column name="feat_name" value="Drow Exotic Weapon Proficiency" />
-      <column name="feats_type" value="RACIAL" />
-      <column name="description"
-        value="Drow receive the Exotic Weapon Proficiency feats for the hand-crossbow as bonus feats." />
-      <column name="modifiers"
-        value="[
-    {
-          &quot;modifier&quot; : &quot;MARTIAL&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;CROSSBOW_HAND&quot;]
-          } 
-  ]" />
-    </insert>
-
-  </changeSet>
+    <column name="feat_name" value="Widen Spell [Metamagic]" />
+      <column name="prerequisites" value="null" />
+      <column name="benefit" value="You can alter a burst, emanation, line, or spread shaped spell to increase its area. Any numeric measurements of the spell�s area increase by 100%.A widened spell uses up a spell slot three levels higher than the spell�s actual level." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert> 
+</changeSet>
 </databaseChangeLog>

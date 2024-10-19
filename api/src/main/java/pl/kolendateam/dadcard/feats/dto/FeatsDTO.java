@@ -16,19 +16,29 @@ public class FeatsDTO {
 
   public int id;
   public String featName;
-  public FeatsTypeEnum featsType;
-  public List<PrerequisiteDTO> prerequisite;
+  public String prerequisites;
+  public String benefit;
+  public String normal;
+  public String special;
+
   public Set<ModifierDTO> modifiers;
-  public String description;
+
+  // public FeatsTypeEnum[] featsType;
+  // public List<PrerequisiteDTO> prerequisite;
+  // public String description;
 
   public FeatsDTO(Feats feats) {
     this.id = feats.getId();
     this.featName = feats.getFeatName();
-    this.featsType = feats.getFeatsType();
-    this.prerequisite =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(feats.getPrerequisite());
+    this.prerequisites = feats.getPrerequisites();
+    this.benefit = feats.getBenefit();
+    this.normal = feats.getNormal();
+    this.special = feats.getSpecial();
+    // this.featsType = feats.getFeatsType();
+    // this.prerequisite =
+    //   MapperPrerequisiteBonus.toPrerequisiteBonusDTO(feats.getPrerequisite());
     this.modifiers =
       MapperModifierBonus.toListModifierDTO(feats.getModifiers());
-    this.description = feats.getDescription();
+    // this.description = feats.getDescription();
   }
 }

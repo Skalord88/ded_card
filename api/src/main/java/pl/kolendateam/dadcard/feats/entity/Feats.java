@@ -31,17 +31,19 @@ public class Feats implements Serializable {
   int id;
 
   String featName;
-
-  @Enumerated(EnumType.STRING)
-  FeatsTypeEnum featsType;
-
-  String description;
-
-  @JdbcTypeCode(SqlTypes.JSON)
-  List<Prerequisite> prerequisite = new ArrayList<>();
+  String prerequisites;
+  String benefit;
+  String normal;
+  String special;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers = new HashSet<>();
+
+  // @Enumerated(EnumType.STRING)
+  // FeatsTypeEnum[] featsType;
+
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // List<Prerequisite> prerequisite = new ArrayList<>();
 
   public Feats(int idDTO) {
     this.id = idDTO;

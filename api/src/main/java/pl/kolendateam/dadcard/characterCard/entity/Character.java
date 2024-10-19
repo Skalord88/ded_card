@@ -230,9 +230,9 @@ public class Character implements Serializable {
   public boolean buyFeat(Feats feat) {
     boolean buyed = false;
 
-    if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
-      return false;
-    }
+    // if (feat.getFeatsType() == FeatsTypeEnum.CLASS) {
+    //   return false;
+    // }
 
     // CharacterFeat characterFeat = new CharacterFeat(
     //   feat.getId(),

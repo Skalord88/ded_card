@@ -13,6 +13,7 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Getter
@@ -38,5 +39,8 @@ public class Enchantment implements Serializable {
   public Enchantment(EnchantmentDTO enchantmentDTO) {
     this.id = enchantmentDTO.id;
     this.enchantment = enchantmentDTO.enchantment;
+    this.ability = enchantmentDTO.ability;
+    this.modifiers =
+      MapperModifierBonus.toListModifier(enchantmentDTO.modifiers);
   }
 }

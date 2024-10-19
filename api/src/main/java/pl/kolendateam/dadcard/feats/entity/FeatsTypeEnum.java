@@ -1,12 +1,13 @@
 package pl.kolendateam.dadcard.feats.entity;
 
 public enum FeatsTypeEnum {
-  GENERAL("general"),
-  REGIONAL("regional"),
-  ITEM_CREATION("item creation"),
-  METAMAGIC("metamagic"),
-  CLASS("class"),
-  RACIAL("racial");
+  GENERAL("General"),
+  FIGHTER("Fighter"),
+  REGIONAL("Regional"),
+  ITEM_CREATION("Item creation"),
+  METAMAGIC("Metamagic"),
+  CLASS("Class"),
+  RACIAL("Racial");
 
   private String featsTypeEnum;
 
