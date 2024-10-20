@@ -1,0 +1,46 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="407" author="oscar">
+        <createTable tableName="domains">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="domain" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="granted_power" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="list_of_spells" type="json">
+                <constraints nullable="true" />
+            </column>
+            <column name="modifiers" type="json">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+
+        <insert tableName="domains">
+            <column name="domain" value="Destruction" />
+            <column name="granted_power"
+                value="You gain the smite power, the supernatural ability to make a single melee attack with a +4 attack bonus and a damage bonus equal to your cleric level (if you hit). You must declare the smite before making the attack. It is usable once per day." />
+            <column name="list_of_spells" value="[]" />
+            <column name="modifiers" value="[]" />
+        </insert>
+        <insert tableName="domains">
+            <column name="domain" value="Storm" />
+            <column name="granted_power" value="You gain electricity resistance 5." />
+            <column name="list_of_spells" value="[]" />
+            <column name="modifiers"
+                value="[
+            {
+            &quot;modifier&quot; : &quot;RESISTANCE&quot;,            
+            &quot;bonus&quot; : 5,            
+            &quot;targets&quot; : [&quot;ELECTRICITY&quot;]            
+            }
+            ]" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

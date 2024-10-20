@@ -5,6 +5,7 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +33,7 @@ public class Enchantment implements Serializable {
   ItemAbilityEnum ability;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  Set<ModifierBonus> modifiers = new HashSet<>();
 
   int cost;
 

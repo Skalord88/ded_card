@@ -16,7 +16,7 @@ public class MaperListRaceToDTO {
   public static ArrayList<RaceDTO> toListRaceDTO(List<Race> races) {
     ArrayList<RaceDTO> racesDTO = new ArrayList<>();
 
-    races.forEach(race -> {
+    if (races != null) races.forEach(race -> {
       RaceDTO raceDTO = new RaceDTO(race);
       racesDTO.add(raceDTO);
     });
@@ -26,7 +26,7 @@ public class MaperListRaceToDTO {
   public static ArrayList<SubRaceDTO> toListSubRaceDTO(List<SubRace> subRaces) {
     ArrayList<SubRaceDTO> racesDTO = new ArrayList<>();
 
-    subRaces.forEach(sub -> {
+    if (subRaces != null) subRaces.forEach(sub -> {
       SubRaceDTO raceDTO = new SubRaceDTO(sub);
       racesDTO.add(raceDTO);
     });
@@ -39,7 +39,7 @@ public class MaperListRaceToDTO {
   ) {
     ArrayList<ArchetypeDTO> archetypesDTO = new ArrayList<>();
 
-    archetypes.forEach(arche -> {
+    if (archetypes != null) archetypes.forEach(arche -> {
       ArchetypeDTO archetypeDTO = new ArchetypeDTO(arche);
       archetypesDTO.add(archetypeDTO);
     });

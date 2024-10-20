@@ -49,10 +49,12 @@ public class ArmorsDTO implements Serializable {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
+    this.enchantmentList = new HashSet<>();
   }
 
   public ArmorsDTO(EnchantedItems item) {
     ArmorsDTO armorDTO = new ArmorsDTO((Armors) item.getItem());
+
     Set<ModifierDTO> setOfMods = new HashSet<>();
     if (armorDTO.modifiers != null) {
       armorDTO.modifiers.forEach(ar -> {

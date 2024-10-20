@@ -1,8 +1,12 @@
 package pl.kolendateam.dadcard.modifier.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class ModifierDTO {
 
   public ModifierEnum modifier;

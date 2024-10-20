@@ -9,31 +9,38 @@
     <insert tableName="enchantment">
         <column name='id' value="0"/>
         <column name="enchantment" value="0"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="-1"/>
         <column name="enchantment" value="-1"/>
         <column name="ability" value="PERFECT"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="1"/>
         <column name="enchantment" value="1"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="2"/>
         <column name="enchantment" value="2"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="3"/>
         <column name="enchantment" value="3"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="4"/>
         <column name="enchantment" value="4"/>
+        <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="5"/>
         <column name="enchantment" value="5"/>
+        <column name="cost" value="0"/>
     </insert>
 
     </changeSet>

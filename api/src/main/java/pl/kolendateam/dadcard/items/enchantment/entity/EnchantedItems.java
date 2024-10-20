@@ -19,11 +19,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Getter
@@ -31,6 +31,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class EnchantedItems implements Serializable {
 
   @Id

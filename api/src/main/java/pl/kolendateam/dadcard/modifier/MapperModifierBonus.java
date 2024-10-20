@@ -8,7 +8,8 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 public class MapperModifierBonus {
 
   public static ModifierDTO toModifierDTO(ModifierBonus mod) {
-    return new ModifierDTO(mod);
+    if (mod != null) return new ModifierDTO(mod);
+    return new ModifierDTO();
   }
 
   public static Set<ModifierDTO> toListModifierDTO(Set<ModifierBonus> mods) {
@@ -18,7 +19,6 @@ public class MapperModifierBonus {
         ModifierDTO modDTO = new ModifierDTO(mod);
         listOfModifierDTO.add(modDTO);
       });
-      return listOfModifierDTO;
     }
     return listOfModifierDTO;
   }
@@ -30,7 +30,6 @@ public class MapperModifierBonus {
         ModifierBonus m = new ModifierBonus(mod);
         listOfModifier.add(m);
       });
-      return listOfModifier;
     }
     return listOfModifier;
   }

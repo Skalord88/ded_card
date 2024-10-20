@@ -24,7 +24,7 @@
             <column name="weapon_name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="cost" type="FLOAT">
+            <column name="cost" type="double">
                 <constraints nullable="true"/>
             </column>
             <column name="damage" type="varchar(255)">

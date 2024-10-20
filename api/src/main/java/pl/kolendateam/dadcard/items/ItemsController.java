@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
+import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
@@ -33,16 +37,19 @@ public class ItemsController {
   ItemsRepository itemsRepository;
   InventoryRepository inventoryRepository;
   CharacterRepository characterRepository;
+  EnchantedItemsRepository enchantedItemsRepository;
 
   @Autowired
   public ItemsController(
     ItemsRepository itemsRepository,
     InventoryRepository inventoryRepository,
-    CharacterRepository characterRepository
+    CharacterRepository characterRepository,
+    EnchantedItemsRepository enchantedItemsRepository
   ) {
     this.itemsRepository = itemsRepository;
     this.inventoryRepository = inventoryRepository;
     this.characterRepository = characterRepository;
+    this.enchantedItemsRepository = enchantedItemsRepository;
   }
 
   @GetMapping("all")
@@ -52,6 +59,18 @@ public class ItemsController {
     ItemsListDTO itemsDTOList = new ItemsListDTO();
 
     return itemsDTOList.createListOfItemsDTO(itemsList, itemsDTOList);
+  }
+
+  @GetMapping("allEnchanted")
+  public List<EnchantedItemsDTO> showEnchantedItemsList() {
+    List<EnchantedItems> itemsList = this.enchantedItemsRepository.findAll();
+    List<EnchantedItemsDTO> listDTO = new ArrayList<>();
+
+    itemsList.forEach(item -> {
+      listDTO.add(new EnchantedItemsDTO(item));
+    });
+
+    return listDTO;
   }
 
   @GetMapping("inventory/{id}")

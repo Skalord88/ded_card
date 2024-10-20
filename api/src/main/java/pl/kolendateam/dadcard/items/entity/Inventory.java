@@ -15,11 +15,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import pl.kolendateam.dadcard.items.MapperItems;
-import pl.kolendateam.dadcard.items.armor.entity.Armors;
-import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @Getter

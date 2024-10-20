@@ -112,6 +112,7 @@ public enum ModifierEnum {
 
   // immunity
   IMMUNITY,
+  RESISTANCE,
   FEAR,
   DISEASES,
   POISON,

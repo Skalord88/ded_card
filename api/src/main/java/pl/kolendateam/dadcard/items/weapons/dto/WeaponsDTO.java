@@ -10,8 +10,6 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
-import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
@@ -71,6 +69,7 @@ public class WeaponsDTO implements Serializable {
     this.type = typ;
     this.description = item.getDescription();
     this.material = item.getMaterial();
+    this.enchantmentList = new HashSet<>();
   }
 
   public WeaponsDTO(EnchantedItems item) {

@@ -5,7 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -32,7 +31,7 @@ public class ShieldsDTO {
   public int penality;
   public int failure;
   public String description;
-  public Set<EnchantmentDTO> enchantmentList;
+  public Set<EnchantmentDTO> enchantmentList = new HashSet<>();
   public MaterialEnum material;
 
   public ShieldsDTO(Shields item) {
@@ -49,6 +48,7 @@ public class ShieldsDTO {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
+    this.enchantmentList = new HashSet<>();
   }
 
   public ShieldsDTO(EnchantedItems item) {

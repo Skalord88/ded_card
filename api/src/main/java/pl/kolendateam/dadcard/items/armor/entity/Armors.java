@@ -1,23 +1,18 @@
 package pl.kolendateam.dadcard.items.armor.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
-import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
-import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
-import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
@@ -29,6 +24,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @DiscriminatorValue(value = "ARMOR")
 public class Armors extends Items {
 

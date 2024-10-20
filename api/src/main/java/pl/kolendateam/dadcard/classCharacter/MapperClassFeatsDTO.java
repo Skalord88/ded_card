@@ -57,20 +57,3 @@ public class MapperClassFeatsDTO {
     return classesDTO;
   }
 }
-// public static ArrayList <ClassFeatsDTO> toClassFeatsDTO(String classFeatsMap){
-//     ArrayList<ClassFeatsDTO> clFeatsList = new ArrayList<>();
-//     Gson gson = new Gson();
-//     Type listFeats = new TypeToken<List<ClassFeats>>(){}.getType();
-//     List<ClassFeats> feats = gson.fromJson(classFeatsMap, listFeats);
-//     for(ClassFeats clFe : feats){
-//         ClassFeatsDTO clFeDTO = new ClassFeatsDTO();
-//         clFeDTO.level =  clFe.getLevel();
-//         HashSet <String> fList = clFe.getClassFeats();
-//         for(String f : fList){
-//             fList.add(f);
-//             clFeDTO.classFeats = fList;
-//         }
-//         clFeatsList.add(clFeDTO);
-//     }
-//     return clFeatsList;
-// }

@@ -17,7 +17,7 @@
             <column name="modifiers" type="json">
               <constraints nullable="true" />
             </column>
-            <column name="cost" type="FLOAT">
+            <column name="cost" type="double">
               <constraints nullable="true" />
             </column>
             <column name="description" type="varchar(255)">
@@ -35,15 +35,34 @@
         </createTable>
         
         <insert tableName="enchanted_items">
-            <column name="id" value="1" />
+            <column name="id" value="1001" />
             <column name="items_id" value="38" />
             <column name="material" value="ADAMANTINE" />
             <column name="cost" value="15000" />
         </insert>
+        <insert tableName="enchanted_items">
+            <column name="id" value="1002" />
+            <column name="items_id" value="42" />
+            <column name="material" value="ADAMANTINE" />
+            <column name="cost" value="15000" />
+        </insert>
+        <insert tableName="enchanted_items">
+            <column name="id" value="1003" />
+            <column name="items_id" value="6" />
+            <column name="cost" value="301" />
+        </insert>
 
         <insert tableName="enchanted_list">
-            <column name="enchanted_items_id" value="1" />
+            <column name="enchanted_items_id" value="1001" />
             <column name="enchantment_id" value="2" />
+        </insert>
+        <insert tableName="enchanted_list">
+            <column name="enchanted_items_id" value="1002" />
+            <column name="enchantment_id" value="0" />
+        </insert>
+        <insert tableName="enchanted_list">
+            <column name="enchanted_items_id" value="1003" />
+            <column name="enchantment_id" value="-1" />
         </insert>
     </changeSet>
 </databaseChangeLog>

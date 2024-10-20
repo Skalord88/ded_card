@@ -9,488 +9,522 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="9" /> <!-- Fast movement -->
+            <column name="feats_id" value="111" /> <!-- Fast movement -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="10" /> <!-- Illiteracy -->
+            <column name="feats_id" value="112" /> <!-- Illiteracy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="12" /> <!-- Uncanny Dodge -->
+            <column name="feats_id" value="114" /> <!-- Uncanny Dodge -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="14" /> <!-- Improved uncanny dodge -->
+            <column name="feats_id" value="116" /> <!-- Improved uncanny dodge -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="7" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="15" /> <!-- Damage reduction -->
+            <column name="feats_id" value="117" /> <!-- Damage reduction -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="15" /> <!-- Damage reduction -->
+            <column name="feats_id" value="117" /> <!-- Damage reduction -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="16" /> <!-- Greater rage -->
+            <column name="feats_id" value="118" /> <!-- Greater rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="15" /> <!-- Damage reduction -->
+            <column name="feats_id" value="117" /> <!-- Damage reduction -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="14" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="17" /> <!-- Indomitable will -->
+            <column name="feats_id" value="119" /> <!-- Indomitable will -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="15" /> <!-- Damage reduction -->
+            <column name="feats_id" value="117" /> <!-- Damage reduction -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="17" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="18" /> <!-- Tireless rage -->
+            <column name="feats_id" value="120" /> <!-- Tireless rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="115" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="19" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="15" /> <!-- Damage reduction -->
+            <column name="feats_id" value="117" /> <!-- Damage reduction -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="19" /> <!-- Mighty rage -->
+            <column name="feats_id" value="121" /> <!-- Mighty rage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="1" />
-            <column name="feats_id" value="11" /> <!-- Rage -->
+            <column name="feats_id" value="113" /> <!-- Rage -->
         </insert>
 
-        <!-- barb -->
+        <!-- bard -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="26" /> <!-- Bardic music -->
+            <column name="feats_id" value="123" /> <!-- Bardic music -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="27" /> <!-- Bardic knowledge -->
+            <column name="feats_id" value="122" /> <!-- Bardic knowledge -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="28" /> <!-- Countersong -->
+            <column name="feats_id" value="124" /> <!-- Countersong -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="29" /> <!-- Fascinate -->
+            <column name="feats_id" value="125" /> <!-- Fascinate -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="30" /> <!-- Inspire courage -->
+            <column name="feats_id" value="126" /> <!-- Inspire courage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="31" /> <!-- Inspire competence -->
+            <column name="feats_id" value="127" /> <!-- Inspire competence -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="32" /> <!-- Suggestion -->
+            <column name="feats_id" value="128" /> <!-- Suggestion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="30" /> <!-- Inspire courage -->
+            <column name="feats_id" value="126" /> <!-- Inspire courage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="33" /> <!-- Inspire greatness -->
-        </insert>
-        
+            <column name="feats_id" value="129" /> <!-- Inspire greatness -->
+        </insert>  
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="34" /> <!-- Song of freedom -->
+            <column name="feats_id" value="130" /> <!-- Song of freedom -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="14" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="30" /> <!-- Inspire courage -->
+            <column name="feats_id" value="126" /> <!-- Inspire courage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="35" /> <!-- Inspire heroics -->
+            <column name="feats_id" value="131" /> <!-- Inspire heroics -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="36" /> <!-- Mass suggestion -->
+            <column name="feats_id" value="132" /> <!-- Mass suggestion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="2" />
-            <column name="feats_id" value="30" /> <!-- Inspire courage -->
+            <column name="feats_id" value="126" /> <!-- Inspire courage -->
         </insert>
 
         <!-- cleric -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="3" />
-            <column name="feats_id" value="37" /> <!-- Turn or rebuke undead -->
+            <column name="feats_id" value="133" /> <!-- Domains and Class Skills -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="134" /> <!-- Aura (Ex) -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="135" /> <!-- Deity, Domains, and Domain Spells -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="136" /> <!-- Spontaneous Casting -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="137" /> <!-- Chaotic, Evil, Good, and Lawful Spells -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="138" /> <!-- Turn or Rebuke Undead (Su) -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="139" /> <!-- Bonus Languages -->
         </insert>
 
         <!-- druid -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="38" /> <!-- Animal Companion -->
+            <column name="feats_id" value="148" /> <!-- Animal Companion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="39" /> <!-- Nature Sense -->
+            <column name="feats_id" value="144" /> <!-- Nature Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="40" /> <!-- Wild Empathy -->
+            <column name="feats_id" value="145" /> <!-- Wild Empathy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="41" /> <!-- Woodland Stride -->
+            <column name="feats_id" value="146" /> <!-- Woodland Stride -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="42" /> <!-- Trackless Step -->
+            <column name="feats_id" value="147" /> <!-- Trackless Step -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="43" /> <!-- Resist Nature's Lure -->
+            <column name="feats_id" value="148" /> <!-- Resist Nature's Lure -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="7" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="45" /> <!-- Venom Immunity -->
+            <column name="feats_id" value="150" /> <!-- Venom Immunity -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="46" /> <!-- A Thousand Faces -->
+            <column name="feats_id" value="151" /> <!-- A Thousand Faces -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="14" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="47" /> <!-- Timeless Body -->
+            <column name="feats_id" value="152" /> <!-- Timeless Body -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="4" />
-            <column name="feats_id" value="44" /> <!-- Wild Shape -->
+            <column name="feats_id" value="149" /> <!-- Wild Shape -->
         </insert>
 
         <!-- Fighter -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="14" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="5" />
-            <column name="feats_id" value="48" /> <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
 
-        <!-- Monk -->
+        <!-- Monk *********************************************************************************************************** -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="49" /> <!-- Monk Bonus Feats -->
+            <column name="feats_id" value="157" /> <!-- Monk Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="50" /> <!-- Flurry of Blows -->
+            <column name="feats_id" value="155" /> <!-- Flurry of Blows -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="51" /> <!-- Unarmed Strike -->
+            <column name="feats_id" value="156" /> <!-- Unarmed Strike -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="49" /> <!-- Monk Bonus Feats -->
+            <column name="feats_id" value="157" /> <!-- Monk Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="52" /> <!-- Evasion -->
+            <column name="feats_id" value="158" /> <!-- Evasion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="53" /> <!-- Still Mind -->
+            <column name="feats_id" value="160" /> <!-- Still Mind -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="3" />
+            <column name="class_character_id" value="6" />
+            <column name="feats_id" value="159" /> <!-- Fast Movement (Ex) -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="54" /> <!-- Ki Strike -->
+            <column name="feats_id" value="161" /> <!-- Ki Strike -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="56" /> <!-- Purity of Body -->
+            <column name="feats_id" value="163" /> <!-- Purity of Body -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="49" /> <!-- Monk Bonus Feats -->
+            <column name="feats_id" value="157" /> <!-- Monk Bonus Feats -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="7" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="56" /> <!-- Wholeness of Body -->
+            <column name="feats_id" value="164" /> <!-- Wholeness of Body -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="58" /> <!-- Improved Evasion -->
+            <column name="feats_id" value="165" /> <!-- Improved Evasion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="54" /> <!-- Ki Strike -->
+            <column name="feats_id" value="161" /> <!-- Ki Strike -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="59" /> <!-- Diamond Body -->
+            <column name="feats_id" value="166" /> <!-- Diamond Body -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="60" /> <!-- Greater Flurry -->
+            <column name="feats_id" value="167" /> <!-- Greater Flurry -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="61" /> <!-- Abundant Step -->
+            <column name="feats_id" value="167" /> <!-- Abundant Step -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="62" /> <!-- Diamond Soul -->
+            <column name="feats_id" value="168" /> <!-- Diamond Soul -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="14" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="63" /> <!-- Quivering Palm -->
+            <column name="feats_id" value="169" /> <!-- Quivering Palm -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
@@ -500,7 +534,7 @@
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="161" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="17" />
@@ -510,140 +544,140 @@
         <insert tableName="class_feats">
             <column name="level" value="17" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="65" /> <!-- Tongue of the Sun and Moon -->
+            <column name="feats_id" value="170" /> <!-- Tongue of the Sun and Moon -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="19" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="66" /> <!-- Empty Body -->
+            <column name="feats_id" value="172" /> <!-- Empty Body -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="67" /> <!-- Perfect Self -->
+            <column name="feats_id" value="173" /> <!-- Perfect Self -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="6" />
-            <column name="feats_id" value="55" /> <!-- Slow Fall -->
+            <column name="feats_id" value="162" /> <!-- Slow Fall -->
         </insert>
         <!-- Paladin -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="68" /> <!-- Aura of Good -->
+            <column name="feats_id" value="174" /> <!-- Aura of Good -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="69" /> <!-- Detect Evil -->
+            <column name="feats_id" value="175" /> <!-- Detect Evil -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="70" /> <!-- Smite Evil -->
+            <column name="feats_id" value="176" /> <!-- Smite Evil -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="71" /> <!-- Divine Grace -->
+            <column name="feats_id" value="177" /> <!-- Divine Grace -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="72" /> <!-- Lay on Hands -->
+            <column name="feats_id" value="178" /> <!-- Lay on Hands -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="73" /> <!-- Aura of Courage -->
+            <column name="feats_id" value="179" /> <!-- Aura of Courage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="74" /> <!-- Divine Health -->
+            <column name="feats_id" value="180" /> <!-- Divine Health -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="75" /> <!-- Turn Undead -->
+            <column name="feats_id" value="181" /> <!-- Turn Undead -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="70" /> <!-- Smite Evil -->
+            <column name="feats_id" value="176" /> <!-- Smite Evil -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="76" /> <!-- Special Mount -->
+            <column name="feats_id" value="183" /> <!-- Special Mount -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="77" /> <!-- Remove Disease -->
+            <column name="feats_id" value="184" /> <!-- Remove Disease -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="77" /> <!-- Remove Disease -->
+            <column name="feats_id" value="184" /> <!-- Remove Disease -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="70" /> <!-- Smite Evil -->
+            <column name="feats_id" value="176" /> <!-- Smite Evil -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="77" /> <!-- Remove Disease -->
+            <column name="feats_id" value="184" /> <!-- Remove Disease -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="77" /> <!-- Remove Disease -->
+            <column name="feats_id" value="184" /> <!-- Remove Disease -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="70" /> <!-- Smite Evil -->
+            <column name="feats_id" value="176" /> <!-- Smite Evil -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="77" /> <!-- Remove Disease -->
+            <column name="feats_id" value="184" /> <!-- Remove Disease -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="7" />
-            <column name="feats_id" value="70" /> <!-- Smite Evil -->
+            <column name="feats_id" value="176" /> <!-- Smite Evil -->
         </insert>
 
-        <!-- ranger -->
+        <!-- Ranger -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="78" /> <!-- Favored Enemy -->
+            <column name="feats_id" value="187" /> <!-- Favored Enemy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="79" /> <!-- Track -->
+            <column name="feats_id" value="188" /> <!-- Track -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="40" /> <!-- Wild Empathy -->
+            <column name="feats_id" value="189" /> <!-- Wild Empathy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="80" /> <!-- Combat Style -->
+            <column name="feats_id" value="190" /> <!-- Combat Style -->
             <column name="list_of_bonus" value="[
             { &quot;type&quot;: &quot;Feats&quot;, &quot;value&quot;: 116 },
             { &quot;type&quot;: &quot;Feats&quot;, &quot;value&quot;: 130 }
@@ -652,233 +686,233 @@
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="81" /> <!-- Endurance -->
+            <column name="feats_id" value="191" /> <!-- Endurance -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="38" /> <!-- Animal Companion -->
+            <column name="feats_id" value="192" /> <!-- Animal Companion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="78" /> <!-- Favored Enemy -->
+            <column name="feats_id" value="187" /> <!-- Favored Enemy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="82" /> <!-- Improved Combat Style -->
+            <column name="feats_id" value="194" /> <!-- Improved Combat Style -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="7" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="41" /> <!-- Woodland Stride -->
+            <column name="feats_id" value="195" /> <!-- Woodland Stride -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="83" /> <!-- Swift Tracker -->
+            <column name="feats_id" value="196" /> <!-- Swift Tracker -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="52" /> <!-- Evasion -->
+            <column name="feats_id" value="197" /> <!-- Evasion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="78" /> <!-- Favored Enemy -->
+            <column name="feats_id" value="187" /> <!-- Favored Enemy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="84" /> <!-- Combat Style Mastery -->
+            <column name="feats_id" value="198" /> <!-- Combat Style Mastery -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="84" /> <!-- Camouflage -->
+            <column name="feats_id" value="199" /> <!-- Camouflage -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="78" /> <!-- Favored Enemy -->
+            <column name="feats_id" value="187" /> <!-- Favored Enemy -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="17" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="86" /> <!-- Hide in Plain Sight -->
+            <column name="feats_id" value="200" /> <!-- Hide in Plain Sight -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="8" />
-            <column name="feats_id" value="78" /> <!-- Favored Enemy -->
+            <column name="feats_id" value="187" /> <!-- Favored Enemy -->
         </insert>
 
         <!-- Rogue -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="88" /> <!-- Trapfinding -->
+            <column name="feats_id" value="202" /> <!-- Trapfinding -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="52" /> <!-- Evasion -->
+            <column name="feats_id" value="203" /> <!-- Evasion -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="12" /> <!-- Uncanny Dodge -->
+            <column name="feats_id" value="205" /> <!-- Uncanny Dodge -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="7" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="8" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="14" /> <!-- Improved uncanny dodge -->
+            <column name="feats_id" value="206" /> <!-- Improved uncanny dodge -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="9" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="89" /> <!-- Special Abilities -->
+            <column name="feats_id" value="207" /> <!-- Special Abilities -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="11" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="13" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="89" /> <!-- Special Abilities -->
+            <column name="feats_id" value="207" /> <!-- Special Abilities -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="16" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="89" /> <!-- Special Abilities -->
+            <column name="feats_id" value="207" /> <!-- Special Abilities -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="17" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="18" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="13" /> <!-- Trap Sense -->
+            <column name="feats_id" value="204" /> <!-- Trap Sense -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="19" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="87" /> <!-- Sneak Attack -->
+            <column name="feats_id" value="201" /> <!-- Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="19" />
             <column name="class_character_id" value="9" />
-            <column name="feats_id" value="89" /> <!-- Special Abilities -->
+            <column name="feats_id" value="207" /> <!-- Special Abilities -->
         </insert>
 
         <!-- Sorcerer -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="10" />
-            <column name="feats_id" value="90" /> <!-- Summon Familiar -->
+            <column name="feats_id" value="208" /> <!-- Summon Familiar -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="10" />
-            <column name="feats_id" value="91" /> <!-- Eschew Materials -->
+            <column name="feats_id" value="30" /> <!-- Eschew Materials -->
         </insert>
 
         <!-- Wizard -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="90" /> <!-- Summon Familiar -->
+            <column name="feats_id" value="208" /> <!-- Summon Familiar -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="92" /> <!-- Scribe Scroll -->
+            <column name="feats_id" value="84" /> <!-- Scribe Scroll -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="93" /> <!-- Bonus Feat Wizard -->
+            <column name="feats_id" value="210" /> <!-- Bonus Feat Wizard -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="10" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="93" /> <!-- Bonus Feat Wizard -->
+            <column name="feats_id" value="210" /> <!-- Bonus Feat Wizard -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="15" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="93" /> <!-- Bonus Feat Wizard -->
+            <column name="feats_id" value="210" /> <!-- Bonus Feat Wizard -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="20" />
             <column name="class_character_id" value="11" />
-            <column name="feats_id" value="93" /> <!-- Bonus Feat Wizard -->
+            <column name="feats_id" value="210" /> <!-- Bonus Feat Wizard -->
         </insert>
         <!-- Warsling Sniper -->
         <insert tableName="class_feats">

@@ -18,6 +18,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
@@ -29,6 +30,7 @@ import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @DiscriminatorColumn(
   name = "item_type",
   discriminatorType = DiscriminatorType.STRING
