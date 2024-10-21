@@ -8,6 +8,18 @@
       <column name="benefit" value="You get a +2 bonus on all Jump checks and Tumble checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;JUMP&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;TUMBLE&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Agile [General]" />
@@ -16,6 +28,18 @@
         value="You get a +2 bonus on all Balance checks and Escape Artist checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;BALANCE&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;ESCAPE_ARTIST&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Alertness [General]" />
@@ -24,21 +48,55 @@
       <column name="normal" value="null" />
       <column name="special"
         value="The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm�s reach." />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;LISTEN&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;SPOT&quot;]
+            }
+            ]" />
     </insert>
+
     <insert tableName="feats">
       <column name="feat_name" value="Animal Affinity [General]" />
       <column name="prerequisites" value="null" />
       <column name="benefit" value="You get a +2 bonus on all Handle Animal checks and Ride checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;HANDLE_ANIMAL&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;RIDE&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Heavy) [General]" />
       <column name="prerequisites" value="Armor Proficiency (light), Armor Proficiency (medium)." />
-      <column name="benefit" value="See Armor Proficiency (light)." />
-      <column name="normal" value="See Armor Proficiency (light)." />
+      <column name="benefit"
+        value="When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks." />
+      <column name="normal"
+        value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it." />
+      <column name="prerequisite_list"
+        value="[
+        
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 6 },
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 7 }
+        
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Light) [General]" />
@@ -52,11 +110,17 @@
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Medium) [General]" />
-      <column name="prerequisites" value="null" />
-      <column name="benefit" value="See Armor Proficiency (light)." />
-      <column name="normal" value="See Armor Proficiency (light)." />
+      <column name="prerequisites" value="Armor Proficiency (light)." />
+      <column name="benefit"
+        value="When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks." />
+      <column name="normal"
+        value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it." />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 6 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Athletic [General]" />
@@ -64,6 +128,18 @@
       <column name="benefit" value="You get a +2 bonus on all Climb checks and Swim checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;CLIMB&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;SWIM&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Augment Summoning [General]" />
@@ -75,29 +151,48 @@
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Blind-Fight [General]" />
+      <column name="type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
-        value="In melee, every time you miss because of concealment, you can reroll your miss chance percentile roll one time to see if you actually hit." />
+        value="In melee, every time you miss because of concealment, you can reroll your miss chance percentile roll one time to see if you actually hit. An invisible attacker gets no advantages related to hitting you in melee. That is, you don’t lose your Dexterity bonus to Armor Class, and the attacker doesn’t get the usual +2 bonus for being invisible. The invisible attacker’s bonuses do still apply for ranged attacks, however. You take only half the usual penalty to speed for being unable to see. Darkness and poor visibility in general reduces your speed to three-quarters normal, instead of one-half." />
       <column name="normal"
         value="Regular attack roll modifiers for invisible attackers trying to hit you apply, and you lose your Dexterity bonus to AC. The speed reduction for darkness and poor visibility also applies." />
       <column name="special"
-        value="The Blind-Fight feat is of no use against a character who is the subject of a blink spell." />
+        value="The Blind-Fight feat is of no use against a character who is the subject of a blink spell. A fighter may select Blind-Fight as one of his fighter bonus feats." />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Brew Potion [Item Creation]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Caster level 3rd." />
       <column name="benefit"
-        value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level � its caster level � 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price." />
+        value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level × its caster level × 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price. When you create a potion, you make any choices that you would normally make when casting the spell. Whoever drinks the potion is the target of the spell. Any potion that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when creating the potion." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 3 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Cleave [General]" />
+      <column name="type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisites" value="Str 13, Power Attack." />
       <column name="benefit"
         value="If you deal a creature enough damage to make it drop (typically by dropping it to below 0 hit points or killing it), you get an immediate, extra melee attack against another creature within reach. You cannot take a 5-foot step before making this extra attack. The extra attack is with the same weapon and at the same bonus as the attack that dropped the previous creature. You can use this ability once per round." />
       <column name="normal" value="null" />
       <column name="special" value="A fighter may select Cleave as one of his fighter bonus feats." />
+      <column name="modifiers"
+        value="[
+          {
+            &quot;modifier&quot; : &quot;POWER_ATTACK&quot;,
+            &quot;bonus&quot; : 0,
+            &quot;targets&quot; : []
+            }
+          ]" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;strenght&quot;, &quot;value&quot; : 13 },
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 76 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Combat Casting [General]" />
@@ -106,34 +201,60 @@
         value="You get a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while you are grappling or pinned." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 4,
+            &quot;targets&quot; : [&quot;CONCENTRATION&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Combat Expertise [General]" />
-      <column name="prerequisites" value="null" />
+      <column name="type" value="[&quot;FIGHTER&quot;]" />
+      <column name="prerequisites" value="Int 13." />
       <column name="benefit"
         value="When you use the attack action or the full attack action in melee, you can take a penalty of as much as -5 on your attack roll and add the same number (+5 or less) as a dodge bonus to your Armor Class. This number may not exceed your base attack bonus. The changes to attack rolls and Armor Class last until your next action." />
       <column name="normal"
         value="A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class." />
       <column name="special"
         value="A fighter may select Combat Expertise as one of his fighter bonus feats." />
+      <column name="modifiers"
+        value="[
+          {
+            &quot;modifier&quot; : &quot;COMBAT_EXPERTISE&quot;,
+            &quot;bonus&quot; : 0,
+            &quot;targets&quot; : []
+            }
+          ]" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;intelligence&quot;, &quot;value&quot; : 13 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Combat Reflexes [General]" />
+      <column name="type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
-        value="You may make a number of additional attacks of opportunity equal to your Dexterity bonus." />
+        value="You may make a number of additional attacks of opportunity equal to your Dexterity bonus. With this feat, you may also make attacks of opportunity while flat-footed." />
       <column name="normal"
         value="A character without this feat can make only one attack of opportunity per round and can�t make attacks of opportunity while flat-footed." />
       <column name="special"
-        value="The Combat Reflexes feat does not allow a rogue to use her opportunist ability more than once per round." />
+        value="The Combat Reflexes feat does not allow a rogue to use her opportunist ability more than once per round. A fighter may select Combat Reflexes as one of his fighter bonus feats. A monk may select Combat Reflexes as a bonus feat at 2nd level." />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Magic Arms And Armor [Item Creation]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Caster level 5th" />
       <column name="benefit"
         value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features� total price in XP and use up raw materials costing one-half of this total price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 5 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Rod [Item Creation]" />
@@ -169,9 +290,22 @@
     <insert tableName="feats">
       <column name="feat_name" value="Deceitful [General]" />
       <column name="prerequisites" value="null" />
-      <column name="benefit" value="You get a +2 bonus on all Disguise checks and Forgery checks." />
+      <column name="benefit"
+        value="You get a +2 bonus on all Disguise checks and Profession (ex Forgery) checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;DISGUISE&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;PROFESSION&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Deflect Arrows [General]" />
@@ -181,6 +315,11 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites." />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;dextrity&quot;, &quot;value&quot; : 13 },
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 59 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Deft Hands [General]" />
@@ -189,37 +328,69 @@
         value="You get a +2 bonus on all Sleight of Hand checks and Use Rope checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;SLEIGHT_OF_HAND&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;USE_ROPE&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Diehard [General]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Endurance" />
       <column name="benefit"
-        value="When reduced to between -1 and -9 hit points, you automatically become stable. You don�t have to roll d% to see if you lose 1 hit point each round." />
+        value="When reduced to between -1 and -9 hit points, you automatically become stable. You don’t have to roll d% to see if you lose 1 hit point each round. When reduced to negative hit points, you may choose to act as if you were disabled, rather than dying. You must make this decision as soon as you are reduced to negative hit points (even if it isn’t your turn). If you do not choose to act as if you were disabled, you immediately fall unconscious. When using this feat, you can take either a single move or standard action each turn, but not both, and you cannot take a full round action. You can take a move action without further injuring yourself, but if you perform any standard action (or any other action deemed as strenuous, including some free actions, swift actions, or immediate actions, such as casting a quickened spell) you take 1 point of damage after completing the act. If you reach -10 hit points, you immediately die." />
       <column name="normal"
         value="A character without this feat who is reduced to between -1 and -9 hit points is unconscious and dying." />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;feat&quot;, &quot;value&quot; : 28 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Diligent [General]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
-        value="You get a +2 bonus on all Appraise checks and Decipher Script checks." />
+        value="You get a +2 bonus on all Appraise checks and Profession (ex Decipher Script) checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;APPRAISE&quot;]
+            },{
+            &quot;modifier&quot; : &quot;SKILL&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : [&quot;PROFESSION&quot;]
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Dodge [General]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Dex 13." />
       <column name="benefit"
-        value="During your action, you designate an opponent and receive a +1 dodge bonus to Armor Class against attacks from that opponent. You can select a new opponent on any action." />
+        value="During your action, you designate an opponent and receive a +1 dodge bonus to Armor Class against attacks from that opponent. You can select a new opponent on any action. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Also, dodge bonuses stack with each other, unlike most other types of bonuses." />
       <column name="normal" value="null" />
       <column name="special" value="A fighter may select Dodge as one of his fighter bonus feats." />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;dextrity&quot;, &quot;value&quot; : 13 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Empower Spell [Metamagic]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
-        value="All variable, numeric effects of an empowered spell are increased by one-half." />
+        value="All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
     </insert>
@@ -237,7 +408,7 @@
       <column name="feat_name" value="Enlarge Spell [Metamagic]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
-        value="You can alter a spell with a range of close, medium, or long to increase its range by 100%. An enlarged spell with a range of close now has a range of 50 ft. + 5 ft./level, while medium-range spells have a range of 200 ft. + 20 ft./level and long-range spells have a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot one level higher than the spell�s actual level." />
+        value="You can alter a spell with a range of close, medium, or long to increase its range by 100%. An enlarged spell with a range of close now has a range of 50 ft. + 5 ft./level, while medium-range spells have a range of 200 ft. + 20 ft./level and long-range spells have a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot one level higher than the spell’s actual level. Spells whose ranges are not defined by distance, as well as spells whose ranges are not close, medium, or long, do not have increased ranges." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
     </insert>
@@ -247,11 +418,12 @@
       <column name="benefit"
         value="You can cast any spell that has a material component costing 1 gp or less without needing that component. (The casting of the spell still provokes attacks of opportunity as normal.) If the spell requires a material component that costs more than 1 gp, you must have the material component at hand to cast the spell, just as normal." />
       <column name="normal" value="null" />
-      <column name="special" value="null" />
+      <column name="special" value="null." />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Exotic Weapon Proficiency [General]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites"
+        value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"
         value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
@@ -308,6 +480,14 @@
       <column name="benefit" value="You get a +2 bonus on all Fortitude saving throws." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers"
+        value="[
+            {
+            &quot;modifier&quot; : &quot;FORTITUDE&quot;,
+            &quot;bonus&quot; : 2,
+            &quot;targets&quot; : []
+            }
+            ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Greater Spell Focus [General]" />

@@ -139,6 +139,8 @@ public enum ModifierEnum {
   LAY_ON_HANDS,
   FAVORED_ENEMY,
   SNEAK_ATTACK,
+  POWER_ATTACK,
+  COMBAT_EXPERTISE,
 
   // favored
   VAMPIER,
