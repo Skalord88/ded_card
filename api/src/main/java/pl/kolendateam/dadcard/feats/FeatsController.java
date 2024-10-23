@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.feats;
 
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,7 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 @CrossOrigin
 @RestController
@@ -27,6 +29,7 @@ public class FeatsController {
 
   FeatsRepository featsRepository;
   CharacterRepository characterRepository;
+  ItemsRepository itemsRepository;
 
   @Autowired
   public FeatsController(
@@ -36,6 +39,26 @@ public class FeatsController {
     this.featsRepository = featsRepository;
     this.characterRepository = characterRepository;
   }
+
+  // @GetMapping("special")
+  // public SpecialPrerequisiteDTO postSpecialPrerequisite(
+  //   @RequestBody SpecialPrerequisiteDTO prer
+  // ) {
+  //   if (prer.type.equals("feat")) {
+  //     Optional<Feats> talentoOpt = featsRepository.findById(prer.id);
+  //     if (!talentoOpt.isPresent()) {
+  //       throw new ResponseStatusException(
+  //         HttpStatus.NOT_FOUND,
+  //         "Feat Not Found"
+  //       );
+  //     }
+  //     if (talentoOpt != null) {
+  //       Feats talento = talentoOpt.get();
+  //       return new SpecialPrerequisiteDTO(null, talento);
+  //     }
+  //   }
+  //   return new SpecialPrerequisiteDTO();
+  // }
 
   @GetMapping("")
   public List<FeatsDTO> showFeatsList() {

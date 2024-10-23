@@ -116,36 +116,3 @@ public class MapperSkillsToDTO {
     return skillsNameListDTO;
   }
 }
-// AbilityEnum ability = skill.getSkillAbility();
-// switch (ability) {
-//   case STRENGHT:
-//     skillDTO.skillAbilityBonus = abilitys.bonusStreght(abilitys);
-//     break;
-//   case DEXTERITY:
-//     skillDTO.skillAbilityBonus = abilitys.bonusDextrity(abilitys);
-//     break;
-//   case CONSTITUTION:
-//     skillDTO.skillAbilityBonus = abilitys.bonusConstitution(abilitys);
-//     break;
-//   case INTELLIGENCE:
-//     skillDTO.skillAbilityBonus = abilitys.bonusIntelligence(abilitys);
-//     break;
-//   case WISDOM:
-//     skillDTO.skillAbilityBonus = abilitys.bonusWisdom(abilitys);
-//     break;
-//   case CHARISMA:
-//     skillDTO.skillAbilityBonus = abilitys.bonusCharisma(abilitys);
-//     break;
-// }
-// public static List<SkillsDTO> toSkillsNameDTO(List<Skills> skills) {
-//   List<SkillsDTO> skillListDTO = new ArrayList<>();
-//   for (Skills skill : skills) {
-//     SkillsDTO skDTO = new SkillsDTO(
-//       skill.getId(),
-//       skill.getName(),
-//       skill.getAbility()
-//     );
-//     skillListDTO.add(skDTO);
-//   }
-//   return skillListDTO;
-// }

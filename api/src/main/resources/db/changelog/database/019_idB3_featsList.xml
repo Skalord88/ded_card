@@ -248,7 +248,7 @@
       <column name="feat_name" value="Craft Magic Arms And Armor [Item Creation]" />
       <column name="prerequisites" value="Caster level 5th" />
       <column name="benefit"
-        value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features� total price in XP and use up raw materials costing one-half of this total price." />
+        value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features’ total price in XP and use up raw materials costing one-half of this total price. The weapon, armor, or shield to be enhanced must be a masterwork item that you provide. Its cost is not included in the above cost. You can also mend a broken magic weapon, suit of armor, or shield if it is one that you could make. Doing so costs half the XP, half the raw materials, and half the time it would take to craft that item in the first place." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
       <column name="prerequisite_list"
@@ -258,26 +258,38 @@
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Rod [Item Creation]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Caster level 9th" />
       <column name="benefit"
-        value="You can create any rod whose prerequisites you meet. Crafting a rod takes one day for each 1,000 gp in its base price. To craft a rod, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price." />
+        value="You can create any rod whose prerequisites you meet. Crafting a rod takes one day for each 1,000 gp in its base price. To craft a rod, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. Some rods incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the rod’s base price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 9 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Staff [Item Creation]" />
-      <column name="prerequisites" value="null" />
-      <column name="benefit" value="You can create any staff whose prerequisites you meet." />
+      <column name="prerequisites" value="Caster level 12th" />
+      <column name="benefit" value="You can create any staff whose prerequisites you meet. Crafting a staff takes one day for each 1,000 gp in its base price. To craft a staff, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. A newly created staff has 50 charges. Some staffs incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the staff’s base price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 12 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Wand [Item Creation]" />
-      <column name="prerequisites" value="null" />
+      <column name="prerequisites" value="Caster level 5th" />
       <column name="benefit"
-        value="You can create a wand of any 4th-level or lower spell that you know. Crafting a wand takes one day for each 1,000 gp in its base price. The base price of a wand is its caster level � the spell level � 750 gp. To craft a wand, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price. A newly created wand has 50 charges." />
+        value="You can create a wand of any 4th-level or lower spell that you know. Crafting a wand takes one day for each 1,000 gp in its base price. The base price of a wand is its caster level × the spell level × 750 gp. To craft a wand, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price. A newly created wand has 50 charges. Any wand that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the cost derived from the base price, you must expend fifty copies of the material component or pay fifty times the XP cost." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 5 }
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Craft Wondrous Item [Item Creation]" />
@@ -311,10 +323,10 @@
       <column name="feat_name" value="Deflect Arrows [General]" />
       <column name="prerequisites" value="Dex 13, Improved Unarmed Strike." />
       <column name="benefit"
-        value="You must have at least one hand free (holding nothing) to use this feat. Once per round when you would normally be hit with a ranged weapon, you may deflect it so that you take no damage from it. You must be aware of the attack and not flat-footed." />
+        value="You must have at least one hand free (holding nothing) to use this feat. Once per round when you would normally be hit with a ranged weapon, you may deflect it so that you take no damage from it. You must be aware of the attack and not flat-footed. Attempting to deflect a ranged weapon doesn’t count as an action. Unusually massive ranged weapons and ranged attacks generated by spell effects can’t be deflected." />
       <column name="normal" value="null" />
       <column name="special"
-        value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites." />
+        value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites. A fighter may select Deflect Arrows as one of his fighter bonus feats." />
       <column name="prerequisite_list"
         value="[
         { &quot;type&quot; : &quot;dextrity&quot;, &quot;value&quot; : 13 },
@@ -388,6 +400,7 @@
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Empower Spell [Metamagic]" />
+      <column name="type" value="[&quot;METAMAGIC&quot;]" />
       <column name="prerequisites" value="null" />
       <column name="benefit"
         value="All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level." />
@@ -418,17 +431,23 @@
       <column name="benefit"
         value="You can cast any spell that has a material component costing 1 gp or less without needing that component. (The casting of the spell still provokes attacks of opportunity as normal.) If the spell requires a material component that costs more than 1 gp, you must have the material component at hand to cast the spell, just as normal." />
       <column name="normal" value="null" />
-      <column name="special" value="null." />
+      <column name="special" value="A sourcerer automatically gains Eschew Materials as a bonus feat at 1st level. He need not select it." />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Exotic Weapon Proficiency [General]" />
+      <column name="type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisites"
         value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
+        <column name="prerequisite_list"
+        value="[
+        { &quot;type&quot; : &quot;bab&quot;, &quot;value&quot; : 1 },
+        { &quot;type&quot; : &quot;streght()&quot;, &quot;value&quot; : 13 }
+        ]" />
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"
         value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
       <column name="special"
-        value="You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon. Proficiency with the bastard sword or the dwarven waraxe has an additional prerequisite of Str 13." />
+        value="You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon. Proficiency with the bastard sword or the dwarven waraxe has an additional prerequisite of Str 13. A fighter may select Exotic Weapon Proficiency as one of his fighter bonus feats." />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Extend Spell [Metamagic]" />

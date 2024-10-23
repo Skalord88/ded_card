@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @NoArgsConstructor
 @AllArgsConstructor

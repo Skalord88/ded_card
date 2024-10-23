@@ -17,7 +17,6 @@ public class SkillsDTO {
   public Set<StudyDTO> fieldOfStudy;
   public boolean classSkill;
   public double skillRank;
-  // public int skillAbilityBonus;
   public AbilityEnum skillAbility;
   public int skillBonus;
 
