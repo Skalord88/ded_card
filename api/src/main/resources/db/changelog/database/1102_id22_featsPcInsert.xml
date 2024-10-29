@@ -4,87 +4,46 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="22" author="oscar">
+
+        <!-- Puli -->
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="112" />
-            <column name="selected" value="[
-                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
-            ]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="31" />
+            <column name="selected"
+                value="[]" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="113" />
-            <column name="selected" value="[
-                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
-            ]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="31" />
+            <column name="selected"
+                value="[]" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="114" />
-            <column name="selected" value="[
-                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 58}
-            ]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="88" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="115" />
-            <column name="selected" value="[]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="14" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="116" />
-            <column name="selected" value="[]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="74" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="117" />
-            <column name="selected" value="[]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="75" />
         </insert>
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="78" />
-            <column name="selected" value="[
-            {&quot;type&quot;:&quot;archetype&quot;, &quot;value&quot; : 3},
-            {&quot;type&quot;:&quot;archetype&quot;, &quot;value&quot; : 3}
-            ]" />
-        </insert>
-        <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="78" />
-            <column name="selected" value="[
-            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001},
-            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001},
-            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1001}
-            ]" />
-        </insert>
-        <insert tableName="feats_pc">
-            <column name="character_card_id" value="101" />
-            <column name="feats_id" value="78" />
-            <column name="selected" value="[
-            {&quot;type&quot;:&quot;subRace&quot;, &quot;value&quot; : 1000}
-            ]" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="77" />
         </insert>
 
+        <!-- Rysio -->
         <insert tableName="feats_pc">
-            <column name="character_card_id" value="103" />
-            <column name="feats_id" value="112" />
-            <column name="selected" value="[
-                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 14}
-            ]" />
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="77" />
         </insert>
-        <insert tableName="feats_pc">
-            <column name="character_card_id" value="103" />
-            <column name="feats_id" value="113" />
-            <column name="selected" value="[
-                {&quot;type&quot;:&quot;items&quot;, &quot;value&quot; : 14}
-            ]" />
-        </insert>
-        
-        <insert tableName="feats_pc">
-            <column name="character_card_id" value="104" />
-            <column name="feats_id" value="120" />
-            <column name="selected" value="[]" />
-        </insert>
-        
+
     </changeSet>
 </databaseChangeLog>

@@ -406,6 +406,127 @@
             <column name="range" value="-1" />
         </insert>
 
+        <!-- MARTIAL -->
+        <insert tableName="items">
+            <column name="name" value="Axe, throwing" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="AXE_THROWING" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="2" />
+            <column name="range" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','SLASHING','THROWN','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Hammer, light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="HAMMER_LIGHT" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="2" />
+            <column name="range" value="20" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','BLUDGEONING','THROWN','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Handaxe" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="HANDAXE" />
+            <column name="cost" value="6" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X3" />
+            <column name="weight" value="3" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','SLASHING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Kukri" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="KUKRI" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2_1820" />
+            <column name="weight" value="2" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','SLASHING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Pick, light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="PICK_LIGHT" />
+            <column name="cost" value="4" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X4" />
+            <column name="weight" value="3" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','SLASHING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sap" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SAP" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="2" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','BLUDGEONING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sap" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SAP" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="2" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','BLUDGEONING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+
+        <insert tableName="items">
+            <column name="name" value="Shield Dash" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="LIGHT_HEAVY" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D3" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','BLUDGEONING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+        </insert>
+
         <insert tableName="items">
             <column name="name" value="Glaive" />
             <column name="item_type" value="WEAPON" />
@@ -882,6 +1003,7 @@
             <column name="description"
                 value="This sweet-tasting liquid causes the character drinking it to become charmed with the first creature she sees after consuming the draft (as charm person—the drinker must be a humanoid of Medium or smaller size, Will DC 14 negates). The charm effects wear off in 1d3 hours." />
         </insert>
+        
         
         <insert tableName="items">
             <column name="name" value="Shield Dash" />

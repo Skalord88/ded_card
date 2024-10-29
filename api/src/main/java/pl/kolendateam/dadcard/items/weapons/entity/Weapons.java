@@ -1,12 +1,9 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.Set;
 import lombok.Getter;
@@ -14,8 +11,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
-import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
-import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;

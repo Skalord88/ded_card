@@ -33,11 +33,14 @@ public enum ModifierEnum {
   LIGHT_ARMOR,
   MEDIUM_ARMOR,
   HEAVY_ARMOR,
+  OPPORTUNITY,
 
   // attack
   GRAPPLE,
   BULL_RUSH,
   DISARM,
+  OVERRUN,
+  SUNDER,
   BAB,
   THROWN,
   SLING,
@@ -130,6 +133,7 @@ public enum ModifierEnum {
   BARDIC_MUSIC,
   BARDIC_KNOWLEDGE,
   TURN_UNDEAD,
+  REBUKE_UNDEAD,
   WILD_EMPATHY,
   WILD_SHAPE,
   FLURRY_BLOWS,
@@ -141,6 +145,9 @@ public enum ModifierEnum {
   SNEAK_ATTACK,
   POWER_ATTACK,
   COMBAT_EXPERTISE,
+  LEADERSHIP,
+  MANYSHOT,
+  POINT_BLANK_SHOT,
 
   // favored
   VAMPIER,
