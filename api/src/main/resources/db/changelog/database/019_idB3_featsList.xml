@@ -169,7 +169,7 @@
       <column name="special" value="null" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 3 }
+        { &quot;type&quot; : &quot;CASTER&quot;, &quot;value&quot; : 3 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -190,7 +190,7 @@
           ]" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;strenght&quot;, &quot;value&quot; : 13 },
+        { &quot;type&quot; : &quot;STRENGHT&quot;, &quot;value&quot; : 13 },
         { &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 76 }
         ]" />
     </insert>
@@ -230,7 +230,7 @@
           ]" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;intelligence&quot;, &quot;value&quot; : 13 }
+        { &quot;type&quot; : &quot;INTELLIGENCE&quot;, &quot;value&quot; : 13 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -253,7 +253,7 @@
       <column name="special" value="null" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 5 }
+        { &quot;type&quot; : &quot;CASTER&quot;, &quot;value&quot; : 5 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -265,7 +265,7 @@
       <column name="special" value="null" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 9 }
+        { &quot;type&quot; : &quot;CASTER&quot;, &quot;value&quot; : 9 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -276,7 +276,7 @@
       <column name="special" value="null" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 12 }
+        { &quot;type&quot; : &quot;CASTER&quot;, &quot;value&quot; : 12 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -288,7 +288,7 @@
       <column name="special" value="null" />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;caster&quot;, &quot;value&quot; : 5 }
+        { &quot;type&quot; : &quot;CASTER&quot;, &quot;value&quot; : 5 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -329,7 +329,7 @@
         value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites. A fighter may select Deflect Arrows as one of his fighter bonus feats." />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;dextrity&quot;, &quot;value&quot; : 13 },
+        { &quot;type&quot; : &quot;DEXTERITY&quot;, &quot;value&quot; : 13 },
         { &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 59 }
         ]" />
     </insert>
@@ -395,7 +395,7 @@
       <column name="special" value="A fighter may select Dodge as one of his fighter bonus feats." />
       <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;dextrity&quot;, &quot;value&quot; : 13 }
+        { &quot;type&quot; : &quot;DEXTERITY&quot;, &quot;value&quot; : 13 }
         ]" />
     </insert>
     <insert tableName="feats">
@@ -440,8 +440,8 @@
         value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
         <column name="prerequisite_list"
         value="[
-        { &quot;type&quot; : &quot;bab&quot;, &quot;value&quot; : 1 },
-        { &quot;type&quot; : &quot;streght()&quot;, &quot;value&quot; : 13 }
+        { &quot;type&quot; : &quot;BAB&quot;, &quot;value&quot; : 1 },
+        { &quot;type&quot; : &quot;STRENGHT_&quot;, &quot;value&quot; : 13 }
         ]" />
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"

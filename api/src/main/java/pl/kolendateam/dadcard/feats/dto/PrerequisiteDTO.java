@@ -3,13 +3,13 @@ package pl.kolendateam.dadcard.feats.dto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
-import pl.kolendateam.dadcard.feats.entity.PrerequisiteEnum;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class PrerequisiteDTO {
 
-  public PrerequisiteEnum type;
+  public ModifierEnum type;
   public int value;
 
   public PrerequisiteDTO(Prerequisite pre) {
