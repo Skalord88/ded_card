@@ -46,7 +46,7 @@ public enum WeaponNameEnum {
   GLAIVE("GLAIVE"),
   GREATAXE("GREATAXE"),
   GREATCLUB("GREATCLUB"),
-  FLAIL_HEAVY("FLAIL_HEAVY"),
+  FLAIL_HEAVY("Flail, heavy"),
   GREATSWORD("GREATSWORD"),
   GUISARME("GUISARME"),
   HALBERD("HALBERD"),
@@ -56,7 +56,7 @@ public enum WeaponNameEnum {
   LONGBOW("LONGBOW"),
   ARROW("ARROW"),
   LONGBOW_COMPOSITE("LONGBOW_COMPOSITE"),
-  SHORTBOW("SHORTBOW"),
+  SHORTBOW("Shortbow"),
   SHORTBOW_COMPOSITE("SHORTBOW_COMPOSITE"),
   KAMA("KAMA"),
   NUNCHAKU("NUNCHAKU"),
@@ -77,7 +77,14 @@ public enum WeaponNameEnum {
   CROSSBOW_REPEATING_LIGHT("CROSSBOW_REPEATING_LIGHT"),
   NET("NET"),
   SHURIKEN("SHURIKEN"),
-  WARSLING("WARSLING");
+  WARSLING("WARSLING"),
+  SKIPROCK("Skiprock"),
+  BITE("Bite"),
+  CLAW("Claw"),
+  GORE("Gore"),
+  SLAM("Slam"),
+  STING("Sting"),
+  TENTACLE("Tentacle");
 
   private String weaponNameEnum;
 

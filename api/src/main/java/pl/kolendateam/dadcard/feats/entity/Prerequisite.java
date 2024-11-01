@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,6 +14,8 @@ import lombok.Setter;
 @Setter
 public class Prerequisite implements Serializable {
 
-  String type;
+  @JdbcTypeCode(SqlTypes.JSON)
+  PrerequisiteEnum type;
+
   int value;
 }

@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
 public enum WeaponCategoriesEnum {
+  NATURAL("Natural Weapon"),
   SIMPLE("Simple"),
   MARTIAL("Martial"),
   EXOTIC("Exotic"),
@@ -21,7 +22,9 @@ public enum WeaponCategoriesEnum {
   PIERCING_OR_SLASHING("Piercing or Slashing"),
   PIERCING("Piercing"),
   SLASHING("Slashing"),
-  BLUDGEONING_PIERCING("Bludgeoning and Piercing");
+  BLUDGEONING_PIERCING("Bludgeoning and Piercing"),
+  SLASHING_PIERCING("Slashing and Piercing"),
+  BLUDGEONING_PIERCING_SLASHING("Bludgeoning, Piercing and Slashing");
 
   private String weaponEnum;
 

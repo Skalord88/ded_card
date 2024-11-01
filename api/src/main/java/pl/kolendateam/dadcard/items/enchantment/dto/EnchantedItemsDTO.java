@@ -1,22 +1,23 @@
 package pl.kolendateam.dadcard.items.enchantment.dto;
 
 import java.util.Set;
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
-import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
+@NoArgsConstructor
 public class EnchantedItemsDTO {
 
   public int id;
   public Object item;
+  public String name;
   public Set<EnchantmentDTO> enchantmentList;
   public MaterialEnum material;
   public Set<ModifierDTO> modifiers;
@@ -25,6 +26,7 @@ public class EnchantedItemsDTO {
 
   public EnchantedItemsDTO(EnchantedItems enchantedItems) {
     this.id = enchantedItems.getId();
+    this.name = enchantedItems.getName();
 
     if (enchantedItems.getItem() instanceof Armors) {
       this.item = MapperItemsDTO.toItemsDTO((Armors) enchantedItems.getItem());
@@ -42,7 +44,6 @@ public class EnchantedItemsDTO {
     this.material = enchantedItems.getMaterial();
     this.modifiers =
       MapperModifierBonus.toListModifierDTO(enchantedItems.getModifiers());
-    this.cost = enchantedItems.getCost();
     this.description = enchantedItems.getDescription();
   }
 }

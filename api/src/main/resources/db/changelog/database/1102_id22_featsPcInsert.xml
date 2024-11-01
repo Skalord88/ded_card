@@ -9,41 +9,294 @@
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
+            <!-- Exotic Weapon Proficiency [General] -->
             <column name="selected"
-                value="[]" />
+                value="[{
+                    &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 81
+                }]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
+            <!-- Exotic Weapon Proficiency [General] -->
             <column name="selected"
-                value="[]" />
+                value="[{
+                    &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 82
+                }]" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="88" />
+            <!-- Silent Spell [Metamagic] -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="14" />
+            <!-- Combat Expertise [General] -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="74" />
+            <!-- Persuasive [General] -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
-            <column name="feats_id" value="75" />
-        </insert>
-        <insert tableName="feats_pc">
-            <column name="character_card_id" value="100" />
+            <column name="class_feats_id" value="68" />
+            <!-- Fighter Bonus Feats -->
             <column name="feats_id" value="77" />
+            <!-- Precise Shot [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="100" />
+            <column name="class_feats_id" value="69" />
+            <!-- Fighter Bonus Feats -->
+            <column name="feats_id" value="75" />
+            <!-- Point Blank Shot [General] -->
         </insert>
 
         <!-- Rysio -->
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
-            <column name="feats_id" value="77" />
+            <column name="feats_id" value="107" />
+            <!-- Weapon Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 38
+                
+            }]" /> <!--
+            Longsword -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="54" />
+            <!-- Improved Shield Bash [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="feats_id" value="108" />
+            <!-- Weapon Specialization [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 38
+                
+            }]" /> <!--
+            Longsword -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="class_feats_id" value="132" />
+            <!-- Combat Style (Ex) -->
+            <column name="feats_id" value="105" />
+            <!-- Two-Weapon Fighting [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="101" />
+            <column name="class_feats_id" value="136" />
+            <!-- Improved Combat Style (Ex) -->
+            <column name="feats_id" value="58" />
+            <!-- Improved Two-Weapon Fighting [General] -->
         </insert>
 
+        <!-- Niesia -->
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="102" />
+            <column name="feats_id" value="213" />
+            <!-- Improved Natural Armor [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="102" />
+            <column name="feats_id" value="4" />
+            <!-- Animal Affinity [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="102" />
+            <column name="feats_id" value="214" />
+            <!-- Eagle's Wings [Wild] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="102" />
+            <column name="feats_id" value="212" />
+            <!-- Flyby Attack [General] -->
+        </insert>
+
+        <!-- Michał -->
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="215" />
+            <!-- Pierce the Darkness [Divine] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="216" />
+            <!-- Domain Spontaneity [Divine] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;DOMAIN&quot; , &quot;value&quot; : 2
+                
+            }]" /> <!--
+            Longsword -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="107" />
+            <!-- Weapon Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 14
+                
+            }]" /> <!--
+            Shortspear -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="108" />
+            <!-- Weapon Specialization [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 14
+                
+            }]" /> <!--
+            Shortspear -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="28" />
+            <!-- Endurance [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="103" />
+            <column name="feats_id" value="37" />
+            <!-- Great Fortitude [General] -->
+        </insert>
+
+        <!-- Andrzej -->
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="feats_id" value="51" />
+            <!-- Improved Initiative [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="feats_id" value="106" />
+            <!-- Weapon Finesse [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="feats_id" value="26" />
+            <!-- Dodge [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="feats_id" value="68" />
+            <!-- Mobility [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="class_feats_id" value="79" />
+            <!-- Monk Bonus Feat -->
+            <column name="feats_id" value="50" />
+            <!-- Improved Grapple [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="class_feats_id" value="79" />
+            <!-- Monk Bonus Feat -->
+            <column name="feats_id" value="22" />
+            <!-- Deflect Arrows [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="104" />
+            <column name="class_feats_id" value="79" />
+            <!-- Monk Bonus Feat -->
+            <column name="feats_id" value="47" />
+            <!-- Improved Disarm [General] -->
+        </insert>
+
+        <!-- Madzia -->
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="feats_id" value="92" />
+            <!-- Spell Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;EVOCATION&quot; , &quot;value&quot; : 2
+                
+            }]" /> <!--
+            EVOCATION -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="feats_id" value="90" />
+            <!-- Skill Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;SKILL&quot; , &quot;value&quot; : 27
+                
+            }]" /> <!--
+            SPELLCRAFT -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="feats_id" value="75" />
+            <!-- Point Blank Shot [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="feats_id" value="77" />
+            <!-- Precise Shot [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="class_feats_id" value="174" />
+            <!-- Mage Bonus Feats -->
+            <column name="feats_id" value="92" />
+            <!-- Spell Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ENCHANTMENT&quot; , &quot;value&quot; : 2
+                
+            }]" /> <!--
+            ENCHANTMENT -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="class_feats_id" value="175" />
+            <!-- Mage Bonus Feats -->
+            <column name="feats_id" value="94" />
+            <!-- Spell Penetration [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="105" />
+            <column name="feats_id" value="38" />
+            <!-- Greater Spell Focus [General] -->
+            <column name="selected"
+                value="[{
+                &quot;type&quot; : &quot;ENCHANTMENT&quot; , &quot;value&quot; : 2
+                
+            }]" /> <!--
+            ENCHANTMENT -->
+        </insert>
+
+        <!-- Mirq -->
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="106" />
+            <column name="feats_id" value="77" />
+            <!-- Precise Shot [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="106" />
+            <column name="feats_id" value="106" />
+            <!-- Weapon Finesse [General] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="106" />
+            <column name="feats_id" value="27" />
+            <!-- Empower Spell [Metamagic] -->
+        </insert>
+        <insert tableName="feats_pc">
+            <column name="character_card_id" value="106" />
+            <column name="feats_id" value="88" />
+            <!-- Silent Spell [Metamagic] -->
+        </insert>
     </changeSet>
 </databaseChangeLog>

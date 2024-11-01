@@ -12,7 +12,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -38,6 +37,8 @@ public class EnchantedItems implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
+  String name;
+
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "items_id", referencedColumnName = "id")
   Items item;
@@ -55,8 +56,6 @@ public class EnchantedItems implements Serializable {
 
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers;
-
-  double cost;
 
   String description;
 }

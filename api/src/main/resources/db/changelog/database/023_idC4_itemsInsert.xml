@@ -407,6 +407,7 @@
         </insert>
 
         <!-- MARTIAL -->
+        <!-- Light Melee Weapons -->
         <insert tableName="items">
             <column name="name" value="Axe, throwing" />
             <column name="item_type" value="WEAPON" />
@@ -514,19 +515,236 @@
         </insert>
 
         <insert tableName="items">
-            <column name="name" value="Shield Dash" />
+            <column name="name" value="Shield, light" />
             <column name="item_type" value="WEAPON" />
-            <column name="weapon_name" value="LIGHT_HEAVY" />
+            <column name="weapon_name" value="SHIELD_LIGHT" />
             <column name="cost" value="0" />
             <column name="damage" value="D3" />
             <column name="critical" value="X2" />
             <column name="weight" value="0" />
+            <column name="range" value="-1" />
             <column name="size" value="MEDIUM" />
             <column name="type" value="['MARTIAL','BLUDGEONING','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
         </insert>
+        <insert tableName="items">
+            <column name="name" value="Spiked armor" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SPIKED_ARMOR" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Spiked shield, light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SPIKED_SHIELD_LIGHT" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="weight" value="0" />
+            <column name="range" value="-1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sword, short" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SWORD_SHORT" />
+            <column name="cost" value="10" />
+            <column name="damage" value="D6" />
+            <column name="range" value="-1" />
+            <column name="critical" value="X2_1920" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+        </insert>
+        <!-- One-Handed Melee Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Battleaxe" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="BATTLEAXE" />
+            <column name="cost" value="10" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Flail" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="FLAIL" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="5" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Longsword" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHORTBOW" />
+            <column name="cost" value="15" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="-1" />
+            <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Pick, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="PICK_HEAVY" />
+            <column name="cost" value="8" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X4" />
+            <column name="range" value="-1" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Rapier" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="RAPIER" />
+            <column name="cost" value="20" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2_1820" />
+            <column name="range" value="-1" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Scimitar" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SCIMITAR" />
+            <column name="cost" value="15" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2_1820" />
+            <column name="range" value="-1" />
+            <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shield, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHIELD_HEAVY" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description"
+                value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Spiked shield, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SPIKED_SHIELD_HEAVY" />
+            <column name="cost" value="0" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Trident" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="TRIDENT" />
+            <column name="cost" value="15" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2" />
+            <column name="range" value="10" />
+            <column name="weight" value="4" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Warhammer" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="WARHAMMER" />
+            <column name="cost" value="12" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="5" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
 
+        <!-- Two-Handed Melee Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Falchion" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="FALCHION" />
+            <column name="cost" value="75" />
+            <column name="damage" value="DD4" />
+            <column name="critical" value="X2_1820" />
+            <column name="range" value="-1" />
+            <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
         <insert tableName="items">
             <column name="name" value="Glaive" />
             <column name="item_type" value="WEAPON" />
@@ -534,14 +752,192 @@
             <column name="cost" value="8" />
             <column name="damage" value="D10" />
             <column name="critical" value="X3" />
+            <column name="range" value="-1" />
             <column name="weight" value="10" />
             <column name="size" value="MEDIUM" />
-            <column name="type" value="['SLASHING','MARTIAL','TWO_HANDED','REACH']" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
             <column name="special_attacks" value="" />
-            <column name="description"
-                value="A glaive has reach. You can strike opponents 10 feet away with it, but you can’t use it against an adjacent foe." />
+            <column name="description" value="" />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Greataxe" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GREATAXE" />
+            <column name="cost" value="20" />
+            <column name="damage" value="D12" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Greatclub" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GREATCLUB" />
+            <column name="cost" value="20" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Flail, heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="FLAIL_HEAVY" />
+            <column name="cost" value="15" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Greatsword" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GREATSWORD" />
+            <column name="cost" value="50" />
+            <column name="damage" value="DD6" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="-1" />
+            <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Guisarme" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GUISARME" />
+            <column name="cost" value="9" />
+            <column name="damage" value="DD4" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Halberd" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="HALBERD" />
+            <column name="cost" value="10" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING_OR_SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Lance" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="LANCE" />
+            <column name="cost" value="10" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Ranseur" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="RANSEUR" />
+            <column name="cost" value="10" />
+            <column name="damage" value="DD4" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Scythe" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SCYTHE" />
+            <column name="cost" value="18" />
+            <column name="damage" value="DD4" />
+            <column name="critical" value="X4" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING_OR_SLASHING','MARTIAL','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+
+        <!-- Ranged Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Longbow" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="LONGBOW" />
+            <column name="cost" value="75" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="100" />
+            <column name="weight" value="3" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Arrow" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="ARROW" />
+            <column name="cost" value="0.05" />
+            <column name="weight" value="0.15" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['MARTIAL','PROJECTILE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Longbow, composite" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="LONGBOW_COMPOSITE" />
+            <column name="cost" value="100" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="110" />
+            <column name="weight" value="3" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
         </insert>
         <insert tableName="items">
             <column name="name" value="Shortbow" />
@@ -550,15 +946,351 @@
             <column name="cost" value="30" />
             <column name="damage" value="D6" />
             <column name="critical" value="X3" />
-            <column name="range" value="30" />
-            <column name="weight" value="3" />
+            <column name="range" value="60" />
+            <column name="weight" value="2" />
             <column name="size" value="MEDIUM" />
-            <column name="type" value="['PIERCING','TWO_HANDED','RANGED']" />
+            <column name="type" value="['PIERCING','MARTIAL','TWO_HANDED','RANGED']" />
             <column name="special_attacks" value="" />
-            <column name="description"
-                value="You need at least two hands to use a bow, regardless of its size. You can use a shortbow while mounted. If you have a penalty for low Strength, apply it to damage rolls when you use a shortbow. If you have a bonus for high Strength, you can apply it to damage rolls when you use a composite shortbow (see below) but not a regular shortbow." />
+            <column name="description" value="" />
             <column name="material" value="WOOD" />
-            <!-- <column name="enchantment_id" value="0" /> -->
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shortbow, composite" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHORTBOW_COMPOSITE" />
+            <column name="cost" value="75" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X3" />
+            <column name="range" value="70" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','MARTIAL','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+
+        <!-- Exotic Weapons -->
+        <!-- Light Melee Weapons -->
+
+        <insert tableName="items">
+            <column name="name" value="Kama" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="KAMA" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Nunchaku" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="NUNCHAKU" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','EXOTIC','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sai" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SAI" />
+            <column name="cost" value="2" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="range" value="10" />
+            <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','EXOTIC','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Siangham" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SIANGHAM" />
+            <column name="cost" value="3" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','LIGHT']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+
+        <!-- One-Handed Melee Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Sword, bastard" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SWORD_BASTARD" />
+            <column name="cost" value="35" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="-1" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Waraxe, dwarven" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="WARAXE_DWARVEN" />
+            <column name="cost" value="30" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="8" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Whip" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="WHIP" />
+            <column name="cost" value="1" />
+            <column name="damage" value="D3" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','ONE_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+
+        <!-- Two-Handed Melee Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Axe, orc double" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="AXE_ORC_DOUBLE" />
+            <column name="cost" value="60" />
+            <column name="damage" value="D8_D8" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="15" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','TWO_HANDED','DOUBLE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Chain, spiked" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CHAIN_SPIKED" />
+            <column name="cost" value="25" />
+            <column name="damage" value="DD4" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','TWO_HANDED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Flail, dire" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="FLAIL_DIRE" />
+            <column name="cost" value="90" />
+            <column name="damage" value="D8_D8" />
+            <column name="critical" value="X2" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','EXOTIC','TWO_HANDED','DOUBLE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Hammer, gnome hooked" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="HAMMER_GNOME_HOOKED" />
+            <column name="cost" value="20" />
+            <column name="damage" value="D8_D6" />
+            <column name="critical" value="X3X4" />
+            <column name="range" value="-1" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING_PIERCING','EXOTIC','TWO_HANDED','DOUBLE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sword, two-bladed" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SWORD_TWO_BLADED" />
+            <column name="cost" value="100" />
+            <column name="damage" value="D8_D8" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="-1" />
+            <column name="weight" value="10" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING','EXOTIC','TWO_HANDED','DOUBLE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Urgrosh, dwarven" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="URGROSH_DWARVEN" />
+            <column name="cost" value="50" />
+            <column name="damage" value="D8_D6" />
+            <column name="critical" value="X3" />
+            <column name="range" value="-1" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING_OR_SLASHING','EXOTIC','TWO_HANDED','DOUBLE']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+
+        <!-- Ranged Weapons -->
+        <insert tableName="items">
+            <column name="name" value="Bolas" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="BOLAS" />
+            <column name="cost" value="5" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2" />
+            <column name="range" value="10" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','EXOTIC','LIGHT','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="LEATHER" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Crossbow, hand" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CROSSBOW_HAND" />
+            <column name="cost" value="100" />
+            <column name="damage" value="D4" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="30" />
+            <column name="weight" value="2" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','LIGHT','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Crossbow, repeating heavy" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CROSSBOW_REPEATING_HEAVY" />
+            <column name="cost" value="400" />
+            <column name="damage" value="D10" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="120" />
+            <column name="weight" value="12" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Crossbow, repeating light" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CROSSBOW_REPEATING_LIGHT" />
+            <column name="cost" value="250" />
+            <column name="damage" value="D8" />
+            <column name="critical" value="X2_1920" />
+            <column name="range" value="80" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="WOOD" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Net" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="NET" />
+            <column name="cost" value="20" />
+            <column name="range" value="10" />
+            <column name="weight" value="6" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="LEATHER" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Shuriken" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SHURIKEN" />
+            <column name="damage" value="D2" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0.5" />
+            <column name="range" value="10" />
+            <column name="weight" value="0.1" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','EXOTIC','TWO_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Warsling" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="WARSLING" />
+            <column name="damage" value="D6" />
+            <column name="critical" value="X4" />
+            <column name="cost" value="25" />
+            <column name="range" value="50" />
+            <column name="weight" value="0.9" />
+            <column name="size" value="SMALL" />
+            <column name="type" value="['PIERCING','EXOTIC','ONE_HANDED','RANGED']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="LEATHER" />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Skiprock" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SKIPROCK" />
+            <column name="damage" value="D3" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="3" />
+            <column name="range" value="50" />
+            <column name="weight" value="0.24" />
+            <column name="size" value="SMALL" />
+            <column name="type" value="['BLUDGEONING','EXOTIC','LIGHT','THROWN']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="" />
+            <column name="material" value="METAL" />
         </insert>
 
         <!-- ARMOR -->
@@ -812,7 +1544,6 @@
             <column name="description"
                 value="The suit includes gauntlets, heavy leather boots, a visored helmet, and a thick layer of padding that is worn underneath the armor. Each suit of full plate must be individually fitted to its owner by a master armorsmith, although a captured suit can be resized to fit a new owner at a cost of 200 to 800 (2d4×100) gold pieces." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
 
         <!-- SHIELD -->
@@ -828,7 +1559,6 @@
                 &quot;bonus&quot; : 1,
                 &quot;targets&quot; : []
                 }]" />
-            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -838,7 +1568,6 @@
 
         You can’t bash someone with a buckler." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">
             <column name="name" value="Shield, light wooden" />
@@ -852,7 +1581,6 @@
                 &quot;bonus&quot; : 1,            
                 &quot;targets&quot; : []            
                 }]" />
-            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -866,7 +1594,6 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
             <column name="material" value="WOOD" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">
             <column name="name" value="Shield, light steel" />
@@ -880,7 +1607,6 @@
                 &quot;bonus&quot; : 1,
                 &quot;targets&quot; : []
                 }]" />
-            <!-- <column name="armor_class" value="1" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-1" />
@@ -894,7 +1620,6 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">
             <column name="name" value="Shield, heavy wooden" />
@@ -908,7 +1633,6 @@
                 &quot;bonus&quot; : 2,
                 &quot;targets&quot; : []
                 }]" />
-            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-2" />
@@ -922,7 +1646,6 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
             <column name="material" value="WOOD" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">
             <column name="name" value="Shield, heavy steel" />
@@ -936,7 +1659,6 @@
                 &quot;bonus&quot; : 2,
                 &quot;targets&quot; : []
                 }]" />
-            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="-2" />
@@ -950,7 +1672,6 @@
         Shield Bash Attacks
         You can bash an opponent with a light shield, using it as an off-hand weapon. See Table: Weapons for the damage dealt by a shield bash. Used this way, a light shield is a martial bludgeoning weapon. For the purpose of penalties on attack rolls, treat a light shield as a light weapon. If you use your shield as a weapon, you lose its AC bonus until your next action (usually until the next round). An enhancement bonus on a shield does not improve the effectiveness of a shield bash made with it, but the shield can be made into a magic weapon in its own right." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">
             <column name="name" value="Shield, tower" />
@@ -964,7 +1685,6 @@
                 &quot;bonus&quot; : 4,
                 &quot;targets&quot; : []
                 }]" />
-            <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="2" />
             <column name="penality" value="-10" />
@@ -974,7 +1694,87 @@
 
         When employing a tower shield in combat, you take a -2 penalty on attack rolls because of the shield’s encumbrance." />
             <column name="material" value="WOOD" />
-            <!-- <column name="enchantment_id" value="0" /> -->
+        </insert>
+
+        <!-- NATURAL WEAPONS -->
+
+        <insert tableName="items">
+            <column name="name" value="Bite" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="BITE" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING_PIERCING_SLASHING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature attacks with its mouth, dealing piercing, slashing, and bludgeoning damage." />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Claw or Talon" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="CLAW" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['SLASHING_PIERCING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature rips with a sharp appendage, dealing piercing and slashing damage." />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Gore" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="GORE" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature spears the opponent with an antler, horn, or similar appendage, dealing piercing damage." />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Slap or Slam" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="SLAM" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature batters opponents with an appendage, dealing bludgeoning damage." />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Sting" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="STING" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['PIERCING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature stabs with a stinger, dealing piercing damage. Sting attacks usually deal damage from poison in addition to hit point damage." />
+        </insert>
+        <insert tableName="items">
+            <column name="name" value="Tentacle" />
+            <column name="item_type" value="WEAPON" />
+            <column name="weapon_name" value="TENTACLE" />
+            <column name="critical" value="X2" />
+            <column name="cost" value="0" />
+            <column name="range" value="-1" />
+            <column name="weight" value="0" />
+            <column name="size" value="MEDIUM" />
+            <column name="type" value="['BLUDGEONING','NATURAL']" />
+            <column name="special_attacks" value="" />
+            <column name="description" value="The creature flails at opponents with a powerful tentacle, dealing bludgeoning (and sometimes slashing) damage." />
         </insert>
 
         <!-- WONDEROUS ITEMS -->
@@ -1002,22 +1802,6 @@
             <column name="weight" value="0" />
             <column name="description"
                 value="This sweet-tasting liquid causes the character drinking it to become charmed with the first creature she sees after consuming the draft (as charm person—the drinker must be a humanoid of Medium or smaller size, Will DC 14 negates). The charm effects wear off in 1d3 hours." />
-        </insert>
-        
-        
-        <insert tableName="items">
-            <column name="name" value="Shield Dash" />
-            <column name="item_type" value="WEAPON" />
-            <column name="weapon_name" value="SHIELD_HEAVY" />
-            <column name="cost" value="0" />
-            <column name="damage" value="D4" />
-            <column name="critical" value="X2" />
-            <column name="weight" value="0" />
-            <column name="size" value="MEDIUM" />
-            <column name="type" value="['MARTIAL','BLUDGEONING','LIGHT']" />
-            <column name="special_attacks" value="" />
-            <column name="description" value="" />
-            <column name="material" value="WOOD" />
         </insert>
 
     </changeSet>

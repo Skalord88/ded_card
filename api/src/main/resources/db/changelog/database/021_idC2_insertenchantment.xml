@@ -42,6 +42,18 @@
         <column name="enchantment" value="5"/>
         <column name="cost" value="0"/>
     </insert>
+    <insert tableName="enchantment">
+        <column name='id' value="6"/>
+        <column name="enchantment" value="0"/>
+        <column name="cost" value="100"/>
+        <column name="ability" value="COMPOSITE"/>
+    </insert>
+    <insert tableName="enchantment">
+        <column name='id' value="7"/>
+        <column name="enchantment" value="1"/>
+        <column name="cost" value="0"/>
+        <column name="ability" value="SHOCK"/>
+    </insert>
 
     </changeSet>
 </databaseChangeLog>

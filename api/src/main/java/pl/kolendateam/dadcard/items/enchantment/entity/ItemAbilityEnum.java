@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.items.enchantment.entity;
 
 public enum ItemAbilityEnum {
   PERFECT,
+  COMPOSITE,
   AXIOMATIC,
   BANE,
   BRILLIANT_ENERGY,

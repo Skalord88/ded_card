@@ -35,6 +35,10 @@ public class FeatsPc implements Serializable {
   @JoinColumn(name = "feats_id")
   Feats feat;
 
+  @ManyToOne
+  @JoinColumn(name = "class_feats_id")
+  ClassFeats classFeat;
+
   @JdbcTypeCode(SqlTypes.JSON)
   List<Prerequisite> selected;
 }

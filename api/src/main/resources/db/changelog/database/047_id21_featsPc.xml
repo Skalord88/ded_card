@@ -14,6 +14,9 @@
             <column name="feats_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="class_feats_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="selected" type="json">
                 <constraints nullable="true" />
             </column>
