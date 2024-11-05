@@ -1,4 +1,3 @@
-import { EnchantedName } from "../Enchantment/Functions/EnchantmentFunctions";
 import { itemInDrop } from "../functions";
 
 export interface ListProps {
@@ -33,7 +32,8 @@ export const ListOfSomething: React.FC<ListProps> = ({
                     key={index}
                     onClick={() => handleSelect({ item: i, name: text })}
                   >
-                    {EnchantedName(i)} {i.subRacesName} {i.featName}{" "}
+                    {/* { EnchantedName(i)} */}
+                     {i.subRacesName} {i.featName}{" "}
                     {i.characterFeatName}
                   </li>
                 );

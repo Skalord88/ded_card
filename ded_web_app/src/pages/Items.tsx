@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { EnchantmentCost } from "../components/Enchantment/Functions/EnchantmentFunctions";
 import {
   CharacterPc,
   Inventory,
@@ -57,15 +56,15 @@ export const Items = () => {
     let gold = 0;
     if (equipment) {
       gold =
-        -EnchantmentCost([
-          equipment.armor,
-          equipment.shield,
-          equipment.weaponOne,
-          equipment.weaponTwo,
-          equipment.weaponThree,
-          equipment.weaponFour,
-          equipment.weaponFive
-        ])
+        // -EnchantmentCost([
+        //   equipment.armor,
+        //   equipment.shield,
+        //   equipment.weaponOne,
+        //   equipment.weaponTwo,
+        //   equipment.weaponThree,
+        //   equipment.weaponFour,
+        //   equipment.weaponFive
+        // ])
         -sizeAndGold(equipment.backpack) -
         equipment.head.cost -
         equipment.neck.cost -
@@ -83,10 +82,22 @@ export const Items = () => {
     let updatedItems: ItemsList = items;
 
     updatedItems = {
-      armorsList: items.armorsList.filter((item) => EnchantmentCost([item]) <= actualTresure),
-      shieldList: items.shieldList.filter((item) => EnchantmentCost([item]) <= actualTresure),
+      armorsList: items.armorsList.filter((item) => 
+        // EnchantmentCost([
+          item.cost
+        // ])
+         <= actualTresure),
+      shieldList: items.shieldList.filter((item) => 
+        // EnchantmentCost([
+          item.cost
+        // ])
+         <= actualTresure),
       weaponsList: items.weaponsList.filter(
-        (item) => EnchantmentCost([item]) <= actualTresure
+        (item) => 
+          // EnchantmentCost([
+            item.cost
+          // ])
+           <= actualTresure
       ),
       wonderousItems: items.wonderousItems.filter(
         (item) => item.cost <= actualTresure

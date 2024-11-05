@@ -31,7 +31,6 @@ import {
 } from "../components/Items/Inventory/Function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
 import {
-  CheckInAllModifications,
   FindInMoreLengthModifier,
   FindInOneLengthModifier
 } from "../components/Modifiers/Function";
@@ -66,13 +65,13 @@ export const Show = () => {
   if (!char) return <>...character loading...</>;
 
   const feats: FeatsToShow[] = GroupAllFeats([
-    ...char.featsList,
-    ...char.race.raceFeats,
-    ...char.archetypes.flatMap((ar) => ar.archetypeFeats),
-    ...char.classPcList
+    ...char.featsList, //FeatPc
+    ...char.race.raceFeats, //Feat
+    ...char.archetypes.flatMap((ar) => ar.archetypeFeats), //Feat
+    ...char.classPcList //ClassPc
   ]);
 
-  const modifications: Modifiers[] = CheckInAllModifications(char, feats);
+  const modifications: Modifiers[] = feats.flatMap(feat => feat.modifiers)
 
   const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
@@ -109,14 +108,25 @@ export const Show = () => {
   const strenghtAtt: number = adjBab + strenght;
   const dextrityAtt: number = adjBab + dextrity;
   const speed: number = FindInOneLengthModifier(modifications, "SPEED");
+
   const armorModifiers: ArmorModifiers = {
     size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
     armor:
       FindInOneLengthModifier(modifications, "ARMOR_BONUS") +
-      char.inventory.armor.enchantment.enchantment,
+      (char.inventory.armor.enchantmentList !== null ?
+        char.inventory.armor.enchantmentList.reduce(
+        (tot, ench) => 
+          tot + ench.ability === null? 0 : ench.enchantment
+        , 0
+      ) : 0),
     shiled:
       FindInOneLengthModifier(modifications, "SHIELD_BONUS") +
-      char.inventory.shield.enchantment.enchantment,
+      (char.inventory.shield.enchantmentList !== null?
+      char.inventory.shield.enchantmentList.reduce(
+        (tot, ench) => 
+          tot + ench.ability === null? 0 : ench.enchantment
+        , 0
+      ) : 0),
     dextrity: MaxDextrityCount(
       BonusAbilities(abilitys, "DEX"),
       char.inventory.armor.maxDex
@@ -128,6 +138,7 @@ export const Show = () => {
   const inventory: Inventory = {
     ...char.inventory,
     armor: char.inventory.armor,
+    shield: char.inventory.shield,
     weaponOne: char.inventory.weaponOne
       ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
       : reSizeWeapon(char.race.size, noneWeapon),

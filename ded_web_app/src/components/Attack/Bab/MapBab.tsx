@@ -50,8 +50,19 @@ export const MapBab: React.FC<MapBabProps> = ({
     if (enchant < 0) return enchant;
     return 0;
   };
+  const getEnchantDmg = (enchant: number) => {
+    if (enchant === null) return 0;
+    if (enchant === -2) return 0;
+    if (enchant === -1) return 0;
+    if (enchant === 0) return 0;
+    if (enchant < 0) return enchant;
+    return 0;
+  };
 
-  const ench = getEnchant(weapon.enchantment.enchantment);
+  const ench = getEnchant(
+    weapon.enchantmentList.reduce((tot, enchanted) =>
+    tot + enchanted.ability === null? enchanted.enchantment : 0 , 0)
+  );
 
   const strenghtAttModified: number =
     strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
@@ -61,11 +72,10 @@ export const MapBab: React.FC<MapBabProps> = ({
 
   const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
 
-  const enchDmg: number =
-    weapon.enchantment.enchantment < 0
-      ? 0 + FindWeaponToModified(specific[1], weapon).bonus + compo
-      : weapon.enchantment.enchantment +
-        FindWeaponToModified(specific[1], weapon).bonus + compo;
+  const enchDmg: number = getEnchantDmg(
+    weapon.enchantmentList.reduce((tot, enchanted) =>
+    tot + enchanted.ability === null ? enchanted.enchantment : 0 , 0
+    )) + compo;
 
   const twoHandDmg: number = position.twoHanded
     ? strenght + Math.floor(strenght / 2) + enchDmg

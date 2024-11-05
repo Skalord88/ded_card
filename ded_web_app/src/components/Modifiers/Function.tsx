@@ -19,7 +19,7 @@ export function CheckInAllModifications(
   let modifiersFromArchetypes: Modifiers[] = [];
 
   if (feats !== null && feats.length > 0)
-    allModFeats = feats.flatMap((f) => (f.modifiers ? f.modifiers : []));
+    allModFeats = feats.flatMap((f) => (f.feat.modifiers ? f.feat.modifiers : []));
 
   if (char.archetypes !== null && char.archetypes.length > 0)
     modifiersFromArchetypes = char.archetypes.reduce<Modifiers[]>(

@@ -10,6 +10,7 @@ export type ShieldInventoryComponentProps = {
 export const ShieldInventoryComponent: React.FC<
   ShieldInventoryComponentProps
 > = ({ shield }) => {
+  const enchList: number[] = shield.enchantmentList.flatMap(ench => ench.enchantment)
   return (
     <>
       <div style={{ gridColumn: 1 }}>
@@ -25,8 +26,8 @@ export const ShieldInventoryComponent: React.FC<
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
         <p>
-          {SignAndCount([shield.enchantment.enchantment]).sign}
-          {shield.enchantment.enchantment}
+          {SignAndCount(enchList).sign}
+          {enchList}
         </p>
       </div>
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { DropdownComponent } from "../../DropDown/DropDown";
-import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { addToDrop } from "../../functions";
 import { Armor, ArmorWeaponToBuy, Shield, Weapon } from "../../interfaces";
 import "../../../css/style.css";
@@ -39,7 +38,7 @@ export const BuyEnchantedItemInventory: React.FC<ArmorWeaponToBuy> = ({
             <div onClick={() => deselect(selected as any)}>
               <Popup
                 key={text}
-                text={EnchantedName(selected)}
+                text={selected.name}
                 popText={selected.description}
               />
             </div>

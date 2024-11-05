@@ -1,11 +1,5 @@
 import { useState } from "react";
 import { DropdownComponent } from "../../DropDown/DropDown";
-import {
-  EnchantedName,
-  EnchantmentCost,
-  FilterZeroEnchantment,
-  SetEnchantemtOnItem
-} from "../../Enchantment/Functions/EnchantmentFunctions";
 import { addToDrop, itemInDrop } from "../../functions";
 import {
   Armor,
@@ -14,7 +8,6 @@ import {
   Shield,
   Weapon
 } from "../../interfaces";
-import { enchantItems } from "../../variables";
 import { AddItemCreated } from "./AddItemCreated";
 
 export interface CreateNewItemsProps {
@@ -29,16 +22,16 @@ export const CreateNewItems: React.FC<CreateNewItemsProps> = ({ options }) => {
     setSelected(addToDrop(list, "items"));
   };
 
-  const handleEnchantem = (e: Enchantment) => {
-    if (item) setItem(SetEnchantemtOnItem(e, item));
+  const handleEnchantem = (e: Enchantment[]) => {
+    // if (item) setItem(SetEnchantemtOnItem(e, item));
   };
 
   const filter = [
-    { text: "armor", list: FilterZeroEnchantment(options.armorsList) },
-    { text: "shield", list: FilterZeroEnchantment(options.shieldList) },
-    { text: "weapon", list: FilterZeroEnchantment(options.weaponsList) }
+    { text: "armor", list: options.armorsList },
+    { text: "shield", list: options.shieldList },
+    { text: "weapon", list: options.weaponsList }
   ];
-  const enchantments = addToDrop(enchantItems, "enchant");
+  const enchantments = addToDrop([1,2,3,4,5], "enchant");
 
   return (
     <>
@@ -62,7 +55,7 @@ export const CreateNewItems: React.FC<CreateNewItemsProps> = ({ options }) => {
           <>
             <div style={{ gridRow: 2, gridColumn: "1 / span 3" }}>
               <p>
-                {EnchantedName(item)} / {EnchantmentCost([item])} gp
+                {item.name} / {item.cost} gp
               </p>
             </div>
             <div style={{ gridRow: 3, gridColumn: "1 / span 3" }}>

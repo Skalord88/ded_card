@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { ListOfSomething } from "../../List/List";
 import { Armor, ItemsList, Shield, Weapon } from "../../interfaces";
 import { urlItemsBuy } from "../../url";
-import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { addToDrop } from "../../functions";
+import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 
 export interface AddedNewItemsProns {
   newItemsList: ItemsList;
@@ -79,3 +79,4 @@ export const ListOfNewItems: React.FC<AddedNewItemsProns> = ({
     </>
   );
 };
+

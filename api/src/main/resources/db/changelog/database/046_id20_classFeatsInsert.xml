@@ -918,32 +918,32 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+            <column name="feats_id" value="217" /> <!-- Warsling Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="2" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="128" /> <!-- Sniper's Vision -->
+            <column name="feats_id" value="218" /> <!-- Sniper's Vision -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+            <column name="feats_id" value="217" /> <!-- Warsling Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="4" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="114" /> <!-- Improved Critical -->
+            <column name="feats_id" value="219" /> <!-- Improved Critical -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="5" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="109" /> <!-- Warsling Sneak Attack -->
+            <column name="feats_id" value="217" /> <!-- Warsling Sneak Attack -->
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="6" />
             <column name="class_character_id" value="16" />
-            <column name="feats_id" value="129" /> <!-- Improved Ricochet -->
+            <column name="feats_id" value="220" /> <!-- Improved Ricochet -->
         </insert>
         <!-- Stormlord -->
         <insert tableName="class_feats">

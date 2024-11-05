@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.skills.entity;
+package pl.kolendateam.dadcard.spells.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -6,25 +6,23 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Skills {
+public class School implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
-
-  String name;
+  int id;
 
   @Enumerated(EnumType.STRING)
-  AbilityEnum ability;
+  SpellsEnum school;
 }

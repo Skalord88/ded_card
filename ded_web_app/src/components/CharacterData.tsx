@@ -1,4 +1,5 @@
 import { SignNumber } from "../components/functions";
+import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
 import {} from "./Modifiers/Ability/Function";
@@ -107,7 +108,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         {cl.map((classe, index) => {
           return (
             <div key={index}>
-              <p>{classe.className + " " + classe.level}</p>
+              <p>{FormattingText(classe.className) + " " + classe.level}</p>
             </div>
           );
         })}
@@ -115,7 +116,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
           return (
             <div key={index}>
               <p>
-                {classe.className} {classe.level}
+                {FormattingText(classe.className)} {classe.level}
               </p>
             </div>
           );

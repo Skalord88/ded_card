@@ -72,7 +72,7 @@ export interface character {
 export type ClassPc = {
   id: number;
   classType: number;
-  className: number;
+  className: string;
   level: number;
   firstClass: boolean;
   hitDice: number;
@@ -151,10 +151,10 @@ export type ItemsList = {
 export type Item = {
   id: number;
   name: string;
+  itemType: string;
   cost: number;
   weight: number;
   description: string;
-  itemType: string;
 }
 
 export interface Armor extends Item {
@@ -164,8 +164,8 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: Enchantment;
   material: string | null
+  enchantmentList: Enchantment[]
 }
 
 export interface Shield extends Item {
@@ -175,8 +175,8 @@ export interface Shield extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  enchantment: Enchantment;
   material: string | null
+  enchantmentList: Enchantment[]
 }
 
 export interface Weapon extends Item {
@@ -188,8 +188,19 @@ export interface Weapon extends Item {
   size: string;
   modifiers: Modifiers[];
   specialAttacks: string | null;
-  enchantment: Enchantment;
   material: string | null
+  enchantmentList: Enchantment[]
+}
+
+export interface EnchantedItem {
+  id: number
+  item: Armor | Shield | Weapon
+  name: string
+  enchantmentList: Enchantment[]
+  material: string
+  modifiers: Modifiers[]
+  cost: number
+  description: string
 }
 
 export interface WonderousItem extends Item { }
@@ -313,6 +324,9 @@ export type SignAndNumber = {
 export type Enchantment = {
   id: number,
   enchantment: number
+  ability: string
+  modifiers: Modifiers[]
+  cost: number
 }
 
 export type SpellLevel = {

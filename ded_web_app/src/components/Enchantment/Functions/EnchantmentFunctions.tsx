@@ -1,30 +1,43 @@
-import { Armor, Enchantment, Shield, Weapon, WonderousItem } from "../../interfaces";
+import { FormattingText } from "../../Formatting/Function";
+import {
+  Armor,
+  EnchantedItem,
+  Enchantment,
+  Shield,
+  Weapon
+} from "../../interfaces";
 
 export function SetEnchantemtOnItem(
-  enchantment: Enchantment,
-  item: Armor | Shield | Weapon
-): Armor | Shield | Weapon {
+  enchantment: Enchantment[],
+  item: EnchantedItem
+): EnchantedItem {
   return {
     ...item,
-    enchantment: enchantment
+    enchantmentList: enchantment
   };
 }
 
-export function FilterZeroEnchantment(
-  list: (Armor | Shield | Weapon)[]
-): (Armor | Shield | Weapon)[] {
-  return list.filter(item => item.enchantment && item.enchantment?.id === 0)
-}
+// export function FilterZeroEnchantment(
+//   list: (Enchantment)[]
+// ): (Enchantment)[] {
+//   return list.filter(enchantment => enchantment.id === 0);
+// }
 
-export function EnchantedName(item: Armor | Shield | Weapon ): string {
+export function EnchantedName(item: Armor | Shield | Weapon): string {
   let itemName: string = item.name;
   if (item) {
-    if (item.enchantment) {
-      if (item.enchantment.enchantment < 0) {
-        return "pft " + itemName;
-      } else if (item.enchantment.enchantment > 0) {
-        return itemName + "+" + item.enchantment.enchantment;
-      }
+    if (item.enchantmentList) {
+      item.enchantmentList.forEach((ench) =>
+        ench.ability !== null
+          ? itemName + " " + FormattingText(ench.ability)
+          : ""
+      );
+      item.enchantmentList.forEach((ench) => {
+        if (ench.ability === null && ench.enchantment < 0)
+          return itemName + " pft";
+        else if (ench.ability === null && ench.enchantment > 0)
+          return itemName + " +" + ench.enchantment;
+      });
     }
   }
   return itemName;
@@ -79,20 +92,34 @@ export function CostOfEnchant(enchantment: number, type: string): number {
   return 0;
 }
 
-export function EnchantmentCost(items: (Armor | Shield | Weapon)[]): number {
-  let total: number = 0;
-  items.forEach((item) => {
-    if (item.cost && item.enchantment) {
-      if (item.itemType === "ARMOR" || item.itemType === "SHIELD") {
-        total +=
-          item.cost + CostOfEnchant(item.enchantment.enchantment, "Armor");
-      } else {
-        total +=
-          item.cost + CostOfEnchant(item.enchantment.enchantment, "Weapn");
-      }
-    } else {
-      total += item.cost;
-    }
-  });
-  return total;
-}
+// export function EnchantmentCost(items: Armor | Shield | Weapon): number {
+//   let total: number = 0;
+//   items.forEach((item) => {
+//     if (item.cost && item.enchantmentList) {
+//       if (item.item.itemType === "ARMOR" || item.item.itemType === "SHIELD") {
+//         total +=
+//           item.cost +
+//           CostOfEnchant(
+//             item.enchantmentList.reduce(
+//               (tot, ench) => tot + ench.enchantment,
+//               0
+//             ),
+//             "Armor"
+//           );
+//       } else {
+//         total +=
+//           item.cost +
+//           CostOfEnchant(
+//             item.enchantmentList.reduce(
+//               (tot, ench) => tot + ench.enchantment,
+//               0
+//             ),
+//             "Weapn"
+//           );
+//       }
+//     } else {
+//       total += item.cost;
+//     }
+//   });
+//   return total;
+// }

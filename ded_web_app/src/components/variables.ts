@@ -1,4 +1,4 @@
-import { Armor, Attacks, CharacterPc, ClassPc, Enchantment, Inventory, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill, subRaces } from '../components/interfaces'
+import { Armor, Attacks, CharacterPc, ClassPc, EnchantedItem, Inventory, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill } from '../components/interfaces'
 import { Abilitys } from './Abilitys/Interface'
 import { AddStudy } from './Skills/interface/SkillsInterface'
 
@@ -11,13 +11,12 @@ export const noneArmor: Armor = {
     itemType: "ARMOR",
     armorName: "NO_ARMOR",
     modifiers: [],
-    // armorClass: 0,
     armorType: "NO_ARMOR",
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: { id: 0, enchantment: 0 },
-    material: null
+    material: null,
+    enchantmentList: []
 }
 
 export const noneShield: Shield = {
@@ -33,8 +32,8 @@ export const noneShield: Shield = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    enchantment: { id: 0, enchantment: 0 },
-    material: null
+    material: null,
+    enchantmentList: []
 }
 
 export const noneWeapon: Weapon = {
@@ -52,8 +51,8 @@ export const noneWeapon: Weapon = {
     range: 0,
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
     specialAttacks: null,
-    enchantment: { id: -2, enchantment: -2 },
-    material: null
+    material: null,
+    enchantmentList: []
 }
 
 export const noneItem: WonderousItem = {
@@ -64,6 +63,18 @@ export const noneItem: WonderousItem = {
     description: '',
     itemType: 'WONDROUS_ITEM'
 }
+
+export const emptyEnchanted: EnchantedItem = {
+    id: 0,
+    item: noneWeapon,
+    name: noneWeapon.name,
+    enchantmentList: [],
+    material: "",
+    modifiers: [],
+    cost: 0,
+    description: ""
+}
+
 export const emptyInventory: Inventory = {
     armor: noneArmor,
     shield: noneShield,
@@ -163,16 +174,6 @@ export const armorClassEmpty: armorClass = {
     dodgeBonus: 0
 }
 
-// export const emptySubRaces: subRaces = {
-//     id: 0,
-//     subRacesName: '',
-//     avatarUrl: '',
-//     raceAbilitys: abilitysEmpty,
-//     raceSkills: [],
-//     armorClass: armorClassEmpty,
-//     levelAdjustment: 0
-// }
-
 export const skillEmpty: serverSkill = {
     skillDTO: [],
     skillRank: -1
@@ -193,7 +194,7 @@ export const emptyItemsList: ItemsList = {
 export const emptyClass: ClassPc = {
     id: -1,
     classType: -1,
-    className: -1,
+    className: "",
     level: 0,
     firstClass: false,
     hitDice: 0,
@@ -202,15 +203,3 @@ export const emptyClass: ClassPc = {
     skillPoints: 0,
     feats: []
 }
-
-export const enchantItems: Enchantment[] = [
-
-    { id: -1, enchantment: -1 },
-    { id: 0, enchantment: 0 },
-    { id: 1, enchantment: 1 },
-    { id: 2, enchantment: 2 },
-    { id: 3, enchantment: 3 },
-    { id: 4, enchantment: 4 },
-    { id: 5, enchantment: 5 },
-
-];

@@ -16,6 +16,8 @@ public enum ModifierEnum {
   FEAT,
   ITEM,
   DOMAIN,
+  PROFICENCY,
+  CASTER,
 
   // ability
   STRENGHT,
@@ -55,7 +57,6 @@ public enum ModifierEnum {
   THROWN,
   SLING,
   MOUNTED_RANGED,
-  WARSLING,
 
   // movment
   SPEED,
@@ -159,6 +160,8 @@ public enum ModifierEnum {
   LEADERSHIP,
   MANYSHOT,
   POINT_BLANK_SHOT,
+  CONCEALMENT,
+  RICOCHET,
 
   // favored
   VAMPIER,
@@ -174,9 +177,11 @@ public enum ModifierEnum {
   DAMAGE_REDUCTION_11,
   DAMAGE_REDUCTION_12,
   SPELL_RESISTANCE,
+  VS_SPELL_RESISTANCE,
   HD,
   EVASION,
   LEVEL,
+  DODGE,
 
   // targets
   TRAP,
@@ -266,8 +271,13 @@ public enum ModifierEnum {
   CROSSBOW_REPEATING_LIGHT,
   NET,
   SHURIKEN,
+  WARSLING,
+
+  // Magic
+  SPELL_DIFFICULTY,
 
   // School
+  SCHOOL,
   CONJURATION,
   CALLING,
   CREATION,

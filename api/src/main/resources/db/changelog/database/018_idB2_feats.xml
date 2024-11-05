@@ -33,7 +33,7 @@
         <column name="prerequisite_list" type="json">
           <constraints nullable="true"/>
         </column>
-        <column name="select" type="json">
+        <column name="to_select" type="json">
           <constraints nullable="true"/>
         </column>
       </createTable>

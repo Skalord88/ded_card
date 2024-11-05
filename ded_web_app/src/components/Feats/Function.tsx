@@ -7,25 +7,20 @@ export function GroupAllFeats(
   let featsToReturn: FeatsToShow[] = [];
 
   feats.forEach((f) => {
-    if ("feat" in f) {
-      const modifiersExist = Array.isArray(f.feat.modifiers) && f.feat.modifiers.length > 0;
-        featsToReturn.push({
-            feat: f.feat,
-            modifiers: f.selected.length > 0 && modifiersExist
-                ? [{
-                    modifier: f.feat.modifiers[0].modifier,
-                    bonus: f.feat.modifiers[0].bonus,
-                    targets: f.selected
-                }]
-                : f.feat.modifiers,
-            listOfBonus: []
-        });
+    if ("selected" in f) {
+      featsToReturn.push({
+        title: "FeatPc",
+        feat: f.feat,
+        modifiers: f.feat.modifiers ? f.feat.modifiers : [],
+        listOfBonus: f.selected
+      });
     }
 
     if ("featName" in f) {
       featsToReturn.push({
+        title: "Feat",
         feat: f,
-        modifiers: [],
+        modifiers: f.modifiers ? f.modifiers : [],
         listOfBonus: []
       });
     }
@@ -34,8 +29,9 @@ export function GroupAllFeats(
       f.feats.forEach((oneF) => {
         if (oneF.level <= f.level) {
           featsToReturn.push({
+            title: "ClassFeats " + f.className + " " + oneF.level,
             feat: oneF.feat,
-            modifiers: oneF.modifiers,
+            modifiers: oneF.feat.modifiers ? oneF.feat.modifiers : [],
             listOfBonus: oneF.listOfBonus
           });
         }
@@ -43,40 +39,9 @@ export function GroupAllFeats(
     }
   });
 
+  featsToReturn.forEach(f => (
+    console.log(f.feat.featName, f.modifiers, f.listOfBonus)
+  ))
+
   return featsToReturn;
 }
-// export function GroupAllFeats(feats: (FeatPc | Feat | ClassPc)[]): Feat[] {
-//     let featsToReturn: Feat[] = [];
-
-//     feats.forEach(f => {
-//         if ('feat' in f) {
-//             const modifiersExist = Array.isArray(f.feat.modifiers) && f.feat.modifiers.length > 0;
-
-//             featsToReturn.push({
-//                 id: f.feat.id,
-//                 featName: f.feat.featName,
-//                 featsType: f.feat.featsType,
-//                 modifiers: f.selected.length > 0 && modifiersExist ? {
-//                     modifier: f.feat.modifiers[0].modifier,
-//                     bonus: f.feat.modifiers[0].bonus,
-//                     targets: f.selected
-//                 } : f.feat.modifiers,
-//                 description: f.feat.description
-//             } as Feat);
-//         }
-
-//         if ('featName' in f) {
-//             featsToReturn.push(f as Feat);
-//         }
-
-//         if ('firstClass' in f && Array.isArray(f.feats)) {
-//             f.feats.forEach(effe => {
-//                 if (effe.level <= f.level) {
-//                     featsToReturn.push(effe.feat as Feat);
-//                 }
-//             });
-//         }
-//     });
-
-//     return featsToReturn;
-// }

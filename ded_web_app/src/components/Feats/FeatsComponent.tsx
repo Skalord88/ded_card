@@ -6,9 +6,7 @@ export type FeatsComponentProps = {
 };
 
 export const FeatsComponent: React.FC<FeatsComponentProps> = ({ feats }) => {
-  const featsOneTime = Array.from(
-    new Map(feats.map((f) => [f.feat.featName, f])).values()
-  );
+  const featsOneTime = feats
 
   return (
     <div>
@@ -16,7 +14,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ feats }) => {
       {featsOneTime.map((f, index) => (
         <div key={index}>
           <p>
-            <Popup text={f.feat.featName} popText={f.feat.description} />
+            <Popup text={f.feat.featName} popText={f.feat.benefit} />
           </p>
         </div>
       ))}

@@ -48,9 +48,14 @@ export type ClassFeats = {
 export type Feat = {
   id: number;
   featName: string;
-  featsType: string;
-  modifiers: Modifiers[] ;
-  description: string;
+  featsType: string[];
+  prerequisites: string;
+  benefit: string;
+  normal: string;
+  special: string;
+  modifiers: Modifiers[];
+  prerequisiteList: Prerequisite[];
+  toSelect: Prerequisite[];
 }
 
 export type FeatPc = {
@@ -64,6 +69,7 @@ export type Prerequisite = {
 }
 
 export type FeatsToShow = {
+  title: string,
   feat: Feat,
   modifiers: Modifiers[],
   listOfBonus: Prerequisite[]

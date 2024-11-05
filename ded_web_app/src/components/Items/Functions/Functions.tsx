@@ -1,4 +1,14 @@
-import { Weapon, WonderousItem } from "../../interfaces";
+import { Armor, Shield, Weapon, WonderousItem } from "../../interfaces";
+
+// export function isArmor(item: Armor | Shield | Weapon): item is Armor {
+//   return (item as Armor) !== undefined;
+// }
+// export function isShield(item: Armor | Shield | Weapon): item is Shield {
+//   return (item as Shield) !== undefined;
+// }
+// export function isWeapon(item: Armor | Shield | Weapon): item is Weapon {
+//   return (item as Weapon) !== undefined;
+// }
 
 export function FilterNoItem(list: WonderousItem[]): WonderousItem[] {
   return list.filter((item) => item.id !== 4);

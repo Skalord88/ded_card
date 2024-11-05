@@ -42,11 +42,11 @@ export const WeaponsInventoryComponent: React.FC<
       </div>
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
-        <p>{SignNumberEnchant(weapon1.enchantment.enchantment)}</p>
+        {/* <p>{SignNumberEnchant(weapon1.enchantment.enchantment)}</p>
         <p>{SignNumberEnchant(weapon2.enchantment.enchantment)}</p>
         <p>{SignNumberEnchant(weapon3.enchantment.enchantment)}</p>
         <p>{SignNumberEnchant(weapon4.enchantment.enchantment)}</p>
-        <p>{SignNumberEnchant(weapon5.enchantment.enchantment)}</p>
+        <p>{SignNumberEnchant(weapon5.enchantment.enchantment)}</p> */}
       </div>
       <div style={{ gridColumn: 4 }}>
         <p style={{ backgroundColor: "grey" }}>Crit</p>

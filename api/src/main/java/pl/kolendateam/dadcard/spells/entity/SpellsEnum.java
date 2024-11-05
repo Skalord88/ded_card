@@ -22,6 +22,7 @@ public enum SpellsEnum {
   SHADOW,
   NECROMANCY,
   TRANSMUTATION,
+  UNIVERSAL,
   ACID,
   AIR,
   CHAOTIC,

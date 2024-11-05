@@ -11,7 +11,7 @@ export const FeatsSummary: React.FC<FeatsSummaryProps> = ({ feats }) => {
       <p>
         Feats:{" "}
         {feats.map((feat, index) => {
-          return <><Popup text={feat.featName} popText={feat.description}/>{index === feats.length - 1? "":", "}</>;
+          return <><Popup text={feat.featName} popText={feat.benefit}/>{index === feats.length - 1? "":", "}</>;
         })}
       </p>
     </div>

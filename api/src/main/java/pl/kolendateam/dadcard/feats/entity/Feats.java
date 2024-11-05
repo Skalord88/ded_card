@@ -42,10 +42,10 @@ public class Feats implements Serializable {
   Set<ModifierBonus> modifiers = new HashSet<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
-  List<Prerequisite> prerequisiteList = new ArrayList<>();
+  List<Set<Prerequisite>> prerequisiteList = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
-  List<Prerequisite> select = new ArrayList<>();
+  Set<Prerequisite> toSelect = new HashSet<>();
 
   public Feats(int idDTO) {
     this.id = idDTO;

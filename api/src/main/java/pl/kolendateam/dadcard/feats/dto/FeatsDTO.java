@@ -21,10 +21,9 @@ public class FeatsDTO {
   public String benefit;
   public String normal;
   public String special;
-
   public Set<ModifierDTO> modifiers;
-  public List<PrerequisiteDTO> prerequisiteList;
-  public List<PrerequisiteDTO> select;
+  public List<Set<PrerequisiteDTO>> prerequisiteList;
+  public Set<PrerequisiteDTO> toSelect;
 
   public FeatsDTO(Feats feats) {
     this.id = feats.getId();
@@ -37,10 +36,8 @@ public class FeatsDTO {
     this.modifiers =
       MapperModifierBonus.toListModifierDTO(feats.getModifiers());
     this.prerequisiteList =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(
-        feats.getPrerequisiteList()
-      );
-    this.select =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(feats.getSelect());
+      MapperPrerequisiteBonus.toPrerequisiteSetDTO(feats.getPrerequisiteList());
+    this.toSelect =
+      MapperPrerequisiteBonus.toPrerequisiteToSelectDTO(feats.getToSelect());
   }
 }

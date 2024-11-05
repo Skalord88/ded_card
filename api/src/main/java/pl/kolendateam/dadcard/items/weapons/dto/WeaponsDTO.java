@@ -87,7 +87,7 @@ public class WeaponsDTO implements Serializable {
           setOfMods.add(MapperModifierBonus.toModifierDTO(it));
         });
     }
-    this.id = item.getItem().getId();
+    this.id = item.getId();
     this.name = item.getItem().getName();
     this.itemType = ItemTypeEnum.WEAPON;
     this.weaponName = weaponDTO.weaponName;

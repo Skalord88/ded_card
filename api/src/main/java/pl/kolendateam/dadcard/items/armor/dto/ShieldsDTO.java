@@ -66,7 +66,7 @@ public class ShieldsDTO {
           setOfMods.add(MapperModifierBonus.toModifierDTO(ar));
         });
     }
-    this.id = item.getItem().getId();
+    this.id = item.getId();
     this.name = item.getItem().getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.shieldName = shieldDTO.shieldName;
