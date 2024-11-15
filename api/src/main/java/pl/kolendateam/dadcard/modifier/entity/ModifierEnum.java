@@ -18,6 +18,8 @@ public enum ModifierEnum {
   DOMAIN,
   PROFICENCY,
   CASTER,
+  SELECTED,
+  WEAPON_TYPE,
 
   // ability
   STRENGHT,

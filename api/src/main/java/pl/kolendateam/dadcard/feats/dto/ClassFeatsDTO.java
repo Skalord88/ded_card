@@ -20,6 +20,7 @@ public class ClassFeatsDTO {
   public FeatsDTO feat;
   public int classId;
   public EnumClass className;
+  public List<PrerequisiteDTO> selected;
   public List<PrerequisiteDTO> listOfBonus;
 
   public ClassFeatsDTO(ClassFeats classFeat) {
@@ -27,6 +28,8 @@ public class ClassFeatsDTO {
     this.feat = MapperFeatsDTO.toFeatDTO(classFeat.getFeats());
     this.classId = classFeat.getClassCharacter().getId();
     this.className = classFeat.getClassCharacter().getName();
+    this.selected =
+      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(classFeat.getSelected());
     this.listOfBonus =
       MapperPrerequisiteBonus.toPrerequisiteBonusDTO(
         classFeat.getListOfBonus()

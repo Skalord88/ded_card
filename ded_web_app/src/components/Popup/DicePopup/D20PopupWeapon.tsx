@@ -57,7 +57,7 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
           {modifiers.map((mod, index) => (
             <div key={index}>
               <span style={{ color: "yellow" }}>
-                vs {FormattingText(mod.targets[0].type)} +{mod.targets.length * 2} dmg
+                vs {FormattingText(mod.targets[0])} +{mod.targets.length * 2} dmg
                 {/* vs {FormattingText(mod.targets[0])} +{mod.targets.length * 2} dmg */}
               </span>
             </div>

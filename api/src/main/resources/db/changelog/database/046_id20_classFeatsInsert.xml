@@ -9,6 +9,36 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
+            <column name="feats_id" value="6" /> <!-- Light Armors -->
+            <column name="selected" value="[
+                [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;type&quot; : &quot;1&quot;}]
+            ]" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="1" />
+            <column name="feats_id" value="7" /> <!-- Medium Armors -->
+            <column name="selected" value="[
+                [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;type&quot; : &quot;2&quot;}]
+            ]" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="1" />
+            <column name="feats_id" value="7" /> <!-- Shields ex tower -->
+            <column name="selected" value="[
+                [
+                {&quot;type&quot; : &quot;ITEM&quot;, &quot;type&quot; : &quot;95&quot;},
+                {&quot;type&quot; : &quot;ITEM&quot;, &quot;type&quot; : &quot;96&quot;},
+                {&quot;type&quot; : &quot;ITEM&quot;, &quot;type&quot; : &quot;97&quot;},
+                {&quot;type&quot; : &quot;ITEM&quot;, &quot;type&quot; : &quot;98&quot;},
+                {&quot;type&quot; : &quot;ITEM&quot;, &quot;type&quot; : &quot;99&quot;}
+                ]
+            ]" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="1" />
             <column name="feats_id" value="111" /> <!-- Fast movement -->
         </insert>
         <insert tableName="class_feats">

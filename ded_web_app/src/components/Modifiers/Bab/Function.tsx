@@ -4,9 +4,10 @@ import { Modifiers } from "../ModifierInterface";
 
 export function BabBonusModification(modifiers: Modifiers[]): [number, string] {
   const mod = modifiers.find((mod) => mod.modifier === "BAB");
-    return mod ? [mod.bonus, ''] : [0, ''];
+  return mod ? [mod.bonus, ""] : [0, ""];
 }
-export function FindBabModifiers(modifiers: [number, string][]
+export function FindBabModifiers(
+  modifiers: [number, string][]
 ): [number, string] {
   const mod = modifiers.find((mod) => mod[1] === "BAB");
   return mod ? [mod[0], ""] : [0, ""];
@@ -15,19 +16,27 @@ export function FindBabModifiers(modifiers: [number, string][]
 export function CountSpecificBabBonusInModification(
   mod: Modifiers
 ): [number, string] {
-  return [mod.bonus, mod.targets[0].type];
+  return [mod.bonus, mod.targets[0]];
 }
-// 
-export function ModifiedWeaponBabBonus(list: Prerequisite[], weapon: Weapon): boolean {
-  if(list[0].value === weapon.id) return true
-  // if(list.some(l => weapon.type.includes(l))) return true
-  return false
+//
+export function ModifiedWeaponBabBonus(
+  list: Prerequisite[][],
+  weapon: Weapon
+): boolean {
+  list.forEach((l) =>
+    l.forEach((cosa) => {
+      if (cosa.value === weapon.id) return true;
+    })
+  );
+  return false;
 }
 
-export function FindWeaponToModified(specific: Modifiers[], weapon: Weapon)
-: {find: boolean, bonus: number} {
-  const found = specific.find(
-    special => ModifiedWeaponBabBonus(special.targets, weapon)
-  )
-  return found ? {find: true, bonus: found.bonus} : {find: false, bonus: 0};
+export function FindWeaponToModified(
+  specific: Modifiers[],
+  weapon: Weapon
+): { find: boolean; bonus: number } {
+  const found = specific.find((special) =>
+    ModifiedWeaponBabBonus(special.selected, weapon)
+  );
+  return found ? { find: true, bonus: found.bonus } : { find: false, bonus: 0 };
 }

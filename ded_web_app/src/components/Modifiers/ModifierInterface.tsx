@@ -5,7 +5,8 @@ import { CharacterPc } from "../interfaces";
 export type Modifiers = {
     modifier: string;
     bonus: number;
-    targets: Prerequisite[];
+    targets: string[];
+    selected: Prerequisite[][]
 }
 
 export type ModifiedCharProps = {

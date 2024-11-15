@@ -16,8 +16,8 @@ export const ModifierSummary: React.FC<ModifierSummaryProps> = ({
           const lastIndex = modifiers.length;
           return (
             <>
-              {FormattingText(m.modifier)}: {FormattingText(m.targets[0].type)}{" "}
-              {m.bonus} {FormattingText(m.targets[1].type)}{" "}
+              {FormattingText(m.modifier)}: {FormattingText(m.targets[0])}{" "}
+              {m.bonus} {FormattingText(m.targets[1])}{" "}
               {lastIndex - 1 !== index ? " / " : ""}
             </>
           );

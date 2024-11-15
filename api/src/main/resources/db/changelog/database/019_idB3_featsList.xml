@@ -89,6 +89,16 @@
         [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 7 }]
         
         ]" />
+      <column name="to_select"
+        value="[
+        [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;3&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Light) [General]" />
@@ -99,6 +109,16 @@
         value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it." />
+      <column name="to_select"
+        value="[
+        [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;1&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Medium) [General]" />
@@ -113,6 +133,16 @@
         value="[
         [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 6 }]
         ]" />
+      <column name="to_select"
+        value="[
+        [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;2&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Athletic [General]" />
@@ -431,6 +461,16 @@
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"
         value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
+      <column name="to_select"
+        value="[
+      [{&quot;type&quot; : &quot;WEAPON_TYPE&quot;, &quot;value&quot; : &quot;3&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
       <column name="special"
         value="You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon. Proficiency with the bastard sword or the dwarven waraxe has an additional prerequisite of Str 13. A fighter may select Exotic Weapon Proficiency as one of his fighter bonus feats." />
     </insert>
@@ -487,7 +527,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Great Cleave as one of his fighter bonus feats." />
-        <column name="prerequisite_list"
+      <column name="prerequisite_list"
         value="[
         [{ &quot;type&quot; : &quot;STRENGHT&quot;, &quot;value&quot; : 13 }],
         [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 12 }],
@@ -516,7 +556,8 @@
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic to which you already have applied the Spell Focus feat." />
-        <column name="to_select" value="[
+      <column name="to_select"
+        value="[
         { &quot;type&quot; : &quot;SCHOOL&quot;, &quot;value&quot; : 1},
         { &quot;type&quot; : &quot;SCHOOL&quot;, &quot;value&quot; : 2},
         { &quot;type&quot; : &quot;SCHOOL&quot;, &quot;value&quot; : 3},
@@ -527,13 +568,13 @@
         { &quot;type&quot; : &quot;SCHOOL&quot;, &quot;value&quot; : 8},
         { &quot;type&quot; : &quot;SCHOOL&quot;, &quot;value&quot; : 9}
         ]" />
-        <column name="modifiers"
+      <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;SPELL_DIFFICULTY&quot;,
             &quot;bonus&quot; : 1,
             &quot;targets&quot; : []
             }]" />
-      </insert>
+    </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Greater Spell Penetration [General]" />
       <column name="prerequisites" value="Spell Penetration" />
@@ -568,7 +609,7 @@
         [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 105 }],
         [{ &quot;type&quot; : &quot;BAB&quot;, &quot;value&quot; : 11 }]
         ]" />
-      </insert>
+    </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Greater Weapon Focus [General]" />
       <column name="prerequisites"
@@ -586,7 +627,7 @@
         [{ &quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : -2 },
         { &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 221 }]
         ]" />
-      </insert>
+    </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Greater Weapon Specialization [General]" />
       <column name="prerequisites"
@@ -720,6 +761,16 @@
         value="When you perform a shield bash, you may still apply the shield,s shield bonus to your AC." />
       <column name="normal"
         value="Without this feat, a character who performs a shield bash loses the shield,s shield bonus to AC until his or her next turn." />
+      <column name="to_select"
+        value="[
+        [{&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;4&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
       <column name="special"
         value="A fighter may select Improved Shield Bash as one of his fighter bonus feats." />
     </insert>
@@ -888,6 +939,16 @@
         value="Choose a type of martial weapon. You understand how to use that type of martial weapon in combat. You make attack rolls with the selected weapon normally." />
       <column name="normal"
         value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
+      <column name="to_select"
+        value="[
+      [{&quot;type&quot; : &quot;WEAPON_TYPE&quot;, &quot;value&quot; : &quot;2&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
       <column name="special"
         value="Barbarians, fighters, paladins, and rangers are proficient with all martial weapons. They need not select this feat. You can gain Martial Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of weapon. A cleric who chooses the War domain automatically gains the Martial Weapon Proficiency feat related to his deity’s favored weapon as a bonus feat, if the weapon is a martial one. He need not select it." />
     </insert>
@@ -1132,6 +1193,16 @@
         value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
       <column name="special"
         value="All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat." />
+      <column name="to_select"
+        value="[
+      [{&quot;type&quot; : &quot;WEAPON_TYPE&quot;, &quot;value&quot; : &quot;1&quot;}]
+      ]" />
+      <column name="modifiers"
+        value="[{
+          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
+          &quot;bonus&quot; : 0,
+          &quot;targets&quot; : [&quot;SELECTED&quot;]
+        }]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Skill Focus [General]" />
@@ -1285,16 +1356,37 @@
     <insert tableName="feats">
       <column name="feat_name" value="Weapon Focus [General]" />
       <column name="prerequisites" value="Proficiency with selected weapon, base attack bonus +1." />
+      <column name="prerequisite_list"
+        value="[
+        [{ &quot;type&quot; : &quot;BAB&quot;, &quot;value&quot; : 1 }],
+        [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 221 }]
+        ]" />
       <column name="benefit"
         value="You gain a +1 bonus on all attack rolls you make using the selected weapon." />
+      <column name="modifiers"
+        value="[{
+        &quot;modifier&quot; : &quot;BAB&quot;,
+        &quot;bonus&quot; : 1,
+        &quot;targets&quot; : [&quot;SELECTED&quot;]
+      }]" />
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
+      <column name="to_select"
+        value="[
+        [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 221 }]
+        ]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Weapon Specialization [General]" />
       <column name="prerequisites"
         value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." />
+      <column name="prerequisite_list"
+        value="[
+        [{ &quot;type&quot; : &quot;FIGHTER&quot;, &quot;value&quot; : 4 }],
+        [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 107 }],
+        [{ &quot;type&quot; : &quot;FEAT&quot;, &quot;value&quot; : 221 }]
+        ]" />
       <column name="benefit"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
       <column name="normal" value="null" />
@@ -2564,17 +2656,6 @@
           &quot;modifier&quot; : &quot;RICOCHET&quot;,
           &quot;bonus&quot; : 2,
           &quot;targets&quot; : [&quot;WARSLING&quot;]
-        }]" />
-    </insert>
-    <insert tableName="feats">
-      <column name="feat_name" value="Weapon Proficiency" />
-      <column name="benefit"
-        value="Class has proficiency in weapons in list." />
-      <column name="modifiers"
-        value="[{
-          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : []
         }]" />
     </insert>
   </changeSet>

@@ -40,5 +40,8 @@ public class ClassFeats implements Serializable {
   Feats feats;
 
   @JdbcTypeCode(SqlTypes.JSON)
+  List<Prerequisite> selected;
+
+  @JdbcTypeCode(SqlTypes.JSON)
   List<Prerequisite> listOfBonus;
 }

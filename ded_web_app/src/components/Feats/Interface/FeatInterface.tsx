@@ -54,7 +54,7 @@ export type Feat = {
   normal: string;
   special: string;
   modifiers: Modifiers[];
-  prerequisiteList: Prerequisite[];
+  prerequisiteList: Prerequisite[][];
   toSelect: Prerequisite[];
 }
 
