@@ -1,7 +1,9 @@
 package pl.kolendateam.dadcard.abilitys.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class AbilitysDTO {
 

@@ -12,7 +12,7 @@ import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 public class Abilitys implements Serializable {
 
   int strength;
-  int dextrity;
+  int dexterity;
   int constitution;
   int intelligence;
   int wisdom;
@@ -20,7 +20,7 @@ public class Abilitys implements Serializable {
 
   public void setCharacterAbility(AbilitysDTO abilitysDTO) {
     strength = abilitysDTO.strength;
-    dextrity = abilitysDTO.dextrity;
+    dexterity = abilitysDTO.dextrity;
     constitution = abilitysDTO.constitution;
     intelligence = abilitysDTO.intelligence;
     wisdom = abilitysDTO.wisdom;
@@ -62,7 +62,7 @@ public class Abilitys implements Serializable {
     Abilitys abilitys
   ) {
     abilitys.strength += jsonObjectAbilitys.strength;
-    abilitys.dextrity += jsonObjectAbilitys.dextrity;
+    abilitys.dexterity += jsonObjectAbilitys.dexterity;
     abilitys.constitution += jsonObjectAbilitys.constitution;
     abilitys.intelligence += jsonObjectAbilitys.intelligence;
     abilitys.wisdom += jsonObjectAbilitys.wisdom;
@@ -74,7 +74,7 @@ public class Abilitys implements Serializable {
   public boolean checkPrerequisiteAb(Abilitys abilitys) {
     return (
       strength >= abilitys.strength &&
-      dextrity >= abilitys.dextrity &&
+      dexterity >= abilitys.dexterity &&
       constitution >= abilitys.constitution &&
       intelligence >= abilitys.intelligence &&
       wisdom >= abilitys.wisdom &&

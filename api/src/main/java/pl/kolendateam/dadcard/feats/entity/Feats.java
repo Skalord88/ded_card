@@ -1,9 +1,12 @@
 package pl.kolendateam.dadcard.feats.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -33,7 +36,7 @@ public class Feats implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   FeatsTypeEnum[] type;
 
-  String prerequisites;
+  // String prerequisites;
   String benefit;
   String normal;
   String special;
@@ -41,11 +44,13 @@ public class Feats implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers = new HashSet<>();
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  List<Set<Prerequisite>> prerequisiteList = new ArrayList<>();
+  @OneToMany(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "prerequisite_list_id", referencedColumnName = "id")
+  List<Prerequisite> prerequisiteList = new ArrayList<>();
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<Prerequisite> toSelect = new HashSet<>();
+  @OneToMany(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "to_select_id", referencedColumnName = "id")
+  List<Prerequisite> toSelect = new ArrayList<>();
 
   public Feats(int idDTO) {
     this.id = idDTO;

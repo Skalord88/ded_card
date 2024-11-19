@@ -6,8 +6,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
+import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
+import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -74,5 +76,16 @@ public class MapperSpellsDTO {
       }
     }
     return booksDTO;
+  }
+
+  public static List<SchoolDTO> toSchoolListDTO(List<School> schools) {
+    List<SchoolDTO> schoolsDTO = new ArrayList<>();
+
+    if (schools != null) {
+      for (School sc : schools) {
+        schoolsDTO.add(new SchoolDTO(sc));
+      }
+    }
+    return schoolsDTO;
   }
 }

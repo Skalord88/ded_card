@@ -20,6 +20,6 @@ public class FeatsPcDTO implements Serializable {
   public FeatsPcDTO(FeatsPc featPc) {
     this.feat = MapperFeatsDTO.toFeatDTO(featPc.getFeat());
     this.selected =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(featPc.getSelected());
+      MapperPrerequisiteBonus.toPrerequisiteListDTO(featPc.getSelected());
   }
 }

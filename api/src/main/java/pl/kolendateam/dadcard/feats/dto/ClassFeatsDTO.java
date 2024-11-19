@@ -9,6 +9,9 @@ import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.items.repository.InventoryRepository;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,10 +32,22 @@ public class ClassFeatsDTO {
     this.classId = classFeat.getClassCharacter().getId();
     this.className = classFeat.getClassCharacter().getName();
     this.selected =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(classFeat.getSelected());
+      MapperPrerequisiteBonus.toPrerequisiteListDTO(classFeat.getSelected());
     this.listOfBonus =
-      MapperPrerequisiteBonus.toPrerequisiteBonusDTO(
-        classFeat.getListOfBonus()
-      );
+      MapperPrerequisiteBonus.toPrerequisiteListDTO(classFeat.getListOfBonus());
   }
+  // public ClassFeatsDTO(
+  //   ClassFeats classFeat
+  // ) {
+  //   this.level = classFeat.getLevel();
+  //   this.feat = MapperFeatsDTO.toFeatDTO(classFeat.getFeats());
+  //   this.classId = classFeat.getClassCharacter().getId();
+  //   this.className = classFeat.getClassCharacter().getName();
+  //   this.selected =
+  //     MapperPrerequisiteBonus.toPrerequisiteObjectDTO(classFeat.getSelected());
+  //   this.listOfBonus =
+  //     MapperPrerequisiteBonus.toPrerequisiteObjectDTO(
+  //       classFeat.getListOfBonus()
+  //     );
+  // }
 }

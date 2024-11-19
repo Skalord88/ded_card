@@ -121,4 +121,5 @@ public enum SpellsEnum {
   TRAVEL,
   TRICKERY,
   WAR,
+  CASTER_LEVEL,
 }

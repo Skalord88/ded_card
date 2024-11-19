@@ -20,6 +20,7 @@ public enum ModifierEnum {
   CASTER,
   SELECTED,
   WEAPON_TYPE,
+  ARMOR_TYPE,
 
   // ability
   STRENGHT,

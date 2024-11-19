@@ -1,0 +1,361 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="203" author="oscar">
+        <createTable tableName="prerequisite">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="abilitys" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="caster" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="bab" type="INTEGER">
+                <constraints nullable="true"/>
+            </column>
+            <column name="skill_study" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="armor_type" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="weapon_type" type="jsonb">
+                <constraints nullable="true"/>
+            </column>
+            <column name="text" type="VARCHAR(225)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="prerequisite_feat">
+            <column name="prerequisite_id" type="int" />
+            <column name="feat_id" type="int" />
+        </createTable>
+
+        <createTable tableName="prerequisite_schools">
+            <column name="prerequisite_id" type="int" />
+            <column name="schools_id" type="int" />
+        </createTable>
+
+        <!-- Armor Proficiency (Heavy) [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="1" />
+            <column name="text" value="Armor Proficiency (light), Armor Proficiency (medium)." />
+        </insert>
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="1" />
+            <column name="feat_id" value="6" />
+        </insert>
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="1" />
+            <column name="feat_id" value="7" />
+        </insert>
+
+        <!-- Armor Proficiency (Heavy) [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="2" />
+            <column name="armor_type" value="[&quot;HEAVY_ARMOR&quot;]" />
+            <column name="text" value="Armor Proficiency (Heavy)" />
+        </insert>
+
+        <!-- Armor Proficiency (Light) [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="3" />
+            <column name="armor_type" value="[&quot;LIGHT_ARMOR&quot;]" />
+            <column name="text" value="Armor Proficiency (Light)" />
+        </insert>
+
+        <!-- Armor Proficiency (Medium) [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="4" />
+            <column name="text" value="Armor Proficiency (light)." />
+        </insert>
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="4" />
+            <column name="feat_id" value="7" />
+        </insert>
+
+        <!-- Armor Proficiency (Medium) [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="5" />
+            <column name="armor_type" value="[&quot;MEDIUM_ARMOR&quot;]" />
+            <column name="text" value="Armor Proficiency (Medium)" />
+        </insert>
+        <!-- Armor Proficiency (Medium) [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="5" />
+            <column name="armor_type" value="[&quot;MEDIUM_ARMOR&quot;]" />
+            <column name="text" value="Armor Proficiency (Medium)" />
+        </insert>
+
+        <!-- Brew Potion [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="5" />
+            <column name="caster" value="[&quot;level&quot; : 3 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 3rd." />
+        </insert>
+
+        <!-- Cleave [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="6" />
+            <column name="caster" 
+                value="{&quot;strength&quot; : 13}" />
+            <column name="text" value="Str 13, Power Attack." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="6" />
+            <column name="feat_id" value="76" />
+        </insert>
+
+        <!-- Combat Expertise [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="7" />
+            <column name="caster" 
+                value="{ &quot;intelligence&quot; : 13 }" />
+            <column name="text" value="Int 13." />
+        </insert>
+
+        <!-- Craft Magic Arms And Armor [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="8" />
+            <column name="caster" value="[&quot;level&quot; : 5 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 5th." />
+        </insert>
+
+        <!-- Craft Rod [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="9" />
+            <column name="caster" value="[&quot;level&quot; : 9 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 9th." />
+        </insert>
+
+        <!-- Craft Staff [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="10" />
+            <column name="caster" value="[
+                &quot;level&quot; : 12 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 12th." />
+        </insert>
+
+        <!-- Craft Wand [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="11" />
+            <column name="caster" value="[
+                &quot;level&quot; : 5 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 5th." />
+        </insert>
+
+        <!-- Craft Wondrous Item [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="12" />
+            <column name="caster" value="[
+                &quot;level&quot; : 3 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;]" />
+            <column name="text" value="Caster level 3rd." />
+        </insert>
+
+        <!-- Deflect Arrows [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="13" />
+            <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+            <column name="text" value="Dex 13, Improved Unarmed Strike." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="13" />
+            <column name="feat_id" value="59" />
+        </insert>
+
+        <!-- Diehard [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="14" />
+            <column name="text" value="Endurance." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="14" />
+            <column name="feat_id" value="28" />
+        </insert>
+
+        <!-- Dodge [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="15" />
+            <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+            <column name="text" value="Dex 13." />
+        </insert>
+
+        <!-- Exotic Weapon Proficiency [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="16" />
+            <column name="bab" value="1" />
+            <column name="text" value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
+        </insert>
+
+        <!-- Exotic Weapon Proficiency [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="17" />
+            <column name="weapon_type" value="[ &quot;EXOTIC&quot; ]" />
+        </insert>
+
+        <!-- Extra Turning [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="18" />
+            <column name="text" value="Ability to turn or rebuke creatures." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="18" />
+            <column name="feat_id" value="138" />
+        </insert>
+
+        <!-- Far Shot [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="19" />
+            <column name="text" value="Point Blank Shot." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="19" />
+            <column name="feat_id" value="75" />
+        </insert>
+
+        <!-- Forge Ring [Item Creation] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20" />
+            <column name="caster" value="[
+            &quot;level&quot; : 12 , &quot;class_domain&quot; : &quot;CASTER_LEVEL&quot;
+            ]" />
+            <column name="text" value="Caster level 12th." />
+        </insert>
+
+        <!-- Great Cleave [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="21" />
+            <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+            <column name="bab" value="4" />
+            <column name="text" value="Str 13, Cleave, Power Attack, base attack bonus +4." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="21" />
+            <column name="feat_id" value="12" />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="21" />
+            <column name="feat_id" value="76" />
+        </insert>
+
+        <!-- Greater Spell Focus [General] toSelect -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="22" />
+            <column name="text" value="Choose a school of magic to which you already have applied the Spell Focus feat." />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="1" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="2" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="3" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="4" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="5" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="6" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="7" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="8" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="22" />
+            <column name="schools_id" value="9" />
+        </insert>
+
+        <!-- Greater Spell Penetration [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="23" />
+            <column name="text" value="Spell Penetration." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="23" />
+            <column name="feat_id" value="94" />
+        </insert>
+
+        <!-- Greater Two-Weapon Fighting [General] pre -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="24" />
+            <column name="abilitys" value="{ &quot;dexterity&quot; : 19 }" />
+            <column name="bab" value="11" />
+            <column name="text" value="Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="24" />
+            <column name="feat_id" value="58" />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="24" />
+            <column name="feat_id" value="105" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

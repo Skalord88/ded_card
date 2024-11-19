@@ -9,7 +9,7 @@ import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
 public class MapperPrerequisiteBonus {
 
-  public static List<Set<PrerequisiteDTO>> toPrerequisiteSetDTO(
+  public static List<Set<PrerequisiteDTO>> toPrerequisiteSetInListDTO(
     List<Set<Prerequisite>> listOfBonus
   ) {
     List<Set<PrerequisiteDTO>> listOfBonusDTO = new ArrayList<>();
@@ -28,7 +28,7 @@ public class MapperPrerequisiteBonus {
     return listOfBonusDTO;
   }
 
-  public static List<PrerequisiteDTO> toPrerequisiteBonusDTO(
+  public static List<PrerequisiteDTO> toPrerequisiteListDTO(
     List<Prerequisite> listOfBonus
   ) {
     List<PrerequisiteDTO> listOfBonusDTO = new ArrayList<>();
@@ -42,7 +42,7 @@ public class MapperPrerequisiteBonus {
     return listOfBonusDTO;
   }
 
-  public static Set<PrerequisiteDTO> toPrerequisiteToSelectDTO(
+  public static Set<PrerequisiteDTO> toPrerequisiteSetDTO(
     Set<Prerequisite> listOfBonus
   ) {
     Set<PrerequisiteDTO> listOfBonusDTO = new HashSet<>();
@@ -55,4 +55,26 @@ public class MapperPrerequisiteBonus {
 
     return listOfBonusDTO;
   }
+  // public List<Object> toPrerequisiteObjectDTO(List<Prerequisite> listOfBonus) {
+  //   List<Object> listOfBonusDTO = new ArrayList<>();
+  //   if (listOfBonus != null) {
+  //     for (Prerequisite bonus : listOfBonus) {
+
+  // if (bonus.getType() == ModifierEnum.FEAT) {
+  //   FeatsDTO featDTO = new FeatsDTO(bonus.getValue());
+  //   listOfBonusDTO.add(featDTO);
+  // }
+  // if (bonus.getType() == ModifierEnum.ARMOR_TYPE) {
+  //   PrerequisiteDTO armorType = new PrerequisiteDTO(bonus);
+  //   listOfBonusDTO.add(armorType);
+  // }
+  // if (bonus.getType() == ModifierEnum.WEAPON_TYPE) {
+  //   PrerequisiteDTO weaponType = new PrerequisiteDTO(bonus);
+  //   listOfBonusDTO.add(weaponType);
+  // }
+  //     }
+  //   }
+
+  //   return listOfBonusDTO;
+  // }
 }
