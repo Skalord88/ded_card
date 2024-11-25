@@ -9,6 +9,11 @@ import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
 public class MapperPrerequisiteBonus {
 
+  public static PrerequisiteDTO toPrerequisiteDTO(Prerequisite pre) {
+    if (pre != null) return new PrerequisiteDTO(pre);
+    return new PrerequisiteDTO();
+  }
+
   public static List<Set<PrerequisiteDTO>> toPrerequisiteSetInListDTO(
     List<Set<Prerequisite>> listOfBonus
   ) {

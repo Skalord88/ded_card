@@ -55,7 +55,7 @@ public class WeaponsDTO implements Serializable {
     this.range = item.getRange();
     this.weight = item.getWeight();
     this.size = item.getSize();
-    this.modifiers = MapperModifierBonus.toListModifierDTO(item.getModifiers());
+    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
     if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;
     } else {

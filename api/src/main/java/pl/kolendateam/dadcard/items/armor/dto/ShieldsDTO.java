@@ -39,7 +39,7 @@ public class ShieldsDTO {
     this.name = item.getName();
     this.itemType = ItemTypeEnum.SHIELD;
     this.shieldName = item.getShieldName();
-    this.modifiers = MapperModifierBonus.toListModifierDTO(item.getModifiers());
+    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.armorType = item.getArmorType();

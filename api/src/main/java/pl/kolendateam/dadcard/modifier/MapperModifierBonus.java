@@ -12,12 +12,14 @@ public class MapperModifierBonus {
     return new ModifierDTO();
   }
 
-  public static Set<ModifierDTO> toListModifierDTO(Set<ModifierBonus> mods) {
+  public static Set<ModifierDTO> toSetModifierDTO(Set<ModifierBonus> mods) {
     Set<ModifierDTO> listOfModifierDTO = new HashSet<>();
     if (mods != null) {
       mods.forEach(mod -> {
-        ModifierDTO modDTO = new ModifierDTO(mod);
-        listOfModifierDTO.add(modDTO);
+        if (mod != null) {
+          ModifierDTO modDTO = new ModifierDTO(mod);
+          listOfModifierDTO.add(modDTO);
+        }
       });
     }
     return listOfModifierDTO;
@@ -27,8 +29,10 @@ public class MapperModifierBonus {
     Set<ModifierBonus> listOfModifier = new HashSet<>();
     if (mods != null) {
       mods.forEach(mod -> {
-        ModifierBonus m = new ModifierBonus(mod);
-        listOfModifier.add(m);
+        if (mod != null) {
+          ModifierBonus m = new ModifierBonus(mod);
+          listOfModifier.add(m);
+        }
       });
     }
     return listOfModifier;

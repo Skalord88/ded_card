@@ -40,7 +40,7 @@ public class ArmorsDTO implements Serializable {
     this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = item.getArmorName();
-    this.modifiers = MapperModifierBonus.toListModifierDTO(item.getModifiers());
+    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.armorType = item.getArmorType();

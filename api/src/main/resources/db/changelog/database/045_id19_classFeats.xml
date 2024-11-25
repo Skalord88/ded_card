@@ -17,10 +17,10 @@
             <column name="feats_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="selected" type="jsonb">
+            <column name="selected_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="list_of_bonus" type="jsonb">
+            <column name="to_select_id" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>

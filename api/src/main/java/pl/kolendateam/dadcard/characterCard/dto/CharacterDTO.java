@@ -18,7 +18,6 @@ import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
-import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
@@ -71,34 +70,33 @@ public class CharacterDTO implements Serializable {
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }
-
-  public CharacterDTO(
-    Character character,
-    FeatsRepository featsRepository,
-    ItemsRepository itemsRepository
-  ) {
-    this.id = character.getId();
-    this.characterName = character.getCharacterName();
-    this.playerName = character.getPlayerName();
-    this.classPcList =
-      MapperClassFeatsDTO.toClassPcListDTO(
-        character.getClassPcArray(),
-        featsRepository,
-        itemsRepository
-      );
-    this.race = MapperRaceToDTO.toSubRaceDTO(character.getRace());
-    this.archetypes =
-      MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList());
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
-    this.skillsList =
-      MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());
-    this.featsList = MapperFeatsDTO.toFeatsPcDTO(character.getFeatsList());
-    this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
-    this.attacks = MapperItemsDTO.toAttacksDTO(character.getAttacks());
-    this.magicPerDay = character.getMagicPerDay();
-    this.magicKnown = character.getMagicKnown();
-    this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
-    this.experience = character.getExperience();
-    this.treasure = character.getTreasure();
-  }
+  // public CharacterDTO(
+  //   Character character,
+  //   FeatsRepository featsRepository,
+  //   ItemsRepository itemsRepository
+  // ) {
+  //   this.id = character.getId();
+  //   this.characterName = character.getCharacterName();
+  //   this.playerName = character.getPlayerName();
+  //   this.classPcList =
+  //     MapperClassFeatsDTO.toClassPcListDTO(
+  //       character.getClassPcArray(),
+  //       featsRepository,
+  //       itemsRepository
+  //     );
+  //   this.race = MapperRaceToDTO.toSubRaceDTO(character.getRace());
+  //   this.archetypes =
+  //     MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList());
+  //   this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+  //   this.skillsList =
+  //     MapperSkillsToDTO.toSkillsListDTO(character.getClassSkills());
+  //   this.featsList = MapperFeatsDTO.toFeatsPcDTO(character.getFeatsList());
+  //   this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
+  //   this.attacks = MapperItemsDTO.toAttacksDTO(character.getAttacks());
+  //   this.magicPerDay = character.getMagicPerDay();
+  //   this.magicKnown = character.getMagicKnown();
+  //   this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
+  //   this.experience = character.getExperience();
+  //   this.treasure = character.getTreasure();
+  // }
 }

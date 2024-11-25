@@ -51,13 +51,23 @@ public class MapperItemsDTO {
     return new InventoryDTO(inventory);
   }
 
-  public static ArrayList<WondrousItemsDTO> toListItemsDTO(
+  public static ArrayList<WondrousItemsDTO> toListWondrousItemsDTO(
     List<WondrousItems> backpack
   ) {
     ArrayList<WondrousItemsDTO> itemsListDTO = new ArrayList<WondrousItemsDTO>();
 
     if (backpack != null) backpack.forEach(item -> {
       itemsListDTO.add(new WondrousItemsDTO(item));
+    });
+
+    return itemsListDTO;
+  }
+
+  public static List<ItemsDTO> toListItemsDTO(List<Items> items) {
+    List<ItemsDTO> itemsListDTO = new ArrayList<>();
+
+    if (items != null) items.forEach(item -> {
+      itemsListDTO.add(new ItemsDTO(item));
     });
 
     return itemsListDTO;

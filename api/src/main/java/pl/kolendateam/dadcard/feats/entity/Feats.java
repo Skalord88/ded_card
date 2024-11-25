@@ -6,12 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,9 +32,8 @@ public class Feats implements Serializable {
   String featName;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  FeatsTypeEnum[] type;
+  FeatsTypeEnum[] featType;
 
-  // String prerequisites;
   String benefit;
   String normal;
   String special;
@@ -44,13 +41,21 @@ public class Feats implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers = new HashSet<>();
 
-  @OneToMany(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "prerequisite_list_id", referencedColumnName = "id")
-  List<Prerequisite> prerequisiteList = new ArrayList<>();
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "prerequisite_list_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite prerequisiteList;
 
-  @OneToMany(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "to_select_id", referencedColumnName = "id")
-  List<Prerequisite> toSelect = new ArrayList<>();
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "to_select_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite toSelect;
 
   public Feats(int idDTO) {
     this.id = idDTO;

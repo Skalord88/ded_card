@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.feats.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,11 +9,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +19,11 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
-import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.entity.SkillStudyRank;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -32,6 +33,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 @Getter
 @Setter
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Prerequisite implements Serializable {
 
   @Id
@@ -50,12 +52,15 @@ public class Prerequisite implements Serializable {
   List<Feats> feats = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
-  SpellLevel caster;
+  SpellLevel[] caster;
 
   Integer bab;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  List<SkillStudyRank> skillStudy;
+  SkillStudyRank[] skillStudy;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  ArmorClass armorClass;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArmorsEnum[] armorType;
@@ -70,6 +75,17 @@ public class Prerequisite implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "schools_id")
   )
   List<School> schools;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  ClassPcLevel[] classPc;
+
+  @ManyToMany(cascade = CascadeType.MERGE)
+  @JoinTable(
+    name = "prerequisite_item",
+    joinColumns = @JoinColumn(name = "prerequisite_id"),
+    inverseJoinColumns = @JoinColumn(name = "item_id")
+  )
+  List<Items> items;
 
   String text;
 }

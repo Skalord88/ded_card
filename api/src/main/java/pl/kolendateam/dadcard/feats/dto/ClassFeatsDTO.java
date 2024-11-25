@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.feats.dto;
 
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,9 +8,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
-import pl.kolendateam.dadcard.items.repository.InventoryRepository;
-import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,8 +19,8 @@ public class ClassFeatsDTO {
   public FeatsDTO feat;
   public int classId;
   public EnumClass className;
-  public List<PrerequisiteDTO> selected;
-  public List<PrerequisiteDTO> listOfBonus;
+  public PrerequisiteDTO selected;
+  public PrerequisiteDTO toSelect;
 
   public ClassFeatsDTO(ClassFeats classFeat) {
     this.level = classFeat.getLevel();
@@ -32,22 +28,8 @@ public class ClassFeatsDTO {
     this.classId = classFeat.getClassCharacter().getId();
     this.className = classFeat.getClassCharacter().getName();
     this.selected =
-      MapperPrerequisiteBonus.toPrerequisiteListDTO(classFeat.getSelected());
-    this.listOfBonus =
-      MapperPrerequisiteBonus.toPrerequisiteListDTO(classFeat.getListOfBonus());
+      MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getSelected());
+    this.toSelect =
+      MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getToSelect());
   }
-  // public ClassFeatsDTO(
-  //   ClassFeats classFeat
-  // ) {
-  //   this.level = classFeat.getLevel();
-  //   this.feat = MapperFeatsDTO.toFeatDTO(classFeat.getFeats());
-  //   this.classId = classFeat.getClassCharacter().getId();
-  //   this.className = classFeat.getClassCharacter().getName();
-  //   this.selected =
-  //     MapperPrerequisiteBonus.toPrerequisiteObjectDTO(classFeat.getSelected());
-  //   this.listOfBonus =
-  //     MapperPrerequisiteBonus.toPrerequisiteObjectDTO(
-  //       classFeat.getListOfBonus()
-  //     );
-  // }
 }

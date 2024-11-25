@@ -54,7 +54,8 @@ public class InventoryDTO implements Serializable {
     ) this.weaponFive = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
 
     if (inventory.getBackpack() != null) {
-      this.backpack = MapperItemsDTO.toListItemsDTO(inventory.getBackpack());
+      this.backpack =
+        MapperItemsDTO.toListWondrousItemsDTO(inventory.getBackpack());
     }
     if (inventory.getHead() != null) {
       this.head = MapperItemsDTO.toWondrousItemsDTO(inventory.getHead());
@@ -72,7 +73,7 @@ public class InventoryDTO implements Serializable {
       this.arms = null;
     }
     if (inventory.getHands() != null) {
-      this.hands = MapperItemsDTO.toListItemsDTO(inventory.getHands());
+      this.hands = MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands());
     }
     if (inventory.getCloth() != null) {
       this.cloth = MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth());

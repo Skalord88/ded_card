@@ -12,12 +12,9 @@
         <column name="feat_name" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="type" type="json">
+        <column name="feat_type" type="json">
           <constraints nullable="true"/>
         </column>
-        <!-- <column name="prerequisites" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column> -->
         <column name="benefit" type="varchar(10000)">
           <constraints nullable="true"/>
         </column>
@@ -30,10 +27,10 @@
         <column name="modifiers" type="json">
           <constraints nullable="true"/>
         </column>
-        <column name="prerequisite_list" type="json">
+        <column name="prerequisite_list_id" type="int">
           <constraints nullable="true"/>
         </column>
-        <column name="to_select" type="json">
+        <column name="to_select_id" type="int">
           <constraints nullable="true"/>
         </column>
       </createTable>

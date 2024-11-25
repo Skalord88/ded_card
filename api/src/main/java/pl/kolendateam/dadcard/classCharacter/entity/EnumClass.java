@@ -28,4 +28,5 @@ public enum EnumClass {
   THAUMATURGIST,
   WARSLING_SNIPER,
   STORMLORD,
+  CLASS,
 }

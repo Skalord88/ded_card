@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class AbilitysDTO {
 
   public int strength;
-  public int dextrity;
+  public int dexterity;
   public int constitution;
   public int intelligence;
   public int wisdom;

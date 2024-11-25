@@ -10,45 +10,29 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="6" /> <!-- Light Armors -->
-            <column name="selected" value="[
-                {&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;1&quot;}
-            ]" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="7" /> <!-- Medium Armors -->
-            <column name="selected" value="[
-                {&quot;type&quot; : &quot;ARMOR_TYPE&quot;, &quot;value&quot; : &quot;2&quot;}
-            ]" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected" value="[
-                {&quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : &quot;95&quot;},
-                {&quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : &quot;96&quot;},
-                {&quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : &quot;97&quot;},
-                {&quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : &quot;98&quot;},
-                {&quot;type&quot; : &quot;ITEM&quot;, &quot;value&quot; : &quot;99&quot;}
-            ]" />
+            <column name="selected_id" value="65" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="89" /> <!-- Simple -->
-            <column name="selected" value="[
-                {&quot;type&quot; : &quot;WEAPON_TYPE&quot;, &quot;value&quot; : &quot;1&quot;}
-            ]" />
+            <column name="selected_id" value="64" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="66" /> <!-- Martial -->
-            <column name="selected" value="[
-                {&quot;type&quot; : &quot;WEAPON_TYPE&quot;, &quot;value&quot; : &quot;2&quot;}
-            ]" />
+            <column name="selected_id" value="66" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -180,6 +164,41 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
+            <column name="feats_id" value="6" /> <!-- Light Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="2" />
+            <column name="feats_id" value="7" /> <!-- Medium Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="2" />
+            <column name="feats_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="65" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="2" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="64" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="1" />
+            <column name="feats_id" value="66" /> <!-- Martial -->
+            <column name="selected_id" value="67" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="1" />
+            <column name="feats_id" value="66" /> <!-- Exotic -->
+            <column name="selected_id" value="68" />
+        </insert>
+
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="2" />
             <column name="feats_id" value="123" /> <!-- Bardic music -->
         </insert>
         <insert tableName="class_feats">
@@ -221,7 +240,7 @@
             <column name="level" value="9" />
             <column name="class_character_id" value="2" />
             <column name="feats_id" value="129" /> <!-- Inspire greatness -->
-        </insert>  
+        </insert>
         <insert tableName="class_feats">
             <column name="level" value="12" />
             <column name="class_character_id" value="2" />
@@ -249,6 +268,34 @@
         </insert>
 
         <!-- cleric -->
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="6" /> <!-- Light Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="7" /> <!-- Medium Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="5" /> <!-- Heavy Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="65" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="3" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="64" />
+        </insert>
+
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="3" />
@@ -286,6 +333,35 @@
         </insert>
 
         <!-- druid -->
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="4" />
+            <column name="feats_id" value="6" /> <!-- Light Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="4" />
+            <column name="feats_id" value="7" /> <!-- Medium Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="4" />
+            <column name="feats_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="65" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="4" />
+            <column name="feats_id" value="89" /> <!-- Simple Druid -->
+            <column name="selected_id" value="64" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="4" />
+            <column name="feats_id" value="66" /> <!-- Martial Druid -->
+            <column name="selected_id" value="70" />
+        </insert>
+
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="4" />
@@ -393,6 +469,47 @@
         </insert>
 
         <!-- Fighter -->
+
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="6" /> <!-- Light Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="7" /> <!-- Medium Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="5" /> <!-- Heavy Armors -->
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="65" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="101" /> <!-- Shield tower -->
+            <column name="selected_id" value="71" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="64" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="5" /> <!-- Martial -->
+            <column name="feats_id" value="66" />
+            <column name="selected_id" value="66" />
+        </insert>
+
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="5" />
@@ -449,7 +566,8 @@
             <column name="feats_id" value="153" /> <!-- Fighter Bonus Feats -->
         </insert>
 
-        <!-- Monk *********************************************************************************************************** -->
+        <!-- Monk
+        *********************************************************************************************************** -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="6" />
@@ -722,10 +840,7 @@
             <column name="level" value="2" />
             <column name="class_character_id" value="8" />
             <column name="feats_id" value="190" /> <!-- Combat Style -->
-            <column name="list_of_bonus" value="[
-            { &quot;type&quot;: &quot;FEAT&quot;, &quot;value&quot;: 116 },
-            { &quot;type&quot;: &quot;FEAT&quot;, &quot;value&quot;: 130 }
-            ]" />
+            <column name="to_select_id" value="72" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="3" />

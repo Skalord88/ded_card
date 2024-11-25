@@ -21,7 +21,7 @@ public class RaceDTO {
     this.id = race.getId();
     this.avatarRaceUrl = race.getAvatarUrl();
     this.raceName = race.getRaceName();
-    this.modifiers = MapperModifierBonus.toListModifierDTO(race.getModifiers());
+    this.modifiers = MapperModifierBonus.toSetModifierDTO(race.getModifiers());
     this.feats = MapperFeatsDTO.toFeatsSetDTO(race.getRaceFeats());
   }
 }

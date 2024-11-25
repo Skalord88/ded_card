@@ -6,8 +6,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<version>3.4.0</version>
+		<relativePath />
 	</parent>
 	<groupId>pl.kolendateam</groupId>
 	<artifactId>dadcard</artifactId>
@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.10.1</version>
+			<version>2.11.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

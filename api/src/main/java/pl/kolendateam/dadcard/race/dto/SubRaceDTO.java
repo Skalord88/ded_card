@@ -31,7 +31,7 @@ public class SubRaceDTO {
     this.subRacesName = subRace.getSubRaceName();
     this.avatarUrl = subRace.getAvatarUrl();
     this.modifiers =
-      MapperModifierBonus.toListModifierDTO(subRace.getModifiers());
+      MapperModifierBonus.toSetModifierDTO(subRace.getModifiers());
     this.raceFeats = MapperFeatsDTO.toFeatsSetDTO(subRace.getSubRaceFeats());
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();

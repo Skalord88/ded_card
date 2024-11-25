@@ -24,7 +24,7 @@ public class EnchantmentDTO implements Serializable {
     this.enchantment = enchantment.getEnchantment();
     this.ability = enchantment.getAbility();
     this.modifiers =
-      MapperModifierBonus.toListModifierDTO(enchantment.getModifiers());
+      MapperModifierBonus.toSetModifierDTO(enchantment.getModifiers());
     this.cost = enchantment.getCost();
   }
 }

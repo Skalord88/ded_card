@@ -43,7 +43,7 @@ public class EnchantedItemsDTO {
 
     this.material = enchantedItems.getMaterial();
     this.modifiers =
-      MapperModifierBonus.toListModifierDTO(enchantedItems.getModifiers());
+      MapperModifierBonus.toSetModifierDTO(enchantedItems.getModifiers());
     this.description = enchantedItems.getDescription();
   }
 }

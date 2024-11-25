@@ -22,7 +22,7 @@ public class SizeDTO {
   public SizeDTO(Size size) {
     this.id = size.getId();
     this.size = size.getSize();
-    this.modifiers = MapperModifierBonus.toListModifierDTO(size.getModifiers());
+    this.modifiers = MapperModifierBonus.toSetModifierDTO(size.getModifiers());
   }
 }
 // this.specialAttacks =

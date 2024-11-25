@@ -22,7 +22,7 @@ public class ArchetypeDTO {
     this.id = archetype.getId();
     this.archetypeName = archetype.getArchetypeName();
     this.modifiers =
-      MapperModifierBonus.toListModifierDTO(archetype.getModifiers());
+      MapperModifierBonus.toSetModifierDTO(archetype.getModifiers());
     this.archetypeFeats =
       MapperFeatsDTO.toFeatsSetDTO(archetype.getArchetypeFeats());
     this.levelAdjustment = archetype.getLevelAdjustment();

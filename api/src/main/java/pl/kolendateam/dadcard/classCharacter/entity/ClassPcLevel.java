@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.skills.entity;
+package pl.kolendateam.dadcard.classCharacter.entity;
 
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
@@ -6,13 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class SkillStudyRank implements Serializable {
+public class ClassPcLevel implements Serializable {
 
-  Integer skillId;
-  Integer studyId;
-  int rank;
+  EnumClass classe;
+  int level;
 }

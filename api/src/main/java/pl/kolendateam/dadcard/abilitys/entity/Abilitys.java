@@ -20,7 +20,7 @@ public class Abilitys implements Serializable {
 
   public void setCharacterAbility(AbilitysDTO abilitysDTO) {
     strength = abilitysDTO.strength;
-    dexterity = abilitysDTO.dextrity;
+    dexterity = abilitysDTO.dexterity;
     constitution = abilitysDTO.constitution;
     intelligence = abilitysDTO.intelligence;
     wisdom = abilitysDTO.wisdom;

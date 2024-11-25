@@ -6,7 +6,7 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 public class MapperArmorClassDTO {
 
   public static ArmorClassDTO toArmorClassDTO(ArmorClass armorClass) {
-    ArmorClassDTO armorClassDTO = new ArmorClassDTO(
+    if (armorClass != null) return new ArmorClassDTO(
       armorClass.getSizeBonus(),
       armorClass.getArmorBonus(),
       armorClass.getShieldBonus(),
@@ -15,6 +15,6 @@ public class MapperArmorClassDTO {
       armorClass.getNaturalArmor(),
       armorClass.getDodgeBonus()
     );
-    return armorClassDTO;
+    return new ArmorClassDTO();
   }
 }

@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 public class AttackVsArmorClassDTO {
 
   public int streghtAttack;
-  public int dextrityAttack;
+  public int dexterityAttack;
 
   public int armorClassA;
   public boolean isHit;
@@ -20,7 +20,7 @@ public class AttackVsArmorClassDTO {
   //     (int) character1.getBab() +
   //     ab1.bonusStreght(ab1) +
   //     character1.getSize().getBonus();
-  //   this.dextrityAttack =
+  //   this.dexterityAttack =
   //     (int) character1.getBab() +
   //     ab1.bonusDextrity(ab1) +
   //     character1.getSize().getBonus();

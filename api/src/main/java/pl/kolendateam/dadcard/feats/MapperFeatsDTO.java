@@ -16,8 +16,8 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 
 public class MapperFeatsDTO {
 
-  public static ArrayList<FeatsDTO> toFeatsDTO(List<Feats> feats) {
-    ArrayList<FeatsDTO> featsDTOList = new ArrayList<>();
+  public static List<FeatsDTO> toFeatsDTO(List<Feats> feats) {
+    List<FeatsDTO> featsDTOList = new ArrayList<>();
     if (feats != null) feats.forEach(feat -> {
       if (feat != null) {
         FeatsDTO featsDTO = new FeatsDTO(feat);

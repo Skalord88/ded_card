@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.feats.dto;
 
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 public class FeatsPcDTO implements Serializable {

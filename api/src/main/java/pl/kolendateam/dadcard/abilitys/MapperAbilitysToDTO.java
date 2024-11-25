@@ -9,7 +9,7 @@ public class MapperAbilitysToDTO {
     if (abilitys != null) {
       return new AbilitysDTO(
         abilitys.getStrength(),
-        abilitys.getDextrity(),
+        abilitys.getDexterity(),
         abilitys.getConstitution(),
         abilitys.getIntelligence(),
         abilitys.getWisdom(),

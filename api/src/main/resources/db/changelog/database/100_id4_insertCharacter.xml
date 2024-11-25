@@ -11,7 +11,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 14,
-                &quot;dextrity&quot;: 18, 
+                &quot;dexterity&quot;: 18, 
                 &quot;constitution&quot;: 12, 
                 &quot;intelligence&quot;: 13, 
                 &quot;wisdom&quot;: 8, 
@@ -299,7 +299,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 14,
-                &quot;dextrity&quot;: 17, 
+                &quot;dexterity&quot;: 17, 
                 &quot;constitution&quot;: 12, 
                 &quot;intelligence&quot;: 10, 
                 &quot;wisdom&quot;: 13, 
@@ -587,7 +587,7 @@
             <column name="abilitys"
                 value="{
             &quot;strength&quot;:8,
-            &quot;dextrity&quot;:14,
+            &quot;dexterity&quot;:14,
             &quot;constitution&quot;:13,
             &quot;intelligence&quot;:10,
             &quot;wisdom&quot;:17,
@@ -877,7 +877,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;:14,
-                &quot;dextrity&quot;:8,
+                &quot;dexterity&quot;:8,
                 &quot;constitution&quot;:13,
                 &quot;intelligence&quot;:10,
                 &quot;wisdom&quot;:18,
@@ -1167,7 +1167,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;:13,
-                &quot;dextrity&quot;:17,
+                &quot;dexterity&quot;:17,
                 &quot;constitution&quot;:10,
                 &quot;intelligence&quot;:12,
                 &quot;wisdom&quot;:14,
@@ -1457,7 +1457,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 8,
-                &quot;dextrity&quot;: 14, 
+                &quot;dexterity&quot;: 14, 
                 &quot;constitution&quot;: 12, 
                 &quot;intelligence&quot;: 17, 
                 &quot;wisdom&quot;: 13, 
@@ -1747,7 +1747,7 @@
             <column name="abilitys"
                 value="{
             &quot;strength&quot;:10,
-            &quot;dextrity&quot;:14,
+            &quot;dexterity&quot;:14,
             &quot;constitution&quot;:14,
             &quot;intelligence&quot;:12,
             &quot;wisdom&quot;:8,
