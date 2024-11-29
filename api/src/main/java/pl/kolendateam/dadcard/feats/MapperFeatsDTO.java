@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
@@ -21,6 +22,19 @@ public class MapperFeatsDTO {
     if (feats != null) feats.forEach(feat -> {
       if (feat != null) {
         FeatsDTO featsDTO = new FeatsDTO(feat);
+        featsDTOList.add(featsDTO);
+      }
+    });
+    return featsDTOList;
+  }
+
+  public static List<PrerequisiteFeatsDTO> toPrerequisiteFeatsDTO(
+    List<Feats> feats
+  ) {
+    List<PrerequisiteFeatsDTO> featsDTOList = new ArrayList<>();
+    if (feats != null) feats.forEach(feat -> {
+      if (feat != null) {
+        PrerequisiteFeatsDTO featsDTO = new PrerequisiteFeatsDTO(feat);
         featsDTOList.add(featsDTO);
       }
     });

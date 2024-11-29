@@ -8,7 +8,6 @@ import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
@@ -35,23 +34,60 @@ public class InventoryDTO implements Serializable {
 
   public InventoryDTO(Inventory inventory) {
     this.id = inventory.getId();
-    if (inventory.getArmor().getItem() instanceof Armors) this.armor =
-      MapperItemsDTO.toArmorDTO(inventory.getArmor());
-    if (inventory.getShield().getItem() instanceof Shields) this.shield =
-      MapperItemsDTO.toShieldDTO(inventory.getShield());
-    if (inventory.getWeaponOne().getItem() instanceof Weapons) this.weaponOne =
-      MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
-    if (inventory.getWeaponTwo().getItem() instanceof Weapons) this.weaponTwo =
-      MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
-    if (
-      inventory.getWeaponThree().getItem() instanceof Weapons
-    ) this.weaponThree = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
-    if (
-      inventory.getWeaponFour().getItem() instanceof Weapons
-    ) this.weaponFour = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
-    if (
-      inventory.getWeaponFive().getItem() instanceof Weapons
-    ) this.weaponFive = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
+
+    if (inventory.getArmor() != null) {
+      if (inventory.getArmor().getItem() instanceof Armors) this.armor =
+        MapperItemsDTO.toArmorDTO(inventory.getArmor());
+    } else {
+      this.armor = null;
+    }
+
+    if (inventory.getShield() != null) {
+      if (inventory.getShield().getItem() instanceof Shields) this.shield =
+        MapperItemsDTO.toShieldDTO(inventory.getShield());
+    } else {
+      this.shield = null;
+    }
+
+    if (inventory.getWeaponOne() != null) {
+      if (
+        inventory.getWeaponOne().getItem() instanceof Weapons
+      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
+    } else {
+      this.weaponOne = null;
+    }
+
+    if (inventory.getWeaponTwo() != null) {
+      if (
+        inventory.getWeaponTwo().getItem() instanceof Weapons
+      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
+    } else {
+      this.weaponOne = null;
+    }
+
+    if (inventory.getWeaponThree() != null) {
+      if (
+        inventory.getWeaponThree().getItem() instanceof Weapons
+      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
+    } else {
+      this.weaponOne = null;
+    }
+
+    if (inventory.getWeaponFour() != null) {
+      if (
+        inventory.getWeaponFour().getItem() instanceof Weapons
+      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
+    } else {
+      this.weaponOne = null;
+    }
+
+    if (inventory.getWeaponFive() != null) {
+      if (
+        inventory.getWeaponFive().getItem() instanceof Weapons
+      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
+    } else {
+      this.weaponOne = null;
+    }
 
     if (inventory.getBackpack() != null) {
       this.backpack =

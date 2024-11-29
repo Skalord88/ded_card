@@ -28,12 +28,19 @@ public class EnchantedItemsDTO {
     this.id = enchantedItems.getId();
     this.name = enchantedItems.getName();
 
-    if (enchantedItems.getItem() instanceof Armors) {
-      this.item = MapperItemsDTO.toItemsDTO((Armors) enchantedItems.getItem());
-    } else if (enchantedItems.getItem() instanceof Shields) {
-      this.item = MapperItemsDTO.toItemsDTO((Shields) enchantedItems.getItem());
-    } else if (enchantedItems.getItem() instanceof Weapons) {
-      this.item = MapperItemsDTO.toItemsDTO((Weapons) enchantedItems.getItem());
+    if (enchantedItems.getItem() != null) {
+      if (enchantedItems.getItem() instanceof Armors) {
+        this.item =
+          MapperItemsDTO.toItemsDTO((Armors) enchantedItems.getItem());
+      } else if (enchantedItems.getItem() instanceof Shields) {
+        this.item =
+          MapperItemsDTO.toItemsDTO((Shields) enchantedItems.getItem());
+      } else if (enchantedItems.getItem() instanceof Weapons) {
+        this.item =
+          MapperItemsDTO.toItemsDTO((Weapons) enchantedItems.getItem());
+      }
+    } else {
+      this.item = null;
     }
 
     this.enchantmentList =

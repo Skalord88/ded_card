@@ -30,11 +30,18 @@ public class FeatsDTO {
     this.benefit = feats.getBenefit();
     this.normal = feats.getNormal();
     this.special = feats.getSpecial();
-    this.modifiers = MapperModifierBonus.toSetModifierDTO(feats.getModifiers());
+    this.modifiers =
+      feats.getModifiers() != null
+        ? MapperModifierBonus.toSetModifierDTO(feats.getModifiers())
+        : null;
     this.prerequisiteList =
-      MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getPrerequisiteList());
+      feats.getPrerequisiteList() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getPrerequisiteList())
+        : null;
     this.toSelect =
-      MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getToSelect());
+      feats.getToSelect() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getToSelect())
+        : null;
   }
 
   public FeatsDTO(int zero) {

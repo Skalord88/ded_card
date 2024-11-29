@@ -26,7 +26,7 @@ public class PrerequisiteDTO {
 
   public int id;
   public AbilitysDTO abilitys;
-  public List<FeatsDTO> feats;
+  public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
   public SkillStudyRank[] skillStudy;
@@ -40,16 +40,31 @@ public class PrerequisiteDTO {
 
   public PrerequisiteDTO(Prerequisite pre) {
     this.id = pre.getId();
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(pre.getAbilitys());
-    this.feats = MapperFeatsDTO.toFeatsDTO(pre.getFeats());
+    this.abilitys =
+      pre.getAbilitys() != null
+        ? MapperAbilitysToDTO.toAbilityDTO(pre.getAbilitys())
+        : null;
+    this.feats =
+      pre.getFeats() != null
+        ? MapperFeatsDTO.toPrerequisiteFeatsDTO(pre.getFeats())
+        : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
     this.skillStudy = pre.getSkillStudy() != null ? pre.getSkillStudy() : null;
-    this.armorClass = MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass());
+    this.armorClass =
+      pre.getArmorClass() != null
+        ? MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass())
+        : null;
     this.armorType = pre.getArmorType() != null ? pre.getArmorType() : null;
     this.weaponType = pre.getWeaponType() != null ? pre.getWeaponType() : null;
-    this.schools = MapperSpellsDTO.toSchoolListDTO(pre.getSchools());
-    this.items = MapperItemsDTO.toListItemsDTO(pre.getItems());
+    this.schools =
+      pre.getSchools() != null
+        ? MapperSpellsDTO.toSchoolListDTO(pre.getSchools())
+        : null;
+    this.items =
+      pre.getItems() != null
+        ? MapperItemsDTO.toListItemsDTO(pre.getItems())
+        : null;
     this.classPc = pre.getClassPc() != null ? pre.getClassPc() : null;
     this.text = pre.getText();
   }
