@@ -21,7 +21,7 @@ export function GroupAllFeats(
         title: "Feat",
         feat: f,
         modifiers: f.modifiers ? f.modifiers : [],
-        listOfBonus: []
+        listOfBonus: f.prerequisiteList
       });
     }
 
@@ -32,7 +32,7 @@ export function GroupAllFeats(
             title: "ClassFeats " + f.className + " " + oneF.level,
             feat: oneF.feat,
             modifiers: oneF.feat.modifiers ? oneF.feat.modifiers : [],
-            listOfBonus: oneF.listOfBonus
+            listOfBonus: oneF.toSelect
           });
         }
       });

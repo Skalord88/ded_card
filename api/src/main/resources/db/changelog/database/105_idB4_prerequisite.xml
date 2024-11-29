@@ -33,6 +33,9 @@
             <column name="class_pc" type="jsonb">
                 <constraints nullable="true"/>
             </column>
+            <column name="domain_id" type="int">
+                <constraints nullable="true"/>
+            </column>
             <column name="text" type="VARCHAR(225)">
                 <constraints nullable="true"/>
             </column>
@@ -1079,6 +1082,102 @@
             <column name="prerequisite_id" value="71" />
             <column name="feat_id" value="100" />
         </insert> -->
+
+        <!-- Pg gia' fatti -->
+        <!-- Puli -->
+        <!-- Exotic Weapon Proficiency [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1001" />
+            <column name="text" value="Proficiency with Warsling" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1001" />
+            <column name="item_id" value="81" />
+        </insert>
+
+        <!-- Exotic Weapon Proficiency [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1002" />
+            <column name="text" value="Proficiency with Skiprock" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1002" />
+            <column name="item_id" value="82" />
+        </insert>
+
+        <!-- Rysio -->
+        <!-- Weapon Focus [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1011" />
+            <column name="text" value="Focus with Longsword" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1011" />
+            <column name="item_id" value="38" />
+            <!-- Longsword -->
+        </insert>
+        <!-- Weapon Specialization [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1012" />
+            <column name="text" value="Specialization with Longsword" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1012" />
+            <column name="item_id" value="38" />
+            <!-- Longsword -->
+        </insert>
+
+        <!-- Michał -->
+        <!-- Domain Spontaneity [Divine] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1031" />
+            <column name="domain_id" value="2" />
+            <column name="text" value="Spontaneity Storm" />
+        </insert>
+
+        <!-- Weapon Focus [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1032" />
+            <column name="text" value="Focus with Shortspear" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1032" />
+            <column name="item_id" value="14" />
+        </insert>
+
+        <!-- Weapon Specialization [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1033" />
+            <column name="text" value="Focus with Shortspear" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="1033" />
+            <column name="item_id" value="14" />
+        </insert>
+
+        <!-- Madzia -->
+        <insert tableName="prerequisite">
+            <column name="id" value="1052" />
+            <column name="skill_study" 
+                value="[{ &quot;skillId&quot; : 27, &quot;rank&quot; : 3 }]" />
+            <column name="text" value="Focus SpellCraft" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="1051" />
+            <column name="text" value="Focus EVOCATION" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="1051" />
+            <column name="schools_id" value="5" />
+        </insert>
 
     </changeSet>
 </databaseChangeLog>

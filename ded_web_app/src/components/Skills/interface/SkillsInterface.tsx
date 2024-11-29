@@ -1,5 +1,4 @@
 import { Abilitys } from "../../Abilitys/Interface";
-import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { ListModSkillsStudies } from "../Show/SkillShowComponent";
 
 export type SkillDTO = {
@@ -108,4 +107,10 @@ export type MapUpdateSkills = {
 export interface skillToServer {
   skillDTO: SkillProps[];
   skillPoints: number;
+}
+
+export type SkillStudyRank = {
+  skillId: Number;
+  studyId: Number;
+  rank: number;
 }

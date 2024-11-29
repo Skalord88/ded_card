@@ -1,4 +1,4 @@
-import { InventoryProps } from "./ArmorInterface";
+import { InventoryProps } from "./interface/ArmorInterface";
 
 export const Failure: React.FC<InventoryProps> = ({ inventory }) => {
   return (

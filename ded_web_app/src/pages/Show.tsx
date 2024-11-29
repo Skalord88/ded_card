@@ -2,20 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  AbilitysAndModifiers,
-  BonusAbilities
+    AbilitysAndModifiers,
+    BonusAbilities
 } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { AbilitysComponent } from "../components/AbilitysComponent";
-import { ArmorModifiers } from "../components/Armor/ArmorInterface";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
 import { MaxDextrityCount } from "../components/Armor/Function";
+import { ArmorModifiers } from "../components/Armor/interface/ArmorInterface";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import {
-  BaseAttack,
-  CharacterData,
-  ClassExpGold
+    BaseAttack,
+    CharacterData,
+    ClassExpGold
 } from "../components/CharacterData";
 import { DeleteButton } from "../components/DeleteButton";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
@@ -26,13 +26,13 @@ import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import { Attacks, CharacterPc, Inventory } from "../components/interfaces";
 import {
-  CalculateInventoryWeight,
-  CalculateWeight
+    CalculateInventoryWeight,
+    CalculateWeight
 } from "../components/Items/Inventory/Function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
 import {
-  FindInMoreLengthModifier,
-  FindInOneLengthModifier
+    FindInMoreLengthModifier,
+    FindInOneLengthModifier
 } from "../components/Modifiers/Function";
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { adjClass } from "../components/Race/AdjClass";

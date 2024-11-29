@@ -9,6 +9,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.skills.entity.SkillStudyRank;
+import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 
@@ -86,6 +89,10 @@ public class Prerequisite implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "item_id")
   )
   List<Items> items;
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "domain_id", referencedColumnName = "id")
+  Domains domain;
 
   String text;
 }

@@ -17,11 +17,13 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 public class FeatsPcDTO implements Serializable {
 
   public FeatsDTO feat;
-  public List<PrerequisiteDTO> selected;
+  public PrerequisiteDTO selected;
 
   public FeatsPcDTO(FeatsPc featPc) {
     this.feat = MapperFeatsDTO.toFeatDTO(featPc.getFeat());
     this.selected =
-      MapperPrerequisiteBonus.toPrerequisiteListDTO(featPc.getSelected());
+      featPc.getSelected() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(featPc.getSelected())
+        : null;
   }
 }

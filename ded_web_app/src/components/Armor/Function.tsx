@@ -1,7 +1,7 @@
 import { FormattingText } from "../Formatting/Function";
 import { SignAndCount } from "../functions";
 import { CharacterPc } from "../interfaces";
-import { ArmorList, ArmorModifiers } from "./ArmorInterface";
+import { ArmorList, ArmorModifiers } from "./interface/ArmorInterface";
 
 export function CalculateArmorInChar(
   char: CharacterPc, armorModifiers: ArmorModifiers

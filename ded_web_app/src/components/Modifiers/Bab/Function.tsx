@@ -20,14 +20,10 @@ export function CountSpecificBabBonusInModification(
 }
 //
 export function ModifiedWeaponBabBonus(
-  list: Prerequisite[][],
+  list: Prerequisite,
   weapon: Weapon
 ): boolean {
-  list.forEach((l) =>
-    l.forEach((cosa) => {
-      if (cosa.value === weapon.id) return true;
-    })
-  );
+  
   return false;
 }
 
@@ -36,7 +32,7 @@ export function FindWeaponToModified(
   weapon: Weapon
 ): { find: boolean; bonus: number } {
   const found = specific.find((special) =>
-    ModifiedWeaponBabBonus(special.selected, weapon)
+    // ModifiedWeaponBabBonus(special.selected, weapon)
   );
   return found ? { find: true, bonus: found.bonus } : { find: false, bonus: 0 };
 }

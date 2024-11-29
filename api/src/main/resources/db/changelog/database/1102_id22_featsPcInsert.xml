@@ -10,19 +10,13 @@
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
             <!-- Exotic Weapon Proficiency [General] -->
-            <column name="selected"
-                value="[{
-                    &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 81
-                }]" />
+            <column name="selected_id" value="1001" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
             <!-- Exotic Weapon Proficiency [General] -->
-            <column name="selected"
-                value="[{
-                    &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 82
-                }]" />
+            <column name="selected_id" value="1002" />
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
@@ -59,12 +53,8 @@
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="107" />
             <!-- Weapon Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 38
-                
-            }]" /> <!--
-            Longsword -->
+            <column name="selected_id" value="1011" />
+            <!-- Longsword -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
@@ -75,12 +65,8 @@
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="108" />
             <!-- Weapon Specialization [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 38
-                
-            }]" /> <!--
-            Longsword -->
+            <column name="selected_id" value="1012" /> 
+            <!-- Longsword -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
@@ -129,34 +115,21 @@
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="216" />
             <!-- Domain Spontaneity [Divine] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;DOMAIN&quot; , &quot;value&quot; : 2
-                
-            }]" /> <!--
-            Longsword -->
+           <column name="selected_id" value="1031" /> 
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="107" />
             <!-- Weapon Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 14
-                
-            }]" /> <!--
-            Shortspear -->
+            <column name="selected_id" value="1032" /> 
+            <!-- Shortspear  -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="108" />
             <!-- Weapon Specialization [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ITEM&quot; , &quot;value&quot; : 14
-                
-            }]" /> <!--
-            Shortspear -->
+            <column name="selected_id" value="1033" /> 
+            <!-- Shortspear  -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
@@ -217,23 +190,15 @@
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="92" />
             <!-- Spell Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;EVOCATION&quot; , &quot;value&quot; : 2
-                
-            }]" /> <!--
-            EVOCATION -->
+            <column name="selected_id" value="1051" /> 
+            <!-- EVOCATION  -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="90" />
             <!-- Skill Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;SKILL&quot; , &quot;value&quot; : 27
-                
-            }]" /> <!--
-            SPELLCRAFT -->
+            <column name="selected_id" value="1052" /> 
+            <!-- SPELLCRAFT  -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
@@ -251,12 +216,8 @@
             <!-- Mage Bonus Feats -->
             <column name="feats_id" value="92" />
             <!-- Spell Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ENCHANTMENT&quot; , &quot;value&quot; : 2
-                
-            }]" /> <!--
-            ENCHANTMENT -->
+            <column name="selected_id" value="1051" /> 
+            <!-- ENCHANTMENT  -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
@@ -269,12 +230,8 @@
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="38" />
             <!-- Greater Spell Focus [General] -->
-            <column name="selected"
-                value="[{
-                &quot;type&quot; : &quot;ENCHANTMENT&quot; , &quot;value&quot; : 2
-                
-            }]" /> <!--
-            ENCHANTMENT -->
+             <column name="selected_id" value="1051" />
+            <!-- ENCHANTMENT -->
         </insert>
 
         <!-- Mirq -->

@@ -1,6 +1,9 @@
 import { Abilitys } from "../../Abilitys/Interface";
-import { armorClass, savingThrows } from "../../interfaces";
+import { ArmorClass } from "../../Armor/interface/ArmorInterface";
+import { ClassPcLevel } from "../../ClassPc/Interface/ClassPcLevel";
+import { Item } from "../../interfaces";
 import { Modifiers } from "../../Modifiers/ModifierInterface";
+import { SkillStudyRank } from "../../Skills/interface/SkillsInterface";
 
 export type feat = {
   characterFeatName: string;
@@ -42,35 +45,46 @@ export type ClassFeats = {
   feat: Feat;
   classId: number;
   className: string;
-  listOfBonus: Prerequisite[]
+  toSelect: Prerequisite
 }
 
 export type Feat = {
   id: number;
   featName: string;
   featsType: string[];
-  prerequisites: string;
   benefit: string;
   normal: string;
   special: string;
   modifiers: Modifiers[];
-  prerequisiteList: Prerequisite[][];
-  toSelect: Prerequisite[];
+  prerequisiteList: Prerequisite;
+  toSelect: Prerequisite;
 }
 
 export type FeatPc = {
   feat: Feat;
-  selected: Prerequisite[];
+  selected: Prerequisite;
 }
 
 export type Prerequisite = {
-  type: string;
-  value: number;
+  id: number;
+  abilitys: Abilitys;
+  feats: Feat[];
+  caster: [];
+  bab: Number;
+  skillStudy: SkillStudyRank[];
+  armorClass: ArmorClass;
+  armorType: string[];
+  weaponType: string[];
+  schools: string[];
+  classPc: ClassPcLevel[];
+  items: Item[]
+  text: string;
+
 }
 
 export type FeatsToShow = {
   title: string,
   feat: Feat,
   modifiers: Modifiers[],
-  listOfBonus: Prerequisite[]
+  listOfBonus: Prerequisite
 }

@@ -28,8 +28,12 @@ public class ClassFeatsDTO {
     this.classId = classFeat.getClassCharacter().getId();
     this.className = classFeat.getClassCharacter().getName();
     this.selected =
-      MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getSelected());
+      classFeat.getSelected() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getSelected())
+        : null;
     this.toSelect =
-      MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getToSelect());
+      classFeat.getToSelect() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(classFeat.getToSelect())
+        : null;
   }
 }

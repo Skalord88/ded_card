@@ -1,9 +1,9 @@
 import { CharacterPc } from "../interfaces";
-import { ArmorList, ArmorModifiers } from "./ArmorInterface";
 import { Contact } from "./Contact";
 import { Failure } from "./Failure";
 import { FlatFooted } from "./FlatFooted";
 import { CalculateArmorInChar } from "./Function";
+import { ArmorList, ArmorModifiers } from "./interface/ArmorInterface";
 import { SmallTotalArmor, TotalArmor } from "./TotalArmor";
 
 export type CharacterArmorProps = {

@@ -1,4 +1,4 @@
-import { ArmorModifiers } from "./ArmorInterface";
+import { ArmorModifiers } from "./interface/ArmorInterface";
 
 export type ArmorModifiersProps = {
   armorModifiers: ArmorModifiers

@@ -1,19 +1,18 @@
 package pl.kolendateam.dadcard.feats.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @NoArgsConstructor
@@ -39,6 +38,11 @@ public class FeatsPc implements Serializable {
   @JoinColumn(name = "class_feats_id")
   ClassFeats classFeat;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  List<Prerequisite> selected;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "selected_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite selected;
 }
