@@ -234,14 +234,15 @@ export const Show = () => {
             modifications={modifications}
           />
           <SpeedComponent speed={speed} />
-          <FeatsComponent feats={feats} />
+          <FeatsComponent feats={feats} titolo=""/>
           </>
       ) : (
         <>
           <div
             style={{
               display: "grid",
-              justifyContent: "center"
+              justifyContent: "center",
+              gridTemplateColumns: "30% 30% 30%"
             }}
           >
             <div
@@ -405,11 +406,11 @@ export const Show = () => {
               key="feats"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
-                gridRow: 10
+                gridColumn: "1 / span 3",
+                gridRow: 11
               }}
             >
-              <FeatsComponent feats={feats} />
+              <FeatsComponent feats={feats} titolo=""/>
             </div>
           </div>
         </>

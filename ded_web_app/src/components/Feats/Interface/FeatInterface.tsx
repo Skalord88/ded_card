@@ -61,6 +61,7 @@ export type Feat = {
 }
 
 export type FeatPc = {
+  id: number,
   feat: Feat;
   selected: Prerequisite;
 }
@@ -83,8 +84,9 @@ export type Prerequisite = {
 }
 
 export type FeatsToShow = {
+  id: number | null,
   title: string,
   feat: Feat,
   modifiers: Modifiers[],
-  listOfBonus: Prerequisite
+  listOfBonus: Prerequisite | null
 }

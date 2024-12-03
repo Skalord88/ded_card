@@ -31,8 +31,9 @@ export function FindWeaponToModified(
   specific: Modifiers[],
   weapon: Weapon
 ): { find: boolean; bonus: number } {
-  const found = specific.find((special) =>
+  // const found = specific.find((special) =>
     // ModifiedWeaponBabBonus(special.selected, weapon)
-  );
-  return found ? { find: true, bonus: found.bonus } : { find: false, bonus: 0 };
+  // );
+  return {find: true, bonus: 0}
+  //  ? { find: true, bonus: found.bonus } : { find: false, bonus: 0 };
 }
