@@ -88,11 +88,15 @@ public class WeaponsDTO implements Serializable {
         });
     }
     this.id = item.getId();
-    this.name = item.getItem().getName();
+    this.name = item.getName();
     this.itemType = ItemTypeEnum.WEAPON;
     this.weaponName = weaponDTO.weaponName;
     this.modifiers = setOfMods;
     this.cost = weaponDTO.cost;
+    this.damage = weaponDTO.damage;
+    this.critical = weaponDTO.critical;
+    this.range = weaponDTO.range;
+    this.description = weaponDTO.description;
     this.weight = weaponDTO.weight;
     this.size = weaponDTO.size;
     this.modifiers = setOfMods;

@@ -4,7 +4,9 @@ import java.io.Serializable;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @NoArgsConstructor
 public class AttacksDTO implements Serializable {
@@ -19,17 +21,39 @@ public class AttacksDTO implements Serializable {
 
   public AttacksDTO(Attacks characterAttacks) {
     this.id = characterAttacks.getId();
+
     this.firstAttackSetOne =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getFirstAttackSetOne());
+      characterAttacks.getFirstAttackSetOne() != null
+        ? MapperItemsDTO.toWeaponDTO(characterAttacks.getFirstAttackSetOne())
+        : null;
+
     this.secondAttackSetOne =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getSecondAttackSetOne());
+      characterAttacks.getSecondAttackSetOne() != null
+        ? MapperItemsDTO.toWeaponDTO(characterAttacks.getSecondAttackSetOne())
+        : null;
+
     this.additionalAttackSetOne =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getAdditionalAttackSetOne());
+      characterAttacks.getAdditionalAttackSetOne() != null
+        ? MapperItemsDTO.toWeaponDTO(
+          characterAttacks.getAdditionalAttackSetOne()
+        )
+        : null;
+
     this.firstAttackSetTwo =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getFirstAttackSetTwo());
+      characterAttacks.getFirstAttackSetTwo() != null
+        ? MapperItemsDTO.toWeaponDTO(characterAttacks.getFirstAttackSetTwo())
+        : null;
+
     this.secondAttackSetTwo =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getSecondAttackSetTwo());
+      characterAttacks.getSecondAttackSetTwo() != null
+        ? MapperItemsDTO.toWeaponDTO(characterAttacks.getSecondAttackSetTwo())
+        : null;
+
     this.additionalAttackSetTwo =
-      MapperItemsDTO.toWeaponDTO(characterAttacks.getAdditionalAttackSetTwo());
+      characterAttacks.getAdditionalAttackSetTwo() != null
+        ? MapperItemsDTO.toWeaponDTO(
+          characterAttacks.getAdditionalAttackSetTwo()
+        )
+        : null;
   }
 }

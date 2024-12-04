@@ -1,12 +1,9 @@
 import { DiceText } from "../../../Dice/Functions";
 import { FormattingText } from "../../../Formatting/Function";
 import {
-  SignAndCount,
-  SignNumber,
-  SignNumberEnchant,
   WeaponTwoHanded
 } from "../../../functions";
-import { Shield, Weapon } from "../../../interfaces";
+import { Weapon } from "../../../interfaces";
 import { Popup } from "../../../Popup/Popup";
 
 export type WeaponsInventoryComponentProps = {

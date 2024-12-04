@@ -70,7 +70,7 @@ public class AttackController {
 
     Attacks characterAttacks = attacksOpt.get();
 
-    characterAttacks.setCharactersAttacks(characterAttacksDTO, itemsList);
+    // characterAttacks.setCharactersAttacks(characterAttacksDTO, itemsList);
 
     this.attacksRepository.save(characterAttacks);
 

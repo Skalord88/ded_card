@@ -35,89 +35,86 @@ public class InventoryDTO implements Serializable {
   public InventoryDTO(Inventory inventory) {
     this.id = inventory.getId();
 
-    if (inventory.getArmor() != null) {
-      if (inventory.getArmor().getItem() instanceof Armors) this.armor =
-        MapperItemsDTO.toArmorDTO(inventory.getArmor());
-    } else {
-      this.armor = null;
-    }
+    this.armor =
+      inventory.getArmor() != null &&
+        inventory.getArmor().getItem() instanceof Armors
+        ? MapperItemsDTO.toArmorDTO(inventory.getArmor())
+        : null;
 
-    if (inventory.getShield() != null) {
-      if (inventory.getShield().getItem() instanceof Shields) this.shield =
-        MapperItemsDTO.toShieldDTO(inventory.getShield());
-    } else {
-      this.shield = null;
-    }
+    this.shield =
+      inventory.getShield() != null &&
+        inventory.getShield().getItem() instanceof Shields
+        ? MapperItemsDTO.toShieldDTO(inventory.getShield())
+        : null;
 
-    if (inventory.getWeaponOne() != null) {
-      if (
+    // weaponOne
+    this.weaponOne =
+      inventory.getWeaponOne() != null &&
         inventory.getWeaponOne().getItem() instanceof Weapons
-      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne());
-    } else {
-      this.weaponOne = null;
-    }
+        ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponOne())
+        : null;
 
-    if (inventory.getWeaponTwo() != null) {
-      if (
+    // weaponTwo
+    this.weaponTwo =
+      inventory.getWeaponTwo() != null &&
         inventory.getWeaponTwo().getItem() instanceof Weapons
-      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo());
-    } else {
-      this.weaponOne = null;
-    }
+        ? this.weaponTwo = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo())
+        : null;
 
-    if (inventory.getWeaponThree() != null) {
-      if (
+    // weaponThree
+    this.weaponThree =
+      inventory.getWeaponThree() != null &&
         inventory.getWeaponThree().getItem() instanceof Weapons
-      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree());
-    } else {
-      this.weaponOne = null;
-    }
+        ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponThree())
+        : null;
 
-    if (inventory.getWeaponFour() != null) {
-      if (
+    // weaponFour
+    this.weaponFour =
+      inventory.getWeaponFour() != null &&
         inventory.getWeaponFour().getItem() instanceof Weapons
-      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour());
-    } else {
-      this.weaponOne = null;
-    }
+        ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponFour())
+        : null;
 
-    if (inventory.getWeaponFive() != null) {
-      if (
+    // weaponFive
+    this.weaponFive =
+      inventory.getWeaponFive() != null &&
         inventory.getWeaponFive().getItem() instanceof Weapons
-      ) this.weaponOne = MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive());
-    } else {
-      this.weaponOne = null;
-    }
+        ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive())
+        : null;
 
-    if (inventory.getBackpack() != null) {
-      this.backpack =
-        MapperItemsDTO.toListWondrousItemsDTO(inventory.getBackpack());
-    }
-    if (inventory.getHead() != null) {
-      this.head = MapperItemsDTO.toWondrousItemsDTO(inventory.getHead());
-    } else {
-      this.head = null;
-    }
-    if (inventory.getNeck() != null) {
-      this.neck = MapperItemsDTO.toWondrousItemsDTO(inventory.getNeck());
-    } else {
-      this.head = null;
-    }
-    if (inventory.getArms() != null) {
-      this.arms = MapperItemsDTO.toWondrousItemsDTO(inventory.getArms());
-    } else {
-      this.arms = null;
-    }
-    if (inventory.getHands() != null) {
-      this.hands = MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands());
-    }
-    if (inventory.getCloth() != null) {
-      this.cloth = MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth());
-    } else {
-      this.head = null;
-    }
-    if (inventory.getLegs() != null) {
-      this.legs = MapperItemsDTO.toWondrousItemsDTO(inventory.getLegs());
-    }
+    this.backpack =
+      inventory.getBackpack() != null
+        ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getBackpack())
+        : new ArrayList<WondrousItemsDTO>();
+
+    this.head =
+      inventory.getHead() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getHead())
+        : null;
+
+    this.neck =
+      inventory.getNeck() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getNeck())
+        : null;
+
+    this.arms =
+      inventory.getArms() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getArms())
+        : null;
+
+    this.hands =
+      inventory.getHands() != null
+        ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands())
+        : new ArrayList<WondrousItemsDTO>();
+
+    this.cloth =
+      inventory.getCloth() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth())
+        : null;
+
+    this.legs =
+      inventory.getLegs() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getLegs())
+        : null;
   }
 }

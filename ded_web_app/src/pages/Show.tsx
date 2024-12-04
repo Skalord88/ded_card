@@ -24,7 +24,7 @@ import { GroupAllFeats } from "../components/Feats/Function";
 import { FeatsToShow } from "../components/Feats/Interface/FeatInterface";
 import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
-import { Attacks, CharacterPc, Inventory } from "../components/interfaces";
+import { Armor, Attacks, CharacterPc, Inventory, Shield } from "../components/interfaces";
 import {
     CalculateInventoryWeight,
     CalculateWeight
@@ -38,11 +38,11 @@ import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { adjClass } from "../components/Race/AdjClass";
 import { FindAllAdjLevel } from "../components/Race/Function";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
-import { reSizeWeapon } from "../components/Size/Function";
+import { reSizeArmor, reSizeWeapon } from "../components/Size/Function";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
-import { noneWeapon } from "../components/variables";
+import { noneArmor, noneItem, noneShield, noneWeapon } from "../components/variables";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -111,49 +111,67 @@ export const Show = () => {
 
   const armorModifiers: ArmorModifiers = {
     size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
-    armor:
+    armor: char.inventory.armor ?
       FindInOneLengthModifier(modifications, "ARMOR_BONUS") +
-      (char.inventory.armor.enchantmentList !== null ?
+      (char.inventory.armor.enchantmentList !== null?
         char.inventory.armor.enchantmentList.reduce(
         (tot, ench) => 
           tot + ench.ability === null? 0 : ench.enchantment
         , 0
-      ) : 0),
-    shiled:
+      ) : 0) : 0,
+    shiled: char.inventory.shield ?
       FindInOneLengthModifier(modifications, "SHIELD_BONUS") +
       (char.inventory.shield.enchantmentList !== null?
       char.inventory.shield.enchantmentList.reduce(
         (tot, ench) => 
           tot + ench.ability === null? 0 : ench.enchantment
         , 0
-      ) : 0),
-    dextrity: MaxDextrityCount(
+      ) : 0) : 0,
+    dextrity: char.inventory.armor ? MaxDextrityCount(
       BonusAbilities(abilitys, "DEX"),
       char.inventory.armor.maxDex
-    ),
+    ) : 0,
     dodge: FindInOneLengthModifier(modifications, "DODGE_BONUS"),
     natural: FindInOneLengthModifier(modifications, "NATURAL_ARMOR_BONUS"),
     deflection: FindInOneLengthModifier(modifications, "DEFLECTION_BONUS")
   };
+  
   const inventory: Inventory = {
     ...char.inventory,
-    armor: char.inventory.armor,
-    shield: char.inventory.shield,
+    armor: char.inventory.armor && "armorName" in char.inventory.armor ? 
+    reSizeArmor(char.race.size, char.inventory.armor) as Armor : noneArmor,
+
+    shield: char.inventory.shield && "shieldName" in char.inventory.shield ?
+    reSizeArmor(char.race.size, char.inventory.shield) as Shield : noneShield,
+
     weaponOne: char.inventory.weaponOne
-      ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
-      : reSizeWeapon(char.race.size, noneWeapon),
+    //  ? char.inventory.weaponOne : noneWeapon,
+    ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
+    : reSizeWeapon(char.race.size, noneWeapon),
     weaponTwo: char.inventory.weaponTwo
-      ? reSizeWeapon(char.race.size, char.inventory.weaponTwo)
-      : reSizeWeapon(char.race.size, noneWeapon),
+    //  ? char.inventory.weaponTwo : noneWeapon,
+    ? reSizeWeapon(char.race.size, char.inventory.weaponTwo)
+    : reSizeWeapon(char.race.size, noneWeapon),
     weaponThree: char.inventory.weaponThree
-      ? reSizeWeapon(char.race.size, char.inventory.weaponThree)
-      : reSizeWeapon(char.race.size, noneWeapon),
+    //  ? char.inventory.weaponThree : noneWeapon,
+    ? reSizeWeapon(char.race.size, char.inventory.weaponThree)
+    : reSizeWeapon(char.race.size, noneWeapon),
     weaponFour: char.inventory.weaponFour
-      ? reSizeWeapon(char.race.size, char.inventory.weaponFour)
-      : reSizeWeapon(char.race.size, noneWeapon),
+    //  ? char.inventory.weaponFour : noneWeapon,
+    ? reSizeWeapon(char.race.size, char.inventory.weaponFour)
+    : reSizeWeapon(char.race.size, noneWeapon),
     weaponFive: char.inventory.weaponFive
-      ? reSizeWeapon(char.race.size, char.inventory.weaponFive)
-      : reSizeWeapon(char.race.size, noneWeapon)
+    //  ? char.inventory.weaponFive : noneWeapon
+    ? reSizeWeapon(char.race.size, char.inventory.weaponFive)
+    : reSizeWeapon(char.race.size, noneWeapon)
+    ,
+    backpack: [noneItem, noneItem, noneItem],
+    head: noneItem,
+    neck: noneItem,
+    arms: noneItem,
+    hands: [noneItem, noneItem],
+    cloth: noneItem,
+    legs: noneItem
   };
   const weight: number = CalculateInventoryWeight(inventory);
   const carrying: [string, number] = CalculateWeight(
@@ -163,31 +181,30 @@ export const Show = () => {
   );
   const attacks: Attacks = {
     ...char.attacks,
-    firstAttackSetOne: reSizeWeapon(
+    firstAttackSetOne: char.attacks.firstAttackSetOne ? reSizeWeapon(
       char.race.size,
       char.attacks.firstAttackSetOne
-    ),
-    secondAttackSetOne: reSizeWeapon(
+    ) : reSizeWeapon(char.race.size, noneWeapon),
+    secondAttackSetOne: char.attacks.secondAttackSetOne ? reSizeWeapon(
       char.race.size,
       char.attacks.secondAttackSetOne
-    ),
-    additionalAttackSetOne: reSizeWeapon(
+    ) : reSizeWeapon(char.race.size, noneWeapon),
+    additionalAttackSetOne: char.attacks.additionalAttackSetOne ? reSizeWeapon(
       char.race.size,
       char.attacks.additionalAttackSetOne
-    ),
-
-    firstAttackSetTwo: reSizeWeapon(
+    ) : reSizeWeapon(char.race.size, noneWeapon),
+    firstAttackSetTwo: char.attacks.firstAttackSetTwo ? reSizeWeapon(
       char.race.size,
       char.attacks.firstAttackSetTwo
-    ),
-    secondAttackSetTwo: reSizeWeapon(
+    ) : reSizeWeapon(char.race.size, noneWeapon),
+    secondAttackSetTwo: char.attacks.secondAttackSetTwo?  reSizeWeapon(
       char.race.size,
       char.attacks.secondAttackSetTwo
-    ),
-    additionalAttackSetTwo: reSizeWeapon(
+    ) : reSizeWeapon(char.race.size, noneWeapon),
+    additionalAttackSetTwo: char.attacks.additionalAttackSetTwo ? reSizeWeapon(
       char.race.size,
       char.attacks.additionalAttackSetTwo
-    )
+    ) : reSizeWeapon(char.race.size, noneWeapon)
   };
 
   return (
@@ -242,7 +259,7 @@ export const Show = () => {
             style={{
               display: "grid",
               justifyContent: "center",
-              gridTemplateColumns: "30% 30% 30%"
+              gridTemplateColumns: "25% 40% 35%"
             }}
           >
             <div
@@ -376,7 +393,7 @@ export const Show = () => {
                 gridRow: 8
               }}
             >
-              <InventoryComponent inventory={inventory} carrying={carrying} />
+              {inventory? <InventoryComponent inventory={inventory} carrying={carrying} /> : null}
             </div>
             <div
               key="skills"

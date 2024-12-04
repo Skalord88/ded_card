@@ -67,7 +67,7 @@ public class ShieldsDTO {
         });
     }
     this.id = item.getId();
-    this.name = item.getItem().getName();
+    this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.shieldName = shieldDTO.shieldName;
     this.modifiers = setOfMods;

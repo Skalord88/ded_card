@@ -69,7 +69,7 @@ public class ArmorsDTO implements Serializable {
         });
     }
     this.id = item.getId();
-    this.name = item.getItem().getName();
+    this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = armorDTO.armorName;
     this.modifiers = setOfMods;

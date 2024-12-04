@@ -1,10 +1,10 @@
 import { Inventory } from "../../interfaces";
 
 export function CalculateInventoryWeight(inventory: Inventory): number {
-    return inventory.armor.weight + inventory.shield.weight + 
+    return parseFloat((inventory.armor.weight + inventory.shield.weight + 
         inventory.weaponOne.weight + inventory.weaponTwo.weight +
         inventory.weaponThree.weight + inventory.weaponFour.weight +
-        inventory.weaponFive.weight
+        inventory.weaponFive.weight).toFixed(2))
 }
 
 export function CalculateWeight(strenght: number, size: number, inventoryWeight: number): [string, number] {

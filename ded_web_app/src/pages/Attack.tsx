@@ -54,48 +54,48 @@ export function Attack() {
                 gridRow: 1
               }}
               >bab: +{bab}</div>
-              <div
+              {char?.inventory.armor ? <div
               style={{
                 gridColumn: 1,
                 gridRow: 2
               }}
-              >armor: {char?.inventory.armor.name}</div>
-              <div
+              >armor: {char?.inventory.armor.name}</div> : <></>}
+              {char?.inventory.shield ? <div
               style={{
                 gridColumn: 1,
                 gridRow: 3
               }}
-              >shield: {char?.inventory.shield.name}</div>
-              <div
+              >shield: {char?.inventory.shield.name}</div> : <></>}
+              {char?.inventory.weaponOne ? <div
               style={{
                 gridColumn: 2,
                 gridRow: 1
               }}
-              >I: {char?.inventory.weaponOne.name}</div>
-              <div
+              >I: {char?.inventory.weaponOne.name}</div> : <></>}
+              {char?.inventory.weaponTwo ? <div
               style={{
                 gridColumn: 2,
                 gridRow: 2
               }}
-              >II: {char?.inventory.weaponTwo.name}</div>
-              <div
+              >II: {char?.inventory.weaponTwo.name}</div> : <></>}
+              {char?.inventory.weaponThree ? <div
               style={{
                 gridColumn: 2,
                 gridRow: 3
               }}
-              >III: {char?.inventory.weaponThree.name}</div>
-              <div
+              >III: {char?.inventory.weaponThree.name}</div> : <></>}
+              {char?.inventory.weaponFour ? <div
               style={{
                 gridColumn: 2,
                 gridRow: 4
               }}
-              >IV: {char?.inventory.weaponFour.name}</div>
-              <div
+              >IV: {char?.inventory.weaponFour.name}</div> : <></>}
+              {char?.inventory.weaponFive ? <div
               style={{
                 gridColumn: 2,
                 gridRow: 5
               }}
-              >V: {char?.inventory.weaponFive.name}</div>
+              >V: {char?.inventory.weaponFive.name}</div> : <></>}
               </div>
               </>
               :
