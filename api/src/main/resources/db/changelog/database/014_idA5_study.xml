@@ -6,15 +6,47 @@
 
   <changeSet id="105" author="oscar">
       <createTable tableName="study">
-        <column name="id" type="SMALLINT" autoIncrement="true">
+        <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
         <column name="study_name" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="id_skill" type="SMALLINT">
+        <column name="id_skill" type="int">
           <constraints nullable="true"/>
         </column>
       </createTable>
+
+
+      <insert tableName="study">
+                <column name="id" value="1"/>  
+                <column  name="study_name"  value="ARCANA"/> 
+                <column  name="id_skill"  value="17"/>
+            </insert>
+            <insert tableName="study">
+                <column name="id" value="2"/>  
+                <column  name="study_name"  value="ARCHITECTURE"/>  
+                <column  name="id_skill"  value="17"/>
+            </insert>
+            <insert tableName="study">
+                <column name="id" value="3"/>  
+                <column  name="study_name"  value="HISTORY"/>  
+                <column  name="id_skill"  value="17"/>
+            </insert>
+            <insert tableName="study">
+                <column name="id" value="4"/>  
+                <column  name="study_name"  value="NATURE"/>  
+                <column  name="id_skill"  value="17"/>
+            </insert>
+            <insert tableName="study">
+                <column name="id" value="5"/>  
+                <column  name="study_name"  value="RELIGION"/>  
+                <column  name="id_skill"  value="17"/>
+            </insert>
+            <insert tableName="study">
+                <column name="id" value="6"/>  
+                <column  name="study_name"  value="PLANE"/>  
+                <column  name="id_skill"  value="17"/>
+            </insert>
   </changeSet>
 </databaseChangeLog>

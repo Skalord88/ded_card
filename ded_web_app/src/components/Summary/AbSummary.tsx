@@ -16,7 +16,7 @@ export const AbSummary: React.FC<AbSummaryProps> = ({ abilitys }) => {
     {
       idAb: 1,
       text: "DEX",
-      number: abilitys.dextrity,
+      number: abilitys.dexterity,
       bonus: SignAndCount([BonusAbilities(abilitys, "DEX")])
     },
     {

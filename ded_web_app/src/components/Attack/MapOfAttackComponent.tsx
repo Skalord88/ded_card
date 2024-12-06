@@ -8,7 +8,7 @@ export type MapOfAttackComponentProps = {
   bab: number;
   strenght: number;
   strenghtAtt: number;
-  dextrityAtt: number;
+  dexterityAtt: number;
   specific: Modifiers[][];
   specificFghFeats: number[];
 };
@@ -18,7 +18,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
   bab,
   strenght,
   strenghtAtt,
-  dextrityAtt,
+  dexterityAtt,
   specific,
   specificFghFeats
 }) => {
@@ -37,7 +37,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                 strenght={strenght}
                 weapon={attacks.firstAttackSetOne}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
                 position={{
                   pose: true,
                   twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
@@ -59,7 +59,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     strenght={strenght}
                     weapon={attacks.secondAttackSetOne}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     position={{
                       pose: false,
                       twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
@@ -82,7 +82,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     weapon={attacks.additionalAttackSetOne}
                     position={{
                       pose: true,
@@ -107,7 +107,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     weapon={attacks.additionalAttackSetOne}
                     position={{
                       pose: true,
@@ -127,7 +127,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                 bab={bab}
                 strenght={strenght}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
                 weapon={attacks.firstAttackSetTwo}
                 position={{
                   pose: true,
@@ -150,7 +150,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     position={{
                       pose: false,
                       twoHanded: WeaponTwoHanded(attacks.firstAttackSetTwo),
@@ -178,7 +178,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                 strenght={strenght}
                 weapon={attacks.firstAttackSetOne}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
                 position={{
                   pose: true,
                   twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
@@ -200,7 +200,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     strenght={strenght}
                     weapon={attacks.secondAttackSetOne}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     position={{
                       pose: false,
                       twoHanded: WeaponTwoHanded(attacks.firstAttackSetOne),
@@ -223,7 +223,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     weapon={attacks.additionalAttackSetOne}
                     position={{
                       pose: true,
@@ -247,7 +247,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                 bab={bab}
                 strenght={strenght}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
                 weapon={attacks.firstAttackSetTwo}
                 position={{
                   pose: true,
@@ -270,7 +270,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     position={{
                       pose: false,
                       twoHanded: WeaponTwoHanded(attacks.firstAttackSetTwo),
@@ -293,7 +293,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
                     bab={bab}
                     strenght={strenght}
                     strenghtAtt={strenghtAtt}
-                    dextrityAtt={dextrityAtt}
+                    dexterityAtt={dexterityAtt}
                     weapon={attacks.additionalAttackSetTwo}
                     position={{
                       pose: true,

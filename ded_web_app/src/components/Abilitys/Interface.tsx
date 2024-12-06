@@ -1,6 +1,6 @@
 export type Abilitys = {
     strength: number;
-    dextrity: number;
+    dexterity: number;
     constitution: number;
     intelligence: number;
     wisdom: number;

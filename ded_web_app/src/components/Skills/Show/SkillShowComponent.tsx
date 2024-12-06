@@ -14,7 +14,8 @@ export type SkillShowComponentProps = {
 export type ListModSkillsStudies = {
   listSkills: Modifiers[];
   listStudies: Modifiers[];
-  penality: number
+  penality: number;
+  classSkillsId: number[]
 };
 
 export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
@@ -25,8 +26,12 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
   const listModSkillsStudies: ListModSkillsStudies = {
     listSkills: FindInMoreLengthModifier(modifications, "SKILL") || [],
     listStudies: FindInMoreLengthModifier(modifications, "STUDY") || [],
-    penality: char.inventory.armor.penality + char.inventory.shield.penality
+    penality: char.inventory.armor.penality + char.inventory.shield.penality,
+    classSkillsId: []
+    // char.classPcList.flatMap(skills => skills.)
   };
+
+  console.log(listModSkillsStudies)
 
   return (
     <>

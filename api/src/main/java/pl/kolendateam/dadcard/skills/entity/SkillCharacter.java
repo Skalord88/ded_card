@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,24 +12,25 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Study implements Serializable {
+public class SkillCharacter implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  ModifierEnum studyName;
-
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "skill_id", referencedColumnName = "id")
   Skill skill;
 
-  String newStudy;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "study_id", referencedColumnName = "id")
+  Study study;
+
+  double rank;
 }

@@ -2,7 +2,7 @@ import { SignNumber } from "../components/functions";
 import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
 import { CharacterPc, ClassPc } from "./interfaces";
-import {} from "./Modifiers/Ability/Function";
+import { } from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { FindAllAdjLevel } from "./Race/Function";
 import { Archetype } from "./Race/Interfaces";
@@ -130,14 +130,14 @@ export type BaseAttackProp = {
   bab: number;
   grapple: number;
   strenghtAtt: number;
-  dextrityAtt: number;
+  dexterityAtt: number;
 };
 
 export const BaseAttack: React.FC<BaseAttackProp> = ({
   bab,
   grapple,
   strenghtAtt,
-  dextrityAtt
+  dexterityAtt
 }) => {
   return (
     <>
@@ -172,11 +172,11 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({
         <p>
           <D20Popup
             textOrWeapon={"DEX att: "}
-            value={dextrityAtt}
+            value={dexterityAtt}
             modifiers={[]}
           />
-          {SignNumber(dextrityAtt)}
-          {dextrityAtt}
+          {SignNumber(dexterityAtt)}
+          {dexterityAtt}
         </p>
       </div>
     </>

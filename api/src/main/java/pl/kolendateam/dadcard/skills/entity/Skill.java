@@ -6,24 +6,27 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Skills {
+public class Skill implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
+  int id;
 
-  String name;
+  @Enumerated(EnumType.STRING)
+  ModifierEnum name;
 
   @Enumerated(EnumType.STRING)
   AbilityEnum ability;

@@ -16,10 +16,10 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.skills.dto.SkillDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
-import pl.kolendateam.dadcard.skills.dto.SkillsDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
-import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.skills.repository.StudyRepository;
@@ -45,18 +45,18 @@ public class SkillsController {
   }
 
   @GetMapping("/list")
-  public List<SkillsDTO> getSkillsList() {
-    List<Skills> listSkills = skillsRepository.findAll();
-    return MapperSkillsToDTO.toSkillsNameDTO(listSkills);
+  public List<SkillDTO> getSkillsList() {
+    List<Skill> listSkills = skillsRepository.findAll();
+    return MapperSkillToDTO.toSkillListDTO(listSkills);
   }
 
-  @GetMapping("/studylist")
-  public List<StudyDTO> getStudyList() {
-    List<Study> listStudy = studyRepository.findAll();
-    List<Skills> listSkills = skillsRepository.findAll();
+  // @GetMapping("/studylist")
+  // public List<StudyDTO> getStudyList() {
+  //   List<Study> listStudy = studyRepository.findAll();
+  //   List<Skill> listSkills = skillsRepository.findAll();
 
-    return MapperSkillsToDTO.toStudyDTO(listStudy, listSkills);
-  }
+  //   return MapperSkillToDTO.toStudyDTO(listStudy, listSkills);
+  // }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO buyCharacterSkill(
@@ -74,7 +74,7 @@ public class SkillsController {
 
     Character character = characterOpt.get();
 
-    character.buySkills(skillsToAdd);
+    // character.buySkills(skillsToAdd);
 
     this.characterRepository.save(character);
     return new CharacterDTO(
@@ -104,7 +104,7 @@ public class SkillsController {
 
       if (!check) {
         lastId++;
-        studyToAdd.add(new Study((short) lastId, newStudy));
+        // studyToAdd.add(new Study((short) lastId, newStudy));
       }
     }
     this.studyRepository.saveAll(studyToAdd);
@@ -126,7 +126,7 @@ public class SkillsController {
 
     Character character = characterOpt.get();
 
-    character.addStudy(studyToAdd);
+    // character.addStudy(studyToAdd);
 
     this.characterRepository.save(character);
     return new CharacterDTO(

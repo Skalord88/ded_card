@@ -1,11 +1,12 @@
 import {
-  AttackMelee,
-  AttackRanged,
-  AttackIIMelee,
-  AttackIIRanged,
-  WeaponRanged,
-  WeaponThrown,
-  WeaponTwoHanded} from "../../functions";
+    AttackIIMelee,
+    AttackIIRanged,
+    AttackMelee,
+    AttackRanged,
+    WeaponRanged,
+    WeaponThrown,
+    WeaponTwoHanded
+} from "../../functions";
 import { Position, Weapon } from "../../interfaces";
 import { ChangeCritWithFeat } from "../../Items/Functions/Functions";
 import { FindWeaponToModified } from "../../Modifiers/Bab/Function";
@@ -17,7 +18,7 @@ export type MapBabProps = {
   bab: number;
   strenght: number;
   strenghtAtt: number;
-  dextrityAtt: number;
+  dexterityAtt: number;
   weapon: Weapon;
   position: Position;
   specific: Modifiers[][];
@@ -28,7 +29,7 @@ export const MapBab: React.FC<MapBabProps> = ({
   bab,
   strenght,
   strenghtAtt,
-  dextrityAtt,
+  dexterityAtt,
   weapon,
   position,
   specific,
@@ -67,8 +68,8 @@ export const MapBab: React.FC<MapBabProps> = ({
   const strenghtAttModified: number =
     strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
-  const dextrityAttModified: number =
-    dextrityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
+  const dexterityAttModified: number =
+    dexterityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
   const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
 
@@ -96,7 +97,7 @@ export const MapBab: React.FC<MapBabProps> = ({
               weapon={critWeapon}
               dmg={dmgTwoHand}
               strenghtAtt={strenghtAttModified}
-              dextrityAtt={dextrityAttModified}
+              dexterityAtt={dexterityAttModified}
               position={position}
               increments={attacksIncrements}
               attackFn={AttackMelee}
@@ -113,7 +114,7 @@ export const MapBab: React.FC<MapBabProps> = ({
             dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
-            dextrityAtt={dextrityAttModified}
+            dexterityAtt={dexterityAttModified}
             increments={attacksIncrements}
             attackFn={AttackRanged}
             specificFghFeats={specificFghFeats}
@@ -131,7 +132,7 @@ export const MapBab: React.FC<MapBabProps> = ({
                 dmg={Math.floor(strenght / 2) + enchDmg}
                 position={position}
                 strenghtAtt={strenghtAttModified}
-                dextrityAtt={dextrityAttModified}
+                dexterityAtt={dexterityAttModified}
                 increments={attacksIncrements}
                 attackFn={AttackIIMelee}
                 specificFghFeats={specificFghFeats}
@@ -150,7 +151,7 @@ export const MapBab: React.FC<MapBabProps> = ({
             dmg={enchDmg}
             position={position}
             strenghtAtt={strenghtAttModified}
-            dextrityAtt={dextrityAttModified}
+            dexterityAtt={dexterityAttModified}
             increments={attacksIncrements}
             attackFn={AttackIIRanged}
             specificFghFeats={specificFghFeats}

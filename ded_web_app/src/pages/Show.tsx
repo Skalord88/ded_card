@@ -2,20 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-    AbilitysAndModifiers,
-    BonusAbilities
+  AbilitysAndModifiers,
+  BonusAbilities
 } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { AbilitysComponent } from "../components/AbilitysComponent";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { MaxDextrityCount } from "../components/Armor/Function";
+import { MaxdexterityCount } from "../components/Armor/Function";
 import { ArmorModifiers } from "../components/Armor/interface/ArmorInterface";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import {
-    BaseAttack,
-    CharacterData,
-    ClassExpGold
+  BaseAttack,
+  CharacterData,
+  ClassExpGold
 } from "../components/CharacterData";
 import { DeleteButton } from "../components/DeleteButton";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
@@ -26,13 +26,13 @@ import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
 import { Armor, Attacks, CharacterPc, Inventory, Shield } from "../components/interfaces";
 import {
-    CalculateInventoryWeight,
-    CalculateWeight
+  CalculateInventoryWeight,
+  CalculateWeight
 } from "../components/Items/Inventory/Function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
 import {
-    FindInMoreLengthModifier,
-    FindInOneLengthModifier
+  FindInMoreLengthModifier,
+  FindInOneLengthModifier
 } from "../components/Modifiers/Function";
 import { Modifiers } from "../components/Modifiers/ModifierInterface";
 import { adjClass } from "../components/Race/AdjClass";
@@ -71,11 +71,17 @@ export const Show = () => {
     ...char.classPcList //ClassPc
   ]);
 
-  const modifications: Modifiers[] = feats.flatMap(feat => feat.modifiers)
+  const onlyModification: Modifiers[] = [...char.race.modifiers, ...char.race.race.modifiers]
+
+  const modificationFromFeats: Modifiers[] = feats.flatMap(feat => feat.modifiers)
+  const modifications: Modifiers[] = [...onlyModification, ...modificationFromFeats]
+
+  
+
 
   const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
-  const dextrity: number = BonusAbilities(abilitys, "DEX");
+  const dexterity: number = BonusAbilities(abilitys, "DEX");
   const initiativeMod: number = FindInOneLengthModifier(
     modifications,
     "INITIATIVE"
@@ -106,7 +112,7 @@ export const Show = () => {
   const grapple: number =
     adjBab + strenght + FindInOneLengthModifier(modifications, "GRAPPLE");
   const strenghtAtt: number = adjBab + strenght;
-  const dextrityAtt: number = adjBab + dextrity;
+  const dexterityAtt: number = adjBab + dexterity;
   const speed: number = FindInOneLengthModifier(modifications, "SPEED");
 
   const armorModifiers: ArmorModifiers = {
@@ -127,7 +133,7 @@ export const Show = () => {
           tot + ench.ability === null? 0 : ench.enchantment
         , 0
       ) : 0) : 0,
-    dextrity: char.inventory.armor ? MaxDextrityCount(
+    dexterity: char.inventory.armor ? MaxdexterityCount(
       BonusAbilities(abilitys, "DEX"),
       char.inventory.armor.maxDex
     ) : 0,
@@ -219,9 +225,9 @@ export const Show = () => {
             bab={adjBab}
             grapple={grapple}
             strenghtAtt={strenghtAtt}
-            dextrityAtt={dextrityAtt}
+            dexterityAtt={dexterityAtt}
           />
-          <Initiative initiativeDex={dextrity} initiativeMod={initiativeMod} />
+          <Initiative initiativeDex={dexterity} initiativeMod={initiativeMod} />
           <SavingThrowComponent
             char={char}
             abilitys={abilitys}
@@ -234,7 +240,7 @@ export const Show = () => {
             bab={adjBab}
             strenght={strenght}
             strenghtAtt={strenghtAtt}
-            dextrityAtt={dextrityAtt}
+            dexterityAtt={dexterityAtt}
             specific={[
               specificBab,
               specificDmg,
@@ -316,7 +322,7 @@ export const Show = () => {
                 bab={adjBab}
                 grapple={grapple}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
               />
             </div>
             <div
@@ -327,7 +333,7 @@ export const Show = () => {
               }}
             >
               <Initiative
-                initiativeDex={dextrity}
+                initiativeDex={dexterity}
                 initiativeMod={initiativeMod}
               />
             </div>
@@ -375,7 +381,7 @@ export const Show = () => {
                 bab={adjBab}
                 strenght={strenght}
                 strenghtAtt={strenghtAtt}
-                dextrityAtt={dextrityAtt}
+                dexterityAtt={dexterityAtt}
                 specific={[
                   specificBab,
                   specificDmg,

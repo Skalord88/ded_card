@@ -30,7 +30,7 @@ import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
-import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
@@ -101,8 +101,8 @@ public class CharacterController {
       createCharacterDTO.playerName
     );
 
-    List<Skills> skillsList = this.skillsRepository.findAll();
-    character.createSkillsArray(skillsList);
+    // List<Skill> skillsList = this.skillsRepository.findAll();
+    // character.createSkillsArray(skillsList);
 
     this.characterRepository.save(character);
 
@@ -152,7 +152,7 @@ public class CharacterController {
     Character character = characterOpt.get();
 
     Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.id);
+      this.classRepository.findById(classPcDTO.classCharacter.id);
 
     if (!classOpt.isPresent()) {
       throw new ResponseStatusException(
@@ -161,7 +161,7 @@ public class CharacterController {
       );
     }
 
-    List<Feats> featsList = this.featsRepository.findAll();
+    // List<Feats> featsList = this.featsRepository.findAll();
     List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
     ClassCharacter classCharacter = classOpt.get();
@@ -195,18 +195,18 @@ public class CharacterController {
 
     if (indexClassInDB == -1) {
       character.addClassToPcArray(classPc);
-      character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
+      // character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
     } else {
       character.incrementLevelClassForIndex(indexClassInDB);
     }
 
-    int levelClassInDB = classPc.findLevelInArrayById(
-      classPcList,
-      classCharacter.getId()
-    );
+    // int levelClassInDB = classPc.findLevelInArrayById(
+    //   classPcList,
+    //   classCharacter.getId()
+    // );
 
     // study
-    character.addStudyToCharacter(classCharacter.getAvailableStudy());
+    // character.addStudyToCharacter(classCharacter.getAvailableStudy());
 
     // saving throw
     // if (levelClassInDB == 1) {
@@ -276,7 +276,7 @@ public class CharacterController {
     Character character = characterOpt.get();
 
     Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.id);
+      this.classRepository.findById(classPcDTO.classCharacter.id);
 
     if (!classOpt.isPresent()) {
       throw new ResponseStatusException(
@@ -285,8 +285,8 @@ public class CharacterController {
       );
     }
 
-    List<Feats> featsList = this.featsRepository.findAll();
-    List<ClassCharacter> allClassesList = this.classRepository.findAll();
+    // List<Feats> featsList = this.featsRepository.findAll();
+    // List<ClassCharacter> allClassesList = this.classRepository.findAll();
     List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
     ClassCharacter classCharacter = classOpt.get();
@@ -353,22 +353,22 @@ public class CharacterController {
     // }
 
     // re-trueSkills
-    character.zeroSkillsRank();
-    if (character.getClassPcArray().size() != 0) {
-      for (ClassPc cP : character.getClassPcArray()) {
-        for (ClassCharacter cC : allClassesList) {
-          if (cC.getId() == cP.getClassCharacter().getId()) {
-            character.setSkillsTruePcArray(cC.getAvailableSkills());
-          }
-        }
-      }
-    } else {
-      character.allSkillsFalse();
-      character.allKnowledgeZero();
-    }
+    // character.zeroSkillsRank();
+    // if (character.getClassPcArray().size() != 0) {
+    //   for (ClassPc cP : character.getClassPcArray()) {
+    //     for (ClassCharacter cC : allClassesList) {
+    //       if (cC.getId() == cP.getClassCharacter().getId()) {
+    //         character.setSkillsTruePcArray(cC.getAvailableSkills());
+    //       }
+    //     }
+    //   }
+    // } else {
+    //   character.allSkillsFalse();
+    //   character.allKnowledgeZero();
+    // }
 
     // study
-    character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
+    // character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
 
     // saving throw
     // if (levelClassInDB > 1) {

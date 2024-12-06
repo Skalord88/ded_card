@@ -5,4 +5,4 @@ import org.springframework.stereotype.Repository;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
 @Repository
-public interface StudyRepository extends JpaRepository<Study, Short> {}
+public interface StudyRepository extends JpaRepository<Study, Integer> {}

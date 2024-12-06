@@ -18,7 +18,8 @@
                 &quot;charisma&quot;: 10
             }" />
             <column name="sub_race_id" value="4" />
-            <column name="class_skills"
+            <!-- <column name="skill_character_id" value="" /> -->
+            <!-- <column name="class_skills"
                 value="[
                 {
             &quot;idSkill&quot;: 1,
@@ -281,7 +282,7 @@
             &quot;classSkill&quot;: false,
             &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
-        }]" />
+        }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="100" />
             <column name="attacks_id" value="100" />
@@ -306,7 +307,7 @@
                 &quot;charisma&quot;: 8
             }" />
             <column name="sub_race_id" value="5" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
                 {
             &quot;idSkill&quot;: 1,
@@ -569,7 +570,7 @@
             &quot;classSkill&quot;: true,
             &quot;skillRank&quot;: 0,
             &quot;skillAbility&quot;: &quot;DEXTERITY&quot;
-        }]" />
+        }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="101" />
             <column name="attacks_id" value="101" />
@@ -594,7 +595,7 @@
             &quot;charisma&quot;:12
             }" />
             <column name="sub_race_id" value="1" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
             {
             &quot;idSkill&quot;:1,
@@ -859,7 +860,7 @@
             &quot;classSkill&quot;:false,
             &quot;skillRank&quot;:0,
             &quot;skillAbility&quot;:&quot;DEXTERITY&quot;
-            }]" />
+            }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="102" />
             <column name="attacks_id" value="102" />
@@ -884,7 +885,7 @@
                 &quot;charisma&quot;:12
                 }" />
             <column name="sub_race_id" value="6" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
                 {
                 &quot;idSkill&quot;:1,
@@ -1149,7 +1150,7 @@
                 &quot;classSkill&quot;:false,
                 &quot;skillRank&quot;:0,
                 &quot;skillAbility&quot;:&quot;DEXTERITY&quot;
-                }]" />
+                }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="103" />
             <column name="attacks_id" value="103" />
@@ -1174,7 +1175,7 @@
                 &quot;charisma&quot;:8
                 }" />
             <column name="sub_race_id" value="8" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
             {
             &quot;idSkill&quot;:1,
@@ -1439,7 +1440,7 @@
             &quot;classSkill&quot;:false,
             &quot;skillRank&quot;:0,
             &quot;skillAbility&quot;:&quot;DEXTERITY&quot;
-            }]" />
+            }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="104" />
             <column name="attacks_id" value="104" />
@@ -1464,7 +1465,7 @@
                 &quot;charisma&quot;: 10
             }" />
             <column name="sub_race_id" value="9" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
             {
             &quot;idSkill&quot;:1,
@@ -1729,7 +1730,7 @@
             &quot;classSkill&quot;:false,
             &quot;skillRank&quot;:0,
             &quot;skillAbility&quot;:&quot;DEXTERITY&quot;
-            }]" />
+            }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="105" />
             <column name="attacks_id" value="105" />
@@ -1754,7 +1755,7 @@
             &quot;charisma&quot;:16
             }" />
             <column name="sub_race_id" value="9" />
-            <column name="class_skills"
+            <!-- <column name="class_skills"
                 value="[
             {
             &quot;idSkill&quot;:1,
@@ -2019,7 +2020,7 @@
             &quot;classSkill&quot;:false,
             &quot;skillRank&quot;:0,
             &quot;skillAbility&quot;:&quot;DEXTERITY&quot;
-            }]" />
+            }]" /> -->
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="106" />
             <column name="attacks_id" value="106" />

@@ -16,7 +16,7 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
     {
       id: 2,
       text: "DEX",
-      value: abilitys.dextrity,
+      value: abilitys.dexterity,
       bonusSing: SignAndCount([BonusAbilities(abilitys, "DEX")]).sign,
       bonus: BonusAbilities(abilitys, "DEX"),
       color: AbilityBackgroundColor('DEXTERITY')

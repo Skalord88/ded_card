@@ -26,7 +26,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
-import pl.kolendateam.dadcard.skills.entity.SkillStudyRank;
+import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -59,8 +59,13 @@ public class Prerequisite implements Serializable {
 
   Integer bab;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  SkillStudyRank[] skillStudy;
+  @ManyToMany(cascade = CascadeType.MERGE)
+  @JoinTable(
+    name = "prerequisite_skill",
+    joinColumns = @JoinColumn(name = "prerequisite_id"),
+    inverseJoinColumns = @JoinColumn(name = "skill_id")
+  )
+  List<SkillCharacter> skillStudy = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArmorClass armorClass;

@@ -1,5 +1,5 @@
 import { Abilitys } from "./Abilitys/Interface";
-import { ClassFeats, Feat, FeatPc } from "./Feats/Interface/FeatInterface";
+import { ClassFeats, FeatPc } from "./Feats/Interface/FeatInterface";
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { Archetype, SubRace } from "./Race/Interfaces";
 import { SkillProps } from "./Skills/interface/SkillsInterface";
@@ -102,7 +102,7 @@ export interface specialAttacks {
 }
 
 export interface armorClass {
-  dextrityBonus: number;
+  dexterityBonus: number;
   sizeBonus: number;
   armorBonus: number;
   shieldBonus: number;

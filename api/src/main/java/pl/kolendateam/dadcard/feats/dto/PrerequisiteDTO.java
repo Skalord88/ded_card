@@ -1,8 +1,6 @@
 package pl.kolendateam.dadcard.feats.dto;
 
-import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
@@ -15,12 +13,12 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
-import pl.kolendateam.dadcard.skills.entity.SkillStudyRank;
+import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
+import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
 import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 
-@AllArgsConstructor
 @NoArgsConstructor
 public class PrerequisiteDTO {
 
@@ -29,7 +27,7 @@ public class PrerequisiteDTO {
   public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
-  public SkillStudyRank[] skillStudy;
+  public List<SkillCharacterDTO> skillStudy;
   public ArmorClassDTO armorClass;
   public ArmorsEnum[] armorType;
   public WeaponCategoriesEnum[] weaponType;
@@ -50,7 +48,10 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    this.skillStudy = pre.getSkillStudy() != null ? pre.getSkillStudy() : null;
+    this.skillStudy =
+      pre.getSkillStudy() != null
+        ? MapperSkillToDTO.toSkillCharacterListDTO(pre.getSkillStudy())
+        : null;
     this.armorClass =
       pre.getArmorClass() != null
         ? MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass())

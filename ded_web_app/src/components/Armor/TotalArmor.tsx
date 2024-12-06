@@ -10,7 +10,7 @@ export const TotalArmor: React.FC<ArmorModifiersProps> = ({
           {10 +
             armorModifiers.armor +
             armorModifiers.shiled +
-            armorModifiers.dextrity +
+            armorModifiers.dexterity +
             armorModifiers.size +
             armorModifiers.natural +
             armorModifiers.dodge +
@@ -30,7 +30,7 @@ export const SmallTotalArmor: React.FC<ArmorModifiersProps> = ({
         {10 +
           armorModifiers.armor +
           armorModifiers.shiled +
-          armorModifiers.dextrity +
+          armorModifiers.dexterity +
           armorModifiers.size +
           armorModifiers.natural +
           armorModifiers.dodge +

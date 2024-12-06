@@ -13,6 +13,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
@@ -56,7 +57,7 @@ public class ClassCharacter implements Serializable {
     joinColumns = @JoinColumn(name = "class_character_id"),
     inverseJoinColumns = @JoinColumn(name = "skill_id")
   )
-  Set<Skills> availableSkills = new HashSet<>();
+  Set<Skill> availableSkills = new HashSet<>();
 
   @ManyToMany
   @JoinTable(

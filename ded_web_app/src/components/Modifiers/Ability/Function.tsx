@@ -11,7 +11,7 @@ export function StrenghtBonusModification(
   return mod ? mod : 0
 }
 
-export function DextrityBonusModification(
+export function dexterityBonusModification(
   modifiers: Modifiers[]
 ): [number, string] {
   const mod = modifiers.reduce(

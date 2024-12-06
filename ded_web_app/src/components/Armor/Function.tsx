@@ -21,9 +21,9 @@ export function CalculateArmorInChar(
     item: char.inventory.shield.name
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.dextrity]).sign,
-    bonus: armorModifiers.dextrity,
-    text: "dextrity",
+    sign: SignAndCount([armorModifiers.dexterity]).sign,
+    bonus: armorModifiers.dexterity,
+    text: "dexterity",
     item: ""
   });
   armorList.push({
@@ -54,6 +54,6 @@ export function CalculateArmorInChar(
   return armorList;
 }
 
-export function MaxDextrityCount (dextrity: number, max: number): number {
-  return max < dextrity? max : dextrity;
+export function MaxdexterityCount (dexterity: number, max: number): number {
+  return max < dexterity? max : dexterity;
 }

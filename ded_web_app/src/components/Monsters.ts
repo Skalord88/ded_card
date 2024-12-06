@@ -10,7 +10,7 @@ export const SzithMorcaneSentryOne: Monster = {
   speed: 30,
   initiative: 2,
   armorClass: {
-    dextrityBonus: 2,
+    dexterityBonus: 2,
   sizeBonus: 0,
   armorBonus: 5,
   shieldBonus: 2,
@@ -26,7 +26,7 @@ export const SzithMorcaneSentryOne: Monster = {
   savingThrows: {fortitude: 6, reflex: 4, will: 2},
   abilitys: {
     strength: 16,
-  dextrity: 15,
+  dexterity: 15,
   constitution: 12,
   intelligence: 14,
   wisdom: 10,
@@ -52,7 +52,7 @@ export const SzithMorcaneSentryTwo: Monster = {
   speed: 30,
   initiative: 2,
   armorClass: {
-    dextrityBonus: 2,
+    dexterityBonus: 2,
   sizeBonus: 0,
   armorBonus: 5,
   shieldBonus: 0,
@@ -69,7 +69,7 @@ export const SzithMorcaneSentryTwo: Monster = {
   savingThrows: {fortitude: 5, reflex: 3, will: 1},
   abilitys: {
     strength: 16,
-  dextrity: 15,
+  dexterity: 15,
   constitution: 12,
   intelligence: 14,
   wisdom: 10,
@@ -95,7 +95,7 @@ export const SzithMorcaneSentryThree: Monster = {
   speed: 30,
   initiative: 2,
   armorClass: {
-    dextrityBonus: 2,
+    dexterityBonus: 2,
   sizeBonus: 0,
   armorBonus: 5,
   shieldBonus: 0,
@@ -111,7 +111,7 @@ export const SzithMorcaneSentryThree: Monster = {
     savingThrows: {fortitude: 6, reflex: 4, will: 2},
   abilitys: {
     strength: 15,
-  dextrity: 16,
+  dexterity: 16,
   constitution: 12,
   intelligence: 14,
   wisdom: 10,

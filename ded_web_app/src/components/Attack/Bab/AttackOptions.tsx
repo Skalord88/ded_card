@@ -9,7 +9,7 @@ export type AttackOptionsProps = {
   weapon: Weapon;
   dmg: number;
   strenghtAtt: number;
-  dextrityAtt: number;
+  dexterityAtt: number;
   position: Position;
   increments: number[];
   attackFn: Function;
@@ -22,7 +22,7 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
   weapon,
   dmg,
   strenghtAtt,
-  dextrityAtt,
+  dexterityAtt,
   position,
   increments,
   attackFn,
@@ -30,10 +30,10 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
   specificTarget
 }) => {
   const checkType = (typeToCheck: string): number => {
-    if (typeToCheck === "distance") return dextrityAtt;
-    if (typeToCheck === "distance two hands") return dextrityAtt;
+    if (typeToCheck === "distance") return dexterityAtt;
+    if (typeToCheck === "distance two hands") return dexterityAtt;
     if (specificFghFeats.includes(120) && WeaponLight(weapon))
-      return dextrityAtt;
+      return dexterityAtt;
     return strenghtAtt;
   };
 

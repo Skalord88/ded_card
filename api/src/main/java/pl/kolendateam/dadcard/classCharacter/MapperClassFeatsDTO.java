@@ -1,22 +1,16 @@
 package pl.kolendateam.dadcard.classCharacter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassPcListDTO;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
-import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 public class MapperClassFeatsDTO {
 
-  public static Set<ClassFeatsDTO> toListClassFeatDTO(Set<ClassFeats> feats) {
+  public static Set<ClassFeatsDTO> toSetClassFeatDTO(Set<ClassFeats> feats) {
     Set<ClassFeatsDTO> featsDTO = new HashSet<>();
     if (feats != null) {
       feats.forEach(f -> {
@@ -31,82 +25,23 @@ public class MapperClassFeatsDTO {
 
     return sortedFeatsDTO;
   }
+  //   public static Set<ClassFeatsDTO> toListClassFeatDTO(
+  //     Set<ClassFeats> feats,
+  //     FeatsRepository featsRepository,
+  //     ItemsRepository itemsRepository
+  //   ) {
+  //     Set<ClassFeatsDTO> featsDTO = new HashSet<>();
+  //     if (feats != null) {
+  //       feats.forEach(f -> {
+  //         ClassFeatsDTO featDTO = new ClassFeatsDTO(f);
+  //         featsDTO.add(featDTO);
+  //       });
+  //     }
+  //     Set<ClassFeatsDTO> sortedFeatsDTO = featsDTO
+  //       .stream()
+  //       .sorted(Comparator.comparingInt(ClassFeatsDTO::getLevel))
+  //       .collect(Collectors.toCollection(LinkedHashSet::new));
 
-  public static ArrayList<ClassPcListDTO> toClassPcListDTO(
-    List<ClassPc> classPcArray
-  ) {
-    ArrayList<ClassPcListDTO> classesDTO = new ArrayList<>();
-
-    if (classPcArray != null) {
-      for (ClassPc classPc : classPcArray) {
-        ClassPcListDTO classPcListDTO = new ClassPcListDTO(
-          classPc.getClassCharacter().getId(),
-          classPc.getClassCharacter().getType().toString(),
-          classPc.getClassCharacter().getName().toString(),
-          classPc.getLevel(),
-          classPc.getFirstClass(),
-          classPc.getClassCharacter().getHitDice(),
-          classPc.getClassCharacter().getClassBab(),
-          classPc.getClassCharacter().getSavingThrow(),
-          classPc.getClassCharacter().getSkillPoints(),
-          MapperClassFeatsDTO.toListClassFeatDTO(
-            classPc.getClassCharacter().getAvailableFeats()
-          )
-        );
-        classesDTO.add(classPcListDTO);
-      }
-    }
-    return classesDTO;
-  }
-
-  public static ArrayList<ClassPcListDTO> toClassPcListDTO(
-    List<ClassPc> classPcArray,
-    FeatsRepository featsRepository,
-    ItemsRepository itemsRepository
-  ) {
-    ArrayList<ClassPcListDTO> classesDTO = new ArrayList<>();
-
-    if (classPcArray != null) {
-      for (ClassPc classPc : classPcArray) {
-        ClassPcListDTO classPcListDTO = new ClassPcListDTO(
-          classPc.getClassCharacter().getId(),
-          classPc.getClassCharacter().getType().toString(),
-          classPc.getClassCharacter().getName().toString(),
-          classPc.getLevel(),
-          classPc.getFirstClass(),
-          classPc.getClassCharacter().getHitDice(),
-          classPc.getClassCharacter().getClassBab(),
-          classPc.getClassCharacter().getSavingThrow(),
-          classPc.getClassCharacter().getSkillPoints(),
-          MapperClassFeatsDTO.toListClassFeatDTO(
-            classPc.getClassCharacter().getAvailableFeats(),
-            featsRepository,
-            itemsRepository
-          )
-        );
-        classesDTO.add(classPcListDTO);
-      }
-    }
-    return classesDTO;
-  }
-
-  public static Set<ClassFeatsDTO> toListClassFeatDTO(
-    Set<ClassFeats> feats,
-    FeatsRepository featsRepository,
-    ItemsRepository itemsRepository
-  ) {
-    Set<ClassFeatsDTO> featsDTO = new HashSet<>();
-    if (feats != null) {
-      feats.forEach(f -> {
-        ClassFeatsDTO featDTO = new ClassFeatsDTO(f);
-        featsDTO.add(featDTO);
-      });
-    }
-    Set<ClassFeatsDTO> sortedFeatsDTO = featsDTO
-      .stream()
-      .sorted(Comparator.comparingInt(ClassFeatsDTO::getLevel))
-      .collect(Collectors.toCollection(LinkedHashSet::new));
-
-    return sortedFeatsDTO;
-  }
+  //     return sortedFeatsDTO;
+  //   }
 }

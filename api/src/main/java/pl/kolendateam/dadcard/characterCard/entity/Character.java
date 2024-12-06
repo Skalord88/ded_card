@@ -40,9 +40,8 @@ import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
-import pl.kolendateam.dadcard.skills.entity.ClassSkills;
-import pl.kolendateam.dadcard.skills.entity.ClassStudy;
-import pl.kolendateam.dadcard.skills.entity.Skills;
+import pl.kolendateam.dadcard.skills.entity.Skill;
+import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.Book;
@@ -87,15 +86,18 @@ public class Character implements Serializable {
   )
   List<ClassPc> classPcArray;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ArrayList<ClassSkills> classSkills;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArrayList<ClassSkills> classSkills;
+  @OneToMany(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "skill_character_id", referencedColumnName = "id")
+  Set<SkillCharacter> skillsCharacter = new HashSet<>();
 
   @OneToMany(
     mappedBy = "character",
     cascade = CascadeType.ALL,
     orphanRemoval = true
   )
-  List<FeatsPc> featsList;
+  List<FeatsPc> featsList = new ArrayList<>();
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
@@ -113,7 +115,7 @@ public class Character implements Serializable {
 
   @OneToMany(cascade = CascadeType.MERGE)
   @JoinColumn(name = "character_id", referencedColumnName = "id")
-  List<Book> books;
+  List<Book> books = new ArrayList<>();
 
   int experience;
   int treasure;
@@ -121,16 +123,16 @@ public class Character implements Serializable {
   public Character(String characterName, String playerName) {
     this.characterName = characterName;
     this.playerName = playerName;
-    this.abilitys = new Abilitys();
-    this.race = null;
-    this.classPcArray = new ArrayList<>();
-    this.classSkills = new ArrayList<>();
-    this.featsList = new ArrayList<>();
-    this.inventory = new Inventory();
-    this.attacks = new Attacks();
-    this.magicPerDay = new HashMap<>();
-    this.magicKnown = new HashMap<>();
-    this.books = new ArrayList<>();
+    // this.abilitys = new Abilitys();
+    // this.race = null;
+    // this.classPcArray = new ArrayList<>();
+    // this.skillsCharacter = new HashSet<>();
+    // this.featsList = new ArrayList<>();
+    // this.inventory = new Inventory();
+    // this.attacks = new Attacks();
+    // this.magicPerDay = new HashMap<>();
+    // this.magicKnown = new HashMap<>();
+    // this.books = new ArrayList<>();
   }
 
   public void addClassToPcArray(ClassPc classPc) {
@@ -149,75 +151,75 @@ public class Character implements Serializable {
     this.getClassPcArray().get(index).decrementLevel();
   }
 
-  public void setSkillsTruePcArray(Set<Skills> availableSkills) {
-    for (Skills skill : availableSkills) {
-      for (ClassSkills classSkill : classSkills) {
-        if (skill.getId() == classSkill.getIdSkill()) {
-          classSkill.setClassSkill(true);
-        }
-      }
-    }
-  }
+  // public void setSkillsTruePcArray(Set<Skill> availableSkills) {
+  //   for (Skill skill : availableSkills) {
+  //     for (ClassSkills classSkill : classSkills) {
+  //       if (skill.getId() == classSkill.getIdSkill()) {
+  //         classSkill.setClassSkill(true);
+  //       }
+  //     }
+  //   }
+  // }
 
-  public void createSkillsArray(List<Skills> skillsList) {
-    boolean check = true;
-    if (classSkills.isEmpty()) {
-      check = false;
-    }
-    if (check == false) {
-      for (Skills skillDB : skillsList) {
-        ClassSkills skill = new ClassSkills();
+  // public void createSkillsArray(List<Skill> skillsList) {
+  //   boolean check = true;
+  //   if (classSkills.isEmpty()) {
+  //     check = false;
+  //   }
+  //   if (check == false) {
+  //     for (Skill skillDB : skillsList) {
+  //       ClassSkills skill = new ClassSkills();
 
-        skill.setIdSkill(skillDB.getId());
-        skill.setNameSkill(skillDB.getName());
-        HashSet<ClassStudy> studyField = new HashSet<>();
-        skill.setFieldOfStudy(studyField);
-        skill.setClassSkill(false);
-        skill.setSkillRank(0);
-        AbilityEnum ability = skillDB.getAbility();
-        switch (ability) {
-          case STRENGHT:
-            skill.setSkillAbility(ability);
-            break;
-          case DEXTERITY:
-            skill.setSkillAbility(ability);
-            break;
-          case CONSTITUTION:
-            skill.setSkillAbility(ability);
-            break;
-          case INTELLIGENCE:
-            skill.setSkillAbility(ability);
-            break;
-          case WISDOM:
-            skill.setSkillAbility(ability);
-            break;
-          case CHARISMA:
-            skill.setSkillAbility(ability);
-            break;
-        }
-        this.classSkills.add(skill);
-      }
-    }
-  }
+  //       skill.setIdSkill(skillDB.getId());
+  //       skill.setNameSkill(skillDB.getName());
+  //       HashSet<ClassStudy> studyField = new HashSet<>();
+  //       skill.setFieldOfStudy(studyField);
+  //       skill.setClassSkill(false);
+  //       skill.setSkillRank(0);
+  //       AbilityEnum ability = skillDB.getAbility();
+  //       switch (ability) {
+  //         case STRENGHT:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //         case DEXTERITY:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //         case CONSTITUTION:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //         case INTELLIGENCE:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //         case WISDOM:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //         case CHARISMA:
+  //           skill.setSkillAbility(ability);
+  //           break;
+  //       }
+  //       this.classSkills.add(skill);
+  //     }
+  //   }
+  // }
 
   public void setCharacterRace(SubRace subRace) {
     this.race = subRace;
   }
 
-  public void addSkill(String skills) {
-    Gson gson = new Gson();
+  // public void addSkill(String skills) {
+  //   Gson gson = new Gson();
 
-    Type listSkill = new TypeToken<List<ClassSkills>>() {}.getType();
-    List<ClassSkills> skill = gson.fromJson(skills, listSkill);
+  //   Type listSkill = new TypeToken<List<ClassSkills>>() {}.getType();
+  //   List<ClassSkills> skill = gson.fromJson(skills, listSkill);
 
-    for (ClassSkills clSk : classSkills) {
-      for (ClassSkills sk : skill) {
-        if (clSk.getNameSkill().equals(sk.getNameSkill())) {
-          clSk.setSkillBonus(clSk.getSkillBonus() + (int) sk.getSkillRank());
-        }
-      }
-    }
-  }
+  //   for (ClassSkills clSk : classSkills) {
+  //     for (ClassSkills sk : skill) {
+  //       if (clSk.getNameSkill().equals(sk.getNameSkill())) {
+  //         clSk.setSkillBonus(clSk.getSkillBonus() + (int) sk.getSkillRank());
+  //       }
+  //     }
+  //   }
+  // }
 
   public void addAbilityRace(String raceAbilitys) {
     Gson gson = new Gson();
@@ -255,44 +257,44 @@ public class Character implements Serializable {
     return buyed;
   }
 
-  public void allSkillsFalse() {
-    for (ClassSkills cS : classSkills) {
-      cS.setClassSkill(false);
-    }
-  }
+  // public void allSkillsFalse() {
+  //   for (ClassSkills cS : classSkills) {
+  //     cS.setClassSkill(false);
+  //   }
+  // }
 
-  public void addStudyToCharacter(Set<Study> availableStudy) {
-    for (ClassSkills clSk : this.classSkills) {
-      for (Study st : availableStudy) {
-        if (clSk.getIdSkill() == st.getIdSkill()) {
-          clSk.addStudyToFieldOfStudy(st);
-        }
-      }
-    }
-  }
+  // public void addStudyToCharacter(Set<Study> availableStudy) {
+  //   for (ClassSkills clSk : this.classSkills) {
+  //     for (Study st : availableStudy) {
+  //       if (clSk.getIdSkill() == st.getIdSkill()) {
+  //         clSk.addStudyToFieldOfStudy(st);
+  //       }
+  //     }
+  //   }
+  // }
 
-  public void removeStudyFromCharacter(Set<Study> availableStudy) {
-    this.classSkills.forEach(skill -> {
-        if (!skill.getFieldOfStudy().isEmpty()) {
-          skill
-            .getFieldOfStudy()
-            .forEach(study -> {
-              if (study.getId() == skill.getIdSkill()) {
-                skill.removeStudyFromKnowledge(study.getId());
-              }
-            });
-        }
-      });
-  }
+  // public void removeStudyFromCharacter(Set<Study> availableStudy) {
+  //   this.classSkills.forEach(skill -> {
+  //       if (!skill.getFieldOfStudy().isEmpty()) {
+  //         skill
+  //           .getFieldOfStudy()
+  //           .forEach(study -> {
+  //             if (study.getId() == skill.getIdSkill()) {
+  //               skill.removeStudyFromKnowledge(study.getId());
+  //             }
+  //           });
+  //       }
+  //     });
+  // }
 
-  public void allKnowledgeZero() {
-    for (ClassSkills cS : classSkills) {
-      if (!cS.getFieldOfStudy().isEmpty()) {
-        HashSet<ClassStudy> emptyKnow = new HashSet<>();
-        cS.setFieldOfStudy(emptyKnow);
-      }
-    }
-  }
+  // public void allKnowledgeZero() {
+  //   for (ClassSkills cS : classSkills) {
+  //     if (!cS.getFieldOfStudy().isEmpty()) {
+  //       HashSet<ClassStudy> emptyKnow = new HashSet<>();
+  //       cS.setFieldOfStudy(emptyKnow);
+  //     }
+  //   }
+  // }
 
   public void addMagic(
     List<SpellsTable> spellsTableList,
@@ -373,48 +375,48 @@ public class Character implements Serializable {
     return true;
   }
 
-  public void buySkills(SkillToAddDTO skillsToAddDTO) {
-    skillsToAddDTO.skillDTO.forEach(skillDTO -> {
-      this.classSkills.forEach(skill -> {
-          if (skillDTO.fieldOfStudy.size() > 0) {
-            skillDTO.fieldOfStudy.forEach(study -> {
-              if (study.idSkill == skill.getIdSkill()) {
-                skill.addRankStudy(study);
-              }
-            });
-          } else {
-            if (skill.getIdSkill() == skillDTO.idSkill) {
-              skill.addRankSkill(skillDTO.skillRank);
-            }
-          }
-        });
-    });
-  }
+  // public void buySkills(SkillToAddDTO skillsToAddDTO) {
+  //   skillsToAddDTO.skillDTO.forEach(skillDTO -> {
+  //     this.classSkills.forEach(skill -> {
+  //         if (skillDTO.fieldOfStudy.size() > 0) {
+  //           skillDTO.fieldOfStudy.forEach(study -> {
+  //             if (study.idSkill == skill.getIdSkill()) {
+  //               skill.addRankStudy(study);
+  //             }
+  //           });
+  //         } else {
+  //           if (skill.getIdSkill() == skillDTO.idSkill) {
+  //             skill.addRankSkill(skillDTO.skillRank);
+  //           }
+  //         }
+  //       });
+  //   });
+  // }
 
-  public void zeroSkillsRank() {
-    for (ClassSkills classSkill : this.classSkills) {
-      classSkill.setSkillRank(0);
-      if (!classSkill.getFieldOfStudy().isEmpty()) {
-        classSkill.zeroStudyRank();
-      }
-    }
-  }
+  // public void zeroSkillsRank() {
+  //   for (ClassSkills classSkill : this.classSkills) {
+  //     classSkill.setSkillRank(0);
+  //     if (!classSkill.getFieldOfStudy().isEmpty()) {
+  //       classSkill.zeroStudyRank();
+  //     }
+  //   }
+  // }
 
-  public void addStudy(ArrayList<StudyDTO> studyToAdd) {
-    for (StudyDTO studyDTO : studyToAdd) {
-      for (ClassSkills skill : this.classSkills) {
-        if (studyDTO.idSkill == skill.getIdSkill()) {
-          skill
-            .getFieldOfStudy()
-            .forEach(study -> {
-              if (studyDTO.idStudy == study.getId()) {
-                study.setRank(studyDTO.rank);
-              }
-            });
-        }
-      }
-    }
-  }
+  // public void addStudy(ArrayList<StudyDTO> studyToAdd) {
+  //   for (StudyDTO studyDTO : studyToAdd) {
+  //     for (ClassSkills skill : this.classSkills) {
+  //       if (studyDTO.idSkill == skill.getIdSkill()) {
+  //         skill
+  //           .getFieldOfStudy()
+  //           .forEach(study -> {
+  //             if (studyDTO.idStudy == study.getId()) {
+  //               study.setRank(studyDTO.rank);
+  //             }
+  //           });
+  //       }
+  //     }
+  //   }
+  // }
 
   public void setFirstLevelGold(String initialGold) {
     Gson gson = new Gson();

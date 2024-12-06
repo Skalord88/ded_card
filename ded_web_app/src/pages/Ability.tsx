@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
-import { urlAb } from "../components/url";
-import { abilitysEmpty } from "../components/variables";
+import React, { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Abilitys } from "../components/Abilitys/Interface";
 import {
   BonusAbilities,
   SignNumber
 } from "../components/functions";
-import { Abilitys } from "../components/Abilitys/Interface";
+import { urlAb } from "../components/url";
+import { abilitysEmpty } from "../components/variables";
 
 export function Ability() {
   const { charId } = useParams();
@@ -61,11 +61,11 @@ export function Ability() {
             style={{ float: "initial", width: "12%" }}
             type="number"
             onChange={handleData}
-            name="dextrity"
-            value={abilitys.dextrity}
+            name="dexterity"
+            value={abilitys.dexterity}
           />{" "}
           {SignNumber(BonusAbilities(abilitys, "DEX"))}
-          {BonusAbilities(abilitys, "DEX")} dextrity
+          {BonusAbilities(abilitys, "DEX")} dexterity
         </p>
         <p>
           COS:

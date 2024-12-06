@@ -129,7 +129,7 @@ export const characterEmpty: CharacterPc = {
     archetypes: [],
     abilitys: {
         strength: 0,
-        dextrity: 0,
+        dexterity: 0,
         constitution: 0,
         intelligence: 0,
         wisdom: 0,
@@ -155,7 +155,7 @@ export const characterEmpty: CharacterPc = {
 export const abilitysEmpty: Abilitys = {
 
     strength: 10,
-    dextrity: 10,
+    dexterity: 10,
     constitution: 10,
     intelligence: 10,
     wisdom: 10,
@@ -164,7 +164,7 @@ export const abilitysEmpty: Abilitys = {
 }
 
 export const armorClassEmpty: armorClass = {
-    dextrityBonus: 0,
+    dexterityBonus: 0,
     sizeBonus: 0,
     armorBonus: 0,
     shieldBonus: 0,

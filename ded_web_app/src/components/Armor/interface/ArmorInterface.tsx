@@ -11,7 +11,7 @@ export type ArmorModifiers = {
   size: number;
   armor: number;
   shiled: number;
-  dextrity: number;
+  dexterity: number;
   natural: number;
   dodge: number;
   deflection: number;

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { IndexWeaponOne, WeaponTwoHanded, WeaponLight } from "../functions";
-import { CharAttack, Attacks, Weapon } from "../interfaces";
-import { ListOfWeapons, ListOfOneHandWeapons } from "../MyComponents";
+import { useEffect, useState } from "react";
+import { IndexWeaponOne, WeaponLight, WeaponTwoHanded } from "../functions";
+import { Attacks, CharAttack, Weapon } from "../interfaces";
+import { ListOfOneHandWeapons, ListOfWeapons } from "../MyComponents";
 import { MapBab } from "./Bab/MapBab";
 
 export const MapOfAttack: React.FC<CharAttack> = ({
@@ -69,7 +69,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 position={{
                   pose: true,
                   twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
@@ -99,7 +99,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 position={{
                   pose: false,
                   twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
@@ -130,7 +130,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 weapon={attack.additionalAttackSetOne}
                 position={{
                   pose: true,
@@ -162,7 +162,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 weapon={attack.secondAttackSetTwo}
                 position={{
                   pose: true,
@@ -192,7 +192,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 position={{
                   pose: false,
                   twoHanded: WeaponTwoHanded(attack.firstAttackSetTwo),
@@ -223,7 +223,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
-                dextrityAtt={bab}
+                dexterityAtt={bab}
                 weapon={attack.additionalAttackSetTwo}
                 position={{
                   pose: true,

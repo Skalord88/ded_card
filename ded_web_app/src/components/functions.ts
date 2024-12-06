@@ -199,7 +199,7 @@ export function CountMonsterArmor(
 ): number {
     return 10
         + armor.armorBonus + armor.shieldBonus
-        + armor.sizeBonus + armor.dextrityBonus
+        + armor.sizeBonus + armor.dexterityBonus
         + armor.naturalArmor + armor.deflectionBonuses
         + armor.dodgeBonus
 }
@@ -210,7 +210,7 @@ export function CountMonsterArmor(
 // ): number {
 //     return 10
 //         + armor.armorBonus + armor.shieldBonus
-//         + armor.sizeBonus + armor.dextrityBonus
+//         + armor.sizeBonus + armor.dexterityBonus
 //         + armor.naturalArmor + armor.deflectionBonuses
 //         + armor.dodgeBonus + inventory.armor.armorClass
 //         + inventory.shield.armorClass
@@ -241,7 +241,7 @@ export interface inCharArmor {
 //         shi = charArmor.shieldBonus + charInventory.shield.armorClass
 //         + charInventory.shield.enchantment.enchantment
 //         : shi = charArmor.shieldBonus + charInventory.shield.armorClass
-//     const dex: number = charArmor.dextrityBonus;
+//     const dex: number = charArmor.dexterityBonus;
 //     const def: number = charArmor.deflectionBonuses;
 //     const nat: number = charArmor.naturalArmor;
 //     const dod: number = charArmor.dodgeBonus;
@@ -266,7 +266,7 @@ export interface inCharArmor {
 //         inCharArmor.push({
 //             id: idN,
 //             value: dex,
-//             text: "dextrity"
+//             text: "dexterity"
 //         })
 //         idN++
 //     }
@@ -432,3 +432,4 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
 }
 
 export { BonusAbilities };
+
