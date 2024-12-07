@@ -18,7 +18,6 @@
                 &quot;charisma&quot;: 10
             }" />
             <column name="sub_race_id" value="4" />
-            <!-- <column name="skill_character_id" value="" /> -->
             <!-- <column name="class_skills"
                 value="[
                 {

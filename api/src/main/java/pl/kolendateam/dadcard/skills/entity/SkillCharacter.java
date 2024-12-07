@@ -6,23 +6,32 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "skills_character")
 public class SkillCharacter implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
+
+  @ManyToOne
+  @JoinColumn(name = "character_card_id")
+  Character character;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "skill_id", referencedColumnName = "id")
@@ -32,5 +41,5 @@ public class SkillCharacter implements Serializable {
   @JoinColumn(name = "study_id", referencedColumnName = "id")
   Study study;
 
-  double rank;
+  int rank;
 }

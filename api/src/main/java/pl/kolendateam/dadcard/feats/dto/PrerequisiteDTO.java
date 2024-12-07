@@ -27,7 +27,7 @@ public class PrerequisiteDTO {
   public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
-  public List<SkillCharacterDTO> skillStudy;
+  // public List<SkillCharacterDTO> skillStudy;
   public ArmorClassDTO armorClass;
   public ArmorsEnum[] armorType;
   public WeaponCategoriesEnum[] weaponType;
@@ -48,10 +48,10 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    this.skillStudy =
-      pre.getSkillStudy() != null
-        ? MapperSkillToDTO.toSkillCharacterListDTO(pre.getSkillStudy())
-        : null;
+    // this.skillStudy =
+    //   pre.getSkillStudy() != null
+    //     ? MapperSkillToDTO.toSkillCharacterListDTO(pre.getSkillStudy())
+    //     : null;
     this.armorClass =
       pre.getArmorClass() != null
         ? MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass())

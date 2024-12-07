@@ -26,7 +26,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.abilitys.entity.AbilityEnum;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
@@ -38,11 +37,7 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
-import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
-import pl.kolendateam.dadcard.skills.dto.StudyDTO;
-import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
-import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -86,10 +81,11 @@ public class Character implements Serializable {
   )
   List<ClassPc> classPcArray;
 
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // ArrayList<ClassSkills> classSkills;
-  @OneToMany(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "skill_character_id", referencedColumnName = "id")
+  @OneToMany(
+    mappedBy = "character",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
+  )
   Set<SkillCharacter> skillsCharacter = new HashSet<>();
 
   @OneToMany(

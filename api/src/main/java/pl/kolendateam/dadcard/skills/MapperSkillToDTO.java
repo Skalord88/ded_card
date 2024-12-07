@@ -53,6 +53,18 @@ public class MapperSkillToDTO {
     return listSkillDTO;
   }
 
+  public static List<StudyDTO> toStudyListDTO(List<Study> listSkills) {
+    List<StudyDTO> listSkillDTO = new ArrayList<>();
+
+    if (listSkills != null) {
+      listSkills.forEach(skill -> {
+        listSkillDTO.add(new StudyDTO(skill));
+      });
+    }
+
+    return listSkillDTO;
+  }
+
   public static Set<SkillCharacterDTO> toSkillCharacterSetDTO(
     Set<SkillCharacter> listSkillCharacter
   ) {

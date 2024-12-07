@@ -1,8 +1,9 @@
 package pl.kolendateam.dadcard.skills.entity;
 
-import jakarta.annotation.Nonnull;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,6 +27,7 @@ public class Study implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
+  @Enumerated(EnumType.STRING)
   ModifierEnum studyName;
 
   @OneToOne(cascade = CascadeType.PERSIST)

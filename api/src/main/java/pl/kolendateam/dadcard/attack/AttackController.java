@@ -18,9 +18,6 @@ import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
-import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 @CrossOrigin
@@ -66,7 +63,7 @@ public class AttackController {
       );
     }
 
-    List<Items> itemsList = this.itemsRepository.findAll();
+    // List<Items> itemsList = this.itemsRepository.findAll();
 
     Attacks characterAttacks = attacksOpt.get();
 
@@ -74,8 +71,8 @@ public class AttackController {
 
     this.attacksRepository.save(characterAttacks);
 
-    Inventory emptyInventory = new Inventory();
-    List<ClassPc> emptyClassList = new ArrayList<ClassPc>();
+    // Inventory emptyInventory = new Inventory();
+    // List<ClassPc> emptyClassList = new ArrayList<ClassPc>();
 
     return new CharacterDTO(
       character

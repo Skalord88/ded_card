@@ -21,9 +21,9 @@
       <column name="sub_race_id" type="int">
         <constraints nullable="true" />
       </column>
-      <column name="class_skills" type="jsonb">
+      <!-- <column name="class_skills" type="jsonb">
         <constraints nullable="true" />
-      </column>
+      </column> -->
       <column name="special_attacks" type="jsonb">
         <constraints nullable="true" />
       </column>

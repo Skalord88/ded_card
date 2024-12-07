@@ -18,9 +18,9 @@
             <column name="bab" type="INTEGER">
                 <constraints nullable="true"/>
             </column>
-            <column name="skill_study" type="jsonb">
+            <!-- <column name="skill_study" type="jsonb">
                 <constraints nullable="true"/>
-            </column>
+            </column> -->
             <column name="armor_class" type="jsonb">
                 <constraints nullable="true"/>
             </column>
@@ -55,6 +55,13 @@
             <column name="prerequisite_id" type="int" />
             <column name="item_id" type="int" />
         </createTable>
+
+        <!-- <createTable tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" type="int" />
+            <column name="skill_id" type="int" />
+            <column name="study_id" type="int" />
+            <column name="rank" type="double" />
+        </createTable> -->
 
         <!-- Armor Proficiency (Heavy) [General] pre -->
 
@@ -619,7 +626,7 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="43" />
-            <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" />
+            <!-- <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
             <column name="text" value="Ride 1 rank, Mounted Combat." />
         </insert>
 
@@ -686,7 +693,7 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="49" />
-            <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" />
+            <!-- <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
             <column name="text" value="Ride 1 rank, Mounted Combat." />
         </insert>
 
@@ -736,7 +743,7 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="52" />
-            <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" />
+            <!-- <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
             <column name="text" value="Ride 1 rank, Mounted Combat, Ride-By Attack." />
         </insert>
 
@@ -787,7 +794,7 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="55" />
-            <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" />
+            <!-- <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
             <column name="text" value="Ride 1 rank, Mounted Combat." />
         </insert>
 
@@ -1164,8 +1171,8 @@
         <!-- Madzia -->
         <insert tableName="prerequisite">
             <column name="id" value="1052" />
-            <column name="skill_study" 
-                value="[{ &quot;skillId&quot; : 27, &quot;rank&quot; : 3 }]" />
+            <!-- <column name="skill_study" 
+                value="[{ &quot;skillId&quot; : 27, &quot;rank&quot; : 3 }]" /> -->
             <column name="text" value="Focus SpellCraft" />
         </insert>
 
@@ -1178,6 +1185,7 @@
             <column name="prerequisite_id" value="1051" />
             <column name="schools_id" value="5" />
         </insert>
+        
 
     </changeSet>
 </databaseChangeLog>

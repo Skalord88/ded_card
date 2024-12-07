@@ -4,9 +4,12 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="106" author="oscar">
-        <createTable tableName="skill_character">
+        <createTable tableName="skills_character">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" />
+            </column>
+            <column name="character_card_id" type="int">
+                <constraints nullable="true" />
             </column>
             <column name="skill_id" type="int">
                 <constraints nullable="true" />
@@ -14,16 +17,24 @@
             <column name="study_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="rank" type="decimal">
+            <column name="rank" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>
 
-        <insert tableName="skill_character">
-            <column name="id" value="1" />
+        <!-- Puli -->
+        <insert tableName="skills_character">
+            <column name="id" value="1000" />
+            <column name="character_card_id" value="100" />
             <column name="skill_id" value="1" />
-            <!-- <column name="study_id" value="17" /> -->
-            <column name="rank" value="10.5" />
+            <column name="rank" value="10" />
+        </insert>
+        
+        <insert tableName="skills_character">
+            <column name="id" value="1001" />
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="2" />
+            <column name="rank" value="4" />
         </insert>
 
     </changeSet>
