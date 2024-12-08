@@ -1,6 +1,24 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ListModSkillsStudies } from "../Show/SkillShowComponent";
 
+export type Skill = {
+  id: number,
+  skillName: string,
+  ability: string
+}
+export type Study = {
+  id: number,
+  skill: Skill,
+  studyName: string,
+  newStudy: string
+}
+
+export type SkillCharacter = {
+  skill: Skill,
+  study: Study,
+  rank: number
+}
+
 export type SkillDTO = {
   idSkill: number;
   skillRank: number;
@@ -67,12 +85,12 @@ export type ShowOneSkillProps = {
   bonus: number
 }
 
-export type Study = {
-  idStudy: number,
-  idSkill: number,
-  study: string,
-  rank: number,
-}
+// export type Study = {
+//   idStudy: number,
+//   idSkill: number,
+//   study: string,
+//   rank: number,
+// }
 
 export type OneStudy = {
   study: Study

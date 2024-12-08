@@ -6,17 +6,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @NoArgsConstructor
 @Getter
@@ -38,8 +37,16 @@ public class Feats implements Serializable {
   String normal;
   String special;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers = new HashSet<>();
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // Set<ModifierBonus> modifiers = new HashSet<>();
+
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(

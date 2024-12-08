@@ -104,7 +104,7 @@
                 &quot;FEAR&quot;
                 ]            
             },{            
-            &quot;modifier&quot; : &quot;BAB&quot;,            
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,            
             &quot;bonus&quot; : 1,            
             &quot;targets&quot; : [&quot;THROWN&quot;, &quot;SLING&quot;]            
             }

@@ -1,7 +1,7 @@
 
 import { DropdownComponent } from "../DropDown/DropDown";
 import { addToDrop } from "../functions";
-import { ClassPc } from "../interfaces";
+import { ClassPc } from "./Interface/ClassPcLevel";
 
 export interface DropdownClassProms {
     options: ClassPc[];

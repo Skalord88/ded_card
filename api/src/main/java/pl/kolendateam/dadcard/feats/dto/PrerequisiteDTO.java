@@ -6,7 +6,10 @@ import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
+import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
+import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
+import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
@@ -14,7 +17,7 @@ import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
-import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
+import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
 import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -27,7 +30,9 @@ public class PrerequisiteDTO {
   public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
-  // public List<SkillCharacterDTO> skillStudy;
+  public Integer attackRoll;
+  public SavingThrowDTO savingThrow;
+  public List<PrerequisiteSkillDTO> skillStudy;
   public ArmorClassDTO armorClass;
   public ArmorsEnum[] armorType;
   public WeaponCategoriesEnum[] weaponType;
@@ -48,10 +53,17 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    // this.skillStudy =
-    //   pre.getSkillStudy() != null
-    //     ? MapperSkillToDTO.toSkillCharacterListDTO(pre.getSkillStudy())
-    //     : null;
+    this.attackRoll = pre.getAttackRoll();
+    this.savingThrow =
+      pre.getSavingThrow() != null
+        ? MapperSavingThrowToDTO.toSavingThrowDTO(pre.getSavingThrow())
+        : null;
+    this.skillStudy =
+      pre.getPrerequisiteSkillsStudy() != null
+        ? MapperSkillToDTO.toPrerequisiteSkillDTO(
+          pre.getPrerequisiteSkillsStudy()
+        )
+        : null;
     this.armorClass =
       pre.getArmorClass() != null
         ? MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass())

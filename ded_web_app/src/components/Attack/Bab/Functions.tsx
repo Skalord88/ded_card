@@ -5,7 +5,7 @@ export function CountBabFromClassPc(
   
       const babFromClass: number = Math.floor(char.classPcList.reduce(
     (total, cl) => 
-        total + cl.classBab * cl.level, 0));
+        total + cl.classCharacter.classBab * cl.level, 0));
 
     return babFromClass
 }

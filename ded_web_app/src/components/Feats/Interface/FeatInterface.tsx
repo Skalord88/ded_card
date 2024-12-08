@@ -72,7 +72,7 @@ export type Prerequisite = {
   feats: Feat[];
   caster: [];
   bab: Number;
-  skillStudy: SkillStudyRank[];
+  // skillStudy: SkillStudyRank[];
   armorClass: ArmorClass;
   armorType: string[];
   weaponType: string[];

@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Popup } from "../Popup/Popup";
 import { Feat, FeatsToShow, Prerequisite } from "./Interface/FeatInterface";
-import { Feats } from "../../pages/Feats";
 
 export type FeatsComponentProps = {
   feats: FeatsToShow[];
@@ -29,6 +27,8 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ feats }) => {
 export const ListOfFeatsMap: React.FC<FeatsComponentProps> = (feats) => {
   const [selectedFeat, setSelectedFeat] = useState<Feat | null>(null);
 
+  const orderedFeats = feats.feats.sort((a, b) => a.feat.featName.localeCompare(b.feat.featName))
+
   const selectFeat = (feat: Feat) => {
     setSelectedFeat(feat);
   };
@@ -40,7 +40,7 @@ export const ListOfFeatsMap: React.FC<FeatsComponentProps> = (feats) => {
   return (
     <>
       <div>
-        {feats.feats.length > 0 && feats != null ? (
+        {orderedFeats.length > 0 && feats != null ? (
           <h4>{feats.titolo}</h4>
         ) : null}
         <div style={{ display: "flex" }}>

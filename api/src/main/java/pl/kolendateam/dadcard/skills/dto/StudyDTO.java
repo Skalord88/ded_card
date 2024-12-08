@@ -10,13 +10,13 @@ public class StudyDTO {
 
   public int id;
   public SkillDTO skill;
-  public ModifierEnum study;
+  public ModifierEnum studyName;
   public String newStudy;
 
   public StudyDTO(Study st) {
     this.id = st.getId();
     this.skill = MapperSkillToDTO.toSkillDTO(st.getSkill());
-    this.study = st.getStudyName();
+    this.studyName = st.getStudyName();
     this.newStudy = st.getNewStudy();
   }
   // public short idStudy;

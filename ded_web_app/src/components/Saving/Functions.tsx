@@ -1,4 +1,5 @@
-import { ClassPc, savingThrows } from "../interfaces";
+import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
+import { savingThrows } from "../interfaces";
 
 export function CountSavingThrowFromClassPc(
   classPcList: ClassPc[]
@@ -8,12 +9,13 @@ export function CountSavingThrowFromClassPc(
     reflex: 0,
     will: 0
   };
+
   classPcList.forEach((cl) => {
-    cl.savingThrow.charAt(0) === "h"
+    cl.classCharacter.savingThrow.charAt(0) === "h"
       ? (sT.fortitude += 2.5)
       : (sT.fortitude += 0.5);
-    cl.savingThrow.charAt(1) === "h" ? (sT.reflex += 2.5) : (sT.reflex += 0.5);
-    cl.savingThrow.charAt(2) === "h" ? (sT.will += 2.5) : (sT.will += 0.5);
+    cl.classCharacter.savingThrow.charAt(1) === "h" ? (sT.reflex += 2.5) : (sT.reflex += 0.5);
+    cl.classCharacter.savingThrow.charAt(2) === "h" ? (sT.will += 2.5) : (sT.will += 0.5);
 
     sT.fortitude += 0.5 * (cl.level - 1);
     sT.reflex += 0.5 * (cl.level - 1);

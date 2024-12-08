@@ -1,11 +1,11 @@
-import { ClassPc } from "../../interfaces";
+import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 
 export function SkillPointsFromClass(classList: ClassPc[]): number {
     return classList.reduce(
         (total, cl) =>
             cl.firstClass?
-                total + (cl.skillPoints*4)
-        : total + cl.skillPoints
+                total + (cl.classCharacter.skillPoints*4)
+        : total + cl.classCharacter.skillPoints
         ,0
     )
 }

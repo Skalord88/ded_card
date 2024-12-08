@@ -13,11 +13,11 @@ export const ShowStudyTotSkillsTableComponent: React.FC<ShowOneSkillProps> = ({
       >
         {study ? (
           <p>
-            {Math.floor(
-              study.rank +
+            {/* {Math.floor(
+              study. +
               abilitys +
               bonus
-              )}{" "}
+              )}{" "} */}
           </p>
         ) : <div> <p>0</p> </div>}
       </div>

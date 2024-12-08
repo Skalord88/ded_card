@@ -1,10 +1,12 @@
-import { ClassPc } from "../interfaces";
+import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 import { Feat, FeatPc, FeatsToShow } from "./Interface/FeatInterface";
 
 export function GroupAllFeats(
   feats: (FeatPc | Feat | ClassPc)[]
 ): FeatsToShow[] {
   let featsToReturn: FeatsToShow[] = [];
+
+
 
   feats.forEach((f) => {
     if ("selected" in f) {
@@ -13,7 +15,7 @@ export function GroupAllFeats(
         title: "FeatPc",
         feat: f.feat,
         modifiers: f.feat.modifiers ? f.feat.modifiers : [],
-        listOfBonus: f.selected
+        listOfBonus: f.selected? f.selected : null
       });
     }
 
@@ -28,11 +30,11 @@ export function GroupAllFeats(
     }
 
     if ("firstClass" in f) {
-      f.feats.forEach((oneF) => {
+      f.classCharacter.classFeats.forEach((oneF) => {
         if (oneF.level <= f.level) {
           featsToReturn.push({
             id: oneF.feat.id,
-            title: "ClassFeats " + f.className + " " + oneF.level,
+            title: "ClassFeats " + f.classCharacter.className + " " + oneF.level,
             feat: oneF.feat,
             modifiers: oneF.feat.modifiers ? oneF.feat.modifiers : [],
             listOfBonus: null
@@ -41,10 +43,6 @@ export function GroupAllFeats(
       });
     }
   });
-
-  // featsToReturn.forEach(f => (
-  //   console.log(f.feat.id, f.feat.featName, f.listOfBonus)
-  // ))
 
   return featsToReturn;
 }

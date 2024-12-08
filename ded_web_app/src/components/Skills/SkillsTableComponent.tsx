@@ -3,7 +3,7 @@ import { CharProps } from "../interfaces";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { urlSkillSet } from "../url";
-import { SkillDTO, SkillProps } from "./interface/SkillsInterface";
+import { SkillCharacter, SkillDTO, SkillProps } from "./interface/SkillsInterface";
 import { SkillSkillsTableComponent } from "./SkillSkillsTableComponent";
 import { CountLevelFromClass } from "../Level/Functions";
 import { SkillPointsFromClass } from "./functions/Functions";
@@ -12,7 +12,7 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
   char
 }) => {
   const { charId } = useParams();
-  const [skillsTable, setSkillsTable] = useState<SkillProps[]>(char.skillsList);
+  const [skillsTable, setSkillsTable] = useState<SkillCharacter[]>(char.skillsCharacter);
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
   const maxSkillsPoints: number = CountLevelFromClass(char.classPcList) + 3
   const maxToSpentPoints: number = SkillPointsFromClass(char.classPcList)
@@ -26,55 +26,58 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
     setSkillsTable((prevSkills) => {
       const updatedSkills = [...prevSkills];
 
-      if (indexStudy === null) {
-        updatedSkills[indexSkill].skillRank = newRank;
-      } else {
-        updatedSkills[indexSkill].fieldOfStudy[indexStudy].rank = newRank;
-      }
+      // if (indexStudy === null) {
+      //   updatedSkills[indexSkill].skillRank = newRank;
+      // } else {
+      //   updatedSkills[indexSkill].fieldOfStudy[indexStudy].rank = newRank;
+      // }
       return updatedSkills;
     });
   };
 
   useEffect(() => {
     const tot = skillsTable.reduce((total, skill) => {
-      let skillTotal = skill.classSkill ? skill.skillRank : skill.skillRank * 2;
-      if (skill.fieldOfStudy.length > 0) {
-        skill.fieldOfStudy.forEach((study) => {
-          skillTotal += study.rank;
-        });
-      }
-      return total + skillTotal;
+      // let skillTotal = skill.classSkill ? skill.skillRank : skill.skillRank * 2;
+      // if (skill.fieldOfStudy.length > 0) {
+      //   skill.fieldOfStudy.forEach((study) => {
+      //     skillTotal += study.rank;
+      //   });
+      // }
+      return total
+      //  + skillTotal;
     }, 0);
 
     setSpentSkillPnts(tot);
   }, [skillsTable]);
 
   const handleChange = () => {
-    const mapSkillsToDTO: SkillDTO[] = skillsTable?.map((skill) => {
-      if (skill.fieldOfStudy.length > 0)
-        return {
-          idSkill: skill.idSkill,
-          skillRank: 0,
-          fieldOfStudy: skill.fieldOfStudy.map((st) => ({
-            idStudy: st.idStudy,
-            idSkill: skill.idSkill,
-            rank: st.rank
-          }))
-        };
-      else {
-        return {
-          idSkill: skill.idSkill,
-          skillRank: skill.skillRank,
-          fieldOfStudy: []
-        };
-      }
-    });
+    // const mapSkillsToDTO: SkillDTO[] = skillsTable?.map((skill) => {
+    //   if (skill.fieldOfStudy.length > 0)
+    //     return {
+    //       idSkill: skill.idSkill,
+    //       skillRank: 0,
+    //       fieldOfStudy: skill.fieldOfStudy.map((st) => ({
+    //         idStudy: st.idStudy,
+    //         idSkill: skill.idSkill,
+    //         rank: st.rank
+    //       }))
+    //     };
+    //   else {
+    //     return {
+    //       idSkill: skill.idSkill,
+    //       skillRank: skill.skillRank,
+    //       fieldOfStudy: []
+    //     };
+    //   }
+    // });
 
-    const skillDTO: { skillDTO: SkillDTO[] } = { skillDTO: mapSkillsToDTO };
+    // const skillDTO: { skillDTO: SkillDTO[] } = { skillDTO: mapSkillsToDTO };
 
 
     try {
-      axios.post(urlSkillSet + charId, skillDTO);
+      axios.post(urlSkillSet + charId
+        // , skillDTO
+      );
     } catch (error) {
       console.log(error);
     }
@@ -121,7 +124,7 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
         </div>
         {skillsTable ? (
           <>
-            {skillsTable.map((skill: SkillProps, index: number) => {
+            {/* {skillsTable.map((skill: SkillProps, index: number) => {
               return (
                 <>
                   <SkillSkillsTableComponent
@@ -138,7 +141,7 @@ export const SkillsTableComponent: React.FC<CharProps> = ({
                   />
                 </>
               );
-            })}
+            })} */}
           </>
         ) : (
           <></>

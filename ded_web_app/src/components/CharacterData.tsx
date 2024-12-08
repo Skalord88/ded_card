@@ -1,7 +1,8 @@
 import { SignNumber } from "../components/functions";
+import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
-import { CharacterPc, ClassPc } from "./interfaces";
+import { CharacterPc } from "./interfaces";
 import { } from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
 import { FindAllAdjLevel } from "./Race/Function";
@@ -68,11 +69,12 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
   const adjLv: number = FindAllAdjLevel(char);
   const totLv: number =
     adjLv + char.classPcList.reduce((total, cl) => total + cl.level, 0);
+
   const cl: ClassPc[] = char.classPcList.filter(
-    (classe) => classe.classType === 1
+    (classe) => classe.classCharacter.classType === "base class"
   );
   const cp: ClassPc[] = char.classPcList.filter(
-    (classe) => classe.classType !== 1
+    (classe) => classe.classCharacter.classType === "prestige class"
   );
 
   let exp = 0;
@@ -108,7 +110,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         {cl.map((classe, index) => {
           return (
             <div key={index}>
-              <p>{FormattingText(classe.className) + " " + classe.level}</p>
+              <p>{FormattingText(classe.classCharacter.className) + " " + classe.level}</p>
             </div>
           );
         })}
@@ -116,7 +118,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
           return (
             <div key={index}>
               <p>
-                {FormattingText(classe.className)} {classe.level}
+                {FormattingText(classe.classCharacter.className)} {classe.level}
               </p>
             </div>
           );

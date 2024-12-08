@@ -99,11 +99,11 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
           <p>
             {" "}
             Skills:
-            {character?.skillsList.map((skill, index) => {
-              const isLast = index === character.skillsList.length - 1;
-              return skill.classSkill ? (
-                <div key={index + "." + skill.nameSkill}>
-                  {skill.fieldOfStudy.length > 0 ? (
+            {/* {character?.skillsCharacter.map((skill, index) => {
+              const isLast = index === character.skillsCharacter.length - 1;
+              return skill.skill ? (
+                <div key={index + "." + skill.skill.skillName}>
+                  {skill.study..length > 0 ? (
                     <>
                       {skill.fieldOfStudy.map((study, index) => {
                         return (
@@ -125,7 +125,7 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
                   )}
                 </div>
               ) : null;
-            })}
+            })} */}
           </p>
         </div>
       ) : (

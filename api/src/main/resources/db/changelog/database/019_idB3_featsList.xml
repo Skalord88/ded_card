@@ -3,75 +3,39 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
   <changeSet id="202" author="oscar">
     <insert tableName="feats">
+      <!-- <column name="id" value="1" /> -->
       <column name="feat_name" value="Acrobatic [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Jump checks and Tumble checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;JUMP&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;TUMBLE&quot;]
-            }]" />
+      <column name="modifiers_id" value="74" />
     </insert>
     <insert tableName="feats">
+      <!-- <column name="id" value="2" /> -->
       <column name="feat_name" value="Agile [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Balance checks and Escape Artist checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;BALANCE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;ESCAPE_ARTIST&quot;]
-            }]" />
+      <column name="modifiers_id" value="75" />
     </insert>
+
     <insert tableName="feats">
+      <!-- <column name="id" value="3" /> -->
       <column name="feat_name" value="Alertness [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Listen checks and Spot checks." />
       <column name="normal" value="null" />
       <column name="special"
         value="The master of a familiar gains the benefit of the Alertness feat whenever the familiar is within arm,s reach." />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;LISTEN&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SPOT&quot;]
-            }]" />
+      <column name="modifiers_id" value="76" />
     </insert>
 
     <insert tableName="feats">
       <column name="feat_name" value="Animal Affinity [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Handle Animal checks and Ride checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;HANDLE_ANIMAL&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;RIDE&quot;]
-            }]" />
+      <column name="modifiers_id" value="77" />
     </insert>
 
     <insert tableName="feats">
@@ -84,12 +48,12 @@
         value="Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it." />
       <column name="prerequisite_list_id" value="1" />
       <column name="to_select_id" value="2" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;PROFICENCY&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -102,16 +66,15 @@
       <column name="special"
         value="All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it." />
       <column name="to_select_id" value="3" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;PROFICENCY&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
+        }]" /> -->
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Armor Proficiency (Medium) [General]" />
-      <!-- <column name="prerequisites" value="Armor Proficiency (light)." /> -->
       <column name="benefit"
         value="When you wear a type of armor with which you are proficient, the armor check penalty for that armor applies only to Balance, Climb, Escape Artist, Hide, Jump, Move Silently, Sleight of Hand, and Tumble checks." />
       <column name="normal"
@@ -120,33 +83,16 @@
         value="Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it." />
       <column name="prerequisite_list_id" value="4" />
       <column name="to_select_id" value="5" />
-      <column name="modifiers"
-        value="[{
-          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Athletic [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Climb checks and Swim checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;CLIMB&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SWIM&quot;]
-            }]" />
+      <column name="modifiers_id" value="78" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Augment Summoning [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="Each creature you conjure with any summon spell gains a +4 enhancement bonus to Strength and Constitution for the duration of the spell that summoned it." />
       <column name="normal" value="null" />
@@ -155,7 +101,6 @@
     <insert tableName="feats">
       <column name="feat_name" value="Blind-Fight [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="In melee, every time you miss because of concealment, you can reroll your miss chance percentile roll one time to see if you actually hit. An invisible attacker gets no advantages related to hitting you in melee. That is, you don’t lose your Dexterity bonus to Armor Class, and the attacker doesn’t get the usual +2 bonus for being invisible. The invisible attacker’s bonuses do still apply for ranged attacks, however. You take only half the usual penalty to speed for being unable to see. Darkness and poor visibility in general reduces your speed to three-quarters normal, instead of one-half." />
       <column name="normal"
@@ -165,7 +110,6 @@
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Brew Potion [Item Creation]" />
-      <!-- <column name="prerequisites" value="Caster level 3rd." /> -->
       <column name="benefit"
         value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level × its caster level × 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price. When you create a potion, you make any choices that you would normally make when casting the spell. Whoever drinks the potion is the target of the spell. Any potion that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when creating the potion." />
       <column name="normal" value="null" />
@@ -191,12 +135,7 @@
         value="You get a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while you are grappling or pinned." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;CONCENTRATION&quot;]
-            }]" />
+      <column name="modifiers_id" value="79" />
     </insert>
 
     <insert tableName="feats">
@@ -209,12 +148,12 @@
         value="A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class." />
       <column name="special"
         value="A fighter may select Combat Expertise as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;COMBAT_EXPERTISE&quot;,
             &quot;bonus&quot; : 0,
             &quot;targets&quot; : []
-            }]" />
+            }]" /> -->
       <column name="prerequisite_list_id" value="7" />
     </insert>
 
@@ -287,16 +226,7 @@
         value="You get a +2 bonus on all Disguise checks and Profession (ex Forgery) checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;DISGUISE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;PROFESSION&quot;]
-            }]" />
+      <column name="modifiers_id" value="80" />
     </insert>
 
     <insert tableName="feats">
@@ -312,21 +242,11 @@
 
     <insert tableName="feats">
       <column name="feat_name" value="Deft Hands [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Sleight of Hand checks and Use Rope checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;SLEIGHT_OF_HAND&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;USE_ROPE&quot;]
-            }]" />
+      <column name="modifiers_id" value="81" />
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Diehard [General]" />
@@ -346,16 +266,7 @@
         value="You get a +2 bonus on all Appraise checks and Profession (ex Decipher Script) checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;APPRAISE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : [&quot;PROFESSION&quot;]
-            }]" />
+      <column name="modifiers_id" value="82" />
     </insert>
 
     <insert tableName="feats">
@@ -365,12 +276,12 @@
         value="During your action, you designate an opponent and receive a +1 dodge bonus to Armor Class against attacks from that opponent. You can select a new opponent on any action. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Also, dodge bonuses stack with each other, unlike most other types of bonuses." />
       <column name="normal" value="null" />
       <column name="special" value="A fighter may select Dodge as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;DODGE&quot;,
             &quot;bonus&quot; : 1,
             &quot;targets&quot; : []
-            }]" />
+            }]" /> -->
       <column name="prerequisite_list_id" value="15" />
     </insert>
     <insert tableName="feats">
@@ -420,19 +331,18 @@
       <column name="normal"
         value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
       <column name="to_select_id" value="17" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;PROFICENCY&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
+        }]" /> -->
       <column name="special"
         value="You can gain Exotic Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of exotic weapon. Proficiency with the bastard sword or the dwarven waraxe has an additional prerequisite of Str 13. A fighter may select Exotic Weapon Proficiency as one of his fighter bonus feats." />
     </insert>
 
     <insert tableName="feats">
       <column name="feat_name" value="Extend Spell [Metamagic]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="An extended spell lasts twice as long as normal. A spell with a duration of concentration, instantaneous, or permanent is not affected by this feat. An extended spell uses up a spell slot one level higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -488,16 +398,10 @@
 
     <insert tableName="feats">
       <column name="feat_name" value="Great Fortitude [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Fortitude saving throws." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;FORTITUDE&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : []
-            }]" />
+      <column name="modifiers_id" value="83" />
     </insert>
 
     <insert tableName="feats">
@@ -510,12 +414,12 @@
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic to which you already have applied the Spell Focus feat." />
       <column name="to_select_id" value="22" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;SPELL_DIFFICULTY&quot;,
             &quot;bonus&quot; : 1,
             &quot;targets&quot; : []
-            }]" />
+            }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -525,12 +429,12 @@
         value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bonus stacks with the one from Spell Penetration." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;VS_SPELL_RESISTANCE&quot;,
             &quot;bonus&quot; : 2,
             &quot;targets&quot; : []
-            }]" />
+            }]" /> -->
       <column name="prerequisite_list_id" value="23" />
     </insert>
 
@@ -660,17 +564,16 @@
     <insert tableName="feats">
       <column name="feat_name" value="Improved Initiative [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +4 bonus on initiative checks." />
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Improved Initiative as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;INITIATIVE&quot;,
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : []
-            }]" />
+            }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -683,12 +586,12 @@
         value="Without this feat, the target of an overrun can choose to avoid you or to block you." />
       <column name="special"
         value="A fighter may select Improved Overrun as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
             &quot;modifier&quot; : &quot;STRENGHT&quot;,
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : [&quot;OVERRUN&quot;]
-            }]" />
+            }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -726,12 +629,12 @@
         value="Without this feat, you provoke an attack of opportunity when you strike at an object held or carried by another character." />
       <column name="special"
         value="A fighter may select Improved Sunder as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
         &quot;modifier&quot; : &quot;SUNDER&quot;, 
         &quot;bonus&quot; : 4,
         &quot;targets&quot; : []
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -754,7 +657,7 @@
         value="You turn or rebuke creatures as if you were one level higher than you are in the class that grants you the ability." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
         &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
         &quot;bonus&quot; : 1,
@@ -763,7 +666,7 @@
       &quot;modifier&quot; : &quot;REBUKE_UNDEAD&quot;,
       &quot;bonus&quot; : 1,
       &quot;targets&quot; : []
-      }]" />
+      }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -781,8 +684,6 @@
 
     <insert tableName="feats">
       <column name="feat_name" value="Improved Unarmed Strike [General]" />
-      <!-- <column name="prerequisite_list_id" value="39" /> -->
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You are considered to be armed even when unarmed —that is, you do not provoke attacks or opportunity from armed opponents when you attack them while unarmed. However, you still get an attack of opportunity against any opponent who makes an unarmed attack on you. In addition, your unarmed strikes can deal lethal or nonlethal damage, at your option." />
       <column name="normal"
@@ -798,17 +699,7 @@
         value="You get a +2 bonus on all Gather Information checks and Search checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[
-      {
-        &quot;modifier&quot; : &quot;GATHER_INFORMATION&quot;,
-        &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      },{
-      &quot;modifier&quot; : &quot;SEARCH&quot;,
-      &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="84" />
     </insert>
 
     <insert tableName="feats">
@@ -817,12 +708,7 @@
       <column name="benefit" value="You get a +2 bonus on all Will saving throws." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;WILL&quot;,
-        &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="85" />
     </insert>
 
     <insert tableName="feats">
@@ -833,12 +719,12 @@
         value="Having this feat enables the character to attract loyal companions and devoted followers, subordinates who assist her. See the table below for what sort of cohort and how many followers the character can recruit." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
         &quot;modifier&quot; : &quot;LEADERSHIP&quot;,
         &quot;bonus&quot; : 0,
       &quot;targets&quot; : []
-      }]" />
+      }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -847,12 +733,7 @@
       <column name="benefit" value="You get a +2 bonus on all Reflex saving throws." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;REFLEX&quot;,
-        &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="86" />
     </insert>
 
     <insert tableName="feats">
@@ -862,16 +743,7 @@
         value="You get a +2 bonus on all Spellcraft checks and Use Magic Device checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;SPELLCRAFT&quot;,
-        &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      },{
-      &quot;modifier&quot; : &quot;USE_MAGIC_DEVICE&quot;,
-      &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="87" />
     </insert>
 
     <insert tableName="feats">
@@ -884,12 +756,12 @@
       <column name="normal" value="null" />
       <column name="special"
         value="Regardless of the number of arrows you fire, you apply precision-based damage only once. If you score a critical hit, only the first arrow fired deals critical damage; all others deal regular damage. A fighter may select Manyshot as one of his fighter bonus feats. A 6th-level ranger who has chosen the archery combat style is treated as having Manyshot even if he does not have the prerequisites for it, but only when he is wearing light or no armor." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
         &quot;modifier&quot; : &quot;MANYSHOT&quot;,
         &quot;bonus&quot; : 0,
         &quot;targets&quot; : []
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -900,12 +772,12 @@
       <column name="normal"
         value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
       <column name="to_select_id" value="41" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;PROFICENCY&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
+        }]" /> -->
       <column name="special"
         value="Barbarians, fighters, paladins, and rangers are proficient with all martial weapons. They need not select this feat. You can gain Martial Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of weapon. A cleric who chooses the War domain automatically gains the Martial Weapon Proficiency feat related to his deity’s favored weapon as a bonus feat, if the weapon is a martial one. He need not select it." />
     </insert>
@@ -928,12 +800,12 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Mobility as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
         &quot;modifier&quot; : &quot;DODGE_BONUS&quot;,
         &quot;bonus&quot; : 4,
         &quot;targets&quot; : [&quot;OPPORTUNITY&quot;]
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -970,40 +842,21 @@
 
     <insert tableName="feats">
       <column name="feat_name" value="Negotiator [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Diplomacy checks and Sense Motive checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;DIPLOMACY&quot;,
-        &quot;bonus&quot; : 2,
-        &quot;targets&quot; : []
-      },{
-        &quot;modifier&quot; : &quot;SENSE_MOTIVE&quot;,
-        &quot;bonus&quot; : 2,
-        &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="88" />
     </insert>
 
     <insert tableName="feats">
       <column name="feat_name" value="Nimble Fingers [General]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
-        value="You get a +2 bonus on all Disable Device checks and (ex Open Lock) sleight of hand checks." />
+        value="You get a +2 bonus on all Disable Device checks and (ex Open Lock) Sleight of Hand checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;DISABLE_DEVICE&quot;,
-        &quot;bonus&quot; : 2,
-        &quot;targets&quot; : []
-        },{
-        &quot;modifier&quot; : &quot;SLEIGHT_OF_HAND&quot;,
-        &quot;bonus&quot; : 2,
-        &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="89" />
     </insert>
 
     <insert tableName="feats">
@@ -1012,16 +865,7 @@
       <column name="benefit" value="You get a +2 bonus on all Bluff checks and Intimidate checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;BLUFF&quot;,
-        &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      },{
-      &quot;modifier&quot; : &quot;INTIMIDATE&quot;,
-      &quot;bonus&quot; : 2,
-      &quot;targets&quot; : []
-      }]" />
+      <column name="modifiers_id" value="90" />
     </insert>
 
     <insert tableName="feats">
@@ -1032,12 +876,12 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Point Blank Shot as one of his fighter bonus feats." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
-        &quot;modifier&quot; : &quot;BAB&quot;,
+        &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
         &quot;bonus&quot; : 1,
         &quot;targets&quot; : [&quot;POINT_BLANK_SHOT&quot;]
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -1180,12 +1024,12 @@
       <column name="special"
         value="All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat." />
       <column name="to_select_id" value="64" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;PROFICENCY&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" />
+        }]" /> -->
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Skill Focus [General]" />
@@ -1360,12 +1204,12 @@
       <column name="prerequisite_list_id" value="57" />
       <column name="benefit"
         value="You gain a +1 bonus on all attack rolls you make using the selected weapon." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
-        &quot;modifier&quot; : &quot;BAB&quot;,
+        &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
         &quot;bonus&quot; : 1,
         &quot;targets&quot; : [&quot;SELECTED&quot;]
-      }]" />
+      }]" /> -->
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
@@ -2572,12 +2416,12 @@
         value="The creature’s natural armor bonus increases by 1." />
       <column name="special"
         value="A creature can gain this feat multiple times. Each time the creature takes the feat its natural armor bonus increases by another point." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;NATURAL_ARMOR_BONUS&quot;,
           &quot;bonus&quot; : 1,
           &quot;targets&quot;: []
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -2613,48 +2457,48 @@
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
         value="Any time the warsling sniper's target would be denied his Dexterity bonus to AC (regardless of whether he actually has a Dexterity bonus), her ranged sneak attack with the warsling deals extra damage. This extra damage is +1d6 at 1st level, and increases by an additional 1d6 every other level after that (+2d6 at 3rd level and +3d6 at 5th level). Ranged attacks only count as sneak attacks if the target is within 30 feet. In every other way, this ability is identical to the rogue's sneak attack. If the character has the sneak attack ability from another class, the bonuses stack." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;SNEAK_ATTACK&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;WARSLING&quot;]
-        }]" />
+        }]" /> -->
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Sniper's Vision (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
         value="At 2nd level, warsling snipers gain a +2 bonus on sling attacks against targets with some degree of cover; this bonus effectively reduces the benefit of cover because the warsling sniper is adept at aiming for the exposed part of the foe. Furthermore, if a skiprock sniper misses the target due to concealment, she can reroll the miss chance percentile roll to see if she actually hit." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
-          &quot;modifier&quot; : &quot;BAB&quot;,
+          &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;WARSLING&quot;,&quot;CONCEALMENT&quot;]
-        }]" />
+        }]" /> -->
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Improved Critical (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
         value="At 4th level, the sniper gains Improved Critical (halfling warsling) as a bonus feat." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;IMPROVED_CRITICAL&quot;,
           &quot;bonus&quot; : 0,
           &quot;targets&quot; : [&quot;WARSLING&quot;]
-        }]" />
+        }]" /> -->
     </insert>
     <insert tableName="feats">
       <column name="feat_name" value="Improved Ricochet (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
         value="At 6th level, the sniper's expertise with the warsling becomes so advanced that when she bounces a skiprock off one target to hit another, the second attack roll is made without the normal -2 penalty. This ability may be used once per round." />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[{
           &quot;modifier&quot; : &quot;RICOCHET&quot;,
           &quot;bonus&quot; : 2,
           &quot;targets&quot; : [&quot;WARSLING&quot;]
-        }]" />
+        }]" /> -->
     </insert>
 
     <insert tableName="feats">

@@ -1,5 +1,6 @@
-import { Armor, Attacks, CharacterPc, ClassPc, EnchantedItem, Inventory, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill } from '../components/interfaces'
+import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shield, Weapon, WonderousItem, armorClass, serverSkill } from '../components/interfaces'
 import { Abilitys } from './Abilitys/Interface'
+import { ClassCharacter, ClassPc } from './ClassPc/Interface/ClassPcLevel'
 import { AddStudy } from './Skills/interface/SkillsInterface'
 
 export const noneArmor: Armor = {
@@ -136,7 +137,7 @@ export const characterEmpty: CharacterPc = {
         charisma: 0
     },
     
-    skillsList: [],
+    skillsCharacter: [],
     featsList: [],
     items: [],
     inventory: emptyInventory,
@@ -191,15 +192,31 @@ export const emptyItemsList: ItemsList = {
     wonderousItems: []
 }
 
-export const emptyClass: ClassPc = {
-    id: -1,
-    classType: -1,
+export const emptyClassCharacter: ClassCharacter = {
+    id: 0,
+    classType: "",
     className: "",
-    level: 0,
-    firstClass: false,
+    avatarUrl: "",
     hitDice: 0,
     classBab: 0,
-    savingThrow: 'lll',
+    savingThrow: "",
     skillPoints: 0,
-    feats: []
+    classSkill: [],
+    classStudy: [],
+    classFeats: []
 }
+
+export const emptyClass: ClassPc = {
+    // id: -1,
+    // classType: -1,
+    // className: "",
+    level: 0,
+    firstClass: false,
+    classCharacter: emptyClassCharacter
+    // hitDice: 0,
+    // classBab: 0,
+    // savingThrow: 'lll',
+    // skillPoints: 0,
+    // feats: []
+}
+

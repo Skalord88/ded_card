@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
+import pl.kolendateam.dadcard.skills.entity.PrerequisiteSkills;
 import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.skills.entity.Study;
@@ -17,7 +19,7 @@ public class MapperSkillToDTO {
     return skill != null ? new SkillDTO(skill) : null;
   }
 
-  public static StudyDTO toSkillDTO(Study study) {
+  public static StudyDTO toStudyDTO(Study study) {
     return study != null ? new StudyDTO(study) : null;
   }
 
@@ -87,6 +89,20 @@ public class MapperSkillToDTO {
     if (listSkillCharacter != null) {
       listSkillCharacter.forEach(skill -> {
         listSkillDTO.add(new SkillCharacterDTO(skill));
+      });
+    }
+
+    return listSkillDTO;
+  }
+
+  public static List<PrerequisiteSkillDTO> toPrerequisiteSkillDTO(
+    List<PrerequisiteSkills> listSkillCharacter
+  ) {
+    List<PrerequisiteSkillDTO> listSkillDTO = new ArrayList<>();
+
+    if (listSkillCharacter != null) {
+      listSkillCharacter.forEach(skill -> {
+        listSkillDTO.add(new PrerequisiteSkillDTO(skill));
       });
     }
 

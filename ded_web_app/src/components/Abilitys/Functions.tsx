@@ -42,7 +42,7 @@ export function BonusAbilities(ab: Abilitys, which: string) {
 }
 
 export function AbilitysAndModifiers(abilitys: Abilitys, modifications: Modifiers[]): Abilitys {
-  console.log(modifications)
+
   return {
     strength:
       abilitys.strength +

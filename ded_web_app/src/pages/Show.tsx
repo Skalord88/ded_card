@@ -71,13 +71,10 @@ export const Show = () => {
     ...char.classPcList //ClassPc
   ]);
 
-  const onlyModification: Modifiers[] = [...char.race.modifiers, ...char.race.race.modifiers]
+  const onlyModification: Modifiers[] = [...char.race.size.modifiers, ...char.race.modifiers, ...char.race.race.modifiers]
 
   const modificationFromFeats: Modifiers[] = feats.flatMap(feat => feat.modifiers)
   const modifications: Modifiers[] = [...onlyModification, ...modificationFromFeats]
-
-  
-
 
   const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
   const strenght: number = BonusAbilities(abilitys, "STR");
@@ -86,10 +83,9 @@ export const Show = () => {
     modifications,
     "INITIATIVE"
   );
-  const bab: number =
-    CountBabFromClassPc(char) + FindInOneLengthModifier(modifications, "BAB");
+  const bab: number = CountBabFromClassPc(char);
   const specificBab: Modifiers[] = FindInMoreLengthModifier(modifications, [
-    "BAB",
+    "ATTACK_ROLL",
     "WEAPON_FOUS"
   ]);
 

@@ -96,7 +96,7 @@ public class SkillsController {
     for (StudyDTO newStudy : newStudyList) {
       boolean check = false;
       for (Study studyInDB : listStudy) {
-        if (studyInDB.getStudyName().equals(newStudy.study)) {
+        if (studyInDB.getStudyName().equals(newStudy.newStudy)) {
           check = true;
           break;
         }

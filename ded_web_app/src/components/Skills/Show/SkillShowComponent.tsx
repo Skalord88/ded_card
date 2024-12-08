@@ -31,8 +31,6 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
     // char.classPcList.flatMap(skills => skills.)
   };
 
-  console.log(listModSkillsStudies)
-
   return (
     <>
       <div
@@ -61,7 +59,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
             <div className="rpgui-container-framed-grey-mini">
               <p>bn</p>
             </div>
-            {char.skillsList ? (
+            {/* {char.skillsList ? (
               <>
                 {char.skillsList.map((skill: SkillProps) => {
                   return (
@@ -77,7 +75,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
                   );
                 })}
               </>
-            ) : null}
+            ) : null} */}
           </>
         ) : (
           <>
@@ -99,7 +97,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
             <div className="rpgui-container-framed-grey-mini">
               <p>bns</p>
             </div>
-            {char.skillsList ? (
+            {/* {char.skillsList ? (
               <>
                 {char.skillsList.map((skill: SkillProps) => {
                   return (
@@ -115,7 +113,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
                   );
                 })}
               </>
-            ) : null}
+            ) : null} */}
           </>
         )}
       </div>

@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,9 +23,11 @@ import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
+import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.skills.entity.PrerequisiteSkills;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -57,21 +60,18 @@ public class Prerequisite implements Serializable {
 
   Integer bab;
 
-  // @ManyToMany(cascade = CascadeType.MERGE)
-  // @JoinTable(
-  //   name = "prerequisite_skill_study",
-  //   joinColumns = @JoinColumn(name = "prerequisite_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "skill_id")
-  // )
-  // List<SkillCharacter> skillStudy = new ArrayList<>();
+  Integer attackRoll;
 
-  // @ManyToMany(cascade = CascadeType.MERGE)
-  // @JoinTable(
-  //   name = "prerequisite_study",
-  //   joinColumns = @JoinColumn(name = "prerequisite_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "study_id")
-  // )
-  // List<Study> studies = new ArrayList<>();
+  @JdbcTypeCode(SqlTypes.JSON)
+  SavingThrow savingThrow;
+
+  @ManyToMany(cascade = CascadeType.MERGE)
+  @JoinTable(
+    name = "prerequisite_skill_study",
+    joinColumns = @JoinColumn(name = "prerequisite_id"),
+    inverseJoinColumns = @JoinColumn(name = "prerequisite_skill_id")
+  )
+  List<PrerequisiteSkills> prerequisiteSkillsStudy = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArmorClass armorClass;

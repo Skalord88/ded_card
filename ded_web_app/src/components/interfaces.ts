@@ -1,8 +1,9 @@
 import { Abilitys } from "./Abilitys/Interface";
-import { ClassFeats, FeatPc } from "./Feats/Interface/FeatInterface";
+import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
+import { FeatPc } from "./Feats/Interface/FeatInterface";
 import { Modifiers } from "./Modifiers/ModifierInterface";
 import { Archetype, SubRace } from "./Race/Interfaces";
-import { SkillProps } from "./Skills/interface/SkillsInterface";
+import { SkillCharacter, SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
 export type CharacterPc = {
@@ -13,7 +14,8 @@ export type CharacterPc = {
   race: SubRace;
   archetypes: Archetype[]
   abilitys: Abilitys;
-  skillsList: SkillProps[];
+  // skillsList: SkillProps[];
+  skillsCharacter: SkillCharacter[];
   featsList: FeatPc[];
   items: Item[];
   inventory: Inventory;
@@ -69,18 +71,7 @@ export interface character {
   playerName: string;
 }
 
-export type ClassPc = {
-  id: number;
-  classType: number;
-  className: string;
-  level: number;
-  firstClass: boolean;
-  hitDice: number;
-  classBab: number;
-  savingThrow: string;
-  skillPoints: number;
-  feats: ClassFeats[];
-}
+
 
 export type MagicClass = {
   [key: string]: number[]

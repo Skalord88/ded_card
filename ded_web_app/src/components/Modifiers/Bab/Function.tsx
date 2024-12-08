@@ -3,13 +3,13 @@ import { Weapon } from "../../interfaces";
 import { Modifiers } from "../ModifierInterface";
 
 export function BabBonusModification(modifiers: Modifiers[]): [number, string] {
-  const mod = modifiers.find((mod) => mod.modifier === "BAB");
+  const mod = modifiers.find((mod) => mod.modifier === "ATTACK_ROLL");
   return mod ? [mod.bonus, ""] : [0, ""];
 }
 export function FindBabModifiers(
   modifiers: [number, string][]
 ): [number, string] {
-  const mod = modifiers.find((mod) => mod[1] === "BAB");
+  const mod = modifiers.find((mod) => mod[1] === "ATTACK_ROLL");
   return mod ? [mod[0], ""] : [0, ""];
 }
 

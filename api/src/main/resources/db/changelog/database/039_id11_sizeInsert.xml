@@ -22,7 +22,7 @@
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : []
             }
@@ -45,7 +45,7 @@
             &quot;bonus&quot; : 3,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : 3,
             &quot;targets&quot; : []
             }
@@ -68,7 +68,7 @@
             &quot;bonus&quot; : 2,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : 2,
             &quot;targets&quot; : []
             }
@@ -91,7 +91,7 @@
             &quot;bonus&quot; : 1,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : 1,
             &quot;targets&quot; : []
             }
@@ -119,7 +119,7 @@
             &quot;bonus&quot; : -1,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : -1,
             &quot;targets&quot; : []
             }
@@ -142,7 +142,7 @@
             &quot;bonus&quot; : -2,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : -2,
             &quot;targets&quot; : []
             }
@@ -165,7 +165,7 @@
             &quot;bonus&quot; : -3,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : -3,
             &quot;targets&quot; : []
             }
@@ -188,7 +188,7 @@
             &quot;bonus&quot; : -4,
             &quot;targets&quot; : []
             },{
-            &quot;modifier&quot; : &quot;BAB&quot;,
+            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
             &quot;bonus&quot; : -4,
             &quot;targets&quot; : []
             }

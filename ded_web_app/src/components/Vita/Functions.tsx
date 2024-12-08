@@ -1,4 +1,4 @@
-import { ClassPc } from "../interfaces";
+import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 
 export type HitDices = {
   first: boolean;
@@ -18,7 +18,7 @@ export function CountHitDicesFromClassPc(classPcList: ClassPc[]): HitDices[] {
       hitDices.first = true;
     }
     hitDices.lv = cl.level;
-    hitDices.dice = cl.hitDice;
+    hitDices.dice = cl.classCharacter.hitDice;
     listHitDices.push(hitDices);
   });
 

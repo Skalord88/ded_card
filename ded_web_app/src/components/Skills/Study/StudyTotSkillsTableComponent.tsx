@@ -10,7 +10,9 @@ export const StudyTotSkillsTableComponent: React.FC<OneSkillProps> = ({
     abilitys,
     updateRank
   }) => {
-    const [rank, setRank] = useState<number>(study ? study.rank : 0);
+    const [rank, setRank] = useState<number>(
+      // study ? study.rank : 
+      0);
   
     const minRank = () => {
       setRank((prevRank) => {
@@ -22,9 +24,9 @@ export const StudyTotSkillsTableComponent: React.FC<OneSkillProps> = ({
       });
     };
   
-    useEffect(() => {
-      if(study)setRank(study?.rank)
-    },[study?.rank])
+    // useEffect(() => {
+    //   if(study)setRank(study?.rank)
+    // },[study?.rank])
 
     return (
       <>

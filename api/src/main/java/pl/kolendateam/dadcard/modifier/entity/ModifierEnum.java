@@ -57,6 +57,7 @@ public enum ModifierEnum {
   OVERRUN,
   SUNDER,
   BAB,
+  ATTACK_ROLL,
   THROWN,
   SLING,
   MOUNTED_RANGED,

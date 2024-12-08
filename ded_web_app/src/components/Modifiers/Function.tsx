@@ -45,6 +45,7 @@ export function FindInOneLengthModifier(
   modifications: Modifiers[],
   type: string
 ): number {
+  
   return modifications.reduce(
     (total, mod) =>
       mod.modifier === type && mod.targets.length === 0

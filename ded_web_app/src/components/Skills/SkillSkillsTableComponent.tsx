@@ -41,7 +41,7 @@ export const SkillSkillsTableComponent: React.FC<OneSkillProps> = ({
                         <>
                           <div></div>
                           <div className="rpgui-container-framed-grey-mini">
-                            {study.study}
+                            {/* {study.study} */}
                           </div>
                           <StudyTotSkillsTableComponent
                             key={indexSkill + "." + index + " Tot"}

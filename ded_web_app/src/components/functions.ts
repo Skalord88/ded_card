@@ -1,7 +1,8 @@
 import { BonusAbilities } from "./Abilitys/Functions";
+import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Armor, Book, ClassPc, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
+import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
 
 export function SignNumber(
     number: number

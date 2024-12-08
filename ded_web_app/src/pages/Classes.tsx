@@ -4,13 +4,14 @@ import { Link, useParams } from "react-router-dom";
 
 import { DropdownClass } from "../components/ClassPc/DropdownClass";
 import { CharSummary } from "../components/Summary/CharSummary";
-import { CharacterPc, ClassPc } from "../components/interfaces";
+import { CharacterPc } from "../components/interfaces";
 import {
   urlChar,
   urlClassAdd,
   urlClassList,
   urlClassSell
 } from "../components/url";
+import { ClassCharacter, ClassPc } from "../components/ClassPc/Interface/ClassPcLevel";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -39,30 +40,30 @@ export const Classes = () => {
   useEffect(() => {
     let list: ClassPc[] = [];
 
-    list = classesList.filter((classe) => option?.id !== classe.id);
+    // list = classesList.filter((classe) => option?.id !== classe.id);
 
-    list = list.filter(
-      (classe) =>
-        !char?.classPcList.some((classInChar) => classInChar.id === classe.id)
-    );
+    // list = list.filter(
+    //   (classe) =>
+    //     !char?.classPcList.some((classInChar) => classInChar.id === classe.id)
+    // );
 
-    char?.classPcList.forEach((classInList) =>
-      list.filter((inList) => classInList.id !== inList.id)
-    );
+    // char?.classPcList.forEach((classInList) =>
+      // list.filter((inList) => classInList.id !== inList.id)
+    // );
     setClassesList(list);
   }, [option]);
 
   const handleOption = (e: ClassPc) => {
-    setOption((prevOption) => ({
-      ...prevOption,
-      id: e.id,
-      sign: "+"
-    }));
+    // setOption((prevOption) => ({
+    //   ...prevOption,
+    //   id: e.id,
+    //   sign: "+"
+    // }));
   };
 
-  const handleData = (e: [string, ClassPc]) => {
-    setOption({ id: e[1].id, sign: e[0] });
-  };
+  // const handleData = (e: [string, ClassPc]) => {
+  //   setOption({ id: e[1].id, sign: e[0] });
+  // };
 
   const handleSign = () => {
     if (option) {
@@ -114,22 +115,22 @@ export const Classes = () => {
                     <p>
                       <button
                         className="rpgui-button-golden-small"
-                        onClick={() => handleData(["+", c])}
+                        // onClick={() => handleData(["+", c])}
                       >
                         <p>+</p>
                       </button>
                       <button
                         className="rpgui-button-golden-small"
-                        onClick={() => handleData(["-", c])}
+                        // onClick={() => handleData(["-", c])}
                       >
                         <p>-</p>
                       </button>{" "}
-                      {c.className}
-                      {option?.id !== c.id ? (
+                      {c.classCharacter.className}
+                      {option?.id !== c.classCharacter.id ? (
                         <> {c.level} </>
                       ) : (
                         <>
-                          {option.sign === "+" ? (
+                          {/* {option.sign === "+" ? (
                             <>
                               {" ("}
                               {c.level}
@@ -155,7 +156,7 @@ export const Classes = () => {
                                 <p>change</p>
                               </button>
                             </>
-                          )}
+                          )} */}
                         </>
                       )}
                     </p>
