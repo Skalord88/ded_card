@@ -53,8 +53,13 @@ public class CharacterDTO implements Serializable {
     this.characterName = character.getCharacterName();
     this.playerName = character.getPlayerName();
     this.classPcList =
-      MapperClassPcDTO.toClassPcList(character.getClassPcArray());
-    this.race = MapperRaceToDTO.toSubRaceDTO(character.getRace());
+      character.getClassPcArray() != null
+        ? MapperClassPcDTO.toClassPcList(character.getClassPcArray())
+        : null;
+    this.race =
+      character.getRace() != null
+        ? MapperRaceToDTO.toSubRaceDTO(character.getRace())
+        : null;
     this.archetypes =
       MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList());
     this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());

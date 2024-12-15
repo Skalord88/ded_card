@@ -1,6 +1,6 @@
 import { WeaponLight, WeaponTwoHanded } from "../functions";
 import { Attacks } from "../interfaces";
-import { Modifiers } from "../Modifiers/ModifierInterface";
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { MapBab } from "./Bab/MapBab";
 
 export type MapOfAttackComponentProps = {
@@ -9,7 +9,7 @@ export type MapOfAttackComponentProps = {
   strenght: number;
   strenghtAtt: number;
   dexterityAtt: number;
-  specific: Modifiers[][];
+  specific: Prerequisite[][];
   specificFghFeats: number[];
 };
 

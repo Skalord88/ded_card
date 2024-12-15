@@ -1,4 +1,3 @@
-import { OneSkillModBonusNumber } from "../Modifiers/Skills/Function";
 import { ClassSkillSkillsTableComponent } from "./ClassSkillSkillsTableComponent";
 import { OneSkillProps, Study } from "./interface/SkillsInterface";
 import { SkillAbiSkillsTableComponent } from "./SkillAbiSkillsTableComponent";

@@ -24,9 +24,6 @@
         <column name="special" type="varchar(10000)">
           <constraints nullable="true"/>
         </column>
-        <!-- <column name="modifiers" type="json">
-          <constraints nullable="true"/>
-        </column> -->
         <column name="modifiers_id" type="int">
           <constraints nullable="true"/>
         </column>

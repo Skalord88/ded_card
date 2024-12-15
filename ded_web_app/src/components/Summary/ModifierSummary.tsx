@@ -1,8 +1,8 @@
 import { FormattingText } from "../Formatting/Function";
-import { Modifiers } from "../Modifiers/ModifierInterface";
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 
 export type ModifierSummaryProps = {
-  modifiers: Modifiers[];
+  modifiers: Prerequisite[];
 };
 
 export const ModifierSummary: React.FC<ModifierSummaryProps> = ({
@@ -10,7 +10,7 @@ export const ModifierSummary: React.FC<ModifierSummaryProps> = ({
 }) => {
   return (
     <div>
-      <p style={{ display: "flex", flexDirection: "row" }}>
+      {/* <p style={{ display: "flex", flexDirection: "row" }}>
       Modifiers:{" "}
         {modifiers.map((m, index) => {
           const lastIndex = modifiers.length;
@@ -22,7 +22,7 @@ export const ModifierSummary: React.FC<ModifierSummaryProps> = ({
             </>
           );
         })}
-      </p>
+      </p> */}
     </div>
   );
 };

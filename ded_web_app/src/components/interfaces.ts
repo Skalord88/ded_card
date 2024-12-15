@@ -1,7 +1,7 @@
 import { Abilitys } from "./Abilitys/Interface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "./Feats/Interface/FeatInterface";
-import { Modifiers } from "./Modifiers/ModifierInterface";
+import { Prerequisite } from "./Prerequisite/interface/Prerequisite";
 import { Archetype, SubRace } from "./Race/Interfaces";
 import { SkillCharacter, SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
@@ -14,7 +14,6 @@ export type CharacterPc = {
   race: SubRace;
   archetypes: Archetype[]
   abilitys: Abilitys;
-  // skillsList: SkillProps[];
   skillsCharacter: SkillCharacter[];
   featsList: FeatPc[];
   items: Item[];
@@ -83,7 +82,7 @@ export interface vitality {
   hitPoints: number;
 }
 
-export interface specialAttacks {
+export type SpecialAttacks = {
   bullRush: number;
   charge: number;
   disarm: number;
@@ -150,7 +149,7 @@ export type Item = {
 
 export interface Armor extends Item {
   armorName: string;
-  modifiers: Modifiers[]
+  modifiers: Prerequisite | null;
   armorType: string;
   maxDex: number;
   penality: number;
@@ -161,7 +160,7 @@ export interface Armor extends Item {
 
 export interface Shield extends Item {
   shieldName: string;
-  modifiers: Modifiers[]
+  modifiers: Prerequisite | null;
   armorType: string;
   maxDex: number;
   penality: number;
@@ -177,7 +176,7 @@ export interface Weapon extends Item {
   range: number;
   type: string[];
   size: string;
-  modifiers: Modifiers[];
+  modifiers: Prerequisite | null;
   specialAttacks: string | null;
   material: string | null
   enchantmentList: Enchantment[]
@@ -189,7 +188,7 @@ export interface EnchantedItem {
   name: string
   enchantmentList: Enchantment[]
   material: string
-  modifiers: Modifiers[]
+  modifiers: Prerequisite | null
   cost: number
   description: string
 }
@@ -316,7 +315,7 @@ export type Enchantment = {
   id: number,
   enchantment: number
   ability: string
-  modifiers: Modifiers[]
+  modifiers: Prerequisite | null
   cost: number
 }
 

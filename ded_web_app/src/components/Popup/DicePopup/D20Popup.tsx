@@ -6,8 +6,7 @@ import { ThrowDice } from "../../Dice/ThrowDice";
 
 export const D20Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,
-  value,
-  modifiers
+  value
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
@@ -36,7 +35,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
         }`}
       >
         <ThrowDice dice={dice} value={value} />
-        {modifiers.map((mod, index) => (
+        {/* {modifiers.map((mod, index) => (
           <span key={index} style={{ color: "yellow" }}>
               {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
               {mod.targets.length > 0
@@ -46,7 +45,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
                   )
                 : null}
           </span>
-        ))}
+        ))} */}
       </span>
     </div>
   );

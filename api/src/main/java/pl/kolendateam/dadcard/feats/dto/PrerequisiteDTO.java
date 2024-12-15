@@ -6,16 +6,21 @@ import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
-import pl.kolendateam.dadcard.classCharacter.MapperSavingThrowToDTO;
-import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import pl.kolendateam.dadcard.attack.MapperAttackRoll;
+import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
+import pl.kolendateam.dadcard.attack.dto.AttackRollDTO;
+import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
-import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.race.dto.SpeedDTO;
+import pl.kolendateam.dadcard.savingThrow.MapperSavingThrowToDTO;
+import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
 import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
@@ -30,8 +35,10 @@ public class PrerequisiteDTO {
   public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
-  public Integer attackRoll;
+  public AttackRollDTO attackRoll;
+  public SpeedDTO speed;
   public SavingThrowDTO savingThrow;
+  public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
   public ArmorClassDTO armorClass;
   public ArmorsEnum[] armorType;
@@ -53,11 +60,22 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    this.attackRoll = pre.getAttackRoll();
+    this.attackRoll =
+      pre.getAttackRoll() != null
+        ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())
+        : null;
+    this.speed =
+      pre.getSpeed() != null
+        ? MapperPrerequisiteBonus.toSpeedDTO(pre.getSpeed())
+        : null;
     this.savingThrow =
       pre.getSavingThrow() != null
         ? MapperSavingThrowToDTO.toSavingThrowDTO(pre.getSavingThrow())
         : null;
+    this.specialAttacks =
+      pre.getSpecialAttacks() != null
+      ? MapperSpecialAttacks.toSpecialAttacksDTO(pre.getSpecialAttacks())
+      : null;
     this.skillStudy =
       pre.getPrerequisiteSkillsStudy() != null
         ? MapperSkillToDTO.toPrerequisiteSkillDTO(

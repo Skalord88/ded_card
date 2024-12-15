@@ -4,9 +4,7 @@ import java.io.Serializable;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
-import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @NoArgsConstructor
 public class AttacksDTO implements Serializable {

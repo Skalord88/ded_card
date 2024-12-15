@@ -1,8 +1,8 @@
 import { DiceText } from "../../Dice/Functions";
 import { SignAndCount, WeaponLight } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
-import { Modifiers } from "../../Modifiers/ModifierInterface";
 import { D20PopupWeapon } from "../../Popup/DicePopup/D20PopupWeapon";
+import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 
 export type AttackOptionsProps = {
   type: string;
@@ -14,7 +14,7 @@ export type AttackOptionsProps = {
   increments: number[];
   attackFn: Function;
   specificFghFeats: number[];
-  specificTarget: Modifiers[];
+  specificTarget: Prerequisite;
 };
 
 export const AttackOptions: React.FC<AttackOptionsProps> = ({
@@ -64,14 +64,14 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
 
   return (
     <>
-      <D20PopupWeapon
+      {/* <D20PopupWeapon
         type={type}
         weapon={weapon}
         increments={increments}
         bab={attOneTwo}
         dmg={dmg}
         modifiers={specificTarget}
-      />
+      /> */}
       :
       {attOneTwo.map((att, index) => (
         <span key={index}>

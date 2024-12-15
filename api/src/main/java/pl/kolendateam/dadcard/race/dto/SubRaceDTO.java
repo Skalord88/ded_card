@@ -3,9 +3,9 @@ package pl.kolendateam.dadcard.race.dto;
 import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.race.MaperListRegionToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.entity.SubRace;
@@ -19,7 +19,7 @@ public class SubRaceDTO {
   public RaceDTO race;
   public String subRacesName;
   public String avatarUrl;
-  public Set<ModifierDTO> modifiers;
+  public PrerequisiteDTO modifiers;
   public Set<FeatsDTO> raceFeats;
   public Integer levelAdjustment;
   public SizeDTO size;
@@ -27,11 +27,16 @@ public class SubRaceDTO {
 
   public SubRaceDTO(SubRace subRace) {
     this.id = subRace.getId();
-    this.race = MapperRaceToDTO.toRaceDTO(subRace.getRace());
+    this.race =
+      subRace.getRace() != null
+        ? MapperRaceToDTO.toRaceDTO(subRace.getRace())
+        : null;
     this.subRacesName = subRace.getSubRaceName();
     this.avatarUrl = subRace.getAvatarUrl();
     this.modifiers =
-      MapperModifierBonus.toSetModifierDTO(subRace.getModifiers());
+      subRace.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(subRace.getModifiers())
+        : null;
     this.raceFeats = MapperFeatsDTO.toFeatsSetDTO(subRace.getSubRaceFeats());
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();

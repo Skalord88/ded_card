@@ -18,10 +18,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.feats.entity.Feats;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.size.entity.Size;
 
 @Entity
@@ -47,8 +45,13 @@ public class SubRace implements Serializable {
 
   String avatarUrl;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers = new HashSet<>();
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   @ManyToMany
   @JoinTable(

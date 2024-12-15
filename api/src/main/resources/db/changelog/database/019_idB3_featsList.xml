@@ -568,12 +568,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Improved Initiative as one of his fighter bonus feats." />
-      <!-- <column name="modifiers"
-        value="[{
-            &quot;modifier&quot; : &quot;INITIATIVE&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            }]" /> -->
+       <column name="modifiers_id" value="91" />
     </insert>
 
     <insert tableName="feats">

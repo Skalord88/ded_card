@@ -17,10 +17,19 @@
             <column name="bab" type="INTEGER">
                 <constraints nullable="true" />
             </column>
-            <column name="attack_roll" type="INTEGER">
+            <column name="attack_roll" type="jsonb">
+                <constraints nullable="true" />
+            </column>
+            <column name="initiative" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+            <column name="speed" type="jsonb">
                 <constraints nullable="true" />
             </column>
             <column name="saving_throw" type="jsonb">
+                <constraints nullable="true" />
+            </column>
+            <column name="special_attacks" type="jsonb">
                 <constraints nullable="true" />
             </column>
             <column name="armor_class" type="jsonb">
@@ -1247,9 +1256,54 @@
         </insert>
 
         <insert tableName="prerequisite_skill">
-            <column name="skill_id" value="14" /> <!-- HIDE -->
+            <column name="skill_id" value="14" /> <!-- HIDE 16 -->
+            <column name="rank" value="16" />
+            <column name="id" value="1416" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 12 -->
+            <column name="rank" value="12" />
+            <column name="id" value="1412" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 8 -->
+            <column name="rank" value="8" />
+            <column name="id" value="148" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 4 -->
+            <column name="rank" value="4" />
+            <column name="id" value="144" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 2 -->
             <column name="rank" value="2" />
             <column name="id" value="142" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE -2 -->
+            <column name="rank" value="-2" />
+            <column name="id" value="1402" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE -4 -->
+            <column name="rank" value="-4" />
+            <column name="id" value="1404" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE -8 -->
+            <column name="rank" value="-8" />
+            <column name="id" value="1408" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE -12 -->
+            <column name="rank" value="-12" />
+            <column name="id" value="14012" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE -16 -->
+            <column name="rank" value="-16" />
+            <column name="id" value="14016" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -1270,6 +1324,11 @@
             <column name="id" value="171" />
         </insert>
 
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="18" /> <!-- LISTEN -->
+            <column name="rank" value="1" />
+            <column name="id" value="181" />
+        </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="18" /> <!-- LISTEN -->
             <column name="rank" value="2" />
@@ -1620,9 +1679,16 @@
             <column name="prerequisite_skill_id" value="152" />
         </insert>
 
+        <!-- Improved Initiative [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="91" />
+            <column name="initiative" value="4" />
+            <column name="text" value="+4 Initiative" />
+        </insert>
+
         <!-- Modifiers -->
 
-        <!-- Pg gia' fatti -->
+        <!-- Pg gia' fatti 1000-->
         <!-- Puli -->
         <!-- Exotic Weapon Proficiency [General] -->
         <insert tableName="prerequisite">
@@ -1703,8 +1769,6 @@
         <!-- Madzia -->
         <insert tableName="prerequisite">
             <column name="id" value="1052" />
-            <!-- <column name="skill_study" 
-                value="[{ &quot;skillId&quot; : 27, &quot;rank&quot; : 3 }]" /> -->
             <column name="text" value="Focus SpellCraft" />
         </insert>
 
@@ -1728,6 +1792,307 @@
             <column name="schools_id" value="5" />
         </insert>
 
+        <!-- Size id:90.000 -->
+        <!-- FINE -->
+        <insert tableName="prerequisite">
+            <column name="id" value="90001" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 4 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : -16 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : 4 }" />
+            <column name="text" value="Fine size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90001" />
+            <column name="prerequisite_skill_id" value="1416" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90002" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 3 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : -12 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : 3 }" />
+            <column name="text" value="Diminutive size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90002" />
+            <column name="prerequisite_skill_id" value="1412" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90003" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 2 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : -8 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : 2 }" />
+            <column name="text" value="Tiny size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90003" />
+            <column name="prerequisite_skill_id" value="148" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90004" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 1 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : -4 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : 1 }" />
+            <column name="text" value="Small size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90004" />
+            <column name="prerequisite_skill_id" value="144" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90006" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -1 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : 4 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : -1 }" />
+            <column name="text" value="Large size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90006" />
+            <column name="prerequisite_skill_id" value="1404" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90007" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -2 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : 8 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : -2 }" />
+            <column name="text" value="Huge size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90007" />
+            <column name="prerequisite_skill_id" value="1408" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90008" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -3 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : 12 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : -3 }" />
+            <column name="text" value="Gargantuan size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90008" />
+            <column name="prerequisite_skill_id" value="14012" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90009" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -4 }" />
+            <column name="special_attacks"
+                value="{ &quot;grapple&quot; : 16 }" />
+            <column name="armor_class"
+                value="{ &quot;sizeBonus&quot; : -4 }" />
+            <column name="text" value="Colossal size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90009" />
+            <column name="prerequisite_skill_id" value="14016" />
+        </insert>
+
+        <!-- Razze id:100.000 -->
+        <!-- Dwarf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100001" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="abilitys"
+                value="{
+                 &quot;constitution&quot; : 2, 
+                 &quot;charisma&quot; : -2 
+                 }" />
+            <column name="text" value="Dwarf races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100001" />
+            <column name="prerequisite_skill_id" value="12" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100001" />
+            <column name="prerequisite_skill_id" value="62" />
+        </insert>
+
+        <!-- Elf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100002" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="abilitys"
+                value="{
+                 &quot;dexterity&quot; : 2, 
+                 &quot;constitution&quot; : -2 
+                 }" />
+            <column name="text" value="Elf races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100002" />
+            <column name="prerequisite_skill_id" value="182" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100002" />
+            <column name="prerequisite_skill_id" value="232" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100002" />
+            <column name="prerequisite_skill_id" value="282" />
+        </insert>
+
+        <!-- Orc -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100003" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="abilitys"
+                value="{
+                 &quot;strength&quot; : 4, 
+                 &quot;intelligence&quot; : -2,
+                 &quot;wisdom&quot; : -2,
+                 &quot;charisma&quot; : -2 
+                 }" />
+            <column name="text" value="Orc races modifiers" />
+        </insert>
+
+        <!-- Gnome -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100004" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="abilitys"
+                value="{
+                 &quot;strength&quot; : -2, 
+                 &quot;constitution&quot; : 2
+                 }" />
+            <column name="text" value="Gnome races modifiers" />
+        </insert>
+
+        <!-- Halfling -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100005" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="abilitys"
+                value="{
+                 &quot;strength&quot; : -2, 
+                 &quot;dexterity&quot; : 2
+                 }" />
+            <column name="text" value="Halfling races modifiers" />
+        </insert>
+
+        <!-- Human -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100006" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="text" value="Human races modifiers" />
+        </insert>
+
+        <!-- 150000 subRaces -->
+        <!-- Artic Dwarf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150001" />
+            <column name="text" value="Artic Dwarf modifiers" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;COLD&quot; ]
+                    } , {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ] }" />
+            <column name="abilitys"
+                value="{
+                 &quot;strength&quot; : 4, 
+                 &quot;dexterity&quot; : -2 
+                 }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <!-- Golden Dwarf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150002" />
+            <column name="text" value="Golden Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{ 
+                 &quot;dexterity&quot; : -2, 
+                 &quot;charisma&quot; : 2 
+                 }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ABERRATIONS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <!-- Grey Dwarf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150003" />
+            <column name="text" value="Grey Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{ 
+                 &quot;charisma&quot; : -2 
+                 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ 
+                    &quot;PARALYSIS&quot; , 
+                    &quot;PHANTASMS&quot; , 
+                    &quot;POISON&quot; ] 
+                } ] }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="144" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="181" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="281" />
+        </insert>
 
     </changeSet>
 </databaseChangeLog>

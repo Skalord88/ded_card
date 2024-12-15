@@ -1,10 +1,12 @@
-package pl.kolendateam.dadcard.classCharacter.entity;
+package pl.kolendateam.dadcard.savingThrow.entity;
 
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.classCharacter.dto.SavingThrowDTO;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
 
 @Setter
 @Getter
@@ -15,10 +17,14 @@ public class SavingThrow implements Serializable {
   int reflex;
   int will;
 
+  @JdbcTypeCode(SqlTypes.JSON)
+  Resistance[] resistance;
+
   public SavingThrow(SavingThrowDTO saving) {
     this.fortitude = saving.fortitude;
     this.reflex = saving.reflex;
     this.will = saving.will;
+    this.resistance = saving.resistance;
   }
 
   public boolean checkPrerequisiteST(SavingThrow savingThrow) {

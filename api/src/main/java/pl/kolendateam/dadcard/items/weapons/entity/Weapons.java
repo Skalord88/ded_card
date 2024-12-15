@@ -59,12 +59,12 @@ public class Weapons extends Items {
     }
     this.type = arry.toString();
     this.size = weapon.size;
-    if (weapon.specialAttacks != null) {
-      this.specialAttacks =
-        MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
-    } else {
-      this.specialAttacks = null;
-    }
+    // if (weapon.specialAttacks != null) {
+    //   this.specialAttacks =
+    //     MapperSpecialAttacks.toSpecialAttacks(weapon.specialAttacks);
+    // } else {
+    //   this.specialAttacks = null;
+    // }
     this.material = weapon.material;
     this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
     // if (weapon.enchantment == null) {

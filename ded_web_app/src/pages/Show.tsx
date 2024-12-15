@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  AbilitysAndModifiers,
   BonusAbilities
 } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
@@ -30,19 +29,16 @@ import {
   CalculateWeight
 } from "../components/Items/Inventory/Function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
-import {
-  FindInMoreLengthModifier,
-  FindInOneLengthModifier
-} from "../components/Modifiers/Function";
-import { Modifiers } from "../components/Modifiers/ModifierInterface";
-import { adjClass } from "../components/Race/AdjClass";
+
 import { FindAllAdjLevel } from "../components/Race/Function";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { reSizeArmor, reSizeWeapon } from "../components/Size/Function";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
-import { noneArmor, noneItem, noneShield, noneWeapon } from "../components/variables";
+import { emptyAbilitys, noneArmor, noneItem, noneShield, noneWeapon } from "../components/variables";
+import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
+import { CharToModify, modifyCharacter } from "../components/Prerequisite/functions/modifyCharacter";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -64,150 +60,193 @@ export const Show = () => {
 
   if (!char) return <>...character loading...</>;
 
-  const feats: FeatsToShow[] = GroupAllFeats([
-    ...char.featsList, //FeatPc
-    ...char.race.raceFeats, //Feat
-    ...char.archetypes.flatMap((ar) => ar.archetypeFeats), //Feat
-    ...char.classPcList //ClassPc
-  ]);
+  // const feats: FeatsToShow[] = GroupAllFeats([
+  //   ...char.featsList, //FeatPc
+  //   ...char.race.raceFeats, //Feat
+  //   ...char.archetypes.flatMap((ar) => ar.archetypeFeats), //Feat
+  //   ...char.classPcList //ClassPc
+  // ]);
 
-  const onlyModification: Modifiers[] = [...char.race.size.modifiers, ...char.race.modifiers, ...char.race.race.modifiers]
+  // const onlyModification: Modifiers[] = [...char.race.size.modifiers, ...char.race.modifiers, ...char.race.race.modifiers]
 
-  const modificationFromFeats: Modifiers[] = feats.flatMap(feat => feat.modifiers)
-  const modifications: Modifiers[] = [...onlyModification, ...modificationFromFeats]
+  // const modificationFromFeats: Modifiers[] = feats.flatMap(feat => feat.modifiers)
+  // const modifications: Modifiers[] = [...onlyModification, ...modificationFromFeats]
 
-  const abilitys: Abilitys = AbilitysAndModifiers(char.abilitys, modifications);
-  const strenght: number = BonusAbilities(abilitys, "STR");
-  const dexterity: number = BonusAbilities(abilitys, "DEX");
-  const initiativeMod: number = FindInOneLengthModifier(
-    modifications,
-    "INITIATIVE"
-  );
-  const bab: number = CountBabFromClassPc(char);
-  const specificBab: Modifiers[] = FindInMoreLengthModifier(modifications, [
-    "ATTACK_ROLL",
-    "WEAPON_FOUS"
-  ]);
+  // let mod = [
+    // ...char.featsList.flatMap(f => f.selected),
+  //   ...char.race.raceFeats.flatMap(f => f.modifiers),
+  //   ...char.archetypes.flatMap(f => f.modifiers)
+  // ];
 
-  const adjLevel: number = FindAllAdjLevel(char);
-
-  const adjBab: number = Math.floor(bab + adjLevel * adjClass.classBab);
-
-  const specificDmg: Modifiers[] = FindInMoreLengthModifier(modifications, [
-    "WEAPON_SPECIALIZATION"
-  ]);
-  const specificCrit: Modifiers[] = FindInMoreLengthModifier(modifications, [
-    "IMPROVED_CRITICAL"
-  ]);
-  const specificFavEnemy: Modifiers[] = FindInMoreLengthModifier(
-    modifications,
-    "FAVORED_ENEMY"
-  );
-
-  const specificFghFeats: number[] = FindFightingFeats(char.featsList);
-  const grapple: number =
-    adjBab + strenght + FindInOneLengthModifier(modifications, "GRAPPLE");
-  const strenghtAtt: number = adjBab + strenght;
-  const dexterityAtt: number = adjBab + dexterity;
-  const speed: number = FindInOneLengthModifier(modifications, "SPEED");
-
-  const armorModifiers: ArmorModifiers = {
-    size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
-    armor: char.inventory.armor ?
-      FindInOneLengthModifier(modifications, "ARMOR_BONUS") +
-      (char.inventory.armor.enchantmentList !== null?
-        char.inventory.armor.enchantmentList.reduce(
-        (tot, ench) => 
-          tot + ench.ability === null? 0 : ench.enchantment
-        , 0
-      ) : 0) : 0,
-    shiled: char.inventory.shield ?
-      FindInOneLengthModifier(modifications, "SHIELD_BONUS") +
-      (char.inventory.shield.enchantmentList !== null?
-      char.inventory.shield.enchantmentList.reduce(
-        (tot, ench) => 
-          tot + ench.ability === null? 0 : ench.enchantment
-        , 0
-      ) : 0) : 0,
-    dexterity: char.inventory.armor ? MaxdexterityCount(
-      BonusAbilities(abilitys, "DEX"),
-      char.inventory.armor.maxDex
-    ) : 0,
-    dodge: FindInOneLengthModifier(modifications, "DODGE_BONUS"),
-    natural: FindInOneLengthModifier(modifications, "NATURAL_ARMOR_BONUS"),
-    deflection: FindInOneLengthModifier(modifications, "DEFLECTION_BONUS")
+  let modChar: CharToModify = {
+    abilitys: emptyAbilitys,
+    bab: 0,
+    specialAttacks: {
+      bullRush: 0,
+      charge: 0,
+      disarm: 0,
+      grapple: 0,
+      overrun: 0,
+      sunder: 0
+    }
   };
+  let modif: Prerequisite[] = [];
+
+  if(char.race.size.modifiers !== null){
+    modif.push(char.race.size.modifiers)
+    modChar = modifyCharacter(char, modif);
+  }
+  if(char.race.modifiers !== null){
+    modif.push(char.race.modifiers)
+    modChar = modifyCharacter(char, modif);
+  }
+  if(char.race.race.modifiers !== null){
+    modif.push(char.race.race.modifiers)
+    modChar = modifyCharacter(char, modif);
+  }
+
+  console.log(char.race.size.modifiers)
+
+
+  //           bab={adjBab}
+  //           grapple={grapple}
+  //           strenghtAtt={strenghtAtt}
+  //           dexterityAtt={dexterityAtt}
+
+  // console.log(modChar.abilitys);
+  // console.log(modChar.race.modifiers?.abilitys);
+  // console.log(modChar.race.race.modifiers?.abilitys);
+
+  // const abilitys: Abilitys = ModifyAbilitys(char.abilitys, modifications);
+  // const strenght: number = BonusAbilities(abilitys, "STR");
+  // const dexterity: number = BonusAbilities(abilitys, "DEX");
+  // const initiativeMod: number = ModifyInitiative(char.abilitys, modifications)
+  // // FindInOneLengthModifier(
+  // //   modifications,
+  // //   "INITIATIVE"
+  // // );
+  // const specificBab: Modifiers[] = FindInMoreLengthModifier(modifications, [
+  //   "ATTACK_ROLL",
+  //   "WEAPON_FOUS"
+  // ]);
+
   
-  const inventory: Inventory = {
-    ...char.inventory,
-    armor: char.inventory.armor && "armorName" in char.inventory.armor ? 
-    reSizeArmor(char.race.size, char.inventory.armor) as Armor : noneArmor,
 
-    shield: char.inventory.shield && "shieldName" in char.inventory.shield ?
-    reSizeArmor(char.race.size, char.inventory.shield) as Shield : noneShield,
+  // const specificDmg: Modifiers[] = FindInMoreLengthModifier(modifications, [
+  //   "WEAPON_SPECIALIZATION"
+  // ]);
+  // const specificCrit: Modifiers[] = FindInMoreLengthModifier(modifications, [
+  //   "IMPROVED_CRITICAL"
+  // ]);
+  // const specificFavEnemy: Modifiers[] = FindInMoreLengthModifier(
+  //   modifications,
+  //   "FAVORED_ENEMY"
+  // );
 
-    weaponOne: char.inventory.weaponOne
-    //  ? char.inventory.weaponOne : noneWeapon,
-    ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
-    : reSizeWeapon(char.race.size, noneWeapon),
-    weaponTwo: char.inventory.weaponTwo
-    //  ? char.inventory.weaponTwo : noneWeapon,
-    ? reSizeWeapon(char.race.size, char.inventory.weaponTwo)
-    : reSizeWeapon(char.race.size, noneWeapon),
-    weaponThree: char.inventory.weaponThree
-    //  ? char.inventory.weaponThree : noneWeapon,
-    ? reSizeWeapon(char.race.size, char.inventory.weaponThree)
-    : reSizeWeapon(char.race.size, noneWeapon),
-    weaponFour: char.inventory.weaponFour
-    //  ? char.inventory.weaponFour : noneWeapon,
-    ? reSizeWeapon(char.race.size, char.inventory.weaponFour)
-    : reSizeWeapon(char.race.size, noneWeapon),
-    weaponFive: char.inventory.weaponFive
-    //  ? char.inventory.weaponFive : noneWeapon
-    ? reSizeWeapon(char.race.size, char.inventory.weaponFive)
-    : reSizeWeapon(char.race.size, noneWeapon)
-    ,
-    backpack: [noneItem, noneItem, noneItem],
-    head: noneItem,
-    neck: noneItem,
-    arms: noneItem,
-    hands: [noneItem, noneItem],
-    cloth: noneItem,
-    legs: noneItem
-  };
-  const weight: number = CalculateInventoryWeight(inventory);
-  const carrying: [string, number] = CalculateWeight(
-    abilitys.strength,
-    char.race.size.id,
-    weight
-  );
-  const attacks: Attacks = {
-    ...char.attacks,
-    firstAttackSetOne: char.attacks.firstAttackSetOne ? reSizeWeapon(
-      char.race.size,
-      char.attacks.firstAttackSetOne
-    ) : reSizeWeapon(char.race.size, noneWeapon),
-    secondAttackSetOne: char.attacks.secondAttackSetOne ? reSizeWeapon(
-      char.race.size,
-      char.attacks.secondAttackSetOne
-    ) : reSizeWeapon(char.race.size, noneWeapon),
-    additionalAttackSetOne: char.attacks.additionalAttackSetOne ? reSizeWeapon(
-      char.race.size,
-      char.attacks.additionalAttackSetOne
-    ) : reSizeWeapon(char.race.size, noneWeapon),
-    firstAttackSetTwo: char.attacks.firstAttackSetTwo ? reSizeWeapon(
-      char.race.size,
-      char.attacks.firstAttackSetTwo
-    ) : reSizeWeapon(char.race.size, noneWeapon),
-    secondAttackSetTwo: char.attacks.secondAttackSetTwo?  reSizeWeapon(
-      char.race.size,
-      char.attacks.secondAttackSetTwo
-    ) : reSizeWeapon(char.race.size, noneWeapon),
-    additionalAttackSetTwo: char.attacks.additionalAttackSetTwo ? reSizeWeapon(
-      char.race.size,
-      char.attacks.additionalAttackSetTwo
-    ) : reSizeWeapon(char.race.size, noneWeapon)
-  };
+  // const specificFghFeats: number[] = FindFightingFeats(char.featsList);
+  // const grapple: number =
+  //   adjBab + strenght + FindInOneLengthModifier(modifications, "GRAPPLE");
+  // const strenghtAtt: number = adjBab + strenght;
+  // const dexterityAtt: number = adjBab + dexterity;
+  // const speed: number = FindInOneLengthModifier(modifications, "SPEED");
+
+  // const armorModifiers: ArmorModifiers = {
+  //   size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
+  //   armor: char.inventory.armor ?
+  //     FindInOneLengthModifier(modifications, "ARMOR_BONUS") +
+  //     (char.inventory.armor.enchantmentList !== null?
+  //       char.inventory.armor.enchantmentList.reduce(
+  //       (tot, ench) => 
+  //         tot + ench.ability === null? 0 : ench.enchantment
+  //       , 0
+  //     ) : 0) : 0,
+  //   shiled: char.inventory.shield ?
+  //     FindInOneLengthModifier(modifications, "SHIELD_BONUS") +
+  //     (char.inventory.shield.enchantmentList !== null?
+  //     char.inventory.shield.enchantmentList.reduce(
+  //       (tot, ench) => 
+  //         tot + ench.ability === null? 0 : ench.enchantment
+  //       , 0
+  //     ) : 0) : 0,
+  //   dexterity: char.inventory.armor ? MaxdexterityCount(
+  //     BonusAbilities(abilitys, "DEX"),
+  //     char.inventory.armor.maxDex
+  //   ) : 0,
+  //   dodge: FindInOneLengthModifier(modifications, "DODGE_BONUS"),
+  //   natural: FindInOneLengthModifier(modifications, "NATURAL_ARMOR_BONUS"),
+  //   deflection: FindInOneLengthModifier(modifications, "DEFLECTION_BONUS")
+  // };
+  
+  // const inventory: Inventory = {
+  //   ...char.inventory,
+  //   armor: char.inventory.armor && "armorName" in char.inventory.armor ? 
+  //   reSizeArmor(char.race.size, char.inventory.armor) as Armor : noneArmor,
+
+  //   shield: char.inventory.shield && "shieldName" in char.inventory.shield ?
+  //   reSizeArmor(char.race.size, char.inventory.shield) as Shield : noneShield,
+
+  //   weaponOne: char.inventory.weaponOne
+  //   //  ? char.inventory.weaponOne : noneWeapon,
+  //   ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
+  //   : reSizeWeapon(char.race.size, noneWeapon),
+  //   weaponTwo: char.inventory.weaponTwo
+  //   //  ? char.inventory.weaponTwo : noneWeapon,
+  //   ? reSizeWeapon(char.race.size, char.inventory.weaponTwo)
+  //   : reSizeWeapon(char.race.size, noneWeapon),
+  //   weaponThree: char.inventory.weaponThree
+  //   //  ? char.inventory.weaponThree : noneWeapon,
+  //   ? reSizeWeapon(char.race.size, char.inventory.weaponThree)
+  //   : reSizeWeapon(char.race.size, noneWeapon),
+  //   weaponFour: char.inventory.weaponFour
+  //   //  ? char.inventory.weaponFour : noneWeapon,
+  //   ? reSizeWeapon(char.race.size, char.inventory.weaponFour)
+  //   : reSizeWeapon(char.race.size, noneWeapon),
+  //   weaponFive: char.inventory.weaponFive
+  //   //  ? char.inventory.weaponFive : noneWeapon
+  //   ? reSizeWeapon(char.race.size, char.inventory.weaponFive)
+  //   : reSizeWeapon(char.race.size, noneWeapon)
+  //   ,
+  //   backpack: [noneItem, noneItem, noneItem],
+  //   head: noneItem,
+  //   neck: noneItem,
+  //   arms: noneItem,
+  //   hands: [noneItem, noneItem],
+  //   cloth: noneItem,
+  //   legs: noneItem
+  // };
+  // const weight: number = CalculateInventoryWeight(inventory);
+  // const carrying: [string, number] = CalculateWeight(
+  //   abilitys.strength,
+  //   char.race.size.id,
+  //   weight
+  // );
+  // const attacks: Attacks = {
+  //   ...char.attacks,
+  //   firstAttackSetOne: char.attacks.firstAttackSetOne ? reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.firstAttackSetOne
+  //   ) : reSizeWeapon(char.race.size, noneWeapon),
+  //   secondAttackSetOne: char.attacks.secondAttackSetOne ? reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.secondAttackSetOne
+  //   ) : reSizeWeapon(char.race.size, noneWeapon),
+  //   additionalAttackSetOne: char.attacks.additionalAttackSetOne ? reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.additionalAttackSetOne
+  //   ) : reSizeWeapon(char.race.size, noneWeapon),
+  //   firstAttackSetTwo: char.attacks.firstAttackSetTwo ? reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.firstAttackSetTwo
+  //   ) : reSizeWeapon(char.race.size, noneWeapon),
+  //   secondAttackSetTwo: char.attacks.secondAttackSetTwo?  reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.secondAttackSetTwo
+  //   ) : reSizeWeapon(char.race.size, noneWeapon),
+  //   additionalAttackSetTwo: char.attacks.additionalAttackSetTwo ? reSizeWeapon(
+  //     char.race.size,
+  //     char.attacks.additionalAttackSetTwo
+  //   ) : reSizeWeapon(char.race.size, noneWeapon)
+  // };
 
   return (
     <>
@@ -215,15 +254,12 @@ export const Show = () => {
         <>
           <DeleteButton url={urlChar} />
           <CharacterData char={char} />
-          <AbilitysComponent abilitys={abilitys} />
+          <AbilitysComponent abilitys={modChar.abilitys} />
           <ClassExpGold char={char} />
           <BaseAttack
-            bab={adjBab}
-            grapple={grapple}
-            strenghtAtt={strenghtAtt}
-            dexterityAtt={dexterityAtt}
+            char={modChar}
           />
-          <Initiative initiativeDex={dexterity} initiativeMod={initiativeMod} />
+          {/* <Initiative initiativeDex={dexterity} initiativeMod={initiativeMod} />
           <SavingThrowComponent
             char={char}
             abilitys={abilitys}
@@ -253,7 +289,7 @@ export const Show = () => {
             modifications={modifications}
           />
           <SpeedComponent speed={speed} />
-          <FeatsComponent feats={feats} titolo=""/>
+          <FeatsComponent feats={feats} titolo=""/> */}
           </>
       ) : (
         <>
@@ -296,7 +332,7 @@ export const Show = () => {
                 gridRow: "2 / span 3"
               }}
             >
-              <AbilitysComponent abilitys={abilitys} />
+              <AbilitysComponent abilitys={modChar.abilitys} />
             </div>
             <div
               className="rpgui-container-framed-grey"
@@ -315,13 +351,10 @@ export const Show = () => {
               }}
             >
               <BaseAttack
-                bab={adjBab}
-                grapple={grapple}
-                strenghtAtt={strenghtAtt}
-                dexterityAtt={dexterityAtt}
+                char={modChar}
               />
             </div>
-            <div
+            {/* <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: 2,
@@ -429,8 +462,8 @@ export const Show = () => {
                 gridRow: 11
               }}
             >
-              <FeatsComponent feats={feats} titolo=""/>
-            </div>
+              <FeatsComponent feats={feats} titolo=""/> 
+            </div> */}
           </div>
         </>
       )}

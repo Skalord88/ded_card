@@ -5,8 +5,7 @@ import { FormattingText } from "../../Formatting/Function";
 
 export const D12Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,
-  value,
-  modifiers
+  value
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
@@ -37,7 +36,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({
           <span>
             {dice} + {value} = {dice + value}
           </span>
-          {modifiers.map((mod) => {
+          {/* {modifiers.map((mod) => {
             return (
               <>
                 <span style={{ color: "yellow" }}>
@@ -46,7 +45,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({
                 </span>
               </>
             );
-          })}
+          })} */}
         </span>
       </div>
     </>

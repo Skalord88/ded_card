@@ -8,191 +8,47 @@
         <insert tableName="size">
             <column name="id" value="1" />
             <column name="size" value="FINE" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : -16,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 16,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90001" />
         </insert>
         <insert tableName="size">
             <column name="id" value="2" />
             <column name="size" value="DIMINUTIVE" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : -12,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 12,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : 3,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : 3,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90002" />
         </insert>
         <insert tableName="size">
             <column name="id" value="3" />
             <column name="size" value="TINY" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : -8,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 8,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90003" />
         </insert>
         <insert tableName="size">
             <column name="id" value="4" />
             <column name="size" value="SMALL" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : -4,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : 1,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90004" />
         </insert>
         <insert tableName="size">
             <column name="id" value="5" />
             <column name="size" value="MEDIUM" />
-            <column name="modifiers" value="[]" />
+            <!-- <column name="modifiers" value="[]" /> -->
         </insert>
         <insert tableName="size">
             <column name="id" value="6" />
             <column name="size" value="LARGE" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : 4,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : -4,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : -1,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : -1,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90006" />
         </insert>
         <insert tableName="size">
             <column name="id" value="7" />
             <column name="size" value="HUGE" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : 8,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : -8,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : -2,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : -2,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90007" />
         </insert>
         <insert tableName="size">
             <column name="id" value="8" />
             <column name="size" value="GARGANTUAN" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : 12,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : -12,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : -3,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : -3,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90008" />
         </insert>
         <insert tableName="size">
             <column name="id" value="9" />
             <column name="size" value="COLOSSAL" />
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;GRAPPLE&quot;,
-            &quot;bonus&quot; : 16,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,
-            &quot;bonus&quot; : -16,
-            &quot;targets&quot; : [&quot;HIDE&quot;]
-            },{
-            &quot;modifier&quot; : &quot;ARMOR_SIZE&quot;,
-            &quot;bonus&quot; : -4,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-            &quot;bonus&quot; : -4,
-            &quot;targets&quot; : []
-            }
-            ]" />
+            <column name="modifiers_id" value="90009" />
         </insert>
     </changeSet>
 </databaseChangeLog>

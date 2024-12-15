@@ -1,11 +1,7 @@
 import { Abilitys } from "./Abilitys/Interface";
 import { CharacterPc, savingThrows } from "./interfaces";
-import {
-  FindInMoreLengthModifier,
-  FindInOneLengthModifier
-} from "./Modifiers/Function";
-import { Modifiers } from "./Modifiers/ModifierInterface";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { Prerequisite } from "./Prerequisite/interface/Prerequisite";
 import { FindAllAdjLevel } from "./Race/Function";
 import { CountSavingThrowFromClassPc } from "./Saving/Functions";
 import { Saving, SavingProps } from "./Saving/Saving";
@@ -13,7 +9,7 @@ import { Saving, SavingProps } from "./Saving/Saving";
 export type SavingThrowComponentProps = {
   char: CharacterPc;
   abilitys: Abilitys;
-  modifications: Modifiers[];
+  modifications: Prerequisite[];
 };
 
 export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
@@ -23,29 +19,29 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
 }) => {
   const lvAdjsaving: number = FindAllAdjLevel(char);
   const sT: savingThrows = CountSavingThrowFromClassPc(char.classPcList);
-  const savingBonusAll: number = FindInOneLengthModifier(
-    modifications,
-    "SAVING"
-  );
-  const saving: SavingProps[] = Saving(
-    abilitys,
-    {
-      fortitude: Math.floor(sT.fortitude + lvAdjsaving * 0.5),
-      reflex: Math.floor(sT.reflex + lvAdjsaving * 0.5),
-      will: Math.floor(sT.will + lvAdjsaving * 0.5)
-    },
-    savingBonusAll,
-    modifications
-  );
+  // const savingBonusAll: number = FindInOneLengthModifier(
+  //   modifications,
+  //   "SAVING"
+  // );
+  // const saving: SavingProps[] = Saving(
+  //   abilitys,
+  //   {
+  //     fortitude: Math.floor(sT.fortitude + lvAdjsaving * 0.5),
+  //     reflex: Math.floor(sT.reflex + lvAdjsaving * 0.5),
+  //     will: Math.floor(sT.will + lvAdjsaving * 0.5)
+  //   },
+    // savingBonusAll,
+    // modifications
+  // );
 
-  const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
-    modifications,
-    "SAVING"
-  );
-  const listOfSpellResistance: Modifiers[] = FindInMoreLengthModifier(
-    modifications,
-    "SPELL_RESISTANCE"
-  );
+  // const listOfBonus: Modifiers[] = FindInMoreLengthModifier(
+  //   modifications,
+  //   "SAVING"
+  // );
+  // const listOfSpellResistance: Modifiers[] = FindInMoreLengthModifier(
+  //   modifications,
+  //   "SPELL_RESISTANCE"
+  // );
 
   return (
     <>
@@ -71,24 +67,24 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         <div>
           <p>other</p>
         </div>
-        {saving.map((save) => (
+        {/* {saving.map((save) => (
           <SavingThrowOne key={save.id} save={save} listOfBonus={listOfBonus} />
-        ))}
+        ))} */}
       </div>
-        {listOfSpellResistance.map((sR, index) =>
+        {/* {listOfSpellResistance.map((sR, index) =>
           sR.bonus > 0 ? (
             <div key={index}>
               <p>Spell Resistence: {sR.bonus}</p>
             </div>
           ) : null
-        )}
+        )}  */}
     </>
   );
 };
 
 export type SavingThrowOneProps = {
   save: SavingProps;
-  listOfBonus: Modifiers[];
+  listOfBonus: Prerequisite[];
 };
 
 export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
@@ -99,11 +95,11 @@ export const SavingThrowOne: React.FC<SavingThrowOneProps> = ({
     <>
       <div>
         <p>
-          <D20Popup
+          {/* <D20Popup
             textOrWeapon={save.text + ":"}
             value={save.tot.number}
             modifiers={listOfBonus}
-          />
+          /> */}
         </p>
       </div>
       <div>

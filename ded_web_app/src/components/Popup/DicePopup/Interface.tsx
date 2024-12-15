@@ -1,10 +1,10 @@
 import { Weapon } from "../../interfaces";
-import { Modifiers } from "../../Modifiers/ModifierInterface";
+import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 
 export type DicePopupProps = {
   textOrWeapon: string;
   value: number;
-  modifiers: Modifiers[];
+  // modifiers: Prerequisite;
 };
 export type DicePopupWeaponProps = {
   type: string;
@@ -12,5 +12,5 @@ export type DicePopupWeaponProps = {
   bab: number[];
   dmg: number;
   increments: number[];
-  modifiers: Modifiers[];
+  modifiers: Prerequisite;
 };

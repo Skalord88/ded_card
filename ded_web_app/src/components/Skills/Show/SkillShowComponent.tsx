@@ -1,19 +1,19 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { CharacterPc } from "../../interfaces";
-import { FindInMoreLengthModifier } from "../../Modifiers/Function";
-import { Modifiers } from "../../Modifiers/ModifierInterface";
+import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
+
 import { SkillProps } from "../interface/SkillsInterface";
 import { SkillShowSkillsTableComponent } from "./SkillShowSkillsTableComponent";
 
 export type SkillShowComponentProps = {
   char: CharacterPc;
   abilitys: Abilitys;
-  modifications: Modifiers[];
+  modifications: Prerequisite;
 };
 
 export type ListModSkillsStudies = {
-  listSkills: Modifiers[];
-  listStudies: Modifiers[];
+  listSkills: Prerequisite;
+  listStudies: Prerequisite;
   penality: number;
   classSkillsId: number[]
 };
@@ -23,13 +23,13 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
   abilitys,
   modifications
 }) => {
-  const listModSkillsStudies: ListModSkillsStudies = {
-    listSkills: FindInMoreLengthModifier(modifications, "SKILL") || [],
-    listStudies: FindInMoreLengthModifier(modifications, "STUDY") || [],
-    penality: char.inventory.armor.penality + char.inventory.shield.penality,
-    classSkillsId: []
+  // const listModSkillsStudies: ListModSkillsStudies = {
+    // listSkills: FindInMoreLengthModifier(modifications, "SKILL") || [],
+    // listStudies: FindInMoreLengthModifier(modifications, "STUDY") || [],
+    // penality: char.inventory.armor.penality + char.inventory.shield.penality,
+    // classSkillsId: []
     // char.classPcList.flatMap(skills => skills.)
-  };
+  // };
 
   return (
     <>

@@ -12,7 +12,7 @@
         <column name="race_name" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="modifiers" type="jsonb" >
+        <column name="modifiers_id" type="int" >
           <constraints nullable="true"/>
         </column>
         <column name="avatar_url" type="varchar(255)">

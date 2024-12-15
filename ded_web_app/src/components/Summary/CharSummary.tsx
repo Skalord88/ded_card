@@ -2,11 +2,6 @@ import { useEffect, useState } from "react";
 import { CharacterPc, savingThrows } from "../interfaces";
 import { AbSummary } from "./AbSummary";
 import { SubRace } from "../Race/Interfaces";
-import {
-  FindAllModifications,
-  FindInOneLengthModifier
-} from "../Modifiers/Function";
-import { Modifiers } from "../Modifiers/ModifierInterface";
 import { AbilitysAndModifiers } from "../Abilitys/Functions";
 import { Abilitys } from "../Abilitys/Interface";
 import { Saving, SavingProps } from "../Saving/Saving";
@@ -24,62 +19,62 @@ export interface SummaryProps {
 }
 
 export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
-  const [modifiers, setModifiers] = useState<Modifiers[]>();
-  const [noAbilitysMod, setNoAbilitysMod] = useState<Modifiers[]>([]);
+  // const [modifiers, setModifiers] = useState<Modifiers[]>();
+  // const [noAbilitysMod, setNoAbilitysMod] = useState<Modifiers[]>([]);
   const [abilitys, setAbilitys] = useState<Abilitys>();
   const [saving, setSaving] = useState<SavingProps[]>();
 
-  useEffect(() => {
-    if (race) {
-      setModifiers(
-        FindAllModifications([
-          race?.modifiers,
-          race?.race.modifiers,
-          race?.size.modifiers
-        ])
-      );
-      if (race.levelAdjustment > 0) {
-      }
-    }
-  }, [race, character]);
+  // useEffect(() => {
+  //   if (race) {
+  //     setModifiers(
+  //       FindAllModifications([
+  //         race?.modifiers,
+  //         race?.race.modifiers,
+  //         race?.size.modifiers
+  //       ])
+  //     );
+  //     if (race.levelAdjustment > 0) {
+  //     }
+  //   }
+  // }, [race, character]);
 
-  useEffect(() => {
-    if (modifiers) {
-      setNoAbilitysMod(
-        modifiers?.filter(
-          (mod) =>
-            ![
-              "STRENGHT",
-              "DEXTERITY",
-              "CONSTITUTION",
-              "INTELLIGENCE",
-              "WISDOM",
-              "CHARISMA"
-            ].some((ability) => mod.modifier.includes(ability))
-        )
-      );
-    }
-  }, [modifiers]);
+  // useEffect(() => {
+  //   if (modifiers) {
+  //     setNoAbilitysMod(
+  //       modifiers?.filter(
+  //         (mod) =>
+  //           ![
+  //             "STRENGHT",
+  //             "DEXTERITY",
+  //             "CONSTITUTION",
+  //             "INTELLIGENCE",
+  //             "WISDOM",
+  //             "CHARISMA"
+  //           ].some((ability) => mod.modifier.includes(ability))
+  //       )
+  //     );
+  //   }
+  // }, [modifiers]);
 
-  useEffect(() => {
-    const sTAdj = CountSavingThrowFromAdjClass(FindAllAdjLevel(character));
+  // useEffect(() => {
+  //   const sTAdj = CountSavingThrowFromAdjClass(FindAllAdjLevel(character));
     
-    let savingBonusAll: number = 0;
-    if (modifiers) {
-      savingBonusAll = FindInOneLengthModifier(modifiers, "SAVING");
-      abilitys
-        ? setSaving(Saving(abilitys, sTAdj, savingBonusAll, modifiers))
-        : setSaving(
-            Saving(character.abilitys, sTAdj, savingBonusAll, modifiers)
-          );
-    }
-  }, [abilitys, character.abilitys, modifiers, race]);
+  //   let savingBonusAll: number = 0;
+  //   if (modifiers) {
+  //     savingBonusAll = FindInOneLengthModifier(modifiers, "SAVING");
+  //     abilitys
+  //       ? setSaving(Saving(abilitys, sTAdj, savingBonusAll, modifiers))
+  //       : setSaving(
+  //           Saving(character.abilitys, sTAdj, savingBonusAll, modifiers)
+  //         );
+  //   }
+  // }, [abilitys, character.abilitys, modifiers, race]);
 
-  useEffect(() => {
-    if (modifiers) {
-      setAbilitys(AbilitysAndModifiers(character.abilitys, modifiers));
-    }
-  }, [character.abilitys, modifiers]);
+  // useEffect(() => {
+  //   if (modifiers) {
+  //     setAbilitys(AbilitysAndModifiers(character.abilitys, modifiers));
+  //   }
+  // }, [character.abilitys, modifiers]);
 
   return (
     <>
@@ -93,9 +88,9 @@ export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
 
           <SavingSummary saving={saving} />
 
-          {noAbilitysMod ? <ModifierSummary modifiers={noAbilitysMod} /> : null}
+          {/* {noAbilitysMod ? <ModifierSummary modifiers={noAbilitysMod} /> : null} */}
 
-          {race ? <FeatsSummary feats={race?.raceFeats} /> : null}
+          {race ? <FeatsSummary feats={race?.subRaceFeats} /> : null}
           <p>
             {" "}
             Skills:

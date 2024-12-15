@@ -1,12 +1,4 @@
 import { AbilityAbbreviation, BonusAbilities } from "../../Abilitys/Functions";
-import {
-  OneSkillModBonusNumber,
-  SkillsIsPenal
-} from "../../Modifiers/Skills/Function";
-import {
-  OneStudyModBonus,
-  OneStudyModBonusNumber
-} from "../../Modifiers/Skills/Study/Function";
 import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { ClassSkillSkillsTableComponent } from "../ClassSkillSkillsTableComponent";
 import { ShowTableSkillProps, Study } from "../interface/SkillsInterface";
@@ -25,9 +17,9 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
   abilitys,
   modifiers
 }) => {
-  const bonus = 
-    OneSkillModBonusNumber(modifiers.listSkills, skill.nameSkill) +
-    SkillsIsPenal(skill.nameSkill, modifiers.penality)
+  const bonus = 0
+    // OneSkillModBonusNumber(modifiers.listSkills, skill.nameSkill) +
+    // SkillsIsPenal(skill.nameSkill, modifiers.penality)
 
   return (
     <>
@@ -132,7 +124,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
               {abilitys ? (
                 <>
                   <div className="rpgui-container-framed-grey-mini">
-                    <D20Popup
+                    {/* <D20Popup
                       key={skill.idSkill}
                       textOrWeapon={skill.nameSkill}
                       value={
@@ -143,8 +135,8 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                         ) +
                         bonus
                       }
-                      modifiers={[]}
-                    />
+                      modifiers={null}
+                    /> */}
                   </div>
                   <ShowSkillTotSkillsTableComponent
                     key={indexSkill + " Tot"}

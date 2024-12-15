@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,11 +21,14 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.attack.entity.AttackRoll;
+import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
-import pl.kolendateam.dadcard.classCharacter.entity.SavingThrow;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.race.entity.Speed;
+import pl.kolendateam.dadcard.savingThrow.entity.SavingThrow;
 import pl.kolendateam.dadcard.skills.entity.PrerequisiteSkills;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
@@ -60,10 +62,19 @@ public class Prerequisite implements Serializable {
 
   Integer bab;
 
-  Integer attackRoll;
+  @JdbcTypeCode(SqlTypes.JSON)
+  AttackRoll attackRoll;
+
+  Integer initiative;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  Speed speed;
 
   @JdbcTypeCode(SqlTypes.JSON)
   SavingThrow savingThrow;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  SpecialAttacks specialAttacks;
 
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(

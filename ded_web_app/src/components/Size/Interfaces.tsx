@@ -1,7 +1,8 @@
-import { Modifiers } from "../Modifiers/ModifierInterface"
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite"
+
 
 export type Size = {
     id: number,
     size: string,
-    modifiers: Modifiers[]
+    modifiers: Prerequisite | null
 }

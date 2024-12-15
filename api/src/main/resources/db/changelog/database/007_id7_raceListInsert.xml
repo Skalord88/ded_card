@@ -1,151 +1,61 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="7" author="oscar">
         <insert tableName="race">
-            <column name="race_name" value="Elf" /> <!-- 1-->
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;SPEED&quot;,
-            &quot;bonus&quot; : 30,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;DEXTERITY&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;IMMUNITY&quot;,            
-            &quot;bonus&quot; : 0,            
-            &quot;targets&quot; : [&quot;SLEEP&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SAVING&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;ENCHANTMENT&quot;]
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;LISTEN&quot;]            
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;SEARCH&quot;]            
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;SPOT&quot;]            
-            }]" />
+            <column name="id" value="1" />
+            <column name="race_name" value="Dwarf" /> <!-- 1 -->
+            <column name="modifiers_id" value="100001" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">
-            <column name="race_name" value="Orcs" /> <!-- 2-->
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;SPEED&quot;,
-            &quot;bonus&quot; : 30,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
-            &quot;bonus&quot; : 4,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;INTELLIGENCE&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;WISDOM&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;CHARISMA&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []
-            }]" />
+            <column name="id" value="2" />
+            <column name="race_name" value="Elf" /> <!-- 2 -->
+            <column name="modifiers_id" value="100002" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">
-            <column name="race_name" value="Halfling" /> <!-- 3-->
-            <column name="modifiers" value="[
-            {
-            &quot;modifier&quot; : &quot;SPEED&quot;,
-            &quot;bonus&quot; : 20,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;DEXTERITY&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;CLIMB&quot;]          
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;JUMP&quot;]            
-            },{
-            &quot;modifier&quot; : &quot;SKILL&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [&quot;MOVE_SILENTLY&quot;]            
-            },{            
-            &quot;modifier&quot; : &quot;SAVING&quot;,            
-            &quot;bonus&quot; : 1,            
-            &quot;targets&quot; : []            
-            },{            
-            &quot;modifier&quot; : &quot;SAVING&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : [
-                &quot;MORALE_MODIFIER&quot;,
-                &quot;FEAR&quot;
-                ]            
-            },{            
-            &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,            
-            &quot;bonus&quot; : 1,            
-            &quot;targets&quot; : [&quot;THROWN&quot;, &quot;SLING&quot;]            
-            }
-            ]" />
+            <column name="id" value="3" />
+            <column name="race_name" value="Orcs" /> <!-- 3 -->
+            <column name="avatar_url" value="address value" />
+            <column name="modifiers_id" value="100003" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">
-            <column name="race_name" value="Monstruos Humanoid" /> <!-- 4-->
-            <column name="modifiers" value="[]" />
+            <column name="id" value="4" />
+            <column name="race_name" value="Gnome" /> <!-- 4 -->
+            <column name="modifiers_id" value="100004" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">
-            <column name="race_name" value="Spirit Folk" /> <!-- 5-->
-            <column name="modifiers" value="[]" />
+            <column name="id" value="5" />
+            <column name="race_name" value="Halfling" /> <!-- 5 -->
+            <column name="modifiers_id" value="100005" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">
-            <column name="id" value="1000" /> <!-- 1000-->
-            <column name="race_name" value="Giant" />
-            <column name="modifiers" value="[]" />
+            <column name="id" value="6" />
+            <column name="race_name" value="Human" /> <!-- 6 -->
+            <column name="modifiers_id" value="100006" />
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
+            <column name="id" value="7" />
+            <column name="race_name" value="Monstruos Humanoid" /> <!-- 7 -->
+            <!-- <column name="modifiers" value="[]" /> -->
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
+            <column name="id" value="8" />
+            <column name="race_name" value="Spirit Folk" /> <!-- 8 -->
+            <!-- <column name="modifiers" value="[]" /> -->
+            <column name="avatar_url" value="address value" />
+        </insert>
+        <insert tableName="race">
+            <column name="id" value="9" />
+            <column name="race_name" value="Half Elf" /> <!-- 9 -->
+            <!-- <column name="modifiers" value="[]" /> -->
             <column name="avatar_url" value="address value" />
         </insert>
     </changeSet>
 </databaseChangeLog>
-
-<!-- <insert tableName="race">
-            <column name="race_name" value="Human" />
-            <column name="modifiers" value="[
-            {            
-            &quot;modifier&quot; : &quot;SPEED&quot;,            
-            &quot;bonus&quot; : 30,            
-            &quot;targets&quot; : []            
-            },{            
-            &quot;modifier&quot; : &quot;EXTRA_FEAT&quot;,            
-            &quot;bonus&quot; : 1,            
-            &quot;targets&quot; : []            
-            },{            
-            &quot;modifier&quot; : &quot;EXTRA_SKILLS_POINTS&quot;,            
-            &quot;bonus&quot; : 4,            
-            &quot;targets&quot; : []            
-            }
-            ]" />
-            <column name="avatar_url" value="address value" />
-        </insert> -->

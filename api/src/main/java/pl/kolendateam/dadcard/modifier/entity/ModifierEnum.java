@@ -134,6 +134,8 @@ public enum ModifierEnum {
   FEAR,
   DISEASES,
   POISON,
+  PHANTASMS,
+  PARALYSIS,
   MAGIC,
   NATURAL,
   SLEEP,
@@ -174,6 +176,9 @@ public enum ModifierEnum {
   FIRE_GIANT,
   HUMANOID,
   GNOLL,
+  GOBLINOIDS,
+  ORCS,
+  ABERRATIONS,
 
   // defence
   UNCANNY_DODGE,

@@ -1,6 +1,4 @@
-import { } from "../Modifiers/Ability/Function";
-import { FindInOneLengthModifier } from "../Modifiers/Function";
-import { Modifiers } from "../Modifiers/ModifierInterface";
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { Abilitys } from "./Interface";
 
 export function AbilityAbbreviation(ability: string): string {
@@ -41,26 +39,44 @@ export function BonusAbilities(ab: Abilitys, which: string) {
   }
 }
 
-export function AbilitysAndModifiers(abilitys: Abilitys, modifications: Modifiers[]): Abilitys {
+export function AbilitysAndModifiers(
+  abilitys: Abilitys,
+  modifications: Prerequisite[]
+): Abilitys {
+  let moddedAbilitys: Abilitys = abilitys;
 
-  return {
-    strength:
-      abilitys.strength +
-      FindInOneLengthModifier(modifications, "STRENGHT"),
-      dexterity:
-      abilitys.dexterity +
-      FindInOneLengthModifier(modifications, "DEXTERITY"),
-    constitution: 
-      abilitys.constitution +
-      FindInOneLengthModifier(modifications, "CONSTITUTION"),
-    intelligence:
-      abilitys.intelligence +
-      FindInOneLengthModifier(modifications, "INTELLIGENCE"),
-    wisdom: 
-      abilitys.wisdom +
-      FindInOneLengthModifier(modifications, "WISDOM"),
-    charisma: 
-      abilitys.charisma +
-      FindInOneLengthModifier(modifications, "CHARISMA"),
-  };
+  modifications.forEach((mod) =>
+    mod.abilitys != null
+      ? {
+          ...abilitys,
+          strength: +mod.abilitys.strength,
+          dexterity: +mod.abilitys.strength,
+          constitution: +mod.abilitys.strength,
+          intelligence: +mod.abilitys.strength,
+          wisdom: +mod.abilitys.strength,
+          charisma: +mod.abilitys.strength
+        }
+      : moddedAbilitys
+  );
+  return moddedAbilitys;
+
+  // strength:
+  //   abilitys.strength +
+  //   FindInOneLengthModifier(modifications, "STRENGHT"),
+  //   dexterity:
+  //   abilitys.dexterity +
+  //   FindInOneLengthModifier(modifications, "DEXTERITY"),
+  // constitution:
+  //   abilitys.constitution +
+  //   FindInOneLengthModifier(modifications, "CONSTITUTION"),
+  // intelligence:
+  //   abilitys.intelligence +
+  //   FindInOneLengthModifier(modifications, "INTELLIGENCE"),
+  // wisdom:
+  //   abilitys.wisdom +
+  //   FindInOneLengthModifier(modifications, "WISDOM"),
+  // charisma:
+  //   abilitys.charisma +
+  //   FindInOneLengthModifier(modifications, "CHARISMA"),
+  // };
 }

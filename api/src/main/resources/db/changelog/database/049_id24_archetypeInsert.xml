@@ -8,7 +8,7 @@
       <column name="archetype_name" value="Half-Dragon" />
       <column name="level_adjustment" value="3" />
       <column name="avatar_url" value="" />
-      <column name="modifiers"
+      <!-- <column name="modifiers"
         value="[
       {
             &quot;modifier&quot; : &quot;STRENGHT&quot;,
@@ -31,13 +31,13 @@
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : []
             }
-      ]" />
+      ]" /> -->
     </insert>
     <insert tableName="archetype">
       <column name="archetype_name" value="Half-Fiend" />
       <column name="level_adjustment" value="4" />
       <column name="avatar_url" value="" />
-      <column name="modifiers" value="[
+      <!-- <column name="modifiers" value="[
       {
             &quot;modifier&quot; : &quot;STRENGHT&quot;,
             &quot;bonus&quot; : 4,
@@ -87,13 +87,13 @@
             &quot;bonus&quot; : 10,
             &quot;targets&quot; : [&quot;HD&quot;]
             }
-            ]" />
+            ]" /> -->
     </insert>
     <insert tableName="archetype">
       <column name="archetype_name" value="Vampire" />
       <column name="level_adjustment" value="8" />
       <column name="avatar_url" value="" />
-      <column name="modifiers" value="[
+      <!-- <column name="modifiers" value="[
       {
             &quot;modifier&quot; : &quot;STRENGHT&quot;,
             &quot;bonus&quot; : 6,
@@ -103,7 +103,7 @@
             &quot;bonus&quot; : 4,
             &quot;targets&quot; : []
             }
-            ]" />
+            ]" /> -->
     </insert>
   </changeSet>
 </databaseChangeLog>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Feat, FeatsToShow, Prerequisite } from "./Interface/FeatInterface";
+import { Feat, FeatsToShow } from "./Interface/FeatInterface";
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 
 export type FeatsComponentProps = {
   feats: FeatsToShow[];
@@ -105,13 +106,13 @@ export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
     <>
       {prerequisite != null ? (
         <>
-          {prerequisite.prerequisite?.items.map((it) => (
+          {/* {prerequisite.prerequisite?.items.map((it) => (
             <li>{it.name}</li>
-          ))}
+          ))} */}
 
-          {prerequisite.prerequisite?.feats.map((ft) => (
+          {/* {prerequisite.prerequisite?.feats.map((ft) => (
             <li>{ft.featName}</li>
-          ))}
+          ))} */}
 
           <p>{prerequisite.prerequisite?.armorType}</p>
           <p>{prerequisite.prerequisite?.weaponType}</p>

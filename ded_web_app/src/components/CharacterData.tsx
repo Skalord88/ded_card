@@ -1,10 +1,10 @@
-import { SignNumber } from "../components/functions";
+import { BonusAbilities, SignNumber } from "../components/functions";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FormattingText } from "./Formatting/Function";
 import { SignAndCount } from "./functions";
 import { CharacterPc } from "./interfaces";
-import { } from "./Modifiers/Ability/Function";
 import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { FindAllAdjLevel } from "./Race/Function";
 import { Archetype } from "./Race/Interfaces";
 
@@ -129,33 +129,29 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 };
 
 export type BaseAttackProp = {
-  bab: number;
-  grapple: number;
-  strenghtAtt: number;
-  dexterityAtt: number;
+  char: CharToModify
 };
 
 export const BaseAttack: React.FC<BaseAttackProp> = ({
-  bab,
-  grapple,
-  strenghtAtt,
-  dexterityAtt
+  char
 }) => {
+  const grapple: number = char.bab + char.specialAttacks.grapple
+  const strenghtAtt: number = BonusAbilities(char.abilitys, "STR") + char.bab
+  const dexterityAtt: number = BonusAbilities(char.abilitys, "DEX") + char.bab
   return (
     <>
       <div>
         <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
 
         <p>
-          bs atk bns: {SignAndCount([bab]).sign}
-          {SignAndCount([bab]).number}
+          bs atk bns: {SignAndCount([char.bab]).sign}
+          {SignAndCount([char.bab]).number}
         </p>
         <div>
           <p>
             <D20Popup
               textOrWeapon={"grapple: "}
               value={grapple}
-              modifiers={[]}
             />
             {SignNumber(grapple)}
             {grapple}
@@ -166,8 +162,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({
           <D20Popup
             textOrWeapon={"STR att: "}
             value={strenghtAtt}
-            modifiers={[]}
-          />
+          /> 
           {SignNumber(strenghtAtt)}
           {strenghtAtt}
         </p>
@@ -175,8 +170,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({
           <D20Popup
             textOrWeapon={"DEX att: "}
             value={dexterityAtt}
-            modifiers={[]}
-          />
+          /> 
           {SignNumber(dexterityAtt)}
           {dexterityAtt}
         </p>

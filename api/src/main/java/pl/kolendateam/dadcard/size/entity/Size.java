@@ -1,11 +1,14 @@
 package pl.kolendateam.dadcard.size.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +18,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Entity
@@ -31,8 +35,13 @@ public class Size implements Serializable {
   @Enumerated(EnumType.STRING)
   SizeEnum size;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers = new HashSet<>();
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   public Size(int n) {
     this.id = n;

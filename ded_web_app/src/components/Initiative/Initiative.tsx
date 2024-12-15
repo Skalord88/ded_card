@@ -18,7 +18,7 @@ export const Initiative: React.FC<InitiativeProps> = ({
       <div style={{ display: "flex" }}>
         <div key={"tot"}>
           <p style={{ flex: 1 }}>
-            <D12Popup textOrWeapon="tot:" value={totInit} modifiers={[]} />
+            {/* <D12Popup textOrWeapon="tot:" value={totInit} modifiers={[]} /> */}
           </p>
         </div>
         {initiativeDex !== 0 ? (

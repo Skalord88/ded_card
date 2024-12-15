@@ -1,9 +1,8 @@
 package pl.kolendateam.dadcard.size.dto;
 
-import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
@@ -12,21 +11,14 @@ public class SizeDTO {
 
   public int id;
   public SizeEnum size;
-  public Set<ModifierDTO> modifiers;
-
-  // public SpecialAttacksDTO specialAttacks;
-  // public SkillsDTO skills;
-  // public ArmorClassDTO armor;
-  // public int bab;
+  public PrerequisiteDTO modifiers;
 
   public SizeDTO(Size size) {
     this.id = size.getId();
     this.size = size.getSize();
-    this.modifiers = MapperModifierBonus.toSetModifierDTO(size.getModifiers());
+    this.modifiers =
+      size.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(size.getModifiers())
+        : null;
   }
 }
-// this.specialAttacks =
-//   MapperSpecialAttacks.toSpecialAttacksDTO(size.getSpecialAttacks());
-// this.skills = MapperSkillsToDTO.toOneSkillDTO(size.getSkill());
-// this.armor = MapperArmorClassDTO.toArmorClassDTO(size.getArmorBonus());
-// this.bab = size.getBab();

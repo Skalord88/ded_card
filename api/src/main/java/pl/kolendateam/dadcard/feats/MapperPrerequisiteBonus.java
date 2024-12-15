@@ -4,14 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.race.dto.SpeedDTO;
+import pl.kolendateam.dadcard.race.entity.Speed;
 
 public class MapperPrerequisiteBonus {
 
   public static PrerequisiteDTO toPrerequisiteDTO(Prerequisite pre) {
-    if (pre != null) {
-      if (pre.getFeats() != null) return new PrerequisiteDTO(pre);
-    }
-    return new PrerequisiteDTO();
+    return new PrerequisiteDTO(pre);
   }
 
   public static List<PrerequisiteDTO> toPrerequisiteListDTO(
@@ -26,5 +25,9 @@ public class MapperPrerequisiteBonus {
     }
 
     return listOfBonusDTO;
+  }
+
+  public static SpeedDTO toSpeedDTO(Speed speed) {
+    return new SpeedDTO(speed);
   }
 }

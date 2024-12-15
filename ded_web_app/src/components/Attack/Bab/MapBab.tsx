@@ -9,9 +9,7 @@ import {
 } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
 import { ChangeCritWithFeat } from "../../Items/Functions/Functions";
-import { FindWeaponToModified } from "../../Modifiers/Bab/Function";
-import { FindInOneLengthModifier } from "../../Modifiers/Function";
-import { Modifiers } from "../../Modifiers/ModifierInterface";
+import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {
@@ -21,7 +19,7 @@ export type MapBabProps = {
   dexterityAtt: number;
   weapon: Weapon;
   position: Position;
-  specific: Modifiers[][];
+  specific: Prerequisite[][];
   specificFghFeats: number[];
 };
 
@@ -65,18 +63,19 @@ export const MapBab: React.FC<MapBabProps> = ({
     tot + enchanted.ability === null? enchanted.enchantment : 0 , 0)
   );
 
-  const strenghtAttModified: number =
-    strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
+  // const strenghtAttModified: number =
+  //   strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
-  const dexterityAttModified: number =
-    dexterityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
+  // const dexterityAttModified: number =
+  //   dexterityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
 
-  const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
+  // const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
 
   const enchDmg: number = getEnchantDmg(
     weapon.enchantmentList.reduce((tot, enchanted) =>
     tot + enchanted.ability === null ? enchanted.enchantment : 0 , 0
-    )) + compo;
+    )) 
+    // + compo;
 
   const twoHandDmg: number = position.twoHanded
     ? strenght + Math.floor(strenght / 2) + enchDmg
@@ -84,48 +83,52 @@ export const MapBab: React.FC<MapBabProps> = ({
   const dmgTwoHand: number =
     twoHandDmg < strenght + enchDmg ? strenght + enchDmg : twoHandDmg;
 
-  const critWeapon: Weapon = ChangeCritWithFeat(weapon,
-    FindWeaponToModified(specific[2], weapon).find
-  )
+  // const critWeapon: Weapon = ChangeCritWithFeat(weapon,
+  //   FindWeaponToModified(specific[2], weapon).find
+  // )
 
   return (
     <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
-        {WeaponRanged(weapon) ? null : (
-            <AttackOptions
-              type="melee"
-              weapon={critWeapon}
-              dmg={dmgTwoHand}
-              strenghtAtt={strenghtAttModified}
-              dexterityAtt={dexterityAttModified}
-              position={position}
-              increments={attacksIncrements}
-              attackFn={AttackMelee}
-              specificFghFeats={specificFghFeats}
-              specificTarget={specific[3]}
-            />
-        )}
+        {WeaponRanged(weapon) ? null : null
+        // (
+        //     <AttackOptions
+        //       type="melee"
+        //       weapon={critWeapon}
+        //       dmg={dmgTwoHand}
+        //       strenghtAtt={strenghtAttModified}
+        //       dexterityAtt={dexterityAttModified}
+        //       position={position}
+        //       increments={attacksIncrements}
+        //       attackFn={AttackMelee}
+        //       specificFghFeats={specificFghFeats}
+        //       specificTarget={specific[3]}
+        //     />
+        // )
+        }
       </div>
       <div style={{ gridColumn: 1, gridRow: 3 }}>
-        {WeaponRanged(weapon) || WeaponThrown(weapon) ? (
-          <AttackOptions
-            type="distance"
-            weapon={critWeapon}
-            dmg={enchDmg}
-            position={position}
-            strenghtAtt={strenghtAttModified}
-            dexterityAtt={dexterityAttModified}
-            increments={attacksIncrements}
-            attackFn={AttackRanged}
-            specificFghFeats={specificFghFeats}
-            specificTarget={specific[3]}
-          />
-        ) : null}
+        {WeaponRanged(weapon) || WeaponThrown(weapon) ? 
+        // (
+        //   <AttackOptions
+        //     type="distance"
+        //     weapon={critWeapon}
+        //     dmg={enchDmg}
+        //     position={position}
+        //     strenghtAtt={strenghtAttModified}
+        //     dexterityAtt={dexterityAttModified}
+        //     increments={attacksIncrements}
+        //     attackFn={AttackRanged}
+        //     specificFghFeats={specificFghFeats}
+        //     specificTarget={specific[3]}
+        //   />
+        // )
+        null : null}
       </div>
       <div style={{ gridColumn: 1, gridRow: 2 }}>
         {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? null : (
           <>
-            {position.twoHanded ? null : (
+            {/* {position.twoHanded ? null : (
               <AttackOptions
                 type="melee two hands"
                 weapon={critWeapon}
@@ -138,26 +141,28 @@ export const MapBab: React.FC<MapBabProps> = ({
                 specificFghFeats={specificFghFeats}
                 specificTarget={specific[3]}
               />
-            )}
+            )} */}
           </>
         )}
       </div>
       <div style={{ gridColumn: 1, gridRow: 4 }}>
         {WeaponTwoHanded(weapon) ? null : WeaponRanged(weapon) ||
-          WeaponThrown(weapon) ? (
-          <AttackOptions
-            type="distance two hands"
-            weapon={critWeapon}
-            dmg={enchDmg}
-            position={position}
-            strenghtAtt={strenghtAttModified}
-            dexterityAtt={dexterityAttModified}
-            increments={attacksIncrements}
-            attackFn={AttackIIRanged}
-            specificFghFeats={specificFghFeats}
-            specificTarget={specific[3]}
-          />
-        ) : null}
+          WeaponThrown(weapon) ? 
+        //   (
+        //   <AttackOptions
+        //     type="distance two hands"
+        //     weapon={critWeapon}
+        //     dmg={enchDmg}
+        //     position={position}
+        //     strenghtAtt={strenghtAttModified}
+        //     dexterityAtt={dexterityAttModified}
+        //     increments={attacksIncrements}
+        //     attackFn={AttackIIRanged}
+        //     specificFghFeats={specificFghFeats}
+        //     specificTarget={specific[3]}
+        //   />
+        // )
+        null : null}
       </div>
     </div>
   );

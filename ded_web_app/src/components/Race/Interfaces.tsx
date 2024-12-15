@@ -1,29 +1,31 @@
 import { Size } from "../Size/Interfaces"
 import { Feat } from "../Feats/Interface/FeatInterface"
-import { Modifiers } from "../Modifiers/ModifierInterface"
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite"
+
 
 export type Race = {
     id: number,
     raceName: string,
     avatarRaceUrl: string,
-    modifiers: Modifiers[]
+    modifiers: Prerequisite | null,
+    raceFeats: Feat[]
 }
 
 export type SubRace = {
     id: number,
-    race: Race;
     subRacesName: string;
-    avatarUrl: string;
-    modifiers: Modifiers[],
-    raceFeats: Feat[],
-    levelAdjustment: number;
+    race: Race;
     size: Size;
+    avatarUrl: string;
+    modifiers: Prerequisite | null,
+    subRaceFeats: Feat[],
     availableRegions: Region[]
+    levelAdjustment: number;
 }
 export type Archetype = {
     id: number,
     archetypeName: string;
-    modifiers: Modifiers[],
+    modifiers: Prerequisite | null,
     archetypeFeats: Feat[],
     levelAdjustment: number;
 }
