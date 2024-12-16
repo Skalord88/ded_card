@@ -1,44 +1,20 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  BonusAbilities
-} from "../components/Abilitys/Functions";
-import { Abilitys } from "../components/Abilitys/Interface";
 import { AbilitysComponent } from "../components/AbilitysComponent";
-import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { MaxdexterityCount } from "../components/Armor/Function";
-import { ArmorModifiers } from "../components/Armor/interface/ArmorInterface";
-import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
-import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import {
-  BaseAttack,
   CharacterData,
   ClassExpGold
 } from "../components/CharacterData";
 import { DeleteButton } from "../components/DeleteButton";
-import { FeatsComponent } from "../components/Feats/FeatsComponent";
-import { FindFightingFeats } from "../components/Feats/FindFightingFeats";
-import { GroupAllFeats } from "../components/Feats/Function";
-import { FeatsToShow } from "../components/Feats/Interface/FeatInterface";
-import { HpComponent } from "../components/HpComponent";
 import { Initiative } from "../components/Initiative/Initiative";
-import { Armor, Attacks, CharacterPc, Inventory, Shield } from "../components/interfaces";
-import {
-  CalculateInventoryWeight,
-  CalculateWeight
-} from "../components/Items/Inventory/Function";
-import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
+import { CharacterPc } from "../components/interfaces";
 
-import { FindAllAdjLevel } from "../components/Race/Function";
-import { SavingThrowComponent } from "../components/SavingThrowComponent";
-import { reSizeArmor, reSizeWeapon } from "../components/Size/Function";
-import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
-import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
-import { emptyAbilitys, noneArmor, noneItem, noneShield, noneWeapon } from "../components/variables";
+import { emptyAbilitys } from "../components/variables";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 import { CharToModify, modifyCharacter } from "../components/Prerequisite/functions/modifyCharacter";
+import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -81,14 +57,9 @@ export const Show = () => {
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
     bab: 0,
-    specialAttacks: {
-      bullRush: 0,
-      charge: 0,
-      disarm: 0,
-      grapple: 0,
-      overrun: 0,
-      sunder: 0
-    }
+    attackRoll: [],
+    specialAttacks: [],
+    initiative : 0
   };
   let modif: Prerequisite[] = [];
 
@@ -104,14 +75,12 @@ export const Show = () => {
     modif.push(char.race.race.modifiers)
     modChar = modifyCharacter(char, modif);
   }
-
-  console.log(char.race.size.modifiers)
-
-
-  //           bab={adjBab}
-  //           grapple={grapple}
-  //           strenghtAtt={strenghtAtt}
-  //           dexterityAtt={dexterityAtt}
+  char.featsList.forEach(f => {
+    if(f.selected !== null) {
+      modif.push(f.selected)
+      modChar = modifyCharacter(char, modif)
+    }
+  })
 
   // console.log(modChar.abilitys);
   // console.log(modChar.race.modifiers?.abilitys);
@@ -259,8 +228,8 @@ export const Show = () => {
           <BaseAttack
             char={modChar}
           />
-          {/* <Initiative initiativeDex={dexterity} initiativeMod={initiativeMod} />
-          <SavingThrowComponent
+          <Initiative char={modChar} />
+          {/* <SavingThrowComponent
             char={char}
             abilitys={abilitys}
             modifications={modifications}
@@ -354,7 +323,7 @@ export const Show = () => {
                 char={modChar}
               />
             </div>
-            {/* <div
+            <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: 2,
@@ -362,11 +331,10 @@ export const Show = () => {
               }}
             >
               <Initiative
-                initiativeDex={dexterity}
-                initiativeMod={initiativeMod}
+                char={modChar}
               />
             </div>
-            <div
+            {/* <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",

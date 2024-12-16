@@ -110,7 +110,11 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
         {cl.map((classe, index) => {
           return (
             <div key={index}>
-              <p>{FormattingText(classe.classCharacter.className) + " " + classe.level}</p>
+              <p>
+                {FormattingText(classe.classCharacter.className) +
+                  " " +
+                  classe.level}
+              </p>
             </div>
           );
         })}
@@ -123,57 +127,6 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
             </div>
           );
         })}
-      </div>
-    </>
-  );
-};
-
-export type BaseAttackProp = {
-  char: CharToModify
-};
-
-export const BaseAttack: React.FC<BaseAttackProp> = ({
-  char
-}) => {
-  const grapple: number = char.bab + char.specialAttacks.grapple
-  const strenghtAtt: number = BonusAbilities(char.abilitys, "STR") + char.bab
-  const dexterityAtt: number = BonusAbilities(char.abilitys, "DEX") + char.bab
-  return (
-    <>
-      <div>
-        <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
-
-        <p>
-          bs atk bns: {SignAndCount([char.bab]).sign}
-          {SignAndCount([char.bab]).number}
-        </p>
-        <div>
-          <p>
-            <D20Popup
-              textOrWeapon={"grapple: "}
-              value={grapple}
-            />
-            {SignNumber(grapple)}
-            {grapple}
-          </p>
-        </div>
-
-        <p>
-          <D20Popup
-            textOrWeapon={"STR att: "}
-            value={strenghtAtt}
-          /> 
-          {SignNumber(strenghtAtt)}
-          {strenghtAtt}
-        </p>
-        <p>
-          <D20Popup
-            textOrWeapon={"DEX att: "}
-            value={dexterityAtt}
-          /> 
-          {SignNumber(dexterityAtt)}
-          {dexterityAtt}
-        </p>
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 export type DicePopupProps = {
   textOrWeapon: string;
   value: number;
-  // modifiers: Prerequisite;
+  modifiers: any;
 };
 export type DicePopupWeaponProps = {
   type: string;

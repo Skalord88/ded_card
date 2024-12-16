@@ -18,4 +18,5 @@ public class SpecialAttacks implements Serializable {
   int grapple;
   int overrun;
   int sunder;
+  String special;
 }

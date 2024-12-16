@@ -4,20 +4,21 @@ import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
 import { CharacterPc, SpecialAttacks } from "../../interfaces";
 import { adjClass } from "../../Race/AdjClass";
 import { FindAllAdjLevel } from "../../Race/Function";
-import { emptySpecialAttacks } from "../../variables";
 import { changeAbilitysFromPrerequisite } from "../abilitys/functions/function";
 import { Prerequisite } from "../interface/Prerequisite";
-import { changeSpecialAttacksFromPrerequisite } from "../specialAttacks/function/function";
 import {
   findAbilitysPrerequisite,
+  findAttackRollPrerequisite,
+  findInitiativePrerequisite,
   findSpecialAttacksPrerequisite
 } from "./findSpecificPrerequisite";
 
 export type CharToModify = {
   abilitys: Abilitys;
   bab: number;
-  attackRoll: AttackRoll;
-  specialAttacks: SpecialAttacks;
+  attackRoll: AttackRoll[];
+  specialAttacks: SpecialAttacks[];
+  initiative: number;
 };
 
 export const modifyCharacter = (
@@ -28,13 +29,14 @@ export const modifyCharacter = (
   const adjBab: number = Math.floor(
     CountBabFromClassPc(char) + FindAllAdjLevel(char) * adjClass.classBab
   );
-  const specialAttacks: SpecialAttacks[] = findSpecialAttacksPrerequisite(prer);
 
   const newChar: CharToModify = {
     abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
     bab: adjBab,
-    attackRoll: {},
-    specialAttacks: changeSpecialAttacksFromPrerequisite(emptySpecialAttacks, specialAttacks)
+    attackRoll: findAttackRollPrerequisite(prer),
+    specialAttacks: findSpecialAttacksPrerequisite(prer),
+    initiative: findInitiativePrerequisite(prer)
   };
+  console.log(newChar.attackRoll)
   return newChar;
 };

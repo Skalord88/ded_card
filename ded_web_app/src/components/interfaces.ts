@@ -89,6 +89,7 @@ export type SpecialAttacks = {
   grapple: number;
   overrun: number;
   sunder: number;
+  special: string
 }
 
 export interface armorClass {

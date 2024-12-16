@@ -1927,6 +1927,11 @@
         <insert tableName="prerequisite">
             <column name="id" value="100001" />
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="special_attacks" 
+                value="{ 
+                &quot;bullRush&quot;: 4,
+                &quot;special&quot; : &quot;Stability: A dwarf gains a +4 bonus on ability checks made to resist being bull rushed or tripped when standing on the ground (but not when climbing, flying, riding, or otherwise not standing firmly on the ground)&quot;
+                }" />
             <column name="abilitys"
                 value="{
                  &quot;constitution&quot; : 2, 

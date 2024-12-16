@@ -14,6 +14,7 @@ public class SpecialAttacksDTO {
   public int grapple;
   public int overrun;
   public int sunder;
+  public String special;
 
   public SpecialAttacksDTO(SpecialAttacks specialAttacks) {
     this.bullRush = specialAttacks.getBullRush();
@@ -22,5 +23,6 @@ public class SpecialAttacksDTO {
     this.grapple = specialAttacks.getGrapple();
     this.overrun = specialAttacks.getOverrun();
     this.sunder = specialAttacks.getSunder();
+    this.special = specialAttacks.getSpecial();
   }
 }

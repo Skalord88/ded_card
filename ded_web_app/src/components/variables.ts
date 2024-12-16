@@ -185,7 +185,8 @@ export const emptySpecialAttacks: SpecialAttacks = {
     disarm: 0,
     grapple: 0,
     overrun: 0,
-    sunder: 0
+    sunder: 0,
+    special: ""
 }
 
 export const emptyPrerequisite: Prerequisite = {

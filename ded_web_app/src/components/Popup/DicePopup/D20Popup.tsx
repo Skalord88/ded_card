@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
-import { FormattingText } from "../../Formatting/Function";
 import { DicePopupProps } from "./Interface";
 import { ThrowDice } from "../../Dice/ThrowDice";
 
 export const D20Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,
-  value
+  value,
+  modifiers
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
+
+  const text: string = textOrWeapon + ":";
 
   const togglePopup = (show: boolean) => {
     if (show) {
@@ -26,7 +28,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
       onMouseLeave={() => togglePopup(false)}
       style={{ color: "yellow" }}
     >
-      {textOrWeapon}
+      {text}
 
       <span
         style={{ width: 300, textAlign: "center" }}
@@ -34,18 +36,8 @@ export const D20Popup: React.FC<DicePopupProps> = ({
           showPopup ? "show" : ""
         }`}
       >
+        
         <ThrowDice dice={dice} value={value} />
-        {/* {modifiers.map((mod, index) => (
-          <span key={index} style={{ color: "yellow" }}>
-              {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus}{" "}
-              {mod.targets.length > 0
-                ? "vs " +
-                  FormattingText(
-                    mod.targets[1] ? mod.targets[1] + ", " : "" + mod.targets[0]
-                  )
-                : null}
-          </span>
-        ))} */}
       </span>
     </div>
   );
