@@ -1,19 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
+  Armor,
   Inventory,
   Item,
-  Armor,
+  ItemsList,
   Shield,
   Weapon,
-  WonderousItem,
-  ItemsList
+  WonderousItem
 } from "../../interfaces";
-import { noneArmor, noneShield, noneWeapon, noneItem } from "../../variables";
+import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
+import { FilterNoItem } from "../Functions/functions";
 import { BuyBackpack } from "./BuyBackpack";
 import { BuyEnchantedItemInventory } from "./BuyEnchantedItemInventory";
 import { BuyItemInventory } from "./BuyItemInventory";
 import { BuyRings } from "./BuyRing";
-import { FilterNoItem } from "../Functions/Functions";
 
 export type CharInventory = {
   inventory: Inventory;

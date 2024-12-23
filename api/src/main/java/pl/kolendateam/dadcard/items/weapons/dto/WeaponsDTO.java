@@ -10,6 +10,8 @@ import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
@@ -37,7 +39,7 @@ public class WeaponsDTO implements Serializable {
   public Integer range;
   public BigDecimal weight;
   public SizeEnum size;
-  public Set<ModifierDTO> modifiers;
+  public PrerequisiteDTO modifiers;
   public WeaponCategoriesEnum[] type;
   public SpecialAttacksDTO specialAttacks;
   public String description;
@@ -55,7 +57,10 @@ public class WeaponsDTO implements Serializable {
     this.range = item.getRange();
     this.weight = item.getWeight();
     this.size = item.getSize();
-    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
+    this.modifiers =
+      item.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        : null;
     if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;
     } else {
@@ -74,24 +79,12 @@ public class WeaponsDTO implements Serializable {
 
   public WeaponsDTO(EnchantedItems item) {
     WeaponsDTO weaponDTO = new WeaponsDTO((Weapons) item.getItem());
-    Set<ModifierDTO> setOfMods = new HashSet<>();
-    if (weaponDTO.modifiers != null) {
-      weaponDTO.modifiers.forEach(it -> {
-        setOfMods.add(it);
-      });
-    }
-    if (item.getModifiers() != null) {
-      item
-        .getModifiers()
-        .forEach(it -> {
-          setOfMods.add(MapperModifierBonus.toModifierDTO(it));
-        });
-    }
+
     this.id = item.getId();
     this.name = item.getName();
     this.itemType = ItemTypeEnum.WEAPON;
     this.weaponName = weaponDTO.weaponName;
-    this.modifiers = setOfMods;
+    this.modifiers = weaponDTO.modifiers;
     this.cost = weaponDTO.cost;
     this.damage = weaponDTO.damage;
     this.critical = weaponDTO.critical;
@@ -99,7 +92,14 @@ public class WeaponsDTO implements Serializable {
     this.description = weaponDTO.description;
     this.weight = weaponDTO.weight;
     this.size = weaponDTO.size;
-    this.modifiers = setOfMods;
+    if (weaponDTO.modifiers != null) {
+      this.modifiers = weaponDTO.modifiers;
+    } else if (item.getModifiers() != null) {
+      this.modifiers =
+        MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers());
+    } else {
+      this.modifiers = null;
+    }
     this.type = weaponDTO.type;
     this.specialAttacks = weaponDTO.specialAttacks;
     this.description = weaponDTO.description;

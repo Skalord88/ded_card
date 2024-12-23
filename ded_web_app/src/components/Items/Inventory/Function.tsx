@@ -1,4 +1,19 @@
-import { Inventory } from "../../interfaces";
+import { CharacterPc, Inventory } from "../../interfaces";
+
+export const modifyInventory = (char: CharacterPc): Inventory => {
+    const inventory: Inventory = char.inventory
+    return {...inventory,
+        armor: {...inventory.armor,
+
+        },
+        shield: {...inventory.shield},
+        weaponOne: {...inventory.weaponOne},
+        weaponTwo: {...inventory.weaponTwo},
+        weaponThree: {...inventory.weaponThree},
+        weaponFour: {...inventory.weaponFour},
+        weaponFive: {...inventory.weaponFive}
+    }
+}
 
 export function CalculateInventoryWeight(inventory: Inventory): number {
     return parseFloat((inventory.armor.weight + inventory.shield.weight + 

@@ -2,7 +2,7 @@ export type SavingThrow = {
     fortitude: Number;
     reflex: Number;
     will: Number;
-    resistance: Resistance;
+    resistance: Resistance[];
 }
 
 export type Resistance = {

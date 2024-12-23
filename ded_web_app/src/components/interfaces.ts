@@ -89,6 +89,12 @@ export type SpecialAttacks = {
   grapple: number;
   overrun: number;
   sunder: number;
+  vsBullRush: number;
+  vsCharge: number;
+  vsDisarm: number;
+  vsGrapple: number;
+  vsOverrun: number;
+  vsSunder: number;
   special: string
 }
 

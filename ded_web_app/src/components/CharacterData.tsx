@@ -1,10 +1,6 @@
-import { BonusAbilities, SignNumber } from "../components/functions";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FormattingText } from "./Formatting/Function";
-import { SignAndCount } from "./functions";
 import { CharacterPc } from "./interfaces";
-import { D20Popup } from "./Popup/DicePopup/D20Popup";
-import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { FindAllAdjLevel } from "./Race/Function";
 import { Archetype } from "./Race/Interfaces";
 

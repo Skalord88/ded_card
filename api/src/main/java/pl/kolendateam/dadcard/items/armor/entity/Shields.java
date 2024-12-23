@@ -6,22 +6,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import java.util.Set;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
-import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
-import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
-import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Entity
 @NoArgsConstructor
@@ -33,8 +26,13 @@ public class Shields extends Items {
   @Enumerated(EnumType.STRING)
   ArmorsEnum shieldName;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
@@ -46,14 +44,10 @@ public class Shields extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  // @ManyToOne(cascade = CascadeType.MERGE)
-  // @JoinColumn(name = "enchantment_id", referencedColumnName = "id")
-  // Enchantment enchantment;
-
   public Shields(ShieldsDTO shield) {
     super(shield);
     this.shieldName = shield.shieldName;
-    this.modifiers = MapperModifierBonus.toListModifier(shield.modifiers);
+    // this.modifiers = MapperModifierBonus.toListModifier(shield.modifiers);
     this.armorType = shield.armorType;
     this.maxDex = shield.maxDex;
     this.penality = shield.penality;

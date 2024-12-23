@@ -1,6 +1,7 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
-import { SpecialAttacks } from "../../interfaces";
+import { Inventory, SpecialAttacks } from "../../interfaces";
+import { SavingThrow } from "../../Saving/interface";
 import { Prerequisite } from "../interface/Prerequisite";
 
 export const findAbilitysPrerequisite = (
@@ -48,4 +49,17 @@ export const findInitiativePrerequisite = (
       tot + (prer.initiative != null ? Number(prer.initiative) : 0),
     0
   );
+};
+
+export const findSavingThrowPrerequisite = (
+  prerList: Prerequisite[]
+): SavingThrow[] => {
+  let onlySavingThrow: SavingThrow[] = [];
+
+  prerList.forEach((prer) => {
+    if (prer.savingThrow !== null)
+      onlySavingThrow.push(prer.savingThrow);
+  });
+
+  return onlySavingThrow;
 };

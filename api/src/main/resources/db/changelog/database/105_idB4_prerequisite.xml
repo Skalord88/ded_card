@@ -1792,6 +1792,67 @@
             <column name="schools_id" value="5" />
         </insert>
 
+        <!-- Armor id:50.000 prerequisite -->
+        <insert tableName="prerequisite">
+            <column name="id" value="50001" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 1 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50002" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 2 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50003" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 3 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50004" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 4 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50005" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 5 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50006" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 6 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50007" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 7 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="50008" />
+            <column name="armor_class"
+                value="{ &quot;armorBonus&quot; : 8 }" />
+        </insert>
+
+        <!-- Shield id:51.000 prerequisite -->
+        <insert tableName="prerequisite">
+            <column name="id" value="51001" />
+            <column name="armor_class"
+                value="{ &quot;shieldBonus&quot; : 1 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="51002" />
+            <column name="armor_class"
+                value="{ &quot;shieldBonus&quot; : 2 }" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="51004" />
+            <column name="armor_class"
+                value="{ &quot;shieldBonus&quot; : 4 }" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -2 }" />
+        </insert>
+
         <!-- Size id:90.000 -->
         <!-- FINE -->
         <insert tableName="prerequisite">
@@ -1927,9 +1988,9 @@
         <insert tableName="prerequisite">
             <column name="id" value="100001" />
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
-            <column name="special_attacks" 
+            <column name="special_attacks"
                 value="{ 
-                &quot;bullRush&quot;: 4,
+                &quot;vsBullRush&quot;: 4,
                 &quot;special&quot; : &quot;Stability: A dwarf gains a +4 bonus on ability checks made to resist being bull rushed or tripped when standing on the ground (but not when climbing, flying, riding, or otherwise not standing firmly on the ground)&quot;
                 }" />
             <column name="abilitys"

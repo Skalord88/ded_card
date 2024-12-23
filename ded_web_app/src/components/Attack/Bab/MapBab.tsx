@@ -1,16 +1,10 @@
 import {
-    AttackIIMelee,
-    AttackIIRanged,
-    AttackMelee,
-    AttackRanged,
-    WeaponRanged,
-    WeaponThrown,
-    WeaponTwoHanded
+  WeaponRanged,
+  WeaponThrown,
+  WeaponTwoHanded
 } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
-import { ChangeCritWithFeat } from "../../Items/Functions/Functions";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {
   bab: number;

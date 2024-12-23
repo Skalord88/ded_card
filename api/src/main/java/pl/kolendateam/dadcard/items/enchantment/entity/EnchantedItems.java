@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,6 +22,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
@@ -54,8 +56,13 @@ public class EnchantedItems implements Serializable {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   String description;
 }

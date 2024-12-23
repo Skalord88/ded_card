@@ -2,6 +2,8 @@ package pl.kolendateam.dadcard.items.enchantment.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
@@ -9,8 +11,6 @@ import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
 @NoArgsConstructor
 public class EnchantedItemsDTO {
@@ -20,7 +20,7 @@ public class EnchantedItemsDTO {
   public String name;
   public Set<EnchantmentDTO> enchantmentList;
   public MaterialEnum material;
-  public Set<ModifierDTO> modifiers;
+  public PrerequisiteDTO modifiers;
   public double cost;
   public String description;
 
@@ -50,7 +50,11 @@ public class EnchantedItemsDTO {
 
     this.material = enchantedItems.getMaterial();
     this.modifiers =
-      MapperModifierBonus.toSetModifierDTO(enchantedItems.getModifiers());
+      enchantedItems.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
+          enchantedItems.getModifiers()
+        )
+        : null;
     this.description = enchantedItems.getDescription();
   }
 }

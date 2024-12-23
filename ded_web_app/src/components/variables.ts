@@ -2,6 +2,7 @@ import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shiel
 import { Abilitys } from './Abilitys/Interface'
 import { ClassCharacter, ClassPc } from './ClassPc/Interface/ClassPcLevel'
 import { Prerequisite } from './Prerequisite/interface/Prerequisite'
+import { SavingThrow } from './Saving/interface'
 import { AddStudy } from './Skills/interface/SkillsInterface'
 
 export const noneArmor: Armor = {
@@ -186,7 +187,20 @@ export const emptySpecialAttacks: SpecialAttacks = {
     grapple: 0,
     overrun: 0,
     sunder: 0,
+    vsBullRush: 0,
+    vsCharge: 0,
+    vsDisarm: 0,
+    vsGrapple: 0,
+    vsOverrun: 0,
+    vsSunder: 0,
     special: ""
+}
+
+export const emptySavingThrow: SavingThrow = {
+    fortitude: 0,
+    reflex: 0,
+    will: 0,
+    resistance: []
 }
 
 export const emptyPrerequisite: Prerequisite = {
@@ -207,16 +221,7 @@ export const emptyPrerequisite: Prerequisite = {
         swim: 0,
         special: ''
     },
-    savingThrow: {
-        fortitude: 0,
-        reflex: 0,
-        will: 0,
-        resistance: {
-            type: '',
-            target: [],
-            bonus: 0
-        }
-    },
+    savingThrow: emptySavingThrow,
     prerequisiteSkillsStudy: [],
     armorClass: armorClassEmpty,
     armorType: [],
@@ -248,7 +253,7 @@ export const characterEmpty: CharacterPc = {
         subRaceFeats: [],
         levelAdjustment: 0,
         size: {
-            id:0,
+            id: 0,
             size: '',
             modifiers: null
         },
@@ -263,7 +268,7 @@ export const characterEmpty: CharacterPc = {
         wisdom: 0,
         charisma: 0
     },
-    
+
     skillsCharacter: [],
     featsList: [],
     items: [],

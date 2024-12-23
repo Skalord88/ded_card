@@ -8,6 +8,7 @@ export const D20Popup: React.FC<DicePopupProps> = ({
   value,
   modifiers
 }) => {
+  // console.log(modifiers);
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -36,9 +37,79 @@ export const D20Popup: React.FC<DicePopupProps> = ({
           showPopup ? "show" : ""
         }`}
       >
-        
         <ThrowDice dice={dice} value={value} />
+        {/* attackRoll */}
+        {modifiers.attackRoll != null ? (
+          <>
+            {modifiers.attackRoll.map((att, index) => (
+              <D20PopupModifiers
+                dice={dice}
+                value={value}
+                target={att.target}
+                bonus={Number(att.bonus)}
+                key={index}
+              />
+            ))}
+          </>
+        ) : null}
+
+        {/* specialAttacks */}
+        {modifiers.specialAttacks != null ? (
+          <>
+            {modifiers.specialAttacks.map((att, index) => (
+              <D20PopupModifiers
+                dice={dice}
+                value={value}
+                target={[att.title]}
+                bonus={att.value}
+                key={index}
+              />
+            ))}
+          </>
+        ) : null}
+
+        {/* saving */}
+        {modifiers.savingThrow != null ? (
+          <>
+            {modifiers.savingThrow.map((save) =>
+              save.target.map((target, index) =>
+                save.type === "IMMUNITY" ? (
+                  `immune to ${target.toString()}`
+                ) : (
+                  <D20PopupModifiers
+                    dice={dice}
+                    value={value}
+                    target={[target]}
+                    bonus={Number(save.bonus)}
+                    key={index}
+                  />
+                )
+              )
+            )}
+          </>
+        ) : null}
       </span>
     </div>
+  );
+};
+
+export type AttackRollProps = {
+  dice: number;
+  value: number;
+  target: string[] | null;
+  bonus: number | null;
+};
+
+export const D20PopupModifiers: React.FC<AttackRollProps> = ({
+  dice,
+  value,
+  target,
+  bonus
+}) => {
+  return (
+    <>
+      <ThrowDice dice={dice} value={value + (bonus ? bonus : 0)} />{" "}
+      {target != null ? target.join(", ") : null}
+    </>
   );
 };

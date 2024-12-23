@@ -1,9 +1,12 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.Set;
 import lombok.Getter;
@@ -11,6 +14,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
@@ -44,8 +48,13 @@ public class Weapons extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   public Weapons(WeaponsDTO weapon) {
     super(weapon);
@@ -66,7 +75,7 @@ public class Weapons extends Items {
     //   this.specialAttacks = null;
     // }
     this.material = weapon.material;
-    this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
+    // this.modifiers = MapperModifierBonus.toListModifier(weapon.modifiers);
     // if (weapon.enchantment == null) {
     //   this.enchantment = new Enchantment(0, 0);
     // } else {

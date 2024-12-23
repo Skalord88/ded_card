@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -23,7 +25,7 @@ public class ShieldsDTO {
   public String name;
   public ItemTypeEnum itemType;
   public ArmorsEnum shieldName;
-  public Set<ModifierDTO> modifiers;
+  public PrerequisiteDTO modifiers;
   public double cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
@@ -39,7 +41,10 @@ public class ShieldsDTO {
     this.name = item.getName();
     this.itemType = ItemTypeEnum.SHIELD;
     this.shieldName = item.getShieldName();
-    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
+    this.modifiers =
+      item.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        : null;
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.armorType = item.getArmorType();
@@ -53,24 +58,19 @@ public class ShieldsDTO {
 
   public ShieldsDTO(EnchantedItems item) {
     ShieldsDTO shieldDTO = new ShieldsDTO((Shields) item.getItem());
-    Set<ModifierDTO> setOfMods = new HashSet<>();
-    if (shieldDTO.modifiers != null) {
-      shieldDTO.modifiers.forEach(ar -> {
-        setOfMods.add(ar);
-      });
-    }
-    if (item.getModifiers() != null) {
-      item
-        .getModifiers()
-        .forEach(ar -> {
-          setOfMods.add(MapperModifierBonus.toModifierDTO(ar));
-        });
-    }
+
     this.id = item.getId();
     this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.shieldName = shieldDTO.shieldName;
-    this.modifiers = setOfMods;
+    if (shieldDTO.modifiers != null) {
+      this.modifiers = shieldDTO.modifiers;
+    } else if (item.getModifiers() != null) {
+      this.modifiers =
+        MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers());
+    } else {
+      this.modifiers = null;
+    }
     this.cost = shieldDTO.cost;
     this.weight = shieldDTO.weight;
     this.armorType = shieldDTO.armorType;

@@ -11,10 +11,14 @@ import { Initiative } from "../components/Initiative/Initiative";
 import { CharacterPc } from "../components/interfaces";
 
 import { urlChar } from "../components/url";
-import { emptyAbilitys } from "../components/variables";
+import { emptyAbilitys, emptyInventory } from "../components/variables";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 import { CharToModify, modifyCharacter } from "../components/Prerequisite/functions/modifyCharacter";
 import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
+import { SavingThrowComponent } from "../components/SavingThrowComponent";
+import { HpComponent } from "../components/HpComponent";
+import { CharacterArmor } from "../components/Armor/CharacterArmor";
+import { modifyInventory } from "../components/Items/Inventory/function";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -57,9 +61,14 @@ export const Show = () => {
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
     bab: 0,
+    adjBonus: {bab: 0, savingThrow: 0, adjLv: 0},
     attackRoll: [],
     specialAttacks: [],
-    initiative : 0
+    initiative : 0,
+    baseSave: {fortitude: 0, reflex: 0, will: 0},
+    savingThrow: [],
+    listHitDices: [],
+    inventory: emptyInventory
   };
   let modif: Prerequisite[] = [];
 
@@ -81,36 +90,11 @@ export const Show = () => {
       modChar = modifyCharacter(char, modif)
     }
   })
+  modChar.inventory = modifyInventory(char);
 
   // console.log(modChar.abilitys);
   // console.log(modChar.race.modifiers?.abilitys);
   // console.log(modChar.race.race.modifiers?.abilitys);
-
-  // const abilitys: Abilitys = ModifyAbilitys(char.abilitys, modifications);
-  // const strenght: number = BonusAbilities(abilitys, "STR");
-  // const dexterity: number = BonusAbilities(abilitys, "DEX");
-  // const initiativeMod: number = ModifyInitiative(char.abilitys, modifications)
-  // // FindInOneLengthModifier(
-  // //   modifications,
-  // //   "INITIATIVE"
-  // // );
-  // const specificBab: Modifiers[] = FindInMoreLengthModifier(modifications, [
-  //   "ATTACK_ROLL",
-  //   "WEAPON_FOUS"
-  // ]);
-
-  
-
-  // const specificDmg: Modifiers[] = FindInMoreLengthModifier(modifications, [
-  //   "WEAPON_SPECIALIZATION"
-  // ]);
-  // const specificCrit: Modifiers[] = FindInMoreLengthModifier(modifications, [
-  //   "IMPROVED_CRITICAL"
-  // ]);
-  // const specificFavEnemy: Modifiers[] = FindInMoreLengthModifier(
-  //   modifications,
-  //   "FAVORED_ENEMY"
-  // );
 
   // const specificFghFeats: number[] = FindFightingFeats(char.featsList);
   // const grapple: number =
@@ -223,20 +207,20 @@ export const Show = () => {
         <>
           <DeleteButton url={urlChar} />
           <CharacterData char={char} />
-          <AbilitysComponent abilitys={modChar.abilitys} />
+          <AbilitysComponent 
+            abilitys={modChar.abilitys} 
+          />
           <ClassExpGold char={char} />
           <BaseAttack
             char={modChar}
           />
           <Initiative char={modChar} />
-          {/* <SavingThrowComponent
-            char={char}
-            abilitys={abilitys}
-            modifications={modifications}
+          <SavingThrowComponent
+            char={modChar}
           />
-          <HpComponent char={char} abilitys={abilitys} />
-          <CharacterArmor char={char} armorModifiers={armorModifiers} />
-          <MapOfAttackComponent
+          <HpComponent char={modChar} />
+          <CharacterArmor char={modChar} />
+          {/* <MapOfAttackComponent
             attacks={attacks}
             bab={adjBab}
             strenght={strenght}
@@ -334,7 +318,7 @@ export const Show = () => {
                 char={modChar}
               />
             </div>
-            {/* <div
+            <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
@@ -342,9 +326,7 @@ export const Show = () => {
               }}
             >
               <SavingThrowComponent
-                char={char}
-                abilitys={abilitys}
-                modifications={modifications}
+                char={modChar}
               />
             </div>
             <div
@@ -354,7 +336,7 @@ export const Show = () => {
                 gridRow: 5
               }}
             >
-              <HpComponent char={char} abilitys={abilitys} />
+              <HpComponent char={modChar} />
             </div>
 
             <div
@@ -364,9 +346,9 @@ export const Show = () => {
                 gridRow: 6
               }}
             >
-              <CharacterArmor char={char} armorModifiers={armorModifiers} />
+              <CharacterArmor char={modChar} />
             </div>
-            <div
+            {/* <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 3",

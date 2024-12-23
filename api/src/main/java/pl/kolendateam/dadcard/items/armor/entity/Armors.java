@@ -1,9 +1,12 @@
 package pl.kolendateam.dadcard.items.armor.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +15,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
@@ -37,8 +42,13 @@ public class Armors extends Items {
   @Enumerated(EnumType.STRING)
   MaterialEnum material;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite modifiers;
 
   int maxDex;
   int penality;
@@ -53,7 +63,7 @@ public class Armors extends Items {
   public Armors(ArmorsDTO armorDTO) {
     super(armorDTO);
     this.armorName = armorDTO.armorName;
-    this.modifiers = MapperModifierBonus.toListModifier(armorDTO.modifiers);
+    // this.modifiers = MapperPrerequisiteBonus.toPrerequisite(armorDTO.modifiers);
     this.armorType = armorDTO.armorType;
     this.maxDex = armorDTO.maxDex;
     this.penality = armorDTO.penality;

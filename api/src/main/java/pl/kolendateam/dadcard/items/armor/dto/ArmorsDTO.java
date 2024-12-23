@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -13,8 +15,6 @@ import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class ArmorsDTO implements Serializable {
   public String name;
   public ItemTypeEnum itemType;
   public ArmorsEnum armorName;
-  public Set<ModifierDTO> modifiers;
+  public PrerequisiteDTO modifiers;
   public double cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
@@ -40,7 +40,10 @@ public class ArmorsDTO implements Serializable {
     this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = item.getArmorName();
-    this.modifiers = MapperModifierBonus.toSetModifierDTO(item.getModifiers());
+    this.modifiers =
+      item.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        : null;
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.armorType = item.getArmorType();
@@ -54,25 +57,18 @@ public class ArmorsDTO implements Serializable {
 
   public ArmorsDTO(EnchantedItems item) {
     ArmorsDTO armorDTO = new ArmorsDTO((Armors) item.getItem());
-
-    Set<ModifierDTO> setOfMods = new HashSet<>();
-    if (armorDTO.modifiers != null) {
-      armorDTO.modifiers.forEach(ar -> {
-        setOfMods.add(ar);
-      });
-    }
-    if (item.getModifiers() != null) {
-      item
-        .getModifiers()
-        .forEach(ar -> {
-          setOfMods.add(MapperModifierBonus.toModifierDTO(ar));
-        });
-    }
     this.id = item.getId();
     this.name = item.getName();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = armorDTO.armorName;
-    this.modifiers = setOfMods;
+    if (armorDTO.modifiers != null) {
+      this.modifiers = armorDTO.modifiers;
+    } else if (item.getModifiers() != null) {
+      this.modifiers =
+        MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers());
+    } else {
+      this.modifiers = null;
+    }
     this.cost = armorDTO.cost;
     this.weight = armorDTO.weight;
     this.armorType = armorDTO.armorType;

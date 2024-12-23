@@ -1,4 +1,5 @@
 import { CharacterPc } from "../interfaces";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { Contact } from "./Contact";
 import { Failure } from "./Failure";
 import { FlatFooted } from "./FlatFooted";
@@ -7,14 +8,13 @@ import { ArmorList, ArmorModifiers } from "./interface/ArmorInterface";
 import { SmallTotalArmor, TotalArmor } from "./TotalArmor";
 
 export type CharacterArmorProps = {
-  char: CharacterPc;
-  armorModifiers: ArmorModifiers;
+  char: CharToModify
 };
 export const CharacterArmor: React.FC<CharacterArmorProps> = ({
   char,
-  armorModifiers
+  // armorModifiers
 }) => {
-  const listOfArmor: ArmorList = CalculateArmorInChar(char, armorModifiers);
+  // const listOfArmor: ArmorList = CalculateArmorInChar(char, armorModifiers);
 
   return (
     <>
@@ -23,22 +23,22 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({
         <>
         <div>
           <p>
-          <SmallTotalArmor armorModifiers={armorModifiers} />
+          {/* <SmallTotalArmor armorModifiers={armorModifiers} />
           {listOfArmor.map((ar, index) =>
             ar.bonus === 0 ? null : (
               <div key={index}>
                 {ar.text}: {ar.bonus} {ar.item}
               </div>
             )
-          )}
+          )} */}
           </p>
           </div>
         </>
       ) : (
         <>
           <div style={{ display: "flex" }}>
-            <TotalArmor armorModifiers={armorModifiers} />
-            {listOfArmor.map((ar, index) => {
+            {/* <TotalArmor armorModifiers={armorModifiers} /> */}
+            {/* {listOfArmor.map((ar, index) => {
               return ar.bonus > 0 ? (
                 <div key={index} className="rpgui-container-framed-grey">
                   <p style={{ flex: 1 }}>
@@ -48,15 +48,15 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({
                   <p style={{ flex: 1 }}>{ar.text}</p>
                   <p style={{ flex: 1 }}>{ar.item}</p>
                 </div>
-              ) : null;
-            })}
+              ) : null; 
+            })}*/}
 
             <div className="rpgui-container-framed-grey">
               <p style={{ flex: 1 }}></p>
             </div>
             <Failure inventory={char.inventory} />
-            <FlatFooted armorModifiers={armorModifiers} />
-            <Contact armorModifiers={armorModifiers} />
+            {/* <FlatFooted armorModifiers={armorModifiers} />
+            <Contact armorModifiers={armorModifiers} /> */}
           </div>
         </>
       )}
