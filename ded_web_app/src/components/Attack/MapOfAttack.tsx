@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IndexWeaponOne, WeaponLight, WeaponTwoHanded } from "../functions";
+import { IndexWeaponOne, weaponLight, weaponTwoHanded } from "../functions";
 import { Attacks, CharAttack, Weapon } from "../interfaces";
 import { ListOfOneHandWeapons, ListOfWeapons } from "../MyComponents";
 import { MapBab } from "./Bab/MapBab";
@@ -19,9 +19,9 @@ export const MapOfAttack: React.FC<CharAttack> = ({
     }, [attack]);
   
     useEffect(() => {
-      let indexOne = IndexWeaponOne(inventory, attack.firstAttackSetOne);
+      let indexOne = attack.firstAttackSetOne ? IndexWeaponOne(inventory, attack.firstAttackSetOne) : -1;
       setIndexFirstSetOne(indexOne);
-      let indexTwo = IndexWeaponOne(inventory, attack.firstAttackSetTwo);
+      let indexTwo = attack.firstAttackSetTwo ? IndexWeaponOne(inventory, attack.firstAttackSetTwo) : -1;
       setIndexFirstSetTwo(indexTwo);
     }, [attack.firstAttackSetOne, attack.firstAttackSetTwo]);
   
@@ -65,17 +65,16 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 )}
               </div>
               <MapBab
-                weapon={attack.firstAttackSetOne}
+                weapon={attack.firstAttackSetOne!}
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
                 position={{
                   pose: true,
-                  twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
-                  light: WeaponLight(attack.secondAttackSetOne)
-                }}
-                specific={[]} specificFghFeats={[]}              />
+                  twoHanded: weaponTwoHanded(attack.firstAttackSetOne!),
+                  light: weaponLight(attack.secondAttackSetOne!)
+                }} adjBab={0} />
               <ListOfWeapons
                 list={inventory}
                 where={"set11"}
@@ -83,7 +82,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               />
             </div>
             <div>
-              {WeaponTwoHanded(attack.firstAttackSetOne) ? (
+              {weaponTwoHanded(attack.firstAttackSetOne!) ? (
                 <>second hand: ---</>
               ) : (
                 <>
@@ -95,18 +94,17 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 </>
               )}
               <MapBab
-                weapon={attack.secondAttackSetOne}
+                weapon={attack.secondAttackSetOne!}
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
                 position={{
                   pose: false,
-                  twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
-                  light: WeaponLight(attack.secondAttackSetOne)
-                }}
-                specific={[]} specificFghFeats={[]}              />
-              {WeaponTwoHanded(attack.firstAttackSetOne) ? (
+                  twoHanded: weaponTwoHanded(attack.firstAttackSetOne!),
+                  light: weaponLight(attack.secondAttackSetOne!)
+                }} adjBab={0} />
+              {weaponTwoHanded(attack.firstAttackSetOne!) ? (
                 <></>
               ) : (
                 <ListOfOneHandWeapons
@@ -131,12 +129,12 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
-                weapon={attack.additionalAttackSetOne}
+                weapon={attack.additionalAttackSetOne!}
                 position={{
                   pose: true,
-                  twoHanded: WeaponTwoHanded(attack.firstAttackSetOne),
-                  light: WeaponLight(attack.firstAttackSetOne)
-                }} specific={[]} specificFghFeats={[]}              />
+                  twoHanded: weaponTwoHanded(attack.firstAttackSetOne!),
+                  light: weaponLight(attack.firstAttackSetOne!)
+                }} adjBab={0} />
               <ListOfOneHandWeapons
                 indexOne={indexFirstSetOne}
                 list={inventory}
@@ -163,12 +161,12 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
-                weapon={attack.secondAttackSetTwo}
+                weapon={attack.secondAttackSetTwo!}
                 position={{
                   pose: true,
-                  twoHanded: WeaponTwoHanded(attack.secondAttackSetTwo),
-                  light: WeaponLight(attack.secondAttackSetTwo)
-                }} specific={[]} specificFghFeats={[]}              />
+                  twoHanded: weaponTwoHanded(attack.secondAttackSetTwo!),
+                  light: weaponLight(attack.secondAttackSetTwo!)
+                }} adjBab={0} />
               <ListOfWeapons
                 list={inventory}
                 where={"set21"}
@@ -176,7 +174,7 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               />
             </div>
             <div>
-              {WeaponTwoHanded(attack.secondAttackSetTwo) ? (
+              {weaponTwoHanded(attack.secondAttackSetTwo!) ? (
                 <>second hand: ---</>
               ) : (
                 <>
@@ -188,17 +186,17 @@ export const MapOfAttack: React.FC<CharAttack> = ({
                 </>
               )}
               <MapBab
-                weapon={attack.secondAttackSetTwo}
+                weapon={attack.secondAttackSetTwo!}
                 bab={bab}
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
                 position={{
                   pose: false,
-                  twoHanded: WeaponTwoHanded(attack.firstAttackSetTwo),
-                  light: WeaponLight(attack.secondAttackSetTwo)
-                }} specific={[]} specificFghFeats={[]}              />
-              {WeaponTwoHanded(attack.secondAttackSetTwo) ? (
+                  twoHanded: weaponTwoHanded(attack.firstAttackSetTwo!),
+                  light: weaponLight(attack.secondAttackSetTwo!)
+                }} adjBab={0} />
+              {weaponTwoHanded(attack.secondAttackSetTwo!) ? (
                 <></>
               ) : (
                 <ListOfOneHandWeapons
@@ -220,17 +218,16 @@ export const MapOfAttack: React.FC<CharAttack> = ({
               </>
   
               <MapBab
-                bab={bab}
+               
                 strenght={0}
                 strenghtAtt={bab}
                 dexterityAtt={bab}
-                weapon={attack.additionalAttackSetTwo}
+                weapon={attack.additionalAttackSetTwo!}
                 position={{
                   pose: true,
-                  twoHanded: WeaponTwoHanded(attack.firstAttackSetTwo),
-                  light: WeaponLight(attack.secondAttackSetTwo)
-                }} specific={[]} specificFghFeats={[]}
-                />
+                  twoHanded: weaponTwoHanded(attack.firstAttackSetTwo!),
+                  light: weaponLight(attack.secondAttackSetTwo!)
+                }} bab={0} adjBab={0}                />
               <ListOfOneHandWeapons
                 indexOne={indexFirstSetTwo}
                 list={inventory}

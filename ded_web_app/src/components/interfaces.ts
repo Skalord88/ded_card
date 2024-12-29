@@ -1,4 +1,5 @@
 import { Abilitys } from "./Abilitys/Interface";
+import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "./Feats/Interface/FeatInterface";
 import { Prerequisite } from "./Prerequisite/interface/Prerequisite";
@@ -39,7 +40,7 @@ export type Monster = {
   subRace: string;
   speed: number;
   initiative: number,
-  armorClass: armorClass;
+  armorClass: ArmorClass;
   attacks: MonsterAttack[];
   savingThrows: savingThrows;
   abilitys: Abilitys;
@@ -98,17 +99,6 @@ export type SpecialAttacks = {
   special: string
 }
 
-export interface armorClass {
-  dexterityBonus: number;
-  sizeBonus: number;
-  armorBonus: number;
-  shieldBonus: number;
-  enhancementBonuses: number;
-  deflectionBonuses: number;
-  naturalArmor: number;
-  dodgeBonus: number;
-}
-
 export interface savingThrows {
   fortitude: number;
   reflex: number;
@@ -129,7 +119,7 @@ export type subRaces = {
   avatarUrl: string;
   raceAbilitys: Abilitys;
   raceSkills: SkillProps[];
-  armorClass: armorClass;
+  armorClass: ArmorClass;
   levelAdjustment: number;
 };
 
@@ -162,7 +152,7 @@ export interface Armor extends Item {
   penality: number;
   failure: number;
   material: string | null
-  enchantmentList: Enchantment[]
+  enchantment: Enchantment[]
 }
 
 export interface Shield extends Item {
@@ -173,10 +163,11 @@ export interface Shield extends Item {
   penality: number;
   failure: number;
   material: string | null
-  enchantmentList: Enchantment[]
+  enchantment: Enchantment[]
 }
 
 export interface Weapon extends Item {
+  itemId: number;
   weaponName: string;
   damage: string;
   critical: string;
@@ -186,14 +177,14 @@ export interface Weapon extends Item {
   modifiers: Prerequisite | null;
   specialAttacks: string | null;
   material: string | null
-  enchantmentList: Enchantment[]
+  enchantment: Enchantment[]
 }
 
 export interface EnchantedItem {
   id: number
   item: Armor | Shield | Weapon
   name: string
-  enchantmentList: Enchantment[]
+  enchantment: Enchantment[]
   material: string
   modifiers: Prerequisite | null
   cost: number
@@ -220,12 +211,12 @@ export type Inventory = {
 }
 
 export type Attacks = {
-  firstAttackSetOne: Weapon,
-  secondAttackSetOne: Weapon,
-  additionalAttackSetOne: Weapon,
-  firstAttackSetTwo: Weapon,
-  secondAttackSetTwo: Weapon,
-  additionalAttackSetTwo: Weapon
+  firstAttackSetOne?: Weapon,
+  secondAttackSetOne?: Weapon,
+  additionalAttackSetOne?: Weapon,
+  firstAttackSetTwo?: Weapon,
+  secondAttackSetTwo?: Weapon,
+  additionalAttackSetTwo?: Weapon
 }
 
 export type ArmorWeaponToBuy = {
@@ -309,7 +300,7 @@ export type SelectOffWeapon = {
 }
 
 export type ArmorInCharacter = {
-  charArmor: armorClass,
+  charArmor: ArmorClass,
   charInventory: Inventory
 }
 

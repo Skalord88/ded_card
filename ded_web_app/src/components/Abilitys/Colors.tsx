@@ -1,4 +1,4 @@
-export const AbilityBackgroundColor = (skillAbility : string) => {
+export const abilityBackgroundColor = (skillAbility : string) => {
     switch (skillAbility.toUpperCase()) {
         
         case 'STRENGHT':

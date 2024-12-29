@@ -33,7 +33,7 @@ public class ArmorsDTO implements Serializable {
   public int failure;
   public String description;
   public MaterialEnum material;
-  public Set<EnchantmentDTO> enchantmentList;
+  public Set<EnchantmentDTO> enchantment;
 
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
@@ -52,7 +52,7 @@ public class ArmorsDTO implements Serializable {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
-    this.enchantmentList = new HashSet<>();
+    this.enchantment = null;
   }
 
   public ArmorsDTO(EnchantedItems item) {
@@ -77,7 +77,9 @@ public class ArmorsDTO implements Serializable {
     this.failure = armorDTO.failure;
     this.description = armorDTO.description;
     this.material = item.getMaterial();
-    this.enchantmentList =
-      MapperEnchantment.toEnchantmentDTOSet(item.getEnchantmentList());
+    this.enchantment =
+      item.getEnchantment() != null
+        ? MapperEnchantment.toEnchantmentDTOSet(item.getEnchantment())
+        : null;
   }
 }

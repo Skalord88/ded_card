@@ -21,8 +21,6 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
-import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @AllArgsConstructor
@@ -30,6 +28,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 public class WeaponsDTO implements Serializable {
 
   public int id;
+  public int itemId;
   public String name;
   public WeaponNameEnum weaponName;
   public ItemTypeEnum itemType;
@@ -44,10 +43,11 @@ public class WeaponsDTO implements Serializable {
   public SpecialAttacksDTO specialAttacks;
   public String description;
   public MaterialEnum material;
-  public Set<EnchantmentDTO> enchantmentList;
+  public Set<EnchantmentDTO> enchantment;
 
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();
+    this.itemId = item.getId();
     this.name = item.getName();
     this.weaponName = item.getWeaponName();
     this.itemType = ItemTypeEnum.WEAPON;
@@ -74,13 +74,14 @@ public class WeaponsDTO implements Serializable {
     this.type = typ;
     this.description = item.getDescription();
     this.material = item.getMaterial();
-    this.enchantmentList = new HashSet<>();
+    this.enchantment = null;
   }
 
   public WeaponsDTO(EnchantedItems item) {
     WeaponsDTO weaponDTO = new WeaponsDTO((Weapons) item.getItem());
 
     this.id = item.getId();
+    this.itemId = item.getItem().getId();
     this.name = item.getName();
     this.itemType = ItemTypeEnum.WEAPON;
     this.weaponName = weaponDTO.weaponName;
@@ -104,7 +105,9 @@ public class WeaponsDTO implements Serializable {
     this.specialAttacks = weaponDTO.specialAttacks;
     this.description = weaponDTO.description;
     this.material = item.getMaterial();
-    this.enchantmentList =
-      MapperEnchantment.toEnchantmentDTOSet(item.getEnchantmentList());
+    this.enchantment =
+      item.getEnchantment() != null
+        ? MapperEnchantment.toEnchantmentDTOSet(item.getEnchantment())
+        : null;
   }
 }

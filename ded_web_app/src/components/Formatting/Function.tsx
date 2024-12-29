@@ -1,3 +1,4 @@
-export function FormattingText(text: string): string {
-  return (text || "").replace("_", " ").toLowerCase()
+export const FormattingText = (text: string): string => {
+  const newText: string = text.replace(/_/g, " ").toLowerCase()
+  return newText
 }

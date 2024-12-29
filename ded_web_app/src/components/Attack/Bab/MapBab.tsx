@@ -1,31 +1,38 @@
 import {
-  WeaponRanged,
-  WeaponThrown,
-  WeaponTwoHanded
+  AttackIIMelee,
+  AttackIIRanged,
+  AttackMelee,
+  AttackRanged,
+  weaponRanged,
+  weaponThrown,
+  weaponTwoHanded
 } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
+import { ChangeCritWithFeat } from "../../Items/Functions/function";
+import { DiceModifiers, DicePopupProps } from "../../Popup/DicePopup/Interface";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
+import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {
   bab: number;
+  adjBab: number;
   strenght: number;
   strenghtAtt: number;
   dexterityAtt: number;
   weapon: Weapon;
   position: Position;
-  specific: Prerequisite[][];
-  specificFghFeats: number[];
+  modifiers?: DiceModifiers;
 };
 
 export const MapBab: React.FC<MapBabProps> = ({
   bab,
+  adjBab,
   strenght,
   strenghtAtt,
   dexterityAtt,
   weapon,
   position,
-  specific,
-  specificFghFeats
+  modifiers
 }) => {
   const getIncrements = (bab: number) => {
     if (bab > 15) return [0, 5, 10, 15];
@@ -53,20 +60,12 @@ export const MapBab: React.FC<MapBabProps> = ({
   };
 
   const ench = getEnchant(
-    weapon.enchantmentList.reduce((tot, enchanted) =>
+    weapon.enchantment.reduce((tot, enchanted) =>
     tot + enchanted.ability === null? enchanted.enchantment : 0 , 0)
   );
 
-  // const strenghtAttModified: number =
-  //   strenghtAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
-
-  // const dexterityAttModified: number =
-  //   dexterityAtt + FindWeaponToModified(specific[0], weapon).bonus + ench;
-
-  // const compo = weapon.modifiers? FindInOneLengthModifier(weapon.modifiers, 'COMPOSITE') : 0;
-
   const enchDmg: number = getEnchantDmg(
-    weapon.enchantmentList.reduce((tot, enchanted) =>
+    weapon.enchantment.reduce((tot, enchanted) =>
     tot + enchanted.ability === null ? enchanted.enchantment : 0 , 0
     )) 
     // + compo;
@@ -84,80 +83,77 @@ export const MapBab: React.FC<MapBabProps> = ({
   return (
     <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
-        {WeaponRanged(weapon) ? null : null
-        // (
-        //     <AttackOptions
-        //       type="melee"
-        //       weapon={critWeapon}
-        //       dmg={dmgTwoHand}
-        //       strenghtAtt={strenghtAttModified}
-        //       dexterityAtt={dexterityAttModified}
-        //       position={position}
-        //       increments={attacksIncrements}
-        //       attackFn={AttackMelee}
-        //       specificFghFeats={specificFghFeats}
-        //       specificTarget={specific[3]}
-        //     />
-        // )
+        {weaponRanged(weapon) ? null : 
+        (
+            <AttackOptions
+              type="melee"
+              weapon={weapon}
+              dmg={dmgTwoHand}
+              strenghtAtt={strenghtAtt}
+              dexterityAtt={dexterityAtt}
+              position={position}
+              increments={attacksIncrements}
+              attackFn={AttackMelee}
+              modifiers={modifiers}
+            />
+        )
         }
       </div>
       <div style={{ gridColumn: 1, gridRow: 3 }}>
-        {WeaponRanged(weapon) || WeaponThrown(weapon) ? 
-        // (
-        //   <AttackOptions
-        //     type="distance"
-        //     weapon={critWeapon}
-        //     dmg={enchDmg}
-        //     position={position}
-        //     strenghtAtt={strenghtAttModified}
-        //     dexterityAtt={dexterityAttModified}
-        //     increments={attacksIncrements}
-        //     attackFn={AttackRanged}
-        //     specificFghFeats={specificFghFeats}
-        //     specificTarget={specific[3]}
-        //   />
-        // )
-        null : null}
+        {weaponRanged(weapon) || weaponThrown(weapon) ? 
+        (
+          <AttackOptions
+            type="distance"
+            weapon={weapon}
+            dmg={enchDmg}
+            position={position}
+            strenghtAtt={strenghtAtt}
+            dexterityAtt={dexterityAtt}
+            increments={attacksIncrements}
+            attackFn={AttackRanged}
+            modifiers={modifiers}
+          />
+        )
+         : null}
       </div>
       <div style={{ gridColumn: 1, gridRow: 2 }}>
-        {WeaponRanged(weapon) || WeaponTwoHanded(weapon) ? null : (
+        {weaponRanged(weapon) || weaponTwoHanded(weapon) ? null : (
           <>
-            {/* {position.twoHanded ? null : (
+            {position.twoHanded ? null : (
               <AttackOptions
                 type="melee two hands"
-                weapon={critWeapon}
+                weapon={weapon}
                 dmg={Math.floor(strenght / 2) + enchDmg}
                 position={position}
-                strenghtAtt={strenghtAttModified}
-                dexterityAtt={dexterityAttModified}
+                strenghtAtt={strenghtAtt}
+                dexterityAtt={dexterityAtt}
                 increments={attacksIncrements}
                 attackFn={AttackIIMelee}
-                specificFghFeats={specificFghFeats}
-                specificTarget={specific[3]}
+                modifiers={modifiers}
               />
-            )} */}
+            )}
           </>
         )}
       </div>
       <div style={{ gridColumn: 1, gridRow: 4 }}>
-        {WeaponTwoHanded(weapon) ? null : WeaponRanged(weapon) ||
-          WeaponThrown(weapon) ? 
-        //   (
-        //   <AttackOptions
-        //     type="distance two hands"
-        //     weapon={critWeapon}
-        //     dmg={enchDmg}
-        //     position={position}
-        //     strenghtAtt={strenghtAttModified}
-        //     dexterityAtt={dexterityAttModified}
-        //     increments={attacksIncrements}
-        //     attackFn={AttackIIRanged}
-        //     specificFghFeats={specificFghFeats}
-        //     specificTarget={specific[3]}
-        //   />
-        // )
-        null : null}
+        {weaponTwoHanded(weapon) ? null : weaponRanged(weapon) ||
+          weaponThrown(weapon) ? 
+          (
+          <AttackOptions
+            type="distance two hands"
+            weapon={weapon}
+            dmg={enchDmg}
+            position={position}
+            strenghtAtt={strenghtAtt}
+            dexterityAtt={dexterityAtt}
+            increments={attacksIncrements}
+            attackFn={AttackIIRanged}
+            modifiers={modifiers}
+          />
+        )
+         : null}
       </div>
     </div>
   );
 };
+

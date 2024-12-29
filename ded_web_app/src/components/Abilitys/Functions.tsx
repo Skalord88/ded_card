@@ -1,7 +1,7 @@
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { Abilitys } from "./Interface";
 
-export function AbilityAbbreviation(ability: string): string {
+export function abilityAbbreviation(ability: string): string {
   switch (ability) {
     case "STRENGHT":
       return "STR";

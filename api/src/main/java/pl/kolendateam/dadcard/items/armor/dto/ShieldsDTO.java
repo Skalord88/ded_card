@@ -33,7 +33,7 @@ public class ShieldsDTO {
   public int penality;
   public int failure;
   public String description;
-  public Set<EnchantmentDTO> enchantmentList = new HashSet<>();
+  public Set<EnchantmentDTO> enchantment;
   public MaterialEnum material;
 
   public ShieldsDTO(Shields item) {
@@ -53,7 +53,6 @@ public class ShieldsDTO {
     this.failure = item.getFailure();
     this.description = item.getDescription();
     this.material = item.getMaterial();
-    this.enchantmentList = new HashSet<>();
   }
 
   public ShieldsDTO(EnchantedItems item) {
@@ -79,7 +78,9 @@ public class ShieldsDTO {
     this.failure = shieldDTO.failure;
     this.description = shieldDTO.description;
     this.material = item.getMaterial();
-    this.enchantmentList =
-      MapperEnchantment.toEnchantmentDTOSet(item.getEnchantmentList());
+    this.enchantment =
+      item.getEnchantment() != null
+        ? MapperEnchantment.toEnchantmentDTOSet(item.getEnchantment())
+        : null;
   }
 }

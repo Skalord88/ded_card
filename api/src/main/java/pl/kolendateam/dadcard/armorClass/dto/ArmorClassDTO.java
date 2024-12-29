@@ -17,7 +17,9 @@ public class ArmorClassDTO {
   public int naturalArmor;
   public int dodgeBonus;
 
-  ModifierEnum[] target;
+  public ModifierEnum[] target;
+
+  public String special;
 
   public ArmorClassDTO(ArmorClass aC) {
     this.sizeBonus = aC.getSizeBonus();
@@ -28,5 +30,6 @@ public class ArmorClassDTO {
     this.naturalArmor = aC.getNaturalArmor();
     this.dodgeBonus = aC.getDodgeBonus();
     this.target = aC.getTarget() != null ? aC.getTarget() : null;
+    this.special = aC.getSpecial() != null ? aC.getSpecial() : null;
   }
 }

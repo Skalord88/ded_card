@@ -1,122 +1,228 @@
-import { Abilitys } from "../../Abilitys/Interface";
-import { CharacterPc } from "../../interfaces";
-import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-
-import { SkillProps } from "../interface/SkillsInterface";
-import { SkillShowSkillsTableComponent } from "./SkillShowSkillsTableComponent";
+import { abilityBackgroundColor } from "../../Abilitys/Colors";
+import { abilityAbbreviation } from "../../Abilitys/Functions";
+import { FormattingText } from "../../Formatting/Function";
+import { BonusAbilities } from "../../functions";
+import {
+  D20Popup
+} from "../../Popup/DicePopup/D20Popup";
+import { DicePopupProps } from "../../Popup/DicePopup/Interface";
+import { CharToModify } from "../../Prerequisite/functions/modifyCharacter";
+import { PrerequisiteSkills } from "../interface/PrerequisiteSkills";
+import { Skill } from "../interface/Skill";
+import { SkillsInList } from "../interface/SkillsInList";
+import { StudyInList } from "../interface/StudysInList";
 
 export type SkillShowComponentProps = {
-  char: CharacterPc;
-  abilitys: Abilitys;
-  modifications: Prerequisite;
-};
-
-export type ListModSkillsStudies = {
-  listSkills: Prerequisite;
-  listStudies: Prerequisite;
-  penality: number;
-  classSkillsId: number[]
+  char: CharToModify;
 };
 
 export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
-  char,
-  abilitys,
-  modifications
+  char
 }) => {
-  // const listModSkillsStudies: ListModSkillsStudies = {
-    // listSkills: FindInMoreLengthModifier(modifications, "SKILL") || [],
-    // listStudies: FindInMoreLengthModifier(modifications, "STUDY") || [],
-    // penality: char.inventory.armor.penality + char.inventory.shield.penality,
-    // classSkillsId: []
-    // char.classPcList.flatMap(skills => skills.)
-  // };
+  const penality: number = char.inventory.armor.penality + char.inventory.shield.penality
 
   return (
     <>
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "8% 50% 12% 10% 10% 10%"
+          gridTemplateColumns: "8% 50% 10% 8% 8% 8% 8%"
         }}
       >
-        {window.innerWidth <= 768 ? (
-          <>
-            <div className="rpgui-container-framed-grey-mini">
-              <p></p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>Skill</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>tot</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>rk</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>ab</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>bn</p>
-            </div>
-            {/* {char.skillsList ? (
-              <>
-                {char.skillsList.map((skill: SkillProps) => {
-                  return (
-                      <SkillShowSkillsTableComponent
-                        key={skill.idSkill}
-                        indexSkill={skill.idSkill}
-                        skill={skill}
-                        indexStudy={null}
-                        study={null}
-                        abilitys={abilitys}
-                        modifiers={listModSkillsStudies}
-                      />
-                  );
-                })}
-              </>
-            ) : null} */}
-          </>
-        ) : (
-          <>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>cs</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>Skill</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>tot</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>rnk</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>abi</p>
-            </div>
-            <div className="rpgui-container-framed-grey-mini">
-              <p>bns</p>
-            </div>
-            {/* {char.skillsList ? (
-              <>
-                {char.skillsList.map((skill: SkillProps) => {
-                  return (
-                      <SkillShowSkillsTableComponent
-                        key={skill.idSkill}
-                        indexSkill={skill.idSkill}
-                        skill={skill}
-                        indexStudy={null}
-                        study={null}
-                        abilitys={abilitys}
-                        modifiers={listModSkillsStudies}
-                      />
-                  );
-                })}
-              </>
-            ) : null} */}
-          </>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>cs</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>Skill</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>tot</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>rnk</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>abi</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>bns</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>pnl</p>
+        </div>
+        {char.skillsList.map((sk, index) => sk.study && sk.study?.length > 0 ?
+         <>
+         <SkillWithStudy title={sk.skill.skillName} key={`skillWithStudy-${index}-${sk.skill.skillName}`} />
+         {sk.study.map(((st, stIndex) => (
+          <OneStudyShow
+          key={`study-${stIndex}-${st.study.studyName}`}
+          study={st}
+          skill={sk.skill}
+          bonusAb={BonusAbilities(
+            char.abilitys,
+            abilityAbbreviation(sk.skill.ability)
+          )} penality={penality} bonusModifier={char.skills.mono} />
+         )))}
+         </> : 
+          <OneSkillShow
+            key={`oneSkillShow-${index}-${sk.skill.skillName}`}
+            sk={sk}
+            bonusAb={BonusAbilities(
+              char.abilitys,
+              abilityAbbreviation(sk.skill.ability)
+            )} penality={penality} bonusModifier={char.skills.mono} />
         )}
       </div>
     </>
+  );
+};
+
+export type SkillWithStudyProps = {
+  title: string
+}
+
+export const SkillWithStudy: React.FC<SkillWithStudyProps> = ({ title }) => {
+  return (
+    <>
+    <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p>{FormattingText(title)}</p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        <div className="rpgui-container-framed-grey-mini">
+          <p></p>
+        </div>
+        </>
+  )
+}
+
+export type OneSkillShowProps = {
+  sk: SkillsInList;
+  bonusAb: number;
+  penality: number;
+  bonusModifier?: PrerequisiteSkills[]
+};
+
+export const OneSkillShow: React.FC<OneSkillShowProps> = ({ sk, bonusAb, penality, bonusModifier }) => {
+
+  const bonus: number = bonusModifier?.filter(mod => mod.skill?.id === sk.skill.id).reduce((tot, b) =>
+  tot + b.rank, 0) ?? 0
+
+  const tot: number = sk.rank + bonusAb + (sk.skill.penality * penality) + bonus
+
+  return (
+    <>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>{sk.classSkill ? "x" : ""}</p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>
+          <ModSkillStudyInDice
+            key={sk.skill.id + "." + sk.skill.skillName}
+            dice={{
+              textOrWeapon: FormattingText(sk.skill.skillName),
+              value: tot,
+              modifiers: {}
+            }}
+          />
+        </p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p style={{ color: "orange" }}>{tot}</p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>{sk.rank}</p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>{bonusAb}</p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>{bonus}</p>
+      </div>
+      <div className={abilityBackgroundColor(sk.skill.ability)}>
+        <p>{sk.skill.penality * penality}</p>
+      </div>
+    </>
+  );
+};
+export type OneStudyShowProps = {
+  study: StudyInList;
+  skill: Skill;
+  bonusAb: number;
+  penality: number;
+  bonusModifier?: PrerequisiteSkills[]
+};
+
+export const OneStudyShow: React.FC<OneStudyShowProps> = ({ study, skill, bonusAb, penality, bonusModifier }) => {
+
+  const bonus: number = bonusModifier?.filter(mod => mod.skill?.id === study.study.id).reduce((tot, b) =>
+  tot + b.rank, 0) ?? 0
+
+  const tot: number = study.rank + bonusAb + (skill.penality * penality) + bonus
+
+  const name: string = study.study.studyName? study.study.studyName : study.study.newStudy ? study.study.newStudy : ""
+
+  return (
+    <>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>{study.classSkill ? "x" : ""}</p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>
+          <ModSkillStudyInDice
+            key={study.study.id + "." + skill.skillName}
+            dice={{
+              textOrWeapon: FormattingText(name),
+              value: tot,
+              modifiers: {}
+            }}
+          />
+        </p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p style={{ color: "orange" }}>{tot}</p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>{study.rank}</p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>{bonusAb}</p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>{bonus}</p>
+      </div>
+      <div className={abilityBackgroundColor(skill.ability)}>
+        <p>{skill.penality * penality}</p>
+      </div>
+    </>
+  );
+};
+
+export type ModSkillStudyInDiceProps = {
+  dice: DicePopupProps;
+};
+
+export const ModSkillStudyInDice: React.FC<ModSkillStudyInDiceProps> = ({
+  dice
+}) => {
+  return (
+    <D20Popup
+      textOrWeapon={dice.textOrWeapon}
+      value={dice.value}
+      modifiers={dice.modifiers}
+    />
   );
 };

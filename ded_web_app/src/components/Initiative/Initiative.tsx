@@ -1,5 +1,6 @@
-import { BonusAbilities, SignAndCount } from "../functions";
-import { D12Popup } from "../Popup/DicePopup/D12Popup";
+import { BonusAbilities, signAndCount } from "../functions";
+import { AllModifiersInDice12, AllModifiersInDiceProps } from "../Popup/DicePopup/D20Popup";
+import { AllModifiersInThrow } from "../Popup/DicePopup/Interface";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 
 export type InitiativeProps = {
@@ -9,40 +10,38 @@ export type InitiativeProps = {
 export const Initiative: React.FC<InitiativeProps> = ({
   char
 }) => {
-  const initiativeDex: number = BonusAbilities(char.abilitys, "DEX")
-  const initiativeMod: number = char.initiative
-  const totInit: number = initiativeDex + initiativeMod;
+
+  const dexterityMod: number = BonusAbilities(char.abilitys, "DEX");
+    const initiative: AllModifiersInThrow = {
+      tot: {
+        value: signAndCount([char.initiative, dexterityMod]),
+        mod: "tot"
+      },
+      allMod: [
+        { value: signAndCount([dexterityMod]), mod: "dex" }
+      ]
+    };
+
+    const allDice: AllModifiersInDiceProps = {
+        list: [
+          {
+            dice: {
+              textOrWeapon: initiative.tot.mod,
+              value: initiative.tot.value.number,
+              modifiers: null
+            },
+            allMod: initiative
+          }]}
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
-      <div style={{ display: "flex" }}>
-        <div key={"tot"}>
-          <p style={{ flex: 1 }}>
-            <D12Popup textOrWeapon="tot:" value={totInit} modifiers={{attackRoll: null, specialAttacks: null, savingThrow: null}} />
+
+        <div>
+          <p>
+            <AllModifiersInDice12 list={allDice.list} />
           </p>
         </div>
-        {initiativeDex !== 0 ? (
-            <div key={"dex"}>
-              <p style={{ flex: 1 }}>
-                {SignAndCount([initiativeDex]).sign}
-                {initiativeDex}{' dex'}
-              </p>
-            </div>
-        ) : 
-          null
-        }
-        {initiativeMod !== 0 ? (
-            <div key={'bns'}>
-              <p style={{ flex: 1 }}>
-                {SignAndCount([initiativeMod]).sign}
-                {initiativeMod}{' bns'}
-              </p>
-            </div>
-        ) : 
-          null
-        }
-      </div>
     </>
   );
 };

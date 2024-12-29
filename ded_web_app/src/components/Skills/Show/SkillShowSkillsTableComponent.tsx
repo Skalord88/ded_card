@@ -1,4 +1,4 @@
-import { AbilityAbbreviation, BonusAbilities } from "../../Abilitys/Functions";
+import { abilityAbbreviation, BonusAbilities } from "../../Abilitys/Functions";
 import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { ClassSkillSkillsTableComponent } from "../ClassSkillSkillsTableComponent";
 import { ShowTableSkillProps, Study } from "../interface/SkillsInterface";
@@ -95,7 +95,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                       ability={skill.skillAbility}
                       skillAbility={BonusAbilities(
                         abilitys,
-                        AbilityAbbreviation(skill.skillAbility)
+                        abilityAbbreviation(skill.skillAbility)
                       )}
                       skillBonus={0}
                     />
@@ -146,7 +146,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                     study={null}
                     abilitys={BonusAbilities(
                       abilitys,
-                      AbilityAbbreviation(skill.skillAbility)
+                      abilityAbbreviation(skill.skillAbility)
                     )}
                     bonus={bonus}
                   />
@@ -164,7 +164,7 @@ export const SkillShowSkillsTableComponent: React.FC<ShowTableSkillProps> = ({
                     skill={skill}
                     abilitys={BonusAbilities(
                       abilitys,
-                      AbilityAbbreviation(skill.skillAbility)
+                      abilityAbbreviation(skill.skillAbility)
                     )}
                     bonus={0}
                   />

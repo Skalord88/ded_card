@@ -1,7 +1,7 @@
 import { DiceText } from "../../../Dice/Functions";
 import { FormattingText } from "../../../Formatting/Function";
 import {
-  WeaponTwoHanded
+  weaponTwoHanded
 } from "../../../functions";
 import { Weapon } from "../../../interfaces";
 import { Popup } from "../../../Popup/Popup";
@@ -72,11 +72,11 @@ export const WeaponsInventoryComponent: React.FC<
       </div>
       <div style={{ gridColumn: 7 }}>
         <p style={{ backgroundColor: "grey" }}>Hands</p>
-        <p>{WeaponTwoHanded(weapon1) ? 2 : 1}</p>
-        <p>{WeaponTwoHanded(weapon2) ? 2 : 1}</p>
-        <p>{WeaponTwoHanded(weapon3) ? 2 : 1}</p>
-        <p>{WeaponTwoHanded(weapon4) ? 2 : 1}</p>
-        <p>{WeaponTwoHanded(weapon5) ? 2 : 1}</p>
+        <p>{weaponTwoHanded(weapon1) ? 2 : 1}</p>
+        <p>{weaponTwoHanded(weapon2) ? 2 : 1}</p>
+        <p>{weaponTwoHanded(weapon3) ? 2 : 1}</p>
+        <p>{weaponTwoHanded(weapon4) ? 2 : 1}</p>
+        <p>{weaponTwoHanded(weapon5) ? 2 : 1}</p>
       </div>
       <div style={{ gridColumn: 9 }}>
         <p style={{ backgroundColor: "grey" }}>Weight</p>
@@ -98,35 +98,35 @@ export const MiniWeaponsInventoryComponent: React.FC<
         <Popup text={weapon1.name} popText={weapon1.description} />
       </p>
       <p>{weapon1.damage}</p>
-      <p>{WeaponTwoHanded(weapon1) ? 2 : 1}</p>
+      <p>{weaponTwoHanded(weapon1) ? 2 : 1}</p>
       
 
       <p>
         <Popup text={weapon2.name} popText={weapon2.description} />
       </p>
       <p>{weapon2.damage}</p>
-      <p>{WeaponTwoHanded(weapon2) ? 2 : 1}</p>
+      <p>{weaponTwoHanded(weapon2) ? 2 : 1}</p>
       
 
       <p>
         <Popup text={weapon3.name} popText={weapon3.description} />
       </p>
       <p>{weapon3.damage}</p>
-      <p>{WeaponTwoHanded(weapon3) ? 2 : 1}</p>
+      <p>{weaponTwoHanded(weapon3) ? 2 : 1}</p>
       
 
       <p>
         <Popup text={weapon4.name} popText={weapon4.description} />
       </p>
       <p>{weapon4.damage}</p>
-      <p>{WeaponTwoHanded(weapon4) ? 2 : 1}</p>
+      <p>{weaponTwoHanded(weapon4) ? 2 : 1}</p>
       
 
       <p>
         <Popup text={weapon5.name} popText={weapon5.description} />
       </p>
       <p>{weapon5.damage}</p>
-      <p>{WeaponTwoHanded(weapon5) ? 2 : 1}</p>
+      <p>{weaponTwoHanded(weapon5) ? 2 : 1}</p>
 
     </>
   );

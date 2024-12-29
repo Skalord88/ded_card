@@ -1,64 +1,41 @@
-import { CharacterPc } from "../interfaces";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { Contact } from "./Contact";
 import { Failure } from "./Failure";
 import { FlatFooted } from "./FlatFooted";
-import { CalculateArmorInChar } from "./Function";
-import { ArmorList, ArmorModifiers } from "./interface/ArmorInterface";
-import { SmallTotalArmor, TotalArmor } from "./TotalArmor";
+import { calculateArmorInChar } from "./function";
+import { ArmorList } from "./interface/ArmorInterface";
+import { TargetAC } from "./TargetAC";
 
 export type CharacterArmorProps = {
-  char: CharToModify
+  char: CharToModify;
 };
-export const CharacterArmor: React.FC<CharacterArmorProps> = ({
-  char,
-  // armorModifiers
-}) => {
-  // const listOfArmor: ArmorList = CalculateArmorInChar(char, armorModifiers);
+export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
+  const listOfArmor: ArmorList = calculateArmorInChar(char);
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
-      {window.innerWidth <= 768 ? (
-        <>
-        <div>
-          <p>
-          {/* <SmallTotalArmor armorModifiers={armorModifiers} />
-          {listOfArmor.map((ar, index) =>
-            ar.bonus === 0 ? null : (
-              <div key={index}>
-                {ar.text}: {ar.bonus} {ar.item}
-              </div>
-            )
-          )} */}
-          </p>
-          </div>
-        </>
-      ) : (
-        <>
-          <div style={{ display: "flex" }}>
-            {/* <TotalArmor armorModifiers={armorModifiers} /> */}
-            {/* {listOfArmor.map((ar, index) => {
-              return ar.bonus > 0 ? (
-                <div key={index} className="rpgui-container-framed-grey">
-                  <p style={{ flex: 1 }}>
-                    {ar.sign}
-                    {ar.bonus}
-                  </p>
-                  <p style={{ flex: 1 }}>{ar.text}</p>
-                  <p style={{ flex: 1 }}>{ar.item}</p>
-                </div>
-              ) : null; 
-            })}*/}
 
-            <div className="rpgui-container-framed-grey">
-              <p style={{ flex: 1 }}></p>
+      <div style={{ display: "flex", flexDirection: "row" }}>
+        {listOfArmor.map((armor, index) =>
+          armor.signNum.number ? (
+            <div className="rpgui-container-framed-grey" key={index}>
+              <p>
+                {index === 0 ? null : armor.signNum.sign}
+                {armor.signNum.number} {armor.text}
+              </p>
+              <p>{armor.item}</p>
             </div>
-            <Failure inventory={char.inventory} />
-            {/* <FlatFooted armorModifiers={armorModifiers} />
-            <Contact armorModifiers={armorModifiers} /> */}
-          </div>
-        </>
+          ) : null
+        )}
+        <Failure inventory={char.inventory} key={"failure"} />
+        <FlatFooted armorList={listOfArmor} key={"flatFooted"} />
+        <Contact armorList={listOfArmor} key={"contact"} />
+      </div>
+      {(char.armor.target.length > 0 || char.armor.composed.length > 0) && (
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <TargetAC target={char.armor.target} composed={char.armor.composed} />
+        </div>
       )}
     </>
   );

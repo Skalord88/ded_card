@@ -11,15 +11,19 @@
             <column name="enchantment" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="ability" type="varchar(255)">
+            <column name="ability" type="varchar(250)">
                 <constraints nullable="true" />
             </column>
-            <column name="modifiers" type="json">
+            <column name="modifiers_id" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="cost" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="text" type="varchar(250)">
+                <constraints nullable="true" />
+            </column>
         </createTable>
+
     </changeSet>
 </databaseChangeLog>

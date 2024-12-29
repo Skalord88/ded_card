@@ -1,6 +1,6 @@
-import { Size } from "../Size/Interfaces"
 import { Feat } from "../Feats/Interface/FeatInterface"
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite"
+import { Size } from "../Size/interfaces"
 
 
 export type Race = {

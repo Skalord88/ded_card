@@ -1,11 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
-import { ListModSkillsStudies } from "../Show/SkillShowComponent";
+import { Skill } from "./Skill";
 
-export type Skill = {
-  id: number,
-  skillName: string,
-  ability: string
-}
 export type Study = {
   id: number,
   skill: Skill,
@@ -73,7 +68,7 @@ export type ShowTableSkillProps = {
   indexStudy: number | null
   study: Study | null
   abilitys: Abilitys | null
-  modifiers: ListModSkillsStudies
+  modifiers: null
 }
 
 export type ShowOneSkillProps = {

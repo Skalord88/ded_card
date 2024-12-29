@@ -1,13 +1,14 @@
 import { InventoryProps } from "./interface/ArmorInterface";
 
+
 export const Failure: React.FC<InventoryProps> = ({ inventory }) => {
   return (
     <>
       <div className="rpgui-container-framed-grey">
-        <p style={{ flex: 1 }}>
+        <p>
           {inventory.armor.failure + inventory.shield.failure}%
         </p>
-        <p style={{ flex: 1 }}>failure</p>
+        <p>failure</p>
       </div>
     </>
   );

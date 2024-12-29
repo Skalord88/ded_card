@@ -2,23 +2,38 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AbilitysComponent } from "../components/AbilitysComponent";
-import {
-  CharacterData,
-  ClassExpGold
-} from "../components/CharacterData";
+import { CharacterData, ClassExpGold } from "../components/CharacterData";
 import { DeleteButton } from "../components/DeleteButton";
 import { Initiative } from "../components/Initiative/Initiative";
 import { CharacterPc } from "../components/interfaces";
 
 import { urlChar } from "../components/url";
-import { emptyAbilitys, emptyInventory } from "../components/variables";
+import {
+  emptyAbilitys,
+  emptyAttacks,
+  emptyInventory,
+  emptySize
+} from "../components/variables";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
-import { CharToModify, modifyCharacter } from "../components/Prerequisite/functions/modifyCharacter";
+import {
+  CharToModify,
+  modifyCharacter
+} from "../components/Prerequisite/functions/modifyCharacter";
 import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { HpComponent } from "../components/HpComponent";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { modifyInventory } from "../components/Items/Inventory/function";
+import {
+  calculateInventoryWeight,
+  calculateWeight,
+  modifyInventory
+} from "../components/Items/Inventory/function";
+import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
+import { modifyAttacks } from "../components/Attack/function";
+import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
+import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
+import { SpeedComponent } from "../components/SpeedComponent";
+import { FeatsComponent } from "../components/Feats/FeatsComponent";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -40,166 +55,78 @@ export const Show = () => {
 
   if (!char) return <>...character loading...</>;
 
-  // const feats: FeatsToShow[] = GroupAllFeats([
-  //   ...char.featsList, //FeatPc
-  //   ...char.race.raceFeats, //Feat
-  //   ...char.archetypes.flatMap((ar) => ar.archetypeFeats), //Feat
-  //   ...char.classPcList //ClassPc
-  // ]);
-
-  // const onlyModification: Modifiers[] = [...char.race.size.modifiers, ...char.race.modifiers, ...char.race.race.modifiers]
-
-  // const modificationFromFeats: Modifiers[] = feats.flatMap(feat => feat.modifiers)
-  // const modifications: Modifiers[] = [...onlyModification, ...modificationFromFeats]
-
-  // let mod = [
-    // ...char.featsList.flatMap(f => f.selected),
-  //   ...char.race.raceFeats.flatMap(f => f.modifiers),
-  //   ...char.archetypes.flatMap(f => f.modifiers)
-  // ];
-
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
+    size: emptySize,
     bab: 0,
-    adjBonus: {bab: 0, savingThrow: 0, adjLv: 0},
-    attackRoll: [],
+    adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
+    attackRoll: { mono: [], target: [], composed: [] },
     specialAttacks: [],
-    initiative : 0,
-    baseSave: {fortitude: 0, reflex: 0, will: 0},
+    initiative: 0,
+    baseSave: { fortitude: 0, reflex: 0, will: 0 },
     savingThrow: [],
     listHitDices: [],
-    inventory: emptyInventory
+    armor: { mono: [], target: [], composed: [] },
+    inventory: emptyInventory,
+    attacks: emptyAttacks,
+    skills: { mono: [], target: [] },
+    skillsList: [],
+    feats: { feats: [], classFeats: [], pcFeats: [] },
+    speed: {
+      foot: 0,
+      fly: 0,
+      climb: 0,
+      swim: 0,
+      special: ""
+    }
   };
   let modif: Prerequisite[] = [];
 
-  if(char.race.size.modifiers !== null){
-    modif.push(char.race.size.modifiers)
-    modChar = modifyCharacter(char, modif);
-  }
-  if(char.race.modifiers !== null){
-    modif.push(char.race.modifiers)
-    modChar = modifyCharacter(char, modif);
-  }
-  if(char.race.race.modifiers !== null){
-    modif.push(char.race.race.modifiers)
-    modChar = modifyCharacter(char, modif);
-  }
-  char.featsList.forEach(f => {
-    if(f.selected !== null) {
-      modif.push(f.selected)
-      modChar = modifyCharacter(char, modif)
-    }
-  })
+  // size
+  char.race.size.modifiers && modif.push(char.race.size.modifiers);
+  // race
+  char.race.modifiers && modif.push(char.race.modifiers);
+  // subRace
+  char.race.subRaceFeats &&
+    char.race.subRaceFeats.forEach(
+      (f) => f.modifiers && modif.push(f.modifiers)
+    );
+  // subRace
+  char.race.race.modifiers && modif.push(char.race.race.modifiers);
+  // subRace
+  char.race.race.raceFeats &&
+    char.race.race.raceFeats.forEach((f) => {
+      f.modifiers && modif.push(f.modifiers);
+    });
+
+  // feats
+  char.featsList.forEach((f) => {
+    f.selected && modif.push(f.selected);
+  });
+  // feats
+  char.classPcList.forEach((cl) => {
+    cl &&
+      cl.classCharacter.classFeats.forEach((f) => {
+        if (f && f.level <= cl.level) {
+          f.modifiers && modif.push(f.modifiers);
+        }
+      });
+  });
+
+  // add to modChar
+  modChar = modifyCharacter(char, modif);
+
   modChar.inventory = modifyInventory(char);
+  modChar.attacks = modifyAttacks(modChar);
 
-  // console.log(modChar.abilitys);
-  // console.log(modChar.race.modifiers?.abilitys);
-  // console.log(modChar.race.race.modifiers?.abilitys);
-
-  // const specificFghFeats: number[] = FindFightingFeats(char.featsList);
-  // const grapple: number =
-  //   adjBab + strenght + FindInOneLengthModifier(modifications, "GRAPPLE");
-  // const strenghtAtt: number = adjBab + strenght;
-  // const dexterityAtt: number = adjBab + dexterity;
   // const speed: number = FindInOneLengthModifier(modifications, "SPEED");
 
-  // const armorModifiers: ArmorModifiers = {
-  //   size: FindInOneLengthModifier(modifications, "ARMOR_SIZE"),
-  //   armor: char.inventory.armor ?
-  //     FindInOneLengthModifier(modifications, "ARMOR_BONUS") +
-  //     (char.inventory.armor.enchantmentList !== null?
-  //       char.inventory.armor.enchantmentList.reduce(
-  //       (tot, ench) => 
-  //         tot + ench.ability === null? 0 : ench.enchantment
-  //       , 0
-  //     ) : 0) : 0,
-  //   shiled: char.inventory.shield ?
-  //     FindInOneLengthModifier(modifications, "SHIELD_BONUS") +
-  //     (char.inventory.shield.enchantmentList !== null?
-  //     char.inventory.shield.enchantmentList.reduce(
-  //       (tot, ench) => 
-  //         tot + ench.ability === null? 0 : ench.enchantment
-  //       , 0
-  //     ) : 0) : 0,
-  //   dexterity: char.inventory.armor ? MaxdexterityCount(
-  //     BonusAbilities(abilitys, "DEX"),
-  //     char.inventory.armor.maxDex
-  //   ) : 0,
-  //   dodge: FindInOneLengthModifier(modifications, "DODGE_BONUS"),
-  //   natural: FindInOneLengthModifier(modifications, "NATURAL_ARMOR_BONUS"),
-  //   deflection: FindInOneLengthModifier(modifications, "DEFLECTION_BONUS")
-  // };
-  
-  // const inventory: Inventory = {
-  //   ...char.inventory,
-  //   armor: char.inventory.armor && "armorName" in char.inventory.armor ? 
-  //   reSizeArmor(char.race.size, char.inventory.armor) as Armor : noneArmor,
-
-  //   shield: char.inventory.shield && "shieldName" in char.inventory.shield ?
-  //   reSizeArmor(char.race.size, char.inventory.shield) as Shield : noneShield,
-
-  //   weaponOne: char.inventory.weaponOne
-  //   //  ? char.inventory.weaponOne : noneWeapon,
-  //   ? reSizeWeapon(char.race.size, char.inventory.weaponOne)
-  //   : reSizeWeapon(char.race.size, noneWeapon),
-  //   weaponTwo: char.inventory.weaponTwo
-  //   //  ? char.inventory.weaponTwo : noneWeapon,
-  //   ? reSizeWeapon(char.race.size, char.inventory.weaponTwo)
-  //   : reSizeWeapon(char.race.size, noneWeapon),
-  //   weaponThree: char.inventory.weaponThree
-  //   //  ? char.inventory.weaponThree : noneWeapon,
-  //   ? reSizeWeapon(char.race.size, char.inventory.weaponThree)
-  //   : reSizeWeapon(char.race.size, noneWeapon),
-  //   weaponFour: char.inventory.weaponFour
-  //   //  ? char.inventory.weaponFour : noneWeapon,
-  //   ? reSizeWeapon(char.race.size, char.inventory.weaponFour)
-  //   : reSizeWeapon(char.race.size, noneWeapon),
-  //   weaponFive: char.inventory.weaponFive
-  //   //  ? char.inventory.weaponFive : noneWeapon
-  //   ? reSizeWeapon(char.race.size, char.inventory.weaponFive)
-  //   : reSizeWeapon(char.race.size, noneWeapon)
-  //   ,
-  //   backpack: [noneItem, noneItem, noneItem],
-  //   head: noneItem,
-  //   neck: noneItem,
-  //   arms: noneItem,
-  //   hands: [noneItem, noneItem],
-  //   cloth: noneItem,
-  //   legs: noneItem
-  // };
-  // const weight: number = CalculateInventoryWeight(inventory);
-  // const carrying: [string, number] = CalculateWeight(
-  //   abilitys.strength,
-  //   char.race.size.id,
-  //   weight
-  // );
-  // const attacks: Attacks = {
-  //   ...char.attacks,
-  //   firstAttackSetOne: char.attacks.firstAttackSetOne ? reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.firstAttackSetOne
-  //   ) : reSizeWeapon(char.race.size, noneWeapon),
-  //   secondAttackSetOne: char.attacks.secondAttackSetOne ? reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.secondAttackSetOne
-  //   ) : reSizeWeapon(char.race.size, noneWeapon),
-  //   additionalAttackSetOne: char.attacks.additionalAttackSetOne ? reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.additionalAttackSetOne
-  //   ) : reSizeWeapon(char.race.size, noneWeapon),
-  //   firstAttackSetTwo: char.attacks.firstAttackSetTwo ? reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.firstAttackSetTwo
-  //   ) : reSizeWeapon(char.race.size, noneWeapon),
-  //   secondAttackSetTwo: char.attacks.secondAttackSetTwo?  reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.secondAttackSetTwo
-  //   ) : reSizeWeapon(char.race.size, noneWeapon),
-  //   additionalAttackSetTwo: char.attacks.additionalAttackSetTwo ? reSizeWeapon(
-  //     char.race.size,
-  //     char.attacks.additionalAttackSetTwo
-  //   ) : reSizeWeapon(char.race.size, noneWeapon)
-  // };
+  const weight: number = calculateInventoryWeight(modChar.inventory);
+  const carrying: [string, number] = calculateWeight(
+    char.abilitys.strength,
+    char.race.size.id,
+    weight
+  );
 
   return (
     <>
@@ -207,43 +134,19 @@ export const Show = () => {
         <>
           <DeleteButton url={urlChar} />
           <CharacterData char={char} />
-          <AbilitysComponent 
-            abilitys={modChar.abilitys} 
-          />
+          <AbilitysComponent abilitys={modChar.abilitys} />
           <ClassExpGold char={char} />
-          <BaseAttack
-            char={modChar}
-          />
+          <BaseAttack char={modChar} />
           <Initiative char={modChar} />
-          <SavingThrowComponent
-            char={modChar}
-          />
+          <SavingThrowComponent char={modChar} />
           <HpComponent char={modChar} />
           <CharacterArmor char={modChar} />
-          {/* <MapOfAttackComponent
-            attacks={attacks}
-            bab={adjBab}
-            strenght={strenght}
-            strenghtAtt={strenghtAtt}
-            dexterityAtt={dexterityAtt}
-            specific={[
-              specificBab,
-              specificDmg,
-              specificCrit,
-              specificFavEnemy
-            ]}
-            specificFghFeats={specificFghFeats}
-          />
-          <InventoryComponent inventory={inventory} carrying={carrying} />
-          <SkillShowComponent
-            key={"skillsTable"}
-            char={char}
-            abilitys={abilitys}
-            modifications={modifications}
-          />
-          <SpeedComponent speed={speed} />
-          <FeatsComponent feats={feats} titolo=""/> */}
-          </>
+          <MapOfAttackComponent char={modChar} />
+          <InventoryComponent char={modChar} carrying={carrying} />
+          <SkillShowComponent char={modChar} />
+          <SpeedComponent char={modChar} />
+          <FeatsComponent char={modChar} />
+        </>
       ) : (
         <>
           <div
@@ -303,9 +206,7 @@ export const Show = () => {
                 gridRow: 3
               }}
             >
-              <BaseAttack
-                char={modChar}
-              />
+              <BaseAttack char={modChar} />
             </div>
             <div
               className="rpgui-container-framed-grey"
@@ -314,9 +215,7 @@ export const Show = () => {
                 gridRow: 4
               }}
             >
-              <Initiative
-                char={modChar}
-              />
+              <Initiative char={modChar} />
             </div>
             <div
               className="rpgui-container-framed-grey"
@@ -325,9 +224,7 @@ export const Show = () => {
                 gridRow: 5
               }}
             >
-              <SavingThrowComponent
-                char={modChar}
-              />
+              <SavingThrowComponent char={modChar} />
             </div>
             <div
               className="rpgui-container-framed-grey"
@@ -348,27 +245,14 @@ export const Show = () => {
             >
               <CharacterArmor char={modChar} />
             </div>
-            {/* <div
+            <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 3",
                 gridRow: 7
               }}
             >
-              <MapOfAttackComponent
-                attacks={attacks}
-                bab={adjBab}
-                strenght={strenght}
-                strenghtAtt={strenghtAtt}
-                dexterityAtt={dexterityAtt}
-                specific={[
-                  specificBab,
-                  specificDmg,
-                  specificCrit,
-                  specificFavEnemy
-                ]}
-                specificFghFeats={specificFghFeats}
-              />
+              <MapOfAttackComponent char={modChar} />
             </div>
             <div
               key="inventory"
@@ -378,7 +262,10 @@ export const Show = () => {
                 gridRow: 8
               }}
             >
-              {inventory? <InventoryComponent inventory={inventory} carrying={carrying} /> : null}
+              <InventoryComponent
+                char={modChar}
+                carrying={carrying}
+              />
             </div>
             <div
               key="skills"
@@ -388,11 +275,7 @@ export const Show = () => {
                 gridRow: "9 / span 2"
               }}
             >
-                <SkillShowComponent
-                  char={char}
-                  abilitys={abilitys}
-                  modifications={modifications}
-                />
+              <SkillShowComponent char={modChar} />
             </div>
             <div
               key="speed"
@@ -402,7 +285,7 @@ export const Show = () => {
                 gridRow: 9
               }}
             >
-              <SpeedComponent speed={speed} />
+              <SpeedComponent char={modChar} />
             </div>
             <div
               key="feats"
@@ -412,8 +295,8 @@ export const Show = () => {
                 gridRow: 11
               }}
             >
-              <FeatsComponent feats={feats} titolo=""/> 
-            </div> */}
+              <FeatsComponent char={modChar} /> 
+            </div>
           </div>
         </>
       )}

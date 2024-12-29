@@ -1,8 +1,9 @@
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { SpecialAttacksList } from "../../Attack/function";
-import { Weapon } from "../../interfaces";
+import { SignAndNumber, Weapon } from "../../interfaces";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { Resistance } from "../../Saving/interface";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 
 export type DicePopupProps = {
   textOrWeapon: string;
@@ -11,10 +12,12 @@ export type DicePopupProps = {
 };
 
 export type DiceModifiers = {
-  attackRoll: AttackRoll[] | null;
-  specialAttacks: SpecialAttacksList[] | null;
-  savingThrow: Resistance[] | null;
-}
+  attackRoll?: AttackRoll[];
+  specialAttacks?: SpecialAttacksList[];
+  savingThrow?: Resistance[];
+  skills?: PrerequisiteSkills;
+  composed?: Prerequisite[]
+} | null;
 
 export type DicePopupWeaponProps = {
   type: string;
@@ -22,5 +25,9 @@ export type DicePopupWeaponProps = {
   bab: number[];
   dmg: number;
   increments: number[];
-  modifiers: Prerequisite;
 };
+
+export type AllModifiersInThrow = {
+  tot: {value: SignAndNumber, mod: string};
+  allMod: {value: SignAndNumber, mod: string} [];
+}

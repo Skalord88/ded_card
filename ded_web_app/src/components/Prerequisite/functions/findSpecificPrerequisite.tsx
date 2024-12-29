@@ -1,8 +1,12 @@
 import { Abilitys } from "../../Abilitys/Interface";
+import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
-import { Inventory, SpecialAttacks } from "../../interfaces";
+import { SpecialAttacks } from "../../interfaces";
 import { SavingThrow } from "../../Saving/interface";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { Speed } from "../../Speed/interface";
 import { Prerequisite } from "../interface/Prerequisite";
+import { ArmorClassElement, AttackRollElement, SkillsElement } from "./modifyCharacter";
 
 export const findAbilitysPrerequisite = (
   prerList: Prerequisite[]
@@ -10,7 +14,7 @@ export const findAbilitysPrerequisite = (
   let onlyAbilitys: Abilitys[] = [];
 
   prerList.forEach((prer) => {
-    if (prer.abilitys !== null) onlyAbilitys.push(prer.abilitys);
+    prer.abilitys && onlyAbilitys.push(prer.abilitys);
   });
 
   return onlyAbilitys;
@@ -18,14 +22,23 @@ export const findAbilitysPrerequisite = (
 
 export const findAttackRollPrerequisite = (
   prerList: Prerequisite[]
-): AttackRoll[] => {
-  let onlyAttackRoll: AttackRoll[] = [];
+): AttackRollElement => {
+  let mono: AttackRoll[] = [];
+  let target: AttackRoll[] = [];
+  let composed: Prerequisite[] = [];
 
   prerList.forEach((prer) => {
-    if (prer.attackRoll !== null) onlyAttackRoll.push(prer.attackRoll);
-  });
+    if(prer.attackRoll){
+      if(prer.attackRoll?.target === null) mono.push(prer.attackRoll)
+        const compose : string[] = ["ITEM", "WEAPON_TYPE"]
+      if(prer.attackRoll?.target?.some(t => !compose.includes(t))) target.push(prer.attackRoll)
+      if(prer.attackRoll?.target?.some(t => compose.includes(t))) {composed.push({attackRoll: {
+        bonus: prer.attackRoll.bonus,
+        target: null
+      }, weaponType: prer.weaponType, items: prer.items})}
+    }});
 
-  return onlyAttackRoll;
+  return {mono, target, composed};
 };
 
 export const findSpecialAttacksPrerequisite = (
@@ -35,7 +48,7 @@ export const findSpecialAttacksPrerequisite = (
 
   prerList.forEach((prer) => {
     if (prer.specialAttacks !== null)
-      onlySpecialAttacks.push(prer.specialAttacks);
+      prer.specialAttacks && onlySpecialAttacks.push(prer.specialAttacks);
   });
 
   return onlySpecialAttacks;
@@ -57,9 +70,56 @@ export const findSavingThrowPrerequisite = (
   let onlySavingThrow: SavingThrow[] = [];
 
   prerList.forEach((prer) => {
-    if (prer.savingThrow !== null)
-      onlySavingThrow.push(prer.savingThrow);
+      prer.savingThrow && onlySavingThrow.push(prer.savingThrow);
   });
 
   return onlySavingThrow;
+};
+
+export const findArmorPrerequisite = (
+  prerList: Prerequisite[]
+): ArmorClassElement => {
+  let mono: ArmorClass[] = [];
+  let target: ArmorClass[] = [];
+  let composed: Prerequisite[] = [];
+
+  prerList.forEach((prer) => {
+    if(prer.armorClass){
+      if(prer.armorClass?.target === null) mono.push(prer.armorClass)
+        const compose : string[] = ["ITEM", "WEAPON_TYPE"]
+      if(prer.armorClass?.target?.some(t => !compose.includes(t))) target.push(prer.armorClass)
+      if(prer.armorClass?.target?.some(t => compose.includes(t))) {composed.push(prer)}
+    }});
+
+  return {mono, target, composed};
+};
+
+export const findSkillsPrerequisite = (
+  prerList: Prerequisite[]
+): SkillsElement => {
+  let mono: PrerequisiteSkills[] = [];
+  let target: PrerequisiteSkills[] = [];
+
+  prerList.forEach((prer) => {
+      prer.skillStudy && prer.skillStudy
+      .forEach(sk => {
+        sk.target === null ? mono.push(sk) : target.push(sk)
+      })
+  });
+
+  return {mono, target};
+};
+
+export const findSpeedPrerequisite = (
+  prerList: Prerequisite[]
+): Speed => {
+   
+  return {
+    foot: prerList.reduce((tot, p) => tot + (p.speed? Number(p.speed.foot) : 0) , 0),
+    fly: prerList.reduce((tot, p) => tot + (p.speed? Number(p.speed.fly) : 0) , 0),
+    climb: prerList.reduce((tot, p) => tot + (p.speed? Number(p.speed.climb) : 0) , 0),
+    swim: prerList.reduce((tot, p) => tot + (p.speed? Number(p.speed.swim) : 0) , 0),
+    special: prerList.map(p => p.speed?.special).join(", ")
+  }
+
 };

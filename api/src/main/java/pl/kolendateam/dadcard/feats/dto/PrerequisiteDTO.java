@@ -36,6 +36,7 @@ public class PrerequisiteDTO {
   public SpellLevel[] caster;
   public Integer bab;
   public AttackRollDTO attackRoll;
+  public Integer damageBonus;
   public SpeedDTO speed;
   public SavingThrowDTO savingThrow;
   public SpecialAttacksDTO specialAttacks;
@@ -60,6 +61,7 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
+    this.damageBonus = pre.getDamageBonus();
     this.attackRoll =
       pre.getAttackRoll() != null
         ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())
@@ -74,8 +76,8 @@ public class PrerequisiteDTO {
         : null;
     this.specialAttacks =
       pre.getSpecialAttacks() != null
-      ? MapperSpecialAttacks.toSpecialAttacksDTO(pre.getSpecialAttacks())
-      : null;
+        ? MapperSpecialAttacks.toSpecialAttacksDTO(pre.getSpecialAttacks())
+        : null;
     this.skillStudy =
       pre.getPrerequisiteSkillsStudy() != null
         ? MapperSkillToDTO.toPrerequisiteSkillDTO(

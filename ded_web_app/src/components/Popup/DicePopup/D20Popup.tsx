@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
-import { DicePopupProps } from "./Interface";
+import { AllModifiersInThrow, DicePopupProps } from "./Interface";
 import { ThrowDice } from "../../Dice/ThrowDice";
+import { D12Popup } from "./D12Popup";
 
 export const D20Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,
   value,
   modifiers
 }) => {
-  // console.log(modifiers);
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
@@ -39,53 +39,73 @@ export const D20Popup: React.FC<DicePopupProps> = ({
       >
         <ThrowDice dice={dice} value={value} />
         {/* attackRoll */}
-        {modifiers.attackRoll != null ? (
+        {modifiers?.attackRoll != null ? (
           <>
-            {modifiers.attackRoll.map((att, index) => (
-              <D20PopupModifiers
-                dice={dice}
-                value={value}
-                target={att.target}
-                bonus={Number(att.bonus)}
-                key={index}
-              />
-            ))}
+            {modifiers.attackRoll.map(
+              (att, index) =>
+                att && (
+                  <D20PopupModifiers
+                    dice={dice}
+                    value={value}
+                    target={att.target}
+                    bonus={Number(att.bonus)}
+                    key={index}
+                  />
+                )
+            )}
           </>
         ) : null}
 
         {/* specialAttacks */}
-        {modifiers.specialAttacks != null ? (
+        {modifiers?.specialAttacks != null ? (
           <>
-            {modifiers.specialAttacks.map((att, index) => (
-              <D20PopupModifiers
-                dice={dice}
-                value={value}
-                target={[att.title]}
-                bonus={att.value}
-                key={index}
-              />
-            ))}
+            {modifiers.specialAttacks &&
+              modifiers.specialAttacks.map(
+                (att, index) =>
+                  att && (
+                    <D20PopupModifiers
+                      dice={dice}
+                      value={value}
+                      target={[att.title]}
+                      bonus={att.value}
+                      key={index}
+                    />
+                  )
+              )}
           </>
         ) : null}
 
         {/* saving */}
-        {modifiers.savingThrow != null ? (
+        {modifiers?.savingThrow != null ? (
           <>
-            {modifiers.savingThrow.map((save) =>
-              save.target.map((target, index) =>
-                save.type === "IMMUNITY" ? (
-                  `immune to ${target.toString()}`
-                ) : (
-                  <D20PopupModifiers
-                    dice={dice}
-                    value={value}
-                    target={[target]}
-                    bonus={Number(save.bonus)}
-                    key={index}
-                  />
+            {modifiers.savingThrow.map(
+              (save) =>
+                save.target &&
+                save.target.map((target, index) =>
+                  target && save.type === "IMMUNITY" ? (
+                    `immune to ${target.toString()}`
+                  ) : (
+                    <D20PopupModifiers
+                      dice={dice}
+                      value={value}
+                      target={[target]}
+                      bonus={Number(save.bonus)}
+                      key={index}
+                    />
+                  )
                 )
-              )
             )}
+          </>
+        ) : null}
+        {/* saving */}
+        {modifiers?.skills != null ? (
+          <>
+            <D20PopupModifiers
+              dice={dice}
+              value={value}
+              target={modifiers.skills.target ? modifiers.skills.target : null}
+              bonus={null}
+            />
           </>
         ) : null}
       </span>
@@ -94,8 +114,8 @@ export const D20Popup: React.FC<DicePopupProps> = ({
 };
 
 export type AttackRollProps = {
-  dice: number;
-  value: number;
+  dice: number | null;
+  value: number | null;
   target: string[] | null;
   bonus: number | null;
 };
@@ -108,8 +128,83 @@ export const D20PopupModifiers: React.FC<AttackRollProps> = ({
 }) => {
   return (
     <>
-      <ThrowDice dice={dice} value={value + (bonus ? bonus : 0)} />{" "}
+      {dice && value && (
+        <ThrowDice dice={dice} value={dice + (bonus ? bonus : 0)} />
+      )}{" "}
       {target != null ? target.join(", ") : null}
     </>
+  );
+};
+
+export type AllModifiersInDiceProps = {
+  list: {
+    dice: DicePopupProps;
+    // textOrWeapon: string;
+    // value: number;
+    // modifiers: DiceModifiers;
+    allMod: AllModifiersInThrow;
+    // tot: {
+    // value: SignAndNumber;
+    // mod: string; };
+    // allMod: {
+    // value: SignAndNumber;
+    // mod: string; }[];
+  }[];
+};
+
+export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
+  list
+}) => {
+  return (
+    <>
+      {list.map(
+        (mod, index) =>
+          mod && (
+            <p key={index}>
+              <D20Popup
+                key={index}
+                textOrWeapon={mod.dice.textOrWeapon}
+                value={Math.floor(mod.dice.value)}
+                modifiers={mod.dice.modifiers}
+              />
+              <span style={{ color: "orange" }}>
+                {mod.allMod.tot.value.sign}
+                {Math.floor(mod.allMod.tot.value.number)}{" "}
+              </span>
+              {mod.allMod.allMod.map((mod, index) => (
+                <span key={index}>
+                  {mod.value.sign}
+                  {Math.floor(mod.value.number)}
+                  {mod.mod}{" "}
+                </span>
+              ))}
+            </p>
+          )
+      )}
+    </>
+  );
+};
+export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
+  list
+}) => {
+  return (
+    <div>
+      {list.map((mod, index) => (
+        <p key={index}>
+          <D12Popup key={index} {...mod.dice} />
+          <span style={{ color: "orange" }}>
+            {mod.allMod.tot.value.sign}
+            {mod.allMod.tot.value.number}{" "}
+          </span>
+          {mod.allMod.allMod.map((mod, index) => (
+            <span key={index}>
+              {mod.value.sign}
+              {mod.value.number}
+              {mod.mod}{" "}
+            </span>
+          ))}
+        </p>
+      ))}
+    </div>
   );
 };

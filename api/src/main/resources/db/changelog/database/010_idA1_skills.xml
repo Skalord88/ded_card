@@ -15,6 +15,9 @@
       <column name="ability" type="varchar(255)">
         <constraints nullable="true" />
       </column>
+      <column name="penality" type="int">
+        <constraints nullable="true" />
+      </column>
     </createTable>
   </changeSet>
 </databaseChangeLog>

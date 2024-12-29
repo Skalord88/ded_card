@@ -1,4 +1,4 @@
-import { SignAndCount } from "../functions";
+import { signAndCount } from "../functions";
 import { Weapon } from "../interfaces";
 import { CriticalDamage, CriticalHit, DamageDice, DiceText } from "./Functions";
 
@@ -24,7 +24,7 @@ export const WeaponDamageDice: React.FC<WeaponDamageDiceProps> = ({
     let danni = DamageDice(weapon.damage, dmg)[0];
     if (danni < 1) danni = 1;
     return {
-      text: DiceText(weapon.damage) + SignAndCount([dmg]).sign + dmg,
+      text: DiceText(weapon.damage) + signAndCount([dmg]).sign + dmg,
       dice: d,
       crit: critic,
       damage: danni

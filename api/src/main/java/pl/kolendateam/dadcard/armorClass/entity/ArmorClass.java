@@ -20,6 +20,8 @@ public class ArmorClass {
 
   ModifierEnum[] target;
 
+  String special;
+
   public boolean checkPrerequisiteAC(ArmorClass aC) {
     return aC.armorBonus > 0;
   }

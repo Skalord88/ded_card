@@ -1,5 +1,6 @@
 export type Skill = {
     id: number;
-    name: string;
+    skillName: string;
     ability: string;
+    penality: number;
 }

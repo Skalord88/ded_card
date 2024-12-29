@@ -1,7 +1,18 @@
 package pl.kolendateam.dadcard.items.enchantment.entity;
 
 public enum ItemAbilityEnum {
-  PERFECT,
+  PERFECT_WEAPON,
+  WEAPON_1,
+  WEAPON_2,
+  WEAPON_3,
+  WEAPON_4,
+  WEAPON_5,
+  PERFECT_ARMOR,
+  ARMOR_1,
+  ARMOR_2,
+  ARMOR_3,
+  ARMOR_4,
+  ARMOR_5,
   COMPOSITE,
   AXIOMATIC,
   BANE,

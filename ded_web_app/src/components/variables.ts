@@ -1,8 +1,10 @@
-import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shield, SpecialAttacks, Weapon, WonderousItem, armorClass, serverSkill } from '../components/interfaces'
+import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shield, SpecialAttacks, Weapon, WonderousItem, serverSkill } from '../components/interfaces'
 import { Abilitys } from './Abilitys/Interface'
+import { ArmorClass } from './Armor/interface/ArmorInterface'
 import { ClassCharacter, ClassPc } from './ClassPc/Interface/ClassPcLevel'
 import { Prerequisite } from './Prerequisite/interface/Prerequisite'
 import { SavingThrow } from './Saving/interface'
+import { Size } from './Size/interfaces'
 import { AddStudy } from './Skills/interface/SkillsInterface'
 
 export const noneArmor: Armor = {
@@ -19,7 +21,7 @@ export const noneArmor: Armor = {
     penality: 0,
     failure: 0,
     material: null,
-    enchantmentList: []
+    enchantment: []
 }
 
 export const noneShield: Shield = {
@@ -36,11 +38,12 @@ export const noneShield: Shield = {
     penality: 0,
     failure: 0,
     material: null,
-    enchantmentList: []
+    enchantment: []
 }
 
 export const noneWeapon: Weapon = {
     id: 1,
+    itemId: 1,
     name: "Unarmed strike",
     itemType: "WEAPON",
     weaponName: "UNARMED_STRIKE",
@@ -55,7 +58,7 @@ export const noneWeapon: Weapon = {
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
     specialAttacks: null,
     material: null,
-    enchantmentList: []
+    enchantment: []
 }
 
 export const noneItem: WonderousItem = {
@@ -71,7 +74,7 @@ export const emptyEnchanted: EnchantedItem = {
     id: 0,
     item: noneWeapon,
     name: noneWeapon.name,
-    enchantmentList: [],
+    enchantment: [],
     material: "",
     modifiers: null,
     cost: 0,
@@ -115,15 +118,17 @@ export const abilitysEmpty: Abilitys = {
 
 }
 
-export const armorClassEmpty: armorClass = {
-    dexterityBonus: 0,
+export const armorClassEmpty: ArmorClass = {
+    
     sizeBonus: 0,
     armorBonus: 0,
     shieldBonus: 0,
     enhancementBonuses: 0,
     deflectionBonuses: 0,
     naturalArmor: 0,
-    dodgeBonus: 0
+    dodgeBonus: 0,
+
+    target: []
 }
 
 export const skillEmpty: serverSkill = {
@@ -180,6 +185,13 @@ export const emptyAbilitys: Abilitys = {
     charisma: 0
 }
 
+export const emptySize: Size = {
+    id: 0,
+    size: '',
+    modifiers: null
+}
+
+
 export const emptySpecialAttacks: SpecialAttacks = {
     bullRush: 0,
     charge: 0,
@@ -222,7 +234,7 @@ export const emptyPrerequisite: Prerequisite = {
         special: ''
     },
     savingThrow: emptySavingThrow,
-    prerequisiteSkillsStudy: [],
+    skillStudy: [],
     armorClass: armorClassEmpty,
     armorType: [],
     weaponType: [],

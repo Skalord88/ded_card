@@ -1,18 +1,7 @@
-import { Armor, Shield, Weapon } from "../interfaces";
-import { Size } from "./Interfaces";
+import { Weapon } from "../interfaces";
+import { Size } from "./interfaces";
 
-export function reSizeArmor(size: Size, armor: Shield | Armor): Shield | Armor {
-  let updatedArmor: Shield | Armor = { ...armor };
-
-  
-  updatedArmor.weight = reWeightItem(size.id, updatedArmor.weight)
-
-
-  if ("shieldName" in armor) return updatedArmor as Shield;
-  return updatedArmor as Armor;
-}
-
-export function reWeightItem(sizeId: number, weight: number): number {
+export const reWeightItem = (sizeId: number, weight: number): number => {
   if(sizeId === 4) {
     return weight / 2
   }

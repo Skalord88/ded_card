@@ -1,5 +1,5 @@
 import { FormattingText } from "../../../Formatting/Function"
-import { SignAndCount } from "../../../functions"
+import { signAndCount } from "../../../functions"
 import { Armor } from "../../../interfaces"
 import { Popup } from "../../../Popup/Popup"
 
@@ -17,7 +17,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
       return 0;
     }
     const speed: number = armorSpeed(armor)
-    const enchList: number[] = armor.enchantmentList.flatMap(ench => ench.enchantment)
+    const enchList: number[] = armor.enchantment.flatMap(ench => ench.enchantment)
     return (
       <>
       <div style={{ gridColumn: 1 }}>
@@ -30,7 +30,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
           </div>
           <div style={{ gridColumn: 3 }}>
             <p style={{backgroundColor: 'grey'}}>Enchantment</p>
-            <p>{SignAndCount(enchList).sign}{enchList}</p>
+            <p>{signAndCount(enchList).sign}{enchList}</p>
           </div>
           <div style={{ gridColumn: 4 }}>
             <p style={{backgroundColor: 'grey'}}>MaxDex</p>

@@ -2,7 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="17" author="damian">
-
+        <!-- Dwarf 0 -->
         <insert tableName="sub_race">
             <column name="id" value="1" />
             <column name="sub_race_name" value="Artic Dwarf" />
@@ -66,7 +66,7 @@
             <column name="level_adjustment" value="3" />
         </insert>
 
-        <!-- Elf -->
+        <!-- Elf 100-->
         <insert tableName="sub_race">
             <column name="id" value="8" />
             <column name="sub_race_name" value="Acquatic Elf" />
@@ -121,7 +121,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Gonome -->
+        <!-- Gonome 200-->
         <insert tableName="sub_race">
             <column name="id" value="14" />
             <column name="sub_race_name" value="Forest Gnome" />
@@ -149,7 +149,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Half Elf -->
+        <!-- Half Elf 300-->
         <insert tableName="sub_race">
             <column name="id" value="17" />
             <column name="sub_race_name" value="Aquatic Half Elf" />
@@ -177,7 +177,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Orc -->
+        <!-- Orc 400-->
         <insert tableName="sub_race">
             <column name="id" value="20" />
             <column name="sub_race_name" value="Grey Orc" />
@@ -214,27 +214,27 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Halfling -->
+        <!-- Halfling 500-->
         <insert tableName="sub_race">
-            <column name="id" value="24" />
+            <column name="id" value="501" />
             <column name="sub_race_name" value="Strongheart Halfling" />
             <column name="race_id" value="5" />
             <column name="size_id" value="4" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
+            <column name="modifiers_id" value="155001" />
             <column name="level_adjustment" value="0" />
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="25" />
+            <column name="id" value="502" />
             <column name="sub_race_name" value="Lightfoot Halfling" />
             <column name="race_id" value="5" />
             <column name="size_id" value="4" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
+            <column name="modifiers_id" value="155002" />
             <column name="level_adjustment" value="0" />
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="26" />
+            <column name="id" value="503" />
             <column name="sub_race_name" value="Spirit's Halfling" />
             <column name="race_id" value="5" />
             <column name="size_id" value="4" />
@@ -242,7 +242,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Human -->
+        <!-- Human 600-->
         <insert tableName="sub_race">
             <column name="id" value="27" />
             <column name="sub_race_name" value="Calishita" />
@@ -315,7 +315,7 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
-        <!-- Monstruos Humanoid -->
+        <!-- Monstruos Humanoid 700-->
         <insert tableName="sub_race">
             <column name="sub_race_name" value="Hagspawn" />
             <column name="id" value="35" />
@@ -350,7 +350,7 @@
             <column name="level_adjustment" value="2" />
         </insert>
 
-        <!-- Spirit Folk -->
+        <!-- Spirit Folk 800-->
         <insert tableName="sub_race">
             <column name="id" value="36" />
             <column name="sub_race_name" value="Moutain Spirit Folk" />

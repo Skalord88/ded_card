@@ -1,5 +1,5 @@
 import { FormattingText } from "../../../Formatting/Function";
-import { SignAndCount } from "../../../functions";
+import { signAndCount } from "../../../functions";
 import { Shield } from "../../../interfaces";
 import { Popup } from "../../../Popup/Popup";
 
@@ -10,7 +10,7 @@ export type ShieldInventoryComponentProps = {
 export const ShieldInventoryComponent: React.FC<
   ShieldInventoryComponentProps
 > = ({ shield }) => {
-  const enchList: number[] = shield.enchantmentList.flatMap(ench => ench.enchantment)
+  const enchList: number[] = shield.enchantment.flatMap(ench => ench.enchantment)
   return (
     <>
       <div style={{ gridColumn: 1 }}>
@@ -26,7 +26,7 @@ export const ShieldInventoryComponent: React.FC<
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
         <p>
-          {SignAndCount(enchList).sign}
+          {signAndCount(enchList).sign}
           {enchList}
         </p>
       </div>

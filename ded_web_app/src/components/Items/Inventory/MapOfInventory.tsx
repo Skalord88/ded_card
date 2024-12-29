@@ -9,7 +9,7 @@ import {
   WonderousItem
 } from "../../interfaces";
 import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
-import { FilterNoItem } from "../Functions/functions";
+import { FilterNoItem } from "../Functions/function";
 import { BuyBackpack } from "./BuyBackpack";
 import { BuyEnchantedItemInventory } from "./BuyEnchantedItemInventory";
 import { BuyItemInventory } from "./BuyItemInventory";

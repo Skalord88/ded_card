@@ -104,6 +104,8 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ClassPcLevel[] classPc;
 
+  Integer damageBonus;
+
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
     name = "prerequisite_item",

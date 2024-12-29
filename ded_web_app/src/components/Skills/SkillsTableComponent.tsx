@@ -3,10 +3,9 @@ import { CharProps } from "../interfaces";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { urlSkillSet } from "../url";
-import { SkillCharacter, SkillDTO, SkillProps } from "./interface/SkillsInterface";
-import { SkillSkillsTableComponent } from "./SkillSkillsTableComponent";
+import { SkillCharacter } from "./interface/SkillsInterface";
 import { CountLevelFromClass } from "../Level/Functions";
-import { SkillPointsFromClass } from "./functions/Functions";
+import { SkillPointsFromClass } from "./functions/function";
 
 export const SkillsTableComponent: React.FC<CharProps> = ({
   char

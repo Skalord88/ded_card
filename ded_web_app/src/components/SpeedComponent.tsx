@@ -1,8 +1,18 @@
+import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
+import { Speed } from "./Speed/interface";
+
 export type SpeedComponentProps = {
-  speed: number;
+  char: CharToModify
 };
 
-export const SpeedComponent: React.FC<SpeedComponentProps> = ({ speed }) => {
+export const SpeedComponent: React.FC<SpeedComponentProps> = ({ char }) => {
+  const speed: Speed = {
+    foot: char.speed.foot,
+    fly: char.speed.fly,
+    climb: char.speed.climb,
+    swim: char.speed.swim,
+    special: ""
+  }
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Speed</h2>
@@ -10,61 +20,61 @@ export const SpeedComponent: React.FC<SpeedComponentProps> = ({ speed }) => {
       <div><p style={{backgroundColor:"grey"}}>tactic</p></div>
       <div>
         <p>
-          move: {speed}ft. / {speed / 5}s
+          move: {Number(speed.foot)}ft. / {Number(speed.foot) / 5}s
         </p>
       </div>
       <div>
         <p>
-          rapid: {speed * 2}ft. / {(speed * 2) / 5}s
+          rapid: {Number(speed.foot) * 2}ft. / {(Number(speed.foot) * 2) / 5}s
         </p>
       </div>
       <div>
         <p>
-          run x3: {speed * 3}ft. / {(speed * 3) / 5}s
+          run x3: {Number(speed.foot) * 3}ft. / {(Number(speed.foot) * 3) / 5}s
         </p>
       </div>
       <div>
         <p>
-          run x4: {speed * 4}ft. / {(speed * 4) / 5}s
+          run x4: {Number(speed.foot) * 4}ft. / {(Number(speed.foot) * 4) / 5}s
         </p>
       </div>
 
       <p style={{backgroundColor:"grey"}}>one minut</p>
       <div>
         <p>
-          move: {speed * 10}ft. / {(speed * 10) / 5}s
+          move: {Number(speed.foot) * 10}ft. / {(Number(speed.foot) * 10) / 5}s
         </p>
       </div>
       <div>
         <p>
-          rapid: {speed * 20}ft. / {(speed * 20) / 5}s
+          rapid: {Number(speed.foot) * 20}ft. / {(Number(speed.foot) * 20) / 5}s
         </p>
       </div>
       <div>
         <p>
-          run x3: {speed * 30}ft. / {(speed * 30) / 5}s
+          run x3: {Number(speed.foot) * 30}ft. / {(Number(speed.foot) * 30) / 5}s
         </p>
       </div>
       <div>
         <p>
-          run x4: {speed * 40}ft. / {(speed * 40) / 5}s
+          run x4: {Number(speed.foot) * 40}ft. / {(Number(speed.foot) * 40) / 5}s
         </p>
       </div>
 
       <p style={{backgroundColor:"grey"}}>one hour</p>
       <div>
-        <p>move: {Math.floor(speed * 0.30)}km</p>
+        <p>move: {Math.floor(Number(speed.foot) * 0.30)}km</p>
       </div>
       <div>
-        <p>rapid: {Math.floor(speed * 0.60)}km</p>
+        <p>rapid: {Math.floor(Number(speed.foot) * 0.60)}km</p>
       </div>
 
       <p style={{backgroundColor:"grey"}}>one day - 6 hours</p>
       <div>
-        <p>move: {Math.floor(speed * 0.30 * 6)}km</p>
+        <p>move: {Math.floor(Number(speed.foot) * 0.30 * 6)}km</p>
       </div>
       <div>
-        <p>rapid: {Math.floor(speed * 0.60 * 6)}km</p>
+        <p>rapid: {Math.floor(Number(speed.foot) * 0.60 * 6)}km</p>
       </div>
     </>
   );

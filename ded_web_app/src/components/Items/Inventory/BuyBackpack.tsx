@@ -3,7 +3,7 @@ import { DropdownComponent } from "../../DropDown/DropDown";
 import { addToDrop } from "../../functions";
 import { Item, WonderousItem } from "../../interfaces";
 import { Popup } from "../../Popup/Popup";
-import { FilterNoItem } from "../Functions/functions";
+import { FilterNoItem } from "../Functions/function";
 
 export type Backpack = {
   item: Item[]; // elementi nello zaino

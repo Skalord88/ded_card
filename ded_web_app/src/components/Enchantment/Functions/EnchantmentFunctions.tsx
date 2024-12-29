@@ -13,7 +13,7 @@ export function SetEnchantemtOnItem(
 ): EnchantedItem {
   return {
     ...item,
-    enchantmentList: enchantment
+    enchantment: enchantment
   };
 }
 
@@ -26,13 +26,13 @@ export function SetEnchantemtOnItem(
 export function EnchantedName(item: Armor | Shield | Weapon): string {
   let itemName: string = item.name;
   if (item) {
-    if (item.enchantmentList) {
-      item.enchantmentList.forEach((ench) =>
+    if (item.enchantment) {
+      item.enchantment.forEach((ench) =>
         ench.ability !== null
           ? itemName + " " + FormattingText(ench.ability)
           : ""
       );
-      item.enchantmentList.forEach((ench) => {
+      item.enchantment.forEach((ench) => {
         if (ench.ability === null && ench.enchantment < 0)
           return itemName + " pft";
         else if (ench.ability === null && ench.enchantment > 0)

@@ -30,4 +30,6 @@ public class Skill implements Serializable {
 
   @Enumerated(EnumType.STRING)
   AbilityEnum ability;
+
+  int penality;
 }

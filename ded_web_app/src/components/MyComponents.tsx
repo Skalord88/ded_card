@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   SortedBooks,
   SpellsFilter,
-  WeaponTwoHanded
+  weaponTwoHanded
 } from "./functions";
 import {
   BooksFromChar,
@@ -63,7 +63,7 @@ export const ListOfOneHandWeapons: React.FC<SelectOffWeapon> = ({
   return list ? (
     <>
       {list.map((w, index) =>
-        index !== indexOne && !WeaponTwoHanded(w) ? (
+        index !== indexOne && !weaponTwoHanded(w) ? (
           <div key={index}>
             {w.name}
             <button onClick={() => select(w)}>+</button>
@@ -129,7 +129,7 @@ export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
           </div>
           <div>
             {book.spells.map((book) => (
-              <>---{book}---</>
+              <>---{book.toString()}---</>
             ))}
           </div>
         </div>

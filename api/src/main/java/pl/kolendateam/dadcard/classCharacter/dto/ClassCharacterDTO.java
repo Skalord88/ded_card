@@ -37,6 +37,8 @@ public class ClassCharacterDTO {
 
     this.classSkill =
       MapperSkillToDTO.toSkillSetDTO(classCharacter.getAvailableSkills());
+    this.classStudy =
+      MapperSkillToDTO.toStudySetDTO(classCharacter.getAvailableStudy());
 
     this.classFeats =
       MapperFeatsDTO.toClassFeatsDTO(classCharacter.getAvailableFeats());

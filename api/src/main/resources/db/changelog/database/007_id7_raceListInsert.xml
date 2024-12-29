@@ -30,7 +30,7 @@
         <insert tableName="race">
             <column name="id" value="5" />
             <column name="race_name" value="Halfling" /> <!-- 5 -->
-            <column name="modifiers_id" value="100005" />
+            <column name="modifiers_id" value="104001" />
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="race">

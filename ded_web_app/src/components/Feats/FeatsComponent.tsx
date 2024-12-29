@@ -1,36 +1,52 @@
 import { useState } from "react";
-import { Feat, FeatsToShow } from "./Interface/FeatInterface";
+import { ClassFeats, Feat, FeatPc, FeatsToShow } from "./Interface/FeatInterface";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
+import { FormattingText } from "../Formatting/Function";
+import { SignNumber } from "../functions";
 
 export type FeatsComponentProps = {
-  feats: FeatsToShow[];
-  titolo: string;
+  char: CharToModify
 };
 
-export const FeatsComponent: React.FC<FeatsComponentProps> = ({ feats }) => {
-  const featsFeatPc = feats.filter((f) => f.title === "FeatPc");
-  const featsFeats = feats.filter((f) => f.title === "Feat");
-  const featsClassFeats = feats.filter((f) => f.title.includes("ClassFeats"));
+export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
+  const featsFeatPc: FeatPc[] = char.feats.pcFeats;
+  const featsFeats: Feat[] = char.feats.feats;
+  const featsClassFeats: ClassFeats[] = char.feats.classFeats;
   const featsClassFeatsOneTime = Array.from(
-    new Map(featsClassFeats.map((item) => [item.id, item])).values()
+    new Map(featsClassFeats.map((item) => [item.feat.id, item])).values()
   );
+
+  const fePc: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
+  = featsFeatPc.map(f => f && ({name: f.feat.featName, prer: [f.selected, f.feat.modifiers], description: [
+    "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
+  const fe: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
+  = featsFeats.map(f => f && ({name: f.featName, prer: [f.modifiers], description: [
+    "normal: " + f.normal, "special: " + f.special, "benefit: " + f.benefit, "special: " + f.special]}))
+  const feCl: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
+  = featsClassFeatsOneTime.map(f => f && ({name: f.feat.featName, prer: [f.modifiers], description: [
+    "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
 
   return (
     <div>
       <h2 className="rpgui-container-framed-golden-2">Feats</h2>
-      <ListOfFeatsMap feats={featsFeatPc} titolo={"Feats Pc"} />
-      <ListOfFeatsMap feats={featsFeats} titolo={"Feats"} />
-      <ListOfFeatsMap feats={featsClassFeatsOneTime} titolo={"Class Feats"} />
+      <ListOfFeatsMap key={"Feats Pc"} feats={fePc} titolo={"Feats Pc"} />
+      <ListOfFeatsMap key={"Feats"} feats={fe} titolo={"Feats"} />
+      <ListOfFeatsMap key={"Class Feats"} feats={feCl} titolo={"Class Feats"} />
     </div>
   );
 };
 
-export const ListOfFeatsMap: React.FC<FeatsComponentProps> = (feats) => {
-  const [selectedFeat, setSelectedFeat] = useState<Feat | null>(null);
+export type ListOfFeatsMapProps = {
+  feats: {name: string, prer: (Prerequisite | null)[], description: string[] }[], titolo: string
+}
 
-  const orderedFeats = feats.feats.sort((a, b) => a.feat.featName.localeCompare(b.feat.featName))
+export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) => {
+  const [selectedFeat, setSelectedFeat] = useState<{name: string, prer: (Prerequisite | null)[], description: string[] } | null>(null);
 
-  const selectFeat = (feat: Feat) => {
+  const orderedFeats = feats.sort((a, b) => a.name.localeCompare(b.name))
+
+  const selectFeat = (feat: {name: string, prer: (Prerequisite | null)[], description: string[] }) => {
     setSelectedFeat(feat);
   };
 
@@ -41,26 +57,26 @@ export const ListOfFeatsMap: React.FC<FeatsComponentProps> = (feats) => {
   return (
     <>
       <div>
-        {orderedFeats.length > 0 && feats != null ? (
-          <h4>{feats.titolo}</h4>
-        ) : null}
+        {orderedFeats.length > 0 && feats && (
+          <h4>{titolo}</h4>
+        )}
         <div style={{ display: "flex" }}>
           <div style={{ flexBasis: "45%" }}>
-            {feats.feats.map((f, index) =>
-              f != null ? (
+            {feats.map((f, index) =>
+              f && (
                 <>
-                  <div key={index}>
-                    <p onClick={() => selectFeat(f.feat)}>{f.feat.featName}</p>
+                  <div>
+                    <p onClick={() => selectFeat(f)}>{f.name}</p>
 
-                    <ListOfBonusMap prerequisite={f.listOfBonus} />
+                    <ListOfBonusMap key={index} prerequisite={f.prer} />
                   </div>
                 </>
-              ) : null
+              )
             )}
           </div>
           {selectedFeat && (
             <div style={{ flexBasis: "55%" }}>
-              <SelectedFeat feat={selectedFeat} onClear={clearSelectedFeat} />
+              <SelectedFeat key={selectFeat.name} feat={selectedFeat} onClear={clearSelectedFeat} />
             </div>
           )}
         </div>
@@ -70,7 +86,7 @@ export const ListOfFeatsMap: React.FC<FeatsComponentProps> = (feats) => {
 };
 
 export type SelectedFeatProps = {
-  feat: Feat;
+  feat: {name: string, prer: (Prerequisite | null)[], description: string[] };
   onClear: () => void;
 };
 
@@ -89,36 +105,31 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
 
   return (
     <div className="rpgui-container-framed-grey">
-      {feat.featName && <h4 onClick={selectOut}>{feat.featName}</h4>}
-      {feat.benefit && <p>benefit: {feat.benefit}</p>}
-      {feat.normal && <p>normal: {feat.normal}</p>}
-      {feat.special && <p>special: {feat.special}</p>}
+      {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
+      {feat.description && <p>{feat.description}</p>}
     </div>
   );
 };
 
 export type ListOfBonusProps = {
-  prerequisite: Prerequisite | null;
+  prerequisite: (Prerequisite | null)[];
 };
 
 export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
   return (
     <>
-      {prerequisite != null ? (
-        <>
-          {/* {prerequisite.prerequisite?.items.map((it) => (
-            <li>{it.name}</li>
-          ))} */}
-
-          {/* {prerequisite.prerequisite?.feats.map((ft) => (
-            <li>{ft.featName}</li>
-          ))} */}
-
-          <p>{prerequisite.prerequisite?.armorType}</p>
-          <p>{prerequisite.prerequisite?.weaponType}</p>
-          {/* <p>{prerequisite.prerequisite?.ar}</p> */}
-        </>
-      ) : null}
+        {prerequisite.prerequisite.map(p => 
+          p && (
+            <>
+              {p.items?.map((i, index) => (
+                <li key={index}>{i.name}</li>
+              ))}
+              {p.skillStudy?.map((s, index) => 
+                <li key={index}>{FormattingText(s.skill?.skillName ?? "")} {FormattingText(s.study?.studyName ?? "")} {SignNumber(s.rank)}{s.rank} {s.target?.join(", ")}</li>
+              )}
+            </>
+          )
+        )}
     </>
   );
 };

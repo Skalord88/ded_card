@@ -1,5 +1,6 @@
 import { ClassFeats } from "../../Feats/Interface/FeatInterface";
-import { Skill, Study } from "../../Skills/interface/SkillsInterface";
+import { Skill } from "../../Skills/interface/Skill";
+import { Study } from "../../Skills/interface/SkillsInterface";
 
 export type ClassPcLevel = {
     classe: string;

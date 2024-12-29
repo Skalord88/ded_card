@@ -10,6 +10,8 @@ export const D12Popup: React.FC<DicePopupProps> = ({
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);
 
+  const text: string = textOrWeapon + ":";
+
   const togglePopup = (show: boolean) => {
     if (show) {
       const lancio = ThrowDice12();
@@ -17,6 +19,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({
     }
     setShowPopup(show);
   };
+
 
   return (
     <>
@@ -26,7 +29,7 @@ export const D12Popup: React.FC<DicePopupProps> = ({
         onMouseLeave={() => togglePopup(false)}
         style={{ color: "yellow" }}
       >
-        {textOrWeapon.toString()}
+        {text}
         <span
           style={{ width: 300, textAlign: "center" }}
           className={`popuptext rpgui-container-framed ${
@@ -36,16 +39,6 @@ export const D12Popup: React.FC<DicePopupProps> = ({
           <span>
             {dice} + {value} = {dice + value}
           </span>
-          {/* {modifiers.map((mod) => {
-            return (
-              <>
-                <span style={{ color: "yellow" }}>
-                  {dice} + {value} + {mod.bonus} = {dice + value + mod.bonus} vs{" "}
-                  {FormattingText(mod.targets[1])}
-                </span>
-              </>
-            );
-          })} */}
         </span>
       </div>
     </>

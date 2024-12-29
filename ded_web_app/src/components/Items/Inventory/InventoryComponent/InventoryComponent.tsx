@@ -1,4 +1,5 @@
 import { Inventory } from "../../../interfaces";
+import { CharToModify } from "../../../Prerequisite/functions/modifyCharacter";
 import {
   ArmorInventoryComponent,
   MiniArmorInventoryComponent
@@ -14,14 +15,15 @@ import {
 import { WeightInventoryComponent } from "./WeightInventoryComponent";
 
 export type InventoryComponentProps = {
-  inventory: Inventory;
+  char: CharToModify;
   carrying: [string, number];
 };
 
 export const InventoryComponent: React.FC<InventoryComponentProps> = ({
-  inventory,
+  char,
   carrying
 }) => {
+  const inventory: Inventory = char.inventory
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Inventory</h2>

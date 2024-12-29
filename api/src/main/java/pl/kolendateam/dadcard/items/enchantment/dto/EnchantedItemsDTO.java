@@ -18,7 +18,7 @@ public class EnchantedItemsDTO {
   public int id;
   public Object item;
   public String name;
-  public Set<EnchantmentDTO> enchantmentList;
+  public Set<EnchantmentDTO> enchantment;
   public MaterialEnum material;
   public PrerequisiteDTO modifiers;
   public double cost;
@@ -43,10 +43,10 @@ public class EnchantedItemsDTO {
       this.item = null;
     }
 
-    this.enchantmentList =
-      MapperEnchantment.toEnchantmentDTOSet(
-        enchantedItems.getEnchantmentList()
-      );
+    this.enchantment =
+      enchantedItems.getEnchantment() != null
+        ? MapperEnchantment.toEnchantmentDTOSet(enchantedItems.getEnchantment())
+        : null;
 
     this.material = enchantedItems.getMaterial();
     this.modifiers =

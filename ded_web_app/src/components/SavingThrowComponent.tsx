@@ -1,6 +1,9 @@
-import { SignAndCount } from "./functions";
-import { SignAndNumber } from "./interfaces";
-import { D20Popup } from "./Popup/DicePopup/D20Popup";
+import { BonusAbilities, signAndCount } from "./functions";
+import {
+    AllModifiersInDice20,
+    AllModifiersInDiceProps
+} from "./Popup/DicePopup/D20Popup";
+import { AllModifiersInThrow } from "./Popup/DicePopup/Interface";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { Resistance } from "./Saving/interface";
 
@@ -8,61 +11,114 @@ export type SavingThrowComponentProps = {
   char: CharToModify;
 };
 
-export type SavingToShow = {
-  title: string;
-  signNumber: SignAndNumber;
-  mod: Resistance[];
-};
-
 export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   char
 }) => {
-  console.log(char.savingThrow);
-  const saving: SavingToShow[] = [
-    {
-      title: "fortitude",
-      signNumber: SignAndCount([
-        char.baseSave.fortitude + char.adjBonus.savingThrow
+  const dexterityMod: number = BonusAbilities(char.abilitys, "DEX");
+  const constitutionMod: number = BonusAbilities(char.abilitys, "COS");
+  const wisdomMod: number = BonusAbilities(char.abilitys, "WIS");
+
+  const fortitude: AllModifiersInThrow = {
+    tot: {
+      value: signAndCount([
+        char.baseSave.fortitude,
+        char.adjBonus.savingThrow,
+        constitutionMod
       ]),
-      mod: char.savingThrow.flatMap((sT) => sT.resistance)
+      mod: "fortitude"
     },
-    {
-      title: "reflex",
-      signNumber: SignAndCount([
-        char.baseSave.reflex + char.adjBonus.savingThrow
+    allMod: [
+      {
+        value: signAndCount([
+          char.baseSave.fortitude,
+          char.adjBonus.savingThrow
+        ]),
+        mod: "base"
+      },
+      {
+        value: signAndCount([constitutionMod]),
+        mod: "cos"
+      }
+    ]
+  };
+  const reflex: AllModifiersInThrow = {
+    tot: {
+      value: signAndCount([
+        char.baseSave.reflex,
+        char.adjBonus.savingThrow,
+        dexterityMod
       ]),
-      mod: char.savingThrow.flatMap((sT) => sT.resistance)
+      mod: "reflex"
     },
-    {
-      title: "will",
-      signNumber: SignAndCount([
-        char.baseSave.will + char.adjBonus.savingThrow
+    allMod: [
+      {
+        value: signAndCount([char.baseSave.reflex, char.adjBonus.savingThrow]),
+        mod: "base"
+      },
+      { value: signAndCount([dexterityMod]), mod: "dex" }
+    ]
+  };
+  const will: AllModifiersInThrow = {
+    tot: {
+      value: signAndCount([
+        char.baseSave.will,
+        char.adjBonus.savingThrow,
+        wisdomMod
       ]),
-      mod: char.savingThrow.flatMap((sT) => sT.resistance)
-    }
-  ];
+      mod: "will"
+    },
+    allMod: [
+      {
+        value: signAndCount([char.baseSave.will, char.adjBonus.savingThrow]),
+        mod: "base"
+      },
+      { value: signAndCount([wisdomMod]), mod: "wis" }
+    ]
+  };
+  const modResistance: Resistance[] = char.savingThrow.flatMap(
+    (sT) => sT.resistance
+  );
+
+  const allDice: AllModifiersInDiceProps = {
+    list: [
+      {
+        dice: {
+          textOrWeapon: fortitude.tot.mod,
+          value: fortitude.tot.value.number,
+          modifiers: {
+            savingThrow: modResistance
+          }
+        },
+        allMod: fortitude
+      },
+      {
+        dice: {
+          textOrWeapon: reflex.tot.mod,
+          value: reflex.tot.value.number,
+          modifiers: {
+            savingThrow: modResistance
+          }
+        },
+        allMod: reflex
+      },
+      {
+        dice: {
+          textOrWeapon: will.tot.mod,
+          value: will.tot.value.number,
+          modifiers: {
+            savingThrow: modResistance
+          }
+        },
+        allMod: will
+      }
+    ]
+  };
 
   return (
     <>
       <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
 
-      {saving.map((save) => (
-        <div>
-          <p>
-            <D20Popup
-              textOrWeapon={save.title}
-              value={Math.floor(save.signNumber.number)}
-              modifiers={{
-                attackRoll: null,
-                specialAttacks: null,
-                savingThrow: save.mod
-              }}
-            />
-            {save.signNumber.sign}
-            {Math.floor(save.signNumber.number)}
-          </p>
-        </div>
-      ))}
+      <AllModifiersInDice20 list={allDice.list} />
     </>
   );
 };

@@ -1,8 +1,7 @@
-import { Inventory } from "../../interfaces";
+import { Inventory, SignAndNumber } from "../../interfaces";
 
 export type ArmorList = {
-  sign: string;
-  bonus: number;
+  signNum: SignAndNumber;
   text: string;
   item: string;
 }[];
@@ -29,4 +28,8 @@ export type ArmorClass = {
   deflectionBonuses: number;
   naturalArmor: number;
   dodgeBonus: number;
+
+  target: string[];
+
+  special?: string;
 };

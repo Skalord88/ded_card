@@ -2,7 +2,7 @@ import { Skill } from "./Skill";
 
 export type Study = {
     id: number;
-    studyName: string;
+    studyName?: string;
     skill: Skill;
-    newStudy: string;
+    newStudy?: string;
 }

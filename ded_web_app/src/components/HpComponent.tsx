@@ -1,8 +1,8 @@
-import { BonusAbilities, SignAndCount } from "./functions";
+import { BonusAbilities, signAndCount } from "./functions";
 import { SignAndNumber } from "./interfaces";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import {
-  CountHitPoints
+    CountHitPoints
 } from "./Vita/Functions";
 export type HpComponentProps = {
   char: CharToModify;
@@ -19,9 +19,7 @@ export const HpComponent: React.FC<HpComponentProps> = ({ char }) => {
     }
   });
 
-  console.log(char.listHitDices);
-
-  const cos: SignAndNumber = SignAndCount([
+  const cos: SignAndNumber = signAndCount([
     BonusAbilities(char.abilitys, "COS")
   ]);
   return (

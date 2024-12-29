@@ -10,7 +10,6 @@ export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
   bab,
   dmg,
   increments,
-  modifiers,
   weapon
 }) => {
   const [showPopup, setShowPopup] = useState(false);

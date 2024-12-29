@@ -1,6 +1,6 @@
-import { AbilityBackgroundColor } from "./Abilitys/Colors";
+import { abilityBackgroundColor } from "./Abilitys/Colors";
 import { AbilitysProps } from "./Abilitys/Interface";
-import { BonusAbilities, SignAndCount } from "./functions";
+import { BonusAbilities, signAndCount } from "./functions";
 
 export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
 
@@ -9,49 +9,49 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
       id: 1,
       text: "STR",
       value: abilitys.strength,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "STR")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "STR")]).sign,
       bonus: BonusAbilities(abilitys, "STR"),
-      color: AbilityBackgroundColor('STRENGHT')
+      color: abilityBackgroundColor('STRENGHT')
     },
     {
       id: 2,
       text: "DEX",
       value: abilitys.dexterity,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "DEX")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "DEX")]).sign,
       bonus: BonusAbilities(abilitys, "DEX"),
-      color: AbilityBackgroundColor('DEXTERITY')
+      color: abilityBackgroundColor('DEXTERITY')
     },
     {
       id: 3,
       text: "COS",
       value: abilitys.constitution,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "COS")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "COS")]).sign,
       bonus: BonusAbilities(abilitys, "COS"),
-      color: AbilityBackgroundColor('CONSTITUTION')
+      color: abilityBackgroundColor('CONSTITUTION')
     },
     {
       id: 4,
       text: "INT",
       value: abilitys.intelligence,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "INT")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "INT")]).sign,
       bonus: BonusAbilities(abilitys, "INT"),
-      color: AbilityBackgroundColor('INTELLIGENCE')
+      color: abilityBackgroundColor('INTELLIGENCE')
     },
     {
       id: 5,
       text: "WIS",
       value: abilitys.wisdom,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "WIS")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "WIS")]).sign,
       bonus: BonusAbilities(abilitys, "WIS"),
-      color: AbilityBackgroundColor('WISDOM')
+      color: abilityBackgroundColor('WISDOM')
     },
     {
       id: 6,
       text: "CHA",
       value: abilitys.charisma,
-      bonusSing: SignAndCount([BonusAbilities(abilitys, "CHA")]).sign,
+      bonusSing: signAndCount([BonusAbilities(abilitys, "CHA")]).sign,
       bonus: BonusAbilities(abilitys, "CHA"),
-      color: AbilityBackgroundColor('CHARISMA')
+      color: abilityBackgroundColor('CHARISMA')
     }
   ];
 

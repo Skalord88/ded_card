@@ -1,8 +1,9 @@
 import { BonusAbilities } from "./Abilitys/Functions";
+import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, armorClass, subRaces } from "./interfaces";
+import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, subRaces } from "./interfaces";
 
 export function SignNumber(
     number: number
@@ -21,41 +22,39 @@ export function SignNumberEnchant(
     }
 }
 
-export function SignAndCount(
+export const signAndCount = (
     numbers: number[]
-): SignAndNumber {
+): SignAndNumber => {
 
     const num: number = numbers.reduce(
         (total, n) => total + n,
         0
     )
 
-    const res = {
+    return {
         sign: SignNumber(num),
         number: num
     }
-
-    return res;
 }
 
-export function WeaponLight(weapon: Weapon): boolean {
-    return weapon.type.includes("LIGHT");
+export function weaponLight(weapon: Weapon): boolean {
+    return weapon !== null ? weapon.type.includes("LIGHT") : false;
 }
 
-export function WeaponRanged(weapon: Weapon): boolean {
-    return weapon.type.includes("RANGED");
+export function weaponRanged(weapon: Weapon): boolean {
+    return weapon !== null ?  weapon.type.includes("RANGED") : false;
 }
 
-export function WeaponThrown(weapon: Weapon): boolean {
-    return weapon.type.includes("THROWN");
+export function weaponThrown(weapon: Weapon): boolean {
+    return weapon !== null ? weapon.type.includes("THROWN") : false;
 }
 
-export function WeaponTwoHanded(weapon: Weapon): boolean {
-    return weapon.type.includes("TWO_HANDED");
+export function weaponTwoHanded(weapon: Weapon): boolean {
+    return weapon !== null ? weapon.type.includes("TWO_HANDED") : false;
 }
 
-export function ListOneHand(weapons: Weapon[]) {
-    weapons.filter(weapon => !WeaponTwoHanded(weapon))
+export function listOneHand(weapons: Weapon[]) {
+    weapons.filter(weapon => !weaponTwoHanded(weapon))
 }
 
 export function AttackMelee(
@@ -65,7 +64,7 @@ export function AttackMelee(
     nAtt: number
 ): number | false {
     // se l'arma e' a distanza
-    if (WeaponRanged(weapon)) { return false }
+    if (weaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // torna strAtt/dexAtt - n. attacchi
@@ -80,7 +79,7 @@ export function AttackRanged(
     nAtt: number
 ): number | false {
     // se l'arma e' a distanza
-    if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
+    if (!weaponRanged(weapon) && !weaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // torna strAtt/dexAtt - n. attacchi
@@ -96,7 +95,7 @@ export function AttackIIMelee(
     twoFeat: boolean
 ): number | false {
     // se l'arma e' a distanza
-    if (WeaponRanged(weapon)) { return false }
+    if (weaponRanged(weapon)) { return false }
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
@@ -104,9 +103,9 @@ export function AttackIIMelee(
     // torna strAtt/dexAtt - n. attacchi
     if (!twoFeat) {
         if (position.pose && !position.light) { return bab - nAtt - 6 }
-        if (!position.pose && !position.light) {return bab - nAtt - 10}
-        if (position.pose && position.light) { return bab - nAtt - 4}
-        if (!position.pose && position.light) {return bab - nAtt - 8}
+        if (!position.pose && !position.light) { return bab - nAtt - 10 }
+        if (position.pose && position.light) { return bab - nAtt - 4 }
+        if (!position.pose && position.light) { return bab - nAtt - 8 }
     } else {
         if (position.pose && position.light) { return bab - nAtt - 2 }
         if (!position.pose && !position.light) { return bab - nAtt - 4 }
@@ -123,7 +122,7 @@ export function AttackIIRanged(
     twoFeat: boolean
 ): number | false {
     // se l'arma e' a distanza
-    if (!WeaponRanged(weapon) && !WeaponThrown(weapon)) return false;
+    if (!weaponRanged(weapon) && !weaponThrown(weapon)) return false;
     // se la posizione e' seconda mano e l'arma 1 e' grande
     if (!position.pose && position.twoHanded) { return false }
     // se l'arma e' a 2 mani
@@ -131,9 +130,9 @@ export function AttackIIRanged(
     // torna strAtt/dexAtt - n. attacchi
     if (!twoFeat) {
         if (position.pose && !position.light) { return bab - nAtt - 6 }
-        if (!position.pose && !position.light) {return bab - nAtt - 10}
-        if (position.pose && position.light) { return bab - nAtt - 4}
-        if (!position.pose && position.light) {return bab - nAtt - 8}
+        if (!position.pose && !position.light) { return bab - nAtt - 10 }
+        if (position.pose && position.light) { return bab - nAtt - 4 }
+        if (!position.pose && position.light) { return bab - nAtt - 8 }
     } else {
         if (position.pose && position.light) { return bab - nAtt - 2 }
         if (!position.pose && !position.light) { return bab - nAtt - 4 }
@@ -196,11 +195,11 @@ export function SetAttacksFromWeapons(
 }
 
 export function CountMonsterArmor(
-    armor: armorClass
+    armor: ArmorClass
 ): number {
     return 10
         + armor.armorBonus + armor.shieldBonus
-        + armor.sizeBonus + armor.dexterityBonus
+        + armor.sizeBonus
         + armor.naturalArmor + armor.deflectionBonuses
         + armor.dodgeBonus
 }

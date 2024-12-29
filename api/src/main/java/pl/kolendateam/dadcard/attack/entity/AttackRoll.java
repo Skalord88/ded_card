@@ -17,4 +17,5 @@ public class AttackRoll implements Serializable {
   Integer bonus;
   // no target, add bonus to all attacks ex. size
   // for each target, pg receive bonus
+  // target contain item, check weaponType and item[], add bonus
 }

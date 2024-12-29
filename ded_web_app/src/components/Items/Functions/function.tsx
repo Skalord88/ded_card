@@ -1,4 +1,4 @@
-import { Armor, Shield, Weapon, WonderousItem } from "../../interfaces";
+import { Weapon, WonderousItem } from "../../interfaces";
 
 // export function isArmor(item: Armor | Shield | Weapon): item is Armor {
 //   return (item as Armor) !== undefined;

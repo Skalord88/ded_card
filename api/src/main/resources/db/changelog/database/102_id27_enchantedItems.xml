@@ -17,7 +17,7 @@
       <column name="material" type="varchar(255)">
         <constraints nullable="true" />
       </column>
-      <column name="modifiers" type="json">
+      <column name="modifiers_id" type="int">
         <constraints nullable="true" />
       </column>
       <column name="cost" type="double">
@@ -28,7 +28,7 @@
       </column>
     </createTable>
 
-    <createTable tableName="enchanted_list">
+    <createTable tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" type="int">
         <constraints nullable="true" />
       </column>
@@ -44,20 +44,12 @@
       <column name="id" value="1" />
       <column name="items_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="1" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <!-- Gauntlet -->
     <insert tableName="enchanted_items">
       <column name="name" value="Gauntlet" />
       <column name="id" value="2" />
       <column name="items_id" value="5" />
-    </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="2" />
-      <column name="enchantment_id" value="0" />
     </insert>
 
     <!-- Gauntlet, spiked -->
@@ -66,20 +58,12 @@
       <column name="id" value="3" />
       <column name="items_id" value="8" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="3" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <!-- Shield, light -->
     <insert tableName="enchanted_items">
       <column name="name" value="Shield, light" />
       <column name="id" value="4" />
       <column name="items_id" value="32" />
-    </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="4" />
-      <column name="enchantment_id" value="0" />
     </insert>
 
     <!-- Spiked armor -->
@@ -88,20 +72,12 @@
       <column name="id" value="5" />
       <column name="items_id" value="33" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="5" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <!-- Spiked shield, light -->
     <insert tableName="enchanted_items">
       <column name="name" value="Spiked shield, light" />
       <column name="id" value="6" />
       <column name="items_id" value="34" />
-    </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="6" />
-      <column name="enchantment_id" value="0" />
     </insert>
 
     <!-- Shield, heavy -->
@@ -110,20 +86,12 @@
       <column name="id" value="7" />
       <column name="items_id" value="42" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="7" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <!-- Spiked shield, heavy -->
     <insert tableName="enchanted_items">
       <column name="name" value="Spiked shield, heavy" />
       <column name="id" value="8" />
       <column name="items_id" value="43" />
-    </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="8" />
-      <column name="enchantment_id" value="0" />
     </insert>
 
     <!-- Puli -->
@@ -134,9 +102,9 @@
       <column name="items_id" value="89" />
       <column name="material" value="MITHRAL" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1001" />
-      <column name="enchantment_id" value="2" />
+      <column name="enchantment_id" value="12" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -144,9 +112,9 @@
       <column name="id" value="1002" />
       <column name="items_id" value="95" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1002" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -154,7 +122,7 @@
       <column name="id" value="1003" />
       <column name="items_id" value="81" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1003" />
       <column name="enchantment_id" value="1" />
     </insert>
@@ -164,7 +132,7 @@
       <column name="id" value="1004" />
       <column name="items_id" value="35" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1004" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -174,7 +142,7 @@
       <column name="id" value="1005" />
       <column name="items_id" value="25" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1005" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -184,10 +152,6 @@
       <column name="id" value="1006" />
       <column name="items_id" value="82" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="1006" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <!-- Rysio -->
 
@@ -196,15 +160,11 @@
       <column name="name" value="Longbow, composite (+2) +1" />
       <column name="items_id" value="59" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1011" />
       <column name="enchantment_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="1011" />
-      <column name="enchantment_id" value="6" />
-    </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1011" />
       <column name="enchantment_id" value="6" />
     </insert>
@@ -214,7 +174,7 @@
       <column name="id" value="1012" />
       <column name="items_id" value="38" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1012" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -225,9 +185,9 @@
       <column name="items_id" value="89" />
       <column name="material" value="MITHRAL" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1013" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -236,7 +196,7 @@
       <column name="items_id" value="98" />
       <column name="material" value="DARKWOOD" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1014" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -248,9 +208,9 @@
       <column name="name" value="Studded leather +1" />
       <column name="items_id" value="85" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1021" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -258,9 +218,9 @@
       <column name="name" value="Buckler +1" />
       <column name="items_id" value="95" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1022" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -268,21 +228,17 @@
       <column name="name" value="Longbow" />
       <column name="items_id" value="57" />
     </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="1023" />
-      <column name="enchantment_id" value="0" />
-    </insert>
 
     <insert tableName="enchanted_items">
       <column name="id" value="1024" />
       <column name="name" value="Shortspear Shock +1" />
       <column name="items_id" value="14" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1024" />
       <column name="enchantment_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1024" />
       <column name="enchantment_id" value="7" />
     </insert>
@@ -292,7 +248,7 @@
       <column name="name" value="Spear pft" />
       <column name="items_id" value="17" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1025" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -301,10 +257,6 @@
       <column name="id" value="1026" />
       <column name="name" value="Longsword" />
       <column name="items_id" value="38" />
-    </insert>
-    <insert tableName="enchanted_list">
-      <column name="enchanted_items_id" value="1026" />
-      <column name="enchantment_id" value="0" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -320,9 +272,9 @@
       <column name="name" value="Half-plate +1" />
       <column name="items_id" value="93" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1031" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -330,9 +282,9 @@
       <column name="name" value="Shield, heavy wooden +1" />
       <column name="items_id" value="98" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1032" />
-      <column name="enchantment_id" value="1" />
+      <column name="enchantment_id" value="11" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -340,11 +292,11 @@
       <column name="name" value="Shortspear +1" />
       <column name="items_id" value="14" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1033" />
       <column name="enchantment_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1033" />
       <column name="enchantment_id" value="7" />
     </insert>
@@ -354,11 +306,11 @@
       <column name="name" value="Javelin Shock +1" />
       <column name="items_id" value="14" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1034" />
       <column name="enchantment_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1034" />
       <column name="enchantment_id" value="7" />
     </insert>
@@ -368,11 +320,11 @@
       <column name="name" value="Javelin Shock +1" />
       <column name="items_id" value="14" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1035" />
       <column name="enchantment_id" value="1" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1035" />
       <column name="enchantment_id" value="7" />
     </insert>
@@ -384,7 +336,7 @@
       <column name="name" value="Nunchaku pft" />
       <column name="items_id" value="63" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1041" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -394,7 +346,7 @@
       <column name="name" value="Crossbow, light pft" />
       <column name="items_id" value="20" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1042" />
       <column name="enchantment_id" value="-1" />
     </insert>
@@ -406,7 +358,7 @@
       <column name="name" value="Crossbow, light +1" />
       <column name="items_id" value="20" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1051" />
       <column name="enchantment_id" value="1" />
     </insert>
@@ -425,9 +377,9 @@
       <column name="items_id" value="86" />
       <column name="material" value="MITHRAL" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1061" />
-      <column name="enchantment_id" value="2" />
+      <column name="enchantment_id" value="12" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -435,7 +387,7 @@
       <column name="name" value="Crossbow, light +1" />
       <column name="items_id" value="20" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1062" />
       <column name="enchantment_id" value="1" />
     </insert>
@@ -446,14 +398,8 @@
       <column name="id" value="30000" />
       <column name="name" value="Singing Blade" />
       <column name="items_id" value="40" />
-      <column name="modifiers"
-        value="[{
-      &quot;modifier&quot; : &quot;SKILL&quot;,
-      &quot;bonus&quot; : 2,
-      &quot;targets&quot; : [&quot;PERFORM&quot;]
-      }]" />
     </insert>
-    <insert tableName="enchanted_list">
+    <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="30000" />
       <column name="enchantment_id" value="1" />
     </insert>

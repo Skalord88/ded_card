@@ -9,10 +9,12 @@ public class SkillDTO {
   public int id;
   public ModifierEnum skillName;
   public AbilityEnum ability;
+  public int penality;
 
   public SkillDTO(Skill skill) {
     this.id = skill.getId();
     this.skillName = skill.getName();
     this.ability = skill.getAbility();
+    this.penality = skill.getPenality();
   }
 }

@@ -1,59 +1,75 @@
 import { FormattingText } from "../Formatting/Function";
-import { SignAndCount } from "../functions";
-import { CharacterPc } from "../interfaces";
-import { ArmorList, ArmorModifiers } from "./interface/ArmorInterface";
+import { BonusAbilities, signAndCount } from "../functions";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
+import { ArmorList } from "./interface/ArmorInterface";
 
-export function CalculateArmorInChar(
-  char: CharacterPc, armorModifiers: ArmorModifiers
-): ArmorList {
+export function calculateArmorInChar(char: CharToModify): ArmorList {
+  
+  const size: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.sizeBonus ?? 0) + tot : tot, 0);
+  const natural: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.naturalArmor ?? 0) + tot : tot, 0);
+  const dodge: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.dodgeBonus ?? 0) + tot : tot, 0);
+  const deflection: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.deflectionBonuses ?? 0) + tot : tot, 0);
 
   let armorList: ArmorList = [];
+  if (char.inventory.armor.modifiers?.armorClass && char.inventory.armor.modifiers?.armorClass.armorBonus)
   armorList.push({
-    sign: SignAndCount([armorModifiers.armor]).sign,
-    bonus: armorModifiers.armor,
+    signNum: signAndCount([
+    char.inventory.armor.modifiers?.armorClass.armorBonus,
+    char.inventory.armor.enchantment.reduce((tot, enc) => tot + (enc.modifiers?.armorClass?.enhancementBonuses?? 0) , 0)
+    ]),
     text: "armor",
     item: char.inventory.armor.name
   });
+  if (char.inventory.shield.modifiers?.armorClass && char.inventory.shield.modifiers?.armorClass.shieldBonus)
   armorList.push({
-    sign: SignAndCount([armorModifiers.shiled]).sign,
-    bonus: armorModifiers.shiled,
+    signNum: signAndCount([
+    char.inventory.shield.modifiers?.armorClass.shieldBonus,
+    char.inventory.shield.enchantment.reduce((tot, enc) => tot + (enc.modifiers?.armorClass?.enhancementBonuses?? 0) , 0)
+    ]),
     text: "shield",
     item: char.inventory.shield.name
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.dexterity]).sign,
-    bonus: armorModifiers.dexterity,
-    text: "dexterity",
-    item: ""
+  signNum: signAndCount([
+    maxDexterityCount(
+    BonusAbilities(char.abilitys, "DEX"), 
+    char.inventory.armor.maxDex)]),
+  text: "dexterity",
+  item: "max bonus " + char.inventory.armor.maxDex.toString()
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.size]).sign,
-    bonus: armorModifiers.size,
+    signNum: signAndCount([size]),
     text: "size",
-    item: FormattingText(char.race.size.size.toString())
+    item: FormattingText(char.size.size)
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.natural]).sign,
-    bonus: armorModifiers.natural,
-    text: "natural",
-    item: ""
+  signNum: signAndCount([natural]),
+  text: "natural",
+  item: ""
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.dodge]).sign,
-    bonus: armorModifiers.dodge,
-    text: "dodge",
-    item: ""
+  signNum: signAndCount([dodge]),
+  text: "dodge",
+  item: ""
   });
   armorList.push({
-    sign: SignAndCount([armorModifiers.deflection]).sign,
-    bonus: armorModifiers.deflection,
-    text: "deflection",
-    item: ""
+  signNum: signAndCount([deflection]),
+  text: "deflection",
+  item: ""
   });
 
-  return armorList;
+  const total = {
+  signNum: signAndCount([
+    10,
+    armorList.reduce((tot, armor) => tot + armor.signNum.number, 0)])
+  ,
+  text: "total",
+  item: ""
+  };
+
+  return [total, ...armorList];
 }
 
-export function MaxdexterityCount (dexterity: number, max: number): number {
-  return max < dexterity? max : dexterity;
+export function maxDexterityCount(dexterity: number, max: number): number {
+  return max < dexterity ? max : dexterity;
 }

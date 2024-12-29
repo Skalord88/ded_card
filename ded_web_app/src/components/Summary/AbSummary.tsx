@@ -1,5 +1,5 @@
 import { Abilitys } from "../Abilitys/Interface";
-import { BonusAbilities, SignAndCount } from "../functions";
+import { BonusAbilities, signAndCount } from "../functions";
 
 export type AbSummaryProps = {
   abilitys: Abilitys;
@@ -11,37 +11,37 @@ export const AbSummary: React.FC<AbSummaryProps> = ({ abilitys }) => {
       idAb: 0,
       text: "STR",
       number: abilitys.strength,
-      bonus: SignAndCount([BonusAbilities(abilitys, "STR")])
+      bonus: signAndCount([BonusAbilities(abilitys, "STR")])
     },
     {
       idAb: 1,
       text: "DEX",
       number: abilitys.dexterity,
-      bonus: SignAndCount([BonusAbilities(abilitys, "DEX")])
+      bonus: signAndCount([BonusAbilities(abilitys, "DEX")])
     },
     {
       idAb: 2,
       text: "COS",
       number: abilitys.constitution,
-      bonus: SignAndCount([BonusAbilities(abilitys, "COS")])
+      bonus: signAndCount([BonusAbilities(abilitys, "COS")])
     },
     {
       idAb: 3,
       text: "INT",
       number: abilitys.intelligence,
-      bonus: SignAndCount([BonusAbilities(abilitys, "INT")])
+      bonus: signAndCount([BonusAbilities(abilitys, "INT")])
     },
     {
       idAb: 4,
       text: "WIS",
       number: abilitys.wisdom,
-      bonus: SignAndCount([BonusAbilities(abilitys, "WIS")])
+      bonus: signAndCount([BonusAbilities(abilitys, "WIS")])
     },
     {
       idAb: 5,
       text: "CHA",
       number: abilitys.charisma,
-      bonus: SignAndCount([BonusAbilities(abilitys, "COS")])
+      bonus: signAndCount([BonusAbilities(abilitys, "COS")])
     }
   ];
   return (

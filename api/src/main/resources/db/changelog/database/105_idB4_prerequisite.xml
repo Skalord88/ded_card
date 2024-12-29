@@ -20,6 +20,9 @@
             <column name="attack_roll" type="jsonb">
                 <constraints nullable="true" />
             </column>
+            <column name="damage_bonus" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
             <column name="initiative" type="INTEGER">
                 <constraints nullable="true" />
             </column>
@@ -85,6 +88,9 @@
             </column>
             <column name="rank" type="int">
                 <constraints nullable="false" />
+            </column>
+            <column name="target" type="jsonb">
+                <constraints nullable="true" />
             </column>
         </createTable>
         <!-- prerequisite_skill -->
@@ -1346,6 +1352,11 @@
             <column name="rank" value="1" />
             <column name="id" value="201" />
         </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="20" /> <!-- PERFORM -->
+            <column name="rank" value="2" />
+            <column name="id" value="202" />
+        </insert>
 
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="21" /> <!-- PROFESSION -->
@@ -1792,6 +1803,85 @@
             <column name="schools_id" value="5" />
         </insert>
 
+        <!-- Enchantment id:10.000 weapon -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10000" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 1 }" />
+            <column name="text" value="perfect weapon" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="10001" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 1 }" />
+            <column name="damage_bonus" value="1" />
+            <column name="text" value="weapon +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="10002" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 2 }" />
+            <column name="damage_bonus" value="2" />
+            <column name="text" value="weapon +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="10003" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 3 }" />
+            <column name="damage_bonus" value="3" />
+            <column name="text" value="weapon +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="10004" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 4 }" />
+            <column name="damage_bonus" value="4" />
+            <column name="text" value="weapon +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="10005" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 5 }" />
+            <column name="damage_bonus" value="5" />
+            <column name="text" value="weapon +5" />
+        </insert>
+
+        <!-- Enchantment id:11.000 armor -->
+        <insert tableName="prerequisite">
+            <column name="id" value="11000" />
+            <column name="text" value="prf armor" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="11001" />
+            <column name="armor_class"
+                value="{ &quot;enhancementBonuses&quot; : 1 }" />
+            <column name="text" value="armor +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="11002" />
+            <column name="armor_class"
+                value="{ &quot;enhancementBonuses&quot; : 2 }" />
+            <column name="text" value="armor +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="11003" />
+            <column name="armor_class"
+                value="{ &quot;enhancementBonuses&quot; : 3 }" />
+            <column name="text" value="armor +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="11004" />
+            <column name="armor_class"
+                value="{ &quot;enhancementBonuses&quot; : 4 }" />
+            <column name="text" value="armor +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="11005" />
+            <column name="armor_class"
+                value="{ &quot;enhancementBonuses&quot; : 5 }" />
+            <column name="text" value="armor +5" />
+        </insert>
+
         <!-- Armor id:50.000 prerequisite -->
         <insert tableName="prerequisite">
             <column name="id" value="50001" />
@@ -1851,6 +1941,17 @@
                 value="{ &quot;shieldBonus&quot; : 4 }" />
             <column name="attack_roll"
                 value="{ &quot;bonus&quot; : -2 }" />
+        </insert>
+
+        <!-- Special Weapons id:60.000 prerequisite -->
+        <insert tableName="prerequisite">
+            <column name="id" value="60001" />
+            <column name="text" value="Singing Blade, +2 Perform" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="60001" />
+            <column name="prerequisite_skill_id" value="202" />
         </insert>
 
         <!-- Size id:90.000 -->
@@ -1984,10 +2085,16 @@
         </insert>
 
         <!-- Razze id:100.000 -->
-        <!-- Dwarf -->
+        <!-- Dwarf 100000-->
         <insert tableName="prerequisite">
             <column name="id" value="100001" />
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="armor_class"
+                value="{ 
+                &quot;dodgeBonus&quot;: 4,
+                &quot;target&quot;: [&quot;GIANT&quot;],
+                &quot;special&quot; : &quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;
+                }" />
             <column name="special_attacks"
                 value="{ 
                 &quot;vsBullRush&quot;: 4,
@@ -2011,7 +2118,7 @@
             <column name="prerequisite_skill_id" value="62" />
         </insert>
 
-        <!-- Elf -->
+        <!-- Elf 101000-->
         <insert tableName="prerequisite">
             <column name="id" value="100002" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
@@ -2038,7 +2145,7 @@
             <column name="prerequisite_skill_id" value="282" />
         </insert>
 
-        <!-- Orc -->
+        <!-- Orc 102000-->
         <insert tableName="prerequisite">
             <column name="id" value="100003" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
@@ -2052,7 +2159,7 @@
             <column name="text" value="Orc races modifiers" />
         </insert>
 
-        <!-- Gnome -->
+        <!-- Gnome 103000-->
         <insert tableName="prerequisite">
             <column name="id" value="100004" />
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
@@ -2064,19 +2171,43 @@
             <column name="text" value="Gnome races modifiers" />
         </insert>
 
-        <!-- Halfling -->
+        <!-- Halfling 104000-->
         <insert tableName="prerequisite">
-            <column name="id" value="100005" />
+            <column name="id" value="104001" />
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
             <column name="abilitys"
                 value="{
                  &quot;strength&quot; : -2, 
                  &quot;dexterity&quot; : 2
                  }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;FEAR&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ]
+                }" />
             <column name="text" value="Halfling races modifiers" />
         </insert>
 
-        <!-- Human -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="104001" />
+            <column name="prerequisite_skill_id" value="42" />
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="104001" />
+            <column name="prerequisite_skill_id" value="162" />
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="104001" />
+            <column name="prerequisite_skill_id" value="192" />
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="104001" />
+            <column name="prerequisite_skill_id" value="282" />
+        </insert>
+
+        <!-- Human 105000-->
         <insert tableName="prerequisite">
             <column name="id" value="100006" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
@@ -2084,7 +2215,7 @@
         </insert>
 
         <!-- 150000 subRaces -->
-        <!-- Artic Dwarf -->
+        <!-- Artic Dwarf 150000-->
         <insert tableName="prerequisite">
             <column name="id" value="150001" />
             <column name="text" value="Artic Dwarf modifiers" />
@@ -2158,6 +2289,36 @@
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="150003" />
             <column name="prerequisite_skill_id" value="281" />
+        </insert>
+
+        <!-- Elf 151000 -->
+        <!-- Gnome 152000 -->
+        <!-- Half Elf 153000 -->
+        <!-- Orc 154000 -->
+
+        <!-- Halfling 155000 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="155002" />
+            <column name="text" value="Lightfoot Halfling races modifiers" />
+            <column name="weapon_type" value="[&quot;THROWN&quot;]" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;bonus&quot; : 1
+                    } ] }" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="155002" />
+            <column name="item_id" value="23" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="155002" />
+            <column name="item_id" value="81" />
         </insert>
 
     </changeSet>
