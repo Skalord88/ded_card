@@ -14,6 +14,7 @@ export function SignNumber(
 export function SignNumberEnchant(
     number: number
 ): string {
+    if(number === undefined) return ""
     switch (number) {
         case -2: return ""
         case -1: return "prf"

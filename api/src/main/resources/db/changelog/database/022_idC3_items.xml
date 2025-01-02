@@ -68,9 +68,6 @@
             <column name="material" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <!-- <column name="enchantment_id" type="int">
-                <constraints nullable="true"/>
-            </column> -->
         </createTable>
     </changeSet>
 </databaseChangeLog>

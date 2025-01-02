@@ -1,9 +1,12 @@
 import { DiceText } from "../../../Dice/Functions";
 import { FormattingText } from "../../../Formatting/Function";
 import {
+  signAndCount,
+  SignNumberEnchant,
   weaponTwoHanded
 } from "../../../functions";
 import { Weapon } from "../../../interfaces";
+import { getWeaponEnchTargetMod } from "../../../Popup/DicePopup/D20PopupWeapon";
 import { Popup } from "../../../Popup/Popup";
 
 export type WeaponsInventoryComponentProps = {
@@ -17,6 +20,13 @@ export type WeaponsInventoryComponentProps = {
 export const WeaponsInventoryComponent: React.FC<
   WeaponsInventoryComponentProps
 > = ({ weapon1, weapon2, weapon3, weapon4, weapon5 }) => {
+
+  const enchList1: number[] = weapon1.enchantment.flatMap(ench => ench.enchantment)
+  const enchList2: number[] = weapon2.enchantment.flatMap(ench => ench.enchantment)
+  const enchList3: number[] = weapon3.enchantment.flatMap(ench => ench.enchantment)
+  const enchList4: number[] = weapon4.enchantment.flatMap(ench => ench.enchantment)
+  const enchList5: number[] = weapon5.enchantment.flatMap(ench => ench.enchantment)
+
   return (
     <>
       <div style={{ gridColumn: "1 / span 2" }}>
@@ -39,11 +49,11 @@ export const WeaponsInventoryComponent: React.FC<
       </div>
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
-        {/* <p>{SignNumberEnchant(weapon1.enchantment.enchantment)}</p>
-        <p>{SignNumberEnchant(weapon2.enchantment.enchantment)}</p>
-        <p>{SignNumberEnchant(weapon3.enchantment.enchantment)}</p>
-        <p>{SignNumberEnchant(weapon4.enchantment.enchantment)}</p>
-        <p>{SignNumberEnchant(weapon5.enchantment.enchantment)}</p> */}
+        <p>{SignNumberEnchant(enchList1[0])}</p>
+        <p>{SignNumberEnchant(enchList2[0])}</p>
+        <p>{SignNumberEnchant(enchList3[0])}</p>
+        <p>{SignNumberEnchant(enchList4[0])}</p>
+        <p>{SignNumberEnchant(enchList5[0])}</p>
       </div>
       <div style={{ gridColumn: 4 }}>
         <p style={{ backgroundColor: "grey" }}>Crit</p>

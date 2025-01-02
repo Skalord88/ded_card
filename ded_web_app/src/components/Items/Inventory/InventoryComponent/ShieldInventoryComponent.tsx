@@ -1,5 +1,5 @@
 import { FormattingText } from "../../../Formatting/Function";
-import { signAndCount } from "../../../functions";
+import { signAndCount, SignNumberEnchant } from "../../../functions";
 import { Shield } from "../../../interfaces";
 import { Popup } from "../../../Popup/Popup";
 
@@ -26,8 +26,7 @@ export const ShieldInventoryComponent: React.FC<
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
         <p>
-          {signAndCount(enchList).sign}
-          {enchList}
+          {SignNumberEnchant(enchList[0])}
         </p>
       </div>
 

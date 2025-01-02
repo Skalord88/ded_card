@@ -13,6 +13,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,7 +49,7 @@ public class EnchantedItems implements Serializable {
     joinColumns = @JoinColumn(name = "enchanted_items_id"),
     inverseJoinColumns = @JoinColumn(name = "enchantment_id")
   )
-  Set<Enchantment> enchantment;
+  List<Enchantment> enchantment = new ArrayList<>();
 
   @Enumerated(EnumType.STRING)
   MaterialEnum material;

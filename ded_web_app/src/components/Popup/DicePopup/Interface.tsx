@@ -24,7 +24,8 @@ export type DicePopupWeaponProps = {
   weapon: Weapon;
   bab: number[];
   dmg: number;
-  increments: number[];
+  bucklerMls: number;
+  targetMod?: AttackRoll[];
 };
 
 export type AllModifiersInThrow = {

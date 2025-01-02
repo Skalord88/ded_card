@@ -15,6 +15,7 @@ export type Prerequisite = {
     caster?: [];
     bab?: Number;
     attackRoll?: AttackRoll;
+    damageBonus?: number;
     initiative?: Number;
     speed?: Speed;
     savingThrow?: SavingThrow;

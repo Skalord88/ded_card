@@ -168,6 +168,10 @@
       <column name="enchanted_items_id" value="1011" />
       <column name="enchantment_id" value="6" />
     </insert>
+    <insert tableName="enchanted_items_enchantment">
+      <column name="enchanted_items_id" value="1011" />
+      <column name="enchantment_id" value="6" />
+    </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Longsword pft" />

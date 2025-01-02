@@ -51,6 +51,11 @@
         <column name="cost" value="0"/>
     </insert>
     <insert tableName="enchantment">
+        <column name='id' value="6"/>
+        <column name="ability" value="COMPOSITE"/>
+    </insert>
+    
+    <insert tableName="enchantment">
         <column name='id' value="10"/>
         <column name="enchantment" value="-1"/>
         <column name="ability" value="PERFECT_ARMOR"/>
@@ -92,12 +97,6 @@
         <column name="ability" value="WEAPON_5"/>
         <column name="modifiers_id" value="11005"/>
         <column name="cost" value="0"/>
-    </insert>
-    <insert tableName="enchantment">
-        <column name='id' value="6"/>
-        <column name="enchantment" value="0"/>
-        <column name="cost" value="100"/>
-        <column name="ability" value="COMPOSITE"/>
     </insert>
     <insert tableName="enchantment">
         <column name='id' value="7"/>

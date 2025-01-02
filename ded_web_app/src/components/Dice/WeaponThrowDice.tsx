@@ -1,3 +1,4 @@
+import { AttackRoll } from "../Attack/AttackRoll/interface";
 import { Weapon } from "../interfaces";
 import { CriticalHit } from "./Functions";
 
@@ -5,12 +6,14 @@ export type WeaponThrowDiceProps = {
   dices: number[];
   values: number[];
   weapon: Weapon;
+  targetMod?: AttackRoll
 };
 
 export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   dices,
   values,
-  weapon
+  weapon,
+  targetMod
 }) => {
   let results: { dice: number; value: number }[] = [];
 
@@ -21,13 +24,15 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   return (
     <>
       {results.map((res, index) => {
+        const bonus = targetMod?.bonus? Number(targetMod?.bonus) : 0;
+        const target = targetMod?.target? targetMod.target.join(", ") + ":" : null;
         return CriticalHit(weapon.critical).includes(res.dice) ? (
           <p key={index} style={{ color: "red" }}>
-              {res.dice} + {res.value} = {res.dice + res.value}
+               {target} {res.dice} + {res.value +  bonus} = {res.dice + res.value +  bonus}
           </p>
         ) : (
           <p key={index}>
-              {res.dice} + {res.value} = {res.dice + res.value}
+              {target} {res.dice} + {res.value +  bonus} = {res.dice + res.value +  bonus} 
             </p>
         );
       })}

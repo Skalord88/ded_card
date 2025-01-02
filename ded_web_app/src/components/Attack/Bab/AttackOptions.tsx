@@ -30,8 +30,6 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
   const checkType = (typeToCheck: string): number => {
     if (typeToCheck === "distance") return dexterityAtt;
     if (typeToCheck === "distance two hands") return dexterityAtt;
-    // if (specificFghFeats.includes(120) && weaponLight(weapon))
-    //   return dexterityAtt;
     return strenghtAtt;
   };
 
@@ -63,13 +61,15 @@ export const AttackOptions: React.FC<AttackOptionsProps> = ({
   return (
     <>
 
-      <D20PopupWeapon
+  <D20PopupWeapon
         type={type}
         weapon={weapon}
-        increments={increments}
+        // increments={increments}
         bab={[...attacks]}
         dmg={dmg}
+        bucklerMls={0}
       />
+
       :
       {attOneTwo.map((att, index) => (
         <span key={index}>

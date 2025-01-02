@@ -2,6 +2,7 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
+import { AttackElement, createAttackDisplay, DisplayAttType } from "../../Attack/function";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
@@ -54,6 +55,13 @@ export type SkillsElement = {
   target: PrerequisiteSkills[]
 }
 
+export type FeatsFromChar = {
+  feats: Feat[], 
+  classFeats: ClassFeats[],
+  pcFeats: FeatPc[]
+}
+
+
 export type CharToModify = {
   abilitys: Abilitys;
   bab: number;
@@ -68,10 +76,11 @@ export type CharToModify = {
   armor: ArmorClassElement;
   inventory: Inventory;
   attacks: Attacks;
+  displayAttType?: AttackElement
   skills: SkillsElement;
   skillsList: SkillsInList[]
   speed: Speed
-  feats: {feats: Feat[] , classFeats: ClassFeats[] , pcFeats: FeatPc[]}
+  feats: FeatsFromChar
 };
 
 export const modifyCharacter = (

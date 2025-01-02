@@ -1803,6 +1803,14 @@
             <column name="schools_id" value="5" />
         </insert>
 
+        <!-- id:9.000 weapons -->
+        <insert tableName="prerequisite">
+            <column name="id" value="9001" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : -2, &quot;target&quot; : [&quot;RICOCHET&quot;] }" />
+            <column name="text" value="warsling ricochet malus" />
+        </insert>
+
         <!-- Enchantment id:10.000 weapon -->
         <insert tableName="prerequisite">
             <column name="id" value="10000" />

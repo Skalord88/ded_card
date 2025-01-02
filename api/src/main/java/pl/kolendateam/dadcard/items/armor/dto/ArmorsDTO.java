@@ -2,7 +2,7 @@ package pl.kolendateam.dadcard.items.armor.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -22,6 +22,7 @@ public class ArmorsDTO implements Serializable {
 
   public int id;
   public String name;
+  public int itemId;
   public ItemTypeEnum itemType;
   public ArmorsEnum armorName;
   public PrerequisiteDTO modifiers;
@@ -33,7 +34,7 @@ public class ArmorsDTO implements Serializable {
   public int failure;
   public String description;
   public MaterialEnum material;
-  public Set<EnchantmentDTO> enchantment;
+  public List<EnchantmentDTO> enchantment;
 
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
@@ -59,6 +60,7 @@ public class ArmorsDTO implements Serializable {
     ArmorsDTO armorDTO = new ArmorsDTO((Armors) item.getItem());
     this.id = item.getId();
     this.name = item.getName();
+    this.itemId = item.getItem().getId();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = armorDTO.armorName;
     if (armorDTO.modifiers != null) {
@@ -79,7 +81,7 @@ public class ArmorsDTO implements Serializable {
     this.material = item.getMaterial();
     this.enchantment =
       item.getEnchantment() != null
-        ? MapperEnchantment.toEnchantmentDTOSet(item.getEnchantment())
+        ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())
         : null;
   }
 }

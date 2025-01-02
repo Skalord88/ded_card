@@ -1,5 +1,5 @@
 import { FormattingText } from "../../../Formatting/Function"
-import { signAndCount } from "../../../functions"
+import { signAndCount, SignNumberEnchant } from "../../../functions"
 import { Armor } from "../../../interfaces"
 import { Popup } from "../../../Popup/Popup"
 
@@ -30,7 +30,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
           </div>
           <div style={{ gridColumn: 3 }}>
             <p style={{backgroundColor: 'grey'}}>Enchantment</p>
-            <p>{signAndCount(enchList).sign}{enchList}</p>
+            <p>{SignNumberEnchant(enchList[0])}</p>
           </div>
           <div style={{ gridColumn: 4 }}>
             <p style={{backgroundColor: 'grey'}}>MaxDex</p>

@@ -1273,7 +1273,7 @@
             <column name="weight" value="0.9" />
             <column name="size" value="SMALL" />
             <column name="type" value="['PIERCING','EXOTIC','ONE_HANDED','RANGED']" />
-            <column name="special_attacks" value="" />
+            <column name="modifiers_id" value="9001" />
             <column name="description" value="" />
             <column name="material" value="LEATHER" />
         </insert>

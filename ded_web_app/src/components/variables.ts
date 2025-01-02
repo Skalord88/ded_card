@@ -21,7 +21,8 @@ export const noneArmor: Armor = {
     penality: 0,
     failure: 0,
     material: null,
-    enchantment: []
+    enchantment: [],
+    itemId: 0
 }
 
 export const noneShield: Shield = {
@@ -38,7 +39,8 @@ export const noneShield: Shield = {
     penality: 0,
     failure: 0,
     material: null,
-    enchantment: []
+    enchantment: [],
+    itemId: 0
 }
 
 export const noneWeapon: Weapon = {
@@ -242,7 +244,8 @@ export const emptyPrerequisite: Prerequisite = {
     classPc: [],
     items: [],
     text: '',
-    specialAttacks: emptySpecialAttacks
+    specialAttacks: emptySpecialAttacks,
+    damageBonus: 0
 }
 
 export const characterEmpty: CharacterPc = {

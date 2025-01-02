@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -43,7 +44,7 @@ public class WeaponsDTO implements Serializable {
   public SpecialAttacksDTO specialAttacks;
   public String description;
   public MaterialEnum material;
-  public Set<EnchantmentDTO> enchantment;
+  public List<EnchantmentDTO> enchantment;
 
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();
@@ -107,7 +108,7 @@ public class WeaponsDTO implements Serializable {
     this.material = item.getMaterial();
     this.enchantment =
       item.getEnchantment() != null
-        ? MapperEnchantment.toEnchantmentDTOSet(item.getEnchantment())
+        ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())
         : null;
   }
 }

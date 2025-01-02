@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items.enchantment.dto;
 
+import java.util.List;
 import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
@@ -18,7 +19,7 @@ public class EnchantedItemsDTO {
   public int id;
   public Object item;
   public String name;
-  public Set<EnchantmentDTO> enchantment;
+  public List<EnchantmentDTO> enchantment;
   public MaterialEnum material;
   public PrerequisiteDTO modifiers;
   public double cost;
@@ -45,7 +46,9 @@ public class EnchantedItemsDTO {
 
     this.enchantment =
       enchantedItems.getEnchantment() != null
-        ? MapperEnchantment.toEnchantmentDTOSet(enchantedItems.getEnchantment())
+        ? MapperEnchantment.toEnchantmentDTOList(
+          enchantedItems.getEnchantment()
+        )
         : null;
 
     this.material = enchantedItems.getMaterial();

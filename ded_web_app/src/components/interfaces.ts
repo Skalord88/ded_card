@@ -146,6 +146,7 @@ export type Item = {
 
 export interface Armor extends Item {
   armorName: string;
+  itemId: number;
   modifiers: Prerequisite | null;
   armorType: string;
   maxDex: number;
@@ -157,6 +158,7 @@ export interface Armor extends Item {
 
 export interface Shield extends Item {
   shieldName: string;
+  itemId: number;
   modifiers: Prerequisite | null;
   armorType: string;
   maxDex: number;
@@ -211,12 +213,12 @@ export type Inventory = {
 }
 
 export type Attacks = {
-  firstAttackSetOne?: Weapon,
-  secondAttackSetOne?: Weapon,
-  additionalAttackSetOne?: Weapon,
-  firstAttackSetTwo?: Weapon,
-  secondAttackSetTwo?: Weapon,
-  additionalAttackSetTwo?: Weapon
+  firstAttackSetOne: Weapon,
+  secondAttackSetOne: Weapon,
+  additionalAttackSetOne: Weapon,
+  firstAttackSetTwo: Weapon,
+  secondAttackSetTwo: Weapon,
+  additionalAttackSetTwo: Weapon
 }
 
 export type ArmorWeaponToBuy = {

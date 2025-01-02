@@ -17,8 +17,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @Getter
 @Setter
@@ -31,6 +34,8 @@ public class Enchantment implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ModifierBonus enchantment;
   int enchantment;
 
   @OneToOne(cascade = CascadeType.PERSIST)

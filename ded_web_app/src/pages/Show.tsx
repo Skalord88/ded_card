@@ -29,7 +29,7 @@ import {
   modifyInventory
 } from "../components/Items/Inventory/function";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
-import { modifyAttacks } from "../components/Attack/function";
+import { createAttackDisplay, modifyAttacks } from "../components/Attack/function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
@@ -118,6 +118,7 @@ export const Show = () => {
 
   modChar.inventory = modifyInventory(char);
   modChar.attacks = modifyAttacks(modChar);
+  modChar.displayAttType = createAttackDisplay(modChar)
 
   // const speed: number = FindInOneLengthModifier(modifications, "SPEED");
 

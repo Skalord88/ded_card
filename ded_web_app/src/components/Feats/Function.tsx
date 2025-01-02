@@ -1,4 +1,5 @@
 import { CharacterPc } from "../interfaces";
+import { FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
 import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
 
 export function groupAllFeats(
@@ -16,4 +17,11 @@ export function groupAllFeats(
     pcFeats: char.featsList
   };
 
+}
+
+export const findFeatById = (feats: FeatsFromChar, findId: number[]): Boolean => {
+  return feats.classFeats.find((f) => findId.includes(f.feat.id)) ||
+   feats.pcFeats.find((f) => findId.includes(f.feat.id)) ||
+   feats.feats.find((f) => findId.includes(f.id)) ?
+   true : false
 }

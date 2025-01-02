@@ -11,6 +11,7 @@ import { Position, Weapon } from "../../interfaces";
 import { ChangeCritWithFeat } from "../../Items/Functions/function";
 import { DiceModifiers, DicePopupProps } from "../../Popup/DicePopup/Interface";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
+import { AttackRoll } from "../AttackRoll/interface";
 import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {
@@ -42,79 +43,72 @@ export const MapBab: React.FC<MapBabProps> = ({
   };
   const attacksIncrements = getIncrements(bab);
 
-  const getEnchant = (enchant: number) => {
-    if (enchant === null) return 0;
-    if (enchant === -2) return 0;
-    if (enchant === -1) return 1;
-    if (enchant === 0) return 0;
-    if (enchant < 0) return enchant;
-    return 0;
-  };
-  const getEnchantDmg = (enchant: number) => {
-    if (enchant === null) return 0;
-    if (enchant === -2) return 0;
-    if (enchant === -1) return 0;
-    if (enchant === 0) return 0;
-    if (enchant < 0) return enchant;
-    return 0;
-  };
+  const mono: number = weapon.enchantment.reduce(
+    (tot, en) =>
+      en.modifiers?.attackRoll?.target === null
+        ? tot < Number(en.modifiers?.attackRoll.bonus)
+          ? Number(en.modifiers?.attackRoll.bonus)
+          : tot
+        : tot,
+    0
+  );
+  
+  const strAttEnchanted: number = mono + strenghtAtt;
+  const dexAttEnchanted: number = mono + dexterityAtt;
 
-  const ench = getEnchant(
-    weapon.enchantment.reduce((tot, enchanted) =>
-    tot + enchanted.ability === null? enchanted.enchantment : 0 , 0)
+  const monoDmg: number = weapon.enchantment.reduce(
+    (tot, en) =>
+      en.modifiers?.attackRoll?.target === null
+        ? tot < Number(en.modifiers?.damageBonus)
+          ? Number(en.modifiers?.damageBonus)
+          : tot
+        : tot,
+    0
   );
 
-  const enchDmg: number = getEnchantDmg(
-    weapon.enchantment.reduce((tot, enchanted) =>
-    tot + enchanted.ability === null ? enchanted.enchantment : 0 , 0
-    )) 
-    // + compo;
-
   const twoHandDmg: number = position.twoHanded
-    ? strenght + Math.floor(strenght / 2) + enchDmg
-    : strenght + enchDmg;
+    ? strenght + Math.floor(strenght / 2) + monoDmg
+    : strenght + monoDmg;
   const dmgTwoHand: number =
-    twoHandDmg < strenght + enchDmg ? strenght + enchDmg : twoHandDmg;
+    twoHandDmg < strenght + monoDmg ? strenght + monoDmg : twoHandDmg;
 
   // const critWeapon: Weapon = ChangeCritWithFeat(weapon,
   //   FindWeaponToModified(specific[2], weapon).find
   // )
 
+  console.log(weapon.enchantment)
+
   return (
     <div style={{ display: "grid" }}>
       <div style={{ gridColumn: 1, gridRow: 1 }}>
-        {weaponRanged(weapon) ? null : 
-        (
-            <AttackOptions
-              type="melee"
-              weapon={weapon}
-              dmg={dmgTwoHand}
-              strenghtAtt={strenghtAtt}
-              dexterityAtt={dexterityAtt}
-              position={position}
-              increments={attacksIncrements}
-              attackFn={AttackMelee}
-              modifiers={modifiers}
-            />
-        )
-        }
+        {weaponRanged(weapon) ? null : (
+          <AttackOptions
+            type="melee"
+            weapon={weapon}
+            dmg={dmgTwoHand}
+            strenghtAtt={strAttEnchanted}
+            dexterityAtt={dexAttEnchanted}
+            position={position}
+            increments={attacksIncrements}
+            attackFn={AttackMelee}
+            modifiers={modifiers}
+          />
+        )}
       </div>
       <div style={{ gridColumn: 1, gridRow: 3 }}>
-        {weaponRanged(weapon) || weaponThrown(weapon) ? 
-        (
+        {weaponRanged(weapon) || weaponThrown(weapon) ? (
           <AttackOptions
             type="distance"
             weapon={weapon}
-            dmg={enchDmg}
+            dmg={monoDmg}
             position={position}
-            strenghtAtt={strenghtAtt}
-            dexterityAtt={dexterityAtt}
+            strenghtAtt={strAttEnchanted}
+            dexterityAtt={dexAttEnchanted}
             increments={attacksIncrements}
             attackFn={AttackRanged}
             modifiers={modifiers}
           />
-        )
-         : null}
+        ) : null}
       </div>
       <div style={{ gridColumn: 1, gridRow: 2 }}>
         {weaponRanged(weapon) || weaponTwoHanded(weapon) ? null : (
@@ -123,10 +117,10 @@ export const MapBab: React.FC<MapBabProps> = ({
               <AttackOptions
                 type="melee two hands"
                 weapon={weapon}
-                dmg={Math.floor(strenght / 2) + enchDmg}
+                dmg={Math.floor(strenght / 2) + monoDmg}
                 position={position}
-                strenghtAtt={strenghtAtt}
-                dexterityAtt={dexterityAtt}
+                strenghtAtt={strAttEnchanted}
+                dexterityAtt={dexAttEnchanted}
                 increments={attacksIncrements}
                 attackFn={AttackIIMelee}
                 modifiers={modifiers}
@@ -137,23 +131,20 @@ export const MapBab: React.FC<MapBabProps> = ({
       </div>
       <div style={{ gridColumn: 1, gridRow: 4 }}>
         {weaponTwoHanded(weapon) ? null : weaponRanged(weapon) ||
-          weaponThrown(weapon) ? 
-          (
+          weaponThrown(weapon) ? (
           <AttackOptions
             type="distance two hands"
             weapon={weapon}
-            dmg={enchDmg}
+            dmg={monoDmg}
             position={position}
-            strenghtAtt={strenghtAtt}
-            dexterityAtt={dexterityAtt}
+            strenghtAtt={strAttEnchanted}
+            dexterityAtt={dexAttEnchanted}
             increments={attacksIncrements}
             attackFn={AttackIIRanged}
             modifiers={modifiers}
           />
-        )
-         : null}
+        ) : null}
       </div>
     </div>
   );
 };
-

@@ -13,6 +13,7 @@ import pl.kolendateam.dadcard.items.enchantment.entity.ItemAbilityEnum;
 public class EnchantmentDTO implements Serializable {
 
   public int id;
+  // public ModifierBonus enchantment;
   public int enchantment;
   public PrerequisiteDTO modifiers;
   public ItemAbilityEnum ability;

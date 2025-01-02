@@ -12,6 +12,7 @@ public enum ModifierEnum {
   RACIAL_BONUS,
   RESISTANCE_BONUS,
   SACRED_MODIFIER,
+  Enhancement,
 
   FEAT,
   ITEM,

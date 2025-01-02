@@ -32,10 +32,12 @@ export const findAttackRollPrerequisite = (
       if(prer.attackRoll?.target === null) mono.push(prer.attackRoll)
         const compose : string[] = ["ITEM", "WEAPON_TYPE"]
       if(prer.attackRoll?.target?.some(t => !compose.includes(t))) target.push(prer.attackRoll)
-      if(prer.attackRoll?.target?.some(t => compose.includes(t))) {composed.push({attackRoll: {
-        bonus: prer.attackRoll.bonus,
-        target: null
-      }, weaponType: prer.weaponType, items: prer.items})}
+      if(prer.attackRoll?.target?.some(t => compose.includes(t))) {composed.push({
+        attackRoll: {
+          bonus: prer.attackRoll.bonus,
+          target: null
+        }, weaponType: prer.weaponType, items: prer.items
+      })}
     }});
 
   return {mono, target, composed};
