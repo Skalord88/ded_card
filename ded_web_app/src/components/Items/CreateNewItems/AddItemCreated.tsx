@@ -1,8 +1,8 @@
 import { useCallback, useState } from "react";
+import { enchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { Armor, ItemsList, Shield, Weapon } from "../../interfaces";
 import { emptyItemsList } from "../../variables";
 import { ListOfNewItems } from "./ListOfNewItems";
-import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 
 export interface AddItemCreatedProps {
   item: Armor | Shield | Weapon;
@@ -16,9 +16,9 @@ export const AddItemCreated: React.FC<AddItemCreatedProps> = ({ item }) => {
       const updatedItems = { ...prevItems };
   
       const itemExists: boolean = 
-        updatedItems.armorsList.some(item => EnchantedName(item) === EnchantedName(e)) ||
-        updatedItems.shieldList.some(item => EnchantedName(item) === EnchantedName(e)) ||
-        updatedItems.weaponsList.some(item => EnchantedName(item) === EnchantedName(e));
+        updatedItems.armorsList.some(item => enchantedName(item) === enchantedName(e)) ||
+        updatedItems.shieldList.some(item => enchantedName(item) === enchantedName(e)) ||
+        updatedItems.weaponsList.some(item => enchantedName(item) === enchantedName(e));
   
       if (itemExists) return updatedItems;
   

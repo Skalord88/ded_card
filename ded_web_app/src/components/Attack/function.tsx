@@ -6,7 +6,13 @@ import {
   weaponThrown,
   weaponTwoHanded
 } from "../functions";
-import { Attacks, Enchantment, SpecialAttacks, Weapon } from "../interfaces";
+import {
+  Attacks,
+  CharacterPc,
+  Enchantment,
+  SpecialAttacks,
+  Weapon
+} from "../interfaces";
 import { findAttackRollPrerequisite } from "../Prerequisite/functions/findSpecificPrerequisite";
 import {
   AttackRollElement,
@@ -68,82 +74,81 @@ export const sepcialAttacksToList = (
   );
 };
 
+export const getWeaponInventoryIndex = (wId: number, invWeapons: Weapon[]) => {
+  return invWeapons.findIndex((w) => w.id === wId);
+};
+
 export const modifyAttacks = (char: CharToModify): Attacks => {
-  const attacks: Attacks = char.attacks;
-  const weaponList: Weapon[] = [
+  const weapons: Weapon[] = [
     char.inventory.weaponOne,
     char.inventory.weaponTwo,
     char.inventory.weaponThree,
     char.inventory.weaponFour,
     char.inventory.weaponFive
   ];
-  return {
-    ...attacks,
-    firstAttackSetOne:
-      weaponList.find((weapon) =>
-        weapon !== null && attacks.firstAttackSetOne
-          ? weapon.id === attacks.firstAttackSetOne.id
-          : false
-      ) || noneWeapon,
-    secondAttackSetOne:
-      weaponList.find((weapon) =>
-        weapon && attacks.secondAttackSetOne
-          ? weapon.id === attacks.secondAttackSetOne.id
-          : false
-      ) || noneWeapon,
-    additionalAttackSetOne:
-      weaponList.find((weapon) =>
-        weapon && attacks.additionalAttackSetOne
-          ? weapon.id === attacks.additionalAttackSetOne.id
-          : false
-      ) || noneWeapon,
 
+  const wOneSetOneIndex = char.attacks.firstAttackSetOne
+    ? getWeaponInventoryIndex(char.attacks.firstAttackSetOne.id, weapons)
+    : -1;
+  const wTwoSetOneIndex = char.attacks.secondAttackSetOne
+    ? getWeaponInventoryIndex(char.attacks.secondAttackSetOne.id, weapons)
+    : -1;
+  const wAddSetOneIndex = char.attacks.additionalAttackSetOne
+    ? getWeaponInventoryIndex(char.attacks.additionalAttackSetOne.id, weapons)
+    : -1;
+  const wOneSetTwoIndex = char.attacks.firstAttackSetTwo
+    ? getWeaponInventoryIndex(char.attacks.firstAttackSetTwo.id, weapons)
+    : -1;
+  const wTwoSetTwoIndex = char.attacks.secondAttackSetTwo
+    ? getWeaponInventoryIndex(char.attacks.secondAttackSetTwo.id, weapons)
+    : -1;
+  const wAddSetTwoIndex = char.attacks.additionalAttackSetTwo
+    ? getWeaponInventoryIndex(char.attacks.additionalAttackSetTwo.id, weapons)
+    : -1;
+
+  return {
+    firstAttackSetOne:
+      wOneSetOneIndex === -1 ? noneWeapon : weapons[wOneSetOneIndex],
+    secondAttackSetOne:
+      wTwoSetOneIndex === -1 ? noneWeapon : weapons[wTwoSetOneIndex],
+    additionalAttackSetOne:
+      wAddSetOneIndex === -1 ? noneWeapon : weapons[wAddSetOneIndex],
     firstAttackSetTwo:
-      weaponList.find((weapon) =>
-        weapon && attacks.firstAttackSetTwo
-          ? weapon.id === attacks.firstAttackSetTwo.id
-          : false
-      ) || noneWeapon,
+      wOneSetTwoIndex === -1 ? noneWeapon : weapons[wOneSetTwoIndex],
     secondAttackSetTwo:
-      weaponList.find((weapon) =>
-        weapon && attacks.secondAttackSetTwo
-          ? weapon.id === attacks.secondAttackSetTwo.id
-          : false
-      ) || noneWeapon,
+      wTwoSetTwoIndex === -1 ? noneWeapon : weapons[wTwoSetTwoIndex],
     additionalAttackSetTwo:
-      weaponList.find((weapon) =>
-        weapon && attacks.additionalAttackSetTwo
-          ? weapon.id === attacks.additionalAttackSetTwo.id
-          : false
-      ) || noneWeapon
+      wAddSetTwoIndex === -1 ? noneWeapon : weapons[wAddSetTwoIndex]
   };
 };
 
-function collectPrerequisites(weapon: Weapon): Prerequisite[] {
-  const prerequisites: Prerequisite[] = [];
+// function collectPrerequisites(weapon: Weapon): Prerequisite[] {
+//   const prerequisites: Prerequisite[] = [];
 
-  // Aggiungi il prerequisite della weapon se non è null
-  if (weapon.modifiers) {
-    prerequisites.push(weapon.modifiers);
-  }
+//   // Aggiungi il prerequisite della weapon se non è null
+//   if (weapon.modifiers) {
+//     prerequisites.push(weapon.modifiers);
+//   }
 
-  // Aggiungi i prerequisite degli enchantment se non sono nulli
-  const enchantmentPrerequisites = weapon.enchantment
-    .map((enchantment) => enchantment.modifiers)
-    .filter((modifier) => modifier !== null) as Prerequisite[];
+//   // Aggiungi i prerequisite degli enchantment se non sono nulli
+//   const enchantmentPrerequisites = weapon.enchantment
+//     ? (weapon.enchantment
+//         .map((enchantment) => enchantment.modifiers)
+//         .filter((modifier) => modifier !== null) as Prerequisite[])
+//     : [];
 
-  // Combina i risultati
-  prerequisites.push(...enchantmentPrerequisites);
+//   // Combina i risultati
+//   prerequisites.push(...enchantmentPrerequisites);
 
-  return prerequisites;
-}
+//   return prerequisites;
+// }
 
-function collectMono(prerequisites: Prerequisite[]): number {
-  return prerequisites.reduce((maxBonus, pre) => {
-    const bonus = pre.attackRoll?.bonus ?? 0; // Ottieni il bonus o 0 se non definito
-    return Math.max(maxBonus, Number(bonus)); // Confronta il massimo corrente con il bonus attuale
-  }, 0);
-}
+// function collectMono(prerequisites: Prerequisite[]): number {
+//   return prerequisites.reduce((maxBonus, pre) => {
+//     const bonus = pre.attackRoll?.bonus ?? 0; // Ottieni il bonus o 0 se non definito
+//     return Math.max(maxBonus, Number(bonus)); // Confronta il massimo corrente con il bonus attuale
+//   }, 0);
+// }
 
 export type AttacksData = {
   bab: number;
@@ -169,9 +174,9 @@ export const getAttacksData = (char: CharToModify): AttacksData => {
     finesy: findFeatById(char.feats, [116]),
     strThrow: false, // da aggiungere tiratore con ascia, Regionale
     twoFighting: {
-      twoFighting: findFeatById(char.feats, [115]),
-      grtTwoFighting: findFeatById(char.feats, [40]),
-      impTwoFighting: findFeatById(char.feats, [59])
+      twoFighting: findFeatById(char.feats, [105]),
+      impTwoFighting: findFeatById(char.feats, [58]),
+      grtTwoFighting: findFeatById(char.feats, [40])
     },
     charMonoMod: char.attackRoll.mono.reduce(
       (tot, at) => tot + Number(at.bonus),
@@ -188,9 +193,15 @@ export type WeaponAttackStats = {
   mainTwo: Boolean;
   attacksStr: number[];
   attacksDex: number[];
+  attacksOffHandStr: number[];
+  attacksOffHandDex: number[];
   malusTwo: number;
   dmgMelee: number;
   dmgDistance: number;
+};
+
+export const perfectBns = (ench: Enchantment[]): number => {
+  return ench.some((e) => "PERFECT".includes(e.ability)) ? 1 : 0;
 };
 
 export const compositeBns = (ench: Enchantment[]): number => {
@@ -230,31 +241,51 @@ export const getWeaponAttackStats = (
     attacksData.bab - 15
   ];
   const attNoZero: number[] = att.filter((att) => att > 0);
-  const enchanment: number = w.enchantment.reduce(
-    (tot, enchantment) => tot + enchantment.enchantment,
-    0
+  const enchanment: number = w.enchantmentBonus
+    ? w.enchantmentBonus
+      ? w.enchantmentBonus
+      : w.enchantment
+      ? perfectBns(w.enchantment)
+      : 0
+    : 0;
+  const enchanmentDmg: number = w.enchantmentBonus ? w.enchantmentBonus : 0;
+  const composite: number = w.enchantment ? compositeBns(w.enchantment) : 0;
+  const attStr: number[] = attNoZero.map(
+    (att) => att + attacksData.strenght + attacksData.charMonoMod + enchanment
   );
-  const enchanmentDmg: number = w.enchantment.reduce(
-    (tot, enchantment) => tot + enchantment.enchantment,
-    0
+  const attDex: number[] = attNoZero.map(
+    (att) => att + attacksData.dexterity + attacksData.charMonoMod + enchanment
   );
-  const composite: number = compositeBns(w.enchantment);
+  const offStr: number[] = attacksData.twoFighting.impTwoFighting
+    ? [attStr[0], attStr[0] - 5]
+    : attacksData.twoFighting.grtTwoFighting
+    ? [attStr[0], attStr[0] - 5, attStr[0] - 10]
+    : [attStr[0]];
+  const offDex: number[] = attacksData.twoFighting.impTwoFighting
+    ? [attDex[0], attDex[0] - 5]
+    : attacksData.twoFighting.grtTwoFighting
+    ? [attDex[0], attDex[0] - 5, attDex[0] - 10]
+    : [attDex[0]];
+  const finesyAtt: number[] =
+    attacksData.finesy && (weaponLight(w) || w.itemId === 40) ? attDex : attStr; // w.itemId === 40 find rapier
+  const finesyOffAtt: number[] =
+    attacksData.finesy && (weaponLight(w) || w.itemId === 40) ? offDex : offStr; // w.itemId === 40 find rapier
+  const dmgStr: number =
+    attacksData.strenght +
+    (weaponTwoHanded(w) ? Math.floor(attacksData.strenght / 2) : 0) +
+    enchanmentDmg;
+  const dmgOffStr: number =
+    Math.floor(attacksData.strenght / 2) + enchanmentDmg;
   return {
     weapon: w,
     pose: pose,
     mainTwo: mainTwo,
-    attacksStr: attNoZero.map(
-      (att) => att + attacksData.strenght + attacksData.charMonoMod + enchanment
-    ),
-    attacksDex: attNoZero.map(
-      (att) =>
-        att + attacksData.dexterity + attacksData.charMonoMod + enchanment
-    ),
+    attacksStr: finesyAtt,
+    attacksDex: attDex,
+    attacksOffHandStr: pose === 1 ? finesyOffAtt : finesyAtt,
+    attacksOffHandDex: offDex,
     malusTwo: getMalus(pose, offLight, attacksData),
-    dmgMelee:
-      attacksData.strenght +
-      (weaponTwoHanded(w) ? Math.floor(attacksData.strenght / 2) : 0) +
-      enchanmentDmg,
+    dmgMelee: pose === 1 ? dmgOffStr : dmgStr,
     dmgDistance: enchanmentDmg + composite
   };
 };
@@ -267,75 +298,58 @@ export type DisplayAttType = [
 ];
 
 export const getShowMelee = (
-  pose: number,
-  mainTwo: Boolean,
-  ranged: Boolean,
-  twoHand: Boolean
+  pose: number, // che mano
+  mainTwo: Boolean, // arma uno 2 mani
+  ranged: Boolean, // arma e' ranged
+  twoHand: Boolean // arma e' 2 mani
 ): Boolean => {
-  // pose 0 and 2
-  if (pose === 0 || pose === 2) {
-    if (ranged) return false;
-  }
+  // ranged?
+  if (ranged) return false;
   // pose 1
   if (pose === 1) {
+    if (twoHand) return false;
     if (mainTwo) return false;
   }
   return true;
 };
 export const getShowMelTwoHand = (
-  pose: number,
-  mainTwo: Boolean,
-  ranged: Boolean,
-  twoHand: Boolean
+  pose: number, // che mano
+  mainTwo: Boolean, // arma uno 2 mani
+  ranged: Boolean, // arma e' ranged
+  twoHand: Boolean // arma e' 2 mani
 ): Boolean => {
-  // pose 0 and 2
-  if (pose === 0 || pose === 2) {
-    if (ranged) return false;
-    if (twoHand) return false;
-  }
-  // pose 1
-  if (pose === 1) {
+  // ranged?
+  if (ranged) return false;
+  if (pose === 1 || pose === 2) {
     if (mainTwo) return false;
   }
   return true;
 };
 export const getShowDistance = (
-  pose: number,
-  mainTwo: Boolean,
-  ranged: Boolean,
-  thrown: Boolean,
-  twoHand: Boolean
+  pose: number, // che mano
+  mainTwo: Boolean, // arma uno 2 mani
+  ranged: Boolean, // arma e' ranged
+  thrown: Boolean, // arma e' tirabile
+  twoHand: Boolean // arma e' 2 mani
 ): Boolean => {
-  // pose 0 and 2
-  if (pose === 0 || pose === 2) {
-    if (thrown) return true;
-    if (ranged) return true;
-  }
-  // pose 1
-  if (pose === 1) {
-    if (mainTwo) return false;
-    if (thrown) return true;
-    if (ranged) return true;
+  if (ranged || thrown) {
+    if (pose === 1) {
+      if (mainTwo) return false;
+    }
+    return true;
   }
   return false;
 };
 export const getShowDisTwoHand = (
-  pose: number,
-  mainTwo: Boolean,
-  ranged: Boolean,
-  thrown: Boolean,
-  twoHand: Boolean
+  pose: number, // che mano
+  mainTwo: Boolean, // arma uno 2 mani
+  ranged: Boolean, // arma e' ranged
+  thrown: Boolean, // arma e' tirabile
+  twoHand: Boolean // arma e' 2 mani
 ): Boolean => {
-  // pose 0 and 2
-  if (pose === 0 || pose === 2) {
-    if (thrown) return true;
-    if (ranged) return true;
-  }
-  // pose 1
-  if (pose === 1) {
-    if (mainTwo) return false;
-    if (thrown) return true;
-    if (ranged) return true;
+  if (mainTwo) return false;
+  if (ranged || thrown) {
+    return true;
   }
   return false;
 };
@@ -363,7 +377,7 @@ export const getDisplayAttType = (
         weaponTwoHanded(weaponStat.weapon)
       ),
       type: "melTwoHand",
-      att: weaponStat.attacksStr.map((att) => att + weaponStat.malusTwo),
+      att: weaponStat.attacksOffHandStr.map((att) => att + weaponStat.malusTwo),
       dmg: weaponStat.dmgMelee
     },
     {
@@ -387,7 +401,7 @@ export const getDisplayAttType = (
         weaponTwoHanded(weaponStat.weapon)
       ),
       type: "disTwoHand",
-      att: weaponStat.attacksDex.map((att) => att + weaponStat.malusTwo),
+      att: weaponStat.attacksOffHandDex.map((att) => att + weaponStat.malusTwo),
       dmg: weaponStat.dmgDistance
     }
   ];
@@ -422,7 +436,7 @@ export const createAttackDisplay = (char: CharToModify): AttackElement => {
   const wOneSetOne: WeaponAttackStats = getWeaponAttackStats(
     char.attacks.firstAttackSetOne,
     0,
-    true,
+    mainTwo,
     lightOff,
     attacksData
   );
@@ -436,7 +450,7 @@ export const createAttackDisplay = (char: CharToModify): AttackElement => {
   const wAddSetOne: WeaponAttackStats = getWeaponAttackStats(
     char.attacks.additionalAttackSetOne,
     2,
-    true,
+    mainTwo,
     lightOff,
     attacksData
   );
@@ -446,7 +460,7 @@ export const createAttackDisplay = (char: CharToModify): AttackElement => {
   const wOneSetTwo: WeaponAttackStats = getWeaponAttackStats(
     char.attacks.firstAttackSetTwo,
     0,
-    true,
+    mainTwo,
     lightOff,
     attacksData
   );
@@ -460,7 +474,7 @@ export const createAttackDisplay = (char: CharToModify): AttackElement => {
   const wAddSetTwo: WeaponAttackStats = getWeaponAttackStats(
     char.attacks.additionalAttackSetTwo,
     2,
-    true,
+    mainTwo,
     lightOff,
     attacksData
   );

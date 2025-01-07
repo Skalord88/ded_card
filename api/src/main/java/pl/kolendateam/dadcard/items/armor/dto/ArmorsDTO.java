@@ -34,6 +34,7 @@ public class ArmorsDTO implements Serializable {
   public int failure;
   public String description;
   public MaterialEnum material;
+  public Integer enchantmentBonus;
   public List<EnchantmentDTO> enchantment;
 
   public ArmorsDTO(Armors item) {
@@ -79,6 +80,8 @@ public class ArmorsDTO implements Serializable {
     this.failure = armorDTO.failure;
     this.description = armorDTO.description;
     this.material = item.getMaterial();
+    this.enchantmentBonus =
+      item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =
       item.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())

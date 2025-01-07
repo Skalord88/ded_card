@@ -153,7 +153,8 @@ export interface Armor extends Item {
   penality: number;
   failure: number;
   material: string | null
-  enchantment: Enchantment[]
+  enchantmentBonus?: number;
+  enchantment?: Enchantment[]
 }
 
 export interface Shield extends Item {
@@ -165,7 +166,8 @@ export interface Shield extends Item {
   penality: number;
   failure: number;
   material: string | null
-  enchantment: Enchantment[]
+  enchantmentBonus?: number;
+  enchantment?: Enchantment[]
 }
 
 export interface Weapon extends Item {
@@ -179,7 +181,8 @@ export interface Weapon extends Item {
   modifiers: Prerequisite | null;
   specialAttacks: string | null;
   material: string | null
-  enchantment: Enchantment[]
+  enchantmentBonus?: number;
+  enchantment?: Enchantment[]
 }
 
 export interface EnchantedItem {
@@ -190,6 +193,7 @@ export interface EnchantedItem {
   material: string
   modifiers: Prerequisite | null
   cost: number
+  enchantmentBonus?: number;
   description: string
 }
 
@@ -311,9 +315,13 @@ export type SignAndNumber = {
   number: number
 }
 
+export type ModifierBonus = {
+  modifier: string,
+  bonus: number
+}
+
 export type Enchantment = {
   id: number,
-  enchantment: number
   ability: string
   modifiers: Prerequisite | null
   cost: number

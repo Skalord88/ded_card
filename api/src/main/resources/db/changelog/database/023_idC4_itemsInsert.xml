@@ -367,7 +367,8 @@
             <column name="weight" value="2" />
             <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','THROWN']" />
-            <column name="special_attacks" value="" />
+            <column name="modifiers_id" value="9002" />
+            <!-- <column name="special_attacks" value="" /> -->
             <column name="description"
                 value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon." />
             <column name="material" value="WOOD" />

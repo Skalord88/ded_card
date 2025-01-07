@@ -2,6 +2,7 @@ import { FormattingText } from "../../../Formatting/Function"
 import { signAndCount, SignNumberEnchant } from "../../../functions"
 import { Armor } from "../../../interfaces"
 import { Popup } from "../../../Popup/Popup"
+import { getPerfectString } from "./WeaponsInventoryComponent"
 
 export type ArmorInventoryComponentProps = {
     armor: Armor
@@ -17,7 +18,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
       return 0;
     }
     const speed: number = armorSpeed(armor)
-    const enchList: number[] = armor.enchantment.flatMap(ench => ench.enchantment)
+    const enchList: string = armor.enchantmentBonus ? ("+" + armor.enchantmentBonus) : armor.enchantment? getPerfectString(armor.enchantment) : ""
     return (
       <>
       <div style={{ gridColumn: 1 }}>
@@ -30,7 +31,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
           </div>
           <div style={{ gridColumn: 3 }}>
             <p style={{backgroundColor: 'grey'}}>Enchantment</p>
-            <p>{SignNumberEnchant(enchList[0])}</p>
+            <p>{enchList}</p>
           </div>
           <div style={{ gridColumn: 4 }}>
             <p style={{backgroundColor: 'grey'}}>MaxDex</p>

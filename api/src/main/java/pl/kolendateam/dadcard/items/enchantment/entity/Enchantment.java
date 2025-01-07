@@ -34,9 +34,7 @@ public class Enchantment implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // ModifierBonus enchantment;
-  int enchantment;
+  // int enchantment;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(
@@ -55,7 +53,6 @@ public class Enchantment implements Serializable {
 
   public Enchantment(EnchantmentDTO enchantmentDTO) {
     this.id = enchantmentDTO.id;
-    this.enchantment = enchantmentDTO.enchantment;
     this.cost = enchantmentDTO.cost;
   }
 }

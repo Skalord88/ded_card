@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useCallback, useState } from "react";
+import { enchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { ListOfSomething } from "../../List/List";
+import { addToDrop } from "../../functions";
 import { Armor, ItemsList, Shield, Weapon } from "../../interfaces";
 import { urlItemsBuy } from "../../url";
-import { addToDrop } from "../../functions";
-import { EnchantedName } from "../../Enchantment/Functions/EnchantmentFunctions";
 
 export interface AddedNewItemsProns {
   newItemsList: ItemsList;
@@ -21,13 +21,13 @@ export const ListOfNewItems: React.FC<AddedNewItemsProns> = ({
   
       switch (e.itemType) {
         case "ARMOR":
-          updatedItems.armorsList = prevItems.armorsList.filter(item => EnchantedName(item) !== EnchantedName(e));
+          updatedItems.armorsList = prevItems.armorsList.filter(item => enchantedName(item) !== enchantedName(e));
           break;
         case "SHIELD":
-          updatedItems.shieldList = prevItems.shieldList.filter(item => EnchantedName(item) !== EnchantedName(e));
+          updatedItems.shieldList = prevItems.shieldList.filter(item => enchantedName(item) !== enchantedName(e));
           break;
         case "WEAPON":
-          updatedItems.weaponsList = prevItems.weaponsList.filter(item => EnchantedName(item) !== EnchantedName(e));
+          updatedItems.weaponsList = prevItems.weaponsList.filter(item => enchantedName(item) !== enchantedName(e));
           break;
         default:
           break;

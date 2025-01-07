@@ -6,23 +6,48 @@
     <changeSet id="22" author="oscar">
 
         <!-- Puli -->
+        <!-- Exotic Weapon Proficiency [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10001" />
+            <column name="text" value="Proficiency with Warsling" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10001" />
+            <column name="item_id" value="81" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
             <!-- Exotic Weapon Proficiency [General] -->
-            <column name="selected_id" value="1001" />
+            <column name="selected_id" value="10001" />
         </insert>
+
+        <!-- Exotic Weapon Proficiency [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10002" />
+            <column name="text" value="Proficiency with Skiprock" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10002" />
+            <column name="item_id" value="82" />
+        </insert>
+        
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="31" />
             <!-- Exotic Weapon Proficiency [General] -->
-            <column name="selected_id" value="1002" />
+            <column name="selected_id" value="10002" />
         </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="88" />
             <!-- Silent Spell [Metamagic] -->
         </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="100" />
             <column name="feats_id" value="14" />
@@ -49,25 +74,53 @@
         </insert>
 
         <!-- Rysio -->
+        <!-- Weapon Focus [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10011" />
+            <column name="text" value="Focus with Longsword" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10011" />
+            <column name="item_id" value="38" />
+            <!-- Longsword -->
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="107" />
             <!-- Weapon Focus [General] -->
-            <column name="selected_id" value="1011" />
+            <column name="selected_id" value="10011" />
             <!-- Longsword -->
         </insert>
+
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="54" />
             <!-- Improved Shield Bash [General] -->
         </insert>
+
+        <!-- Weapon Specialization [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10012" />
+            <column name="text" value="Specialization with Longsword" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10012" />
+            <column name="item_id" value="38" />
+            <!-- Longsword -->
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="feats_id" value="108" />
             <!-- Weapon Specialization [General] -->
-            <column name="selected_id" value="1012" /> 
+            <column name="selected_id" value="10012" /> 
             <!-- Longsword -->
         </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="101" />
             <column name="class_feats_id" value="132" />
@@ -86,7 +139,7 @@
         <!-- Niesia -->
         <insert tableName="feats_pc">
             <column name="character_card_id" value="102" />
-            <column name="feats_id" value="213" />
+            <column name="feats_id" value="50003" />
             <!-- Improved Natural Armor [General] -->
         </insert>
         <insert tableName="feats_pc">
@@ -96,41 +149,74 @@
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="102" />
-            <column name="feats_id" value="214" />
+            <column name="feats_id" value="50004" />
             <!-- Eagle's Wings [Wild] -->
         </insert>
         <insert tableName="feats_pc">
             <column name="character_card_id" value="102" />
-            <column name="feats_id" value="212" />
+            <column name="feats_id" value="50002" />
             <!-- Flyby Attack [General] -->
         </insert>
 
         <!-- Michał -->
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
-            <column name="feats_id" value="215" />
+            <column name="feats_id" value="50005" />
             <!-- Pierce the Darkness [Divine] -->
         </insert>
+
+        <!-- Domain Spontaneity [Divine] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10013" />
+            <column name="domain_id" value="2" />
+            <column name="text" value="Spontaneity Storm" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
-            <column name="feats_id" value="216" />
+            <column name="feats_id" value="50006" />
             <!-- Domain Spontaneity [Divine] -->
-           <column name="selected_id" value="1031" /> 
+           <column name="selected_id" value="10013" /> 
         </insert>
+
+        <!-- Weapon Focus [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10014" />
+            <column name="text" value="Focus with Shortspear" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10014" />
+            <column name="item_id" value="14" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="107" />
             <!-- Weapon Focus [General] -->
-            <column name="selected_id" value="1032" /> 
+            <column name="selected_id" value="10014" /> 
             <!-- Shortspear  -->
         </insert>
+
+        <!-- Weapon Specialization [General] -->
+        <insert tableName="prerequisite">
+            <column name="id" value="10015" />
+            <column name="text" value="Focus with Shortspear" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="10015" />
+            <column name="item_id" value="14" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="108" />
             <!-- Weapon Specialization [General] -->
-            <column name="selected_id" value="1033" /> 
+            <column name="selected_id" value="10015" /> 
             <!-- Shortspear  -->
         </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="103" />
             <column name="feats_id" value="28" />
@@ -186,20 +272,43 @@
         </insert>
 
         <!-- Madzia -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="10016" />
+            <column name="text" value="Focus EVOCATION" />
+        </insert>
+
+        <insert tableName="prerequisite_schools">
+            <column name="prerequisite_id" value="10016" />
+            <column name="schools_id" value="5" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="92" />
             <!-- Spell Focus [General] -->
-            <column name="selected_id" value="1051" /> 
+            <column name="selected_id" value="10016" /> 
             <!-- EVOCATION  -->
         </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="10017" />
+            <column name="text" value="Focus SpellCraft" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10017" />
+            <column name="prerequisite_skill_id" value="273" />
+        </insert>
+
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="90" />
             <!-- Skill Focus [General] -->
-            <column name="selected_id" value="1052" /> 
+            <column name="selected_id" value="10017" /> 
             <!-- SPELLCRAFT  -->
         </insert>
+        
         <insert tableName="feats_pc">
             <column name="character_card_id" value="105" />
             <column name="feats_id" value="75" />

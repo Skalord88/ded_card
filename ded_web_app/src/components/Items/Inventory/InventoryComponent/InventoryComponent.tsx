@@ -1,5 +1,6 @@
 import { Inventory } from "../../../interfaces";
 import { CharToModify } from "../../../Prerequisite/functions/modifyCharacter";
+import { calculateInventoryWeight, calculateWeight } from "../function";
 import {
   ArmorInventoryComponent,
   MiniArmorInventoryComponent
@@ -16,13 +17,17 @@ import { WeightInventoryComponent } from "./WeightInventoryComponent";
 
 export type InventoryComponentProps = {
   char: CharToModify;
-  carrying: [string, number];
 };
 
 export const InventoryComponent: React.FC<InventoryComponentProps> = ({
-  char,
-  carrying
+  char
 }) => {
+  const weight: number = calculateInventoryWeight(char.inventory);
+  const carrying: [string, number] = calculateWeight(
+    char.abilitys.strength,
+    char.size.id,
+    weight
+  );
   const inventory: Inventory = char.inventory
   return (
     <>

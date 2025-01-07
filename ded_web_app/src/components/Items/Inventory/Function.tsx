@@ -1,12 +1,14 @@
 import { CharacterPc, Inventory } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
+import { noneArmor, noneShield, noneWeapon } from "../../variables";
 import { reMaterialArmType, reMaterialFailure, reMaterialMaxDex, reMaterialPenality, reMaterialWeight } from "../Material/function";
 
 export const modifyInventory = (char: CharacterPc): Inventory => {
   const inventory: Inventory = char.inventory;
+
   return {
     ...inventory,
-    armor: {
+    armor: inventory.armor ? {
       ...inventory.armor,
       armorType: reMaterialArmType(
         inventory.armor.material,
@@ -19,35 +21,35 @@ export const modifyInventory = (char: CharacterPc): Inventory => {
       penality: reMaterialPenality(inventory.armor.material, inventory.armor.penality, inventory.armor.enchantment ? true : false),
       maxDex: reMaterialMaxDex(inventory.armor.material, inventory.armor.maxDex),
       failure: reMaterialFailure(inventory.armor.material, inventory.armor.failure)
-    },
-    shield: {
+    }  : noneArmor,
+    shield: inventory.shield ? {
       ...inventory.shield,
       weight: reMaterialWeight(
         inventory.armor.material,
         reWeightItem(char.race.size.id, inventory.shield.weight)
       ),
       penality: reMaterialPenality(inventory.shield.material, inventory.shield.penality, inventory.shield.enchantment ? true : false)
-    },
-    weaponOne: {
+    } : noneShield,
+    weaponOne: inventory.weaponOne ? {
       ...reSizeWeapon(char.race.size, inventory.weaponOne),
       weight: reWeightItem(char.race.size.id, inventory.weaponOne.weight)
-    },
-    weaponTwo: {
+    } : noneWeapon,
+    weaponTwo: inventory.weaponTwo ? {
       ...reSizeWeapon(char.race.size, inventory.weaponTwo),
       weight: reWeightItem(char.race.size.id, inventory.weaponTwo.weight)
-    },
-    weaponThree: {
+    }  : noneWeapon,
+    weaponThree: inventory.weaponThree ? {
       ...reSizeWeapon(char.race.size, inventory.weaponThree),
       weight: reWeightItem(char.race.size.id, inventory.weaponThree.weight)
-    },
-    weaponFour: {
+    } : noneWeapon,
+    weaponFour: inventory.weaponFour ? {
       ...reSizeWeapon(char.race.size, inventory.weaponFour),
       weight: reWeightItem(char.race.size.id, inventory.weaponFour.weight)
-    },
-    weaponFive: {
-      ...reSizeWeapon(char.race.size, inventory.weaponFive),
+    } : noneWeapon,
+    weaponFive: inventory.weaponFive ? {
+      ...reSizeWeapon(char.race.size, inventory.weaponFive) ,
       weight: reWeightItem(char.race.size.id, inventory.weaponFive.weight)
-    }
+    } : noneWeapon
   };
 };
 

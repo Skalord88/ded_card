@@ -18,12 +18,12 @@ public class ModifierBonus implements Serializable {
   ModifierEnum modifier;
   int bonus;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  ModifierEnum[] targets;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ModifierEnum[] targets;
 
   public ModifierBonus(ModifierDTO mod) {
     this.modifier = mod.modifier;
     this.bonus = mod.bonus;
-    this.targets = mod.targets;
+    // this.targets = mod.targets;
   }
 }

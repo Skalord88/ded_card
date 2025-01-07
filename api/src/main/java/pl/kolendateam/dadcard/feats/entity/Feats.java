@@ -35,9 +35,6 @@ public class Feats implements Serializable {
   String normal;
   String special;
 
-  // @JdbcTypeCode(SqlTypes.JSON)
-  // Set<ModifierBonus> modifiers = new HashSet<>();
-
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(
     name = "modifiers_id",

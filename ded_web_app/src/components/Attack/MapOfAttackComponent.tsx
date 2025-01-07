@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { DiceText } from "../Dice/Functions";
 import { SignNumber } from "../functions";
 import { D20PopupWeapon } from "../Popup/DicePopup/D20PopupWeapon";
@@ -26,10 +25,6 @@ export type AttackGridProps = {
 };
 
 export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
-  // const [useBuckeler, setUseBuckeler] = useState<boolean>(false);
-  // const checkBuckelr = () => {
-  //   setUseBuckeler(!useBuckeler);
-  // };
 
   const chceckBuckler = (type: string, show: DisplayAttType) => {
     if (
@@ -81,7 +76,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                               {SignNumber(
                                 att + chceckBuckler(dis.type, weapon.display)
                               )}
-                              {att + chceckBuckler(dis.type, weapon.display)}{" "}
+                              {Math.floor(att + chceckBuckler(dis.type, weapon.display))}{" "}
                             </span>
                           ))}
                           <span>
@@ -129,7 +124,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                             {SignNumber(
                               att + chceckBuckler(dis.type, weapon.display)
                             )}
-                            {att + chceckBuckler(dis.type, weapon.display)}{" "}
+                            {Math.floor(att + chceckBuckler(dis.type, weapon.display))}{" "}
                           </span>
                         ))}
                         <span>

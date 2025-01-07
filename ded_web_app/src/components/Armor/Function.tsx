@@ -5,6 +5,8 @@ import { ArmorList } from "./interface/ArmorInterface";
 
 export function calculateArmorInChar(char: CharToModify): ArmorList {
   
+  const enchArmor: number = char.inventory.armor.enchantmentBonus ? char.inventory.armor.enchantmentBonus : 0;
+  const enchShield: number = char.inventory.shield.enchantmentBonus ? char.inventory.shield.enchantmentBonus : 0;
   const size: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.sizeBonus ?? 0) + tot : tot, 0);
   const natural: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.naturalArmor ?? 0) + tot : tot, 0);
   const dodge: number = char.armor.mono.reduce((tot, armor) => armor ? (armor.dodgeBonus ?? 0) + tot : tot, 0);
@@ -15,7 +17,7 @@ export function calculateArmorInChar(char: CharToModify): ArmorList {
   armorList.push({
     signNum: signAndCount([
     char.inventory.armor.modifiers?.armorClass.armorBonus,
-    char.inventory.armor.enchantment.reduce((tot, enc) => tot + (enc.modifiers?.armorClass?.enhancementBonuses?? 0) , 0)
+    enchArmor
     ]),
     text: "armor",
     item: char.inventory.armor.name
@@ -24,7 +26,7 @@ export function calculateArmorInChar(char: CharToModify): ArmorList {
   armorList.push({
     signNum: signAndCount([
     char.inventory.shield.modifiers?.armorClass.shieldBonus,
-    char.inventory.shield.enchantment.reduce((tot, enc) => tot + (enc.modifiers?.armorClass?.enhancementBonuses?? 0) , 0)
+    enchShield
     ]),
     text: "shield",
     item: char.inventory.shield.name

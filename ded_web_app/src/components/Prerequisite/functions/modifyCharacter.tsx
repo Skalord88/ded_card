@@ -11,6 +11,7 @@ import {
   Inventory,
   SpecialAttacks
 } from "../../interfaces";
+import { modifyInventory } from "../../Items/Inventory/function";
 import { adjClass } from "../../Race/AdjClass";
 import { FindAllAdjLevel } from "../../Race/Function";
 import { CountSavingThrowFromClassPc } from "../../Saving/Functions";
@@ -20,7 +21,7 @@ import { createSkillsList } from "../../Skills/functions/function";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillsInList } from "../../Skills/interface/SkillsInList";
 import { Speed } from "../../Speed/interface";
-import { emptyInventory } from "../../variables";
+import { emptyAttacks, emptyInventory } from "../../variables";
 import {
   CountHitDicesFromAdj,
   CountHitDicesFromClassPc,
@@ -83,6 +84,8 @@ export type CharToModify = {
   feats: FeatsFromChar
 };
 
+// aggiungi un controllo che trovi i prerequisiti in feats
+
 export const modifyCharacter = (
   char: CharacterPc,
   prer: Prerequisite[]
@@ -111,7 +114,7 @@ export const modifyCharacter = (
       CountHitDicesFromClassPc(char.classPcList)
     ),
     armor: findArmorPrerequisite(prer),
-    inventory: emptyInventory,
+    inventory: modifyInventory(char),
     attacks: char.attacks,
     skills: findSkillsPrerequisite(prer),
     skillsList: createSkillsList(char),

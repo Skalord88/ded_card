@@ -11,6 +11,7 @@ import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @NoArgsConstructor
@@ -19,6 +20,7 @@ public class EnchantedItemsDTO {
   public int id;
   public Object item;
   public String name;
+  public WeaponNumericEnum damage;
   public List<EnchantmentDTO> enchantment;
   public MaterialEnum material;
   public PrerequisiteDTO modifiers;
@@ -28,6 +30,7 @@ public class EnchantedItemsDTO {
   public EnchantedItemsDTO(EnchantedItems enchantedItems) {
     this.id = enchantedItems.getId();
     this.name = enchantedItems.getName();
+    this.damage = enchantedItems.getDamage();
 
     if (enchantedItems.getItem() != null) {
       if (enchantedItems.getItem() instanceof Armors) {

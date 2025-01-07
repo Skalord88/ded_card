@@ -7,7 +7,7 @@ import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { Weapon } from "../../interfaces";
 
 export const getWeaponEnchTargetMod = (w: Weapon): AttackRoll[] => {
-  return w.enchantment.flatMap((ench) =>
+  return w.enchantment?.flatMap((ench) =>
     ench.modifiers?.attackRoll?.target !== null ? w.modifiers?.attackRoll : []
   ) as AttackRoll[];
 };

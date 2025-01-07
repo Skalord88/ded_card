@@ -23,7 +23,7 @@ export function SetEnchantemtOnItem(
 //   return list.filter(enchantment => enchantment.id === 0);
 // }
 
-export function EnchantedName(item: Armor | Shield | Weapon): string {
+export const enchantedName = (item: Armor | Shield | Weapon): string => {
   let itemName: string = item.name;
   if (item) {
     if (item.enchantment) {
@@ -32,18 +32,18 @@ export function EnchantedName(item: Armor | Shield | Weapon): string {
           ? itemName + " " + FormattingText(ench.ability)
           : ""
       );
-      item.enchantment.forEach((ench) => {
-        if (ench.ability === null && ench.enchantment < 0)
-          return itemName + " pft";
-        else if (ench.ability === null && ench.enchantment > 0)
-          return itemName + " +" + ench.enchantment;
-      });
+      // item.enchantment.forEach((ench) => {
+      //   if (ench.ability === null && ench.enchantment !== null && ench.enchantment.bonus < 0)
+      //     return itemName + " pft";
+      //   else if (ench.ability === null && ench.enchantment !== null && ench.enchantment.bonus > 0)
+      //     return itemName + " +" + ench.enchantment;
+      // });
     }
   }
   return itemName;
 }
 
-export function OnlyEnchantedName(enchantment: number): string {
+export const onlyEnchantedName = (enchantment: number): string => {
   if (enchantment < 0) {
     return "pft";
   } else if (enchantment === 0) {

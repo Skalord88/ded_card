@@ -32,6 +32,7 @@ public class ShieldsDTO {
   public int penality;
   public int failure;
   public String description;
+  public Integer enchantmentBonus;
   public List<EnchantmentDTO> enchantment;
   public MaterialEnum material;
 
@@ -78,6 +79,8 @@ public class ShieldsDTO {
     this.failure = shieldDTO.failure;
     this.description = shieldDTO.description;
     this.material = item.getMaterial();
+    this.enchantmentBonus =
+      item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =
       item.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())

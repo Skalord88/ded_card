@@ -44,6 +44,7 @@ public class WeaponsDTO implements Serializable {
   public SpecialAttacksDTO specialAttacks;
   public String description;
   public MaterialEnum material;
+  public Integer enchantmentBonus;
   public List<EnchantmentDTO> enchantment;
 
   public WeaponsDTO(Weapons item) {
@@ -88,7 +89,8 @@ public class WeaponsDTO implements Serializable {
     this.weaponName = weaponDTO.weaponName;
     this.modifiers = weaponDTO.modifiers;
     this.cost = weaponDTO.cost;
-    this.damage = weaponDTO.damage;
+    this.damage =
+      item.getDamage() != null ? item.getDamage() : weaponDTO.damage;
     this.critical = weaponDTO.critical;
     this.range = weaponDTO.range;
     this.description = weaponDTO.description;
@@ -106,6 +108,8 @@ public class WeaponsDTO implements Serializable {
     this.specialAttacks = weaponDTO.specialAttacks;
     this.description = weaponDTO.description;
     this.material = item.getMaterial();
+    this.enchantmentBonus =
+      item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =
       item.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())

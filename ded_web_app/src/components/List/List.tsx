@@ -32,7 +32,7 @@ export const ListOfSomething: React.FC<ListProps> = ({
                     key={index}
                     onClick={() => handleSelect({ item: i, name: text })}
                   >
-                    {/* { EnchantedName(i)} */}
+                    {/* { enchantedName(i)} */}
                      {i.subRacesName} {i.featName}{" "}
                     {i.characterFeatName}
                   </li>

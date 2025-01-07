@@ -11,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 
 @Getter
 @Setter
@@ -39,9 +41,14 @@ public class EnchantedItems implements Serializable {
 
   String name;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "items_id", referencedColumnName = "id")
   Items item;
+
+  @Enumerated(EnumType.STRING)
+  WeaponNumericEnum damage;
+
+  Integer enchantmentBonus;
 
   @ManyToMany
   @JoinTable(

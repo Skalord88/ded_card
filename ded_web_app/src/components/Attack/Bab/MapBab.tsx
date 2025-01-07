@@ -43,28 +43,12 @@ export const MapBab: React.FC<MapBabProps> = ({
   };
   const attacksIncrements = getIncrements(bab);
 
-  const mono: number = weapon.enchantment.reduce(
-    (tot, en) =>
-      en.modifiers?.attackRoll?.target === null
-        ? tot < Number(en.modifiers?.attackRoll.bonus)
-          ? Number(en.modifiers?.attackRoll.bonus)
-          : tot
-        : tot,
-    0
-  );
+  const mono: number = weapon.enchantmentBonus? weapon.enchantmentBonus : 0;
   
   const strAttEnchanted: number = mono + strenghtAtt;
   const dexAttEnchanted: number = mono + dexterityAtt;
 
-  const monoDmg: number = weapon.enchantment.reduce(
-    (tot, en) =>
-      en.modifiers?.attackRoll?.target === null
-        ? tot < Number(en.modifiers?.damageBonus)
-          ? Number(en.modifiers?.damageBonus)
-          : tot
-        : tot,
-    0
-  );
+  const monoDmg: number = weapon.enchantmentBonus? weapon.enchantmentBonus : 0
 
   const twoHandDmg: number = position.twoHanded
     ? strenght + Math.floor(strenght / 2) + monoDmg
@@ -75,8 +59,6 @@ export const MapBab: React.FC<MapBabProps> = ({
   // const critWeapon: Weapon = ChangeCritWithFeat(weapon,
   //   FindWeaponToModified(specific[2], weapon).find
   // )
-
-  console.log(weapon.enchantment)
 
   return (
     <div style={{ display: "grid" }}>

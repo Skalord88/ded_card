@@ -23,13 +23,11 @@ import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
 import { SavingThrowComponent } from "../components/SavingThrowComponent";
 import { HpComponent } from "../components/HpComponent";
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import {
-  calculateInventoryWeight,
-  calculateWeight,
-  modifyInventory
-} from "../components/Items/Inventory/function";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
-import { createAttackDisplay, modifyAttacks } from "../components/Attack/function";
+import {
+  createAttackDisplay,
+  modifyAttacks
+} from "../components/Attack/function";
 import { InventoryComponent } from "../components/Items/Inventory/InventoryComponent/InventoryComponent";
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
@@ -112,22 +110,11 @@ export const Show = () => {
         }
       });
   });
-
-  // add to modChar
+  console.log(modif)
   modChar = modifyCharacter(char, modif);
 
-  modChar.inventory = modifyInventory(char);
   modChar.attacks = modifyAttacks(modChar);
-  modChar.displayAttType = createAttackDisplay(modChar)
-
-  // const speed: number = FindInOneLengthModifier(modifications, "SPEED");
-
-  const weight: number = calculateInventoryWeight(modChar.inventory);
-  const carrying: [string, number] = calculateWeight(
-    char.abilitys.strength,
-    char.race.size.id,
-    weight
-  );
+  modChar.displayAttType = createAttackDisplay(modChar);
 
   return (
     <>
@@ -143,7 +130,7 @@ export const Show = () => {
           <HpComponent char={modChar} />
           <CharacterArmor char={modChar} />
           <MapOfAttackComponent char={modChar} />
-          <InventoryComponent char={modChar} carrying={carrying} />
+          <InventoryComponent char={modChar} />
           <SkillShowComponent char={modChar} />
           <SpeedComponent char={modChar} />
           <FeatsComponent char={modChar} />
@@ -263,10 +250,7 @@ export const Show = () => {
                 gridRow: 8
               }}
             >
-              <InventoryComponent
-                char={modChar}
-                carrying={carrying}
-              />
+              <InventoryComponent char={modChar} />
             </div>
             <div
               key="skills"
@@ -296,7 +280,7 @@ export const Show = () => {
                 gridRow: 11
               }}
             >
-              <FeatsComponent char={modChar} /> 
+              <FeatsComponent char={modChar} />
             </div>
           </div>
         </>

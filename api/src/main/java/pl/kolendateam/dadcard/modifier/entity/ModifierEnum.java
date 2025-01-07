@@ -52,6 +52,8 @@ public enum ModifierEnum {
   OPPORTUNITY,
 
   // attack
+  MELEE,
+  DISTANCE,
   GRAPPLE,
   BULL_RUSH,
   DISARM,

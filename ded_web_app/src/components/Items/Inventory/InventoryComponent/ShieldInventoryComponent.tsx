@@ -2,6 +2,7 @@ import { FormattingText } from "../../../Formatting/Function";
 import { signAndCount, SignNumberEnchant } from "../../../functions";
 import { Shield } from "../../../interfaces";
 import { Popup } from "../../../Popup/Popup";
+import { getPerfectString } from "./WeaponsInventoryComponent";
 
 export type ShieldInventoryComponentProps = {
   shield: Shield;
@@ -10,7 +11,7 @@ export type ShieldInventoryComponentProps = {
 export const ShieldInventoryComponent: React.FC<
   ShieldInventoryComponentProps
 > = ({ shield }) => {
-  const enchList: number[] = shield.enchantment.flatMap(ench => ench.enchantment)
+  const enchList: string = shield.enchantmentBonus ? ("+" + shield.enchantmentBonus) : shield.enchantment? getPerfectString(shield.enchantment) : ""
   return (
     <>
       <div style={{ gridColumn: 1 }}>
@@ -26,7 +27,7 @@ export const ShieldInventoryComponent: React.FC<
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
         <p>
-          {SignNumberEnchant(enchList[0])}
+          {enchList}
         </p>
       </div>
 

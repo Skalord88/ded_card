@@ -1,9 +1,9 @@
 import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
-import { EnchantedName, OnlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
+import { enchantedName, onlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, Weapon, WonderousItem, subRaces } from "./interfaces";
+import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
 
 export function SignNumber(
     number: number
@@ -400,7 +400,7 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
 
             o => {
                 return {
-                    name: EnchantedName(o),
+                    name: enchantedName(o),
                     item: o as Armor | Shield | Weapon | WonderousItem
                 }
             }
@@ -411,7 +411,7 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
         let list: itemInDrop[] = options.map(
             o => {
                 return {
-                    name: OnlyEnchantedName(o.enchantment),
+                    name: onlyEnchantedName(o.enchantment),
                     item: o as Enchantment
                 }
             }

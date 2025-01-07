@@ -18,7 +18,7 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   let results: { dice: number; value: number }[] = [];
 
   for (let i = 0; i < dices.length; i++) {
-    results.push({ dice: dices[i], value: values[i] });
+    results.push({ dice: dices[i], value: Math.floor(values[i]) });
   }
 
   return (

@@ -14,11 +14,6 @@
             <column name="weapon_id_three" value="1005" />
             <column name="weapon_id_four" value="1006" />
             <column name="weapon_id_five" value="2" />
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
         <insert tableName="inventory">
             <column name="id" value="101" />
@@ -26,14 +21,9 @@
             <column name="shield_id" value="1014" />
             <column name="weapon_id_one" value="1011" />
             <column name="weapon_id_two" value="1012" />
-            <column name="weapon_id_three" value="3" />
+            <column name="weapon_id_three" value="7" />
             <column name="weapon_id_four" value="2" />
             <column name="weapon_id_five" value="1" />
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
         <!-- Niesia -->
         <insert tableName="inventory">
@@ -45,11 +35,6 @@
             <column name="weapon_id_three" value="1025" />
             <column name="weapon_id_four" value="1026" />
             <column name="weapon_id_five" value="1027" />
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
         <!-- Michał -->
         <insert tableName="inventory">
@@ -58,62 +43,31 @@
             <column name="shield_id" value="1032" />
             <column name="weapon_id_one" value="1033" />
             <column name="weapon_id_two" value="1034" />
-            <column name="weapon_id_three" value="1035" />
+            <column name="weapon_id_three" value="7" />
             <column name="weapon_id_four" value="5" />
-            <column name="weapon_id_five" value="8" />
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
+            <column name="weapon_id_five" value="2" />
         </insert>
         <!-- Andrzej -->
         <insert tableName="inventory">
             <column name="id" value="104" />
-            <!-- <column name="armor_id" value="1001" /> -->
-            <!-- <column name="shield_id" value="1002" /> -->
             <column name="weapon_id_one" value="1041" />
             <column name="weapon_id_two" value="1042" />
             <column name="weapon_id_three" value="1" />
-            <!-- <column name="weapon_id_four" value="1" />
-            <column name="weapon_id_five" value="1" /> -->
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
         <!-- Magda -->
         <insert tableName="inventory">
             <column name="id" value="105" />
-            <!-- <column name="armor_id" value="1001" /> -->
-            <!-- <column name="shield_id" value="1002" /> -->
             <column name="weapon_id_one" value="1051" />
             <column name="weapon_id_two" value="1052" />
             <column name="weapon_id_three" value="1" />
-            <!-- <column name="weapon_id_four" value="1" />
-            <column name="weapon_id_five" value="1" /> -->
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
         <!-- Mirek -->
         <insert tableName="inventory">
             <column name="id" value="106" />
             <column name="armor_id" value="1061" />
-            <!-- <column name="shield_id" value="1002" /> -->
             <column name="weapon_id_one" value="30000" />
             <column name="weapon_id_two" value="1062" />
             <column name="weapon_id_three" value="1" />
-            <!-- <column name="weapon_id_four" value="1" />
-            <column name="weapon_id_five" value="1" /> -->
-            <!-- <column name="head_id" value="4" />
-            <column name="neck_id" value="4" />
-            <column name="arms_id" value="4" />
-            <column name="cloth_id" value="4" />
-            <column name="legs_id" value="4" /> -->
         </insert>
     </changeSet>
 </databaseChangeLog>

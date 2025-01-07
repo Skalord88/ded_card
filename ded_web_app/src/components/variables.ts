@@ -22,7 +22,8 @@ export const noneArmor: Armor = {
     failure: 0,
     material: null,
     enchantment: [],
-    itemId: 0
+    itemId: 0,
+    enchantmentBonus: 0
 }
 
 export const noneShield: Shield = {
@@ -40,7 +41,8 @@ export const noneShield: Shield = {
     failure: 0,
     material: null,
     enchantment: [],
-    itemId: 0
+    itemId: 0,
+    enchantmentBonus: 0
 }
 
 export const noneWeapon: Weapon = {
@@ -60,7 +62,8 @@ export const noneWeapon: Weapon = {
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
     specialAttacks: null,
     material: null,
-    enchantment: []
+    enchantment: [],
+    enchantmentBonus: 0
 }
 
 export const noneItem: WonderousItem = {
@@ -80,7 +83,8 @@ export const emptyEnchanted: EnchantedItem = {
     material: "",
     modifiers: null,
     cost: 0,
-    description: ""
+    description: "",
+    enchantmentBonus: 0
 }
 
 export const emptyInventory: Inventory = {

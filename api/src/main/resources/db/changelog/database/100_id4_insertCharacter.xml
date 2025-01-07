@@ -35,7 +35,7 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 14,
-                &quot;dexterity&quot;: 17, 
+                &quot;dexterity&quot;: 18, 
                 &quot;constitution&quot;: 12, 
                 &quot;intelligence&quot;: 10, 
                 &quot;wisdom&quot;: 13, 

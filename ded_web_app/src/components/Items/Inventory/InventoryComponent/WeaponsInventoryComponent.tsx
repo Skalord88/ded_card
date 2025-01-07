@@ -5,7 +5,7 @@ import {
   SignNumberEnchant,
   weaponTwoHanded
 } from "../../../functions";
-import { Weapon } from "../../../interfaces";
+import { Enchantment, Weapon } from "../../../interfaces";
 import { getWeaponEnchTargetMod } from "../../../Popup/DicePopup/D20PopupWeapon";
 import { Popup } from "../../../Popup/Popup";
 
@@ -17,15 +17,20 @@ export type WeaponsInventoryComponentProps = {
   weapon5: Weapon;
 };
 
+export const getPerfectString = (list: Enchantment[]): string => {
+  if(list.some(ench => "PERFECT".includes(ench.ability))) return "pft"
+  return ""
+}
+
 export const WeaponsInventoryComponent: React.FC<
   WeaponsInventoryComponentProps
 > = ({ weapon1, weapon2, weapon3, weapon4, weapon5 }) => {
 
-  const enchList1: number[] = weapon1.enchantment.flatMap(ench => ench.enchantment)
-  const enchList2: number[] = weapon2.enchantment.flatMap(ench => ench.enchantment)
-  const enchList3: number[] = weapon3.enchantment.flatMap(ench => ench.enchantment)
-  const enchList4: number[] = weapon4.enchantment.flatMap(ench => ench.enchantment)
-  const enchList5: number[] = weapon5.enchantment.flatMap(ench => ench.enchantment)
+  const enchList1: string = weapon1.enchantmentBonus ? ("+" + weapon1.enchantmentBonus) : weapon1.enchantment? getPerfectString(weapon1.enchantment) : ""
+  const enchList2: string = weapon2.enchantmentBonus ? ("+" + weapon1.enchantmentBonus) : weapon1.enchantment? getPerfectString(weapon1.enchantment) : ""
+  const enchList3: string = weapon3.enchantmentBonus ? ("+" + weapon1.enchantmentBonus) : weapon1.enchantment? getPerfectString(weapon1.enchantment) : ""
+  const enchList4: string = weapon4.enchantmentBonus ? ("+" + weapon1.enchantmentBonus) : weapon1.enchantment? getPerfectString(weapon1.enchantment) : ""
+  const enchList5: string = weapon5.enchantmentBonus ? ("+" + weapon1.enchantmentBonus) : weapon1.enchantment? getPerfectString(weapon1.enchantment) : ""
 
   return (
     <>
@@ -49,11 +54,16 @@ export const WeaponsInventoryComponent: React.FC<
       </div>
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
-        <p>{SignNumberEnchant(enchList1[0])}</p>
-        <p>{SignNumberEnchant(enchList2[0])}</p>
-        <p>{SignNumberEnchant(enchList3[0])}</p>
-        <p>{SignNumberEnchant(enchList4[0])}</p>
-        <p>{SignNumberEnchant(enchList5[0])}</p>
+        <p>{enchList1}</p>
+        <p>{enchList2}</p>
+        <p>{enchList3}</p>
+        <p>{enchList4}</p>
+        <p>{enchList5}</p>
+        {/* <p>{SignNumberEnchant(enchList1)}</p>
+        <p>{SignNumberEnchant(enchList2)}</p>
+        <p>{SignNumberEnchant(enchList3)}</p>
+        <p>{SignNumberEnchant(enchList4)}</p>
+        <p>{SignNumberEnchant(enchList5)}</p> */}
       </div>
       <div style={{ gridColumn: 4 }}>
         <p style={{ backgroundColor: "grey" }}>Crit</p>

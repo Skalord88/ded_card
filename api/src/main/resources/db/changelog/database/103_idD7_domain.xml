@@ -27,20 +27,20 @@
             <column name="granted_power"
                 value="You gain the smite power, the supernatural ability to make a single melee attack with a +4 attack bonus and a damage bonus equal to your cleric level (if you hit). You must declare the smite before making the attack. It is usable once per day." />
             <column name="list_of_spells" value="[]" />
-            <column name="modifiers" value="[]" />
+            <!-- <column name="modifiers" value="[]" /> -->
         </insert>
         <insert tableName="domains">
             <column name="domain" value="Storm" />
             <column name="granted_power" value="You gain electricity resistance 5." />
             <column name="list_of_spells" value="[]" />
-            <column name="modifiers"
+            <!-- <column name="modifiers"
                 value="[
             {
             &quot;modifier&quot; : &quot;RESISTANCE&quot;,            
             &quot;bonus&quot; : 5,            
             &quot;targets&quot; : [&quot;ELECTRICITY&quot;]            
             }
-            ]" />
+            ]" /> -->
         </insert>
     </changeSet>
 </databaseChangeLog>
