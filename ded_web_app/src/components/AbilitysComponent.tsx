@@ -11,7 +11,7 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
       value: abilitys.strength,
       bonusSing: signAndCount([BonusAbilities(abilitys, "STR")]).sign,
       bonus: BonusAbilities(abilitys, "STR"),
-      color: abilityBackgroundColor('STRENGHT')
+      color: abilityBackgroundColor('STRENGTH')
     },
     {
       id: 2,

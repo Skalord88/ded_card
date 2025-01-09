@@ -1303,7 +1303,7 @@
             <column name="armor_name" value="PADDED" />
             <column name="cost" value="5" />
             <column name="weight" value="10" />
-            <column name="modifiers_id" value="50001" />
+            <column name="modifiers_id" value="52001" />
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="8" />
             <column name="penality" value="0" />
@@ -1318,7 +1318,7 @@
             <column name="armor_name" value="LEATHER" />
             <column name="cost" value="10" />
             <column name="weight" value="15" />
-            <column name="modifiers_id" value="50002" />
+            <column name="modifiers_id" value="52002" />
             <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="6" />
@@ -1334,7 +1334,7 @@
             <column name="armor_name" value="STUDDED_LEATHER" />
             <column name="cost" value="25" />
             <column name="weight" value="20" />
-            <column name="modifiers_id" value="50003" />
+            <column name="modifiers_id" value="52003" />
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="5" />
             <column name="penality" value="-1" />
@@ -1349,7 +1349,7 @@
             <column name="armor_name" value="CHAIN_SHIRT" />
             <column name="cost" value="100" />
             <column name="weight" value="25" />
-            <column name="modifiers_id" value="50004" />
+            <column name="modifiers_id" value="52004" />
             <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="4" />
@@ -1366,7 +1366,7 @@
             <column name="armor_name" value="HIDE" />
             <column name="cost" value="15" />
             <column name="weight" value="25" />
-            <column name="modifiers_id" value="50003" />
+            <column name="modifiers_id" value="52003" />
             <!-- <column name="armor_class" value="3" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="4" />
@@ -1382,7 +1382,7 @@
             <column name="armor_name" value="SCALE_MAIL" />
             <column name="cost" value="50" />
             <column name="weight" value="30" />
-            <column name="modifiers_id" value="50004" />
+            <column name="modifiers_id" value="52004" />
             <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="3" />
@@ -1398,7 +1398,7 @@
             <column name="armor_name" value="CHAINMAIL" />
             <column name="cost" value="150" />
             <column name="weight" value="40" />
-            <column name="modifiers_id" value="50005" />
+            <column name="modifiers_id" value="52005" />
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="2" />
             <column name="penality" value="-5" />
@@ -1413,7 +1413,7 @@
             <column name="armor_name" value="BREASTPLATE" />
             <column name="cost" value="200" />
             <column name="weight" value="30" />
-            <column name="modifiers_id" value="50005" />
+            <column name="modifiers_id" value="52005" />
             <!-- <column name="armor_class" value="5" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="3" />
@@ -1430,7 +1430,7 @@
             <column name="armor_name" value="SPLINT_MAIL" />
             <column name="cost" value="200" />
             <column name="weight" value="45" />
-            <column name="modifiers_id" value="50006" />
+            <column name="modifiers_id" value="52006" />
             <!-- <column name="armor_class" value="6" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="0" />
@@ -1446,7 +1446,7 @@
             <column name="armor_name" value="BANDED_MAIL" />
             <column name="cost" value="250" />
             <column name="weight" value="35" />
-            <column name="modifiers_id" value="50006" />
+            <column name="modifiers_id" value="52006" />
             <!-- <column name="armor_class" value="6" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="1" />
@@ -1462,7 +1462,7 @@
             <column name="armor_name" value="HALF_PLATE" />
             <column name="cost" value="600" />
             <column name="weight" value="50" />
-            <column name="modifiers_id" value="50007" />
+            <column name="modifiers_id" value="52007" />
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="0" />
             <column name="penality" value="-7" />
@@ -1477,7 +1477,7 @@
             <column name="armor_name" value="FULL_PLATE" />
             <column name="cost" value="1500" />
             <column name="weight" value="50" />
-            <column name="modifiers_id" value="50008" />
+            <column name="modifiers_id" value="52008" />
             <!-- <column name="armor_class" value="8" /> -->
             <column name="armor_type" value="HEAVY_ARMOR" />
             <column name="max_dex" value="1" />

@@ -1,8 +1,7 @@
 export const abilityBackgroundColor = (skillAbility : string) => {
     switch (skillAbility.toUpperCase()) {
-        
-        case 'STRENGHT':
-            return 'rpgui-container-framed-grey-mini strenght';
+        case 'STRENGTH':
+            return 'rpgui-container-framed-grey-mini strength';
         case 'DEXTERITY':
             return 'rpgui-container-framed-grey-mini dexterity';
         case 'CONSTITUTION':

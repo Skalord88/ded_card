@@ -937,6 +937,14 @@
       <column name="feat_id" value="221" />
     </insert>
 
+    <!-- Greater Weapon Focus [General] mod -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="1023" />
+      <column name="attack_roll" value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text" value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="41" />
       <column name="feat_name" value="Greater Weapon Focus [General]" />
@@ -948,6 +956,7 @@
       <column name="special"
         value="You can gain Greater Weapon Focus multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
       <column name="prerequisite_list_id" value="21" />
+      <column name="modifiers_id" value="1023" />
     </insert>
 
     <!-- Greater Weapon Specialization [General] pre -->
@@ -972,6 +981,14 @@
       <column name="feat_id" value="107" />
     </insert>
 
+    <!-- Greater Weapon Specialization [General] mod -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="1022" />
+      <column name="damage_bonus" value="{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text" value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="42" />
       <column name="feat_name" value="Greater Weapon Specialization [General]" />
@@ -979,6 +996,7 @@
         value="Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus
       with selected weapon, Weapon Specialization with selected weapon, fighter level 12th." /> -->
       <column name="prerequisite_list_id" value="22" />
+      <column name="modifiers_id" value="1022" />
       <column name="benefit"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus stacks with other bonuses on damage rolls, including the one from Weapon Specialization (see below)." />
       <column name="normal" value="null" />
@@ -1562,14 +1580,6 @@
         }]" /> -->
     </insert>
 
-    <!-- Martial Weapon Proficiency [General] toSelect -->
-
-    <insert tableName="prerequisite">
-      <column name="id" value="37" />
-      <column name="weapon_type" value="[ &quot;MARTIAL&quot; ]" />
-      <column name="text" value="Martial Weapon Proficiency." />
-    </insert>
-
     <!-- Martial Weapon Proficiency [General] selected -->
 
         <insert tableName="prerequisite">
@@ -1631,12 +1641,6 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Mobility as one of his fighter bonus feats." />
-      <!-- <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;DODGE_BONUS&quot;,
-        &quot;bonus&quot; : 4,
-        &quot;targets&quot; : [&quot;OPPORTUNITY&quot;]
-        }]" /> -->
     </insert>
 
     <!-- Mounted Archery [General] pre -->
@@ -1764,7 +1768,7 @@
       <column name="modifiers_id" value="1017" />
     </insert>
 
-    <!-- Persuasive [General] -->
+    <!-- Persuasive [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1018" />
       <column name="text" value="+2 Bluff and Intimidate" />
@@ -1790,6 +1794,16 @@
       <column name="modifiers_id" value="1018" />
     </insert>
 
+    <!-- Point Blank Shot [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1019" />
+      <column name="attack_roll" value="{
+        &quot;bonus&quot; : 1,
+        &quot;target&quot;: [&quot;SHORT_RANGE&quot;]
+      }" />
+      <column name="text" value="+1 attack roll and damage within 9m" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="75" />
       <column name="feat_name" value="Point Blank Shot [General]" />
@@ -1799,12 +1813,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Point Blank Shot as one of his fighter bonus feats." />
-      <!-- <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-        &quot;bonus&quot; : 1,
-        &quot;targets&quot; : [&quot;POINT_BLANK_SHOT&quot;]
-        }]" /> -->
+      <column name="modifiers_id" value="1019" />
     </insert>
 
     <!-- Power Attack [General] pre -->
@@ -2061,12 +2070,6 @@
       <column name="special"
         value="All characters except for druids, monks, and wizards are automatically proficient with all simple weapons. They need not select this feat." />
       <column name="to_select_id" value="2005" />
-      <!-- <column name="modifiers"
-        value="[{
-          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" /> -->
     </insert>
 
     <insert tableName="feats">
@@ -2359,20 +2362,21 @@
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
     </insert>
 
+    <!-- Weapon Focus [General] mod -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="1020" />
+      <column name="attack_roll" value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="107" />
       <column name="feat_name" value="Weapon Focus [General]" />
-      <!-- <column name="prerequisites" value="Proficiency with selected weapon, base attack bonus
-      +1." /> -->
       <column name="prerequisite_list_id" value="53" />
+      <column name="modifiers_id" value="1020" />
       <column name="benefit"
         value="You gain a +1 bonus on all attack rolls you make using the selected weapon." />
-      <!-- <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;ATTACK_ROLL&quot;,
-        &quot;bonus&quot; : 1,
-        &quot;targets&quot; : [&quot;SELECTED&quot;]
-      }]" /> -->
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
@@ -2393,6 +2397,15 @@
       <column name="feat_id" value="107" />
     </insert>
 
+    <!-- Weapon Specialization [General] MOD -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1021" />
+      <column name="damage_bonus" value="{
+        &quot;bonus&quot; : 2 , &quot;target&quot; : [ &quot;SELECTED&quot; ]
+      }" />
+      <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="108" />
       <column name="feat_name" value="Weapon Specialization [General]" />
@@ -2404,7 +2417,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
-      <column name="modifiers_id" value="74" />
+      <column name="modifiers_id" value="1021" />
     </insert>
 
     <!-- Whirlwind Attack [General] pre -->

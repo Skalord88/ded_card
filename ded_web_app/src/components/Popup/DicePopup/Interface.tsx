@@ -19,15 +19,6 @@ export type DiceModifiers = {
   composed?: Prerequisite[]
 } | null;
 
-export type DicePopupWeaponProps = {
-  type: string;
-  weapon: Weapon;
-  bab: number[];
-  dmg: number;
-  bucklerMls: number;
-  targetMod?: AttackRoll[];
-};
-
 export type AllModifiersInThrow = {
   tot: {value: SignAndNumber, mod: string};
   allMod: {value: SignAndNumber, mod: string} [];

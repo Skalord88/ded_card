@@ -32,6 +32,8 @@ import { InventoryComponent } from "../components/Items/Inventory/InventoryCompo
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
+import { FeatPc } from "../components/Feats/Interface/FeatInterface";
+import { AttackRoll } from "../components/Attack/AttackRoll/interface";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -59,6 +61,7 @@ export const Show = () => {
     bab: 0,
     adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
     attackRoll: { mono: [], target: [], composed: [] },
+    damageBonus: { mono: [], target: [], composed: [] },
     specialAttacks: [],
     initiative: 0,
     baseSave: { fortitude: 0, reflex: 0, will: 0 },
@@ -97,9 +100,22 @@ export const Show = () => {
       f.modifiers && modif.push(f.modifiers);
     });
 
+  const createModifierSelected = (
+    modif: Prerequisite,
+    select: Prerequisite
+  ): Prerequisite => {
+    return {
+      attackRoll: modif.attackRoll,
+      damageBonus: modif.damageBonus,
+      items: select.items
+    };
+  };
+
   // feats
   char.featsList.forEach((f) => {
-    f.selected && modif.push(f.selected);
+    f.feat.modifiers && f.selected?
+    modif.push(createModifierSelected(f.feat.modifiers, f.selected))
+    : f.selected && modif.push(f.selected);
   });
   // feats
   char.classPcList.forEach((cl) => {
@@ -110,7 +126,6 @@ export const Show = () => {
         }
       });
   });
-  console.log(modif)
   modChar = modifyCharacter(char, modif);
 
   modChar.attacks = modifyAttacks(modChar);

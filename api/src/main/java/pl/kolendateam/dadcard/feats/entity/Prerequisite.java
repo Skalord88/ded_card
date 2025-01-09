@@ -22,6 +22,7 @@ import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 import pl.kolendateam.dadcard.attack.entity.AttackRoll;
+import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
@@ -104,7 +105,8 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ClassPcLevel[] classPc;
 
-  Integer damageBonus;
+  @JdbcTypeCode(SqlTypes.JSON)
+  DamageBonus damageBonus;
 
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(

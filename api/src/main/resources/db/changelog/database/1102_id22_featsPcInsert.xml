@@ -14,7 +14,8 @@
 
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="10001" />
-            <column name="item_id" value="81" />
+            <column name="item_id" value="81" /> 
+            <!-- warsling -->
         </insert>
 
         <insert tableName="feats_pc">

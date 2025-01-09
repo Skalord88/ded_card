@@ -30,10 +30,10 @@
         <insert tableName="attacks">
             <column name="id" value="102" />
             <column name="attacks_id_onefirst" value="1023" />
-            <column name="attacks_id_onesecond" value="1028" />
+            <column name="attacks_id_onesecond" value="1027" />
             <column name="attacks_id_oneadditional" value="1027" />
             <column name="attacks_id_twofirst" value="1024" />
-            <column name="attacks_id_twosecond" value="1028" />
+            <column name="attacks_id_twosecond" value="1027" />
             <column name="attacks_id_twoadditional" value="1026" />
         </insert>
 

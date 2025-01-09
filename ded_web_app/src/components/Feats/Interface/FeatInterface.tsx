@@ -40,7 +40,7 @@ export type ClassFeats = {
   feat: Feat;
   classId: number;
   className: string;
-  toSelect: Prerequisite | null
+  toSelect?: Prerequisite
 }
 
 export type Feat = {
@@ -50,21 +50,21 @@ export type Feat = {
   benefit: string;
   normal: string;
   special: string;
-  modifiers: Prerequisite | null;
-  prerequisiteList: Prerequisite | null;
-  toSelect: Prerequisite | null;
+  modifiers?: Prerequisite;
+  prerequisiteList?: Prerequisite;
+  toSelect?: Prerequisite;
 }
 
 export type FeatPc = {
   id: number,
   feat: Feat;
-  selected: Prerequisite | null;
+  selected?: Prerequisite;
 }
 
 export type FeatsToShow = {
   id: number | null,
   title: string,
   feat: Feat,
-  modifiers: Prerequisite | null,
-  listOfBonus: Prerequisite | null
+  modifiers?: Prerequisite,
+  listOfBonus?: Prerequisite
 }

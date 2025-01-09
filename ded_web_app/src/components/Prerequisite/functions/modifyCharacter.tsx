@@ -2,7 +2,12 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
-import { AttackElement, createAttackDisplay, DisplayAttType } from "../../Attack/function";
+import { DamageBonus } from "../../Attack/DamageBonus/interface";
+import {
+  AttackElement,
+  createAttackDisplay,
+  DisplayAttType
+} from "../../Attack/function";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
@@ -33,6 +38,7 @@ import {
   findAbilitysPrerequisite,
   findArmorPrerequisite,
   findAttackRollPrerequisite,
+  findDamageBonusPrerequisite,
   findInitiativePrerequisite,
   findSavingThrowPrerequisite,
   findSkillsPrerequisite,
@@ -45,6 +51,11 @@ export type AttackRollElement = {
   target: AttackRoll[];
   composed: Prerequisite[];
 };
+export type DamageBonusElement = {
+  mono: DamageBonus[];
+  target: DamageBonus[];
+  composed: Prerequisite[];
+};
 export type ArmorClassElement = {
   mono: ArmorClass[];
   target: ArmorClass[];
@@ -52,16 +63,15 @@ export type ArmorClassElement = {
 };
 
 export type SkillsElement = {
-  mono: PrerequisiteSkills[]
-  target: PrerequisiteSkills[]
-}
+  mono: PrerequisiteSkills[];
+  target: PrerequisiteSkills[];
+};
 
 export type FeatsFromChar = {
-  feats: Feat[], 
-  classFeats: ClassFeats[],
-  pcFeats: FeatPc[]
-}
-
+  feats: Feat[];
+  classFeats: ClassFeats[];
+  pcFeats: FeatPc[];
+};
 
 export type CharToModify = {
   abilitys: Abilitys;
@@ -69,6 +79,7 @@ export type CharToModify = {
   size: Size;
   adjBonus: { bab: number; savingThrow: number; adjLv: number };
   attackRoll: AttackRollElement;
+  damageBonus: DamageBonusElement;
   specialAttacks: SpecialAttacks[];
   initiative: number;
   baseSave: { fortitude: number; reflex: number; will: number };
@@ -77,14 +88,12 @@ export type CharToModify = {
   armor: ArmorClassElement;
   inventory: Inventory;
   attacks: Attacks;
-  displayAttType?: AttackElement
+  displayAttType?: AttackElement;
   skills: SkillsElement;
-  skillsList: SkillsInList[]
-  speed: Speed
-  feats: FeatsFromChar
+  skillsList: SkillsInList[];
+  speed: Speed;
+  feats: FeatsFromChar;
 };
-
-// aggiungi un controllo che trovi i prerequisiti in feats
 
 export const modifyCharacter = (
   char: CharacterPc,
@@ -105,6 +114,7 @@ export const modifyCharacter = (
       adjLv: FindAllAdjLevel(char)
     },
     attackRoll: findAttackRollPrerequisite(prer),
+    damageBonus: findDamageBonusPrerequisite(prer),
     specialAttacks: findSpecialAttacksPrerequisite(prer),
     initiative: findInitiativePrerequisite(prer),
     baseSave: CountSavingThrowFromClassPc(char.classPcList),

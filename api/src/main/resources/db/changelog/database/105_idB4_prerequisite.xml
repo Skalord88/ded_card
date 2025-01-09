@@ -511,83 +511,47 @@
             <column name="text" value="melee malus for Javelin" />
         </insert>
 
-        <!-- Enchantment id:11.000 armor -->
-        <!-- <insert tableName="prerequisite">
-            <column name="id" value="11000" />
-            <column name="text" value="prf armor" />
-        </insert> -->
-        <!-- <insert tableName="prerequisite">
-            <column name="id" value="11001" />
-            <column name="armor_class"
-                value="{ &quot;enhancementBonuses&quot; : 1 }" />
-            <column name="text" value="armor +1" />
-        </insert>
+        <!-- Armor id:52.000 prerequisite -->
         <insert tableName="prerequisite">
-            <column name="id" value="11002" />
-            <column name="armor_class"
-                value="{ &quot;enhancementBonuses&quot; : 2 }" />
-            <column name="text" value="armor +2" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="11003" />
-            <column name="armor_class"
-                value="{ &quot;enhancementBonuses&quot; : 3 }" />
-            <column name="text" value="armor +3" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="11004" />
-            <column name="armor_class"
-                value="{ &quot;enhancementBonuses&quot; : 4 }" />
-            <column name="text" value="armor +4" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="11005" />
-            <column name="armor_class"
-                value="{ &quot;enhancementBonuses&quot; : 5 }" />
-            <column name="text" value="armor +5" />
-        </insert> -->
-
-        <!-- Armor id:50.000 prerequisite -->
-        <!-- <insert tableName="prerequisite">
-            <column name="id" value="50001" />
+            <column name="id" value="52001" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 1 }" />
-        </insert> -->
-        <!-- <insert tableName="prerequisite">
-            <column name="id" value="50002" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52002" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 2 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50003" />
+            <column name="id" value="52003" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 3 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50004" />
+            <column name="id" value="52004" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 4 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50005" />
+            <column name="id" value="52005" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 5 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50006" />
+            <column name="id" value="52006" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 6 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50007" />
+            <column name="id" value="52007" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 7 }" />
         </insert>
         <insert tableName="prerequisite">
-            <column name="id" value="50008" />
+            <column name="id" value="52008" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 8 }" />
-        </insert> -->
+        </insert>
 
         <!-- Shield id:51.000 prerequisite -->
         <insert tableName="prerequisite">

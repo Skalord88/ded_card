@@ -2,9 +2,7 @@ import { abilityBackgroundColor } from "../../Abilitys/Colors";
 import { abilityAbbreviation } from "../../Abilitys/Functions";
 import { FormattingText } from "../../Formatting/Function";
 import { BonusAbilities } from "../../functions";
-import {
-  D20Popup
-} from "../../Popup/DicePopup/D20Popup";
+import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { DicePopupProps } from "../../Popup/DicePopup/Interface";
 import { CharToModify } from "../../Prerequisite/functions/modifyCharacter";
 import { PrerequisiteSkills } from "../interface/PrerequisiteSkills";
@@ -19,7 +17,8 @@ export type SkillShowComponentProps = {
 export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
   char
 }) => {
-  const penality: number = char.inventory.armor.penality + char.inventory.shield.penality
+  const penality: number =
+    char.inventory.armor.penality + char.inventory.shield.penality;
 
   return (
     <>
@@ -50,27 +49,39 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
         <div className="rpgui-container-framed-grey-mini">
           <p>pnl</p>
         </div>
-        {char.skillsList.map((sk, index) => sk.study && sk.study?.length > 0 ?
-         <>
-         <SkillWithStudy title={sk.skill.skillName} key={`skillWithStudy-${index}-${sk.skill.skillName}`} />
-         {sk.study.map(((st, stIndex) => (
-          <OneStudyShow
-          key={`study-${stIndex}-${st.study.studyName}`}
-          study={st}
-          skill={sk.skill}
-          bonusAb={BonusAbilities(
-            char.abilitys,
-            abilityAbbreviation(sk.skill.ability)
-          )} penality={penality} bonusModifier={char.skills.mono} />
-         )))}
-         </> : 
-          <OneSkillShow
-            key={`oneSkillShow-${index}-${sk.skill.skillName}`}
-            sk={sk}
-            bonusAb={BonusAbilities(
-              char.abilitys,
-              abilityAbbreviation(sk.skill.ability)
-            )} penality={penality} bonusModifier={char.skills.mono} />
+        {char.skillsList.map((sk, index) =>
+          sk.study && sk.study?.length > 0 ? (
+            <>
+              <SkillWithStudy
+                title={sk.skill.skillName}
+                key={`skillWithStudy-${index}-${sk.skill.skillName}`}
+              />
+              {sk.study.map((st, stIndex) => (
+                <OneStudyShow
+                  key={`study-${stIndex}-${st.study.studyName}`}
+                  study={st}
+                  skill={sk.skill}
+                  bonusAb={BonusAbilities(
+                    char.abilitys,
+                    abilityAbbreviation(sk.skill.ability)
+                  )}
+                  penality={penality}
+                  bonusModifier={char.skills.mono}
+                />
+              ))}
+            </>
+          ) : (
+            <OneSkillShow
+              key={`oneSkillShow-${index}-${sk.skill.skillName}`}
+              sk={sk}
+              bonusAb={BonusAbilities(
+                char.abilitys,
+                abilityAbbreviation(sk.skill.ability)
+              )}
+              penality={penality}
+              bonusModifier={char.skills.mono}
+            />
+          )
         )}
       </div>
     </>
@@ -78,50 +89,56 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
 };
 
 export type SkillWithStudyProps = {
-  title: string
-}
+  title: string;
+};
 
 export const SkillWithStudy: React.FC<SkillWithStudyProps> = ({ title }) => {
   return (
     <>
-    <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p>{FormattingText(title)}</p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        <div className="rpgui-container-framed-grey-mini">
-          <p></p>
-        </div>
-        </>
-  )
-}
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p>{FormattingText(title)}</p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+      <div className="rpgui-container-framed-grey-mini">
+        <p></p>
+      </div>
+    </>
+  );
+};
 
 export type OneSkillShowProps = {
   sk: SkillsInList;
   bonusAb: number;
   penality: number;
-  bonusModifier?: PrerequisiteSkills[]
+  bonusModifier?: PrerequisiteSkills[];
 };
 
-export const OneSkillShow: React.FC<OneSkillShowProps> = ({ sk, bonusAb, penality, bonusModifier }) => {
+export const OneSkillShow: React.FC<OneSkillShowProps> = ({
+  sk,
+  bonusAb,
+  penality,
+  bonusModifier
+}) => {
+  const bonus: number =
+    bonusModifier
+      ?.filter((mod) => mod.skill?.id === sk.skill.id)
+      .reduce((tot, b) => tot + b.rank, 0) ?? 0;
 
-  const bonus: number = bonusModifier?.filter(mod => mod.skill?.id === sk.skill.id).reduce((tot, b) =>
-  tot + b.rank, 0) ?? 0
-
-  const tot: number = sk.rank + bonusAb + (sk.skill.penality * penality) + bonus
+  const tot: number = sk.rank + bonusAb + sk.skill.penality * penality + bonus;
 
   return (
     <>
@@ -163,17 +180,28 @@ export type OneStudyShowProps = {
   skill: Skill;
   bonusAb: number;
   penality: number;
-  bonusModifier?: PrerequisiteSkills[]
+  bonusModifier?: PrerequisiteSkills[];
 };
 
-export const OneStudyShow: React.FC<OneStudyShowProps> = ({ study, skill, bonusAb, penality, bonusModifier }) => {
+export const OneStudyShow: React.FC<OneStudyShowProps> = ({
+  study,
+  skill,
+  bonusAb,
+  penality,
+  bonusModifier
+}) => {
+  const bonus: number =
+    bonusModifier
+      ?.filter((mod) => mod.skill?.id === study.study.id)
+      .reduce((tot, b) => tot + b.rank, 0) ?? 0;
 
-  const bonus: number = bonusModifier?.filter(mod => mod.skill?.id === study.study.id).reduce((tot, b) =>
-  tot + b.rank, 0) ?? 0
+  const tot: number = study.rank + bonusAb + skill.penality * penality + bonus;
 
-  const tot: number = study.rank + bonusAb + (skill.penality * penality) + bonus
-
-  const name: string = study.study.studyName? study.study.studyName : study.study.newStudy ? study.study.newStudy : ""
+  const name: string = study.study.studyName
+    ? study.study.studyName
+    : study.study.newStudy
+    ? study.study.newStudy
+    : "";
 
   return (
     <>

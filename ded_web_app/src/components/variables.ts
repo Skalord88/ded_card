@@ -249,7 +249,9 @@ export const emptyPrerequisite: Prerequisite = {
     items: [],
     text: '',
     specialAttacks: emptySpecialAttacks,
-    damageBonus: 0
+    damageBonus: {
+        bonus: 0
+    }
 }
 
 export const characterEmpty: CharacterPc = {

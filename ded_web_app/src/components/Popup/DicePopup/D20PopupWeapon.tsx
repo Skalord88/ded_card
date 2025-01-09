@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
-import { DicePopupWeaponProps } from "./Interface";
 import { WeaponThrowDice } from "../../Dice/WeaponThrowDice";
 import { WeaponDamageDice } from "../../Dice/WeaponDamageDice";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { Weapon } from "../../interfaces";
+import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 
 export const getWeaponEnchTargetMod = (w: Weapon): AttackRoll[] => {
   return w.enchantment?.flatMap((ench) =>
@@ -17,13 +17,24 @@ export const getWeaponTargetMod = (w: Weapon): AttackRoll => {
     : ({} as AttackRoll);
 };
 
+export type DicePopupWeaponProps = {
+  type: string;
+  weapon: Weapon;
+  bab: number[];
+  dmg: number;
+  bucklerMls: number;
+  targetMod?: AttackRoll[];
+  composedMod?: Prerequisite[]
+};
+
 export const D20PopupWeapon: React.FC<DicePopupWeaponProps> = ({
   type,
   bab,
   dmg,
   weapon,
   bucklerMls,
-  targetMod
+  targetMod,
+  composedMod
 }) => {
   const [showPopup, setShowPopup] = useState(false);
   const [dice, setDice] = useState(0);

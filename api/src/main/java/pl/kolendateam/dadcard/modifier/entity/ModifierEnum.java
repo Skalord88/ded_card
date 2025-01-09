@@ -197,6 +197,7 @@ public enum ModifierEnum {
 
   // targets
   TRAP,
+  SHORT_RANGE,
 
   // weapon
   DAMAGE,

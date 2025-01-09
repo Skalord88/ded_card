@@ -5,6 +5,7 @@
 
     <changeSet id="309" author="oscar">
 
+        <!-- Puli -->
         <insert tableName="inventory">
             <column name="id" value="100" />
             <column name="armor_id" value="1001" />
@@ -15,6 +16,7 @@
             <column name="weapon_id_four" value="1006" />
             <column name="weapon_id_five" value="2" />
         </insert>
+        <!-- Rysio -->
         <insert tableName="inventory">
             <column name="id" value="101" />
             <column name="armor_id" value="1013" />

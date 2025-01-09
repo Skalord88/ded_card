@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ClassFeats, Feat, FeatPc, FeatsToShow } from "./Interface/FeatInterface";
+import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { FormattingText } from "../Formatting/Function";
@@ -17,13 +17,13 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
     new Map(featsClassFeats.map((item) => [item.feat.id, item])).values()
   );
 
-  const fePc: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
-  = featsFeatPc.map(f => f && ({name: f.feat.featName, prer: [f.selected, f.feat.modifiers], description: [
+  const fePc: {name: string, prer?: Prerequisite[], description: string[] }[] 
+  = featsFeatPc.map(f => f && ({name: f.feat.featName, prer: f.selected && f.feat.modifiers && [f.selected, f.feat.modifiers], description: [
     "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
-  const fe: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
-  = featsFeats.map(f => f && ({name: f.featName, prer: [f.modifiers], description: [
+  const fe: {name: string, prer?: Prerequisite[], description: string[] }[] 
+  = featsFeats.map(f => f && ({name: f.featName, prer: f.modifiers && [f.modifiers], description: [
     "normal: " + f.normal, "special: " + f.special, "benefit: " + f.benefit, "special: " + f.special]}))
-  const feCl: {name: string, prer: (Prerequisite | null)[], description: string[] }[] 
+  const feCl: {name: string, prer?: Prerequisite[], description: string[] }[] 
   = featsClassFeatsOneTime.map(f => f && ({name: f.feat.featName, prer: [f.modifiers], description: [
     "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
 
@@ -38,15 +38,19 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
 };
 
 export type ListOfFeatsMapProps = {
-  feats: {name: string, prer: (Prerequisite | null)[], description: string[] }[], titolo: string
+  feats: {name: string, prer?: Prerequisite[], description: string[] }[], titolo: string
 }
 
 export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) => {
-  const [selectedFeat, setSelectedFeat] = useState<{name: string, prer: (Prerequisite | null)[], description: string[] } | null>(null);
+  const [selectedFeat, setSelectedFeat] = useState<{name: string, prer?: Prerequisite [], description: string[] } | null>(null);
 
-  const orderedFeats = feats.sort((a, b) => a.name.localeCompare(b.name))
+  const orderedFeats = feats.sort((a, b) => {
+    const nameA = a.name || ''; // Default to an empty string if null or undefined
+    const nameB = b.name || '';
+    return nameA.localeCompare(nameB);
+  });
 
-  const selectFeat = (feat: {name: string, prer: (Prerequisite | null)[], description: string[] }) => {
+  const selectFeat = (feat: {name: string, prer?: Prerequisite[], description: string[] }) => {
     setSelectedFeat(feat);
   };
 
@@ -68,7 +72,7 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) =
                   <div>
                     <p onClick={() => selectFeat(f)}>{f.name}</p>
 
-                    <ListOfBonusMap key={index} prerequisite={f.prer} />
+                    {f.prer && <ListOfBonusMap key={index} prerequisite={f.prer} />}
                   </div>
                 </>
               )
@@ -86,7 +90,7 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) =
 };
 
 export type SelectedFeatProps = {
-  feat: {name: string, prer: (Prerequisite | null)[], description: string[] };
+  feat: {name: string, prer?: Prerequisite[], description: string[] };
   onClear: () => void;
 };
 
@@ -112,13 +116,13 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
 };
 
 export type ListOfBonusProps = {
-  prerequisite: (Prerequisite | null)[];
+  prerequisite: Prerequisite[];
 };
 
 export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
   return (
     <>
-        {prerequisite.prerequisite.map(p => 
+        {prerequisite.prerequisite ? prerequisite.prerequisite.map(p => 
           p && (
             <>
               {p.items?.map((i, index) => (
@@ -129,7 +133,7 @@ export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
               )}
             </>
           )
-        )}
+        ): null}
     </>
   );
 };

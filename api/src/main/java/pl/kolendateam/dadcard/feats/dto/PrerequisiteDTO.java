@@ -9,6 +9,7 @@ import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.attack.MapperAttackRoll;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.dto.AttackRollDTO;
+import pl.kolendateam.dadcard.attack.dto.DamageBonusDTO;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
@@ -36,7 +37,7 @@ public class PrerequisiteDTO {
   public SpellLevel[] caster;
   public Integer bab;
   public AttackRollDTO attackRoll;
-  public Integer damageBonus;
+  public DamageBonusDTO damageBonus;
   public SpeedDTO speed;
   public SavingThrowDTO savingThrow;
   public SpecialAttacksDTO specialAttacks;
@@ -61,15 +62,9 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    this.damageBonus = pre.getDamageBonus();
-    this.attackRoll =
-      pre.getAttackRoll() != null
-        ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())
-        : null;
-    this.speed =
-      pre.getSpeed() != null
-        ? MapperPrerequisiteBonus.toSpeedDTO(pre.getSpeed())
-        : null;
+    this.damageBonus = MapperAttackRoll.toDamageBonusDTO(pre.getDamageBonus());
+    this.attackRoll = MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll());
+    this.speed = MapperPrerequisiteBonus.toSpeedDTO(pre.getSpeed());
     this.savingThrow =
       pre.getSavingThrow() != null
         ? MapperSavingThrowToDTO.toSavingThrowDTO(pre.getSavingThrow())

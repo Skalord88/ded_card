@@ -50,7 +50,7 @@
       <column name="attack_roll" type="jsonb">
         <constraints nullable="true" />
       </column>
-      <column name="damage_bonus" type="INTEGER">
+      <column name="damage_bonus" type="jsonb">
         <constraints nullable="true" />
       </column>
       <column name="initiative" type="INTEGER">

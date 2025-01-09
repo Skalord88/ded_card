@@ -8,17 +8,11 @@ import {
 } from "../functions";
 import {
   Attacks,
-  CharacterPc,
   Enchantment,
   SpecialAttacks,
   Weapon
 } from "../interfaces";
-import { findAttackRollPrerequisite } from "../Prerequisite/functions/findSpecificPrerequisite";
-import {
-  AttackRollElement,
-  CharToModify,
-  FeatsFromChar
-} from "../Prerequisite/functions/modifyCharacter";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { noneWeapon } from "../variables";
 import { AttackRoll } from "./AttackRoll/interface";
@@ -122,34 +116,6 @@ export const modifyAttacks = (char: CharToModify): Attacks => {
   };
 };
 
-// function collectPrerequisites(weapon: Weapon): Prerequisite[] {
-//   const prerequisites: Prerequisite[] = [];
-
-//   // Aggiungi il prerequisite della weapon se non è null
-//   if (weapon.modifiers) {
-//     prerequisites.push(weapon.modifiers);
-//   }
-
-//   // Aggiungi i prerequisite degli enchantment se non sono nulli
-//   const enchantmentPrerequisites = weapon.enchantment
-//     ? (weapon.enchantment
-//         .map((enchantment) => enchantment.modifiers)
-//         .filter((modifier) => modifier !== null) as Prerequisite[])
-//     : [];
-
-//   // Combina i risultati
-//   prerequisites.push(...enchantmentPrerequisites);
-
-//   return prerequisites;
-// }
-
-// function collectMono(prerequisites: Prerequisite[]): number {
-//   return prerequisites.reduce((maxBonus, pre) => {
-//     const bonus = pre.attackRoll?.bonus ?? 0; // Ottieni il bonus o 0 se non definito
-//     return Math.max(maxBonus, Number(bonus)); // Confronta il massimo corrente con il bonus attuale
-//   }, 0);
-// }
-
 export type AttacksData = {
   bab: number;
   strenght: number;
@@ -183,7 +149,7 @@ export const getAttacksData = (char: CharToModify): AttacksData => {
       0
     ),
     charTargetMod: char.attackRoll.target,
-    charComposedMod: char.attackRoll.composed
+    charComposedMod: [...char.attackRoll.composed, ...char.damageBonus.composed]
   };
 };
 
@@ -216,15 +182,61 @@ export const getMalus = (
   offLight: Boolean,
   feats: AttacksData
 ): number => {
-  let attack: number = 0;
-  if (!offLight && (pose === 0 || pose === 2)) attack = -6;
-  if (!offLight && pose === 1) attack = -10;
-  if (offLight && (pose === 0 || pose === 2)) attack = -4;
-  if (offLight && pose === 1) attack = -8;
-  if (feats.twoFighting.twoFighting && pose === 1) attack = -4;
-  if (feats.twoFighting.twoFighting && offLight) attack = -2;
+  if (pose === 0 || pose === 2) {
+    if (feats.twoFighting.twoFighting && offLight) return -2;
+    if (feats.twoFighting.twoFighting) return -4;
+    return -6;
+  }
+  if (pose === 1) {
+    if (feats.twoFighting.twoFighting && offLight) return -2;
+    if (feats.twoFighting.twoFighting) return -4;
+    if (offLight) return -8;
+    return -10;
+  }
+  return 0;
+};
 
-  return attack;
+export const isType = (list: string[], find: string[]): boolean => {
+  return list.some((l) => find.includes(l));
+};
+
+export const getBonusComposed = (prer: Prerequisite[], w: Weapon): number => {
+  const bonusType: number = prer.reduce(
+    (tot, p) =>
+      tot +
+      (isType(p.weaponType ?? [], w.type)
+        ?  Number(p.attackRoll?.bonus) ?? 0
+        : 0),
+    0
+  );
+  const bonusItem: number = prer.reduce(
+    (tot, p) =>
+      tot +
+      (p.items?.some((i) => i.id === w.itemId)
+        ? Number(p.attackRoll?.bonus) ?? 0
+        : 0),
+    0
+  );
+  return bonusType + bonusItem;
+}
+export const getDmgComposed = (prer: Prerequisite[], w: Weapon): number => {
+  const bonusType: number = prer.reduce(
+    (tot, p) =>
+      tot +
+      (isType(p.weaponType ?? [], w.type)
+        ?  Number(p.damageBonus?.bonus) ?? 0
+        : 0),
+    0
+  );
+  const bonusItem: number = prer.reduce(
+    (tot, p) =>
+      tot +
+      (p.items?.some((i) => i.id === w.itemId)
+        ? Number(p.damageBonus?.bonus) ?? 0
+        : 0),
+    0
+  );
+  return bonusType + bonusItem;
 };
 
 export const getWeaponAttackStats = (
@@ -240,6 +252,12 @@ export const getWeaponAttackStats = (
     attacksData.bab - 10,
     attacksData.bab - 15
   ];
+  const composedBns: number = getBonusComposed(
+    attacksData.charComposedMod.filter(comp => comp.attackRoll)
+    , w);
+  const composedDmg: number = getDmgComposed(
+    attacksData.charComposedMod.filter(comp => comp.damageBonus)
+    , w);
   const attNoZero: number[] = att.filter((att) => att > 0);
   const enchanment: number = w.enchantmentBonus
     ? w.enchantmentBonus
@@ -251,10 +269,20 @@ export const getWeaponAttackStats = (
   const enchanmentDmg: number = w.enchantmentBonus ? w.enchantmentBonus : 0;
   const composite: number = w.enchantment ? compositeBns(w.enchantment) : 0;
   const attStr: number[] = attNoZero.map(
-    (att) => att + attacksData.strenght + attacksData.charMonoMod + enchanment
+    (att) =>
+      att +
+      attacksData.strenght +
+      attacksData.charMonoMod +
+      enchanment +
+      composedBns
   );
   const attDex: number[] = attNoZero.map(
-    (att) => att + attacksData.dexterity + attacksData.charMonoMod + enchanment
+    (att) =>
+      att +
+      attacksData.dexterity +
+      attacksData.charMonoMod +
+      enchanment +
+      composedBns
   );
   const offStr: number[] = attacksData.twoFighting.impTwoFighting
     ? [attStr[0], attStr[0] - 5]
@@ -273,9 +301,9 @@ export const getWeaponAttackStats = (
   const dmgStr: number =
     attacksData.strenght +
     (weaponTwoHanded(w) ? Math.floor(attacksData.strenght / 2) : 0) +
-    enchanmentDmg;
+    enchanmentDmg + composedDmg;
   const dmgOffStr: number =
-    Math.floor(attacksData.strenght / 2) + enchanmentDmg;
+    Math.floor(attacksData.strenght / 2) + enchanmentDmg  + composedDmg;
   return {
     weapon: w,
     pose: pose,
@@ -283,10 +311,14 @@ export const getWeaponAttackStats = (
     attacksStr: finesyAtt,
     attacksDex: attDex,
     attacksOffHandStr: pose === 1 ? finesyOffAtt : finesyAtt,
-    attacksOffHandDex: offDex,
+    attacksOffHandDex: pose === 1 ? offDex : attDex,
     malusTwo: getMalus(pose, offLight, attacksData),
     dmgMelee: pose === 1 ? dmgOffStr : dmgStr,
-    dmgDistance: enchanmentDmg + composite
+    dmgDistance: weaponThrown(w)
+      ? pose === 1
+        ? dmgOffStr
+        : dmgStr
+      : enchanmentDmg + composite + composedDmg
   };
 };
 
@@ -413,9 +445,9 @@ export type AttacksSet = {
 }[];
 
 export type AttackElement = {
-  titleOne: string;
   targetMod: AttackRoll[];
   composedMod: Prerequisite[];
+  titleOne: string;
   setOne: [
     { stat: WeaponAttackStats; display: DisplayAttType },
     { stat: WeaponAttackStats; display: DisplayAttType },
@@ -431,13 +463,14 @@ export type AttackElement = {
 
 export const createAttackDisplay = (char: CharToModify): AttackElement => {
   const attacksData: AttacksData = getAttacksData(char);
+
   let lightOff: Boolean = weaponLight(char.attacks.secondAttackSetOne);
   let mainTwo: Boolean = weaponTwoHanded(char.attacks.firstAttackSetOne);
   const wOneSetOne: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.firstAttackSetOne,
-    0,
-    mainTwo,
-    lightOff,
+    char.attacks.firstAttackSetOne, //w
+    0, // pose
+    mainTwo, // main 2 handed
+    lightOff, // off hand light
     attacksData
   );
   const wTwoSetOne: WeaponAttackStats = getWeaponAttackStats(
@@ -479,9 +512,9 @@ export const createAttackDisplay = (char: CharToModify): AttackElement => {
     attacksData
   );
   return {
-    titleOne: "Set One",
     targetMod: attacksData.charTargetMod,
     composedMod: attacksData.charComposedMod,
+    titleOne: "Set One",
     setOne: [
       { stat: wOneSetOne, display: getDisplayAttType(wOneSetOne) },
       { stat: wTwoSetOne, display: getDisplayAttType(wTwoSetOne) },

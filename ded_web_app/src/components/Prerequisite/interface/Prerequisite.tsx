@@ -1,6 +1,7 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
+import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ClassPcLevel } from "../../ClassPc/Interface/ClassPcLevel";
 import { Feat } from "../../Feats/Interface/FeatInterface";
 import { Item, SpecialAttacks } from "../../interfaces";
@@ -15,7 +16,7 @@ export type Prerequisite = {
     caster?: [];
     bab?: Number;
     attackRoll?: AttackRoll;
-    damageBonus?: number;
+    damageBonus?: DamageBonus;
     initiative?: Number;
     speed?: Speed;
     savingThrow?: SavingThrow;
