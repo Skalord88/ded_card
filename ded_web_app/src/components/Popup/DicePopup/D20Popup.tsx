@@ -138,6 +138,7 @@ export const D20PopupModifiers: React.FC<AttackRollProps> = ({
 
 export type AllModifiersInDiceProps = {
   list: {
+    color: string;
     dice: DicePopupProps;
     // textOrWeapon: string;
     // value: number;
@@ -160,25 +161,34 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
       {list.map(
         (mod, index) =>
           mod && (
-            <p key={index}>
-              <D20Popup
-                key={index}
-                textOrWeapon={mod.dice.textOrWeapon}
-                value={Math.floor(mod.dice.value)}
-                modifiers={mod.dice.modifiers}
-              />
-              <span style={{ color: "orange" }}>
-                {mod.allMod.tot.value.sign}
-                {Math.floor(mod.allMod.tot.value.number)}{" "}
-              </span>
-              {mod.allMod.allMod.map((mod, index) => (
-                <span key={index}>
-                  {mod.value.sign}
-                  {Math.floor(mod.value.number)}
-                  {mod.mod}{" "}
-                </span>
+            <div style={{ display: "flex" }}>
+              <div>
+                <p>
+                  <D20Popup
+                    key={index}
+                    textOrWeapon={mod.dice.textOrWeapon}
+                    value={Math.floor(mod.dice.value)}
+                    modifiers={mod.dice.modifiers}
+                  />
+                </p>
+              </div>
+              <div>
+                <p style={{ color: "orange" }}>
+                  {mod.allMod.tot.value.sign}
+                  {Math.floor(mod.allMod.tot.value.number)}{" "}
+                </p>
+              </div>
+
+              {mod.allMod.allMod.map((modif, index) => (
+                <div key={index}>
+                  <p>
+                    {modif.value.sign}
+                    {Math.floor(modif.value.number)}
+                    {modif.mod}{" "}
+                  </p>
+                </div>
               ))}
-            </p>
+            </div>
           )
       )}
     </>

@@ -113,9 +113,9 @@ export const Show = () => {
 
   // feats
   char.featsList.forEach((f) => {
-    f.feat.modifiers && f.selected?
-    modif.push(createModifierSelected(f.feat.modifiers, f.selected))
-    : f.selected && modif.push(f.selected);
+    f.feat.modifiers && f.selected
+      ? modif.push(createModifierSelected(f.feat.modifiers, f.selected))
+      : f.selected && modif.push(f.selected);
   });
   // feats
   char.classPcList.forEach((cl) => {
@@ -156,16 +156,9 @@ export const Show = () => {
             style={{
               display: "grid",
               justifyContent: "center",
-              gridTemplateColumns: "25% 40% 35%"
+              gridTemplateColumns: "40% 20% 40%"
             }}
           >
-            <div
-              className="rpgui-container-framed-grey"
-              style={{
-                gridColumn: "1 / span 2",
-                gridRow: 1
-              }}
-            ></div>
             <div
               className="rpgui-container-framed-grey"
               style={{
@@ -179,61 +172,37 @@ export const Show = () => {
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
-                gridRow: 2
+                gridRow: "1 / span 2"
               }}
             >
               <CharacterData char={char} />
             </div>
-            <div
-              className="rpgui-container-framed-grey"
-              style={{
-                gridColumn: 3,
-                gridRow: "2 / span 3"
-              }}
-            >
-              <AbilitysComponent abilitys={modChar.abilitys} />
-            </div>
-            <div
-              className="rpgui-container-framed-grey"
-              style={{
-                gridColumn: 1,
-                gridRow: "3 / span 2"
-              }}
-            >
-              <ClassExpGold char={char} />
-            </div>
-            <div
-              className="rpgui-container-framed-grey"
-              style={{
-                gridColumn: 2,
-                gridRow: 3
-              }}
-            >
-              <BaseAttack char={modChar} />
-            </div>
-            <div
-              className="rpgui-container-framed-grey"
-              style={{
-                gridColumn: 2,
-                gridRow: 4
-              }}
-            >
-              <Initiative char={modChar} />
-            </div>
+
             <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
-                gridRow: 5
+                gridRow: 3
               }}
             >
-              <SavingThrowComponent char={modChar} />
+              <ClassExpGold char={char} />
             </div>
+
             <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: 3,
-                gridRow: 5
+                gridRow: "2 / span 2"
+              }}
+            >
+              <AbilitysComponent abilitys={modChar.abilitys} />
+            </div>
+
+            <div
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: 3,
+                gridRow: "4 / span 2"
               }}
             >
               <HpComponent char={modChar} />
@@ -242,27 +211,59 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 3",
+                gridColumn: "1 / span 2",
+                gridRow: "4 / span 2"
+              }}
+            >
+              <BaseAttack char={modChar} />
+            </div>
+
+            <div
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: "1 / span 2",
+                gridRow: "6 / span 2"
+              }}
+            >
+              <SavingThrowComponent char={modChar} />
+            </div>
+
+            <div
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: 3,
                 gridRow: 6
               }}
             >
-              <CharacterArmor char={modChar} />
+              <Initiative char={modChar} />
             </div>
+
             <div
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 3",
-                gridRow: 7
+                gridRow: 8
+              }}
+            >
+              <CharacterArmor char={modChar} />
+            </div>
+
+            <div
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: "1 / span 3",
+                gridRow: 9
               }}
             >
               <MapOfAttackComponent char={modChar} />
             </div>
+
             <div
               key="inventory"
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 3",
-                gridRow: 8
+                gridRow: 10
               }}
             >
               <InventoryComponent char={modChar} />
@@ -272,7 +273,7 @@ export const Show = () => {
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
-                gridRow: "9 / span 2"
+                gridRow: "11 / span 2"
               }}
             >
               <SkillShowComponent char={modChar} />
@@ -282,7 +283,7 @@ export const Show = () => {
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: 3,
-                gridRow: 9
+                gridRow: 11
               }}
             >
               <SpeedComponent char={modChar} />
@@ -291,8 +292,8 @@ export const Show = () => {
               key="feats"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 3",
-                gridRow: 11
+                gridColumn: 3,
+                gridRow: 12
               }}
             >
               <FeatsComponent char={modChar} />

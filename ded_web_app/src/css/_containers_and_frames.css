@@ -153,6 +153,7 @@
     -webkit-box-sizing: border-box;
 
 	text-align: center;
+	text-wrap-mode: nowrap;
 
 }
 
@@ -181,6 +182,7 @@
 	background-position: center;
 }
 
+/* color rpgui-container-framed-grey-mini */
 .rpgui-container-framed-grey-mini.strength
 {
 	/* background */
@@ -212,3 +214,30 @@
 	/* background */
 	background: url("../img/background-image-pink.png") repeat repeat;
 }
+
+ /* color rpgui-container-framed-golden
+/* .rpgui-container-framed-golden-mini.strength
+{
+	background: url("../img/background-image-red.png") repeat repeat;
+}
+
+.rpgui-container-framed-golden-mini.dexterity
+{
+	background: url("../img/background-image-green.png") repeat repeat;
+}
+.rpgui-container-framed-golden-mini.constitution
+{
+	background: url("../img/background-image-yellow.png") repeat repeat;
+}
+.rpgui-container-framed-golden-mini.intelligence
+{
+	background: url("../img/background-image-blue.png") repeat repeat;
+}
+.rpgui-container-framed-golden-mini.wisdom
+{
+	background: url("../img/background-image-greylght.png") repeat repeat;
+}
+.rpgui-container-framed-golden-mini.charisma
+{
+	background: url("../img/background-image-pink.png") repeat repeat;
+} */

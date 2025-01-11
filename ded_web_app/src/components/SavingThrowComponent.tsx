@@ -82,6 +82,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   const allDice: AllModifiersInDiceProps = {
     list: [
       {
+        color: "CONSTITUTION",
         dice: {
           textOrWeapon: fortitude.tot.mod,
           value: fortitude.tot.value.number,
@@ -92,6 +93,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         allMod: fortitude
       },
       {
+        color: "DEXTERITY",
         dice: {
           textOrWeapon: reflex.tot.mod,
           value: reflex.tot.value.number,
@@ -102,6 +104,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         allMod: reflex
       },
       {
+        color: "WISDOM",
         dice: {
           textOrWeapon: will.tot.mod,
           value: will.tot.value.number,
@@ -119,6 +122,7 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
       <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
 
       <AllModifiersInDice20 list={allDice.list} />
+
     </>
   );
 };

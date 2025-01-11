@@ -18,13 +18,18 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
   );
 
   const fePc: {name: string, prer?: Prerequisite[], description: string[] }[] 
-  = featsFeatPc.map(f => f && ({name: f.feat.featName, prer: f.selected && f.feat.modifiers && [f.selected, f.feat.modifiers], description: [
-    "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
+  = featsFeatPc.map(f => f && ({
+    name: f.feat.featName, 
+    prer: (
+      f.selected && f.feat.modifiers ? [f.selected, f.feat.modifiers] : f.selected ? [f.selected] : f.feat.modifiers? [f.feat.modifiers] : []),
+      description: [
+        (f.feat.normal != null ? "normal: " + f.feat.normal + "\n" : ""), (f.feat.special != null ? "special: " + f.feat.special + "\n" : ""),
+        (f.feat.benefit != null ? "benefit: " + f.feat.benefit + "\n" : ""), f.feat.special? "special: " + f.feat.special : ""]}))
   const fe: {name: string, prer?: Prerequisite[], description: string[] }[] 
   = featsFeats.map(f => f && ({name: f.featName, prer: f.modifiers && [f.modifiers], description: [
     "normal: " + f.normal, "special: " + f.special, "benefit: " + f.benefit, "special: " + f.special]}))
   const feCl: {name: string, prer?: Prerequisite[], description: string[] }[] 
-  = featsClassFeatsOneTime.map(f => f && ({name: f.feat.featName, prer: [f.modifiers], description: [
+  = featsClassFeatsOneTime.map(f => f && ({name: f.feat.featName, prer: f.modifiers && [f.modifiers], description: [
     "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
 
   return (
@@ -71,7 +76,6 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) =
                 <>
                   <div>
                     <p onClick={() => selectFeat(f)}>{f.name}</p>
-
                     {f.prer && <ListOfBonusMap key={index} prerequisite={f.prer} />}
                   </div>
                 </>

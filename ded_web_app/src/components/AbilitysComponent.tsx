@@ -60,7 +60,7 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
       <h2 className="rpgui-container-framed-golden-2">Abilities</h2>
       {ab.map((ability) => (
         <div key={ability.id} style={{ display: "flex" }}>
-          <div className={ability.color} style={{ flex: 1 }}>
+          <div className={ability.color} style={{ flex: 2 }}>
             <p>{ability.text}</p>
           </div>
           <div className={ability.color} style={{ flex: 1 }}>

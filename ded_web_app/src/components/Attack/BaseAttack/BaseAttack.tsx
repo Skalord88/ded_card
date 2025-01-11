@@ -1,3 +1,4 @@
+import { abilityBackgroundColor } from "../../Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "../../functions";
 import {
   AllModifiersInDice20,
@@ -53,7 +54,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
       { value: signAndCount([char.bab]), mod: "bab" },
       {
         value: signAndCount([Number(char.size.modifiers?.attackRoll?.bonus ?? 0)]),
-        mod: "size"
+        mod: "siz"
       },
       { value: signAndCount([strengthMod]), mod: "str" }
     ]
@@ -68,7 +69,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
       { value: signAndCount([char.bab]), mod: "bab" },
       {
         value: signAndCount([Number(char.size.modifiers?.attackRoll?.bonus ?? 0)]),
-        mod: "size"
+        mod: "siz"
       },
       { value: signAndCount([dexterityMod]), mod: "dex" }
     ]
@@ -80,7 +81,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         Number(char.size.modifiers?.specialAttacks?.grapple ?? 0),
         strengthMod
       ]),
-      mod: "grapple"
+      mod: "grp"
     },
     allMod: [
       { value: signAndCount([char.bab]), mod: "bab" },
@@ -88,7 +89,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         value: signAndCount([
           Number(char.size.modifiers?.specialAttacks?.grapple ?? 0)
         ]),
-        mod: "grapple"
+        mod: "grp"
       },
       { value: signAndCount([strengthMod]), mod: "str" }
     ]
@@ -97,6 +98,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
   const allDice: AllModifiersInDiceProps = {
     list: [
       {
+        color: abilityBackgroundColor(""),
         dice: {
           textOrWeapon: bab.tot.mod,
           value: bab.tot.value.number,
@@ -105,6 +107,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: bab
       },
       {
+        color: abilityBackgroundColor("STRENGTH"),
         dice: {
           textOrWeapon: strenghtAtt.tot.mod,
           value: strenghtAtt.tot.value.number,
@@ -113,6 +116,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: strenghtAtt
       },
       {
+        color: abilityBackgroundColor("DEXTERITY"),
         dice: {
           textOrWeapon: dexterityAtt.tot.mod,
           value: dexterityAtt.tot.value.number,
@@ -121,6 +125,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: dexterityAtt
       },
       {
+        color: abilityBackgroundColor("STRENGTH"),
         dice: {
           textOrWeapon: grapple.tot.mod,
           value: char.bab,

@@ -78,8 +78,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
+	font-size: 12px;
+	line-height: 15px;
 }
 
 /* default span */
@@ -88,8 +88,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
+	font-size: 12px;
+	line-height: 15px;
 }
 
 /* default gui link */
@@ -98,8 +98,8 @@
 	/* color and border */
 	color: yellow;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
+	font-size: 12px;
+	line-height: 15px;
 	text-decoration: none;
 }
 /* default gui link */
@@ -114,8 +114,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 20px;
+	font-size: 12px;
+	line-height: 13px;
 	display: inline;
 }
 
@@ -126,7 +126,7 @@
 	margin-left: 75px;
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 1.0em;
-	line-height: 22px;
+	font-size: 12px;
+	line-height: 15px;
 }
 
