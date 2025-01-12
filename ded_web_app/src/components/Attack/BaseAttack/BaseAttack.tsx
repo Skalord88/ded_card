@@ -98,6 +98,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
   const allDice: AllModifiersInDiceProps = {
     list: [
       {
+        id: 1,
         color: abilityBackgroundColor(""),
         dice: {
           textOrWeapon: bab.tot.mod,
@@ -107,6 +108,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: bab
       },
       {
+        id: 2,
         color: abilityBackgroundColor("STRENGTH"),
         dice: {
           textOrWeapon: strenghtAtt.tot.mod,
@@ -116,6 +118,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: strenghtAtt
       },
       {
+        id: 3,
         color: abilityBackgroundColor("DEXTERITY"),
         dice: {
           textOrWeapon: dexterityAtt.tot.mod,
@@ -125,6 +128,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
         allMod: dexterityAtt
       },
       {
+        id: 4,
         color: abilityBackgroundColor("STRENGTH"),
         dice: {
           textOrWeapon: grapple.tot.mod,

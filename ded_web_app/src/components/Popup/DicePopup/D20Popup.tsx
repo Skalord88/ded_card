@@ -138,6 +138,7 @@ export const D20PopupModifiers: React.FC<AttackRollProps> = ({
 
 export type AllModifiersInDiceProps = {
   list: {
+    id: number;
     color: string;
     dice: DicePopupProps;
     // textOrWeapon: string;
@@ -161,8 +162,8 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
       {list.map(
         (mod, index) =>
           mod && (
-            <div style={{ display: "flex" }}>
-              <div>
+            <div className={mod.color} style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }} key={mod.id}>
+              <div style={{flex: 1}}>
                 <p>
                   <D20Popup
                     key={index}
@@ -172,7 +173,7 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
                   />
                 </p>
               </div>
-              <div>
+              <div style={{flex: 1}}>
                 <p style={{ color: "orange" }}>
                   {mod.allMod.tot.value.sign}
                   {Math.floor(mod.allMod.tot.value.number)}{" "}
@@ -180,7 +181,7 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
               </div>
 
               {mod.allMod.allMod.map((modif, index) => (
-                <div key={index}>
+                <div key={index} style={{flex: 1}}>
                   <p>
                     {modif.value.sign}
                     {Math.floor(modif.value.number)}
@@ -198,9 +199,10 @@ export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
   list
 }) => {
   return (
-    <div>
+    <div className="rpgui-container-framed-grey-mini dexterity" style={{ display: "flex" , flexWrap: "wrap", justifyContent: "space-between"}}>
       {list.map((mod, index) => (
-        <p key={index}>
+        <div key={index}>
+        <p>
           <D12Popup key={index} {...mod.dice} />
           <span style={{ color: "orange" }}>
             {mod.allMod.tot.value.sign}
@@ -214,6 +216,7 @@ export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
             </span>
           ))}
         </p>
+        </div>
       ))}
     </div>
   );

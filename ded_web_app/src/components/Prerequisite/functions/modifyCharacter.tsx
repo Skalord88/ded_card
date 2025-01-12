@@ -104,6 +104,8 @@ export const modifyCharacter = (
     CountBabFromClassPc(char) + FindAllAdjLevel(char) * adjClass.classBab
   );
 
+  prer.filter(p => console.log(p.abilitys))
+
   const newChar: CharToModify = {
     abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
     bab: adjBab,

@@ -53,7 +53,7 @@ export const Show = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [charId]);
 
-  if (!char) return <>...character loading...</>;
+  if (!char) return <p>...character loading...</p>;
 
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
@@ -82,6 +82,11 @@ export const Show = () => {
     }
   };
   let modif: Prerequisite[] = [];
+
+  // archetype
+  char.archetypes.forEach(arch =>
+    arch.modifiers && modif.push(arch.modifiers) 
+  )
 
   // size
   char.race.size.modifiers && modif.push(char.race.size.modifiers);
@@ -156,7 +161,7 @@ export const Show = () => {
             style={{
               display: "grid",
               justifyContent: "center",
-              gridTemplateColumns: "40% 20% 40%"
+              gridTemplateColumns: "20% 20% 60%"
             }}
           >
             <div
@@ -272,8 +277,8 @@ export const Show = () => {
               key="skills"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 2",
-                gridRow: "11 / span 2"
+                gridColumn: 3,
+                gridRow: "11 / span 3"
               }}
             >
               <SkillShowComponent char={modChar} />
@@ -282,7 +287,7 @@ export const Show = () => {
               key="speed"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
+                gridColumn: "1 / span 2",
                 gridRow: 11
               }}
             >
@@ -292,7 +297,7 @@ export const Show = () => {
               key="feats"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
+                gridColumn: "1 / span 2",
                 gridRow: 12
               }}
             >

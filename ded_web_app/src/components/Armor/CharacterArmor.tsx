@@ -16,7 +16,7 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
     <>
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
 
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
         {listOfArmor.map((armor, index) =>
           armor.signNum.number ? (
             <div className="rpgui-container-framed-grey" key={index}>

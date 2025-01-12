@@ -6,7 +6,7 @@ export type WeaponThrowDiceProps = {
   dices: number[];
   values: number[];
   weapon: Weapon;
-  targetMod?: AttackRoll
+  targetMod?: AttackRoll;
 };
 
 export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
@@ -24,16 +24,24 @@ export const WeaponThrowDice: React.FC<WeaponThrowDiceProps> = ({
   return (
     <>
       {results.map((res, index) => {
-        const bonus = targetMod?.bonus? Number(targetMod?.bonus) : 0;
-        const target = targetMod?.target? targetMod.target.join(", ") + ":" : null;
+        const bonus = targetMod?.bonus ? Number(targetMod?.bonus) : 0;
+        const target = targetMod?.target
+          ? targetMod.target.join(", ") + ":"
+          : null;
         return CriticalHit(weapon.critical).includes(res.dice) ? (
-          <p key={index} style={{ color: "red" }}>
-               {target} {res.dice} + {res.value +  bonus} = {res.dice + res.value +  bonus}
-          </p>
-        ) : (
-          <p key={index}>
-              {target} {res.dice} + {res.value +  bonus} = {res.dice + res.value +  bonus} 
+          <div key={index}>
+            <p style={{ color: "red" }}>
+              {target} {res.dice} + {res.value + bonus} ={" "}
+              {res.dice + res.value + bonus}
             </p>
+          </div>
+        ) : (
+          <div key={index}>
+            <p>
+              {target} {res.dice} + {res.value + bonus} ={" "}
+              {res.dice + res.value + bonus}
+            </p>
+          </div>
         );
       })}
     </>

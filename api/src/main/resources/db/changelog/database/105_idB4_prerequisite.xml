@@ -713,6 +713,10 @@
             <column name="prerequisite_skill_id" value="14016" />
         </insert>
 
+        <!-- Archetipe id:91.000 -->
+
+        <!-- Half-Fiend -->
+
         <!-- Razze id:100.000 -->
         <!-- Dwarf 100000-->
         <insert tableName="prerequisite">

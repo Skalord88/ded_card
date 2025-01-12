@@ -23,6 +23,7 @@ export const Initiative: React.FC<InitiativeProps> = ({ char }) => {
   const allDice: AllModifiersInDiceProps = {
     list: [
       {
+        id: 1,
         color: "DEXTERITY",
         dice: {
           textOrWeapon: initiative.tot.mod,

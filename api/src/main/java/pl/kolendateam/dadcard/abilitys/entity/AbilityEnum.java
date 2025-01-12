@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.abilitys.entity;
 
 public enum AbilityEnum {
-  STRENGHT("Streght"),
+  STRENGTH("Strength"),
   DEXTERITY("Dexterity"),
   CONSTITUTION("Constitution"),
   INTELLIGENCE("Intelligence"),

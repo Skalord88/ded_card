@@ -1,3 +1,4 @@
+import { abilityBackgroundColor } from "./Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "./functions";
 import {
     AllModifiersInDice20,
@@ -82,7 +83,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   const allDice: AllModifiersInDiceProps = {
     list: [
       {
-        color: "CONSTITUTION",
+        id: 1,
+        color: abilityBackgroundColor("CONSTITUTION"),
         dice: {
           textOrWeapon: fortitude.tot.mod,
           value: fortitude.tot.value.number,
@@ -93,7 +95,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         allMod: fortitude
       },
       {
-        color: "DEXTERITY",
+        id: 2,
+        color: abilityBackgroundColor("DEXTERITY"),
         dice: {
           textOrWeapon: reflex.tot.mod,
           value: reflex.tot.value.number,
@@ -104,7 +107,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         allMod: reflex
       },
       {
-        color: "WISDOM",
+        id: 3,
+        color: abilityBackgroundColor("WISDOM"),
         dice: {
           textOrWeapon: will.tot.mod,
           value: will.tot.value.number,

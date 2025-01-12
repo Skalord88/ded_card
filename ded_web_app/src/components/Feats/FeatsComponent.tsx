@@ -6,7 +6,7 @@ import { FormattingText } from "../Formatting/Function";
 import { SignNumber } from "../functions";
 
 export type FeatsComponentProps = {
-  char: CharToModify
+  char: CharToModify;
 };
 
 export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
@@ -17,20 +17,70 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
     new Map(featsClassFeats.map((item) => [item.feat.id, item])).values()
   );
 
-  const fePc: {name: string, prer?: Prerequisite[], description: string[] }[] 
-  = featsFeatPc.map(f => f && ({
-    name: f.feat.featName, 
-    prer: (
-      f.selected && f.feat.modifiers ? [f.selected, f.feat.modifiers] : f.selected ? [f.selected] : f.feat.modifiers? [f.feat.modifiers] : []),
-      description: [
-        (f.feat.normal != null ? "normal: " + f.feat.normal + "\n" : ""), (f.feat.special != null ? "special: " + f.feat.special + "\n" : ""),
-        (f.feat.benefit != null ? "benefit: " + f.feat.benefit + "\n" : ""), f.feat.special? "special: " + f.feat.special : ""]}))
-  const fe: {name: string, prer?: Prerequisite[], description: string[] }[] 
-  = featsFeats.map(f => f && ({name: f.featName, prer: f.modifiers && [f.modifiers], description: [
-    "normal: " + f.normal, "special: " + f.special, "benefit: " + f.benefit, "special: " + f.special]}))
-  const feCl: {name: string, prer?: Prerequisite[], description: string[] }[] 
-  = featsClassFeatsOneTime.map(f => f && ({name: f.feat.featName, prer: f.modifiers && [f.modifiers], description: [
-    "normal: " + f.feat.normal, "special: " + f.feat.special, "benefit: " + f.feat.benefit, "special: " + f.feat.special]}))
+  const fePc: {
+    id: string;
+    name: string;
+    prer?: Prerequisite[];
+    description: string[];
+  }[] = featsFeatPc.map(
+    (f, index) =>
+      f && {
+        id: index + ".fePc",
+        name: f.feat.featName,
+        prer:
+          f.selected && f.feat.modifiers
+            ? [f.selected, f.feat.modifiers]
+            : f.selected
+            ? [f.selected]
+            : f.feat.modifiers
+            ? [f.feat.modifiers]
+            : [],
+        description: [
+          f.feat.normal != null ? "normal: " + f.feat.normal + "\n" : "",
+          f.feat.special != null ? "special: " + f.feat.special + "\n" : "",
+          f.feat.benefit != null ? "benefit: " + f.feat.benefit + "\n" : "",
+          f.feat.special != null ? "special: " + f.feat.special : ""
+        ]
+      }
+  );
+  const fe: {
+    id: string;
+    name: string;
+    prer?: Prerequisite[];
+    description: string[];
+  }[] = featsFeats.map(
+    (f, index) =>
+      f && {
+        id: index + ".fe",
+        name: f.featName,
+        prer: f.modifiers && [f.modifiers],
+        description: [
+          "normal: " + f.normal,
+          "special: " + f.special,
+          "benefit: " + f.benefit,
+          "special: " + f.special
+        ]
+      }
+  );
+  const feCl: {
+    id: string;
+    name: string;
+    prer?: Prerequisite[];
+    description: string[];
+  }[] = featsClassFeatsOneTime.map(
+    (f, index) =>
+      f && {
+        id: index + ".feCl",
+        name: f.feat.featName,
+        prer: f.modifiers && [f.modifiers],
+        description: [
+          "normal: " + f.feat.normal,
+          "special: " + f.feat.special,
+          "benefit: " + f.feat.benefit,
+          "special: " + f.feat.special
+        ]
+      }
+  );
 
   return (
     <div>
@@ -43,19 +93,31 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
 };
 
 export type ListOfFeatsMapProps = {
-  feats: {name: string, prer?: Prerequisite[], description: string[] }[], titolo: string
-}
+  feats: { name: string; prer?: Prerequisite[]; description: string[] }[];
+  titolo: string;
+};
 
-export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) => {
-  const [selectedFeat, setSelectedFeat] = useState<{name: string, prer?: Prerequisite [], description: string[] } | null>(null);
+export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
+  feats,
+  titolo
+}) => {
+  const [selectedFeat, setSelectedFeat] = useState<{
+    name: string;
+    prer?: Prerequisite[];
+    description: string[];
+  } | null>(null);
 
   const orderedFeats = feats.sort((a, b) => {
-    const nameA = a.name || ''; // Default to an empty string if null or undefined
-    const nameB = b.name || '';
+    const nameA = a.name || ""; // Default to an empty string if null or undefined
+    const nameB = b.name || "";
     return nameA.localeCompare(nameB);
   });
 
-  const selectFeat = (feat: {name: string, prer?: Prerequisite[], description: string[] }) => {
+  const selectFeat = (feat: {
+    name: string;
+    prer?: Prerequisite[];
+    description: string[];
+  }) => {
     setSelectedFeat(feat);
   };
 
@@ -65,36 +127,37 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({feats, titolo}) =
 
   return (
     <>
-      <div>
-        {orderedFeats.length > 0 && feats && (
-          <h4>{titolo}</h4>
-        )}
-        <div style={{ display: "flex" }}>
-          <div style={{ flexBasis: "45%" }}>
-            {feats.map((f, index) =>
+      {orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
+      <div style={{ display: "grid", gridColumn: "40% 60%" }}>
+        <div style={{ gridColumn: 1 }}>
+          {feats.map(
+            (f, index) =>
               f && (
-                <>
-                  <div>
-                    <p onClick={() => selectFeat(f)}>{f.name}</p>
-                    {f.prer && <ListOfBonusMap key={index} prerequisite={f.prer} />}
-                  </div>
-                </>
+                <div key={index}>
+                  <p onClick={() => selectFeat(f)}>{f.name}</p>
+                  {f.prer && (
+                    <ListOfBonusMap key={index} prerequisite={f.prer} />
+                  )}
+                </div>
               )
-            )}
-          </div>
-          {selectedFeat && (
-            <div style={{ flexBasis: "55%" }}>
-              <SelectedFeat key={selectFeat.name} feat={selectedFeat} onClear={clearSelectedFeat} />
-            </div>
           )}
         </div>
+        {selectedFeat && (
+          <div style={{ gridColumn: 2 }}>
+            <SelectedFeat
+              key={selectFeat.name}
+              feat={selectedFeat}
+              onClear={clearSelectedFeat}
+            />
+          </div>
+        )}
       </div>
     </>
   );
 };
 
 export type SelectedFeatProps = {
-  feat: {name: string, prer?: Prerequisite[], description: string[] };
+  feat: { name: string; prer?: Prerequisite[]; description: string[] };
   onClear: () => void;
 };
 
@@ -112,7 +175,7 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
   if (!view) return null;
 
   return (
-    <div className="rpgui-container-framed-grey">
+    <div>
       {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
       {feat.description && <p>{feat.description}</p>}
     </div>
@@ -126,18 +189,29 @@ export type ListOfBonusProps = {
 export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
   return (
     <>
-        {prerequisite.prerequisite ? prerequisite.prerequisite.map(p => 
+      {prerequisite.prerequisite?.map(
+        (p, pIndex) =>
           p && (
-            <>
-              {p.items?.map((i, index) => (
-                <li key={index}>{i.name}</li>
+            <div key={`prerequisite-${pIndex}`}>
+              {p.items?.map((i) => (
+                <li key={`item-${i.id ?? i.name}`}>{i.name}</li>
               ))}
-              {p.skillStudy?.map((s, index) => 
-                <li key={index}>{FormattingText(s.skill?.skillName ?? "")} {FormattingText(s.study?.studyName ?? "")} {SignNumber(s.rank)}{s.rank} {s.target?.join(", ")}</li>
-              )}
-            </>
+              {p.skillStudy?.map((s, index) => (
+                <li
+                  key={`skillStudy-${index ?? s.skill?.skillName}-${
+                    s.study?.studyName
+                  }`}
+                >
+                  {FormattingText(s.skill?.skillName ?? "")}
+                  {FormattingText(s.study?.studyName ?? "")}
+                  {SignNumber(s.rank)}
+                  {s.rank}
+                  {s.target?.join(", ")}
+                </li>
+              ))}
+            </div>
           )
-        ): null}
+      )}
     </>
   );
 };

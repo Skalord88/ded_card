@@ -4,17 +4,36 @@ export const changeAbilitysFromPrerequisite = (
   charAbilitys: Abilitys,
   prerAbilitysList: Abilitys[]
 ): Abilitys => {
-  if (prerAbilitysList.length > 0) {
-    let abilitys: Abilitys = charAbilitys;
+  const str: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.strength,
+    0
+  );
+  const dex: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.dexterity,
+    0
+  );
+  const cos: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.constitution,
+    0
+  );
+  const int: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.intelligence,
+    0
+  );
+  const wis: number = prerAbilitysList.reduce((tot, ab) => tot + ab.wisdom, 0);
+  const cha: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.charisma,
+    0
+  );
 
-    prerAbilitysList.forEach((prer) => {
-      charAbilitys = modifyAbilitys(abilitys, prer);
-    });
-
-    return charAbilitys;
-  } else {
-    return charAbilitys;
-  }
+  return modifyAbilitys(charAbilitys, {
+    strength: str,
+    dexterity: dex,
+    constitution: cos,
+    intelligence: int,
+    wisdom: wis,
+    charisma: cha
+  });
 };
 
 export const modifyAbilitys = (
@@ -22,7 +41,6 @@ export const modifyAbilitys = (
   prerAbilitys: Abilitys
 ): Abilitys => {
   const newAbility: Abilitys = {
-    ...charAbilitys,
     strength: charAbilitys.strength + prerAbilitys.strength,
     dexterity: charAbilitys.dexterity + prerAbilitys.dexterity,
     constitution: charAbilitys.constitution + prerAbilitys.constitution,

@@ -25,7 +25,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "8% 50% 10% 8% 8% 8% 8%"
+          gridTemplateColumns: "8% 46% 10% 9% 9% 9% 9%"
         }}
       >
         <div className="rpgui-container-framed-grey-mini">
@@ -41,7 +41,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
           <p>rnk</p>
         </div>
         <div className="rpgui-container-framed-grey-mini">
-          <p>abi</p>
+          <p>abl</p>
         </div>
         <div className="rpgui-container-framed-grey-mini">
           <p>bns</p>

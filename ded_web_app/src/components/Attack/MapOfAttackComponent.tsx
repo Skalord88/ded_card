@@ -1,3 +1,4 @@
+import { abilityBackgroundColor } from "../Abilitys/Colors";
 import { DiceText } from "../Dice/Functions";
 import { SignNumber } from "../functions";
 import { D20PopupWeapon } from "../Popup/DicePopup/D20PopupWeapon";
@@ -15,7 +16,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
   return char.displayAttType ? (
     <AttackGrid attack={char.displayAttType} buckler={buckler} />
   ) : (
-    <>...loading...</>
+    <p>...loading...</p>
   );
 };
 
@@ -25,7 +26,6 @@ export type AttackGridProps = {
 };
 
 export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
-
   const chceckBuckler = (type: string, show: DisplayAttType) => {
     if (
       type === "melee" &&
@@ -41,26 +41,40 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
     }
     return 0;
   };
+  const styleDiv = (type: string): string => {
+    return type.includes("dis")
+      ? abilityBackgroundColor("DEXTERITY")
+      : abilityBackgroundColor("STRENGTH");
+  };
   return (
     <>
+      <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
       <div style={{ display: "grid" }}>
+        <h2
+          // className="rpgui-container-framed-grey"
+          style={{ gridColumn: "1 / span 2", gridRow: 1 }}
+        >
+          {attack.titleOne}
+        </h2>
         {attack.setOne &&
           attack.setOne.map((weapon, index) => (
             <div
+              key={index}
               style={
                 index === 0
-                  ? { gridColumn: 1, gridRow: 1 }
+                  ? { gridColumn: 1, gridRow: 2 }
                   : index === 1
-                  ? { gridColumn: 2, gridRow: 1 }
-                  : { gridColumn: 1, gridRow: 2 }
+                  ? { gridColumn: 2, gridRow: 2 }
+                  : { gridColumn: 1, gridRow: 3 }
               }
             >
+              <div className="rpgui-container-framed-grey">
               <p>
-                {weapon.stat.weapon.name}{" "}
+                {weapon.stat.weapon.name}</p>
                 {weapon.display.map(
                   (dis) =>
                     dis.show && (
-                      <>
+                      <div className={styleDiv(dis.type)}>
                         <p>
                           <D20PopupWeapon
                             type={dis.type}
@@ -76,7 +90,9 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                               {SignNumber(
                                 att + chceckBuckler(dis.type, weapon.display)
                               )}
-                              {Math.floor(att + chceckBuckler(dis.type, weapon.display))}{" "}
+                              {Math.floor(
+                                att + chceckBuckler(dis.type, weapon.display)
+                              )}{" "}
                             </span>
                           ))}
                           <span>
@@ -86,57 +102,69 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                           </span>
                           <span> {DiceText(weapon.stat.weapon.critical)}</span>
                         </p>
-                      </>
+                      </div>
                     )
                 )}
-              </p>
+              </div>
               {/* <BucklerOn index={index} check={buckler? true : false} /> */}
             </div>
           ))}
+        <h2
+          // className="rpgui-container-framed-grey"
+          style={{ gridColumn: "1 / span 2", gridRow: 4 }}
+        >
+          {attack.titleTwo}
+        </h2>
         {attack.setTwo &&
           attack.setTwo.map((weapon, index) => (
             <div
+              key={index}
               style={
                 index === 0
-                  ? { gridColumn: 1, gridRow: 3 }
+                  ? { gridColumn: 1, gridRow: 5 }
                   : index === 1
-                  ? { gridColumn: 2, gridRow: 3 }
-                  : { gridColumn: 1, gridRow: 4 }
+                  ? { gridColumn: 2, gridRow: 5 }
+                  : { gridColumn: 1, gridRow: 6 }
               }
             >
+              <div className="rpgui-container-framed-grey">
               <p>
-                {weapon.stat.weapon.name}{" "}
+                {weapon.stat.weapon.name}</p>
                 {weapon.display.map(
                   (dis) =>
                     dis.show && (
-                      <p>
-                        <D20PopupWeapon
-                          type={dis.type}
-                          weapon={weapon.stat.weapon}
-                          bab={dis.att}
-                          dmg={dis.dmg}
-                          bucklerMls={chceckBuckler(dis.type, weapon.display)}
-                          targetMod={attack.targetMod}
-                        />
-                        :
-                        {dis.att.map((att) => (
+                      <div className={styleDiv(dis.type)}>
+                        <p>
+                          <D20PopupWeapon
+                            type={dis.type}
+                            weapon={weapon.stat.weapon}
+                            bab={dis.att}
+                            dmg={dis.dmg}
+                            bucklerMls={chceckBuckler(dis.type, weapon.display)}
+                            targetMod={attack.targetMod}
+                          />
+                          :
+                          {dis.att.map((att) => (
+                            <span>
+                              {SignNumber(
+                                att + chceckBuckler(dis.type, weapon.display)
+                              )}
+                              {Math.floor(
+                                att + chceckBuckler(dis.type, weapon.display)
+                              )}{" "}
+                            </span>
+                          ))}
                           <span>
-                            {SignNumber(
-                              att + chceckBuckler(dis.type, weapon.display)
-                            )}
-                            {Math.floor(att + chceckBuckler(dis.type, weapon.display))}{" "}
+                            {weapon.stat.weapon.damage}
+                            {SignNumber(dis.dmg)}
+                            {dis.dmg}
                           </span>
-                        ))}
-                        <span>
-                          {weapon.stat.weapon.damage}
-                          {SignNumber(dis.dmg)}
-                          {dis.dmg}
-                        </span>
-                        <span> {DiceText(weapon.stat.weapon.critical)}</span>
-                      </p>
+                          <span> {DiceText(weapon.stat.weapon.critical)}</span>
+                        </p>
+                      </div>
                     )
                 )}
-              </p>
+              </div>
               {/* <BucklerOn index={index} check={buckler? true : false} /> */}
             </div>
           ))}

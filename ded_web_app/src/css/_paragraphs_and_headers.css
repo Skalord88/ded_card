@@ -9,7 +9,7 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.14em;
+    font-size: 1.50em;
 
 	/* center text */
 	text-align: center;
@@ -26,7 +26,7 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.25em;
+    font-size: 1.15em;
 
 	/* center text */
 	text-align: center;
@@ -43,11 +43,11 @@
 	color: white;
 	font-weight: 1;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.15em;
+    font-size: 1em;
     text-decoration: underline;
 
 	/* center text */
-	text-align: center;
+	text-align: left;
 
 	/* padding */
 	padding: 0 0 0 0;
@@ -61,11 +61,12 @@
 	color: white;
 	font-weight: 1;
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.0em;
+    font-size: 15px;
+	line-height: 25px;
     text-decoration: underline;
 
 	/* center text */
-	text-align: center;
+	text-align: left;
 
 	/* padding */
 	padding: 0 0 0 0;
@@ -127,6 +128,6 @@
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	font-size: 12px;
-	line-height: 15px;
+	line-height: 20px;
 }
 
