@@ -28,5 +28,14 @@
           <constraints nullable="true"/>
         </column>
       </createTable>
+
+      <createTable tableName="race_special_abilities">
+        <column name="sub_race_id" type="int" >
+          <constraints nullable="true" />
+        </column>
+        <column name="special_abilities_id" type="int" >
+          <constraints nullable="true" />
+        </column>
+      </createTable>
   </changeSet>
 </databaseChangeLog>

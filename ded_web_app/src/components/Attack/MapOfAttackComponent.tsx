@@ -68,7 +68,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                   : { gridColumn: 1, gridRow: 3 }
               }
             >
-              <div className="rpgui-container-framed-grey">
+              <div>
               <p>
                 {weapon.stat.weapon.name}</p>
                 {weapon.display.map(
@@ -127,7 +127,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                   : { gridColumn: 1, gridRow: 6 }
               }
             >
-              <div className="rpgui-container-framed-grey">
+              <div>
               <p>
                 {weapon.stat.weapon.name}</p>
                 {weapon.display.map(

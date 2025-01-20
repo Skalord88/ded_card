@@ -160,14 +160,14 @@ export const Show = () => {
           <div
             style={{
               display: "grid",
-              justifyContent: "center",
-              gridTemplateColumns: "20% 20% 60%"
+              // justifyContent: "center",
+              gridTemplateColumns: "25% 25% 25% 25%"
             }}
           >
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
+                gridColumn: "3 / span 2",
                 gridRow: 1
               }}
             >
@@ -186,8 +186,8 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 2",
-                gridRow: 3
+                gridColumn: 3,
+                gridRow: "2 / span 2"
               }}
             >
               <ClassExpGold char={char} />
@@ -196,7 +196,7 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
+                gridColumn: 4,
                 gridRow: "2 / span 2"
               }}
             >
@@ -206,8 +206,8 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
-                gridRow: "4 / span 2"
+                gridColumn: "1 / span 2",
+                gridRow: 5
               }}
             >
               <HpComponent char={modChar} />
@@ -217,7 +217,7 @@ export const Show = () => {
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
-                gridRow: "4 / span 2"
+                gridRow: "3 / span 2" //4
               }}
             >
               <BaseAttack char={modChar} />
@@ -226,8 +226,8 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 2",
-                gridRow: "6 / span 2"
+                gridColumn: "3 / span 2",
+                gridRow: 5
               }}
             >
               <SavingThrowComponent char={modChar} />
@@ -236,8 +236,8 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
-                gridRow: 6
+                gridColumn: "3 / span 2",
+                gridRow: 4
               }}
             >
               <Initiative char={modChar} />
@@ -246,7 +246,7 @@ export const Show = () => {
             <div
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 3",
+                gridColumn: "1 / span 4",
                 gridRow: 8
               }}
             >
@@ -267,8 +267,8 @@ export const Show = () => {
               key="inventory"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 3",
-                gridRow: 10
+                gridColumn: "1 / span 4",
+                gridRow: 11
               }}
             >
               <InventoryComponent char={modChar} />
@@ -277,8 +277,8 @@ export const Show = () => {
               key="skills"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: 3,
-                gridRow: "11 / span 3"
+                gridColumn: "3 / span 2",
+                gridRow: "12 / span 3"
               }}
             >
               <SkillShowComponent char={modChar} />
@@ -287,8 +287,8 @@ export const Show = () => {
               key="speed"
               className="rpgui-container-framed-grey"
               style={{
-                gridColumn: "1 / span 2",
-                gridRow: 11
+                gridColumn: 4,
+                gridRow: 9
               }}
             >
               <SpeedComponent char={modChar} />

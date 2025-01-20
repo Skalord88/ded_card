@@ -16,7 +16,7 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
     <>
       <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
 
-      <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
         {listOfArmor.map((armor, index) =>
           armor.signNum.number ? (
             <div className="rpgui-container-framed-grey" key={index}>
@@ -28,10 +28,12 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
             </div>
           ) : null
         )}
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", flexDirection: "row-reverse" }}>
         <Failure inventory={char.inventory} key={"failure"} />
         <FlatFooted armorList={listOfArmor} key={"flatFooted"} />
         <Contact armorList={listOfArmor} key={"contact"} />
-      </div>
+        </div>
       {(char.armor.target.length > 0 || char.armor.composed.length > 0) && (
         <div style={{ display: "flex", flexDirection: "row" }}>
           <TargetAC target={char.armor.target} composed={char.armor.composed} />

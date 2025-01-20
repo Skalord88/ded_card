@@ -6,6 +6,8 @@ import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.race.MaperListRegionToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.entity.SubRace;
@@ -23,6 +25,7 @@ public class SubRaceDTO {
   public Set<FeatsDTO> raceFeats;
   public Integer levelAdjustment;
   public SizeDTO size;
+  public Set<SpecialAbilitiesDTO> specialAbilities;
   public Set<RegionBaseDTO> availableRegions;
 
   public SubRaceDTO(SubRace subRace) {
@@ -43,5 +46,11 @@ public class SubRaceDTO {
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
     this.availableRegions =
       MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
+    this.specialAbilities =
+      subRace.getSpecialAbilities() != null
+        ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+          subRace.getSpecialAbilities()
+        )
+        : null;
   }
 }

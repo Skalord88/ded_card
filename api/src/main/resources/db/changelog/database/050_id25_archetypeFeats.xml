@@ -1,3 +1,4 @@
+
 <databaseChangeLog
   xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -6,10 +7,10 @@
   <changeSet id="25" author="oscar">
     <createTable tableName="archetype_feats">
       <column name="archetype_id" type="int">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="feats_id" type="int">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
     </createTable>
 

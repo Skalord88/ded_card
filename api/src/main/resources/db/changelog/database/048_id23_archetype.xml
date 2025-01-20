@@ -21,5 +21,44 @@
         <constraints nullable="true" />
       </column>
     </createTable>
+
+    <createTable tableName="special_abilities">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="type" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="description" type="varchar(500)">
+        <constraints nullable="true" />
+      </column>
+      <column name="dc" type="Integer">
+        <constraints nullable="true" />
+      </column>
+      <column name="dc_ability" type="json">
+        <constraints nullable="true" />
+      </column>
+      <column name="value" type="Integer">
+        <constraints nullable="true" />
+      </column>
+      <column name="target" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="area" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
+
+    <createTable tableName="archetype_special_abilities">
+      <column name="archetype_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="special_abilities_id" type="int">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
   </changeSet>
 </databaseChangeLog>

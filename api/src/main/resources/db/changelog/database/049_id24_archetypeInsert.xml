@@ -6,7 +6,7 @@
   <changeSet id="24" author="oscar">
     <insert tableName="archetype">
       <column name="id" value="1" />
-      <column name="archetype_name" value="Half-Dragon" />
+      <column name="archetype_name" value="Silver Half-Dragon" />
       <column name="level_adjustment" value="3" />
       <column name="avatar_url" value="" />
       <column name="modifiers_id" value="91001" />
@@ -28,8 +28,26 @@
       <column name="saving_throw"
         value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
-                    &quot;target&quot; : [ &quot;COLD&quot; ] } ]
-                    }" />
+                    &quot;target&quot; : [
+                     &quot;COLD&quot; , 
+                     &quot;SLEEP&quot; , 
+                     &quot;PARALYSIS&quot; 
+                    ] } ] }" />
+    </insert>
+
+    <insert tableName="special_abilities">
+      <column name="id" value="10" />
+      <column name="name" value="Silver Breath Weapon" />
+      <column name="type" value="SUPERNATURAL" />
+      <column name="description"
+        value="A half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
+      <column name="dc_ability" value="[ &quot;COS&quot; , &quot;HALF_RACE&quot; ]" />
+      <column name="area" value="30-foot cone of cold" />
+    </insert>
+
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="1" />
+      <column name="special_abilities_id" value="10" />
     </insert>
 
     <!-- Half-Fiend -->

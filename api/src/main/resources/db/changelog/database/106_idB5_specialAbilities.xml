@@ -1,0 +1,23 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="204" author="oscar">
+
+        <!-- Breath Weapon -->
+        <!-- Half-Dragon Black 1 -->
+        <!-- Half-Dragon Silver 10 -->
+
+        <insert tableName="special_abilities">
+            <column name="id" value="1" />
+            <column name="name" value="Black Breath Weapon" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="description"
+                value="A half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
+            <column name="dc_ability" value="[ &quot;COS&quot; , &quot;HALF_RACE&quot; ]" />
+            <column name="area" value="60-foot line of acid" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

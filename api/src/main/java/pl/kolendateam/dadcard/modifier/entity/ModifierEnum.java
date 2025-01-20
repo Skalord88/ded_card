@@ -24,8 +24,8 @@ public enum ModifierEnum {
   ARMOR_TYPE,
 
   // ability
-  STRENGHT,
-  STRENGHT_,
+  STRENGTH,
+  STRENGTH_,
   DEXTERITY,
   DEXTERITY_,
   CONSTITUTION,
@@ -325,4 +325,13 @@ public enum ModifierEnum {
   SONIC,
   LUCK,
   UNIVERSAL,
+
+  SUPERNATURAL,
+  SPELL_LIKE,
+  HALF_HD,
+  HALF_RACE,
+  HALF_COS,
+  HALF_CHA,
+  CHA,
+  COS,
 }

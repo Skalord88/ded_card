@@ -6,6 +6,8 @@ import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 
 @NoArgsConstructor
@@ -13,9 +15,9 @@ public class ArchetypeDTO {
 
   public int id;
   public String archetypeName;
-  // public Set<ModifierDTO> modifiers;
   public PrerequisiteDTO modifiers;
   public Set<FeatsDTO> archetypeFeats;
+  public Set<SpecialAbilitiesDTO> specialAbilities;
   public int levelAdjustment;
   public String avatarUrl;
 
@@ -30,6 +32,12 @@ public class ArchetypeDTO {
     this.archetypeFeats =
       MapperFeatsDTO.toFeatsSetDTO(archetype.getArchetypeFeats());
     this.levelAdjustment = archetype.getLevelAdjustment();
+    this.specialAbilities =
+      archetype.getSpecialAbilities() != null
+        ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+          archetype.getSpecialAbilities()
+        )
+        : null;
     this.avatarUrl = archetype.getAvatarUrl();
   }
 }

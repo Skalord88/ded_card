@@ -941,8 +941,10 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="1023" />
-      <column name="attack_roll" value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
-      <column name="text" value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+      <column name="attack_roll"
+        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
     </insert>
 
     <insert tableName="feats">
@@ -985,8 +987,10 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="1022" />
-      <column name="damage_bonus" value="{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
-      <column name="text" value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+      <column name="damage_bonus"
+        value="{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
     </insert>
 
     <insert tableName="feats">
@@ -1582,12 +1586,12 @@
 
     <!-- Martial Weapon Proficiency [General] selected -->
 
-        <insert tableName="prerequisite">
-            <column name="id" value="2007" />
-            <column name="weapon_type"
-                value="[&quot;MARTIAL&quot;]" />
-            <column name="text" value="Martial Weapon Proficiency." />
-        </insert>
+    <insert tableName="prerequisite">
+      <column name="id" value="2007" />
+      <column name="weapon_type"
+        value="[&quot;MARTIAL&quot;]" />
+      <column name="text" value="Martial Weapon Proficiency." />
+    </insert>
 
     <insert tableName="feats">
       <column name="id" value="66" />
@@ -1797,7 +1801,8 @@
     <!-- Point Blank Shot [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1019" />
-      <column name="attack_roll" value="{
+      <column name="attack_roll"
+        value="{
         &quot;bonus&quot; : 1,
         &quot;target&quot;: [&quot;SHORT_RANGE&quot;]
       }" />
@@ -2366,7 +2371,8 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="1020" />
-      <column name="attack_roll" value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="attack_roll"
+        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
     </insert>
 
@@ -2400,7 +2406,8 @@
     <!-- Weapon Specialization [General] MOD -->
     <insert tableName="prerequisite">
       <column name="id" value="1021" />
-      <column name="damage_bonus" value="{
+      <column name="damage_bonus"
+        value="{
         &quot;bonus&quot; : 2 , &quot;target&quot; : [ &quot;SELECTED&quot; ]
       }" />
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
@@ -2467,7 +2474,6 @@
     <insert tableName="feats">
       <column name="id" value="110" />
       <column name="feat_name" value="Widen Spell [Metamagic]" />
-
       <column name="benefit"
         value="You can alter a burst, emanation, line, or spread shaped spell to increase its area. Any numeric measurements of the spell,s area increase by 100%.A widened spell uses up a spell slot three levels higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -2475,15 +2481,23 @@
     </insert>
 
     <!-- Barbarian 1000 -->
+    <!-- Fast Movement mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3001" />
+      <column name="speed" value="{ &quot;foot&quot; : 10 }" />
+      <column name="text" value="barbarian's +10 feet" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="1001" />
       <column name="feat_name" value="Fast Movement (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
-        value="A barbarian,s land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian,s speed because of any load carried or armor worn.
+        value="A barbarian's land speed is faster than the norm for his race by +10 feet. This benefit applies only when he is wearing no armor, light armor, or medium armor and not carrying a heavy load. Apply this bonus before modifying the barbarian,s speed because of any load carried or armor worn.
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3001" />
     </insert>
 
     <insert tableName="feats">
@@ -2521,6 +2535,23 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Trap Sense -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3002" />
+      <column name="saving_throw"
+        value="{ 
+        &quot;reflex&quot; : 1,
+        &quot;resistance&quot; : [ {
+        &quot;target&quot; : [ &quot;TRAP&quot; ]
+      } ] }" />
+      <column name="armor_class"
+        value="{ 
+        &quot;dodgeBonus&quot; : 1,
+        &quot;target&quot; : [ &quot;TRAP&quot; ]
+      }" />
+      <column name="text" value="Sense for trap" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="1005" />
       <column name="feat_name" value="Trap Sense (Ex)" />
@@ -2530,6 +2561,7 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3002" />
     </insert>
 
     <insert tableName="feats">
@@ -2862,6 +2894,22 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Nature Sense -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3003" />
+      <column name="text" value="+2 bonus on Knowledge (nature) and Survival" />
+    </insert>
+
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_id" value="3003" />
+      <column name="prerequisite_skill_id" value="292" />
+    </insert>
+
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_id" value="3003" />
+      <column name="prerequisite_skill_id" value="10032" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="4005" />
       <column name="feat_name" value="Nature Sense (Ex)" />
@@ -2871,6 +2919,7 @@
           " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3003" />
     </insert>
 
     <insert tableName="feats">
@@ -2909,15 +2958,30 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Resist Nature's Lure -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3004" />
+      <column name="saving_throw"
+        value="{
+        &quot;resistance&quot; : [ {
+          &quot;target&quot; : [ &quot;FEY&quot; ],
+          &quot;bonus&quot; : 4,
+          &quot;type&quot; : &quot;SAVING&quot;
+        }]
+      }" />
+      <column name="text" value="+4 bonus on saving vs fey" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="4009" />
-      <column name="feat_name" value="Resist Nature,s Lure (Ex)" />
+      <column name="feat_name" value="Resist Nature's Lure (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
         value="Starting at 4th level, a druid gains a +4 bonus on saving throws against the spell-like abilities of fey.
           " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3004" />
     </insert>
 
     <insert tableName="feats">
@@ -2939,6 +3003,19 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Venom Immunity -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3005" />
+      <column name="saving_throw"
+        value="{
+        &quot;resistance&quot; : [ {
+          &quot;target&quot; : [ &quot;POISON&quot; ],
+          &quot;type&quot; : &quot;IMMUNITY&quot;
+        }]
+      }" />
+      <column name="text" value="+4 bonus on saving vs fey" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="4011" />
       <column name="feat_name" value="Venom Immunity (Ex)" />
@@ -2948,6 +3025,7 @@
           " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3005" />
     </insert>
 
     <insert tableName="feats">
@@ -3053,6 +3131,15 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Fast Movement -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3006" />
+      <column name="speed" value="{
+        &quot;foot&quot; : 10
+      }" />
+      <column name="text" value="+10 ft for monk" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="6006" />
       <column name="feat_name" value="Fast Movement (Ex)" />
@@ -3062,6 +3149,20 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3006" />
+    </insert>
+
+    <!-- Still Mind -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3007" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ]
+                }" />
+      <column name="text" value="+2 bonus on saving vs enchantment for monk" />
     </insert>
 
     <insert tableName="feats">
@@ -3073,6 +3174,7 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3007" />
     </insert>
 
     <insert tableName="feats">
@@ -3097,6 +3199,18 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Purity of Body -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3008" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to all diseases for monk" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="6010" />
       <column name="feat_name" value="Purity of Body (Ex)" />
@@ -3106,6 +3220,7 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3008" />
     </insert>
 
     <insert tableName="feats">
@@ -3130,6 +3245,18 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Diamond Body -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3009" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to poisons for monk" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="6013" />
       <column name="feat_name" value="Diamond Body (Su)" />
@@ -3139,6 +3266,7 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3009" />
     </insert>
 
     <insert tableName="feats">
@@ -3237,7 +3365,7 @@
       <column name="feat_name" value="Aura of Good (Ex)" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
-        value="The power of a paladin,s aura of good (see the detect good spell) is equal to her paladin level.
+        value="The power of a paladin's aura of good (see the detect good spell) is equal to her paladin level.
         " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -3266,6 +3394,18 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Divine Grace -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3010" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;CHARISMA&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="Charisma bonus to saving" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="7004" />
       <column name="feat_name" value="Divine Grace (Su)" />
@@ -3275,6 +3415,7 @@
         " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3010" />
     </insert>
 
     <insert tableName="feats">
@@ -3289,6 +3430,18 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Aura of Courage -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3011" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;FEAR&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="Charisma bonus to saving" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="7006" />
       <column name="feat_name" value="Aura of Courage (Su)" />
@@ -3299,6 +3452,19 @@
         " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3011" />
+    </insert>
+
+    <!-- Divine Health -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3012" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to all diseases" />
     </insert>
 
     <insert tableName="feats">
@@ -3310,6 +3476,7 @@
         " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="modifiers_id" value="3012" />
     </insert>
 
     <insert tableName="feats">
@@ -3427,6 +3594,22 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Combat Style -->
+    <insert tableName="prerequisite">
+      <column name="id" value="4002"/>
+      <column name="text" value="select a combat style for ranger"/>
+    </insert>
+
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="4002" />
+      <column name="feat_id" value="81" />
+    </insert>
+
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="4002" />
+      <column name="feat_id" value="105" />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="8004" />
       <column name="feat_name" value="Combat Style (Ex)" />
@@ -3439,6 +3622,7 @@
       " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="to_select_id" value="4002" />
     </insert>
 
     <insert tableName="feats">

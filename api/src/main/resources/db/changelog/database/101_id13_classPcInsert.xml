@@ -47,7 +47,7 @@
             <column name="level" value="7" />
             <column name="first_class" value="true" />
             <column name="character_card_id" value="102" />
-            <column name="class_character_id" value="1" />
+            <column name="class_character_id" value="4" />
         </insert>
         <!-- Michał -->
         <insert tableName="class_pc">

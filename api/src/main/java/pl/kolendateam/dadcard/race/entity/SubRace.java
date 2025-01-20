@@ -20,6 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 import pl.kolendateam.dadcard.size.entity.Size;
 
 @Entity
@@ -70,4 +71,12 @@ public class SubRace implements Serializable {
   Set<Region> availableRegions = new HashSet<>();
 
   Integer levelAdjustment;
+
+  @ManyToMany
+  @JoinTable(
+    name = "race_special_abilities",
+    joinColumns = @JoinColumn(name = "sub_race_id"),
+    inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
+  )
+  Set<SpecialAbilities> specialAbilities;
 }

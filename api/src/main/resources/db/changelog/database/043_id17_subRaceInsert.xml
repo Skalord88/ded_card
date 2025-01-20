@@ -3,6 +3,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="17" author="damian">
         <!-- Dwarf 0 -->
+        <!-- Artic Dwarf -->
         <insert tableName="sub_race">
             <column name="id" value="1" />
             <column name="sub_race_name" value="Artic Dwarf" />
@@ -12,6 +13,30 @@
             <column name="level_adjustment" value="2" />
         </insert>
 
+        <insert tableName="prerequisite">
+            <column name="id" value="150001" />
+            <column name="text" value="Artic Dwarf modifiers" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;COLD&quot; ]
+                    } , {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ] }" />
+            <column name="abilitys"
+                value="{
+                 &quot;strength&quot; : 4, 
+                 &quot;dexterity&quot; : -2 
+                 }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <!-- Golden Dwarf -->
         <insert tableName="sub_race">
             <column name="id" value="2" />
             <column name="sub_race_name" value="Golden Dwarf" />
@@ -21,6 +46,21 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="prerequisite">
+            <column name="id" value="150002" />
+            <column name="text" value="Golden Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{ 
+                 &quot;dexterity&quot; : -2, 
+                 &quot;charisma&quot; : 2 
+                 }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ABERRATIONS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <!-- Grey Dwarf -->
         <insert tableName="sub_race">
             <column name="id" value="3" />
             <column name="sub_race_name" value="Grey Dwarf" />
@@ -30,6 +70,43 @@
             <column name="level_adjustment" value="2" />
         </insert>
 
+        <insert tableName="prerequisite">
+            <column name="id" value="150003" />
+            <column name="text" value="Grey Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{ 
+                 &quot;charisma&quot; : -2 
+                 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ 
+                    &quot;PARALYSIS&quot; , 
+                    &quot;PHANTASMS&quot; , 
+                    &quot;POISON&quot; ] 
+                } ] }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="144" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="181" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="281" />
+        </insert>
+
+        <!-- Shield Dwarf -->
         <insert tableName="sub_race">
             <column name="id" value="4" />
             <column name="sub_race_name" value="Shield Dwarf" />
@@ -43,11 +120,45 @@
             <column name="id" value="5" />
             <column name="sub_race_name" value="Savage Dwarf" />
             <column name="race_id" value="1" />
-            <column name="size_id" value="5" />
+            <column name="size_id" value="4" />
             <column name="modifiers_id" value="150005" />
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="prerequisite">
+            <column name="id" value="150005" />
+            <column name="text" value="Savage Dwarf modifiers" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ],
+                    &quot;bonus&quot; : 3
+                    } , {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ],
+                    &quot;bonus&quot; : 4
+                    } ] }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150005" />
+            <column name="prerequisite_skill_id" value="-2" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150005" />
+            <column name="prerequisite_skill_id" value="602" />
+        </insert>
+
+        <!-- Urdunir Dwarf -->
         <insert tableName="sub_race">
             <column name="id" value="6" />
             <column name="sub_race_name" value="Urdunir Dwarf" />
@@ -56,7 +167,7 @@
             <column name="modifiers_id" value="150006" />
             <column name="level_adjustment" value="0" />
         </insert>
-
+        <!-- Elf 100-->
         <insert tableName="sub_race">
             <column name="id" value="7" />
             <column name="sub_race_name" value="Avariel, Winged Elf" />
@@ -66,9 +177,9 @@
             <column name="level_adjustment" value="3" />
         </insert>
 
-        <!-- Elf 100-->
+
         <insert tableName="sub_race">
-            <column name="id" value="8" />
+            <column name="id" value="101" />
             <column name="sub_race_name" value="Acquatic Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -77,7 +188,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="9" />
+            <column name="id" value="102" />
             <column name="sub_race_name" value="Wood Elf, Bronze" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -86,7 +197,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="10" />
+            <column name="id" value="103" />
             <column name="sub_race_name" value="Drow, Dark Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -95,7 +206,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="11" />
+            <column name="id" value="104" />
             <column name="sub_race_name" value="Moon Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -104,7 +215,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="12" />
+            <column name="id" value="105" />
             <column name="sub_race_name" value="Savage Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -113,8 +224,17 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="13" />
+            <column name="id" value="106" />
             <column name="sub_race_name" value="Golden Elf" />
+            <column name="race_id" value="2" />
+            <column name="size_id" value="5" />
+            <!-- <column name="modifiers_id" value="150010" /> -->
+            <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="sub_race">
+            <column name="id" value="107" />
+            <column name="sub_race_name" value="Star Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
@@ -123,7 +243,7 @@
 
         <!-- Gonome 200-->
         <insert tableName="sub_race">
-            <column name="id" value="14" />
+            <column name="id" value="201" />
             <column name="sub_race_name" value="Forest Gnome" />
             <column name="race_id" value="4" />
             <column name="size_id" value="4" />
@@ -132,7 +252,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="15" />
+            <column name="id" value="202" />
             <column name="sub_race_name" value="Deep Gnome, Svirfneblin" />
             <column name="race_id" value="4" />
             <column name="size_id" value="4" />
@@ -141,7 +261,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="16" />
+            <column name="id" value="203" />
             <column name="sub_race_name" value="Rock Gnome" />
             <column name="race_id" value="4" />
             <column name="size_id" value="4" />
@@ -151,7 +271,7 @@
 
         <!-- Half Elf 300-->
         <insert tableName="sub_race">
-            <column name="id" value="17" />
+            <column name="id" value="301" />
             <column name="sub_race_name" value="Aquatic Half Elf" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
@@ -160,7 +280,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="18" />
+            <column name="id" value="302" />
             <column name="sub_race_name" value="Common Half Elf" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
@@ -169,7 +289,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="19" />
+            <column name="id" value="304" />
             <column name="sub_race_name" value="Half Drow" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
@@ -179,7 +299,7 @@
 
         <!-- Orc 400-->
         <insert tableName="sub_race">
-            <column name="id" value="20" />
+            <column name="id" value="401" />
             <column name="sub_race_name" value="Grey Orc" />
             <column name="race_id" value="3" />
             <column name="size_id" value="5" />
@@ -188,7 +308,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="21" />
+            <column name="id" value="402" />
             <column name="sub_race_name" value="Montain Orc" />
             <column name="race_id" value="3" />
             <column name="size_id" value="5" />
@@ -197,7 +317,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="22" />
+            <column name="id" value="403" />
             <column name="sub_race_name" value="Orog, Deep Orc" />
             <column name="race_id" value="3" />
             <column name="size_id" value="5" />
@@ -206,7 +326,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="23" />
+            <column name="id" value="404" />
             <column name="sub_race_name" value="Half Orc" />
             <column name="race_id" value="3" />
             <column name="size_id" value="5" />
@@ -224,6 +344,31 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <!-- Lightfoot Halfling -->
+        <insert tableName="prerequisite">
+            <column name="id" value="155002" />
+            <column name="text" value="Lightfoot Halfling races modifiers" />
+            <column name="weapon_type" value="[&quot;THROWN&quot;]" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;bonus&quot; : 1
+                    } ] }" />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="155002" />
+            <column name="item_id" value="23" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="155002" />
+            <column name="item_id" value="81" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="502" />
             <column name="sub_race_name" value="Lightfoot Halfling" />
@@ -238,22 +383,22 @@
             <column name="sub_race_name" value="Spirit's Halfling" />
             <column name="race_id" value="5" />
             <column name="size_id" value="4" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
+            <!-- <column name="modifiers_id" value="155003" /> -->
             <column name="level_adjustment" value="0" />
         </insert>
 
         <!-- Human 600-->
         <insert tableName="sub_race">
-            <column name="id" value="27" />
+            <column name="id" value="601" />
             <column name="sub_race_name" value="Calishita" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
+            <!-- <column name="modifiers_id" value="155004" /> -->
             <column name="level_adjustment" value="0" />
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="28" />
+            <column name="id" value="602" />
             <column name="sub_race_name" value="Chondathan" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -262,7 +407,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="29" />
+            <column name="id" value="603" />
             <column name="sub_race_name" value="Damaran" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -271,7 +416,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="30" />
+            <column name="id" value="604" />
             <column name="sub_race_name" value="Illuskan" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -280,7 +425,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="31" />
+            <column name="id" value="605" />
             <column name="sub_race_name" value="Mulan" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -289,7 +434,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="32" />
+            <column name="id" value="606" />
             <column name="sub_race_name" value="Rashemi" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -298,16 +443,7 @@
         </insert>
 
         <insert tableName="sub_race">
-            <column name="id" value="33" />
-            <column name="sub_race_name" value="Tethyrian" />
-            <column name="race_id" value="6" />
-            <column name="size_id" value="5" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
-            <column name="level_adjustment" value="0" />
-        </insert>
-
-        <insert tableName="sub_race">
-            <column name="id" value="34" />
+            <column name="id" value="607" />
             <column name="sub_race_name" value="Tethyrian" />
             <column name="race_id" value="6" />
             <column name="size_id" value="5" />
@@ -316,33 +452,33 @@
         </insert>
 
         <!-- Monstruos Humanoid 700-->
+
+        <!-- Hagspawn -->
+        <insert tableName="prerequisite">
+            <column name="id" value="157001" />
+            <column name="text" value="Hagspawn races modifiers" />
+            <column name="abilitys"
+                value="{ 
+                 &quot;strength&quot; : 2, 
+                 &quot;constitution&quot; : 2,
+                 &quot;charisma&quot; : -2
+                 }" />
+            <column name="armor_class"
+                value="{ 
+                 &quot;naturalArmor&quot; : 2
+                 }" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="sub_race_name" value="Hagspawn" />
-            <column name="id" value="35" />
+            <column name="id" value="701" />
             <column name="race_id" value="7" />
             <column name="size_id" value="5" />
-            <!-- <column name="modifiers" value="[{
-            &quot;modifier&quot; : &quot;STRENGHT&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;CONSTITUTION&quot;,            
-            &quot;bonus&quot; : 2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;CHARISMA&quot;,            
-            &quot;bonus&quot; : -2,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;SPEED&quot;,            
-            &quot;bonus&quot; : 30,            
-            &quot;targets&quot; : []            
-            },{
-            &quot;modifier&quot; : &quot;NATURAL_ARMOR_BONUS&quot;,
-            &quot;bonus&quot; : 2,
-            &quot;targets&quot; : []
-            },{
-            &quot;modifier&quot; : &quot;SPELL_RESISTANCE&quot;,            
+            <column name="modifiers_id" value="157001" />
+
+            <!--&quot;modifier&quot;
+            : &quot;SPELL_RESISTANCE&quot;,            
             &quot;bonus&quot; : 11,            
             &quot;targets&quot; : [&quot;LEVEL&quot;]            
             }
@@ -352,7 +488,7 @@
 
         <!-- Spirit Folk 800-->
         <insert tableName="sub_race">
-            <column name="id" value="36" />
+            <column name="id" value="801" />
             <column name="sub_race_name" value="Moutain Spirit Folk" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
@@ -383,7 +519,7 @@
             <column name="avatar_url" value="address value" />
         </insert>
         <insert tableName="sub_race">
-            <column name="id" value="37" />
+            <column name="id" value="802" />
             <column name="sub_race_name" value="River Spirit Folk" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
@@ -406,13 +542,5 @@
             <column name="avatar_url" value="address value" />
         </insert>
 
-        <insert tableName="sub_race">
-            <column name="id" value="38" />
-            <column name="sub_race_name" value="Star Elf" />
-            <column name="race_id" value="2" />
-            <column name="size_id" value="5" />
-            <!-- <column name="modifiers_id" value="150010" /> -->
-            <column name="level_adjustment" value="0" />
-        </insert>
     </changeSet>
 </databaseChangeLog>

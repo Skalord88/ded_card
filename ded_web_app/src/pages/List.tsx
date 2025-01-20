@@ -33,7 +33,7 @@ export const List: React.FC = () => {
           </ol>
         </div>
       ) : (
-        <div className="rpgui-container-framed">...loading characters...</div>
+        <div className="rpgui-container-framed"><p>...loading characters...</p></div>
       )}
     </>
   );
