@@ -19,7 +19,6 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
-import pl.kolendateam.dadcard.spells.dto.SpellsClassTableDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -57,46 +56,46 @@ public class SpellsController {
     return MapperSpellsDTO.toSpellsDTO(spellsList);
   }
 
-  @GetMapping("{id}/spellstable")
-  public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable int id) {
-    List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
-    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
+  // @GetMapping("{id}/spellstable")
+  // public List<SpellsClassTableDTO> showSpellsTableList(@PathVariable int id) {
+  //   List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
+  //   Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
 
-    if (!classOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
-    }
+  //   if (!classOpt.isPresent()) {
+  //     throw new ResponseStatusException(
+  //       HttpStatus.NOT_FOUND,
+  //       "Class Not Found"
+  //     );
+  //   }
 
-    ClassCharacter classFromId = classOpt.get();
+  //   ClassCharacter classFromId = classOpt.get();
 
-    return MapperSpellsTableDTO.toClassSpellsDTO(
-      spellsTableList,
-      classFromId.getSpellsKnown(),
-      classFromId.getSpellsPerDay()
-    );
-  }
+  //   return MapperSpellsTableDTO.toClassSpellsDTO(
+  //     spellsTableList,
+  //     classFromId.getSpellsKnown(),
+  //     classFromId.getSpellsPerDay()
+  //   );
+  // }
 
-  @GetMapping("{id}")
-  public List<SpellsDTO> showSpellsClassList(@PathVariable int id) {
-    List<Spells> spellsList = this.spellsRepository.findAll();
-    Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
+  // @GetMapping("{id}")
+  // public List<SpellsDTO> showSpellsClassList(@PathVariable int id) {
+  //   List<Spells> spellsList = this.spellsRepository.findAll();
+  //   Optional<ClassCharacter> classOpt = this.classRepository.findById(id);
 
-    if (!classOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
-    }
+  //   if (!classOpt.isPresent()) {
+  //     throw new ResponseStatusException(
+  //       HttpStatus.NOT_FOUND,
+  //       "Class Not Found"
+  //     );
+  //   }
 
-    ClassCharacter classFromId = classOpt.get();
+  //   ClassCharacter classFromId = classOpt.get();
 
-    return MapperSpellsDTO.toClassSpellsDTO(
-      spellsList,
-      classFromId.getSpellsDomain()
-    );
-  }
+  // return MapperSpellsDTO.toClassSpellsDTO(
+  //   spellsList,
+  //   classFromId.getSpellsDomain()
+  // );
+  // }
 
   @PostMapping(value = "{id}/addspells", consumes = { "application/json" })
   public CharacterDTO addSpellsKnown(
@@ -116,31 +115,31 @@ public class SpellsController {
 
     List<Spells> spellsList = this.spellsRepository.findAll();
 
-    SpellsEnum spellClassE = character.characterGetSpellClassById(
-      SpellsAddDTO.idClass
-    );
+    // SpellsEnum spellClassE = character.characterGetSpellClassById(
+    //   SpellsAddDTO.idClass
+    // );
     EnumClass classNameE = character.characterGetClassEnumById(
       SpellsAddDTO.idClass
     );
-    int maxLv = character.getMagicKnown().get(classNameE).length;
+    // int maxLv = character.getMagicKnown().get(classNameE).length;
     // int lv = 0;
 
-    if (spellClassE != null) {
-      for (int s : SpellsAddDTO.spells) {
-        for (Spells spell : spellsList) {
-          if (s == spell.getId()) {
-            Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
-            if (spellToAdd != null) {
-              // lv = spell.selectSpellByLv(spell);
-            }
+    // if (spellClassE != null) {
+    //   for (int s : SpellsAddDTO.spells) {
+    //     for (Spells spell : spellsList) {
+    //       if (s == spell.getId()) {
+    //         Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
+    //         if (spellToAdd != null) {
+    //           // lv = spell.selectSpellByLv(spell);
+    //         }
 
-            if (spellToAdd != null) {
-              // character.addSpells(spellToAdd, classNameE, lv);
-            }
-          }
-        }
-      }
-    }
+    //         if (spellToAdd != null) {
+    //           // character.addSpells(spellToAdd, classNameE, lv);
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
     this.characterRepository.save(character);
 

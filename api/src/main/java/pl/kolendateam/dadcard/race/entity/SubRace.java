@@ -79,4 +79,7 @@ public class SubRace implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
   )
   Set<SpecialAbilities> specialAbilities;
+  // Integer hitDice;
+  // Integer numberHitDice;
+  // RaceTypes raceType;
 }

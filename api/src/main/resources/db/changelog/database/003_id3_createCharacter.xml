@@ -33,12 +33,6 @@
       <column name="attacks_id" type="int">
         <constraints nullable="true" />
       </column>
-      <column name="magic_per_day" type="jsonb">
-        <constraints nullable="true" />
-      </column>
-      <column name="magic_known" type="jsonb">
-        <constraints nullable="true" />
-      </column>
       <column name="books" type="jsonb">
         <constraints nullable="true" />
       </column>

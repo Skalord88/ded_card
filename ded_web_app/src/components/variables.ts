@@ -165,7 +165,17 @@ export const emptyClassCharacter: ClassCharacter = {
     skillPoints: 0,
     classSkill: [],
     classStudy: [],
-    classFeats: []
+    classFeats: [],
+    spellsPerDay: {
+        magicClass: '',
+        spellsDayKnown: '',
+        spellsInLevel: []
+    },
+    spellsKnown: {
+        magicClass: '',
+        spellsDayKnown: '',
+        spellsInLevel: []
+    }
 }
 
 export const emptyClass: ClassPc = {
@@ -278,7 +288,8 @@ export const characterEmpty: CharacterPc = {
             size: '',
             modifiers: null
         },
-        availableRegions: []
+        availableRegions: [],
+        specialAbilities: []
     },
     archetypes: [],
     abilitys: {

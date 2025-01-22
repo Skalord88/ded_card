@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 
 @NoArgsConstructor
 @Getter
@@ -26,6 +27,7 @@ public class SpecialAbilities implements Serializable {
   int id;
 
   String name;
+  int specialType;
 
   @Enumerated(EnumType.STRING)
   ModifierEnum type;
@@ -37,6 +39,14 @@ public class SpecialAbilities implements Serializable {
   ModifierEnum[] dcAbility;
 
   Integer value;
+  String valueText;
+
+  @Enumerated(EnumType.STRING)
+  WeaponNumericEnum damageDice;
+
+  Integer damageNumberDice;
+  Integer prerequisiteHd; // -11: tra 0 e 11 / 12: da 12 in su
+  Integer maxValue; // massimo valore ottenibile
   String target;
   String area;
 }

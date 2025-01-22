@@ -20,7 +20,10 @@ export const changeAbilitysFromPrerequisite = (
     (tot, ab) => tot + ab.intelligence,
     0
   );
-  const wis: number = prerAbilitysList.reduce((tot, ab) => tot + ab.wisdom, 0);
+  const wis: number = prerAbilitysList.reduce(
+    (tot, ab) => tot + ab.wisdom,
+    0
+  );
   const cha: number = prerAbilitysList.reduce(
     (tot, ab) => tot + ab.charisma,
     0

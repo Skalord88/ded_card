@@ -134,6 +134,7 @@ public enum ModifierEnum {
   // immunity
   IMMUNITY,
   RESISTANCE,
+  VULNERABILITY,
   FEAR,
   DISEASES,
   POISON,
@@ -327,8 +328,11 @@ public enum ModifierEnum {
   UNIVERSAL,
 
   SUPERNATURAL,
+  EXTRAORDINARY,
   SPELL_LIKE,
+  CLASS_HD,
   HALF_HD,
+  RACE_HD,
   HALF_RACE,
   HALF_COS,
   HALF_CHA,

@@ -162,8 +162,16 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
       {list.map(
         (mod, index) =>
           mod && (
-            <div className={mod.color} style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }} key={mod.id}>
-              <div style={{flex: 1}}>
+            <div
+              className={mod.color}
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between"
+              }}
+              key={mod.id}
+            >
+              <div key={index} style={{ flex: 1 }}>
                 <p>
                   <D20Popup
                     key={index}
@@ -173,22 +181,24 @@ export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
                   />
                 </p>
               </div>
-              <div style={{flex: 1}}>
+              <div style={{ flex: 1 }}>
                 <p style={{ color: "orange" }}>
                   {mod.allMod.tot.value.sign}
                   {Math.floor(mod.allMod.tot.value.number)}{" "}
                 </p>
               </div>
 
-              {mod.allMod.allMod.map((modif, index) => (
-                <div key={index} style={{flex: 1}}>
-                  <p>
-                    {modif.value.sign}
-                    {Math.floor(modif.value.number)}
-                    {modif.mod}{" "}
-                  </p>
-                </div>
-              ))}
+              {mod.allMod.allMod.map((modif, index) =>
+                modif.value.number > 0 ? (
+                  <div key={index} style={{ flex: 1 }}>
+                    <p style={{}}>
+                      {modif.value.sign}
+                      {Math.floor(modif.value.number)}
+                      {modif.mod}
+                    </p>
+                  </div>
+                ) : null
+              )}
             </div>
           )
       )}
@@ -199,25 +209,45 @@ export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
   list
 }) => {
   return (
-    <div className="rpgui-container-framed-grey-mini dexterity" style={{ display: "flex" , flexWrap: "wrap", justifyContent: "space-between"}}>
-      {list.map((mod, index) => (
-        <div key={index}>
-        <p>
-          <D12Popup key={index} {...mod.dice} />
-          <span style={{ color: "orange" }}>
-            {mod.allMod.tot.value.sign}
-            {mod.allMod.tot.value.number}{" "}
-          </span>
-          {mod.allMod.allMod.map((mod, index) => (
-            <span key={index}>
-              {mod.value.sign}
-              {mod.value.number}
-              {mod.mod}{" "}
-            </span>
-          ))}
-        </p>
-        </div>
-      ))}
-    </div>
+    <>
+      {list.map(
+        (mod, index) =>
+          mod && (
+            <div
+              className={mod.color}
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "space-between"
+              }}
+              key={mod.id}
+            >
+              <div key={index} style={{ flex: 1 }}>
+                <p>
+                  <D12Popup key={index} {...mod.dice} />
+                </p>
+              </div>
+              <div style={{ flex: 1 }}>
+                <p style={{ color: "orange" }}>
+                  {mod.allMod.tot.value.sign}
+                  {mod.allMod.tot.value.number}{" "}
+                </p>
+                </div>
+                {mod.allMod.allMod.map((modif, index) =>
+                  modif.value.number > 0 ? (
+                    <div key={index} style={{ flex: 1 }}>
+                      <p style={{}}>
+                        {modif.value.sign}
+                        {Math.floor(modif.value.number)}
+                        {modif.mod}
+                      </p>
+                    </div>
+                  ) : null
+                )}
+              
+            </div>
+          )
+      )}
+    </>
   );
 };

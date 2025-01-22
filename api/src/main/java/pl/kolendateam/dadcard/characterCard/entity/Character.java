@@ -103,12 +103,6 @@ public class Character implements Serializable {
   @JoinColumn(name = "attacks_id", referencedColumnName = "id")
   Attacks attacks;
 
-  @JdbcTypeCode(SqlTypes.JSON)
-  HashMap<EnumClass, Integer[]> magicPerDay;
-
-  @JdbcTypeCode(SqlTypes.JSON)
-  HashMap<EnumClass, Integer[]> magicKnown;
-
   @OneToMany(cascade = CascadeType.MERGE)
   @JoinColumn(name = "character_id", referencedColumnName = "id")
   List<Book> books = new ArrayList<>();
@@ -292,50 +286,50 @@ public class Character implements Serializable {
   //   }
   // }
 
-  public void addMagic(
-    List<SpellsTable> spellsTableList,
-    SpellsEnum spellDay,
-    SpellsEnum spellKnown
-  ) {
-    for (SpellsTable table : spellsTableList) {
-      ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(
-        table.getSpellsInLevel()
-      );
-      if (table.getSpellsDayKnown() != null) {
-        for (ClassPc classPc : this.classPcArray) {
-          if (
-            table.getSpellsDayKnown() == SpellsEnum.DAY &&
-            table.getMagicClass() ==
-            classPc.getClassCharacter().getSpellsPerDay()
-          ) {
-            for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
-              if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
-                this.magicPerDay.put(
-                    classPc.getClassCharacter().getName(),
-                    spellsInThisLevel.getSpells()
-                  );
-              }
-            }
-          }
+  // public void addMagic(
+  //   List<SpellsTable> spellsTableList,
+  //   SpellsEnum spellDay,
+  //   SpellsEnum spellKnown
+  // ) {
+  //   for (SpellsTable table : spellsTableList) {
+  //     ArrayList<SpellsInLevel> spellsInLevelFromDB = MapperSpellsInLevel.toSpellsInLevel(
+  //       table.getSpellsInLevel()
+  //     );
+  //     if (table.getSpellsDayKnown() != null) {
+  //       for (ClassPc classPc : this.classPcArray) {
+  //         if (
+  //           table.getSpellsDayKnown() == SpellsEnum.DAY &&
+  //           table.getMagicClass() ==
+  //           classPc.getClassCharacter().getSpellsPerDay()
+  //         ) {
+  //           for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+  //             if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+  //               this.magicPerDay.put(
+  //                   classPc.getClassCharacter().getName(),
+  //                   spellsInThisLevel.getSpells()
+  //                 );
+  //             }
+  //           }
+  //         }
 
-          if (
-            table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
-            table.getMagicClass() ==
-            classPc.getClassCharacter().getSpellsKnown()
-          ) {
-            for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
-              if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
-                this.magicKnown.put(
-                    classPc.getClassCharacter().getName(),
-                    spellsInThisLevel.getSpells()
-                  );
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  //         if (
+  //           table.getSpellsDayKnown() == SpellsEnum.KNOWN &&
+  //           table.getMagicClass() ==
+  //           classPc.getClassCharacter().getSpellsKnown()
+  //         ) {
+  //           for (SpellsInLevel spellsInThisLevel : spellsInLevelFromDB) {
+  //             if (classPc.getLevel() == spellsInThisLevel.getLevel()) {
+  //               this.magicKnown.put(
+  //                   classPc.getClassCharacter().getName(),
+  //                   spellsInThisLevel.getSpells()
+  //                 );
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
 
   public EnumClass characterGetClassEnumById(int idClass) {
     for (ClassPc clPc : this.classPcArray) {
@@ -346,14 +340,14 @@ public class Character implements Serializable {
     return null;
   }
 
-  public SpellsEnum characterGetSpellClassById(int idClass) {
-    for (ClassPc clPc : this.classPcArray) {
-      if (idClass == clPc.getClassCharacter().getId()) {
-        return clPc.getClassCharacter().getSpellsDomain();
-      }
-    }
-    return null;
-  }
+  // public SpellsEnum characterGetSpellClassById(int idClass) {
+  //   for (ClassPc clPc : this.classPcArray) {
+  //     if (idClass == clPc.getClassCharacter().getId()) {
+  //       return clPc.getClassCharacter().getSpellsDomain();
+  //     }
+  //   }
+  //   return null;
+  // }
 
   public boolean getClassSpellsKnown(EnumClass className) {
     for (Book book : this.books) {
@@ -458,17 +452,17 @@ public class Character implements Serializable {
     }
   }
 
-  public int getSizeMagic(@NonNull EnumClass name) {
-    if (this.magicKnown.get(name) != null) {
-      return this.magicKnown.get(name).length;
-    }
-    return -1;
-  }
+  // public int getSizeMagic(@NonNull EnumClass name) {
+  //   if (this.magicKnown.get(name) != null) {
+  //     return this.magicKnown.get(name).length;
+  //   }
+  //   return -1;
+  // }
 
-  public void removePerDayKnow(@NonNull EnumClass name) {
-    this.magicPerDay.remove(name);
-    this.magicKnown.remove(name);
-  }
+  // public void removePerDayKnow(@NonNull EnumClass name) {
+  //   this.magicPerDay.remove(name);
+  //   this.magicKnown.remove(name);
+  // }
 
   public void removeBook(@NonNull EnumClass name) {
     for (int i = 0; i < this.books.size(); i++) {

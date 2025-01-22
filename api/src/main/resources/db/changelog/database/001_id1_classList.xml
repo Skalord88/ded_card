@@ -32,10 +32,10 @@
       <column name="class_feats_map" type="varchar(10000)">
         <constraints nullable="true" />
       </column>
-      <column name="spells_per_day" type="varchar(10)">
+      <column name="spells_per_day_id" type="int">
         <constraints nullable="true" />
       </column>
-      <column name="spells_known" type="varchar(10)">
+      <column name="spells_known_id" type="int">
         <constraints nullable="true" />
       </column>
       <column name="spells_domain" type="varchar(20)">

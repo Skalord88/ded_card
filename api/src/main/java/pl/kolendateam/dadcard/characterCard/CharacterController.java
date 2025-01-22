@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.characterCard;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +22,12 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
-import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
-import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.BookRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
@@ -189,14 +186,14 @@ public class CharacterController {
     // }
 
     // class
-    int indexClassInDB = classPc.findIndexInArrayById(classPcList);
+    // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
 
-    if (indexClassInDB == -1) {
-      character.addClassToPcArray(classPc);
-      // character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
-    } else {
-      character.incrementLevelClassForIndex(indexClassInDB);
-    }
+    // if (indexClassInDB == -1) {
+    //   character.addClassToPcArray(classPc);
+    // character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
+    // } else {
+    //   character.incrementLevelClassForIndex(indexClassInDB);
+    // }
 
     // int levelClassInDB = classPc.findLevelInArrayById(
     //   classPcList,
@@ -227,30 +224,30 @@ public class CharacterController {
     // }
 
     // magic
-    boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
+    // boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
 
-    if (magicClass) {
-      character.addMagic(
-        spellsTableList,
-        classCharacter.getSpellsPerDay(),
-        classCharacter.getSpellsKnown()
-      );
-      int sizeMagic = character
-        .getMagicKnown()
-        .get(classCharacter.getName())
-        .length;
+    // if (magicClass) {
+    //   character.addMagic(
+    //     spellsTableList,
+    //     classCharacter.getSpellsPerDay(),
+    //     classCharacter.getSpellsKnown()
+    //   );
+    // int sizeMagic = character
+    //   .getMagicKnown()
+    //   .get(classCharacter.getName())
+    //   .length;
 
-      // magicKnown
-      boolean findClassInBooks = character.getClassSpellsKnown(
-        classCharacter.getName()
-      );
+    // magicKnown
+    //   boolean findClassInBooks = character.getClassSpellsKnown(
+    //     classCharacter.getName()
+    //   );
 
-      if (findClassInBooks) {
-        character.addSpellKnown(sizeMagic - 1, classCharacter.getName());
-      } else {
-        character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
-      }
-    }
+    //   if (findClassInBooks) {
+    //     character.addSpellKnown(sizeMagic - 1, classCharacter.getName());
+    //   } else {
+    //     character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
+    //   }
+    // }
 
     this.characterRepository.save(character);
 
@@ -285,35 +282,35 @@ public class CharacterController {
 
     // List<Feats> featsList = this.featsRepository.findAll();
     // List<ClassCharacter> allClassesList = this.classRepository.findAll();
-    List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
+    // List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
 
-    ClassCharacter classCharacter = classOpt.get();
+    // ClassCharacter classCharacter = classOpt.get();
 
-    List<ClassPc> classPcList = character.getClassPcArray();
+    // List<ClassPc> classPcList = character.getClassPcArray();
 
-    boolean first = false;
-    if (classPcList.size() == 0) {
-      first = true;
-    }
+    // boolean first = false;
+    // if (classPcList.size() == 0) {
+    //   first = true;
+    // }
 
-    ClassPc classPc = new ClassPc(
-      1,
-      first,
-      classCharacter
-      // classCharacter.getName(),
-      // (byte) 1,
-      // classCharacter.getHitDice(),
-      // classCharacter.getSavingThrow(),
-      // classCharacter.getClassBab(),
-      // classCharacter.getSpellsPerDay(),
-      // classCharacter.getSpellsKnown(),
-      // classCharacter.getSpellsDomain()
-    );
+    // ClassPc classPc = new ClassPc(
+    //   1,
+    //   first,
+    //   classCharacter
+    // classCharacter.getName(),
+    // (byte) 1,
+    // classCharacter.getHitDice(),
+    // classCharacter.getSavingThrow(),
+    // classCharacter.getClassBab(),
+    // classCharacter.getSpellsPerDay(),
+    // classCharacter.getSpellsKnown(),
+    // classCharacter.getSpellsDomain()
+    // );
 
     // feat
-    int levelClassInDB = character.findLevelInClassesById(
-      classCharacter.getId()
-    );
+    // int levelClassInDB = character.findLevelInClassesById(
+    //   classCharacter.getId()
+    // );
     // classPc.findLevelInArrayById(
     //   classPcList,
     //   classCharacter.getId()
@@ -331,13 +328,13 @@ public class CharacterController {
     // character.decrementEffectiveCharacterLv();
 
     // class
-    int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-    if (levelClassInDB == 1) {
-      character.removeClassFromPcArray(indexClassInDB);
-    }
-    if (levelClassInDB > 1) {
-      character.decrementLevelClassForIndex(indexClassInDB);
-    }
+    // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
+    // if (levelClassInDB == 1) {
+    //   character.removeClassFromPcArray(indexClassInDB);
+    // }
+    // if (levelClassInDB > 1) {
+    //   character.decrementLevelClassForIndex(indexClassInDB);
+    // }
 
     // skillPoints & hp
     // if (character.getEffectiveCharacterLv() == 0) {
@@ -379,34 +376,34 @@ public class CharacterController {
     // }
 
     // magic
-    if (
-      character.getClassPcArray() == null ||
-      character.getClassPcArray().isEmpty()
-    ) {
-      character.setMagicKnown(new HashMap<EnumClass, Integer[]>());
-      character.setMagicPerDay(new HashMap<EnumClass, Integer[]>());
-      character.setBooks(new ArrayList<Book>());
-    }
+    // if (
+    //   character.getClassPcArray() == null ||
+    //   character.getClassPcArray().isEmpty()
+    // ) {
+    //   character.setMagicKnown(new HashMap<EnumClass, Integer[]>());
+    //   character.setMagicPerDay(new HashMap<EnumClass, Integer[]>());
+    //   character.setBooks(new ArrayList<Book>());
+    // }
 
-    boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
+    // boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
 
-    if (magicClass) {
-      if (levelClassInDB == 1) {
-        character.removePerDayKnow(classCharacter.getName());
-        // books
-        character.removeBook(classCharacter.getName());
-      }
-      if (levelClassInDB > 1) {
-        character.addMagic(
-          spellsTableList,
-          classCharacter.getSpellsPerDay(),
-          classCharacter.getSpellsKnown()
-        );
-        // books
-        int sizeMagic = character.getSizeMagic(classCharacter.getName());
-        character.decrementBooks(sizeMagic, classCharacter.getName());
-      }
-    }
+    // if (magicClass) {
+    //   if (levelClassInDB == 1) {
+    //     character.removePerDayKnow(classCharacter.getName());
+    //     // books
+    //     character.removeBook(classCharacter.getName());
+    //   }
+    // if (levelClassInDB > 1) {
+    //   character.addMagic(
+    //     spellsTableList,
+    //     classCharacter.getSpellsPerDay(),
+    //     classCharacter.getSpellsKnown()
+    //   );
+    // books
+    // int sizeMagic = character.getSizeMagic(classCharacter.getName());
+    // character.decrementBooks(sizeMagic, classCharacter.getName());
+    // }
+    // }
     // base attack bonus
     // character.decrementBab(classCharacter.getClassBab());
 

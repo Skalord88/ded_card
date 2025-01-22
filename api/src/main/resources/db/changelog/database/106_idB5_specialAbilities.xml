@@ -11,12 +11,474 @@
 
         <insert tableName="special_abilities">
             <column name="id" value="1" />
+            <column name="special_type" value="2" />
             <column name="name" value="Black Breath Weapon" />
             <column name="type" value="SUPERNATURAL" />
             <column name="description"
-                value="A half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
+                value="A Black half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
             <column name="dc_ability" value="[ &quot;COS&quot; , &quot;HALF_RACE&quot; ]" />
+            <column name="damage_dice" value="D8" />
+            <column name="damage_number_dice" value="6" />
             <column name="area" value="60-foot line of acid" />
+        </insert>
+
+        <!-- Vision -->
+        <!-- Low-light Vision 101 -->
+        <insert tableName="special_abilities">
+            <column name="id" value="101" />
+            <column name="special_type" value="1" />
+            <column name="name" value="Low-light Vision" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="description"
+                value="Characters with low-light vision have eyes that are so sensitive to light that they can see twice as far as normal in dim light. Low-light vision is color vision. A spellcaster with low-light vision can read a scroll as long as even the tiniest candle flame is next to her as a source of light. Characters with low-light vision can see outdoors on a moonlit night as well as they can during the day." />
+        </insert>
+        <!-- Darkvision 102 -->
+        <insert tableName="special_abilities">
+            <column name="id" value="102" />
+            <column name="special_type" value="1" />
+            <column name="name" value="Darkvision" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="60" />
+            <column name="value_text" value="ft." />
+            <column name="description"
+                value="Darkvision is the extraordinary ability to see with no light source at all, out to a range specified for the creature. Darkvision is black and white only (colors cannot be discerned). It does not allow characters to see anything that they could not see otherwise—invisible objects are still invisible, and illusions are still visible as what they seem to be. Likewise, darkvision subjects a creature to gaze attacks normally. The presence of light does not spoil darkvision." />
+        </insert>
+        <!-- Darkvision 103 -->
+        <insert tableName="special_abilities">
+            <column name="id" value="103" />
+            <column name="special_type" value="1" />
+            <column name="name" value="Darkvision" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="120" />
+            <column name="value_text" value="ft." />
+            <column name="description"
+                value="Darkvision is the extraordinary ability to see with no light source at all, out to a range specified for the creature. Darkvision is black and white only (colors cannot be discerned). It does not allow characters to see anything that they could not see otherwise—invisible objects are still invisible, and illusions are still visible as what they seem to be. Likewise, darkvision subjects a creature to gaze attacks normally. The presence of light does not spoil darkvision." />
+        </insert>
+
+        <!-- Resistance To Energy -->
+        <!-- acid  -->
+        <insert tableName="special_abilities">
+            <column name="id" value="151" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Acid 5" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="5" />
+            <column name="value_text" value="Acid" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="152" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Acid 10" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="10" />
+            <column name="value_text" value="Acid" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="153" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Acid 15" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="15" />
+            <column name="value_text" value="Acid" />
+        </insert>
+        <!-- cold  -->
+        <insert tableName="special_abilities">
+            <column name="id" value="154" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Cold 5" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="5" />
+            <column name="value_text" value="Cold" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="155" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Cold 10" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="10" />
+            <column name="value_text" value="Cold" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="156" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Cold 15" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="15" />
+            <column name="value_text" value="Cold" />
+        </insert>
+        <!-- fire  -->
+        <insert tableName="special_abilities">
+            <column name="id" value="157" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Fire 5" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="5" />
+            <column name="value_text" value="Fire" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="158" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Fire 10" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="10" />
+            <column name="value_text" value="Fire" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="159" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Fire 15" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="15" />
+            <column name="value_text" value="Fire" />
+        </insert>
+        <!-- electricity  -->
+        <insert tableName="special_abilities">
+            <column name="id" value="160" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Electricity 5" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="5" />
+            <column name="value_text" value="Electricity" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="161" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Electricity 10" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="10" />
+            <column name="value_text" value="Electricity" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="162" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Resistance To Electricity 15" />
+            <column name="type" value="SUPERNATURAL" />
+            <column name="value" value="15" />
+            <column name="value_text" value="Electricity" />
+        </insert>
+
+        <!-- Damage reduction 200 -->
+        <insert tableName="special_abilities">
+            <column name="id" value="201" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 1/-" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="1" />
+            <column name="value_text" value="-" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="202" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 2/-" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="2" />
+            <column name="value_text" value="-" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="203" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 3/-" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="3" />
+            <column name="value_text" value="-" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="204" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 4/-" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="4" />
+            <column name="value_text" value="-" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="205" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/-" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="-" />
+        </insert>
+        <!-- piercing -->
+        <insert tableName="special_abilities">
+            <column name="id" value="206" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/piercing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="piercing" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="207" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/piercing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="piercing" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="208" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/piercing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="piercing" />
+        </insert>
+        <!-- bludgeoning -->
+        <insert tableName="special_abilities">
+            <column name="id" value="209" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/bludgeoning" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="bludgeoning" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="210" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/bludgeoning" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="bludgeoning" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="211" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/bludgeoning" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="bludgeoning" />
+        </insert>
+        <!-- slashing -->
+        <insert tableName="special_abilities">
+            <column name="id" value="212" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/slashing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="slashing" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="213" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/slashing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="slashing" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="214" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/slashing" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="slashing" />
+        </insert>
+        <!-- alchemical silver -->
+        <insert tableName="special_abilities">
+            <column name="id" value="215" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/alchemical silver" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="silver" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="216" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/alchemical silver" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="silver" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="217" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/alchemical silver" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="silver" />
+        </insert>
+        <!-- adamantine -->
+        <insert tableName="special_abilities">
+            <column name="id" value="218" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/adamantine" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="adamantine" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="219" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/adamantine" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="adamantine" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="220" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/adamantine" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="adamantine" />
+        </insert>
+        <!-- align weapon -->
+        <!-- chaotic -->
+        <insert tableName="special_abilities">
+            <column name="id" value="221" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/chaotic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="chaotic" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="222" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/chaotic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="chaotic" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="223" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/chaotic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="chaotic" />
+        </insert>
+        <!-- evil -->
+        <insert tableName="special_abilities">
+            <column name="id" value="224" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/evil" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="evil" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="225" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/evil" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="evil" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="226" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/evil" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="evil" />
+        </insert>
+        <!-- good -->
+        <insert tableName="special_abilities">
+            <column name="id" value="227" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/good" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="good" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="228" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/good" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="good" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="229" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/good" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="good" />
+        </insert>
+        <!-- lawful -->
+        <insert tableName="special_abilities">
+            <column name="id" value="230" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/lawful" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="lawful" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="231" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/lawful" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="lawful" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="232" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/lawful" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="lawful" />
+        </insert>
+
+        <!-- magic 250 -->
+        <insert tableName="special_abilities">
+            <column name="id" value="251" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/magic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="value_text" value="Magic" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="252" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/magic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="value_text" value="Magic" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="253" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 15/magic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="15" />
+            <column name="value_text" value="Magic" />
+        </insert>
+
+        <!-- Half-Fiend -->
+        <insert tableName="special_abilities">
+            <column name="id" value="1251" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 5/magic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="5" />
+            <column name="prerequisite_hd" value="-11" />
+            <column name="value_text" value="Magic" />
+        </insert>
+        <insert tableName="special_abilities">
+            <column name="id" value="1252" />
+            <column name="special_type" value="3" />
+            <column name="name" value="Damage reduction 10/magic" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="value" value="10" />
+            <column name="prerequisite_hd" value="12" />
+            <column name="value_text" value="Magic" />
+        </insert>
+
+        <!-- Spell resistance -->
+        <insert tableName="special_abilities">
+            <column name="id" value="301" />
+            <column name="special_type" value="4" />
+            <column name="name" value="Spell resistance" />
+            <column name="type" value="EXTRAORDINARY" />
+            <column name="dc_ability" value="[ &quot;CLASS_HD&quot; , &quot;RACE_HD&quot; ]" />
+            <column name="max_value" value="35" />
         </insert>
 
     </changeSet>

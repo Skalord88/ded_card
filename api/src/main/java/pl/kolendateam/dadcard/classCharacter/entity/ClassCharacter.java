@@ -10,7 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -23,6 +25,7 @@ import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
 @NoArgsConstructor
 @Getter
@@ -75,11 +78,13 @@ public class ClassCharacter implements Serializable {
   )
   Set<ClassFeats> availableFeats = new HashSet<>();
 
-  @Enumerated(EnumType.STRING)
-  SpellsEnum spellsPerDay;
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "spells_per_day_id", referencedColumnName = "id")
+  SpellsTable spellsPerDay;
 
-  @Enumerated(EnumType.STRING)
-  SpellsEnum spellsKnown;
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "spells_known_id", referencedColumnName = "id")
+  SpellsTable spellsKnown;
 
   @Enumerated(EnumType.STRING)
   SpellsEnum spellsDomain;

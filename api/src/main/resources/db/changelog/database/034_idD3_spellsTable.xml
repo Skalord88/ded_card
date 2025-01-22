@@ -6,7 +6,7 @@
 
     <changeSet id="403" author="oscar">
         <createTable tableName="spells_table">
-            <column name="id_table" type="TINYINT" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="magic_class" type="varchar(10)">
@@ -15,7 +15,7 @@
             <column name="spells_day_known" type="varchar(10)">
                 <constraints nullable="true"/>
             </column>
-            <column name="spells_in_level" type="varchar(2000)">
+            <column name="spells_in_level" type="json">
                 <constraints nullable="true"/>
             </column>
         </createTable>

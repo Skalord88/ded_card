@@ -32,8 +32,8 @@ import { InventoryComponent } from "../components/Items/Inventory/InventoryCompo
 import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
-import { FeatPc } from "../components/Feats/Interface/FeatInterface";
-import { AttackRoll } from "../components/Attack/AttackRoll/interface";
+import { SpecialAbilitiesComponent } from "../components/SpecialAbilities/SpecialAbilitiesComponent";
+import { MagicComponent } from "../components/Magic/MagicComponent";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -58,8 +58,10 @@ export const Show = () => {
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
     size: emptySize,
+    // race: { hD: 0, numHD: 0},
     bab: 0,
     adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
+    classesLv: 0,
     attackRoll: { mono: [], target: [], composed: [] },
     damageBonus: { mono: [], target: [], composed: [] },
     specialAttacks: [],
@@ -79,7 +81,10 @@ export const Show = () => {
       climb: 0,
       swim: 0,
       special: ""
-    }
+    },
+    specialAbilities: [],
+    spellsPerDay: [],
+    spellsKnown: []
   };
   let modif: Prerequisite[] = [];
 
@@ -160,7 +165,6 @@ export const Show = () => {
           <div
             style={{
               display: "grid",
-              // justifyContent: "center",
               gridTemplateColumns: "25% 25% 25% 25%"
             }}
           >
@@ -217,10 +221,20 @@ export const Show = () => {
               className="rpgui-container-framed-grey"
               style={{
                 gridColumn: "1 / span 2",
-                gridRow: "3 / span 2" //4
+                gridRow: 3
               }}
             >
               <BaseAttack char={modChar} />
+            </div>
+
+            <div
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: "1 / span 2",
+                gridRow: 4
+              }}
+            >
+              <SpecialAbilitiesComponent char={modChar} />
             </div>
 
             <div
@@ -302,6 +316,16 @@ export const Show = () => {
               }}
             >
               <FeatsComponent char={modChar} />
+            </div>
+            <div
+              key="feats"
+              className="rpgui-container-framed-grey"
+              style={{
+                gridColumn: "1 / span 2",
+                gridRow: 13
+              }}
+            >
+              <MagicComponent char={modChar} />
             </div>
           </div>
         </>

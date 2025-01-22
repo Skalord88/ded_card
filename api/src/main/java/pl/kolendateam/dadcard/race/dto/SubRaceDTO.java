@@ -28,6 +28,9 @@ public class SubRaceDTO {
   public Set<SpecialAbilitiesDTO> specialAbilities;
   public Set<RegionBaseDTO> availableRegions;
 
+  // public Integer hitDice;
+  // public Integer numberHitDice;
+
   public SubRaceDTO(SubRace subRace) {
     this.id = subRace.getId();
     this.race =
@@ -52,5 +55,8 @@ public class SubRaceDTO {
           subRace.getSpecialAbilities()
         )
         : null;
+    // this.hitDice = subRace.getHitDice() != null ? subRace.getHitDice() : null;
+    // this.numberHitDice =
+    //   subRace.getNumberHitDice() != null ? subRace.getNumberHitDice() : null;
   }
 }

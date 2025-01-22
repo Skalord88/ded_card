@@ -9,17 +9,19 @@ import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 
 public class MapperSpellsInLevel {
 
-  public static ArrayList<SpellsInLevel> toSpellsInLevel(String spellsInLevel) {
-    Gson gson = new Gson();
-    Type jsonListSpells = new TypeToken<ArrayList<SpellsInLevel>>() {}
-      .getType();
-    ArrayList<SpellsInLevel> ListSpells = gson.fromJson(
-      spellsInLevel,
-      jsonListSpells
-    );
+  // public static ArrayList<SpellsInLevel> toSpellsInLevel(String spellsInLevel) {
+  //   Gson gson = new Gson();
+  //   Type jsonListSpells = new TypeToken<ArrayList<SpellsInLevel>>() {}
+  //     .getType();
+  //   ArrayList<SpellsInLevel> ListSpells = gson.fromJson(
+  //     spellsInLevel,
+  //     jsonListSpells
+  //   );
 
-    return ListSpells;
-  }
+  //   return ListSpells;
+  // }
+
+  // public static List<SpellsInLevel> toSpellsInLevel(String spellsInLevel) {}
 
   public static SpellLevel[] toSpellLevelArray(String enumSpell) {
     Gson gson = new Gson();

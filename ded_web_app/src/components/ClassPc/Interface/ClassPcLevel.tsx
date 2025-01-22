@@ -21,6 +21,17 @@ export type ClassPc = {
     // feats: ClassFeats[];
   }
 
+  export type SpellsInLevel = {
+    level: number;
+    spells: (number | null) [];
+  }
+
+  export type SpellsTable = {
+    magicClass: string;
+    spellsDayKnown: string;
+    spellsInLevel: SpellsInLevel[]
+  }
+
 export type ClassCharacter = {
   id: number;
   classType: string;
@@ -33,4 +44,6 @@ export type ClassCharacter = {
   classSkill: Skill[];
   classStudy: Study[];
   classFeats: ClassFeats[];
+  spellsPerDay?: SpellsTable;
+  spellsKnown?: SpellsTable;
 }

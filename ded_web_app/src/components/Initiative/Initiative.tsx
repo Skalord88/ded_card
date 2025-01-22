@@ -1,3 +1,4 @@
+import { abilityBackgroundColor } from "../Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "../functions";
 import {
   AllModifiersInDice12,
@@ -24,7 +25,7 @@ export const Initiative: React.FC<InitiativeProps> = ({ char }) => {
     list: [
       {
         id: 1,
-        color: "DEXTERITY",
+        color: abilityBackgroundColor("DEXTERITY"),
         dice: {
           textOrWeapon: initiative.tot.mod,
           value: initiative.tot.value.number,

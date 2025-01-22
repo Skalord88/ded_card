@@ -37,11 +37,14 @@
 
     <insert tableName="special_abilities">
       <column name="id" value="10" />
-      <column name="name" value="Silver Breath Weapon" />
+      <column name="special_type" value="2" />
+      <column name="name" value="Breath Weapon" />
       <column name="type" value="SUPERNATURAL" />
       <column name="description"
-        value="A half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
-      <column name="dc_ability" value="[ &quot;COS&quot; , &quot;HALF_RACE&quot; ]" />
+        value="A Silver half-dragon’s breath weapon deals 6d8 points of damage. A successful Reflex save (DC 10 + ½ half-dragon’s racial HD + half-dragon’s Con modifier) reduces damage by half." />
+      <column name="dc_ability" value="[ &quot;HALF_COS&quot; , &quot;HALF_RACE&quot; ]" />
+      <column name="damage_dice" value="D8" />
+      <column name="damage_number_dice" value="6" />
       <column name="area" value="30-foot cone of cold" />
     </insert>
 
@@ -57,6 +60,35 @@
       <column name="level_adjustment" value="4" />
       <column name="avatar_url" value="" />
       <column name="modifiers_id" value="91002" />
+    </insert>
+
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="301" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="152" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="155" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="158" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="161" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="1251" />
+    </insert>
+    <insert tableName="archetype_special_abilities">
+      <column name="archetype_id" value="2" />
+      <column name="special_abilities_id" value="1252" />
     </insert>
 
     <insert tableName="prerequisite">

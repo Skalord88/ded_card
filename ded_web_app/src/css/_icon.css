@@ -23,6 +23,14 @@
     background-image: url('../img/icons/armor.png');
 }
 
+.rpgui-icon.natural {
+    background-image: url('../img/icons/natural.png');
+}
+
+.rpgui-icon.dexterity {
+    background-image: url('../img/icons/dexterity.png');
+}
+
 .rpgui-icon.backpack {
     background-image: url('../img/icons/backpack.png');
 }

@@ -113,6 +113,30 @@ export function DamageDice(damage: string, dmg: number): number[] {
       return [0];
   }
 }
+export function throwDamageDice(damage: string): number {
+  switch (damage) {
+    case "D2":
+      return ThrowDice2();
+    case "D3":
+      return ThrowDice3();
+    case "D4":
+      return ThrowDice4();
+    case "DD4":
+      return ThrowDice4() + ThrowDice4();
+    case "D6":
+      return ThrowDice6();
+    case "DD6":
+      return ThrowDice6() + ThrowDice6();
+    case "D8":
+      return ThrowDice8();
+    case "D10":
+      return ThrowDice10();
+    case "D12":
+      return ThrowDice12();
+    default:
+      return 0;
+  }
+}
 export function TotDamageDice(damage: number[]): number {
   return damage.reduce(
     (total, n) => total + n, 0

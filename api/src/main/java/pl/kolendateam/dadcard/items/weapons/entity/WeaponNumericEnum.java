@@ -15,6 +15,7 @@ public enum WeaponNumericEnum {
   D8_D6("D8_D6"),
   D8_D8("D8_D8"),
   NA("NA"),
+  INCR_D("increase_dice"),
   D20("D20"),
   D100("D100"),
   X2("x2"),
