@@ -1,3 +1,4 @@
+import { findAbility } from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
@@ -8,11 +9,16 @@ import {
   createAttackDisplay,
   DisplayAttType
 } from "../../Attack/function";
-import { SpellsTable } from "../../ClassPc/Interface/ClassPcLevel";
+import {
+  SpellsInLevel,
+  SpellsTable
+} from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
+import { BonusAbilities } from "../../functions";
 import {
   Attacks,
+  Book,
   CharacterPc,
   Inventory,
   SpecialAttacks
@@ -98,8 +104,64 @@ export type CharToModify = {
   speed: Speed;
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
-  spellsPerDay?: { classe: string; spells: (number | null)[] }[];
-  spellsKnown?: { classe: string; spells: (number | null)[] }[];
+  spellsPerDay?: { classe: string; spells: number[] }[];
+  spellsKnown?: { classe: string; spells: number[] }[];
+  books: Book[];
+};
+
+export type TableOfBonusSpells = {
+  ab: number[];
+  table: number[];
+};
+
+export const tableOfBonusSpells: TableOfBonusSpells[] = [
+  { ab: [10, 11], table: [] },
+  { ab: [12, 13], table: [-1, 1] },
+  { ab: [14, 15], table: [-1, 1, 1] },
+  { ab: [16, 17], table: [-1, 1, 1, 1] },
+  { ab: [18, 19], table: [-1, 1, 1, 1, 1] },
+  { ab: [20, 21], table: [-1, 2, 1, 1, 1, 1] },
+  { ab: [22, 23], table: [-1, 2, 2, 1, 1, 1, 1] },
+  { ab: [24, 25], table: [-1, 2, 2, 2, 1, 1, 1, 1] },
+  { ab: [26, 27], table: [-1, 2, 2, 2, 2, 1, 1, 1, 1] },
+  { ab: [28, 29], table: [-1, 3, 2, 2, 2, 2, 1, 1, 1, 1] },
+  { ab: [30, 31], table: [-1, 3, 3, 2, 2, 2, 2, 1, 1, 1] },
+  { ab: [32, 33], table: [-1, 3, 3, 3, 2, 2, 2, 2, 1, 1] },
+  { ab: [34, 35], table: [-1, 3, 3, 3, 3, 2, 2, 2, 2, 1] },
+  { ab: [36, 37], table: [-1, 4, 3, 3, 3, 3, 2, 2, 2, 2] },
+  { ab: [38, 39], table: [-1, 4, 4, 3, 3, 3, 3, 2, 2, 2] },
+  { ab: [40, 41], table: [-1, 4, 4, 4, 3, 3, 3, 3, 2, 2] },
+  { ab: [42, 43], table: [-1, 4, 4, 4, 4, 3, 3, 3, 3, 2] },
+  { ab: [44, 45], table: [-1, 5, 4, 4, 4, 4, 3, 3, 3, 3] }
+];
+
+export const canCastSpell = (bnsAb: number): boolean => {
+  if (tableOfBonusSpells.find((tB) => tB.ab.includes(bnsAb))) return true;
+  return false;
+};
+
+export const addBonusSpells = (bnsAb: number, spells: number[]): number[] => {
+  if (canCastSpell(bnsAb)) {
+    const table =
+      tableOfBonusSpells.find((tB) => tB.ab.includes(bnsAb))?.table || [];
+    return spells.map((tb, index) => {
+      if (table[index] && ![-2, -1, 0].includes(index)) {
+        return tb + table[index];
+      }
+      return tb;
+    });
+  }
+  return [-3];
+};
+
+export const checkKnownSpells = (bnsAb: number, spells: number[]): number[] => {
+  if (canCastSpell(bnsAb)) {
+    return spells.map((tb, index) => {
+      if(bnsAb - 10 > index) {
+        return tb;
+      } return -3;
+    })
+  } return [-3]
 };
 
 export const modifyCharacter = (
@@ -110,39 +172,48 @@ export const modifyCharacter = (
   const adjBab: number = Math.floor(
     CountBabFromClassPc(char) + FindAllAdjLevel(char) * adjClass.classBab
   );
-
   const totalClassLv: number = char.classPcList.reduce(
     (tot, cl) => tot + cl.level,
     0
   );
-  const daySpells: { classe: string; spells: number[] }[] =
-    char.classPcList.flatMap((cl) =>
-      cl.classCharacter.spellsPerDay
-        ? [
-            {
-              classe: cl.classCharacter.className,
-              spells:
-                cl.classCharacter.spellsPerDay.spellsInLevel
-                  .find((lv) => lv.level === cl.level)
-                  ?.spells.map((s) => (s ? s : -2)) ?? []
-            }
-          ]
-        : []
-    );
-  const knowSpells: { classe: string; spells: number[] }[] =
-    char.classPcList.flatMap((cl) =>
-      cl.classCharacter.spellsKnown
-        ? [
-            {
-              classe: cl.classCharacter.className,
-              spells:
-                cl.classCharacter.spellsKnown.spellsInLevel
-                  .find((lv) => lv.level === cl.level)
-                  ?.spells.map((s) => (s ? s : -2)) ?? []
-            }
-          ]
-        : []
-    );
+  const daySpells: {
+    classe: string;
+    spells: number[];
+  }[] = char.classPcList.flatMap((cl) =>
+    cl.classCharacter.spellsPerDay
+      ? [
+          {
+            classe: cl.classCharacter.className,
+            spells: 
+            addBonusSpells(
+              findAbility(char.abilitys, cl.classCharacter.spellBonus),
+              cl.classCharacter.spellsPerDay.spellsInLevel
+                .find((sp) => sp.level === cl.level)
+                ?.spells.map((s) => s) || []
+            )
+          }
+        ]
+      : []
+  );
+
+  const knowSpells: {
+    classe: string;
+    spells: number[];
+  }[] = char.classPcList.flatMap((cl) =>
+    cl.classCharacter.spellsKnown
+      ? [
+          {
+            classe: cl.classCharacter.className,
+            spells: checkKnownSpells(
+              findAbility(char.abilitys, cl.classCharacter.spellBonus),
+              cl.classCharacter.spellsKnown.spellsInLevel
+                .find((lv) => lv.level === cl.level)
+                ?.spells.map((s) => s) || []
+            )
+          }
+        ]
+      : []
+  );
 
   const newChar: CharToModify = {
     abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
@@ -172,8 +243,10 @@ export const modifyCharacter = (
     speed: findSpeedPrerequisite(prer),
     feats: groupAllFeats(char),
     specialAbilities: getAllSpecialAbilities(char),
+    // spellsPerDay: bonusDaySpells,
     spellsPerDay: daySpells,
-    spellsKnown: knowSpells
+    spellsKnown: knowSpells,
+    books: char.books
   };
   return newChar;
 };

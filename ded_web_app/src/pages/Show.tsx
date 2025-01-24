@@ -84,7 +84,8 @@ export const Show = () => {
     },
     specialAbilities: [],
     spellsPerDay: [],
-    spellsKnown: []
+    spellsKnown: [],
+    books: []
   };
   let modif: Prerequisite[] = [];
 
@@ -159,6 +160,7 @@ export const Show = () => {
           <SkillShowComponent char={modChar} />
           <SpeedComponent char={modChar} />
           <FeatsComponent char={modChar} />
+          <MagicComponent char={modChar} />
         </>
       ) : (
         <>

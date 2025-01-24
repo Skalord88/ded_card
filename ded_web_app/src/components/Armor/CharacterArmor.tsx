@@ -18,7 +18,6 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
 
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {listOfArmor.map((armor, index) => {
-          console.log(armor);
           const textIcon = "rpgui-icon " + armor.text;
           return armor.signNum.number ? (
             <>

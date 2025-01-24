@@ -22,6 +22,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -85,6 +87,9 @@ public class ClassCharacter implements Serializable {
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "spells_known_id", referencedColumnName = "id")
   SpellsTable spellsKnown;
+
+  @Enumerated(EnumType.STRING)
+  ModifierEnum spellBonus;
 
   @Enumerated(EnumType.STRING)
   SpellsEnum spellsDomain;

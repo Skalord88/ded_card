@@ -38,6 +38,7 @@
               ]" />
       <column name="initial_gold" value="[4,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="2" />
       <column name="type" value="BASE_CLASS" />
@@ -62,9 +63,11 @@
             ]" />
       <column name="spells_per_day_id" value="1" />
       <column name="spells_known_id" value="2" />
+      <column name="spell_bonus" value="CHARISMA" />
       <column name="spells_domain" value="BARD" />
       <column name="initial_gold" value="[4,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="3" />
       <column name="type" value="BASE_CLASS" />
@@ -80,9 +83,11 @@
               ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="4" />
+      <column name="spell_bonus" value="WISDOM" />
       <column name="spells_domain" value="CLERIC" />
       <column name="initial_gold" value="[5,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="4" />
       <column name="type" value="BASE_CLASS" />
@@ -115,9 +120,11 @@
             ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="4" />
+      <column name="spell_bonus" value="WISDOM" />
       <column name="spells_domain" value="DRUID" />
       <column name="initial_gold" value="[2,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="5" />
       <column name="type" value="BASE_CLASS" />
@@ -143,6 +150,7 @@
             ]" />
       <column name="initial_gold" value="[6,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="6" />
       <column name="type" value="BASE_CLASS" />
@@ -177,6 +185,7 @@
             ]" />
       <column name="initial_gold" value="[5,D4,1]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="7" />
       <column name="type" value="BASE_CLASS" />
@@ -204,9 +213,11 @@
             ]" />
       <column name="spells_per_day_id" value="5" />
       <column name="spells_known_id" value="6" />
+      <column name="spell_bonus" value="WISDOM" />
       <column name="spells_domain" value="PALADIN" />
       <column name="initial_gold" value="[6,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="8" />
       <column name="type" value="BASE_CLASS" />
@@ -236,9 +247,11 @@
             ]" />
       <column name="spells_per_day_id" value="5" />
       <column name="spells_known_id" value="6" />
+      <column name="spell_bonus" value="WISDOM" />
       <column name="spells_domain" value="RANGER" />
       <column name="initial_gold" value="[6,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="9" />
       <column name="type" value="BASE_CLASS" />
@@ -271,6 +284,7 @@
             ]" />
       <column name="initial_gold" value="[5,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="10" />
       <column name="type" value="BASE_CLASS" />
@@ -286,9 +300,11 @@
             ]" />
       <column name="spells_per_day_id" value="7" />
       <column name="spells_known_id" value="8" />
+      <column name="spell_bonus" value="CHARISMA" />
       <column name="spells_domain" value="SORCERER_WIZARD" />
       <column name="initial_gold" value="[3,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="11" />
       <column name="type" value="BASE_CLASS" />
@@ -308,9 +324,11 @@
             ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="9" />
+      <column name="spell_bonus" value="INTELLIGENCE" />
       <column name="spells_domain" value="SORCERER_WIZARD" />
       <column name="initial_gold" value="[3,D4,10]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="12" />
       <column name="type" value="PRESTIGE_CLASS" />
@@ -334,6 +352,7 @@
             {'level':10,'classFeats':['Arrow of Death']}
             ]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="13" />
       <column name="type" value="PRESTIGE_CLASS" />
@@ -357,6 +376,7 @@
             {'level':10,'classFeats':['Sneak Attack']}
             ]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="14" />
       <column name="type" value="PRESTIGE_CLASS" />
@@ -375,6 +395,7 @@
             {'level':5,'classFeats':['High Arcana']}
             ]" />
     </insert>
+
     <insert tableName="class_character">
       <column name="id" value="15" />
       <column name="type" value="PRESTIGE_CLASS" />
@@ -414,6 +435,7 @@
       <column name="class_feats_map"
         value="[]" />
     </insert>
+    
     <insert tableName="class_character">
       <column name="id" value="17" />
       <column name="type" value="PRESTIGE_CLASS" />

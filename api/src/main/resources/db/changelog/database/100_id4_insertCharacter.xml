@@ -21,9 +21,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="100" />
             <column name="attacks_id" value="100" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books_id" value="1000" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -45,9 +45,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="101" />
             <column name="attacks_id" value="101" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -69,9 +69,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="102" />
             <column name="attacks_id" value="102" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -93,9 +93,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="103" />
             <column name="attacks_id" value="103" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -117,9 +117,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="104" />
             <column name="attacks_id" value="104" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -141,9 +141,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="105" />
             <column name="attacks_id" value="105" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -165,9 +165,9 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="106" />
             <column name="attacks_id" value="106" />
-            <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" />
-            <column name="books" value="[]" />
+            <!-- <column name="magic_per_day" value="{}" />
+            <column name="magic_known" value="{}" /> -->
+            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>

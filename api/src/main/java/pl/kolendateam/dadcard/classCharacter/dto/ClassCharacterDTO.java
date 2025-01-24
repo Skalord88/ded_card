@@ -6,6 +6,7 @@ import org.apache.catalina.mapper.Mapper;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
@@ -29,6 +30,7 @@ public class ClassCharacterDTO {
   public Set<ClassFeatsDTO> classFeats;
   public SpellsTableDTO spellsPerDay;
   public SpellsTableDTO spellsKnown;
+  public ModifierEnum spellBonus;
   public SpellsEnum spellsDomain;
 
   public ClassCharacterDTO(ClassCharacter classCharacter) {
@@ -56,6 +58,10 @@ public class ClassCharacterDTO {
     this.spellsKnown =
       classCharacter.getSpellsKnown() != null
         ? MapperSpellsTableDTO.toSpellsTableDTO(classCharacter.getSpellsKnown())
+        : null;
+    this.spellBonus =
+      classCharacter.getSpellBonus() != null
+        ? classCharacter.getSpellBonus()
         : null;
     this.spellsDomain =
       classCharacter.getSpellsDomain() != null

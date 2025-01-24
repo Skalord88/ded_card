@@ -16,7 +16,6 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -38,11 +37,8 @@ import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
-import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
-import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
-import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 
 @NoArgsConstructor
 @Getter

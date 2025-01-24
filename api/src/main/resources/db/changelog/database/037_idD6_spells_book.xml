@@ -5,13 +5,28 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
 <changeSet id="406" author="oscar">
-        <createTable tableName="spells_book">
-            <column name="book_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="spells_id" type="int">
-                <constraints nullable="true" />
-            </column>
-        </createTable>
+        <insert tableName="book">
+            <column name="id" value="1000" />
+            <column name="caster" value="WIZARD" />
+            <column name="level" value="1" />
+            <column name="character_id" value="100" />
+        </insert>
+
+        <insert tableName="spells_book">
+            <column name="book_id" value="1000" />
+            <column name="spells_id" value="1" />
+        </insert>
+
+        <insert tableName="book">
+            <column name="id" value="1001" />
+            <column name="caster" value="CLERIC" />
+            <column name="level" value="1" />
+            <column name="character_id" value="100" />
+        </insert>
+
+        <insert tableName="spells_book">
+            <column name="book_id" value="1001" />
+            <column name="spells_id" value="2" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

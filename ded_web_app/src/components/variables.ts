@@ -175,7 +175,8 @@ export const emptyClassCharacter: ClassCharacter = {
         magicClass: '',
         spellsDayKnown: '',
         spellsInLevel: []
-    }
+    },
+    spellBonus: ''
 }
 
 export const emptyClass: ClassPc = {

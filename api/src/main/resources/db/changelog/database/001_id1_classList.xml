@@ -38,6 +38,9 @@
       <column name="spells_known_id" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="spell_bonus" type="varchar(20)">
+        <constraints nullable="true" />
+      </column>
       <column name="spells_domain" type="varchar(20)">
         <constraints nullable="true" />
       </column>

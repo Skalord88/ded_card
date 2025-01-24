@@ -33,9 +33,9 @@
       <column name="attacks_id" type="int">
         <constraints nullable="true" />
       </column>
-      <column name="books" type="jsonb">
+      <!-- <column name="books" type="jsonb">
         <constraints nullable="true" />
-      </column>
+      </column> -->
       <column name="experience" type="int">
         <constraints nullable="true" />
       </column>

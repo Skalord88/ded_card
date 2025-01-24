@@ -23,7 +23,7 @@ export type ClassPc = {
 
   export type SpellsInLevel = {
     level: number;
-    spells: (number | null) [];
+    spells: number [];
   }
 
   export type SpellsTable = {
@@ -46,4 +46,5 @@ export type ClassCharacter = {
   classFeats: ClassFeats[];
   spellsPerDay?: SpellsTable;
   spellsKnown?: SpellsTable;
+  spellBonus: string
 }

@@ -19,6 +19,24 @@ export function abilityAbbreviation(ability: string): string {
       return "";
   }
 }
+export function findAbility(charAb: Abilitys, ability: string): number {
+  switch (ability) {
+    case "STRENGHT":
+      return charAb.strength;
+    case "DEXTERITY":
+      return charAb.dexterity;
+    case "CONSTITUTION":
+      return charAb.constitution;
+    case "INTELLIGENCE":
+      return charAb.intelligence;
+    case "WISDOM":
+      return charAb.wisdom;
+    case "CHARISMA":
+      return charAb.charisma;
+    default:
+      return 0;
+  }
+}
 
 export function BonusAbilities(ab: Abilitys, which: string) {
   switch (which) {

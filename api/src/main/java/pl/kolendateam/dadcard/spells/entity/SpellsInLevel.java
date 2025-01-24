@@ -1,7 +1,6 @@
 package pl.kolendateam.dadcard.spells.entity;
 
 import java.io.Serializable;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,6 @@ import lombok.Setter;
 @Setter
 public class SpellsInLevel implements Serializable {
 
-    int level;
-    Integer[] spells;
-
+  int level;
+  int[] spells;
 }
