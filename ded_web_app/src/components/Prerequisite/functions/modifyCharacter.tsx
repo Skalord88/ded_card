@@ -5,17 +5,11 @@ import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import {
-  AttackElement,
-  createAttackDisplay,
-  DisplayAttType
+  AttackElement
 } from "../../Attack/function";
-import {
-  SpellsInLevel,
-  SpellsTable
-} from "../../ClassPc/Interface/ClassPcLevel";
+import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
-import { BonusAbilities } from "../../functions";
 import {
   Attacks,
   Book,
@@ -35,7 +29,6 @@ import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillsInList } from "../../Skills/interface/SkillsInList";
 import { getAllSpecialAbilities } from "../../SpecialAbilities/function";
 import { Speed } from "../../Speed/interface";
-import { emptyAttacks, emptyInventory } from "../../variables";
 import {
   CountHitDicesFromAdj,
   CountHitDicesFromClassPc,

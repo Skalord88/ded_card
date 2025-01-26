@@ -1,130 +1,44 @@
 import { useEffect, useState } from "react";
-import { CharacterPc, savingThrows } from "../interfaces";
-import { AbSummary } from "./AbSummary";
+import { AbilitysSummaryComponent } from "../AbilitysComponent";
+import { CharacterPc } from "../interfaces";
+import { createModChar } from "../Prerequisite/functions/modChar";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { SubRace } from "../Race/Interfaces";
-import { AbilitysAndModifiers } from "../Abilitys/Functions";
-import { Abilitys } from "../Abilitys/Interface";
-import { Saving, SavingProps } from "../Saving/Saving";
-import {
-  CountSavingThrowFromAdjClass
-} from "../Saving/Functions";
-import { SavingSummary } from "./SavingSummary";
-import { ModifierSummary } from "./ModifierSummary";
-import { FeatsSummary } from "./FeatsSummary";
-import { FindAllAdjLevel } from "../Race/Function";
+import { SkillSummaryComponent } from "../Skills/Show/SkillShowComponent";
+import { SpecialAbilitiesSummaryComponent } from "../SpecialAbilities/SpecialAbilitiesComponent";
+import { SpeedSummaryComponent } from "../SpeedComponent";
+import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 
 export interface SummaryProps {
   character: CharacterPc;
-  race: SubRace | undefined;
+  race?: SubRace;
+  classPcList?: ClassPc[]
 }
 
-export const CharSummary: React.FC<SummaryProps> = ({ character, race }) => {
-  // const [modifiers, setModifiers] = useState<Modifiers[]>();
-  // const [noAbilitysMod, setNoAbilitysMod] = useState<Modifiers[]>([]);
-  const [abilitys, setAbilitys] = useState<Abilitys>();
-  const [saving, setSaving] = useState<SavingProps[]>();
+export const CharSummary: React.FC<SummaryProps> = ({ character, race, classPcList }) => {
+  const [updateChar, setUpChar] = useState<CharToModify>();
 
-  // useEffect(() => {
-  //   if (race) {
-  //     setModifiers(
-  //       FindAllModifications([
-  //         race?.modifiers,
-  //         race?.race.modifiers,
-  //         race?.size.modifiers
-  //       ])
-  //     );
-  //     if (race.levelAdjustment > 0) {
-  //     }
-  //   }
-  // }, [race, character]);
-
-  // useEffect(() => {
-  //   if (modifiers) {
-  //     setNoAbilitysMod(
-  //       modifiers?.filter(
-  //         (mod) =>
-  //           ![
-  //             "STRENGHT",
-  //             "DEXTERITY",
-  //             "CONSTITUTION",
-  //             "INTELLIGENCE",
-  //             "WISDOM",
-  //             "CHARISMA"
-  //           ].some((ability) => mod.modifier.includes(ability))
-  //       )
-  //     );
-  //   }
-  // }, [modifiers]);
-
-  // useEffect(() => {
-  //   const sTAdj = CountSavingThrowFromAdjClass(FindAllAdjLevel(character));
-    
-  //   let savingBonusAll: number = 0;
-  //   if (modifiers) {
-  //     savingBonusAll = FindInOneLengthModifier(modifiers, "SAVING");
-  //     abilitys
-  //       ? setSaving(Saving(abilitys, sTAdj, savingBonusAll, modifiers))
-  //       : setSaving(
-  //           Saving(character.abilitys, sTAdj, savingBonusAll, modifiers)
-  //         );
-  //   }
-  // }, [abilitys, character.abilitys, modifiers, race]);
-
-  // useEffect(() => {
-  //   if (modifiers) {
-  //     setAbilitys(AbilitysAndModifiers(character.abilitys, modifiers));
-  //   }
-  // }, [character.abilitys, modifiers]);
+  useEffect(() => {
+    const char: CharacterPc = {
+      ...character,
+      race: race? race : character.race,
+      classPcList: classPcList? classPcList : character.classPcList
+    }
+    const newChar: CharToModify = createModChar(char)
+     setUpChar(newChar)
+  },[character, race, classPcList])
 
   return (
     <>
-      {character ? (
+      {updateChar ? (
         <div className="rpgui-container-framed-grey">
-          {abilitys ? (
-            <AbSummary abilitys={abilitys} />
-          ) : (
-            <AbSummary abilitys={character.abilitys} />
-          )}
-
-          <SavingSummary saving={saving} />
-
-          {/* {noAbilitysMod ? <ModifierSummary modifiers={noAbilitysMod} /> : null} */}
-
-          {race ? <FeatsSummary feats={race?.subRaceFeats} /> : null}
-          <p>
-            {" "}
-            Skills:
-            {/* {character?.skillsCharacter.map((skill, index) => {
-              const isLast = index === character.skillsCharacter.length - 1;
-              return skill.skill ? (
-                <div key={index + "." + skill.skill.skillName}>
-                  {skill.study..length > 0 ? (
-                    <>
-                      {skill.fieldOfStudy.map((study, index) => {
-                        return (
-                          <div key={index + "." + study.study}>
-                            {study.study},{" "}
-                          </div>
-                        );
-                      })}
-                    </>
-                  ) : (
-                    <>
-                      {skill.classSkill ? (
-                        <>
-                          {skill.nameSkill}
-                          {!isLast && ", "}
-                        </>
-                      ) : null}
-                    </>
-                  )}
-                </div>
-              ) : null;
-            })} */}
-          </p>
+          <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
+          <SkillSummaryComponent char={updateChar} />
+          <SpeedSummaryComponent char={updateChar} />
+          <SpecialAbilitiesSummaryComponent char={updateChar} />
         </div>
       ) : (
-        <>...loading...</>
+        <p>...loading...</p>
       )}
     </>
   );

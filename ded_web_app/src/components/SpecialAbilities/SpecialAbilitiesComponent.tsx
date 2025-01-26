@@ -192,6 +192,32 @@ export const SpecialAbilitiesComponent: React.FC<SpecialAbilitiesProps> = ({
   );
 };
 
+export const SpecialAbilitiesSummaryComponent: React.FC<SpecialAbilitiesProps> = ({
+  char
+}) => {
+  const lista: SpecialAbilitiesList = createListOfSpecialAbilities(
+    char.specialAbilities,
+    char.adjBonus.adjLv,
+    0, // char.raceLv
+    char.classesLv,
+    char.abilitys
+  );
+
+  return (
+    <div>
+      <span>Special Abilities:</span> 
+      <SpecialAbilityComponent sAs={lista.specialAbilities} />
+      <DamageSpecialAbiliiesComponent sAs={lista.damageSpecialAbiliies} />
+      {lista.resistance.valueText.length > 0 ? (
+        <ResistanceToEnergyComponent sAs={lista.resistance} />
+      ) : null}
+      {lista.spellResistances.value > 0 ? (
+        <SpellResistanceComponent sAs={lista.spellResistances} />
+      ) : null}
+    </div>
+  );
+};
+
 export type SpcAbProps = {
   sAs: SpecialAbility[];
 };
@@ -201,11 +227,10 @@ export const SpecialAbilityComponent: React.FC<SpcAbProps> = ({ sAs }) => {
     <>
       {sAs.map((s, index) => (
         <div key={index}>
-          <li>
             <span>
-              - {s.name} {s.text}
+              - <Popup text={s.name} popText={s.description} />
             </span>
-          </li>
+            <span>{" "}{s.text}</span>
         </div>
       ))}
     </>

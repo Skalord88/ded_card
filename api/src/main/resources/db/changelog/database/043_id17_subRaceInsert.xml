@@ -13,6 +13,11 @@
             <column name="level_adjustment" value="2" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="1" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="prerequisite">
             <column name="id" value="150001" />
             <column name="text" value="Artic Dwarf modifiers" />
@@ -46,6 +51,11 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="2" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="prerequisite">
             <column name="id" value="150002" />
             <column name="text" value="Golden Dwarf races modifiers" />
@@ -68,6 +78,11 @@
             <column name="size_id" value="5" />
             <column name="modifiers_id" value="150003" />
             <column name="level_adjustment" value="2" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="3" />
+            <column name="special_abilities_id" value="102" />
         </insert>
 
         <insert tableName="prerequisite">
@@ -116,6 +131,11 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="4" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="5" />
             <column name="sub_race_name" value="Savage Dwarf" />
@@ -123,6 +143,11 @@
             <column name="size_id" value="4" />
             <column name="modifiers_id" value="150005" />
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="5" />
+            <column name="special_abilities_id" value="102" />
         </insert>
 
         <insert tableName="prerequisite">
@@ -167,9 +192,15 @@
             <column name="modifiers_id" value="150006" />
             <column name="level_adjustment" value="0" />
         </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="6" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <!-- Elf 100-->
         <insert tableName="sub_race">
-            <column name="id" value="7" />
+            <column name="id" value="100" />
             <column name="sub_race_name" value="Avariel, Winged Elf" />
             <column name="race_id" value="2" />
             <column name="size_id" value="5" />
@@ -177,6 +208,10 @@
             <column name="level_adjustment" value="3" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="100" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
 
         <insert tableName="sub_race">
             <column name="id" value="101" />
@@ -185,6 +220,11 @@
             <column name="size_id" value="5" />
             <column name="modifiers_id" value="150008" />
             <column name="level_adjustment" value="1" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="101" />
+            <column name="special_abilities_id" value="101" />
         </insert>
 
         <insert tableName="sub_race">
@@ -196,6 +236,11 @@
             <column name="level_adjustment" value="1" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="102" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="103" />
             <column name="sub_race_name" value="Drow, Dark Elf" />
@@ -203,6 +248,11 @@
             <column name="size_id" value="5" />
             <column name="modifiers_id" value="150010" />
             <column name="level_adjustment" value="2" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="103" />
+            <column name="special_abilities_id" value="103" />
         </insert>
 
         <insert tableName="sub_race">
@@ -214,6 +264,11 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="104" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="105" />
             <column name="sub_race_name" value="Savage Elf" />
@@ -221,6 +276,11 @@
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="105" />
+            <column name="special_abilities_id" value="101" />
         </insert>
 
         <insert tableName="sub_race">
@@ -232,6 +292,11 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="106" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="107" />
             <column name="sub_race_name" value="Star Elf" />
@@ -239,6 +304,11 @@
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="107" />
+            <column name="special_abilities_id" value="101" />
         </insert>
 
         <!-- Gonome 200-->
@@ -251,6 +321,11 @@
             <column name="level_adjustment" value="1" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="201" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="202" />
             <column name="sub_race_name" value="Deep Gnome, Svirfneblin" />
@@ -260,6 +335,11 @@
             <column name="level_adjustment" value="3" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="202" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="203" />
             <column name="sub_race_name" value="Rock Gnome" />
@@ -267,6 +347,11 @@
             <column name="size_id" value="4" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="203" />
+            <column name="special_abilities_id" value="101" />
         </insert>
 
         <!-- Half Elf 300-->
@@ -279,6 +364,11 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="301" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="302" />
             <column name="sub_race_name" value="Common Half Elf" />
@@ -288,13 +378,23 @@
             <column name="level_adjustment" value="0" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="302" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
-            <column name="id" value="304" />
+            <column name="id" value="303" />
             <column name="sub_race_name" value="Half Drow" />
             <column name="race_id" value="9" />
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="303" />
+            <column name="special_abilities_id" value="102" />
         </insert>
 
         <!-- Orc 400-->
@@ -307,6 +407,11 @@
             <column name="level_adjustment" value="1" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="401" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="402" />
             <column name="sub_race_name" value="Montain Orc" />
@@ -314,6 +419,11 @@
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="402" />
+            <column name="special_abilities_id" value="102" />
         </insert>
 
         <insert tableName="sub_race">
@@ -325,6 +435,11 @@
             <column name="level_adjustment" value="2" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="403" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="404" />
             <column name="sub_race_name" value="Half Orc" />
@@ -332,6 +447,11 @@
             <column name="size_id" value="5" />
             <!-- <column name="modifiers_id" value="150010" /> -->
             <column name="level_adjustment" value="0" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="404" />
+            <column name="special_abilities_id" value="102" />
         </insert>
 
         <!-- Halfling 500-->
@@ -470,6 +590,15 @@
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
         </insert>
 
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="701" />
+            <column name="special_abilities_id" value="302" />
+        </insert>
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="701" />
+            <column name="special_abilities_id" value="102" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="sub_race_name" value="Hagspawn" />
             <column name="id" value="701" />
@@ -518,6 +647,12 @@
             <column name="level_adjustment" value="0" />
             <column name="avatar_url" value="address value" />
         </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="801" />
+            <column name="special_abilities_id" value="101" />
+        </insert>
+
         <insert tableName="sub_race">
             <column name="id" value="802" />
             <column name="sub_race_name" value="River Spirit Folk" />
@@ -540,6 +675,11 @@
             ]" /> -->
             <column name="level_adjustment" value="0" />
             <column name="avatar_url" value="address value" />
+        </insert>
+
+        <insert tableName="race_special_abilities">
+            <column name="sub_race_id" value="802" />
+            <column name="special_abilities_id" value="101" />
         </insert>
 
     </changeSet>

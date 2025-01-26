@@ -40,7 +40,7 @@ export function Skills() {
       
       {char ? (
         <>
-        <CharSummary character={char} race={undefined} />
+        <CharSummary character={char} />
         <p>
           <SkillsTableComponent
             key={"skillsTable"}

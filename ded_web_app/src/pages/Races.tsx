@@ -84,7 +84,7 @@ export const Races = () => {
 
   return (
     <>
-      {char ? <CharSummary character={char} race={selectedRace} /> : null}
+      {char && selectedRace ? <CharSummary character={char} race={selectedRace} /> : null}
       {change === true ? (
         <p>
           {selectedRace?.race.raceName}, {selectedRace?.subRacesName}{" "}

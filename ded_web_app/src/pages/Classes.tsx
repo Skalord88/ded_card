@@ -2,23 +2,24 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { DropdownClass } from "../components/ClassPc/DropdownClass";
+import {
+  ClassCharacter,
+  ClassPc
+} from "../components/ClassPc/Interface/ClassPcLevel";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { CharacterPc } from "../components/interfaces";
-import {
-  urlChar,
-  urlClassAdd,
-  urlClassList,
-  urlClassSell
-} from "../components/url";
-import { ClassCharacter, ClassPc } from "../components/ClassPc/Interface/ClassPcLevel";
+import { urlChar, urlClassList } from "../components/url";
+import { DropdownComponent } from "../components/DropDown/DropDown";
+import { addToDrop, itemInDrop } from "../components/functions";
 
 export const Classes = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [classesList, setClassesList] = useState<ClassPc[]>([]);
-  const [option, setOption] = useState<{ id: number; sign: string }>();
+  const [classesList, setClassesList] = useState<ClassCharacter[]>([]);
+  const [baseClList, setBaseClList] = useState<itemInDrop[]>([]);
+  const [prestigeClList, setPrestigeClList] = useState<itemInDrop[]>([]);
+  const [charClassPc, setCharClassPc] = useState<ClassPc[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,8 +29,6 @@ export const Classes = () => {
 
         const resClassList = await axios.get(urlClassList);
         setClassesList(resClassList.data);
-
-        setOption({ id: -1, sign: "" });
       } catch (error) {
         console.error(error);
       }
@@ -38,146 +37,92 @@ export const Classes = () => {
   }, []);
 
   useEffect(() => {
-    let list: ClassPc[] = [];
+    const list = classesList.filter((cl) => cl.classType === "base class");
+    setBaseClList(addToDrop(list, "class"));
+    const listPrestige = classesList.filter(
+      (cl) => cl.classType === "prestige class"
+    );
+    setPrestigeClList(addToDrop(listPrestige, "class"));
+  }, [classesList]);
 
-    // list = classesList.filter((classe) => option?.id !== classe.id);
+  const handleNewClass = (option: ClassCharacter) => {
+    if (char?.classPcList) {
+      let newClassList: ClassPc[] = char.classPcList;
 
-    // list = list.filter(
-    //   (classe) =>
-    //     !char?.classPcList.some((classInChar) => classInChar.id === classe.id)
-    // );
+      const indexInClassList: number = newClassList.findIndex(
+        (cl: ClassPc) => cl.classCharacter.id === option.id
+      );
 
-    // char?.classPcList.forEach((classInList) =>
-      // list.filter((inList) => classInList.id !== inList.id)
-    // );
-    setClassesList(list);
-  }, [option]);
+      if (indexInClassList !== -1) {
+        newClassList[indexInClassList] = {
+          ...newClassList[indexInClassList],
+          level: newClassList[indexInClassList].level + 1
+        };
+      } else {
+        newClassList.push({
+          level: 1,
+          firstClass: newClassList.length === 0,
+          classCharacter: option
+        });
+      }
 
-  const handleOption = (e: ClassPc) => {
-    // setOption((prevOption) => ({
-    //   ...prevOption,
-    //   id: e.id,
-    //   sign: "+"
-    // }));
+      console.log(newClassList)
+
+      setCharClassPc(newClassList);
+    }
   };
+
+  useEffect(() => {
+    setCharClassPc(charClassPc)
+  },[charClassPc])
 
   // const handleData = (e: [string, ClassPc]) => {
   //   setOption({ id: e[1].id, sign: e[0] });
   // };
 
-  const handleSign = () => {
-    if (option) {
-      try {
-        if (option.sign === "+") {
-          axios.post(urlClassAdd + charId, { id: option.id });
-        } else if (option.sign === "-") {
-          axios.post(urlClassSell + charId, { id: option.id });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    window.location.reload();
-  };
+  // const handleSign = () => {
+  //   if (option) {
+  //     try {
+  //       if (option.sign === "+") {
+  //         axios.post(urlClassAdd + charId, { id: option.id });
+  //       } else if (option.sign === "-") {
+  //         axios.post(urlClassSell + charId, { id: option.id });
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   window.location.reload();
+  // };
 
   return (
     <>
-      {char? <CharSummary character={char} race={undefined} /> : null}
-      
-      <div className="rpgui-container-framed-grey">
-        <div>
-          <div style={{ width: "50%" }}>
-            <DropdownClass 
-              options={classesList}
-              onAction={handleOption}
-            />
-          </div>
-          <button className="rpgui-button" onClick={() => handleSign()}>
-            <p>add class</p>
-          </button>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap"
-          }}
-        >
-          {char?.classPcList ? (
-            <>
+      {char ? <CharSummary character={char} classPcList={charClassPc}/> : null}
 
-              {char.classPcList.map((c: ClassPc, index: number) => {
-                return c.level === 0 ? (
-                  <div></div>
-                ) : (
-                  <div
-                    key={index}
-                  >
-                    <p>
-                      <button
-                        className="rpgui-button-golden-small"
-                        // onClick={() => handleData(["+", c])}
-                      >
-                        <p>+</p>
-                      </button>
-                      <button
-                        className="rpgui-button-golden-small"
-                        // onClick={() => handleData(["-", c])}
-                      >
-                        <p>-</p>
-                      </button>{" "}
-                      {c.classCharacter.className}
-                      {option?.id !== c.classCharacter.id ? (
-                        <> {c.level} </>
-                      ) : (
-                        <>
-                          {/* {option.sign === "+" ? (
-                            <>
-                              {" ("}
-                              {c.level}
-                              {") "}
-                              {c.level + 1}{" "}
-                              <button
-                                className="rpgui-button-golden-small"
-                                onClick={() => handleSign()}
-                              >
-                                <p>change</p>
-                              </button>
-                            </>
-                          ) : (
-                            <>
-                              {" ("}
-                              {c.level}
-                              {") "}
-                              {c.level - 1}{" "}
-                              <button
-                                className="rpgui-button-golden-small"
-                                onClick={() => handleSign()}
-                              >
-                                <p>change</p>
-                              </button>
-                            </>
-                          )} */}
-                        </>
-                      )}
-                    </p>
-                  </div>
-                );
-              })}
-            </>
-          ) : (
-            <p>no classes in character</p>
-          )}
-        </div>
-        {char?.classPcList ? (
-          <div>
-            <button className="rpgui-button">
-              <Link to={"/skill/" + charId}>to skills</Link>
-            </button>
-          </div>
+      <div className="rpgui-container-framed-grey">
+        <DropdownComponent options={baseClList} onAction={handleNewClass} />
+        <DropdownComponent options={prestigeClList} onAction={handleNewClass} />
+        {charClassPc ? (
+          charClassPc.map((cl) => (
+            <div>
+              <span>
+                lv{cl.level}: {cl.classCharacter.className}
+              </span>
+              <span><button onClick={()=>handleNewClass(cl.classCharacter)}>+</button></span>
+              <span><button>-</button></span>
+            </div>
+          ))
         ) : (
-          <p></p>
+          <p>add a class</p>
         )}
       </div>
+      {char?.classPcList ? (
+        <div>
+          <button className="rpgui-button">
+            <Link to={"/skill/" + charId}>to skills</Link>
+          </button>
+        </div>
+      ) : null}
     </>
   );
 };

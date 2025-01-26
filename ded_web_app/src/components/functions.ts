@@ -1,9 +1,9 @@
 import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
-import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
+import { ClassCharacter, ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { enchantedName, onlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Armor, Book, Enchantment, Inventory, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
+import { Armor, Book, CharacterPc, Enchantment, Inventory, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
 
 export function SignNumber(
     number: number
@@ -14,7 +14,7 @@ export function SignNumber(
 export function SignNumberEnchant(
     number: number
 ): string {
-    if(number === undefined) return ""
+    if (number === undefined) return ""
     switch (number) {
         case -2: return ""
         case -1: return "prf"
@@ -43,7 +43,7 @@ export function weaponLight(weapon: Weapon): boolean {
 }
 
 export function weaponRanged(weapon: Weapon): boolean {
-    return weapon !== null ?  weapon.type.includes("RANGED") : false;
+    return weapon !== null ? weapon.type.includes("RANGED") : false;
 }
 
 export function weaponThrown(weapon: Weapon): boolean {
@@ -348,7 +348,7 @@ export interface itemInDrop {
     item: any
 }
 
-export function addToDrop(options: any[], text: string): itemInDrop[] {
+export const addToDrop = (options: any[], text: string): itemInDrop[] => {
     if (text === "list") {
         let list: itemInDrop[] = options.map(
             o => {
@@ -378,7 +378,7 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
             o => {
                 return {
                     name: o.className,
-                    item: o as ClassPc
+                    item: o as ClassCharacter
                 }
             }
         )
@@ -429,7 +429,19 @@ export function addToDrop(options: any[], text: string): itemInDrop[] {
         )
         return list
     }
+    if (text === "char") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as CharacterPc
+                }
+            }
+        )
+        return list
+    }
     return []
+
 }
 
 export { BonusAbilities };

@@ -1,59 +1,71 @@
 import { abilityBackgroundColor } from "./Abilitys/Colors";
-import { AbilitysProps } from "./Abilitys/Interface";
+import { Abilitys, AbilitysProps } from "./Abilitys/Interface";
 import { BonusAbilities, signAndCount } from "./functions";
 
-export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
+export type AbilitysForComponent = {
+  id: number;
+  text: string;
+  value: number;
+  bonusSing: string;
+  bonus: number;
+  color: string;
+}[];
 
-  const ab = [
-    {
-      id: 1,
-      text: "STR",
-      value: abilitys.strength,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "STR")]).sign,
-      bonus: BonusAbilities(abilitys, "STR"),
-      color: abilityBackgroundColor('STRENGTH')
-    },
-    {
-      id: 2,
-      text: "DEX",
-      value: abilitys.dexterity,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "DEX")]).sign,
-      bonus: BonusAbilities(abilitys, "DEX"),
-      color: abilityBackgroundColor('DEXTERITY')
-    },
-    {
-      id: 3,
-      text: "COS",
-      value: abilitys.constitution,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "COS")]).sign,
-      bonus: BonusAbilities(abilitys, "COS"),
-      color: abilityBackgroundColor('CONSTITUTION')
-    },
-    {
-      id: 4,
-      text: "INT",
-      value: abilitys.intelligence,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "INT")]).sign,
-      bonus: BonusAbilities(abilitys, "INT"),
-      color: abilityBackgroundColor('INTELLIGENCE')
-    },
-    {
-      id: 5,
-      text: "WIS",
-      value: abilitys.wisdom,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "WIS")]).sign,
-      bonus: BonusAbilities(abilitys, "WIS"),
-      color: abilityBackgroundColor('WISDOM')
-    },
-    {
-      id: 6,
-      text: "CHA",
-      value: abilitys.charisma,
-      bonusSing: signAndCount([BonusAbilities(abilitys, "CHA")]).sign,
-      bonus: BonusAbilities(abilitys, "CHA"),
-      color: abilityBackgroundColor('CHARISMA')
-    }
-  ];
+export const abilitysForComponent = (
+  abilitys: Abilitys
+): AbilitysForComponent => [
+  {
+    id: 1,
+    text: "STR",
+    value: abilitys.strength,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "STR")]).sign,
+    bonus: BonusAbilities(abilitys, "STR"),
+    color: abilityBackgroundColor("STRENGTH")
+  },
+  {
+    id: 2,
+    text: "DEX",
+    value: abilitys.dexterity,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "DEX")]).sign,
+    bonus: BonusAbilities(abilitys, "DEX"),
+    color: abilityBackgroundColor("DEXTERITY")
+  },
+  {
+    id: 3,
+    text: "COS",
+    value: abilitys.constitution,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "COS")]).sign,
+    bonus: BonusAbilities(abilitys, "COS"),
+    color: abilityBackgroundColor("CONSTITUTION")
+  },
+  {
+    id: 4,
+    text: "INT",
+    value: abilitys.intelligence,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "INT")]).sign,
+    bonus: BonusAbilities(abilitys, "INT"),
+    color: abilityBackgroundColor("INTELLIGENCE")
+  },
+  {
+    id: 5,
+    text: "WIS",
+    value: abilitys.wisdom,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "WIS")]).sign,
+    bonus: BonusAbilities(abilitys, "WIS"),
+    color: abilityBackgroundColor("WISDOM")
+  },
+  {
+    id: 6,
+    text: "CHA",
+    value: abilitys.charisma,
+    bonusSing: signAndCount([BonusAbilities(abilitys, "CHA")]).sign,
+    bonus: BonusAbilities(abilitys, "CHA"),
+    color: abilityBackgroundColor("CHARISMA")
+  }
+];
+
+export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
+  const ab = abilitysForComponent(abilitys);
 
   return (
     <>
@@ -75,5 +87,21 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
         </div>
       ))}
     </>
+  );
+};
+
+export const AbilitysSummaryComponent: React.FC<AbilitysProps> = ({
+  abilitys
+}) => {
+  const ab = abilitysForComponent(abilitys);
+
+  const adString = ab.flatMap((a) => {
+    return a.text + ": " + a.value + " (" + a.bonusSing + a.bonus + ")";
+  });
+
+  return (
+    <div style={{ display: "flex" }}>
+      <p>{adString.join(" / ")}</p>
+    </div>
   );
 };

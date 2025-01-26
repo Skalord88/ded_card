@@ -113,7 +113,7 @@
                 &quot;wisdom&quot;:14,
                 &quot;charisma&quot;:8
                 }" />
-            <column name="sub_race_id" value="37" />
+            <column name="sub_race_id" value="802" />
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="104" />
             <column name="attacks_id" value="104" />
@@ -137,7 +137,7 @@
                 &quot;wisdom&quot;: 13, 
                 &quot;charisma&quot;: 10
             }" />
-            <column name="sub_race_id" value="38" />
+            <column name="sub_race_id" value="107" />
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="105" />
             <column name="attacks_id" value="105" />
@@ -161,7 +161,7 @@
             &quot;wisdom&quot;:8,
             &quot;charisma&quot;:16
             }" />
-            <column name="sub_race_id" value="38" />
+            <column name="sub_race_id" value="107" />
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="106" />
             <column name="attacks_id" value="106" />

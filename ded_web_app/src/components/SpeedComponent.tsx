@@ -79,3 +79,15 @@ export const SpeedComponent: React.FC<SpeedComponentProps> = ({ char }) => {
     </>
   );
 };
+
+export const SpeedSummaryComponent: React.FC<SpeedComponentProps> = ({ char }) => {
+  const speed: Speed = {
+    foot: char.speed.foot,
+    fly: char.speed.fly,
+    climb: char.speed.climb,
+    swim: char.speed.swim,
+    special: ""
+  }
+  const speedText: string = speed.foot? "foot " + speed.foot + "ft." : ""
+  return (<div><p>speed: {speedText}</p></div>)
+}

@@ -252,7 +252,7 @@
         </insert>
         <insert tableName="spells_table">
             <column name="id" value="10" />
-            <column name="magic_class" value="ASSASIN" />
+            <column name="magic_class" value="ASSASSIN" />
             <column name="spells_day_known" value="DAY" />
             <column name="spells_in_level"
                 value="[
@@ -270,7 +270,7 @@
         </insert>
         <insert tableName="spells_table">
             <column name="id" value="11" />
-            <column name="magic_class" value="ASSASIN" />
+            <column name="magic_class" value="ASSASSIN" />
             <column name="spells_day_known" value="KNOWN" />
             <column name="spells_in_level"
                 value="[

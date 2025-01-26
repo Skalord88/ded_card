@@ -26,7 +26,7 @@ export const Create = () => {
 
   return (
     <>
-        <div className="rpgui-container-framed">
+        <div className="rpgui-container-framed-golden">
           <form>
             <input
               className="rpgui-content-input"

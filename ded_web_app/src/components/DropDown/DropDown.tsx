@@ -42,11 +42,11 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
             }}
           >
             {options.map((o, index) => (
-              <>
-                <li key={index} onClick={() => selectItem(o)}>
+              <div key={index}>
+                <li onClick={() => selectItem(o)}>
                   {o.name}
                 </li>
-              </>
+              </div>
             ))}
           </ul>
         )}

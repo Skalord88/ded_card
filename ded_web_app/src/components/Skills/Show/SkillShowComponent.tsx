@@ -1,7 +1,7 @@
 import { abilityBackgroundColor } from "../../Abilitys/Colors";
 import { abilityAbbreviation } from "../../Abilitys/Functions";
 import { FormattingText } from "../../Formatting/Function";
-import { BonusAbilities } from "../../functions";
+import { BonusAbilities, signAndCount } from "../../functions";
 import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { DicePopupProps } from "../../Popup/DicePopup/Interface";
 import { CharToModify } from "../../Prerequisite/functions/modifyCharacter";
@@ -252,5 +252,48 @@ export const ModSkillStudyInDice: React.FC<ModSkillStudyInDiceProps> = ({
       value={dice.value}
       modifiers={dice.modifiers}
     />
+  );
+};
+
+export type SkillsSummary = {
+  skillText: string;
+  sign?: string;
+  value?: number;
+};
+
+export const SkillSummaryComponent: React.FC<SkillShowComponentProps> = ({
+  char
+}) => {
+  const classSkills: SkillsSummary[] = char.skillsList.flatMap((s) => {
+    const text: string = s.study && s.study?.length > 0? s.study.flatMap(st => s.skill.skillName + " " + st.study.studyName).join(", ") : s.skill.skillName
+    
+    return s.classSkill
+    ? {skillText: text} 
+    : []
+  }
+    
+  );
+  const skillsNotZero: SkillsSummary[] = char.skills.mono.flatMap((s) =>
+    s.skill && s.rank > 0
+      ? {
+          skillText: FormattingText(s.skill.skillName),
+          sign: signAndCount([s.rank]).sign,
+          value: s.rank
+        }
+      : []
+  );
+
+  const classSkillsText: string[] = classSkills.flatMap((s) => {
+    return FormattingText(s.skillText);
+  });
+  const skillsNotZeroText: string[] = skillsNotZero.flatMap((s) => {
+    return s.skillText + ": " + s.sign + s.value;
+  });
+
+  return (
+    <div>
+      <p>{skillsNotZeroText.join(" / ")}</p>
+      <p>{classSkillsText.join(", ")}</p>
+    </div>
   );
 };
