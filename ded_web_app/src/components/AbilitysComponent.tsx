@@ -100,7 +100,7 @@ export const AbilitysSummaryComponent: React.FC<AbilitysProps> = ({
   });
 
   return (
-    <div style={{ display: "flex" }}>
+    <div>
       <p>{adString.join(" / ")}</p>
     </div>
   );

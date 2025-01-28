@@ -8,34 +8,57 @@ import { SkillSummaryComponent } from "../Skills/Show/SkillShowComponent";
 import { SpecialAbilitiesSummaryComponent } from "../SpecialAbilities/SpecialAbilitiesComponent";
 import { SpeedSummaryComponent } from "../SpeedComponent";
 import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
+import { HpSummaryComponent } from "../HpComponent";
+import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
+import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
 
 export interface SummaryProps {
   character: CharacterPc;
   race?: SubRace;
-  classPcList?: ClassPc[]
+  classPcList?: ClassPc[];
 }
 
-export const CharSummary: React.FC<SummaryProps> = ({ character, race, classPcList }) => {
+export const CharSummary: React.FC<SummaryProps> = ({
+  character,
+  race,
+  classPcList
+}) => {
   const [updateChar, setUpChar] = useState<CharToModify>();
+  const [textClass, setTextClass] = useState<string>();
 
   useEffect(() => {
     const char: CharacterPc = {
       ...character,
-      race: race? race : character.race,
-      classPcList: classPcList? classPcList : character.classPcList
-    }
-    const newChar: CharToModify = createModChar(char)
-     setUpChar(newChar)
-  },[character, race, classPcList])
+      race: race ? race : character.race,
+      classPcList: classPcList ? classPcList : character.classPcList
+    };
+    const newChar: CharToModify = createModChar(char);
+
+    const newTextList: string[] = classPcList
+      ? classPcList.flatMap(
+          (cl: ClassPc) => "lv." + cl.level + ": " + cl.classCharacter.className
+        )
+      : character.classPcList.flatMap(
+          (cl: ClassPc) => "lv." + cl.level + ": " + cl.classCharacter.className
+        );
+    setTextClass(newTextList.join(", "));
+
+    setUpChar(newChar);
+  }, [character, race, classPcList]);
 
   return (
     <>
       {updateChar ? (
         <div className="rpgui-container-framed-grey">
+          <h3>{character.race ? character.race.subRacesName : null}</h3>
           <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
+          {textClass ? <p>{textClass}</p> : null}
           <SkillSummaryComponent char={updateChar} />
           <SpeedSummaryComponent char={updateChar} />
           <SpecialAbilitiesSummaryComponent char={updateChar} />
+          <HpSummaryComponent char={updateChar} />
+          <BaseSummaryAttack char={updateChar} />
+          <SavingSummaryThrowComponent char={updateChar} />
         </div>
       ) : (
         <p>...loading...</p>

@@ -46,3 +46,35 @@ export const HpComponent: React.FC<HpComponentProps> = ({ char }) => {
     </>
   );
 };
+
+export const HpSummaryComponent: React.FC<HpComponentProps> = ({ char }) => {
+  let oneDList: { lv: number; dice: number }[] = [];
+
+  char.listHitDices.forEach((c) => {
+    const existing = oneDList.find((one) => one.dice === c.dice);
+    if (existing) {
+      existing.lv += c.lv;
+    } else {
+      oneDList.push({ lv: c.lv, dice: c.dice });
+    }
+  });
+
+  const cos: SignAndNumber = signAndCount([
+    BonusAbilities(char.abilitys, "COS")
+  ]);
+
+  const hdTextList: {lvHd: string, totLvHd: number}[] = oneDList.map(
+    hD => (
+      { lvHd: hD.lv + "D" + hD.dice + cos.sign + (hD.lv * cos.number), 
+        totLvHd: hD.lv * (hD.dice + cos.number) })
+  );
+
+  const hdText: string = hdTextList.flatMap(hd => hd.lvHd + " (" + hd.totLvHd + ")").join(" / ")
+  const tot: number = hdTextList.reduce((tot, hd) => tot + hd.totLvHd, 0)
+
+  return(
+  <div>
+    <p>vita: {hdText} total HD: {tot}</p>
+  </div>
+  )
+}

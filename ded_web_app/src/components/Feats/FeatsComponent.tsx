@@ -21,7 +21,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
     id: string;
     name: string;
     prer?: Prerequisite[];
-    description: string[];
+    description: { benefit: string; normal: string; special: string };
   }[] = featsFeatPc.map(
     (f, index) =>
       f && {
@@ -35,50 +35,47 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
             : f.feat.modifiers
             ? [f.feat.modifiers]
             : [],
-        description: [
-          f.feat.normal != null ? "normal: " + f.feat.normal + "\n" : "",
-          f.feat.special != null ? "special: " + f.feat.special + "\n" : "",
-          f.feat.benefit != null ? "benefit: " + f.feat.benefit + "\n" : "",
-          f.feat.special != null ? "special: " + f.feat.special : ""
-        ]
+        description: {
+          normal: f.feat.normal,
+          special: f.feat.special,
+          benefit: f.feat.benefit
+        }
       }
   );
   const fe: {
     id: string;
     name: string;
     prer?: Prerequisite[];
-    description: string[];
+    description: { benefit: string; normal: string; special: string };
   }[] = featsFeats.map(
     (f, index) =>
       f && {
         id: index + ".fe",
         name: f.featName,
         prer: f.modifiers && [f.modifiers],
-        description: [
-          "normal: " + f.normal,
-          "special: " + f.special,
-          "benefit: " + f.benefit,
-          "special: " + f.special
-        ]
+        description: {
+          normal: f.normal,
+          special: f.special,
+          benefit: f.benefit
+        }
       }
   );
   const feCl: {
     id: string;
     name: string;
     prer?: Prerequisite[];
-    description: string[];
+    description: { benefit: string; normal: string; special: string };
   }[] = featsClassFeatsOneTime.map(
     (f, index) =>
       f && {
         id: index + ".feCl",
         name: f.feat.featName,
         prer: f.modifiers && [f.modifiers],
-        description: [
-          "normal: " + f.feat.normal,
-          "special: " + f.feat.special,
-          "benefit: " + f.feat.benefit,
-          "special: " + f.feat.special
-        ]
+        description: {
+          normal: f.feat.normal,
+          special: f.feat.special,
+          benefit: f.feat.benefit
+        }
       }
   );
 
@@ -93,7 +90,11 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
 };
 
 export type ListOfFeatsMapProps = {
-  feats: { name: string; prer?: Prerequisite[]; description: string[] }[];
+  feats: {
+    name: string;
+    prer?: Prerequisite[];
+    description: { benefit: string; normal: string; special: string };
+  }[];
   titolo: string;
 };
 
@@ -104,7 +105,7 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
   const [selectedFeat, setSelectedFeat] = useState<{
     name: string;
     prer?: Prerequisite[];
-    description: string[];
+    description: { benefit: string; normal: string; special: string };
   } | null>(null);
 
   const orderedFeats = feats.sort((a, b) => {
@@ -116,7 +117,7 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
   const selectFeat = (feat: {
     name: string;
     prer?: Prerequisite[];
-    description: string[];
+    description: { benefit: string; normal: string; special: string };
   }) => {
     setSelectedFeat(feat);
   };
@@ -127,9 +128,10 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
 
   return (
     <>
-      {orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
-      <div style={{ display: "grid", gridColumn: "40% 60%" }}>
+      
+      <div style={{ display: "grid", gridColumn: "45% 5% 50%" }}>
         <div style={{ gridColumn: 1 }}>
+        {orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
           {feats.map(
             (f, index) =>
               f && (
@@ -157,7 +159,11 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
 };
 
 export type SelectedFeatProps = {
-  feat: { name: string; prer?: Prerequisite[]; description: string[] };
+  feat: {
+    name: string;
+    prer?: Prerequisite[];
+    description: { benefit: string; normal: string; special: string };
+  };
   onClear: () => void;
 };
 
@@ -175,9 +181,26 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
   if (!view) return null;
 
   return (
-    <div>
+    <div style={{ minHeight: 50, maxHeight: 500, overflowY: "scroll" }}>
       {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
-      {feat.description && <p>{feat.description}</p>}
+      {feat.description.benefit ? (
+        <p>
+          <span style={{ color: "yellow"}}>benefit: </span>
+          <span>{feat.description.benefit}</span>
+        </p>
+      ) : null}
+      {feat.description.normal ? (
+        <p>
+          <span style={{ color: "yellow"}}>normal: </span>
+          <span>{feat.description.normal}</span>
+        </p>
+      ) : null}
+      {feat.description.special ? (
+        <p>
+          <span style={{ color: "yellow"}}>special: </span>
+          <span>{feat.description.special}</span>
+        </p>
+      ) : null}
     </div>
   );
 };

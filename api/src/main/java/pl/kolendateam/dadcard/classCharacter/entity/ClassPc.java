@@ -36,14 +36,15 @@ public class ClassPc implements Serializable {
   @JoinColumn(name = "character_card_id")
   Character character;
 
-  public boolean getFirstClass() {
-    return this.firstClass;
-  }
-
-  public ClassPc(int lv, boolean first, ClassCharacter classPg) {
+  public ClassPc(int lv, boolean first, int classId, int charId) {
     this.level = lv;
     this.firstClass = first;
-    this.classCharacter = classPg;
+    this.classCharacter = new ClassCharacter(classId);
+    this.character = new Character(charId);
+  }
+
+  public boolean getFirstClass() {
+    return this.firstClass;
   }
 
   public void incrementLevel() {
@@ -54,14 +55,14 @@ public class ClassPc implements Serializable {
     this.level--;
   }
 
-  public int findIndexInArrayById(List<ClassPc> classPcList) {
-    for (int i = 0; i < classPcList.size(); i++) {
-      if (this.classCharacter.getId() == classPcList.get(i).getId()) {
-        return i;
-      }
-    }
-    return -1;
-  }
+  // public int findIndexInArrayById(List<ClassPc> classPcList) {
+  //   for (int i = 0; i < classPcList.size(); i++) {
+  //     if (this.classCharacter.getId() == classPcList.get(i).getId()) {
+  //       return i;
+  //     }
+  //   }
+  //   return -1;
+  // }
 
   public int findLevelInArrayById(List<ClassPc> classPcList, int id) {
     for (ClassPc clPc : classPcList) {

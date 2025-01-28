@@ -5,7 +5,7 @@ import java.util.List;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassCharacterDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 
-public class MapperClassCharacterDTO {
+public class MapperClassCharacter {
 
   public static List<ClassCharacterDTO> toClassCharacterListDTO(
     List<ClassCharacter> classCharList
@@ -23,5 +23,13 @@ public class MapperClassCharacterDTO {
     ClassCharacter classChar
   ) {
     return classChar == null ? null : new ClassCharacterDTO(classChar);
+  }
+
+  public static ClassCharacter toClassCharacter(
+    ClassCharacterDTO classCharacterDTO
+  ) {
+    return classCharacterDTO == null
+      ? null
+      : new ClassCharacter(classCharacterDTO.id);
   }
 }

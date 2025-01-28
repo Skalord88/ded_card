@@ -244,9 +244,4 @@ public class MapperSkillToDTO {
   // public static List<SkillsDTO> toSkillsCharacterListDTO(
   //   List<SkillCharacter> skillsCharacter
   // ) {
-  //   // TODO Auto-generated method stub
-  //   throw new UnsupportedOperationException(
-  //     "Unimplemented method 'toSkillsCharacterListDTO'"
-  //   );
-  // }
 }

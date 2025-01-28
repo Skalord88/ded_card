@@ -26,30 +26,6 @@ public class ClassController {
   public List<ClassCharacterDTO> getAll() {
     List<ClassCharacter> classes = this.classRepository.findAll();
 
-    return MapperClassCharacterDTO.toClassCharacterListDTO(classes);
+    return MapperClassCharacter.toClassCharacterListDTO(classes);
   }
-  // public static ArrayList<ClassPcDTO> addClassToList(
-  //   ClassCharacter classCharacter,
-  //   Character character,
-  //   String className
-  // ) {
-  //   ArrayList<ClassPcDTO> classPcListDTO = new ArrayList<ClassPcDTO>();
-
-  //   for (ClassPcDTO classList : classPcListDTO) {
-  //     boolean skipClassPc = false;
-
-  //     if (className.equals(classCharacter.getName().toString())) {
-  //       classList.level = +1;
-  //       skipClassPc = true;
-  //     }
-
-  //     if (!skipClassPc) {
-  //       ClassPcDTO clPc = new ClassPcDTO();
-  //       clPc.className.equals(classCharacter.getName().toString());
-  //       clPc.id = classCharacter.getId();
-  //       clPc.level = 1;
-  //     }
-  //   }
-  //   return classPcListDTO;
-  // }
 }

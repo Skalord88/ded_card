@@ -7,7 +7,6 @@ import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.ItemAbilityEnum;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 
 @AllArgsConstructor
 @NoArgsConstructor

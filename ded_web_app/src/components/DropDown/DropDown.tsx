@@ -37,8 +37,8 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
             className="rpgui-dropdown-imp"
             style={{
               position: "absolute",
-              width: "400px",
-              fontSize: "75%"
+              width: "50%",
+              // fontSize: "75%"
             }}
           >
             {options.map((o, index) => (

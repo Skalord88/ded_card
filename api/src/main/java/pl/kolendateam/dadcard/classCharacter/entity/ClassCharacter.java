@@ -12,7 +12,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.HashSet;
@@ -22,7 +21,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
@@ -42,7 +40,7 @@ public class ClassCharacter implements Serializable {
   int id;
 
   @Enumerated(EnumType.STRING)
-  TypeEnum type;
+  TypeEnum classType;
 
   @Enumerated(EnumType.STRING)
   EnumClass name;
@@ -95,4 +93,19 @@ public class ClassCharacter implements Serializable {
   SpellsEnum spellsDomain;
 
   String initialGold;
+
+  public ClassCharacter(int classCharacterId) {
+    this.id = classCharacterId;
+    // this.type = classCharacterDTO.classType;
+    // this.name = classCharacterDTO.className;
+    // this.avatarUrl = classCharacterDTO.avatarUrl;
+    // this.hitDice = classCharacterDTO.hitDice;
+    // this.savingThrow = classCharacterDTO.savingThrow;
+    // this.classBab = classCharacterDTO.classBab;
+    // this.availableSkills = MapperSkillToDTO.toSkillSet(classCharacterDTO.classSkill);
+    // this.availableStudy = MapperSkillToDTO.toStudySet(classCharacterDTO.classStudy);
+    // this.skillPoints = classCharacterDTO.skillPoints;
+    // this.availableFeats = MapperFeatsDTO.toFeatsSetDTO(classCharacterDTO.classFeats);
+    // this.spellsPerDay = , spellsKnown, spellBonus, spellsDomain, initialGold)
+  }
 }

@@ -125,20 +125,35 @@ export type OneSkillShowProps = {
   bonusAb: number;
   penality: number;
   bonusModifier?: PrerequisiteSkills[];
+  onActionSkill?: (action: string, id: number) => void;
 };
 
 export const OneSkillShow: React.FC<OneSkillShowProps> = ({
   sk,
   bonusAb,
   penality,
-  bonusModifier
+  bonusModifier,
+  onActionSkill
 }) => {
   const bonus: number =
     bonusModifier
       ?.filter((mod) => mod.skill?.id === sk.skill.id)
       .reduce((tot, b) => tot + b.rank, 0) ?? 0;
 
-  const tot: number = sk.rank + bonusAb + sk.skill.penality * penality + bonus;
+  const tot: number =
+  Math.floor(
+    sk.rank + bonusAb + sk.skill.penality * (penality ? penality : 0) + bonus);
+
+  const addRank = (idSkill: number) => {
+    if (onActionSkill) {
+      onActionSkill("+", idSkill);
+    }
+  };
+  const delRank = (idSkill: number) => {
+    if (onActionSkill) {
+      onActionSkill("-", idSkill);
+    }
+  };
 
   return (
     <>
@@ -158,10 +173,22 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
         </p>
       </div>
       <div className={abilityBackgroundColor(sk.skill.ability)}>
-        <p style={{ color: "orange" }}>{tot}</p>
+        {onActionSkill ? (
+          <p onClick={() => delRank(sk.skill.id)} style={{ color: "orange" }}>
+            {tot}
+          </p>
+        ) : (
+          <p style={{ color: "orange" }}>{tot}</p>
+        )}
       </div>
       <div className={abilityBackgroundColor(sk.skill.ability)}>
-        <p>{sk.rank}</p>
+        {onActionSkill ? (
+          <p style={{ color: "yellow" }} onClick={() => addRank(sk.skill.id)}>
+            {sk.rank}
+          </p>
+        ) : (
+          <p>{sk.rank}</p>
+        )}
       </div>
       <div className={abilityBackgroundColor(sk.skill.ability)}>
         <p>{bonusAb}</p>
@@ -170,17 +197,19 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
         <p>{bonus}</p>
       </div>
       <div className={abilityBackgroundColor(sk.skill.ability)}>
-        <p>{sk.skill.penality * penality}</p>
+        <p>{sk.skill.penality * (penality ? penality : 0)}</p>
       </div>
     </>
   );
 };
 export type OneStudyShowProps = {
+  index?: number;
   study: StudyInList;
   skill: Skill;
   bonusAb: number;
   penality: number;
   bonusModifier?: PrerequisiteSkills[];
+  onActionStudy?: (action: string, idStudy: number, idSkill: number) => void;
 };
 
 export const OneStudyShow: React.FC<OneStudyShowProps> = ({
@@ -188,20 +217,34 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
   skill,
   bonusAb,
   penality,
-  bonusModifier
+  bonusModifier,
+  onActionStudy
 }) => {
   const bonus: number =
     bonusModifier
       ?.filter((mod) => mod.skill?.id === study.study.id)
       .reduce((tot, b) => tot + b.rank, 0) ?? 0;
 
-  const tot: number = study.rank + bonusAb + skill.penality * penality + bonus;
+  const tot: number =
+  Math.floor(  
+  study.rank + bonusAb + skill.penality * (penality ? penality : 0) + bonus);
 
   const name: string = study.study.studyName
     ? study.study.studyName
     : study.study.newStudy
     ? study.study.newStudy
     : "";
+
+  const addRank = (idStudy: number, idSkill: number) => {
+    if (onActionStudy) {
+      onActionStudy("+", idStudy, idSkill);
+    }
+  };
+  const delRank = (idStudy: number, idSkill: number) => {
+    if (onActionStudy) {
+      onActionStudy("-", idStudy, idSkill);
+    }
+  };
 
   return (
     <>
@@ -221,10 +264,28 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
         </p>
       </div>
       <div className={abilityBackgroundColor(skill.ability)}>
-        <p style={{ color: "orange" }}>{tot}</p>
+        {onActionStudy ? (
+          <p
+            onClick={() => delRank(study.study.id, skill.id)}
+            style={{ color: "orange" }}
+          >
+            {tot}
+          </p>
+        ) : (
+          <p style={{ color: "orange" }}></p>
+        )}
       </div>
       <div className={abilityBackgroundColor(skill.ability)}>
-        <p>{study.rank}</p>
+        {onActionStudy ? (
+          <p
+            style={{ color: "yellow" }}
+            onClick={() => addRank(study.study.id, skill.id)}
+          >
+            {study.rank}
+          </p>
+        ) : (
+          <p>{study.rank}</p>
+        )}
       </div>
       <div className={abilityBackgroundColor(skill.ability)}>
         <p>{bonusAb}</p>
@@ -233,7 +294,7 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
         <p>{bonus}</p>
       </div>
       <div className={abilityBackgroundColor(skill.ability)}>
-        <p>{skill.penality * penality}</p>
+        <p>{skill.penality * (penality ? penality : 0)}</p>
       </div>
     </>
   );
@@ -265,14 +326,15 @@ export const SkillSummaryComponent: React.FC<SkillShowComponentProps> = ({
   char
 }) => {
   const classSkills: SkillsSummary[] = char.skillsList.flatMap((s) => {
-    const text: string = s.study && s.study?.length > 0? s.study.flatMap(st => s.skill.skillName + " " + st.study.studyName).join(", ") : s.skill.skillName
-    
-    return s.classSkill
-    ? {skillText: text} 
-    : []
-  }
-    
-  );
+    const text: string =
+      s.study && s.study?.length > 0
+        ? s.study
+            .flatMap((st) => s.skill.skillName + " " + st.study.studyName)
+            .join(", ")
+        : s.skill.skillName;
+
+    return s.classSkill ? { skillText: text } : [];
+  });
   const skillsNotZero: SkillsSummary[] = char.skills.mono.flatMap((s) =>
     s.skill && s.rank > 0
       ? {
@@ -292,8 +354,12 @@ export const SkillSummaryComponent: React.FC<SkillShowComponentProps> = ({
 
   return (
     <div>
-      <p>{skillsNotZeroText.join(" / ")}</p>
-      <p>{classSkillsText.join(", ")}</p>
+      {skillsNotZeroText.length > 0 ? (
+        <p>skills bonus: {skillsNotZeroText.join(" / ")}</p>
+      ) : null}
+      {classSkillsText.length > 0 ? (
+        <p>class skills: {classSkillsText.join(", ")}</p>
+      ) : null}
     </div>
   );
 };

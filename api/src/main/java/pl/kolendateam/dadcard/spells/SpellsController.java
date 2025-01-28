@@ -15,14 +15,10 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
-import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
-import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
-import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
@@ -118,9 +114,6 @@ public class SpellsController {
     // SpellsEnum spellClassE = character.characterGetSpellClassById(
     //   SpellsAddDTO.idClass
     // );
-    EnumClass classNameE = character.characterGetClassEnumById(
-      SpellsAddDTO.idClass
-    );
     // int maxLv = character.getMagicKnown().get(classNameE).length;
     // int lv = 0;
 
@@ -143,13 +136,7 @@ public class SpellsController {
 
     this.characterRepository.save(character);
 
-    return new CharacterDTO(
-      character
-      // ,
-      // character.getInventory(),
-      // character.getAttacks(),
-      // character.getClassPcArray()
-    );
+    return new CharacterDTO(character);
   }
 
   @PostMapping(value = "{id}/sellspells", consumes = { "application/json" })
@@ -168,19 +155,8 @@ public class SpellsController {
 
     Character character = characterOpt.get();
 
-    // EnumClass classNameE = character.characterGetClassEnumById(
-    //   SpellsAddDTO.idClass
-    // );
-    // character.removeSpell(classNameE, SpellsAddDTO.spells);
-
     this.characterRepository.save(character);
 
-    return new CharacterDTO(
-      character
-      // ,
-      // character.getInventory(),
-      // character.getAttacks(),
-      // character.getClassPcArray()
-    );
+    return new CharacterDTO(character);
   }
 }

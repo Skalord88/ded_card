@@ -46,7 +46,7 @@ export type ClassFeats = {
 export type Feat = {
   id: number;
   featName: string;
-  featsType: string[];
+  featType: string[];
   benefit: string;
   normal: string;
   special: string;

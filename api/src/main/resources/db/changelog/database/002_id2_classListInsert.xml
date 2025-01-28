@@ -6,7 +6,7 @@
   <changeSet id="2" author="oscar">
     <insert tableName="class_character">
       <column name="id" value="1" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="BARBARIAN" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hll" />
@@ -41,7 +41,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="2" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="BARD" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhh" />
@@ -70,7 +70,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="3" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="CLERIC" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hlh" />
@@ -90,7 +90,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="4" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="DRUID" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hlh" />
@@ -127,7 +127,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="5" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="FIGHTER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hll" />
@@ -153,7 +153,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="6" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="MONK" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hhh" />
@@ -188,7 +188,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="7" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="PALADIN" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hll" />
@@ -220,7 +220,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="8" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="RANGER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hhl" />
@@ -254,7 +254,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="9" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="ROGUE" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhl" />
@@ -287,7 +287,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="10" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="SORCERER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="llh" />
@@ -307,7 +307,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="11" />
-      <column name="type" value="BASE_CLASS" />
+      <column name="class_type" value="BASE_CLASS" />
       <column name="name" value="WIZARD" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="llh" />
@@ -331,7 +331,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="12" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="ARCANE_ARCHER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hhl" />
@@ -355,7 +355,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="13" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="ARCANE_TRICKSTER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhh" />
@@ -379,7 +379,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="14" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="ARCHMAGE" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="llh" />
@@ -398,7 +398,7 @@
 
     <insert tableName="class_character">
       <column name="id" value="15" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="ASSASSIN" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhl" />
@@ -425,7 +425,7 @@
     <!-- id:16 -->
     <insert tableName="class_character">
       <column name="id" value="16" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="WARSLING_SNIPER" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="lhl" />
@@ -438,7 +438,7 @@
     
     <insert tableName="class_character">
       <column name="id" value="17" />
-      <column name="type" value="PRESTIGE_CLASS" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
       <column name="name" value="STORMLORD" />
       <column name="avatar_url" value="address value" />
       <column name="saving_throw" value="hlh" />
@@ -450,62 +450,62 @@
     </insert>
 
     <!-- <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="assassin"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="blackguard"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="dragon discipline"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="duelist"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="dwarven defender"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="eldritch knight"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="hierophant"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="horizon walker"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="loremaster"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="mystic theurge"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="shadowdancer"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>
           <insert tableName="class_character">  
-            <column  name="type"  value="PRESTIGE_CLASS"/>  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="thaumaturgist"/>
             <column  name="avatar_url"  value="address value"/>
           </insert>             -->

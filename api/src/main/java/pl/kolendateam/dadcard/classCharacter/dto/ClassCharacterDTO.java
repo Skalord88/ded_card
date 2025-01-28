@@ -2,8 +2,9 @@ package pl.kolendateam.dadcard.classCharacter.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.mapper.Mapper;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
+import pl.kolendateam.dadcard.classCharacter.entity.TypeEnum;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
@@ -18,8 +19,8 @@ import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 public class ClassCharacterDTO {
 
   public int id;
-  public String classType;
-  public String className;
+  public TypeEnum classType;
+  public EnumClass className;
   public String avatarUrl;
   public byte hitDice;
   public double classBab;
@@ -35,20 +36,25 @@ public class ClassCharacterDTO {
 
   public ClassCharacterDTO(ClassCharacter classCharacter) {
     this.id = classCharacter.getId();
-
-    this.classType = classCharacter.getType().getTypeEnum();
-    this.className = classCharacter.getName().toString();
+    this.classType = classCharacter.getClassType();
+    this.className = classCharacter.getName();
     this.avatarUrl = classCharacter.getAvatarUrl();
     this.hitDice = classCharacter.getHitDice();
     this.classBab = classCharacter.getClassBab();
     this.savingThrow = classCharacter.getSavingThrow();
     this.skillPoints = classCharacter.getSkillPoints();
     this.classSkill =
-      MapperSkillToDTO.toSkillSetDTO(classCharacter.getAvailableSkills());
+      classCharacter.getAvailableSkills() != null
+        ? MapperSkillToDTO.toSkillSetDTO(classCharacter.getAvailableSkills())
+        : null;
     this.classStudy =
-      MapperSkillToDTO.toStudySetDTO(classCharacter.getAvailableStudy());
+      classCharacter.getAvailableStudy() != null
+        ? MapperSkillToDTO.toStudySetDTO(classCharacter.getAvailableStudy())
+        : null;
     this.classFeats =
-      MapperFeatsDTO.toClassFeatsDTO(classCharacter.getAvailableFeats());
+      classCharacter.getAvailableFeats() != null
+        ? MapperFeatsDTO.toClassFeatsDTO(classCharacter.getAvailableFeats())
+        : null;
     this.spellsPerDay =
       classCharacter.getSpellsPerDay() != null
         ? MapperSpellsTableDTO.toSpellsTableDTO(

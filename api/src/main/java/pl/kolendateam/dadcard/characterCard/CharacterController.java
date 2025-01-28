@@ -19,16 +19,13 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
-import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
-import pl.kolendateam.dadcard.spells.entity.SpellsTable;
 import pl.kolendateam.dadcard.spells.repository.BookRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
@@ -96,9 +93,6 @@ public class CharacterController {
       createCharacterDTO.playerName
     );
 
-    // List<Skill> skillsList = this.skillsRepository.findAll();
-    // character.createSkillsArray(skillsList);
-
     this.characterRepository.save(character);
 
     return new CreateCharacterDTO(character);
@@ -133,7 +127,7 @@ public class CharacterController {
   @PostMapping(value = "class/{id}", consumes = { "application/json" })
   public CharacterDTO setCharacterClass(
     @PathVariable int id,
-    @RequestBody ClassPcDTO classPcDTO
+    @RequestBody List<ClassPcToAddDTO> listOfClassDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -146,285 +140,7 @@ public class CharacterController {
 
     Character character = characterOpt.get();
 
-    Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.classCharacter.id);
-
-    if (!classOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
-    }
-
-    // List<Feats> featsList = this.featsRepository.findAll();
-    List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
-
-    ClassCharacter classCharacter = classOpt.get();
-
-    List<ClassPc> classPcList = character.getClassPcArray();
-
-    ClassPc classPc = new ClassPc(
-      // classCharacter.getName(),
-      // (byte) 1,
-      // classCharacter.getHitDice(),
-      // classCharacter.getSavingThrow(),
-      // classCharacter.getClassBab(),
-      // classCharacter.getSpellsPerDay(),
-      // classCharacter.getSpellsKnown(),
-      // classCharacter.getSpellsDomain()
-    );
-
-    // character.incrementEffectiveCharacterLv();
-
-    // skills & hp
-    // if (character.getEffectiveCharacterLv() == 1) {
-    //   character.calculateSkillPointsFirstLevel(classCharacter.getSkillPoints());
-    //   character.hitPointsFirstLevel(classCharacter.getHitDice());
-    // } else {
-    //   character.calculateSkillPoints(classCharacter.getSkillPoints());
-    //   character.hitPointsNewLevel(classCharacter.getHitDice());
-    // }
-
-    // class
-    // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-
-    // if (indexClassInDB == -1) {
-    //   character.addClassToPcArray(classPc);
-    // character.setSkillsTruePcArray(classCharacter.getAvailableSkills());
-    // } else {
-    //   character.incrementLevelClassForIndex(indexClassInDB);
-    // }
-
-    // int levelClassInDB = classPc.findLevelInArrayById(
-    //   classPcList,
-    //   classCharacter.getId()
-    // );
-
-    // study
-    // character.addStudyToCharacter(classCharacter.getAvailableStudy());
-
-    // saving throw
-    // if (levelClassInDB == 1) {
-    // character.addSavingThrowLevelOne(classPc.getSavingThrow());
-    // } else if (levelClassInDB > 1) {
-    //   character.incementSavingThrow();
-    // }
-
-    // character.incrementBab(classCharacter.getClassBab());
-
-    // feat
-    // List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-    //   levelClassInDB,
-    //   featsList,
-    //   classCharacter.getClassFeatsMap()
-    // );
-
-    // for (CharacterFeat chFeat : characterFeatsFromClass) {
-    //   character.addFeatToPc(chFeat);
-    // }
-
-    // magic
-    // boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
-
-    // if (magicClass) {
-    //   character.addMagic(
-    //     spellsTableList,
-    //     classCharacter.getSpellsPerDay(),
-    //     classCharacter.getSpellsKnown()
-    //   );
-    // int sizeMagic = character
-    //   .getMagicKnown()
-    //   .get(classCharacter.getName())
-    //   .length;
-
-    // magicKnown
-    //   boolean findClassInBooks = character.getClassSpellsKnown(
-    //     classCharacter.getName()
-    //   );
-
-    //   if (findClassInBooks) {
-    //     character.addSpellKnown(sizeMagic - 1, classCharacter.getName());
-    //   } else {
-    //     character.addNewSpellsKnown(sizeMagic, classCharacter.getName());
-    //   }
-    // }
-
-    this.characterRepository.save(character);
-
-    return new CharacterDTO(character);
-  }
-
-  @PostMapping(value = "minus_class/{id}", consumes = { "application/json" })
-  public CharacterDTO minusCharacterClass(
-    @PathVariable int id,
-    @RequestBody ClassPcDTO classPcDTO
-  ) {
-    Optional<Character> characterOpt = this.characterRepository.findById(id);
-
-    if (!characterOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
-    }
-
-    Character character = characterOpt.get();
-
-    Optional<ClassCharacter> classOpt =
-      this.classRepository.findById(classPcDTO.classCharacter.id);
-
-    if (!classOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Class Not Found"
-      );
-    }
-
-    // List<Feats> featsList = this.featsRepository.findAll();
-    // List<ClassCharacter> allClassesList = this.classRepository.findAll();
-    // List<SpellsTable> spellsTableList = this.spellsTableRepository.findAll();
-
-    // ClassCharacter classCharacter = classOpt.get();
-
-    // List<ClassPc> classPcList = character.getClassPcArray();
-
-    // boolean first = false;
-    // if (classPcList.size() == 0) {
-    //   first = true;
-    // }
-
-    // ClassPc classPc = new ClassPc(
-    //   1,
-    //   first,
-    //   classCharacter
-    // classCharacter.getName(),
-    // (byte) 1,
-    // classCharacter.getHitDice(),
-    // classCharacter.getSavingThrow(),
-    // classCharacter.getClassBab(),
-    // classCharacter.getSpellsPerDay(),
-    // classCharacter.getSpellsKnown(),
-    // classCharacter.getSpellsDomain()
-    // );
-
-    // feat
-    // int levelClassInDB = character.findLevelInClassesById(
-    //   classCharacter.getId()
-    // );
-    // classPc.findLevelInArrayById(
-    //   classPcList,
-    //   classCharacter.getId()
-    // );
-    // List<CharacterFeat> characterFeatsFromClass = character.listFeatsFromClass(
-    //   levelClassInDB,
-    //   featsList,
-    //   classCharacter.getClassFeatsMap()
-    // );
-
-    // for (CharacterFeat chFeat : characterFeatsFromClass) {
-    //   character.removeFeatFromPc(chFeat);
-    // }
-
-    // character.decrementEffectiveCharacterLv();
-
-    // class
-    // int indexClassInDB = classPc.findIndexInArrayById(classPcList);
-    // if (levelClassInDB == 1) {
-    //   character.removeClassFromPcArray(indexClassInDB);
-    // }
-    // if (levelClassInDB > 1) {
-    //   character.decrementLevelClassForIndex(indexClassInDB);
-    // }
-
-    // skillPoints & hp
-    // if (character.getEffectiveCharacterLv() == 0) {
-    //   character.setSkillPoints(0);
-    //   HashMap<Integer, Integer> vitaHD = new HashMap<>();
-    //   Vitality vita = new Vitality(0, vitaHD, 0);
-    //   character.setVitality(vita);
-    // } else {
-    //   character.decalculateSkillPoints(classCharacter.getSkillPoints());
-    //   character.hitPointsLastLevel(classCharacter.getHitDice());
-    // }
-
-    // re-trueSkills
-    // character.zeroSkillsRank();
-    // if (character.getClassPcArray().size() != 0) {
-    //   for (ClassPc cP : character.getClassPcArray()) {
-    //     for (ClassCharacter cC : allClassesList) {
-    //       if (cC.getId() == cP.getClassCharacter().getId()) {
-    //         character.setSkillsTruePcArray(cC.getAvailableSkills());
-    //       }
-    //     }
-    //   }
-    // } else {
-    //   character.allSkillsFalse();
-    //   character.allKnowledgeZero();
-    // }
-
-    // study
-    // character.removeStudyFromCharacter(classCharacter.getAvailableStudy());
-
-    // saving throw
-    // if (levelClassInDB > 1) {
-    //   character.decementSavingThrow();
-    // }
-    // if (levelClassInDB == 1) {
-    //   character.minusSavingThrowLevelOne(
-    //     classPc.getClassCharacter().getSavingThrow()
-    //   );
-    // }
-
-    // magic
-    // if (
-    //   character.getClassPcArray() == null ||
-    //   character.getClassPcArray().isEmpty()
-    // ) {
-    //   character.setMagicKnown(new HashMap<EnumClass, Integer[]>());
-    //   character.setMagicPerDay(new HashMap<EnumClass, Integer[]>());
-    //   character.setBooks(new ArrayList<Book>());
-    // }
-
-    // boolean magicClass = character.magicClass(classCharacter.getSpellsPerDay());
-
-    // if (magicClass) {
-    //   if (levelClassInDB == 1) {
-    //     character.removePerDayKnow(classCharacter.getName());
-    //     // books
-    //     character.removeBook(classCharacter.getName());
-    //   }
-    // if (levelClassInDB > 1) {
-    //   character.addMagic(
-    //     spellsTableList,
-    //     classCharacter.getSpellsPerDay(),
-    //     classCharacter.getSpellsKnown()
-    //   );
-    // books
-    // int sizeMagic = character.getSizeMagic(classCharacter.getName());
-    // character.decrementBooks(sizeMagic, classCharacter.getName());
-    // }
-    // }
-    // base attack bonus
-    // character.decrementBab(classCharacter.getClassBab());
-
-    // experience
-    // if (character.getEffectiveCharacterLv() == 0) {
-    //   character.setZeroExp();
-    // } else {
-    //   character.setCharacterExperience();
-    // }
-
-    // gold
-    // if (character.getEffectiveCharacterLv() == 1) {
-    //   character.setFirstLevelGold(classCharacter.getInitialGold());
-    // } else {
-    //   character.setLevelGold();
-    // }
-
-    // items
-    // if (character.getEffectiveCharacterLv() == 0) {
-    //   character.emptyInventory();
-    // }
+    character.setNewClassPcArrayFromDTO(listOfClassDTO, id);
 
     this.characterRepository.save(character);
 

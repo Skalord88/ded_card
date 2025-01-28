@@ -32,4 +32,8 @@ public class Skill implements Serializable {
   AbilityEnum ability;
 
   int penality;
+
+  public Skill(int idSkill) {
+    this.id = idSkill;
+  }
 }

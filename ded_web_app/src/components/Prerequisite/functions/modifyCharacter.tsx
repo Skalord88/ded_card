@@ -18,6 +18,7 @@ import {
   SpecialAttacks
 } from "../../interfaces";
 import { modifyInventory } from "../../Items/Inventory/function";
+import { CountLevelFromClass } from "../../Level/Functions";
 import { adjClass } from "../../Race/AdjClass";
 import { FindAllAdjLevel } from "../../Race/Function";
 import { SpecialAbilities } from "../../Race/Interfaces";
@@ -94,6 +95,7 @@ export type CharToModify = {
   displayAttType?: AttackElement;
   skills: SkillsElement;
   skillsList: SkillsInList[];
+  skillsPointToSpent: number;
   speed: Speed;
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
@@ -208,6 +210,11 @@ export const modifyCharacter = (
       : []
   );
 
+  const maxSkillPnts: number = 
+    (FindAllAdjLevel(char) * adjClass.skillPoints) + 
+    char.classPcList.reduce(
+      (tot, cl) => tot + (cl.level * cl.classCharacter.skillPoints), 0)
+
   const newChar: CharToModify = {
     abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
     bab: adjBab,
@@ -233,6 +240,7 @@ export const modifyCharacter = (
     attacks: char.attacks,
     skills: findSkillsPrerequisite(prer),
     skillsList: createSkillsList(char),
+    skillsPointToSpent: maxSkillPnts,
     speed: findSpeedPrerequisite(prer),
     feats: groupAllFeats(char),
     specialAbilities: getAllSpecialAbilities(char),

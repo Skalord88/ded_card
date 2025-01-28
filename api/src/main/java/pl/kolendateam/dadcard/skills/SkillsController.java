@@ -50,18 +50,10 @@ public class SkillsController {
     return MapperSkillToDTO.toSkillListDTO(listSkills);
   }
 
-  // @GetMapping("/studylist")
-  // public List<StudyDTO> getStudyList() {
-  //   List<Study> listStudy = studyRepository.findAll();
-  //   List<Skill> listSkills = skillsRepository.findAll();
-
-  //   return MapperSkillToDTO.toStudyDTO(listStudy, listSkills);
-  // }
-
   @PostMapping(value = "{id}", consumes = { "application/json" })
-  public CharacterDTO buyCharacterSkill(
+  public CharacterDTO updateCharacterSkill(
     @PathVariable int id,
-    @RequestBody SkillToAddDTO skillsToAdd
+    @RequestBody List<SkillToAddDTO> skillsToAdd
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -74,16 +66,17 @@ public class SkillsController {
 
     Character character = characterOpt.get();
 
-    // character.buySkills(skillsToAdd);
+    // skillsToAdd.forEach(s -> {
+    //   System.out.println(
+    //     "culo " + s.idSkill + ", " + s.idStudy + ", " + s.rank
+    //   );
+    // });
+
+    character.buySkills(skillsToAdd, id);
 
     this.characterRepository.save(character);
-    return new CharacterDTO(
-      character
-      // ,
-      // character.getInventory(),
-      // character.getAttacks(),
-      // character.getClassPcArray()
-    );
+
+    return new CharacterDTO(character);
   }
 
   @PostMapping("study/add")

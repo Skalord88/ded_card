@@ -35,4 +35,8 @@ public class Study implements Serializable {
   Skill skill;
 
   String newStudy;
+
+  public Study(int idStudy) {
+    this.id = idStudy;
+  }
 }

@@ -3,9 +3,7 @@ package pl.kolendateam.dadcard.spells;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
-import pl.kolendateam.dadcard.spells.entity.SpellsInLevel;
 
 public class MapperSpellsInLevel {
 

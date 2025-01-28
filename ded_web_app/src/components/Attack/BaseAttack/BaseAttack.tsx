@@ -147,3 +147,14 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
     </>
   );
 };
+
+export const BaseSummaryAttack: React.FC<BaseAttackProp> = ({ char }) => {
+
+  const totBab: number = char.bab
+
+  return(
+    <div>
+      <p>bab: +{totBab}</p>
+    </div>
+  )
+}

@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.characterCard.dto;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -11,9 +10,8 @@ import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.classCharacter.MapperClassPcDTO;
+import pl.kolendateam.dadcard.classCharacter.MapperClassPc;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
-import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
@@ -54,7 +52,7 @@ public class CharacterDTO implements Serializable {
     this.playerName = character.getPlayerName();
     this.classPcList =
       character.getClassPcArray() != null
-        ? MapperClassPcDTO.toClassPcList(character.getClassPcArray())
+        ? MapperClassPc.toClassPcListDTO(character.getClassPcArray())
         : null;
     this.race =
       character.getRace() != null

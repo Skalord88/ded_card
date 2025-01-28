@@ -67,10 +67,10 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
     adjLv + char.classPcList.reduce((total, cl) => total + cl.level, 0);
 
   const cl: ClassPc[] = char.classPcList.filter(
-    (classe) => classe.classCharacter.classType === "base class"
+    (classe) => classe.classCharacter.classType === "BASE_CLASS"
   );
   const cp: ClassPc[] = char.classPcList.filter(
-    (classe) => classe.classCharacter.classType === "prestige class"
+    (classe) => classe.classCharacter.classType === "PRESTIGE_CLASS"
   );
 
   let exp = 0;

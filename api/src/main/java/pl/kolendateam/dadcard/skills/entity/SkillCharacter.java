@@ -10,11 +10,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 
 @Getter
 @Setter
@@ -41,4 +43,15 @@ public class SkillCharacter implements Serializable {
   Study study;
 
   int rank;
+
+  public SkillCharacter(SkillToAddDTO dto, int charId) {
+    if (dto.idSkill != 0) {
+      this.skill = new Skill(dto.idSkill);
+    }
+    if (dto.idStudy != 0) {
+      this.study = new Study(dto.idStudy);
+    }
+    this.rank = dto.rank;
+    this.character = new Character(charId);
+  }
 }

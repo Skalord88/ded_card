@@ -72,13 +72,7 @@ public class AttackController {
     // Inventory emptyInventory = new Inventory();
     // List<ClassPc> emptyClassList = new ArrayList<ClassPc>();
 
-    return new CharacterDTO(
-      character
-      // ,
-      // emptyInventory,
-      // characterAttacks,
-      // emptyClassList
-    );
+    return new CharacterDTO(character);
   }
 }
 // @PostMapping(value = "{id}/attackAC", consumes = { "application/json" })

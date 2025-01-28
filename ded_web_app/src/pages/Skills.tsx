@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CharacterPc } from "../components/interfaces";
 
+import { createModChar } from "../components/Prerequisite/functions/modChar";
+import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { SkillsTableComponent } from "../components/Skills/SkillsTableComponent";
-import { SkillProps } from "../components/Skills/interface/SkillsInterface";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { urlChar } from "../components/url";
 import "../css/style.css";
@@ -14,19 +15,15 @@ export function Skills() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  // const [maxSkillsPoints, setMaxSkillsPoints] = useState(0);
-  // const [maxToSpentPoints, SetMaxToSpentPoints] = useState(0);
-  const [skills, setSkills] = useState<SkillProps[]>();
+  const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
 
-        setChar(resURL.data);
-        setSkills(resURL.data.skillsList);
-        // SetMaxToSpentPoints(resURL.data.effectiveCharacterLv + 3);
-        // setMaxSkillsPoints(resURL.data.skillPoints);
+        setChar(resURL.data)
+        setModChar(createModChar(resURL.data));
       } catch (error) {
         console.log(error);
       }
@@ -38,15 +35,15 @@ export function Skills() {
   return (
     <>
       
-      {char ? (
+      {char && modChar ? (
         <>
         <CharSummary character={char} />
-        <p>
+        <div>
           <SkillsTableComponent
             key={"skillsTable"}
-            char={char}
+            char={modChar}
           />
-        </p>
+        </div>
         </>
       ) : null}
     </>

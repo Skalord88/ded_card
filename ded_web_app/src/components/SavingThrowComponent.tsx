@@ -1,8 +1,8 @@
 import { abilityBackgroundColor } from "./Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "./functions";
 import {
-    AllModifiersInDice20,
-    AllModifiersInDiceProps
+  AllModifiersInDice20,
+  AllModifiersInDiceProps
 } from "./Popup/DicePopup/D20Popup";
 import { AllModifiersInThrow } from "./Popup/DicePopup/Interface";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
@@ -126,7 +126,30 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
       <h2 className="rpgui-container-framed-golden-2">Saving Throws</h2>
 
       <AllModifiersInDice20 list={allDice.list} />
-
     </>
+  );
+};
+
+export const SavingSummaryThrowComponent: React.FC<
+  SavingThrowComponentProps
+> = ({ char }) => {
+  const dexterityMod: number = BonusAbilities(char.abilitys, "DEX");
+  const constitutionMod: number = BonusAbilities(char.abilitys, "COS");
+  const wisdomMod: number = BonusAbilities(char.abilitys, "WIS");
+  const fortitude: number = Math.floor(
+    char.baseSave.fortitude + char.adjBonus.savingThrow + constitutionMod
+  );
+  const reflex: number = Math.floor(
+    char.baseSave.reflex + char.adjBonus.savingThrow + dexterityMod
+  );
+  const will: number = Math.floor(
+    char.baseSave.will + char.adjBonus.savingThrow + wisdomMod
+  );
+  return (
+    <div>
+      <p>
+        fortitude: {fortitude} / reflex: {reflex} / will: {will}
+      </p>
+    </div>
   );
 };

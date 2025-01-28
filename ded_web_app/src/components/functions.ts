@@ -2,8 +2,9 @@ import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassCharacter, ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { enchantedName, onlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
-import { feat, serverFeat } from "./Feats/Interface/FeatInterface";
+import { Feat, feat, serverFeat } from "./Feats/Interface/FeatInterface";
 import { Armor, Book, CharacterPc, Enchantment, Inventory, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
+import { SubRace } from "./Race/Interfaces";
 
 export function SignNumber(
     number: number
@@ -363,8 +364,8 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
     if (text === "feat") {
         let list: itemInDrop[] = options.map(
             o => {
-                const nameFeat = (o as serverFeat).featName || (o as feat).characterFeatName;
-                const feat = o as serverFeat | feat;
+                const nameFeat = o.featName;
+                const feat = o as Feat;
                 return {
                     name: nameFeat,
                     item: feat
@@ -389,7 +390,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
             o => {
                 return {
                     name: o.raceName,
-                    item: o as subRaces
+                    item: o as SubRace
                 }
             }
         )

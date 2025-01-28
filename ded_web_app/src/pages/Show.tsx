@@ -22,6 +22,7 @@ import { SkillShowComponent } from "../components/Skills/Show/SkillShowComponent
 import { SpecialAbilitiesComponent } from "../components/SpecialAbilities/SpecialAbilitiesComponent";
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
+import { createModChar } from "../components/Prerequisite/functions/modChar";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -46,10 +47,10 @@ export const Show = () => {
   if (!char) return <p>...character loading...</p>;
 
   const modChar: CharToModify = createModChar(char);
-
+  
   return (
     <>
-      {window.innerWidth <= 768 ? (
+      {modChar && window.innerWidth <= 768 ? (
         <>
           <DeleteButton url={urlChar} />
           <CharacterData char={char} />
@@ -68,7 +69,8 @@ export const Show = () => {
           <MagicComponent char={modChar} />
         </>
       ) : (
-        <>
+        <> 
+          
           <div
             style={{
               display: "grid",
@@ -240,7 +242,4 @@ export const Show = () => {
     </>
   );
 };
-function createModChar(char: CharacterPc): CharToModify {
-  throw new Error("Function not implemented.");
-}
 
