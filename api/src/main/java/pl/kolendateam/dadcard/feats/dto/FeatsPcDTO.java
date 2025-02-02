@@ -15,6 +15,8 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 @Setter
 public class FeatsPcDTO implements Serializable {
 
+  public int level;
+
   public FeatsDTO feat;
   public PrerequisiteDTO selected;
 

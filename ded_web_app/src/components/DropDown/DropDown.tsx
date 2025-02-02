@@ -10,12 +10,16 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   options,
   onAction
 }) => {
-  const [dropItem, setDropItem] = useState<itemInDrop | undefined>();
+  const [dropItem, setDropItem] = useState<string | undefined>();
 
-  const selectItem = (option: itemInDrop) => {
+  const selectItem = (option: itemInDrop | undefined) => {
+    if (!option) {
+      console.error("selectItem received undefined");
+      return;
+    }
     onAction(option.item);
     setIsOpen(false);
-    setDropItem(undefined);
+    setDropItem(option.name as string);
   };
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -25,12 +29,12 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
 
   return (
     <>
-      <div onMouseLeave={handleMouseLeave}>
+      <div onMouseLeave={handleMouseLeave} >
         <p
           className=" rpgui-dropdown-imp rpgui-dropdown-imp-header"
           onClick={() => setIsOpen(!isOpen)}
         >
-          <label>▼</label> {dropItem?.name}
+          <label>▼</label> {dropItem}
         </p>
         {isOpen && (
           <ul
@@ -38,7 +42,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
             style={{
               position: "absolute",
               width: "50%",
-              // fontSize: "75%"
+              fontSize: "75%"
             }}
           >
             {options.map((o, index) => (

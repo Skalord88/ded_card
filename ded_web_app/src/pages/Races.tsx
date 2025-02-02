@@ -43,7 +43,7 @@ export const Races = () => {
   }, []);
 
   const handleRace = (s: itemInDrop) => {
-    setChosenRace({ id: s.item.id });
+    if(s.item as SubRace) setChosenRace({ id: (s.item as SubRace).id });
     setChange(true);
   };
   const handleSubmit = () => {

@@ -346,16 +346,18 @@ export function SortedBooks(
 
 export interface itemInDrop {
     name: string
-    item: any
+    item: string | Feat | ClassCharacter | SubRace | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
-    if (text === "list") {
+    if (text === "filter") {
         let list: itemInDrop[] = options.map(
             o => {
+                const nameFilter: string = o
+                const filter: string = o
                 return {
-                    name: o.text,
-                    item: o.list
+                    name: nameFilter,
+                    item: filter
                 }
             }
         )
@@ -364,8 +366,8 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
     if (text === "feat") {
         let list: itemInDrop[] = options.map(
             o => {
-                const nameFeat = o.featName;
-                const feat = o as Feat;
+                const nameFeat: string = o.featName;
+                const feat: Feat = o as Feat;
                 return {
                     name: nameFeat,
                     item: feat

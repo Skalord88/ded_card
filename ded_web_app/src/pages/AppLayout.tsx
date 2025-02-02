@@ -7,7 +7,7 @@ export const AppLayout: React.FC = () => {
       <div
         className="rpgui-content rpgui-cursor-default"
         style={{
-          overflowY: "scroll"
+          overflowY: "auto"
         }}
       >
         <div className="inner rpgui-container-framed">

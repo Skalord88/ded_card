@@ -181,7 +181,7 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
   if (!view) return null;
 
   return (
-    <div style={{ minHeight: 50, maxHeight: 500, overflowY: "scroll" }}>
+    <div style={{ minHeight: 50, maxHeight: 500, overflowY: "auto" }}>
       {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
       {feat.description.benefit ? (
         <p>
