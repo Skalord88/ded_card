@@ -232,6 +232,9 @@ export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
                   {s.target?.join(", ")}
                 </li>
               ))}
+              {p.feats?.map(fe => (
+                <li>{fe.featName}</li>
+              ))}
             </div>
           )
       )}

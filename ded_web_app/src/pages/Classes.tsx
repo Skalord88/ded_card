@@ -125,8 +125,6 @@ export const Classes = () => {
         };
       });
 
-      console.log(classToAdd);
-
       axios.post(urlClassAdd + charId, classToAdd);
     }
     window.location.reload();

@@ -17,9 +17,8 @@ export const Races = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [races, setRaces] = useState<itemInDrop[]>();
   const [racePerRace, setRacePerRace] =
-    useState<{ race: string; sub: SubRace[] }[]>();
+    useState<{ race: string; sub: itemInDrop[] }[]>();
   const [selectedRace, setSelected] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
     id: 0
@@ -33,7 +32,18 @@ export const Races = () => {
         setChar(resChar.data);
 
         const resRaceList = await axios.get(urlRaceList);
-        setRaces(addToDrop(resRaceList.data, "race"));
+        const resSubRaces: itemInDrop[] = addToDrop(resRaceList.data, "race");
+        const listOfRaces: string[] = Array.from(
+          new Set(resSubRaces?.map((r) => (r.item as SubRace).race.raceName))
+        );
+        const listOfSubRaces: { race: string; sub: itemInDrop[] }[] =
+          listOfRaces.map((r) => ({
+            race: r,
+            sub: resSubRaces.filter(
+              (sR) => (sR.item as SubRace).race.raceName === r
+            )
+          }));
+        setRacePerRace(listOfSubRaces);
       } catch (error) {
         console.error(error);
       }
@@ -43,11 +53,13 @@ export const Races = () => {
   }, []);
 
   const handleRace = (s: itemInDrop) => {
-    if(s.item as SubRace) setChosenRace({ id: (s.item as SubRace).id });
+    if (s.item as SubRace) setChosenRace({ id: (s.item as SubRace).id });
+    setSelected(s.item as SubRace);
     setChange(true);
   };
   const handleSubmit = () => {
     if (change) axios.post(urlRace + "/" + charId, chosenRace);
+    window.location.reload();
   };
 
   return (
@@ -66,9 +78,17 @@ export const Races = () => {
         <p>...choose race</p>
       )}
       <div style={{ display: "grid", gridTemplateColumns: "auto auto auto" }}>
-        {races ? (
-          <ListOfSomething items={races} text={""} onSelect={handleRace} />
-        ) : null}
+        {racePerRace
+          ? racePerRace.map((r, index) => (
+              <div key={index}>
+                <ListOfSomething
+                  items={r.sub}
+                  text={r.race}
+                  onSelect={handleRace}
+                />
+              </div>
+            ))
+          : null}
       </div>
     </>
   );

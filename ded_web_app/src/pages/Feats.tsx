@@ -1,26 +1,42 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Feat } from "../components/Feats/Interface/FeatInterface";
+import {
+  ClassFeats,
+  Feat,
+  FeatPc
+} from "../components/Feats/Interface/FeatInterface";
 import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlFeats } from "../components/url";
-import {
-  DropdownComponent
-} from "../components/DropDown/DropDown";
+import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
+import { Popup } from "../components/Popup/Popup";
+import { emptyFeat, emptyPrerequisite } from "../components/variables";
+import {
+  ClassCharacter,
+  ClassPc
+} from "../components/ClassPc/Interface/ClassPcLevel";
 
 export function Feats() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [featsList, setFeatsList] = useState<itemInDrop[]>();
   const [itemList, setItemList] = useState<itemInDrop[]>();
-  const [featsToAddList, setFeatsToAddList] = useState<(Feat | string)[]>([]);
+  const [featsToAddList, setFeatsToAddList] = useState<Feat[]>([]);
+  const [featsPcToSelectList, setFeatsPcToAddList] = useState<
+    {
+      classe: ClassCharacter;
+      feat: Feat;
+      level: number;
+      selected: Prerequisite;
+      toSelect: Prerequisite;
+    }[]
+  >();
   const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
@@ -29,10 +45,33 @@ export function Feats() {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
         setModChar(createModChar(resChar.data));
+        const classPcBonusFeats = (resChar.data as CharacterPc).classPcList;
+        setFeatsPcToAddList(
+          classPcBonusFeats.flatMap((clF) =>
+            clF.classCharacter.classFeats.flatMap((cF) =>
+              cF.toSelect
+                ? [
+                    {
+                      classe: clF.classCharacter,
+                      feat: cF.feat,
+                      level: cF.level,
+                      selected: emptyPrerequisite,
+                      toSelect: cF.toSelect
+                    }
+                  ]
+                : []
+            )
+          )
+        );
 
         const resFeats = await axios.get(urlFeats);
-        const listOfFeats: Feat[] = resFeats.data
-        const itemsFeats: itemInDrop[] = addToDrop(listOfFeats.filter((f) => f.featType === null || !f.featType.includes("CLASS")), "feat")
+        const listOfFeats: Feat[] = resFeats.data;
+        const itemsFeats: itemInDrop[] = addToDrop(
+          listOfFeats.filter(
+            (f) => f.featType === null || !f.featType.includes("CLASS")
+          ),
+          "feat"
+        );
         setItemList(itemsFeats);
       } catch (error) {
         console.error(error);
@@ -43,29 +82,32 @@ export function Feats() {
 
   useEffect(() => {
     if (modChar) {
+      const lenght: number =
+        Math.floor((modChar?.adjBonus.adjLv + modChar.classesLv) / 3) + 1;
       let newSlots = [];
-      for (
-        let i = 1;
-        i <= Math.floor((modChar?.adjBonus.adjLv + modChar.classesLv) / 3);
-        i++
-      ) {
-        newSlots.push("---empty---");
+      for (let i = 1; i <= lenght; i++) {
+        newSlots.push(emptyFeat);
       }
       setFeatsToAddList(newSlots);
     }
   }, [modChar]);
 
   const newFeatsToAddList = (f: Feat, i: number) => {
-    const scelta = featsToAddList[i]
-    // setFeatsToAddList(scelta)
-  }
+    const updatedList = [...featsToAddList];
+    updatedList[i] = (f as Feat) ? f : updatedList[i];
+    setFeatsToAddList(updatedList);
+  };
 
-  // useEffect(() => {
-  //   if (featsList) {
-  //     const filtred = featsList.filter((f) => f.featType === null || !f.featType.includes("CLASS"));
-  //     setItemList(addToDrop(filtred, "feat"));
-  //   }
-  // }, [featsList]);
+  const newFeatsPcToAddList = (f: Feat, i: number) => {
+    if (featsPcToSelectList) {
+      const updatedList = [...featsPcToSelectList];
+      updatedList[i] = {
+        ...updatedList[i],
+        selected: { ...updatedList[i].selected, feats: [f] }
+      };
+      setFeatsPcToAddList(updatedList);
+    }
+  };
 
   // const addFeat = (s: itemInDrop) => {
   //   setFeatsToAdd(s.item as Feat);
@@ -88,28 +130,89 @@ export function Feats() {
 
   return (
     <>
-      {char ? <CharSummary character={char} /> : null}
+      {char ? <CharSummary character={char} feats={featsToAddList} /> : null}
       <div style={{ display: "grid", gridTemplateColumns: "50% 2% 48%" }}>
         <div
           className="rpgui-container-framed-grey"
           style={{ gridColumn: "1 / span 3", gridRow: 2 }}
         >
-          {modChar ? <FeatsComponent char={modChar} /> : null}
         </div>
 
         <div
           className="rpgui-container-framed-grey"
           style={{ gridColumn: "1 / span 3", gridRow: 1 }}
         >
-          {featsToAddList.map((f, index) => (
-                itemList ? <FeatToAddInLevel indexItem={index} items={itemList} onAction={newFeatsToAddList}/> : null
-              ))}
-          {/* <ListOfPcFeats feat={featsToAddList} pcLevel={10} onNewList={newListToAdd} /> */}
+          {featsToAddList.map((f, index) =>
+            itemList ? (
+              <div className="rpgui-container-framed-grey" key={index}>
+                <FeatToAddInLevel
+                  indexItem={index}
+                  items={itemList}
+                  onAction={newFeatsToAddList}
+                />
+              </div>
+            ) : null
+          )}
+          <div className="rpgui-container-framed-grey">
+            {featsPcToSelectList
+              ? featsPcToSelectList.map((f, indexF) => (
+                  <>
+                    <div style={{ display: "flex" }}>
+                      <p style={{ flex: 1 }}>
+                        <span>
+                          {f.classe.className} lv.{f.level}{" "}
+                          {f.feat.featName}{" "}
+                        </span>
+                      </p>
+                      {f.toSelect.feats ? (
+                        <p style={{ flex: 3 }}>
+                          <span>
+                            <FeatPcToAddInLevel
+                              indexItem={indexF}
+                              items={addToDrop(f.toSelect.feats, "feat")}
+                              onAction={newFeatsPcToAddList}
+                            />
+                          </span>
+                        </p>
+                      ) : null}
+                    </div>
+                    <div>
+                      {f.selected.feats ? (
+                        f.selected.feats.length > 0 ? (
+                          <span>
+                            <FeatToAdd feat={f.selected.feats[0]} />
+                          </span>
+                        ) : (
+                          null
+                        )
+                      ) : null}
+                    </div>
+                  </>
+                ))
+              : null}
+          </div>
         </div>
       </div>
     </>
   );
 }
+
+export const FeatPcToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
+  indexItem,
+  items,
+  onAction
+}) => {
+  const addItem = (option: Feat) => {
+    onAction(option, indexItem);
+  };
+  return (
+    <div key={indexItem}>
+      <p>
+        <DropdownComponent options={items} onAction={addItem} />
+      </p>
+    </div>
+  );
+};
 
 export type FeatToAddInLevelProps = {
   indexItem: number;
@@ -122,16 +225,21 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   items,
   onAction
 }) => {
-
   const featAll: itemInDrop[] = items;
   const fighterFeats: itemInDrop[] = items
-  .filter(i => 
-    (i.item as Feat).featType !== null && (i.item as Feat).featType.includes("FIGHTER")
-  ).map(i => i);
+    .filter(
+      (i) =>
+        (i.item as Feat).featType !== null &&
+        (i.item as Feat).featType.includes("FIGHTER")
+    )
+    .map((i) => i);
   const metaFeats: itemInDrop[] = items
-  .filter(i => 
-    (i.item as Feat).featType !== null && (i.item as Feat).featType.includes("METAMAGIC")
-  ).map(i => i);
+    .filter(
+      (i) =>
+        (i.item as Feat).featType !== null &&
+        (i.item as Feat).featType.includes("METAMAGIC")
+    )
+    .map((i) => i);
 
   const [itemList, setItemList] = useState<itemInDrop[]>([]);
   const [featsToAdd, setFeatsToAdd] = useState<Feat>();
@@ -143,35 +251,49 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   );
 
   useEffect(() => {
-    if (filter === "ALL") setItemList(featAll)
-    
-    if (filter === "FIGHTER") setItemList(fighterFeats)
-    if (filter === "METAMAGIC") setItemList(metaFeats)
+    if (filter === "ALL") setItemList(featAll);
+
+    if (filter === "FIGHTER") setItemList(fighterFeats);
+    if (filter === "METAMAGIC") setItemList(metaFeats);
   }, [featAll, fighterFeats, filter, metaFeats]);
 
   const addFeat = (f: Feat) => {
-    if(f) {
-      setFeatsToAdd(f)
-    }
-    if (featsToAdd) {
-        onAction(featsToAdd, indexItem);
+    if (f) {
+      setFeatsToAdd(f);
+      onAction(f, indexItem);
     }
   };
+
+  // useEffect(() => {
+  //   if (featsToAdd) {
+  //     onAction(featsToAdd, indexItem);
+  //   }
+  // }, [])
 
   const addFilter = (s: itemInDrop) => {
-    if(s) setFilter(s as unknown as string)
+    if (s) setFilter(s as unknown as string);
   };
 
-  const emptyFeat = () => {
-    setFeatsToAdd(undefined)
-  }
+  const emptyTheFeat = () => {
+    setFeatsToAdd(undefined);
+    onAction(emptyFeat, indexItem);
+  };
   return (
-    <div key={indexItem}>
+    <div>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 2 }}>
           <p>
-          <span>{" lv."}{indexItem * 3}{" "}</span>
-          {featsToAdd ? <span onClick={emptyFeat}>{featsToAdd.featName}</span> : null}
+            {indexItem === 0 ? (
+              <span>{"lv.1 "}</span>
+            ) : (
+              <span>
+                {"lv."}
+                {indexItem * 3}{" "}
+              </span>
+            )}
+            {featsToAdd ? (
+              <span onClick={emptyTheFeat}>{featsToAdd.featName}</span>
+            ) : null}
           </p>
         </div>
         <div style={{ flex: 1 }}>
@@ -181,8 +303,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
         </div>
         <div style={{ flex: 3 }}>
           <p>
-              <DropdownComponent options={itemList} onAction={addFeat} />
-
+            <DropdownComponent options={itemList} onAction={addFeat} />
           </p>
         </div>
       </div>
@@ -197,7 +318,7 @@ export type FeatProp = {
 
 export const FeatToAdd: React.FC<FeatProp> = ({ feat }) => {
   return (
-    <div className="rpgui-container-framed-golden">
+    <div className="rpgui-container-framed">
       <h2>{feat.featName}</h2>
       {feat.prerequisiteList ? (
         <PrerequisiteFeats pre={feat.prerequisiteList} />
@@ -245,6 +366,7 @@ export type PrerequisiteProp = {
 export const ToSelect: React.FC<PrerequisiteProp> = ({ pre }) => {
   const armorType: string[] = pre.armorType ? pre.armorType : [];
   const weaponType: string[] = pre.weaponType ? pre.weaponType : [];
+  const feats: Feat[] = pre.feats ? pre.feats : [];
   return (
     <div>
       {armorType.map((ar, indexAr) => (
@@ -255,6 +377,11 @@ export const ToSelect: React.FC<PrerequisiteProp> = ({ pre }) => {
       {weaponType.map((we, indexWe) => (
         <div key={indexWe}>
           <p>{we}</p>
+        </div>
+      ))}
+      {feats.map((f, indexFe) => (
+        <div key={indexFe}>
+          <p>{f.featName}</p>
         </div>
       ))}
     </div>
@@ -287,7 +414,6 @@ export const ListOfPcFeats: React.FC<ListOfPcFeatsProps> = ({
   // }, [feat.length]);
 
   const emptyTheSlot = (index: number) => {
-    console.log(slotsList.map((slot, i) => (i === index ? null : slot)));
     setSlotsList((prevSlots) =>
       prevSlots.map((slot, i) => (i === index ? null : slot))
     );

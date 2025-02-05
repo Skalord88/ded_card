@@ -587,10 +587,30 @@
             <column name="class_character_id" value="6" />
             <column name="feats_id" value="6001" /> <!-- AC Bonus -->
         </insert>
+
+    <!-- Monk Bonus Feats to_select -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="4003" />
+            <column name="text" value="select a bonus feats for monk on 1st lv." />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="4003" />
+            <column name="feat_id" value="50" /> <!---
+            Improved Grapple [General] -->
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="4003" />
+            <column name="feat_id" value="99" /> <!-- Stunning Fist [General] -->
+        </insert>
+
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="6" />
             <column name="feats_id" value="6004" /> <!-- Monk Bonus Feats -->
+            <column name="to_select_id" value="4003" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />

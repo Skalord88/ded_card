@@ -391,7 +391,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         let list: itemInDrop[] = options.map(
             o => {
                 return {
-                    name: o.raceName,
+                    name: o.subRacesName,
                     item: o as SubRace
                 }
             }

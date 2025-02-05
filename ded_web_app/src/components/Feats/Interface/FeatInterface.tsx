@@ -58,6 +58,7 @@ export type Feat = {
 export type FeatPc = {
   id: number,
   feat: Feat;
+  classFeat?: ClassFeats;
   selected?: Prerequisite;
 }
 

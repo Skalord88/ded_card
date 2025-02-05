@@ -11,17 +11,20 @@ import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 import { HpSummaryComponent } from "../HpComponent";
 import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
 import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
+import { Feat } from "../Feats/Interface/FeatInterface";
 
 export interface SummaryProps {
   character: CharacterPc;
   race?: SubRace;
   classPcList?: ClassPc[];
+  feats?: (Feat | string)[];
 }
 
 export const CharSummary: React.FC<SummaryProps> = ({
   character,
   race,
-  classPcList
+  classPcList,
+  feats
 }) => {
   const [updateChar, setUpChar] = useState<CharToModify>();
   const [textClass, setTextClass] = useState<string>();

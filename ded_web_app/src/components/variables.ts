@@ -2,6 +2,7 @@ import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shiel
 import { Abilitys } from './Abilitys/Interface'
 import { ArmorClass } from './Armor/interface/ArmorInterface'
 import { ClassCharacter, ClassPc } from './ClassPc/Interface/ClassPcLevel'
+import { ClassFeats, Feat, FeatPc } from './Feats/Interface/FeatInterface'
 import { Prerequisite } from './Prerequisite/interface/Prerequisite'
 import { SavingThrow } from './Saving/interface'
 import { Size } from './Size/interfaces'
@@ -125,7 +126,7 @@ export const abilitysEmpty: Abilitys = {
 }
 
 export const armorClassEmpty: ArmorClass = {
-    
+
     sizeBonus: 0,
     armorBonus: 0,
     shieldBonus: 0,
@@ -316,4 +317,30 @@ export const characterEmpty: CharacterPc = {
     }],
     experience: 0,
     treasure: 0
+}
+
+export const emptyFeat: Feat = {
+    id: 0,
+    featName: '',
+    featType: [],
+    benefit: '',
+    normal: '',
+    special: '',
+    modifiers: emptyPrerequisite,
+    toSelect: emptyPrerequisite
+}
+
+export const emptyClassFeat: ClassFeats = {
+    modifiers: undefined,
+    level: 0,
+    feat: emptyFeat,
+    classId: 0,
+    className: '',
+    toSelect: emptyPrerequisite
+}
+
+export const emptyFeatPc: FeatPc = {
+    id: 0,
+    feat: emptyFeat,
+    selected: emptyPrerequisite
 }
