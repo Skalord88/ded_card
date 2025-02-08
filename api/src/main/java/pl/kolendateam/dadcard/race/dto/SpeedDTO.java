@@ -1,7 +1,11 @@
 package pl.kolendateam.dadcard.race.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.race.entity.Speed;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class SpeedDTO {
 
   public Integer foot;

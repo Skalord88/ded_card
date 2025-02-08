@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.feats.entity;
 public enum FeatsTypeEnum {
   GENERAL("General"),
   FIGHTER("Fighter"),
+  MAGE("Mage"),
   REGIONAL("Regional"),
   ITEM_CREATION("Item creation"),
   METAMAGIC("Metamagic"),

@@ -13,6 +13,7 @@ export type Prerequisite = {
     id?: number;
     abilitys?: Abilitys;
     feats?: Feat[];
+    featType?: string[]; 
     caster?: [];
     bab?: Number;
     attackRoll?: AttackRoll;

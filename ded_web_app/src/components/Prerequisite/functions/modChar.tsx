@@ -25,7 +25,7 @@ export const createModChar = (char: CharacterPc): CharToModify => {
         skills: { mono: [], target: [] },
         skillsList: [],
         skillsPointToSpent: 0,
-        feats: { feats: [], classFeats: [], pcFeats: [] },
+        feats: { feats: [], classFeats: [], pcFeats: {fromLevel: [], fromClass: []} },
         speed: {
           foot: 0,
           fly: 0,

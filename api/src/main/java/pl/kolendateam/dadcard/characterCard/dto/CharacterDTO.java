@@ -12,7 +12,7 @@ import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPc;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
@@ -59,16 +59,34 @@ public class CharacterDTO implements Serializable {
         ? MapperRaceToDTO.toSubRaceDTO(character.getRace())
         : null;
     this.archetypes =
-      MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList());
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+      character.getArchetypesList() != null
+        ? MaperListRaceToDTO.toSetArchetypeDTO(character.getArchetypesList())
+        : null;
+    this.abilitys =
+      character.getAbilitys() != null
+        ? MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys())
+        : null;
     this.skillsCharacter =
-      MapperSkillToDTO.toSkillCharacterSetDTO(character.getSkillsCharacter());
-    this.featsList = MapperFeatsDTO.toFeatsPcDTO(character.getFeatsList());
+      character.getSkillsCharacter() != null
+        ? MapperSkillToDTO.toSkillCharacterSetDTO(
+          character.getSkillsCharacter()
+        )
+        : null;
+    this.featsList =
+      character.getFeatsList() != null
+        ? MapperFeats.toFeatsPcDTO(character.getFeatsList())
+        : null;
     this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
-    this.attacks = MapperItemsDTO.toAttacksDTO(character.getAttacks());
+    this.attacks =
+      character.getAttacks() != null
+        ? MapperItemsDTO.toAttacksDTO(character.getAttacks())
+        : null;
     // this.magicPerDay = character.getMagicPerDay();
     // this.magicKnown = character.getMagicKnown();
-    this.books = MapperSpellsDTO.toBooksDTO(character.getBooks());
+    this.books =
+      character.getBooks() != null
+        ? MapperSpellsDTO.toBooksDTO(character.getBooks())
+        : null;
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
   }

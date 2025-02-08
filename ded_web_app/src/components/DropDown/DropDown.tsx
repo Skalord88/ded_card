@@ -18,6 +18,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
       return;
     }
     onAction(option.item);
+    // onAction(option);
     setIsOpen(false);
     setDropItem(option.name as string);
   };

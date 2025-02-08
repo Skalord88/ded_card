@@ -27,6 +27,7 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.items.entity.Inventory;
@@ -208,5 +209,35 @@ public class Character implements Serializable {
     // Aggiorna l'insieme
     this.skillsCharacter.clear();
     this.skillsCharacter.addAll(updatedList);
+  }
+
+  public void addFeatsToCharacter(int id, ArrayList<FeatsPcDTO> featsDTOList) {
+    if (this.featsList == null) {
+      this.featsList = new ArrayList<>();
+    }
+
+    List<FeatsPc> newList = new ArrayList<>();
+    featsDTOList.forEach(fDTO -> {
+      FeatsPc existing = null;
+      boolean exist = false;
+      if (fDTO.typeOfFeatsPcDTO() == 1) {
+        for (int i = 0; i < this.featsList.size(); i++) {
+          if (
+            this.featsList.get(i).getFeat().getId() == fDTO.feat.id &&
+            this.featsList.get(i).getLevel() == fDTO.level
+          ) {
+            existing = this.featsList.get(i);
+            exist = true;
+          }
+        }
+        if (!exist) {
+          existing = new FeatsPc(id, fDTO.level, fDTO.feat);
+        }
+      }
+      newList.add(existing);
+    });
+
+    this.featsList.clear();
+    this.featsList.addAll(newList);
   }
 }

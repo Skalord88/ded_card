@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.TypeEnum;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
@@ -53,7 +53,7 @@ public class ClassCharacterDTO {
         : null;
     this.classFeats =
       classCharacter.getAvailableFeats() != null
-        ? MapperFeatsDTO.toClassFeatsDTO(classCharacter.getAvailableFeats())
+        ? MapperFeats.toClassFeatsDTO(classCharacter.getAvailableFeats())
         : null;
     this.spellsPerDay =
       classCharacter.getSpellsPerDay() != null

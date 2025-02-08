@@ -73,7 +73,7 @@ export type SkillsElement = {
 export type FeatsFromChar = {
   feats: Feat[];
   classFeats: ClassFeats[];
-  pcFeats: FeatPc[];
+  pcFeats: {fromLevel: FeatPc[], fromClass: FeatPc[]};
 };
 
 export type CharToModify = {

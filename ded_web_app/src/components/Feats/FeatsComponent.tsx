@@ -10,19 +10,45 @@ export type FeatsComponentProps = {
 };
 
 export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
-  const featsFeatPc: FeatPc[] = char.feats.pcFeats;
+  const featsFromLevel: FeatPc[] = char.feats.pcFeats.fromLevel
+  const featsFromClass: FeatPc[] = char.feats.pcFeats.fromClass
   const featsFeats: Feat[] = char.feats.feats;
   const featsClassFeats: ClassFeats[] = char.feats.classFeats;
   const featsClassFeatsOneTime = Array.from(
     new Map(featsClassFeats.map((item) => [item.feat.id, item])).values()
   );
 
-  const fePc: {
+  const fePcLv: {
     id: string;
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
-  }[] = featsFeatPc.map(
+  }[] = featsFromLevel.map(
+    (f, index) =>
+      f && {
+        id: index + ".fePc",
+        name: f.feat.featName,
+        prer:
+          f.selected && f.feat.modifiers
+            ? [f.selected, f.feat.modifiers]
+            : f.selected
+            ? [f.selected]
+            : f.feat.modifiers
+            ? [f.feat.modifiers]
+            : [],
+        description: {
+          normal: f.feat.normal,
+          special: f.feat.special,
+          benefit: f.feat.benefit
+        }
+      }
+  );
+  const fePcBnsCl: {
+    id: string;
+    name: string;
+    prer?: Prerequisite[];
+    description: { benefit: string; normal: string; special: string };
+  }[] = featsFromClass.map(
     (f, index) =>
       f && {
         id: index + ".fePc",
@@ -82,7 +108,8 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
   return (
     <div>
       <h2 className="rpgui-container-framed-golden-2">Feats</h2>
-      <ListOfFeatsMap key={"Feats Pc"} feats={fePc} titolo={"Feats Pc"} />
+      <ListOfFeatsMap key={"Feats Level"} feats={fePcLv} titolo={"Feats Level"} />
+      <ListOfFeatsMap key={"Feats Class Bonus"} feats={fePcBnsCl} titolo={"Feats Class Bonus"} />
       <ListOfFeatsMap key={"Feats"} feats={fe} titolo={"Feats"} />
       <ListOfFeatsMap key={"Class Feats"} feats={feCl} titolo={"Class Feats"} />
     </div>

@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 
@@ -24,7 +24,10 @@ public class ClassFeatsDTO {
 
   public ClassFeatsDTO(ClassFeats classFeat) {
     this.level = classFeat.getLevel();
-    this.feat = MapperFeatsDTO.toFeatDTO(classFeat.getFeats());
+    this.feat =
+      classFeat.getFeats() != null
+        ? MapperFeats.toFeatDTO(classFeat.getFeats())
+        : null;
     this.classId = classFeat.getClassCharacter().getId();
     this.className = classFeat.getClassCharacter().getName();
     this.selected =

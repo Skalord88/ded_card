@@ -2,7 +2,7 @@ package pl.kolendateam.dadcard.race.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
@@ -30,7 +30,7 @@ public class ArchetypeDTO {
         : null;
     // MapperModifierBonus.toSetModifierDTO(archetype.getModifiers());
     this.archetypeFeats =
-      MapperFeatsDTO.toFeatsSetDTO(archetype.getArchetypeFeats());
+      MapperFeats.toFeatsSetDTO(archetype.getArchetypeFeats());
     this.levelAdjustment = archetype.getLevelAdjustment();
     this.specialAbilities =
       archetype.getSpecialAbilities() != null

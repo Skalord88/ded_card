@@ -15,7 +15,7 @@ import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 
-public class MapperFeatsDTO {
+public class MapperFeats {
 
   public static List<FeatsDTO> toFeatsDTO(List<Feats> feats) {
     List<FeatsDTO> featsDTOList = new ArrayList<>();
@@ -75,6 +75,20 @@ public class MapperFeatsDTO {
       return new FeatsDTO(feat);
     }
     return new FeatsDTO();
+  }
+
+  public static FeatsPcDTO toFeatPcDTO(FeatsPc feat) {
+    if (feat != null) {
+      return new FeatsPcDTO(feat);
+    }
+    return new FeatsPcDTO();
+  }
+
+  public static ClassFeatsDTO toClassFeatsDTO(ClassFeats feat) {
+    if (feat != null) {
+      return new ClassFeatsDTO(feat);
+    }
+    return new ClassFeatsDTO();
   }
 
   public static ArrayList<FeatsPcDTO> toFeatsPcDTO(List<FeatsPc> featsList) {

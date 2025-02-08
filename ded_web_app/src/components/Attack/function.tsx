@@ -74,12 +74,23 @@ export const getWeaponInventoryIndex = (wId: number, invWeapons: Weapon[]) => {
 };
 
 export const modifyAttacks = (char: CharToModify): Attacks => {
+  if (!char.attacks) {
+    return {
+      firstAttackSetOne: noneWeapon,
+      secondAttackSetOne: noneWeapon,
+      additionalAttackSetOne: noneWeapon,
+      firstAttackSetTwo: noneWeapon,
+      secondAttackSetTwo: noneWeapon,
+      additionalAttackSetTwo: noneWeapon
+    };
+  }
+  
   const weapons: Weapon[] = [
-    char.inventory.weaponOne,
-    char.inventory.weaponTwo,
-    char.inventory.weaponThree,
-    char.inventory.weaponFour,
-    char.inventory.weaponFive
+    char.inventory.weaponOne?? noneWeapon,
+    char.inventory.weaponTwo?? noneWeapon,
+    char.inventory.weaponThree?? noneWeapon,
+    char.inventory.weaponFour?? noneWeapon,
+    char.inventory.weaponFive?? noneWeapon
   ];
 
   const wOneSetOneIndex = char.attacks.firstAttackSetOne

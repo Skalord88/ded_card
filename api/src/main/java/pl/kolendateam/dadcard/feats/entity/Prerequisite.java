@@ -50,6 +50,9 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   Abilitys abilitys;
 
+  @JdbcTypeCode(SqlTypes.JSON)
+  FeatsTypeEnum[] featType;
+
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
     name = "prerequisite_feat",

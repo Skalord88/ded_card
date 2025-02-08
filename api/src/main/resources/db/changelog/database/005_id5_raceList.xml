@@ -27,6 +27,9 @@
       <column name="abilitys" type="jsonb">
         <constraints nullable="true" />
       </column>
+      <column name="feat_type" type="jsonb">
+        <constraints nullable="true" />
+      </column>
       <column name="caster" type="jsonb">
         <constraints nullable="true" />
       </column>

@@ -340,7 +340,7 @@ export const emptyClassFeat: ClassFeats = {
 }
 
 export const emptyFeatPc: FeatPc = {
-    id: 0,
     feat: emptyFeat,
-    selected: emptyPrerequisite
+    selected: emptyPrerequisite,
+    level: 0
 }

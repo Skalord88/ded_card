@@ -114,6 +114,8 @@
         <!-- Favored Enemy 4001 -->
         <!-- Combat Style 4002 -->
         <!-- Monk Bonus 4003 1lv -->
+        <!-- Fighter Bonus 4004 -->
+        <!-- Mage Bonus 4005 -->
 
         <!-- feats_pc -->
         <!-- selected 5000 -->

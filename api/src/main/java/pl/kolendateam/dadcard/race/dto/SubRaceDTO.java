@@ -2,7 +2,7 @@ package pl.kolendateam.dadcard.race.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperFeatsDTO;
+import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
@@ -43,7 +43,7 @@ public class SubRaceDTO {
       subRace.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(subRace.getModifiers())
         : null;
-    this.raceFeats = MapperFeatsDTO.toFeatsSetDTO(subRace.getSubRaceFeats());
+    this.raceFeats = MapperFeats.toFeatsSetDTO(subRace.getSubRaceFeats());
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());

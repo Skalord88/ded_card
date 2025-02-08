@@ -247,6 +247,7 @@
     <insert tableName="feats">
       <column name="id" value="11" />
       <column name="feat_name" value="Brew Potion [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <column name="benefit"
         value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level × its caster level × 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price. When you create a potion, you make any choices that you would normally make when casting the spell. Whoever drinks the potion is the target of the spell. Any potion that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when creating the potion." />
       <column name="prerequisite_list_id" value="3" />
@@ -348,6 +349,7 @@
     <insert tableName="feats">
       <column name="id" value="16" />
       <column name="feat_name" value="Craft Magic Arms And Armor [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="Caster level 5th" /> -->
       <column name="benefit"
         value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features’ total price in XP and use up raw materials costing one-half of this total price. The weapon, armor, or shield to be enhanced must be a masterwork item that you provide. Its cost is not included in the above cost. You can also mend a broken magic weapon, suit of armor, or shield if it is one that you could make. Doing so costs half the XP, half the raw materials, and half the time it would take to craft that item in the first place." />
@@ -368,6 +370,7 @@
     <insert tableName="feats">
       <column name="id" value="17" />
       <column name="feat_name" value="Craft Rod [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="Caster level 9th" /> -->
       <column name="benefit"
         value="You can create any rod whose prerequisites you meet. Crafting a rod takes one day for each 1,000 gp in its base price. To craft a rod, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. Some rods incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the rod’s base price." />
@@ -390,6 +393,7 @@
     <insert tableName="feats">
       <column name="id" value="18" />
       <column name="feat_name" value="Craft Staff [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="Caster level 12th" /> -->
       <column name="benefit"
         value="You can create any staff whose prerequisites you meet. Crafting a staff takes one day for each 1,000 gp in its base price. To craft a staff, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. A newly created staff has 50 charges. Some staffs incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the staff’s base price." />
@@ -412,6 +416,7 @@
     <insert tableName="feats">
       <column name="id" value="19" />
       <column name="feat_name" value="Craft Wand [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="Caster level 5th" /> -->
       <column name="benefit"
         value="You can create a wand of any 4th-level or lower spell that you know. Crafting a wand takes one day for each 1,000 gp in its base price. The base price of a wand is its caster level × the spell level × 750 gp. To craft a wand, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price. A newly created wand has 50 charges. Any wand that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the cost derived from the base price, you must expend fifty copies of the material component or pay fifty times the XP cost." />
@@ -434,6 +439,7 @@
     <insert tableName="feats">
       <column name="id" value="20" />
       <column name="feat_name" value="Craft Wondrous Item [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You can create any wondrous item whose prerequisites you meet. Enchanting a wondrous item takes one day for each 1,000 gp in its price. To enchant a wondrous item, you must spend 1/25 of the item,s price in XP and use up raw materials costing half of this price." />
@@ -616,6 +622,7 @@
     <insert tableName="feats">
       <column name="id" value="29" />
       <column name="feat_name" value="Enlarge Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You can alter a spell with a range of close, medium, or long to increase its range by 100%. An enlarged spell with a range of close now has a range of 50 ft. + 5 ft./level, while medium-range spells have a range of 200 ft. + 20 ft./level and long-range spells have a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot one level higher than the spell’s actual level. Spells whose ranges are not defined by distance, as well as spells whose ranges are not close, medium, or long, do not have increased ranges." />
@@ -666,6 +673,7 @@
     <insert tableName="feats">
       <column name="id" value="32" />
       <column name="feat_name" value="Extend Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <column name="benefit"
         value="An extended spell lasts twice as long as normal. A spell with a duration of concentration, instantaneous, or permanent is not affected by this feat. An extended spell uses up a spell slot one level higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -736,6 +744,7 @@
     <insert tableName="feats">
       <column name="id" value="35" />
       <column name="feat_name" value="Forge Ring [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="Caster level 12th" /> -->
       <column name="benefit"
         value="You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. You can also mend a broken ring if it is one that you could make. Doing so costs half the XP, half the raw materials, and half the time it would take to forge that ring in the first place. Some magic rings incur extra costs in material components or XP, as noted in their descriptions. You must pay such a cost to forge such a ring or to mend a broken one." />
@@ -1011,6 +1020,7 @@
     <insert tableName="feats">
       <column name="id" value="43" />
       <column name="feat_name" value="Heighten Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="A heightened spell has a higher spell level than normal (up to a maximum of 9th level). Unlike other metamagic feats, Heighten Spell actually increases the effective level of the spell that it modifies. All effects dependent on spell level (such as saving throw DCs and ability to penetrate a lesser globe of invulnerability) are calculated according to the heightened level. The heightened spell is as difficult to prepare and cast as a spell of its effective level." />
@@ -1615,6 +1625,7 @@
     <insert tableName="feats">
       <column name="id" value="67" />
       <column name="feat_name" value="Maximize Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="All variable, numeric effects of a spell modified by this feat are maximized. Saving throws and opposed rolls are not affected, nor are spells without random variables. A maximized spell uses up a spell slot three levels higher than the spell’s actual level. An empowered, maximized spell gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result." />
@@ -1889,6 +1900,7 @@
     <insert tableName="feats">
       <column name="id" value="79" />
       <column name="feat_name" value="Quicken Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="Casting a quickened spell is an swift action. You can perform another action, even casting another spell, in the same round as you cast a quickened spell. You may cast only one quickened spell per round. A spell whose casting time is more than 1 full round action cannot be quickened. A quickened spell uses up a spell slot four levels higher than the spell,s actual level. Casting a quickened spell doesn,t provoke an attack of opportunity." />
@@ -1981,6 +1993,7 @@
     <insert tableName="feats">
       <column name="id" value="84" />
       <column name="feat_name" value="Scribe Scroll [Item Creation]" />
+      <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You can create a scroll of any spell that you know. Scribing a scroll takes one day for each 1,000 gp in its base price. The base price of a scroll is its spell level , its caster level , 25 gp. To scribe a scroll, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price." />
@@ -2049,6 +2062,7 @@
     <insert tableName="feats">
       <column name="id" value="88" />
       <column name="feat_name" value="Silent Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="A silent spell can be cast with no verbal components. Spells without verbal components are not affected. A silent spell uses up a spell slot one level higher than the spell,s actual level." />
@@ -2218,6 +2232,7 @@
     <insert tableName="feats">
       <column name="id" value="98" />
       <column name="feat_name" value="Still Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="A stilled spell can be cast with no somatic components." />
       <column name="normal" value="null" />
@@ -2474,6 +2489,7 @@
     <insert tableName="feats">
       <column name="id" value="110" />
       <column name="feat_name" value="Widen Spell [Metamagic]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
       <column name="benefit"
         value="You can alter a burst, emanation, line, or spread shaped spell to increase its area. Any numeric measurements of the spell,s area increase by 100%.A widened spell uses up a spell slot three levels higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -3054,6 +3070,11 @@
     </insert>
 
     <!-- Fighter 5000-->
+    <insert tableName="prerequisite">
+      <column name="id" value="4004"/>
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]"/>
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="5001" />
       <column name="feat_name" value="Bonus Feats" />
@@ -3063,6 +3084,7 @@
               These bonus feats are in addition to the feat that a character of any class gets from advancing levels. A fighter is not limited to the list of fighter bonus feats when choosing these feats." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="to_select_id" value="4004" />
     </insert>
 
     <!-- Monk 6000-->
@@ -3940,6 +3962,11 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
       <column name="special" value="null" />
     </insert>
 
+    <insert tableName="prerequisite">
+      <column name="id" value="4005"/>
+      <column name="feat_type" value="[&quot;METAMAGIC&quot; , &quot;ITEM_CREATION&quot; , &quot;MAGE&quot;]"/>
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="10003" />
       <column name="feat_name" value="Bonus Feats" />
@@ -3950,6 +3977,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
             " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
+      <column name="to_select_id" value="4005" />
     </insert>
 
     <insert tableName="feats">

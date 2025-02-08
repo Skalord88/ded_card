@@ -14,6 +14,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 
 @NoArgsConstructor
 @Getter
@@ -25,6 +26,8 @@ public class FeatsPc implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
+
+  int level;
 
   @ManyToOne
   @JoinColumn(name = "character_card_id")
@@ -45,4 +48,10 @@ public class FeatsPc implements Serializable {
     nullable = true
   )
   Prerequisite selected;
+
+  public FeatsPc(int charId, int levelDTO, FeatsDTO featDTO) {
+    this.level = levelDTO;
+    this.character = new Character(charId);
+    this.feat = new Feats(featDTO.id);
+  }
 }

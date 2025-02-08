@@ -17,6 +17,7 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
@@ -63,13 +64,13 @@ public class FeatsController {
   public List<FeatsDTO> showFeatsList() {
     List<Feats> featsList = this.featsRepository.findAll();
 
-    return MapperFeatsDTO.toFeatsDTO(featsList);
+    return MapperFeats.toFeatsDTO(featsList);
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setFeatsCharacter(
     @PathVariable int id,
-    @RequestBody ArrayList<FeatsDTO> featsDTOList
+    @RequestBody ArrayList<FeatsPcDTO> featsDTOList
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -81,6 +82,8 @@ public class FeatsController {
     }
 
     Character character = characterOpt.get();
+
+    character.addFeatsToCharacter(id, featsDTOList);
 
     this.characterRepository.save(character);
 

@@ -105,7 +105,7 @@ public class ClassCharacter implements Serializable {
     // this.availableSkills = MapperSkillToDTO.toSkillSet(classCharacterDTO.classSkill);
     // this.availableStudy = MapperSkillToDTO.toStudySet(classCharacterDTO.classStudy);
     // this.skillPoints = classCharacterDTO.skillPoints;
-    // this.availableFeats = MapperFeatsDTO.toFeatsSetDTO(classCharacterDTO.classFeats);
+    // this.availableFeats = MapperFeats.toFeatsSetDTO(classCharacterDTO.classFeats);
     // this.spellsPerDay = , spellsKnown, spellBonus, spellsDomain, initialGold)
   }
 }

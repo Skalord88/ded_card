@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 @AllArgsConstructor
 @Entity
 @Table(name = "prerequisite_skill")
-public class PrerequisiteSkills {
+public class PrerequisiteSkills implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

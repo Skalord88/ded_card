@@ -354,7 +354,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         let list: itemInDrop[] = options.map(
             o => {
                 const nameFilter: string = o
-                const filter: string = o
+                const filter: string = o as string
                 return {
                     name: nameFilter,
                     item: filter
