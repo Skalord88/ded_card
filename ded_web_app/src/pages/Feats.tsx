@@ -1,22 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Feat, FeatPc } from "../components/Feats/Interface/FeatInterface";
-import { CharacterPc } from "../components/interfaces";
-import { urlChar, urlFeats } from "../components/url";
 import { DropdownComponent } from "../components/DropDown/DropDown";
+import { typeOfPrerequisiteInToSelect } from "../components/Feats/function";
+import { Feat } from "../components/Feats/Interface/FeatInterface";
 import { addToDrop, itemInDrop } from "../components/functions";
-import { CharSummary } from "../components/Summary/CharSummary";
-import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
+import { CharacterPc, Item } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
+import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
+import { CharSummary } from "../components/Summary/CharSummary";
+import { urlChar, urlFeats, urlItems } from "../components/url";
 import { emptyFeat, emptyPrerequisite } from "../components/variables";
-import {
-  checkFeatPcType,
-  findPrerequisiteFeatsInFeatsList
-} from "../components/Feats/function";
 
-export type newFeatPc = {
+export type NewFeatPc = {
   classe?: { id: number; text: string };
   feat: Feat;
   level: number;
@@ -28,10 +25,10 @@ export function Feats() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [itemList, setItemList] = useState<itemInDrop[]>([]);
+  const [itemList, setItemList] = useState<ListOfToSelect>();
   const [filtroList, setFiltroList] = useState<itemInDrop[]>([]);
-  const [featsToAddList, setFeatsToAddList] = useState<newFeatPc[]>([]);
-  const [featsPcToSelectList, setFeatsPcToAddList] = useState<newFeatPc[]>([]);
+  const [featsToAddList, setFeatsToAddList] = useState<NewFeatPc[]>([]);
+  const [featsPcToSelectList, setFeatsPcToAddList] = useState<NewFeatPc[]>([]);
   const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
@@ -51,7 +48,18 @@ export function Feats() {
           ),
           "feat"
         );
-        setItemList(itemsFeats);
+
+        const resItems = await axios.get(urlItems);
+        const dbWeapons = resItems.data.weaponsList;
+        const itemsWeapons = addToDrop(dbWeapons, "items");
+        const dbArmors = resItems.data.armorsList;
+        const itemsArmors = addToDrop(dbArmors, "items");
+
+        setItemList({
+          feats: itemsFeats,
+          weapons: itemsWeapons,
+          armors: itemsArmors
+        });
 
         setFiltroList(
           addToDrop(
@@ -72,7 +80,7 @@ export function Feats() {
           Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) +
           1;
 
-        let featsFromLevel: newFeatPc[] = [];
+        let featsFromLevel: NewFeatPc[] = [];
 
         for (let i = 0; i < quantiFeats; i++) {
           featsFromLevel.push({
@@ -96,7 +104,7 @@ export function Feats() {
           setFeatsToAddList(featsFromLevel);
         }
 
-        let classPcBonusFeats: newFeatPc[] = newModChar.feats.classFeats
+        let classPcBonusFeats: NewFeatPc[] = newModChar.feats.classFeats
           .filter(
             (c) =>
               c.toSelect?.feats ||
@@ -218,23 +226,27 @@ export function Feats() {
         >
           {featsToAddList.map((f, index) => (
             <div className="rpgui-container-framed-grey" key={index}>
-              <FeatToAddInLevel
-                filtro={filtroList}
-                element={f.feat}
-                indexItem={index}
-                items={itemList}
-                onAction={newFeatsToAddList}
-              />
+              {itemList ? (
+                <FeatToAddInLevel
+                  filtro={filtroList}
+                  element={f.feat}
+                  indexItem={index}
+                  items={itemList}
+                  onAction={newFeatsToAddList}
+                />
+              ) : null}
             </div>
           ))}
           {featsPcToSelectList.map((f, indexF) => (
             <div>
-              <FeatPcToAddInLevel
-                featIndex={indexF}
-                element={f}
-                items={itemList}
-                onAction={newFeatsPcToAddList}
-              />
+              {itemList ? (
+                <FeatPcToAddInLevel
+                  featIndex={indexF}
+                  element={f}
+                  items={itemList}
+                  onAction={newFeatsPcToAddList}
+                />
+              ) : null}
             </div>
           ))}
           {
@@ -253,10 +265,16 @@ export function Feats() {
   );
 }
 
+export type ListOfToSelect = {
+  feats: itemInDrop[];
+  weapons: itemInDrop[];
+  armors: itemInDrop[];
+};
+
 export type FeatPcToAddInLevelProps = {
   featIndex: number;
-  element: newFeatPc;
-  items: itemInDrop[];
+  element: NewFeatPc;
+  items: ListOfToSelect;
   onAction: (option: Feat, level: number, ind: number) => void;
 };
 
@@ -266,25 +284,18 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   items,
   onAction
 }) => {
-  let drop: itemInDrop[] = [];
-  if (element.toSelect?.featType) {
-    const listaOfFeats: Feat[] = items.flatMap((i) => i.item as Feat);
-    const filtredListaByType: Feat[] = findPrerequisiteFeatsInFeatsList(
-      element.toSelect?.featType,
-      listaOfFeats
-    );
-    drop = addToDrop(filtredListaByType, "feat");
-  }
-  console.log(element.toSelect?.feats);
-  if (element.toSelect?.feats && element.toSelect?.feats.length > 0) {
-    drop = addToDrop(element.toSelect?.feats, "feat");
-  }
-  const lista: itemInDrop[] = drop;
+  let drop: itemInDrop[] = typeOfPrerequisiteInToSelect(element, items);
 
-  const [selected, setSelected] = useState<Feat>();
+  const [selected, setSelected] = useState<NewFeatPc>(element);
+  const [selectedToSelect, setSelectedToSelect] = useState<Prerequisite>();
   const addItem = (option: Feat) => {
-    onAction(option, featIndex === 0 ? 1 : featIndex * 3, featIndex);
-    setSelected(option);
+    //   onAction(option, featIndex === 0 ? 1 : featIndex * 3, featIndex);
+    //   const newSelected: NewFeatPc = {
+    //     ...selected,
+    //     selected: { ...selected, feats: [option] }
+    //   };
+    //   console.log("newSelected: " + newSelected)
+    //   setSelected(newSelected);
   };
   return (
     <div key={featIndex} className="rpgui-container-framed-grey">
@@ -292,18 +303,18 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
         <div style={{ flex: 2 }}>
           <p>
             {"lv."}
-            {element.level} {element.classe?.text} {element.feat.featName}
+            {selected.level} {selected.classe?.text} {selected.feat.featName}
           </p>
         </div>
         <div style={{ flex: 3 }}>
           <p>
-            {lista ? (
-              <DropdownComponent options={lista} onAction={addItem} />
+            {drop ? (
+              <DropdownComponent options={drop} onAction={addItem} />
             ) : null}
           </p>
         </div>
       </div>
-      <div>{selected ? <FeatToAdd feat={selected} /> : null}</div>
+      <div>{selected ? <FeatToAdd feat={selected.feat} /> : null}</div>
     </div>
   );
 };
@@ -312,7 +323,7 @@ export type FeatToAddInLevelProps = {
   element: Feat;
   filtro: itemInDrop[];
   indexItem: number;
-  items: itemInDrop[];
+  items: ListOfToSelect;
   onAction: (option: Feat, ind: number) => void;
 };
 
@@ -323,7 +334,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   items,
   onAction
 }) => {
-  const featAll: itemInDrop[] = items;
+  const featAll: ListOfToSelect = items;
 
   const [itemList, setItemList] = useState<itemInDrop[]>();
   const [featsToAdd, setFeatsToAdd] = useState<Feat>(element);
@@ -332,8 +343,8 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   useEffect(() => {
     const filtred: itemInDrop[] =
       filter === "ALL"
-        ? featAll
-        : featAll.filter(
+        ? featAll.feats
+        : featAll.feats.filter(
             (f) =>
               (f.item as Feat).featType &&
               (f.item as Feat).featType.includes(filter)
@@ -394,10 +405,11 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
 };
 
 export type FeatProp = {
-  feat: Feat;
+  feat?: Feat;
 };
 
 export const FeatToAdd: React.FC<FeatProp> = ({ feat }) => {
+  if (!feat) return null;
   return (
     <div className="rpgui-container-framed">
       <h2>{feat.featName}</h2>

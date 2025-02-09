@@ -1,3 +1,5 @@
+import { ListOfToSelect, NewFeatPc } from "../../pages/Feats";
+import { addToDrop, itemInDrop } from "../functions";
 import { CharacterPc } from "../interfaces";
 import { FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
 import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
@@ -42,10 +44,27 @@ export const findPrerequisiteFeatsInFeatsList = (
 };
 
 export const checkFeatPcType = (f: FeatPc): number => {
-    if (f.feat && f.classFeat === null && f.selected === null) return 1;
-    if (f.feat && f.classFeat && f.selected === null) return 2;
-    if (f.feat && f.classFeat && f.selected) return 3;
+    if (f.feat && f.classFeat === null) return 1;
+    if (f.feat && f.classFeat) return 2;
     return 0;
   };
+
+export const typeOfPrerequisiteInToSelect = (
+  element: NewFeatPc, listaToSelect: ListOfToSelect
+): itemInDrop[] => {
+  let drop: itemInDrop[] = []
+if (element.toSelect?.featType) {
+    const listaOfFeats: Feat[] = listaToSelect.feats.flatMap((i) => i.item as Feat);
+    const filtredListaByType: Feat[] = findPrerequisiteFeatsInFeatsList(
+      element.toSelect?.featType,
+      listaOfFeats
+    );
+    drop = addToDrop(filtredListaByType, "feat");
+  }
+  if (element.toSelect?.feats && element.toSelect?.feats.length > 0) {
+    drop = addToDrop(element.toSelect?.feats, "feat");
+  }
+  return drop;
+}
 
 
