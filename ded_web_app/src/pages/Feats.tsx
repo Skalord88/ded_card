@@ -10,32 +10,38 @@ import { CharSummary } from "../components/Summary/CharSummary";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
-import { emptyFeat } from "../components/variables";
-import { checkFeatPcType, findPrerequisiteFeatsInFeatsList } from "../components/Feats/function";
+import { emptyFeat, emptyPrerequisite } from "../components/variables";
+import {
+  checkFeatPcType,
+  findPrerequisiteFeatsInFeatsList
+} from "../components/Feats/function";
 
 export type newFeatPc = {
-  classe: { id: number; text: string };
-  feat: { id: number; text: string };
+  classe?: { id: number; text: string };
+  feat: Feat;
   level: number;
-  selected?: Feat;
-  toSelect?: Feat[];
+  selected?: Prerequisite;
+  toSelect?: Prerequisite;
 };
 
 export function Feats() {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [itemList, setItemList] = useState<itemInDrop[]>();
-  const [featsToAddList, setFeatsToAddList] = useState<Feat[]>([]);
-  const [featsPcToSelectList, setFeatsPcToAddList] = useState<newFeatPc[]>();
+  const [itemList, setItemList] = useState<itemInDrop[]>([]);
+  const [filtroList, setFiltroList] = useState<itemInDrop[]>([]);
+  const [featsToAddList, setFeatsToAddList] = useState<newFeatPc[]>([]);
+  const [featsPcToSelectList, setFeatsPcToAddList] = useState<newFeatPc[]>([]);
   const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
-        setChar(resChar.data);
-        setModChar(createModChar(resChar.data));
+        const char = resChar.data;
+        setChar(char);
+        const newModChar = createModChar(resChar.data);
+        setModChar(newModChar);
 
         const resFeats = await axios.get(urlFeats);
         const listOfFeats: Feat[] = resFeats.data;
@@ -47,33 +53,79 @@ export function Feats() {
         );
         setItemList(itemsFeats);
 
-        const classPcBonusFeats: newFeatPc[] = (
-          resChar.data as CharacterPc
-        ).classPcList.flatMap((cl) =>
-          cl.classCharacter.classFeats.flatMap((cF) =>
-            cF.toSelect || cF.feat.toSelect
-              ? {
-                  classe: {
-                    id: cl.classCharacter.id,
-                    text: cl.classCharacter.className
-                  },
-                  feat: { id: cF.feat.id, text: cF.feat.featName },
-                  level: cF.level,
-                  selected: emptyFeat,
-                  toSelect: cF.toSelect
-                    ? cF.toSelect.feats
-                    : cF.feat.toSelect && cF.feat.toSelect?.featType
-                    ? findPrerequisiteFeatsInFeatsList(
-                        cF.feat.toSelect.featType,
-                        listOfFeats
-                      )
+        setFiltroList(
+          addToDrop(
+            Array.from(
+              new Set(
+                itemsFeats.flatMap((f) =>
+                  (f.item as Feat).featType
+                    ? ["ALL"].concat((f.item as Feat).featType)
                     : []
-                }
-              : []
+                )
+              )
+            ),
+            "filter"
           )
         );
 
-        if (classPcBonusFeats) setFeatsPcToAddList(classPcBonusFeats);
+        const quantiFeats: number =
+          Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) +
+          1;
+
+        let featsFromLevel: newFeatPc[] = [];
+
+        for (let i = 0; i < quantiFeats; i++) {
+          featsFromLevel.push({
+            feat: emptyFeat,
+            level: i === 0 ? 1 : i * 3,
+            selected: emptyPrerequisite,
+            toSelect: emptyPrerequisite
+          });
+        }
+
+        for (let i = 0; i < newModChar.feats.pcFeats.fromLevel.length; i++) {
+          featsFromLevel[i] = {
+            ...featsFromLevel[i],
+            feat: newModChar.feats.pcFeats.fromLevel[i].feat,
+            selected: newModChar.feats.pcFeats.fromLevel[i].selected,
+            toSelect: newModChar.feats.pcFeats.fromLevel[i].feat.toSelect
+          };
+        }
+
+        if (featsFromLevel) {
+          setFeatsToAddList(featsFromLevel);
+        }
+
+        let classPcBonusFeats: newFeatPc[] = newModChar.feats.classFeats
+          .filter(
+            (c) =>
+              c.toSelect?.feats ||
+              c.toSelect?.featType ||
+              c.feat.toSelect?.featType ||
+              c.feat.toSelect?.feats
+          )
+          .map((clF) =>
+            clF.toSelect?.feats || clF.feat.toSelect?.feats
+              ? {
+                  classe: {
+                    id: clF.classId,
+                    text: clF.className
+                  },
+                  feat: clF.feat,
+                  level: clF.level,
+                  selected: emptyPrerequisite,
+                  toSelect: clF.toSelect
+                    ? clF.toSelect
+                    : clF.feat.toSelect
+                    ? clF.feat.toSelect
+                    : emptyPrerequisite
+                }
+              : clF
+          );
+
+        if (classPcBonusFeats) {
+          setFeatsPcToAddList(classPcBonusFeats);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -81,30 +133,16 @@ export function Feats() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (modChar) {
-      const lenght: number =
-        Math.floor((modChar?.adjBonus.adjLv + modChar.classesLv) / 3) + 1;
-      let newSlots = [];
-      for (let i = 1; i <= lenght; i++) {
-        newSlots.push(emptyFeat);
-      }
-      let indexChar: number = 0;
-      modChar.feats.pcFeats.fromLevel
-      .sort((a, b) => a.level - b.level)
-      .forEach((fChar) => {
-        if (checkFeatPcType(fChar) === 1) {
-          newSlots[indexChar] = fChar.feat;
-          indexChar++;
-        }
-      });
-      setFeatsToAddList(newSlots);
-    }
-  }, [modChar]);
-
   const newFeatsToAddList = (f: Feat, i: number) => {
     const updatedList = [...featsToAddList];
-    updatedList[i] = (f as Feat) ? f : updatedList[i];
+    updatedList[i] = (f as Feat)
+      ? {
+          ...updatedList[i],
+          feat: f
+        }
+      : updatedList[i];
+
+    console.log(updatedList);
     setFeatsToAddList(updatedList);
   };
 
@@ -120,14 +158,14 @@ export function Feats() {
   };
 
   const handleSubmit = () => {
-    let list: {level: number, feat: {id: number}}[] = featsToAddList
-    .filter(filt => filt.id !== 0)
-    .map((f, index) => {
-      return {
-        level: index === 0 ? 1 : index * 3,
-        feat: {id: f.id}
-      };
-    });
+    let list: { level: number; feat: { id: number } }[] = featsToAddList
+      .filter((filt) => filt.feat.id !== 0)
+      .map((f, index) => {
+        return {
+          level: f.level,
+          feat: { id: f.feat.id }
+        };
+      });
 
     // console.log(urlFeats + "/" + charId, list)
     axios.post(urlFeats + "/" + charId, list);
@@ -137,21 +175,25 @@ export function Feats() {
 
   return (
     <>
-      {char ? <CharSummary character={char} feats={featsToAddList} /> : null}
-      {featsToAddList
-        ? featsToAddList.map((f) => (
-            <span>
-              {f.id} {f.featName}
-            </span>
-          ))
-        : null}
-      {featsPcToSelectList
-        ? featsPcToSelectList.map((f) => (
-            <span>
-              {f.selected?.id} {f.selected?.featName}
-            </span>
-          ))
-        : null}
+      {char ? (
+        <CharSummary
+          character={char}
+          // feats={featsToAddList}
+        />
+      ) : null}
+      {featsToAddList.map((f) => (
+        <span>
+          {f.feat.id} {f.feat.featName}
+        </span>
+      ))}
+      {featsPcToSelectList.map((f) => (
+        <span>
+          {f.selected?.id}
+          {f.selected?.feats?.map((sF) => (
+            <span>{sF.featName}</span>
+          ))}
+        </span>
+      ))}
       <div>
         {
           <button className="rpgui-button" onClick={() => handleSubmit()}>
@@ -174,41 +216,27 @@ export function Feats() {
           className="rpgui-container-framed-grey"
           style={{ gridColumn: "1 / span 3", gridRow: 1 }}
         >
-          {featsToAddList.map((f, index) =>
-            itemList ? (
-              <div className="rpgui-container-framed-grey" key={index}>
-                <FeatToAddInLevel
-                  filtro={addToDrop(
-                    Array.from(
-                      new Set(
-                        itemList.flatMap((f) =>
-                          (f.item as Feat).featType
-                            ? ["ALL"].concat((f.item as Feat).featType)
-                            : []
-                        )
-                      )
-                    ),
-                    "filter"
-                  )}
-                  element={f}
-                  indexItem={index}
-                  items={itemList}
-                  onAction={newFeatsToAddList}
-                />
-              </div>
-            ) : null
-          )}
-          {featsPcToSelectList
-            ? featsPcToSelectList.map((f, indexF) => (
-                <div>
-                  <FeatPcToAddInLevel
-                    featIndex={indexF}
-                    items={f}
-                    onAction={newFeatsPcToAddList}
-                  />
-                </div>
-              ))
-            : null}
+          {featsToAddList.map((f, index) => (
+            <div className="rpgui-container-framed-grey" key={index}>
+              <FeatToAddInLevel
+                filtro={filtroList}
+                element={f.feat}
+                indexItem={index}
+                items={itemList}
+                onAction={newFeatsToAddList}
+              />
+            </div>
+          ))}
+          {featsPcToSelectList.map((f, indexF) => (
+            <div>
+              <FeatPcToAddInLevel
+                featIndex={indexF}
+                element={f}
+                items={itemList}
+                onAction={newFeatsPcToAddList}
+              />
+            </div>
+          ))}
           {
             <button className="rpgui-button">
               <p>add Feats</p>
@@ -227,18 +255,32 @@ export function Feats() {
 
 export type FeatPcToAddInLevelProps = {
   featIndex: number;
-  items: newFeatPc;
+  element: newFeatPc;
+  items: itemInDrop[];
   onAction: (option: Feat, level: number, ind: number) => void;
 };
 
 export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   featIndex,
+  element,
   items,
   onAction
 }) => {
-  const lista: itemInDrop[] = items.toSelect
-    ? addToDrop(items.toSelect, "feat")
-    : [];
+  let drop: itemInDrop[] = [];
+  if (element.toSelect?.featType) {
+    const listaOfFeats: Feat[] = items.flatMap((i) => i.item as Feat);
+    const filtredListaByType: Feat[] = findPrerequisiteFeatsInFeatsList(
+      element.toSelect?.featType,
+      listaOfFeats
+    );
+    drop = addToDrop(filtredListaByType, "feat");
+  }
+  console.log(element.toSelect?.feats);
+  if (element.toSelect?.feats && element.toSelect?.feats.length > 0) {
+    drop = addToDrop(element.toSelect?.feats, "feat");
+  }
+  const lista: itemInDrop[] = drop;
+
   const [selected, setSelected] = useState<Feat>();
   const addItem = (option: Feat) => {
     onAction(option, featIndex === 0 ? 1 : featIndex * 3, featIndex);
@@ -250,12 +292,14 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
         <div style={{ flex: 2 }}>
           <p>
             {"lv."}
-            {items.level} {items.classe.text} {items.feat.text}
+            {element.level} {element.classe?.text} {element.feat.featName}
           </p>
         </div>
         <div style={{ flex: 3 }}>
           <p>
-            <DropdownComponent options={lista} onAction={addItem} />
+            {lista ? (
+              <DropdownComponent options={lista} onAction={addItem} />
+            ) : null}
           </p>
         </div>
       </div>
@@ -265,7 +309,7 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
 };
 
 export type FeatToAddInLevelProps = {
-  element: Feat
+  element: Feat;
   filtro: itemInDrop[];
   indexItem: number;
   items: itemInDrop[];
