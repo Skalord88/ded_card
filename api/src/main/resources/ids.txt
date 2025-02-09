@@ -85,14 +85,13 @@
         <!-- Weapon Specialization 1021 -->
 
         <!-- toSelect 2000 -->
-        <!-- Armor Proficiency (Heavy) 2001 -->
-        <!-- Armor Proficiency (Light) 2002 -->
-        <!-- Armor Proficiency (Medium) 2003 -->
+        Weapon Focus 2001
         <!-- Exotic Weapon Proficiency 2004 -->
         <!-- Greater Spell Focus 18 -->
         <!-- Improved Shield Bash 2006 -->
         <!-- Martial Weapon Proficiency 2007 -->
         <!-- Simple Weapon Proficiency 2005 -->
+        
 
         <!-- class_feats -->
 
@@ -117,8 +116,11 @@
         <!-- Fighter Bonus 4004 -->
         <!-- Mage Bonus 4005 -->
 
-        <!-- feats_pc -->
+        <!-- feats -->
         <!-- selected 5000 -->
+        <!-- Armor Proficiency (Heavy) 5001 -->
+        <!-- Armor Proficiency (Light) 5002 -->
+        <!-- Armor Proficiency (Medium) 5003 -->
 
         <!-- Pg gia' fatti 10000-->
         <!-- Puli -->

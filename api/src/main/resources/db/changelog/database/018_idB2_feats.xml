@@ -32,6 +32,9 @@
       <column name="to_select_id" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="selected_id" type="int">
+        <constraints nullable="true" />
+      </column>
     </createTable>
 
   </changeSet>

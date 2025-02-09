@@ -113,10 +113,10 @@
       <column name="feat_id" value="7" />
     </insert>
 
-    <!-- Armor Proficiency (Heavy) [General] toSelect -->
+    <!-- Armor Proficiency (Heavy) [General] selected -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="2001" />
+      <column name="id" value="5001" />
       <column name="armor_type" value="[&quot;HEAVY_ARMOR&quot;]" />
       <column name="text" value="Armor Proficiency (Heavy)" />
     </insert>
@@ -131,13 +131,13 @@
       <column name="special"
         value="Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it." />
       <column name="prerequisite_list_id" value="1" />
-      <column name="to_select_id" value="2001" />
+      <column name="selected_id" value="5001" />
     </insert>
 
-    <!-- Armor Proficiency (Light) [General] toSelect -->
+    <!-- Armor Proficiency (Light) [General] selected -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="2002" />
+      <column name="id" value="5002" />
       <column name="armor_type" value="[&quot;LIGHT_ARMOR&quot;]" />
       <column name="text" value="Armor Proficiency (Light)" />
     </insert>
@@ -152,7 +152,7 @@
         value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="All characters except wizards, sorcerers, and monks automatically have Armor Proficiency (light) as a bonus feat. They need not select it." />
-      <column name="to_select_id" value="2002" />
+      <column name="selected_id" value="5002" />
     </insert>
 
     <!-- Armor Proficiency (Medium) [General] pre -->
@@ -166,10 +166,10 @@
       <column name="feat_id" value="7" />
     </insert>
 
-    <!-- Armor Proficiency (Medium) [General] toSelect -->
+    <!-- Armor Proficiency (Medium) [General] selected -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="2003" />
+      <column name="id" value="5003" />
       <column name="armor_type" value="[&quot;MEDIUM_ARMOR&quot;]" />
       <column name="text" value="Armor Proficiency (Medium)" />
     </insert>
@@ -184,7 +184,7 @@
       <column name="special"
         value="Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it." />
       <column name="prerequisite_list_id" value="2" />
-      <column name="to_select_id" value="2003" />
+      <column name="selected_id" value="5003" />
     </insert>
 
     <!-- Athletic [General] -->
@@ -2379,7 +2379,14 @@
     <insert tableName="prerequisite">
       <column name="id" value="53" />
       <column name="bab" value="1" />
-      <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
+      <column name="text" value="Base attack bonus +1." />
+    </insert>
+    <!-- Weapon Focus [General] to_Select -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="2001" />
+      <column name="weapon_type" value="[ &quot;PROFICENCY&quot; ]" />
+      <column name="text" value="Proficiency with selected weapon." />
     </insert>
 
     <!-- Weapon Focus [General] mod -->
@@ -2394,8 +2401,10 @@
     <insert tableName="feats">
       <column name="id" value="107" />
       <column name="feat_name" value="Weapon Focus [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="53" />
       <column name="modifiers_id" value="1020" />
+      <column name="to_select_id" value="2001" />
       <column name="benefit"
         value="You gain a +1 bonus on all attack rolls you make using the selected weapon." />
       <column name="normal" value="null" />

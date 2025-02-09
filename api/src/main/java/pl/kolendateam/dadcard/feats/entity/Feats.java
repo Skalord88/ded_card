@@ -59,6 +59,14 @@ public class Feats implements Serializable {
   )
   Prerequisite toSelect;
 
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "selected_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
+  Prerequisite selected;
+
   public Feats(int idDTO) {
     this.id = idDTO;
   }

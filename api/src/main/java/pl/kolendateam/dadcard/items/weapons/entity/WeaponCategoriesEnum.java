@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.items.weapons.entity;
 
 public enum WeaponCategoriesEnum {
+  PROFICENCY("Proficency"),
   NATURAL("Natural Weapon"),
   SIMPLE("Simple"),
   MARTIAL("Martial"),

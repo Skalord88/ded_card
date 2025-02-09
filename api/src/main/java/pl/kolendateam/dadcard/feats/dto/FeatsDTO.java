@@ -20,6 +20,7 @@ public class FeatsDTO {
   public PrerequisiteDTO modifiers;
   public PrerequisiteDTO prerequisiteList;
   public PrerequisiteDTO toSelect;
+  public PrerequisiteDTO selected;
 
   public FeatsDTO(Feats feats) {
     this.id = feats.getId();
@@ -39,6 +40,10 @@ public class FeatsDTO {
     this.toSelect =
       feats.getToSelect() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getToSelect())
+        : null;
+    this.selected =
+      feats.getSelected() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(feats.getSelected())
         : null;
   }
 

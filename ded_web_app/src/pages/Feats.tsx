@@ -435,10 +435,12 @@ export const FeatToAdd: React.FC<FeatProp> = ({ feat }) => {
           <span>{feat.special}</span>
         </p>
       )}
-      {feat.toSelect ? <ToSelect pre={feat.toSelect} /> : null}
     </div>
   );
 };
+export type PrerequisiteProp = {
+  pre: Prerequisite
+}
 
 export const PrerequisiteFeats: React.FC<PrerequisiteProp> = ({ pre }) => {
   const text: string = pre.text != null ? pre.text : "";
@@ -449,85 +451,5 @@ export const PrerequisiteFeats: React.FC<PrerequisiteProp> = ({ pre }) => {
         <span>{text}</span>
       </p>
     </div>
-  );
-};
-
-export type PrerequisiteProp = {
-  pre: Prerequisite;
-};
-
-export const ToSelect: React.FC<PrerequisiteProp> = ({ pre }) => {
-  const armorType: string[] = pre.armorType ? pre.armorType : [];
-  const weaponType: string[] = pre.weaponType ? pre.weaponType : [];
-  const feats: Feat[] = pre.feats ? pre.feats : [];
-  return (
-    <div>
-      {armorType.map((ar, indexAr) => (
-        <div key={indexAr}>
-          <p>{ar}</p>
-        </div>
-      ))}
-      {weaponType.map((we, indexWe) => (
-        <div key={indexWe}>
-          <p>{we}</p>
-        </div>
-      ))}
-      {feats.map((f, indexFe) => (
-        <div key={indexFe}>
-          <p>{f.featName}</p>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export type ListOfPcFeatsProps = {
-  // feat: (Feat | null)[];
-  pcLevel: number;
-  // onNewList: (list: (Feat | null)[]) => void
-};
-
-export const ListOfPcFeats: React.FC<ListOfPcFeatsProps> = ({
-  // feat,
-  pcLevel
-  // onNewList
-}) => {
-  const [slotsList, setSlotsList] = useState<(Feat | null)[]>([]);
-
-  // useEffect(() => {
-  //   let newSlots = [];
-  //   for (let i = 1; i <= Math.floor(pcLevel / 3); i++) {
-  //     newSlots.push(
-  // feat[i - 1] || null
-  //   );
-  // }
-
-  // setSlotsList(newSlots);
-  // onNewList(newSlots);
-  // }, [feat.length]);
-
-  const emptyTheSlot = (index: number) => {
-    setSlotsList((prevSlots) =>
-      prevSlots.map((slot, i) => (i === index ? null : slot))
-    );
-  };
-
-  return (
-    <>
-      {slotsList.map((slot, index) => (
-        <div key={index}>
-          <p>
-            lv.{(index + 1) * 3}{" "}
-            {slot ? (
-              <span onClick={() => emptyTheSlot(index)}>
-                {slot.id} {slot.featName}
-              </span>
-            ) : (
-              "--- empty ---"
-            )}
-          </p>
-        </div>
-      ))}
-    </>
   );
 };
