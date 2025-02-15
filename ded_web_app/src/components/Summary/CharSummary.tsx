@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AbilitysSummaryComponent } from "../AbilitysComponent";
 import { CharacterPc } from "../interfaces";
 import { createModChar } from "../Prerequisite/functions/modChar";
-import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
+import { CharToModify, FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
 import { SubRace } from "../Race/Interfaces";
 import { SkillSummaryComponent } from "../Skills/Show/SkillShowComponent";
 import { SpecialAbilitiesSummaryComponent } from "../SpecialAbilities/SpecialAbilitiesComponent";
@@ -17,14 +17,12 @@ export interface SummaryProps {
   character: CharacterPc;
   race?: SubRace;
   classPcList?: ClassPc[];
-  feats?: (Feat | string)[];
 }
 
 export const CharSummary: React.FC<SummaryProps> = ({
   character,
   race,
-  classPcList,
-  feats
+  classPcList
 }) => {
   const [updateChar, setUpChar] = useState<CharToModify>();
   const [textClass, setTextClass] = useState<string>();
@@ -34,6 +32,7 @@ export const CharSummary: React.FC<SummaryProps> = ({
       ...character,
       race: race ? race : character.race,
       classPcList: classPcList ? classPcList : character.classPcList
+
     };
     const newChar: CharToModify = createModChar(char);
 

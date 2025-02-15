@@ -234,7 +234,6 @@ export const emptySavingThrow: SavingThrow = {
 }
 
 export const emptyPrerequisite: Prerequisite = {
-    id: 0,
     abilitys: emptyAbilitys,
     feats: [],
     caster: [],
@@ -254,8 +253,8 @@ export const emptyPrerequisite: Prerequisite = {
     savingThrow: emptySavingThrow,
     skillStudy: [],
     armorClass: armorClassEmpty,
-    armorType: [],
-    weaponType: [],
+    armorType: "",
+    weaponType: "",
     schools: [],
     classPc: [],
     items: [],

@@ -3,7 +3,7 @@ import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassCharacter, ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { enchantedName, onlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
 import { Feat, feat, serverFeat } from "./Feats/Interface/FeatInterface";
-import { Armor, Book, CharacterPc, Enchantment, Inventory, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
+import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
 import { SubRace } from "./Race/Interfaces";
 
 export function SignNumber(
@@ -346,10 +346,11 @@ export function SortedBooks(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | SubRace | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
+    item: string | Feat | ClassCharacter | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
+
     if (text === "filter") {
         let list: itemInDrop[] = options.map(
             o => {
@@ -366,11 +367,9 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
     if (text === "feat") {
         let list: itemInDrop[] = options.map(
             o => {
-                const nameFeat: string = o.featName;
-                const feat: Feat = o as Feat;
                 return {
-                    name: nameFeat,
-                    item: feat
+                    name: (o as Feat).featName,
+                    item: o as Feat
                 }
             }
         )
@@ -404,7 +403,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
             o => {
                 return {
                     name: enchantedName(o),
-                    item: o as Armor | Shield | Weapon | WonderousItem
+                    item: o as Item | Armor | Shield | Weapon | WonderousItem
                 }
             }
         )

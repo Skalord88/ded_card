@@ -19,14 +19,12 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
   );
 
   const fePcLv: {
-    id: string;
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
   }[] = featsFromLevel.map(
     (f, index) =>
       f && {
-        id: index + ".fePc",
         name: f.feat.featName,
         prer:
           f.selected && f.feat.modifiers
@@ -44,14 +42,12 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
       }
   );
   const fePcBnsCl: {
-    id: string;
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
   }[] = featsFromClass.map(
     (f, index) =>
       f && {
-        id: index + ".fePc",
         name: f.feat.featName,
         prer:
           f.selected && f.feat.modifiers
@@ -69,14 +65,12 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
       }
   );
   const fe: {
-    id: string;
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
   }[] = featsFeats.map(
     (f, index) =>
       f && {
-        id: index + ".fe",
         name: f.featName,
         prer: f.modifiers && [f.modifiers],
         description: {
@@ -87,14 +81,12 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
       }
   );
   const feCl: {
-    id: string;
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
   }[] = featsClassFeatsOneTime.map(
     (f, index) =>
       f && {
-        id: index + ".feCl",
         name: f.feat.featName,
         prer: f.modifiers && [f.modifiers],
         description: {

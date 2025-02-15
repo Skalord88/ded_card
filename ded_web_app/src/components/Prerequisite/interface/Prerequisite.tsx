@@ -10,7 +10,6 @@ import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
 
 export type Prerequisite = {
-    id?: number;
     abilitys?: Abilitys;
     feats?: Feat[];
     featType?: string[]; 
@@ -24,8 +23,8 @@ export type Prerequisite = {
     specialAttacks?: SpecialAttacks;
     skillStudy?: PrerequisiteSkills[]
     armorClass?: ArmorClass;
-    armorType?: string[];
-    weaponType?: string[];
+    armorType?: string;
+    weaponType?: string;
     schools?: string[];
     classPc?: ClassPcLevel[];
     items?: Item[]

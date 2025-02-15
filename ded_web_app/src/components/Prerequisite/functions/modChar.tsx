@@ -1,43 +1,47 @@
 import { modifyAttacks, createAttackDisplay } from "../../Attack/function";
-import { CharacterPc } from "../../interfaces";
+import { CharacterPc, ItemsList } from "../../interfaces";
 import { emptyAbilitys, emptySize, emptyInventory, emptyAttacks } from "../../variables";
 import { Prerequisite } from "../interface/Prerequisite";
 import { CharToModify, modifyCharacter } from "./modifyCharacter";
 
-export const createModChar = (char: CharacterPc): CharToModify => {
+export const createModChar = (char: CharacterPc, items?: ItemsList): CharToModify => {
     let modChar: CharToModify = {
-        abilitys: emptyAbilitys,
-        size: emptySize,
-        // race: { hD: 0, numHD: 0},
-        bab: 0,
-        adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
-        classesLv: 0,
-        attackRoll: { mono: [], target: [], composed: [] },
-        damageBonus: { mono: [], target: [], composed: [] },
-        specialAttacks: [],
-        initiative: 0,
-        baseSave: { fortitude: 0, reflex: 0, will: 0 },
-        savingThrow: [],
-        listHitDices: [],
-        armor: { mono: [], target: [], composed: [] },
-        inventory: emptyInventory,
-        attacks: emptyAttacks,
-        skills: { mono: [], target: [] },
-        skillsList: [],
-        skillsPointToSpent: 0,
-        feats: { feats: [], classFeats: [], pcFeats: {fromLevel: [], fromClass: []} },
-        speed: {
-          foot: 0,
-          fly: 0,
-          climb: 0,
-          swim: 0,
-          special: ""
-        },
-        specialAbilities: [],
-        spellsPerDay: [],
-        spellsKnown: [],
-        books: []
-      };
+      abilitys: emptyAbilitys,
+      size: emptySize,
+      // race: { hD: 0, numHD: 0},
+      bab: 0,
+      adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
+      classesLv: 0,
+      attackRoll: { mono: [], target: [], composed: [] },
+      damageBonus: { mono: [], target: [], composed: [] },
+      specialAttacks: [],
+      initiative: 0,
+      baseSave: { fortitude: 0, reflex: 0, will: 0 },
+      savingThrow: [],
+      listHitDices: [],
+      armor: { mono: [], target: [], composed: [] },
+      inventory: emptyInventory,
+      attacks: emptyAttacks,
+      skills: { mono: [], target: [] },
+      skillsList: [],
+      skillsPointToSpent: 0,
+      feats: { feats: [], classFeats: [], pcFeats: { fromLevel: [], fromClass: [] } },
+      speed: {
+        foot: 0,
+        fly: 0,
+        climb: 0,
+        swim: 0,
+        special: ""
+      },
+      specialAbilities: [],
+      spellsPerDay: [],
+      spellsKnown: [],
+      books: [],
+      proficency: {
+        type: [],
+        specific: []
+      }
+    };
       let modif: Prerequisite[] = [];
     
       // archetype
@@ -88,7 +92,7 @@ export const createModChar = (char: CharacterPc): CharToModify => {
             }
           });
       });
-      modChar = modifyCharacter(char, modif);
+      modChar = modifyCharacter(char, modif, items);
     
       modChar.attacks = modifyAttacks(modChar);
       modChar.displayAttType = createAttackDisplay(modChar);

@@ -32,7 +32,6 @@ import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 @NoArgsConstructor
 public class PrerequisiteDTO {
 
-  public int id;
   public AbilitysDTO abilitys;
   public FeatsTypeEnum[] featType;
   public List<PrerequisiteFeatsDTO> feats;
@@ -45,15 +44,14 @@ public class PrerequisiteDTO {
   public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
   public ArmorClassDTO armorClass;
-  public ArmorsEnum[] armorType;
-  public WeaponCategoriesEnum[] weaponType;
+  public ArmorsEnum armorType;
+  public WeaponCategoriesEnum weaponType;
   public List<SchoolDTO> schools;
   public ClassPcLevel[] classPc;
   public List<ItemsDTO> items;
   public String text;
 
   public PrerequisiteDTO(Prerequisite pre) {
-    this.id = pre.getId();
     this.abilitys =
       pre.getAbilitys() != null
         ? MapperAbilitysToDTO.toAbilityDTO(pre.getAbilitys())
@@ -65,8 +63,10 @@ public class PrerequisiteDTO {
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
     this.bab = pre.getBab();
-    this.damageBonus = pre.getDamageBonus() != null?
-     MapperAttackRoll.toDamageBonusDTO(pre.getDamageBonus()) : null;
+    this.damageBonus =
+      pre.getDamageBonus() != null
+        ? MapperAttackRoll.toDamageBonusDTO(pre.getDamageBonus())
+        : null;
     this.attackRoll =
       pre.getAttackRoll() != null
         ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())

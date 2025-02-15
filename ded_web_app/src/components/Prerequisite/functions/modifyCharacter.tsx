@@ -4,9 +4,7 @@ import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
-import {
-  AttackElement
-} from "../../Attack/function";
+import { AttackElement } from "../../Attack/function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
@@ -15,8 +13,11 @@ import {
   Book,
   CharacterPc,
   Inventory,
+  Item,
+  ItemsList,
   SpecialAttacks
 } from "../../interfaces";
+import { findAllProficency } from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
 import { CountLevelFromClass } from "../../Level/Functions";
 import { adjClass } from "../../Race/AdjClass";
@@ -73,7 +74,7 @@ export type SkillsElement = {
 export type FeatsFromChar = {
   feats: Feat[];
   classFeats: ClassFeats[];
-  pcFeats: {fromLevel: FeatPc[], fromClass: FeatPc[]};
+  pcFeats: { fromLevel: FeatPc[]; fromClass: FeatPc[] };
 };
 
 export type CharToModify = {
@@ -92,6 +93,7 @@ export type CharToModify = {
   armor: ArmorClassElement;
   inventory: Inventory;
   attacks: Attacks;
+  proficency: { type: string[]; specific: Item[] };
   displayAttType?: AttackElement;
   skills: SkillsElement;
   skillsList: SkillsInList[];
@@ -152,16 +154,19 @@ export const addBonusSpells = (bnsAb: number, spells: number[]): number[] => {
 export const checkKnownSpells = (bnsAb: number, spells: number[]): number[] => {
   if (canCastSpell(bnsAb)) {
     return spells.map((tb, index) => {
-      if(bnsAb - 10 > index) {
+      if (bnsAb - 10 > index) {
         return tb;
-      } return -3;
-    })
-  } return [-3]
+      }
+      return -3;
+    });
+  }
+  return [-3];
 };
 
 export const modifyCharacter = (
   char: CharacterPc,
-  prer: Prerequisite[]
+  prer: Prerequisite[],
+  items?: ItemsList
 ): CharToModify => {
   const abilitys: Abilitys[] = findAbilitysPrerequisite(prer);
   const adjBab: number = Math.floor(
@@ -179,8 +184,7 @@ export const modifyCharacter = (
       ? [
           {
             classe: cl.classCharacter.className,
-            spells: 
-            addBonusSpells(
+            spells: addBonusSpells(
               findAbility(char.abilitys, cl.classCharacter.spellBonus),
               cl.classCharacter.spellsPerDay.spellsInLevel
                 .find((sp) => sp.level === cl.level)
@@ -210,10 +214,17 @@ export const modifyCharacter = (
       : []
   );
 
-  const maxSkillPnts: number = 
-    (FindAllAdjLevel(char) * adjClass.skillPoints) + 
+  const maxSkillPnts: number =
+    FindAllAdjLevel(char) * adjClass.skillPoints +
     char.classPcList.reduce(
-      (tot, cl) => tot + (cl.level * cl.classCharacter.skillPoints), 0)
+      (tot, cl) => tot + cl.level * cl.classCharacter.skillPoints,
+      0
+    );
+
+  const allFeats = groupAllFeats(char);
+  const allProficency: { type: string[]; specific: Item[] } = items
+    ? findAllProficency(allFeats, items)
+    : { type: [], specific: [] };
 
   const newChar: CharToModify = {
     abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
@@ -238,11 +249,12 @@ export const modifyCharacter = (
     armor: findArmorPrerequisite(prer),
     inventory: modifyInventory(char),
     attacks: char.attacks,
+    proficency: allProficency,
     skills: findSkillsPrerequisite(prer),
     skillsList: createSkillsList(char),
     skillsPointToSpent: maxSkillPnts,
     speed: findSpeedPrerequisite(prer),
-    feats: groupAllFeats(char),
+    feats: allFeats,
     specialAbilities: getAllSpecialAbilities(char),
     // spellsPerDay: bonusDaySpells,
     spellsPerDay: daySpells,

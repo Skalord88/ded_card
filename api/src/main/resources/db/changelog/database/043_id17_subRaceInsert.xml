@@ -468,7 +468,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="155002" />
             <column name="text" value="Lightfoot Halfling races modifiers" />
-            <column name="weapon_type" value="[&quot;THROWN&quot;]" />
+            <column name="weapon_type" value="THROWN" />
             <column name="attack_roll"
                 value="{ &quot;target&quot; : 
                 [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ] ,

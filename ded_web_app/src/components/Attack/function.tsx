@@ -208,15 +208,16 @@ export const getMalus = (
   return 0;
 };
 
-export const isType = (list: string[], find: string[]): boolean => {
-  return list.some((l) => find.includes(l));
+export const isType = (list: string[], find: string | undefined): boolean => {
+  if (!find) return false
+  return list.includes(find);
 };
 
 export const getBonusComposed = (prer: Prerequisite[], w: Weapon): number => {
   const bonusType: number = prer.reduce(
     (tot, p) =>
       tot +
-      (isType(p.weaponType ?? [], w.type)
+      (isType(w.type, p.weaponType)
         ?  Number(p.attackRoll?.bonus) ?? 0
         : 0),
     0
@@ -235,7 +236,7 @@ export const getDmgComposed = (prer: Prerequisite[], w: Weapon): number => {
   const bonusType: number = prer.reduce(
     (tot, p) =>
       tot +
-      (isType(p.weaponType ?? [], w.type)
+      (isType(w.type, p.weaponType)
         ?  Number(p.damageBonus?.bonus) ?? 0
         : 0),
     0

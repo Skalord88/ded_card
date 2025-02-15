@@ -5,7 +5,7 @@
 
     <changeSet id="21" author="oscar">
         <createTable tableName="feats_pc">
-            <column name="id" type="INT" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="character_card_id" type="int">

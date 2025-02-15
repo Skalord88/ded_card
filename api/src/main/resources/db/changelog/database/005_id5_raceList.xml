@@ -57,10 +57,10 @@
       <column name="armor_class" type="jsonb">
         <constraints nullable="true" />
       </column>
-      <column name="armor_type" type="jsonb">
+      <column name="armor_type" type="VARCHAR(225)">
         <constraints nullable="true" />
       </column>
-      <column name="weapon_type" type="jsonb">
+      <column name="weapon_type" type="VARCHAR(225)">
         <constraints nullable="true" />
       </column>
       <column name="class_pc" type="jsonb">

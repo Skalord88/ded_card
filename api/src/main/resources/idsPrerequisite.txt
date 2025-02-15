@@ -86,11 +86,13 @@
 
         <!-- toSelect 2000 -->
         Weapon Focus 2001
+        Shield Proficiency [General] 2002
         <!-- Exotic Weapon Proficiency 2004 -->
         <!-- Greater Spell Focus 18 -->
         <!-- Improved Shield Bash 2006 -->
         <!-- Martial Weapon Proficiency 2007 -->
         <!-- Simple Weapon Proficiency 2005 -->
+        
         
 
         <!-- class_feats -->
@@ -121,6 +123,10 @@
         <!-- Armor Proficiency (Heavy) 5001 -->
         <!-- Armor Proficiency (Light) 5002 -->
         <!-- Armor Proficiency (Medium) 5003 -->
+        Shields ex tower 5004
+        Shields tower 5005
+        <!-- Simple Weapon Proficiency 5006 -->
+        <!-- Martial Weapon Proficiency 5007 -->
 
         <!-- Pg gia' fatti 10000-->
         <!-- Puli -->

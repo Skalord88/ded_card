@@ -117,7 +117,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="5001" />
-      <column name="armor_type" value="[&quot;HEAVY_ARMOR&quot;]" />
+      <column name="armor_type" value="HEAVY_ARMOR" />
       <column name="text" value="Armor Proficiency (Heavy)" />
     </insert>
 
@@ -138,7 +138,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="5002" />
-      <column name="armor_type" value="[&quot;LIGHT_ARMOR&quot;]" />
+      <column name="armor_type" value="LIGHT_ARMOR" />
       <column name="text" value="Armor Proficiency (Light)" />
     </insert>
 
@@ -170,7 +170,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="5003" />
-      <column name="armor_type" value="[&quot;MEDIUM_ARMOR&quot;]" />
+      <column name="armor_type" value="MEDIUM_ARMOR" />
       <column name="text" value="Armor Proficiency (Medium)" />
     </insert>
 
@@ -654,13 +654,13 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="2004" />
-      <column name="weapon_type" value="[ &quot;EXOTIC&quot; ]" />
+      <column name="weapon_type" value="EXOTIC" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="31" />
       <column name="feat_name" value="Exotic Weapon Proficiency [General]" />
-      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
+      <column name="feat_type" value="[ &quot;FIGHTER&quot; ]" />
       <column name="prerequisite_list_id" value="13" />
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"
@@ -1279,32 +1279,32 @@
     <!-- Improved Shield Bash [General] selected -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="2006" />
+      <column name="id" value="2002" />
       <column name="text" value="Shield Proficiency." />
     </insert>
 
     <insert tableName="prerequisite_item">
-      <column name="prerequisite_id" value="2006" />
+      <column name="prerequisite_id" value="2002" />
       <column name="item_id" value="95" />
     </insert>
 
     <insert tableName="prerequisite_item">
-      <column name="prerequisite_id" value="2006" />
+      <column name="prerequisite_id" value="2002" />
       <column name="item_id" value="96" />
     </insert>
 
     <insert tableName="prerequisite_item">
-      <column name="prerequisite_id" value="2006" />
+      <column name="prerequisite_id" value="2002" />
       <column name="item_id" value="97" />
     </insert>
 
     <insert tableName="prerequisite_item">
-      <column name="prerequisite_id" value="2006" />
+      <column name="prerequisite_id" value="2002" />
       <column name="item_id" value="98" />
     </insert>
 
     <insert tableName="prerequisite_item">
-      <column name="prerequisite_id" value="2006" />
+      <column name="prerequisite_id" value="2002" />
       <column name="item_id" value="99" />
     </insert>
 
@@ -1313,7 +1313,7 @@
       <column name="feat_name" value="Improved Shield Bash [General]" />
       <!-- <column name="prerequisites" value="Shield Proficiency." /> -->
       <column name="prerequisite_list_id" value="31" />
-      <column name="to_select_id" value="2006" />
+      <column name="to_select_id" value="2002" />
       <column name="benefit"
         value="When you perform a shield bash, you may still apply the shield,s shield bonus to your AC." />
       <column name="normal"
@@ -1599,7 +1599,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="2007" />
       <column name="weapon_type"
-        value="[&quot;MARTIAL&quot;]" />
+        value="MARTIAL" />
       <column name="text" value="Martial Weapon Proficiency." />
     </insert>
 
@@ -1612,12 +1612,6 @@
       <column name="normal"
         value="When using a weapon with which you are not proficient, you take a -4 penalty on attack rolls." />
       <column name="to_select_id" value="2007" />
-      <!-- <column name="modifiers"
-        value="[{
-          &quot;modifier&quot; : &quot;PROFICENCY&quot;,
-          &quot;bonus&quot; : 0,
-          &quot;targets&quot; : [&quot;SELECTED&quot;]
-        }]" /> -->
       <column name="special"
         value="Barbarians, fighters, paladins, and rangers are proficient with all martial weapons. They need not select this feat. You can gain Martial Weapon Proficiency multiple times. Each time you take the feat, it applies to a new type of weapon. A cleric who chooses the War domain automatically gains the Martial Weapon Proficiency feat related to his deity’s favored weapon as a bonus feat, if the weapon is a martial one. He need not select it." />
     </insert>
@@ -2010,10 +2004,19 @@
       <column name="special" value="null" />
     </insert>
 
+    <!-- Shield Proficiency [General] toSelect -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="2006" />
+      <column name="armor_type" value="SHIELD" />
+      <column name="text"
+        value="You can use a shield and take only the standard penalties." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="86" />
       <column name="feat_name" value="Shield Proficiency [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
+      <column name="to_select_id" value="2006" />
       <column name="benefit" value="You can use a shield and take only the standard penalties." />
       <column name="normal"
         value="When you are using a shield with which you are not proficient, you take the shield,s armor check penalty on attack rolls and on all skill checks that involve moving, including Ride checks." />
@@ -2075,7 +2078,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="2005" />
       <column name="weapon_type"
-        value="[&quot;SIMPLE&quot;]" />
+        value="SIMPLE" />
       <column name="text" value="Simple Weapon Proficiency." />
     </insert>
 
@@ -2385,7 +2388,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="2001" />
-      <column name="weapon_type" value="[ &quot;PROFICENCY&quot; ]" />
+      <column name="weapon_type" value="PROFICENCY" />
       <column name="text" value="Proficiency with selected weapon." />
     </insert>
 

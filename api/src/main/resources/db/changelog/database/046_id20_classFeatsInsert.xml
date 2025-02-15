@@ -5,6 +5,58 @@
 
     <changeSet id="20" author="oscar">
 
+        <!-- Shields ex tower / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5004"/>
+            <column name="text" value="Shields ex tower"/>
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004"/>
+            <column name="item_id" value="95"/>
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004"/>
+            <column name="item_id" value="96"/>
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004"/>
+            <column name="item_id" value="97"/>
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004"/>
+            <column name="item_id" value="98"/>
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004"/>
+            <column name="item_id" value="99"/>
+        </insert>
+
+        <!-- Shields tower / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5005"/>
+            <column name="text" value="Shields tower proficency"/>
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5005"/>
+            <column name="item_id" value="100"/>
+        </insert>
+
+        <!-- Simple Weapon Proficiency / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5006"/>
+            <column name="weapon_type" value="SIMPLE"/>
+            <column name="text" value="Proficiency in all simple weapons"/>
+        </insert>
+
+        <!-- Martial Weapon Proficiency / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5007"/>
+            <column name="weapon_type" value="MARTIAL"/>
+            <column name="text" value="Proficiency in all martial weapons"/>
+        </insert>
+
         <!-- barbarian -->
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -20,19 +72,19 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected_id" value="65" />
+            <column name="selected_id" value="5004" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="89" /> <!-- Simple -->
-            <column name="selected_id" value="64" />
+            <column name="selected_id" value="5006" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="1" />
             <column name="feats_id" value="66" /> <!-- Martial -->
-            <column name="selected_id" value="66" />
+            <column name="selected_id" value="5007" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -175,13 +227,13 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected_id" value="65" />
+            <column name="selected_id" value="5004" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="2" />
             <column name="feats_id" value="89" /> <!-- Simple -->
-            <column name="selected_id" value="64" />
+            <column name="selected_id" value="5006" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -287,13 +339,13 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="3" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected_id" value="65" />
+            <column name="selected_id" value="5004" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="3" />
             <column name="feats_id" value="89" /> <!-- Simple -->
-            <column name="selected_id" value="64" />
+            <column name="selected_id" value="5006" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -361,7 +413,7 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="4" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected_id" value="65" />
+            <column name="selected_id" value="5004" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
@@ -502,25 +554,25 @@
             <column name="level" value="1" />
             <column name="class_character_id" value="5" />
             <column name="feats_id" value="86" /> <!-- Shields ex tower -->
-            <column name="selected_id" value="65" />
+            <column name="selected_id" value="5004" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="5" />
             <column name="feats_id" value="101" /> <!-- Shield tower -->
-            <column name="selected_id" value="71" />
+            <column name="selected_id" value="5005" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="5" />
             <column name="feats_id" value="89" /> <!-- Simple -->
-            <column name="selected_id" value="64" />
+            <column name="selected_id" value="5006" />
         </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="5" /> <!-- Martial -->
             <column name="feats_id" value="66" />
-            <column name="selected_id" value="66" />
+            <column name="selected_id" value="5007" />
         </insert>
 
         <!-- Fighter -->
@@ -771,6 +823,18 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="7" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="7" /> <!-- Martial -->
+            <column name="feats_id" value="66" />
+            <column name="selected_id" value="5007" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="7" />
             <column name="feats_id" value="7013" /> <!-- Associates -->
         </insert>
         <insert tableName="class_feats">
@@ -878,6 +942,18 @@
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="8" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="8" /> <!-- Martial -->
+            <column name="feats_id" value="66" />
+            <column name="selected_id" value="5007" />
+        </insert>
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="8" />
             <column name="feats_id" value="8001" /> <!-- Favored Enemy -->
         </insert>
         <insert tableName="class_feats">
@@ -968,6 +1044,12 @@
         </insert>
 
         <!-- Rogue -->
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="9" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+        </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="9" />
@@ -1090,6 +1172,12 @@
         </insert>
 
         <!-- Sorcerer -->
+        <insert tableName="class_feats">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="10" />
+            <column name="feats_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+        </insert>
         <insert tableName="class_feats">
             <column name="level" value="1" />
             <column name="class_character_id" value="10" />
