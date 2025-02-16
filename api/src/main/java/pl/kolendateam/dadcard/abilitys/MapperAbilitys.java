@@ -3,7 +3,7 @@ package pl.kolendateam.dadcard.abilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 
-public class MapperAbilitysToDTO {
+public class MapperAbilitys {
 
   public static AbilitysDTO toAbilityDTO(Abilitys abilitys) {
     if (abilitys != null) {
@@ -17,5 +17,12 @@ public class MapperAbilitysToDTO {
       );
     }
     return new AbilitysDTO();
+  }
+
+  public static Abilitys toAbility(AbilitysDTO abilitysDTO) {
+    if (abilitysDTO != null) {
+      return new Abilitys(abilitysDTO);
+    }
+    return new Abilitys();
   }
 }

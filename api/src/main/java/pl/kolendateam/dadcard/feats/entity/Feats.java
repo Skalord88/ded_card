@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 
 @NoArgsConstructor
 @Getter
@@ -69,5 +70,9 @@ public class Feats implements Serializable {
 
   public Feats(int idDTO) {
     this.id = idDTO;
+  }
+
+  public Feats(PrerequisiteFeatsDTO featDTO) {
+    this.id = featDTO.id;
   }
 }

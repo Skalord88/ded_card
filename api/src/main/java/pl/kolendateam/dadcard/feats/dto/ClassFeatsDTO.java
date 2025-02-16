@@ -15,6 +15,7 @@ import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 @Setter
 public class ClassFeatsDTO {
 
+  public int id;
   public int level;
   public FeatsDTO feat;
   public int classId;
@@ -23,6 +24,7 @@ public class ClassFeatsDTO {
   public PrerequisiteDTO toSelect;
 
   public ClassFeatsDTO(ClassFeats classFeat) {
+    this.id = classFeat.getId();
     this.level = classFeat.getLevel();
     this.feat =
       classFeat.getFeats() != null

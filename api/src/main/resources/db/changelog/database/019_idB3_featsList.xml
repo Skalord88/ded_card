@@ -1661,17 +1661,6 @@
       <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
-    <!-- <insert tableName="prerequisite_skill">
-            <column name="id" value="1" />
-            <column name="skill_id" value="22" />
-            <column name="rank" value="1" />
-        </insert> -->
-
-    <!-- <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="43" />
-            <column name="prerequisite_skill_id" value="1" />
-        </insert> -->
-
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="39" />
       <column name="feat_id" value="70" />

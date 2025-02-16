@@ -13,7 +13,7 @@ import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
-public class MapperSkillToDTO {
+public class MapperSkill {
 
   public static SkillDTO toSkillDTO(Skill skill) {
     return skill != null ? new SkillDTO(skill) : null;
@@ -119,5 +119,17 @@ public class MapperSkillToDTO {
     }
 
     return listSkillDTO;
+  }
+
+  public static List<PrerequisiteSkills> toPrerequisiteSkillsStudyList(
+    List<PrerequisiteSkillDTO> skillStudyDTO
+  ) {
+    List<PrerequisiteSkills> listOfSkills = new ArrayList<>();
+    if (skillStudyDTO != null) {
+      skillStudyDTO.forEach(skillDTO -> {
+        listOfSkills.add(new PrerequisiteSkills(skillDTO));
+      });
+    }
+    return listOfSkills;
   }
 }

@@ -231,10 +231,26 @@ public class Character implements Serializable {
           }
         }
         if (!exist) {
-          existing = new FeatsPc(id, fDTO.level, fDTO.feat);
+          existing = new FeatsPc(id, fDTO.level, fDTO.feat, fDTO.selected);
         }
+        newList.add(existing);
       }
-      newList.add(existing);
+      if (fDTO.typeOfFeatsPcDTO() == 2) {
+        for (int i = 0; i < this.featsList.size(); i++) {
+          if (
+            this.featsList.get(i).getFeat().getId() == fDTO.feat.id &&
+            this.featsList.get(i).getClassFeat().getId() == fDTO.classFeat.id &&
+            this.featsList.get(i).getLevel() == fDTO.level
+          ) {
+            existing = this.featsList.get(i);
+            exist = true;
+          }
+        }
+        if (!exist) {
+          existing = new FeatsPc(id, fDTO);
+        }
+        newList.add(existing);
+      }
     });
 
     this.featsList.clear();

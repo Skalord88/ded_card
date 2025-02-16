@@ -16,6 +16,7 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
+import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 
 @Getter
 @Setter
@@ -41,4 +42,11 @@ public class PrerequisiteSkills implements Serializable {
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
+
+  public PrerequisiteSkills(PrerequisiteSkillDTO skillDTO) {
+    this.skill = skillDTO.skill.id != 0 ? new Skill(skillDTO.skill.id) : null;
+    this.study = skillDTO.study.id != 0 ? new Study(skillDTO.study.id) : null;
+    this.rank = skillDTO.rank;
+    this.target = skillDTO.target != null ? skillDTO.target : null;
+  }
 }

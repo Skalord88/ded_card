@@ -1,5 +1,4 @@
-import { ListOfToSelect, NewFeatPc } from "../../pages/Feats";
-import { addToDrop, itemInDrop } from "../functions";
+import { itemInDrop } from "../functions";
 import { CharacterPc, Item, Weapon } from "../interfaces";
 import { FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
 import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";

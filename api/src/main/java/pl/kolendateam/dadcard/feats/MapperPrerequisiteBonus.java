@@ -31,4 +31,13 @@ public class MapperPrerequisiteBonus {
     if (speed == null) return null;
     return new SpeedDTO(speed);
   }
+
+  public static Prerequisite toPrerequisite(PrerequisiteDTO preDTO) {
+    return new Prerequisite(preDTO);
+  }
+
+  public static Speed toSpeed(SpeedDTO speed) {
+    if (speed == null) return null;
+    return new Speed(speed);
+  }
 }

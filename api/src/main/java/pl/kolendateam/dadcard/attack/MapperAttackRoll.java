@@ -16,4 +16,14 @@ public class MapperAttackRoll {
     if (dmg == null) return null;
     return new DamageBonusDTO(dmg);
   }
+
+  public static AttackRoll toAttackRoll(AttackRollDTO attackDTO) {
+    if (attackDTO == null) return null;
+    return new AttackRoll(attackDTO);
+  }
+
+  public static DamageBonus toDamageBonus(DamageBonusDTO damageBonus) {
+    if (damageBonus == null) return null;
+    return new DamageBonus(damageBonus);
+  }
 }

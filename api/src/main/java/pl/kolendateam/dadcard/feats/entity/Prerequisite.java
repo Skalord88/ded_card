@@ -21,18 +21,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.armorClass.MapperArmorClass;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
+import pl.kolendateam.dadcard.attack.MapperAttackRoll;
+import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.entity.AttackRoll;
 import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
+import pl.kolendateam.dadcard.feats.MapperFeats;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.race.entity.Speed;
+import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.entity.SavingThrow;
+import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.entity.PrerequisiteSkills;
+import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -126,4 +137,56 @@ public class Prerequisite implements Serializable {
   Domains domain;
 
   String text;
+
+  public Prerequisite(PrerequisiteDTO preDTO) {
+    this.abilitys =
+      preDTO.abilitys != null
+        ? MapperAbilitys.toAbility(preDTO.abilitys)
+        : null;
+    this.featType = preDTO.featType != null ? preDTO.featType : null;
+    this.feats =
+      preDTO.feats != null ? MapperFeats.toFeats(preDTO.feats) : null;
+    this.caster = preDTO.caster != null ? preDTO.caster : null;
+    this.bab = preDTO.bab != null ? preDTO.bab : null;
+    this.attackRoll =
+      preDTO.attackRoll != null
+        ? MapperAttackRoll.toAttackRoll(preDTO.attackRoll)
+        : null;
+    this.initiative = preDTO.initiative != null ? preDTO.initiative : null;
+    this.speed =
+      preDTO.speed != null
+        ? MapperPrerequisiteBonus.toSpeed(preDTO.speed)
+        : null;
+    this.savingThrow =
+      preDTO.savingThrow != null
+        ? MapperSavingThrow.toSavingThrow(preDTO.savingThrow)
+        : null;
+    this.specialAttacks =
+      preDTO.specialAttacks != null
+        ? MapperSpecialAttacks.toSpecialAttacks(preDTO.specialAttacks)
+        : null;
+    this.prerequisiteSkillsStudy =
+      preDTO.skillStudy != null
+        ? MapperSkill.toPrerequisiteSkillsStudyList(preDTO.skillStudy)
+        : null;
+    this.armorClass =
+      preDTO.armorClass != null
+        ? MapperArmorClass.toArmorClass(preDTO.armorClass)
+        : null;
+    this.armorType = preDTO.armorType != null ? preDTO.armorType : null;
+    this.weaponType = preDTO.weaponType != null ? preDTO.weaponType : null;
+    this.schools =
+      preDTO.schools != null ? MapperSpells.toSchoolList(preDTO.schools) : null;
+    this.classPc = preDTO.classPc != null ? preDTO.classPc : null;
+    this.damageBonus =
+      preDTO.damageBonus != null
+        ? MapperAttackRoll.toDamageBonus(preDTO.damageBonus)
+        : null;
+    this.items =
+      preDTO.items != null
+        ? MapperItems.toItemsListFromDTOList(preDTO.items)
+        : null;
+    this.domain = preDTO != null ? preDTO.domain : null;
+    this.text = preDTO.text != null ? preDTO.text : null;
+  }
 }

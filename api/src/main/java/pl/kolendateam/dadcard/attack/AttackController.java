@@ -97,7 +97,7 @@ public class AttackController {
 //     (int) character1.getBab() +
 //     ab.bonusStreght(ab) +
 //     character1.getSize().getBonus();
-//   ArmorClassDTO armorClassTotal2 = MapperArmorClassDTO.toArmorClassDTO(
+//   ArmorClassDTO armorClassTotal2 = MapperArmorClass.toArmorClassDTO(
 //     character2.getArmorClass(),
 //     character2.getAbilitys(),
 //     character2.getSize()

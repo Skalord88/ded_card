@@ -10,4 +10,10 @@ public class MapperSpecialAttacks {
   ) {
     return new SpecialAttacksDTO(specialAttacks);
   }
+
+  public static SpecialAttacks toSpecialAttacks(
+    SpecialAttacksDTO specialAttacks
+  ) {
+    return new SpecialAttacks(specialAttacks);
+  }
 }

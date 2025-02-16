@@ -101,4 +101,15 @@ public class MapperFeats {
     });
     return featsPcDTO;
   }
+
+  public static List<Feats> toFeats(List<PrerequisiteFeatsDTO> feats) {
+    List<Feats> featsList = new ArrayList<>();
+    if (feats != null) feats.forEach(featDTO -> {
+      if (featDTO != null) {
+        Feats feat = new Feats(featDTO);
+        featsList.add(feat);
+      }
+    });
+    return featsList;
+  }
 }

@@ -2,7 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { Feat } from "../components/Feats/Interface/FeatInterface";
+import {
+  ClassFeats,
+  Feat,
+  FeatPc
+} from "../components/Feats/Interface/FeatInterface";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { CharacterPc, Item, Weapon } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
@@ -10,26 +14,28 @@ import { CharToModify } from "../components/Prerequisite/functions/modifyCharact
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { urlChar, urlFeats, urlItems } from "../components/url";
-import { emptyFeat, emptyPrerequisite } from "../components/variables";
-import React from "react";
 import {
-  findPrerequisiteFeatsInItemDrop
-} from "../components/Feats/function";
+  emptyFeat,
+  emptyFeatPc,
+  emptyPrerequisite
+} from "../components/variables";
+import React from "react";
+import { findPrerequisiteFeatsInItemDrop } from "../components/Feats/function";
 
-export type NewFeatPc = {
-  classe?: { id: number; text: string };
-  feat: Feat;
-  level: number;
-  selected?: Prerequisite;
-  toSelect?: Prerequisite;
-};
+// export type FeatPc = {
+//   classe?: { id: number; text: string };
+//   feat: Feat;
+//   level: number;
+//   selected?: Prerequisite;
+//   toSelect?: Prerequisite;
+// };
 
-export const emptyNewFeatPc: NewFeatPc = {
-  feat: emptyFeat,
-  level: 0,
-  selected: emptyPrerequisite,
-  toSelect: emptyPrerequisite
-};
+// export const emptyFeatPc: FeatPc = {
+//   feat: emptyFeat,
+//   level: 0,
+//   selected: emptyPrerequisite,
+//   toSelect: emptyPrerequisite
+// };
 
 export type FiltroPrerequisite = {
   featsType: itemInDrop[];
@@ -45,8 +51,8 @@ export function Feats() {
   const [char, setChar] = useState<CharacterPc>();
   const [itemList, setItemList] = useState<ListOfToSelect>();
   const [filtroList, setFiltroList] = useState<FiltroPrerequisite>();
-  const [featsToAddList, setFeatsToAddList] = useState<NewFeatPc[]>([]);
-  const [featsPcToSelectList, setFeatsPcToAddList] = useState<NewFeatPc[]>([]);
+  const [featsToAddList, setFeatsToAddList] = useState<FeatPc[]>([]);
+  const [featsPcToSelectList, setFeatsPcToAddList] = useState<FeatPc[]>([]);
   const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
@@ -117,14 +123,13 @@ export function Feats() {
           Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) +
           1;
 
-        let featsFromLevel: NewFeatPc[] = [];
+        let featsFromLevel: FeatPc[] = [];
 
         for (let i = 0; i < quantiFeats; i++) {
           featsFromLevel.push({
             feat: emptyFeat,
             level: i === 0 ? 1 : i * 3,
-            selected: emptyPrerequisite,
-            toSelect: emptyPrerequisite
+            selected: emptyPrerequisite
           });
         }
 
@@ -132,8 +137,8 @@ export function Feats() {
           featsFromLevel[i] = {
             ...featsFromLevel[i],
             feat: newModChar.feats.pcFeats.fromLevel[i].feat,
-            selected: newModChar.feats.pcFeats.fromLevel[i].selected,
-            toSelect: newModChar.feats.pcFeats.fromLevel[i].feat.toSelect
+            selected: newModChar.feats.pcFeats.fromLevel[i].selected
+            // toSelect: newModChar.feats.pcFeats.fromLevel[i].feat.toSelect
           };
         }
 
@@ -141,11 +146,11 @@ export function Feats() {
           setFeatsToAddList(featsFromLevel);
         }
 
-        let classPcBonusFeats: NewFeatPc[] = newModChar.feats.classFeats
+        let classPcBonusFeats: FeatPc[] = newModChar.feats.classFeats
           .filter(
-            (c: NewFeatPc) =>
+            (c: FeatPc) =>
               (c.feat.toSelect?.feats ||
-                c.toSelect?.feats ||
+                // c.toSelect?.feats ||
                 c.feat.toSelect?.weaponType) &&
               !c.selected &&
               !c.feat.selected
@@ -179,13 +184,13 @@ export function Feats() {
     fetchData();
   }, []);
 
-  const newFeatsToAddList = (f: NewFeatPc, i: number) => {
+  const newFeatsToAddList = (f: FeatPc, i: number) => {
     const updatedList = [...featsToAddList];
     updatedList[i] = f;
     setFeatsToAddList(updatedList);
   };
 
-  const newFeatsPcToAddList = (f: NewFeatPc, i: number) => {
+  const newFeatsPcToAddList = (f: FeatPc, i: number) => {
     if (featsPcToSelectList) {
       const updatedList = [...featsPcToSelectList];
       updatedList[i] = f;
@@ -194,18 +199,39 @@ export function Feats() {
   };
 
   const handleSubmit = () => {
-    let list: { level: number; feat: { id: number } }[] = featsToAddList
-      .filter((filt) => filt.feat.id !== 0)
-      .map((f, index) => {
+    const list: {
+      feat: { id: number };
+      level?: number;
+      classFeat?: { id?: number };
+      selected?: Prerequisite;
+    }[] = featsToAddList
+      .map((f) => {
         return {
+          feat: { id: f.feat.id },
           level: f.level,
-          feat: { id: f.feat.id }
+          selected: f.selected
         };
       });
 
-    axios.post(urlFeats + "/" + charId, list);
+    const listBonus: {
+      feat: { id: number };
+      level?: number;
+      classFeat?: { id?: number };
+      selected?: Prerequisite;
+    }[] = featsPcToSelectList
+      .map((f) => {
+        return {
+          feat: { id: f.feat.id },
+          level: f.classFeat?.level,
+          classFeat: { id: f.classFeat?.id },
+          selected: f.selected
+        };
+      });
+    console.log(list);
+    console.log(listBonus);
+    axios.post(urlFeats + "/" + charId, [list, listBonus]);
 
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -223,8 +249,9 @@ export function Feats() {
             {" / "}
             feats: {f.feat.id} {f.feat.featName}
             {" / "}
-            toSelect: {f.toSelect?.weaponType}
-            {f.toSelect?.armorType}{f.toSelect?.featType}
+            toSelect: {f.feat.toSelect?.weaponType}
+            {f.feat.toSelect?.armorType}
+            {f.feat.toSelect?.featType}
             {" / "}
             select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
             {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
@@ -234,12 +261,13 @@ export function Feats() {
       {featsPcToSelectList.map((f) => (
         <div>
           <p>
-          lv: {f.level}
+            lv: {f.level}
             {" / "}
             feats: {f.feat.id} {f.feat.featName}
             {" / "}
-            toSelect: {f.toSelect?.weaponType}
-            {f.toSelect?.armorType}{f.toSelect?.featType}
+            toSelect: {f.feat.toSelect?.weaponType}
+            {f.feat.toSelect?.armorType}
+            {f.feat.toSelect?.featType}
             {" / "}
             select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
             {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
@@ -305,6 +333,38 @@ export function Feats() {
               <p>to Inventory</p>
             </button>
           }
+          {featsToAddList.map((f) => (
+            <div>
+              <p>
+                lv: {f.level}
+                {" / "}
+                feats: {f.feat.id} {f.feat.featName}
+                {" / "}
+                toSelect: {f.feat.toSelect?.weaponType}
+                {f.feat.toSelect?.armorType}
+                {f.feat.toSelect?.featType}
+                {" / "}
+                select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
+                {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+              </p>
+            </div>
+          ))}
+          {featsPcToSelectList.map((f) => (
+            <div>
+              <p>
+                lv: {f.level}
+                {" / "}
+                feats: {f.feat.id} {f.feat.featName}
+                {" / "}
+                toSelect: {f.feat.toSelect?.weaponType}
+                {f.feat.toSelect?.armorType}
+                {f.feat.toSelect?.featType}
+                {" / "}
+                select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
+                {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </>
@@ -318,11 +378,11 @@ export type ListOfToSelect = {
 };
 
 export type FeatToAddInLevelProps = {
-  element: NewFeatPc;
+  element: FeatPc;
   filtro: FiltroPrerequisite;
   indexItem: number;
   items: ListOfToSelect;
-  onAction: (option: NewFeatPc, ind: number) => void;
+  onAction: (option: FeatPc, ind: number) => void;
 };
 
 export const itemsDropFromPrerequisite = (
@@ -354,14 +414,14 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   const featAll: ListOfToSelect = items;
 
   const [itemList, setItemList] = useState<itemInDrop[]>();
-  const [featsToAdd, setFeatsToAdd] = useState<NewFeatPc>(element);
+  const [featsToAdd, setFeatsToAdd] = useState<FeatPc>(element);
   const [filter, setFilter] = useState<string>("");
   const [toSelect, setToSelect] = useState<itemInDrop[]>([]);
 
   useEffect(() => {
     setToSelect(
-      featsToAdd.toSelect
-        ? itemsDropFromPrerequisite(featsToAdd.toSelect, filtro)
+      featsToAdd.feat.toSelect
+        ? itemsDropFromPrerequisite(featsToAdd.feat.toSelect, filtro)
         : []
     );
   }, [featsToAdd, filtro]);
@@ -412,7 +472,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   };
 
   const emptyTheFeat = () => {
-    setFeatsToAdd(emptyNewFeatPc);
+    setFeatsToAdd(emptyFeatPc);
     onAction(
       {
         feat: emptyFeat,
@@ -479,9 +539,9 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
 
 export type FeatPcToAddInLevelProps = {
   featIndex: number;
-  element: NewFeatPc;
+  element: FeatPc;
   filtro: FiltroPrerequisite;
-  onAction: (option: NewFeatPc, ind: number) => void;
+  onAction: (option: FeatPc, ind: number) => void;
 };
 
 export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
@@ -490,14 +550,14 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   filtro,
   onAction
 }) => {
-  const [featsToAdd, setFeatsToAdd] = useState<NewFeatPc>(element);
+  const [featsToAdd, setFeatsToAdd] = useState<FeatPc>(element);
   const [toSelect, setToSelect] = useState<itemInDrop[]>([]);
   const [toSelectInSelect, setToSelectInSelect] = useState<itemInDrop[]>([]);
 
   useEffect(() => {
     setToSelect(
-      featsToAdd.toSelect
-        ? itemsDropFromPrerequisite(featsToAdd.toSelect, filtro)
+      featsToAdd.feat.toSelect
+        ? itemsDropFromPrerequisite(featsToAdd.feat.toSelect, filtro)
         : []
     );
   }, [featsToAdd, filtro]);
@@ -505,12 +565,16 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   useEffect(() => {
     setToSelectInSelect(
       featsToAdd.selected?.feats && featsToAdd.selected?.feats?.length > 0
-        ? featsToAdd.toSelect?
-        featsToAdd.selected?.feats[0].toSelect ?
-        itemsDropFromPrerequisite(
-          featsToAdd.selected?.feats[0].toSelect, filtro) : []
+        ? featsToAdd.feat.toSelect
+          ? featsToAdd.selected?.feats[0].toSelect
+            ? itemsDropFromPrerequisite(
+                featsToAdd.selected?.feats[0].toSelect,
+                filtro
+              )
+            : []
+          : []
         : []
-        : []);
+    );
   }, [featsToAdd, filtro]);
 
   useEffect(() => {
@@ -541,7 +605,7 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
         <div style={{ flex: 2 }}>
           <p>
             {"lv."}
-            {featsToAdd.level} {featsToAdd.classe?.text}{" "}
+            {featsToAdd.level} {featsToAdd.classFeat?.className}{" "}
             {featsToAdd.feat.featName}
           </p>
         </div>
@@ -559,7 +623,10 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
           <p>
             {toSelectInSelect.length > 0 && (
               <div>
-                <DropdownComponent options={toSelectInSelect} onAction={addToSelect} />
+                <DropdownComponent
+                  options={toSelectInSelect}
+                  onAction={addToSelect}
+                />
               </div>
             )}
           </p>

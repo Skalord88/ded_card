@@ -8,7 +8,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.TypeEnum;
 import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
-import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
+import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.SkillDTO;
 import pl.kolendateam.dadcard.skills.dto.StudyDTO;
 import pl.kolendateam.dadcard.spells.MapperSpellsTableDTO;
@@ -45,11 +45,11 @@ public class ClassCharacterDTO {
     this.skillPoints = classCharacter.getSkillPoints();
     this.classSkill =
       classCharacter.getAvailableSkills() != null
-        ? MapperSkillToDTO.toSkillSetDTO(classCharacter.getAvailableSkills())
+        ? MapperSkill.toSkillSetDTO(classCharacter.getAvailableSkills())
         : null;
     this.classStudy =
       classCharacter.getAvailableStudy() != null
-        ? MapperSkillToDTO.toStudySetDTO(classCharacter.getAvailableStudy())
+        ? MapperSkill.toStudySetDTO(classCharacter.getAvailableStudy())
         : null;
     this.classFeats =
       classCharacter.getAvailableFeats() != null

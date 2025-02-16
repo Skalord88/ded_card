@@ -14,7 +14,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 
 @NoArgsConstructor
 @Getter
@@ -49,9 +52,22 @@ public class FeatsPc implements Serializable {
   )
   Prerequisite selected;
 
-  public FeatsPc(int charId, int levelDTO, FeatsDTO featDTO) {
+  public FeatsPc(
+    int charId,
+    int levelDTO,
+    FeatsDTO featDTO,
+    PrerequisiteDTO preDTO
+  ) {
     this.level = levelDTO;
     this.character = new Character(charId);
     this.feat = new Feats(featDTO.id);
+    this.selected = MapperPrerequisiteBonus.toPrerequisite(preDTO);
+  }
+
+  public FeatsPc(int charId, FeatsPcDTO fDTO) {
+    this.level = fDTO.level;
+    this.character = new Character(charId);
+    this.feat = new Feats(fDTO.feat.id);
+    this.selected = MapperPrerequisiteBonus.toPrerequisite(fDTO.selected);
   }
 }

@@ -1,6 +1,6 @@
 package pl.kolendateam.dadcard.spells.dto;
 
-import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
+import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
@@ -25,9 +25,9 @@ public class SpellsDTO {
   public SpellsDTO(Spells spell) {
     this.id = spell.getId();
     this.name = spell.getName();
-    this.school = MapperSpellsDTO.toSpellEnumArray(spell.getSchool());
-    this.level = MapperSpellsDTO.toSpellLevelArray(spell.getLevel());
-    this.components = MapperSpellsDTO.toSpellEnumArray(spell.getComponents());
+    this.school = MapperSpells.toSpellEnumArray(spell.getSchool());
+    this.level = MapperSpells.toSpellLevelArray(spell.getLevel());
+    this.components = MapperSpells.toSpellEnumArray(spell.getComponents());
     this.castingTime = spell.getCastingTime();
     this.range = spell.getRange();
     this.target = spell.getTarget();

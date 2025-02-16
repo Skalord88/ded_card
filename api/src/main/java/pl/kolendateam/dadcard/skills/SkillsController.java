@@ -47,7 +47,7 @@ public class SkillsController {
   @GetMapping("/list")
   public List<SkillDTO> getSkillsList() {
     List<Skill> listSkills = skillsRepository.findAll();
-    return MapperSkillToDTO.toSkillListDTO(listSkills);
+    return MapperSkill.toSkillListDTO(listSkills);
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })

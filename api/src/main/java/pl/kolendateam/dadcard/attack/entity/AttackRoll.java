@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.attack.dto.AttackRollDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
 @NoArgsConstructor
@@ -15,6 +16,11 @@ public class AttackRoll implements Serializable {
 
   ModifierEnum[] target;
   Integer bonus;
+
+  public AttackRoll(AttackRollDTO attackDTO) {
+    this.target = attackDTO.target != null ? attackDTO.target : null;
+    this.bonus = attackDTO.bonus != null ? attackDTO.bonus : null;
+  }
   // no target, add bonus to all attacks ex. size
   // for each target, pg receive bonus
   // target contain item, check weaponType and item[], add bonus

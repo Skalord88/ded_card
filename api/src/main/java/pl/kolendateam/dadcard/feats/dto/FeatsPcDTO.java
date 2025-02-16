@@ -15,9 +15,9 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 @Setter
 public class FeatsPcDTO implements Serializable {
 
+  public FeatsDTO feat;
   public int level;
   public ClassFeatsDTO classFeat;
-  public FeatsDTO feat;
   public PrerequisiteDTO selected;
 
   public FeatsPcDTO(FeatsPc featPc) {
@@ -35,15 +35,8 @@ public class FeatsPcDTO implements Serializable {
   }
 
   public int typeOfFeatsPcDTO() {
-    if (
-      this.feat != null && this.classFeat == null && this.selected == null
-    ) return 1;
-    if (
-      this.feat != null && this.classFeat != null && this.selected == null
-    ) return 2;
-    if (
-      this.feat != null && this.classFeat != null && this.selected != null
-    ) return 3;
+    if (this.feat != null && this.classFeat == null) return 1;
+    if (this.feat != null && this.classFeat != null) return 2;
 
     return -1;
   }

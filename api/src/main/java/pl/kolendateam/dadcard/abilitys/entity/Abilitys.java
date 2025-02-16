@@ -81,4 +81,13 @@ public class Abilitys implements Serializable {
       charisma >= abilitys.charisma
     );
   }
+
+  public Abilitys(AbilitysDTO abilitysDTO) {
+    this.strength = abilitysDTO.strength;
+    this.dexterity = abilitysDTO.dexterity;
+    this.constitution = abilitysDTO.constitution;
+    this.intelligence = abilitysDTO.intelligence;
+    this.wisdom = abilitysDTO.wisdom;
+    this.charisma = abilitysDTO.charisma;
+  }
 }

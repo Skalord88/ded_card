@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
+import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -20,9 +20,9 @@ import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
-import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
+import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
-import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
+import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 
 @AllArgsConstructor
@@ -64,13 +64,11 @@ public class CharacterDTO implements Serializable {
         : null;
     this.abilitys =
       character.getAbilitys() != null
-        ? MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys())
+        ? MapperAbilitys.toAbilityDTO(character.getAbilitys())
         : null;
     this.skillsCharacter =
       character.getSkillsCharacter() != null
-        ? MapperSkillToDTO.toSkillCharacterSetDTO(
-          character.getSkillsCharacter()
-        )
+        ? MapperSkill.toSkillCharacterSetDTO(character.getSkillsCharacter())
         : null;
     this.featsList =
       character.getFeatsList() != null
@@ -85,7 +83,7 @@ public class CharacterDTO implements Serializable {
     // this.magicKnown = character.getMagicKnown();
     this.books =
       character.getBooks() != null
-        ? MapperSpellsDTO.toBooksDTO(character.getBooks())
+        ? MapperSpells.toBooksDTO(character.getBooks())
         : null;
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();

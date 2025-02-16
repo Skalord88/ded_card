@@ -11,6 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,4 +26,8 @@ public class School implements Serializable {
 
   @Enumerated(EnumType.STRING)
   SpellsEnum school;
+
+  public School(SchoolDTO schoolDTO) {
+    this.id = schoolDTO.id;
+  }
 }

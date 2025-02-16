@@ -2,9 +2,9 @@ package pl.kolendateam.dadcard.feats.dto;
 
 import java.util.List;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
+import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
-import pl.kolendateam.dadcard.armorClass.MapperArmorClassDTO;
+import pl.kolendateam.dadcard.armorClass.MapperArmorClass;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.attack.MapperAttackRoll;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
@@ -21,12 +21,13 @@ import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
-import pl.kolendateam.dadcard.savingThrow.MapperSavingThrowToDTO;
+import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
-import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
+import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
-import pl.kolendateam.dadcard.spells.MapperSpellsDTO;
+import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
+import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 
 @NoArgsConstructor
@@ -37,6 +38,7 @@ public class PrerequisiteDTO {
   public List<PrerequisiteFeatsDTO> feats;
   public SpellLevel[] caster;
   public Integer bab;
+  public Integer initiative;
   public AttackRollDTO attackRoll;
   public DamageBonusDTO damageBonus;
   public SpeedDTO speed;
@@ -49,12 +51,13 @@ public class PrerequisiteDTO {
   public List<SchoolDTO> schools;
   public ClassPcLevel[] classPc;
   public List<ItemsDTO> items;
+  public Domains domain;
   public String text;
 
   public PrerequisiteDTO(Prerequisite pre) {
     this.abilitys =
       pre.getAbilitys() != null
-        ? MapperAbilitysToDTO.toAbilityDTO(pre.getAbilitys())
+        ? MapperAbilitys.toAbilityDTO(pre.getAbilitys())
         : null;
     this.featType = pre.getFeatType() != null ? pre.getFeatType() : null;
     this.feats =
@@ -77,7 +80,7 @@ public class PrerequisiteDTO {
         : null;
     this.savingThrow =
       pre.getSavingThrow() != null
-        ? MapperSavingThrowToDTO.toSavingThrowDTO(pre.getSavingThrow())
+        ? MapperSavingThrow.toSavingThrowDTO(pre.getSavingThrow())
         : null;
     this.specialAttacks =
       pre.getSpecialAttacks() != null
@@ -85,19 +88,17 @@ public class PrerequisiteDTO {
         : null;
     this.skillStudy =
       pre.getPrerequisiteSkillsStudy() != null
-        ? MapperSkillToDTO.toPrerequisiteSkillDTO(
-          pre.getPrerequisiteSkillsStudy()
-        )
+        ? MapperSkill.toPrerequisiteSkillDTO(pre.getPrerequisiteSkillsStudy())
         : null;
     this.armorClass =
       pre.getArmorClass() != null
-        ? MapperArmorClassDTO.toArmorClassDTO(pre.getArmorClass())
+        ? MapperArmorClass.toArmorClassDTO(pre.getArmorClass())
         : null;
     this.armorType = pre.getArmorType() != null ? pre.getArmorType() : null;
     this.weaponType = pre.getWeaponType() != null ? pre.getWeaponType() : null;
     this.schools =
       pre.getSchools() != null
-        ? MapperSpellsDTO.toSchoolListDTO(pre.getSchools())
+        ? MapperSpells.toSchoolListDTO(pre.getSchools())
         : null;
     this.items =
       pre.getItems() != null

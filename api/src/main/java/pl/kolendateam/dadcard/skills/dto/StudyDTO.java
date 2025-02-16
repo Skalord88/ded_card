@@ -2,7 +2,7 @@ package pl.kolendateam.dadcard.skills.dto;
 
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
-import pl.kolendateam.dadcard.skills.MapperSkillToDTO;
+import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
 @NoArgsConstructor
@@ -15,7 +15,7 @@ public class StudyDTO {
 
   public StudyDTO(Study st) {
     this.id = st.getId();
-    this.skill = MapperSkillToDTO.toSkillDTO(st.getSkill());
+    this.skill = MapperSkill.toSkillDTO(st.getSkill());
     this.studyName = st.getStudyName();
     this.newStudy = st.getNewStudy();
   }

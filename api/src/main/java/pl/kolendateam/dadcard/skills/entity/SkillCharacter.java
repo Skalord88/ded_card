@@ -10,12 +10,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
+import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 
 @Getter

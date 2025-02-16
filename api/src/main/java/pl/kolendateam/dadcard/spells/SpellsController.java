@@ -49,7 +49,7 @@ public class SpellsController {
   public List<SpellsDTO> showSpellsList() {
     List<Spells> spellsList = this.spellsRepository.findAll();
 
-    return MapperSpellsDTO.toSpellsDTO(spellsList);
+    return MapperSpells.toSpellsDTO(spellsList);
   }
 
   // @GetMapping("{id}/spellstable")
@@ -87,7 +87,7 @@ public class SpellsController {
 
   //   ClassCharacter classFromId = classOpt.get();
 
-  // return MapperSpellsDTO.toClassSpellsDTO(
+  // return MapperSpells.toClassSpellsDTO(
   //   spellsList,
   //   classFromId.getSpellsDomain()
   // );

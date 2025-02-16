@@ -1,7 +1,7 @@
 package pl.kolendateam.dadcard.characterCard.dto;
 
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.abilitys.MapperAbilitysToDTO;
+import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 
@@ -17,6 +17,6 @@ public class CharacterAbilityDTO {
     this.characterId = character.getId();
     this.characterName = character.getCharacterName();
     this.playerName = character.getPlayerName();
-    this.abilitys = MapperAbilitysToDTO.toAbilityDTO(character.getAbilitys());
+    this.abilitys = MapperAbilitys.toAbilityDTO(character.getAbilitys());
   }
 }

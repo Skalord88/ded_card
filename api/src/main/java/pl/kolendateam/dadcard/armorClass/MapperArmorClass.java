@@ -3,9 +3,13 @@ package pl.kolendateam.dadcard.armorClass;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 
-public class MapperArmorClassDTO {
+public class MapperArmorClass {
 
   public static ArmorClassDTO toArmorClassDTO(ArmorClass armorClass) {
     return new ArmorClassDTO(armorClass);
+  }
+
+  public static ArmorClass toArmorClass(ArmorClassDTO armorClass) {
+    return new ArmorClass(armorClass);
   }
 }

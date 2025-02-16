@@ -2,6 +2,8 @@ package pl.kolendateam.dadcard.modifier;
 
 import java.util.HashSet;
 import java.util.Set;
+import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 
@@ -20,5 +22,20 @@ public class MapperSpecialAbilities {
       });
     }
     return listofSADTO;
+  }
+
+  public static Set<SpecialAbilities> toSpecialAbilitiesSet(
+    Set<SpecialAbilitiesDTO> specialAttacksDTO
+  ) {
+    Set<SpecialAbilities> listofSA = new HashSet<>();
+    if (specialAttacksDTO != null) {
+      specialAttacksDTO.forEach(sA -> {
+        if (sA != null) {
+          SpecialAbilities mod = new SpecialAbilities(sA);
+          listofSA.add(mod);
+        }
+      });
+    }
+    return listofSA;
   }
 }

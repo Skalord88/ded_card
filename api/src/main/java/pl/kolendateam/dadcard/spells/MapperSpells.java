@@ -14,7 +14,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
-public class MapperSpellsDTO {
+public class MapperSpells {
 
   public static ArrayList<SpellsDTO> toSpellsDTO(List<Spells> spellsList) {
     ArrayList<SpellsDTO> spellsDTOList = new ArrayList<>();
@@ -87,5 +87,15 @@ public class MapperSpellsDTO {
       }
     }
     return schoolsDTO;
+  }
+
+  public static List<School> toSchoolList(List<SchoolDTO> schoolsDTO) {
+    List<School> schools = new ArrayList<>();
+    if (schoolsDTO != null) {
+      schoolsDTO.forEach(schoolDTO -> {
+        schools.add(new School(schoolDTO));
+      });
+    }
+    return schools;
   }
 }

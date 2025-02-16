@@ -14,6 +14,7 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
+import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 
 @NoArgsConstructor
 @Getter
@@ -49,4 +50,8 @@ public class SpecialAbilities implements Serializable {
   Integer maxValue; // massimo valore ottenibile
   String target;
   String area;
+
+  public SpecialAbilities(SpecialAbilitiesDTO sA) {
+    this.id = sA.id;
+  }
 }
