@@ -14,7 +14,10 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +33,15 @@ import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.entity.AttackRoll;
 import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
+import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
+import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.race.entity.Speed;
@@ -58,7 +64,7 @@ public class Prerequisite implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  public int id;
+  public Long id;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Abilitys abilitys;
@@ -66,7 +72,7 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   FeatsTypeEnum[] featType;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
     name = "prerequisite_feat",
     joinColumns = @JoinColumn(name = "prerequisite_id"),
@@ -93,7 +99,7 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   SpecialAttacks specialAttacks;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
     name = "prerequisite_skill_study",
     joinColumns = @JoinColumn(name = "prerequisite_id"),
@@ -110,7 +116,7 @@ public class Prerequisite implements Serializable {
   @Enumerated(EnumType.STRING)
   WeaponCategoriesEnum weaponType;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
     name = "prerequisite_schools",
     joinColumns = @JoinColumn(name = "prerequisite_id"),
@@ -124,7 +130,7 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   DamageBonus damageBonus;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
     name = "prerequisite_item",
     joinColumns = @JoinColumn(name = "prerequisite_id"),
@@ -138,7 +144,19 @@ public class Prerequisite implements Serializable {
 
   String text;
 
+  public Prerequisite(
+    int idPre,
+    List<PrerequisiteFeatsDTO> preFeatsDTO,
+    List<ItemsDTO> itemsDTO
+  ) {
+    this.id = (long) idPre;
+    this.feats = preFeatsDTO != null ? MapperFeats.toFeats(preFeatsDTO) : null;
+    this.items =
+      preFeatsDTO != null ? MapperItems.toItemsListFromDTOList(itemsDTO) : null;
+  }
+
   public Prerequisite(PrerequisiteDTO preDTO) {
+    this.id = preDTO.id != null ? preDTO.id : null;
     this.abilitys =
       preDTO.abilitys != null
         ? MapperAbilitys.toAbility(preDTO.abilitys)
@@ -188,5 +206,9 @@ public class Prerequisite implements Serializable {
         : null;
     this.domain = preDTO != null ? preDTO.domain : null;
     this.text = preDTO.text != null ? preDTO.text : null;
+  }
+
+  public Prerequisite(Long idDTO) {
+    this.id = idDTO;
   }
 }

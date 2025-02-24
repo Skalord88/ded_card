@@ -1,7 +1,11 @@
 package pl.kolendateam.dadcard.feats.dto;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.armorClass.MapperArmorClass;
@@ -30,9 +34,14 @@ import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 
+@ToString
+@AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class PrerequisiteDTO {
 
+  public Long id;
   public AbilitysDTO abilitys;
   public FeatsTypeEnum[] featType;
   public List<PrerequisiteFeatsDTO> feats;
@@ -55,6 +64,7 @@ public class PrerequisiteDTO {
   public String text;
 
   public PrerequisiteDTO(Prerequisite pre) {
+    this.id = pre.getId() != null ? pre.getId() : null;
     this.abilitys =
       pre.getAbilitys() != null
         ? MapperAbilitys.toAbilityDTO(pre.getAbilitys())

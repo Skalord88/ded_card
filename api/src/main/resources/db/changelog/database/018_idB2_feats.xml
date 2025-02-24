@@ -23,16 +23,16 @@
       <column name="special" type="varchar(10000)">
         <constraints nullable="true" />
       </column>
-      <column name="modifiers_id" type="int">
+      <column name="modifiers_id" type="bigint">
         <constraints nullable="true" />
       </column>
-      <column name="prerequisite_list_id" type="int">
+      <column name="prerequisite_list_id" type="bigint">
         <constraints nullable="true" />
       </column>
-      <column name="to_select_id" type="int">
+      <column name="to_select_id" type="bigint">
         <constraints nullable="true" />
       </column>
-      <column name="selected_id" type="int">
+      <column name="selected_id" type="bigint">
         <constraints nullable="true" />
       </column>
     </createTable>

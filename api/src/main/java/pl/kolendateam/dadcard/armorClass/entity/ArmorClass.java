@@ -4,6 +4,8 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
@@ -20,6 +22,7 @@ public class ArmorClass implements Serializable {
   int naturalArmor;
   int dodgeBonus;
 
+  @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
 
   String special;

@@ -50,7 +50,7 @@
             <column name="description" type="varchar(1000)">
                 <constraints nullable="true" />
             </column>
-            <column name="modifiers_id" type="int">
+            <column name="modifiers_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="armor_type" type="varchar(40)">

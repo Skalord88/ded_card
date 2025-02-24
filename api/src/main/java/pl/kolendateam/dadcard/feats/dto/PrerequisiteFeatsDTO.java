@@ -1,11 +1,17 @@
 package pl.kolendateam.dadcard.feats.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@ToString
 public class PrerequisiteFeatsDTO {
 
   public int id;

@@ -12,10 +12,13 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.lang.StackWalker.Option;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import lombok.Getter;
@@ -27,10 +30,20 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
+import pl.kolendateam.dadcard.feats.MapperFeats;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
+import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.feats.repository.PrerequisiteRepository;
+import pl.kolendateam.dadcard.items.MapperItems;
+import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
@@ -211,49 +224,111 @@ public class Character implements Serializable {
     this.skillsCharacter.addAll(updatedList);
   }
 
-  public void addFeatsToCharacter(int id, ArrayList<FeatsPcDTO> featsDTOList) {
+  public 
+  // List<Prerequisite> 
+  void
+  addFeatsToCharacter(
+    int id,
+    ArrayList<FeatsPcDTO> featsDTOList
+  ) {
     if (this.featsList == null) {
       this.featsList = new ArrayList<>();
     }
 
-    List<FeatsPc> newList = new ArrayList<>();
-    featsDTOList.forEach(fDTO -> {
-      FeatsPc existing = null;
-      boolean exist = false;
-      if (fDTO.typeOfFeatsPcDTO() == 1) {
-        for (int i = 0; i < this.featsList.size(); i++) {
-          if (
-            this.featsList.get(i).getFeat().getId() == fDTO.feat.id &&
-            this.featsList.get(i).getLevel() == fDTO.level
-          ) {
-            existing = this.featsList.get(i);
-            exist = true;
+    Set<FeatsPc> newSet = new HashSet<>();
+
+    featsDTOList.forEach(fPc -> {
+      Optional<FeatsPc> existingOpt =
+        this.featsList.stream()
+          .filter(feat ->
+            (
+              feat.getLevel() != null &&
+              feat.getLevel() == fPc.level &&
+              feat.getClassFeat() == null
+            ) || // se feat e level trovati, si tratta di un feat di livello (uno ogni 3)
+            (
+              feat.getClassFeat() != null &&
+              fPc.classFeat != null &&
+              feat.getClassFeat().getId() == fPc.classFeat.id
+            )
+          ) // se classFeat trovato, si tratta di un feat di classe
+          .findFirst();
+
+      FeatsPc existing;
+      if (existingOpt.isPresent()) {
+        existing = existingOpt.get(); // se esiste già, assegnalo
+        if (fPc.feat != null) {
+          existing.setFeat(new Feats(fPc.feat.id));
+        }
+        if (existing.getSelected() != null) {
+          if (fPc.selected.feats != null && fPc.selected.feats.size() > 0) {
+            List<Feats> feats = MapperFeats.toFeats(fPc.selected.feats);
+            existing.getSelected().setFeats(feats);
+          } else {
+            existing.getSelected().setFeats(null);
           }
-        }
-        if (!exist) {
-          existing = new FeatsPc(id, fDTO.level, fDTO.feat, fDTO.selected);
-        }
-        newList.add(existing);
-      }
-      if (fDTO.typeOfFeatsPcDTO() == 2) {
-        for (int i = 0; i < this.featsList.size(); i++) {
-          if (
-            this.featsList.get(i).getFeat().getId() == fDTO.feat.id &&
-            this.featsList.get(i).getClassFeat().getId() == fDTO.classFeat.id &&
-            this.featsList.get(i).getLevel() == fDTO.level
-          ) {
-            existing = this.featsList.get(i);
-            exist = true;
+          if (fPc.selected.items != null && fPc.selected.items.size() > 0) {
+            List<Items> items = MapperItems.toItemsListFromDTOList(
+              fPc.selected.items
+            );
+            existing.getSelected().setItems(items);
+          } else {
+            existing.getSelected().setItems(null);
           }
+        } else {
+          existing = new FeatsPc(id, fPc); // altrimenti crea un nuovo FeatsPc
         }
-        if (!exist) {
-          existing = new FeatsPc(id, fDTO);
-        }
-        newList.add(existing);
+      } else {
+        existing = new FeatsPc(id, fPc); // altrimenti crea un nuovo FeatsPc
       }
+      newSet.add(existing);
     });
 
     this.featsList.clear();
-    this.featsList.addAll(newList);
+    this.featsList.addAll(newSet);
+
+    // return newSet
+    //   .stream()
+    //   .map(FeatsPc::getSelected)
+    //   .filter(p -> p != null)
+    //   .collect(Collectors.toList());
+  }
+
+  private boolean prerequisiteEquals(Prerequisite p, PrerequisiteDTO dto) {
+    return (
+      // Arrays.equals(
+      // p.getFeatType(), dto.featType) &&
+      hasSameItems(p.getItems(), dto.items) &&
+      hasSameFeats(p.getFeats(), dto.feats)
+    );
+  }
+
+  private boolean hasSameItems(List<Items> list1, List<ItemsDTO> list2) {
+    if (list1.size() != list2.size()) return false;
+    Set<Integer> ids1 = list1
+      .stream()
+      .map(Items::getId)
+      .collect(Collectors.toSet());
+    Set<Integer> ids2 = list2
+      .stream()
+      .map(ItemsDTO::getId)
+      .collect(Collectors.toSet());
+    return ids1.equals(ids2);
+  }
+
+  private boolean hasSameFeats(
+    List<Feats> list1,
+    List<PrerequisiteFeatsDTO> list2
+  ) {
+    if (list1.size() != list2.size()) return false;
+    Set<Integer> ids1 = list1
+      .stream()
+      .map(Feats::getId)
+      .collect(Collectors.toSet());
+    Set<Integer> ids2 = list2
+      .stream()
+      .map(PrerequisiteFeatsDTO::getId)
+      .collect(Collectors.toSet());
+    return ids1.equals(ids2);
   }
 }

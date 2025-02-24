@@ -11,7 +11,7 @@
       <column name="archetype_name" type="varchar(255)">
         <constraints nullable="true" />
       </column>
-      <column name="modifiers_id" type="int">
+      <column name="modifiers_id" type="bigint">
         <constraints nullable="true" />
       </column>
       <column name="level_adjustment" type="TINYINT">

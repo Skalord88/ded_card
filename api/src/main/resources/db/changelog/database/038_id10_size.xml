@@ -11,7 +11,7 @@
             <column name="size" type="varchar(50)">
                 <constraints nullable="true" />
             </column>
-            <column name="modifiers_id" type="int">
+            <column name="modifiers_id" type="bigint">
                 <constraints nullable="true" />
             </column>
         </createTable>

@@ -12,6 +12,7 @@ import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
@@ -21,6 +22,7 @@ import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 @Setter
 @Entity
 @Table(name = "feats")
+@ToString
 public class Feats implements Serializable {
 
   @Id
@@ -73,6 +75,7 @@ public class Feats implements Serializable {
   }
 
   public Feats(PrerequisiteFeatsDTO featDTO) {
+    System.out.println("PrerequisiteFeatsDTO Selected: " + featDTO);
     this.id = featDTO.id;
   }
 }

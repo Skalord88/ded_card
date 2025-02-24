@@ -11,37 +11,41 @@ import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 import { HpSummaryComponent } from "../HpComponent";
 import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
 import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
-import { Feat } from "../Feats/Interface/FeatInterface";
+import { Feat, FeatPc } from "../Feats/Interface/FeatInterface";
+import { FormattingText } from "../Formatting/Function";
 
 export interface SummaryProps {
   character: CharacterPc;
   race?: SubRace;
   classPcList?: ClassPc[];
+  feats?: FeatPc[]
 }
 
 export const CharSummary: React.FC<SummaryProps> = ({
   character,
   race,
-  classPcList
+  classPcList,
+  feats
 }) => {
-  const [updateChar, setUpChar] = useState<CharToModify>();
+  const [updateChar, setUpChar] = useState<CharToModify | null>(null);
   const [textClass, setTextClass] = useState<string>();
 
   useEffect(() => {
     const char: CharacterPc = {
       ...character,
       race: race ? race : character.race,
-      classPcList: classPcList ? classPcList : character.classPcList
+      classPcList: classPcList ? classPcList : character.classPcList,
+      featsList: feats? feats : character.featsList
 
     };
     const newChar: CharToModify = createModChar(char);
 
     const newTextList: string[] = classPcList
       ? classPcList.flatMap(
-          (cl: ClassPc) => "lv." + cl.level + ": " + cl.classCharacter.className
+          (cl: ClassPc) => "lv." + cl.level + ": " + FormattingText(cl.classCharacter.className)
         )
       : character.classPcList.flatMap(
-          (cl: ClassPc) => "lv." + cl.level + ": " + cl.classCharacter.className
+          (cl: ClassPc) => "lv." + cl.level + ": " + FormattingText(cl.classCharacter.className)
         );
     setTextClass(newTextList.join(", "));
 

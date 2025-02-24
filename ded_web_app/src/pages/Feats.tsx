@@ -127,6 +127,7 @@ export function Feats() {
 
         for (let i = 0; i < quantiFeats; i++) {
           featsFromLevel.push({
+            id: 0,
             feat: emptyFeat,
             level: i === 0 ? 1 : i * 3,
             selected: emptyPrerequisite
@@ -158,6 +159,7 @@ export function Feats() {
           .map((clF) =>
             clF
               ? {
+                  id: clF.id,
                   classe: {
                     id: clF.classId,
                     text: clF.className
@@ -200,36 +202,41 @@ export function Feats() {
 
   const handleSubmit = () => {
     const list: {
+      id: number;
       feat: { id: number };
       level?: number;
       classFeat?: { id?: number };
       selected?: Prerequisite;
     }[] = featsToAddList
+      // .filter(fil => fil.feat.id !== 0)
       .map((f) => {
         return {
+          id: 0,
           feat: { id: f.feat.id },
           level: f.level,
-          selected: f.selected
+          selected: f.selected ? f.selected : undefined
         };
       });
 
     const listBonus: {
+      id: number;
       feat: { id: number };
       level?: number;
       classFeat?: { id?: number };
       selected?: Prerequisite;
     }[] = featsPcToSelectList
+      // .filter(fil => fil.feat.id !== 0)
       .map((f) => {
         return {
+          id: 0,
           feat: { id: f.feat.id },
-          level: f.classFeat?.level,
+          level: f.level,
           classFeat: { id: f.classFeat?.id },
-          selected: f.selected
+          selected: f.selected ? f.selected : undefined
         };
       });
-    console.log(list);
-    console.log(listBonus);
-    axios.post(urlFeats + "/" + charId, [list, listBonus]);
+    console.log([...list, ...listBonus]);
+    axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
 
     // window.location.reload();
   };
@@ -239,7 +246,7 @@ export function Feats() {
       {char ? (
         <CharSummary
           character={char}
-          // feats={featsToAddList}
+          feats={[...featsToAddList, ...featsPcToSelectList]}
         />
       ) : null}
       {featsToAddList.map((f) => (
@@ -323,16 +330,17 @@ export function Feats() {
               ) : null}
             </div>
           ))}
-          {
-            <button className="rpgui-button">
-              <p>add Feats</p>
-            </button>
-          }
-          {
-            <button className="rpgui-button">
-              <p>to Inventory</p>
-            </button>
-          }
+          <div>
+            
+              <button className="rpgui-button" onClick={() => handleSubmit()}>
+                <p>add Feats</p>
+              </button>
+            
+            
+              <button className="rpgui-button">
+                <p>to Inventory</p>
+              </button>
+          </div>
           {featsToAddList.map((f) => (
             <div>
               <p>
@@ -476,7 +484,8 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
     onAction(
       {
         feat: emptyFeat,
-        level: 0
+        level: 0,
+        id: 0
       },
       indexItem
     );

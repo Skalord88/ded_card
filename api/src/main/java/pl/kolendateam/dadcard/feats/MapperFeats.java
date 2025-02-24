@@ -107,6 +107,7 @@ public class MapperFeats {
     if (feats != null) feats.forEach(featDTO -> {
       if (featDTO != null) {
         Feats feat = new Feats(featDTO);
+        System.out.println("Feats Selected: " + feat);
         featsList.add(feat);
       }
     });

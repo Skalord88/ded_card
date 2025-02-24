@@ -2,9 +2,11 @@ package pl.kolendateam.dadcard.items.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.entity.Items;
 
+@Getter
 @NoArgsConstructor
 public class ItemsDTO implements Serializable {
 

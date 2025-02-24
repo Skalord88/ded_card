@@ -15,13 +15,15 @@ import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 @Setter
 public class FeatsPcDTO implements Serializable {
 
+  public int id;
   public FeatsDTO feat;
-  public int level;
+  public Integer level;
   public ClassFeatsDTO classFeat;
   public PrerequisiteDTO selected;
 
   public FeatsPcDTO(FeatsPc featPc) {
-    this.level = featPc.getLevel();
+    this.id = featPc.getId();
+    this.level = featPc.getLevel() != null ? featPc.getLevel() : null;
     this.classFeat =
       featPc.getClassFeat() != null
         ? MapperFeats.toClassFeatsDTO(featPc.getClassFeat())

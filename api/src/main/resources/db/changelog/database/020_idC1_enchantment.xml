@@ -14,7 +14,7 @@
             <column name="ability" type="varchar(250)">
                 <constraints nullable="true" />
             </column>
-            <column name="modifiers_id" type="int">
+            <column name="modifiers_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="cost" type="int">

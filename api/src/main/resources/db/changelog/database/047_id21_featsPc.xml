@@ -20,7 +20,7 @@
             <column name="class_feats_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="selected_id" type="int">
+            <column name="selected_id" type="bigint">
                 <constraints nullable="true" />
             </column>
         </createTable>

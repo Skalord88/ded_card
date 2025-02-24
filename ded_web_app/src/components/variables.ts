@@ -234,35 +234,25 @@ export const emptySavingThrow: SavingThrow = {
 }
 
 export const emptyPrerequisite: Prerequisite = {
-    abilitys: emptyAbilitys,
-    feats: [],
-    caster: [],
-    bab: 0,
-    attackRoll: {
-        target: null,
-        bonus: 0
-    },
-    initiative: 0,
-    speed: {
-        foot: 0,
-        fly: 0,
-        climb: 0,
-        swim: 0,
-        special: ''
-    },
-    savingThrow: emptySavingThrow,
-    skillStudy: [],
-    armorClass: armorClassEmpty,
-    armorType: "",
-    weaponType: "",
-    schools: [],
-    classPc: [],
-    items: [],
-    text: '',
-    specialAttacks: emptySpecialAttacks,
-    damageBonus: {
-        bonus: 0
-    }
+    abilitys: undefined,
+    feats: undefined,
+    featType: undefined,
+    caster: undefined,
+    bab: undefined,
+    attackRoll: undefined,
+    damageBonus: undefined,
+    initiative: undefined,
+    speed: undefined,
+    savingThrow:undefined,
+    specialAttacks:undefined,
+    skillStudy:undefined,
+    armorClass:undefined,
+    armorType:undefined,
+    weaponType:undefined,
+    schools:undefined,
+    classPc:undefined,
+    items:undefined,
+    text:undefined
 }
 
 export const characterEmpty: CharacterPc = {
@@ -340,6 +330,7 @@ export const emptyClassFeat: ClassFeats = {
 }
 
 export const emptyFeatPc: FeatPc = {
+    id: 0,
     feat: emptyFeat,
     selected: emptyPrerequisite,
     level: 0

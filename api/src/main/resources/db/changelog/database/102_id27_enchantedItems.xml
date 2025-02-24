@@ -20,7 +20,7 @@
       <column name="enchantment_bonus" type="int">
         <constraints nullable="true" />
       </column>
-      <column name="modifiers_id" type="int">
+      <column name="modifiers_id" type="bigint">
         <constraints nullable="true" />
       </column>
       <column name="cost" type="double">

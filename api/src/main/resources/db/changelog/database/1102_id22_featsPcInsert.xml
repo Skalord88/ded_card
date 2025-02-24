@@ -5,8 +5,22 @@
 
     <changeSet id="22" author="oscar">
 
-        
+        <insert tableName="feats_pc">
+            <column name="id" value="100" />
+            <column name="character_card_id" value="100" />
+            <column name="feats_id" value="1" />
+            <column name="class_feats_id" value="1" />
+            <column name="selected_id" value="100" />
+        </insert>
 
-        
+        <insert tableName="prerequisite">
+            <column name="id" value="100" />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="100" />
+            <column name="feat_id" value="1" />
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

@@ -34,7 +34,7 @@ public class ClassFeats implements Serializable {
   @JoinColumn(name = "class_character_id")
   ClassCharacter classCharacter;
 
-  @ManyToOne
+  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
   @JoinColumn(name = "feats_id")
   Feats feats;
 
@@ -46,11 +46,15 @@ public class ClassFeats implements Serializable {
   )
   Prerequisite selected;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(
     name = "to_select_id",
     referencedColumnName = "id",
     nullable = true
   )
   Prerequisite toSelect;
+
+  public ClassFeats(int idDTO) {
+    this.id = idDTO;
+  }
 }

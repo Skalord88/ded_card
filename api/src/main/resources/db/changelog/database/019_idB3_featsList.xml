@@ -101,15 +101,15 @@
     <!-- Armor Proficiency (Heavy) [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="1" />
+      <column name="id" value="110001" />
       <column name="text" value="Armor Proficiency (light), Armor Proficiency (medium)." />
     </insert>
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="1" />
+      <column name="prerequisite_id" value="110001" />
       <column name="feat_id" value="6" />
     </insert>
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="1" />
+      <column name="prerequisite_id" value="110001" />
       <column name="feat_id" value="7" />
     </insert>
 
@@ -130,7 +130,7 @@
         value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="Fighters, paladins, and clerics automatically have Armor Proficiency (heavy) as a bonus feat. They need not select it." />
-      <column name="prerequisite_list_id" value="1" />
+      <column name="prerequisite_list_id" value="110001" />
       <column name="selected_id" value="5001" />
     </insert>
 
@@ -158,11 +158,11 @@
     <!-- Armor Proficiency (Medium) [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="2" />
+      <column name="id" value="110002" />
       <column name="text" value="Armor Proficiency (light)." />
     </insert>
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="2" />
+      <column name="prerequisite_id" value="110002" />
       <column name="feat_id" value="7" />
     </insert>
 
@@ -183,7 +183,7 @@
         value="A character who is wearing armor with which she is not proficient applies its armor check penalty to attack rolls and to all skill checks that involve moving, including Ride." />
       <column name="special"
         value="Fighters, barbarians, paladins, clerics, druids, and bards automatically have Armor Proficiency (medium) as a bonus feat. They need not select it." />
-      <column name="prerequisite_list_id" value="2" />
+      <column name="prerequisite_list_id" value="110002" />
       <column name="selected_id" value="5003" />
     </insert>
 
@@ -236,7 +236,7 @@
     <!-- Brew Potion [Item Creation] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="3" />
+      <column name="id" value="110003" />
       <column name="caster"
         value="[
                 {&quot;level&quot; : 3 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
@@ -250,20 +250,20 @@
       <column name="feat_type" value="[&quot;ITEM_CREATION&quot;]" />
       <column name="benefit"
         value="You can create a potion of any 3rd-level or lower spell that you know and that targets one or more creatures. Brewing a potion takes one day. When you create a potion, you set the caster level, which must be sufficient to cast the spell in question and no higher than your own level. The base price of a potion is its spell level × its caster level × 50 gp. To brew a potion, you must spend 1/25 of this base price in XP and use up raw materials costing one half this base price. When you create a potion, you make any choices that you would normally make when casting the spell. Whoever drinks the potion is the target of the spell. Any potion that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the costs derived from the base price, you must expend the material component or pay the XP when creating the potion." />
-      <column name="prerequisite_list_id" value="3" />
+      <column name="prerequisite_list_id" value="110003" />
     </insert>
 
     <!-- Cleave [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="4" />
+      <column name="id" value="110004" />
       <column name="abilitys"
         value="{&quot;strength&quot; : 13}" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="4" />
+      <column name="prerequisite_id" value="110004" />
       <column name="feat_id" value="76" />
     </insert>
 
@@ -276,7 +276,7 @@
         value="If you deal a creature enough damage to make it drop (typically by dropping it to below 0 hit points or killing it), you get an immediate, extra melee attack against another creature within reach. You cannot take a 5-foot step before making this extra attack. The extra attack is with the same weapon and at the same bonus as the attack that dropped the previous creature. You can use this ability once per round." />
       <column name="normal" value="null" />
       <column name="special" value="A fighter may select Cleave as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="4" />
+      <column name="prerequisite_list_id" value="110004" />
     </insert>
 
     <!-- Combat Casting [General] -->
@@ -304,7 +304,7 @@
     <!-- Combat Expertise [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="5" />
+      <column name="id" value="110005" />
       <column name="abilitys"
         value="{ &quot;intelligence&quot; : 13 }" />
       <column name="text" value="Int 13." />
@@ -321,7 +321,7 @@
         value="A character without the Combat Expertise feat can fight defensively while using the attack or full attack action to take a -4 penalty on attack rolls and gain a +2 dodge bonus to Armor Class." />
       <column name="special"
         value="A fighter may select Combat Expertise as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="5" />
+      <column name="prerequisite_list_id" value="110005" />
     </insert>
 
     <insert tableName="feats">
@@ -340,7 +340,7 @@
     <!-- Craft Magic Arms And Armor [Item Creation] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="6" />
+      <column name="id" value="110006" />
       <column name="caster"
         value="[{&quot;level&quot; : 5 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}]" />
       <column name="text" value="Caster level 5th." />
@@ -355,13 +355,13 @@
         value="You can create any magic weapon, armor, or shield whose prerequisites you meet. Enhancing a weapon, suit of armor, or shield takes one day for each 1,000 gp in the price of its magical features. To enhance a weapon, suit of armor, or shield, you must spend 1/25 of its features’ total price in XP and use up raw materials costing one-half of this total price. The weapon, armor, or shield to be enhanced must be a masterwork item that you provide. Its cost is not included in the above cost. You can also mend a broken magic weapon, suit of armor, or shield if it is one that you could make. Doing so costs half the XP, half the raw materials, and half the time it would take to craft that item in the first place." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="6" />
+      <column name="prerequisite_list_id" value="110006" />
     </insert>
 
     <!-- Craft Rod [Item Creation] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="7" />
+      <column name="id" value="110007" />
       <column name="caster"
         value="[{&quot;level&quot; : 9 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}]" />
       <column name="text" value="Caster level 9th." />
@@ -376,13 +376,13 @@
         value="You can create any rod whose prerequisites you meet. Crafting a rod takes one day for each 1,000 gp in its base price. To craft a rod, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. Some rods incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the rod’s base price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="7" />
+      <column name="prerequisite_list_id" value="110007" />
     </insert>
 
     <!-- Craft Staff [Item Creation] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="8" />
+      <column name="id" value="110008" />
       <column name="caster"
         value="[
                 {&quot;level&quot; : 12 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
@@ -399,19 +399,10 @@
         value="You can create any staff whose prerequisites you meet. Crafting a staff takes one day for each 1,000 gp in its base price. To craft a staff, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. A newly created staff has 50 charges. Some staffs incur extra costs in material components or XP, as noted in their descriptions. These costs are in addition to those derived from the staff’s base price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="8" />
+      <column name="prerequisite_list_id" value="110008" />
     </insert>
 
     <!-- Craft Wand [Item Creation] pre -->
-
-    <insert tableName="prerequisite">
-      <column name="id" value="9" />
-      <column name="caster"
-        value="[
-                {&quot;level&quot; : 5 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
-                ]" />
-      <column name="text" value="Caster level 5th." />
-    </insert>
 
     <insert tableName="feats">
       <column name="id" value="19" />
@@ -422,19 +413,10 @@
         value="You can create a wand of any 4th-level or lower spell that you know. Crafting a wand takes one day for each 1,000 gp in its base price. The base price of a wand is its caster level × the spell level × 750 gp. To craft a wand, you must spend 1/25 of this base price in XP and use up raw materials costing one-half of this base price. A newly created wand has 50 charges. Any wand that stores a spell with a costly material component or an XP cost also carries a commensurate cost. In addition to the cost derived from the base price, you must expend fifty copies of the material component or pay fifty times the XP cost." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="9" />
+      <column name="prerequisite_list_id" value="110006" />
     </insert>
 
     <!-- Craft Wondrous Item [Item Creation] pre -->
-
-    <insert tableName="prerequisite">
-      <column name="id" value="10" />
-      <column name="caster"
-        value="[
-                {&quot;level&quot; : 3 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
-                ]" />
-      <column name="text" value="Caster level 3rd." />
-    </insert>
 
     <insert tableName="feats">
       <column name="id" value="20" />
@@ -445,7 +427,7 @@
         value="You can create any wondrous item whose prerequisites you meet. Enchanting a wondrous item takes one day for each 1,000 gp in its price. To enchant a wondrous item, you must spend 1/25 of the item,s price in XP and use up raw materials costing half of this price." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="10" />
+      <column name="prerequisite_list_id" value="110003" />
     </insert>
 
     <!-- Deceitful [General] -->
@@ -478,13 +460,13 @@
     <!-- Deflect Arrows [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="11" />
+      <column name="id" value="110011" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13, Improved Unarmed Strike." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="11" />
+      <column name="prerequisite_id" value="110011" />
       <column name="feat_id" value="59" />
     </insert>
 
@@ -497,7 +479,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A monk may select Deflect Arrows as a bonus feat at 2nd level, even if she does not meet the prerequisites. A fighter may select Deflect Arrows as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="11" />
+      <column name="prerequisite_list_id" value="110011" />
     </insert>
 
     <!-- Deft Hands [General] -->
@@ -529,12 +511,12 @@
     <!-- Diehard [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="56" />
+      <column name="id" value="110056" />
       <column name="text" value="Endurance." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="56" />
+      <column name="prerequisite_id" value="110056" />
       <column name="feat_id" value="28" />
     </insert>
 
@@ -547,7 +529,7 @@
       <column name="normal"
         value="A character without this feat who is reduced to between -1 and -9 hit points is unconscious and dying." />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="56" />
+      <column name="prerequisite_list_id" value="110056" />
     </insert>
 
     <!-- Diligent [General] -->
@@ -580,7 +562,7 @@
     <!-- Dodge [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="12" />
+      <column name="id" value="110012" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13." />
     </insert>
@@ -593,7 +575,7 @@
         value="During your action, you designate an opponent and receive a +1 dodge bonus to Armor Class against attacks from that opponent. You can select a new opponent on any action. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Also, dodge bonuses stack with each other, unlike most other types of bonuses." />
       <column name="normal" value="null" />
       <column name="special" value="A fighter may select Dodge as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="12" />
+      <column name="prerequisite_list_id" value="110012" />
     </insert>
 
     <insert tableName="feats">
@@ -644,7 +626,7 @@
     <!-- Exotic Weapon Proficiency [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="13" />
+      <column name="id" value="110013" />
       <column name="bab" value="1" />
       <column name="text"
         value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
@@ -661,7 +643,7 @@
       <column name="id" value="31" />
       <column name="feat_name" value="Exotic Weapon Proficiency [General]" />
       <column name="feat_type" value="[ &quot;FIGHTER&quot; ]" />
-      <column name="prerequisite_list_id" value="13" />
+      <column name="prerequisite_list_id" value="110013" />
       <column name="benefit" value="You make attack rolls with the weapon normally." />
       <column name="normal"
         value="A character who uses a weapon with which he or she is not proficient takes a -4 penalty on attack rolls." />
@@ -683,12 +665,12 @@
     <!-- Extra Turning [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="14" />
+      <column name="id" value="110014" />
       <column name="text" value="Ability to turn or rebuke creatures." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="14" />
+      <column name="prerequisite_id" value="110014" />
       <column name="feat_id" value="138" />
     </insert>
 
@@ -702,18 +684,18 @@
         value="Without this feat, a character can typically turn or rebuke undead (or other creatures) a number of times per day equal to 3 + his or her Charisma modifier." />
       <column name="special"
         value="You can gain Extra Turning multiple times. Its effects stack. Each time you take the feat, you can use each of your turning or rebuking abilities four additional times per day." />
-      <column name="prerequisite_list_id" value="14" />
+      <column name="prerequisite_list_id" value="110014" />
     </insert>
 
     <!-- Far Shot [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="15" />
+      <column name="id" value="110015" />
       <column name="text" value="Point Blank Shot." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="15" />
+      <column name="prerequisite_id" value="110015" />
       <column name="feat_id" value="75" />
     </insert>
 
@@ -727,19 +709,10 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Far Shot as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="15" />
+      <column name="prerequisite_list_id" value="110015" />
     </insert>
 
     <!-- Forge Ring [Item Creation] pre -->
-
-    <insert tableName="prerequisite">
-      <column name="id" value="16" />
-      <column name="caster"
-        value="[
-            { &quot;level&quot; : 12 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot; }
-            ]" />
-      <column name="text" value="Caster level 12th." />
-    </insert>
 
     <insert tableName="feats">
       <column name="id" value="35" />
@@ -750,25 +723,25 @@
         value="You can create any ring whose prerequisites you meet. Crafting a ring takes one day for each 1,000 gp in its base price. To craft a ring, you must spend 1/25 of its base price in XP and use up raw materials costing one-half of its base price. You can also mend a broken ring if it is one that you could make. Doing so costs half the XP, half the raw materials, and half the time it would take to forge that ring in the first place. Some magic rings incur extra costs in material components or XP, as noted in their descriptions. You must pay such a cost to forge such a ring or to mend a broken one." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="16" />
+      <column name="prerequisite_list_id" value="110003" />
     </insert>
 
     <!-- Great Cleave [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="17" />
+      <column name="id" value="110017" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="bab" value="4" />
       <column name="text" value="Str 13, Cleave, Power Attack, base attack bonus +4." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="17" />
+      <column name="prerequisite_id" value="110017" />
       <column name="feat_id" value="12" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="17" />
+      <column name="prerequisite_id" value="110017" />
       <column name="feat_id" value="76" />
     </insert>
 
@@ -783,7 +756,7 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Great Cleave as one of his fighter bonus feats." />
-      <column name="prerequisite_list_id" value="17" />
+      <column name="prerequisite_list_id" value="110017" />
     </insert>
 
     <!-- Great Fortitude [General] -->
@@ -808,53 +781,53 @@
     <!-- Greater Spell Focus [General] toSelect -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="18" />
+      <column name="id" value="110018" />
       <column name="text"
         value="Choose a school of magic to which you already have applied the Spell Focus feat." />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="1" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="2" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="3" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="4" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="5" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="6" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="7" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="8" />
     </insert>
 
     <insert tableName="prerequisite_schools">
-      <column name="prerequisite_id" value="18" />
+      <column name="prerequisite_id" value="110018" />
       <column name="schools_id" value="9" />
     </insert>
 
@@ -866,18 +839,18 @@
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new school of magic to which you already have applied the Spell Focus feat." />
-      <column name="to_select_id" value="18" />
+      <column name="to_select_id" value="110018" />
     </insert>
 
     <!-- Greater Spell Penetration [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="19" />
+      <column name="id" value="110019" />
       <column name="text" value="Spell Penetration." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="19" />
+      <column name="prerequisite_id" value="110019" />
       <column name="feat_id" value="94" />
     </insert>
 
@@ -888,13 +861,13 @@
         value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bonus stacks with the one from Spell Penetration." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <column name="prerequisite_list_id" value="19" />
+      <column name="prerequisite_list_id" value="110019" />
     </insert>
 
     <!-- Greater Two-Weapon Fighting [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="20" />
+      <column name="id" value="110020" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 19 }" />
       <column name="bab" value="11" />
       <column name="text"
@@ -902,12 +875,12 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="20" />
+      <column name="prerequisite_id" value="110020" />
       <column name="feat_id" value="58" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="20" />
+      <column name="prerequisite_id" value="110020" />
       <column name="feat_id" value="105" />
     </insert>
 
@@ -921,13 +894,13 @@
       <column name="normal" value="null" />
       <column name="special"
         value="A fighter may select Greater Two-Weapon Fighting as one of his fighter bonus feats. An 11th-level ranger who has chosen the two-weapon combat style is treated as having Greater Two-Weapon Fighting, even if he does not have the prerequisites for it, but only when he is wearing light or no armor." />
-      <column name="prerequisite_list_id" value="20" />
+      <column name="prerequisite_list_id" value="110020" />
     </insert>
 
     <!-- Greater Weapon Focus [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="21" />
+      <column name="id" value="110021" />
       <column name="class_pc"
         value="[{
                 &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 8
@@ -937,12 +910,12 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="21" />
+      <column name="prerequisite_id" value="110021" />
       <column name="feat_id" value="107" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="21" />
+      <column name="prerequisite_id" value="110021" />
       <column name="feat_id" value="221" />
     </insert>
 
@@ -966,14 +939,14 @@
       <column name="normal" value="null" />
       <column name="special"
         value="You can gain Greater Weapon Focus multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
-      <column name="prerequisite_list_id" value="21" />
+      <column name="prerequisite_list_id" value="110021" />
       <column name="modifiers_id" value="1023" />
     </insert>
 
     <!-- Greater Weapon Specialization [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="22" />
+      <column name="id" value="110022" />
       <column name="class_pc"
         value="[{
                 &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 12
@@ -983,12 +956,12 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="22" />
+      <column name="prerequisite_id" value="110022" />
       <column name="feat_id" value="41" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="22" />
+      <column name="prerequisite_id" value="110022" />
       <column name="feat_id" value="107" />
     </insert>
 
@@ -1008,7 +981,7 @@
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus
       with selected weapon, Weapon Specialization with selected weapon, fighter level 12th." /> -->
-      <column name="prerequisite_list_id" value="22" />
+      <column name="prerequisite_list_id" value="110022" />
       <column name="modifiers_id" value="1022" />
       <column name="benefit"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon. This bonus stacks with other bonuses on damage rolls, including the one from Weapon Specialization (see below)." />
@@ -1031,20 +1004,20 @@
     <!-- Improved Bull Rush [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="23" />
+      <column name="id" value="110023" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="23" />
+      <column name="prerequisite_id" value="110023" />
       <column name="feat_id" value="76" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="44" />
       <column name="feat_name" value="Improved Bull Rush [General]" />
-      <column name="prerequisite_list_id" value="23" />
+      <column name="prerequisite_list_id" value="110023" />
       <column name="benefit"
         value="When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender." />
       <column name="normal" value="null" />
@@ -1066,7 +1039,7 @@
     <!-- Improved Critical [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="24" />
+      <column name="id" value="110024" />
       <column name="bab" value="8" />
       <column name="text" value="Proficient with weapon, base attack bonus +8." />
     </insert>
@@ -1074,7 +1047,7 @@
     <insert tableName="feats">
       <column name="id" value="46" />
       <column name="feat_name" value="Improved Critical [General]" />
-      <column name="prerequisite_list_id" value="24" />
+      <column name="prerequisite_list_id" value="110024" />
       <!-- <column name="prerequisites" value="Proficient with weapon, base attack bonus +8." /> -->
       <column name="benefit"
         value="Choose one type of weapon. When using the weapon you selected, your threat range is doubled." />
@@ -1086,13 +1059,13 @@
     <!-- Improved Disarm [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="25" />
+      <column name="id" value="110025" />
       <column name="abilitys" value="{ &quot;intelligence&quot; : 13 }" />
       <column name="text" value="Int 13, Combat Expertise." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="25" />
+      <column name="prerequisite_id" value="110025" />
       <column name="feat_id" value="14" />
     </insert>
 
@@ -1101,7 +1074,7 @@
       <column name="feat_name" value="Improved Disarm [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Int 13, Combat Expertise." /> -->
-      <column name="prerequisite_list_id" value="25" />
+      <column name="prerequisite_list_id" value="110025" />
       <column name="benefit"
         value="You do not provoke an attack of opportunity when you attempt to disarm an opponent, nor does the opponent have a chance to disarm you. You also gain a +4 bonus on the opposed attack roll you make to disarm your opponent." />
       <column name="normal" value="See the normal disarm rules." />
@@ -1112,20 +1085,20 @@
     <!-- Improved Familiar [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="26" />
+      <column name="id" value="110026" />
       <column name="text"
         value="Ability to acquire a new familiar, compatible alignment, sufficiently high level (see below)." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="26" />
+      <column name="prerequisite_id" value="110026" />
       <column name="feat_id" value="208" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="48" />
       <column name="feat_name" value="Improved Familiar [General]" />
-      <column name="prerequisite_list_id" value="26" />
+      <column name="prerequisite_list_id" value="110026" />
       <!-- <column name="prerequisites"
         value="Ability to acquire a new familiar, compatible alignment, sufficiently high level (see
       below)." /> -->
@@ -1138,13 +1111,13 @@
     <!-- Improved Feint [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="27" />
+      <column name="id" value="100027" />
       <column name="abilitys" value="{ &quot;intelligence&quot; : 13 }" />
       <column name="text" value="Int 13, Combat Expertise." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="27" />
+      <column name="prerequisite_id" value="100027" />
       <column name="feat_id" value="14" />
     </insert>
 
@@ -1152,7 +1125,7 @@
       <column name="id" value="49" />
       <column name="feat_name" value="Improved Feint [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
-      <column name="prerequisite_list_id" value="27" />
+      <column name="prerequisite_list_id" value="100027" />
       <column name="benefit" value="You can make a Bluff check to feint in combat as a move action." />
       <column name="normal"
         value="Feinting in combat is a standard action. A fighter may select Improved Feint as one of his fighter bonus feats." />
@@ -1162,13 +1135,13 @@
     <!-- Improved Grapple [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="28" />
+      <column name="id" value="100028" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13, Improved Unarmed Strike." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="28" />
+      <column name="prerequisite_id" value="100028" />
       <column name="feat_id" value="59" />
     </insert>
 
@@ -1176,7 +1149,7 @@
       <column name="id" value="50" />
       <column name="feat_name" value="Improved Grapple [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
-      <column name="prerequisite_list_id" value="28" />
+      <column name="prerequisite_list_id" value="100028" />
       <!-- <column name="prerequisites" value="Dex 13, Improved Unarmed Strike." /> -->
       <column name="benefit"
         value="You do not provoke an attack of opportunity when you make a touch attack to start a grapple. You also gain a +4 bonus on all grapple checks, regardless of whether you started the grapple." />
@@ -1207,13 +1180,13 @@
     <!-- Improved Overrun [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="29" />
+      <column name="id" value="100029" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="29" />
+      <column name="prerequisite_id" value="100029" />
       <column name="feat_id" value="76" />
     </insert>
 
@@ -1221,7 +1194,7 @@
       <column name="id" value="52" />
       <column name="feat_name" value="Improved Overrun [General]" />
       <!-- <column name="prerequisites" value="Str 13, Power Attack." /> -->
-      <column name="prerequisite_list_id" value="29" />
+      <column name="prerequisite_list_id" value="100029" />
       <column name="benefit"
         value="When you attempt to overrun an opponent, the target may not choose to avoid you. You also gain a +4 bonus on your Strength check to knock down your opponent." />
       <column name="normal"
@@ -1233,7 +1206,7 @@
     <!-- Improved Precise Shot [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="30" />
+      <column name="id" value="110030" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 19 }" />
       <column name="bab" value="11" />
       <column name="text"
@@ -1241,12 +1214,12 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="30" />
+      <column name="prerequisite_id" value="110030" />
       <column name="feat_id" value="75" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="30" />
+      <column name="prerequisite_id" value="110030" />
       <column name="feat_id" value="77" />
     </insert>
 
@@ -1267,12 +1240,12 @@
     <!-- Improved Shield Bash [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="31" />
+      <column name="id" value="110031" />
       <column name="text" value="Shield Proficiency." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="31" />
+      <column name="prerequisite_id" value="110031" />
       <column name="feat_id" value="86" />
     </insert>
 
@@ -1312,7 +1285,7 @@
       <column name="id" value="54" />
       <column name="feat_name" value="Improved Shield Bash [General]" />
       <!-- <column name="prerequisites" value="Shield Proficiency." /> -->
-      <column name="prerequisite_list_id" value="31" />
+      <column name="prerequisite_list_id" value="110031" />
       <column name="to_select_id" value="2002" />
       <column name="benefit"
         value="When you perform a shield bash, you may still apply the shield,s shield bonus to your AC." />
@@ -1325,13 +1298,13 @@
     <!-- Improved Sunder [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="32" />
+      <column name="id" value="100032" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="32" />
+      <column name="prerequisite_id" value="100032" />
       <column name="feat_id" value="76" />
     </insert>
 
@@ -1339,7 +1312,7 @@
       <column name="id" value="55" />
       <column name="feat_name" value="Improved Sunder [General]" />
       <!-- <column name="prerequisites" value="Str 13, Power Attack." /> -->
-      <column name="prerequisite_list_id" value="32" />
+      <column name="prerequisite_list_id" value="100032" />
       <column name="benefit"
         value="When you strike at an object held or carried by an opponent (such as a weapon or shield), you do not provoke an attack of opportunity. You also gain a +4 bonus on any attack roll made to attack an object held or carried by another character." />
       <column name="normal"
@@ -1357,13 +1330,13 @@
     <!-- Improved Trip [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="33" />
+      <column name="id" value="100033" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Int 13, Combat Expertise." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="33" />
+      <column name="prerequisite_id" value="100033" />
       <column name="feat_id" value="76" />
     </insert>
 
@@ -1372,7 +1345,7 @@
       <column name="feat_name" value="Improved Trip [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Int 13, Combat Expertise." /> -->
-      <column name="prerequisite_list_id" value="33" />
+      <column name="prerequisite_list_id" value="100033" />
       <column name="benefit"
         value="You do not provoke an attack of opportunity when you attempt to trip an opponent while you are unarmed. You also gain a +4 bonus on your Strength check to trip your opponent. If you trip an opponent in melee combat, you immediately get a melee attack against that opponent as if you hadn’t used your attack for the trip attempt." />
       <column name="normal"
@@ -1404,14 +1377,14 @@
     <!-- Improved Two-Weapon Fighting [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="34" />
+      <column name="id" value="110034" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 17 }" />
       <column name="bab" value="6" />
       <column name="text" value="Dex 17, Two-Weapon Fighting, base attack bonus +6." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="34" />
+      <column name="prerequisite_id" value="110034" />
       <column name="feat_id" value="105" />
     </insert>
 
@@ -1420,7 +1393,7 @@
       <column name="feat_name" value="Improved Two-Weapon Fighting [General]" />
       <!-- <column name="prerequisites" value="Dex 17, Two-Weapon Fighting, base attack bonus +6."
       /> -->
-      <column name="prerequisite_list_id" value="34" />
+      <column name="prerequisite_list_id" value="110034" />
       <column name="benefit"
         value="In addition to the standard single extra attack you get with an off-hand weapon, you get a second attack with it, albeit at a -5 penalty. See the Two-Weapon Fighting special attack." />
       <column name="normal"
@@ -1490,7 +1463,7 @@
     <!-- Leadership [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="35" />
+      <column name="id" value="110035" />
       <column name="class_pc"
         value="[{
                 &quot;classe&quot; : &quot;CLASS&quot; , &quot;level&quot; : 6
@@ -1501,7 +1474,7 @@
     <insert tableName="feats">
       <column name="id" value="62" />
       <column name="feat_name" value="Leadership [General]" />
-      <column name="prerequisite_list_id" value="35" />
+      <column name="prerequisite_list_id" value="110035" />
       <!-- <column name="prerequisites" value="Character level 6th." /> -->
       <column name="benefit"
         value="Having this feat enables the character to attract loyal companions and devoted followers, subordinates who assist her. See the table below for what sort of cohort and how many followers the character can recruit." />
@@ -1559,39 +1532,31 @@
     <!-- Manyshot [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="36" />
+      <column name="id" value="110036" />
       <column name="bab" value="6" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 17 }" />
       <column name="text" value="Dex 17, Point Blank Shot, Rapid Shot, base attack bonus +6." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="36" />
+      <column name="prerequisite_id" value="110036" />
       <column name="feat_id" value="75" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="36" />
+      <column name="prerequisite_id" value="110036" />
       <column name="feat_id" value="81" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="65" />
       <column name="feat_name" value="Manyshot [General]" />
-      <!-- <column name="prerequisites"
-        value="Dex 17, Point Blank Shot, Rapid Shot, base attack bonus +6." /> -->
-      <column name="prerequisite_list_id" value="36" />
+      <column name="prerequisite_list_id" value="110036" />
       <column name="benefit"
         value="As a standard action, you may fire two arrows at a single opponent within 30 feet. Both arrows use the same attack roll (with a -4 penalty) to determine success and deal damage normally (but see Special). For every five points of base attack bonus you have above +6, you may add one additional arrow to this attack, to a maximum of four arrows at a base attack bonus of +16. However, each arrow after the second adds a cumulative -2 penalty on the attack roll (for a total penalty of -6 for three arrows and -8 for four). Damage reduction and other resistances apply separately against each arrow fired." />
       <column name="normal" value="null" />
       <column name="special"
         value="Regardless of the number of arrows you fire, you apply precision-based damage only once. If you score a critical hit, only the first arrow fired deals critical damage; all others deal regular damage. A fighter may select Manyshot as one of his fighter bonus feats. A 6th-level ranger who has chosen the archery combat style is treated as having Manyshot even if he does not have the prerequisites for it, but only when he is wearing light or no armor." />
-      <!-- <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;MANYSHOT&quot;,
-        &quot;bonus&quot; : 0,
-        &quot;targets&quot; : []
-        }]" /> -->
     </insert>
 
     <!-- Martial Weapon Proficiency [General] selected -->
@@ -1630,13 +1595,13 @@
     <!-- Mobility [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="38" />
+      <column name="id" value="110038" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13, Dodge." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="38" />
+      <column name="prerequisite_id" value="110038" />
       <column name="feat_id" value="26" />
     </insert>
 
@@ -1644,7 +1609,7 @@
       <column name="id" value="68" />
       <column name="feat_name" value="Mobility [General]" />
       <!-- <column name="prerequisites" value="Dex 13, Dodge." /> -->
-      <column name="prerequisite_list_id" value="38" />
+      <column name="prerequisite_list_id" value="110038" />
       <column name="benefit"
         value="You get a +4 dodge bonus to Armor Class against attacks of opportunity caused when you move out of or within a threatened area. A condition that makes you lose your Dexterity bonus to Armor Class (if any) also makes you lose dodge bonuses. Dodge bonuses stack with each other, unlike most types of bonuses." />
       <column name="normal" value="null" />
@@ -1655,14 +1620,12 @@
     <!-- Mounted Archery [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="39" />
-      <!-- <column name="skill_study" value="[{
-             &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
-      <column name="text" value="Ride 1 rank, Mounted Combat." />
+      <column name="id" value="110039" />
+     <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="39" />
+      <column name="prerequisite_id" value="110039" />
       <column name="feat_id" value="70" />
     </insert>
 
@@ -1670,7 +1633,7 @@
       <column name="id" value="69" />
       <column name="feat_name" value="Mounted Archery [General]" />
       <!-- <column name="prerequisites" value="Ride 1 rank, Mounted Combat." /> -->
-      <column name="prerequisite_list_id" value="39" />
+      <column name="prerequisite_list_id" value="110039" />
       <column name="benefit"
         value="The penalty you take when using a ranged weapon while mounted is halved: -2 instead of -4 if your mount is taking a double move, and -4 instead of -8 if your mount is running." />
       <column name="normal" value="null" />
@@ -1692,22 +1655,20 @@
     <!-- Natural Spell [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="40" />
+      <column name="id" value="110040" />
       <column name="abilitys" value="{ &quot;wisdom&quot; : 13 }" />
       <column name="text" value="Wis 13, wild shape ability." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="40" />
+      <column name="prerequisite_id" value="110040" />
       <column name="feat_id" value="149" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="71" />
       <column name="feat_name" value="Natural Spell [General]" />
-      <!-- <column name="prerequisites" value="Wis 13, wild shape ability." /> -->
-      <!-- <column name="prerequisite_list_id" value="43" /> -->
-      <column name="prerequisite_list_id" value="40" />
+      <column name="prerequisite_list_id" value="110040" />
       <column name="benefit"
         value="You can complete the verbal and somatic components of spells while in a wild shape. You substitute various noises and gestures for the normal verbal and somatic components of a spell. You can also use any material components or focuses you possess, even if such items are melded within your current form. This feat does not permit the use of magic items while you are in a form that could not ordinarily use them, and you do not gain the ability to speak while in a wild shape." />
       <column name="normal" value="null" />
@@ -1818,7 +1779,7 @@
     <!-- Power Attack [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="41" />
+      <column name="id" value="110041" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13." />
     </insert>
@@ -1826,8 +1787,7 @@
     <insert tableName="feats">
       <column name="id" value="76" />
       <column name="feat_name" value="Power Attack [General]" />
-      <!-- <column name="prerequisites" value="Str 13." /> -->
-      <column name="prerequisite_list_id" value="41" />
+      <column name="prerequisite_list_id" value="110041" />
       <column name="benefit"
         value="On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn." />
       <column name="normal" value="null" />
@@ -1838,12 +1798,12 @@
     <!-- Precise Shot [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="42" />
+      <column name="id" value="110042" />
       <column name="text" value="Point Blank Shot." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="42" />
+      <column name="prerequisite_id" value="110042" />
       <column name="feat_id" value="75" />
     </insert>
 
@@ -1851,7 +1811,7 @@
       <column name="id" value="77" />
       <column name="feat_name" value="Precise Shot [General]" />
       <!-- <column name="prerequisites" value="Point Blank Shot." /> -->
-      <column name="prerequisite_list_id" value="42" />
+      <column name="prerequisite_list_id" value="110042" />
       <column name="benefit"
         value="You can shoot or throw ranged weapons at an opponent engaged in melee without taking the standard -4 penalty on your attack roll." />
       <column name="normal" value="null" />
@@ -1862,7 +1822,7 @@
     <!-- Quick Draw [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="43" />
+      <column name="id" value="110043" />
       <column name="bab" value="1" />
       <column name="text" value="Base attack bonus +1." />
     </insert>
@@ -1871,7 +1831,7 @@
       <column name="id" value="78" />
       <column name="feat_name" value="Quick Draw [General]" />
       <!-- <column name="prerequisites" value="Base attack bonus +1." /> -->
-      <column name="prerequisite_list_id" value="43" />
+      <column name="prerequisite_list_id" value="110043" />
       <column name="benefit"
         value="You can draw a weapon as a free action instead of as a move action. You can draw a hidden weapon (see the Sleight of Hand skill) as a move action. A character who has selected this feat may throw weapons at his full normal rate of attacks (much like a character with a bow)." />
       <column name="normal"
@@ -1884,7 +1844,6 @@
       <column name="id" value="79" />
       <column name="feat_name" value="Quicken Spell [Metamagic]" />
       <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="Casting a quickened spell is an swift action. You can perform another action, even casting another spell, in the same round as you cast a quickened spell. You may cast only one quickened spell per round. A spell whose casting time is more than 1 full round action cannot be quickened. A quickened spell uses up a spell slot four levels higher than the spell,s actual level. Casting a quickened spell doesn,t provoke an attack of opportunity." />
       <column name="normal" value="null" />
@@ -1895,7 +1854,6 @@
     <insert tableName="feats">
       <column name="id" value="80" />
       <column name="feat_name" value="Rapid Reload [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity." />
       <column name="normal"
@@ -1907,21 +1865,20 @@
     <!-- Rapid Shot [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="44" />
+      <column name="id" value="110044" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Dex 13, Point Blank Shot." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="44" />
+      <column name="prerequisite_id" value="110044" />
       <column name="feat_id" value="75" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="81" />
       <column name="feat_name" value="Rapid Shot [General]" />
-      <!-- <column name="prerequisites" value="Dex 13, Point Blank Shot." /> -->
-      <column name="prerequisite_list_id" value="44" />
+      <column name="prerequisite_list_id" value="110044" />
       <column name="benefit"
         value="Choose a type of crossbow (hand, light, or heavy). The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity. If you have selected this feat for hand crossbow or light crossbow, you may fire that weapon as many times in a full attack action as you could attack if you were using a bow." />
       <column name="normal" value="null" />
@@ -1932,29 +1889,19 @@
     <!-- Ride-By Attack [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="45" />
-      <!-- <column name="skill_study" value="[{ &quot;skillId&quot; : 22, &quot;rank&quot; : 1
-            }]" /> -->
+      <column name="id" value="110045" />
       <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
-    <!-- <insert tableName="prerequisite_skill_study">
-            <column name="id" value="2" />
-            <column name="prerequisite_id" value="49" />
-            <column name="skill_id" value="22" />
-            <column name="rank" value="1" />
-        </insert> -->
-
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="45" />
+      <column name="prerequisite_id" value="110045" />
       <column name="feat_id" value="70" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="82" />
       <column name="feat_name" value="Ride-By Attack [General]" />
-      <!-- <column name="prerequisites" value="Ride 1 rank, Mounted Combat." /> -->
-      <column name="prerequisite_list_id" value="45" />
+      <column name="prerequisite_list_id" value="110045" />
       <column name="benefit"
         value="When you are mounted and use the charge action, you may move and attack as if with a standard charge and then move again (continuing the straight line of the charge). Your total movement for the round can,t exceed double your mounted speed. You and your mount do not provoke an attack of opportunity from the opponent that you attack." />
       <column name="normal" value="null" />
@@ -1965,7 +1912,6 @@
     <insert tableName="feats">
       <column name="id" value="83" />
       <column name="feat_name" value="Run [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="When running, you move five times your normal speed (if wearing medium, light, or no armor and carrying no more than a medium load) or four times your speed (if wearing heavy armor or carrying a heavy load). If you make a jump after a running start (see the Jump skill description), you gain a +4 bonus on your Jump check. While running, you retain your Dexterity bonus to AC." />
       <column name="normal"
@@ -2016,7 +1962,7 @@
     <!-- Shot On The Run [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="46" />
+      <column name="id" value="110046" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="bab" value="4" />
       <column name="text"
@@ -2024,17 +1970,17 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="46" />
+      <column name="prerequisite_id" value="110046" />
       <column name="feat_id" value="26" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="46" />
+      <column name="prerequisite_id" value="110046" />
       <column name="feat_id" value="68" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="46" />
+      <column name="prerequisite_id" value="110046" />
       <column name="feat_id" value="75" />
     </insert>
 
@@ -2043,7 +1989,7 @@
       <column name="feat_name" value="Shot On The Run [General]" />
       <!-- <column name="prerequisites"
         value="Dex 13, Dodge, Mobility, Point Blank Shot, base attack bonus +4." /> -->
-      <column name="prerequisite_list_id" value="46" />
+      <column name="prerequisite_list_id" value="110046" />
       <column name="benefit"
         value="When using the attack action with a ranged weapon, you can move both before and after the attack, provided that your total distance moved is not greater than your speed." />
       <column name="normal" value="null" />
@@ -2096,21 +2042,20 @@
     <!-- Snatch Arrows [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="47" />
+      <column name="id" value="110047" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 15 }" />
       <column name="text" value="Dex 15, Deflect Arrows, Improved Unarmed Strike." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="47" />
+      <column name="prerequisite_id" value="110047" />
       <column name="feat_id" value="59" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="91" />
       <column name="feat_name" value="Snatch Arrows [General]" />
-      <!-- <column name="prerequisites" value="Dex 15, Deflect Arrows, Improved Unarmed Strike." /> -->
-      <column name="prerequisite_list_id" value="47" />
+      <column name="prerequisite_list_id" value="110047" />
       <column name="benefit"
         value="When using the Deflect Arrows feat you may catch the weapon instead of just deflecting it. Thrown weapons can immediately be thrown back at the original attacker (even though it isn,t your turn) or kept for later use." />
       <column name="normal" value="null" />
@@ -2153,27 +2098,24 @@
     <!-- Spirited Charge [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="48" />
-      <!-- <column name="skill_study" value="[{ &quot;skillId&quot; :
-             22, &quot;rank&quot; : 1 }]" /> -->
+      <column name="id" value="110048" />
       <column name="text" value="Ride 1 rank, Mounted Combat, Ride-By Attack." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="48" />
+      <column name="prerequisite_id" value="110048" />
       <column name="feat_id" value="70" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="48" />
+      <column name="prerequisite_id" value="110048" />
       <column name="feat_id" value="82" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="95" />
       <column name="feat_name" value="Spirited Charge [General]" />
-      <!-- <column name="prerequisites" value="Ride 1 rank, Mounted Combat, Ride-By Attack." /> -->
-      <column name="prerequisite_list_id" value="48" />
+      <column name="prerequisite_list_id" value="110048" />
       <column name="benefit"
         value="When mounted and using the charge action, you deal double damage with a melee weapon (or triple damage with a lance)." />
       <column name="normal" value="null" />
@@ -2184,27 +2126,26 @@
     <!-- Spring Attack [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="49" />
+      <column name="id" value="110049" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="bab" value="4" />
       <column name="text" value="Dex 13, Dodge, Mobility, base attack bonus +4." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="49" />
+      <column name="prerequisite_id" value="110049" />
       <column name="feat_id" value="26" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="49" />
+      <column name="prerequisite_id" value="110049" />
       <column name="feat_id" value="68" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="96" />
       <column name="feat_name" value="Spring Attack [General]" />
-      <!-- <column name="prerequisites" value="Dex 13, Dodge, Mobility, base attack bonus +4." /> -->
-      <column name="prerequisite_list_id" value="49" />
+      <column name="prerequisite_list_id" value="110049" />
       <column name="benefit"
         value="When using the attack action with a melee weapon, you can move both before and after the attack, provided that your total distance moved is not greater than your speed. Moving in this way does not provoke an attack of opportunity from the defender you attack, though it might provoke attacks of opportunity from other creatures, if appropriate. You can,t use this feat if you are wearing heavy armor." />
       <column name="normal" value="null" />
@@ -2215,7 +2156,6 @@
     <insert tableName="feats">
       <column name="id" value="97" />
       <column name="feat_name" value="Stealthy [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Hide checks and Move Silently checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -2225,7 +2165,6 @@
       <column name="id" value="98" />
       <column name="feat_name" value="Still Spell [Metamagic]" />
       <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
-      <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="A stilled spell can be cast with no somatic components." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -2234,7 +2173,7 @@
     <!-- Stunning Fist [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="50" />
+      <column name="id" value="110050" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 , &quot;wisdom&quot; : 13 }" />
       <column name="bab" value="8" />
       <column name="text"
@@ -2242,7 +2181,7 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="50" />
+      <column name="prerequisite_id" value="110050" />
       <column name="feat_id" value="59" />
     </insert>
 
@@ -2251,7 +2190,7 @@
       <column name="feat_name" value="Stunning Fist [General]" />
       <!-- <column name="prerequisites"
         value="Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8." /> -->
-      <column name="prerequisite_list_id" value="50" />
+      <column name="prerequisite_list_id" value="110050" />
       <column name="benefit"
         value="You must declare that you are using this feat before you make your attack roll (thus, a failed attack roll ruins the attempt). Stunning Fist forces a foe damaged by your unarmed attack to make a Fortitude saving throw (DC 10 + ? your character level + your Wis modifier), in addition to dealing damage normally. A defender who fails this saving throw is stunned for 1 round (until just before your next action). A stunned creature drops everything held, can,t take actions, takes a -2 penalty to AC, and loses his Dexterity bonus to AC. You may attempt a stunning attack once per day for every four levels you have attained (but see Special), and no more than once per round. Constructs, oozes, plants, undead, incorporeal creatures, and creatures immune to critical hits cannot be stunned." />
       <column name="normal" value="null" />
@@ -2296,22 +2235,19 @@
     <!-- Trample [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="51" />
-      <!-- <column name="skill_study" value="[{ 
-            &quot;skillId&quot; : 22, &quot;rank&quot; : 1 }]" /> -->
-      <column name="text" value="Ride 1 rank, Mounted Combat." />
+      <column name="id" value="110051" />
+     <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="51" />
+      <column name="prerequisite_id" value="110051" />
       <column name="feat_id" value="70" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="103" />
       <column name="feat_name" value="Trample [General]" />
-      <!-- <column name="prerequisites" value="Ride 1 rank, Mounted Combat." /> -->
-      <column name="prerequisite_list_id" value="51" />
+      <column name="prerequisite_list_id" value="110051" />
       <column name="benefit"
         value="When you attempt to overrun an opponent while mounted, your target may not choose to avoid you. Your mount may make one hoof attack against any target you knock down, gaining the standard +4 bonus on attack rolls against prone targets." />
       <column name="normal" value="null" />
@@ -2321,21 +2257,20 @@
     <!-- Two-Weapon Defense [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="52" />
+      <column name="id" value="110052" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 15 }" />
       <column name="text" value="Dex 15, Two-Weapon Fighting." />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="52" />
+      <column name="prerequisite_id" value="110052" />
       <column name="feat_id" value="105" />
     </insert>
 
     <insert tableName="feats">
       <column name="id" value="104" />
       <column name="feat_name" value="Two-Weapon Defense [General]" />
-      <!-- <column name="prerequisites" value="Dex 15, Two-Weapon Fighting." /> -->
-      <column name="prerequisite_list_id" value="52" />
+      <column name="prerequisite_list_id" value="110052" />
       <column name="benefit"
         value="When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. See the Two-Weapon Fighting special attack." />
       <column name="normal" value="null" />
@@ -2369,7 +2304,7 @@
     <!-- Weapon Focus [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="53" />
+      <column name="id" value="110053" />
       <column name="bab" value="1" />
       <column name="text" value="Base attack bonus +1." />
     </insert>
@@ -2394,7 +2329,7 @@
       <column name="id" value="107" />
       <column name="feat_name" value="Weapon Focus [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
-      <column name="prerequisite_list_id" value="53" />
+      <column name="prerequisite_list_id" value="110053" />
       <column name="modifiers_id" value="1020" />
       <column name="to_select_id" value="2001" />
       <column name="benefit"
@@ -2407,7 +2342,7 @@
     <!-- Weapon Specialization [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="54" />
+      <column name="id" value="110054" />
       <column name="class_pc"
         value="[{ &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 4 }]" />
       <column name="text"
@@ -2415,7 +2350,7 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="54" />
+      <column name="prerequisite_id" value="110054" />
       <column name="feat_id" value="107" />
     </insert>
 
@@ -2434,7 +2369,7 @@
       <column name="feat_name" value="Weapon Specialization [General]" />
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." /> -->
-      <column name="prerequisite_list_id" value="54" />
+      <column name="prerequisite_list_id" value="110054" />
       <column name="benefit"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
       <column name="normal" value="null" />
@@ -2446,7 +2381,7 @@
     <!-- Whirlwind Attack [General] pre -->
 
     <insert tableName="prerequisite">
-      <column name="id" value="55" />
+      <column name="id" value="110055" />
       <column name="abilitys"
         value="{ &quot;dexterity&quot; : 13 , &quot;intelligence&quot; : 13 }" />
       <column name="bab" value="4" />
@@ -2455,22 +2390,22 @@
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="55" />
+      <column name="prerequisite_id" value="110055" />
       <column name="feat_id" value="14" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="55" />
+      <column name="prerequisite_id" value="110055" />
       <column name="feat_id" value="26" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="55" />
+      <column name="prerequisite_id" value="110055" />
       <column name="feat_id" value="68" />
     </insert>
 
     <insert tableName="prerequisite_feat">
-      <column name="prerequisite_id" value="55" />
+      <column name="prerequisite_id" value="110055" />
       <column name="feat_id" value="96" />
     </insert>
 
@@ -2479,7 +2414,7 @@
       <column name="feat_name" value="Whirlwind Attack [General]" />
       <!-- <column name="prerequisites"
         value="Dex 13, Int 13, Combat Expertise, Dodge, Mobility, Spring Attack, base attack bonus +4." /> -->
-      <column name="prerequisite_list_id" value="55" />
+      <column name="prerequisite_list_id" value="110055" />
       <column name="benefit"
         value="When you use the full attack action, you can give up your regular attacks and instead make one melee attack at your full base attack bonus against each opponent within reach." />
       <column name="normal" value="null" />
@@ -3072,8 +3007,8 @@
 
     <!-- Fighter 5000-->
     <insert tableName="prerequisite">
-      <column name="id" value="4004"/>
-      <column name="feat_type" value="[&quot;FIGHTER&quot;]"/>
+      <column name="id" value="4004" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
     </insert>
 
     <insert tableName="feats">
@@ -3619,8 +3554,8 @@
 
     <!-- Combat Style -->
     <insert tableName="prerequisite">
-      <column name="id" value="4002"/>
-      <column name="text" value="select a combat style for ranger"/>
+      <column name="id" value="4002" />
+      <column name="text" value="select a combat style for ranger" />
     </insert>
 
     <insert tableName="prerequisite_feat">
@@ -3964,8 +3899,9 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     </insert>
 
     <insert tableName="prerequisite">
-      <column name="id" value="4005"/>
-      <column name="feat_type" value="[&quot;METAMAGIC&quot; , &quot;ITEM_CREATION&quot; , &quot;MAGE&quot;]"/>
+      <column name="id" value="4005" />
+      <column name="feat_type"
+        value="[&quot;METAMAGIC&quot; , &quot;ITEM_CREATION&quot; , &quot;MAGE&quot;]" />
     </insert>
 
     <insert tableName="feats">

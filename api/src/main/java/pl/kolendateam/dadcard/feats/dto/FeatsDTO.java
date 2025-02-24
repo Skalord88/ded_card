@@ -1,11 +1,13 @@
 package pl.kolendateam.dadcard.feats.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class FeatsDTO {

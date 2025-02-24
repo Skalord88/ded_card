@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.attack.dto.AttackRollDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
@@ -14,7 +16,9 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 @Setter
 public class AttackRoll implements Serializable {
 
+  @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
+
   Integer bonus;
 
   public AttackRoll(AttackRollDTO attackDTO) {
