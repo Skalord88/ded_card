@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,9 +13,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.lang.StackWalker.Option;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -30,17 +29,12 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
-import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
-import pl.kolendateam.dadcard.feats.repository.PrerequisiteRepository;
-import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
@@ -224,12 +218,10 @@ public class Character implements Serializable {
     this.skillsCharacter.addAll(updatedList);
   }
 
-  public 
-  // List<Prerequisite> 
-  void
-  addFeatsToCharacter(
+  public void addFeatsToCharacter(
     int id,
-    ArrayList<FeatsPcDTO> featsDTOList
+    ArrayList<FeatsPcDTO> featsDTOList,
+    EntityManager entityManager
   ) {
     if (this.featsList == null) {
       this.featsList = new ArrayList<>();
@@ -245,53 +237,75 @@ public class Character implements Serializable {
               feat.getLevel() != null &&
               feat.getLevel() == fPc.level &&
               feat.getClassFeat() == null
-            ) || // se feat e level trovati, si tratta di un feat di livello (uno ogni 3)
+            ) ||
             (
               feat.getClassFeat() != null &&
               fPc.classFeat != null &&
               feat.getClassFeat().getId() == fPc.classFeat.id
             )
-          ) // se classFeat trovato, si tratta di un feat di classe
+          )
           .findFirst();
 
       FeatsPc existing;
       if (existingOpt.isPresent()) {
-        existing = existingOpt.get(); // se esiste già, assegnalo
-        if (fPc.feat != null) {
-          existing.setFeat(new Feats(fPc.feat.id));
-        }
-        if (existing.getSelected() != null) {
-          if (fPc.selected.feats != null && fPc.selected.feats.size() > 0) {
-            List<Feats> feats = MapperFeats.toFeats(fPc.selected.feats);
-            existing.getSelected().setFeats(feats);
-          } else {
-            existing.getSelected().setFeats(null);
+        existing = existingOpt.get(); // Se esiste già, usalo
+
+        if (
+          fPc.feat != null &&
+          existing.getFeat() != null &&
+          fPc.feat.id != existing.getFeat().getId()
+        ) {
+          // Recupera Feats dal DB invece di crearne uno nuovo
+          Feats existingFeat = entityManager.find(Feats.class, fPc.feat.id);
+          if (existingFeat != null) {
+            existing.setFeat(existingFeat);
           }
-          if (fPc.selected.items != null && fPc.selected.items.size() > 0) {
-            List<Items> items = MapperItems.toItemsListFromDTOList(
-              fPc.selected.items
-            );
-            existing.getSelected().setItems(items);
-          } else {
-            existing.getSelected().setItems(null);
-          }
-        } else {
-          existing = new FeatsPc(id, fPc); // altrimenti crea un nuovo FeatsPc
         }
       } else {
-        existing = new FeatsPc(id, fPc); // altrimenti crea un nuovo FeatsPc
+        existing = new FeatsPc(id, fPc); // Crea un nuovo FeatsPc se non esiste già
       }
+
+      // Gestione di Prerequisite
+      if (fPc.selected != null) {
+        Prerequisite prerequisite = (fPc.selected.id != null)
+          ? entityManager.find(Prerequisite.class, fPc.selected.id)
+          : new Prerequisite();
+
+        if (fPc.selected.feats != null && !fPc.selected.feats.isEmpty()) {
+          List<Feats> newFeats = new ArrayList<>();
+          for (PrerequisiteFeatsDTO featDTO : fPc.selected.feats) {
+            Feats existingFeat = entityManager.find(Feats.class, featDTO.id);
+            if (existingFeat != null) {
+              newFeats.add(existingFeat);
+            }
+          }
+          prerequisite.setFeats(newFeats);
+        } else {
+          prerequisite.setFeats(null);
+        }
+
+        if (fPc.selected.items != null && !fPc.selected.items.isEmpty()) {
+          List<Items> itemsList = new ArrayList<>();
+          for (ItemsDTO itemDTO : fPc.selected.items) {
+            Items existingItem = entityManager.find(Items.class, itemDTO.id);
+            if (existingItem != null) {
+              itemsList.add(existingItem);
+            }
+          }
+          prerequisite.setItems(itemsList);
+        } else {
+          prerequisite.setItems(null);
+        }
+
+        existing.setSelected(prerequisite);
+      }
+
+      System.out.println("existing: " + existing);
       newSet.add(existing);
     });
 
     this.featsList.clear();
     this.featsList.addAll(newSet);
-
-    // return newSet
-    //   .stream()
-    //   .map(FeatsPc::getSelected)
-    //   .filter(p -> p != null)
-    //   .collect(Collectors.toList());
   }
 
   private boolean prerequisiteEquals(Prerequisite p, PrerequisiteDTO dto) {

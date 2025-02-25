@@ -15,6 +15,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 
 @NoArgsConstructor
@@ -38,7 +39,7 @@ public class Feats implements Serializable {
   String normal;
   String special;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(
     name = "modifiers_id",
     referencedColumnName = "id",
@@ -46,7 +47,7 @@ public class Feats implements Serializable {
   )
   Prerequisite modifiers;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(
     name = "prerequisite_list_id",
     referencedColumnName = "id",
@@ -54,7 +55,7 @@ public class Feats implements Serializable {
   )
   Prerequisite prerequisiteList;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(
     name = "to_select_id",
     referencedColumnName = "id",
@@ -62,7 +63,7 @@ public class Feats implements Serializable {
   )
   Prerequisite toSelect;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(
     name = "selected_id",
     referencedColumnName = "id",
@@ -72,6 +73,15 @@ public class Feats implements Serializable {
 
   public Feats(int idDTO) {
     this.id = idDTO;
+  }
+
+  public Feats(FeatsDTO dto) {
+    this.id = dto.id;
+    this.featName = dto.featName;
+    this.featType = dto.featType;
+    this.benefit = dto.benefit;
+    this.normal = dto.normal;
+    this.special = dto.special;
   }
 
   public Feats(PrerequisiteFeatsDTO featDTO) {

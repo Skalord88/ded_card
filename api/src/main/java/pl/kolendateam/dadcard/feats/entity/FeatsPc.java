@@ -43,7 +43,7 @@ public class FeatsPc implements Serializable {
   @JoinColumn(name = "character_card_id")
   Character character;
 
-  @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
+  @ManyToOne
   @JoinColumn(name = "feats_id")
   Feats feat;
 
@@ -51,7 +51,7 @@ public class FeatsPc implements Serializable {
   @JoinColumn(name = "class_feats_id")
   ClassFeats classFeat;
 
-  @OneToOne(cascade = CascadeType.PERSIST, orphanRemoval = true)
+  @OneToOne(cascade = CascadeType.MERGE, orphanRemoval = true)
   @JoinColumn(
     name = "selected_id",
     referencedColumnName = "id",
@@ -70,21 +70,20 @@ public class FeatsPc implements Serializable {
         fDTO.selected.id != null
           ? new Prerequisite(fDTO.selected.id)
           : new Prerequisite();
-
-      if (fDTO.selected.feats != null && !fDTO.selected.feats.isEmpty()) {
-        List<Feats> newFeats = MapperFeats.toFeats(fDTO.selected.feats);
-        this.selected.setFeats(new ArrayList<>(newFeats));
-      } else {
-        this.selected.setFeats(null);
-      }
-      if (fDTO.selected.items != null && !fDTO.selected.items.isEmpty()) {
-        List<Items> items = MapperItems.toItemsListFromDTOList(
-          fDTO.selected.items
-        );
-        this.selected.setItems(new ArrayList<>(items));
-      } else {
-        this.selected.setItems(null);
-      }
+      //   if (fDTO.selected.feats != null && !fDTO.selected.feats.isEmpty()) {
+      //     List<Feats> newFeats = MapperFeats.toFeats(fDTO.selected.feats);
+      //     this.selected.setFeats(new ArrayList<>(newFeats));
+      //   } else {
+      //     this.selected.setFeats(null);
+      //   }
+      //   if (fDTO.selected.items != null && !fDTO.selected.items.isEmpty()) {
+      //     List<Items> items = MapperItems.toItemsListFromDTOList(
+      //       fDTO.selected.items
+      //     );
+      //     this.selected.setItems(new ArrayList<>(items));
+      //   } else {
+      //     this.selected.setItems(null);
+      //   }
     }
   }
 }
