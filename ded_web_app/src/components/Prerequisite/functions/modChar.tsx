@@ -79,19 +79,25 @@ export const createModChar = (char: CharacterPc, items?: ItemsList): CharToModif
     
       // feats
       char.featsList.forEach((f) => {
-        f.feat.modifiers && f.selected
-          ? modif.push(createModifierSelected(f.feat.modifiers, f.selected))
-          : f.selected && modif.push(f.selected);
+        if (f && f.feat && f.feat.modifiers && f.selected) {
+          modif.push(createModifierSelected(f.feat.modifiers, f.selected));
+        } else if (f && f.selected) {
+          modif.push(f.selected);
+        }
       });
-      // feats
+      
+      // class feats
       char.classPcList.forEach((cl) => {
-        cl &&
+        if (cl && cl.classCharacter && cl.classCharacter.classFeats) {
           cl.classCharacter.classFeats.forEach((f) => {
-            if (f && f.level <= cl.level) {
-              f.modifiers && modif.push(f.modifiers);
+            if (f && f.level <= cl.level && f.modifiers) {
+              modif.push(f.modifiers);
             }
           });
+        }
       });
+      
+      
       modChar = modifyCharacter(char, modif, items);
     
       modChar.attacks = modifyAttacks(modChar);

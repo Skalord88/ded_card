@@ -22,64 +22,64 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
     name: string;
     prer?: Prerequisite[];
     description: { benefit: string; normal: string; special: string };
-  }[] = featsFromLevel.map(
-    (f, index) =>
-      f && {
-        name: f.feat.featName,
-        prer:
-          f.selected && f.feat.modifiers
-            ? [f.selected, f.feat.modifiers]
-            : f.selected
-            ? [f.selected]
-            : f.feat.modifiers
-            ? [f.feat.modifiers]
-            : [],
-        description: {
-          normal: f.feat.normal,
-          special: f.feat.special,
-          benefit: f.feat.benefit
-        }
+  }[] = featsFromLevel
+    .filter(Boolean) // Removes undefined/null values
+    .map((f) => ({
+      name: f.feat?.featName || "Unknown Feat",
+      prer: f.selected
+        ? f.feat?.modifiers
+          ? [f.selected, f.feat.modifiers]
+          : [f.selected]
+        : f.feat?.modifiers
+        ? [f.feat.modifiers]
+        : [],
+      description: {
+        normal: f.feat?.normal || "",
+        special: f.feat?.special || "",
+        benefit: f.feat?.benefit || ""
       }
-  );
+    }));
+  
   const fePcBnsCl: {
-    name: string;
+    name?: string;
     prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
-  }[] = featsFromClass.map(
-    (f, index) =>
-      f && {
-        name: f.feat.featName,
-        prer:
-          f.selected && f.feat.modifiers
-            ? [f.selected, f.feat.modifiers]
-            : f.selected
-            ? [f.selected]
-            : f.feat.modifiers
-            ? [f.feat.modifiers]
-            : [],
-        description: {
-          normal: f.feat.normal,
-          special: f.feat.special,
-          benefit: f.feat.benefit
-        }
-      }
-  );
-  const fe: {
-    name: string;
-    prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
-  }[] = featsFeats.map(
-    (f, index) =>
-      f && {
+    description?: { benefit?: string; normal?: string; special?: string };
+  }[] = featsFromClass
+    .filter((f): f is FeatPc => f !== undefined && f.feat !== undefined)
+    .map((f) => ({
+      name: f.feat?.featName || "Unknown Feat",
+      prer: f.selected
+        ? f.feat?.modifiers
+          ? [f.selected, f.feat.modifiers]
+          : [f.selected]
+        : f.feat?.modifiers
+        ? [f.feat.modifiers]
+        : [],
+      description: f.feat
+        ? {
+            normal: f.feat.normal,
+            special: f.feat.special,
+            benefit: f.feat.benefit
+          }
+        : undefined
+    }));
+  
+    const fe: {
+      name: string;
+      prer?: Prerequisite[];
+      description: { benefit: string; normal: string; special: string };
+    }[] = featsFeats
+      .filter(Boolean) // Removes null/undefined values before mapping
+      .map((f) => ({
         name: f.featName,
-        prer: f.modifiers && [f.modifiers],
+        prer: f.modifiers ? [f.modifiers] : [],
         description: {
-          normal: f.normal,
-          special: f.special,
-          benefit: f.benefit
+          normal: f.normal || "",
+          special: f.special || "",
+          benefit: f.benefit || ""
         }
-      }
-  );
+      }));
+    
   const feCl: {
     name: string;
     prer?: Prerequisite[];
@@ -101,7 +101,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
     <div>
       <h2 className="rpgui-container-framed-golden-2">Feats</h2>
       <ListOfFeatsMap key={"Feats Level"} feats={fePcLv} titolo={"Feats Level"} />
-      <ListOfFeatsMap key={"Feats Class Bonus"} feats={fePcBnsCl} titolo={"Feats Class Bonus"} />
+      {/* <ListOfFeatsMap key={"Feats Class Bonus"} feats={fePcBnsCl} titolo={"Feats Class Bonus"} /> */}
       <ListOfFeatsMap key={"Feats"} feats={fe} titolo={"Feats"} />
       <ListOfFeatsMap key={"Class Feats"} feats={feCl} titolo={"Class Feats"} />
     </div>
@@ -110,11 +110,11 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
 
 export type ListOfFeatsMapProps = {
   feats: {
-    name: string;
+    name?: string;
     prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
+    description?: { benefit: string; normal: string; special: string };
   }[];
-  titolo: string;
+  titolo?: string;
 };
 
 export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
@@ -122,21 +122,21 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
   titolo
 }) => {
   const [selectedFeat, setSelectedFeat] = useState<{
-    name: string;
+    name?: string;
     prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
+    description?: { benefit: string; normal: string; special: string };
   } | null>(null);
 
-  const orderedFeats = feats.sort((a, b) => {
+  const orderedFeats = feats?.sort((a, b) => {
     const nameA = a.name || ""; // Default to an empty string if null or undefined
     const nameB = b.name || "";
     return nameA.localeCompare(nameB);
   });
 
   const selectFeat = (feat: {
-    name: string;
+    name?: string;
     prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
+    description?: { benefit: string; normal: string; special: string };
   }) => {
     setSelectedFeat(feat);
   };
@@ -150,8 +150,8 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
       
       <div style={{ display: "grid", gridColumn: "45% 5% 50%" }}>
         <div style={{ gridColumn: 1 }}>
-        {orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
-          {feats.map(
+        {orderedFeats && orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
+          {feats?.map(
             (f, index) =>
               f && (
                 <div key={index}>
@@ -179,9 +179,9 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
 
 export type SelectedFeatProps = {
   feat: {
-    name: string;
+    name?: string;
     prer?: Prerequisite[];
-    description: { benefit: string; normal: string; special: string };
+    description?: { benefit: string; normal: string; special: string };
   };
   onClear: () => void;
 };
@@ -202,19 +202,19 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
   return (
     <div style={{ minHeight: 50, maxHeight: 500, overflowY: "auto" }}>
       {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
-      {feat.description.benefit ? (
+      {feat.description?.benefit ? (
         <p>
           <span style={{ color: "yellow"}}>benefit: </span>
           <span>{feat.description.benefit}</span>
         </p>
       ) : null}
-      {feat.description.normal ? (
+      {feat.description?.normal ? (
         <p>
           <span style={{ color: "yellow"}}>normal: </span>
           <span>{feat.description.normal}</span>
         </p>
       ) : null}
-      {feat.description.special ? (
+      {feat.description?.special ? (
         <p>
           <span style={{ color: "yellow"}}>special: </span>
           <span>{feat.description.special}</span>

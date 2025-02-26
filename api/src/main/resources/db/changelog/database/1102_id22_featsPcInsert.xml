@@ -5,7 +5,7 @@
 
     <changeSet id="22" author="oscar">
 
-        <insert tableName="feats_pc">
+        <!-- <insert tableName="feats_pc">
             <column name="id" value="100" />
             <column name="character_card_id" value="100" />
             <column name="class_feats_id" value="171" />
@@ -19,7 +19,7 @@
         <insert tableName="prerequisite_feat">
             <column name="prerequisite_id" value="100" />
             <column name="feat_id" value="81" />
-        </insert>
+        </insert> -->
 
     </changeSet>
 </databaseChangeLog>

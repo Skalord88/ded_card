@@ -3,14 +3,20 @@ import { CharacterPc, Item, Weapon } from "../interfaces";
 import { FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
 import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
 
-export function groupAllFeats(
-  char: CharacterPc
-): {feats: Feat[] , classFeats: ClassFeats[] , pcFeats: {fromLevel: FeatPc[], fromClass: FeatPc[]}} {
+export function groupAllFeats(char: CharacterPc): {
+  feats: Feat[];
+  classFeats: ClassFeats[];
+  pcFeats: { fromLevel: FeatPc[]; fromClass: FeatPc[] };
+} {
+  const classFeats: ClassFeats[] = char.classPcList.flatMap((cl) =>
+    cl.classCharacter.classFeats.filter((classe) => classe.level <= cl.level)
+  );
+  const featsFromLevel: FeatPc[] = char.featsList.filter(
+    (f) => checkFeatPcType(f) === 1
+  );
+  const featsFromClass: FeatPc[] = char.featsList
+    .filter((f) => checkFeatPcType(f) === 2)
 
-  const classFeats: ClassFeats[] = char.classPcList.flatMap(cl => cl.classCharacter.classFeats.filter(classe => classe.level <= cl.level))
-  const featsFromLevel: FeatPc[] = char.featsList.filter(f => checkFeatPcType(f) === 1).map(level => level)
-  const featsFromClass: FeatPc[] = char.featsList.filter(f => checkFeatPcType(f) === 2 || checkFeatPcType(f) === 3).map(cl => cl)
-  
   return {
     feats: [
       ...(char.race.race.raceFeats ? char.race.race.raceFeats : []),
@@ -22,48 +28,64 @@ export function groupAllFeats(
       fromClass: featsFromClass
     }
   };
-
 }
 
-export const findFeatById = (feats: FeatsFromChar, findId: number[]): Boolean => {
-  return feats.classFeats.find((f) => findId.includes(f.feat.id)) ||
-   feats.pcFeats.fromLevel.find((f) => findId.includes(f.feat.id)) ||
-   feats.pcFeats.fromClass.find((f) => findId.includes(f.feat.id)) ||
-   feats.feats.find((f) => findId.includes(f.id)) ?
-   true : false
-}
+export const findFeatById = (
+  feats: FeatsFromChar,
+  findId: number[]
+): boolean => {
+  return feats.classFeats
+    .filter(Boolean)
+    .find((f) => f.feat && findId.includes(f.feat.id)) ||
+    feats.pcFeats.fromLevel
+      .filter(Boolean)
+      .find((f) => f.feat && findId.includes(f.feat.id)) ||
+    feats.pcFeats.fromClass
+      .filter(Boolean)
+      .find((f) => f.feat && findId.includes(f.feat.id)) ||
+    feats.feats.filter(Boolean).find((f) => f.id && findId.includes(f.id))
+    ? true
+    : false;
+};
 
 export const findPrerequisiteFeatsInFeatsList = (
-  filter: string[], lista: Feat[]
+  filter: string[],
+  lista: Feat[]
 ): Feat[] => {
-  if (filter) return lista
-  .filter(f => f.featType && f.featType
-    .some(ft => filter.includes(ft)));
-  return []
+  if (filter)
+    return lista.filter(
+      (f) => f.featType && f.featType.some((ft) => filter.includes(ft))
+    );
+  return [];
 };
 
 export const findPrerequisiteFeatsInItemDrop = (
-  filter: string[], lista: itemInDrop[]
+  filter: string[],
+  lista: itemInDrop[]
 ): itemInDrop[] => {
-  if (filter) return lista
-  .filter(f => (f.item as Feat).featType && (f.item as Feat).featType
-    .some(ft => filter.includes(ft)));
-  return []
+  if (filter)
+    return lista.filter(
+      (f) =>
+        (f.item as Feat).featType &&
+        (f.item as Feat).featType.some((ft) => filter.includes(ft))
+    );
+  return [];
 };
 
 export const findPrerequisiteItemsInFeatsList = (
-  filter: string, lista: Weapon[]
+  filter: string,
+  lista: Weapon[]
 ): Item[] => {
-  if (filter) return lista
-  .filter(f => f.weaponName && filter === f.weaponName)
-  return []
+  if (filter)
+    return lista.filter((f) => f.weaponName && filter === f.weaponName);
+  return [];
 };
 
 export const checkFeatPcType = (f: FeatPc): number => {
-    if (f.feat && f.classFeat === null) return 1;
-    if (f.feat && f.classFeat) return 2;
-    return 0;
-  };
+  if (f.feat && f.classFeat === null && f.level) return 1;
+  if (f.feat === null && f.classFeat && f.level === null) return 2;
+  return 0;
+};
 
 // export const typeOfPrerequisiteInToSelect = (
 //   element: NewFeatPc, listaToSelect: ListOfToSelect
@@ -82,7 +104,7 @@ export const checkFeatPcType = (f: FeatPc): number => {
 //     drop = addToDrop(element.toSelect?.feats, "feat");
 //   }
 
-  /// weapons
+/// weapons
 //   if (element.toSelect?.weaponType) {
 //     const listaOfWeapons: Weapon[] = listaToSelect.weapons.flatMap((i) => i.item as Weapon);
 //     const filtredListaByType: Item[] = findPrerequisiteItemsInFeatsList(
@@ -96,5 +118,3 @@ export const checkFeatPcType = (f: FeatPc): number => {
 //   }
 //   return drop;
 // }
-
-

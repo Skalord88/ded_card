@@ -61,13 +61,16 @@ export function Feats() {
         const resChar = await axios.get(urlChar + "/" + charId);
         const resItems = await axios.get(urlItems);
 
-        const char = resChar.data;
-        setChar(char);
-        const newModChar = createModChar(resChar.data, resItems.data);
+        const charData = await resChar.data;
+        setChar(charData);
+
+        const newModChar = await createModChar(charData, resItems.data);
         setModChar(newModChar);
 
+        console.log(newModChar.feats.pcFeats);
+
         const resFeats = await axios.get(urlFeats);
-        const listOfFeats: Feat[] = resFeats.data;
+        const listOfFeats: Feat[] = await resFeats.data;
         const itemsFeats: itemInDrop[] = addToDrop(
           listOfFeats.filter(
             (f) => f.featType === null || !f.featType.includes("CLASS")
@@ -75,9 +78,9 @@ export function Feats() {
           "feat"
         );
 
-        const dbWeapons = resItems.data.weaponsList;
+        const dbWeapons = await resItems.data.weaponsList;
         const itemsWeapons = addToDrop(dbWeapons, "items");
-        const dbArmors = resItems.data.armorsList;
+        const dbArmors = await resItems.data.armorsList;
         const itemsArmors = addToDrop(dbArmors, "items");
 
         setItemList({
@@ -119,66 +122,75 @@ export function Feats() {
           skills: addToDrop(["culi", "tette"], "filter")
         });
 
-        const quantiFeats: number =
+        let quantiFeats: number =
           Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) +
           1;
+
+        let featsGiaPresenti: number =
+          newModChar.feats.pcFeats.fromLevel.length;
 
         let featsFromLevel: FeatPc[] = [];
 
         for (let i = 0; i < quantiFeats; i++) {
-          featsFromLevel.push({
-            id: 0,
-            feat: emptyFeat,
-            level: i === 0 ? 1 : i * 3,
-            selected: emptyPrerequisite
-          });
+          if (featsGiaPresenti > 0) {
+            featsFromLevel.push({
+              id: newModChar.feats.pcFeats.fromLevel[i].id,
+              feat: newModChar.feats.pcFeats.fromLevel[i].feat,
+              level: newModChar.feats.pcFeats.fromLevel[i].level,
+              selected: newModChar.feats.pcFeats.fromLevel[i].selected
+            });
+            featsGiaPresenti--;
+          } else {
+            featsFromLevel.push({
+              id: 0,
+              feat: emptyFeat,
+              level: i === 0 ? 1 : i * 3,
+              selected: emptyPrerequisite
+            });
+          }
+
+          if (featsFromLevel) {
+            setFeatsToAddList(featsFromLevel);
+          }
         }
 
-        for (let i = 0; i < newModChar.feats.pcFeats.fromLevel.length; i++) {
-          featsFromLevel[i] = {
-            ...featsFromLevel[i],
-            feat: newModChar.feats.pcFeats.fromLevel[i].feat,
-            selected: newModChar.feats.pcFeats.fromLevel[i].selected
-            // toSelect: newModChar.feats.pcFeats.fromLevel[i].feat.toSelect
-          };
+        const quantiBonus: ClassFeats[] = newModChar.feats.classFeats.filter(
+          (c: ClassFeats) =>
+            c.feat.toSelect?.featType &&
+            c.feat.toSelect?.feats
+          ) 
+        featsGiaPresenti = newModChar.feats.pcFeats.fromClass.length;
+
+        let classPcBonusFeats: FeatPc[] = []
+
+        for (let i = 0; i < quantiFeats; i++) {
+          if (featsGiaPresenti > 0) {
+            classPcBonusFeats.push({
+              id: newModChar.feats.pcFeats.fromClass[i].id,
+              feat: newModChar.feats.pcFeats.fromClass[i].classFeat?.feat,
+              level: newModChar.feats.pcFeats.fromClass[i].classFeat?.level,
+              selected: newModChar.feats.pcFeats.fromClass[i].selected
+            });
+            featsGiaPresenti--;
+          } else {
+            classPcBonusFeats.push({
+              id: quantiBonus[i].id,
+              classFeat: {
+                id: quantiBonus[i].id,
+                modifiers: quantiBonus[i].feat.modifiers,
+                level: quantiBonus[i].level,
+                feat: quantiBonus[i].feat,
+                classId: quantiBonus[i].classId,
+                className: quantiBonus[i].className
+              },
+              selected: quantiBonus[i].selected
+            });
+          }
+          if (classPcBonusFeats) {
+            setFeatsPcToAddList(classPcBonusFeats);
+          }
         }
 
-        if (featsFromLevel) {
-          setFeatsToAddList(featsFromLevel);
-        }
-
-        let classPcBonusFeats: FeatPc[] = newModChar.feats.classFeats
-          .filter(
-            (c: FeatPc) =>
-              (c.feat.toSelect?.feats ||
-                // c.toSelect?.feats ||
-                c.feat.toSelect?.weaponType) &&
-              !c.selected &&
-              !c.feat.selected
-          )
-          .map((clF) =>
-            clF
-              ? {
-                  id: clF.id,
-                  classe: {
-                    id: clF.classId,
-                    text: clF.className
-                  },
-                  feat: clF.feat,
-                  level: clF.level,
-                  selected: emptyPrerequisite,
-                  toSelect: clF.toSelect
-                    ? clF.toSelect
-                    : clF.feat.toSelect
-                    ? clF.feat.toSelect
-                    : emptyPrerequisite
-                }
-              : clF
-          );
-
-        if (classPcBonusFeats) {
-          setFeatsPcToAddList(classPcBonusFeats);
-        }
       } catch (error) {
         console.error(error);
       }
@@ -202,41 +214,35 @@ export function Feats() {
 
   const handleSubmit = () => {
     const list: {
-      id: number;
-      feat: { id: number };
+      id?: number;
+      feat?: { id: number };
       level?: number;
       classFeat?: { id?: number };
       selected?: Prerequisite;
     }[] = featsToAddList
-      // .filter(fil => fil.feat.id !== 0)
       .map((f) => {
         return {
-          id: 0,
-          feat: { id: f.feat.id },
+          id: f.id ? f.id : undefined,
+          feat: f.feat?{ id: f.feat?.id } : undefined,
           level: f.level,
           selected: f.selected ? f.selected : undefined
         };
       });
 
     const listBonus: {
-      id: number;
-      feat: { id: number };
-      level?: number;
+      id?: number;
       classFeat?: { id?: number };
       selected?: Prerequisite;
     }[] = featsPcToSelectList
-      // .filter(fil => fil.feat.id !== 0)
       .map((f) => {
         return {
-          id: 0,
-          feat: { id: f.feat.id },
-          level: f.level,
-          classFeat: { id: f.classFeat?.id },
+          id: f.id ? f.id : undefined,
+          classFeat: f.classFeat? { id: f.classFeat?.id } : undefined,
           selected: f.selected ? f.selected : undefined
         };
       });
     console.log([...list, ...listBonus]);
-    axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
+    // axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
 
     // window.location.reload();
   };
@@ -254,11 +260,11 @@ export function Feats() {
           <p>
             lv: {f.level}
             {" / "}
-            feats: {f.feat.id} {f.feat.featName}
+            feats: {f.feat?.id} {f.feat?.featName}
             {" / "}
-            toSelect: {f.feat.toSelect?.weaponType}
-            {f.feat.toSelect?.armorType}
-            {f.feat.toSelect?.featType}
+            toSelect: {f.feat?.toSelect?.weaponType}
+            {f.feat?.toSelect?.armorType}
+            {f.feat?.toSelect?.featType}
             {" / "}
             select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
             {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
@@ -268,13 +274,13 @@ export function Feats() {
       {featsPcToSelectList.map((f) => (
         <div>
           <p>
-            lv: {f.level}
+            classe: {f.classFeat?.className} lv: {f.classFeat?.level}
             {" / "}
-            feats: {f.feat.id} {f.feat.featName}
+            feats: {f.classFeat?.feat?.id} {f.classFeat?.feat?.featName}
             {" / "}
-            toSelect: {f.feat.toSelect?.weaponType}
-            {f.feat.toSelect?.armorType}
-            {f.feat.toSelect?.featType}
+            toSelect: {f.classFeat?.feat?.toSelect?.weaponType}
+            {f.classFeat?.feat?.toSelect?.armorType}
+            {f.classFeat?.feat?.toSelect?.featType}
             {" / "}
             select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
             {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
@@ -320,7 +326,7 @@ export function Feats() {
           ))}
           {featsPcToSelectList.map((f, indexF) => (
             <div>
-              {filtroList && itemList ? (
+              {filtroList ? (
                 <FeatPcToAddInLevel
                   featIndex={indexF}
                   element={f}
@@ -331,26 +337,24 @@ export function Feats() {
             </div>
           ))}
           <div>
-            
-              <button className="rpgui-button" onClick={() => handleSubmit()}>
-                <p>add Feats</p>
-              </button>
-            
-            
-              <button className="rpgui-button">
-                <p>to Inventory</p>
-              </button>
+            <button className="rpgui-button" onClick={() => handleSubmit()}>
+              <p>add Feats</p>
+            </button>
+
+            <button className="rpgui-button">
+              <p>to Inventory</p>
+            </button>
           </div>
           {featsToAddList.map((f) => (
             <div>
               <p>
                 lv: {f.level}
                 {" / "}
-                feats: {f.feat.id} {f.feat.featName}
+                feats: {f.feat?.id} {f.feat?.featName}
                 {" / "}
-                toSelect: {f.feat.toSelect?.weaponType}
-                {f.feat.toSelect?.armorType}
-                {f.feat.toSelect?.featType}
+                toSelect: {f.feat?.toSelect?.weaponType}
+                {f.feat?.toSelect?.armorType}
+                {f.feat?.toSelect?.featType}
                 {" / "}
                 select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
                 {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
@@ -358,21 +362,21 @@ export function Feats() {
             </div>
           ))}
           {featsPcToSelectList.map((f) => (
-            <div>
-              <p>
-                lv: {f.level}
-                {" / "}
-                feats: {f.feat.id} {f.feat.featName}
-                {" / "}
-                toSelect: {f.feat.toSelect?.weaponType}
-                {f.feat.toSelect?.armorType}
-                {f.feat.toSelect?.featType}
-                {" / "}
-                select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
-                {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
-              </p>
-            </div>
-          ))}
+        <div>
+          <p>
+            classe: {f.classFeat?.className} lv: {f.classFeat?.level}
+            {" / "}
+            feats: {f.classFeat?.feat?.id} {f.classFeat?.feat?.featName}
+            {" / "}
+            toSelect: {f.classFeat?.feat?.toSelect?.weaponType}
+            {f.classFeat?.feat?.toSelect?.armorType}
+            {f.classFeat?.feat?.toSelect?.featType}
+            {" / "}
+            select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
+            {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+          </p>
+        </div>
+      ))}
         </div>
       </div>
     </>
@@ -428,7 +432,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
 
   useEffect(() => {
     setToSelect(
-      featsToAdd.feat.toSelect
+      featsToAdd.feat?.toSelect
         ? itemsDropFromPrerequisite(featsToAdd.feat.toSelect, filtro)
         : []
     );
@@ -505,7 +509,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
               </span>
             )}
             {featsToAdd ? (
-              <span onClick={emptyTheFeat}>{featsToAdd.feat.featName}</span>
+              <span onClick={emptyTheFeat}>{featsToAdd.feat?.featName}</span>
             ) : null}
           </p>
         </div>
@@ -540,7 +544,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
         </div>
       </div>
       <div>
-        {featsToAdd.feat.id !== 0 ? <FeatToAdd feat={featsToAdd.feat} /> : null}
+        {featsToAdd.feat?.id !== 0 ? <FeatToAdd feat={featsToAdd.feat} /> : null}
       </div>
     </div>
   );
@@ -565,8 +569,8 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
 
   useEffect(() => {
     setToSelect(
-      featsToAdd.feat.toSelect
-        ? itemsDropFromPrerequisite(featsToAdd.feat.toSelect, filtro)
+      featsToAdd.classFeat?.feat?.toSelect
+        ? itemsDropFromPrerequisite(featsToAdd.classFeat.feat.toSelect, filtro)
         : []
     );
   }, [featsToAdd, filtro]);
@@ -574,7 +578,7 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   useEffect(() => {
     setToSelectInSelect(
       featsToAdd.selected?.feats && featsToAdd.selected?.feats?.length > 0
-        ? featsToAdd.feat.toSelect
+        ? featsToAdd.classFeat?.feat?.toSelect
           ? featsToAdd.selected?.feats[0].toSelect
             ? itemsDropFromPrerequisite(
                 featsToAdd.selected?.feats[0].toSelect,
@@ -614,8 +618,8 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
         <div style={{ flex: 2 }}>
           <p>
             {"lv."}
-            {featsToAdd.level} {featsToAdd.classFeat?.className}{" "}
-            {featsToAdd.feat.featName}
+            {featsToAdd.classFeat?.level} {featsToAdd.classFeat?.className}{" "}
+            {featsToAdd.classFeat?.feat?.featName}
           </p>
         </div>
         <div style={{ flex: 3 }}>
@@ -641,7 +645,7 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
           </p>
         </div>
       </div>
-      <div>{featsToAdd ? <FeatToAdd feat={featsToAdd.feat} /> : null}</div>
+      <div>{featsToAdd.classFeat?.feat ? <FeatToAdd feat={featsToAdd.classFeat.feat} /> : null}</div>
     </div>
   );
 };

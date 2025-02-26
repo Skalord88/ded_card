@@ -220,7 +220,6 @@ export const modifyCharacter = (
       (tot, cl) => tot + cl.level * cl.classCharacter.skillPoints,
       0
     );
-
   const allFeats = groupAllFeats(char);
   const allProficency: { type: string[]; specific: Item[] } = items
     ? findAllProficency(allFeats, items)
