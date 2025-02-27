@@ -1,6 +1,9 @@
 import { itemInDrop } from "../functions";
 import { CharacterPc, Item, Weapon } from "../interfaces";
-import { FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
+import {
+  CharToModify,
+  FeatsFromChar
+} from "../Prerequisite/functions/modifyCharacter";
 import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
 
 export function groupAllFeats(char: CharacterPc): {
@@ -14,8 +17,10 @@ export function groupAllFeats(char: CharacterPc): {
   const featsFromLevel: FeatPc[] = char.featsList.filter(
     (f) => checkFeatPcType(f) === 1
   );
-  const featsFromClass: FeatPc[] = char.featsList
-    .filter((f) => checkFeatPcType(f) === 2)
+
+  const featsFromClass: FeatPc[] = char.featsList.filter(
+    (f) => checkFeatPcType(f) === 2
+  );
 
   return {
     feats: [
@@ -87,34 +92,65 @@ export const checkFeatPcType = (f: FeatPc): number => {
   return 0;
 };
 
-// export const typeOfPrerequisiteInToSelect = (
-//   element: NewFeatPc, listaToSelect: ListOfToSelect
-// ): itemInDrop[] => {
-//   let drop: itemInDrop[] = []
-//   /// feats
-// if (element.toSelect?.featType) {
-//     const listaOfFeats: Feat[] = listaToSelect.feats.flatMap((i) => i.item as Feat);
-//     const filtredListaByType: Feat[] = findPrerequisiteFeatsInFeatsList(
-//       element.toSelect?.featType,
-//       listaOfFeats
-//     );
-//     drop = addToDrop(filtredListaByType, "feat");
-//   }
-//   if (element.toSelect?.feats && element.toSelect?.feats.length > 0) {
-//     drop = addToDrop(element.toSelect?.feats, "feat");
-//   }
+export const createClassPcBonusFeats = (newModChar: CharToModify): FeatPc[] => {
+  const quantiFeats: number =
+    Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) + 1;
 
-/// weapons
-//   if (element.toSelect?.weaponType) {
-//     const listaOfWeapons: Weapon[] = listaToSelect.weapons.flatMap((i) => i.item as Weapon);
-//     const filtredListaByType: Item[] = findPrerequisiteItemsInFeatsList(
-//       element.toSelect?.weaponType,
-//       listaOfWeapons
-//     );
-//     drop = addToDrop(filtredListaByType, "items");
-//   }
-//   if (element.toSelect?.items && element.toSelect?.items.length > 0) {
-//     drop = addToDrop(element.toSelect?.items, "items");
-//   }
-//   return drop;
-// }
+  let featsGiaPresenti: number = newModChar.feats.pcFeats.fromLevel.length;
+
+  let featsFromLevel: FeatPc[] = [];
+
+  for (let i = 0; i < quantiFeats; i++) {
+    if (featsGiaPresenti > 0) {
+      featsFromLevel.push({
+        id: newModChar.feats.pcFeats.fromLevel[i].id,
+        feat: newModChar.feats.pcFeats.fromLevel[i].feat,
+        level: newModChar.feats.pcFeats.fromLevel[i].level,
+        selected: newModChar.feats.pcFeats.fromLevel[i].selected
+      });
+      featsGiaPresenti--;
+    } else {
+      featsFromLevel.push({
+        id: null,
+        feat: null,
+        level: i === 0 ? 1 : i * 3,
+        selected: null
+      });
+    }
+  }
+  return featsFromLevel;
+};
+
+export const createClassPcClassFeats = (newModChar: CharToModify): FeatPc[] => {
+  const quantiBonus: ClassFeats[] = newModChar.feats.classFeats.filter(
+    (c: ClassFeats) => c.feat.toSelect?.featType && c.feat.toSelect?.feats
+  );
+  let featsGiaPresenti = newModChar.feats.pcFeats.fromClass.length;
+
+  let classPcBonusFeats: FeatPc[] = [];
+
+  for (let i = 0; i < quantiBonus.length; i++) {
+    if (featsGiaPresenti > 0) {
+      classPcBonusFeats.push({
+        id: newModChar.feats.pcFeats.fromClass[i].id,
+        classFeat: newModChar.feats.pcFeats.fromClass[i].classFeat,
+        selected: newModChar.feats.pcFeats.fromClass[i].selected
+      });
+      featsGiaPresenti--;
+    } else {
+      classPcBonusFeats.push({
+        id: null,
+        classFeat: {
+          id: quantiBonus[i].id,
+          modifiers: quantiBonus[i].feat.modifiers,
+          level: quantiBonus[i].level,
+          feat: quantiBonus[i].feat,
+          classId: quantiBonus[i].classId,
+          className: quantiBonus[i].className
+        },
+        selected: quantiBonus[i].selected
+      });
+    }
+  }
+  return classPcBonusFeats;
+};

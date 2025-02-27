@@ -59,11 +59,11 @@ export type Feat = {
 }
 
 export type FeatPc = {
-  id: number;
-  feat?: Feat;
+  id: number | null;
+  feat?: Feat | null;
   level?: number;
   classFeat?: ClassFeats;
-  selected?: Prerequisite;
+  selected?: Prerequisite | null;
 }
 
 export type FeatsToShow = {
@@ -73,3 +73,36 @@ export type FeatsToShow = {
   modifiers?: Prerequisite,
   listOfBonus?: Prerequisite
 }
+
+// {featsToAddList.map((f) => (
+//   <div>
+//     <p>
+//       lv: {f.level}
+//       {" / "}
+//       feats: {f.feat?.id} {f.feat?.featName}
+//       {" / "}
+//       toSelect: {f.feat?.toSelect?.weaponType}
+//       {f.feat?.toSelect?.armorType}
+//       {f.feat?.toSelect?.featType}
+//       {" / "}
+//       select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
+//       {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+//     </p>
+//   </div>
+// ))}
+// {featsPcToSelectList.map((f) => (
+//   <div>
+//     <p>
+//       classe: {f.classFeat?.className} lv: {f.classFeat?.level}
+//       {" / "}
+//       feats: {f.classFeat?.feat?.id} {f.classFeat?.feat?.featName}
+//       {" / "}
+//       toSelect: {f.classFeat?.feat?.toSelect?.weaponType}
+//       {f.classFeat?.feat?.toSelect?.armorType}
+//       {f.classFeat?.feat?.toSelect?.featType}
+//       {" / "}
+//       select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
+//       {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+//     </p>
+//   </div>
+// ))}

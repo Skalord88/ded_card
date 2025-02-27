@@ -5,15 +5,19 @@
 /* dropdown box implemented with list (see rpgui-dropdown.js for details) */
 /* note! this class rule affect both the dropdown header and the list elements! */
 .rpgui-dropdown-imp,
-.rpgui-dropdown
-{
+.rpgui-dropdown {
 	/* font */
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    color: white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	color: white;
 
 	/* default size */
 	min-height: 40px;
 	margin-top: 0px;
+
+	/* Imposta un'altezza massima per attivare la scrollbar */
+	max-height: 400px;
+	/* Puoi regolare il valore a piacere */
+	overflow-y: auto;
 
 	/* border */
 	border-style: solid;
@@ -32,16 +36,14 @@
 
 
 /* dropdown options list */
-ul.rpgui-dropdown-imp
-{
+ul.rpgui-dropdown-imp {
 	padding: 0 0 0 0 !important;
 	z-index: 100;
 }
 
 /* note! this affect only the dropdown header */
 /* shows the currently selected value from select element */
-.rpgui-content .rpgui-dropdown-imp-header
-{
+.rpgui-content .rpgui-dropdown-imp-header {
 	color: white !important;
 	min-height: 22px !important;
 	padding: 5px 10px 0 10px !important;
@@ -50,11 +52,10 @@ ul.rpgui-dropdown-imp
 }
 
 /* dropdown options */
-.rpgui-dropdown-imp li
-{
+.rpgui-dropdown-imp li {
 	/* font */
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    color: white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	color: white;
 	height: 16px;
 
 	/* remove the dot */
@@ -73,13 +74,11 @@ ul.rpgui-dropdown-imp
 }
 
 /* dropdown options hover */
-.rpgui-dropdown-imp li:hover
-{
+.rpgui-dropdown-imp li:hover {
 	color: yellow;
 }
 
 /* dropdown hover */
-.rpgui-dropdown-imp:hover
-{
+.rpgui-dropdown-imp:hover {
 	color: yellow;
 }

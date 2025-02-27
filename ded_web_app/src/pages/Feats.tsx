@@ -14,28 +14,13 @@ import { CharToModify } from "../components/Prerequisite/functions/modifyCharact
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { urlChar, urlFeats, urlItems } from "../components/url";
-import {
-  emptyFeat,
-  emptyFeatPc,
-  emptyPrerequisite
-} from "../components/variables";
+import { emptyPrerequisite } from "../components/variables";
 import React from "react";
-import { findPrerequisiteFeatsInItemDrop } from "../components/Feats/function";
-
-// export type FeatPc = {
-//   classe?: { id: number; text: string };
-//   feat: Feat;
-//   level: number;
-//   selected?: Prerequisite;
-//   toSelect?: Prerequisite;
-// };
-
-// export const emptyFeatPc: FeatPc = {
-//   feat: emptyFeat,
-//   level: 0,
-//   selected: emptyPrerequisite,
-//   toSelect: emptyPrerequisite
-// };
+import {
+  createClassPcBonusFeats,
+  createClassPcClassFeats,
+  findPrerequisiteFeatsInItemDrop
+} from "../components/Feats/function";
 
 export type FiltroPrerequisite = {
   featsType: itemInDrop[];
@@ -53,7 +38,7 @@ export function Feats() {
   const [filtroList, setFiltroList] = useState<FiltroPrerequisite>();
   const [featsToAddList, setFeatsToAddList] = useState<FeatPc[]>([]);
   const [featsPcToSelectList, setFeatsPcToAddList] = useState<FeatPc[]>([]);
-  const [modChar, setModChar] = useState<CharToModify>();
+  // const [modChar, setModChar] = useState<CharToModify>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,15 +50,15 @@ export function Feats() {
         setChar(charData);
 
         const newModChar = await createModChar(charData, resItems.data);
-        setModChar(newModChar);
-
-        console.log(newModChar.feats.pcFeats);
+        // setModChar(newModChar);
 
         const resFeats = await axios.get(urlFeats);
-        const listOfFeats: Feat[] = await resFeats.data;
+        const listOfFeats: Feat[] = resFeats.data;
         const itemsFeats: itemInDrop[] = addToDrop(
           listOfFeats.filter(
-            (f) => f.featType === null || !f.featType.includes("CLASS")
+            (f) =>
+              f.featType === null ||
+              (!f.featType.includes("CLASS") && !f.featType.includes("MAGE"))
           ),
           "feat"
         );
@@ -122,75 +107,17 @@ export function Feats() {
           skills: addToDrop(["culi", "tette"], "filter")
         });
 
-        let quantiFeats: number =
-          Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) +
-          1;
+        // const featsFromLevel: FeatPc[] = createClassPcBonusFeats(newModChar);
 
-        let featsGiaPresenti: number =
-          newModChar.feats.pcFeats.fromLevel.length;
+        // if (featsFromLevel) {
+        setFeatsToAddList(createClassPcBonusFeats(newModChar));
+        // }
 
-        let featsFromLevel: FeatPc[] = [];
+        // const classPcBonusFeats: FeatPc[] = createClassPcClassFeats(newModChar);
 
-        for (let i = 0; i < quantiFeats; i++) {
-          if (featsGiaPresenti > 0) {
-            featsFromLevel.push({
-              id: newModChar.feats.pcFeats.fromLevel[i].id,
-              feat: newModChar.feats.pcFeats.fromLevel[i].feat,
-              level: newModChar.feats.pcFeats.fromLevel[i].level,
-              selected: newModChar.feats.pcFeats.fromLevel[i].selected
-            });
-            featsGiaPresenti--;
-          } else {
-            featsFromLevel.push({
-              id: 0,
-              feat: emptyFeat,
-              level: i === 0 ? 1 : i * 3,
-              selected: emptyPrerequisite
-            });
-          }
-
-          if (featsFromLevel) {
-            setFeatsToAddList(featsFromLevel);
-          }
-        }
-
-        const quantiBonus: ClassFeats[] = newModChar.feats.classFeats.filter(
-          (c: ClassFeats) =>
-            c.feat.toSelect?.featType &&
-            c.feat.toSelect?.feats
-          ) 
-        featsGiaPresenti = newModChar.feats.pcFeats.fromClass.length;
-
-        let classPcBonusFeats: FeatPc[] = []
-
-        for (let i = 0; i < quantiFeats; i++) {
-          if (featsGiaPresenti > 0) {
-            classPcBonusFeats.push({
-              id: newModChar.feats.pcFeats.fromClass[i].id,
-              feat: newModChar.feats.pcFeats.fromClass[i].classFeat?.feat,
-              level: newModChar.feats.pcFeats.fromClass[i].classFeat?.level,
-              selected: newModChar.feats.pcFeats.fromClass[i].selected
-            });
-            featsGiaPresenti--;
-          } else {
-            classPcBonusFeats.push({
-              id: quantiBonus[i].id,
-              classFeat: {
-                id: quantiBonus[i].id,
-                modifiers: quantiBonus[i].feat.modifiers,
-                level: quantiBonus[i].level,
-                feat: quantiBonus[i].feat,
-                classId: quantiBonus[i].classId,
-                className: quantiBonus[i].className
-              },
-              selected: quantiBonus[i].selected
-            });
-          }
-          if (classPcBonusFeats) {
-            setFeatsPcToAddList(classPcBonusFeats);
-          }
-        }
-
+        // if (classPcBonusFeats) {
+        setFeatsPcToAddList(createClassPcClassFeats(newModChar));
+        // }
       } catch (error) {
         console.error(error);
       }
@@ -214,37 +141,33 @@ export function Feats() {
 
   const handleSubmit = () => {
     const list: {
-      id?: number;
-      feat?: { id: number };
+      id?: number | null;
+      feat?: { id: number } | null;
       level?: number;
-      classFeat?: { id?: number };
-      selected?: Prerequisite;
-    }[] = featsToAddList
-      .map((f) => {
-        return {
-          id: f.id ? f.id : undefined,
-          feat: f.feat?{ id: f.feat?.id } : undefined,
-          level: f.level,
-          selected: f.selected ? f.selected : undefined
-        };
-      });
+      selected?: Prerequisite | null;
+    }[] = featsToAddList.map((f) => {
+      return {
+        id: f.id === 0 ? null : f.id,
+        feat: f.feat ? { id: f.feat?.id } : null,
+        level: f.level,
+        selected: f.selected ? f.selected : null
+      };
+    });
 
     const listBonus: {
-      id?: number;
-      classFeat?: { id?: number };
-      selected?: Prerequisite;
-    }[] = featsPcToSelectList
-      .map((f) => {
-        return {
-          id: f.id ? f.id : undefined,
-          classFeat: f.classFeat? { id: f.classFeat?.id } : undefined,
-          selected: f.selected ? f.selected : undefined
-        };
-      });
-    console.log([...list, ...listBonus]);
-    // axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
+      id: number | null;
+      classFeat?: { id?: number } | null;
+      selected?: Prerequisite | null;
+    }[] = featsPcToSelectList.map((f) => {
+      return {
+        id: f.id ?? f.id,
+        classFeat: f.classFeat ? { id: f.classFeat?.id } : null,
+        selected: f.selected ? f.selected : null
+      };
+    });
+    axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
 
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
@@ -255,38 +178,6 @@ export function Feats() {
           feats={[...featsToAddList, ...featsPcToSelectList]}
         />
       ) : null}
-      {featsToAddList.map((f) => (
-        <div>
-          <p>
-            lv: {f.level}
-            {" / "}
-            feats: {f.feat?.id} {f.feat?.featName}
-            {" / "}
-            toSelect: {f.feat?.toSelect?.weaponType}
-            {f.feat?.toSelect?.armorType}
-            {f.feat?.toSelect?.featType}
-            {" / "}
-            select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
-            {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
-          </p>
-        </div>
-      ))}
-      {featsPcToSelectList.map((f) => (
-        <div>
-          <p>
-            classe: {f.classFeat?.className} lv: {f.classFeat?.level}
-            {" / "}
-            feats: {f.classFeat?.feat?.id} {f.classFeat?.feat?.featName}
-            {" / "}
-            toSelect: {f.classFeat?.feat?.toSelect?.weaponType}
-            {f.classFeat?.feat?.toSelect?.armorType}
-            {f.classFeat?.feat?.toSelect?.featType}
-            {" / "}
-            select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
-            {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
-          </p>
-        </div>
-      ))}
       <div>
         {
           <button className="rpgui-button" onClick={() => handleSubmit()}>
@@ -302,17 +193,14 @@ export function Feats() {
       <div style={{ display: "grid", gridTemplateColumns: "50% 2% 48%" }}>
         <div
           className="rpgui-container-framed-grey"
-          style={{ gridColumn: "1 / span 3", gridRow: 2 }}
-        ></div>
-
-        <div
-          className="rpgui-container-framed-grey"
           style={{ gridColumn: "1 / span 3", gridRow: 1 }}
+          key={"featsToAddList"}
         >
-          {featsToAddList.map((f, index) => (
-            <div className="rpgui-container-framed-grey" key={index}>
-              {filtroList && itemList ? (
-                <div>
+          {featsToAddList
+            .sort((a, b) => (a.level ?? 0) - (b.level ?? 0))
+            .map((f, index) => (
+              <div className="rpgui-container-framed-grey" key={index}>
+                {filtroList && itemList ? (
                   <FeatToAddInLevel
                     filtro={filtroList}
                     element={f}
@@ -320,22 +208,25 @@ export function Feats() {
                     items={itemList}
                     onAction={newFeatsToAddList}
                   />
-                </div>
-              ) : null}
-            </div>
-          ))}
-          {featsPcToSelectList.map((f, indexF) => (
-            <div>
-              {filtroList ? (
-                <FeatPcToAddInLevel
-                  featIndex={indexF}
-                  element={f}
-                  filtro={filtroList}
-                  onAction={newFeatsPcToAddList}
-                />
-              ) : null}
-            </div>
-          ))}
+                ) : null}
+              </div>
+            ))}
+          {featsPcToSelectList
+            .sort(
+              (a, b) => (a.classFeat?.level ?? 0) - (b.classFeat?.level ?? 0)
+            )
+            .map((f, indexF) => (
+              <div key={indexF}>
+                {filtroList ? (
+                  <FeatPcToAddInLevel
+                    featIndex={indexF}
+                    element={f}
+                    filtro={filtroList}
+                    onAction={newFeatsPcToAddList}
+                  />
+                ) : null}
+              </div>
+            ))}
           <div>
             <button className="rpgui-button" onClick={() => handleSubmit()}>
               <p>add Feats</p>
@@ -345,38 +236,6 @@ export function Feats() {
               <p>to Inventory</p>
             </button>
           </div>
-          {featsToAddList.map((f) => (
-            <div>
-              <p>
-                lv: {f.level}
-                {" / "}
-                feats: {f.feat?.id} {f.feat?.featName}
-                {" / "}
-                toSelect: {f.feat?.toSelect?.weaponType}
-                {f.feat?.toSelect?.armorType}
-                {f.feat?.toSelect?.featType}
-                {" / "}
-                select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
-                {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
-              </p>
-            </div>
-          ))}
-          {featsPcToSelectList.map((f) => (
-        <div>
-          <p>
-            classe: {f.classFeat?.className} lv: {f.classFeat?.level}
-            {" / "}
-            feats: {f.classFeat?.feat?.id} {f.classFeat?.feat?.featName}
-            {" / "}
-            toSelect: {f.classFeat?.feat?.toSelect?.weaponType}
-            {f.classFeat?.feat?.toSelect?.armorType}
-            {f.classFeat?.feat?.toSelect?.featType}
-            {" / "}
-            select: {f.selected?.items?.flatMap((w) => w.name).join(", ")}
-            {f.selected?.feats?.flatMap((f) => f.featName).join(", ")}
-          </p>
-        </div>
-      ))}
         </div>
       </div>
     </>
@@ -484,67 +343,65 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   };
 
   const emptyTheFeat = () => {
-    setFeatsToAdd(emptyFeatPc);
+    setFeatsToAdd({
+      feat: null,
+      level: featsToAdd.level,
+      id: null,
+      selected: null
+    });
     onAction(
       {
-        feat: emptyFeat,
-        level: 0,
-        id: 0
+        feat: null,
+        level: featsToAdd.level,
+        id: null,
+        selected: null
       },
       indexItem
     );
   };
 
   return (
-    <div>
+    <div key={indexItem + ".FeatToAddInLevel"}>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 2 }}>
           <p>
-            {indexItem === 0 ? (
-              <span>{"lv.1 "}</span>
-            ) : (
-              <span>
-                {"lv."}
-                {indexItem * 3}{" "}
-              </span>
-            )}
+            lv.{featsToAdd.level}{" "}
             {featsToAdd ? (
               <span onClick={emptyTheFeat}>{featsToAdd.feat?.featName}</span>
             ) : null}
+            {featsToAdd.selected &&
+              featsToAdd.selected?.items?.flatMap((i) => i.name).join(", ")}
           </p>
         </div>
         <div style={{ flex: 1 }}>
-          <p>
-            <DropdownComponent
-              options={filtro.featsType}
-              onAction={addFilter}
-            />
-          </p>
+          <DropdownComponent options={filtro.featsType} onAction={addFilter} />
         </div>
         <div style={{ flex: 3 }}>
-          <p>
-            {itemList ? (
+          {itemList ? (
+            <div>
               <DropdownComponent options={itemList} onAction={addFeat} />
-            ) : (
-              "---loading---"
-            )}
-          </p>
+              <p></p>
+            </div>
+          ) : (
+            <p>"---loading---"</p>
+          )}
         </div>
       </div>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 3 }}></div>
         <div style={{ flex: 3 }}>
-          <p>
-            {toSelect.length > 0 && (
-              <div>
-                <DropdownComponent options={toSelect} onAction={addToSelect} />
-              </div>
-            )}
-          </p>
+          {toSelect.length > 0 && (
+            <div>
+              <DropdownComponent options={toSelect} onAction={addToSelect} />
+              <p></p>
+            </div>
+          )}
         </div>
       </div>
       <div>
-        {featsToAdd.feat?.id !== 0 ? <FeatToAdd feat={featsToAdd.feat} /> : null}
+        {featsToAdd.feat && featsToAdd.feat?.id !== 0 ? (
+          <FeatToAdd feat={featsToAdd.feat} />
+        ) : null}
       </div>
     </div>
   );
@@ -595,23 +452,24 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   }, [featsToAdd, featIndex]);
 
   const addToSelect = (f: Item | Feat) => {
-    const newF = (f as Item).name
-      ? {
-          ...featsToAdd,
-          selected: {
-            ...featsToAdd.selected,
-            items: [f as Item]
-          }
-        }
-      : {
-          ...featsToAdd,
-          selected: {
-            ...featsToAdd.selected,
-            feats: [f as Feat]
-          }
-        };
-    setFeatsToAdd(newF);
+
+    if((f as Item).name){
+      setFeatsToAdd({
+        ...featsToAdd,selected: {
+          ...featsToAdd.selected,
+          items: [f as Item]
+        }})
+    }
+    if((f as Feat).featName){
+      setFeatsToAdd({
+        ...featsToAdd,selected: {
+          ...featsToAdd.selected,
+          feats: [f as Feat],
+          items: undefined
+        }})
+    }
   };
+
   return (
     <div key={featIndex} className="rpgui-container-framed-grey">
       <div style={{ display: "flex" }}>
@@ -621,31 +479,44 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
             {featsToAdd.classFeat?.level} {featsToAdd.classFeat?.className}{" "}
             {featsToAdd.classFeat?.feat?.featName}
           </p>
+          <p>
+            {featsToAdd.selected?.feats?.flatMap((f) => f.featName).join(", ")}
+          </p>
+          <p>{featsToAdd.selected?.items?.flatMap((i) => i.name).join(", ")}</p>
         </div>
         <div style={{ flex: 3 }}>
-          <p>
-            {toSelect ? (
+          {toSelect ? (
+            <div>
               <DropdownComponent options={toSelect} onAction={addToSelect} />
-            ) : null}
-          </p>
+              <p></p>
+            </div>
+          ) : null}
         </div>
       </div>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 2 }}></div>
         <div style={{ flex: 3 }}>
-          <p>
-            {toSelectInSelect.length > 0 && (
-              <div>
-                <DropdownComponent
-                  options={toSelectInSelect}
-                  onAction={addToSelect}
-                />
-              </div>
-            )}
-          </p>
+          {toSelectInSelect.length > 0 && (
+            <div>
+              <DropdownComponent
+                options={toSelectInSelect}
+                onAction={addToSelect}
+              />
+              <p></p>
+            </div>
+          )}
         </div>
       </div>
-      <div>{featsToAdd.classFeat?.feat ? <FeatToAdd feat={featsToAdd.classFeat.feat} /> : null}</div>
+      <div>
+        {featsToAdd.classFeat?.feat ? (
+          <FeatToAdd feat={featsToAdd.classFeat.feat} />
+        ) : null}
+      </div>
+      <div>
+        {featsToAdd.selected?.feats ? (
+          <FeatToAdd feat={featsToAdd.selected?.feats[0]} />
+        ) : null}
+      </div>
     </div>
   );
 };

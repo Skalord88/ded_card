@@ -21,6 +21,7 @@
 
     <insert tableName="feats">
       <column name="id" value="1" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="feat_name" value="Acrobatic [General]" />
       <column name="benefit" value="You get a +2 bonus on all Jump checks and Tumble checks." />
       <column name="modifiers_id" value="1001" />
@@ -44,6 +45,7 @@
 
     <insert tableName="feats">
       <column name="id" value="2" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="feat_name" value="Agile [General]" />
       <column name="benefit"
         value="You get a +2 bonus on all Balance checks and Escape Artist checks." />
@@ -68,6 +70,7 @@
 
     <insert tableName="feats">
       <column name="id" value="3" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="feat_name" value="Alertness [General]" />
       <column name="benefit" value="You get a +2 bonus on all Listen checks and Spot checks." />
       <column name="special"
@@ -93,6 +96,7 @@
 
     <insert tableName="feats">
       <column name="id" value="4" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="feat_name" value="Animal Affinity [General]" />
       <column name="benefit" value="You get a +2 bonus on all Handle Animal checks and Ride checks." />
       <column name="modifiers_id" value="1004" />
@@ -206,6 +210,7 @@
     <insert tableName="feats">
       <column name="id" value="8" />
       <column name="feat_name" value="Athletic [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit" value="You get a +2 bonus on all Climb checks and Swim checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -215,6 +220,7 @@
     <insert tableName="feats">
       <column name="id" value="9" />
       <column name="feat_name" value="Augment Summoning [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="Each creature you conjure with any summon spell gains a +4 enhancement bonus to Strength and Constitution for the duration of the spell that summoned it." />
       <column name="normal" value="null" />
@@ -293,7 +299,7 @@
     <insert tableName="feats">
       <column name="id" value="13" />
       <column name="feat_name" value="Combat Casting [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit"
         value="You get a +4 bonus on Concentration checks made to cast a spell or use a spell-like ability while on the defensive or while you are grappling or pinned." />
       <column name="normal" value="null" />
@@ -449,6 +455,7 @@
     <insert tableName="feats">
       <column name="id" value="21" />
       <column name="feat_name" value="Deceitful [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Disguise checks and Profession (ex Forgery) checks." />
@@ -501,6 +508,7 @@
     <insert tableName="feats">
       <column name="id" value="23" />
       <column name="feat_name" value="Deft Hands [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit"
         value="You get a +2 bonus on all Sleight of Hand checks and Use Rope checks." />
       <column name="normal" value="null" />
@@ -551,6 +559,7 @@
     <insert tableName="feats">
       <column name="id" value="25" />
       <column name="feat_name" value="Diligent [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Appraise checks and Profession (ex Decipher Script) checks." />
@@ -581,7 +590,7 @@
     <insert tableName="feats">
       <column name="id" value="27" />
       <column name="feat_name" value="Empower Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="All variable, numeric effects of an empowered spell are increased by one-half. Saving throws and opposed rolls are not affected, nor are spells without random variables. An empowered spell uses up a spell slot two levels higher than the spell’s actual level." />
@@ -604,7 +613,7 @@
     <insert tableName="feats">
       <column name="id" value="29" />
       <column name="feat_name" value="Enlarge Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You can alter a spell with a range of close, medium, or long to increase its range by 100%. An enlarged spell with a range of close now has a range of 50 ft. + 5 ft./level, while medium-range spells have a range of 200 ft. + 20 ft./level and long-range spells have a range of 800 ft. + 80 ft./level. An enlarged spell uses up a spell slot one level higher than the spell’s actual level. Spells whose ranges are not defined by distance, as well as spells whose ranges are not close, medium, or long, do not have increased ranges." />
@@ -615,6 +624,7 @@
     <insert tableName="feats">
       <column name="id" value="30" />
       <column name="feat_name" value="Eschew Materials [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You can cast any spell that has a material component costing 1 gp or less without needing that component. (The casting of the spell still provokes attacks of opportunity as normal.) If the spell requires a material component that costs more than 1 gp, you must have the material component at hand to cast the spell, just as normal." />
@@ -655,7 +665,7 @@
     <insert tableName="feats">
       <column name="id" value="32" />
       <column name="feat_name" value="Extend Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="An extended spell lasts twice as long as normal. A spell with a duration of concentration, instantaneous, or permanent is not affected by this feat. An extended spell uses up a spell slot one level higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -677,6 +687,7 @@
     <insert tableName="feats">
       <column name="id" value="33" />
       <column name="feat_name" value="Extra Turning [General]" />
+      <column name="feat_type" value="[&quot;DIVINE&quot;]" />
       <!-- <column name="prerequisites" value="Ability to turn or rebuke creatures." /> -->
       <column name="benefit"
         value="Each time you take this feat, you can use your ability to turn or rebuke creatures four more times per day than normal. If you have the ability to turn or rebuke more than one kind of creature each of your turning or rebuking abilities gains four additional uses per day." />
@@ -834,6 +845,7 @@
     <insert tableName="feats">
       <column name="id" value="38" />
       <column name="feat_name" value="Greater Spell Focus [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select. This bonus stacks with the bonus from Spell Focus." />
       <column name="normal" value="null" />
@@ -857,6 +869,7 @@
     <insert tableName="feats">
       <column name="id" value="39" />
       <column name="feat_name" value="Greater Spell Penetration [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature's spell resistance. This bonus stacks with the one from Spell Penetration." />
       <column name="normal" value="null" />
@@ -887,6 +900,7 @@
     <insert tableName="feats">
       <column name="id" value="40" />
       <column name="feat_name" value="Greater Two-Weapon Fighting [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11." /> -->
       <column name="benefit"
@@ -932,6 +946,7 @@
     <insert tableName="feats">
       <column name="id" value="41" />
       <column name="feat_name" value="Greater Weapon Focus [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 8th." /> -->
       <column name="benefit"
@@ -978,6 +993,7 @@
     <insert tableName="feats">
       <column name="id" value="42" />
       <column name="feat_name" value="Greater Weapon Specialization [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus
       with selected weapon, Weapon Specialization with selected weapon, fighter level 12th." /> -->
@@ -993,7 +1009,7 @@
     <insert tableName="feats">
       <column name="id" value="43" />
       <column name="feat_name" value="Heighten Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="A heightened spell has a higher spell level than normal (up to a maximum of 9th level). Unlike other metamagic feats, Heighten Spell actually increases the effective level of the spell that it modifies. All effects dependent on spell level (such as saving throw DCs and ability to penetrate a lesser globe of invulnerability) are calculated according to the heightened level. The heightened spell is as difficult to prepare and cast as a spell of its effective level." />
@@ -1017,6 +1033,7 @@
     <insert tableName="feats">
       <column name="id" value="44" />
       <column name="feat_name" value="Improved Bull Rush [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110023" />
       <column name="benefit"
         value="When you perform a bull rush you do not provoke an attack of opportunity from the defender. You also gain a +4 bonus on the opposed Strength check you make to push back the defender." />
@@ -1028,6 +1045,7 @@
     <insert tableName="feats">
       <column name="id" value="45" />
       <column name="feat_name" value="Improved Counterspell [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="When counterspelling, you may use a spell of the same school that is one or more spell levels higher than the target spell." />
@@ -1047,6 +1065,7 @@
     <insert tableName="feats">
       <column name="id" value="46" />
       <column name="feat_name" value="Improved Critical [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110024" />
       <!-- <column name="prerequisites" value="Proficient with weapon, base attack bonus +8." /> -->
       <column name="benefit"
@@ -1099,6 +1118,7 @@
       <column name="id" value="48" />
       <column name="feat_name" value="Improved Familiar [General]" />
       <column name="prerequisite_list_id" value="110026" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites"
         value="Ability to acquire a new familiar, compatible alignment, sufficiently high level (see
       below)." /> -->
@@ -1193,6 +1213,7 @@
     <insert tableName="feats">
       <column name="id" value="52" />
       <column name="feat_name" value="Improved Overrun [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Str 13, Power Attack." /> -->
       <column name="prerequisite_list_id" value="100029" />
       <column name="benefit"
@@ -1226,6 +1247,7 @@
     <insert tableName="feats">
       <column name="id" value="53" />
       <column name="feat_name" value="Improved Precise Shot [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Dex 19, Point Blank Shot, Precise Shot, base attack bonus +11." /> -->
       <column name="prerequisite_list_id" value="30" />
@@ -1284,6 +1306,7 @@
     <insert tableName="feats">
       <column name="id" value="54" />
       <column name="feat_name" value="Improved Shield Bash [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Shield Proficiency." /> -->
       <column name="prerequisite_list_id" value="110031" />
       <column name="to_select_id" value="2002" />
@@ -1311,6 +1334,7 @@
     <insert tableName="feats">
       <column name="id" value="55" />
       <column name="feat_name" value="Improved Sunder [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Str 13, Power Attack." /> -->
       <column name="prerequisite_list_id" value="100032" />
       <column name="benefit"
@@ -1357,21 +1381,12 @@
     <insert tableName="feats">
       <column name="id" value="57" />
       <column name="feat_name" value="Improved Turning [General]" />
+      <column name="feat_type" value="[&quot;DIVINE&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You turn or rebuke creatures as if you were one level higher than you are in the class that grants you the ability." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
-      <!-- <column name="modifiers"
-        value="[{
-        &quot;modifier&quot; : &quot;TURN_UNDEAD&quot;,
-        &quot;bonus&quot; : 1,
-      &quot;targets&quot; : []
-      },{
-      &quot;modifier&quot; : &quot;REBUKE_UNDEAD&quot;,
-      &quot;bonus&quot; : 1,
-      &quot;targets&quot; : []
-      }]" /> -->
     </insert>
 
     <!-- Improved Two-Weapon Fighting [General] pre -->
@@ -1391,6 +1406,7 @@
     <insert tableName="feats">
       <column name="id" value="58" />
       <column name="feat_name" value="Improved Two-Weapon Fighting [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Dex 17, Two-Weapon Fighting, base attack bonus +6."
       /> -->
       <column name="prerequisite_list_id" value="110034" />
@@ -1405,6 +1421,7 @@
     <insert tableName="feats">
       <column name="id" value="59" />
       <column name="feat_name" value="Improved Unarmed Strike [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="benefit"
         value="You are considered to be armed even when unarmed —that is, you do not provoke attacks or opportunity from armed opponents when you attack them while unarmed. However, you still get an attack of opportunity against any opponent who makes an unarmed attack on you. In addition, your unarmed strikes can deal lethal or nonlethal damage, at your option." />
       <column name="normal"
@@ -1432,6 +1449,7 @@
     <insert tableName="feats">
       <column name="id" value="60" />
       <column name="feat_name" value="Investigator [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Gather Information checks and Search checks." />
@@ -1521,6 +1539,7 @@
     <insert tableName="feats">
       <column name="id" value="64" />
       <column name="feat_name" value="Magical Aptitude [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +2 bonus on all Spellcraft checks and Use Magic Device checks." />
@@ -1584,7 +1603,7 @@
     <insert tableName="feats">
       <column name="id" value="67" />
       <column name="feat_name" value="Maximize Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="All variable, numeric effects of a spell modified by this feat are maximized. Saving throws and opposed rolls are not affected, nor are spells without random variables. A maximized spell uses up a spell slot three levels higher than the spell’s actual level. An empowered, maximized spell gains the separate benefits of each feat: the maximum result plus one-half the normally rolled result." />
@@ -1621,7 +1640,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="110039" />
-     <column name="text" value="Ride 1 rank, Mounted Combat." />
+      <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
     <insert tableName="prerequisite_feat">
@@ -1694,6 +1713,7 @@
     <insert tableName="feats">
       <column name="id" value="72" />
       <column name="feat_name" value="Negotiator [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit"
         value="You get a +2 bonus on all Diplomacy checks and Sense Motive checks." />
       <column name="normal" value="null" />
@@ -1720,6 +1740,7 @@
     <insert tableName="feats">
       <column name="id" value="73" />
       <column name="feat_name" value="Nimble Fingers [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit"
         value="You get a +2 bonus on all Disable Device checks and (ex Open Lock) Sleight of Hand checks." />
       <column name="normal" value="null" />
@@ -1746,6 +1767,7 @@
     <insert tableName="feats">
       <column name="id" value="74" />
       <column name="feat_name" value="Persuasive [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Bluff checks and Intimidate checks." />
       <column name="normal" value="null" />
@@ -1767,6 +1789,7 @@
     <insert tableName="feats">
       <column name="id" value="75" />
       <column name="feat_name" value="Point Blank Shot [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="You get a +1 bonus on attack and damage rolls with ranged weapons at ranges of up to 30 feet." />
@@ -1787,6 +1810,7 @@
     <insert tableName="feats">
       <column name="id" value="76" />
       <column name="feat_name" value="Power Attack [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110041" />
       <column name="benefit"
         value="On your action, before making attack rolls for a round, you may choose to subtract a number from all melee attack rolls and add the same number to all melee damage rolls. This number may not exceed your base attack bonus. The penalty on attacks and bonus on damage apply until your next turn." />
@@ -1810,6 +1834,7 @@
     <insert tableName="feats">
       <column name="id" value="77" />
       <column name="feat_name" value="Precise Shot [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Point Blank Shot." /> -->
       <column name="prerequisite_list_id" value="110042" />
       <column name="benefit"
@@ -1830,6 +1855,7 @@
     <insert tableName="feats">
       <column name="id" value="78" />
       <column name="feat_name" value="Quick Draw [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="Base attack bonus +1." /> -->
       <column name="prerequisite_list_id" value="110043" />
       <column name="benefit"
@@ -1843,7 +1869,7 @@
     <insert tableName="feats">
       <column name="id" value="79" />
       <column name="feat_name" value="Quicken Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="Casting a quickened spell is an swift action. You can perform another action, even casting another spell, in the same round as you cast a quickened spell. You may cast only one quickened spell per round. A spell whose casting time is more than 1 full round action cannot be quickened. A quickened spell uses up a spell slot four levels higher than the spell,s actual level. Casting a quickened spell doesn,t provoke an attack of opportunity." />
       <column name="normal" value="null" />
@@ -1878,6 +1904,7 @@
     <insert tableName="feats">
       <column name="id" value="81" />
       <column name="feat_name" value="Rapid Shot [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110044" />
       <column name="benefit"
         value="Choose a type of crossbow (hand, light, or heavy). The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity. If you have selected this feat for hand crossbow or light crossbow, you may fire that weapon as many times in a full attack action as you could attack if you were using a bow." />
@@ -1901,6 +1928,7 @@
     <insert tableName="feats">
       <column name="id" value="82" />
       <column name="feat_name" value="Ride-By Attack [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110045" />
       <column name="benefit"
         value="When you are mounted and use the charge action, you may move and attack as if with a standard charge and then move again (continuing the straight line of the charge). Your total movement for the round can,t exceed double your mounted speed. You and your mount do not provoke an attack of opportunity from the opponent that you attack." />
@@ -1933,6 +1961,7 @@
     <insert tableName="feats">
       <column name="id" value="85" />
       <column name="feat_name" value="Self-Sufficient [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +2 bonus on all Heal checks and Survival checks." />
       <column name="normal" value="null" />
@@ -1987,6 +2016,7 @@
     <insert tableName="feats">
       <column name="id" value="87" />
       <column name="feat_name" value="Shot On The Run [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Dex 13, Dodge, Mobility, Point Blank Shot, base attack bonus +4." /> -->
       <column name="prerequisite_list_id" value="110046" />
@@ -2000,7 +2030,7 @@
     <insert tableName="feats">
       <column name="id" value="88" />
       <column name="feat_name" value="Silent Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="A silent spell can be cast with no verbal components. Spells without verbal components are not affected. A silent spell uses up a spell slot one level higher than the spell,s actual level." />
@@ -2032,6 +2062,7 @@
     <insert tableName="feats">
       <column name="id" value="90" />
       <column name="feat_name" value="Skill Focus [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit" value="You get a +3 bonus on all checks involving that skill." />
       <column name="normal" value="null" />
@@ -2055,6 +2086,7 @@
     <insert tableName="feats">
       <column name="id" value="91" />
       <column name="feat_name" value="Snatch Arrows [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110047" />
       <column name="benefit"
         value="When using the Deflect Arrows feat you may catch the weapon instead of just deflecting it. Thrown weapons can immediately be thrown back at the original attacker (even though it isn,t your turn) or kept for later use." />
@@ -2066,6 +2098,7 @@
     <insert tableName="feats">
       <column name="id" value="92" />
       <column name="feat_name" value="Spell Focus [General]" />
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="Add +1 to the Difficulty Class for all saving throws against spells from the school of magic you select." />
@@ -2077,7 +2110,7 @@
     <insert tableName="feats">
       <column name="id" value="93" />
       <column name="feat_name" value="Spell Mastery [Special]" />
-      <!-- <column name="prerequisites" value="null" /> -->
+      <column name="feat_type" value="[&quot;MAGIC&quot;,&quot;MAGE&quot;]" />
       <column name="benefit"
         value="Each time you take this feat, choose a number of spells equal to your Intelligence modifier that you already know. From that point on, you can prepare these spells without referring to a spellbook." />
       <column name="normal"
@@ -2088,7 +2121,7 @@
     <insert tableName="feats">
       <column name="id" value="94" />
       <column name="feat_name" value="Spell Penetration [General]" />
-      <!-- <column name="prerequisites" value="null" /> -->
+      <column name="feat_type" value="[&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="You get a +2 bonus on caster level checks (1d20 + caster level) made to overcome a creature,s spell resistance." />
       <column name="normal" value="null" />
@@ -2115,6 +2148,7 @@
     <insert tableName="feats">
       <column name="id" value="95" />
       <column name="feat_name" value="Spirited Charge [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110048" />
       <column name="benefit"
         value="When mounted and using the charge action, you deal double damage with a melee weapon (or triple damage with a lance)." />
@@ -2145,6 +2179,7 @@
     <insert tableName="feats">
       <column name="id" value="96" />
       <column name="feat_name" value="Spring Attack [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110049" />
       <column name="benefit"
         value="When using the attack action with a melee weapon, you can move both before and after the attack, provided that your total distance moved is not greater than your speed. Moving in this way does not provoke an attack of opportunity from the defender you attack, though it might provoke attacks of opportunity from other creatures, if appropriate. You can,t use this feat if you are wearing heavy armor." />
@@ -2156,6 +2191,7 @@
     <insert tableName="feats">
       <column name="id" value="97" />
       <column name="feat_name" value="Stealthy [General]" />
+      <column name="feat_type" value="[&quot;SKILLS&quot;]" />
       <column name="benefit" value="You get a +2 bonus on all Hide checks and Move Silently checks." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -2164,7 +2200,7 @@
     <insert tableName="feats">
       <column name="id" value="98" />
       <column name="feat_name" value="Still Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <column name="benefit" value="A stilled spell can be cast with no somatic components." />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -2236,7 +2272,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="110051" />
-     <column name="text" value="Ride 1 rank, Mounted Combat." />
+      <column name="text" value="Ride 1 rank, Mounted Combat." />
     </insert>
 
     <insert tableName="prerequisite_feat">
@@ -2247,6 +2283,7 @@
     <insert tableName="feats">
       <column name="id" value="103" />
       <column name="feat_name" value="Trample [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110051" />
       <column name="benefit"
         value="When you attempt to overrun an opponent while mounted, your target may not choose to avoid you. Your mount may make one hoof attack against any target you knock down, gaining the standard +4 bonus on attack rolls against prone targets." />
@@ -2270,6 +2307,7 @@
     <insert tableName="feats">
       <column name="id" value="104" />
       <column name="feat_name" value="Two-Weapon Defense [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110052" />
       <column name="benefit"
         value="When wielding a double weapon or two weapons (not including natural weapons or unarmed strikes), you gain a +1 shield bonus to your AC. See the Two-Weapon Fighting special attack." />
@@ -2281,6 +2319,7 @@
     <insert tableName="feats">
       <column name="id" value="105" />
       <column name="feat_name" value="Two-Weapon Fighting [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="Your penalties on attack rolls for fighting with two weapons are reduced. The penalty for your primary hand lessens by 2 and the one for your off hand lessens by 6. See the Two-Weapon Fighting special attack." />
@@ -2293,6 +2332,7 @@
     <insert tableName="feats">
       <column name="id" value="106" />
       <column name="feat_name" value="Weapon Finesse [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites" value="null" /> -->
       <column name="benefit"
         value="With a light weapon, rapier, whip, or spiked chain made for a creature of your size category, you may use your Dexterity modifier instead of your Strength modifier on attack rolls. If you carry a shield, its armor check penalty applies to your attack rolls." />
@@ -2367,6 +2407,7 @@
     <insert tableName="feats">
       <column name="id" value="108" />
       <column name="feat_name" value="Weapon Specialization [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." /> -->
       <column name="prerequisite_list_id" value="110054" />
@@ -2412,6 +2453,7 @@
     <insert tableName="feats">
       <column name="id" value="109" />
       <column name="feat_name" value="Whirlwind Attack [General]" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Dex 13, Int 13, Combat Expertise, Dodge, Mobility, Spring Attack, base attack bonus +4." /> -->
       <column name="prerequisite_list_id" value="110055" />
@@ -2425,7 +2467,7 @@
     <insert tableName="feats">
       <column name="id" value="110" />
       <column name="feat_name" value="Widen Spell [Metamagic]" />
-      <column name="feat_type" value="[&quot;METAMAGIC&quot;]" />
+      <column name="feat_type" value="[&quot;METAMAGIC&quot;,&quot;MAGIC&quot;]" />
       <column name="benefit"
         value="You can alter a burst, emanation, line, or spread shaped spell to increase its area. Any numeric measurements of the spell,s area increase by 100%.A widened spell uses up a spell slot three levels higher than the spell,s actual level." />
       <column name="normal" value="null" />
@@ -4011,6 +4053,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     <insert tableName="feats">
       <column name="id" value="50001" />
       <column name="feat_name" value="Darkvision" />
+      <column name="feat_type" value="[&quot;RACIAL&quot;]" />
       <column name="benefit"
         value="Darkvision is the extraordinary ability to see with no light source at all, out to a range specified for the creature. Darkvision is black and white only (colors cannot be discerned). It does not allow characters to see anything that they could not see otherwise—invisible objects are still invisible, and illusions are still visible as what they seem to be. Likewise, darkvision subjects a creature to gaze attacks normally. The presence of light does not spoil darkvision." />
     </insert>
@@ -4018,6 +4061,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     <insert tableName="feats">
       <column name="id" value="50002" />
       <column name="feat_name" value="Flyby Attack [General]" />
+      <column name="feat_type" value="[&quot;RACIAL&quot;]" />
       <!-- <column name="prerequisites" value="Fly speed." /> -->
       <column name="benefit"
         value="When flying, the creature can take a move action (including a dive) and another standard action at any point during the move. The creature cannot take a second move action during a round when it makes a flyby attack." />
@@ -4037,6 +4081,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     <insert tableName="feats">
       <column name="id" value="50003" />
       <column name="feat_name" value="Improved Natural Armor [General]" />
+      <column name="feat_type" value="[&quot;RACIAL&quot;]" />
       <!-- <column name="prerequisites" value="Natural armor, Con 13." /> -->
       <column name="prerequisite_list_id" value="50001" />
       <column name="benefit"
@@ -4092,6 +4137,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     <insert tableName="feats">
       <column name="id" value="50005" />
       <column name="feat_name" value="Pierce the Darkness [Divine]" />
+      <column name="feat_type" value="[&quot;DIVINE&quot;]" />
       <!-- <column name="prerequisites" value="Darkvision, Turn or rebuke undead" /> -->
       <column name="prerequisite_list_id" value="50003" />
       <column name="benefit"
@@ -4113,6 +4159,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
     <insert tableName="feats">
       <column name="id" value="50006" />
       <column name="feat_name" value="Domain Spontaneity [Divine]" />
+      <column name="feat_type" value="[&quot;DIVINE&quot;]" />
       <!-- <column name="prerequisites" value="Ability to turn or rebuke undead." /> -->
       <column name="prerequisite_list_id" value="50004" />
       <column name="special"

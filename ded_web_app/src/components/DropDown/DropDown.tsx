@@ -42,7 +42,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
             style={{
               position: "absolute",
               width: "50%",
-              fontSize: "75%"
+              fontSize: "50%"
             }}
           >
             {options.map((o, index) => (
