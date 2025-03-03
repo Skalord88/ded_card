@@ -51,7 +51,7 @@ export const reMaterialMaxDex = (
 ): number => {
   if (material) {
     if (material === "MITHRAL") {
-      return maxDex + 3;
+      return maxDex + 3 < 100 ? maxDex + 3 : 100;
     }
   }
   return maxDex;
