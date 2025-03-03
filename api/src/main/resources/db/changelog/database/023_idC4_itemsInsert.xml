@@ -33,12 +33,6 @@
             <column name="armor_name" value="NO_ARMOR" />
             <column name="cost" value="0" />
             <column name="weight" value="0" />
-            <!-- <column name="modifiers"
-                value="[{
-                &quot;modifier&quot; : &quot;ARMOR_BONUS&quot;,           
-                &quot;bonus&quot; : 0,            
-                &quot;targets&quot; : []            
-                }]" /> -->
             <column name="armor_type" value="NO_ARMOR" />
             <column name="max_dex" value="100" />
             <column name="penality" value="0" />
@@ -52,12 +46,6 @@
             <column name="shield_name" value="NO_SHIELD" />
             <column name="cost" value="0" />
             <column name="weight" value="0" />
-            <!-- <column name="modifiers"
-                value="[{
-                &quot;modifier&quot; : &quot;SHIELD_BONUS&quot;,            
-                &quot;bonus&quot; : 0,            
-                &quot;targets&quot; : []            
-                }]" /> -->
             <column name="armor_type" value="SHIELD" />
             <column name="max_dex" value="100" />
             <column name="penality" value="0" />
@@ -89,7 +77,6 @@
             <column name="description"
                 value="This metal glove lets you deal lethal damage rather than nonlethal damage with unarmed strikes. A strike with a gauntlet is otherwise considered an unarmed attack. The cost and weight given are for a single gauntlet. Medium and heavy armors (except breastplate) come with gauntlets." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="-2" /> -->
             <column name="range" value="-2" />
         </insert>
         <insert tableName="items">
@@ -1373,7 +1360,7 @@
             <column name="penality" value="-3" />
             <column name="failure" value="20" />
             <column name="description" value="Taka se, ale lekka." />
-            <column name="material" value="METAL" />
+            <column name="material" value="LEATHER" />
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="items">

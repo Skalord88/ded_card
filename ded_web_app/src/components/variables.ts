@@ -1,4 +1,4 @@
-import { Armor, Attacks, CharacterPc, EnchantedItem, Inventory, ItemsList, Shield, SpecialAttacks, Weapon, WonderousItem, serverSkill } from '../components/interfaces'
+import { Armor, Attacks, CharacterPc, EnchantedItems, Inventory, ItemsList, Shield, SpecialAttacks, Weapon, WonderousItem, serverSkill } from '../components/interfaces'
 import { Abilitys } from './Abilitys/Interface'
 import { ArmorClass } from './Armor/interface/ArmorInterface'
 import { ClassCharacter, ClassPc } from './ClassPc/Interface/ClassPcLevel'
@@ -76,7 +76,7 @@ export const noneItem: WonderousItem = {
     itemType: 'WONDROUS_ITEM'
 }
 
-export const emptyEnchanted: EnchantedItem = {
+export const emptyEnchanted: EnchantedItems = {
     id: 0,
     item: noneWeapon,
     name: noneWeapon.name,

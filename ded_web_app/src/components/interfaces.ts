@@ -136,7 +136,7 @@ export type ItemsList = {
 }
 
 export type Item = {
-  id: number;
+  id: number | null;
   name: string;
   itemType: string;
   cost: number;
@@ -145,16 +145,24 @@ export type Item = {
 }
 
 export interface Armor extends Item {
-  armorName: string;
+  // public int id;
+  // public String name;
   itemId: number;
+  // public ItemTypeEnum itemType;
+  armorName: string;
   modifiers: Prerequisite | null;
+  // itemType: string;
   armorType: string;
+  // public double cost;
+  // public BigDecimal weight;
   maxDex: number;
   penality: number;
   failure: number;
   material: string | null
+  // public String description;
   enchantmentBonus?: number;
   enchantment?: Enchantment[]
+
 }
 
 export interface Shield extends Item {
@@ -185,8 +193,8 @@ export interface Weapon extends Item {
   enchantment?: Enchantment[]
 }
 
-export interface EnchantedItem {
-  id: number
+export interface EnchantedItems {
+  id: number | null;
   item: Armor | Shield | Weapon
   name: string
   enchantment: Enchantment[]

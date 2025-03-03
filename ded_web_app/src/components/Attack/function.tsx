@@ -94,37 +94,37 @@ export const modifyAttacks = (char: CharToModify): Attacks => {
   ];
 
   const wOneSetOneIndex = char.attacks.firstAttackSetOne
-    ? getWeaponInventoryIndex(char.attacks.firstAttackSetOne.id, weapons)
+    ? char.attacks.firstAttackSetOne.id && getWeaponInventoryIndex(char.attacks.firstAttackSetOne.id, weapons)
     : -1;
   const wTwoSetOneIndex = char.attacks.secondAttackSetOne
-    ? getWeaponInventoryIndex(char.attacks.secondAttackSetOne.id, weapons)
+    ? char.attacks.secondAttackSetOne.id && getWeaponInventoryIndex(char.attacks.secondAttackSetOne.id, weapons)
     : -1;
   const wAddSetOneIndex = char.attacks.additionalAttackSetOne
-    ? getWeaponInventoryIndex(char.attacks.additionalAttackSetOne.id, weapons)
+    ? char.attacks.additionalAttackSetOne.id && getWeaponInventoryIndex(char.attacks.additionalAttackSetOne.id, weapons)
     : -1;
   const wOneSetTwoIndex = char.attacks.firstAttackSetTwo
-    ? getWeaponInventoryIndex(char.attacks.firstAttackSetTwo.id, weapons)
+    ? char.attacks.firstAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.firstAttackSetTwo.id, weapons)
     : -1;
   const wTwoSetTwoIndex = char.attacks.secondAttackSetTwo
-    ? getWeaponInventoryIndex(char.attacks.secondAttackSetTwo.id, weapons)
+    ? char.attacks.secondAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.secondAttackSetTwo.id, weapons)
     : -1;
   const wAddSetTwoIndex = char.attacks.additionalAttackSetTwo
-    ? getWeaponInventoryIndex(char.attacks.additionalAttackSetTwo.id, weapons)
+    ? char.attacks.additionalAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.additionalAttackSetTwo.id, weapons)
     : -1;
 
   return {
     firstAttackSetOne:
-      wOneSetOneIndex === -1 ? noneWeapon : weapons[wOneSetOneIndex],
+      wOneSetOneIndex === -1 || !wOneSetOneIndex ? noneWeapon : weapons[wOneSetOneIndex],
     secondAttackSetOne:
-      wTwoSetOneIndex === -1 ? noneWeapon : weapons[wTwoSetOneIndex],
+      wTwoSetOneIndex === -1 || !wTwoSetOneIndex ? noneWeapon : weapons[wTwoSetOneIndex],
     additionalAttackSetOne:
-      wAddSetOneIndex === -1 ? noneWeapon : weapons[wAddSetOneIndex],
+      wAddSetOneIndex === -1 || !wAddSetOneIndex ? noneWeapon : weapons[wAddSetOneIndex],
     firstAttackSetTwo:
-      wOneSetTwoIndex === -1 ? noneWeapon : weapons[wOneSetTwoIndex],
+      wOneSetTwoIndex === -1 || !wOneSetTwoIndex ? noneWeapon : weapons[wOneSetTwoIndex],
     secondAttackSetTwo:
-      wTwoSetTwoIndex === -1 ? noneWeapon : weapons[wTwoSetTwoIndex],
+      wTwoSetTwoIndex === -1 || !wTwoSetTwoIndex ? noneWeapon : weapons[wTwoSetTwoIndex],
     additionalAttackSetTwo:
-      wAddSetTwoIndex === -1 ? noneWeapon : weapons[wAddSetTwoIndex]
+      wAddSetTwoIndex === -1 || !wAddSetTwoIndex ? noneWeapon : weapons[wAddSetTwoIndex]
   };
 };
 

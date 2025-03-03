@@ -1,10 +1,10 @@
-import { CharacterPc, Inventory } from "../../interfaces";
+import { Inventory } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
 import { noneArmor, noneShield, noneWeapon } from "../../variables";
-import { reMaterialArmType, reMaterialFailure, reMaterialMaxDex, reMaterialPenality, reMaterialWeight } from "../Material/function";
+import { reMaterialArmType, reMaterialFailure, reMaterialMaxDex, reMaterialPerfectPenality, reMaterialWeight } from "../Material/function";
 
-export const modifyInventory = (char: CharacterPc): Inventory => {
-  const inventory: Inventory = char.inventory;
+export const modifyInventory = (charSizeId: number, inventory: Inventory): Inventory => {
+  // const inventory: Inventory = char.inventory;
 
   return {
     ...inventory,
@@ -16,9 +16,9 @@ export const modifyInventory = (char: CharacterPc): Inventory => {
       ),
       weight: reMaterialWeight(
         inventory.armor.material,
-        reWeightItem(char.race.size.id, inventory.armor.weight)
+        reWeightItem(charSizeId, inventory.armor.weight)
       ),
-      penality: reMaterialPenality(inventory.armor.material, inventory.armor.penality, inventory.armor.enchantment ? true : false),
+      penality: reMaterialPerfectPenality(inventory.armor.material, inventory.armor.penality, inventory.armor.enchantment ? true : false),
       maxDex: reMaterialMaxDex(inventory.armor.material, inventory.armor.maxDex),
       failure: reMaterialFailure(inventory.armor.material, inventory.armor.failure)
     }  : noneArmor,
@@ -26,29 +26,29 @@ export const modifyInventory = (char: CharacterPc): Inventory => {
       ...inventory.shield,
       weight: reMaterialWeight(
         inventory.armor.material,
-        reWeightItem(char.race.size.id, inventory.shield.weight)
+        reWeightItem(charSizeId, inventory.shield.weight)
       ),
-      penality: reMaterialPenality(inventory.shield.material, inventory.shield.penality, inventory.shield.enchantment ? true : false)
+      penality: reMaterialPerfectPenality(inventory.shield.material, inventory.shield.penality, inventory.shield.enchantment ? true : false)
     } : noneShield,
     weaponOne: inventory.weaponOne ? {
-      ...reSizeWeapon(char.race.size, inventory.weaponOne),
-      weight: reWeightItem(char.race.size.id, inventory.weaponOne.weight)
+      ...reSizeWeapon(charSizeId, inventory.weaponOne),
+      weight: reWeightItem(charSizeId, inventory.weaponOne.weight)
     } : noneWeapon,
     weaponTwo: inventory.weaponTwo ? {
-      ...reSizeWeapon(char.race.size, inventory.weaponTwo),
-      weight: reWeightItem(char.race.size.id, inventory.weaponTwo.weight)
+      ...reSizeWeapon(charSizeId, inventory.weaponTwo),
+      weight: reWeightItem(charSizeId, inventory.weaponTwo.weight)
     }  : noneWeapon,
     weaponThree: inventory.weaponThree ? {
-      ...reSizeWeapon(char.race.size, inventory.weaponThree),
-      weight: reWeightItem(char.race.size.id, inventory.weaponThree.weight)
+      ...reSizeWeapon(charSizeId, inventory.weaponThree),
+      weight: reWeightItem(charSizeId, inventory.weaponThree.weight)
     } : noneWeapon,
     weaponFour: inventory.weaponFour ? {
-      ...reSizeWeapon(char.race.size, inventory.weaponFour),
-      weight: reWeightItem(char.race.size.id, inventory.weaponFour.weight)
+      ...reSizeWeapon(charSizeId, inventory.weaponFour),
+      weight: reWeightItem(charSizeId, inventory.weaponFour.weight)
     } : noneWeapon,
     weaponFive: inventory.weaponFive ? {
-      ...reSizeWeapon(char.race.size, inventory.weaponFive) ,
-      weight: reWeightItem(char.race.size.id, inventory.weaponFive.weight)
+      ...reSizeWeapon(charSizeId, inventory.weaponFive) ,
+      weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
     } : noneWeapon
   };
 };

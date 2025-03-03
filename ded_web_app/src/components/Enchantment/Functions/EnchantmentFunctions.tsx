@@ -1,7 +1,7 @@
 import { FormattingText } from "../../Formatting/Function";
 import {
   Armor,
-  EnchantedItem,
+  EnchantedItems,
   Enchantment,
   Shield,
   Weapon
@@ -9,8 +9,8 @@ import {
 
 export function SetEnchantemtOnItem(
   enchantment: Enchantment[],
-  item: EnchantedItem
-): EnchantedItem {
+  item: EnchantedItems
+): EnchantedItems {
   return {
     ...item,
     enchantment: enchantment

@@ -246,7 +246,7 @@ export const modifyCharacter = (
       CountHitDicesFromClassPc(char.classPcList)
     ),
     armor: findArmorPrerequisite(prer),
-    inventory: modifyInventory(char),
+    inventory: modifyInventory(char.race.size.id, char.inventory),
     attacks: char.attacks,
     proficency: allProficency,
     skills: findSkillsPrerequisite(prer),

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import {
   ClassFeats,
@@ -10,7 +10,6 @@ import {
 import { addToDrop, itemInDrop } from "../components/functions";
 import { CharacterPc, Item, Weapon } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
-import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { urlChar, urlFeats, urlItems } from "../components/url";
@@ -186,7 +185,9 @@ export function Feats() {
         }
         {
           <button className="rpgui-button">
-            <p>to Inventory</p>
+            <Link to={"/item/" + charId}>
+              <p>to Inventory</p>
+            </Link>
           </button>
         }
       </div>
@@ -233,7 +234,9 @@ export function Feats() {
             </button>
 
             <button className="rpgui-button">
-              <p>to Inventory</p>
+              <Link to={"/item/" + charId}>
+                <p>to Inventory</p>
+              </Link>
             </button>
           </div>
         </div>
@@ -452,21 +455,24 @@ export const FeatPcToAddInLevel: React.FC<FeatPcToAddInLevelProps> = ({
   }, [featsToAdd, featIndex]);
 
   const addToSelect = (f: Item | Feat) => {
-
-    if((f as Item).name){
+    if ((f as Item).name) {
       setFeatsToAdd({
-        ...featsToAdd,selected: {
+        ...featsToAdd,
+        selected: {
           ...featsToAdd.selected,
           items: [f as Item]
-        }})
+        }
+      });
     }
-    if((f as Feat).featName){
+    if ((f as Feat).featName) {
       setFeatsToAdd({
-        ...featsToAdd,selected: {
+        ...featsToAdd,
+        selected: {
           ...featsToAdd.selected,
           feats: [f as Feat],
           items: undefined
-        }})
+        }
+      });
     }
   };
 

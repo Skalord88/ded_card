@@ -1,5 +1,4 @@
 import { Weapon } from "../interfaces";
-import { Size } from "./interfaces";
 
 export const reWeightItem = (sizeId: number, weight: number): number => {
   if(sizeId === 4) {
@@ -11,14 +10,14 @@ export const reWeightItem = (sizeId: number, weight: number): number => {
   return weight;
 }
 
-export function reSizeWeapon(size: Size, weapon: Weapon): Weapon {
+export function reSizeWeapon(sizeId: number, weapon: Weapon): Weapon {
   let updatedWeapon: Weapon = { ...weapon };
 
   if (updatedWeapon.type !== null) {
     if (updatedWeapon.type.includes("UNARMED")) {
-      updatedWeapon = damageReSize(size.size, updatedWeapon);
+      updatedWeapon = damageReSize(sizeId, updatedWeapon);
     }
-    if (size.id === 4 && updatedWeapon.size === "MEDIUM") {
+    if (sizeId === 4 && updatedWeapon.size === "MEDIUM") {
       updatedWeapon = reSizeBySizeWeapon("MEDIUM", updatedWeapon);
     }
   }
@@ -37,9 +36,9 @@ export function reSizeBySizeWeapon(size: string, weapon: Weapon): Weapon {
   return updatedWeapon;
 }
 
-export function damageReSize(size: string, weapon: Weapon): Weapon {
+export function damageReSize(size: number, weapon: Weapon): Weapon {
   let updatedWeapon = { ...weapon };
-  if (size === "SMALL") {
+  if (size === 4) {
     const damageUpgradeMap: Record<string, string> = {
       "D3": "D2",
       "D4": "D3",
@@ -55,7 +54,7 @@ export function damageReSize(size: string, weapon: Weapon): Weapon {
     updatedWeapon.size = "SMALL";
     updatedWeapon.weight = weapon.weight / 2;
   }
-  if (size === "LARGE") {
+  if (size === 6) {
     const damageUpgradeMap: Record<string, string> = {
       "D3": "D4",
       "D4": "D6",

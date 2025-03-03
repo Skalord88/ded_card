@@ -176,19 +176,19 @@ export function SetAttacksFromWeapons(
             baseAttackBonus: bab,
             setOne: {
                 firstHand: weaponsList.find
-                    (w => idList.includes(w.id)),
+                    (w => w.id && idList.includes(w.id)),
                 secondHand: weaponsList.find
-                    (w => idList.includes(w.id)),
+                    (w => w.id && idList.includes(w.id)),
                 additionalWeapon: weaponsList.find
-                    (w => idList.includes(w.id))
+                    (w => w.id && idList.includes(w.id))
             },
             setTwo: {
                 firstHand: weaponsList.find
-                    (w => idList.includes(w.id)),
+                    (w => w.id && idList.includes(w.id)),
                 secondHand: weaponsList.find
-                    (w => idList.includes(w.id)),
+                    (w => w.id && idList.includes(w.id)),
                 additionalWeapon: weaponsList.find
-                    (w => idList.includes(w.id))
+                    (w => w.id && idList.includes(w.id))
             }
         }
     } else {
@@ -402,7 +402,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
 
             o => {
                 return {
-                    name: enchantedName(o),
+                    name: (o as Item).name,
                     item: o as Item | Armor | Shield | Weapon | WonderousItem
                 }
             }
