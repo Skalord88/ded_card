@@ -1,27 +1,21 @@
 import { FormattingText } from "../../Formatting/Function";
 import {
-  Armor,
-  EnchantedItems,
-  Enchantment,
-  Shield,
-  Weapon
+    Armor,
+    EnchantedItem,
+    Enchantment,
+    Shield,
+    Weapon
 } from "../../interfaces";
 
 export function SetEnchantemtOnItem(
   enchantment: Enchantment[],
-  item: EnchantedItems
-): EnchantedItems {
+  item: EnchantedItem
+): EnchantedItem {
   return {
     ...item,
     enchantment: enchantment
   };
 }
-
-// export function FilterZeroEnchantment(
-//   list: (Enchantment)[]
-// ): (Enchantment)[] {
-//   return list.filter(enchantment => enchantment.id === 0);
-// }
 
 export const enchantedName = (item: Armor | Shield | Weapon): string => {
   let itemName: string = item.name;
@@ -32,16 +26,10 @@ export const enchantedName = (item: Armor | Shield | Weapon): string => {
           ? itemName + " " + FormattingText(ench.ability)
           : ""
       );
-      // item.enchantment.forEach((ench) => {
-      //   if (ench.ability === null && ench.enchantment !== null && ench.enchantment.bonus < 0)
-      //     return itemName + " pft";
-      //   else if (ench.ability === null && ench.enchantment !== null && ench.enchantment.bonus > 0)
-      //     return itemName + " +" + ench.enchantment;
-      // });
     }
   }
   return itemName;
-}
+};
 
 export const onlyEnchantedName = (enchantment: number): string => {
   if (enchantment < 0) {
@@ -50,9 +38,9 @@ export const onlyEnchantedName = (enchantment: number): string => {
     return "-";
   }
   return "+" + enchantment;
-}
+};
 
-export function CostOfEnchant(enchantment: number, type: string): number {
+export function costOfEnchant(enchantment: number, type: string): number {
   if (type === "Armor") {
     switch (enchantment) {
       case -1:
@@ -71,7 +59,7 @@ export function CostOfEnchant(enchantment: number, type: string): number {
         return 0;
     }
   }
-  if (type === "Weapn") {
+  if (type === "Weapon") {
     switch (enchantment) {
       case -1:
         return 300;
@@ -92,34 +80,45 @@ export function CostOfEnchant(enchantment: number, type: string): number {
   return 0;
 }
 
-// export function EnchantmentCost(items: Armor | Shield | Weapon): number {
-//   let total: number = 0;
-//   items.forEach((item) => {
-//     if (item.cost && item.enchantmentList) {
-//       if (item.item.itemType === "ARMOR" || item.item.itemType === "SHIELD") {
-//         total +=
-//           item.cost +
-//           CostOfEnchant(
-//             item.enchantmentList.reduce(
-//               (tot, ench) => tot + ench.enchantment,
-//               0
-//             ),
-//             "Armor"
-//           );
-//       } else {
-//         total +=
-//           item.cost +
-//           CostOfEnchant(
-//             item.enchantmentList.reduce(
-//               (tot, ench) => tot + ench.enchantment,
-//               0
-//             ),
-//             "Weapn"
-//           );
-//       }
-//     } else {
-//       total += item.cost;
-//     }
-//   });
-//   return total;
-// }
+export function costOfMaterial(
+  material: string,
+  type: string,
+  weight: number
+): number {
+  if (material === "ADAMANTINE") {
+    switch (type) {
+      case "LIGHT_ARMOR":
+        return 5000;
+      case "MEDIUM_ARMOR":
+        return 10000;
+      case "HEAVY_ARMOR":
+        return 15000;
+      case "SHIELD":
+        return 2000;
+      case "WEAPON":
+        return 3000;
+      default:
+        return 0;
+    }
+  }
+  if (material === "DARKWOOD") {
+    return weight * 10;
+  }
+  if (material === "MITHRAL") {
+    switch (type) {
+      case "LIGHT_ARMOR":
+        return 1000;
+      case "MEDIUM_ARMOR":
+        return 4000;
+      case "HEAVY_ARMOR":
+        return 9000;
+      case "SHIELD":
+        return 1000;
+      case "WEAPON":
+        return weight * 500;
+      default:
+        return 0;
+    }
+  }
+  return 0;
+}

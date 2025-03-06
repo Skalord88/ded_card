@@ -1,55 +1,96 @@
+import {
+  costOfEnchant,
+  costOfMaterial
+} from "../../Enchantment/Functions/EnchantmentFunctions";
 import { Inventory } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
 import { noneArmor, noneShield, noneWeapon } from "../../variables";
-import { reMaterialArmType, reMaterialFailure, reMaterialMaxDex, reMaterialPerfectPenality, reMaterialWeight } from "../Material/function";
+import {
+  reMaterialArmType,
+  reMaterialFailure,
+  reMaterialMaxDex,
+  reMaterialPerfectPenality,
+  reMaterialWeight
+} from "../Material/function";
 
-export const modifyInventory = (charSizeId: number, inventory: Inventory): Inventory => {
+export const modifyInventory = (
+  charSizeId: number,
+  inventory: Inventory
+): Inventory => {
   // const inventory: Inventory = char.inventory;
 
   return {
     ...inventory,
-    armor: inventory.armor ? {
-      ...inventory.armor,
-      armorType: reMaterialArmType(
-        inventory.armor.material,
-        inventory.armor.armorType
-      ),
-      weight: reMaterialWeight(
-        inventory.armor.material,
-        reWeightItem(charSizeId, inventory.armor.weight)
-      ),
-      penality: reMaterialPerfectPenality(inventory.armor.material, inventory.armor.penality, inventory.armor.enchantment ? true : false),
-      maxDex: reMaterialMaxDex(inventory.armor.material, inventory.armor.maxDex),
-      failure: reMaterialFailure(inventory.armor.material, inventory.armor.failure)
-    }  : noneArmor,
-    shield: inventory.shield ? {
-      ...inventory.shield,
-      weight: reMaterialWeight(
-        inventory.armor.material,
-        reWeightItem(charSizeId, inventory.shield.weight)
-      ),
-      penality: reMaterialPerfectPenality(inventory.shield.material, inventory.shield.penality, inventory.shield.enchantment ? true : false)
-    } : noneShield,
-    weaponOne: inventory.weaponOne ? {
-      ...reSizeWeapon(charSizeId, inventory.weaponOne),
-      weight: reWeightItem(charSizeId, inventory.weaponOne.weight)
-    } : noneWeapon,
-    weaponTwo: inventory.weaponTwo ? {
-      ...reSizeWeapon(charSizeId, inventory.weaponTwo),
-      weight: reWeightItem(charSizeId, inventory.weaponTwo.weight)
-    }  : noneWeapon,
-    weaponThree: inventory.weaponThree ? {
-      ...reSizeWeapon(charSizeId, inventory.weaponThree),
-      weight: reWeightItem(charSizeId, inventory.weaponThree.weight)
-    } : noneWeapon,
-    weaponFour: inventory.weaponFour ? {
-      ...reSizeWeapon(charSizeId, inventory.weaponFour),
-      weight: reWeightItem(charSizeId, inventory.weaponFour.weight)
-    } : noneWeapon,
-    weaponFive: inventory.weaponFive ? {
-      ...reSizeWeapon(charSizeId, inventory.weaponFive) ,
-      weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
-    } : noneWeapon
+    armor: inventory.armor
+      ? {
+          ...inventory.armor,
+          armorType: reMaterialArmType(
+            inventory.armor.material,
+            inventory.armor.armorType
+          ),
+          weight: reMaterialWeight(
+            inventory.armor.material,
+            reWeightItem(charSizeId, inventory.armor.weight)
+          ),
+          penality: reMaterialPerfectPenality(
+            inventory.armor.material,
+            inventory.armor.penality,
+            inventory.armor.enchantment ? true : false
+          ),
+          maxDex: reMaterialMaxDex(
+            inventory.armor.material,
+            inventory.armor.maxDex
+          ),
+          failure: reMaterialFailure(
+            inventory.armor.material,
+            inventory.armor.failure
+          )
+        }
+      : noneArmor,
+    shield: inventory.shield
+      ? {
+          ...inventory.shield,
+          weight: reMaterialWeight(
+            inventory.armor.material,
+            reWeightItem(charSizeId, inventory.shield.weight)
+          ),
+          penality: reMaterialPerfectPenality(
+            inventory.shield.material,
+            inventory.shield.penality,
+            inventory.shield.enchantment ? true : false
+          )
+        }
+      : noneShield,
+    weaponOne: inventory.weaponOne
+      ? {
+          ...reSizeWeapon(charSizeId, inventory.weaponOne),
+          weight: reWeightItem(charSizeId, inventory.weaponOne.weight)
+        }
+      : noneWeapon,
+    weaponTwo: inventory.weaponTwo
+      ? {
+          ...reSizeWeapon(charSizeId, inventory.weaponTwo),
+          weight: reWeightItem(charSizeId, inventory.weaponTwo.weight)
+        }
+      : noneWeapon,
+    weaponThree: inventory.weaponThree
+      ? {
+          ...reSizeWeapon(charSizeId, inventory.weaponThree),
+          weight: reWeightItem(charSizeId, inventory.weaponThree.weight)
+        }
+      : noneWeapon,
+    weaponFour: inventory.weaponFour
+      ? {
+          ...reSizeWeapon(charSizeId, inventory.weaponFour),
+          weight: reWeightItem(charSizeId, inventory.weaponFour.weight)
+        }
+      : noneWeapon,
+    weaponFive: inventory.weaponFive
+      ? {
+          ...reSizeWeapon(charSizeId, inventory.weaponFive),
+          weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
+        }
+      : noneWeapon
   };
 };
 
@@ -199,3 +240,30 @@ export function calculateWeight(
   if (inventoryWeight < w[2]) return ["heavy load", inventoryWeight];
   return ["over load", inventoryWeight];
 }
+
+export const calculateCost = (
+  title: string,
+  costItem: number,
+  enchantmentBonusItem: number,
+  materialItem: string,
+  weightItem: number,
+  typeItem: string
+): number => {
+  let cost = costItem;
+
+  if (title === "Armor") {
+    return (cost =
+      cost +
+      costOfEnchant(enchantmentBonusItem ?? 0, title) +
+      costOfMaterial(materialItem, typeItem, weightItem));
+  }
+
+  if (title === "Weapon") {
+    return (cost =
+      cost +
+      costOfEnchant(enchantmentBonusItem ?? 0, title) +
+      costOfMaterial(materialItem, typeItem, weightItem));
+  }
+
+  return cost;
+};

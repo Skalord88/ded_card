@@ -4,13 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import {
   Armor,
   CharacterPc,
-  EnchantedItems,
+  EnchantedItem,
   Inventory,
   Item,
   ItemsList,
   Shield,
   Weapon,
-  WonderousItem
+  WonderousItem,
+  InventoryToSend,
+  ItemToSend
 } from "../components/interfaces";
 import { urlChar, urlItems, urlItemsBuy } from "../components/url";
 import { emptyItemsList } from "../components/variables";
@@ -20,7 +22,10 @@ import { CharToModify } from "../components/Prerequisite/functions/modifyCharact
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
-import { modifyInventory } from "../components/Items/Inventory/function";
+import {
+  calculateCost,
+  modifyInventory
+} from "../components/Items/Inventory/function";
 import { reWeightItem } from "../components/Size/function";
 import {
   reMaterialArmType,
@@ -29,7 +34,6 @@ import {
   reMaterialPerfectPenality,
   reMaterialWeight
 } from "../components/Items/Material/function";
-import { FormattingText } from "../components/Formatting/Function";
 
 export type InventoryItems = (
   | { n: number; item: Armor }
@@ -51,6 +55,22 @@ export const Items = () => {
   const [modChar, setModChar] = useState<CharToModify>();
   const [filtroList, setFiltroList] = useState<FiltroItems>();
   const [inventory, setInventory] = useState<InventoryItems>();
+  const [inventoryToSend, setInventoryToSend] = useState<InventoryToSend>({
+    armor: undefined,
+    shield: undefined,
+    weaponOne: undefined,
+    weaponTwo: undefined,
+    weaponThree: undefined,
+    weaponFour: undefined,
+    weaponFive: undefined,
+    backpack: undefined,
+    head: undefined,
+    neck: undefined,
+    arms: undefined,
+    hands: undefined,
+    cloth: undefined,
+    legs: undefined
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,36 +117,8 @@ export const Items = () => {
     fetchData();
   }, []);
 
-  const handleChangeItem = (
-    n: number,
-    item: Armor | Shield | Weapon | Item
-  ) => {
-    if (item) {
-      console.log(item);
-      if (inventory) {
-        const newInventory = inventory.map((i) => {
-          if (i.n === n) {
-            return { ...i, item: item };
-          }
-          return i;
-        });
-        setInventory(newInventory);
-      }
-    }
-    // if (n === 0 && inventory) {
-
-    //   const newItem: Armor = item as Armor;
-    //   const newInventory = inventory.map((i) => {
-    //     if (i.n === 0) {
-    //       return { ...i, item: newItem };
-    //     }
-    //     return i;
-    //   });
-
-    //   console.log(n, item, newInventory);
-
-    //   setInventory(newInventory);
-    // }
+  const handleChangeItem = (n: number, item: ItemToSend) => {
+      console.log(n, item.name);
   };
 
   if (!inventory) {
@@ -164,7 +156,7 @@ export type ItemInventoryProps = {
   item: Armor | Shield | Weapon | Item;
   sizeId: number;
   filtro: FiltroItems;
-  onAction: (n: number, item: Armor | Shield | Weapon | Item) => void;
+  onAction: (n: number, item: ItemToSend) => void;
 };
 
 export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
@@ -177,18 +169,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const metal = ["METAL", "MITHRAL", "ADAMANTINE"];
   const wood = ["WOOD", "DARKWOOD"];
   const enchantments = [0, -1, 1, 2, 3, 4, 5];
-
-  // const penalityInItem =
-  //   "penality" in item
-  //     ? reMaterialPerfectPenality(
-  //         item.material ? item.material : "",
-  //         item.penality ? item.penality : 0,
-  //         item.enchantmentBonus !== 0 ? true : false
-  //       )
-  //     : null;
-
-  // if (item.name === "elven chain +2")
-  //   console.log("penalityInItem: " + item.name + ", " + penalityInItem);
 
   const [theItem, setTheItem] = useState<
     Item | Armor | Shield | Weapon | WonderousItem
@@ -229,15 +209,13 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
       ? item.enchantmentBonus
       : null
   );
-  const [failureItem, setFailureItem] = useState<
-    number | null
-  >(
+  const [failureItem, setFailureItem] = useState<number | null>(
     "failure" in item && item.failure
-    ? reMaterialFailure(
-      item.material ? item.material : "",
-      item.failure ? item.failure : 0
-    )
-  : null
+      ? reMaterialFailure(
+          item.material ? item.material : "",
+          item.failure ? item.failure : 0
+        )
+      : null
   );
 
   const handleNewItems = (
@@ -254,7 +232,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
         );
         setMaxDexItem(optionItem.maxDex);
-        setFailureItem(optionItem.failure)
+        setFailureItem(optionItem.failure);
       }
       if ("shieldName" in optionItem) {
         setTheItem(optionItem);
@@ -275,8 +253,8 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     }
 
     if (optionMaterial && typeof optionMaterial === "string") {
+      setMaterialItem(optionMaterial);
       if ("armorType" in theItem) {
-        setMaterialItem(optionMaterial);
         setArmorTypeItem(reMaterialArmType(optionMaterial, theItem.armorType));
         setPenalityItem(
           reMaterialPerfectPenality(
@@ -285,8 +263,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             theItem.enchantmentBonus !== 0 ? true : false
           )
         );
-        setMaxDexItem(reMaterialMaxDex(optionMaterial, theItem.maxDex));
-        setFailureItem(reMaterialFailure(optionMaterial, theItem.failure))
+        if ("maxDex" in theItem)
+          setMaxDexItem(reMaterialMaxDex(optionMaterial, theItem.maxDex));
+        setFailureItem(reMaterialFailure(optionMaterial, theItem.failure));
       }
 
       if ("weight" in theItem) {
@@ -310,15 +289,17 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             ? enchantments[findIndexEnchant + 1]
             : enchantments[findIndexEnchant];
         setEnchantmentBonusItem(enchInIndex);
-        setPenalityItem(
-          reMaterialPerfectPenality(
-            materialItem,
-            (theItem as Armor | Shield).penality
-              ? (theItem as Armor | Shield).penality
-              : 0,
-            enchInIndex !== 0 ? true : false
-          )
-        );
+
+        if (penalityItem && "penality" in theItem)
+          setPenalityItem(
+            reMaterialPerfectPenality(
+              materialItem,
+              (theItem as Armor | Shield).penality
+                ? (theItem as Armor | Shield).penality
+                : 0,
+              enchInIndex !== 0 ? true : false
+            )
+          );
       }
     }
   };
@@ -338,7 +319,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             : enchantments[findIndexEnchant];
         setEnchantmentBonusItem(enchInIndex);
 
-        if (penalityItem)
+        if (penalityItem && "penality" in theItem)
           setPenalityItem(
             reMaterialPerfectPenality(
               materialItem,
@@ -352,96 +333,188 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     }
   };
 
+  useEffect(() => {
+    if ("armorName" in theItem || "shieldName" in theItem)
+      setCostItem(
+        calculateCost(
+          "Armor",
+          theItem.cost,
+          enchantmentBonusItem ?? 0,
+          materialItem ?? "",
+          weightItem ?? 0,
+          theItem.armorType
+        )
+      );
+    if ("weaponName" in theItem)
+      setCostItem(
+        calculateCost(
+          "Weapon",
+          theItem.cost,
+          enchantmentBonusItem ?? 0,
+          materialItem ?? "",
+          theItem.weight ?? 0,
+          theItem.itemType
+        )
+      );
+  }, [theItem, enchantmentBonusItem, materialItem, weightItem]);
+
+  useEffect(() => {
+    const itemToSend: ItemToSend = {
+      id: theItem.id ?? null,
+      item: { id: (theItem as Armor | Shield | Weapon).itemId },
+      name: theItem.name ?? null,
+      enchantment: null,
+      material: materialItem,
+      cost: null,
+      enchantmentBonus: enchantmentBonusItem,
+      description: theItem.description
+    };
+    if (itemToSend) onAction(n, itemToSend);
+  }, []);
+
+  const numerini: string[] = ["I", "II", "III", "IV", "V"];
+
   return (
     <div>
-      <h3>{theItem.name}</h3>
-      <DropdownComponent
-        options={
-          n === 0 ? filtro.armors : n === 1 ? filtro.shields : filtro.weapons
-        }
-        onAction={handleNewItems}
-      />
-      <p>
-        <span style={{ color: "yellow" }}>name: </span>
-        {(theItem as Armor).armorName ||
-          (theItem as Shield).shieldName ||
-          (theItem as Weapon).weaponName}
-      </p>
-      <p>
-        <span style={{ color: "yellow" }}>enchantment: </span>
-        <span>
-          <button
-            className="rpgui-button-golden-mini"
-            onClick={handlePlusEnchantmentBonus}
-          >
-            +
-          </button>
-          <button
-            className="rpgui-button-golden-mini"
-            onClick={handleMinEnchantmentBonus}
-          >
-            -
-          </button>
-        </span>
-        {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
-      </p>
-      <p>
-        <span style={{ color: "yellow" }}>description: </span>
-        {theItem.description}
-      </p>
-      {materialItem ? (
-        <p>
-          <span style={{ color: "yellow" }}>{"material: "}</span>
-          {materialItem}
-        </p>
-      ) : null}
-      {(theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
-        <DropdownComponent
-          options={addToDrop(
-            metal.includes(
-              (theItem as Armor | Shield | Weapon).material as string
-            )
-              ? metal
-              : wood,
-            "filter"
-          )}
-          onAction={(option) => handleNewItems(undefined, option)}
-        />
-      ) : null}
-      {armorTypeItem ? (
-        <p>
-          <span style={{ color: "yellow" }}>armor type: </span>
-          {armorTypeItem}
-        </p>
-      ) : null}
-      <p>
-        <span style={{ color: "yellow" }}>cost: </span>
-        {costItem}
-      </p>
-      {weightItem ? (
-        <p>
-          <span style={{ color: "yellow" }}>weight: </span>
-          {weightItem}
-        </p>
-      ) : null}
-      {penalityItem || penalityItem === 0 ? (
-        <p>
-          <span style={{ color: "yellow" }}>penality: </span>
-          {penalityItem}
-        </p>
-      ) : null}
-      {maxDexItem || maxDexItem === 0 ? (
-        <p>
-          <span style={{ color: "yellow" }}>max dex: </span>
-          {maxDexItem}
-        </p>
-      ) : null}
-      {failureItem || failureItem === 0 ? (
-        <p>
-          <span style={{ color: "yellow" }}>max dex: </span>
-          {failureItem}%
-        </p>
-      ) : null}
+      <h2>
+        {"armorName" in theItem ? "ARMOR" : null}
+        {"shieldName" in theItem ? "SHIELD" : null}
+        {"weaponName" in theItem ? "WEAPON " + numerini[n - 2] : null}
+      </h2>
+      <div
+      // style={{
+      //   display: "flex",
+      //   flexWrap: "wrap",
+      // alignItems: "stretch",
+      // // flexBasis: "auto",
+      // justifyContent: "baseline",
+      // width: "100%"
+      // }}
+      >
+        {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+        <div>
+          <DropdownComponent
+            options={
+              n === 0
+                ? filtro.armors
+                : n === 1
+                ? filtro.shields
+                : filtro.weapons
+            }
+            onAction={handleNewItems}
+          />
+          <p>
+            <span style={{ color: "yellow" }}>name: </span>
+            {(theItem as Armor).armorName ||
+              (theItem as Shield).shieldName ||
+              (theItem as Weapon).weaponName}{" "}
+            {theItem.name} id.{theItem.id}
+          </p>
+        </div>
+        {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+        <div>
+          <p>
+            <span style={{ color: "yellow" }}>enchantment: </span>
+            <span>
+              <button
+                className="rpgui-button-grey-mini"
+                onClick={handlePlusEnchantmentBonus}
+              >
+                +
+              </button>
+              <button
+                className="rpgui-button-grey-mini"
+                onClick={handleMinEnchantmentBonus}
+              >
+                -
+              </button>
+            </span>
+            {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
+          </p>
+        </div>
+        {/* <div style={{ flex: 4 }} className="rpgui-container-framed-grey"> */}
+        <div>
+          <p>
+            <span style={{ color: "yellow" }}>description: </span>
+            {theItem.description}
+          </p>
+        </div>
+        <div>
+          {/* <div style={{ flex: 2 }} className="rpgui-container-framed-grey"> */}
+          {materialItem ? (
+            <p>
+              <span style={{ color: "yellow" }}>{"material: "}</span>
+              {materialItem}
+            </p>
+          ) : null}
+          {(theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
+            <DropdownComponent
+              options={addToDrop(
+                metal.includes(
+                  (theItem as Armor | Shield | Weapon).material as string
+                )
+                  ? metal
+                  : wood,
+                "filter"
+              )}
+              onAction={(option) => handleNewItems(undefined, option)}
+            />
+          ) : null}
+        </div>
+
+        {armorTypeItem ? (
+          // <div style={{ flex: 1 }} className="rpgui-container-framed-grey">
+          <div>
+            <p>
+              <span style={{ color: "yellow" }}>armor type: </span>
+              {armorTypeItem}
+            </p>
+          </div>
+        ) : null}
+        <div>
+          {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+          <p>
+            <span style={{ color: "yellow" }}>cost: </span>
+            {costItem}
+          </p>
+        </div>
+        {weightItem ? (
+          <div>
+            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+            <p>
+              <span style={{ color: "yellow" }}>weight: </span>
+              {weightItem}
+            </p>
+          </div>
+        ) : null}
+        {penalityItem || penalityItem === 0 ? (
+          <div>
+            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+            <p>
+              <span style={{ color: "yellow" }}>penality: </span>
+              {penalityItem}
+            </p>
+          </div>
+        ) : null}
+        {maxDexItem || maxDexItem === 0 ? (
+          <div>
+            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+            <p>
+              <span style={{ color: "yellow" }}>max dex: </span>
+              {maxDexItem}
+            </p>
+          </div>
+        ) : null}
+        {failureItem || failureItem === 0 ? (
+          <div>
+            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+            <p>
+              <span style={{ color: "yellow" }}>failure: </span>
+              {failureItem}%
+            </p>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

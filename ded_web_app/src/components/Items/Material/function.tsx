@@ -36,7 +36,6 @@ export const reMaterialPerfectPenality = (
   penality: number,
   perfect: boolean
 ): number => {
-  console.log(material)
     const prf: number = perfect? 1 : 0
     const specialMat: string[] = ["MITHRAL", "DARKWOOD"];
     const normalMat: string[] = ["WOOD", "LEATHER", "METAL"]

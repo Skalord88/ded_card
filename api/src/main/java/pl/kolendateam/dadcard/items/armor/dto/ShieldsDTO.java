@@ -27,7 +27,7 @@ public class ShieldsDTO {
   public double cost;
   public BigDecimal weight;
   public ArmorsEnum armorType;
-  public int maxDex;
+  // public int maxDex;
   public int penality;
   public int failure;
   public String description;
@@ -47,7 +47,7 @@ public class ShieldsDTO {
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.armorType = item.getArmorType();
-    this.maxDex = item.getMaxDex();
+    // this.maxDex = item.getMaxDex();
     this.penality = item.getPenality();
     this.failure = item.getFailure();
     this.description = item.getDescription();
@@ -73,7 +73,7 @@ public class ShieldsDTO {
     this.cost = shieldDTO.cost;
     this.weight = shieldDTO.weight;
     this.armorType = shieldDTO.armorType;
-    this.maxDex = shieldDTO.maxDex;
+    // this.maxDex = shieldDTO.maxDex;
     this.penality = shieldDTO.penality;
     this.failure = shieldDTO.failure;
     this.description = shieldDTO.description;

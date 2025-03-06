@@ -170,7 +170,7 @@ export interface Shield extends Item {
   itemId: number;
   modifiers: Prerequisite | null;
   armorType: string;
-  maxDex: number;
+  // maxDex: number;
   penality: number;
   failure: number;
   material: string | null
@@ -193,16 +193,15 @@ export interface Weapon extends Item {
   enchantment?: Enchantment[]
 }
 
-export interface EnchantedItems {
+export type EnchantedItem = {
   id: number | null;
   item: Armor | Shield | Weapon
-  name: string
-  enchantment: Enchantment[]
-  material: string
-  modifiers: Prerequisite | null
-  cost: number
+  name?: string
+  enchantment?: Enchantment[]
+  material?: string
+  cost?: number
   enchantmentBonus?: number;
-  description: string
+  description?: string
 }
 
 export interface WonderousItem extends Item { }
@@ -222,6 +221,34 @@ export type Inventory = {
   hands: Item[];
   cloth: WonderousItem;
   legs: WonderousItem;
+}
+
+export type ItemToSend = {
+  id: number | null;
+  item: { id: number }
+  name?: string | null
+  enchantment?: { id: number }[] | null
+  material?: string | null
+  cost?: number | null
+  enchantmentBonus?: number | null
+  description?: string | null
+}
+
+export type InventoryToSend = {
+  armor?: ItemToSend;
+  shield?: ItemToSend;
+  weaponOne?: ItemToSend;
+  weaponTwo?: ItemToSend;
+  weaponThree?: ItemToSend;
+  weaponFour?: ItemToSend;
+  weaponFive?: ItemToSend;
+  backpack?: ItemToSend[];
+  head?: ItemToSend;
+  neck?: ItemToSend;
+  arms?: ItemToSend;
+  hands?: ItemToSend[];
+  cloth?: ItemToSend;
+  legs?: ItemToSend;
 }
 
 export type Attacks = {

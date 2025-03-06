@@ -128,26 +128,21 @@
       <column name="name" value="Sword, short pft" />
       <column name="id" value="1004" />
       <column name="items_id" value="35" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1004" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Axe, throwing pft" />
       <column name="id" value="1005" />
       <column name="items_id" value="25" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1005" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Skiprock" />
       <column name="id" value="1006" />
       <column name="items_id" value="82" />
+      <column name="enchantment_bonus" value="0" />
     </insert>
 
     <!-- Rysio -->
@@ -171,10 +166,7 @@
       <column name="name" value="Longsword pft" />
       <column name="id" value="1012" />
       <column name="items_id" value="38" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1012" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -190,10 +182,7 @@
       <column name="id" value="1014" />
       <column name="items_id" value="98" />
       <column name="material" value="DARKWOOD" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1014" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <!-- Niesia -->
@@ -233,10 +222,7 @@
       <column name="id" value="1025" />
       <column name="name" value="Spear pft" />
       <column name="items_id" value="17" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1025" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
@@ -251,6 +237,7 @@
       <column name="items_id" value="101" />
       <column name="damage" value="D6" />
     </insert>
+
     <insert tableName="enchanted_items">
       <column name="id" value="1028" />
       <column name="name" value="Claw" />
@@ -301,20 +288,14 @@
       <column name="id" value="1041" />
       <column name="name" value="Nunchaku pft" />
       <column name="items_id" value="63" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1041" />
-      <column name="enchantment_id" value="-1" />
+      <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="id" value="1042" />
       <column name="name" value="Crossbow, light pft" />
+      <column name="enchantment_bonus" value="-1" />
       <column name="items_id" value="20" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1042" />
-      <column name="enchantment_id" value="-1" />
     </insert>
 
     <!-- Magda -->

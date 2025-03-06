@@ -37,7 +37,7 @@ public class Shields extends Items {
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
 
-  int maxDex;
+  // int maxDex;
   int penality;
   int failure;
 
@@ -49,7 +49,7 @@ public class Shields extends Items {
     this.shieldName = shield.shieldName;
     // this.modifiers = MapperModifierBonus.toListModifier(shield.modifiers);
     this.armorType = shield.armorType;
-    this.maxDex = shield.maxDex;
+    // this.maxDex = shield.maxDex;
     this.penality = shield.penality;
     this.failure = shield.failure;
     this.material = shield.material;

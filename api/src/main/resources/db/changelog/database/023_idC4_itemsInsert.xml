@@ -47,7 +47,7 @@
             <column name="cost" value="0" />
             <column name="weight" value="0" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="0" />
             <column name="failure" value="0" />
             <column name="description" value="Naked" />
@@ -1485,7 +1485,7 @@
             <column name="weight" value="5" />
             <column name="modifiers_id" value="51001" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-1" />
             <column name="failure" value="5" />
             <column name="description"
@@ -1502,7 +1502,7 @@
             <column name="weight" value="5" />
             <column name="modifiers_id" value="51001" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-1" />
             <column name="failure" value="5" />
             <column name="description"
@@ -1523,7 +1523,7 @@
             <column name="weight" value="6" />
             <column name="modifiers_id" value="51001" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-1" />
             <column name="failure" value="5" />
             <column name="description"
@@ -1544,7 +1544,7 @@
             <column name="weight" value="10" />
             <column name="modifiers_id" value="51002" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-2" />
             <column name="failure" value="15" />
             <column name="description"
@@ -1565,7 +1565,7 @@
             <column name="weight" value="15" />
             <column name="modifiers_id" value="51003" />
             <column name="armor_type" value="SHIELD" />
-            <column name="max_dex" value="100" />
+            <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-2" />
             <column name="failure" value="15" />
             <column name="description"
