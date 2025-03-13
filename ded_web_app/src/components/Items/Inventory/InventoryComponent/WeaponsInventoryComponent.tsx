@@ -36,7 +36,7 @@ export const WeaponsInventoryComponent: React.FC<
     <>
       <div style={{ gridColumn: "1 / span 2" }}>
         <p style={{ backgroundColor: "grey" }}>Weapons</p>
-        <p>
+        {/* <p>
           <Popup text={weapon1.name} popText={weapon1.description} />
         </p>
         <p>
@@ -50,7 +50,7 @@ export const WeaponsInventoryComponent: React.FC<
         </p>
         <p>
           <Popup text={weapon5.name} popText={weapon5.description} />
-        </p>
+        </p> */}
       </div>
       <div style={{ gridColumn: 3 }}>
         <p style={{ backgroundColor: "grey" }}>Enchantment</p>
@@ -115,35 +115,35 @@ export const MiniWeaponsInventoryComponent: React.FC<
   return (
     <>
       <p>
-        <Popup text={weapon1.name} popText={weapon1.description} />
+        {weapon1.name && <Popup text={weapon1.name} popText={weapon1.description} />}
       </p>
       <p>{weapon1.damage}</p>
       <p>{weaponTwoHanded(weapon1) ? 2 : 1}</p>
       
 
       <p>
-        <Popup text={weapon2.name} popText={weapon2.description} />
+        {weapon2.name && <Popup text={weapon2.name} popText={weapon2.description} />}
       </p>
       <p>{weapon2.damage}</p>
       <p>{weaponTwoHanded(weapon2) ? 2 : 1}</p>
       
 
       <p>
-        <Popup text={weapon3.name} popText={weapon3.description} />
+        {weapon3.name && <Popup text={weapon3.name} popText={weapon3.description} />}
       </p>
       <p>{weapon3.damage}</p>
       <p>{weaponTwoHanded(weapon3) ? 2 : 1}</p>
       
 
       <p>
-        <Popup text={weapon4.name} popText={weapon4.description} />
+        {weapon4.name && <Popup text={weapon4.name} popText={weapon4.description} />}
       </p>
       <p>{weapon4.damage}</p>
       <p>{weaponTwoHanded(weapon4) ? 2 : 1}</p>
       
 
       <p>
-        <Popup text={weapon5.name} popText={weapon5.description} />
+        {weapon5.name && <Popup text={weapon5.name} popText={weapon5.description} />}
       </p>
       <p>{weapon5.damage}</p>
       <p>{weaponTwoHanded(weapon5) ? 2 : 1}</p>

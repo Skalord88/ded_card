@@ -79,7 +79,7 @@ export const noneItem: WonderousItem = {
 export const emptyEnchanted: EnchantedItem = {
     id: 0,
     item: noneWeapon,
-    name: noneWeapon.name,
+    name: "",
     enchantment: [],
     material: "",
     // modifiers: null,

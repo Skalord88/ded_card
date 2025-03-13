@@ -34,13 +34,7 @@ import {
   reMaterialPerfectPenality,
   reMaterialWeight
 } from "../components/Items/Material/function";
-
-export type InventoryItems = (
-  | { n: number; item: Armor }
-  | { n: number; item: Shield }
-  | { n: number; item: Weapon }
-  | { n: number; item: Item }
-)[];
+import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -54,7 +48,8 @@ export const Items = () => {
   const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
   const [filtroList, setFiltroList] = useState<FiltroItems>();
-  const [inventory, setInventory] = useState<InventoryItems>();
+  const [inventory, setInventory] =
+    useState<(Armor | Shield | Weapon | Item)[]>();
   const [inventoryToSend, setInventoryToSend] = useState<InventoryToSend>({
     armor: undefined,
     shield: undefined,
@@ -102,13 +97,13 @@ export const Items = () => {
         );
 
         setInventory([
-          { n: 0, item: moddedInventory.armor },
-          { n: 1, item: moddedInventory.shield },
-          { n: 2, item: moddedInventory.weaponOne },
-          { n: 3, item: moddedInventory.weaponTwo },
-          { n: 4, item: moddedInventory.weaponThree },
-          { n: 5, item: moddedInventory.weaponFour },
-          { n: 6, item: moddedInventory.weaponFive }
+          moddedInventory.armor,
+          moddedInventory.shield,
+          moddedInventory.weaponOne,
+          moddedInventory.weaponTwo,
+          moddedInventory.weaponThree,
+          moddedInventory.weaponFour,
+          moddedInventory.weaponFive
         ]);
       } catch (error) {
         console.log(error);
@@ -117,9 +112,183 @@ export const Items = () => {
     fetchData();
   }, []);
 
-  const handleChangeItem = (n: number, item: ItemToSend) => {
-      console.log(n, item.name);
+  const handleChangeItem = (n: number, i: ItemToSend) => {
+    // const newInv: InventoryToSend = {
+    //   ...inventoryToSend
+    // };
+
+    if (i !== undefined && filtroList !== undefined) {
+      if (n === 0) {
+        // newInv.armor = i;
+        const arIndex: number = filtroList
+          ? filtroList?.armors.findIndex(
+              (a) => (a.item as Armor).id === i.item.id
+            )
+          : -1;
+        if (arIndex !== -1) {
+          const ar: Armor = filtroList.armors[arIndex].item as Armor;
+          setInventory((prevInventory) => {
+            if (prevInventory) {
+              const newInventory = [...prevInventory];
+              newInventory[0] = {
+                ...ar,
+                enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                material: i.material
+              };
+              return newInventory;
+            }
+            return prevInventory;
+          });
+        }
+      }
+      if (n === 1) {
+        // newInv.shield = i;
+        const shIndex: number = filtroList
+          ? filtroList?.shields.findIndex(
+              (s) => (s.item as Shield).id === i.item.id
+            )
+          : -1;
+        if (shIndex !== -1) {
+          const sh: Shield = filtroList.shields[shIndex].item as Shield;
+          setInventory((prevInventory) => {
+            if (prevInventory) {
+              const newInventory = [...prevInventory];
+              newInventory[1] = {
+                ...sh,
+                enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                material: i.material
+              };
+              return newInventory;
+            }
+            return prevInventory;
+          });
+        }
+      }
+      if ([2, 3, 4, 5, 6].includes(n)) {
+        const weIndex: number = filtroList
+          ? filtroList?.weapons.findIndex(
+              (w) => (w.item as Weapon).id === i.item.id
+            )
+          : -1;
+        if (weIndex !== -1) {
+          const we: Weapon = filtroList.weapons[weIndex].item as Weapon;
+
+          if (n === 2) {
+            // newInv.weaponOne = i;
+            setInventory((prevInventory) => {
+              if (prevInventory) {
+                const newInventory = [...prevInventory];
+                newInventory[2] = {
+                  ...we,
+                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                  material: i.material
+                };
+                return newInventory;
+              }
+              return prevInventory;
+            });
+          }
+          if (n === 3) {
+            // newInv.weaponTwo = i;
+            setInventory((prevInventory) => {
+              if (prevInventory) {
+                const newInventory = [...prevInventory];
+                newInventory[3] = {
+                  ...we,
+                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                  material: i.material
+                };
+                return newInventory;
+              }
+              return prevInventory;
+            });
+          }
+          if (n === 4) {
+            // newInv.weaponThree = i;
+            setInventory((prevInventory) => {
+              if (prevInventory) {
+                const newInventory = [...prevInventory];
+                newInventory[4] = {
+                  ...we,
+                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                  material: i.material
+                };
+                return newInventory;
+              }
+              return prevInventory;
+            });
+          }
+          if (n === 5) {
+            // newInv.weaponFour = i;
+            setInventory((prevInventory) => {
+              if (prevInventory) {
+                const newInventory = [...prevInventory];
+                newInventory[5] = {
+                  ...we,
+                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                  material: i.material
+                };
+                return newInventory;
+              }
+              return prevInventory;
+            });
+          }
+          if (n === 6) {
+            // newInv.weaponFive = i;
+            setInventory((prevInventory) => {
+              if (prevInventory) {
+                const newInventory = [...prevInventory];
+                newInventory[6] = {
+                  ...we,
+                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
+                  material: i.material
+                };
+                return newInventory;
+              }
+              return prevInventory;
+            });
+          }
+        }
+      }
+    }
+    // setInventoryToSend(newInv);
   };
+
+  const [choosen, setChoosen] = useState<
+    | { n: number; item: Armor }
+    | { n: number; item: Shield }
+    | { n: number; item: Weapon }
+    | { n: number; item: Item }
+  >();
+
+  const handleChangeChoosen = (
+    num: number,
+    i: Armor | Shield | Weapon | Item
+  ) => {
+    if (i) {
+      setChoosen({ n: num, item: { ...i } });
+    }
+  };
+
+  useEffect(() => {
+    if(inventory){
+    const newInv: InventoryToSend = {
+        armor: inventory[0] !== undefined? {
+          id: null, 
+          item: {id: (inventory[0] as Armor).itemId},
+          name: inventory[0].name,
+          material: "material" in inventory[0]? inventory[0].material : undefined, 
+        
+        } : undefined
+      };
+}
+  },[])
+
+  const handleConfirm = () => {
+    // axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
+
+    // window.location.reload();
+  }
 
   if (!inventory) {
     return (
@@ -131,21 +300,107 @@ export const Items = () => {
     return (
       <div>
         <p></p>
-        {char &&
-          filtroList &&
-          inventory
-            .sort((i) => i.n)
-            .map((item, index) => (
-              <div className="rpgui-container-framed-grey" key={index}>
+        <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
+        <div><button onClick={handleConfirm}><p>confirm</p></button></div>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            width: "100%"
+          }}
+        >
+          <div className="rpgui-container-framed-grey">
+            <InventoryIcons>
+              <InventoryIcon classe={"head"} text={"head"} left={30} />
+              <InventoryIcon classe={"neck"} text={"neck"} left={70} />
+              <InventoryIcon
+                classe={"cloth"}
+                text={"cloth"}
+                top={20}
+                left={30}
+              />
+              <div onClick={() => handleChangeChoosen(0, inventory[0])}>
+                <InventoryIcon
+                  classe={"armor"}
+                  text={"armor"}
+                  top={20}
+                  left={70}
+                />
+              </div>
+              <div onClick={() => handleChangeChoosen(1, inventory[1])}>
+                <InventoryIcon
+                  classe={"shield"}
+                  text={"shield"}
+                  top={40}
+                  left={70}
+                />
+              </div>
+              <InventoryIcon classe={"arms"} text={"arms"} top={40} left={30} />
+              <InventoryIcon
+                classe={"hands0"}
+                text={"ring"}
+                top={60}
+                left={30}
+              />
+              <InventoryIcon
+                classe={"hands1"}
+                text={"ring"}
+                top={60}
+                left={70}
+              />
+              <InventoryIcon classe={"legs"} text={"legs"} top={80} left={70} />
+              <div onClick={() => handleChangeChoosen(2, inventory[2])}>
+                <InventoryIcon classe={"sword"} text={"I"} left={10} />
+              </div>
+              <div onClick={() => handleChangeChoosen(3, inventory[3])}>
+                <InventoryIcon
+                  classe={"sword"}
+                  text={"II"}
+                  left={10}
+                  top={20}
+                />
+              </div>
+              <div onClick={() => handleChangeChoosen(4, inventory[4])}>
+                <InventoryIcon
+                  classe={"sword"}
+                  text={"III"}
+                  left={10}
+                  top={40}
+                />
+              </div>
+              <div onClick={() => handleChangeChoosen(5, inventory[5])}>
+                <InventoryIcon
+                  classe={"sword"}
+                  text={"IV"}
+                  left={10}
+                  top={60}
+                />
+              </div>
+              <div onClick={() => handleChangeChoosen(6, inventory[6])}>
+                <InventoryIcon classe={"sword"} text={"V"} left={10} top={80} />
+              </div>
+            </InventoryIcons>
+          </div>
+
+          <div
+            className="rpgui-container-framed-grey"
+            style={{
+              overflowY: "auto"
+            }}
+          >
+            {char && filtroList && choosen && (
+              <div>
                 <ItemInventoryComponent
-                  n={item.n}
-                  item={item.item}
+                  n={choosen.n}
+                  item={choosen.item}
                   sizeId={char?.race.size.id}
                   filtro={filtroList}
                   onAction={handleChangeItem}
                 />
               </div>
-            ))}
+            )}
+          </div>
+        </div>
       </div>
     );
   }
@@ -172,51 +427,57 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
 
   const [theItem, setTheItem] = useState<
     Item | Armor | Shield | Weapon | WonderousItem
-  >(item);
-  const [materialItem, setMaterialItem] = useState<string | null>(
-    "material" in item ? item.material : null
-  );
-  const [armorTypeItem, setArmorTypeItem] = useState<string | null>(
-    "armorType" in item ? item.armorType : null
-  );
-  const [costItem, setCostItem] = useState<number | null>(
-    "cost" in item ? item.cost : null
-  );
-  const [weightItem, setWeightItem] = useState<number | null>(
-    "weight" in item ? item.weight : null
-  );
-  const [penalityItem, setPenalityItem] = useState<number | null>(
-    "penality" in item
-      ? reMaterialPerfectPenality(
-          item.material ? item.material : "",
-          item.penality ? item.penality : 0,
-          item.enchantmentBonus !== 0 ? true : false
-        )
-      : null
-  );
-  const [maxDexItem, setMaxDexItem] = useState<number | null>(
-    "maxDex" in item
-      ? reMaterialMaxDex(
-          item.material ? item.material : "",
-          item.maxDex ? item.maxDex : 0
-        )
-      : null
-  );
+  >();
+  const [materialItem, setMaterialItem] = useState<string | null>();
+  const [armorTypeItem, setArmorTypeItem] = useState<string | null>();
+  const [costItem, setCostItem] = useState<number | null>();
+  const [weightItem, setWeightItem] = useState<number | null>();
+  const [penalityItem, setPenalityItem] = useState<number | null>();
+  const [maxDexItem, setMaxDexItem] = useState<number | null>();
   const [enchantmentBonusItem, setEnchantmentBonusItem] = useState<
     number | null
-  >(
-    "enchantmentBonus" in item && item.enchantmentBonus
-      ? item.enchantmentBonus
-      : null
-  );
-  const [failureItem, setFailureItem] = useState<number | null>(
-    "failure" in item && item.failure
-      ? reMaterialFailure(
-          item.material ? item.material : "",
-          item.failure ? item.failure : 0
-        )
-      : null
-  );
+  >();
+  const [failureItem, setFailureItem] = useState<number | null>();
+
+  useEffect(() => {
+    setTheItem(item);
+    setMaterialItem("material" in item ? item.material : null);
+    setArmorTypeItem("armorType" in item ? item.armorType : null);
+    setCostItem("cost" in item ? item.cost : null);
+    setWeightItem("weight" in item ? item.weight : null);
+    setPenalityItem(
+      "penality" in item
+        ? reMaterialPerfectPenality(
+            item.material ? item.material : "",
+            item.penality ? item.penality : 0,
+            item.enchantmentBonus !== 0 ? true : false
+          )
+        : null
+    );
+    setMaxDexItem(
+      "maxDex" in item
+        ? reMaterialMaxDex(
+            item.material ? item.material : "",
+            item.maxDex ? item.maxDex : 0
+          )
+        : null
+    );
+    setEnchantmentBonusItem(
+      "enchantmentBonus" in item && item.enchantmentBonus
+        ? item.enchantmentBonus
+        : null
+    );
+    setFailureItem(
+      "failure" in item && item.failure
+        ? reMaterialFailure(
+            item.material ? item.material : "",
+            item.failure ? item.failure : 0
+          )
+        : null
+    );
+  }, [item]);
+
+  const [newItem, setNewItem] = useState<ItemToSend>();
 
   const handleNewItems = (
     optionItem?: Item | Armor | Shield | Weapon | WonderousItem | undefined,
@@ -243,6 +504,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
       }
       if ("weaponName" in optionItem) {
         setTheItem(optionItem);
+        setArmorTypeItem(null);
 
         setEnchantmentBonusItem(
           optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
@@ -252,8 +514,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
       setWeightItem(optionItem.weight);
     }
 
-    if (optionMaterial && typeof optionMaterial === "string") {
+    if (theItem && optionMaterial && typeof optionMaterial === "string") {
       setMaterialItem(optionMaterial);
+      setEnchantmentBonusItem(0);
       if ("armorType" in theItem) {
         setArmorTypeItem(reMaterialArmType(optionMaterial, theItem.armorType));
         setPenalityItem(
@@ -275,7 +538,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   };
 
   const handlePlusEnchantmentBonus = () => {
-    if ("enchantmentBonus" in theItem) {
+    if (theItem && "enchantmentBonus" in theItem) {
       let findIndexEnchant: number =
         enchantmentBonusItem !== null
           ? enchantments.findIndex(
@@ -284,13 +547,22 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           : -1;
 
       if (findIndexEnchant !== -1) {
-        const enchInIndex: number =
-          enchantments[findIndexEnchant + 1] < 6
-            ? enchantments[findIndexEnchant + 1]
-            : enchantments[findIndexEnchant];
+        let enchInIndex: number = 0;
+        if (
+          findIndexEnchant + 1 === 1 &&
+          materialItem &&
+          !["WOOD", "METAL"].includes(materialItem)
+        ) {
+          enchInIndex = enchantments[findIndexEnchant + 2];
+        } else {
+          enchInIndex =
+            enchantments[findIndexEnchant + 1] < 6
+              ? enchantments[findIndexEnchant + 1]
+              : enchantments[findIndexEnchant];
+        }
         setEnchantmentBonusItem(enchInIndex);
 
-        if (penalityItem && "penality" in theItem)
+        if (penalityItem && "penality" in theItem && materialItem)
           setPenalityItem(
             reMaterialPerfectPenality(
               materialItem,
@@ -304,22 +576,30 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     }
   };
   const handleMinEnchantmentBonus = () => {
-    if ("enchantmentBonus" in theItem) {
+    if (theItem && "enchantmentBonus" in theItem) {
       let findIndexEnchant: number =
         enchantmentBonusItem !== null
           ? enchantments.findIndex(
               (enchantment) => enchantment === enchantmentBonusItem
             )
           : -1;
-
       if (findIndexEnchant !== -1) {
-        const enchInIndex: number =
-          enchantments[findIndexEnchant - 1] > -2
-            ? enchantments[findIndexEnchant - 1]
-            : enchantments[findIndexEnchant];
+        let enchInIndex: number = 0;
+        if (
+          findIndexEnchant - 1 === 1 &&
+          materialItem &&
+          !["WOOD", "METAL"].includes(materialItem)
+        ) {
+          enchInIndex = enchantments[findIndexEnchant - 2];
+        } else {
+          enchInIndex =
+            enchantments[findIndexEnchant - 1] > -2
+              ? enchantments[findIndexEnchant - 1]
+              : enchantments[findIndexEnchant];
+        }
         setEnchantmentBonusItem(enchInIndex);
 
-        if (penalityItem && "penality" in theItem)
+        if (penalityItem && "penality" in theItem && materialItem)
           setPenalityItem(
             reMaterialPerfectPenality(
               materialItem,
@@ -334,7 +614,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   };
 
   useEffect(() => {
-    if ("armorName" in theItem || "shieldName" in theItem)
+    if (theItem && ("armorName" in theItem || "shieldName" in theItem))
       setCostItem(
         calculateCost(
           "Armor",
@@ -345,7 +625,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           theItem.armorType
         )
       );
-    if ("weaponName" in theItem)
+    if (theItem && "weaponName" in theItem)
       setCostItem(
         calculateCost(
           "Weapon",
@@ -359,39 +639,37 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   }, [theItem, enchantmentBonusItem, materialItem, weightItem]);
 
   useEffect(() => {
-    const itemToSend: ItemToSend = {
-      id: theItem.id ?? null,
-      item: { id: (theItem as Armor | Shield | Weapon).itemId },
-      name: theItem.name ?? null,
-      enchantment: null,
-      material: materialItem,
-      cost: null,
-      enchantmentBonus: enchantmentBonusItem,
-      description: theItem.description
-    };
-    if (itemToSend) onAction(n, itemToSend);
-  }, []);
+    if (theItem) {
+      const itemToSend: ItemToSend = {
+        id: theItem.id ?? null,
+        item: { id: (theItem as Armor | Shield | Weapon).itemId },
+        name: theItem.name ?? null,
+        enchantment: null,
+        material: materialItem,
+        cost: null,
+        enchantmentBonus: enchantmentBonusItem,
+        description: theItem.description
+      };
+      if (itemToSend) setNewItem(itemToSend);
+    }
+  }, [enchantmentBonusItem, materialItem, theItem]);
+
+  const confirmItem = () => {
+    if (newItem) onAction(n, newItem);
+  };
 
   const numerini: string[] = ["I", "II", "III", "IV", "V"];
 
   return (
     <div>
-      <h2>
-        {"armorName" in theItem ? "ARMOR" : null}
-        {"shieldName" in theItem ? "SHIELD" : null}
-        {"weaponName" in theItem ? "WEAPON " + numerini[n - 2] : null}
-      </h2>
-      <div
-      // style={{
-      //   display: "flex",
-      //   flexWrap: "wrap",
-      // alignItems: "stretch",
-      // // flexBasis: "auto",
-      // justifyContent: "baseline",
-      // width: "100%"
-      // }}
-      >
-        {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
+      {theItem && (
+        <h2>
+          {"armorName" in theItem ? "ARMOR" : null}
+          {"shieldName" in theItem ? "SHIELD" : null}
+          {"weaponName" in theItem ? "WEAPON " + numerini[n - 2] : null}
+        </h2>
+      )}
+      <div>
         <div>
           <DropdownComponent
             options={
@@ -405,13 +683,12 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           />
           <p>
             <span style={{ color: "yellow" }}>name: </span>
-            {(theItem as Armor).armorName ||
-              (theItem as Shield).shieldName ||
-              (theItem as Weapon).weaponName}{" "}
-            {theItem.name} id.{theItem.id}
+            {theItem &&
+              ((theItem as Armor).armorName ||
+                (theItem as Shield).shieldName ||
+                (theItem as Weapon).weaponName)}
           </p>
         </div>
-        {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
         <div>
           <p>
             <span style={{ color: "yellow" }}>enchantment: </span>
@@ -432,26 +709,26 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
           </p>
         </div>
-        {/* <div style={{ flex: 4 }} className="rpgui-container-framed-grey"> */}
         <div>
           <p>
             <span style={{ color: "yellow" }}>description: </span>
-            {theItem.description}
+            {theItem && theItem.description}
           </p>
         </div>
         <div>
-          {/* <div style={{ flex: 2 }} className="rpgui-container-framed-grey"> */}
           {materialItem ? (
             <p>
               <span style={{ color: "yellow" }}>{"material: "}</span>
               {materialItem}
             </p>
           ) : null}
-          {(theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
+          {theItem &&
+          (theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
             <DropdownComponent
               options={addToDrop(
                 metal.includes(
-                  (theItem as Armor | Shield | Weapon).material as string
+                  (theItem && (theItem as Armor | Shield | Weapon))
+                    .material as string
                 )
                   ? metal
                   : wood,
@@ -463,7 +740,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         </div>
 
         {armorTypeItem ? (
-          // <div style={{ flex: 1 }} className="rpgui-container-framed-grey">
           <div>
             <p>
               <span style={{ color: "yellow" }}>armor type: </span>
@@ -472,7 +748,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           </div>
         ) : null}
         <div>
-          {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
           <p>
             <span style={{ color: "yellow" }}>cost: </span>
             {costItem}
@@ -480,7 +755,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         </div>
         {weightItem ? (
           <div>
-            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
             <p>
               <span style={{ color: "yellow" }}>weight: </span>
               {weightItem}
@@ -489,7 +763,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         ) : null}
         {penalityItem || penalityItem === 0 ? (
           <div>
-            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
             <p>
               <span style={{ color: "yellow" }}>penality: </span>
               {penalityItem}
@@ -498,7 +771,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         ) : null}
         {maxDexItem || maxDexItem === 0 ? (
           <div>
-            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
             <p>
               <span style={{ color: "yellow" }}>max dex: </span>
               {maxDexItem}
@@ -507,13 +779,17 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         ) : null}
         {failureItem || failureItem === 0 ? (
           <div>
-            {/* <div style={{ flex: 1 }} className="rpgui-container-framed-grey"> */}
             <p>
               <span style={{ color: "yellow" }}>failure: </span>
               {failureItem}%
             </p>
           </div>
         ) : null}
+        <div>
+          <button onClick={confirmItem}>
+            <p>confirm</p>
+          </button>
+        </div>
       </div>
     </div>
   );

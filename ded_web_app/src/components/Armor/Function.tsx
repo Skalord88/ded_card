@@ -20,7 +20,7 @@ export function calculateArmorInChar(char: CharToModify): ArmorList {
     enchArmor
     ]),
     text: "armor",
-    item: char.inventory.armor.name
+    item: ""
   });
   if (char.inventory.shield.modifiers?.armorClass && char.inventory.shield.modifiers?.armorClass.shieldBonus)
   armorList.push({
@@ -29,7 +29,7 @@ export function calculateArmorInChar(char: CharToModify): ArmorList {
     enchShield
     ]),
     text: "shield",
-    item: char.inventory.shield.name
+    item: ""
   });
   armorList.push({
   signNum: signAndCount([

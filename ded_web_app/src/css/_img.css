@@ -1,0 +1,13 @@
+.rpgui-img {
+    position:initial;
+    width: 300px;
+    height: 740px;
+    margin: auto;
+}
+
+.rpgui-img.omina {
+    background-image: url('../img/img/ominaTr.png');
+}
+.rpgui-img.gerald {
+    background-image: url('../img/img/geraldTr.png');
+}

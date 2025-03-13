@@ -18,7 +18,7 @@ export function SetEnchantemtOnItem(
 }
 
 export const enchantedName = (item: Armor | Shield | Weapon): string => {
-  let itemName: string = item.name;
+  let itemName: string = "";
   if (item) {
     if (item.enchantment) {
       item.enchantment.forEach((ench) =>

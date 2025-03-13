@@ -23,7 +23,7 @@ export const ArmorInventoryComponent: React.FC<ArmorInventoryComponentProps> = (
       <>
       <div style={{ gridColumn: 1 }}>
             <p style={{backgroundColor: 'grey'}}>Armor</p>
-              <p><Popup text={armor.name} popText={armor.description} /></p>
+              {/* <p><Popup text={armor.name} popText={armor.description} /></p> */}
           </div>
           <div style={{ gridColumn: 2 }}>
             <p style={{backgroundColor: 'grey'}}>Ar.Type</p>
@@ -65,7 +65,7 @@ export const MiniArmorInventoryComponent: React.FC<ArmorInventoryComponentProps>
   }) => {
     return (
       <>
-            <p><Popup text={armor.name} popText={armor.description} /></p>
+            {/* <p><Popup text={armor.name} popText={armor.description} /></p> */}
             <p>{armor.maxDex}</p>
             <p>{armor.penality}</p>
           </>

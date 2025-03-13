@@ -17,7 +17,7 @@ export const ShieldInventoryComponent: React.FC<
       <div style={{ gridColumn: 1 }}>
         <p style={{ backgroundColor: "grey" }}>Shield</p>
         <p>
-          <Popup text={shield.name} popText={shield.description} />
+          {/* <Popup text={shield.name} popText={shield.description} /> */}
         </p>
       </div>
       <div style={{ gridColumn: 2 }}>
@@ -58,7 +58,7 @@ export const MiniShieldInventoryComponent: React.FC<
       {shield.id === 3 ? null : (
         <>
           <p>
-            <Popup text={shield.name} popText={shield.description} />
+            {/* <Popup text={shield.name} popText={shield.description} /> */}
           </p>
           <p></p>
         </>

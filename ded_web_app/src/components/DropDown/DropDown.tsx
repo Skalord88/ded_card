@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { itemInDrop } from "../functions";
 
 export interface DropdownProps {
@@ -10,7 +10,12 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   options,
   onAction
 }) => {
+  
   const [dropItem, setDropItem] = useState<string | undefined>();
+
+  useEffect(() => {
+    setDropItem(undefined)
+  },[options, dropItem])
 
   const selectItem = (option: itemInDrop | undefined) => {
     if (!option) {
