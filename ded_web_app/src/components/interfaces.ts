@@ -147,7 +147,7 @@ export type Item = {
 export interface Armor extends Item {
   // public int id;
   // public String name;
-  itemId: number;
+  itemId: number | null;
   // public ItemTypeEnum itemType;
   armorName: string;
   modifiers: Prerequisite | null;
@@ -167,7 +167,7 @@ export interface Armor extends Item {
 
 export interface Shield extends Item {
   shieldName: string;
-  itemId: number;
+  itemId: number | null;
   modifiers: Prerequisite | null;
   armorType: string;
   // maxDex: number;

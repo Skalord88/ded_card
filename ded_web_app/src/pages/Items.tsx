@@ -46,27 +46,11 @@ export const Items = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [modChar, setModChar] = useState<CharToModify>();
   const [filtroList, setFiltroList] = useState<FiltroItems>();
-  const [inventory, setInventory] =
-    useState<(Armor | Shield | Weapon | Item)[]>();
-  const [inventoryToSend, setInventoryToSend] = useState<InventoryToSend>({
-    armor: undefined,
-    shield: undefined,
-    weaponOne: undefined,
-    weaponTwo: undefined,
-    weaponThree: undefined,
-    weaponFour: undefined,
-    weaponFive: undefined,
-    backpack: undefined,
-    head: undefined,
-    neck: undefined,
-    arms: undefined,
-    hands: undefined,
-    cloth: undefined,
-    legs: undefined
-  });
-
+  const [inventory, setInventory] = useState<
+    (Armor | Shield | Weapon | Item | WonderousItem)[]
+  >([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -112,146 +96,29 @@ export const Items = () => {
     fetchData();
   }, []);
 
-  const handleChangeItem = (n: number, i: ItemToSend) => {
-    // const newInv: InventoryToSend = {
-    //   ...inventoryToSend
-    // };
-
-    if (i !== undefined && filtroList !== undefined) {
-      if (n === 0) {
-        // newInv.armor = i;
-        const arIndex: number = filtroList
-          ? filtroList?.armors.findIndex(
-              (a) => (a.item as Armor).id === i.item.id
-            )
-          : -1;
-        if (arIndex !== -1) {
-          const ar: Armor = filtroList.armors[arIndex].item as Armor;
-          setInventory((prevInventory) => {
-            if (prevInventory) {
-              const newInventory = [...prevInventory];
-              newInventory[0] = {
-                ...ar,
-                enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                material: i.material
-              };
-              return newInventory;
-            }
-            return prevInventory;
-          });
+  const handleChangeItem = (
+    n: number,
+    i: Item | Armor | Shield | Weapon | WonderousItem
+  ) => {
+    setInventory((prevInventory) => {
+      if (prevInventory) {
+        const newInventory = [...prevInventory];
+        if (n === 0) {
+          const newAr: Armor = i as Armor
+          newInventory[n] = newAr;
         }
-      }
-      if (n === 1) {
-        // newInv.shield = i;
-        const shIndex: number = filtroList
-          ? filtroList?.shields.findIndex(
-              (s) => (s.item as Shield).id === i.item.id
-            )
-          : -1;
-        if (shIndex !== -1) {
-          const sh: Shield = filtroList.shields[shIndex].item as Shield;
-          setInventory((prevInventory) => {
-            if (prevInventory) {
-              const newInventory = [...prevInventory];
-              newInventory[1] = {
-                ...sh,
-                enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                material: i.material
-              };
-              return newInventory;
-            }
-            return prevInventory;
-          });
+        if (n === 1) {
+          const newSh: Shield = i as Shield
+          newInventory[n] = newSh;
         }
-      }
-      if ([2, 3, 4, 5, 6].includes(n)) {
-        const weIndex: number = filtroList
-          ? filtroList?.weapons.findIndex(
-              (w) => (w.item as Weapon).id === i.item.id
-            )
-          : -1;
-        if (weIndex !== -1) {
-          const we: Weapon = filtroList.weapons[weIndex].item as Weapon;
-
-          if (n === 2) {
-            // newInv.weaponOne = i;
-            setInventory((prevInventory) => {
-              if (prevInventory) {
-                const newInventory = [...prevInventory];
-                newInventory[2] = {
-                  ...we,
-                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                  material: i.material
-                };
-                return newInventory;
-              }
-              return prevInventory;
-            });
-          }
-          if (n === 3) {
-            // newInv.weaponTwo = i;
-            setInventory((prevInventory) => {
-              if (prevInventory) {
-                const newInventory = [...prevInventory];
-                newInventory[3] = {
-                  ...we,
-                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                  material: i.material
-                };
-                return newInventory;
-              }
-              return prevInventory;
-            });
-          }
-          if (n === 4) {
-            // newInv.weaponThree = i;
-            setInventory((prevInventory) => {
-              if (prevInventory) {
-                const newInventory = [...prevInventory];
-                newInventory[4] = {
-                  ...we,
-                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                  material: i.material
-                };
-                return newInventory;
-              }
-              return prevInventory;
-            });
-          }
-          if (n === 5) {
-            // newInv.weaponFour = i;
-            setInventory((prevInventory) => {
-              if (prevInventory) {
-                const newInventory = [...prevInventory];
-                newInventory[5] = {
-                  ...we,
-                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                  material: i.material
-                };
-                return newInventory;
-              }
-              return prevInventory;
-            });
-          }
-          if (n === 6) {
-            // newInv.weaponFive = i;
-            setInventory((prevInventory) => {
-              if (prevInventory) {
-                const newInventory = [...prevInventory];
-                newInventory[6] = {
-                  ...we,
-                  enchantmentBonus: i.enchantmentBonus ? i.enchantmentBonus : 0,
-                  material: i.material
-                };
-                return newInventory;
-              }
-              return prevInventory;
-            });
-          }
+        if ([2, 3, 4, 5, 6].includes(n)) {
+          const newWe: Weapon = i as Weapon
+          newInventory[n] = newWe;
         }
+        return newInventory;
       }
-    }
-    // setInventoryToSend(newInv);
+      return prevInventory;
+    });
   };
 
   const [choosen, setChoosen] = useState<
@@ -270,25 +137,10 @@ export const Items = () => {
     }
   };
 
-  useEffect(() => {
-    if(inventory){
-    const newInv: InventoryToSend = {
-        armor: inventory[0] !== undefined? {
-          id: null, 
-          item: {id: (inventory[0] as Armor).itemId},
-          name: inventory[0].name,
-          material: "material" in inventory[0]? inventory[0].material : undefined, 
-        
-        } : undefined
-      };
-}
-  },[])
-
   const handleConfirm = () => {
     // axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
-
     // window.location.reload();
-  }
+  };
 
   if (!inventory) {
     return (
@@ -301,7 +153,11 @@ export const Items = () => {
       <div>
         <p></p>
         <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
-        <div><button onClick={handleConfirm}><p>confirm</p></button></div>
+        <div>
+          <button onClick={handleConfirm}>
+            <p>confirm</p>
+          </button>
+        </div>
         <div
           style={{
             display: "grid",
@@ -408,10 +264,13 @@ export const Items = () => {
 
 export type ItemInventoryProps = {
   n: number;
-  item: Armor | Shield | Weapon | Item;
+  item: Item | Armor | Shield | Weapon | WonderousItem;
   sizeId: number;
   filtro: FiltroItems;
-  onAction: (n: number, item: ItemToSend) => void;
+  onAction: (
+    n: number,
+    item: Item | Armor | Shield | Weapon | WonderousItem
+  ) => void;
 };
 
 export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
@@ -477,7 +336,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     );
   }, [item]);
 
-  const [newItem, setNewItem] = useState<ItemToSend>();
+  const [newItem, setNewItem] = useState<
+    Item | Armor | Shield | Weapon | WonderousItem
+  >();
 
   const handleNewItems = (
     optionItem?: Item | Armor | Shield | Weapon | WonderousItem | undefined,
@@ -640,17 +501,23 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
 
   useEffect(() => {
     if (theItem) {
-      const itemToSend: ItemToSend = {
-        id: theItem.id ?? null,
-        item: { id: (theItem as Armor | Shield | Weapon).itemId },
-        name: theItem.name ?? null,
-        enchantment: null,
-        material: materialItem,
-        cost: null,
-        enchantmentBonus: enchantmentBonusItem,
-        description: theItem.description
-      };
-      if (itemToSend) setNewItem(itemToSend);
+      if (
+        "enchantmentBonus" in theItem &&
+        "material" in theItem &&
+        "itemId" in theItem
+      ) {
+        const itemToSend: Armor | Shield | Weapon = {
+          ...theItem,
+          itemId: theItem.id ?? 0, // Ensure itemId is always a number
+          enchantmentBonus: enchantmentBonusItem ? enchantmentBonusItem : 0,
+          material: materialItem ? materialItem : null
+        };
+        setNewItem({...itemToSend});
+      }
+      // if (theItem as WonderousItem) {
+      //   const itemToSend: Item | WonderousItem = { ...theItem };
+      //   setNewItem({...itemToSend});
+      // }
     }
   }, [enchantmentBonusItem, materialItem, theItem]);
 
