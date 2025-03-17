@@ -77,7 +77,8 @@ public class ShieldsDTO {
     this.penality = shieldDTO.penality;
     this.failure = shieldDTO.failure;
     this.description = shieldDTO.description;
-    this.material = item.getMaterial();
+    this.material =
+      item.getMaterial() == null ? shieldDTO.material : item.getMaterial();
     this.enchantmentBonus =
       item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =

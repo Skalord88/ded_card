@@ -78,7 +78,8 @@ public class ArmorsDTO implements Serializable {
     this.penality = armorDTO.penality;
     this.failure = armorDTO.failure;
     this.description = armorDTO.description;
-    this.material = item.getMaterial();
+    this.material =
+      (item.getMaterial() == null) ? armorDTO.material : item.getMaterial();
     this.enchantmentBonus =
       item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =

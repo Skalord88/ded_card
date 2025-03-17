@@ -105,7 +105,8 @@ public class WeaponsDTO implements Serializable {
     this.type = weaponDTO.type;
     this.specialAttacks = weaponDTO.specialAttacks;
     this.description = weaponDTO.description;
-    this.material = item.getMaterial();
+    this.material =
+      item.getMaterial() == null ? weaponDTO.material : item.getMaterial();
     this.enchantmentBonus =
       item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
     this.enchantment =

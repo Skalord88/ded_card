@@ -14,7 +14,7 @@
             <column name="weapon_id_two" value="1004" />
             <column name="weapon_id_three" value="1005" />
             <column name="weapon_id_four" value="1006" />
-            <column name="weapon_id_five" value="2" />
+            <column name="weapon_id_five" value="2002" />
         </insert>
         <!-- Rysio -->
         <insert tableName="inventory">
@@ -23,9 +23,9 @@
             <column name="shield_id" value="1014" />
             <column name="weapon_id_one" value="1011" />
             <column name="weapon_id_two" value="1012" />
-            <column name="weapon_id_three" value="7" />
-            <column name="weapon_id_four" value="2" />
-            <column name="weapon_id_five" value="1" />
+            <column name="weapon_id_three" value="2007" />
+            <column name="weapon_id_four" value="2002" />
+            <column name="weapon_id_five" value="2000" />
         </insert>
         <!-- Niesia -->
         <insert tableName="inventory">
@@ -45,23 +45,23 @@
             <column name="shield_id" value="1032" />
             <column name="weapon_id_one" value="1033" />
             <column name="weapon_id_two" value="1034" />
-            <column name="weapon_id_three" value="7" />
-            <column name="weapon_id_four" value="5" />
-            <column name="weapon_id_five" value="2" />
+            <column name="weapon_id_three" value="2007" />
+            <column name="weapon_id_four" value="2005" />
+            <column name="weapon_id_five" value="2002" />
         </insert>
         <!-- Andrzej -->
         <insert tableName="inventory">
             <column name="id" value="104" />
             <column name="weapon_id_one" value="1041" />
             <column name="weapon_id_two" value="1042" />
-            <column name="weapon_id_three" value="1" />
+            <column name="weapon_id_three" value="2001" />
         </insert>
         <!-- Magda -->
         <insert tableName="inventory">
             <column name="id" value="105" />
             <column name="weapon_id_one" value="1051" />
             <column name="weapon_id_two" value="1052" />
-            <column name="weapon_id_three" value="1" />
+            <column name="weapon_id_three" value="2001" />
         </insert>
         <!-- Mirek -->
         <insert tableName="inventory">
@@ -69,7 +69,7 @@
             <column name="armor_id" value="1061" />
             <column name="weapon_id_one" value="30000" />
             <column name="weapon_id_two" value="1062" />
-            <column name="weapon_id_three" value="1" />
+            <column name="weapon_id_three" value="2001" />
         </insert>
     </changeSet>
 </databaseChangeLog>

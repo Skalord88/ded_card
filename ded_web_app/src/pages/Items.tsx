@@ -11,7 +11,6 @@ import {
   Shield,
   Weapon,
   WonderousItem,
-  InventoryToSend,
   ItemToSend
 } from "../components/interfaces";
 import { urlChar, urlItems, urlItemsBuy } from "../components/url";
@@ -35,6 +34,7 @@ import {
   reMaterialWeight
 } from "../components/Items/Material/function";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
+import { sendItemsInInventory } from "../components/Items/Functions/function";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -138,7 +138,13 @@ export const Items = () => {
   };
 
   const handleConfirm = () => {
-    // axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
+
+    const inventoryToSend = sendItemsInInventory(inventory);
+    
+    if(inventory) console.log(
+       sendItemsInInventory(inventory)
+    )
+    axios.post(urlItemsBuy + charId, inventoryToSend);
     // window.location.reload();
   };
 

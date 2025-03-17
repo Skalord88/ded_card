@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.items.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,19 +10,28 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import pl.kolendateam.dadcard.items.MapperItems;
-import pl.kolendateam.dadcard.items.dto.InventoryDTO;
+import lombok.ToString;
+import pl.kolendateam.dadcard.feats.entity.FeatsPc;
+import pl.kolendateam.dadcard.items.armor.entity.Armors;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
+import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @Getter
 @Setter
 @Entity
+@ToString
 @EqualsAndHashCode
 public class Inventory {
 
@@ -115,108 +125,48 @@ public class Inventory {
     this.legs = item;
   }
 
-  public void addToInventory(InventoryDTO inventoryDTO, List<Items> itemsList) {
-    // if (inventoryDTO.armor != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.armor.id) {
-    //       this.armor = (EnchantedItems) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.shield != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.shield.id) {
-    //       this.shield = (Shields) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.weaponOne != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.weaponOne.id) {
-    //       this.weaponOne = (Weapons) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.weaponTwo != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.weaponTwo.id) {
-    //       this.weaponTwo = (Weapons) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.weaponThree != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.weaponThree.id) {
-    //       this.weaponThree = (Weapons) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.weaponFour != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.weaponFour.id) {
-    //       this.weaponFour = (Weapons) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    // if (inventoryDTO.weaponFive != null) {
-    //   for (Items item : itemsList) {
-    //     if (item.id == inventoryDTO.weaponFive.id) {
-    //       this.weaponFive = (Weapons) item;
-    //       break;
-    //     }
-    //   }
-    // }
-    if (inventoryDTO.backpack != null || inventoryDTO.backpack.size() > 0) {
-      this.backpack = MapperItems.toListItems(inventoryDTO.backpack, itemsList);
+  public void addToInventory(
+    List<EnchantedItemsDTO> inventoryDTO,
+    ItemsRepository itemsRepository,
+    EnchantedItemsRepository enchantedItemsRepository
+  ) {
+    if (inventoryDTO == null || inventoryDTO.isEmpty()) {
+      return;
     }
-    if (inventoryDTO.head != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.head.id) {
-          this.head = (WondrousItems) item;
-          break;
-        }
-      }
+
+    List<EnchantedItems> enchantedItemsList = enchantedItemsRepository.findAll();
+
+    EnchantedItemsDTO dto = inventoryDTO.get(0);
+    EnchantedItems newArmor = new EnchantedItems(dto, itemsRepository);
+
+    Optional<EnchantedItems> existingOpt = enchantedArmorShieldExist(
+      newArmor,
+      enchantedItemsList
+    );
+
+    EnchantedItems existing;
+
+    if (existingOpt.isPresent()) {
+      existing = existingOpt.get();
+      this.armor = existing;
+    } else {
+      this.armor = enchantedItemsRepository.saveAndFlush(newArmor);
     }
-    if (inventoryDTO.neck != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.neck.id) {
-          this.neck = (WondrousItems) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.arms != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.arms.id) {
-          this.arms = (WondrousItems) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.hands != null || inventoryDTO.hands.size() > 0) {
-      this.hands = MapperItems.toListItems(inventoryDTO.hands, itemsList);
-    }
-    if (inventoryDTO.cloth != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.cloth.id) {
-          this.cloth = (WondrousItems) item;
-          break;
-        }
-      }
-    }
-    if (inventoryDTO.legs != null) {
-      for (Items item : itemsList) {
-        if (item.id == inventoryDTO.legs.id) {
-          this.legs = (WondrousItems) item;
-          break;
-        }
-      }
-    }
+
+    System.out.println("Armor updated: " + this.armor);
+  }
+
+  public Optional<EnchantedItems> enchantedArmorShieldExist(
+    EnchantedItems newArmor,
+    List<EnchantedItems> enchantedItemsList
+  ) {
+    return enchantedItemsList
+      .stream()
+      .filter(en ->
+        Objects.equals(newArmor.getItem(), en.getItem()) &&
+        Objects.equals(newArmor.getMaterial(), en.getMaterial()) &&
+        newArmor.getEnchantmentBonus() == en.getEnchantmentBonus()
+      )
+      .findFirst();
   }
 }

@@ -2,6 +2,8 @@ package pl.kolendateam.dadcard.items.enchantment.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -14,15 +16,23 @@ import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.items.armor.entity.Armors;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @Getter
 @Setter
@@ -67,4 +77,30 @@ public class EnchantedItems implements Serializable {
   Prerequisite modifiers;
 
   String description;
+
+  public EnchantedItems(
+    EnchantedItemsDTO dto,
+    ItemsRepository itemsRepository
+  ) {
+    Optional<Items> itemOpt = itemsRepository.findById(dto.itemId);
+
+    if (itemOpt.isPresent()) {
+      this.item = itemOpt.get();
+    } else {
+      throw new EntityNotFoundException(
+        "Item with ID " + dto.itemId + " not found"
+      );
+    }
+
+    this.enchantmentBonus = dto.enchantmentBonus;
+    this.material = dto.material;
+
+    System.out.println("Assigned item: " + this.item); // Log the assigned item
+    // this.name = dto.name;
+    // this.id = dto.id;
+    // this.enchantment =
+    //   dto.getEnchantment() != null
+    //     ? MapperEnchantment.toEnchantmentDTOList(dto.getEnchantment())
+    //     : null;
+  }
 }

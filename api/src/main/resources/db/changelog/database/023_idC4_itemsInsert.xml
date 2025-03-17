@@ -557,6 +557,7 @@
             <column name="type" value="['MARTIAL','PIERCING','LIGHT']" />
             <column name="special_attacks" value="" />
             <column name="description" value="" />
+            <column name="material" value="METAL" />
         </insert>
         <!-- One-Handed Melee Weapons -->
         <insert tableName="items">

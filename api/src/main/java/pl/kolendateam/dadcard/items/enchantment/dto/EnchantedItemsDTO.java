@@ -1,52 +1,33 @@
 package pl.kolendateam.dadcard.items.enchantment.dto;
 
 import java.util.List;
-import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
-import pl.kolendateam.dadcard.items.MapperItemsDTO;
-import pl.kolendateam.dadcard.items.armor.entity.Armors;
-import pl.kolendateam.dadcard.items.armor.entity.Shields;
+import lombok.ToString;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
-import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
+@ToString
 @NoArgsConstructor
 public class EnchantedItemsDTO {
 
-  public int id;
-  public Object item;
+  // public Integer id;
+  public int itemId;
   public String name;
-  public WeaponNumericEnum damage;
   public List<EnchantmentDTO> enchantment;
+  public Integer enchantmentBonus;
   public MaterialEnum material;
-  public PrerequisiteDTO modifiers;
-  public double cost;
-  public String description;
+
+  // public Object item;
+  // public WeaponNumericEnum damage;
+  // public PrerequisiteDTO modifiers;
+  // public double cost;
+  // public String description;
 
   public EnchantedItemsDTO(EnchantedItems enchantedItems) {
-    this.id = enchantedItems.getId();
+    // this.id = enchantedItems.getId();
     this.name = enchantedItems.getName();
-    this.damage = enchantedItems.getDamage();
-
-    if (enchantedItems.getItem() != null) {
-      if (enchantedItems.getItem() instanceof Armors) {
-        this.item =
-          MapperItemsDTO.toItemsDTO((Armors) enchantedItems.getItem());
-      } else if (enchantedItems.getItem() instanceof Shields) {
-        this.item =
-          MapperItemsDTO.toItemsDTO((Shields) enchantedItems.getItem());
-      } else if (enchantedItems.getItem() instanceof Weapons) {
-        this.item =
-          MapperItemsDTO.toItemsDTO((Weapons) enchantedItems.getItem());
-      }
-    } else {
-      this.item = null;
-    }
-
+    this.itemId = enchantedItems.getItem().getId();
     this.enchantment =
       enchantedItems.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(
@@ -54,13 +35,9 @@ public class EnchantedItemsDTO {
         )
         : null;
 
-    this.material = enchantedItems.getMaterial();
-    this.modifiers =
-      enchantedItems.getModifiers() != null
-        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
-          enchantedItems.getModifiers()
-        )
+    this.material =
+      enchantedItems.getMaterial() != null
+        ? enchantedItems.getMaterial()
         : null;
-    this.description = enchantedItems.getDescription();
   }
 }

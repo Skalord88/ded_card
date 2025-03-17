@@ -225,31 +225,30 @@ export type Inventory = {
 
 export type ItemToSend = {
   id: number | null;
-  item: { id: number }
+  itemId?: number;
   name?: string | null
   enchantment?: { id: number }[] | null
   material?: string | null
   cost?: number | null
   enchantmentBonus?: number | null
-  description?: string | null
 }
 
-export type InventoryToSend = {
-  armor?: ItemToSend;
-  shield?: ItemToSend;
-  weaponOne?: ItemToSend;
-  weaponTwo?: ItemToSend;
-  weaponThree?: ItemToSend;
-  weaponFour?: ItemToSend;
-  weaponFive?: ItemToSend;
-  backpack?: ItemToSend[];
-  head?: ItemToSend;
-  neck?: ItemToSend;
-  arms?: ItemToSend;
-  hands?: ItemToSend[];
-  cloth?: ItemToSend;
-  legs?: ItemToSend;
-}
+// export type InventoryToSend = {
+//   armor?: ItemToSend;
+//   shield?: ItemToSend;
+//   weaponOne?: ItemToSend;
+//   weaponTwo?: ItemToSend;
+//   weaponThree?: ItemToSend;
+//   weaponFour?: ItemToSend;
+//   weaponFive?: ItemToSend;
+//   backpack?: ItemToSend[];
+//   head?: ItemToSend;
+//   neck?: ItemToSend;
+//   arms?: ItemToSend;
+//   hands?: ItemToSend[];
+//   cloth?: ItemToSend;
+//   legs?: ItemToSend;
+// }
 
 export type Attacks = {
   firstAttackSetOne: Weapon,
