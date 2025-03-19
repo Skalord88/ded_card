@@ -60,7 +60,7 @@ public class ShieldsDTO {
     this.id = item.getId();
     this.name = item.getName();
     this.itemId = item.getItem().getId();
-    this.itemType = ItemTypeEnum.ARMOR;
+    this.itemType = ItemTypeEnum.SHIELD;
     this.shieldName = shieldDTO.shieldName;
     if (shieldDTO.modifiers != null) {
       this.modifiers = shieldDTO.modifiers;

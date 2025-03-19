@@ -38,6 +38,9 @@ export const urlFeats: string =
 export const urlItems: string =
     url + 'item/all';
 
+export const urlEnchants: string =
+    url + 'item/allEnchantments';
+
 export const urlInventory: string =
     url + 'item/inventory/';
 

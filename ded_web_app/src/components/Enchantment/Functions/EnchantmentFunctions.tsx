@@ -55,6 +55,16 @@ export function costOfEnchant(enchantment: number, type: string): number {
         return 16150;
       case 5:
         return 25150;
+      case 6:
+        return 36150;
+      case 7:
+        return 49150;
+      case 8:
+        return 64150;
+      case 9:
+        return 81150;
+      case 10:
+        return 100150;
       default:
         return 0;
     }
@@ -73,6 +83,16 @@ export function costOfEnchant(enchantment: number, type: string): number {
         return 32300;
       case 5:
         return 50300;
+        case 6:
+        return 72300;
+      case 7:
+        return 98300;
+      case 8:
+        return 128300;
+      case 9:
+        return 162300;
+      case 10:
+        return 200300;
       default:
         return 0;
     }

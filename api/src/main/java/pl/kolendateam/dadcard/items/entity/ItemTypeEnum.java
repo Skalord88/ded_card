@@ -2,7 +2,9 @@ package pl.kolendateam.dadcard.items.entity;
 
 public enum ItemTypeEnum {
   WEAPON,
+  COMPOSITE_BOW,
   ARMOR,
+  ARMOR_SHIELD,
   SHIELD,
   POTION,
   RING,
@@ -12,5 +14,5 @@ public enum ItemTypeEnum {
   WAND,
   WONDROUS_ITEM,
   COMMON_ITEM,
-  ITEM
+  ITEM,
 }

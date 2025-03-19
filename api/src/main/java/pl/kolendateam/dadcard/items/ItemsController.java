@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.items;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,18 +16,17 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.items.armor.entity.Armors;
-import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
+import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
+import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
+import pl.kolendateam.dadcard.items.enchantment.repository.EnchantmentRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
-import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @CrossOrigin
 @RestController
@@ -40,18 +37,21 @@ public class ItemsController {
   InventoryRepository inventoryRepository;
   CharacterRepository characterRepository;
   EnchantedItemsRepository enchantedItemsRepository;
+  EnchantmentRepository enchantmentRepository;
 
   @Autowired
   public ItemsController(
     ItemsRepository itemsRepository,
     InventoryRepository inventoryRepository,
     CharacterRepository characterRepository,
-    EnchantedItemsRepository enchantedItemsRepository
+    EnchantedItemsRepository enchantedItemsRepository,
+    EnchantmentRepository enchantmentRepository
   ) {
     this.itemsRepository = itemsRepository;
     this.inventoryRepository = inventoryRepository;
     this.characterRepository = characterRepository;
     this.enchantedItemsRepository = enchantedItemsRepository;
+    this.enchantmentRepository = enchantmentRepository;
   }
 
   @GetMapping("all")
@@ -70,6 +70,18 @@ public class ItemsController {
 
     itemsList.forEach(item -> {
       listDTO.add(new EnchantedItemsDTO(item));
+    });
+
+    return listDTO;
+  }
+
+  @GetMapping("allEnchantments")
+  public List<EnchantmentDTO> showEnchantmentList() {
+    List<Enchantment> enchantmentsList = this.enchantmentRepository.findAll();
+    List<EnchantmentDTO> listDTO = new ArrayList<>();
+
+    enchantmentsList.forEach(item -> {
+      listDTO.add(new EnchantmentDTO(item));
     });
 
     return listDTO;

@@ -356,8 +356,10 @@ export type ModifierBonus = {
 
 export type Enchantment = {
   id: number,
-  ability: string
-  modifiers: Prerequisite | null
+  ability: string,
+  text: string,
+  itemType: string,
+  modifiers: Prerequisite | null,
   cost: number
 }
 

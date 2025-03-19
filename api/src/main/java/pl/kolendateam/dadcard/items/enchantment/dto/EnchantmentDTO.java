@@ -7,14 +7,14 @@ import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.ItemAbilityEnum;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class EnchantmentDTO implements Serializable {
 
   public int id;
-  // public ModifierBonus enchantment;
-  // public in/t enchantment;
+  public ItemTypeEnum itemType;
   public PrerequisiteDTO modifiers;
   public ItemAbilityEnum ability;
   public int cost;
@@ -22,10 +22,7 @@ public class EnchantmentDTO implements Serializable {
 
   public EnchantmentDTO(Enchantment enchantment) {
     this.id = enchantment.getId();
-    // this.enchantment =
-    //   enchantment.getEnchantment() == null
-    //     ? null
-    //     : enchantment.getEnchantment();
+    this.itemType = enchantment.getItemType();
     this.modifiers =
       enchantment.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(enchantment.getModifiers())

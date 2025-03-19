@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 
 @Getter
 @Setter
@@ -28,8 +29,6 @@ public class Enchantment implements Serializable {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  // int enchantment;
-
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(
     name = "modifiers_id",
@@ -37,6 +36,9 @@ public class Enchantment implements Serializable {
     nullable = true
   )
   Prerequisite modifiers;
+
+  @Enumerated(EnumType.STRING)
+  ItemTypeEnum itemType;
 
   @Enumerated(EnumType.STRING)
   ItemAbilityEnum ability;

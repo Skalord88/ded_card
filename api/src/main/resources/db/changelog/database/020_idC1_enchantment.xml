@@ -11,6 +11,9 @@
             <column name="enchantment" type="json">
                 <constraints nullable="true" />
             </column>
+            <column name="item_type" type="varchar(50)">
+                <constraints nullable="true" />
+            </column>
             <column name="ability" type="varchar(250)">
                 <constraints nullable="true" />
             </column>
@@ -20,7 +23,7 @@
             <column name="cost" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="text" type="varchar(250)">
+            <column name="text" type="varchar(1000)">
                 <constraints nullable="true" />
             </column>
         </createTable>

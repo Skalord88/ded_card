@@ -244,6 +244,7 @@ export function calculateWeight(
 export const calculateCost = (
   title: string,
   costItem: number,
+  enchantment: number[],
   enchantmentBonusItem: number,
   materialItem: string,
   weightItem: number,
@@ -251,17 +252,29 @@ export const calculateCost = (
 ): number => {
   let cost = costItem;
 
+  const highEnchant: number =
+    enchantment.length > 0
+      ? enchantment.reduce((tot, en) => tot + (en > 6 ? en : 0), 0)
+      : 0;
+  const lowEnchant: number =
+    enchantment.length > 0
+      ? enchantment.reduce((tot, en) => tot + (en < 6 ? en : 0), 0)
+      : 0;
+  const totEnchant: number = enchantmentBonusItem + lowEnchant;
+
   if (title === "Armor") {
     return (cost =
       cost +
-      costOfEnchant(enchantmentBonusItem ?? 0, title) +
+      highEnchant +
+      costOfEnchant(totEnchant, title) +
       costOfMaterial(materialItem, typeItem, weightItem));
   }
 
   if (title === "Weapon") {
     return (cost =
       cost +
-      costOfEnchant(enchantmentBonusItem ?? 0, title) +
+      highEnchant +
+      costOfEnchant(totEnchant, title) +
       costOfMaterial(materialItem, typeItem, weightItem));
   }
 

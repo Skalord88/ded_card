@@ -1,8 +1,6 @@
-import { all } from "axios";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
   Armor,
-  Enchantment,
   Item,
   ItemsList,
   ItemToSend,
@@ -140,4 +138,29 @@ export const sendItemsInInventory = (
   ]
   )
   return [armor, shield, weapons[0], weapons[1], weapons[2], weapons[3], weapons[4]];
+}
+
+export const charTresurePerLevel = (lv: number): number => {
+  switch (lv) {
+    case 2 : return 900; 
+    case 3 : return 2700; 
+    case 4 : return 5400; 
+    case 5 : return 9000; 
+    case 6 : return 13000;
+    case 7 : return 19000;
+    case 8 : return 27000;
+    case 9 : return 36000;
+    case 10 : return 49000;
+    case 11 : return 66000;
+    case 12 : return 88000;
+    case 13 : return 110000;
+    case 14 : return 150000;
+    case 15 : return 200000;
+    case 16 : return 260000;
+    case 17 : return 340000;
+    case 18 : return 440000;
+    case 19 : return 580000;
+    case 20 : return 760000;
+    default : return 0; 
+  }
 }

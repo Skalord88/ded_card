@@ -11,9 +11,10 @@ import {
   Shield,
   Weapon,
   WonderousItem,
-  ItemToSend
+  ItemToSend,
+  Enchantment
 } from "../components/interfaces";
-import { urlChar, urlItems, urlItemsBuy } from "../components/url";
+import { urlChar, urlEnchants, urlItems, urlItemsBuy } from "../components/url";
 import { emptyItemsList } from "../components/variables";
 import { CreateNewItems } from "../components/Items/CreateNewItems/CreateNewItems";
 import { MapOfInventory } from "../components/Items/Inventory/MapOfInventory";
@@ -34,12 +35,14 @@ import {
   reMaterialWeight
 } from "../components/Items/Material/function";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
-import { sendItemsInInventory } from "../components/Items/Functions/function";
+import { charTresurePerLevel, sendItemsInInventory } from "../components/Items/Functions/function";
+import { FormattingText } from "../components/Formatting/Function";
 
 export type FiltroItems = {
   armors: itemInDrop[];
   shields: itemInDrop[];
   weapons: itemInDrop[];
+  enchantments: itemInDrop[];
 };
 
 export const Items = () => {
@@ -50,7 +53,7 @@ export const Items = () => {
   const [inventory, setInventory] = useState<
     (Armor | Shield | Weapon | Item | WonderousItem)[]
   >([]);
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,15 +64,20 @@ export const Items = () => {
         const resItems = await axios.get(urlItems);
         const allItems: ItemsList = await resItems.data;
 
+        const resEnchants = await axios.get(urlEnchants);
+        const allEnchants: Enchantment[] = await resEnchants.data;
+
         if (allItems) {
           const a = allItems.armorsList;
           const s = allItems.shieldList;
           const w = allItems.weaponsList;
+          const e = allEnchants;
 
           const filtro: FiltroItems = {
             armors: addToDrop(a, "items"),
             shields: addToDrop(s, "items"),
-            weapons: addToDrop(w, "items")
+            weapons: addToDrop(w, "items"),
+            enchantments: addToDrop(e, "enchant")
           };
 
           setFiltroList(filtro);
@@ -104,15 +112,15 @@ export const Items = () => {
       if (prevInventory) {
         const newInventory = [...prevInventory];
         if (n === 0) {
-          const newAr: Armor = i as Armor
+          const newAr: Armor = i as Armor;
           newInventory[n] = newAr;
         }
         if (n === 1) {
-          const newSh: Shield = i as Shield
+          const newSh: Shield = i as Shield;
           newInventory[n] = newSh;
         }
         if ([2, 3, 4, 5, 6].includes(n)) {
-          const newWe: Weapon = i as Weapon
+          const newWe: Weapon = i as Weapon;
           newInventory[n] = newWe;
         }
         return newInventory;
@@ -138,12 +146,8 @@ export const Items = () => {
   };
 
   const handleConfirm = () => {
-
     const inventoryToSend = sendItemsInInventory(inventory);
-    
-    if(inventory) console.log(
-       sendItemsInInventory(inventory)
-    )
+
     axios.post(urlItemsBuy + charId, inventoryToSend);
     // window.location.reload();
   };
@@ -160,9 +164,14 @@ export const Items = () => {
         <p></p>
         <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
         <div>
+          <p>
+            <span>
           <button onClick={handleConfirm}>
             <p>confirm</p>
           </button>
+          </span>
+          <span className="rpgui-container-framed-grey">tresure: {char && charTresurePerLevel(char?.classPcList.reduce((tot, lv) => tot + lv.level, 0))}</span>
+          </p>
         </div>
         <div
           style={{
@@ -174,17 +183,20 @@ export const Items = () => {
           <div className="rpgui-container-framed-grey">
             <InventoryIcons>
               <InventoryIcon classe={"head"} text={"head"} left={30} />
+
               <InventoryIcon classe={"neck"} text={"neck"} left={70} />
-              <InventoryIcon
-                classe={"cloth"}
-                text={"cloth"}
-                top={20}
-                left={30}
-              />
+
+              <InventoryIcon classe={"clock"} text={""} top={20} left={30} />
               <div onClick={() => handleChangeChoosen(0, inventory[0])}>
                 <InventoryIcon
                   classe={"armor"}
                   text={"armor"}
+                  top={20}
+                  left={50}
+                />
+                <InventoryIcon
+                  classe={"cloth"}
+                  text={"cloth"}
                   top={20}
                   left={70}
                 />
@@ -302,7 +314,12 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const [enchantmentBonusItem, setEnchantmentBonusItem] = useState<
     number | null
   >();
+  const [enchantmentItem, setEnchantmentItem] = useState<
+    Enchantment[] | null
+  >();
   const [failureItem, setFailureItem] = useState<number | null>();
+
+  const [filtroEnchantment, setFiltroEnchantment] = useState<itemInDrop[]>();
 
   useEffect(() => {
     setTheItem(item);
@@ -332,6 +349,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         ? item.enchantmentBonus
         : null
     );
+    setEnchantmentItem(
+      "enchantment" in item && item.enchantment ? item.enchantment : null
+    );
     setFailureItem(
       "failure" in item && item.failure
         ? reMaterialFailure(
@@ -340,6 +360,15 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           )
         : null
     );
+    if (enchantmentBonusItem && enchantmentBonusItem > 0) {
+      const specificFiltro: itemInDrop[] = filtro.enchantments.filter(
+        (e) =>
+          ((e.item as Enchantment).itemType === "ARMOR_SHIELD" &&
+            ("armorName" in item || "shieldName" in item)) ||
+          (e.item as Enchantment).itemType === item.itemType
+      );
+      setFiltroEnchantment(specificFiltro);
+    }
   }, [item]);
 
   const [newItem, setNewItem] = useState<
@@ -481,29 +510,37 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   };
 
   useEffect(() => {
-    if (theItem && ("armorName" in theItem || "shieldName" in theItem))
-      setCostItem(
-        calculateCost(
-          "Armor",
-          theItem.cost,
-          enchantmentBonusItem ?? 0,
-          materialItem ?? "",
-          weightItem ?? 0,
-          theItem.armorType
-        )
+    if (theItem && ("armorName" in theItem || "shieldName" in theItem)) {
+      const costo: number = calculateCost(
+        "Armor",
+        theItem.cost,
+        enchantmentItem?.flatMap((en) => en.cost) ?? [],
+        enchantmentBonusItem ?? 0,
+        materialItem ?? "",
+        weightItem ?? 0,
+        theItem.armorType
       );
-    if (theItem && "weaponName" in theItem)
-      setCostItem(
-        calculateCost(
-          "Weapon",
-          theItem.cost,
-          enchantmentBonusItem ?? 0,
-          materialItem ?? "",
-          theItem.weight ?? 0,
-          theItem.itemType
-        )
+      setCostItem(costo);
+    }
+    if (theItem && "weaponName" in theItem) {
+      const costo: number = calculateCost(
+        "Weapon",
+        theItem.cost,
+        enchantmentItem?.flatMap((en) => en.cost) ?? [],
+        enchantmentBonusItem ?? 0,
+        materialItem ?? "",
+        weightItem ?? 0,
+        theItem.itemType
       );
-  }, [theItem, enchantmentBonusItem, materialItem, weightItem]);
+      setCostItem(costo);
+    }
+  }, [
+    theItem,
+    enchantmentBonusItem,
+    materialItem,
+    weightItem,
+    enchantmentItem
+  ]);
 
   useEffect(() => {
     if (theItem) {
@@ -518,7 +555,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           enchantmentBonus: enchantmentBonusItem ? enchantmentBonusItem : 0,
           material: materialItem ? materialItem : null
         };
-        setNewItem({...itemToSend});
+        setNewItem({ ...itemToSend });
       }
       // if (theItem as WonderousItem) {
       //   const itemToSend: Item | WonderousItem = { ...theItem };
@@ -526,6 +563,22 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
       // }
     }
   }, [enchantmentBonusItem, materialItem, theItem]);
+
+  const handleAddEnchantment = (option: Enchantment) => {
+    if (enchantmentItem) {
+      let enchantmentList: Enchantment[] = enchantmentItem;
+      enchantmentList.push(option);
+      setEnchantmentItem([...enchantmentItem]);
+    }
+  };
+
+  const handleDelEnchantment = (n: number) => {
+    if (enchantmentItem) {
+      let enchantmentList: Enchantment[] = [...enchantmentItem];
+      enchantmentList.splice(n, 1);
+      setEnchantmentItem([...enchantmentList]);
+    }
+  };
 
   const confirmItem = () => {
     if (newItem) onAction(n, newItem);
@@ -582,6 +635,29 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
           </p>
         </div>
+        <div>
+          <p>{"Powers"}</p>
+          {enchantmentItem?.map((e, index) => (
+            <p key={index}>
+              <span
+                style={{ color: "yellow" }}
+                onClick={() => handleDelEnchantment(index)}
+              >
+                {FormattingText(e.ability)}:
+              </span>
+              <span> {e.text}</span>
+            </p>
+          ))}
+        </div>
+        {filtroEnchantment && (
+          <div>
+            <DropdownComponent
+              options={filtroEnchantment}
+              onAction={handleAddEnchantment}
+            />
+          </div>
+        )}
+
         <div>
           <p>
             <span style={{ color: "yellow" }}>description: </span>

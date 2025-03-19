@@ -23,6 +23,10 @@
     background-image: url('../img/icons/armor.png');
 }
 
+.rpgui-icon.clock {
+    background-image: url('../img/icons/clock.png');
+}
+
 .rpgui-icon.natural {
     background-image: url('../img/icons/natural.png');
 }
