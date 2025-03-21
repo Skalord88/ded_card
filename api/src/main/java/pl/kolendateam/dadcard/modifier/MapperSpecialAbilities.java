@@ -38,4 +38,12 @@ public class MapperSpecialAbilities {
     }
     return listofSA;
   }
+
+  public static SpecialAbilitiesDTO toSpecialAbilityDTO(
+    SpecialAbilities specialAttacks
+  ) {
+    return specialAttacks != null
+      ? new SpecialAbilitiesDTO(specialAttacks)
+      : null;
+  }
 }

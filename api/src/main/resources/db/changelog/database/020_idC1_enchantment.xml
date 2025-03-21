@@ -20,6 +20,9 @@
             <column name="modifiers_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="special_abilities_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="cost" type="int">
                 <constraints nullable="true" />
             </column>

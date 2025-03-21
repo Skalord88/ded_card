@@ -76,7 +76,22 @@
         </insert>
 
         <insert tableName="prerequisite_skill">
-            <column name="skill_id" value="10" /> <!-- ESCAPE_ARTIST -->
+            <column name="skill_id" value="10" /> <!-- ESCAPE_ARTIST 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1015" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" /> <!-- ESCAPE_ARTIST 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1010" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" /> <!-- ESCAPE_ARTIST 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="105" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" /> <!-- ESCAPE_ARTIST 2 -->
             <column name="rank" value="2" />
             <column name="id" value="102" />
         </insert>
@@ -105,14 +120,29 @@
             <column name="id" value="1416" />
         </insert>
         <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1415" />
+        </insert>
+        <insert tableName="prerequisite_skill">
             <column name="skill_id" value="14" /> <!-- HIDE 12 -->
             <column name="rank" value="12" />
             <column name="id" value="1412" />
         </insert>
         <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1410" />
+        </insert>
+        <insert tableName="prerequisite_skill">
             <column name="skill_id" value="14" /> <!-- HIDE 8 -->
             <column name="rank" value="8" />
             <column name="id" value="148" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" /> <!-- HIDE 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="145" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="14" /> <!-- HIDE 4 -->
@@ -180,7 +210,22 @@
         </insert>
 
         <insert tableName="prerequisite_skill">
-            <column name="skill_id" value="19" /> <!-- MOVE_SILENTLY -->
+            <column name="skill_id" value="19" /> <!-- MOVE_SILENTLY 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1915" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" /> <!-- MOVE_SILENTLY 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1910" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" /> <!-- MOVE_SILENTLY 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="195" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" /> <!-- MOVE_SILENTLY 2 -->
             <column name="rank" value="2" />
             <column name="id" value="192" />
         </insert>

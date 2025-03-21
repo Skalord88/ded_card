@@ -102,65 +102,96 @@ export const findAllProficency = (
 export const createWeaponItemsInInventory = (
   weapons: Weapon[]
 ): ItemToSend[] => {
-  return weapons.map(w => ({
+  return weapons.map((w) => ({
     id: null,
-    itemId: w.itemId || 0 ,
+    itemId: w.itemId || 0,
     material: w.material || "",
     enchantmentBonus: w.enchantmentBonus || 0
-  }))
-}
+  }));
+};
 
 export const sendItemsInInventory = (
   inventory: (Weapon | Item | WonderousItem | Armor | Shield)[]
 ): ItemToSend[] => {
-  const armor: ItemToSend = inventory[0] && "armorName" in inventory[0]?
-   {
-    id: null, // Provide a default non-null value for id
-    itemId: inventory[0].itemId || 0 , // Ensure item.id is never null
-    material: inventory[0].material? inventory[0].material : null,
-    enchantmentBonus: inventory[0].enchantmentBonus || 0, // Provide default values if necessary
-    // enchantment
-  }
-   : {id: 2}
-  const shield: ItemToSend = inventory[1] && "shieldName" in inventory[1]?
-   {
-    id: null, // Provide a default non-null value for id
-    itemId: inventory[1].itemId || 0 , // Ensure item.id is never null
-    material: inventory[1].material || "", // Provide default values if necessary
-    enchantmentBonus: inventory[1].enchantmentBonus || 0, // Provide default values if necessary
-    // enchantment
-  }
-   : {id: 3}
+  const armor: ItemToSend =
+    inventory[0] && "armorName" in inventory[0]
+      ? {
+          id: null, // Provide a default non-null value for id
+          itemId: inventory[0].itemId || 0, // Ensure item.id is never null
+          material: inventory[0].material ? inventory[0].material : null,
+          enchantmentBonus: inventory[0].enchantmentBonus || 0 // Provide default values if necessary
+          // enchantment
+        }
+      : { id: 2 };
+  const shield: ItemToSend =
+    inventory[1] && "shieldName" in inventory[1]
+      ? {
+          id: null, // Provide a default non-null value for id
+          itemId: inventory[1].itemId || 0, // Ensure item.id is never null
+          material: inventory[1].material || "", // Provide default values if necessary
+          enchantmentBonus: inventory[1].enchantmentBonus || 0 // Provide default values if necessary
+          // enchantment
+        }
+      : { id: 3 };
   const weapons: ItemToSend[] = createWeaponItemsInInventory([
-    inventory[2] as Weapon, inventory[3] as Weapon,
-    inventory[4] as Weapon, inventory[5] as Weapon,
+    inventory[2] as Weapon,
+    inventory[3] as Weapon,
+    inventory[4] as Weapon,
+    inventory[5] as Weapon,
     inventory[6] as Weapon
-  ]
-  )
-  return [armor, shield, weapons[0], weapons[1], weapons[2], weapons[3], weapons[4]];
-}
+  ]);
+  return [
+    armor,
+    shield,
+    weapons[0],
+    weapons[1],
+    weapons[2],
+    weapons[3],
+    weapons[4]
+  ];
+};
 
 export const charTresurePerLevel = (lv: number): number => {
   switch (lv) {
-    case 2 : return 900; 
-    case 3 : return 2700; 
-    case 4 : return 5400; 
-    case 5 : return 9000; 
-    case 6 : return 13000;
-    case 7 : return 19000;
-    case 8 : return 27000;
-    case 9 : return 36000;
-    case 10 : return 49000;
-    case 11 : return 66000;
-    case 12 : return 88000;
-    case 13 : return 110000;
-    case 14 : return 150000;
-    case 15 : return 200000;
-    case 16 : return 260000;
-    case 17 : return 340000;
-    case 18 : return 440000;
-    case 19 : return 580000;
-    case 20 : return 760000;
-    default : return 0; 
+    case 2:
+      return 900;
+    case 3:
+      return 2700;
+    case 4:
+      return 5400;
+    case 5:
+      return 9000;
+    case 6:
+      return 13000;
+    case 7:
+      return 19000;
+    case 8:
+      return 27000;
+    case 9:
+      return 36000;
+    case 10:
+      return 49000;
+    case 11:
+      return 66000;
+    case 12:
+      return 88000;
+    case 13:
+      return 110000;
+    case 14:
+      return 150000;
+    case 15:
+      return 200000;
+    case 16:
+      return 260000;
+    case 17:
+      return 340000;
+    case 18:
+      return 440000;
+    case 19:
+      return 580000;
+    case 20:
+      return 760000;
+    default:
+      return 0;
   }
-}
+};

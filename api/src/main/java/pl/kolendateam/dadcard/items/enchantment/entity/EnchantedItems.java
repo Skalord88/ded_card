@@ -1,10 +1,5 @@
 package pl.kolendateam.dadcard.items.enchantment.entity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,6 +12,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -71,6 +70,7 @@ public class EnchantedItems implements Serializable {
   )
   Prerequisite modifiers;
 
+  Integer cost;
   String description;
 
   public EnchantedItems(
@@ -90,12 +90,6 @@ public class EnchantedItems implements Serializable {
     this.enchantmentBonus = dto.enchantmentBonus;
     this.material = dto.material;
 
-    System.out.println("Assigned item: " + this.item); // Log the assigned item
-    // this.name = dto.name;
-    // this.id = dto.id;
-    // this.enchantment =
-    //   dto.getEnchantment() != null
-    //     ? MapperEnchantment.toEnchantmentDTOList(dto.getEnchantment())
-    //     : null;
+    System.out.println("Assigned item: " + this.item);
   }
 }

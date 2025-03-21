@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   Armor,
@@ -35,7 +35,10 @@ import {
   reMaterialWeight
 } from "../components/Items/Material/function";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
-import { charTresurePerLevel, sendItemsInInventory } from "../components/Items/Functions/function";
+import {
+  charTresurePerLevel,
+  sendItemsInInventory
+} from "../components/Items/Functions/function";
 import { FormattingText } from "../components/Formatting/Function";
 
 export type FiltroItems = {
@@ -53,6 +56,21 @@ export const Items = () => {
   const [inventory, setInventory] = useState<
     (Armor | Shield | Weapon | Item | WonderousItem)[]
   >([]);
+  const [tresure, setTresure] = useState<number>(0);
+  const [totalCost, setTotalCost] = useState(0);
+  const [itemCosts, setItemCosts] = useState<{ [key: number]: number }>({});
+
+  const handleActualTresure = (index: number, cost: number) => {
+    setItemCosts((prevCosts) => {
+      const newCosts = { ...prevCosts, [index]: cost };
+      const newTotal = Object.values(newCosts).reduce(
+        (acc, curr) => acc + curr,
+        0
+      );
+      setTotalCost(tresure - newTotal);
+      return newCosts;
+    });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,6 +78,11 @@ export const Items = () => {
         const resChar = await axios.get(urlChar + "/" + charId);
         const charDb: CharacterPc = resChar.data;
         setChar(charDb);
+
+        const actualTresure: number = charTresurePerLevel(
+          charDb.classPcList.reduce((tot, lv) => tot + lv.level, 0)
+        );
+        setTresure(actualTresure);
 
         const resItems = await axios.get(urlItems);
         const allItems: ItemsList = await resItems.data;
@@ -88,7 +111,7 @@ export const Items = () => {
           charDb.inventory
         );
 
-        setInventory([
+        const moddedInventoryList = [
           moddedInventory.armor,
           moddedInventory.shield,
           moddedInventory.weaponOne,
@@ -96,7 +119,9 @@ export const Items = () => {
           moddedInventory.weaponThree,
           moddedInventory.weaponFour,
           moddedInventory.weaponFive
-        ]);
+        ];
+
+        setInventory(moddedInventoryList);
       } catch (error) {
         console.log(error);
       }
@@ -129,27 +154,24 @@ export const Items = () => {
     });
   };
 
-  const [choosen, setChoosen] = useState<
-    | { n: number; item: Armor }
-    | { n: number; item: Shield }
-    | { n: number; item: Weapon }
-    | { n: number; item: Item }
-  >();
-
-  const handleChangeChoosen = (
-    num: number,
-    i: Armor | Shield | Weapon | Item
-  ) => {
-    if (i) {
-      setChoosen({ n: num, item: { ...i } });
-    }
-  };
-
   const handleConfirm = () => {
     const inventoryToSend = sendItemsInInventory(inventory);
 
     axios.post(urlItemsBuy + charId, inventoryToSend);
     // window.location.reload();
+  };
+
+  const inventoryListRef = useRef<HTMLDivElement>(null);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Funzione per scorrere fino alla parte selezionata dell'inventario
+  const scrollToItem = (index: number) => {
+    if (itemRefs.current[index]) {
+      itemRefs.current[index]?.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    }
   };
 
   if (!inventory) {
@@ -166,34 +188,52 @@ export const Items = () => {
         <div>
           <p>
             <span>
-          <button onClick={handleConfirm}>
-            <p>confirm</p>
-          </button>
-          </span>
-          <span className="rpgui-container-framed-grey">tresure: {char && charTresurePerLevel(char?.classPcList.reduce((tot, lv) => tot + lv.level, 0))}</span>
+              <button onClick={handleConfirm}>
+                <p>confirm</p>
+              </button>
+            </span>
+            <span className="rpgui-container-framed-grey">
+              tresure: {tresure}
+            </span>
+            <span className="rpgui-container-framed-grey">
+              actual: {totalCost}
+            </span>
           </p>
         </div>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            width: "100%"
+            gridTemplateColumns: "40% 60%"
           }}
         >
-          <div className="rpgui-container-framed-grey">
+          <div
+            className="rpgui-container-framed-grey"
+            style={{ maxHeight: 780 }}
+          >
             <InventoryIcons>
-              <InventoryIcon classe={"head"} text={"head"} left={30} />
-
-              <InventoryIcon classe={"neck"} text={"neck"} left={70} />
-
-              <InventoryIcon classe={"clock"} text={""} top={20} left={30} />
-              <div onClick={() => handleChangeChoosen(0, inventory[0])}>
+              <div onClick={() => scrollToItem(10)}>
+                <InventoryIcon classe={"head"} text={"head"} top={5} left={20} />
+              </div>
+              <div onClick={() => scrollToItem(11)}>
+                <InventoryIcon classe={"neck"} text={"neck"} top={5} left={70} />
+              </div>
+              <div onClick={() => scrollToItem(0)}>
                 <InventoryIcon
                   classe={"armor"}
                   text={"armor"}
                   top={20}
-                  left={50}
+                  left={30}
                 />
+              </div>
+              <div onClick={() => scrollToItem(1)}>
+                <InventoryIcon
+                  classe={"shield"}
+                  text={"shield"}
+                  top={35}
+                  left={70}
+                />
+              </div>
+              <div onClick={() => scrollToItem(1)}>
                 <InventoryIcon
                   classe={"cloth"}
                   text={"cloth"}
@@ -201,68 +241,107 @@ export const Items = () => {
                   left={70}
                 />
               </div>
-              <div onClick={() => handleChangeChoosen(1, inventory[1])}>
+              <div onClick={() => scrollToItem(1)}>
                 <InventoryIcon
-                  classe={"shield"}
-                  text={"shield"}
-                  top={40}
+                  classe={"arms"}
+                  text={"arms"}
+                  top={35}
+                  left={30}
+                />
+              </div>
+              <div onClick={() => scrollToItem(1)}>
+                <InventoryIcon
+                  classe={"hands0"}
+                  text={"ring"}
+                  top={50}
+                  left={30}
+                />
+              </div>
+              <div onClick={() => scrollToItem(1)}>
+                <InventoryIcon
+                  classe={"hands1"}
+                  text={"ring"}
+                  top={50}
                   left={70}
                 />
               </div>
-              <InventoryIcon classe={"arms"} text={"arms"} top={40} left={30} />
-              <InventoryIcon
-                classe={"hands0"}
-                text={"ring"}
-                top={60}
-                left={30}
-              />
-              <InventoryIcon
-                classe={"hands1"}
-                text={"ring"}
-                top={60}
-                left={70}
-              />
-              <InventoryIcon classe={"legs"} text={"legs"} top={80} left={70} />
-              <div onClick={() => handleChangeChoosen(2, inventory[2])}>
-                <InventoryIcon classe={"sword"} text={"I"} left={10} />
+              <div onClick={() => scrollToItem(4)}>
+                <InventoryIcon
+                  classe={"legs"}
+                  text={"legs"}
+                  top={80}
+                  left={70}
+                />
               </div>
-              <div onClick={() => handleChangeChoosen(3, inventory[3])}>
+              <div onClick={() => scrollToItem(2)}>
+                <InventoryIcon classe={"sword"} text={"I"} left={5} top={20} />
+              </div>
+              <div onClick={() => scrollToItem(3)}>
                 <InventoryIcon
                   classe={"sword"}
                   text={"II"}
-                  left={10}
-                  top={20}
+                  left={5}
+                  top={35}
                 />
               </div>
-              <div onClick={() => handleChangeChoosen(4, inventory[4])}>
+              <div onClick={() => scrollToItem(4)}>
                 <InventoryIcon
                   classe={"sword"}
                   text={"III"}
-                  left={10}
-                  top={40}
+                  left={5}
+                  top={50}
                 />
               </div>
-              <div onClick={() => handleChangeChoosen(5, inventory[5])}>
+              <div onClick={() => scrollToItem(5)}>
                 <InventoryIcon
                   classe={"sword"}
                   text={"IV"}
-                  left={10}
-                  top={60}
+                  left={5}
+                  top={65}
                 />
               </div>
-              <div onClick={() => handleChangeChoosen(6, inventory[6])}>
-                <InventoryIcon classe={"sword"} text={"V"} left={10} top={80} />
+              <div onClick={() => scrollToItem(6)}>
+                <InventoryIcon classe={"sword"} text={"V"} left={5} top={80} />
               </div>
             </InventoryIcons>
           </div>
 
           <div
+            ref={inventoryListRef}
             className="rpgui-container-framed-grey"
             style={{
+              maxHeight: 780,
               overflowY: "auto"
             }}
           >
-            {char && filtroList && choosen && (
+            {inventory &&
+              filtroList &&
+              char &&
+              inventory.map((i, index) => (
+                <div
+                  key={index}
+                  ref={(el) => (itemRefs.current[index] = el)}
+                  className="rpgui-container-framed-grey"
+                >
+                  <ItemInventoryComponent
+                    n={index}
+                    item={i}
+                    sizeId={0}
+                    filtro={filtroList}
+                    onAction={handleChangeItem}
+                    onChange={(cost) => handleActualTresure(index, cost)}
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
+
+{
+  /* {char && filtroList && choosen && (
               <div>
                 <ItemInventoryComponent
                   n={choosen.n}
@@ -270,15 +349,11 @@ export const Items = () => {
                   sizeId={char?.race.size.id}
                   filtro={filtroList}
                   onAction={handleChangeItem}
+                  onChange={(cost) => handleActualTresure(choosen.n, cost)}
                 />
               </div>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-};
+            )} */
+}
 
 export type ItemInventoryProps = {
   n: number;
@@ -289,6 +364,7 @@ export type ItemInventoryProps = {
     n: number,
     item: Item | Armor | Shield | Weapon | WonderousItem
   ) => void;
+  onChange: (cost: number) => void;
 };
 
 export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
@@ -296,7 +372,8 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   item,
   sizeId,
   filtro,
-  onAction
+  onAction,
+  onChange
 }) => {
   const metal = ["METAL", "MITHRAL", "ADAMANTINE"];
   const wood = ["WOOD", "DARKWOOD"];
@@ -543,6 +620,12 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   ]);
 
   useEffect(() => {
+    if (costItem && costItem !== undefined) {
+      onChange(costItem);
+    }
+  }, [costItem]);
+
+  useEffect(() => {
     if (theItem) {
       if (
         "enchantmentBonus" in theItem &&
@@ -562,7 +645,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
       //   setNewItem({...itemToSend});
       // }
     }
-  }, [enchantmentBonusItem, materialItem, theItem]);
+  }, [enchantmentBonusItem, materialItem, theItem, costItem]);
 
   const handleAddEnchantment = (option: Enchantment) => {
     if (enchantmentItem) {

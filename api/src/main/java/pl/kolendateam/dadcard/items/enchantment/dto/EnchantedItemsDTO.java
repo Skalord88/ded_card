@@ -11,21 +11,22 @@ import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 @NoArgsConstructor
 public class EnchantedItemsDTO {
 
-  // public Integer id;
+  public Integer id;
   public int itemId;
   public String name;
   public List<EnchantmentDTO> enchantment;
   public Integer enchantmentBonus;
   public MaterialEnum material;
+  public Integer cost;
+  public String description;
 
-  // public Object item;
+  public Object item;
+
   // public WeaponNumericEnum damage;
   // public PrerequisiteDTO modifiers;
-  // public double cost;
-  // public String description;
 
   public EnchantedItemsDTO(EnchantedItems enchantedItems) {
-    // this.id = enchantedItems.getId();
+    this.id = enchantedItems.getId();
     this.name = enchantedItems.getName();
     this.itemId = enchantedItems.getItem().getId();
     this.enchantment =
@@ -39,5 +40,8 @@ public class EnchantedItemsDTO {
       enchantedItems.getMaterial() != null
         ? enchantedItems.getMaterial()
         : null;
+    this.cost =
+      enchantedItems.getCost() != null ? enchantedItems.getCost() : null;
+    this.description = enchantedItems.getDescription();
   }
 }

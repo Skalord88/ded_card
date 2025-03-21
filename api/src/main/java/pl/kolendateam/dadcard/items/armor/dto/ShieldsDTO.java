@@ -76,7 +76,8 @@ public class ShieldsDTO {
     // this.maxDex = shieldDTO.maxDex;
     this.penality = shieldDTO.penality;
     this.failure = shieldDTO.failure;
-    this.description = shieldDTO.description;
+    this.description =
+      item != null ? item.getDescription() : shieldDTO.description;
     this.material =
       item.getMaterial() == null ? shieldDTO.material : item.getMaterial();
     this.enchantmentBonus =

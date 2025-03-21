@@ -99,4 +99,29 @@ public class MapperItemsDTO {
     if (item == null) return new EnchantedItemsDTO();
     return new EnchantedItemsDTO(item);
   }
+
+  public static List<Object> createListOfEnchantedDTO(
+    List<EnchantedItems> enchantedList,
+    List<Items> itemsList
+  ) {
+    List<Object> listDTO = new ArrayList<>();
+
+    enchantedList.forEach(item -> {
+      if (item.getId() >= 10000) {
+        if (item.getItem() instanceof Armors) {
+          listDTO.add(MapperItemsDTO.toArmorDTO(item));
+        } else if (item.getItem() instanceof Shields) {
+          listDTO.add(MapperItemsDTO.toShieldDTO(item));
+        } else if (item.getItem() instanceof Weapons) {
+          listDTO.add(MapperItemsDTO.toWeaponDTO(item));
+        } else if (item.getItem() instanceof WondrousItems) {
+          listDTO.add(
+            MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item.getItem())
+          );
+        }
+      }
+    });
+
+    return listDTO;
+  }
 }

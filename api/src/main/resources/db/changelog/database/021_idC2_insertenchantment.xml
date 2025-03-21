@@ -5,64 +5,31 @@
 
     <changeSet id="302" author="oscar">
 
-        <insert tableName="prerequisite">
-            <column name='id' value="10000" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;ACID&quot; ],
-        &quot;bonus&quot; : 10 }]
-        }" />
-        </insert>
-
         <insert tableName="enchantment">
             <column name='id' value="1" />
             <column name="ability" value="ACID_RESISTANCE" />
             <column name="cost" value="18000" />
-            <column name="modifiers_id" value="10000" />
+            <column name="special_abilities_id" value="151" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="A suit of armor or a shield with this property normally has a dull gray appearance. The armor absorbs the first 10 points of acid damage per attack that the wearer would normally take (similar to the resist energy spell). Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist energy; Price +18,000 gp." />
-        </insert>
-
-        <insert tableName="prerequisite">
-            <column name='id' value="10001" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;ACID&quot; ],
-        &quot;bonus&quot; : 20 }]
-        }" />
         </insert>
 
         <insert tableName="enchantment">
             <column name='id' value="2" />
             <column name="ability" value="ACID_RESISTANCE_IMPROVED" />
             <column name="cost" value="42000" />
-            <column name="modifiers_id" value="10001" />
+            <column name="special_abilities_id" value="153" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="As acid resistance, except it absorbs the first 20 points of acid damage per attack. Moderate abjuration; CL 7th; Craft Magic Arms and Armor, resist energy; Price +42,000 gp." />
-        </insert>
-
-        <insert tableName="prerequisite">
-            <column name='id' value="10002" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;ACID&quot; ],
-        &quot;bonus&quot; : 30 }]
-        }" />
         </insert>
 
         <insert tableName="enchantment">
             <column name='id' value="3" />
             <column name="ability" value="ACID_RESISTANCE_GREATER" />
             <column name="cost" value="66000" />
-            <column name="modifiers_id" value="10002" />
+            <column name="special_abilities_id" value="155" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="As acid resistance, except it absorbs the first 30 points of acid damage per attack. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, resist energy; Price +66,000 gp." />
@@ -109,68 +76,425 @@
                 value="A shield with this ability flashes with a brilliant light up to twice per day upon command of the wielder. Anyone within 20 feet except the wielder must make a DC 14 Reflex save or be blinded for 1d4 rounds. Moderate evocation; CL 7th; Craft Magic Arms and Armor, searing light; Price +1 bonus." />
         </insert>
 
-        <insert tableName="prerequisite">
-            <column name='id' value="10004" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;COLD&quot; ],
-        &quot;bonus&quot; : 10 }]
-        }" />
-        </insert>
-
         <insert tableName="enchantment">
             <column name='id' value="9" />
             <column name="ability" value="COLD_RESISTANCE" />
             <column name="cost" value="18000" />
-            <column name="modifiers_id" value="10004" />
+            <column name="special_abilities_id" value="161" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="A suit of armor or a shield with this property normally has a bluish, icy hue or is adorned with furs and shaggy pelts. The armor absorbs the first 10 points of cold damage per attack that the wearer would normally take (similar to the resist energy spell). Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist energy; Price +18,000 gp." />
-        </insert>
-
-        <insert tableName="prerequisite">
-            <column name='id' value="10005" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;COLD&quot; ],
-        &quot;bonus&quot; : 20 }]
-        }" />
         </insert>
 
         <insert tableName="enchantment">
             <column name='id' value="10" />
             <column name="ability" value="COLD_RESISTANCE_IMPROVED" />
             <column name="cost" value="42000" />
-            <column name="modifiers_id" value="10005" />
+            <column name="special_abilities_id" value="163" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="As cold resistance, except it absorbs the first 20 points of cold damage per attack. Moderate abjuration; CL 7th; Craft Magic Arms and Armor, resist energy; Price +42,000 gp." />
-        </insert>
-
-        <insert tableName="prerequisite">
-            <column name='id' value="10006" />
-            <column name='saving_throw'
-                value="{
-        &quot;resistance&quot; : [{
-        &quot;type&quot; : &quot;RESISTANCE&quot;,
-        &quot;target&quot; : [ &quot;COLD&quot; ],
-        &quot;bonus&quot; : 30 }]
-        }" />
         </insert>
 
         <insert tableName="enchantment">
             <column name='id' value="11" />
             <column name="ability" value="COLD_RESISTANCE_GREATER" />
             <column name="cost" value="66000" />
-            <column name="modifiers_id" value="10006" />
+            <column name="special_abilities_id" value="165" />
             <column name="item_type" value="ARMOR_SHIELD" />
             <column name="text"
                 value="As cold resistance, except it absorbs the first 30 points of cold damage per attack. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, resist energy; Price +66,000 gp." />
         </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="12" />
+            <column name="ability" value="ETHEREALNESS" />
+            <column name="cost" value="49000" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="On command, this ability allows the wearer of the armor to become ethereal (as the ethereal jaunt spell) once per day. The character can remain ethereal for as long as desired, but once he returns to normal, he cannot become ethereal again that day. Strong transmutation; CL 13th; Craft Magic Arms and Armor, ethereal jaunt; Price +49,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="13" />
+            <column name="ability" value="FIRE_RESISTANCE" />
+            <column name="cost" value="18000" />
+            <column name="special_abilities_id" value="171" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="A suit of armor with this ability normally has a reddish hue and often is decorated with a draconic motif. The armor absorbs the first 10 points of fire damage per attack that the wearer would normally take (similar to the resist energy spell). Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist energy; Price +18,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="14" />
+            <column name="ability" value="FIRE_RESISTANCE_IMPROVED" />
+            <column name="cost" value="42000" />
+            <column name="special_abilities_id" value="173" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As fire resistance, except it absorbs the first 20 points of fire damage per attack. Moderate abjuration; CL 7th; Craft Magic Arms and Armor, resist energy; Price +42,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="15" />
+            <column name="ability" value="FIRE_RESISTANCE_GREATER" />
+            <column name="cost" value="66000" />
+            <column name="special_abilities_id" value="175" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As fire resistance, except it absorbs the first 30 points of fire damage per attack. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, resist energy; Price +66,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="16" />
+            <column name="ability" value="FORTIFICATION_LIGHT" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="1" />
+            <column name="text"
+                value="This suit of armor or shield produces a magical force that protects vital areas of the wearer more effectively. When a critical hit or sneak attack is scored on the wearer, there is a chance that the critical hit or sneak attack is negated and damage is instead rolled normally. Light 25%. Strong abjuration; CL 13th; Craft Magic Arms and Armor, limited wish or miracle; Price varies +1." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="17" />
+            <column name="ability" value="FORTIFICATION_MODERATE" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="3" />
+            <column name="text"
+                value="This suit of armor or shield produces a magical force that protects vital areas of the wearer more effectively. When a critical hit or sneak attack is scored on the wearer, there is a chance that the critical hit or sneak attack is negated and damage is instead rolled normally. Moderate 75%. Strong abjuration; CL 13th; Craft Magic Arms and Armor, limited wish or miracle; Price varies +3." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="18" />
+            <column name="ability" value="FORTIFICATION_HEAVY" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="5" />
+            <column name="text"
+                value="This suit of armor or shield produces a magical force that protects vital areas of the wearer more effectively. When a critical hit or sneak attack is scored on the wearer, there is a chance that the critical hit or sneak attack is negated and damage is instead rolled normally. Heavy 100%. Strong abjuration; CL 13th; Craft Magic Arms and Armor, limited wish or miracle; Price varies +5." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="19" />
+            <column name="ability" value="GHOST_TOUCH" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="3" />
+            <column name="text"
+                value="This armor or shield seems almost translucent. Both its enhancement bonus and its armor bonus count against the attacks of incorporeal creatures. It can be picked up, moved, and worn by incorporeal creatures at any time. Incorporeal creatures gain the armor or shield’s enhancement bonus against both corporeal and incorporeal attacks, and they can still pass freely through solid objects. Strong transmutation; CL 15th; Craft Magic Arms and Armor, etherealness; Price +3 bonus." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="20" />
+            <column name="ability" value="GLAMERED" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="2700" />
+            <column name="text"
+                value="A suit of armor with this ability appears normal. Upon command, the armor changes shape and form to assume the appearance of a normal set of clothing. The armor retains all its properties (including weight) when glamered. Only a true seeing spell or similar magic reveals the true nature of the armor when disguised. Moderate illusion; CL 10th; Craft Magic Arms and Armor, disguise self; Price +2,700 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="21" />
+            <column name="ability" value="INVULNERABILITY" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="3" />
+            <column name="text"
+                value="This suit of armor grants the wearer damage reduction of 5/magic. Strong abjuration and perhaps evocation (if miracle is used); CL 18th; Craft Magic Arms and Armor, stoneskin, wish or miracle; Price +3 bonus." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="22" />
+            <column name="ability" value="REFLECTING" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="5" />
+            <column name="text"
+                value="This shield seems like a mirror. Its surface is completely reflective. Once per day, it can be called on to reflect a spell back at its caster exactly like the spell turning spell. Strong abjuration; CL 14th; Craft Magic Arms and Armor, spell turning; Price +5 bonus." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10010" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10010" />
+            <column name="prerequisite_skill_id" value="145" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="23" />
+            <column name="ability" value="SHADOW" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="modifiers_id" value="10010" />
+            <column name="cost" value="3750" />
+            <column name="text"
+                value="This armor is jet black and blurs the wearer whenever she tries to hide, granting a +5 competence bonus on Hide checks. (The armor’s armor check penalty still applies normally.) Faint illusion; CL 5th; Craft Magic Arms and Armor, invisibility; Price +3,750 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10011" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10011" />
+            <column name="prerequisite_skill_id" value="1410" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="24" />
+            <column name="ability" value="SHADOW_IMPROVED" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="15000" />
+            <column name="modifiers_id" value="10011" />
+            <column name="text"
+                value="As shadow, except it grants a +10 competence bonus on Hide checks. Moderate illusion; CL 10th; Craft Magic Arms and Armor, invisibility; Price +15,000 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10012" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10012" />
+            <column name="prerequisite_skill_id" value="1415" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="25" />
+            <column name="ability" value="SHADOW_GREATER" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="33750" />
+            <column name="modifiers_id" value="10012" />
+            <column name="text"
+                value="As shadow, except it grants a +15 competence bonus on Hide checks. Moderate illusion; CL 15th; Craft Magic Arms and Armor, invisibility; Price +33,750 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10013" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10013" />
+            <column name="prerequisite_skill_id" value="195" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="26" />
+            <column name="ability" value="SILENT_MOVES" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="modifiers_id" value="10013" />
+            <column name="cost" value="3750" />
+            <column name="text"
+                value="This armor is well oiled and magically constructed so that it not only makes little sound, but it dampens sound around it. It provides a +5 competence bonus on its wearer’s Move Silently checks. (The armor’s armor check penalty still applies normally.) Faint illusion; CL 5th; Craft Magic Arms and Armor, silence; Price +3,750 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10014" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10014" />
+            <column name="prerequisite_skill_id" value="1910" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="27" />
+            <column name="ability" value="SILENT_MOVES_IMPROVED" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="15000" />
+            <column name="modifiers_id" value="10014" />
+            <column name="text"
+                value="As silent moves, except it grants a +10 competence bonus on Move Silently checks. Moderate illusion; CL 10th; Craft Magic Arms and Armor, silence; Price +15,000 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10015" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10015" />
+            <column name="prerequisite_skill_id" value="1915" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="28" />
+            <column name="ability" value="SILENT_MOVES_GREATER" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="33750" />
+            <column name="modifiers_id" value="10015" />
+            <column name="text"
+                value="As silent moves, except it grants a +15 competence bonus on Move Silently checks. Moderate illusion; CL 15th; Craft Magic Arms and Armor, silence; Price +33,750 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10016" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10016" />
+            <column name="prerequisite_skill_id" value="105" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="29" />
+            <column name="ability" value="SLICK" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="modifiers_id" value="10016" />
+            <column name="cost" value="3750" />
+            <column name="text"
+                value="Slick armor seems coated at all times with a slightly greasy oil. It provides a +5 competence bonus on its wearer’s Escape Artist checks. (The armor’s armor check penalty still applies normally.) Faint conjuration; CL 4th; Craft Magic Arms and Armor, grease; Price +3,750 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10017" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10017" />
+            <column name="prerequisite_skill_id" value="1010" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="30" />
+            <column name="ability" value="SLICK_IMPROVED" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="15000" />
+            <column name="modifiers_id" value="10017" />
+            <column name="text"
+                value="As slick, except it grants a +10 competence bonus on Escape Artist checks. Moderate conjuration; CL 10th; Craft Magic Arms and Armor, grease; Price +15,000 gp." />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name='id' value="10018" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="10018" />
+            <column name="prerequisite_skill_id" value="1015" />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="31" />
+            <column name="ability" value="SLICK_GREATER" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="cost" value="33750" />
+            <column name="modifiers_id" value="10018" />
+            <column name="text"
+                value="As slick, except it grants a +15 competence bonus on Escape Artist checks. Moderate conjuration; CL 15th; Craft Magic Arms and Armor, grease; Price +33,750 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="32" />
+            <column name="ability" value="SONIC_RESISTANCE" />
+            <column name="cost" value="18000" />
+            <column name="special_abilities_id" value="191" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="A suit of armor or a shield with this property normally has a glistening appearance. The armor absorbs the first 10 points of sonic damage per attack that the wearer would normally take (similar to the resist energy spell). Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist energy; Price +18,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="33" />
+            <column name="ability" value="SONIC_RESISTANCE_IMPROVED" />
+            <column name="cost" value="42000" />
+            <column name="special_abilities_id" value="193" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As sonic resistance, except it absorbs the first 20 points of sonic damage per attack. Moderate abjuration; CL 7th; Craft Magic Arms and Armor, resist energy; Price +42,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="34" />
+            <column name="ability" value="SONIC_RESISTANCE_IMPROVED" />
+            <column name="cost" value="66000" />
+            <column name="special_abilities_id" value="195" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As sonic resistance, except it absorbs the first 30 points of sonic damage per attack. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, resist energy; Price +66,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="35" />
+            <column name="ability" value="SPELL_RESISTANCE_13" />
+            <column name="cost" value="2" />
+            <column name="special_abilities_id" value="303" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="This property grants the armor’s wearer spell resistance while the armor is worn. The spell resistance can be 13, 15, 17, or 19, depending on the armor. Strong abjuration; CL 15th; Craft Magic Arms and Armor, spell resistance; Price +2 bonus (SR 13), +3 bonus (SR 15), +4 bonus (SR 17), or +5 bonus (SR 19)." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="36" />
+            <column name="ability" value="SPELL_RESISTANCE_15" />
+            <column name="cost" value="3" />
+            <column name="special_abilities_id" value="304" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="This property grants the armor’s wearer spell resistance while the armor is worn. The spell resistance can be 13, 15, 17, or 19, depending on the armor. Strong abjuration; CL 15th; Craft Magic Arms and Armor, spell resistance; Price +2 bonus (SR 13), +3 bonus (SR 15), +4 bonus (SR 17), or +5 bonus (SR 19)." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="37" />
+            <column name="ability" value="SPELL_RESISTANCE_17" />
+            <column name="cost" value="4" />
+            <column name="special_abilities_id" value="305" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="This property grants the armor’s wearer spell resistance while the armor is worn. The spell resistance can be 13, 15, 17, or 19, depending on the armor. Strong abjuration; CL 15th; Craft Magic Arms and Armor, spell resistance; Price +2 bonus (SR 13), +3 bonus (SR 15), +4 bonus (SR 17), or +5 bonus (SR 19)." />
+        </insert>
+        <insert tableName="enchantment">
+            <column name='id' value="38" />
+            <column name="ability" value="SPELL_RESISTANCE_19" />
+            <column name="cost" value="5" />
+            <column name="special_abilities_id" value="306" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="This property grants the armor’s wearer spell resistance while the armor is worn. The spell resistance can be 13, 15, 17, or 19, depending on the armor. Strong abjuration; CL 15th; Craft Magic Arms and Armor, spell resistance; Price +2 bonus (SR 13), +3 bonus (SR 15), +4 bonus (SR 17), or +5 bonus (SR 19)." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="39" />
+            <column name="ability" value="UNDEAD_CONTROLLING" />
+            <column name="cost" value="49000" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="The wearer of a suit of armor or a shield with this property may control up to 26 HD of undead per day, as the control undead spell. At dawn each day, the wearer loses control of any undead still under his sway. Armor or a shield with this ability appears to be made of bone; this feature is entirely decorative and has no other effect on the armor. Strong necromancy; CL 13th; Craft Magic Arms and Armor, control undead; Price +49,000 gp." />
+        </insert>
+        <insert tableName="enchantment">
+            <column name='id' value="40" />
+            <column name="ability" value="WILD" />
+            <column name="cost" value="3" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="The wearer of a suit of armor or a shield with this ability preserves his armor bonus (and any enhancement bonus) while in a wild shape. Armor and shields with this ability usually appear to be made covered in leaf patterns. While the wearer is in a wild shape, the armor cannot be seen. Moderate transmutation; CL 9th; Craft Magic Arms and Armor, baleful polymorph; Price +3 bonus." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="41" />
+            <column name="ability" value="ELECTRICITY_RESISTANCE" />
+            <column name="cost" value="18000" />
+            <column name="special_abilities_id" value="181" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="A suit of armor or a shield with this property normally has a bluish hue and often bears a storm or lightning motif. The armor absorbs the first 10 points of electricity damage per attack that the wearer would normally take (similar to the resist energy spell). Faint abjuration; CL 3rd; Craft Magic Arms and Armor, resist energy; Price +18,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="42" />
+            <column name="ability" value="ELECTRICITY_RESISTANCE_IMPROVED" />
+            <column name="cost" value="42000" />
+            <column name="special_abilities_id" value="183" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As electricity resistance, except it absorbs the first 20 points of electricity damage per attack. Moderate abjuration; CL 7th; Craft Magic Arms and Armor, resist energy; Price +42,000 gp." />
+        </insert>
+
+        <insert tableName="enchantment">
+            <column name='id' value="43" />
+            <column name="ability" value="ELECTRICITY_RESISTANCE_GREATER" />
+            <column name="cost" value="66000" />
+            <column name="special_abilities_id" value="185" />
+            <column name="item_type" value="ARMOR_SHIELD" />
+            <column name="text"
+                value="As electricity resistance, except it absorbs the first 30 points of electricity damage per attack. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, resist energy; Price +66,000 gp." />
+        </insert>
+
 
         <insert tableName="enchantment">
             <column name='id' value="106" />

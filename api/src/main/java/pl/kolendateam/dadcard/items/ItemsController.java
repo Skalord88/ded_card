@@ -64,15 +64,13 @@ public class ItemsController {
   }
 
   @GetMapping("allEnchanted")
-  public List<EnchantedItemsDTO> showEnchantedItemsList() {
-    List<EnchantedItems> itemsList = this.enchantedItemsRepository.findAll();
-    List<EnchantedItemsDTO> listDTO = new ArrayList<>();
+  public List<Object> showEnchantedItemsList() {
+    List<EnchantedItems> enchantedList =
+      this.enchantedItemsRepository.findAll();
 
-    itemsList.forEach(item -> {
-      listDTO.add(new EnchantedItemsDTO(item));
-    });
+    List<Items> itemsList = this.itemsRepository.findAll();
 
-    return listDTO;
+    return MapperItemsDTO.createListOfEnchantedDTO(enchantedList, itemsList);
   }
 
   @GetMapping("allEnchantments")
