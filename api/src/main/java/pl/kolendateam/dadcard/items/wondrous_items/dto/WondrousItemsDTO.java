@@ -15,6 +15,10 @@ public class WondrousItemsDTO implements Serializable {
   public double cost;
   public BigDecimal weight;
   public String description;
+  public ItemTypeEnum wondrousType;
+
+  // public String general;
+  // public String specific;
 
   public WondrousItemsDTO(WondrousItems item) {
     this.id = item.getId();
@@ -23,5 +27,17 @@ public class WondrousItemsDTO implements Serializable {
     this.cost = item.getCost();
     this.weight = item.getWeight();
     this.description = item.getDescription();
+    this.wondrousType =
+      item.getWondrousType() != null ? item.getWondrousType() : null;
+    // this.general =
+    //   item.getWondrousType() != null
+    //     ? item.getWondrousType().getDescription()
+    //     : null;
+    // this.specific =
+    //   item.getWondrousType() != null
+    //     ? item.getWondrousType().getDescription() != null
+    //       ? item.getWondrousType().getDescription()
+    //       : null
+    //     : null;
   }
 }

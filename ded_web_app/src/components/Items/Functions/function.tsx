@@ -111,7 +111,7 @@ export const createWeaponItemsInInventory = (
 };
 
 export const sendItemsInInventory = (
-  inventory: (Weapon | Item | WonderousItem | Armor | Shield)[]
+  inventory: (Weapon | Item | WonderousItem | WonderousItem[] | Armor | Shield)[]
 ): ItemToSend[] => {
   const armor: ItemToSend =
     inventory[0] && "armorName" in inventory[0]

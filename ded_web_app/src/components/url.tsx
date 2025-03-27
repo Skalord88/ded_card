@@ -40,6 +40,9 @@ export const urlItems: string =
 
 export const urlEnchants: string =
     url + 'item/allEnchantments';
+    
+export const urlEnchanted: string =
+    url + 'item/allEnchanted';
 
 export const urlInventory: string =
     url + 'item/inventory/';

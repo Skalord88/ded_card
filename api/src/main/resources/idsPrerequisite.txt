@@ -137,6 +137,8 @@
 
         <!-- Madzia -->
 
+        9000 items
+
         modifiers_id_magicItems 10.000
         10.001 ACID_RESISTANCE
         10.002 ACID_RESISTANCE_IMPROVED

@@ -47,7 +47,7 @@
             <column name="special_attacks" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="description" type="varchar(1000)">
+            <column name="description" type="varchar(5000)">
                 <constraints nullable="true" />
             </column>
             <column name="modifiers_id" type="bigint">
@@ -68,6 +68,19 @@
             <column name="material" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="wondrous_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
         </createTable>
+
+        <createTable tableName="items_spells">
+            <column name="items_id" type="int">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="spells_id" type="int">
+                <constraints primaryKey="true" />
+            </column>
+        </createTable>
+
     </changeSet>
 </databaseChangeLog>

@@ -70,7 +70,7 @@ public class ShieldsDTO {
     } else {
       this.modifiers = null;
     }
-    this.cost = shieldDTO.cost;
+    this.cost = item.getCost() != null ? item.getCost() : shieldDTO.cost;
     this.weight = shieldDTO.weight;
     this.armorType = shieldDTO.armorType;
     // this.maxDex = shieldDTO.maxDex;

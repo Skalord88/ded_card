@@ -35,9 +35,19 @@
         </insert>
 
         <insert tableName="prerequisite_skill">
-            <column name="skill_id" value="4" /> <!-- CLIMB -->
+            <column name="skill_id" value="4" /> <!-- CLIMB 2 -->
             <column name="rank" value="2" />
             <column name="id" value="42" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="4" /> <!-- CLIMB 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="45" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="4" /> <!-- CLIMB 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="410" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -310,9 +320,19 @@
         </insert>
 
         <insert tableName="prerequisite_skill">
-            <column name="skill_id" value="30" /> <!-- SWIM -->
+            <column name="skill_id" value="30" /> <!-- SWIM 2 -->
             <column name="rank" value="2" />
             <column name="id" value="302" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="30" /> <!-- SWIM 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="305" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="30" /> <!-- SWIM 10 -->
+            <column name="rank" value="5" />
+            <column name="id" value="3010" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -338,6 +358,104 @@
             <column name="study_id" value="4" /> <!-- NATURE -->
             <column name="rank" value="2" />
             <column name="id" value="10032" />
+        </insert>
+
+        <!-- id:20.000 -->
+        <!-- SAVING id:20.000 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20001" />
+            <column name="saving_throw"
+                value="
+            {&quot;resistance&quot;: 
+            [{&quot;type&quot;: &quot;SAVING&quot;
+            , &quot;bonus&quot;: 1}]}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20002" />
+            <column name="saving_throw"
+                value="
+            {&quot;resistance&quot;: 
+            [{&quot;type&quot;: &quot;SAVING&quot;, 
+            &quot;bonus&quot;: 2}]}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20003" />
+            <column name="saving_throw"
+                value="
+            {&quot;resistance&quot;: 
+            [{&quot;type&quot;: &quot;SAVING&quot;, 
+            &quot;bonus&quot;: 3}]}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20004" />
+            <column name="saving_throw"
+                value="
+            {&quot;resistance&quot;: 
+            [{&quot;type&quot;: &quot;SAVING&quot;, 
+            &quot;bonus&quot;: 4}]}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20005" />
+            <column name="saving_throw"
+                value="
+            {&quot;resistance&quot;: 
+            [{&quot;type&quot;: &quot;SAVING&quot;, 
+            &quot;bonus&quot;: 5}]}" />
+        </insert>
+
+        <!-- dodge id:20.100 -->
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20101" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 1}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20102" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 2}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20103" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 3}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20104" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 4}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20105" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 5}" />
+        </insert>
+
+        <!-- skills id:20.200 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20201" />
+            <column name="prerequisite_skill_id" value="45" />
+            <!-- climb +5  -->
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20202" />
+            <column name="prerequisite_skill_id" value="410" />
+            <!-- climb +10  -->
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20203" />
+            <column name="prerequisite_skill_id" value="305" />
+            <!-- swim +5  -->
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20204" />
+            <column name="prerequisite_skill_id" value="3010" />
+            <!-- swim +10  -->
         </insert>
 
 

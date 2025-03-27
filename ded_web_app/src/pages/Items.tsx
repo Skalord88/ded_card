@@ -1,32 +1,28 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { DropdownComponent } from "../components/DropDown/DropDown";
+import { FormattingText } from "../components/Formatting/Function";
+import { addToDrop, itemInDrop } from "../components/functions";
+import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
   Armor,
   CharacterPc,
-  EnchantedItem,
-  Inventory,
+  Enchantment,
   Item,
   ItemsList,
   Shield,
   Weapon,
-  WonderousItem,
-  ItemToSend,
-  Enchantment
+  WonderousItem
 } from "../components/interfaces";
-import { urlChar, urlEnchants, urlItems, urlItemsBuy } from "../components/url";
-import { emptyItemsList } from "../components/variables";
-import { CreateNewItems } from "../components/Items/CreateNewItems/CreateNewItems";
-import { MapOfInventory } from "../components/Items/Inventory/MapOfInventory";
-import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { createModChar } from "../components/Prerequisite/functions/modChar";
-import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../components/functions";
+import {
+  charTresurePerLevel,
+  sendItemsInInventory
+} from "../components/Items/Functions/function";
 import {
   calculateCost,
   modifyInventory
 } from "../components/Items/Inventory/function";
-import { reWeightItem } from "../components/Size/function";
 import {
   reMaterialArmType,
   reMaterialFailure,
@@ -34,18 +30,21 @@ import {
   reMaterialPerfectPenality,
   reMaterialWeight
 } from "../components/Items/Material/function";
-import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
-  charTresurePerLevel,
-  sendItemsInInventory
-} from "../components/Items/Functions/function";
-import { FormattingText } from "../components/Formatting/Function";
+  urlChar,
+  urlEnchanted,
+  urlEnchants,
+  urlItems,
+  urlItemsBuy
+} from "../components/url";
 
 export type FiltroItems = {
   armors: itemInDrop[];
   shields: itemInDrop[];
   weapons: itemInDrop[];
+  wonderous: itemInDrop[];
   enchantments: itemInDrop[];
+  magic: itemInDrop[];
 };
 
 export const Items = () => {
@@ -54,7 +53,7 @@ export const Items = () => {
   const [char, setChar] = useState<CharacterPc>();
   const [filtroList, setFiltroList] = useState<FiltroItems>();
   const [inventory, setInventory] = useState<
-    (Armor | Shield | Weapon | Item | WonderousItem)[]
+    (Armor | Shield | Weapon | Item | WonderousItem | WonderousItem[])[]
   >([]);
   const [tresure, setTresure] = useState<number>(0);
   const [totalCost, setTotalCost] = useState(0);
@@ -89,18 +88,25 @@ export const Items = () => {
 
         const resEnchants = await axios.get(urlEnchants);
         const allEnchants: Enchantment[] = await resEnchants.data;
+        const resEnchanted = await axios.get(urlEnchanted);
+        const allEnchanted: (Armor | Shield | Weapon)[] =
+          await resEnchanted.data;
 
         if (allItems) {
           const a = allItems.armorsList;
           const s = allItems.shieldList;
           const w = allItems.weaponsList;
+          const wo = allItems.wonderousItems;
           const e = allEnchants;
+          const ed = allEnchanted;
 
           const filtro: FiltroItems = {
             armors: addToDrop(a, "items"),
             shields: addToDrop(s, "items"),
             weapons: addToDrop(w, "items"),
-            enchantments: addToDrop(e, "enchant")
+            wonderous: addToDrop(wo, "items"),
+            enchantments: addToDrop(e, "enchant"),
+            magic: addToDrop(ed, "items")
           };
 
           setFiltroList(filtro);
@@ -118,7 +124,14 @@ export const Items = () => {
           moddedInventory.weaponTwo,
           moddedInventory.weaponThree,
           moddedInventory.weaponFour,
-          moddedInventory.weaponFive
+          moddedInventory.weaponFive,
+          moddedInventory.backpack,
+          moddedInventory.head,
+          moddedInventory.neck,
+          moddedInventory.arms,
+          moddedInventory.hands,
+          moddedInventory.cloth,
+          moddedInventory.legs
         ];
 
         setInventory(moddedInventoryList);
@@ -212,10 +225,20 @@ export const Items = () => {
           >
             <InventoryIcons>
               <div onClick={() => scrollToItem(10)}>
-                <InventoryIcon classe={"head"} text={"head"} top={5} left={20} />
+                <InventoryIcon
+                  classe={"head"}
+                  text={"head"}
+                  top={5}
+                  left={20}
+                />
               </div>
               <div onClick={() => scrollToItem(11)}>
-                <InventoryIcon classe={"neck"} text={"neck"} top={5} left={70} />
+                <InventoryIcon
+                  classe={"neck"}
+                  text={"neck"}
+                  top={5}
+                  left={70}
+                />
               </div>
               <div onClick={() => scrollToItem(0)}>
                 <InventoryIcon
@@ -277,12 +300,7 @@ export const Items = () => {
                 <InventoryIcon classe={"sword"} text={"I"} left={5} top={20} />
               </div>
               <div onClick={() => scrollToItem(3)}>
-                <InventoryIcon
-                  classe={"sword"}
-                  text={"II"}
-                  left={5}
-                  top={35}
-                />
+                <InventoryIcon classe={"sword"} text={"II"} left={5} top={35} />
               </div>
               <div onClick={() => scrollToItem(4)}>
                 <InventoryIcon
@@ -293,12 +311,7 @@ export const Items = () => {
                 />
               </div>
               <div onClick={() => scrollToItem(5)}>
-                <InventoryIcon
-                  classe={"sword"}
-                  text={"IV"}
-                  left={5}
-                  top={65}
-                />
+                <InventoryIcon classe={"sword"} text={"IV"} left={5} top={65} />
               </div>
               <div onClick={() => scrollToItem(6)}>
                 <InventoryIcon classe={"sword"} text={"V"} left={5} top={80} />
@@ -317,22 +330,62 @@ export const Items = () => {
             {inventory &&
               filtroList &&
               char &&
-              inventory.map((i, index) => (
-                <div
-                  key={index}
-                  ref={(el) => (itemRefs.current[index] = el)}
-                  className="rpgui-container-framed-grey"
-                >
-                  <ItemInventoryComponent
-                    n={index}
-                    item={i}
-                    sizeId={0}
-                    filtro={filtroList}
-                    onAction={handleChangeItem}
-                    onChange={(cost) => handleActualTresure(index, cost)}
-                  />
-                </div>
-              ))}
+              inventory.map((i, index) =>
+                Array.isArray(i) ? (
+                  <div
+                    key={index}
+                    ref={(el) => (itemRefs.current[index] = el)}
+                    className="rpgui-container-framed-grey"
+                  >
+                    {index === 7 &&
+                      i.map((element) => (
+                        <ItemInventoryComponent
+                          n={index}
+                          item={element}
+                          sizeId={0}
+                          filtro={filtroList}
+                          onAction={handleChangeItem}
+                          onChange={(cost) => handleActualTresure(index, cost)}
+                        />
+                      ))}
+                    {index === 11 && (
+                      <div>
+                        <ItemInventoryComponent
+                          n={index}
+                          item={i[0]}
+                          sizeId={0}
+                          filtro={filtroList}
+                          onAction={handleChangeItem}
+                          onChange={(cost) => handleActualTresure(index, cost)}
+                        />
+                        <ItemInventoryComponent
+                          n={index}
+                          item={i[1]}
+                          sizeId={0}
+                          filtro={filtroList}
+                          onAction={handleChangeItem}
+                          onChange={(cost) => handleActualTresure(index, cost)}
+                        />
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div
+                    key={index}
+                    ref={(el) => (itemRefs.current[index] = el)}
+                    className="rpgui-container-framed-grey"
+                  >
+                    <ItemInventoryComponent
+                      n={index}
+                      item={i}
+                      sizeId={0}
+                      filtro={filtroList}
+                      onAction={handleChangeItem}
+                      onChange={(cost) => handleActualTresure(index, cost)}
+                    />
+                  </div>
+                )
+              )}
           </div>
         </div>
       </div>
@@ -397,6 +450,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const [failureItem, setFailureItem] = useState<number | null>();
 
   const [filtroEnchantment, setFiltroEnchantment] = useState<itemInDrop[]>();
+  const specificFiltro: itemInDrop[] = n === 7 ? filtro.wonderous : [];
 
   useEffect(() => {
     setTheItem(item);
@@ -676,6 +730,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           {"armorName" in theItem ? "ARMOR" : null}
           {"shieldName" in theItem ? "SHIELD" : null}
           {"weaponName" in theItem ? "WEAPON " + numerini[n - 2] : null}
+          {n === 8 ? "HEAD" : null}
         </h2>
       )}
       <div>
@@ -686,7 +741,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
                 ? filtro.armors
                 : n === 1
                 ? filtro.shields
-                : filtro.weapons
+                : [2, 3, 4, 5, 6].includes(n)
+                ? filtro.weapons
+                : specificFiltro
             }
             onAction={handleNewItems}
           />

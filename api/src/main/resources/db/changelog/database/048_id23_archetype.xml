@@ -78,5 +78,14 @@
         <constraints nullable="true" />
       </column>
     </createTable>
+
+    <createTable tableName="special_abilities_spells">
+      <column name="special_abilities_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="spells_id" type="int">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
   </changeSet>
 </databaseChangeLog>

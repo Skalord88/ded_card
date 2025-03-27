@@ -4,7 +4,7 @@ import {
 } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { Inventory } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
-import { noneArmor, noneShield, noneWeapon } from "../../variables";
+import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
 import {
   reMaterialArmType,
   reMaterialFailure,
@@ -90,7 +90,19 @@ export const modifyInventory = (
           ...reSizeWeapon(charSizeId, inventory.weaponFive),
           weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
         }
-      : noneWeapon
+      : noneWeapon,
+      backpack: inventory.backpack != null ? inventory.backpack : [noneItem],
+    head: inventory.head != null
+      ? inventory.head : noneItem,
+      neck: inventory.neck != null
+      ? inventory.neck : noneItem,
+      arms: inventory.arms != null
+      ? inventory.arms : noneItem,
+      hands: inventory.hands != null ? inventory.hands : [noneItem],
+      cloth: inventory.cloth != null
+      ? inventory.cloth : noneItem,
+      legs: inventory.legs != null
+      ? inventory.legs : noneItem
   };
 };
 

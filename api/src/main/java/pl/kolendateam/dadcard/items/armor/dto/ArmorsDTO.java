@@ -71,7 +71,7 @@ public class ArmorsDTO implements Serializable {
     } else {
       this.modifiers = null;
     }
-    this.cost = armorDTO.cost;
+    this.cost = item.getCost() != null ? item.getCost() : armorDTO.cost;
     this.weight = armorDTO.weight;
     this.armorType = armorDTO.armorType;
     this.maxDex = armorDTO.maxDex;

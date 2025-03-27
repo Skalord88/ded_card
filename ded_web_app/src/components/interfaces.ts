@@ -207,20 +207,20 @@ export type EnchantedItem = {
 export interface WonderousItem extends Item { }
 
 export type Inventory = {
-  armor: Armor;
-  shield: Shield;
-  weaponOne: Weapon;
-  weaponTwo: Weapon;
-  weaponThree: Weapon;
-  weaponFour: Weapon;
-  weaponFive: Weapon;
-  backpack: Item[];
-  head: WonderousItem;
-  neck: WonderousItem;
-  arms: WonderousItem;
-  hands: Item[];
-  cloth: WonderousItem;
-  legs: WonderousItem;
+  armor: Armor; // 0
+  shield: Shield; // 1
+  weaponOne: Weapon; // 2
+  weaponTwo: Weapon; // 3
+  weaponThree: Weapon; // 4
+  weaponFour: Weapon; // 5
+  weaponFive: Weapon; // 6
+  backpack: WonderousItem[]; // 7
+  head: WonderousItem; // 8
+  neck: WonderousItem; // 9
+  arms: WonderousItem; // 10
+  hands: WonderousItem[]; // 11
+  cloth: WonderousItem; // 12
+  legs: WonderousItem; // 13
 }
 
 export type ItemToSend = {

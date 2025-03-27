@@ -14,6 +14,7 @@ public enum ItemAbilityEnum {
   ARMOR_4,
   ARMOR_5,
   COMPOSITE,
+  ANARCHIC,
   AXIOMATIC,
   BANE,
   BRILLIANT_ENERGY,

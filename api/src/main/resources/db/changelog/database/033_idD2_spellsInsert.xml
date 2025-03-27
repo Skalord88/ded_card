@@ -3490,8 +3490,8 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
         </insert>
 
         <insert tableName="spells">
-            <column name="name" value="null" />
-            <column name="school" value="[Disintegrate]" />
+            <column name="name" value="Disintegrate" />
+            <column name="school" value="['TRANSMUTATION']" />
             <column name="level"
                 value="[{'level':7,'classDomain':'DESTRUCTION'},{'level':6,'classDomain':'SORCERER_WIZARD'}]" />
             <column name="components" value="['VERBAL','SOMATIC','MATERIAL_DIVINE_FOCUS']" />
