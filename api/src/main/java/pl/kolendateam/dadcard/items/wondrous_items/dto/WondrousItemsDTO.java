@@ -3,6 +3,8 @@ package pl.kolendateam.dadcard.items.wondrous_items.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
@@ -16,6 +18,7 @@ public class WondrousItemsDTO implements Serializable {
   public BigDecimal weight;
   public String description;
   public ItemTypeEnum wondrousType;
+  public PrerequisiteDTO modifiers;
 
   // public String general;
   // public String specific;
@@ -29,6 +32,10 @@ public class WondrousItemsDTO implements Serializable {
     this.description = item.getDescription();
     this.wondrousType =
       item.getWondrousType() != null ? item.getWondrousType() : null;
+    this.modifiers =
+      item.getModifiers() != null
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        : null;
     // this.general =
     //   item.getWondrousType() != null
     //     ? item.getWondrousType().getDescription()

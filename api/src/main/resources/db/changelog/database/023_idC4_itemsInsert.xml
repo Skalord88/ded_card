@@ -1692,7 +1692,7 @@
             <column name="name" value="Protection +1" />
             <column name="cost" value="2000" />
             <column name="weight" value="0" />
-            <column name="modifiers_id" value="20101" />
+            <column name="modifiers_id" value="52101" />
             <column name="wondrous_type" value="RING" />
             <column name="description"
                 value="This ring offers continual magical protection in the form of a deflection bonus of +1 to +5 to AC. Faint abjuration; CL 5th; Forge Ring, shield of faith, caster must be of a level at least three times greater than the bonus of the ring; Price 2,000 gp (ring +1); 8,000 gp (ring +2); 18,000 gp (ring +3); 32,000 gp (ring +4); 50,000 gp (ring +5)." />
@@ -1701,7 +1701,7 @@
             <column name="id" value="1002" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Protection +2" />
-            <column name="modifiers_id" value="20102" />
+            <column name="modifiers_id" value="52102" />
             <column name="cost" value="8000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="RING" />
@@ -1712,7 +1712,7 @@
             <column name="id" value="1003" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Protection +3" />
-            <column name="modifiers_id" value="20103" />
+            <column name="modifiers_id" value="52103" />
             <column name="cost" value="18000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="RING" />
@@ -1723,7 +1723,7 @@
             <column name="id" value="1004" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Protection +4" />
-            <column name="modifiers_id" value="20104" />
+            <column name="modifiers_id" value="52104" />
             <column name="cost" value="32000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="RING" />
@@ -1734,7 +1734,7 @@
             <column name="id" value="1005" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Protection +5" />
-            <column name="modifiers_id" value="20105" />
+            <column name="modifiers_id" value="52105" />
             <column name="cost" value="50000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="RING" />
@@ -2674,6 +2674,7 @@ Moderate varied; CL 13th; Craft Staff, Craft Magic Arms and Armor, animate plant
             <column name="name" value="Amulet of Health +2" />
             <column name="cost" value="4000" />
             <column name="weight" value="0" />
+            <column name="modifiers_id" value="20341" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
@@ -2686,6 +2687,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 4
             <column name="name" value="Amulet of Health +4" />
             <column name="cost" value="16000" />
             <column name="weight" value="0" />
+            <column name="modifiers_id" value="20343" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
@@ -2698,6 +2700,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 1
             <column name="name" value="Amulet of Health +6" />
             <column name="cost" value="36000" />
             <column name="weight" value="0" />
+            <column name="modifiers_id" value="20345" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
@@ -2707,6 +2710,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 3
         <insert tableName="items">
             <column name="id" value="6004" />
             <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="modifiers_id" value="9003" />
             <column name="name" value="Amulet of Mighty Fists +1" />
             <column name="cost" value="6000" />
             <column name="weight" value="0" />
@@ -2721,6 +2725,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="id" value="6005" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Mighty Fists +2" />
+            <column name="modifiers_id" value="9004" />
             <column name="cost" value="24000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2734,6 +2739,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="id" value="6006" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Mighty Fists +3" />
+            <column name="modifiers_id" value="9005" />
             <column name="cost" value="54000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2746,6 +2752,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
         <insert tableName="items">
             <column name="id" value="6007" />
             <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="modifiers_id" value="9006" />
             <column name="name" value="Amulet of Mighty Fists +4" />
             <column name="cost" value="96000" />
             <column name="weight" value="0" />
@@ -2759,6 +2766,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
         <insert tableName="items">
             <column name="id" value="6008" />
             <column name="item_type" value="WONDROUS_ITEM" />
+            <column name="modifiers_id" value="9007" />
             <column name="name" value="Amulet of Mighty Fists +5" />
             <column name="cost" value="150000" />
             <column name="weight" value="0" />
@@ -2773,6 +2781,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="id" value="6009" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Natural Armor +1" />
+            <column name="modifiers_id" value="52201" />
             <column name="cost" value="2000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2786,6 +2795,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="id" value="6010" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Natural Armor +2" />
+            <column name="modifiers_id" value="52202" />
             <column name="cost" value="8000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2799,6 +2809,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="id" value="6011" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Natural Armor +3" />
+            <column name="modifiers_id" value="52203" />
             <column name="cost" value="18000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2812,6 +2823,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="id" value="6012" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Natural Armor +4" />
+            <column name="modifiers_id" value="52204" />
             <column name="cost" value="32000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -2825,6 +2837,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="id" value="6013" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Amulet of Natural Armor +5" />
+            <column name="modifiers_id" value="52205" />
             <column name="cost" value="50000" />
             <column name="weight" value="0" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3090,6 +3103,7 @@ Moderate divination; CL 12th; Craft Wondrous Item, tongues, creator must be a dw
             <column name="id" value="6027" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Belt of Giant Strength +4" />
+            <column name="modifiers_id" value="20304" />
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3102,6 +3116,7 @@ Moderate transmutation; CL 10th; Craft Wondrous Item, bull’s strength; Price 1
             <column name="id" value="6028" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Belt of Giant Strength +6" />
+            <column name="modifiers_id" value="20306" />
             <column name="cost" value="36000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3144,6 +3159,7 @@ Faint transmutation; CL 6th; Craft Wondrous Item, fabricate, creator must have 2
             <column name="id" value="6031" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Boots of Elvenkind" />
+                <column name="modifiers_id" value="20205"/>
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3290,6 +3306,7 @@ Faint transmutation; CL 4th; Craft Wondrous Item, Craft Magic Arms and Armor; Pr
             <column name="id" value="6043" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +1" />
+            <column name="modifiers_id" value="52001"/>
             <column name="cost" value="1000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3302,6 +3319,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6044" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +2" />
+            <column name="modifiers_id" value="52002"/>
             <column name="cost" value="4000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3314,6 +3332,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6045" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +3" />
+            <column name="modifiers_id" value="52003"/>
             <column name="cost" value="9000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3326,6 +3345,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6046" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +4" />
+            <column name="modifiers_id" value="52004"/>
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3338,6 +3358,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6047" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +5" />
+            <column name="modifiers_id" value="52005"/>
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3350,6 +3371,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6048" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +6" />
+            <column name="modifiers_id" value="52006"/>
             <column name="cost" value="36000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3362,6 +3384,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6049" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +7" />
+            <column name="modifiers_id" value="52007"/>
             <column name="cost" value="49000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />
@@ -3374,6 +3397,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6050" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +8" />
+            <column name="modifiers_id" value="52008"/>
             <column name="cost" value="64000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="MAGIC_ITEM" />

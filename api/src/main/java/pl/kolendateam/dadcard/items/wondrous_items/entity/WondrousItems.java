@@ -37,8 +37,12 @@ public class WondrousItems extends Items {
   )
   Set<Spells> spells;
 
-  @OneToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "modifiers_id")
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(
+    name = "modifiers_id",
+    referencedColumnName = "id",
+    nullable = true
+  )
   Prerequisite modifiers;
 
   public WondrousItems(WondrousItemsDTO item) {

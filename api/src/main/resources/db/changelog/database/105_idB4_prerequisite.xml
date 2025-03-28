@@ -403,63 +403,411 @@
             &quot;bonus&quot;: 5}]}" />
         </insert>
 
-        <!-- dodge id:20.100 -->
+        <!--  id:20.100 -->
 
-        <insert tableName="prerequisite">
-            <column name="id" value="20101" />
-            <column name="armor_class"
-                value="
-            {&quot;dodgeBonus&quot;: 1}" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20102" />
-            <column name="armor_class"
-                value="
-            {&quot;dodgeBonus&quot;: 2}" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20103" />
-            <column name="armor_class"
-                value="
-            {&quot;dodgeBonus&quot;: 3}" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20104" />
-            <column name="armor_class"
-                value="
-            {&quot;dodgeBonus&quot;: 4}" />
-        </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20105" />
-            <column name="armor_class"
-                value="
-            {&quot;dodgeBonus&quot;: 5}" />
-        </insert>
+        
 
         <!-- skills id:20.200 -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20201" />
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20201" />
             <column name="prerequisite_skill_id" value="45" />
             <!-- climb +5  -->
         </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20202" />
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20202" />
             <column name="prerequisite_skill_id" value="410" />
             <!-- climb +10  -->
         </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20203" />
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20203" />
             <column name="prerequisite_skill_id" value="305" />
             <!-- swim +5  -->
         </insert>
-        <insert tableName="prerequisite">
-            <column name="id" value="20204" />
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20204" />
             <column name="prerequisite_skill_id" value="3010" />
             <!-- swim +10  -->
         </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20205" />
+            <column name="prerequisite_skill_id" value="195" />
+            <!-- Move Silently +5  -->
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20206" />
+            <column name="prerequisite_skill_id" value="1910" />
+            <!-- Move Silently +10  -->
+        </insert>
 
+        <!-- skills id:20.300 characteristic -->
 
-        <!-- id:9.000 weapons -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20301" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 1}" />
+            <column name="text" value="Strength +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20302" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 2}" />
+            <column name="text" value="Strength +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20303" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 3}" />
+            <column name="text" value="Strength +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20304" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 4}" />
+            <column name="text" value="Strength +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20305" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 5}" />
+            <column name="text" value="Strength +5" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20306" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 6}" />
+            <column name="text" value="Strength +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20307" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 7}" />
+            <column name="text" value="Strength +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20308" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 8}" />
+            <column name="text" value="Strength +8" />      
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20309" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 9}" />
+            <column name="text" value="Strength +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20310" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: 10}" />
+            <column name="text" value="Strength +10" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20321" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 1}" />
+            <column name="text" value="Dexterity +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20322" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 2}" />
+            <column name="text" value="Dexterity +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20323" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 3}" />
+            <column name="text" value="Dexterity +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20324" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 4}" />
+            <column name="text" value="Dexterity +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20325" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 5}" />
+            <column name="text" value="Dexterity +5" /> 
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20326" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 6}" />
+            <column name="text" value="Dexterity +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20327" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 7}" />
+            <column name="text" value="Dexterity +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20328" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 8}" />
+            <column name="text" value="Dexterity +8" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20329" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 9}" />
+            <column name="text" value="Dexterity +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20330" />
+            <column name="abilitys" value="{
+                &quot;dexterity&quot;: 10}" />
+            <column name="text" value="Dexterity +10" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20340" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 1}" />
+            <column name="text" value="Constitution +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20341" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 2}" />
+            <column name="text" value="Constitution +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20342" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 3}" />
+            <column name="text" value="Constitution +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20343" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 4}" />
+            <column name="text" value="Constitution +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20344" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 5}" />
+            <column name="text" value="Constitution +5" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20345" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 6}" />
+            <column name="text" value="Constitution +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20346" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 7}" />
+            <column name="text" value="Constitution +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20347" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 8}" />
+            <column name="text" value="Constitution +8" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20348" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 9}" />
+            <column name="text" value="Constitution +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20349" />
+            <column name="abilitys" value="{
+                &quot;constitution&quot;: 10}" />
+            <column name="text" value="Constitution +10" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20351" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 1}" />
+            <column name="text" value="Intelligence +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20352" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 2}" />
+            <column name="text" value="Intelligence +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20353" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 3}" />
+            <column name="text" value="Intelligence +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20354" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 4}" />
+            <column name="text" value="Intelligence +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20355" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 5}" />
+            <column name="text" value="Intelligence +5" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20356" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 6}" />
+            <column name="text" value="Intelligence +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20357" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 7}" />
+            <column name="text" value="Intelligence +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20358" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 8}" />
+            <column name="text" value="Intelligence +8" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20359" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 9}" />
+            <column name="text" value="Intelligence +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20360" />
+            <column name="abilitys" value="{
+                &quot;intelligence&quot;: 10}" />
+            <column name="text" value="Intelligence +10" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20371" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 1}" />
+            <column name="text" value="Wisdom +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20372" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 2}" />
+            <column name="text" value="Wisdom +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20373" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 3}" />
+            <column name="text" value="Wisdom +3" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20374" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 4}" />
+            <column name="text" value="Wisdom +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20375" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 5}" />
+            <column name="text" value="Wisdom +5" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20376" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 6}" />
+            <column name="text" value="Wisdom +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20377" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 7}" />
+            <column name="text" value="Wisdom +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20378" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 8}" />
+            <column name="text" value="Wisdom +8" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20379" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 9}" />
+            <column name="text" value="Wisdom +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20380" />
+            <column name="abilitys" value="{
+                &quot;wisdom&quot;: 10}" />
+            <column name="text" value="Wisdom +10" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="20381" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 1}" />
+            <column name="text" value="Charisma +1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20382" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 2}" />
+            <column name="text" value="Charisma +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20383" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 3}" />
+            <column name="text" value="Charisma +3" />
+        </insert>   
+        <insert tableName="prerequisite">
+            <column name="id" value="20384" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 4}" />
+            <column name="text" value="Charisma +4" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20385" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 5}" />
+            <column name="text" value="Charisma +5" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20386" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 6}" />
+            <column name="text" value="Charisma +6" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20387" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 7}" />
+            <column name="text" value="Charisma +7" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20388" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 8}" />
+            <column name="text" value="Charisma +8" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20389" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 9}" />
+            <column name="text" value="Charisma +9" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="20390" />
+            <column name="abilitys" value="{
+                &quot;charisma&quot;: 10}" />
+            <column name="text" value="Charisma +10" />
+        </insert>
+
+        <!-- id:9000 attacksRoll -->
         <insert tableName="prerequisite">
             <column name="id" value="9001" />
             <column name="attack_roll"
@@ -472,6 +820,74 @@
                 value="{ &quot;bonus&quot; : -4, &quot;target&quot; : [&quot;MELEE&quot;] }" />
             <column name="text" value="melee malus for Javelin" />
         </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="9003" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 1, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="damage_bonus"
+                value="{ &quot;bonus&quot; : 1, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="text" value="+1 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9003" />
+            <column name="item_id" value="1" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="9004" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 2, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="damage_bonus"
+                value="{ &quot;bonus&quot; : 2, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="text" value="+2 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9004" />
+            <column name="item_id" value="1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9005" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 3, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="damage_bonus"
+                value="{ &quot;bonus&quot; : 3, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="text" value="+3 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9005" />
+            <column name="item_id" value="1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9006" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 4, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="damage_bonus"
+                value="{ &quot;bonus&quot; : 4, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="text" value="+4 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9006" />
+            <column name="item_id" value="1" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9007" />
+            <column name="attack_roll"
+                value="{ &quot;bonus&quot; : 5, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="damage_bonus"
+                value="{ &quot;bonus&quot; : 5, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+            <column name="text" value="+5 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9007" />
+            <column name="item_id" value="1" />
+        </insert>
+
 
         <!-- Armor id:52.000 prerequisite -->
         <insert tableName="prerequisite">
@@ -513,6 +929,68 @@
             <column name="id" value="52008" />
             <column name="armor_class"
                 value="{ &quot;armorBonus&quot; : 8 }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="52101" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 1}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52102" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 2}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52103" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 3}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52104" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 4}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52105" />
+            <column name="armor_class"
+                value="
+            {&quot;dodgeBonus&quot;: 5}" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="52201" />
+            <column name="armor_class"
+                value="
+            {&quot;naturalArmor&quot;: 1}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52202" />
+            <column name="armor_class"
+                value="
+            {&quot;naturalArmor&quot;: 2}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52203" />
+            <column name="armor_class"
+                value="
+            {&quot;naturalArmor&quot;: 3}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52204" />
+            <column name="armor_class"
+                value="
+            {&quot;naturalArmor&quot;: 4}" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="52205" />
+            <column name="armor_class"
+                value="
+            {&quot;naturalArmor&quot;: 5}" />
         </insert>
 
         <!-- Shield id:51.000 prerequisite -->
