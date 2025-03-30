@@ -4,13 +4,13 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="307" author="oscar">
-        <createTable tableName="hands">
+        <!-- <createTable tableName="hands">
             <column name="inventory_id" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="items_id" type="int">
                 <constraints nullable="true" />
             </column>
-        </createTable>
+        </createTable> -->
     </changeSet>
 </databaseChangeLog>

@@ -2675,7 +2675,7 @@ Moderate varied; CL 13th; Craft Staff, Craft Magic Arms and Armor, animate plant
             <column name="cost" value="4000" />
             <column name="weight" value="0" />
             <column name="modifiers_id" value="20341" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
 
@@ -2688,7 +2688,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 4
             <column name="cost" value="16000" />
             <column name="weight" value="0" />
             <column name="modifiers_id" value="20343" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
 
@@ -2701,7 +2701,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 1
             <column name="cost" value="36000" />
             <column name="weight" value="0" />
             <column name="modifiers_id" value="20345" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet is a golden disk on a chain. It usually bears the image of a lion or other powerful animal. The amulet grants the wearer an enhancement bonus to Constitution of +2, +4, or +6.
 
@@ -2714,7 +2714,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, bear’s endurance; Price 3
             <column name="name" value="Amulet of Mighty Fists +1" />
             <column name="cost" value="6000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons.
 
@@ -2728,7 +2728,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="modifiers_id" value="9004" />
             <column name="cost" value="24000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons.
 
@@ -2742,7 +2742,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="modifiers_id" value="9005" />
             <column name="cost" value="54000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons.
 
@@ -2756,7 +2756,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="name" value="Amulet of Mighty Fists +4" />
             <column name="cost" value="96000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons.
 
@@ -2770,7 +2770,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="name" value="Amulet of Mighty Fists +5" />
             <column name="cost" value="150000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet grants an enhancement bonus of +1 to +5 on attack and damage rolls with unarmed attacks and natural weapons.
 
@@ -2784,7 +2784,7 @@ Price 6,000 gp (+1), 24,000 gp (+2), 54,000 gp (+3), 96,000 gp (+4), 150,000 gp 
             <column name="modifiers_id" value="52201" />
             <column name="cost" value="2000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet, usually crafted from bone or beast scales, toughens the wearer’s body and flesh, giving him an enhancement bonus to his natural armor bonus of from +1 to +5, depending on the kind of amulet.
 
@@ -2798,7 +2798,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="modifiers_id" value="52202" />
             <column name="cost" value="8000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet, usually crafted from bone or beast scales, toughens the wearer’s body and flesh, giving him an enhancement bonus to his natural armor bonus of from +1 to +5, depending on the kind of amulet.
 
@@ -2812,7 +2812,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="modifiers_id" value="52203" />
             <column name="cost" value="18000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet, usually crafted from bone or beast scales, toughens the wearer’s body and flesh, giving him an enhancement bonus to his natural armor bonus of from +1 to +5, depending on the kind of amulet.
 
@@ -2826,7 +2826,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="modifiers_id" value="52204" />
             <column name="cost" value="32000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet, usually crafted from bone or beast scales, toughens the wearer’s body and flesh, giving him an enhancement bonus to his natural armor bonus of from +1 to +5, depending on the kind of amulet.
 
@@ -2840,7 +2840,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="modifiers_id" value="52205" />
             <column name="cost" value="50000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This amulet, usually crafted from bone or beast scales, toughens the wearer’s body and flesh, giving him an enhancement bonus to his natural armor bonus of from +1 to +5, depending on the kind of amulet.
 
@@ -2853,7 +2853,7 @@ Price 2,000 gp (+1), 8,000 gp (+2), 18,000 gp (+3), 32,000 gp (+4), or 50,000 gp
             <column name="name" value="Amulet of the Planes" />
             <column name="cost" value="120000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This device usually appears to be a black circular amulet, although any character looking closely at it sees a dark, moving swirl of color. The amulet allows its wearer to utilize plane shift. However, this is a difficult item to master. The user must make a DC 15 Intelligence check in order to get the amulet to take her to the plane (and the specific location on that plane) that she wants. If she fails, the amulet transports her and all those traveling with her to a random location on that plane (01-60 on d%) or to a random plane (61-100).
 
@@ -2865,7 +2865,7 @@ Strong conjuration; CL 15th; Craft Wondrous Item, plane shift; Price 120,000 gp.
             <column name="name" value="Amulet of Proof against Detection and Location" />
             <column name="cost" value="35000" />
             <column name="weight" value="0" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="AMULET" />
             <column name="description"
                 value="This silver amulet protects the wearer from scrying and magical location just as a nondetection spell does. If a divination spell is attempted against the wearer, the caster of the divination must succeed on a caster level check (1d20 + caster level) against a DC of 19 (as if the caster had cast nondetection on herself).
 
@@ -3081,7 +3081,7 @@ Moderate evocation; CL 10th; Craft Wondrous Item, resilient sphere; Price 3,000 
             <column name="name" value="Belt, Monk’s" />
             <column name="cost" value="13000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BELT" />
             <column name="description"
                 value="This simple rope belt, when wrapped around a character’s waist, confers great ability in unarmed combat. The wearer’s AC and unarmed damage is treated as a monk of five levels higher. If donned by a character with the Stunning Fist feat, the belt lets her make one additional stunning attack per day. If the character is not a monk, she gains the AC and unarmed damage of a 5th-level monk. This AC bonus functions just like the monk’s AC bonus.
 
@@ -3093,7 +3093,7 @@ Moderate transmutation; CL 10th; Craft Wondrous Item, righteous might or transfo
             <column name="name" value="Belt of Dwarvenkind" />
             <column name="cost" value="14900" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BELT" />
             <column name="description"
                 value="This belt gives the wearer a +4 competence bonus on Charisma checks and Charisma-based skill checks as they relate to dealing with dwarves, a +2 competence bonus on similar checks when dealing with gnomes and halflings, and a -2 competence penalty on similar checks when dealing with anyone else. The wearer can understand, speak, and read Dwarven. If the wearer is not a dwarf, he gains 60-foot darkvision, dwarven stonecunning, a +2 enhancement bonus to Constitution, and a +2 resistance bonus on saves against poison, spells, or spell-like effects.
 
@@ -3106,7 +3106,7 @@ Moderate divination; CL 12th; Craft Wondrous Item, tongues, creator must be a dw
             <column name="modifiers_id" value="20304" />
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BELT" />
             <column name="description"
                 value="This wide belt is made of thick leather and studded with iron. The belt adds to the wearer’s Strength score in the form of an enhancement bonus of +4 or +6.
 
@@ -3119,7 +3119,7 @@ Moderate transmutation; CL 10th; Craft Wondrous Item, bull’s strength; Price 1
             <column name="modifiers_id" value="20306" />
             <column name="cost" value="36000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BELT" />
             <column name="description"
                 value="This wide belt is made of thick leather and studded with iron. The belt adds to the wearer’s Strength score in the form of an enhancement bonus of +4 or +6.
 
@@ -3162,7 +3162,7 @@ Faint transmutation; CL 6th; Craft Wondrous Item, fabricate, creator must have 2
                 <column name="modifiers_id" value="20205"/>
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="These soft boots enable the wearer to move quietly in virtually any surroundings, granting a +5 competence bonus on Move Silently checks.
 
@@ -3174,7 +3174,7 @@ Faint transmutation; CL 5th; Craft Wondrous Item, creator must be an elf; Price 
             <column name="name" value="Boots of Levitation" />
             <column name="cost" value="7500" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="On command, these leather boots allow the wearer to levitate as if she had cast levitate on herself.
 
@@ -3186,7 +3186,7 @@ Faint transmutation; CL 3rd; Craft Wondrous Item, levitate; Price 7,500 gp; Weig
             <column name="name" value="Boots of Speed" />
             <column name="cost" value="12000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="As a free action, the wearer can click her boot heels together, enabling her to act as though affected by a haste spell for up to 10 rounds each day. The duration of the haste effect need not be consecutive rounds.
 
@@ -3198,7 +3198,7 @@ Moderate transmutation; CL 10th; Craft Wondrous Item, haste; Price 12,000 gp; We
             <column name="name" value="Boots of Striding and Springing" />
             <column name="cost" value="5500" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="These boots increase the wearer’s base land speed by 10 feet. In addition to this striding ability (considered an enhancement bonus), these boots allow the wearer to make great leaps. She can jump with a +5 competence bonus on Jump checks.
 
@@ -3210,7 +3210,7 @@ Faint transmutation; CL 3rd; Craft Wondrous Item, longstrider, creator must have
             <column name="name" value="Boots of Teleportation" />
             <column name="cost" value="49000" />
             <column name="weight" value="3" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="Any character wearing this footwear may teleport three times per day, exactly as if he had cast the spell of the same name.
 
@@ -3222,7 +3222,7 @@ Moderate conjuration; CL 9th; Craft Wondrous Item, teleport; Price 49,000 gp; We
             <column name="name" value="Boots of the Winterlands" />
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="This footgear bestows many powers upon the wearer. First, he is able to travel across snow at his normal speed, leaving no tracks. The boots also enable him to travel at normal speed across the most slippery ice (horizontal surfaces only, not vertical or sharply slanted ones) without falling or slipping. Finally, boots of the winterlands warm the wearer, as if he were affected by an endure elements spell.
 
@@ -3234,7 +3234,7 @@ Faint abjuration and transmutation; CL 5th; Craft Wondrous Item, cat’s grace, 
             <column name="name" value="Boots, Winged" />
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BOOTS" />
             <column name="description"
                 value="These boots appear to be ordinary footgear. On command, the boots sprout wings at the heel and let the wearer fly, without having to maintain concentration, as if affected by a fly spell. He can fly three times per day for up to 5 minutes per flight.
 
@@ -3284,7 +3284,7 @@ Strong conjuration; CL 15th; Craft Wondrous Item, refuge; Price 19,000 gp." />
             <column name="name" value="Bracers of Archery, Greater" />
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These wristbands look like normal protective wear. The bracers empower the wearer to use any bow (not including crossbows) as if she were proficient in its use. If she already has proficiency with any type of bow, she gains a +2 competence bonus on attack rolls and a +1 competence bonus on damage rolls whenever using that type of bow. Both bracers must be worn for the magic to be effective.
 
@@ -3296,7 +3296,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, Craft Magic Arms and Armor;
             <column name="name" value="Bracers of Archery, Lesser" />
             <column name="cost" value="5000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These wristbands function as greater bracers of archery, except that they grant a +1 competence bonus on attack rolls and no bonus on damage rolls.
 
@@ -3309,7 +3309,7 @@ Faint transmutation; CL 4th; Craft Wondrous Item, Craft Magic Arms and Armor; Pr
             <column name="modifiers_id" value="52001"/>
             <column name="cost" value="1000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3322,7 +3322,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52002"/>
             <column name="cost" value="4000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3335,7 +3335,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52003"/>
             <column name="cost" value="9000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3348,7 +3348,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52004"/>
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3361,7 +3361,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52005"/>
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3374,7 +3374,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52006"/>
             <column name="cost" value="36000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3387,7 +3387,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52007"/>
             <column name="cost" value="49000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3400,7 +3400,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="modifiers_id" value="52008"/>
             <column name="cost" value="64000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="BRACERS" />
             <column name="description"
                 value="These items appear to be wrist or arm guards. They surround the wearer with an invisible but tangible field of force, granting him an armor bonus of +1 to +8, just as though he were wearing armor. Both bracers must be worn for the magic to be effective.
 
@@ -3688,7 +3688,7 @@ Faint transmutation; CL 5th; Craft Wondrous Item, eagle’s splendor; Price 4,50
             <column name="name" value="Cloak of Arachnida" />
             <column name="cost" value="14000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This black garment, embroidered with a weblike pattern in silk, gives the wearer the ability to climb as if a spider climb spell had been placed upon her. In addition, the cloak grants her immunity to entrapment by web spells or webs of any sort—she can actually move in webs at half her normal speed. Once per day, the wearer of this cloak can cast web. She also gains a +2 luck bonus on all Fortitude saves against poison from spiders.
@@ -3703,7 +3703,7 @@ Faint conjuration and transmutation; CL 6th; Craft Wondrous Item, spider climb, 
             <column name="name" value="Cloak of the Bat" />
             <column name="cost" value="26000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 Fashioned of dark brown or black cloth, this cloak bestows a +5 competence bonus on Hide checks. The wearer is also able to hang upside down from the ceiling, like a bat.
@@ -3720,7 +3720,7 @@ Moderate transmutation; CL 7th; Craft Wondrous Item, fly, polymorph; Price 26,00
             <column name="name" value="Cloak of Charisma +2" />
             <column name="cost" value="4000" />
             <column name="weight" value="2" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This lightweight and fashionable cloak has a highly decorative silver trim. When in a character’s possession, it adds a +2, +4, or +6 enhancement bonus to her Charisma score.
@@ -3735,7 +3735,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, eagle’s splendor; Price 4
             <column name="name" value="Cloak of Charisma +4" />
             <column name="cost" value="16000" />
             <column name="weight" value="2" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This lightweight and fashionable cloak has a highly decorative silver trim. When in a character’s possession, it adds a +2, +4, or +6 enhancement bonus to her Charisma score.
@@ -3750,7 +3750,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, eagle’s splendor; Price 4
             <column name="name" value="Cloak of Charisma +6" />
             <column name="cost" value="36000" />
             <column name="weight" value="2" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This lightweight and fashionable cloak has a highly decorative silver trim. When in a character’s possession, it adds a +2, +4, or +6 enhancement bonus to her Charisma score.
@@ -3765,7 +3765,7 @@ Moderate transmutation; CL 8th; Craft Wondrous Item, eagle’s splendor; Price 4
             <column name="name" value="Cloak of Displacement, Minor" />
             <column name="cost" value="24000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This item appears to be a normal cloak, but when worn by a character its magical properties distort and warp light waves. This displacement works similar to the displacement spell except that it only grants a 20% miss chance on attacks against the wearer. It functions continually.
@@ -3780,7 +3780,7 @@ Faint illusion; CL 3rd; Craft Wondrous Item, displacement; Price 24,000 gp; Weig
             <column name="name" value="Cloak of Displacement, Major" />
             <column name="cost" value="50000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This item appears to be a normal cloak, but on command its magical properties distort and warp light waves. This displacement works just like the displacement spell and lasts for a total of 15 rounds per day, which the wearer can divide up as she sees fit.
@@ -3795,7 +3795,7 @@ Moderate illusion; CL 7th; Craft Wondrous Item, Extend Spell, displacement; Pric
             <column name="name" value="Cloak of Elvenkind" />
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This cloak of neutral gray cloth is indistinguishable from an ordinary cloak of the same color. However, when worn with the hood drawn up around the head, it gives the wearer a +5 competence bonus on Hide checks.
@@ -3810,7 +3810,7 @@ Faint illusion; CL 3rd; Craft Wondrous Item, invisibility, creator must be an el
             <column name="name" value="Cloak of Etherealness" />
             <column name="cost" value="55000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This silvery-gray cloak seems to absorb light rather than be illuminated by it. On command, the cloak makes its wearer ethereal (as the ethereal jaunt spell). The effect is dismissible. The cloak works for a total of up to 10 minutes per day. This duration need not be continuous.
@@ -3825,7 +3825,7 @@ Strong transmutation; CL 15th; Craft Wondrous Item, ethereal jaunt; Price 55,000
             <column name="name" value="Cloak of the Manta Ray" />
             <column name="cost" value="7200" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 This cloak appears to be made of leather until the wearer enters salt water. At that time the cloak of the manta ray adheres to the individual, and he appears nearly identical to a manta ray (as the polymorph spell, except that it allows only manta ray form). He gains a +3 natural armor bonus, the ability to breathe underwater, and a swim speed of 60 feet, like a real manta ray.
@@ -3842,7 +3842,7 @@ Moderate transmutation; CL 9th; Craft Wondrous Item, polymorph, water breathing;
             <column name="name" value="Cloak of Resistance +1" />
             <column name="cost" value="1000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3857,7 +3857,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="name" value="Cloak of Resistance +2" />
             <column name="cost" value="4000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3872,7 +3872,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="name" value="Cloak of Resistance +3" />
             <column name="cost" value="9000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3887,7 +3887,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="name" value="Cloak of Resistance +4" />
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3902,7 +3902,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="name" value="Cloak of Resistance +5" />
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
-            <column name="wondrous_type" value="MAGIC_ITEM" />
+            <column name="wondrous_type" value="CLOAK" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).

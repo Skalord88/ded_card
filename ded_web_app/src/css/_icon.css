@@ -94,6 +94,9 @@
 .rpgui-icon.cloth {
     background-image: url('../img/icons/cloth.png');
 }
+.rpgui-icon.belt {
+    background-image: url('../img/icons/belt.png');
+}
 
 .rpgui-icon.legs {
     background-image: url('../img/icons/legs.png');

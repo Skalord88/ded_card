@@ -21,7 +21,8 @@ import {
 } from "../components/Items/Functions/function";
 import {
   calculateCost,
-  modifyInventory
+  modifyInventory,
+  specificFilter
 } from "../components/Items/Inventory/function";
 import {
   reMaterialArmType,
@@ -129,8 +130,10 @@ export const Items = () => {
           moddedInventory.head,
           moddedInventory.neck,
           moddedInventory.arms,
-          moddedInventory.hands,
+          moddedInventory.ringOne,
+          moddedInventory.ringTwo,
           moddedInventory.cloth,
+          moddedInventory.belt,
           moddedInventory.legs
         ];
 
@@ -288,6 +291,14 @@ export const Items = () => {
                   left={70}
                 />
               </div>
+              <div onClick={() => scrollToItem(1)}>
+                <InventoryIcon
+                  classe={"belt"}
+                  text={"belt"}
+                  top={65}
+                  left={70}
+                />
+              </div>
               <div onClick={() => scrollToItem(4)}>
                 <InventoryIcon
                   classe={"legs"}
@@ -348,7 +359,7 @@ export const Items = () => {
                           onChange={(cost) => handleActualTresure(index, cost)}
                         />
                       ))}
-                    {index === 11 && (
+                    {/* {index === 11 && (
                       <div>
                         <ItemInventoryComponent
                           n={index}
@@ -367,7 +378,7 @@ export const Items = () => {
                           onChange={(cost) => handleActualTresure(index, cost)}
                         />
                       </div>
-                    )}
+                    )} */}
                   </div>
                 ) : (
                   <div
@@ -450,7 +461,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const [failureItem, setFailureItem] = useState<number | null>();
 
   const [filtroEnchantment, setFiltroEnchantment] = useState<itemInDrop[]>();
-  const specificFiltro: itemInDrop[] = n === 7 ? filtro.wonderous : [];
+  const specificFiltro: itemInDrop[] = specificFilter(n, filtro);
 
   useEffect(() => {
     setTheItem(item);
@@ -536,6 +547,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         setEnchantmentBonusItem(
           optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
         );
+      }
+      if(optionItem.itemType === "WONDROUS_ITEM"){
+        setTheItem(optionItem);
       }
       setCostItem(optionItem.cost);
       setWeightItem(optionItem.weight);
@@ -727,23 +741,25 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     <div>
       {theItem && (
         <h2>
-          {"armorName" in theItem ? "ARMOR" : null}
-          {"shieldName" in theItem ? "SHIELD" : null}
-          {"weaponName" in theItem ? "WEAPON " + numerini[n - 2] : null}
-          {n === 8 ? "HEAD" : null}
+          {"armorName" in theItem ? "armor" : null}
+          {"shieldName" in theItem ? "shield" : null}
+          {"weaponName" in theItem ? "weapon " + numerini[n - 2] : null}
+          {n === 7 ? "backpack" : null}
+          {n === 8 ? "head" : null}
+          {n === 9 ? "neck" : null}
+          {n === 10 ? "arms" : null}
+          {n === 11 ? "ring" : null}
+          {n === 12 ? "ring" : null}
+          {n === 13 ? "cloth" : null}
+          {n === 14 ? "belt" : null}
+          {n === 15 ? "legs" : null}
         </h2>
       )}
       <div>
         <div>
           <DropdownComponent
             options={
-              n === 0
-                ? filtro.armors
-                : n === 1
-                ? filtro.shields
-                : [2, 3, 4, 5, 6].includes(n)
-                ? filtro.weapons
-                : specificFiltro
+              specificFiltro
             }
             onAction={handleNewItems}
           />
@@ -752,10 +768,11 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             {theItem &&
               ((theItem as Armor).armorName ||
                 (theItem as Shield).shieldName ||
-                (theItem as Weapon).weaponName)}
+                (theItem as Weapon).weaponName ||
+                (theItem as WonderousItem).name)}
           </p>
         </div>
-        <div>
+        {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" && <div>
           <p>
             <span style={{ color: "yellow" }}>enchantment: </span>
             <span>
@@ -774,9 +791,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             </span>
             {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
           </p>
-        </div>
-        <div>
-          <p>{"Powers"}</p>
+        </div>}
+        {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" && <div>
+          <p>Powers</p>
           {enchantmentItem?.map((e, index) => (
             <p key={index}>
               <span
@@ -788,7 +805,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
               <span> {e.text}</span>
             </p>
           ))}
-        </div>
+        </div>}
         {filtroEnchantment && (
           <div>
             <DropdownComponent
@@ -811,7 +828,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
               {materialItem}
             </p>
           ) : null}
-          {theItem &&
+          {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" &&
           (theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
             <DropdownComponent
               options={addToDrop(

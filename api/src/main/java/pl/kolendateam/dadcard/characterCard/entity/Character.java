@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.characterCard.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -64,11 +65,11 @@ public class Character implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   Abilitys abilitys;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "sub_race_id", referencedColumnName = "id")
   SubRace race;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(
     name = "character_archetypes",
     joinColumns = @JoinColumn(name = "character_card_id"),
@@ -79,33 +80,36 @@ public class Character implements Serializable {
   @OneToMany(
     mappedBy = "character",
     cascade = CascadeType.ALL,
-    orphanRemoval = true
+    orphanRemoval = true,
+    fetch = FetchType.LAZY
   )
   List<ClassPc> classPcArray = new ArrayList<>();
 
   @OneToMany(
     mappedBy = "character",
     cascade = CascadeType.ALL,
-    orphanRemoval = true
+    orphanRemoval = true,
+    fetch = FetchType.LAZY
   )
   Set<SkillCharacter> skillsCharacter = new HashSet<>();
 
   @OneToMany(
     mappedBy = "character",
     cascade = CascadeType.ALL,
-    orphanRemoval = true
+    orphanRemoval = true,
+    fetch = FetchType.LAZY
   )
   List<FeatsPc> featsList = new ArrayList<>();
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
   Inventory inventory;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "attacks_id", referencedColumnName = "id")
   Attacks attacks;
 
-  @OneToMany(cascade = CascadeType.MERGE)
+  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
   @JoinColumn(name = "character_id", referencedColumnName = "id")
   List<Book> books = new ArrayList<>();
 

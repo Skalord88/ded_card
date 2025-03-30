@@ -204,7 +204,10 @@ export type EnchantedItem = {
   description?: string
 }
 
-export interface WonderousItem extends Item { }
+export interface WonderousItem extends Item {
+  wondrousType: string;
+  modifiers: Prerequisite | null;
+ }
 
 export type Inventory = {
   armor: Armor; // 0
@@ -218,9 +221,13 @@ export type Inventory = {
   head: WonderousItem; // 8
   neck: WonderousItem; // 9
   arms: WonderousItem; // 10
-  hands: WonderousItem[]; // 11
-  cloth: WonderousItem; // 12
-  legs: WonderousItem; // 13
+  ringOne: WonderousItem; // 11
+  ringTwo: WonderousItem; // 12
+  cloth: WonderousItem; // 13
+  belt: WonderousItem; // 14
+  legs: WonderousItem; // 15
+
+  // hands: WonderousItem[]; // 11
 }
 
 export type ItemToSend = {

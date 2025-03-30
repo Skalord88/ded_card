@@ -82,17 +82,29 @@ public class Inventory {
   @JoinColumn(name = "arms_id", referencedColumnName = "id")
   WondrousItems arms;
 
-  @ManyToMany(cascade = CascadeType.MERGE)
-  @JoinTable(
-    name = "hands",
-    joinColumns = @JoinColumn(name = "inventory_id"),
-    inverseJoinColumns = @JoinColumn(name = "items_id")
-  )
-  List<WondrousItems> hands;
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "ring_one_id", referencedColumnName = "id")
+  WondrousItems ringOne;
+
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "ring_two_id", referencedColumnName = "id")
+  WondrousItems ringTwo;
+
+  // @ManyToMany(cascade = CascadeType.MERGE)
+  // @JoinTable(
+  //   name = "hands",
+  //   joinColumns = @JoinColumn(name = "inventory_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "items_id")
+  // )
+  // List<WondrousItems> hands;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "cloth_id", referencedColumnName = "id")
   WondrousItems cloth;
+
+  @ManyToOne(cascade = CascadeType.MERGE)
+  @JoinColumn(name = "belt_id", referencedColumnName = "id")
+  WondrousItems belt;
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "legs_id", referencedColumnName = "id")
@@ -113,10 +125,13 @@ public class Inventory {
     this.head = item;
     this.neck = item;
     this.arms = item;
-    this.hands = new ArrayList<WondrousItems>();
-    hands.add(item);
-    hands.add(item);
+    this.ringOne = item;
+    this.ringTwo = item;
+    // this.hands = new ArrayList<WondrousItems>();
+    // hands.add(item);
+    // hands.add(item);
     this.cloth = item;
+    this.belt = item;
     this.legs = item;
   }
 

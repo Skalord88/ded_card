@@ -39,7 +39,16 @@
             <column name="arms_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="ring_one_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="ring_two_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="cloth_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="belt_id" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="legs_id" type="int">

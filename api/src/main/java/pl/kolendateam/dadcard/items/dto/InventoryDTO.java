@@ -28,8 +28,11 @@ public class InventoryDTO implements Serializable {
   public WondrousItemsDTO head;
   public WondrousItemsDTO neck;
   public WondrousItemsDTO arms;
-  public ArrayList<WondrousItemsDTO> hands;
+  public WondrousItemsDTO ringOne;
+  public WondrousItemsDTO ringTwo;
+  // public ArrayList<WondrousItemsDTO> hands;
   public WondrousItemsDTO cloth;
+  public WondrousItemsDTO belt;
   public WondrousItemsDTO legs;
 
   public InventoryDTO(Inventory inventory) {
@@ -102,14 +105,29 @@ public class InventoryDTO implements Serializable {
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getArms())
         : null;
 
-    this.hands =
-      inventory.getHands() != null
-        ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands())
-        : new ArrayList<WondrousItemsDTO>();
+    this.ringOne =
+      inventory.getRingOne() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getRingOne())
+        : null;
+
+    this.ringTwo =
+      inventory.getRingTwo() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getRingTwo())
+        : null;
+
+    // this.hands =
+    //   inventory.getHands() != null
+    //     ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands())
+    //     : new ArrayList<WondrousItemsDTO>();
 
     this.cloth =
       inventory.getCloth() != null
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth())
+        : null;
+
+    this.belt =
+      inventory.getBelt() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getBelt())
         : null;
 
     this.legs =

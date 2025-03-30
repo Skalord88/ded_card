@@ -1,8 +1,10 @@
+import { FiltroItems } from "../../../pages/Items";
 import {
   costOfEnchant,
   costOfMaterial
 } from "../../Enchantment/Functions/EnchantmentFunctions";
-import { Inventory } from "../../interfaces";
+import { itemInDrop } from "../../functions";
+import { Inventory, WonderousItem } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
 import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
 import {
@@ -91,18 +93,16 @@ export const modifyInventory = (
           weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
         }
       : noneWeapon,
-      backpack: inventory.backpack != null ? inventory.backpack : [noneItem],
-    head: inventory.head != null
-      ? inventory.head : noneItem,
-      neck: inventory.neck != null
-      ? inventory.neck : noneItem,
-      arms: inventory.arms != null
-      ? inventory.arms : noneItem,
-      hands: inventory.hands != null ? inventory.hands : [noneItem],
-      cloth: inventory.cloth != null
-      ? inventory.cloth : noneItem,
-      legs: inventory.legs != null
-      ? inventory.legs : noneItem
+    backpack: inventory.backpack != null ? inventory.backpack : [noneItem],
+    head: inventory.head != null ? inventory.head : noneItem,
+    neck: inventory.neck != null ? inventory.neck : noneItem,
+    arms: inventory.arms != null ? inventory.arms : noneItem,
+    ringOne: inventory.ringOne != null ? inventory.ringOne : noneItem,
+    ringTwo: inventory.ringTwo != null ? inventory.ringTwo : noneItem,
+    // hands: inventory.hands != null ? inventory.hands : [noneItem],
+    cloth: inventory.cloth != null ? inventory.cloth : noneItem,
+    belt: inventory.belt != null ? inventory.belt : noneItem,
+    legs: inventory.legs != null ? inventory.legs : noneItem
   };
 };
 
@@ -291,4 +291,36 @@ export const calculateCost = (
   }
 
   return cost;
+};
+
+export const specificFilter = (
+  itemIndex: number,
+  filter: FiltroItems
+): itemInDrop[] => {
+  if (!filter) return [];
+
+  const indexMap: Record<number, string> = {
+    8: "HELMET",
+    9: "AMULET",
+    10: "BRACERS",
+    11: "RING",
+    12: "RING",
+    13: "CLOTH",
+    14: "BELT",
+    15: "BOOTS"
+  };
+
+  if (itemIndex === 0) return filter.armors;
+  if (itemIndex === 1) return filter.shields;
+  if ([2, 3, 4, 5, 6].includes(itemIndex)) return filter.weapons;
+  if (itemIndex === 7) return filter.wonderous;
+
+  const itemType = indexMap[itemIndex];
+  if (itemType && filter.wonderous) {
+    return filter.wonderous.filter(
+      (item) => (item.item as WonderousItem).wondrousType === itemType
+    );
+  }
+
+  return [];
 };

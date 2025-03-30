@@ -162,6 +162,13 @@ public enum ItemTypeEnum {
   ),
   WONDROUS_ITEM("Wondrous Item description"),
   MAGIC_ITEM("Magic Item description"),
+  HELMET("Helmet description"),
+  AMULET("Amulet description"),
+  BOOTS("Boots description"),
+  BELT("Belt description"),
+  CLOTH("Cloth description"),
+  BRACERS("Bracers description"),
+  CLOAK("Cloak description"),
   COMMON_ITEM("Common Item description"),
   ITEM("Generic Item description");
 
