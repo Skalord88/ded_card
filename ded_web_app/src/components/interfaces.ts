@@ -158,7 +158,7 @@ export interface Armor extends Item {
   maxDex: number;
   penality: number;
   failure: number;
-  material: string | null
+  material?: string;
   // public String description;
   enchantmentBonus?: number;
   enchantment?: Enchantment[]
@@ -173,7 +173,7 @@ export interface Shield extends Item {
   // maxDex: number;
   penality: number;
   failure: number;
-  material: string | null
+  material?: string;
   enchantmentBonus?: number;
   enchantment?: Enchantment[]
 }
@@ -187,8 +187,8 @@ export interface Weapon extends Item {
   type: string[];
   size: string;
   modifiers: Prerequisite | null;
-  specialAttacks: string | null;
-  material: string | null
+  specialAttacks?: string;
+  material?: string;
   enchantmentBonus?: number;
   enchantment?: Enchantment[]
 }

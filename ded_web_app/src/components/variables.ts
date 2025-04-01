@@ -21,10 +21,7 @@ export const noneArmor: Armor = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    material: null,
-    enchantment: [],
-    itemId: 0,
-    enchantmentBonus: 0
+    itemId: 0
 }
 
 export const noneShield: Shield = {
@@ -37,13 +34,9 @@ export const noneShield: Shield = {
     shieldName: "NO_SHIELD",
     modifiers: null,
     armorType: "SHIELD",
-    // maxDex: 100,
     penality: 0,
     failure: 0,
-    material: null,
-    enchantment: [],
-    itemId: 0,
-    enchantmentBonus: 0
+    itemId: 0
 }
 
 export const noneWeapon: Weapon = {
@@ -60,11 +53,7 @@ export const noneWeapon: Weapon = {
     damage: "D3",
     critical: "X2",
     range: 0,
-    type: ['BLUDGEONING', 'SIMPLE', 'UNARMED'],
-    specialAttacks: null,
-    material: null,
-    enchantment: [],
-    enchantmentBonus: 0
+    type: ['BLUDGEONING', 'SIMPLE', 'UNARMED']
 }
 
 export const noneItem: WonderousItem = {
@@ -72,8 +61,10 @@ export const noneItem: WonderousItem = {
     name: 'No item',
     cost: 0,
     weight: 0,
-    description: '',
-    itemType: 'WONDROUS_ITEM'
+    description: 'buy something',
+    itemType: 'WONDROUS_ITEM',
+    wondrousType: '',
+    modifiers: null
 }
 
 export const emptyEnchanted: EnchantedItem = {
@@ -100,9 +91,11 @@ export const emptyInventory: Inventory = {
     head: noneItem,
     neck: noneItem,
     arms: noneItem,
-    hands: [],
+    ringOne: noneItem,
+    ringTwo: noneItem,
     cloth: noneItem,
-    legs: noneItem
+    belt: noneItem,
+    legs: noneItem,
 }
 
 export const emptyAttacks: Attacks = {

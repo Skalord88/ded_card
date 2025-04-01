@@ -21,6 +21,7 @@ import {
 } from "../components/Items/Functions/function";
 import {
   calculateCost,
+  droppItemsToNonItem,
   modifyInventory,
   specificFilter
 } from "../components/Items/Inventory/function";
@@ -38,6 +39,7 @@ import {
   urlItems,
   urlItemsBuy
 } from "../components/url";
+import { CharSummary } from "../components/Summary/CharSummary";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -58,19 +60,11 @@ export const Items = () => {
   >([]);
   const [tresure, setTresure] = useState<number>(0);
   const [totalCost, setTotalCost] = useState(0);
-  const [itemCosts, setItemCosts] = useState<{ [key: number]: number }>({});
+  const [itemsCosts, setItemsCosts] = useState<number[]>(Array(inventory.length).fill(0));
 
-  const handleActualTresure = (index: number, cost: number) => {
-    setItemCosts((prevCosts) => {
-      const newCosts = { ...prevCosts, [index]: cost };
-      const newTotal = Object.values(newCosts).reduce(
-        (acc, curr) => acc + curr,
-        0
-      );
-      setTotalCost(tresure - newTotal);
-      return newCosts;
-    });
-  };
+
+  
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -145,6 +139,20 @@ export const Items = () => {
     fetchData();
   }, []);
 
+  const handleActualTreasure = (
+    index: number, 
+    newCost: number) => {
+
+      itemsCosts.forEach((i, indexI) => {
+        if(indexI === index) {
+          setItemsCosts((prevCosts) => {
+            return prevCosts.map((cost, indexo) => (indexo === indexI ? newCost : cost));
+          });
+        }
+      });
+  };
+  console.log(itemsCosts);
+
   const handleChangeItem = (
     n: number,
     i: Item | Armor | Shield | Weapon | WonderousItem
@@ -199,6 +207,30 @@ export const Items = () => {
   } else {
     return (
       <div>
+        {char && inventory && (
+          <CharSummary
+            character={char}
+            inventory={{
+              armor: inventory[0] as Armor,
+              shield: inventory[1] as Shield,
+              weaponOne: inventory[2] as Weapon,
+              weaponTwo: inventory[3] as Weapon,
+              weaponThree: inventory[4] as Weapon,
+              weaponFour: inventory[5] as Weapon,
+              weaponFive: inventory[6] as Weapon,
+              backpack: inventory[7] as WonderousItem[],
+              head: inventory[8] as WonderousItem,
+              neck: inventory[9] as WonderousItem,
+              arms: inventory[10] as WonderousItem,
+              ringOne: inventory[11] as WonderousItem,
+              ringTwo: inventory[12] as WonderousItem,
+              cloth: inventory[13] as WonderousItem,
+              belt: inventory[14] as WonderousItem,
+              legs: inventory[15] as WonderousItem
+            }}
+          />
+        )}
+        
         <p></p>
         <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
         <div>
@@ -356,29 +388,9 @@ export const Items = () => {
                           sizeId={0}
                           filtro={filtroList}
                           onAction={handleChangeItem}
-                          onChange={(cost) => handleActualTresure(index, cost)}
+                          onChange={handleActualTreasure}
                         />
                       ))}
-                    {/* {index === 11 && (
-                      <div>
-                        <ItemInventoryComponent
-                          n={index}
-                          item={i[0]}
-                          sizeId={0}
-                          filtro={filtroList}
-                          onAction={handleChangeItem}
-                          onChange={(cost) => handleActualTresure(index, cost)}
-                        />
-                        <ItemInventoryComponent
-                          n={index}
-                          item={i[1]}
-                          sizeId={0}
-                          filtro={filtroList}
-                          onAction={handleChangeItem}
-                          onChange={(cost) => handleActualTresure(index, cost)}
-                        />
-                      </div>
-                    )} */}
                   </div>
                 ) : (
                   <div
@@ -392,7 +404,7 @@ export const Items = () => {
                       sizeId={0}
                       filtro={filtroList}
                       onAction={handleChangeItem}
-                      onChange={(cost) => handleActualTresure(index, cost)}
+                      onChange={handleActualTreasure}
                     />
                   </div>
                 )
@@ -404,21 +416,6 @@ export const Items = () => {
   }
 };
 
-{
-  /* {char && filtroList && choosen && (
-              <div>
-                <ItemInventoryComponent
-                  n={choosen.n}
-                  item={choosen.item}
-                  sizeId={char?.race.size.id}
-                  filtro={filtroList}
-                  onAction={handleChangeItem}
-                  onChange={(cost) => handleActualTresure(choosen.n, cost)}
-                />
-              </div>
-            )} */
-}
-
 export type ItemInventoryProps = {
   n: number;
   item: Item | Armor | Shield | Weapon | WonderousItem;
@@ -428,7 +425,10 @@ export type ItemInventoryProps = {
     n: number,
     item: Item | Armor | Shield | Weapon | WonderousItem
   ) => void;
-  onChange: (cost: number) => void;
+  onChange: (
+    n: number, 
+    cost: number
+  ) => void;
 };
 
 export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
@@ -444,8 +444,8 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const enchantments = [0, -1, 1, 2, 3, 4, 5];
 
   const [theItem, setTheItem] = useState<
-    Item | Armor | Shield | Weapon | WonderousItem
-  >();
+    Item | Armor | Shield | Weapon | WonderousItem | null
+  >(null);
   const [materialItem, setMaterialItem] = useState<string | null>();
   const [armorTypeItem, setArmorTypeItem] = useState<string | null>();
   const [costItem, setCostItem] = useState<number | null>();
@@ -548,7 +548,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
         );
       }
-      if(optionItem.itemType === "WONDROUS_ITEM"){
+      if (optionItem.itemType === "WONDROUS_ITEM") {
         setTheItem(optionItem);
       }
       setCostItem(optionItem.cost);
@@ -688,12 +688,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   ]);
 
   useEffect(() => {
-    if (costItem && costItem !== undefined) {
-      onChange(costItem);
-    }
-  }, [costItem]);
-
-  useEffect(() => {
     if (theItem) {
       if (
         "enchantmentBonus" in theItem &&
@@ -704,7 +698,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           ...theItem,
           itemId: theItem.id ?? 0, // Ensure itemId is always a number
           enchantmentBonus: enchantmentBonusItem ? enchantmentBonusItem : 0,
-          material: materialItem ? materialItem : null
+          material: materialItem ? materialItem : undefined
         };
         setNewItem({ ...itemToSend });
       }
@@ -735,11 +729,35 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     if (newItem) onAction(n, newItem);
   };
 
+  const droppItem = () => {
+    const emptyItemmo = droppItemsToNonItem(n);
+    setTheItem(emptyItemmo.item);
+    setEnchantmentBonusItem(undefined);
+    setEnchantmentItem(null);
+    setArmorTypeItem(emptyItemmo.armorType);
+    setCostItem(0);
+    setWeightItem(0);
+    setPenalityItem(null);
+    setMaxDexItem(null);
+    setMaterialItem(null);
+    setFailureItem(null);
+  };
+
+  useEffect(() => {
+    if (costItem) {
+      onChange(
+        n, 
+        costItem);
+    }
+  }, [costItem]);
+
   const numerini: string[] = ["I", "II", "III", "IV", "V"];
 
-  return (
-    <div>
-      {theItem && (
+  if (!theItem) {
+    return <div>...loading item...</div>;
+  } else {
+    return (
+      <div>
         <h2>
           {"armorName" in theItem ? "armor" : null}
           {"shieldName" in theItem ? "shield" : null}
@@ -754,149 +772,151 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           {n === 14 ? "belt" : null}
           {n === 15 ? "legs" : null}
         </h2>
-      )}
-      <div>
         <div>
-          <DropdownComponent
-            options={
-              specificFiltro
-            }
-            onAction={handleNewItems}
-          />
-          <p>
-            <span style={{ color: "yellow" }}>name: </span>
-            {theItem &&
-              ((theItem as Armor).armorName ||
+          <div>
+            <DropdownComponent
+              options={specificFiltro}
+              onAction={handleNewItems}
+            />
+            <p onClick={droppItem}>
+              <span style={{ color: "yellow" }}>name: </span>
+              {(theItem as Armor).armorName ||
                 (theItem as Shield).shieldName ||
                 (theItem as Weapon).weaponName ||
-                (theItem as WonderousItem).name)}
-          </p>
-        </div>
-        {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" && <div>
-          <p>
-            <span style={{ color: "yellow" }}>enchantment: </span>
-            <span>
-              <button
-                className="rpgui-button-grey-mini"
-                onClick={handlePlusEnchantmentBonus}
-              >
-                +
-              </button>
-              <button
-                className="rpgui-button-grey-mini"
-                onClick={handleMinEnchantmentBonus}
-              >
-                -
-              </button>
-            </span>
-            {enchantmentBonusItem === -1 ? " pft" : " " + enchantmentBonusItem}
-          </p>
-        </div>}
-        {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" && <div>
-          <p>Powers</p>
-          {enchantmentItem?.map((e, index) => (
-            <p key={index}>
-              <span
-                style={{ color: "yellow" }}
-                onClick={() => handleDelEnchantment(index)}
-              >
-                {FormattingText(e.ability)}:
-              </span>
-              <span> {e.text}</span>
+                (theItem as WonderousItem).name}
             </p>
-          ))}
-        </div>}
-        {filtroEnchantment && (
-          <div>
-            <DropdownComponent
-              options={filtroEnchantment}
-              onAction={handleAddEnchantment}
-            />
           </div>
-        )}
-
-        <div>
-          <p>
-            <span style={{ color: "yellow" }}>description: </span>
-            {theItem && theItem.description}
-          </p>
-        </div>
-        <div>
-          {materialItem ? (
-            <p>
-              <span style={{ color: "yellow" }}>{"material: "}</span>
-              {materialItem}
-            </p>
+          {"enchantment" in theItem ? (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>enchantment: </span>
+                <span>
+                  <button
+                    className="rpgui-button-grey-mini"
+                    onClick={handlePlusEnchantmentBonus}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="rpgui-button-grey-mini"
+                    onClick={handleMinEnchantmentBonus}
+                  >
+                    -
+                  </button>
+                </span>
+                {enchantmentBonusItem === -1
+                  ? " pft"
+                  : " " + enchantmentBonusItem}
+              </p>
+            </div>
           ) : null}
-          {theItem && (theItem as WonderousItem).itemType !== "WONDROUS_ITEM" &&
-          (theItem as Armor | Shield | Weapon).material !== "LEATHER" ? (
-            <DropdownComponent
-              options={addToDrop(
-                metal.includes(
-                  (theItem && (theItem as Armor | Shield | Weapon))
-                    .material as string
-                )
-                  ? metal
-                  : wood,
-                "filter"
-              )}
-              onAction={(option) => handleNewItems(undefined, option)}
-            />
-          ) : null}
-        </div>
+          {"enchantment" in theItem && (
+            <div>
+              <p>Powers</p>
+              {enchantmentItem?.map((e, index) => (
+                <p key={index}>
+                  <span
+                    style={{ color: "yellow" }}
+                    onClick={() => handleDelEnchantment(index)}
+                  >
+                    {FormattingText(e.ability)}:
+                  </span>
+                  <span> {e.text}</span>
+                </p>
+              ))}
+            </div>
+          )}
+          {filtroEnchantment && "enchantment" in theItem && (
+            <div>
+              <DropdownComponent
+                options={filtroEnchantment}
+                onAction={handleAddEnchantment}
+              />
+            </div>
+          )}
 
-        {armorTypeItem ? (
           <div>
             <p>
-              <span style={{ color: "yellow" }}>armor type: </span>
-              {armorTypeItem}
+              <span style={{ color: "yellow" }}>description: </span>
+              {theItem.description}
             </p>
           </div>
-        ) : null}
-        <div>
-          <p>
-            <span style={{ color: "yellow" }}>cost: </span>
-            {costItem}
-          </p>
-        </div>
-        {weightItem ? (
+
+          {"material" in theItem && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>{"material: "}</span>
+                {materialItem}
+              </p>
+
+              <DropdownComponent
+                options={addToDrop(
+                  metal.includes(
+                    (theItem && (theItem as Armor | Shield | Weapon))
+                      .material as string
+                  )
+                    ? metal
+                    : wood,
+                  "filter"
+                )}
+                onAction={(option) => handleNewItems(undefined, option)}
+              />
+            </div>
+          )}
+
+          {"armorType" in theItem && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>armor type: </span>
+                {armorTypeItem}
+              </p>
+            </div>
+          )}
           <div>
             <p>
-              <span style={{ color: "yellow" }}>weight: </span>
-              {weightItem}
+              <span style={{ color: "yellow" }}>cost: </span>
+              {costItem}
             </p>
           </div>
-        ) : null}
-        {penalityItem || penalityItem === 0 ? (
+          {"weight" in theItem && weightItem === 0 && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>weight: </span>
+                {weightItem}
+              </p>
+            </div>
+          )}
+          {"penality" in theItem && penalityItem === 0 && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>penality: </span>
+                {penalityItem}
+              </p>
+            </div>
+          )}
+          {"maxDex" in theItem && maxDexItem === 0 && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>max dex: </span>
+                {maxDexItem}
+              </p>
+            </div>
+          )}
+          {"failure" in theItem && failureItem === 0 && (
+            <div>
+              <p>
+                <span style={{ color: "yellow" }}>failure: </span>
+                {failureItem}%
+              </p>
+            </div>
+          )}
           <div>
-            <p>
-              <span style={{ color: "yellow" }}>penality: </span>
-              {penalityItem}
-            </p>
+            <button onClick={confirmItem}>
+              <p>confirm</p>
+            </button>
           </div>
-        ) : null}
-        {maxDexItem || maxDexItem === 0 ? (
-          <div>
-            <p>
-              <span style={{ color: "yellow" }}>max dex: </span>
-              {maxDexItem}
-            </p>
-          </div>
-        ) : null}
-        {failureItem || failureItem === 0 ? (
-          <div>
-            <p>
-              <span style={{ color: "yellow" }}>failure: </span>
-              {failureItem}%
-            </p>
-          </div>
-        ) : null}
-        <div>
-          <button onClick={confirmItem}>
-            <p>confirm</p>
-          </button>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 };

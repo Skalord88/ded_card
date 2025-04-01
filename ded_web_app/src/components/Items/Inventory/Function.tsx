@@ -4,7 +4,13 @@ import {
   costOfMaterial
 } from "../../Enchantment/Functions/EnchantmentFunctions";
 import { itemInDrop } from "../../functions";
-import { Inventory, WonderousItem } from "../../interfaces";
+import {
+  Armor,
+  Inventory,
+  Shield,
+  Weapon,
+  WonderousItem
+} from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
 import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
 import {
@@ -27,24 +33,24 @@ export const modifyInventory = (
       ? {
           ...inventory.armor,
           armorType: reMaterialArmType(
-            inventory.armor.material,
+            inventory.armor.material ?? null,
             inventory.armor.armorType
           ),
           weight: reMaterialWeight(
-            inventory.armor.material,
+            inventory.armor.material ?? null,
             reWeightItem(charSizeId, inventory.armor.weight)
           ),
           penality: reMaterialPerfectPenality(
-            inventory.armor.material,
+            inventory.armor.material ?? null,
             inventory.armor.penality,
             inventory.armor.enchantment ? true : false
           ),
           maxDex: reMaterialMaxDex(
-            inventory.armor.material,
+            inventory.armor.material ?? null,
             inventory.armor.maxDex
           ),
           failure: reMaterialFailure(
-            inventory.armor.material,
+            inventory.armor.material ?? null,
             inventory.armor.failure
           )
         }
@@ -53,11 +59,11 @@ export const modifyInventory = (
       ? {
           ...inventory.shield,
           weight: reMaterialWeight(
-            inventory.armor.material,
+            inventory.shield.material ?? null,
             reWeightItem(charSizeId, inventory.shield.weight)
           ),
           penality: reMaterialPerfectPenality(
-            inventory.shield.material,
+            inventory.shield.material ?? null,
             inventory.shield.penality,
             inventory.shield.enchantment ? true : false
           )
@@ -323,4 +329,23 @@ export const specificFilter = (
   }
 
   return [];
+};
+
+export const droppItemsToNonItem = (
+  index: number
+): {
+  item: Armor | Shield | Weapon | WonderousItem | null;
+  armorType: string | null;
+} => {
+  return {
+    item:
+      index === 0
+        ? noneArmor
+        : index === 1
+        ? noneShield
+        : [2, 3, 4, 5, 6].includes(index)
+        ? noneWeapon
+        : noneItem,
+    armorType: index === 0 ? "NO_ARMOR" : index === 1 ? "NO_SHIELD" : null
+  };
 };
