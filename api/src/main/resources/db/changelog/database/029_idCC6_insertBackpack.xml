@@ -4,14 +4,14 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="311" author="oscar">
-        <insert tableName="backpack">
+        <!-- <insert tableName="backpack">
             <column name="inventory_id" value="100" />
             <column name="items_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="100" />
             <column name="items_id" value="4" />
-        </insert>
+        </insert> -->
 
         <insert tableName="backpack">
             <column name="inventory_id" value="101" />

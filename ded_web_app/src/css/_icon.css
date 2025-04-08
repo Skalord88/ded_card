@@ -86,6 +86,9 @@
 .rpgui-icon.hands1 {
     background-image: url('../img/icons/hands1.png');
 }
+.rpgui-icon.cloak {
+    background-image: url('../img/icons/cloak.png');
+}
 
 .rpgui-icon.arms {
     background-image: url('../img/icons/arms.png');

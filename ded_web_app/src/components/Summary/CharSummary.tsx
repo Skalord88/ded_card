@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { AbilitysSummaryComponent } from "../AbilitysComponent";
 import { CharacterPc, Inventory } from "../interfaces";
 import { createModChar } from "../Prerequisite/functions/modChar";
-import { CharToModify, FeatsFromChar } from "../Prerequisite/functions/modifyCharacter";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { SubRace } from "../Race/Interfaces";
 import { SkillSummaryComponent } from "../Skills/Show/SkillShowComponent";
 import { SpecialAbilitiesSummaryComponent } from "../SpecialAbilities/SpecialAbilitiesComponent";
@@ -11,7 +11,7 @@ import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 import { HpSummaryComponent } from "../HpComponent";
 import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
 import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
-import { Feat, FeatPc } from "../Feats/Interface/FeatInterface";
+import { FeatPc } from "../Feats/Interface/FeatInterface";
 import { FormattingText } from "../Formatting/Function";
 
 export interface SummaryProps {

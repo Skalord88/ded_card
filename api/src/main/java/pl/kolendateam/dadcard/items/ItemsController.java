@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.items;
 
+import jakarta.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,7 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.items.dto.ItemsListDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
+import pl.kolendateam.dadcard.items.enchantment.dto.ItemsToSendDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
@@ -88,7 +90,7 @@ public class ItemsController {
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO changeInventory(
     @PathVariable int id,
-    @RequestBody List<EnchantedItemsDTO> inventoryDTO
+    @RequestBody ItemsToSendDTO inventoryDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
     if (!characterOpt.isPresent()) {

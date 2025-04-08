@@ -1,6 +1,7 @@
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
   Armor,
+  InventoryOfItemsToSend,
   Item,
   ItemsList,
   ItemToSend,
@@ -8,16 +9,6 @@ import {
   Weapon,
   WonderousItem
 } from "../../interfaces";
-
-// export function isArmor(item: Armor | Shield | Weapon): item is Armor {
-//   return (item as Armor) !== undefined;
-// }
-// export function isShield(item: Armor | Shield | Weapon): item is Shield {
-//   return (item as Shield) !== undefined;
-// }
-// export function isWeapon(item: Armor | Shield | Weapon): item is Weapon {
-//   return (item as Weapon) !== undefined;
-// }
 
 export function FilterNoItem(list: WonderousItem[]): WonderousItem[] {
   return list.filter((item) => item.id !== 4);
@@ -91,64 +82,76 @@ export const findAllProficency = (
   return {
     type: findAllTypes,
     specific: findAllItems
-    // Array.from(new Set(findAllItems))
   };
 };
 
-// export type inventoryToSend = {
-//   ItemToSend[]
+// export const createWeaponItemsInInventory = (
+//   weapons: Weapon[]
+// ): ItemToSend[] => {
+//   return weapons.map((w) => ({
+//     id: null,
+//     itemId: w.itemId ?? 0,
+//     material: w.material ?? undefined,
+//     enchantmentBonus: w.enchantmentBonus ?? 0
+//   }));
 // };
 
-export const createWeaponItemsInInventory = (
-  weapons: Weapon[]
-): ItemToSend[] => {
-  return weapons.map((w) => ({
-    id: null,
-    itemId: w.itemId || 0,
-    material: w.material || "",
-    enchantmentBonus: w.enchantmentBonus || 0
-  }));
+export const createItemsInInventory = (
+  i: Weapon | Item | WonderousItem | Armor | Shield
+): ItemToSend => {
+  return {
+    id: "id" in i ? i.id : null,
+    // name: i.name,
+    itemId: "itemId" in i ? i.itemId ?? undefined : undefined,
+    material:
+      "material" in i &&
+      ["MITHRAL", "ADAMANTINE", "DARKWOOD", "DRAGONSKIN"].includes(
+        i.material ?? ""
+      )
+        ? i.material
+        : undefined,
+    enchantmentBonus: "enchantmentBonus" in i ? i.enchantmentBonus : undefined,
+    enchantment:
+      "enchantment" in i && i.enchantment && i.enchantment.length > 0
+        ? i.enchantment.flatMap((en) => {
+            return { id: en.id };
+          })
+        : undefined
+  };
 };
 
 export const sendItemsInInventory = (
-  inventory: (Weapon | Item | WonderousItem | WonderousItem[] | Armor | Shield)[]
-): ItemToSend[] => {
-  const armor: ItemToSend =
-    inventory[0] && "armorName" in inventory[0]
-      ? {
-          id: null, // Provide a default non-null value for id
-          itemId: inventory[0].itemId || 0, // Ensure item.id is never null
-          material: inventory[0].material ? inventory[0].material : null,
-          enchantmentBonus: inventory[0].enchantmentBonus || 0 // Provide default values if necessary
-          // enchantment
-        }
-      : { id: 2 };
-  const shield: ItemToSend =
-    inventory[1] && "shieldName" in inventory[1]
-      ? {
-          id: null, // Provide a default non-null value for id
-          itemId: inventory[1].itemId || 0, // Ensure item.id is never null
-          material: inventory[1].material || "", // Provide default values if necessary
-          enchantmentBonus: inventory[1].enchantmentBonus || 0 // Provide default values if necessary
-          // enchantment
-        }
-      : { id: 3 };
-  const weapons: ItemToSend[] = createWeaponItemsInInventory([
-    inventory[2] as Weapon,
-    inventory[3] as Weapon,
-    inventory[4] as Weapon,
-    inventory[5] as Weapon,
-    inventory[6] as Weapon
-  ]);
-  return [
-    armor,
-    shield,
-    weapons[0],
-    weapons[1],
-    weapons[2],
-    weapons[3],
-    weapons[4]
-  ];
+  inventory: (
+    | Weapon
+    | Item
+    | WonderousItem
+    | WonderousItem[]
+    | Armor
+    | Shield
+  )[]
+): InventoryOfItemsToSend => {
+  return {
+    backpack: (inventory[7] as WonderousItem[]).map((i) =>
+      createItemsInInventory(i)
+    ),
+    inventory: [
+      createItemsInInventory(inventory[0] as Armor),
+      createItemsInInventory(inventory[1] as Shield),
+      createItemsInInventory(inventory[2] as Weapon),
+      createItemsInInventory(inventory[3] as Weapon),
+      createItemsInInventory(inventory[4] as Weapon),
+      createItemsInInventory(inventory[5] as Weapon),
+      createItemsInInventory(inventory[6] as Weapon),
+      createItemsInInventory(inventory[8] as WonderousItem),
+      createItemsInInventory(inventory[9] as WonderousItem),
+      createItemsInInventory(inventory[10] as WonderousItem),
+      createItemsInInventory(inventory[11] as WonderousItem),
+      createItemsInInventory(inventory[12] as WonderousItem),
+      createItemsInInventory(inventory[13] as WonderousItem),
+      createItemsInInventory(inventory[14] as WonderousItem),
+      createItemsInInventory(inventory[15] as WonderousItem)
+    ]
+  };
 };
 
 export const charTresurePerLevel = (lv: number): number => {

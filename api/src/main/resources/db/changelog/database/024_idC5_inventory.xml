@@ -48,6 +48,9 @@
             <column name="cloth_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="cloak_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="belt_id" type="int">
                 <constraints nullable="true" />
             </column>

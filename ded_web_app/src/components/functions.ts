@@ -1,8 +1,8 @@
 import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
-import { ClassCharacter, ClassPc } from "./ClassPc/Interface/ClassPcLevel";
-import { enchantedName, onlyEnchantedName } from "./Enchantment/Functions/EnchantmentFunctions";
-import { Feat, feat, serverFeat } from "./Feats/Interface/FeatInterface";
+import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
+
+import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
 import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
 import { SubRace } from "./Race/Interfaces";

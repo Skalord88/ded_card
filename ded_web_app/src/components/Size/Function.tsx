@@ -13,7 +13,7 @@ export const reWeightItem = (sizeId: number, weight: number): number => {
 export function reSizeWeapon(sizeId: number, weapon: Weapon): Weapon {
   let updatedWeapon: Weapon = { ...weapon };
 
-  if (updatedWeapon.type !== null) {
+  if (updatedWeapon.type) {
     if (updatedWeapon.type.includes("UNARMED")) {
       updatedWeapon = damageReSize(sizeId, updatedWeapon);
     }

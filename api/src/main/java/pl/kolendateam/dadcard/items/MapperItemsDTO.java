@@ -91,7 +91,9 @@ public class MapperItemsDTO {
   }
 
   public static WeaponsDTO toWeaponDTO(EnchantedItems item) {
-    if (item == null) return new WeaponsDTO();
+    if (
+      item == null || !(item.getItem() instanceof Weapons)
+    ) return new WeaponsDTO();
     return new WeaponsDTO(item);
   }
 

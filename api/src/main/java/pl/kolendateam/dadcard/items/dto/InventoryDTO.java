@@ -30,8 +30,8 @@ public class InventoryDTO implements Serializable {
   public WondrousItemsDTO arms;
   public WondrousItemsDTO ringOne;
   public WondrousItemsDTO ringTwo;
-  // public ArrayList<WondrousItemsDTO> hands;
   public WondrousItemsDTO cloth;
+  public WondrousItemsDTO cloak;
   public WondrousItemsDTO belt;
   public WondrousItemsDTO legs;
 
@@ -61,7 +61,7 @@ public class InventoryDTO implements Serializable {
     this.weaponTwo =
       inventory.getWeaponTwo() != null &&
         inventory.getWeaponTwo().getItem() instanceof Weapons
-        ? this.weaponTwo = MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo())
+        ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponTwo())
         : null;
 
     // weaponThree
@@ -123,6 +123,11 @@ public class InventoryDTO implements Serializable {
     this.cloth =
       inventory.getCloth() != null
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth())
+        : null;
+
+    this.cloak =
+      inventory.getCloth() != null
+        ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloak())
         : null;
 
     this.belt =

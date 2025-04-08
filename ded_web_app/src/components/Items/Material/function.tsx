@@ -1,3 +1,13 @@
+export enum MaterialItem {
+  MITHRAL = "MITHRAL",
+  DARKWOOD = "DARKWOOD",
+  ADAMANTINE = "ADAMANTINE",
+  METAL = "METAL",
+  WOOD = "WOOD",
+  LEATHER = "LEATHER",
+  DRAGONSKIN = "DRAGONSKIN"
+}
+
 export const reMaterialArmType = (
   material: string | null,
   armorType: string

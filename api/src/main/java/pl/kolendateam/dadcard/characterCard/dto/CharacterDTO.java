@@ -74,13 +74,14 @@ public class CharacterDTO implements Serializable {
       character.getFeatsList() != null
         ? MapperFeats.toFeatsPcDTO(character.getFeatsList())
         : null;
-    this.inventory = MapperItemsDTO.toInventoryDTO(character.getInventory());
+    this.inventory =
+      character.getInventory() != null
+        ? MapperItemsDTO.toInventoryDTO(character.getInventory())
+        : null;
     this.attacks =
       character.getAttacks() != null
         ? MapperItemsDTO.toAttacksDTO(character.getAttacks())
         : null;
-    // this.magicPerDay = character.getMagicPerDay();
-    // this.magicKnown = character.getMagicKnown();
     this.books =
       character.getBooks() != null
         ? MapperSpells.toBooksDTO(character.getBooks())

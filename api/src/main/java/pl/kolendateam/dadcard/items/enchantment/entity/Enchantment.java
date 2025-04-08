@@ -58,6 +58,6 @@ public class Enchantment implements Serializable {
 
   public Enchantment(EnchantmentDTO enchantmentDTO) {
     this.id = enchantmentDTO.id;
-    this.cost = enchantmentDTO.cost;
+    // this.cost = enchantmentDTO.cost;
   }
 }

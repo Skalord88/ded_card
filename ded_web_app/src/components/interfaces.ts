@@ -207,7 +207,7 @@ export type EnchantedItem = {
 export interface WonderousItem extends Item {
   wondrousType: string;
   modifiers: Prerequisite | null;
- }
+}
 
 export type Inventory = {
   armor: Armor; // 0
@@ -224,8 +224,9 @@ export type Inventory = {
   ringOne: WonderousItem; // 11
   ringTwo: WonderousItem; // 12
   cloth: WonderousItem; // 13
-  belt: WonderousItem; // 14
-  legs: WonderousItem; // 15
+  cloak: WonderousItem; // 14
+  belt: WonderousItem; // 15
+  legs: WonderousItem; // 16
 
   // hands: WonderousItem[]; // 11
 }
@@ -239,6 +240,12 @@ export type ItemToSend = {
   cost?: number | null
   enchantmentBonus?: number | null
 }
+
+export type InventoryOfItemsToSend = {
+  backpack : ItemToSend[],
+  inventory : ItemToSend[]
+}
+
 
 // export type InventoryToSend = {
 //   armor?: ItemToSend;

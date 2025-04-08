@@ -22,6 +22,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
@@ -87,8 +88,13 @@ public class EnchantedItems implements Serializable {
       );
     }
 
-    this.enchantmentBonus = dto.enchantmentBonus;
-    this.material = dto.material;
+    this.enchantmentBonus =
+      dto.enchantmentBonus != null ? dto.enchantmentBonus : null;
+    this.material = dto.material != null ? dto.material : null;
+    this.enchantment =
+      dto.enchantment != null
+        ? MapperEnchantment.toEnchantmentList(dto.enchantment)
+        : null;
 
     System.out.println("Assigned item: " + this.item);
   }

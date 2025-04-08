@@ -42,4 +42,17 @@ public class MapperEnchantment {
     });
     return listDTO;
   }
+
+  public static List<Enchantment> toEnchantmentList(
+    List<EnchantmentDTO> listDTO
+  ) {
+    List<Enchantment> list = new ArrayList<>();
+    if (listDTO != null) listDTO.forEach(enchDTO -> {
+      if (enchDTO != null) {
+        Enchantment ench = new Enchantment(enchDTO);
+        list.add(ench);
+      }
+    });
+    return list;
+  }
 }
