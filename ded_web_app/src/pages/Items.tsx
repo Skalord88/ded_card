@@ -23,6 +23,7 @@ import {
   calculateCost,
   droppItemsToNonItem,
   modifyInventory,
+  notEmptyInventory,
   specificFilter
 } from "../components/Items/Inventory/function";
 import {
@@ -41,6 +42,18 @@ import {
 } from "../components/url";
 import { CharSummary } from "../components/Summary/CharSummary";
 import { noneItem } from "../components/variables";
+import { on } from "events";
+import { ItemPartProps } from "../components/Items/props";
+import { ItemMaterialComponent } from "../components/Items/Components/ItemMaterialComponent";
+import { ItemEnchantmentBonusComponent } from "../components/Items/Components/ItemEnchantmentBonusComponent";
+import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
+import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
+import { ItemEnchantmentsComponent } from "../components/Items/Components/ItemEnchantmentComponent";
+import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
+import { ItemFailureComponent } from "../components/Items/Components/ItemFailureComponent";
+import { ItemPenalityComponent } from "../components/Items/Components/ItemPenalityComponent";
+import { ItemMaxDexComponent } from "../components/Items/Components/ItemMaxDexComponent";
+import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -56,10 +69,11 @@ export const Items = () => {
 
   const [char, setChar] = useState<CharacterPc>();
   const [filtroList, setFiltroList] = useState<FiltroItems>();
-  const [inventory, setInventory] = useState<
-    (Armor | Shield | Weapon | Item | WonderousItem)[]
-  >([]);
+  const [inventory, setInventory] =
+    useState<(Armor | Shield | Weapon | Item | WonderousItem)[]>();
+  const [inventoryTotal, setInventoryTotal] = useState<number>(0);
   const [backpack, setBackpack] = useState<WonderousItem[]>([]);
+  const [backpackTotal, setBackpackTotal] = useState<number>(0);
   const [tresure, setTresure] = useState<number>(0);
   const [totalCost, setTotalCost] = useState(0);
 
@@ -104,10 +118,7 @@ export const Items = () => {
           setFiltroList(filtro);
         }
 
-        const moddedInventory = modifyInventory(
-          charDb.race.size.id,
-          charDb.inventory
-        );
+        const moddedInventory = notEmptyInventory(charDb.inventory);
 
         setBackpack(
           moddedInventory.backpack && moddedInventory.backpack.length > 0
@@ -142,31 +153,49 @@ export const Items = () => {
     fetchData();
   }, []);
 
-  const handleChangeItem = (
-    n: number,
-    i: Item | Armor | Shield | Weapon | WonderousItem
-  ) => {
-    setInventory((prevInventory) => {
-      if (prevInventory) {
-        const newInventory = [...prevInventory];
-        if (n === 0) {
-          newInventory[n] = { ...(i as Armor) };
-        }
-        if (n === 1) {
-          newInventory[n] = { ...(i as Shield) };
-        }
-        if ([2, 3, 4, 5, 6].includes(n)) {
-          newInventory[n] = { ...(i as Weapon) };
-        }
-        if ([7, 8, 9, 10, 11, 12, 13, 14, 15].includes(n)) {
-          newInventory[n] = { ...(i as WonderousItem) };
-        }
+  const handleChangeItem = (n: number, updatedItem: Item, cost: number) => {
+    const itemWithCost = {
+      ...updatedItem,
+      cost: cost
+    };
 
-        return newInventory;
-      }
-      return prevInventory;
-    });
+    if (inventory) {
+      setInventory((prev) => {
+        if (prev) {
+          const updated = [...prev];
+          updated[n] = itemWithCost;
+
+          // if(n === 6){
+          // console.log("prev: ", prev.flatMap((i) => i.cost));
+          // console.log("updated: ", updated.flatMap((i) => i.cost));
+          // console.log("updated.reduce: ", updated.reduce(
+          //   (tot, item) => tot + (item.cost || 0),
+          //   0
+          // ));
+          // }
+          const total = updated.reduce(
+            (tot, item) => tot + (item.cost || 0),
+            0
+          );
+          setInventoryTotal(total);
+          return updated;
+        }
+      });
+    }
   };
+
+  // useEffect(() => {
+  //   if (inventory) {
+  //     const total = inventory.reduce((tot, item) => tot + (item.cost || 0), 0);
+  //     setInventoryTotal(total);
+  //   }
+  // }, [inventory]);
+
+  // useEffect(() => {
+  //   if (inventory) {
+  //     console.log("Inventory updated!", inventory[0].cost);
+  //   }
+  // }, [inventory]);
 
   const handleChangeBackpack = (
     n: number,
@@ -191,33 +220,14 @@ export const Items = () => {
     });
   };
 
-  useEffect(() => {
-    let totalCost = 0;
-    if (inventory) {
-      totalCost = inventory.reduce((tot, item) => {
-        if (item && "cost" in item) {
-          return tot + (item as Item).cost;
-        }
-        return tot;
-      }, 0);
-    }
-    if (backpack) {
-      totalCost += backpack.reduce((tot, item) => {
-        if (item && "cost" in item) {
-          return tot + (item as Item).cost;
-        }
-        return tot;
-      }, 0);
-    }
-    setTotalCost(tresure - totalCost);
-  }, [inventory, backpack]);
-
   const handleConfirm = () => {
-    const inventoryToSend = sendItemsInInventory(inventory);
-    console.log(inventoryToSend);
+    if (inventory && inventory.length > 0) {
+      const inventoryToSend = sendItemsInInventory(inventory);
+      console.log(inventoryToSend);
 
-    axios.post(urlItemsBuy + charId, inventoryToSend);
-    window.location.reload();
+      axios.post(urlItemsBuy + charId, inventoryToSend);
+      window.location.reload();
+    }
   };
 
   const inventoryListRef = useRef<HTMLDivElement>(null);
@@ -274,6 +284,7 @@ export const Items = () => {
       <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
       <div>
         <p>
+          <span>{inventoryTotal}</span>
           <span>
             <button className="rpgui-button" onClick={handleConfirm}>
               <p>confirm</p>
@@ -283,7 +294,7 @@ export const Items = () => {
             tresure: {tresure}
           </span>
           <span className="rpgui-container-framed-grey">
-            actual: {totalCost}
+            actual: {inventoryTotal + backpackTotal}
           </span>
         </p>
       </div>
@@ -404,7 +415,6 @@ export const Items = () => {
                   className="rpgui-container-framed-grey"
                 >
                   <ItemInventoryComponent
-                    // key={currentIndex}
                     n={index}
                     item={i}
                     sizeId={0}
@@ -426,7 +436,6 @@ export const Items = () => {
                 >
                   {<h2>backpack</h2>}
                   <ItemInventoryComponent
-                    // key={currentIndex}
                     n={index}
                     item={i}
                     sizeId={0}
@@ -440,6 +449,7 @@ export const Items = () => {
       </div>
       <div>
         <p>
+          <span>{inventoryTotal}</span>
           <span>
             <button className="rpgui-button" onClick={handleConfirm}>
               <p>confirm</p>
@@ -464,7 +474,8 @@ export type ItemInventoryProps = {
   filtro: FiltroItems | itemInDrop[];
   onAction: (
     n: number,
-    item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem
+    item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem,
+    cost: number
   ) => void;
 };
 
@@ -475,52 +486,13 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   filtro,
   onAction
 }) => {
-  const metal = ["METAL", "MITHRAL", "ADAMANTINE"];
-  const wood = ["WOOD", "DARKWOOD"];
-  const enchantments = [0, -1, 1, 2, 3, 4, 5];
-
-  const memoizedItem = useMemo(() => item, [item]);
-
   const [theItem, setTheItem] = useState<
     Item | Armor | Shield | Weapon | WonderousItem
-  >(memoizedItem);
-  const [materialItem, setMaterialItem] = useState<string | null>(
-    item && "material" in item ? item.material ?? null : null
-  );
-  const [armorTypeItem, setArmorTypeItem] = useState<string | null>(
-    item && "armorType" in item ? item.armorType : null
-  );
-  const [costItem, setCostItem] = useState<number | null>();
+  >();
 
-  const [weightItem, setWeightItem] = useState<number | null>(
-    item && "weight" in item ? item.weight : null
-  );
-  const [penalityItem, setPenalityItem] = useState<number | null>(
-    item && "penality" in item ? item.penality : null
-  );
-  const [maxDexItem, setMaxDexItem] = useState<number | null>(
-    item && "maxDex" in item ? item.maxDex : null
-  );
-  const [enchantmentBonusItem, setEnchantmentBonusItem] = useState<
-    number | null
-  >(
-    item && "enchantmentBonus" in item && item.enchantmentBonus
-      ? item.enchantmentBonus
-      : null
-  );
-  const [enchantmentItem, setEnchantmentItem] = useState<Enchantment[] | null>(
-    item && "enchantment" in item && item.enchantment
-      ? [...item.enchantment]
-      : null
-  );
-  const [failureItem, setFailureItem] = useState<number | null>(
-    item && "failure" in item && item.failure
-      ? reMaterialFailure(
-          item.material ? item.material : "",
-          item.failure ? item.failure : 0
-        )
-      : null
-  );
+  useEffect(() => {
+    setTheItem(item);
+  }, []);
 
   const filtroEnchantment =
     "magic" in filtro
@@ -535,208 +507,66 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const specificFiltro =
     "magic" in filtro ? specificFilter(n, filtro) : (filtro as itemInDrop[]);
 
-  useEffect(() => {
-    if (!theItem) return;
 
-    let costo: number = 0;
-    if ("armorName" in theItem || "shieldName" in theItem) {
-      costo = calculateCost(
-        "Armor",
-        theItem.cost,
-        enchantmentItem?.flatMap((en) => en.cost) ?? [],
-        enchantmentBonusItem ?? 0,
-        materialItem ?? "",
-        weightItem ?? 0,
-        theItem.armorType
-      );
-    }
-    if ("weaponName" in theItem) {
-      costo = calculateCost(
-        "Weapon",
-        theItem.cost,
-        enchantmentItem?.flatMap((en) => en.cost) ?? [],
-        enchantmentBonusItem ?? 0,
-        materialItem ?? "",
-        weightItem ?? 0,
-        theItem.itemType
-      );
-    }
-    if ("wondrousType" in theItem) {
-      costo = theItem.cost;
-    }
-
-    setCostItem(costo);
-    onAction(n, {
-      ...theItem,
-      cost: costo,
-      material: materialItem ?? undefined,
-      enchantment: enchantmentItem ?? undefined,
-      enchantmentBonus: enchantmentBonusItem ?? undefined
-    });
-  }, [
-    enchantmentBonusItem,
-    materialItem,
-    weightItem,
-    enchantmentItem,
-    theItem,
-    n
-  ]);
+  // useEffect(() => {
+  //   if (theItem && costItem) {
+  //     onAction(
+  //       n,
+  //       {
+  //         ...theItem,
+  //         cost: costItem,
+  //         material: materialItem ?? undefined,
+  //         enchantment: enchantmentItem ?? undefined
+  // enchantmentBonus: enchantmentBonusItem ?? undefined
+  //       },
+  //       cotItem
+  //     );
+  //   }
+  // }, [costItsem]);
 
   const handleNewItems = (
-    optionItem?: Item | Armor | Shield | Weapon | WonderousItem | undefined,
-    optionMaterial?: string
+    optionItem?: Item | Armor | Shield | Weapon | WonderousItem
   ) => {
-    if (optionItem && typeof optionItem === "object") {
-      if ("armorName" in optionItem) {
-        setMaterialItem(optionItem.material ?? null);
-        setArmorTypeItem(optionItem.armorType);
-        setPenalityItem(optionItem.penality);
-        setEnchantmentBonusItem(
-          optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
-        );
-        setMaxDexItem(optionItem.maxDex);
-        setFailureItem(optionItem.failure);
-      }
-      if ("shieldName" in optionItem) {
-        setEnchantmentBonusItem(
-          optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
-        );
-      }
-      if ("weaponName" in optionItem) {
-        setArmorTypeItem(null);
-
-        setEnchantmentBonusItem(
-          optionItem.enchantmentBonus ? optionItem.enchantmentBonus : 0
-        );
-      }
-
+    if (optionItem) {
       setTheItem(optionItem);
-      setWeightItem(optionItem.weight);
-    }
-
-    if (theItem && optionMaterial && typeof optionMaterial === "string") {
-      setMaterialItem(optionMaterial);
-      setEnchantmentBonusItem(0);
-      if ("armorType" in theItem) {
-        setArmorTypeItem(reMaterialArmType(optionMaterial, theItem.armorType));
-        setPenalityItem(
-          reMaterialPerfectPenality(
-            optionMaterial,
-            theItem.penality,
-            theItem.enchantmentBonus !== 0 ? true : false
-          )
-        );
-        if ("maxDex" in theItem)
-          setMaxDexItem(reMaterialMaxDex(optionMaterial, theItem.maxDex));
-        setFailureItem(reMaterialFailure(optionMaterial, theItem.failure));
-      }
-
-      if ("weight" in theItem) {
-        setWeightItem(reMaterialWeight(optionMaterial, theItem.weight));
-      }
     }
   };
 
-  const handlePlusEnchantmentBonus = () => {
+  const handleNewMaterial = (option: string) => {
+    if (theItem && "material" in theItem) {
+      const updatedItem = {
+        ...theItem,
+        material: option
+      };
+      setTheItem({ ...theItem, ...updatedItem });
+    }
+  };
+  const handleNewEnchantmentBonus = (option: number) => {
     if (theItem && "enchantmentBonus" in theItem) {
-      let findIndexEnchant: number =
-        enchantmentBonusItem !== null
-          ? enchantments.findIndex(
-              (enchantment) => enchantment === enchantmentBonusItem
-            )
-          : -1;
-
-      if (findIndexEnchant !== -1) {
-        let enchInIndex: number = 0;
-        if (
-          findIndexEnchant + 1 === 1 &&
-          materialItem &&
-          !["WOOD", "METAL"].includes(materialItem)
-        ) {
-          enchInIndex = enchantments[findIndexEnchant + 2];
-        } else {
-          enchInIndex =
-            enchantments[findIndexEnchant + 1] < 6
-              ? enchantments[findIndexEnchant + 1]
-              : enchantments[findIndexEnchant];
-        }
-        setEnchantmentBonusItem(enchInIndex);
-
-        if (penalityItem && "penality" in theItem && materialItem)
-          setPenalityItem(
-            reMaterialPerfectPenality(
-              materialItem,
-              (theItem as Armor | Shield).penality
-                ? (theItem as Armor | Shield).penality
-                : 0,
-              enchInIndex !== 0 ? true : false
-            )
-          );
-      }
+      const updatedItem = {
+        ...theItem,
+        enchantmentBonus: option
+      };
+      setTheItem({ ...theItem, ...updatedItem });
     }
   };
-  const handleMinEnchantmentBonus = () => {
-    if (theItem && "enchantmentBonus" in theItem) {
-      let findIndexEnchant: number =
-        enchantmentBonusItem !== null
-          ? enchantments.findIndex(
-              (enchantment) => enchantment === enchantmentBonusItem
-            )
-          : -1;
-      if (findIndexEnchant !== -1) {
-        let enchInIndex: number = 0;
-        if (
-          findIndexEnchant - 1 === 1 &&
-          materialItem &&
-          !["WOOD", "METAL"].includes(materialItem)
-        ) {
-          enchInIndex = enchantments[findIndexEnchant - 2];
-        } else {
-          enchInIndex =
-            enchantments[findIndexEnchant - 1] > -2
-              ? enchantments[findIndexEnchant - 1]
-              : enchantments[findIndexEnchant];
-        }
-        setEnchantmentBonusItem(enchInIndex);
-
-        if (penalityItem && "penality" in theItem && materialItem)
-          setPenalityItem(
-            reMaterialPerfectPenality(
-              materialItem,
-              (theItem as Armor | Shield).penality
-                ? (theItem as Armor | Shield).penality
-                : 0,
-              enchInIndex !== 0 ? true : false
-            )
-          );
-      }
+  const handleEnchantment = (option: Enchantment[]) => {
+    if (theItem && "enchantment" in theItem) {
+      const updatedItem = {
+        ...theItem,
+        enchantment: option
+      };
+      setTheItem({ ...theItem, ...updatedItem });
     }
   };
-
-  const handleAddEnchantment = (option: Enchantment) => {
-    setEnchantmentItem((prev) => (prev ? [...prev, option] : [option]));
-  };
-
-  const handleDelEnchantment = (n: number) => {
-    setEnchantmentItem((prev) =>
-      prev ? prev.filter((_, index) => index !== n) : []
-    );
-  };
-
-  const droppItem = () => {
-    const emptyItemmo = droppItemsToNonItem(theItem);
-    if (emptyItemmo.item) {
-      setTheItem(emptyItemmo.item);
+  const handleCost = (option: number) => {
+    if (theItem) {
+      const updatedItem = {
+        ...theItem,
+        cost: option
+      };
+      setTheItem({ ...theItem, ...updatedItem });
     }
-    setEnchantmentBonusItem(null);
-    setEnchantmentItem(null);
-    setArmorTypeItem(emptyItemmo.armorType);
-    setCostItem(0);
-    setWeightItem(0);
-    setPenalityItem(null);
-    setMaxDexItem(null);
-    setMaterialItem(null);
-    setFailureItem(null);
   };
 
   const numerini: string[] = ["I", "II", "III", "IV", "V"];
@@ -766,143 +596,104 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         </h2>
         <div>
           <div>
-            <DropdownComponent
-              options={specificFiltro}
-              onAction={handleNewItems}
-            />
-            <p onClick={droppItem}>
-              <span style={{ color: "yellow" }}>name: </span>
-              {(theItem as Armor).armorName ||
+            <ItemTheItemComponent
+              filtro={specificFiltro}
+              nameItem={
+                (theItem as Armor).armorName ||
                 (theItem as Shield).shieldName ||
                 (theItem as Weapon).weaponName ||
-                (theItem as WonderousItem).name}
-            </p>
+                (theItem as WonderousItem).name
+              }
+              setTheItem={handleNewItems}
+            />
           </div>
-          {"enchantment" in theItem ? (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>enchantment: </span>
-                <span>
-                  <button
-                    className="rpgui-button-grey-mini"
-                    onClick={handlePlusEnchantmentBonus}
-                  >
-                    +
-                  </button>
-                  <button
-                    className="rpgui-button-grey-mini"
-                    onClick={handleMinEnchantmentBonus}
-                  >
-                    -
-                  </button>
-                </span>
-                {enchantmentBonusItem === -1
-                  ? " pft"
-                  : " " + enchantmentBonusItem}
-              </p>
-            </div>
-          ) : null}
-          {"enchantment" in theItem && (
-            <div>
-              {enchantmentItem && enchantmentItem.length > 0 ? (
-                <p style={{ color: "yellow" }}>Powers:</p>
-              ) : null}
-              {enchantmentItem?.map((e, index) => (
-                <p key={index}>
-                  <span
-                    style={{ color: "yellow" }}
-                    onClick={() => handleDelEnchantment(index)}
-                  >
-                    {FormattingText(e.ability)}:
-                  </span>
-                  <span> {e.text}</span>
-                </p>
-              ))}
-            </div>
+          {"enchantmentBonus" in theItem && (
+            <ItemEnchantmentBonusComponent
+              materialItem={theItem.material}
+              enchantmentBonusItem={theItem.enchantmentBonus}
+              setEnchantmentBonusItem={handleNewEnchantmentBonus}
+            />
           )}
-          {filtroEnchantment && "enchantment" in theItem && (
-            <div>
-              <DropdownComponent
-                options={filtroEnchantment}
-                onAction={handleAddEnchantment}
-              />
-            </div>
-          )}
-
           <div>
             <p>
               <span style={{ color: "yellow" }}>description: </span>
               {theItem.description}
             </p>
           </div>
-
-          {!("wondrousType" in theItem) && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>{"material: "}</span>
-                {materialItem}
-              </p>
-
-              <DropdownComponent
-                options={addToDrop(
-                  metal.includes(
-                    (theItem && (theItem as Armor | Shield | Weapon))
-                      .material as string
-                  )
-                    ? metal
-                    : wood,
-                  "filter"
-                )}
-                onAction={(option) => handleNewItems(undefined, option)}
-              />
-            </div>
+          {"material" in theItem && theItem.material !== null && (
+            <ItemMaterialComponent
+              materialItem={theItem.material}
+              setMaterialItem={handleNewMaterial}
+            />
           )}
-
-          {!("wondrousType" in theItem) && "armorType" in theItem && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>armor type: </span>
-                {armorTypeItem}
-              </p>
-            </div>
+          {"armorType" in theItem && theItem.armorType !== null && (
+            <ItemArmorTypeComponent
+              armorTypeItem={theItem.armorType}
+              materialItem={theItem.material}
+            />
           )}
-          <div>
-            <p>
-              <span style={{ color: "yellow" }}>cost: </span>
-              {costItem}
-            </p>
-          </div>
+          {"enchantment" in theItem && theItem.enchantment !== null && (
+            <ItemEnchantmentsComponent
+              filtro={filtroEnchantment}
+              enchantmentItem={theItem.enchantment}
+              setEnchantmentItem={handleEnchantment}
+            />
+          )}
           {"weight" in theItem && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>weight: </span>
-                {weightItem}
-              </p>
-            </div>
+            <ItemWeightComponent
+              weightItem={theItem.weight}
+              materialItem={"material" in theItem ? theItem.material : undefined}
+            />
           )}
-          {!("wondrousType" in theItem) && "penality" in theItem && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>penality: </span>
-                {penalityItem}
-              </p>
-            </div>
+          {"penality" in theItem && (
+            <ItemPenalityComponent
+              penalityItem={theItem.penality}
+              materialItem={theItem.material}
+              enchantmentBonusItem={theItem.enchantmentBonus}
+            />
           )}
-          {!("wondrousType" in theItem) && "maxDex" in theItem && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>max dex: </span>
-                {maxDexItem}
-              </p>
-            </div>
+          {"maxDex" in theItem && (
+            <ItemMaxDexComponent
+              maxDexItem={theItem.maxDex}
+              materialItem={theItem.material}
+            />
           )}
-          {!("wondrousType" in theItem) && "failure" in theItem && (
-            <div>
-              <p>
-                <span style={{ color: "yellow" }}>failure: </span>
-                {failureItem}%
-              </p>
-            </div>
+          {"failure" in theItem && (
+            <ItemFailureComponent
+              failureItem={theItem.failure}
+              materialItem={theItem.material}
+            />
+          )}
+
+          {"armorType" in theItem && (
+            <ItemCostComponent
+              costItem={theItem.cost}
+              itemTypeItem={theItem.itemType}
+              enchantmentItem={theItem.enchantment}
+              enchantmentBonusItem={theItem.enchantmentBonus}
+              weightItem={theItem.weight}
+              armorTypeItem={theItem.armorType}
+              materialItem={theItem.material}
+              setCostItem={handleCost}
+            />
+          )}
+          {"weaponName" in theItem && (
+            <ItemCostComponent
+              costItem={theItem.cost}
+              itemTypeItem={theItem.itemType}
+              enchantmentItem={theItem.enchantment}
+              enchantmentBonusItem={theItem.enchantmentBonus}
+              weightItem={theItem.weight}
+              armorTypeItem={theItem.itemType}
+              materialItem={theItem.material}
+              setCostItem={handleCost}
+            />
+          )}
+          {"wondrousType" in theItem && (
+            <ItemCostComponent
+              costItem={theItem.cost}
+              setCostItem={handleCost}
+            />
           )}
         </div>
       </div>

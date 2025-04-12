@@ -22,6 +22,32 @@ import {
   reMaterialWeight
 } from "../Material/function";
 
+export const notEmptyInventory = (inventory: Inventory) => {
+  return {
+    ...inventory,
+    armor: inventory.armor ? inventory.armor : noneArmor,
+    shield: inventory.shield ? inventory.shield : noneShield,
+    weaponOne: inventory.weaponOne ? inventory.weaponOne : noneWeapon,
+    weaponTwo: inventory.weaponTwo ? inventory.weaponTwo : noneWeapon,
+    weaponThree: inventory.weaponThree ? inventory.weaponThree : noneWeapon,
+    weaponFour: inventory.weaponFour ? inventory.weaponFour : noneWeapon,
+    weaponFive: inventory.weaponFive ? inventory.weaponFive : noneWeapon,
+    backpack:
+      Array.isArray(inventory.backpack) && inventory.backpack.length > 0
+        ? inventory.backpack
+        : [noneItem],
+    head: inventory.head != null ? inventory.head : noneItem,
+    neck: inventory.neck != null ? inventory.neck : noneItem,
+    arms: inventory.arms != null ? inventory.arms : noneItem,
+    ringOne: inventory.ringOne != null ? inventory.ringOne : noneItem,
+    ringTwo: inventory.ringTwo != null ? inventory.ringTwo : noneItem,
+    cloth: inventory.cloth != null ? inventory.cloth : noneItem,
+    cloak: inventory.cloak != null ? inventory.cloak : noneItem,
+    belt: inventory.belt != null ? inventory.belt : noneItem,
+    legs: inventory.legs != null ? inventory.legs : noneItem
+  };
+};
+
 export const modifyInventory = (
   charSizeId: number,
   inventory: Inventory
@@ -34,7 +60,7 @@ export const modifyInventory = (
       ? {
           ...inventory.armor,
           armorType: reMaterialArmType(
-            inventory.armor.material ?? null,
+            inventory.armor.material ?? "",
             inventory.armor.armorType
           ),
           weight: reMaterialWeight(
@@ -100,7 +126,10 @@ export const modifyInventory = (
           weight: reWeightItem(charSizeId, inventory.weaponFive.weight)
         }
       : noneWeapon,
-    backpack: Array.isArray(inventory.backpack) && inventory.backpack.length > 0 ? inventory.backpack : [noneItem],
+    backpack:
+      Array.isArray(inventory.backpack) && inventory.backpack.length > 0
+        ? inventory.backpack
+        : [noneItem],
     head: inventory.head != null ? inventory.head : noneItem,
     neck: inventory.neck != null ? inventory.neck : noneItem,
     arms: inventory.arms != null ? inventory.arms : noneItem,
@@ -333,22 +362,13 @@ export const specificFilter = (
 };
 
 export const droppItemsToNonItem = (
-  exItem: Item | Armor | Shield | Weapon | WonderousItem | null
-): {
-  item: Armor | Shield | Weapon | WonderousItem | null;
-  armorType: string | null;
-} => {
-  if (!exItem) return { item: noneItem, armorType: null };
-  return {
-    item:
-      exItem && "armorName" in exItem
-        ? noneArmor
-        : exItem && "shieldName" in exItem
-        ? noneShield
-        : exItem && "weaponName" in exItem
-        ? noneWeapon
-        : noneItem,
-    armorType: exItem && "armorName" in exItem ? noneArmor.armorType
-     : exItem && "shieldName" in exItem ? noneShield.armorType : null
-  };
+  exItem: Item | Armor | Shield | Weapon | WonderousItem
+): Item | Armor | Shield | Weapon | WonderousItem => {
+  return exItem && "armorName" in exItem
+    ? noneArmor
+    : exItem && "shieldName" in exItem
+    ? noneShield
+    : exItem && "weaponName" in exItem
+    ? noneWeapon
+    : noneItem;
 };

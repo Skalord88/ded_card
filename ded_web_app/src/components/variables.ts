@@ -94,8 +94,9 @@ export const emptyInventory: Inventory = {
     ringOne: noneItem,
     ringTwo: noneItem,
     cloth: noneItem,
+    cloak: noneItem,
     belt: noneItem,
-    legs: noneItem,
+    legs: noneItem
 }
 
 export const emptyAttacks: Attacks = {

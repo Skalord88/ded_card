@@ -9,23 +9,19 @@ export enum MaterialItem {
 }
 
 export const reMaterialArmType = (
-  material: string | null,
+  material: string,
   armorType: string
 ): string => {
-  let newType: string = armorType;
   if (material) {
     if (material === "MITHRAL") {
-      newType =
-        armorType === "LIGHT_ARMOR"
-          ? armorType
-          : armorType === "MEDIUM_ARMOR"
-          ? "LIGHT_ARMOR"
-          : armorType === "HEAVY_ARMOR"
-          ? "MEDIUM_ARMOR"
-          : armorType;
+      return armorType === "MEDIUM_ARMOR"
+        ? "LIGHT_ARMOR"
+        : armorType === "HEAVY_ARMOR"
+        ? "MEDIUM_ARMOR"
+        : armorType;
     }
   }
-  return newType;
+  return armorType;
 };
 
 export const reMaterialWeight = (
@@ -46,12 +42,12 @@ export const reMaterialPerfectPenality = (
   penality: number,
   perfect: boolean
 ): number => {
-    const prf: number = perfect? 1 : 0
-    const specialMat: string[] = ["MITHRAL", "DARKWOOD"];
-    const normalMat: string[] = ["WOOD", "LEATHER", "METAL"]
-    const bonus: number = material? specialMat.includes(material)? 2 + prf :
-    !normalMat.includes(material) ? prf : 0 : 0
-  return penality + bonus > 0 ? 0 : penality + bonus
+  const specialMat: boolean = material ? ["MITHRAL", "DARKWOOD"].includes(material) : false;
+  const normalMat: boolean = material ? ["WOOD", "LEATHER", "METAL"].includes(material) : false;
+  const prf: number = perfect ? 1 : 0;
+
+  const bonus: number = specialMat? 2 + prf : normalMat ? prf : prf
+  return penality + bonus > 0 ? 0 : penality + bonus;
 };
 
 export const reMaterialMaxDex = (
