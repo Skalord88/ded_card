@@ -1,10 +1,10 @@
+import { ItemToSend } from "../../../pages/Items";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
   Armor,
   InventoryOfItemsToSend,
   Item,
   ItemsList,
-  ItemToSend,
   Shield,
   Weapon,
   WonderousItem
@@ -100,24 +100,22 @@ export const createItemsInInventory = (
   i: Weapon | Item | WonderousItem | Armor | Shield
 ): ItemToSend => {
   return {
-    id: "id" in i ? i.id : null,
-    // name: i.name,
-    itemId: "itemId" in i ? i.itemId ?? undefined : undefined,
-    material:
-      "material" in i &&
-      ["MITHRAL", "ADAMANTINE", "DARKWOOD", "DRAGONSKIN"].includes(
-        i.material ?? ""
-      )
-        ? i.material
-        : undefined,
-    enchantmentBonus: "enchantmentBonus" in i ? i.enchantmentBonus : undefined,
-    enchantment:
-      "enchantment" in i && i.enchantment && i.enchantment.length > 0
-        ? i.enchantment.flatMap((en) => {
-            return { id: en.id };
-          })
-        : undefined
-  };
+      id: i.id ?? 0,
+      item:
+        "itemId" in i
+          ? { id: i.itemId ?? 0 }
+          : undefined,
+          material:
+        "itemId" in i ? i.material : undefined,
+      enchantment:
+        "itemId" in i
+          ? i.enchantment?.flatMap((en) =>
+              en.id ? { id: en.id } : []
+            )
+          : undefined,
+      enchantmentBonus:
+        "itemId" in i ? i.enchantmentBonus : undefined
+    }
 };
 
 export const sendItemsInInventory = (

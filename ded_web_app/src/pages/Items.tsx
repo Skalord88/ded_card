@@ -1,8 +1,6 @@
 import axios from "axios";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { DropdownComponent } from "../components/DropDown/DropDown";
-import { FormattingText } from "../components/Formatting/Function";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
@@ -15,24 +13,26 @@ import {
   Weapon,
   WonderousItem
 } from "../components/interfaces";
+import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
+import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
+import { ItemEnchantmentBonusComponent } from "../components/Items/Components/ItemEnchantmentBonusComponent";
+import { ItemEnchantmentsComponent } from "../components/Items/Components/ItemEnchantmentComponent";
+import { ItemFailureComponent } from "../components/Items/Components/ItemFailureComponent";
+import { ItemMaterialComponent } from "../components/Items/Components/ItemMaterialComponent";
+import { ItemMaxDexComponent } from "../components/Items/Components/ItemMaxDexComponent";
+import { ItemPenalityComponent } from "../components/Items/Components/ItemPenalityComponent";
+import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
+import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
 import {
   charTresurePerLevel,
+  createItemsInInventory,
   sendItemsInInventory
 } from "../components/Items/Functions/function";
 import {
-  calculateCost,
-  droppItemsToNonItem,
-  modifyInventory,
   notEmptyInventory,
   specificFilter
 } from "../components/Items/Inventory/function";
-import {
-  reMaterialArmType,
-  reMaterialFailure,
-  reMaterialMaxDex,
-  reMaterialPerfectPenality,
-  reMaterialWeight
-} from "../components/Items/Material/function";
+import { CharSummary } from "../components/Summary/CharSummary";
 import {
   urlChar,
   urlEnchanted,
@@ -40,20 +40,12 @@ import {
   urlItems,
   urlItemsBuy
 } from "../components/url";
-import { CharSummary } from "../components/Summary/CharSummary";
-import { noneItem } from "../components/variables";
-import { on } from "events";
-import { ItemPartProps } from "../components/Items/props";
-import { ItemMaterialComponent } from "../components/Items/Components/ItemMaterialComponent";
-import { ItemEnchantmentBonusComponent } from "../components/Items/Components/ItemEnchantmentBonusComponent";
-import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
-import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
-import { ItemEnchantmentsComponent } from "../components/Items/Components/ItemEnchantmentComponent";
-import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
-import { ItemFailureComponent } from "../components/Items/Components/ItemFailureComponent";
-import { ItemPenalityComponent } from "../components/Items/Components/ItemPenalityComponent";
-import { ItemMaxDexComponent } from "../components/Items/Components/ItemMaxDexComponent";
-import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
+import {
+  noneArmor,
+  noneItem,
+  noneShield,
+  noneWeapon
+} from "../components/variables";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -64,6 +56,14 @@ export type FiltroItems = {
   magic: itemInDrop[];
 };
 
+export type ItemToSend = {
+  id: number;
+  item?: { id: number };
+  material?: string;
+  enchantment?: { id: number }[];
+  enchantmentBonus?: number;
+};
+
 export const Items = () => {
   const { charId } = useParams();
 
@@ -71,11 +71,20 @@ export const Items = () => {
   const [filtroList, setFiltroList] = useState<FiltroItems>();
   const [inventory, setInventory] =
     useState<(Armor | Shield | Weapon | Item | WonderousItem)[]>();
-  const [inventoryTotal, setInventoryTotal] = useState<number>(0);
   const [backpack, setBackpack] = useState<WonderousItem[]>([]);
+  const [inventoryToSend, setInventoryToSend] = useState<ItemToSend[]>([]);
+  const [backpackToSend, setBackpackToSend] = useState<ItemToSend[]>([]);
+
+  const [inventoryCost, setInventoryCost] = useState<number[]>([]);
+  const [backpackCost, setBackpackCost] = useState<number[]>([]);
+
+  const [inventoryTotal, setInventoryTotal] = useState<number>(0);
   const [backpackTotal, setBackpackTotal] = useState<number>(0);
+  
+  
+  
   const [tresure, setTresure] = useState<number>(0);
-  const [totalCost, setTotalCost] = useState(0);
+  // const [totalCost, setTotalCost] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -126,25 +135,27 @@ export const Items = () => {
             : []
         );
 
+        const newInv = [
+          moddedInventory.armor,
+          moddedInventory.shield,
+          moddedInventory.weaponOne,
+          moddedInventory.weaponTwo,
+          moddedInventory.weaponThree,
+          moddedInventory.weaponFour,
+          moddedInventory.weaponFive,
+          moddedInventory.head,
+          moddedInventory.neck,
+          moddedInventory.arms,
+          moddedInventory.ringOne,
+          moddedInventory.ringTwo,
+          moddedInventory.cloth,
+          moddedInventory.cloak,
+          moddedInventory.belt,
+          moddedInventory.legs
+        ];
+
         setInventory((prevInventory) => {
-          return [
-            moddedInventory.armor,
-            moddedInventory.shield,
-            moddedInventory.weaponOne,
-            moddedInventory.weaponTwo,
-            moddedInventory.weaponThree,
-            moddedInventory.weaponFour,
-            moddedInventory.weaponFive,
-            moddedInventory.head,
-            moddedInventory.neck,
-            moddedInventory.arms,
-            moddedInventory.ringOne,
-            moddedInventory.ringTwo,
-            moddedInventory.cloth,
-            moddedInventory.cloak,
-            moddedInventory.belt,
-            moddedInventory.legs
-          ];
+          return [...newInv];
         });
       } catch (error) {
         console.log(error);
@@ -153,81 +164,64 @@ export const Items = () => {
     fetchData();
   }, []);
 
-  const handleChangeItem = (n: number, updatedItem: Item, cost: number) => {
-    const itemWithCost = {
-      ...updatedItem,
-      cost: cost
-    };
+  const handleChangeItem = (
+    n: number,
+    updatedItem: Item | Armor | Shield | Weapon | WonderousItem,
+    cost: number
+  ) => {
+    const inv: number[] = inventoryCost;
+    inv[n] = cost;
 
-    if (inventory) {
-      setInventory((prev) => {
-        if (prev) {
-          const updated = [...prev];
-          updated[n] = itemWithCost;
+    const tot = inv.reduce((tot, i) => tot + i, 0);
+    setInventoryTotal(tot);
 
-          // if(n === 6){
-          // console.log("prev: ", prev.flatMap((i) => i.cost));
-          // console.log("updated: ", updated.flatMap((i) => i.cost));
-          // console.log("updated.reduce: ", updated.reduce(
-          //   (tot, item) => tot + (item.cost || 0),
-          //   0
-          // ));
-          // }
-          const total = updated.reduce(
-            (tot, item) => tot + (item.cost || 0),
-            0
-          );
-          setInventoryTotal(total);
-          return updated;
-        }
-      });
-    }
+    const updateItem = createItemsInInventory(updatedItem);
+    const newInv = inventoryToSend;
+    newInv[n] = updateItem;
+    setInventoryToSend(newInv);
   };
-
-  // useEffect(() => {
-  //   if (inventory) {
-  //     const total = inventory.reduce((tot, item) => tot + (item.cost || 0), 0);
-  //     setInventoryTotal(total);
-  //   }
-  // }, [inventory]);
-
-  // useEffect(() => {
-  //   if (inventory) {
-  //     console.log("Inventory updated!", inventory[0].cost);
-  //   }
-  // }, [inventory]);
 
   const handleChangeBackpack = (
     n: number,
-    i: Item | Armor | Shield | Weapon | WonderousItem
+    updatedItem: Item | Armor | Shield | Weapon | WonderousItem,
+    cost: number
   ) => {
-    setBackpack((prevBackpack) => {
-      if (prevBackpack) {
-        let newBackpack = [...prevBackpack];
+    const inv: number[] = backpackCost;
+    inv[n] = cost;
+    const tot = inv.reduce((tot, i) => tot + i, 0);
+    console.log(inv)
+    setBackpackTotal(tot);
 
-        newBackpack[n] = { ...(i as WonderousItem) };
+    const updateItem = createItemsInInventory(updatedItem);
+    const newInv = backpackToSend;
+    newInv[n] = updateItem;
+    setBackpackToSend(newInv);
 
-        // Rimuovi tutti gli item con id === 4
-        newBackpack = newBackpack.filter((item) => item.id !== 4);
-
-        // Aggiungi 'noneItem' (o un altro item con id === 4) in fondo
-        newBackpack.push(noneItem);
-
-        return newBackpack;
-      }
-
-      return prevBackpack;
-    });
+    const updated = [...backpack];
+    updated[n] = updatedItem as WonderousItem;
+    setBackpack(updated);
   };
 
-  const handleConfirm = () => {
-    if (inventory && inventory.length > 0) {
-      const inventoryToSend = sendItemsInInventory(inventory);
-      console.log(inventoryToSend);
+  useEffect(() => {
+    const countNone = backpack.filter((item) => item.id === 4).length;
 
-      axios.post(urlItemsBuy + charId, inventoryToSend);
-      window.location.reload();
+    if (countNone > 1) {
+      let cleaned = backpack.filter((item) => item.id !== 4);
+      cleaned = [...cleaned, noneItem];
+      setBackpack(cleaned);
+    } else if (countNone === 0) {
+      setBackpack((prev) => [...prev, noneItem]);
     }
+  }, [backpack]);
+
+  const handleConfirm = () => {
+    // if (inventory && inventory.length > 0) {
+    //   const inventoryToSend = sendItemsInInventory(inventory);
+    console.log(inventoryToSend);
+
+    // axios.post(urlItemsBuy + charId, inventoryToSend);
+    // window.location.reload();
+    // }
   };
 
   const inventoryListRef = useRef<HTMLDivElement>(null);
@@ -279,12 +273,10 @@ export const Items = () => {
           }}
         />
       )}
-
       <p></p>
       <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
       <div>
         <p>
-          <span>{inventoryTotal}</span>
           <span>
             <button className="rpgui-button" onClick={handleConfirm}>
               <p>confirm</p>
@@ -294,7 +286,7 @@ export const Items = () => {
             tresure: {tresure}
           </span>
           <span className="rpgui-container-framed-grey">
-            actual: {inventoryTotal + backpackTotal}
+            actual: {tresure - inventoryTotal - backpackTotal}
           </span>
         </p>
       </div>
@@ -449,7 +441,6 @@ export const Items = () => {
       </div>
       <div>
         <p>
-          <span>{inventoryTotal}</span>
           <span>
             <button className="rpgui-button" onClick={handleConfirm}>
               <p>confirm</p>
@@ -459,7 +450,7 @@ export const Items = () => {
             tresure: {tresure}
           </span>
           <span className="rpgui-container-framed-grey">
-            actual: {totalCost}
+            actual: {tresure - inventoryTotal - backpackTotal}
           </span>
         </p>
       </div>
@@ -472,7 +463,7 @@ export type ItemInventoryProps = {
   item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem;
   sizeId: number;
   filtro: FiltroItems | itemInDrop[];
-  onAction: (
+  onAction?: (
     n: number,
     item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem,
     cost: number
@@ -507,28 +498,11 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
   const specificFiltro =
     "magic" in filtro ? specificFilter(n, filtro) : (filtro as itemInDrop[]);
 
-
-  // useEffect(() => {
-  //   if (theItem && costItem) {
-  //     onAction(
-  //       n,
-  //       {
-  //         ...theItem,
-  //         cost: costItem,
-  //         material: materialItem ?? undefined,
-  //         enchantment: enchantmentItem ?? undefined
-  // enchantmentBonus: enchantmentBonusItem ?? undefined
-  //       },
-  //       cotItem
-  //     );
-  //   }
-  // }, [costItsem]);
-
   const handleNewItems = (
     optionItem?: Item | Armor | Shield | Weapon | WonderousItem
   ) => {
     if (optionItem) {
-      setTheItem(optionItem);
+      setTheItem({ ...theItem, ...optionItem });
     }
   };
 
@@ -560,13 +534,21 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     }
   };
   const handleCost = (option: number) => {
-    if (theItem) {
-      const updatedItem = {
-        ...theItem,
-        cost: option
-      };
-      setTheItem({ ...theItem, ...updatedItem });
-    }
+    if (onAction && theItem) onAction(n, theItem, option);
+  };
+
+  const handleNoneItem = () => {
+    if (theItem && n === 0 && "armorName" in theItem)
+      setTheItem({ ...theItem, ...noneArmor });
+    if (theItem && n === 0 && !("armorName" in theItem))
+      setTheItem({ ...theItem, ...noneItem });
+    if (theItem && n === 1 && "shieldName" in theItem) setTheItem(noneShield);
+    if (theItem && n === 1 && !("shieldName" in theItem)) setTheItem(noneItem);
+    if (theItem && [2, 3, 4, 5, 6].includes(n) && "weaponName" in theItem)
+      setTheItem(noneWeapon);
+    if (theItem && [2, 3, 4, 5, 6].includes(n) && !("weaponName" in theItem))
+      setTheItem(noneItem);
+    if ([7, 8, 9, 10, 11, 12, 13, 14, 15].includes(n)) setTheItem(noneItem);
   };
 
   const numerini: string[] = ["I", "II", "III", "IV", "V"];
@@ -604,6 +586,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
                 (theItem as Weapon).weaponName ||
                 (theItem as WonderousItem).name
               }
+              onAction={handleNoneItem}
               setTheItem={handleNewItems}
             />
           </div>
@@ -642,7 +625,9 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
           {"weight" in theItem && (
             <ItemWeightComponent
               weightItem={theItem.weight}
-              materialItem={"material" in theItem ? theItem.material : undefined}
+              materialItem={
+                "material" in theItem ? theItem.material : undefined
+              }
             />
           )}
           {"penality" in theItem && (
@@ -665,7 +650,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
             />
           )}
 
-          {"armorType" in theItem && (
+          {"armorType" in theItem ? (
             <ItemCostComponent
               costItem={theItem.cost}
               itemTypeItem={theItem.itemType}
@@ -676,8 +661,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
               materialItem={theItem.material}
               setCostItem={handleCost}
             />
-          )}
-          {"weaponName" in theItem && (
+          ) : "weaponName" in theItem ? (
             <ItemCostComponent
               costItem={theItem.cost}
               itemTypeItem={theItem.itemType}
@@ -688,12 +672,13 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
               materialItem={theItem.material}
               setCostItem={handleCost}
             />
-          )}
-          {"wondrousType" in theItem && (
-            <ItemCostComponent
-              costItem={theItem.cost}
-              setCostItem={handleCost}
-            />
+          ) : (
+            "wondrousType" in theItem && (
+              <ItemCostComponent
+                costItem={theItem.cost}
+                setCostItem={handleCost}
+              />
+            )
           )}
         </div>
       </div>

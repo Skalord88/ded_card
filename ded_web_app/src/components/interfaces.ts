@@ -1,3 +1,4 @@
+import { ItemToSend } from "../pages/Items";
 import { Abilitys } from "./Abilitys/Interface";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
@@ -229,16 +230,6 @@ export type Inventory = {
   legs: WonderousItem; // 16
 
   // hands: WonderousItem[]; // 11
-}
-
-export type ItemToSend = {
-  id: number | null;
-  itemId?: number;
-  name?: string | null
-  enchantment?: { id: number }[] | null
-  material?: string | null
-  cost?: number | null
-  enchantmentBonus?: number | null
 }
 
 export type InventoryOfItemsToSend = {

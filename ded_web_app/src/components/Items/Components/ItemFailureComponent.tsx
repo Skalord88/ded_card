@@ -12,9 +12,9 @@ export const ItemFailureComponent: React.FC<ItemPartProps> = ({
   )
   return (
     <div>
-      {failureItem && <p>
+      {<p>
         <span style={{ color: "yellow" }}>failure: </span>
-        {failure}%
+        {failure?? failureItem}%
       </p>}
     </div>
   );

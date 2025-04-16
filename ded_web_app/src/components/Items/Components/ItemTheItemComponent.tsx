@@ -1,9 +1,11 @@
 import { DropdownComponent } from "../../DropDown/DropDown";
+import { FormattingText } from "../../Formatting/Function";
 import { ItemPartProps } from "../props";
 
 export const ItemTheItemComponent: React.FC<ItemPartProps> = ({
   filtro,
   nameItem,
+  onAction,
   setTheItem
 }) => {
 
@@ -12,9 +14,9 @@ export const ItemTheItemComponent: React.FC<ItemPartProps> = ({
       {filtro && setTheItem && (
         <DropdownComponent options={filtro} onAction={setTheItem} />
       )}
-      <p>
+      <p onClick={onAction}>
         <span style={{ color: "yellow" }}>name: </span>
-        {nameItem}
+        {FormattingText(nameItem?? "")}
       </p>
     </div>
   );

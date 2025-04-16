@@ -8,17 +8,19 @@ export const ItemPenalityComponent: React.FC<ItemPartProps> = ({
 }) => {
   // console.log(penalityItem, materialItem, enchantmentBonusItem)
   const newPenality =
-  materialItem &&
-  penalityItem &&
-   reMaterialPerfectPenality(
-    materialItem, penalityItem, enchantmentBonusItem !== 0? true : false
-  )
-  
+    materialItem &&
+    penalityItem &&
+    reMaterialPerfectPenality(
+      materialItem,
+      penalityItem,
+      enchantmentBonusItem !== 0 ? true : false
+    );
+
   return (
     <div>
       <p>
         <span style={{ color: "yellow" }}>penality: </span>
-        {newPenality}
+        {newPenality?? penalityItem}
       </p>
     </div>
   );

@@ -15,7 +15,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
 
   useEffect(() => {
     setDropItem(undefined)
-  },[options, dropItem])
+  },[dropItem])
 
   const selectItem = (option: itemInDrop | undefined) => {
     if (!option) {

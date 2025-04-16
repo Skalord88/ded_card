@@ -1,3 +1,5 @@
+import { FormattingText } from "../../Formatting/Function";
+
 export enum MaterialItem {
   MITHRAL = "MITHRAL",
   DARKWOOD = "DARKWOOD",
@@ -21,7 +23,7 @@ export const reMaterialArmType = (
         : armorType;
     }
   }
-  return armorType;
+  return FormattingText(armorType);
 };
 
 export const reMaterialWeight = (
@@ -46,8 +48,8 @@ export const reMaterialPerfectPenality = (
   const normalMat: boolean = material ? ["WOOD", "LEATHER", "METAL"].includes(material) : false;
   const prf: number = perfect ? 1 : 0;
 
-  const bonus: number = specialMat? 2 + prf : normalMat ? prf : prf
-  return penality + bonus > 0 ? 0 : penality + bonus;
+  const bonus: number = specialMat? 3 : !normalMat ? 1 : prf
+  if(penality + bonus > 0 ) {return 0} else { return penality + bonus}
 };
 
 export const reMaterialMaxDex = (

@@ -14,7 +14,7 @@ export const ItemArmorTypeComponent: React.FC<ItemPartProps> = ({
       <div>
         <p>
           <span style={{ color: "yellow" }}>{"armor type: "}</span>
-          <span>{armorType}</span>
+          <span>{armorType?? armorTypeItem}</span>
         </p>
       </div>
     );

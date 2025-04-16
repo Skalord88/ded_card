@@ -9,61 +9,64 @@ export const ItemCostComponent: React.FC<ItemPartProps> = ({
   enchantmentBonusItem,
   weightItem,
   armorTypeItem,
-  materialItem
+  materialItem,
+  setCostItem
 }) => {
   const [cost, setCost] = useState<number>(0);
 
   useEffect(() => {
-    if (costItem) {
-      if (materialItem && weightItem) {
-        if (
-          itemTypeItem &&
-          ["ARMOR", "SHIELD"].includes(itemTypeItem) &&
+    // if (!costItem) return;
+
+    let finalCost = costItem;
+
+    if (materialItem && weightItem) {
+      const enchantCosts = enchantmentItem?.flatMap((en) => en.cost) ?? [];
+      const enchantBonus = enchantmentBonusItem ?? 0;
+
+      if (itemTypeItem === "WEAPON") {
+        finalCost = calculateCost(
+          "Weapon",
+          costItem?? 0,
+          enchantCosts,
+          enchantBonus,
+          materialItem,
+          weightItem,
+          itemTypeItem
+        );
+      } else if (
+        ["ARMOR", "SHIELD"].includes(itemTypeItem || "") &&
+        armorTypeItem
+      ) {
+        finalCost = calculateCost(
+          "Armor",
+          costItem?? 0,
+          enchantCosts,
+          enchantBonus,
+          materialItem,
+          weightItem,
           armorTypeItem
-        ) {
-          const costo = calculateCost(
-            "Armor",
-            costItem,
-            enchantmentItem?.flatMap((en) => en.cost) ?? [],
-            enchantmentBonusItem ?? 0,
-            materialItem,
-            weightItem,
-            armorTypeItem
-          );
-          setCost(costo);
-        }
-        if (itemTypeItem && itemTypeItem === "WEAPON") {
-          const costo = calculateCost(
-            "Weapon",
-            costItem,
-            enchantmentItem?.flatMap((en) => en.cost) ?? [],
-            enchantmentBonusItem ?? 0,
-            materialItem,
-            weightItem,
-            itemTypeItem
-          );
-          setCost(costo);
-        }
-      } else {
-        const costo = costItem;
-        setCost(costo);
+        );
       }
     }
+
+    setCost(finalCost?? 0);
+    if(setCostItem) setCostItem(finalCost?? 0)
   }, [
-    armorTypeItem,
     costItem,
-    enchantmentBonusItem,
-    enchantmentItem,
     itemTypeItem,
+    enchantmentItem,
+    enchantmentBonusItem,
     materialItem,
-    weightItem
+    weightItem,
+    armorTypeItem,
   ]);
+
 
   return (
     <div>
       <p>
         <span style={{ color: "yellow" }}>{"cost: "}</span>
-        <span>{cost}</span>
+        {<span>{cost}</span>}
       </p>
     </div>
   );

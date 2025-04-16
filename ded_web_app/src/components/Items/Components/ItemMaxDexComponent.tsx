@@ -11,7 +11,7 @@ export const ItemMaxDexComponent: React.FC<ItemPartProps> = ({
     <div>
       <p>
         <span style={{ color: "yellow" }}>maxDex: </span>
-        {maxDex}
+        {maxDex?? maxDexItem}
       </p>
     </div>
   );
