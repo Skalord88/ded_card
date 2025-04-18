@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
@@ -80,9 +80,7 @@ export const Items = () => {
 
   const [inventoryTotal, setInventoryTotal] = useState<number>(0);
   const [backpackTotal, setBackpackTotal] = useState<number>(0);
-  
-  
-  
+
   const [tresure, setTresure] = useState<number>(0);
   // const [totalCost, setTotalCost] = useState(0);
 
@@ -189,7 +187,6 @@ export const Items = () => {
     const inv: number[] = backpackCost;
     inv[n] = cost;
     const tot = inv.reduce((tot, i) => tot + i, 0);
-    console.log(inv)
     setBackpackTotal(tot);
 
     const updateItem = createItemsInInventory(updatedItem);
@@ -217,9 +214,13 @@ export const Items = () => {
   const handleConfirm = () => {
     // if (inventory && inventory.length > 0) {
     //   const inventoryToSend = sendItemsInInventory(inventory);
-    console.log(inventoryToSend);
+    const itemsToSend = {
+        backpack: backpackToSend,
+        inventory: inventoryToSend
+    }
 
-    // axios.post(urlItemsBuy + charId, inventoryToSend);
+    console.log(itemsToSend)
+    // axios.post(urlItemsBuy + charId, itemsToSend)
     // window.location.reload();
     // }
   };
@@ -287,6 +288,11 @@ export const Items = () => {
           </span>
           <span className="rpgui-container-framed-grey">
             actual: {tresure - inventoryTotal - backpackTotal}
+          </span>
+          <span>
+            <button className="rpgui-button">
+              <Link to={"/attack/" + charId}>to attacks</Link>
+            </button>
           </span>
         </p>
       </div>
@@ -451,6 +457,11 @@ export const Items = () => {
           </span>
           <span className="rpgui-container-framed-grey">
             actual: {tresure - inventoryTotal - backpackTotal}
+          </span>
+          <span>
+            <button className="rpgui-button">
+              <Link to={"/attack/" + charId}>to attacks</Link>
+            </button>
           </span>
         </p>
       </div>

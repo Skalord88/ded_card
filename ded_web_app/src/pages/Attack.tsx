@@ -7,12 +7,16 @@ import { emptyAttacks } from "../components/variables";
 import { SetSetWeaponListFromDB } from "../components/functions";
 import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
 import { MapOfAttack } from "../components/Attack/MapOfAttack";
+import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
+import { CharToModify, modifyCharacter } from "../components/Prerequisite/functions/modifyCharacter";
+import { createModChar } from "../components/Prerequisite/functions/modChar";
 
 export function Attack() {
 
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>()
+  const [modChar, setModChar] = useState<CharToModify>()
   const [attack, setAttack] = useState<Attacks>(emptyAttacks)
   const [listFromDB, setListFromDB] = useState<Weapon[]>([])
   const [bab, setBab] = useState<number>(0)
@@ -22,9 +26,10 @@ export function Attack() {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
-        setAttack(resChar.data.attacks);
-        setListFromDB(SetSetWeaponListFromDB(resChar.data.inventory));
-        setBab(CountBabFromClassPc(resChar.data))
+        setModChar(createModChar(resChar.data))
+        // setAttack(resChar.data.attacks);
+        // setListFromDB(SetSetWeaponListFromDB(resChar.data.inventory));
+        // setBab(CountBabFromClassPc(resChar.data))
 
       } catch (error) {
         console.error(error);
@@ -45,76 +50,8 @@ export function Attack() {
   return (
     <>
       <div className="rpgui-container-framed-grey">
-              {char?
-              <>
-              <div style={{display:"grid"}}>
-              <div
-              style={{
-                gridColumn: 1,
-                gridRow: 1
-              }}
-              >bab: +{bab}</div>
-              {char?.inventory.armor ? <div
-              style={{
-                gridColumn: 1,
-                gridRow: 2
-              }}
-              >armor: {char?.inventory.armor.name}</div> : <></>}
-              {char?.inventory.shield ? <div
-              style={{
-                gridColumn: 1,
-                gridRow: 3
-              }}
-              >shield: {char?.inventory.shield.name}</div> : <></>}
-              {char?.inventory.weaponOne ? <div
-              style={{
-                gridColumn: 2,
-                gridRow: 1
-              }}
-              >I: {char?.inventory.weaponOne.name}</div> : <></>}
-              {char?.inventory.weaponTwo ? <div
-              style={{
-                gridColumn: 2,
-                gridRow: 2
-              }}
-              >II: {char?.inventory.weaponTwo.name}</div> : <></>}
-              {char?.inventory.weaponThree ? <div
-              style={{
-                gridColumn: 2,
-                gridRow: 3
-              }}
-              >III: {char?.inventory.weaponThree.name}</div> : <></>}
-              {char?.inventory.weaponFour ? <div
-              style={{
-                gridColumn: 2,
-                gridRow: 4
-              }}
-              >IV: {char?.inventory.weaponFour.name}</div> : <></>}
-              {char?.inventory.weaponFive ? <div
-              style={{
-                gridColumn: 2,
-                gridRow: 5
-              }}
-              >V: {char?.inventory.weaponFive.name}</div> : <></>}
-              </div>
-              </>
-              :
-              <>...loading character...</>  
-            }
-            <div className="container-item">
-              <button onClick={confirmAttack}>set Attacks</button>
-              {char && attack ?
-                <MapOfAttack
-                inventory={listFromDB}
-                attacks={attack}
-                bab={bab}
-                ability={char?.abilitys}
-                setListOfAttack={setAttackInDB}
-                />
-              :
-              <>...loading inventory...</>
-              }
-            </div>
+        {modChar && <MapOfAttackComponent char={modChar} />}
+
       </div>
     </>
   );

@@ -85,17 +85,6 @@ export const findAllProficency = (
   };
 };
 
-// export const createWeaponItemsInInventory = (
-//   weapons: Weapon[]
-// ): ItemToSend[] => {
-//   return weapons.map((w) => ({
-//     id: null,
-//     itemId: w.itemId ?? 0,
-//     material: w.material ?? undefined,
-//     enchantmentBonus: w.enchantmentBonus ?? 0
-//   }));
-// };
-
 export const createItemsInInventory = (
   i: Weapon | Item | WonderousItem | Armor | Shield
 ): ItemToSend => {
@@ -106,7 +95,7 @@ export const createItemsInInventory = (
           ? { id: i.itemId ?? 0 }
           : undefined,
           material:
-        "itemId" in i ? i.material : undefined,
+        "itemId" in i ? (typeof i.material === "string" && ["LEATHER", "WOOD", "METAL"].includes(i.material)) ? undefined : i.material : undefined,
       enchantment:
         "itemId" in i
           ? i.enchantment?.flatMap((en) =>
