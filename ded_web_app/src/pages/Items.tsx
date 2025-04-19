@@ -58,7 +58,7 @@ export type FiltroItems = {
 
 export type ItemToSend = {
   id: number;
-  item?: { id: number };
+  itemId?: number;
   material?: string;
   enchantment?: { id: number }[];
   enchantmentBonus?: number;
@@ -220,7 +220,7 @@ export const Items = () => {
     }
 
     console.log(itemsToSend)
-    // axios.post(urlItemsBuy + charId, itemsToSend)
+    axios.post(urlItemsBuy + charId, itemsToSend)
     // window.location.reload();
     // }
   };

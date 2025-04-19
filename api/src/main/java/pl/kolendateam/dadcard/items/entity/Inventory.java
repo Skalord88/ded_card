@@ -17,9 +17,12 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.ItemsToSendDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
+import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -154,12 +157,15 @@ public class Inventory {
     List<EnchantedItems> enchantedItemsList = enchantedItemsRepository.findAll();
 
     EnchantedItemsDTO dto = inventoryDTO.inventory.get(0);
+
     EnchantedItems newArmor = new EnchantedItems(dto, itemsRepository);
 
     Optional<EnchantedItems> existingOpt = enchantedArmorShieldWeaponExist(
       newArmor,
       enchantedItemsList
     );
+
+    System.out.println("existingOpt " + existingOpt);
 
     if (existingOpt.isPresent()) {
       this.armor = existingOpt.get();
@@ -168,7 +174,6 @@ public class Inventory {
     }
 
     System.out.println("Armor updated: " + this.armor);
-
     dto = inventoryDTO.inventory.get(1);
     EnchantedItems newShield = new EnchantedItems(dto, itemsRepository);
 
@@ -252,19 +257,29 @@ public class Inventory {
     }
 
     System.out.println("weaponFive updated: " + this.weaponFive);
-    // WondrousItemsDTO dtoItem = inventoryDTO.inventory.get(8);
-    // newWeapon = new EnchantedItems(dto, itemsRepository);
 
-    // existingOpt =
-    //   enchantedArmorShieldWeaponExist(newWeapon, enchantedItemsList);
+    EnchantedItemsDTO dtoItem = inventoryDTO.inventory.get(8);
+    Optional<Items> itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
+    }
+    Items existingItem = itemOpt.get();
 
-    // if (existingOpt.isPresent()) {
-    //   this.weaponFive = existingOpt.get();
-    // } else {
-    //   this.weaponFive = enchantedItemsRepository.save(newWeapon);
-    // }
+    ///da aggiustare
+    if (existingItem != null || existingItem.getId() == 4) {
+      if (this.arms == null) {
+        this.arms = new WondrousItems(existingItem.getId());
+      } else {
+        if (this.arms.getId() != existingItem.getId() ) {
+          this.arms = new WondrousItems(existingItem.getId());
+        }
+      }
+    }
 
-    // System.out.println("weaponFive updated: " + this.weaponFive);
+    System.out.println("arms updated: " + this.arms);
   }
 
   public Optional<EnchantedItems> enchantedArmorShieldWeaponExist(
@@ -274,11 +289,33 @@ public class Inventory {
     return enchantedItemsList
       .stream()
       .filter(en ->
-        Objects.equals(newEnchanted.getItem(), en.getItem()) &&
+        newEnchanted.getItem().getId() == en.getItem().getId() &&
         Objects.equals(newEnchanted.getMaterial(), en.getMaterial()) &&
         newEnchanted.getEnchantmentBonus() == en.getEnchantmentBonus() &&
-        newEnchanted.getEnchantment() == en.getEnchantment()
+        areEnchantmentsEqualById(
+          newEnchanted.getEnchantment(),
+          en.getEnchantment()
+        )
       )
       .findFirst();
+  }
+
+  private boolean areEnchantmentsEqualById(
+    List<Enchantment> list1,
+    List<Enchantment> list2
+  ) {
+    if (list1 == null && list2 == null) {
+      return true;
+    }
+    if (list1 == null || list2 == null || list1.size() != list2.size()) {
+      return false;
+    }
+
+    // Creare una mappa degli ID per entrambe le liste
+    List<Integer> ids1 = list1.stream().map(Enchantment::getId).toList();
+    List<Integer> ids2 = list2.stream().map(Enchantment::getId).toList();
+
+    // Confrontare gli ID
+    return ids1.containsAll(ids2) && ids2.containsAll(ids1);
   }
 }

@@ -12,7 +12,7 @@ import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 public class EnchantedItemsDTO {
 
   public Integer id;
-  public int itemId;
+  public Integer itemId;
   public String name;
   public List<EnchantmentDTO> enchantment;
   public Integer enchantmentBonus;
@@ -27,8 +27,12 @@ public class EnchantedItemsDTO {
 
   public EnchantedItemsDTO(EnchantedItems enchantedItems) {
     this.id = enchantedItems.getId();
-    this.name = enchantedItems.getName();
-    this.itemId = enchantedItems.getItem().getId();
+    this.name =
+      enchantedItems.getName() != null ? enchantedItems.getName() : null;
+    this.itemId =
+      enchantedItems.getItem() != null
+        ? enchantedItems.getItem().getId()
+        : null;
     this.enchantment =
       enchantedItems.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(

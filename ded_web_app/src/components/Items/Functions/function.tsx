@@ -90,9 +90,9 @@ export const createItemsInInventory = (
 ): ItemToSend => {
   return {
       id: i.id ?? 0,
-      item:
+      itemId:
         "itemId" in i
-          ? { id: i.itemId ?? 0 }
+          ? i.itemId ?? undefined
           : undefined,
           material:
         "itemId" in i ? (typeof i.material === "string" && ["LEATHER", "WOOD", "METAL"].includes(i.material)) ? undefined : i.material : undefined,
