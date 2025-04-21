@@ -12,6 +12,7 @@ import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
+import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @NoArgsConstructor
 public class InventoryDTO implements Serializable {
@@ -91,27 +92,32 @@ public class InventoryDTO implements Serializable {
         : new ArrayList<WondrousItemsDTO>();
 
     this.head =
-      inventory.getHead() != null
+      inventory.getHead() != null &&
+        inventory.getHead() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getHead())
         : null;
 
     this.neck =
-      inventory.getNeck() != null
+      inventory.getNeck() != null &&
+        inventory.getNeck() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getNeck())
         : null;
 
     this.arms =
-      inventory.getArms() != null
+      inventory.getArms() != null &&
+        inventory.getArms() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getArms())
         : null;
 
     this.ringOne =
-      inventory.getRingOne() != null
+      inventory.getRingOne() != null &&
+        inventory.getRingOne() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getRingOne())
         : null;
 
     this.ringTwo =
-      inventory.getRingTwo() != null
+      inventory.getRingTwo() != null &&
+        inventory.getRingTwo() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getRingTwo())
         : null;
 
@@ -121,22 +127,26 @@ public class InventoryDTO implements Serializable {
     //     : new ArrayList<WondrousItemsDTO>();
 
     this.cloth =
-      inventory.getCloth() != null
+      inventory.getCloth() != null &&
+        inventory.getCloth() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth())
         : null;
 
     this.cloak =
-      inventory.getCloth() != null
+      inventory.getCloth() != null &&
+        inventory.getCloak() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloak())
         : null;
 
     this.belt =
-      inventory.getBelt() != null
+      inventory.getBelt() != null &&
+        inventory.getBelt() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getBelt())
         : null;
 
     this.legs =
-      inventory.getLegs() != null
+      inventory.getLegs() != null &&
+        inventory.getLegs() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getLegs())
         : null;
   }

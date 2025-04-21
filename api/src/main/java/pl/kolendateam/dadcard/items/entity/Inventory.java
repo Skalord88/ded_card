@@ -41,31 +41,31 @@ public class Inventory {
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "armor_id", referencedColumnName = "id")
-  EnchantedItems armor;
+  EnchantedItems armor; // 1
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "shield_id", referencedColumnName = "id")
-  EnchantedItems shield;
+  EnchantedItems shield; // 2
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_one", referencedColumnName = "id")
-  EnchantedItems weaponOne;
+  EnchantedItems weaponOne; // 3
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_two", referencedColumnName = "id")
-  EnchantedItems weaponTwo;
+  EnchantedItems weaponTwo; // 4
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_three", referencedColumnName = "id")
-  EnchantedItems weaponThree;
+  EnchantedItems weaponThree; // 5
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_four", referencedColumnName = "id")
-  EnchantedItems weaponFour;
+  EnchantedItems weaponFour; // 6
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "weapon_id_five", referencedColumnName = "id")
-  EnchantedItems weaponFive;
+  EnchantedItems weaponFive; // 7
 
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
@@ -77,23 +77,23 @@ public class Inventory {
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "head_id", referencedColumnName = "id")
-  WondrousItems head;
+  WondrousItems head; // 8
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "neck_id", referencedColumnName = "id")
-  WondrousItems neck;
+  WondrousItems neck; // 9
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "arms_id", referencedColumnName = "id")
-  WondrousItems arms;
+  WondrousItems arms; // 10
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "ring_one_id", referencedColumnName = "id")
-  WondrousItems ringOne;
+  WondrousItems ringOne; // 11
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "ring_two_id", referencedColumnName = "id")
-  WondrousItems ringTwo;
+  WondrousItems ringTwo; // 12
 
   // @ManyToMany(cascade = CascadeType.MERGE)
   // @JoinTable(
@@ -105,19 +105,19 @@ public class Inventory {
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "cloth_id", referencedColumnName = "id")
-  WondrousItems cloth;
+  WondrousItems cloth; // 13
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "cloak_id", referencedColumnName = "id")
-  WondrousItems cloak;
+  WondrousItems cloak; // 14
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "belt_id", referencedColumnName = "id")
-  WondrousItems belt;
+  WondrousItems belt; // 15
 
   @ManyToOne(cascade = CascadeType.MERGE)
   @JoinColumn(name = "legs_id", referencedColumnName = "id")
-  WondrousItems legs;
+  WondrousItems legs; // 16
 
   public Inventory() {
     this.armor = new EnchantedItems();
@@ -165,15 +165,12 @@ public class Inventory {
       enchantedItemsList
     );
 
-    System.out.println("existingOpt " + existingOpt);
-
     if (existingOpt.isPresent()) {
       this.armor = existingOpt.get();
     } else {
       this.armor = enchantedItemsRepository.save(newArmor);
     }
 
-    System.out.println("Armor updated: " + this.armor);
     dto = inventoryDTO.inventory.get(1);
     EnchantedItems newShield = new EnchantedItems(dto, itemsRepository);
 
@@ -185,8 +182,6 @@ public class Inventory {
     } else {
       this.shield = enchantedItemsRepository.save(newShield);
     }
-
-    System.out.println("Shield updated: " + this.shield);
 
     dto = inventoryDTO.inventory.get(2);
     EnchantedItems newWeapon = new EnchantedItems(dto, itemsRepository);
@@ -200,8 +195,6 @@ public class Inventory {
       this.weaponOne = enchantedItemsRepository.save(newWeapon);
     }
 
-    System.out.println("weaponOne updated: " + this.weaponOne);
-
     dto = inventoryDTO.inventory.get(3);
     newWeapon = new EnchantedItems(dto, itemsRepository);
 
@@ -213,8 +206,6 @@ public class Inventory {
     } else {
       this.weaponTwo = enchantedItemsRepository.save(newWeapon);
     }
-
-    System.out.println("weaponTwo updated: " + this.weaponTwo);
 
     dto = inventoryDTO.inventory.get(4);
     newWeapon = new EnchantedItems(dto, itemsRepository);
@@ -228,8 +219,6 @@ public class Inventory {
       this.weaponThree = enchantedItemsRepository.save(newWeapon);
     }
 
-    System.out.println("weaponThree updated: " + this.weaponThree);
-
     dto = inventoryDTO.inventory.get(5);
     newWeapon = new EnchantedItems(dto, itemsRepository);
 
@@ -241,8 +230,6 @@ public class Inventory {
     } else {
       this.weaponFour = enchantedItemsRepository.save(newWeapon);
     }
-
-    System.out.println("weaponFour updated: " + this.weaponFour);
 
     dto = inventoryDTO.inventory.get(6);
     newWeapon = new EnchantedItems(dto, itemsRepository);
@@ -256,30 +243,184 @@ public class Inventory {
       this.weaponFive = enchantedItemsRepository.save(newWeapon);
     }
 
-    System.out.println("weaponFive updated: " + this.weaponFive);
-
-    EnchantedItemsDTO dtoItem = inventoryDTO.inventory.get(8);
+    // head
+    EnchantedItemsDTO dtoItem = inventoryDTO.inventory.get(7);
     Optional<Items> itemOpt = itemsRepository.findById(dtoItem.id);
     if (!itemOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
     }
     Items existingItem = itemOpt.get();
 
-    ///da aggiustare
-    if (existingItem != null || existingItem.getId() == 4) {
-      if (this.arms == null) {
-        this.arms = new WondrousItems(existingItem.getId());
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.head == null) {
+        this.head = (WondrousItems) existingItem;
       } else {
-        if (this.arms.getId() != existingItem.getId() ) {
-          this.arms = new WondrousItems(existingItem.getId());
+        if (this.head.getId() != existingItem.getId()) {
+          this.head = (WondrousItems) existingItem;
         }
       }
     }
 
-    System.out.println("arms updated: " + this.arms);
+    // neck
+    dtoItem = inventoryDTO.inventory.get(8);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.neck == null) {
+        this.neck = (WondrousItems) existingItem;
+      } else {
+        if (this.neck.getId() != existingItem.getId()) {
+          this.neck = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    System.out.println("neck updated: " + this.neck);
+
+    dtoItem = inventoryDTO.inventory.get(9);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.arms == null) {
+        this.arms = (WondrousItems) existingItem;
+      } else {
+        if (this.arms.getId() != existingItem.getId()) {
+          this.arms = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // ringOne
+    dtoItem = inventoryDTO.inventory.get(10);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.ringOne == null) {
+        this.ringOne = (WondrousItems) existingItem;
+      } else {
+        if (this.ringOne.getId() != existingItem.getId()) {
+          this.ringOne = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // ringTwo
+    dtoItem = inventoryDTO.inventory.get(11);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.ringTwo == null) {
+        this.ringTwo = (WondrousItems) existingItem;
+      } else {
+        if (this.ringTwo.getId() != existingItem.getId()) {
+          this.ringTwo = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // cloth
+    dtoItem = inventoryDTO.inventory.get(12);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.cloth == null) {
+        this.cloth = (WondrousItems) existingItem;
+      } else {
+        if (this.cloth.getId() != existingItem.getId()) {
+          this.cloth = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // cloak
+    dtoItem = inventoryDTO.inventory.get(13);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.cloak == null) {
+        this.cloak = (WondrousItems) existingItem;
+      } else {
+        if (this.cloak.getId() != existingItem.getId()) {
+          this.cloak = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // belt
+    dtoItem = inventoryDTO.inventory.get(14);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.belt == null) {
+        this.belt = (WondrousItems) existingItem;
+      } else {
+        if (this.belt.getId() != existingItem.getId()) {
+          this.belt = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    // legs
+    dtoItem = inventoryDTO.inventory.get(15);
+    itemOpt = itemsRepository.findById(dtoItem.id);
+    if (!itemOpt.isPresent()) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
+    }
+    existingItem = itemOpt.get();
+
+    if (existingItem != null && existingItem instanceof WondrousItems) {
+      if (this.legs == null) {
+        this.legs = (WondrousItems) existingItem;
+      } else {
+        if (this.legs.getId() != existingItem.getId()) {
+          this.legs = (WondrousItems) existingItem;
+        }
+      }
+    }
+
+    List<EnchantedItemsDTO> dtoItemList = inventoryDTO.backpack;
+    List<Items> backpackItems = itemsRepository.findAllById(
+      dtoItemList.stream().map(i -> i.id).toList()
+    );
+    if (backpackItems != null) {
+      List<WondrousItems> newBackpack = new ArrayList<WondrousItems>();
+      for (Items item : backpackItems) {
+        if (item instanceof WondrousItems) {
+          newBackpack.add((WondrousItems) item);
+        }
+      }
+      if (newBackpack.size() > 0) {
+        this.backpack = newBackpack;
+      }
+    }
   }
 
   public Optional<EnchantedItems> enchantedArmorShieldWeaponExist(

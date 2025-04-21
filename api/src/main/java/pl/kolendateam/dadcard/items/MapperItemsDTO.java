@@ -56,9 +56,13 @@ public class MapperItemsDTO {
   ) {
     ArrayList<WondrousItemsDTO> itemsListDTO = new ArrayList<WondrousItemsDTO>();
 
-    if (backpack != null) backpack.forEach(item -> {
-      itemsListDTO.add(new WondrousItemsDTO(item));
-    });
+    if (backpack != null) {
+      backpack.forEach(item -> {
+        if (item instanceof WondrousItems) {
+          itemsListDTO.add(new WondrousItemsDTO((WondrousItems) item));
+        }
+      });
+    }
 
     return itemsListDTO;
   }
@@ -116,10 +120,14 @@ public class MapperItemsDTO {
           listDTO.add(MapperItemsDTO.toShieldDTO(item));
         } else if (item.getItem() instanceof Weapons) {
           listDTO.add(MapperItemsDTO.toWeaponDTO(item));
-        } else if (item.getItem() instanceof WondrousItems) {
-          listDTO.add(
-            MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item.getItem())
-          );
+        }
+      }
+    });
+
+    itemsList.forEach(item -> {
+      if (item.getId() >= 1000) {
+        if (item instanceof WondrousItems) {
+          listDTO.add(MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item));
         }
       }
     });

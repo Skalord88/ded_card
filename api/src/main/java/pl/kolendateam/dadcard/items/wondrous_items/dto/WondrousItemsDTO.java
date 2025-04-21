@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @NoArgsConstructor
@@ -20,9 +21,6 @@ public class WondrousItemsDTO implements Serializable {
   public ItemTypeEnum wondrousType;
   public PrerequisiteDTO modifiers;
 
-  // public String general;
-  // public String specific;
-
   public WondrousItemsDTO(WondrousItems item) {
     this.id = item.getId();
     this.name = item.getName();
@@ -36,15 +34,5 @@ public class WondrousItemsDTO implements Serializable {
       item.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
         : null;
-    // this.general =
-    //   item.getWondrousType() != null
-    //     ? item.getWondrousType().getDescription()
-    //     : null;
-    // this.specific =
-    //   item.getWondrousType() != null
-    //     ? item.getWondrousType().getDescription() != null
-    //       ? item.getWondrousType().getDescription()
-    //       : null
-    //     : null;
   }
 }
