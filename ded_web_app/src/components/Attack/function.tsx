@@ -474,51 +474,52 @@ export type AttackElement = {
   ];
 };
 
-export const createAttackDisplay = (char: CharToModify): AttackElement => {
-  const attacksData: AttacksData = getAttacksData(char);
+export const createAttackDisplay = 
+  (attacksData: AttacksData, attacks: Attacks)
+  : AttackElement => {
 
-  let lightOff: Boolean = weaponLight(char.attacks.secondAttackSetOne);
-  let mainTwo: Boolean = weaponTwoHanded(char.attacks.firstAttackSetOne);
+  let lightOff: Boolean = weaponLight(attacks.secondAttackSetOne);
+  let mainTwo: Boolean = weaponTwoHanded(attacks.firstAttackSetOne);
   const wOneSetOne: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.firstAttackSetOne, //w
+    attacks.firstAttackSetOne, //w
     0, // pose
     mainTwo, // main 2 handed
     lightOff, // off hand light
     attacksData
   );
   const wTwoSetOne: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.secondAttackSetOne,
+    attacks.secondAttackSetOne,
     1,
     mainTwo,
     lightOff,
     attacksData
   );
   const wAddSetOne: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.additionalAttackSetOne,
+    attacks.additionalAttackSetOne,
     2,
     mainTwo,
     lightOff,
     attacksData
   );
 
-  lightOff = weaponLight(char.attacks.secondAttackSetTwo);
-  mainTwo = weaponTwoHanded(char.attacks.firstAttackSetTwo);
+  lightOff = weaponLight(attacks.secondAttackSetTwo);
+  mainTwo = weaponTwoHanded(attacks.firstAttackSetTwo);
   const wOneSetTwo: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.firstAttackSetTwo,
+    attacks.firstAttackSetTwo,
     0,
     mainTwo,
     lightOff,
     attacksData
   );
   const wTwoSetTwo: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.secondAttackSetTwo,
+    attacks.secondAttackSetTwo,
     1,
     mainTwo,
     lightOff,
     attacksData
   );
   const wAddSetTwo: WeaponAttackStats = getWeaponAttackStats(
-    char.attacks.additionalAttackSetTwo,
+    attacks.additionalAttackSetTwo,
     2,
     mainTwo,
     lightOff,

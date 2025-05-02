@@ -69,12 +69,11 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
               }
             >
               <div>
-              <p>
-                {weapon.stat.weapon.name}</p>
+                <p>{weapon.stat.weapon.name}</p>
                 {weapon.display.map(
-                  (dis) =>
+                  (dis, index) =>
                     dis.show && (
-                      <div className={styleDiv(dis.type)}>
+                      <div key={index} className={styleDiv(dis.type)}>
                         <p>
                           <D20PopupWeapon
                             type={dis.type}
@@ -128,13 +127,12 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
               }
             >
               <div>
-              <p>
-                {weapon.stat.weapon.name}</p>
+                <p>{weapon.stat.weapon.name}</p>
                 {weapon.display.map(
                   (dis) =>
                     dis.show && (
                       <div className={styleDiv(dis.type)}>
-                        <p>
+
                           <D20PopupWeapon
                             type={dis.type}
                             weapon={weapon.stat.weapon}
@@ -160,7 +158,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                             {dis.dmg}
                           </span>
                           <span> {DiceText(weapon.stat.weapon.critical)}</span>
-                        </p>
+
                       </div>
                     )
                 )}

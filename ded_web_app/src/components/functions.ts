@@ -5,7 +5,9 @@ import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
 import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
+import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { SubRace } from "./Race/Interfaces";
+import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
 
 export function SignNumber(
     number: number
@@ -144,16 +146,34 @@ export function AttackIIRanged(
     return 0;
 }
 
+export const inventoryIncludeUnarmed = (inventory: Inventory): boolean => {
+    return inventory.weaponOne.itemId === 1 ||
+        inventory.weaponTwo.itemId === 1 ||
+        inventory.weaponThree.itemId === 1 ||
+        inventory.weaponFour.itemId === 1 ||
+        inventory.weaponFive.itemId === 1
+}
+export const weaponIncludeUnarmed = (w: Weapon): boolean => {
+    return w.itemId === 1 
+}
+
+// da aggiungere spine su armatura e scudo
 export function SetSetWeaponListFromDB(
-    inventory: Inventory
+    inventory: Inventory,
+    moddedChar: CharToModify
 ): Weapon[] {
     return [
-        inventory.weaponOne,
-        inventory.weaponTwo,
-        inventory.weaponThree,
-        inventory.weaponFour,
-        inventory.weaponFive
-    ]
+        [96,97].includes(inventory.shield.itemId ?? 0) ? shieldLight : null, 
+        [98,99].includes(inventory.shield.itemId ?? 0) ? shieldHeavy : null, 
+
+        weaponIncludeUnarmed(inventory.weaponOne) ? null : inventory.weaponOne,
+        weaponIncludeUnarmed(inventory.weaponTwo) ? null : inventory.weaponTwo,
+        weaponIncludeUnarmed(inventory.weaponThree) ? null : inventory.weaponThree,
+        weaponIncludeUnarmed(inventory.weaponFour) ? null : inventory.weaponFour,
+        weaponIncludeUnarmed(inventory.weaponFive) ? null : inventory.weaponFive,
+
+        inventoryIncludeUnarmed(inventory) ? null : noneWeapon
+    ].filter((weapon): weapon is Weapon => weapon !== null);
 }
 
 export function IndexWeaponOne(

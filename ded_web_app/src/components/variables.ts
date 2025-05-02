@@ -55,6 +55,38 @@ export const noneWeapon: Weapon = {
     range: 0,
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED']
 }
+export const shieldLight: Weapon = {
+    id: 32,
+    itemId: 32,
+    name: "Shield, light",
+    itemType: "WEAPON",
+    weaponName: "SHIELD_LIGHT",
+    cost: 0,
+    weight: 0,
+    size: 'MEDIUM',
+    modifiers: null,
+    description: "A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike.",
+    damage: "D3",
+    critical: "X2",
+    range: -1,
+    type: ['MARTIAL','BLUDGEONING','LIGHT']
+}
+export const shieldHeavy: Weapon = {
+    id: 42,
+    itemId: 42,
+    name: "Shield, heavy",
+    itemType: "WEAPON",
+    weaponName: "SHIELD_HEAVY",
+    cost: 0,
+    weight: 0,
+    size: 'MEDIUM',
+    modifiers: null,
+    description: "A Medium character deals 1d3 points of nonlethal damage with an unarmed strike. A Small character deals 1d2 points of nonlethal damage. A monk or any character with the Improved Unarmed Strike feat can deal lethal or nonlethal damage with unarmed strikes, at her option. The damage from an unarmed strike is considered weapon damage for the purposes of effects that give you a bonus on weapon damage rolls. An unarmed strike is always considered a light weapon. Therefore, you can use the Weapon Finesse feat to apply your Dexterity modifier instead of your Strength modifier to attack rolls with an unarmed strike.",
+    damage: "D4",
+    critical: "X2",
+    range: -1,
+    type: ['BLUDGEONING','MARTIAL','ONE_HANDED']
+}
 
 export const noneItem: WonderousItem = {
     id: 4,
