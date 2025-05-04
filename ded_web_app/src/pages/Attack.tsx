@@ -36,8 +36,8 @@ import {
 export function Attack() {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
+  const [attack, setAttack] = useState<Attacks>();
   const [attackElement, setAttackElement] = useState<AttackElement>();
   const [listFromDB, setListFromDB] = useState<itemInDrop[]>([]);
 
@@ -45,18 +45,16 @@ export function Attack() {
     const fetchData = async () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
-        setChar(resChar.data);
+
         const moddedChar = createModChar(resChar.data);
         setModChar(moddedChar);
         setListFromDB(
           addToDrop(
-            SetSetWeaponListFromDB(resChar.data.inventory, moddedChar),
+            SetSetWeaponListFromDB(moddedChar.inventory),
             "items"
           )
         );
-        setAttackElement(
-          createAttackDisplay(getAttacksData(moddedChar), moddedChar.attacks)
-        );
+        setAttack(moddedChar.attacks);
       } catch (error) {
         console.error(error);
       }
@@ -64,19 +62,44 @@ export function Attack() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    if (modChar && attack) {
+      setAttackElement(createAttackDisplay(getAttacksData(modChar), attack));
+    }
+  }, [attack]);
+
   const handleWeaponAttack = (index: string, option: Weapon) => {
-    if (index === "1.1") {
-      
+    const weapon = option as Weapon;
+    if (attack) {
+      const newAttack: Attacks = {
+        ...attack,
+        firstAttackSetOne:
+          index === "0.1" ? weapon : attack.firstAttackSetOne,
+        secondAttackSetOne:
+          index === "1.1" ? weapon : attack.secondAttackSetOne,
+        additionalAttackSetOne:
+          index === "2.1" ? weapon : attack.additionalAttackSetOne,
+        firstAttackSetTwo:
+          index === "0.2" ? weapon : attack.firstAttackSetTwo,
+        secondAttackSetTwo:
+          index === "1.2" ? weapon : attack.secondAttackSetTwo,
+        additionalAttackSetTwo:
+          index === "2.2" ? weapon : attack.additionalAttackSetTwo
+      };
+      setAttack(newAttack);
+      // setAttackElement(createAttackDisplay(getAttacksData(modChar), newAttack));
     }
   };
 
   const confirmAttack = () => {
-    // axios.post(urlAttacks + charId, attack);
-    window.location.reload();
+    console.log("confirmAttack", attack);
+    axios.post(urlAttacks + charId, attack);
+    // window.location.reload();
   };
 
   return (
     <div>
+      <button className="rpgui-button" onClick={confirmAttack}><p>confirm</p></button>
       {attackElement && (
         <div
           className="rpgui-container-framed-grey"
@@ -85,28 +108,27 @@ export function Attack() {
             gridTemplateColumns: "2fr 2fr",
             gridTemplateRows: "auto auto auto",
             gridTemplateAreas: `
-            "el0 el1"
-            "el2 ."
-            "el3 el4"
-            "el5 ."
+              "el0 el1"
+              "el2 ."
+              "el3 el4"
+              "el5 ."
             `
           }}
         >
           {attackElement.setOne.map((wS1, index) => (
-            <div>
+            <div key={`set1-${index}`}>
               <div
-                key={index}
                 className="rpgui-container-framed-grey"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "1fr 2fr",
                   gridTemplateAreas: `
-                "drop name"
-                ". melee"
-                ". range"
-                ". meleeTwo"
-                ". rangeTwo"
-                `,
+                    "drop name"
+                    ". melee"
+                    ". range"
+                    ". meleeTwo"
+                    ". rangeTwo"
+                  `,
                   gap: "10px",
                   gridArea: "el" + index
                 }}
@@ -115,7 +137,7 @@ export function Attack() {
                   <DropdownComponent
                     options={listFromDB}
                     onAction={(option) =>
-                      handleWeaponAttack(index + ".1", option as Weapon)
+                      handleWeaponAttack(`${index}.1`, option as Weapon)
                     }
                   />
                 </div>
@@ -124,27 +146,96 @@ export function Attack() {
                   <div>
                     <p>{wS1.stat.weapon.weaponName}</p>
                   </div>
-                  {wS1.display.map((wS1D, index) => (
-                    <div key={index + wS1D.type}>
-                      {wS1D.show && (
+                  {wS1.display.map((wS1D, dIndex) => {
+                    const outerKey = `set1-${index}-${dIndex}-${wS1D.type}`;
+                    const dmgDice =
+                      wS1.stat.weapon.damage +
+                      (wS1D.dmg >= 0 ? "+" + wS1D.dmg : wS1D.dmg);
+                    return wS1D.show ? (
+                      <div key={outerKey}>
                         <p>
-                          {wS1D.type}:{" "}
-                          {wS1D.att.map((a) => (
-                            <>
+                          {wS1D.type}:
+                          {wS1D.att.map((a, i) => (
+                            <span key={`${outerKey}-att-${i}`}>
                               {a >= 0 ? " +" : " "}
                               {a}
-                            </>
+                            </span>
                           ))}{" "}
-                          {wS1.stat.weapon.damage}
-                          {wS1D.dmg >= 0 ? " +" + wS1D.dmg : " " + wS1D.dmg}
+                          {dmgDice}
                         </p>
-                      )}
-                    </div>
-                  ))}
+                      </div>
+                    ) : (
+                      <div key={outerKey + dIndex}>
+                        <p>---</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
           ))}
+
+          {attackElement.setTwo.map((wS2, index) => {
+            const realIndex = index + attackElement.setOne.length; // per evitare duplicati
+            const set2GridArea = `el${realIndex}`;
+
+            return (
+              <div key={`set2-${realIndex}`} style={{ gridArea: set2GridArea }}>
+                <div
+                  className="rpgui-container-framed-grey"
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 2fr",
+                    gridTemplateAreas: `
+            "drop name"
+            ". melee"
+            ". range"
+            ". meleeTwo"
+            ". rangeTwo"
+          `,
+                    gap: "10px"
+                  }}
+                >
+                  <div style={{ gridArea: "drop" }}>
+                    <DropdownComponent
+                      options={listFromDB}
+                      onAction={(option) =>
+                        handleWeaponAttack(`${index}.2`, option as Weapon)
+                      }
+                    />
+                  </div>
+
+                  <div style={{ gridArea: "name", justifySelf: "start" }}>
+                    <p>{wS2.stat.weapon.weaponName}</p>
+                    {wS2.display.map((wS2D, dIndex) => {
+                      const outerKey = `set2-${realIndex}-${dIndex}-${wS2D.type}`;
+                      const dmgDice =
+                        wS2.stat.weapon.damage +
+                        (wS2D.dmg >= 0 ? "+" + wS2D.dmg : wS2D.dmg);
+                      return wS2D.show ? (
+                        <div key={outerKey}>
+                          <p>
+                            {wS2D.type}:
+                            {wS2D.att.map((a, i) => (
+                              <span key={`${outerKey}-att-${i}`}>
+                                {a >= 0 ? " +" : " "}
+                                {a}
+                              </span>
+                            ))}{" "}
+                            {dmgDice}
+                          </p>
+                        </div>
+                      ) : (
+                        <div key={outerKey + dIndex}>
+                          <p>---</p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

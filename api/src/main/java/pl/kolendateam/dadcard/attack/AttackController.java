@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.attack;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,8 @@ import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
+import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
 @CrossOrigin
@@ -25,17 +28,20 @@ public class AttackController {
 
   CharacterRepository characterRepository;
   ItemsRepository itemsRepository;
+  EnchantedItemsRepository enchantedItemsRepository;
   AttacksRepository attacksRepository;
 
   @Autowired
   AttackController(
     CharacterRepository characterRepository,
     ItemsRepository itemsRepository,
-    AttacksRepository attacksRepository
+    AttacksRepository attacksRepository,
+    EnchantedItemsRepository enchantedItemsRepository
   ) {
     this.characterRepository = characterRepository;
     this.itemsRepository = itemsRepository;
     this.attacksRepository = attacksRepository;
+    this.enchantedItemsRepository = enchantedItemsRepository;
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
@@ -61,16 +67,13 @@ public class AttackController {
       );
     }
 
-    // List<Items> itemsList = this.itemsRepository.findAll();
+    List<EnchantedItems> itemsList = this.enchantedItemsRepository.findAll();
 
     Attacks characterAttacks = attacksOpt.get();
 
-    // characterAttacks.setCharactersAttacks(characterAttacksDTO, itemsList);
+    characterAttacks.setCharactersAttacks(characterAttacksDTO, itemsList);
 
     this.attacksRepository.save(characterAttacks);
-
-    // Inventory emptyInventory = new Inventory();
-    // List<ClassPc> emptyClassList = new ArrayList<ClassPc>();
 
     return new CharacterDTO(character);
   }

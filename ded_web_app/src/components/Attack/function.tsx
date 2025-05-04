@@ -10,6 +10,7 @@ import {
 import {
   Attacks,
   Enchantment,
+  Inventory,
   SpecialAttacks,
   Weapon
 } from "../interfaces";
@@ -73,60 +74,75 @@ export const getWeaponInventoryIndex = (wId: number, invWeapons: Weapon[]) => {
   return invWeapons.findIndex((w) => w.id === wId);
 };
 
-export const modifyAttacks = (char: CharToModify): Attacks => {
-  if (!char.attacks) {
-    return {
-      firstAttackSetOne: noneWeapon,
-      secondAttackSetOne: noneWeapon,
-      additionalAttackSetOne: noneWeapon,
-      firstAttackSetTwo: noneWeapon,
-      secondAttackSetTwo: noneWeapon,
-      additionalAttackSetTwo: noneWeapon
-    };
-  }
-  
-  const weapons: Weapon[] = [
-    char.inventory.weaponOne?? noneWeapon,
-    char.inventory.weaponTwo?? noneWeapon,
-    char.inventory.weaponThree?? noneWeapon,
-    char.inventory.weaponFour?? noneWeapon,
-    char.inventory.weaponFive?? noneWeapon
-  ];
+// export const modifyAttacks = (
+//   charAttacks: Attacks,
+//   charInventory: Inventory
+// ): Attacks => {
+//   if (!charAttacks) {
+//     return {
+//       firstAttackSetOne: noneWeapon,
+//       secondAttackSetOne: noneWeapon,
+//       additionalAttackSetOne: noneWeapon,
+//       firstAttackSetTwo: noneWeapon,
+//       secondAttackSetTwo: noneWeapon,
+//       additionalAttackSetTwo: noneWeapon
+//     };
+//   }
 
-  const wOneSetOneIndex = char.attacks.firstAttackSetOne
-    ? char.attacks.firstAttackSetOne.id && getWeaponInventoryIndex(char.attacks.firstAttackSetOne.id, weapons)
-    : -1;
-  const wTwoSetOneIndex = char.attacks.secondAttackSetOne
-    ? char.attacks.secondAttackSetOne.id && getWeaponInventoryIndex(char.attacks.secondAttackSetOne.id, weapons)
-    : -1;
-  const wAddSetOneIndex = char.attacks.additionalAttackSetOne
-    ? char.attacks.additionalAttackSetOne.id && getWeaponInventoryIndex(char.attacks.additionalAttackSetOne.id, weapons)
-    : -1;
-  const wOneSetTwoIndex = char.attacks.firstAttackSetTwo
-    ? char.attacks.firstAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.firstAttackSetTwo.id, weapons)
-    : -1;
-  const wTwoSetTwoIndex = char.attacks.secondAttackSetTwo
-    ? char.attacks.secondAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.secondAttackSetTwo.id, weapons)
-    : -1;
-  const wAddSetTwoIndex = char.attacks.additionalAttackSetTwo
-    ? char.attacks.additionalAttackSetTwo.id && getWeaponInventoryIndex(char.attacks.additionalAttackSetTwo.id, weapons)
-    : -1;
+//   const weapons: Weapon[] = [
+//     charInventory.weaponOne ?? noneWeapon,
+//     charInventory.weaponTwo ?? noneWeapon,
+//     charInventory.weaponThree ?? noneWeapon,
+//     charInventory.weaponFour ?? noneWeapon,
+//     charInventory.weaponFive ?? noneWeapon
+//   ];
 
-  return {
-    firstAttackSetOne:
-      wOneSetOneIndex === -1 || !wOneSetOneIndex ? noneWeapon : weapons[wOneSetOneIndex],
-    secondAttackSetOne:
-      wTwoSetOneIndex === -1 || !wTwoSetOneIndex ? noneWeapon : weapons[wTwoSetOneIndex],
-    additionalAttackSetOne:
-      wAddSetOneIndex === -1 || !wAddSetOneIndex ? noneWeapon : weapons[wAddSetOneIndex],
-    firstAttackSetTwo:
-      wOneSetTwoIndex === -1 || !wOneSetTwoIndex ? noneWeapon : weapons[wOneSetTwoIndex],
-    secondAttackSetTwo:
-      wTwoSetTwoIndex === -1 || !wTwoSetTwoIndex ? noneWeapon : weapons[wTwoSetTwoIndex],
-    additionalAttackSetTwo:
-      wAddSetTwoIndex === -1 || !wAddSetTwoIndex ? noneWeapon : weapons[wAddSetTwoIndex]
-  };
-};
+//   const wOneSetOneIndex = charAttacks.firstAttackSetOne.id
+//     ? getWeaponInventoryIndex(charAttacks.firstAttackSetOne.id, weapons)
+//     : -1;
+//   const wTwoSetOneIndex = charAttacks.secondAttackSetOne.id
+//     ? getWeaponInventoryIndex(charAttacks.secondAttackSetOne.id, weapons)
+//     : -1;
+//   const wAddSetOneIndex = charAttacks.additionalAttackSetOne.id
+//     ? getWeaponInventoryIndex(charAttacks.additionalAttackSetOne.id, weapons)
+//     : -1;
+//   const wOneSetTwoIndex = charAttacks.firstAttackSetTwo.id
+//     ? getWeaponInventoryIndex(charAttacks.firstAttackSetTwo.id, weapons)
+//     : -1;
+//   const wTwoSetTwoIndex = charAttacks.secondAttackSetTwo.id
+//     ? getWeaponInventoryIndex(charAttacks.secondAttackSetTwo.id, weapons)
+//     : -1;
+//   const wAddSetTwoIndex = charAttacks.additionalAttackSetTwo.id
+//     ? getWeaponInventoryIndex(charAttacks.additionalAttackSetTwo.id, weapons)
+//     : -1;
+
+//   return {
+//     firstAttackSetOne:
+//       wOneSetOneIndex === -1 || !wOneSetOneIndex
+//         ? noneWeapon
+//         : weapons[wOneSetOneIndex],
+//     secondAttackSetOne:
+//       wTwoSetOneIndex === -1 || !wTwoSetOneIndex
+//         ? noneWeapon
+//         : weapons[wTwoSetOneIndex],
+//     additionalAttackSetOne:
+//       wAddSetOneIndex === -1 || !wAddSetOneIndex
+//         ? noneWeapon
+//         : weapons[wAddSetOneIndex],
+//     firstAttackSetTwo:
+//       wOneSetTwoIndex === -1 || !wOneSetTwoIndex
+//         ? noneWeapon
+//         : weapons[wOneSetTwoIndex],
+//     secondAttackSetTwo:
+//       wTwoSetTwoIndex === -1 || !wTwoSetTwoIndex
+//         ? noneWeapon
+//         : weapons[wTwoSetTwoIndex],
+//     additionalAttackSetTwo:
+//       wAddSetTwoIndex === -1 || !wAddSetTwoIndex
+//         ? noneWeapon
+//         : weapons[wAddSetTwoIndex]
+//   };
+// };
 
 export type AttacksData = {
   bab: number;
@@ -209,7 +225,7 @@ export const getMalus = (
 };
 
 export const isType = (list: string[], find: string | undefined): boolean => {
-  if (!find) return false
+  if (!find) return false;
   return list.includes(find);
 };
 
@@ -217,9 +233,7 @@ export const getBonusComposed = (prer: Prerequisite[], w: Weapon): number => {
   const bonusType: number = prer.reduce(
     (tot, p) =>
       tot +
-      (isType(w.type, p.weaponType)
-        ?  Number(p.attackRoll?.bonus) ?? 0
-        : 0),
+      (isType(w.type, p.weaponType) ? Number(p.attackRoll?.bonus) ?? 0 : 0),
     0
   );
   const bonusItem: number = prer.reduce(
@@ -231,14 +245,12 @@ export const getBonusComposed = (prer: Prerequisite[], w: Weapon): number => {
     0
   );
   return bonusType + bonusItem;
-}
+};
 export const getDmgComposed = (prer: Prerequisite[], w: Weapon): number => {
   const bonusType: number = prer.reduce(
     (tot, p) =>
       tot +
-      (isType(w.type, p.weaponType)
-        ?  Number(p.damageBonus?.bonus) ?? 0
-        : 0),
+      (isType(w.type, p.weaponType) ? Number(p.damageBonus?.bonus) ?? 0 : 0),
     0
   );
   const bonusItem: number = prer.reduce(
@@ -266,11 +278,13 @@ export const getWeaponAttackStats = (
     attacksData.bab - 15
   ];
   const composedBns: number = getBonusComposed(
-    attacksData.charComposedMod.filter(comp => comp.attackRoll)
-    , w);
+    attacksData.charComposedMod.filter((comp) => comp.attackRoll),
+    w
+  );
   const composedDmg: number = getDmgComposed(
-    attacksData.charComposedMod.filter(comp => comp.damageBonus)
-    , w);
+    attacksData.charComposedMod.filter((comp) => comp.damageBonus),
+    w
+  );
   const attNoZero: number[] = att.filter((att) => att > 0);
   const enchanment: number = w.enchantmentBonus
     ? w.enchantmentBonus
@@ -314,9 +328,11 @@ export const getWeaponAttackStats = (
   const dmgStr: number =
     attacksData.strenght +
     (weaponTwoHanded(w) ? Math.floor(attacksData.strenght / 2) : 0) +
-    enchanmentDmg + composedDmg;
+    enchanmentDmg +
+    composedDmg;
   const dmgOffStr: number =
-    Math.floor(attacksData.strenght / 2) + enchanmentDmg  + composedDmg;
+    Math.floor(attacksData.strenght / 2) + enchanmentDmg + composedDmg;
+  // pose === 0 && console.log("w: ", w)
   return {
     weapon: w,
     pose: pose,
@@ -474,10 +490,10 @@ export type AttackElement = {
   ];
 };
 
-export const createAttackDisplay = 
-  (attacksData: AttacksData, attacks: Attacks)
-  : AttackElement => {
-
+export const createAttackDisplay = (
+  attacksData: AttacksData,
+  attacks: Attacks
+): AttackElement => {
   let lightOff: Boolean = weaponLight(attacks.secondAttackSetOne);
   let mainTwo: Boolean = weaponTwoHanded(attacks.firstAttackSetOne);
   const wOneSetOne: WeaponAttackStats = getWeaponAttackStats(

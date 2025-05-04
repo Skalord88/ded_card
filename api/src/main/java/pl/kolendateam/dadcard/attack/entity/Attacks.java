@@ -53,67 +53,90 @@ public class Attacks implements Serializable {
   @JoinColumn(name = "attacks_id_twoadditional", referencedColumnName = "id")
   EnchantedItems additionalAttackSetTwo;
 
-  //   public Attacks() {
-  //     EnchantedItems weapon = new EnchantedItems();
-  //     this.firstAttackSetOne = weapon;
-  //     this.secondAttackSetOne = weapon;
-  //     this.additionalAttackSetOne = weapon;
-  //     this.firstAttackSetTwo = weapon;
-  //     this.secondAttackSetTwo = weapon;
-  //     this.additionalAttackSetTwo = weapon;
-  //   }
-
   public void setCharactersAttacks(
     AttacksDTO characterAttacksDTO,
-    List<EnchantedItems> itemsList
+    List<EnchantedItems> items
   ) {
-    if (characterAttacksDTO.firstAttackSetOne != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.firstAttackSetOne.id) {
-          this.firstAttackSetOne = (EnchantedItems) item;
-          break;
-        }
+    /// firstAttackSetOne
+    int indexWeapon = findIndexItem(
+      characterAttacksDTO.firstAttackSetOne.id,
+      items
+    );
+    if (firstAttackSetOne == null) {
+      firstAttackSetOne = indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.firstAttackSetOne =
+        firstAttackSetOne.getId() == characterAttacksDTO.firstAttackSetOne.id
+          ? firstAttackSetOne
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+    /// secondAttackSetOne
+    indexWeapon =
+      findIndexItem(characterAttacksDTO.secondAttackSetOne.id, items);
+    if (secondAttackSetOne == null) {
+      secondAttackSetOne = indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.secondAttackSetOne =
+        secondAttackSetOne.getId() == characterAttacksDTO.secondAttackSetOne.id
+          ? secondAttackSetOne
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+    /// additionalAttackSetOne
+    indexWeapon =
+      findIndexItem(characterAttacksDTO.additionalAttackSetOne.id, items);
+    if (additionalAttackSetOne == null) {
+      additionalAttackSetOne =
+        indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.additionalAttackSetOne =
+        additionalAttackSetOne.getId() ==
+          characterAttacksDTO.additionalAttackSetOne.id
+          ? additionalAttackSetOne
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+    /// firstAttackSetTwo
+    indexWeapon =
+      findIndexItem(characterAttacksDTO.firstAttackSetTwo.id, items);
+    if (firstAttackSetTwo == null) {
+      firstAttackSetTwo = indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.firstAttackSetTwo =
+        firstAttackSetTwo.getId() == characterAttacksDTO.firstAttackSetTwo.id
+          ? firstAttackSetTwo
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+    /// secondAttackSetTwo
+    indexWeapon =
+      findIndexItem(characterAttacksDTO.secondAttackSetTwo.id, items);
+    if (secondAttackSetTwo == null) {
+      secondAttackSetTwo = indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.secondAttackSetTwo =
+        secondAttackSetTwo.getId() == characterAttacksDTO.secondAttackSetTwo.id
+          ? secondAttackSetTwo
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+    /// additionalAttackSetTwo
+    indexWeapon =
+      findIndexItem(characterAttacksDTO.additionalAttackSetTwo.id, items);
+    if (additionalAttackSetTwo == null) {
+      additionalAttackSetTwo =
+        indexWeapon != -1 ? items.get(indexWeapon) : null;
+    } else {
+      this.additionalAttackSetTwo =
+        additionalAttackSetTwo.getId() ==
+          characterAttacksDTO.additionalAttackSetTwo.id
+          ? additionalAttackSetTwo
+          : indexWeapon != -1 ? items.get(indexWeapon) : null;
+    }
+  }
+
+  public int findIndexItem(int id, List<EnchantedItems> items) {
+    for (int i = 0; i < items.size(); i++) {
+      if (items.get(i).getId() == id) {
+        return i;
       }
     }
-    if (characterAttacksDTO.secondAttackSetOne != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.secondAttackSetOne.id) {
-          this.secondAttackSetOne = (EnchantedItems) item;
-          break;
-        }
-      }
-    }
-    if (characterAttacksDTO.additionalAttackSetOne != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.additionalAttackSetOne.id) {
-          this.additionalAttackSetOne = (EnchantedItems) item;
-          break;
-        }
-      }
-    }
-    if (characterAttacksDTO.firstAttackSetTwo != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.firstAttackSetTwo.id) {
-          this.firstAttackSetTwo = (EnchantedItems) item;
-          break;
-        }
-      }
-    }
-    if (characterAttacksDTO.secondAttackSetTwo != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.secondAttackSetTwo.id) {
-          this.secondAttackSetTwo = (EnchantedItems) item;
-          break;
-        }
-      }
-    }
-    if (characterAttacksDTO.additionalAttackSetTwo != null) {
-      for (EnchantedItems item : itemsList) {
-        if (item.getId() == characterAttacksDTO.additionalAttackSetTwo.id) {
-          this.additionalAttackSetTwo = (EnchantedItems) item;
-          break;
-        }
-      }
-    }
+    return -1;
   }
 }

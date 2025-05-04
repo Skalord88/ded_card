@@ -159,8 +159,7 @@ export const weaponIncludeUnarmed = (w: Weapon): boolean => {
 
 // da aggiungere spine su armatura e scudo
 export function SetSetWeaponListFromDB(
-    inventory: Inventory,
-    moddedChar: CharToModify
+    inventory: Inventory
 ): Weapon[] {
     return [
         [96,97].includes(inventory.shield.itemId ?? 0) ? shieldLight : null, 
@@ -173,7 +172,7 @@ export function SetSetWeaponListFromDB(
         weaponIncludeUnarmed(inventory.weaponFive) ? null : inventory.weaponFive,
 
         inventoryIncludeUnarmed(inventory) ? null : noneWeapon
-    ].filter((weapon): weapon is Weapon => weapon !== null);
+    ].filter(w => w !== null) as Weapon[]
 }
 
 export function IndexWeaponOne(

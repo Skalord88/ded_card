@@ -1,4 +1,4 @@
-import { modifyAttacks, createAttackDisplay, getAttacksData } from "../../Attack/function";
+import { createAttackDisplay, getAttacksData } from "../../Attack/function";
 import { CharacterPc, ItemsList } from "../../interfaces";
 import { emptyAbilitys, emptySize, emptyInventory, emptyAttacks } from "../../variables";
 import { Prerequisite } from "../interface/Prerequisite";
@@ -99,8 +99,7 @@ export const createModChar = (char: CharacterPc, items?: ItemsList): CharToModif
       
       
       modChar = modifyCharacter(char, modif, items);
-    
-      modChar.attacks = modifyAttacks(modChar);
+
       modChar.displayAttType = createAttackDisplay(getAttacksData(modChar), modChar.attacks);
 
       return modChar;
