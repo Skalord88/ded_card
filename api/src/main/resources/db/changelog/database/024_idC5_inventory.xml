@@ -57,6 +57,9 @@
             <column name="legs_id" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="version" type="INTEGER">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

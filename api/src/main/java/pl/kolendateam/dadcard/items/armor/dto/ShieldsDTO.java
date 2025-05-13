@@ -38,6 +38,7 @@ public class ShieldsDTO {
   public ShieldsDTO(Shields item) {
     this.id = item.getId();
     this.name = item.getName();
+    this.itemId = item.getId();
     this.itemType = ItemTypeEnum.SHIELD;
     this.shieldName = item.getShieldName();
     this.modifiers =

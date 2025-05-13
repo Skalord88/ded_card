@@ -39,6 +39,7 @@ public class ArmorsDTO implements Serializable {
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
     this.name = item.getName();
+    this.itemId = item.getId();
     this.itemType = ItemTypeEnum.ARMOR;
     this.armorName = item.getArmorName();
     this.modifiers =
@@ -58,6 +59,7 @@ public class ArmorsDTO implements Serializable {
 
   public ArmorsDTO(EnchantedItems item) {
     ArmorsDTO armorDTO = new ArmorsDTO((Armors) item.getItem());
+
     this.id = item.getId();
     this.name = item.getName();
     this.itemId = item.getItem().getId();

@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.items.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Version;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +25,6 @@ import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
-import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @Getter
@@ -39,35 +38,35 @@ public class Inventory {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "armor_id", referencedColumnName = "id")
   EnchantedItems armor; // 1
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "shield_id", referencedColumnName = "id")
   EnchantedItems shield; // 2
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "weapon_id_one", referencedColumnName = "id")
   EnchantedItems weaponOne; // 3
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "weapon_id_two", referencedColumnName = "id")
   EnchantedItems weaponTwo; // 4
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "weapon_id_three", referencedColumnName = "id")
   EnchantedItems weaponThree; // 5
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "weapon_id_four", referencedColumnName = "id")
   EnchantedItems weaponFour; // 6
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "weapon_id_five", referencedColumnName = "id")
   EnchantedItems weaponFive; // 7
 
-  @ManyToMany(cascade = CascadeType.MERGE)
+  @ManyToMany
   @JoinTable(
     name = "backpack",
     joinColumns = @JoinColumn(name = "inventory_id"),
@@ -75,49 +74,44 @@ public class Inventory {
   )
   List<WondrousItems> backpack;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "head_id", referencedColumnName = "id")
   WondrousItems head; // 8
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "neck_id", referencedColumnName = "id")
   WondrousItems neck; // 9
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "arms_id", referencedColumnName = "id")
   WondrousItems arms; // 10
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "ring_one_id", referencedColumnName = "id")
   WondrousItems ringOne; // 11
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "ring_two_id", referencedColumnName = "id")
   WondrousItems ringTwo; // 12
 
-  // @ManyToMany(cascade = CascadeType.MERGE)
-  // @JoinTable(
-  //   name = "hands",
-  //   joinColumns = @JoinColumn(name = "inventory_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "items_id")
-  // )
-  // List<WondrousItems> hands;
-
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "cloth_id", referencedColumnName = "id")
   WondrousItems cloth; // 13
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "cloak_id", referencedColumnName = "id")
   WondrousItems cloak; // 14
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "belt_id", referencedColumnName = "id")
   WondrousItems belt; // 15
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "legs_id", referencedColumnName = "id")
   WondrousItems legs; // 16
+
+  @Version
+  Integer version;
 
   public Inventory() {
     this.armor = new EnchantedItems();
@@ -140,6 +134,12 @@ public class Inventory {
     this.cloak = item;
     this.belt = item;
     this.legs = item;
+    this.version = 1;
+  }
+
+  public Inventory(int idChar) {
+    this.id = idChar;
+    this.version = 1;
   }
 
   public void addToInventory(

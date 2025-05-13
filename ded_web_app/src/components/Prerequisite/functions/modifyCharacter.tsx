@@ -31,7 +31,7 @@ import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillsInList } from "../../Skills/interface/SkillsInList";
 import { getAllSpecialAbilities } from "../../SpecialAbilities/function";
 import { Speed } from "../../Speed/interface";
-import { noneWeapon } from "../../variables";
+import { emptyAttacks, noneWeapon } from "../../variables";
 import {
   CountHitDicesFromAdj,
   CountHitDicesFromClassPc,
@@ -248,7 +248,9 @@ export const modifyCharacter = (
     ),
     armor: findArmorPrerequisite(prer),
     inventory: modifyInventory(char.race.size.id, char.inventory),
-    attacks: {
+    attacks: char.attacks === null?
+    emptyAttacks
+    : {
           firstAttackSetOne: char.attacks.firstAttackSetOne ? char.attacks.firstAttackSetOne : noneWeapon,
           secondAttackSetOne: char.attacks.secondAttackSetOne ? char.attacks.secondAttackSetOne : noneWeapon,
           additionalAttackSetOne: char.attacks.additionalAttackSetOne? char.attacks.additionalAttackSetOne : noneWeapon,

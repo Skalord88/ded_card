@@ -13,7 +13,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,8 +26,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
+import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
@@ -37,10 +39,14 @@ import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
-import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
+import pl.kolendateam.dadcard.items.enchantment.dto.ItemsToSendDTO;
+import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.repository.InventoryRepository;
+import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
@@ -101,7 +107,10 @@ public class Character implements Serializable {
   )
   List<FeatsPc> featsList = new ArrayList<>();
 
-  @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+  // @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+  // @JoinColumn(name = "inventory_id", referencedColumnName = "id")
+  // Inventory inventory;
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
   Inventory inventory;
 
@@ -351,4 +360,94 @@ public class Character implements Serializable {
       .collect(Collectors.toSet());
     return ids1.equals(ids2);
   }
+  // public void createOrUpdateInventory(
+  //   ItemsToSendDTO inventoryDTO,
+  //   ItemsRepository itemsRepository,
+  //   EnchantedItemsRepository enchantedItemsRepository
+  // ) {
+  //   if (this.inventory == null) {
+  //     Inventory newInventory = new Inventory(this.id);
+  //     newInventory.addToInventory(
+  //       inventoryDTO,
+  //       itemsRepository,
+  //       enchantedItemsRepository
+  //     );
+  //     this.inventory = newInventory; // let cascading persist it
+  //   } else {
+  //     this.inventory.addToInventory(
+  //         inventoryDTO,
+  //         itemsRepository,
+  //         enchantedItemsRepository
+  //       );
+  //   }
+  // }
+  // public void createInventory(
+  //   ItemsToSendDTO inventoryDTO,
+  //   InventoryRepository inventoryRepository,
+  //   ItemsRepository itemsRepository,
+  //   EnchantedItemsRepository enchantedItemsRepository
+  // ) {
+  //   if (this.inventory == null) {
+  //     Inventory newInventory = new Inventory(this.id);
+  //     this.inventory = newInventory;
+  //     this.inventory.addToInventory(
+  //         inventoryDTO,
+  //         itemsRepository,
+  //         enchantedItemsRepository
+  //       );
+  //     inventoryRepository.saveAndFlush(this.inventory);
+  //   } else {
+  //     Inventory newInventory = inventoryRepository
+  //       .findById(inventory.getId())
+  //       .orElseThrow(() ->
+  //         new ResponseStatusException(
+  //           HttpStatus.NOT_FOUND,
+  //           "Inventory Not Found"
+  //         )
+  //       );
+  //     newInventory.addToInventory(
+  //       inventoryDTO,
+  //       itemsRepository,
+  //       enchantedItemsRepository
+  //     );
+  //     this.inventory = newInventory;
+  //     inventoryRepository.saveAndFlush(this.inventory);
+  //   }
+  // }
+  // public void createInventory(
+  //   ItemsToSendDTO inventoryDTO,
+  //   InventoryRepository inventoryRepository,
+  //   ItemsRepository itemsRepository,
+  //   EnchantedItemsRepository enchantedItemsRepository
+  //   // CharacterRepository characterRepository
+  // ) {
+  //   if (this.inventory == null) {
+  //     Inventory newInventory = new Inventory(this.id);
+  //     newInventory.addToInventory(
+  //       inventoryDTO,
+  //       itemsRepository,
+  //       enchantedItemsRepository
+  //     );
+  //     this.inventory = inventoryRepository.save(newInventory); // persist nuova
+  //   } else {
+  //     Inventory managedInventory = inventoryRepository
+  //       .findById(this.inventory.getId())
+  //       .orElseThrow(() ->
+  //         new ResponseStatusException(
+  //           HttpStatus.NOT_FOUND,
+  //           "Inventory Not Found"
+  //         )
+  //       );
+
+  //     managedInventory.addToInventory(
+  //       inventoryDTO,
+  //       itemsRepository,
+  //       enchantedItemsRepository
+  //     );
+
+  //     this.inventory = managedInventory;
+  //   }
+  //   // salva il Character, se serve
+  //   // characterRepository.save(this); // Assicurati che 'this' sia gestito o ricaricato prima
+  // }
 }

@@ -15,6 +15,7 @@
             <column name="weapon_id_three" value="1005" />
             <column name="weapon_id_four" value="1006" />
             <column name="weapon_id_five" value="2002" />
+            <column name="version" value="1" />
         </insert>
         <!-- Rysio -->
         <insert tableName="inventory">
@@ -26,6 +27,7 @@
             <column name="weapon_id_three" value="2007" />
             <column name="weapon_id_four" value="2002" />
             <column name="weapon_id_five" value="2000" />
+            <column name="version" value="1" />
         </insert>
         <!-- Niesia -->
         <insert tableName="inventory">
@@ -37,6 +39,7 @@
             <column name="weapon_id_three" value="1025" />
             <column name="weapon_id_four" value="1026" />
             <column name="weapon_id_five" value="1027" />
+            <column name="version" value="1" />
         </insert>
         <!-- Michał -->
         <insert tableName="inventory">
@@ -48,6 +51,7 @@
             <column name="weapon_id_three" value="2007" />
             <column name="weapon_id_four" value="2005" />
             <column name="weapon_id_five" value="2002" />
+            <column name="version" value="1" />
         </insert>
         <!-- Andrzej -->
         <insert tableName="inventory">
@@ -55,6 +59,7 @@
             <column name="weapon_id_one" value="1041" />
             <column name="weapon_id_two" value="1042" />
             <column name="weapon_id_three" value="2001" />
+            <column name="version" value="1" />
         </insert>
         <!-- Magda -->
         <insert tableName="inventory">
@@ -62,6 +67,7 @@
             <column name="weapon_id_one" value="1051" />
             <column name="weapon_id_two" value="1052" />
             <column name="weapon_id_three" value="2001" />
+            <column name="version" value="1" />
         </insert>
         <!-- Mirek -->
         <insert tableName="inventory">
@@ -70,6 +76,7 @@
             <column name="weapon_id_one" value="30000" />
             <column name="weapon_id_two" value="1062" />
             <column name="weapon_id_three" value="2001" />
+            <column name="version" value="1" />
         </insert>
     </changeSet>
 </databaseChangeLog>

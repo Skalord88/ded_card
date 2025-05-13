@@ -92,8 +92,8 @@ export const createItemsInInventory = (
       id: i.id ?? 0,
       itemId:
         "itemId" in i
-          ? i.itemId ?? undefined
-          : undefined,
+          ? i.id === i.itemId ? i.id ?? undefined : i.itemId ?? undefined : undefined,
+          // ? i.id ?? undefined : undefined,
           material:
         "itemId" in i ? (typeof i.material === "string" && ["LEATHER", "WOOD", "METAL"].includes(i.material)) ? undefined : i.material : undefined,
       enchantment:

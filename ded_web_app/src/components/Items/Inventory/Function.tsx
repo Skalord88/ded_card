@@ -13,7 +13,7 @@ import {
   WonderousItem
 } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
-import { noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
+import { emptyInventory, noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
 import {
   reMaterialArmType,
   reMaterialFailure,
@@ -23,6 +23,7 @@ import {
 } from "../Material/function";
 
 export const notEmptyInventory = (inventory: Inventory) => {
+  if(!inventory) return emptyInventory;
   return {
     ...inventory,
     armor: inventory.armor ? inventory.armor : noneArmor,
@@ -54,6 +55,7 @@ export const modifyInventory = (
 ): Inventory => {
   // const inventory: Inventory = inv;
 
+  if (!inventory) return emptyInventory;
   return {
     ...inventory,
     armor: inventory.armor

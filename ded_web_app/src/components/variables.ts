@@ -9,7 +9,7 @@ import { Size } from './Size/interfaces'
 import { AddStudy } from './Skills/interface/SkillsInterface'
 
 export const noneArmor: Armor = {
-    id: 2,
+    id: 0,
     name: "No Armor",
     cost: 0,
     weight: 0,
@@ -21,11 +21,11 @@ export const noneArmor: Armor = {
     maxDex: 100,
     penality: 0,
     failure: 0,
-    itemId: 0
+    itemId: 2
 }
 
 export const noneShield: Shield = {
-    id: 3,
+    id: 0,
     name: "No Shield",
     cost: 0,
     weight: 0,
@@ -36,11 +36,11 @@ export const noneShield: Shield = {
     armorType: "SHIELD",
     penality: 0,
     failure: 0,
-    itemId: 0
+    itemId: 3
 }
 
 export const noneWeapon: Weapon = {
-    id: 1,
+    id: 0,
     itemId: 1,
     name: "Unarmed strike",
     itemType: "WEAPON",
@@ -56,7 +56,7 @@ export const noneWeapon: Weapon = {
     type: ['BLUDGEONING', 'SIMPLE', 'UNARMED']
 }
 export const shieldLight: Weapon = {
-    id: 32,
+    id: 0,
     itemId: 32,
     name: "Shield, light",
     itemType: "WEAPON",
@@ -72,7 +72,7 @@ export const shieldLight: Weapon = {
     type: ['MARTIAL','BLUDGEONING','LIGHT']
 }
 export const shieldHeavy: Weapon = {
-    id: 42,
+    id: 0,
     itemId: 42,
     name: "Shield, heavy",
     itemType: "WEAPON",

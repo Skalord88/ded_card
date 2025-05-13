@@ -1,4 +1,3 @@
-version: '3'
 services:
   db:
     image: postgres:10.5
@@ -16,10 +15,10 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
 
   api:
-    image: api:latest
+    # image: api:latest
     
-    # image: skalord88/api:latest
-    # restart: always
+    image: skalord88/api:latest
+    restart: always
     depends_on:
       - db
     networks:

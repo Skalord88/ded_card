@@ -1,57 +1,39 @@
-const url: string =
-    // 'http://3.76.215.24:8080/'
-    'http://localhost:8080/'
+const url: string = 
+// "http://3.76.215.24:8080/";
+'http://localhost:8080/';
 
-export const urlChar: string =
-    url + 'character-card';
+export const urlChar: string = url + "character-card";
 
-export const urlCharList: string =
-    urlChar + '/list';
+export const urlCharList: string = urlChar + "/list";
 
-export const urlAb: string =
-    url + 'ability/';
+export const urlAb: string = url + "ability/";
 
-export const urlRace: string =
-    url + 'race'
+export const urlRace: string = url + "race";
 
-export const urlRaceList: string =
-    url + 'race/sub';
+export const urlRaceList: string = url + "race/sub";
 
-export const urlClassList: string =
-    url + 'class';
+export const urlClassList: string = url + "class";
 
-export const urlClassAdd: string =
-    url + 'character-card/class/';
+export const urlClassAdd: string = url + "character-card/class/";
 
-export const urlClassSell: string =
-    url + 'character-card/minus_class/';
+export const urlClassSell: string = url + "character-card/minus_class/";
 
-export const urlSkillSet: string =
-    url + 'skills/';
+export const urlSkillSet: string = url + "skills/";
 
-export const urlStudySet: string =
-    url + 'skills/study/';
+export const urlStudySet: string = url + "skills/study/";
 
-export const urlFeats: string =
-    url + 'feats';
+export const urlFeats: string = url + "feats";
 
-export const urlItems: string =
-    url + 'item/all';
+export const urlItems: string = url + "item/all";
 
-export const urlEnchants: string =
-    url + 'item/allEnchantments';
-    
-export const urlEnchanted: string =
-    url + 'item/allEnchanted';
+export const urlEnchants: string = url + "item/allEnchantments";
 
-export const urlInventory: string =
-    url + 'item/inventory/';
+export const urlEnchanted: string = url + "item/allEnchanted";
 
-export const urlItemsBuy: string =
-    url + 'item/';
+export const urlInventory: string = url + "item/inventory/";
 
-export const urlAttacks: string =
-    url + 'attack/';
+export const urlItemsBuy: string = url + "item/";
 
-export const urlSpellsList: string =
-    url + 'spells'
+export const urlAttacks: string = url + "attack/";
+
+export const urlSpellsList: string = url + "spells";

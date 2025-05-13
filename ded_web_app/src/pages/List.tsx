@@ -6,14 +6,15 @@ import { urlCharList } from "../components/url";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 
 export const List: React.FC = () => {
-  const [charList, setCharList] = useState([]);
+  const [charList, setCharList] = useState<character[]>([]);
 
   useEffect(() => {
-    axios.get<[]>(urlCharList).then((response) => {
-      setCharList(response.data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  axios.get<character[]>(urlCharList).then((response) => {
+    console.log("Character list:", response.data);
+    setCharList(response.data);
+  });
+}, []);
+
 
   return (
     <>
@@ -34,14 +35,15 @@ export const List: React.FC = () => {
           </ol>
         </div>
       ) : (
-        <div className="rpgui-container-framed"><p>...loading characters...</p></div>
+        <div className="rpgui-container-framed">
+          <p>...loading characters...</p>
+        </div>
       )}
     </>
   );
 };
 
 export const CharacterList: React.FC = () => {
-
   const [charList, setCharList] = useState([]);
 
   useEffect(() => {
@@ -52,19 +54,19 @@ export const CharacterList: React.FC = () => {
   }, []);
 
   return (
-    <>
+    <div>
       {charList.length > 0 ? (
         <div id="list" className="rpgui-container-framed">
           <p>list of characters:</p>
           <ol type="I" id="list">
-            <DropdownComponent options={charList}
-              onAction={() => {}} />
-            
+            <DropdownComponent options={charList} onAction={() => {}} />
           </ol>
         </div>
       ) : (
-        <div className="rpgui-container-framed"><p>...loading characters...</p></div>
+        <div className="rpgui-container-framed">
+          <p>...loading characters...</p>
+        </div>
       )}
-    </>
+    </div>
   );
-}
+};

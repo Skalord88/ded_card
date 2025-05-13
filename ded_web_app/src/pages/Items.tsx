@@ -152,9 +152,7 @@ export const Items = () => {
           moddedInventory.legs
         ];
 
-        setInventory((prevInventory) => {
-          return [...newInv];
-        });
+        setInventory(newInv);
       } catch (error) {
         console.log(error);
       }
@@ -212,17 +210,30 @@ export const Items = () => {
   }, [backpack]);
 
   const handleConfirm = () => {
-    // if (inventory && inventory.length > 0) {
-    //   const inventoryToSend = sendItemsInInventory(inventory);
     const itemsToSend = {
-        backpack: backpackToSend,
-        inventory: inventoryToSend
-    }
+      backpack: backpackToSend,
+      inventory: inventoryToSend
+    };
 
-    console.log(itemsToSend)
-    axios.post(urlItemsBuy + charId, itemsToSend)
+    console.log(itemsToSend);
+    axios
+      .post(urlItemsBuy + charId, itemsToSend)
+      .then((response) => {
+        // success: update UI accordingly
+        console.log("Inventory updated!", response.data);
+      })
+      .catch((error) => {
+        if (error.response?.status === 409) {
+          alert(
+            "Inventory was modified by another user. Please refresh and try again."
+          );
+          // optionally: trigger a reload or re-fetch of character data
+        } else {
+          console.error("Error updating inventory:", error);
+          alert("An unexpected error occurred.");
+        }
+      });
     // window.location.reload();
-    // }
   };
 
   const inventoryListRef = useRef<HTMLDivElement>(null);

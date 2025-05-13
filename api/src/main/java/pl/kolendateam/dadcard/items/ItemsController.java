@@ -1,10 +1,12 @@
 package pl.kolendateam.dadcard.items;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -90,32 +92,24 @@ public class ItemsController {
     @PathVariable int id,
     @RequestBody ItemsToSendDTO inventoryDTO
   ) {
-    Optional<Character> characterOpt = this.characterRepository.findById(id);
-    if (!characterOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
+    Character character = characterRepository
+      .findById(id)
+      .orElseThrow(() ->
+        new ResponseStatusException(HttpStatus.NOT_FOUND, "Character Not Found")
       );
+    Inventory inventory = character.getInventory();
+    if (inventory == null) {
+      inventory = new Inventory();
     }
-    Character character = characterOpt.get();
-
-    Optional<Inventory> inventoryOpt =
-      this.inventoryRepository.findById(character.getInventory().getId());
-    if (!inventoryOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Inventory Not Found"
-      );
-    }
-    Inventory inventory = inventoryOpt.get();
-
     inventory.addToInventory(
       inventoryDTO,
       itemsRepository,
       enchantedItemsRepository
     );
 
-    this.inventoryRepository.save(inventory);
+    character.setInventory(inventory);
+
+    this.characterRepository.save(character); // <-- salvi solo il root entity
 
     return new CharacterDTO(character);
   }

@@ -1,11 +1,8 @@
 // main.tsx o index.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  RouteObject,
-} from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+
 import { Ability } from './pages/Ability';
 import { AppLayout } from './pages/AppLayout';
 import { Attack } from './pages/Attack';
@@ -20,37 +17,30 @@ import { Races } from './pages/Races';
 import { Show } from './pages/Show';
 import { Skills } from './pages/Skills';
 
-
-// Tipizzazione opzionale per le rotte (non obbligatoria ma consigliata in progetti grandi)
-const routes: RouteObject[] = [
-  {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      { path: "list", element: <List /> },
-      { path: "fight", element: <Fight /> },
-      { path: "create", element: <Create /> },
-      { path: ":charId", element: <Show /> },
-      { path: "ability/:charId", element: <Ability /> },
-      { path: "race/:charId", element: <Races /> },
-      { path: "class/:charId", element: <Classes /> },
-      { path: "skill/:charId", element: <Skills /> },
-      { path: "feat/:charId", element: <Feats /> },
-      { path: "item/:charId", element: <Items /> },
-      { path: "attack/:charId", element: <Attack /> },
-      { path: "magic/:charId", element: <Magic /> },
-    ],
-  },
-];
-
-const router = createBrowserRouter(routes);
-
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route path="list" element={<List />} />
+          <Route path="fight" element={<Fight />} />
+          <Route path="create" element={<Create />} />
+          <Route path=":charId" element={<Show />} />
+          <Route path="ability/:charId" element={<Ability />} />
+          <Route path="race/:charId" element={<Races />} />
+          <Route path="class/:charId" element={<Classes />} />
+          <Route path="skill/:charId" element={<Skills />} />
+          <Route path="feat/:charId" element={<Feats />} />
+          <Route path="item/:charId" element={<Items />} />
+          <Route path="attack/:charId" element={<Attack />} />
+          <Route path="magic/:charId" element={<Magic />} />
+        </Route>
+      </Routes>
+    </HashRouter>
   </React.StrictMode>
 );
+
