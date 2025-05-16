@@ -8,23 +8,23 @@ services:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=postgres
     ports:
-      - '5433:5432'
+      - "5433:5432"
     networks:
       - backend
-    volumes: 
+    volumes:
       - ./postgres-data:/var/lib/postgresql/data
 
   api:
-    # image: api:latest
-    
-    image: skalord88/api:latest
-    restart: always
+    image: api:latest
+
+    # image: skalord88/api:latest
+    # restart: always
     depends_on:
       - db
     networks:
       - backend
     ports:
-      - '8080:8080'
+      - "8080:8080"
 
 networks:
   backend:

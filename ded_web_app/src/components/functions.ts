@@ -6,7 +6,7 @@ import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
 import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
-import { SubRace } from "./Race/Interfaces";
+import { Race, SubRace } from "./Race/Interfaces";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
 
 export function SignNumber(
@@ -366,7 +366,7 @@ export function SortedBooks(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
+    item: string | Feat | ClassCharacter | Race | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
@@ -407,6 +407,17 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         return list
     }
     if (text === "race") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.raceName,
+                    item: o as Race
+                }
+            }
+        )
+        return list
+    }
+    if (text === "subRace") {
         let list: itemInDrop[] = options.map(
             o => {
                 return {

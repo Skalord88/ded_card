@@ -4,49 +4,79 @@
 
 /* input/textarea input */
 .rpgui-content-input,
-.rpgui-content-textarea
-{
-    /* set size and colors */
-    -webkit-box-sizing : border-box;
-    -moz-box-sizing : border-box;
-    box-sizing : border-box;
-	color: white;
-	font-size: 0.9em;
-	line-height: 32px;
-	background: #4e4a4e;
-	max-width: 100%;
-	width: 100%;
-	padding-left:10px;
+.rpgui-content-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 32px;
+  padding: 5px 10px;
+  font-size: 14px;
+  line-height: 20px;
 
-	/* for ie */
-	min-height: 30px;
+  color: #f0f0f0;
+  background-color: #3a3a3a;
+  border: 2px solid #777;
+  border-radius: 6px;
 
-	/* enable text selecting */
-	-webkit-touch-callout: text;
-    -webkit-user-select: text;
-    -khtml-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-	-webkit-tap-highlight-color: rgba(0,0,0,0.5);
+  outline: none;
+  transition: border 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 
-}
-
-/* textarea extra rules */
-.rpgui-content-textarea
-{
-    line-height: 22px;
-    padding-top: 7px;
-    height: 80px;
-    resize: none;
 }
 
 /* selection highlight */
 .rpgui-content input::selection,
 .rpgui-content textarea::selection {
-	background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
+
+.rpgui-content input:focus {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .rpgui-content input::-moz-selection,
 .rpgui-content textarea::-moz-selection {
-    background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
+
+/* .rpgui-content input {
+  position: relative;
+  margin: 20px 0 40px;
+  width: 190px;
+}
+
+.rpgui-content input {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px #fff solid;
+  display: block;
+  width: 100%;
+  padding: 15px 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.rpgui-content input:focus,
+.rpgui-content input:valid {
+  outline: 0;
+  border-bottom-color: lightblue;
+}
+
+.rpgui-content label {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  pointer-events: none;
+}
+
+.rpgui-content label span {
+  display: inline-block;
+  font-size: 18px;
+  min-width: 5px;
+  color: #fff;
+  transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.rpgui-content input:focus+label span,
+.rpgui-content input:valid+label span {
+  color: lightblue;
+  transform: translateY(-30px);
+} */

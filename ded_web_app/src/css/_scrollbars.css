@@ -6,7 +6,7 @@
 .rpgui-content ::-webkit-scrollbar,
 .rpgui-content::-webkit-scrollbar
 {
-    width: 18px;
+    width: 10px;
 }
 
 /* Track */

@@ -15,20 +15,17 @@
 @import '_paragraphs_and_headers';
 @import '_progress_bar';
 @import '_radio';
-@import '_scrollbars'; 
+@import '_scrollbars';
 @import '_disabled';
 @import '_slider';
-@import '_pop'; 
+@import '_pop';
 
-body
-{
-    background-color: black;
+body {
+  background-color: black;
 }
-.inner {
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 1300px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+
+.mobile-scale {
+  transform: scale(0.90);
+  transform-origin: top left;
+  width: 110%;
 }

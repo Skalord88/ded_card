@@ -56,10 +56,9 @@ export const CharSummary: React.FC<SummaryProps> = ({
   }, [character, race, classPcList]);
 
   return (
-    <>
+    <div>
       {updateChar ? (
         <div className="rpgui-container-framed-grey">
-          <h3>{character.race ? character.race.subRacesName : null}</h3>
           <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
           {textClass ? <p>{textClass}</p> : null}
           <SkillSummaryComponent char={updateChar} />
@@ -72,6 +71,6 @@ export const CharSummary: React.FC<SummaryProps> = ({
       ) : (
         <p>...loading...</p>
       )}
-    </>
+    </div>
   );
 };

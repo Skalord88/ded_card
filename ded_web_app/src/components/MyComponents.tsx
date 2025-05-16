@@ -31,7 +31,7 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
     selectWeapon(selected, where);
   }, [selected]);
   return (
-    <>
+    <div>
       {list.map((weapon, index) => {
         return (
           <div key={index}>
@@ -40,7 +40,7 @@ export const ListOfWeapons: React.FC<SelectWeapon> = ({
           </div>
         );
       })}
-    </>
+    </div>
   );
 };
 
@@ -61,7 +61,7 @@ export const ListOfOneHandWeapons: React.FC<SelectOffWeapon> = ({
   }, [selected]);
 
   return list ? (
-    <>
+    <div>
       {list.map((w, index) =>
         index !== indexOne && !weaponTwoHanded(w) ? (
           <div key={index}>
@@ -69,12 +69,12 @@ export const ListOfOneHandWeapons: React.FC<SelectOffWeapon> = ({
             <button onClick={() => select(w)}>+</button>
           </div>
         ) : (
-          <></>
+          null
         )
       )}
-    </>
+    </div>
   ) : (
-    <></>
+    null
   );
 };
 

@@ -23,9 +23,9 @@
     background-image: url('../img/icons/armor.png');
 }
 
-.rpgui-icon.clock {
+/* .rpgui-icon.clock {
     background-image: url('../img/icons/clock.png');
-}
+} */
 
 .rpgui-icon.natural {
     background-image: url('../img/icons/natural.png');
@@ -123,4 +123,24 @@
 
 .rpgui-icon.empty-slot {
     background-image: url('../img/icons/empty-slot.png');
+}
+
+/* dwarf */
+.rpgui-icon.dwarf-artic {
+    background-image: url('../img/icons/dwarf-artic.png');
+}
+.rpgui-icon.dwarf-gold {
+    background-image: url('../img/icons/dwarf-gold.png');
+}
+.rpgui-icon.dwarf-grey {
+    background-image: url('../img/icons/dwarf-grey.png');
+}
+.rpgui-icon.dwarf-savage {
+    background-image: url('../img/icons/dwarf-savage.png');
+}
+.rpgui-icon.dwarf-shield {
+    background-image: url('../img/icons/dwarf-shield.png');
+}
+.rpgui-icon.dwarf-urdunir {
+    background-image: url('../img/icons/dwarf-urdunir.png');
 }

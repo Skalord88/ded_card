@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { itemInDrop } from "../functions";
 
 export interface ListProps {
@@ -11,32 +12,32 @@ export const ListOfSomething: React.FC<ListProps> = ({
   text,
   onSelect
 }) => {
-  const handleSelect = (s: itemInDrop) => {
-    onSelect(s);
+  const [selectedImp, setSelectedImp] = useState<number>();
+  const handleSelect = (item: itemInDrop, index: number) => {
+    setSelectedImp(index);
+    onSelect(item);
   };
 
   return (
-    <>
+    <div>
       {items.length > 0 ? (
         <div>
           <h2 className="rpgui-container-framed-golden-2">{text}</h2>
-          <div
-            className="rpgui-list-imp"
-            style={{
-              minHeight: 50,
-              maxHeight: 300
-            }}
-          >
+          <ul className="rpgui-list-imp"  style={{ maxHeight: "200px", overflowY: "auto" }}>
             {items.map((i, index) => {
               return (
-                <div key={index}>
-                  <li onClick={() => handleSelect(i)}>{i.name}</li>
-                </div>
+                <li
+                  className={selectedImp === index ? "rpgui-selected" : ""}
+                  key={index}
+                  onClick={() => handleSelect(i, index)}
+                >
+                  {i.name}
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       ) : null}
-    </>
+    </div>
   );
 };
