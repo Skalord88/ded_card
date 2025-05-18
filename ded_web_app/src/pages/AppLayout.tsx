@@ -1,73 +1,71 @@
 import { Link, Outlet } from "react-router-dom";
 import { Footer } from "../components/Footer";
+import { NavRpg } from "../components/Nav";
 
 export const AppLayout: React.FC = () => {
   return (
-    <div
-      className="rpgui-content rpgui-cursor-default"
-      style={{ overflowY: "auto", height: "100vh" }}
-    >
-      {window.innerWidth <= 780 ? (
-        <div>
+    <div className="rpgui-content rpgui-cursor-default">
+      <header></header>
+      <AppLayoutPc>
+        <NavRpg />
+        <body>
+          {/* {window.innerWidth <= 730 ? (
           <AppLayoutMobile>
             <HeaderBody />
           </AppLayoutMobile>
-        </div>
-      ) : (
-        <div>
-          <AppLayoutPc>
-            <HeaderBody />
-          </AppLayoutPc>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export const HeaderBody: React.FC = () => {
-  return (
-    <div className="rpgui-container-framed">
-      <header></header>
-      <nav id="nav" className="rpgui-center rpgui-container-framed-golden-2">
-        <Link to="create">
-          <button className="rpgui-button">
-            <p>Character creation</p>
-          </button>
-        </Link>
-
-        <Link to="list">
-          <button className="rpgui-button">
-            <p>List of characters</p>
-          </button>
-        </Link>
-
-        <Link to="fight">
-          <button className="rpgui-button">
-            <p>Fight!</p>
-          </button>
-        </Link>
-      </nav>
-      <div id="body" className="rpgui-content-framed">
-        <br></br>
-        <Outlet />
-        <br></br>
+      ) : ( */}
+          {/* <AppLayoutPc> */}
+          <Outlet />
+          {/* </AppLayoutPc> */}
+          {/* )} */}
+        </body>
         <Footer />
-      </div>
+      </AppLayoutPc>
     </div>
   );
 };
 
-export const AppLayoutMobile: React.FC<React.PropsWithChildren<{}>> = ({
-  children
-}) => {
-  return <div className="mobile-scale">{children}</div>;
-};
+// export const HeaderBody: React.FC = () => {
+//   return (
+
+//   );
+// };
+
+// export const AppLayoutMobile: React.FC<React.PropsWithChildren<{}>> = ({
+//   children
+// }) => {
+//   return <div>{children}</div>;
+// };
 export const AppLayoutPc: React.FC<React.PropsWithChildren<{}>> = ({
   children
 }) => {
-  return <div style={{
-        margin: "auto",
-        padding: "10px 200px"
-
-    }}>{children}</div>;
+  return (
+    <div
+      className="rpgui-container-framed"
+      style={{
+        gridTemplateAreas: `
+        "body body body nav"
+        "body body body nav"
+        "footer footer footer"
+        `,
+        gridTemplateColumns: "3fr 1fr"
+      }}
+    >
+      {children}
+    </div>
+  );
 };
+
+// export const PageAndSummaryLayout: React.FC<React.PropsWithChildren<{}>> = ({
+//   children
+// }) => {
+//   return (
+//     <div
+//       style={{
+//         border: "8px solid red",
+//       }}
+//     >
+//       {children}
+//     </div>
+//   );
+// };

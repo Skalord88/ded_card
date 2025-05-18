@@ -6,11 +6,11 @@
 .rpgui-content-input,
 .rpgui-content-textarea {
   box-sizing: border-box;
-  width: 100%;
+  /* /* width: 100%; */
   height: 32px;
   padding: 5px 10px;
-  font-size: 14px;
-  line-height: 20px;
+  /* font-size: clamp(1.15rem, clac(7vm + 1 rem), 5rem); */
+  line-height: 1.15rem;
 
   color: #f0f0f0;
   background-color: #3a3a3a;

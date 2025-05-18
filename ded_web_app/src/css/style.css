@@ -25,7 +25,7 @@ body {
 }
 
 .mobile-scale {
-  transform: scale(0.90);
+  /* transform: scale(0.90);
   transform-origin: top left;
-  width: 110%;
+  width: 110%; */
 }

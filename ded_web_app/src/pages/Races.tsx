@@ -9,6 +9,8 @@ import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { findIconRace } from "../components/Race/Function";
+// import { PageAndSummaryLayout } from "./AppLayout";
+import { ButtonConfirmRpg } from "../components/Buttons/Buttons";
 
 export type ChosenRace = {
   id: number;
@@ -80,7 +82,7 @@ export const Races = () => {
   return (
     <div>
       <h1>Races</h1>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
+      {/* <PageAndSummaryLayout> */}
         {char && selectedSubRace ? (
           <div>
             {change === true ? (
@@ -92,9 +94,7 @@ export const Races = () => {
                     selectedSubRace?.subRacesName +
                     " "}
                 </p>
-                <button className="rpgui-button" onClick={() => handleSubmit()}>
-                  <Link to={"/class/" + charId}>to classes</Link>
-                </button>
+                <ButtonConfirmRpg text={"to classes"} link={"/class/" + charId} onAction={()=> handleSubmit}/>
               </div>
             ) : (
               <div>
@@ -125,7 +125,7 @@ export const Races = () => {
             />
           ) : null}
         </div>
-      </div>
+      {/* </PageAndSummaryLayout> */}
     </div>
   );
 };

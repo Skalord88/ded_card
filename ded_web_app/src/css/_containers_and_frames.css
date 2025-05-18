@@ -4,17 +4,22 @@
 
 /* game div without background image*/
 .rpgui-container {
-	position: relative;
+	/* padding: min(5em, 8%); */
+	flex-shrink: 0;
+	/* flex-grow: 0; */
+	position: fixed;
 	z-index: 10;
-	overflow-y: auto;
-	-webkit-overflow-scrolling: touch;
+	/* border: "8px solid white"; */
+	/* overflow-y: auto;
+	-webkit-overflow-scrolling: touch; */
 	/* per scroll fluido su iOS */
-	scrollbar-width: none;
+	/* scrollbar-width: none; */
 	/* nasconde scrollbar su Firefox */
+	
 }
 
 .rpgui-container::-webkit-scrollbar {
-	display: none;
+	/* display: none; */
 	/* nasconde scrollbar su Chrome/Safari */
 }
 
@@ -27,7 +32,9 @@
 	border-image-slice: 10 10 10 10;
 	border-image-width: 9px;
 	border-width: 7px;
-	padding: 6px;
+	padding: min(2em, 8%);
+	/* border: 8px solid white; */
+	
 
 	/* internal border */
 	box-sizing: border-box;
@@ -50,7 +57,7 @@
 	border-image-slice: 4 4 4 4;
 	border-image-width: 9px;
 	border-width: 7px;
-	padding: 6px;
+	/* padding: 6px; */
 
 	/* internal border */
 	box-sizing: border-box;
@@ -73,7 +80,7 @@
 	border-image-slice: 8 8 8 8;
 	border-image-width: 9px;
 	border-width: 7px;
-	padding: 6px;
+	/* padding: 6px; */
 
 	/* internal border */
 	box-sizing: border-box;
@@ -95,7 +102,7 @@
 	border-image-slice: 8 8 8 8;
 	border-image-width: 8px;
 	border-width: 6px;
-	padding: 6px;
+	/* padding: 6px; */
 
 	/* internal border */
 	box-sizing: border-box;
@@ -122,7 +129,7 @@
 	border-image-slice: 3 3 3 3;
 	border-image-width: 7px;
 	border-width: 7px;
-	padding: 12px;
+	/* padding: 12px; */
 
 	/* internal border */
 	box-sizing: border-box;
@@ -146,7 +153,7 @@
 	border-image-slice: 2 2 2 2;
 	border-image-width: 4px;
 	border-width: 4px;
-	padding: 4px;
+	/* padding: 4px; */
 
 	/* internal border */
 	box-sizing: border-box;
@@ -168,7 +175,7 @@
 	border-image-slice: 2 2 2 2;
 	border-image-width: 4px;
 	border-width: 4px;
-	padding: 4px;
+	/* padding: 4px; */
 
 	/* internal border */
 	box-sizing: border-box;

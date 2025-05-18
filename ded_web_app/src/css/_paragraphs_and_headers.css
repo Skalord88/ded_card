@@ -9,7 +9,9 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.50em;
+    /* font-size: 1.50em; */
+    font-size: clamp(1.50rem, clac(7vm + 1 rem), 5rem);
+/*  */
 
 	/* center text */
 	text-align: center;
@@ -26,7 +28,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1.15em;
+    /* font-size: 1.15em; */
+    font-size: clamp(1.15rem, clac(7vm + 1 rem), 5rem);
 
 	/* center text */
 	text-align: center;
@@ -43,7 +46,8 @@
 	color: white;
 	font-weight: 1;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 1em;
+    /* font-size: 1em; */
+    font-size: clamp(1.0rem, clac(7vm + 1 rem), 5rem);
     text-decoration: underline;
 
 	/* center text */
@@ -79,7 +83,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 12px;
+	/* font-size: 12px; */
+	font-size: clamp(0.8rem, clac(7vm + 1 rem), 3rem);
 	line-height: 15px;
 }
 
@@ -89,7 +94,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 12px;
+	/* font-size: 12px; */
+	font-size: clamp(0.8rem, clac(7vm + 1 rem), 3rem);
 	line-height: 15px;
 }
 
@@ -99,7 +105,8 @@
 	/* color and border */
 	color: yellow;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 12px;
+	/* font-size: 12px; */
+	font-size: clamp(0.8rem, clac(7vm + 1 rem), 3rem);
 	line-height: 15px;
 	text-decoration: none;
 }
@@ -115,7 +122,8 @@
 	/* color and border */
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 12px;
+	/* font-size: 12px; */
+	font-size: clamp(0.8rem, clac(7vm + 1 rem), 3rem);
 	line-height: 13px;
 	display: inline;
 }
@@ -127,7 +135,8 @@
 	margin-left: 75px;
 	color: white;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-	font-size: 12px;
+	/* font-size: 12px; */
+	font-size: clamp(0.8rem, clac(7vm + 1 rem), 3rem);
 	line-height: 20px;
 }
 

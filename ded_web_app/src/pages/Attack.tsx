@@ -1,37 +1,23 @@
 import axios from "axios";
-import { urlAttacks, urlChar } from "../components/url";
 import { useEffect, useState } from "react";
-import { Attacks, CharacterPc, Weapon } from "../components/interfaces";
 import { useParams } from "react-router-dom";
-import {
-  emptyAbilitys,
-  emptyAttacks,
-  noneWeapon
-} from "../components/variables";
-import {
-  addToDrop,
-  itemInDrop,
-  SetSetWeaponListFromDB,
-  weaponRanged
-} from "../components/functions";
-import { CountBabFromClassPc } from "../components/Attack/Bab/Functions";
-import { MapOfAttack } from "../components/Attack/MapOfAttack";
-import {
-  AttackGrid,
-  MapOfAttackComponent
-} from "../components/Attack/MapOfAttackComponent";
-import {
-  CharToModify,
-  modifyCharacter
-} from "../components/Prerequisite/functions/modifyCharacter";
-import { createModChar } from "../components/Prerequisite/functions/modChar";
-import { Dropdown } from "react-bootstrap";
-import { DropdownComponent } from "../components/DropDown/DropDown";
 import {
   AttackElement,
   createAttackDisplay,
   getAttacksData
 } from "../components/Attack/function";
+import { DropdownComponent } from "../components/DropDown/DropDown";
+import {
+  addToDrop,
+  itemInDrop,
+  SetSetWeaponListFromDB
+} from "../components/functions";
+import { Attacks, Weapon } from "../components/interfaces";
+import { createModChar } from "../components/Prerequisite/functions/modChar";
+import {
+  CharToModify
+} from "../components/Prerequisite/functions/modifyCharacter";
+import { urlAttacks, urlChar } from "../components/url";
 
 export function Attack() {
   const { charId } = useParams();
