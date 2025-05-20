@@ -9,8 +9,7 @@ import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { findIconRace } from "../components/Race/Function";
-// import { PageAndSummaryLayout } from "./AppLayout";
-import { ButtonConfirmRpg } from "../components/Buttons/Buttons";
+import { ButtonRpg } from "../components/Buttons/Buttons";
 
 export type ChosenRace = {
   id: number;
@@ -94,7 +93,7 @@ export const Races = () => {
                     selectedSubRace?.subRacesName +
                     " "}
                 </p>
-                <ButtonConfirmRpg text={"to classes"} link={"/class/" + charId} onAction={()=> handleSubmit}/>
+                <ButtonRpg text={"to classes"} link={"/class/" + charId} onAction={()=> handleSubmit}/>
               </div>
             ) : (
               <div>

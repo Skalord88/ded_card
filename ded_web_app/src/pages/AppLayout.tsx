@@ -1,54 +1,37 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Footer } from "../components/Footer";
 import { NavRpg } from "../components/Nav";
+import {
+  ButtonsLayoutProps,
+  ButtonsLayoutRpg
+} from "../components/Buttons/Buttons";
 
 export const AppLayout: React.FC = () => {
   return (
-    <div className="rpgui-content rpgui-cursor-default">
-      <header></header>
-      <AppLayoutPc>
-        <NavRpg />
-        <body>
-          {/* {window.innerWidth <= 730 ? (
-          <AppLayoutMobile>
-            <HeaderBody />
-          </AppLayoutMobile>
-      ) : ( */}
-          {/* <AppLayoutPc> */}
-          <Outlet />
-          {/* </AppLayoutPc> */}
-          {/* )} */}
-        </body>
-        <Footer />
-      </AppLayoutPc>
-    </div>
+    <AppLayoutTemplate>
+      {/* <header></header> */}
+      <NavRpg />
+      <Outlet />
+      <Footer />
+    </AppLayoutTemplate>
   );
 };
 
-// export const HeaderBody: React.FC = () => {
-//   return (
-
-//   );
-// };
-
-// export const AppLayoutMobile: React.FC<React.PropsWithChildren<{}>> = ({
-//   children
-// }) => {
-//   return <div>{children}</div>;
-// };
-export const AppLayoutPc: React.FC<React.PropsWithChildren<{}>> = ({
+export const AppLayoutTemplate: React.FC<React.PropsWithChildren<{}>> = ({
   children
 }) => {
   return (
     <div
-      className="rpgui-container-framed"
+      className="rpgui-content rpgui-cursor-default"
       style={{
+        display: "grid",
         gridTemplateAreas: `
         "body body body nav"
         "body body body nav"
-        "footer footer footer"
+        "footer footer footer empty"
         `,
-        gridTemplateColumns: "3fr 1fr"
+        gridTemplateColumns: "3fr, 1fr",
+        minWidth: "min-content"
       }}
     >
       {children}
@@ -56,16 +39,56 @@ export const AppLayoutPc: React.FC<React.PropsWithChildren<{}>> = ({
   );
 };
 
-// export const PageAndSummaryLayout: React.FC<React.PropsWithChildren<{}>> = ({
-//   children
-// }) => {
-//   return (
-//     <div
-//       style={{
-//         border: "8px solid red",
-//       }}
-//     >
-//       {children}
-//     </div>
-//   );
-// };
+export type PageLayoutProps = {
+  title: string;
+  buttons: ButtonsLayoutProps;
+  children?: React.ReactNode;
+  onAction?: () => void;
+};
+
+export const PageLayout: React.FC<PageLayoutProps> = ({
+  title,
+  buttons,
+  children,
+  onAction
+}) => {
+  const handleSubmit = () => {
+    if (onAction) {
+      onAction();
+    }
+  };
+  return (
+    <div
+      style={{
+        gridArea: "body"
+      }}
+      className="rpgui-container-framed"
+    >
+      <h1>{title}</h1>
+      <ButtonsLayoutRpg
+        next={buttons.next}
+        back={buttons.back}
+        change={buttons.change}
+        onAction={handleSubmit}
+      />
+      <div
+        style={{
+          display: "flex",
+          alignContent: "center",
+          justifyContent: "space-evenly",
+          flexDirection: "row",
+          gap: "5px",
+          flexWrap: "wrap"
+        }}
+      >
+        {children}
+      </div>
+      <ButtonsLayoutRpg
+        next={buttons.next}
+        back={buttons.back}
+        change={buttons.change}
+        onAction={() => handleSubmit}
+      />
+    </div>
+  );
+};

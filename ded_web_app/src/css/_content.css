@@ -10,6 +10,7 @@
     /* justify-content: space-around; */
     /* align-items: center; */
     flex-direction: column;
+    /* min-width: min-content; */
     
     /* margin: 0 0 0 0; */
     /* width: 100%;  */
@@ -17,7 +18,7 @@
     /* left: 0px; */
     /* top: 0px; */
     /* overflow: "hidden"; */
-    /* position: fixed; */
+    /* position:relative; */
 }
 
 /* general rules to apply on anything inside the content */

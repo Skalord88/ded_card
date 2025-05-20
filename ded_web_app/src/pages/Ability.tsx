@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Abilitys } from "../components/Abilitys/Interface";
-import { ButtonConfirmRpg } from "../components/Buttons/Buttons";
 import { BonusAbilities, SignNumber } from "../components/functions";
-import { urlAb } from "../components/url";
+import { urlAb, urlRace } from "../components/url";
 import { abilitysEmpty } from "../components/variables";
+import { PageLayout } from "./AppLayout";
 // import { PageAndSummaryLayout } from "./AppLayout";
 
 export function Ability() {
@@ -33,91 +33,89 @@ export function Ability() {
   };
 
   return (
-    <div className="rpgui-container-framed">
-      <h1>Abilities</h1>
-      {/* <PageAndSummaryLayout> */}
-          <AbilityLayout
-            ability="STRENGHT"
-            value={{ abilities: abilitys, text: "STR" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="strength"
-              value={abilitys.strength}
-            />
-          </AbilityLayout>
-          <AbilityLayout
-            ability="DEXTERITY"
-            value={{ abilities: abilitys, text: "DEX" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="dexterity"
-              value={abilitys.dexterity}
-            />
-          </AbilityLayout>
-          <AbilityLayout
-            ability="CONSTITUTION"
-            value={{ abilities: abilitys, text: "COS" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="constitution"
-              value={abilitys.constitution}
-            />
-          </AbilityLayout>
-          <AbilityLayout
-            ability="INTELLIGENCE"
-            value={{ abilities: abilitys, text: "INT" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="intelligence"
-              value={abilitys.intelligence}
-            />
-          </AbilityLayout>
-          <AbilityLayout
-            ability="WISDOM"
-            value={{ abilities: abilitys, text: "WIS" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="wisdom"
-              value={abilitys.wisdom}
-            />
-          </AbilityLayout>
-          <AbilityLayout
-            ability="CHARISMA"
-            value={{ abilities: abilitys, text: "CHA" }}
-          >
-            <input
-              className="rpgui-content-input"
-              type="number"
-              onChange={handleData}
-              name="charisma"
-              value={abilitys.charisma}
-            />
-          </AbilityLayout>
-          <div>
-            {change === false ? (
-              <ButtonConfirmRpg text="Confirm" onAction={() => handleSubmit} />
-            ) : (
-              <ButtonConfirmRpg text="Races" link={"/race/" + charId} />
-            )}
-          </div>
-        
+    <PageLayout
+      title="Abilities"
+      buttons={{
+        next: { text: "Races", link: "/race/" + charId },
+        change: change,
+        // onAction: handleSubmit
+      }}
+    >
+      <AbilityLayout
+        ability="STRENGHT"
+        value={{ abilities: abilitys, text: "STR" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="strength"
+          value={abilitys.strength}
+        />
+      </AbilityLayout>
+      <AbilityLayout
+        ability="DEXTERITY"
+        value={{ abilities: abilitys, text: "DEX" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="dexterity"
+          value={abilitys.dexterity}
+        />
+      </AbilityLayout>
+      <AbilityLayout
+        ability="CONSTITUTION"
+        value={{ abilities: abilitys, text: "COS" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="constitution"
+          value={abilitys.constitution}
+        />
+      </AbilityLayout>
+      <AbilityLayout
+        ability="INTELLIGENCE"
+        value={{ abilities: abilitys, text: "INT" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="intelligence"
+          value={abilitys.intelligence}
+        />
+      </AbilityLayout>
+      <AbilityLayout
+        ability="WISDOM"
+        value={{ abilities: abilitys, text: "WIS" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="wisdom"
+          value={abilitys.wisdom}
+        />
+      </AbilityLayout>
+      <AbilityLayout
+        ability="CHARISMA"
+        value={{ abilities: abilitys, text: "CHA" }}
+      >
+        <input
+          className="rpgui-content-input"
+          type="number"
+          onChange={handleData}
+          name="charisma"
+          value={abilitys.charisma}
+        />
+      </AbilityLayout>
+
       {/* </PageAndSummaryLayout> */}
-      </div>
+    </PageLayout>
   );
 }
 
@@ -133,27 +131,20 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   value
 }) => {
   return (
-    <div 
-    className="rpgui-container-framed-golden"
-      style={{
-        display: "flex",
-        justifyContent:"space-around",
-
-      }}
-    >
+    <div className="rpgui-container-framed-golden">
       <div style={{ flex: 1 }}>
-      <p>
-        {ability}
-        {":"}
-      </p>
+        <p>
+          {ability}
+          {":"}
+        </p>
       </div>
+      <div style={{ flex: 1 }}>{children}</div>
       <div style={{ flex: 1 }}>
-      {children}</div>
-      <div style={{ flex: 1 }}>
-      <p>
-        {value && SignNumber(BonusAbilities(value?.abilities, value?.text))}
-        {value && BonusAbilities(value?.abilities, value?.text)}
-      </p></div>
+        <p>
+          {value && SignNumber(BonusAbilities(value?.abilities, value?.text))}
+          {value && BonusAbilities(value?.abilities, value?.text)}
+        </p>
+      </div>
     </div>
   );
 };
