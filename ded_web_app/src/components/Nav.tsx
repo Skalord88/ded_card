@@ -2,21 +2,22 @@ import { Link } from "react-router-dom";
 
 export const NavRpg: React.FC = () => {
   return (
-      <ul
-        className="rpgui-list-imp"
-        style={{
-          gridArea: "nav"
-        }}
-      >
-        <Link to="create">
-          <li>New</li>
-        </Link>
-        <Link to="list">
-          <li>List</li>
-        </Link>
-        <Link to="fight">
-          <li>Fight</li>
-        </Link>
-      </ul>
+    <div
+      className="rpgui-container-framed golden-2"
+      style={{
+        gridArea: "nav",
+        alignSelf: "flex-start",
+      }}
+    >
+      <Link to="create">
+        <p>New</p>
+      </Link>
+      <Link to="list">
+        <p>List</p>
+      </Link>
+      <Link to="fight">
+        <p>Fight</p>
+      </Link>
+    </div>
   );
 };

@@ -31,6 +31,7 @@
     /* padding */
     padding-left: 35px;
     padding-right: 35px;
+    
 }
 
 /* button hover */
@@ -130,7 +131,6 @@
 
 	/* default size and display */
     height: 24px;
-    
 
 
     /* padding */
@@ -164,7 +164,7 @@
     background-size: 100% 100%;
     margin: 0 0 0 0;
     left: 0px;
-    float: left;
+    /* float: left; */
     margin-left: -46px;
     margin-top: -5%;
 }
@@ -186,14 +186,9 @@
     margin-top: -5%;
 }
 
-/*
-.rpgui-button.golden:hover:before {
-
-    background-image: url('img/button-golden-left-hover.png');
-}
-
-.rpgui-button.golden:hover:after {
-
-    background-image: url('img/button-golden-right-hover.png');
-}
-*/
+/* .rpgui-button,
+.rpgui-button-golden,
+.rpgui-button-golden-small,
+.rpgui-button-golden-mini {
+  font-size: clamp(0.8rem, 1vw + 0.5rem, 1.1rem);
+} */

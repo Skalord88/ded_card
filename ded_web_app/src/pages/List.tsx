@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { character } from "../components/interfaces";
 import { urlCharList } from "../components/url";
 import { DropdownComponent } from "../components/DropDown/DropDown";
+import { PageLayoutBody } from "./AppLayout";
 
 export const List: React.FC = () => {
   const [charList, setCharList] = useState<character[]>([]);
@@ -17,9 +18,9 @@ export const List: React.FC = () => {
 
 
   return (
-    <>
+    <PageLayoutBody>
       {charList.length > 0 ? (
-        <div id="list" className="rpgui-container-framed">
+        <div>
           <p>list of characters:</p>
           <ol type="I" id="list">
             {charList.map((c: character, index: number) => {
@@ -32,14 +33,13 @@ export const List: React.FC = () => {
                 </li>
               );
             })}
-          </ol>
-        </div>
+          </ol></div>
       ) : (
-        <div className="rpgui-container-framed">
+        <PageLayoutBody>
           <p>...loading characters...</p>
-        </div>
+        </PageLayoutBody>
       )}
-    </>
+    </PageLayoutBody>
   );
 };
 

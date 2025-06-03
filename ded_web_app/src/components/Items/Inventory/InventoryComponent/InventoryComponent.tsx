@@ -2,16 +2,16 @@ import { Inventory } from "../../../interfaces";
 import { CharToModify } from "../../../Prerequisite/functions/modifyCharacter";
 import { calculateInventoryWeight, calculateWeight } from "../function";
 import {
-  ArmorInventoryComponent,
-  MiniArmorInventoryComponent
+    ArmorInventoryComponent,
+    MiniArmorInventoryComponent
 } from "./ArmorInventoryComponent";
 import {
-  MiniShieldInventoryComponent,
-  ShieldInventoryComponent
+    MiniShieldInventoryComponent,
+    ShieldInventoryComponent
 } from "./ShieldInventoryComponent";
 import {
-  MiniWeaponsInventoryComponent,
-  WeaponsInventoryComponent
+    MiniWeaponsInventoryComponent,
+    WeaponsInventoryComponent
 } from "./WeaponsInventoryComponent";
 import { WeightInventoryComponent } from "./WeightInventoryComponent";
 
@@ -31,7 +31,7 @@ export const InventoryComponent: React.FC<InventoryComponentProps> = ({
   const inventory: Inventory = char.inventory
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Inventory</h2>
+      <h2 className="rpgui-container-framed golden-2">Inventory</h2>
       {window.innerWidth <= 768 ? (
         <div>
           <WeightInventoryComponent carrying={carrying} />

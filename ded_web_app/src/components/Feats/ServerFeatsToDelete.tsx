@@ -15,7 +15,7 @@ export const ServerFeatsToDelete: React.FC<ServerFeatsPronsDelete> = ({
     return (
       <>
         <div className="rpgui-container-framed-grey" style={{ flex: 1 }}>
-          <h2 className="rpgui-container-framed-golden-2">{title}</h2>
+          <h2 className="rpgui-container-framed golden-2">{title}</h2>
           <div style={{ display: "flex" }}>
             <div style={{ flex: 1 }}>
               {feats?.map((feat: serverFeat, index) => {

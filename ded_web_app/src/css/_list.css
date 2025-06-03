@@ -1,19 +1,21 @@
-
 /* dropdown box implemented with list (see rpgui-dropdown.js for details) */
 /* note! this class rule affect both the dropdown header and the list elements! */
-.rpgui-list-imp
-{
+.rpgui-list-imp {
 	/* font */
 	/* font-family: 'Press Start 2P', cursive; */
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    color: white;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	color: white;
+	min-Width: "200px";
+	max-Width: "300px";
+	justify-self: center;
+
 
 	/* default size */
 	min-height: 40px;
-	margin-top: 0px;
+	/* margin: 0; */
 
 	/* scrollers */
-	overflow-x: hidden;
+	/* overflow-x: hidden; */
 	overflow-y: auto;
 
 	/* border */
@@ -33,19 +35,17 @@
 
 
 /* dropdown options list */
-ul.rpgui-list-imp
-{
+ul.rpgui-list-imp {
 	padding: 0 0 0 0 !important;
 	z-index: 100;
 }
 
 /* dropdown options */
-.rpgui-list-imp li
-{
+.rpgui-list-imp li {
 	/* font */
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    color: white;
-	height: 16px;
+	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+	color: white;
+	/* height: 16px; */
 	margin-left: 5px !important;
 
 	/* remove the dot */
@@ -55,7 +55,7 @@ ul.rpgui-list-imp
 	padding-top: 6px;
 	padding-bottom: 6px;
 	padding-left: 6px;
-
+	/* padding: 6px; */
 	/* background */
 	background: url("../img/select-background-image.png") repeat repeat;
 	background-clip: padding-box;
@@ -64,18 +64,15 @@ ul.rpgui-list-imp
 }
 
 /* list options hover */
-.rpgui-list-imp li:hover
-{
+.rpgui-list-imp li:hover {
 	color: yellow;
 }
 
 /* list hover */
-.rpgui-list-imp:hover
-{
+.rpgui-list-imp:hover {
 	color: yellow;
 }
 
-.rpgui-list-imp .rpgui-selected
-{
-    background: rgba(0, 0, 0, 0.3);
+.rpgui-list-imp .rpgui-selected {
+	background: rgba(0, 0, 0, 0.3);
 }

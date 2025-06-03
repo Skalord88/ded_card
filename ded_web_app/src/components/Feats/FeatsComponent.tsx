@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
-import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
-import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { FormattingText } from "../Formatting/Function";
 import { SignNumber } from "../functions";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
+import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
+import { ClassFeats, Feat, FeatPc } from "./Interface/FeatInterface";
 
 export type FeatsComponentProps = {
   char: CharToModify;
@@ -99,7 +99,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
 
   return (
     <div>
-      <h2 className="rpgui-container-framed-golden-2">Feats</h2>
+      <h2 className="rpgui-container-framed golden-2">Feats</h2>
       <ListOfFeatsMap key={"Feats Level"} feats={fePcLv} titolo={"Feats Level"} />
       {/* <ListOfFeatsMap key={"Feats Class Bonus"} feats={fePcBnsCl} titolo={"Feats Class Bonus"} /> */}
       <ListOfFeatsMap key={"Feats"} feats={fe} titolo={"Feats"} />

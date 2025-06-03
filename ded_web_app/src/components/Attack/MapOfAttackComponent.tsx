@@ -48,7 +48,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
   };
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
+      <h2 className="rpgui-container-framed golden-2">Attacks</h2>
       <div style={{ display: "grid" }}>
         <h2
           // className="rpgui-container-framed-grey"
@@ -199,7 +199,7 @@ export const BucklerOn: React.FC<BucklerOnProps> = ({ index, check }) => {
 
 //   return (
 //   <>
-//     <h2 className="rpgui-container-framed-golden-2">Attacks</h2>
+//     <h2 className="rpgui-container-framed golden-2">Attacks</h2>
 //     <>
 //       <div style={{ display: "grid" }}>
 //         <div style={{ gridColumn: 1, gridRow: 1 }}>

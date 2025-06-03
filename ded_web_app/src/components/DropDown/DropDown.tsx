@@ -46,16 +46,12 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
             className="rpgui-dropdown-imp"
             style={{
               position: "absolute",
-              width: "50%",
-              fontSize: "50%"
             }}
           >
             {options.map((o, index) => (
-              <div key={index}>
                 <li onClick={() => selectItem(o)}>
                   {o.name}
                 </li>
-              </div>
             ))}
           </ul>
         )}

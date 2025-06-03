@@ -18,6 +18,8 @@ export const urlClassAdd: string = url + "character-card/class/";
 
 export const urlClassSell: string = url + "character-card/minus_class/";
 
+export const urlSkillAll: string = url + "skills/list";
+
 export const urlSkillSet: string = url + "skills/";
 
 export const urlStudySet: string = url + "skills/study/";

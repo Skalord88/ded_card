@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
+import { addToDrop, itemInDrop } from "../components/functions";
+import { CharacterPc } from "../components/interfaces";
 import { ListOfSomething } from "../components/List/List";
+import { findIconRace } from "../components/Race/Function";
 import { Race, SubRace } from "../components/Race/Interfaces";
 import { CharSummary } from "../components/Summary/CharSummary";
-import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
-import { addToDrop, itemInDrop } from "../components/functions";
-import { findIconRace } from "../components/Race/Function";
-import { ButtonRpg } from "../components/Buttons/Buttons";
+import { PageLayout } from "./AppLayout";
 
 export type ChosenRace = {
   id: number;
@@ -25,7 +25,7 @@ export const Races = () => {
   const [selectedRace, setSelectedRace] = useState<Race>();
   const [selectedSubRace, setSelectedSubRace] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
-    id: 0
+    id: -1
   });
   const [change, setChange] = useState(false);
   const [iconRace, setIconRace] = useState<string>("");
@@ -54,7 +54,7 @@ export const Races = () => {
   }, []);
 
   const handleRace = (s: itemInDrop) => {
-    const race = s.item as Race
+    const race = s.item as Race;
     setSelectedRace(s.item as Race);
     const oneSub = subRacePerRace?.filter(
       (sub) => (sub.item as SubRace).race.id === race?.id
@@ -66,7 +66,6 @@ export const Races = () => {
     if (s.item as SubRace) setChosenRace({ id: (s.item as SubRace).id });
     setSelectedSubRace(s.item as SubRace);
     setIconRace("rpgui-icon " + findIconRace((s.item as SubRace).id));
-    setChange(true);
   };
   const handleNoRace = () => {
     setSelectedRace(undefined);
@@ -74,57 +73,50 @@ export const Races = () => {
     setChange(false);
   };
   const handleSubmit = () => {
-    if (change) axios.post(urlRace + "/" + charId, chosenRace);
-    window.location.reload();
+    console.log("chosenRace", chosenRace);
+    if(chosenRace && chosenRace.id > -1) axios.post(urlRace + "/" + charId, chosenRace);
+    setChange(true);
+    // window.location.reload();
   };
 
   return (
-    <div>
-      <h1>Races</h1>
-      {/* <PageAndSummaryLayout> */}
-        {char && selectedSubRace ? (
-          <div>
-            {change === true ? (
-              <div className="rpgui-container-framed-grey">
-                <div className={iconRace} />
-                <p onClick={() => handleNoRace()}>
-                  {selectedRace?.raceName +
-                    ", " +
-                    selectedSubRace?.subRacesName +
-                    " "}
-                </p>
-                <ButtonRpg text={"to classes"} link={"/class/" + charId} onAction={()=> handleSubmit}/>
-              </div>
-            ) : (
-              <div>
-                <p>...choose race</p>
-              </div>
-            )}
-            <CharSummary character={char} race={selectedSubRace} />
-          </div>
-        ) : (
-          <div>
-            <p>...choose race</p>
-          </div>
-        )}
-
-        <div className="rpgui-container-framed-grey">
-          {racePerRace ? (
-            <ListOfSomething
-              items={racePerRace}
-              text={"Race"}
-              onSelect={handleRace}
-            />
-          ) : null}
-          {selectedRace && oneSubRaceList ? (
-            <ListOfSomething
-              items={oneSubRaceList}
-              text={selectedRace.raceName}
-              onSelect={handleSubRace}
-            />
-          ) : null}
+    <PageLayout
+      title={"Races"}
+      buttons={{
+        next: { text: "Classes", link: "/class/" + charId, change: change }
+      }}
+      onAction={handleSubmit}
+      pageStyle="auto"
+    >
+      {racePerRace ? (
+        <ListOfSomething
+          items={racePerRace}
+          text={"Race"}
+          onSelect={handleRace}
+        />
+      ) : null}
+      {selectedRace && oneSubRaceList ? (
+        <ListOfSomething
+          items={oneSubRaceList}
+          text={selectedRace.raceName}
+          onSelect={handleSubRace}
+        />
+      ) : null}
+      {char && selectedRace && selectedSubRace && (
+        <div>
+          <h2
+            className="rpgui-container-framed golden-2"
+            onClick={() => handleNoRace()}
+          >
+            {selectedRace?.raceName +
+              ", " +
+              selectedSubRace?.subRacesName +
+              " "}
+          </h2>
+          <div className={iconRace} />
+          <CharSummary character={char} race={selectedSubRace} />
         </div>
-      {/* </PageAndSummaryLayout> */}
-    </div>
+      )}
+    </PageLayout>
   );
 };

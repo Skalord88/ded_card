@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 export type ButtonProps = {
   change?: boolean;
@@ -20,16 +21,16 @@ export const ButtonRpg: React.FC<ButtonProps> = ({ text, link, onAction }) => {
 };
 
 export type ButtonsLayoutProps = {
-  next?: { text?: string; link?: string };
+  next?: { text?: string; link?: string; change?: boolean };
   back?: { text?: string; link?: string };
-  change?: boolean;
+  create?: boolean;
   onAction?: () => void;
 };
 
 export const ButtonsLayoutRpg: React.FC<ButtonsLayoutProps> = ({
   next,
   back,
-  change,
+  create,
   onAction
 }) => {
   const handleSubmit = () => {
@@ -41,17 +42,31 @@ export const ButtonsLayoutRpg: React.FC<ButtonsLayoutProps> = ({
     <div
       style={{
         display: "flex",
-        alignContent: "center",
-        justifyContent: "space-around",
-        flexDirection: "row"
+        justifyContent: "space-between",
+        flexDirection: "row",
+        // gridColumn: "1fr 1fr 1fr",
       }}
     >
-      {back && <ButtonRpg text={back.text} link={back.link} />}
-      {change === false ? (
+      {/* back */}
+      <div
+      // style={{ gridColum: "1" }}
+      >
+        {back && <ButtonRpg text={back.text} link={back.link} />}
+      </div>
+      <div
+      // style={{ gridColumn: "2" }}
+      >
+        {/* create */}
+        {create && <ButtonRpg text="Confirm" onAction={handleSubmit} />}
+
+        {/* next */}
         <ButtonRpg text="Confirm" onAction={handleSubmit} />
-      ) : (
-        <ButtonRpg text={next?.text} link={next?.link} />
-      )}
+      </div>
+      <div
+      // style={{ gridColumn: "3" }}
+      >
+        {next?.change && <ButtonRpg text={next.text} link={next.link} />}
+      </div>
     </div>
   );
 };

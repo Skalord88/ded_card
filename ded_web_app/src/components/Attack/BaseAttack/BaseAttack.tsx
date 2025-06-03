@@ -1,12 +1,12 @@
 import { abilityBackgroundColor } from "../../Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "../../functions";
 import {
-  AllModifiersInDice20,
-  AllModifiersInDiceProps
+    AllModifiersInDice20,
+    AllModifiersInDiceProps
 } from "../../Popup/DicePopup/D20Popup";
 import {
-  AllModifiersInThrow,
-  DiceModifiers
+    AllModifiersInThrow,
+    DiceModifiers
 } from "../../Popup/DicePopup/Interface";
 import { CharToModify } from "../../Prerequisite/functions/modifyCharacter";
 import { sepcialAttacksToList } from "../function";
@@ -142,7 +142,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Bab</h2>
+      <h2 className="rpgui-container-framed golden-2">Bab</h2>
       <AllModifiersInDice20 list={allDice.list} />
     </>
   );

@@ -15,7 +15,7 @@ export const SpeedComponent: React.FC<SpeedComponentProps> = ({ char }) => {
   }
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Speed</h2>
+      <h2 className="rpgui-container-framed golden-2">Speed</h2>
 
       <div><p style={{backgroundColor:"grey"}}>tactic</p></div>
       <div>

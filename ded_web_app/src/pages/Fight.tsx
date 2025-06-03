@@ -6,7 +6,7 @@ export function Fight() {
 
   return (
     <>
-        <div className="rpgui-container-framed-golden grid-table-three">
+        <div className="rpgui-container-framed golden grid-table-three">
             <div><p onClick={()=>setOption("Attack")}>Attack</p></div>
             <div><p>Magic</p></div>
             <div><p>Special</p></div>

@@ -1,4 +1,8 @@
-import { findAbility } from "../../Abilitys/Functions";
+import {
+  abilityAbbreviation,
+  BonusAbilities,
+  findAbility
+} from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
@@ -170,6 +174,10 @@ export const modifyCharacter = (
   items?: ItemsList
 ): CharToModify => {
   const abilitys: Abilitys[] = findAbilitysPrerequisite(prer);
+  const changedAbilitys: Abilitys = changeAbilitysFromPrerequisite(
+    char.abilitys,
+    abilitys
+  );
   const adjBab: number = Math.floor(
     CountBabFromClassPc(char) + FindAllAdjLevel(char) * adjClass.classBab
   );
@@ -215,19 +223,36 @@ export const modifyCharacter = (
       : []
   );
 
+  const allClassesSkillPoints: number = char.classPcList.reduce(
+    (tot, cl) =>
+      tot +
+      (cl.firstClass
+        ? (cl.classCharacter.skillPoints +
+            BonusAbilities(
+              changedAbilitys,
+              abilityAbbreviation("intelligence")
+            )) *
+            4 +
+          cl.classCharacter.skillPoints * (cl.level - 1)
+        : (cl.classCharacter.skillPoints +
+            BonusAbilities(
+              changedAbilitys,
+              abilityAbbreviation("intelligence")
+            )) *
+          cl.level),
+    0
+  );
+
   const maxSkillPnts: number =
-    FindAllAdjLevel(char) * adjClass.skillPoints +
-    char.classPcList.reduce(
-      (tot, cl) => tot + cl.level * cl.classCharacter.skillPoints,
-      0
-    );
+    FindAllAdjLevel(char) * adjClass.skillPoints + allClassesSkillPoints;
+
   const allFeats = groupAllFeats(char);
   const allProficency: { type: string[]; specific: Item[] } = items
     ? findAllProficency(allFeats, items)
     : { type: [], specific: [] };
 
   const newChar: CharToModify = {
-    abilitys: changeAbilitysFromPrerequisite(char.abilitys, abilitys),
+    abilitys: changedAbilitys,
     bab: adjBab,
     size: char.race.size,
     adjBonus: {
@@ -248,16 +273,29 @@ export const modifyCharacter = (
     ),
     armor: findArmorPrerequisite(prer),
     inventory: modifyInventory(char.race.size.id, char.inventory),
-    attacks: char.attacks === null?
-    emptyAttacks
-    : {
-          firstAttackSetOne: char.attacks.firstAttackSetOne ? char.attacks.firstAttackSetOne : noneWeapon,
-          secondAttackSetOne: char.attacks.secondAttackSetOne ? char.attacks.secondAttackSetOne : noneWeapon,
-          additionalAttackSetOne: char.attacks.additionalAttackSetOne? char.attacks.additionalAttackSetOne : noneWeapon,
-          firstAttackSetTwo: char.attacks.firstAttackSetTwo ? char.attacks.firstAttackSetTwo : noneWeapon,
-          secondAttackSetTwo: char.attacks.secondAttackSetTwo ? char.attacks.secondAttackSetTwo : noneWeapon,
-          additionalAttackSetTwo: char.attacks.additionalAttackSetTwo ? char.attacks.additionalAttackSetTwo : noneWeapon
-        },
+    attacks:
+      char.attacks === null
+        ? emptyAttacks
+        : {
+            firstAttackSetOne: char.attacks.firstAttackSetOne
+              ? char.attacks.firstAttackSetOne
+              : noneWeapon,
+            secondAttackSetOne: char.attacks.secondAttackSetOne
+              ? char.attacks.secondAttackSetOne
+              : noneWeapon,
+            additionalAttackSetOne: char.attacks.additionalAttackSetOne
+              ? char.attacks.additionalAttackSetOne
+              : noneWeapon,
+            firstAttackSetTwo: char.attacks.firstAttackSetTwo
+              ? char.attacks.firstAttackSetTwo
+              : noneWeapon,
+            secondAttackSetTwo: char.attacks.secondAttackSetTwo
+              ? char.attacks.secondAttackSetTwo
+              : noneWeapon,
+            additionalAttackSetTwo: char.attacks.additionalAttackSetTwo
+              ? char.attacks.additionalAttackSetTwo
+              : noneWeapon
+          },
     proficency: allProficency,
     skills: findSkillsPrerequisite(prer),
     skillsList: createSkillsList(char),

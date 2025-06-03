@@ -22,7 +22,7 @@ export const HpComponent: React.FC<HpComponentProps> = ({ char }) => {
   ]);
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Hit Dice</h2>
+      <h2 className="rpgui-container-framed golden-2">Hit Dice</h2>
       <div style={{ display: "flex" }} className="rpgui-container-framed-grey">
         <span>Hit Dices:</span>
         {oneDList.map((hD, index) => {

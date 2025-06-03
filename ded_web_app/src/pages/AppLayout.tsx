@@ -1,19 +1,20 @@
 import { Outlet } from "react-router-dom";
-import { Footer } from "../components/Footer";
-import { NavRpg } from "../components/Nav";
 import {
   ButtonsLayoutProps,
   ButtonsLayoutRpg
 } from "../components/Buttons/Buttons";
+import { Footer } from "../components/Footer";
+import { NavRpg } from "../components/Nav";
 
 export const AppLayout: React.FC = () => {
   return (
-    <AppLayoutTemplate>
-      {/* <header></header> */}
-      <NavRpg />
-      <Outlet />
-      <Footer />
-    </AppLayoutTemplate>
+    <div className="rpgui-content rpgui-cursor-default">
+      <AppLayoutTemplate>
+        <NavRpg />
+        <Outlet />
+        <Footer />
+      </AppLayoutTemplate>
+    </div>
   );
 };
 
@@ -22,34 +23,67 @@ export const AppLayoutTemplate: React.FC<React.PropsWithChildren<{}>> = ({
 }) => {
   return (
     <div
-      className="rpgui-content rpgui-cursor-default"
+      className="rpgui-container"
       style={{
-        display: "grid",
         gridTemplateAreas: `
-        "body body body nav"
-        "body body body nav"
-        "footer footer footer empty"
-        `,
-        gridTemplateColumns: "3fr, 1fr",
-        minWidth: "min-content"
+        "title title title title title"
+        "body body body body nav"
+        "body body body body nav"
+        "footer footer footer footer empty"
+        `
       }}
     >
+      <TitlePage />
       {children}
+    </div>
+  );
+};
+
+export const TitlePage: React.FC = () => {
+  return (
+    <div
+      style={{
+        gridArea: "title"
+      }}
+    >
+      <h1>
+        <div className="rpgui-icon sword" />
+        {"3.Oscar"}
+        <div className="rpgui-icon shield" />
+      </h1>
     </div>
   );
 };
 
 export type PageLayoutProps = {
   title: string;
-  buttons: ButtonsLayoutProps;
+  buttons?: ButtonsLayoutProps;
   children?: React.ReactNode;
   onAction?: () => void;
+  pageStyle?: string;
+};
+
+export const PageLayoutBody: React.FC<React.PropsWithChildren<{}>> = ({
+  children
+}) => {
+  return (
+    <div
+      style={{
+        gridArea: "body",
+        
+      }}
+      className="rpgui-container-framed"
+    >
+      {children}
+    </div>
+  );
 };
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
   title,
   buttons,
   children,
+  pageStyle,
   onAction
 }) => {
   const handleSubmit = () => {
@@ -58,37 +92,30 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
     }
   };
   return (
-    <div
-      style={{
-        gridArea: "body"
-      }}
-      className="rpgui-container-framed"
-    >
+    <PageLayoutBody>
       <h1>{title}</h1>
       <ButtonsLayoutRpg
-        next={buttons.next}
-        back={buttons.back}
-        change={buttons.change}
+        next={buttons?.next}
+        back={buttons?.back}
+        create={buttons?.create}
         onAction={handleSubmit}
       />
       <div
         style={{
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "space-evenly",
-          flexDirection: "row",
-          gap: "5px",
-          flexWrap: "wrap"
+          display: "grid",
+          gridTemplateColumns: pageStyle,
+
+          gap: "0.5rem"
         }}
       >
         {children}
       </div>
       <ButtonsLayoutRpg
-        next={buttons.next}
-        back={buttons.back}
-        change={buttons.change}
-        onAction={() => handleSubmit}
+        next={buttons?.next}
+        back={buttons?.back}
+        create={buttons?.create}
+        onAction={handleSubmit}
       />
-    </div>
+    </PageLayoutBody>
   );
 };

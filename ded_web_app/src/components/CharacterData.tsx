@@ -11,7 +11,7 @@ export interface CharProps {
 export const CharacterData: React.FC<CharProps> = ({ char }) => {
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Character Data</h2>
+      <h2 className="rpgui-container-framed golden-2">Character Data</h2>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
           <p>Pg Name:</p>
@@ -84,7 +84,7 @@ export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Class and Experience</h2>
+      <h2 className="rpgui-container-framed golden-2">Class and Experience</h2>
 
       <div>
         <p>LEP: {totLv}</p>

@@ -11,6 +11,7 @@ import { CharacterPc } from "../components/interfaces";
 import { urlChar, urlClassAdd, urlClassList } from "../components/url";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
+import { PageLayout } from "./AppLayout";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -106,7 +107,7 @@ export const Classes = () => {
           firstClass: true
         };
       }
-      setChange(true);
+
       setCharClassPc(newClassList);
     }
   };
@@ -127,12 +128,20 @@ export const Classes = () => {
 
       axios.post(urlClassAdd + charId, classToAdd);
     }
-    window.location.reload();
+    setChange(true);
+    // window.location.reload();
   };
 
   return (
-    <>
-      {char ? <CharSummary character={char} classPcList={charClassPc} /> : null}
+    <PageLayout
+      title={"Classes"}
+      buttons={{
+        next: { text: "Skills", link: "/skill/" + charId, change: change },
+        back: { text: "Races", link: "/race/" + charId }
+      }}
+      onAction={handleSubmit}
+    >
+      
 
       <div className="rpgui-container-framed-grey">
         <p>Base Classes: </p>
@@ -141,49 +150,36 @@ export const Classes = () => {
         <DropdownComponent options={prestigeClList} onAction={handleNewClass} />
         {charClassPc ? (
           charClassPc.map((cl, index) => (
-            <>
-              <div key={index}>
-                <p>
-                  <span>
-                    lv{cl.level}: {cl.classCharacter.className}{" "}
-                    {cl.firstClass ? "-first class- " : null}
-                  </span>
-                  <span>
-                    <button
-                      onClick={() => handleNewClass(cl.classCharacter)}
-                      className="rpgui-button-golden-small"
-                    >
-                      <p>+</p>
-                    </button>
-                  </span>
-                  <span>
-                    <button
-                      onClick={() => handleDelClass(cl.classCharacter)}
-                      className="rpgui-button-golden-small"
-                    >
-                      <p>-</p>
-                    </button>
-                  </span>
-                </p>
-              </div>
-            </>
+            <div key={index}>
+              <p>
+                <span>
+                  lv{cl.level}: {cl.classCharacter.className}{" "}
+                  {cl.firstClass ? "-first class- " : null}
+                </span>
+                <span>
+                  <button
+                    onClick={() => handleNewClass(cl.classCharacter)}
+                    className="rpgui-button-golden-small"
+                  >
+                    <p>+</p>
+                  </button>
+                </span>
+                <span>
+                  <button
+                    onClick={() => handleDelClass(cl.classCharacter)}
+                    className="rpgui-button-golden-small"
+                  >
+                    <p>-</p>
+                  </button>
+                </span>
+              </p>
+            </div>
           ))
         ) : (
           <p>add a class</p>
         )}
       </div>
-      <div>
-        {change ? (
-          <button className="rpgui-button" onClick={handleSubmit}>
-            <p>confirm</p>
-          </button>
-        ) : null}
-        <button className="rpgui-button">
-          <Link to={"/skill/" + charId}>
-            <p>to skills</p>
-          </Link>
-        </button>
-      </div>
-    </>
+      {char ? <CharSummary character={char} classPcList={charClassPc} /> : null}
+    </PageLayout>
   );
 };

@@ -1,21 +1,23 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
 import { abilityAbbreviation } from "../Abilitys/Functions";
+import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { BonusAbilities } from "../functions";
-import { urlSkillSet } from "../url";
 import {
   OneSkillShow,
   OneStudyShow,
-  SkillShowComponentProps,
   SkillWithStudy
 } from "./Show/SkillShowComponent";
 import { SkillsInList } from "./interface/SkillsInList";
 
+export type SkillShowComponentProps = {
+  char: CharToModify;
+  onActionSkills: () => SkillsInList[];
+};
+
 export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
-  char
+  char,
+  onActionSkills
 }) => {
-  const { charId } = useParams();
 
   const [skillsList, setSkillsList] = useState<SkillsInList[]>(char.skillsList);
   const [spentSkillPnts, setSpentSkillPnts] = useState<number>(0);
@@ -113,56 +115,26 @@ export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
         return tot + (s.classSkill ? s.rank : s.rank * 2);
       }, 0)
     );
+    if(onActionSkills && skillsList) {
+      onActionSkills();
+    }
   }, [skillsList]);
 
-  const handleChange = () => {
-    const skillToSend: { idSkill: number; idStudy: number; rank: number }[] =
-      skillsList.flatMap((s) =>
-        s.study && s.study?.length > 0
-          ? s.study.flatMap((st) =>
-              st.rank > 0
-                ? [{ idSkill: 0, idStudy: st.study.id, rank: st.rank }]
-                : []
-            )
-          : s.rank
-          ? [{ idSkill: s.skill.id, idStudy: 0, rank: s.rank }]
-          : []
-      );
-
-    try {
-      axios.post(urlSkillSet + charId, skillToSend);
-    } catch (error) {
-      console.log(error);
-    }
-    window.location.reload();
-  };
+  
 
   const penality: number = char.inventory
     ? char.inventory.armor.penality + char.inventory.shield.penality
     : 0;
   return (
-    <>
-      <div className="rpgui-container-framed-golden">
-        <span>
-          {spentSkillPnts} spent / {maxSkillsPoints} toSpent / {maxRankToUse}
-          {" maxRank"}
-        </span>
-        <button className="rpgui-button" onClick={handleChange}>
-          <p>confirm</p>
-        </button>
-        <Link to={"/feat/" + charId}>
-          <button className="rpgui-button">
-            <p>to Feats</p>
-          </button>
-        </Link>
-      </div>
+    <div>
+      
 
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "5% 50% 10% 8% 5% 5% 5%"
+          gridTemplateColumns: "0.5fr 2fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr",
         }}
-        className="rpgui-container-framed-golden"
+        // className="rpgui-container-framed golden"
       >
         <div className="rpgui-container-framed-grey-mini">
           <p>cs</p>
@@ -182,7 +154,6 @@ export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
         <div className="rpgui-container-framed-grey-mini">
           <p>bns</p>
         </div>
-
         <div className="rpgui-container-framed-grey-mini">
           <p>pnl</p>
         </div>
@@ -223,7 +194,7 @@ export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
           )
         )}
       </div>
-    </>
+    </div>
   );
 };
 {

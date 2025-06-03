@@ -1,8 +1,8 @@
 import { abilityBackgroundColor } from "../Abilitys/Colors";
 import { BonusAbilities, signAndCount } from "../functions";
 import {
-  AllModifiersInDice12,
-  AllModifiersInDiceProps
+    AllModifiersInDice12,
+    AllModifiersInDiceProps
 } from "../Popup/DicePopup/D20Popup";
 import { AllModifiersInThrow } from "../Popup/DicePopup/Interface";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
@@ -38,7 +38,7 @@ export const Initiative: React.FC<InitiativeProps> = ({ char }) => {
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Initiative</h2>
+      <h2 className="rpgui-container-framed golden-2">Initiative</h2>
 
       <AllModifiersInDice12 list={allDice.list} />
     </>

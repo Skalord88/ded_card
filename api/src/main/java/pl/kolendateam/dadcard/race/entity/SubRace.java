@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
@@ -28,6 +29,7 @@ import pl.kolendateam.dadcard.size.entity.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class SubRace implements Serializable {
 
   @Id

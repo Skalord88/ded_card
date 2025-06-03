@@ -14,7 +14,7 @@ export const CharacterArmor: React.FC<CharacterArmorProps> = ({ char }) => {
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Class Armor</h2>
+      <h2 className="rpgui-container-framed golden-2">Class Armor</h2>
 
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {listOfArmor.map((armor, index) => {

@@ -20,7 +20,7 @@ export const InventoryIcon: React.FC<ChildrenProps> = ({
   const classNome: string = "rpgui-icon " + classe;
   return (
     <div
-      className="rpgui-container-framed-golden"
+      className="rpgui-container-framed golden"
       style={{ position: "absolute", top: top + "%", left: left + "%" }}
     >
       <div className={classNome}>

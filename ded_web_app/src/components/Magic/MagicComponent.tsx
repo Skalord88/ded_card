@@ -7,7 +7,7 @@ export type MagicComponentProps = {
 export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
   return (
     <div>
-      <h2 className="rpgui-container-framed-golden-2">Magic</h2>
+      <h2 className="rpgui-container-framed golden-2">Magic</h2>
       {char.spellsPerDay &&
         char.spellsPerDay.map((table, index) => (
           <div key={index}>

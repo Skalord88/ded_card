@@ -1,6 +1,5 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="17" author="damian">
         <!-- Dwarf 0 -->
         <!-- Artic Dwarf -->
@@ -21,8 +20,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="150001" />
             <column name="text" value="Artic Dwarf modifiers" />
-            <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+            <column name="saving_throw" value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;COLD&quot; ]
                     } , {
@@ -30,13 +28,11 @@
                     &quot;target&quot; : [ &quot;POISON&quot; ],
                     &quot;bonus&quot; : 2
                     } ] }" />
-            <column name="abilitys"
-                value="{
+            <column name="abilitys" value="{
                  &quot;strength&quot; : 4, 
                  &quot;dexterity&quot; : -2 
                  }" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -59,13 +55,11 @@
         <insert tableName="prerequisite">
             <column name="id" value="150002" />
             <column name="text" value="Golden Dwarf races modifiers" />
-            <column name="abilitys"
-                value="{ 
+            <column name="abilitys" value="{ 
                  &quot;dexterity&quot; : -2, 
                  &quot;charisma&quot; : 2 
                  }" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ABERRATIONS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -88,20 +82,17 @@
         <insert tableName="prerequisite">
             <column name="id" value="150003" />
             <column name="text" value="Grey Dwarf races modifiers" />
-            <column name="abilitys"
-                value="{ 
+            <column name="abilitys" value="{ 
                  &quot;charisma&quot; : -2 
                  }" />
-            <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+            <column name="saving_throw" value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ 
                     &quot;PARALYSIS&quot; , 
                     &quot;PHANTASMS&quot; , 
                     &quot;POISON&quot; ] 
                 } ] }" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -153,12 +144,10 @@
         <insert tableName="prerequisite">
             <column name="id" value="150005" />
             <column name="text" value="Savage Dwarf modifiers" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
-            <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+            <column name="saving_throw" value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ],
                     &quot;bonus&quot; : 3
@@ -167,8 +156,7 @@
                     &quot;target&quot; : [ &quot;DISEASES&quot; ],
                     &quot;bonus&quot; : 4
                     } ] }" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -469,12 +457,10 @@
             <column name="id" value="155002" />
             <column name="text" value="Lightfoot Halfling races modifiers" />
             <column name="weapon_type" value="THROWN" />
-            <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+            <column name="attack_roll" value="{ &quot;target&quot; : 
                 [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
-            <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+            <column name="saving_throw" value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;bonus&quot; : 1
                     } ] }" />
@@ -577,14 +563,12 @@
         <insert tableName="prerequisite">
             <column name="id" value="157001" />
             <column name="text" value="Hagspawn races modifiers" />
-            <column name="abilitys"
-                value="{ 
+            <column name="abilitys" value="{ 
                  &quot;strength&quot; : 2, 
                  &quot;constitution&quot; : 2,
                  &quot;charisma&quot; : -2
                  }" />
-            <column name="armor_class"
-                value="{ 
+            <column name="armor_class" value="{ 
                  &quot;naturalArmor&quot; : 2
                  }" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
@@ -619,7 +603,7 @@
         <insert tableName="sub_race">
             <column name="id" value="801" />
             <column name="sub_race_name" value="Moutain Spirit Folk" />
-            <column name="race_id" value="9" />
+            <column name="race_id" value="8" />
             <column name="size_id" value="5" />
             <!-- <column name="modifiers" value="[
             {
@@ -656,7 +640,7 @@
         <insert tableName="sub_race">
             <column name="id" value="802" />
             <column name="sub_race_name" value="River Spirit Folk" />
-            <column name="race_id" value="9" />
+            <column name="race_id" value="8" />
             <column name="size_id" value="5" />
             <!-- <column name="modifiers" value="[
             {

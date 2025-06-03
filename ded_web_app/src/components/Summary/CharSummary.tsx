@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { AbilitysSummaryComponent } from "../AbilitysComponent";
+import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
+import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
+import { FeatPc } from "../Feats/Interface/FeatInterface";
+import { FormattingText } from "../Formatting/Function";
+import { HpSummaryComponent } from "../HpComponent";
 import { CharacterPc, Inventory } from "../interfaces";
 import { createModChar } from "../Prerequisite/functions/modChar";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 import { SubRace } from "../Race/Interfaces";
+import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
 import { SkillSummaryComponent } from "../Skills/Show/SkillShowComponent";
 import { SpecialAbilitiesSummaryComponent } from "../SpecialAbilities/SpecialAbilitiesComponent";
 import { SpeedSummaryComponent } from "../SpeedComponent";
-import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
-import { HpSummaryComponent } from "../HpComponent";
-import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
-import { SavingSummaryThrowComponent } from "../SavingThrowComponent";
-import { FeatPc } from "../Feats/Interface/FeatInterface";
-import { FormattingText } from "../Formatting/Function";
 
 export interface SummaryProps {
   character: CharacterPc;
@@ -58,7 +58,17 @@ export const CharSummary: React.FC<SummaryProps> = ({
   return (
     <div>
       {updateChar ? (
-        <div className="rpgui-container-framed-grey">
+        <div 
+        className="rpgui-container-framed golden" 
+        style={{ 
+          display: "flex", 
+          flexDirection: "column",
+          wordBreak: "break-word",
+        // placeItems: "center",
+          // alignItems: "center",
+          justifyContent: "center",
+        }}
+        >
           <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
           {textClass ? <p>{textClass}</p> : null}
           <SkillSummaryComponent char={updateChar} />

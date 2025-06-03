@@ -4,245 +4,110 @@
 
 /* game div without background image*/
 .rpgui-container {
-	/* padding: min(5em, 8%); */
-	flex-shrink: 0;
-	/* flex-grow: 0; */
-	position: fixed;
-	z-index: 10;
-	/* border: "8px solid white"; */
-	/* overflow-y: auto;
-	-webkit-overflow-scrolling: touch; */
-	/* per scroll fluido su iOS */
-	/* scrollbar-width: none; */
-	/* nasconde scrollbar su Firefox */
-	
+	display: grid;
+	justify-content: center;
 }
 
-.rpgui-container::-webkit-scrollbar {
-	/* display: none; */
-	/* nasconde scrollbar su Chrome/Safari */
-}
-
-/* game div with background image*/
 .rpgui-container-framed {
-	/* border */
 	border-style: solid;
-	border-image-source: url("../img/border-image.png");
 	border-image-repeat: repeat;
-	border-image-slice: 10 10 10 10;
-	border-image-width: 9px;
-	border-width: 7px;
-	padding: min(5em, 8%);
-	/* border: 8px solid white; */
-	
 
-	/* internal border */
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 
-	/* background */
-	background: url("../img/background-image.png") repeat repeat;
+	
 	background-clip: padding-box;
 	background-origin: padding-box;
 	background-position: center;
+	padding: min(1em, 4%);
 }
 
-/* game div with golden background image*/
-.rpgui-container-framed-golden {
-	/* border */
-	border-style: solid;
+.rpgui-container-framed {
+	border-image-source: url("../img/border-image.png");
+	border-image-slice: 6 6 6 6;
+	border-image-width: 9px;
+	background: url("../img/background-image.png") repeat repeat;
+}
+
+.rpgui-container-framed.golden {
 	border-image-source: url("../img/border-image-golden.png");
-	border-image-repeat: repeat;
 	border-image-slice: 4 4 4 4;
 	border-image-width: 9px;
-	border-width: 7px;
-	/* padding: 6px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	/* background */
 	background: url("../img/background-image-golden.png") repeat repeat;
-	background-clip: padding-box;
-	background-origin: padding-box;
-	background-position: center;
 }
 
-/* game div with golden2 background image*/
-.rpgui-container-framed-golden-2 {
-	/* border */
-	border-style: solid;
+.rpgui-container-framed.golden-2 {
 	border-image-source: url("../img/border-image-golden2.png");
-	border-image-repeat: repeat;
-	border-image-slice: 8 8 8 8;
-	border-image-width: 9px;
-	border-width: 7px;
-	/* padding: 6px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	/* background */
-	background: url("../img/background-image-golden2.png") repeat repeat;
-	background-clip: padding-box;
-	background-origin: padding-box;
-	background-position: center;
-}
-
-.rpgui-container-framed-golden-2-mini {
-	/* border */
-	border-style: solid;
-	border-image-source: url("../img/border-image-golden2.png");
-	border-image-repeat: repeat;
 	border-image-slice: 8 8 8 8;
 	border-image-width: 8px;
-	border-width: 6px;
-	/* padding: 6px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	/* background */
 	background: url("../img/background-image-golden2.png") repeat repeat;
-	background-clip: padding-box;
-	background-origin: padding-box;
-	background-position: center;
-
-	text-align: center;
 }
 
-/* game div with soft grey background image*/
-.rpgui-container-framed-grey {
-	position: relative;
-
-	/* border */
-	border-style: solid;
+.rpgui-container-framed.grey {
 	border-image-source: url("../img/border-image-grey.png");
-	border-image-repeat: repeat;
 	border-image-slice: 3 3 3 3;
 	border-image-width: 7px;
-	border-width: 7px;
-	/* padding: 12px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	/* background */
 	background: url("../img/background-image-grey.png") repeat repeat;
-	background-clip: padding-box;
-	background-origin: padding-box;
-	background-position: center;
-}
-
-.rpgui-container-framed-grey-mini {
-	position: relative;
-
-	/* border */
-	border-style: solid;
-	border-image-source: url("../img/border-image-grey.png");
-	border-image-repeat: repeat;
-	border-image-slice: 2 2 2 2;
-	border-image-width: 4px;
-	border-width: 4px;
-	/* padding: 4px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	text-align: center;
-	text-wrap-mode: nowrap;
-
-}
-
-.rpgui-container-framed-grey-mini {
-	position: relative;
-
-	/* border */
-	border-style: solid;
-	border-image-source: url("../img/border-image-grey.png");
-	border-image-repeat: repeat;
-	border-image-slice: 2 2 2 2;
-	border-image-width: 4px;
-	border-width: 4px;
-	/* padding: 4px; */
-
-	/* internal border */
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-
-	/* background */
-	background: url("../img/background-image-grey.png") repeat repeat;
-	background-clip: padding-box;
-	background-origin: padding-box;
-	background-position: center;
 }
 
 /* color rpgui-container-framed-grey-mini */
-.rpgui-container-framed-grey-mini.strength {
+.rpgui-container-framed.grey.strength {
 	/* background */
 	background: url("../img/background-image-red.png") repeat repeat;
 }
 
-.rpgui-container-framed-grey-mini.dexterity {
+.rpgui-container-framed.strength {
 	/* background */
-	background: url("../img/background-image-green.png") repeat repeat;
-}
-
-.rpgui-container-framed-grey-mini.constitution {
-	/* background */
-	background: url("../img/background-image-yellow.png") repeat repeat;
-}
-
-.rpgui-container-framed-grey-mini.intelligence {
-	/* background */
-	background: url("../img/background-image-blue.png") repeat repeat;
-}
-
-.rpgui-container-framed-grey-mini.wisdom {
-	/* background */
-	background: url("../img/background-image-greylght.png") repeat repeat;
-}
-
-.rpgui-container-framed-grey-mini.charisma {
-	/* background */
-	background: url("../img/background-image-pink.png") repeat repeat;
-}
-
-/* color rpgui-container-framed-golden
-/* .rpgui-container-framed-golden-mini.strength
-{
 	background: url("../img/background-image-red.png") repeat repeat;
 }
 
-.rpgui-container-framed-golden-mini.dexterity
-{
+.rpgui-container-framed.grey.dexterity {
+	/* background */
 	background: url("../img/background-image-green.png") repeat repeat;
 }
-.rpgui-container-framed-golden-mini.constitution
-{
+
+.rpgui-container-framed.dexterity {
+	/* background */
+	background: url("../img/background-image-green.png") repeat repeat;
+}
+
+.rpgui-container-framed.grey.constitution {
+	/* background */
 	background: url("../img/background-image-yellow.png") repeat repeat;
 }
-.rpgui-container-framed-golden-mini.intelligence
-{
+
+.rpgui-container-framed.constitution {
+	/* background */
+	background: url("../img/background-image-yellow.png") repeat repeat;
+}
+
+.rpgui-container-framed.grey.intelligence {
+	/* background */
 	background: url("../img/background-image-blue.png") repeat repeat;
 }
-.rpgui-container-framed-golden-mini.wisdom
-{
+
+.rpgui-container-framed.intelligence {
+	/* background */
+	background: url("../img/background-image-blue.png") repeat repeat;
+}
+
+.rpgui-container-framed.grey.wisdom {
+	/* background */
 	background: url("../img/background-image-greylght.png") repeat repeat;
 }
-.rpgui-container-framed-golden-mini.charisma
-{
+
+.rpgui-container-framed.wisdom {
+	/* background */
+	background: url("../img/background-image-greylght.png") repeat repeat;
+}
+
+.rpgui-container-framed.grey.charisma {
+	/* background */
 	background: url("../img/background-image-pink.png") repeat repeat;
-} */
+}
+
+.rpgui-container-framed.charisma {
+	/* background */
+	background: url("../img/background-image-pink.png") repeat repeat;
+}

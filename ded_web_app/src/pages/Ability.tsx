@@ -2,8 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Abilitys } from "../components/Abilitys/Interface";
+import { FormattingText } from "../components/Formatting/Function";
 import { BonusAbilities, SignNumber } from "../components/functions";
-import { urlAb, urlRace } from "../components/url";
+import { AllSkills } from "../components/Skills/Skills/Const";
+import { urlAb } from "../components/url";
 import { abilitysEmpty } from "../components/variables";
 import { PageLayout } from "./AppLayout";
 // import { PageAndSummaryLayout } from "./AppLayout";
@@ -24,10 +26,10 @@ export function Ability() {
     }
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const handleSubmit = () => {
+    console.log(abilitys);
     axios.post(urlAb + charId, abilitys).then((response) => {
-      console.log(response);
+      console.log(response.data);
     });
     setChange(true);
   };
@@ -36,13 +38,14 @@ export function Ability() {
     <PageLayout
       title="Abilities"
       buttons={{
-        next: { text: "Races", link: "/race/" + charId },
-        change: change,
-        // onAction: handleSubmit
+        next: { text: "Races", link: "/race/" + charId, change: change }
       }}
+      onAction={handleSubmit}
+      pageStyle={"repeat(auto-fit, minmax(170px, 1fr))"}
     >
+      
       <AbilityLayout
-        ability="STRENGHT"
+        ability="STRENGTH"
         value={{ abilities: abilitys, text: "STR" }}
       >
         <input
@@ -113,8 +116,7 @@ export function Ability() {
           value={abilitys.charisma}
         />
       </AbilityLayout>
-
-      {/* </PageAndSummaryLayout> */}
+      {/* </div> */}
     </PageLayout>
   );
 }
@@ -131,20 +133,58 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   value
 }) => {
   return (
-    <div className="rpgui-container-framed-golden">
-      <div style={{ flex: 1 }}>
-        <p>
-          {ability}
-          {":"}
-        </p>
+    <div
+      className="rpgui-container-framed golden"
+      style={{
+        placeItems: "center",
+      }}
+    >
+      <div>
+        <h4>{ability}</h4>
       </div>
-      <div style={{ flex: 1 }}>{children}</div>
-      <div style={{ flex: 1 }}>
-        <p>
+      <div>{children}</div>
+      <div>
+        <h2>
           {value && SignNumber(BonusAbilities(value?.abilities, value?.text))}
           {value && BonusAbilities(value?.abilities, value?.text)}
-        </p>
+        </h2>
       </div>
+      <AbilitySaveString ability={ability} />
+      <AbilitySkillsString ability={ability} />
+    </div>
+  );
+};
+
+export const AbilitySaveString: React.FC<AbilityLayoutProps> = ({
+  ability
+}) => {
+  const saveThrow: string =
+    ability === "DEXTERITY"
+      ? "REFLEX"
+      : ability === "CONSTITUTION"
+      ? "FORTITUDE"
+      : ability === "WISDOM"
+      ? "WILL"
+      : "---";
+
+  return (
+    <div style={{ margin: "10px" }}>
+      <p style={{ wordBreak: "break-word" }}>{saveThrow}</p>
+    </div>
+  );
+};
+
+export const AbilitySkillsString: React.FC<AbilityLayoutProps> = ({
+  ability
+}) => {
+  const skills = AllSkills();
+  const abilitySkillsString: string = skills
+    .filter((skill) => skill.ability === ability?.toUpperCase())
+    .map((skill) => FormattingText(skill.skillName))
+    .join(", ");
+  return (
+    <div style={{ margin: "10px" }}>
+      <p>{abilitySkillsString}</p>
     </div>
   );
 };

@@ -4,14 +4,14 @@ import { Link, useParams } from "react-router-dom";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
-  Armor,
-  CharacterPc,
-  Enchantment,
-  Item,
-  ItemsList,
-  Shield,
-  Weapon,
-  WonderousItem
+    Armor,
+    CharacterPc,
+    Enchantment,
+    Item,
+    ItemsList,
+    Shield,
+    Weapon,
+    WonderousItem
 } from "../components/interfaces";
 import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
 import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
@@ -24,27 +24,26 @@ import { ItemPenalityComponent } from "../components/Items/Components/ItemPenali
 import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
 import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
 import {
-  charTresurePerLevel,
-  createItemsInInventory,
-  sendItemsInInventory
+    charTresurePerLevel,
+    createItemsInInventory
 } from "../components/Items/Functions/function";
 import {
-  notEmptyInventory,
-  specificFilter
+    notEmptyInventory,
+    specificFilter
 } from "../components/Items/Inventory/function";
 import { CharSummary } from "../components/Summary/CharSummary";
 import {
-  urlChar,
-  urlEnchanted,
-  urlEnchants,
-  urlItems,
-  urlItemsBuy
+    urlChar,
+    urlEnchanted,
+    urlEnchants,
+    urlItems,
+    urlItemsBuy
 } from "../components/url";
 import {
-  noneArmor,
-  noneItem,
-  noneShield,
-  noneWeapon
+    noneArmor,
+    noneItem,
+    noneShield,
+    noneWeapon
 } from "../components/variables";
 
 export type FiltroItems = {
@@ -286,7 +285,7 @@ export const Items = () => {
         />
       )}
       <p></p>
-      <h1 className="rpgui-container-framed-golden-2">Inventory</h1>
+      <h1 className="rpgui-container-framed golden-2">Inventory</h1>
       <div>
         <p>
           <span>

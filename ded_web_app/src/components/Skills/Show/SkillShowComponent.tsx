@@ -9,10 +9,9 @@ import { PrerequisiteSkills } from "../interface/PrerequisiteSkills";
 import { Skill } from "../interface/Skill";
 import { SkillsInList } from "../interface/SkillsInList";
 import { StudyInList } from "../interface/StudysInList";
+import { SkillShowComponentProps } from "../SkillsTableComponent";
 
-export type SkillShowComponentProps = {
-  char: CharToModify;
-};
+
 
 export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
   char

@@ -15,9 +15,9 @@
 	margin-top: 0px;
 
 	/* Imposta un'altezza massima per attivare la scrollbar */
-	max-height: 400px;
+	/* max-height: 400px; */
 	/* Puoi regolare il valore a piacere */
-	overflow-y: auto;
+	/* overflow-y: auto; */
 
 	/* border */
 	border-style: solid;
@@ -56,15 +56,16 @@ ul.rpgui-dropdown-imp {
 	/* font */
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	color: white;
-	height: 16px;
+	/* height: 16px; */
 
 	/* remove the dot */
 	list-style-type: none;
 
 	/* padding */
-	padding-top: 6px;
-	padding-bottom: 6px;
-	padding-left: 6px;
+	/* padding-top: 6px; */
+	/* padding-bottom: 6px; */
+	/* padding-left: 6px; */
+	padding: 6px;
 
 	/* background */
 	background: url("../img/select-background-image.png") repeat repeat;

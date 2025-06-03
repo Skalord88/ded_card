@@ -178,7 +178,7 @@ export const SpecialAbilitiesComponent: React.FC<SpecialAbilitiesProps> = ({
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Special Abilities</h2>
+      <h2 className="rpgui-container-framed golden-2">Special Abilities</h2>
 
       <SpecialAbilityComponent sAs={lista.specialAbilities} />
       <DamageSpecialAbiliiesComponent sAs={lista.damageSpecialAbiliies} />

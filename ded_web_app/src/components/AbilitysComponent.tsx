@@ -20,7 +20,7 @@ export const abilitysForComponent = (
     value: abilitys.strength,
     bonusSing: signAndCount([BonusAbilities(abilitys, "STR")]).sign,
     bonus: BonusAbilities(abilitys, "STR"),
-    color: abilityBackgroundColor("STRENGTH")
+    color: abilityBackgroundColor(false, "STRENGTH")
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ export const abilitysForComponent = (
     value: abilitys.dexterity,
     bonusSing: signAndCount([BonusAbilities(abilitys, "DEX")]).sign,
     bonus: BonusAbilities(abilitys, "DEX"),
-    color: abilityBackgroundColor("DEXTERITY")
+    color: abilityBackgroundColor(false, "DEXTERITY")
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ export const abilitysForComponent = (
     value: abilitys.constitution,
     bonusSing: signAndCount([BonusAbilities(abilitys, "COS")]).sign,
     bonus: BonusAbilities(abilitys, "COS"),
-    color: abilityBackgroundColor("CONSTITUTION")
+    color: abilityBackgroundColor(false, "CONSTITUTION")
   },
   {
     id: 4,
@@ -44,7 +44,7 @@ export const abilitysForComponent = (
     value: abilitys.intelligence,
     bonusSing: signAndCount([BonusAbilities(abilitys, "INT")]).sign,
     bonus: BonusAbilities(abilitys, "INT"),
-    color: abilityBackgroundColor("INTELLIGENCE")
+    color: abilityBackgroundColor(false, "INTELLIGENCE")
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const abilitysForComponent = (
     value: abilitys.wisdom,
     bonusSing: signAndCount([BonusAbilities(abilitys, "WIS")]).sign,
     bonus: BonusAbilities(abilitys, "WIS"),
-    color: abilityBackgroundColor("WISDOM")
+    color: abilityBackgroundColor(false, "WISDOM")
   },
   {
     id: 6,
@@ -60,7 +60,7 @@ export const abilitysForComponent = (
     value: abilitys.charisma,
     bonusSing: signAndCount([BonusAbilities(abilitys, "CHA")]).sign,
     bonus: BonusAbilities(abilitys, "CHA"),
-    color: abilityBackgroundColor("CHARISMA")
+    color: abilityBackgroundColor(false, "CHARISMA")
   }
 ];
 
@@ -69,7 +69,7 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
 
   return (
     <>
-      <h2 className="rpgui-container-framed-golden-2">Abilities</h2>
+      <h2 className="rpgui-container-framed golden-2">Abilities</h2>
       {ab.map((ability) => (
         <div key={ability.id} style={{ display: "flex" }}>
           <div className={ability.color} style={{ flex: 1 }}>
@@ -99,9 +99,5 @@ export const AbilitysSummaryComponent: React.FC<AbilitysProps> = ({
     return a.text + ": " + a.value + " (" + a.bonusSing + a.bonus + ")";
   });
 
-  return (
-    <div>
-      <p>{adString.join(" / ")}</p>
-    </div>
-  );
+  return <p>{adString.join(" / ")}</p>;
 };

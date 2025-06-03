@@ -24,6 +24,10 @@ body {
   background-color: black;
 }
 
+html {
+  /* font-size: 10px; */
+}
+
 .mobile-scale {
   /* transform: scale(0.90);
   transform-origin: top left;
