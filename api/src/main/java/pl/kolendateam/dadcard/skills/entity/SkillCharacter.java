@@ -15,7 +15,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 
 @Getter
@@ -42,7 +41,7 @@ public class SkillCharacter implements Serializable {
   @JoinColumn(name = "study_id", referencedColumnName = "id")
   Study study;
 
-  int rank;
+  double rank;
 
   public SkillCharacter(SkillToAddDTO dto, int charId) {
     if (dto.idSkill != 0) {

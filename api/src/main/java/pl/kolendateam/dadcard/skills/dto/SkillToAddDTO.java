@@ -4,5 +4,5 @@ public class SkillToAddDTO {
 
   public int idSkill;
   public int idStudy;
-  public int rank;
+  public double rank;
 }

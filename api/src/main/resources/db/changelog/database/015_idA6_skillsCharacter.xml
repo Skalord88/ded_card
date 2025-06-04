@@ -17,7 +17,7 @@
             <column name="study_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="rank" type="int">
+            <column name="rank" type="double">
                 <constraints nullable="true" />
             </column>
         </createTable>

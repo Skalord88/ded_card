@@ -6,7 +6,7 @@ public class SkillCharacterDTO {
 
   public SkillDTO skill;
   public StudyDTO study;
-  public int rank;
+  public double rank;
 
   public SkillCharacterDTO(SkillCharacter skillChar) {
     this.skill =

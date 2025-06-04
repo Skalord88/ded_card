@@ -67,11 +67,11 @@ export function Skills() {
       const skillToSend: SkillToAdd[] = skillsList?.flatMap((skill) =>
         skill.study && skill.study.length > 0
           ? skill.study.flatMap((st) =>
-              st.rank
-                ? [{ idSkill: 0, idStudy: st.study.id, rank: st.rank }]
+              st.rank !== st.dbRank
+                ? [{ idSkill: skill.skill.id, idStudy: st.study.id, rank: st.rank }]
                 : []
             )
-          : skill.rank > 0
+          : skill.rank !== skill.dbRank
           ? [{ idSkill: skill.skill.id, idStudy: 0, rank: skill.rank }]
           : []
       );
@@ -222,7 +222,8 @@ export function Skills() {
       pageStyle="auto"
       onAction={handleSubmit}
       buttons={{
-        next: { text: "Classes", link: "/class/" + charId, change: change }
+        back: { text: "Classes", link: "/class/" + charId  },
+        next: { text: "Feats", link: "/feat/" + charId, change: change }
       }}
     >
       {
@@ -240,7 +241,7 @@ export function Skills() {
               <SkillStudyElement
                 key={indexStudy + "." + study.study.studyName}
                 index={indexStudy}
-                skill={skill}
+                // skill={skill}
                 study={study}
                 ability={modChar.abilitys}
                 onActionAdd={handleAddSkill}

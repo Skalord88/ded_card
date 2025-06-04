@@ -66,12 +66,6 @@ public class SkillsController {
 
     Character character = characterOpt.get();
 
-    // skillsToAdd.forEach(s -> {
-    //   System.out.println(
-    //     "culo " + s.idSkill + ", " + s.idStudy + ", " + s.rank
-    //   );
-    // });
-
     character.buySkills(skillsToAdd, id);
 
     this.characterRepository.save(character);

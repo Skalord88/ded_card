@@ -28,6 +28,7 @@ export const createSkillsList = (char: CharacterPc): SkillsInList[] => {
       .filter((study) => study.skill.id === sL.id)
       .map((study) => ({
         study,
+        dbRank: 0,
         rank:
           // char.skillsCharacter.find(s => s.study.id === study.id)?.rank ??
           0, // Default rank value, adjust if necessary
@@ -41,6 +42,7 @@ export const createSkillsList = (char: CharacterPc): SkillsInList[] => {
     list.push({
       skill: sL,
       study: studyInList,
+      dbRank: rank,
       rank: rank,
       classSkill: classSkillsId.includes(sL.id) ? true : false,
       bonus: 0
