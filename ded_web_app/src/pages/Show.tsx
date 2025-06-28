@@ -23,6 +23,7 @@ import { SpecialAbilitiesComponent } from "../components/SpecialAbilities/Specia
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
+import { SkillsInList } from "../components/Skills/interface/SkillsInList";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -49,9 +50,9 @@ export const Show = () => {
   const modChar: CharToModify = createModChar(char);
   
   return (
-    <>
+    <div>
       {modChar && window.innerWidth <= 768 ? (
-        <>
+        <div>
           <DeleteButton url={urlChar} />
           <CharacterData char={char} />
           <AbilitysComponent abilitys={modChar.abilitys} />
@@ -67,10 +68,9 @@ export const Show = () => {
           <SpeedComponent char={modChar} />
           <FeatsComponent char={modChar} />
           <MagicComponent char={modChar} />
-        </>
+        </div>
       ) : (
-        <> 
-          
+        <div>
           <div
             style={{
               display: "grid",
@@ -237,9 +237,9 @@ export const Show = () => {
               <MagicComponent char={modChar} />
             </div>
           </div>
-        </>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

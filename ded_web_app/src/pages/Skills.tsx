@@ -68,7 +68,13 @@ export function Skills() {
         skill.study && skill.study.length > 0
           ? skill.study.flatMap((st) =>
               st.rank !== st.dbRank
-                ? [{ idSkill: skill.skill.id, idStudy: st.study.id, rank: st.rank }]
+                ? [
+                    {
+                      idSkill: skill.skill.id,
+                      idStudy: st.study.id,
+                      rank: st.rank
+                    }
+                  ]
                 : []
             )
           : skill.rank !== skill.dbRank
@@ -204,6 +210,11 @@ export function Skills() {
     }
   };
 
+  useEffect(() => {
+    if (spentSkillsPnt !== 0) setChange(true);
+    if (spentSkillsPnt === 0) setChange(false);
+  }, [spentSkillsPnt]);
+
   const handleSubmit = () => {
     try {
       if (skillsToAdd.length > 0) {
@@ -222,7 +233,7 @@ export function Skills() {
       pageStyle="auto"
       onAction={handleSubmit}
       buttons={{
-        back: { text: "Classes", link: "/class/" + charId  },
+        back: { text: "Classes", link: "/class/" + charId },
         next: { text: "Feats", link: "/feat/" + charId, change: change }
       }}
     >
@@ -364,7 +375,12 @@ export const SkillsPointsToSpend: React.FC<SkillsPointsToSpendProps> = ({
 }) => {
   return (
     <div
-      style={{ display: "flex", position: "sticky", top: "0.5rem", right: "0.5rem" }}
+      style={{
+        display: "flex",
+        position: "sticky",
+        top: "0.5rem",
+        right: "0.5rem"
+      }}
       className="rpgui-container-framed golden"
     >
       <p>{spentSkillPnts} spent/</p>

@@ -45,11 +45,11 @@ export const ItemEnchantmentsComponent: React.FC<ItemPartProps> = ({
           </p>
         ))}
       </div>
-      <div>
+      {/* <div> */}
         {filtro && (
           <DropdownComponent options={filtro} onAction={handleAddEnchantment} />
         )}
-      </div>
+      {/* </div> */}
     </div>
   );
 };

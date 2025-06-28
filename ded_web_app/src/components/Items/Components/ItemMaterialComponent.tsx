@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { DropdownComponent } from "../../DropDown/DropDown";
-import { addToDrop } from "../../functions";
+import { addToDrop, itemInDrop } from "../../functions";
 import { ItemPartProps } from "../props";
 
 export const ItemMaterialComponent: React.FC<ItemPartProps> = ({
@@ -28,7 +28,7 @@ export const ItemMaterialComponent: React.FC<ItemPartProps> = ({
 
   if (!material) return null;
 
-  const options = addToDrop(metal.includes(material) ? metal : wood, "filter");
+  const options: itemInDrop[] | undefined = metal.includes(material)? addToDrop(metal, "filter") : wood.includes(material) ? addToDrop(wood, "filter") : undefined;
 
   return (
     <div>
@@ -36,7 +36,7 @@ export const ItemMaterialComponent: React.FC<ItemPartProps> = ({
         <span style={{ color: "yellow" }}>{"material: "}</span>
         <span>{material}</span>
       </p>
-      <DropdownComponent options={options} onAction={handleNewMaterial} />
+      {options && <DropdownComponent options={options} onAction={handleNewMaterial} />}
     </div>
   );
 };

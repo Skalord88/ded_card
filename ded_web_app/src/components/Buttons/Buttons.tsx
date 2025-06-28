@@ -42,29 +42,19 @@ export const ButtonsLayoutRpg: React.FC<ButtonsLayoutProps> = ({
     <div
       style={{
         display: "flex",
-        justifyContent: "space-between",
-        flexDirection: "row",
-        // gridColumn: "1fr 1fr 1fr",
+        justifyContent: "space-around",
+        flexDirection: "row"
       }}
     >
       {/* back */}
-      <div
-      // style={{ gridColum: "1" }}
-      >
-        {back && <ButtonRpg text={back.text} link={back.link} />}
-      </div>
-      <div
-      // style={{ gridColumn: "2" }}
-      >
+      <div>{back && <ButtonRpg text={back.text} link={back.link} />}</div>
+      <div>
         {/* create */}
         {create && <ButtonRpg text="Confirm" onAction={handleSubmit} />}
-
-        {/* next */}
         <ButtonRpg text="Confirm" onAction={handleSubmit} />
       </div>
-      <div
-      // style={{ gridColumn: "3" }}
-      >
+      <div>
+        {/* next */}
         {next?.change && <ButtonRpg text={next.text} link={next.link} />}
       </div>
     </div>

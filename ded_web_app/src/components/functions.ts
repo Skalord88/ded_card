@@ -43,19 +43,23 @@ export const signAndCount = (
 }
 
 export function weaponLight(weapon: Weapon): boolean {
-    return weapon !== null ? weapon.type.includes("LIGHT") : false;
+    if( weapon === null || !weapon.type) return false;
+    return weapon.type.includes("LIGHT");
 }
 
 export function weaponRanged(weapon: Weapon): boolean {
-    return weapon !== null ? weapon.type.includes("RANGED") : false;
+    if( weapon === null || !weapon.type) return false;
+    return weapon.type.includes("RANGED");
 }
 
 export function weaponThrown(weapon: Weapon): boolean {
-    return weapon !== null ? weapon.type.includes("THROWN") : false;
+    if( weapon === null || !weapon.type) return false;
+    return weapon.type.includes("THROWN");
 }
 
 export function weaponTwoHanded(weapon: Weapon): boolean {
-    return weapon !== null ? weapon.type.includes("TWO_HANDED") : false;
+    if( weapon === null || !weapon.type) return false;
+    return weapon.type.includes("TWO_HANDED");
 }
 
 export function listOneHand(weapons: Weapon[]) {
@@ -171,7 +175,7 @@ export function SetSetWeaponListFromDB(
         weaponIncludeUnarmed(inventory.weaponFour) ? null : inventory.weaponFour,
         weaponIncludeUnarmed(inventory.weaponFive) ? null : inventory.weaponFive,
 
-        inventoryIncludeUnarmed(inventory) ? null : noneWeapon
+        inventoryIncludeUnarmed(inventory) ? noneWeapon : noneWeapon
     ].filter(w => w !== null) as Weapon[]
 }
 

@@ -4,14 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
-    Armor,
-    CharacterPc,
-    Enchantment,
-    Item,
-    ItemsList,
-    Shield,
-    Weapon,
-    WonderousItem
+  Armor,
+  CharacterPc,
+  Enchantment,
+  Inventory,
+  Item,
+  ItemsList,
+  Shield,
+  Weapon,
+  WonderousItem
 } from "../components/interfaces";
 import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
 import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
@@ -24,27 +25,29 @@ import { ItemPenalityComponent } from "../components/Items/Components/ItemPenali
 import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
 import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
 import {
-    charTresurePerLevel,
-    createItemsInInventory
+  charTresurePerLevel,
+  createItemsInInventory
 } from "../components/Items/Functions/function";
 import {
-    notEmptyInventory,
-    specificFilter
+  notEmptyInventory,
+  specificFilter
 } from "../components/Items/Inventory/function";
 import { CharSummary } from "../components/Summary/CharSummary";
 import {
-    urlChar,
-    urlEnchanted,
-    urlEnchants,
-    urlItems,
-    urlItemsBuy
+  urlChar,
+  urlEnchanted,
+  urlEnchants,
+  urlItems,
+  urlItemsBuy
 } from "../components/url";
 import {
-    noneArmor,
-    noneItem,
-    noneShield,
-    noneWeapon
+  noneArmor,
+  noneItem,
+  noneShield,
+  noneWeapon
 } from "../components/variables";
+import { PageLayout } from "./AppLayout";
+import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
 
 export type FiltroItems = {
   armors: itemInDrop[];
@@ -132,7 +135,7 @@ export const Items = () => {
             : []
         );
 
-        const newInv = [
+        const newInv: (Armor | Shield | Weapon | Item | WonderousItem)[] = [
           moddedInventory.armor,
           moddedInventory.shield,
           moddedInventory.weaponOne,
@@ -259,8 +262,16 @@ export const Items = () => {
   }
 
   return (
-    <div>
-      {char && inventory && (
+    <PageLayout
+      title={"Inventory"}
+      onAction={handleConfirm}
+      buttons={{
+        next: { text: "attacks", link: "/attack/" + charId, change: true },
+        back: { text: "feats", link: "/feat/" + charId }
+      }}
+    >
+      <div className="rpgui-container-framed grey">
+        {/* {char && inventory && (
         <CharSummary
           character={char}
           inventory={{
@@ -283,199 +294,170 @@ export const Items = () => {
             legs: inventory[15] as WonderousItem
           }}
         />
-      )}
-      <p></p>
-      <h1 className="rpgui-container-framed golden-2">Inventory</h1>
-      <div>
-        <p>
-          <span>
-            <button className="rpgui-button" onClick={handleConfirm}>
-              <p>confirm</p>
-            </button>
-          </span>
-          <span className="rpgui-container-framed-grey">
-            tresure: {tresure}
-          </span>
-          <span className="rpgui-container-framed-grey">
-            actual: {tresure - inventoryTotal - backpackTotal}
-          </span>
-          <span>
-            <button className="rpgui-button">
-              <Link to={"/attack/" + charId}>to attacks</Link>
-            </button>
-          </span>
-        </p>
-      </div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "40% 60%"
-        }}
-      >
-        <div className="rpgui-container-framed-grey" style={{ maxHeight: 780 }}>
-          <InventoryIcons>
-            <div onClick={() => scrollToItem(7)}>
-              <InventoryIcon classe={"head"} text={"head"} top={5} left={20} />
-            </div>
-            <div onClick={() => scrollToItem(8)}>
-              <InventoryIcon classe={"neck"} text={"neck"} top={5} left={70} />
-            </div>
-            <div onClick={() => scrollToItem(0)}>
-              <InventoryIcon
-                classe={"armor"}
-                text={"armor"}
-                top={20}
-                left={30}
-              />
-            </div>
-            <div onClick={() => scrollToItem(1)}>
-              <InventoryIcon
-                classe={"shield"}
-                text={"shield"}
-                top={35}
-                left={70}
-              />
-            </div>
-            <div onClick={() => scrollToItem(12)}>
-              <InventoryIcon
-                classe={"cloth"}
-                text={"cloth"}
-                top={20}
-                left={70}
-              />
-            </div>
-            <div onClick={() => scrollToItem(9)}>
-              <InventoryIcon classe={"arms"} text={"arms"} top={35} left={30} />
-            </div>
-            <div onClick={() => scrollToItem(10)}>
-              <InventoryIcon
-                classe={"hands0"}
-                text={"ring"}
-                top={50}
-                left={30}
-              />
-            </div>
-            <div onClick={() => scrollToItem(11)}>
-              <InventoryIcon
-                classe={"hands1"}
-                text={"ring"}
-                top={50}
-                left={70}
-              />
-            </div>
-            <div onClick={() => scrollToItem(13)}>
-              <InventoryIcon
-                classe={"cloak"}
-                text={"cloak"}
-                top={65}
-                left={30}
-              />
-            </div>
-            <div onClick={() => scrollToItem(14)}>
-              <InventoryIcon classe={"belt"} text={"belt"} top={65} left={70} />
-            </div>
-            <div onClick={() => scrollToItem(inventory.length)}>
-              <InventoryIcon
-                classe={"backpack"}
-                text={"bag"}
-                top={80}
-                left={30}
-              />
-            </div>
-            <div onClick={() => scrollToItem(15)}>
-              <InventoryIcon classe={"legs"} text={"legs"} top={80} left={70} />
-            </div>
-            <div onClick={() => scrollToItem(2)}>
-              <InventoryIcon classe={"sword"} text={"I"} left={5} top={20} />
-            </div>
-            <div onClick={() => scrollToItem(3)}>
-              <InventoryIcon classe={"sword"} text={"II"} left={5} top={35} />
-            </div>
-            <div onClick={() => scrollToItem(4)}>
-              <InventoryIcon classe={"sword"} text={"III"} left={5} top={50} />
-            </div>
-            <div onClick={() => scrollToItem(5)}>
-              <InventoryIcon classe={"sword"} text={"IV"} left={5} top={65} />
-            </div>
-            <div onClick={() => scrollToItem(6)}>
-              <InventoryIcon classe={"sword"} text={"V"} left={5} top={80} />
-            </div>
-          </InventoryIcons>
-        </div>
+      )} */}
 
         <div
-          ref={inventoryListRef}
-          className="rpgui-container-framed-grey"
           style={{
-            maxHeight: 780,
-            overflowY: "auto"
+            display: "grid",
+            gridTemplateColumns: "1fr 3fr",
+            gridTemplateRows: "600px"
           }}
         >
-          {inventory &&
-            filtroList &&
-            char &&
-            inventory.map((i, index) => {
-              const currentIndex = globalIndex++;
-              return (
-                <div
-                  key={currentIndex}
-                  ref={(el) => (itemRefs.current[currentIndex] = el)}
-                  className="rpgui-container-framed-grey"
-                >
-                  <ItemInventoryComponent
-                    n={index}
-                    item={i}
-                    sizeId={0}
-                    filtro={filtroList}
-                    onAction={handleChangeItem}
-                  />
-                </div>
-              );
-            })}
-          {backpack &&
-            filtroList &&
-            backpack.map((i, index) => {
-              const currentIndex = globalIndex++;
-              return (
-                <div
-                  key={currentIndex}
-                  ref={(el) => (itemRefs.current[currentIndex] = el)}
-                  className="rpgui-container-framed-grey"
-                >
-                  {<h2>backpack</h2>}
-                  <ItemInventoryComponent
-                    n={index}
-                    item={i}
-                    sizeId={0}
-                    filtro={filtroList.wonderous}
-                    onAction={handleChangeBackpack}
-                  />
-                </div>
-              );
-            })}
+          <InventoryIcons>
+            <InventoryIcon area="empty" />
+            <InventoryIcon
+              classe="head"
+              area="head"
+              onAction={() => scrollToItem(7)}
+            />
+            <InventoryIcon
+              classe={"neck"}
+              area={"neck"}
+              onAction={() => scrollToItem(8)}
+            />
+            <InventoryIcon
+              classe={"armor"}
+              area={"armor"}
+              onAction={() => scrollToItem(0)}
+            />
+            <InventoryIcon
+              classe={"shield"}
+              area={"shield"}
+              onAction={() => scrollToItem(1)}
+            />
+            <InventoryIcon
+              classe={"cloth"}
+              area={"cloth"}
+              onAction={() => scrollToItem(12)}
+            />
+            <InventoryIcon
+              classe={"arms"}
+              area={"arms"}
+              onAction={() => scrollToItem(9)}
+            />
+            <InventoryIcon
+              onAction={() => scrollToItem(10)}
+              classe={"hands0"}
+              area={"hands0"}
+            />
+            <InventoryIcon
+              classe={"hands1"}
+              area={"hands1"}
+              onAction={() => scrollToItem(11)}
+            />
+            <InventoryIcon
+              classe={"cloak"}
+              area={"cloak"}
+              onAction={() => scrollToItem(13)}
+            />
+            <InventoryIcon
+              classe={"belt"}
+              area={"belt"}
+              onAction={() => scrollToItem(14)}
+            />
+            <InventoryIcon
+              classe={"backpack"}
+              area={"backpack"}
+              onAction={() => scrollToItem(inventory.length)}
+            />
+            <InventoryIcon
+              classe={"legs"}
+              area={"legs"}
+              onAction={() => scrollToItem(15)}
+            />
+            <InventoryIcon
+              classe={"sword"}
+              area={"I"}
+              onAction={() => scrollToItem(2)}
+            />
+            <InventoryIcon
+              classe={"sword"}
+              area={"II"}
+              onAction={() => scrollToItem(3)}
+              text={"II"}
+            />
+            <InventoryIcon
+              classe={"sword"}
+              area={"III"}
+              onAction={() => scrollToItem(4)}
+              text={"III"}
+            />
+            <InventoryIcon
+              classe="sword"
+              area={"IV"}
+              onAction={() => scrollToItem(5)}
+              text={"IV"}
+            />
+            <InventoryIcon
+              area={"V"}
+              classe={"sword"}
+              onAction={() => scrollToItem(6)}
+              text={"V"}
+            />
+          </InventoryIcons>
+
+          <div
+            ref={inventoryListRef}
+            className="rpgui-container-framed-grey"
+            style={{
+              overflowY: "scroll"
+            }}
+          >
+            {inventory &&
+              filtroList &&
+              char &&
+              inventory.map((i, index) => {
+                const currentIndex = globalIndex++;
+                return (
+                  <div
+                    key={currentIndex}
+                    ref={(el) => (itemRefs.current[currentIndex] = el)}
+                    className="rpgui-container-framed-grey"
+                  >
+                    <ItemInventoryComponent
+                      key={"item." + index}
+                      n={index}
+                      item={i}
+                      sizeId={0}
+                      filtro={filtroList}
+                      onAction={handleChangeItem}
+                    />
+                  </div>
+                );
+              })}
+            {backpack &&
+              filtroList &&
+              backpack.map((i, index) => {
+                const currentIndex = globalIndex++;
+                return (
+                  <div
+                    key={currentIndex}
+                    ref={(el) => (itemRefs.current[currentIndex] = el)}
+                    className="rpgui-container-framed-grey"
+                  >
+                    {<h2>backpack</h2>}
+                    <ItemInventoryComponent
+                      key={"backpack"}
+                      n={index}
+                      item={i}
+                      sizeId={0}
+                      filtro={filtroList.wonderous}
+                      onAction={handleChangeBackpack}
+                    />
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        <div>
+          <p>
+            tresure: {tresure}
+            {", actual: "}
+            {tresure - inventoryTotal - backpackTotal}
+          </p>
         </div>
       </div>
-      <div>
-        <p>
-          <span>
-            <button className="rpgui-button" onClick={handleConfirm}>
-              <p>confirm</p>
-            </button>
-          </span>
-          <span className="rpgui-container-framed-grey">
-            tresure: {tresure}
-          </span>
-          <span className="rpgui-container-framed-grey">
-            actual: {tresure - inventoryTotal - backpackTotal}
-          </span>
-          <span>
-            <button className="rpgui-button">
-              <Link to={"/attack/" + charId}>to attacks</Link>
-            </button>
-          </span>
-        </p>
-      </div>
-    </div>
+    </PageLayout>
   );
 };
 
@@ -500,11 +482,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
 }) => {
   const [theItem, setTheItem] = useState<
     Item | Armor | Shield | Weapon | WonderousItem
-  >();
-
-  useEffect(() => {
-    setTheItem(item);
-  }, []);
+  >(item);
 
   const filtroEnchantment =
     "magic" in filtro
@@ -540,7 +518,8 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     if (theItem && "enchantmentBonus" in theItem) {
       const updatedItem = {
         ...theItem,
-        enchantmentBonus: option
+        enchantmentBonus: option,
+        enchantment: option <= 0 ? [] : theItem.enchantment
       };
       setTheItem({ ...theItem, ...updatedItem });
     }
@@ -558,20 +537,6 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     if (onAction && theItem) onAction(n, theItem, option);
   };
 
-  const handleNoneItem = () => {
-    if (theItem && n === 0 && "armorName" in theItem)
-      setTheItem({ ...theItem, ...noneArmor });
-    if (theItem && n === 0 && !("armorName" in theItem))
-      setTheItem({ ...theItem, ...noneItem });
-    if (theItem && n === 1 && "shieldName" in theItem) setTheItem(noneShield);
-    if (theItem && n === 1 && !("shieldName" in theItem)) setTheItem(noneItem);
-    if (theItem && [2, 3, 4, 5, 6].includes(n) && "weaponName" in theItem)
-      setTheItem(noneWeapon);
-    if (theItem && [2, 3, 4, 5, 6].includes(n) && !("weaponName" in theItem))
-      setTheItem(noneItem);
-    if ([7, 8, 9, 10, 11, 12, 13, 14, 15].includes(n)) setTheItem(noneItem);
-  };
-
   const numerini: string[] = ["I", "II", "III", "IV", "V"];
 
   if (!theItem) {
@@ -582,7 +547,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
     );
   } else {
     return (
-      <div>
+      <div className="rpgui-container-framed">
         <h2>
           {"armorName" in theItem ? "armor" : null}
           {"shieldName" in theItem ? "shield" : null}
@@ -599,17 +564,13 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         </h2>
         <div>
           <div>
-            <ItemTheItemComponent
-              filtro={specificFiltro}
-              nameItem={
-                (theItem as Armor).armorName ||
-                (theItem as Shield).shieldName ||
-                (theItem as Weapon).weaponName ||
-                (theItem as WonderousItem).name
-              }
-              onAction={handleNoneItem}
-              setTheItem={handleNewItems}
-            />
+            {"itemType" in theItem && (
+              <ItemTheItemComponent
+                filtro={specificFiltro}
+                itemName={enchantedName(theItem)}
+                setTheItem={handleNewItems}
+              />
+            )}
           </div>
           {"enchantmentBonus" in theItem && (
             <ItemEnchantmentBonusComponent
@@ -636,13 +597,15 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
               materialItem={theItem.material}
             />
           )}
-          {"enchantment" in theItem && theItem.enchantment !== null && (
-            <ItemEnchantmentsComponent
-              filtro={filtroEnchantment}
-              enchantmentItem={theItem.enchantment}
-              setEnchantmentItem={handleEnchantment}
-            />
-          )}
+          {"enchantment" in theItem &&
+            theItem.enchantmentBonus &&
+            theItem.enchantmentBonus > 0 && (
+              <ItemEnchantmentsComponent
+                filtro={filtroEnchantment}
+                enchantmentItem={theItem.enchantment}
+                setEnchantmentItem={handleEnchantment}
+              />
+            )}
           {"weight" in theItem && (
             <ItemWeightComponent
               weightItem={theItem.weight}

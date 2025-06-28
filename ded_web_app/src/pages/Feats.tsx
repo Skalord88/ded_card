@@ -20,6 +20,8 @@ import {
   createClassPcClassFeats,
   findPrerequisiteFeatsInItemDrop
 } from "../components/Feats/function";
+import { PageLayout } from "./AppLayout";
+import { ReturnRingPosition } from "../components/Items/Functions/function";
 
 export type FiltroPrerequisite = {
   featsType: itemInDrop[];
@@ -38,7 +40,7 @@ export function Feats() {
   const [featsToAddList, setFeatsToAddList] = useState<FeatPc[]>([]);
   const [featsPcToSelectList, setFeatsPcToAddList] = useState<FeatPc[]>([]);
   // const [modChar, setModChar] = useState<CharToModify>();
-
+  const [change, setChange] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -106,17 +108,9 @@ export function Feats() {
           skills: addToDrop(["culi", "tette"], "filter")
         });
 
-        // const featsFromLevel: FeatPc[] = createClassPcBonusFeats(newModChar);
-
-        // if (featsFromLevel) {
         setFeatsToAddList(createClassPcBonusFeats(newModChar));
-        // }
 
-        // const classPcBonusFeats: FeatPc[] = createClassPcClassFeats(newModChar);
-
-        // if (classPcBonusFeats) {
         setFeatsPcToAddList(createClassPcClassFeats(newModChar));
-        // }
       } catch (error) {
         console.error(error);
       }
@@ -165,83 +159,57 @@ export function Feats() {
       };
     });
     axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
-
-    window.location.reload();
+    // window.location.reload();
   };
 
-  return (
-    <>
-      {char ? (
-        <CharSummary
-          character={char}
-          feats={[...featsToAddList, ...featsPcToSelectList]}
-        />
-      ) : null}
-      <div>
-        {
-          <button className="rpgui-button" onClick={() => handleSubmit()}>
-            <p>add Feats</p>
-          </button>
-        }
-        {
-          <button className="rpgui-button">
-            <Link to={"/item/" + charId}>
-              <p>to Inventory</p>
-            </Link>
-          </button>
-        }
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "50% 2% 48%" }}>
-        <div
-          className="rpgui-container-framed-grey"
-          style={{ gridColumn: "1 / span 3", gridRow: 1 }}
-          key={"featsToAddList"}
-        >
-          {featsToAddList
-            .sort((a, b) => (a.level ?? 0) - (b.level ?? 0))
-            .map((f, index) => (
-              <div className="rpgui-container-framed-grey" key={index}>
-                {filtroList && itemList ? (
-                  <FeatToAddInLevel
-                    filtro={filtroList}
-                    element={f}
-                    indexItem={index}
-                    items={itemList}
-                    onAction={newFeatsToAddList}
-                  />
-                ) : null}
-              </div>
-            ))}
-          {featsPcToSelectList
-            .sort(
-              (a, b) => (a.classFeat?.level ?? 0) - (b.classFeat?.level ?? 0)
-            )
-            .map((f, indexF) => (
-              <div key={indexF}>
-                {filtroList ? (
-                  <FeatPcToAddInLevel
-                    featIndex={indexF}
-                    element={f}
-                    filtro={filtroList}
-                    onAction={newFeatsPcToAddList}
-                  />
-                ) : null}
-              </div>
-            ))}
-          <div>
-            <button className="rpgui-button" onClick={() => handleSubmit()}>
-              <p>add Feats</p>
-            </button>
+  useEffect(() => {
+    let checkTheNull: boolean = false;
+    featsToAddList.forEach((f) => {
+      if (f.feat === null) checkTheNull = true;
+    });
+    checkTheNull ? setChange(false) : setChange(true);
+  }, [featsToAddList]);
 
-            <button className="rpgui-button">
-              <Link to={"/item/" + charId}>
-                <p>to Inventory</p>
-              </Link>
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
+  return (
+    <PageLayout
+      title={"Feats"}
+      // pageStyle="1fr 2fr"
+      onAction={handleSubmit}
+      buttons={{
+        back: { text: "Skills", link: "/skill/" + charId },
+        next: { text: "Equip", link: "/item/" + charId, change: change }
+      }}
+    >
+        {featsToAddList
+          .sort((a, b) => (a.level ?? 0) - (b.level ?? 0))
+          .map((f, index) => (
+            <div className="rpgui-container-framed-grey" key={index}>
+              {filtroList && itemList ? (
+                <FeatToAddInLevel
+                  filtro={filtroList}
+                  element={f}
+                  indexItem={index}
+                  items={itemList}
+                  onAction={newFeatsToAddList}
+                />
+              ) : null}
+            </div>
+          ))}
+        {featsPcToSelectList
+          .sort((a, b) => (a.classFeat?.level ?? 0) - (b.classFeat?.level ?? 0))
+          .map((f, indexF) => (
+            <div key={indexF}>
+              {filtroList ? (
+                <FeatPcToAddInLevel
+                  featIndex={indexF}
+                  element={f}
+                  filtro={filtroList}
+                  onAction={newFeatsPcToAddList}
+                />
+              ) : null}
+            </div>
+          ))}
+    </PageLayout>
   );
 }
 

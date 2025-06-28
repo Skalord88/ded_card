@@ -225,7 +225,7 @@ export const getMalus = (
 };
 
 export const isType = (list: string[], find: string | undefined): boolean => {
-  if (!find) return false;
+  if (!find || !list) return false;
   return list.includes(find);
 };
 

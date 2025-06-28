@@ -6,6 +6,16 @@
 .rpgui-container {
 	display: grid;
 	justify-content: center;
+	place-self: center;
+	max-width: 1400px;
+	/* overflow-y: "auto" */
+}
+
+@media screen and (max-width: 600px) {
+	.rpgui-container{
+		transform: scale(0.90);
+        font-size: 0.7em;
+	}
 }
 
 .rpgui-container-framed {

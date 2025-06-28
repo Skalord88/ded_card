@@ -3,7 +3,7 @@ import { Armor, Enchantment, Item, Shield, Weapon, WonderousItem } from "../inte
 
 export type ItemPartProps = {
   filtro?: itemInDrop[];
-  nameItem?: string;
+  itemName?: string;
   itemTypeItem?: string;
   materialItem?: string;
   enchantmentBonusItem?: number;

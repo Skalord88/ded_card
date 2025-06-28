@@ -1,10 +1,12 @@
 import { FormattingText } from "../../Formatting/Function";
 import {
-    Armor,
-    EnchantedItem,
-    Enchantment,
-    Shield,
-    Weapon
+  Armor,
+  EnchantedItem,
+  Enchantment,
+  Item,
+  Shield,
+  Weapon,
+  WonderousItem
 } from "../../interfaces";
 
 export function SetEnchantemtOnItem(
@@ -17,27 +19,36 @@ export function SetEnchantemtOnItem(
   };
 }
 
-export const enchantedName = (item: Armor | Shield | Weapon): string => {
-  let itemName: string = "";
-  if (item) {
-    if (item.enchantment) {
-      item.enchantment.forEach((ench) =>
-        ench.ability !== null
-          ? itemName + " " + FormattingText(ench.ability)
-          : ""
-      );
-    }
-  }
-  return itemName;
+export const enchantedName = (
+  item: Item | Armor | Shield | Weapon | WonderousItem
+): string => {
+  return "enchantmentBonus" in item
+    ? FormattingText(
+        [
+          "armorName" in item
+            ? item.armorName
+            : "shieldName" in item
+            ? item.shieldName
+            : item.name +
+              onlyEnchantedName(item.enchantmentBonus) +
+              (item.material ? item.material : "") +
+              item.enchantment
+            ? item.enchantment?.flatMap((ench) => ench.ability).join(", ")
+            : ""
+        ].join(" ")
+      )
+    : item.name;
 };
 
-export const onlyEnchantedName = (enchantment: number): string => {
-  if (enchantment < 0) {
-    return "pft";
-  } else if (enchantment === 0) {
-    return "-";
+export const onlyEnchantedName = (enchantment: number | undefined): string => {
+  if (enchantment) {
+    return enchantment > 0
+      ? "+" + enchantment
+      : enchantment === -1
+      ? " pft"
+      : "";
   }
-  return "+" + enchantment;
+  return "";
 };
 
 export function costOfEnchant(enchantment: number, type: string): number {
@@ -83,7 +94,7 @@ export function costOfEnchant(enchantment: number, type: string): number {
         return 32300;
       case 5:
         return 50300;
-        case 6:
+      case 6:
         return 72300;
       case 7:
         return 98300;

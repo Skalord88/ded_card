@@ -15,7 +15,7 @@
 	/* margin: 0; */
 
 	/* scrollers */
-	/* overflow-x: hidden; */
+	overflow-x: hidden;
 	overflow-y: auto;
 
 	/* border */
@@ -45,7 +45,7 @@ ul.rpgui-list-imp {
 	/* font */
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	color: white;
-	/* height: 16px; */
+	height: 16px;
 	margin-left: 5px !important;
 
 	/* remove the dot */
@@ -55,7 +55,7 @@ ul.rpgui-list-imp {
 	padding-top: 6px;
 	padding-bottom: 6px;
 	padding-left: 6px;
-	/* padding: 6px; */
+	padding: 6px;
 	/* background */
 	background: url("../img/select-background-image.png") repeat repeat;
 	background-clip: padding-box;

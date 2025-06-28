@@ -11,7 +11,7 @@ import { SkillsInList } from "./interface/SkillsInList";
 
 export type SkillShowComponentProps = {
   char: CharToModify;
-  onActionSkills: () => SkillsInList[];
+  onActionSkills?: () => SkillsInList[];
 };
 
 export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({

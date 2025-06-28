@@ -156,10 +156,10 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
 
   return (
     <>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>{sk.classSkill ? "x" : ""}</p>
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>
           <ModSkillStudyInDice
             key={sk.skill.id + "." + sk.skill.skillName}
@@ -171,7 +171,7 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
           />
         </p>
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         {onActionSkill ? (
           <p onClick={() => delRank(sk.skill.id)} style={{ color: "orange" }}>
             {tot}
@@ -180,7 +180,7 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
           <p style={{ color: "orange" }}>{tot}</p>
         )}
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         {onActionSkill ? (
           <p style={{ color: "yellow" }} onClick={() => addRank(sk.skill.id)}>
             {sk.rank}
@@ -189,13 +189,13 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
           <p>{sk.rank}</p>
         )}
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>{bonusAb}</p>
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>{bonus}</p>
       </div>
-      <div className={abilityBackgroundColor(sk.skill.ability)}>
+      <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>{sk.skill.penality * (penality ? penality : 0)}</p>
       </div>
     </>
@@ -247,10 +247,10 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
 
   return (
     <>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>{study.classSkill ? "x" : ""}</p>
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>
           <ModSkillStudyInDice
             key={study.study.id + "." + skill.skillName}
@@ -262,7 +262,7 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
           />
         </p>
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         {onActionStudy ? (
           <p
             onClick={() => delRank(study.study.id, skill.id)}
@@ -274,7 +274,7 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
           <p style={{ color: "orange" }}></p>
         )}
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         {onActionStudy ? (
           <p
             style={{ color: "yellow" }}
@@ -286,13 +286,13 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
           <p>{study.rank}</p>
         )}
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>{bonusAb}</p>
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>{bonus}</p>
       </div>
-      <div className={abilityBackgroundColor(skill.ability)}>
+      <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>{skill.penality * (penality ? penality : 0)}</p>
       </div>
     </>

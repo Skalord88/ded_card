@@ -2,6 +2,9 @@ export const abilityBackgroundColor = (
   classSkill: boolean,
   skillAbility: string
 ) => {
+  if (!skillAbility) {
+    return "rpgui-container-framed grey";
+  }
   switch (skillAbility.toUpperCase()) {
     case "STRENGTH":
       return !classSkill

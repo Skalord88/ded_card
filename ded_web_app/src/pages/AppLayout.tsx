@@ -69,8 +69,7 @@ export const PageLayoutBody: React.FC<React.PropsWithChildren<{}>> = ({
   return (
     <div
       style={{
-        gridArea: "body",
-        
+        gridArea: "body"
       }}
       className="rpgui-container-framed"
     >
@@ -104,7 +103,6 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
         style={{
           display: "grid",
           gridTemplateColumns: pageStyle,
-
           gap: "0.5rem"
         }}
       >

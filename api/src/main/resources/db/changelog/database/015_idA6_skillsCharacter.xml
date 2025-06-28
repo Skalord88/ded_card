@@ -29,10 +29,17 @@
             <column name="skill_id" value="1" />
             <column name="rank" value="10" />
         </insert>
-        
         <insert tableName="skills_character">
             <column name="id" value="1001" />
             <column name="character_card_id" value="100" />
+            <column name="skill_id" value="2" />
+            <column name="rank" value="4" />
+        </insert>
+
+        <!-- Rysio -->
+        <insert tableName="skills_character">
+            <column name="id" value="1101" />
+            <column name="character_card_id" value="101" />
             <column name="skill_id" value="2" />
             <column name="rank" value="4" />
         </insert>

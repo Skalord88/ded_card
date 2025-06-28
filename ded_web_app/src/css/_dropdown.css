@@ -9,15 +9,17 @@
 	/* font */
 	text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 	color: white;
+	/* position: absolute; */
+	/* display: inline-block; */
 
 	/* default size */
 	min-height: 40px;
 	margin-top: 0px;
 
 	/* Imposta un'altezza massima per attivare la scrollbar */
-	/* max-height: 400px; */
+	max-height: 400px;
 	/* Puoi regolare il valore a piacere */
-	/* overflow-y: auto; */
+	overflow-y: auto;
 
 	/* border */
 	border-style: solid;
@@ -34,11 +36,24 @@
 	background-position: center;
 }
 
+.rpgui-dropdown-wrapper {
+	position: relative;
+	display: inline-block;
+}
+
+#dropdown-options {
+	top: 100%;
+	/* posizionato sotto l'header */
+	left: 0;
+	width: 100%;
+}
 
 /* dropdown options list */
 ul.rpgui-dropdown-imp {
 	padding: 0 0 0 0 !important;
 	z-index: 100;
+	/* display: none; */
+	position: absolute;
 }
 
 /* note! this affect only the dropdown header */
