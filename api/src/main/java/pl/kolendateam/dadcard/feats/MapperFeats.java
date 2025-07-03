@@ -52,6 +52,17 @@ public class MapperFeats {
     return raceFeatsDTO;
   }
 
+  public static List<ClassFeatsDTO> toClassFeatsDTO(List<ClassFeats> feats) {
+    List<ClassFeatsDTO> toListFeatsDTO = new ArrayList<>();
+    if (feats != null) feats.forEach(feat -> {
+      if (feat != null) {
+        ClassFeatsDTO featDTO = new ClassFeatsDTO(feat);
+        toListFeatsDTO.add(featDTO);
+      }
+    });
+    return toListFeatsDTO;
+  }
+
   public static Set<ClassFeatsDTO> toClassFeatsDTO(Set<ClassFeats> feats) {
     Set<ClassFeatsDTO> toSortFeatsDTO = new HashSet<>();
 

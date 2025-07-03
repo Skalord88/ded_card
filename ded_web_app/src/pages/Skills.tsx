@@ -10,12 +10,10 @@ import { FormattingText } from "../components/Formatting/Function";
 import { BonusAbilities, SignNumber } from "../components/functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { Skill } from "../components/Skills/interface/Skill";
 import { SkillsInList } from "../components/Skills/interface/SkillsInList";
 import { urlChar, urlSkillSet } from "../components/url";
 import "../css/style.css";
 import { PageLayout } from "./AppLayout";
-import { Study } from "../components/Skills/interface/SkillsInterface";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { StudyInList } from "../components/Skills/interface/StudysInList";
 

@@ -34,7 +34,13 @@ export const Races = () => {
     const fetchData = async () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
-        setChar(resChar.data);
+        const charFromDB = resChar.data as CharacterPc;
+        setChar(charFromDB);
+
+        if (charFromDB.race && charFromDB.race.race){
+          setSelectedRace(charFromDB.race.race)
+          setSelectedSubRace(charFromDB.race)
+        }
 
         const resRaceList = await axios.get(urlRace);
         const resSubRaceList = await axios.get(urlRaceList);

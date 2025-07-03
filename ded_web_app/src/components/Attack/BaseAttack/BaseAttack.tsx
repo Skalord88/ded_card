@@ -1,5 +1,5 @@
 import { abilityBackgroundColor } from "../../Abilitys/Colors";
-import { BonusAbilities, signAndCount } from "../../functions";
+import { BonusAbilities, signAndCount, SignNumber } from "../../functions";
 import {
     AllModifiersInDice20,
     AllModifiersInDiceProps
@@ -99,7 +99,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
     list: [
       {
         id: 1,
-        color: abilityBackgroundColor(""),
+        color: abilityBackgroundColor(false, ""),
         dice: {
           textOrWeapon: bab.tot.mod,
           value: bab.tot.value.number,
@@ -109,7 +109,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
       },
       {
         id: 2,
-        color: abilityBackgroundColor("STRENGTH"),
+        color: abilityBackgroundColor(false, "STRENGTH"),
         dice: {
           textOrWeapon: strenghtAtt.tot.mod,
           value: strenghtAtt.tot.value.number,
@@ -119,7 +119,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
       },
       {
         id: 3,
-        color: abilityBackgroundColor("DEXTERITY"),
+        color: abilityBackgroundColor(false, "DEXTERITY"),
         dice: {
           textOrWeapon: dexterityAtt.tot.mod,
           value: dexterityAtt.tot.value.number,
@@ -129,7 +129,7 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
       },
       {
         id: 4,
-        color: abilityBackgroundColor("STRENGTH"),
+        color: abilityBackgroundColor(false, "STRENGTH"),
         dice: {
           textOrWeapon: grapple.tot.mod,
           value: char.bab,
@@ -141,20 +141,21 @@ export const BaseAttack: React.FC<BaseAttackProp> = ({ char }) => {
   };
 
   return (
-    <>
+    <div >
       <h2 className="rpgui-container-framed golden-2">Bab</h2>
       <AllModifiersInDice20 list={allDice.list} />
-    </>
+    </div>
   );
 };
 
 export const BaseSummaryAttack: React.FC<BaseAttackProp> = ({ char }) => {
 
-  const totBab: number = char.bab
+  const totBab: number = char.bab + Number(char.size.modifiers?.attackRoll?.bonus ?? 0);
+  const totGrapple: number = totBab + Number(char.size.modifiers?.specialAttacks?.grapple ?? 0);
 
   return(
     <div>
-      <p>bab: +{totBab}</p>
+      <p>Base Attack/Grapple: {SignNumber(totBab) + totBab}/{SignNumber(totGrapple) + totGrapple} </p>
     </div>
   )
 }

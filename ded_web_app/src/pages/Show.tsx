@@ -24,6 +24,7 @@ import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { SkillsInList } from "../components/Skills/interface/SkillsInList";
+import { PageLayoutBody } from "./AppLayout";
 
 export const Show = () => {
   let { charId } = useParams();
@@ -50,7 +51,7 @@ export const Show = () => {
   const modChar: CharToModify = createModChar(char);
   
   return (
-    <div>
+    <PageLayoutBody>
       {modChar && window.innerWidth <= 768 ? (
         <div>
           <DeleteButton url={urlChar} />
@@ -70,7 +71,6 @@ export const Show = () => {
           <MagicComponent char={modChar} />
         </div>
       ) : (
-        <div>
           <div
             style={{
               display: "grid",
@@ -78,7 +78,7 @@ export const Show = () => {
             }}
           >
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "3 / span 2",
                 gridRow: 1
@@ -87,7 +87,7 @@ export const Show = () => {
               <DeleteButton url={urlChar} />
             </div>
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: "1 / span 2"
@@ -97,7 +97,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: 3,
                 gridRow: "2 / span 2"
@@ -107,7 +107,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: 4,
                 gridRow: "2 / span 2"
@@ -117,7 +117,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: 5
@@ -127,7 +127,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: 3
@@ -137,7 +137,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: 4
@@ -147,7 +147,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "3 / span 2",
                 gridRow: 5
@@ -157,7 +157,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "3 / span 2",
                 gridRow: 4
@@ -167,7 +167,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 4",
                 gridRow: 8
@@ -177,7 +177,7 @@ export const Show = () => {
             </div>
 
             <div
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 3",
                 gridRow: 9
@@ -188,7 +188,7 @@ export const Show = () => {
 
             <div
               key="inventory"
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 4",
                 gridRow: 11
@@ -198,7 +198,7 @@ export const Show = () => {
             </div>
             <div
               key="skills"
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "3 / span 2",
                 gridRow: "12 / span 3"
@@ -208,7 +208,7 @@ export const Show = () => {
             </div>
             <div
               key="speed"
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: 4,
                 gridRow: 9
@@ -218,7 +218,7 @@ export const Show = () => {
             </div>
             <div
               key="feats"
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: 12
@@ -228,7 +228,7 @@ export const Show = () => {
             </div>
             <div
               key="feats"
-              className="rpgui-container-framed-grey"
+              className="rpgui-container-framed grey"
               style={{
                 gridColumn: "1 / span 2",
                 gridRow: 13
@@ -237,9 +237,8 @@ export const Show = () => {
               <MagicComponent char={modChar} />
             </div>
           </div>
-        </div>
       )}
-    </div>
+    </PageLayoutBody>
   );
 };
 

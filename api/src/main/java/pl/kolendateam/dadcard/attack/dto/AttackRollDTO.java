@@ -10,10 +10,12 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 public class AttackRollDTO {
 
   public Integer bonus;
+  public Boolean improved;
   public ModifierEnum[] target;
 
   public AttackRollDTO(AttackRoll attack) {
     this.bonus = attack.getBonus();
+    this.improved = attack.getImproved() != null ? attack.getImproved() : null;
     this.target = attack.getTarget() != null ? attack.getTarget() : null;
   }
 }

@@ -10,12 +10,11 @@ export const List: React.FC = () => {
   const [charList, setCharList] = useState<character[]>([]);
 
   useEffect(() => {
-  axios.get<character[]>(urlCharList).then((response) => {
-    console.log("Character list:", response.data);
-    setCharList(response.data);
-  });
-}, []);
-
+    axios.get<character[]>(urlCharList).then((response) => {
+      console.log("Character list:", response.data);
+      setCharList(response.data);
+    });
+  }, []);
 
   return (
     <PageLayoutBody>
@@ -27,17 +26,17 @@ export const List: React.FC = () => {
               return (
                 <li key={index}>
                   <Link to={"/" + c.characterId}>
-                    character: <b>{c.characterName}</b> / player:{" "}
-                    <b>{c.playerName}</b>
+                    <b>{[c.characterName, c.playerName].join(", ")}</b>
                   </Link>
                 </li>
               );
             })}
-          </ol></div>
+          </ol>
+        </div>
       ) : (
-        <PageLayoutBody>
+        <div>
           <p>...loading characters...</p>
-        </PageLayoutBody>
+        </div>
       )}
     </PageLayoutBody>
   );

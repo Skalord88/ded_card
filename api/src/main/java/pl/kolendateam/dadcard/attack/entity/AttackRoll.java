@@ -19,10 +19,13 @@ public class AttackRoll implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
 
+  Boolean improved;
+
   Integer bonus;
 
   public AttackRoll(AttackRollDTO attackDTO) {
     this.target = attackDTO.target != null ? attackDTO.target : null;
+    this.improved = attackDTO.improved != null ? attackDTO.improved : null;
     this.bonus = attackDTO.bonus != null ? attackDTO.bonus : null;
   }
   // no target, add bonus to all attacks ex. size

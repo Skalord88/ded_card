@@ -155,17 +155,13 @@
 
     <insert tableName="enchanted_items">
       <column name="id" value="1011" />
-      <column name="name" value="Longbow, composite (+2) +1" />
-      <column name="enchantment_bonus" value="1" />
+      <column name="name" value="Longbow, Holly +5" />
+      <column name="enchantment_bonus" value="5" />
       <column name="items_id" value="59" />
     </insert>
     <insert tableName="enchanted_items_enchantment">
       <column name="enchanted_items_id" value="1011" />
-      <column name="enchantment_id" value="6" />
-    </insert>
-    <insert tableName="enchanted_items_enchantment">
-      <column name="enchanted_items_id" value="1011" />
-      <column name="enchantment_id" value="6" />
+      <column name="enchantment_id" value="512" />
     </insert>
 
     <insert tableName="enchanted_items">

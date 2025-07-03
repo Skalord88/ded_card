@@ -113,6 +113,7 @@ export const createClassPcBonusFeats = (newModChar: CharToModify): FeatPc[] => {
       featsFromLevel.push({
         id: null,
         feat: null,
+        // level: i - 1 === 0 ? 1 : (i - 1) * 3,
         level: i === 0 ? 1 : i * 3,
         selected: null
       });

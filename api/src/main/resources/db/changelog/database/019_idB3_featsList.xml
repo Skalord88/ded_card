@@ -1062,11 +1062,23 @@
       <column name="text" value="Proficient with weapon, base attack bonus +8." />
     </insert>
 
+    <!-- Improved Critical [General] mod -->
+
+    <insert tableName="prerequisite">
+      <column name="id" value="1024" />
+      <column name="attack_roll"
+        value="{ &quot;improved&quot; : &quot;true&quot;, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="Increment range of critical on the selected weapon." />
+    </insert>
+
     <insert tableName="feats">
       <column name="id" value="46" />
       <column name="feat_name" value="Improved Critical [General]" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110024" />
+      <column name="to_select_id" value="2001" />
+      <column name="modifiers_id" value="1024" />
       <!-- <column name="prerequisites" value="Proficient with weapon, base attack bonus +8." /> -->
       <column name="benefit"
         value="Choose one type of weapon. When using the weapon you selected, your threat range is doubled." />
@@ -1892,7 +1904,7 @@
 
     <insert tableName="prerequisite">
       <column name="id" value="110044" />
-      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13, Point Blank Shot." />
     </insert>
 
@@ -1907,10 +1919,10 @@
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <column name="prerequisite_list_id" value="110044" />
       <column name="benefit"
-        value="Choose a type of crossbow (hand, light, or heavy). The time required for you to reload your chosen type of crossbow is reduced to a free action (for a hand or light crossbow) or a move action (for a heavy crossbow). Reloading a crossbow still provokes an attack of opportunity. If you have selected this feat for hand crossbow or light crossbow, you may fire that weapon as many times in a full attack action as you could attack if you were using a bow." />
-      <column name="normal" value="null" />
+        value="You can get one extra attack per round with a ranged weapon. The attack is at your highest base attack bonus, but each attack you make in that round (the extra one and the normal ones) takes a -2 penalty. You must use the full attack action to use this feat." />
+      <!-- <column name="normal" value="null" /> -->
       <column name="special"
-        value="You can gain Rapid Reload multiple times. Each time you take the feat, it applies to a new type of crossbow. A fighter may select Rapid Reload as one of his fighter bonus feats." />
+        value="A fighter may select Rapid Shot as one of his fighter bonus feats. A 2nd-level ranger who has chosen the archery combat style is treated as having Rapid Shot, even if he does not have the prerequisites for it, but only when he is wearing light or no armor." />
     </insert>
 
     <!-- Ride-By Attack [General] pre -->
@@ -2407,7 +2419,7 @@
     <insert tableName="feats">
       <column name="id" value="108" />
       <column name="feat_name" value="Weapon Specialization [General]" />
-      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
+      <column name="feat_type" value="[ &quot;FIGHTER&quot; ]" />
       <!-- <column name="prerequisites"
         value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." /> -->
       <column name="prerequisite_list_id" value="110054" />
@@ -2417,6 +2429,7 @@
       <column name="special"
         value="You can gain this feat multiple times. Its effects do not stack. Each time you take the feat, it applies to a new type of weapon." />
       <column name="modifiers_id" value="1021" />
+      <column name="to_select_id" value="2001" />
     </insert>
 
     <!-- Whirlwind Attack [General] pre -->

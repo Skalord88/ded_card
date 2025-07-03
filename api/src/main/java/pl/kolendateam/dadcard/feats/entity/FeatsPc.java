@@ -10,19 +10,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
-import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
-import pl.kolendateam.dadcard.items.MapperItems;
-import pl.kolendateam.dadcard.items.entity.Items;
 
 @NoArgsConstructor
 @AllArgsConstructor

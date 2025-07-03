@@ -22,7 +22,7 @@
             <column name="attacks_id_onesecond" value="2" />
             <column name="attacks_id_oneadditional" value="2" />
             <column name="attacks_id_twofirst" value="1012" />
-            <column name="attacks_id_twosecond" value="7" />
+            <column name="attacks_id_twosecond" value="2007" />
             <column name="attacks_id_twoadditional" value="2" />
         </insert>
 

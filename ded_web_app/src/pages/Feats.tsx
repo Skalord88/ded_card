@@ -1,17 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import {
-  ClassFeats,
-  Feat,
-  FeatPc
-} from "../components/Feats/Interface/FeatInterface";
+import { Feat, FeatPc } from "../components/Feats/Interface/FeatInterface";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { CharacterPc, Item, Weapon } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
-import { CharSummary } from "../components/Summary/CharSummary";
 import { urlChar, urlFeats, urlItems } from "../components/url";
 import { emptyPrerequisite } from "../components/variables";
 import React from "react";
@@ -21,7 +16,6 @@ import {
   findPrerequisiteFeatsInItemDrop
 } from "../components/Feats/function";
 import { PageLayout } from "./AppLayout";
-import { ReturnRingPosition } from "../components/Items/Functions/function";
 
 export type FiltroPrerequisite = {
   featsType: itemInDrop[];
@@ -41,6 +35,8 @@ export function Feats() {
   const [featsPcToSelectList, setFeatsPcToAddList] = useState<FeatPc[]>([]);
   // const [modChar, setModChar] = useState<CharToModify>();
   const [change, setChange] = useState(false);
+
+  // const [choosenFeatsCheck, setChoosenFeatsCheck] = useState<boolean[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -107,8 +103,17 @@ export function Feats() {
           ),
           skills: addToDrop(["culi", "tette"], "filter")
         });
-
-        setFeatsToAddList(createClassPcBonusFeats(newModChar));
+        const quantiFeats: FeatPc[] = createClassPcBonusFeats(newModChar);
+        setFeatsToAddList(quantiFeats);
+        // const checkQuantiFeats: boolean[] = [];
+        // quantiFeats.forEach((f, index) => {
+        //   if (index === 0) {
+        //     checkQuantiFeats.push(true);
+        //   } else {
+        //     f.feat ? checkQuantiFeats.push(true) : checkQuantiFeats.push(false);
+        //   }
+        //   setChoosenFeatsCheck(checkQuantiFeats);
+        // });
 
         setFeatsPcToAddList(createClassPcClassFeats(newModChar));
       } catch (error) {
@@ -122,7 +127,27 @@ export function Feats() {
     const updatedList = [...featsToAddList];
     updatedList[i] = f;
     setFeatsToAddList(updatedList);
+    // const seltiFeats = [...choosenFeatsCheck];
+    // seltiFeats[i] = true;
+    // console.log("seltiFeats", seltiFeats);
+    // console.log("updatedList", updatedList);
+    // setChoosenFeatsCheck(seltiFeats);
   };
+
+  // useEffect(() => {
+  //   const updatedChecks: boolean[] = choosenFeatsCheck
+  //   featsToAddList.forEach((f, index) => {
+  //       // console.log("f", f.feat?.featName, "index", index, f.feat? true : false);
+  //       if (index < featsToAddList.length - 1)
+  //       f.feat ? updatedChecks[index + 1] = true : updatedChecks[index] = false;
+  //     }
+  //   );
+  //   updatedChecks[0] = true
+  //   console.log("updatedChecks", updatedChecks);
+  //   setChoosenFeatsCheck(updatedChecks);
+  //   // }
+  //   // })
+  // }, [featsToAddList]);
 
   const newFeatsPcToAddList = (f: FeatPc, i: number) => {
     if (featsPcToSelectList) {
@@ -158,6 +183,8 @@ export function Feats() {
         selected: f.selected ? f.selected : null
       };
     });
+    console.log("list", list);
+    console.log("listBonus", listBonus);
     axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
     // window.location.reload();
   };
@@ -180,35 +207,42 @@ export function Feats() {
         next: { text: "Equip", link: "/item/" + charId, change: change }
       }}
     >
-        {featsToAddList
-          .sort((a, b) => (a.level ?? 0) - (b.level ?? 0))
-          .map((f, index) => (
-            <div className="rpgui-container-framed-grey" key={index}>
-              {filtroList && itemList ? (
-                <FeatToAddInLevel
-                  filtro={filtroList}
-                  element={f}
-                  indexItem={index}
-                  items={itemList}
-                  onAction={newFeatsToAddList}
-                />
-              ) : null}
-            </div>
-          ))}
-        {featsPcToSelectList
-          .sort((a, b) => (a.classFeat?.level ?? 0) - (b.classFeat?.level ?? 0))
-          .map((f, indexF) => (
-            <div key={indexF}>
-              {filtroList ? (
-                <FeatPcToAddInLevel
-                  featIndex={indexF}
-                  element={f}
-                  filtro={filtroList}
-                  onAction={newFeatsPcToAddList}
-                />
-              ) : null}
-            </div>
-          ))}
+      {featsToAddList
+        .sort((a, b) => (a.level ?? 0) - (b.level ?? 0))
+        .map((f, index) => {
+          let prevFeatNotNull: boolean = true;
+          if (index !== 0 && !featsToAddList[index - 1].feat 
+            && !featsToAddList[index].feat) {prevFeatNotNull = false}
+          return (
+          <div className="rpgui-container-framed-grey" key={index}>
+            {filtroList && itemList ? (
+              <FeatToAddInLevel
+                key={f.level + ".FeatToAddInLevel"}
+                filtro={filtroList}
+                prevFeatNotNull={index === 0? true : prevFeatNotNull}
+                element={f}
+                indexItem={index}
+                items={itemList}
+                onAction={newFeatsToAddList}
+              />
+            ) : null}
+          </div>
+        )})}
+      {featsPcToSelectList
+        .sort((a, b) => (a.classFeat?.level ?? 0) - (b.classFeat?.level ?? 0))
+        .map((f, indexF) => (
+          <div key={indexF}>
+            {filtroList ? (
+              <FeatPcToAddInLevel
+                key={f.level + ".PcToSelect"}
+                featIndex={indexF}
+                element={f}
+                filtro={filtroList}
+                onAction={newFeatsPcToAddList}
+              />
+            ) : null}
+          </div>
+        ))}
     </PageLayout>
   );
 }
@@ -222,6 +256,7 @@ export type ListOfToSelect = {
 export type FeatToAddInLevelProps = {
   element: FeatPc;
   filtro: FiltroPrerequisite;
+  prevFeatNotNull?: boolean;
   indexItem: number;
   items: ListOfToSelect;
   onAction: (option: FeatPc, ind: number) => void;
@@ -249,6 +284,7 @@ export const itemsDropFromPrerequisite = (
 export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
   element,
   filtro,
+  prevFeatNotNull,
   indexItem,
   items,
   onAction
@@ -345,12 +381,12 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
           </p>
         </div>
         <div style={{ flex: 1 }}>
-          <DropdownComponent options={filtro.featsType} onAction={addFilter} />
+          {prevFeatNotNull && <DropdownComponent options={filtro.featsType} onAction={addFilter} />}
         </div>
         <div style={{ flex: 3 }}>
           {itemList ? (
             <div>
-              <DropdownComponent options={itemList} onAction={addFeat} />
+              {prevFeatNotNull && <DropdownComponent options={itemList} onAction={addFeat} />}
               <p></p>
             </div>
           ) : (
@@ -363,7 +399,7 @@ export const FeatToAddInLevel: React.FC<FeatToAddInLevelProps> = ({
         <div style={{ flex: 3 }}>
           {toSelect.length > 0 && (
             <div>
-              <DropdownComponent options={toSelect} onAction={addToSelect} />
+              {prevFeatNotNull && <DropdownComponent options={toSelect} onAction={addToSelect} />}
               <p></p>
             </div>
           )}

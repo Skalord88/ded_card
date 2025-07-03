@@ -55,7 +55,6 @@ export const findAttackRollPrerequisite = (
   return { mono, target, composed };
 };
 
-
 export const findDamageBonusPrerequisite = (
   prerList: Prerequisite[]
 ): DamageBonusElement => {
@@ -72,7 +71,7 @@ export const findDamageBonusPrerequisite = (
       if (prer.damageBonus?.target?.some((t) => compose.includes(t))) {
         composed.push({
           damageBonus: {
-            bonus: prer.damageBonus.bonus 
+            bonus: prer.damageBonus.bonus
           },
           weaponType: prer.weaponType,
           items: prer.items

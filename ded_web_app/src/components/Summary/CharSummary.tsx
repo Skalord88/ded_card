@@ -69,13 +69,17 @@ export const CharSummary: React.FC<SummaryProps> = ({
           justifyContent: "center",
         }}
         >
-          <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
-          {textClass ? <p>{textClass}</p> : null}
-          <SkillSummaryComponent char={updateChar} />
-          <SpeedSummaryComponent char={updateChar} />
-          <SpecialAbilitiesSummaryComponent char={updateChar} />
+          <p>{[character.race.subRacesName, textClass ? textClass : null].join(", ")}</p>
           <HpSummaryComponent char={updateChar} />
+          <SpeedSummaryComponent char={updateChar} />
+          {"Armor Class:"}
           <BaseSummaryAttack char={updateChar} />
+          <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
+          <SkillSummaryComponent char={updateChar} />
+          
+          <SpecialAbilitiesSummaryComponent char={updateChar} />
+          
+          
           <SavingSummaryThrowComponent char={updateChar} />
         </div>
       ) : (

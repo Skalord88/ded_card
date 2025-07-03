@@ -43,8 +43,8 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
   };
   const styleDiv = (type: string): string => {
     return type.includes("dis")
-      ? abilityBackgroundColor("DEXTERITY")
-      : abilityBackgroundColor("STRENGTH");
+      ? abilityBackgroundColor(false, "DEXTERITY")
+      : abilityBackgroundColor(false, "STRENGTH");
   };
   return (
     <>

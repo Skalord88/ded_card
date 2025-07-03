@@ -10,12 +10,16 @@ export type FeatsComponentProps = {
 };
 
 export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
-  const featsFromLevel: FeatPc[] = char.feats.pcFeats.fromLevel
-  const featsFromClass: FeatPc[] = char.feats.pcFeats.fromClass
+  const featsFromLevel: FeatPc[] = char.feats.pcFeats.fromLevel;
+  const featsFromClass: FeatPc[] = char.feats.pcFeats.fromClass;
   const featsFeats: Feat[] = char.feats.feats;
   const featsClassFeats: ClassFeats[] = char.feats.classFeats;
   const featsClassFeatsOneTime = Array.from(
-    new Map(featsClassFeats.map((item) => [item.feat.id, item])).values()
+    new Map(
+      featsClassFeats
+        .filter((item) => item.feat && item.feat.id) // Only keep items with a valid feat and id
+        .map((item) => [item.feat.id, item])
+    ).values()
   );
 
   const fePcLv: {
@@ -39,7 +43,7 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
         benefit: f.feat?.benefit || ""
       }
     }));
-  
+
   const fePcBnsCl: {
     name?: string;
     prer?: Prerequisite[];
@@ -63,23 +67,23 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
           }
         : undefined
     }));
-  
-    const fe: {
-      name: string;
-      prer?: Prerequisite[];
-      description: { benefit: string; normal: string; special: string };
-    }[] = featsFeats
-      .filter(Boolean) // Removes null/undefined values before mapping
-      .map((f) => ({
-        name: f.featName,
-        prer: f.modifiers ? [f.modifiers] : [],
-        description: {
-          normal: f.normal || "",
-          special: f.special || "",
-          benefit: f.benefit || ""
-        }
-      }));
-    
+
+  const fe: {
+    name: string;
+    prer?: Prerequisite[];
+    description: { benefit: string; normal: string; special: string };
+  }[] = featsFeats
+    .filter(Boolean) // Removes null/undefined values before mapping
+    .map((f) => ({
+      name: f.featName,
+      prer: f.modifiers ? [f.modifiers] : [],
+      description: {
+        normal: f.normal || "",
+        special: f.special || "",
+        benefit: f.benefit || ""
+      }
+    }));
+
   const feCl: {
     name: string;
     prer?: Prerequisite[];
@@ -100,7 +104,11 @@ export const FeatsComponent: React.FC<FeatsComponentProps> = ({ char }) => {
   return (
     <div>
       <h2 className="rpgui-container-framed golden-2">Feats</h2>
-      <ListOfFeatsMap key={"Feats Level"} feats={fePcLv} titolo={"Feats Level"} />
+      <ListOfFeatsMap
+        key={"Feats Level"}
+        feats={fePcLv}
+        titolo={"Feats Level"}
+      />
       {/* <ListOfFeatsMap key={"Feats Class Bonus"} feats={fePcBnsCl} titolo={"Feats Class Bonus"} /> */}
       <ListOfFeatsMap key={"Feats"} feats={fe} titolo={"Feats"} />
       <ListOfFeatsMap key={"Class Feats"} feats={feCl} titolo={"Class Feats"} />
@@ -146,34 +154,29 @@ export const ListOfFeatsMap: React.FC<ListOfFeatsMapProps> = ({
   };
 
   return (
-    <>
-      
-      <div style={{ display: "grid", gridColumn: "45% 5% 50%" }}>
-        <div style={{ gridColumn: 1 }}>
+    <div style={{ display: "grid", gridColumn: "45% 5% 50%" }}>
+      <div style={{ gridColumn: 1 }}>
         {orderedFeats && orderedFeats.length > 0 && feats && <h4>{titolo}</h4>}
-          {feats?.map(
-            (f, index) =>
-              f && (
-                <div key={index}>
-                  <p onClick={() => selectFeat(f)}>{f.name}</p>
-                  {f.prer && (
-                    <ListOfBonusMap key={index} prerequisite={f.prer} />
-                  )}
-                </div>
-              )
-          )}
-        </div>
-        {selectedFeat && (
-          <div style={{ gridColumn: 2 }}>
-            <SelectedFeat
-              key={selectFeat.name}
-              feat={selectedFeat}
-              onClear={clearSelectedFeat}
-            />
-          </div>
+        {feats?.map(
+          (f, index) =>
+            f && (
+              <div key={index}>
+                <p onClick={() => selectFeat(f)}>{f.name}</p>
+                {f.prer && <ListOfBonusMap key={index} prerequisite={f.prer} />}
+              </div>
+            )
         )}
       </div>
-    </>
+      {selectedFeat && (
+        <div style={{ gridColumn: 2 }}>
+          <SelectedFeat
+            key={selectFeat.name}
+            feat={selectedFeat}
+            onClear={clearSelectedFeat}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -204,19 +207,19 @@ export const SelectedFeat: React.FC<SelectedFeatProps> = ({
       {feat.name && <h4 onClick={selectOut}>{feat.name}</h4>}
       {feat.description?.benefit ? (
         <p>
-          <span style={{ color: "yellow"}}>benefit: </span>
+          <span style={{ color: "yellow" }}>benefit: </span>
           <span>{feat.description.benefit}</span>
         </p>
       ) : null}
       {feat.description?.normal ? (
         <p>
-          <span style={{ color: "yellow"}}>normal: </span>
+          <span style={{ color: "yellow" }}>normal: </span>
           <span>{feat.description.normal}</span>
         </p>
       ) : null}
       {feat.description?.special ? (
         <p>
-          <span style={{ color: "yellow"}}>special: </span>
+          <span style={{ color: "yellow" }}>special: </span>
           <span>{feat.description.special}</span>
         </p>
       ) : null}
@@ -251,7 +254,7 @@ export const ListOfBonusMap: React.FC<ListOfBonusProps> = (prerequisite) => {
                   {s.target?.join(", ")}
                 </li>
               ))}
-              {p.feats?.map(fe => (
+              {p.feats?.map((fe) => (
                 <li>{fe.featName}</li>
               ))}
             </div>

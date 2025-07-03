@@ -18,9 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.entity.ClassFeats;
 import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.repository.ClassFeatsRepository;
 import pl.kolendateam.dadcard.feats.repository.FeatsPcRepository;
 import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
 import pl.kolendateam.dadcard.feats.repository.PrerequisiteRepository;
@@ -37,18 +40,21 @@ public class FeatsController {
   CharacterRepository characterRepository;
   PrerequisiteRepository prerequisiteRepository;
   FeatsPcRepository featsPcRepository;
+  ClassFeatsRepository classFeatsRepository;
 
   @Autowired
   public FeatsController(
     FeatsRepository featsRepository,
     PrerequisiteRepository prerequisiteRepository,
     CharacterRepository characterRepository,
-    FeatsPcRepository featsPcRepository
+    FeatsPcRepository featsPcRepository,
+    ClassFeatsRepository classFeatsRepository
   ) {
     this.featsRepository = featsRepository;
     this.prerequisiteRepository = prerequisiteRepository;
     this.characterRepository = characterRepository;
     this.featsPcRepository = featsPcRepository;
+    this.classFeatsRepository = classFeatsRepository;
   }
 
   @GetMapping("")
@@ -56,6 +62,13 @@ public class FeatsController {
     List<Feats> featsList = this.featsRepository.findAll();
 
     return MapperFeats.toFeatsDTO(featsList);
+  }
+
+  @GetMapping("classFeatsList")
+  public List<ClassFeatsDTO> showFeatsClassList() {
+    List<ClassFeats> featsList = this.classFeatsRepository.findAll();
+
+    return MapperFeats.toClassFeatsDTO(featsList);
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
