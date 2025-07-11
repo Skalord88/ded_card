@@ -110,11 +110,9 @@ export const findSavingThrowPrerequisite = (
   prerList: Prerequisite[]
 ): SavingThrow[] => {
   let onlySavingThrow: SavingThrow[] = [];
-
   prerList.forEach((prer) => {
     prer.savingThrow && onlySavingThrow.push(prer.savingThrow);
   });
-
   return onlySavingThrow;
 };
 

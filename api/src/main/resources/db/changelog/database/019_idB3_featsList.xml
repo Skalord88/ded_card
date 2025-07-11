@@ -1793,7 +1793,12 @@
       <column name="attack_roll"
         value="{
         &quot;bonus&quot; : 1,
-        &quot;target&quot;: [&quot;SHORT_RANGE&quot;]
+        &quot;target&quot;: [&quot;RANGED&quot; , &quot;THROWN&quot;]
+      }" />
+      <column name="damage_bonus"
+        value="{
+        &quot;bonus&quot; : 1,
+        &quot;target&quot;: [&quot;RANGED&quot; , &quot;THROWN&quot;]
       }" />
       <column name="text" value="+1 attack roll and damage within 9m" />
     </insert>

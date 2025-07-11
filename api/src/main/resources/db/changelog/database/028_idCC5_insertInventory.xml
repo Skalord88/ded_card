@@ -27,6 +27,15 @@
             <column name="weapon_id_three" value="2007" />
             <column name="weapon_id_four" value="2002" />
             <column name="weapon_id_five" value="2000" />
+            <column name="head_id" value="6055" />
+            <column name="neck_id" value="6009" />
+            <column name="arms_id" value="6044" />
+            <column name="ring_one_id" value="1015" />
+            <column name="ring_two_id" value="1017" />
+            <column name="cloth_id" value="6064" />
+            <column name="cloak_id" value="6077" />
+            <column name="belt_id" value="6027" />
+            <column name="legs_id" value="6031" />
             <column name="version" value="1" />
         </insert>
         <!-- Niesia -->

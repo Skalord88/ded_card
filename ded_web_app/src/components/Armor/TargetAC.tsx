@@ -9,18 +9,14 @@ export type TargetACProps = {
 
 export const TargetAC: React.FC<TargetACProps> = ({ target, composed }) => {
   return (
-    <>
       <div className="rpgui-container-framed-grey">
         {target.map((t, index) => (
           <ShowTargetAC armor={t} key={index} />
         ))}
         {composed.map((c, index) => (
-          <>
           <ShowComposedAC armor={c} key={index} />
-          </>
         ))}
       </div>
-    </>
   );
 };
 

@@ -70,7 +70,7 @@
         <!-- Diligent 1009 -->
         <!-- Great Fortitude 1010 -->
         <!-- Improved Initiative 1011 -->
-        
+
         <!-- Greater Weapon Focus 1023 -->
         <!-- Greater Weapon Specialization 1022 -->
         <!-- Investigator 1012 -->
@@ -92,8 +92,7 @@
         <!-- Improved Shield Bash 2006 -->
         <!-- Martial Weapon Proficiency 2007 -->
         <!-- Simple Weapon Proficiency 2005 -->
-        
-        
+
 
         <!-- class_feats -->
 
@@ -128,10 +127,14 @@
         <!-- Simple Weapon Proficiency 5006 -->
         <!-- Martial Weapon Proficiency 5007 -->
 
-        <!-- Pg gia' fatti 10000-->
+        <!-- Pg gia' fatti 100.000-->
         <!-- Puli -->
 
         <!-- Rysio -->
+        selected_id 110101
+        selected_id 110102
+        selected_id 110103
+        selected_id 110104
 
         <!-- Michał -->
 

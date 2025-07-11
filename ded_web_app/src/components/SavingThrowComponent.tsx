@@ -19,12 +19,27 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
   const constitutionMod: number = BonusAbilities(char.abilitys, "COS");
   const wisdomMod: number = BonusAbilities(char.abilitys, "WIS");
 
+  const baseSaveBonus = char.savingThrow.reduce(
+    (totSt, sT) =>
+      totSt +
+      sT.resistance.reduce(
+        (totRes, res) =>
+          totRes +
+          (res.type === "SAVING" && res.target === null
+            ? Number(res.bonus)
+            : 0),
+        0
+      ),
+    0
+  );
+
   const fortitude: AllModifiersInThrow = {
     tot: {
       value: signAndCount([
         char.baseSave.fortitude,
         char.adjBonus.savingThrow,
-        constitutionMod
+        constitutionMod,
+        baseSaveBonus
       ]),
       mod: "fortitude"
     },
@@ -39,6 +54,10 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
       {
         value: signAndCount([constitutionMod]),
         mod: "cos"
+      },
+      {
+        value: signAndCount([baseSaveBonus]),
+        mod: "bonus"
       }
     ]
   };
@@ -47,7 +66,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
       value: signAndCount([
         char.baseSave.reflex,
         char.adjBonus.savingThrow,
-        dexterityMod
+        dexterityMod,
+        baseSaveBonus
       ]),
       mod: "reflex"
     },
@@ -56,7 +76,11 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         value: signAndCount([char.baseSave.reflex, char.adjBonus.savingThrow]),
         mod: "base"
       },
-      { value: signAndCount([dexterityMod]), mod: "dex" }
+      { value: signAndCount([dexterityMod]), mod: "dex" },
+      {
+        value: signAndCount([baseSaveBonus]),
+        mod: "bonus"
+      }
     ]
   };
   const will: AllModifiersInThrow = {
@@ -64,7 +88,8 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
       value: signAndCount([
         char.baseSave.will,
         char.adjBonus.savingThrow,
-        wisdomMod
+        wisdomMod,
+        baseSaveBonus
       ]),
       mod: "will"
     },
@@ -73,7 +98,11 @@ export const SavingThrowComponent: React.FC<SavingThrowComponentProps> = ({
         value: signAndCount([char.baseSave.will, char.adjBonus.savingThrow]),
         mod: "base"
       },
-      { value: signAndCount([wisdomMod]), mod: "wis" }
+      { value: signAndCount([wisdomMod]), mod: "wis" },
+      {
+        value: signAndCount([baseSaveBonus]),
+        mod: "bonus"
+      }
     ]
   };
   const modResistance: Resistance[] = char.savingThrow.flatMap(

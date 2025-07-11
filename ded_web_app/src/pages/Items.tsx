@@ -1,14 +1,12 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
 import {
   Armor,
   CharacterPc,
-  Enchantment,
-  Inventory,
-  Item,
+  Enchantment, Item,
   ItemsList,
   Shield,
   Weapon,
@@ -32,7 +30,6 @@ import {
   notEmptyInventory,
   specificFilter
 } from "../components/Items/Inventory/function";
-import { CharSummary } from "../components/Summary/CharSummary";
 import {
   urlChar,
   urlEnchanted,
@@ -41,10 +38,7 @@ import {
   urlItemsBuy
 } from "../components/url";
 import {
-  noneArmor,
-  noneItem,
-  noneShield,
-  noneWeapon
+  noneItem
 } from "../components/variables";
 import { PageLayout } from "./AppLayout";
 import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";

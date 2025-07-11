@@ -157,52 +157,55 @@ export type AllModifiersInDiceProps = {
 export const AllModifiersInDice20: React.FC<AllModifiersInDiceProps> = ({
   list
 }) => {
+  const areas = ["text", "value", ...list.map((_, i) => `mod${i}`)].join(" ");
+
   return (
-    <>
+    <div>
       {list.map(
         (mod, index) =>
           mod && (
             <div
               className={mod.color}
               style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "space-between"
+                display: "grid",
+                gridTemplateAreas: `"${areas}"`,
+                gridTemplateColumns: "repeat(8, auto)"
+                // justifyItems: "start",
               }}
               key={mod.id}
             >
-              <div key={index} style={{ flex: 1 }}>
-                <p>
-                  <D20Popup
-                    key={index}
-                    textOrWeapon={mod.dice.textOrWeapon}
-                    value={Math.floor(mod.dice.value)}
-                    modifiers={mod.dice.modifiers}
-                  />
-                </p>
-              </div>
-              <div style={{ flex: 1 }}>
-                <p style={{ color: "orange" }}>
-                  {mod.allMod.tot.value.sign}
-                  {Math.floor(mod.allMod.tot.value.number)}{" "}
-                </p>
-              </div>
+              {/* <div key={index} style={{ flex: 1 }}> */}
+              <p style={{ gridArea: "text" }}>
+                <D20Popup
+                  key={index}
+                  textOrWeapon={mod.dice.textOrWeapon}
+                  value={Math.floor(mod.dice.value)}
+                  modifiers={mod.dice.modifiers}
+                />
+              </p>
+              {/* </div>
+              <div style={{ flex: 1 }}> */}
+              <p style={{ color: "orange", gridArea: "value" }}>
+                {mod.allMod.tot.value.sign}
+                {Math.floor(mod.allMod.tot.value.number)}{" "}
+              </p>
+              {/* </div> */}
 
-              {mod.allMod.allMod.map((modif, index) =>
+              {mod.allMod.allMod.map((modif, i) =>
                 modif.value.number > 0 ? (
-                  <div key={index} style={{ flex: 1 }}>
-                    <p style={{}}>
-                      {modif.value.sign}
-                      {Math.floor(modif.value.number)}
-                      {modif.mod}
-                    </p>
-                  </div>
-                ) : null
+                  // <div key={index} style={{ flex: 1 }}>
+                  <p style={{ gridArea: `mod${i}` }}>
+                    {modif.value.sign}
+                    {Math.floor(modif.value.number)}
+                    {modif.mod}
+                  </p>
+                ) : // </div>
+                null
               )}
             </div>
           )
       )}
-    </>
+    </div>
   );
 };
 export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
@@ -232,19 +235,18 @@ export const AllModifiersInDice12: React.FC<AllModifiersInDiceProps> = ({
                   {mod.allMod.tot.value.sign}
                   {mod.allMod.tot.value.number}{" "}
                 </p>
-                </div>
-                {mod.allMod.allMod.map((modif, index) =>
-                  modif.value.number > 0 ? (
-                    <div key={index} style={{ flex: 1 }}>
-                      <p style={{}}>
-                        {modif.value.sign}
-                        {Math.floor(modif.value.number)}
-                        {modif.mod}
-                      </p>
-                    </div>
-                  ) : null
-                )}
-              
+              </div>
+              {mod.allMod.allMod.map((modif, index) =>
+                modif.value.number > 0 ? (
+                  <div key={index} style={{ flex: 1 }}>
+                    <p style={{}}>
+                      {modif.value.sign}
+                      {Math.floor(modif.value.number)}
+                      {modif.mod}
+                    </p>
+                  </div>
+                ) : null
+              )}
             </div>
           )
       )}

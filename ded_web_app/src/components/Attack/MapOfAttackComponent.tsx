@@ -14,7 +14,7 @@ export const MapOfAttackComponent: React.FC<MapOfAttackComponentProps> = ({
 }) => {
   const buckler: boolean = char.inventory.shield.itemId === 95;
   return char.displayAttType ? (
-    <AttackGrid attack={char.displayAttType} buckler={buckler} />
+    <AttackGrid key={"attacks"} attack={char.displayAttType} buckler={buckler} />
   ) : (
     <p>...loading...</p>
   );
@@ -76,6 +76,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                       <div key={index} className={styleDiv(dis.type)}>
                         <p>
                           <D20PopupWeapon
+                          key={dis.type + "." + weapon.stat.weapon.name}
                             type={dis.type}
                             weapon={weapon.stat.weapon}
                             bab={dis.att}
@@ -134,6 +135,7 @@ export const AttackGrid: React.FC<AttackGridProps> = ({ attack, buckler }) => {
                       <div className={styleDiv(dis.type)}>
 
                           <D20PopupWeapon
+                            key={dis.type + "." + weapon.stat.weapon.name}
                             type={dis.type}
                             weapon={weapon.stat.weapon}
                             bab={dis.att}

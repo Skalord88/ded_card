@@ -16,6 +16,7 @@ import "../css/style.css";
 import { PageLayout } from "./AppLayout";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { StudyInList } from "../components/Skills/interface/StudysInList";
+import { calculateTotRanks } from "../components/Skills/functions/function";
 
 export type SkillToAdd = {
   idSkill: number;
@@ -50,7 +51,7 @@ export function Skills() {
         setModChar(moddedChar);
         setSkillsList(moddedChar.skillsList);
 
-        setMaxSkillsPoints(moddedChar.skillsPointToSpent);
+        setMaxSkillsPoints(moddedChar.skillsPointToSpent - calculateTotRanks(moddedChar.skillsList));
         setMaxRankToUse(moddedChar.adjBonus.adjLv + moddedChar.classesLv + 3);
       } catch (error) {
         console.log(error);
@@ -80,19 +81,16 @@ export function Skills() {
           : []
       );
       setSkillsToAdd(skillToSend);
+      
     }
   }, [skillsList]);
 
   useEffect(() => {
     if (skillsList) {
-      const totRanks: number = skillsList.reduce(
-        (tot, s) =>
-          tot +
-          (s.classSkill ? s.rank : s.rank * 2) +
-          (s.study?.reduce((stTot, st) => stTot + st.rank, 0) ?? 0),
-        0
-      );
+      const totRanks: number = calculateTotRanks(skillsList)
       setSpentSkillsPnt(totRanks);
+      // const balanceSpentToSpend: number = maxSkillsPoints - totRanks;
+      // setMaxSkillsPoints(balanceSpentToSpend)
     }
   }, [skillsList]);
 
@@ -263,6 +261,7 @@ export function Skills() {
               index={index}
               skill={skill}
               ability={modChar.abilitys}
+              armorPenality={modChar.inventory?.armor?.penality + modChar.inventory?.shield?.penality}
               onActionAdd={handleAddSkill}
               onActionDel={handleDelSkill}
             />
@@ -284,6 +283,7 @@ export type SkillStudyElementProps = {
   skill?: SkillsInList;
   study?: StudyInList;
   ability: Abilitys;
+  armorPenality?: number;
   onActionAdd: (skill?: SkillsInList, study?: StudyInList) => void;
   onActionDel: (skill?: SkillsInList, study?: StudyInList) => void;
 };
@@ -293,6 +293,7 @@ export const SkillStudyElement: React.FC<SkillStudyElementProps> = ({
   skill,
   study,
   ability,
+  armorPenality,
   onActionAdd,
   onActionDel
 }) => {
@@ -316,7 +317,7 @@ export const SkillStudyElement: React.FC<SkillStudyElementProps> = ({
     (skill?.rank ?? 0) +
       (skill?.bonus ?? 0) +
       (study?.rank ?? 0) +
-      skillAbilityNumber
+      skillAbilityNumber - (skill?.skill.penality ?? 0 * (armorPenality ?? 0))
   );
   const signTot: string = SignNumber(tot) + tot;
 
@@ -324,13 +325,17 @@ export const SkillStudyElement: React.FC<SkillStudyElementProps> = ({
     ? [undefined, study]
     : [skill, undefined];
 
+  const penalityText: string = skill?.skill.penality
+    ? "penality -" + (skill?.skill.penality ?? 0 * (armorPenality ?? 0)) : "";
+
   const skillText: (string | null)[] = [
     FormattingText(skillName),
     "rank" + SignNumber(skillRank) + skillRank,
     skillBonus > 0 ? SignNumber(skillBonus) + skillBonus : null,
     abilityAbbreviation(skillAbility) +
       SignNumber(skillAbilityNumber) +
-      skillAbilityNumber
+      skillAbilityNumber,
+      penalityText
   ];
 
   return (

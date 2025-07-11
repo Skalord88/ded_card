@@ -3796,6 +3796,7 @@ Moderate illusion; CL 7th; Craft Wondrous Item, Extend Spell, displacement; Pric
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="145" />
             <column name="description">
         <![CDATA[
 This cloak of neutral gray cloth is indistinguishable from an ordinary cloak of the same color. However, when worn with the hood drawn up around the head, it gives the wearer a +5 competence bonus on Hide checks.
@@ -3843,6 +3844,7 @@ Moderate transmutation; CL 9th; Craft Wondrous Item, polymorph, water breathing;
             <column name="cost" value="1000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="20001" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3858,6 +3860,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="cost" value="4000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="20002" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3873,6 +3876,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="cost" value="9000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="20003" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3888,6 +3892,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="20004" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).
@@ -3903,6 +3908,7 @@ Faint abjuration; CL 5th; Craft Wondrous Item, resistance, creator’s caster le
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
+            <column name="modifiers_id" value="20005" />
             <column name="description">
         <![CDATA[
 These garments offer magic protection in the form of a +1 to +5 resistance bonus on all saving throws (Fortitude, Reflex, and Will).

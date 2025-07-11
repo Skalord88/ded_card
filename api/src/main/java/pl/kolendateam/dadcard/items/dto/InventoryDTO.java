@@ -121,17 +121,16 @@ public class InventoryDTO implements Serializable {
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getRingTwo())
         : null;
 
-    // this.hands =
-    //   inventory.getHands() != null
-    //     ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getHands())
-    //     : new ArrayList<WondrousItemsDTO>();
-
     this.cloth =
       inventory.getCloth() != null &&
         inventory.getCloth() instanceof WondrousItems
         ? MapperItemsDTO.toWondrousItemsDTO(inventory.getCloth())
         : null;
 
+    System.out.println("InventoryDTO.getCloak: " + inventory.getCloak());
+    System.out.println(
+      "isWondrousItems? " + (inventory.getCloak() instanceof WondrousItems)
+    );
     this.cloak =
       inventory.getCloth() != null &&
         inventory.getCloak() instanceof WondrousItems

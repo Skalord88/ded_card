@@ -13,6 +13,7 @@ import jakarta.persistence.OneToOne;
 import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.Items;
@@ -51,5 +52,26 @@ public class WondrousItems extends Items {
 
   public WondrousItems(int idZero) {
     super(idZero);
+  }
+
+  @Override
+  public String toString() {
+    return (
+      "id=" +
+      getId() +
+      ", getType()=" +
+      getItemType() +
+      ", WondrousItems [wondrousType=" +
+      wondrousType +
+      ", spells=" +
+      spells +
+      ", modifiers=" +
+      modifiers +
+      ", getCost()=" +
+      getCost() +
+      ", getName()=" +
+      getName() +
+      "]"
+    );
   }
 }

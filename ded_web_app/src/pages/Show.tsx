@@ -23,7 +23,6 @@ import { SpecialAbilitiesComponent } from "../components/SpecialAbilities/Specia
 import { SpeedComponent } from "../components/SpeedComponent";
 import { urlChar } from "../components/url";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
-import { SkillsInList } from "../components/Skills/interface/SkillsInList";
 import { PageLayoutBody } from "./AppLayout";
 
 export const Show = () => {

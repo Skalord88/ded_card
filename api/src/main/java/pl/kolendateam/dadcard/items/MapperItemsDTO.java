@@ -43,7 +43,7 @@ public class MapperItemsDTO {
 
   public static WondrousItemsDTO toWondrousItemsDTO(WondrousItems item) {
     if (item == null) return new WondrousItemsDTO();
-    return new WondrousItemsDTO(item);
+    return new WondrousItemsDTO((WondrousItems) item);
   }
 
   public static InventoryDTO toInventoryDTO(Inventory inventory) {

@@ -4,6 +4,7 @@ export type ArmorList = {
   signNum: SignAndNumber;
   text: string;
   item: string;
+  icon?: string;
 }[];
 
 export type ArmorModifiers = {

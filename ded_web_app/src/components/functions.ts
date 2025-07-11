@@ -30,7 +30,6 @@ export function SignNumberEnchant(
 export const signAndCount = (
     numbers: number[]
 ): SignAndNumber => {
-
     const num: number = numbers.reduce(
         (total, n) => total + n,
         0

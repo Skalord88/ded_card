@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
 
 @NoArgsConstructor

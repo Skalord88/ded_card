@@ -68,25 +68,26 @@ export const AbilitysComponent: React.FC<AbilitysProps> = ({ abilitys }) => {
   const ab = abilitysForComponent(abilitys);
 
   return (
-    <>
+    <div>
       <h2 className="rpgui-container-framed golden-2">Abilities</h2>
       {ab.map((ability) => (
-        <div key={ability.id} style={{ display: "flex" }}>
-          <div className={ability.color} style={{ flex: 1 }}>
-            <p>{ability.text}</p>
-          </div>
-          <div className={ability.color} style={{ flex: 1 }}>
-            <p>{ability.value}</p>
-          </div>
-          <div className={ability.color} style={{ flex: 1 }}>
-            <p>
-              {ability.bonusSing}
-              {ability.bonus}
-            </p>
-          </div>
+        <div
+          className={ability.color}
+          key={ability.id}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr"
+          }}
+        >
+          <p>{ability.text}</p>
+          <p style={{color: "orange"}}>{ability.value}</p>
+          <p>
+            {ability.bonusSing}
+            {ability.bonus}
+          </p>
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

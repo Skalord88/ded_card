@@ -1,3 +1,4 @@
+import exp from "constants";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { CharacterPc } from "../../interfaces";
 import { SkillsInList } from "../interface/SkillsInList";
@@ -60,3 +61,17 @@ export function SkillPointsFromClass(classList: ClassPc[]): number {
     0
   );
 }
+
+export const calculateTotRanks = (skillList: SkillsInList[]): number => {
+  if (skillList) {
+    const totRanks: number = skillList.reduce(
+      (tot, s) =>
+        tot +
+        (s.classSkill ? s.rank : s.rank * 2) +
+        (s.study?.reduce((stTot, st) => stTot + st.rank, 0) ?? 0),
+      0
+    );
+    return totRanks;
+  }
+  return 0;
+};

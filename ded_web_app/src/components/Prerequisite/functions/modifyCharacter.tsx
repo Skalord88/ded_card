@@ -9,7 +9,6 @@ import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { AttackElement } from "../../Attack/function";
-import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
@@ -23,7 +22,6 @@ import {
 } from "../../interfaces";
 import { findAllProficency } from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
-import { CountLevelFromClass } from "../../Level/Functions";
 import { adjClass } from "../../Race/AdjClass";
 import { FindAllAdjLevel } from "../../Race/Function";
 import { SpecialAbilities } from "../../Race/Interfaces";

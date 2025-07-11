@@ -25,7 +25,7 @@ export const Initiative: React.FC<InitiativeProps> = ({ char }) => {
     list: [
       {
         id: 1,
-        color: abilityBackgroundColor("DEXTERITY"),
+        color: abilityBackgroundColor(false, "DEXTERITY"),
         dice: {
           textOrWeapon: initiative.tot.mod,
           value: initiative.tot.value.number,

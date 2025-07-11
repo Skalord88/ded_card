@@ -209,6 +209,7 @@ public enum ModifierEnum {
   SIMPLE,
   MARTIAL,
   EXOTIC,
+  RANGED,
 
   GAUNTLET,
   UNARMED_STRIKE,
