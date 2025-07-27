@@ -7,9 +7,11 @@ public class DamageBonusDTO {
 
   public Integer bonus;
   public ModifierEnum[] target;
+  public ModifierEnum[] type;
 
   public DamageBonusDTO(DamageBonus dmg) {
     this.bonus = dmg.getBonus();
     this.target = dmg.getTarget() != null ? dmg.getTarget() : null;
+    this.type = dmg.getType() != null ? dmg.getType() : null;
   }
 }

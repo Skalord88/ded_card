@@ -470,36 +470,78 @@
 
 
         <!-- skills id:20.200 -->
+         <!-- climb +5  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20201" />
+        </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20201" />
             <column name="prerequisite_skill_id" value="45" />
-            <!-- climb +5  -->
+        </insert>
+        <!-- climb +5  -->
+        <!-- climb +10  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20202" />
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20202" />
             <column name="prerequisite_skill_id" value="410" />
-            <!-- climb +10  -->
+        </insert>
+        <!-- climb +10  -->
+         <!-- swim +5  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20203" />
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20203" />
             <column name="prerequisite_skill_id" value="305" />
-            <!-- swim +5  -->
+        </insert>
+        <!-- swim +5  -->
+         <!-- swim +10  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20204" />
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20204" />
             <column name="prerequisite_skill_id" value="3010" />
-            <!-- swim +10  -->
+        </insert>
+        <!-- swim +10  -->
+        <!-- Move Silently +5  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20205" />
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20205" />
             <column name="prerequisite_skill_id" value="195" />
-            <!-- Move Silently +5  -->
+        </insert>
+        <!-- Move Silently +5  -->
+        <!-- Move Silently +10  -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20206" />
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="20206" />
             <column name="prerequisite_skill_id" value="1910" />
-            <!-- Move Silently +10  -->
         </insert>
+        <!-- Move Silently +10  -->
+        <!-- Hide +5 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20207" />
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20207" />
+            <column name="prerequisite_skill_id" value="145" />
+        </insert>
+        <!-- Hide +5 -->
+        <!-- Hide +10 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="20208" />
+        </insert>
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="20208" />
+            <column name="prerequisite_skill_id" value="1410" />
+        </insert>
+        <!-- Hide +10 -->
 
         <!-- skills id:20.300 characteristic -->
 
@@ -1067,6 +1109,9 @@
             <column name="prerequisite_id" value="60001" />
             <column name="prerequisite_skill_id" value="202" />
         </insert>
+
+        <!-- prerequisite id:70.000 special_abilities -->
+         <!-- 70001 Stormlord Electricity Resistance -->
 
         <!-- Size id:90.000 -->
         <!-- FINE -->

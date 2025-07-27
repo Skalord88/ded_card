@@ -29,9 +29,6 @@
       <column name="skill_points" type="TINYINT">
         <constraints nullable="true" />
       </column>
-      <column name="class_feats_map" type="varchar(10000)">
-        <constraints nullable="true" />
-      </column>
       <column name="spells_per_day_id" type="int">
         <constraints nullable="true" />
       </column>
@@ -48,5 +45,6 @@
         <constraints nullable="true" />
       </column>
     </createTable>
+
   </changeSet>
 </databaseChangeLog>

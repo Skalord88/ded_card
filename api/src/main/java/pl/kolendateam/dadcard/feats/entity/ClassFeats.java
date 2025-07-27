@@ -31,18 +31,29 @@ public class ClassFeats implements Serializable {
   int level;
 
   @ManyToOne
-  @JoinColumn(name = "class_character_id")
+  @JoinColumn(
+    name = "class_character_id",
+    foreignKey = @jakarta.persistence.ForeignKey(
+      name = "fk_class_feats_class_character"
+    )
+  )
   ClassCharacter classCharacter;
 
   @ManyToOne(cascade = { CascadeType.MERGE, CascadeType.REFRESH })
-  @JoinColumn(name = "feats_id")
+  @JoinColumn(
+    name = "feats_id",
+    foreignKey = @jakarta.persistence.ForeignKey(name = "fk_class_feats_feats")
+  )
   Feats feats;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(
     name = "selected_id",
     referencedColumnName = "id",
-    nullable = true
+    nullable = true,
+    foreignKey = @jakarta.persistence.ForeignKey(
+      name = "fk_class_feats_selected"
+    )
   )
   Prerequisite selected;
 
@@ -50,7 +61,10 @@ public class ClassFeats implements Serializable {
   @JoinColumn(
     name = "to_select_id",
     referencedColumnName = "id",
-    nullable = true
+    nullable = true,
+    foreignKey = @jakarta.persistence.ForeignKey(
+      name = "fk_class_feats_to_select"
+    )
   )
   Prerequisite toSelect;
 

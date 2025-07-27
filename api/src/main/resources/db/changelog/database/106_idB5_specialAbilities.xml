@@ -598,6 +598,7 @@
         </insert>
 
         <!-- Half-Fiend -->
+         <!-- Damage reduction: 5/magic (if HD 11 or less) -->
         <insert tableName="special_abilities">
             <column name="id" value="1251" />
             <column name="special_type" value="3" />
@@ -607,6 +608,7 @@
             <column name="prerequisite_hd" value="-11" />
             <column name="value_text" value="Magic" />
         </insert>
+        <!-- or 10/magic (if HD 12 or more) -->
         <insert tableName="special_abilities">
             <column name="id" value="1252" />
             <column name="special_type" value="3" />

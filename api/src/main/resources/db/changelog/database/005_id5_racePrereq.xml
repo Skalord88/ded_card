@@ -1,26 +1,25 @@
 <databaseChangeLog
-        xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
-         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="5" author="oscar">
-      <createTable tableName="race">
-        <column name="id" type="int" autoIncrement="true">
-          <constraints primaryKey="true"/>
-        </column>
-        <column name="race_name" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-        <column name="modifiers_id" type="bigint" >
-          <constraints nullable="true"/>
-        </column>
-        <column name="avatar_url" type="varchar(255)">
-          <constraints nullable="true"/>
-        </column>
-      </createTable>
+    <createTable tableName="race">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="race_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="modifiers_id" type="bigint">
+        <constraints nullable="true" />
+      </column>
+      <column name="avatar_url" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
 
-      <createTable tableName="prerequisite">
+    <createTable tableName="prerequisite">
       <column name="id" type="bigint" autoIncrement="true">
         <constraints primaryKey="true" />
       </column>
@@ -74,6 +73,11 @@
       </column>
     </createTable>
 
+    <createTable tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" type="bigint" />
+      <column name="special_abilities_id" type="int" />
+    </createTable>
+
     <createTable tableName="prerequisite_feat">
       <column name="prerequisite_id" type="bigint" />
       <column name="feat_id" type="int" />
@@ -113,5 +117,6 @@
       </column>
     </createTable>
     <!-- prerequisite_skill -->
+
   </changeSet>
 </databaseChangeLog>

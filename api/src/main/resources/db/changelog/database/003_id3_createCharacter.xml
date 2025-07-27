@@ -21,9 +21,6 @@
       <column name="sub_race_id" type="int">
         <constraints nullable="true" />
       </column>
-      <!-- <column name="class_skills" type="jsonb">
-        <constraints nullable="true" />
-      </column> -->
       <column name="special_attacks" type="jsonb">
         <constraints nullable="true" />
       </column>
@@ -33,9 +30,6 @@
       <column name="attacks_id" type="int">
         <constraints nullable="true" />
       </column>
-      <!-- <column name="books" type="jsonb">
-        <constraints nullable="true" />
-      </column> -->
       <column name="experience" type="int">
         <constraints nullable="true" />
       </column>

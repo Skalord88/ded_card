@@ -14,10 +14,9 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +32,6 @@ import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
 import pl.kolendateam.dadcard.attack.entity.AttackRoll;
 import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
-import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
@@ -44,6 +42,8 @@ import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 import pl.kolendateam.dadcard.race.entity.Speed;
 import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.entity.SavingThrow;
@@ -142,6 +142,14 @@ public class Prerequisite implements Serializable {
   @JoinColumn(name = "domain_id", referencedColumnName = "id")
   Domains domain;
 
+  @ManyToMany
+  @JoinTable(
+    name = "prerequisite_special_abilities",
+    joinColumns = @JoinColumn(name = "prerequisite_id"),
+    inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
+  )
+  Set<SpecialAbilities> specialAbilities = new HashSet<>();
+
   String text;
 
   public Prerequisite(
@@ -205,6 +213,10 @@ public class Prerequisite implements Serializable {
         ? MapperItems.toItemsListFromDTOList(preDTO.items)
         : null;
     this.domain = preDTO != null ? preDTO.domain : null;
+    this.specialAbilities =
+      preDTO.specialAbilities != null
+        ? MapperSpecialAbilities.toSpecialAbilitiesSet(preDTO.specialAbilities)
+        : null;
     this.text = preDTO.text != null ? preDTO.text : null;
   }
 

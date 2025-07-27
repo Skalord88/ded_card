@@ -6,8 +6,8 @@
     <changeSet id="19" author="oscar">
         <createTable tableName="class_feats">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true"/>
-              </column>
+                <constraints primaryKey="true" />
+            </column>
             <column name="level" type="int">
                 <constraints nullable="true" />
             </column>

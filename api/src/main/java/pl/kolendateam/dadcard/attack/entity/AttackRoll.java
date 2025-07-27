@@ -17,14 +17,18 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 public class AttackRoll implements Serializable {
 
   @JdbcTypeCode(SqlTypes.JSON)
-  ModifierEnum[] target;
+  ModifierEnum[] target; // if null, bonus to all attacks, if not null, bonus to each target
 
-  Boolean improved;
+  Boolean improved; // true - migliora il bonus
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  ModifierEnum[] type; // ex. MELEE, DISTANCE, GRAPPLE, BULL_RUSH, DISARM, OVERRUN
 
   Integer bonus;
 
   public AttackRoll(AttackRollDTO attackDTO) {
     this.target = attackDTO.target != null ? attackDTO.target : null;
+    this.type = attackDTO.type != null ? attackDTO.type : null;
     this.improved = attackDTO.improved != null ? attackDTO.improved : null;
     this.bonus = attackDTO.bonus != null ? attackDTO.bonus : null;
   }

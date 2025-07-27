@@ -1484,7 +1484,7 @@
             <column name="shield_name" value="BUCKLER" />
             <column name="cost" value="15" />
             <column name="weight" value="5" />
-            <column name="modifiers_id" value="51001" />
+            <column name="modifiers_id" value="51002" />
             <column name="armor_type" value="SHIELD" />
             <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-1" />
@@ -1501,7 +1501,7 @@
             <column name="shield_name" value="SHIELD_LIGHT_WOODEN" />
             <column name="cost" value="3" />
             <column name="weight" value="5" />
-            <column name="modifiers_id" value="51001" />
+            <column name="modifiers_id" value="51002" />
             <column name="armor_type" value="SHIELD" />
             <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-1" />
@@ -1564,7 +1564,7 @@
             <column name="shield_name" value="SHIELD_HEAVY_STEEL" />
             <column name="cost" value="20" />
             <column name="weight" value="15" />
-            <column name="modifiers_id" value="51003" />
+            <column name="modifiers_id" value="51002" />
             <column name="armor_type" value="SHIELD" />
             <!-- <column name="max_dex" value="100" /> -->
             <column name="penality" value="-2" />
@@ -3796,7 +3796,7 @@ Moderate illusion; CL 7th; Craft Wondrous Item, Extend Spell, displacement; Pric
             <column name="cost" value="2500" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="CLOAK" />
-            <column name="modifiers_id" value="145" />
+            <column name="modifiers_id" value="20207" />
             <column name="description">
         <![CDATA[
 This cloak of neutral gray cloth is indistinguishable from an ordinary cloak of the same color. However, when worn with the hood drawn up around the head, it gives the wearer a +5 competence bonus on Hide checks.

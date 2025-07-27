@@ -19,10 +19,14 @@ public class DamageBonus implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
 
+  @JdbcTypeCode(SqlTypes.JSON)
+  ModifierEnum[] type; // ex. MELEE, DISTANCE, GRAPPLE, BULL_RUSH, DISARM, OVERRUN
+
   Integer bonus;
 
   public DamageBonus(DamageBonusDTO dmg) {
     this.bonus = dmg.bonus;
     this.target = dmg.target != null ? dmg.target : null;
+    this.type = dmg.type != null ? dmg.type : null;
   }
 }

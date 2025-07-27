@@ -51,5 +51,37 @@
             <column name="selected_id" value="110101" />
         </insert>
 
+        <insert tableName="feats_pc">
+            <column name="id" value="110106" />
+            <column name="character_card_id" value="101" />
+            <column name="class_feats_id" value="171" />
+            <column name="selected_id" value="110106" /> <!-- Two-Weapon Fighting -->
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="110106" />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="110106" />
+            <column name="feat_id" value="105" /> <!-- Two-Weapon Fighting -->
+        </insert>
+
+        <insert tableName="feats_pc">
+            <column name="id" value="110107" />
+            <column name="character_card_id" value="101" />
+            <column name="class_feats_id" value="176" />
+            <column name="selected_id" value="110107" /> <!-- Improved Two-Weapon Fighting -->
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="110107" />
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="110107" />
+            <column name="feat_id" value="58" /> <!-- Improved Two-Weapon Fighting -->
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

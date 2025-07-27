@@ -6,19 +6,19 @@
     <changeSet id="106" author="oscar">
         <createTable tableName="skills_character">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" />
+            <constraints primaryKey="true" />
             </column>
             <column name="character_card_id" type="int">
-                <constraints nullable="true" />
+            <constraints nullable="true" />
             </column>
             <column name="skill_id" type="int">
-                <constraints nullable="true" />
+            <constraints nullable="true" />
             </column>
             <column name="study_id" type="int">
-                <constraints nullable="true" />
+            <constraints nullable="true" />
             </column>
             <column name="rank" type="double">
-                <constraints nullable="true" />
+            <constraints nullable="true" />
             </column>
         </createTable>
 

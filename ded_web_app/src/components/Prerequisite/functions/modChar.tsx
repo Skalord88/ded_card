@@ -83,20 +83,23 @@ export const createModChar = (
     select: Prerequisite
   ): Prerequisite => {
     return {
-      attackRoll: modif.attackRoll? modif.attackRoll : undefined,
-      damageBonus: modif.damageBonus? modif.damageBonus : undefined,
-      items: select.items? select.items : undefined,
-      weaponType: modif.weaponType? modif.weaponType : undefined,
+      attackRoll: modif.attackRoll ? modif.attackRoll : undefined,
+      damageBonus: modif.damageBonus ? modif.damageBonus : undefined,
+      items: select.items ? select.items : undefined,
+      weaponType: modif.weaponType ? modif.weaponType : undefined
     };
   };
 
   // feats
   char.featsList.forEach((f) => {
-    if (f && f.feat && f.feat.modifiers && f.selected) { // il feat ha un selezionato, attivo sul modifier
+    if (f && f.feat && f.feat.modifiers && f.selected) {
+      // il feat ha un selezionato, attivo sul modifier
       modif.push(createModifierSelected(f.feat.modifiers, f.selected));
-    } else if (f && f.selected) { // il feat ha un selezionato
+    } else if (f && f.selected) {
+      // il feat ha un selezionato
       modif.push(f.selected);
-    } else if (f && f.feat && f.feat.modifiers) { // il feat ha un modifier
+    } else if (f && f.feat && f.feat.modifiers) {
+      // il feat ha un modifier
       modif.push(f.feat.modifiers);
     }
   });
@@ -112,19 +115,22 @@ export const createModChar = (
     }
   });
 
-  console.log("modif", modif);
+  // console.log("modif", modif);
 
   // items
-  
-    // modif.push(char.inventory.armor.modifiers);
-    // modif.push(char.inventory.shield.modifiers);
-    // modif.push(char.inventory.weaponOne.modifiers);
-    // modif.push(char.inventory.weaponTwo.modifiers);
-    // modif.push(char.inventory.weaponThree.modifiers);
-    // modif.push(char.inventory.weaponFour.modifiers);
-    // modif.push(char.inventory.weaponFive.modifiers);
-    char.inventory.cloak.modifiers && modif.push(char.inventory.cloak.modifiers);
-  
+
+  // modif.push(char.inventory.armor.modifiers);
+  // modif.push(char.inventory.shield.modifiers);
+  // modif.push(char.inventory.weaponOne.modifiers);
+  // modif.push(char.inventory.weaponTwo.modifiers);
+  // modif.push(char.inventory.weaponThree.modifiers);
+  // modif.push(char.inventory.weaponFour.modifiers);
+  // modif.push(char.inventory.weaponFive.modifiers);
+  if (char.inventory) {
+    char.inventory.cloak?.modifiers &&
+      modif.push(char.inventory.cloak.modifiers);
+  }
+
   // console.log("modif", modif);
   modChar = modifyCharacter(char, modif, items);
 

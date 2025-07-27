@@ -681,7 +681,7 @@
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="110014" />
-      <column name="feat_id" value="138" />
+      <column name="feat_id" value="3006" />
     </insert>
 
     <insert tableName="feats">
@@ -930,7 +930,7 @@
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="110021" />
-      <column name="feat_id" value="221" />
+      <column name="feat_id" value="3006" />
     </insert>
 
     <!-- Greater Weapon Focus [General] mod -->
@@ -1123,7 +1123,7 @@
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="110026" />
-      <column name="feat_id" value="208" />
+      <column name="feat_id" value="10001" />
     </insert>
 
     <insert tableName="feats">
@@ -1262,7 +1262,7 @@
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
       <!-- <column name="prerequisites"
         value="Dex 19, Point Blank Shot, Precise Shot, base attack bonus +11." /> -->
-      <column name="prerequisite_list_id" value="30" />
+      <column name="prerequisite_list_id" value="110030" />
       <column name="benefit"
         value="Your ranged attacks ignore the AC bonus granted to targets by anything less than total cover, and the miss chance granted to targets by anything less than total concealment. Total cover and total concealment provide their normal benefits against your ranged attacks." />
       <column name="normal"
@@ -1693,7 +1693,7 @@
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="110040" />
-      <column name="feat_id" value="149" />
+      <column name="feat_id" value="4010" />
     </insert>
 
     <insert tableName="feats">
@@ -1793,12 +1793,12 @@
       <column name="attack_roll"
         value="{
         &quot;bonus&quot; : 1,
-        &quot;target&quot;: [&quot;RANGED&quot; , &quot;THROWN&quot;]
+        &quot;type&quot;: [&quot;RANGED&quot;]
       }" />
       <column name="damage_bonus"
         value="{
         &quot;bonus&quot; : 1,
-        &quot;target&quot;: [&quot;RANGED&quot; , &quot;THROWN&quot;]
+        &quot;type&quot;: [&quot;RANGED&quot;]
       }" />
       <column name="text" value="+1 attack roll and damage within 9m" />
     </insert>
@@ -2858,6 +2858,15 @@
 
     <!-- Druid 4000-->
     <insert tableName="feats">
+      <column name="id" value="4000" />
+      <column name="feat_name" value="Weapon Druid Proficency" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="Weapon Druid Proficency" />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+    </insert>
+    <insert tableName="feats">
       <column name="id" value="4001" />
       <column name="feat_name" value="Spontaneous Casting" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
@@ -3025,7 +3034,7 @@
           &quot;type&quot; : &quot;IMMUNITY&quot;
         }]
       }" />
-      <column name="text" value="+4 bonus on saving vs fey" />
+      <column name="text" value="immunity to poison" />
     </insert>
 
     <insert tableName="feats">
@@ -3613,6 +3622,7 @@
     </insert>
 
     <!-- Combat Style -->
+    <!-- to_select -->
     <insert tableName="prerequisite">
       <column name="id" value="4002" />
       <column name="text" value="select a combat style for ranger" />
@@ -3627,6 +3637,7 @@
       <column name="prerequisite_id" value="4002" />
       <column name="feat_id" value="105" />
     </insert>
+    <!-- to_select -->
 
     <insert tableName="feats">
       <column name="id" value="8004" />
@@ -4066,6 +4077,91 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
         }]" /> -->
     </insert>
 
+    <!-- Stormlord -->
+     <!-- mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="70001" />
+      <column name="text" value="Electricity Resistance" />
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="70001" />
+      <column name="special_abilities_id" value="180" />
+    </insert>
+    <!-- mod -->
+
+    <insert tableName="feats">
+      <column name="id" value="11701" />
+      <column name="feat_name" value="Resistance to Electricity (Ex)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="As a stormlord gains levels in this prestige class, he becomes increasingly resistant to electrical energy, gaining resistance to electricity in the amount given on the table. At 9th level, a stormlord gains immunity to electricity." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <column name="modifiers_id" value="70001" />
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11702" />
+      <column name="feat_name" value="Shock Weapon (Su)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="Any spear or javelin used by a stormlord of 2nd level or higher is treated as a shock weapon (dealing an extra 1d6 points of electricity damage). The weapon loses this ability 1 round after leaving the hand of the stormlord." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11703" />
+      <column name="feat_name" value="Storm Walk (Ex)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="Beginning at 3rd level, a stormlord (and his mount, if any) can walk or ride through storms (natural or magical) at his regular movement rate, completely unaffected by high winds (including gust of wind), pounding precipitation or waves, objects driven by the wind (which always seem to miss him), great claps of thunder, natural bolts of lightning, or any other natural symptom of Talos’s fury." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11704" />
+      <column name="feat_name" value="Thundering Weapon (Su)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="For a stormlord of 5th level or higher, any spear or javelin he uses is treated as a thundering weapon (see page 225 of the Dungeon Master’s Guide). The weapon loses this ability 1 round after leaving the hand of the stormlord. This effect stacks with that of the stormlord’s shock weapon ability." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11705" />
+      <column name="feat_name" value="Storm Ride (Sp)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="At 6th level, a stormlord gains the ability to fly during any storm as if using the fly spell. Adverse wind conditions do not affect him; for example, even hurricane-force winds cannot knock him down or blow him away when flying." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11706" />
+      <column name="feat_name" value="Shocking Burst Weapon (Su)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="For a stormlord of 8th level or higher, any spear or javelin he uses is treated as a shocking burst weapon. The weapon loses this ability 1 round after leaving the hand of the stormlord. This effect stacks with that of the stormlord’s thundering weapon ability." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <insert tableName="feats">
+      <column name="id" value="11707" />
+      <column name="feat_name" value="Storm of Elemental Fury (Sp)" />
+      <column name="feat_type" value="[&quot;CLASS&quot;]" />
+      <column name="benefit"
+        value="At 10th level, a stormlord can summon a storm of great magnitude and power. Once per day, a stormlord can use storm of elemental fury as if he were a 17th-level cleric." />
+      <column name="normal" value="null" />
+      <column name="special" value="null" />
+      <!-- <column name="modifiers_id" value="null" /> -->
+    </insert>
+    <!-- Stormlord -->
+
     <!-- Monster Feats 50000 pre 50000-->
 
     <insert tableName="feats">
@@ -4123,7 +4219,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="50002" />
-      <column name="feat_id" value="149" />
+      <column name="feat_id" value="4010" />
     </insert>
 
     <insert tableName="feats">
@@ -4144,12 +4240,12 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="50003" />
-      <column name="feat_id" value="221" />
+      <column name="feat_id" value="50001" />
     </insert>
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="50003" />
-      <column name="feat_id" value="138" />
+      <column name="feat_id" value="3006" />
     </insert>
 
     <insert tableName="feats">
@@ -4171,7 +4267,7 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
 
     <insert tableName="prerequisite_feat">
       <column name="prerequisite_id" value="50004" />
-      <column name="feat_id" value="138" />
+      <column name="feat_id" value="3006" />
     </insert>
 
     <insert tableName="feats">

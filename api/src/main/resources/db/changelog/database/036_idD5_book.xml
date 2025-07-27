@@ -17,9 +17,6 @@
             <column name="character_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <!-- <column name="spells_book_id" type="int">
-                <constraints nullable="true" />
-            </column> -->
         </createTable>
 
         <createTable tableName="spells_book">
@@ -30,5 +27,6 @@
                 <constraints nullable="true" />
             </column>
         </createTable>
+
     </changeSet>
 </databaseChangeLog>

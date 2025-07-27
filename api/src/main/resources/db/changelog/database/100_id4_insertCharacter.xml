@@ -21,9 +21,6 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="100" />
             <column name="attacks_id" value="100" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books_id" value="1000" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -35,24 +32,21 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 14,
-                &quot;dexterity&quot;: 18, 
-                &quot;constitution&quot;: 12, 
-                &quot;intelligence&quot;: 10, 
-                &quot;wisdom&quot;: 13, 
+                &quot;dexterity&quot;: 18,
+                &quot;constitution&quot;: 12,
+                &quot;intelligence&quot;: 10,
+                &quot;wisdom&quot;: 13,
                 &quot;charisma&quot;: 8
             }" />
             <column name="sub_race_id" value="302" />
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="101" />
             <column name="attacks_id" value="101" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
-        <!-- Niesia -->
-        <insert tableName="character_card">
+        <insert
+            tableName="character_card">
             <column name="id" value="102" />
             <column name="character_name" value="Anna Smok" />
             <column name="player_name" value="Niesia" />
@@ -69,9 +63,6 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="102" />
             <column name="attacks_id" value="102" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -93,9 +84,6 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="103" />
             <column name="attacks_id" value="103" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -117,9 +105,6 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="104" />
             <column name="attacks_id" value="104" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -131,19 +116,16 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 8,
-                &quot;dexterity&quot;: 14, 
-                &quot;constitution&quot;: 12, 
-                &quot;intelligence&quot;: 17, 
-                &quot;wisdom&quot;: 13, 
+                &quot;dexterity&quot;: 14,
+                &quot;constitution&quot;: 12,
+                &quot;intelligence&quot;: 17,
+                &quot;wisdom&quot;: 13,
                 &quot;charisma&quot;: 10
             }" />
             <column name="sub_race_id" value="107" />
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="105" />
             <column name="attacks_id" value="105" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>
@@ -165,9 +147,6 @@
             <column name="special_attacks" value="{}" />
             <column name="inventory_id" value="106" />
             <column name="attacks_id" value="106" />
-            <!-- <column name="magic_per_day" value="{}" />
-            <column name="magic_known" value="{}" /> -->
-            <!-- <column name="books" value="[]" /> -->
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>

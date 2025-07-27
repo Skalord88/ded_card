@@ -6,11 +6,11 @@
     <changeSet id="9" author="damian">
 
         <createTable tableName="race_region">
-            <column name="sub_race_id" type="int">
-                <constraints nullable="true" />
+            <column name="sub_race_id" type="INT">
+            <constraints nullable="false" />
             </column>
             <column name="region_id" type="SMALLINT">
-                <constraints nullable="true" />
+            <constraints nullable="false" />
             </column>
         </createTable>
 

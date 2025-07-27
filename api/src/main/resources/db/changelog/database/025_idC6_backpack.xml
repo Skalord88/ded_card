@@ -12,5 +12,17 @@
                 <constraints nullable="true" />
             </column>
         </createTable>
+
+        <!-- <addForeignKeyConstraint baseTableName="backpack"
+            baseColumnNames="inventory_id"
+            constraintName="fk_backpack_inventory"
+            referencedTableName="inventory"
+            referencedColumnNames="id" />
+
+        <addForeignKeyConstraint baseTableName="backpack"
+            baseColumnNames="items_id"
+            constraintName="fk_backpack_items"
+            referencedTableName="items"
+            referencedColumnNames="id" /> -->
     </changeSet>
 </databaseChangeLog>

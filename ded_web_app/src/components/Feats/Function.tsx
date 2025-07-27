@@ -123,10 +123,14 @@ export const createClassPcBonusFeats = (newModChar: CharToModify): FeatPc[] => {
 };
 
 export const createClassPcClassFeats = (newModChar: CharToModify): FeatPc[] => {
+
   const quantiBonus: ClassFeats[] = newModChar.feats.classFeats.filter(
-    (c: ClassFeats) => c.feat.toSelect?.featType && c.feat.toSelect?.feats
+    (c: ClassFeats) => 
+      (c.feat.toSelect
+        //  && c.selected === null
+        )
   );
-  let featsGiaPresenti = newModChar.feats.pcFeats.fromClass.length;
+  let featsGiaPresenti: number = newModChar.feats.pcFeats.fromClass.length;
 
   let classPcBonusFeats: FeatPc[] = [];
 

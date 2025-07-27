@@ -13,7 +13,7 @@
       </column>
     </createTable>
 
-
+    <!-- insert -->
     <insert tableName="sub_race_feats">
       <column name="sub_race_id" value="3" />
       <column name="feats_id" value="106" />

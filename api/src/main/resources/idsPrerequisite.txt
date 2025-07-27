@@ -126,6 +126,8 @@
         Shields tower 5005
         <!-- Simple Weapon Proficiency 5006 -->
         <!-- Martial Weapon Proficiency 5007 -->
+        <!-- Druid Weapon Proficiency 5008 -->
+        <!-- Bard Weapon Proficiency 5009 -->
 
         <!-- Pg gia' fatti 100.000-->
         <!-- Puli -->
@@ -135,6 +137,8 @@
         selected_id 110102
         selected_id 110103
         selected_id 110104
+        selected_id 110106
+        selected_id 110107
 
         <!-- Michał -->
 

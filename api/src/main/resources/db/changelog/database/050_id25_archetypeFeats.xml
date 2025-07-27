@@ -14,6 +14,7 @@
       </column>
     </createTable>
 
+    <!-- insert -->
     <insert tableName="archetype_feats">
       <column name="archetype_id" value="1" />
       <column name="feats_id" value="106" />

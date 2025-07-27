@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.feats.dto;
 
 import java.util.List;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,8 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
 import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
@@ -61,6 +64,7 @@ public class PrerequisiteDTO {
   public ClassPcLevel[] classPc;
   public List<ItemsDTO> items;
   public Domains domain;
+  public Set<SpecialAbilitiesDTO> specialAbilities;
   public String text;
 
   public PrerequisiteDTO(Prerequisite pre) {
@@ -115,6 +119,12 @@ public class PrerequisiteDTO {
         ? MapperItemsDTO.toListItemsDTO(pre.getItems())
         : null;
     this.classPc = pre.getClassPc() != null ? pre.getClassPc() : null;
+    this.specialAbilities =
+      pre.getSpecialAbilities() != null
+        ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+          pre.getSpecialAbilities()
+        )
+        : null;
     this.text = pre.getText();
   }
 }

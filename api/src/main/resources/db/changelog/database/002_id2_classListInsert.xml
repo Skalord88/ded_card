@@ -13,29 +13,6 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="12" />
-      <column name="class_feats_map"
-        value="[
-              {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fast movement','Illiteracy','Rage']},
-              {'level':2,'classFeats':['Uncanny dodge']},
-              {'level':3,'classFeats':['Trap sense']},
-              {'level':4,'classFeats':['Rage']},
-              {'level':5,'classFeats':['Improved uncanny dodge']},
-              {'level':6,'classFeats':['Trap sense']},
-              {'level':7,'classFeats':['Damage reduction']},
-              {'level':8,'classFeats':['Rage']},
-              {'level':9,'classFeats':['Trap sense']},
-              {'level':10,'classFeats':['Damage reduction']},
-              {'level':11,'classFeats':['Greater rage']},
-              {'level':12,'classFeats':['Rage','Trap sense']},
-              {'level':13,'classFeats':['Damage reduction']},
-              {'level':14,'classFeats':['Indomitable will']},
-              {'level':15,'classFeats':['Trap sense']},
-              {'level':16,'classFeats':['Damage reduction','Rage']},
-              {'level':17,'classFeats':['Tireless rage']},
-              {'level':18,'classFeats':['Trap sense']},
-              {'level':19,'classFeats':['Damage reduction']},
-              {'level':20,'classFeats':['Mighty rage','Rage']}
-              ]" />
       <column name="initial_gold" value="[4,D4,10]" />
     </insert>
 
@@ -48,19 +25,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="6" />
       <column name="hit_dice" value="6" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Bardic music','Bardic knowledge','Countersong','Fascinate','Inspire courage']},
-            {'level':3,'classFeats':['Inspire competence']},
-            {'level':6,'classFeats':['Suggestion']},
-            {'level':8,'classFeats':['Inspire courage']},
-            {'level':9,'classFeats':['Inspire greatness']},
-            {'level':12,'classFeats':['Song of freedom']},
-            {'level':14,'classFeats':['Inspire courage']},
-            {'level':15,'classFeats':['Inspire heroics']},
-            {'level':18,'classFeats':['Mass suggestion']},
-            {'level':20,'classFeats':['Inspire courage']}
-            ]" />
       <column name="spells_per_day_id" value="1" />
       <column name="spells_known_id" value="2" />
       <column name="spell_bonus" value="CHARISMA" />
@@ -77,10 +41,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[
-              {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Turn or rebuke undead']}
-              ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="4" />
       <column name="spell_bonus" value="WISDOM" />
@@ -97,27 +57,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Animal companion','Nature sense','Wild empathy']},
-            {'level':2,'classFeats':['Woodland Stride']},
-            {'level':3,'classFeats':['Trackless Step']},
-            {'level':4,'classFeats':['Resist Nature s Lure']},
-            {'level':5,'classFeats':['Wild Shape']},
-            {'level':6,'classFeats':['Wild Shape']},
-            {'level':7,'classFeats':['Wild Shape']},
-            {'level':8,'classFeats':['Wild Shape']},
-            {'level':9,'classFeats':['Venom Immunity']},
-            {'level':10,'classFeats':['Wild Shape']},
-            {'level':11,'classFeats':['Wild Shape']},
-            {'level':12,'classFeats':['Wild Shape']},
-            {'level':13,'classFeats':['A Thousand Faces']},
-            {'level':14,'classFeats':['Wild Shape']},
-            {'level':15,'classFeats':['Timeless Body','Wild Shape']},
-            {'level':16,'classFeats':['Wild Shape']},
-            {'level':18,'classFeats':['Wild Shape']},
-            {'level':20,'classFeats':['Wild Shape']}
-            ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="4" />
       <column name="spell_bonus" value="WISDOM" />
@@ -134,20 +73,6 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="10" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Armor proficiency (heavy)','Fighter Bonus Feats']},
-            {'level':2,'classFeats':['Fighter Bonus Feats']},
-            {'level':4,'classFeats':['Fighter Bonus Feats']},
-            {'level':6,'classFeats':['Fighter Bonus Feats']},
-            {'level':8,'classFeats':['Fighter Bonus Feats']},
-            {'level':10,'classFeats':['Fighter Bonus Feats']},
-            {'level':12,'classFeats':['Fighter Bonus Feats']},
-            {'level':14,'classFeats':['Fighter Bonus Feats']},
-            {'level':16,'classFeats':['Fighter Bonus Feats']},
-            {'level':18,'classFeats':['Fighter Bonus Feats']},
-            {'level':20,'classFeats':['Fighter Bonus Feats']}
-            ]" />
       <column name="initial_gold" value="[6,D4,10]" />
     </insert>
 
@@ -160,29 +85,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Monk Bonus Feats','Flurry of Blows','Unarmed Strike']},
-            {'level':2,'classFeats':['Monk Bonus Feats','Evasion','Flurry of Blows']},
-            {'level':3,'classFeats':['Still Mind','Flurry of Blows','Fast Movement']},
-            {'level':4,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','Unarmed Strike']},
-            {'level':5,'classFeats':['Purity of Body','Flurry of Blows','AC Bonus']},
-            {'level':6,'classFeats':['Monk Bonus Feats','Slow Fall','Flurry of Blows','Fast Movement']},
-            {'level':7,'classFeats':['Wholeness of Body','Flurry of Blows']},
-            {'level':8,'classFeats':['Slow Fall','Flurry of Blows','Unarmed Strike']},
-            {'level':9,'classFeats':['Improved Evasion','Flurry of Blows','Fast Movement']},
-            {'level':10,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','AC Bonus']},
-            {'level':11,'classFeats':['Diamond Body','Greater Flurry','Flurry of Blows']},
-            {'level':12,'classFeats':['Abundant Step','Slow Fall','Flurry of Blows','Unarmed Strike','Fast Movement']},
-            {'level':13,'classFeats':['Diamond Soul','Flurry of Blows']},
-            {'level':14,'classFeats':['Slow Fall','Flurry of Blows']},
-            {'level':15,'classFeats':['Quivering Palm','Flurry of Blows','AC Bonus','Fast Movement']},
-            {'level':16,'classFeats':['Ki Strike','Slow Fall','Flurry of Blows','Unarmed Strike']},
-            {'level':17,'classFeats':['Timeless Body','Tongue of the Sun and Moon','Flurry of Blows']},
-            {'level':18,'classFeats':['Slow Fall','Flurry of Blows','Fast Movement']},
-            {'level':19,'classFeats':['Empty Body','Flurry of Blows']},
-            {'level':20,'classFeats':['Perfect Self','Slow Fall','Flurry of Blows','Unarmed Strike','AC Bonus']}
-            ]" />
       <column name="initial_gold" value="[5,D4,1]" />
     </insert>
 
@@ -195,22 +97,6 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="10" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)',
-            'Armor proficiency (heavy)','Aura of Good','Detect Evil','Smite Evil']},
-            {'level':2,'classFeats':['Divine Grace','Lay on Hands']},
-            {'level':3,'classFeats':['Aura of Courage','Divine Health']},
-            {'level':4,'classFeats':['Turn Undead']},
-            {'level':5,'classFeats':['Smite Evil','Special Mount']},
-            {'level':6,'classFeats':['Remove Disease']},
-            {'level':9,'classFeats':['Remove Disease']},
-            {'level':10,'classFeats':['Smite Evil']},
-            {'level':12,'classFeats':['Remove Disease']},
-            {'level':15,'classFeats':['Remove Disease','Smite Evil']},
-            {'level':18,'classFeats':['Remove Disease']},
-            {'level':20,'classFeats':['Smite Evil']}
-            ]" />
       <column name="spells_per_day_id" value="5" />
       <column name="spells_known_id" value="6" />
       <column name="spell_bonus" value="WISDOM" />
@@ -227,24 +113,6 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="6" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Armor proficiency (light)','Armor proficiency (medium)','Favored Enemy','Track','Wild Empathy']},
-            {'level':2,'classFeats':['Combat Style']},
-            {'level':3,'classFeats':['Endurance']},
-            {'level':4,'classFeats':['Animal Companion']},
-            {'level':5,'classFeats':['Favored Enemy']},
-            {'level':6,'classFeats':['Improved Combat Style']},
-            {'level':7,'classFeats':['Woodland Stride']},
-            {'level':8,'classFeats':['Swift Tracker']},
-            {'level':9,'classFeats':['Evasion']},
-            {'level':10,'classFeats':['Favored Enemy']},
-            {'level':11,'classFeats':['Combat Style Mastery']},
-            {'level':13,'classFeats':['Camouflage']},
-            {'level':15,'classFeats':['Favored Enemy']},
-            {'level':17,'classFeats':['Hide in Plain Sight']},
-            {'level':20,'classFeats':['Favored Enemy']}
-            ]" />
       <column name="spells_per_day_id" value="5" />
       <column name="spells_known_id" value="6" />
       <column name="spell_bonus" value="WISDOM" />
@@ -261,27 +129,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="8" />
       <column name="hit_dice" value="6" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Sneak Attack','Trapfinding']},
-            {'level':2,'classFeats':['Evasion']},
-            {'level':3,'classFeats':['Sneak Attack','Trap Sense']},
-            {'level':4,'classFeats':['Uncanny Dodge']},
-            {'level':5,'classFeats':['Sneak Attack']},
-            {'level':6,'classFeats':['Trap Sense']},
-            {'level':7,'classFeats':['Sneak Attack']},
-            {'level':8,'classFeats':['Improved Uncanny Dodge']},
-            {'level':9,'classFeats':['Sneak Attack','Trap Sense']},
-            {'level':10,'classFeats':['Special Ability']},
-            {'level':11,'classFeats':['Sneak Attack']},
-            {'level':12,'classFeats':['Trap Sense']},
-            {'level':13,'classFeats':['Special Ability','Special Ability']},
-            {'level':15,'classFeats':['Sneak Attack','Trap Sense']},
-            {'level':16,'classFeats':['Special Ability']},
-            {'level':17,'classFeats':['Special Ability']},
-            {'level':18,'classFeats':['Trap Sense']},
-            {'level':19,'classFeats':['Sneak Attack','Special Ability']}
-            ]" />
       <column name="initial_gold" value="[5,D4,10]" />
     </insert>
 
@@ -294,10 +141,6 @@
       <column name="class_bab" value="0.5" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="4" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Summon Familiar']}
-            ]" />
       <column name="spells_per_day_id" value="7" />
       <column name="spells_known_id" value="8" />
       <column name="spell_bonus" value="CHARISMA" />
@@ -314,14 +157,6 @@
       <column name="class_bab" value="0.5" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="4" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Summon Familiar','Scribe Scroll']},
-            {'level':5,'classFeats':['Bonus Feat Wizard']},
-            {'level':10,'classFeats':['Bonus Feat Wizard']},
-            {'level':15,'classFeats':['Bonus Feat Wizard']},
-            {'level':20,'classFeats':['Bonus Feat Wizard']}
-            ]" />
       <column name="spells_per_day_id" value="3" />
       <column name="spells_known_id" value="9" />
       <column name="spell_bonus" value="INTELLIGENCE" />
@@ -338,19 +173,6 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Enhance Arrow']},
-            {'level':2,'classFeats':['Imbue Arrow']},
-            {'level':3,'classFeats':['Enhance Arrow']},
-            {'level':4,'classFeats':['Seeker Arrow']},
-            {'level':5,'classFeats':['Enhance Arrow']},
-            {'level':6,'classFeats':['Phase Arrow']},
-            {'level':7,'classFeats':['Enhance Arrow']},
-            {'level':8,'classFeats':['Hail of Arrows']},
-            {'level':9,'classFeats':['Enhance Arrow']},
-            {'level':10,'classFeats':['Arrow of Death']}
-            ]" />
     </insert>
 
     <insert tableName="class_character">
@@ -362,19 +184,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="4" />
       <column name="hit_dice" value="4" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Ranged Legerdemain']},
-            {'level':2,'classFeats':['Sneak Attack']},
-            {'level':3,'classFeats':['Impromptu Sneak Attack']},
-            {'level':4,'classFeats':['Sneak Attack']},
-            {'level':5,'classFeats':['Ranged Legerdemain']},
-            {'level':6,'classFeats':['Sneak Attack']},
-            {'level':7,'classFeats':['Impromptu Sneak Attack']},
-            {'level':8,'classFeats':['Sneak Attack']},
-            {'level':9,'classFeats':['Ranged Legerdemain']},
-            {'level':10,'classFeats':['Sneak Attack']}
-            ]" />
     </insert>
 
     <insert tableName="class_character">
@@ -386,14 +195,6 @@
       <column name="class_bab" value="0.5" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="4" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['High Arcana']},
-            {'level':2,'classFeats':['High Arcana']},
-            {'level':3,'classFeats':['High Arcana']},
-            {'level':4,'classFeats':['High Arcana']},
-            {'level':5,'classFeats':['High Arcana']}
-            ]" />
     </insert>
 
     <insert tableName="class_character">
@@ -408,19 +209,6 @@
       <column name="spells_per_day_id" value="10" />
       <column name="spells_known_id" value="11" />
       <column name="spells_domain" value="ASSASSIN" />
-      <column name="class_feats_map"
-        value="[
-            {'level':1,'classFeats':['Sneak attack','Death attack','Poison use']},
-            {'level':2,'classFeats':['Save against poison','Uncanny dodge']},
-            {'level':3,'classFeats':['Sneak attack']},
-            {'level':4,'classFeats':['Save against poison']},
-            {'level':5,'classFeats':['Improved uncanny dodge','Sneak attack']},
-            {'level':6,'classFeats':['Save against poison']},
-            {'level':7,'classFeats':['Sneak Attack']},
-            {'level':8,'classFeats':['Save against poison','Hide in plain sight']},
-            {'level':9,'classFeats':['Sneak Attack']},
-            {'level':10,'classFeats':['Save against poison']} 
-            ]" />
     </insert>
     <!-- id:16 -->
     <insert tableName="class_character">
@@ -432,10 +220,8 @@
       <column name="class_bab" value="1" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="6" />
-      <column name="class_feats_map"
-        value="[]" />
     </insert>
-    
+
     <insert tableName="class_character">
       <column name="id" value="17" />
       <column name="class_type" value="PRESTIGE_CLASS" />
@@ -445,8 +231,6 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="8" />
-      <column name="class_feats_map"
-        value="[]" />
     </insert>
 
     <!-- <insert tableName="class_character">  
