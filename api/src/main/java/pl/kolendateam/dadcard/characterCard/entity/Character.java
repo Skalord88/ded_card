@@ -26,11 +26,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
-import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
 import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
@@ -39,14 +36,9 @@ import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.FeatsPc;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
-import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemsDTO;
-import pl.kolendateam.dadcard.items.enchantment.dto.ItemsToSendDTO;
-import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Items;
-import pl.kolendateam.dadcard.items.repository.InventoryRepository;
-import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
@@ -107,9 +99,6 @@ public class Character implements Serializable {
   )
   List<FeatsPc> featsList = new ArrayList<>();
 
-  // @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-  // @JoinColumn(name = "inventory_id", referencedColumnName = "id")
-  // Inventory inventory;
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
   Inventory inventory;

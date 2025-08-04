@@ -1,0 +1,762 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+<!-- <changeSet id="create-sequences" author="oscar">
+        <createSequence sequenceName="enchanted_items_armor_seq" startValue="5000" incrementBy="1" />
+        <createSequence sequenceName="enchanted_items_shield_seq" startValue="10000" incrementBy="1" />
+        <createSequence sequenceName="enchanted_items_weapon_seq" startValue="20000" incrementBy="1" />
+    </changeSet> -->
+
+  <changeSet id="27" author="oscar">
+
+    <!-- Not enchanted -->
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Unarmed strike" />
+      <column name="id" value="2000" />
+      <column name="items_id" value="1" />
+    </insert>
+
+    <!-- Gauntlet -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Gauntlet" />
+      <column name="id" value="2002" />
+      <column name="items_id" value="5" />
+    </insert>
+
+    <!-- Gauntlet, spiked -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Gauntlet, spiked" />
+      <column name="id" value="2003" />
+      <column name="items_id" value="8" />
+    </insert>
+
+    <!-- Shield, light -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Shield, light" />
+      <column name="id" value="2004" />
+      <column name="items_id" value="32" />
+    </insert>
+
+    <!-- Spiked armor -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Spiked armor" />
+      <column name="id" value="2005" />
+      <column name="items_id" value="33" />
+    </insert>
+
+    <!-- Spiked shield, light -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Spiked shield, light" />
+      <column name="id" value="2006" />
+      <column name="items_id" value="34" />
+    </insert>
+
+    <!-- Shield, heavy -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Shield, heavy" />
+      <column name="id" value="2007" />
+      <column name="items_id" value="42" />
+    </insert>
+
+    <!-- Spiked shield, heavy -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Spiked shield, heavy" />
+      <column name="id" value="2008" />
+      <column name="items_id" value="43" />
+    </insert>
+
+    <!-- Puli -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1001" />
+      <column name="name" value="elven chain +2" />
+      <column name="items_id" value="89" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="material" value="MITHRAL" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="tarczunia +1" />
+      <column name="id" value="1002" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="95" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="proca Puli +1" />
+      <column name="id" value="1003" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="81" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Sword, short pft" />
+      <column name="id" value="1004" />
+      <column name="items_id" value="35" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Axe, throwing pft" />
+      <column name="id" value="1005" />
+      <column name="items_id" value="25" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Skiprock" />
+      <column name="id" value="1006" />
+      <column name="items_id" value="82" />
+      <column name="enchantment_bonus" value="0" />
+    </insert>
+
+    <!-- Rysio -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1011" />
+      <column name="name" value="Longbow, Holly +5" />
+      <column name="enchantment_bonus" value="5" />
+      <column name="items_id" value="59" />
+    </insert>
+    <insert tableName="enchanted_items_enchantment">
+      <column name="enchanted_items_id" value="1011" />
+      <column name="enchantment_id" value="512" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Longsword pft" />
+      <column name="id" value="1012" />
+      <column name="items_id" value="38" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="elven chain +1" />
+      <column name="id" value="1013" />
+      <column name="items_id" value="89" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="material" value="MITHRAL" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="name" value="Shield, heavy wooden pft" />
+      <column name="id" value="1014" />
+      <column name="items_id" value="98" />
+      <column name="material" value="DARKWOOD" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <!-- <insert tableName="enchanted_items">
+      <column name="id" value="1015" />
+      <column name="items_id" value="6077" />
+    </insert> -->
+
+    <!-- Niesia -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1021" />
+      <column name="name" value="Studded leather +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="85" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1022" />
+      <column name="name" value="Buckler +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="95" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1023" />
+      <column name="name" value="Longbow" />
+      <column name="items_id" value="57" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1024" />
+      <column name="name" value="Shortspear Shock +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="14" />
+    </insert>
+    <insert tableName="enchanted_items_enchantment">
+      <column name="enchanted_items_id" value="1024" />
+      <column name="enchantment_id" value="7" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1025" />
+      <column name="name" value="Spear pft" />
+      <column name="items_id" value="17" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1026" />
+      <column name="name" value="Longsword" />
+      <column name="items_id" value="38" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1027" />
+      <column name="name" value="Bite" />
+      <column name="items_id" value="101" />
+      <column name="damage" value="D6" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1028" />
+      <column name="name" value="Claw" />
+      <column name="damage" value="D4" />
+      <column name="items_id" value="101" />
+    </insert>
+
+    <!-- Michał -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1031" />
+      <column name="name" value="Half-plate +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="93" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1032" />
+      <column name="name" value="Shield, heavy wooden +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="98" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1033" />
+      <column name="name" value="Shortspear Shock +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="14" />
+    </insert>
+    <insert tableName="enchanted_items_enchantment">
+      <column name="enchanted_items_id" value="1033" />
+      <column name="enchantment_id" value="7" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1034" />
+      <column name="name" value="Javelin Shock +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="14" />
+    </insert>
+    <insert tableName="enchanted_items_enchantment">
+      <column name="enchanted_items_id" value="1034" />
+      <column name="enchantment_id" value="7" />
+    </insert>
+
+    <!-- Andrzej -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1041" />
+      <column name="name" value="Nunchaku pft" />
+      <column name="items_id" value="63" />
+      <column name="enchantment_bonus" value="-1" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1042" />
+      <column name="name" value="Crossbow, light pft" />
+      <column name="enchantment_bonus" value="-1" />
+      <column name="items_id" value="20" />
+    </insert>
+
+    <!-- Magda -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1051" />
+      <column name="name" value="Crossbow, light +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="20" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1052" />
+      <column name="name" value="Quarterstaff" />
+      <column name="items_id" value="16" />
+    </insert>
+
+    <!-- Mirek -->
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1061" />
+      <column name="name" value="Mithral shirt +2" />
+      <column name="items_id" value="86" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="material" value="MITHRAL" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="1062" />
+      <column name="name" value="Crossbow, light +1" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="items_id" value="20" />
+    </insert>
+
+    <!-- Specific Armors -->
+    <insert tableName="enchanted_items">
+      <column name="id" value="10000" />
+      <column name="name" value="Adamantine Breastplate" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="material" value="ADAMANTINE" />
+      <column name="description" value="This nonmagical breastplate is made of adamantine, giving its wearer damage reduction of 2/-. No aura (nonmagical); Price 10,200 gp." />
+      <column name="items_id" value="90" />
+      <column name="cost" value="10200" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10001" />
+      <column name="name" value="Banded Mail of Luck" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="description" value="Ten 100-gp gems adorn this +3 banded mail. Once per week, the armor allows its wearer to require that an attack roll made against him be rerolled. He must take whatever consequences come from the second roll. The wearer’s player must decide whether to have the attack roll rerolled before damage is rolled. Strong enchantment; CL 12th; Craft Magic Arms and Armor, bless; Price 18,900 gp; Cost 10,150 gp + 700 XP." />
+      <column name="items_id" value="92" />
+      <column name="cost" value="18900" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10002" />
+      <column name="name" value="Breastplate of Command" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This finely crafted +2 breastplate radiates a powerful aura of magic. When worn, the armor bestows a dignified and commanding aura upon its owner. The wearer gains a +2 competence bonus on all Charisma checks, including turning checks and Charisma-based skill checks. The wearer also gains a +2 competence bonus to his Leadership score. Friendly troops within 360 feet of the user become braver than normal. Since the effect arises in great part from the distinctiveness of the armor, the wearer cannot hide or conceal herself in any way and still have the effect function. Strong enchantment; CL 15th; Craft Magic Arms and Armor, mass charm monster; Price 25,400 gp; Cost 10,975 gp + 850 XP." />
+      <column name="items_id" value="90" />
+      <column name="cost" value="25400" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10003" />
+      <column name="name" value="Celestial Armor" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="description" value="This bright silver or gold +3 chainmail is so fine and light that it can be worn under normal clothing without betraying its presence. It has a maximum Dexterity bonus of +8, an armor check penalty of -2, and an arcane spell failure chance of 15%. It is considered light armor, weighs 20 pounds, and it allows the wearer to use fly on command (as the spell) once per day. Faint transmutation [good]; CL 5th; Craft Magic Arms and Armor, creator must be good, fly; Price 22,400 gp; Cost 12,550 gp + 1,004 XP." />
+      <column name="items_id" value="89" />
+      <column name="cost" value="22400" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10004" />
+      <column name="name" value="Demon Armor" />
+      <column name="enchantment_bonus" value="4" />
+      <column name="description" value="This plate armor is fashioned to make the wearer appear to be a demon. The helmet is shaped to look like a horned demon head, and its wearer looks out of the open, tooth-filled mouth. This +4 full plate allows the wearer to make claw attacks that deal 1d10 points of damage, strike as +1 weapons, and afflict the target as if she had been struck by a contagion spell (Fortitude DC 14 negates). Use of contagion requires a normal melee attack with the claws. The 'claws' are built into the armor’s vambraces and gauntlets. The armor bestows one negative level on any nonevil creature wearing it. This negative level persists as long as the armor is worn and disappears when the armor is removed. The negative level never results in actual level loss, but it cannot be overcome in any way (including restoration spells) while the armor is worn. Strong necromancy [evil]; CL 13th; Craft Magic Arms and Armor, contagion; Price 52,260 gp; Cost 26,130 gp + 2,090 XP." />
+      <column name="items_id" value="94" />
+      <column name="cost" value="52260" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10005" />
+      <column name="name" value="Dragonhide Plate" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This suit of full plate is made of dragonhide, rather than metal, so druids can wear it. It is otherwise identical to masterwork full plate. No aura (nonmagical); Price 3,300 gp." />
+      <column name="items_id" value="94" />
+      <column name="material" value="DRAGONHIDE" />
+      <column name="cost" value="3300" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10006" />
+      <column name="name" value="Dwarven Plate" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This full plate is made of adamantine, giving its wearer damage reduction of 3/-. No aura (nonmagical); Price 16,500 gp." />
+      <column name="items_id" value="94" />
+      <column name="material" value="ADAMANTINE" />
+      <column name="cost" value="16500" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10007" />
+      <column name="name" value="Elven Chain" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This extremely light chainmail is made of very fine mithral links. Speed while wearing elven chain is 30 feet for Medium creatures, or 20 feet for Small. The armor has an arcane spell failure chance of 20%, a maximum Dexterity bonus of +4, and an armor check penalty of -2. It is considered light armor and weighs 20 pounds. No aura (nonmagical); Price 4,150 gp." />
+      <column name="items_id" value="89" />
+      <column name="material" value="MITHRAL" />
+      <column name="cost" value="4150" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10008" />
+      <column name="name" value="Mithral Full Plate of Speed" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="As a free action, the wearer of this fine set of +1 mithral full plate can activate it, enabling her to act as though affected by a haste spell for up to 10 rounds each day. The duration of the haste effect need not be consecutive rounds. Speed while wearing a suit of mithral full plate is 20 feet for Medium creatures, or 15 feet for Small. The armor has an arcane spell failure chance of 25%, a maximum Dexterity bonus of +3, and an armor check penalty of -3. It is considered medium armor and weighs 25 pounds. Faint transmutation; CL 5th; Craft Magic Arms and Armor, haste; Price 26,500 gp; Cost 18,500 + 640 XP." />
+      <column name="items_id" value="94" />
+      <column name="material" value="MITHRAL" />
+      <column name="cost" value="26500" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10009" />
+      <column name="name" value="Mithral Shirt" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This extremely light chain shirt is made of very fine mithral links. Speed while wearing a mithral shirt is 30 feet for Medium creatures, or 20 feet for Small. The armor has an arcane spell failure chance of 10%, a maximum Dexterity bonus of +6, and no armor check penalty. It is considered light armor and weighs 10 pounds. No aura (nonmagical); Price 1,100 gp." />
+      <column name="items_id" value="86" />
+      <column name="material" value="MITHRAL" />
+      <column name="cost" value="1100" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10010" />
+      <column name="name" value="Plate Armor of the Deep" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 full plate is decorated with a wave and fish motif. The wearer of plate armor of the deep is treated as unarmored for purposes of Swim checks. The wearer can breathe underwater and can converse with any creature with a language that breathes water. Moderate abjuration; CL 11th; Craft Magic Arms and Armor, freedom of movement, water breathing, tongues; Price 24,650 gp; Cost 17,150 gp + 600 XP." />
+      <column name="items_id" value="94" />
+      <column name="cost" value="24650" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10011" />
+      <column name="name" value="Rhino Hide" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 hide armor is made from rhinoceros hide. In addition to granting a +2 enhancement bonus to AC, it has a -1 armor check penalty and deals an additional 2d6 points of damage on any successful charge attack made by the wearer, including a mounted charge. Moderate transmutation; CL 9th; Craft Magic Arms and Armor, bull’s strength; Price 5,165 gp; Cost 2,665 gp + 200 XP." />
+      <column name="items_id" value="87" />
+      <column name="cost" value="5165" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10012" />
+      <column name="name" value="Absorbing Shield" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 heavy steel shield is flat black and seems to absorb light. Once every two days, on command, it can disintegrate an object that it touches, as the spell but requiring a melee touch attack. Strong transmutation; CL 17th; Craft Magic Arms and Armor, disintegrate; Price 50,170 gp; Cost 25,170 gp + 2,000 XP." />
+      <column name="items_id" value="99" />
+      <column name="cost" value="50170" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10013" />
+      <column name="name" value="Caster’s Shield" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 light wooden shield has a small leather strip on the back on which a spellcaster can scribe a single spell as on a scroll. A spell so scribed has only half the base raw material cost. Experience point and component costs remain the same. The strip cannot accommodate spells of higher than 3rd level. The strip is reusable. A random caster’s shield has a 50% chance of having a single medium scroll spell on it. The spell is divine (01-80 on d%) or arcane (81-100). A caster’s shield has a 5% arcane spell failure chance. Moderate abjuration; CL 6th; Craft Magic Arms and Armor, Scribe Scroll, creator must be at least 6th level; Price 3,153 gp (plus the value of the scroll spell if one is currently scribed); Cost 1,653 gp + 120 XP." />
+      <column name="items_id" value="96" />
+      <column name="cost" value="3153" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10014" />
+      <column name="name" value="Darkwood Buckler" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This nonmagical light wooden shield is made out of darkwood. It has no enhancement bonus, but its construction material makes it lighter than a normal wooden shield. It weighs 2½ pounds and has no armor check penalty. No aura (nonmagical); Price 205 gp." />
+      <column name="items_id" value="95" />
+      <column name="cost" value="205" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10015" />
+      <column name="name" value="Darkwood Shield" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This nonmagical heavy wooden shield is made out of darkwood. It has no enhancement bonus, but its construction material makes it lighter than a normal wooden shield. It weighs 5 pounds and has no armor check penalty. No aura (nonmagical); Price 257 gp." />
+      <column name="items_id" value="98" />
+      <column name="cost" value="257" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10016" />
+      <column name="name" value="Lion’s Shield" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 heavy steel shield is fashioned to appear to be a roaring lion’s head. Three times per day as a free action, the lion’s head can be commanded to attack (independently of the shield wearer), biting with the wielder’s base attack bonus (including multiple attacks, if the wielder has them) and dealing 2d6 points of damage. This attack is in addition to any actions performed by the wielder. Moderate conjuration; CL 10th; Craft Magic Arms and Armor, summon nature’s ally IV; Price 9,170 gp; Cost 4,670 gp + 360 XP." />
+      <column name="items_id" value="99" />
+      <column name="cost" value="9170" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10017" />
+      <column name="name" value="Mithral Heavy Shield" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This heavy shield is made of mithral and thus is much lighter than a standard steel shield. It has a 5% arcane spell failure chance and no armor check penalty. It weighs 5 pounds. No aura (nonmagical); Price 1,020 gp." />
+      <column name="items_id" value="99" />
+      <column name="material" value="MITHRAL" />
+      <column name="cost" value="1020" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10018" />
+      <column name="name" value="Spined Shield" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 heavy steel shield is covered in spines. It acts as a normal spiked shield. On command up to three times per day, the shield’s wearer can fire one of the shield’s spines. A fired spine has a +1 enhancement bonus, a range increment of 120 feet, and deals 1d10 points of damage (19-20/×2). Fired spines regenerate each day. Moderate evocation; CL 6th; Craft Magic Arms and Armor, magic missile; Price 5,580 gp; Cost 2,740 gp + 223 XP." />
+      <column name="items_id" value="99" />
+      <column name="cost" value="5580" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="10019" />
+      <column name="name" value="Winged Shield" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="description" value="This round heavy wooden shield has a +3 enhancement bonus. Small, feathered wings encircle the shield. Once per day it can be commanded to fly (as the spell), carrying the wielder. The shield can carry up to 133 pounds and move at 60 feet per round, or up to 266 pounds and move at 40 feet per round. Faint transmutation; CL 5th; Craft Magic Arms and Armor, fly; Price 17,257 gp; Cost 8,628 gp and 5 sp + 690 XP." />
+      <column name="items_id" value="98" />
+      <column name="cost" value="17257" />
+    </insert>
+
+    <!-- Special Weapons 20000 -->
+    <insert tableName="enchanted_items">
+      <column name="id" value="20000" />
+      <column name="name" value="Adamantine Battleaxe" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This nonmagical axe is made out of adamantine. As a masterwork weapon, it has a +1 enhancement bonus on attack rolls. No aura (nonmagical); Price 3,010 gp." />
+      <column name="items_id" value="36" />
+      <column name="material" value="ADAMANTINE" />
+      <column name="cost" value="3010" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20001" />
+      <column name="name" value="Adamantine Dagger" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This nonmagical dagger is made out of adamantine. As a masterwork weapon, it has a +1 enhancement bonus on attack rolls. No aura (nonmagical); Price 3,002 gp." />
+      <column name="items_id" value="6" />
+      <column name="material" value="ADAMANTINE" />
+      <column name="cost" value="3002" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20002" />
+      <column name="name" value="Assassin’s Dagger" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This nonmagical dagger is made out of adamantine. As a masterwork weapon, it has a +1 enhancement bonus on attack rolls. No aura (nonmagical); Price 3,002 gp." />
+      <column name="items_id" value="6" />
+      <column name="cost" value="18302" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20003" />
+      <column name="name" value="Dagger of Venom" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This black +1 dagger has a serrated edge. It allows the wielder to use a poison effect (as the spell, save DC 14) upon a creature struck by the blade once per day. The wielder can decide to use the power after he has struck. Doing so is a free action, but the poison effect must be invoked in the same round that the dagger strikes. Faint necromancy; CL 5th; Craft Magic Arms and Armor, poison; Price 8,302 gp; Cost 4,302 gp + 320 XP." />
+      <column name="items_id" value="6" />
+      <column name="cost" value="8302" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20004" />
+      <column name="name" value="Dwarven Thrower" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This weapon commonly functions as a +2 warhammer. In the hands of a dwarf, the warhammer gains an additional +1 enhancement bonus (for a total enhancement bonus of +3) and gains the returning special ability. It can be hurled with a 30-foot range increment. When hurled, it deals an extra 2d8 points of damage against giants or an extra 1d8 points of damage against any other target. Moderate evocation; CL 10th; Craft Magic Arms and Armor, creator must be a dwarf of at least 10th level; Price 60,312 gp; Cost 30,312 gp + 2,400 XP." />
+      <column name="items_id" value="45" />
+      <column name="cost" value="60312" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20005" />
+      <column name="name" value="Flame Tongue" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This is a +1 flaming burst longsword. Once per day, the sword can blast forth a fiery ray at any target within 30 feet as a ranged touch attack. The ray deals 4d6 points of fire damage on a successful hit. Moderate evocation; CL 12th; Craft Magic Arms and Armor, scorching ray, and flame blade, flame strike, or fireball; Price 20,715 gp; Cost 10,515 gp + 816 XP." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="20715" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20006" />
+      <column name="name" value="Frost Brand" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="description" value="This +3 frost greatsword sheds light as a torch when the temperature drops below 0°F. At such times it cannot be concealed when drawn, nor can its light be shut off. Its wielder is protected from fire; the sword absorbs the first 10 points of fire damage each round that the wielder would otherwise take. A frost brand extinguishes all nonmagical fires in its area. As a standard action, it can also dispel lasting fire spells, but not instantaneous effects, though you must succeed on a dispel check (1d20 +14) against each spell to dispel it. The DC to dispel such spells is 11 + the caster level of the fire spell. Strong evocation; CL 14th; Craft Magic Arms and Armor, ice storm, dispel magic, protection from energy; Price 54,475 gp; Cost 27,375 gp and 5 sp + 2179 XP." />
+      <column name="items_id" value="51" />
+      <column name="cost" value="54475" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20007" />
+      <column name="name" value="Holy Avenger" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 cold iron longsword becomes a +5 holy cold iron longsword in the hands of a paladin. It provides spell resistance of 5 + the paladin’s level to the wielder and anyone adjacent to her. It also enables the wielder to use greater dispel magic (once per round as a standard action) at the class level of the paladin. (Only the area dispel is possible, not the targeted dispel or counterspell versions of greater dispel magic.) Strong abjuration; CL 18th; Craft Magic Arms and Armor, holy aura, creator must be good; Price 120,630 gp; Cost 60,630 gp + 4,800 XP." />
+      <column name="items_id" value="38" />
+      <column name="material" value="COLD_IRON" />
+      <column name="cost" value="120630" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20008" />
+      <column name="name" value="Javelin of Lightning" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This javelin becomes a 5d6 lightning bolt when thrown (Reflex DC 14 half). It is consumed in the attack. Faint evocation; CL 5th; Craft Magic Arms and Armor, lightning bolt; Price 1,500 gp; Cost 750 gp + 30 XP." />
+      <column name="items_id" value="22" />
+      <column name="cost" value="1500" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20009" />
+      <column name="name" value="Life-Drinker" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 greataxe is favored by undead and constructs, who do not suffer its drawback. A life-drinker bestows two negative levels on its target whenever it deals damage, just as if its target had been struck by an undead creature. One day after being struck, subjects must make a DC 16 Fortitude save for each negative level or lose a character level. Each time a life-drinker deals damage to a foe, it also bestows one negative level on the wielder. Any negative level gained by the wielder in this fashion lasts for 1 hour. Strong necromancy; CL 13th; Craft Magic Arms and Armor, enervation; Price 40,320 gp; Cost 20,320 gp + 1,600 XP." />
+      <column name="items_id" value="48" />
+      <column name="cost" value="40320" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20010" />
+      <column name="name" value="Luck Blade (0 wish)" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 short sword gives its possessor a +1 luck bonus on all saving throws. Its possessor also gains the power of good fortune, usable once per day. This extraordinary ability allows its possessor to reroll one roll that she just made. She must take the result of the reroll, even if it’s worse than the original roll. In addition, a luck blade may contain up to three wishes (when randomly rolled, a luck blade holds 1d4-1 wishes, minimum 0). When the last wish is used, the sword remains a +2 short sword, still grants the +1 luck bonus, and still grants its reroll power. Strong evocation; CL 17th; Craft Magic Arms and Armor, wish or miracle; Price 22,060 gp (0 wishes); Cost 11,030 gp + 882 XP (0 wishes)." />
+      <column name="items_id" value="35" />
+      <column name="cost" value="22060" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20011" />
+      <column name="name" value="Luck Blade (1 wish)" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 short sword gives its possessor a +1 luck bonus on all saving throws. Its possessor also gains the power of good fortune, usable once per day. This extraordinary ability allows its possessor to reroll one roll that she just made. She must take the result of the reroll, even if it’s worse than the original roll. In addition, a luck blade may contain up to three wishes (when randomly rolled, a luck blade holds 1d4-1 wishes, minimum 0). When the last wish is used, the sword remains a +2 short sword, still grants the +1 luck bonus, and still grants its reroll power. Strong evocation; CL 17th; Craft Magic Arms and Armor, wish or miracle; Price 62,360 gp (1 wish); Cost 31,180 gp + 2,494 XP (1 wish);" />
+      <column name="items_id" value="35" />
+      <column name="cost" value="62360" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20012" />
+      <column name="name" value="Luck Blade (2 wish)" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 short sword gives its possessor a +1 luck bonus on all saving throws. Its possessor also gains the power of good fortune, usable once per day. This extraordinary ability allows its possessor to reroll one roll that she just made. She must take the result of the reroll, even if it’s worse than the original roll. In addition, a luck blade may contain up to three wishes (when randomly rolled, a luck blade holds 1d4-1 wishes, minimum 0). When the last wish is used, the sword remains a +2 short sword, still grants the +1 luck bonus, and still grants its reroll power. Strong evocation; CL 17th; Craft Magic Arms and Armor, wish or miracle; Price 102,660 gp (2 wishes); Cost 51,330 gp + 4,106 XP (2 wishes)." />
+      <column name="items_id" value="35" />
+      <column name="cost" value="102660" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20013" />
+      <column name="name" value="Luck Blade (3 wish)" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This +2 short sword gives its possessor a +1 luck bonus on all saving throws. Its possessor also gains the power of good fortune, usable once per day. This extraordinary ability allows its possessor to reroll one roll that she just made. She must take the result of the reroll, even if it’s worse than the original roll. In addition, a luck blade may contain up to three wishes (when randomly rolled, a luck blade holds 1d4-1 wishes, minimum 0). When the last wish is used, the sword remains a +2 short sword, still grants the +1 luck bonus, and still grants its reroll power. Strong evocation; CL 17th; Craft Magic Arms and Armor, wish or miracle; Price 142,960 gp (3 wishes); Cost 71,480 gp + 5,718 XP (3 wishes)." />
+      <column name="items_id" value="35" />
+      <column name="cost" value="62360" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20014" />
+      <column name="name" value="Mace of Smiting" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="material" value="ADAMANTINE" />
+      <column name="description" value="This +3 adamantine heavy mace has a +5 enhancement bonus against constructs, and any critical hit dealt to a construct completely destroys it (no saving throw). A critical hit dealt to an outsider deals ×4 damage rather than ×2. Moderate transmutation; CL 11th; Craft Magic Arms and Armor, disintegrate; Price 75,312 gp; Cost 39,312 gp + 2,880 XP." />
+      <column name="items_id" value="12" />
+      <column name="cost" value="75312" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20015" />
+      <column name="name" value="Mace of Terror" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="On command, this +2 heavy mace causes the wielder’s clothes and appearance to transform into an illusion of darkest horror such that living creatures in a 30-foot cone become panicked as if by a fear spell (Will DC 16 partial). They take a -2 morale penalty on saving throws, and they flee from the wielder. The wielder may use this ability up to three times per day. Strong necromancy; CL 13th; Craft Magic Arms and Armor, fear; Price 38,552 gp; Cost 19,276 gp + 1,542 XP." />
+      <column name="items_id" value="12" />
+      <column name="cost" value="38552" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20016" />
+      <column name="name" value="Masterwork Cold Iron Longsword" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="material" value="COLD_IRON" />
+      <column name="description" value="This nonmagical longsword is crafted out of cold iron. As a masterwork weapon, it has a +1 enhancement bonus on attack rolls. No aura (nonmagical); Price 330 gp." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="330" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20017" />
+      <column name="name" value="Nine Lives Stealer" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="material" value="COLD_IRON" />
+      <column name="description" value="This longsword always performs as a +2 longsword, but it also has the power to draw the life force from an opponent. It can do this nine times before the ability is lost. At that point, the sword becomes a simple +2 longsword (with a hint of evil about it). A critical hit must be dealt for the sword’s death-dealing ability to function, and this weapon has no effect on creatures not subject to critical hits. The victim is entitled to a DC 20 Fortitude save to avoid death. If the save is successful, the sword’s death-dealing ability does not function, no use of the ability is expended, and normal critical damage is determined. This sword is evil, and any good character attempting to wield it gains two negative levels. These negative levels remain as long as the sword is in hand and disappear when the sword is no longer wielded. These negative levels never result in actual level loss, but they cannot be overcome in any way (including restoration spells) while the sword is wielded. Strong necromancy [evil]; CL 13th; Craft Magic Arms and Armor, finger of death; Price 23,057 gp; Cost 11,528 gp 5 sp + 922 XP." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="23057" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20018" />
+      <column name="name" value="Oathbow" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="Of elven make, this white +2 composite longbow (+2 Str bonus) whispers 'Swift defeat to my enemies' in Elven when nocked and pulled. Once per day, if the firer swears aloud to slay her target (a free action), the bow’s whisper becomes the low shout 'Swift death to those who have wronged me.' Against such a sworn enemy, the bow has a +5 enhancement bonus, and arrows launched from it deal an additional 2d6 points of damage (and ×4 on a critical hit instead of the normal ×3). However, the bow is treated as only a masterwork weapon against all foes other than the sworn enemy, and the wielder takes a -1 penalty on attack rolls with any weapon other than the oathbow. These bonuses and penalties last for seven days or until the sworn enemy is slain or destroyed by the wielder of the oathbow, whichever comes first. The oathbow may only have one sworn enemy at a time. Once the wielder swears to slay a target, he cannot make a new oath until he has slain that target or seven days have passed. Even if the wielder slays the sworn enemy on the same day that he makes the oath, he cannot activate the oathbow’s special power again until 24 hours have passed from the time he made the oath. Strong evocation; CL 15th; Craft Magic Arms and Armor, creator must be an elf; Price 25,600 gp; Cost 13,100 gp + 1,000 XP." />
+      <column name="items_id" value="59" />
+      <column name="cost" value="25600" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20019" />
+      <column name="name" value="Rapier of Puncturing" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="Three times per day, this +2 wounding rapier allows the wielder to make a touch attack with the weapon that deals 1d6 points of Constitution damage by draining blood. Creatures immune to critical hits are immune to the Constitution damage dealt by this weapon. Strong necromancy; CL 13th; Craft Magic Arms and Armor, harm; Price 50,320 gp; Cost 25,320 gp + 2,000 XP." />
+      <column name="items_id" value="40" />
+      <column name="cost" value="50320" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20020" />
+      <column name="name" value="Screaming Bolt" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="One of these +2 bolts screams when fired, forcing all enemies of the wielder within 20 feet of the path of the bolt to succeed on a DC 14 Will save or become shaken. This is a mind-affecting fear effect. Faint enchantment; CL 5th; Craft Magic Arms and Armor, doom; Price 267gp; Cost 128 gp and 5 sp + 10 XP." />
+      <column name="items_id" value="19" />
+      <column name="cost" value="267" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20021" />
+      <column name="name" value="Shatterspike" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="Wielders without the Improved Sunder feat use Shatterspike as a +1 longsword only; wielders with the Improved Sunder feat add a +4 bonus (including the sword’s +1 enhancement bonus) to the opposed roll when attempting to strike a foe’s weapon. If successful, Shatterspike deals 1d8+4 points of damage plus the wielder’s Strength modifier to the target weapon (the target weapon’s hardness must still be overcome with each hit). Shatterspike can damage weapons with an enhancement bonus of +4 or lower. Strong evocation; CL 13th; Str 13, Craft Arms and Armor, Power Attack, Improved Sunder, shatter; Price 4,315 gp; Cost 2,315 gp + 160 XP; Weight 4 lb." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="4315" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20022" />
+      <column name="name" value="Shifter’s Sorrow" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1/+1 two-bladed sword has blades of alchemical silver. The weapon deals an extra 2d6 points of damage against any creature with the shapechanger subtype. When a shapechanger or a creature in an alternate form (such as a druid using wild shape) is struck by the weapon, it must make a DC 15 Will save or return to its natural form. Strong transmutation; CL 15th; Craft Arms and Armor, baleful polymorph; Price 12,780 gp; Cost 6,780 gp + 480 XP; Weight 10 lb." />
+      <column name="items_id" value="73" />
+      <column name="cost" value="12780" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20023" />
+      <column name="name" value="Silver Dagger, Masterwork" />
+      <column name="enchantment_bonus" value="0" />
+      <column name="description" value="This masterwork alchemical silver dagger is nonmagical. As a masterwork weapon, it has a +1 enhancement bonus on attack rolls. No aura (nonmagical); Price 322 gp." />
+      <column name="items_id" value="6" />
+      <column name="material" value="ALCHEMICAL_SILVER" />
+      <column name="cost" value="322" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20024" />
+      <column name="name" value="Slaying Arrow" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 arrow is keyed to a particular type or subtype of creature. If it strikes such a creature, the target must make a DC 20 Fortitude save or die (or, in the case of unliving targets, be destroyed) instantly. Note that even creatures normally exempt from Fortitude saves (undead and constructs) are subject to this attack. When keyed to a living creature, this is a death effect (and thus death ward protects a target). To determine the type or subtype of creature the arrow is keyed to, roll on the table below. A greater slaying arrow functions just like a normal slaying arrow, but the DC to avoid the death effect is 23. Strong necromancy; CL 13th; Craft Magic Arms and Armor, finger of death (slaying arrow) or heightened finger of death (greater slaying arrow); Price 2,282 gp (slaying arrow) or 4,057 gp (greater slaying arrow); Cost 1,144 gp 5 sp + 91 XP (slaying arrow) or 2,032 gp + 162 XP (greater slaying arrow)." />
+      <column name="items_id" value="58" />
+      <column name="cost" value="2282" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20025" />
+      <column name="name" value="Slaying Arrow Greater" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 arrow is keyed to a particular type or subtype of creature. If it strikes such a creature, the target must make a DC 20 Fortitude save or die (or, in the case of unliving targets, be destroyed) instantly. Note that even creatures normally exempt from Fortitude saves (undead and constructs) are subject to this attack. When keyed to a living creature, this is a death effect (and thus death ward protects a target). To determine the type or subtype of creature the arrow is keyed to, roll on the table below. A greater slaying arrow functions just like a normal slaying arrow, but the DC to avoid the death effect is 23. Strong necromancy; CL 13th; Craft Magic Arms and Armor, finger of death (slaying arrow) or heightened finger of death (greater slaying arrow); Price 2,282 gp (slaying arrow) or 4,057 gp (greater slaying arrow); Cost 1,144 gp 5 sp + 91 XP (slaying arrow) or 2,032 gp + 162 XP (greater slaying arrow)." />
+      <column name="items_id" value="58" />
+      <column name="cost" value="4057" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20026" />
+      <column name="name" value="Sleep Arrow" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This +1 arrow is painted white and has white fletching. If it strikes a foe so that it would normally deal damage, it instead bursts into magical energy that deals nonlethal damage (in the same amount as would be lethal damage) and forces the target to make a DC 11 Will save or fall asleep. Faint enchantment; CL 5th; Craft Magic Arms and Armor, sleep; Price 132 gp; Cost 69 gp 5 sp + 5 XP." />
+      <column name="items_id" value="58" />
+      <column name="cost" value="132" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20027" />
+      <column name="name" value="Sun Blade" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This sword is the size of a bastard sword. However, a sun blade is wielded as if it were a short sword with respect to weight and ease of use. (In other words, the weapon appears to all viewers to be a bastard sword, and deals bastard sword damage, but the wielder feels and reacts as if the weapon were a short sword.) Any individual able to use either a bastard sword or a short sword with proficiency is proficient in the use of a sun blade. Likewise, Weapon Focus and Weapon Specialization in short sword and bastard sword apply equally, but the benefits of those feats do not stack. In normal combat, the glowing golden blade of the weapon is equal to a +2 bastard sword. Against evil creatures, its enhancement bonus is +4. Against Negative Energy Plane creatures or undead creatures, the sword deals double damage (and ×3 on a critical hit instead of the usual ×2). The blade also has a special sunlight power. Once per day, the wielder can swing the blade vigorously above her head while speaking a command word. The sunblade then sheds a bright yellow radiance that is like full daylight. The radiance begins shining in a 10-foot radius around the sword wielder and extends outward at 5 feet per round for 10 rounds thereafter, to create a globe of light with a 60-foot radius. When the wielder stops swinging, the radiance fades to a dim glow that persists for another minute before disappearing entirely. All sun blades are of good alignment, and any evil creature attempting to wield one gains one negative level. The negative level remains as long as the sword is in hand and disappears when the sword is no longer wielded. This negative level never results in actual level loss, but it cannot be overcome in any way (including restoration spells) while the sword is wielded. Moderate evocation; CL 10th; Craft Magic Arms and Armor, daylight, creator must be good; Price 50,335 gp; Cost 25,335 gp + 2,000 XP." />
+      <column name="items_id" value="35" />
+      <column name="cost" value="50335" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20028" />
+      <column name="name" value="Sword of Life Stealing" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="This black iron +2 longsword bestows a negative level when it deals a critical hit. The sword wielder gains 1d6 temporary hit points each time a negative level is bestowed on another. These temporary hit points last for 24 hours. One day after being struck, subjects must make a DC 16 Fortitude save for each negative level or lose a character level. Strong necromancy; CL 17th; Craft Magic Arms and Armor, enervation; Price 25,715 gp; Cost 12,857 gp and 5 sp + 1,029 XP." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="25715" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20029" />
+      <column name="name" value="Sword of the Planes" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="This longsword has an enhancement bonus of +1 on the Material Plane, but on any Elemental Plane its enhancement bonus increases to +2. (The +2 enhancement bonus also applies on the Material Plane when the weapon is used against elementals.) It operates as a +3 longsword on the Astral Plane or the Ethereal Plane or when used against opponents native to either of those planes. On any other plane, or against any outsider, it functions as a +4 longsword. Strong evocation; CL 15th; Craft Magic Arms and Armor, plane shift; Price 22,315 gp; Cost 11,157 gp and 5 sp + 893 XP." />
+      <column name="items_id" value="38" />
+      <column name="cost" value="22315" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20030" />
+      <column name="name" value="Sword of Subtlety" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="A +1 short sword with a thin, dull gray blade, this weapon provides a +4 bonus on its wielder’s attack and damage rolls when he is making a sneak attack with it. Moderate illusion; CL 7th; Craft Magic Arms and Armor, blur; Price 22,310 gp; Cost 11,155 gp + 892 XP." />
+      <column name="items_id" value="35" />
+      <column name="cost" value="22310" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20031" />
+      <column name="name" value="Sylvan Scimitar" />
+      <column name="enchantment_bonus" value="3" />
+      <column name="description" value="This +3 scimitar, when used outdoors in a temperate climate, grants its wielder the use of the Cleave feat and deals an extra 1d6 points of damage. Moderate evocation; CL 11th; Craft Magic Arms and Armor, divine power or creator must be a 7th-level druid; Price 47,315gp; Cost 23,657 gp and 5 sp + 1,893 XP." />
+      <column name="items_id" value="41" />
+      <column name="cost" value="47315" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20032" />
+      <column name="name" value="Trident of Fish Command" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="description" value="The magical properties of this +1 trident with a 6-foot-long haft enable its wielder to charm up to 14 HD of aquatic animals (Will DC 16 negates, animals get a +5 bonus if currently under attack by the wielder or his allies), no two of which can be more than 30 feet apart. The wielder can use this effect up to three times per day. The wielder can communicate with the animals as if using a speak with animals spell. Animals making their saving throw are free of control, but they will not approach within 10 feet of the trident. The trident can be used up to three times per day. Moderate enchantment; CL 7th; Craft Magic Arms and Armor, speak with animals; Price 18,650 gp; Cost 9,325 gp + 746 XP." />
+      <column name="items_id" value="44" />
+      <column name="cost" value="18650" />
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="20033" />
+      <column name="name" value="Trident of Warning" />
+      <column name="enchantment_bonus" value="2" />
+      <column name="description" value="A weapon of this type enables its wielder to determine the location, depth, kind, and number of aquatic predators within 680 feet. A trident of warning must be grasped and pointed in order for the character using it to gain such information, and it requires 1 round to scan a hemisphere with a radius of 680 feet. The weapon is otherwise a +2 trident. Moderate divination; CL 7th; Craft Magic Arms and Armor, locate creature; Price 10,115 gp; Cost 5,057 gp and 5 sp + 405 XP." />
+      <column name="items_id" value="44" />
+      <column name="cost" value="10115" />
+    </insert>
+
+    <insert tableName="enchanted_items">
+      <column name="id" value="30000" />
+      <column name="name" value="Singing Blade" />
+      <column name="enchantment_bonus" value="1" />
+      <column name="modifiers_id" value="60001" />
+      <column name="items_id" value="40" />
+    </insert>
+
+  </changeSet>
+</databaseChangeLog>

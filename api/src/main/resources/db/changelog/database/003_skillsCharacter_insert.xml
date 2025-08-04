@@ -1,0 +1,31 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="106" author="oscar">
+
+        <!-- Puli -->
+        <insert tableName="skills_character">
+            <column name="id" value="1000" />
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="1" />
+            <column name="rank" value="10" />
+        </insert>
+        <insert tableName="skills_character">
+            <column name="id" value="1001" />
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="2" />
+            <column name="rank" value="4" />
+        </insert>
+
+        <!-- Rysio -->
+        <insert tableName="skills_character">
+            <column name="id" value="1101" />
+            <column name="character_card_id" value="101" />
+            <column name="skill_id" value="2" />
+            <column name="rank" value="4" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

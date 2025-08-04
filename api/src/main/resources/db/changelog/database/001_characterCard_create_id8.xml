@@ -1,0 +1,40 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="8" author="damian">
+    <createTable tableName="character_card">
+      <column name="id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" />
+      </column>
+      <column name="character_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="player_name" type="varchar(255)">
+        <constraints nullable="true" />
+      </column>
+      <column name="abilitys" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="sub_race_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="special_attacks" type="jsonb">
+        <constraints nullable="true" />
+      </column>
+      <column name="inventory_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="attacks_id" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="experience" type="int">
+        <constraints nullable="true" />
+      </column>
+      <column name="treasure" type="int">
+        <constraints nullable="true" />
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

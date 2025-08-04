@@ -1,0 +1,27 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="13" author="oscar">
+        <!-- prerequisite_skill -->
+        <createTable tableName="prerequisite_skill">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="skill_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="study_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="rank" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="target" type="jsonb">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+        <!-- prerequisite_skill -->
+    </changeSet>
+</databaseChangeLog>
