@@ -1,13 +1,8 @@
 package pl.kolendateam.dadcard.race.dto;
 
-import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
-import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
-import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 
 @NoArgsConstructor
@@ -16,8 +11,8 @@ public class ArchetypeDTO {
   public int id;
   public String archetypeName;
   public PrerequisiteDTO modifiers;
-  public Set<FeatsDTO> archetypeFeats;
-  public Set<SpecialAbilitiesDTO> specialAbilities;
+  // public Set<FeatsDTO> archetypeFeats;
+  // public Set<SpecialAbilitiesDTO> specialAbilities;
   public int levelAdjustment;
   public String avatarUrl;
 
@@ -29,15 +24,15 @@ public class ArchetypeDTO {
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(archetype.getModifiers())
         : null;
     // MapperModifierBonus.toSetModifierDTO(archetype.getModifiers());
-    this.archetypeFeats =
-      MapperFeats.toFeatsSetDTO(archetype.getArchetypeFeats());
+    // this.archetypeFeats =
+    //   MapperFeats.toFeatsSetDTO(archetype.getArchetypeFeats());
     this.levelAdjustment = archetype.getLevelAdjustment();
-    this.specialAbilities =
-      archetype.getSpecialAbilities() != null
-        ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
-          archetype.getSpecialAbilities()
-        )
-        : null;
+    // this.specialAbilities =
+    //   archetype.getSpecialAbilities() != null
+    // ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+    //   archetype.getSpecialAbilities()
+    // )
+    // : null;
     this.avatarUrl = archetype.getAvatarUrl();
   }
 }

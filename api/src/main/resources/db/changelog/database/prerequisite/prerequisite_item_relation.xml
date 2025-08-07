@@ -1,0 +1,42 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  <changeSet id="relation_class_character_spells_per_day" author="oscar">
+  
+    <!-- unarmed attacks +1 -->
+    <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9003" />
+            <column name="item_id" value="1" />
+    </insert>
+    <!-- unarmed attacks +1 -->
+
+    <!-- unarmed attacks +2 -->
+    <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9004" />
+            <column name="item_id" value="1" />
+        </insert>
+    <!-- unarmed attacks +2 -->
+
+    <!-- unarmed attacks +3 -->
+    <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9005" />
+            <column name="item_id" value="1" />
+        </insert>
+        <!-- unarmed attacks +3 -->
+
+        <!-- unarmed attacks +4 -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9006" />
+            <column name="item_id" value="1" />
+        </insert>
+        <!-- unarmed attacks +4 -->
+         
+        <!-- unarmed attacks +5 -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9007" />
+            <column name="item_id" value="1" />
+        </insert>
+        <!-- unarmed attacks +5 -->
+  
+  </changeSet>
+</databaseChangeLog>

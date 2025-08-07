@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="relation_archetype_modifiers" author="oscar">
+
+        <!-- Half-Dragon -->
+        <update tableName="archetype">
+            <column name="modifiers_id" valueNumeric="91001" />
+        <where>id = 1</where>
+        </update>
+        <!-- Half-Dragon -->
+        <!-- Half-Fiend -->
+        <update tableName="archetype">
+            <column name="modifiers_id" valueNumeric="91002" />
+        <where>id = 2</where>
+        </update>
+        <!-- Half-Fiend -->
+    </changeSet>
+</databaseChangeLog>

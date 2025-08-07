@@ -6,19 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
-import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 
 @NoArgsConstructor
 @Getter
@@ -41,21 +35,21 @@ public class Archetype implements Serializable {
   )
   Prerequisite modifiers;
 
-  @ManyToMany
-  @JoinTable(
-    name = "archetype_feats",
-    joinColumns = @JoinColumn(name = "archetype_id"),
-    inverseJoinColumns = @JoinColumn(name = "feats_id")
-  )
-  Set<Feats> archetypeFeats = new HashSet<>();
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "archetype_feats",
+  //   joinColumns = @JoinColumn(name = "archetype_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "feats_id")
+  // )
+  // Set<Feats> archetypeFeats = new HashSet<>();
 
-  @ManyToMany
-  @JoinTable(
-    name = "archetype_special_abilities",
-    joinColumns = @JoinColumn(name = "archetype_id"),
-    inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
-  )
-  Set<SpecialAbilities> specialAbilities = new HashSet<>();
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "archetype_special_abilities",
+  //   joinColumns = @JoinColumn(name = "archetype_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
+  // )
+  // Set<SpecialAbilities> specialAbilities = new HashSet<>();
 
   byte levelAdjustment;
 

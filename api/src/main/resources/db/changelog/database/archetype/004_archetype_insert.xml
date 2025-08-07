@@ -1,0 +1,36 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="insert_archetype" author="oscar">
+
+    <!-- Silver Half-Dragon -->
+    <insert tableName="archetype">
+      <column name="id" value="1" />
+      <column name="archetype_name" value="Silver Half-Dragon" />
+      <column name="level_adjustment" value="3" />
+      <column name="avatar_url" value="" />
+    </insert>
+    <!-- Silver Half-Dragon -->
+
+    <!-- Half-Fiend -->
+    <insert tableName="archetype">
+      <column name="id" value="2" />
+      <column name="archetype_name" value="Half-Fiend" />
+      <column name="level_adjustment" value="4" />
+      <column name="avatar_url" value="" />
+    </insert>
+    <!-- Half-Fiend -->
+
+    <!-- Vampire -->
+    <insert tableName="archetype">
+      <column name="id" value="3" />
+      <column name="archetype_name" value="Vampire" />
+      <column name="level_adjustment" value="8" />
+      <column name="avatar_url" value="" />
+    </insert>
+    <!-- Vampire -->
+
+
+  </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,73 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  <changeSet id="insert_archetype_modifiers" author="oscar">
+
+    <!-- Half-Dragon -->
+    <insert tableName="prerequisite">
+      <column name="id" value="91001" />
+      <column name="abilitys"
+        value="{
+                &quot;strength&quot; : 8,
+                &quot;constitution&quot; : 2,
+                &quot;intelligence&quot; : 2,
+                &quot;charisma&quot; : 2
+                }" />
+      <column name="armor_class"
+        value="{
+                &quot;naturalArmor&quot; : 4
+                }" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [
+                    &quot;COLD&quot; ,
+                    &quot;SLEEP&quot; ,
+                    &quot;PARALYSIS&quot;
+                    ] } ] }" />
+    </insert>
+    <!-- Half-Dragon -->
+
+    <!-- Half-Fiend -->
+    <insert tableName="prerequisite">
+      <column name="id" value="91002" />
+      <column name="abilitys"
+        value="{
+                &quot;strength&quot; : 4,
+                &quot;dexterity&quot; : 4,
+                &quot;constitution&quot; : 2,
+                &quot;intelligence&quot; : 4,
+                &quot;charisma&quot; : 4
+                }" />
+      <column name="armor_class"
+        value="{
+                &quot;naturalArmor&quot; : 1
+                }" />
+      <column name="speed" value="{
+                &quot;fly&quot; : 30
+                }" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ] } ]
+                    }" />
+    </insert>
+    <!-- Half-Fiend -->
+
+    <!-- Vampire -->
+    <insert tableName="prerequisite">
+      <column name="id" value="91003" />
+      <column name="abilitys"
+        value="{
+                &quot;strength&quot; : 6,
+                &quot;dexterity&quot; : 4
+                }" />
+      <column name="armor_class"
+        value="{
+                &quot;naturalArmor&quot; : 6
+                }" />
+    </insert>
+    <!-- Vampire -->
+
+  </changeSet>
+</databaseChangeLog>

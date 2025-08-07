@@ -1,0 +1,62 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="insert_archetype_prerequisite_special_abilities" author="oscar">
+
+    <!-- Half-Fiend -->
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="301" /><!-- Spell resistance HD + 10 (maximum 35)-->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="151" /><!-- acid 10 -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="161" /><!-- cold 10 -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="181" /> <!-- electricity 10 -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="161" /> <!-- fire 10 -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="1251" /> <!-- 5/magic -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="1252" /> <!-- 10/magic -->
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91001" />
+      <column name="special_abilities_id" value="102" /> <!-- Darkvision -->
+    </insert>
+    <!-- Half-Fiend -->
+
+    <!-- Silver Half-Dragon -->
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91002" />
+      <column name="special_abilities_id" value="10" /> <!-- Breath Weapon -->
+    </insert>
+    <insert tableName="prerequisite_special_abilities">
+      <column name="prerequisite_id" value="91002" />
+      <column name="special_abilities_id" value="102" /> <!-- Darkvision -->
+    </insert>
+    <!-- Silver Half-Dragon -->
+
+  </changeSet>
+</databaseChangeLog>

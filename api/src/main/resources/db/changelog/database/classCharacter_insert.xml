@@ -1,0 +1,297 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="1005" author="oscar">
+    <insert tableName="class_character">
+      <column name="id" value="1" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="BARBARIAN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="12" />
+      <column name="initial_gold" value="[4,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="2" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="BARD" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="6" />
+      <column name="hit_dice" value="6" />
+      <!-- <column name="spells_per_day_id" value="1" /> -->
+      <!-- <column name="spells_known_id" value="2" /> -->
+      <column name="spell_bonus" value="CHARISMA" />
+      <column name="spells_domain" value="BARD" />
+      <column name="initial_gold" value="[4,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="3" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="CLERIC" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="8" />
+      <!-- <column name="spells_per_day_id" value="3" /> -->
+      <!-- <column name="spells_known_id" value="4" /> -->
+      <column name="spell_bonus" value="WISDOM" />
+      <column name="spells_domain" value="CLERIC" />
+      <column name="initial_gold" value="[5,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="4" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="DRUID" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+      <!-- <column name="spells_per_day_id" value="3" /> -->
+      <!-- <column name="spells_known_id" value="4" /> -->
+      <column name="spell_bonus" value="WISDOM" />
+      <column name="spells_domain" value="DRUID" />
+      <column name="initial_gold" value="[2,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="5" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="FIGHTER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="6" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="MONK" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+      <column name="initial_gold" value="[5,D4,1]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="7" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="PALADIN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <!-- <column name="spells_per_day_id" value="5" /> -->
+      <!-- <column name="spells_known_id" value="6" /> -->
+      <column name="spell_bonus" value="WISDOM" />
+      <column name="spells_domain" value="PALADIN" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="8" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="RANGER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhl" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="6" />
+      <column name="hit_dice" value="8" />
+      <!-- <column name="spells_per_day_id" value="5" /> -->
+      <!-- <column name="spells_known_id" value="6" /> -->
+      <column name="spell_bonus" value="WISDOM" />
+      <column name="spells_domain" value="RANGER" />
+      <column name="initial_gold" value="[6,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="9" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="ROGUE" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhl" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="8" />
+      <column name="hit_dice" value="6" />
+      <column name="initial_gold" value="[5,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="10" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="SORCERER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="4" />
+      <!-- <column name="spells_per_day_id" value="7" /> -->
+      <!-- <column name="spells_known_id" value="8" /> -->
+      <column name="spell_bonus" value="CHARISMA" />
+      <column name="spells_domain" value="SORCERER_WIZARD" />
+      <column name="initial_gold" value="[3,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="11" />
+      <column name="class_type" value="BASE_CLASS" />
+      <column name="name" value="WIZARD" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="4" />
+      <!-- <column name="spells_per_day_id" value="3" /> -->
+      <!-- <column name="spells_known_id" value="9" /> -->
+      <column name="spell_bonus" value="INTELLIGENCE" />
+      <column name="spells_domain" value="SORCERER_WIZARD" />
+      <column name="initial_gold" value="[3,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="12" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCANE_ARCHER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hhl" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="8" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="13" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCANE_TRICKSTER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="4" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="14" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ARCHMAGE" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="llh" />
+      <column name="class_bab" value="0.5" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="4" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="15" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="ASSASSIN" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhl" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="4" />
+      <column name="hit_dice" value="6" />
+      <!-- <column name="spells_per_day_id" value="10" /> -->
+      <!-- <column name="spells_known_id" value="11" /> -->
+      <column name="spells_domain" value="ASSASSIN" />
+    </insert>
+    <!-- id:16 -->
+    <insert tableName="class_character">
+      <column name="id" value="16" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="WARSLING_SNIPER" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="lhl" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="6" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="17" />
+      <column name="class_type" value="PRESTIGE_CLASS" />
+      <column name="name" value="STORMLORD" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hlh" />
+      <column name="class_bab" value="0.75" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="8" />
+    </insert>
+
+    <!-- <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="assassin"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="blackguard"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="dragon discipline"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="duelist"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="dwarven defender"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="eldritch knight"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="hierophant"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="horizon walker"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="loremaster"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="mystic theurge"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="shadowdancer"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>
+          <insert tableName="class_character">  
+            <column  name="class_type"  value="PRESTIGE_CLASS"/>  
+            <column  name="name"  value="thaumaturgist"/>
+            <column  name="avatar_url"  value="address value"/>
+          </insert>             -->
+  </changeSet>
+</databaseChangeLog>

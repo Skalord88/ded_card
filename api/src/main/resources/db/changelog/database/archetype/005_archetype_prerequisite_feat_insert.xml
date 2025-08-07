@@ -1,0 +1,25 @@
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="insert_archetype_prerequisite_feat" author="oscar">
+    <!-- Half-Dragon -->
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="91001" />
+      <column name="feats_id" value="50001" />
+    </insert>
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="91001" />
+      <column name="feats_id" value="50002" />
+    </insert>
+    <!-- Half-Dragon -->
+    <!-- Half-Fiend -->
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="91002" />
+      <column name="feats_id" value="50001" />
+    </insert>
+    <!-- Half-Fiend -->
+  </changeSet>
+</databaseChangeLog>

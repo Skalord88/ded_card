@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="relation_character_card_attacks" author="oscar">
+
+        <!-- Puli -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="100" />
+        <where>id = 100</where>
+        </update>
+        <!-- Puli -->
+        <!-- Rysio -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="101" />
+        <where>id = 101</where>
+        </update>
+        <!-- Rysio -->
+        <!-- Niesia -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="102" />
+        <where>id = 102</where>
+        </update>
+        <!-- Niesia -->
+        <!-- Michał -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="103" />
+        <where>id = 103</where>
+        </update>
+        <!-- Michał -->
+        <!-- Andrzej -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="104" />
+        <where>id = 104</where>
+        </update>
+        <!-- Andrzej -->
+        <!-- Madzia -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="105" />
+        <where>id = 105</where>
+        </update>
+        <!-- Madzia -->
+        <!-- Mirek -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="106" />
+        <where>id = 106</where>
+        </update>
+        <!-- Mirek -->
+
+    </changeSet>
+</databaseChangeLog>

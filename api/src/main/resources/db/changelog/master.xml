@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    
+    <include file="db/changelog/database/archetype/001_archetype_create.xml" />
+    <include file="db/changelog/database/feats/001_feats_create.xml" />
+    <include file="db/changelog/database/prerequisite/001_prerequisite_create.xml" />
+    <include file="db/changelog/database/specialabilities/001_special_abilities_create.xml" />
+
+    <include file="db/changelog/database/prerequisite/002_prerequisite_feat_relation.xml" />
+    <include file="db/changelog/database/prerequisite/002_prerequisite_special_abilities_relation.xml" />
+
+    <include file="db/changelog/database/prerequisite/003_prerequisite_feat_keys.xml" />
+    <include file="db/changelog/database/prerequisite/003_prerequisite_special_abilities_keys.xml" />
+    <include file="db/changelog/database/archetype/003_archetype_keys.xml" />
+
+    <include file="db/changelog/database/archetype/004_archetype_insert.xml" />
+    <include file="db/changelog/database/archetype/004_prerequisite_insert.xml" />
+    <include file="db/changelog/database/archetype/004_special_abilities_insert.xml" />
+    <include file="db/changelog/database/feats/004_feats_insert.xml" />
+    <include file="db/changelog/database/specialabilities/004_special_abilities_insert.xml" />
+
+    <include file="db/changelog/database/archetype/005_archetype_prerequisite_feat_insert.xml" />
+    <include file="db/changelog/database/archetype/005_archetype_prerequisite_special_abilities_insert.xml" />
+    <include file="db/changelog/database/archetype/005_modifiers_in_archetype_relation.xml" />
+
+</databaseChangeLog>

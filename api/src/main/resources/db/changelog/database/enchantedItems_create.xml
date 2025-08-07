@@ -1,0 +1,37 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="9" author="oscar">
+        <createTable tableName="enchanted_items">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="items_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="material" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="enchantment_bonus" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="modifiers_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="cost" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="damage" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(5000)">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
