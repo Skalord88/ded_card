@@ -127,7 +127,8 @@
         <insert tableName="prerequisite">
             <column name="id" value="150001" />
             <column name="text" value="Artic Dwarf modifiers" />
-            <column name="saving_throw" value="{ &quot;resistance&quot; : [ {
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;COLD&quot; ]
                     } , {
@@ -135,11 +136,13 @@
                     &quot;target&quot; : [ &quot;POISON&quot; ],
                     &quot;bonus&quot; : 2
                     } ] }" />
-            <column name="abilitys" value="{
+            <column name="abilitys"
+                value="{
                 &quot;strength&quot; : 4,
                 &quot;dexterity&quot; : -2
                 }" />
-            <column name="attack_roll" value="{ &quot;target&quot; :
+            <column name="attack_roll"
+                value="{ &quot;target&quot; :
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -635,7 +638,7 @@
                 value="+2 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
 
-        
+
         <insert tableName="prerequisite">
             <column name="id" value="9005" />
             <column name="attack_roll"
@@ -646,7 +649,7 @@
                 value="+3 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
 
-        
+
         <insert tableName="prerequisite">
             <column name="id" value="9006" />
             <column name="attack_roll"
@@ -657,7 +660,7 @@
                 value="+4 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
 
-        
+
         <insert tableName="prerequisite">
             <column name="id" value="9007" />
             <column name="attack_roll"
@@ -667,7 +670,6 @@
             <column name="text"
                 value="+5 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
-
 
 
         <!-- Armor id:52.000 prerequisite -->
@@ -772,14 +774,13 @@
         </insert>
 
         <!-- Special Weapons id:60.000 prerequisite -->
-        <insert tableName="prerequisite">
-            <column name="id" value="60001" />
-            <column name="text" value="Singing Blade, +2 Perform" />
-        </insert>
+
         <!-- Special Weapons id:60.000 prerequisite -->
 
-        <!-- prerequisite id:70.000 special_abilities -->
-        <!-- 70001 Stormlord Electricity Resistance -->
+        <!-- prerequisite id:70.000 enchantment_special_abilities -->
+        <!-- 70001 ACID_RESISTANCE 10 -->
+        <!-- 70002 ACID_RESISTANCE 20 -->
+        <!-- 70003 ACID_RESISTANCE 30 -->
 
         <!-- Size id:90.000 -->
         <!-- FINE -->
@@ -799,7 +800,6 @@
             <column name="text" value="Diminutive size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90003" />
@@ -809,7 +809,6 @@
             <column name="text" value="Tiny size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90004" />
@@ -819,7 +818,6 @@
             <column name="text" value="Small size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90006" />
@@ -829,7 +827,6 @@
             <column name="text" value="Large size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90007" />
@@ -839,7 +836,6 @@
             <column name="text" value="Huge size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90008" />
@@ -849,7 +845,6 @@
             <column name="text" value="Gargantuan size modifiers" />
         </insert>
 
-        
 
         <insert tableName="prerequisite">
             <column name="id" value="90009" />
@@ -858,8 +853,6 @@
             <column name="armor_class" value="{ &quot;sizeBonus&quot; : -4 }" />
             <column name="text" value="Colossal size modifiers" />
         </insert>
-
-        
 
 
     </changeSet>

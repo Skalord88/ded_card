@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="relation_archetype_modifiers" author="oscar">
+
+        <update tableName="enchantment">
+            <!-- ACID_RESISTANCE 10 -->
+            <column name="modifiers_id" valueNumeric="70001" />
+        <where>id
+            = 1</where>
+        </update>
+
+        <update tableName="enchantment">
+            <!-- ACID_RESISTANCE_IMPROVED 20 -->
+            <column name="modifiers_id" valueNumeric="70002" />
+        <where>id
+            = 2</where>
+        </update>
+
+        <update tableName="enchantment">
+            <!-- ACID_RESISTANCE_IMPROVED 30 -->
+            <column name="modifiers_id" valueNumeric="70003" />
+        <where>id
+            = 3</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

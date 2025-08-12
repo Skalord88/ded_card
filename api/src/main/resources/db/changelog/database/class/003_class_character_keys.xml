@@ -1,0 +1,22 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="key_class_pc_character_card" author="oscar">
+        <addForeignKeyConstraint
+            baseTableName="class_character"
+            baseColumnNames="spells_per_day_id"
+            constraintName="fk_class_character_spells_per_day"
+            referencedTableName="spells_table"
+            referencedColumnNames="id" />
+
+        <addForeignKeyConstraint
+            baseTableName="class_character"
+            baseColumnNames="spells_known_id"
+            constraintName="fk_class_character_spells_known"
+            referencedTableName="spells_table"
+            referencedColumnNames="id" />
+
+    </changeSet>
+</databaseChangeLog>

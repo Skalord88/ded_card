@@ -34,6 +34,7 @@ public class ArmorsDTO implements Serializable {
   public String description;
   public MaterialEnum material;
   public Integer enchantmentBonus;
+
   public List<EnchantmentDTO> enchantment;
 
   public ArmorsDTO(Armors item) {

@@ -3,27 +3,71 @@
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-    
+
     <include file="db/changelog/database/archetype/001_archetype_create.xml" />
+    <include file="db/changelog/database/attacks/001_attacks_create.xml" />
+    <include file="db/changelog/database/enchanteditems/001_enchanted_items_create.xml" />
+    <include file="db/changelog/database/enchantment/001_enchantment_create.xml" />
     <include file="db/changelog/database/feats/001_feats_create.xml" />
+    <include file="db/changelog/database/items/001_items_create.xml" />
+    <include file="db/changelog/database/inventory/001_inventory_create.xml" />
     <include file="db/changelog/database/prerequisite/001_prerequisite_create.xml" />
     <include file="db/changelog/database/specialabilities/001_special_abilities_create.xml" />
+    <include file="db/changelog/database/charactercard/001_character_card_create.xml" />
+    <include file="db/changelog/database/spells/001_book_create.xml" />
+    <include file="db/changelog/database/spells/001_spells_create.xml" />
+    <include file="db/changelog/database/spells/001_spells_table_create.xml" />
+    <include file="db/changelog/database/spells/001_domain_create.xml" />
+    <include file="db/changelog/database/class/001_class_character_create.xml" />
 
+    <include file="db/changelog/database/enchanteditems/002_enchanted_items_enchantment_relation.xml" />
     <include file="db/changelog/database/prerequisite/002_prerequisite_feat_relation.xml" />
     <include file="db/changelog/database/prerequisite/002_prerequisite_special_abilities_relation.xml" />
+    <include file="db/changelog/database/inventory/002_backpack_create.xml" />
+    <include file="db/changelog/database/charactercard/002_character_archetypes_create.xml" />
+    <include file="db/changelog/database/spells/002_spells_book_create.xml" />
 
+    <include file="db/changelog/database/archetype/003_archetype_keys.xml" />
+    <include file="db/changelog/database/attacks/003_attacks_keys.xml" />
+    <include file="db/changelog/database/enchanteditems/003_enchanted_items_keys.xml" />
+    <include file="db/changelog/database/enchantment/003_enchantment_keys.xml" />
     <include file="db/changelog/database/prerequisite/003_prerequisite_feat_keys.xml" />
     <include file="db/changelog/database/prerequisite/003_prerequisite_special_abilities_keys.xml" />
-    <include file="db/changelog/database/archetype/003_archetype_keys.xml" />
+    <include file="db/changelog/database/inventory/003_inventory_keys.xml" />
+    <include file="db/changelog/database/charactercard/003_character_archetype_keys.xml" />
+    <include file="db/changelog/database/spells/003_book_keys.xml" />
+    <include file="db/changelog/database/spells/003_spells_book_keys.xml" />
 
     <include file="db/changelog/database/archetype/004_archetype_insert.xml" />
     <include file="db/changelog/database/archetype/004_prerequisite_insert.xml" />
     <include file="db/changelog/database/archetype/004_special_abilities_insert.xml" />
+    <include file="db/changelog/database/enchanteditems/004_enchanted_items_insert.xml" />
+    <include file="db/changelog/database/enchanteditems/004_prerequisite_insert.xml" />
     <include file="db/changelog/database/feats/004_feats_insert.xml" />
+    <include file="db/changelog/database/items/004_items_insert.xml" />
+    <include file="db/changelog/database/enchantment/004_enchantment_insert.xml" />
+    <include file="db/changelog/database/enchantment/004_prerequisite_insert.xml" />
     <include file="db/changelog/database/specialabilities/004_special_abilities_insert.xml" />
+    <include file="db/changelog/database/inventory/004_inventory_insert.xml" />
+    <include file="db/changelog/database/charactercard/004_character_insert.xml" />
+    <include file="db/changelog/database/spells/004_book_insert.xml" />
+    <include file="db/changelog/database/spells/004_spells_insert.xml" />
+    <include file="db/changelog/database/spells/004_spells_table_insert.xml" />
+    <include file="db/changelog/database/spells/004_domains_insert.xml" />
+    <include file="db/changelog/database/class/004_class_character_insert.xml" />
 
-    <include file="db/changelog/database/archetype/005_archetype_prerequisite_feat_insert.xml" />
     <include file="db/changelog/database/archetype/005_archetype_prerequisite_special_abilities_insert.xml" />
-    <include file="db/changelog/database/archetype/005_modifiers_in_archetype_relation.xml" />
-
+    <include file="db/changelog/database/archetype/005_modifiers_in_archetype_update.xml" />
+    <include file="db/changelog/database/archetype/005_archetype_prerequisite_feat_insert.xml" />
+    <include file="db/changelog/database/enchanteditems/005_enchanted_items_enchantment_insert.xml" />
+    <include file="db/changelog/database/enchanteditems/005_items_in_enchanted_items_update.xml" />
+    <include file="db/changelog/database/enchanteditems/005_modifier_in_enchanted_items_update.xml" />
+    <include file="db/changelog/database/enchantment/005_enchantment_prerequisite_special_abilities_insert.xml" />
+    <include file="db/changelog/database/enchantment/005_modifiers_in_enchantment_update.xml" />
+    <include file="db/changelog/database/inventory/005_backpack_insert.xml" />
+    <include file="db/changelog/database/inventory/005_inventory_update.xml" />
+    <include file="db/changelog/database/charactercard/005_character_archetype_insert.xml" />
+    <include file="db/changelog/database/attacks/005_attacks_insert.xml" />
+    <include file="db/changelog/database/spells/005_book_in_character_update.xml" />
+    <include file="db/changelog/database/spells/005_spells_book_insert.xml" />
 </databaseChangeLog>

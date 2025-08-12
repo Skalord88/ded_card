@@ -1,0 +1,25 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="create_domains" author="oscar">
+        <createTable tableName="domains">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="domain" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="granted_power" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="list_of_spells" type="json">
+                <constraints nullable="true" />
+            </column>
+            <column name="modifiers" type="json">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

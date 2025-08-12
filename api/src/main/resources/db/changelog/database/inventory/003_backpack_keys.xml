@@ -1,0 +1,18 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="key_backpack" author="oscar">
+        <addForeignKeyConstraint baseTableName="backpack"
+            baseColumnNames="inventory_id"
+            constraintName="fk_inventory_backpack_inventory"
+            referencedTableName="items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="backpack"
+            baseColumnNames="items_id"
+            constraintName="fk_inventory_backpack_backpack"
+            referencedTableName="items"
+            referencedColumnNames="id" />
+        </changeSet>
+</databaseChangeLog>

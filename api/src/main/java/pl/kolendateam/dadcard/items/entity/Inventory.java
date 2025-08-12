@@ -432,11 +432,12 @@ public class Inventory {
       .filter(en ->
         newEnchanted.getItem().getId() == en.getItem().getId() &&
         Objects.equals(newEnchanted.getMaterial(), en.getMaterial()) &&
-        newEnchanted.getEnchantmentBonus() == en.getEnchantmentBonus() &&
-        areEnchantmentsEqualById(
-          newEnchanted.getEnchantment(),
-          en.getEnchantment()
-        )
+        newEnchanted.getEnchantmentBonus() == en.getEnchantmentBonus()
+      // &&
+      // areEnchantmentsEqualById(
+      // newEnchanted.getEnchantment(),
+      // en.getEnchantment()
+      // )
       )
       .findFirst();
   }

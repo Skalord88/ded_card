@@ -1,0 +1,14 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="relation_book_in_character" author="oscar">
+
+        <update tableName="book">
+            <!-- Puli -->
+            <column name="character_id" valueNumeric="100" />
+        <where>id
+            = 1000</where>
+        </update>
+        
+    </changeSet>
+</databaseChangeLog>

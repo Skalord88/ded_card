@@ -43,7 +43,8 @@ public class WeaponsDTO implements Serializable {
   public String description;
   public MaterialEnum material;
   public Integer enchantmentBonus;
-  public List<EnchantmentDTO> enchantment;
+
+  // public List<EnchantmentDTO> enchantment;
 
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();
@@ -74,7 +75,7 @@ public class WeaponsDTO implements Serializable {
     this.type = typ;
     this.description = item.getDescription();
     this.material = item.getMaterial();
-    this.enchantment = null;
+    // this.enchantment = null;
   }
 
   public WeaponsDTO(EnchantedItems item) {
@@ -111,9 +112,9 @@ public class WeaponsDTO implements Serializable {
       item.getMaterial() == null ? weaponDTO.material : item.getMaterial();
     this.enchantmentBonus =
       item.getEnchantmentBonus() != null ? item.getEnchantmentBonus() : 0;
-    this.enchantment =
-      item.getEnchantment() != null
-        ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())
-        : null;
+    // this.enchantment =
+    //   item.getEnchantment() != null
+    //     ? MapperEnchantment.toEnchantmentDTOList(item.getEnchantment())
+    //     : null;
   }
 }

@@ -1,0 +1,38 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="key_enchanted_items" author="oscar">
+
+        <!-- modifiers_id -->
+        <addForeignKeyConstraint
+            baseTableName="enchanted_items"
+            baseColumnNames="modifiers_id"
+            referencedTableName="prerequisite"
+            referencedColumnNames="id"
+            constraintName="fk_enchanted_items_modifiers" />
+
+        <!-- items_id -->
+        <addForeignKeyConstraint
+            baseTableName="enchanted_items"
+            baseColumnNames="items_id"
+            referencedTableName="items"
+            referencedColumnNames="id"
+            constraintName="fk_items_modifiers" />
+
+        <addForeignKeyConstraint
+            baseTableName="enchanted_items_enchantment"
+            baseColumnNames="enchanted_items_id"
+            constraintName="fk_enchanted_items_enchantment_enchanted_items"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="enchanted_items_enchantment"
+            baseColumnNames="enchantment_id"
+            constraintName="fk_enchanted_items_enchantment_enchantment"
+            referencedTableName="enchantment"
+            referencedColumnNames="id" />
+
+    </changeSet>
+</databaseChangeLog>

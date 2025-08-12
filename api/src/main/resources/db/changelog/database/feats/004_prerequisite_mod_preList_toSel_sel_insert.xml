@@ -1,0 +1,451 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  <changeSet id="insert_prerequisite_in_feats" author="oscar">
+
+    <!-- Acrobatic [General] -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1001" />
+      <column name="text" value="+2 Jump and Tumble" />
+    </insert>
+
+    <!-- Agile [General] -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1002" />
+      <column name="text" value="+2 Balance and Escape Artist" />
+    </insert>
+
+    <!-- Alertness [General] -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1003" />
+      <column name="text" value="+2 Listen and Spot" />
+    </insert>
+
+    <!-- Animal Affinity [General] -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1004" />
+      <column name="text" value="+2 Handle Animal and Ride" />
+    </insert>
+
+    <!-- Athletic [General] -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1005" />
+      <column name="text" value="+2 Climb and Swim" />
+    </insert>
+
+    <!-- Armor Proficiency (Heavy) [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110001" />
+      <column name="text" value="Armor Proficiency (light), Armor Proficiency (medium)." />
+    </insert>
+
+    <!-- Armor Proficiency (Heavy) [General] selected -->
+    <insert tableName="prerequisite">
+      <column name="id" value="5001" />
+      <column name="armor_type" value="HEAVY_ARMOR" />
+      <column name="text" value="Armor Proficiency (Heavy)" />
+    </insert>
+
+    <!-- Armor Proficiency (Medium) [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110002" />
+      <column name="text" value="Armor Proficiency (light)." />
+    </insert>
+
+    <!-- Armor Proficiency (Medium) [General] selected -->
+    <insert tableName="prerequisite">
+      <column name="id" value="5003" />
+      <column name="armor_type" value="MEDIUM_ARMOR" />
+      <column name="text" value="Armor Proficiency (Medium)" />
+    </insert>
+
+    <!-- Armor Proficiency (Light) [General] selected -->
+    <insert tableName="prerequisite">
+      <column name="id" value="5002" />
+      <column name="armor_type" value="LIGHT_ARMOR" />
+      <column name="text" value="Armor Proficiency (Light)" />
+    </insert>
+
+    <!-- Brew Potion [Item Creation] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110003" />
+      <column name="caster"
+        value="[
+                {&quot;level&quot; : 3 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
+            ]" />
+      <column name="text" value="Caster level 3rd." />
+    </insert>
+
+    <!-- Cleave [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110004" />
+      <column name="abilitys"
+        value="{&quot;strength&quot; : 13}" />
+      <column name="text" value="Str 13, Power Attack." />
+    </insert>
+
+    <!-- Combat Casting [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1006" />
+      <column name="text" value="+4 Concentration" />
+    </insert>
+
+    <!-- Combat Expertise [General] pre -->
+     <insert tableName="prerequisite">
+      <column name="id" value="110005" />
+      <column name="abilitys"
+        value="{ &quot;intelligence&quot; : 13 }" />
+      <column name="text" value="Int 13." />
+    </insert>
+
+    <!-- Craft Magic Arms And Armor [Item Creation] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110006" />
+      <column name="caster"
+        value="[{&quot;level&quot; : 5 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}]" />
+      <column name="text" value="Caster level 5th." />
+    </insert>
+
+    <!-- Craft Rod [Item Creation] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110007" />
+      <column name="caster"
+        value="[{&quot;level&quot; : 9 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}]" />
+      <column name="text" value="Caster level 9th." />
+    </insert>
+
+    <!-- Craft Staff [Item Creation] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110008" />
+      <column name="caster"
+        value="[
+                {&quot;level&quot; : 12 , &quot;classDomain&quot; : &quot;CASTER_LEVEL&quot;}
+                ]" />
+      <column name="text" value="Caster level 12th." />
+    </insert>
+
+    <!-- Deceitful [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1007" />
+      <column name="text" value="+2 Disguise and Profession" />
+    </insert>
+
+    <!-- Deflect Arrows [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110011" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="text" value="Dex 13, Improved Unarmed Strike." />
+    </insert>
+
+    <!-- Deft Hands [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1008" />
+      <column name="text" value="+2 Sleight of Hand and Use Rope" />
+    </insert>
+
+    <!-- Diehard [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110056" />
+      <column name="text" value="Endurance." />
+    </insert>
+
+    <!-- Diligent [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1009" />
+      <column name="text" value="+2 Appraise and Profession" />
+    </insert>
+
+    <!-- Dodge [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110012" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="text" value="Dex 13." />
+    </insert>
+
+    <!-- Exotic Weapon Proficiency [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110013" />
+      <column name="bab" value="1" />
+      <column name="text"
+        value="Base attack bonus +1 (plus Str 13 for bastard sword or dwarven waraxe)." />
+    </insert>
+
+    <!-- Exotic Weapon Proficiency [General] toSelect -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2004" />
+      <column name="weapon_type" value="EXOTIC" />
+    </insert>
+
+    <!-- Extra Turning [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110014" />
+      <column name="text" value="Ability to turn or rebuke creatures." />
+    </insert>
+
+    <!-- Far Shot [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110015" />
+      <column name="text" value="Point Blank Shot." />
+    </insert>
+
+    <!-- Great Cleave [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110017" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="bab" value="4" />
+      <column name="text" value="Str 13, Cleave, Power Attack, base attack bonus +4." />
+    </insert>
+
+    <!-- Great Fortitude [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1010" />
+      <column name="saving_throw"
+        value="{
+            &quot;fortitude&quot; : 2
+            }" />
+      <column name="text" value="+2 Fortitude" />
+    </insert>
+
+    <!-- Greater Spell Focus [General] toSelect -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110018" />
+      <column name="text"
+        value="Choose a school of magic to which you already have applied the Spell Focus feat." />
+    </insert>
+
+    <!-- Greater Spell Penetration [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110019" />
+      <column name="text" value="Spell Penetration." />
+    </insert>
+
+    <!-- Greater Two-Weapon Fighting [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110020" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 19 }" />
+      <column name="bab" value="11" />
+      <column name="text"
+        value="Dex 19, Improved Two-Weapon Fighting, Two-Weapon Fighting, base attack bonus +11." />
+    </insert>
+
+    <!-- Greater Weapon Focus [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110021" />
+      <column name="class_pc"
+        value="[{
+                &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 8
+            }]" />
+      <column name="text"
+        value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 8th." />
+    </insert>
+
+    <!-- Greater Weapon Focus [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1023" />
+      <column name="attack_roll"
+        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+    </insert>
+
+    <!-- Greater Weapon Specialization [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110022" />
+      <column name="class_pc"
+        value="[{
+                &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 12
+            }]" />
+      <column name="text"
+        value="Proficiency with selected weapon, Greater Weapon Focus with selected weapon, Weapon Focus with selected weapon, Weapon Specialization with selected weapon, fighter level 12th." />
+    </insert>
+
+    <!-- Greater Weapon Specialization [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1022" />
+      <column name="damage_bonus"
+        value="{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
+    </insert>
+
+    <!-- Improved Bull Rush [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110023" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="text" value="Str 13, Power Attack." />
+    </insert>
+
+    <!-- Improved Critical [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110024" />
+      <column name="bab" value="8" />
+      <column name="text" value="Proficient with weapon, base attack bonus +8." />
+    </insert>
+
+    <!-- Improved Critical [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1024" />
+      <column name="attack_roll"
+        value="{ &quot;improved&quot; : &quot;true&quot;, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text"
+        value="Increment range of critical on the selected weapon." />
+    </insert>
+
+    <!-- Improved Disarm [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110025" />
+      <column name="abilitys" value="{ &quot;intelligence&quot; : 13 }" />
+      <column name="text" value="Int 13, Combat Expertise." />
+    </insert>
+
+    <!-- Improved Familiar [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110026" />
+      <column name="text"
+        value="Ability to acquire a new familiar, compatible alignment, sufficiently high level (see below)." />
+    </insert>
+
+    <!-- Improved Feint [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="100027" />
+      <column name="abilitys" value="{ &quot;intelligence&quot; : 13 }" />
+      <column name="text" value="Int 13, Combat Expertise." />
+    </insert>
+
+    <!-- Improved Grapple [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="100028" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="text" value="Dex 13, Improved Unarmed Strike." />
+    </insert>
+
+    <!-- Improved Initiative [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1011" />
+      <column name="initiative" value="4" />
+      <column name="text" value="+4 Initiative" />
+    </insert>
+
+    <!-- Improved Overrun [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="100029" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="text" value="Str 13, Power Attack." />
+    </insert>
+
+    <!-- Improved Precise Shot [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110030" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 19 }" />
+      <column name="bab" value="11" />
+      <column name="text"
+        value="Dex 19, Point Blank Shot, Precise Shot, base attack bonus +11." />
+    </insert>
+
+    <!-- Improved Shield Bash [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110031" />
+      <column name="text" value="Shield Proficiency." />
+    </insert>
+
+    <!-- Improved Shield Bash [General] selected -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2002" />
+      <column name="text" value="Shield Proficiency." />
+    </insert>
+
+    <!-- Improved Sunder [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="100032" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="text" value="Str 13, Power Attack." />
+    </insert>
+
+    <!-- Improved Trip [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="100033" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="text" value="Int 13, Combat Expertise." />
+    </insert>
+
+    <!-- Improved Two-Weapon Fighting [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110034" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 17 }" />
+      <column name="bab" value="6" />
+      <column name="text" value="Dex 17, Two-Weapon Fighting, base attack bonus +6." />
+    </insert>
+
+    <!-- Investigator [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1012" />
+      <column name="text" value="+2 Gather Information and Search" />
+    </insert>
+
+    <!-- Iron Will [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1013" />
+      <column name="saving_throw"
+        value="{
+            &quot;will&quot; : 2
+            }" />
+      <column name="text" value="+2 Will" />
+    </insert>
+
+    <!-- Leadership [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110035" />
+      <column name="class_pc"
+        value="[{
+                &quot;classe&quot; : &quot;CLASS&quot; , &quot;level&quot; : 6
+            }]" />
+      <column name="text" value="Character level 6th." />
+    </insert>
+
+    <!-- Lightning Reflexes [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1014" />
+      <column name="saving_throw"
+        value="{
+            &quot;reflex&quot; : 2
+            }" />
+      <column name="text" value="+2 Reflex" />
+    </insert>
+
+    <!-- Magical Aptitude [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1015" />
+      <column name="text" value="+2 Spellcraft and Use Magic Device" />
+    </insert>
+
+    <!-- Manyshot [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110036" />
+      <column name="bab" value="6" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 17 }" />
+      <column name="text" value="Dex 17, Point Blank Shot, Rapid Shot, base attack bonus +6." />
+    </insert>
+
+    <!-- Martial Weapon Proficiency [General] sel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2007" />
+      <column name="weapon_type"
+        value="MARTIAL" />
+      <column name="text" value="Martial Weapon Proficiency." />
+    </insert>
+
+    <!-- Mobility [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110038" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="text" value="Dex 13, Dodge." />
+    </insert>
+
+    <!-- Mounted Archery [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110039" />
+      <column name="text" value="Ride 1 rank, Mounted Combat." />
+    </insert>
+
+  </changeSet>
+</databaseChangeLog>

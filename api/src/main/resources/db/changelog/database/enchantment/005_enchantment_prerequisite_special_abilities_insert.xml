@@ -1,0 +1,27 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="insert_archetype_prerequisite_special_abilities" author="oscar">
+
+    <insert tableName="prerequisite_special_abilities">
+      <!-- ACID_RESISTANCE 10 -->
+      <column name="prerequisite_id" value="70001" />
+      <column name="special_abilities_id" value="151" />
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <!-- ACID_RESISTANCE_IMPROVED 20 -->
+      <column name="prerequisite_id" value="70002" />
+      <column name="special_abilities_id" value="153" />
+    </insert>
+
+    <insert tableName="prerequisite_special_abilities">
+      <!-- ACID_RESISTANCE_IMPROVED 30 -->
+      <column name="prerequisite_id" value="70003" />
+      <column name="special_abilities_id" value="155" />
+    </insert>
+
+  </changeSet>
+</databaseChangeLog>

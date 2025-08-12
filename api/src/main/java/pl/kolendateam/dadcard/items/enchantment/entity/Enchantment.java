@@ -38,13 +38,13 @@ public class Enchantment implements Serializable {
   )
   Prerequisite modifiers;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(
-    name = "special_abilities_id",
-    referencedColumnName = "id",
-    nullable = true
-  )
-  SpecialAbilities specialAbilities;
+  // @OneToOne(cascade = CascadeType.PERSIST)
+  // @JoinColumn(
+  //   name = "special_abilities_id",
+  //   referencedColumnName = "id",
+  //   nullable = true
+  // )
+  // SpecialAbilities specialAbilities;
 
   @Enumerated(EnumType.STRING)
   ItemTypeEnum itemType;

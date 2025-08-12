@@ -1,0 +1,38 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="key_attacks" author="oscar">
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_onefirst"
+            constraintName="fk_attacks_onefirst"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_onesecond"
+            constraintName="fk_attacks_onesecond"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_oneadditional"
+            constraintName="fk_attacks_oneadditional"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_twofirst"
+            constraintName="fk_attacks_twofirst"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_twosecond"
+            constraintName="fk_attacks_twosecond"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="attacks"
+            baseColumnNames="attacks_id_twoadditional"
+            constraintName="fk_attacks_twoadditional"
+            referencedTableName="enchanted_items"
+            referencedColumnNames="id" />
+        </changeSet>
+</databaseChangeLog>
