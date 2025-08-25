@@ -20,7 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.entity.ClassFeat;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.entity.Skill;
 import pl.kolendateam.dadcard.skills.entity.Study;
@@ -76,7 +76,7 @@ public class ClassCharacter implements Serializable {
     cascade = CascadeType.ALL,
     orphanRemoval = true
   )
-  Set<ClassFeats> availableFeats = new HashSet<>();
+  Set<ClassFeat> availableFeats = new HashSet<>();
 
   @ManyToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "spells_per_day_id", referencedColumnName = "id")

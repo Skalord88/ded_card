@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_archetype_character" author="oscar">
+    <changeSet id="003_character_archetype_keys" author="oscar">
         <addForeignKeyConstraint
             baseTableName="character_archetypes"
             baseColumnNames="character_card_id"

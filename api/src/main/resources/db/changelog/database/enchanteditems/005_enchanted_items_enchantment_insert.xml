@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="insert_enchanted_items_enchantment" author="oscar">
+  <changeSet id="005_enchanted_items_enchantment_insert" author="oscar">
 
     <!-- Shortspear Shock +1 -->
     <insert tableName="enchanted_items_enchantment">

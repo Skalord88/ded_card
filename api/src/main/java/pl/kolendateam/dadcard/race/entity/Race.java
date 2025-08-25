@@ -6,17 +6,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.feats.entity.Feats;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 
 @NoArgsConstructor
@@ -42,15 +37,14 @@ public class Race implements Serializable {
   )
   Prerequisite modifiers;
 
-  @ManyToMany
-  @JoinTable(
-    name = "race_feats",
-    joinColumns = @JoinColumn(name = "race_id"),
-    inverseJoinColumns = @JoinColumn(name = "feats_id")
-  )
-  Set<Feats> raceFeats = new HashSet<>();
-
   public Race(int n) {
     this.id = n;
   }
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "race_feats",
+  //   joinColumns = @JoinColumn(name = "race_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "feats_id")
+  // )
+  // Set<Feat> raceFeats = new HashSet<>();
 }

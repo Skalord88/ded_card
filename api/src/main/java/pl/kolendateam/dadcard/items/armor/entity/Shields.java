@@ -12,8 +12,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 
 @Entity
@@ -21,7 +21,7 @@ import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 @AllArgsConstructor
 @Getter
 @DiscriminatorValue(value = "SHIELD")
-public class Shields extends Items {
+public class Shields extends Item {
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum shieldName;

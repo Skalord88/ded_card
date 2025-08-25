@@ -1,0 +1,81 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_feat_pc_insert" author="oscar">
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110101" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- Weapon Focus [General] -->
+            <!-- <column name="feat_id" value="107" /> -->
+            <column name="level" value="1" />
+            <!-- <column name="selected_id" value="110101" /> -->
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="110101" />
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110102" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- Point Blank Shot [General] -->
+            <!-- <column name="feat_id" value="75" /> -->
+            <column name="level" value="3" />
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110103" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- Improved Shield Bash [General] -->
+            <!-- <column name="feat_id" value="54" />  -->
+            <column name="level" value="6" />
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110104" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- Rapid Shot [General] -->
+            <!-- <column name="feat_id" value="81" />  -->
+            <column name="level" value="9" />
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110105" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- Improved Critical [General] -->
+            <!-- <column name="feat_id" value="46" /> -->
+            <column name="level" value="12" />
+            <!-- <column name="selected_id" value="110101" /> -->
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110106" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- <column name="class_feat_id" value="171" /> -->
+            <!-- Two-Weapon Fighting -->
+            <!-- <column name="selected_id" value="110106" />  -->
+        </insert>
+
+        <insert tableName="prerequisite">
+            <!-- Combat style -->
+            <!-- Two-Weapon Fighting -->
+            <column name="id" value="110106" />
+        </insert>
+
+        <insert tableName="feat_pc">
+            <column name="id" value="110107" />
+            <!-- <column name="character_card_id" value="101" /> -->
+            <!-- <column name="class_feat_id" value="176" /> -->
+            <!-- Improved Two-Weapon Fighting -->
+            <!-- <column name="selected_id" value="110107" />  -->
+        </insert>
+
+        <insert tableName="prerequisite">
+            <!-- Improved Two-Weapon Fighting -->
+            <column name="id" value="110107" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

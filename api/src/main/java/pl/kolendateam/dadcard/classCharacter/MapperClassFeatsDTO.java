@@ -5,22 +5,22 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
-import pl.kolendateam.dadcard.feats.entity.ClassFeats;
+import pl.kolendateam.dadcard.feats.dto.ClassFeatDTO;
+import pl.kolendateam.dadcard.feats.entity.ClassFeat;
 
 public class MapperClassFeatsDTO {
 
-  public static Set<ClassFeatsDTO> toSetClassFeatDTO(Set<ClassFeats> feats) {
-    Set<ClassFeatsDTO> featsDTO = new HashSet<>();
+  public static Set<ClassFeatDTO> toSetClassFeatDTO(Set<ClassFeat> feats) {
+    Set<ClassFeatDTO> featsDTO = new HashSet<>();
     if (feats != null) {
       feats.forEach(f -> {
-        ClassFeatsDTO featDTO = new ClassFeatsDTO(f);
+        ClassFeatDTO featDTO = new ClassFeatDTO(f);
         featsDTO.add(featDTO);
       });
     }
-    Set<ClassFeatsDTO> sortedFeatsDTO = featsDTO
+    Set<ClassFeatDTO> sortedFeatsDTO = featsDTO
       .stream()
-      .sorted(Comparator.comparingInt(ClassFeatsDTO::getLevel))
+      .sorted(Comparator.comparingInt(ClassFeatDTO::getLevel))
       .collect(Collectors.toCollection(LinkedHashSet::new));
 
     return sortedFeatsDTO;

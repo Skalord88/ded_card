@@ -3,14 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_enchantment" author="oscar">
-        <!-- enchantment -->
+    <changeSet id="003_enchantment_keys" author="oscar">
         <addForeignKeyConstraint
             baseTableName="enchantment"
             baseColumnNames="modifiers_id"
             referencedTableName="prerequisite"
             referencedColumnNames="id"
             constraintName="fk_enchantment_modifiers" />
-        <!-- enchantment -->
         </changeSet>
 </databaseChangeLog>

@@ -23,7 +23,7 @@ import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
 import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
@@ -62,7 +62,7 @@ public class PrerequisiteDTO {
   public WeaponCategoriesEnum weaponType;
   public List<SchoolDTO> schools;
   public ClassPcLevel[] classPc;
-  public List<ItemsDTO> items;
+  public List<ItemDTO> items;
   public Domains domain;
   public Set<SpecialAbilitiesDTO> specialAbilities;
   public String text;

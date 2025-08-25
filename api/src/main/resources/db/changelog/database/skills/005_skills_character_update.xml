@@ -1,0 +1,34 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="update_skills_character" author="oscar">
+
+        <!-- Puli -->
+        <update tableName="skills_character">
+            <!-- <column name="id" value="1000" /> -->
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="1" />
+            <!-- <column name="rank" value="10" /> -->
+            <where>id = 1000</where>
+        </update>
+        <update tableName="skills_character">
+            <!-- <column name="id" value="1001" /> -->
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="2" />
+            <!-- <column name="rank" value="4" /> -->
+            <where>id = 1001</where>
+        </update>
+
+        <!-- Rysio -->
+        <update tableName="skills_character">
+            <!-- <column name="id" value="1101" /> -->
+            <column name="character_card_id" value="101" />
+            <column name="skill_id" value="2" />
+            <!-- <column name="rank" value="4" /> -->
+            <where>id = 1101</where>
+        </update>
+
+    </changeSet>
+</databaseChangeLog>

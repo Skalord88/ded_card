@@ -13,10 +13,9 @@ import jakarta.persistence.OneToOne;
 import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 
@@ -25,7 +24,7 @@ import pl.kolendateam.dadcard.spells.entity.Spells;
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @DiscriminatorValue(value = "WONDROUS_ITEM")
-public class WondrousItems extends Items {
+public class WondrousItems extends Item {
 
   @Enumerated(EnumType.STRING)
   ItemTypeEnum wondrousType;
@@ -33,7 +32,7 @@ public class WondrousItems extends Items {
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
     name = "items_spells",
-    joinColumns = @JoinColumn(name = "items_id"),
+    joinColumns = @JoinColumn(name = "item_id"),
     inverseJoinColumns = @JoinColumn(name = "spells_id")
   )
   Set<Spells> spells;

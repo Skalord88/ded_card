@@ -1,0 +1,20 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="003_skills_character_key" author="oscar">
+    <addForeignKeyConstraint
+      baseTableName="skills_character"
+      baseColumnNames="skill_id"
+      constraintName="fk_skills_character_skill"
+      referencedTableName="skill"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="skills_character"
+      baseColumnNames="study_id"
+      constraintName="fk_skills_character_study"
+      referencedTableName="study"
+      referencedColumnNames="id" />
+  </changeSet>
+</databaseChangeLog>

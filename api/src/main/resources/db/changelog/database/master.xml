@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <include file="archetype/001_archetype_create.xml" relativeToChangelogFile="true"/>
+    <include file="attacks/001_attacks_create.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/001_character_card_create.xml" relativeToChangelogFile="true"/>
+    <include file="class/001_class_character_create.xml" relativeToChangelogFile="true"/>
+    <include file="class/001_class_pc_create.xml" relativeToChangelogFile="true"/>
+    <include file="enchanteditems/001_enchanted_items_create.xml" relativeToChangelogFile="true"/>
+    <include file="enchantment/001_enchantment_create.xml" relativeToChangelogFile="true"/>
+    <include file="feats/001_class_feat_create.xml" relativeToChangelogFile="true"/>
+    <include file="feats/001_feat_create.xml" relativeToChangelogFile="true"/>
+    <include file="feats/001_feat_pc_create.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/001_inventory_create.xml" relativeToChangelogFile="true"/>
+    <include file="items/001_item_create.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/001_prerequisite_create.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/001_prerequisite_skill_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_race_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_region_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_size_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_sub_race_create.xml" relativeToChangelogFile="true"/>
+    <include file="skills/001_skill_create.xml" relativeToChangelogFile="true"/>
+    <include file="skills/001_skills_character_create.xml" relativeToChangelogFile="true"/>
+    <include file="skills/001_study_create.xml" relativeToChangelogFile="true"/>
+    <include file="specialabilities/001_special_abilities_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_book_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_domain_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_school_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_spells_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_spells_table_create.xml" relativeToChangelogFile="true"/>
+
+    <include file="charactercard/002_character_archetypes_relation.xml" relativeToChangelogFile="true"/>
+    <include file="enchanteditems/002_enchanted_items_enchantment_relation.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/002_backpack_create.xml" relativeToChangelogFile="true"/>
+    <include file="items/002_item_spells_relation.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/002_prerequisite_feat_relation.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/002_prerequisite_item_relation.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/002_prerequisite_schools_relation.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/002_prerequisite_skill_study_relation.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/002_prerequisite_special_abilities_relation.xml" relativeToChangelogFile="true"/>
+    <include file="race/002_sub_race_region_relation.xml" relativeToChangelogFile="true"/>
+    <include file="skills/002_class_skills_relation.xml" relativeToChangelogFile="true"/>
+    <include file="skills/002_class_study_relation.xml" relativeToChangelogFile="true"/>
+    <include file="spells/002_spells_book_relation.xml" relativeToChangelogFile="true"/>
+
+    <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
+    <include file="attacks/003_attacks_keys.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/003_character_archetype_keys.xml" relativeToChangelogFile="true"/>
+    <include file="class/003_class_character_keys.xml" relativeToChangelogFile="true"/>
+    <include file="enchanteditems/003_enchanted_items_keys.xml" relativeToChangelogFile="true"/>
+    <include file="enchantment/003_enchantment_keys.xml" relativeToChangelogFile="true"/>
+    <include file="feats/003_class_feat_keys.xml" relativeToChangelogFile="true"/>
+    <include file="feats/003_feat_keys.xml" relativeToChangelogFile="true"/>
+    <include file="feats/003_feat_pc_keys.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/003_backpack_keys.xml" relativeToChangelogFile="true"/>
+    <include file="items/003_items_spells_keys.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/003_prerequisite_feat_keys.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/003_prerequisite_items_keys.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/003_prerequisite_special_abilities_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_race_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_size_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_sub_race_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_sub_race_region_keys.xml" relativeToChangelogFile="true"/>
+    <include file="skills/003_class_skills_keys.xml" relativeToChangelogFile="true"/>
+    <include file="skills/003_class_study_keys.xml" relativeToChangelogFile="true"/>
+    <include file="skills/003_skill_in_study_keys.xml" relativeToChangelogFile="true"/>
+    <include file="skills/003_skills_character_key.xml" relativeToChangelogFile="true"/>
+    <include file="spells/003_book_keys.xml" relativeToChangelogFile="true"/>
+    <include file="spells/003_spells_book_keys.xml" relativeToChangelogFile="true"/>
+
+    <include file="archetype/004_prerequisite_insert.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/004_character_insert.xml" relativeToChangelogFile="true"/>
+    <include file="class/004_class_character_insert.xml" relativeToChangelogFile="true"/>
+    <include file="enchanteditems/004_enchanted_items_insert.xml" relativeToChangelogFile="true"/>
+    <include file="enchanteditems/004_enchanted_items_prerequisite_insert.xml" relativeToChangelogFile="true"/>
+    <include file="enchantment/004_enchantment_insert.xml" relativeToChangelogFile="true"/>
+    <include file="enchantment/004_prerequisite_enchantment_insert.xml" relativeToChangelogFile="true"/>
+    <include file="feats/004_feat_insert.xml" relativeToChangelogFile="true"/>
+    <include file="feats/004_feat_pc_insert.xml" relativeToChangelogFile="true"/>
+    <include file="feats/004_prerequisite_in_feat__mod_preList_toSel_sel_insert.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/004_inventory_insert.xml" relativeToChangelogFile="true"/>
+    <include file="items/004_item_insert.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/004_prerequisite_insert.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/004_prerequisite_skill_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_prerequisite_in_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_region_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_size_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_sub_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="skills/004_prerequisite_skills_insert.xml" relativeToChangelogFile="true"/>
+    <include file="skills/004_skill_insert.xml" relativeToChangelogFile="true"/>
+    <include file="skills/004_skills_character_insert.xml" relativeToChangelogFile="true"/>
+    <include file="skills/004_study_insert.xml" relativeToChangelogFile="true"/>
+    <include file="specialabilities/004_special_abilities_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_book_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_domains_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_school_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_spells_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_spells_table_insert.xml" relativeToChangelogFile="true"/>
+
+    <include file="feats/005_class_feat_insert.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>

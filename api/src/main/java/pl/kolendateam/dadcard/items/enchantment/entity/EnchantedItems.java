@@ -25,7 +25,7 @@ import lombok.ToString;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
@@ -46,8 +46,8 @@ public class EnchantedItems implements Serializable {
   String name;
 
   @OneToOne(cascade = CascadeType.MERGE)
-  @JoinColumn(name = "items_id", referencedColumnName = "id")
-  Items item;
+  @JoinColumn(name = "item_id", referencedColumnName = "id")
+  Item item;
 
   @Enumerated(EnumType.STRING)
   WeaponNumericEnum damage;
@@ -80,7 +80,7 @@ public class EnchantedItems implements Serializable {
     EnchantedItemsDTO dto,
     ItemsRepository itemsRepository
   ) {
-    Optional<Items> itemOpt = itemsRepository.findById(dto.itemId);
+    Optional<Item> itemOpt = itemsRepository.findById(dto.itemId);
 
     if (itemOpt.isPresent()) {
       this.item = itemOpt.get();

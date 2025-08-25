@@ -2,14 +2,13 @@ package pl.kolendateam.dadcard.items.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -36,12 +35,15 @@ public class ItemsListDTO {
   }
 
   public void setListOfWonderousItem(
-      ArrayList<WondrousItemsDTO> wonderousItemsDTOList) {
+    ArrayList<WondrousItemsDTO> wonderousItemsDTOList
+  ) {
     this.wonderousItems = wonderousItemsDTOList;
   }
 
-  public ItemsListDTO createListOfItemsDTO(List<Items> itemsList, ItemsListDTO itemsDTOList) {
-
+  public ItemsListDTO createListOfItemsDTO(
+    List<Item> itemsList,
+    ItemsListDTO itemsDTOList
+  ) {
     ArrayList<ArmorsDTO> armorDTOList = new ArrayList<>();
     ArrayList<ShieldsDTO> shieldsDTOList = new ArrayList<>();
     ArrayList<WeaponsDTO> weaponsDTOList = new ArrayList<>();
@@ -56,7 +58,8 @@ public class ItemsListDTO {
         weaponsDTOList.add(MapperItemsDTO.toWeaponDTO((Weapons) item));
       } else if (item instanceof WondrousItems) {
         wonderousItemsDTOList.add(
-            MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item));
+          MapperItemsDTO.toWondrousItemsDTO((WondrousItems) item)
+        );
       }
     });
 
@@ -67,5 +70,4 @@ public class ItemsListDTO {
 
     return itemsDTOList;
   }
-
 }

@@ -6,8 +6,8 @@ import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -41,13 +41,13 @@ public class MapperItems {
 
   public static List<WondrousItems> toListItems(
     ArrayList<WondrousItemsDTO> list,
-    List<Items> listOfAllItems
+    List<Item> listOfAllItems
   ) {
     ArrayList<WondrousItems> itemsList = new ArrayList<WondrousItems>();
 
     if (list.size() > 0) {
       for (WondrousItemsDTO item : list) {
-        for (Items allItem : listOfAllItems) {
+        for (Item allItem : listOfAllItems) {
           if (item.id == allItem.getId()) {
             itemsList.add((WondrousItems) allItem);
             break;
@@ -69,11 +69,11 @@ public class MapperItems {
     return weaponsList;
   }
 
-  public static List<Items> toItemsListFromDTOList(List<ItemsDTO> itemsDTO) {
-    List<Items> lista = new ArrayList<>();
+  public static List<Item> toItemsListFromDTOList(List<ItemDTO> itemsDTO) {
+    List<Item> lista = new ArrayList<>();
     if (itemsDTO != null) {
       itemsDTO.forEach(i -> {
-        lista.add(new Items(i.id));
+        lista.add(new Item(i.id));
       });
     }
     return lista;

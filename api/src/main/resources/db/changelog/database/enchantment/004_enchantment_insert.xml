@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="1009" author="oscar">
+    <changeSet id="004_enchantment_insert" author="oscar">
 
         <insert tableName="enchantment">
             <column name='id' value="1" />
@@ -228,8 +228,6 @@
         <insert tableName="prerequisite">
             <column name='id' value="10011" />
         </insert>
-
-        
 
         <insert tableName="enchantment">
             <column name='id' value="24" />

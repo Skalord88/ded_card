@@ -1,0 +1,95 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+  <changeSet id="005_prerequisite_element_in_feat_pc_update" author="oscar">
+
+    <insert tableName="prerequisite_item">
+      <column name="prerequisite_id" value="110101" />
+      <column name="item_id" value="38" />
+    </insert>
+
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Weapon Focus [General] -->
+            <column
+        name="feat_id" value="107" />
+      <!-- Longsword -->
+            <column name="selected_id" valueNumeric="110101" />
+        <where>id =
+      110101</where>
+    </update>
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Point Blank Shot [General] -->
+            <column
+        name="feat_id" value="feat_id" />
+            <where>id = 110102</where>
+    </update>
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Improved Shield Bash [General] -->
+            <column
+        name="feat_id" value="54" />
+            <where>id = 110103</where>
+    </update>
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Rapid Shot [General] -->
+            <column
+        name="feat_id" value="81" />
+            <where>id = 110104</where>
+    </update>
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Improved Critical [General] -->
+            <column
+        name="feat_id" value="46" />
+      <!-- Longsword -->
+        <column name="selected_id" value="110101" />
+            <where>id = 110105</where>
+    </update>
+
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="110106" />
+      <!-- Two-Weapon Fighting -->
+      <column name="feat_id" value="105" />
+    </insert>
+
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Combat style -->
+            <column
+        name="class_feat_id" value="171" />
+      <!-- Two-Weapon Fighting -->
+        <column name="selected_id" value="110106" />
+            <where>id =
+      110106</where>
+    </update>
+
+    <insert tableName="prerequisite_feat">
+      <column name="prerequisite_id" value="110107" />
+      <!-- Improved Two-Weapon Fighting -->
+      <column name="feat_id" value="58" />
+    </insert>
+
+    <update tableName="feat_pc">
+      <!-- Rysio -->
+            <column name="character_card_id" value="101" />
+      <!-- Improved Combat style -->
+            <column
+        name="class_feat_id" value="176" />
+      <!-- Improved Two-Weapon Fighting -->
+        <column name="selected_id" value="110107" />
+            <where>id =
+      110107</where>
+    </update>
+
+
+  </changeSet>
+</databaseChangeLog>

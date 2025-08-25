@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.Feat;
 
 @Getter
 @NoArgsConstructor
@@ -20,7 +20,7 @@ public class PrerequisiteFeatsDTO {
   public String normal;
   public String special;
 
-  public PrerequisiteFeatsDTO(Feats feat) {
+  public PrerequisiteFeatsDTO(Feat feat) {
     this.id = feat.getId();
     this.featName = feat.getFeatName();
     this.benefit = feat.getBenefit();

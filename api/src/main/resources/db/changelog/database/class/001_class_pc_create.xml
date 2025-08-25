@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="create_class_pc" author="oscar">
+    <changeSet id="001_class_pc_create" author="oscar">
         <createTable tableName="class_pc">
             <column name="id" type="INT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false" />

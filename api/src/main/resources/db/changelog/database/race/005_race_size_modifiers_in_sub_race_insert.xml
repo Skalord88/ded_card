@@ -1,0 +1,67 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_race_size_modifiers_in_sub_race_insert" author="oscar">
+
+        <update tableName="sub_race">
+            <!-- Artic Dwarf -->
+            <column name="modifiers_id" valueNumeric="150001" />
+            <column name="race_id" valueNumeric="1" />
+            <column name="size_id" valueNumeric="4" />
+        <where>id = 1</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- Golden Dwarf -->
+            <column name="modifiers_id" valueNumeric="150002" />
+            <column name="race_id" valueNumeric="1" />
+            <column name="size_id" valueNumeric="4" />
+        <where>id = 2</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- TINY -->
+            <column name="modifiers_id" valueNumeric="150003" />
+            <column name="race_id" valueNumeric="1" />
+            <column name="size_id" valueNumeric="4" />
+        <where>id = 3</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- SMALL -->
+            <column name="modifiers_id" valueNumeric="90004" />
+        <where>id = 4</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- MEDIUM -->
+            <column name="modifiers_id" valueNumeric="90005" />
+        <where>id = 5</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- LARGE -->
+            <column name="modifiers_id" valueNumeric="90006" />
+        <where>id = 6</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- HUGE -->
+            <column name="modifiers_id" valueNumeric="90007" />
+        <where>id = 7</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- GARGANTUAN -->
+            <column name="modifiers_id" valueNumeric="90008" />
+        <where>id = 8</where>
+        </update>
+
+        <update tableName="sub_race">
+            <!-- COLOSSAL -->
+            <column name="modifiers_id" valueNumeric="90009" />
+        <where>id = 9</where>
+        </update>
+
+    </changeSet>
+</databaseChangeLog>

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
-import pl.kolendateam.dadcard.items.entity.Items;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
@@ -21,7 +21,7 @@ import pl.kolendateam.dadcard.size.entity.SizeEnum;
 @Getter
 @NoArgsConstructor
 @DiscriminatorValue(value = "WEAPON")
-public class Weapons extends Items {
+public class Weapons extends Item {
 
   @Enumerated(EnumType.STRING)
   WeaponNameEnum weaponName;

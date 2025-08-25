@@ -1,0 +1,143 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_prerequisite_in_race_insert" author="oscar">
+
+        <!-- Dwarf modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100001" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="armor_class"
+                value="{
+                &quot;dodgeBonus&quot;: 4,
+                &quot;target&quot;: [&quot;GIANT&quot;],
+                &quot;special&quot; : &quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;
+                }" />
+            <column name="special_attacks"
+                value="{
+                &quot;vsBullRush&quot;: 4,
+                &quot;special&quot; : &quot;Stability: A dwarf gains a +4 bonus on ability checks made to resist being bull rushed or tripped when standing on the ground (but not when climbing, flying, riding, or otherwise not standing firmly on the ground)&quot;
+                }" />
+            <column name="abilitys"
+                value="{
+                &quot;constitution&quot; : 2,
+                &quot;charisma&quot; : -2
+                }" />
+            <column name="text" value="Dwarf races modifiers" />
+        </insert>
+        <!-- Dwarf modif -->
+
+        <!-- Elf modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100002" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="abilitys"
+                value="{
+                &quot;dexterity&quot; : 2,
+                &quot;constitution&quot; : -2
+                }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
+                    &quot;bonus&quot; : 2
+                    } , {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;SLEEP&quot; ]
+                    } ]
+                }" />
+            <column name="text" value="Elf races modifiers" />
+        </insert>
+        <!-- Elf modif -->
+
+        <!-- Orcs modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100003" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot; : 4,
+                &quot;intelligence&quot; : -2,
+                &quot;wisdom&quot; : -2,
+                &quot;charisma&quot; : -2
+                }" />
+            <column name="text" value="Orc races modifiers" />
+        </insert>
+        <!-- Orcs modif -->
+
+        <!-- Gnome modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100004" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot; : -2,
+                &quot;constitution&quot; : 2
+                }" />
+            <column name="text" value="Gnome races modifiers" />
+        </insert>
+        <!-- Gnome modif -->
+
+        <!-- Halfling modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100005" />
+            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot; : -2,
+                &quot;dexterity&quot; : 2
+                }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;FEAR&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ]
+                }" />
+            <column name="text" value="Halfling races modifiers" />
+        </insert>
+        <!-- Halfling modif -->
+
+        <!-- Human modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100006" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="text" value="Human races modifiers" />
+        </insert>
+        <!-- Human modif -->
+
+        <!-- Monstruos Humanoid modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100007" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="text" value="Monstruos Humanoid races modifiers" />
+        </insert>
+        <!-- Monstruos Humanoid modif -->
+
+        <!-- Spirit Folk -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100008" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="text" value="Spirit Folk races modifiers" />
+        </insert>
+        <!-- Spirit Folk -->
+
+        <!-- Half Elf modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100009" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
+                    &quot;bonus&quot; : 2
+                    } , {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;SLEEP&quot; ]
+                    } ]
+                }" />
+        </insert>
+        <!-- Half Elf modif -->
+
+    </changeSet>
+</databaseChangeLog>

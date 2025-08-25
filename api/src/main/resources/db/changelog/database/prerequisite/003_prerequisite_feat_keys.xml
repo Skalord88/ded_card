@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="keys_prerequisite_feat" author="oscar">
+  <changeSet id="003_prerequisite_feat_keys" author="oscar">
     <addForeignKeyConstraint
       baseTableName="prerequisite_feat"
       baseColumnNames="prerequisite_id"
@@ -12,9 +12,9 @@
       referencedColumnNames="id" />
     <addForeignKeyConstraint
       baseTableName="prerequisite_feat"
-      baseColumnNames="feats_id"
+      baseColumnNames="feat_id"
       constraintName="fk_prerequisite_feat_feat"
-      referencedTableName="feats"
+      referencedTableName="feat"
       referencedColumnNames="id" />
   </changeSet>
 </databaseChangeLog>

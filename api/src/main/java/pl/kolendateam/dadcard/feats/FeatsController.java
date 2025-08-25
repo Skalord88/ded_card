@@ -18,14 +18,14 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
-import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
-import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
-import pl.kolendateam.dadcard.feats.entity.ClassFeats;
-import pl.kolendateam.dadcard.feats.entity.Feats;
-import pl.kolendateam.dadcard.feats.repository.ClassFeatsRepository;
-import pl.kolendateam.dadcard.feats.repository.FeatsPcRepository;
-import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.feats.dto.ClassFeatDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatPcDTO;
+import pl.kolendateam.dadcard.feats.entity.ClassFeat;
+import pl.kolendateam.dadcard.feats.entity.Feat;
+import pl.kolendateam.dadcard.feats.repository.ClassFeatRepository;
+import pl.kolendateam.dadcard.feats.repository.FeatPcRepository;
+import pl.kolendateam.dadcard.feats.repository.FeatRepository;
 import pl.kolendateam.dadcard.feats.repository.PrerequisiteRepository;
 
 @CrossOrigin
@@ -36,19 +36,19 @@ public class FeatsController {
   @PersistenceContext
   EntityManager entityManager;
 
-  FeatsRepository featsRepository;
+  FeatRepository featsRepository;
   CharacterRepository characterRepository;
   PrerequisiteRepository prerequisiteRepository;
-  FeatsPcRepository featsPcRepository;
-  ClassFeatsRepository classFeatsRepository;
+  FeatPcRepository featsPcRepository;
+  ClassFeatRepository classFeatsRepository;
 
   @Autowired
   public FeatsController(
-    FeatsRepository featsRepository,
+    FeatRepository featsRepository,
     PrerequisiteRepository prerequisiteRepository,
     CharacterRepository characterRepository,
-    FeatsPcRepository featsPcRepository,
-    ClassFeatsRepository classFeatsRepository
+    FeatPcRepository featsPcRepository,
+    ClassFeatRepository classFeatsRepository
   ) {
     this.featsRepository = featsRepository;
     this.prerequisiteRepository = prerequisiteRepository;
@@ -58,15 +58,15 @@ public class FeatsController {
   }
 
   @GetMapping("")
-  public List<FeatsDTO> showFeatsList() {
-    List<Feats> featsList = this.featsRepository.findAll();
+  public List<FeatDTO> showFeatsList() {
+    List<Feat> featsList = this.featsRepository.findAll();
 
     return MapperFeats.toFeatsDTO(featsList);
   }
 
   @GetMapping("classFeatsList")
-  public List<ClassFeatsDTO> showFeatsClassList() {
-    List<ClassFeats> featsList = this.classFeatsRepository.findAll();
+  public List<ClassFeatDTO> showFeatsClassList() {
+    List<ClassFeat> featsList = this.classFeatsRepository.findAll();
 
     return MapperFeats.toClassFeatsDTO(featsList);
   }
@@ -74,7 +74,7 @@ public class FeatsController {
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO setFeatsCharacter(
     @PathVariable int id,
-    @RequestBody ArrayList<FeatsPcDTO> featsDTOList
+    @RequestBody ArrayList<FeatPcDTO> featsDTOList
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 

@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_spells_book" author="oscar">
+    <changeSet id="003_spells_book_keys" author="oscar">
         <addForeignKeyConstraint baseTableName="spells_book"
             baseColumnNames="book_id"
             constraintName="fk_book_spells_book_book"

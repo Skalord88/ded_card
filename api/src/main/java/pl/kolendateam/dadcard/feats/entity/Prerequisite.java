@@ -39,8 +39,8 @@ import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
 import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
@@ -78,7 +78,7 @@ public class Prerequisite implements Serializable {
     joinColumns = @JoinColumn(name = "prerequisite_id"),
     inverseJoinColumns = @JoinColumn(name = "feat_id")
   )
-  List<Feats> feats = new ArrayList<>();
+  List<Feat> feats = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
   SpellLevel[] caster;
@@ -136,7 +136,7 @@ public class Prerequisite implements Serializable {
     joinColumns = @JoinColumn(name = "prerequisite_id"),
     inverseJoinColumns = @JoinColumn(name = "item_id")
   )
-  List<Items> items;
+  List<Item> items;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "domain_id", referencedColumnName = "id")
@@ -155,7 +155,7 @@ public class Prerequisite implements Serializable {
   public Prerequisite(
     int idPre,
     List<PrerequisiteFeatsDTO> preFeatsDTO,
-    List<ItemsDTO> itemsDTO
+    List<ItemDTO> itemsDTO
   ) {
     this.id = (long) idPre;
     this.feats = preFeatsDTO != null ? MapperFeats.toFeats(preFeatsDTO) : null;

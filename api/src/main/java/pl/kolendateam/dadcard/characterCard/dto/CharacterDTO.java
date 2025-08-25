@@ -13,7 +13,7 @@ import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPc;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcDTO;
 import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatPcDTO;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
@@ -37,7 +37,7 @@ public class CharacterDTO implements Serializable {
   public Set<ArchetypeDTO> archetypes;
   public AbilitysDTO abilitys;
   public Set<SkillCharacterDTO> skillsCharacter;
-  public ArrayList<FeatsPcDTO> featsList;
+  public ArrayList<FeatPcDTO> featsList;
   public InventoryDTO inventory;
   public AttacksDTO attacks;
   // public HashMap<EnumClass, Integer[]> magicPerDay;

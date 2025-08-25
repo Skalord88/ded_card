@@ -70,7 +70,7 @@ public class Inventory {
   @JoinTable(
     name = "backpack",
     joinColumns = @JoinColumn(name = "inventory_id"),
-    inverseJoinColumns = @JoinColumn(name = "items_id")
+    inverseJoinColumns = @JoinColumn(name = "item_id")
   )
   List<WondrousItems> backpack;
 
@@ -245,11 +245,11 @@ public class Inventory {
 
     // head
     EnchantedItemsDTO dtoItem = inventoryDTO.inventory.get(7);
-    Optional<Items> itemOpt = itemsRepository.findById(dtoItem.id);
+    Optional<Item> itemOpt = itemsRepository.findById(dtoItem.id);
     if (!itemOpt.isPresent()) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
     }
-    Items existingItem = itemOpt.get();
+    Item existingItem = itemOpt.get();
 
     if (existingItem != null && existingItem instanceof WondrousItems) {
       if (this.head == null) {
@@ -407,12 +407,12 @@ public class Inventory {
     }
 
     List<EnchantedItemsDTO> dtoItemList = inventoryDTO.backpack;
-    List<Items> backpackItems = itemsRepository.findAllById(
+    List<Item> backpackItems = itemsRepository.findAllById(
       dtoItemList.stream().map(i -> i.id).toList()
     );
     if (backpackItems != null) {
       List<WondrousItems> newBackpack = new ArrayList<WondrousItems>();
-      for (Items item : backpackItems) {
+      for (Item item : backpackItems) {
         if (item instanceof WondrousItems) {
           newBackpack.add((WondrousItems) item);
         }

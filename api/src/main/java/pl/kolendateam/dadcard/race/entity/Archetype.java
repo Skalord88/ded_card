@@ -41,7 +41,7 @@ public class Archetype implements Serializable {
   //   joinColumns = @JoinColumn(name = "archetype_id"),
   //   inverseJoinColumns = @JoinColumn(name = "feats_id")
   // )
-  // Set<Feats> archetypeFeats = new HashSet<>();
+  // Set<Feat> archetypeFeats = new HashSet<>();
 
   // @ManyToMany
   // @JoinTable(

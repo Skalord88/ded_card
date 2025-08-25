@@ -1,0 +1,1798 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="005_class_feat_update" author="oscar">
+
+        <!-- Shields ex tower / selected -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004" />
+            <column name="item_id" value="95" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004" />
+            <column name="item_id" value="96" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004" />
+            <column name="item_id" value="97" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004" />
+            <column name="item_id" value="98" />
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5004" />
+            <column name="item_id" value="99" />
+        </insert>
+
+        <!-- Shields tower / selected -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5005" />
+            <column name="item_id" value="100" />
+        </insert>
+
+        <!-- Weapon Druid Proficiency / selected -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="6" /> <!-- Dagger -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="11" /> <!-- Club -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="14" /> <!-- Shortspear -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="16" /> <!-- Quarterstaff -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="17" /> <!-- Spear -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="21" /> <!-- Dart -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="23" /> <!-- Sling -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="41" /> <!-- Scimitar -->
+        </insert>
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5008" />
+            <column name="item_id" value="56" /> <!-- Scythe -->
+        </insert>
+
+        <!-- Weapon Bard Proficiency / selected -->
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="5009" />
+            <column name="item_id" value="6" /> <!-- Dagger -->
+        </insert>
+
+        <!-- barbarian -->
+        <update tableName="class_feat">
+            <!-- id: 1, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="6" /> <!-- Light Armors -->
+            <where>id = 1</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 2, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="7" /> <!-- Medium Armors -->
+            <where>id = 2</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 3, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="5004" />
+            <where>id = 3</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 4, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+            <where>id = 4</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 5, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="66" /> <!-- Martial -->
+            <column name="selected_id" value="5007" />
+            <where>id = 5</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 6, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1001" /> <!-- Fast movement -->
+            <where>id = 6</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 7, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1002" /> <!-- Illiteracy -->
+            <where>id = 7</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 8, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 8</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 9, level: 2 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1004" /> <!-- Uncanny Dodge -->
+            <where>id = 9</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 10, level: 3 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 10</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 11, level: 4 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 11</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 12, level: 5 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1006" /> <!-- Improved uncanny dodge -->
+            <where>id = 12</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 13, level: 6 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 13</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 14, level: 7 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1007" /> <!-- Damage reduction -->
+            <where>id = 14</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 15, level: 8 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 15</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 16, level: 9 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 16</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 17, level: 10 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1007" /> <!-- Damage reduction -->
+            <where>id = 17</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 18, level: 11 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1008" /> <!-- Greater rage -->
+            <where>id = 18</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 19, level: 12 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 19</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 20, level: 12 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 20</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 21, level: 13 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1007" /> <!-- Damage reduction -->
+            <where>id = 21</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 22, level: 14 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1009" /> <!-- Indomitable will -->
+            <where>id = 22</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 23, level: 15 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 23</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 24, level: 16 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1007" /> <!-- Damage reduction -->
+            <where>id = 24</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 25, level: 16 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 25</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 26, level: 17 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1010" /> <!-- Tireless rage -->
+            <where>id = 26</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 27, level: 18 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1005" /> <!-- Trap Sense -->
+            <where>id = 27</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 28, level: 19 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1007" /> <!-- Damage reduction -->
+            <where>id = 28</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 29, level: 20 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1011" /> <!-- Mighty rage -->
+            <where>id = 29</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 30, level: 20 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="1003" /> <!-- Rage -->
+            <where>id = 30</where>
+        </update>
+
+        <!-- bard -->
+        <update tableName="class_feat">
+            <!-- id: 100, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="6" /> <!-- Light Armors -->
+            <where>id = 100</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 101, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="7" /> <!-- Medium Armors -->
+            <where>id = 101</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 102, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="86" /> <!-- Shields ex tower -->
+            <column name="selected_id" value="5004" />
+            <where>id =
+            102</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 103, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="89" /> <!-- Simple -->
+            <column name="selected_id" value="5006" />
+            <where>id =
+            103</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 104, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="66" /> <!-- Martial -->
+            <column name="selected_id" value="5009" />
+            <where>id =
+            104</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 105, level: 1 -->
+            <column name="class_character_id" value="1" />
+            <column
+                name="feat_id" value="66" /> <!-- Exotic -->
+            <column name="selected_id" value="5009" />
+            <where>id =
+            105</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 106, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2002" /> <!-- Bardic music -->
+            <where>id = 106</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 107, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2001" /> <!-- Bardic knowledge -->
+            <where>id = 107</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 108, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2003" /> <!-- Countersong -->
+            <where>id = 108</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 109, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2004" /> <!-- Fascinate -->
+            <where>id = 109</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 110, level: 1 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2005" /> <!-- Inspire courage -->
+            <where>id = 110</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 111, level: 3 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2006" /> <!-- Inspire competence -->
+            <where>id = 111</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 112, level: 6 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2007" /> <!-- Suggestion -->
+            <where>id = 112</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 113, level: 8 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2005" /> <!-- Inspire courage -->
+            <where>id = 113</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 114, level: 9 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2008" /> <!-- Inspire greatness -->
+            <where>id = 114</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 115, level: 12 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2009" /> <!-- Song of freedom -->
+            <where>id = 115</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 116, level: 14 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2005" /> <!-- Inspire courage -->
+            <where>id = 116</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 117, level: 15 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2010" /> <!-- Inspire heroics -->
+            <where>id = 117</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 118, level: 18 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2011" /> <!-- Mass suggestion -->
+            <where>id = 118</where>
+        </update>
+        <update tableName="class_feat">
+            <!-- id: 119, level: 20 -->
+            <column name="class_character_id" value="2" />
+            <column
+                name="feat_id" value="2005" /> <!-- Inspire courage -->
+            <where>id = 119</where>
+        </update>
+
+        <!-- cleric -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="6" /> <!--
+            Light Armors -->
+            <where>id
+            = 200</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="7" /> <!--
+            Medium Armors -->
+            <where>id
+            = 201</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="5" /> <!--
+            Heavy Armors -->
+            <where>id
+            = 202</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="86" /> <!--
+            Shields ex tower -->
+            <column
+                name="selected_id" value="5004" />
+            <where>id = 203</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 204</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3001" /> <!--
+            Domains and Class Skills -->
+            <where>id
+            = 205</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3002" /> <!--
+            Aura (Ex) -->
+            <where>id
+            = 206</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3003" /> <!--
+            Deity, Domains, and Domain Spells -->
+            <where>id
+            = 207</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3004" /> <!--
+            Spontaneous Casting -->
+            <where>id
+            = 208</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3005" /> <!--
+            Chaotic, Evil, Good, and Lawful Spells -->
+            <where>id
+            = 209</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3006" /> <!--
+            Turn or Rebuke Undead (Su) -->
+            <where>id
+            = 210</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="3" />
+            <column name="feat_id" value="3007" /> <!--
+            Bonus Languages -->
+            <where>id
+            = 211</where>
+        </update>
+
+        <!-- druid -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4001" /> <!--
+            Spontaneous Casting -->
+            <where>id
+            = 300</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4002" /> <!--
+            Chaotic, Evil, Good, and Lawful Spells -->
+            <where>id
+            = 301</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4003" /> <!--
+            Bonus Languages -->
+            <where>id
+            = 302</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="6" /> <!--
+            Light Armors -->
+            <where>id
+            = 303</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="7" /> <!--
+            Medium Armors -->
+            <where>id
+            = 304</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="86" /> <!--
+            Shields ex tower -->
+            <column
+                name="selected_id" value="5004" />
+            <where>id = 305</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4000" /> <!--
+            Weapon Druid Proficency -->
+            <column
+                name="selected_id" value="5008" />
+            <where>id = 306</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4004" /> <!--
+            Animal Companion -->
+            <where>id
+            = 307</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4005" /> <!--
+            Nature Sense -->
+            <where>id
+            = 308</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4006" /> <!--
+            Wild Empathy -->
+            <where>id
+            = 309</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4007" /> <!--
+            Woodland Stride -->
+            <where>id
+            = 310</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4008" /> <!--
+            Trackless Step -->
+            <where>id
+            = 311</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4009" /> <!--
+            Resist Nature's Lure -->
+            <where>id
+            = 312</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 313</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 314</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 315</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 316</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4011" /> <!--
+            Venom Immunity -->
+            <where>id
+            = 317</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 318</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 319</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 320</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4012" /> <!--
+            A Thousand Faces -->
+            <where>id
+            = 321</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 322</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4013" /> <!--
+            Timeless Body -->
+            <where>id
+            = 323</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 324</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 325</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 326</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 327</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="4" />
+            <column name="feat_id" value="4010" /> <!--
+            Wild Shape -->
+            <where>id
+            = 328</where>
+        </update>
+
+        <!-- Fighter -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="6" /> <!--
+            Light Armors -->
+            <where>id
+            = 500</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="7" /> <!--
+            Medium Armors -->
+            <where>id
+            = 501</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5" /> <!--
+            Heavy Armors -->
+            <where>id
+            = 502</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="86" /> <!--
+            Shields ex tower -->
+            <column
+                name="selected_id" value="5004" />
+            <where>id = 503</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="101" /> <!--
+            Shield tower -->
+            <column
+                name="selected_id" value="5005" />
+            <where>id = 504</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 505</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" /> <!-- Martial -->
+            <column name="feat_id" value="66" />
+            <column
+                name="selected_id" value="5007" />
+            <where>id = 506</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 507</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 508</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 509</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 510</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 511</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 512</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 513</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 514</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 515</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 516</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 517</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 518</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="5" />
+            <column name="feat_id" value="5001" /> <!--
+            Fighter Bonus Feats -->
+            <where>id
+            = 519</where>
+        </update>
+
+        <!-- Monk
+        *********************************************************************************************************** -->
+        <update tableName="class_feat">
+            <!-- <column name="level" value="1" /> -->
+            <column name="class_character_id" value="6" />
+            <column
+                name="feat_id" value="6001" />
+            <!-- AC Bonus -->
+        <where>id = 600</where>
+        </update>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="4003" />
+            <column name="feat_id" value="50" />
+            <!---
+            Improved Grapple [General] -->
+        </insert>
+
+        <insert tableName="prerequisite_feat">
+            <column name="prerequisite_id" value="4003" />
+            <column name="feat_id" value="99" /> <!-- Stunning Fist [General] -->
+        </insert>
+
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6004" /> <!--
+            Monk Bonus Feats -->
+            <column
+                name="to_select_id" value="4003" />
+            <where>id = 601</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6002" /> <!--
+            Flurry of Blows -->
+            <where>id
+            = 602</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6003" /> <!--
+            Unarmed Strike -->
+            <where>id
+            = 603</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6004" /> <!--
+            Monk Bonus Feats -->
+            <where>id
+            = 604</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6005" /> <!--
+            Evasion -->
+            <where>id
+            = 605</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6007" /> <!--
+            Still Mind -->
+            <where>id
+            = 606</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6006" /> <!--
+            Fast Movement (Ex) -->
+            <where>id
+            = 607</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6008" /> <!--
+            Ki Strike -->
+            <where>id
+            = 608</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 609</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6010" /> <!--
+            Purity of Body -->
+            <where>id
+            = 610</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6004" /> <!--
+            Monk Bonus Feats -->
+            <where>id
+            = 611</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 612</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6011" /> <!--
+            Wholeness of Body -->
+            <where>id
+            = 613</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 614</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6012" /> <!--
+            Improved Evasion -->
+            <where>id
+            = 615</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6008" /> <!--
+            Ki Strike -->
+            <where>id
+            = 616</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 617</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6013" /> <!--
+            Diamond Body -->
+            <where>id
+            = 618</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6016" /> <!--
+            Greater Flurry -->
+            <where>id
+            = 619</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6014" /> <!--
+            Abundant Step -->
+            <where>id
+            = 620</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 621</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6015" /> <!--
+            Diamond Soul -->
+            <where>id
+            = 622</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 623</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6017" /> <!--
+            Quivering Palm -->
+            <where>id
+            = 624</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6008" /> <!--
+            Ki Strike -->
+            <where>id
+            = 625</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 626</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6018" /> <!--
+            Timeless Body -->
+            <where>id
+            = 627</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6019" /> <!--
+            Tongue of the Sun and Moon -->
+            <where>id
+            = 628</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 629</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6020" /> <!--
+            Empty Body -->
+            <where>id
+            = 630</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6021" /> <!--
+            Perfect Self -->
+            <where>id
+            = 631</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="6" />
+            <column name="feat_id" value="6009" /> <!--
+            Slow Fall -->
+            <where>id
+            = 632</where>
+        </update>
+        <!-- Paladin -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 700</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" /> <!-- Martial -->
+            <column name="feat_id" value="66" />
+            <column
+                name="selected_id" value="5007" />
+            <where>id = 701</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7013" /> <!--
+            Associates -->
+            <where>id
+            = 702</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7012" /> <!--
+            Code of Conduct -->
+            <where>id
+            = 703</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7001" /> <!--
+            Aura of Good -->
+            <where>id
+            = 704</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7002" /> <!--
+            Detect Evil -->
+            <where>id
+            = 705</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7003" /> <!--
+            Smite Evil -->
+            <where>id
+            = 706</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7004" /> <!--
+            Divine Grace -->
+            <where>id
+            = 707</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7005" /> <!--
+            Lay on Hands -->
+            <where>id
+            = 708</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7006" /> <!--
+            Aura of Courage -->
+            <where>id
+            = 709</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7007" /> <!--
+            Divine Health -->
+            <where>id
+            = 710</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7008" /> <!--
+            Turn Undead -->
+            <where>id
+            = 711</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7009" /> <!--
+            Spells -->
+            <where>id
+            = 712</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7003" /> <!--
+            Smite Evil -->
+            <where>id
+            = 713</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7010" /> <!--
+            Special Mount -->
+            <where>id
+            = 714</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7011" /> <!--
+            Remove Disease -->
+            <where>id
+            = 715</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7011" /> <!--
+            Remove Disease -->
+            <where>id
+            = 716</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7003" /> <!--
+            Smite Evil -->
+            <where>id
+            = 717</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7011" /> <!--
+            Remove Disease -->
+            <where>id
+            = 718</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7011" /> <!--
+            Remove Disease -->
+            <where>id
+            = 719</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="7" />
+            <column name="feat_id" value="7003" /> <!--
+            Smite Evil -->
+            <where>id
+            = 720</where>
+        </update>
+
+        <!-- Ranger -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 800</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" /> <!-- Martial -->
+            <column name="feat_id" value="66" />
+            <column
+                name="selected_id" value="5007" />
+            <where>id = 801</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8001" /> <!--
+            Favored Enemy -->
+            <where>id
+            = 802</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8002" /> <!--
+            Track -->
+            <where>id
+            = 803</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8003" /> <!--
+            Wild Empathy -->
+            <where>id
+            = 804</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8004" /> <!--
+            Combat Style -->
+            <column
+                name="to_select_id" value="4002" />
+            <where>id = 805</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8005" /> <!--
+            Endurance -->
+            <where>id
+            = 806</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8006" /> <!--
+            Animal Companion -->
+            <where>id
+            = 807</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8007" /> <!--
+            Spells -->
+            <where>id
+            = 808</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8001" /> <!--
+            Favored Enemy -->
+            <where>id
+            = 809</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8008" /> <!--
+            Improved Combat Style -->
+            <where>id
+            = 810</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8009" /> <!--
+            Woodland Stride -->
+            <where>id
+            = 811</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8010" /> <!--
+            Swift Tracker -->
+            <where>id
+            = 812</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8011" /> <!--
+            Evasion -->
+            <where>id
+            = 813</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8001" /> <!--
+            Favored Enemy -->
+            <where>id
+            = 814</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8012" /> <!--
+            Combat Style Mastery -->
+            <where>id
+            = 815</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8013" /> <!--
+            Camouflage -->
+            <where>id
+            = 816</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8001" /> <!--
+            Favored Enemy -->
+            <where>id
+            = 817</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8014" /> <!--
+            Hide in Plain Sight -->
+            <where>id
+            = 818</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="8" />
+            <column name="feat_id" value="8001" /> <!--
+            Favored Enemy -->
+            <where>id
+            = 819</where>
+        </update>
+
+        <!-- Rogue -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 900</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 901</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9002" /> <!--
+            Trapfinding -->
+            <where>id
+            = 902</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9003" /> <!--
+            Evasion -->
+            <where>id
+            = 903</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 904</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 905</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9005" /> <!--
+            Uncanny Dodge -->
+            <where>id
+            = 906</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 907</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 908</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 909</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9006" /> <!--
+            Improved uncanny dodge -->
+            <where>id
+            = 910</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 911</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 912</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9007" /> <!--
+            Special Abilities -->
+            <where>id
+            = 913</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 914</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 915</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 916</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9007" /> <!--
+            Special Abilities -->
+            <where>id
+            = 917</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 918</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 919</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9007" /> <!--
+            Special Abilities -->
+            <where>id
+            = 920</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 921</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9004" /> <!--
+            Trap Sense -->
+            <where>id
+            = 922</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9001" /> <!--
+            Sneak Attack -->
+            <where>id
+            = 923</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="9" />
+            <column name="feat_id" value="9007" /> <!--
+            Special Abilities -->
+            <where>id
+            = 924</where>
+        </update>
+
+        <!-- Sorcerer -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="10" />
+            <column name="feat_id" value="89" /> <!--
+            Simple -->
+            <column
+                name="selected_id" value="5006" />
+            <where>id = 1000</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="10" />
+            <column
+                name="feat_id" value="10001" /> <!-- Summon Familiar -->
+        <where>id = 1001</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="10" />
+            <column
+                name="feat_id" value="30" /> <!-- Eschew Materials -->
+        <where>id = 1002</where>
+        </update>
+
+        <!-- Wizard -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10001" /> <!--
+            Summon Familiar -->
+        <where>id
+            = 1100</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10002" />
+            <!-- Bonus Languages -->
+        <where>id
+            = 1101</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="84" />
+            <!-- Scribe Scroll -->
+        <where>id
+            = 1102</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10004" />
+            <!-- Spellbooks -->
+        <where>id
+            = 1103</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10003" />
+            <!-- Bonus Feat Wizard -->
+        <where>id
+            = 1104</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10003" />
+            <!-- Bonus Feat Wizard -->
+        <where>id
+            = 1105</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10003" />
+            <!-- Bonus Feat Wizard -->
+        <where>id
+            = 1106</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="11" />
+            <column name="feat_id" value="10003" />
+            <!-- Bonus Feat Wizard -->
+        <where>id
+            = 1107</where>
+        </update>
+
+        <!-- Warsling Sniper -->
+        <update tableName="class_feat">
+            <column name="class_character_id" value="16" />
+            <column name="feat_id" value="11001" />
+            <!-- Warsling Sneak Attack -->
+        <where>id
+            = 1200</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="16" />
+            <column name="feat_id" value="11002" />
+            <!-- Sniper's Vision -->
+        <where>id
+            = 1201</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="class_character_id" value="16" />
+            <column name="feat_id" value="11001" />
+            <!-- Warsling Sneak Attack -->
+        <where>id
+            = 1202</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="level" value="4" />
+            <column name="class_character_id" value="16" />
+            <column
+                name="feat_id" value="11003" /> <!-- Improved Critical -->
+        <where>id = 1203</where></update>
+        <update tableName="class_feat">
+            <column name="level" value="5" />
+            <column name="class_character_id" value="16" />
+            <column
+                name="feat_id" value="11001" /> <!-- Warsling Sneak Attack -->
+                <where>id = 1204</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="level" value="6" />
+            <column name="class_character_id" value="16" />
+            <column
+                name="feat_id" value="11004" /> <!-- Improved Ricochet -->
+        <where>id = 1205</where></update>
+        <!-- Stormlord -->
+        <update tableName="class_feat">
+            <column name="level" value="1" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+                <where>id = 1300</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="level" value="2" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11702" /> <!-- Shock weapon -->
+                <where>id = 1301</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="level" value="3" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11703" /> <!-- Storm Walk -->
+        <where>id = 1302</where>
+        </update>
+        <update tableName="class_feat">
+            <column name="level" value="4" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+        <where>id = 1303</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="5" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11704" /> <!-- Thundering Weapon -->
+        <where>id = 1304</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="6" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11705" /> <!-- Storm Ride -->
+        <where>id = 1305</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="7" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+        <where>id = 1306</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="8" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11706" /> <!-- Shocking Burst Weapon -->
+        <where>id = 1307</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="9" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+        <where>id = 1308</where>
+            </update>
+        <update tableName="class_feat">
+            <column name="level" value="10" />
+            <column name="class_character_id" value="17" />
+            <column
+                name="feat_id" value="11707" /> <!-- Elemental Conflagration -->
+        <where>id = 1309</where>
+            </update>
+    </changeSet>
+</databaseChangeLog>

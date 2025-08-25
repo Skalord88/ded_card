@@ -1,4 +1,73 @@
-<!-- feats -->
+<!-- feat -->
+
+<!-- modifiers 1000 -->
+        <!-- Acrobatic 1001 -->
+        <!-- Agile 1002 -->
+        <!-- Alertness 1003 -->
+        <!-- Animal Affinity 1004 -->
+        <!-- Athletic 1005 -->
+        <!-- Combat Casting 1006 -->
+        <!-- Deceitful 1007 -->
+        <!-- Deft Hands 1008 -->
+        <!-- Diligent 1009 -->
+        <!-- Great Fortitude 1010 -->
+        <!-- Improved Initiative 1011 -->
+
+        <!-- Greater Weapon Focus 1023 -->
+        <!-- Greater Weapon Specialization 1022 -->
+        <!-- Investigator 1012 -->
+        <!-- Iron Will 1013 -->
+        <!-- Lightning Reflexes 1014 -->
+        <!-- Magical Aptitude 1015 -->
+        <!-- Negotiator 1016 -->
+        <!-- Nimble Fingers 1017 -->
+        <!-- Persuasive 1018 -->
+        <!-- Point Blank Shot 1019 -->
+        <!-- Weapon Focus 1020 -->
+        <!-- Weapon Specialization 1021 -->
+
+        <!-- toSelect 2000 -->
+        Weapon Focus 2001
+        Shield Proficiency [General] 2002
+        <!-- Exotic Weapon Proficiency 2004 -->
+        <!-- Greater Spell Focus 18 -->
+        <!-- Improved Shield Bash 2006 -->
+        <!-- Martial Weapon Proficiency 2007 -->
+        <!-- Simple Weapon Proficiency 2005 -->
+
+        <!-- class_feat -->
+        <!-- modifiers 3000 -->
+        <!-- Fast Movement 3001 -->
+        <!-- Trap Sense 3002 -->
+        <!-- Nature Sense 3003 -->
+        <!-- Resist Nature's Lure 3004 -->
+        <!-- Venom Immunity 3005 -->
+        <!-- Fast Movement 3006 -->
+        <!-- Still Mind 3007 -->
+        <!-- Purity of Body 3008 -->
+        <!-- Diamond Body 3009 -->
+        <!-- Divine Grace 3010 -->
+        <!-- Aura of Courage 3011 -->
+        <!-- Divine Health 3012 -->
+
+        <!-- to_select 4000 -->
+        <!-- Favored Enemy 4001 -->
+        <!-- Combat Style 4002 -->
+        <!-- Monk Bonus 4003 1lv -->
+        <!-- Fighter Bonus 4004 -->
+        <!-- Mage Bonus 4005 -->
+
+        <!-- feat -->
+        <!-- selected 5000 -->
+        <!-- Armor Proficiency (Heavy) 5001 -->
+        <!-- Armor Proficiency (Light) 5002 -->
+        <!-- Armor Proficiency (Medium) 5003 -->
+        Shields ex tower 5004
+        Shields tower 5005
+        <!-- Simple Weapon Proficiency 5006 -->
+        <!-- Martial Weapon Proficiency 5007 -->
+        <!-- Druid Weapon Proficiency 5008 -->
+        <!-- Bard Weapon Proficiency 5009 -->
 
         <!-- prereq 110000 -->
         <!-- Armor Proficiency (Heavy) 110001 -->
@@ -58,77 +127,6 @@
         <!-- Weapon Specialization 110054 -->
         <!-- Whirlwind Attack 110055 -->
 
-        <!-- modifiers 1000 -->
-        <!-- Acrobatic 1001 -->
-        <!-- Agile 1002 -->
-        <!-- Alertness 1003 -->
-        <!-- Animal Affinity 1004 -->
-        <!-- Athletic 1005 -->
-        <!-- Combat Casting 1006 -->
-        <!-- Deceitful 1007 -->
-        <!-- Deft Hands 1008 -->
-        <!-- Diligent 1009 -->
-        <!-- Great Fortitude 1010 -->
-        <!-- Improved Initiative 1011 -->
-
-        <!-- Greater Weapon Focus 1023 -->
-        <!-- Greater Weapon Specialization 1022 -->
-        <!-- Investigator 1012 -->
-        <!-- Iron Will 1013 -->
-        <!-- Lightning Reflexes 1014 -->
-        <!-- Magical Aptitude 1015 -->
-        <!-- Negotiator 1016 -->
-        <!-- Nimble Fingers 1017 -->
-        <!-- Persuasive 1018 -->
-        <!-- Point Blank Shot 1019 -->
-        <!-- Weapon Focus 1020 -->
-        <!-- Weapon Specialization 1021 -->
-
-        <!-- toSelect 2000 -->
-        Weapon Focus 2001
-        Shield Proficiency [General] 2002
-        <!-- Exotic Weapon Proficiency 2004 -->
-        <!-- Greater Spell Focus 18 -->
-        <!-- Improved Shield Bash 2006 -->
-        <!-- Martial Weapon Proficiency 2007 -->
-        <!-- Simple Weapon Proficiency 2005 -->
-
-
-        <!-- class_feats -->
-
-        <!-- modifiers 3000 -->
-        <!-- Fast Movement 3001 -->
-        <!-- Trap Sense 3002 -->
-        <!-- Nature Sense 3003 -->
-        <!-- Resist Nature's Lure 3004 -->
-        <!-- Venom Immunity 3005 -->
-        <!-- Fast Movement 3006 -->
-        <!-- Still Mind 3007 -->
-        <!-- Purity of Body 3008 -->
-        <!-- Diamond Body 3009 -->
-        <!-- Divine Grace 3010 -->
-        <!-- Aura of Courage 3011 -->
-        <!-- Divine Health 3012 -->
-
-        <!-- to_select 4000 -->
-        <!-- Favored Enemy 4001 -->
-        <!-- Combat Style 4002 -->
-        <!-- Monk Bonus 4003 1lv -->
-        <!-- Fighter Bonus 4004 -->
-        <!-- Mage Bonus 4005 -->
-
-        <!-- feats -->
-        <!-- selected 5000 -->
-        <!-- Armor Proficiency (Heavy) 5001 -->
-        <!-- Armor Proficiency (Light) 5002 -->
-        <!-- Armor Proficiency (Medium) 5003 -->
-        Shields ex tower 5004
-        Shields tower 5005
-        <!-- Simple Weapon Proficiency 5006 -->
-        <!-- Martial Weapon Proficiency 5007 -->
-        <!-- Druid Weapon Proficiency 5008 -->
-        <!-- Bard Weapon Proficiency 5009 -->
-
         <!-- Pg gia' fatti 100.000-->
         <!-- Puli -->
 
@@ -181,9 +179,11 @@
         10036 UNDEAD_CONTROLLING
         10037 WILD
 
+        size 90.000 - 90009
 
         <!-- Archetipe id:91.000 -->
         <!-- Half-Fiend -->
+        <!-- Half-Dragon -->
 
         <!-- Razze id:100.000 -->
         <!-- Dwarf 100001-->
@@ -203,12 +203,3 @@
         <!-- Shield Dwarf 150004-->
         <!-- Savage Dwarf 150005-->
         <!-- Urdunir Dwarf 150006-->
-
-        <!-- Elf 150100 -->
-        <!-- Gnome 152000 -->
-        <!-- Half Elf 153000 -->
-        <!-- Orc 154000 -->
-        <!-- Halfling 155000 -->
-        <!-- Human 156000 -->
-        <!-- Monstruos Humanoid -->
-        <!-- Hagspawn 157001 -->

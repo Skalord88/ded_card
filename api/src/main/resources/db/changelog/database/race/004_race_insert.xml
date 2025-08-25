@@ -1,0 +1,71 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_race_insert" author="oscar">
+
+        <insert tableName="race">
+            <column name="id" value="1" />
+            <column name="race_name" value="Dwarf" />
+            <!-- <column name="modifiers_id" value="100001" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/b/bf/Dwarves.JPG/revision/latest?cb=20200606022640" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="2" />
+            <column name="race_name" value="Elf" />
+            <!-- <column name="modifiers_id" value="100002" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/0/03/Elf-3e.jpg/revision/latest?cb=20210117165610" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="3" />
+            <column name="race_name" value="Orcs" />
+            <column name="avatar_url" value="address value" />
+            <!-- <column name="modifiers_id" value="100003" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/f/ff/Orc_3e.jpg/revision/latest?cb=20070317024515" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="4" />
+            <column name="race_name" value="Gnome" />
+            <!-- <column name="modifiers_id" value="100004" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/c/c2/Gnomes.jpg/revision/latest?cb=20080924063018" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="5" />
+            <column name="race_name" value="Halfling" />
+            <!-- <column name="modifiers_id" value="100005" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/6/6f/Halflings_-_Steve_Prescott.jpg/revision/latest?cb=20090527060842" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="6" />
+            <column name="race_name" value="Human" />
+            <column name="modifiers_id" value="100006" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/d/da/Human_ethnicities.jpg/revision/latest/scale-to-width-down/1000?cb=20230906183534" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="7" />
+            <column name="race_name" value="Monstruos Humanoid" />
+            <!-- <column name="modifiers" value="100007" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/a/a2/CreatureCatalogue-Chapter_Titlecard.png/revision/latest?cb=20200712064612" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="8" />
+            <column name="race_name" value="Spirit Folk" />
+            <!-- <column name="modifiers" value="100008" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/b/b5/Spirit_folk_2.png/revision/latest?cb=20120301153612" />
+        </insert>
+
+        <insert tableName="race">
+            <column name="id" value="9" />
+            <column name="race_name" value="Half Elf" />
+            <!-- <column name="modifiers_id" value="100009" /> -->
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/f/fd/Half-elves.jpg/revision/latest?cb=20160209050151" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

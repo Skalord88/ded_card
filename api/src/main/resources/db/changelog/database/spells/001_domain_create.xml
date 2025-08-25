@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="create_domains" author="oscar">
+    <changeSet id="001_domain_create" author="oscar">
         <createTable tableName="domains">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" />

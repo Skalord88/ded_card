@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_enchanted_items" author="oscar">
+    <changeSet id="003_enchanted_items_keys" author="oscar">
 
         <!-- modifiers_id -->
         <addForeignKeyConstraint
@@ -13,11 +13,11 @@
             referencedColumnNames="id"
             constraintName="fk_enchanted_items_modifiers" />
 
-        <!-- items_id -->
+        <!-- item_id -->
         <addForeignKeyConstraint
             baseTableName="enchanted_items"
-            baseColumnNames="items_id"
-            referencedTableName="items"
+            baseColumnNames="item_id"
+            referencedTableName="item"
             referencedColumnNames="id"
             constraintName="fk_items_modifiers" />
 

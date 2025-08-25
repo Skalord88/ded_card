@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="relation_prerequisite_special_abilities" author="oscar">
+  <changeSet id="002_prerequisite_special_abilities_relation" author="oscar">
     <createTable tableName="prerequisite_special_abilities">
       <column name="prerequisite_id" type="bigint" />
       <column name="special_abilities_id" type="int" />

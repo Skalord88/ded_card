@@ -3,16 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_backpack" author="oscar">
+    <changeSet id="003_backpack_keys" author="oscar">
         <addForeignKeyConstraint baseTableName="backpack"
             baseColumnNames="inventory_id"
             constraintName="fk_inventory_backpack_inventory"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="backpack"
-            baseColumnNames="items_id"
+            baseColumnNames="item_id"
             constraintName="fk_inventory_backpack_backpack"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         </changeSet>
 </databaseChangeLog>

@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_inventory" author="oscar">
+    <changeSet id="003_inventory_keys" author="oscar">
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="armor_id"
             constraintName="fk_inventory_armor"
@@ -42,47 +42,47 @@
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="head_id"
             constraintName="fk_inventory_head"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="neck_id"
             constraintName="fk_inventory_neck"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="arms_id"
             constraintName="fk_inventory_arms"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="ring_one_id"
             constraintName="fk_inventory_ring_one"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="ring_two_id"
             constraintName="fk_inventory_ring_two"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="cloth_id"
             constraintName="fk_inventory_cloth"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="cloak_id"
             constraintName="fk_inventory_cloak"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="belt_id"
             constraintName="fk_inventory_belt"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="inventory"
             baseColumnNames="legs_id"
             constraintName="fk_inventory_legs"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         </changeSet>
 </databaseChangeLog>

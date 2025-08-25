@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="key_class_pc_character_card" author="oscar">
+    <changeSet id="003_class_character_keys" author="oscar">
         <addForeignKeyConstraint
             baseTableName="class_character"
             baseColumnNames="spells_per_day_id"

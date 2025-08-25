@@ -30,15 +30,15 @@ import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
-import pl.kolendateam.dadcard.feats.dto.FeatsPcDTO;
+import pl.kolendateam.dadcard.feats.dto.FeatPcDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
-import pl.kolendateam.dadcard.feats.entity.Feats;
-import pl.kolendateam.dadcard.feats.entity.FeatsPc;
+import pl.kolendateam.dadcard.feats.entity.Feat;
+import pl.kolendateam.dadcard.feats.entity.FeatPc;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
@@ -97,7 +97,7 @@ public class Character implements Serializable {
     orphanRemoval = true,
     fetch = FetchType.LAZY
   )
-  List<FeatsPc> featsList = new ArrayList<>();
+  List<FeatPc> featsList = new ArrayList<>();
 
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn(name = "inventory_id", referencedColumnName = "id")
@@ -127,7 +127,7 @@ public class Character implements Serializable {
     this.race = subRace;
   }
 
-  public boolean buyFeat(Feats feat) {
+  public boolean buyFeat(Feat feat) {
     boolean buyed = false;
 
     return buyed;
@@ -224,17 +224,17 @@ public class Character implements Serializable {
 
   public void addFeatsToCharacter(
     int id,
-    ArrayList<FeatsPcDTO> featsDTOList,
+    ArrayList<FeatPcDTO> featsDTOList,
     EntityManager entityManager
   ) {
     if (this.featsList == null) {
       this.featsList = new ArrayList<>();
     }
 
-    Set<FeatsPc> newSet = new HashSet<>();
+    Set<FeatPc> newSet = new HashSet<>();
 
     featsDTOList.forEach(fPc -> {
-      Optional<FeatsPc> existingOpt =
+      Optional<FeatPc> existingOpt =
         this.featsList.stream()
           .filter(feat ->
             (
@@ -250,7 +250,7 @@ public class Character implements Serializable {
           )
           .findFirst();
 
-      FeatsPc existing;
+      FeatPc existing;
       if (existingOpt.isPresent()) {
         existing = existingOpt.get(); // Se esiste già, usalo
 
@@ -259,14 +259,14 @@ public class Character implements Serializable {
           existing.getFeat() != null &&
           fPc.feat.id != existing.getFeat().getId()
         ) {
-          // Recupera Feats dal DB invece di crearne uno nuovo
-          Feats existingFeat = entityManager.find(Feats.class, fPc.feat.id);
+          // Recupera Feat dal DB invece di crearne uno nuovo
+          Feat existingFeat = entityManager.find(Feat.class, fPc.feat.id);
           if (existingFeat != null) {
             existing.setFeat(existingFeat);
           }
         }
       } else {
-        existing = new FeatsPc(id, fPc); // Crea un nuovo FeatsPc se non esiste già
+        existing = new FeatPc(id, fPc); // Crea un nuovo FeatPc se non esiste già
       }
 
       // Gestione di Prerequisite
@@ -276,9 +276,9 @@ public class Character implements Serializable {
           : new Prerequisite();
 
         if (fPc.selected.feats != null && !fPc.selected.feats.isEmpty()) {
-          List<Feats> newFeats = new ArrayList<>();
+          List<Feat> newFeats = new ArrayList<>();
           for (PrerequisiteFeatsDTO featDTO : fPc.selected.feats) {
-            Feats existingFeat = entityManager.find(Feats.class, featDTO.id);
+            Feat existingFeat = entityManager.find(Feat.class, featDTO.id);
             if (existingFeat != null) {
               newFeats.add(existingFeat);
             }
@@ -289,9 +289,9 @@ public class Character implements Serializable {
         }
 
         if (fPc.selected.items != null && !fPc.selected.items.isEmpty()) {
-          List<Items> itemsList = new ArrayList<>();
-          for (ItemsDTO itemDTO : fPc.selected.items) {
-            Items existingItem = entityManager.find(Items.class, itemDTO.id);
+          List<Item> itemsList = new ArrayList<>();
+          for (ItemDTO itemDTO : fPc.selected.items) {
+            Item existingItem = entityManager.find(Item.class, itemDTO.id);
             if (existingItem != null) {
               itemsList.add(existingItem);
             }
@@ -321,27 +321,27 @@ public class Character implements Serializable {
     );
   }
 
-  private boolean hasSameItems(List<Items> list1, List<ItemsDTO> list2) {
+  private boolean hasSameItems(List<Item> list1, List<ItemDTO> list2) {
     if (list1.size() != list2.size()) return false;
     Set<Integer> ids1 = list1
       .stream()
-      .map(Items::getId)
+      .map(Item::getId)
       .collect(Collectors.toSet());
     Set<Integer> ids2 = list2
       .stream()
-      .map(ItemsDTO::getId)
+      .map(ItemDTO::getId)
       .collect(Collectors.toSet());
     return ids1.equals(ids2);
   }
 
   private boolean hasSameFeats(
-    List<Feats> list1,
+    List<Feat> list1,
     List<PrerequisiteFeatsDTO> list2
   ) {
     if (list1.size() != list2.size()) return false;
     Set<Integer> ids1 = list1
       .stream()
-      .map(Feats::getId)
+      .map(Feat::getId)
       .collect(Collectors.toSet());
     Set<Integer> ids2 = list2
       .stream()

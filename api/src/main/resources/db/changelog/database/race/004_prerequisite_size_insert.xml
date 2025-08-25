@@ -1,0 +1,79 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_prerequisite_size_insert" author="oscar">
+
+        <!-- Size id:90.000 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="90001" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : 4 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : -16 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : 4 }" />
+            <column name="text" value="Fine size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90002" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : 3 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : -12 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : 3 }" />
+            <column name="text" value="Diminutive size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90003" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : 2 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : -8 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : 2 }" />
+            <column name="text" value="Tiny size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90004" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : 1 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : -4 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : 1 }" />
+            <column name="text" value="Small size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90005" />
+            <column name="text" value="Medium size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90006" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : -1 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : 4 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : -1 }" />
+            <column name="text" value="Large size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90007" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : -2 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : 8 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : -2 }" />
+            <column name="text" value="Huge size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90008" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : -3 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : 12 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : -3 }" />
+            <column name="text" value="Gargantuan size modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="90009" />
+            <column name="attack_roll" value="{ &quot;bonus&quot; : -4 }" />
+            <column name="special_attacks" value="{ &quot;grapple&quot; : 16 }" />
+            <column name="armor_class" value="{ &quot;sizeBonus&quot; : -4 }" />
+            <column name="text" value="Colossal size modifiers" />
+        </insert>
+
+
+    </changeSet>
+</databaseChangeLog>

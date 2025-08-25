@@ -1,0 +1,32 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="003_class_feat_keys" author="oscar">
+        <addForeignKeyConstraint
+            baseTableName="class_feat"
+            baseColumnNames="class_character_id"
+            constraintName="fk_class_character_class_feat"
+            referencedTableName="class_feat"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="class_feat"
+            baseColumnNames="feat_id"
+            constraintName="fk_class_character_feat"
+            referencedTableName="feat"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="class_feat"
+            baseColumnNames="selected_id"
+            constraintName="fk_class_character_selected"
+            referencedTableName="prerequisite"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint
+            baseTableName="class_feat"
+            baseColumnNames="selected_id"
+            constraintName="fk_class_character_to_select"
+            referencedTableName="prerequisite"
+            referencedColumnNames="id" />
+    </changeSet>
+</databaseChangeLog>

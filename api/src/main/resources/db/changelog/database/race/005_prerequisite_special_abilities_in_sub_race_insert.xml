@@ -1,0 +1,193 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="004_sub_race_insert" author="damian">
+        <!-- Dwarf 0 -->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150001" />
+            <!-- Artic Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150002" />
+            <!-- Golden Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150003" />
+            <!-- Grey Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150004" />
+            <!-- Shield Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150005" />
+            <!-- Savage Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150006" />
+            <!-- Urdunir Dwarf -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+
+        <!-- Elf 100-->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150007" />
+            <!-- Avariel, Winged Elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150008" />
+            <!-- Acquatic Elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150009" />
+            <!-- Wood Elf, Bronze -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150010" />
+            <!-- Drow, Dark Elf -->
+            <column name="special_abilities_id" value="103" />
+            <!-- Darkvision 120 ft -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="sub_race_id" value="150010" />
+            <!-- Moon Elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="sub_race_id" value="105" />
+            <!-- savage elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150013" />
+            <!-- golden elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150014" />
+            <!-- star elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+
+        <!-- Gonome 200-->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150015" />
+            <!-- Forest Gnome -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150016" />
+            <!-- Deep Gnome, Svirfneblin -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150017" />
+            <!-- Rock Gnome -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+
+        <!-- Half Elf 300-->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150018" />
+            <!-- Aquatic Half Elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150019" />
+            <!-- Common Half Elf -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150020" />
+            <!-- Half Drow -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+
+        <!-- Orc 400-->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150021" />
+            <!-- Grey Orc -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150022" />
+            <!-- Montain Orc -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="sub_race_id" value="150023" />
+            <!-- Orog, Deep Orc -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="sub_race_id" value="150024" />
+            <!-- Half Orc -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+
+        <!-- Halfling 500-->
+
+        <!-- Human 600-->
+
+        <!-- Monstruos Humanoid 700-->
+
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="157001" />
+            <!-- Hagspawn -->
+            <column name="special_abilities_id" value="302" />
+            <!-- 11 magic resistance -->
+        </insert>
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="157001" />
+            <!-- Hagspawn -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+
+        <!-- Spirit Folk 800-->
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="801" />
+            <!-- Montain Spirit Folk -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="802" />
+            <!-- River Spirit Folk -->
+            <column name="special_abilities_id" value="101" />
+            <!-- low-light vision -->
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

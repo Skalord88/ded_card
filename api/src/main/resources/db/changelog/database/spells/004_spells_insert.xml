@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="insert_spells" author="oscar">
+    <changeSet id="004_spells_insert" author="oscar">
         <insert tableName="spells">
             <column name="name" value="Acid Arrow" />
             <column name="school" value="['CONJURATION','CREATION','ACID']" />

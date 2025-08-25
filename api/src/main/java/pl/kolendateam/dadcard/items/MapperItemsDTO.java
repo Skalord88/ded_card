@@ -9,11 +9,11 @@ import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
-import pl.kolendateam.dadcard.items.dto.ItemsDTO;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -36,9 +36,9 @@ public class MapperItemsDTO {
     return new WeaponsDTO(item);
   }
 
-  public static ItemsDTO toItemsDTO(Items item) {
-    if (item == null) return new ItemsDTO();
-    return new ItemsDTO(item);
+  public static ItemDTO toItemsDTO(Item item) {
+    if (item == null) return new ItemDTO();
+    return new ItemDTO(item);
   }
 
   public static WondrousItemsDTO toWondrousItemsDTO(WondrousItems item) {
@@ -67,11 +67,11 @@ public class MapperItemsDTO {
     return itemsListDTO;
   }
 
-  public static List<ItemsDTO> toListItemsDTO(List<Items> items) {
-    List<ItemsDTO> itemsListDTO = new ArrayList<>();
+  public static List<ItemDTO> toListItemsDTO(List<Item> items) {
+    List<ItemDTO> itemsListDTO = new ArrayList<>();
 
     if (items != null) items.forEach(item -> {
-      itemsListDTO.add(new ItemsDTO(item));
+      itemsListDTO.add(new ItemDTO(item));
     });
 
     return itemsListDTO;
@@ -108,7 +108,7 @@ public class MapperItemsDTO {
 
   public static List<Object> createListOfEnchantedDTO(
     List<EnchantedItems> enchantedList,
-    List<Items> itemsList
+    List<Item> itemsList
   ) {
     List<Object> listDTO = new ArrayList<>();
 

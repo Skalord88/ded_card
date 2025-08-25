@@ -1,7 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet id="insert_modifier_enchanted_items" author="oscar">
+    <changeSet id="005_modifier_in_enchanted_items_update" author="oscar">
 
         <update tableName="enchanted_items">
             <!-- Singing Blade -->

@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="create_spells_table" author="oscar">
+    <changeSet id="001_spells_table_create" author="oscar">
         <createTable tableName="spells_table">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>

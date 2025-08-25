@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import pl.kolendateam.dadcard.feats.entity.Feats;
+import pl.kolendateam.dadcard.feats.entity.Feat;
 import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 import pl.kolendateam.dadcard.size.entity.Size;
@@ -58,14 +58,6 @@ public class SubRace implements Serializable {
 
   @ManyToMany
   @JoinTable(
-    name = "sub_race_feats",
-    joinColumns = @JoinColumn(name = "sub_race_id"),
-    inverseJoinColumns = @JoinColumn(name = "feats_id")
-  )
-  Set<Feats> subRaceFeats = new HashSet<>();
-
-  @ManyToMany
-  @JoinTable(
     name = "race_region",
     joinColumns = @JoinColumn(name = "sub_race_id"),
     inverseJoinColumns = @JoinColumn(name = "region_id")
@@ -73,15 +65,22 @@ public class SubRace implements Serializable {
   Set<Region> availableRegions = new HashSet<>();
 
   Integer levelAdjustment;
-
-  @ManyToMany
-  @JoinTable(
-    name = "race_special_abilities",
-    joinColumns = @JoinColumn(name = "sub_race_id"),
-    inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
-  )
-  Set<SpecialAbilities> specialAbilities;
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "race_special_abilities",
+  //   joinColumns = @JoinColumn(name = "sub_race_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "special_abilities_id")
+  // )
+  // Set<SpecialAbilities> specialAbilities;
   // Integer hitDice;
   // Integer numberHitDice;
   // RaceTypes raceType;
+
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "sub_race_feats",
+  //   joinColumns = @JoinColumn(name = "sub_race_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "feats_id")
+  // )
+  // Set<Feat> subRaceFeats = new HashSet<>();
 }

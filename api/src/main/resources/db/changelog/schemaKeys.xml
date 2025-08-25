@@ -66,7 +66,7 @@
         <addForeignKeyConstraint baseTableName="prerequisite_item"
             baseColumnNames="item_id"
             constraintName="fk_prerequisite_item_item"
-            referencedTableName="items"
+            referencedTableName="item"
             referencedColumnNames="id" />
         <!-- prerequisite_item -->
 
@@ -162,35 +162,35 @@
             referencedColumnNames="id" />
         <!-- class_study -->
 
-        <!-- feats -->
+        <!-- feat -->
         <addForeignKeyConstraint
-            baseTableName="feats"
+            baseTableName="feat"
             baseColumnNames="modifiers_id"
-            constraintName="fk_feats_modifiers"
+            constraintName="fk_feat_modifiers"
             referencedTableName="prerequisite"
             referencedColumnNames="id" />
 
         <addForeignKeyConstraint
-            baseTableName="feats"
+            baseTableName="feat"
             baseColumnNames="prerequisite_list_id"
-            constraintName="fk_feats_prerequisite_list"
+            constraintName="fk_feat_prerequisite_list"
             referencedTableName="prerequisite"
             referencedColumnNames="id" />
 
         <addForeignKeyConstraint
-            baseTableName="feats"
+            baseTableName="feat"
             baseColumnNames="to_select_id"
-            constraintName="fk_feats_to_select"
+            constraintName="fk_feat_to_select"
             referencedTableName="prerequisite"
             referencedColumnNames="id" />
 
         <addForeignKeyConstraint
-            baseTableName="feats"
+            baseTableName="feat"
             baseColumnNames="selected_id"
-            constraintName="fk_feats_selected"
+            constraintName="fk_feat_selected"
             referencedTableName="prerequisite"
             referencedColumnNames="id" />
-        <!-- feats -->
+        <!-- feat -->
 
 
 
@@ -207,20 +207,20 @@
         
         <!-- class_pc -->
 
-        <!-- race_feats -->
+        <!-- race_feat -->
         <addForeignKeyConstraint
-            baseTableName="race_feats"
+            baseTableName="race_feat"
             baseColumnNames="race_id"
             referencedTableName="race"
             referencedColumnNames="id"
-            constraintName="fk_race_feats_race" />
+            constraintName="fk_race_feat_race" />
         <addForeignKeyConstraint
-            baseTableName="race_feats"
-            baseColumnNames="feats_id"
-            referencedTableName="feats"
+            baseTableName="race_feat"
+            baseColumnNames="feat_id"
+            referencedTableName="feat"
             referencedColumnNames="id"
-            constraintName="fk_race_feats_feats" />
-        <!-- race_feats -->
+            constraintName="fk_race_feat_feat" />
+        <!-- race_feat -->
 
         <!-- sub_race -->
         <addForeignKeyConstraint
@@ -247,75 +247,75 @@
             constraintName="fk_race_special_abilities_special_abilities" />
         <!-- race_special_abilities -->
 
-        <!-- sub_race_feats -->
+        <!-- sub_race_feat -->
         <addForeignKeyConstraint
-            baseTableName="sub_race_feats"
+            baseTableName="sub_race_feat"
             baseColumnNames="sub_race_id"
             referencedTableName="sub_race"
             referencedColumnNames="id"
-            constraintName="fk_sub_race_feats_sub_race" />
+            constraintName="fk_sub_race_feat_sub_race" />
 
         <addForeignKeyConstraint
-            baseTableName="sub_race_feats"
-            baseColumnNames="feats_id"
-            referencedTableName="feats"
+            baseTableName="sub_race_feat"
+            baseColumnNames="feat_id"
+            referencedTableName="feat"
             referencedColumnNames="id"
-            constraintName="fk_sub_race_feats_feats" />
-        <!-- sub_race_feats -->
+            constraintName="fk_sub_race_feat_feat" />
+        <!-- sub_race_feat -->
 
-        <!-- class_feats -->
+        <!-- class_feat -->
         <addForeignKeyConstraint
-            baseTableName="class_feats"
+            baseTableName="class_feat"
             baseColumnNames="class_character_id"
             referencedTableName="class_character"
             referencedColumnNames="id"
-            constraintName="fk_class_feats_class_character" />
+            constraintName="fk_class_feat_class_character" />
         <addForeignKeyConstraint
-            baseTableName="class_feats"
-            baseColumnNames="feats_id"
-            referencedTableName="feats"
+            baseTableName="class_feat"
+            baseColumnNames="feat_id"
+            referencedTableName="feat"
             referencedColumnNames="id"
-            constraintName="fk_class_feats_feats" />
+            constraintName="fk_class_feat_feat" />
         <addForeignKeyConstraint
-            baseTableName="class_feats"
+            baseTableName="class_feat"
             baseColumnNames="selected_id"
             referencedTableName="prerequisite"
             referencedColumnNames="id"
-            constraintName="fk_class_feats_selected" />
+            constraintName="fk_class_feat_selected" />
         <addForeignKeyConstraint
-            baseTableName="class_feats"
+            baseTableName="class_feat"
             baseColumnNames="to_select_id"
             referencedTableName="prerequisite"
             referencedColumnNames="id"
-            constraintName="fk_class_feats_to_select" />
-        <!-- class_feats -->
+            constraintName="fk_class_feat_to_select" />
+        <!-- class_feat -->
 
-        <!-- feats_pc -->
+        <!-- feat_pc -->
         <addForeignKeyConstraint
-            baseTableName="feats_pc"
+            baseTableName="feat_pc"
             baseColumnNames="character_card_id"
             referencedTableName="character_card"
             referencedColumnNames="id"
-            constraintName="fk_feats_pc_character_card" />
+            constraintName="fk_feat_pc_character_card" />
         <addForeignKeyConstraint
-            baseTableName="feats_pc"
-            baseColumnNames="feats_id"
-            referencedTableName="feats"
+            baseTableName="feat_pc"
+            baseColumnNames="feat_id"
+            referencedTableName="feat"
             referencedColumnNames="id"
-            constraintName="fk_feats_pc_feats" />
+            constraintName="fk_feat_pc_feat" />
         <addForeignKeyConstraint
-            baseTableName="feats_pc"
-            baseColumnNames="class_feats_id"
-            referencedTableName="class_feats"
+            baseTableName="feat_pc"
+            baseColumnNames="class_feat_id"
+            referencedTableName="class_feat"
             referencedColumnNames="id"
-            constraintName="fk_feats_pc_class_feats" />
+            constraintName="fk_feat_pc_class_feat" />
         <addForeignKeyConstraint
-            baseTableName="feats_pc"
+            baseTableName="feat_pc"
             baseColumnNames="selected_id"
             referencedTableName="prerequisite"
             referencedColumnNames="id"
-            constraintName="fk_feats_pc_selected" />
-        <!-- feats_pc -->
+            constraintName="fk_feat_pc_selected" />
+        <!-- feat_pc -->
 
         <!-- archetype_special_abilities -->
         <addForeignKeyConstraint
@@ -328,7 +328,7 @@
         <addForeignKeyConstraint
             baseTableName="archetype_special_abilities"
             baseColumnNames="special_abilities_id"
-            constraintName="fk_archetype_feats_special_abilities"
+            constraintName="fk_archetype_feat_special_abilities"
             referencedTableName="special_abilities"
             referencedColumnNames="id" />
         <!-- archetype_special_abilities -->
@@ -349,21 +349,21 @@
             referencedColumnNames="id" />
         <!-- special_abilities_spells -->
 
-        <!-- archetype_feats -->
+        <!-- archetype_feat -->
         <addForeignKeyConstraint
-            baseTableName="archetype_feats"
+            baseTableName="archetype_feat"
             baseColumnNames="archetype_id"
-            constraintName="fk_archetype_feats_archetype"
+            constraintName="fk_archetype_feat_archetype"
             referencedTableName="archetype"
             referencedColumnNames="id" />
 
         <addForeignKeyConstraint
-            baseTableName="archetype_feats"
-            baseColumnNames="feats_id"
-            constraintName="fk_archetype_feats_feats"
-            referencedTableName="feats"
+            baseTableName="archetype_feat"
+            baseColumnNames="feat_id"
+            constraintName="fk_archetype_feat_feat"
+            referencedTableName="feat"
             referencedColumnNames="id" />
-        <!-- archetype_feats -->
+        <!-- archetype_feat -->
 
         <!-- enchanted_items -->
         <addForeignKeyConstraint

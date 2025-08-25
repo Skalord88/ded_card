@@ -6,7 +6,7 @@ import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.classCharacter.entity.TypeEnum;
 import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.dto.ClassFeatsDTO;
+import pl.kolendateam.dadcard.feats.dto.ClassFeatDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.SkillDTO;
@@ -28,7 +28,7 @@ public class ClassCharacterDTO {
   public byte skillPoints;
   public Set<SkillDTO> classSkill;
   public Set<StudyDTO> classStudy;
-  public Set<ClassFeatsDTO> classFeats;
+  public Set<ClassFeatDTO> classFeats;
   public SpellsTableDTO spellsPerDay;
   public SpellsTableDTO spellsKnown;
   public ModifierEnum spellBonus;

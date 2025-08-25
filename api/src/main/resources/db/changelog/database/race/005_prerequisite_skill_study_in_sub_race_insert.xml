@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_prerequisite_skill_study_in_sub_race_insert" author="oscar">
+
+        <!-- Grey Dwarf prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="144" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="181" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150003" />
+            <column name="prerequisite_skill_id" value="281" />
+        </insert>
+        <!-- Grey Dwarf prerequisite_skill_study -->
+
+        <!-- Shield Dwarf prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150005" />
+            <column name="prerequisite_skill_id" value="-2" />
+        </insert>
+
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="150005" />
+            <column name="prerequisite_skill_id" value="602" />
+        </insert>
+        <!-- Shield Dwarf prerequisite_skill_study -->
+    </changeSet>
+</databaseChangeLog>

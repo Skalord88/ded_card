@@ -23,7 +23,7 @@ import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantedItemsRepository;
 import pl.kolendateam.dadcard.items.enchantment.repository.EnchantmentRepository;
 import pl.kolendateam.dadcard.items.entity.Inventory;
-import pl.kolendateam.dadcard.items.entity.Items;
+import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 
@@ -55,7 +55,7 @@ public class ItemsController {
 
   @GetMapping("all")
   public ItemsListDTO showItemsList() {
-    List<Items> itemsList = this.itemsRepository.findAll();
+    List<Item> itemsList = this.itemsRepository.findAll();
 
     ItemsListDTO itemsDTOList = new ItemsListDTO();
 
@@ -67,7 +67,7 @@ public class ItemsController {
     List<EnchantedItems> enchantedList =
       this.enchantedItemsRepository.findAll();
 
-    List<Items> itemsList = this.itemsRepository.findAll();
+    List<Item> itemsList = this.itemsRepository.findAll();
 
     return MapperItemsDTO.createListOfEnchantedDTO(enchantedList, itemsList);
   }

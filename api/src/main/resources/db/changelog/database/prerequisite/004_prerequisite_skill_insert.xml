@@ -1,0 +1,426 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_prerequisite_skill_insert" author="oscar">
+        <insert tableName="prerequisite_skill">
+            <column name="id" value="11" />
+            <column name="skill_id" value="1" />
+            <!-- APPRAISE 1 -->
+            <column name="rank" value="1" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="id" value="12" />
+            <column name="skill_id" value="1" />
+            <!-- APPRAISE 2 -->
+            <column name="rank" value="2" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="id" value="-2" />
+            <column name="skill_id" value="1" />
+            <!-- APPRAISE -2 -->
+            <column name="rank" value="-2" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="id" value="22" />
+            <column name="skill_id" value="2" />
+            <!-- BALANCE -->
+            <column name="rank" value="2" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="3" />
+            <!-- BLUFF -->
+            <column name="rank" value="2" />
+            <column name="id" value="32" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="4" />
+            <!-- CLIMB 2 -->
+            <column name="rank" value="2" />
+            <column name="id" value="42" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="4" />
+            <!-- CLIMB 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="45" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="4" />
+            <!-- CLIMB 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="410" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="5" />
+            <!-- CONCENTRATION -->
+            <column name="rank" value="4" />
+            <column name="id" value="54" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="6" />
+            <!-- CRAFT -->
+            <column name="rank" value="2" />
+            <column name="id" value="62" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="6" />
+            <!-- CRAFT -2 -->
+            <column name="rank" value="-2" />
+            <column name="id" value="602" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="7" />
+            <!-- DIPLOMACY -->
+            <column name="rank" value="2" />
+            <column name="id" value="72" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="8" />
+            <!-- DISABLE_DEVICE -->
+            <column name="rank" value="2" />
+            <column name="id" value="82" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="9" />
+            <!-- DISGUISE -->
+            <column name="rank" value="2" />
+            <column name="id" value="92" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" />
+            <!-- ESCAPE_ARTIST 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1015" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" />
+            <!-- ESCAPE_ARTIST 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1010" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" />
+            <!-- ESCAPE_ARTIST 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="105" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="10" />
+            <!-- ESCAPE_ARTIST 2 -->
+            <column name="rank" value="2" />
+            <column name="id" value="102" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="11" />
+            <!-- GATHER_INFORMATION -->
+            <column name="rank" value="2" />
+            <column name="id" value="112" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="12" />
+            <!-- HANDLE_ANIMAL -->
+            <column name="rank" value="2" />
+            <column name="id" value="122" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="13" />
+            <!-- HEAL -->
+            <column name="rank" value="2" />
+            <column name="id" value="132" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 16 -->
+            <column name="rank" value="16" />
+            <column name="id" value="1416" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1415" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 12 -->
+            <column name="rank" value="12" />
+            <column name="id" value="1412" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1410" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 8 -->
+            <column name="rank" value="8" />
+            <column name="id" value="148" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="145" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 4 -->
+            <column name="rank" value="4" />
+            <column name="id" value="144" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE 2 -->
+            <column name="rank" value="2" />
+            <column name="id" value="142" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE -2 -->
+            <column name="rank" value="-2" />
+            <column name="id" value="1402" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE -4 -->
+            <column name="rank" value="-4" />
+            <column name="id" value="1404" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE -8 -->
+            <column name="rank" value="-8" />
+            <column name="id" value="1408" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE -12 -->
+            <column name="rank" value="-12" />
+            <column name="id" value="14012" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="14" />
+            <!-- HIDE -16 -->
+            <column name="rank" value="-16" />
+            <column name="id" value="14016" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="15" />
+            <!-- INTIMIDATE -->
+            <column name="rank" value="2" />
+            <column name="id" value="152" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="16" />
+            <!-- JUMP -->
+            <column name="rank" value="2" />
+            <column name="id" value="162" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="17" />
+            <!-- KNOWLEDGE -->
+            <column name="rank" value="1" />
+            <column name="id" value="171" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="18" />
+            <!-- LISTEN -->
+            <column name="rank" value="1" />
+            <column name="id" value="181" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="18" />
+            <!-- LISTEN -->
+            <column name="rank" value="2" />
+            <column name="id" value="182" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" />
+            <!-- MOVE_SILENTLY 15 -->
+            <column name="rank" value="15" />
+            <column name="id" value="1915" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" />
+            <!-- MOVE_SILENTLY 10 -->
+            <column name="rank" value="10" />
+            <column name="id" value="1910" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" />
+            <!-- MOVE_SILENTLY 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="195" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="19" />
+            <!-- MOVE_SILENTLY 2 -->
+            <column name="rank" value="2" />
+            <column name="id" value="192" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="20" />
+            <!-- PERFORM -->
+            <column name="rank" value="1" />
+            <column name="id" value="201" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="20" />
+            <!-- PERFORM -->
+            <column name="rank" value="2" />
+            <column name="id" value="202" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="21" />
+            <!-- PROFESSION -->
+            <column name="rank" value="1" />
+            <column name="id" value="211" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="21" />
+            <!-- PROFESSION -->
+            <column name="rank" value="2" />
+            <column name="id" value="212" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="22" />
+            <!-- RIDE -->
+            <column name="rank" value="2" />
+            <column name="id" value="222" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="23" />
+            <!-- SEARCH -->
+            <column name="rank" value="1" />
+            <column name="id" value="231" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="23" />
+            <!-- SEARCH -->
+            <column name="rank" value="2" />
+            <column name="id" value="232" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="24" />
+            <!-- SENSE_MOTIVE -->
+            <column name="rank" value="2" />
+            <column name="id" value="242" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="25" />
+            <!-- SLEIGHT_OF_HAND -->
+            <column name="rank" value="2" />
+            <column name="id" value="252" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="27" />
+            <!-- SPELLCRAFT -->
+            <column name="rank" value="2" />
+            <column name="id" value="272" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="27" />
+            <!-- SPELLCRAFT -->
+            <column name="rank" value="3" />
+            <column name="id" value="273" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="28" />
+            <!-- SPOT -->
+            <column name="rank" value="1" />
+            <column name="id" value="281" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="28" />
+            <!-- SPOT -->
+            <column name="rank" value="2" />
+            <column name="id" value="282" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="29" />
+            <!-- SURVIVAL -->
+            <column name="rank" value="2" />
+            <column name="id" value="292" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="30" />
+            <!-- SWIM 2 -->
+            <column name="rank" value="2" />
+            <column name="id" value="302" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="30" />
+            <!-- SWIM 5 -->
+            <column name="rank" value="5" />
+            <column name="id" value="305" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="30" />
+            <!-- SWIM 10 -->
+            <column name="rank" value="5" />
+            <column name="id" value="3010" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="31" />
+            <!-- TUMBLE -->
+            <column name="rank" value="2" />
+            <column name="id" value="312" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="32" />
+            <!-- USE_MAGIC_DEVICE -->
+            <column name="rank" value="2" />
+            <column name="id" value="322" />
+        </insert>
+
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="33" />
+            <!-- USE_ROPE -->
+            <column name="rank" value="2" />
+            <column name="id" value="332" />
+        </insert>
+
+        <!-- study 10000-->
+        <insert tableName="prerequisite_skill">
+            <column name="study_id" value="4" />
+            <!-- NATURE -->
+            <column name="rank" value="2" />
+            <column name="id" value="10032" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

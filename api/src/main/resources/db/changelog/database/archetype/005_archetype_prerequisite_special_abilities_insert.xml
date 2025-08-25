@@ -3,7 +3,7 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="insert_archetype_prerequisite_special_abilities" author="oscar">
+  <changeSet id="005_archetype_prerequisite_special_abilities_insert" author="oscar">
 
     <!-- Half-Fiend -->
     <insert tableName="prerequisite_special_abilities">

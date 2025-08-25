@@ -2,12 +2,8 @@ package pl.kolendateam.dadcard.race.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.FeatsDTO;
 import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
-import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
-import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
 import pl.kolendateam.dadcard.race.MaperListRegionToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.entity.SubRace;
@@ -22,10 +18,10 @@ public class SubRaceDTO {
   public String subRacesName;
   public String avatarUrl;
   public PrerequisiteDTO modifiers;
-  public Set<FeatsDTO> raceFeats;
+  // public Set<FeatDTO> raceFeats;
   public Integer levelAdjustment;
   public SizeDTO size;
-  public Set<SpecialAbilitiesDTO> specialAbilities;
+  // public Set<SpecialAbilitiesDTO> specialAbilities;
   public Set<RegionBaseDTO> availableRegions;
 
   // public Integer hitDice;
@@ -43,18 +39,18 @@ public class SubRaceDTO {
       subRace.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(subRace.getModifiers())
         : null;
-    this.raceFeats = MapperFeats.toFeatsSetDTO(subRace.getSubRaceFeats());
+    // this.raceFeat = MapperFeats.toFeatsSetDTO(subRace.getSubRaceFeats());
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
     this.availableRegions =
       MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
-    this.specialAbilities =
-      subRace.getSpecialAbilities() != null
-        ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
-          subRace.getSpecialAbilities()
-        )
-        : null;
+    // this.specialAbilities =
+    //   subRace.getSpecialAbilities() != null
+    //     ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+    //       subRace.getSpecialAbilities()
+    //     )
+    //     : null;
     // this.hitDice = subRace.getHitDice() != null ? subRace.getHitDice() : null;
     // this.numberHitDice =
     //   subRace.getNumberHitDice() != null ? subRace.getNumberHitDice() : null;

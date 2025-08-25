@@ -22,7 +22,7 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassPcRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
-import pl.kolendateam.dadcard.feats.repository.FeatsRepository;
+import pl.kolendateam.dadcard.feats.repository.FeatRepository;
 import pl.kolendateam.dadcard.items.repository.InventoryRepository;
 import pl.kolendateam.dadcard.items.repository.ItemsRepository;
 import pl.kolendateam.dadcard.skills.repository.SkillsRepository;
@@ -37,7 +37,7 @@ public class CharacterController {
   ClassRepository classRepository;
   CharacterRepository characterRepository;
   ClassPcRepository classPcRepository;
-  FeatsRepository featsRepository;
+  FeatRepository featsRepository;
   SkillsRepository skillsRepository;
   SpellsTableRepository spellsTableRepository;
   InventoryRepository inventoryRepository;
@@ -50,7 +50,7 @@ public class CharacterController {
     CharacterRepository characterRepository,
     ClassRepository classRepository,
     ClassPcRepository classPcRepository,
-    FeatsRepository featsRepository,
+    FeatRepository featsRepository,
     SkillsRepository skillsRepository,
     SpellsTableRepository spellsTableRepository,
     InventoryRepository inventoryRepository,

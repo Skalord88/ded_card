@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <!-- -1 cancell livello 0, -2 All -->
-    <changeSet id="insert_spells_table" author="oscar">
+    <changeSet id="004_spells_table_insert" author="oscar">
         <insert tableName="spells_table">
             <column name="id" value="1" />
             <column name="magic_class" value="BARD" />

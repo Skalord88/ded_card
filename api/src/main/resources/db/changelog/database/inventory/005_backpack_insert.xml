@@ -3,60 +3,60 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="insert_backpack" author="oscar">
+    <changeSet id="005_backpack_insert" author="oscar">
 
         <!-- <insert tableName="backpack">
             <column name="inventory_id" value="101" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="101" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
 
         <insert tableName="backpack">
             <column name="inventory_id" value="102" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="102" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
 
         <insert tableName="backpack">
             <column name="inventory_id" value="103" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="103" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
 
         <insert tableName="backpack">
             <column name="inventory_id" value="104" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="104" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
 
         <insert tableName="backpack">
             <column name="inventory_id" value="105" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="105" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
 
         <insert tableName="backpack">
             <column name="inventory_id" value="106" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert>
         <insert tableName="backpack">
             <column name="inventory_id" value="106" />
-            <column name="items_id" value="4" />
+            <column name="item_id" value="4" />
         </insert> -->
     </changeSet>
 </databaseChangeLog>

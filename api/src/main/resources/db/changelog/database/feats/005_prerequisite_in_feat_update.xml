@@ -1,0 +1,590 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_prerequisite_in_feat_update" author="oscar">
+
+        <update tableName="feat">
+            <!-- Acrobatic [General] -->
+            <column name="modifiers_id" valueNumeric="1001" />
+        <where>id = 1</where>
+        </update>
+        <update tableName="feat">
+            <!-- Agile [General] -->
+            <column name="modifiers_id" valueNumeric="1002" />
+        <where>id = 2</where>
+        </update>
+        <update tableName="feat">
+            <!-- Alertness [General] -->
+            <column name="modifiers_id" valueNumeric="1003" />
+        <where>id = 3</where>
+        </update>
+        <update tableName="feat">
+            <!-- Animal Affinity [General] -->
+            <column name="modifiers_id" valueNumeric="1004" />
+        <where>id = 4</where>
+        </update>
+        <update tableName="feat">
+            <!-- Armor Proficiency (Heavy) [General] -->
+            <column name="prerequisite_list_id" valueNumeric="110001" />
+        <where>id
+            = 5</where>
+        </update>
+        <update tableName="feat">
+            <!-- Armor Proficiency (Medium) [General] -->
+            <column name="prerequisite_list_id" valueNumeric="110002" />
+        <where>id
+            = 7</where>
+        </update>
+        <update tableName="feat">
+            <!-- Athletic [General] -->
+            <column name="modifiers_id" valueNumeric="1005" />
+        <where>id = 8</where>
+        </update>
+        <update tableName="feat">
+            <!-- Brew Potion [Item Creation] -->
+            <column name="prerequisite_list_id" valueNumeric="110003" />
+        <where>id
+            = 11</where>
+        </update>
+        <update tableName="feat">
+            <!-- Cleave [Item Creation] -->
+            <column name="prerequisite_list_id" valueNumeric="110004" />
+        <where>id
+            = 12</where>
+        </update>
+        <update tableName="feat">
+            <!-- Combat Casting [General] -->
+            <column name="modifiers_id" valueNumeric="1006" />
+        <where>id = 13</where>
+        </update>
+        <update tableName="feat">
+            <!-- Combat Expertise [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110005" />
+        <where>id
+            = 14</where>
+        </update>
+        <update tableName="feat">
+            <!-- Craft Magic Arms And Armor [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110006" />
+        <where>id
+            = 16</where>
+        </update>
+        <update tableName="feat">
+            <!-- Craft Rod [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110007" />
+        <where>id
+            = 17</where>
+        </update>
+        <update tableName="feat">
+            <!-- Craft Staff [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110008" />
+        <where>id
+            = 18</where>
+        </update>
+        <update tableName="feat">
+            <!-- Craft Wand [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110006" />
+        <where>id
+            = 19</where>
+        </update>
+        <update tableName="feat">
+            <!-- Craft Wondrous Item [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110003" />
+        <where>id
+            = 20</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deceitful [Item Creation] pre -->
+            <column name="modifiers_id" valueNumeric="1007" />
+        <where>id = 21</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deceitful [Item Creation] pre -->
+            <column name="modifiers_id" valueNumeric="110011" />
+        <where>id = 22</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deft Hands [Item Creation] mod -->
+            <column name="modifiers_id" valueNumeric="1008" />
+        <where>id = 23</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deft Hands [Item Creation] mod -->
+            <column name="prerequisite_list_id" valueNumeric="110056" />
+        <where>id
+            = 24</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deft Hands [Item Creation] mod -->
+            <column name="modifiers_id" valueNumeric="1009" />
+        <where>id = 25</where>
+        </update>
+        <update tableName="feat">
+            <!-- Deft Hands [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110012" />
+        <where>id
+            = 26</where>
+        </update>
+        <update tableName="feat">
+            <!-- Exotic Weapon Proficiency [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110013" />
+        <where>id
+            = 31</where>
+        </update>
+        <update tableName="feat">
+            <!-- Exotic Weapon Proficiency [General] mod -->
+            <column name="to_select_id" valueNumeric="2004" />
+        <where>id = 31</where>
+        </update>
+        <update tableName="feat">
+            <!-- Extra Turning [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110014" />
+        <where>id
+            = 33</where>
+        </update>
+        <update tableName="feat">
+            <!-- Far Shot [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110015" />
+        <where>id
+            = 34</where>
+        </update>
+        <update tableName="feat">
+            <!-- Forge Ring [Item Creation] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110003" />
+        <where>id
+            = 35</where>
+        </update>
+        <update tableName="feat">
+            <!-- Great Cleave [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110017" />
+        <where>id
+            = 36</where>
+        </update>
+        <update tableName="feat">
+            <!-- Great Fortitude [General] pre -->
+            <column name="modifiers_id" valueNumeric="1010" />
+        <where>id = 37</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Spell Focus [General] pre -->
+            <column name="to_select_id" valueNumeric="110018" />
+        <where>id = 38</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Spell Penetration [General] pre -->
+            <column name="to_select_id" valueNumeric="110019" />
+        <where>id = 39</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Two-Weapon Fighting [General] pre -->
+            <column name="to_select_id" valueNumeric="110020" />
+        <where>id = 40</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Weapon Focus [General] pre -->
+            <column name="to_select_id" valueNumeric="110021" />
+        <where>id = 41</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Weapon Focus [General] mod -->
+            <column name="to_select_id" valueNumeric="1023" />
+        <where>id = 41</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Weapon Focus [General] mod -->
+            <column name="prerequisite_list_id" valueNumeric="110022" />
+        <where>id
+            = 42</where>
+        </update>
+        <update tableName="feat">
+            <!-- Greater Weapon Focus [General] mod -->
+            <column name="modifiers_id" valueNumeric="1022" />
+        <where>id = 42</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Bull Rush [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110023" />
+        <where>id
+            = 43</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Critical [General] pre -->
+            <column name="to_select_id" valueNumeric="110024" />
+        <where>id = 46</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Critical [General] mod -->
+            <column name="modifiers_id" valueNumeric="1024" />
+        <where>id = 46</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Disarm [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110025" />
+        <where>id
+            = 47</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Familiar [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110026" />
+        <where>id
+            = 48</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Feint [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110027" />
+        <where>id
+            = 49</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Grapple [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="100028" />
+        <where>id
+            = 50</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Initiative [General] mod -->
+            <column name="modifiers_id" valueNumeric="1011" />
+        <where>id = 51</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Initiative [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="100029" />
+        <where>id
+            = 52</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Precise Shot [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110030" />
+        <where>id
+            = 53</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Shield Bash [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110031" />
+        <where>id
+            = 54</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Shield Bash [General] toSel -->
+            <column name="to_select_id" valueNumeric="2002" />
+        <where>id = 54</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Sunder [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="10032" />
+        <where>id
+            = 55</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Trip [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="100033" />
+        <where>id
+            = 56</where>
+        </update>
+        <update tableName="feat">
+            <!-- Improved Two-Weapon Fighting [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110034" />
+        <where>id
+            = 58</where>
+        </update>
+        <update tableName="feat">
+            <!-- Investigator [General] mod -->
+            <column name="modifiers_id" valueNumeric="1012" />
+        <where>id = 60</where>
+        </update>
+        <update tableName="feat">
+            <!-- Iron Will [General] mod -->
+            <column name="modifiers_id" valueNumeric="1013" />
+        <where>id = 61</where>
+        </update>
+        <update tableName="feat">
+            <!-- Leadership [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110035" />
+        <where>id
+            = 62</where>
+        </update>
+        <update tableName="feat">
+            <!-- Lightning Reflexes [General] mod -->
+            <column name="modifiers_id" valueNumeric="1014" />
+        <where>id = 63</where>
+        </update>
+        <update tableName="feat">
+            <!-- Magical Aptitude [General] mod -->
+            <column name="modifiers_id" valueNumeric="1015" />
+        <where>id = 64</where>
+        </update>
+        <update tableName="feat">
+            <!-- Magical Aptitude [General] mod -->
+            <column name="prerequisite_list_id" valueNumeric="110036" />
+        <where>id
+            = 65</where>
+        </update>
+        <update tableName="feat">
+            <!-- Martial Weapon Proficiency [General] sel -->
+            <column name="to_select_id" valueNumeric="2007" />
+        <where>id = 66</where>
+        </update>
+        <update tableName="feat">
+            <!-- Mobility [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110038" />
+        <where>id
+            = 68</where>
+        </update>
+        <update tableName="feat">
+            <!-- Mounted Archery [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110039" />
+        <where>id
+            = 69</where>
+        </update>
+        <update tableName="feat">
+            <!-- Natural Spell [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110040" />
+        <where>id
+            = 70</where>
+        </update>
+        <update tableName="feat">
+            <!-- Negotiator [General] mod -->
+            <column name="modifiers_id" valueNumeric="1016" />
+        <where>id = 72</where>
+        </update>
+        <update tableName="feat">
+            <!-- Nimble Fingers [General] mod -->
+            <column name="modifiers_id" valueNumeric="1017" />
+        <where>id = 73</where>
+        </update>
+        <update tableName="feat">
+            <!-- Persuasive [General] mod -->
+            <column name="modifiers_id" valueNumeric="1018" />
+        <where>id = 74</where>
+        </update>
+        <update tableName="feat">
+            <!-- Point Blank Shot [General] mod -->
+            <column name="modifiers_id" valueNumeric="1019" />
+        <where>id = 75</where>
+        </update>
+        <update tableName="feat">
+            <!-- Power Attack [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110041" />
+        <where>id
+            = 76</where>
+        </update>
+        <update tableName="feat">
+            <!-- Precise Shot [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110042" />
+        <where>id
+            = 77</where>
+        </update>
+        <update tableName="feat">
+            <!-- Quick Draw [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110043" />
+        <where>id
+            = 78</where>
+        </update>
+        <update tableName="feat">
+            <!-- Rapid Shot [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110044" />
+        <where>id
+            = 81</where>
+        </update>
+        <update tableName="feat">
+            <!-- Ride-By Attack [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110045" />
+        <where>id
+            = 82</where>
+        </update>
+        <update tableName="feat">
+            <!-- Shield Proficiency [General] toSel -->
+            <column name="to_select_id" valueNumeric="2006" />
+        <where>id = 86</where>
+        </update>
+        <update tableName="feat">
+            <!-- Shot On The Run [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110046" />
+            <where>id
+            = 87</where>
+        </update>
+        <update tableName="feat">
+            <!-- Simple Weapon Proficiency [General] toSel -->
+            <column name="to_select_id" valueNumeric="2005" />
+            <where>id
+            = 89</where>
+        </update>
+        <update tableName="feat">
+            <!-- Snatch Arrows [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110047" />
+            <where>id
+            = 91</where>
+        </update>
+        <update tableName="feat">
+            <!-- Spirited Charge [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110048" />
+            <where>id
+            = 95</where>
+        </update>
+        <update tableName="feat">
+            <!-- Spring Attack [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110049" />
+            <where>id
+            = 96</where>
+        </update>
+        <update tableName="feat">
+            <!-- Stunning Fist [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110050" />
+            <where>id
+            = 99</where>
+        </update>
+        <update tableName="feat">
+            <!-- Trample [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110051" />
+            <where>id
+            = 103</where>
+        </update>
+        <update tableName="feat">
+            <!-- Two-Weapon Defense [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110052" />
+            <where>id
+            = 104</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Focus [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110053" />
+            <where>id
+            = 107</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Focus [General] mod -->
+            <column name="modifiers_id" valueNumeric="1020" />
+            <where>id = 107</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Focus [General] toSel -->
+            <column name="to_select_id" valueNumeric="2001" />
+            <where>id = 107</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Specialization [General] sel -->
+            <column name="prerequisite_list_id" valueNumeric="110054" />
+            <where>id = 108</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Specialization [General] toSel -->
+            <column name="to_select_id" valueNumeric="2001" />
+            <where>id = 108</where>
+        </update>
+        <update tableName="feat">
+            <!-- Weapon Specialization [General] mod -->
+            <column name="modifiers_id" valueNumeric="1021" />
+            <where>id = 108</where>
+        </update>
+        <update tableName="feat">
+            <!-- Whirlwind Attack [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="110055" />
+            <where>id = 109</where>
+        </update>
+
+        <!-- classes -->
+        <!-- barbarian -->
+        <update tableName="feat">
+            <!-- Fast Movement mod -->
+            <column name="modifiers_id" valueNumeric="3001" />
+            <where>id = 1001</where>
+        </update>
+        <update tableName="feat">
+            <!-- Trap Sense mod -->
+            <column name="modifiers_id" valueNumeric="3002" />
+            <where>id = 1005</where>
+        </update>
+
+        <!-- druid -->
+        <update tableName="feat">
+            <!-- Nature Sense mod -->
+            <column name="modifiers_id" valueNumeric="3003" />
+            <where>id = 4005</where>
+        </update>
+        <update tableName="feat">
+            <!-- Resist Nature's Lure mod -->
+            <column name="modifiers_id" valueNumeric="3004" />
+            <where>id = 4005</where>
+        </update>
+        <update tableName="feat">
+            <!-- Venom Immunity mod -->
+            <column name="modifiers_id" valueNumeric="3005" />
+            <where>id = 4011</where>
+        </update>
+
+        <!-- monk -->
+        <update tableName="feat">
+            <!-- Fast Movement mod -->
+            <column name="modifiers_id" valueNumeric="3006" />
+            <where>id = 6006</where>
+        </update>
+        <update tableName="feat">
+            <!-- Still Mind mod -->
+            <column name="modifiers_id" valueNumeric="3007" />
+            <where>id = 6007</where>
+        </update>
+        <update tableName="feat">
+            <!-- Purity of Body mod -->
+            <column name="modifiers_id" valueNumeric="3008" />
+            <where>id = 6010</where>
+        </update>
+        <update tableName="feat">
+            <!-- Diamond Body mod -->
+            <column name="modifiers_id" valueNumeric="3009" />
+            <where>id = 6013</where>
+        </update>
+
+        <!-- Paladin -->
+        <update tableName="feat">
+            <!-- Divine Grace mod -->
+            <column name="modifiers_id" valueNumeric="3010" />
+            <where>id = 7004</where>
+        </update>
+        <update tableName="feat">
+            <!-- Aura of Courage mod -->
+            <column name="modifiers_id" valueNumeric="3011" />
+            <where>id = 7006</where>
+        </update>
+        <update tableName="feat">
+            <!-- Divine Health mod -->
+            <column name="modifiers_id" valueNumeric="3012" />
+            <where>id = 7007</where>
+        </update>
+
+        <!-- Ranger -->
+        <update tableName="feat">
+            <!-- Combat Style toSel -->
+            <column name="modifiers_id" valueNumeric="4002" />
+            <where>id = 8004</where>
+        </update>
+
+        <!-- Stormlord -->
+        <update tableName="feat">
+            <!-- Electricity Resistance mod -->
+            <column name="modifiers_id" valueNumeric="70000" />
+            <where>id = 11701</where>
+        </update>
+
+        <!-- monsters -->
+        <update tableName="feat">
+            <!-- Improved Natural Armor [General] pre -->
+            <column name="prerequisite_list_id" valueNumeric="50001" />
+            <where>id = 50003</where>
+        </update>
+        <update tableName="feat">
+            <!-- Eagle's Wings [Wild] pre -->
+            <column name="prerequisite_list_id" valueNumeric="50002" />
+            <where>id = 50004</where>
+        </update>
+        <update tableName="feat">
+            <!-- Pierce the Darkness [Divine] pre -->
+            <column name="prerequisite_list_id" valueNumeric="50003" />
+            <where>id = 50005</where>
+        </update>
+        <update tableName="feat">
+            <!-- Domain Spontaneity [Divine] pre -->
+            <column name="prerequisite_list_id" valueNumeric="50004" />
+            <where>id = 50006</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

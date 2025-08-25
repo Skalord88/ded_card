@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="1023" author="oscar">
+    <changeSet id="004_special_abilities_insert" author="oscar">
 
         <!-- Breath Weapon -->
         <!-- Half-Dragon Black 1 -->
