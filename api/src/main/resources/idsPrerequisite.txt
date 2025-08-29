@@ -203,3 +203,16 @@
         <!-- Shield Dwarf 150004-->
         <!-- Savage Dwarf 150005-->
         <!-- Urdunir Dwarf 150006-->
+
+        Elf
+        Winged 150100
+        Acquatic 150101
+        Wood 150102
+        Drow 150103
+        Moon 150104
+        Savage 150105
+        Golden Elf 150106
+        Star Elf 150107
+
+        Forest Gnome 150201
+        

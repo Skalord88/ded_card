@@ -26,14 +26,12 @@
         <update tableName="feat">
             <!-- Armor Proficiency (Heavy) [General] -->
             <column name="prerequisite_list_id" valueNumeric="110001" />
-        <where>id
-            = 5</where>
+        <where>id = 5</where>
         </update>
         <update tableName="feat">
             <!-- Armor Proficiency (Medium) [General] -->
             <column name="prerequisite_list_id" valueNumeric="110002" />
-        <where>id
-            = 7</where>
+        <where>id = 7</where>
         </update>
         <update tableName="feat">
             <!-- Athletic [General] -->
@@ -237,7 +235,7 @@
         </update>
         <update tableName="feat">
             <!-- Improved Grapple [General] pre -->
-            <column name="prerequisite_list_id" valueNumeric="100028" />
+            <column name="prerequisite_list_id" valueNumeric="110028" />
         <where>id
             = 50</where>
         </update>
@@ -248,7 +246,7 @@
         </update>
         <update tableName="feat">
             <!-- Improved Initiative [General] pre -->
-            <column name="prerequisite_list_id" valueNumeric="100029" />
+            <column name="prerequisite_list_id" valueNumeric="110029" />
         <where>id
             = 52</where>
         </update>
@@ -271,13 +269,13 @@
         </update>
         <update tableName="feat">
             <!-- Improved Sunder [General] pre -->
-            <column name="prerequisite_list_id" valueNumeric="10032" />
+            <column name="prerequisite_list_id" valueNumeric="110032" />
         <where>id
             = 55</where>
         </update>
         <update tableName="feat">
             <!-- Improved Trip [General] pre -->
-            <column name="prerequisite_list_id" valueNumeric="100033" />
+            <column name="prerequisite_list_id" valueNumeric="110033" />
         <where>id
             = 56</where>
         </update>
@@ -340,7 +338,7 @@
             <!-- Natural Spell [General] pre -->
             <column name="prerequisite_list_id" valueNumeric="110040" />
         <where>id
-            = 70</where>
+            = 71</where>
         </update>
         <update tableName="feat">
             <!-- Negotiator [General] mod -->

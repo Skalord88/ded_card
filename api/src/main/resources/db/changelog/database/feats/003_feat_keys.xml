@@ -14,7 +14,7 @@
             baseTableName="feat"
             baseColumnNames="prerequisite_list_id"
             constraintName="fk_feat_prerequisite_list"
-            referencedTableName="feat"
+            referencedTableName="prerequisite"
             referencedColumnNames="id" />
         <addForeignKeyConstraint
             baseTableName="feat"

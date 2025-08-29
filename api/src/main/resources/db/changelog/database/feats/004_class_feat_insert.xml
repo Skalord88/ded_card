@@ -3,113 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="005_class_feat_insert" author="oscar">
-
-        <!-- Shields ex tower / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5004" />
-            <column name="text" value="Shields ex tower" />
-        </insert>
-
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5004" />
-            <column name="item_id" value="95" />
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5004" />
-            <column name="item_id" value="96" />
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5004" />
-            <column name="item_id" value="97" />
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5004" />
-            <column name="item_id" value="98" />
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5004" />
-            <column name="item_id" value="99" />
-        </insert>
-
-        <!-- Shields tower / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5005" />
-            <column name="text" value="Shields tower proficency" />
-        </insert>
-
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5005" />
-            <column name="item_id" value="100" />
-        </insert>
-
-        <!-- Simple Weapon Proficiency / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5006" />
-            <column name="weapon_type" value="SIMPLE" />
-            <column name="text" value="Proficiency in all simple weapons" />
-        </insert>
-
-        <!-- Martial Weapon Proficiency / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5007" />
-            <column name="weapon_type" value="MARTIAL" />
-            <column name="text" value="Proficiency in all martial weapons" />
-        </insert>
-
-        <!-- Weapon Druid Proficiency / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5008" />
-            <column name="text" value="Druid's Weapon Proficiency" />
-        </insert>
-
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="6" /> <!-- Dagger -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="11" /> <!-- Club -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="14" /> <!-- Shortspear -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="16" /> <!-- Quarterstaff -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="17" /> <!-- Spear -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="21" /> <!-- Dart -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="23" /> <!-- Sling -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="41" /> <!-- Scimitar -->
-        </insert>
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5008" />
-            <column name="item_id" value="56" /> <!-- Scythe -->
-        </insert>
-
-        <!-- Weapon Bard Proficiency / selected -->
-        <insert tableName="prerequisite">
-            <column name="id" value="5009" />
-            <column name="text" value="Bard's Weapon Proficiency" />
-        </insert>
-
-        <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="5009" />
-            <column name="item_id" value="6" /> <!-- Dagger -->
-        </insert>
+    <changeSet id="004_class_feat_insert" author="oscar">
 
         <!-- barbarian -->
         <insert tableName="class_feat">
@@ -508,7 +402,7 @@
             <!-- <column name="class_character_id" value="3" /> -->
             <!-- <column name="feat_id" value="89" /> -->
             <!-- Simple -->
-            <column name="selected_id" value="5006" />
+            <!-- <column name="selected_id" value="5006" /> -->
         </insert>
         <insert tableName="class_feat">
             <column name="id" value="205" />
@@ -900,12 +794,6 @@
             <!-- <column name="class_character_id" value="6" /> -->
             <!-- <column name="feat_id" value="6001" /> -->
             <!-- AC Bonus -->
-        </insert>
-
-        <!-- Monk Bonus Feats to_select -->
-        <insert tableName="prerequisite">
-            <column name="id" value="4003" />
-            <column name="text" value="select a bonus feat for monk on 1st lv." />
         </insert>
 
         <insert tableName="class_feat">
@@ -1304,7 +1192,7 @@
             <column name="level" value="1" />
             <!-- <column name="class_character_id" value="8" /> -->
             <!-- <column name="feat_id" value="89" /> -->
-             <!-- Simple --> 
+            <!-- Simple -->
             <!-- <column name="selected_id" value="5006" /> -->
         </insert>
         <insert tableName="class_feat">
@@ -1312,7 +1200,7 @@
             <column name="level" value="1" />
             <!-- <column name="class_character_id" value="8" />  -->
             <!-- Martial -->
-             <!-- <column name="feat_id" value="66" /> -->
+            <!-- <column name="feat_id" value="66" /> -->
             <!-- <column name="selected_id" value="5007" /> -->
         </insert>
         <insert tableName="class_feat">
@@ -1369,19 +1257,22 @@
             <column name="level" value="6" />
             <!-- <column name="class_character_id" value="8" /> -->
             <!-- <column name="feat_id" value="8008" />  -->
-        <!-- Improved Combat Style --></insert>
+            <!-- Improved Combat Style -->
+        </insert>
         <insert tableName="class_feat">
             <column name="id" value="811" />
             <column name="level" value="7" />
             <!-- <column name="class_character_id" value="8" /> -->
             <!-- <column name="feat_id" value="8009" />  -->
-        <!-- Woodland Stride --></insert>
+            <!-- Woodland Stride -->
+        </insert>
         <insert tableName="class_feat">
             <column name="id" value="812" />
             <column name="level" value="8" />
             <!-- <column name="class_character_id" value="8" /> -->
             <!-- <column name="feat_id" value="8010" />  -->
-       <!-- Swift Tracker --> </insert>
+            <!-- Swift Tracker -->
+        </insert>
         <insert tableName="class_feat">
             <column name="id" value="813" />
             <column name="level" value="9" />
@@ -1399,7 +1290,8 @@
             <column name="level" value="11" />
             <!-- <column name="class_character_id" value="8" /> -->
             <!-- <column name="feat_id" value="8012" />  -->
-        <!-- Combat Style Mastery --></insert>
+            <!-- Combat Style Mastery -->
+        </insert>
         <insert tableName="class_feat">
             <column name="id" value="816" />
             <column name="level" value="13" />
@@ -1643,9 +1535,7 @@
         <insert tableName="class_feat">
             <column name="id" value="1102" />
             <column name="level" value="1" />
-            <!-- <column name="class_character_id" value="11" /> -->
             <!-- Scribe Scroll -->
-            <!-- <column name="feat_id" value="84" />  -->
         </insert>
         <insert tableName="class_feat">
             <column name="id" value="1103" />
@@ -1728,58 +1618,66 @@
         </insert>
         <!-- Stormlord -->
         <insert tableName="class_feat">
-            <column name="id" value="1300" />
+            <column name="id" value="1301" />
             <column name="level" value="1" />
             <!-- <column name="class_character_id" value="17" /> -->
             <!-- <column name="feat_id" value="11701" /> -->
             <!-- Electricity Resistance -->
         </insert>
         <insert tableName="class_feat">
-            <column name="id" value="1301" />
+            <column name="id" value="1302" />
             <column name="level" value="2" />
             <!-- <column name="class_character_id" value="17" /> -->
             <!-- <column name="feat_id" value="11702" /> -->
-             <!-- Shock weapon -->
+            <!-- Shock weapon -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1303" />
             <column name="level" value="3" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11703" /> <!-- Storm Walk -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11703" /> Storm Walk -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1304" />
             <column name="level" value="4" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11701" /> Electricity Resistance -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1305" />
             <column name="level" value="5" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11704" /> <!-- Thundering Weapon -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11704" /> Thundering Weapon -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1306" />
             <column name="level" value="6" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11705" /> <!-- Storm Ride -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11705" /> Storm Ride -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1307" />
             <column name="level" value="7" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11701" /> Electricity Resistance -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1308" />
             <column name="level" value="8" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11706" /> <!-- Shocking Burst Weapon -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11706" /> Shocking Burst Weapon -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1309" />
             <column name="level" value="9" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11701" /> <!-- Electricity Resistance -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11701" /> Electricity Resistance -->
         </insert>
         <insert tableName="class_feat">
+            <column name="id" value="1310" />
             <column name="level" value="10" />
-            <column name="class_character_id" value="17" />
-            <column name="feat_id" value="11707" /> <!-- Elemental Conflagration -->
+            <!-- <column name="class_character_id" value="17" /> -->
+            <!-- <column name="feat_id" value="11707" /> Elemental Conflagration -->
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -31,7 +31,7 @@ public class WondrousItems extends Item {
 
   @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
-    name = "items_spells",
+    name = "item_spells",
     joinColumns = @JoinColumn(name = "item_id"),
     inverseJoinColumns = @JoinColumn(name = "spells_id")
   )

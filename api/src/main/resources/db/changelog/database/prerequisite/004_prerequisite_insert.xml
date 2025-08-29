@@ -49,48 +49,7 @@
 
         <!--  id:20.100 -->
 
-
         <!-- skills id:20.200 -->
-        <!-- climb +5  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20201" />
-        </insert>
-        <!-- climb +5  -->
-        <!-- climb +10  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20202" />
-        </insert>
-        <!-- climb +10  -->
-        <!-- swim +5  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20203" />
-        </insert>
-        <!-- swim +5  -->
-        <!-- swim +10  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20204" />
-        </insert>
-        <!-- swim +10  -->
-        <!-- Move Silently +5  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20205" />
-        </insert>
-        <!-- Move Silently +5  -->
-        <!-- Move Silently +10  -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20206" />
-        </insert>
-        <!-- Move Silently +10  -->
-        <!-- Hide +5 -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20207" />
-        </insert>
-        <!-- Hide +5 -->
-        <!-- Hide +10 -->
-        <insert tableName="prerequisite">
-            <column name="id" value="20208" />
-        </insert>
-        <!-- Hide +10 -->
 
         <!-- skills id:20.300 characteristic -->
 
@@ -101,10 +60,22 @@
             <column name="text" value="Strength +1" />
         </insert>
         <insert tableName="prerequisite">
+            <column name="id" value="-20301" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: -1}" />
+            <column name="text" value="Strength -1" />
+        </insert>
+        <insert tableName="prerequisite">
             <column name="id" value="20302" />
             <column name="abilitys" value="{
                 &quot;strength&quot;: 2}" />
             <column name="text" value="Strength +2" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="-20302" />
+            <column name="abilitys" value="{
+                &quot;strength&quot;: -2}" />
+            <column name="text" value="Strength -2" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20303" />

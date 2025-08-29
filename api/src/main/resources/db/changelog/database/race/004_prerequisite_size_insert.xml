@@ -73,7 +73,5 @@
             <column name="armor_class" value="{ &quot;sizeBonus&quot; : -4 }" />
             <column name="text" value="Colossal size modifiers" />
         </insert>
-
-
     </changeSet>
 </databaseChangeLog>

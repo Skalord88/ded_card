@@ -4,9 +4,10 @@
 
     <changeSet id="004_prerequisite_in_race_insert" author="oscar">
 
-        <!-- Dwarf modif -->
+        <!-- 100.000 -->
         <insert tableName="prerequisite">
             <column name="id" value="100001" />
+            <!-- Dwarf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
             <column name="armor_class"
                 value="{
@@ -26,11 +27,10 @@
                 }" />
             <column name="text" value="Dwarf races modifiers" />
         </insert>
-        <!-- Dwarf modif -->
 
-        <!-- Elf modif -->
         <insert tableName="prerequisite">
             <column name="id" value="100002" />
+            <!-- Elf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
             <column name="abilitys"
                 value="{
@@ -49,7 +49,6 @@
                 }" />
             <column name="text" value="Elf races modifiers" />
         </insert>
-        <!-- Elf modif -->
 
         <!-- Orcs modif -->
         <insert tableName="prerequisite">

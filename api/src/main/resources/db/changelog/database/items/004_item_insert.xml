@@ -5,6 +5,7 @@
 
     <changeSet id="004_item_insert" author="oscar">
         <insert tableName="item">
+            <column name="id" value="1" />
             <column name="name" value="Unarmed strike" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="UNARMED_STRIKE" />
@@ -28,6 +29,7 @@
 
         </insert>
         <insert tableName="item">
+            <column name="id" value="2" />
             <column name="name" value="No Armor" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="NO_ARMOR" />
@@ -41,6 +43,7 @@
 
         </insert>
         <insert tableName="item">
+            <column name="id" value="3" />
             <column name="name" value="No Shield" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="NO_SHIELD" />
@@ -54,6 +57,7 @@
 
         </insert>
         <insert tableName="item">
+            <column name="id" value="4" />
             <column name="name" value="No item" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="cost" value="0" />
@@ -64,6 +68,7 @@
         <!-- WEAPONS -->
         <!-- SIMPLE -->
         <insert tableName="item">
+            <column name="id" value="5" />
             <column name="name" value="Gauntlet" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GAUNTLET" />
@@ -80,6 +85,7 @@
             <column name="range" value="-2" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="6" />
             <column name="name" value="Dagger" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="DAGGER" />
@@ -97,6 +103,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="7" />
             <column name="name" value="Dagger, punching" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="DAGGER_PUNCHING" />
@@ -114,6 +121,7 @@
             <column name="range" value="-2" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="8" />
             <column name="name" value="Gauntlet, spiked" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GAUNTLET_SPIKED" />
@@ -132,6 +140,7 @@
         </insert>
 
         <insert tableName="item">
+            <column name="id" value="9" />
             <column name="name" value="Mace, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="MACE_LIGHT" />
@@ -149,6 +158,7 @@
         </insert>
 
         <insert tableName="item">
+            <column name="id" value="10" />
             <column name="name" value="Sickle" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SICKLE" />
@@ -165,6 +175,7 @@
             <column name="range" value="-1" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="11" />
             <column name="name" value="Club" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CLUB" />
@@ -181,6 +192,7 @@
             <column name="range" value="10" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="12" />
             <column name="name" value="Mace, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="MACE_HEAVY" />
@@ -198,6 +210,7 @@
         </insert>
 
         <insert tableName="item">
+            <column name="id" value="13" />
             <column name="name" value="Morningstar" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="MORNINGSTAR" />
@@ -214,6 +227,7 @@
             <column name="range" value="-1" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="14" />
             <column name="name" value="Shortspear" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHORTSPEAR" />
@@ -231,6 +245,7 @@
         </insert>
 
         <insert tableName="item">
+            <column name="id" value="15" />
             <column name="name" value="Long spear" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="LONGSPEAR" />
@@ -248,6 +263,7 @@
             <column name="range" value="-1" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="16" />
             <column name="name" value="Quarterstaff" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="QUARTERSTAFF" />
@@ -264,6 +280,7 @@
             <column name="range" value="-1" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="17" />
             <column name="name" value="Spear" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SPEAR" />
@@ -280,6 +297,7 @@
             <column name="range" value="20" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="18" />
             <column name="name" value="Crossbow, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CROSSBOW_HEAVY" />
@@ -296,6 +314,7 @@
             <column name="range" value="120" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="19" />
             <column name="name" value="Bolts, crossbow" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="BOLT_CROSSBOW" />
@@ -312,6 +331,7 @@
             <column name="range" value="-1" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="20" />
             <column name="name" value="Crossbow, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CROSSBOW_LIGHT" />
@@ -328,6 +348,7 @@
             <column name="range" value="80" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="21" />
             <column name="name" value="Dart" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="DART" />
@@ -344,6 +365,7 @@
             <column name="range" value="20" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="22" />
             <column name="name" value="Javelin" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="JAVELIN" />
@@ -354,14 +376,12 @@
             <column name="weight" value="2" />
             <column name="size" value="MEDIUM" />
             <column name="type" value="['PIERCING','SIMPLE','THROWN']" />
-            <column name="modifiers_id" value="9002" />
-            <!-- <column name="special_attacks" value="" /> -->
             <column name="description"
                 value="Since it is not designed for melee, you are treated as nonproficient with it and take a -4 penalty on attack rolls if you use a javelin as a melee weapon." />
             <column name="material" value="WOOD" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="23" />
             <column name="name" value="Sling" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SLING" />
@@ -378,6 +398,7 @@
             <column name="range" value="50" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="24" />
             <column name="name" value="Bullets, sling" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="BULLETS_SLING" />
@@ -394,9 +415,10 @@
             <column name="range" value="-1" />
         </insert>
 
-        <!-- MARTIAL -->
+        <!-- MARTIAL 100 -->
         <!-- Light Melee Weapons -->
         <insert tableName="item">
+            <column name="id" value="100" />
             <column name="name" value="Axe, throwing" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="AXE_THROWING" />
@@ -412,6 +434,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="101" />
             <column name="name" value="Hammer, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="HAMMER_LIGHT" />
@@ -427,6 +450,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="102" />
             <column name="name" value="Handaxe" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="HANDAXE" />
@@ -442,6 +466,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="103" />
             <column name="name" value="Kukri" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="KUKRI" />
@@ -457,6 +482,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="104" />
             <column name="name" value="Pick, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="PICK_LIGHT" />
@@ -472,6 +498,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="105" />
             <column name="name" value="Sap" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SAP" />
@@ -487,6 +514,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="106" />
             <column name="name" value="Sap" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SAP" />
@@ -503,6 +531,7 @@
         </insert>
 
         <insert tableName="item">
+            <column name="id" value="107" />
             <column name="name" value="Shield, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHIELD_LIGHT" />
@@ -517,6 +546,7 @@
             <column name="description" value="" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="108" />
             <column name="name" value="Spiked armor" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SPIKED_ARMOR" />
@@ -531,6 +561,7 @@
             <column name="description" value="" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="109" />
             <column name="name" value="Spiked shield, light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SPIKED_SHIELD_LIGHT" />
@@ -545,6 +576,7 @@
             <column name="description" value="" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="110" />
             <column name="name" value="Sword, short" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SWORD_SHORT" />
@@ -561,6 +593,7 @@
         </insert>
         <!-- One-Handed Melee Weapons -->
         <insert tableName="item">
+            <column name="id" value="111" />
             <column name="name" value="Battleaxe" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="BATTLEAXE" />
@@ -577,6 +610,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="112" />
             <column name="name" value="Flail" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="FLAIL" />
@@ -593,6 +627,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="113" />
             <column name="name" value="Longsword" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHORTBOW" />
@@ -609,6 +644,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="114" />
             <column name="name" value="Pick, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="PICK_HEAVY" />
@@ -625,6 +661,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="115" />
             <column name="name" value="Rapier" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="RAPIER" />
@@ -641,6 +678,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="116" />
             <column name="name" value="Scimitar" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SCIMITAR" />
@@ -657,6 +695,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="117" />
             <column name="name" value="Shield, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHIELD_HEAVY" />
@@ -673,6 +712,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="118" />
             <column name="name" value="Spiked shield, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SPIKED_SHIELD_HEAVY" />
@@ -688,6 +728,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="119" />
             <column name="name" value="Trident" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="TRIDENT" />
@@ -703,6 +744,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="120" />
             <column name="name" value="Warhammer" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="WARHAMMER" />
@@ -720,6 +762,7 @@
 
         <!-- Two-Handed Melee Weapons -->
         <insert tableName="item">
+            <column name="id" value="121" />
             <column name="name" value="Falchion" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="FALCHION" />
@@ -735,6 +778,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="122" />
             <column name="name" value="Glaive" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GLAIVE" />
@@ -750,6 +794,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="123" />
             <column name="name" value="Greataxe" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GREATAXE" />
@@ -765,6 +810,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="124" />
             <column name="name" value="Greatclub" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GREATCLUB" />
@@ -780,6 +826,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="125" />
             <column name="name" value="Flail, heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="FLAIL_HEAVY" />
@@ -795,6 +842,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="126" />
             <column name="name" value="Greatsword" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GREATSWORD" />
@@ -810,6 +858,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="127" />
             <column name="name" value="Guisarme" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GUISARME" />
@@ -825,6 +874,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="128" />
             <column name="name" value="Halberd" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="HALBERD" />
@@ -840,6 +890,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="129" />
             <column name="name" value="Lance" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="LANCE" />
@@ -855,6 +906,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="130" />
             <column name="name" value="Ranseur" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="RANSEUR" />
@@ -870,6 +922,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="131" />
             <column name="name" value="Scythe" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SCYTHE" />
@@ -887,6 +940,7 @@
 
         <!-- Ranged Weapons -->
         <insert tableName="item">
+            <column name="id" value="132" />
             <column name="name" value="Longbow" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="LONGBOW" />
@@ -902,6 +956,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="133" />
             <column name="name" value="Arrow" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="ARROW" />
@@ -914,6 +969,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="134" />
             <column name="name" value="Longbow, composite" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="LONGBOW_COMPOSITE" />
@@ -929,6 +985,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="135" />
             <column name="name" value="Shortbow" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHORTBOW" />
@@ -944,6 +1001,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="136" />
             <column name="name" value="Shortbow, composite" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHORTBOW_COMPOSITE" />
@@ -963,6 +1021,7 @@
         <!-- Light Melee Weapons -->
 
         <insert tableName="item">
+            <column name="id" value="200" />
             <column name="name" value="Kama" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="KAMA" />
@@ -978,6 +1037,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="201" />
             <column name="name" value="Nunchaku" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="NUNCHAKU" />
@@ -993,6 +1053,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="202" />
             <column name="name" value="Sai" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SAI" />
@@ -1008,6 +1069,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="203" />
             <column name="name" value="Siangham" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SIANGHAM" />
@@ -1025,6 +1087,7 @@
 
         <!-- One-Handed Melee Weapons -->
         <insert tableName="item">
+            <column name="id" value="204" />
             <column name="name" value="Sword, bastard" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SWORD_BASTARD" />
@@ -1040,6 +1103,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="205" />
             <column name="name" value="Waraxe, dwarven" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="WARAXE_DWARVEN" />
@@ -1055,6 +1119,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="206" />
             <column name="name" value="Whip" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="WHIP" />
@@ -1072,6 +1137,7 @@
 
         <!-- Two-Handed Melee Weapons -->
         <insert tableName="item">
+            <column name="id" value="207" />
             <column name="name" value="Axe, orc double" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="AXE_ORC_DOUBLE" />
@@ -1087,6 +1153,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="208" />
             <column name="name" value="Chain, spiked" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CHAIN_SPIKED" />
@@ -1102,6 +1169,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="209" />
             <column name="name" value="Flail, dire" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="FLAIL_DIRE" />
@@ -1117,6 +1185,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="210" />
             <column name="name" value="Hammer, gnome hooked" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="HAMMER_GNOME_HOOKED" />
@@ -1132,6 +1201,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="211" />
             <column name="name" value="Sword, two-bladed" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SWORD_TWO_BLADED" />
@@ -1147,6 +1217,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="212" />
             <column name="name" value="Urgrosh, dwarven" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="URGROSH_DWARVEN" />
@@ -1164,6 +1235,7 @@
 
         <!-- Ranged Weapons -->
         <insert tableName="item">
+            <column name="id" value="213" />
             <column name="name" value="Bolas" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="BOLAS" />
@@ -1179,6 +1251,7 @@
             <column name="material" value="LEATHER" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="214" />
             <column name="name" value="Crossbow, hand" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CROSSBOW_HAND" />
@@ -1194,6 +1267,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="215" />
             <column name="name" value="Crossbow, repeating heavy" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CROSSBOW_REPEATING_HEAVY" />
@@ -1209,6 +1283,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="216" />
             <column name="name" value="Crossbow, repeating light" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CROSSBOW_REPEATING_LIGHT" />
@@ -1224,6 +1299,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="217" />
             <column name="name" value="Net" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="NET" />
@@ -1237,6 +1313,7 @@
             <column name="material" value="LEATHER" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="218" />
             <column name="name" value="Shuriken" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SHURIKEN" />
@@ -1252,6 +1329,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="219" />
             <column name="name" value="Warsling" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="WARSLING" />
@@ -1262,11 +1340,11 @@
             <column name="weight" value="0.9" />
             <column name="size" value="SMALL" />
             <column name="type" value="['PIERCING','EXOTIC','ONE_HANDED','RANGED']" />
-            <column name="modifiers_id" value="9001" />
             <column name="description" value="" />
             <column name="material" value="LEATHER" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="220" />
             <column name="name" value="Skiprock" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SKIPROCK" />
@@ -1286,12 +1364,13 @@
         <!-- ARMOR -->
         <!-- LIGHT_ARMOR -->
         <insert tableName="item">
+            <!-- <column name="id" value="83" /> -->
+            <column name="id" value="500" />
             <column name="name" value="Padded" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="PADDED" />
             <column name="cost" value="5" />
             <column name="weight" value="10" />
-            <column name="modifiers_id" value="52001" />
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="8" />
             <column name="penality" value="0" />
@@ -1301,54 +1380,53 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <!-- <column name="id" value="84" /> -->
+            <column name="id" value="501" />
             <column name="name" value="Leather" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="LEATHER" />
             <column name="cost" value="10" />
             <column name="weight" value="15" />
-            <column name="modifiers_id" value="52002" />
-            <!-- <column name="armor_class" value="2" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="6" />
             <column name="penality" value="0" />
             <column name="failure" value="10" />
             <column name="description" value="Taka se, ale lekka." />
             <column name="material" value="LEATHER" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <!-- <column name="id" value="85" /> -->
+            <column name="id" value="502" />
             <column name="name" value="Studded leather" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="STUDDED_LEATHER" />
             <column name="cost" value="25" />
             <column name="weight" value="20" />
-            <column name="modifiers_id" value="52003" />
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="5" />
             <column name="penality" value="-1" />
             <column name="failure" value="15" />
             <column name="description" value="Taka se, ale lekka." />
             <column name="material" value="LEATHER" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <!-- <column name="id" value="86" /> -->
+            <column name="id" value="503" />
             <column name="name" value="Chain shirt" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="CHAIN_SHIRT" />
             <column name="cost" value="100" />
             <column name="weight" value="25" />
-            <column name="modifiers_id" value="52004" />
-            <!-- <column name="armor_class" value="4" /> -->
             <column name="armor_type" value="LIGHT_ARMOR" />
             <column name="max_dex" value="4" />
             <column name="penality" value="-2" />
             <column name="failure" value="20" />
             <column name="description" value="A chain shirt comes with a steel cap." />
             <column name="material" value="METAL" />
-            <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <!-- MEDIUM_ARMOR -->
         <insert tableName="item">
+            <column name="id" value="510" />
             <column name="name" value="Hide" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="HIDE" />
@@ -1365,6 +1443,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="511" />
             <column name="name" value="Scale mail" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="SCALE_MAIL" />
@@ -1381,6 +1460,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="512" />
             <column name="name" value="Chainmail" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="CHAINMAIL" />
@@ -1396,6 +1476,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="513" />
             <column name="name" value="Breastplate" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="BREASTPLATE" />
@@ -1413,6 +1494,7 @@
         </insert>
         <!-- HEAVY_ARMOR -->
         <insert tableName="item">
+            <column name="id" value="520" />
             <column name="name" value="Splint mail" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="SPLINT_MAIL" />
@@ -1429,6 +1511,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="521" />
             <column name="name" value="Banded mail" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="BANDED_MAIL" />
@@ -1445,6 +1528,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="522" />
             <column name="name" value="Half-plate" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="HALF_PLATE" />
@@ -1460,6 +1544,7 @@
             <!-- <column name="enchantment_id" value="0" /> -->
         </insert>
         <insert tableName="item">
+            <column name="id" value="523" />
             <column name="name" value="Full plate" />
             <column name="item_type" value="ARMOR" />
             <column name="armor_name" value="FULL_PLATE" />
@@ -1479,6 +1564,7 @@
 
         <!-- SHIELD -->
         <insert tableName="item">
+            <column name="id" value="530" />
             <column name="name" value="Buckler" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="BUCKLER" />
@@ -1496,6 +1582,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="531" />
             <column name="name" value="Shield, light wooden" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="SHIELD_LIGHT_WOODEN" />
@@ -1517,6 +1604,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="532" />
             <column name="name" value="Shield, light steel" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="SHIELD_LIGHT_STEEL" />
@@ -1538,6 +1626,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="533" />
             <column name="name" value="Shield, heavy wooden" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="SHIELD_HEAVY_WOODEN" />
@@ -1559,6 +1648,7 @@
             <column name="material" value="WOOD" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="534" />
             <column name="name" value="Shield, heavy steel" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="SHIELD_HEAVY_STEEL" />
@@ -1580,6 +1670,7 @@
             <column name="material" value="METAL" />
         </insert>
         <insert tableName="item">
+            <column name="id" value="535" />
             <column name="name" value="Shield, tower" />
             <column name="item_type" value="SHIELD" />
             <column name="shield_name" value="SHIELD_TOWER" />
@@ -1600,6 +1691,7 @@
         <!-- NATURAL WEAPONS -->
 
         <insert tableName="item">
+            <column name="id" value="700" />
             <column name="name" value="Bite" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="BITE" />
@@ -1614,6 +1706,7 @@
                 value="The creature attacks with its mouth, dealing piercing, slashing, and bludgeoning damage." />
         </insert>
         <insert tableName="item">
+            <column name="id" value="701" />
             <column name="name" value="Claw or Talon" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="CLAW" />
@@ -1628,6 +1721,7 @@
                 value="The creature rips with a sharp appendage, dealing piercing and slashing damage." />
         </insert>
         <insert tableName="item">
+            <column name="id" value="702" />
             <column name="name" value="Gore" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="GORE" />
@@ -1642,6 +1736,7 @@
                 value="The creature spears the opponent with an antler, horn, or similar appendage, dealing piercing damage." />
         </insert>
         <insert tableName="item">
+            <column name="id" value="703" />
             <column name="name" value="Slap or Slam" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="SLAM" />
@@ -1656,6 +1751,7 @@
                 value="The creature batters opponents with an appendage, dealing bludgeoning damage." />
         </insert>
         <insert tableName="item">
+            <column name="id" value="704" />
             <column name="name" value="Sting" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="STING" />
@@ -1670,6 +1766,7 @@
                 value="The creature stabs with a stinger, dealing piercing damage. Sting attacks usually deal damage from poison in addition to hit point damage." />
         </insert>
         <insert tableName="item">
+            <column name="id" value="705" />
             <column name="name" value="Tentacle" />
             <column name="item_type" value="WEAPON" />
             <column name="weapon_name" value="TENTACLE" />

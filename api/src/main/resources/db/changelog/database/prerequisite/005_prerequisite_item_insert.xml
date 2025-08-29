@@ -37,27 +37,27 @@
         <!-- Improved Shield Bash [General] selected -->
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="2002" />
-            <column name="item_id" value="95" />
+            <column name="item_id" value="531" />
         </insert>
 
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="2002" />
-            <column name="item_id" value="96" />
+            <column name="item_id" value="532" />
         </insert>
 
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="2002" />
-            <column name="item_id" value="97" />
+            <column name="item_id" value="533" />
         </insert>
 
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="2002" />
-            <column name="item_id" value="98" />
+            <column name="item_id" value="534" />
         </insert>
 
         <insert tableName="prerequisite_item">
             <column name="prerequisite_id" value="2002" />
-            <column name="item_id" value="99" />
+            <column name="item_id" value="535" />
         </insert>
         <!-- Improved Shield Bash [General] selected -->
 

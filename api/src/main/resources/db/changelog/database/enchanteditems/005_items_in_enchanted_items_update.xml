@@ -27,77 +27,77 @@
 
         <update tableName="enchanted_items">
             <!-- Shield, light -->
-            <column name="item_id" valueNumeric="32" />
+            <column name="item_id" valueNumeric="107" />
         <where>id =
             2004</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Spiked armor -->
-            <column name="item_id" valueNumeric="33" />
+            <column name="item_id" valueNumeric="108" />
         <where>id =
             2005</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Spiked shield, light -->
-            <column name="item_id" valueNumeric="34" />
+            <column name="item_id" valueNumeric="109" />
         <where>id =
             2006</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Shield, heavy -->
-            <column name="item_id" valueNumeric="42" />
+            <column name="item_id" valueNumeric="117" />
         <where>id =
             2007</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Spiked shield, heavy -->
-            <column name="item_id" valueNumeric="43" />
+            <column name="item_id" valueNumeric="118" />
         <where>id =
             2008</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- elven chain +2 -->
-            <column name="item_id" valueNumeric="89" />
+            <column name="item_id" valueNumeric="503" />
         <where>id =
             1001</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- tarczunia +1 -->
-            <column name="item_id" valueNumeric="95" />
+            <column name="item_id" valueNumeric="530" />
         <where>id =
             1002</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- proca Puli +1 -->
-            <column name="item_id" valueNumeric="81" />
+            <column name="item_id" valueNumeric="219" />
         <where>id =
             1003</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sword, short pft -->
-            <column name="item_id" valueNumeric="35" />
+            <column name="item_id" valueNumeric="110" />
         <where>id =
             1004</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Axe, throwing pft -->
-            <column name="item_id" valueNumeric="25" />
+            <column name="item_id" valueNumeric="100" />
         <where>id =
             1005</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Skiprock -->
-            <column name="item_id" valueNumeric="82" />
+            <column name="item_id" valueNumeric="503" />
         <where>id =
             1006</where>
         </update>
@@ -106,28 +106,28 @@
         <!-- Rysio -->
         <update tableName="enchanted_items">
             <!-- Longbow, Holly +5 -->
-            <column name="item_id" valueNumeric="59" />
+            <column name="item_id" valueNumeric="220" />
         <where>id =
             1011</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Longsword pft -->
-            <column name="item_id" valueNumeric="38" />
+            <column name="item_id" valueNumeric="113" />
         <where>id =
             1012</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- elven chain +1 -->
-            <column name="item_id" valueNumeric="89" />
+            <column name="item_id" valueNumeric="503" />
         <where>id =
             1013</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Shield, heavy wooden pft -->
-            <column name="item_id" valueNumeric="98" />
+            <column name="item_id" valueNumeric="533" />
         <where>id =
             1014</where>
         </update>
@@ -136,21 +136,21 @@
         <!-- Niesia -->
         <update tableName="enchanted_items">
             <!-- Studded leather +1 -->
-            <column name="item_id" valueNumeric="85" />
+            <column name="item_id" valueNumeric="502" />
         <where>id =
             1021</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Buckler +1 -->
-            <column name="item_id" valueNumeric="95" />
+            <column name="item_id" valueNumeric="530" />
         <where>id =
             1022</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Longbow -->
-            <column name="item_id" valueNumeric="57" />
+            <column name="item_id" valueNumeric="132" />
         <where>id =
             1023</where>
         </update>
@@ -171,7 +171,7 @@
 
         <update tableName="enchanted_items">
             <!-- Longsword -->
-            <column name="item_id" valueNumeric="38" />
+            <column name="item_id" valueNumeric="113" />
         <where>id =
             1026</where>
         </update>
@@ -194,14 +194,14 @@
         <!-- Michał -->
         <update tableName="enchanted_items">
             <!-- Half-plate +1 -->
-            <column name="item_id" valueNumeric="93" />
+            <column name="item_id" valueNumeric="522" />
         <where>id =
             1031</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Shield, heavy wooden +1 -->
-            <column name="item_id" valueNumeric="98" />
+            <column name="item_id" valueNumeric="533" />
         <where>id =
             1032</where>
         </update>
@@ -215,7 +215,7 @@
 
         <update tableName="enchanted_items">
             <!-- Javelin Shock +1 -->
-            <column name="item_id" valueNumeric="14" />
+            <column name="item_id" valueNumeric="22" />
         <where>id =
             1034</where>
         </update>
@@ -224,7 +224,7 @@
         <!-- Andrzej -->
         <update tableName="enchanted_items">
             <!-- Nunchaku pft -->
-            <column name="item_id" valueNumeric="63" />
+            <column name="item_id" valueNumeric="201" />
         <where>id =
             1041</where>
         </update>
@@ -256,7 +256,7 @@
         <!-- Mirek -->
         <update tableName="enchanted_items">
             <!-- Mithral shirt +2 -->
-            <column name="item_id" valueNumeric="86" />
+            <column name="item_id" valueNumeric="503" />
         <where>id =
             1061</where>
         </update>
@@ -272,140 +272,140 @@
         <!-- Specific Armors -->
         <update tableName="enchanted_items">
             <!-- Adamantine Breastplate -->
-  <column name="item_id" valueNumeric="90" />
+  <column name="item_id" valueNumeric="513" />
   <where>id =
             10000</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Banded Mail of Luck -->
-  <column name="item_id" valueNumeric="92" />
+  <column name="item_id" valueNumeric="521" />
   <where>id =
             10001</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Breastplate of Command -->
-  <column name="item_id" valueNumeric="90" />
+  <column name="item_id" valueNumeric="513" />
   <where>id =
             10002</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Celestial Armor -->
-  <column name="item_id" valueNumeric="89" />
+  <column name="item_id" valueNumeric="512" />
   <where>id =
             10003</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Demon Armor -->
-  <column name="item_id" valueNumeric="94" />
+  <column name="item_id" valueNumeric="523" />
   <where>id =
             10004</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Dragonhide Plate -->
-  <column name="item_id" valueNumeric="94" />
+  <column name="item_id" valueNumeric="523" />
   <where>id =
             10005</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Dwarven Plate -->
-  <column name="item_id" valueNumeric="94" />
+  <column name="item_id" valueNumeric="523" />
   <where>id =
             10006</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Elven Chain -->
-  <column name="item_id" valueNumeric="89" />
+  <column name="item_id" valueNumeric="512" />
   <where>id =
             10007</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Full Plate of Speed -->
-  <column name="item_id" valueNumeric="94" />
+  <column name="item_id" valueNumeric="523" />
   <where>id =
             10008</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Shirt -->
-  <column name="item_id" valueNumeric="86" />
+  <column name="item_id" valueNumeric="503" />
   <where>id =
             10009</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Plate Armor of the Deep -->
-  <column name="item_id" valueNumeric="94" />
+  <column name="item_id" valueNumeric="523" />
   <where>id =
             10010</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Rhino Hide -->
-  <column name="item_id" valueNumeric="87" />
+  <column name="item_id" valueNumeric="510" />
   <where>id =
             10011</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Absorbing Shield -->
-  <column name="item_id" valueNumeric="99" />
+  <column name="item_id" valueNumeric="534" />
   <where>id =
             10012</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Caster’s Shield -->
-  <column name="item_id" valueNumeric="96" />
+  <column name="item_id" valueNumeric="531" />
   <where>id =
             10013</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Darkwood Buckler -->
-  <column name="item_id" valueNumeric="95" />
+  <column name="item_id" valueNumeric="530" />
   <where>id =
             10014</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Darkwood Shield -->
-        <column name="item_id" valueNumeric="98" />
+        <column name="item_id" valueNumeric="533" />
         <where>id =
             10015</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Lion’s Shield -->
-        <column name="item_id" valueNumeric="99" />
+        <column name="item_id" valueNumeric="534" />
         <where>id =
             10016</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Heavy Shield -->
-        <column name="item_id" valueNumeric="99" />
+        <column name="item_id" valueNumeric="534" />
         <where>id =
             10017</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Spined Shield -->
-        <column name="item_id" valueNumeric="99" />
+        <column name="item_id" valueNumeric="534" />
         <where>id =
             10018</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Winged Shield -->
-        <column name="item_id" valueNumeric="98" />
+        <column name="item_id" valueNumeric="533" />
         <where>id =
             10019</where>
         </update>
@@ -414,7 +414,7 @@
         <!-- Special Weapons 20000 -->
         <update tableName="enchanted_items">
             <!-- Adamantine Battleaxe -->
-        <column name="item_id" valueNumeric="36" />
+        <column name="item_id" valueNumeric="111" />
         <where>id =
             20000</where>
         </update>
@@ -442,28 +442,28 @@
 
         <update tableName="enchanted_items">
             <!-- Dwarven Thrower -->
-        <column name="item_id" valueNumeric="45" />
+        <column name="item_id" valueNumeric="120" />
         <where>id =
             20004</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Flame Tongue -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20005</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Frost Brand -->
-        <column name="item_id" valueNumeric="51" />
+        <column name="item_id" valueNumeric="126" />
         <where>id =
             20006</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Holy Avenger -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20007</where>
         </update>
@@ -477,35 +477,35 @@
 
         <update tableName="enchanted_items">
             <!-- Life-Drinker -->
-        <column name="item_id" valueNumeric="48" />
+        <column name="item_id" valueNumeric="123" />
         <where>id =
             20009</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Luck Blade (0 wish) -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20010</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Luck Blade (1 wish) -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20011</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Luck Blade (2 wish) -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20012</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Luck Blade (3 wish) -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20013</where>
         </update>
@@ -526,28 +526,28 @@
 
         <update tableName="enchanted_items">
             <!-- Masterwork Cold Iron Longsword -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20016</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Nine Lives Stealer -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20017</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Oathbow -->
-        <column name="item_id" valueNumeric="59" />
+        <column name="item_id" valueNumeric="134" />
         <where>id =
             20018</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Rapier of Puncturing -->
-        <column name="item_id" valueNumeric="40" />
+        <column name="item_id" valueNumeric="115" />
         <where>id =
             20019</where>
         </update>
@@ -561,14 +561,14 @@
 
         <update tableName="enchanted_items">
             <!-- Shatterspike -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20021</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Shifter’s Sorrow -->
-        <column name="item_id" valueNumeric="73" />
+        <column name="item_id" valueNumeric="211" />
         <where>id =
             20022</where>
         </update>
@@ -582,77 +582,77 @@
 
         <update tableName="enchanted_items">
             <!-- Slaying Arrow -->
-        <column name="item_id" valueNumeric="58" />
+        <column name="item_id" valueNumeric="133" />
         <where>id =
             20024</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Slaying Arrow Greater -->
-        <column name="item_id" valueNumeric="58" />
+        <column name="item_id" valueNumeric="133" />
         <where>id =
             20025</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sleep Arrow -->
-        <column name="item_id" valueNumeric="58" />
+        <column name="item_id" valueNumeric="133" />
         <where>id =
             20026</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sun Blade -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20027</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sword of Life Stealing -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20028</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sword of the Planes -->
-        <column name="item_id" valueNumeric="38" />
+        <column name="item_id" valueNumeric="113" />
         <where>id =
             20029</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sword of Subtlety -->
-        <column name="item_id" valueNumeric="35" />
+        <column name="item_id" valueNumeric="204" />
         <where>id =
             20030</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Sylvan Scimitar -->
-        <column name="item_id" valueNumeric="41" />
+        <column name="item_id" valueNumeric="116" />
         <where>id =
             20031</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Trident of Fish Command -->
-        <column name="item_id" valueNumeric="44" />
+        <column name="item_id" valueNumeric="119" />
         <where>id =
             20032</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Trident of Warning -->
-        <column name="item_id" valueNumeric="44" />
+        <column name="item_id" valueNumeric="119" />
         <where>id =
             20033</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Singing Blade -->
-        <column name="item_id" valueNumeric="40" />
+        <column name="item_id" valueNumeric="115" />
         <where>id =
             20033</where>
         </update>

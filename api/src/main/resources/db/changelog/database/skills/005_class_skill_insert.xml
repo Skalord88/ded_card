@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="update_class_skills" author="oscar">
+    <changeSet id="005_class_skill_insert" author="oscar">
         <insert tableName="class_skills">
             <column name="class_character_id" value="1" />  <!-- barbarian-->
             <column name="skill_id" value="4" />  <!-- Climb-->

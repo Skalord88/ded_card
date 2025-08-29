@@ -3,15 +3,15 @@
     <changeSet id="005_prerequisite_items_in_sub_race_insert" author="damian">
 
         <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="155002" />
+            <column name="prerequisite_id" value="150502" />
             <!-- Lightfoot Halfling -->
-            <column name="item_id" value="23" />
+            <column name="item_id" value="219" />
             <!-- warsling -->
         </insert>
         <insert tableName="prerequisite_item">
-            <column name="prerequisite_id" value="155002" />
+            <column name="prerequisite_id" value="150502" />
             <!-- Lightfoot Halfling -->
-            <column name="item_id" value="81" />
+            <column name="item_id" value="220" />
             <!-- sassino rimbalzino -->
         </insert>
 

@@ -4,63 +4,334 @@
     <changeSet id="005_race_size_modifiers_in_sub_race_insert" author="oscar">
 
         <update tableName="sub_race">
+            <!-- Dwarf -->
             <!-- Artic Dwarf -->
             <column name="modifiers_id" valueNumeric="150001" />
-            <column name="race_id" valueNumeric="1" />
+            <column
+                name="race_id" valueNumeric="1" />
             <column name="size_id" valueNumeric="4" />
-        <where>id = 1</where>
+        <where>id
+            = 1</where>
         </update>
 
         <update tableName="sub_race">
             <!-- Golden Dwarf -->
             <column name="modifiers_id" valueNumeric="150002" />
-            <column name="race_id" valueNumeric="1" />
+            <column
+                name="race_id" valueNumeric="1" />
             <column name="size_id" valueNumeric="4" />
-        <where>id = 2</where>
+        <where>id
+            = 2</where>
         </update>
 
         <update tableName="sub_race">
-            <!-- TINY -->
+            <!-- Grey Dwarf -->
+            <column name="race_id" valueNumeric="1" />
+            <column
+                name="size_id" valueNumeric="5" />
             <column name="modifiers_id" valueNumeric="150003" />
-            <column name="race_id" valueNumeric="1" />
-            <column name="size_id" valueNumeric="4" />
-        <where>id = 3</where>
+        <where>id
+            = 3</where>
         </update>
 
         <update tableName="sub_race">
-            <!-- SMALL -->
-            <column name="modifiers_id" valueNumeric="90004" />
+            <!-- Shield Dwarf -->
+            <column name="race_id" value="1" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" valueNumeric="150004" />
         <where>id = 4</where>
         </update>
 
         <update tableName="sub_race">
-            <!-- MEDIUM -->
-            <column name="modifiers_id" valueNumeric="90005" />
+            <!-- Savage Dwarf -->
+            <column name="race_id" value="1" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" valueNumeric="150005" />
         <where>id = 5</where>
         </update>
 
         <update tableName="sub_race">
-            <!-- LARGE -->
-            <column name="modifiers_id" valueNumeric="90006" />
+            <!-- Urdunir Dwarf -->
+            <column name="race_id" value="1" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" valueNumeric="150006" />
         <where>id = 6</where>
         </update>
 
+        <!-- Elf -->
         <update tableName="sub_race">
-            <!-- HUGE -->
-            <column name="modifiers_id" valueNumeric="90007" />
-        <where>id = 7</where>
+            <!-- Avariel, Winged Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150100" />
+        <where>id = 100</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Acquatic Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150101" />
+        <where>id = 101</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Wood Elf, Bronze -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150102" />
+        <where>id = 102</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Drow, Dark Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150103" />
+        <where>id = 103</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Moon Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150104" />
+        <where>id = 104</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Savage Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150105" />
+        <where>id = 105</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Golden Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150106" />
+        <where>id = 106</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Star Elf -->
+            <column name="race_id" value="2" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150107" />
+        <where>id = 107</where>
         </update>
 
+        <!-- Gnome -->
         <update tableName="sub_race">
-            <!-- GARGANTUAN -->
-            <column name="modifiers_id" valueNumeric="90008" />
-        <where>id = 8</where>
+            <!-- Forest Gnome -->
+            <column name="race_id" value="4" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150201" />
+        <where>id = 201</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Deep Gnome, Svirfneblin -->
+            <column name="race_id" value="4" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150202" />
+        <where>id = 202</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Rock Gnome -->
+            <column name="race_id" value="4" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150203" />
+        <where>id = 203</where>
         </update>
 
+        <!-- Half Elf -->
         <update tableName="sub_race">
-            <!-- COLOSSAL -->
-            <column name="modifiers_id" valueNumeric="90009" />
-        <where>id = 9</where>
+            <!-- Aquatic Half Elf -->
+            <column name="race_id" value="9" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150301" />
+        <where>id = 301</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Common Half Elf -->
+            <column name="race_id" value="9" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150302" />
+        <where>id = 302</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Half Drow -->
+            <column name="race_id" value="9" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150303" />
+        <where>id = 303</where>
+        </update>
+
+        <!-- Orc -->
+        <update tableName="sub_race">
+            <!-- Grey Orc -->
+            <column name="race_id" value="3" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150401" />
+        <where>id = 401</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Montain Orc -->
+            <column name="race_id" value="3" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150402" />
+        <where>id = 402</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Orog, Deep Orc -->
+            <column name="race_id" value="3" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150403" />
+        <where>id = 403</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Half Orc -->
+            <column name="race_id" value="3" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150404" />
+        <where>id = 404</where>
+        </update>
+
+        <!-- Halfling -->
+        <update tableName="sub_race">
+            <!-- Strongheart Halfling -->
+            <column name="race_id" value="5" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150501" />
+        <where>id = 501</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Lightfoot Halfling -->
+            <column name="race_id" value="5" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150502" />
+        <where>id = 502</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Spirit's Halfling -->
+            <column name="race_id" value="5" />
+            <column name="size_id"
+                value="4" />
+            <column name="modifiers_id" value="150503" />
+        <where>id = 503</where>
+        </update>
+
+        <!-- Human -->
+        <update tableName="sub_race">
+            <!-- Calishita -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150601" /> -->
+        <where>id = 601</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Chondathan -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150601" /> -->
+        <where>id = 601</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Chondathan -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150602" /> -->
+        <where>id = 602</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Damaran -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150603" /> -->
+        <where>id = 603</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Illuskan -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150604" /> -->
+        <where>id = 604</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Mulan -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150605" /> -->
+        <where>id = 605</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Rashemi -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150606" /> -->
+        <where>id = 606</where>
+        </update>
+        <update tableName="sub_race">
+            <!-- Tethyrian -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150607" /> -->
+        <where>id = 607</where>
+        </update>
+
+        <!-- Monstruos Humanoid -->
+        <update tableName="sub_race">
+            <!-- Hagspawn -->
+            <column name="race_id" value="7" />
+            <column name="size_id"
+                value="5" />
+            <column name="modifiers_id" value="150701" />
+        <where>id = 701</where>
+        </update>
+
+        <!-- Spirit Folk -->
+        <update tableName="sub_race">
+            <!-- Moutain -->
+            <column name="race_id" value="8" />
+            <column name="size_id"
+                value="5" />
+                <column name="modifiers_id" value="150801" />
+        <where>id = 801</where>
+
+        </update>
+        <update tableName="sub_race">
+            <!-- River -->
+            <column name="race_id" value="8" />
+            <column name="size_id"
+                value="5" />
+                <column name="modifiers_id" value="150802" />
+        <where>id = 802</where>
         </update>
 
     </changeSet>

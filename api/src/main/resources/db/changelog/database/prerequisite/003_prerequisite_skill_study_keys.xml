@@ -1,0 +1,20 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="003_prerequisite_skill_study_keys" author="oscar">
+    <addForeignKeyConstraint
+      baseTableName="prerequisite_skill_study"
+      baseColumnNames="prerequisite_id"
+      constraintName="fk_prerequisite_skill_study_prerequisite"
+      referencedTableName="prerequisite"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="prerequisite_skill_study"
+      baseColumnNames="prerequisite_skill_id"
+      constraintName="fk_prerequisite_skill_study_skill"
+      referencedTableName="prerequisite_skill"
+      referencedColumnNames="id" />
+  </changeSet>
+</databaseChangeLog>

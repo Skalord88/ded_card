@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="update_skills_character" author="oscar">
+    <changeSet id="005_skills_character_update" author="oscar">
 
         <!-- Puli -->
         <update tableName="skills_character">

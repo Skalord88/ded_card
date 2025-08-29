@@ -5,7 +5,8 @@
 
     <insert tableName="prerequisite_item">
       <column name="prerequisite_id" value="110101" />
-      <column name="item_id" value="38" />
+      <!-- Longsword -->
+      <column name="item_id" value="113" />
     </insert>
 
     <update tableName="feat_pc">
@@ -24,7 +25,7 @@
             <column name="character_card_id" value="101" />
       <!-- Point Blank Shot [General] -->
             <column
-        name="feat_id" value="feat_id" />
+        name="feat_id" value="75" />
             <where>id = 110102</where>
     </update>
     <update tableName="feat_pc">
@@ -65,7 +66,7 @@
             <column name="character_card_id" value="101" />
       <!-- Combat style -->
             <column
-        name="class_feat_id" value="171" />
+        name="class_feat_id" value="805" />
       <!-- Two-Weapon Fighting -->
         <column name="selected_id" value="110106" />
             <where>id =
@@ -83,7 +84,7 @@
             <column name="character_card_id" value="101" />
       <!-- Improved Combat style -->
             <column
-        name="class_feat_id" value="176" />
+        name="class_feat_id" value="810" />
       <!-- Improved Two-Weapon Fighting -->
         <column name="selected_id" value="110107" />
             <where>id =

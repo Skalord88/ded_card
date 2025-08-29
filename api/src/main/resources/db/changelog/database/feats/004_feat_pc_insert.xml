@@ -28,17 +28,13 @@
 
         <insert tableName="feat_pc">
             <column name="id" value="110103" />
-            <!-- <column name="character_card_id" value="101" /> -->
             <!-- Improved Shield Bash [General] -->
-            <!-- <column name="feat_id" value="54" />  -->
             <column name="level" value="6" />
         </insert>
 
         <insert tableName="feat_pc">
             <column name="id" value="110104" />
-            <!-- <column name="character_card_id" value="101" /> -->
             <!-- Rapid Shot [General] -->
-            <!-- <column name="feat_id" value="81" />  -->
             <column name="level" value="9" />
         </insert>
 

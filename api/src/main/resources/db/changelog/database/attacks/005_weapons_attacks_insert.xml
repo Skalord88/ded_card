@@ -1,0 +1,79 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="005_weapons_attacks_insert" author="oscar">
+        <!-- Puli -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1003" />
+            <column name="attacks_id_oneadditional" value="1006" />
+            <column name="attacks_id_twofirst" value="1004" />
+            <column name="attacks_id_twoadditional" value="2002" />
+            <where>id = 100</where>
+        </update>
+
+        <!-- Rysio -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1011" />
+            <column name="attacks_id_onesecond" value="2002" />
+            <column name="attacks_id_oneadditional" value="2002" />
+            <column name="attacks_id_twofirst" value="1012" />
+            <column name="attacks_id_twosecond" value="2007" />
+            <column name="attacks_id_twoadditional" value="2002" />
+            <where>id = 101</where>
+        </update>
+
+        <!-- Niesia -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1023" />
+            <column name="attacks_id_onesecond" value="1027" />
+            <column name="attacks_id_oneadditional" value="1027" />
+            <column name="attacks_id_twofirst" value="1024" />
+            <column name="attacks_id_twosecond" value="1027" />
+            <column name="attacks_id_twoadditional" value="1026" />
+            <where>id = 102</where>
+        </update>
+
+        <!-- Michał -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1033" />
+            <column name="attacks_id_onesecond" value="2007" />
+            <column name="attacks_id_oneadditional" value="2002" />
+            <column name="attacks_id_twofirst" value="1034" />
+            <column name="attacks_id_twosecond" value="2007" />
+            <column name="attacks_id_twoadditional" value="2005" />
+            <where>id = 103</where>
+        </update>
+
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="2000" />
+            <column name="attacks_id_onesecond" value="2000" />
+            <column name="attacks_id_oneadditional" value="1041" />
+            <column name="attacks_id_twofirst" value="1042" />
+            <column name="attacks_id_twosecond" value="2000" />
+            <column name="attacks_id_twoadditional" value="2000" />
+            <where>id = 104</where>
+        </update>
+
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1051" />
+            <!-- <column name="attacks_id_onesecond" value="1" /> -->
+            <column name="attacks_id_oneadditional" value="2000" />
+            <column name="attacks_id_twofirst" value="1052" />
+            <!-- <column name="attacks_id_twosecond" value="1" /> -->
+            <column name="attacks_id_twoadditional" value="2000" />
+            <where>id = 105</where>
+        </update>
+
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="1062" />
+            <!-- <column name="attacks_id_onesecond" value="1" /> -->
+            <column name="attacks_id_oneadditional" value="2000" />
+            <column name="attacks_id_twofirst" value="30000" />
+            <!-- <column name="attacks_id_twosecond" value="1" /> -->
+            <column name="attacks_id_twoadditional" value="2000" />
+            <where>id = 106</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

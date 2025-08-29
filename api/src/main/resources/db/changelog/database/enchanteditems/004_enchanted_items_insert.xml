@@ -73,7 +73,6 @@
     <insert tableName="enchanted_items">
       <column name="id" value="1001" />
       <column name="name" value="elven chain +2" />
-      <!-- <column name="item_id" value="89" /> -->
       <column name="enchantment_bonus" value="2" />
       <column name="material" value="MITHRAL" />
     </insert>
@@ -82,34 +81,29 @@
       <column name="name" value="tarczunia +1" />
       <column name="id" value="1002" />
       <column name="enchantment_bonus" value="1" />
-      <!-- <column name="item_id" value="95" /> -->
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="proca Puli +1" />
       <column name="id" value="1003" />
       <column name="enchantment_bonus" value="1" />
-      <!-- <column name="item_id" value="81" /> -->
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Sword, short pft" />
       <column name="id" value="1004" />
-      <!-- <column name="item_id" value="35" /> -->
       <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Axe, throwing pft" />
       <column name="id" value="1005" />
-      <!-- <column name="item_id" value="25" /> -->
       <column name="enchantment_bonus" value="-1" />
     </insert>
 
     <insert tableName="enchanted_items">
       <column name="name" value="Skiprock" />
       <column name="id" value="1006" />
-      <!-- <column name="item_id" value="82" /> -->
       <column name="enchantment_bonus" value="0" />
     </insert>
 
@@ -156,7 +150,6 @@
       <column name="id" value="1021" />
       <column name="name" value="Studded leather +1" />
       <column name="enchantment_bonus" value="1" />
-      <!-- <column name="item_id" value="85" /> -->
     </insert>
 
     <insert tableName="enchanted_items">
@@ -212,7 +205,6 @@
       <column name="id" value="1031" />
       <column name="name" value="Half-plate +1" />
       <column name="enchantment_bonus" value="1" />
-      <!-- <column name="item_id" value="93" /> -->
     </insert>
 
     <insert tableName="enchanted_items">
@@ -272,7 +264,6 @@
     <insert tableName="enchanted_items">
       <column name="id" value="1061" />
       <column name="name" value="Mithral shirt +2" />
-      <!-- <column name="item_id" value="86" /> -->
       <column name="enchantment_bonus" value="2" />
       <column name="material" value="MITHRAL" />
     </insert>
@@ -291,7 +282,6 @@
       <column name="enchantment_bonus" value="0" />
       <column name="material" value="ADAMANTINE" />
       <column name="description" value="This nonmagical breastplate is made of adamantine, giving its wearer damage reduction of 2/-. No aura (nonmagical); Price 10,200 gp." />
-      <!-- <column name="item_id" value="90" /> -->
       <column name="cost" value="10200" />
     </insert>
     <insert tableName="enchanted_items">
@@ -299,7 +289,6 @@
       <column name="name" value="Banded Mail of Luck" />
       <column name="enchantment_bonus" value="3" />
       <column name="description" value="Ten 100-gp gems adorn this +3 banded mail. Once per week, the armor allows its wearer to require that an attack roll made against him be rerolled. He must take whatever consequences come from the second roll. The wearer’s player must decide whether to have the attack roll rerolled before damage is rolled. Strong enchantment; CL 12th; Craft Magic Arms and Armor, bless; Price 18,900 gp; Cost 10,150 gp + 700 XP." />
-      <!-- <column name="item_id" value="92" /> -->
       <column name="cost" value="18900" />
     </insert>
     <insert tableName="enchanted_items">
@@ -307,7 +296,6 @@
       <column name="name" value="Breastplate of Command" />
       <column name="enchantment_bonus" value="2" />
       <column name="description" value="This finely crafted +2 breastplate radiates a powerful aura of magic. When worn, the armor bestows a dignified and commanding aura upon its owner. The wearer gains a +2 competence bonus on all Charisma checks, including turning checks and Charisma-based skill checks. The wearer also gains a +2 competence bonus to his Leadership score. Friendly troops within 360 feet of the user become braver than normal. Since the effect arises in great part from the distinctiveness of the armor, the wearer cannot hide or conceal herself in any way and still have the effect function. Strong enchantment; CL 15th; Craft Magic Arms and Armor, mass charm monster; Price 25,400 gp; Cost 10,975 gp + 850 XP." />
-      <!-- <column name="item_id" value="90" /> -->
       <column name="cost" value="25400" />
     </insert>
     <insert tableName="enchanted_items">
@@ -367,7 +355,6 @@
       <column name="name" value="Mithral Shirt" />
       <column name="enchantment_bonus" value="0" />
       <column name="description" value="This extremely light chain shirt is made of very fine mithral links. Speed while wearing a mithral shirt is 30 feet for Medium creatures, or 20 feet for Small. The armor has an arcane spell failure chance of 10%, a maximum Dexterity bonus of +6, and no armor check penalty. It is considered light armor and weighs 10 pounds. No aura (nonmagical); Price 1,100 gp." />
-      <!-- <column name="item_id" value="86" /> -->
       <column name="material" value="MITHRAL" />
       <column name="cost" value="1100" />
     </insert>
@@ -384,7 +371,6 @@
       <column name="name" value="Rhino Hide" />
       <column name="enchantment_bonus" value="2" />
       <column name="description" value="This +2 hide armor is made from rhinoceros hide. In addition to granting a +2 enhancement bonus to AC, it has a -1 armor check penalty and deals an additional 2d6 points of damage on any successful charge attack made by the wearer, including a mounted charge. Moderate transmutation; CL 9th; Craft Magic Arms and Armor, bull’s strength; Price 5,165 gp; Cost 2,665 gp + 200 XP." />
-      <!-- <column name="item_id" value="87" /> -->
       <column name="cost" value="5165" />
     </insert>
     <insert tableName="enchanted_items">

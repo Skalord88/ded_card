@@ -12,7 +12,7 @@
         <constraints nullable="true" />
       </column>
       <column name="race_id" type="int">
-        <constraints nullable="false" />
+        <constraints nullable="true" />
       </column>
       <column name="size_id" type="int">
         <constraints nullable="true" />

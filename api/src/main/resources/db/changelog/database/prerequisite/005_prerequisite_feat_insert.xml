@@ -132,21 +132,21 @@
 
         <!-- Improved Feint [General] pre -->
         <insert tableName="prerequisite_feat">
-            <column name="prerequisite_id" value="100027" />
+            <column name="prerequisite_id" value="110027" />
             <column name="feat_id" value="14" />
         </insert>
         <!-- Improved Feint [General] pre -->
 
         <!-- Improved Grapple [General] pre -->
         <insert tableName="prerequisite_feat">
-            <column name="prerequisite_id" value="100028" />
+            <column name="prerequisite_id" value="110028" />
             <column name="feat_id" value="59" />
         </insert>
         <!-- Improved Grapple [General] pre -->
 
         <!-- Improved Overrun [General] pre -->
         <insert tableName="prerequisite_feat">
-            <column name="prerequisite_id" value="100029" />
+            <column name="prerequisite_id" value="110029" />
             <column name="feat_id" value="76" />
         </insert>
         <!-- Improved Overrun [General] pre -->
@@ -170,16 +170,15 @@
         </insert>
         <!-- Improved Shield Bash [General] pre -->
 
-        <!-- Improved Sunder [General] pre -->
         <insert tableName="prerequisite_feat">
-            <column name="prerequisite_id" value="100032" />
+            <column name="prerequisite_id" value="110032" />
+            <!-- Improved Sunder [General] pre -->
             <column name="feat_id" value="76" />
         </insert>
-        <!-- Improved Sunder [General] pre -->
 
         <!-- Improved Trip [General] pre -->
         <insert tableName="prerequisite_feat">
-            <column name="prerequisite_id" value="100033" />
+            <column name="prerequisite_id" value="110033" />
             <column name="feat_id" value="76" />
         </insert>
         <!-- Improved Trip [General] pre -->
@@ -213,7 +212,7 @@
         <!-- Mounted Archery [General] pre -->
         <insert tableName="prerequisite_feat">
             <column name="prerequisite_id" value="110039" />
-            <column name="feat_id" value="70" />
+            <column name="feat_id" value="69" />
         </insert>
         <!-- Mounted Archery [General] pre -->
 
@@ -241,7 +240,7 @@
         <!-- Ride-By Attack [General] pre -->
         <insert tableName="prerequisite_feat">
             <column name="prerequisite_id" value="110045" />
-            <column name="feat_id" value="70" />
+            <column name="feat_id" value="69" />
         </insert>
         <!-- Ride-By Attack [General] pre -->
 
@@ -272,7 +271,7 @@
         <!-- Spirited Charge [General] pre -->
         <insert tableName="prerequisite_feat">
             <column name="prerequisite_id" value="110048" />
-            <column name="feat_id" value="70" />
+            <column name="feat_id" value="69" />
         </insert>
 
         <insert tableName="prerequisite_feat">
@@ -303,7 +302,7 @@
         <!-- Trample [General] pre -->
         <insert tableName="prerequisite_feat">
             <column name="prerequisite_id" value="110051" />
-            <column name="feat_id" value="70" />
+            <column name="feat_id" value="69" />
         </insert>
         <!-- Trample [General] pre -->
 

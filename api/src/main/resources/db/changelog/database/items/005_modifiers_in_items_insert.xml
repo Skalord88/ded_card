@@ -1,0 +1,44 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_modifiers_in_items_insert" author="oscar">
+
+        <update tableName="item">
+            <!-- warsling ricochet malus -->
+            <column name="modifiers_id" value="9001" />
+            <!-- warsling -->
+            <where>id = 219</where>
+        </update>
+        <update tableName="item">
+            <!-- melee malus for Javelin -->
+            <column name="modifiers_id" value="9002" />
+            <!-- Javelin -->
+            <where>id = 22</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52001" />
+            <!-- Padded -->
+            <where>id = 500</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52002" />
+            <!-- Leather -->
+            <where>id = 501</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52003" />
+            <!-- Studded leather -->
+            <where>id = 502</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52004" />
+            <!-- Chain shirt -->
+            <where>id = 503</where>
+        </update>
+
+
+    </changeSet>
+</databaseChangeLog>

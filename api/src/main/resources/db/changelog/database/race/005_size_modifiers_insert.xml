@@ -1,57 +1,57 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet id="relation_race_modifiers" author="oscar">
+    <changeSet id="005_size_modifiers_insert" author="oscar">
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- FINE -->
             <column name="modifiers_id" valueNumeric="90001" />
         <where>id = 1</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- DIMINUTIVE -->
             <column name="modifiers_id" valueNumeric="90002" />
         <where>id = 2</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- TINY -->
             <column name="modifiers_id" valueNumeric="90003" />
         <where>id = 3</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- SMALL -->
             <column name="modifiers_id" valueNumeric="90004" />
         <where>id = 4</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- MEDIUM -->
             <column name="modifiers_id" valueNumeric="90005" />
         <where>id = 5</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- LARGE -->
             <column name="modifiers_id" valueNumeric="90006" />
         <where>id = 6</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- HUGE -->
             <column name="modifiers_id" valueNumeric="90007" />
         <where>id = 7</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- GARGANTUAN -->
             <column name="modifiers_id" valueNumeric="90008" />
         <where>id = 8</where>
         </update>
 
-        <update tableName="race">
+        <update tableName="size">
             <!-- COLOSSAL -->
             <column name="modifiers_id" valueNumeric="90009" />
         <where>id = 9</where>

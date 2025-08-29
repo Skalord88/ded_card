@@ -7,7 +7,7 @@
 
         <!-- Breath Weapon -->
         <!-- Half-Dragon Black 1 -->
-         <insert tableName="special_abilities">
+        <insert tableName="special_abilities">
             <column name="id" value="1" />
             <column name="special_type" value="2" />
             <column name="name" value="Black Breath Weapon" />
@@ -610,7 +610,7 @@
         </insert>
 
         <!-- Half-Fiend -->
-         <!-- Damage reduction: 5/magic (if HD 11 or less) -->
+        <!-- Damage reduction: 5/magic (if HD 11 or less) -->
         <insert tableName="special_abilities">
             <column name="id" value="1251" />
             <column name="special_type" value="3" />
@@ -684,7 +684,6 @@
             <column name="value" value="19" />
         </insert>
 
-        
 
     </changeSet>
 </databaseChangeLog>

@@ -1,0 +1,40 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_prerequisite_in_class_feat_insert" author="oscar">
+
+        <!-- Simple Weapon Proficiency / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5006" />
+            <column name="weapon_type" value="SIMPLE" />
+            <column name="text" value="Proficiency in all simple weapons" />
+        </insert>
+
+        <!-- Martial Weapon Proficiency / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5007" />
+            <column name="weapon_type" value="MARTIAL" />
+            <column name="text" value="Proficiency in all martial weapons" />
+        </insert>
+
+        <!-- Weapon Druid Proficency sel -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5008" />
+            <column name="text" value="Weapon Druid Proficency" />
+        </insert>
+
+        <!-- Weapon Bard Proficiency / selected -->
+        <insert tableName="prerequisite">
+            <column name="id" value="5009" />
+            <column name="text" value="Bard's Weapon Proficiency" />
+        </insert>
+
+        <!-- Monk Bonus Feats to_select -->
+        <insert tableName="prerequisite">
+            <column name="id" value="4003" />
+            <column name="text" value="select a bonus feat for monk on 1st lv." />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

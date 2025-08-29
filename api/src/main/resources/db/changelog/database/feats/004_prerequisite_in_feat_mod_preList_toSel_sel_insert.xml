@@ -1,7 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-  <changeSet id="004_prerequisite_in_feat__mod_preList_toSel_sel_insert" author="oscar">
+  <changeSet id="004_prerequisite_in_feat_mod_preList_toSel_sel_insert" author="oscar">
 
     <!-- Acrobatic [General] -->
     <insert tableName="prerequisite">
@@ -91,7 +91,7 @@
     </insert>
 
     <!-- Combat Expertise [General] pre -->
-     <insert tableName="prerequisite">
+    <insert tableName="prerequisite">
       <column name="id" value="110005" />
       <column name="abilitys"
         value="{ &quot;intelligence&quot; : 13 }" />
@@ -307,14 +307,14 @@
 
     <!-- Improved Feint [General] pre -->
     <insert tableName="prerequisite">
-      <column name="id" value="100027" />
+      <column name="id" value="110027" />
       <column name="abilitys" value="{ &quot;intelligence&quot; : 13 }" />
       <column name="text" value="Int 13, Combat Expertise." />
     </insert>
 
     <!-- Improved Grapple [General] pre -->
     <insert tableName="prerequisite">
-      <column name="id" value="100028" />
+      <column name="id" value="110028" />
       <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
       <column name="text" value="Dex 13, Improved Unarmed Strike." />
     </insert>
@@ -328,7 +328,7 @@
 
     <!-- Improved Overrun [General] pre -->
     <insert tableName="prerequisite">
-      <column name="id" value="100029" />
+      <column name="id" value="110029" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
@@ -356,14 +356,14 @@
 
     <!-- Improved Sunder [General] pre -->
     <insert tableName="prerequisite">
-      <column name="id" value="100032" />
+      <column name="id" value="110032" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Str 13, Power Attack." />
     </insert>
 
     <!-- Improved Trip [General] pre -->
     <insert tableName="prerequisite">
-      <column name="id" value="100033" />
+      <column name="id" value="110033" />
       <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
       <column name="text" value="Int 13, Combat Expertise." />
     </insert>
@@ -445,6 +445,401 @@
     <insert tableName="prerequisite">
       <column name="id" value="110039" />
       <column name="text" value="Ride 1 rank, Mounted Combat." />
+    </insert>
+
+    <!-- Natural Spell [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110040" />
+      <column name="abilitys" value="{ &quot;wisdom&quot; : 13 }" />
+      <column name="text" value="Wis 13, wild shape ability." />
+    </insert>
+
+    <!-- Negotiator [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1016" />
+      <column name="text" value="+2 Diplomacy and Sense Motive" />
+    </insert>
+
+    <!-- "Nimble Fingers [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1017" />
+      <column name="text" value="+2 Disable Device and Sleight of Hand" />
+    </insert>
+
+    <!-- Persuasive [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1018" />
+      <column name="text" value="+2 Bluff and Intimidate" />
+    </insert>
+
+    <!-- Point Blank Shot [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1019" />
+      <column name="attack_roll"
+        value="{
+        &quot;bonus&quot; : 1,
+        &quot;type&quot;: [&quot;RANGED&quot;]
+      }" />
+      <column name="damage_bonus"
+        value="{
+        &quot;bonus&quot; : 1,
+        &quot;type&quot;: [&quot;RANGED&quot;]
+      }" />
+      <column name="text" value="+1 attack roll and damage within 9m" />
+    </insert>
+
+    <!-- Power Attack [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110041" />
+      <column name="abilitys" value="{ &quot;strength&quot; : 13 }" />
+      <column name="text" value="Str 13." />
+    </insert>
+
+    <!-- Precise Shot [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110042" />
+      <column name="text" value="Point Blank Shot." />
+    </insert>
+
+    <!-- Quick Draw [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110043" />
+      <column name="bab" value="1" />
+      <column name="text" value="Base attack bonus +1." />
+    </insert>
+
+    <!-- Rapid Shot [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110044" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="text" value="Dex 13, Point Blank Shot." />
+    </insert>
+
+    <!-- Ride-By Attack [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110045" />
+      <column name="text" value="Ride 1 rank, Mounted Combat." />
+    </insert>
+
+    <!-- Shield Proficiency [General] toSel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2006" />
+      <column name="armor_type" value="SHIELD" />
+      <column name="text"
+        value="You can use a shield and take only the standard penalties." />
+    </insert>
+
+    <!-- Shot On The Run [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110046" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="bab" value="4" />
+      <column name="text"
+        value="Dex 13, Dodge, Mobility, Point Blank Shot, base attack bonus +4." />
+    </insert>
+
+    <!-- Simple Weapon Proficiency [General] toSel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2005" />
+      <column name="weapon_type"
+        value="SIMPLE" />
+      <column name="text" value="Simple Weapon Proficiency." />
+    </insert>
+
+    <!-- Snatch Arrows [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110047" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 15 }" />
+      <column name="text" value="Dex 15, Deflect Arrows, Improved Unarmed Strike." />
+    </insert>
+
+    <!-- Spirited Charge [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110048" />
+      <column name="text" value="Ride 1 rank, Mounted Combat, Ride-By Attack." />
+    </insert>
+
+    <!-- Spring Attack [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110049" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 }" />
+      <column name="bab" value="4" />
+      <column name="text" value="Dex 13, Dodge, Mobility, base attack bonus +4." />
+    </insert>
+
+    <!-- Stunning Fist [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110050" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 13 , &quot;wisdom&quot; : 13 }" />
+      <column name="bab" value="8" />
+      <column name="text"
+        value="Dex 13, Wis 13, Improved Unarmed Strike, base attack bonus +8." />
+    </insert>
+
+    <!-- Shield Proficiency sel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="5004" />
+      <column name="text" value="You can use a shield and take only the standard penalties." />
+    </insert>
+
+    <!-- Tower Shield Proficiency sel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="5005" />
+      <column name="text" value="You can use a tower shield and suffer only the standard penalties." />
+    </insert>
+
+    <!-- Trample [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110051" />
+      <column name="text" value="Ride 1 rank, Mounted Combat." />
+    </insert>
+
+    <!-- Two-Weapon Defense [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110052" />
+      <column name="abilitys" value="{ &quot;dexterity&quot; : 15 }" />
+      <column name="text" value="Dex 15, Two-Weapon Fighting." />
+    </insert>
+
+    <!-- Weapon Focus [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110053" />
+      <column name="bab" value="1" />
+      <column name="text" value="Base attack bonus +1." />
+    </insert>
+
+    <!-- Weapon Focus [General] toSel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="2001" />
+      <column name="weapon_type" value="PROFICENCY" />
+      <column name="text" value="Proficiency with selected weapon." />
+    </insert>
+
+    <!-- Weapon Focus [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1020" />
+      <column name="attack_roll"
+        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
+    </insert>
+
+    <!-- Weapon Specialization [General] toSel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110054" />
+      <column name="class_pc"
+        value="[{ &quot;classe&quot; : &quot;FIGHTER&quot; , &quot;level&quot; : 4 }]" />
+      <column name="text"
+        value="Proficiency with selected weapon, Weapon Focus with selected weapon, fighter level 4th." />
+    </insert>
+
+    <!-- Weapon Specialization [General] mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="1021" />
+      <column name="damage_bonus"
+        value="{
+        &quot;bonus&quot; : 2 , &quot;target&quot; : [ &quot;SELECTED&quot; ]
+      }" />
+      <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
+    </insert>
+
+    <!-- Whirlwind Attack [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="110055" />
+      <column name="abilitys"
+        value="{ &quot;dexterity&quot; : 13 , &quot;intelligence&quot; : 13 }" />
+      <column name="bab" value="4" />
+      <column name="text"
+        value="Dex 13, Int 13, Combat Expertise, Dodge, Mobility, Spring Attack, base attack bonus +4." />
+    </insert>
+
+    <!-- Fast Movement mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3001" />
+      <column name="speed" value="{ &quot;foot&quot; : 10 }" />
+      <column name="text" value="barbarian's +10 feet" />
+    </insert>
+
+    <!-- Trap Sense mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3002" />
+      <column name="saving_throw"
+        value="{ 
+        &quot;reflex&quot; : 1,
+        &quot;resistance&quot; : [ {
+        &quot;target&quot; : [ &quot;TRAP&quot; ]
+      } ] }" />
+      <column name="armor_class"
+        value="{ 
+        &quot;dodgeBonus&quot; : 1,
+        &quot;target&quot; : [ &quot;TRAP&quot; ]
+      }" />
+      <column name="text" value="Sense for trap" />
+    </insert>
+
+    <!-- Nature Sense -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3003" />
+      <column name="text" value="+2 bonus on Knowledge (nature) and Survival" />
+    </insert>
+
+    <!-- Resist Nature's Lure mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3004" />
+      <column name="saving_throw"
+        value="{
+        &quot;resistance&quot; : [ {
+          &quot;target&quot; : [ &quot;FEY&quot; ],
+          &quot;bonus&quot; : 4,
+          &quot;type&quot; : &quot;SAVING&quot;
+        }]
+      }" />
+      <column name="text" value="+4 bonus on saving vs fey" />
+    </insert>
+
+    <!-- Venom Immunity mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3005" />
+      <column name="saving_throw"
+        value="{
+        &quot;resistance&quot; : [ {
+          &quot;target&quot; : [ &quot;POISON&quot; ],
+          &quot;type&quot; : &quot;IMMUNITY&quot;
+        }]
+      }" />
+      <column name="text" value="immunity to poison" />
+    </insert>
+
+    <!-- Fighter toSel -->
+    <insert tableName="prerequisite">
+      <column name="id" value="4004" />
+      <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
+    </insert>
+
+    <!-- Fast Movement mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3006" />
+      <column name="speed" value="{
+        &quot;foot&quot; : 10
+      }" />
+      <column name="text" value="+10 ft for monk" />
+    </insert>
+
+    <!-- Still Mind mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3007" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
+                    &quot;bonus&quot; : 2
+                    } ]
+                }" />
+      <column name="text" value="+2 bonus on saving vs enchantment for monk" />
+    </insert>
+
+    <!-- Purity of Body mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3008" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to all diseases for monk" />
+    </insert>
+
+    <!-- Diamond Body mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3009" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to poisons for monk" />
+    </insert>
+
+    <!-- Divine Grace mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3010" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;CHARISMA&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="Charisma bonus to saving" />
+    </insert>
+
+    <!-- Aura of Courage mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3011" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;FEAR&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="Charisma bonus to saving" />
+    </insert>
+
+    <!-- Divine Health mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3012" />
+      <column name="saving_throw"
+        value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ]
+                    } ]
+                }" />
+      <column name="text" value="immunity to all diseases" />
+    </insert>
+
+    <!-- Combat Style to_select -->
+    <insert tableName="prerequisite">
+      <column name="id" value="4002" />
+      <column name="text" value="select a combat style for ranger" />
+    </insert>
+
+    <insert tableName="prerequisite">
+      <column name="id" value="4005" />
+      <column name="feat_type"
+        value="[&quot;METAMAGIC&quot; , &quot;ITEM_CREATION&quot; , &quot;MAGE&quot;]" />
+    </insert>
+
+    <!-- Electricity Resistance mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="70000" />
+      <column name="text" value="ACID_RESISTANCE 10pt." />
+      <column name="text" value="Electricity Resistance" />
+    </insert>
+
+    <!-- Improved Natural Armor [General] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="50001" />
+      <column name="abilitys" value="{ &quot;constitution&quot; : 13 }" />
+      <column name="armor_class" value="{ &quot;naturalArmor&quot; : 1 }" />
+      <column name="text" value="Natural armor, Con 13." />
+    </insert>
+
+    <!-- Eagle's Wings [Wild] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="50002" />
+      <column name="text" value="Ability to wild shape." />
+    </insert>
+
+    <!-- Pierce the Darkness [Divine] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="50003" />
+      <column name="text" value="Darkvision, Turn or rebuke undead." />
+    </insert>
+
+    <!-- Domain Spontaneity [Divine] pre -->
+    <insert tableName="prerequisite">
+      <column name="id" value="50004" />
+      <column name="text" value="Ability to turn or rebuke undead." />
     </insert>
 
   </changeSet>

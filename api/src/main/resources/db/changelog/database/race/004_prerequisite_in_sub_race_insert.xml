@@ -4,5 +4,243 @@
 
     <changeSet id="004_prerequisite_in_sub_race_insert" author="oscar">
 
+        <!-- 150.000 -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150001" />
+            <!-- Artic Dwarf -->
+            <column name="text" value="Artic Dwarf races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150002" />
+            <!-- Golden Dwarf -->
+            <column name="text" value="Golden Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{
+                &quot;dexterity&quot; : -2,
+                &quot;charisma&quot; : 2
+                }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; :
+                [ &quot;ABERRATIONS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150003" />
+            <!-- Grey Dwarf -->
+            <column name="text" value="Grey Dwarf races modifiers" />
+            <column name="abilitys"
+                value="{
+                &quot;charisma&quot; : -2
+                }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;IMMUNITY&quot;,
+                    &quot;target&quot; : [
+                    &quot;PARALYSIS&quot; ,
+                    &quot;PHANTASMS&quot; ,
+                    &quot;POISON&quot; ]
+                } ] }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; :
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150004" />
+            <!-- Shield Dwarf -->
+            <column name="text" value="Shield Dwarf races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150005" />
+            <!-- Savage Dwarf -->
+            <column name="text" value="Savage Dwarf modifiers" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;POISON&quot; ],
+                    &quot;bonus&quot; : 3
+                    } , {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;target&quot; : [ &quot;DISEASES&quot; ],
+                    &quot;bonus&quot; : 4
+                    } ] }" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; : 
+                [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150006" />
+            <!-- Urdunir Dwarf -->
+            <column name="text" value="Urdunir Dwarf races modifiers" />
+        </insert>
+
+        <!-- Elf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150100" />
+            <!-- Avariel -->
+            <column name="text" value="Avariel races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150101" />
+            <!-- Acquatic -->
+            <column name="text" value="Acquatic elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150102" />
+            <!-- Wood -->
+            <column name="text" value="Wood elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150103" />
+            <!-- Drow -->
+            <column name="text" value="Drow races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150104" />
+            <!-- Moon -->
+            <column name="text" value="Moon elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150105" />
+            <!-- Savage -->
+            <column name="text" value="Savage elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150106" />
+            <!-- Golden -->
+            <column name="text" value="Golden elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150107" />
+            <!-- Star -->
+            <column name="text" value="Star elf races modifiers" />
+        </insert>
+
+        <!-- Gnome -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150201" />
+            <!-- Forest -->
+            <column name="text" value="Forest gnome races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150202" />
+            <!-- Deep -->
+            <column name="text" value="Deep gnome races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150203" />
+            <!-- Rock -->
+            <column name="text" value="Rock gnome races modifiers" />
+        </insert>
+
+        <!-- Half Elf -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150301" />
+            <!-- Aquatic -->
+            <column name="text" value="Aquatic Half Elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150302" />
+            <!-- Common -->
+            <column name="text" value="Common Half Elf races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150303" />
+            <!-- Half Drow -->
+            <column name="text" value="Half Drow races modifiers" />
+        </insert>
+
+        <!-- Orc -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150401" />
+            <!-- Grey Orc -->
+            <column name="text" value="Grey Orc races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150402" />
+            <!-- Montain Orc -->
+            <column name="text" value="Montain Orc races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150403" />
+            <!-- Orog -->
+            <column name="text" value="Deep Orc races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150404" />
+            <!-- Half -->
+            <column name="text" value="Half-Orc races modifiers" />
+        </insert>
+
+        <!-- Halfling -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150501" />
+            <!-- Strongheart Halfling -->
+            <column name="text" value="Strongheart Halfling races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150502" />
+            <!-- Lightfoot Halfling -->
+            <column name="text" value="Lightfoot Halfling races modifiers" />
+            <column name="weapon_type" value="THROWN" />
+            <column name="attack_roll"
+                value="{ &quot;target&quot; :
+                [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ] ,
+                &quot;bonus&quot; : 1 }" />
+            <column name="saving_throw"
+                value="{ &quot;resistance&quot; : [ {
+                    &quot;type&quot; : &quot;SAVING&quot;,
+                    &quot;bonus&quot; : 1
+                    } ] }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150503" />
+            <!-- Spirit's Halfling -->
+            <column name="text" value="Spirit's Halfling races modifiers" />
+        </insert>
+
+        <!-- Human -->
+
+        <!-- Monstruos Humanoid -->
+        <insert tableName="prerequisite">
+            <column name="id" value="150701" />
+            <!-- Hagspawn -->
+            <column name="text" value="Hagspawn races modifiers" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot; : 2,
+                &quot;constitution&quot; : 2,
+                &quot;charisma&quot; : -2
+                }" />
+            <column name="armor_class"
+                value="{
+                &quot;naturalArmor&quot; : 2
+                }" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150801" />
+            <!-- Montain Spirit Folk -->
+            <column name="text" value="Montain Spirit Folk races modifiers" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="150802" />
+            <!-- River Spirit Folk -->
+            <column name="text" value="River Spirit Folk races modifiers" />
+        </insert>
+
     </changeSet>
 </databaseChangeLog>
