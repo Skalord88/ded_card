@@ -15,6 +15,7 @@ public class ArchetypeDTO {
   // public Set<SpecialAbilitiesDTO> specialAbilities;
   public int levelAdjustment;
   public String avatarUrl;
+  public RaceTypeDTO raceType;
 
   public ArchetypeDTO(Archetype archetype) {
     this.id = archetype.getId();
@@ -34,5 +35,9 @@ public class ArchetypeDTO {
     // )
     // : null;
     this.avatarUrl = archetype.getAvatarUrl();
+    this.raceType =
+      archetype.getRaceType() != null
+        ? new RaceTypeDTO(archetype.getRaceType())
+        : null;
   }
 }

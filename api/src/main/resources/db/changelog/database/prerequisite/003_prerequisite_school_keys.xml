@@ -3,18 +3,18 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-  <changeSet id="003_race_keys" author="oscar">
+  <changeSet id="003_prerequisite_school_keys" author="oscar">
     <addForeignKeyConstraint
-      baseTableName="race"
-      baseColumnNames="modifiers_id"
-      constraintName="fk_race_prerequisite"
+      baseTableName="prerequisite_schools"
+      baseColumnNames="prerequisite_id"
+      constraintName="fk_prerequisite_schools_prerequisite"
       referencedTableName="prerequisite"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
-      baseTableName="race"
-      baseColumnNames="race_type_id"
-      constraintName="fk_race_race_type"
-      referencedTableName="race_type"
+      baseTableName="prerequisite_schools"
+      baseColumnNames="schools_id"
+      constraintName="fk_prerequisite_schools_schools"
+      referencedTableName="school"
       referencedColumnNames="id" />
   </changeSet>
 </databaseChangeLog>

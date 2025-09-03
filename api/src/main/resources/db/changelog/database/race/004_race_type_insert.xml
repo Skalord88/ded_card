@@ -1,0 +1,104 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_race_type_insert" author="oscar">
+
+        <insert tableName="race_type">
+            <column name="id" value="1" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="0" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="2" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="1" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="3" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="2" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="4" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="3" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="5" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="4" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="6" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="5" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="7" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="6" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="8" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="7" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="9" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="8" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="10" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="9" />
+        </insert>
+        <insert tableName="race_type">
+            <column name="id" value="11" />
+            <column name="class_character_id" value="10000" />
+            <!-- ABBERRATION -->
+            <column name="level" value="10" />
+        </insert>
+
+        <!-- ANIMAL 100 -->
+        <!-- CONSTRUCT 200 -->
+        <!-- DRAGON 300 -->
+        <!-- AIR_ELEMENTAL 400 -->
+        <!-- FIRE_ELEMENTAL 500 -->
+        <!-- EARTH_ELEMENTAL 600 -->
+        <!-- WATER_ELEMENTAL 700 -->
+        <!-- FEY 800 -->
+        <!-- GIANT 900 -->
+        <!-- HUMANOID 1.000 -->
+        <insert tableName="race_type">
+            <column name="id" value="1000" />
+            <column name="class_character_id" value="10007" />
+            <!-- HUMANOID -->
+            <column name="level" value="0" />
+        </insert>
+        <!-- MAGICAL_BEAST 1.100 -->
+        <!-- MONSTROUS_HUMANOID 1.200 -->
+        <insert tableName="race_type">
+            <column name="id" value="1200" />
+            <column name="class_character_id" value="10009" />
+            <!-- MONSTROUS_HUMANOID -->
+            <column name="level" value="0" />
+        </insert>
+        <!-- OOZE 1.300 -->
+        <!-- PLANT 1.300 -->
+        <!-- UNDEAD 1.400 -->
+        <!-- VERMIN 1.500 -->
+    </changeSet>
+</databaseChangeLog>

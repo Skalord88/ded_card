@@ -11,10 +11,10 @@
             <column name="name" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="school" type="varchar(255)">
+            <column name="school" type="varchar(400)">
                 <constraints nullable="true"/>
             </column>
-            <column name="level" type="varchar(255)">
+            <column name="level" type="varchar(400)">
                 <constraints nullable="true"/>
             </column>
             <column name="components" type="varchar(255)">

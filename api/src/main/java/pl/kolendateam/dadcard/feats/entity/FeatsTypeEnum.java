@@ -1,6 +1,7 @@
 package pl.kolendateam.dadcard.feats.entity;
 
 public enum FeatsTypeEnum {
+  ALL("All"),
   GENERAL("General"),
   FIGHTER("Fighter"),
   MAGE("Mage"),

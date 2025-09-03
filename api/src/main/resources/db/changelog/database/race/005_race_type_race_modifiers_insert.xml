@@ -1,41 +1,53 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet id="005_race_modifiers_insert" author="oscar">
+    <changeSet id="005_race_type_race_modifiers_insert" author="oscar">
 
         <update tableName="race">
             <!-- Dwarf -->
-            <column name="modifiers_id" valueNumeric="100001" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100001" />
         <where>id = 1</where>
         </update>
 
         <update tableName="race">
             <!-- Elf -->
-            <column name="modifiers_id" valueNumeric="100002" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100002" />
         <where>id = 2</where>
         </update>
 
         <update tableName="race">
             <!-- Orcs -->
-            <column name="modifiers_id" valueNumeric="100003" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100003" />
         <where>id = 3</where>
         </update>
 
         <update tableName="race">
             <!-- Gnome -->
-            <column name="modifiers_id" valueNumeric="100004" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100004" />
         <where>id = 4</where>
         </update>
 
         <update tableName="race">
             <!-- Halfling -->
-            <column name="modifiers_id" valueNumeric="100005" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100005" />
         <where>id = 5</where>
         </update>
 
         <update tableName="race">
             <!-- Human -->
-            <column name="modifiers_id" valueNumeric="100006" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100006" />
         <where>id = 6</where>
         </update>
 
@@ -47,13 +59,17 @@
 
         <update tableName="race">
             <!-- Spirit Folk -->
-            <column name="modifiers_id" valueNumeric="100008" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100008" />
         <where>id = 8</where>
         </update>
 
         <update tableName="race">
             <!-- Half Elf -->
-            <column name="modifiers_id" valueNumeric="100009" />
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100009" />
         <where>id = 9</where>
         </update>
 

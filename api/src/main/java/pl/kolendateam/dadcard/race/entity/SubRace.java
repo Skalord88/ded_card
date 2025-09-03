@@ -63,6 +63,10 @@ public class SubRace implements Serializable {
   Set<Region> availableRegions = new HashSet<>();
 
   Integer levelAdjustment;
+
+  @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+  @JoinColumn(name = "race_type_id", referencedColumnName = "id")
+  RaceType raceType;
   // @ManyToMany
   // @JoinTable(
   //   name = "race_special_abilities",
@@ -72,7 +76,7 @@ public class SubRace implements Serializable {
   // Set<SpecialAbilities> specialAbilities;
   // Integer hitDice;
   // Integer numberHitDice;
-  // RaceTypes raceType;
+  // RaceType raceType;
 
   // @ManyToMany
   // @JoinTable(

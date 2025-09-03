@@ -23,6 +23,7 @@ public class SubRaceDTO {
   public SizeDTO size;
   // public Set<SpecialAbilitiesDTO> specialAbilities;
   public Set<RegionBaseDTO> availableRegions;
+  public RaceTypeDTO raceType;
 
   // public Integer hitDice;
   // public Integer numberHitDice;
@@ -45,14 +46,18 @@ public class SubRaceDTO {
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
     this.availableRegions =
       MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
-    // this.specialAbilities =
-    //   subRace.getSpecialAbilities() != null
-    //     ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
-    //       subRace.getSpecialAbilities()
-    //     )
-    //     : null;
-    // this.hitDice = subRace.getHitDice() != null ? subRace.getHitDice() : null;
-    // this.numberHitDice =
-    //   subRace.getNumberHitDice() != null ? subRace.getNumberHitDice() : null;
+    this.raceType =
+      subRace.getRaceType() != null
+        ? MapperRaceToDTO.toRaceTypeDTO(subRace.getRaceType())
+        : null;
   }
 }
+// this.specialAbilities =
+//   subRace.getSpecialAbilities() != null
+//     ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
+//       subRace.getSpecialAbilities()
+//     )
+//     : null;
+// this.hitDice = subRace.getHitDice() != null ? subRace.getHitDice() : null;
+// this.numberHitDice =
+//   subRace.getNumberHitDice() != null ? subRace.getNumberHitDice() : null;

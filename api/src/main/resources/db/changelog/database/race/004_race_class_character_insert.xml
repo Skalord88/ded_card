@@ -1,0 +1,179 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_race_class_character_insert" author="oscar">
+
+        <insert tableName="class_character">
+            <column name="id" value="10000" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="ABBERRATION" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="llh" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10001" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="ANIMAL" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hlh" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10002" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="CONSTRUCT" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lll" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="10" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10003" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="DRAGON" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hhh" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10100" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="AIR_ELEMENTAL" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lhl" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10101" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="FIRE_ELEMENTAL" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lhl" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10102" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="EARTH_ELEMENTAL" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hll" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10105" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="WATER_ELEMENTAL" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hll" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10005" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="FEY" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lhh" />
+            <column name="class_bab" value="0.5" />
+            <column name="skill_points" value="6" />
+            <column name="hit_dice" value="6" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10006" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="GIANT" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hll" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10007" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="HUMANOID" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lhl" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10008" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="MAGICAL_BEAST" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hhl" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="10" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10009" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="MONSTROUS_HUMANOID" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hlh" />
+            <column name="class_bab" value="1" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10010" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="OOZE" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="lll" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="10" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10011" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="PLANT" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hll" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10012" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="UNDEAD" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="llh" />
+            <column name="class_bab" value="0.5" />
+            <column name="skill_points" value="4" />
+            <column name="hit_dice" value="12" />
+        </insert>
+        <insert tableName="class_character">
+            <column name="id" value="10013" />
+            <column name="class_type" value="RACE_CLASS" />
+            <column name="name" value="VERMIN" />
+            <column name="avatar_url" value="address value" />
+            <column name="saving_throw" value="hll" />
+            <column name="class_bab" value="0.75" />
+            <column name="skill_points" value="2" />
+            <column name="hit_dice" value="8" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

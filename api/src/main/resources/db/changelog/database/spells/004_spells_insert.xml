@@ -3906,11 +3906,445 @@ A special holy (or unholy) symbol of silver marked with verses of anathema (cost
                                         
                                         The messenger is unaware of its own surroundings or of the activities around it while in the trance. It is defenseless both physically and mentally (always fails any saving throw) while in the trance." />
         </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Eagle’s Splendor"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 2,'classDomain':'BARD',
+        'level': 2,'classDomain':'CLERIC',
+        'level': 2,'classDomain':'PALADIN',
+        'level': 2,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL_DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="Creature touched"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="WILL_NEGATES_HARMLESS"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        The transmuted creature becomes more poised, articulate, and personally forceful. The spell grants a +4 enhancement bonus to Charisma, adding the usual benefits to Charisma-based skill checks and other uses of the Charisma modifier. Sorcerers and bards (and other spellcasters who rely on Charisma) affected by this spell do not gain any additional bonus spells for the increased Charisma, but the save DCs for spells they cast while under this spell’s effect do increase.
+
+Arcane Material Component
+A few feathers or a pinch of droppings from an eagle.
+        "/>
+    </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Eagle’s Splendor, Mass"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 6,'classDomain':'BARD',
+        'level': 6,'classDomain':'CLERIC',
+        'level': 6,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL_DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One creature/level, no two of which can be more than 30 ft. apart"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="WILL_NEGATES_HARMLESS"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        This spell functions like eagle’s splendor, except that it affects multiple creatures.
+        "/>
+    </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Earthquake"/>
+        <column name="school" value="['EVOCATION','EARTH']"/>
+        <column name="level" value="[{
+        'level': 8,'classDomain':'CLERIC',
+        'level': 8,'classDomain':'DESTRUCTION',
+        'level': 8,'classDomain':'DRUID',
+        'level': 7,'classDomain':'EARTH'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="LONG"/>
+        <column name="area" value="80-ft.-radius spread (S)"/>
+        <column name="duration" value="ONE_ROUND"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        When you cast earthquake, an intense but highly localized tremor rips the ground. The shock knocks creatures down, collapses structures, opens cracks in the ground, and more. The effect lasts for 1 round, during which time creatures on the ground can’t move or attack. A spellcaster on the ground must make a Concentration check (DC 20 + spell level) or lose any spell he or she tries to cast. The earthquake affects all terrain, vegetation, structures, and creatures in the area. The specific effect of an earthquake spell depends on the nature of the terrain where it is cast.
+
+Cave, Cavern, or Tunnel
+The spell collapses the roof, dealing 8d6 points of bludgeoning damage to any creature caught under the cave-in (Reflex DC 15 half) and pinning that creature beneath the rubble (see below). An earthquake cast on the roof of a very large cavern could also endanger those outside the actual area but below the falling debris.
+
+Cliffs
+Earthquake causes a cliff to crumble, creating a landslide that travels horizontally as far as it fell vertically. Any creature in the path takes 8d6 points of bludgeoning damage (Reflex DC 15 half) and is pinned beneath the rubble (see below).
+
+Open Ground
+Each creature standing in the area must make a DC 15 Reflex save or fall down. Fissures open in the earth, and every creature on the ground has a 25% chance to fall into one (Reflex DC 20 to avoid a fissure). At the end of the spell, all fissures grind shut, killing any creatures still trapped within.
+
+Structure
+Any structure standing on open ground takes 100 points of damage, enough to collapse a typical wooden or masonry building, but not a structure built of stone or reinforced masonry. Hardness does not reduce this damage, nor is it halved as damage dealt to objects normally is. Any creature caught inside a collapsing structure takes 8d6 points of bludgeoning damage (Reflex DC 15 half) and is pinned beneath the rubble (see below).
+
+River, Lake, or Marsh
+Fissures open underneath the water, draining away the water from that area and forming muddy ground. Soggy marsh or swampland becomes quicksand for the duration of the spell, sucking down creatures and structures. Each creature in the area must make a DC 15 Reflex save or sink down in the mud and quicksand. At the end of the spell, the rest of the body of water rushes in to replace the drained water, possibly drowning those caught in the mud.
+
+Pinned beneath Rubble
+Any creature pinned beneath rubble takes 1d6 points of nonlethal damage per minute while pinned. If a pinned character falls unconscious, he or she must make a DC 15 Constitution check or take 1d6 points of lethal damage each minute thereafter until freed or dead.
+        "/>
+    </insert>
+
+
+    <insert tableName="spells">
+        <column name="name" value="Elemental Swarm"/>
+        <column name="school" value="['CONJURATION','SUMMONING']"/>
+        <column name="level" value="[{
+        'level': 9,'classDomain':'AIR',
+        'level': 9,'classDomain':'DRUID',
+        'level': 9,'classDomain':'EARTH',
+        'level': 9,'classDomain':'FIRE',
+        'level': 9,'classDomain':'WATER'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="TEN_MINUTES"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="effect" value="Two or more summoned creatures, no two of which can be more than 30 ft. apart"/>
+        <column name="duration" value="TEN_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        This spell opens a portal to an Elemental Plane and summons elementals from it. A druid can choose the plane (Air, Earth, Fire, or Water); a cleric opens a portal to the plane matching his domain.
+
+When the spell is complete, 2d4 Large elementals appear. Ten minutes later, 1d4 Huge elementals appear. Ten minutes after that, one greater elemental appears. Each elemental has maximum hit points per HD. Once these creatures appear, they serve you for the duration of the spell.
+
+The elementals obey you explicitly and never attack you, even if someone else manages to gain control over them. You do not need to concentrate to maintain control over the elementals. You can dismiss them singly or in groups at any time.
+
+When you use a summoning spell to summon an air, earth, fire, or water creature, it is a spell of that type.
+        "/>
+    </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Endure Elements"/>
+        <column name="school" value="['ABJURATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'CLERIC',
+        'level': 1,'classDomain':'DRUID',
+        'level': 1,'classDomain':'PALADIN',
+        'level': 1,'classDomain':'RANGER',
+        'level': 1,'classDomain':'SORCERER_WIZARD',
+        'level': 1,'classDomain':'SUN'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="duration" value="TWENTYFOUR_HOURS"/>
+        <column name="saving_throw" value="WILL_NEGATES_HARMLESS"/>
+        <column name="spell_resistance" value="YES_HARMLESS"/>
+        <column name="descriptive_text" value="
+        A creature protected by endure elements suffers no harm from being in a hot or cold environment. It can exist comfortably in conditions between -50 and 140 degrees Fahrenheit without having to make Fortitude saves). The creature’s equipment is likewise protected.
+
+Endure elements doesn’t provide any protection from fire or cold damage, nor does it protect against other environmental hazards such as smoke, lack of air, and so forth.
+        "/>
+    </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Energy Drain"/>
+        <column name="school" value="['NECROMANCY']"/>
+        <column name="level" value="[{
+        'level': 9,'classDomain':'CLERIC',
+        'level': 9,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="effect" value="Ray of negative energy"/>
+        <column name="duration" value="INSTANTANEOUS"/>
+        <column name="saving_throw" value="FORTITUDE_PARTIAL"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        This spell functions like enervation, except that the creature struck gains 2d4 negative levels, and the negative levels last longer.
+
+There is no saving throw to avoid gaining the negative levels, but 24 hours after gaining them, the subject must make a Fortitude saving throw (DC = energy drain spell’s save DC) for each negative level. If the save succeeds, that negative level is removed. If it fails, the negative level also goes away, but one of the subject’s character levels is permanently drained.
+
+An undead creature struck by the ray gains 2d4×5 temporary hit points for 1 hour.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Enervation"/>
+        <column name="school" value="['NECROMANCY']"/>
+        <column name="level" value="[{
+        'level': 4,'classDomain':'CLERIC',
+        'level': 4,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="effect" value="Ray of negative energy"/>
+        <column name="duration" value="INSTANTANEOUS"/>
+        <column name="saving_throw" value="NONE"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        You point your finger and utter the incantation, releasing a black ray of crackling negative energy that suppresses the life force of any living creature it strikes. You must make a ranged touch attack to hit. If the attack succeeds, the subject gains 1d4 negative levels.
+
+If the subject has at least as many negative levels as HD, it dies. Each negative level gives a creature a -1 penalty on attack rolls, saving throws, skill checks, ability checks, and effective level (for determining the power, duration, DC, and other details of spells or special abilities).
+
+Additionally, a spellcaster loses one spell or spell slot from his or her highest available level. Negative levels stack.
+
+Assuming the subject survives, it regains lost levels after a number of hours equal to your caster level (maximum 15 hours). Usually, negative levels have a chance of permanently draining the victim’s levels, but the negative levels from enervation don’t last long enough to do so.
+
+An undead creature struck by the ray gains 1d4×5 temporary hit points for 1 hour.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Enlarge Person"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'SORCERER_WIZARD',
+        'level': 1,'classDomain':'STRENGTH'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL']"/>
+        <column name="casting_time" value="ONE_ROUND"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One humanoid creature"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="FORTITUDE_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        This spell causes instant growth of a humanoid creature, doubling its height and multiplying its weight by 8. This increase changes the creature’s size category to the next larger one. The target gains a +2 size bonus to Strength, a -2 size penalty to Dexterity (to a minimum of 1), and a -1 penalty on attack rolls and AC due to its increased size.
+
+A humanoid creature whose size increases to Large has a space of 10 feet and a natural reach of 10 feet. This spell does not change the target’s speed.
+
+If insufficient room is available for the desired growth, the creature attains the maximum possible size and may make a Strength check (using its increased Strength) to burst any enclosures in the process. If it fails, it is constrained without harm by the materials enclosing it— the spell cannot be used to crush a creature by increasing its size.
+
+All equipment worn or carried by a creature is similarly enlarged by the spell. Melee and projectile weapons affected by this spell deal more damage. Other magical properties are not affected by this spell. Any enlarged item that leaves an enlarged creature’s possession (including a projectile or thrown weapon) instantly returns to its normal size. This means that thrown weapons deal their normal damage, and projectiles deal damage based on the size of the weapon that fired them. Magical properties of enlarged items are not increased by this spell.
+
+Multiple magical effects that increase size do not stack,.
+
+Enlarge person counters and dispels reduce person.
+
+Enlarge person can be made permanent with a permanency spell.
+
+Material Component
+A pinch of powdered iron.
+        "/>
+    </insert>
+        
+    <insert tableName="spells">
+        <column name="name" value="Enlarge Person, Mass"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 4,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','MATERIAL']"/>
+        <column name="casting_time" value="ONE_ROUND"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One humanoid creature/level, no two of which can be more than 30 ft. apart"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="FORTITUDE_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        This spell functions like enlarge person, except that it affects multiple creatures.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Entangle"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'DRUID',
+        'level': 1,'classDomain':'PLANT',
+        'level': 1,'classDomain':'RANGER'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC','DIVINE_FOCUS']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="LONG"/>
+        <column name="area" value="Plants in a 40-ft.-radius spread"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="saving_throw" value="REFLEX_PARTIAL"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        Grasses, weeds, bushes, and even trees wrap, twist, and entwine about creatures in the area or those that enter the area, holding them fast and causing them to become entangled. The creature can break free and move half its normal speed by using a full-round action to make a DC 20 Strength check or a DC 20 Escape Artist check. A creature that succeeds on a Reflex save is not entangled but can still move at only half speed through the area. Each round on your turn, the plants once again attempt to entangle all creatures that have avoided or escaped entanglement.
+
+Note: The effects of the spell may be altered somewhat, based on the nature of the entangling plants.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Enthrall"/>
+        <column name="school" value="['ENCHANTMENT','CHARM','LANGUAGE_DEPENDENT','MIND_AFFECTING','SONIC']"/>
+        <column name="level" value="[{
+        'level': 2,'classDomain':'BARD',
+        'level': 2,'classDomain':'CLERIC'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_ROUND"/>
+        <column name="range" value="MEDIUM"/>
+        <column name="target" value="Any number of creatures"/>
+        <column name="duration" value="ONE_HOUR"/>
+        <column name="saving_throw" value="WILL_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        If you have the attention of a group of creatures, you can use this spell to hold them spellbound. To cast the spell, you must speak or sing without interruption for 1 full round. Thereafter, those affected give you their undivided attention, ignoring their surroundings. They are considered to have an attitude of friendly while under the effect of the spell. Any potentially affected creature of a race or religion unfriendly to yours gets a +4 bonus on the saving throw.
+
+A creature with 4 or more HD or with a Wisdom score of 16 or higher remains aware of its surroundings and has an attitude of indifferent. It gains a new saving throw if it witnesses actions that it opposes.
+
+The effect lasts as long as you speak or sing, to a maximum of 1 hour. Those enthralled by your words take no action while you speak or sing and for 1d3 rounds thereafter while they discuss the topic or performance. Those entering the area during the performance must also successfully save or become enthralled. The speech ends (but the 1d3-round delay still applies) if you lose concentration or do anything other than speak or sing.
+
+If those not enthralled have unfriendly or hostile attitudes toward you, they can collectively make a Charisma check to try to end the spell by jeering and heckling. For this check, use the Charisma bonus of the creature with the highest Charisma in the group; others may make Charisma checks to assist. The heckling ends the spell if this check result beats your Charisma check result. Only one such challenge is allowed per use of the spell.
+
+If any member of the audience is attacked or subjected to some other overtly hostile act, the spell ends and the previously enthralled members become immediately unfriendly toward you. Each creature with 4 or more HD or with a Wisdom score of 16 or higher becomes hostile.
+        "/>
+    </insert>
+
+    <insert tableName="spells">
+        <column name="name" value="Entropic Shield"/>
+        <column name="school" value="['ABJURATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'CLERIC',
+        'level': 1,'classDomain':'LUCK'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="PERSONAL"/>
+        <column name="target" value="You"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="descriptive_text" value="
+        A magical field appears around you, glowing with a chaotic blast of multicolored hues. This field deflects incoming arrows, rays, and other ranged attacks. Each ranged attack directed at you for which the attacker must make an attack roll has a 20% miss chance (similar to the effects of concealment). Other attacks that simply work at a distance are not affected.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Erase"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'CLERIC',
+        'level': 1,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One scroll or two pages"/>
+        <column name="duration" value="INSTANTANEOUS"/>
+        <column name="spell_resistance" value="NO"/>
+        <column name="descriptive_text" value="
+        Erase removes writings of either magical or mundane nature from a scroll or from one or two pages of paper, parchment, or similar surfaces. With this spell, you can remove explosive runes, a glyph of warding, a sepia snake sigil, or an arcane mark, but not illusory script or a symbol spell. Nonmagical writing is automatically erased if you touch it and no one else is holding it. Otherwise, the chance of erasing nonmagical writing is 90%.
+
+Magic writing must be touched to be erased, and you also must succeed on a caster level check (1d20 + caster level) against DC 15. (A natural 1 or 2 is always a failure on this check.) If you fail to erase explosive runes, a glyph of warding, or a sepia snake sigil, you accidentally activate that writing instead.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Ethereal Jaunt"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 7,'classDomain':'CLERIC',
+        'level': 7,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="PERSONAL"/>
+        <column name="target" value="You"/>
+        <column name="duration" value="ONE_ROUND_LEVEL"/>
+        <column name="descriptive_text" value="
+        You become ethereal, along with your equipment. For the duration of the spell, you are in a place called the Ethereal Plane, which overlaps the normal, physical, Material Plane. When the spell expires, you return to material existence.
+
+An ethereal creature is invisible, insubstantial, and capable of moving in any direction, even up or down, albeit at half normal speed. As an insubstantial creature, you can move through solid objects, including living creatures. An ethereal creature can see and hear on the Material Plane, but everything looks gray and ephemeral. Sight and hearing onto the Material Plane are limited to 60 feet.
+
+Force effects and abjurations affect an ethereal creature normally. Their effects extend onto the Ethereal Plane from the Material Plane, but not vice versa. An ethereal creature can’t attack material creatures, and spells you cast while ethereal affect only other ethereal things. Certain material creatures or objects have attacks or effects that work on the Ethereal Plane.
+
+Treat other ethereal creatures and ethereal objects as if they were material.
+
+If you end the spell and become material while inside a material object (such as a solid wall), you are shunted off to the nearest open space and take 1d6 points of damage per 5 feet that you so travel.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Etherealness"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 9,'classDomain':'CLERIC',
+        'level': 9,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="PERSONAL"/>
+        <column name="target" value="You"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="descriptive_text" value="
+        This spell functions like ethereal jaunt, except that you and other willing creatures joined by linked hands (along with their equipment) become ethereal. Besides yourself, you can bring one creature per three caster levels to the Ethereal Plane. Once ethereal, the subjects need not stay together.
+
+When the spell expires, all affected creatures on the Ethereal Plane return to material existence.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Expeditious Retreat"/>
+        <column name="school" value="['TRANSMUTATION']"/>
+        <column name="level" value="[{
+        'level': 1,'classDomain':'BARD',
+        'level': 1,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="PERSONAL"/>
+        <column name="target" value="You"/>
+        <column name="duration" value="ONE_MINUTE_PER_LEVEL"/>
+        <column name="descriptive_text" value="
+        This spell increases your base land speed by 30 feet. (This adjustment is treated as an enhancement bonus.) There is no effect on other modes of movement, such as burrow, climb, fly, or swim. As with any effect that increases your speed, this spell affects your jumping distance (see the Jump skill).
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Explosive Runes"/>
+        <column name="school" value="['ABJURATION','FORCE']"/>
+        <column name="level" value="[{
+        'level': 3,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="TOUCH"/>
+        <column name="target" value="One touched object weighing no more than 10 lb."/>
+        <column name="duration" value="PERMANENT_DISCHARGED"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        You trace these mystic runes upon a book, map, scroll, or similar object bearing written information. The runes detonate when read, dealing 6d6 points of force damage. Anyone next to the runes (close enough to read them) takes the full damage with no saving throw; any other creature within 10 feet of the runes is entitled to a Reflex save for half damage. The object on which the runes were written also takes full damage (no saving throw).
+
+You and any characters you specifically instruct can read the protected writing without triggering the runes. Likewise, you can remove the runes whenever desired. Another creature can remove them with a successful dispel magic or erase spell, but attempting to dispel or erase the runes and failing to do so triggers the explosion.
+
+Note: Magic traps such as explosive runes are hard to detect and disable. A rogue (only) can use the Search skill to find the runes and Disable Device to thwart them. The DC in each case is 25 + spell level, or 28 for explosive runes.
+        "/>
+    </insert>
+    <insert tableName="spells">
+        <column name="name" value="Eyebite"/>
+        <column name="school" value="['NECROMANCY','EVIL']"/>
+        <column name="level" value="[{
+        'level': 6,'classDomain':'BARD',
+        'level': 6,'classDomain':'SORCERER_WIZARD'
+        }]"/>
+        <column name="components" value="['VERBAL','SOMATIC']"/>
+        <column name="casting_time" value="ONE_STANDARD_ACTION"/>
+        <column name="range" value="CLOSE"/>
+        <column name="target" value="One living creature"/>
+        <column name="duration" value="ONE_ROUND_THREE_LEVEL"/>
+        <column name="saving_throw" value="FORTITUDE_NEGATES"/>
+        <column name="spell_resistance" value="YES"/>
+        <column name="descriptive_text" value="
+        Each round, you may target a single living creature, striking it with waves of evil power. Depending on the target’s HD, this attack has as many as three effects.
+
+HD	Effect
+10 or more	Sickened
+5-9	Panicked, sickened
+4 or less	Comatose, panicked, sickened
+The effects are cumulative and concurrent.
+
+Sickened
+Sudden pain and fever sweeps over the subject’s body. A sickened creature takes a -2 penalty on attack rolls, weapon damage rolls, saving throws, skill checks, and ability checks. A creature affected by this spell remains sickened for 10 minutes per caster level. The effects cannot be negated by a remove disease or heal spell, but a remove curse is effective.
+
+Panicked
+The subject becomes panicked for 1d4 rounds. Even after the panic ends, the creature remains shaken for 10 minutes per caster level, and it automatically becomes panicked again if it comes within sight of you during that time. This is a fear effect.
+
+Comatose
+The subject falls into a catatonic coma for 10 minutes per caster level. During this time, it cannot be awakened by any means short of dispelling the effect. This is not a sleep effect, and thus elves are not immune to it.
+
+The spell lasts for 1 round per three caster levels. You must spend a move action each round after the first to target a foe.
+        "/>
+    </insert>
         <!--
     <insert tableName="spells">
         <column name="name" value=""/>
         <column name="school" value="['']"/>
-        <column name="level" value="[{'level': ,'classDomain':' ','level': ,'classDomain':' '}]"/>
+        <column name="level" value="[{
+        'level': ,'classDomain':'',
+        'level': ,'classDomain':''
+        }]"/>
         <column name="components" value="['VERBAL','SOMATIC','MATERIAL','FOCUS']"/>
         <column name="casting_time" value=""/>
         <column name="range" value=""/>

@@ -5,6 +5,7 @@ import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ClassPcLevel } from "../../ClassPc/Interface/ClassPcLevel";
 import { Feat } from "../../Feats/Interface/FeatInterface";
 import { Item, SpecialAttacks } from "../../interfaces";
+import { SpecialAbilities } from "../../Race/Interfaces";
 import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
@@ -12,7 +13,7 @@ import { Speed } from "../../Speed/interface";
 export type Prerequisite = {
     abilitys?: Abilitys;
     feats?: Feat[];
-    featType?: string[]; 
+    featType?: string[];
     caster?: [];
     bab?: Number;
     attackRoll?: AttackRoll;
@@ -21,6 +22,7 @@ export type Prerequisite = {
     speed?: Speed;
     savingThrow?: SavingThrow;
     specialAttacks?: SpecialAttacks;
+    specialAbilities?: SpecialAbilities[];
     skillStudy?: PrerequisiteSkills[]
     armorClass?: ArmorClass;
     armorType?: string;

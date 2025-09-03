@@ -48,7 +48,7 @@ export const TitlePage: React.FC = () => {
     >
       <h1>
         <div className="rpgui-icon sword" />
-        {"3.Oscar"}
+        {"D&D 3.Oscar"}
         <div className="rpgui-icon shield" />
       </h1>
     </div>

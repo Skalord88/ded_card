@@ -13,6 +13,9 @@
             <column name="modifiers_id" type="bigint">
                 <constraints nullable="true" />
             </column>
+            <column name="race_type_id" type="int">
+                <constraints nullable="true" />
+            </column>
             <column name="avatar_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>

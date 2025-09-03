@@ -23,6 +23,9 @@
       <column name="modifiers_id" type="bigint">
         <constraints nullable="true" />
       </column>
+      <column name="race_type_id" type="int">
+        <constraints nullable="true" />
+      </column>
       <column name="level_adjustment" type="int">
         <constraints nullable="true" />
       </column>

@@ -40,7 +40,7 @@ public class ClassCharacter implements Serializable {
   int id;
 
   @Enumerated(EnumType.STRING)
-  TypeEnum classType;
+  ClassTypeEnum classType;
 
   @Enumerated(EnumType.STRING)
   EnumClass name;

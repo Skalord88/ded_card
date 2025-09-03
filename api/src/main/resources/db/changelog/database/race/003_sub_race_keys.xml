@@ -22,5 +22,11 @@
       constraintName="fk_sub_race_prerequisite"
       referencedTableName="prerequisite"
       referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="sub_race"
+      baseColumnNames="race_type_id"
+      constraintName="fk_sub_race_race_type"
+      referencedTableName="race_type"
+      referencedColumnNames="id" />
   </changeSet>
 </databaseChangeLog>

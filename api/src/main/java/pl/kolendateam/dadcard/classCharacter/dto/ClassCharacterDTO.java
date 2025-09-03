@@ -3,8 +3,8 @@ package pl.kolendateam.dadcard.classCharacter.dto;
 import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.classCharacter.entity.ClassTypeEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
-import pl.kolendateam.dadcard.classCharacter.entity.TypeEnum;
 import pl.kolendateam.dadcard.feats.MapperFeats;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
@@ -19,7 +19,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 public class ClassCharacterDTO {
 
   public int id;
-  public TypeEnum classType;
+  public ClassTypeEnum classType;
   public EnumClass className;
   public String avatarUrl;
   public byte hitDice;

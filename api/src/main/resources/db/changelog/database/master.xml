@@ -19,6 +19,7 @@
     <include file="prerequisite/001_prerequisite_create.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/001_prerequisite_skill_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_race_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_race_type_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_region_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_size_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_sub_race_create.xml" relativeToChangelogFile="true"/>
@@ -50,7 +51,9 @@
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
     <include file="attacks/003_attacks_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_archetype_keys.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/003_inventory_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_character_keys.xml" relativeToChangelogFile="true"/>
+    <include file="class/003_class_pc_character_card_keys.xml" relativeToChangelogFile="true"/>
     <include file="enchanteditems/003_enchanted_items_keys.xml" relativeToChangelogFile="true"/>
     <include file="enchantment/003_enchantment_keys.xml" relativeToChangelogFile="true"/>
     <include file="feats/003_class_feat_keys.xml" relativeToChangelogFile="true"/>
@@ -61,6 +64,8 @@
     <include file="prerequisite/003_prerequisite_feat_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_items_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_special_abilities_keys.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/003_prerequisite_school_keys.xml" relativeToChangelogFile="true"/>
+    <include file="prerequisite/003_prerequisite_skill_study_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_race_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_size_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_sub_race_keys.xml" relativeToChangelogFile="true"/>
@@ -92,7 +97,9 @@
     <include file="prerequisite/004_prerequisite_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_race_class_character_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_race_type_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_region_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_size_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_size_insert.xml" relativeToChangelogFile="true"/>
@@ -137,9 +144,9 @@
     <include file="race/005_prerequisite_skill_study_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_special_abilities_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
-    <include file="race/005_race_modifiers_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_race_type_race_modifiers_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_race_region_insert.xml" relativeToChangelogFile="true"/>
-    <include file="race/005_race_size_modifiers_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_race_type_race_size_modifiers_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_size_modifiers_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_class_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_class_study_insert.xml" relativeToChangelogFile="true"/>

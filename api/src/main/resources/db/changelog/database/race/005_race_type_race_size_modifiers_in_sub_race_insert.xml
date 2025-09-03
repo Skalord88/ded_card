@@ -1,7 +1,7 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
-    <changeSet id="005_race_size_modifiers_in_sub_race_insert" author="oscar">
+    <changeSet id="005_race_type_race_size_modifiers_in_sub_race_insert" author="oscar">
 
         <update tableName="sub_race">
             <!-- Dwarf -->
@@ -311,6 +311,7 @@
             <column name="race_id" value="7" />
             <column name="size_id"
                 value="5" />
+            <column name="race_type_id" value="1200" />
             <column name="modifiers_id" value="150701" />
         <where>id = 701</where>
         </update>

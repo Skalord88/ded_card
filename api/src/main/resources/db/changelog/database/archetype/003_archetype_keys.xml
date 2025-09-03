@@ -4,13 +4,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="003_archetype_keys" author="oscar">
-        <!-- archetype -->
         <addForeignKeyConstraint
             baseTableName="archetype"
             baseColumnNames="modifiers_id"
             referencedTableName="prerequisite"
             referencedColumnNames="id"
             constraintName="fk_archetype_modifiers" />
-        <!-- archetype -->
-        </changeSet>
+        <addForeignKeyConstraint
+            baseTableName="archetype"
+            baseColumnNames="race_type_id"
+            constraintName="fk_archetype_race_type"
+            referencedTableName="race_type"
+            referencedColumnNames="id" />
+    </changeSet>
 </databaseChangeLog>

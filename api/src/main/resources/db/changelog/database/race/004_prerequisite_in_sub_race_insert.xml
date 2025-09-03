@@ -59,7 +59,7 @@
             <!-- Savage Dwarf -->
             <column name="text" value="Savage Dwarf modifiers" />
             <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+                value="{ &quot;target&quot; :
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
             <column name="saving_throw"
@@ -73,7 +73,7 @@
                     &quot;bonus&quot; : 4
                     } ] }" />
             <column name="attack_roll"
-                value="{ &quot;target&quot; : 
+                value="{ &quot;target&quot; :
                 [ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ] ,
                 &quot;bonus&quot; : 1 }" />
         </insert>
@@ -187,6 +187,7 @@
             <column name="id" value="150501" />
             <!-- Strongheart Halfling -->
             <column name="text" value="Strongheart Halfling races modifiers" />
+            <column name="feat_type" value="[&quot;ALL&quot;]" />
         </insert>
 
         <insert tableName="prerequisite">

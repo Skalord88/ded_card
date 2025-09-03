@@ -102,6 +102,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="100006" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="feat_type" value="[&quot;ALL&quot;]" />
             <column name="text" value="Human races modifiers" />
         </insert>
         <!-- Human modif -->
