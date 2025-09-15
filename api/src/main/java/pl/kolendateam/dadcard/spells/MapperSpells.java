@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
+import pl.kolendateam.dadcard.spells.dto.SpellLevelDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.School;
@@ -15,6 +16,14 @@ import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 public class MapperSpells {
+
+  public static SpellLevelDTO[] toSpellLevelDTOs(SpellLevel[] spellLevels) {
+    SpellLevelDTO[] spellLevelDTOs = new SpellLevelDTO[spellLevels.length];
+    for (int i = 0; i < spellLevels.length; i++) {
+      spellLevelDTOs[i] = new SpellLevelDTO(spellLevels[i]);
+    }
+    return spellLevelDTOs;
+  }
 
   public static ArrayList<SpellsDTO> toSpellsDTO(List<Spells> spellsList) {
     ArrayList<SpellsDTO> spellsDTOList = new ArrayList<>();
@@ -42,26 +51,26 @@ public class MapperSpells {
     return levelSpellArray;
   }
 
-  public static List<SpellsDTO> toClassSpellsDTO(
-    List<Spells> spellsList,
-    SpellsEnum className
-  ) {
-    ArrayList<SpellsDTO> spellsDTOList = new ArrayList<>();
-    for (Spells spell : spellsList) {
-      SpellLevel[] listLevels = MapperSpellsInLevel.toSpellLevelArray(
-        spell.getLevel()
-      );
+  // public static List<SpellsDTO> toClassSpellsDTO(
+  //   List<Spells> spellsList,
+  //   SpellsEnum className
+  // ) {
+  //   ArrayList<SpellsDTO> spellsDTOList = new ArrayList<>();
+  //   for (Spells spell : spellsList) {
+  //     SpellLevel[] listLevels = MapperSpellsInLevel.toSpellLevelArray(
+  //       spell.getLevel()
+  //     );
 
-      for (SpellLevel sp : listLevels) {
-        if (sp.getClassDomain() == className) {
-          SpellsDTO spellDTO = new SpellsDTO(spell);
-          spellsDTOList.add(spellDTO);
-        }
-      }
-    }
+  //     for (SpellLevel sp : listLevels) {
+  //       if (sp.getClassDomain() == className) {
+  //         SpellsDTO spellDTO = new SpellsDTO(spell);
+  //         spellsDTOList.add(spellDTO);
+  //       }
+  //     }
+  //   }
 
-    return spellsDTOList;
-  }
+  //   return spellsDTOList;
+  // }
 
   public static BookDTO toBookDTO(Book book) {
     return new BookDTO(book);

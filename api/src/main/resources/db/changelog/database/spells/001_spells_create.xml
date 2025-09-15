@@ -14,7 +14,13 @@
             <column name="school" type="varchar(400)">
                 <constraints nullable="true"/>
             </column>
-            <column name="level" type="varchar(400)">
+            <column name="subschool" type="varchar(400)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="descriptor" type="varchar(400)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="level" type="json">
                 <constraints nullable="true"/>
             </column>
             <column name="components" type="varchar(255)">
@@ -26,15 +32,18 @@
             <column name="range" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="area" type="varchar(255)">
+            <column name="target_effect_area" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
-            <column name="effect" type="varchar(255)">
+            <!-- <column name="area" type="varchar(255)">
                 <constraints nullable="true"/>
-            </column>
-            <column name="target" type="varchar(255)">
+            </column> -->
+            <!-- <column name="effect" type="varchar(255)">
                 <constraints nullable="true"/>
-            </column>
+            </column> -->
+            <!-- <column name="target" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column> -->
             <column name="duration" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
@@ -45,6 +54,15 @@
                 <constraints nullable="true"/>
             </column>
             <column name="descriptive_text" type="varchar(10000)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="material_component" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="focus" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="xp_cost" type="varchar(255)">
                 <constraints nullable="true"/>
             </column>
         </createTable>

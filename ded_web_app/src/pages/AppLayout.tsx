@@ -71,7 +71,7 @@ export const PageLayoutBody: React.FC<React.PropsWithChildren<{}>> = ({
       style={{
         gridArea: "body",
         minWidth: "480px",
-        maxWidth: "1200px",
+        maxWidth: "1200px"
       }}
       className="rpgui-container-framed"
     >

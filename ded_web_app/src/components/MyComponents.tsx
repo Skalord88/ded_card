@@ -96,7 +96,7 @@ export const MagicKnown: React.FC<SpellsList> = ({
         <>
           {list.map((spell, index) => (
             <div key={index}>
-              {spell.level?.map((domain) => (
+              {/* {spell.level?.map((domain) => (
                 <>
                   {domain.level === lvSpell &&
                   domain.classDomain === SpellsFilter(pgClass) ? (
@@ -108,13 +108,11 @@ export const MagicKnown: React.FC<SpellsList> = ({
                     <></>
                   )}
                 </>
-              ))}
+              ))} */}
             </div>
           ))}
         </>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </>
   );
 };
@@ -129,7 +127,7 @@ export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
           </div>
           <div>
             {book.spells.map((book) => (
-              <>---{book.toString()}---</>
+              <div>---{book.toString()}---</div>
             ))}
           </div>
         </div>

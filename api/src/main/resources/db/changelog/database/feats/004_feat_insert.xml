@@ -1717,7 +1717,7 @@
       <column name="feat_name" value="Chaotic, Evil, Good, and Lawful Spells" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
-        value="A cleric can,t cast spells of an alignment opposed to his own or his deity,s (if he has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptors in their spell descriptions.
+        value="A cleric can,t cast spells of an alignment opposed to his own or his deity,s (if he has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptor in their spell descriptions.
         " />
       <column name="normal" value="null" />
       <column name="special" value="null" />
@@ -1774,7 +1774,7 @@
       <column name="feat_name" value="Chaotic, Evil, Good, and Lawful Spells" />
       <column name="feat_type" value="[&quot;CLASS&quot;]" />
       <column name="benefit"
-        value="A druid can,t cast spells of an alignment opposed to her own or her deity,s (if she has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptors in their spell descriptions.
+        value="A druid can,t cast spells of an alignment opposed to her own or her deity,s (if she has one). Spells associated with particular alignments are indicated by the chaos, evil, good, and law descriptor in their spell descriptions.
           " />
       <column name="normal" value="null" />
       <column name="special" value="null" />

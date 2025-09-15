@@ -376,10 +376,15 @@ export type SpellLevel = {
 export type Spell = {
   id: number,
   name: string,
-  school: string[],
-  level: SpellLevel[] | null,
-  components: string[] | null,
+  school: string | null,
+  subschool: string | null,
+  descriptor: string | null,
+  // level: SpellLevel[] | null,
+  level: string | null,
+  // components: string[] | null,
+  components: string | null,
   castingTime: string | null,
+  targetEffectArea: string | null,
   range: string | null,
   target: string | null,
   area: string | null,
@@ -388,6 +393,10 @@ export type Spell = {
   savingThrow: string | null,
   spellResistance: string | null,
   descriptiveText: string | null
+  materialComponent: string | null
+  focus: string | null
+  xpCost: string | null
+  // school: string[],
 }
 
 export type SpellsList = {
