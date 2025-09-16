@@ -4,7 +4,7 @@ import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
 
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
-import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, subRaces, Weapon, WonderousItem } from "./interfaces";
+import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, subRaces, Weapon, WonderousItem } from "./interfaces";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { Race, SubRace } from "./Race/Interfaces";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
@@ -365,6 +365,13 @@ export function SortedBooks(
     books: Book[]
 ): Book[] {
     return books.sort((a, b) => a.caster.localeCompare(b.caster));
+}
+export function SortedSpells(
+    spells: Spell[],
+    caster: string
+): Spell[] {
+    return (spells.filter(s => s.level?.some(lv => lv.classDomain === caster))
+        .sort((a, b) => a.name.localeCompare(b.name)));
 }
 
 export interface itemInDrop {

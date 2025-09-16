@@ -609,7 +609,8 @@ Two or more antimagic fields sharing any of the same space have no effect on eac
         <insert tableName="spells">
             <column name="name" value="Arcane Mark" />
             <column name="school" value="[&quot;UNIVERSAL&quot;]" />
-            <column name="level" value="[{&quot;level&quot;:0,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}]" />
+            <column name="level"
+                value="[{&quot;level&quot;:0,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}]" />
             <column name="components" value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;]" />
             <column name="casting_time" value="ONE_STANDARD_ACTION" />
             <column name="range" value="ZERO_FT" />
@@ -14389,7 +14390,8 @@ Despite its appearance, a wall of thorns is not actually a living plant, and thu
         <insert tableName="spells">
             <column name="name" value="Warp Wood" />
             <column name="school" value="[&quot;TRANSMUTATION&quot;]" />
-            <column name="level" value="{&quot;DRUID&quot;: 2}" />
+            <column name="level"
+                value="[{&quot;level&quot; : 2, &quot;classDomain&quot;: &quot;DRUID&quot;}]" />
             <column name="components" value="['V', 'S']" />
             <column name="casting_time" value="1 standard action" />
             <column name="range" value="Close (25 ft. + 5 ft./2 levels)" />
@@ -14405,7 +14407,12 @@ Despite its appearance, a wall of thorns is not actually a living plant, and thu
             <column name="name" value="Water Breathing" />
             <column name="school" value="[&quot;TRANSMUTATION&quot;]" />
             <column name="level"
-                value="{&quot;CLERIC&quot;: 3, &quot;DRUID&quot;: 3, &quot;SORCERER_WIZARD&quot;: 3, &quot;WATER&quot;: 3}" />
+                value="[
+                {&quot;level&quot; : 3, &quot;classDomain&quot;:&quot;CLERIC&quot;},
+                {&quot;level&quot; : 3, &quot;classDomain&quot;:&quot;DRUID&quot;},
+                {&quot;level&quot; : 3, &quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;},
+                {&quot;level&quot; : 3, &quot;classDomain&quot;:&quot;WATER&quot;}
+                ]" />
             <column name="components" value="['V', 'S', 'M/DF']" />
             <column name="casting_time" value="1 standard action" />
             <column name="range" value="Touch" />

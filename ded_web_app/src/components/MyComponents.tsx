@@ -117,21 +117,4 @@ export const MagicKnown: React.FC<SpellsList> = ({
   );
 };
 
-export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
-  return (
-    <div className="container-table-nine">
-      {SortedBooks(books).map((book, index) => (
-        <div key={index}>
-          <div>
-            {book.caster} level.{book.level}
-          </div>
-          <div>
-            {book.spells.map((book) => (
-              <div>---{book.toString()}---</div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+

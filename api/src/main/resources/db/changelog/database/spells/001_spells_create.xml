@@ -20,7 +20,7 @@
             <column name="descriptor" type="varchar(400)">
                 <constraints nullable="true"/>
             </column>
-            <column name="level" type="json">
+            <column name="level" type="jsonb">
                 <constraints nullable="true"/>
             </column>
             <column name="components" type="varchar(255)">

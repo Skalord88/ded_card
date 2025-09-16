@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.spells.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,7 @@ import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 @AllArgsConstructor
 @Getter
 @Setter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Spells implements Serializable {
 
   @Id
