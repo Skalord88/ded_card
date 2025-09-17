@@ -380,8 +380,6 @@ export type Spell = {
   subschool: string | null,
   descriptor: string | null,
   level: SpellLevel[] | null,
-  // level: string | null,
-  // components: string[] | null,
   components: string | null,
   castingTime: string | null,
   targetEffectArea: string | null,
@@ -396,7 +394,6 @@ export type Spell = {
   materialComponent: string | null
   focus: string | null
   xpCost: string | null
-  // school: string[],
 }
 
 export type SpellsList = {

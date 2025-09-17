@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.feats.dto;
+package pl.kolendateam.dadcard.modifier.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

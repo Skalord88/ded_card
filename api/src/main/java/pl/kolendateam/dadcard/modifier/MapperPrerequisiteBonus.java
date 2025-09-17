@@ -1,9 +1,9 @@
-package pl.kolendateam.dadcard.feats;
+package pl.kolendateam.dadcard.modifier;
 
 import java.util.ArrayList;
 import java.util.List;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
 import pl.kolendateam.dadcard.race.entity.Speed;
 
@@ -27,17 +27,7 @@ public class MapperPrerequisiteBonus {
     return listOfBonusDTO;
   }
 
-  public static SpeedDTO toSpeedDTO(Speed speed) {
-    if (speed == null) return null;
-    return new SpeedDTO(speed);
-  }
-
   public static Prerequisite toPrerequisite(PrerequisiteDTO preDTO) {
     return new Prerequisite(preDTO);
-  }
-
-  public static Speed toSpeed(SpeedDTO speed) {
-    if (speed == null) return null;
-    return new Speed(speed);
   }
 }

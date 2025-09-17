@@ -13,10 +13,10 @@ import jakarta.persistence.OneToOne;
 import java.util.Set;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 
 @Entity

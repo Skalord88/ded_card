@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.size.entity.Size;
 
 @Entity

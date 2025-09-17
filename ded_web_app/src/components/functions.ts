@@ -361,18 +361,7 @@ export function AllSpell(
     return num;
 }
 
-export function SortedBooks(
-    books: Book[]
-): Book[] {
-    return books.sort((a, b) => a.caster.localeCompare(b.caster));
-}
-export function SortedSpells(
-    spells: Spell[],
-    caster: string
-): Spell[] {
-    return (spells.filter(s => s.level?.some(lv => lv.classDomain === caster))
-        .sort((a, b) => a.name.localeCompare(b.name)));
-}
+
 
 export interface itemInDrop {
     name: string

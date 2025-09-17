@@ -3,10 +3,10 @@ package pl.kolendateam.dadcard.items.wondrous_items.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.wondrous_items.entity.WondrousItems;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 
 @NoArgsConstructor
 public class WondrousItemsDTO implements Serializable {

@@ -16,6 +16,7 @@ import lombok.Setter;
 import lombok.ToString;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.feats.dto.FeatPcDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 
 @NoArgsConstructor
 @AllArgsConstructor

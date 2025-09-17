@@ -1,8 +1,8 @@
 package pl.kolendateam.dadcard.size.dto;
 
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.size.entity.Size;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 

@@ -10,10 +10,10 @@ import java.util.stream.Collectors;
 import pl.kolendateam.dadcard.feats.dto.ClassFeatDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatDTO;
 import pl.kolendateam.dadcard.feats.dto.FeatPcDTO;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.feats.entity.ClassFeat;
 import pl.kolendateam.dadcard.feats.entity.Feat;
 import pl.kolendateam.dadcard.feats.entity.FeatPc;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 
 public class MapperFeats {
 

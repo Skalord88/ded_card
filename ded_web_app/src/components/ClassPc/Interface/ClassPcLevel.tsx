@@ -8,17 +8,9 @@ export type ClassPcLevel = {
 }
 
 export type ClassPc = {
-    // id: number;
-    // classType: number;
-    // className: string;
     level: number;
     firstClass: boolean;
     classCharacter: ClassCharacter;
-    // hitDice: number;
-    // classBab: number;
-    // savingThrow: string;
-    // skillPoints: number;
-    // feats: ClassFeats[];
   }
 
   export type SpellsInLevel = {
@@ -46,5 +38,6 @@ export type ClassCharacter = {
   classFeats: ClassFeats[];
   spellsPerDay?: SpellsTable;
   spellsKnown?: SpellsTable;
-  spellBonus: string
+  spellBonus?: string
+  spellsDomain?: string;
 }

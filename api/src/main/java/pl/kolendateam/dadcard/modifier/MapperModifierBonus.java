@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.race.dto.SpeedDTO;
+import pl.kolendateam.dadcard.race.entity.Speed;
 
 public class MapperModifierBonus {
 
@@ -36,5 +38,15 @@ public class MapperModifierBonus {
       });
     }
     return listOfModifier;
+  }
+
+  public static SpeedDTO toSpeedDTO(Speed speed) {
+    if (speed == null) return null;
+    return new SpeedDTO(speed);
+  }
+
+  public static Speed toSpeed(SpeedDTO speed) {
+    if (speed == null) return null;
+    return new Speed(speed);
   }
 }

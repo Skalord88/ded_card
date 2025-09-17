@@ -9,8 +9,6 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
@@ -20,6 +18,8 @@ import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNameEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponNumericEnum;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @AllArgsConstructor

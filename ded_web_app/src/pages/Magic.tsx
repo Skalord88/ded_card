@@ -10,29 +10,35 @@ import { urlChar, urlSpellsList } from "../components/url";
 import { useParams } from "react-router-dom";
 import {} from "../components/variables";
 import { MagicKnown } from "../components/MyComponents";
-import { AllSpell, SortedBooks, SortedSpells } from "../components/functions";
+import { AllSpell } from "../components/functions";
 import { PageLayout } from "./AppLayout";
 import { Popup } from "../components/Popup/Popup";
+import { ClassPc } from "../components/ClassPc/Interface/ClassPcLevel";
+import {
+  FilterSpellsByLevelAndClass,
+  FilterSpellsByPgClass,
+  SpellsByLevelAndClass
+} from "../components/Magic/Functions";
 
 export function Magic() {
   const { charId } = useParams();
   const [char, setChar] = useState<CharacterPc>();
   const [spellsList, setSpellsList] = useState<Spell[]>();
   const [booksChar, setBookChar] = useState<Book[]>([]);
+  const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
-        setChar(resURL.data);
+        const charDB: CharacterPc = resURL.data;
+        setChar(charDB);
 
         const resSpells = await axios.get(urlSpellsList);
-        setSpellsList(resSpells.data);
+        const allSpells: Spell[] = resSpells.data;
+        setSpellsList(allSpells);
 
         setBookChar(resURL.data.books);
-
-        // console.log(resSpells.data);
-        // console.log(resURL.data.books);
       } catch (error) {
         console.log(error);
       }
@@ -41,10 +47,25 @@ export function Magic() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (char) {
+      const spellMap: SpellsByLevelAndClass[] = FilterSpellsByLevelAndClass(
+        spellsList || []
+      );
+
+      const spellPcMap: SpellsByLevelAndClass[] = FilterSpellsByPgClass(
+        spellMap,
+        char
+      );
+      console.log(spellPcMap);
+      setSpellsPgList(spellPcMap);
+    }
+  }, [char, spellsList]);
+
   const UpdateBooks = (s: Spell) => {
     for (const book of booksChar) {
       for (const level of s.level || []) {
-        if (level.level === book.level && level.level === book.level) {
+        if (level.level === book.level) {
           book.spells.push(s);
           break;
         }
@@ -56,20 +77,43 @@ export function Magic() {
   return (
     <PageLayout title={"Magic"}>
       <div>
-      {spellsList?.filter(s =>
-        booksChar.some(b =>
-          s.level?.some(i => i.classDomain === b.caster)
-        )
-      ).map((s, index) => (
-        <div key={index}><Popup text={s.name} popText={s.descriptiveText || ""} /></div>
-      ))}
-      {char ? <CharacterBooks books={booksChar} /> : null}
+        {spellsPgList && <CharacterSpells spells={spellsPgList} />}
+        {char && <CharacterBooks books={booksChar} />}
       </div>
     </PageLayout>
   );
 }
+export type SpellsByLevelAndClassProps = {
+  spells: SpellsByLevelAndClass[];
+};
+export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
+  spells
+}) => {
+  return (
+    <div>
+      {spells
+        ? spells.map((s, index) => (
+            <div key={index}>
+              <p>
+                {s.level + "lv "}
+                {s.class}
+              </p>
+              {s.spells.map((sp, ind) => (
+                <li key={ind}>{sp.name}</li>
+              ))}
+            </div>
+          ))
+        : null}
+    </div>
+  );
+};
 
 export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
+  function SortedBooks(books: Book[]) {
+    // Example: sort books by level ascending
+    return [...books].sort((a, b) => a.level - b.level);
+  }
+
   return (
     <div className="container-table-nine">
       {SortedBooks(books).map((book, index) => (
@@ -80,7 +124,8 @@ export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
           <div>
             {book.spells.map((bk, indexBook) => (
               <span key={indexBook}>
-                {bk.name}{indexBook < books.length ? ", " : ""}
+                {bk.name}
+                {indexBook < books.length ? ", " : ""}
               </span>
             ))}
           </div>

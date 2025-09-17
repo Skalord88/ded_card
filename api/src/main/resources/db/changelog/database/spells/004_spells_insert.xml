@@ -7621,8 +7621,7 @@ Greater magic fang can be made permanent with a permanency spell.
             <column name="school" value="[&quot;NECROMANCY&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;: 5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;: 5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;: 5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -7661,8 +7660,7 @@ A gem or crystal worth at least 100 gp.
             <column name="school" value="[&quot;EVOCATION&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;: 1,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;: 1,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;: 1,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;]" />
             <column name="casting_time" value="ONE_STANDARD_ACTION" />
@@ -7686,9 +7684,7 @@ For every two caster levels beyond 1st, you gain an additional missile—two at 
             <column name="school" value="[&quot;ILLUSION&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;: 1,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;: 2,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;: 2,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;: 2,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -7907,8 +7903,7 @@ Like the effect of bestow curse, a mark of justice cannot be dispelled, but it c
             <column name="school" value="['CONJURATION_TELEPORTATION']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;: 8,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;: 8,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;: 8,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;]" />
             <column name="casting_time" value="ONE_STANDARD_ACTION" />
@@ -10720,8 +10715,7 @@ If insufficient room is available, you grow as much as possible and may attempt 
             <column name="school" value="[&quot;TRANSMUTATION&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -11001,8 +10995,7 @@ Focusing divine power like a ray of the sun, you project a blast of light from y
             <column name="subschool" value="[&quot;SUMMONING&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;FOCUS&quot;]" />
@@ -11030,8 +11023,7 @@ Living things in the chest eat, sleep, and age normally, and they die if they ru
             <column name="level"
                 value="[
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -11057,8 +11049,7 @@ A comprehend languages spell alone cannot reveal a secret page’s contents. You
             <column name="level"
                 value="[
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;,&quot;FOCUS&quot;]" />
@@ -11090,8 +11081,7 @@ The secure shelter contains rude furnishings —eight bunks, a trestle table, ei
             <column name="level"
                 value="[
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -11119,8 +11109,7 @@ See invisibility can be made permanent with a permanency spell.
             <column name="level"
                 value="[
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
@@ -11143,8 +11132,7 @@ Unwilling targets can negate the spell’s effect on them by making Will saves o
             <column name="level"
                 value="[
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,'MATERIAL_OR_DIVINE_FOCUS']" />
@@ -11169,8 +11157,7 @@ Arcane Material Component: A short piece of fine copper wire.
             <column name="level"
                 value="[
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -11202,8 +11189,7 @@ Material Component: 500 gp worth of powdered amber, a scale from any snake, and 
             <column name="school" value="[&quot;ABJURATION&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components"
                 value="[&quot;VERBAL&quot;,&quot;SOMATIC&quot;,&quot;MATERIAL&quot;]" />
@@ -11228,8 +11214,7 @@ Material Component: A basilisk eyelash, gum arabic, and a dram of whitewash.
             <column name="school" value="['ILLUSION_SHADOW']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="[]" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11248,8 +11233,7 @@ This spell functions like shadow conjuration, except that it mimics sorcerer and
             <column name="school" value="['ILLUSION_SHADOW']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;},
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;},
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;BARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
@@ -11283,8 +11267,7 @@ Objects automatically succeed on their Will saves against this spell.
             <column name="school" value="['ILLUSION_SHADOW']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11303,8 +11286,7 @@ This spell functions like shadow conjuration, except that it can duplicate any s
             <column name="school" value="['ILLUSION_SHADOW']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;},
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;},
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;BARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
@@ -11330,8 +11312,7 @@ Objects automatically succeed on their Will saves against this spell.
             <column name="school" value="['ILLUSION_SHADOW']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11351,8 +11332,7 @@ This spell functions like shadow evocation, except that it enables you to create
             <column name="level"
                 value="[
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11583,8 +11563,7 @@ The weapon deals damage as if it were two size categories larger. These effects 
             <column name="school" value="[&quot;EVOCATION&quot;,&quot;ELECTRICITY&quot;]" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V','S']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11605,8 +11584,7 @@ Your successful melee touch attack deals 1d6 points of electricity damage per ca
             <column name="level"
                 value="[
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11629,8 +11607,7 @@ A shout spell cannot penetrate a silence spell.
             <column name="level"
                 value="[
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="components" value="['V','S','F']" />
             <column name="casting_time" value="STANDARD_ACTION" />
@@ -11652,8 +11629,7 @@ Arcane Focus: A small metal or ivory horn.
             <column name="components" value="['V','S']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="STANDARD_ACTION" />
             <column name="range" value="TOUCH" />
@@ -11697,8 +11673,7 @@ Upon casting this spell, complete silence prevails in the affected area. All sou
             <column name="level"
                 value="[
         {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;BARD&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="STANDARD_ACTION" />
             <column name="range" value="LONG_400_FEET_PLUS_40_FEET_PER_LEVEL" />
@@ -11719,8 +11694,7 @@ This spell creates the visual illusion of an object, creature, or force as visua
             <column name="components" value="['V','S','M','XP']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="12_HOURS" />
             <column name="range" value="0_FT" />
@@ -11876,8 +11850,7 @@ This spell softens all natural, undressed earth or stone in the area. Wet earth 
             <column name="components" value="['V','S','M']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="CLOSE_25FT_PLUS_5FT_PER_2_LEVELS" />
@@ -12033,8 +12006,7 @@ The spell doesn’t make plant creatures any more friendly or cooperative than n
             <column name="components" value="['V','S']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="MEDIUM_100_FT_PLUS_10_FT_PER_LEVEL" />
@@ -12283,8 +12255,7 @@ Law – Longsword
             <column name="components" value="['V','S','M']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_ROUND" />
             <column name="range" value="TOUCH" />
@@ -12308,8 +12279,7 @@ While the spell lasts, the subject may return to normal form, act, and revert to
             <column name="components" value="['V','S','M']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="MEDIUM" />
@@ -12333,8 +12303,7 @@ Creates a fog bank similar to fog cloud, but nauseating. Living creatures inside
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;CLERIC&quot;},
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;DRUID&quot;},
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;EARTH&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="TOUCH" />
@@ -12359,8 +12328,7 @@ You can reshape existing stone into any form you desire. Crude coffers, doors, o
                 value="[
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;DRUID&quot;},
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;EARTH&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;},
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;},
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;STRENGTH&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
@@ -12406,8 +12374,7 @@ They provide complete descriptions when asked, though their perspective and perc
             <column name="components" value="['V','S','M']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="STANDARD_ACTION" />
             <column name="range" value="MEDIUM" />
@@ -12535,8 +12502,7 @@ This spell summons one handheld musical instrument of your choice. The instrumen
                 value="[
         {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12563,8 +12529,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
                 value="[
         {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:2,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12591,8 +12556,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
                 value="[
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:3,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12620,8 +12584,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
                 value="[
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:4,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12649,8 +12612,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
                 value="[
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12678,8 +12640,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
                 value="[
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;BARD&quot;},
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12706,8 +12667,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
             <column name="level"
                 value="[
         {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -12738,8 +12698,7 @@ A summoned monster cannot summon or otherwise conjure another creature, nor can 
         {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;EVIL&quot;},
         {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;GOOD&quot;},
         {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;LAW&quot;},
-        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:9,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="ONE_ROUND" />
             <column name="range" value="CLOSE_25_FEET_PLUS_5_FEET_PER_2_LEVELS" />
@@ -13710,8 +13669,7 @@ Only *limited wish*, *wish*, *miracle*, or similar magic can restore an object t
             <column name="level"
                 value="[
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;DRUID&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="MEDIUM" />
@@ -13764,8 +13722,7 @@ You can enter any normal plant (Medium or larger) and instantly pass to another 
             <column name="components" value="['V','S','M','F']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:8,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION_OR_AS_DESCRIBED" />
             <column name="range" value="CLOSE (25 FT. + 5 FT./2 LEVELS)" />
@@ -13857,8 +13814,7 @@ Material Component: A sprinkle of holy water and diamonds worth at least 25,000 
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;CLERIC&quot;},
         {&quot;level&quot;:7,&quot;classDomain&quot;:&quot;DRUID&quot;},
         {&quot;level&quot;:5,&quot;classDomain&quot;:&quot;KNOWLEDGE&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="TOUCH" />
@@ -13885,8 +13841,7 @@ Material Component: An ointment for the eyes costing 250 gp, made from mushroom 
             <column name="components" value="['V','F']" />
             <column name="level"
                 value="[
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:1,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="PERSONAL" />
@@ -13912,8 +13867,7 @@ Focus: A small wooden replica of an archery target.
             <column name="level"
                 value="[
         {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;CLERIC&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER&quot;},
-        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;WIZARD&quot;}
+        {&quot;level&quot;:6,&quot;classDomain&quot;:&quot;SORCERER_WIZARD&quot;}
     ]" />
             <column name="casting_time" value="1_STANDARD_ACTION" />
             <column name="range" value="SEE_TEXT" />

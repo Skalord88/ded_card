@@ -6,8 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.FeatPc;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 
 @NoArgsConstructor
 @AllArgsConstructor

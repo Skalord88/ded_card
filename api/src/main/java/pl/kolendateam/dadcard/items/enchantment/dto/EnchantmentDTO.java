@@ -3,11 +3,11 @@ package pl.kolendateam.dadcard.items.enchantment.dto;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.ItemAbilityEnum;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 
 @AllArgsConstructor
 @NoArgsConstructor

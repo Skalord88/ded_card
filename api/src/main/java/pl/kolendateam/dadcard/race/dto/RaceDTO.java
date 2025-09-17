@@ -1,8 +1,8 @@
 package pl.kolendateam.dadcard.race.dto;
 
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.entity.Race;
 

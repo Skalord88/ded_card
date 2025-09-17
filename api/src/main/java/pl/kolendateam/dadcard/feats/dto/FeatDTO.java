@@ -3,9 +3,10 @@ package pl.kolendateam.dadcard.feats.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.Feat;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
+import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 
 @Getter
 @NoArgsConstructor

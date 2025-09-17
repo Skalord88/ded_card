@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.feats.dto;
+package pl.kolendateam.dadcard.modifier.dto;
 
 import java.util.List;
 import java.util.Set;
@@ -18,15 +18,14 @@ import pl.kolendateam.dadcard.attack.dto.DamageBonusDTO;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
-import pl.kolendateam.dadcard.modifier.dto.SpecialAbilitiesDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
 import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
@@ -90,7 +89,7 @@ public class PrerequisiteDTO {
         : null;
     this.speed =
       pre.getSpeed() != null
-        ? MapperPrerequisiteBonus.toSpeedDTO(pre.getSpeed())
+        ? MapperModifierBonus.toSpeedDTO(pre.getSpeed())
         : null;
     this.savingThrow =
       pre.getSavingThrow() != null

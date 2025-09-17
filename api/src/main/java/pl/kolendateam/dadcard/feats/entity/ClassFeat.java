@@ -15,6 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 
 @AllArgsConstructor
 @Getter

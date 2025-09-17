@@ -14,9 +14,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
 
 @Getter

@@ -10,11 +10,11 @@ import jakarta.persistence.OneToOne;
 import java.util.ArrayList;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.size.entity.SizeEnum;
 
 @Entity

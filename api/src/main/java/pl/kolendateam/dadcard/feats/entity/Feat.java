@@ -15,7 +15,8 @@ import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.feats.dto.FeatDTO;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 
 @NoArgsConstructor
 @Getter

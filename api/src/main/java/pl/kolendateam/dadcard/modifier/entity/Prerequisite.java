@@ -1,4 +1,4 @@
-package pl.kolendateam.dadcard.feats.entity;
+package pl.kolendateam.dadcard.modifier.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.CascadeType;
@@ -34,16 +34,17 @@ import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 import pl.kolendateam.dadcard.attack.entity.SpecialAttacks;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeats;
-import pl.kolendateam.dadcard.feats.MapperPrerequisiteBonus;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteDTO;
-import pl.kolendateam.dadcard.feats.dto.PrerequisiteFeatsDTO;
+import pl.kolendateam.dadcard.feats.entity.Feat;
+import pl.kolendateam.dadcard.feats.entity.FeatsTypeEnum;
 import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
+import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
-import pl.kolendateam.dadcard.modifier.entity.SpecialAbilities;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
+import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.race.entity.Speed;
 import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
 import pl.kolendateam.dadcard.savingThrow.entity.SavingThrow;
@@ -180,9 +181,7 @@ public class Prerequisite implements Serializable {
         : null;
     this.initiative = preDTO.initiative != null ? preDTO.initiative : null;
     this.speed =
-      preDTO.speed != null
-        ? MapperPrerequisiteBonus.toSpeed(preDTO.speed)
-        : null;
+      preDTO.speed != null ? MapperModifierBonus.toSpeed(preDTO.speed) : null;
     this.savingThrow =
       preDTO.savingThrow != null
         ? MapperSavingThrow.toSavingThrow(preDTO.savingThrow)

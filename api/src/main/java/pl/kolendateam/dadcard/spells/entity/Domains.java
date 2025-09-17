@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.feats.entity.Prerequisite;
 import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 
 @Entity
 @AllArgsConstructor
