@@ -1,7 +1,9 @@
 package pl.kolendateam.dadcard.items;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
@@ -99,6 +101,20 @@ public class MapperItemsDTO {
       item == null || !(item.getItem() instanceof Weapons)
     ) return new WeaponsDTO();
     return new WeaponsDTO(item);
+  }
+
+  public static Set<WeaponsDTO> toWeaponDTOSet(Set<EnchantedItems> items) {
+    Set<WeaponsDTO> weaponsDTOSet = new HashSet<>();
+    if (items == null) {
+      return new HashSet<>();
+    } else {
+      items.forEach(i -> {
+        if (i != null) {
+          weaponsDTOSet.add(new WeaponsDTO(i));
+        }
+      });
+    }
+    return weaponsDTOSet;
   }
 
   public static EnchantedItemsDTO toEnchantedItemsDTO(EnchantedItems item) {

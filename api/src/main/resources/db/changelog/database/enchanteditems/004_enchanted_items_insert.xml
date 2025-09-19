@@ -728,5 +728,21 @@
       <!-- <column name="item_id" value="40" /> -->
     </insert>
 
+    <!-- deity weapons -->
+    <insert tableName="enchanted_items">
+      <column name="id" value="50024" />
+      <column name="name" value="A lightning bolt" />
+      <column name="enchantment_bonus" value="0" />
+      <!-- A lightning bolt -->
+      <!-- longspear -->
+    </insert>
+    <insert tableName="enchanted_items">
+      <column name="id" value="50025" />
+      <column name="name" value="A lightning bolt" />
+      <column name="enchantment_bonus" value="0" />
+      <!-- A lightning bolt -->
+      <!-- shortspear -->
+    </insert>
+
   </changeSet>
 </databaseChangeLog>

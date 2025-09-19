@@ -1,0 +1,50 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="003_deity_keys" author="oscar">
+    <addForeignKeyConstraint
+      baseTableName="deity_domain"
+      baseColumnNames="deity_id"
+      constraintName="fk_deity_domains_deity"
+      referencedTableName="deity"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="deity_domain"
+      baseColumnNames="domains_id"
+      constraintName="fk_deity_domains_domains"
+      referencedTableName="domains"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="deity"
+      baseColumnNames="alignment_id"
+      constraintName="fk_deity_alignment"
+      referencedTableName="alignment"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="worshiper_alignments"
+      baseColumnNames="deity_id"
+      constraintName="fk_deity_alignment_deity"
+      referencedTableName="deity"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="worshiper_alignments"
+      baseColumnNames="alignment_id"
+      constraintName="fk_deity_alignment_alignment"
+      referencedTableName="alignment"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="favored_weapons"
+      baseColumnNames="deity_id"
+      constraintName="fk_deity_enchanted_items_deity"
+      referencedTableName="deity"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="favored_weapons"
+      baseColumnNames="enchanted_items_id"
+      constraintName="fk_deity_enchanted_items_enchanted_items"
+      referencedTableName="enchanted_items"
+      referencedColumnNames="id" />
+  </changeSet>
+</databaseChangeLog>

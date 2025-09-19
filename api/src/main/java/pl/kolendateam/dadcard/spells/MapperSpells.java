@@ -4,18 +4,34 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
+import pl.kolendateam.dadcard.spells.dto.DomainSpellDTO;
+import pl.kolendateam.dadcard.spells.dto.DomainsDTO;
 import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellLevelDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
+import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
+import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 public class MapperSpells {
+
+  public static SpellsDTO toSpellsDTO(Spells spell) {
+    return new SpellsDTO(spell);
+  }
 
   public static SpellLevelDTO[] toSpellLevelDTOs(SpellLevel[] spellLevels) {
     SpellLevelDTO[] spellLevelDTOs = new SpellLevelDTO[spellLevels.length];
@@ -35,6 +51,16 @@ public class MapperSpells {
     return spellsDTOList;
   }
 
+  public static Set<SpellsDTO> toSpellsDTOSet(Set<Spells> spellsList) {
+    Set<SpellsDTO> spellsDTOList = new HashSet<>();
+    spellsList.forEach(s -> {
+      if (s != null) {
+        spellsDTOList.add(new SpellsDTO(s));
+      }
+    });
+    return spellsDTOList;
+  }
+
   public static SpellsEnum[] toSpellEnumArray(String enumSpell) {
     Gson gson = new Gson();
     Type enumSpellArrayJson = new TypeToken<SpellsEnum[]>() {}.getType();
@@ -49,6 +75,23 @@ public class MapperSpells {
     SpellLevel[] levelSpellArray = gson.fromJson(enumSpell, enumSpellArrayJson);
 
     return levelSpellArray;
+  }
+
+  public static Set<DomainsDTO> toDomainsDTOSet(
+    Set<Domains> domanins,
+    SpellsRepository spellsRepository
+  ) {
+    Set<DomainsDTO> domainsDTOSet = new HashSet<>();
+    if (domanins == null) {
+      return new HashSet<>();
+    } else {
+      domanins.forEach(d -> {
+        if (d != null) {
+          domainsDTOSet.add(new DomainsDTO(d, spellsRepository));
+        }
+      });
+    }
+    return domainsDTOSet;
   }
 
   // public static List<SpellsDTO> toClassSpellsDTO(
@@ -106,5 +149,39 @@ public class MapperSpells {
       });
     }
     return schools;
+  }
+
+  public static Set<DomainSpellDTO> toDomainSpellDTOSet(
+    Map<Integer, Integer> domainSpells,
+    SpellsRepository spellsRepository
+  ) {
+    Set<DomainSpellDTO> domainSpellDTOs = new HashSet<>();
+
+    if (domainSpells == null || domainSpells.isEmpty()) {
+      return domainSpellDTOs;
+    }
+
+    // Recupero tutte le spell in un'unica query
+    List<Spells> spells = spellsRepository.findByIdIn(
+      new ArrayList<>(domainSpells.values())
+    );
+
+    // Creo una mappa id -> spell per accesso rapido
+    Map<Integer, Spells> spellsMap = spells
+      .stream()
+      .collect(Collectors.toMap(Spells::getId, s -> s));
+
+    // Creo i DTO
+    for (Map.Entry<Integer, Integer> entry : domainSpells.entrySet()) {
+      Integer spellId = entry.getValue();
+      Integer domainLevel = entry.getKey();
+
+      Spells spell = spellsMap.get(spellId);
+      if (spell != null) {
+        domainSpellDTOs.add(new DomainSpellDTO(spell, domainLevel));
+      }
+    }
+
+    return domainSpellDTOs;
   }
 }

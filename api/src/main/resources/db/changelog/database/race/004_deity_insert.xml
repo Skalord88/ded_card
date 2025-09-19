@@ -1,0 +1,39 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_deity_insert" author="oscar">
+
+        <insert tableName="deity">
+            <column name="id" value="1" />
+            <column name="name" value="Azuth" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/9/9a/Azuth_p13.jpg/revision/latest/scale-to-width-down/250?cb=20080621101013" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="2" />
+            <column name="name" value="Bane" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/e/e0/Bane_p16.jpg/revision/latest/scale-to-width-down/250?cb=20080621151517" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="3" />
+            <column name="name" value="Chauntea" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/4/45/Chauntea_p19.jpg/revision/latest/scale-to-width-down/250?cb=20080621154730" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="4" />
+            <column name="name" value="Cyric" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/7/74/Cyric_p21.jpg/revision/latest/scale-to-width-down/250?cb=20080621160927" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="6" />
+            <column name="name" value="Eilistraee" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/b/b7/Eilistraee.jpg/revision/latest/scale-to-width-down/250?cb=20120725191635" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="24" />
+            <column name="name" value="Talos" />
+            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/7/78/Talos_p69.jpg/revision/latest/scale-to-width-down/250?cb=20080622071459" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

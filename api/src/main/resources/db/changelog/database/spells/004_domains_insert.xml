@@ -5,15 +5,17 @@
 
     <changeSet id="004_domains_insert" author="oscar">
         <insert tableName="domains">
-            <column name="domain" value="Destruction" />
+            <column name="id" value="1" />
+            <column name="domain" value="DESTRUCTION" />
+            <column name="domain_spells" value="{&quot;1&quot; : 248 , &quot;2&quot; : 100}" />
             <column name="granted_power"
                 value="You gain the smite power, the supernatural ability to make a single melee attack with a +4 attack bonus and a damage bonus equal to your cleric level (if you hit). You must declare the smite before making the attack. It is usable once per day." />
-            <column name="list_of_spells" value="[]" />
         </insert>
         <insert tableName="domains">
-            <column name="domain" value="Storm" />
+            <column name="id" value="2" />
+            <column name="domain" value="STORM" />
+            <column name="domain_spells" value="{&quot;1&quot; : 169 , &quot;2&quot; : 100}" />
             <column name="granted_power" value="You gain electricity resistance 5." />
-            <column name="list_of_spells" value="[]" />
         </insert>
     </changeSet>
 </databaseChangeLog>

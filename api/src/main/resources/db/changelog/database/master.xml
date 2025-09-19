@@ -18,6 +18,8 @@
     <include file="items/001_item_create.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/001_prerequisite_create.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/001_prerequisite_skill_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_alignment_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_deity_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_race_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_race_type_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_region_create.xml" relativeToChangelogFile="true"/>
@@ -42,10 +44,12 @@
     <include file="prerequisite/002_prerequisite_schools_relation.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/002_prerequisite_skill_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/002_prerequisite_special_abilities_relation.xml" relativeToChangelogFile="true"/>
+    <include file="race/002_deity_domain_alignment_weapon_relation.xml" relativeToChangelogFile="true"/>
     <include file="race/002_sub_race_region_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_skills_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="specialabilities/002_special_abilities_spells_relation.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="spells/002_domains_spells_relation.xml" relativeToChangelogFile="true"/> -->
     <include file="spells/002_spells_book_relation.xml" relativeToChangelogFile="true"/>
 
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
@@ -66,6 +70,7 @@
     <include file="prerequisite/003_prerequisite_special_abilities_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_school_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_skill_study_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_deity_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_race_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_size_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_sub_race_keys.xml" relativeToChangelogFile="true"/>
@@ -75,6 +80,7 @@
     <include file="skills/003_skill_in_study_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_skills_character_key.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_book_keys.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="spells/003_domains_keys.xml" relativeToChangelogFile="true"/> -->
     <include file="spells/003_spells_book_keys.xml" relativeToChangelogFile="true"/>
 
     <include file="archetype/004_archetype_insert.xml" relativeToChangelogFile="true"/>
@@ -95,6 +101,8 @@
     <include file="items/004_item_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_skill_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_alignment_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/004_deity_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_race_class_character_insert.xml" relativeToChangelogFile="true"/>
@@ -140,6 +148,8 @@
     <include file="prerequisite/005_prerequisite_feat_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/005_prerequisite_item_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/005_prerequisite_schools.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_deity_alignment_update.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_deity_domain_alignment_weapon_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_items_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
@@ -152,6 +162,7 @@
     <include file="skills/005_class_study_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_skills_character_update.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_book_in_character_update.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="spells/005_domains_spells_insert.xml" relativeToChangelogFile="true"/> -->
     <include file="spells/005_spells_book_insert.xml" relativeToChangelogFile="true"/>
     
 </databaseChangeLog>

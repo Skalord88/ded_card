@@ -3,20 +3,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="001_deity_create" author="oscar">
-        <createTable tableName="race">
+        <createTable tableName="deity">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" />
             </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="domains" type="jsonb">
+            <column name="alignment_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="alignment" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="opposing_alignment" type="varchar(255)">
+            <column name="avatar_url" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
         </createTable>

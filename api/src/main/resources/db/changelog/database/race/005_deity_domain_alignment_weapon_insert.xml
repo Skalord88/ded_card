@@ -1,0 +1,52 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_deity_domain_alignment_weapon_insert" author="oscar">
+
+        <insert tableName="deity_domain">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="domains_id" value="1" />
+            <!-- Destruction -->
+        </insert>
+        <insert tableName="deity_domain">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="domains_id" value="2" />
+            <!-- Storm -->
+        </insert>
+
+        <insert tableName="worshiper_alignments">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="alignment_id" value="6" />
+            <!-- CN -->
+        </insert>
+        <insert tableName="worshiper_alignments">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="alignment_id" value="8" />
+            <!-- NE -->
+        </insert>
+        <insert tableName="worshiper_alignments">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="alignment_id" value="9" />
+            <!-- CE -->
+        </insert>
+
+        <insert tableName="favored_weapons">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="enchanted_items_id" value="50024" />
+            <!-- A lightning bolt - longspear -->
+        </insert>
+        <insert tableName="favored_weapons">
+            <column name="deity_id" value="24" />
+            <!-- Talos -->
+            <column name="enchanted_items_id" value="50025" />
+            <!-- A lightning bolt - shortspear -->
+        </insert>
+        
+
+    </changeSet>
+</databaseChangeLog>

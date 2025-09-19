@@ -32,6 +32,12 @@ public class SpellsController {
   CharacterRepository characterRepository;
   ClassRepository classRepository;
 
+  public SpellsController() {}
+
+  public SpellsRepository getSpellsRepository() {
+    return spellsRepository;
+  }
+
   @Autowired
   public SpellsController(
     SpellsRepository spellsRepository,

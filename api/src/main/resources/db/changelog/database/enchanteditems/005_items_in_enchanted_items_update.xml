@@ -658,5 +658,19 @@
         </update>
         <!-- Special Weapons 20000 -->
 
+        <!-- deity weapons 50000 -->
+        <update tableName="enchanted_items">
+            <!-- A lightning bolt - longspear (Talos) -->
+        <column name="item_id" valueNumeric="15" />
+        <where>id =
+            50024</where>
+        </update>
+        <update tableName="enchanted_items">
+            <!-- A lightning bolt - shortspear (Talos) -->
+        <column name="item_id" valueNumeric="14" />
+        <where>id =
+            50025</where>
+        </update>
+
     </changeSet>
 </databaseChangeLog>

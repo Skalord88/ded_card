@@ -14,7 +14,7 @@
             <column name="granted_power" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="list_of_spells" type="json">
+            <column name="domain_spells" type="json">
                 <constraints nullable="true" />
             </column>
             <column name="modifiers" type="json">

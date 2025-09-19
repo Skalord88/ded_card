@@ -1,0 +1,34 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="002_deity_domain_alignment_weapon_relation" author="damian">
+        <createTable tableName="deity_domain">
+            <column name="deity_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="domains_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="worshiper_alignments">
+            <column name="deity_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="alignment_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="favored_weapons">
+            <column name="deity_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="enchanted_items_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
