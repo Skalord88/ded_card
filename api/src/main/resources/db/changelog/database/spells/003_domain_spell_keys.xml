@@ -5,14 +5,9 @@
 
     <changeSet id="003_domains_keys" author="oscar">
         <addForeignKeyConstraint baseTableName="domain_spell"
-            baseColumnNames="domains_id"
-            constraintName="fk_domain_spell_domains_domains"
-            referencedTableName="domains"
-            referencedColumnNames="id" />
-        <addForeignKeyConstraint baseTableName="domain_spell"
-            baseColumnNames="domain_spell_id"
-            constraintName="fk_domain_spell_domains_domain_spell"
-            referencedTableName="domain_spell"
+            baseColumnNames="spells_id"
+            constraintName="fk_domain_spell_spells"
+            referencedTableName="spells"
             referencedColumnNames="id" />
         </changeSet>
 </databaseChangeLog>

@@ -35,6 +35,9 @@
       <column name="treasure" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="deity_id" type="int">
+        <constraints nullable="true" />
+      </column>
     </createTable>
   </changeSet>
 </databaseChangeLog>

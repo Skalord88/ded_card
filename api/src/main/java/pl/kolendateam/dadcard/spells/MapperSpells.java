@@ -20,6 +20,7 @@ import pl.kolendateam.dadcard.spells.dto.SchoolDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellLevelDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
+import pl.kolendateam.dadcard.spells.entity.DomainSpell;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.School;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
@@ -88,6 +89,20 @@ public class MapperSpells {
       domanins.forEach(d -> {
         if (d != null) {
           domainsDTOSet.add(new DomainsDTO(d, spellsRepository));
+        }
+      });
+    }
+    return domainsDTOSet;
+  }
+
+  public static Set<DomainsDTO> toDomainsDTOSet(Set<Domains> domanins) {
+    Set<DomainsDTO> domainsDTOSet = new HashSet<>();
+    if (domanins == null) {
+      return new HashSet<>();
+    } else {
+      domanins.forEach(d -> {
+        if (d != null) {
+          domainsDTOSet.add(new DomainsDTO(d));
         }
       });
     }
@@ -181,6 +196,32 @@ public class MapperSpells {
         domainSpellDTOs.add(new DomainSpellDTO(spell, domainLevel));
       }
     }
+
+    return domainSpellDTOs;
+  }
+
+  public static DomainsDTO toDomainDTO(Domains domain) {
+    if (domain == null) {
+      return null;
+    } else {
+      return new DomainsDTO(domain);
+    }
+  }
+
+  public static Set<DomainSpellDTO> toDomainSpellDTOSet(
+    Set<DomainSpell> domainSpells
+  ) {
+    Set<DomainSpellDTO> domainSpellDTOs = new HashSet<>();
+
+    if (domainSpells == null || domainSpells.isEmpty()) {
+      return domainSpellDTOs;
+    }
+
+    domainSpells.forEach(ds -> {
+      if (ds != null) {
+        domainSpellDTOs.add(new DomainSpellDTO(ds));
+      }
+    });
 
     return domainSpellDTOs;
   }

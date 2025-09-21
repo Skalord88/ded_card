@@ -33,4 +33,12 @@ public class DeityDTO {
       MapperItemsDTO.toWeaponDTOSet(deity.getFavoredWeapons());
     this.avatarUrl = deity.getAvatarUrl();
   }
+
+  public DeityDTO(Deity deity) {
+    this.name = deity.getName();
+    this.alignment = MapperRaceToDTO.toAlignmentDTO(deity.getAlignment());
+    this.favoredWeapons =
+      MapperItemsDTO.toWeaponDTOSet(deity.getFavoredWeapons());
+    this.avatarUrl = deity.getAvatarUrl();
+  }
 }

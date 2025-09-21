@@ -19,11 +19,14 @@ import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
+import pl.kolendateam.dadcard.race.dto.DeityDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
+import pl.kolendateam.dadcard.spells.dto.DomainsDTO;
+import pl.kolendateam.dadcard.spells.entity.Domains;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -45,6 +48,8 @@ public class CharacterDTO implements Serializable {
   public ArrayList<BookDTO> books;
   public int experience;
   public int treasure;
+  public Set<DomainsDTO> domains;
+  public DeityDTO deity;
 
   public CharacterDTO(Character character) {
     this.id = character.getId();
@@ -88,5 +93,7 @@ public class CharacterDTO implements Serializable {
         : null;
     this.experience = character.getExperience();
     this.treasure = character.getTreasure();
+    this.domains = MapperSpells.toDomainsDTOSet(character.getDomains());
+    this.deity = MapperRaceToDTO.toDeityDTO(character.getDeity());
   }
 }

@@ -3,23 +3,19 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="001_domain_create" author="oscar">
-        <createTable tableName="domains">
+    <changeSet id="002_domains_spells_spells_relation" author="oscar">
+
+        <createTable tableName="domain_spells">
             <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" />
+                <constraints primaryKey="true"/>
             </column>
-            <column name="domain" type="varchar(255)">
+            <column name="spells_id" type="int">
                 <constraints nullable="true" />
             </column>
-            <column name="granted_power" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <!-- <column name="domain_spells" type="json">
-                <constraints nullable="true" />
-            </column> -->
-            <column name="modifiers" type="json">
+            <column name="level" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>
+
     </changeSet>
 </databaseChangeLog>

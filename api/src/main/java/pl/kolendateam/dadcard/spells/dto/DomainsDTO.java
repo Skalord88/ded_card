@@ -19,7 +19,13 @@ public class DomainsDTO {
     this.id = d.getId();
     this.domain = d.getDomain();
     this.grantedPower = d.getGrantedPower();
-    this.domainSpells =
-      MapperSpells.toDomainSpellDTOSet(d.getDomainSpells(), spellsRepository);
+    this.domainSpells = MapperSpells.toDomainSpellDTOSet(d.getDomainSpells());
+    // MapperSpells.toDomainSpellDTOSet(d.getDomainSpells(), spellsRepository);
+  }
+
+  public DomainsDTO(Domains d) {
+    this.id = d.getId();
+    this.domain = d.getDomain();
+    this.grantedPower = d.getGrantedPower();
   }
 }

@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-// @Entity
+@Entity
 @AllArgsConstructor
 public class DomainSpell {
 

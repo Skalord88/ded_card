@@ -81,4 +81,12 @@ public class MapperRaceToDTO {
     }
     return deitisDTOSet;
   }
+
+  public static DeityDTO toDeityDTO(Deity deity) {
+    if (deity == null) {
+      return null;
+    } else {
+      return new DeityDTO(deity);
+    }
+  }
 }

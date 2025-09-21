@@ -38,15 +38,15 @@ public class Domains implements Serializable {
 
   String grantedPower;
 
-  // @ManyToMany
-  // @JoinTable(
-  //   name = "domain_spells",
-  //   joinColumns = @JoinColumn(name = "domains_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "domain_spell_id")
-  // )
-  // Set<DomainSpell> domainSpells;
-  @JdbcTypeCode(SqlTypes.JSON)
-  Map<Integer, Integer> domainSpells;
+  @ManyToMany
+  @JoinTable(
+    name = "domain_spells",
+    joinColumns = @JoinColumn(name = "domains_id"),
+    inverseJoinColumns = @JoinColumn(name = "domain_spell_id")
+  )
+  Set<DomainSpell> domainSpells;
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // Map<Integer, Integer> domainSpells;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Set<ModifierBonus> modifiers;

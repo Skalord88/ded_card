@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -40,10 +41,12 @@ import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.entity.Archetype;
+import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.spells.entity.Book;
+import pl.kolendateam.dadcard.spells.entity.Domains;
 
 @NoArgsConstructor
 @Getter
@@ -113,6 +116,18 @@ public class Character implements Serializable {
 
   int experience;
   int treasure;
+
+  @ManyToOne
+  @JoinColumn(name = "deity_id", referencedColumnName = "id")
+  Deity deity;
+
+  @ManyToMany
+  @JoinTable(
+    name = "character_domains",
+    joinColumns = @JoinColumn(name = "character_card_id"),
+    inverseJoinColumns = @JoinColumn(name = "domains_id")
+  )
+  Set<Domains> domains = new HashSet<>();
 
   public Character(String characterName, String playerName) {
     this.characterName = characterName;

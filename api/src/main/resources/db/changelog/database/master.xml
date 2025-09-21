@@ -31,11 +31,13 @@
     <include file="specialabilities/001_special_abilities_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_book_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_domain_create.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_domains_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_school_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_table_create.xml" relativeToChangelogFile="true"/>
 
     <include file="charactercard/002_character_archetypes_relation.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/002_character_domains_relation.xml" relativeToChangelogFile="true"/>
     <include file="enchanteditems/002_enchanted_items_enchantment_relation.xml" relativeToChangelogFile="true"/>
     <include file="inventory/002_backpack_create.xml" relativeToChangelogFile="true"/>
     <include file="items/002_item_spells_relation.xml" relativeToChangelogFile="true"/>
@@ -49,12 +51,13 @@
     <include file="skills/002_class_skills_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="specialabilities/002_special_abilities_spells_relation.xml" relativeToChangelogFile="true"/>
-    <!-- <include file="spells/002_domains_spells_relation.xml" relativeToChangelogFile="true"/> -->
+    <include file="spells/002_domains_spells_relation.xml" relativeToChangelogFile="true"/>
     <include file="spells/002_spells_book_relation.xml" relativeToChangelogFile="true"/>
 
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
     <include file="attacks/003_attacks_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_archetype_keys.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/003_character_domains_keys.xml" relativeToChangelogFile="true"/>
     <include file="inventory/003_inventory_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_character_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_pc_character_card_keys.xml" relativeToChangelogFile="true"/>
@@ -80,7 +83,7 @@
     <include file="skills/003_skill_in_study_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_skills_character_key.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_book_keys.xml" relativeToChangelogFile="true"/>
-    <!-- <include file="spells/003_domains_keys.xml" relativeToChangelogFile="true"/> -->
+    <include file="spells/003_domains_keys.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_spells_book_keys.xml" relativeToChangelogFile="true"/>
 
     <include file="archetype/004_archetype_insert.xml" relativeToChangelogFile="true"/>
@@ -130,6 +133,7 @@
     <include file="charactercard/005_character_archetype_insert.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/005_character_card_attacks_update.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/005_character_card_inventory_update.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/005_character_deity_domains_insert.xml" relativeToChangelogFile="true"/>
     <include file="class/005_class_character_spells_known_update.xml" relativeToChangelogFile="true"/>
     <include file="class/005_class_character_spells_per_day_update.xml" relativeToChangelogFile="true"/>
     <include file="class/005_class_pc_insert.xml" relativeToChangelogFile="true"/>
@@ -162,7 +166,7 @@
     <include file="skills/005_class_study_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_skills_character_update.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_book_in_character_update.xml" relativeToChangelogFile="true"/>
-    <!-- <include file="spells/005_domains_spells_insert.xml" relativeToChangelogFile="true"/> -->
+    <include file="spells/005_domains_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_spells_book_insert.xml" relativeToChangelogFile="true"/>
-    
+
 </databaseChangeLog>
