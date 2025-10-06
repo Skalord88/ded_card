@@ -1,0 +1,21 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_domain_spell_update" author="oscar">
+
+        <update tableName="domain_spell">
+            <column name="spells_id" valueNumeric="100" />
+            <!-- Inflict Light Wounds -->
+        <where>id
+            = 1</where>
+            <!-- Destruction -->
+        </update>
+        <update tableName="domain_spell">
+            <column name="spells_id" valueNumeric="200" />
+            <!-- Entropic Shield -->
+        <where>id
+            = 2</where>
+            <!-- Storm -->
+        </update>
+    </changeSet>
+</databaseChangeLog>

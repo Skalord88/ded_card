@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.spells.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -11,8 +10,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -45,6 +42,7 @@ public class Domains implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "domain_spell_id")
   )
   Set<DomainSpell> domainSpells;
+
   // @JdbcTypeCode(SqlTypes.JSON)
   // Map<Integer, Integer> domainSpells;
 

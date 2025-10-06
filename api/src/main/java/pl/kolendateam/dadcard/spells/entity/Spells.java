@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.spells.MapperSpellsInLevel;
 
 @Entity
 @NoArgsConstructor

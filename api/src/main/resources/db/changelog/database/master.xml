@@ -31,7 +31,7 @@
     <include file="specialabilities/001_special_abilities_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_book_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_domain_create.xml" relativeToChangelogFile="true"/>
-    <include file="spells/001_domains_spells_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/001_domain_spell_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_school_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_table_create.xml" relativeToChangelogFile="true"/>
@@ -51,7 +51,7 @@
     <include file="skills/002_class_skills_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="specialabilities/002_special_abilities_spells_relation.xml" relativeToChangelogFile="true"/>
-    <include file="spells/002_domains_spells_relation.xml" relativeToChangelogFile="true"/>
+    <include file="spells/002_domain_spells_relation.xml" relativeToChangelogFile="true"/>
     <include file="spells/002_spells_book_relation.xml" relativeToChangelogFile="true"/>
 
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
@@ -83,6 +83,7 @@
     <include file="skills/003_skill_in_study_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_skills_character_key.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_book_keys.xml" relativeToChangelogFile="true"/>
+    <include file="spells/003_domain_spell_keys.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_domains_keys.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_spells_book_keys.xml" relativeToChangelogFile="true"/>
 
@@ -122,6 +123,7 @@
     <include file="specialabilities/004_special_abilities_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_book_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_domains_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/004_domain_spell_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_school_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_table_insert.xml" relativeToChangelogFile="true"/>
@@ -166,7 +168,8 @@
     <include file="skills/005_class_study_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_skills_character_update.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_book_in_character_update.xml" relativeToChangelogFile="true"/>
-    <include file="spells/005_domains_spells_insert.xml" relativeToChangelogFile="true"/>
+    <include file="spells/005_domain_spell_update.xml" relativeToChangelogFile="true"/>
+    <include file="spells/005_domain_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_spells_book_insert.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
