@@ -14,22 +14,21 @@ export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
   };
 
   return (
-    <>
-      <div
-        className="popup"
-        onMouseEnter={() => togglePopup(true)}
-        onMouseLeave={() => togglePopup(false)}
+    <div
+      className="popup"
+      onMouseEnter={() => togglePopup(true)}
+      onClick={() => togglePopup(false)}
+      onMouseLeave={() => togglePopup(false)}
+    >
+      <div className="rpgui-cursor-point">{text}</div>
+      <span
+        style={{ width: 400, overflowY: "scroll" }}
+        className={`popuptext rpgui-container-framed ${
+          showPopup ? "show" : ""
+        }`}
       >
-        <>{text}</>
-        <span
-          style={{ width: 400 }}
-          className={`popuptext rpgui-container-framed ${
-            showPopup ? "show" : ""
-          }`}
-        >
-          {popText}
-        </span>
-      </div>
-    </>
+        {popText}
+      </span>
+    </div>
   );
 };

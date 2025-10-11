@@ -365,7 +365,7 @@ export function AllSpell(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | Race | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | []
+    item: string | Feat | ClassCharacter | Race | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
@@ -467,6 +467,17 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
                 return {
                     name: o.name,
                     item: o as CharacterPc
+                }
+            }
+        )
+        return list
+    }
+    if (text === "spells") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Spell
                 }
             }
         )
