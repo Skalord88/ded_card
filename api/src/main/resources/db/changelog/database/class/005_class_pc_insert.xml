@@ -61,6 +61,7 @@
             <column name="first_class" value="false" />
             <column name="character_card_id" value="103" />
             <column name="class_character_id" value="17" />
+            <column name="base_class" value="3" />
         </insert>
         <!-- Andrzej -->
         <insert tableName="class_pc">
@@ -81,6 +82,7 @@
             <column name="first_class" value="true" />
             <column name="character_card_id" value="105" />
             <column name="class_character_id" value="14" />
+            <column name="base_class" value="11" />
         </insert>
         <!-- Mirek -->
         <insert tableName="class_pc">

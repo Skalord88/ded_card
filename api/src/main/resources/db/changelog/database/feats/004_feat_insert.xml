@@ -2822,7 +2822,6 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
 
     <!-- Stormlord -->
 
-
     <insert tableName="feat">
       <column name="id" value="11701" />
       <column name="feat_name" value="Resistance to Electricity (Ex)" />

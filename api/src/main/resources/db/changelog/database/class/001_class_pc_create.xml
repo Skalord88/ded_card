@@ -20,6 +20,9 @@
             <column name="class_character_id" type="INT">
                 <constraints nullable="true" />
             </column>
+            <column name="base_class" type="INT">
+                <constraints nullable="true" />
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

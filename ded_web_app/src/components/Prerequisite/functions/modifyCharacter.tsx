@@ -192,7 +192,7 @@ export const modifyCharacter = (
           {
             classe: cl.classCharacter.className,
             spells: addBonusSpells(
-              findAbility(char.abilitys, cl.classCharacter.spellBonus),
+              findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
               cl.classCharacter.spellsPerDay.spellsInLevel
                 .find((sp) => sp.level === cl.level)
                 ?.spells.map((s) => s) || []
@@ -211,7 +211,7 @@ export const modifyCharacter = (
           {
             classe: cl.classCharacter.className,
             spells: checkKnownSpells(
-              findAbility(char.abilitys, cl.classCharacter.spellBonus),
+              findAbility(char.abilitys, cl.classCharacter.spellBonus?? ""),
               cl.classCharacter.spellsKnown.spellsInLevel
                 .find((lv) => lv.level === cl.level)
                 ?.spells.map((s) => s) || []

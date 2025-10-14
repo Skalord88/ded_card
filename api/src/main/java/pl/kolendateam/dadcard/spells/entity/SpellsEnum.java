@@ -129,4 +129,7 @@ public enum SpellsEnum {
   WAR,
   STORM,
   CASTER_LEVEL,
+  CASTER,
+  ARCHANIST,
+  DIVINE,
 }

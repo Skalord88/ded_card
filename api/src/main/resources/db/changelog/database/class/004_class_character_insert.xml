@@ -231,6 +231,7 @@
       <column name="class_bab" value="0.75" />
       <column name="skill_points" value="2" />
       <column name="hit_dice" value="8" />
+      <column name="spells_domain" value="DIVINE" />
     </insert>
 
     <!-- <insert tableName="class_character">  

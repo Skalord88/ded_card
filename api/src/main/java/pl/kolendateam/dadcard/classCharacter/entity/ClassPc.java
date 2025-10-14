@@ -9,6 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,6 +19,7 @@ import pl.kolendateam.dadcard.characterCard.entity.Character;
 @Getter
 @NoArgsConstructor
 @Entity
+@AllArgsConstructor
 @Table(name = "class_pc")
 public class ClassPc implements Serializable {
 
@@ -35,6 +37,8 @@ public class ClassPc implements Serializable {
   @ManyToOne
   @JoinColumn(name = "character_card_id")
   Character character;
+
+  Integer baseClass;
 
   public ClassPc(int lv, boolean first, int classId, int charId) {
     this.level = lv;

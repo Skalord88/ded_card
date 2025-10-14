@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.classCharacter.dto;
 
 import java.util.Set;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassCharacter;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassTypeEnum;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
@@ -16,6 +17,7 @@ import pl.kolendateam.dadcard.spells.dto.SpellsTableDTO;
 import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @NoArgsConstructor
+@ToString
 public class ClassCharacterDTO {
 
   public int id;
