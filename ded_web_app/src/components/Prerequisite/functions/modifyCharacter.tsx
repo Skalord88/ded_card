@@ -9,6 +9,7 @@ import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { CountBabFromClassPc } from "../../Attack/Bab/Functions";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { AttackElement } from "../../Attack/function";
+import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
@@ -104,6 +105,7 @@ export type CharToModify = {
   speed: Speed;
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
+  magicClassLv?: { [classe: string]: number };
   spellsPerDay?: { classe: string; spells: number[] }[];
   spellsKnown?: { classe: string; spells: number[] }[];
   books: Book[];
@@ -154,6 +156,22 @@ export const addBonusSpells = (bnsAb: number, spells: number[]): number[] => {
   return [-3];
 };
 
+export const currentCasterLevelInClass = (
+  classi: ClassPc[]
+): { [classe: string]: number } => {
+  const casterLevel: { [classe: string]: number } = {};
+
+  classi.forEach((classe) => {
+    if (classe.baseClass){
+      const nomeClasseBase = classi.find(c => c.classCharacter.id === classe.baseClass)?.classCharacter.className;
+      if(nomeClasseBase)
+      casterLevel[nomeClasseBase] = classe.classCharacter.spellsPerDay?.spellsInLevel[classe.level - 1]?.level || 0;
+    }
+  });
+
+  return casterLevel;
+}
+
 export const checkKnownSpells = (bnsAb: number, spells: number[]): number[] => {
   if (canCastSpell(bnsAb)) {
     return spells.map((tb, index) => {
@@ -183,18 +201,23 @@ export const modifyCharacter = (
     (tot, cl) => tot + cl.level,
     0
   );
+
+  const classiMagiche:{ [classe: string]: number } = currentCasterLevelInClass(char.classPcList);
+
+  // console.log("classiMagiche: " , classiMagiche);
+
   const daySpells: {
     classe: string;
     spells: number[];
   }[] = char.classPcList.flatMap((cl) =>
-    cl.classCharacter.spellsPerDay
+    cl.classCharacter.spellsPerDay && !cl.baseClass
       ? [
           {
             classe: cl.classCharacter.className,
             spells: addBonusSpells(
               findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
               cl.classCharacter.spellsPerDay.spellsInLevel
-                .find((sp) => sp.level === cl.level)
+                .find((sp) => sp && sp.level === cl.level + classiMagiche[cl.classCharacter.className])
                 ?.spells.map((s) => s) || []
             )
           }
@@ -206,15 +229,15 @@ export const modifyCharacter = (
     classe: string;
     spells: number[];
   }[] = char.classPcList.flatMap((cl) =>
-    cl.classCharacter.spellsKnown
+    cl.classCharacter.spellsKnown && !cl.baseClass
       ? [
           {
             classe: cl.classCharacter.className,
             spells: checkKnownSpells(
               findAbility(char.abilitys, cl.classCharacter.spellBonus?? ""),
               cl.classCharacter.spellsKnown.spellsInLevel
-                .find((lv) => lv.level === cl.level)
-                ?.spells.map((s) => s) || []
+                .find((lv) => lv.level === cl.level + classiMagiche[cl.classCharacter.className])
+                ?.spells.map((s) => s && s) || []
             )
           }
         ]
@@ -301,7 +324,7 @@ export const modifyCharacter = (
     speed: findSpeedPrerequisite(prer),
     feats: allFeats,
     specialAbilities: getAllSpecialAbilities(char),
-    // spellsPerDay: bonusDaySpells,
+    magicClassLv: classiMagiche,
     spellsPerDay: daySpells,
     spellsKnown: knowSpells,
     books: char.books

@@ -9,10 +9,10 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="magic_class" type="varchar(10)">
+            <column name="magic_class" type="varchar(225)">
                 <constraints nullable="true"/>
             </column>
-            <column name="spells_day_known" type="varchar(10)">
+            <column name="spells_day_known" type="varchar(225)">
                 <constraints nullable="true"/>
             </column>
             <column name="spells_in_level" type="json">

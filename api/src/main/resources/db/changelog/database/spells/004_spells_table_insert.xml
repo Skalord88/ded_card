@@ -10,7 +10,7 @@
             <column name="spells_day_known" value="DAY" />
             <column name="spells_in_level"
                 value="[
-        { &quot;level&quot;:1,&quot;spells&quot;:[2]},
+        {&quot;level&quot;:1,&quot;spells&quot;:[2]},
         {&quot;level&quot;:2,&quot;spells&quot;:[3,0]},
         {&quot;level&quot;:3,&quot;spells&quot;:[3,1]},
         {&quot;level&quot;:4,&quot;spells&quot;:[3,2,0]},
@@ -284,6 +284,61 @@
         {&quot;level&quot;:8,&quot;spells&quot;: [-1,4,4,4,3]},
         {&quot;level&quot;:9,&quot;spells&quot;: [-1,4,4,4,3]},
         {&quot;level&quot;:10,&quot;spells&quot;: [-1,4,4,4,4]}
+        ]" />
+        </insert>
+
+        <insert tableName="spells_table">
+            <column name="id" value="12" />
+            <column name="magic_class" value="DIVINE" />
+            <column name="spells_day_known" value="DAY" />
+            <column name="spells_in_level"
+                value="[
+        {&quot;level&quot;:1},
+        {&quot;level&quot;:2},
+        {&quot;level&quot;:3},
+        {&quot;level&quot;:4},
+        {&quot;level&quot;:5},
+        {&quot;level&quot;:6},
+        {&quot;level&quot;:7},
+        {&quot;level&quot;:8},
+        {&quot;level&quot;:9},
+        {&quot;level&quot;:10}
+        ]" />
+        </insert>
+        <insert tableName="spells_table">
+            <column name="id" value="13" />
+            <column name="magic_class" value="ARCANE" />
+            <column name="spells_day_known" value="DAY" />
+            <column name="spells_in_level"
+                value="[
+        {&quot;level&quot;:1},
+        {&quot;level&quot;:2},
+        {&quot;level&quot;:3},
+        {&quot;level&quot;:4},
+        {&quot;level&quot;:5},
+        {&quot;level&quot;:6},
+        {&quot;level&quot;:7},
+        {&quot;level&quot;:8},
+        {&quot;level&quot;:9},
+        {&quot;level&quot;:10}
+        ]" />
+        </insert>
+        <insert tableName="spells_table">
+            <column name="id" value="14" />
+            <column name="magic_class" value="DIVINE_ARCANE" />
+            <column name="spells_day_known" value="DAY" />
+            <column name="spells_in_level"
+                value="[
+        {&quot;level&quot;:1},
+        {&quot;level&quot;:2},
+        {&quot;level&quot;:3},
+        {&quot;level&quot;:4},
+        {&quot;level&quot;:5},
+        {&quot;level&quot;:6},
+        {&quot;level&quot;:7},
+        {&quot;level&quot;:8},
+        {&quot;level&quot;:9},
+        {&quot;level&quot;:10}
         ]" />
         </insert>
 

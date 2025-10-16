@@ -24,6 +24,7 @@ import { SpellsTable } from "../components/ClassPc/Interface/ClassPcLevel";
 import { findAbility } from "../components/Abilitys/Functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
+import { MagicKnown } from "../components/MyComponents";
 
 export function Magic() {
   const { charId } = useParams();
@@ -32,9 +33,19 @@ export function Magic() {
   const [spellsList, setSpellsList] = useState<Spell[]>();
   const [booksChar, setBookChar] = useState<Book[]>([]);
   const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
-  const [mapOfAbilitys, setMapAbilitys] = useState<{ [key: string]: number }>();
-  const [mapOfKnow, setMapOfKnow] = useState<{ [key: string]: number[] }>();
-  const [mapOfDay, setMapOfDay] = useState<{ [key: string]: number[] }>();
+  // const [mapOfAbilitys, setMapAbilitys] = useState<{ [key: string]: number }>();
+  const [mapOfKnow, setMapOfKnow] = useState<
+    {
+      classe: string;
+      spells: number[];
+    }[]
+  >();
+  const [mapOfDay, setMapOfDay] = useState<
+    {
+      classe: string;
+      spells: number[];
+    }[]
+  >();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,23 +54,8 @@ export function Magic() {
         const charDB: CharacterPc = resURL.data;
         setChar(charDB);
 
-        const newModChar = await createModChar(charDB)
-        console.log("newModChar: ", newModChar)
-
-        const abilitysMap: { [key: string]: number } = {};
-        charDB.classPcList.forEach((c) => {
-          if (
-            c &&
-            typeof c.classCharacter.spellsDomain === "string" &&
-            typeof c.classCharacter.spellBonus === "string"
-          ) {
-            abilitysMap[c.classCharacter.spellsDomain] = findAbility(
-              charDB.abilitys,
-              c.classCharacter.spellBonus
-            );
-          }
-        });
-        setMapAbilitys(abilitysMap);
+        const newModChar = await createModChar(charDB);
+        setModChar(newModChar);
 
         const resSpells = await axios.get(urlSpellsList);
         const allSpells: Spell[] = resSpells.data;
@@ -75,37 +71,28 @@ export function Magic() {
   }, []);
 
   useEffect(() => {
-    if (char) {
-      const actualKnownClassLv: { [key: string]: number[] } = {};
-      char.classPcList.forEach((c) => {
-        actualKnownClassLv[c.classCharacter.className] = [
-          ...(c.classCharacter.spellsKnown?.spellsInLevel
-            .filter((s) => s.level === c.level)
-            .flatMap((s) => s.spells) || [])
-        ];
-      });
+    if (modChar) {
+      const actualKnownClassLv: {
+        classe: string;
+        spells: number[];
+      }[] = modChar.spellsKnown ?? [];
       setMapOfKnow(actualKnownClassLv);
 
-      const actualDayClassLv: { [key: string]: number[] } = {};
-      char.classPcList.forEach((c) => {
-        actualDayClassLv[c.classCharacter.className] = [
-          ...(c.classCharacter.spellsPerDay?.spellsInLevel
-            .filter((s) => s.level === c.level)
-            .flatMap((s) => s.spells) || [])
-        ];
-      });
-      // console.log("actualDayClassLv: " , actualDayClassLv["CLERIC"][0])
+      const actualDayClassLv: {
+        classe: string;
+        spells: number[];
+      }[] = modChar.spellsPerDay ?? [];
       setMapOfDay(actualDayClassLv);
 
       const spellMap: SpellsByLevelAndClass[] = FilterSpellsByLevelAndClass(
         spellsList || [],
+        modChar.magicClassLv || {}
         // char,
-        actualDayClassLv
       );
 
       setSpellsPgList(spellMap);
     }
-  }, [char, spellsList]);
+  }, [modChar, spellsList]);
 
   const UpdateBooks = (s: Spell) => {
     for (const book of booksChar) {
@@ -125,8 +112,8 @@ export function Magic() {
         {spellsPgList && (
           <CharacterSpells
             spells={spellsPgList}
-            mapOfAbilitys={mapOfAbilitys}
-            mapOfKnow={mapOfKnow}
+            // mapOfAbilitys={mapOfAbilitys}
+            // mapOfKnow={mapOfKnow}
             mapOfDay={mapOfDay}
           />
         )}
@@ -137,34 +124,40 @@ export function Magic() {
 }
 export type SpellsByLevelAndClassProps = {
   spells: SpellsByLevelAndClass[];
-  mapOfAbilitys?: { [key: string]: number };
-  mapOfKnow?: { [key: string]: number[] };
-  mapOfDay?: { [key: string]: number[] };
+  // mapOfAbilitys?: { [key: string]: number };
+  // mapOfKnow?: { [key: string]: number[] };
+  mapOfDay?: {
+    classe: string;
+    spells: number[];
+  }[];
 };
 export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   spells,
-  mapOfAbilitys,
-  mapOfKnow,
+  // mapOfAbilitys,
+  // mapOfKnow,
   mapOfDay
 }) => {
   const [choosenSpell, setChoosenSpell] = useState<{ [key: number]: number[] }>(
     {}
   );
+  // const sortedSpells: SpellsByLevelAndClass[] =
+
+  // console.log(" mapOfDay: ", mapOfDay);
 
   const chooseSpell = (s: Spell, index: number, indexOfList: number) => {
     if (s && choosenSpell[index] !== undefined && choosenSpell[index].length) {
-        const oldList: number[] = choosenSpell[index]
-        let added = false;
-        for(let i = 0; i < oldList.length - 1; i++){
-            if(i === indexOfList){
-                oldList[i] = s.id
-                added = true;
-            }
+      const oldList: number[] = choosenSpell[index];
+      let added = false;
+      for (let i = 0; i < oldList.length - 1; i++) {
+        if (i === indexOfList) {
+          oldList[i] = s.id;
+          added = true;
         }
-        if (!added){
-            oldList.push(s.id)
-        }
-        choosenSpell[index] = oldList
+      }
+      if (!added) {
+        oldList.push(s.id);
+      }
+      choosenSpell[index] = oldList;
       console.log(choosenSpell);
       setChoosenSpell({ ...choosenSpell });
     } else {
@@ -176,42 +169,45 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
 
   return (
     <div>
-      {spells
+      {mapOfDay && spells
         ? spells.map((s, index) => {
             const items: itemInDrop[] = addToDrop(s.spells, "spells");
-            if (mapOfDay) {
-              const abilityValue =
-                mapOfAbilitys && mapOfAbilitys[s.class] !== undefined
-                  ? mapOfAbilitys[s.class]
-                  : 0;
-              const quanti =
-                mapOfDay[s.class][s.level] +
-                BonusTableSpells[abilityValue][index];
-              return (
-                <div key={index}>
-                  <p>
-                    {s.level + ".lv "}
-                    {s.class}
-                  </p>
-                  {Array.from({ length: quanti }).map((_, i) => {
-                    return (
-                      <div key={i}>
-                        <span>
-                          <DropdownComponent
-                            options={items}
-                            onAction={(spell: Spell) =>
-                              chooseSpell(spell, index, i)
-                            }
-                          />
-                        </span>
-                      </div>
-                    );
-                  })}
-                </div>
-              );
-            }
+            // const quanti: number = mapOfDay[index].spells
+            return (
+              <div key={index}>
+                <p>
+                  {s.level + ".lv "}
+                  {s.class}
+                  {mapOfDay.map(s => s.spells.join(", "))}
+                </p>
+                {/* {s.spells.map((spell, i) => (
+                  <DropdownComponent
+                          options={items}
+                          onAction={(spell: Spell) =>
+                            chooseSpell(spell, index, i)
+                          }
+                        />
+                ))} */}
+                {/* {mapOfDay[index].spells
+                .map((day, i) => {
+                  return (
+                    <div key={day}>
+                      <span>
+                        <DropdownComponent
+                          options={items}
+                          onAction={(spell: Spell) =>
+                            chooseSpell(spell, index, i)
+                          }
+                        />
+                      </span>
+                    </div>
+                  );
+                })} */}
+              </div>
+            );
+            // }
             // Return null if mapOfDay is falsy
-            return null;
+            // return null;
           })
         : null}
     </div>

@@ -51,6 +51,12 @@
         <where>id = 15</where>
         </update>
         <!-- ASSASSIN -->
+        <!-- STORMLORD -->
+        <update tableName="class_character">
+            <column name="spells_per_day_id" valueNumeric="12" />
+        <where>id = 17</where>
+        </update>
+        <!-- STORMLORD -->
 
     </changeSet>
 </databaseChangeLog>

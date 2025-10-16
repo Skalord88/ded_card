@@ -11,51 +11,89 @@ export function SortedBooks(books: Book[]): Book[] {
 export type SpellsByLevelAndClass = {
   class: string;
   level: number;
-  attribute?: number;
   spells: Spell[];
-  known?: number;
-  perDay?: number;
 };
 
 export function FilterSpellsByLevelAndClass(
   spellsDB: Spell[],
-  // character: CharacterPc,
-  classAndLevel: { [key: string]: number[] }
+  maxLevelClass: { [classe: string]: number }
 ): SpellsByLevelAndClass[] {
-  let filtred: SpellsByLevelAndClass[] = [];
+  const result: SpellsByLevelAndClass[] = [];
 
-  const domains: Set<string> = new Set();
-  spellsDB.forEach((spell) => {
-    spell.level?.forEach((lv) => {
-      if (lv.classDomain) {
-        domains.add(lv.classDomain);
-      }
-    });
-  });
-
-  domains.forEach((domain) => {
-    if(classAndLevel[domain] === undefined) return;
-    const lvs: number[] | null = classAndLevel[domain];
-      const maxLevel: number = lvs.length;
-      // if (classAndLevel[domain]) {
-      for (let level = 0; level < maxLevel; level++) {
-        const spellsForClassAndLevel: Spell[] = spellsDB.filter((spell) =>
-          spell.level?.some(
-            (lv) => lv.classDomain === domain && lv.level === level
-          )
-        );
-
-        if (spellsForClassAndLevel.length > 0) {
-          filtred.push({
-            class: domain,
-            level: level,
-            // attribute: FindAbilityForCaster(character, domain)[domain],
-            spells: spellsForClassAndLevel
-          });
-        }
-      }})
-  return filtred;
+  for (const maxLv in maxLevelClass) {
+    const levels: number = maxLevelClass[maxLv];
+    for (let i = 0; i < levels; i++) {
+      result.push({
+        class: maxLv,
+        level: i,
+        spells: spellsDB.filter((spell) =>
+          spell.level?.some((lv) => {
+            return maxLv === lv.classDomain && lv.level === i;
+          })
+        )
+      });
+    }
+  }
+  return result;
 }
+
+// for (const [className, maxLevel] of Object.entries(maxLevelClass)) {
+//   for (let level = 0; level <= maxLevel; level++) {
+//     const spellsAtLevel = spellsDB.filter(
+//       (spell) => spell.level?.some(sl => sl.classDomain === className) && spell.level?.some(sl => sl.level === level)
+//     );
+
+//     if (spellsAtLevel.length > 0) {
+//       result.push({
+//         class: className,
+//         level,
+//         spells: spellsAtLevel,
+//       });
+//     }
+//   }
+// }
+
+// return result;
+
+// export function FilterSpellsByLevelAndClass(
+//   spellsDB: Spell[],
+//   // character: CharacterPc,
+//   classAndLevel: { [key: string]: number[] }
+// ): SpellsByLevelAndClass[] {
+//   let filtred: SpellsByLevelAndClass[] = [];
+
+//   const domains: Set<string> = new Set();
+//   spellsDB.forEach((spell) => {
+//     spell.level?.forEach((lv) => {
+//       if (lv.classDomain) {
+//         domains.add(lv.classDomain);
+//       }
+//     });
+//   });
+
+//   domains.forEach((domain) => {
+//     if(classAndLevel[domain] === undefined) return;
+//     const lvs: number[] | null = classAndLevel[domain];
+//       const maxLevel: number = lvs.length;
+//       // if (classAndLevel[domain]) {
+//       for (let level = 0; level < maxLevel; level++) {
+//         const spellsForClassAndLevel: Spell[] = spellsDB.filter((spell) =>
+//           spell.level?.some(
+//             (lv) => lv.classDomain === domain && lv.level === level
+//           )
+//         );
+
+//         if (spellsForClassAndLevel.length > 0) {
+//           filtred.push({
+//             class: domain,
+//             level: level,
+//             // attribute: FindAbilityForCaster(character, domain)[domain],
+//             spells: spellsForClassAndLevel
+//           });
+//         }
+//       }})
+//   return filtred;
+// }
 
 export const FindAbilityForCaster = (
   char: CharacterPc,
@@ -91,7 +129,6 @@ export const FindAbilityForCaster = (
   return mapOfAbility;
 };
 
-
 export const FilterSpellsByPgClass = (
   spells: SpellsByLevelAndClass[],
   char: CharacterPc
@@ -117,21 +154,21 @@ export type BonusTableSpellsType = {
 };
 
 export const BonusTableSpells: { [key: number]: number[] } = {
-    10: [0,0,0,0,0,0,0,0,0,0],
-    11: [0,0,0,0,0,0,0,0,0,0],
-    12: [0,1,0,0,0,0,0,0,0,0],
-    13: [0,1,0,0,0,0,0,0,0,0],
-    14: [0,1,1,0,0,0,0,0,0,0],
-    15: [0,1,1,0,0,0,0,0,0,0],
-    16: [0,1,1,1,0,0,0,0,0,0],
-    17: [0,1,1,1,0,0,0,0,0,0],
-    18: [0,1,1,1,1,0,0,0,0,0],
-    19: [0,1,1,1,1,0,0,0,0,0],
-    20: [0,2,1,1,1,1,0,0,0,0],
-    21: [0,2,1,1,1,1,0,0,0,0],
-    22: [0,2,2,1,1,1,0,0,0,0],
-    23: [0,2,2,1,1,1,0,0,0,0]
-}
+  10: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  11: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  12: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  13: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+  14: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+  15: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+  16: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+  17: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+  18: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+  19: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+  20: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
+  21: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
+  22: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0],
+  23: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0]
+};
 
 // export const CalculateBonusSpellsByAtribute = (
 //   attribute: number,

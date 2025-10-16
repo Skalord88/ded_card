@@ -11,6 +11,7 @@ export type ClassPc = {
     level: number;
     firstClass: boolean;
     classCharacter: ClassCharacter;
+    baseClass?: number;
   }
 
   export type SpellsInLevel = {
@@ -40,4 +41,5 @@ export type ClassCharacter = {
   spellsKnown?: SpellsTable;
   spellBonus?: string
   spellsDomain?: string;
+  
 }

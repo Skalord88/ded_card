@@ -11,8 +11,8 @@
 # COPY pom.xml /usr/src/app
 # RUN mvn -f /usr/src/app/pom.xml clean package
 
-# Usa l'immagine base OpenJDK 17 su Alpine Linux
-FROM openjdk:17-jdk-alpine
+# Usa l'immagine base OpenJDK 21 su Alpine Linux
+FROM eclipse-temurin:21-jdk-alpine
 
 # COPY --from=build /usr/src/app/target/dadcard-0.0.1-SNAPSHOT.jar /usr/app/app.jar
 

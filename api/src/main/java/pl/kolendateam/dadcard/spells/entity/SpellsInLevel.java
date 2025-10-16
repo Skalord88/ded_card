@@ -14,4 +14,5 @@ public class SpellsInLevel implements Serializable {
 
   int level;
   int[] spells;
+  // SpellsEnum baseCaster;
 }

@@ -46,6 +46,7 @@ export const createModChar = (
       special: ""
     },
     specialAbilities: [],
+    magicClassLv: {},
     spellsPerDay: [],
     spellsKnown: [],
     books: [],

@@ -1,6 +1,5 @@
 ---clean immage
-mvn clean
-mvn install
+mvn clean install
 docker build -f "Dockerfile" -t api:latest "."
 docker-compose up -d api
 
