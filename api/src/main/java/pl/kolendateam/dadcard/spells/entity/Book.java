@@ -31,6 +31,9 @@ public class Book implements Serializable {
   @Enumerated(EnumType.STRING)
   EnumClass caster;
 
+  @Enumerated(EnumType.STRING)
+  EnumClass knowDay;
+
   int level;
 
   @ManyToMany(cascade = CascadeType.MERGE)

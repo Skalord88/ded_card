@@ -3,6 +3,7 @@ import { ClassPc, SpellsInLevel } from "../ClassPc/Interface/ClassPcLevel";
 import { Book, CharacterPc, Spell } from "../interfaces";
 import { Abilitys } from "../Abilitys/Interface";
 import { findAbility } from "../Abilitys/Functions";
+import { SorcereWizzardFilter } from "../Prerequisite/functions/modifyCharacter";
 
 export function SortedBooks(books: Book[]): Book[] {
   return books.sort((a, b) => a.caster.localeCompare(b.caster));
@@ -21,19 +22,25 @@ export function FilterSpellsByLevelAndClass(
   const result: SpellsByLevelAndClass[] = [];
 
   for (const maxLv in maxLevelClass) {
-    const levels: number = maxLevelClass[maxLv];
+    const levels: number = maxLevelClass[maxLv] + 1;
+    // levels va aggiunto 1 per iterare correttamente
     for (let i = 0; i < levels; i++) {
+      const domanin = SorcereWizzardFilter(maxLv);
       result.push({
         class: maxLv,
         level: i,
         spells: spellsDB.filter((spell) =>
           spell.level?.some((lv) => {
-            return maxLv === lv.classDomain && lv.level === i;
+            if (domanin === lv.classDomain && lv.level === i) return lv;
           })
         )
       });
     }
   }
+
+  // console.log("spellsDB" , spellsDB)
+  // console.log("maxLevelClass" , maxLevelClass)
+  // console.log("result" , result)
   return result;
 }
 
@@ -129,45 +136,35 @@ export const FindAbilityForCaster = (
   return mapOfAbility;
 };
 
-export const FilterSpellsByPgClass = (
-  spells: SpellsByLevelAndClass[],
-  char: CharacterPc
-): SpellsByLevelAndClass[] => {
-  const castersPg: string[] = char.classPcList.flatMap((c) => {
-    if (c.classCharacter.className === "WIZARD") {
-      return ["WIZARD", "SORCERER_WIZARD"];
-    } else if (c.classCharacter.className === "SORCERER") {
-      return ["SORCERER", "SORCERER_WIZARD"];
-    } else {
-      return c.classCharacter.spellsDomain ? c.classCharacter.spellsDomain : [];
-    }
-  });
-  const spellsFiltred: SpellsByLevelAndClass[] = spells.filter((s) =>
-    castersPg.includes(s.class)
-  );
-
-  return spellsFiltred;
-};
-
 export type BonusTableSpellsType = {
   [key: number]: number[];
 };
 
-export const BonusTableSpells: { [key: number]: number[] } = {
-  10: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  11: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  12: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  13: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  14: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-  15: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
-  16: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-  17: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-  18: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-  19: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-  20: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
-  21: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
-  22: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0],
-  23: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0]
+// export const BonusTableSpells: { [key: number]: number[] } = {
+//   10: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//   11: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//   12: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+//   13: [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+//   14: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+//   15: [0, 1, 1, 0, 0, 0, 0, 0, 0, 0],
+//   16: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+//   17: [0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+//   18: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+//   19: [0, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+//   20: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
+//   21: [0, 2, 1, 1, 1, 1, 0, 0, 0, 0],
+//   22: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0],
+//   23: [0, 2, 2, 1, 1, 1, 0, 0, 0, 0]
+// };
+
+export const FilterPerKnownSpells = (
+  all: boolean,
+  filter: number[],
+  spells: Spell[]
+): Spell[] => {
+  if (all) return spells;
+
+  return spells.filter((s) => filter.some((f) => f === s.id));
 };
 
 // export const CalculateBonusSpellsByAtribute = (

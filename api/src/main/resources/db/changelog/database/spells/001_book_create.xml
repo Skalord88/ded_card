@@ -11,6 +11,9 @@
             <column name="caster" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            <column name="know_day" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="level" type="int">
                 <constraints nullable="true" />
             </column>

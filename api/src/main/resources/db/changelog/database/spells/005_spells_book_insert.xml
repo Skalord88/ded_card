@@ -6,12 +6,29 @@
     <changeSet id="005_spells_book_insert" author="oscar">
 
         <insert tableName="spells_book">
-            <column name="book_id" value="1000" />
-            <column name="spells_id" value="1" />
+            <column name="book_id" value="1100" />
+            <column name="spells_id" value="267" />
+            <!-- Puli KNOWN 1 Jump -->
         </insert>
         <insert tableName="spells_book">
-            <column name="book_id" value="1000" />
-            <column name="spells_id" value="2" />
+            <column name="book_id" value="1100" />
+            <column name="spells_id" value="532" />
+            <!-- Puli KNOWN 1 True Strike -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1101" />
+            <column name="spells_id" value="1" />
+            <!-- Puli KNOWN 2 -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1102" />
+            <column name="spells_id" value="1" />
+            <!-- Puli DAY 0 -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1103" />
+            <column name="spells_id" value="1" />
+            <!-- Puli DAY 0 -->
         </insert>
     </changeSet>
 </databaseChangeLog>

@@ -7,7 +7,29 @@
             <!-- Puli -->
             <column name="character_id" valueNumeric="100" />
         <where>id
-            = 1000</where>
+            = 1100</where>
+            <!-- KNOWN level 1 -->
+        </update>
+        <update tableName="book">
+            <!-- Puli -->
+            <column name="character_id" valueNumeric="100" />
+        <where>id
+            = 1101</where>
+            <!-- KNOWN level 2 -->
+        </update>
+        <update tableName="book">
+            <!-- Puli -->
+            <column name="character_id" valueNumeric="100" />
+        <where>id
+            = 1102</where>
+            <!-- DAY level 0 -->
+        </update>
+        <update tableName="book">
+            <!-- Puli -->
+            <column name="character_id" valueNumeric="100" />
+        <where>id
+            = 1103</where>
+            <!-- DAY level 1 -->
         </update>
     </changeSet>
 </databaseChangeLog>
