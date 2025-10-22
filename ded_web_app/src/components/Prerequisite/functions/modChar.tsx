@@ -49,7 +49,7 @@ export const createModChar = (
     magicClassLv: {},
     spellsPerDay: [],
     spellsKnown: [],
-    books: [],
+    // books: [],
     proficency: {
       type: [],
       specific: []

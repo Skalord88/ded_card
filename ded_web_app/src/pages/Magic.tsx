@@ -53,8 +53,16 @@ export function Magic() {
         const charDB: CharacterPc = resURL.data;
         setChar(charDB);
 
+        // charDB.books.forEach((book) => {
+        //   console.log("Book:", book);
+        // })
+
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
+
+        newModChar.spellsKnown?.forEach((sk) => {
+          console.log("Known Spells:", sk);
+        })
 
         const resSpells = await axios.get(urlSpellsList);
         const allSpells: Spell[] = resSpells.data;
@@ -93,17 +101,17 @@ export function Magic() {
     }
   }, [modChar, spellsList]);
 
-  const UpdateBooks = (s: Spell) => {
-    for (const book of booksChar) {
-      for (const level of s.level || []) {
-        if (level.level === book.level) {
-          book.spells.push(s);
-          break;
-        }
-      }
-    }
-    setBookChar([...booksChar]);
-  };
+  // const UpdateBooks = (s: Spell) => {
+  //   for (const book of booksChar) {
+  //     for (const level of s.level || []) {
+  //       if (level.level === book.level) {
+  //         book.spells.push(s);
+  //         break;
+  //       }
+  //     }
+  //   }
+  //   setBookChar([...booksChar]);
+  // };
 
   return (
     <PageLayout title={"Magic"}>
@@ -116,7 +124,7 @@ export function Magic() {
             mapOfDay={mapOfDay}
           />
         )}
-        {char && <CharacterBooks books={booksChar} />}
+        {/* {char && <CharacterBooks books={booksChar} />} */}
       </div>
     </PageLayout>
   );
@@ -245,29 +253,29 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   );
 };
 
-export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
-  function SortedBooks(books: Book[]) {
-    // Example: sort books by level ascending
-    return [...books].sort((a, b) => a.level - b.level);
-  }
+// export const CharacterBooks: React.FC<BooksFromChar> = ({ books }) => {
+//   function SortedBooks(books: Book[]) {
+//     // Example: sort books by level ascending
+//     return [...books].sort((a, b) => a.level - b.level);
+//   }
 
-  return (
-    <div className="container-table-nine">
-      {SortedBooks(books).map((book, index) => (
-        <div key={index}>
-          <p>
-            {book.caster} level.{book.level}
-          </p>
-          <div>
-            {book.spells.map((bk, indexBook) => (
-              <span key={indexBook}>
-                {bk.name}
-                {indexBook < books.length ? ", " : ""}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="container-table-nine">
+//       {SortedBooks(books).map((book, index) => (
+//         <div key={index}>
+//           <p>
+//             {book.caster} level.{book.level}
+//           </p>
+//           <div>
+//             {book.spells.map((bk, indexBook) => (
+//               <span key={indexBook}>
+//                 {bk.name}
+//                 {indexBook < books.length ? ", " : ""}
+//               </span>
+//             ))}
+//           </div>
+//         </div>
+//       ))}
+//     </div>
+//   );
+// };

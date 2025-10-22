@@ -12,7 +12,9 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -32,7 +34,7 @@ public class Book implements Serializable {
   EnumClass caster;
 
   @Enumerated(EnumType.STRING)
-  EnumClass knowDay;
+  SpellsEnum knowDay;
 
   int level;
 
@@ -42,11 +44,13 @@ public class Book implements Serializable {
     joinColumns = @JoinColumn(name = "book_id"),
     inverseJoinColumns = @JoinColumn(name = "spells_id")
   )
+  // Map<Integer, List<Spells>> spellsBook;
   List<Spells> spellsBook;
 
   public Book(int level, EnumClass caster) {
     this.caster = caster;
     this.level = level;
+    // this.spellsBook = new HashMap<>();
     this.spellsBook = new ArrayList<>();
   }
 }

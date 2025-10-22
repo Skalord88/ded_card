@@ -31,5 +31,12 @@
             = 1103</where>
             <!-- DAY level 1 -->
         </update>
+        <update tableName="book">
+            <!-- Puli -->
+            <column name="character_id" valueNumeric="100" />
+        <where>id
+            = 1104</where>
+            <!-- DAY level 2 -->
+        </update>
     </changeSet>
 </databaseChangeLog>

@@ -17,18 +17,48 @@
         </insert>
         <insert tableName="spells_book">
             <column name="book_id" value="1101" />
-            <column name="spells_id" value="1" />
-            <!-- Puli KNOWN 2 -->
+            <column name="spells_id" value="57" />
+            <!-- Puli KNOWN 2 Cat grace -->
         </insert>
         <insert tableName="spells_book">
             <column name="book_id" value="1102" />
-            <column name="spells_id" value="1" />
-            <!-- Puli DAY 0 -->
+            <column name="spells_id" value="383" />
+            <!-- Puli DAY 0 Read magic -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1102" />
+            <column name="spells_id" value="282" />
+            <!-- Puli DAY 0 Mage hand -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1102" />
+            <column name="spells_id" value="195" />
+            <!-- Puli DAY 0 Flare -->
         </insert>
         <insert tableName="spells_book">
             <column name="book_id" value="1103" />
-            <column name="spells_id" value="1" />
-            <!-- Puli DAY 0 -->
+            <column name="spells_id" value="447" />
+            <!-- Puli DAY 1 Silent image -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1103" />
+            <column name="spells_id" value="267" />
+            <!-- Puli DAY 1 Jump -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1103" />
+            <column name="spells_id" value="532" />
+            <!-- Puli DAY 1 True Strike -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1104" />
+            <column name="spells_id" value="57" />
+            <!-- Puli DAY 2 Cat grace -->
+        </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1104" />
+            <column name="spells_id" value="57" />
+            <!-- Puli DAY 2 Cat grace -->
         </insert>
     </changeSet>
 </databaseChangeLog>

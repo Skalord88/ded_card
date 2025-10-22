@@ -408,7 +408,8 @@ export type SpellsList = {
 export type Book = {
   caster: string,
   level: number,
-  spells: Spell[]
+  knowDay: string,
+  spellsBook: Spell[]
 }
 
 export type BooksFromChar = {

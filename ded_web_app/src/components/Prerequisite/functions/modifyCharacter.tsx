@@ -19,7 +19,8 @@ import {
   Inventory,
   Item,
   ItemsList,
-  SpecialAttacks
+  SpecialAttacks,
+  Spell
 } from "../../interfaces";
 import { findAllProficency } from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
@@ -107,9 +108,8 @@ export type CharToModify = {
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
   magicClassLv?: { [classe: string]: number };
-  spellsPerDay?: { classe: string; spells: number[] }[];
-  spellsKnown?: { classe: string; spells: number[] }[];
-  books: Book[];
+  spellsPerDay?: { classe: string; spells: number[]; books: Book[] }[];
+  spellsKnown?: { classe: string; spells: number[]; books: Book[] }[];
 };
 
 export type TableOfBonusSpells = {
@@ -207,6 +207,8 @@ export const checkKnownSpells = (bnsAb: number, spells: number[]): number[] => {
   return [-3];
 };
 
+
+
 export const modifyCharacter = (
   char: CharacterPc,
   prer: Prerequisite[],
@@ -234,6 +236,7 @@ export const modifyCharacter = (
   const daySpells: {
     classe: string;
     spells: number[];
+    books: Book[];
   }[] = char.classPcList.flatMap((cl) =>
     cl.classCharacter.spellsPerDay && !cl.baseClass
       ? [
@@ -249,7 +252,9 @@ export const modifyCharacter = (
                       cl.level + classiMagiche[cl.classCharacter.className]
                 )
                 ?.spells.map((s) => s) || []
-            )
+            ),
+            books: char.books
+            .filter((s) => s.knowDay === "DAY" && s.caster === cl.classCharacter.className).map((b) => b)
           }
         ]
       : []
@@ -258,6 +263,7 @@ export const modifyCharacter = (
   const knowSpells: {
     classe: string;
     spells: number[];
+    books: Book[];
   }[] = char.classPcList.flatMap((cl) =>
     cl.classCharacter.spellsKnown && !cl.baseClass
       ? [
@@ -272,7 +278,9 @@ export const modifyCharacter = (
                     cl.level + classiMagiche[cl.classCharacter.className]
                 )
                 ?.spells.map((s) => s && s) || []
-            )
+            ),
+            books: char.books
+            .filter((s) => s.knowDay === "KNOWN" && s.caster === cl.classCharacter.className).map((b) => b)
           }
         ]
       : []
@@ -361,7 +369,7 @@ export const modifyCharacter = (
     magicClassLv: classiMagiche,
     spellsPerDay: daySpells,
     spellsKnown: knowSpells,
-    books: char.books
+    // books: char.books
   };
   return newChar;
 };
