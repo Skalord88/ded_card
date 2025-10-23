@@ -6,45 +6,37 @@ import {
   FilterSpellsByLevelAndClass,
   SpellsByLevelAndClass
 } from "../components/Magic/Functions";
-import {
-  Book,
-  BooksFromChar,
-  CharacterPc,
-  Spell
-} from "../components/interfaces";
+import { Book, CharacterPc, Spell } from "../components/interfaces";
 import { urlChar, urlSpellsList } from "../components/url";
 import {} from "../components/variables";
 import { PageLayout } from "./AppLayout";
-import { Popup } from "../components/Popup/Popup";
-import { Dropdown } from "react-bootstrap";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
-import { SpellsTable } from "../components/ClassPc/Interface/ClassPcLevel";
-import { findAbility } from "../components/Abilitys/Functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { MagicKnown } from "../components/MyComponents";
 
 export function Magic() {
   const { charId } = useParams();
   const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
   const [spellsList, setSpellsList] = useState<Spell[]>();
-  const [booksChar, setBookChar] = useState<Book[]>([]);
+  // const [booksChar, setBookChar] = useState<Book[]>([]);
   const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
   // const [mapOfAbilitys, setMapAbilitys] = useState<{ [key: string]: number }>();
-  const [mapOfKnow, setMapOfKnow] = useState<
-    {
-      classe: string;
-      spells: number[];
-    }[]
-  >();
-  const [mapOfDay, setMapOfDay] = useState<
-    {
-      classe: string;
-      spells: number[];
-    }[]
-  >();
+  // const [mapOfKnow, setMapOfKnow] = useState<
+  //   {
+  //     classe: string;
+  //     spells: number[];
+  //     books: Book[];
+  //   }[]
+  // >();
+  // const [mapOfDay, setMapOfDay] = useState<
+  //   {
+  //     classe: string;
+  //     spells: number[];
+  //     books: Book[];
+  //   }[]
+  // >();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,15 +52,15 @@ export function Magic() {
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
 
-        newModChar.spellsKnown?.forEach((sk) => {
-          console.log("Known Spells:", sk);
-        })
+        // newModChar.spellsKnown?.forEach((sk) => {
+        //   console.log("Known Spells:", sk);
+        // })
 
         const resSpells = await axios.get(urlSpellsList);
         const allSpells: Spell[] = resSpells.data;
         setSpellsList(allSpells);
 
-        setBookChar(resURL.data.books);
+        // setBookChar(resURL.data.books);
       } catch (error) {
         console.log(error);
       }
@@ -79,17 +71,20 @@ export function Magic() {
 
   useEffect(() => {
     if (modChar) {
-      const actualKnownClassLv: {
-        classe: string;
-        spells: number[];
-      }[] = modChar.spellsKnown ?? [];
-      setMapOfKnow(actualKnownClassLv);
+      // const actualKnownClassLv: {
+      //   classe: string;
+      //   spells: number[];
+      // }[] = modChar.spellsKnown ?? [];
+      // console.log("actualKnownClassLv:", actualKnownClassLv);
+      // setMapOfKnow(actualKnownClassLv);
 
-      const actualDayClassLv: {
-        classe: string;
-        spells: number[];
-      }[] = modChar.spellsPerDay ?? [];
-      setMapOfDay(actualDayClassLv);
+      // const actualDayClassLv: {
+      //   classe: string;
+      //   spells: number[];
+      // }[] = modChar.spellsPerDay ?? [];
+
+      // console.log("actualDayClassLv:", actualDayClassLv);
+      // setMapOfDay(actualDayClassLv);
 
       const spellMap: SpellsByLevelAndClass[] = FilterSpellsByLevelAndClass(
         spellsList || [],
@@ -120,8 +115,8 @@ export function Magic() {
           <CharacterSpells
             spells={spellsPgList}
             // mapOfAbilitys={mapOfAbilitys}
-            mapOfKnow={mapOfKnow}
-            mapOfDay={mapOfDay}
+            mapOfKnow={modChar?.spellsKnown}
+            mapOfDay={modChar?.spellsPerDay}
           />
         )}
         {/* {char && <CharacterBooks books={booksChar} />} */}
@@ -134,10 +129,12 @@ export type SpellsByLevelAndClassProps = {
   mapOfKnow?: {
     classe: string;
     spells: number[];
+    books: Book[];
   }[];
   mapOfDay?: {
     classe: string;
     spells: number[];
+    books: Book[];
   }[];
 };
 export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
@@ -145,26 +142,69 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   mapOfKnow,
   mapOfDay
 }) => {
-  const [choosenSpell, setChoosenSpell] = useState<{
-    known: number[],
-    day: number[]
-  }>(
-    {known: [], day: []}
-  );
-  const [filterKnown, setFilterKnown] = useState<number[]>([])
+  const [choosenKnownSpell, setChoosenKnownSpell] = useState<Book[]>([]);
+  const [choosenDaySpell, setChoosenDaySpell] = useState<Book[]>([]);
+  const [filterKnown, setFilterKnown] = useState<number[]>([]);
 
-  useEffect(()=>{
-    let list: number [] = filterKnown
-    // console.log("list:" , list)
-    for(const spellLv in choosenSpell){
-      // console.log("spellLv:" , spellLv)
-      // if(list.some(spellLv))
-    }
-  },[choosenSpell])
+  useEffect(() => {
+    let listKnown: (Book | boolean)[] = [];
+    mapOfKnow?.forEach((mapknown) => {
+      const caster = mapknown.classe;
+      for (let i = 0; i < mapknown.spells.length; i++) {
+        if (mapknown.spells[i] > 0) {
+          const book: Book = mapknown.books.find(
+            (bk) => bk.caster === caster && bk.level === i
+          )!;
+          listKnown.push(book);
+        } else if (mapknown.spells[i] === -2) {
+          listKnown.push(true);
+        }
+      }
+    });
+    console.log("mk.listKnown:", listKnown);
 
-  const chooseSpell = (knowDay: string, s: Spell, index: number, indexOfList: number) => {
+    let listDay: (Book | boolean)[] = [];
+    mapOfDay?.forEach((mapDay) => {
+      const caster = mapDay.classe;
+      for (let i = 0; i < mapDay.spells.length; i++) {
+        if (mapDay.spells[i] > 0) {
+          const book: Book | undefined = mapDay.books.find(
+            (bk) => bk.caster === caster && bk.level === i
+          );
+          if (book) {listDay.push(book)}
+          else {
 
-    console.log("knowDay:" , knowDay, "s:" , s.id, "index:" , index, "indexOfList:" , indexOfList)
+            const emptyBook: Book = {
+              caster: caster,
+              knowDay: "DAY",
+              level: i,
+              spellsBook: Array.from({ length: listKnown.length }),
+            };
+            listDay.push(emptyBook)}
+        } else if (mapDay.spells[i] === -2) {
+          listDay.push(true);
+        }
+      }
+    });
+    console.log("mk.listDay:", listDay);
+  }, []);
+
+  const chooseSpell = (
+    knowDay: string,
+    s: Spell,
+    index: number,
+    indexOfList: number
+  ) => {
+    console.log(
+      "knowDay:",
+      knowDay,
+      "s:",
+      s.id,
+      "index:",
+      index,
+      "indexOfList:",
+      indexOfList
+    );
     // if (s && choosenSpell[index] !== undefined && choosenSpell[index].length) {
     //   const oldList: number[] = choosenSpell[index];
     //   let added = false;
@@ -194,24 +234,29 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         ? spells.map((s, index) => {
             const items: itemInDrop[] = addToDrop(s.spells, "spells");
             const classEntry = mapOfKnow.find((m) => m.classe === s.class);
-            const quanti: number = classEntry ? classEntry.spells[index] ?? 0 : 0;
+            const quanti: number = classEntry
+              ? classEntry.spells[index] ?? 0
+              : 0;
             return (
               <div key={index}>
                 <p>
                   {s.level + ".lv "}
                   {s.class}
                 </p>
-                {quanti === -2 ?
-                  <span>ALL</span> :
+                {quanti === -2 ? (
+                  <span>ALL</span>
+                ) : (
                   // render a DropdownComponent for each available spell slot
                   Array.from({ length: quanti }).map((_, i) => (
                     <DropdownComponent
                       key={i}
                       options={items}
-                      onAction={(spell: Spell) => chooseSpell("know", spell, index, i)}
+                      onAction={(spell: Spell) =>
+                        chooseSpell("know", spell, index, i)
+                      }
                     />
                   ))
-                }
+                )}
               </div>
             );
           })
@@ -222,11 +267,18 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
             // const all = mapOfKnow[index].spells.includes(-2)? true : false
             // const filtredPerKnown = FilterPerKnownSpells(all, [], s.spells)
             const classEntry = mapOfDay.find((m) => m.classe === s.class);
-            const quanti: number = classEntry ? classEntry.spells[index] ?? 0 : 0;
+            const quanti: number = classEntry
+              ? classEntry.spells[index] ?? 0
+              : 0;
             const classEntryKnown = mapOfKnow.find((m) => m.classe === s.class);
-            const quantiKnown: number = classEntryKnown ? classEntryKnown.spells[index] ?? 0 : 0;
+            const quantiKnown: number = classEntryKnown
+              ? classEntryKnown.spells[index] ?? 0
+              : 0;
             const filtredPerKnown: Spell[] = FilterPerKnownSpells(
-              quantiKnown === -2? true : false, filterKnown, s.spells)
+              quantiKnown === -2 ? true : false,
+              filterKnown,
+              s.spells
+            );
             const items: itemInDrop[] = addToDrop(filtredPerKnown, "spells");
             return (
               <div key={index}>
@@ -237,13 +289,17 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                 {
                   // render a DropdownComponent for each available spell slot
                   Array.from({ length: quanti }).map((_, i) => {
-                  if(items.length > 0)  return(
-                    <DropdownComponent
-                      key={i}
-                      options={items}
-                      onAction={(spell: Spell) => chooseSpell("day", spell, index, i)}
-                    />)}
-                  )
+                    if (items.length > 0)
+                      return (
+                        <DropdownComponent
+                          key={i}
+                          options={items}
+                          onAction={(spell: Spell) =>
+                            chooseSpell("day", spell, index, i)
+                          }
+                        />
+                      );
+                  })
                 }
               </div>
             );
