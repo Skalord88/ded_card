@@ -409,7 +409,7 @@ export type Book = {
   caster: string,
   level: number,
   knowDay: string,
-  spellsBook: Spell[]
+  spellsBook: (Spell | null)[] | boolean
 }
 
 export type BooksFromChar = {

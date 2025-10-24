@@ -126,11 +126,12 @@ export function Magic() {
 }
 export type SpellsByLevelAndClassProps = {
   spells: SpellsByLevelAndClass[];
-  mapOfKnow?: {
-    classe: string;
-    spells: number[];
-    books: Book[];
-  }[];
+  mapOfKnow?: 
+  // {
+    // classe: string;
+    // spells: number[];
+    (Book | null)[];
+  // }[];
   mapOfDay?: {
     classe: string;
     spells: number[];
@@ -146,48 +147,53 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   const [choosenDaySpell, setChoosenDaySpell] = useState<Book[]>([]);
   const [filterKnown, setFilterKnown] = useState<number[]>([]);
 
-  useEffect(() => {
-    let listKnown: (Book | boolean)[] = [];
-    mapOfKnow?.forEach((mapknown) => {
-      const caster = mapknown.classe;
-      for (let i = 0; i < mapknown.spells.length; i++) {
-        if (mapknown.spells[i] > 0) {
-          const book: Book = mapknown.books.find(
-            (bk) => bk.caster === caster && bk.level === i
-          )!;
-          listKnown.push(book);
-        } else if (mapknown.spells[i] === -2) {
-          listKnown.push(true);
-        }
-      }
-    });
-    console.log("mk.listKnown:", listKnown);
+  // useEffect(() => {
+    // let listKnown: (Book | boolean)[] = [];
+    // mapOfKnow?.forEach((mapknown) => {
+    //   const caster = mapknown.classe;
+    //   for (let i = 0; i < mapknown.spells.length; i++) {
+    //     if (mapknown.spells[i] > 0) {
+    //       const book: Book = mapknown.books.find(
+    //         (bk) => bk.caster === caster && bk.level === i
+    //       )!;
+    //       listKnown.push(book);
+    //     } else if (mapknown.spells[i] === -2) {
+    //       listKnown.push(true);
+    //     }
+    //   }
+    // });
+    // console.log("mk.listKnown:", listKnown);
 
-    let listDay: (Book | boolean)[] = [];
-    mapOfDay?.forEach((mapDay) => {
-      const caster = mapDay.classe;
-      for (let i = 0; i < mapDay.spells.length; i++) {
-        if (mapDay.spells[i] > 0) {
-          const book: Book | undefined = mapDay.books.find(
-            (bk) => bk.caster === caster && bk.level === i
-          );
-          if (book) {listDay.push(book)}
-          else {
-
-            const emptyBook: Book = {
-              caster: caster,
-              knowDay: "DAY",
-              level: i,
-              spellsBook: Array.from({ length: listKnown.length }),
-            };
-            listDay.push(emptyBook)}
-        } else if (mapDay.spells[i] === -2) {
-          listDay.push(true);
-        }
-      }
-    });
-    console.log("mk.listDay:", listDay);
-  }, []);
+    // let listDay: (Book | boolean)[] = [];
+    // mapOfDay?.forEach((mapDay) => {
+    //   const caster = mapDay.classe;
+    //   for (let i = 0; i < mapDay.spells.length; i++) {
+    //     if (mapDay.spells[i] > 0) {
+    //       const book: Book | undefined = mapDay.books.find(
+    //         (bk) => bk.caster === caster && bk.level === i
+    //       );
+    //       if (book) {listDay.push(book)}
+    //       else {
+    //         const knownCount = mapOfKnow?.find((k) => k.classe === caster)?.spells[i] ?? 0;
+    //         const emptySpells: Spell[] =
+    //           typeof knownCount === "number" && knownCount > 0
+    //             ? Array.from({ length: knownCount }, () => ({} as Spell))
+    //             : [];
+    //         const emptyBook: Book = {
+    //           caster: caster,
+    //           knowDay: "DAY",
+    //           level: i,
+    //           spellsBook: emptySpells,
+    //         };
+    //         listDay.push(emptyBook);
+    //       }
+    //     } else if (mapDay.spells[i] === -2) {
+    //       listDay.push(true);
+    //     }
+    //   }
+    // });
+    // console.log("mk.listDay:", listDay);
+  // }, []);
 
   const chooseSpell = (
     knowDay: string,
