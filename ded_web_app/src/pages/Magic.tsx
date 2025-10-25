@@ -126,17 +126,9 @@ export function Magic() {
 }
 export type SpellsByLevelAndClassProps = {
   spells: SpellsByLevelAndClass[];
-  mapOfKnow?: 
-  // {
-    // classe: string;
-    // spells: number[];
-    (Book | null)[];
+  mapOfKnow?: (Book | null)[];
   // }[];
-  mapOfDay?: {
-    classe: string;
-    spells: number[];
-    books: Book[];
-  }[];
+  mapOfDay?: (Book | null)[];
 };
 export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   spells,
@@ -148,95 +140,151 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   const [filterKnown, setFilterKnown] = useState<number[]>([]);
 
   // useEffect(() => {
-    // let listKnown: (Book | boolean)[] = [];
-    // mapOfKnow?.forEach((mapknown) => {
-    //   const caster = mapknown.classe;
-    //   for (let i = 0; i < mapknown.spells.length; i++) {
-    //     if (mapknown.spells[i] > 0) {
-    //       const book: Book = mapknown.books.find(
-    //         (bk) => bk.caster === caster && bk.level === i
-    //       )!;
-    //       listKnown.push(book);
-    //     } else if (mapknown.spells[i] === -2) {
-    //       listKnown.push(true);
-    //     }
-    //   }
-    // });
-    // console.log("mk.listKnown:", listKnown);
+  // let listKnown: (Book | boolean)[] = [];
+  // mapOfKnow?.forEach((mapknown) => {
+  //   const caster = mapknown.classe;
+  //   for (let i = 0; i < mapknown.spells.length; i++) {
+  //     if (mapknown.spells[i] > 0) {
+  //       const book: Book = mapknown.books.find(
+  //         (bk) => bk.caster === caster && bk.level === i
+  //       )!;
+  //       listKnown.push(book);
+  //     } else if (mapknown.spells[i] === -2) {
+  //       listKnown.push(true);
+  //     }
+  //   }
+  // });
+  // console.log("mk.listKnown:", listKnown);
 
-    // let listDay: (Book | boolean)[] = [];
-    // mapOfDay?.forEach((mapDay) => {
-    //   const caster = mapDay.classe;
-    //   for (let i = 0; i < mapDay.spells.length; i++) {
-    //     if (mapDay.spells[i] > 0) {
-    //       const book: Book | undefined = mapDay.books.find(
-    //         (bk) => bk.caster === caster && bk.level === i
-    //       );
-    //       if (book) {listDay.push(book)}
-    //       else {
-    //         const knownCount = mapOfKnow?.find((k) => k.classe === caster)?.spells[i] ?? 0;
-    //         const emptySpells: Spell[] =
-    //           typeof knownCount === "number" && knownCount > 0
-    //             ? Array.from({ length: knownCount }, () => ({} as Spell))
-    //             : [];
-    //         const emptyBook: Book = {
-    //           caster: caster,
-    //           knowDay: "DAY",
-    //           level: i,
-    //           spellsBook: emptySpells,
-    //         };
-    //         listDay.push(emptyBook);
-    //       }
-    //     } else if (mapDay.spells[i] === -2) {
-    //       listDay.push(true);
-    //     }
-    //   }
-    // });
-    // console.log("mk.listDay:", listDay);
+  // let listDay: (Book | boolean)[] = [];
+  // mapOfDay?.forEach((mapDay) => {
+  //   const caster = mapDay.classe;
+  //   for (let i = 0; i < mapDay.spells.length; i++) {
+  //     if (mapDay.spells[i] > 0) {
+  //       const book: Book | undefined = mapDay.books.find(
+  //         (bk) => bk.caster === caster && bk.level === i
+  //       );
+  //       if (book) {listDay.push(book)}
+  //       else {
+  //         const knownCount = mapOfKnow?.find((k) => k.classe === caster)?.spells[i] ?? 0;
+  //         const emptySpells: Spell[] =
+  //           typeof knownCount === "number" && knownCount > 0
+  //             ? Array.from({ length: knownCount }, () => ({} as Spell))
+  //             : [];
+  //         const emptyBook: Book = {
+  //           caster: caster,
+  //           knowDay: "DAY",
+  //           level: i,
+  //           spellsBook: emptySpells,
+  //         };
+  //         listDay.push(emptyBook);
+  //       }
+  //     } else if (mapDay.spells[i] === -2) {
+  //       listDay.push(true);
+  //     }
+  //   }
+  // });
+  // console.log("mk.listDay:", listDay);
   // }, []);
 
-  const chooseSpell = (
-    knowDay: string,
-    s: Spell,
-    index: number,
-    indexOfList: number
-  ) => {
-    console.log(
-      "knowDay:",
-      knowDay,
-      "s:",
-      s.id,
-      "index:",
-      index,
-      "indexOfList:",
-      indexOfList
-    );
-    // if (s && choosenSpell[index] !== undefined && choosenSpell[index].length) {
-    //   const oldList: number[] = choosenSpell[index];
-    //   let added = false;
-    //   for (let i = 0; i < oldList.length - 1; i++) {
-    //     if (i === indexOfList) {
-    //       oldList[i] = s.id;
-    //       added = true;
-    //     }
-    //   }
-    //   if (!added) {
-    //     oldList.push(s.id);
-    //   }
-    //   choosenSpell[index] = oldList;
-    //   console.log(choosenSpell);
-    //   setChoosenSpell({ ...choosenSpell });
-    // } else {
-    //   choosenSpell[index] = [s.id];
-    //   console.log(choosenSpell);
-    //   setChoosenSpell({ ...choosenSpell });
-    // }
-  };
+  const chooseSpell = () =>
+    //   knowDay: string,
+    //   s: Spell,
+    //   index: number,
+    //   indexOfList: number
+    {
+      //   console.log(
+      //     "knowDay:",
+      //     knowDay,
+      //     "s:",
+      //     s.id,
+      //     "index:",
+      //     index,
+      //     "indexOfList:",
+      //     indexOfList
+      //   );
+      // if (s && choosenSpell[index] !== undefined && choosenSpell[index].length) {
+      //   const oldList: number[] = choosenSpell[index];
+      //   let added = false;
+      //   for (let i = 0; i < oldList.length - 1; i++) {
+      //     if (i === indexOfList) {
+      //       oldList[i] = s.id;
+      //       added = true;
+      //     }
+      //   }
+      //   if (!added) {
+      //     oldList.push(s.id);
+      //   }
+      //   choosenSpell[index] = oldList;
+      //   console.log(choosenSpell);
+      //   setChoosenSpell({ ...choosenSpell });
+      // } else {
+      //   choosenSpell[index] = [s.id];
+      //   console.log(choosenSpell);
+      //   setChoosenSpell({ ...choosenSpell });
+      // }
+    };
 
   return (
     <div style={{ display: "grid" }}>
-      <h2>SPELLS KNONW</h2>
+      <h2 className="rpgui-container-framed golden-2">SPELLS KNONW</h2>
       {mapOfKnow && spells
+        ? mapOfKnow.map((m, idx) => {
+            if (m?.spellsBook)
+              return (
+                <div className="rpgui-container-framed" key={idx}>
+                  <div>
+                    <p>
+                      {m?.caster}
+                      {" lv."}
+                      {m?.level}
+                      {m?.spellsBook && Array.isArray(m?.spellsBook) ? (
+                        m?.spellsBook.map((spell, indexSpell) => {
+                            const casterSpells = spells.flatMap((s) =>
+                              s.class === m.caster && s.level === m.level
+                                ? s.spells ?? []
+                                : []
+                            );
+                            const items: itemInDrop[] = addToDrop(
+                              casterSpells,
+                              "spells"
+                            );
+                            return (
+                              <div
+                                className="rpgui-container-framed grey"
+                                key={indexSpell}
+                                style={{ display: "flex" }}
+                              >
+                                <div style={{ flex: 1 }}>
+                                  {spell ? (
+                                    <p>{spell.name}</p>
+                                  ) : (
+                                    <p>{"Empty Slot"}</p>
+                                  )}
+                                </div>
+                                <div style={{ flex: 1 }}>
+                                  <DropdownComponent
+                                    key={indexSpell}
+                                    options={items}
+                                    onAction={(spell: Spell) => chooseSpell()}
+                                  />
+                                </div>
+                              </div>
+                            );
+                          })
+                      ) : (m?.spellsBook as boolean) ? (
+                        <div>
+                          <p>ALL</p>
+                        </div>
+                      ) : null}
+                    </p>
+                  </div>
+                </div>
+              );
+          })
+        : null}
+
+      {/* {mapOfKnow && spells
         ? spells.map((s, index) => {
             const items: itemInDrop[] = addToDrop(s.spells, "spells");
             const classEntry = mapOfKnow.find((m) => m.classe === s.class);
@@ -251,8 +299,8 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                 </p>
                 {quanti === -2 ? (
                   <span>ALL</span>
-                ) : (
-                  // render a DropdownComponent for each available spell slot
+                ) : ( */}
+      {/* // render a DropdownComponent for each available spell slot
                   Array.from({ length: quanti }).map((_, i) => (
                     <DropdownComponent
                       key={i}
@@ -266,9 +314,9 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
               </div>
             );
           })
-        : null}
+        : null} */}
       <h2>SPELLS PER DAY</h2>
-      {mapOfDay && mapOfKnow && spells
+      {/* {mapOfDay && mapOfKnow && spells
         ? spells.map((s, index) => {
             // const all = mapOfKnow[index].spells.includes(-2)? true : false
             // const filtredPerKnown = FilterPerKnownSpells(all, [], s.spells)
@@ -310,7 +358,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
               </div>
             );
           })
-        : null}
+        : null} */}
     </div>
   );
 };

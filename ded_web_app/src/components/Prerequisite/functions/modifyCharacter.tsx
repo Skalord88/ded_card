@@ -108,7 +108,7 @@ export type CharToModify = {
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
   magicClassLv?: { [classe: string]: number };
-  spellsPerDay?: { classe: string; spells: number[]; books: Book[] }[];
+  spellsPerDay?: (Book | null)[];
   spellsKnown?: (Book | null)[] ;
 };
 
@@ -227,12 +227,9 @@ export const modifyCharacter = (
     char.classPcList
   );
 
-  // console.log("classiMagiche: ", classiMagiche);
-
   const daySpells: {
     classe: string;
     spells: number[];
-    books: Book[];
   }[] = char.classPcList.flatMap((cl) =>
     cl.classCharacter.spellsPerDay && !cl.baseClass
       ? [
@@ -248,23 +245,51 @@ export const modifyCharacter = (
                       cl.level + classiMagiche[cl.classCharacter.className]
                 )
                 ?.spells.map((s) => s) || []
-            ),
-            books: char.books
-              .filter(
-                (s) =>
-                  s.knowDay === "DAY" &&
-                  s.caster === cl.classCharacter.className
-              )
-              .map((b) => b)
+            )
           }
         ]
       : []
   );
+  const totalSpellsDay: (Book | null)[] = daySpells.flatMap((ks) => {
+    const caster: string = ks.classe;
+    const sp = char.books.filter(b => b.caster === caster && b.knowDay === "DAY");
+    return ks.spells.map((s, sIndex) => {
+      if (s !== -3) {
+        if (s === -2) {
+          return {
+            caster: caster,
+            level: sIndex,
+            knowDay: "DAY",
+            spellsBook: true
+          };
+        }
+        const spells: (Spell | null)[] = [];
+        for (let i = 0; i < s; i++) {
+          if(sp.length - i > 0){
+            sp.forEach(b => {
+              if(b.level === sIndex){
+                spells.push(Array.isArray(b.spellsBook) ? b.spellsBook[i] : null);
+              }
+            })
+          } else{
+          spells.push(null);}
+        }
+        return {
+          caster: caster,
+          level: sIndex,
+          knowDay: "DAY",
+          spellsBook: spells
+        };
+      } else {
+        return null;
+      }
+    });
+  });
+  console.log("totalSpellsDay:", totalSpellsDay);
 
   const knowSpells: {
     classe: string;
     spells: number[];
-    // books: Book[];
   }[] = char.classPcList.flatMap((cl) =>
     cl.classCharacter.spellsKnown && !cl.baseClass
       ? [
@@ -280,14 +305,6 @@ export const modifyCharacter = (
                 )
                 ?.spells.map((s) => s && s) || []
             )
-            // ,
-            // books: char.books
-            //   .filter(
-            //     (s) =>
-            //       s.knowDay === "KNOWN" &&
-            //       s.caster === cl.classCharacter.className
-            //   )
-            //   .map((b) => b)
           }
         ]
       : []
@@ -295,7 +312,6 @@ export const modifyCharacter = (
   const totalSpellsKnown: (Book | null)[] = knowSpells.flatMap((ks) => {
     const caster: string = ks.classe;
     const sp = char.books.filter(b => b.caster === caster && b.knowDay === "KNOWN");
-    // console.log("sp:", sp);
     return ks.spells.map((s, sIndex) => {
       if (s !== -3) {
         if (s === -2) {
@@ -443,7 +459,7 @@ export const modifyCharacter = (
     feats: allFeats,
     specialAbilities: getAllSpecialAbilities(char),
     magicClassLv: classiMagiche,
-    spellsPerDay: daySpells,
+    spellsPerDay: totalSpellsDay,
     spellsKnown: totalSpellsKnown
     // books: char.books
   };
