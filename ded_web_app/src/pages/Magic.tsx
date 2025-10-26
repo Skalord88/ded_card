@@ -187,42 +187,54 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   // console.log("mk.listDay:", listDay);
   // }, []);
 
-  const chooseSpell = () =>
-    //   knowDay: string,
-    //   s: Spell,
-    //   index: number,
-    //   indexOfList: number
+  const chooseSpell = (
+      knowDay: string,
+      caster: string,
+      s: Spell,
+      level: number,
+      indexOfSpell: number) =>
+      
     {
-      //   console.log(
-      //     "knowDay:",
-      //     knowDay,
-      //     "s:",
-      //     s.id,
-      //     "index:",
-      //     index,
-      //     "indexOfList:",
-      //     indexOfList
-      //   );
-      // if (s && choosenSpell[index] !== undefined && choosenSpell[index].length) {
-      //   const oldList: number[] = choosenSpell[index];
-      //   let added = false;
-      //   for (let i = 0; i < oldList.length - 1; i++) {
-      //     if (i === indexOfList) {
-      //       oldList[i] = s.id;
-      //       added = true;
-      //     }
-      //   }
-      //   if (!added) {
-      //     oldList.push(s.id);
-      //   }
-      //   choosenSpell[index] = oldList;
-      //   console.log(choosenSpell);
-      //   setChoosenSpell({ ...choosenSpell });
-      // } else {
-      //   choosenSpell[index] = [s.id];
-      //   console.log(choosenSpell);
-      //   setChoosenSpell({ ...choosenSpell });
-      // }
+        // console.log(
+        //   "knowDay:",
+        //   knowDay,
+        //   "caster:",
+        //   caster,
+        //   "s:",
+        //   s.id,
+        //   "level:",
+        //   level,
+        //   "indexOfSpell:",
+        //   indexOfSpell
+        // );
+        const indexBookKnown: number
+        const indexBookDay: number
+        const book: Book = knowDay === "know"?
+        mapOfKnow?.find((m, indexKnown) => m?.caster === caster && m?.level === level) as Book
+        :
+        mapOfDay?.find((m) => m?.caster === caster && m?.level === level) as Book;
+
+        if (Array.isArray(book.spellsBook)) {
+          // book.spellsBook is (Spell | null)[]
+          // You can safely use book.spellsBook here if needed
+          const moddedSpellsBook = book.spellsBook.map((sp, idx) =>
+            idx === indexOfSpell ? s : sp)
+          const moddedBook: Book = {
+            ...book,
+            spellsBook: moddedSpellsBook
+        }
+          if (knowDay === "know") {
+            const existingIndex = choosenKnownSpell.findIndex(
+              (b) => b.caster === caster && b.level === level
+            ); 
+            if (existingIndex >= 0) {
+              const updatedKnownSpells = [...choosenKnownSpell];
+              updatedKnownSpells[existingIndex] = moddedBook;
+              setChoosenKnownSpell(updatedKnownSpells);
+            } else {
+              setChoosenKnownSpell([...choosenKnownSpell, moddedBook]);
+            }
+          }
     };
 
   return (
@@ -266,7 +278,13 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                                   <DropdownComponent
                                     key={indexSpell}
                                     options={items}
-                                    onAction={(spell: Spell) => chooseSpell()}
+                                    onAction={(spell: Spell) => chooseSpell(
+                                      "know",
+                                      m?.caster,
+                                      spell,
+                                      m.level,
+                                      indexSpell
+                                    )}
                                   />
                                 </div>
                               </div>
