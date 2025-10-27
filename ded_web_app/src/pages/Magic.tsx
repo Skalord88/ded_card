@@ -139,12 +139,43 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
     []
   );
   const [choosenDaySpell, setChoosenDaySpell] = useState<(Book | null)[]>([]);
-  const [filterKnown, setFilterKnown] = useState<number[]>([]);
+  const [filterKnown, setFilterKnown] = useState<{
+    [classe: string]: number[];
+  }>({});
 
   useEffect(() => {
     setChoosenKnownSpell(mapOfKnow || []);
     setChoosenDaySpell(mapOfDay || []);
   }, []);
+
+  useEffect(() => {
+    if (choosenKnownSpell) {
+      let filterK
+      : {[classe: string]: number[]}
+      = {}
+      choosenKnownSpell.map((b) => {
+        if (b) {
+          const value =
+            b.spellsBook === true
+              ? [-2]
+              : Array.isArray(b.spellsBook)
+              ? b.spellsBook
+                  .reduce((acc, s) => {
+                    if (s) {
+                      acc.push(s.id);
+        }})
+                  // .filter((id): id is number => id !== null && id !== undefined)
+              : [];
+          filterK[b.caster] = value;
+        }
+        // console.log(filterK);
+      });
+      // if(filterK !== undefined)
+      setFilterKnown(filterK);
+      console.log(filterK);
+    }
+    
+  }, [choosenKnownSpell, choosenDaySpell]);
 
   const chooseSpell = (
     knowDay: string,
@@ -266,59 +297,63 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
       <h2 className="rpgui-container-framed golden-2">SPELLS PER DAY</h2>
       {choosenDaySpell && spells
         ? choosenDaySpell.map((m, idx) => {
-          if (m && Array.isArray(m.spellsBook) && m.spellsBook.length > 0)
-            return (
-              <div className="rpgui-container-framed" key={idx}>
-                <p>
-                  {m?.caster}
-                  {" lv."}
-                  {m?.level}
-                </p>
-                {m?.spellsBook && Array.isArray(m?.spellsBook) ? (
-                  m?.spellsBook.map((spell, indexSpell) => {
-                    const casterSpells = spells.flatMap((s) =>
-                      s.class === m.caster && s.level === m.level
-                        ? s.spells ?? []
-                        : []
-                    );
-                    const items: itemInDrop[] = addToDrop(
-                      casterSpells,
-                      "spells"
-                    );
-                    return (
-                      <div
-                        className="rpgui-container-framed grey"
-                        key={indexSpell}
-                        style={{ display: "flex" }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          {spell ? <p>{spell.name}</p> : <p>{"Empty Slot"}</p>}
+            if (m && Array.isArray(m.spellsBook) && m.spellsBook.length > 0)
+              return (
+                <div className="rpgui-container-framed" key={idx}>
+                  <p>
+                    {m?.caster}
+                    {" lv."}
+                    {m?.level}
+                  </p>
+                  {m?.spellsBook && Array.isArray(m?.spellsBook) ? (
+                    m?.spellsBook.map((spell, indexSpell) => {
+                      const casterSpells = spells.flatMap((s) =>
+                        s.class === m.caster && s.level === m.level
+                          ? s.spells ?? []
+                          : []
+                      );
+                      const items: itemInDrop[] = addToDrop(
+                        casterSpells,
+                        "spells"
+                      );
+                      return (
+                        <div
+                          className="rpgui-container-framed grey"
+                          key={indexSpell}
+                          style={{ display: "flex" }}
+                        >
+                          <div style={{ flex: 1 }}>
+                            {spell ? (
+                              <p>{spell.name}</p>
+                            ) : (
+                              <p>{"Empty Slot"}</p>
+                            )}
+                          </div>
+                          <div style={{ flex: 1 }}>
+                            <DropdownComponent
+                              key={indexSpell}
+                              options={items}
+                              onAction={(spell: Spell) =>
+                                chooseSpell(
+                                  "day",
+                                  m?.caster,
+                                  spell,
+                                  m.level,
+                                  indexSpell
+                                )
+                              }
+                            />
+                          </div>
                         </div>
-                        <div style={{ flex: 1 }}>
-                          <DropdownComponent
-                            key={indexSpell}
-                            options={items}
-                            onAction={(spell: Spell) =>
-                              chooseSpell(
-                                "day",
-                                m?.caster,
-                                spell,
-                                m.level,
-                                indexSpell
-                              )
-                            }
-                          />
-                        </div>
-                      </div>
-                    );
-                  })
-                ) : (m?.spellsBook as boolean) ? (
-                  <div>
-                    <p>ALL</p>
-                  </div>
-                ) : null}
-              </div>
-            );
+                      );
+                    })
+                  ) : m?.spellsBook ? (
+                    <div>
+                      <p>ALL</p>
+                    </div>
+                  ) : null}
+                </div>
+              );
           })
         : null}
     </div>
