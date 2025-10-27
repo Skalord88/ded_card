@@ -44,6 +44,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
       >
         <label style={{ marginRight: "8px" }}>▼</label> {selectedItem}
       </p>
+      <div>
       {isOpen && (
         <ul className="rpgui-dropdown-imp">
           {options.map((o, index) => (
@@ -53,6 +54,7 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
           ))}
         </ul>
       )}
+      </div>
     </div>
   );
 };
