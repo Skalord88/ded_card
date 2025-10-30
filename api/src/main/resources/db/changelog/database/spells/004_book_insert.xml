@@ -40,6 +40,13 @@
             <column name="level" value="2" />
             <!-- <column name="character_id" value="100" /> -->
         </insert>
+        <insert tableName="book">
+            <column name="id" value="1105" />
+            <column name="caster" value="CLERIC" />
+            <column name="know_day" value="DAY" />
+            <column name="level" value="1" />
+            <!-- <column name="character_id" value="100" /> -->
+        </insert>
         <!-- book -->
     </changeSet>
 </databaseChangeLog>

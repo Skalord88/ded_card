@@ -14,7 +14,7 @@
                 &quot;dexterity&quot;: 18,
                 &quot;constitution&quot;: 12,
                 &quot;intelligence&quot;: 13,
-                &quot;wisdom&quot;: 8,
+                &quot;wisdom&quot;: 14,
                 &quot;charisma&quot;: 10
             }" />
             <column name="sub_race_id" value="502" />

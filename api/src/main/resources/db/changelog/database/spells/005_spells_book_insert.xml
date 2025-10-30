@@ -60,5 +60,10 @@
             <column name="spells_id" value="57" />
             <!-- Puli DAY 2 Cat grace -->
         </insert>
+        <insert tableName="spells_book">
+            <column name="book_id" value="1105" />
+            <column name="spells_id" value="32" />
+            <!-- Puli DAY 1 Bane -->
+        </insert>
     </changeSet>
 </databaseChangeLog>

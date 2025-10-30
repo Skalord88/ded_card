@@ -20,47 +20,20 @@ export function Magic() {
   const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
   const [spellsList, setSpellsList] = useState<Spell[]>();
-  // const [booksChar, setBookChar] = useState<Book[]>([]);
   const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
-  // const [mapOfAbilitys, setMapAbilitys] = useState<{ [key: string]: number }>();
-  // const [mapOfKnow, setMapOfKnow] = useState<
-  //   {
-  //     classe: string;
-  //     spells: number[];
-  //     books: Book[];
-  //   }[]
-  // >();
-  // const [mapOfDay, setMapOfDay] = useState<
-  //   {
-  //     classe: string;
-  //     spells: number[];
-  //     books: Book[];
-  //   }[]
-  // >();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         const charDB: CharacterPc = resURL.data;
-        setChar(charDB);
-
-        // charDB.books.forEach((book) => {
-        //   console.log("Book:", book);
-        // })
 
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
 
-        // newModChar.spellsKnown?.forEach((sk) => {
-        //   console.log("Known Spells:", sk);
-        // })
-
         const resSpells = await axios.get(urlSpellsList);
         const allSpells: Spell[] = resSpells.data;
         setSpellsList(allSpells);
-
-        // setBookChar(resURL.data.books);
       } catch (error) {
         console.log(error);
       }
@@ -71,42 +44,14 @@ export function Magic() {
 
   useEffect(() => {
     if (modChar) {
-      // const actualKnownClassLv: {
-      //   classe: string;
-      //   spells: number[];
-      // }[] = modChar.spellsKnown ?? [];
-      // console.log("actualKnownClassLv:", actualKnownClassLv);
-      // setMapOfKnow(actualKnownClassLv);
-
-      // const actualDayClassLv: {
-      //   classe: string;
-      //   spells: number[];
-      // }[] = modChar.spellsPerDay ?? [];
-
-      // console.log("actualDayClassLv:", actualDayClassLv);
-      // setMapOfDay(actualDayClassLv);
-
       const spellMap: SpellsByLevelAndClass[] = FilterSpellsByLevelAndClass(
         spellsList || [],
         modChar.magicClassLv || {}
-        // char,
       );
 
       setSpellsPgList(spellMap);
     }
   }, [modChar, spellsList]);
-
-  // const UpdateBooks = (s: Spell) => {
-  //   for (const book of booksChar) {
-  //     for (const level of s.level || []) {
-  //       if (level.level === book.level) {
-  //         book.spells.push(s);
-  //         break;
-  //       }
-  //     }
-  //   }
-  //   setBookChar([...booksChar]);
-  // };
 
   return (
     <PageLayout title={"Magic"}>
@@ -114,12 +59,10 @@ export function Magic() {
         {spellsPgList && (
           <CharacterSpells
             spells={spellsPgList}
-            // mapOfAbilitys={mapOfAbilitys}
             mapOfKnow={modChar?.spellsKnown}
             mapOfDay={modChar?.spellsPerDay}
           />
         )}
-        {/* {char && <CharacterBooks books={booksChar} />} */}
       </div>
     </PageLayout>
   );
@@ -140,7 +83,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   );
   const [choosenDaySpell, setChoosenDaySpell] = useState<(Book | null)[]>([]);
   const [filterKnown, setFilterKnown] = useState<{
-    [classe: string]: number[];
+    [classe: string]: (boolean | Spell | null)[];
   }>({});
 
   useEffect(() => {
@@ -149,33 +92,20 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   }, []);
 
   useEffect(() => {
-    if (choosenKnownSpell) {
-      let filterK
-      : {[classe: string]: number[]}
-      = {}
-      choosenKnownSpell.map((b) => {
-        if (b) {
-          const value =
-            b.spellsBook === true
-              ? [-2]
-              : Array.isArray(b.spellsBook)
-              ? b.spellsBook
-                  .reduce((acc, s) => {
-                    if (s) {
-                      acc.push(s.id);
-        }})
-                  // .filter((id): id is number => id !== null && id !== undefined)
-              : [];
-          filterK[b.caster] = value;
-        }
-        // console.log(filterK);
-      });
-      // if(filterK !== undefined)
-      setFilterKnown(filterK);
-      console.log(filterK);
-    }
-    
-  }, [choosenKnownSpell, choosenDaySpell]);
+    const filter: number[] = [];
+    choosenKnownSpell.forEach((book) => {
+      if (book == null) {
+        return;
+      }
+      if (Array.isArray(book.spellsBook)) {
+        book.spellsBook.forEach((spell) => {
+          if (spell && spell !== undefined) {
+            filter.push(spell.id);
+          }
+        });
+      }
+    });
+  }, [choosenKnownSpell]);
 
   const chooseSpell = (
     knowDay: string,
@@ -214,17 +144,16 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         } else {
           setChoosenKnownSpell([...choosenKnownSpell, moddedBook]);
         }
-      }
-      if (knowDay === "know") {
-        const existingIndex = choosenKnownSpell.findIndex(
+      } else {
+        const existingIndex = choosenDaySpell.findIndex(
           (b) => b && b.caster === caster && b.level === level
         );
         if (existingIndex >= 0) {
-          const updatedKnownSpells = [...choosenKnownSpell];
+          const updatedKnownSpells = [...choosenDaySpell];
           updatedKnownSpells[existingIndex] = moddedBook;
-          setChoosenKnownSpell(updatedKnownSpells);
+          setChoosenDaySpell(updatedKnownSpells);
         } else {
-          setChoosenKnownSpell([...choosenKnownSpell, moddedBook]);
+          setChoosenDaySpell([...choosenDaySpell, moddedBook]);
         }
       }
     }

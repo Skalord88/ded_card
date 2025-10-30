@@ -227,6 +227,8 @@ export const modifyCharacter = (
     char.classPcList
   );
 
+  // console.log("classiMagiche:", classiMagiche);
+
   const daySpells: {
     classe: string;
     spells: number[];
@@ -250,6 +252,7 @@ export const modifyCharacter = (
         ]
       : []
   );
+  console.log("daySpells:", daySpells);
   const totalSpellsDay: (Book | null)[] = daySpells.flatMap((ks) => {
     const caster: string = ks.classe;
     const sp = char.books.filter(b => b.caster === caster && b.knowDay === "DAY");
@@ -285,7 +288,7 @@ export const modifyCharacter = (
       }
     });
   });
-  console.log("totalSpellsDay:", totalSpellsDay);
+  // console.log("totalSpellsDay:", totalSpellsDay);
 
   const knowSpells: {
     classe: string;
@@ -315,6 +318,7 @@ export const modifyCharacter = (
     return ks.spells.map((s, sIndex) => {
       if (s !== -3) {
         if (s === -2) {
+          // console.log("s === -2 for known spells" , caster);
           return {
             caster: caster,
             level: sIndex,
@@ -322,6 +326,7 @@ export const modifyCharacter = (
             spellsBook: true
           };
         }
+        console.log("s:", sp);
         const spells: (Spell | null)[] = [];
         for (let i = 0; i < s; i++) {
           if(sp.length - i > 0){
@@ -344,7 +349,7 @@ export const modifyCharacter = (
       }
     });
   });
-  console.log("totalSpellsKnown:", totalSpellsKnown);
+  // console.log("totalSpellsKnown:", totalSpellsKnown);
   // totalSpellsKnown.map((tsk) => {
   //   tsk.
   // })

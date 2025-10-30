@@ -21,8 +21,8 @@ export type CharacterPc = {
   items: Item[];
   inventory: Inventory;
   attacks: Attacks;
-  magicPerDay: MagicClass;
-  magicKnown: MagicClass;
+  // magicPerDay: MagicClass;
+  // magicKnown: MagicClass;
   books: Book[];
   experience: number;
   treasure: number;
