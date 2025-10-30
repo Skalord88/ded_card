@@ -252,7 +252,7 @@ export const modifyCharacter = (
         ]
       : []
   );
-  console.log("daySpells:", daySpells);
+  // console.log("daySpells:", daySpells);
   const totalSpellsDay: (Book | null)[] = daySpells.flatMap((ks) => {
     const caster: string = ks.classe;
     const sp = char.books.filter(b => b.caster === caster && b.knowDay === "DAY");
@@ -318,7 +318,6 @@ export const modifyCharacter = (
     return ks.spells.map((s, sIndex) => {
       if (s !== -3) {
         if (s === -2) {
-          // console.log("s === -2 for known spells" , caster);
           return {
             caster: caster,
             level: sIndex,
@@ -326,7 +325,6 @@ export const modifyCharacter = (
             spellsBook: true
           };
         }
-        console.log("s:", sp);
         const spells: (Spell | null)[] = [];
         for (let i = 0; i < s; i++) {
           if(sp.length - i > 0){
@@ -349,39 +347,6 @@ export const modifyCharacter = (
       }
     });
   });
-  // console.log("totalSpellsKnown:", totalSpellsKnown);
-  // totalSpellsKnown.map((tsk) => {
-  //   tsk.
-  // })
-  // const allSpellsKnown: Book[] =
-  // const newBooksKnown: (Book)[] = knowSpells.flatMap((ks) =>
-  //   ks.spells.map((sp, index) => {
-  //     if (sp > -3) {
-  //       if(ks.books.find((b) => b.level === index)){
-  //         let totalBook: (Spell | null)[] = ks.books.find((b) => b.level === index)!.spellsBook || [];
-  //         if(totalBook.length === sp){
-  //           Array.from({length: sp - totalBook.length}).forEach(n => totalBook.push(null));
-  //           // totalBook.concat(totalBook);
-  //         }
-  //         console.log("totalBook:", totalBook);
-  //         return {
-  //           ...ks.books.find((b) => b.level === index)!
-  //         } as Book;
-  //       }
-  //       if (sp === -2) {
-  //         return {
-  //           caster: ks.classe,
-  //           level: index,
-  //           knowDay: ks.books.find((b) => b.level === index)?.knowDay || "KNOWN",
-  //           allSpells: true
-  //         } as Book;
-  //       }
-  //       // return true;
-  //     }
-  //     // return false;
-  //   })
-  // );
-  // console.log(newBooksKnown);
 
   const allClassesSkillPoints: number = char.classPcList.reduce(
     (tot, cl) =>

@@ -69,6 +69,7 @@ export function Magic() {
 }
 export type SpellsByLevelAndClassProps = {
   spells: SpellsByLevelAndClass[];
+  numberOfKnownSpells?: number[];
   mapOfKnow?: (Book | null)[];
   // }[];
   mapOfDay?: (Book | null)[];
@@ -83,29 +84,32 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   );
   const [choosenDaySpell, setChoosenDaySpell] = useState<(Book | null)[]>([]);
   const [filterKnown, setFilterKnown] = useState<{
-    [classe: string]: (boolean | Spell | null)[];
+    [classe: string]: {[lv: number]: (boolean | Spell | null)}[];
   }>({});
 
   useEffect(() => {
     setChoosenKnownSpell(mapOfKnow || []);
     setChoosenDaySpell(mapOfDay || []);
-  }, []);
+    const filterK: { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] } = (
+      mapOfKnow || []
+    ).reduce((acc, book) => {
+      if (!book || !book.caster) return acc;
+      acc[book.caster] = [];
+      return acc;
+    }, {} as { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] });
 
-  useEffect(() => {
-    const filter: number[] = [];
-    choosenKnownSpell.forEach((book) => {
-      if (book == null) {
-        return;
-      }
+    (mapOfKnow || []).forEach((book) => {
+      if (!book || !book.caster) return;
       if (Array.isArray(book.spellsBook)) {
         book.spellsBook.forEach((spell) => {
-          if (spell && spell !== undefined) {
-            filter.push(spell.id);
-          }
+          if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
         });
       }
+      if (book.spellsBook === true) filterK[book.caster].push({[book.level]: true});
     });
-  }, [choosenKnownSpell]);
+    // console.log("filterK", filterK);
+    setFilterKnown(filterK);
+  }, []);
 
   const chooseSpell = (
     knowDay: string,
@@ -157,6 +161,18 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         }
       }
     }
+    const filterK: { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] } = filterKnown
+    choosenKnownSpell.forEach((book) => {
+      if (!book || !book.caster) return;
+      if (Array.isArray(book.spellsBook)) {
+        book.spellsBook.forEach((spell) => {
+          if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
+        });
+      }
+      if (book.spellsBook === true) filterK[book.caster].push({[book.level]: true});
+    });
+    console.log("filterK", filterK);
+    setFilterKnown(filterK);
   };
 
   return (
