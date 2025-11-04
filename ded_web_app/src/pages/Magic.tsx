@@ -161,18 +161,22 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         }
       }
     }
-    const filterK: { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] } = filterKnown
-    choosenKnownSpell.forEach((book) => {
-      if (!book || !book.caster) return;
-      if (Array.isArray(book.spellsBook)) {
-        book.spellsBook.forEach((spell) => {
-          if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
-        });
-      }
-      if (book.spellsBook === true) filterK[book.caster].push({[book.level]: true});
-    });
-    console.log("filterK", filterK);
-    setFilterKnown(filterK);
+    // const filterK: { [classe: string]: (boolean | {lv: number, spells: Spell[]} | null) }[] = filterKnown
+    // choosenKnownSpell.forEach((book) => {
+      // console.log("book", book);
+      // console.log("filterK", book? filterK[book.caster] : "vuoto");
+      // if (!book || !book.caster) return;
+      // const caster: string = book.caster;
+      // if (Array.isArray(book.spellsBook)) {
+      //   book.spellsBook.forEach((spell) => {
+          // if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
+        // });
+      // }
+      // if (book.spellsBook === true) filterK[caster] = true;
+        // filterK[book.caster].push({[book.level]: true});
+  //   });
+  //   console.log("filterK", filterK);
+  //   setFilterKnown(filterK);
   };
 
   return (
@@ -254,7 +258,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                     m?.spellsBook.map((spell, indexSpell) => {
                       const casterSpells = spells.flatMap((s) =>
                         s.class === m.caster && s.level === m.level
-                          ? s.spells ?? []
+                          ? s.spells? s.spells : []
                           : []
                       );
                       const items: itemInDrop[] = addToDrop(
