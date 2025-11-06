@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
+  FilterAlreadyKnownSpells,
+  FilterDayByAlreadyKnownSpells,
   FilterPerKnownSpells,
   FilterSpellsByLevelAndClass,
   SpellsByLevelAndClass
@@ -17,7 +19,7 @@ import { CharToModify } from "../components/Prerequisite/functions/modifyCharact
 
 export function Magic() {
   const { charId } = useParams();
-  const [char, setChar] = useState<CharacterPc>();
+  // const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
   const [spellsList, setSpellsList] = useState<Spell[]>();
   const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
@@ -84,32 +86,35 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   );
   const [choosenDaySpell, setChoosenDaySpell] = useState<(Book | null)[]>([]);
   const [filterKnown, setFilterKnown] = useState<{
-    [classe: string]: {[lv: number]: (boolean | Spell | null)}[];
+    [classe: string]: Set<number>;
   }>({});
 
   useEffect(() => {
+    if (mapOfKnow === undefined || mapOfDay === undefined) return;
     setChoosenKnownSpell(mapOfKnow || []);
     setChoosenDaySpell(mapOfDay || []);
-    const filterK: { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] } = (
-      mapOfKnow || []
-    ).reduce((acc, book) => {
-      if (!book || !book.caster) return acc;
-      acc[book.caster] = [];
-      return acc;
-    }, {} as { [classe: string]: {[lv: number]: (boolean | Spell | null)}[] });
+  }, []);
 
-    (mapOfKnow || []).forEach((book) => {
-      if (!book || !book.caster) return;
-      if (Array.isArray(book.spellsBook)) {
+  useEffect(() => {
+    const filterK: { [classe: string]: Set<number> } = {};
+    choosenKnownSpell.forEach((book) => {
+      if (!book) return;
+      if (book?.caster) filterK[book.caster] = new Set<number>();
+    });
+
+    choosenKnownSpell.forEach((book) => {
+      if (book && book.caster && Array.isArray(book.spellsBook)) {
         book.spellsBook.forEach((spell) => {
-          if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
+          if (spell) {
+            if (filterK[book.caster]) {
+              filterK[book.caster].add(spell.id);
+            }
+          }
         });
       }
-      if (book.spellsBook === true) filterK[book.caster].push({[book.level]: true});
     });
-    // console.log("filterK", filterK);
     setFilterKnown(filterK);
-  }, []);
+  }, [choosenKnownSpell]);
 
   const chooseSpell = (
     knowDay: string,
@@ -161,43 +166,28 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         }
       }
     }
-    // const filterK: { [classe: string]: (boolean | {lv: number, spells: Spell[]} | null) }[] = filterKnown
-    // choosenKnownSpell.forEach((book) => {
-      // console.log("book", book);
-      // console.log("filterK", book? filterK[book.caster] : "vuoto");
-      // if (!book || !book.caster) return;
-      // const caster: string = book.caster;
-      // if (Array.isArray(book.spellsBook)) {
-      //   book.spellsBook.forEach((spell) => {
-          // if (spell && spell !== undefined) filterK[book.caster].push({[book.level]: spell});
-        // });
-      // }
-      // if (book.spellsBook === true) filterK[caster] = true;
-        // filterK[book.caster].push({[book.level]: true});
-  //   });
-  //   console.log("filterK", filterK);
-  //   setFilterKnown(filterK);
   };
 
   return (
     <div>
       <h2 className="rpgui-container-framed golden-2">SPELLS KNONW</h2>
       {choosenKnownSpell && spells
-        ? choosenKnownSpell.map((m, idx) => {
-            if (m?.spellsBook)
+        ? choosenKnownSpell.map((book, idx) => {
+            if (book?.spellsBook)
               return (
                 <div className="rpgui-container-framed" key={idx}>
                   <p>
-                    {m?.caster}
+                    {book?.caster}
                     {" lv."}
-                    {m?.level}
+                    {book?.level}
                   </p>
-                  {m?.spellsBook && Array.isArray(m?.spellsBook) ? (
-                    m?.spellsBook.map((spell, indexSpell) => {
-                      const casterSpells = spells.flatMap((s) =>
-                        s.class === m.caster && s.level === m.level
-                          ? s.spells ?? []
-                          : []
+                  {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
+                    book?.spellsBook.map((spell, indexSpell) => {
+                      const casterSpells = FilterAlreadyKnownSpells(
+                        filterKnown,
+                        book.caster,
+                        book.level,
+                        spells
                       );
                       const items: itemInDrop[] = addToDrop(
                         casterSpells,
@@ -223,9 +213,9 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                               onAction={(spell: Spell) =>
                                 chooseSpell(
                                   "know",
-                                  m?.caster,
+                                  book?.caster,
                                   spell,
-                                  m.level,
+                                  book.level,
                                   indexSpell
                                 )
                               }
@@ -234,7 +224,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                         </div>
                       );
                     })
-                  ) : (m?.spellsBook as boolean) ? (
+                  ) : (book?.spellsBook as boolean) ? (
                     <div>
                       <p>ALL</p>
                     </div>
@@ -245,21 +235,28 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         : null}
       <h2 className="rpgui-container-framed golden-2">SPELLS PER DAY</h2>
       {choosenDaySpell && spells
-        ? choosenDaySpell.map((m, idx) => {
-            if (m && Array.isArray(m.spellsBook) && m.spellsBook.length > 0)
+        ? choosenDaySpell.map((book, idx) => {
+            if (
+              book &&
+              Array.isArray(book.spellsBook) &&
+              book.spellsBook.length > 0
+            )
               return (
                 <div className="rpgui-container-framed" key={idx}>
                   <p>
-                    {m?.caster}
+                    {book?.caster}
                     {" lv."}
-                    {m?.level}
+                    {book?.level}
                   </p>
-                  {m?.spellsBook && Array.isArray(m?.spellsBook) ? (
-                    m?.spellsBook.map((spell, indexSpell) => {
-                      const casterSpells = spells.flatMap((s) =>
-                        s.class === m.caster && s.level === m.level
-                          ? s.spells? s.spells : []
-                          : []
+                  {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
+                    book?.spellsBook.map((spell, indexSpell) => {
+                      const casterSpells = FilterDayByAlreadyKnownSpells(
+                        filterKnown,
+                        idx,
+                        book.caster,
+                        book.level,
+                        spells,
+                        choosenKnownSpell
                       );
                       const items: itemInDrop[] = addToDrop(
                         casterSpells,
@@ -285,9 +282,9 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                               onAction={(spell: Spell) =>
                                 chooseSpell(
                                   "day",
-                                  m?.caster,
+                                  book?.caster,
                                   spell,
-                                  m.level,
+                                  book.level,
                                   indexSpell
                                 )
                               }
@@ -296,7 +293,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                         </div>
                       );
                     })
-                  ) : m?.spellsBook ? (
+                  ) : book?.spellsBook ? (
                     <div>
                       <p>ALL</p>
                     </div>

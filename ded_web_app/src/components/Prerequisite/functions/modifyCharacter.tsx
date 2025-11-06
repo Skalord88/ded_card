@@ -109,7 +109,7 @@ export type CharToModify = {
   specialAbilities: SpecialAbilities[];
   magicClassLv?: { [classe: string]: number };
   spellsPerDay?: (Book | null)[];
-  spellsKnown?: (Book | null)[] ;
+  spellsKnown?: (Book | null)[];
 };
 
 export type TableOfBonusSpells = {
@@ -171,25 +171,23 @@ export const CurrentCasterLevelInClass = (
   const casterLevel: { [classe: string]: number } = {};
 
   classi.forEach((classe) => {
-    if (classe.classCharacter.spellsPerDay) {
-      // console.log("classe:", classe);
-      // per i caster di prestigio
-      if (classe.baseClass) {
-        const nomeClasseBase = classi.find(
-          (c) => c.classCharacter.id === classe.baseClass
-        )?.classCharacter.className;
-        if (nomeClasseBase) {
-          casterLevel[nomeClasseBase] =
-            classe.classCharacter.spellsPerDay?.spellsInLevel[classe.level - 1]
-              ?.level || 0;
-        }
-      } else {
-        if (classe.classCharacter.spellsDomain)
-          casterLevel[classe.classCharacter.className] = classe.level - 1;
+    if (classe.baseClass) {
+      if (classe.classCharacter.spellsPerDay) {
+        // per i caster di prestigio
+          const nomeClasseBase = classi.find(
+            (c) => c.classCharacter.id === classe.baseClass
+          )?.classCharacter.className;
+          if (nomeClasseBase) {
+            casterLevel[nomeClasseBase] =
+              classe.classCharacter.spellsPerDay?.spellsInLevel[
+                classe.level - 1
+              ]?.level || 0;
+          }
+          casterLevel[classe.classCharacter.className]
+          = classe.level
       }
     }
   });
-  // return FilterSpellsByPgClass(casterLevel);
   return casterLevel;
 };
 
@@ -227,7 +225,7 @@ export const modifyCharacter = (
     char.classPcList
   );
 
-  // console.log("classiMagiche:", classiMagiche);
+  console.log("classiMagiche:", classiMagiche);
 
   const daySpells: {
     classe: string;
@@ -242,9 +240,7 @@ export const modifyCharacter = (
               cl.classCharacter.spellsPerDay.spellsInLevel
                 .find(
                   (sp) =>
-                    sp &&
-                    sp.level ===
-                      cl.level + classiMagiche[cl.classCharacter.className]
+                    sp && sp.level + classiMagiche[cl.classCharacter.className]
                 )
                 ?.spells.map((s) => s) || []
             )
@@ -255,10 +251,12 @@ export const modifyCharacter = (
   // console.log("daySpells:", daySpells);
   const totalSpellsDay: (Book | null)[] = daySpells.flatMap((ks) => {
     const caster: string = ks.classe;
-    const sp = char.books.filter(b => b.caster === caster && b.knowDay === "DAY");
-    return ks.spells.map((s, sIndex) => {
-      if (s !== -3) {
-        if (s === -2) {
+    const sp = char.books.filter(
+      (b) => b.caster === caster && b.knowDay === "DAY"
+    );
+    return ks.spells.map((sNumber, sIndex) => {
+      if (sNumber !== -3) {
+        if (sNumber === -2) {
           return {
             caster: caster,
             level: sIndex,
@@ -267,15 +265,18 @@ export const modifyCharacter = (
           };
         }
         const spells: (Spell | null)[] = [];
-        for (let i = 0; i < s; i++) {
-          if(sp.length - i > 0){
-            sp.forEach(b => {
-              if(b.level === sIndex){
-                spells.push(Array.isArray(b.spellsBook) ? b.spellsBook[i] : null);
+        for (let i = 0; i < sNumber; i++) {
+          if (sp.length - i > 0) {
+            sp.forEach((b) => {
+              if (b.level === sIndex) {
+                spells.push(
+                  Array.isArray(b.spellsBook) ? b.spellsBook[i] : null
+                );
               }
-            })
-          } else{
-          spells.push(null);}
+            });
+          } else {
+            spells.push(null);
+          }
         }
         return {
           caster: caster,
@@ -314,7 +315,9 @@ export const modifyCharacter = (
   );
   const totalSpellsKnown: (Book | null)[] = knowSpells.flatMap((ks) => {
     const caster: string = ks.classe;
-    const sp = char.books.filter(b => b.caster === caster && b.knowDay === "KNOWN");
+    const sp = char.books.filter(
+      (b) => b.caster === caster && b.knowDay === "KNOWN"
+    );
     return ks.spells.map((s, sIndex) => {
       if (s !== -3) {
         if (s === -2) {
@@ -327,14 +330,17 @@ export const modifyCharacter = (
         }
         const spells: (Spell | null)[] = [];
         for (let i = 0; i < s; i++) {
-          if(sp.length - i > 0){
-            sp.forEach(b => {
-              if(b.level === sIndex){
-                spells.push(Array.isArray(b.spellsBook) ? b.spellsBook[i] : null);
+          if (sp.length - i > 0) {
+            sp.forEach((b) => {
+              if (b.level === sIndex) {
+                spells.push(
+                  Array.isArray(b.spellsBook) ? b.spellsBook[i] : null
+                );
               }
-            })
-          } else{
-          spells.push(null);}
+            });
+          } else {
+            spells.push(null);
+          }
         }
         return {
           caster: caster,

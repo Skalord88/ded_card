@@ -167,18 +167,48 @@ export const FilterPerKnownSpells = (
   return spells.filter((s) => filter.some((f) => f === s.id));
 };
 
-// export const CalculateBonusSpellsByAtribute = (
-//   attribute: number,
-//   spellsTable: number[],
-// ): number[] => {
-//   // Prende la riga giusta della tabella o default a 10 se fuori range
-//   const bonus = BonusTableSpells[attribute] ?? BonusTableSpells[10];
+export const FilterAlreadyKnownSpells = (
+  filterKnown: {
+    [classe: string]: Set<number>;
+  },
+  caster: string,
+  level: number,
+  spells: SpellsByLevelAndClass[]
+): Spell[] => {
+  return spells.flatMap((s) =>
+    s.class === caster && s.level === level
+      ? s.spells.filter(
+          (spell) => filterKnown[caster].has(spell.id) === false
+        ) ?? []
+      : []
+  );
+};
 
-//   // Taglia i bonus al numero di livelli disponibili
-//   const slicedBonus = bonus.slice(0, spellsTable.length);
-
-//   // Somma slot base + bonus
-//   const result = spellsTable.map((s, i) => s + (slicedBonus[i] ?? 0));
-
-//   return result;
-// };
+export const FilterDayByAlreadyKnownSpells = (
+  filterKnown: {
+    [classe: string]: Set<number>;
+  },
+  idx: number, // index actual level
+  caster: string,
+  level: number,
+  spells: SpellsByLevelAndClass[],
+  choosenKnownSpell: (Book | null)[]
+) => {
+  return spells.flatMap((s) =>
+    s.class === caster && s.level === level
+      ? s.spells
+        ? s.spells.filter((spell) => {
+            if (
+              (choosenKnownSpell[idx]?.spellsBook as boolean) &&
+              choosenKnownSpell[idx]?.spellsBook === true
+            ) {
+              return spell;
+            }
+            if (filterKnown[caster]?.has(spell.id)) {
+              return spell;
+            }
+          })
+        : []
+      : []
+  );
+};
