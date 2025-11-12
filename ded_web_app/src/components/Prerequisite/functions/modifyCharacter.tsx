@@ -22,7 +22,10 @@ import {
   SpecialAttacks,
   Spell
 } from "../../interfaces";
-import { findAllProficency } from "../../Items/Functions/function";
+import {
+  findAllProficency,
+  ReturnRingPosition
+} from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
 import { SpellsByLevelAndClass } from "../../Magic/Functions";
 import { adjClass } from "../../Race/AdjClass";
@@ -157,12 +160,21 @@ export const addBonusSpells = (bnsAb: number, spells: number[]): number[] => {
   return [-3];
 };
 
-export const SorcereWizzardFilter = (classe: string): string => {
+export const SorcererWizzardFilter = (classe: string): string => {
   if (classe === "WIZARD" || classe === "SORCERER") {
     return "SORCERER_WIZARD";
   } else {
     return classe;
   }
+};
+
+export const FindBaseCasterOfPrestige = (
+  id: number,
+  classi: ClassPc[]
+): string => {
+  const foundClass = classi.find((c) => c.classCharacter.id === id);
+  if (!foundClass) return "";
+  return foundClass.classCharacter.className;
 };
 
 export const CurrentCasterLevelInClass = (
@@ -172,22 +184,16 @@ export const CurrentCasterLevelInClass = (
 
   classi.forEach((classe) => {
     if (classe.baseClass) {
-      if (classe.classCharacter.spellsPerDay) {
-        // per i caster di prestigio
-          const nomeClasseBase = classi.find(
-            (c) => c.classCharacter.id === classe.baseClass
-          )?.classCharacter.className;
-          if (nomeClasseBase) {
-            casterLevel[nomeClasseBase] =
-              classe.classCharacter.spellsPerDay?.spellsInLevel[
-                classe.level - 1
-              ]?.level || 0;
-          }
-          casterLevel[classe.classCharacter.className]
-          = classe.level
-      }
+      // Prestige class: find which base class it contributes to
+      const baseCaster = FindBaseCasterOfPrestige(classe.baseClass, classi);
+      casterLevel[baseCaster] = (casterLevel[baseCaster] || 0) + classe.level;
+    } else {
+      // Normal (base) class
+      const className = classe.classCharacter.className;
+      casterLevel[className] = (casterLevel[className] || 0) + classe.level;
     }
   });
+
   return casterLevel;
 };
 
@@ -225,7 +231,7 @@ export const modifyCharacter = (
     char.classPcList
   );
 
-  console.log("classiMagiche:", classiMagiche);
+  
 
   const daySpells: {
     classe: string;
@@ -238,11 +244,8 @@ export const modifyCharacter = (
             spells: addBonusSpells(
               findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
               cl.classCharacter.spellsPerDay.spellsInLevel
-                .find(
-                  (sp) =>
-                    sp && sp.level + classiMagiche[cl.classCharacter.className]
-                )
-                ?.spells.map((s) => s) || []
+              .find(s => s.level === classiMagiche[cl.classCharacter.className])
+              ?.spells || []
             )
           }
         ]
@@ -304,8 +307,7 @@ export const modifyCharacter = (
               cl.classCharacter.spellsKnown.spellsInLevel
                 .find(
                   (lv) =>
-                    lv.level ===
-                    cl.level + classiMagiche[cl.classCharacter.className]
+                    lv.level === classiMagiche[cl.classCharacter.className]
                 )
                 ?.spells.map((s) => s && s) || []
             )

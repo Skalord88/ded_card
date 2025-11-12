@@ -1,9 +1,6 @@
-import { Attributes } from "react";
-import { ClassPc, SpellsInLevel } from "../ClassPc/Interface/ClassPcLevel";
-import { Book, CharacterPc, Spell } from "../interfaces";
-import { Abilitys } from "../Abilitys/Interface";
 import { findAbility } from "../Abilitys/Functions";
-import { SorcereWizzardFilter } from "../Prerequisite/functions/modifyCharacter";
+import { Book, CharacterPc, Spell } from "../interfaces";
+import { SorcererWizzardFilter } from "../Prerequisite/functions/modifyCharacter";
 
 export function SortedBooks(books: Book[]): Book[] {
   return books.sort((a, b) => a.caster.localeCompare(b.caster));
@@ -25,7 +22,7 @@ export function FilterSpellsByLevelAndClass(
     const levels: number = maxLevelClass[maxLv] + 1;
     // levels va aggiunto 1 per iterare correttamente
     for (let i = 0; i < levels; i++) {
-      const domanin = SorcereWizzardFilter(maxLv);
+      const domanin = SorcererWizzardFilter(maxLv);
       result.push({
         class: maxLv,
         level: i,
