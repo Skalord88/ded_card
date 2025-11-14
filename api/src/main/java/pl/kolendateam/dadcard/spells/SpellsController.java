@@ -1,5 +1,8 @@
 package pl.kolendateam.dadcard.spells;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +19,12 @@ import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
+import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
+import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.repository.BookRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 
@@ -27,10 +33,14 @@ import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 @RequestMapping("spells")
 public class SpellsController {
 
+  @PersistenceContext
+  EntityManager entityManager;
+
   SpellsRepository spellsRepository;
   SpellsTableRepository spellsTableRepository;
   CharacterRepository characterRepository;
   ClassRepository classRepository;
+  BookRepository bookRepository;
 
   public SpellsController() {}
 
@@ -43,12 +53,14 @@ public class SpellsController {
     SpellsRepository spellsRepository,
     SpellsTableRepository spellsTableRepository,
     CharacterRepository characterRepository,
-    ClassRepository classRepository
+    ClassRepository classRepository,
+    BookRepository bookRepository
   ) {
     this.spellsRepository = spellsRepository;
     this.spellsTableRepository = spellsTableRepository;
     this.characterRepository = characterRepository;
     this.classRepository = classRepository;
+    this.bookRepository = bookRepository;
   }
 
   @GetMapping("")
@@ -102,7 +114,7 @@ public class SpellsController {
   @PostMapping(value = "{id}/addspells", consumes = { "application/json" })
   public CharacterDTO addSpellsKnown(
     @PathVariable int id,
-    @RequestBody SpellsAddDTO SpellsAddDTO
+    @RequestBody List<BookDTO> spellsToAddDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -115,35 +127,18 @@ public class SpellsController {
 
     Character character = characterOpt.get();
 
-    List<Spells> spellsList = this.spellsRepository.findAll();
-
-    // SpellsEnum spellClassE = character.characterGetSpellClassById(
-    //   SpellsAddDTO.idClass
-    // );
-    // int maxLv = character.getMagicKnown().get(classNameE).length;
-    // int lv = 0;
-
-    // if (spellClassE != null) {
-    //   for (int s : SpellsAddDTO.spells) {
-    //     for (Spells spell : spellsList) {
-    //       if (s == spell.getId()) {
-    //         Integer spellToAdd = spell.selectSpellsForClass(spellClassE, maxLv);
-    //         if (spellToAdd != null) {
-    //           // lv = spell.selectSpellByLv(spell);
-    //         }
-
-    //         if (spellToAdd != null) {
-    //           // character.addSpells(spellToAdd, classNameE, lv);
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    character.setCharacterBooks(spellsToAddDTO, entityManager);
 
     this.characterRepository.save(character);
 
     return new CharacterDTO(character);
   }
+
+  // System.out.println(books);
+
+  // this.bookRepository.saveAll(books);
+
+  // this.characterRepository.save(character);
 
   @PostMapping(value = "{id}/sellspells", consumes = { "application/json" })
   public CharacterDTO removeSpellsKnown(

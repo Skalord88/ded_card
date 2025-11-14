@@ -10,12 +10,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -56,6 +59,13 @@ public class Spells implements Serializable {
   String materialComponent;
   String focus;
   String xpCost;
+
+  public Spells(SpellsDTO spellDTO) {
+    // this.id = spellDTO.id;
+    this.name = spellDTO.name;
+    this.school = spellDTO.school;
+    this.descriptiveText = spellDTO.descriptiveText;
+  }
   // public Integer selectSpellsForClass(SpellsEnum spellClasse, int maxLv) {
   //   SpellLevel[] spellsOfClass = MapperSpellsInLevel.toSpellLevelArray(
   //     this.level

@@ -1,9 +1,16 @@
 package pl.kolendateam.dadcard.spells.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.entity.SpellLevel;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SpellsDTO {
 
   public int id;

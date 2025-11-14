@@ -16,6 +16,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -45,8 +46,13 @@ import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
+import pl.kolendateam.dadcard.spells.MapperSpells;
+import pl.kolendateam.dadcard.spells.dto.BookDTO;
+import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Domains;
+import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.repository.BookRepository;
 
 @NoArgsConstructor
 @Getter
@@ -110,8 +116,12 @@ public class Character implements Serializable {
   @JoinColumn(name = "attacks_id", referencedColumnName = "id")
   Attacks attacks;
 
-  @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-  @JoinColumn(name = "character_id", referencedColumnName = "id")
+  @OneToMany(
+    mappedBy = "character",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true,
+    fetch = FetchType.LAZY
+  )
   List<Book> books = new ArrayList<>();
 
   int experience;
@@ -364,94 +374,139 @@ public class Character implements Serializable {
       .collect(Collectors.toSet());
     return ids1.equals(ids2);
   }
-  // public void createOrUpdateInventory(
-  //   ItemsToSendDTO inventoryDTO,
-  //   ItemsRepository itemsRepository,
-  //   EnchantedItemsRepository enchantedItemsRepository
-  // ) {
-  //   if (this.inventory == null) {
-  //     Inventory newInventory = new Inventory(this.id);
-  //     newInventory.addToInventory(
-  //       inventoryDTO,
-  //       itemsRepository,
-  //       enchantedItemsRepository
-  //     );
-  //     this.inventory = newInventory; // let cascading persist it
-  //   } else {
-  //     this.inventory.addToInventory(
-  //         inventoryDTO,
-  //         itemsRepository,
-  //         enchantedItemsRepository
-  //       );
-  //   }
-  // }
-  // public void createInventory(
-  //   ItemsToSendDTO inventoryDTO,
-  //   InventoryRepository inventoryRepository,
-  //   ItemsRepository itemsRepository,
-  //   EnchantedItemsRepository enchantedItemsRepository
-  // ) {
-  //   if (this.inventory == null) {
-  //     Inventory newInventory = new Inventory(this.id);
-  //     this.inventory = newInventory;
-  //     this.inventory.addToInventory(
-  //         inventoryDTO,
-  //         itemsRepository,
-  //         enchantedItemsRepository
-  //       );
-  //     inventoryRepository.saveAndFlush(this.inventory);
-  //   } else {
-  //     Inventory newInventory = inventoryRepository
-  //       .findById(inventory.getId())
-  //       .orElseThrow(() ->
-  //         new ResponseStatusException(
-  //           HttpStatus.NOT_FOUND,
-  //           "Inventory Not Found"
-  //         )
-  //       );
-  //     newInventory.addToInventory(
-  //       inventoryDTO,
-  //       itemsRepository,
-  //       enchantedItemsRepository
-  //     );
-  //     this.inventory = newInventory;
-  //     inventoryRepository.saveAndFlush(this.inventory);
-  //   }
-  // }
-  // public void createInventory(
-  //   ItemsToSendDTO inventoryDTO,
-  //   InventoryRepository inventoryRepository,
-  //   ItemsRepository itemsRepository,
-  //   EnchantedItemsRepository enchantedItemsRepository
-  //   // CharacterRepository characterRepository
-  // ) {
-  //   if (this.inventory == null) {
-  //     Inventory newInventory = new Inventory(this.id);
-  //     newInventory.addToInventory(
-  //       inventoryDTO,
-  //       itemsRepository,
-  //       enchantedItemsRepository
-  //     );
-  //     this.inventory = inventoryRepository.save(newInventory); // persist nuova
-  //   } else {
-  //     Inventory managedInventory = inventoryRepository
-  //       .findById(this.inventory.getId())
-  //       .orElseThrow(() ->
-  //         new ResponseStatusException(
-  //           HttpStatus.NOT_FOUND,
-  //           "Inventory Not Found"
-  //         )
-  //       );
 
-  //     managedInventory.addToInventory(
-  //       inventoryDTO,
-  //       itemsRepository,
-  //       enchantedItemsRepository
-  //     );
+  public void setCharacterBooks(List<BookDTO> spellDTOs, EntityManager em) {
+    if (this.books == null) {
+      this.books = new ArrayList<>();
+    }
 
-  //     this.inventory = managedInventory;
-  //   }
-  //   // salva il Character, se serve
-  //   // characterRepository.save(this); // Assicurati che 'this' sia gestito o ricaricato prima
-  // }
+    // Indicizza i book esistenti (per evitare duplicati)
+    Map<String, Book> existing =
+      this.books.stream().collect(Collectors.toMap(this::buildKey, b -> b));
+
+    List<Book> newBooksList = new ArrayList<>();
+
+    // -------------------------------------------------------
+    // 1) Estrazione di TUTTI gli ID delle spells richieste
+    // -------------------------------------------------------
+    Set<Integer> allSpellIds = spellDTOs
+      .stream()
+      .flatMap(dto -> dto.spellsBook.stream().map(s -> s.id))
+      .collect(Collectors.toSet());
+
+    // -------------------------------------------------------
+    // 2) Caricamento in UNA sola query
+    // -------------------------------------------------------
+    Map<Integer, Spells> spellsCache = new HashMap<>();
+
+    if (!allSpellIds.isEmpty()) {
+      List<Spells> spells = em
+        .createQuery("SELECT s FROM Spells s WHERE s.id IN :ids", Spells.class)
+        .setParameter("ids", allSpellIds)
+        .getResultList();
+
+      spellsCache =
+        spells.stream().collect(Collectors.toMap(s -> s.getId(), s -> s));
+    }
+
+    // -------------------------------------------------------
+    // 3) Elaborazione Book per Book
+    // -------------------------------------------------------
+    for (BookDTO dto : spellDTOs) {
+      String key = buildKey(dto);
+      Book book = existing.get(key);
+
+      // -------------------------------------
+      // CASE 1: Book già presente in memoria
+      // -------------------------------------
+      if (book != null) {
+        addSpellsToBook(book, dto, spellsCache);
+        newBooksList.add(book);
+        continue;
+      }
+
+      // -------------------------------------
+      // CASE 2: Book esistente nel DB
+      // -------------------------------------
+      Book dbBook = null;
+      if (dto.id != 0) {
+        dbBook = em.find(Book.class, dto.id);
+      }
+
+      if (dbBook != null) {
+        dbBook.setCaster(dto.caster);
+        dbBook.setKnowDay(dto.knowDay);
+        dbBook.setLevel(dto.level);
+
+        addSpellsToBook(dbBook, dto, spellsCache);
+        dbBook.setCharacter(this);
+
+        newBooksList.add(dbBook);
+        continue;
+      }
+
+      // -------------------------------------
+      // CASE 3: Nuovo Book
+      // -------------------------------------
+      Book newBook = new Book(dto);
+      newBook.setCharacter(this);
+
+      addSpellsToBook(newBook, dto, spellsCache);
+
+      newBooksList.add(newBook);
+    }
+
+    // aggiorna lista principale
+    this.books.clear();
+    this.books.addAll(newBooksList);
+  }
+
+  private void addSpellsToBook(
+    Book book,
+    BookDTO dto,
+    Map<Integer, Spells> cache
+  ) {
+    if (book.getSpellsBook() == null) {
+      book.setSpellsBook(new ArrayList<>());
+    }
+
+    // Aggiunge SOLO le spells già presenti nel DB
+    for (SpellsDTO spellDTO : dto.spellsBook) {
+      Spells spell = cache.get(spellDTO.id);
+
+      if (spell == null) {
+        // Se non esiste nel DB, ignorala completamente
+        System.out.println(
+          "Spell con id=" + spellDTO.id + " non presente nel DB. Ignorata."
+        );
+        continue;
+      }
+
+      // Aggiunge solo se non è già presente nel book
+      if (!book.getSpellsBook().contains(spell)) {
+        book.getSpellsBook().add(spell);
+      }
+    }
+  }
+
+  private String buildKey(Book b) {
+    String spells = b
+      .getSpellsBook()
+      .stream()
+      .map(s -> String.valueOf(s.getId()))
+      .sorted()
+      .collect(Collectors.joining("_"));
+    return (
+      b.getCaster() + "-" + b.getKnowDay() + "-" + b.getLevel() + "-" + spells
+    );
+  }
+
+  private String buildKey(BookDTO dto) {
+    String spells = dto.spellsBook
+      .stream()
+      .map(s -> String.valueOf(s.id))
+      .sorted()
+      .collect(Collectors.joining("_"));
+    return dto.caster + "-" + dto.knowDay + "-" + dto.level + "-" + spells;
+  }
 }

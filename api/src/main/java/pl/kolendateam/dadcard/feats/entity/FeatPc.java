@@ -63,20 +63,6 @@ public class FeatPc implements Serializable {
         fDTO.selected.id != null
           ? new Prerequisite(fDTO.selected.id)
           : new Prerequisite();
-      //   if (fDTO.selected.feats != null && !fDTO.selected.feats.isEmpty()) {
-      //     List<Feat> newFeats = MapperFeats.toFeats(fDTO.selected.feats);
-      //     this.selected.setFeats(new ArrayList<>(newFeats));
-      //   } else {
-      //     this.selected.setFeats(null);
-      //   }
-      //   if (fDTO.selected.items != null && !fDTO.selected.items.isEmpty()) {
-      //     List<Items> items = MapperItems.toItemsListFromDTOList(
-      //       fDTO.selected.items
-      //     );
-      //     this.selected.setItems(new ArrayList<>(items));
-      //   } else {
-      //     this.selected.setItems(null);
-      //   }
     }
   }
 }
