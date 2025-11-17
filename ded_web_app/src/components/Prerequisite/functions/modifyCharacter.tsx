@@ -151,10 +151,12 @@ export const addBonusSpells = (bnsAb: number, spells: number[]): number[] => {
     const table =
       tableOfBonusSpells.find((tB) => tB.ab.includes(bnsAb))?.table || [];
     return spells.map((tb, index) => {
-      if (table[index] && ![-2, -1, 0].includes(index)) {
+      // console.log("tb" , tb , index)
+      if (!table[index] || [-2, -1, 0].includes(index) || -2 === tb) {
+        return tb;
+      } else {
         return tb + table[index];
       }
-      return tb;
     });
   }
   return [-3];
@@ -231,68 +233,70 @@ export const modifyCharacter = (
     char.classPcList
   );
 
-  
-
   const daySpells: {
     classe: string;
     spells: number[];
-  }[] = char.classPcList.flatMap((cl) =>
-    cl.classCharacter.spellsPerDay && !cl.baseClass
-      ? [
-          {
-            classe: cl.classCharacter.className,
-            spells: addBonusSpells(
-              findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
-              cl.classCharacter.spellsPerDay.spellsInLevel
-              .find(s => s.level === classiMagiche[cl.classCharacter.className])
-              ?.spells || []
-            )
-          }
-        ]
-      : []
-  );
-  // console.log("daySpells:", daySpells);
-  const totalSpellsDay: (Book | null)[] = daySpells.flatMap((ks) => {
-    const caster: string = ks.classe;
-    const sp = char.books.filter(
-      (b) => b.caster === caster && b.knowDay === "DAY"
-    );
-    return ks.spells.map((sNumber, sIndex) => {
-      if (sNumber !== -3) {
-        if (sNumber === -2) {
-          return {
-            caster: caster,
-            level: sIndex,
-            knowDay: "DAY",
-            spellsBook: true
-          };
+  }[] = char.classPcList.flatMap((cl) => {
+    if (cl.classCharacter.spellsPerDay && !cl.baseClass) {
+      return [
+        {
+          classe: cl.classCharacter.className,
+          spells: addBonusSpells(
+            findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
+            cl.classCharacter.spellsPerDay.spellsInLevel.find(
+              (s) => s.level === classiMagiche[cl.classCharacter.className]
+            )?.spells || []
+          )
         }
-        const spells: (Spell | null)[] = [];
-        for (let i = 0; i < sNumber; i++) {
-          if (sp.length - i > 0) {
-            sp.forEach((b) => {
-              if (b.level === sIndex) {
-                spells.push(
-                  Array.isArray(b.spellsBook) ? b.spellsBook[i] : null
-                );
-              }
-            });
-          } else {
-            spells.push(null);
-          }
-        }
-        return {
-          caster: caster,
-          level: sIndex,
+      ];
+    } else {
+      return [];
+    }
+  });
+  const mapOfDaySpells: { [classe: string]: number[] } = {};
+  daySpells.forEach((dS) => {
+    mapOfDaySpells[dS.classe] = dS.spells;
+  });
+  const mapOfDaySpellsDB: { [classe: string]: Spell[] } = {};
+
+  char.books.forEach((b) => {
+    if (Array.isArray(b.spellsBook)) {
+      const spellsList: Spell[] = Array.from(b.spellsBook).filter(
+        (s): s is Spell => s !== null
+      );
+      mapOfDaySpellsDB[b.caster + "-lv." + b.level] = spellsList;
+    }
+  });
+
+  let totalSpellsDay: Book[] = [];
+  for (const [classe, lista] of Object.entries(mapOfDaySpells)) {
+    lista.forEach((numberOfSpells, indexN) => {
+      const esiste = mapOfDaySpellsDB[classe + "-lv." + indexN];
+      if (esiste) {
+        let libro: (Spell | null)[] = [
+          ...esiste,
+          ...Array(Math.max(0, numberOfSpells - esiste.length)).fill(null)
+        ];
+
+        totalSpellsDay.push({
+          id: char.books.find((s) => s.level === indexN && s.caster === classe)
+            ?.id,
+          caster: classe,
+          level: indexN,
           knowDay: "DAY",
-          spellsBook: spells
-        };
+          spellsBook: libro
+        });
       } else {
-        return null;
+        totalSpellsDay.push({
+          id: -1,
+          caster: classe,
+          level: indexN,
+          knowDay: "DAY",
+          spellsBook: Array(Math.max(0, numberOfSpells)).fill(null)
+        });
       }
     });
-  });
-  // console.log("totalSpellsDay:", totalSpellsDay);
+  }
 
   const knowSpells: {
     classe: string;
@@ -302,14 +306,11 @@ export const modifyCharacter = (
       ? [
           {
             classe: cl.classCharacter.className,
-            spells: checkKnownSpells(
+            spells: addBonusSpells(
               findAbility(char.abilitys, cl.classCharacter.spellBonus ?? ""),
-              cl.classCharacter.spellsKnown.spellsInLevel
-                .find(
-                  (lv) =>
-                    lv.level === classiMagiche[cl.classCharacter.className]
-                )
-                ?.spells.map((s) => s && s) || []
+              cl.classCharacter.spellsKnown.spellsInLevel.find(
+                (s) => s.level === classiMagiche[cl.classCharacter.className]
+              )?.spells || []
             )
           }
         ]
@@ -324,6 +325,7 @@ export const modifyCharacter = (
       if (s !== -3) {
         if (s === -2) {
           return {
+            id: -2,
             caster: caster,
             level: sIndex,
             knowDay: "KNOWN",
@@ -344,17 +346,30 @@ export const modifyCharacter = (
             spells.push(null);
           }
         }
-        return {
-          caster: caster,
-          level: sIndex,
-          knowDay: "KNOWN",
-          spellsBook: spells
-        };
+        if (spells === null) {
+          return {
+            id: -1,
+            caster: caster,
+            level: sIndex,
+            knowDay: "KNOWN",
+            spellsBook: spells
+          };
+        } else {
+          return {
+            id: sp.find((s) => s.level === sIndex && s.caster === caster)?.id,
+            caster: caster,
+            level: sIndex,
+            knowDay: "KNOWN",
+            spellsBook: spells
+          };
+        }
       } else {
         return null;
       }
     });
   });
+
+  // console.log("totalSpellsKnown", totalSpellsKnown);
 
   const allClassesSkillPoints: number = char.classPcList.reduce(
     (tot, cl) =>

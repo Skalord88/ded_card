@@ -406,10 +406,18 @@ export type SpellsList = {
 }
 
 export type Book = {
+  id?: number,
   caster: string,
   level: number,
   knowDay: string,
   spellsBook: (Spell | null)[] | boolean
+}
+export type BookToSend = {
+  id?: number,
+  caster: string,
+  level: number,
+  knowDay: string,
+  spellsBook: number[]
 }
 
 export type BooksFromChar = {

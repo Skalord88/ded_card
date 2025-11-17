@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import pl.kolendateam.dadcard.classCharacter.entity.EnumClass;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.entity.Book;
@@ -13,6 +14,7 @@ import pl.kolendateam.dadcard.spells.entity.SpellsEnum;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class BookDTO {
 
   public int id;

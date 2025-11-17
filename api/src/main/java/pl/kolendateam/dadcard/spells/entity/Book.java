@@ -70,7 +70,7 @@ public class Book implements Serializable {
     this.caster = bookDTO.caster;
     this.knowDay = bookDTO.knowDay;
     this.level = bookDTO.level;
-    this.spellsBook = MapperSpells.toSpells(bookDTO.spellsBook);
+    // this.spellsBook = MapperSpells.toSpells(bookDTO.spellsBook);
     this.character = new Character(charId);
   }
 
@@ -81,8 +81,7 @@ public class Book implements Serializable {
 
     // Livello del libro
     this.level = dto.level;
-
     // Conversione della lista spells dal DTO all’entità Spells
-    this.spellsBook = MapperSpells.toSpells(dto.spellsBook);
+    // this.spellsBook = MapperSpells.toSpells(dto.spellsBook);
   }
 }

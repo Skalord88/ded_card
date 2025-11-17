@@ -48,15 +48,15 @@ public class MapperSpells {
     return spellsDTOList;
   }
 
-  public static List<Spells> toSpells(List<SpellsDTO> spellsDTOList) {
-    List<Spells> spellsList = new ArrayList<>();
-    for (SpellsDTO spellDTO : spellsDTOList) {
-      Spells spell = new Spells(spellDTO);
-      spellsList.add(spell);
-    }
+  // public static List<Spells> toSpells(List<SpellsDTO> spellsDTOList) {
+  //   List<Spells> spellsList = new ArrayList<>();
+  //   for (SpellsDTO spellDTO : spellsDTOList) {
+  //     Spells spell = new Spells(spellDTO);
+  //     spellsList.add(spell);
+  //   }
 
-    return spellsList;
-  }
+  //   return spellsList;
+  // }
 
   public static Set<SpellsDTO> toSpellsDTOSet(Set<Spells> spellsList) {
     Set<SpellsDTO> spellsDTOList = new HashSet<>();

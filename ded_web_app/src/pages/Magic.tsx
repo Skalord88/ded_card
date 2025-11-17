@@ -8,7 +8,7 @@ import {
   FilterSpellsByLevelAndClass,
   SpellsByLevelAndClass
 } from "../components/Magic/Functions";
-import { Book, CharacterPc, Spell } from "../components/interfaces";
+import { Book, BookToSend, CharacterPc, Spell } from "../components/interfaces";
 import { urlChar, urlSpellsList } from "../components/url";
 import {} from "../components/variables";
 import { PageLayout } from "./AppLayout";
@@ -23,6 +23,7 @@ export function Magic() {
   const [modChar, setModChar] = useState<CharToModify>();
   const [spellsList, setSpellsList] = useState<Spell[]>();
   const [spellsPgList, setSpellsPgList] = useState<SpellsByLevelAndClass[]>();
+  const [booksToSend, setBooksToSend] = useState<BookToSend[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,6 +56,44 @@ export function Magic() {
     }
   }, [modChar, spellsList]);
 
+  const PrepareBookToSend = (allBook: Book[]) => {
+    let sendedBooks: BookToSend[] = [];
+
+    allBook.forEach((b) => {
+      if (Array.isArray(b.spellsBook) && Array.from(b.spellsBook).length > 0) {
+        let spellsToSend: number[] = [];
+        Array.from(b.spellsBook).forEach((s) => {
+          if (s !== null && s !== undefined) {
+            spellsToSend.push(s.id);
+          }
+        });
+        if (spellsToSend.length > 0) {
+          if (b.id) {
+            sendedBooks.push({
+              id: b.id,
+              caster: b.caster,
+              level: b.level,
+              knowDay: b.knowDay,
+              spellsBook: spellsToSend
+            });
+          } else {
+            sendedBooks.push({
+              caster: b.caster,
+              level: b.level,
+              knowDay: b.knowDay,
+              spellsBook: spellsToSend
+            });
+          }
+        }
+      }
+    });
+
+    if (sendedBooks.length > 0) {
+      console.log("sendedBooks:", sendedBooks);
+      setBooksToSend(sendedBooks);
+    }
+  };
+
   return (
     <PageLayout title={"Magic"}>
       <div>
@@ -63,6 +102,7 @@ export function Magic() {
             spells={spellsPgList}
             mapOfKnow={modChar?.spellsKnown}
             mapOfDay={modChar?.spellsPerDay}
+            onAction={PrepareBookToSend}
           />
         )}
       </div>
@@ -75,11 +115,13 @@ export type SpellsByLevelAndClassProps = {
   mapOfKnow?: (Book | null)[];
   // }[];
   mapOfDay?: (Book | null)[];
+  onAction?: (allBooks: Book[]) => void;
 };
 export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   spells,
   mapOfKnow,
-  mapOfDay
+  mapOfDay,
+  onAction
 }) => {
   const [choosenKnownSpell, setChoosenKnownSpell] = useState<(Book | null)[]>(
     []
@@ -90,8 +132,26 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   }>({});
 
   useEffect(() => {
+    if (onAction) {
+      let allBooks: Book[] = [];
+      choosenKnownSpell.forEach((kB) => {
+        if (kB !== null) {
+          allBooks.push(kB);
+        }
+      });
+      choosenDaySpell.forEach((dB) => {
+        if (dB !== null) {
+          allBooks.push(dB);
+        }
+      });
+      onAction(allBooks);
+    }
+  }, [choosenKnownSpell, choosenDaySpell]);
+
+  useEffect(() => {
     if (mapOfKnow === undefined || mapOfDay === undefined) return;
     setChoosenKnownSpell(mapOfKnow || []);
+    console.log("mapOfDay" , mapOfDay)
     setChoosenDaySpell(mapOfDay || []);
   }, []);
 
@@ -173,6 +233,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
       <h2 className="rpgui-container-framed golden-2">SPELLS KNONW</h2>
       {choosenKnownSpell && spells
         ? choosenKnownSpell.map((book, idx) => {
+            // if (Array.isArray(book?.spellsBook))
             if (book?.spellsBook)
               return (
                 <div className="rpgui-container-framed" key={idx}>
@@ -238,7 +299,8 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         ? choosenDaySpell.map((book, idx) => {
             if (
               book &&
-              Array.isArray(book.spellsBook) &&
+              Array.isArray(book.spellsBook) 
+              &&
               book.spellsBook.length > 0
             )
               return (
