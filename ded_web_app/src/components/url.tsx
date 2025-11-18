@@ -39,3 +39,5 @@ export const urlItemsBuy: string = url + "item/";
 export const urlAttacks: string = url + "attack/";
 
 export const urlSpellsList: string = url + "spells";
+
+export const urlSpellsAdd: string = "/addspells";

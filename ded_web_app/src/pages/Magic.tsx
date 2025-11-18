@@ -9,7 +9,7 @@ import {
   SpellsByLevelAndClass
 } from "../components/Magic/Functions";
 import { Book, BookToSend, CharacterPc, Spell } from "../components/interfaces";
-import { urlChar, urlSpellsList } from "../components/url";
+import { urlChar, urlSpellsAdd, urlSpellsList } from "../components/url";
 import {} from "../components/variables";
 import { PageLayout } from "./AppLayout";
 import { DropdownComponent } from "../components/DropDown/DropDown";
@@ -61,41 +61,50 @@ export function Magic() {
 
     allBook.forEach((b) => {
       if (Array.isArray(b.spellsBook) && Array.from(b.spellsBook).length > 0) {
-        let spellsToSend: number[] = [];
+        let spellsToSend: {id: number}[] = [];
         Array.from(b.spellsBook).forEach((s) => {
           if (s !== null && s !== undefined) {
-            spellsToSend.push(s.id);
+            spellsToSend.push({id: s.id});
           }
         });
         if (spellsToSend.length > 0) {
-          if (b.id) {
+          // if (b.id) {
             sendedBooks.push({
-              id: b.id,
+              // id: b.id,
               caster: b.caster,
               level: b.level,
               knowDay: b.knowDay,
               spellsBook: spellsToSend
             });
-          } else {
-            sendedBooks.push({
-              caster: b.caster,
-              level: b.level,
-              knowDay: b.knowDay,
-              spellsBook: spellsToSend
-            });
-          }
+          // } 
+          // else {
+          //   sendedBooks.push({
+          //     caster: b.caster,
+          //     level: b.level,
+          //     knowDay: b.knowDay,
+          //     spellsBook: spellsToSend
+          //   });
+          // }
         }
       }
     });
 
     if (sendedBooks.length > 0) {
-      console.log("sendedBooks:", sendedBooks);
+      // console.log("sendedBooks:", sendedBooks);
       setBooksToSend(sendedBooks);
     }
   };
 
+  const confirmBooksAndSend = async () => {
+    if (booksToSend) {
+      // console.log(urlSpellsList + "/" + charId + urlSpellsAdd)
+      // console.log("booksToSend", booksToSend)
+      await axios.post(urlSpellsList + "/" + charId + urlSpellsAdd, booksToSend);
+    }
+  };
+
   return (
-    <PageLayout title={"Magic"}>
+    <PageLayout title={"Magic"} onAction={confirmBooksAndSend}>
       <div>
         {spellsPgList && (
           <CharacterSpells
@@ -151,7 +160,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   useEffect(() => {
     if (mapOfKnow === undefined || mapOfDay === undefined) return;
     setChoosenKnownSpell(mapOfKnow || []);
-    console.log("mapOfDay" , mapOfDay)
+    // console.log("mapOfDay", mapOfDay);
     setChoosenDaySpell(mapOfDay || []);
   }, []);
 
@@ -299,8 +308,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
         ? choosenDaySpell.map((book, idx) => {
             if (
               book &&
-              Array.isArray(book.spellsBook) 
-              &&
+              Array.isArray(book.spellsBook) &&
               book.spellsBook.length > 0
             )
               return (

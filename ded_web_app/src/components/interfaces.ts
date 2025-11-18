@@ -415,9 +415,9 @@ export type Book = {
 export type BookToSend = {
   id?: number,
   caster: string,
-  level: number,
   knowDay: string,
-  spellsBook: number[]
+  level: number,
+  spellsBook: {id: number}[]
 }
 
 export type BooksFromChar = {
