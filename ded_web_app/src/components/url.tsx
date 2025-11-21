@@ -10,6 +10,8 @@ export const urlAb: string = url + "ability/";
 
 export const urlRace: string = url + "race";
 
+export const urlDeity: string = urlRace + "/deity";
+
 export const urlRaceList: string = url + "race/sub";
 
 export const urlClassList: string = url + "class";

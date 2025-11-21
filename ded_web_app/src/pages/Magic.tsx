@@ -16,6 +16,7 @@ import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
+import { FormattingText } from "../components/Formatting/Function";
 
 export function Magic() {
   const { charId } = useParams();
@@ -61,36 +62,24 @@ export function Magic() {
 
     allBook.forEach((b) => {
       if (Array.isArray(b.spellsBook) && Array.from(b.spellsBook).length > 0) {
-        let spellsToSend: {id: number}[] = [];
+        let spellsToSend: { id: number }[] = [];
         Array.from(b.spellsBook).forEach((s) => {
           if (s !== null && s !== undefined) {
-            spellsToSend.push({id: s.id});
+            spellsToSend.push({ id: s.id });
           }
         });
         if (spellsToSend.length > 0) {
-          // if (b.id) {
-            sendedBooks.push({
-              // id: b.id,
-              caster: b.caster,
-              level: b.level,
-              knowDay: b.knowDay,
-              spellsBook: spellsToSend
-            });
-          // } 
-          // else {
-          //   sendedBooks.push({
-          //     caster: b.caster,
-          //     level: b.level,
-          //     knowDay: b.knowDay,
-          //     spellsBook: spellsToSend
-          //   });
-          // }
+          sendedBooks.push({
+            caster: b.caster,
+            level: b.level,
+            knowDay: b.knowDay,
+            spellsBook: spellsToSend
+          });
         }
       }
     });
 
     if (sendedBooks.length > 0) {
-      // console.log("sendedBooks:", sendedBooks);
       setBooksToSend(sendedBooks);
     }
   };
@@ -99,12 +88,18 @@ export function Magic() {
     if (booksToSend) {
       // console.log(urlSpellsList + "/" + charId + urlSpellsAdd)
       // console.log("booksToSend", booksToSend)
-      await axios.post(urlSpellsList + "/" + charId + urlSpellsAdd, booksToSend);
+      await axios.post(
+        urlSpellsList + "/" + charId + urlSpellsAdd,
+        booksToSend
+      );
     }
   };
 
   return (
-    <PageLayout title={"Magic"} onAction={confirmBooksAndSend}>
+    <PageLayout title={"Magic"} buttons={{
+      next: { text: "background", link: "/background/" + charId , change: true },
+      back: { text: "attacks", link: "/attack/" + charId }
+    }} onAction={confirmBooksAndSend}>
       <div>
         {spellsPgList && (
           <CharacterSpells
@@ -132,6 +127,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   mapOfDay,
   onAction
 }) => {
+  const [selectedSpell, setSelectedSpell] = useState<{spellKnown: Spell | null, spellDay: Spell | null}>({spellKnown: null, spellDay: null});
   const [choosenKnownSpell, setChoosenKnownSpell] = useState<(Book | null)[]>(
     []
   );
@@ -139,6 +135,19 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   const [filterKnown, setFilterKnown] = useState<{
     [classe: string]: Set<number>;
   }>({});
+
+  const scegliSpell = (n: number , scelta: Spell) => {
+    if(scelta && n === 1)
+    {
+      const newSelectedSpell = {...selectedSpell, spellKnown: scelta};
+      setSelectedSpell(newSelectedSpell);
+    }
+    if (scelta && n === 2)
+    {
+      const newSelectedSpell = {...selectedSpell, spellDay: scelta};
+      setSelectedSpell(newSelectedSpell);
+    }
+  }
 
   useEffect(() => {
     if (onAction) {
@@ -202,8 +211,6 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
           ) as Book);
 
     if (Array.isArray(book.spellsBook)) {
-      // book.spellsBook is (Spell | null)[]
-      // You can safely use book.spellsBook here if needed
       const moddedSpellsBook = book.spellsBook.map((sp, idx) =>
         idx === indexOfSpell ? s : sp
       );
@@ -240,138 +247,186 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
   return (
     <div>
       <h2 className="rpgui-container-framed golden-2">SPELLS KNONW</h2>
-      {choosenKnownSpell && spells
-        ? choosenKnownSpell.map((book, idx) => {
-            // if (Array.isArray(book?.spellsBook))
-            if (book?.spellsBook)
-              return (
-                <div className="rpgui-container-framed" key={idx}>
-                  <p>
-                    {book?.caster}
-                    {" lv."}
-                    {book?.level}
-                  </p>
-                  {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
-                    book?.spellsBook.map((spell, indexSpell) => {
-                      const casterSpells = FilterAlreadyKnownSpells(
-                        filterKnown,
-                        book.caster,
-                        book.level,
-                        spells
-                      );
-                      const items: itemInDrop[] = addToDrop(
-                        casterSpells,
-                        "spells"
-                      );
-                      return (
-                        <div
-                          className="rpgui-container-framed grey"
-                          key={indexSpell}
-                          style={{ display: "flex" }}
-                        >
-                          <div style={{ flex: 1 }}>
-                            {spell ? (
-                              <p>{spell.name}</p>
-                            ) : (
-                              <p>{"Empty Slot"}</p>
-                            )}
+      <CharacterSpellsTemplate spello={selectedSpell.spellKnown}>
+        {choosenKnownSpell && spells
+          ? choosenKnownSpell.map((book, idx) => {
+              if (book?.spellsBook)
+                return (
+                  <div className="rpgui-container-framed" key={idx}>
+                    <p>
+                      {book?.caster}
+                      {" lv."}
+                      {book?.level}
+                    </p>
+                    {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
+                      book?.spellsBook.map((spell, indexSpell) => {
+                        const casterSpells = FilterAlreadyKnownSpells(
+                          filterKnown,
+                          book.caster,
+                          book.level,
+                          spells
+                        );
+                        const items: itemInDrop[] = addToDrop(
+                          casterSpells,
+                          "spells"
+                        );
+                        return (
+                          <div
+                            className="rpgui-container-framed grey"
+                            key={indexSpell}
+                            style={{ display: "flex" }}
+                          >
+                            <div style={{ flex: 1 }}>
+                              {spell ? (
+                                <p onClick={() => scegliSpell(1, spell)}>{spell.name}</p>
+                              ) : (
+                                <p>{"Empty Slot"}</p>
+                              )}
+                            </div>
+                            <div style={{ flex: 1 }}>
+                              <DropdownComponent
+                                key={indexSpell}
+                                options={items}
+                                onAction={(spell: Spell) =>
+                                  chooseSpell(
+                                    "know",
+                                    book?.caster,
+                                    spell,
+                                    book.level,
+                                    indexSpell
+                                  )
+                                }
+                              />
+                            </div>
                           </div>
-                          <div style={{ flex: 1 }}>
-                            <DropdownComponent
-                              key={indexSpell}
-                              options={items}
-                              onAction={(spell: Spell) =>
-                                chooseSpell(
-                                  "know",
-                                  book?.caster,
-                                  spell,
-                                  book.level,
-                                  indexSpell
-                                )
-                              }
-                            />
+                        );
+                      })
+                    ) : (book?.spellsBook as boolean) ? (
+                      <div>
+                        <p>ALL</p>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+            })
+          : null}
+      </CharacterSpellsTemplate>
+      <div>
+        <h2 className="rpgui-container-framed golden-2">SPELLS PER DAY</h2>
+        <CharacterSpellsTemplate spello={selectedSpell.spellDay}>
+        {choosenDaySpell && spells
+          ? choosenDaySpell.map((book, idx) => {
+              if (
+                book &&
+                Array.isArray(book.spellsBook) &&
+                book.spellsBook.length > 0
+              )
+                return (
+                  <div className="rpgui-container-framed" key={idx}>
+                    <p>
+                      {book?.caster}
+                      {" lv."}
+                      {book?.level}
+                    </p>
+                    {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
+                      book?.spellsBook.map((spell, indexSpell) => {
+                        const casterSpells = FilterDayByAlreadyKnownSpells(
+                          filterKnown,
+                          idx,
+                          book.caster,
+                          book.level,
+                          spells,
+                          choosenKnownSpell
+                        );
+                        const items: itemInDrop[] = addToDrop(
+                          casterSpells,
+                          "spells"
+                        );
+                        return (
+                          <div
+                            className="rpgui-container-framed grey"
+                            key={indexSpell}
+                            style={{ display: "flex" }}
+                          >
+                            <div style={{ flex: 1 }}>
+                              {spell ? (
+                                <p onClick={() => scegliSpell(2, spell)}>{spell.name}</p>
+                              ) : (
+                                <p>{"Empty Slot"}</p>
+                              )}
+                            </div>
+                            <div style={{ flex: 1 }}>
+                              <DropdownComponent
+                                key={indexSpell}
+                                options={items}
+                                onAction={(spell: Spell) =>
+                                  chooseSpell(
+                                    "day",
+                                    book?.caster,
+                                    spell,
+                                    book.level,
+                                    indexSpell
+                                  )
+                                }
+                              />
+                            </div>
                           </div>
-                        </div>
-                      );
-                    })
-                  ) : (book?.spellsBook as boolean) ? (
-                    <div>
-                      <p>ALL</p>
-                    </div>
-                  ) : null}
-                </div>
-              );
-          })
-        : null}
-      <h2 className="rpgui-container-framed golden-2">SPELLS PER DAY</h2>
-      {choosenDaySpell && spells
-        ? choosenDaySpell.map((book, idx) => {
-            if (
-              book &&
-              Array.isArray(book.spellsBook) &&
-              book.spellsBook.length > 0
-            )
-              return (
-                <div className="rpgui-container-framed" key={idx}>
-                  <p>
-                    {book?.caster}
-                    {" lv."}
-                    {book?.level}
-                  </p>
-                  {book?.spellsBook && Array.isArray(book?.spellsBook) ? (
-                    book?.spellsBook.map((spell, indexSpell) => {
-                      const casterSpells = FilterDayByAlreadyKnownSpells(
-                        filterKnown,
-                        idx,
-                        book.caster,
-                        book.level,
-                        spells,
-                        choosenKnownSpell
-                      );
-                      const items: itemInDrop[] = addToDrop(
-                        casterSpells,
-                        "spells"
-                      );
-                      return (
-                        <div
-                          className="rpgui-container-framed grey"
-                          key={indexSpell}
-                          style={{ display: "flex" }}
-                        >
-                          <div style={{ flex: 1 }}>
-                            {spell ? (
-                              <p>{spell.name}</p>
-                            ) : (
-                              <p>{"Empty Slot"}</p>
-                            )}
-                          </div>
-                          <div style={{ flex: 1 }}>
-                            <DropdownComponent
-                              key={indexSpell}
-                              options={items}
-                              onAction={(spell: Spell) =>
-                                chooseSpell(
-                                  "day",
-                                  book?.caster,
-                                  spell,
-                                  book.level,
-                                  indexSpell
-                                )
-                              }
-                            />
-                          </div>
-                        </div>
-                      );
-                    })
-                  ) : book?.spellsBook ? (
-                    <div>
-                      <p>ALL</p>
-                    </div>
-                  ) : null}
-                </div>
-              );
-          })
-        : null}
+                        );
+                      })
+                    ) : book?.spellsBook ? (
+                      <div>
+                        <p>ALL</p>
+                      </div>
+                    ) : null}
+                  </div>
+                );
+            })
+          : null}
+          </CharacterSpellsTemplate>
+      </div>
+    </div>
+  );
+};
+export type CharacterSpellsTemplateProps = {
+  children?: React.ReactNode;
+  spello?: Spell | null;
+};
+export const CharacterSpellsTemplate: React.FC<
+  CharacterSpellsTemplateProps
+> = ({ children, spello }) => {
+  const [spell, setSpell] = useState<Spell>();
+  useEffect(() => {
+    if (spello) setSpell(spello);
+  }, [spello]);
+
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1.5fr",
+        gap: "2px",
+        textJustify: "auto"
+      }}
+    >
+      <div>{children}</div>
+      <div className="rpgui-container-framed grey" style={{ position: "static", overflowY: "auto" }}>
+        <h3>{spell?.name}</h3>
+        <p>{spell?.school && FormattingText(spell.school)}</p>
+        <p>{spell?.subschool}</p>
+        <p>{spell?.descriptor}</p>
+        <p>{spell?.level?.map(l => <p>{l.classDomain}{" lv."}{l.level}</p>)}</p>
+        <p>{spell?.components && FormattingText(spell.components)}</p>
+        <p>{spell?.castingTime && FormattingText(spell.castingTime)}</p>
+        <p>{spell?.range && FormattingText(spell?.range)}</p>
+        <p>{spell?.targetEffectArea && FormattingText(spell?.targetEffectArea)}</p>
+        <p>{spell?.duration && FormattingText(spell?.duration)}</p>
+        <p>{spell?.savingThrow && FormattingText(spell?.savingThrow)}</p>
+        <p>{spell?.spellResistance && FormattingText(spell?.spellResistance)}</p>
+        <p>{spell?.descriptiveText && FormattingText(spell?.descriptiveText)}</p>
+        <p>{spell?.materialComponent}</p>
+        <p>{spell?.focus}</p>
+        <p>{spell?.xpCost}</p>
+      </div>
     </div>
   );
 };

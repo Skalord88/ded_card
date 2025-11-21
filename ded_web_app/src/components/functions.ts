@@ -1,6 +1,7 @@
 import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
+import { Deity } from "./Deity/interface";
 
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
@@ -365,7 +366,7 @@ export function AllSpell(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | Race | SubRace | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
+    item: string | Feat | ClassCharacter | Race | SubRace | Deity | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
@@ -478,6 +479,17 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
                 return {
                     name: o.name,
                     item: o as Spell
+                }
+            }
+        )
+        return list
+    }
+    if (text === "deity") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Deity
                 }
             }
         )

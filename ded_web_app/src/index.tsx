@@ -16,6 +16,7 @@ import { Magic } from './pages/Magic';
 import { Races } from './pages/Races';
 import { Show } from './pages/Show';
 import { Skills } from './pages/Skills';
+import { Background } from './pages/Background';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -38,6 +39,7 @@ root.render(
           <Route path="item/:charId" element={<Items />} />
           <Route path="attack/:charId" element={<Attack />} />
           <Route path="magic/:charId" element={<Magic />} />
+          <Route path="background/:charId" element={<Background />} />
         </Route>
       </Routes>
     </HashRouter>
