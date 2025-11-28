@@ -185,6 +185,11 @@
             <column name="sub_race_name" value="Tethyrian" />
             <column name="level_adjustment" value="0" />
         </insert>
+        <insert tableName="sub_race">
+            <column name="id" value="608" />
+            <column name="sub_race_name" value="Bedine" />
+            <column name="level_adjustment" value="0" />
+        </insert>
 
         <!-- Monstruos Humanoid 700-->
         <insert tableName="sub_race">

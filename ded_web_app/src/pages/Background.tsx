@@ -59,7 +59,7 @@ export function Background() {
       {god && 
       <div>
         <h2>{god.name}</h2>
-        <p>{god.alignment.name}</p>
+        <p>{god.alignment.name.toString()}</p>
         <p>{god.domains.flatMap(d => d.domain).join(", ")}</p>
       </div>}
     </PageLayout>

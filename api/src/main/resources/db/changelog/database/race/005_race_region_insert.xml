@@ -5,23 +5,23 @@
 
     <changeSet id="005_race_region_insert" author="damian">
 
-        <insert tableName="race_region">
+        <insert tableName="regional_sub_races">
             <column name="sub_race_id" value="1" />
             <column name="region_id" value="1" />
         </insert>
-        <insert tableName="race_region">
+        <insert tableName="regional_sub_races">
             <column name="sub_race_id" value="1" />
             <column name="region_id" value="2" />
         </insert>
-        <insert tableName="race_region">
+        <insert tableName="regional_sub_races">
             <column name="sub_race_id" value="1" />
             <column name="region_id" value="3" />
         </insert>
-        <insert tableName="race_region">
+        <insert tableName="regional_sub_races">
             <column name="sub_race_id" value="1" />
             <column name="region_id" value="4" />
         </insert>
-        <insert tableName="race_region">
+        <insert tableName="regional_sub_races">
             <column name="sub_race_id" value="1" />
             <column name="region_id" value="5" />
         </insert>

@@ -1,0 +1,72 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+  <changeSet id="003_regional_sub_races_alignments_deitys_feats_items_keys" author="oscar">
+    <addForeignKeyConstraint
+      baseTableName="regional_sub_races"
+      baseColumnNames="region_id"
+      constraintName="fk_regional_sub_races_region"
+      referencedTableName="region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_sub_races"
+      baseColumnNames="sub_race_id"
+      constraintName="fk_regional_sub_races_sub_races"
+      referencedTableName="sub_races"
+      referencedColumnNames="id" />
+  
+    <addForeignKeyConstraint
+      baseTableName="regional_alignments"
+      baseColumnNames="region_id"
+      constraintName="fk_regional_alignments_region"
+      referencedTableName="region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_alignments"
+      baseColumnNames="alignment_id"
+      constraintName="fk_regional_sub_alignments_alignments"
+      referencedTableName="alignment"
+      referencedColumnNames="id" />
+  
+    <addForeignKeyConstraint
+      baseTableName="regional_deitys"
+      baseColumnNames="region_id"
+      constraintName="fk_regional_deitys_region"
+      referencedTableName="region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_deitys"
+      baseColumnNames="deity_id"
+      constraintName="fk_regional_deitys_deitys"
+      referencedTableName="deity"
+      referencedColumnNames="id" />
+  
+    <addForeignKeyConstraint
+      baseTableName="regional_feats"
+      baseColumnNames="region_id"
+      constraintName="fk_regional_feats_region"
+      referencedTableName="region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_feats"
+      baseColumnNames="feats_id"
+      constraintName="fk_regional_feats_feats"
+      referencedTableName="feats"
+      referencedColumnNames="id" />
+  
+    <addForeignKeyConstraint
+      baseTableName="regional_items"
+      baseColumnNames="region_id"
+      constraintName="fk_regional_items_region"
+      referencedTableName="region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_items"
+      baseColumnNames="enchanted_items_id"
+      constraintName="fk_regional_items_items"
+      referencedTableName="enchanted_items"
+      referencedColumnNames="id" />
+  </changeSet>
+</databaseChangeLog>

@@ -47,7 +47,7 @@
     <include file="prerequisite/002_prerequisite_skill_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/002_prerequisite_special_abilities_relation.xml" relativeToChangelogFile="true"/>
     <include file="race/002_deity_domain_alignment_weapon_relation.xml" relativeToChangelogFile="true"/>
-    <include file="race/002_sub_race_region_relation.xml" relativeToChangelogFile="true"/>
+    <include file="race/002_regional_sub_races_alignments_deitys_feats_items_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_skills_relation.xml" relativeToChangelogFile="true"/>
     <include file="skills/002_class_study_relation.xml" relativeToChangelogFile="true"/>
     <include file="specialabilities/002_special_abilities_spells_relation.xml" relativeToChangelogFile="true"/>
@@ -77,7 +77,7 @@
     <include file="race/003_race_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_size_keys.xml" relativeToChangelogFile="true"/>
     <include file="race/003_sub_race_keys.xml" relativeToChangelogFile="true"/>
-    <include file="race/003_sub_race_region_keys.xml" relativeToChangelogFile="true"/>
+    <include file="race/003_regional_sub_races_alignments_deitys_feats_items_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_class_skills_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_class_study_keys.xml" relativeToChangelogFile="true"/>
     <include file="skills/003_skill_in_study_keys.xml" relativeToChangelogFile="true"/>

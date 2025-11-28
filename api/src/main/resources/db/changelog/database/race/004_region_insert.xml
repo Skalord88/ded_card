@@ -7,22 +7,28 @@
 
         <insert tableName="region">
             <column name="id" value="1" />
+            <column name="name" value="Anauroch" />
+            <column name="bonus_languages" value="Anauroch" />
+            <column name="description" value="Anauroch" />
+        </insert>
+        <insert tableName="region">
+            <!-- <column name="id" value="1" /> -->
             <column name="name" value="Amn" />
         </insert>
         <insert tableName="region">
-            <column name="id" value="2" />
+            <!-- <column name="id" value="2" /> -->
             <column name="name" value="Calimshan" />
         </insert>
         <insert tableName="region">
-            <column name="id" value="3" />
+            <!-- <column name="id" value="3" /> -->
             <column name="name" value="Luiren" />
         </insert>
         <insert tableName="region">
-            <column name="id" value="4" />
+            <!-- <column name="id" value="4" /> -->
             <column name="name" value="Nord" />
         </insert>
         <insert tableName="region">
-            <column name="id" value="5" />
+            <!-- <column name="id" value="5" /> -->
             <column name="name" value="The Western Heatlands" />
         </insert>
         <!-- <insert tableName="region">

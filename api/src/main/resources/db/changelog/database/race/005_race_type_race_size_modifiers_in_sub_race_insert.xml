@@ -304,6 +304,14 @@
             <!-- <column name="modifiers_id" value="150607" /> -->
         <where>id = 607</where>
         </update>
+        <update tableName="sub_race">
+            <!-- Tethyrian -->
+            <column name="race_id" value="6" />
+            <column name="size_id"
+                value="5" />
+            <!-- <column name="modifiers_id" value="150607" /> -->
+        <where>id = 608</where>
+        </update>
 
         <!-- Monstruos Humanoid -->
         <update tableName="sub_race">
