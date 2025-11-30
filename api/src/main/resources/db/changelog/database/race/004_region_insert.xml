@@ -8,29 +8,31 @@
         <insert tableName="region">
             <column name="id" value="1" />
             <column name="name" value="Anauroch" />
-            <column name="bonus_languages" value="Anauroch" />
-            <column name="description" value="Anauroch" />
+            <column name="description" value="
+                Anauroch (Ah-nor-ach) is a barren wasteland that has grown to split the north of Faerûn into eastern and western halves. Also known as the Great Desert or the Great Sand Sea, Anauroch swallowed the ancient empire of Netheril more than fifteen centuries past, then devoured the shining kingdoms that rose in its wake. For generations Anauroch's relentless encroachment has destroyed realms and driven monsters into the neighboring lands.
+                Anauroch is the greatest of Faerûn's deserts, but far from empty. A nomadic race of noble barbarians known as the Bedine roams its wastes. Zhentarim garrisons and patrols hold down a line of oases along the Black Road, the trade route that winds west from the ruins of Teshendale to Llorkhninder the eaves of the Graypeak Mountains. Finally - and most significantly - the Empire of Shadows has settled over the anvil once known as the Shoal of Thirst. Shade, a city of Netheril that escaped that land's fall by removing itself to the Plane of Shadow, has now returned to Faerûn, and its masters contemplate the current shape of the world and consider what conquests to undertake next.
+            " />
         </insert>
-        <insert tableName="region">
-            <!-- <column name="id" value="1" /> -->
+        <!-- <insert tableName="region">
+            <column name="id" value="2" />
             <column name="name" value="Amn" />
         </insert>
         <insert tableName="region">
-            <!-- <column name="id" value="2" /> -->
+            <column name="id" value="3" />
             <column name="name" value="Calimshan" />
         </insert>
         <insert tableName="region">
-            <!-- <column name="id" value="3" /> -->
+            <column name="id" value="4" />
             <column name="name" value="Luiren" />
         </insert>
         <insert tableName="region">
-            <!-- <column name="id" value="4" /> -->
+            <column name="id" value="5" />
             <column name="name" value="Nord" />
         </insert>
         <insert tableName="region">
-            <!-- <column name="id" value="5" /> -->
+            <column name="id" value="6" />
             <column name="name" value="The Western Heatlands" />
-        </insert>
+        </insert> -->
         <!-- <insert tableName="region">
                   <column  name="id"  value="1"/>
                   <column  name="name"  value="Chult"/>

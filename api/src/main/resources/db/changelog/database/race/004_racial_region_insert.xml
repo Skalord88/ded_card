@@ -1,0 +1,25 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_racial_region_insert" author="damian">
+
+        <insert tableName="racial_region">
+            <column name="id" value="1" />
+            <column name="racial_region" value="Human Anauroch" />
+            <column name="automatic_languages" value="[
+                MIDANI
+            ]" />
+            <column name="bonus_languages" value="[
+                'CHONDATHAN',
+                'DAMARAN',
+                'DRACONIC',
+                'GNOLL',
+                'NETERESE',
+                'ORKISH',
+            ]" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

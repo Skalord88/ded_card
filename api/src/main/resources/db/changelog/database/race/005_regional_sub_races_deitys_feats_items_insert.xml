@@ -1,0 +1,39 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="005_regional_sub_races_deitys_feats_items_insert" author="oscar">
+        <insert tableName="regional_sub_races">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="sub_race_id" valueNumeric="608"/> <!-- Bedine -->
+        </insert>
+
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="53"/> <!-- Beshaba -->
+        </insert>
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="8"/> <!-- Kelemvor -->
+        </insert>
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="17"/> <!-- Selûne -->
+        </insert>
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="22"/> <!-- Talos -->
+        </insert>
+
+        <!-- <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="1"/> Human Anauroch
+            <column name="feats_id" valueNumeric=""/> 
+        </insert> 
+
+        <insert tableName="regional_items">
+            <column name="racial_region_id" valueNumeric="1"/>  Human Anauroch 
+            <column name="enchanted_items_id" valueNumeric=""/> 
+        </insert> -->
+    </changeSet>
+</databaseChangeLog>

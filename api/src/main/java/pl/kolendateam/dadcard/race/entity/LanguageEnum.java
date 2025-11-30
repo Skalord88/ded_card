@@ -7,4 +7,5 @@ public enum LanguageEnum {
   GNOLL,
   NETERESE,
   ORKISH,
+  MIDANI,
 }

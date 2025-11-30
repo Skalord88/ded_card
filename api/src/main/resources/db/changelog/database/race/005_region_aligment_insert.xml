@@ -1,0 +1,20 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="005_region_aligment_insert" author="oscar">
+        <insert tableName="region_alignment">
+            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
+            <column name="aligment_id" valueNumeric="8"/> <!-- NE -->
+        </insert>
+        <insert tableName="region_alignment">
+            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
+            <column name="aligment_id" valueNumeric="9"/> <!-- CE -->
+        </insert>
+        <insert tableName="region_alignment">
+            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
+            <column name="aligment_id" valueNumeric="3"/> <!-- CG -->
+        </insert>
+    </changeSet>
+</databaseChangeLog>

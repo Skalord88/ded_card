@@ -25,14 +25,125 @@
             <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/7/74/Cyric_p21.jpg/revision/latest/scale-to-width-down/250?cb=20080621160927" />
         </insert>
         <insert tableName="deity">
+            <column name="id" value="5" />
+            <column name="name" value="Gond" />
+        </insert>
+        <insert tableName="deity">
             <column name="id" value="6" />
-            <column name="name" value="Eilistraee" />
-            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/b/b7/Eilistraee.jpg/revision/latest/scale-to-width-down/250?cb=20120725191635" />
+            <column name="name" value="Helm" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="7" />
+            <column name="name" value="Ilmater" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="8" />
+            <column name="name" value="Kelemvor" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="9" />
+            <column name="name" value="Kossuth" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="10" />
+            <column name="name" value="Lathander" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="11" />
+            <column name="name" value="Lolth" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="12" />
+            <column name="name" value="Malar" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="13" />
+            <column name="name" value="Mask" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="14" />
+            <column name="name" value="Mielikki" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="15" />
+            <column name="name" value="Mystra" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="16" />
+            <column name="name" value="Oghma" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="17" />
+            <column name="name" value="Selûne" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="18" />
+            <column name="name" value="Shar" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="19" />
+            <column name="name" value="Shaundakul" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="20" />
+            <column name="name" value="Silvanus" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="21" />
+            <column name="name" value="Sune" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="22" />
+            <column name="name" value="Talos" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="23" />
+            <column name="name" value="Tempus" />
         </insert>
         <insert tableName="deity">
             <column name="id" value="24" />
-            <column name="name" value="Talos" />
-            <column name="avatar_url" value="https://static.wikia.nocookie.net/sfery/images/7/78/Talos_p69.jpg/revision/latest/scale-to-width-down/250?cb=20080622071459" />
+            <column name="name" value="Torm" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="25" />
+            <column name="name" value="Tymora" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="26" />
+            <column name="name" value="Tyr" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="27" />
+            <column name="name" value="Umberlee" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="28" />
+            <column name="name" value="Uthgar" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="29" />
+            <column name="name" value="Waukeen" />
+        </insert>
+
+        <insert tableName="deity">
+            <column name="id" value="51" />
+            <column name="name" value="Akadi" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="52" />
+            <column name="name" value="Auril" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="53" />
+            <column name="name" value="Beshaba" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="54" />
+            <column name="name" value="Deneir" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="55" />
+            <column name="name" value="Eldath" />
         </insert>
 
     </changeSet>
