@@ -12,7 +12,7 @@
         <column name="name" type="varchar(255)">
           <constraints nullable="true"/>
         </column>
-        <column name="description" type="varchar(1000)">
+        <column name="description" type="varchar(8000)">
           <constraints nullable="true"/>
         </column>
       </createTable>

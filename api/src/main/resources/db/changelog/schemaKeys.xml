@@ -84,20 +84,6 @@
             referencedColumnNames="id" />
         <!-- prerequisite_skill_study -->
 
-        <!-- race_region -->
-        <addForeignKeyConstraint baseTableName="race_region"
-            baseColumnNames="sub_race_id"
-            constraintName="fk_race_region_sub_race"
-            referencedTableName="sub_race"
-            referencedColumnNames="id" />
-
-        <addForeignKeyConstraint baseTableName="race_region"
-            baseColumnNames="region_id"
-            constraintName="fk_race_region_region"
-            referencedTableName="region"
-            referencedColumnNames="id" />
-        <!-- race_region -->
-
         <!-- class_skills -->
         <addForeignKeyConstraint
             baseTableName="class_skills"

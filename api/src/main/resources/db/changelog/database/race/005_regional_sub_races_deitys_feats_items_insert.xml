@@ -28,7 +28,7 @@
 
         <!-- <insert tableName="regional_feats">
             <column name="racial_region_id" valueNumeric="1"/> Human Anauroch
-            <column name="feats_id" valueNumeric=""/> 
+            <column name="feat_id" valueNumeric=""/> 
         </insert> 
 
         <insert tableName="regional_items">

@@ -22,7 +22,7 @@ public class SubRaceDTO {
   public Integer levelAdjustment;
   public SizeDTO size;
   // public Set<SpecialAbilitiesDTO> specialAbilities;
-  public Set<RegionBaseDTO> availableRegions;
+  // public Set<RegionBaseDTO> availableRegions;
   public RaceTypeDTO raceType;
 
   // public Integer hitDice;
@@ -44,8 +44,8 @@ public class SubRaceDTO {
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
-    this.availableRegions =
-      MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
+    // this.availableRegions =
+    //   MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
     this.raceType =
       subRace.getRaceType() != null
         ? MapperRaceToDTO.toRaceTypeDTO(subRace.getRaceType())

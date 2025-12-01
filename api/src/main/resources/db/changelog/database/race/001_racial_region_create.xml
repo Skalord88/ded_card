@@ -5,7 +5,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
   <changeSet id="001_racial_region_create" author="oscar">
-      <createTable tableName="region">
+      <createTable tableName="racial_region">
         <column name="id" type="int" autoIncrement="true">
           <constraints primaryKey="true"/>
         </column>
@@ -15,15 +15,15 @@
         <column name="region_id" type="int">
           <constraints nullable="true"/>
         </column>
-        <column name="automatic_languages" type="json">
+        <column name="automatic_languages" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="bonus_languages" type="json">
+        <column name="bonus_languages" type="jsonb">
           <constraints nullable="true"/>
         </column>
-        <column name="description" type="varchar(1000)">
+        <!-- <column name="description" type="varchar(8000)">
           <constraints nullable="true"/>
-        </column>
+        </column> -->
       </createTable>
   </changeSet>
 </databaseChangeLog>

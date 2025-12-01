@@ -8,20 +8,20 @@
       baseTableName="regional_sub_races"
       baseColumnNames="racial_region_id"
       constraintName="fk_regional_sub_races_region"
-      referencedTableName="region"
+      referencedTableName="racial_region"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
       baseTableName="regional_sub_races"
       baseColumnNames="sub_race_id"
       constraintName="fk_regional_sub_races_sub_races"
-      referencedTableName="sub_races"
+      referencedTableName="sub_race"
       referencedColumnNames="id" />
-  
+
     <addForeignKeyConstraint
       baseTableName="regional_deitys"
       baseColumnNames="racial_region_id"
       constraintName="fk_regional_deitys_region"
-      referencedTableName="region"
+      referencedTableName="racial_region"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
       baseTableName="regional_deitys"
@@ -29,25 +29,25 @@
       constraintName="fk_regional_deitys_deitys"
       referencedTableName="deity"
       referencedColumnNames="id" />
-  
+
     <addForeignKeyConstraint
       baseTableName="regional_feats"
       baseColumnNames="racial_region_id"
       constraintName="fk_regional_feats_region"
-      referencedTableName="region"
+      referencedTableName="racial_region"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
       baseTableName="regional_feats"
-      baseColumnNames="feats_id"
+      baseColumnNames="feat_id"
       constraintName="fk_regional_feats_feats"
-      referencedTableName="feats"
+      referencedTableName="feat"
       referencedColumnNames="id" />
-  
+
     <addForeignKeyConstraint
       baseTableName="regional_items"
       baseColumnNames="racial_region_id"
       constraintName="fk_regional_items_region"
-      referencedTableName="region"
+      referencedTableName="racial_region"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
       baseTableName="regional_items"

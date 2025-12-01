@@ -9,15 +9,15 @@
             <column name="id" value="1" />
             <column name="racial_region" value="Human Anauroch" />
             <column name="automatic_languages" value="[
-                MIDANI
+                &quot;MIDANI&quot;
             ]" />
             <column name="bonus_languages" value="[
-                'CHONDATHAN',
-                'DAMARAN',
-                'DRACONIC',
-                'GNOLL',
-                'NETERESE',
-                'ORKISH',
+                &quot;CHONDATHAN&quot;,
+                &quot;DAMARAN&quot;,
+                &quot;DRACONIC&quot;,
+                &quot;GNOLL&quot;,
+                &quot;NETERESE&quot;,
+                &quot;ORKISH&quot;
             ]" />
         </insert>
 

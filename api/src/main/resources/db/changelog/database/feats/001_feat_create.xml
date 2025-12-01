@@ -11,7 +11,7 @@
       <column name="feat_name" type="varchar(255)">
         <constraints nullable="true" />
       </column>
-      <column name="feat_type" type="json">
+      <column name="feat_type" type="jsonb">
         <constraints nullable="true" />
       </column>
       <column name="benefit" type="varchar(10000)">

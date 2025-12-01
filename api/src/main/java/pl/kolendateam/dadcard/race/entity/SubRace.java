@@ -54,13 +54,13 @@ public class SubRace implements Serializable {
   )
   Prerequisite modifiers;
 
-  @ManyToMany
-  @JoinTable(
-    name = "race_region",
-    joinColumns = @JoinColumn(name = "sub_race_id"),
-    inverseJoinColumns = @JoinColumn(name = "region_id")
-  )
-  Set<Region> availableRegions = new HashSet<>();
+  // @ManyToMany
+  // @JoinTable(
+  //   name = "race_region",
+  //   joinColumns = @JoinColumn(name = "sub_race_id"),
+  //   inverseJoinColumns = @JoinColumn(name = "region_id")
+  // )
+  // Set<Region> availableRegions = new HashSet<>();
 
   Integer levelAdjustment;
 

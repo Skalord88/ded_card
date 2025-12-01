@@ -27,7 +27,7 @@
             <column name="racial_region_id" type="INT">
                 <constraints nullable="false" />
             </column>
-            <column name="feats_id" type="int">
+            <column name="feat_id" type="int">
                 <constraints nullable="false" />
             </column>
         </createTable>

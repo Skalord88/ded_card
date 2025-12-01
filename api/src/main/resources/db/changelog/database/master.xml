@@ -164,11 +164,11 @@
     <include file="race/005_prerequisite_skill_study_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_special_abilities_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
-    <include file="race/005_race_type_race_modifiers_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_race_type_race_modifiers_update.xml" relativeToChangelogFile="true"/>
     <include file="race/005_racial_region_update.xml" relativeToChangelogFile="true"/>
     <include file="race/005_region_aligment_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_regional_sub_races_deitys_feats_items_insert.xml" relativeToChangelogFile="true"/>
-    <include file="race/005_race_type_race_size_modifiers_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_race_type_race_size_modifiers_in_sub_race_update.xml" relativeToChangelogFile="true"/>
     <include file="race/005_size_modifiers_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_class_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/005_class_study_insert.xml" relativeToChangelogFile="true"/>

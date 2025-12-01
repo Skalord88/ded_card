@@ -62,7 +62,7 @@ public class RacialRegion implements Serializable {
   @JoinTable(
     name = "regional_feats",
     joinColumns = @JoinColumn(name = "racial_region_id"),
-    inverseJoinColumns = @JoinColumn(name = "feats_id")
+    inverseJoinColumns = @JoinColumn(name = "feat_id")
   )
   Set<Feat> regionalFeats;
 

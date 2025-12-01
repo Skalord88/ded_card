@@ -23,7 +23,7 @@
             <column name="dc" type="Integer">
                 <constraints nullable="true" />
             </column>
-            <column name="dc_ability" type="json">
+            <column name="dc_ability" type="jsonb">
                 <constraints nullable="true" />
             </column>
             <column name="value" type="Integer">

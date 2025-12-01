@@ -4,17 +4,17 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="005_region_aligment_insert" author="oscar">
-        <insert tableName="region_alignment">
+        <insert tableName="region_alignments">
             <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="aligment_id" valueNumeric="8"/> <!-- NE -->
+            <column name="alignment_id" valueNumeric="8"/> <!-- NE -->
         </insert>
-        <insert tableName="region_alignment">
+        <insert tableName="region_alignments">
             <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="aligment_id" valueNumeric="9"/> <!-- CE -->
+            <column name="alignment_id" valueNumeric="9"/> <!-- CE -->
         </insert>
-        <insert tableName="region_alignment">
+        <insert tableName="region_alignments">
             <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="aligment_id" valueNumeric="3"/> <!-- CG -->
+            <column name="alignment_id" valueNumeric="3"/> <!-- CG -->
         </insert>
     </changeSet>
 </databaseChangeLog>
