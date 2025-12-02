@@ -16,6 +16,7 @@ public class FeatDTO {
   public int id;
   public String featName;
   public FeatsTypeEnum[] featType;
+  public String featText;
   public String benefit;
   public String normal;
   public String special;
@@ -29,6 +30,7 @@ public class FeatDTO {
     this.id = feat.getId();
     this.featName = feat.getFeatName();
     this.featType = feat.getFeatType();
+    this.featText = feat.getFeatText();
     this.benefit = feat.getBenefit();
     this.normal = feat.getNormal();
     this.special = feat.getSpecial();

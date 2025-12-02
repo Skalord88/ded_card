@@ -34,6 +34,7 @@ public class Feat implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   FeatsTypeEnum[] featType;
 
+  String featText;
   String benefit;
   String normal;
   String special;

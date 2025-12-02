@@ -2968,5 +2968,171 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
         value="You are so familiar with one of your domains that you can convert other prepared spells into spells from that domain. Each time you take this feat, choose a domain that you have access to. You may now convert prepared divine spells into any spell from that domain. You expend a spell of equal or higher level, as well as expending one of your daily turn undead attempts. This works just as good clerics spontaneously cast prepared spells as cure spells." />
     </insert>
 
+    <!-- regional -->
+    <insert tableName="feat">
+      <column name="id" value="100001" />
+      <column name="feat_name" value="Ankheg Tribe Ambush" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have learned how to hide and spring to attack, much like the ankhegs that roam the plains where you hunt." />
+      <column name="prerequisite"
+        value="Human (the Shaar), Membership in Ankheg tribe (See human tribes of shar P164)" />
+      <column name="benefit"
+        value="You gain a +4 Circumstance bonus on hide checks when prone in tall grass. During a surprise round you can leap up from prone position as a free action." />
+      <column name="normal" value="Characters without this feat must use a move action to stand up." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100002" />
+      <column name="feat_name" value="Arcane Schooling" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="In your homeland, all who show some skill at the Art may receive training as arcane spellcasters. Thus, many characters know something of the ways of the bard, the sorcerer, or the wizard." />
+      <column name="prerequisite"
+        value="Deep Imaskari (Underdark [Deep Imaskar]), human (Chessenta, the Golden Water, Halruaa, Lantan, Mulhorand, Nimbral, Unther, or the Wizards' Reach), or planetouched (Chessenta)" />
+      <column name="benefit"
+        value="Choose one arcane spellcasting class (bard, sorcerer, or wizard). You can activate spell trigger magic items as if you had 1 level in the selected class. The selected class also becomes a favored class for you in addition to any other favored class you have or select. For example, a multiclass human fi ghter/rogue who selects wizard for this feat could add levels of wizard without taking any experience penalty for multiclassing in three classes." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100003" />
+      <column name="feat_name" value="Artist" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people are renowned for their skill at story and song." />
+      <column name="prerequisite"
+        value="Elf (SildÃ«yuir or Snow Eagle Aerie), Gnome (Thesk or the Western Heartlands), half-elf (the Dalelands), or human (Chessenta, Waterdeep, or the Western Heartlands)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on all Perform checks and on checks with one Craft skill that involves art, such as calligraphy, painting, sculpture, o r weaving. In addition, i f you h ave the b ardic music ability, you may use it three additional times per day. For example, a 3rd-level bard with this feat could use her bardic music ability six times per day." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A bard can use her bardic music ability once per day per bard level." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100004" />
+      <column name="feat_name" value="Axethrower" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have learned how to hurl heavy weapons to deadly effect." />
+      <column name="prerequisite"
+        value="Dwarf (the Great Glacier), human (the Great Glacier, the Moonshae Isles, the North, or Vaasa), lizardfolk (Surkh), or orc (the Moonsea or Underdark [Northdark])" />
+      <column name="benefit"
+        value="When you make a ranged attack with a thrown weapon (axe, spear, javelin, or the like), you may add your Strength bonus instead of your Dexterity bonus to the attack roll." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character attacking with a ranged weapon adds his Dexterity bonus to the attack roll." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100005" />
+      <column name="feat_name" value="Blooded" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You know what it means to fi ght for your life, and you understand the value of quick wits and quicker reactions when blades are bared and deadly spells are chanted." />
+      <column name="prerequisite"
+        value="Centaur (the Plateau of Thay), dwarf (Underdark [Earthroot]), elf (Cormanthor Drow, the Inner S ea, Menzoberranyr, or the Outer Sea), gnoll (the Plateau of Thay), grimlock (Underdark [Reeshov]), halfl ing (the Chondalwood), human (the Dalelands, the N elanther I sles, S ilverymoon, o r Tethyr), o r o rc (Underdark [Northdark] or Vaasa)" />
+      <column name="benefit"
+        value="You get a +2 bonus on initiative checks and a +2 bonus on Spot checks. You cannot become shaken, and you ignore the effects of the shaken condition. However, you can still be frightened or panicked." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100006" />
+      <column name="feat_name" value="Bloodline of fire" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are descended from the efreet who ruled Calimshan long ago. The blood of these fi re spirits runs thick in your veins." />
+      <column name="prerequisite"
+        value="Human (Calimshan) or planetouched (Calimshan)" />
+      <column name="benefit"
+        value="You receive a +4 bonus on saving throws against fi re effects. In addition, you cast spells with the fi re descriptor at +2 caster level." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100007" />
+      <column name="feat_name" value="Bullheaded" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="The stubbornness and determination of your kind are legendary. You are exceptionally headstrong and diffi cult to sway from your course." />
+      <column name="prerequisite"
+        value="Dwarf (Underdark [Earthroot], Underdark [Northdark], the Great Rift, or the Spine of the World), human (Altumbel, Damara, the Great Dale, Rashemen, or the Western Heartlands), or taerUNA (the Icerim Mountains)" />
+      <column name="benefit"
+        value="You receive a +2 bonus on all Will saves. You cannot become shaken, and you ignore the effects of the shaken condition." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100008" />
+      <column name="feat_name" value="Cheetah Tribe Sprint" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have learned the secret of lightning-fast running from the cheetah that roams the plains where you live." />
+      <column name="prerequisite"
+        value="Human (The Shaar), Membership Cheetah tribe (see human tribes of shaar P164)" />
+      <column name="benefit"
+        value="Once per hour, you can move 4 times your normal move when making a charge as a full round action. You cannot perform this feat while wearing medium or heavy armor, or carrying a medium or heavy load." />
+      <!-- <column name="special"
+        value="" /> -->
+      <column name="normal"
+        value="Characters without this feat can only move double their speed when making a charge as a full round action." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100009" />
+      <column name="feat_name" value="Cosmopolitan" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You've been lied to more times than you can count. This history has made you intimately familiar with the deceit, guile, and doublespeak of city folk." />
+      <column name="prerequisite"
+        value="Dwarf (Waterdeep), elf (Waterdeep), half-elf (Waterdeep), halfling (Amn), or human (Amn, the Golden Water, the Sword Coast, or Waterdeep)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Bluff, Gather Information, and Sense Motive checks." />
+      <column name="special"
+        value="You may select this feat only as a 1 st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100010" />
+      <column name="feat_name" value="Dauntless" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You can stand up to greater punishment than most and still keep on going." />
+      <column name="prerequisite"
+        value="Dwarf ( the Galena Mountains, the Smoking Mountains, Turmish, Underdark [Earthroot], or Underdark [Old Shanatar]), h um an ( Dam ara, t he G reat D ale, I mpiltur, o r t he Moonshae Isles), lizardfolk (Surkh), or slyth (Underdark [Fluvenilstra]), orc (Amn, Chessenta, or Vaasa)" />
+      <column name="benefit"
+        value="You gain +5 hit points." />
+      <column name="special"
+        value="You may not select this feat more than once, but its benefit stacks with Toughness. You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
   </changeSet>
 </databaseChangeLog>

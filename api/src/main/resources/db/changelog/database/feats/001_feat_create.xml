@@ -14,6 +14,9 @@
       <column name="feat_type" type="jsonb">
         <constraints nullable="true" />
       </column>
+      <column name="feat_text" type="varchar(10000)">
+        <constraints nullable="true" />
+      </column>
       <column name="benefit" type="varchar(10000)">
         <constraints nullable="true" />
       </column>
