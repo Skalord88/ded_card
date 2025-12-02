@@ -3134,5 +3134,141 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
         value="" /> -->
     </insert>
 
+    <insert tableName="feat">
+      <column name="id" value="100011" />
+      <column name="feat_name" value="Daylight Adaptation" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have accustomed yourself to the painful sunlight of the surface world." />
+      <column name="prerequisite"
+        value="Dwarf (Underdark [Northdark]), elf (Cormanthor Drow), kuo-toa (Underdark [Sloopdilmonpolop]), or orc (Chessenta, the Hordelands, the North, or Thesk)" />
+      <column name="benefit"
+        value="Unlike other members of your race, you are not dazzled or blinded by exposure to bright light or sunlight. However, spells or effects that affect all creatures regardless of race, such as a sunbeam or sunburst spell, still affect you normally." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100012" />
+      <column name="feat_name" value="Discipline" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people are admired for their single-minded determination and clarity of purpose. You are diffi cult to distract by spell or blow." />
+      <column name="prerequisite"
+        value="Chitine (Underdark [Yathchol]), elf (Evereska or the Yuirwood), gnome (the Western Heartlands), halfl ing (Luiren), human (Aglarond, Cormyr, Shadovar, Shou Expatriate, or Thay), or slyth (Underdark [Fluvenilstra]), planetouched (Mulhorand)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Will saves and a +2 bonus on Concentration checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100013" />
+      <column name="feat_name" value="Dreadful Wrath" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are terrible to behold in battle, and few foes have the heart to face you without quailing." />
+      <column name="prerequisite"
+        value="Human (Rashemen), kuo-toa (Underdark [Sloopdilmonpolop]), or planetouched (Impiltur, the Silver Marches, Thay, or Western Heartlands)" />
+      <column name="benefit"
+        value="When you charge, make a full attack, or cast a spell that either targets an enemy or includes an enemy in its area, you gain the frightful presence ability for that round. Each enemy within a 20-foot radius of you must succeed on a Will save (DC 10 + 1/2 your character level + your Cha modifi er) or be shaken for 1 minute. Regardless of its success or failure on the saving throw, any creature exposed to this effect is immune to your frightful presence for the next 24 hours. This is an extraordinary morale effect." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100014" />
+      <column name="feat_name" value="Eagle Tribe Vision" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have keen eyesight reminiscent of the giant eagles that fly over your tribal lands." />
+      <column name="prerequisite"
+        value="human (the Shaar), membership in eagle tribe (see human tribes of the shaar p164)" />
+      <column name="benefit"
+        value="you gain a +5 bonus on spot checks" />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100015" />
+      <column name="feat_name" value="Education" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You hail from a land where the pen is held in higher regard than the sword. In your youth, you received the benefi t of formal schooling of some type." />
+      <column name="prerequisite"
+        value="Elf (Evermeet, Silverymoon, or Snow Eagle Aerie), gnome (Lantan), half-elf (Silverymoon), or human (Chessenta, Lantan, Silverymoon, or Waterdeep)" />
+      <column name="benefit"
+        value="All Knowledge skills are class skills for your current and all your future classes. You may also select two Knowledge skills to develop more fully. You get a +2 bonus on all checks you make with those skills. If you select a Knowledge skill in which you do not yet have ranks, you gain no immediate benefit, since Knowledge skills can be used only with training. But the selection still represents your improved potential for that skill." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100016" />
+      <column name="feat_name" value="Fearless" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are a stranger to fear. Nothing can shake your courage." />
+      <column name="prerequisite"
+        value="Aarakocra (the Stormhorns), elf (Elven Court or Snow Eagle Aerie), gloamingUND (Sphur Upra), gnome (Lantan), halfl ing (Channath Vale or the Western Heartlands), human (Anauroch or Impiltur), or orc (the Hordelands)" />
+      <column name="benefit"
+        value="You are immune to fear effects, magical or otherwise." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100017" />
+      <column name="feat_name" value="Fleet of Foot" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are extraordinarily swift." />
+      <column name="prerequisite"
+        value="Elf (the Forest of Lethyr, the High Forest, or the Wealdath), half-elf (the Dalelands or the High Forest), or human (the Shaar or Thindol)" />
+      <column name="benefit"
+        value="Your land speed is faster than the norm for your race by 10 feet. This benefi t applies only when you are wearing no armor or light armor and not carrying a heavy load. Apply this bonus before modifying your speed for any load carried." />
+      <column name="special"
+        value="If a feature of your character class also improves your land speed, the speed increase for Fleet of Foot stacks with that provided by the class feature. You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100018" />
+      <column name="feat_name" value="Foe Hunter" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="In a land threatened by fi erce raiders, you have learned to fi ght effectively against certain foes. You know their ways and how to beat them. Home Region --- Favored Enemy Cormyr --- Humanoids (goblinoid). Chult --- Humanoids (goblinoid). The Dragon Coast --- Dragons. The Galena Mountains --- Humanoids (goblinoid). Impiltur --- Demons. The Moonsea --- Humanoids (orc). The North --- Humanoids (orc). Samarach --- Yuan-ti. The Spine of the World --- Humanoids (orc) Tashalar --- Yuan-ti Thindol --- Yuan-ti" />
+      <column name="prerequisite"
+        value="Dwarf (the Galena Mountains or the Spine of the World), half-elf (the Dragon Coast), halfl ing (the North), or human (Chult, Cormyr, Impiltur, the Moonsea, the North, Samarach, Tashalar, or Thindol)" />
+      <column name="benefit"
+        value="You acquire a favored enemy. This benefi t functions like the ranger class feature of the same name, except that the exact type of creature you oppose is determined by your home region, according to the table above." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
   </changeSet>
 </databaseChangeLog>
