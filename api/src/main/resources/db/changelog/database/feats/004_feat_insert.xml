@@ -3270,5 +3270,634 @@ Upon gaining this ability, she selects a number of skills equal to 3 + her Intel
         value="" /> -->
     </insert>
 
+    <insert tableName="feat">
+      <column name="id" value="100019" />
+      <column name="feat_name" value="Forester" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are one with Faerun's mighty forests. Few can match your woodcraft or your skill on your chosen battlefi eld." />
+      <column name="prerequisite"
+        value="Elf (the Chondalwood, the Forest of Lethyr, the High Forest, or SildÃ«yuir), gnome (the Great Dale), half-elf (Aglarond or the High Forest), halfl ing (the Chondalwood), human (the Dalelands or the Great Dale), or volodni (the Forest of Lethyr)" />
+      <column name="benefit"
+        value="You gain a +1 bonus on Hide, Listen, Move Silently, and Spot checks. When you are in forest terrain, this bonus increases to +3." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100020" />
+      <column name="feat_name" value="Forester" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Because you are inured to the hellish heat of your homeland, you are resistant to blasts of fi re that would damage other creatures." />
+      <column name="prerequisite"
+        value="Dwarf (the Smoking Mountains or the Sword Coast)" />
+      <column name="benefit"
+        value="You gain resistance to fi re 5." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100021" />
+      <column name="feat_name" value="Furious Charge" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people are known for their love of battle, and they rarely waste time in meeting a foe blade-to-blade. You know how to make the most of a charge." />
+      <column name="prerequisite"
+        value="Aarakocra (the Stormhorns), human (Cormyr, the Ride, Tethyr, or Uthgardt Tribesfolk), or wemic (the Shaar), orc (Chessenta)" />
+      <column name="benefit"
+        value="You gain a +4 bonus on the attack roll you make at the end o f a charge." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character gains a +2 bonus on the attack roll made at the end of a charge." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100022" />
+      <column name="feat_name" value="Halruuan Adept" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have studied the old cooperative spellcasting traditions of Halruaa, and you are well-versed in the rites and arcana of Halruuan magic." />
+      <column name="prerequisite"
+        value="Human (Halruaa)" />
+      <column name="benefit"
+        value="you can participate in halruaan circle magic under the guidance of a halruaan elder. In addition you gain a + 3 bonus on spellcraft checks." />
+      <!-- <column name="special"
+        value="" /> -->
+      <column name="normal"
+        value="You cannot participate in Circle magic unless you have the appropriate feat or class ability" />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100023" />
+      <column name="feat_name" value="Horse Nomad" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have been raised in a culture that relies upon riding and shooting." />
+      <column name="prerequisite"
+        value="Human (the Hordelands, Nimbral, the Ride, or the Shaar)" />
+      <column name="benefit"
+        value="You gain proficiency with the composite shortbow, light lance, and scimitar. You also get a +3 bonus on all Ride checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100024" />
+      <column name="feat_name" value="Hyena Tribe Hunter" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have learned the secrets of hunting from the hyena that roams the lands where your tribe wanders." />
+      <column name="prerequisite"
+        value="Human (the Shaar) Membership Hyena tribe (see human tribes of shaar P164)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on hide checks, and a +2 bonuson trip attempts and rolls to avoid being tripped." />
+      <column name="special"
+        value="Characters with this feat can take the improved trip feat even if they do not meet the other prerequisites for the feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100025" />
+      <column name="feat_name" value="Knifefighter" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You're an expert at using weapons in a grapple." />
+      <column name="prerequisite"
+        value="Bugbear (the Earthfast Mountains), chitine (Underdark [Yathchol]), goblin (the Earthfast Mountains), half-elf (Dambrath or the Dragon Coast), halfl ing (Channath Vale), hobgoblin (the E arthfast Mountains), human (Anauroch, D ambrath, the Lake of Steam, or the Sword Coast), or planetouched (Chessenta), orc (Thesk)" />
+      <column name="benefit"
+        value="You can use a light weapon to attack your opponent in a grapple with no penalty on the attack roll. In addition, you need not win a grapple check to draw a light weapon while grappling, although you still must use a move action to do so. If your base attack bonus is +6 or higher, you can make a full attack with a light weapon while grappling, provided that you already have your weapon drawn." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character in a grapple takes a -4 penalty on attack rolls when attacking the grappled opponent with a light weapon. A character in a grapple must win a grapple check in order to draw a weapon and cannot make a full attack in the round she does so." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100026" />
+      <column name="feat_name" value="Lion Tribe Warrior" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have learned how to pounce on your foes, like the lion that roams your lands." />
+      <column name="prerequisite"
+        value="Human (the Shaar) Membership Lion tribe (see human tribes of shaar P164)" />
+      <column name="benefit"
+        value="You can use a light weapon to attack your opponent in a grapple with no penalty on the attack roll. In addition, you need not win a grapple check to draw a light weapon while grappling, although you still must use a move action to do so. If your base attack bonus is +6 or higher, you can make a full attack with a light weapon while grappling, provided that you already have your weapon drawn." />
+      <column name="special"
+        value="You may make a full attack with a single light weapon as part of a charge action. If you have light weapons in both hands, you can instead strike with each weapon once, following the noraml rules for fighting with two weapons." />
+      <column name="normal"
+        value="Characters without this feat can only make one attack as part of a charge action." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100027" />
+      <column name="feat_name" value="Luck of Heroes" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your land is known for producing heroes. Through pluck, determination, and resilience, you survive when no one expects you to come through." />
+      <column name="prerequisite"
+        value="Elf (Elven Court, the Forest of Lethyr, or the Yuirwood), gloamingUND (Sphur Upra), half-elf (Aglarond), halfl ing (Channath Vale or the Western Heartlands), or human (Aglarond, the Dalelands, Tethyr, Turmish, or the Vast)" />
+      <column name="benefit"
+        value="You receive a +1 luck bonus on all saving throws and a +1 luck bonus to Armor Class." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100028" />
+      <column name="feat_name" value="Magic In The Blood" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have a knack for getting the most out of your innate magical abilities. You can use them more often than others of your race can." />
+      <column name="prerequisite"
+        value="Dwarf (Oldonnar or Underdark [Darklands]), elf (Menzoberranyr), gnome ( the G reat D ale, T hesk, o r Underdark [Northdark]), or spirit folk (Ashane), planetouched (Calimshan, Mulhorand, or Unther)" />
+      <column name="benefit"
+        value="You can use your racial spell-like abilities more often than you otherwise could. Any ability that is otherwise usable once per day is now usable three times per day." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100029" />
+      <column name="feat_name" value="Magical Training" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You come from a land where cantrips are taught to all who have the aptitude to learn magic. Every crafter and artisan, it seems, knows a minor spell or two." />
+      <column name="prerequisite"
+        value="INT 10, elf (Evereska or Evermeet) or human (Halruaa or Nimbral)" />
+      <column name="benefit"
+        value="You can cast three 0-level arcane spells per day as either a sorcerer or wizard (your choice, so long as you have a score of at least 10 in the ability that controls the spellcasting for that class). You must make this decision when you first take the feat. Thereafter, you have an arcane spell failure chance if you wear armor and are treated as a sorcerer or wizard of your arcane spellcaster level (minimum 1st) for the purpose of determining level-based variables of the spells you cast. If you choose to cast spells as a sorcerer, the DC for saves against your spells is 10 + your Cha modifier. You know two 0-level spells of your choice from the sorcerer/wizard list. If you choose to cast spells as a wizard, the DC for saves against your spells is 10 + your Int modifier. You have a spellbook with three 0-level spells of your choice from the sorcerer/ wizard list. You prepare your spells exactly as a wizard does." />
+      <column name="special"
+        value="If you already have levels in sorcerer or wizard, increase the number of 0-level spells you can cast per day by three. You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100030" />
+      <column name="feat_name" value="Magical Training" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You come from a land where cantrips are taught to all who have the aptitude to learn magic. Every crafter and artisan, it seems, knows a minor spell or two." />
+      <column name="prerequisite"
+        value="INT 10, elf (Evereska or Evermeet) or human (Halruaa or Nimbral)" />
+      <column name="benefit"
+        value="You can cast three 0-level arcane spells per day as either a sorcerer or wizard (your choice, so long as you have a score of at least 10 in the ability that controls the spellcasting for that class). You must make this decision when you first take the feat. Thereafter, you have an arcane spell failure chance if you wear armor and are treated as a sorcerer or wizard of your arcane spellcaster level (minimum 1st) for the purpose of determining level-based variables of the spells you cast. If you choose to cast spells as a sorcerer, the DC for saves against your spells is 10 + your Cha modifier. You know two 0-level spells of your choice from the sorcerer/wizard list. If you choose to cast spells as a wizard, the DC for saves against your spells is 10 + your Int modifier. You have a spellbook with three 0-level spells of your choice from the sorcerer/ wizard list. You prepare your spells exactly as a wizard does." />
+      <column name="special"
+        value="If you already have levels in sorcerer or wizard, increase the number of 0-level spells you can cast per day by three. You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100031" />
+      <column name="feat_name" value="Mercantile Background" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You come from a wealthy family with numerous contacts in the trading costers and craft guilds of Faerun's bustling cities. You can get a good deal on almost anything you buy or sell." />
+      <column name="prerequisite"
+        value="Dwarf (the Sword Coast or Underdark [Darklands]), gnome (Lantan or Underdark [Northdark]), halfling (Amn), or human (Amn, Lantan, Sembia, Shou Expatriate, Tashalar, Tharsult, Thesk, Turmish, the Vast, or Waterdeep)" />
+      <column name="benefit"
+        value="When you sell weapons, magic items, or other adventuring goods, you get 75% of the list price instead of 50%. Once per month, you can buy any single item at 75% of the offered price. You also receive an extra 300 gp to spend as you see fit during character creation." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100032" />
+      <column name="feat_name" value="Militia" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people rely on a well-trained and well-armed militia to defend their land. You're no stranger to the use of weapons." />
+      <column name="prerequisite"
+        value="Half-elf (Aglarond), halfl ing (Luiren), or human (Altumbel, the Dalelands, Impiltur, Samarach, Thindol, or Turmish)" />
+      <column name="benefit"
+        value="You gain profi ciency with all martial weapons." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100055" />
+      <column name="feat_name" value="Mind over Body" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="The aesthetics and mystics of your homeland have learned to overcome the frailties of the body with the unyielding power of the mind." />
+      <column name="prerequisite"
+        value="Elf (Silverymoon or Snow Eagle Aerie), half-elf (Silverymoon), human (Calimshan, Mulhorand, Shou Expatriate, or Thay), or spirit folk (Ashane), planetouched (Calimshan or Thay)" />
+      <column name="benefit"
+        value="At 1st level, you may use your Intelligence or Charisma modifi er (your choice) to determine your bonus hit points. For all subsequent levels, you use your Constitution modifi er, as normal. In addition, you gain +1 hit point every time you learn a metamagic feat. Furthermore, if you can cast arcane spells, you get a +1 insight bonus to Armor Class." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100033" />
+      <column name="feat_name" value="Nomadic Trekker" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are particularly effcient at overland movement across the great grasslands." />
+      <column name="prerequisite"
+        value="Human (the Shaar) or wemic (the Shaar)" />
+      <column name="benefit"
+        value="You can move overland across trackless plains at normal speed. You gain a +4 bonus on Constitution checks required for forced marches across plains. Up to one ally per character level can also gain these benefits while traveling with you." />
+      <!-- <column name="special"
+        value="" /> -->
+      <column name="normal"
+        value="Overland movement across trackless plains is at 3/4 normal speed." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100034" />
+      <column name="feat_name" value="Otherworldly" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your folk are known for their mystic power and seem to transcend their mortal forms. Your inner radiance is so strong that you are more than mortal." />
+      <column name="prerequisite"
+        value="" />
+      <column name="benefit"
+        value="You are a native outsider, not a humanoid. You have darkvision out to 60 feet. Furthermore, you gain a +2 bonus on all Diplomacy checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100035" />
+      <column name="feat_name" value="Resist Poison" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people have become inured to many deadly substances through controlled exposure or the simple hostility of your home environment. You can shrug off poisons that would kill someone else." />
+      <column name="prerequisite"
+        value="Bugbear (the Earthfast Mountains), chitine (Underdark [Yathchol]), dwarf (Underdark [Northdark]), goblin (the Earth fast Mountains), hobgoblin (the Earthfast Mountains), human (Dambrath or Lapaliiya), or orc (the Moonsea or the North)" />
+      <column name="benefit"
+        value="You get a +4 bonus on Fortitude saving throws against poison." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100036" />
+      <column name="feat_name" value="Rhinoceros Tribe Charge" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You use the power of the rhinoceros's charge in battle." />
+      <column name="prerequisite"
+        value="Human (the Shaar) Membership Rhinoceros tribe (see human tribes of shaar P164)" />
+      <column name="benefit"
+        value="When you charge, if your melee attack hits, it deals an extra 2d6 points of damage. This feat only works when you make a charge, even if you're mounted. If you have the ability to make multiple attacks in a charge, you can apply this extra damage to only one of those attacks in a round." />
+      <!-- <column name="special"
+        value="" /> -->
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100037" />
+      <column name="feat_name" value="Saddleback" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You've spent endless hours learning how to handle a mount in a fight." />
+      <column name="prerequisite"
+        value="Human (Cormyr, Dambrath, the Hordelands, Narfell, Nimbral, the North, the Western Heartlands)" />
+      <column name="benefit"
+        value="You can take 10 on Ride checks, even if you are rushed or threatened. If either you or your mount fails a Refl ex save while mounted, you can attempt a Ride check to succeed on the saving throw anyway. The save is successful if your Ride check result is equal to or greater than the spell's save DC. (Essentially, you can substitute your Ride check result for your Refl ex save if the former is higher.) You can attempt this substitution once per round for either yourself or your mount. If both you and your mount fail a Refl ex save against the same effect (for example, a fi reball spell or dragon breath that catches you and your mount in its area), your Ride check result applies to both your save and your mount's save." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100038" />
+      <column name="feat_name" value="Silver Palm" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your culture is based on haggling and the art of the deal." />
+      <column name="prerequisite"
+        value="Dwarf (the Great Rift, Turmish, or Waterdeep), halfl ing (Amn), or human (Amn, the Dragon Coast, the Golden Water, Sembia, Tharsult, Thesk, the Vilhon Reach, or Waterdeep)" />
+      <column name="benefit"
+        value="You get a +2 bonus on all Appraise, Bluff, and Sense Motive checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100039" />
+      <column name="feat_name" value="Smooth Talk" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people rarely have to draw their weapons to deal with potential adversaries. There are few problems that you can't talk your way out of." />
+      <column name="prerequisite"
+        value="Elf (Waterdeep), gloamingUND (Sphur Upra), gnome (Thesk), half-elf (Waterdeep), or human (Silverymoon, Thesk, Waterdeep)" />
+      <column name="benefit"
+        value="You take only a -5 penalty if you attempt a Diplomacy check as a full-round action." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A Diplomacy check usually requires at least 1 minute. You can attempt a rushed Diplomacy check as a full-round action, but you take a -10 penalty." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100040" />
+      <column name="feat_name" value="Snake Blood" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <!-- <column name="feat_text"
+        value="" /> -->
+      <column name="prerequisite"
+        value="Human (Chult, the Lake of Steam, Lapaliiya, Samarach, Tashalar, Tharsult, Thindol, the Vilhon Reach, or the Western Heartlands)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Reflex saving throws and a +2 bonus on Fortitude saves against poison." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100041" />
+      <column name="feat_name" value="Spellwise" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You were raised in a land where mighty wizards are common. Everyone in your homeland knows something about magic, and you have learned that things are sometimes not as they appear." />
+      <column name="prerequisite"
+        value="Elf (Evermeet) or human (Calimshan, Halruaa, Nimbral, Samarach, Shadovar, or the Wizards' Reach)" />
+      <column name="benefit"
+        value="You receive a +2 bonus on all Knowledge (arcana) and Spellcraft checks. You also get a +2 bonus on saving throws against illusion spells or effects." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100042" />
+      <column name="feat_name" value="Stormheart" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="The sea is in your blood. You are no stranger to sea chases and blood on the decks." />
+      <column name="prerequisite"
+        value="Human (Altumbel, the Dragon Coast, the Lake of Steam, Lapaliiya, the Nelanther Isles, the Sword Coast, or Tharsult)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Balance and Profession (sailor) checks. You ignore any hampered movement penalties for fi ghting on pitching or slippery decks, and you gain a +1 dodge bonus to Armor Class during any fi ght that takes place on or in a boat or ship." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character moving on diffi cult or treacherous surfaces counts each square of movement as two squares." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100043" />
+      <column name="feat_name" value="Street Smart" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You know how to keep informed, ask questions, and interact with the underworld without raising suspicions." />
+      <column name="prerequisite"
+        value="Halfl ing (Amn or Calimshan), human (Amn, Calimshan, Chessenta, the Moonsea, Unther, or the Wizards' Reach), or planetouched (Chessenta or the Western Heartlands)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Gather Information, Intimidate, and Sense Motive checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100044" />
+      <column name="feat_name" value="Strong Soul" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You possess an innate resistance to fell magic and supernatural attack s. The souls o f your p eople a re d iffi cult to separate from their bodies." />
+      <column name="prerequisite"
+        value="Dwarf (Oldonnar), elf (Elven Court and Silverymoon), g nome ( Underdark [Northdark] o r t he W estern Heartlands), half-elf (Dambrath, the Dalelands, or Silverymoon), halfl ing (Channath Vale or Luiren), or human (the Moonshae Isles)" />
+      <column name="benefit"
+        value="You gain a +1 bonus on all Fortitude and Will saves. Against death effects, energy drain, and ability drain attacks, this bonus increases to +3." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100045" />
+      <column name="feat_name" value="Surefooted" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are used to fi ghting on steep slopes and treacherous surfaces." />
+      <column name="prerequisite"
+        value="Grimlock (Underdark [Reeshov]), human (the Great Glacier or Uthgardt Tribesfolk), or orc (Amn, the Moonsea, or Vaasa)" />
+      <column name="benefit"
+        value="You gain a +2 bonus on Climb and Jump check s. You a lso ignore h ampered movement penalties for ice and steep slopes (see Movement in Chapter 9 of the Player's Handbook). If a surface is both steep and icy, you treat it as a Ã—2 movement cost instead of Ã—4." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character moving on ice or on a steep slope counts each square of movement as two squares." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100046" />
+      <column name="feat_name" value="Survivor" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people thrive in places that others fi nd almost uninhabitable, and you know many of the secrets of the wilderness." />
+      <column name="prerequisite"
+        value="Dwarf (Chult or the Great Glacier), elf (the Chondalwood, the Inner Sea or the Outer Sea), human (Anauroch, Chult, the Great Glacier, Narfell, or the Shaar), kuo-toa (Underdark [Sloopdilmonpolop]), or taerUNA (the Icerim Mountains), slyth (Underdark [Fluvenilstra])" />
+      <column name="benefit"
+        value="You get a +2 bonus on Fortitude saves and a +2 bonus on Survival checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100047" />
+      <column name="feat_name" value="Swift and Silent" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="The shadows are your friends, and your footfalls are whispers of death." />
+      <column name="prerequisite"
+        value="Bugbear (the Earthfast Mountains), elf (Cormanthor Drow or the Wealdath), goblin (the Earthfast Mountains), halfl ing (the Chondalwood or the North), hobgoblin (the Earthfast Mountains), human (Uthgardt Tribesfolk), or wemic (the Shaar), orc (the North)" />
+      <column name="benefit"
+        value="You can move up to your normal speed while using the Hide or Move Silently skill at no penalty." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A character who moves faster than one-half her normal speed takes a -5 penalty on Hide and Move Silently checks." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100048" />
+      <column name="feat_name" value="Tall Mouther Hunter" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Because of your cultural hatred for tall mouthers, you have had specific training in how best to fight them." />
+      <column name="prerequisite"
+        value="Halfing (Luiren)" />
+      <column name="benefit"
+        value="You gain +2 competence bonus on damage rolls against aberrations. You also gain the benefit of the Improved Criticalfeat for the weapon you are using in any such attack. This benefitdoes not stack with any other effect that expands your weapon's critical threat range. These benefits apply on melee attack sand on ranged attacks at a range of up to 30 feet." />
+      <!-- <column name="special"
+        value="" /> -->
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100049" />
+      <column name="feat_name" value="Tattoo Focus" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You bear the powerful magical tattoos of a Red Wizard of Thay." />
+      <column name="prerequisite"
+        value="human (Thay) or planetouched (Thay), Specialized in a school of magic" />
+      <column name="benefit"
+        value="The saving throw DC for any spell you cast from your specialized school increases by 1. You also gain a +1 bonus on caster level checks made to overcome a creature's spell resistance when you cast spells from that school. In addition, you are capable of participating in Red Wizard circle magic." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100050" />
+      <column name="feat_name" value="Thug" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have a knack for getting the jump on the competition and pushing other people around. While others debate, you act." />
+      <column name="prerequisite"
+        value="Centaur (the Plateau of Thay), dwarf (Underdark [Northdark] or Waterdeep), gnoll (the Plateau of Thay), grimlock (Underdark [Reeshov]), human (the Dragon Coast, the Moonsea, the Nelanther Isles, Unther, the Vast, or the Vilhon Reach), or planetouched (Impiltur, the Silver Marches, Unther, or the Western Heartlands), orc (Amn, Thesk, or Underdark [Northdark])" />
+      <column name="benefit"
+        value="You gain a +2 bonus on initiative checks and a +2 bonus on Appraise and Intimidate checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100051" />
+      <column name="feat_name" value="Thunder Twin" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You are one of the generation of dwarf twins born after Moradin's Thunder Blessing in the Year of Thunder." />
+      <column name="prerequisite"
+        value="Dwarf (the Galena Mountains, the Great Rift, the Smok ing Mountains, the Spine o f the World, the Sword C oast, Turmish, Underdark [Old Shanatar], or Waterdeep)" />
+      <column name="benefit"
+        value="You have a twin brother or sister (fraternal or identical). If your twin is alive and on the same plane, you may attempt a DC 12 Wisdom check to sense his or her direction. If successful, you can note your twin's direction with a move action any time you take the time to do so during the next hour. You can retry this check once per hour. You also gain a +2 bonus on Diplomacy and Intimidate checks." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100052" />
+      <column name="feat_name" value="Tireless" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You don't know the meaning of the word 'quit.'" />
+      <column name="prerequisite"
+        value="Dwarf (the Galena Mountains, the Sword Coast, or Underdark [Old Shanatar]), human (the Hordelands, the Ride, Thindol, or Vaasa), lizardfolk (Surkh), or wemic (the Shaar), orc (the Hordelands)" />
+      <column name="benefit"
+        value="You reduce the effects of exhaustion and fatigue by one step. You cannot become exhausted. If you are exposed to an effect or condition that would normally make you exhausted (such as the spell waves of exhaustion), you become fatigued instead. If an effect or condition (such as the end of barbarian rage) would normally make you fatigued, that effect is negated." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100053" />
+      <column name="feat_name" value="Treetopper" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="Your people are at home in trees and high places. You can dare climbs that few other folk would care to try." />
+      <column name="prerequisite"
+        value="Elf (the Chondalwood, the High Forest, or the Yuirwood), half-elf (Aglarond or the High Forest), halfl ing (the Chondalwood), or human (Aglarond)" />
+      <column name="benefit"
+        value="You get a +2 bonus on Balance and Climb checks. You do not lose your Dexterity bonus to AC while climbing, and attackers do not gain any bonuses to attack you while you are climbing." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <column name="normal"
+        value="A climbing character loses his Dexterity bonus to Armor Class while climbing, and an attacker gains a +2 bonus on attack rolls made to hit him." />
+    </insert>
+
+    <insert tableName="feat">
+      <column name="id" value="100054" />
+      <column name="feat_name" value="Twin Sword Style" />
+      <column name="feat_type"
+        value="[&quot;REGIONAL&quot;]" />
+      <column name="feat_text"
+        value="You have mastered a defensive style based on wielding a blade in each hand." />
+      <column name="prerequisite"
+        value="Elf (Menzoberranyr or Waterdeep), half-elf (Waterdeep), or human (Sembia or Waterdeep), profi cient with martial weapons" />
+      <column name="benefit"
+        value="When fighting with two blades (dagger, longsword, rapier, scimitar, or short sword, in any combination), you can designate a melee opponent during your action and receive a +2 shield bonus to your Armor Class against attacks from that opponent. This bonus stacks with the shield bonus from a buckler or animated shield. You can select a new melee opponent as a free action on your turn. You lose this bonus if you are caught fl at-footed or lose your Dexterity bonus to AC for any reason." />
+      <column name="special"
+        value="You may select this feat only as a 1st-level character. You may have only one regional feat." />
+      <!-- <column name="normal"
+        value="" /> -->
+    </insert>
+
   </changeSet>
 </databaseChangeLog>

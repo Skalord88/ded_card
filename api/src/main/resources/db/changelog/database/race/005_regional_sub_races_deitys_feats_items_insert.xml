@@ -26,14 +26,33 @@
             <column name="deity_id" valueNumeric="22"/> <!-- Talos -->
         </insert>
 
-        <!-- <insert tableName="regional_feats">
-            <column name="racial_region_id" valueNumeric="1"/> Human Anauroch
-            <column name="feat_id" valueNumeric=""/> 
-        </insert> 
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="feat_id" valueNumeric="100025"/> <!-- Knifefighter -->
+        </insert>
+
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="feat_id" valueNumeric="100046"/> <!-- Survivor -->
+        </insert>
+
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
+            <column name="feat_id" valueNumeric="100046"/> <!-- Survivor -->
+        </insert>
 
         <insert tableName="regional_items">
-            <column name="racial_region_id" valueNumeric="1"/>  Human Anauroch 
-            <column name="enchanted_items_id" valueNumeric=""/> 
-        </insert> -->
+            <column name="racial_region_id" valueNumeric="1"/>  <!-- Human Anauroch -->
+            <column name="enchanted_items_id" valueNumeric="5116"/>
+        </insert>
+        <insert tableName="regional_items">
+            <column name="racial_region_id" valueNumeric="1"/>  <!-- Human Anauroch -->
+            <column name="enchanted_items_id" valueNumeric="5116"/> <!-- Scimitar pft -->
+        </insert>
+        <insert tableName="regional_items">
+            <column name="racial_region_id" valueNumeric="1"/>  <!-- Human Anauroch -->
+            <column name="enchanted_items_id" valueNumeric="5007"/> <!-- Dagger pft -->
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

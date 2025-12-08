@@ -20,6 +20,7 @@ public class FeatDTO {
   public String benefit;
   public String normal;
   public String special;
+  public String prerequisite;
   // public Set<ModifierDTO> modifiers;
   public PrerequisiteDTO modifiers;
   public PrerequisiteDTO prerequisiteList;
@@ -34,6 +35,7 @@ public class FeatDTO {
     this.benefit = feat.getBenefit();
     this.normal = feat.getNormal();
     this.special = feat.getSpecial();
+    this.prerequisite = feat.getPrerequisite();
     this.modifiers =
       feat.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(feat.getModifiers())

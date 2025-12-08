@@ -26,6 +26,9 @@
       <column name="special" type="varchar(10000)">
         <constraints nullable="true" />
       </column>
+      <column name="prerequisite" type="varchar(10000)">
+        <constraints nullable="true" />
+      </column>
       <column name="modifiers_id" type="bigint">
         <constraints nullable="true" />
       </column>

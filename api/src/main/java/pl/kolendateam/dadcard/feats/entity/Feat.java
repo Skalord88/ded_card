@@ -38,6 +38,7 @@ public class Feat implements Serializable {
   String benefit;
   String normal;
   String special;
+  String prerequisite;
 
   @OneToOne(cascade = CascadeType.MERGE)
   @JoinColumn(
