@@ -44,15 +44,41 @@
       referencedColumnNames="id" />
 
     <addForeignKeyConstraint
-      baseTableName="regional_items"
+      baseTableName="regional_items_op_one"
       baseColumnNames="racial_region_id"
-      constraintName="fk_regional_items_region"
+      constraintName="fk_regional_items_op_one_region"
       referencedTableName="racial_region"
       referencedColumnNames="id" />
     <addForeignKeyConstraint
-      baseTableName="regional_items"
+      baseTableName="regional_items_op_one"
       baseColumnNames="enchanted_items_id"
-      constraintName="fk_regional_items_items"
+      constraintName="fk_regional_items_op_one_items"
+      referencedTableName="enchanted_items"
+      referencedColumnNames="id" />
+
+    <addForeignKeyConstraint
+      baseTableName="regional_items_op_two"
+      baseColumnNames="racial_region_id"
+      constraintName="fk_regional_items_op_two_region"
+      referencedTableName="racial_region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_items_op_two"
+      baseColumnNames="enchanted_items_id"
+      constraintName="fk_regional_items_op_two_items"
+      referencedTableName="enchanted_items"
+      referencedColumnNames="id" />
+
+    <addForeignKeyConstraint
+      baseTableName="regional_items_op_three"
+      baseColumnNames="racial_region_id"
+      constraintName="fk_regional_items_op_three_region"
+      referencedTableName="racial_region"
+      referencedColumnNames="id" />
+    <addForeignKeyConstraint
+      baseTableName="regional_items_op_three"
+      baseColumnNames="enchanted_items_id"
+      constraintName="fk_regional_items_op_three_items"
       referencedTableName="enchanted_items"
       referencedColumnNames="id" />
   </changeSet>

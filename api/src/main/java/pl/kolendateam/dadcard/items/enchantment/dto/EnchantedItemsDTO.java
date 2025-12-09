@@ -33,6 +33,7 @@ public class EnchantedItemsDTO {
       enchantedItems.getItem() != null
         ? enchantedItems.getItem().getId()
         : null;
+    this.enchantmentBonus = enchantedItems.getEnchantmentBonus();
     this.enchantment =
       enchantedItems.getEnchantment() != null
         ? MapperEnchantment.toEnchantmentDTOList(

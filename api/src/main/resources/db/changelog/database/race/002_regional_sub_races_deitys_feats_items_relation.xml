@@ -32,7 +32,25 @@
             </column>
         </createTable>
 
-        <createTable tableName="regional_items">
+        <createTable tableName="regional_items_op_one">
+            <column name="racial_region_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="enchanted_items_id" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="regional_items_op_two">
+            <column name="racial_region_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="enchanted_items_id" type="int">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="regional_items_op_three">
             <column name="racial_region_id" type="INT">
                 <constraints nullable="false" />
             </column>

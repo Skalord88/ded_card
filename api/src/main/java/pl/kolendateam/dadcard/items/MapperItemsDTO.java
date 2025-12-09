@@ -122,6 +122,22 @@ public class MapperItemsDTO {
     return new EnchantedItemsDTO(item);
   }
 
+  public static Set<EnchantedItemsDTO> toEnchantedItemsSetDTO(
+    Set<EnchantedItems> items
+  ) {
+    Set<EnchantedItemsDTO> enchantedItemsDTOSet = new HashSet<>();
+    if (items == null) {
+      return new HashSet<>();
+    } else {
+      items.forEach(i -> {
+        if (i != null) {
+          enchantedItemsDTOSet.add(new EnchantedItemsDTO(i));
+        }
+      });
+    }
+    return enchantedItemsDTOSet;
+  }
+
   public static List<Object> createListOfEnchantedDTO(
     List<EnchantedItems> enchantedList,
     List<Item> itemsList

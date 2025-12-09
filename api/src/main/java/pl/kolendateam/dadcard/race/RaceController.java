@@ -20,14 +20,17 @@ import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.DeityDTO;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
+import pl.kolendateam.dadcard.race.dto.RacialRegionDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.Race;
+import pl.kolendateam.dadcard.race.entity.RacialRegion;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.race.repository.ArchetypeRepository;
 import pl.kolendateam.dadcard.race.repository.DeityRepository;
 import pl.kolendateam.dadcard.race.repository.RaceRepository;
+import pl.kolendateam.dadcard.race.repository.RacialRegionRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
 import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
@@ -44,6 +47,7 @@ public class RaceController {
   CharacterRepository characterRepository;
   DeityRepository deityRepository;
   SpellsRepository spellsRepository;
+  RacialRegionRepository racialRegionRepository;
 
   @Autowired
   RaceController(
@@ -52,7 +56,8 @@ public class RaceController {
     SubRaceRepository subRaceRepository,
     ArchetypeRepository archetypeRepository,
     DeityRepository deityRepository,
-    SpellsRepository spellsRepository
+    SpellsRepository spellsRepository,
+    RacialRegionRepository racialRegionRepository
   ) {
     this.raceRepository = raceRepository;
     this.characterRepository = characterRepository;
@@ -60,6 +65,7 @@ public class RaceController {
     this.archetypeRepository = archetypeRepository;
     this.deityRepository = deityRepository;
     this.spellsRepository = spellsRepository;
+    this.racialRegionRepository = racialRegionRepository;
   }
 
   @GetMapping("")
@@ -88,6 +94,13 @@ public class RaceController {
     List<Deity> deities = this.deityRepository.findAll();
 
     return MapperRaceToDTO.toDeityDTOSet(deities, spellsRepository);
+  }
+
+  @GetMapping("region")
+  public Set<RacialRegionDTO> getAllRacialRegions() {
+    List<RacialRegion> regions = this.racialRegionRepository.findAll();
+
+    return MapperRaceToDTO.toRacialRegionDTOSet(regions, spellsRepository);
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })

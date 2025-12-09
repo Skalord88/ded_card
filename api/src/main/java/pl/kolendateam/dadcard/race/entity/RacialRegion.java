@@ -28,7 +28,7 @@ public class RacialRegion implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
+  int id;
 
   String racialRegion;
 
@@ -68,9 +68,25 @@ public class RacialRegion implements Serializable {
 
   @ManyToMany
   @JoinTable(
-    name = "regional_items",
+    name = "regional_items_op_one",
     joinColumns = @JoinColumn(name = "racial_region_id"),
     inverseJoinColumns = @JoinColumn(name = "enchanted_items_id")
   )
-  Set<EnchantedItems> regionalItems;
+  Set<EnchantedItems> regionalItemsOpOne;
+
+  @ManyToMany
+  @JoinTable(
+    name = "regional_items_op_two",
+    joinColumns = @JoinColumn(name = "racial_region_id"),
+    inverseJoinColumns = @JoinColumn(name = "enchanted_items_id")
+  )
+  Set<EnchantedItems> regionalItemsOpTwo;
+
+  @ManyToMany
+  @JoinTable(
+    name = "regional_items_op_three",
+    joinColumns = @JoinColumn(name = "racial_region_id"),
+    inverseJoinColumns = @JoinColumn(name = "enchanted_items_id")
+  )
+  Set<EnchantedItems> regionalItemsOpThree;
 }

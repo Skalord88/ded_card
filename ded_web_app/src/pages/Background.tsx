@@ -4,18 +4,21 @@ import { useEffect, useState } from "react";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import axios from "axios";
-import { urlChar, urlDeity } from "../components/url";
+import { urlChar, urlDeity, urlRegion } from "../components/url";
 import { CharacterPc } from "../components/interfaces";
 import { Deity } from "../components/Deity/interface";
 import { ListGroupItem } from "react-bootstrap";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
+import { RacialRegion, Region } from "../components/Region/interface";
 
 export function Background() {
   const { charId } = useParams();
 
   const [modChar, setModChar] = useState<CharToModify>();
+  const [regions, setRegions] = useState<RacialRegion[]>([]);
   const [deities, setDeities] = useState<Deity[]>([]);
+  const [region, setRegion] = useState<Region>();
   const [god, setGod] = useState<Deity>();
 
   useEffect(() => {
@@ -26,6 +29,10 @@ export function Background() {
 
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
+
+        const regioni = await axios.get(urlRegion);
+        const allRegioni: RacialRegion[] = regioni.data;
+        setRegions(allRegioni);
 
         const deities = await axios.get(urlDeity);
         const allDeitys: Deity[] = deities.data;
@@ -41,27 +48,38 @@ export function Background() {
   const selectTheGod = (deitySelected: Deity) => {
     setGod(deitySelected);
   };
+  const selectTheRegion = (deitySelected: RacialRegion) => {
+    setRegion(deitySelected.region);
+  };
 
-  const items: itemInDrop[] = addToDrop(
+  const itemsDei: itemInDrop[] = addToDrop(
     deities.sort((a, b) => a.name.localeCompare(b.name)),
     "deity"
+  );
+  const itemsRegioni: itemInDrop[] = addToDrop(
+    regions.sort((a, b) => a.region.name.localeCompare(b.region.name)),
+    "region"
   );
   return (
     <div>
       <PageLayout title={"background"}>
         {deities && (
           <DropdownComponent
-            options={items}
+            options={itemsDei}
             onAction={selectTheGod}
           ></DropdownComponent>
         )}
         {god && (
           <div>
             <h2>{god.name}</h2>
-            <p>{god.alignment.name.toString()}</p>
+            <p>{god.alignment.name}</p>
             <p>{god.domains.flatMap((d) => d.domain).join(", ")}</p>
           </div>
         )}
+        <DropdownComponent
+            options={itemsRegioni}
+            onAction={selectTheRegion}
+          ></DropdownComponent>
       </PageLayout>
     </div>
   );

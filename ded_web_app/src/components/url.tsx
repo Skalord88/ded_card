@@ -10,6 +10,8 @@ export const urlAb: string = url + "ability/";
 
 export const urlRace: string = url + "race";
 
+export const urlRegion: string = urlRace + "/region";
+
 export const urlDeity: string = urlRace + "/deity";
 
 export const urlRaceList: string = url + "race/sub";
