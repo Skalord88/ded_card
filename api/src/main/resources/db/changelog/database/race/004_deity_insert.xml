@@ -146,5 +146,10 @@
             <column name="name" value="Eldath" />
         </insert>
 
+        <insert tableName="deity">
+            <column name="id" value="80" />
+            <column name="name" value="Valkur" />
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

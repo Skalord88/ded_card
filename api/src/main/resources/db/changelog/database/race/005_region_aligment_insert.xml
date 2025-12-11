@@ -5,16 +5,55 @@
 
     <changeSet id="005_region_aligment_insert" author="oscar">
         <insert tableName="region_alignments">
-            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="alignment_id" valueNumeric="8"/> <!-- NE -->
+            <column name="region_id" valueNumeric="1" /> <!-- Anauroch -->
+            <column name="alignment_id" valueNumeric="8" /> <!-- NE -->
         </insert>
         <insert tableName="region_alignments">
-            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="alignment_id" valueNumeric="9"/> <!-- CE -->
+            <column name="region_id" valueNumeric="1" /> <!-- Anauroch -->
+            <column name="alignment_id" valueNumeric="9" /> <!-- CE -->
         </insert>
         <insert tableName="region_alignments">
-            <column name="region_id" valueNumeric="1"/> <!-- Anauroch -->
-            <column name="alignment_id" valueNumeric="3"/> <!-- CG -->
+            <column name="region_id" valueNumeric="1" /> <!-- Anauroch -->
+            <column name="alignment_id" valueNumeric="3" /> <!-- CG -->
         </insert>
+
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="2" />
+            <!-- Aglarond -->
+            <column name="alignment_id" valueNumeric="5" />
+            <!-- N -->
+        </insert>
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="2" />
+            <!-- Aglarond -->
+            <column name="alignment_id" valueNumeric="2" />
+            <!-- NG -->
+        </insert>
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="2" />
+            <!-- Aglarond -->
+            <column name="alignment_id" valueNumeric="3" />
+            <!-- CG -->
+        </insert>
+
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="4" />
+            <!-- Amn -->
+            <column name="alignment_id" valueNumeric="4" />
+            <!-- LN -->
+        </insert>
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="4" />
+            <!-- Amn -->
+            <column name="alignment_id" valueNumeric="7" />
+            <!-- LE -->
+        </insert>
+        <insert tableName="region_alignments">
+            <column name="region_id" valueNumeric="4" />
+            <!-- Amn -->
+            <column name="alignment_id" valueNumeric="2" />
+            <!-- NG -->
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

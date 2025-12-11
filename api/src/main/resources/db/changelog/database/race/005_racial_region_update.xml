@@ -5,8 +5,31 @@
 
     <changeSet id="005_racial_region_update" author="oscar">
         <update tableName="racial_region">
-            <column name="region_id" valueNumeric="1" /> <!-- Anauroch -->
-        <where>id = 1</where> <!-- Human Anauroch -->
+            <column name="region_id" valueNumeric="1" />
+            <!-- Anauroch -->
+        <where>id = 1</where>
+            <!-- Human Anauroch -->
+        </update>
+
+        <update tableName="racial_region">
+            <column name="region_id" valueNumeric="2" />
+            <!-- Aglarond -->
+        <where>id = 2</where>
+            <!-- Human Aglarond -->
+        </update>
+
+        <update tableName="racial_region">
+            <column name="region_id" valueNumeric="3" />
+            <!-- Altumbel -->
+        <where>id = 3</where>
+            <!-- Human Altumbel -->
+        </update>
+
+        <update tableName="racial_region">
+            <column name="region_id" valueNumeric="4" />
+            <!-- Amn -->
+        <where>id = 4</where>
+            <!-- Human Amn -->
         </update>
     </changeSet>
 </databaseChangeLog>

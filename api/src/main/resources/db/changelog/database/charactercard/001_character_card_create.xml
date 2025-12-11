@@ -38,6 +38,9 @@
       <column name="deity_id" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="racial_region_id" type="int">
+        <constraints nullable="true" />
+      </column>
     </createTable>
   </changeSet>
 </databaseChangeLog>

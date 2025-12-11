@@ -1,11 +1,26 @@
 package pl.kolendateam.dadcard.race.entity;
 
 public enum LanguageEnum {
+  AGLARONDAN,
+  ALZHEDO,
+  AQUAN,
+  AURAN,
+  CHESSENTAN,
   CHONDATHAN,
   DAMARAN,
   DRACONIC,
+  ELFIC,
+  GIANT,
   GNOLL,
-  NETERESE,
-  ORKISH,
+  GOBLIN,
   MIDANI,
+  RASHEMI,
+  MULHORANDI,
+  NETERESE,
+  NEXALAN,
+  ORKISH,
+  SERUSAN,
+  SHAARAN,
+  SILVAN,
+  UNTHERIC,
 }

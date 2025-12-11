@@ -11,32 +11,37 @@ import { ListGroupItem } from "react-bootstrap";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
 import { RacialRegion, Region } from "../components/Region/interface";
+import { Domain } from "domain";
 
 export function Background() {
   const { charId } = useParams();
 
+  const [character, setCharacter] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
   const [regions, setRegions] = useState<RacialRegion[]>([]);
   const [deities, setDeities] = useState<Deity[]>([]);
+  const [regionRace, setRegionRace] = useState<RacialRegion>();
   const [region, setRegion] = useState<Region>();
   const [god, setGod] = useState<Deity>();
+  const [domains, setDomains] = useState<Domain[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resURL = await axios.get(urlChar + "/" + charId);
         const charDB: CharacterPc = resURL.data;
+        setCharacter(charDB);
 
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
 
         const regioni = await axios.get(urlRegion);
         const allRegioni: RacialRegion[] = regioni.data;
-        setRegions(allRegioni);
+        setRegions(allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name)));
 
-        const deities = await axios.get(urlDeity);
-        const allDeitys: Deity[] = deities.data;
-        setDeities(allDeitys);
+        // const deities = await axios.get(urlDeity);
+        // const allDeitys: Deity[] = deities.data;
+        // setDeities(allDeitys);
       } catch (error) {
         console.log(error);
       }
@@ -45,41 +50,37 @@ export function Background() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const selectTheGod = (deitySelected: Deity) => {
-    setGod(deitySelected);
+  const selectTheRacialRegion = (option: RacialRegion) => {
+    setRegionRace(option);
   };
-  const selectTheRegion = (deitySelected: RacialRegion) => {
-    setRegion(deitySelected.region);
+  const selectTheGod = (option: Deity) => {
+    setGod(option);
+  };
+  const selectTheRegion = (option: RacialRegion) => {
+    setRegion(option.region);
   };
 
   const itemsDei: itemInDrop[] = addToDrop(
     deities.sort((a, b) => a.name.localeCompare(b.name)),
     "deity"
   );
+
   const itemsRegioni: itemInDrop[] = addToDrop(
-    regions.sort((a, b) => a.region.name.localeCompare(b.region.name)),
-    "region"
+    regions
+      .filter((reg) =>
+        reg.regionalSubRaces.some((sub) => sub.race.id === character?.race.race.id)
+      )
+      .sort((a, b) => a.region.name.localeCompare(b.region.name)),
+    "raceRegion"
   );
+
   return (
     <div>
       <PageLayout title={"background"}>
-        {deities && (
-          <DropdownComponent
-            options={itemsDei}
-            onAction={selectTheGod}
-          ></DropdownComponent>
-        )}
-        {god && (
-          <div>
-            <h2>{god.name}</h2>
-            <p>{god.alignment.name}</p>
-            <p>{god.domains.flatMap((d) => d.domain).join(", ")}</p>
-          </div>
-        )}
         <DropdownComponent
-            options={itemsRegioni}
-            onAction={selectTheRegion}
-          ></DropdownComponent>
+          options={itemsRegioni}
+          onAction={selectTheRacialRegion}
+        ></DropdownComponent>
       </PageLayout>
     </div>
   );

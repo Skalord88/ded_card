@@ -43,16 +43,15 @@ import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.Deity;
+import pl.kolendateam.dadcard.race.entity.RacialRegion;
 import pl.kolendateam.dadcard.race.entity.SubRace;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
-import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.Spells;
-import pl.kolendateam.dadcard.spells.repository.BookRepository;
 
 @NoArgsConstructor
 @Getter
@@ -130,6 +129,10 @@ public class Character implements Serializable {
   @ManyToOne
   @JoinColumn(name = "deity_id", referencedColumnName = "id")
   Deity deity;
+
+  @ManyToOne
+  @JoinColumn(name = "racial_region_id", referencedColumnName = "id")
+  RacialRegion region;
 
   @ManyToMany
   @JoinTable(

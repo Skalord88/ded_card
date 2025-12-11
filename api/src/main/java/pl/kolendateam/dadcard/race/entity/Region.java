@@ -25,6 +25,8 @@ public class Region implements Serializable {
 
   String name;
 
+  String linkRegion;
+
   @ManyToMany
   @JoinTable(
     name = "region_alignments",

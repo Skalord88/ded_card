@@ -4,51 +4,116 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="005_regional_sub_races_deitys_feats_items_insert" author="oscar">
+
+        <!-- Human Anauroch -->
         <insert tableName="regional_sub_races">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="sub_race_id" valueNumeric="608"/> <!-- Bedine -->
+            <column name="racial_region_id" valueNumeric="1" />
+            <!-- Human Anauroch -->
+            <column name="sub_race_id" valueNumeric="608" />
+            <!-- Bedine -->
         </insert>
 
         <insert tableName="regional_deitys">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="deity_id" valueNumeric="53"/> <!-- Beshaba -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="53" /> <!-- Beshaba -->
         </insert>
         <insert tableName="regional_deitys">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="deity_id" valueNumeric="8"/> <!-- Kelemvor -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="8" /> <!-- Kelemvor -->
         </insert>
         <insert tableName="regional_deitys">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="deity_id" valueNumeric="17"/> <!-- Selûne -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="17" /> <!-- Selûne -->
         </insert>
         <insert tableName="regional_deitys">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="deity_id" valueNumeric="22"/> <!-- Talos -->
-        </insert>
-
-        <insert tableName="regional_feats">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="feat_id" valueNumeric="100025"/> <!-- Knifefighter -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="deity_id" valueNumeric="22" /> <!-- Talos -->
         </insert>
 
         <insert tableName="regional_feats">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="feat_id" valueNumeric="100046"/> <!-- Survivor -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="feat_id" valueNumeric="100025" /> <!-- Knifefighter -->
         </insert>
-
         <insert tableName="regional_feats">
-            <column name="racial_region_id" valueNumeric="1"/> <!-- Human Anauroch -->
-            <column name="feat_id" valueNumeric="100046"/> <!-- Survivor -->
+            <column name="racial_region_id" valueNumeric="1" /> <!-- Human Anauroch -->
+            <column name="feat_id" valueNumeric="100046" /> <!-- Survivor -->
         </insert>
 
         <insert tableName="regional_items_op_one">
-            <column name="racial_region_id" valueNumeric="1"/>  <!-- Human Anauroch -->
-            <column name="enchanted_items_id" valueNumeric="5116"/> <!-- Scimitar pft -->
+            <column name="racial_region_id" valueNumeric="1" />  <!-- Human Anauroch -->
+            <column name="enchanted_items_id" valueNumeric="5116" /> <!-- Scimitar pft -->
         </insert>
         <insert tableName="regional_items_op_one">
-            <column name="racial_region_id" valueNumeric="1"/>  <!-- Human Anauroch -->
-            <column name="enchanted_items_id" valueNumeric="5007"/> <!-- Dagger pft -->
+            <column name="racial_region_id" valueNumeric="1" />  <!-- Human Anauroch -->
+            <column name="enchanted_items_id" valueNumeric="5007" /> <!-- Dagger pft -->
         </insert>
+        <!-- Human Anauroch -->
+
+        <!-- Human Aglarond -->
+        <insert tableName="regional_sub_races">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="sub_race_id" valueNumeric="602" />
+            <!-- Chondathan -->
+        </insert>
+        <insert tableName="regional_sub_races">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="sub_race_id" valueNumeric="603" />
+            <!-- Damaran -->
+        </insert>
+        <insert tableName="regional_sub_races">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="sub_race_id" valueNumeric="606" />
+            <!-- Rashemi -->
+        </insert>
+
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="deity_id" valueNumeric="3" />
+            <!-- Chauntea -->
+        </insert>
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="deity_id" valueNumeric="17" />
+            <!-- Selûne -->
+        </insert>
+        <insert tableName="regional_deitys">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="deity_id" valueNumeric="80" />
+            <!-- Valkur -->
+        </insert>
+
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="feat_id" valueNumeric="100012" />
+            <!-- Discipline -->
+        </insert>
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="feat_id" valueNumeric="100027" />
+            <!-- Luck of Heroes -->
+        </insert>
+        <insert tableName="regional_feats">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="feat_id" valueNumeric="100007" />
+            <!-- Bullheaded -->
+        </insert>
+
+        <insert tableName="regional_items_op_one">
+            <column name="racial_region_id" valueNumeric="2" />
+            <!-- Human Aglarond -->
+            <column name="enchanted_items_id" valueNumeric="5502" />
+            <!-- Studded leather pft -->
+        </insert>
+        <!-- Human Aglarond -->
 
     </changeSet>
 </databaseChangeLog>

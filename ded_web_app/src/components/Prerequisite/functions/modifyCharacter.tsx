@@ -335,7 +335,7 @@ export const modifyCharacter = (
     }
   });
 
-  console.log("mapOfKnowSpellsDB", mapOfKnowSpellsDB);
+  // console.log("mapOfKnowSpellsDB", mapOfKnowSpellsDB);
 
   let totalSpellsKnown: (Book | null)[] = [];
   for (const [classe, lista] of Object.entries(mapOfKnowSpells)) {

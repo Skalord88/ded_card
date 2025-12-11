@@ -10,12 +10,14 @@ public class RegionDTO {
 
   public int id;
   public String name;
+  public String linkRegion;
   public Set<AlignmentDTO> regionalAlignment;
   public String description;
 
   public RegionDTO(Region region) {
     this.id = region.getId();
     this.name = region.getName();
+    this.linkRegion = region.getLinkRegion();
     this.regionalAlignment =
       MapperRaceToDTO.toAlignmentDTOSet(region.getRegionalAlignment());
     this.description = region.getDescription();

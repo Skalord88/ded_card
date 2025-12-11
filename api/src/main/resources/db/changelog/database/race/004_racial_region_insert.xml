@@ -21,5 +21,56 @@
             ]" />
         </insert>
 
+        <insert tableName="racial_region">
+            <column name="id" value="2" />
+            <column name="racial_region" value="Human Aglarond" />
+            <column name="automatic_languages" value="[
+                &quot;AGLARONDAN&quot;
+            ]" />
+            <column name="bonus_languages" value="[
+                &quot;CHONDATHAN&quot;,
+                &quot;DAMARAN&quot;,
+                &quot;DRACONIC&quot;,
+                &quot;ELFIC&quot;,
+                &quot;MULHORANDI&quot;,
+                &quot;ORKISH&quot;,
+                &quot;SILVAN&quot;,
+                &quot;UNTHERIC&quot;
+            ]" />
+        </insert>
+
+        <insert tableName="racial_region">
+            <column name="id" value="3" />
+            <column name="racial_region" value="Human Altumbel" />
+            <column name="automatic_languages" value="[
+                &quot;AGLARONDAN&quot;
+            ]" />
+            <column name="bonus_languages" value="[
+                &quot;AQUAN&quot;,
+                &quot;CHONDATHAN&quot;,
+                &quot;CHESSENTAN&quot;,
+                &quot;RASHEMI&quot;,
+                &quot;SERUSAN&quot;,
+                &quot;UNTHERIC&quot;
+            ]" />
+        </insert>
+
+        <insert tableName="racial_region">
+            <column name="id" value="4" />
+            <column name="racial_region" value="Human Amn" />
+            <column name="automatic_languages" value="[
+                &quot;CHONDATHAN&quot;
+            ]" />
+            <column name="bonus_languages" value="[
+                &quot;ALZHEDO&quot;,
+                &quot;ELFIC&quot;,
+                &quot;GIANT&quot;,
+                &quot;GOBLIN&quot;,
+                &quot;NEXALAN&quot;,
+                &quot;ORKISH&quot;,
+                &quot;SHAARAN&quot;
+            ]" />
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

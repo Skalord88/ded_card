@@ -8,9 +8,35 @@
         <insert tableName="region">
             <column name="id" value="1" />
             <column name="name" value="Anauroch" />
+            <column name="link_region" value="https://www.realmshelps.net/faerun/anauroch.shtml" />
             <column name="description" value="
                 Anauroch (Ah-nor-ach) is a barren wasteland that has grown to split the north of Faerûn into eastern and western halves. Also known as the Great Desert or the Great Sand Sea, Anauroch swallowed the ancient empire of Netheril more than fifteen centuries past, then devoured the shining kingdoms that rose in its wake. For generations Anauroch's relentless encroachment has destroyed realms and driven monsters into the neighboring lands.
                 Anauroch is the greatest of Faerûn's deserts, but far from empty. A nomadic race of noble barbarians known as the Bedine roams its wastes. Zhentarim garrisons and patrols hold down a line of oases along the Black Road, the trade route that winds west from the ruins of Teshendale to Llorkhninder the eaves of the Graypeak Mountains. Finally - and most significantly - the Empire of Shadows has settled over the anvil once known as the Shoal of Thirst. Shade, a city of Netheril that escaped that land's fall by removing itself to the Plane of Shadow, has now returned to Faerûn, and its masters contemplate the current shape of the world and consider what conquests to undertake next.
+            " />
+        </insert>
+        <insert tableName="region">
+            <column name="id" value="2" />
+            <column name="name" value="Aglarond" />
+            <column name="link_region" value="https://www.realmshelps.net/faerun/aglarond/index.shtml" />
+            <column name="description" value="
+            Situated on a long peninsula that stabs like a knife into the heart of the Sea of Fallen Stars, Aglarond is a land of open water and deep woods. Here humans and elves have intermingled for centuries, and nowhere else in Faerûn is there a greater concentration of half-elves. The land has long stood as a bulwark holding back the Red Wizards of Thay from the western lands. This is a thankless task, but the people of Aglarond take it up not for the survival of other countries, but their own.
+            " />
+        </insert>
+        <insert tableName="region">
+            <column name="id" value="3" />
+            <column name="name" value="Altumbel" />
+            <!-- <column name="link_region" value="https://www.realmshelps.net/faerun/aglarond/index.shtml" /> -->
+            <!-- <column name="description" value="
+            Situated on a long peninsula that stabs like a knife into the heart of the Sea of Fallen Stars, Aglarond is a land of open water and deep woods. Here humans and elves have intermingled for centuries, and nowhere else in Faerûn is there a greater concentration of half-elves. The land has long stood as a bulwark holding back the Red Wizards of Thay from the western lands. This is a thankless task, but the people of Aglarond take it up not for the survival of other countries, but their own.
+            " /> -->
+        </insert>
+        <insert tableName="region">
+            <column name="id" value="4" />
+            <column name="name" value="Amn" />
+            <column name="link_region" value="https://www.realmshelps.net/faerun/landsofintrigue.shtml" />
+            <column name="description" value="
+            Amn is a nation of merchants, a place where caravans start and end and ships leave for exotic ports and return laden with gold and strange items. The Shadow Thieves have their hand in everything, and the rulers are an anonymous group known only is the Council of Six. Divine spellcasters are respected if their work brings money to Amn, while arcane spellcasters are universally reviled and feared.
+            Amn maintains a large colony on the distant tropical continent of Maztica and has profited greatly from its trade. The government's disregard for the humanoids in its southern mountains has come back to haunt the country; two ogre mage leaders forged an army and took over much of southern Amn, including its secondary port city. Now Amn struggles to retake its territory while maintaining its trade routes and dominance in Maztica.
             " />
         </insert>
         <!-- <insert tableName="region">

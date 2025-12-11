@@ -8,7 +8,7 @@ import { FormattingText } from "./Formatting/Function";
 import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, subRaces, Weapon, WonderousItem } from "./interfaces";
 import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
 import { Race, SubRace } from "./Race/Interfaces";
-import { RacialRegion } from "./Region/interface";
+import { RacialRegion, Region } from "./Region/interface";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
 
 export function SignNumber(
@@ -367,7 +367,7 @@ export function AllSpell(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | Race | SubRace | RacialRegion | Deity | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
+    item: string | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
@@ -496,12 +496,23 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         )
         return list
     }
-    if (text === "region") {
+    if (text === "raceRegion") {
         let list: itemInDrop[] = options.map(
             o => {
                 return {
                     name: o.region.name,
-                    item: {...o, name: o.region.name} as RacialRegion
+                    item: o as RacialRegion
+                }
+            }
+        )
+        return list
+    }
+    if (text === "region") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Region
                 }
             }
         )

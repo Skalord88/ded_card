@@ -8,6 +8,7 @@ import pl.kolendateam.dadcard.race.dto.DeityDTO;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
 import pl.kolendateam.dadcard.race.dto.RaceTypeDTO;
 import pl.kolendateam.dadcard.race.dto.RacialRegionDTO;
+import pl.kolendateam.dadcard.race.dto.RegionDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.race.entity.Alignment;
 import pl.kolendateam.dadcard.race.entity.Deity;
@@ -108,5 +109,13 @@ public class MapperRaceToDTO {
       });
     }
     return regionsDTOSet;
+  }
+
+  public static RegionDTO toRegionFromRacialRegionDTO(RacialRegion region) {
+    if (region == null) {
+      return null;
+    } else {
+      return new RegionDTO(region.getRegion());
+    }
   }
 }
