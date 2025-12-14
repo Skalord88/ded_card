@@ -41,5 +41,4 @@ export type ClassCharacter = {
   spellsKnown?: SpellsTable;
   spellBonus?: string
   spellsDomain?: string;
-  
 }

@@ -62,6 +62,7 @@ public class PrerequisiteDTO {
   public List<SchoolDTO> schools;
   public ClassPcLevel[] classPc;
   public List<ItemDTO> items;
+  public Integer numberOfDomains;
   public Domains domain;
   public Set<SpecialAbilitiesDTO> specialAbilities;
   public String text;
@@ -118,6 +119,8 @@ public class PrerequisiteDTO {
         ? MapperItemsDTO.toListItemsDTO(pre.getItems())
         : null;
     this.classPc = pre.getClassPc() != null ? pre.getClassPc() : null;
+    this.numberOfDomains =
+      pre.getNumberOfDomains() != null ? pre.getNumberOfDomains() : null;
     this.specialAbilities =
       pre.getSpecialAbilities() != null
         ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(

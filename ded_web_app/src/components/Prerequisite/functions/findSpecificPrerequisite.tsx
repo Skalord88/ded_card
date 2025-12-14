@@ -175,3 +175,14 @@ export const findSpeedPrerequisite = (prerList: Prerequisite[]): Speed => {
     special: prerList.map((p) => p.speed?.special).join(", ")
   };
 };
+
+export const findNumberOfDomanisPrerequisite = (
+  prerList: Prerequisite[]
+): number => {
+  console.log("prerList", prerList);
+  return prerList.reduce(
+    (tot, prer) =>
+      tot + (prer.numberOfDomains != null ? Number(prer.numberOfDomains) : 0),
+    0
+  );
+}

@@ -139,6 +139,8 @@ public class Prerequisite implements Serializable {
   )
   List<Item> items;
 
+  Integer numberOfDomains;
+
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn(name = "domain_id", referencedColumnName = "id")
   Domains domain;
@@ -211,6 +213,8 @@ public class Prerequisite implements Serializable {
       preDTO.items != null
         ? MapperItems.toItemsListFromDTOList(preDTO.items)
         : null;
+    this.numberOfDomains =
+      preDTO.numberOfDomains != null ? preDTO.numberOfDomains : null;
     this.domain = preDTO != null ? preDTO.domain : null;
     this.specialAbilities =
       preDTO.specialAbilities != null

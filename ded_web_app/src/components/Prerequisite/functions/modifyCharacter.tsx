@@ -53,6 +53,7 @@ import {
   findAttackRollPrerequisite,
   findDamageBonusPrerequisite,
   findInitiativePrerequisite,
+  findNumberOfDomanisPrerequisite,
   findSavingThrowPrerequisite,
   findSkillsPrerequisite,
   findSpecialAttacksPrerequisite,
@@ -110,6 +111,7 @@ export type CharToModify = {
   speed: Speed;
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
+  numberofDomains: number;
   magicClassLv?: { [classe: string]: number };
   spellsPerDay?: (Book | null)[];
   spellsKnown?: (Book | null)[];
@@ -267,8 +269,6 @@ export const modifyCharacter = (
     }
   });
 
-  // console.log("mapOfDaySpellsDB" , mapOfDaySpellsDB)
-
   let totalSpellsDay: Book[] = [];
   for (const [classe, lista] of Object.entries(mapOfDaySpells)) {
     lista.forEach((numberOfSpells, indexN) => {
@@ -280,8 +280,6 @@ export const modifyCharacter = (
         ];
 
         totalSpellsDay.push({
-          // id: char.books.find((s) => s.level === indexN && s.caster === classe)
-          //   ?.id,
           caster: classe,
           level: indexN,
           knowDay: "DAY",
@@ -323,8 +321,6 @@ export const modifyCharacter = (
     mapOfKnowSpells[dS.classe] = dS.spells;
   });
 
-  // console.log("mapOfKnowSpells" , mapOfKnowSpells)
-
   const mapOfKnowSpellsDB: { [classe: string]: Spell[] } = {};
   char.books.forEach((b) => {
     if (Array.isArray(b.spellsBook)) {
@@ -334,8 +330,6 @@ export const modifyCharacter = (
       mapOfKnowSpellsDB[b.caster + "-lv." + b.level] = spellsList;
     }
   });
-
-  // console.log("mapOfKnowSpellsDB", mapOfKnowSpellsDB);
 
   let totalSpellsKnown: (Book | null)[] = [];
   for (const [classe, lista] of Object.entries(mapOfKnowSpells)) {
@@ -375,61 +369,6 @@ export const modifyCharacter = (
       }
     });
   }
-
-  // const totalSpellsKnown: (Book | null)[] = knowSpells.flatMap((ks) => {
-  //   const caster: string = ks.classe;
-  //   const sp = char.books.filter(
-  //     (b) => b.caster === caster && b.knowDay === "KNOWN"
-  //   );
-  //   return ks.spells.map((s, sIndex) => {
-  //     if (s !== -3) {
-  //       if (s === -2) {
-  //         return {
-  //           id: -2,
-  //           caster: caster,
-  //           level: sIndex,
-  //           knowDay: "KNOWN",
-  //           spellsBook: true
-  //         };
-  //       }
-  //       const spells: (Spell | null)[] = [];
-  //       for (let i = 0; i < s; i++) {
-  //         if (sp.length - i > 0) {
-  //           sp.forEach((b) => {
-  //             if (b.level === sIndex) {
-  //               spells.push(
-  //                 Array.isArray(b.spellsBook) ? b.spellsBook[i] : null
-  //               );
-  //             }
-  //           });
-  //         } else {
-  //           spells.push(null);
-  //         }
-  //       }
-  //       if (spells === null) {
-  //         return {
-  //           id: -1,
-  //           caster: caster,
-  //           level: sIndex,
-  //           knowDay: "KNOWN",
-  //           spellsBook: spells
-  //         };
-  //       } else {
-  //         return {
-  //           id: sp.find((s) => s.level === sIndex && s.caster === caster)?.id,
-  //           caster: caster,
-  //           level: sIndex,
-  //           knowDay: "KNOWN",
-  //           spellsBook: spells
-  //         };
-  //       }
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  // });
-
-  // console.log("totalSpellsKnown", totalSpellsKnown);
 
   const allClassesSkillPoints: number = char.classPcList.reduce(
     (tot, cl) =>
@@ -511,10 +450,10 @@ export const modifyCharacter = (
     speed: findSpeedPrerequisite(prer),
     feats: allFeats,
     specialAbilities: getAllSpecialAbilities(char),
+    numberofDomains: findNumberOfDomanisPrerequisite(prer),
     magicClassLv: classiMagiche,
     spellsPerDay: totalSpellsDay,
     spellsKnown: totalSpellsKnown
-    // books: char.books
   };
   return newChar;
 };

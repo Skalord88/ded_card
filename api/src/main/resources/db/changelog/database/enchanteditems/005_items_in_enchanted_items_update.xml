@@ -379,7 +379,543 @@
 (5702, 'Gore pft', -1, 702),
 (5703, 'Slap or Slam pft', -1, 703),
 (5704, 'Sting pft', -1, 704),
-(5705, 'Tentacle pft', -1, 705);
+(5705, 'Tentacle pft', -1, 705),
+
+(6001, 'Unarmed strike pft', 1, 1),
+(6002, 'No Armor pft', 1, 2),
+(6003, 'No Shield pft', 1, 3),
+(6004, 'No item pft', 1, 4),
+(6005, 'Gauntlet pft', 1, 5),
+(6006, 'Dagger pft', 1, 6),
+(6007, 'Dagger, punching pft', 1, 7),
+(6008, 'Gauntlet, spiked pft', 1, 8),
+(6009, 'Mace, light pft', 1, 9),
+(6010, 'Sickle pft', 1, 10),
+(6011, 'Club pft', 1, 11),
+(6012, 'Mace, heavy pft', 1, 12),
+(6013, 'Morningstar pft', 1, 13),
+(6014, 'Shortspear pft', 1, 14),
+(6015, 'Long spear pft', 1, 15),
+(6016, 'Quarterstaff pft', 1, 16),
+(6017, 'Spear pft', 1, 17),
+(6018, 'Crossbow, heavy pft', 1, 18),
+(6019, 'Bolts, crossbow pft', 1, 19),
+(6020, 'Crossbow, light pft', 1, 20),
+(6021, 'Dart pft', 1, 21),
+(6022, 'Javelin pft', 1, 22),
+(6023, 'Sling pft', 1, 23),
+(6024, 'Bullets, sling pft', 1, 24),
+(6100, 'Axe, throwing pft', 1, 100),
+(6101, 'Hammer, light pft', 1, 101),
+(6102, 'Handaxe pft', 1, 102),
+(6103, 'Kukri pft', 1, 103),
+(6104, 'Pick, light pft', 1, 104),
+(6105, 'Sap pft', 1, 105),
+(6106, 'Sap pft', 1, 106),
+(6107, 'Shield, light pft', 1, 107),
+(6108, 'Spiked armor pft', 1, 108),
+(6109, 'Spiked shield, light pft', 1, 109),
+(6110, 'Sword, short pft', 1, 110),
+(6111, 'Battleaxe pft', 1, 111),
+(6112, 'Flail pft', 1, 112),
+(6113, 'Longsword pft', 1, 113),
+(6114, 'Pick, heavy pft', 1, 114),
+(6115, 'Rapier pft', 1, 115),
+(6116, 'Scimitar pft', 1, 116),
+(6117, 'Shield, heavy pft', 1, 117),
+(6118, 'Spiked shield, heavy pft', 1, 118),
+(6119, 'Trident pft', 1, 119),
+(6120, 'Warhammer pft', 1, 120),
+(6121, 'Falchion pft', 1, 121),
+(6122, 'Glaive pft', 1, 122),
+(6123, 'Greataxe pft', 1, 123),
+(6124, 'Greatclub pft', 1, 124),
+(6125, 'Flail, heavy pft', 1, 125),
+(6126, 'Greatsword pft', 1, 126),
+(6127, 'Guisarme pft', 1, 127),
+(6128, 'Halberd pft', 1, 128),
+(6129, 'Lance pft', 1, 129),
+(6130, 'Ranseur pft', 1, 130),
+(6131, 'Scythe pft', 1, 131),
+(6132, 'Longbow pft', 1, 132),
+(6133, 'Arrow pft', 1, 133),
+(6134, 'Longbow, composite pft', 1, 134),
+(6135, 'Shortbow pft', 1, 135),
+(6136, 'Shortbow, composite pft', 1, 136),
+(6200, 'Kama pft', 1, 200),
+(6201, 'Nunchaku pft', 1, 201),
+(6202, 'Sai pft', 1, 202),
+(6203, 'Siangham pft', 1, 203),
+(6204, 'Sword, bastard pft', 1, 204),
+(6205, 'Waraxe, dwarven pft', 1, 205),
+(6206, 'Whip pft', 1, 206),
+(6207, 'Axe, orc double pft', 1, 207),
+(6208, 'Chain, spiked pft', 1, 208),
+(6209, 'Flail, dire pft', 1, 209),
+(6210, 'Hammer, gnome hooked pft', 1, 210),
+(6211, 'Sword, two-bladed pft', 1, 211),
+(6212, 'Urgrosh, dwarven pft', 1, 212),
+(6213, 'Bolas pft', 1, 213),
+(6214, 'Crossbow, hand pft', 1, 214),
+(6215, 'Crossbow, repeating heavy pft', 1, 215),
+(6216, 'Crossbow, repeating light pft', 1, 216),
+(6217, 'Net pft', 1, 217),
+(6218, 'Shuriken pft', 1, 218),
+(6219, 'Warsling pft', 1, 219),
+(6220, 'Skiprock pft', 1, 220),
+(6500, 'Padded pft', 1, 500),
+(6501, 'Leather pft', 1, 501),
+(6502, 'Studded leather pft', 1, 502),
+(6503, 'Chain shirt pft', 1, 503),
+(6510, 'Hide pft', 1, 510),
+(6511, 'Scale mail pft', 1, 511),
+(6512, 'Chainmail pft', 1, 512),
+(6513, 'Breastplate pft', 1, 513),
+(6520, 'Splint mail pft', 1, 520),
+(6521, 'Banded mail pft', 1, 521),
+(6522, 'Half-plate pft', 1, 522),
+(6523, 'Full plate pft', 1, 523),
+(6530, 'Buckler pft', 1, 530),
+(6531, 'Shield, light wooden pft', 1, 531),
+(6532, 'Shield, light steel pft', 1, 532),
+(6533, 'Shield, heavy wooden pft', 1, 533),
+(6534, 'Shield, heavy steel pft', 1, 534),
+(6535, 'Shield, tower pft', 1, 535),
+(6700, 'Bite pft', 1, 700),
+(6701, 'Claw or Talon pft', 1, 701),
+(6702, 'Gore pft', 1, 702),
+(6703, 'Slap or Slam pft', 1, 703),
+(6704, 'Sting pft', 1, 704),
+(6705, 'Tentacle pft', 1, 705),
+
+(7001, 'Unarmed strike pft', 2, 1),
+(7002, 'No Armor pft', 2, 2),
+(7003, 'No Shield pft', 2, 3),
+(7004, 'No item pft', 2, 4),
+(7005, 'Gauntlet pft', 2, 5),
+(7006, 'Dagger pft', 2, 6),
+(7007, 'Dagger, punching pft', 2, 7),
+(7008, 'Gauntlet, spiked pft', 2, 8),
+(7009, 'Mace, light pft', 2, 9),
+(7010, 'Sickle pft', 2, 10),
+(7011, 'Club pft', 2, 11),
+(7012, 'Mace, heavy pft', 2, 12),
+(7013, 'Morningstar pft', 2, 13),
+(7014, 'Shortspear pft', 2, 14),
+(7015, 'Long spear pft', 2, 15),
+(7016, 'Quarterstaff pft', 2, 16),
+(7017, 'Spear pft', 2, 17),
+(7018, 'Crossbow, heavy pft', 2, 18),
+(7019, 'Bolts, crossbow pft', 2, 19),
+(7020, 'Crossbow, light pft', 2, 20),
+(7021, 'Dart pft', 2, 21),
+(7022, 'Javelin pft', 2, 22),
+(7023, 'Sling pft', 2, 23),
+(7024, 'Bullets, sling pft', 2, 24),
+(7100, 'Axe, throwing pft', 2, 100),
+(7101, 'Hammer, light pft', 2, 101),
+(7102, 'Handaxe pft', 2, 102),
+(7103, 'Kukri pft', 2, 103),
+(7104, 'Pick, light pft', 2, 104),
+(7105, 'Sap pft', 2, 105),
+(7106, 'Sap pft', 2, 106),
+(7107, 'Shield, light pft', 2, 107),
+(7108, 'Spiked armor pft', 2, 108),
+(7109, 'Spiked shield, light pft', 2, 109),
+(7110, 'Sword, short pft', 2, 110),
+(7111, 'Battleaxe pft', 2, 111),
+(7112, 'Flail pft', 2, 112),
+(7113, 'Longsword pft', 2, 113),
+(7114, 'Pick, heavy pft', 2, 114),
+(7115, 'Rapier pft', 2, 115),
+(7116, 'Scimitar pft', 2, 116),
+(7117, 'Shield, heavy pft', 2, 117),
+(7118, 'Spiked shield, heavy pft', 2, 118),
+(7119, 'Trident pft', 2, 119),
+(7120, 'Warhammer pft', 2, 120),
+(7121, 'Falchion pft', 2, 121),
+(7122, 'Glaive pft', 2, 122),
+(7123, 'Greataxe pft', 2, 123),
+(7124, 'Greatclub pft', 2, 124),
+(7125, 'Flail, heavy pft', 2, 125),
+(7126, 'Greatsword pft', 2, 126),
+(7127, 'Guisarme pft', 2, 127),
+(7128, 'Halberd pft', 2, 128),
+(7129, 'Lance pft', 2, 129),
+(7130, 'Ranseur pft', 2, 130),
+(7131, 'Scythe pft', 2, 131),
+(7132, 'Longbow pft', 2, 132),
+(7133, 'Arrow pft', 2, 133),
+(7134, 'Longbow, composite pft', 2, 134),
+(7135, 'Shortbow pft', 2, 135),
+(7136, 'Shortbow, composite pft', 2, 136),
+(7200, 'Kama pft', 2, 200),
+(7201, 'Nunchaku pft', 2, 201),
+(7202, 'Sai pft', 2, 202),
+(7203, 'Siangham pft', 2, 203),
+(7204, 'Sword, bastard pft', 2, 204),
+(7205, 'Waraxe, dwarven pft', 2, 205),
+(7206, 'Whip pft', 2, 206),
+(7207, 'Axe, orc double pft', 2, 207),
+(7208, 'Chain, spiked pft', 2, 208),
+(7209, 'Flail, dire pft', 2, 209),
+(7210, 'Hammer, gnome hooked pft', 2, 210),
+(7211, 'Sword, two-bladed pft', 2, 211),
+(7212, 'Urgrosh, dwarven pft', 2, 212),
+(7213, 'Bolas pft', 2, 213),
+(7214, 'Crossbow, hand pft', 2, 214),
+(7215, 'Crossbow, repeating heavy pft', 2, 215),
+(7216, 'Crossbow, repeating light pft', 2, 216),
+(7217, 'Net pft', 2, 217),
+(7218, 'Shuriken pft', 2, 218),
+(7219, 'Warsling pft', 2, 219),
+(7220, 'Skiprock pft', 2, 220),
+(7500, 'Padded pft', 2, 500),
+(7501, 'Leather pft', 2, 501),
+(7502, 'Studded leather pft', 2, 502),
+(7503, 'Chain shirt pft', 2, 503),
+(7510, 'Hide pft', 2, 510),
+(7511, 'Scale mail pft', 2, 511),
+(7512, 'Chainmail pft', 2, 512),
+(7513, 'Breastplate pft', 2, 513),
+(7520, 'Splint mail pft', 2, 520),
+(7521, 'Banded mail pft', 2, 521),
+(7522, 'Half-plate pft', 2, 522),
+(7523, 'Full plate pft', 2, 523),
+(7530, 'Buckler pft', 2, 530),
+(7531, 'Shield, light wooden pft', 2, 531),
+(7532, 'Shield, light steel pft', 2, 532),
+(7533, 'Shield, heavy wooden pft', 2, 533),
+(7534, 'Shield, heavy steel pft', 2, 534),
+(7535, 'Shield, tower pft', 2, 535),
+(7700, 'Bite pft', 2, 700),
+(7701, 'Claw or Talon pft', 2, 701),
+(7702, 'Gore pft', 2, 702),
+(7703, 'Slap or Slam pft', 2, 703),
+(7704, 'Sting pft', 2, 704),
+(7705, 'Tentacle pft', 2, 705),
+
+(8001, 'Unarmed strike pft', 3, 1),
+(8002, 'No Armor pft', 3, 2),
+(8003, 'No Shield pft', 3, 3),
+(8004, 'No item pft', 3, 4),
+(8005, 'Gauntlet pft', 3, 5),
+(8006, 'Dagger pft', 3, 6),
+(8007, 'Dagger, punching pft', 3, 7),
+(8008, 'Gauntlet, spiked pft', 3, 8),
+(8009, 'Mace, light pft', 3, 9),
+(8010, 'Sickle pft', 3, 10),
+(8011, 'Club pft', 3, 11),
+(8012, 'Mace, heavy pft', 3, 12),
+(8013, 'Morningstar pft', 3, 13),
+(8014, 'Shortspear pft', 3, 14),
+(8015, 'Long spear pft', 3, 15),
+(8016, 'Quarterstaff pft', 3, 16),
+(8017, 'Spear pft', 3, 17),
+(8018, 'Crossbow, heavy pft', 3, 18),
+(8019, 'Bolts, crossbow pft', 3, 19),
+(8020, 'Crossbow, light pft', 3, 20),
+(8021, 'Dart pft', 3, 21),
+(8022, 'Javelin pft', 3, 22),
+(8023, 'Sling pft', 3, 23),
+(8024, 'Bullets, sling pft', 3, 24),
+(8100, 'Axe, throwing pft', 3, 100),
+(8101, 'Hammer, light pft', 3, 101),
+(8102, 'Handaxe pft', 3, 102),
+(8103, 'Kukri pft', 3, 103),
+(8104, 'Pick, light pft', 3, 104),
+(8105, 'Sap pft', 3, 105),
+(8106, 'Sap pft', 3, 106),
+(8107, 'Shield, light pft', 3, 107),
+(8108, 'Spiked armor pft', 3, 108),
+(8109, 'Spiked shield, light pft', 3, 109),
+(8110, 'Sword, short pft', 3, 110),
+(8111, 'Battleaxe pft', 3, 111),
+(8112, 'Flail pft', 3, 112),
+(8113, 'Longsword pft', 3, 113),
+(8114, 'Pick, heavy pft', 3, 114),
+(8115, 'Rapier pft', 3, 115),
+(8116, 'Scimitar pft', 3, 116),
+(8117, 'Shield, heavy pft', 3, 117),
+(8118, 'Spiked shield, heavy pft', 3, 118),
+(8119, 'Trident pft', 3, 119),
+(8120, 'Warhammer pft', 3, 120),
+(8121, 'Falchion pft', 3, 121),
+(8122, 'Glaive pft', 3, 122),
+(8123, 'Greataxe pft', 3, 123),
+(8124, 'Greatclub pft', 3, 124),
+(8125, 'Flail, heavy pft', 3, 125),
+(8126, 'Greatsword pft', 3, 126),
+(8127, 'Guisarme pft', 3, 127),
+(8128, 'Halberd pft', 3, 128),
+(8129, 'Lance pft', 3, 129),
+(8130, 'Ranseur pft', 3, 130),
+(8131, 'Scythe pft', 3, 131),
+(8132, 'Longbow pft', 3, 132),
+(8133, 'Arrow pft', 3, 133),
+(8134, 'Longbow, composite pft', 3, 134),
+(8135, 'Shortbow pft', 3, 135),
+(8136, 'Shortbow, composite pft', 3, 136),
+(8200, 'Kama pft', 3, 200),
+(8201, 'Nunchaku pft', 3, 201),
+(8202, 'Sai pft', 3, 202),
+(8203, 'Siangham pft', 3, 203),
+(8204, 'Sword, bastard pft', 3, 204),
+(8205, 'Waraxe, dwarven pft', 3, 205),
+(8206, 'Whip pft', 3, 206),
+(8207, 'Axe, orc double pft', 3, 207),
+(8208, 'Chain, spiked pft', 3, 208),
+(8209, 'Flail, dire pft', 3, 209),
+(8210, 'Hammer, gnome hooked pft', 3, 210),
+(8211, 'Sword, two-bladed pft', 3, 211),
+(8212, 'Urgrosh, dwarven pft', 3, 212),
+(8213, 'Bolas pft', 3, 213),
+(8214, 'Crossbow, hand pft', 3, 214),
+(8215, 'Crossbow, repeating heavy pft', 3, 215),
+(8216, 'Crossbow, repeating light pft', 3, 216),
+(8217, 'Net pft', 3, 217),
+(8218, 'Shuriken pft', 3, 218),
+(8219, 'Warsling pft', 3, 219),
+(8220, 'Skiprock pft', 3, 220),
+(8500, 'Padded pft', 3, 500),
+(8501, 'Leather pft', 3, 501),
+(8502, 'Studded leather pft', 3, 502),
+(8503, 'Chain shirt pft', 3, 503),
+(8510, 'Hide pft', 3, 510),
+(8511, 'Scale mail pft', 3, 511),
+(8512, 'Chainmail pft', 3, 512),
+(8513, 'Breastplate pft', 3, 513),
+(8520, 'Splint mail pft', 3, 520),
+(8521, 'Banded mail pft', 3, 521),
+(8522, 'Half-plate pft', 3, 522),
+(8523, 'Full plate pft', 3, 523),
+(8530, 'Buckler pft', 3, 530),
+(8531, 'Shield, light wooden pft', 3, 531),
+(8532, 'Shield, light steel pft', 3, 532),
+(8533, 'Shield, heavy wooden pft', 3, 533),
+(8534, 'Shield, heavy steel pft', 3, 534),
+(8535, 'Shield, tower pft', 3, 535),
+(8700, 'Bite pft', 3, 700),
+(8701, 'Claw or Talon pft', 3, 701),
+(8702, 'Gore pft', 3, 702),
+(8703, 'Slap or Slam pft', 3, 703),
+(8704, 'Sting pft', 3, 704),
+(8705, 'Tentacle pft', 3, 705),
+
+(9001, 'Unarmed strike pft', 4, 1),
+(9002, 'No Armor pft', 4, 2),
+(9003, 'No Shield pft', 4, 3),
+(9004, 'No item pft', 4, 4),
+(9005, 'Gauntlet pft', 4, 5),
+(9006, 'Dagger pft', 4, 6),
+(9007, 'Dagger, punching pft', 4, 7),
+(9008, 'Gauntlet, spiked pft', 4, 8),
+(9009, 'Mace, light pft', 4, 9),
+(9010, 'Sickle pft', 4, 10),
+(9011, 'Club pft', 4, 11),
+(9012, 'Mace, heavy pft', 4, 12),
+(9013, 'Morningstar pft', 4, 13),
+(9014, 'Shortspear pft', 4, 14),
+(9015, 'Long spear pft', 4, 15),
+(9016, 'Quarterstaff pft', 4, 16),
+(9017, 'Spear pft', 4, 17),
+(9018, 'Crossbow, heavy pft', 4, 18),
+(9019, 'Bolts, crossbow pft', 4, 19),
+(9020, 'Crossbow, light pft', 4, 20),
+(9021, 'Dart pft', 4, 21),
+(9022, 'Javelin pft', 4, 22),
+(9023, 'Sling pft', 4, 23),
+(9024, 'Bullets, sling pft', 4, 24),
+(9100, 'Axe, throwing pft', 4, 100),
+(9101, 'Hammer, light pft', 4, 101),
+(9102, 'Handaxe pft', 4, 102),
+(9103, 'Kukri pft', 4, 103),
+(9104, 'Pick, light pft', 4, 104),
+(9105, 'Sap pft', 4, 105),
+(9106, 'Sap pft', 4, 106),
+(9107, 'Shield, light pft', 4, 107),
+(9108, 'Spiked armor pft', 4, 108),
+(9109, 'Spiked shield, light pft', 4, 109),
+(9110, 'Sword, short pft', 4, 110),
+(9111, 'Battleaxe pft', 4, 111),
+(9112, 'Flail pft', 4, 112),
+(9113, 'Longsword pft', 4, 113),
+(9114, 'Pick, heavy pft', 4, 114),
+(9115, 'Rapier pft', 4, 115),
+(9116, 'Scimitar pft', 4, 116),
+(9117, 'Shield, heavy pft', 4, 117),
+(9118, 'Spiked shield, heavy pft', 4, 118),
+(9119, 'Trident pft', 4, 119),
+(9120, 'Warhammer pft', 4, 120),
+(9121, 'Falchion pft', 4, 121),
+(9122, 'Glaive pft', 4, 122),
+(9123, 'Greataxe pft', 4, 123),
+(9124, 'Greatclub pft', 4, 124),
+(9125, 'Flail, heavy pft', 4, 125),
+(9126, 'Greatsword pft', 4, 126),
+(9127, 'Guisarme pft', 4, 127),
+(9128, 'Halberd pft', 4, 128),
+(9129, 'Lance pft', 4, 129),
+(9130, 'Ranseur pft', 4, 130),
+(9131, 'Scythe pft', 4, 131),
+(9132, 'Longbow pft', 4, 132),
+(9133, 'Arrow pft', 4, 133),
+(9134, 'Longbow, composite pft', 4, 134),
+(9135, 'Shortbow pft', 4, 135),
+(9136, 'Shortbow, composite pft', 4, 136),
+(9200, 'Kama pft', 4, 200),
+(9201, 'Nunchaku pft', 4, 201),
+(9202, 'Sai pft', 4, 202),
+(9203, 'Siangham pft', 4, 203),
+(9204, 'Sword, bastard pft', 4, 204),
+(9205, 'Waraxe, dwarven pft', 4, 205),
+(9206, 'Whip pft', 4, 206),
+(9207, 'Axe, orc double pft', 4, 207),
+(9208, 'Chain, spiked pft', 4, 208),
+(9209, 'Flail, dire pft', 4, 209),
+(9210, 'Hammer, gnome hooked pft', 4, 210),
+(9211, 'Sword, two-bladed pft', 4, 211),
+(9212, 'Urgrosh, dwarven pft', 4, 212),
+(9213, 'Bolas pft', 4, 213),
+(9214, 'Crossbow, hand pft', 4, 214),
+(9215, 'Crossbow, repeating heavy pft', 4, 215),
+(9216, 'Crossbow, repeating light pft', 4, 216),
+(9217, 'Net pft', 4, 217),
+(9218, 'Shuriken pft', 4, 218),
+(9219, 'Warsling pft', 4, 219),
+(9220, 'Skiprock pft', 4, 220),
+(9500, 'Padded pft', 4, 500),
+(9501, 'Leather pft', 4, 501),
+(9502, 'Studded leather pft', 4, 502),
+(9503, 'Chain shirt pft', 4, 503),
+(9510, 'Hide pft', 4, 510),
+(9511, 'Scale mail pft', 4, 511),
+(9512, 'Chainmail pft', 4, 512),
+(9513, 'Breastplate pft', 4, 513),
+(9520, 'Splint mail pft', 4, 520),
+(9521, 'Banded mail pft', 4, 521),
+(9522, 'Half-plate pft', 4, 522),
+(9523, 'Full plate pft', 4, 523),
+(9530, 'Buckler pft', 4, 530),
+(9531, 'Shield, light wooden pft', 4, 531),
+(9532, 'Shield, light steel pft', 4, 532),
+(9533, 'Shield, heavy wooden pft', 4, 533),
+(9534, 'Shield, heavy steel pft', 4, 534),
+(9535, 'Shield, tower pft', 4, 535),
+(9700, 'Bite pft', 4, 700),
+(9701, 'Claw or Talon pft', 4, 701),
+(9702, 'Gore pft', 4, 702),
+(9703, 'Slap or Slam pft', 4, 703),
+(9704, 'Sting pft', 4, 704),
+(9705, 'Tentacle pft', 4, 705),
+
+(10001, 'Unarmed strike pft', 5, 1),
+(10002, 'No Armor pft', 5, 2),
+(10003, 'No Shield pft', 5, 3),
+(10004, 'No item pft', 5, 4),
+(10005, 'Gauntlet pft', 5, 5),
+(10006, 'Dagger pft', 5, 6),
+(10007, 'Dagger, punching pft', 5, 7),
+(10008, 'Gauntlet, spiked pft', 5, 8),
+(10009, 'Mace, light pft', 5, 9),
+(10010, 'Sickle pft', 5, 10),
+(10011, 'Club pft', 5, 11),
+(10012, 'Mace, heavy pft', 5, 12),
+(10013, 'Morningstar pft', 5, 13),
+(10014, 'Shortspear pft', 5, 14),
+(10015, 'Long spear pft', 5, 15),
+(10016, 'Quarterstaff pft', 5, 16),
+(10017, 'Spear pft', 5, 17),
+(10018, 'Crossbow, heavy pft', 5, 18),
+(10019, 'Bolts, crossbow pft', 5, 19),
+(10020, 'Crossbow, light pft', 5, 20),
+(10021, 'Dart pft', 5, 21),
+(10022, 'Javelin pft', 5, 22),
+(10023, 'Sling pft', 5, 23),
+(10024, 'Bullets, sling pft', 5, 24),
+(10100, 'Axe, throwing pft', 5, 100),
+(10101, 'Hammer, light pft', 5, 101),
+(10102, 'Handaxe pft', 5, 102),
+(10103, 'Kukri pft', 5, 103),
+(10104, 'Pick, light pft', 5, 104),
+(10105, 'Sap pft', 5, 105),
+(10106, 'Sap pft', 5, 106),
+(10107, 'Shield, light pft', 5, 107),
+(10108, 'Spiked armor pft', 5, 108),
+(10109, 'Spiked shield, light pft', 5, 109),
+(10110, 'Sword, short pft', 5, 110),
+(10111, 'Battleaxe pft', 5, 111),
+(10112, 'Flail pft', 5, 112),
+(10113, 'Longsword pft', 5, 113),
+(10114, 'Pick, heavy pft', 5, 114),
+(10115, 'Rapier pft', 5, 115),
+(10116, 'Scimitar pft', 5, 116),
+(10117, 'Shield, heavy pft', 5, 117),
+(10118, 'Spiked shield, heavy pft', 5, 118),
+(10119, 'Trident pft', 5, 119),
+(10120, 'Warhammer pft', 5, 120),
+(10121, 'Falchion pft', 5, 121),
+(10122, 'Glaive pft', 5, 122),
+(10123, 'Greataxe pft', 5, 123),
+(10124, 'Greatclub pft', 5, 124),
+(10125, 'Flail, heavy pft', 5, 125),
+(10126, 'Greatsword pft', 5, 126),
+(10127, 'Guisarme pft', 5, 127),
+(10128, 'Halberd pft', 5, 128),
+(10129, 'Lance pft', 5, 129),
+(10130, 'Ranseur pft', 5, 130),
+(10131, 'Scythe pft', 5, 131),
+(10132, 'Longbow pft', 5, 132),
+(10133, 'Arrow pft', 5, 133),
+(10134, 'Longbow, composite pft', 5, 134),
+(10135, 'Shortbow pft', 5, 135),
+(10136, 'Shortbow, composite pft', 5, 136),
+(10200, 'Kama pft', 5, 200),
+(10201, 'Nunchaku pft', 5, 201),
+(10202, 'Sai pft', 5, 202),
+(10203, 'Siangham pft', 5, 203),
+(10204, 'Sword, bastard pft', 5, 204),
+(10205, 'Waraxe, dwarven pft', 5, 205),
+(10206, 'Whip pft', 5, 206),
+(10207, 'Axe, orc double pft', 5, 207),
+(10208, 'Chain, spiked pft', 5, 208),
+(10209, 'Flail, dire pft', 5, 209),
+(10210, 'Hammer, gnome hooked pft', 5, 210),
+(10211, 'Sword, two-bladed pft', 5, 211),
+(10212, 'Urgrosh, dwarven pft', 5, 212),
+(10213, 'Bolas pft', 5, 213),
+(10214, 'Crossbow, hand pft', 5, 214),
+(10215, 'Crossbow, repeating heavy pft', 5, 215),
+(10216, 'Crossbow, repeating light pft', 5, 216),
+(10217, 'Net pft', 5, 217),
+(10218, 'Shuriken pft', 5, 218),
+(10219, 'Warsling pft', 5, 219),
+(10220, 'Skiprock pft', 5, 220),
+(10500, 'Padded pft', 5, 500),
+(10501, 'Leather pft', 5, 501),
+(10502, 'Studded leather pft', 5, 502),
+(10503, 'Chain shirt pft', 5, 503),
+(10510, 'Hide pft', 5, 510),
+(10511, 'Scale mail pft', 5, 511),
+(10512, 'Chainmail pft', 5, 512),
+(10513, 'Breastplate pft', 5, 513),
+(10520, 'Splint mail pft', 5, 520),
+(10521, 'Banded mail pft', 5, 521),
+(10522, 'Half-plate pft', 5, 522),
+(10523, 'Full plate pft', 5, 523),
+(10530, 'Buckler pft', 5, 530),
+(10531, 'Shield, light wooden pft', 5, 531),
+(10532, 'Shield, light steel pft', 5, 532),
+(10533, 'Shield, heavy wooden pft', 5, 533),
+(10534, 'Shield, heavy steel pft', 5, 534),
+(10535, 'Shield, tower pft', 5, 535),
+(10700, 'Bite pft', 5, 700),
+(10701, 'Claw or Talon pft', 5, 701),
+(10702, 'Gore pft', 5, 702),
+(10703, 'Slap or Slam pft', 5, 703),
+(10704, 'Sting pft', 5, 704),
+(10705, 'Tentacle pft', 5, 705)
+;
         </sql>
         <!-- pft Items -->
 
@@ -388,140 +924,140 @@
             <!-- Adamantine Breastplate -->
   <column name="item_id" valueNumeric="513" />
   <where>id =
-            10000</where>
+            100000</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Banded Mail of Luck -->
   <column name="item_id" valueNumeric="521" />
   <where>id =
-            10001</where>
+            100001</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Breastplate of Command -->
   <column name="item_id" valueNumeric="513" />
   <where>id =
-            10002</where>
+            100002</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Celestial Armor -->
   <column name="item_id" valueNumeric="512" />
   <where>id =
-            10003</where>
+            100003</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Demon Armor -->
   <column name="item_id" valueNumeric="523" />
   <where>id =
-            10004</where>
+            100004</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Dragonhide Plate -->
   <column name="item_id" valueNumeric="523" />
   <where>id =
-            10005</where>
+            100005</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Dwarven Plate -->
   <column name="item_id" valueNumeric="523" />
   <where>id =
-            10006</where>
+            100006</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Elven Chain -->
   <column name="item_id" valueNumeric="512" />
   <where>id =
-            10007</where>
+            100007</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Full Plate of Speed -->
   <column name="item_id" valueNumeric="523" />
   <where>id =
-            10008</where>
+            100008</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Shirt -->
   <column name="item_id" valueNumeric="503" />
   <where>id =
-            10009</where>
+            100009</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Plate Armor of the Deep -->
   <column name="item_id" valueNumeric="523" />
   <where>id =
-            10010</where>
+            100010</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Rhino Hide -->
   <column name="item_id" valueNumeric="510" />
   <where>id =
-            10011</where>
+            100011</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Absorbing Shield -->
   <column name="item_id" valueNumeric="534" />
   <where>id =
-            10012</where>
+            100012</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Caster’s Shield -->
   <column name="item_id" valueNumeric="531" />
   <where>id =
-            10013</where>
+            100013</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Darkwood Buckler -->
   <column name="item_id" valueNumeric="530" />
   <where>id =
-            10014</where>
+            100014</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Darkwood Shield -->
         <column name="item_id" valueNumeric="533" />
         <where>id =
-            10015</where>
+            100015</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Lion’s Shield -->
         <column name="item_id" valueNumeric="534" />
         <where>id =
-            10016</where>
+            100016</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Mithral Heavy Shield -->
         <column name="item_id" valueNumeric="534" />
         <where>id =
-            10017</where>
+            100017</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Spined Shield -->
         <column name="item_id" valueNumeric="534" />
         <where>id =
-            10018</where>
+            100018</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Winged Shield -->
         <column name="item_id" valueNumeric="533" />
         <where>id =
-            10019</where>
+            100019</where>
         </update>
         <!-- Specific Armors -->
 

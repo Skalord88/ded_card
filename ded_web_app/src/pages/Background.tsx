@@ -1,17 +1,17 @@
-import { useParams } from "react-router-dom";
-import { PageLayout } from "./AppLayout";
-import { useEffect, useState } from "react";
-import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { createModChar } from "../components/Prerequisite/functions/modChar";
 import axios from "axios";
-import { urlChar, urlDeity, urlRegion } from "../components/url";
-import { CharacterPc } from "../components/interfaces";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Alignment, AlignmentMap } from "../components/Alignment/Alignment";
 import { Deity } from "../components/Deity/interface";
-import { ListGroupItem } from "react-bootstrap";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
+import { CharacterPc } from "../components/interfaces";
+import { createModChar } from "../components/Prerequisite/functions/modChar";
+import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { RacialRegion, Region } from "../components/Region/interface";
-import { Domain } from "domain";
+import { urlChar, urlRegion } from "../components/url";
+import { PageLayout } from "./AppLayout";
+import { Dominio } from "../components/Dominio/interface";
 
 export function Background() {
   const { charId } = useParams();
@@ -20,10 +20,16 @@ export function Background() {
   const [modChar, setModChar] = useState<CharToModify>();
   const [regions, setRegions] = useState<RacialRegion[]>([]);
   const [deities, setDeities] = useState<Deity[]>([]);
+  const [domains, setDomains] = useState<Dominio[]>([]);
+  const [aligments, setAligments] = useState<Alignment[]>([]);
+  const [itemsDei, setItemsDei] = useState<itemInDrop[]>([]);
+  const [itemsDom, setItemsDom] = useState<itemInDrop[]>([]);
+  const [itemsAligm, setItemsAligm] = useState<itemInDrop[]>([]);
   const [regionRace, setRegionRace] = useState<RacialRegion>();
-  const [region, setRegion] = useState<Region>();
+  // const [region, setRegion] = useState<Region>();
   const [god, setGod] = useState<Deity>();
-  const [domains, setDomains] = useState<Domain[]>([]);
+  const [domain, setDomain] = useState<Dominio>();
+  const [aligment, setAligment] = useState<Alignment>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,11 +43,9 @@ export function Background() {
 
         const regioni = await axios.get(urlRegion);
         const allRegioni: RacialRegion[] = regioni.data;
-        setRegions(allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name)));
-
-        // const deities = await axios.get(urlDeity);
-        // const allDeitys: Deity[] = deities.data;
-        // setDeities(allDeitys);
+        setRegions(
+          allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name))
+        );
       } catch (error) {
         console.log(error);
       }
@@ -51,37 +55,170 @@ export function Background() {
   }, []);
 
   const selectTheRacialRegion = (option: RacialRegion) => {
+    setGod(undefined);
+    setItemsDei([]);
+    setDeities(
+      option.preferedDeities.sort((a, b) => a.name.localeCompare(b.name))
+    );
+    setDomain(undefined);
+    setItemsDom([]);
+    setAligment(undefined);
+    setItemsAligm([]);
+    setAligments(option.region.regionalAlignment);
     setRegionRace(option);
   };
   const selectTheGod = (option: Deity) => {
     setGod(option);
   };
-  const selectTheRegion = (option: RacialRegion) => {
-    setRegion(option.region);
+  const selectTheAligment = (option: Alignment) => {
+    setAligment(option);
   };
 
-  const itemsDei: itemInDrop[] = addToDrop(
-    deities.sort((a, b) => a.name.localeCompare(b.name)),
-    "deity"
-  );
+  useEffect(() => {
+    const itemsDei = addToDrop(
+      deities.sort((a, b) => a.name.localeCompare(b.name)),
+      "deity"
+    );
+    setItemsDei(itemsDei);
+  }, [deities]);
+  useEffect(() => {
+    if(god){
+    const itemsDom = addToDrop(
+      god?.domains.sort((a, b) => a.domain.localeCompare(b.domain)),
+      "domain"
+    );
+    setItemsDom(itemsDom);}
+  }, [god]);
+  useEffect(() => {
+    const items = addToDrop(
+      aligments.sort((a, b) => a.name.localeCompare(b.name)),
+      "aligment"
+    );
+    setItemsAligm(items);
+  }, [aligments]);
 
   const itemsRegioni: itemInDrop[] = addToDrop(
     regions
       .filter((reg) =>
-        reg.regionalSubRaces.some((sub) => sub.race.id === character?.race.race.id)
+        reg.regionalSubRaces.some(
+          (sub) => sub.race.id === character?.race.race.id
+        )
       )
       .sort((a, b) => a.region.name.localeCompare(b.region.name)),
     "raceRegion"
   );
+  console.log("numberofDomains", modChar?.numberofDomains)
+  const isCleric: boolean = modChar?.numberofDomains === 0 ? false : true;
 
   return (
     <div>
       <PageLayout title={"background"}>
-        <DropdownComponent
-          options={itemsRegioni}
+        <BackgroundLayoutComponent
+          title="Region"
+          items={itemsRegioni}
           onAction={selectTheRacialRegion}
-        ></DropdownComponent>
+          one={regionRace?.region}
+        />
+        {deities && deities.length > 0 && (
+          <BackgroundLayoutComponent
+            title="God"
+            items={itemsDei}
+            onAction={selectTheGod}
+            one={god && god}
+          />
+        )}
+        {deities && deities.length > 0 && (
+          <BackgroundLayoutComponent
+            title="Domanin"
+            items={itemsDom}
+            onAction={selectTheGod}
+            one={domain && domain}
+          />
+        )}
+        {aligments && aligments.length > 0 && (
+          <BackgroundLayoutComponent
+            title="Aligment"
+            items={itemsAligm}
+            onAction={selectTheAligment}
+            one={aligment && aligment}
+          />
+        )}
       </PageLayout>
     </div>
   );
 }
+
+export type BackgroundLayoutComponentProps = {
+  title: string;
+  items?: itemInDrop[];
+  onAction?: (option: any) => void;
+  one?: Region | Deity | Dominio | Alignment | undefined;
+};
+
+export const BackgroundLayoutComponent: React.FC<
+  BackgroundLayoutComponentProps
+> = ({ title, items, onAction, one }) => {
+  return (
+    <div>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          alignItems: "center",
+          gap: "8px"
+        }}
+      >
+        <DropdownComponent
+          options={items || []}
+          onAction={onAction || (() => {})}
+        />
+
+        <div>
+          <p>{title}:</p>
+        </div>
+        {one && <BackgroundOneComponent one={one} />}
+        <div></div>
+      </div>
+    </div>
+  );
+};
+
+export interface BackgroundOneComponentProps {
+  one: Region | Deity | Dominio | Alignment;
+}
+export const BackgroundOneComponent: React.FC<BackgroundOneComponentProps> = ({ one
+}) => {
+
+  if('regionalAlignment' in one){
+    const region = one as Region;
+    return (
+      <div>
+        <p>{region.name}</p>
+      </div>
+    );
+  }
+  if('worshiperAlignments' in one){
+    const deity = one as Deity;
+    return (
+      <div>
+        <p>{deity.name}</p>
+      </div>
+    );
+  }
+  if('domain' in one){
+    const deity = one as Dominio;
+    return (
+      <div>
+        <p>{deity.domain}</p>
+      </div>
+    );
+  }
+  if('opposingAlignment' in one){
+    const alignment = one as Alignment;
+    return (
+      <div>
+        <p>{AlignmentMap[alignment.name]}</p>
+      </div>
+    );
+  }
+};

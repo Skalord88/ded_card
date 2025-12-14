@@ -3,6 +3,7 @@ import { itemInDrop } from "../functions";
 
 export interface DropdownProps {
   options: itemInDrop[];
+  // change: boolean;
   onAction: (option: any) => void;
 }
 
@@ -13,6 +14,10 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   const [selectedItem, setSelectedItem] = useState<string>("...");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setSelectedItem("...");
+  }, [options]);
 
   const selectItem = (option: itemInDrop) => {
     onAction(option.item);

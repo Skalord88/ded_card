@@ -36,7 +36,7 @@ export type SelectedFeatProps = {
 
 export type ClassFeats = {
   id: number,
-  modifiers: any;
+  // modifiers: any;
   level: number;
   feat: Feat;
   classId: number;

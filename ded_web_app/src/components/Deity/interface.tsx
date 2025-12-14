@@ -1,12 +1,11 @@
 
-import { Weapon } from "../interfaces";
 import { Alignment } from "../Alignment/Alignment";
-import { Domains } from "../Domains/interface";
+import { Weapon } from "../interfaces";
 
 export type Deity = {
   id: number;
   name: string;
-  domains: Domains[];
+  domains: Dominio[];
   alignment: Alignment;
   worshiperAlignments: Alignment[];
   favoredWeapons: Weapon[];

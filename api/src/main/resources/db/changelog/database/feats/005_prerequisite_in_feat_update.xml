@@ -493,6 +493,12 @@
             <where>id = 1005</where>
         </update>
 
+        <update tableName="feat">
+            <!-- Deity, Domains, and Domain Spells mod -->
+            <column name="modifiers_id" valueNumeric="3013" />
+            <where>id = 3003</where>
+        </update>
+
         <!-- druid -->
         <update tableName="feat">
             <!-- Nature Sense mod -->

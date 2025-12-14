@@ -1,5 +1,6 @@
 import { Feat } from "../Feats/Interface/FeatInterface"
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite"
+import { Region } from "../Region/interface"
 import { Size } from "../Size/interfaces"
 
 
@@ -47,9 +48,4 @@ export type Archetype = {
     archetypeFeats: Feat[],
     levelAdjustment: number;
     specialAbilities: SpecialAbilities[]
-}
-
-export type Region = {
-    id: number;
-    name: string
 }

@@ -1,6 +1,6 @@
 import { Spell } from "../interfaces";
 
-export type Domains = {
+export type Dominio = {
     id: number;
     domain: string;
     grantedPower: string;

@@ -797,6 +797,13 @@
       <column name="text" value="immunity to all diseases" />
     </insert>
 
+    <!-- Deity, Domains, and Domain Spells mod -->
+    <insert tableName="prerequisite">
+      <column name="id" value="3013" />
+      <column name="number_of_domains"
+        value="2" />
+    </insert>
+
     <!-- Combat Style to_select -->
     <insert tableName="prerequisite">
       <column name="id" value="4002" />

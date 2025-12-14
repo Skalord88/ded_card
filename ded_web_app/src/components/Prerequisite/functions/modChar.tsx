@@ -46,6 +46,7 @@ export const createModChar = (
       special: ""
     },
     specialAbilities: [],
+    numberofDomains: 0,
     magicClassLv: {},
     spellsPerDay: [],
     spellsKnown: [],
@@ -109,8 +110,10 @@ export const createModChar = (
   char.classPcList.forEach((cl) => {
     if (cl && cl.classCharacter && cl.classCharacter.classFeats) {
       cl.classCharacter.classFeats.forEach((f) => {
-        if (f && f.level <= cl.level && f.modifiers) {
-          modif.push(f.modifiers);
+        if (f && f.level <= cl.level) {
+          if (f.feat.modifiers) modif.push(f.feat.modifiers);
+          if (f.feat.selected) modif.push(f.feat.selected);
+          if (f.selected) modif.push(f.selected);
         }
       });
     }

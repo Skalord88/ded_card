@@ -49,6 +49,7 @@
         <!-- Divine Grace 3010 -->
         <!-- Aura of Courage 3011 -->
         <!-- Divine Health 3012 -->
+        <!-- Deity, Domains, and Domain Spells 3013 -->
 
         <!-- to_select 4000 -->
         <!-- Favored Enemy 4001 -->

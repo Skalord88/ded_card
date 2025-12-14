@@ -30,5 +30,6 @@ export type Prerequisite = {
     schools?: string[];
     classPc?: ClassPcLevel[];
     items?: Item[]
+    numberOfDomains?: number;
     text?: string;
   }

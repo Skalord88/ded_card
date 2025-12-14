@@ -1,12 +1,12 @@
 import { BonusAbilities } from "./Abilitys/Functions";
+import { Alignment } from "./Alignment/Alignment";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
 import { Deity } from "./Deity/interface";
 
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
-import { Armor, Book, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, subRaces, Weapon, WonderousItem } from "./interfaces";
-import { CharToModify } from "./Prerequisite/functions/modifyCharacter";
+import { Armor, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, Weapon, WonderousItem } from "./interfaces";
 import { Race, SubRace } from "./Race/Interfaces";
 import { RacialRegion, Region } from "./Region/interface";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
@@ -367,7 +367,7 @@ export function AllSpell(
 
 export interface itemInDrop {
     name: string
-    item: string | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
+    item: string | Alignment | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Dominio | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
@@ -496,6 +496,17 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         )
         return list
     }
+    if (text === "domain") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Dominio
+                }
+            }
+        )
+        return list
+    }
     if (text === "raceRegion") {
         let list: itemInDrop[] = options.map(
             o => {
@@ -513,6 +524,17 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
                 return {
                     name: o.name,
                     item: o as Region
+                }
+            }
+        )
+        return list
+    }
+    if (text === "aligment") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                return {
+                    name: o.name,
+                    item: o as Alignment
                 }
             }
         )

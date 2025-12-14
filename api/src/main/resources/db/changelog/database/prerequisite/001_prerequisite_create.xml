@@ -50,6 +50,9 @@
       <column name="class_pc" type="jsonb">
         <constraints nullable="true" />
       </column>
+      <column name="number_of_domains" type="INTEGER">
+        <constraints nullable="true" />
+      </column>
       <column name="domain_id" type="int">
         <constraints nullable="true" />
       </column>

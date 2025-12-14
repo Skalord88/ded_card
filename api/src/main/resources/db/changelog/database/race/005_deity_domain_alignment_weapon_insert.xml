@@ -46,7 +46,6 @@
             <column name="enchanted_items_id" value="50025" />
             <!-- A lightning bolt - shortspear -->
         </insert>
-        
 
     </changeSet>
 </databaseChangeLog>
