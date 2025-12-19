@@ -10,5 +10,17 @@
             <column name="domain_spell_id" value="1" />
             <!-- Inflict Light Wounds -->
         </insert>
+        <insert tableName="domain_spells">
+            <column name="domains_id" value="3" />
+            <!-- ANIMAL -->
+            <column name="domain_spell_id" value="55" />
+            <!-- Calm animals -->
+        </insert>
+        <insert tableName="domain_spells">
+            <column name="domains_id" value="4" />
+            <!-- GOOD -->
+            <column name="domain_spell_id" value="368" />
+            <!-- Protection from Evil -->
+        </insert>
     </changeSet>
 </databaseChangeLog>

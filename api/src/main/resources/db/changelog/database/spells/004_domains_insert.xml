@@ -4,18 +4,53 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="004_domains_insert" author="oscar">
-        <insert tableName="domains">
-            <column name="id" value="1" />
-            <column name="domain" value="DESTRUCTION" />
-            <!-- <column name="domain_spells" value="{&quot;1&quot; : 248 , &quot;2&quot; : 100}" /> -->
-            <column name="granted_power"
-                value="You gain the smite power, the supernatural ability to make a single melee attack with a +4 attack bonus and a damage bonus equal to your cleric level (if you hit). You must declare the smite before making the attack. It is usable once per day." />
-        </insert>
-        <insert tableName="domains">
-            <column name="id" value="2" />
-            <column name="domain" value="STORM" />
-            <!-- <column name="domain_spells" value="{&quot;1&quot; : 169 , &quot;2&quot; : 100}" /> -->
-            <column name="granted_power" value="You gain electricity resistance 5." />
-        </insert>
+        <insert tableName="domains"><column name="id" value="1" /><column name="domain" value="WATER" /></insert>
+<insert tableName="domains"><column name="id" value="2" /><column name="domain" value="ANIMAL " /></insert>
+<insert tableName="domains"><column name="id" value="3" /><column name="domain" value="AIR" /></insert>
+<insert tableName="domains"><column name="id" value="4" /><column name="domain" value="CRAFT" /></insert>
+<insert tableName="domains"><column name="id" value="5" /><column name="domain" value="GOOD" /></insert>
+<insert tableName="domains"><column name="id" value="6" /><column name="domain" value="CHAOS" /></insert>
+<insert tableName="domains"><column name="id" value="7" /><column name="domain" value="RETRIBUTION" /></insert>
+<insert tableName="domains"><column name="id" value="8" /><column name="domain" value="CAVERN" /></insert>
+<insert tableName="domains"><column name="id" value="9" /><column name="domain" value="CHARME" /></insert>
+<insert tableName="domains"><column name="id" value="10" /><column name="domain" value="TRADE" /></insert>
+<insert tableName="domains"><column name="id" value="11" /><column name="domain" value="KNOWLEDGE" /></insert>
+<insert tableName="domains"><column name="id" value="12" /><column name="domain" value="DESTRUCTION" /></insert>
+<insert tableName="domains"><column name="id" value="13" /><column name="domain" value="DROW" /></insert>
+<insert tableName="domains"><column name="id" value="14" /><column name="domain" value="ELF" /></insert>
+<insert tableName="domains"><column name="id" value="15" /><column name="domain" value="FAMILY" /></insert>
+<insert tableName="domains"><column name="id" value="16" /><column name="domain" value="SLIME" /></insert>
+<insert tableName="domains"><column name="id" value="17" /><column name="domain" value="FATE" /></insert>
+<insert tableName="domains"><column name="id" value="18" /><column name="domain" value="LUCK" /></insert>
+<insert tableName="domains"><column name="id" value="19" /><column name="domain" value="STRENGTH" /></insert>
+<insert tableName="domains"><column name="id" value="20" /><column name="domain" value="FIRE" /></insert>
+<insert tableName="domains"><column name="id" value="21" /><column name="domain" value="GNOME" /></insert>
+<insert tableName="domains"><column name="id" value="22" /><column name="domain" value="HEALING" /></insert>
+<insert tableName="domains"><column name="id" value="23" /><column name="domain" value="WAR" /></insert>
+<insert tableName="domains"><column name="id" value="24" /><column name="domain" value="HALFLING" /></insert>
+<insert tableName="domains"><column name="id" value="25" /><column name="domain" value="ILLUSION" /></insert>
+<insert tableName="domains"><column name="id" value="26" /><column name="domain" value="SPELL" /></insert>
+<insert tableName="domains"><column name="id" value="27" /><column name="domain" value="DEATH" /></insert>
+<insert tableName="domains"><column name="id" value="28" /><column name="domain" value="DWARF" /></insert>
+<insert tableName="domains"><column name="id" value="29" /><column name="domain" value="NOBILITY" /></insert>
+<insert tableName="domains"><column name="id" value="30" /><column name="domain" value="UNDEATH" /></insert>
+<insert tableName="domains"><column name="id" value="31" /><column name="domain" value="OCEAN" /></insert>
+<insert tableName="domains"><column name="id" value="32" /><column name="domain" value="HATRED " /></insert>
+<insert tableName="domains"><column name="id" value="33" /><column name="domain" value="ORC" /></insert>
+<insert tableName="domains"><column name="id" value="34" /><column name="domain" value="DARKNESS" /></insert>
+<insert tableName="domains"><column name="id" value="35" /><column name="domain" value="PLANNING" /></insert>
+<insert tableName="domains"><column name="id" value="36" /><column name="domain" value="PORTAL" /></insert>
+<insert tableName="domains"><column name="id" value="37" /><column name="domain" value="PROTECTION" /></insert>
+<insert tableName="domains"><column name="id" value="38" /><column name="domain" value="SCALYKIND " /></insert>
+<insert tableName="domains"><column name="id" value="39" /><column name="domain" value="REPOSE" /></insert>
+<insert tableName="domains"><column name="id" value="40" /><column name="domain" value="RUNE" /></insert>
+<insert tableName="domains"><column name="id" value="41" /><column name="domain" value="SUFFERING" /></insert>
+<insert tableName="domains"><column name="id" value="42" /><column name="domain" value="SUN" /></insert>
+<insert tableName="domains"><column name="id" value="43" /><column name="domain" value="STORM" /></insert>
+<insert tableName="domains"><column name="id" value="44" /><column name="domain" value="TIME" /></insert>
+<insert tableName="domains"><column name="id" value="45" /><column name="domain" value="EARTH" /></insert>
+<insert tableName="domains"><column name="id" value="46" /><column name="domain" value="TYRANNY" /></insert>
+<insert tableName="domains"><column name="id" value="47" /><column name="domain" value="PLANT" /></insert>
+<insert tableName="domains"><column name="id" value="48" /><column name="domain" value="TRAVEL" /></insert>
     </changeSet>
 </databaseChangeLog>
