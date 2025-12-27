@@ -4,23 +4,38 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="005_domain_spells_insert" author="oscar">
+
         <insert tableName="domain_spells">
-            <column name="domains_id" value="1" />
-            <!-- Destruction -->
-            <column name="domain_spell_id" value="1" />
-            <!-- Inflict Light Wounds -->
-        </insert>
-        <insert tableName="domain_spells">
-            <column name="domains_id" value="3" />
+            <column name="domains_id" value="2" />
             <!-- ANIMAL -->
             <column name="domain_spell_id" value="55" />
             <!-- Calm animals -->
         </insert>
+
         <insert tableName="domain_spells">
-            <column name="domains_id" value="4" />
+            <column name="domains_id" value="5" />
             <!-- GOOD -->
-            <column name="domain_spell_id" value="368" />
+            <column name="domain_spell_id" value="37" />
             <!-- Protection from Evil -->
+        </insert>
+        <insert tableName="domain_spells">
+            <column name="domains_id" value="5" />
+            <!-- GOOD -->
+            <column name="domain_spell_id" value="38" />
+            <!-- Aid -->
+        </insert>
+        <insert tableName="domain_spells">
+            <column name="domains_id" value="5" />
+            <!-- GOOD -->
+            <column name="domain_spell_id" value="39" />
+            <!-- Magic Circle Against Evil -->
+        </insert>
+
+        <insert tableName="domain_spells">
+            <column name="domains_id" value="12" />
+            <!-- Destruction -->
+            <column name="domain_spell_id" value="100" />
+            <!-- Inflict Light Wounds -->
         </insert>
     </changeSet>
 </databaseChangeLog>

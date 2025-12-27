@@ -7,6 +7,7 @@ public class DomainSpellDTO {
 
   public SpellsDTO spell;
   public int level;
+  public String specific;
 
   public DomainSpellDTO(Spells s, int l) {
     this.spell = s != null ? new SpellsDTO(s) : null;
@@ -16,5 +17,6 @@ public class DomainSpellDTO {
   public DomainSpellDTO(DomainSpell ds) {
     this.spell = ds.getSpell() != null ? new SpellsDTO(ds.getSpell()) : null;
     this.level = ds.getLevel();
+    this.specific = ds.getSpecific();
   }
 }

@@ -12,7 +12,7 @@
 <insert tableName="domains"><column name="id" value="6" /><column name="domain" value="CHAOS" /></insert>
 <insert tableName="domains"><column name="id" value="7" /><column name="domain" value="RETRIBUTION" /></insert>
 <insert tableName="domains"><column name="id" value="8" /><column name="domain" value="CAVERN" /></insert>
-<insert tableName="domains"><column name="id" value="9" /><column name="domain" value="CHARME" /></insert>
+<insert tableName="domains"><column name="id" value="9" /><column name="domain" value="CHARM" /></insert>
 <insert tableName="domains"><column name="id" value="10" /><column name="domain" value="TRADE" /></insert>
 <insert tableName="domains"><column name="id" value="11" /><column name="domain" value="KNOWLEDGE" /></insert>
 <insert tableName="domains"><column name="id" value="12" /><column name="domain" value="DESTRUCTION" /></insert>

@@ -27,4 +27,6 @@ public class DomainSpell {
   Spells spell;
 
   int level;
+
+  String specific;
 }

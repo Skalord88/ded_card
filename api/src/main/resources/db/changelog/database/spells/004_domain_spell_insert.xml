@@ -5,20 +5,475 @@
 
     <changeSet id="004_domain_spell_insert" author="oscar">
 
-        <insert tableName="domain_spell">
-            <column name="id" value="1" />
-            <!-- Destruction -->
-            <column name="level" value="1" />
-            <!-- Inflict Light Wounds -->
-        </insert>
+<insert tableName="domain_spell"><column name="id" value="1" /><!--WATER--><column name="level" value="1" /><!--Obscuring Mist id.330--></insert>
+<insert tableName="domain_spell"><column name="id" value="2" /><!--WATER--><column name="level" value="2" /><!--Fog Cloud id.199--></insert>
+<insert tableName="domain_spell"><column name="id" value="3" /><!--WATER--><column name="level" value="3" /><!--Water Breathing id.552--></insert>
+<insert tableName="domain_spell"><column name="id" value="4" /><!--WATER--><column name="level" value="4" /><!--Control Water id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="5" /><!--WATER--><column name="level" value="5" /><!--Ice Storm id.239--></insert>
+<insert tableName="domain_spell"><column name="id" value="6" /><!--WATER--><column name="level" value="6" /><!--Cone of Cold id.83--></insert>
+<insert tableName="domain_spell"><column name="id" value="7" /><!--WATER--><column name="level" value="7" /><!--Acid Fog id.2--></insert>
+<insert tableName="domain_spell"><column name="id" value="8" /><!--WATER--><column name="level" value="8" /><!--Horrid Wilting id.236--></insert>
+<insert tableName="domain_spell"><column name="id" value="9" /><!--WATER--><column name="level" value="9" /><!--Elemental Swarm (cast as a water spell only) id.161--><column name="specific" value="cast as a water spell only" /></insert>
 
+<insert tableName="domain_spell"><column name="id" value="10" /><!--ANIMAL--><column name="level" value="1" /><!--Calm Animals id.55--></insert>
+<insert tableName="domain_spell"><column name="id" value="11" /><!--ANIMAL--><column name="level" value="2" /><!--Hold Animal id.226--></insert>
+<insert tableName="domain_spell"><column name="id" value="12" /><!--ANIMAL--><column name="level" value="3" /><!--Dominate Animal id.153--></insert>
+<insert tableName="domain_spell"><column name="id" value="13" /><!--ANIMAL--><column name="level" value="4" /><!--Summon Nature's Ally IV (Animals only) id.493--><column name="specific" value="Animals only" /></insert>
+<insert tableName="domain_spell"><column name="id" value="14" /><!--ANIMAL--><column name="level" value="5" /><!--Commune with Nature id.81--></insert>
+<insert tableName="domain_spell"><column name="id" value="15" /><!--ANIMAL--><column name="level" value="6" /><!--Antilife Shell id.18--></insert>
+<insert tableName="domain_spell"><column name="id" value="16" /><!--ANIMAL--><column name="level" value="7" /><!--Animal Shapes id.12--></insert>
+<insert tableName="domain_spell"><column name="id" value="17" /><!--ANIMAL--><column name="level" value="8" /><!--Summon Nature's Ally VIII (Animals only) id.497--><column name="specific" value="Animals only" /></insert>
+<insert tableName="domain_spell"><column name="id" value="18" /><!--ANIMAL--><column name="level" value="9" /><!--Shapechange id.435--></insert>
 
-        <insert tableName="domain_spell">
-            <column name="id" value="2" />
-            <!-- Storm -->
-            <column name="level" value="1" />
-            <!-- Entropic Shield -->
-        </insert>
+<insert tableName="domain_spell"><column name="id" value="19" /><!--AIR--><column name="level" value="1" /><!--Obscuring Mist 330--></insert>
+<insert tableName="domain_spell"><column name="id" value="20" /><!--AIR--><column name="level" value="2" /><!--Wind Wall 561--></insert>
+<insert tableName="domain_spell"><column name="id" value="21" /><!--AIR--><column name="level" value="3" /><!--Gaseous Form 209--></insert>
+<insert tableName="domain_spell"><column name="id" value="22" /><!--AIR--><column name="level" value="4" /><!--Air Walk 5--></insert>
+<insert tableName="domain_spell"><column name="id" value="23" /><!--AIR--><column name="level" value="5" /><!--Control Winds 92--></insert>
+<insert tableName="domain_spell"><column name="id" value="24" /><!--AIR--><column name="level" value="6" /><!--Chain Lightning 60--></insert>
+<insert tableName="domain_spell"><column name="id" value="25" /><!--AIR--><column name="level" value="7" /><!--Control Weather 92--></insert>
+<insert tableName="domain_spell"><column name="id" value="26" /><!--AIR--><column name="level" value="8" /><!--Whirlwind 558--></insert>
+<insert tableName="domain_spell"><column name="id" value="27" /><!--AIR--><column name="level" value="9" /><!--Elemental Swarm (air only) 161--><column name="specific" value="air only" /></insert>
 
-    </changeSet>
+<insert tableName="domain_spell"><column name="id" value="28" /><!--CRAFT--><column name="level" value="1" /><!--Animate Rope 17--></insert>
+<insert tableName="domain_spell"><column name="id" value="29" /><!--CRAFT--><column name="level" value="2" /><!--Wood Shape 563--></insert>
+<insert tableName="domain_spell"><column name="id" value="30" /><!--CRAFT--><column name="level" value="3" /><!--Stone Shape 474--></insert>
+<insert tableName="domain_spell"><column name="id" value="31" /><!--CRAFT--><column name="level" value="4" /><!--Minor Creation 314--></insert>
+<insert tableName="domain_spell"><column name="id" value="32" /><!--CRAFT--><column name="level" value="5" /><!--Wall of Stone 549--></insert>
+<insert tableName="domain_spell"><column name="id" value="33" /><!--CRAFT--><column name="level" value="6" /><!--Fantastic Machine 179--></insert>
+<insert tableName="domain_spell"><column name="id" value="34" /><!--CRAFT--><column name="level" value="7" /><!--Major Creation 303--></insert>
+<insert tableName="domain_spell"><column name="id" value="35" /><!--CRAFT--><column name="level" value="8" /><!--Forcecage 201--></insert>
+<insert tableName="domain_spell"><column name="id" value="36" /><!--CRAFT--><column name="level" value="9" /><!--Fantastic Machine, Greater 179--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="37" /><!--GOOD--><column name="level" value="1" /><!--Protection From Evil--></insert>
+<insert tableName="domain_spell"><column name="id" value="38" /><!--GOOD--><column name="level" value="2" /><!--Aid--></insert>
+<insert tableName="domain_spell"><column name="id" value="39" /><!--GOOD--><column name="level" value="3" /><!--Magic Circle Against Evil--></insert>
+<insert tableName="domain_spell"><column name="id" value="40" /><!--GOOD--><column name="level" value="4" /><!--Holy Smite--></insert>
+<insert tableName="domain_spell"><column name="id" value="41" /><!--GOOD--><column name="level" value="5" /><!--Dispel Evil--></insert>
+<insert tableName="domain_spell"><column name="id" value="42" /><!--GOOD--><column name="level" value="6" /><!--Blade Barrier--></insert>
+<insert tableName="domain_spell"><column name="id" value="43" /><!--GOOD--><column name="level" value="7" /><!--Holy Word--></insert>
+<insert tableName="domain_spell"><column name="id" value="44" /><!--GOOD--><column name="level" value="8" /><!--Holy Aura--></insert>
+<insert tableName="domain_spell"><column name="id" value="45" /><!--GOOD--><column name="level" value="9" /><!--Summon Monster IX (cast as a good spell only)--><column name="specific" value="cast as a good spell only" /></insert>
+
+<insert tableName="domain_spell"><column name="id" value="46" /><!--CHAOS--><column name="level" value="1" /><!--Protection From Law--></insert>
+<insert tableName="domain_spell"><column name="id" value="47" /><!--CHAOS--><column name="level" value="2" /><!--Shatter--></insert>
+<insert tableName="domain_spell"><column name="id" value="48" /><!--CHAOS--><column name="level" value="3" /><!--Magic Circle Against Law--></insert>
+<insert tableName="domain_spell"><column name="id" value="49" /><!--CHAOS--><column name="level" value="4" /><!--Chaos Hammer--></insert>
+<insert tableName="domain_spell"><column name="id" value="50" /><!--CHAOS--><column name="level" value="5" /><!--Dispel Law--></insert>
+<insert tableName="domain_spell"><column name="id" value="51" /><!--CHAOS--><column name="level" value="6" /><!--Animate Objects--></insert>
+<insert tableName="domain_spell"><column name="id" value="52" /><!--CHAOS--><column name="level" value="7" /><!--Word of Chaos--></insert>
+<insert tableName="domain_spell"><column name="id" value="53" /><!--CHAOS--><column name="level" value="8" /><!--Cloak of Chaos--></insert>
+<insert tableName="domain_spell"><column name="id" value="54" /><!--CHAOS--><column name="level" value="9" /><!--Summon Monster IX (as a chaos spell only)--><column name="specific" value="cast as a chaos spell only" /></insert>
+
+<insert tableName="domain_spell"><column name="id" value="55" /><!--RETRIBUTION--><column name="level" value="1" /><!--Shield of Faith--></insert>
+<insert tableName="domain_spell"><column name="id" value="56" /><!--RETRIBUTION--><column name="level" value="2" /><!--Bear's Endurance--></insert>
+<insert tableName="domain_spell"><column name="id" value="57" /><!--RETRIBUTION--><column name="level" value="3" /><!--Speak with Dead--></insert>
+<insert tableName="domain_spell"><column name="id" value="58" /><!--RETRIBUTION--><column name="level" value="4" /><!--Fire Shield--></insert>
+<insert tableName="domain_spell"><column name="id" value="59" /><!--RETRIBUTION--><column name="level" value="5" /><!--Mark of Justice--></insert>
+<insert tableName="domain_spell"><column name="id" value="60" /><!--RETRIBUTION--><column name="level" value="6" /><!--Banishment--></insert>
+<insert tableName="domain_spell"><column name="id" value="61" /><!--RETRIBUTION--><column name="level" value="7" /><!--Spell Turning--></insert>
+<insert tableName="domain_spell"><column name="id" value="62" /><!--RETRIBUTION--><column name="level" value="8" /><!--Discern Location--></insert>
+<insert tableName="domain_spell"><column name="id" value="63" /><!--RETRIBUTION--><column name="level" value="9" /><!--Storm of Vengeance--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="64" /><!--CAVERN--><column name="level" value="1" /><!--Detect Secret Doors--></insert>
+<insert tableName="domain_spell"><column name="id" value="65" /><!--CAVERN--><column name="level" value="2" /><!--Darkness--></insert>
+<insert tableName="domain_spell"><column name="id" value="66" /><!--CAVERN--><column name="level" value="3" /><!--Meld into Stone--></insert>
+<insert tableName="domain_spell"><column name="id" value="67" /><!--CAVERN--><column name="level" value="4" /><!--Leomund's Secure Shelter--></insert>
+<insert tableName="domain_spell"><column name="id" value="68" /><!--CAVERN--><column name="level" value="5" /><!--Passwall--></insert>
+<insert tableName="domain_spell"><column name="id" value="69" /><!--CAVERN--><column name="level" value="6" /><!--Find the Path--></insert>
+<insert tableName="domain_spell"><column name="id" value="70" /><!--CAVERN--><column name="level" value="7" /><!--Maw of Stone--></insert>
+<insert tableName="domain_spell"><column name="id" value="71" /><!--CAVERN--><column name="level" value="8" /><!--Earthquake--></insert>
+<insert tableName="domain_spell"><column name="id" value="72" /><!--CAVERN--><column name="level" value="9" /><!--Imprisonment--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="73" /><!--CHARM--><column name="level" value="1" /><!--Charm Person--></insert>
+<insert tableName="domain_spell"><column name="id" value="74" /><!--CHARM--><column name="level" value="2" /><!--Calm Emotions--></insert>
+<insert tableName="domain_spell"><column name="id" value="75" /><!--CHARM--><column name="level" value="3" /><!--Suggestion--></insert>
+<insert tableName="domain_spell"><column name="id" value="76" /><!--CHARM--><column name="level" value="4" /><!--Good Hope--></insert>
+<insert tableName="domain_spell"><column name="id" value="77" /><!--CHARM--><column name="level" value="5" /><!--Charm Monster--></insert>
+<insert tableName="domain_spell"><column name="id" value="78" /><!--CHARM--><column name="level" value="6" /><!--Geas/Quest--></insert>
+<insert tableName="domain_spell"><column name="id" value="79" /><!--CHARM--><column name="level" value="7" /><!--Insanity--></insert>
+<insert tableName="domain_spell"><column name="id" value="80" /><!--CHARM--><column name="level" value="8" /><!--Demand--></insert>
+<insert tableName="domain_spell"><column name="id" value="81" /><!--CHARM--><column name="level" value="9" /><!--Dominate Monster--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="82" /><!--TRADE--><column name="level" value="1" /><!--Message--></insert>
+<insert tableName="domain_spell"><column name="id" value="83" /><!--TRADE--><column name="level" value="2" /><!--Gembomb--></insert>
+<insert tableName="domain_spell"><column name="id" value="84" /><!--TRADE--><column name="level" value="3" /><!--Eagle's Splendor--></insert>
+<insert tableName="domain_spell"><column name="id" value="85" /><!--TRADE--><column name="level" value="4" /><!--Sending--></insert>
+<insert tableName="domain_spell"><column name="id" value="86" /><!--TRADE--><column name="level" value="5" /><!--Fabricate--></insert>
+<insert tableName="domain_spell"><column name="id" value="87" /><!--TRADE--><column name="level" value="6" /><!--True Seeing--></insert>
+<insert tableName="domain_spell"><column name="id" value="88" /><!--TRADE--><column name="level" value="7" /><!--Mordenkainen's Magnificent Mansion--></insert>
+<insert tableName="domain_spell"><column name="id" value="89" /><!--TRADE--><column name="level" value="8" /><!--Mind Blank--></insert>
+<insert tableName="domain_spell"><column name="id" value="90" /><!--TRADE--><column name="level" value="9" /><!--Discern Location--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="91" /><!--KNOWLEDGE--><column name="level" value="1" /><!--Detect Secret Doors--></insert>
+<insert tableName="domain_spell"><column name="id" value="92" /><!--KNOWLEDGE--><column name="level" value="2" /><!--Detect Thoughts--></insert>
+<insert tableName="domain_spell"><column name="id" value="93" /><!--KNOWLEDGE--><column name="level" value="3" /><!--Clairaudience/Clairvoyance--></insert>
+<insert tableName="domain_spell"><column name="id" value="94" /><!--KNOWLEDGE--><column name="level" value="4" /><!--Divination--></insert>
+<insert tableName="domain_spell"><column name="id" value="95" /><!--KNOWLEDGE--><column name="level" value="5" /><!--True Seeing--></insert>
+<insert tableName="domain_spell"><column name="id" value="96" /><!--KNOWLEDGE--><column name="level" value="6" /><!--Find the Path--></insert>
+<insert tableName="domain_spell"><column name="id" value="97" /><!--KNOWLEDGE--><column name="level" value="7" /><!--Legend Lore--></insert>
+<insert tableName="domain_spell"><column name="id" value="98" /><!--KNOWLEDGE--><column name="level" value="8" /><!--Discern Location--></insert>
+<insert tableName="domain_spell"><column name="id" value="99" /><!--KNOWLEDGE--><column name="level" value="9" /><!--Foresight--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="100" /><!--DESTRUCTION--><column name="level" value="1" /><!--Inflict Light Wounds id.249--></insert>
+<insert tableName="domain_spell"><column name="id" value="101" /><!--DESTRUCTION--><column name="level" value="2" /><!--Shatter id.436--></insert>
+<insert tableName="domain_spell"><column name="id" value="102" /><!--DESTRUCTION--><column name="level" value="3" /><!--Contagion id.88--></insert>
+<insert tableName="domain_spell"><column name="id" value="103" /><!--DESTRUCTION--><column name="level" value="4" /><!--Inflict Critical Wounds id.247--></insert>
+<insert tableName="domain_spell"><column name="id" value="104" /><!--DESTRUCTION--><column name="level" value="5" /><!--Inflict Light Wounds, Mass id.250--></insert>
+<insert tableName="domain_spell"><column name="id" value="105" /><!--DESTRUCTION--><column name="level" value="6" /><!--Harm id.213--></insert>
+<insert tableName="domain_spell"><column name="id" value="106" /><!--DESTRUCTION--><column name="level" value="7" /><!--Disintegrate id.139--></insert>
+<insert tableName="domain_spell"><column name="id" value="107" /><!--DESTRUCTION--><column name="level" value="8" /><!--Earthquake id.160--></insert>
+<insert tableName="domain_spell"><column name="id" value="108" /><!--DESTRUCTION--><column name="level" value="9" /><!--Implosion id.244--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="109" /><!--DRAW--><column name="level" value="1" /><!--Cloak of Dark Power id.72--></insert>
+<insert tableName="domain_spell"><column name="id" value="110" /><!--DRAW--><column name="level" value="2" /><!--Clairaudience/Clairvoyance id.70--></insert>
+<insert tableName="domain_spell"><column name="id" value="111" /><!--DRAW--><column name="level" value="3" /><!--Suggestion id.479--></insert>
+<insert tableName="domain_spell"><column name="id" value="112" /><!--DRAW--><column name="level" value="4" /><!--Discern Lies id.136--></insert>
+<insert tableName="domain_spell"><column name="id" value="113" /><!--DRAW--><column name="level" value="5" /><!--Spiderform id.468--></insert>
+<insert tableName="domain_spell"><column name="id" value="114" /><!--DRAW--><column name="level" value="6" /><!--Dispel Magic, Greater id.146--></insert>
+<insert tableName="domain_spell"><column name="id" value="115" /><!--DRAW--><column name="level" value="7" /><!--Word of Chaos id.564--></insert>
+<insert tableName="domain_spell"><column name="id" value="116" /><!--DRAW--><column name="level" value="8" /><!--Planar Ally, Greater id.346--></insert>
+<insert tableName="domain_spell"><column name="id" value="117" /><!--DRAW--><column name="level" value="9" /><!--Gate id.209--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="118" /><!--ELF--><column name="level" value="1" /><!--True Strike id.532--></insert>
+<insert tableName="domain_spell"><column name="id" value="119" /><!--ELF--><column name="level" value="2" /><!--Cat's Grace id.58--></insert>
+<insert tableName="domain_spell"><column name="id" value="120" /><!--ELF--><column name="level" value="3" /><!--Snare id.453--></insert>
+<insert tableName="domain_spell"><column name="id" value="121" /><!--ELF--><column name="level" value="4" /><!--Tree Stride id.529--></insert>
+<insert tableName="domain_spell"><column name="id" value="122" /><!--ELF--><column name="level" value="5" /><!--Commune with Nature id.81--></insert>
+<insert tableName="domain_spell"><column name="id" value="123" /><!--ELF--><column name="level" value="6" /><!--Find the Path id.183--></insert>
+<insert tableName="domain_spell"><column name="id" value="124" /><!--ELF--><column name="level" value="7" /><!--Liveoak id.276--></insert>
+<insert tableName="domain_spell"><column name="id" value="125" /><!--ELF--><column name="level" value="8" /><!--Sunburst id.501--></insert>
+<insert tableName="domain_spell"><column name="id" value="126" /><!--ELF--><column name="level" value="9" /><!--Antipathy id.20--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="127" /><!--FAMILY--><column name="level" value="1" /><!--Bless id.42--></insert>
+<insert tableName="domain_spell"><column name="id" value="128" /><!--FAMILY--><column name="level" value="2" /><!--Shield Other id.440--></insert>
+<insert tableName="domain_spell"><column name="id" value="129" /><!--FAMILY--><column name="level" value="3" /><!--Helping Hand id.219--></insert>
+<insert tableName="domain_spell"><column name="id" value="130" /><!--FAMILY--><column name="level" value="4" /><!--Imbue with Spell Ability id.243--></insert>
+<insert tableName="domain_spell"><column name="id" value="131" /><!--FAMILY--><column name="level" value="5" /><!--Rary's Telepathic Bond id.379--></insert>
+<insert tableName="domain_spell"><column name="id" value="132" /><!--FAMILY--><column name="level" value="6" /><!--Heroes' Feast id.219--></insert>
+<insert tableName="domain_spell"><column name="id" value="133" /><!--FAMILY--><column name="level" value="7" /><!--Refuge id.387--></insert>
+<insert tableName="domain_spell"><column name="id" value="134" /><!--FAMILY--><column name="level" value="8" /><!--Protection From Spells id.371--></insert>
+<insert tableName="domain_spell"><column name="id" value="135" /><!--FAMILY--><column name="level" value="9" /><!--Prismatic Sphere id.359--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="136" /><!--SLIME--><column name="level" value="1" /><!--Grease id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="137" /><!--SLIME--><column name="level" value="2" /><!--Melf's Acid Arrow id.308--></insert>
+<insert tableName="domain_spell"><column name="id" value="138" /><!--SLIME--><column name="level" value="3" /><!--Poison id.350--></insert>
+<insert tableName="domain_spell"><column name="id" value="139" /><!--SLIME--><column name="level" value="4" /><!--Rusting Grasp id.410--></insert>
+<insert tableName="domain_spell"><column name="id" value="140" /><!--SLIME--><column name="level" value="5" /><!--Evard's Black Tentacles id.172--></insert>
+<insert tableName="domain_spell"><column name="id" value="141" /><!--SLIME--><column name="level" value="6" /><!--Transmute Rock to Mud id.526--></insert>
+<insert tableName="domain_spell"><column name="id" value="142" /><!--SLIME--><column name="level" value="7" /><!--Destruction id.119--></insert>
+<insert tableName="domain_spell"><column name="id" value="143" /><!--SLIME--><column name="level" value="8" /><!--Power Word Blind id.354--></insert>
+<insert tableName="domain_spell"><column name="id" value="144" /><!--SLIME--><column name="level" value="9" /><!--Implosion id.244--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="145" /><!--FATE--><column name="level" value="1" /><!--True Strike id.532--></insert>
+<insert tableName="domain_spell"><column name="id" value="146" /><!--FATE--><column name="level" value="2" /><!--Augury id.29--></insert>
+<insert tableName="domain_spell"><column name="id" value="147" /><!--FATE--><column name="level" value="3" /><!--Bestow Curse id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="148" /><!--FATE--><column name="level" value="4" /><!--Status id.472--></insert>
+<insert tableName="domain_spell"><column name="id" value="149" /><!--FATE--><column name="level" value="5" /><!--Mark of Justice id.306--></insert>
+<insert tableName="domain_spell"><column name="id" value="150" /><!--FATE--><column name="level" value="6" /><!--Geas/Quest id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="151" /><!--FATE--><column name="level" value="7" /><!--Vision id.543--></insert>
+<insert tableName="domain_spell"><column name="id" value="152" /><!--FATE--><column name="level" value="8" /><!--Mind Blank id.312--></insert>
+<insert tableName="domain_spell"><column name="id" value="153" /><!--FATE--><column name="level" value="9" /><!--Foresight id.203--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="154" /><!--LUCK--><column name="level" value="1" /><!--Entropic Shield id.169--></insert>
+<insert tableName="domain_spell"><column name="id" value="155" /><!--LUCK--><column name="level" value="2" /><!--Aid id.4--></insert>
+<insert tableName="domain_spell"><column name="id" value="156" /><!--LUCK--><column name="level" value="3" /><!--Protection From Energy id.367--></insert>
+<insert tableName="domain_spell"><column name="id" value="157" /><!--LUCK--><column name="level" value="4" /><!--Freedom of Movement id.207--></insert>
+<insert tableName="domain_spell"><column name="id" value="158" /><!--LUCK--><column name="level" value="5" /><!--Break Enchantment id.49--></insert>
+<insert tableName="domain_spell"><column name="id" value="159" /><!--LUCK--><column name="level" value="6" /><!--Mislead id.320--></insert>
+<insert tableName="domain_spell"><column name="id" value="160" /><!--LUCK--><column name="level" value="7" /><!--Spell Turning id.467--></insert>
+<insert tableName="domain_spell"><column name="id" value="161" /><!--LUCK--><column name="level" value="8" /><!--Moment of Prescience id.323--></insert>
+<insert tableName="domain_spell"><column name="id" value="162" /><!--LUCK--><column name="level" value="9" /><!--Miracle id.316--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="163" /><!--STRENGTH--><column name="level" value="1" /><!--Endure Elements id.162--></insert>
+<insert tableName="domain_spell"><column name="id" value="164" /><!--STRENGTH--><column name="level" value="2" /><!--Bull's Strength id.51--></insert>
+<insert tableName="domain_spell"><column name="id" value="165" /><!--STRENGTH--><column name="level" value="3" /><!--Magic Vestment id.300--></insert>
+<insert tableName="domain_spell"><column name="id" value="166" /><!--STRENGTH--><column name="level" value="4" /><!--Spell Immunity id.463--></insert>
+<insert tableName="domain_spell"><column name="id" value="167" /><!--STRENGTH--><column name="level" value="5" /><!--Righteous Might id.408--></insert>
+<insert tableName="domain_spell"><column name="id" value="168" /><!--STRENGTH--><column name="level" value="6" /><!--Stoneskin id.477--></insert>
+<insert tableName="domain_spell"><column name="id" value="169" /><!--STRENGTH--><column name="level" value="7" /><!--Bigby's Grasping Hand id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="170" /><!--STRENGTH--><column name="level" value="8" /><!--Bigby's Clenched Fist id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="171" /><!--STRENGTH--><column name="level" value="9" /><!--Bigby's Crushing Hand id.37--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="172" /><!--FIRE--><column name="level" value="1" /><!--Burning Hands id.52--></insert>
+<insert tableName="domain_spell"><column name="id" value="173" /><!--FIRE--><column name="level" value="2" /><!--Produce Flame id.362--></insert>
+<insert tableName="domain_spell"><column name="id" value="174" /><!--FIRE--><column name="level" value="3" /><!--Resist Energy (resist cold or fire only) id.400--><column name="specific" value="resist cold or fire only" /></insert>
+<insert tableName="domain_spell"><column name="id" value="175" /><!--FIRE--><column name="level" value="4" /><!--Wall of Fire id.545--></insert>
+<insert tableName="domain_spell"><column name="id" value="176" /><!--FIRE--><column name="level" value="5" /><!--Fire Shield id.185--></insert>
+<insert tableName="domain_spell"><column name="id" value="177" /><!--FIRE--><column name="level" value="6" /><!--Fire Seeds id.185--></insert>
+<insert tableName="domain_spell"><column name="id" value="178" /><!--FIRE--><column name="level" value="7" /><!--Fire Storm id.185--></insert>
+<insert tableName="domain_spell"><column name="id" value="179" /><!--FIRE--><column name="level" value="8" /><!--Incendiary Cloud id.246--></insert>
+<insert tableName="domain_spell"><column name="id" value="180" /><!--FIRE--><column name="level" value="9" /><!--Elemental Swarm (cast as a fire spell only) id.161--><column name="specific" value="cast as a fire spell only" /></insert>
+
+<insert tableName="domain_spell"><column name="id" value="181" /><!--GNOME--><column name="level" value="1" /><!--Silent Image id.447--></insert>
+<insert tableName="domain_spell"><column name="id" value="182" /><!--GNOME--><column name="level" value="2" /><!--Gembomb id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="183" /><!--GNOME--><column name="level" value="3" /><!--Minor Image id.315--></insert>
+<insert tableName="domain_spell"><column name="id" value="184" /><!--GNOME--><column name="level" value="4" /><!--Minor Creation id.314--></insert>
+<insert tableName="domain_spell"><column name="id" value="185" /><!--GNOME--><column name="level" value="5" /><!--Hallucinatory Terrain id.211--></insert>
+<insert tableName="domain_spell"><column name="id" value="186" /><!--GNOME--><column name="level" value="6" /><!--Fantastic Machine id.179--></insert>
+<insert tableName="domain_spell"><column name="id" value="187" /><!--GNOME--><column name="level" value="7" /><!--Screen id.415--></insert>
+<insert tableName="domain_spell"><column name="id" value="188" /><!--GNOME--><column name="level" value="8" /><!--Otto's Irresistible Dance id.332--></insert>
+<insert tableName="domain_spell"><column name="id" value="189" /><!--GNOME--><column name="level" value="9" /><!--Summon Nature's Ally IX id.493--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="190" /><!--HEALING--><column name="level" value="1" /><!--Cure Light Wounds id.97--></insert>
+<insert tableName="domain_spell"><column name="id" value="191" /><!--HEALING--><column name="level" value="2" /><!--Cure Moderate Wounds id.99--></insert>
+<insert tableName="domain_spell"><column name="id" value="192" /><!--HEALING--><column name="level" value="3" /><!--Cure Serious Wounds id.101--></insert>
+<insert tableName="domain_spell"><column name="id" value="193" /><!--HEALING--><column name="level" value="4" /><!--Cure Critical Wounds id.96--></insert>
+<insert tableName="domain_spell"><column name="id" value="194" /><!--HEALING--><column name="level" value="5" /><!--Cure Light Wounds, Mass id.97--></insert>
+<insert tableName="domain_spell"><column name="id" value="195" /><!--HEALING--><column name="level" value="6" /><!--Heal id.215--></insert>
+<insert tableName="domain_spell"><column name="id" value="196" /><!--HEALING--><column name="level" value="7" /><!--Regenerate id.388--></insert>
+<insert tableName="domain_spell"><column name="id" value="197" /><!--HEALING--><column name="level" value="8" /><!--Cure Critical Wounds, Mass id.97--></insert>
+<insert tableName="domain_spell"><column name="id" value="198" /><!--HEALING--><column name="level" value="9" /><!--Heal, Mass id.217--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="199" /><!--WAR--><column name="level" value="1" /><!--Magic Weapon id.301--></insert>
+<insert tableName="domain_spell"><column name="id" value="200" /><!--WAR--><column name="level" value="2" /><!--Spiritual Weapon id.471--></insert>
+<insert tableName="domain_spell"><column name="id" value="201" /><!--WAR--><column name="level" value="3" /><!--Magic Vestment id.300--></insert>
+<insert tableName="domain_spell"><column name="id" value="202" /><!--WAR--><column name="level" value="4" /><!--Divine Power id.152--></insert>
+<insert tableName="domain_spell"><column name="id" value="203" /><!--WAR--><column name="level" value="5" /><!--Flame Strike id.193--></insert>
+<insert tableName="domain_spell"><column name="id" value="204" /><!--WAR--><column name="level" value="6" /><!--Blade Barrier id.40--></insert>
+<insert tableName="domain_spell"><column name="id" value="205" /><!--WAR--><column name="level" value="7" /><!--Power Word Blind id.354--></insert>
+<insert tableName="domain_spell"><column name="id" value="206" /><!--WAR--><column name="level" value="8" /><!--Power Word Stun id.356--></insert>
+<insert tableName="domain_spell"><column name="id" value="207" /><!--WAR--><column name="level" value="9" /><!--Power Word Kill id.355--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="208" /><!--HALFLING--><column name="level" value="1" /><!--Magic Stone id.299--></insert>
+<insert tableName="domain_spell"><column name="id" value="209" /><!--HALFLING--><column name="level" value="2" /><!--Cat's Grace id.58--></insert>
+<insert tableName="domain_spell"><column name="id" value="210" /><!--HALFLING--><column name="level" value="3" /><!--Magic Vestment id.300--></insert>
+<insert tableName="domain_spell"><column name="id" value="211" /><!--HALFLING--><column name="level" value="4" /><!--Freedom of Movement id.207--></insert>
+<insert tableName="domain_spell"><column name="id" value="212" /><!--HALFLING--><column name="level" value="5" /><!--Mordenkainen's Faithful Hound id.323--></insert>
+<insert tableName="domain_spell"><column name="id" value="213" /><!--HALFLING--><column name="level" value="6" /><!--Move Earth id.325--></insert>
+<insert tableName="domain_spell"><column name="id" value="214" /><!--HALFLING--><column name="level" value="7" /><!--Shadow Walk id.433--></insert>
+<insert tableName="domain_spell"><column name="id" value="215" /><!--HALFLING--><column name="level" value="8" /><!--Word of Recall id.565--></insert>
+<insert tableName="domain_spell"><column name="id" value="216" /><!--HALFLING--><column name="level" value="9" /><!--Foresight id.203--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="217" /><!--ILLUSION--><column name="level" value="1" /><!--Silent Image id.447--></insert>
+<insert tableName="domain_spell"><column name="id" value="218" /><!--ILLUSION--><column name="level" value="2" /><!--Minor Image id.315--></insert>
+<insert tableName="domain_spell"><column name="id" value="219" /><!--ILLUSION--><column name="level" value="3" /><!--Displacement id.147--></insert>
+<insert tableName="domain_spell"><column name="id" value="220" /><!--ILLUSION--><column name="level" value="4" /><!--Phantasmal Killer id.341--></insert>
+<insert tableName="domain_spell"><column name="id" value="221" /><!--ILLUSION--><column name="level" value="5" /><!--Persistent Image id.340--></insert>
+<insert tableName="domain_spell"><column name="id" value="222" /><!--ILLUSION--><column name="level" value="6" /><!--Mislead id.320--></insert>
+<insert tableName="domain_spell"><column name="id" value="223" /><!--ILLUSION--><column name="level" value="7" /><!--Project Image id.364--></insert>
+<insert tableName="domain_spell"><column name="id" value="224" /><!--ILLUSION--><column name="level" value="8" /><!--Screen id.415--></insert>
+<insert tableName="domain_spell"><column name="id" value="225" /><!--ILLUSION--><column name="level" value="9" /><!--Weird id.557--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="226" /><!--SPELL--><column name="level" value="1" /><!--Mage Armor id.281--></insert>
+<insert tableName="domain_spell"><column name="id" value="227" /><!--SPELL--><column name="level" value="2" /><!--Silence id.446--></insert>
+<insert tableName="domain_spell"><column name="id" value="228" /><!--SPELL--><column name="level" value="3" /><!--Anyspell id.21--></insert>
+<insert tableName="domain_spell"><column name="id" value="229" /><!--SPELL--><column name="level" value="4" /><!--Rary's Mnemonic Enhancer id.379--></insert>
+<insert tableName="domain_spell"><column name="id" value="230" /><!--SPELL--><column name="level" value="5" /><!--Break Enchantment id.49--></insert>
+<insert tableName="domain_spell"><column name="id" value="231" /><!--SPELL--><column name="level" value="6" /><!--Anyspell, Greater id.21--></insert>
+<insert tableName="domain_spell"><column name="id" value="232" /><!--SPELL--><column name="level" value="7" /><!--Limited Wish id.275--></insert>
+<insert tableName="domain_spell"><column name="id" value="233" /><!--SPELL--><column name="level" value="8" /><!--Antimagic Field id.19--></insert>
+<insert tableName="domain_spell"><column name="id" value="234" /><!--SPELL--><column name="level" value="9" /><!--Mordenkainen's Disjunction id.323--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="235" /><!--DEATH--><column name="level" value="1" /><!--Cause Fear id.59--></insert>
+<insert tableName="domain_spell"><column name="id" value="236" /><!--DEATH--><column name="level" value="2" /><!--Death Knell id.110--></insert>
+<insert tableName="domain_spell"><column name="id" value="237" /><!--DEATH--><column name="level" value="3" /><!--Animate Dead id.14--></insert>
+<insert tableName="domain_spell"><column name="id" value="238" /><!--DEATH--><column name="level" value="4" /><!--Death Ward id.111--></insert>
+<insert tableName="domain_spell"><column name="id" value="239" /><!--DEATH--><column name="level" value="5" /><!--Slay Living id.449--></insert>
+<insert tableName="domain_spell"><column name="id" value="240" /><!--DEATH--><column name="level" value="6" /><!--Create Undead id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="241" /><!--DEATH--><column name="level" value="7" /><!--Destruction id.119--></insert>
+<insert tableName="domain_spell"><column name="id" value="242" /><!--DEATH--><column name="level" value="8" /><!--Create Greater Undead id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="243" /><!--DEATH--><column name="level" value="9" /><!--Create Crypt Thing id.92--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="244" /><!--NOBILITY--><column name="level" value="1" /><!--Divine Favor id.151--></insert>
+<insert tableName="domain_spell"><column name="id" value="245" /><!--NOBILITY--><column name="level" value="2" /><!--Enthrall id.168--></insert>
+<insert tableName="domain_spell"><column name="id" value="246" /><!--NOBILITY--><column name="level" value="3" /><!--Magic Vestment id.300--></insert>
+<insert tableName="domain_spell"><column name="id" value="247" /><!--NOBILITY--><column name="level" value="4" /><!--Discern Lies id.136--></insert>
+<insert tableName="domain_spell"><column name="id" value="248" /><!--NOBILITY--><column name="level" value="5" /><!--Command, Greater id.79--></insert>
+<insert tableName="domain_spell"><column name="id" value="249" /><!--NOBILITY--><column name="level" value="6" /><!--Geas/Quest id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="250" /><!--NOBILITY--><column name="level" value="7" /><!--Repulsion id.399--></insert>
+<insert tableName="domain_spell"><column name="id" value="251" /><!--NOBILITY--><column name="level" value="8" /><!--Demand id.117--></insert>
+<insert tableName="domain_spell"><column name="id" value="252" /><!--NOBILITY--><column name="level" value="9" /><!--Storm of Vengeance id.478--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="253" /><!--UNDEATH--><column name="level" value="1" /><!--Detect Undead id.131--></insert>
+<insert tableName="domain_spell"><column name="id" value="254" /><!--UNDEATH--><column name="level" value="2" /><!--Desecrate id.118--></insert>
+<insert tableName="domain_spell"><column name="id" value="255" /><!--UNDEATH--><column name="level" value="3" /><!--Animate Dead id.14--></insert>
+<insert tableName="domain_spell"><column name="id" value="256" /><!--UNDEATH--><column name="level" value="4" /><!--Death Ward id.111--></insert>
+<insert tableName="domain_spell"><column name="id" value="257" /><!--UNDEATH--><column name="level" value="5" /><!--Inflict Light Wounds, Mass id.250--></insert>
+<insert tableName="domain_spell"><column name="id" value="258" /><!--UNDEATH--><column name="level" value="6" /><!--Create Undead id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="259" /><!--UNDEATH--><column name="level" value="7" /><!--Control Undead id.91--></insert>
+<insert tableName="domain_spell"><column name="id" value="260" /><!--UNDEATH--><column name="level" value="8" /><!--Create Greater Undead id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="261" /><!--UNDEATH--><column name="level" value="9" /><!--Energy Drain id.163--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="262" /><!--OCEAN--><column name="level" value="1" /><!--Endure Elements id.162--></insert>
+<insert tableName="domain_spell"><column name="id" value="263" /><!--OCEAN--><column name="level" value="2" /><!--Sound Burst id.458--></insert>
+<insert tableName="domain_spell"><column name="id" value="264" /><!--OCEAN--><column name="level" value="3" /><!--Water Breathing id.552--></insert>
+<insert tableName="domain_spell"><column name="id" value="265" /><!--OCEAN--><column name="level" value="4" /><!--Freedom of Movement id.207--></insert>
+<insert tableName="domain_spell"><column name="id" value="266" /><!--OCEAN--><column name="level" value="5" /><!--Wall of Ice id.547--></insert>
+<insert tableName="domain_spell"><column name="id" value="267" /><!--OCEAN--><column name="level" value="6" /><!--Otiluke's Freezing Sphere id.332--></insert>
+<insert tableName="domain_spell"><column name="id" value="268" /><!--OCEAN--><column name="level" value="7" /><!--Waterspout id.553--></insert>
+<insert tableName="domain_spell"><column name="id" value="269" /><!--OCEAN--><column name="level" value="8" /><!--Maelstrom id.280--></insert>
+<insert tableName="domain_spell"><column name="id" value="270" /><!--OCEAN--><column name="level" value="9" /><!--Elemental Swarm (water only) id.161--><column name="specific" value="water only" /></insert>
+
+<insert tableName="domain_spell"><column name="id" value="271" /><!--HATRED--><column name="level" value="1" /><!--Doom id.156--></insert>
+<insert tableName="domain_spell"><column name="id" value="272" /><!--HATRED--><column name="level" value="2" /><!--Scare id.412--></insert>
+<insert tableName="domain_spell"><column name="id" value="273" /><!--HATRED--><column name="level" value="3" /><!--Bestow Curse id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="274" /><!--HATRED--><column name="level" value="4" /><!--Song of Discord id.456--></insert>
+<insert tableName="domain_spell"><column name="id" value="275" /><!--HATRED--><column name="level" value="5" /><!--Righteous Might id.408--></insert>
+<insert tableName="domain_spell"><column name="id" value="276" /><!--HATRED--><column name="level" value="6" /><!--Forbiddance id.200--></insert>
+<insert tableName="domain_spell"><column name="id" value="277" /><!--HATRED--><column name="level" value="7" /><!--Blasphemy id.41--></insert>
+<insert tableName="domain_spell"><column name="id" value="278" /><!--HATRED--><column name="level" value="8" /><!--Antipathy id.20--></insert>
+<insert tableName="domain_spell"><column name="id" value="279" /><!--HATRED--><column name="level" value="9" /><!--Wail of the Banshee id.544--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="280" /><!--ORC--><column name="level" value="1" /><!--Cause Fear id.59--></insert>
+<insert tableName="domain_spell"><column name="id" value="281" /><!--ORC--><column name="level" value="2" /><!--Produce Flame id.362--></insert>
+<insert tableName="domain_spell"><column name="id" value="282" /><!--ORC--><column name="level" value="3" /><!--Prayer id.357--></insert>
+<insert tableName="domain_spell"><column name="id" value="283" /><!--ORC--><column name="level" value="4" /><!--Divine Power id.152--></insert>
+<insert tableName="domain_spell"><column name="id" value="284" /><!--ORC--><column name="level" value="5" /><!--Prying Eyes id.372--></insert>
+<insert tableName="domain_spell"><column name="id" value="285" /><!--ORC--><column name="level" value="6" /><!--Eyebite id.175--></insert>
+<insert tableName="domain_spell"><column name="id" value="286" /><!--ORC--><column name="level" value="7" /><!--Blasphemy id.41--></insert>
+<insert tableName="domain_spell"><column name="id" value="287" /><!--ORC--><column name="level" value="8" /><!--Cloak of Chaos id.72--></insert>
+<insert tableName="domain_spell"><column name="id" value="288" /><!--ORC--><column name="level" value="9" /><!--Power Word Kill id.355--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="289" /><!--DARKNESS--><column name="level" value="1" /><!--Obscuring Mist id.330--></insert>
+<insert tableName="domain_spell"><column name="id" value="290" /><!--DARKNESS--><column name="level" value="2" /><!--Blindness/Deafness id.46--></insert>
+<insert tableName="domain_spell"><column name="id" value="291" /><!--DARKNESS--><column name="level" value="3" /><!--Blacklight id.39--></insert>
+<insert tableName="domain_spell"><column name="id" value="292" /><!--DARKNESS--><column name="level" value="4" /><!--Armor of Darkness id.26--></insert>
+<insert tableName="domain_spell"><column name="id" value="293" /><!--DARKNESS--><column name="level" value="5" /><!--Darkbolt id.104--></insert>
+<insert tableName="domain_spell"><column name="id" value="294" /><!--DARKNESS--><column name="level" value="6" /><!--Prying Eyes id.372--></insert>
+<insert tableName="domain_spell"><column name="id" value="295" /><!--DARKNESS--><column name="level" value="7" /><!--Nightmare id.327--></insert>
+<insert tableName="domain_spell"><column name="id" value="296" /><!--DARKNESS--><column name="level" value="8" /><!--Power Word Blind id.354--></insert>
+<insert tableName="domain_spell"><column name="id" value="297" /><!--DARKNESS--><column name="level" value="9" /><!--Power Word Kill id.355--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="298" /><!--PLANNING--><column name="level" value="1" /><!--Deathwatch id.112--></insert>
+<insert tableName="domain_spell"><column name="id" value="299" /><!--PLANNING--><column name="level" value="2" /><!--Augury id.29--></insert>
+<insert tableName="domain_spell"><column name="id" value="300" /><!--PLANNING--><column name="level" value="3" /><!--Clairaudience/Clairvoyance id.70--></insert>
+<insert tableName="domain_spell"><column name="id" value="301" /><!--PLANNING--><column name="level" value="4" /><!--Status id.472--></insert>
+<insert tableName="domain_spell"><column name="id" value="302" /><!--PLANNING--><column name="level" value="5" /><!--Detect Scrying id.127--></insert>
+<insert tableName="domain_spell"><column name="id" value="303" /><!--PLANNING--><column name="level" value="6" /><!--Heroes' Feast id.219--></insert>
+<insert tableName="domain_spell"><column name="id" value="304" /><!--PLANNING--><column name="level" value="7" /><!--Scrying, Greater id.417--></insert>
+<insert tableName="domain_spell"><column name="id" value="305" /><!--PLANNING--><column name="level" value="8" /><!--Discern Location id.137--></insert>
+<insert tableName="domain_spell"><column name="id" value="306" /><!--PLANNING--><column name="level" value="9" /><!--Time Stop id.519--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="307" /><!--PORTAL--><column name="level" value="1" /><!--Summon Monster I id.482--></insert>
+<insert tableName="domain_spell"><column name="id" value="308" /><!--PORTAL--><column name="level" value="2" /><!--Analyze Portal id.9--></insert>
+<insert tableName="domain_spell"><column name="id" value="309" /><!--PORTAL--><column name="level" value="3" /><!--Dimensional Anchor id.133--></insert>
+<insert tableName="domain_spell"><column name="id" value="310" /><!--PORTAL--><column name="level" value="4" /><!--Dimension Door id.132--></insert>
+<insert tableName="domain_spell"><column name="id" value="311" /><!--PORTAL--><column name="level" value="5" /><!--Teleport id.515--></insert>
+<insert tableName="domain_spell"><column name="id" value="312" /><!--PORTAL--><column name="level" value="6" /><!--Banishment id.33--></insert>
+<insert tableName="domain_spell"><column name="id" value="313" /><!--PORTAL--><column name="level" value="7" /><!--Etherealness id.172--></insert>
+<insert tableName="domain_spell"><column name="id" value="314" /><!--PORTAL--><column name="level" value="8" /><!--Dimensional Lock id.133--></insert>
+<insert tableName="domain_spell"><column name="id" value="315" /><!--PORTAL--><column name="level" value="9" /><!--Gate id.209--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="316" /><!--PROTECTION--><column name="level" value="1" /><!--Sanctuary id.411--></insert>
+<insert tableName="domain_spell"><column name="id" value="317" /><!--PROTECTION--><column name="level" value="2" /><!--Shield Other id.440--></insert>
+<insert tableName="domain_spell"><column name="id" value="318" /><!--PROTECTION--><column name="level" value="3" /><!--Protection From Energy id.367--></insert>
+<insert tableName="domain_spell"><column name="id" value="319" /><!--PROTECTION--><column name="level" value="4" /><!--Spell Immunity id.463--></insert>
+<insert tableName="domain_spell"><column name="id" value="320" /><!--PROTECTION--><column name="level" value="5" /><!--Spell Resistance id.465--></insert>
+<insert tableName="domain_spell"><column name="id" value="321" /><!--PROTECTION--><column name="level" value="6" /><!--Antimagic Field id.19--></insert>
+<insert tableName="domain_spell"><column name="id" value="322" /><!--PROTECTION--><column name="level" value="7" /><!--Repulsion id.399--></insert>
+<insert tableName="domain_spell"><column name="id" value="323" /><!--PROTECTION--><column name="level" value="8" /><!--Mind Blank id.312--></insert>
+<insert tableName="domain_spell"><column name="id" value="324" /><!--PROTECTION--><column name="level" value="9" /><!--Prismatic Sphere id.359--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="325" /><!--SCALYKIND--><column name="level" value="1" /><!--Magic Fang id.294--></insert>
+<insert tableName="domain_spell"><column name="id" value="326" /><!--SCALYKIND--><column name="level" value="2" /><!--Animal Trance id.13--></insert>
+<insert tableName="domain_spell"><column name="id" value="327" /><!--SCALYKIND--><column name="level" value="3" /><!--Magic Fang, Greater id.295--></insert>
+<insert tableName="domain_spell"><column name="id" value="328" /><!--SCALYKIND--><column name="level" value="4" /><!--Poison id.350--></insert>
+<insert tableName="domain_spell"><column name="id" value="329" /><!--SCALYKIND--><column name="level" value="5" /><!--Animal Growth id.10--></insert>
+<insert tableName="domain_spell"><column name="id" value="330" /><!--SCALYKIND--><column name="level" value="6" /><!--Eyebite id.175--></insert>
+<insert tableName="domain_spell"><column name="id" value="331" /><!--SCALYKIND--><column name="level" value="7" /><!--Vipergout id.541--></insert>
+<insert tableName="domain_spell"><column name="id" value="332" /><!--SCALYKIND--><column name="level" value="8" /><!--Animal Shapes id.12--></insert>
+<insert tableName="domain_spell"><column name="id" value="333" /><!--SCALYKIND--><column name="level" value="9" /><!--Shapechange id.435--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="334" /><!--REPOSE--><column name="level" value="1" /><!--Hide from Undead id.224--></insert>
+<insert tableName="domain_spell"><column name="id" value="335" /><!--REPOSE--><column name="level" value="2" /><!--Gentle Repose id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="336" /><!--REPOSE--><column name="level" value="3" /><!--Speak with Dead id.460--></insert>
+<insert tableName="domain_spell"><column name="id" value="337" /><!--REPOSE--><column name="level" value="4" /><!--Death Ward id.111--></insert>
+<insert tableName="domain_spell"><column name="id" value="338" /><!--REPOSE--><column name="level" value="5" /><!--Slay Living id.449--></insert>
+<insert tableName="domain_spell"><column name="id" value="339" /><!--REPOSE--><column name="level" value="6" /><!--Undeath to Death id.533--></insert>
+<insert tableName="domain_spell"><column name="id" value="340" /><!--REPOSE--><column name="level" value="7" /><!--Destruction id.119--></insert>
+<insert tableName="domain_spell"><column name="id" value="341" /><!--REPOSE--><column name="level" value="8" /><!--Surelife id.501--></insert>
+<insert tableName="domain_spell"><column name="id" value="342" /><!--REPOSE--><column name="level" value="9" /><!--Wail of the Banshee id.544--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="343" /><!--RUNE--><column name="level" value="1" /><!--Erase id.170--></insert>
+<insert tableName="domain_spell"><column name="id" value="344" /><!--RUNE--><column name="level" value="2" /><!--Secret Page id.421--></insert>
+<insert tableName="domain_spell"><column name="id" value="345" /><!--RUNE--><column name="level" value="3" /><!--Glyph of Warding id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="346" /><!--RUNE--><column name="level" value="4" /><!--Explosive Runes id.174--></insert>
+<insert tableName="domain_spell"><column name="id" value="347" /><!--RUNE--><column name="level" value="5" /><!--Planar Binding, Lesser id.347--></insert>
+<insert tableName="domain_spell"><column name="id" value="348" /><!--RUNE--><column name="level" value="6" /><!--Glyph of Warding, Greater id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="349" /><!--RUNE--><column name="level" value="7" /><!--Drawmij's Instant Summons id.156--></insert>
+<insert tableName="domain_spell"><column name="id" value="350" /><!--RUNE--><column name="level" value="8" /><!--Transcribe Symbol id.523--></insert>
+<insert tableName="domain_spell"><column name="id" value="351" /><!--RUNE--><column name="level" value="9" /><!--Teleportation Circle id.516--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="352" /><!--SUFFERING--><column name="level" value="1" /><!--Bane id.32--></insert>
+<insert tableName="domain_spell"><column name="id" value="353" /><!--SUFFERING--><column name="level" value="2" /><!--Bear's Endurance id.36--></insert>
+<insert tableName="domain_spell"><column name="id" value="354" /><!--SUFFERING--><column name="level" value="3" /><!--Bestow Curse id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="355" /><!--SUFFERING--><column name="level" value="4" /><!--Enervation id.164--></insert>
+<insert tableName="domain_spell"><column name="id" value="356" /><!--SUFFERING--><column name="level" value="5" /><!--Symbol of Pain id.505--></insert>
+<insert tableName="domain_spell"><column name="id" value="357" /><!--SUFFERING--><column name="level" value="6" /><!--Harm id.213--></insert>
+<insert tableName="domain_spell"><column name="id" value="358" /><!--SUFFERING--><column name="level" value="7" /><!--Waves of Exhaustion id.554--></insert>
+<insert tableName="domain_spell"><column name="id" value="359" /><!--SUFFERING--><column name="level" value="8" /><!--Horrid Wilting id.236--></insert>
+<insert tableName="domain_spell"><column name="id" value="360" /><!--SUFFERING--><column name="level" value="9" /><!--Energy Drain id.163--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="361" /><!--SUN--><column name="level" value="1" /><!--Endure Elements id.162--></insert>
+<insert tableName="domain_spell"><column name="id" value="362" /><!--SUN--><column name="level" value="2" /><!--Heat Metal id.218--></insert>
+<insert tableName="domain_spell"><column name="id" value="363" /><!--SUN--><column name="level" value="3" /><!--Searing Light id.419--></insert>
+<insert tableName="domain_spell"><column name="id" value="364" /><!--SUN--><column name="level" value="4" /><!--Fire Shield id.185--></insert>
+<insert tableName="domain_spell"><column name="id" value="365" /><!--SUN--><column name="level" value="5" /><!--Flame Strike id.193--></insert>
+<insert tableName="domain_spell"><column name="id" value="366" /><!--SUN--><column name="level" value="6" /><!--Fire Seeds id.185--></insert>
+<insert tableName="domain_spell"><column name="id" value="367" /><!--SUN--><column name="level" value="7" /><!--Sunbeam id.500--></insert>
+<insert tableName="domain_spell"><column name="id" value="368" /><!--SUN--><column name="level" value="8" /><!--Sunburst id.501--></insert>
+<insert tableName="domain_spell"><column name="id" value="369" /><!--SUN--><column name="level" value="9" /><!--Prismatic Sphere id.359--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="370" /><!--STORM--><column name="level" value="1" /><!--Entropic Shield id.169--></insert>
+<insert tableName="domain_spell"><column name="id" value="371" /><!--STORM--><column name="level" value="2" /><!--Gust of Wind id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="372" /><!--STORM--><column name="level" value="3" /><!--Call Lightning id.53--></insert>
+<insert tableName="domain_spell"><column name="id" value="373" /><!--STORM--><column name="level" value="4" /><!--Sleet Storm id.451--></insert>
+<insert tableName="domain_spell"><column name="id" value="374" /><!--STORM--><column name="level" value="5" /><!--Ice Storm id.239--></insert>
+<insert tableName="domain_spell"><column name="id" value="375" /><!--STORM--><column name="level" value="6" /><!--Call Lightning Storm id.54--></insert>
+<insert tableName="domain_spell"><column name="id" value="376" /><!--STORM--><column name="level" value="7" /><!--Control Weather id.92--></insert>
+<insert tableName="domain_spell"><column name="id" value="377" /><!--STORM--><column name="level" value="8" /><!--Whirlwind id.558--></insert>
+<insert tableName="domain_spell"><column name="id" value="378" /><!--STORM--><column name="level" value="9" /><!--Storm of Vengeance id.478--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="379" /><!--TIME--><column name="level" value="1" /><!--True Strike id.532--></insert>
+<insert tableName="domain_spell"><column name="id" value="380" /><!--TIME--><column name="level" value="2" /><!--Gentle Repose id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="381" /><!--TIME--><column name="level" value="3" /><!--Haste id.214--></insert>
+<insert tableName="domain_spell"><column name="id" value="382" /><!--TIME--><column name="level" value="4" /><!--Freedom of Movement id.207--></insert>
+<insert tableName="domain_spell"><column name="id" value="383" /><!--TIME--><column name="level" value="5" /><!--Permanency id.338--></insert>
+<insert tableName="domain_spell"><column name="id" value="384" /><!--TIME--><column name="level" value="6" /><!--Contingency id.89--></insert>
+<insert tableName="domain_spell"><column name="id" value="385" /><!--TIME--><column name="level" value="7" /><!--Moment of Prescience id.323--></insert>
+<insert tableName="domain_spell"><column name="id" value="386" /><!--TIME--><column name="level" value="8" /><!--Foresight id.203--></insert>
+<insert tableName="domain_spell"><column name="id" value="387" /><!--TIME--><column name="level" value="9" /><!--Time Stop id.519--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="388" /><!--EARTH--><column name="level" value="1" /><!--Magic Stone id.299--></insert>
+<insert tableName="domain_spell"><column name="id" value="389" /><!--EARTH--><column name="level" value="2" /><!--Soften Earth and Stone id.454--></insert>
+<insert tableName="domain_spell"><column name="id" value="390" /><!--EARTH--><column name="level" value="3" /><!--Stone Shape id.474--></insert>
+<insert tableName="domain_spell"><column name="id" value="391" /><!--EARTH--><column name="level" value="4" /><!--Spike Stones id.470--></insert>
+<insert tableName="domain_spell"><column name="id" value="392" /><!--EARTH--><column name="level" value="5" /><!--Wall of Stone id.549--></insert>
+<insert tableName="domain_spell"><column name="id" value="393" /><!--EARTH--><column name="level" value="6" /><!--Stoneskin id.477--></insert>
+<insert tableName="domain_spell"><column name="id" value="394" /><!--EARTH--><column name="level" value="7" /><!--Earthquake id.160--></insert>
+<insert tableName="domain_spell"><column name="id" value="395" /><!--EARTH--><column name="level" value="8" /><!--Iron Body id.264--></insert>
+<insert tableName="domain_spell"><column name="id" value="396" /><!--EARTH--><column name="level" value="9" /><!--Elemental Swarm (Earth spell only) id.161--><column name="specific" value="Earth spell only" /></insert>
+
+<insert tableName="domain_spell"><column name="id" value="397" /><!--TYRANNY--><column name="level" value="1" /><!--Command id.76--></insert>
+<insert tableName="domain_spell"><column name="id" value="398" /><!--TYRANNY--><column name="level" value="2" /><!--Enthrall id.168--></insert>
+<insert tableName="domain_spell"><column name="id" value="399" /><!--TYRANNY--><column name="level" value="3" /><!--Discern Lies id.136--></insert>
+<insert tableName="domain_spell"><column name="id" value="400" /><!--TYRANNY--><column name="level" value="4" /><!--Fear id.180--></insert>
+<insert tableName="domain_spell"><column name="id" value="401" /><!--TYRANNY--><column name="level" value="5" /><!--Command, Greater id.79--></insert>
+<insert tableName="domain_spell"><column name="id" value="402" /><!--TYRANNY--><column name="level" value="6" /><!--Geas/Quest id.209--></insert>
+<insert tableName="domain_spell"><column name="id" value="403" /><!--TYRANNY--><column name="level" value="7" /><!--Bigby's Grasping Hand id.37--></insert>
+<insert tableName="domain_spell"><column name="id" value="404" /><!--TYRANNY--><column name="level" value="8" /><!--Charm Person, Mass id.66--></insert>
+<insert tableName="domain_spell"><column name="id" value="405" /><!--TYRANNY--><column name="level" value="9" /><!--Dominate Monster id.154--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="406" /><!--PLANT--><column name="level" value="1" /><!--Entangle id.167--></insert>
+<insert tableName="domain_spell"><column name="id" value="407" /><!--PLANT--><column name="level" value="2" /><!--Barkskin id.34--></insert>
+<insert tableName="domain_spell"><column name="id" value="408" /><!--PLANT--><column name="level" value="3" /><!--Plant Growth id.349--></insert>
+<insert tableName="domain_spell"><column name="id" value="409" /><!--PLANT--><column name="level" value="4" /><!--Command Plants id.76--></insert>
+<insert tableName="domain_spell"><column name="id" value="410" /><!--PLANT--><column name="level" value="5" /><!--Wall of Thorns id.550--></insert>
+<insert tableName="domain_spell"><column name="id" value="411" /><!--PLANT--><column name="level" value="6" /><!--Repel Wood id.398--></insert>
+<insert tableName="domain_spell"><column name="id" value="412" /><!--PLANT--><column name="level" value="7" /><!--Animate Plants id.16--></insert>
+<insert tableName="domain_spell"><column name="id" value="413" /><!--PLANT--><column name="level" value="8" /><!--Control Plants id.90--></insert>
+<insert tableName="domain_spell"><column name="id" value="414" /><!--PLANT--><column name="level" value="9" /><!--Shambler id.434--></insert>
+
+<insert tableName="domain_spell"><column name="id" value="415" /><!--TRAVEL--><column name="level" value="1" /><!--Longstrider id.279--></insert>
+<insert tableName="domain_spell"><column name="id" value="416" /><!--TRAVEL--><column name="level" value="2" /><!--Locate Object id.278--></insert>
+<insert tableName="domain_spell"><column name="id" value="417" /><!--TRAVEL--><column name="level" value="3" /><!--Fly id.197--></insert>
+<insert tableName="domain_spell"><column name="id" value="418" /><!--TRAVEL--><column name="level" value="4" /><!--Dimension Door id.132--></insert>
+<insert tableName="domain_spell"><column name="id" value="419" /><!--TRAVEL--><column name="level" value="5" /><!--Teleport id.515--></insert>
+<insert tableName="domain_spell"><column name="id" value="420" /><!--TRAVEL--><column name="level" value="6" /><!--Find the Path id.183--></insert>
+<insert tableName="domain_spell"><column name="id" value="421" /><!--TRAVEL--><column name="level" value="7" /><!--Teleport, Greater id.516--></insert>
+<insert tableName="domain_spell"><column name="id" value="422" /><!--TRAVEL--><column name="level" value="8" /><!--Phase Door id.344--></insert>
+<insert tableName="domain_spell"><column name="id" value="423" /><!--TRAVEL--><column name="level" value="9" /><!--Astral Projection id.27--></insert>
+
+</changeSet>
 </databaseChangeLog>
