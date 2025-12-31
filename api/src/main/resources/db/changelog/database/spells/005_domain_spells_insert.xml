@@ -14,6 +14,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="1" /><!--WATER--><column name="domain_spell_id" value="7" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="1" /><!--WATER--><column name="domain_spell_id" value="8" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="1" /><!--WATER--><column name="domain_spell_id" value="9" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="10" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="11" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="12" /></insert>
@@ -23,6 +24,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="16" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="17" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="2" /><!--ANIMAL--><column name="domain_spell_id" value="18" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="19" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="20" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="21" /></insert>
@@ -32,6 +34,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="25" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="26" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="3" /><!--AIR--><column name="domain_spell_id" value="27" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="28" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="29" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="30" /></insert>
@@ -41,6 +44,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="34" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="35" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="4" /><!--CRAFT--><column name="domain_spell_id" value="36" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="37" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="38" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="39" /></insert>
@@ -50,6 +54,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="43" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="44" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="5" /><!--GOOD--><column name="domain_spell_id" value="45" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="46" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="47" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="48" /></insert>
@@ -59,6 +64,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="52" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="53" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="6" /><!--CHAOS--><column name="domain_spell_id" value="54" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="55" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="56" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="57" /></insert>
@@ -68,6 +74,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="61" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="62" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="7" /><!--RETRIBUTION--><column name="domain_spell_id" value="63" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="64" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="65" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="66" /></insert>
@@ -77,6 +84,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="70" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="71" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="8" /><!--CAVERN--><column name="domain_spell_id" value="72" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="73" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="74" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="75" /></insert>
@@ -86,6 +94,7 @@
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="79" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="80" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="9" /><!--CHARM--><column name="domain_spell_id" value="81" /></insert>
+
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="82" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="83" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="84" /></insert>
@@ -95,5 +104,386 @@
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="88" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="89" /></insert>
 <insert tableName="domain_spells"><column name="domains_id" value="10" /><!--TRADE--><column name="domain_spell_id" value="90" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="91" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="92" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="93" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="94" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="95" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="96" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="97" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="98" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="11" /><!--KNOWLEDGE--><column name="domain_spell_id" value="99" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="100" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="101" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="102" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="103" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="104" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="105" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="106" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="107" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="12" /><!--DESTRUCTION--><column name="domain_spell_id" value="108" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="109" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="110" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="111" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="112" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="113" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="114" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="115" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="116" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="13" /><!--DROW--><column name="domain_spell_id" value="117" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="118" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="119" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="120" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="121" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="122" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="123" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="124" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="125" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="14" /><!--ELF--><column name="domain_spell_id" value="126" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="127" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="128" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="129" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="130" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="131" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="132" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="133" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="134" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="15" /><!--FAMILY--><column name="domain_spell_id" value="135" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="136" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="137" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="138" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="139" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="140" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="141" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="142" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="143" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="16" /><!--SLIME--><column name="domain_spell_id" value="144" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="145" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="146" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="147" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="148" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="149" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="150" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="151" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="152" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="17" /><!--FATE--><column name="domain_spell_id" value="153" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="154" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="155" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="156" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="157" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="158" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="159" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="160" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="161" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="18" /><!--LUCK--><column name="domain_spell_id" value="162" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="163" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="164" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="165" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="166" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="167" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="168" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="169" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="170" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="19" /><!--STRENGTH--><column name="domain_spell_id" value="171" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="172" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="173" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="174" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="175" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="176" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="177" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="178" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="179" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="20" /><!--FIRE--><column name="domain_spell_id" value="180" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="181" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="182" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="183" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="184" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="185" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="186" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="187" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="188" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="21" /><!--GNOME--><column name="domain_spell_id" value="189" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="190" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="191" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="192" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="193" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="194" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="195" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="196" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="197" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="22" /><!--HEALING--><column name="domain_spell_id" value="198" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="199" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="200" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="201" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="202" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="203" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="204" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="205" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="206" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="23" /><!--WAR--><column name="domain_spell_id" value="207" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="208" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="209" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="210" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="211" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="212" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="213" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="214" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="215" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="24" /><!--HALFLING--><column name="domain_spell_id" value="216" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="217" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="218" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="219" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="220" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="221" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="222" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="223" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="224" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="25" /><!--ILLUSION--><column name="domain_spell_id" value="225" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="226" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="227" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="228" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="229" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="230" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="231" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="232" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="233" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="26" /><!--SPELL--><column name="domain_spell_id" value="234" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="235" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="236" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="237" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="238" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="239" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="240" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="241" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="242" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="27" /><!--DEATH--><column name="domain_spell_id" value="243" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="244" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="245" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="246" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="247" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="248" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="249" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="250" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="251" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="28" /><!--DWARF--><column name="domain_spell_id" value="252" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="253" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="254" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="255" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="256" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="257" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="258" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="259" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="260" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="29" /><!--NOBILITY--><column name="domain_spell_id" value="261" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="262" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="263" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="264" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="265" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="266" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="267" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="268" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="269" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="30" /><!--UNDEATH--><column name="domain_spell_id" value="270" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="271" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="272" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="273" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="274" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="275" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="276" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="277" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="278" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="31" /><!--OCEAN--><column name="domain_spell_id" value="279" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="280" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="281" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="282" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="283" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="284" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="285" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="286" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="287" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="32" /><!--HATRED--><column name="domain_spell_id" value="288" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="289" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="290" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="291" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="292" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="293" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="294" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="295" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="296" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="33" /><!--ORC--><column name="domain_spell_id" value="297" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="298" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="299" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="300" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="301" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="302" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="303" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="304" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="305" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="34" /><!--DARKNESS--><column name="domain_spell_id" value="306" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="307" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="308" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="309" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="310" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="311" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="312" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="313" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="314" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="35" /><!--PLANNING--><column name="domain_spell_id" value="315" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="316" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="317" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="318" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="319" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="320" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="321" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="322" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="323" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="36" /><!--PORTAL--><column name="domain_spell_id" value="324" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="325" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="326" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="327" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="328" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="329" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="330" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="331" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="332" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="37" /><!--PROTECTION--><column name="domain_spell_id" value="333" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="334" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="335" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="336" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="337" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="338" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="339" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="340" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="341" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="38" /><!--SCALYKIND--><column name="domain_spell_id" value="342" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="343" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="344" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="345" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="346" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="347" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="348" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="349" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="350" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="39" /><!--REPOSE--><column name="domain_spell_id" value="351" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="352" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="353" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="354" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="355" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="356" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="357" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="358" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="359" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="40" /><!--RUNE--><column name="domain_spell_id" value="360" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="361" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="362" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="363" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="364" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="365" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="366" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="367" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="368" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="41" /><!--SUFFERING--><column name="domain_spell_id" value="369" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="370" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="371" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="372" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="373" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="374" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="375" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="376" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="377" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="42" /><!--SUN--><column name="domain_spell_id" value="378" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="379" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="380" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="381" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="382" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="383" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="384" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="385" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="386" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="43" /><!--STORM--><column name="domain_spell_id" value="387" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="388" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="389" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="390" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="391" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="392" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="393" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="394" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="395" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="44" /><!--TIME--><column name="domain_spell_id" value="396" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="397" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="398" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="399" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="400" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="401" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="402" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="403" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="404" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="45" /><!--EARTH--><column name="domain_spell_id" value="405" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="406" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="407" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="408" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="409" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="410" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="411" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="412" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="413" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="46" /><!--TYRANNY--><column name="domain_spell_id" value="414" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="415" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="416" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="417" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="418" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="419" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="420" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="421" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="422" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="47" /><!--PLANT--><column name="domain_spell_id" value="423" /></insert>
+
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="424" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="425" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="426" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="427" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="428" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="429" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="430" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="431" /></insert>
+<insert tableName="domain_spells"><column name="domains_id" value="48" /><!--TRAVEL--><column name="domain_spell_id" value="432" /></insert>
+
     </changeSet>
 </databaseChangeLog>

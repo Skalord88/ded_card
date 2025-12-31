@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.spells;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,6 @@ import pl.kolendateam.dadcard.classCharacter.repository.ClassRepository;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsAddDTO;
 import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
-import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Spells;
 import pl.kolendateam.dadcard.spells.repository.BookRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
