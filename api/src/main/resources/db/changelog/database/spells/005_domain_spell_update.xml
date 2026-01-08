@@ -13,5 +13,556 @@
 <update tableName="domain_spell"><column name="spells_id" valueNumeric="236" /><!--Horrid Wilting--><where>id=8</where><!--WATER--></update>
 <update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm (cast as a water spell only)--><where>id=9</where><!--WATER--></update>
 
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="55" /><!--Calm Animals--><where>id=10</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="226" /><!--Hold Animal--><where>id=11</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="153" /><!--Dominate Animal--><where>id=12</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="493" /><!--Summon Nature's Ally IV--><where>id=13</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="81" /><!--Commune with Nature--><where>id=14</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="18" /><!--Antilife Shell--><where>id=15</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="12" /><!--Animal Shapes--><where>id=16</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="497" /><!--Summon Nature's Ally VIII--><where>id=17</where><!--ANIMAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="435" /><!--Shapechange--><where>id=18</where><!--ANIMAL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="330" /><!--Obscuring Mist--><where>id=19</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="561" /><!--Wind Wall--><where>id=20</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gaseous Form--><where>id=21</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="5" /><!--Air Walk--><where>id=22</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Control Winds--><where>id=23</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="60" /><!--Chain Lightning--><where>id=24</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Control Weather--><where>id=25</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="558" /><!--Whirlwind--><where>id=26</where><!--AIR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=27</where><!--AIR--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="17" /><!--Animate Rope--><where>id=28</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="563" /><!--Wood Shape--><where>id=29</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="474" /><!--Stone Shape--><where>id=30</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="314" /><!--Minor Creation--><where>id=31</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="549" /><!--Wall of Stone--><where>id=32</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="179" /><!--Fantastic Machine--><where>id=33</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="303" /><!--Major Creation--><where>id=34</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="201" /><!--Forcecage--><where>id=35</where><!--CRAFT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="179" /><!--Elemental Swarm--><where>id=36</where><!--CRAFT--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="368" /><!--Protection From Evil--><where>id=37</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="4" /><!--Aid --><where>id=38</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="289" /><!--Magic Circle Against--><where>id=39</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="233" /><!--Holy Smite--><where>id=40</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="142" /><!--Dispel Evil--><where>id=41</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="40" /><!--Blade Barrier--><where>id=42</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="235" /><!--Holy Word--><where>id=43</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="232" /><!--Holy Aura--><where>id=44</where><!--GOOD--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=45</where><!--GOOD--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="370" /><!--Protection From Law--><where>id=46</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="436" /><!--Shatter  --><where>id=47</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="289" /><!--Magic Circle Against--><where>id=48</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="62" /><!--Chaos Hammer --><where>id=49</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="144" /><!--Dispel Law --><where>id=50</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="15" /><!--Animate Objects --><where>id=51</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="564" /><!--Word of Chaos--><where>id=52</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="72" /><!--Cloak of Chaos--><where>id=53</where><!--CHAOS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="489" /><!--Summon Monster IX--><where>id=54</where><!--CHAOS--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="438" /><!--Shield of Faith--><where>id=55</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="36" /><!--Bear's Endurance --><where>id=56</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="460" /><!--Speak with Dead--><where>id=57</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Shield --><where>id=58</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="306" /><!--Mark of Justice--><where>id=59</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="33" /><!--Banishment  --><where>id=60</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="467" /><!--Spell Turning --><where>id=61</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="137" /><!--Discern Location --><where>id=62</where><!--RETRIBUTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="478" /><!--Storm of Vengeance--><where>id=63</where><!--RETRIBUTION--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="128" /><!--Detect Secret Doors--><where>id=64</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="105" /><!--Darkness  --><where>id=65</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="308" /><!--Meld into Stone--><where>id=66</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="271" /><!--Leomund's Secure Shelter--><where>id=67</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="337" /><!--Passwall  --><where>id=68</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="183" /><!--Find the Path--><where>id=69</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="306" /><!--Maw of Stone--><where>id=70</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="160" /><!--Earthquake  --><where>id=71</where><!--CAVERN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="245" /><!--Imprisonment  --><where>id=72</where><!--CAVERN--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="66" /><!--Charm Person --><where>id=73</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="56" /><!--Calm Emotions --><where>id=74</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="479" /><!--Suggestion  --><where>id=75</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Good Hope --><where>id=76</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="64" /><!--Charm Monster --><where>id=77</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Geas/Quest  --><where>id=78</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="255" /><!--Insanity  --><where>id=79</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="117" /><!--Demand  --><where>id=80</where><!--CHARM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="154" /><!--Dominate Monster --><where>id=81</where><!--CHARM--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="310" /><!--Message  --><where>id=82</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gembomb  --><where>id=83</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="158" /><!--Eagle's Splendor --><where>id=84</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="425" /><!--Sending  --><where>id=85</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="176" /><!--Fabricate  --><where>id=86</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="531" /><!--True Seeing --><where>id=87</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!--Mordenkainen's Magnificent Mansion--><where>id=88</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="312" /><!--Mind Blank --><where>id=89</where><!--TRADE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="137" /><!--Discern Location --><where>id=90</where><!--TRADE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="128" /><!--Detect Secret Doors--><where>id=91</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="130" /><!--Detect Thoughts --><where>id=92</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="70" /><!--Clairaudience/Clairvoyance  --><where>id=93</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="150" /><!--Divination  --><where>id=94</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="531" /><!--True Seeing --><where>id=95</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="183" /><!--Find the Path--><where>id=96</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="271" /><!--Legend Lore --><where>id=97</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="137" /><!--Discern Location --><where>id=98</where><!--KNOWLEDGE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="203" /><!--Foresight  --><where>id=99</where><!--KNOWLEDGE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="249" /><!--Inflict Light Wounds--><where>id=100</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="436" /><!--Shatter--><where>id=101</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="88" /><!--Contagion--><where>id=102</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="247" /><!--Inflict Critical Wounds--><where>id=103</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="250" /><!--Inflict Light Wounds, Mass--><where>id=104</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="213" /><!--Harm--><where>id=105</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="139" /><!--Disintegrate--><where>id=106</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="160" /><!--Earthquake--><where>id=107</where><!--DESTRUCTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="244" /><!--Implosion--><where>id=108</where><!--DESTRUCTION--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="72" /><!--Cloak of Dark Power--><where>id=109</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="70" /><!--Clairaudience/Clairvoyance--><where>id=110</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="479" /><!--Suggestion--><where>id=111</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="136" /><!--Discern Lies--><where>id=112</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="468" /><!--Spiderform--><where>id=113</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="146" /><!--Dispel Magic, Greater--><where>id=114</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="564" /><!--Word of Chaos--><where>id=115</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="346" /><!--Planar Ally, Greater--><where>id=116</where><!--DROW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gate--><where>id=117</where><!--DROW--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="532" /><!--True Strike--><where>id=118</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="58" /><!--Cat's Grace--><where>id=119</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="453" /><!--Snare--><where>id=120</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="529" /><!--Tree Stride--><where>id=121</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="81" /><!--Commune with Nature--><where>id=122</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="183" /><!--Find the Path--><where>id=123</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="276" /><!--Liveoak--><where>id=124</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="501" /><!--Sunburst--><where>id=125</where><!--ELF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="20" /><!--Antipathy--><where>id=126</where><!--ELF--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="42" /><!--Bless--><where>id=127</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="440" /><!--Shield Other--><where>id=128</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="219" /><!--Helping Hand--><where>id=129</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="243" /><!--Imbue with Spell Ability--><where>id=130</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="379" /><!--Rary's Telepathic Bond--><where>id=131</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="219" /><!--Heroes' Feast--><where>id=132</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="387" /><!--Refuge--><where>id=133</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="371" /><!--Protection From Spells--><where>id=134</where><!--FAMILY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="359" /><!--Prismatic Sphere--><where>id=135</where><!--FAMILY--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Grease--><where>id=136</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="308" /><!--Melf's Acid Arrow--><where>id=137</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="350" /><!--Poison--><where>id=138</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="410" /><!--Rusting Grasp--><where>id=139</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="172" /><!--Evard's Black Tentacles--><where>id=140</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="526" /><!--Transmute Rock to--><where>id=141</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="119" /><!--Destruction--><where>id=142</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="354" /><!--Power Word Blind--><where>id=143</where><!--SLIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="244" /><!--Implosion--><where>id=144</where><!--SLIME--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="532" /><!--True Strike--><where>id=145</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="29" /><!--Augury--><where>id=146</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bestow Curse--><where>id=147</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="472" /><!--Status--><where>id=148</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="306" /><!--Mark of Justice--><where>id=149</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Geas/Quest--><where>id=150</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="543" /><!--Vision--><where>id=151</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="312" /><!--Mind Blank--><where>id=152</where><!--FATE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="203" /><!--Foresight--><where>id=153</where><!--FATE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="169" /><!--Entropic Shield--><where>id=154</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="4" /><!--Aid--><where>id=155</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="367" /><!--Protection From Energy--><where>id=156</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="207" /><!--Freedom of Movement--><where>id=157</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="49" /><!--Break Enchantment--><where>id=158</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="320" /><!--Mislead--><where>id=159</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="467" /><!--Spell Turning--><where>id=160</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!--Moment of Prescience--><where>id=161</where><!--LUCK--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="316" /><!--Miracle--><where>id=162</where><!--LUCK--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="162" /><!--Endure Elements--><where>id=163</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="51" /><!--Bull's--><where>id=164</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="300" /><!--Magic Vestment--><where>id=165</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="462" /><!--Spell--><where>id=166</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="408" /><!--Righteous Might--><where>id=167</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="477" /><!--Stoneskin--><where>id=168</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bigby's Grasping Hand--><where>id=169</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bigby's Clenched Fist--><where>id=170</where><!--STRENGTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bigby's Crushing Hand--><where>id=171</where><!--STRENGTH--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="52" /><!--Burning Hands--><where>id=172</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="362" /><!--Produce Flame--><where>id=173</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="400" /><!--Resist Energy--><where>id=174</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="545" /><!--Wall of Fire--><where>id=175</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Shield--><where>id=176</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Seeds--><where>id=177</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Storm--><where>id=178</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="246" /><!--Incendiary Cloud--><where>id=179</where><!--FIRE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=180</where><!--FIRE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="447" /><!--Silent Image--><where>id=181</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gembomb--><where>id=182</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="315" /><!--Minor Image--><where>id=183</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="314" /><!--Minor Creation--><where>id=184</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="211" /><!--Hallucinatory Terrain--><where>id=185</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="179" /><!--Fantastic Machine--><where>id=186</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="415" /><!--Screen--><where>id=187</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="332" /><!--Otto's Irresistible Dance--><where>id=188</where><!--GNOME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="493" /><!--Summon Nature's Ally IX--><where>id=189</where><!--GNOME--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="97" /><!--Cure Light Wounds--><where>id=190</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="99" /><!--Cure Moderate Wounds--><where>id=191</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="100" /><!--Cure Serious--><where>id=192</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="96" /><!--Cure Critical Wounds--><where>id=193</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="97" /><!--Cure Light Wounds, Mass--><where>id=194</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="215" /><!--Heal--><where>id=195</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="388" /><!--Regenerate--><where>id=196</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="97" /><!--Cure Critical Wounds, Mass--><where>id=197</where><!--HEALING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="217" /><!--Heal, Mass--><where>id=198</where><!--HEALING--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="301" /><!--Magic Weapon--><where>id=199</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="471" /><!--Spiritual Weapon--><where>id=200</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="300" /><!--Magic Vestment--><where>id=201</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="152" /><!--Divine Power--><where>id=202</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="193" /><!--Flame Strike--><where>id=203</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="40" /><!--Blade Barrier--><where>id=204</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="354" /><!--Power Word Blind--><where>id=205</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="356" /><!--Power Word Stun--><where>id=206</where><!--WAR--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="355" /><!--Power Word Kill--><where>id=207</where><!--WAR--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="299" /><!--Magic Stone--><where>id=208</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="58" /><!--Cat's Grace--><where>id=209</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="300" /><!--Magic Vestment--><where>id=210</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="207" /><!--Freedom of Movement--><where>id=211</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!--Mordenkainen's Faithful Hound--><where>id=212</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="325" /><!--Move Earth--><where>id=213</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="433" /><!--Shadow Walk--><where>id=214</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="565" /><!--Word of Recall--><where>id=215</where><!--HALFLING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="203" /><!--Foresight--><where>id=216</where><!--HALFLING--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="447" /><!--Silent Image--><where>id=217</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="315" /><!--Minor Image--><where>id=218</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="147" /><!--Displacement--><where>id=219</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="341" /><!--Phantasmal Killer--><where>id=220</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="340" /><!--Persistent Image--><where>id=221</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="320" /><!--Mislead--><where>id=222</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="364" /><!--Project Image--><where>id=223</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="415" /><!--Screen--><where>id=224</where><!--ILLUSION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="557" /><!--Weird--><where>id=225</where><!--ILLUSION--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="281" /><!--Mage Armor--><where>id=226</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="446" /><!--Silence--><where>id=227</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="21" /><!--Anyspell--><where>id=228</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="379" /><!--Rary's Mnemonic Enhancer--><where>id=229</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="49" /><!--Break Enchantment--><where>id=230</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="21" /><!--Anyspell, Greater--><where>id=231</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="275" /><!--Limited Wish--><where>id=232</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="19" /><!--Antimagic Field--><where>id=233</where><!--SPELL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!--Mordenkainen's Disjunction--><where>id=234</where><!--SPELL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="59" /><!--Cause Fear--><where>id=235</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="110" /><!--Death Knell--><where>id=236</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="14" /><!--Animate Dead--><where>id=237</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="111" /><!--Death Ward--><where>id=238</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="449" /><!--Slay Living--><where>id=239</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Undead--><where>id=240</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="119" /><!--Destruction--><where>id=241</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Greater Undead--><where>id=242</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Crypt Thing--><where>id=243</where><!--DEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="544" /><!--Wail of the Banshee--><where>id=244</where><!--DEATH--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="301" /><!--Magic Weapon--><where>id=245</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="36" /><!--Bear's Endurance--><where>id=246</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Glyph of Warding--><where>id=247</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="302" /><!--Magic Weapon, Greater--><where>id=248</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="176" /><!--Fabricate--><where>id=249</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="476" /><!--Stone Tell--><where>id=250</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="132" /><!--Dictum--><where>id=251</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="371" /><!--Protection From Spells--><where>id=252</where><!--DWARF--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=253</where><!--DWARF--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="131" /><!--Detect Undead--><where>id=254</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="118" /><!--Desecrate--><where>id=255</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="14" /><!--Animate Dead--><where>id=256</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="111" /><!--Death Ward--><where>id=257</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="250" /><!--Inflict Light Wounds, Mass--><where>id=258</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Undead--><where>id=259</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="91" /><!--Control Undead--><where>id=260</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Greater Undead--><where>id=261</where><!--NOBILITY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="163" /><!--Energy Drain--><where>id=262</where><!--NOBILITY--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="131" /><!--Detect Undead--><where>id=263</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="118" /><!--Desecrate--><where>id=264</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="14" /><!--Animate Dead--><where>id=265</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="111" /><!--Death Ward--><where>id=266</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="249" /><!--Inflict Light Wounds,--><where>id=267</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Undead--><where>id=268</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="91" /><!--Control Undead--><where>id=269</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Greater Undead--><where>id=270</where><!--UNDEATH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="163" /><!--Energy Drain--><where>id=271</where><!--UNDEATH--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="162" /><!--Endure Elements--><where>id=272</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="458" /><!--Sound Burst--><where>id=273</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="552" /><!--Water Breathing--><where>id=274</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="207" /><!--Freedom of Movement--><where>id=275</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="547" /><!--Wall of Ice--><where>id=276</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="332" /><!--Otiluke's Freezing--><where>id=277</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="553" /><!--Waterspout--><where>id=278</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="280" /><!--Maelstrom--><where>id=279</where><!--OCEAN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=280</where><!--OCEAN--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="156" /><!--Doom--><where>id=281</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="412" /><!--Scare--><where>id=282</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bestow Curse--><where>id=283</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="456" /><!--Song of Discord--><where>id=284</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="408" /><!--Righteous Might--><where>id=285</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="200" /><!--Forbiddance--><where>id=286</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="41" /><!--Blasphemy--><where>id=287</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="20" /><!--Antipathy--><where>id=288</where><!--HATRED--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="543" /><!--Wail of the--><where>id=289</where><!--HATRED--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="59" /><!--Cause Fear--><where>id=290</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="362" /><!--Produce Flame--><where>id=291</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="357" /><!--Prayer id.357--><where>id=292</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="152" /><!--Divine Power--><where>id=293</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="372" /><!--Prying Eyes--><where>id=294</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="175" /><!--Eyebite--><where>id=295</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="41" /><!--Blasphemy--><where>id=296</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="72" /><!--Cloak of Chaos--><where>id=297</where><!--ORC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="355" /><!--Power Word Kill--><where>id=298</where><!--ORC--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="330" /><!--Obscuring Mist--><where>id=299</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="46" /><!--Blindness/Deafness--><where>id=300</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="39" /><!--Blacklight--><where>id=301</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="26" /><!--Armor of Darkness--><where>id=302</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="104" /><!--Darkbolt--><where>id=303</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="372" /><!--Prying Eyes--><where>id=304</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="327" /><!--Nightmare--><where>id=305</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="354" /><!--Power Word Blind--><where>id=306</where><!--DARKNESS--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="355" /><!--Power Word Kill--><where>id=307</where><!--DARKNESS--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="112" /><!--Deathwatch--><where>id=308</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="29" /><!--Augury--><where>id=309</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="70" /><!--Clairaudience/Clairvoyance--><where>id=310</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="472" /><!--Status--><where>id=311</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="127" /><!--Detect Scrying--><where>id=312</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="219" /><!--Heroes' Feast--><where>id=313</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="417" /><!--Scrying, Greater--><where>id=314</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="137" /><!--Discern Location--><where>id=315</where><!--PLANNING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="519" /><!--Time Stop--><where>id=316</where><!--PLANNING--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="481" /><!--Summon Monster--><where>id=317</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="9" /><!--Analyze Portal--><where>id=318</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="133" /><!--Dimensional Anchor--><where>id=319</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="132" /><!--Dimension Door--><where>id=320</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="515" /><!--Teleport--><where>id=321</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="33" /><!--Banishment--><where>id=322</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="172" /><!--Etherealness--><where>id=323</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="133" /><!--Dimensional Lock--><where>id=324</where><!--PORTAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gate--><where>id=325</where><!--PORTAL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="411" /><!--Sanctuary--><where>id=326</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="440" /><!--Shield Other--><where>id=327</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="367" /><!--Protection From Energy--><where>id=328</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="463" /><!--Spell Immunity--><where>id=329</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="465" /><!--Spell Resistance--><where>id=330</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="19" /><!--Antimagic Field--><where>id=331</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="399" /><!--Repulsion--><where>id=332</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="312" /><!--Mind Blank--><where>id=333</where><!--PROTECTION--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="359" /><!--Prismatic Sphere--><where>id=334</where><!--PROTECTION--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="294" /><!--Magic Fang--><where>id=335</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="13" /><!--Animal Trance--><where>id=336</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="295" /><!--Magic Fang, Greater--><where>id=337</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="350" /><!--Poison--><where>id=338</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="10" /><!--Animal Growth--><where>id=339</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="175" /><!--Eyebite--><where>id=340</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="541" /><!--Vipergout--><where>id=341</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="12" /><!--Animal Shapes--><where>id=342</where><!--SCALYKIND--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="435" /><!--Shapechange--><where>id=343</where><!--SCALYKIND--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="222" /><!--Hide from--><where>id=344</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gentle Repose--><where>id=345</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="458" /><!--Speak with--><where>id=346</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="111" /><!--Death Ward--><where>id=347</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="449" /><!--Slay Living--><where>id=348</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="533" /><!--Undeath to Death--><where>id=349</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="119" /><!--Destruction--><where>id=350</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="501" /><!--Surelife--><where>id=351</where><!--REPOSE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="544" /><!--Wail of the Banshee--><where>id=352</where><!--REPOSE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="170" /><!--Erase--><where>id=353</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="421" /><!--Secret Page--><where>id=354</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Glyph of Warding--><where>id=355</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="174" /><!--Explosive Runes--><where>id=356</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="347" /><!--Planar Binding, Lesser--><where>id=357</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Glyph of Warding, Greater--><where>id=358</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="156" /><!--Drawmij's Instant--><where>id=359</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="523" /><!--Transcribe Symbol--><where>id=360</where><!--RUNE--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="516" /><!--Teleportation--><where>id=361</where><!--RUNE--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="32" /><!--Bane--><where>id=362</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="36" /><!--Bear's Endurance--><where>id=363</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bestow Curse--><where>id=364</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="164" /><!--Enervation--><where>id=365</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="505" /><!--Symbol of Pain--><where>id=366</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="213" /><!--Harm--><where>id=367</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="554" /><!--Waves of Exhaustion--><where>id=368</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="236" /><!--Horrid Wilting--><where>id=369</where><!--SUFFERING--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="163" /><!--Energy Drain--><where>id=370</where><!--SUFFERING--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="162" /><!--Endure Elements--><where>id=371</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="218" /><!--Heat Metal--><where>id=372</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="419" /><!--Searing Light--><where>id=373</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Shield--><where>id=374</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="193" /><!--Flame Strike--><where>id=375</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="185" /><!--Fire Seeds--><where>id=376</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="500" /><!--Sunbeam--><where>id=377</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="501" /><!--Sunburst--><where>id=378</where><!--SUN--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="359" /><!--Prismatic Sphere--><where>id=379</where><!--SUN--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="169" /><!--Entropic Shield--><where>id=380</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gust of--><where>id=381</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="53" /><!--Call Lightning--><where>id=382</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="451" /><!--Sleet Storm--><where>id=383</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="239" /><!--Ice Storm--><where>id=384</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="53" /><!--Call Lightning--><where>id=385</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Control Weather--><where>id=386</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="558" /><!--Whirlwind--><where>id=387</where><!--STORM--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="477" /><!--Storm--><where>id=388</where><!--STORM--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="532" /><!--True Strike--><where>id=389</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Gentle Repose--><where>id=390</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="214" /><!--Haste--><where>id=391</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="207" /><!--Freedom of Movement--><where>id=392</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="338" /><!--Permanency--><where>id=393</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="89" /><!--Contingency--><where>id=394</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!--Moment of Prescience--><where>id=395</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="203" /><!--Foresight--><where>id=396</where><!--TIME--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="519" /><!--Time Stop--><where>id=397</where><!--TIME--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="299" /><!--Magic Stone--><where>id=398</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="453" /><!--Soften Earth--><where>id=399</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="474" /><!--Stone Shape--><where>id=400</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="470" /><!--Spike Stones--><where>id=401</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="549" /><!--Wall of Stone--><where>id=402</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="477" /><!--Stoneskin--><where>id=403</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="160" /><!--Earthquake--><where>id=404</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="264" /><!--Iron Body--><where>id=405</where><!--EARTH--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="161" /><!--Elemental Swarm--><where>id=406</where><!--EARTH--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="76" /><!--Command--><where>id=407</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="168" /><!--Enthrall--><where>id=408</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="136" /><!--Discern Lies--><where>id=409</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="180" /><!--Fear--><where>id=410</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="79" /><!--Command, Greater--><where>id=411</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!--Geas/Quest--><where>id=412</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="37" /><!--Bigby's Grasping--><where>id=413</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="66" /><!--Charm Person, Mass--><where>id=414</where><!--TYRANNY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="152" /><!--Dominate--><where>id=415</where><!--TYRANNY--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="167" /><!--Entangle--><where>id=416</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="34" /><!--Barkskin--><where>id=417</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="349" /><!--Plant Growth--><where>id=418</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="76" /><!--Command Plants--><where>id=419</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="550" /><!--Wall of Thorns--><where>id=420</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="398" /><!--Repel Wood--><where>id=421</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="16" /><!--Animate Plants--><where>id=422</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="90" /><!--Control Plants--><where>id=423</where><!--PLANT--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="434" /><!--Shambler--><where>id=424</where><!--PLANT--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="279" /><!--Longstrider--><where>id=425</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="278" /><!--Locate Object--><where>id=426</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="197" /><!--Fly--><where>id=427</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="132" /><!--Dimension Door--><where>id=428</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="515" /><!--Teleport--><where>id=429</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="183" /><!--Find the Path--><where>id=430</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="516" /><!--Teleport, Greater--><where>id=431</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="344" /><!--Phase Door--><where>id=432</where><!--TRAVEL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="27" /><!--Astral Projection--><where>id=433</where><!--TRAVEL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="369" /><!--Protection from Good--><where>id=434</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="118" /><!--Desecrate--><where>id=435</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="292" /><!--Magic Circle against Good--><where>id=436</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="537" /><!--Unholy Blight--><where>id=437</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="143" /><!--Dispel Good--><where>id=438</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="92" /><!--Create Undead--><where>id=439</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="41" /><!--Blasphemy--><where>id=440</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="536" /><!--Unholy Aura--><where>id=441</where><!--EVIL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="489" /><!--Summon Monster IX--><where>id=442</where><!--EVIL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="366" /><!--Protection from Chaos--><where>id=443</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="56" /><!--Calm Emotions--><where>id=444</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="290" /><!--Magic Circle against Chaos--><where>id=445</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="332" /><!--Order’s Wrath--><where>id=446</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="141" /><!--Dispel Chaos--><where>id=447</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="227" /><!--Hold Monster--><where>id=448</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="132" /><!--Dictum--><where>id=449</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="439" /><!--Shield of Law F--><where>id=450</where><!--LAW--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="489" /><!--Summon Monster IX*--><where>id=451</where><!--LAW--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="289" /><!--Magic Aura--><where>id=452</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="240" /><!--Identify--><where>id=453</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="145" /><!--Dispel Magic--><where>id=454</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="243" /><!--Imbue with Spell Ability--><where>id=455</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="465" /><!--Spell Resistance--><where>id=456</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="19" /><!--Antimagic Field--><where>id=457</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="467" /><!--Spell Turning--><where>id=458</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="371" /><!--Protection from Spells M F--><where>id=459</where><!--MAGIC--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="283" /><!--Mage’s Disjunction--><where>id=460</where><!--MAGIC--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="138" /><!--Disguise Self--><where>id=461</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="259" /><!--Invisibility--><where>id=462</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="328" /><!--Nondetection M--><where>id=463</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="84" /><!--Confusion--><where>id=464</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="179" /><!--False Vision M--><where>id=465</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="320" /><!--Mislead--><where>id=466</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="415" /><!--Screen--><where>id=467</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="353" /><!--Polymorph Any Object--><where>id=468</where><!--TRICKERY--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="519" /><!--Time Stop--><where>id=469</where><!--TRICKERY--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="66" /><!-- Charm Person --><where>id=470</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="405" /><!-- Restoration, Lesser--><where>id=471</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="392" /><!-- Remove Disease--><where>id=472</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="389" /><!-- Reincarnate--><where>id=473</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="28" /><!-- Atonement--><where>id=474</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="219" /><!-- Heroes' Feast--><where>id=475</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="404" /><!-- Restoration, Greater--><where>id=476</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="353" /><!-- Polymorph Any Object--><where>id=477</where><!--RENEWAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="206" /><!-- Freedom--><where>id=478</where><!--RENEWAL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="177" /><!-- Faerie Fire--><where>id=479</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!-- Moonbeam--><where>id=480</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!-- Moon Blade--><where>id=481</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!-- Good Hope--><where>id=482</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!-- Moon Path--><where>id=483</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="339" /><!-- Permanent Image--><where>id=484</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="255" /><!-- Insanity--><where>id=485</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="12" /><!-- Animal Shapes--><where>id=486</where><!--MOON--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="323" /><!-- Moonfire--><where>id=487</where><!--MOON--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="301" /><!-- Magic Weapon --><where>id=488</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="218" /><!-- Heat Metal --><where>id=489</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="268" /><!-- Keen Edge --><where>id=490</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="410" /><!-- Rusting Grasp --><where>id=491</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="548" /><!-- Wall of Iron --><where>id=492</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="40" /><!-- Blade Barrier --><where>id=493</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="525" /><!-- Transmute Metal to Wood --><where>id=494</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="264" /><!-- Iron Body --><where>id=495</where><!--METAL--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="396" /><!-- Repel Metal or Stone --><where>id=496</where><!--METAL--></update>
+
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="468" /><!-- Spider Climb --><where>id=497</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="499" /><!-- Summon Swarm --><where>id=498</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="342" /><!-- Phantom Steed --><where>id=499</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="209" /><!-- Giant Vermin --><where>id=500</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="256" /><!-- Insect Plague --><where>id=501</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="468" /><!-- Spider Curse --><where>id=502</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="474" /><!-- Stone Spiders --><where>id=503</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="93" /><!-- Creeping Doom --><where>id=504</where><!--SPIDER--></update>
+<update tableName="domain_spell"><column name="spells_id" valueNumeric="468" /><!-- Spider Shapes --><where>id=505</where><!--SPIDER--></update>
+
     </changeSet>
 </databaseChangeLog>

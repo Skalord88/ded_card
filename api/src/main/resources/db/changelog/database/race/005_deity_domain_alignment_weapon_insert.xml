@@ -2,18 +2,97 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
     <changeSet id="005_deity_domain_alignment_weapon_insert" author="oscar">
 
-        <insert tableName="deity_domain">
-            <column name="deity_id" value="24" />
-            <!-- Talos -->
-            <column name="domains_id" value="1" />
-            <!-- Destruction -->
-        </insert>
-        <insert tableName="deity_domain">
-            <column name="deity_id" value="24" />
-            <!-- Talos -->
-            <column name="domains_id" value="2" />
-            <!-- Storm -->
-        </insert>
+<insert tableName="deity_domain"><column name="deity_id" value="1" /><!--Azuth--><column name="domains_id" value="11" /><!--KNOWLEDGE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="1" /><!--Azuth--><column name="domains_id" value="25" /><!--ILLUSION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="1" /><!--Azuth--><column name="domains_id" value="26" /><!--SPELL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="1" /><!--Azuth--><column name="domains_id" value="50" /><!--LAW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="1" /><!--Azuth--><column name="domains_id" value="51" /><!--MAGIC--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="2" /><!--Bane--><column name="domains_id" value="12" /><!--DESTRUCTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="2" /><!--Bane--><column name="domains_id" value="50" /><!--LAW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="2" /><!--Bane--><column name="domains_id" value="49" /><!--EVIL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="2" /><!--Bane--><column name="domains_id" value="32" /><!--HATRED--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="2" /><!--Bane--><column name="domains_id" value="46" /><!--TYRANNY--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="2" /><!--ANIMAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="5" /><!--GOOD--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="37" /><!--PROTECTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="53" /><!--RENEWAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="45" /><!--EARTH--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="47" /><!--PLANT--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="6" /><!--CHAOS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="12" /><!--DESTRUCTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="25" /><!--ILLUSION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="52" /><!--TRICKERY--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="3" /><!--Chauntea--><column name="domains_id" value="49" /><!--EVIL--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="4" /><!--Cyric--><column name="domains_id" value="5" /><!--GOOD--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="4" /><!--Cyric--><column name="domains_id" value="6" /><!--CHAOS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="4" /><!--Cyric--><column name="domains_id" value="9" /><!--CHARM--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="4" /><!--Cyric--><column name="domains_id" value="13" /><!--DROW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="4" /><!--Cyric--><column name="domains_id" value="49" /><!--EVIL--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="101" /><!--Eilistraee--><column name="domains_id" value="5" /><!--GOOD--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="101" /><!--Eilistraee--><column name="domains_id" value="6" /><!--CHAOS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="101" /><!--Eilistraee--><column name="domains_id" value="9" /><!--CHARM--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="101" /><!--Eilistraee--><column name="domains_id" value="13" /><!--DROW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="101" /><!--Eilistraee--><column name="domains_id" value="54" /><!--MOON--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="4" /><!--CRAFT--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="11" /><!--KNOWLEDGE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="20" /><!--FIRE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="55" /><!--METAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="35" /><!--PLANNING--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="5" /><!--Gond--><column name="domains_id" value="45" /><!--EARTH--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="6" /><!--Helm--><column name="domains_id" value="19" /><!--STRENGTH--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="6" /><!--Helm--><column name="domains_id" value="50" /><!--LAW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="6" /><!--Helm--><column name="domains_id" value="35" /><!--PLANNING--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="6" /><!--Helm--><column name="domains_id" value="37" /><!--PROTECTION--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="7" /><!--Ilmater--><column name="domains_id" value="5" /><!--GOOD--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="7" /><!--Ilmater--><column name="domains_id" value="19" /><!--STRENGTH--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="7" /><!--Ilmater--><column name="domains_id" value="22" /><!--HEALING--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="7" /><!--Ilmater--><column name="domains_id" value="50" /><!--LAW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="7" /><!--Ilmater--><column name="domains_id" value="41" /><!--SUFFERING--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="8" /><!--Kelemvor--><column name="domains_id" value="17" /><!--FATE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="8" /><!--Kelemvor--><column name="domains_id" value="50" /><!--LAW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="8" /><!--Kelemvor--><column name="domains_id" value="37" /><!--PROTECTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="8" /><!--Kelemvor--><column name="domains_id" value="39" /><!--REPOSE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="8" /><!--Kelemvor--><column name="domains_id" value="48" /><!--TRAVEL--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="9" /><!--Kossuth--><column name="domains_id" value="12" /><!--DESTRUCTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="9" /><!--Kossuth--><column name="domains_id" value="20" /><!--FIRE--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="9" /><!--Kossuth--><column name="domains_id" value="53" /><!--RENEWAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="9" /><!--Kossuth--><column name="domains_id" value="41" /><!--SUFFERING--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="5" /><!--GOOD--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="19" /><!--STRENGTH--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="29" /><!--NOBILITY--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="37" /><!--PROTECTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="53" /><!--RENEWAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="10" /><!--Lathander--><column name="domains_id" value="42" /><!--SUN--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="6" /><!--CHAOS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="12" /><!--DESTRUCTION--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="13" /><!--DROW--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="52" /><!--TRICKERY--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="49" /><!--EVIL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="34" /><!--DARKNESS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="11" /><!--Lolth--><column name="domains_id" value="56" /><!--SPIDER--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="12" /><!--Malar--><column name="domains_id" value="2" /><!--ANIMAL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="12" /><!--Malar--><column name="domains_id" value="6" /><!--CHAOS--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="12" /><!--Malar--><column name="domains_id" value="19" /><!--STRENGTH--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="12" /><!--Malar--><column name="domains_id" value="54" /><!--MOON--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="12" /><!--Malar--><column name="domains_id" value="49" /><!--EVIL--></insert>
+
+<insert tableName="deity_domain"><column name="deity_id" value="13" /><!--Mask--><column name="domains_id" value="18" /><!--LUCK--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="13" /><!--Mask--><column name="domains_id" value="52" /><!--TRICKERY--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="13" /><!--Mask--><column name="domains_id" value="49" /><!--EVIL--></insert>
+<insert tableName="deity_domain"><column name="deity_id" value="13" /><!--Mask--><column name="domains_id" value="34" /><!--DARKNESS--></insert>
 
         <insert tableName="worshiper_alignments">
             <column name="deity_id" value="24" />

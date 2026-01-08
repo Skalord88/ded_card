@@ -159,4 +159,8 @@ public enum SpellsEnum {
   TYRANNY,
   PLANT,
   TRAVEL,
+  RENEWAL,
+  MOON,
+  METAL,
+  SPIDER,
 }

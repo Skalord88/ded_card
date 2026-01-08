@@ -52,5 +52,13 @@
 <insert tableName="domains"><column name="id" value="46" /><column name="domain" value="TYRANNY" /></insert>
 <insert tableName="domains"><column name="id" value="47" /><column name="domain" value="PLANT" /></insert>
 <insert tableName="domains"><column name="id" value="48" /><column name="domain" value="TRAVEL" /></insert>
+<insert tableName="domains"><column name="id" value="49" /><column name="domain" value="EVIL" /></insert>
+<insert tableName="domains"><column name="id" value="50" /><column name="domain" value="LAW" /></insert>
+<insert tableName="domains"><column name="id" value="51" /><column name="domain" value="MAGIC" /></insert>
+<insert tableName="domains"><column name="id" value="52" /><column name="domain" value="TRICKERY" /></insert>
+<insert tableName="domains"><column name="id" value="53" /><column name="domain" value="RENEWAL" /></insert>
+<insert tableName="domains"><column name="id" value="54" /><column name="domain" value="MOON" /></insert>
+<insert tableName="domains"><column name="id" value="55" /><column name="domain" value="METAL" /></insert>
+<insert tableName="domains"><column name="id" value="56" /><column name="domain" value="SPIDER" /></insert>
     </changeSet>
 </databaseChangeLog>
