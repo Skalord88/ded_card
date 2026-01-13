@@ -147,6 +147,32 @@
         </insert>
 
         <insert tableName="deity">
+            <column name="id" value="62" />
+            <column name="name" value="Hoar" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="63" />
+            <column name="name" value="Istishia" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="64" />
+            <column name="name" value="Jergal" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="65" />
+            <column name="name" value="Lliira" />
+        </insert>
+        <insert tableName="deity">
+            <column name="id" value="66" />
+            <column name="name" value="Loviatar" />
+        </insert>
+
+        <insert tableName="deity">
+            <column name="id" value="70" />
+            <column name="name" value="Red Knight" />
+        </insert>
+
+        <insert tableName="deity">
             <column name="id" value="80" />
             <column name="name" value="Valkur" />
         </insert>
