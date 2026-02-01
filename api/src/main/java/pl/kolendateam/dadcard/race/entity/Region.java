@@ -21,7 +21,7 @@ public class Region implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  short id;
+  int id;
 
   String name;
 

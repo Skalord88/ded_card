@@ -89,4 +89,8 @@ public class RacialRegion implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "enchanted_items_id")
   )
   Set<EnchantedItems> regionalItemsOpThree;
+
+  public RacialRegion(int idRegion) {
+    this.id = idRegion;
+  }
 }

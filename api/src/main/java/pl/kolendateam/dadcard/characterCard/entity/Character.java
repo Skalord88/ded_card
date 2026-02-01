@@ -28,6 +28,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
@@ -41,10 +43,13 @@ import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
+import pl.kolendateam.dadcard.race.dto.AddRegionDTO;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.RacialRegion;
 import pl.kolendateam.dadcard.race.entity.SubRace;
+import pl.kolendateam.dadcard.race.repository.DeityRepository;
+import pl.kolendateam.dadcard.race.repository.RacialRegionRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
@@ -52,6 +57,7 @@ import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.Spells;
+import pl.kolendateam.dadcard.spells.repository.DomaninRepository;
 
 @NoArgsConstructor
 @Getter
@@ -511,5 +517,78 @@ public class Character implements Serializable {
       .sorted()
       .collect(Collectors.joining("_"));
     return dto.caster + "-" + dto.knowDay + "-" + dto.level + "-" + spells;
+  }
+
+  public void setCharacterRegion(
+    AddRegionDTO entity,
+    RacialRegionRepository racialRegionRepository,
+    DeityRepository deityRepository,
+    DomaninRepository domainRepository
+  ) {
+    if (this.region != null && this.region.getId() != entity.idRegion) {
+      // Recupera la nuova regione dal repository
+      RacialRegion newRegion = racialRegionRepository
+        .findById(entity.idRegion)
+        .orElseThrow(() ->
+          new ResponseStatusException(
+            HttpStatus.NOT_FOUND,
+            "Character Not Found"
+          )
+        );
+      this.region = newRegion;
+    }
+    if (this.deity != null && this.deity.getId() != entity.idDeity) {
+      // Recupera la nuova deity dal repository
+      Deity newDeity = deityRepository
+        .findById(entity.idDeity)
+        .orElseThrow(() ->
+          new ResponseStatusException(
+            HttpStatus.NOT_FOUND,
+            "Character Not Found"
+          )
+        );
+      this.deity = newDeity;
+    }
+
+    // aggiungi dominii
+    // se in regione il set di domini non e' null e vuoto e il char ha i alcun dominio
+    if (
+      // (this.domains == null || this.domains.isEmpty()) &&
+      (entity.idDomains != null && !entity.idDomains.isEmpty())
+    ) {
+      // crea una mappa dei domini presenti nel character
+      Map<Integer, Domains> charDomainsMap =
+        this.domains.stream().collect(Collectors.toMap(s -> s.getId(), s -> s));
+
+      // crea un set di int da eventualmente aggiungere al char, senza i domini gia' presenti
+      Set<Integer> intDomainToAdd = entity.idDomains
+        .stream()
+        .filter(id -> !charDomainsMap.containsKey(id))
+        .collect(Collectors.toSet());
+
+      System.out.println(": " + intDomainToAdd);
+
+      if (
+        (intDomainToAdd == null || intDomainToAdd.isEmpty()) // se i domini da aggiungere sono null o vuoti
+      ) {
+        System.out.println("nessun dominio da aggiungere");
+        return; // Nessun dominio da aggiungere
+      } else if (this.domains.size() == intDomainToAdd.size()) { // se il numero di domini del char e' uguale a quello dei domini della regione
+        this.domains =
+          domainRepository
+            .findAllById(intDomainToAdd)
+            .stream()
+            .collect(Collectors.toSet());
+        System.out.println(
+          "tutti i domini sostituiti " + intDomainToAdd.toString()
+        );
+        return; // tutti i domini del character sono da sostituire
+      } else if (
+        entity.idDomains.stream().anyMatch(d -> charDomainsMap.containsKey(d))
+      ) { // se nei nuovi ci sono i vecchi domini
+        this.domains.addAll(domainRepository.findAllById(intDomainToAdd));
+        System.out.println("aggiunti domini: " + intDomainToAdd.toString());
+      }
+    }
   }
 }

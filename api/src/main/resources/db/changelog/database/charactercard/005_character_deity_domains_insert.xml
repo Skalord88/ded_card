@@ -5,6 +5,12 @@
 
     <changeSet id="005_character_deity_domains_insert" author="oscar">
 
+        <!-- Puli -->
+        <insert tableName="character_domains">
+            <column name="character_card_id" value="100" />
+            <column name="domains_id" value="3" />
+        </insert>
+
         <!-- Michał -->
         <insert tableName="character_domains">
             <column name="character_card_id" value="103" />

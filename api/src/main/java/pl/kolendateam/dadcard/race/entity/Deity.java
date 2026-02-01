@@ -60,4 +60,8 @@ public class Deity implements Serializable {
   Set<EnchantedItems> favoredWeapons = new HashSet<>();
 
   String avatarUrl;
+
+  public Deity(int idDeity) {
+    this.id = idDeity;
+  }
 }

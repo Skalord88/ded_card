@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.race;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
+import pl.kolendateam.dadcard.race.dto.AddRegionDTO;
 import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.DeityDTO;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
@@ -33,6 +36,7 @@ import pl.kolendateam.dadcard.race.repository.RaceRepository;
 import pl.kolendateam.dadcard.race.repository.RacialRegionRepository;
 import pl.kolendateam.dadcard.race.repository.RegionRepository;
 import pl.kolendateam.dadcard.race.repository.SubRaceRepository;
+import pl.kolendateam.dadcard.spells.repository.DomaninRepository;
 import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 @CrossOrigin
@@ -48,6 +52,7 @@ public class RaceController {
   DeityRepository deityRepository;
   SpellsRepository spellsRepository;
   RacialRegionRepository racialRegionRepository;
+  DomaninRepository domainRepository;
 
   @Autowired
   RaceController(
@@ -57,7 +62,9 @@ public class RaceController {
     ArchetypeRepository archetypeRepository,
     DeityRepository deityRepository,
     SpellsRepository spellsRepository,
-    RacialRegionRepository racialRegionRepository
+    RacialRegionRepository racialRegionRepository,
+    RegionRepository regionRepository,
+    DomaninRepository domainRepository
   ) {
     this.raceRepository = raceRepository;
     this.characterRepository = characterRepository;
@@ -66,6 +73,8 @@ public class RaceController {
     this.deityRepository = deityRepository;
     this.spellsRepository = spellsRepository;
     this.racialRegionRepository = racialRegionRepository;
+    this.regionRepository = regionRepository;
+    this.domainRepository = domainRepository;
   }
 
   @GetMapping("")
@@ -120,19 +129,41 @@ public class RaceController {
     Optional<SubRace> raceOpt =
       this.subRaceRepository.findById(subRaceBaseDTO.id);
 
-    if (!characterOpt.isPresent()) {
-      throw new ResponseStatusException(
-        HttpStatus.NOT_FOUND,
-        "Character Not Found"
-      );
-    }
-
     Character character = characterOpt.get();
     SubRace race = raceOpt.get();
 
     character.setCharacterRace(race);
 
     this.characterRepository.save(character);
+
+    return new CreateCharacterDTO(character);
+  }
+
+  @GetMapping("ping")
+  public String ping() {
+    return "pong";
+  }
+
+  @PostMapping(value = "{id}/addregion", consumes = { "application/json" })
+  public CreateCharacterDTO setRegionToCharacter(
+    @PathVariable int id,
+    @RequestBody AddRegionDTO region
+  ) {
+    System.out.println("Received AddRegionDTO: " + region);
+
+    Character character = characterRepository
+      .findById(region.idCharacter)
+      .orElseThrow(() ->
+        new ResponseStatusException(HttpStatus.NOT_FOUND, "Character Not Found")
+      );
+
+    character.setCharacterRegion(
+      region,
+      racialRegionRepository,
+      deityRepository,
+      domainRepository
+    );
+    characterRepository.save(character);
 
     return new CreateCharacterDTO(character);
   }
