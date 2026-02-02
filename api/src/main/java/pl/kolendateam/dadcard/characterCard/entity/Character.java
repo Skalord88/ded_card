@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -550,45 +551,19 @@ public class Character implements Serializable {
       this.deity = newDeity;
     }
 
-    // aggiungi dominii
-    // se in regione il set di domini non e' null e vuoto e il char ha i alcun dominio
-    if (
-      // (this.domains == null || this.domains.isEmpty()) &&
-      (entity.idDomains != null && !entity.idDomains.isEmpty())
-    ) {
-      // crea una mappa dei domini presenti nel character
-      Map<Integer, Domains> charDomainsMap =
-        this.domains.stream().collect(Collectors.toMap(s -> s.getId(), s -> s));
-
-      // crea un set di int da eventualmente aggiungere al char, senza i domini gia' presenti
-      Set<Integer> intDomainToAdd = entity.idDomains
-        .stream()
-        .filter(id -> !charDomainsMap.containsKey(id))
-        .collect(Collectors.toSet());
-
-      System.out.println(": " + intDomainToAdd);
-
+    if ((entity.idDomains != null && !entity.idDomains.isEmpty())) {
       if (
-        (intDomainToAdd == null || intDomainToAdd.isEmpty()) // se i domini da aggiungere sono null o vuoti
+        this.domains.stream()
+          .allMatch(d -> entity.idDomains.contains(d.getId()))
       ) {
-        System.out.println("nessun dominio da aggiungere");
-        return; // Nessun dominio da aggiungere
-      } else if (this.domains.size() == intDomainToAdd.size()) { // se il numero di domini del char e' uguale a quello dei domini della regione
-        this.domains =
-          domainRepository
-            .findAllById(intDomainToAdd)
-            .stream()
-            .collect(Collectors.toSet());
-        System.out.println(
-          "tutti i domini sostituiti " + intDomainToAdd.toString()
-        );
-        return; // tutti i domini del character sono da sostituire
-      } else if (
-        entity.idDomains.stream().anyMatch(d -> charDomainsMap.containsKey(d))
-      ) { // se nei nuovi ci sono i vecchi domini
-        this.domains.addAll(domainRepository.findAllById(intDomainToAdd));
-        System.out.println("aggiunti domini: " + intDomainToAdd.toString());
+        // Nessun cambiamento necessario
+        return;
       }
+      this.domains =
+        domainRepository
+          .findAllById(entity.idDomains)
+          .stream()
+          .collect(Collectors.toSet());
     }
   }
 }
