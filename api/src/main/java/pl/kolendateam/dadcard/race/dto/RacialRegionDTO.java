@@ -56,4 +56,11 @@ public class RacialRegionDTO {
         racialRegion.getRegionalItemsOpThree()
       );
   }
+
+  public RacialRegionDTO(RacialRegion region) {
+    this.id = region.getId();
+    this.racialRegion = region.getRacialRegion();
+    this.region = new RegionDTO(region.getRegion());
+    this.automaticLanguages = region.getAutomaticLanguages();
+  }
 }

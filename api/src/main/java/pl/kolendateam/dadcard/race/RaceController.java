@@ -44,6 +44,7 @@ import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 @RequestMapping("race")
 public class RaceController {
 
+  EntityManager entityManager;
   RaceRepository raceRepository;
   SubRaceRepository subRaceRepository;
   RegionRepository regionRepository;
@@ -56,6 +57,7 @@ public class RaceController {
 
   @Autowired
   RaceController(
+    EntityManager entityManager,
     RaceRepository raceRepository,
     CharacterRepository characterRepository,
     SubRaceRepository subRaceRepository,
@@ -66,6 +68,7 @@ public class RaceController {
     RegionRepository regionRepository,
     DomaninRepository domainRepository
   ) {
+    this.entityManager = entityManager;
     this.raceRepository = raceRepository;
     this.characterRepository = characterRepository;
     this.subRaceRepository = subRaceRepository;
@@ -157,13 +160,14 @@ public class RaceController {
         new ResponseStatusException(HttpStatus.NOT_FOUND, "Character Not Found")
       );
 
-    character.setCharacterRegion(
-      region,
-      racialRegionRepository,
-      deityRepository,
-      domainRepository
-    );
-    characterRepository.save(character);
+    Deity deity = deityRepository
+      .findById(region.idDeity)
+      .orElseThrow(() ->
+        new ResponseStatusException(HttpStatus.NOT_FOUND, "Deity Not Found")
+      );
+
+    character.setCharacterRegion(entityManager, region, domainRepository);
+    this.characterRepository.save(character);
 
     return new CreateCharacterDTO(character);
   }

@@ -18,8 +18,10 @@ import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.race.MaperListRaceToDTO;
 import pl.kolendateam.dadcard.race.MapperRaceToDTO;
+import pl.kolendateam.dadcard.race.dto.AlignmentDTO;
 import pl.kolendateam.dadcard.race.dto.ArchetypeDTO;
 import pl.kolendateam.dadcard.race.dto.DeityDTO;
+import pl.kolendateam.dadcard.race.dto.RacialRegionDTO;
 import pl.kolendateam.dadcard.race.dto.RegionDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.skills.MapperSkill;
@@ -50,7 +52,8 @@ public class CharacterDTO implements Serializable {
   public int treasure;
   public Set<DomainsDTO> domains;
   public DeityDTO deity;
-  public RegionDTO region;
+  public RacialRegionDTO region;
+  public AlignmentDTO alignment;
 
   public CharacterDTO(Character character) {
     this.id = character.getId();
@@ -98,5 +101,9 @@ public class CharacterDTO implements Serializable {
     this.deity = MapperRaceToDTO.toDeityDTO(character.getDeity());
     this.region =
       MapperRaceToDTO.toRegionFromRacialRegionDTO(character.getRegion());
+    this.alignment =
+      character.getAlignment() != null
+        ? MapperRaceToDTO.toAlignmentDTO(character.getAlignment())
+        : null;
   }
 }

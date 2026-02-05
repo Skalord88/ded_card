@@ -3,6 +3,7 @@ import { Alignment } from "./Alignment/Alignment";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
 import { Deity } from "./Deity/interface";
+import { Dominio } from "./Dominio/interface";
 
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
@@ -500,7 +501,7 @@ export const addToDrop = (options: any[], text: string): itemInDrop[] => {
         let list: itemInDrop[] = options.map(
             o => {
                 return {
-                    name: o.name,
+                    name: o.domain,
                     item: o as Dominio
                 }
             }

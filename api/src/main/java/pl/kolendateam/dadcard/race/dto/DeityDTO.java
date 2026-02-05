@@ -35,6 +35,7 @@ public class DeityDTO {
   }
 
   public DeityDTO(Deity deity) {
+    this.id = deity.getId();
     this.name = deity.getName();
     this.alignment = MapperRaceToDTO.toAlignmentDTO(deity.getAlignment());
     this.favoredWeapons =

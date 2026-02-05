@@ -1,12 +1,17 @@
+import { Domain } from "node:domain";
 import { ItemToSend } from "../pages/Items";
 import { Abilitys } from "./Abilitys/Interface";
+import { Alignment } from "./Alignment/Alignment";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
+import { Deity } from "./Deity/interface";
 import { FeatPc } from "./Feats/Interface/FeatInterface";
 import { Prerequisite } from "./Prerequisite/interface/Prerequisite";
 import { Archetype, SubRace } from "./Race/Interfaces";
+import { RacialRegion, Region } from "./Region/interface";
 import { SkillCharacter, SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
+import { Dominio } from "./Dominio/interface";
 
 export type CharacterPc = {
   id: number;
@@ -24,6 +29,10 @@ export type CharacterPc = {
   books: Book[];
   experience: number;
   treasure: number;
+  alignment: Alignment;
+  deity: Deity;
+  region: RacialRegion;
+  domains: Dominio[];
 }
 
 export type CharProps = {

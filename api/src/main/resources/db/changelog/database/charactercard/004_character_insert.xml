@@ -21,7 +21,7 @@
             <!-- <column name="sub_race_id" value="502" /> -->
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->
-            <!-- <column name="attacks_id" value="100" /> -->
+            <column name="alignment_id" value="2" />
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>

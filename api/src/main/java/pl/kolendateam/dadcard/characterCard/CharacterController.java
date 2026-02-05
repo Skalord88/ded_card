@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.characterCard;
 
+import jakarta.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

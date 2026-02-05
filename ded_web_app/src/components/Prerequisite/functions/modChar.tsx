@@ -1,10 +1,10 @@
 import { createAttackDisplay, getAttacksData } from "../../Attack/function";
 import { CharacterPc, ItemsList } from "../../interfaces";
 import {
-  emptyAbilitys,
-  emptySize,
-  emptyInventory,
-  emptyAttacks
+    emptyAbilitys,
+    emptyAttacks,
+    emptyInventory,
+    emptySize
 } from "../../variables";
 import { Prerequisite } from "../interface/Prerequisite";
 import { CharToModify, modifyCharacter } from "./modifyCharacter";
@@ -46,7 +46,7 @@ export const createModChar = (
       special: ""
     },
     specialAbilities: [],
-    numberofDomains: 0,
+    numberOfDomains: 0,
     magicClassLv: {},
     spellsPerDay: [],
     spellsKnown: [],

@@ -113,11 +113,13 @@ public class MapperRaceToDTO {
     return regionsDTOSet;
   }
 
-  public static RegionDTO toRegionFromRacialRegionDTO(RacialRegion region) {
+  public static RacialRegionDTO toRegionFromRacialRegionDTO(
+    RacialRegion region
+  ) {
     if (region == null) {
       return null;
     } else {
-      return new RegionDTO(region.getRegion());
+      return new RacialRegionDTO(region);
     }
   }
 }

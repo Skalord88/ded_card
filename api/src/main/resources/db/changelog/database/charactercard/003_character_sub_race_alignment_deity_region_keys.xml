@@ -1,0 +1,33 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="003_character_sub_race_alignment_deity_region_keys" author="oscar">
+        <!-- <addForeignKeyConstraint
+            baseTableName="sub_race"
+            baseColumnNames="sub_race_id"
+            referencedTableName="character_card"
+            referencedColumnNames="id"
+            constraintName="fk_character_sub_race" />
+        <addForeignKeyConstraint
+            baseTableName="alignment"
+            baseColumnNames="alignment_id"
+            referencedTableName="character_card"
+            referencedColumnNames="id"
+            constraintName="fk_character_alignment" />
+        <addForeignKeyConstraint
+            baseTableName="deity"
+            baseColumnNames="deity_id"
+            referencedTableName="character_card"
+            referencedColumnNames="id"
+            constraintName="fk_character_deity" />
+        <addForeignKeyConstraint
+            baseTableName="racial_region"
+            baseColumnNames="racial_region_id"
+            referencedTableName="character_card"
+            referencedColumnNames="id"
+            constraintName="fk_character_racial_region" /> -->
+
+    </changeSet>
+</databaseChangeLog>

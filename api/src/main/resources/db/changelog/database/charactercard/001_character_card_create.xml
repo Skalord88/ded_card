@@ -32,6 +32,9 @@
       <column name="experience" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="alignment_id" type="int">
+        <constraints nullable="true" />
+      </column>
       <column name="treasure" type="int">
         <constraints nullable="true" />
       </column>

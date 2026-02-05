@@ -23,11 +23,9 @@ import {
   Spell
 } from "../../interfaces";
 import {
-  findAllProficency,
-  ReturnRingPosition
+  findAllProficency
 } from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
-import { SpellsByLevelAndClass } from "../../Magic/Functions";
 import { adjClass } from "../../Race/AdjClass";
 import { FindAllAdjLevel } from "../../Race/Function";
 import { SpecialAbilities } from "../../Race/Interfaces";
@@ -111,7 +109,7 @@ export type CharToModify = {
   speed: Speed;
   feats: FeatsFromChar;
   specialAbilities: SpecialAbilities[];
-  numberofDomains: number;
+  numberOfDomains: number;
   magicClassLv?: { [classe: string]: number };
   spellsPerDay?: (Book | null)[];
   spellsKnown?: (Book | null)[];
@@ -450,7 +448,7 @@ export const modifyCharacter = (
     speed: findSpeedPrerequisite(prer),
     feats: allFeats,
     specialAbilities: getAllSpecialAbilities(char),
-    numberofDomains: findNumberOfDomanisPrerequisite(prer),
+    numberOfDomains: findNumberOfDomanisPrerequisite(prer),
     magicClassLv: classiMagiche,
     spellsPerDay: totalSpellsDay,
     spellsKnown: totalSpellsKnown

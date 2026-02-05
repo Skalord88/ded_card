@@ -8,10 +8,10 @@ import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
 import { Prerequisite } from "../interface/Prerequisite";
 import {
-  ArmorClassElement,
-  AttackRollElement,
-  DamageBonusElement,
-  SkillsElement
+    ArmorClassElement,
+    AttackRollElement,
+    DamageBonusElement,
+    SkillsElement
 } from "./modifyCharacter";
 
 export const findAbilitysPrerequisite = (

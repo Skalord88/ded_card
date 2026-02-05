@@ -59,6 +59,7 @@
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
     <include file="attacks/003_attacks_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_archetype_keys.xml" relativeToChangelogFile="true"/>
+    <include file="charactercard/003_character_sub_race_alignment_deity_region_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_domains_keys.xml" relativeToChangelogFile="true"/>
     <include file="inventory/003_inventory_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_character_keys.xml" relativeToChangelogFile="true"/>

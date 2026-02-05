@@ -1,5 +1,6 @@
 
 import { Alignment } from "../Alignment/Alignment";
+import { Dominio } from "../Dominio/interface";
 import { Weapon } from "../interfaces";
 
 export type Deity = {

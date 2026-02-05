@@ -9,6 +9,7 @@ public class AddRegionDTO {
   public int idRegion;
   public int idDeity;
   public Set<Integer> idDomains = new HashSet<>();
+  public int idAligment;
 
   @Override
   public String toString() {
@@ -23,6 +24,8 @@ public class AddRegionDTO {
       idDeity +
       ", idDomains=" +
       idDomains +
+      ", idAligment=" +
+      idAligment +
       '}'
     );
   }

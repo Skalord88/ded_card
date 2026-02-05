@@ -129,7 +129,7 @@ export const Classes = () => {
       axios.post(urlClassAdd + charId, classToAdd);
     }
     setChange(true);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (

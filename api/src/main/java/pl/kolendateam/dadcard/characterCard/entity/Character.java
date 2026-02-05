@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,6 +44,7 @@ import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.AddRegionDTO;
+import pl.kolendateam.dadcard.race.entity.Alignment;
 import pl.kolendateam.dadcard.race.entity.Archetype;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.RacialRegion;
@@ -129,6 +129,10 @@ public class Character implements Serializable {
     fetch = FetchType.LAZY
   )
   List<Book> books = new ArrayList<>();
+
+  @ManyToOne
+  @JoinColumn(name = "alignment_id", referencedColumnName = "id")
+  Alignment alignment;
 
   int experience;
   int treasure;
@@ -521,49 +525,63 @@ public class Character implements Serializable {
   }
 
   public void setCharacterRegion(
+    EntityManager em,
     AddRegionDTO entity,
-    RacialRegionRepository racialRegionRepository,
-    DeityRepository deityRepository,
     DomaninRepository domainRepository
   ) {
-    if (this.region != null && this.region.getId() != entity.idRegion) {
-      // Recupera la nuova regione dal repository
-      RacialRegion newRegion = racialRegionRepository
-        .findById(entity.idRegion)
-        .orElseThrow(() ->
-          new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "Character Not Found"
-          )
-        );
+    if (entity.idRegion != 0 || this.region.getId() != entity.idRegion) {
+      RacialRegion newRegion = em.find(RacialRegion.class, entity.idRegion);
+
+      System.out.println(
+        "newRegion: " +
+        newRegion.getId() +
+        " " +
+        newRegion.getRegion().getName()
+      );
       this.region = newRegion;
     }
-    if (this.deity != null && this.deity.getId() != entity.idDeity) {
+    if (entity.idDeity != 0 || this.deity.getId() != entity.idDeity) {
       // Recupera la nuova deity dal repository
-      Deity newDeity = deityRepository
-        .findById(entity.idDeity)
-        .orElseThrow(() ->
-          new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            "Character Not Found"
-          )
-        );
+      Deity newDeity = em.find(Deity.class, entity.idDeity);
+
+      System.out.println(
+        "newDeity: " + newDeity.getId() + " " + newDeity.getName()
+      );
       this.deity = newDeity;
+
+      if (entity.idAligment != 0) {
+        Alignment newAlignment = newDeity
+          .getWorshiperAlignments()
+          .stream()
+          .filter(al -> al.getId() == entity.idAligment)
+          .findFirst()
+          .orElse(null);
+
+        System.out.println(
+          "newAlignment: " + newAlignment.getId() + " " + newAlignment.getName()
+        );
+        this.alignment = newAlignment;
+      }
     }
 
-    if ((entity.idDomains != null && !entity.idDomains.isEmpty())) {
+    if ((!entity.idDomains.isEmpty())) {
       if (
+        this.domains.size() == entity.idDomains.size() &&
         this.domains.stream()
           .allMatch(d -> entity.idDomains.contains(d.getId()))
       ) {
-        // Nessun cambiamento necessario
+        System.out.println("Nessun cambiamento necessario");
         return;
       }
-      this.domains =
-        domainRepository
-          .findAllById(entity.idDomains)
-          .stream()
-          .collect(Collectors.toSet());
+      Set<Domains> newDomains = domainRepository
+        .findAllById(entity.idDomains)
+        .stream()
+        .collect(Collectors.toSet());
+
+      newDomains.forEach(d ->
+        System.out.println("add dominio: " + d.getId() + " " + d.getDomain())
+      );
+      this.domains = newDomains;
     }
   }
 }
