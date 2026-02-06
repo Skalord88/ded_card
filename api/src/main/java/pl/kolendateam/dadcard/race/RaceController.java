@@ -105,14 +105,20 @@ public class RaceController {
   public Set<DeityDTO> getAllDeities() {
     List<Deity> deities = this.deityRepository.findAll();
 
-    return MapperRaceToDTO.toDeityDTOSet(deities, spellsRepository);
+    return MapperRaceToDTO.toDeityDTOSet(
+      deities
+      // , spellsRepository
+    );
   }
 
   @GetMapping("region")
   public Set<RacialRegionDTO> getAllRacialRegions() {
     List<RacialRegion> regions = this.racialRegionRepository.findAll();
 
-    return MapperRaceToDTO.toRacialRegionDTOSet(regions, spellsRepository);
+    return MapperRaceToDTO.toRacialRegionDTOSet(
+      regions
+      // , spellsRepository
+    );
   }
 
   @PostMapping(value = "{id}", consumes = { "application/json" })
@@ -160,11 +166,11 @@ public class RaceController {
         new ResponseStatusException(HttpStatus.NOT_FOUND, "Character Not Found")
       );
 
-    Deity deity = deityRepository
-      .findById(region.idDeity)
-      .orElseThrow(() ->
-        new ResponseStatusException(HttpStatus.NOT_FOUND, "Deity Not Found")
-      );
+    // Deity deity = deityRepository
+    //   .findById(region.idDeity)
+    //   .orElseThrow(() ->
+    //     new ResponseStatusException(HttpStatus.NOT_FOUND, "Deity Not Found")
+    //   );
 
     character.setCharacterRegion(entityManager, region, domainRepository);
     this.characterRepository.save(character);

@@ -18,32 +18,22 @@ export function Background() {
 
   const [character, setCharacter] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<CharToModify>();
+
   const [regions, setRegions] = useState<RacialRegion[]>([]);
-
-  const [aligments, setAligments] = useState<Alignment[]>([]);
-
-  const [itemsAligm, setItemsAligm] = useState<itemInDrop[]>([]);
   const [regionRace, setRegionRace] = useState<RacialRegion>();
-  // const [region, setRegion] = useState<Region>();
+
+  const [aligment, setAligment] = useState<Alignment>();
+  const [aligments, setAligments] = useState<Alignment[]>([]);
+  const [itemsAligm, setItemsAligm] = useState<itemInDrop[]>([]);
+
   const [god, setGod] = useState<Deity>();
   const [deities, setDeities] = useState<Deity[]>([]);
   const [itemsDei, setItemsDei] = useState<itemInDrop[]>([]);
 
-  // const [domain, setDomain] = useState<Dominio>();
   const [itemsDom, setItemsDom] = useState<itemInDrop[]>([]);
   const [domains, setDomains] = useState<Dominio[]>([]);
 
-  const [aligment, setAligment] = useState<Alignment>();
-
   const [change, setChange] = useState<boolean>(false);
-
-  const [regionToAdd, setRegionToAdd] = useState<
-    {idCharacter: number,
-    idRegion: number,
-    idDeity: number,
-    idDomains: number[],
-    idAligment?: number}
-  >({idCharacter: 0, idRegion: 0, idDeity: 0, idDomains: [], idAligment: 0});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,20 +47,43 @@ export function Background() {
 
         console.log("charDB background", charDB);
 
-        const newRegion = charDB.region? charDB.region : undefined
-        setRegionRace(newRegion);
-        const newDeities = newRegion?.preferedDeities || [];
-        setDeities(newDeities);
-        setAligment(charDB.alignment? charDB.alignment : undefined);
-        const newGod = charDB.deity? charDB.deity : undefined 
-        console.log("charDB newGod", newGod);
-        setGod(newGod);
-        setDomains(charDB.domains? charDB.domains : []);
+        const newRegion = charDB.region;
+        newRegion && setRegionRace(newRegion);
+        const newGod = charDB.deity;
+        newGod && setGod(newGod);
+        const newDeities = newRegion.preferedDeities;
+        newDeities && setDeities(newDeities);
+
+        const sortedDomains: Dominio[] =
+          newGod.domains === null
+            ? []
+            : newGod.domains.length === 0
+              ? []
+              : [...newGod.domains]
+                  .filter(
+                    (d) =>
+                      !domains.some(
+                        (dom) => dom !== undefined && dom.id === d.id
+                      )
+                  )
+                  .sort((a, b) => a.domain.localeCompare(b.domain));
+        setItemsDom(addToDrop(sortedDomains, "domain"));
+
+        if (charDB.domains !== null && charDB.domains.length > 0) {
+          const newDomains = charDB.domains;
+          newDomains && setDomains(newDomains);
+        } else {
+          setDomains(Array.from({ length: modChar?.numberOfDomains || 0 }));
+        }
+
+        setAligments(charDB.region.region.regionalAlignment);
+        const newAligments = charDB.alignment;
+        newAligments && setAligment(newAligments);
 
         const regioni = await axios.get(urlRegion);
         const allRegioni: RacialRegion[] = regioni.data;
         setRegions(
-          allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name)),
+          allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name))
         );
       } catch (error) {
         console.log(error);
@@ -80,26 +93,22 @@ export function Background() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  useEffect(() => {
-    setDomains(Array.from({ length: modChar?.numberOfDomains || 0 }));
-  }, [modChar]);
-
   const itemsRegioni: itemInDrop[] = addToDrop(
     regions
       .filter((reg) =>
         reg.regionalSubRaces.some(
-          (sub) => sub.race.id === character?.race.race.id,
-        ),
+          (sub) => sub.race.id === character?.race.race.id
+        )
       )
       .sort((a, b) => a.region.name.localeCompare(b.region.name)),
-    "raceRegion",
+    "raceRegion"
   );
 
   const selectTheRacialRegion = (option: RacialRegion) => {
     setGod(undefined);
     setItemsDei([]);
     setDeities(
-      option.preferedDeities.sort((a, b) => a.name.localeCompare(b.name)),
+      option.preferedDeities.sort((a, b) => a.name.localeCompare(b.name))
     );
     setDomains([]);
     setItemsDom([]);
@@ -112,13 +121,17 @@ export function Background() {
   useEffect(() => {
     const itemsDei = addToDrop(
       deities.sort((a, b) => a.name.localeCompare(b.name)),
-      "deity",
+      "deity"
     );
     setItemsDei(itemsDei);
   }, [deities]);
 
   const selectTheGod = (option: Deity) => {
     setGod(option);
+    setDomains(
+      Array.from({ length: modChar?.numberOfDomains || 0 })
+    );
+    setAligment(undefined);
   };
   const selectAlignment = (option: Alignment) => {
     setAligment(option);
@@ -131,13 +144,21 @@ export function Background() {
 
   useEffect(() => {
     if (!god) return;
-    if(god.domains === null) {
+    if (god.domains === null) {
       setItemsDom([]);
       return;
     }
-    const sortedDomains: Dominio[] = god.domains === null? [] : god.domains.length === 0 ? [] : [...god.domains]
-      .filter(d => !domains.some((dom) => dom !== undefined && dom.id === d.id))
-      .sort((a, b) => a.domain.localeCompare(b.domain));
+    const sortedDomains: Dominio[] =
+      god.domains === null
+        ? []
+        : god.domains.length === 0
+          ? []
+          : [...god.domains]
+              .filter(
+                (d) =>
+                  !domains.some((dom) => dom !== undefined && dom.id === d.id)
+              )
+              .sort((a, b) => a.domain.localeCompare(b.domain));
 
     setItemsDom(addToDrop(sortedDomains, "domain"));
   }, [god, domains]);
@@ -145,41 +166,41 @@ export function Background() {
   useEffect(() => {
     const items = addToDrop(
       aligments.sort((a, b) => a.name.localeCompare(b.name)),
-      "aligment",
+      "aligment"
     );
     setItemsAligm(items);
   }, [aligments]);
 
-const handleSubmit = () => {
-  const daMandare: {
-      idCharacter: number,
-    idRegion: number,
-    idDeity: number,
-    idDomains: number[],
-    idAligment?: number,
-  } = {
+  const handleSubmit = () => {
+    const daMandare: {
+      idCharacter: number;
+      idRegion: number;
+      idDeity: number;
+      idDomains: number[];
+      idAligment: number;
+    } = {
       idCharacter: character ? character.id : 0,
       idRegion: regionRace ? regionRace.region.id : 0,
       idDeity: god ? god.id : 0,
-      idDomains: domains.filter(d => d !== undefined).map((d) => d.id),
-      idAligment: aligment ? aligment.id : 0,
+      idDomains: domains.filter((d) => d !== undefined).map((d) => d.id),
+      idAligment: aligment ? aligment.id : 0
     };
     console.log("Background daMandare", daMandare);
-if(regionToAdd.idCharacter === 0) return;
-      axios.post(urlRace + "/" + charId + "addregion", daMandare);
+    if (daMandare.idCharacter === 0) return;
+    axios.post(urlRace + "/" + charId + "/addregion", daMandare);
     setChange(true);
     // window.location.reload();
-  }
+  };
 
   return (
     <div>
       <PageLayout
-      title={"background"}
-      buttons={{
-        next: { text: "Character", link: "/" + charId, change: change },
-        back: { text: "Magic", link: "/magic/" + charId }
-      }}
-      onAction={handleSubmit}
+        title={"background"}
+        buttons={{
+          next: { text: "Character", link: "/" + charId, change: change },
+          back: { text: "Magic", link: "/magic/" + charId }
+        }}
+        onAction={handleSubmit}
       >
         <BackgroundLayoutComponent
           title="Region"
@@ -240,7 +261,7 @@ export const BackgroundLayoutComponent: React.FC<
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr",
           alignItems: "center",
-          gap: "8px",
+          gap: "8px"
         }}
       >
         <DropdownComponent
@@ -262,7 +283,7 @@ export interface BackgroundOneComponentProps {
   one: Region | Deity | Dominio | Alignment;
 }
 export const BackgroundOneComponent: React.FC<BackgroundOneComponentProps> = ({
-  one,
+  one
 }) => {
   if ("regionalAlignment" in one) {
     const region = one as Region;

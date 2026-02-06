@@ -29,6 +29,21 @@ public class MapperRaceToDTO {
     return new SubRaceDTO(subRace);
   }
 
+  public static Set<SubRaceDTO> toSubRacesDTO(Set<SubRace> subRaces) {
+    Set<SubRaceDTO> subRacesDTOSet = new HashSet<>();
+
+    if (subRaces == null) {
+      return new HashSet<>();
+    } else {
+      subRaces.forEach(sr -> {
+        if (sr != null) {
+          subRacesDTOSet.add(new SubRaceDTO(sr));
+        }
+      });
+    }
+    return subRacesDTOSet;
+  }
+
   public static RaceTypeDTO toRaceTypeDTO(RaceType raceTypes) {
     if (raceTypes == null) {
       return new RaceTypeDTO();
@@ -69,8 +84,8 @@ public class MapperRaceToDTO {
   // }
 
   public static Set<DeityDTO> toDeityDTOSet(
-    List<Deity> deitis,
-    SpellsRepository spellsRepository
+    List<Deity> deitis
+    // , SpellsRepository spellsRepository
   ) {
     Set<DeityDTO> deitisDTOSet = new HashSet<>();
 
@@ -79,7 +94,12 @@ public class MapperRaceToDTO {
     } else {
       deitis.forEach(de -> {
         if (de != null) {
-          deitisDTOSet.add(new DeityDTO(de, spellsRepository));
+          deitisDTOSet.add(
+            new DeityDTO(
+              de
+              // , spellsRepository
+            )
+          );
         }
       });
     }
@@ -96,8 +116,8 @@ public class MapperRaceToDTO {
   }
 
   public static Set<RacialRegionDTO> toRacialRegionDTOSet(
-    List<RacialRegion> regions,
-    SpellsRepository spellsRepository
+    List<RacialRegion> regions
+    // , SpellsRepository spellsRepository
   ) {
     Set<RacialRegionDTO> regionsDTOSet = new HashSet<>();
 
@@ -106,7 +126,12 @@ public class MapperRaceToDTO {
     } else {
       regions.forEach(re -> {
         if (re != null) {
-          regionsDTOSet.add(new RacialRegionDTO(re, spellsRepository));
+          regionsDTOSet.add(
+            new RacialRegionDTO(
+              re
+              // , spellsRepository
+            )
+          );
         }
       });
     }

@@ -21,11 +21,17 @@ public class DeityDTO {
   public Set<WeaponsDTO> favoredWeapons;
   public String avatarUrl;
 
-  public DeityDTO(Deity deity, SpellsRepository spellsRepository) {
+  public DeityDTO(
+    Deity deity
+    // , SpellsRepository spellsRepository
+  ) {
     this.id = deity.getId();
     this.name = deity.getName();
     this.domains =
-      MapperSpells.toDomainsDTOSet(deity.getDomains(), spellsRepository);
+      MapperSpells.toDomainsDTOSet(
+        deity.getDomains()
+        // , spellsRepository
+      );
     this.alignment = MapperRaceToDTO.toAlignmentDTO(deity.getAlignment());
     this.worshiperAlignments =
       MapperRaceToDTO.toAlignmentDTOSet(deity.getWorshiperAlignments());
@@ -33,13 +39,12 @@ public class DeityDTO {
       MapperItemsDTO.toWeaponDTOSet(deity.getFavoredWeapons());
     this.avatarUrl = deity.getAvatarUrl();
   }
-
-  public DeityDTO(Deity deity) {
-    this.id = deity.getId();
-    this.name = deity.getName();
-    this.alignment = MapperRaceToDTO.toAlignmentDTO(deity.getAlignment());
-    this.favoredWeapons =
-      MapperItemsDTO.toWeaponDTOSet(deity.getFavoredWeapons());
-    this.avatarUrl = deity.getAvatarUrl();
-  }
+  // public DeityDTO(Deity deity) {
+  //   this.id = deity.getId();
+  //   this.name = deity.getName();
+  //   this.alignment = MapperRaceToDTO.toAlignmentDTO(deity.getAlignment());
+  //   this.favoredWeapons =
+  //     MapperItemsDTO.toWeaponDTOSet(deity.getFavoredWeapons());
+  //   this.avatarUrl = deity.getAvatarUrl();
+  // }
 }

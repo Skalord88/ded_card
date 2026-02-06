@@ -84,22 +84,22 @@ public class MapperSpells {
     return levelSpellArray;
   }
 
-  public static Set<DomainsDTO> toDomainsDTOSet(
-    Set<Domains> domanins,
-    SpellsRepository spellsRepository
-  ) {
-    Set<DomainsDTO> domainsDTOSet = new HashSet<>();
-    if (domanins == null) {
-      return new HashSet<>();
-    } else {
-      domanins.forEach(d -> {
-        if (d != null) {
-          domainsDTOSet.add(new DomainsDTO(d, spellsRepository));
-        }
-      });
-    }
-    return domainsDTOSet;
-  }
+  // public static Set<DomainsDTO> toDomainsDTOSet(
+  //   Set<Domains> domanins,
+  //   SpellsRepository spellsRepository
+  // ) {
+  //   Set<DomainsDTO> domainsDTOSet = new HashSet<>();
+  //   if (domanins == null) {
+  //     return new HashSet<>();
+  //   } else {
+  //     domanins.forEach(d -> {
+  //       if (d != null) {
+  //         domainsDTOSet.add(new DomainsDTO(d, spellsRepository));
+  //       }
+  //     });
+  //   }
+  //   return domainsDTOSet;
+  // }
 
   public static Set<DomainsDTO> toDomainsDTOSet(Set<Domains> domanins) {
     Set<DomainsDTO> domainsDTOSet = new HashSet<>();

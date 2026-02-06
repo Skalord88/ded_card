@@ -16,7 +16,7 @@ public class RacialRegionDTO {
   public int id;
   public String racialRegion;
   public RegionDTO region;
-  public Set<SubRace> regionalSubRaces;
+  public Set<SubRaceDTO> regionalSubRaces;
   public LanguageEnum[] automaticLanguages;
   public LanguageEnum[] bonusLanguages;
   public Set<DeityDTO> preferedDeities;
@@ -26,19 +26,20 @@ public class RacialRegionDTO {
   public Set<EnchantedItemsDTO> regionalItemsOpThree;
 
   public RacialRegionDTO(
-    RacialRegion racialRegion,
-    SpellsRepository spellsRepository
+    RacialRegion racialRegion
+    // , SpellsRepository spellsRepository
   ) {
     this.id = racialRegion.getId();
     this.racialRegion = racialRegion.getRacialRegion();
     this.region = new RegionDTO(racialRegion.getRegion());
-    this.regionalSubRaces = racialRegion.getRegionalSubRaces();
+    this.regionalSubRaces =
+      MapperRaceToDTO.toSubRacesDTO(racialRegion.getRegionalSubRaces());
     this.automaticLanguages = racialRegion.getAutomaticLanguages();
     this.bonusLanguages = racialRegion.getBonusLanguages();
     this.preferedDeities =
       MapperRaceToDTO.toDeityDTOSet(
-        racialRegion.getPreferedDeities().stream().toList(),
-        spellsRepository
+        racialRegion.getPreferedDeities().stream().toList()
+        // , spellsRepository
       );
     this.regionalFeats =
       MapperFeats.toFeatsSetDTO(racialRegion.getRegionalFeats());
@@ -56,11 +57,10 @@ public class RacialRegionDTO {
         racialRegion.getRegionalItemsOpThree()
       );
   }
-
-  public RacialRegionDTO(RacialRegion region) {
-    this.id = region.getId();
-    this.racialRegion = region.getRacialRegion();
-    this.region = new RegionDTO(region.getRegion());
-    this.automaticLanguages = region.getAutomaticLanguages();
-  }
+  // public RacialRegionDTO(RacialRegion region) {
+  //   this.id = region.getId();
+  //   this.racialRegion = region.getRacialRegion();
+  //   this.region = new RegionDTO(region.getRegion());
+  //   this.automaticLanguages = region.getAutomaticLanguages();
+  // }
 }

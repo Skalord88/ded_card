@@ -29,6 +29,7 @@ import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.DomainsDTO;
+import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 @AllArgsConstructor
 @NoArgsConstructor
