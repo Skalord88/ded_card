@@ -26,10 +26,10 @@ export const AppLayoutTemplate: React.FC<React.PropsWithChildren<{}>> = ({
       className="rpgui-container"
       style={{
         gridTemplateAreas: `
-        "title title title title title"
-        "body body body body nav"
-        "body body body body nav"
-        "footer footer footer footer empty"
+        "title title title title"
+        "body body body nav"
+        "body body body nav"
+        "footer footer footer empty"
         `
       }}
     >
@@ -47,9 +47,9 @@ export const TitlePage: React.FC = () => {
       }}
     >
       <h1>
-        <div className="rpgui-icon sword" />
-        {"D&D 3.Oscar"}
-        <div className="rpgui-icon shield" />
+        <span className="rpgui-icon sword" />
+        <span>D&D 3.Oscar</span>
+        <span className="rpgui-icon shield" />
       </h1>
     </div>
   );
@@ -70,8 +70,8 @@ export const PageLayoutBody: React.FC<React.PropsWithChildren<{}>> = ({
     <div
       style={{
         gridArea: "body",
-        minWidth: "480px",
-        maxWidth: "1200px"
+        minWidth: "600px",
+        maxWidth: "1900px"
       }}
       className="rpgui-container-framed"
     >

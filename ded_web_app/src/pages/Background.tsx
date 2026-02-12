@@ -33,6 +33,9 @@ export function Background() {
   const [itemsDom, setItemsDom] = useState<itemInDrop[]>([]);
   const [domains, setDomains] = useState<Dominio[]>([]);
 
+  const [selected, setSelected] = useState<
+    RacialRegion | Alignment | Deity | Dominio
+  >();
   const [change, setChange] = useState<boolean>(false);
 
   useEffect(() => {
@@ -45,46 +48,51 @@ export function Background() {
         const newModChar = await createModChar(charDB);
         setModChar(newModChar);
 
-        console.log("charDB background", charDB);
+        // se il char ha gia' una regione,
+        if (charDB.region !== null) {
+          const newRegion = charDB.region;
+          newRegion && setRegionRace(newRegion);
+          // setta i dei preferiti della regione
+          if (
+            newRegion.preferedDeities &&
+            newRegion.preferedDeities.length > 0
+          ) {
+            const newDeities = newRegion.preferedDeities;
+            newDeities && setDeities(newDeities);
+          }
 
-        const newRegion = charDB.region;
-        newRegion && setRegionRace(newRegion);
-        const newGod = charDB.deity;
-        newGod && setGod(newGod);
-        const newDeities = newRegion.preferedDeities;
-        newDeities && setDeities(newDeities);
-
-        const sortedDomains: Dominio[] =
-          newGod.domains === null
-            ? []
-            : newGod.domains.length === 0
-              ? []
-              : [...newGod.domains]
-                  .filter(
-                    (d) =>
-                      !domains.some(
-                        (dom) => dom !== undefined && dom.id === d.id
-                      )
-                  )
-                  .sort((a, b) => a.domain.localeCompare(b.domain));
-        setItemsDom(addToDrop(sortedDomains, "domain"));
-
-        if (charDB.domains !== null && charDB.domains.length > 0) {
-          const newDomains = charDB.domains;
-          newDomains && setDomains(newDomains);
-        } else {
-          setDomains(Array.from({ length: modChar?.numberOfDomains || 0 }));
+          setAligments(charDB.region.region.regionalAlignment);
+          const newAligments = charDB.alignment;
+          newAligments && setAligment(newAligments);
         }
-
-        setAligments(charDB.region.region.regionalAlignment);
-        const newAligments = charDB.alignment;
-        newAligments && setAligment(newAligments);
 
         const regioni = await axios.get(urlRegion);
         const allRegioni: RacialRegion[] = regioni.data;
         setRegions(
           allRegioni.sort((a, b) => a.region.name.localeCompare(b.region.name))
         );
+
+        if (charDB.deity) {
+          const newGod = charDB.deity;
+          newGod && setGod(newGod);
+
+          if (newGod.domains && newGod.domains.length > 0) {
+            const sortedDomains: Dominio[] = [...newGod.domains]
+              .filter(
+                (d) =>
+                  !domains.some((dom) => dom !== undefined && dom.id === d.id)
+              )
+              .sort((a, b) => a.domain.localeCompare(b.domain));
+
+            setItemsDom(addToDrop(sortedDomains, "domain"));
+          }
+          if (charDB.domains && charDB.domains.length > 0) {
+            const newDomains = charDB.domains;
+            newDomains && setDomains(newDomains);
+          } else {
+            setDomains(Array.from({ length: modChar?.numberOfDomains || 0 }));
+          }
+        }
       } catch (error) {
         console.log(error);
       }
@@ -116,6 +124,7 @@ export function Background() {
     setItemsAligm([]);
     setAligments(option.region.regionalAlignment);
     setRegionRace(option);
+    setSelected(option);
   };
 
   useEffect(() => {
@@ -128,18 +137,19 @@ export function Background() {
 
   const selectTheGod = (option: Deity) => {
     setGod(option);
-    setDomains(
-      Array.from({ length: modChar?.numberOfDomains || 0 })
-    );
+    setDomains(Array.from({ length: modChar?.numberOfDomains || 0 }));
     setAligment(undefined);
+    setSelected(option);
   };
   const selectAlignment = (option: Alignment) => {
     setAligment(option);
+    setSelected(option);
   };
   const selectDomains = (option: Dominio, index: number) => {
     const newDomains = [...domains];
     newDomains[index] = option;
     setDomains(newDomains);
+    setSelected(option);
   };
 
   useEffect(() => {
@@ -193,7 +203,7 @@ export function Background() {
   };
 
   return (
-    <div>
+    <>
       <PageLayout
         title={"background"}
         buttons={{
@@ -202,55 +212,72 @@ export function Background() {
         }}
         onAction={handleSubmit}
       >
-        <BackgroundLayoutComponent
-          title="Region"
-          items={itemsRegioni}
-          onAction={selectTheRacialRegion}
-          one={regionRace?.region}
-        />
-        {deities && deities.length > 0 && (
-          <BackgroundLayoutComponent
-            title="God"
-            items={itemsDei}
-            onAction={selectTheGod}
-            one={god && god}
-          />
-        )}
-        {modChar?.numberOfDomains &&
-          deities &&
-          itemsDom.length > 0 &&
-          Array.from({ length: modChar.numberOfDomains }).map((_, index) => (
+        <div style={{ display: "flex" }}>
+          <div className="rpgui-container-framed grey" style={{ flex: 1 }}>
             <BackgroundLayoutComponent
-              key={index}
-              title="Domanin"
-              items={itemsDom}
-              onAction={(option) => selectDomains(option, index)}
-              one={domains[index] && domains[index]}
+              title="Region"
+              items={itemsRegioni}
+              onAction={selectTheRacialRegion}
+              one={regionRace}
+              onSelect={() => setSelected(regionRace)}
             />
-          ))}
-        {aligments && aligments.length > 0 && (
-          <BackgroundLayoutComponent
-            title="Aligment"
-            items={itemsAligm}
-            onAction={selectAlignment}
-            one={aligment && aligment}
-          />
-        )}
+            {deities && deities.length > 0 && (
+              <BackgroundLayoutComponent
+                title="God"
+                items={itemsDei}
+                onAction={selectTheGod}
+                one={god && god}
+                onSelect={() => setSelected(god)}
+              />
+            )}
+            {modChar?.numberOfDomains &&
+              deities &&
+              itemsDom.length > 0 &&
+              Array.from({ length: modChar.numberOfDomains }).map(
+                (_, index) => (
+                  <BackgroundLayoutComponent
+                    key={index}
+                    title="Domanin"
+                    items={itemsDom}
+                    onAction={(option) => selectDomains(option, index)}
+                    one={domains[index] && domains[index]}
+                    onSelect={() => setSelected(domains[index])}
+                  />
+                )
+              )}
+            {aligments && aligments.length > 0 && (
+              <BackgroundLayoutComponent
+                title="Aligment"
+                items={itemsAligm}
+                onAction={selectAlignment}
+                one={aligment && aligment}
+                onSelect={() => setSelected(aligment)}
+              />
+            )}
+          </div>
+          <div className="rpgui-container-framed grey" style={{ flex: 2 }}>
+            {selected && <BackgroundOneComponent one={selected} />}
+          </div>
+        </div>
       </PageLayout>
-    </div>
+    </>
   );
 }
 
 export type BackgroundLayoutComponentProps = {
   title: string;
   items?: itemInDrop[];
+
   onAction?: (option: any, index?: number) => void;
-  one?: Region | Deity | Dominio | Alignment | undefined;
+  one?: RacialRegion | Deity | Dominio | Alignment | undefined;
+  onSelect?: (
+    option: RacialRegion | Deity | Dominio | Alignment | undefined
+  ) => void;
 };
 
 export const BackgroundLayoutComponent: React.FC<
   BackgroundLayoutComponentProps
-> = ({ title, items, onAction, one }) => {
+> = ({ title, items, onAction, one, onSelect }) => {
   // const [uno, setOne] = useState<Region | Deity | Dominio | Alignment | undefined>(
   //   one,
   // );
@@ -272,49 +299,85 @@ export const BackgroundLayoutComponent: React.FC<
         <div>
           <p>{title}:</p>
         </div>
-        {one && <BackgroundOneComponent one={one} />}
-        <div></div>
+        {one && (
+          <div onClick={() => onSelect?.(one)}>
+            {"racialRegion" in one && (
+              <BackgroundOneComponent
+                text={(one as RacialRegion).region.name}
+              />
+            )}
+            {"worshiperAlignments" in one && (
+              <BackgroundOneComponent text={(one as Deity).name} />
+            )}
+            {"domain" in one && (
+              <BackgroundOneComponent text={(one as Dominio).domain} />
+            )}
+            {"opposingAlignment" in one && (
+              <BackgroundOneComponent text={AlignmentMap[(one as Alignment).name]} />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export interface BackgroundOneComponentProps {
-  one: Region | Deity | Dominio | Alignment;
+  text?: string;
+  one?: RacialRegion | Deity | Dominio | Alignment;
 }
 export const BackgroundOneComponent: React.FC<BackgroundOneComponentProps> = ({
+  text,
   one
 }) => {
-  if ("regionalAlignment" in one) {
-    const region = one as Region;
-    return (
-      <div>
-        <p>{region.name}</p>
-      </div>
-    );
+  if(text) {
+    return <div><p>{text}</p></div>
   }
-  if ("worshiperAlignments" in one) {
-    const deity = one as Deity;
-    return (
-      <div>
-        <p>{deity.name}</p>
-      </div>
-    );
-  }
-  if ("domain" in one) {
-    const dominio = one as Dominio;
-    return (
-      <div>
-        <p>{dominio.domain}</p>
-      </div>
-    );
-  }
-  if ("opposingAlignment" in one) {
-    const alignment = one as Alignment;
-    return (
-      <div>
-        <p>{AlignmentMap[alignment.name]}</p>
-      </div>
-    );
+  if (one) {
+    if ("racialRegion" in one) {
+      const region = one as RacialRegion;
+      return (
+        <div>
+          <h2>{region.region.name}</h2>
+          <p>{region.region.description}</p>
+        </div>
+      );
+    }
+    if ("worshiperAlignments" in one) {
+      const deity = one as Deity;
+      return (
+        <div>
+          <h2>{deity.name}</h2>
+          {deity.favoredWeapons.map(fW => (
+            <p>{fW.name}</p>
+          ))}
+          <p>{deity.alignment.name}</p>
+        </div>
+      );
+    }
+    if ("domain" in one) {
+      const dominio = one as Dominio;
+      return (
+        <div>
+          <h2>{dominio.domain}</h2>
+          <p>{dominio.grantedPower}</p>
+          {dominio.domainSpells.sort((a, b) => a.level - b.level).map(d => (
+            <p>lv.{d.level} : {d.spell.name}</p>
+          ))}
+        </div>
+      );
+    }
+    if ("opposingAlignment" in one) {
+      const alignment = one as Alignment;
+      return (
+        <>
+          <div>
+            <h2>{AlignmentMap[alignment.name]}</h2>
+            <p>{alignment.description}</p>
+            <p>{alignment.opposingAlignment}</p>
+          </div>
+        </>
+      );
+    }
   }
 };
