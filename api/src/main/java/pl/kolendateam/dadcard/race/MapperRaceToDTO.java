@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import pl.kolendateam.dadcard.race.dto.AlignmentDTO;
+import pl.kolendateam.dadcard.race.dto.ChoosenRegionDTO;
 import pl.kolendateam.dadcard.race.dto.DeityDTO;
 import pl.kolendateam.dadcard.race.dto.RaceDTO;
 import pl.kolendateam.dadcard.race.dto.RaceTypeDTO;
@@ -12,6 +13,7 @@ import pl.kolendateam.dadcard.race.dto.RacialRegionDTO;
 import pl.kolendateam.dadcard.race.dto.RegionDTO;
 import pl.kolendateam.dadcard.race.dto.SubRaceDTO;
 import pl.kolendateam.dadcard.race.entity.Alignment;
+import pl.kolendateam.dadcard.race.entity.ChoosenRegion;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.RaceType;
@@ -27,6 +29,12 @@ public class MapperRaceToDTO {
 
   public static SubRaceDTO toSubRaceDTO(SubRace subRace) {
     return new SubRaceDTO(subRace);
+  }
+
+  public static ChoosenRegionDTO toChoosenRegionDTO(
+    ChoosenRegion choosenRegion
+  ) {
+    return new ChoosenRegionDTO(choosenRegion);
   }
 
   public static Set<SubRaceDTO> toSubRacesDTO(Set<SubRace> subRaces) {

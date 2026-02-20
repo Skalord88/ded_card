@@ -205,10 +205,10 @@ export function Background() {
   return (
     <>
       <PageLayout
-        title={"background"}
+        title={"Background"}
         buttons={{
-          next: { text: "Character", link: "/" + charId, change: change },
-          back: { text: "Magic", link: "/magic/" + charId }
+          next: { text: "Ability", link: "/ability/" + charId, change: change },
+          back: { text: "Race", link: "/race/" + charId }
         }}
         onAction={handleSubmit}
       >

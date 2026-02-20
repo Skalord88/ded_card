@@ -44,6 +44,9 @@
       <column name="racial_region_id" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="choosen_region_id" type="int">
+        <constraints nullable="true" />
+      </column>
     </createTable>
   </changeSet>
 </databaseChangeLog>

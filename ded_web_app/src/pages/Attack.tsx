@@ -105,8 +105,8 @@ export function Attack() {
       title={"Attacks"}
       onAction={confirmAttack}
       buttons={{
-        next: { text: "magic", link: "/magic/" + charId, change: true },
-        back: { text: "inventory", link: "/item/" + charId }
+        next: { text: "Magic", link: "/magic/" + charId, change: true },
+        back: { text: "Inventory", link: "/item/" + charId }
       }}
     >
       {attackElement && (

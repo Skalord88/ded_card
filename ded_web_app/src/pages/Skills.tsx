@@ -229,8 +229,8 @@ export function Skills() {
       pageStyle="auto"
       onAction={handleSubmit}
       buttons={{
-        back: { text: "Classes", link: "/class/" + charId },
-        next: { text: "Feats", link: "/feat/" + charId, change: change }
+        next: { text: "Inventory", link: "/item/" + charId, change: change },
+        back: { text: "Feat", link: "/feat/" + charId }
       }}
     >
       {

@@ -44,12 +44,12 @@ export const modifyAbilitys = (
   prerAbilitys: Abilitys
 ): Abilitys => {
   const newAbility: Abilitys = {
-    strength: charAbilitys.strength + prerAbilitys.strength,
-    dexterity: charAbilitys.dexterity + prerAbilitys.dexterity,
-    constitution: charAbilitys.constitution + prerAbilitys.constitution,
-    intelligence: charAbilitys.intelligence + prerAbilitys.intelligence,
-    wisdom: charAbilitys.wisdom + prerAbilitys.wisdom,
-    charisma: charAbilitys.charisma + prerAbilitys.charisma
+    strength: charAbilitys? charAbilitys.strength : 0 + prerAbilitys.strength,
+    dexterity: charAbilitys? charAbilitys.dexterity : 0 + prerAbilitys.dexterity,
+    constitution: charAbilitys? charAbilitys.constitution : 0 + prerAbilitys.constitution,
+    intelligence: charAbilitys? charAbilitys.intelligence : 0 + prerAbilitys.intelligence,
+    wisdom: charAbilitys? charAbilitys.wisdom : 0 + prerAbilitys.wisdom,
+    charisma: charAbilitys? charAbilitys.charisma : 0 + prerAbilitys.charisma
   };
   return newAbility;
 };

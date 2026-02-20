@@ -28,8 +28,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
@@ -46,11 +44,10 @@ import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.AddRegionDTO;
 import pl.kolendateam.dadcard.race.entity.Alignment;
 import pl.kolendateam.dadcard.race.entity.Archetype;
+import pl.kolendateam.dadcard.race.entity.ChoosenRegion;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.race.entity.RacialRegion;
 import pl.kolendateam.dadcard.race.entity.SubRace;
-import pl.kolendateam.dadcard.race.repository.DeityRepository;
-import pl.kolendateam.dadcard.race.repository.RacialRegionRepository;
 import pl.kolendateam.dadcard.skills.dto.SkillToAddDTO;
 import pl.kolendateam.dadcard.skills.entity.SkillCharacter;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
@@ -58,7 +55,6 @@ import pl.kolendateam.dadcard.spells.dto.SpellsDTO;
 import pl.kolendateam.dadcard.spells.entity.Book;
 import pl.kolendateam.dadcard.spells.entity.Domains;
 import pl.kolendateam.dadcard.spells.entity.Spells;
-import pl.kolendateam.dadcard.spells.repository.DomaninRepository;
 
 @NoArgsConstructor
 @Getter
@@ -144,6 +140,10 @@ public class Character implements Serializable {
   @ManyToOne
   @JoinColumn(name = "racial_region_id", referencedColumnName = "id")
   RacialRegion region;
+
+  @ManyToOne
+  @JoinColumn(name = "choosen_region_id", referencedColumnName = "id")
+  ChoosenRegion choosenRegion;
 
   @ManyToMany
   @JoinTable(
@@ -524,11 +524,7 @@ public class Character implements Serializable {
     return dto.caster + "-" + dto.knowDay + "-" + dto.level + "-" + spells;
   }
 
-  public void setCharacterRegion(
-    EntityManager em,
-    AddRegionDTO entity,
-    DomaninRepository domainRepository
-  ) {
+  public void setCharacterRegion(EntityManager em, AddRegionDTO entity) {
     if (entity.idRegion != 0 || this.region.getId() != entity.idRegion) {
       RacialRegion newRegion = em.find(RacialRegion.class, entity.idRegion);
 
@@ -565,23 +561,28 @@ public class Character implements Serializable {
     }
 
     if ((!entity.idDomains.isEmpty())) {
-      if (
-        this.domains.size() == entity.idDomains.size() &&
-        this.domains.stream()
-          .allMatch(d -> entity.idDomains.contains(d.getId()))
-      ) {
-        System.out.println("Nessun cambiamento necessario");
-        return;
-      }
-      Set<Domains> newDomains = domainRepository
-        .findAllById(entity.idDomains)
-        .stream()
-        .collect(Collectors.toSet());
-
-      newDomains.forEach(d ->
-        System.out.println("add dominio: " + d.getId() + " " + d.getDomain())
-      );
-      this.domains = newDomains;
+      checkAndAddDomains(new ArrayList<>(entity.idDomains), em);
     }
+  }
+
+  private void checkAndAddDomains(List<Integer> idDomains, EntityManager em) {
+    if (
+      this.domains.size() == idDomains.size() &&
+      this.domains.stream().allMatch(d -> idDomains.contains(d.getId()))
+    ) {
+      System.out.println("Nessun cambiamento necessario");
+      return;
+    }
+    Set<Domains> newDomains = em
+      .createQuery("SELECT d FROM Domains d WHERE d.id IN :ids", Domains.class)
+      .setParameter("ids", idDomains)
+      .getResultList()
+      .stream()
+      .collect(Collectors.toSet());
+
+    newDomains.forEach(d ->
+      System.out.println("add dominio: " + d.getId() + " " + d.getDomain())
+    );
+    this.domains = newDomains;
   }
 }

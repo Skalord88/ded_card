@@ -38,7 +38,7 @@ export function Ability() {
     <PageLayout
       title="Abilities"
       buttons={{
-        next: { text: "Races", link: "/race/" + charId, change: change }
+        next: { text: "Class", link: "/class/" + charId, change: change }
       }}
       onAction={handleSubmit}
       pageStyle={"repeat(auto-fit, minmax(170px, 1fr))"}

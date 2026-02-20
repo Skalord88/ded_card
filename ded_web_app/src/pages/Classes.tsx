@@ -29,7 +29,11 @@ export const Classes = () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
-        setCharClassPc(resChar.data.classPcList);
+        const classi: ClassPc[] = resChar.data.classPcList;
+        if (classi && classi.length > 0){
+          setChange(true);
+        }
+        setCharClassPc(classi);
 
         const resClassList = await axios.get(urlClassList);
         setClassesList(resClassList.data);
@@ -136,8 +140,8 @@ export const Classes = () => {
     <PageLayout
       title={"Classes"}
       buttons={{
-        next: { text: "Skills", link: "/skill/" + charId, change: change },
-        back: { text: "Races", link: "/race/" + charId }
+        next: { text: "Feat", link: "/feat/" + charId, change: change },
+        back: { text: "Ability", link: "/ability/" + charId }
       }}
       onAction={handleSubmit}
     >
@@ -179,7 +183,7 @@ export const Classes = () => {
           <p>add a class</p>
         )}
       </div>
-      {char ? <CharSummary character={char} classPcList={charClassPc} /> : null}
+      {/* {char ? <CharSummary character={char} classPcList={charClassPc} /> : null} */}
     </PageLayout>
   );
 };

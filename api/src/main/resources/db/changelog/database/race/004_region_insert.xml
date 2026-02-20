@@ -9,7 +9,8 @@
             <column name="id" value="1" />
             <column name="name" value="Anauroch" />
             <column name="link_region" value="https://www.realmshelps.net/faerun/anauroch.shtml" />
-            <column name="description" value="
+            <column name="description"
+                value="
                 Anauroch (Ah-nor-ach) is a barren wasteland that has grown to split the north of Faerûn into eastern and western halves. Also known as the Great Desert or the Great Sand Sea, Anauroch swallowed the ancient empire of Netheril more than fifteen centuries past, then devoured the shining kingdoms that rose in its wake. For generations Anauroch's relentless encroachment has destroyed realms and driven monsters into the neighboring lands.
                 Anauroch is the greatest of Faerûn's deserts, but far from empty. A nomadic race of noble barbarians known as the Bedine roams its wastes. Zhentarim garrisons and patrols hold down a line of oases along the Black Road, the trade route that winds west from the ruins of Teshendale to Llorkhninder the eaves of the Graypeak Mountains. Finally - and most significantly - the Empire of Shadows has settled over the anvil once known as the Shoal of Thirst. Shade, a city of Netheril that escaped that land's fall by removing itself to the Plane of Shadow, has now returned to Faerûn, and its masters contemplate the current shape of the world and consider what conquests to undertake next.
             " />
@@ -17,37 +18,48 @@
         <insert tableName="region">
             <column name="id" value="2" />
             <column name="name" value="Aglarond" />
-            <column name="link_region" value="https://www.realmshelps.net/faerun/aglarond/index.shtml" />
-            <column name="description" value="
+            <column name="link_region"
+                value="https://www.realmshelps.net/faerun/aglarond/index.shtml" />
+            <column name="description"
+                value="
             Situated on a long peninsula that stabs like a knife into the heart of the Sea of Fallen Stars, Aglarond is a land of open water and deep woods. Here humans and elves have intermingled for centuries, and nowhere else in Faerûn is there a greater concentration of half-elves. The land has long stood as a bulwark holding back the Red Wizards of Thay from the western lands. This is a thankless task, but the people of Aglarond take it up not for the survival of other countries, but their own.
             " />
         </insert>
         <insert tableName="region">
             <column name="id" value="3" />
             <column name="name" value="Altumbel" />
-            <!-- <column name="link_region" value="https://www.realmshelps.net/faerun/aglarond/index.shtml" /> -->
-            <!-- <column name="description" value="
-            Situated on a long peninsula that stabs like a knife into the heart of the Sea of Fallen Stars, Aglarond is a land of open water and deep woods. Here humans and elves have intermingled for centuries, and nowhere else in Faerûn is there a greater concentration of half-elves. The land has long stood as a bulwark holding back the Red Wizards of Thay from the western lands. This is a thankless task, but the people of Aglarond take it up not for the survival of other countries, but their own.
-            " /> -->
+            <column name="link_region"
+            value="https://www.realmshelps.net/faerun/aglarond/index.shtml" />
+            <column name="description" value="
+            To most people, all of the Aglarondan peninsula is one land, but not to those who live in Altumbel. When Aglarond was formed many centuries ago, after long years of war, humans and half-elves agreed to share power in the form of a council of locally appointed leaders led by a king. A number of humans were too bitter from the wars to lay aside their animosity. Rather than become part of this new nation, they set out for the far western end of the peninsula, claiming it as their own.
+            In addition to the narrow cape at the end of the Aglarondan peninsula, Altumbel includes the mazelike archipelago of the Thousand Swords. Most of these islets are desolate and rocky, covered with low scrub and lichen, but some are fairly large. Ghevden, the largest, is more than thirty miles wide and is home to several populous villages of fishers, herders, and merchants. One-third of Altumbel's people live scattered over the barren Swords. Pirates harry the islands, but many hail from the Swords themselves - raiding one's neighbors is something of a local tradition.
+            Altumbel and its archipelago are almost entirely devoid of woods. The people here don't care for trees, which remind them of the Yuirwood's half-elves. Most make their living from the sea, either netting fish or trapping shellfish. The land is rocky and unforgiving, not much good for farming, although some sheltered dells are suitable for gardening. These sun-warmed and wind-protected valleys usually have springs and the occasional cave.
+            Altumbel boasts a history of harboring pirates, daring (or foolhardy) characters who knew the lay of the reefs beneath the sea and used them to confound less knowledgeable pursuers. In fact, Spandeliyon, the capital of the region, is still known as the City of Pirates. These days, however, the Simbul's harsh punishment of pirates has put the lie to that name. Few dare to brave the lady's wrath, even in a city so far from her home in Velprintalar.
+            Beyond the rocky, fag-cloaked northern shores of Altumbel - and all Aglarond, in fact - the sea quickly drops off into a deep trench. The seasonal upwelling of cold, nutrient-rich waters make this place a fisher's paradise.
+            " />
         </insert>
         <insert tableName="region">
             <column name="id" value="4" />
             <column name="name" value="Amn" />
-            <column name="link_region" value="https://www.realmshelps.net/faerun/landsofintrigue.shtml" />
-            <column name="description" value="
+            <column name="link_region"
+                value="https://www.realmshelps.net/faerun/landsofintrigue.shtml" />
+            <column name="description"
+                value="
             Amn is a nation of merchants, a place where caravans start and end and ships leave for exotic ports and return laden with gold and strange items. The Shadow Thieves have their hand in everything, and the rulers are an anonymous group known only is the Council of Six. Divine spellcasters are respected if their work brings money to Amn, while arcane spellcasters are universally reviled and feared.
             Amn maintains a large colony on the distant tropical continent of Maztica and has profited greatly from its trade. The government's disregard for the humanoids in its southern mountains has come back to haunt the country; two ogre mage leaders forged an army and took over much of southern Amn, including its secondary port city. Now Amn struggles to retake its territory while maintaining its trade routes and dominance in Maztica.
             " />
         </insert>
+        <insert tableName="region">
+            <column name="id" value="5" />
+            <column name="name" value="Rashemen" />
+            <column name="link_region"
+                value="https://www.realmshelps.net/faerun/rashemen/index.shtml" />
+            <column name="description"
+                value="
+            Foreigners view Rashemen as a mysterious, magical land of harsh winters ruled by masked witches and populated by berserkers. Far away from the southern climates and the warming oceans, it is a barren waste of frozen plains and snow-covered mountains where a person can freeze to death overnight even in the middle of summer. Such talk is exaggeration, but it is based in truth. Much of Faerûn owes its safety and security to Rashemen, for this small nation has held its own against the armies and collected magic of Thay time and again, sparing Thay's other neighbors from the attentions of the Red Wizards.
+            " />
+        </insert>
         <!-- <insert tableName="region">
-            <column name="id" value="2" />
-            <column name="name" value="Amn" />
-        </insert>
-        <insert tableName="region">
-            <column name="id" value="3" />
-            <column name="name" value="Calimshan" />
-        </insert>
-        <insert tableName="region">
             <column name="id" value="4" />
             <column name="name" value="Luiren" />
         </insert>

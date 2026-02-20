@@ -28,18 +28,20 @@ root.render(
       <Routes>
         <Route path="/" element={<AppLayout />}>
           <Route path="list" element={<List />} />
-          <Route path="fight" element={<Fight />} />
-          <Route path="create" element={<Create />} />
           <Route path=":charId" element={<Show />} />
-          <Route path="ability/:charId" element={<Ability />} />
+
+          <Route path="fight" element={<Fight />} />
+
+          <Route path="create" element={<Create />} />
           <Route path="race/:charId" element={<Races />} />
+          <Route path="background/:charId" element={<Background />} />
+          <Route path="ability/:charId" element={<Ability />} />
           <Route path="class/:charId" element={<Classes />} />
-          <Route path="skill/:charId" element={<Skills />} />
           <Route path="feat/:charId" element={<Feats />} />
+          <Route path="skill/:charId" element={<Skills />} />
           <Route path="item/:charId" element={<Items />} />
           <Route path="attack/:charId" element={<Attack />} />
           <Route path="magic/:charId" element={<Magic />} />
-          <Route path="background/:charId" element={<Background />} />
         </Route>
       </Routes>
     </HashRouter>

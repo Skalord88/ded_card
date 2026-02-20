@@ -260,8 +260,8 @@ export const Items = () => {
       title={"Inventory"}
       onAction={handleConfirm}
       buttons={{
-        next: { text: "attacks", link: "/attack/" + charId, change: true },
-        back: { text: "feats", link: "/feat/" + charId }
+        next: { text: "Attack", link: "/attack/" + charId, change: true },
+        back: { text: "Skill", link: "/skill/" + charId }
       }}
     >
       <div className="rpgui-container-framed grey">

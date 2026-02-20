@@ -97,8 +97,8 @@ export function Magic() {
 
   return (
     <PageLayout title={"Magic"} buttons={{
-      next: { text: "background", link: "/background/" + charId , change: true },
-      back: { text: "attacks", link: "/attack/" + charId }
+      next: { text: "Show", link: charId , change: true },
+      back: { text: "Attacks", link: "/attack/" + charId }
     }} onAction={confirmBooksAndSend}>
       <div>
         {spellsPgList && (

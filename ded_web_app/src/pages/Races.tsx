@@ -89,7 +89,7 @@ export const Races = () => {
     <PageLayout
       title={"Races"}
       buttons={{
-        next: { text: "Classes", link: "/class/" + charId, change: change }
+        next: { text: "Background", link: "/background/" + charId, change: change }
       }}
       onAction={handleSubmit}
       pageStyle="auto"
@@ -120,7 +120,7 @@ export const Races = () => {
               " "}
           </h2>
           <div className={iconRace} />
-          <CharSummary character={char} race={selectedSubRace} />
+          {/* <CharSummary character={char} race={selectedSubRace} /> */}
         </div>
       )}
     </PageLayout>

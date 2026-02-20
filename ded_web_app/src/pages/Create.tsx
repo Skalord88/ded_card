@@ -24,7 +24,7 @@ export const Create = () => {
       .post(urlChar, namePlayer)
       .then((response) => {
         const charId = response.data.characterId;
-        navigate(`/ability/${charId}`);
+        navigate(`/race/${charId}`);
       })
       .catch((error) => {
         console.error("Errore nel POST:", error);

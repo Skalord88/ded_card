@@ -148,11 +148,6 @@ public class RaceController {
     return new CreateCharacterDTO(character);
   }
 
-  @GetMapping("ping")
-  public String ping() {
-    return "pong";
-  }
-
   @PostMapping(value = "{id}/addregion", consumes = { "application/json" })
   public CreateCharacterDTO setRegionToCharacter(
     @PathVariable int id,
@@ -172,7 +167,8 @@ public class RaceController {
     //     new ResponseStatusException(HttpStatus.NOT_FOUND, "Deity Not Found")
     //   );
 
-    character.setCharacterRegion(entityManager, region, domainRepository);
+    character.setCharacterRegion(entityManager, region);
+
     this.characterRepository.save(character);
 
     return new CreateCharacterDTO(character);
