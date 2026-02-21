@@ -1,27 +1,47 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Abilitys } from "../components/Abilitys/Interface";
+import { DropdownComponent } from "../components/DropDown/DropDown";
 import { FormattingText } from "../components/Formatting/Function";
-import { BonusAbilities, SignNumber } from "../components/functions";
+import { addToDrop, BonusAbilities, SignNumber } from "../components/functions";
+import { CharacterPc } from "../components/interfaces";
 import { AllSkills } from "../components/Skills/Skills/Const";
-import { urlAb } from "../components/url";
-import { abilitysEmpty } from "../components/variables";
+import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
 // import { PageAndSummaryLayout } from "./AppLayout";
+
+export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
 export function Ability() {
   const { charId } = useParams();
 
-  const [abilitys, setAbilitys] = useState<Abilitys>(abilitysEmpty);
-  const [change, setChange] = useState<boolean>(false);
+  const [abilitys, setAbilitys] = useState<Abilitys>();
+  // const [change, setChange] = useState<boolean>(false);
 
-  const handleData = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = parseInt(e.target.value);
-    if (value >= 0) {
-      setAbilitys((prevAbilities: Abilitys) => ({
-        ...prevAbilities,
-        [e.target.name]: value
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resChar = await axios.get(urlChar + "/" + charId);
+        const charData: CharacterPc = resChar.data;
+        setAbilitys(charData.abilitys);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleData = (option: number, ability: string) => {
+    if (abilitys) {
+      setAbilitys((prevAbilities) => ({
+        strength: prevAbilities?.strength ?? 0,
+        dexterity: prevAbilities?.dexterity ?? 0,
+        constitution: prevAbilities?.constitution ?? 0,
+        intelligence: prevAbilities?.intelligence ?? 0,
+        wisdom: prevAbilities?.wisdom ?? 0,
+        charisma: prevAbilities?.charisma ?? 0,
+        [ability]: option
       }));
     }
   };
@@ -31,104 +51,116 @@ export function Ability() {
     axios.post(urlAb + charId, abilitys).then((response) => {
       console.log(response.data);
     });
-    setChange(true);
+    window.location.reload();
+    // setChange(true);
   };
 
   return (
     <PageLayout
       title="Abilities"
       buttons={{
-        next: { text: "Class", link: "/class/" + charId, change: change }
+        next: { text: "Class", link: "/class/" + charId, change: abilitys &&
+          abilitisBaseValue.every(value => Object.values(abilitys).includes(value)) }
       }}
       onAction={handleSubmit}
-      pageStyle={"repeat(auto-fit, minmax(170px, 1fr))"}
     >
-      
-      <AbilityLayout
-        ability="STRENGTH"
-        value={{ abilities: abilitys, text: "STR" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="strength"
-          value={abilitys.strength}
-        />
-      </AbilityLayout>
-      <AbilityLayout
-        ability="DEXTERITY"
-        value={{ abilities: abilitys, text: "DEX" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="dexterity"
-          value={abilitys.dexterity}
-        />
-      </AbilityLayout>
-      <AbilityLayout
-        ability="CONSTITUTION"
-        value={{ abilities: abilitys, text: "COS" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="constitution"
-          value={abilitys.constitution}
-        />
-      </AbilityLayout>
-      <AbilityLayout
-        ability="INTELLIGENCE"
-        value={{ abilities: abilitys, text: "INT" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="intelligence"
-          value={abilitys.intelligence}
-        />
-      </AbilityLayout>
-      <AbilityLayout
-        ability="WISDOM"
-        value={{ abilities: abilitys, text: "WIS" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="wisdom"
-          value={abilitys.wisdom}
-        />
-      </AbilityLayout>
-      <AbilityLayout
-        ability="CHARISMA"
-        value={{ abilities: abilitys, text: "CHA" }}
-      >
-        <input
-          className="rpgui-content-input"
-          type="number"
-          onChange={handleData}
-          name="charisma"
-          value={abilitys.charisma}
-        />
-      </AbilityLayout>
-      {/* </div> */}
+      {abilitys && (
+        <div>
+          <div>
+            <p>
+              {abilitisBaseValue.map((value, index) => (
+                <span>
+                  <span
+                    style={{
+                      color: Object.values(abilitys).includes(value)
+                        ? "yellow"
+                        : "white"
+                    }}
+                    key={index}
+                  >
+                    {value}
+                  </span>
+                  <span>
+                    {index < abilitisBaseValue.length - 1 ? ", " : ""}
+                  </span>
+                </span>
+              ))}
+            </p>
+          </div>
+          {abilitys && 
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "10px" }}>
+            <AbilityLayout
+              number={abilitys.strength}
+              ability="STRENGTH" 
+              value={{ abilities: abilitys, text: "STR" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "strength")}
+            />
+            </AbilityLayout>
+            <AbilityLayout
+              number={abilitys.dexterity}
+              ability="DEXTERITY" 
+              value={{ abilities: abilitys, text: "DEX" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "dexterity")}
+            />
+            </AbilityLayout>
+            <AbilityLayout
+              number={abilitys.constitution}
+              ability="CONSTITUTION" 
+              value={{ abilities: abilitys, text: "CON" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "constitution")}
+            />
+            </AbilityLayout>
+            <AbilityLayout
+              number={abilitys.intelligence}
+              ability="INTELLIGENCE" 
+              value={{ abilities: abilitys, text: "INT" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "intelligence")}
+            />
+            </AbilityLayout>
+            <AbilityLayout
+              number={abilitys.wisdom}
+              ability="WISDOM" 
+              value={{ abilities: abilitys, text: "WIS" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "wisdom")}
+            />
+            </AbilityLayout>
+            <AbilityLayout
+              number={abilitys.charisma}
+              ability="CHARISMA" 
+              value={{ abilities: abilitys, text: "CHA" }}>
+            <DropdownComponent
+              options={addToDrop(abilitisBaseValue, "number")}
+              onAction={(option) => handleData(option, "charisma")}
+            />
+            </AbilityLayout>
+            </div>
+          }
+        </div>
+      )}
     </PageLayout>
   );
 }
 
 export type AbilityLayoutProps = {
   ability?: string;
+  number?: number;
   children?: React.ReactNode;
   value?: { abilities: Abilitys; text: string };
 };
 
 export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   ability,
+  number,
   children,
   value
 }) => {
@@ -136,18 +168,18 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
     <div
       className="rpgui-container-framed golden"
       style={{
-        placeItems: "center",
+        placeItems: "center"
       }}
     >
-      <div>
+
         <h4>{ability}</h4>
-      </div>
-      <div>{children}</div>
+        <p>{number && number}</p>
+        {children}
       <div>
-        <h2>
+        <p>
           {value && SignNumber(BonusAbilities(value?.abilities, value?.text))}
           {value && BonusAbilities(value?.abilities, value?.text)}
-        </h2>
+        </p>
       </div>
       <AbilitySaveString ability={ability} />
       <AbilitySkillsString ability={ability} />
@@ -162,10 +194,10 @@ export const AbilitySaveString: React.FC<AbilityLayoutProps> = ({
     ability === "DEXTERITY"
       ? "REFLEX"
       : ability === "CONSTITUTION"
-      ? "FORTITUDE"
-      : ability === "WISDOM"
-      ? "WILL"
-      : "---";
+        ? "FORTITUDE"
+        : ability === "WISDOM"
+          ? "WILL"
+          : "---";
 
   return (
     <div style={{ margin: "10px" }}>

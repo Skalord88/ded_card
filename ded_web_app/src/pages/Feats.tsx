@@ -203,8 +203,8 @@ export function Feats() {
       // pageStyle="1fr 2fr"
       onAction={handleSubmit}
       buttons={{
-        back: { text: "Skills", link: "/skill/" + charId },
-        next: { text: "Equip", link: "/item/" + charId, change: change }
+        back: { text: "Classes", link: "/class/" + charId },
+        next: { text: "Skills", link: "/feat/" + charId, change: change }
       }}
     >
       {featsToAddList

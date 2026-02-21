@@ -368,10 +368,24 @@ export function AllSpell(
 
 export interface itemInDrop {
     name: string
-    item: string | Alignment | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Dominio | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
+    item: string | number | Alignment | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Dominio | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
 }
 
 export const addToDrop = (options: any[], text: string): itemInDrop[] => {
+
+    if (text === "number") {
+        let list: itemInDrop[] = options.map(
+            o => {
+                const nameFilter: string = o.toString()
+                const filter: number = o as number
+                return {
+                    name: nameFilter,
+                    item: filter
+                }
+            }
+        )
+        return list
+    }
 
     if (text === "filter") {
         let list: itemInDrop[] = options.map(
