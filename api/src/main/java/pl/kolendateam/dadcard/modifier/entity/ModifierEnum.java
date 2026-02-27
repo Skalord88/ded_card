@@ -1,50 +1,100 @@
 package pl.kolendateam.dadcard.modifier.entity;
 
-public enum ModifierEnum {
-  ABILITY_MODIFIER,
-  ALCHEMICAL_BONUS,
-  CIRCUMSTANCE_MODIFIER,
-  COMPETENCE_MODIFIER,
-  INSIGHT_BONUS,
-  LUCK_MODIFIER,
-  MORALE_MODIFIER,
-  PROFANE_MODIFIER,
-  RACIAL_BONUS,
-  RESISTANCE_BONUS,
-  SACRED_MODIFIER,
-  Enhancement,
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonValue;
 
-  FEAT,
-  ITEM,
-  DOMAIN,
-  PROFICENCY,
-  CASTER,
-  SELECTED,
-  WEAPON_TYPE,
-  ARMOR_TYPE,
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum ModifierEnum {
+  ABILITY_MODIFIER(
+    "The bonus or penalty associated with a particular ability score. Ability modifiers apply to die rolls for character actions involving the corresponding abilities.",
+    "Ability Modifier"
+  ),
+  ALCHEMICAL_BONUS(
+    "An alchemical bonus is granted by the use of a nonmagical, alchemical substance such as antitoxin.",
+    "Alchemical Bonus"
+  ),
+  ARMOR_BONUS(
+    "An armor bonus applies to Armor Class and is granted by armor or by a spell or magical effect that mimics armor. Armor bonuses stack with all other bonuses to Armor Class (even with natural armor bonuses) except other armor bonuses. An armor bonus doesn't apply against touch attacks, except for armor bonuses granted by force effects (such as the mage armor spell) which apply against incorporeal touch attacks, such as that of a shadow.",
+    "Armor Bonus"
+  ),
+  CIRCUMSTANCE_MODIFIER(
+    "A circumstance bonus (or penalty) arises from specific conditional factors impacting the success of the task at hand. Circumstance bonuses stack with all other bonuses, including other circumstance bonuses, unless they arise from essentially the same source.",
+    "Circumstance Modifier"
+  ),
+  COMPETENCE_MODIFIER(
+    "A competence bonus (or penalty) affects a character's performance of a particular task, as in the case of the bardic ability to inspire competence. Such a bonus may apply on attack rolls, saving throws, skill checks, caster level checks, or any other checks to which a bonus relating to level or skill ranks would normally apply. It does not apply on ability checks, damage rolls, initiative checks, or other rolls that aren't related to a character's level or skill ranks. Multiple competence bonuses don't stack; only the highest bonus applies.",
+    "Competence Bonus"
+  ),
+  DEFLECTION_BONUS(
+    "A deflection bonus affects Armor Class and is granted by a spell or magic effect that makes attacks veer off harmlessly. Deflection bonuses stack with all other bonuses to AC except other deflection bonuses. A deflection bonus applies against touch attacks.",
+    "Deflection Bonus"
+  ),
+  DODGE_BONUS(
+    "A dodge bonus improves Armor Class (and sometimes Reflex saves) resulting from physical skill at avoiding blows and other ill effects. Dodge bonuses are never granted by spells or magic items. Any situation or effect (except wearing armor) that negates a character's Dexterity bonus also negates any dodge bonuses the character may have. Dodge bonuses stack with all other bonuses to AC, even other dodge bonuses. Dodge bonuses apply against touch attacks.",
+    "Dodge Bonus"
+  ),
+  INSIGHT_BONUS(
+    "An insight bonus improves performance of a given activity by granting the character an almost precognitive knowledge of what might occur. Multiple insight bonuses on the same character or object do not stack. Only the highest insight bonus applies.",
+    "Insight Bonus"
+  ),
+  LUCK_MODIFIER(
+    "A luck modifier represents good (or bad) fortune. Multiple luck bonuses on the same character or object do not stack. Only the highest luck bonus applies.",
+    "Luck Modifier"
+  ),
+  MORALE_MODIFIER(
+    "A morale bonus represents the effects of greater hope, courage, and determination (or hopelessness, cowardice, and despair in the case of a morale penalty). Multiple morale bonuses on the same character do not stack. Only the highest morale bonus applies. Nonintelligent creatures (creatures with an Intelligence of 0 or no Intelligence at all) cannot benefit from morale bonuses.",
+    "Morale Bonus"
+  ),
+  NATURAL_ARMOR_BONUS(
+    "A natural armor bonus improves Armor Class resulting from a creature's naturally tough hide. Natural armor bonuses stack with all other bonuses to Armor Class (even with armor bonuses) except other natural armor bonuses. Some magical effects (such as the barkskin spell) grant an enhancement bonus to the creature's existing natural armor bonus, which has the effect of increasing the natural armor's overall bonus to Armor Class. A natural armor bonus doesn't apply against touch attacks.",
+    "Natural Armor Bonus"
+  ),
+  PROFANE_MODIFIER(
+    "A profane bonus (or penalty) stems from the power of evil. Multiple profane bonuses on the same character or object do not stack. Only the highest profane bonus applies.",
+    "Profane Bonus"
+  ),
+  RACIAL_BONUS(
+    "A bonus granted because of the culture a particular creature was brought up in or because of innate characteristics of that type of creature. If a creature's race changes (for instance, if it dies and is reincarnated), it loses all racial bonuses it had in its previous form.",
+    "Racial Bonus"
+  ),
+  RESISTANCE_BONUS(
+    "A resistance bonus affects saving throws, providing extra protection against harm. Multiple resistance bonuses on the same character or object do not stack. Only the highest resistance bonus applies.",
+    "Resistance Bonus"
+  ),
+  SACRED_MODIFIER(
+    "A sacred bonus (or penalty) stems from the power of good. Multiple sacred bonuses on the same character or object do not stack. Only the highest sacred bonus applies.",
+    "Sacred Bonus"
+  ),
+  SHIELD_BONUS(
+    "A shield bonus improves Armor Class and is granted by a shield or by a spell or magic effect that mimics a shield. Shield bonuses stack with all other bonuses to AC except other shield bonuses. A magic shield typically grants an enhancement bonus to the shield's shield bonus, which has the effect of increasing the shield's overall bonus to AC. A shield bonus granted by a spell or magic item typically takes the form of an invisible, tangible field of force that protects the recipient. A shield bonus doesn't apply against touch attacks.",
+    "Shield Bonus"
+  ),
+  SIZE_BONUS(
+    "A size bonus or penalty is derived from a creature's size category. Size modifiers of different kinds apply to Armor Class, attack rolls, Hide checks, grapple checks, and various other checks.",
+    "Size Bonus"
+  ),
+
+  FEAT("", "Feat"),
+  ITEM("", "Item"),
+  DOMAIN("", "Domain"),
+  PROFICENCY("", "Proficency"),
+  CASTER("", "Caster"),
+  SELECTED("", "Selected"),
+  WEAPON_TYPE("", "Weapon Type"),
+  ARMOR_TYPE("", "Armor Type"),
 
   // ability
   STRENGTH,
-  STRENGTH_,
   DEXTERITY,
-  DEXTERITY_,
   CONSTITUTION,
-  CONSTITUTION_,
   INTELLIGENCE,
-  INTELLIGENCE_,
   WISDOM,
-  WISDOM_,
   CHARISMA,
-  CHARISMA_,
 
   // armor
-  SHIELD_BONUS, //+
   SIZE_MODIFIER, //+
   ARMOR_SIZE, //+
-  DODGE_BONUS, //+
-  ARMOR_BONUS, //+
-  NATURAL_ARMOR_BONUS, //+
-  DEFLECTION_BONUS, //+
   NO_ARMOR,
   LIGHT_ARMOR,
   MEDIUM_ARMOR,
@@ -59,8 +109,8 @@ public enum ModifierEnum {
   DISARM,
   OVERRUN,
   SUNDER,
-  BAB,
-  ATTACK_ROLL,
+  BAB("", "Base Attack Bonus"),
+  ATTACK_ROLL("", "Attack Roll"),
   THROWN,
   SLING,
   MOUNTED_RANGED,
@@ -132,7 +182,7 @@ public enum ModifierEnum {
   FEY,
 
   // immunity
-  IMMUNITY,
+  IMMUNITY("", ""),
   RESISTANCE,
   VULNERABILITY,
   FEAR,
@@ -312,31 +362,87 @@ public enum ModifierEnum {
   SHADOW,
   NECROMANCY,
   TRANSMUTATION,
-  AIR,
-  CHAOTIC,
-  DARKNESS,
-  DEATH,
-  EARTH,
-  EVIL,
-  FORCE,
-  GOOD,
-  LANGUAGE_DEPENDENT,
-  LAWFUL,
-  LIGHT,
-  MIND_AFFECTING,
-  SONIC,
-  LUCK,
-  UNIVERSAL,
+  AIR("Air"),
+  CHAOTIC("Chaotic"),
+  DARKNESS("Darkness"),
+  DEATH("Death"),
+  EARTH("Earth"),
+  EVIL("Evil"),
+  FORCE("Force"),
+  GOOD("Good"),
+  LANGUAGE_DEPENDENT("Language Dependent"),
+  LAWFUL("Lawful"),
+  LIGHT("Light"),
+  MIND_AFFECTING("Mind Affecting"),
+  SONIC("Sonic"),
+  LUCK("Luck"),
+  UNIVERSAL("Universal"),
 
-  SUPERNATURAL,
-  EXTRAORDINARY,
-  SPELL_LIKE,
-  CLASS_HD,
-  HALF_HD,
-  RACE_HD,
-  HALF_RACE,
-  HALF_COS,
-  HALF_CHA,
-  CHA,
-  COS,
+  SUPERNATURAL("Supernatural"),
+  EXTRAORDINARY("Extraordinary"),
+  SPELL_LIKE("Spell Like"),
+  CLASS_HD("Class Hit Dice"),
+  HALF_HD("Half Hit Dice"),
+  RACE_HD("Race Hit Dice"),
+  HALF_RACE("Half Race Bonus"),
+  HALF_COS("Half Consitution Bonus"),
+  HALF_CHA("Half Charisma Bonus"),
+  CHA("Charisma"),
+  COS("Consitution");
+
+  private final String description;
+  private final String text;
+
+  // 🔥 Permette di ricevere "good" dal frontend
+  @JsonCreator
+  public static ModifierEnum fromText(String value) {
+    if (value == null) {
+      return null;
+    }
+
+    for (ModifierEnum a : values()) {
+      // match by text (frontend style)
+      if (
+        a.text != null && !a.text.isBlank() && a.text.equalsIgnoreCase(value)
+      ) {
+        return a;
+      }
+
+      // match by enum name (DB / backend style)
+      if (a.name().equalsIgnoreCase(value)) {
+        return a;
+      }
+    }
+
+    throw new IllegalArgumentException("Invalid modifier enum value: " + value);
+  }
+
+  // 🔥 Se vuoi che quando invii solo l'enum venga serializzato come "good"
+  @JsonValue
+  public String toValue() {
+    return this.text;
+  }
+
+  ModifierEnum() {
+    this.description = "";
+    this.text = "";
+  }
+
+  ModifierEnum(String text) {
+    this.description = "";
+    this.text = text;
+  }
+
+  ModifierEnum(String description, String text) {
+    this.description = description;
+    this.text = text;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public String getText() {
+    return text;
+  }
 }

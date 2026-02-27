@@ -24,6 +24,7 @@
     <include file="race/001_race_type_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_racial_region_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_region_create.xml" relativeToChangelogFile="true"/>
+    <include file="race/001_choosen_region_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_size_create.xml" relativeToChangelogFile="true"/>
     <include file="race/001_sub_race_create.xml" relativeToChangelogFile="true"/>
     <include file="skills/001_skill_create.xml" relativeToChangelogFile="true"/>
@@ -36,6 +37,7 @@
     <include file="spells/001_school_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_create.xml" relativeToChangelogFile="true"/>
     <include file="spells/001_spells_table_create.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="modifier/001_modifier_bonus_create.xml" relativeToChangelogFile="true"/> -->
 
     <include file="charactercard/002_character_archetypes_relation.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/002_character_domains_relation.xml" relativeToChangelogFile="true"/>
@@ -55,6 +57,7 @@
     <include file="specialabilities/002_special_abilities_spells_relation.xml" relativeToChangelogFile="true"/>
     <include file="spells/002_domain_spells_relation.xml" relativeToChangelogFile="true"/>
     <include file="spells/002_spells_book_relation.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="modifier/002_prerequisite_modifier_bonus_relation.xml" relativeToChangelogFile="true"/> -->
 
     <include file="archetype/003_archetype_keys.xml" relativeToChangelogFile="true"/>
     <include file="attacks/003_attacks_keys.xml" relativeToChangelogFile="true"/>
@@ -90,6 +93,7 @@
     <include file="spells/003_domain_spell_keys.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_domains_keys.xml" relativeToChangelogFile="true"/>
     <include file="spells/003_spells_book_keys.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="modifier/003_prerequisite_modifier_bonus_keys.xml" relativeToChangelogFile="true"/> -->
 
     <include file="archetype/004_archetype_insert.xml" relativeToChangelogFile="true"/>
     <include file="archetype/004_archetype_prerequisite_insert.xml" relativeToChangelogFile="true"/>
@@ -132,6 +136,7 @@
     <include file="spells/004_school_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_table_insert.xml" relativeToChangelogFile="true"/>
+    <!-- <include file="modifier/004_modifier_bonus_insert.xml" relativeToChangelogFile="true"/> -->
 
     <include file="archetype/005_archetype_prerequisite_feat_insert.xml" relativeToChangelogFile="true"/>
     <include file="archetype/005_archetype_prerequisite_special_abilities_insert.xml" relativeToChangelogFile="true"/>

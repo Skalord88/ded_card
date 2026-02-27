@@ -1,11 +1,14 @@
 package pl.kolendateam.dadcard.race.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.persistence.criteria.CriteriaBuilder.In;
 import java.io.Serializable;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,25 +19,32 @@ import pl.kolendateam.dadcard.race.dto.ChoosenRegionDTO;
 
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChoosenRegion implements Serializable {
+@Entity
+@Table(name = "choosen_region")
+public class ChoosenRegion {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  int id;
+  private Integer id;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  LanguageEnum[] bonusLanguages;
+  @Column(name = "bonus_languages")
+  private Set<Integer> bonusLanguages;
 
-  Integer preferedDeities;
+  @Column(name = "prefered_deities")
+  private Integer preferedDeities;
 
-  Integer regionalFeats;
+  @Column(name = "regional_feats")
+  private Integer regionalFeats;
 
-  Integer[] regionalItems;
+  @JdbcTypeCode(SqlTypes.JSON)
+  @Column(name = "regional_items")
+  private Set<Integer> regionalItems;
 
-  Integer regionalAlignment;
+  @Column(name = "regional_alignment")
+  private Integer regionalAlignment;
 
   public ChoosenRegion(ChoosenRegionDTO choosenRegionDTO) {
     this.id = choosenRegionDTO.id;

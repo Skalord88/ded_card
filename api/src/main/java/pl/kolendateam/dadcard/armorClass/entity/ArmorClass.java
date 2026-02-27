@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.armorClass.entity;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,11 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 @NoArgsConstructor
 public class ArmorClass implements Serializable {
 
+  // int bonus;
+
+  @Enumerated(EnumType.STRING)
+  ModifierEnum modifierBonus;
+
   int sizeBonus;
   int armorBonus;
   int shieldBonus;
@@ -27,9 +34,9 @@ public class ArmorClass implements Serializable {
 
   String special;
 
-  public boolean checkPrerequisiteAC(ArmorClass aC) {
-    return aC.armorBonus > 0;
-  }
+  // public boolean checkPrerequisiteAC(ArmorClass aC) {
+  //   return aC.armorBonus > 0;
+  // }
 
   public ArmorClass(ArmorClassDTO armorClass) {
     this.sizeBonus = armorClass.sizeBonus;
@@ -39,6 +46,8 @@ public class ArmorClass implements Serializable {
     this.deflectionBonuses = armorClass.deflectionBonuses;
     this.naturalArmor = armorClass.naturalArmor;
     this.dodgeBonus = armorClass.dodgeBonus;
+    // this.bonus = armorClass.bonus;
+    this.modifierBonus = armorClass.modifierBonus;
     this.target = armorClass.target;
     this.special = armorClass.special;
   }

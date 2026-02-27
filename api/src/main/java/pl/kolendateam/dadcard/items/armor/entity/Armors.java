@@ -18,7 +18,6 @@ import pl.kolendateam.dadcard.items.entity.ItemTypeEnum;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor

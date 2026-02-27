@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.armorClass.dto;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
@@ -9,6 +11,11 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 @NoArgsConstructor
 public class ArmorClassDTO {
 
+  public int bonus;
+
+  @Enumerated(EnumType.STRING)
+  public ModifierEnum modifierBonus;
+
   public int sizeBonus;
   public int armorBonus;
   public int shieldBonus;
@@ -17,6 +24,7 @@ public class ArmorClassDTO {
   public int naturalArmor;
   public int dodgeBonus;
 
+  @Enumerated(EnumType.STRING)
   public ModifierEnum[] target;
 
   public String special;
@@ -29,6 +37,8 @@ public class ArmorClassDTO {
     this.deflectionBonuses = aC.getDeflectionBonuses();
     this.naturalArmor = aC.getNaturalArmor();
     this.dodgeBonus = aC.getDodgeBonus();
+    // this.bonus = aC.getBonus();
+    this.modifierBonus = aC.getModifierBonus();
     this.target = aC.getTarget() != null ? aC.getTarget() : null;
     this.special = aC.getSpecial() != null ? aC.getSpecial() : null;
   }

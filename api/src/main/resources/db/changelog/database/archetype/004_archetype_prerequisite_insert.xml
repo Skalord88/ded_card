@@ -15,7 +15,8 @@
                 }" />
       <column name="armor_class"
         value="{
-                &quot;naturalArmor&quot; : 4
+                &quot;naturalArmor&quot; : 4,
+                &quot;modifierBonus&quot; : &quot;Natural Armor Bonus&quot;
                 }" />
       <column name="saving_throw"
         value="{ &quot;resistance&quot; : [ {

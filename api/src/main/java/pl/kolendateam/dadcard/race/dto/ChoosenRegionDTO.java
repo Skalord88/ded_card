@@ -1,9 +1,9 @@
 package pl.kolendateam.dadcard.race.dto;
 
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.race.entity.ChoosenRegion;
-import pl.kolendateam.dadcard.race.entity.LanguageEnum;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,13 +11,13 @@ public class ChoosenRegionDTO {
 
   public int id;
 
-  public LanguageEnum[] bonusLanguages;
+  public Set<Integer> bonusLanguages;
 
   public Integer preferedDeities;
 
   public Integer regionalFeats;
 
-  public Integer[] regionalItems;
+  public Set<Integer> regionalItems;
 
   public Integer regionalAlignment;
 

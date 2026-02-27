@@ -6,12 +6,12 @@
     <changeSet id="003_spells_book_keys" author="oscar">
         <addForeignKeyConstraint baseTableName="spells_book"
             baseColumnNames="book_id"
-            constraintName="fk_book_spells_book_book"
+            constraintName="fk_spells_book_book"
             referencedTableName="book"
             referencedColumnNames="id" />
         <addForeignKeyConstraint baseTableName="spells_book"
             baseColumnNames="spells_id"
-            constraintName="fk_book_spells_book_spells"
+            constraintName="fk_spells_book_spells"
             referencedTableName="spells"
             referencedColumnNames="id" />
         </changeSet>

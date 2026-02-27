@@ -1,3 +1,5 @@
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
+
 export type Abilitys = {
     strength: number;
     dexterity: number;
@@ -5,6 +7,7 @@ export type Abilitys = {
     intelligence: number;
     wisdom: number;
     charisma: number;
+    modifierBonus: ModifierEnum;
   }
 
 export type AbilitysProps = {

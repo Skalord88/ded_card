@@ -1,10 +1,13 @@
 package pl.kolendateam.dadcard.abilitys.entity;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import java.io.Serializable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
+import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 
 @Setter
 @Getter
@@ -18,13 +21,17 @@ public class Abilitys implements Serializable {
   int wisdom;
   int charisma;
 
+  @Enumerated(EnumType.STRING)
+  ModifierEnum modifierBonus;
+
   public void setCharacterAbility(AbilitysDTO abilitysDTO) {
-    strength = abilitysDTO.strength;
-    dexterity = abilitysDTO.dexterity;
-    constitution = abilitysDTO.constitution;
-    intelligence = abilitysDTO.intelligence;
-    wisdom = abilitysDTO.wisdom;
-    charisma = abilitysDTO.charisma;
+    this.strength = abilitysDTO.strength;
+    this.dexterity = abilitysDTO.dexterity;
+    this.constitution = abilitysDTO.constitution;
+    this.intelligence = abilitysDTO.intelligence;
+    this.wisdom = abilitysDTO.wisdom;
+    this.charisma = abilitysDTO.charisma;
+    this.modifierBonus = abilitysDTO.modifierBonus == null ? null : abilitysDTO.modifierBonus;
   }
 
   // public int bonusStreght(Abilitys abilitys) {

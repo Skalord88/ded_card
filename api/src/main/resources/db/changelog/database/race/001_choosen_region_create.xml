@@ -1,0 +1,27 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="001_choosen_region_create" author="oscar">
+        <createTable tableName="choosen_region">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="bonus_languages" type="json">
+                <constraints nullable="true" />
+            </column>
+            <column name="prefered_deities" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+            <column name="regional_feats" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+            <column name="regional_items" type="json">
+                <constraints nullable="true" />
+            </column>
+            <column name="regional_alignment" type="INTEGER">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

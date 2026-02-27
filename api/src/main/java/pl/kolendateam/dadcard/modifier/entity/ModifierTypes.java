@@ -11,27 +11,20 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pl.kolendateam.dadcard.modifier.dto.ModifierDTO;
 
 // @Entity
-@NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@NoArgsConstructor
 @Setter
-public class ModifierBonus implements Serializable {
+@Getter
+public class ModifierTypes implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   int id;
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifier;
+  ModifierEnum type;
 
-  int bonus;
-
-  public ModifierBonus(ModifierDTO mod) {
-    this.modifier = mod.modifier;
-    this.bonus = mod.bonus;
-    // this.targets = mod.targets;
-  }
+  String description;
 }

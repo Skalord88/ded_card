@@ -13,7 +13,8 @@ public class MapperAbilitys {
         abilitys.getConstitution(),
         abilitys.getIntelligence(),
         abilitys.getWisdom(),
-        abilitys.getCharisma()
+        abilitys.getCharisma(),
+        abilitys.getModifierBonus()
       );
     }
     return new AbilitysDTO();
