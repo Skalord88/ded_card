@@ -23,6 +23,7 @@ import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Entity
 @DiscriminatorValue(value = "ARMOR")
 public class Armors extends Item {
 

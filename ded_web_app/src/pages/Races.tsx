@@ -6,10 +6,10 @@ import { addToDrop, itemInDrop } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
 import { ListOfSomething } from "../components/List/List";
 import { findIconRace } from "../components/Race/Function";
-import { Race, SubRace } from "../components/Race/Interfaces";
-import { CharSummary } from "../components/Summary/CharSummary";
+import { Archetype, Race, SubRace } from "../components/Race/Interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 
 export type ChosenRace = {
   id: number;
@@ -41,6 +41,11 @@ export const Races = () => {
           setSelectedRace(charFromDB.race.race)
           setSelectedSubRace(charFromDB.race)
         }
+
+        const resArchi = await axios.get("http://localhost:8080/race/archetype");
+        const one: Archetype | undefined = (resArchi.data as Archetype[]).find(a => a.id === 1);
+        const mod: Prerequisite | null = one?.modifiers || null;
+        console.log("mod", mod?.armorClass?.modifierBonus.description);
 
         const resRaceList = await axios.get(urlRace);
         const resSubRaceList = await axios.get(urlRaceList);

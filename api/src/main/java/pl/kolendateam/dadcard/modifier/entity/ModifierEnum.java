@@ -417,12 +417,6 @@ public enum ModifierEnum {
     throw new IllegalArgumentException("Invalid modifier enum value: " + value);
   }
 
-  // 🔥 Se vuoi che quando invii solo l'enum venga serializzato come "good"
-  @JsonValue
-  public String toValue() {
-    return this.text;
-  }
-
   ModifierEnum() {
     this.description = "";
     this.text = "";

@@ -1,4 +1,5 @@
 import { Inventory, SignAndNumber } from "../../interfaces";
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 
 export type ArmorList = {
   signNum: SignAndNumber;
@@ -15,6 +16,7 @@ export type ArmorModifiers = {
   natural: number;
   dodge: number;
   deflection: number;
+  modifierBonus: ModifierEnum;
 };
 
 export type InventoryProps = {
@@ -33,4 +35,6 @@ export type ArmorClass = {
   target: string[];
 
   special?: string;
+
+  modifierBonus: ModifierEnum;
 };
