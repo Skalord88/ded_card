@@ -502,101 +502,99 @@
         <!-- Armor id:52.000 prerequisite -->
         <insert tableName="prerequisite">
             <column name="id" value="52001" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 1 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52002" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 2 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52003" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 3 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52004" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 4 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52005" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 5 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52006" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 6 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :6, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52007" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 7 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :7, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52008" />
-            <column name="armor_class" value="{ &quot;armorBonus&quot; : 8 }" />
+            <column name="armor_class" value="{
+            &quot;bonus&quot; :8, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
         </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="52101" />
-            <column name="armor_class" value="
-            {&quot;dodgeBonus&quot;: 1}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52102" />
-            <column name="armor_class" value="
-            {&quot;dodgeBonus&quot;: 2}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52103" />
-            <column name="armor_class" value="
-            {&quot;dodgeBonus&quot;: 3}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52104" />
-            <column name="armor_class" value="
-            {&quot;dodgeBonus&quot;: 4}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52105" />
-            <column name="armor_class" value="
-            {&quot;dodgeBonus&quot;: 5}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="52201" />
-            <column name="armor_class" value="
-            {&quot;naturalArmor&quot;: 1}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52202" />
-            <column name="armor_class" value="
-            {&quot;naturalArmor&quot;: 2}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52203" />
-            <column name="armor_class" value="
-            {&quot;naturalArmor&quot;: 3}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52204" />
-            <column name="armor_class" value="
-            {&quot;naturalArmor&quot;: 4}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52205" />
-            <column name="armor_class" value="
-            {&quot;naturalArmor&quot;: 5}" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
 
         <!-- Shield id:51.000 prerequisite -->
         <insert tableName="prerequisite">
             <column name="id" value="51001" />
-            <column name="armor_class" value="{ &quot;shieldBonus&quot; : 1 }" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;SHIELD_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="51002" />
-            <column name="armor_class" value="{ &quot;shieldBonus&quot; : 2 }" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;SHIELD_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="51004" />
-            <column name="armor_class" value="{ &quot;shieldBonus&quot; : 4 }" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SHIELD_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
             <column name="attack_roll" value="{ &quot;bonus&quot; : -2 }" />
         </insert>
 

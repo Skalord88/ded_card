@@ -4,14 +4,19 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="001_modifier_bonus_create" author="oscar">
-        <createTable tableName="modifier_type">
+        <createTable tableName="modifier_bonus">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" />
             </column>
             <column name="modifier" type="VARCHAR(20)">
-                <constraints nullable="false" unique="true"/>
+                <constraints nullable="false" unique="true" />
             </column>
-            <column name="bonus" type="INTEGER"/>
+
+            <column name="bonus" type="INTEGER" />
+
+            <column name="targets" type="JSON">
+                <constraints nullable="false" unique="true" />
+            </column>
         </createTable>
     </changeSet>
 

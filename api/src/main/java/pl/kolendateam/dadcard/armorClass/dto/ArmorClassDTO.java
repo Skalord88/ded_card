@@ -16,13 +16,13 @@ public class ArmorClassDTO {
   @Enumerated(EnumType.STRING)
   public ModifierEnum modifierBonus;
 
-  public int sizeBonus;
-  public int armorBonus;
-  public int shieldBonus;
-  public int enhancementBonuses;
-  public int deflectionBonuses;
-  public int naturalArmor;
-  public int dodgeBonus;
+  // public int sizeBonus;
+  // public int armorBonus;
+  // public int shieldBonus;
+  // public int enhancementBonuses;
+  // public int deflectionBonuses;
+  // public int naturalArmor;
+  // public int dodgeBonus;
 
   @Enumerated(EnumType.STRING)
   public ModifierEnum[] target;
@@ -30,14 +30,14 @@ public class ArmorClassDTO {
   public String special;
 
   public ArmorClassDTO(ArmorClass aC) {
-    this.sizeBonus = aC.getSizeBonus();
-    this.armorBonus = aC.getArmorBonus();
-    this.shieldBonus = aC.getShieldBonus();
-    this.enhancementBonuses = aC.getEnhancementBonuses();
-    this.deflectionBonuses = aC.getDeflectionBonuses();
-    this.naturalArmor = aC.getNaturalArmor();
-    this.dodgeBonus = aC.getDodgeBonus();
-    // this.bonus = aC.getBonus();
+    // this.sizeBonus = aC.getSizeBonus();
+    // this.armorBonus = aC.getArmorBonus();
+    // this.shieldBonus = aC.getShieldBonus();
+    // this.enhancementBonuses = aC.getEnhancementBonuses();
+    // this.deflectionBonuses = aC.getDeflectionBonuses();
+    // this.naturalArmor = aC.getNaturalArmor();
+    // this.dodgeBonus = aC.getDodgeBonus();
+    this.bonus = aC.getBonus();
     this.modifierBonus = aC.getModifierBonus();
     this.target = aC.getTarget() != null ? aC.getTarget() : null;
     this.special = aC.getSpecial() != null ? aC.getSpecial() : null;

@@ -29,9 +29,12 @@ public class ModifierBonus implements Serializable {
 
   int bonus;
 
+  @Enumerated(EnumType.STRING)
+  ModifierEnum[] targets;
+
   public ModifierBonus(ModifierDTO mod) {
     this.modifier = mod.modifier;
     this.bonus = mod.bonus;
-    // this.targets = mod.targets;
+    this.targets = mod.targets;
   }
 }

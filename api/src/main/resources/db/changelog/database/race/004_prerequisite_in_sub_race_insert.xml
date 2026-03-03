@@ -225,10 +225,7 @@
                 &quot;constitution&quot; : 2,
                 &quot;charisma&quot; : -2
                 }" />
-            <column name="armor_class"
-                value="{
-                &quot;naturalArmor&quot; : 2
-                }" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
         </insert>
 

@@ -43,9 +43,9 @@ export const Races = () => {
         }
 
         const resArchi = await axios.get("http://localhost:8080/race/archetype");
-        const one: Archetype | undefined = (resArchi.data as Archetype[]).find(a => a.id === 1);
-        const mod: Prerequisite | null = one?.modifiers || null;
-        console.log("mod", mod?.armorClass?.modifierBonus.description);
+        // const one: Archetype | undefined = (resArchi.data as Archetype[]).find(a => a.id === 1);
+        // const mod: Prerequisite | null = one?.modifiers || null;
+        // console.log("mod", mod?.armorClass?.modifierBonus.description);
 
         const resRaceList = await axios.get(urlRace);
         const resSubRaceList = await axios.get(urlRaceList);

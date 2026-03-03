@@ -13,12 +13,12 @@ public class ModifierDTO {
   public int bonus;
 
   // public ModifierEnum[] selected;
-  // public ModifierEnum[] targets;
+  public ModifierEnum[] targets;
 
   public ModifierDTO(ModifierBonus mod) {
     this.modifier = mod.getModifier();
     this.bonus = mod.getBonus();
     // this.selected = mod.getSelected();
-    // this.targets = mod.getTargets() != null ? mod.getTargets() : null;
+    this.targets = mod.getTargets() != null ? mod.getTargets() : null;
   }
 }

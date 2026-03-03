@@ -13,7 +13,6 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import java.io.Serializable;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -108,14 +107,6 @@ public class Prerequisite implements Serializable {
     inverseJoinColumns = @JoinColumn(name = "prerequisite_skill_id")
   )
   List<PrerequisiteSkills> prerequisiteSkillsStudy = new ArrayList<>();
-
-  // @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-  // @JoinTable(
-  //   name = "prerequisite_modifier_bonus",
-  //   joinColumns = @JoinColumn(name = "prerequisite_id"),
-  //   inverseJoinColumns = @JoinColumn(name = "modifier_bonus_id")
-  // )
-  // Set<ModifierBonus> modifierBonus = new HashSet<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
   ArmorClass armorClass;

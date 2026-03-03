@@ -9,12 +9,7 @@
             <column name="id" value="100001" />
             <!-- Dwarf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
-            <column name="armor_class"
-                value="{
-                &quot;dodgeBonus&quot;: 4,
-                &quot;target&quot;: [&quot;GIANT&quot;],
-                &quot;special&quot; : &quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;
-                }" />
+            <column name="armor_class" value="{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;GIANT&quot; ], &quot;special&quot; :&quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;}" />
             <column name="special_attacks"
                 value="{
                 &quot;vsBullRush&quot;: 4,

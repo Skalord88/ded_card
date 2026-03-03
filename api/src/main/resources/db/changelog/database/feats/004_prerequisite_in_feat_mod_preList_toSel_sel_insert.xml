@@ -668,11 +668,7 @@
         &quot;resistance&quot; : [ {
         &quot;target&quot; : [ &quot;TRAP&quot; ]
       } ] }" />
-      <column name="armor_class"
-        value="{ 
-        &quot;dodgeBonus&quot; : 1,
-        &quot;target&quot; : [ &quot;TRAP&quot; ]
-      }" />
+      <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}" />
       <column name="text" value="Sense for trap" />
     </insert>
 
@@ -827,7 +823,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="50001" />
       <column name="abilitys" value="{ &quot;constitution&quot; : 13 }" />
-      <column name="armor_class" value="{ &quot;naturalArmor&quot; : 1 }" />
+      <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
       <column name="text" value="Natural armor, Con 13." />
     </insert>
 

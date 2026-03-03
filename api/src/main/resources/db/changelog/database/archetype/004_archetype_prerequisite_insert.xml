@@ -15,7 +15,7 @@
                 }" />
       <column name="armor_class"
         value="{
-                &quot;naturalArmor&quot; : 4,
+                &quot;bonus&quot; : 4,
                 &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;
                 }" />
       <column name="saving_throw"
@@ -40,10 +40,7 @@
                 &quot;intelligence&quot; : 4,
                 &quot;charisma&quot; : 4
                 }" />
-      <column name="armor_class"
-        value="{
-                &quot;naturalArmor&quot; : 1
-                }" />
+      <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; : null, &quot;special&quot; :null}" />
       <column name="speed" value="{
                 &quot;fly&quot; : 30
                 }" />
@@ -63,10 +60,7 @@
                 &quot;strength&quot; : 6,
                 &quot;dexterity&quot; : 4
                 }" />
-      <column name="armor_class"
-        value="{
-                &quot;naturalArmor&quot; : 6
-                }" />
+      <column name="armor_class" value="{ &quot;bonus&quot; :6, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
     </insert>
     <!-- Vampire -->
 
