@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.attack.entity;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,7 +18,8 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 @Setter
 public class DamageBonus implements Serializable {
 
-  public ModifierEnum modifierBonus; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
+  @Enumerated(EnumType.STRING)
+  ModifierEnum modifierBonus; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;

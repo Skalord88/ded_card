@@ -50,13 +50,13 @@ public class PrerequisiteDTO {
   public SpellLevel[] caster;
   public Integer bab;
   public Integer initiative;
-  public AttackRollDTO attackRoll;
+  public AttackRollDTO[] attackRoll;
   public DamageBonusDTO damageBonus;
   public SpeedDTO speed;
   public SavingThrowDTO savingThrow;
   public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
-  public ArmorClassDTO armorClass;
+  public ArmorClassDTO[] armorClass;
   public ArmorsEnum armorType;
   public WeaponCategoriesEnum weaponType;
   public List<SchoolDTO> schools;

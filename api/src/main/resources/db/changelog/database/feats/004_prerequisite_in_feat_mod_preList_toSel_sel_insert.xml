@@ -242,8 +242,7 @@
     <!-- Greater Weapon Focus [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1023" />
-      <column name="attack_roll"
-        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
       <column name="text"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
     </insert>
@@ -285,8 +284,7 @@
     <!-- Improved Critical [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1024" />
-      <column name="attack_roll"
-        value="{ &quot;improved&quot; : &quot;true&quot;, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="attack_roll" value="[{ &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :&quot;TRUE&quot;, &quot;type&quot; :null}]" />
       <column name="text"
         value="Increment range of critical on the selected weapon." />
     </insert>
@@ -475,11 +473,7 @@
     <!-- Point Blank Shot [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1019" />
-      <column name="attack_roll"
-        value="{
-        &quot;bonus&quot; : 1,
-        &quot;type&quot;: [&quot;RANGED&quot;]
-      }" />
+      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :[&quot;RANGED&quot;]}]" />
       <column name="damage_bonus"
         value="{
         &quot;bonus&quot; : 1,
@@ -618,8 +612,7 @@
     <!-- Weapon Focus [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1020" />
-      <column name="attack_roll"
-        value="{&quot;bonus&quot; : 1, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
     </insert>
 
@@ -668,7 +661,7 @@
         &quot;resistance&quot; : [ {
         &quot;target&quot; : [ &quot;TRAP&quot; ]
       } ] }" />
-      <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}" />
+      <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}]" />
       <column name="text" value="Sense for trap" />
     </insert>
 
@@ -823,7 +816,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="50001" />
       <column name="abilitys" value="{ &quot;constitution&quot; : 13 }" />
-      <column name="armor_class" value="{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}" />
+      <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
       <column name="text" value="Natural armor, Con 13." />
     </insert>
 

@@ -87,7 +87,7 @@ public class Prerequisite implements Serializable {
   Integer bab;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  AttackRoll attackRoll;
+  AttackRoll[] attackRoll;
 
   Integer initiative;
 
@@ -109,7 +109,7 @@ public class Prerequisite implements Serializable {
   List<PrerequisiteSkills> prerequisiteSkillsStudy = new ArrayList<>();
 
   @JdbcTypeCode(SqlTypes.JSON)
-  ArmorClass armorClass;
+  ArmorClass[] armorClass;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
