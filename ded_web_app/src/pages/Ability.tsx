@@ -9,6 +9,11 @@ import { CharacterPc } from "../components/interfaces";
 import { AllSkills } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
+import { AllPrerequisiteMap } from "../components/Prerequisite/interface/AllPrerequisite";
+import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
+import { findAllPrerequisiteModifier } from "../components/Prerequisite/functions/findSpecificPrerequisite";
+import { ModifiedCharacter, modifiedCharacter } from "../components/Prerequisite/functions/modifiedCharacter";
 // import { PageAndSummaryLayout } from "./AppLayout";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
@@ -25,6 +30,9 @@ export function Ability() {
         const resChar = await axios.get(urlChar + "/" + charId);
         const charData: CharacterPc = resChar.data;
         setAbilitys(charData.abilitys);
+        
+        const modChar: ModifiedCharacter = modifiedCharacter(charData);
+
       } catch (error) {
         console.error(error);
       }
@@ -41,6 +49,7 @@ export function Ability() {
         intelligence: prevAbilities?.intelligence ?? 0,
         wisdom: prevAbilities?.wisdom ?? 0,
         charisma: prevAbilities?.charisma ?? 0,
+        modifierBonus: prevAbilities?.modifierBonus as ModifierEnum,
         [ability]: option
       }));
     }
@@ -59,8 +68,15 @@ export function Ability() {
     <PageLayout
       title="Abilities"
       buttons={{
-        next: { text: "Class", link: "/class/" + charId, change: abilitys &&
-          abilitisBaseValue.every(value => Object.values(abilitys).includes(value)) }
+        next: {
+          text: "Class",
+          link: "/class/" + charId,
+          change:
+            abilitys &&
+            abilitisBaseValue.every((value) =>
+              Object.values(abilitys).includes(value)
+            )
+        }
       }}
       onAction={handleSubmit}
     >
@@ -87,64 +103,76 @@ export function Ability() {
               ))}
             </p>
           </div>
-          {abilitys && 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: "10px" }}>
-            <AbilityLayout
-              number={abilitys.strength}
-              ability="STRENGTH" 
-              value={{ abilities: abilitys, text: "STR" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "strength")}
-            />
-            </AbilityLayout>
-            <AbilityLayout
-              number={abilitys.dexterity}
-              ability="DEXTERITY" 
-              value={{ abilities: abilitys, text: "DEX" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "dexterity")}
-            />
-            </AbilityLayout>
-            <AbilityLayout
-              number={abilitys.constitution}
-              ability="CONSTITUTION" 
-              value={{ abilities: abilitys, text: "CON" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "constitution")}
-            />
-            </AbilityLayout>
-            <AbilityLayout
-              number={abilitys.intelligence}
-              ability="INTELLIGENCE" 
-              value={{ abilities: abilitys, text: "INT" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "intelligence")}
-            />
-            </AbilityLayout>
-            <AbilityLayout
-              number={abilitys.wisdom}
-              ability="WISDOM" 
-              value={{ abilities: abilitys, text: "WIS" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "wisdom")}
-            />
-            </AbilityLayout>
-            <AbilityLayout
-              number={abilitys.charisma}
-              ability="CHARISMA" 
-              value={{ abilities: abilitys, text: "CHA" }}>
-            <DropdownComponent
-              options={addToDrop(abilitisBaseValue, "number")}
-              onAction={(option) => handleData(option, "charisma")}
-            />
-            </AbilityLayout>
+          {abilitys && (
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
+                gap: "10px"
+              }}
+            >
+              <AbilityLayout
+                number={abilitys.strength}
+                ability="STRENGTH"
+                value={{ abilities: abilitys, text: "STR" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "strength")}
+                />
+              </AbilityLayout>
+              <AbilityLayout
+                number={abilitys.dexterity}
+                ability="DEXTERITY"
+                value={{ abilities: abilitys, text: "DEX" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "dexterity")}
+                />
+              </AbilityLayout>
+              <AbilityLayout
+                number={abilitys.constitution}
+                ability="CONSTITUTION"
+                value={{ abilities: abilitys, text: "CON" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "constitution")}
+                />
+              </AbilityLayout>
+              <AbilityLayout
+                number={abilitys.intelligence}
+                ability="INTELLIGENCE"
+                value={{ abilities: abilitys, text: "INT" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "intelligence")}
+                />
+              </AbilityLayout>
+              <AbilityLayout
+                number={abilitys.wisdom}
+                ability="WISDOM"
+                value={{ abilities: abilitys, text: "WIS" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "wisdom")}
+                />
+              </AbilityLayout>
+              <AbilityLayout
+                number={abilitys.charisma}
+                ability="CHARISMA"
+                value={{ abilities: abilitys, text: "CHA" }}
+              >
+                <DropdownComponent
+                  options={addToDrop(abilitisBaseValue, "number")}
+                  onAction={(option) => handleData(option, "charisma")}
+                />
+              </AbilityLayout>
             </div>
-          }
+          )}
         </div>
       )}
     </PageLayout>
@@ -171,10 +199,9 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
         placeItems: "center"
       }}
     >
-
-        <h4>{ability}</h4>
-        <p>{number && number}</p>
-        {children}
+      <h4>{ability}</h4>
+      <p>{number && number}</p>
+      {children}
       <div>
         <p>
           {value && SignNumber(BonusAbilities(value?.abilities, value?.text))}
@@ -212,7 +239,7 @@ export const AbilitySkillsString: React.FC<AbilityLayoutProps> = ({
   const skills = AllSkills();
   const abilitySkillsString: string = skills
     .filter((skill) => skill.ability === ability?.toUpperCase())
-    .map((skill) => FormattingText(skill.skillName))
+    .map((skill) => FormattingText(skill.skillName.toString()))
     .join(", ");
   return (
     <div style={{ margin: "10px" }}>

@@ -7,7 +7,7 @@ export type Abilitys = {
     intelligence: number;
     wisdom: number;
     charisma: number;
-    modifierBonus: ModifierEnum;
+    modifierBonus?: ModifierEnum;
   }
 
 export type AbilitysProps = {

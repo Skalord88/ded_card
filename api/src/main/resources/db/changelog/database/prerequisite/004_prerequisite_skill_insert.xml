@@ -15,6 +15,7 @@
             <column name="skill_id" value="1" />
             <!-- APPRAISE 2 -->
             <column name="rank" value="2" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -22,6 +23,7 @@
             <column name="skill_id" value="1" />
             <!-- APPRAISE -2 -->
             <column name="rank" value="-2" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -43,6 +45,7 @@
             <!-- CLIMB 2 -->
             <column name="rank" value="2" />
             <column name="id" value="42" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="4" />
@@ -68,6 +71,7 @@
             <column name="skill_id" value="6" />
             <!-- CRAFT -->
             <column name="rank" value="2" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
             <column name="id" value="62" />
         </insert>
         <insert tableName="prerequisite_skill">
@@ -75,6 +79,7 @@
             <!-- CRAFT -2 -->
             <column name="rank" value="-2" />
             <column name="id" value="602" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -82,6 +87,7 @@
             <!-- DIPLOMACY -->
             <column name="rank" value="2" />
             <column name="id" value="72" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -128,6 +134,7 @@
             <!-- GATHER_INFORMATION -->
             <column name="rank" value="2" />
             <column name="id" value="112" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -185,6 +192,7 @@
             <!-- HIDE 4 -->
             <column name="rank" value="4" />
             <column name="id" value="144" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="14" />
@@ -235,6 +243,7 @@
             <!-- JUMP -->
             <column name="rank" value="2" />
             <column name="id" value="162" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -249,12 +258,14 @@
             <!-- LISTEN -->
             <column name="rank" value="1" />
             <column name="id" value="181" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="18" />
             <!-- LISTEN -->
             <column name="rank" value="2" />
             <column name="id" value="182" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -280,6 +291,7 @@
             <!-- MOVE_SILENTLY 2 -->
             <column name="rank" value="2" />
             <column name="id" value="192" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -320,12 +332,14 @@
             <!-- SEARCH -->
             <column name="rank" value="1" />
             <column name="id" value="231" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="23" />
             <!-- SEARCH -->
             <column name="rank" value="2" />
             <column name="id" value="232" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">
@@ -360,12 +374,14 @@
             <!-- SPOT -->
             <column name="rank" value="1" />
             <column name="id" value="281" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="28" />
             <!-- SPOT -->
             <column name="rank" value="2" />
             <column name="id" value="282" />
+            <column name="modifier_bonus" value="RACIAL_BONUS" />
         </insert>
 
         <insert tableName="prerequisite_skill">

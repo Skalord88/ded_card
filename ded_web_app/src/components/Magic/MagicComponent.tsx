@@ -1,3 +1,4 @@
+import { Spell } from "../interfaces";
 import { Popup } from "../Popup/Popup";
 import { CharToModify } from "../Prerequisite/functions/modifyCharacter";
 
@@ -12,11 +13,12 @@ export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
       {char.spellsPerDay &&
         char.spellsPerDay.map((table, index) => (
           <div key={index}>
-            <p>{table.classe} day spells:</p>
-            {table.spells &&
-              table.spells.map((s, index) => {
+            <p>{table?.caster} day spells:</p>
+            {/* {table?.spellsBook && 
+              table.spellsBook.map((s, index) => {
+                if(s as Spell){
                 const show: number | string | null =
-                  s === -2
+                  s. === -2
                     ? "All"
                     : s === -1
                     ? null
@@ -24,7 +26,7 @@ export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
                     ? "can't cast"
                     : s === 0
                     ? "can't cast"
-                    : s;
+                    : s;}
                 const lght = table.spells ? table.spells.length : 0;
                 return show ? (
                   <span>
@@ -32,14 +34,14 @@ export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
                     {lght - 1 > index ? <> / </> : null}
                   </span>
                 ) : null;
-              })}
+              })} */}
           </div>
         ))}
       {char.spellsKnown &&
         char.spellsKnown.map((table, index) => (
           <div key={index}>
-            <p>{table.classe} known spells:</p>
-            {table.spells &&
+            <p>{table?.caster} known spells:</p>
+            {/* {table.spells &&
               table.spells.map((s, index) => {
                 const show: number | string | null =
                   s === -2
@@ -58,10 +60,10 @@ export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
                     {lght - 1 > index ? <> / </> : null}
                   </span>
                 ) : null;
-              })}
+              })} */}
           </div>
         ))}
-      {char.books &&
+      {/* {char.books &&
         char.books.map((book, index) => (
           <div key={`book-${index}`}>
             <p>{book.caster} prepared:</p>
@@ -82,7 +84,7 @@ export const MagicComponent: React.FC<MagicComponentProps> = ({ char }) => {
               );
             })}
           </div>
-        ))}
+        ))} */}
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { Initiative } from "../components/Initiative/Initiative";
 import { CharacterPc } from "../components/interfaces";
 
 import { CharacterArmor } from "../components/Armor/CharacterArmor";
-import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
+// import { BaseAttack } from "../components/Attack/BaseAttack/BaseAttack";
 import { MapOfAttackComponent } from "../components/Attack/MapOfAttackComponent";
 import { FeatsComponent } from "../components/Feats/FeatsComponent";
 import { HpComponent } from "../components/HpComponent";
@@ -35,7 +35,12 @@ export const Show = () => {
       try {
         if (charId) {
           const resURL = await axios.get(urlChar + "/" + charId);
-          setChar(resURL.data);
+          const charData: CharacterPc = resURL.data;
+          setChar(charData);
+
+          const modChar: CharToModify = createModChar(charData);
+
+          console.log(modChar);
         }
       } catch (error) {
         console.log(error);
@@ -57,7 +62,7 @@ export const Show = () => {
           <CharacterData char={char} />
           <AbilitysComponent abilitys={modChar.abilitys} />
           <ClassExpGold char={char} />
-          <BaseAttack char={modChar} />
+          {/* // <BaseAttack char={modChar} /> */}
           <Initiative char={modChar} />
           <SavingThrowComponent char={modChar} />
           <HpComponent char={modChar} />
@@ -132,7 +137,7 @@ export const Show = () => {
                 gridRow: 3
               }}
             >
-              <BaseAttack char={modChar} />
+              {/* <BaseAttack char={modChar} /> */}
             </div>
 
             <div

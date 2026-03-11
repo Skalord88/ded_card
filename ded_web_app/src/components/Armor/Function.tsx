@@ -6,31 +6,36 @@ import { ArmorList } from "./interface/ArmorInterface";
 export function calculateArmorInChar(char: CharToModify): ArmorList {
   const enchArmor: number = char.inventory.armor.enchantmentBonus ?? 0;
   const enchShield: number = char.inventory.shield.enchantmentBonus ?? 0;
-  const size: number = char.armor.mono.reduce(
-    (tot, armor) => (armor ? (armor.sizeBonus ?? 0) + tot : tot),
-    0
-  );
-  const natural: number = char.armor.mono.reduce(
-    (tot, armor) => (armor ? (armor.naturalArmor ?? 0) + tot : tot),
-    0
-  );
-  const dodge: number = char.armor.mono.reduce(
-    (tot, armor) => (armor ? (armor.dodgeBonus ?? 0) + tot : tot),
-    0
-  );
-  const deflection: number = char.armor.mono.reduce(
-    (tot, armor) => (armor ? (armor.deflectionBonuses ?? 0) + tot : tot),
-    0
-  );
+  const size: number = 0
+  //  char.armor.mono.reduce(
+  //   (tot, armor) => (armor ? (armor.sizeBonus ?? 0) + tot : tot),
+  //   0
+  // );
+  const natural: number = 0
+  //  char.armor.mono.reduce(
+  //   (tot, armor) => (armor ? (armor.naturalArmor ?? 0) + tot : tot),
+  //   0
+  // );
+  const dodge: number = 0
+  //  char.armor.mono.reduce(
+  //   (tot, armor) => (armor ? (armor.dodgeBonus ?? 0) + tot : tot),
+  //   0
+  // );
+  const deflection: number = 0
+  //  char.armor.mono.reduce(
+  //   (tot, armor) => (armor ? (armor.deflectionBonuses ?? 0) + tot : tot),
+    // 0
+  // );
 
   let armorList: ArmorList = [];
   if (
-    char.inventory.armor.modifiers?.armorClass &&
-    char.inventory.armor.modifiers?.armorClass.armorBonus
+    char.inventory.armor.modifiers?.armorClass 
+    // &&
+    // char.inventory.armor.modifiers?.armorClass.armorBonus
   )
     armorList.push({
       signNum: signAndCount([
-        char.inventory.armor.modifiers?.armorClass?.armorBonus,
+        // char.inventory.armor.modifiers?.armorClass?.armorBonus,
         enchArmor < 0 ? 0 : enchArmor
       ]),
       text: "armor",
@@ -38,12 +43,12 @@ export function calculateArmorInChar(char: CharToModify): ArmorList {
       icon: "rpgui-icon armor"
     });
   if (
-    char.inventory.shield.modifiers?.armorClass &&
-    char.inventory.shield.modifiers?.armorClass.shieldBonus
+    char.inventory.shield.modifiers?.armorClass 
+    // && char.inventory.shield.modifiers?.armorClass.shieldBonus
   )
     armorList.push({
       signNum: signAndCount([
-        char.inventory.shield.modifiers?.armorClass?.shieldBonus,
+        // char.inventory.shield.modifiers?.armorClass?.shieldBonus,
         enchShield < 0 ? 0 : enchShield
       ]),
       text: "shield",

@@ -447,7 +447,7 @@
             <column name="id" value="9003" />
             <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="{ &quot;bonus&quot; : 1, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+                value="[{ &quot;bonus&quot; : 1, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+1 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -456,7 +456,7 @@
             <column name="id" value="9004" />
             <column name="attack_roll" value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="{ &quot;bonus&quot; : 2, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+                value="[{ &quot;bonus&quot; : 2, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+2 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -466,7 +466,7 @@
             <column name="id" value="9005" />
             <column name="attack_roll" value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="{ &quot;bonus&quot; : 3, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+                value="[{ &quot;bonus&quot; : 3, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+3 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -476,7 +476,7 @@
             <column name="id" value="9006" />
             <column name="attack_roll" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="{ &quot;bonus&quot; : 4, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+                value="[{ &quot;bonus&quot; : 4, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+4 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -486,7 +486,7 @@
             <column name="id" value="9007" />
             <column name="attack_roll" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="{ &quot;bonus&quot; : 5, &quot;target&quot; : [&quot;ITEM&quot;] }" />
+                value="[{ &quot;bonus&quot; : 5, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+5 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>

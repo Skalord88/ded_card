@@ -6,13 +6,38 @@ import { SpecialAttacks } from "../../interfaces";
 import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
+import { AllPrerequisiteMap } from "../interface/AllPrerequisite";
 import { Prerequisite } from "../interface/Prerequisite";
 import {
-    ArmorClassElement,
-    AttackRollElement,
-    DamageBonusElement,
-    SkillsElement
+  ArmorClassElement,
+  AttackRollElement,
+  DamageBonusElement,
+  SkillsElement
 } from "./modifyCharacter";
+
+export const findAllPrerequisiteModifier = (
+  prerList: Prerequisite[]
+): AllPrerequisiteMap => {
+  
+
+  const keys: string[] = prerList.flatMap(
+    (prer) => [
+      ...(prer.armorClass?.flatMap((ac) => ac.modifierBonus?.text ?? []) ?? []),
+      ...(prer.attackRoll?.flatMap((ar) => ar.modifierBonus?.modifier ?? []) ?? []),
+      ...(prer.damageBonus?.flatMap((db) => db.modifierBonus?.modifier ?? []) ?? [])
+    ]
+  );
+
+  let allPrerequisite: AllPrerequisiteMap = keys.reduce((acc, key) => {
+    acc[key] = [];
+    return acc;
+  }, {} as AllPrerequisiteMap);
+
+  console.log("keys", keys);
+
+  console.log("allPrerequisite", allPrerequisite);
+  return allPrerequisite;
+};
 
 export const findAbilitysPrerequisite = (
   prerList: Prerequisite[]
@@ -26,62 +51,62 @@ export const findAbilitysPrerequisite = (
   return onlyAbilitys;
 };
 
-export const findAttackRollPrerequisite = (
-  prerList: Prerequisite[]
-): AttackRollElement => {
-  let mono: AttackRoll[] = [];
-  let target: AttackRoll[] = [];
-  let composed: Prerequisite[] = [];
+// export const findAttackRollPrerequisite = (
+//   prerList: Prerequisite[]
+// ): AttackRollElement => {
+//   let mono: AttackRoll[] = [];
+//   let target: AttackRoll[] = [];
+//   let composed: Prerequisite[] = [];
 
-  prerList.forEach((prer) => {
-    if (prer.attackRoll) {
-      if (prer.attackRoll?.target === null) mono.push(prer.attackRoll);
-      const compose: string[] = ["ITEM", "WEAPON_TYPE", "SELECTED"];
-      if (prer.attackRoll?.target?.some((t) => !compose.includes(t)))
-        target.push(prer.attackRoll);
-      if (prer.attackRoll?.target?.some((t) => compose.includes(t))) {
-        composed.push({
-          attackRoll: {
-            bonus: prer.attackRoll.bonus,
-            target: null
-          },
-          weaponType: prer.weaponType,
-          items: prer.items
-        });
-      }
-    }
-  });
+//   prerList.forEach((prer) => {
+//     if (prer.attackRoll) {
+//       if (prer.attackRoll?.target === null) mono.push(prer.attackRoll);
+//       const compose: string[] = ["ITEM", "WEAPON_TYPE", "SELECTED"];
+//       if (prer.attackRoll?.target?.some((t) => !compose.includes(t)))
+//         target.push(prer.attackRoll);
+//       if (prer.attackRoll?.target?.some((t) => compose.includes(t))) {
+//         composed.push({
+//           attackRoll: {
+//             bonus: prer.attackRoll.bonus,
+//             target: null
+//           },
+//           weaponType: prer.weaponType,
+//           items: prer.items
+//         });
+//       }
+//     }
+//   });
 
-  return { mono, target, composed };
-};
+//   return { mono, target, composed };
+// };
 
-export const findDamageBonusPrerequisite = (
-  prerList: Prerequisite[]
-): DamageBonusElement => {
-  let mono: DamageBonus[] = [];
-  let target: DamageBonus[] = [];
-  let composed: Prerequisite[] = [];
+// export const findDamageBonusPrerequisite = (
+//   prerList: Prerequisite[]
+// ): DamageBonusElement => {
+//   let mono: DamageBonus[] = [];
+//   let target: DamageBonus[] = [];
+//   let composed: Prerequisite[] = [];
 
-  prerList.forEach((prer) => {
-    if (prer.damageBonus) {
-      if (prer.damageBonus?.target === null) mono.push(prer.damageBonus);
-      const compose: string[] = ["ITEM", "WEAPON_TYPE", "SELECTED"];
-      if (prer.damageBonus?.target?.some((t) => !compose.includes(t)))
-        target.push(prer.damageBonus);
-      if (prer.damageBonus?.target?.some((t) => compose.includes(t))) {
-        composed.push({
-          damageBonus: {
-            bonus: prer.damageBonus.bonus
-          },
-          weaponType: prer.weaponType,
-          items: prer.items
-        });
-      }
-    }
-  });
+//   prerList.forEach((prer) => {
+//     if (prer.damageBonus) {
+//       if (prer.damageBonus?.target === null) mono.push(prer.damageBonus);
+//       const compose: string[] = ["ITEM", "WEAPON_TYPE", "SELECTED"];
+//       if (prer.damageBonus?.target?.some((t) => !compose.includes(t)))
+//         target.push(prer.damageBonus);
+//       if (prer.damageBonus?.target?.some((t) => compose.includes(t))) {
+//         composed.push({
+//           damageBonus: {
+//             bonus: prer.damageBonus.bonus
+//           },
+//           weaponType: prer.weaponType,
+//           items: prer.items
+//         });
+//       }
+//     }
+//   });
 
-  return { mono, target, composed };
-};
+//   return { mono, target, composed };
+// };
 
 export const findSpecialAttacksPrerequisite = (
   prerList: Prerequisite[]
@@ -116,27 +141,27 @@ export const findSavingThrowPrerequisite = (
   return onlySavingThrow;
 };
 
-export const findArmorPrerequisite = (
-  prerList: Prerequisite[]
-): ArmorClassElement => {
-  let mono: ArmorClass[] = [];
-  let target: ArmorClass[] = [];
-  let composed: Prerequisite[] = [];
+// export const findArmorPrerequisite = (
+//   prerList: Prerequisite[]
+// ): ArmorClassElement => {
+//   let mono: ArmorClass[] = [];
+//   let target: ArmorClass[] = [];
+//   let composed: Prerequisite[] = [];
 
-  prerList.forEach((prer) => {
-    if (prer.armorClass) {
-      if (prer.armorClass?.target === null) mono.push(prer.armorClass);
-      const compose: string[] = ["ITEM", "WEAPON_TYPE"];
-      if (prer.armorClass?.target?.some((t) => !compose.includes(t)))
-        target.push(prer.armorClass);
-      if (prer.armorClass?.target?.some((t) => compose.includes(t))) {
-        composed.push(prer);
-      }
-    }
-  });
+//   prerList.forEach((prer) => {
+//     if (prer.armorClass) {
+//       if (prer.armorClass?.target === null) mono.push(prer.armorClass);
+//       const compose: string[] = ["ITEM", "WEAPON_TYPE"];
+//       if (prer.armorClass?.target?.some((t) => !compose.includes(t)))
+//         target.push(prer.armorClass);
+//       if (prer.armorClass?.target?.some((t) => compose.includes(t))) {
+//         composed.push(prer);
+//       }
+//     }
+//   });
 
-  return { mono, target, composed };
-};
+//   return { mono, target, composed };
+// };
 
 export const findSkillsPrerequisite = (
   prerList: Prerequisite[]
@@ -179,10 +204,10 @@ export const findSpeedPrerequisite = (prerList: Prerequisite[]): Speed => {
 export const findNumberOfDomanisPrerequisite = (
   prerList: Prerequisite[]
 ): number => {
-  console.log("prerList", prerList);
+  // console.log("prerList", prerList);
   return prerList.reduce(
     (tot, prer) =>
       tot + (prer.numberOfDomains != null ? Number(prer.numberOfDomains) : 0),
     0
   );
-}
+};

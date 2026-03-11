@@ -51,7 +51,7 @@ public class PrerequisiteDTO {
   public Integer bab;
   public Integer initiative;
   public AttackRollDTO[] attackRoll;
-  public DamageBonusDTO damageBonus;
+  public DamageBonusDTO[] damageBonus;
   public SpeedDTO speed;
   public SavingThrowDTO savingThrow;
   public SpecialAttacksDTO specialAttacks;

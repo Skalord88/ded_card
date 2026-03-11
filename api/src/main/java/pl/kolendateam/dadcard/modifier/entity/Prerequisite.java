@@ -129,7 +129,7 @@ public class Prerequisite implements Serializable {
   ClassPcLevel[] classPc;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  DamageBonus damageBonus;
+  DamageBonus[] damageBonus;
 
   @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(

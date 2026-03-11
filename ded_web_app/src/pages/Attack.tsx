@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   AttackElement,
   createAttackDisplay,
-  getAttacksData
+  // getAttacksData
 } from "../components/Attack/function";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import {
@@ -45,11 +45,11 @@ export function Attack() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (modChar && attack) {
-      setAttackElement(createAttackDisplay(getAttacksData(modChar), attack));
-    }
-  }, [attack]);
+  // useEffect(() => {
+  //   if (modChar && attack) {
+  //     setAttackElement(createAttackDisplay(getAttacksData(modChar), attack));
+  //   }
+  // }, [attack]);
 
   const handleWeaponAttack = (index: string, option: Weapon) => {
     const weapon = option as Weapon;

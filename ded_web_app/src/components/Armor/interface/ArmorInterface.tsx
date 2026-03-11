@@ -24,17 +24,21 @@ export type InventoryProps = {
 };
 
 export type ArmorClass = {
-  sizeBonus: number;
-  armorBonus: number;
-  shieldBonus: number;
-  enhancementBonuses: number;
-  deflectionBonuses: number;
-  naturalArmor: number;
-  dodgeBonus: number;
+  // sizeBonus: number;
+  // armorBonus: number;
+  // shieldBonus: number;
+  // enhancementBonuses: number;
+  // deflectionBonuses: number;
+  // naturalArmor: number;
+  // dodgeBonus: number;
 
-  target: string[];
+  bonus: number,
 
-  special?: string;
+  modifierBonus?: ModifierEnum;
 
-  modifierBonus: ModifierEnum;
+  target: string[],
+
+  special?: string
+
+  
 };

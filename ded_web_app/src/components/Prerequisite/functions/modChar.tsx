@@ -1,4 +1,6 @@
-import { createAttackDisplay, getAttacksData } from "../../Attack/function";
+import { createAttackDisplay
+  // , getAttacksData 
+} from "../../Attack/function";
 import { CharacterPc, ItemsList } from "../../interfaces";
 import {
     emptyAbilitys,
@@ -16,18 +18,19 @@ export const createModChar = (
   let modChar: CharToModify = {
     abilitys: emptyAbilitys,
     size: emptySize,
+    charPrerequisite: null,
     // race: { hD: 0, numHD: 0},
     bab: 0,
     adjBonus: { bab: 0, savingThrow: 0, adjLv: 0 },
     classesLv: 0,
-    attackRoll: { mono: [], target: [], composed: [] },
-    damageBonus: { mono: [], target: [], composed: [] },
+    attackRoll: null,
+    damageBonus: null,
     specialAttacks: [],
     initiative: 0,
     baseSave: { fortitude: 0, reflex: 0, will: 0 },
     savingThrow: [],
     listHitDices: [],
-    armor: { mono: [], target: [], composed: [] },
+    armor: null,
     inventory: emptyInventory,
     attacks: emptyAttacks,
     skills: { mono: [], target: [] },
@@ -138,10 +141,11 @@ export const createModChar = (
   // console.log("modif", modif);
   modChar = modifyCharacter(char, modif, items);
 
-  modChar.displayAttType = createAttackDisplay(
-    getAttacksData(modChar),
-    modChar.attacks
-  );
+  // modChar.displayAttType = createAttackDisplay(
+  //   getAttacksData(modChar),
+  //   modChar.attacks
+  // );
 
   return modChar;
 };
+

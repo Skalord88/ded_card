@@ -1,5 +1,5 @@
 import { ModifierEnum } from "./ModifierEnum"
 
-export type AllPrerequisite = {
+export type AllPrerequisiteMap = {
     [type: string]: {target: [ModifierEnum] | null, bonus: number}[] | null
 }

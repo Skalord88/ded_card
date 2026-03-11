@@ -16,9 +16,13 @@ public class MapperAttackRoll {
     return attackDTOs;
   }
 
-  public static DamageBonusDTO toDamageBonusDTO(DamageBonus dmg) {
+  public static DamageBonusDTO[] toDamageBonusDTO(DamageBonus[] dmg) {
     if (dmg == null) return null;
-    return new DamageBonusDTO(dmg);
+    DamageBonusDTO[] dmgDTOs = new DamageBonusDTO[dmg.length];
+    for (int i = 0; i < dmg.length; i++) {
+      dmgDTOs[i] = new DamageBonusDTO(dmg[i]);
+    }
+    return dmgDTOs;
   }
 
   public static AttackRoll[] toAttackRoll(AttackRollDTO[] attackDTO) {
@@ -30,8 +34,12 @@ public class MapperAttackRoll {
     return attackRolls;
   }
 
-  public static DamageBonus toDamageBonus(DamageBonusDTO damageBonus) {
+  public static DamageBonus[] toDamageBonus(DamageBonusDTO[] damageBonus) {
     if (damageBonus == null) return null;
-    return new DamageBonus(damageBonus);
+    DamageBonus[] damageBonuses = new DamageBonus[damageBonus.length];
+    for (int i = 0; i < damageBonus.length; i++) {
+      damageBonuses[i] = new DamageBonus(damageBonus[i]);
+    }
+    return damageBonuses;
   }
 }

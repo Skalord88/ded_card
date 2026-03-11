@@ -262,7 +262,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="1022" />
       <column name="damage_bonus"
-        value="{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }" />
+        value="[{&quot;bonus&quot; : 2, &quot;target&quot; : [ &quot;SELECTED&quot; ] }]" />
       <column name="text"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
     </insert>
@@ -475,10 +475,12 @@
       <column name="id" value="1019" />
       <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :[&quot;RANGED&quot;]}]" />
       <column name="damage_bonus"
-        value="{
-        &quot;bonus&quot; : 1,
-        &quot;type&quot;: [&quot;RANGED&quot;]
-      }" />
+        value="[
+          {
+            &quot;bonus&quot; : 1,
+            &quot;type&quot;: [&quot;RANGED&quot;]
+          }
+        ]" />
       <column name="text" value="+1 attack roll and damage within 9m" />
     </insert>
 
@@ -629,9 +631,9 @@
     <insert tableName="prerequisite">
       <column name="id" value="1021" />
       <column name="damage_bonus"
-        value="{
+        value="[{
         &quot;bonus&quot; : 2 , &quot;target&quot; : [ &quot;SELECTED&quot; ]
-      }" />
+      }]" />
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
     </insert>
 

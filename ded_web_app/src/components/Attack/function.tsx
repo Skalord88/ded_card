@@ -156,26 +156,26 @@ export type AttacksData = {
   charComposedMod: Prerequisite[];
 };
 
-export const getAttacksData = (char: CharToModify): AttacksData => {
-  return {
-    bab: char.bab + char.adjBonus.bab,
-    strenght: BonusAbilities(char.abilitys, "STR"),
-    dexterity: BonusAbilities(char.abilitys, "DEX"),
-    finesy: findFeatById(char.feats, [116]),
-    strThrow: false, // da aggiungere tiratore con ascia, Regionale
-    twoFighting: {
-      twoFighting: findFeatById(char.feats, [105]),
-      impTwoFighting: findFeatById(char.feats, [58]),
-      grtTwoFighting: findFeatById(char.feats, [40])
-    },
-    charMonoMod: char.attackRoll.mono.reduce(
-      (tot, at) => tot + Number(at.bonus),
-      0
-    ),
-    charTargetMod: char.attackRoll.target,
-    charComposedMod: [...char.attackRoll.composed, ...char.damageBonus.composed]
-  };
-};
+// export const getAttacksData = (char: CharToModify): AttacksData => {
+//   return {
+//     bab: char.bab + char.adjBonus.bab,
+//     strenght: BonusAbilities(char.abilitys, "STR"),
+//     dexterity: BonusAbilities(char.abilitys, "DEX"),
+//     finesy: findFeatById(char.feats, [116]),
+//     strThrow: false, // da aggiungere tiratore con ascia, Regionale
+//     twoFighting: {
+//       twoFighting: findFeatById(char.feats, [105]),
+//       impTwoFighting: findFeatById(char.feats, [58]),
+//       grtTwoFighting: findFeatById(char.feats, [40])
+//     },
+//     charMonoMod: char.attackRoll.mono.reduce(
+//       (tot, at) => tot + Number(at.bonus),
+//       0
+//     ),
+//     charTargetMod: char.attackRoll.target,
+//     charComposedMod: [...char.attackRoll.composed, ...char.damageBonus.composed]
+//   };
+// };
 
 export type WeaponAttackStats = {
   weapon: Weapon;

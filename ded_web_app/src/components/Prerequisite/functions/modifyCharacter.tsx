@@ -44,12 +44,14 @@ import {
   HitDices
 } from "../../Vita/Functions";
 import { changeAbilitysFromPrerequisite } from "../abilitys/functions/function";
+import { AllPrerequisiteMap } from "../interface/AllPrerequisite";
 import { Prerequisite } from "../interface/Prerequisite";
 import {
   findAbilitysPrerequisite,
-  findArmorPrerequisite,
-  findAttackRollPrerequisite,
-  findDamageBonusPrerequisite,
+  findAllPrerequisiteModifier,
+  // findArmorPrerequisite,
+  // findAttackRollPrerequisite,
+  // findDamageBonusPrerequisite,
   findInitiativePrerequisite,
   findNumberOfDomanisPrerequisite,
   findSavingThrowPrerequisite,
@@ -89,16 +91,18 @@ export type CharToModify = {
   abilitys: Abilitys;
   bab: number;
   size: Size;
+  charPrerequisite: Prerequisite | null;
   adjBonus: { bab: number; savingThrow: number; adjLv: number };
   classesLv: number;
-  attackRoll: AttackRollElement;
-  damageBonus: DamageBonusElement;
+  attackRoll: AttackRollElement | null;
+  damageBonus: DamageBonusElement | null;
   specialAttacks: SpecialAttacks[];
   initiative: number;
   baseSave: { fortitude: number; reflex: number; will: number };
   savingThrow: SavingThrow[];
   listHitDices: HitDices[];
-  armor: ArmorClassElement;
+  // armor: ArmorClassElement | null;
+  armor?: AllPrerequisiteMap | null;
   inventory: Inventory;
   attacks: Attacks;
   proficency: { type: string[]; specific: Item[] };
@@ -399,6 +403,7 @@ export const modifyCharacter = (
   const newChar: CharToModify = {
     abilitys: changedAbilitys,
     bab: adjBab,
+    charPrerequisite: createCharPrerequisite(prer),
     size: char.race.size,
     adjBonus: {
       bab: FindAllAdjLevel(char) * adjClass.classBab,
@@ -406,8 +411,10 @@ export const modifyCharacter = (
       adjLv: FindAllAdjLevel(char)
     },
     classesLv: totalClassLv,
-    attackRoll: findAttackRollPrerequisite(prer),
-    damageBonus: findDamageBonusPrerequisite(prer),
+    // attackRoll: findAttackRollPrerequisite(prer),
+    attackRoll: null,
+    // damageBonus: findDamageBonusPrerequisite(prer),
+    damageBonus: null,
     specialAttacks: findSpecialAttacksPrerequisite(prer),
     initiative: findInitiativePrerequisite(prer),
     baseSave: CountSavingThrowFromClassPc(char.classPcList),
@@ -416,7 +423,8 @@ export const modifyCharacter = (
       FindAllAdjLevel(char),
       CountHitDicesFromClassPc(char.classPcList)
     ),
-    armor: findArmorPrerequisite(prer),
+    // armor: findArmorPrerequisite(prer),
+    armor: findAllPrerequisiteModifier(prer),
     inventory: modifyInventory(char.race.size.id, char.inventory),
     attacks:
       char.attacks === null
@@ -455,3 +463,32 @@ export const modifyCharacter = (
   };
   return newChar;
 };
+function createCharPrerequisite(prerList: Prerequisite[]): Prerequisite {
+  let abilitys: Abilitys[] = [];
+  let attackRoll: AttackRoll[] = [];
+  let damageBonus: DamageBonus[] = [];
+  prerList.forEach((prer) => {
+    if (prer.abilitys) {
+      abilitys = [...abilitys, ...prer.abilitys];
+    }
+    if (prer.attackRoll) {
+      attackRoll = [...attackRoll, ...prer.attackRoll];
+    }
+    if (prer.damageBonus) {
+      damageBonus = [...damageBonus, ...prer.damageBonus];
+    }
+
+    console.log("prerList", prerList);
+    console.log("abilitys", abilitys);
+    console.log("attackRoll", attackRoll);
+    console.log("damageBonus", damageBonus);
+
+  });
+
+  return {
+    abilitys: abilitys || [{ strength: 0, dexterity: 0, constitution: 0, intelligence: 0, wisdom: 0, charisma: 0 }],
+    attackRoll: attackRoll || [],
+    damageBonus: damageBonus || []
+  }
+}
+

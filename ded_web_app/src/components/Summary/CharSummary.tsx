@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { AbilitysSummaryComponent } from "../AbilitysComponent";
-import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
+// import { BaseSummaryAttack } from "../Attack/BaseAttack/BaseAttack";
 import { ClassPc } from "../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../Feats/Interface/FeatInterface";
 import { FormattingText } from "../Formatting/Function";
@@ -73,7 +73,7 @@ export const CharSummary: React.FC<SummaryProps> = ({
           <HpSummaryComponent char={updateChar} />
           <SpeedSummaryComponent char={updateChar} />
           {"Armor Class:"}
-          <BaseSummaryAttack char={updateChar} />
+          {/* <BaseSummaryAttack char={updateChar} /> */}
           <AbilitysSummaryComponent abilitys={updateChar.abilitys} />
           <SkillSummaryComponent char={updateChar} />
 
