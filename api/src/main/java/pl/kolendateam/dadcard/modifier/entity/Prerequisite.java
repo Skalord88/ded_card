@@ -95,7 +95,7 @@ public class Prerequisite implements Serializable {
   Speed speed;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  SavingThrow savingThrow;
+  SavingThrow[] savingThrow;
 
   @JdbcTypeCode(SqlTypes.JSON)
   SpecialAttacks specialAttacks;
@@ -186,7 +186,7 @@ public class Prerequisite implements Serializable {
       preDTO.speed != null ? MapperModifierBonus.toSpeed(preDTO.speed) : null;
     this.savingThrow =
       preDTO.savingThrow != null
-        ? MapperSavingThrow.toSavingThrow(preDTO.savingThrow)
+        ? MapperSavingThrow.toSavingThrowArray(preDTO.savingThrow)
         : null;
     this.specialAttacks =
       preDTO.specialAttacks != null

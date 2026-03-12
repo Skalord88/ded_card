@@ -33,13 +33,13 @@
                 &quot;charisma&quot; : -2
                 }" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [
                     &quot;PARALYSIS&quot; ,
                     &quot;PHANTASMS&quot; ,
                     &quot;POISON&quot; ]
-                } ] }" />
+                } ] }]" />
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
         </insert>
@@ -57,7 +57,7 @@
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ],
                     &quot;bonus&quot; : 3
@@ -65,7 +65,7 @@
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ],
                     &quot;bonus&quot; : 4
-                    } ] }" />
+                    } ] }]" />
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
         </insert>
@@ -188,12 +188,21 @@
             <column name="text" value="Lightfoot Halfling races modifiers" />
             <column name="weapon_type" value="THROWN" />
             <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+                value="[{
+                &quot;bonus&quot; : 1,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                    &quot;target&quot; : [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ]
+                    , &quot;improved&quot; : null
+                    , &quot;type&quot; : null
+                    }]" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[{
+                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;bonus&quot; : 1
-                    } ] }" />
+                    } ]
+                    }]" />
         </insert>
 
         <insert tableName="prerequisite">

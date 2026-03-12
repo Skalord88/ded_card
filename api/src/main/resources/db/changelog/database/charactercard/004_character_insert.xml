@@ -17,8 +17,8 @@
                 &quot;wisdom&quot;: 14,
                 &quot;charisma&quot;: 10
             }" />
-            <column name="sub_race_id" value="602" />
-            <!-- <column name="sub_race_id" value="502" /> -->
+            <!-- <column name="sub_race_id" value="602" /> -->
+            <column name="sub_race_id" value="502" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->
             <column name="alignment_id" value="2" />

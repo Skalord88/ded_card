@@ -1,11 +1,11 @@
-import { ModifierBonus } from "../interfaces";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 
 export type SavingThrow = {
     fortitude: Number;
     reflex: Number;
     will: Number;
     resistance: Resistance[];
-    modifierBonus: ModifierBonus,
+    modifierBonus?: ModifierEnum,
 }
 
 export type Resistance = {

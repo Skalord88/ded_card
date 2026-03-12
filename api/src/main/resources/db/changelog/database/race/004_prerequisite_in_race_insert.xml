@@ -33,7 +33,7 @@
                 &quot;constitution&quot; : -2
                 }" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2
@@ -41,7 +41,7 @@
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;SLEEP&quot; ]
                     } ]
-                }" />
+                }]" />
             <column name="text" value="Elf races modifiers" />
         </insert>
 
@@ -83,12 +83,15 @@
                 &quot;dexterity&quot; : 2
                 }" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[
+                { 
+                &quot;modifierBonus&quot;: &quot;MORALE_MODIFIER&quot;,
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;FEAR&quot; ],
                     &quot;bonus&quot; : 2
                     } ]
-                }" />
+                }]" />
             <column name="text" value="Halfling races modifiers" />
         </insert>
         <!-- Halfling modif -->
@@ -122,7 +125,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="100009" />
             <column name="saving_throw"
-                value="{ &quot;resistance&quot; : [ {
+                value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2
@@ -130,7 +133,7 @@
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;SLEEP&quot; ]
                     } ]
-                }" />
+                }]" />
         </insert>
         <!-- Half Elf modif -->
 

@@ -1,14 +1,16 @@
+import { AttackRoll } from "../Attack/AttackRoll/interface";
+import { DamageBonus } from "../Attack/DamageBonus/interface";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { Abilitys } from "./Interface";
 
 export function abilityAbbreviation(ability: string): string {
   switch (ability) {
-    case "STRENGHT":
+    case "STRENGTH":
       return "STR";
     case "DEXTERITY":
       return "DEX";
     case "CONSTITUTION":
-      return "COS";
+      return "CON";
     case "INTELLIGENCE":
       return "INT";
     case "WISDOM":
@@ -21,7 +23,7 @@ export function abilityAbbreviation(ability: string): string {
 }
 export function findAbility(charAb: Abilitys, ability: string): number {
   switch (ability) {
-    case "STRENGHT":
+    case "STRENGTH":
       return charAb.strength;
     case "DEXTERITY":
       return charAb.dexterity;
@@ -57,6 +59,79 @@ export function BonusAbilities(ab: Abilitys, which: string) {
   }
 }
 
+export const addAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
+  return abs.reduce(
+    (max, one) => {
+      return {
+        strength: max.strength + one.strength,
+        dexterity: max.dexterity + one.dexterity,
+        constitution: max.constitution + one.constitution,
+        intelligence: max.intelligence + one.intelligence,
+        wisdom: max.wisdom + one.wisdom,
+        charisma: max.charisma + one.charisma
+      };
+    },
+    {
+      strength: 0,
+      dexterity: 0,
+      constitution: 0,
+      intelligence: 0,
+      wisdom: 0,
+      charisma: 0
+    } as Abilitys
+  );
+};
+export const maxAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
+  return abs.reduce(
+    (max, one) => {
+      return {
+        strength: max.strength > one.strength ? max.strength : one.strength,
+        dexterity:
+          max.dexterity > one.dexterity ? max.dexterity : one.dexterity,
+        constitution:
+          max.constitution > one.constitution
+            ? max.constitution
+            : one.constitution,
+        intelligence:
+          max.intelligence > one.intelligence
+            ? max.intelligence
+            : one.intelligence,
+        wisdom: max.wisdom > one.wisdom ? max.wisdom : one.wisdom,
+        charisma: max.charisma > one.charisma ? max.charisma : one.charisma
+      };
+    },
+    {
+      strength: 0,
+      dexterity: 0,
+      constitution: 0,
+      intelligence: 0,
+      wisdom: 0,
+      charisma: 0
+    } as Abilitys
+  );
+};
+
+export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
+  const newList: AttackRoll[] = list.map((item, index) => {
+    if (list[index + 1]){
+    if (
+      item.modifierBonus !== list[index + 1].modifierBonus &&
+      item.target !== list[index + 1].target &&
+      item.type !== list[index + 1].type
+    ) {
+      return item;
+    } else {
+      return {
+        modifierBonus: item.modifierBonus,
+        target: item.target,
+        type: item.type,
+        bonus: (item.bonus as number) + (list[index + 1].bonus as number)
+      };
+    }} return item;
+  });
+  return newList;
+};
+
 export function AbilitysAndModifiers(
   abilitys: Abilitys,
   modifications: Prerequisite[]
@@ -68,33 +143,13 @@ export function AbilitysAndModifiers(
       ? {
           ...abilitys,
           strength: +mod.abilitys.strength,
-          dexterity: +mod.abilitys.strength,
-          constitution: +mod.abilitys.strength,
-          intelligence: +mod.abilitys.strength,
-          wisdom: +mod.abilitys.strength,
-          charisma: +mod.abilitys.strength
+          dexterity: +mod.abilitys.dexterity,
+          constitution: +mod.abilitys.constitution,
+          intelligence: +mod.abilitys.intelligence,
+          wisdom: +mod.abilitys.wisdom,
+          charisma: +mod.abilitys.charisma
         }
       : moddedAbilitys
   );
   return moddedAbilitys;
-
-  // strength:
-  //   abilitys.strength +
-  //   FindInOneLengthModifier(modifications, "STRENGHT"),
-  //   dexterity:
-  //   abilitys.dexterity +
-  //   FindInOneLengthModifier(modifications, "DEXTERITY"),
-  // constitution:
-  //   abilitys.constitution +
-  //   FindInOneLengthModifier(modifications, "CONSTITUTION"),
-  // intelligence:
-  //   abilitys.intelligence +
-  //   FindInOneLengthModifier(modifications, "INTELLIGENCE"),
-  // wisdom:
-  //   abilitys.wisdom +
-  //   FindInOneLengthModifier(modifications, "WISDOM"),
-  // charisma:
-  //   abilitys.charisma +
-  //   FindInOneLengthModifier(modifications, "CHARISMA"),
-  // };
 }

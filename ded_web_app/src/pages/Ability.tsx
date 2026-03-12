@@ -1,19 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { findAbility } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { FormattingText } from "../components/Formatting/Function";
 import { addToDrop, BonusAbilities, SignNumber } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
+import {
+  AllModifiers,
+  ModifiedCharacter,
+  modifiedCharacter
+} from "../components/Prerequisite/functions/modifiedCharacter";
+import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
 import { AllSkills } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
-import { AllPrerequisiteMap } from "../components/Prerequisite/interface/AllPrerequisite";
-import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
-import { findAllPrerequisiteModifier } from "../components/Prerequisite/functions/findSpecificPrerequisite";
-import { ModifiedCharacter, modifiedCharacter } from "../components/Prerequisite/functions/modifiedCharacter";
 // import { PageAndSummaryLayout } from "./AppLayout";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
@@ -22,6 +24,7 @@ export function Ability() {
   const { charId } = useParams();
 
   const [abilitys, setAbilitys] = useState<Abilitys>();
+  const [modChar, setModChar] = useState<ModifiedCharacter>();
   // const [change, setChange] = useState<boolean>(false);
 
   useEffect(() => {
@@ -30,9 +33,9 @@ export function Ability() {
         const resChar = await axios.get(urlChar + "/" + charId);
         const charData: CharacterPc = resChar.data;
         setAbilitys(charData.abilitys);
-        
-        const modChar: ModifiedCharacter = modifiedCharacter(charData);
 
+        const modChar: ModifiedCharacter = modifiedCharacter(charData);
+        setModChar(modChar);
       } catch (error) {
         console.error(error);
       }
@@ -115,6 +118,7 @@ export function Ability() {
                 number={abilitys.strength}
                 ability="STRENGTH"
                 value={{ abilities: abilitys, text: "STR" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -125,6 +129,7 @@ export function Ability() {
                 number={abilitys.dexterity}
                 ability="DEXTERITY"
                 value={{ abilities: abilitys, text: "DEX" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -135,6 +140,7 @@ export function Ability() {
                 number={abilitys.constitution}
                 ability="CONSTITUTION"
                 value={{ abilities: abilitys, text: "CON" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -145,6 +151,7 @@ export function Ability() {
                 number={abilitys.intelligence}
                 ability="INTELLIGENCE"
                 value={{ abilities: abilitys, text: "INT" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -155,6 +162,7 @@ export function Ability() {
                 number={abilitys.wisdom}
                 ability="WISDOM"
                 value={{ abilities: abilitys, text: "WIS" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -165,6 +173,7 @@ export function Ability() {
                 number={abilitys.charisma}
                 ability="CHARISMA"
                 value={{ abilities: abilitys, text: "CHA" }}
+                abilitysModifiers={modChar?.abilitys}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -182,6 +191,7 @@ export function Ability() {
 export type AbilityLayoutProps = {
   ability?: string;
   number?: number;
+  abilitysModifiers?: AllModifiers;
   children?: React.ReactNode;
   value?: { abilities: Abilitys; text: string };
 };
@@ -189,6 +199,7 @@ export type AbilityLayoutProps = {
 export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   ability,
   number,
+  abilitysModifiers,
   children,
   value
 }) => {
@@ -208,6 +219,16 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
           {value && BonusAbilities(value?.abilities, value?.text)}
         </p>
       </div>
+      {abilitysModifiers &&
+        ability &&
+        Object.keys(abilitysModifiers).map((key) => (
+          <div key={key}>
+            <p>
+              {key !== "null" ? `${key}: ` : "General: "}{" "}
+              {findAbility(abilitysModifiers[key] as Abilitys, ability)}
+            </p>
+          </div>
+        ))}
       <AbilitySaveString ability={ability} />
       <AbilitySkillsString ability={ability} />
     </div>

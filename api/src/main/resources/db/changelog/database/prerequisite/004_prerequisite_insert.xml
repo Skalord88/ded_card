@@ -9,42 +9,43 @@
         <insert tableName="prerequisite">
             <column name="id" value="20001" />
             <column name="saving_throw"
-                value="
-            {&quot;resistance&quot;: 
+                value="[
+            {
+                &quot;resistance&quot;: 
             [{&quot;type&quot;: &quot;SAVING&quot;
-            , &quot;bonus&quot;: 1}]}" />
+            , &quot;bonus&quot;: 1}]}]" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20002" />
             <column name="saving_throw"
-                value="
+                value="[
             {&quot;resistance&quot;: 
             [{&quot;type&quot;: &quot;SAVING&quot;, 
-            &quot;bonus&quot;: 2}]}" />
+            &quot;bonus&quot;: 2}]}]" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20003" />
             <column name="saving_throw"
-                value="
+                value="[
             {&quot;resistance&quot;: 
             [{&quot;type&quot;: &quot;SAVING&quot;, 
-            &quot;bonus&quot;: 3}]}" />
+            &quot;bonus&quot;: 3}]}]" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20004" />
             <column name="saving_throw"
-                value="
+                value="[
             {&quot;resistance&quot;: 
             [{&quot;type&quot;: &quot;SAVING&quot;, 
-            &quot;bonus&quot;: 4}]}" />
+            &quot;bonus&quot;: 4}]}]" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20005" />
             <column name="saving_throw"
-                value="
+                value="[
             {&quot;resistance&quot;: 
             [{&quot;type&quot;: &quot;SAVING&quot;, 
-            &quot;bonus&quot;: 5}]}" />
+            &quot;bonus&quot;: 5}]}]" />
         </insert>
 
         <!--  id:20.100 -->

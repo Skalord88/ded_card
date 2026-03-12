@@ -1,7 +1,8 @@
 import { ModifierBonus } from "../../interfaces"
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum"
 
 export type AttackRoll = {
-    modifierBonus: ModifierBonus,
+    modifierBonus?: ModifierEnum,
     target?: string[],
     improved?: Boolean,
     type?: ModifierBonus[],

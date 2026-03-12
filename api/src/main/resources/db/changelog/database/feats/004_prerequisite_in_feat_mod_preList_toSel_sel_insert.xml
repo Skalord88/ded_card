@@ -200,9 +200,9 @@
     <insert tableName="prerequisite">
       <column name="id" value="1010" />
       <column name="saving_throw"
-        value="{
+        value="[{
             &quot;fortitude&quot; : 2
-            }" />
+            }]" />
       <column name="text" value="+2 Fortitude" />
     </insert>
 
@@ -384,9 +384,9 @@
     <insert tableName="prerequisite">
       <column name="id" value="1013" />
       <column name="saving_throw"
-        value="{
+        value="[{
             &quot;will&quot; : 2
-            }" />
+            }]" />
       <column name="text" value="+2 Will" />
     </insert>
 
@@ -404,9 +404,9 @@
     <insert tableName="prerequisite">
       <column name="id" value="1014" />
       <column name="saving_throw"
-        value="{
+        value="[{
             &quot;reflex&quot; : 2
-            }" />
+            }]" />
       <column name="text" value="+2 Reflex" />
     </insert>
 
@@ -607,7 +607,7 @@
     <!-- Weapon Focus [General] toSel -->
     <insert tableName="prerequisite">
       <column name="id" value="2001" />
-      <column name="weapon_type" value="PROFICENCY" />
+      <column name="weapon_type" value="PROFICIENCY" />
       <column name="text" value="Proficiency with selected weapon." />
     </insert>
 
@@ -658,11 +658,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3002" />
       <column name="saving_throw"
-        value="{ 
+        value="[{ 
         &quot;reflex&quot; : 1,
         &quot;resistance&quot; : [ {
         &quot;target&quot; : [ &quot;TRAP&quot; ]
-      } ] }" />
+      } ] }]" />
       <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}]" />
       <column name="text" value="Sense for trap" />
     </insert>
@@ -677,13 +677,13 @@
     <insert tableName="prerequisite">
       <column name="id" value="3004" />
       <column name="saving_throw"
-        value="{
+        value="[{
         &quot;resistance&quot; : [ {
           &quot;target&quot; : [ &quot;FEY&quot; ],
           &quot;bonus&quot; : 4,
           &quot;type&quot; : &quot;SAVING&quot;
         }]
-      }" />
+      }]" />
       <column name="text" value="+4 bonus on saving vs fey" />
     </insert>
 
@@ -691,12 +691,12 @@
     <insert tableName="prerequisite">
       <column name="id" value="3005" />
       <column name="saving_throw"
-        value="{
+        value="[{
         &quot;resistance&quot; : [ {
           &quot;target&quot; : [ &quot;POISON&quot; ],
           &quot;type&quot; : &quot;IMMUNITY&quot;
         }]
-      }" />
+      }]" />
       <column name="text" value="immunity to poison" />
     </insert>
 
@@ -719,12 +719,12 @@
     <insert tableName="prerequisite">
       <column name="id" value="3007" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2
                     } ]
-                }" />
+                }]" />
       <column name="text" value="+2 bonus on saving vs enchantment for monk" />
     </insert>
 
@@ -732,11 +732,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3008" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ]
                     } ]
-                }" />
+                }]" />
       <column name="text" value="immunity to all diseases for monk" />
     </insert>
 
@@ -744,11 +744,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3009" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ]
                     } ]
-                }" />
+                }]" />
       <column name="text" value="immunity to poisons for monk" />
     </insert>
 
@@ -756,11 +756,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3010" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;CHARISMA&quot; ]
                     } ]
-                }" />
+                }]" />
       <column name="text" value="Charisma bonus to saving" />
     </insert>
 
@@ -768,11 +768,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3011" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;FEAR&quot; ]
                     } ]
-                }" />
+                }]" />
       <column name="text" value="Charisma bonus to saving" />
     </insert>
 
@@ -780,11 +780,11 @@
     <insert tableName="prerequisite">
       <column name="id" value="3012" />
       <column name="saving_throw"
-        value="{ &quot;resistance&quot; : [ {
+        value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ]
                     } ]
-                }" />
+                }]" />
       <column name="text" value="immunity to all diseases" />
     </insert>
 

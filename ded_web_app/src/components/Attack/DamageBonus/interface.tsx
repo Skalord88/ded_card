@@ -1,7 +1,8 @@
 import { ModifierBonus } from "../../interfaces"
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum"
 
 export type DamageBonus = {
-    modifierBonus?: ModifierBonus,
+    modifierBonus?: ModifierEnum,
     target?: string[],
     type?: ModifierBonus[],
     bonus: Number
