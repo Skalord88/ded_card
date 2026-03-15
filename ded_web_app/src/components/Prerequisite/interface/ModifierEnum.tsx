@@ -1,4 +1,4 @@
 export type ModifierEnum = {
-    description: string;
+    description?: string;
     text: string;
 }

@@ -1,4 +1,4 @@
-import { ModifierBonus } from "../../interfaces"
+import { Item, ModifierBonus } from "../../interfaces"
 import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum"
 
 export type AttackRoll = {

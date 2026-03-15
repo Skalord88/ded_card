@@ -1,5 +1,5 @@
 import { AttackRoll } from "../Attack/AttackRoll/interface";
-import { DamageBonus } from "../Attack/DamageBonus/interface";
+import { Item } from "../interfaces";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { Abilitys } from "./Interface";
 
@@ -111,23 +111,76 @@ export const maxAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
   );
 };
 
-export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
+// export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
+//   const newList: AttackRoll[] = list.map((item, index) => {
+//     if (list[index + 1]){
+//     if (
+//       item.modifierBonus !== list[index + 1].modifierBonus &&
+//       item.target !== list[index + 1].target &&
+//       item.type !== list[index + 1].type
+//     ) {
+//       return item;
+//     } else {
+//       return {
+//         modifierBonus: item.modifierBonus,
+//         target: item.target,
+//         type: item.type,
+//         bonus: (item.bonus as number) + (list[index + 1].bonus as number)
+//       };
+//     }} return item;
+//   });
+//   return newList;
+// };
+
+export const ifTargetInPrerequisite = (pre: Prerequisite): (string | Item[])[] => {
+  const returnList: (string | Item[])[] = [];
+  if(pre.weaponType) returnList.push(pre.weaponType);
+  if(pre.armorType) returnList.push(pre.armorType);
+  if(pre.items) returnList.push(pre.items);
+  return returnList;
+};
+
+export const maxBonusInModifier = (actualBonus: number, newBonus: number) => {
+  return actualBonus > newBonus? actualBonus : newBonus
+}
+
+export const maxBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
   const newList: AttackRoll[] = list.map((item, index) => {
-    if (list[index + 1]){
+    const next = list[index + 1];
     if (
-      item.modifierBonus !== list[index + 1].modifierBonus &&
-      item.target !== list[index + 1].target &&
-      item.type !== list[index + 1].type
+      next &&
+      item.modifierBonus !== next.modifierBonus &&
+      item.target !== next.target &&
+      item.type !== next.type
     ) {
       return item;
-    } else {
+    } else if (next) {
       return {
-        modifierBonus: item.modifierBonus,
-        target: item.target,
-        type: item.type,
-        bonus: (item.bonus as number) + (list[index + 1].bonus as number)
+        ...item,
+        bonus: (item.bonus as number) > (next.bonus as number) ? (item.bonus as number) : (next.bonus as number)
       };
-    }} return item;
+    }
+    return item;
+  });
+  return newList;
+};
+export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
+  const newList: AttackRoll[] = list.map((item, index) => {
+    const next = list[index + 1];
+    if (
+      next &&
+      item.modifierBonus !== next.modifierBonus &&
+      item.target !== next.target &&
+      item.type !== next.type
+    ) {
+      return item;
+    } else if (next) {
+      return {
+        ...item,
+        bonus: (item.bonus as number) + (next.bonus as number)
+      };
+    }
+    return item;
   });
   return newList;
 };
