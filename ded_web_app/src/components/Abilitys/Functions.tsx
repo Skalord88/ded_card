@@ -59,6 +59,33 @@ export function BonusAbilities(ab: Abilitys, which: string) {
   }
 }
 
+export const addTwoAbilitysModifiers = (
+  abOne: Abilitys,
+  abTwo: Abilitys
+): Abilitys => {
+  return {
+    strength: abOne.strength + abTwo.strength,
+    dexterity: abOne.dexterity + abTwo.dexterity,
+    constitution: abOne.constitution + abTwo.constitution,
+    intelligence: abOne.intelligence + abTwo.intelligence,
+    wisdom: abOne.wisdom + abTwo.wisdom,
+    charisma: abOne.charisma + abTwo.charisma
+  };
+};
+export const maxTwoAbilitysModifiers = (
+  abOne: Abilitys,
+  abTwo: Abilitys
+): Abilitys => {
+  return {
+    strength: abOne.strength > abTwo.strength? abOne.strength : abTwo.strength,
+    dexterity: abOne.dexterity > abTwo.dexterity? abOne.dexterity : abTwo.dexterity,
+    constitution: abOne.constitution > abTwo.constitution? abOne.constitution : abTwo.constitution,
+    intelligence: abOne.intelligence > abTwo.intelligence? abOne.intelligence : abTwo.intelligence,
+    wisdom: abOne.wisdom > abTwo.wisdom? abOne.wisdom : abTwo.wisdom,
+    charisma: abOne.charisma > abTwo.charisma? abOne.charisma : abTwo.charisma
+  };
+};
+
 export const addAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
   return abs.reduce(
     (max, one) => {
@@ -111,38 +138,19 @@ export const maxAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
   );
 };
 
-// export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
-//   const newList: AttackRoll[] = list.map((item, index) => {
-//     if (list[index + 1]){
-//     if (
-//       item.modifierBonus !== list[index + 1].modifierBonus &&
-//       item.target !== list[index + 1].target &&
-//       item.type !== list[index + 1].type
-//     ) {
-//       return item;
-//     } else {
-//       return {
-//         modifierBonus: item.modifierBonus,
-//         target: item.target,
-//         type: item.type,
-//         bonus: (item.bonus as number) + (list[index + 1].bonus as number)
-//       };
-//     }} return item;
-//   });
-//   return newList;
-// };
-
-export const ifTargetInPrerequisite = (pre: Prerequisite): (string | Item[])[] => {
+export const ifTargetInPrerequisite = (
+  pre: Prerequisite
+): (string | Item[])[] => {
   const returnList: (string | Item[])[] = [];
-  if(pre.weaponType) returnList.push(pre.weaponType);
-  if(pre.armorType) returnList.push(pre.armorType);
-  if(pre.items) returnList.push(pre.items);
+  if (pre.weaponType) returnList.push(pre.weaponType);
+  if (pre.armorType) returnList.push(pre.armorType);
+  if (pre.items) returnList.push(pre.items);
   return returnList;
 };
 
 export const maxBonusInModifier = (actualBonus: number, newBonus: number) => {
-  return actualBonus > newBonus? actualBonus : newBonus
-}
+  return actualBonus > newBonus ? actualBonus : newBonus;
+};
 
 export const maxBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
   const newList: AttackRoll[] = list.map((item, index) => {
@@ -157,7 +165,10 @@ export const maxBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
     } else if (next) {
       return {
         ...item,
-        bonus: (item.bonus as number) > (next.bonus as number) ? (item.bonus as number) : (next.bonus as number)
+        bonus:
+          (item.bonus as number) > (next.bonus as number)
+            ? (item.bonus as number)
+            : (next.bonus as number)
       };
     }
     return item;
