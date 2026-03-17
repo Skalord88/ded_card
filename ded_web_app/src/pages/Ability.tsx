@@ -225,7 +225,7 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
           <div key={key}>
             <p>
               {key !== "null" ? `${key}: ` : "General: "}{" "}
-              {findAbility(abilitysModifiers[key] as Abilitys, ability)}
+              {/* {findAbility(abilitysModifiers[key] as Abilitys, ability)} */}
             </p>
           </div>
         ))}

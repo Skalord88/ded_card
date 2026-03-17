@@ -33,7 +33,8 @@
                 &quot;charisma&quot; : -2
                 }" />
             <column name="saving_throw"
-                value="[{ &quot;resistance&quot; : [ {
+                value="[{
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [
                     &quot;PARALYSIS&quot; ,
@@ -57,7 +58,9 @@
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="saving_throw"
-                value="[{ &quot;resistance&quot; : [ {
+                value="[{
+                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ],
                     &quot;bonus&quot; : 3

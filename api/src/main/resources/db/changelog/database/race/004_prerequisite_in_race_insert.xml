@@ -33,7 +33,9 @@
                 &quot;constitution&quot; : -2
                 }" />
             <column name="saving_throw"
-                value="[{ &quot;resistance&quot; : [ {
+                value="[{
+                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2
@@ -125,7 +127,9 @@
         <insert tableName="prerequisite">
             <column name="id" value="100009" />
             <column name="saving_throw"
-                value="[{ &quot;resistance&quot; : [ {
+                value="[{ 
+                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
+                &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2

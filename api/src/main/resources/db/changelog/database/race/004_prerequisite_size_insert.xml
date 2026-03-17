@@ -10,7 +10,7 @@
             <column name="attack_roll"
                 value="[
             { &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+            { &quot;bonus&quot; :-16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -22,7 +22,7 @@
             <column name="attack_roll"
                 value="[
             { &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+            { &quot;bonus&quot; :-12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; : [&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -34,7 +34,7 @@
             <column name="attack_roll"
                 value="[
             { &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+            { &quot;bonus&quot; :-8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -46,7 +46,7 @@
             <column name="attack_roll"
                 value="[
                 { &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-                { &quot;bonus&quot; :-4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+                { &quot;bonus&quot; :-4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -63,7 +63,7 @@
             <column name="attack_roll"
                 value="[
                 { &quot;bonus&quot; :-1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+                ,{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; : -1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -75,7 +75,7 @@
             <column name="attack_roll"
                 value="[
                 { &quot;bonus&quot; :-2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+                ,{ &quot;bonus&quot; :8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; : -2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -87,7 +87,7 @@
             <column name="attack_roll"
                 value="[
                 { &quot;bonus&quot; :-3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+                ,{ &quot;bonus&quot; :12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; : -3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
@@ -99,7 +99,7 @@
             <column name="attack_roll"
                 value="[
                 { &quot;bonus&quot; :-4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; : [&quot;GRAPPLE&quot;]}
+                ,{ &quot;bonus&quot; :16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; : -4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
