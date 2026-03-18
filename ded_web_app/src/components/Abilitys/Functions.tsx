@@ -25,15 +25,27 @@ export function findAbility(charAb: Abilitys, ability: string): number {
   switch (ability) {
     case "STRENGTH":
       return charAb.strength;
+    case "STR":
+      return charAb.strength;
     case "DEXTERITY":
+      return charAb.dexterity;
+    case "DEX":
       return charAb.dexterity;
     case "CONSTITUTION":
       return charAb.constitution;
+    case "CON":
+      return charAb.constitution;
     case "INTELLIGENCE":
+      return charAb.intelligence;
+    case "INT":
       return charAb.intelligence;
     case "WISDOM":
       return charAb.wisdom;
+    case "WIS":
+      return charAb.wisdom;
     case "CHARISMA":
+      return charAb.charisma;
+    case "CHA":
       return charAb.charisma;
     default:
       return 0;
@@ -64,12 +76,12 @@ export const addTwoAbilitysModifiers = (
   abTwo: Abilitys
 ): Abilitys => {
   return {
-    strength: abOne.strength + abTwo.strength,
-    dexterity: abOne.dexterity + abTwo.dexterity,
-    constitution: abOne.constitution + abTwo.constitution,
-    intelligence: abOne.intelligence + abTwo.intelligence,
-    wisdom: abOne.wisdom + abTwo.wisdom,
-    charisma: abOne.charisma + abTwo.charisma
+    strength: (abOne.strength ?? 0) + (abTwo.strength ?? 0),
+    dexterity: (abOne.dexterity ?? 0) + (abTwo.dexterity ?? 0),
+    constitution: (abOne.constitution ?? 0) + (abTwo.constitution ?? 0),
+    intelligence: (abOne.intelligence ?? 0) + (abTwo.intelligence ?? 0),
+    wisdom: (abOne.wisdom ?? 0) + (abTwo.wisdom ?? 0),
+    charisma: (abOne.charisma ?? 0) + (abTwo.charisma ?? 0)
   };
 };
 export const maxTwoAbilitysModifiers = (
@@ -105,8 +117,7 @@ export const addAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
       intelligence: 0,
       wisdom: 0,
       charisma: 0
-    } as Abilitys
-  );
+    } as Abilitys);
 };
 export const maxAbilitysModifiers = (abs: Abilitys[]): Abilitys => {
   return abs.reduce(

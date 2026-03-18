@@ -8,14 +8,17 @@ import { FormattingText } from "../components/Formatting/Function";
 import { addToDrop, BonusAbilities, SignNumber } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
 import {
+  AbilitysEntry,
   AllModifiers,
   ModifiedCharacter,
-  modifiedCharacter
+  modifiedCharacter,
+  ModifierAbilityResult
 } from "../components/Prerequisite/functions/modifiedCharacter";
 import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
 import { AllSkills } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { Popup } from "../components/Popup/Popup";
 // import { PageAndSummaryLayout } from "./AppLayout";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
@@ -36,6 +39,7 @@ export function Ability() {
 
         const modChar: ModifiedCharacter = modifiedCharacter(charData);
         setModChar(modChar);
+        // setAbilitys(modChar.abilitys)
       } catch (error) {
         console.error(error);
       }
@@ -114,22 +118,24 @@ export function Ability() {
                 gap: "10px"
               }}
             >
-              <AbilityLayout
-                number={abilitys.strength}
-                ability="STRENGTH"
-                value={{ abilities: abilitys, text: "STR" }}
-                abilitysModifiers={modChar?.abilitys}
-              >
-                <DropdownComponent
-                  options={addToDrop(abilitisBaseValue, "number")}
-                  onAction={(option) => handleData(option, "strength")}
-                />
-              </AbilityLayout>
+              {abilitys && (
+                <AbilityLayout
+                  number={abilitys.strength}
+                  ability="STRENGTH"
+                  value={{ abilities: abilitys, text: "STR" }}
+                  abilitysModifiers={modChar?.abilitysMod}
+                >
+                  <DropdownComponent
+                    options={addToDrop(abilitisBaseValue, "number")}
+                    onAction={(option) => handleData(option, "strength")}
+                  />
+                </AbilityLayout>
+              )}
               <AbilityLayout
                 number={abilitys.dexterity}
                 ability="DEXTERITY"
                 value={{ abilities: abilitys, text: "DEX" }}
-                abilitysModifiers={modChar?.abilitys}
+                abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -140,7 +146,7 @@ export function Ability() {
                 number={abilitys.constitution}
                 ability="CONSTITUTION"
                 value={{ abilities: abilitys, text: "CON" }}
-                abilitysModifiers={modChar?.abilitys}
+                abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -151,7 +157,7 @@ export function Ability() {
                 number={abilitys.intelligence}
                 ability="INTELLIGENCE"
                 value={{ abilities: abilitys, text: "INT" }}
-                abilitysModifiers={modChar?.abilitys}
+                abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -162,7 +168,7 @@ export function Ability() {
                 number={abilitys.wisdom}
                 ability="WISDOM"
                 value={{ abilities: abilitys, text: "WIS" }}
-                abilitysModifiers={modChar?.abilitys}
+                abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -173,7 +179,7 @@ export function Ability() {
                 number={abilitys.charisma}
                 ability="CHARISMA"
                 value={{ abilities: abilitys, text: "CHA" }}
-                abilitysModifiers={modChar?.abilitys}
+                abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
                   options={addToDrop(abilitisBaseValue, "number")}
@@ -211,7 +217,7 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
       }}
     >
       <h4>{ability}</h4>
-      <p>{number && number}</p>
+        {number && ability && abilitysModifiers && <BaseAbilitysWithMods charAb={number} abText={ability} mods={(abilitysModifiers as AllModifiers)}/>}
       {children}
       <div>
         <p>
@@ -219,18 +225,31 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
           {value && BonusAbilities(value?.abilities, value?.text)}
         </p>
       </div>
-      {abilitysModifiers &&
-        ability &&
-        Object.keys(abilitysModifiers).map((key) => (
-          <div key={key}>
-            <p>
-              {key !== "null" ? `${key}: ` : "General: "}{" "}
-              {/* {findAbility(abilitysModifiers[key] as Abilitys, ability)} */}
-            </p>
-          </div>
-        ))}
       <AbilitySaveString ability={ability} />
       <AbilitySkillsString ability={ability} />
+    </div>
+  );
+};
+
+export type BaseAbilitysWithModsProps = {
+  charAb: number;
+  abText: string
+  mods: AllModifiers;
+};
+
+export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
+  charAb,
+  abText,
+  mods
+}) => {
+  return (
+    <div>
+      <p>{charAb}{" "}{Object.entries(mods).map(([key, v]) => {
+        const entity = v as ModifierAbilityResult
+        const value: number = findAbility(entity.abilitys, abText)
+        if(value !== 0) return (
+        <Popup text={SignNumber(value) + value} popText={entity.sources.flatMap(s => key + ": " + s.text).toString()}/>)})}
+      </p>
     </div>
   );
 };

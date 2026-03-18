@@ -14,6 +14,8 @@ import { Resistance, SavingThrow } from "../../Saving/interface";
 import { emptyAbilitys } from "../../variables";
 import { Prerequisite } from "../interface/Prerequisite";
 import { findAllPrerequisiteModifier } from "./findSpecificPrerequisite";
+import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 
 export type ModifierTarget = string | any[];
 
@@ -46,19 +48,28 @@ export type ModifierSaveResult = {
   resistance?: Resistance[];
 };
 
+export type ModifierSkillsResult = {
+  text: string;
+  skillsStudies: PrerequisiteSkills[];
+};
+
 export type AllModifiers = {
   [modifier: string]:
     | ModifierResult
     | ModifierSaveResult[]
-    | ModifierAbilityResult;
+    | ModifierAbilityResult
+    | ModifierSkillsResult[];
 };
 
 export type ModifiedCharacter = {
-  abilitys?: AllModifiers;
-  attackRoll: AllModifiers;
-  damageBonus?: AllModifiers;
-  savingThrow?: AllModifiers;
-  armorClass: AllModifiers;
+  abilitys: Abilitys;
+  abilitysMod?: AllModifiers;
+  bab: number;
+  attackRollMod: AllModifiers;
+  damageBonusMod?: AllModifiers;
+  savingThrowMod?: AllModifiers;
+  armorClassMod?: AllModifiers;
+  skillStudyMod?: AllModifiers;
 };
 
 export const findAllPrerequisite = (char: CharacterPc): Prerequisite[] => {
@@ -164,7 +175,7 @@ export const modifiersFromPrerequisite = (
     }
   };
 
-  const applySkillsModifier = (text: string, st: SavingThrow) => {
+  const applySaveModifier = (text: string, st: SavingThrow) => {
     const f: Number = st.fortitude;
     const r: Number = st.reflex;
     const w: Number = st.will;
@@ -232,9 +243,34 @@ export const modifiersFromPrerequisite = (
     return targetList;
   };
 
+  const applySkillsModifier = (text: string, ss: PrerequisiteSkills[]) => {
+    ss.forEach((s) => {
+      if (!s.modifierBonus) {
+        if (!result["increase"]) {
+          (result["increase"] as ModifierSkillsResult) = {
+            text: text,
+            skillsStudies: []
+          } as ModifierSkillsResult;
+        }
+        const entity: ModifierSkillsResult = result["increase"];
+        // entity.text = text;
+        entity.skillsStudies.push(s);
+      } else {
+        if (!result[s.modifierBonus.text]) {
+          (result[s.modifierBonus.text] as ModifierSkillsResult) = {
+            text: text,
+            skillsStudies: []
+          } as ModifierSkillsResult;
+        }
+        const entity: ModifierSkillsResult = result[s.modifierBonus.text];
+        entity.skillsStudies.push(s);
+      }
+    });
+  };
+
   allPrerequisite.forEach((pr) => {
     if (bonusType === "abilitys") {
-      applyAbilitysModifier(pr.text ?? "", pr.abilitys ?? emptyAbilitys);
+      pr.abilitys && applyAbilitysModifier(pr.text ?? "", pr.abilitys);
     }
     if (bonusType === "attackRoll") {
       pr.attackRoll?.forEach((a) => {
@@ -277,38 +313,44 @@ export const modifiersFromPrerequisite = (
       // SAVING THROW
       pr.savingThrow?.forEach((st) => {
         if (!st.modifierBonus) return;
-        applySkillsModifier(pr.text ?? "", st);
+        applySaveModifier(pr.text ?? "", st);
       });
+    }
+    if (bonusType === "skillStudy") {
+      pr.skillStudy && applySkillsModifier(pr.text ?? "", pr.skillStudy);
     }
   });
 
   return result;
 };
 
-// SKILLS
-//   pr.skillStudy?.forEach(skill => {
-//     if (!skill.modifierBonus) return
-
-//     applyModifier(
-//       skill.modifierBonus.text,
-//       skill.rank ?? 0,
-//       skill.target
-//     )
-//   })
-
 export const modifiedCharacter = (char: CharacterPc): ModifiedCharacter => {
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(char);
 
-  console.log("allPrerequisite", allPrerequisite);
-
+  //Abilitys
   const ab: AllModifiers = modifiersFromPrerequisite(
     allPrerequisite,
     "abilitys"
   );
+  const totAB: Abilitys = addAbilitysModifiers(
+    Object.values(ab).flatMap((a) => (a as ModifierAbilityResult).abilitys)
+  );
+  const abilitys: Abilitys = addTwoAbilitysModifiers(char.abilitys, totAB);
+  //Abilitys
+  //BaB
   const aR: AllModifiers = modifiersFromPrerequisite(
     allPrerequisite,
     "attackRoll"
   );
+  const reducedBabMod: number = Object.values(aR)
+    .flatMap((a) => (a as ModifierResult).bonus)
+    .reduce((tot, bab) => (tot += bab));
+  const bab: number =
+    char.classPcList.reduce(
+      (tot, bab) => (tot += bab.level * bab.classCharacter.classBab),
+      0
+    ) + reducedBabMod;
+  //BaB
   const dB: AllModifiers = modifiersFromPrerequisite(
     allPrerequisite,
     "damageBonus"
@@ -317,22 +359,36 @@ export const modifiedCharacter = (char: CharacterPc): ModifiedCharacter => {
     allPrerequisite,
     "savingThrow"
   );
+  const sS: AllModifiers = modifiersFromPrerequisite(
+    allPrerequisite,
+    "skillStudy"
+  );
   const ac: AllModifiers = modifiersFromPrerequisite(
     allPrerequisite,
     "armorClass"
   );
 
-  console.log("abilitys", ab);
-  console.log("attackRoll", aR);
-  console.log("damageBonus", dB);
-  console.log("savingThrow", sT);
-  console.log("armorClass", ac);
+  // console.log("abilitys", abilitys);
+  // console.log("abilitys", ab);
+  // console.log("bab", bab);
+  // console.log("attackRoll", aR);
+  // console.log("damageBonus", dB);
+  // console.log("savingThrow", sT);
+  // console.log("skillStudy", sS);
+  // console.log("armorClass", ac);
 
   return {
-    abilitys: ab,
-    attackRoll: aR,
-    damageBonus: dB,
-    savingThrow: sT,
-    armorClass: ac
+    // abilitys
+    abilitys: abilitys,
+    abilitysMod: ab,
+    // abilitys
+    // bab
+    bab: bab,
+    attackRollMod: aR,
+    // bab
+    damageBonusMod: dB,
+    savingThrowMod: sT,
+    skillStudyMod: sS,
+    armorClassMod: ac
   };
 };
