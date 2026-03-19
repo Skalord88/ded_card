@@ -4,7 +4,7 @@ import axios from "axios";
 import { urlSkillAll } from "../../url";
 import { Study } from "../interface/SkillsInterface";
 
-export const AllSkills = () => {
+export const AllSkillsAxios = () => {
   const [skills, setSkills] = useState<Skill[]>([]);
 
   useEffect(() => {

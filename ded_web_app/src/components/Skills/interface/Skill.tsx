@@ -1,6 +1,8 @@
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
+
 export type Skill = {
     id: number;
-    skillName: string;
+    skillName: ModifierEnum;
     ability: string;
     penality: number;
 }

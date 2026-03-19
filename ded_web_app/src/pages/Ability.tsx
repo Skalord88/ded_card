@@ -15,7 +15,7 @@ import {
   ModifierAbilityResult
 } from "../components/Prerequisite/functions/modifiedCharacter";
 import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
-import { AllSkills } from "../components/Skills/Skills/Const";
+import { AllSkills, AllSkillsAxios } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
 import { Popup } from "../components/Popup/Popup";
@@ -120,68 +120,80 @@ export function Ability() {
             >
               {abilitys && (
                 <AbilityLayout
+                  key={"ab.strength"}
                   number={abilitys.strength}
                   ability="STRENGTH"
                   value={{ abilities: abilitys, text: "STR" }}
                   abilitysModifiers={modChar?.abilitysMod}
                 >
                   <DropdownComponent
+                    key={"ab.strength"}
                     options={addToDrop(abilitisBaseValue, "number")}
                     onAction={(option) => handleData(option, "strength")}
                   />
                 </AbilityLayout>
               )}
               <AbilityLayout
+                key={"ab.dexterity"}
                 number={abilitys.dexterity}
                 ability="DEXTERITY"
                 value={{ abilities: abilitys, text: "DEX" }}
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
+                  key={"ab.dexterity"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "dexterity")}
                 />
               </AbilityLayout>
               <AbilityLayout
+                key={"ab.constitution"}
                 number={abilitys.constitution}
                 ability="CONSTITUTION"
                 value={{ abilities: abilitys, text: "CON" }}
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
+                  key={"ab.constitution"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "constitution")}
                 />
               </AbilityLayout>
               <AbilityLayout
+                key={"ab.intelligence"}
                 number={abilitys.intelligence}
                 ability="INTELLIGENCE"
                 value={{ abilities: abilitys, text: "INT" }}
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
+                  key={"ab.intelligence"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "intelligence")}
                 />
               </AbilityLayout>
               <AbilityLayout
+                key={"ab.wisdom"}
                 number={abilitys.wisdom}
                 ability="WISDOM"
                 value={{ abilities: abilitys, text: "WIS" }}
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
+                  key={"ab.wisdom"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "wisdom")}
                 />
               </AbilityLayout>
               <AbilityLayout
+                key={"ab.charisma"}
                 number={abilitys.charisma}
                 ability="CHARISMA"
                 value={{ abilities: abilitys, text: "CHA" }}
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
+                  key={"ab.charisma"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "charisma")}
                 />
@@ -217,7 +229,13 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
       }}
     >
       <h4>{ability}</h4>
-        {number && ability && abilitysModifiers && <BaseAbilitysWithMods charAb={number} abText={ability} mods={(abilitysModifiers as AllModifiers)}/>}
+      {number && ability && abilitysModifiers && (
+        <BaseAbilitysWithMods
+          charAb={number}
+          abText={ability}
+          mods={abilitysModifiers as AllModifiers}
+        />
+      )}
       {children}
       <div>
         <p>
@@ -233,7 +251,7 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
 
 export type BaseAbilitysWithModsProps = {
   charAb: number;
-  abText: string
+  abText: string;
   mods: AllModifiers;
 };
 
@@ -242,14 +260,27 @@ export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
   abText,
   mods
 }) => {
+  const valueAndText: { index: string; value: number; text: string }[] =
+    Object.entries(mods).map(([key, v], index) => {
+      const entity = v as ModifierAbilityResult;
+      const value: number = findAbility(entity.abilitys, abText);
+      const text: string = entity.sources[index].text + ", " + key;
+      return { index: abText + "." + key, value: value, text: text };
+    });
+  const totValue: number =
+    valueAndText.reduce((tot, v) => (tot += v.value), 0) + charAb;
   return (
     <div>
-      <p>{charAb}{" "}{Object.entries(mods).map(([key, v]) => {
-        const entity = v as ModifierAbilityResult
-        const value: number = findAbility(entity.abilitys, abText)
-        if(value !== 0) return (
-        <Popup text={SignNumber(value) + value} popText={entity.sources.flatMap(s => key + ": " + s.text).toString()}/>)})}
-      </p>
+      <span>{"(" + totValue + "):"}</span>
+      <span>{charAb}</span>
+      {valueAndText.map(
+        (vT) =>
+          vT.value !== 0 && (
+            <span key={vT.index}>
+              <Popup text={SignNumber(vT.value) + vT.value} popText={vT.text} />
+            </span>
+          )
+      )}
     </div>
   );
 };
@@ -276,11 +307,12 @@ export const AbilitySaveString: React.FC<AbilityLayoutProps> = ({
 export const AbilitySkillsString: React.FC<AbilityLayoutProps> = ({
   ability
 }) => {
-  const skills = AllSkills();
-  const abilitySkillsString: string = skills
+  const skills = AllSkillsAxios();
+  const abilitySkillsString = skills
     .filter((skill) => skill.ability === ability?.toUpperCase())
-    .map((skill) => FormattingText(skill.skillName.toString()))
+    .map((skill) => skill.skillName.text)
     .join(", ");
+    // console.log("abilitySkillsString:", abilitySkillsString)
   return (
     <div style={{ margin: "10px" }}>
       <p>{abilitySkillsString}</p>

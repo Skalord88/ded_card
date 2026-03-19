@@ -190,6 +190,15 @@
             <!-- Lightfoot Halfling -->
             <column name="text" value="Lightfoot Halfling races modifiers" />
             <column name="weapon_type" value="THROWN" />
+            <!-- prova DA CANCELLARE -->
+            <!-- <column name="abilitys"
+                value="{
+                &quot;modifierBonus&quot; : &quot;ALCHEMICAL_BONUS&quot;,
+                &quot;strength&quot; : 2,
+                &quot;constitution&quot; : 2,
+                &quot;charisma&quot; : -2
+                }" /> -->
+            <!-- prova DA CANCELLARE -->
             <column name="attack_roll"
                 value="[{
                 &quot;bonus&quot; : 1,
