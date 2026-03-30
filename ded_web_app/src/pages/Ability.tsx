@@ -4,22 +4,19 @@ import { useParams } from "react-router-dom";
 import { findAbility } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { FormattingText } from "../components/Formatting/Function";
 import { addToDrop, BonusAbilities, SignNumber } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
+import { Popup } from "../components/Popup/Popup";
 import {
-  AbilitysEntry,
   AllModifiers,
   ModifiedCharacter,
   modifiedCharacter,
   ModifierAbilityResult
 } from "../components/Prerequisite/functions/modifiedCharacter";
 import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
-import { AllSkills, AllSkillsAxios } from "../components/Skills/Skills/Const";
+import { AllSkillsAxios } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { Popup } from "../components/Popup/Popup";
-// import { PageAndSummaryLayout } from "./AppLayout";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -28,7 +25,6 @@ export function Ability() {
 
   const [abilitys, setAbilitys] = useState<Abilitys>();
   const [modChar, setModChar] = useState<ModifiedCharacter>();
-  // const [change, setChange] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,7 +35,6 @@ export function Ability() {
 
         const modChar: ModifiedCharacter = modifiedCharacter(charData);
         setModChar(modChar);
-        // setAbilitys(modChar.abilitys)
       } catch (error) {
         console.error(error);
       }
@@ -89,10 +84,10 @@ export function Ability() {
     >
       {abilitys && (
         <div>
-          <div>
+          <div key={"abilitisBaseValue"}>
             <p>
               {abilitisBaseValue.map((value, index) => (
-                <span>
+                <>
                   <span
                     style={{
                       color: Object.values(abilitys).includes(value)
@@ -106,17 +101,19 @@ export function Ability() {
                   <span>
                     {index < abilitisBaseValue.length - 1 ? ", " : ""}
                   </span>
-                </span>
+                </>
               ))}
             </p>
           </div>
           {abilitys && (
             <div
+            key={"abilitys"}
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
                 gap: "10px"
               }}
+              
             >
               {abilitys && (
                 <AbilityLayout
@@ -126,11 +123,15 @@ export function Ability() {
                   value={{ abilities: abilitys, text: "STR" }}
                   abilitysModifiers={modChar?.abilitysMod}
                 >
+                  {/* <div style={{display: "flex", flexDirection: "row"}}>
+                  <button>+</button> */}
                   <DropdownComponent
-                    key={"ab.strength"}
+                    key={"drop.strength"}
                     options={addToDrop(abilitisBaseValue, "number")}
                     onAction={(option) => handleData(option, "strength")}
                   />
+                  {/* <button>-</button> */}
+                  {/* </div> */}
                 </AbilityLayout>
               )}
               <AbilityLayout
@@ -141,7 +142,7 @@ export function Ability() {
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
-                  key={"ab.dexterity"}
+                  key={"drop.dexterity"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "dexterity")}
                 />
@@ -154,7 +155,7 @@ export function Ability() {
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
-                  key={"ab.constitution"}
+                  key={"drop.constitution"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "constitution")}
                 />
@@ -167,7 +168,7 @@ export function Ability() {
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
-                  key={"ab.intelligence"}
+                  key={"drop.intelligence"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "intelligence")}
                 />
@@ -180,7 +181,7 @@ export function Ability() {
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
-                  key={"ab.wisdom"}
+                  key={"drop.wisdom"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "wisdom")}
                 />
@@ -193,7 +194,7 @@ export function Ability() {
                 abilitysModifiers={modChar?.abilitysMod}
               >
                 <DropdownComponent
-                  key={"ab.charisma"}
+                  key={"drop.charisma"}
                   options={addToDrop(abilitisBaseValue, "number")}
                   onAction={(option) => handleData(option, "charisma")}
                 />
@@ -312,7 +313,6 @@ export const AbilitySkillsString: React.FC<AbilityLayoutProps> = ({
     .filter((skill) => skill.ability === ability?.toUpperCase())
     .map((skill) => skill.skillName.text)
     .join(", ");
-    // console.log("abilitySkillsString:", abilitySkillsString)
   return (
     <div style={{ margin: "10px" }}>
       <p>{abilitySkillsString}</p>

@@ -30,7 +30,7 @@ export const Classes = () => {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
         const classi: ClassPc[] = resChar.data.classPcList;
-        if (classi && classi.length > 0){
+        if (classi && classi.length > 0) {
           setChange(true);
         }
         setCharClassPc(classi);
@@ -145,13 +145,36 @@ export const Classes = () => {
       }}
       onAction={handleSubmit}
     >
-      
-
       <div className="rpgui-container-framed-grey">
         <p>Base Classes: </p>
         <DropdownComponent options={baseClList} onAction={handleNewClass} />
         <p>Prestige Classes: </p>
         <DropdownComponent options={prestigeClList} onAction={handleNewClass} />
+        {char?.abilitys && (
+          <div style={{ display: "flex", flexDirection: "row", gap: 10}}>
+            <AbilityLevelComponent
+              value={char?.abilitys?.strength}
+              name="STR"
+            />
+            <AbilityLevelComponent
+              value={char?.abilitys?.dexterity}
+              name="DEX"
+            />
+            <AbilityLevelComponent
+              value={char?.abilitys?.constitution}
+              name="CON"
+            />
+            <AbilityLevelComponent
+              value={char?.abilitys?.intelligence}
+              name="INT"
+            />
+            <AbilityLevelComponent value={char?.abilitys?.wisdom} name="WIS" />
+            <AbilityLevelComponent
+              value={char?.abilitys?.charisma}
+              name="CHA"
+            />
+          </div>
+        )}
         {charClassPc ? (
           charClassPc.map((cl, index) => (
             <div key={index}>
@@ -185,5 +208,32 @@ export const Classes = () => {
       </div>
       {/* {char ? <CharSummary character={char} classPcList={charClassPc} /> : null} */}
     </PageLayout>
+  );
+};
+
+export type AbilityLevelComponentProps = {
+  value: number;
+  name: string;
+};
+
+const AbilityLevelComponent: React.FC<AbilityLevelComponentProps> = ({
+  value,
+  name
+}) => {
+  const [abValue, setAbValue] = useState<number>(value);
+  return (
+    <div>
+      <p>
+        <span
+          onClick={() =>
+            value <= abValue - 1 ? setAbValue(abValue - 1) : abValue
+          }
+        >
+          {name}
+        </span>
+        <span>{":"}</span>
+        <span onClick={() => setAbValue(abValue + 1)}>{abValue}</span>
+      </p>
+    </div>
   );
 };

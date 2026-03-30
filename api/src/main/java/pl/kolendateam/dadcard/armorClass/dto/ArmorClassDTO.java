@@ -38,7 +38,8 @@ public class ArmorClassDTO {
     // this.naturalArmor = aC.getNaturalArmor();
     // this.dodgeBonus = aC.getDodgeBonus();
     this.bonus = aC.getBonus();
-    this.modifierBonus = aC.getModifierBonus();
+    this.modifierBonus =
+      aC.getModifierBonus() != null ? aC.getModifierBonus() : null;
     this.target = aC.getTarget() != null ? aC.getTarget() : null;
     this.special = aC.getSpecial() != null ? aC.getSpecial() : null;
   }

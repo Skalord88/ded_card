@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
+import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.attack.dto.AttacksDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.classCharacter.MapperClassPc;
@@ -29,7 +30,6 @@ import pl.kolendateam.dadcard.skills.dto.SkillCharacterDTO;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.BookDTO;
 import pl.kolendateam.dadcard.spells.dto.DomainsDTO;
-import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,6 +42,7 @@ public class CharacterDTO implements Serializable {
   public SubRaceDTO race;
   public Set<ArchetypeDTO> archetypes;
   public AbilitysDTO abilitys;
+  public List<LevelAbilitysDTO> characterLevelAbilitys;
   public Set<SkillCharacterDTO> skillsCharacter;
   public ArrayList<FeatPcDTO> featsList;
   public InventoryDTO inventory;
@@ -75,6 +76,14 @@ public class CharacterDTO implements Serializable {
     this.abilitys =
       character.getAbilitys() != null
         ? MapperAbilitys.toAbilityDTO(character.getAbilitys())
+        : null;
+    this.characterLevelAbilitys =
+      character.getCharacterLevelAbilitys() != null
+        ? character
+          .getCharacterLevelAbilitys()
+          .stream()
+          .map(MapperAbilitys::toLevelAbilityDTO)
+          .collect(ArrayList::new, ArrayList::add, ArrayList::addAll)
         : null;
     this.skillsCharacter =
       character.getSkillsCharacter() != null

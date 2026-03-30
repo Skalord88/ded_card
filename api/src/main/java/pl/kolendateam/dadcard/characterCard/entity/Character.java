@@ -28,7 +28,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
+import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
+import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.abilitys.entity.LevelAbilitys;
 import pl.kolendateam.dadcard.attack.entity.Attacks;
 import pl.kolendateam.dadcard.classCharacter.dto.ClassPcToAddDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPc;
@@ -73,6 +76,9 @@ public class Character implements Serializable {
 
   @JdbcTypeCode(SqlTypes.JSON)
   Abilitys abilitys;
+
+  @JdbcTypeCode(SqlTypes.JSON)
+  List<LevelAbilitys> characterLevelAbilitys;
 
   @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
   @JoinColumn(name = "sub_race_id", referencedColumnName = "id")
@@ -584,5 +590,50 @@ public class Character implements Serializable {
       System.out.println("add dominio: " + d.getId() + " " + d.getDomain())
     );
     this.domains = newDomains;
+  }
+
+  public void addLevelsAbility(List<LevelAbilitysDTO> levelAbilitis) {
+    if (this.characterLevelAbilitys == null) {
+      this.characterLevelAbilitys = new ArrayList<>();
+    }
+
+    this.characterLevelAbilitys =
+      levelAbilitis
+        .stream()
+        .map(dto -> MapperAbilitys.toLevelAbility(dto))
+        .collect(Collectors.toList());
+    // for (LevelAbilitysDTO dto : levelAbilitis) {
+    //   LevelAbilitys existing =
+    //     this.characterLevelAbilitys.stream()
+    //       .filter(la -> la.getLevel() == dto.level)
+    //       .findFirst()
+    //       .orElse(null);
+
+    //   if (existing == null) {
+    //     LevelAbilitys newLevelAbility = MapperAbilitys.toLevelAbility(dto);
+    //     this.characterLevelAbilitys =
+    //       this.characterLevelAbilitys.stream()
+    //         .map(la -> {
+    //           if (la.getLevel() == newLevelAbility.getLevel()) {
+    //             return newLevelAbility;
+    //           }
+    //           return la;
+    //         })
+    //         .collect(Collectors.toList());
+    //   } else {
+    //     if(!existing.getAbilitys().equals(dto.abilitys)) {
+    //       existing.setAbilitys(dto.abilitys);
+    //       this.characterLevelAbilitys =
+    //       this.characterLevelAbilitys.stream()
+    //         .map(la -> {
+    //           if (la.getLevel() == existing.getLevel()) {
+    //             return existing;
+    //           }
+    //           return la;
+    //         })
+    //         .collect(Collectors.toList());
+    //     }
+    //   }
+    // }
   }
 }

@@ -1,6 +1,5 @@
 package pl.kolendateam.dadcard.race.dto;
 
-import java.util.Set;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.modifier.MapperPrerequisiteBonus;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
@@ -17,15 +16,9 @@ public class SubRaceDTO {
   public String subRacesName;
   public String avatarUrl;
   public PrerequisiteDTO modifiers;
-  // public Set<FeatDTO> raceFeats;
   public Integer levelAdjustment;
   public SizeDTO size;
-  // public Set<SpecialAbilitiesDTO> specialAbilities;
-  // public Set<RegionBaseDTO> availableRegions;
   public RaceTypeDTO raceType;
-
-  // public Integer hitDice;
-  // public Integer numberHitDice;
 
   public SubRaceDTO(SubRace subRace) {
     this.id = subRace.getId();
@@ -39,24 +32,12 @@ public class SubRaceDTO {
       subRace.getModifiers() != null
         ? MapperPrerequisiteBonus.toPrerequisiteDTO(subRace.getModifiers())
         : null;
-    // this.raceFeat = MapperFeats.toFeatsSetDTO(subRace.getSubRaceFeats());
     this.levelAdjustment =
       subRace.getLevelAdjustment() == null ? 0 : subRace.getLevelAdjustment();
     this.size = MapperSizeToDTO.toSizeDTO(subRace.getSize());
-    // this.availableRegions =
-    //   MaperListRegionToDTO.toRegionBaseDTO(subRace.getAvailableRegions());
     this.raceType =
       subRace.getRaceType() != null
         ? MapperRaceToDTO.toRaceTypeDTO(subRace.getRaceType())
         : null;
   }
 }
-// this.specialAbilities =
-//   subRace.getSpecialAbilities() != null
-//     ? MapperSpecialAbilities.toSpecialAbilitiesDTOSet(
-//       subRace.getSpecialAbilities()
-//     )
-//     : null;
-// this.hitDice = subRace.getHitDice() != null ? subRace.getHitDice() : null;
-// this.numberHitDice =
-//   subRace.getNumberHitDice() != null ? subRace.getNumberHitDice() : null;

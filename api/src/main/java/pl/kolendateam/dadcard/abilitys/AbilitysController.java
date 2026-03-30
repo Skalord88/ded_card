@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.abilitys;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
+import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterAbilityDTO;
+import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
 import pl.kolendateam.dadcard.characterCard.repository.CharacterRepository;
 
@@ -71,5 +74,28 @@ public class AbilitysController {
     this.characterRepository.save(character);
 
     return new CharacterAbilityDTO(character);
+  }
+
+  @PostMapping(value = "{id}/lvAb", consumes = { "application/json" })
+  public CharacterDTO addLevelsAbility(
+    @PathVariable int id,
+    @RequestBody List<LevelAbilitysDTO> levelAbilitis
+  ) {
+    Optional<Character> characterOpt = this.characterRepository.findById(id);
+
+    if (!characterOpt.isPresent()) {
+      throw new ResponseStatusException(
+        HttpStatus.NOT_FOUND,
+        "Character Not Found"
+      );
+    }
+
+    Character character = characterOpt.get();
+
+    character.addLevelsAbility(levelAbilitis);
+
+    this.characterRepository.save(character);
+
+    return new CharacterDTO(character);
   }
 }

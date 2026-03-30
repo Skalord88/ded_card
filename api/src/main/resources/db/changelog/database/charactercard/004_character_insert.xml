@@ -11,13 +11,13 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot;: 14,
-                &quot;dexterity&quot;: 18,
+                &quot;dexterity&quot;: 15,
                 &quot;constitution&quot;: 12,
                 &quot;intelligence&quot;: 13,
-                &quot;wisdom&quot;: 14,
+                &quot;wisdom&quot;: 8,
                 &quot;charisma&quot;: 10
             }" />
-            <!-- <column name="sub_race_id" value="602" /> -->
+            <column name="sub_race_id" value="602" />
             <column name="sub_race_id" value="502" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->
