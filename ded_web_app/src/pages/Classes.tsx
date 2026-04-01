@@ -1,17 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   ClassCharacter,
   ClassPc
 } from "../components/ClassPc/Interface/ClassPcLevel";
-import { CharSummary } from "../components/Summary/CharSummary";
-import { CharacterPc } from "../components/interfaces";
-import { urlChar, urlClassAdd, urlClassList } from "../components/url";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, itemInDrop } from "../components/functions";
+import { CharacterPc } from "../components/interfaces";
+import { urlChar, urlClassAdd, urlClassList } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
+import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 
 export const Classes = () => {
   const { charId } = useParams();
@@ -21,6 +22,7 @@ export const Classes = () => {
   const [baseClList, setBaseClList] = useState<itemInDrop[]>([]);
   const [prestigeClList, setPrestigeClList] = useState<itemInDrop[]>([]);
   const [charClassPc, setCharClassPc] = useState<ClassPc[]>([]);
+  const [charMod, setCharMod] = useState<ModifiedCharacter>();
 
   const [change, setChange] = useState<boolean>(false);
 
@@ -29,6 +31,10 @@ export const Classes = () => {
       try {
         const resChar = await axios.get(urlChar + "/" + charId);
         setChar(resChar.data);
+
+        const modChar = modifiedCharacter(resChar.data);
+        setCharMod(modChar);
+
         const classi: ClassPc[] = resChar.data.classPcList;
         if (classi && classi.length > 0) {
           setChange(true);
@@ -136,6 +142,14 @@ export const Classes = () => {
     window.location.reload();
   };
 
+  // newClassList
+  useEffect(() => {
+    if (charClassPc && char) {
+      const modChar = modifiedCharacter({ ...char, classPcList: charClassPc });
+      setCharMod(modChar);
+    }
+  }, [charClassPc, char]);
+
   return (
     <PageLayout
       title={"Classes"}
@@ -151,7 +165,7 @@ export const Classes = () => {
         <p>Prestige Classes: </p>
         <DropdownComponent options={prestigeClList} onAction={handleNewClass} />
         {char?.abilitys && (
-          <div style={{ display: "flex", flexDirection: "row", gap: 10}}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
             <AbilityLevelComponent
               value={char?.abilitys?.strength}
               name="STR"
@@ -175,6 +189,20 @@ export const Classes = () => {
             />
           </div>
         )}
+        <div>
+          <p>
+            <span>
+              Total Level:{" "}
+              {(charMod?.totLevel || 0) + (charMod?.adjLevel || 0)}
+            </span>
+            {charMod?.totLevel !== 0 && (
+              <span> Classes: {charMod?.totLevel}</span>
+            )}
+            {charMod?.adjLevel !== 0 && (
+              <span> Racial: {charMod?.adjLevel}</span>
+            )}
+          </p>
+        </div>
         {charClassPc ? (
           charClassPc.map((cl, index) => (
             <div key={index}>
@@ -222,18 +250,47 @@ const AbilityLevelComponent: React.FC<AbilityLevelComponentProps> = ({
 }) => {
   const [abValue, setAbValue] = useState<number>(value);
   return (
-    <div>
-      <p>
-        <span
-          onClick={() =>
-            value <= abValue - 1 ? setAbValue(abValue - 1) : abValue
-          }
-        >
-          {name}
-        </span>
-        <span>{":"}</span>
-        <span onClick={() => setAbValue(abValue + 1)}>{abValue}</span>
-      </p>
+    <div style={{ position: "relative", display: "inline-block" }}>
+      <div style={{ margin: 0 }}>
+        <p>
+          {name}:{abValue}
+        </p>
+      </div>
+
+      {/* SINISTRA (+) */}
+      <div
+        // onClick={() => console.log("plus")}
+        onClick={() => setAbValue(abValue + 1)}
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "50%",
+          height: "100%",
+          // background: "rgba(0,255,0,0.3)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+          // cursor: "pointer"
+        }}
+      ></div>
+
+      {/* DESTRA (-) */}
+      <div
+        onClick={() => setAbValue(abValue - 1)}
+        style={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          width: "50%",
+          height: "100%",
+          // background: "rgba(255,0,0,0.3)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+          // cursor: "pointer"
+        }}
+      ></div>
     </div>
   );
 };

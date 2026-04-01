@@ -6,17 +6,16 @@ import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, BonusAbilities, SignNumber } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
-import { Popup } from "../components/Popup/Popup";
 import {
-  AllModifiers,
-  ModifiedCharacter,
-  modifiedCharacter,
-  ModifierAbilityResult
-} from "../components/Prerequisite/functions/modifiedCharacter";
+  modifiedCharacter
+} from "../components/ModifiedCharacter/functions/ModifiedCharacter";
+import { Popup } from "../components/Popup/Popup";
 import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
 import { AllSkillsAxios } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { SummaryChar } from "../components/ModifiedCharacter/SummaryChar";
+import { ModifiedCharacter, AllModifiers, ModifierAbilityResult } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -82,6 +81,7 @@ export function Ability() {
       }}
       onAction={handleSubmit}
     >
+      
       {abilitys && (
         <div>
           <div key={"abilitisBaseValue"}>
@@ -107,13 +107,12 @@ export function Ability() {
           </div>
           {abilitys && (
             <div
-            key={"abilitys"}
+              key={"abilitys"}
               style={{
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
                 gap: "10px"
               }}
-              
             >
               {abilitys && (
                 <AbilityLayout
@@ -201,6 +200,7 @@ export function Ability() {
               </AbilityLayout>
             </div>
           )}
+          {modChar && <SummaryChar modCharacter={modChar as ModifiedCharacter} />}
         </div>
       )}
     </PageLayout>

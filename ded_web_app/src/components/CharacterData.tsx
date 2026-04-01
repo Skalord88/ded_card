@@ -1,7 +1,7 @@
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
 import { FormattingText } from "./Formatting/Function";
 import { CharacterPc } from "./interfaces";
-import { FindAllAdjLevel } from "./Race/Function";
+import { findAllAdjLevelInChar } from "./Race/Function";
 import { Archetype } from "./Race/Interfaces";
 
 export interface CharProps {
@@ -62,7 +62,7 @@ export const ArchetypesData: React.FC<ArchetypesDataProps> = ({
 };
 
 export const ClassExpGold: React.FC<CharProps> = ({ char }) => {
-  const adjLv: number = FindAllAdjLevel(char);
+  const adjLv: number = findAllAdjLevelInChar(char);
   const totLv: number =
     adjLv + char.classPcList.reduce((total, cl) => total + cl.level, 0);
 

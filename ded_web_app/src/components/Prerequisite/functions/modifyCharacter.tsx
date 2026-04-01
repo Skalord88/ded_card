@@ -1,7 +1,7 @@
 import {
-  abilityAbbreviation,
-  BonusAbilities,
-  findAbility
+    abilityAbbreviation,
+    BonusAbilities,
+    findAbility
 } from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
 import { ArmorClass } from "../../Armor/interface/ArmorInterface";
@@ -13,21 +13,21 @@ import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { groupAllFeats } from "../../Feats/function";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
-  Attacks,
-  Book,
-  CharacterPc,
-  Inventory,
-  Item,
-  ItemsList,
-  SpecialAttacks,
-  Spell
+    Attacks,
+    Book,
+    CharacterPc,
+    Inventory,
+    Item,
+    ItemsList,
+    SpecialAttacks,
+    Spell
 } from "../../interfaces";
 import {
-  findAllProficency
+    findAllProficency
 } from "../../Items/Functions/function";
 import { modifyInventory } from "../../Items/Inventory/function";
 import { adjClass } from "../../Race/AdjClass";
-import { FindAllAdjLevel } from "../../Race/Function";
+import { findAllAdjLevelInChar } from "../../Race/Function";
 import { SpecialAbilities } from "../../Race/Interfaces";
 import { CountSavingThrowFromClassPc } from "../../Saving/Functions";
 import { SavingThrow } from "../../Saving/interface";
@@ -39,25 +39,25 @@ import { getAllSpecialAbilities } from "../../SpecialAbilities/function";
 import { Speed } from "../../Speed/interface";
 import { emptyAttacks, noneWeapon } from "../../variables";
 import {
-  CountHitDicesFromAdj,
-  CountHitDicesFromClassPc,
-  HitDices
+    CountHitDicesFromAdj,
+    CountHitDicesFromClassPc,
+    HitDices
 } from "../../Vita/Functions";
 import { changeAbilitysFromPrerequisite } from "../abilitys/functions/function";
 import { AllPrerequisiteMap } from "../interface/AllPrerequisite";
 import { Prerequisite } from "../interface/Prerequisite";
 import {
-  findAbilitysPrerequisite,
-  findAllPrerequisiteModifier,
-  // findArmorPrerequisite,
-  // findAttackRollPrerequisite,
-  // findDamageBonusPrerequisite,
-  findInitiativePrerequisite,
-  findNumberOfDomanisPrerequisite,
-  findSavingThrowPrerequisite,
-  findSkillsPrerequisite,
-  findSpecialAttacksPrerequisite,
-  findSpeedPrerequisite
+    findAbilitysPrerequisite,
+    findAllPrerequisiteModifier,
+    // findArmorPrerequisite,
+    // findAttackRollPrerequisite,
+    // findDamageBonusPrerequisite,
+    findInitiativePrerequisite,
+    findNumberOfDomanisPrerequisite,
+    findSavingThrowPrerequisite,
+    findSkillsPrerequisite,
+    findSpecialAttacksPrerequisite,
+    findSpeedPrerequisite
 } from "./findSpecificPrerequisite";
 
 export type AttackRollElement = {
@@ -226,7 +226,7 @@ export const modifyCharacter = (
     abilitys
   );
   const adjBab: number = Math.floor(
-    CountBabFromClassPc(char) + FindAllAdjLevel(char) * adjClass.classBab
+    CountBabFromClassPc(char) + findAllAdjLevelInChar(char) * adjClass.classBab
   );
   const totalClassLv: number = char.classPcList.reduce(
     (tot, cl) => tot + cl.level,
@@ -393,7 +393,7 @@ export const modifyCharacter = (
   );
 
   const maxSkillPnts: number =
-    FindAllAdjLevel(char) * adjClass.skillPoints + allClassesSkillPoints;
+    findAllAdjLevelInChar(char) * adjClass.skillPoints + allClassesSkillPoints;
 
   const allFeats = groupAllFeats(char);
   const allProficency: { type: string[]; specific: Item[] } = items
@@ -406,9 +406,9 @@ export const modifyCharacter = (
     charPrerequisite: createCharPrerequisite(prer),
     size: char.race.size,
     adjBonus: {
-      bab: FindAllAdjLevel(char) * adjClass.classBab,
-      savingThrow: FindAllAdjLevel(char) * adjClass.classBab,
-      adjLv: FindAllAdjLevel(char)
+      bab: findAllAdjLevelInChar(char) * adjClass.classBab,
+      savingThrow: findAllAdjLevelInChar(char) * adjClass.classBab,
+      adjLv: findAllAdjLevelInChar(char)
     },
     classesLv: totalClassLv,
     // attackRoll: findAttackRollPrerequisite(prer),
@@ -420,7 +420,7 @@ export const modifyCharacter = (
     baseSave: CountSavingThrowFromClassPc(char.classPcList),
     savingThrow: findSavingThrowPrerequisite(prer),
     listHitDices: CountHitDicesFromAdj(
-      FindAllAdjLevel(char),
+      findAllAdjLevelInChar(char),
       CountHitDicesFromClassPc(char.classPcList)
     ),
     // armor: findArmorPrerequisite(prer),

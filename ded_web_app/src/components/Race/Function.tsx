@@ -1,7 +1,13 @@
 import { CharacterPc } from "../interfaces";
+import { Archetype } from "./Interfaces";
 
-export function FindAllAdjLevel(char: CharacterPc): number {
+export function findAllAdjLevelInChar(char: CharacterPc): number {
     return char.race.levelAdjustment + char.archetypes.reduce(
+        (total, adj) => total + adj.levelAdjustment, 0
+    )
+}
+export function findAllAdjLevelInRaceAndArchetypes(raceAdj: number, archetList: Archetype[]): number {
+    return raceAdj + archetList.reduce(
         (total, adj) => total + adj.levelAdjustment, 0
     )
 }
