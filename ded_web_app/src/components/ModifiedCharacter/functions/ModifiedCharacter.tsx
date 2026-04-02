@@ -5,13 +5,15 @@ import {
 import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
-import { CharacterPc } from "../../interfaces";
+import { FeatPc } from "../../Feats/Interface/FeatInterface";
+import { CharacterPc, Inventory } from "../../interfaces";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import {
   findAllAdjLevelInChar,
   findAllAdjLevelInRaceAndArchetypes
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
+import { CountHitDicesFromAdj, CountHitDicesFromClassPc, createHitDiceMap } from "../../Vita/Functions";
 import {
   AllModifiers,
   ModifiedCharacter,
@@ -26,9 +28,29 @@ export const modifiedCharacter = (
   newAbilitys?: Abilitys,
   newRace?: SubRace,
   newArchetypes?: Archetype[],
-  newClasses?: ClassPc[]
+  newFeatsList?: FeatPc[],
+  newClasses?: ClassPc[],
+  newInventory?: Inventory
 ): ModifiedCharacter => {
-  const allPrerequisite: Prerequisite[] = findAllPrerequisite(char);
+
+  const race: SubRace = newRace ? newRace : char.race;
+  const archetypes: Archetype[] = newArchetypes ? newArchetypes : char.archetypes;
+  const featsList: FeatPc[] = newFeatsList ? newFeatsList : char.featsList;
+  const classPcList: ClassPc[] = newClasses ? newClasses : char.classPcList;
+  const inventory: Inventory = newInventory ? newInventory : char.inventory;
+
+  const allPrerequisite: Prerequisite[] = findAllPrerequisite(
+    race, archetypes, featsList, classPcList, inventory
+  );
+  // allPrerequisite.forEach((pre) => {
+  //   if (pre){
+  //     Object.entries(pre).forEach(([key, value]) => {
+  //       if(value && key !== "id"){
+  //         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
+  //       }
+  //     });
+  //   }
+  // });
 
   //Abilitys
   const ab: AllModifiers = modifiersFromPrerequisite(
@@ -88,6 +110,11 @@ export const modifiedCharacter = (
   const title: string =
     char.race.subRacesName + ", lv." + (adjLevel + totLevel);
 
+  const listHitDices = createHitDiceMap(adjLevel, classPcList);
+
+  console.log("abilitys", abilitys)
+  console.log("ab", ab)
+
   return {
     title: title,
     // abilitys
@@ -104,8 +131,9 @@ export const modifiedCharacter = (
     armorClassMod: ac,
     adjLevel: adjLevel,
     totLevel: totLevel,
-    race: newRace ? newRace : char.race,
-    archetypes: newArchetypes ? newArchetypes : char.archetypes,
-    classPcList: newClasses ? newClasses : char.classPcList
+    race: race,
+    archetypes: archetypes,
+    classPcList: classPcList,
+    listHitDices: listHitDices
   };
 };

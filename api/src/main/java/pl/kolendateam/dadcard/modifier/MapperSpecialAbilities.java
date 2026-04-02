@@ -10,6 +10,9 @@ public class MapperSpecialAbilities {
   public static Set<SpecialAbilitiesDTO> toSpecialAbilitiesDTOSet(
     Set<SpecialAbilities> spABs
   ) {
+    if (spABs == null || spABs.isEmpty()) {
+      return null;
+    }
     Set<SpecialAbilitiesDTO> listofSADTO = new HashSet<>();
     if (spABs != null) {
       spABs.forEach(sA -> {

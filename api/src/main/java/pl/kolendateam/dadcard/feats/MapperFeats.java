@@ -32,6 +32,7 @@ public class MapperFeats {
     List<Feat> feats
   ) {
     List<PrerequisiteFeatsDTO> featsDTOList = new ArrayList<>();
+    if (feats == null || feats.isEmpty()) return null;
     if (feats != null) feats.forEach(feat -> {
       if (feat != null) {
         PrerequisiteFeatsDTO featsDTO = new PrerequisiteFeatsDTO(feat);

@@ -3,6 +3,7 @@ import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { HitDiceMap } from "../../Vita/Functions";
 
 export type ModifierTarget = string | any[];
 
@@ -63,4 +64,5 @@ export type ModifiedCharacter = {
   race?: SubRace;
   archetypes?: Archetype[];
   classPcList?: ClassPc[];
+  listHitDices?: HitDiceMap;
 };

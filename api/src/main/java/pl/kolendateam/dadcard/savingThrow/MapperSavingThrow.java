@@ -12,6 +12,9 @@ public class MapperSavingThrow {
   public static SavingThrowDTO[] toSavingThrowDTOArray(
     SavingThrow[] savingThrows
   ) {
+    if (savingThrows == null || savingThrows.length == 0) {
+      return null;
+    }
     return java.util.Arrays
       .stream(savingThrows)
       .map(MapperSavingThrow::toSavingThrowDTO)

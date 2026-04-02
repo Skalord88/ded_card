@@ -6,6 +6,61 @@ export type HitDices = {
   dice: number;
 };
 
+export type HitDiceMap = { [dice: number]: { first: boolean; lv: number } };
+
+export const createHitDiceMap = (
+  adjLv: number,
+  classList: ClassPc[]
+): HitDiceMap => {
+  const hitDiceMap: HitDiceMap = {};
+
+  if (adjLv > 0) {
+    hitDiceMap[4] = {
+      first: false,
+      lv: adjLv
+    };
+  }
+  classList.forEach((cl) => {
+    const dice = cl.classCharacter.hitDice;
+    if (hitDiceMap[dice]) {
+      hitDiceMap[dice].lv += cl.level;
+      cl.firstClass && (hitDiceMap[dice].first = true);
+    } else {
+      hitDiceMap[dice] = {
+        first: cl.firstClass,
+        lv: cl.level
+      };
+    }
+  });
+
+  return hitDiceMap;
+};
+
+export const CountTotalHitPoints = (
+  dice: number,
+  first: boolean,
+  lv: number,
+  constitutionBonus: number
+): number => {
+  const halfDice = Math.floor(dice / 2);
+  let hitPoints: number = 0;
+
+  for (let i = 1; i <= lv; i++) {
+    // if(dice === 4) console.log(i, hitPoints);
+    if(first && i === 1){
+      hitPoints += dice + constitutionBonus;
+      if(dice === 4) console.log(i, hitPoints);
+    } else if (i % 2 === 0) {
+      hitPoints += halfDice + constitutionBonus;
+      if(dice === 4) console.log(i, hitPoints);
+    } else if (i % 2 !== 0) {
+      hitPoints += halfDice + 1 + constitutionBonus;
+      if(dice === 4) console.log(i, hitPoints);
+    }
+  }
+  return hitPoints;
+};
+
 export function CountHitDicesFromClassPc(classPcList: ClassPc[]): HitDices[] {
   let listHitDices: HitDices[] = [];
   classPcList.forEach((cl) => {
@@ -46,10 +101,10 @@ export function CountHitPoints(
   return hitPoints + dispairBonusHits + constitutionBonusHits;
 }
 
-export function CountHitDicesFromAdj(
+export const CountHitDicesFromAdj = (
   lvAdj: number,
   listHitDices: HitDices[]
-): HitDices[] {
+): HitDices[] => {
   let find = false;
 
   if (lvAdj > 0) {
@@ -76,4 +131,4 @@ export function CountHitDicesFromAdj(
   } else {
     return listHitDices;
   }
-}
+};

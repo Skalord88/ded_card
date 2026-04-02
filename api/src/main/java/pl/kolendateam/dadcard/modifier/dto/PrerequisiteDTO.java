@@ -79,7 +79,7 @@ public class PrerequisiteDTO {
         ? MapperFeats.toPrerequisiteFeatsDTO(pre.getFeats())
         : null;
     this.caster = pre.getCaster() != null ? pre.getCaster() : null;
-    this.bab = pre.getBab();
+    this.bab = pre.getBab() != null ? pre.getBab() : null;
     this.damageBonus =
       pre.getDamageBonus() != null
         ? MapperAttackRoll.toDamageBonusDTO(pre.getDamageBonus())

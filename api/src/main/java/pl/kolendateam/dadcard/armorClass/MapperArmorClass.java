@@ -6,6 +6,9 @@ import pl.kolendateam.dadcard.armorClass.entity.ArmorClass;
 public class MapperArmorClass {
 
   public static ArmorClassDTO[] toArmorClassDTO(ArmorClass[] armorClass) {
+    if (armorClass == null || armorClass.length == 0) {
+      return null;
+    }
     ArmorClassDTO[] armorClassDTOs = new ArmorClassDTO[armorClass.length];
     for (int i = 0; i < armorClass.length; i++) {
       armorClassDTOs[i] = new ArmorClassDTO(armorClass[i]);

@@ -44,6 +44,17 @@ export const signAndCount = (
     }
 }
 
+export const signAndCountAbility = (
+    numbers: number[]
+): string => {
+    const num: number = numbers.reduce(
+        (total, n) => total + (Math.floor((n - 10) / 2)),
+        0
+    )
+
+    return SignNumber(num) + num
+}
+
 export function weaponLight(weapon: Weapon): boolean {
     if( weapon === null || !weapon.type) return false;
     return weapon.type.includes("LIGHT");

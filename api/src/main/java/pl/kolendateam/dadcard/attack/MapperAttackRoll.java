@@ -8,7 +8,7 @@ import pl.kolendateam.dadcard.attack.entity.DamageBonus;
 public class MapperAttackRoll {
 
   public static AttackRollDTO[] toAttackRollDTO(AttackRoll[] attack) {
-    if (attack == null) return null;
+    if (attack == null || attack.length == 0) return null;
     AttackRollDTO[] attackDTOs = new AttackRollDTO[attack.length];
     for (int i = 0; i < attack.length; i++) {
       attackDTOs[i] = new AttackRollDTO(attack[i]);
@@ -17,7 +17,7 @@ public class MapperAttackRoll {
   }
 
   public static DamageBonusDTO[] toDamageBonusDTO(DamageBonus[] dmg) {
-    if (dmg == null) return null;
+    if (dmg == null || dmg.length == 0) return null;
     DamageBonusDTO[] dmgDTOs = new DamageBonusDTO[dmg.length];
     for (int i = 0; i < dmg.length; i++) {
       dmgDTOs[i] = new DamageBonusDTO(dmg[i]);

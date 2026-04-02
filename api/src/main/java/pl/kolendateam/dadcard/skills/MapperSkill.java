@@ -110,6 +110,9 @@ public class MapperSkill {
   public static List<PrerequisiteSkillDTO> toPrerequisiteSkillDTO(
     List<PrerequisiteSkills> listSkillCharacter
   ) {
+    if (listSkillCharacter == null || listSkillCharacter.isEmpty()) {
+      return null;
+    }
     List<PrerequisiteSkillDTO> listSkillDTO = new ArrayList<>();
 
     if (listSkillCharacter != null) {

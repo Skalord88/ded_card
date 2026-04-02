@@ -70,6 +70,7 @@ public class MapperItemsDTO {
   }
 
   public static List<ItemDTO> toListItemsDTO(List<Item> items) {
+    if (items == null || items.isEmpty()) return null;
     List<ItemDTO> itemsListDTO = new ArrayList<>();
 
     if (items != null) items.forEach(item -> {

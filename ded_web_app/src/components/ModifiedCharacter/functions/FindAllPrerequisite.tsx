@@ -1,39 +1,54 @@
-import { CharacterPc } from "../../interfaces";
+import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { ClassFeats, FeatPc } from "../../Feats/Interface/FeatInterface";
+import { CharacterPc, Inventory } from "../../interfaces";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
+import { SubRace, Archetype } from "../../Race/Interfaces";
 
-export const findAllPrerequisite = (char: CharacterPc): Prerequisite[] => {
+export const findAllPrerequisite = (
+  race?: SubRace,
+  archetypes?: Archetype[],
+  featsList?: FeatPc[],
+  classPcList?: ClassPc[],
+  inventory?: Inventory
+): Prerequisite[] => {
   let allPrerequisite: Prerequisite[] = [];
 
-  char.archetypes.forEach((archetype) => {
-    archetype.modifiers !== null && allPrerequisite.push(archetype.modifiers);
-  });
+  if (race) {
+    race.race.modifiers !== null && allPrerequisite.push(race.race.modifiers);
 
-  if (char.race) {
-    char.race.race.modifiers !== null &&
-      allPrerequisite.push(char.race.race.modifiers);
+    race.size.modifiers !== null && allPrerequisite.push(race.size.modifiers);
 
-    char.race.size.modifiers !== null &&
-      allPrerequisite.push(char.race.size.modifiers);
-
-    char.race.modifiers !== null && allPrerequisite.push(char.race.modifiers);
+    race.modifiers !== null && allPrerequisite.push(race.modifiers);
   }
-  if (char.featsList) {
-    char.featsList.forEach((feat) => {
-      feat.classFeat?.selected !== null &&
-        allPrerequisite.push(feat.classFeat?.selected as Prerequisite);
+
+  if (archetypes) {
+    archetypes.forEach((archetype) => {
+      archetype.modifiers !== null && allPrerequisite.push(archetype.modifiers);
+    });
+  }
+
+  if (featsList && classPcList) {
+    const allFeatPc: (FeatPc | ClassFeats)[] = [
+      ...classPcList.flatMap((c) => c.classCharacter.classFeats),
+      ...featsList
+    ];
+    allFeatPc.forEach((feat) => {
+      "selected" in feat &&
+        feat.selected !== null &&
+        allPrerequisite.push(feat.selected as Prerequisite);
 
       feat.feat?.modifiers !== null &&
         allPrerequisite.push(feat.feat?.modifiers as Prerequisite);
     });
   }
 
-  if (char.inventory) {
-    char.inventory.armor &&
-      char.inventory.armor.modifiers !== null &&
-      allPrerequisite.push(char.inventory.armor.modifiers);
-    char.inventory.shield &&
-      char.inventory.shield.modifiers !== null &&
-      allPrerequisite.push(char.inventory.shield.modifiers);
+  if (inventory) {
+    inventory.armor &&
+      inventory.armor.modifiers !== null &&
+      allPrerequisite.push(inventory.armor.modifiers);
+    inventory.shield &&
+      inventory.shield.modifiers !== null &&
+      allPrerequisite.push(inventory.shield.modifiers);
   }
 
   return allPrerequisite;

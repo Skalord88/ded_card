@@ -8,6 +8,9 @@ public class MapperSpecialAttacks {
   public static SpecialAttacksDTO toSpecialAttacksDTO(
     SpecialAttacks specialAttacks
   ) {
+    if (specialAttacks == null) {
+      return null;
+    }
     return new SpecialAttacksDTO(specialAttacks);
   }
 

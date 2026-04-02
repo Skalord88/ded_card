@@ -152,6 +152,9 @@ public class MapperSpells {
   }
 
   public static List<SchoolDTO> toSchoolListDTO(List<School> schools) {
+    if (schools == null || schools.isEmpty()) {
+      return null;
+    }
     List<SchoolDTO> schoolsDTO = new ArrayList<>();
 
     if (schools != null) {

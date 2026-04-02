@@ -19,7 +19,7 @@ public class MapperAbilitys {
         abilitys.getModifierBonus()
       );
     }
-    return new AbilitysDTO();
+    return null;
   }
 
   public static Abilitys toAbility(AbilitysDTO abilitysDTO) {
