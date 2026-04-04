@@ -1,5 +1,6 @@
 import { addTwoAbilitysModifiers } from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SavingThrow, Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
@@ -71,10 +72,10 @@ export const modifiersFromPrerequisite = (
   };
 
   const applySaveModifier = (text: string, st: SavingThrow) => {
-    const f: Number = st.fortitude;
-    const r: Number = st.reflex;
-    const w: Number = st.will;
-    const res: Resistance[] = st.resistance;
+    const f: Number = st.fortitude? st.fortitude : 0;
+    const r: Number = st.reflex? st.reflex : 0;
+    const w: Number = st.will? st.will : 0;
+    const res: Resistance[] = st.resistance? st.resistance : [];
     const entity: ModifierSaveResult = { text: text };
     if (f && f !== 0) entity.fortitude = f as number;
     if (r && r !== 0) entity.reflex = r as number;
@@ -125,7 +126,7 @@ export const modifiersFromPrerequisite = (
 
   const findTargetsInPrerequisite = (
     pre: Prerequisite,
-    targets?: string[] | null
+    targets?: ModifierEnum[] | null
   ): ModifierTarget[] | null => {
     if (!targets || targets.length === 0) return null;
     const targetList: ModifierTarget[] = [...targets];
@@ -203,6 +204,11 @@ export const modifiersFromPrerequisite = (
           allTargets
         );
       });
+      // applyModifier(
+      //   "dexterity",
+      //   abilityModifiers?.dexterity ?? 0,
+      //   "Dexterity modifier"
+      // )
     }
     if (bonusType === "savingThrow") {
       // SAVING THROW

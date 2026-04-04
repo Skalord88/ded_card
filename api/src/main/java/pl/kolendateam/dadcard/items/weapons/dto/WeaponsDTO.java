@@ -9,6 +9,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantmentDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
@@ -46,6 +47,10 @@ public class WeaponsDTO implements Serializable {
 
   // public List<EnchantmentDTO> enchantment;
 
+  private String setModifierText(Weapons item) {
+    return "Modifiers for " + item.getName();
+  }
+
   public WeaponsDTO(Weapons item) {
     this.id = item.getId();
     this.itemId = item.getId();
@@ -60,7 +65,10 @@ public class WeaponsDTO implements Serializable {
     this.size = item.getSize();
     this.modifiers =
       item.getModifiers() != null
-        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
+          item.getModifiers(),
+          setModifierText(item)
+        )
         : null;
     if (item.getSpecialAttacks() == null) {
       this.specialAttacks = null;

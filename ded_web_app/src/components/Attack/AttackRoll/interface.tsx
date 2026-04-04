@@ -3,8 +3,8 @@ import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum"
 
 export type AttackRoll = {
     modifierBonus?: ModifierEnum,
-    target?: string[],
+    target?: ModifierEnum[],
     improved?: Boolean,
-    type?: ModifierBonus[],
+    type?: ModifierEnum[],
     bonus: Number
 }

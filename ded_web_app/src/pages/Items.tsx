@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToDrop, itemInDrop } from "../components/functions";
-import { InventoryIcon, InventoryIcons } from "../components/Icon/icons";
+import { InventoryIcon, InventoryIcons } from "../components/Icon/Icons";
 import {
   Armor,
   CharacterPc,
@@ -211,7 +211,7 @@ export const Items = () => {
       inventory: inventoryToSend
     };
 
-    console.log(itemsToSend);
+    // console.log(itemsToSend);
     axios
       .post(urlItemsBuy + charId, itemsToSend)
       .then((response) => {

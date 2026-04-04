@@ -20,6 +20,10 @@ public class WondrousItemsDTO implements Serializable {
   public ItemTypeEnum wondrousType;
   public PrerequisiteDTO modifiers;
 
+  private String setModifierText(WondrousItems item) {
+    return "Modifiers for " + item.getName();
+  }
+
   public WondrousItemsDTO(WondrousItems item) {
     this.id = item.getId();
     this.name = item.getName();
@@ -31,7 +35,10 @@ public class WondrousItemsDTO implements Serializable {
       item.getWondrousType() != null ? item.getWondrousType() : null;
     this.modifiers =
       item.getModifiers() != null
-        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
+          item.getModifiers(),
+          setModifierText(item)
+        )
         : null;
   }
 }

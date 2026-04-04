@@ -216,10 +216,10 @@ export function Skills() {
       if (skillsToAdd.length > 0) {
         axios.post(urlSkillSet + charId, skillsToAdd);
       }
-      console.log(skillsToAdd);
+      // console.log(skillsToAdd);
       setChange(true);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
 

@@ -4,7 +4,12 @@ import { useParams } from "react-router-dom";
 import { findAbility } from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop, BonusAbilities, signAndCountAbility, SignNumber } from "../components/functions";
+import {
+  addToDrop,
+  BonusAbilities,
+  signAndCountAbility,
+  SignNumber
+} from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import { Popup } from "../components/Popup/Popup";
@@ -68,7 +73,7 @@ export function Ability() {
   };
 
   const handleSubmit = () => {
-    console.log(abilitys);
+    // console.log(abilitys);
     axios.post(urlAb + charId, abilitys).then((response) => {
       console.log(response.data);
     });
@@ -136,9 +141,7 @@ export function Ability() {
                       <DropdownComponent
                         key={"drop." + key}
                         options={addToDrop(abilitisBaseValue, "number")}
-                        onAction={(option) =>
-                          handleData(option, key)
-                        }
+                        onAction={(option) => handleData(option, key)}
                       />
                     </AbilityLayout>
                   )
@@ -168,12 +171,7 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   children
 }) => {
   return (
-    <div
-      className="rpgui-container-framed golden"
-      style={{
-        placeItems: "center"
-      }}
-    >
+    <div className="rpgui-container-framed golden">
       <h4>{ability}</h4>
       {number && ability && abilitysModifiers && (
         <BaseAbilitysWithMods
@@ -208,19 +206,27 @@ export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
   const totValue: number =
     valueAndText.reduce((tot, v) => (tot += v.value), 0) + charAb;
   return (
-    <div>
-      <span>{totValue + " = "}</span>
-      <span>{charAb}</span>
-      
-      {valueAndText.map(
-        (vT) =>
-          vT.value !== 0 && (
-            <span key={vT.index}>
-              <Popup text={SignNumber(vT.value) + vT.value} popText={vT.text} />
-            </span>
-          )
-      )}
-      <p>{signAndCountAbility([totValue])}</p>
+    <div
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      <div>
+        <span style={{ color: "orange" }}>{totValue}</span>
+        <span>{" = "}</span>
+        <span style={{ color: "yellow" }}>{charAb}</span>
+        {valueAndText.map(
+          (vT) =>
+            vT.value !== 0 && (
+              <Popup
+                key={vT.index}
+                text={SignNumber(vT.value) + vT.value}
+                popText={vT.text}
+              />
+            )
+        )}
+      </div>
+      <div>
+        <p>{signAndCountAbility([totValue])}</p>
+      </div>
     </div>
   );
 };

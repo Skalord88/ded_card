@@ -33,9 +33,9 @@ export const findAllPrerequisiteModifier = (
     return acc;
   }, {} as AllPrerequisiteMap);
 
-  console.log("keys", keys);
+  // console.log("keys", keys);
 
-  console.log("allPrerequisite", allPrerequisite);
+  // console.log("allPrerequisite", allPrerequisite);
   return allPrerequisite;
 };
 

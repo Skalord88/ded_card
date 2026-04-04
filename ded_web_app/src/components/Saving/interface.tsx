@@ -7,10 +7,10 @@ import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 // }
 
 export type SavingThrow = {
-    fortitude: Number;
-    reflex: Number;
-    will: Number;
-    resistance: Resistance[];
+    fortitude?: Number;
+    reflex?: Number;
+    will?: Number;
+    resistance?: Resistance[];
     modifierBonus?: ModifierEnum,
 }
 

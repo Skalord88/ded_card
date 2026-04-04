@@ -36,7 +36,7 @@ export const createHitDiceMap = (
   return hitDiceMap;
 };
 
-export const CountTotalHitPoints = (
+export const countTotalHitPoints = (
   dice: number,
   first: boolean,
   lv: number,
@@ -49,13 +49,13 @@ export const CountTotalHitPoints = (
     // if(dice === 4) console.log(i, hitPoints);
     if(first && i === 1){
       hitPoints += dice + constitutionBonus;
-      if(dice === 4) console.log(i, hitPoints);
+      // if(dice === 4) console.log(i, hitPoints);
     } else if (i % 2 === 0) {
       hitPoints += halfDice + constitutionBonus;
-      if(dice === 4) console.log(i, hitPoints);
+      // if(dice === 4) console.log(i, hitPoints);
     } else if (i % 2 !== 0) {
       hitPoints += halfDice + 1 + constitutionBonus;
-      if(dice === 4) console.log(i, hitPoints);
+      // if(dice === 4) console.log(i, hitPoints);
     }
   }
   return hitPoints;

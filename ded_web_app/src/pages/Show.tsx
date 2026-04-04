@@ -40,7 +40,7 @@ export const Show = () => {
 
           const modChar: CharToModify = createModChar(charData);
 
-          console.log(modChar);
+          // console.log(modChar);
         }
       } catch (error) {
         console.log(error);

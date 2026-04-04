@@ -20,6 +20,7 @@ import {
   ModifierAbilityResult,
   ModifierResult
 } from "../interface/ModifiedCharacter";
+import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
 import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
@@ -33,6 +34,7 @@ export const modifiedCharacter = (
   newInventory?: Inventory
 ): ModifiedCharacter => {
 
+  // const ability: Abilitys = newAbilitys ? newAbilitys : char.abilitys;
   const race: SubRace = newRace ? newRace : char.race;
   const archetypes: Archetype[] = newArchetypes ? newArchetypes : char.archetypes;
   const featsList: FeatPc[] = newFeatsList ? newFeatsList : char.featsList;
@@ -42,15 +44,6 @@ export const modifiedCharacter = (
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
     race, archetypes, featsList, classPcList, inventory
   );
-  // allPrerequisite.forEach((pre) => {
-  //   if (pre){
-  //     Object.entries(pre).forEach(([key, value]) => {
-  //       if(value && key !== "id"){
-  //         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
-  //       }
-  //     });
-  //   }
-  // });
 
   //Abilitys
   const ab: AllModifiers = modifiersFromPrerequisite(
@@ -64,10 +57,11 @@ export const modifiedCharacter = (
     newAbilitys ? newAbilitys : char.abilitys,
     totAB
   );
+  const allPrerequisiteWithAbilities = createPrerequisiteAbility(allPrerequisite, abilitys);
   //Abilitys
   //BaB
   const aR: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisite,
+    allPrerequisiteWithAbilities,
     "attackRoll"
   );
   const reducedBabMod: number = Object.values(aR)
@@ -80,19 +74,19 @@ export const modifiedCharacter = (
     ) + reducedBabMod;
   //BaB
   const dB: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisite,
+    allPrerequisiteWithAbilities,
     "damageBonus"
   );
   const sT: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisite,
+    allPrerequisiteWithAbilities,
     "savingThrow"
   );
   const sS: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisite,
+    allPrerequisiteWithAbilities,
     "skillStudy"
   );
   const ac: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisite,
+    allPrerequisiteWithAbilities,
     "armorClass"
   );
 
@@ -111,9 +105,6 @@ export const modifiedCharacter = (
     char.race.subRacesName + ", lv." + (adjLevel + totLevel);
 
   const listHitDices = createHitDiceMap(adjLevel, classPcList);
-
-  console.log("abilitys", abilitys)
-  console.log("ab", ab)
 
   return {
     title: title,
@@ -137,3 +128,14 @@ export const modifiedCharacter = (
     listHitDices: listHitDices
   };
 };
+
+// console.log("allPrerequisite", allPrerequisite);
+  // allPrerequisite.forEach((pre) => {
+  //   if (pre){
+  //     Object.entries(pre).forEach(([key, value]) => {
+  //       if(value && key !== "id"){
+  //         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
+  //       }
+  //     });
+  //   }
+  // });

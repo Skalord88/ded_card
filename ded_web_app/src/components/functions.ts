@@ -43,6 +43,16 @@ export const signAndCount = (
         number: num
     }
 }
+export const signAndCountString = (
+    numbers: number[]
+): string => {
+    const num: number = numbers.reduce(
+        (total, n) => total + n,
+        0
+    )
+
+    return SignNumber(num) + num
+}
 
 export const signAndCountAbility = (
     numbers: number[]
@@ -56,22 +66,22 @@ export const signAndCountAbility = (
 }
 
 export function weaponLight(weapon: Weapon): boolean {
-    if( weapon === null || !weapon.type) return false;
+    if (weapon === null || !weapon.type) return false;
     return weapon.type.includes("LIGHT");
 }
 
 export function weaponRanged(weapon: Weapon): boolean {
-    if( weapon === null || !weapon.type) return false;
+    if (weapon === null || !weapon.type) return false;
     return weapon.type.includes("RANGED");
 }
 
 export function weaponThrown(weapon: Weapon): boolean {
-    if( weapon === null || !weapon.type) return false;
+    if (weapon === null || !weapon.type) return false;
     return weapon.type.includes("THROWN");
 }
 
 export function weaponTwoHanded(weapon: Weapon): boolean {
-    if( weapon === null || !weapon.type) return false;
+    if (weapon === null || !weapon.type) return false;
     return weapon.type.includes("TWO_HANDED");
 }
 
@@ -171,7 +181,7 @@ export const inventoryIncludeUnarmed = (inventory: Inventory): boolean => {
         inventory.weaponFive.itemId === 1
 }
 export const weaponIncludeUnarmed = (w: Weapon): boolean => {
-    return w.itemId === 1 
+    return w.itemId === 1
 }
 
 // da aggiungere spine su armatura e scudo
@@ -179,8 +189,8 @@ export function SetSetWeaponListFromDB(
     inventory: Inventory
 ): Weapon[] {
     return [
-        [96,97].includes(inventory.shield.itemId ?? 0) ? shieldLight : null, 
-        [98,99].includes(inventory.shield.itemId ?? 0) ? shieldHeavy : null, 
+        [96, 97].includes(inventory.shield.itemId ?? 0) ? shieldLight : null,
+        [98, 99].includes(inventory.shield.itemId ?? 0) ? shieldHeavy : null,
 
         weaponIncludeUnarmed(inventory.weaponOne) ? null : inventory.weaponOne,
         weaponIncludeUnarmed(inventory.weaponTwo) ? null : inventory.weaponTwo,

@@ -40,5 +40,4 @@ export type ArmorClass = {
 
   special?: string
 
-  
 };

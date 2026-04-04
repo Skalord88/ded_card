@@ -183,8 +183,8 @@ export function Feats() {
         selected: f.selected ? f.selected : null
       };
     });
-    console.log("list", list);
-    console.log("listBonus", listBonus);
+    // console.log("list", list);
+    // console.log("listBonus", listBonus);
     axios.post(urlFeats + "/" + charId, [...list, ...listBonus]);
     // window.location.reload();
   };

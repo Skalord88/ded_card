@@ -478,10 +478,10 @@ function createCharPrerequisite(prerList: Prerequisite[]): Prerequisite {
       damageBonus = [...damageBonus, ...prer.damageBonus];
     }
 
-    console.log("prerList", prerList);
-    console.log("abilitys", abilitys);
-    console.log("attackRoll", attackRoll);
-    console.log("damageBonus", damageBonus);
+    // console.log("prerList", prerList);
+    // console.log("abilitys", abilitys);
+    // console.log("attackRoll", attackRoll);
+    // console.log("damageBonus", damageBonus);
 
   });
 

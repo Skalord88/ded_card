@@ -13,6 +13,15 @@ public class MapperPrerequisiteBonus {
     return new PrerequisiteDTO(pre);
   }
 
+  public static PrerequisiteDTO toPrerequisiteDTO(
+    Prerequisite pre,
+    String text
+  ) {
+    PrerequisiteDTO preDTO = new PrerequisiteDTO(pre);
+    preDTO.setText(text);
+    return preDTO;
+  }
+
   public static List<PrerequisiteDTO> toPrerequisiteListDTO(
     List<Prerequisite> listOfBonus
   ) {

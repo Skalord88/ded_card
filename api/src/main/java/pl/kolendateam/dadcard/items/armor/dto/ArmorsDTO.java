@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess.Item;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -37,6 +38,10 @@ public class ArmorsDTO implements Serializable {
 
   public List<EnchantmentDTO> enchantment;
 
+  private String setModifierText(Armors item) {
+    return "Modifiers for " + item.getName();
+  }
+
   public ArmorsDTO(Armors item) {
     this.id = item.getId();
     this.name = item.getName();
@@ -45,7 +50,10 @@ public class ArmorsDTO implements Serializable {
     this.armorName = item.getArmorName();
     this.modifiers =
       item.getModifiers() != null
-        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
+          item.getModifiers(),
+          setModifierText(item)
+        )
         : null;
     this.cost = item.getCost();
     this.weight = item.getWeight();

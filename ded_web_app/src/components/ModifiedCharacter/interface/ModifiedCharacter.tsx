@@ -1,11 +1,12 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { HitDiceMap } from "../../Vita/Functions";
 
-export type ModifierTarget = string | any[];
+export type ModifierTarget = ModifierEnum | any [];
 
 export type TargetEntry = {
   bonus: number;

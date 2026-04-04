@@ -53,7 +53,7 @@ export function Attack() {
 
   const handleWeaponAttack = (index: string, option: Weapon) => {
     const weapon = option as Weapon;
-    console.log(weapon);
+    // console.log(weapon);
     if (attack) {
       const newAttack: Attacks = {
         ...attack,

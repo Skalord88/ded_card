@@ -20,15 +20,17 @@ export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
       onClick={() => togglePopup(false)}
       onMouseLeave={() => togglePopup(false)}
     >
-      <div className="rpgui-cursor-point">{text}</div>
-      <span
+      <div className="rpgui-cursor-point">
+        <p>{text}</p>
+      </div>
+      <div
         style={{ width: 400, overflowY: "scroll" }}
         className={`popuptext rpgui-container-framed ${
           showPopup ? "show" : ""
         }`}
       >
-        {popText}
-      </span>
+        <p>{popText}</p>
+      </div>
     </div>
   );
 };

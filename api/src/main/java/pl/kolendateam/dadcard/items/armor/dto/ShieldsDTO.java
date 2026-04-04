@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.ArmorsEnum;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
@@ -35,6 +36,10 @@ public class ShieldsDTO {
   public List<EnchantmentDTO> enchantment;
   public MaterialEnum material;
 
+  private String setModifierText(Shields item) {
+    return "Modifiers for " + item.getName();
+  }
+
   public ShieldsDTO(Shields item) {
     this.id = item.getId();
     this.name = item.getName();
@@ -43,7 +48,10 @@ public class ShieldsDTO {
     this.shieldName = item.getShieldName();
     this.modifiers =
       item.getModifiers() != null
-        ? MapperPrerequisiteBonus.toPrerequisiteDTO(item.getModifiers())
+        ? MapperPrerequisiteBonus.toPrerequisiteDTO(
+          item.getModifiers(),
+          setModifierText(item)
+        )
         : null;
     this.cost = item.getCost();
     this.weight = item.getWeight();
