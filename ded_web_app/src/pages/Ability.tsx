@@ -20,9 +20,9 @@ import { PageLayout } from "./AppLayout";
 import { SummaryChar } from "../components/ModifiedCharacter/SummaryChar";
 import {
   ModifiedCharacter,
-  AllModifiers,
   ModifierAbilityResult
 } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
+import { BonusResultMap } from "../components/ModifiedCharacter/functions/GetBonusResult";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -160,7 +160,7 @@ export function Ability() {
 export type AbilityLayoutProps = {
   ability?: string;
   number?: number;
-  abilitysModifiers?: AllModifiers;
+  abilitysModifiers?: BonusResultMap;
   children?: React.ReactNode;
 };
 
@@ -173,13 +173,13 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
   return (
     <div className="rpgui-container-framed golden">
       <h4>{ability}</h4>
-      {number && ability && abilitysModifiers && (
+      {/* {number && ability && abilitysModifiers && (
         <BaseAbilitysWithMods
           charAb={number as number}
           abText={ability}
-          mods={abilitysModifiers as AllModifiers}
+          mods={abilitysModifiers as BonusResultMap}
         />
-      )}
+      )} */}
       {children}
     </div>
   );
@@ -188,48 +188,48 @@ export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
 export type BaseAbilitysWithModsProps = {
   charAb: number;
   abText: string;
-  mods: AllModifiers;
+  mods: BonusResultMap;
 };
 
-export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
-  charAb,
-  abText,
-  mods
-}) => {
-  const valueAndText: { index: string; value: number; text: string }[] =
-    Object.entries(mods).map(([key, v], index) => {
-      const entity = v as ModifierAbilityResult;
-      const value: number = findAbility(entity.abilitys, abText);
-      const text: string = entity.sources[index].text + ", " + key;
-      return { index: abText + "." + key, value: value, text: text };
-    });
-  const totValue: number =
-    valueAndText.reduce((tot, v) => (tot += v.value), 0) + charAb;
-  return (
-    <div
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      <div>
-        <span style={{ color: "orange" }}>{totValue}</span>
-        <span>{" = "}</span>
-        <span style={{ color: "yellow" }}>{charAb}</span>
-        {valueAndText.map(
-          (vT) =>
-            vT.value !== 0 && (
-              <Popup
-                key={vT.index}
-                text={SignNumber(vT.value) + vT.value}
-                popText={vT.text}
-              />
-            )
-        )}
-      </div>
-      <div>
-        <p>{signAndCountAbility([totValue])}</p>
-      </div>
-    </div>
-  );
-};
+// export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
+//   charAb,
+//   abText,
+//   mods
+// }) => {
+//   const valueAndText: { index: string; value: number; text: string }[] =
+//     Object.entries(mods).map(([key, v], index) => {
+//       const entity = v as ModifierAbilityResult;
+//       const value: number = findAbility(entity.abilitys, abText);
+//       const text: string = entity.sources[index].text + ", " + key;
+//       return { index: abText + "." + key, value: value, text: text };
+//     });
+//   const totValue: number =
+//     valueAndText.reduce((tot, v) => (tot += v.value), 0) + charAb;
+//   return (
+//     <div
+//       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+//     >
+//       <div>
+//         <span style={{ color: "orange" }}>{totValue}</span>
+//         <span>{" = "}</span>
+//         <span style={{ color: "yellow" }}>{charAb}</span>
+//         {valueAndText.map(
+//           (vT) =>
+//             vT.value !== 0 && (
+//               <Popup
+//                 key={vT.index}
+//                 text={SignNumber(vT.value) + vT.value}
+//                 popText={vT.text}
+//               />
+//             )
+//         )}
+//       </div>
+//       <div>
+//         <p>{signAndCountAbility([totValue])}</p>
+//       </div>
+//     </div>
+//   );
+// };
 
 export const AbilitySaveString: React.FC<AbilityLayoutProps> = ({
   ability

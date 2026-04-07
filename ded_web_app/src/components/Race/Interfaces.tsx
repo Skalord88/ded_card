@@ -22,10 +22,10 @@ export type Race = {
 export type SpecialAbilities = {
     specialType: number,
     name: string,
-    type: string,
+    type: ModifierEnum,
     description?: string,
     dc: number,
-    dcAbility: string[],
+    dcAbility: ModifierEnum[],
     value?: number,
     valueText?: string,
     damageDice?: string,

@@ -32,7 +32,7 @@ export const createPrerequisiteAbility = (
     damageBonus: [
       {
         bonus: modStrength,
-        target: [{ text: "melee" } as ModifierEnum, { text: "thrown" } as ModifierEnum],
+        target: [{ text: "melee" } as ModifierEnum, { text: "Thrown" } as ModifierEnum],
       } as DamageBonus
     ]
   } as Prerequisite;

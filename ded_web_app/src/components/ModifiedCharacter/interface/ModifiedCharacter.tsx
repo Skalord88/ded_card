@@ -1,12 +1,23 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { Weapon } from "../../interfaces";
 import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { HitDiceMap } from "../../Vita/Functions";
+import { BonusResultMap } from "../functions/GetBonusResult";
 
-export type ModifierTarget = ModifierEnum | any [];
+export type BonusResult = {
+  key: string;
+  bonus: number;
+  targets?: ModifierTarget[]
+};
+
+export type ModifierTarget =
+  | ModifierEnum
+  | string
+  | Weapon[];
 
 export type TargetEntry = {
   bonus: number;
@@ -53,12 +64,12 @@ export type AllModifiers = {
 export type ModifiedCharacter = {
   title: string;
   abilitys: Abilitys;
-  abilitysMod?: AllModifiers;
+  abilitysMod?: BonusResultMap;
   bab: number;
-  attackRollMod: AllModifiers;
-  damageBonusMod?: AllModifiers;
+  attackRollMod: BonusResultMap;
+  damageBonusMod?: BonusResultMap;
   savingThrowMod?: AllModifiers;
-  armorClassMod?: AllModifiers;
+  armorClassMod?: BonusResultMap;
   skillStudyMod?: AllModifiers;
   adjLevel?: number;
   totLevel?: number;

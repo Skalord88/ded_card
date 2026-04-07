@@ -1,15 +1,22 @@
+import { totalmem } from "node:os";
 import { BonusAbilities, signAndCountString, SignNumber } from "../functions";
 import { Popup } from "../Popup/Popup";
 import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
 import { generalBonus } from "./functions/GeneralBonus";
-import { specificTargetBonus } from "./functions/SpecificTargetBonus";
+import {
+  getBonusList,
+  specificTargetBonusList,
+  specificTargetBonusNumber
+} from "./functions/SpecificTargetBonus";
 import {
   AllModifiers,
   ModifiedCharacter,
   ModifierResult,
-  ModifierTarget
+  ModifierTarget,
+  TargetEntry
 } from "./interface/ModifiedCharacter";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -66,19 +73,55 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
   const grapple: number =
     bab +
     generalBonus(modCharacter.attackRollMod || {}) +
-    specificTargetBonus("Grapple", modCharacter.attackRollMod || {});
+    specificTargetBonusNumber("Grapple", modCharacter.attackRollMod || {});
+
+  // console.log("modCharacter.attackRollMod", modCharacter.attackRollMod);
+
+  const grappleBonus = specificTargetBonusList(
+    "Grapple",
+    modCharacter.attackRollMod || {}
+  );
+
   return (
     <>
       <div>
         <p>Base Attack/Grapple:</p>
       </div>
-      <div>
-        <p>
-          {SignNumber(bab)}
-          {bab} / {SignNumber(grapple)}
-          {grapple}
-        </p>
-      </div>
+      {(modCharacter.attackRollMod as AllModifiers) && (
+        <div>
+          <ListOfAllModifiers
+            total={bab}
+            modifiers={modCharacter.attackRollMod}
+          />
+        </div>
+      )}
+    </>
+  );
+};
+
+export const ListOfAllModifiers: React.FC<{
+  total: number;
+  modifiers: AllModifiers;
+}> = ({ total, modifiers }) => {
+  // console.log("modifiers", modifiers);
+
+  const mods = getBonusList(modifiers);
+  const modsTargets = getBonusList(modifiers, { includeOnlyWithTarget: true });
+  const modsGrapple = getBonusList(modifiers, { targetText: "Grapple" });
+  const babAndGrapple = total + mods.reduce((tot, b) => tot += b.bonus, 0) + modsGrapple.reduce((tot, b) => tot += b.bonus, 0)
+
+  // console.log("mods", mods);
+  // console.log("modsTargets", modsTargets);
+  // console.log("modsGrapple", modsGrapple);
+
+  return (
+    <>
+      <span>{SignNumber(total)}</span>
+      <span>{total}</span>
+      {mods.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
+      <span>{" / "}{babAndGrapple}</span>
+      {mods.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
+      {modsGrapple.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
     </>
   );
 };

@@ -7,5 +7,5 @@ export type PrerequisiteSkills = {
     study?: Study;
     rank: number;
     modifierBonus?: ModifierEnum;
-    target?: string[]
+    target?: ModifierEnum[]
 }

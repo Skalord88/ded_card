@@ -36,7 +36,7 @@ export type ArmorClass = {
 
   modifierBonus?: ModifierEnum;
 
-  target: string[],
+  target: ModifierEnum[],
 
   special?: string
 

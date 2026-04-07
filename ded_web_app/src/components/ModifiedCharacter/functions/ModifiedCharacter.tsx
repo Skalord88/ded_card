@@ -1,7 +1,3 @@
-import {
-  addAbilitysModifiers,
-  addTwoAbilitysModifiers
-} from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
@@ -13,15 +9,14 @@ import {
   findAllAdjLevelInRaceAndArchetypes
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
-import { CountHitDicesFromAdj, CountHitDicesFromClassPc, createHitDiceMap } from "../../Vita/Functions";
+import { createHitDiceMap } from "../../Vita/Functions";
 import {
   AllModifiers,
-  ModifiedCharacter,
-  ModifierAbilityResult,
-  ModifierResult
+  ModifiedCharacter
 } from "../interface/ModifiedCharacter";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
+import { getBonusResult } from "./GetBonusResult";
 import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
 export const modifiedCharacter = (
@@ -33,50 +28,95 @@ export const modifiedCharacter = (
   newClasses?: ClassPc[],
   newInventory?: Inventory
 ): ModifiedCharacter => {
-
-  // const ability: Abilitys = newAbilitys ? newAbilitys : char.abilitys;
+  const ability: Abilitys = newAbilitys ? newAbilitys : char.abilitys;
   const race: SubRace = newRace ? newRace : char.race;
-  const archetypes: Archetype[] = newArchetypes ? newArchetypes : char.archetypes;
+  const archetypes: Archetype[] = newArchetypes
+    ? newArchetypes
+    : char.archetypes;
   const featsList: FeatPc[] = newFeatsList ? newFeatsList : char.featsList;
   const classPcList: ClassPc[] = newClasses ? newClasses : char.classPcList;
   const inventory: Inventory = newInventory ? newInventory : char.inventory;
 
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
-    race, archetypes, featsList, classPcList, inventory
+    race,
+    archetypes,
+    featsList,
+    classPcList,
+    inventory
   );
 
-  //Abilitys
-  const ab: AllModifiers = modifiersFromPrerequisite(
+  const newAb = getBonusResult(allPrerequisite, "abilitys");
+
+  console.log("newAb", newAb);
+
+  const newAbility: Abilitys = {
+    strength:
+      ability.strength +
+      (newAb["increse"].find((i) => i.text === "strength")?.bonus ?? 0),
+    dexterity:
+      ability.dexterity +
+      (newAb["increse"].find((i) => i.text === "dexterity")?.bonus ?? 0),
+    constitution:
+      ability.constitution +
+      (newAb["increse"].find((i) => i.text === "constitution")?.bonus ?? 0),
+    intelligence:
+      ability.intelligence +
+      (newAb["increse"].find((i) => i.text === "intelligence")?.bonus ?? 0),
+    wisdom:
+      ability.wisdom +
+      (newAb["increse"].find((i) => i.text === "wisdom")?.bonus ?? 0),
+    charisma:
+      ability.charisma +
+      (newAb["increse"].find((i) => i.text === "charisma")?.bonus ?? 0)
+  };
+
+  const allPrerequisiteWithAbilities = createPrerequisiteAbility(
     allPrerequisite,
-    "abilitys"
+    newAbility
   );
-  const totAB: Abilitys = addAbilitysModifiers(
-    Object.values(ab).flatMap((a) => (a as ModifierAbilityResult).abilitys)
-  );
-  const abilitys: Abilitys = addTwoAbilitysModifiers(
-    newAbilitys ? newAbilitys : char.abilitys,
-    totAB
-  );
-  const allPrerequisiteWithAbilities = createPrerequisiteAbility(allPrerequisite, abilitys);
+
+  const newAr = getBonusResult(allPrerequisiteWithAbilities, "attackRoll");
+
+  console.log("newAr", newAr);
+  const newDb = getBonusResult(allPrerequisiteWithAbilities, "damageBonus");
+
+  console.log("newDb", newDb);
+  const newAc = getBonusResult(allPrerequisiteWithAbilities, "armorClass");
+
+  console.log("newAc", newAc);
+
+  //Abilitys
+  // const ab: AllModifiers = modifiersFromPrerequisite(
+  //   allPrerequisite,
+  //   "abilitys"
+  // );
+  // const totAB: Abilitys = addAbilitysModifiers(
+  //   Object.values(ab).flatMap((a) => (a as ModifierAbilityResult).abilitys)
+  // );
+  // const abilitys: Abilitys = addTwoAbilitysModifiers(
+  //   newAbilitys ? newAbilitys : char.abilitys,
+  //   totAB
+  // );
+
   //Abilitys
   //BaB
-  const aR: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisiteWithAbilities,
-    "attackRoll"
-  );
-  const reducedBabMod: number = Object.values(aR)
-    .flatMap((a) => (a as ModifierResult).bonus)
-    .reduce((tot, bab) => (tot += bab));
-  const bab: number =
-    char.classPcList.reduce(
-      (tot, bab) => (tot += bab.level * bab.classCharacter.classBab),
-      0
-    ) + reducedBabMod;
+  // const aR: AllModifiers = modifiersFromPrerequisite(
+  //   allPrerequisiteWithAbilities,
+  //   "attackRoll"
+  // );
+  // const reducedBabMod: number = Object.values(aR)
+  //   .flatMap((a) => (a as ModifierResult).bonus)
+  //   .reduce((tot, bab) => (tot += bab));
+  // const bab: number =
+  //   char.classPcList.reduce(
+  //     (tot, bab) => (tot += bab.level * bab.classCharacter.classBab),
+  //     0
+  //   ) + reducedBabMod;
   //BaB
-  const dB: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisiteWithAbilities,
-    "damageBonus"
-  );
+  // const dB: AllModifiers = modifiersFromPrerequisite(
+  //   allPrerequisiteWithAbilities,
+  //   "damageBonus"
+  // );
   const sT: AllModifiers = modifiersFromPrerequisite(
     allPrerequisiteWithAbilities,
     "savingThrow"
@@ -85,10 +125,10 @@ export const modifiedCharacter = (
     allPrerequisiteWithAbilities,
     "skillStudy"
   );
-  const ac: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisiteWithAbilities,
-    "armorClass"
-  );
+  // const ac: AllModifiers = modifiersFromPrerequisite(
+  //   allPrerequisiteWithAbilities,
+  //   "armorClass"
+  // );
 
   const adjLevel: number =
     !newRace && !newArchetypes
@@ -109,17 +149,17 @@ export const modifiedCharacter = (
   return {
     title: title,
     // abilitys
-    abilitys: abilitys,
-    abilitysMod: ab,
+    abilitys: ability,
+    abilitysMod: newAb,
     // abilitys
     // bab
-    bab: bab,
-    attackRollMod: aR,
+    bab: 0,
+    attackRollMod: newAr,
     // bab
-    damageBonusMod: dB,
+    damageBonusMod: newDb,
     savingThrowMod: sT,
     skillStudyMod: sS,
-    armorClassMod: ac,
+    armorClassMod: newAc,
     adjLevel: adjLevel,
     totLevel: totLevel,
     race: race,
@@ -130,12 +170,12 @@ export const modifiedCharacter = (
 };
 
 // console.log("allPrerequisite", allPrerequisite);
-  // allPrerequisite.forEach((pre) => {
-  //   if (pre){
-  //     Object.entries(pre).forEach(([key, value]) => {
-  //       if(value && key !== "id"){
-  //         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
-  //       }
-  //     });
-  //   }
-  // });
+// allPrerequisite.forEach((pre) => {
+//   if (pre){
+//     Object.entries(pre).forEach(([key, value]) => {
+//       if(value && key !== "id"){
+//         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
+//       }
+//     });
+//   }
+// });

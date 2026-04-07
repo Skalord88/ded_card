@@ -9,6 +9,7 @@ import { SpecialAbilities } from "../../Race/Interfaces";
 import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
+import { ModifierEnum } from "./ModifierEnum";
 
 export type Prerequisite = {
   id: number;
@@ -26,8 +27,8 @@ export type Prerequisite = {
   specialAbilities?: SpecialAbilities[];
   skillStudy?: PrerequisiteSkills[];
   armorClass?: ArmorClass[];
-  armorType?: string;
-  weaponType?: string;
+  armorType?: ModifierEnum;
+  weaponType?: ModifierEnum;
   schools?: string[];
   classPc?: ClassPcLevel[];
   items?: Item[];

@@ -15,7 +15,7 @@ export type SavingThrow = {
 }
 
 export type Resistance = {
-    type: string;
-    target: string[];
+    type: ModifierEnum;
+    target: ModifierEnum[];
     bonus: Number;
 }
