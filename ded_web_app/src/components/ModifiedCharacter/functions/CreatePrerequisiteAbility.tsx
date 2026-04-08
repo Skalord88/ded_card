@@ -25,14 +25,14 @@ export const createPrerequisiteAbility = (
     attackRoll: [
       {
         bonus: modStrength,
-        target: [{ text: "melee" } as ModifierEnum, { text: "Grapple" } as ModifierEnum]
+        target: [{ text: "Melee" } as ModifierEnum, { text: "Grapple" } as ModifierEnum]
       } as AttackRoll
     ],
 
     damageBonus: [
       {
         bonus: modStrength,
-        target: [{ text: "melee" } as ModifierEnum, { text: "Thrown" } as ModifierEnum],
+        target: [{ text: "Melee" } as ModifierEnum, { text: "Thrown" } as ModifierEnum],
       } as DamageBonus
     ]
   } as Prerequisite;
@@ -50,7 +50,7 @@ export const createPrerequisiteAbility = (
     attackRoll: [
       {
         bonus: modDexterity,
-        type: [{ text: "ranged" } as ModifierEnum]
+        type: [{ text: "Ranged" } as ModifierEnum]
       } as AttackRoll
     ],
 
@@ -85,6 +85,7 @@ export const createPrerequisiteAbility = (
 
   // console.log("strenghtPrerequisite", strenghtPrerequisite);
   const abilityPrerequisite: Prerequisite[] = [
+  // return [
     strenghtPrerequisite,
     dexterityPrerequisite,
     constitutionPrerequisite,

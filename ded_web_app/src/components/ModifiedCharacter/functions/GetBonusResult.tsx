@@ -26,9 +26,11 @@ export const getBonusResult = (
     modifier: ModifierEnum,
     targets?: (ModifierEnum | Item)[]
   ) => {
-    if (bonus === 0 && !modifier) return;
-    const key: string = modifier? modifier.text : "increase"
-    if (!allModifiers[key]) {
+    // console.log("modifier", modifier.text)
+    // if (bonus === 0) return;
+    const key: string = modifier? modifier.text : "Increase"
+    // console.log("key", key)
+    if (!allModifiers[key] && bonus !== 0) {
       allModifiers[key] = [] as BonusSource[];
     }
     if (!targets && modifier) {
@@ -76,20 +78,23 @@ export const getBonusResult = (
 
   allPrerequisite.forEach((prer) => {
     if (bonusType === "attackRoll") {
+      
       prer.attackRoll?.forEach((a) => {
+        // const key = a.modifierBonus
         if (!a.target) {
+          
           createBonusResult(
             a.bonus as number,
+            prer.text || "",
             a.modifierBonus as ModifierEnum,
-            prer.text || ""
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, a.target);
 
           createBonusResult(
             a.bonus as number,
-            a.modifierBonus as ModifierEnum,
             prer.text || "",
+            a.modifierBonus as ModifierEnum,
             trg
           );
         }
@@ -100,16 +105,16 @@ export const getBonusResult = (
         if (!d.target) {
           createBonusResult(
             d.bonus as number,
+            prer.text || "",
             d.modifierBonus as ModifierEnum,
-            prer.text || ""
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, d.target);
 
           createBonusResult(
             d.bonus as number,
-            d.modifierBonus as ModifierEnum,
             prer.text || "",
+            d.modifierBonus as ModifierEnum,
             trg
           );
         }
@@ -120,16 +125,16 @@ export const getBonusResult = (
         if (!aR.target) {
           createBonusResult(
             aR.bonus as number,
+            prer.text || "",
             aR.modifierBonus as ModifierEnum,
-            prer.text || ""
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, aR.target);
 
           createBonusResult(
             aR.bonus as number,
-            aR.modifierBonus as ModifierEnum,
             prer.text || "",
+            aR.modifierBonus as ModifierEnum,
             trg
           );
         }
@@ -138,15 +143,13 @@ export const getBonusResult = (
     if (bonusType === "abilitys") {
       if (prer.abilitys) {
         const modifier = prer.abilitys.modifierBonus
-          ? prer.abilitys.modifierBonus
-          : null;
         Object.entries(prer.abilitys).forEach(([ab, value]) => {
           if (modifier) {
             if (value !== 0 && (value as number))
-              createBonusResult(value as number, modifier, ab);
+              createBonusResult(value as number, ab, modifier );
           } else {
             if (value !== 0 && (value as number))
-              createBonusResult(value as number, { text: "increse" }, ab);
+              createBonusResult(value as number, ab, { text: "Increase" } );
           }
         });
       }

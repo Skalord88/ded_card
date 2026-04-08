@@ -1,5 +1,5 @@
 import { totalmem } from "node:os";
-import { BonusAbilities, signAndCountString, SignNumber } from "../functions";
+import { BonusAbilities, SignNumber } from "../functions";
 import { Popup } from "../Popup/Popup";
 import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
@@ -12,11 +12,9 @@ import {
 import {
   AllModifiers,
   ModifiedCharacter,
-  ModifierResult,
-  ModifierTarget,
-  TargetEntry
+  ModifierResult
 } from "./interface/ModifiedCharacter";
-import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
+import { signAndCountString } from "../Sign/Function";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -137,30 +135,22 @@ export const SummaryCharArmorClass: React.FC<SummaryCharProps> = ({
       <div>
         {modCharacter.armorClassMod &&
           Object.entries(modCharacter.armorClassMod).map(
-            ([key, value], index) => (
+            ([key, value], index) => {
+              const v = value.reduce((tot, r)=> tot + r.bonus, 0)
+              const text = value.map(r => r.text).join(", ")
+              return (
               <span key={key + "." + index}>
                 <Popup
                   key={key}
                   text={
                     key +
                     " " +
-                    SignNumber((value as ModifierResult).bonus) +
-                    (value as ModifierResult).bonus
+                    signAndCountString([v])
                   }
-                  popText={
-                    (value as ModifierResult).sources
-                      ?.map((s) => s.text)
-                      .join(", ") || ""
-                  }
+                  popText={text}
                 />
-                <span>
-                  {index ===
-                  Object.entries(modCharacter.armorClassMod || []).length - 1
-                    ? ""
-                    : ", "}
-                </span>
               </span>
-            )
+            )}
           )}
       </div>
     </>

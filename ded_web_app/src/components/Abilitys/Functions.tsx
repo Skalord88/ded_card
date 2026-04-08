@@ -54,16 +54,40 @@ export function findAbility(charAb: Abilitys, ability: string): number {
 
 export function BonusAbilities(ab: Abilitys, which: string) {
   switch (which) {
+    case "strength":
+      return Math.floor((ab.strength - 10) / 2);
+    case "STRENGTH":
+      return Math.floor((ab.strength - 10) / 2);
     case "STR":
       return Math.floor((ab.strength - 10) / 2);
+    case "dexterity":
+      return Math.floor((ab.dexterity - 10) / 2);
+    case "DEXTERITY":
+      return Math.floor((ab.dexterity - 10) / 2);
     case "DEX":
       return Math.floor((ab.dexterity - 10) / 2);
+    case "constitution":
+      return Math.floor((ab.constitution - 10) / 2);
+    case "CONSTITUTION":
+      return Math.floor((ab.constitution - 10) / 2);
     case "COS":
       return Math.floor((ab.constitution - 10) / 2);
+    case "intelligence":
+      return Math.floor((ab.intelligence - 10) / 2);
+    case "INTELLIGENCE":
+      return Math.floor((ab.intelligence - 10) / 2);
     case "INT":
       return Math.floor((ab.intelligence - 10) / 2);
     case "WIS":
       return Math.floor((ab.wisdom - 10) / 2);
+    case "wisdom":
+      return Math.floor((ab.wisdom - 10) / 2);
+    case "WISDOM":
+      return Math.floor((ab.wisdom - 10) / 2);
+    case "charisma":
+      return Math.floor((ab.charisma - 10) / 2);
+    case "CHARISMA":
+      return Math.floor((ab.charisma - 10) / 2);
     case "CHA":
       return Math.floor((ab.charisma - 10) / 2);
     default:
