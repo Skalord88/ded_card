@@ -1,5 +1,5 @@
 import { totalmem } from "node:os";
-import { BonusAbilities, SignNumber } from "../functions";
+import { BonusAbilities, signAndCountToString, SignNumber } from "../functions";
 import { Popup } from "../Popup/Popup";
 import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
@@ -15,6 +15,9 @@ import {
   ModifierResult
 } from "./interface/ModifiedCharacter";
 import { signAndCountString } from "../Sign/Function";
+import { BonusResultMap, TargetBonus } from "./functions/GetBonusResult";
+import { Item } from "../interfaces";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -67,17 +70,14 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
 export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const bab: number = Math.floor(modCharacter.bab);
-  const grapple: number =
-    bab +
-    generalBonus(modCharacter.attackRollMod || {}) +
-    specificTargetBonusNumber("Grapple", modCharacter.attackRollMod || {});
-
-  // console.log("modCharacter.attackRollMod", modCharacter.attackRollMod);
-
-  const grappleBonus = specificTargetBonusList(
-    "Grapple",
-    modCharacter.attackRollMod || {}
+  const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
+    modCharacter.attackRollMod || {},
+    true
+  );
+  const toListGrapple: TotAndBonusElement[] = createTotAndBonusElement(
+    modCharacter.attackRollMod || {},
+    true,
+    "Grapple"
   );
 
   return (
@@ -85,41 +85,120 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
       <div>
         <p>Base Attack/Grapple:</p>
       </div>
-      {(modCharacter.attackRollMod as AllModifiers) && (
-        <div>
-          <ListOfAllModifiers
-            total={bab}
-            modifiers={modCharacter.attackRollMod}
-          />
-        </div>
-      )}
+      <div>
+        <TotAndBonus list={toListBab} />
+        <span>{" / "}</span>
+        <TotAndBonus list={toListGrapple} />
+      </div>
     </>
+  );
+};
+
+export const createTotAndBonusElement = (
+  map: BonusResultMap,
+  testo: boolean,
+  serch?: string
+): TotAndBonusElement[] => {
+  let list: TotAndBonusElement[] = [];
+  Object.entries(map).map(([key, value]) => {
+    if (!serch) {
+      value.forEach((v) => {
+        if (!v.source) {
+          list.push(
+            testo
+              ? {
+                  bonus: v.bonus,
+                  text: key,
+                  pop: v.text
+                }
+              : {
+                  bonus: v.bonus,
+                  pop: v.text
+                }
+          );
+        }
+      });
+    }
+    if (serch) {
+      value.forEach((v) => {
+        if (
+          !v.source ||
+          serch === (v.source as Item)?.name ||
+          serch === (v.source as ModifierEnum)?.text
+        ) {
+          const text: string =
+            (v.source as Item)?.name || (v.source as ModifierEnum)?.text;
+          list.push({
+            bonus: v.bonus,
+            text: key,
+            pop: !v.source ? v.text : text + ", " + v.text
+          });
+        }
+      });
+    }
+  });
+  return list;
+};
+
+export type TotAndBonusElement = { bonus: number; text?: string; pop: string };
+
+export type TotAndBonusProps = {
+  tot?: number;
+  list: TotAndBonusElement[];
+  children?: React.ReactNode;
+};
+
+export const TotAndBonus: React.FC<TotAndBonusProps> = ({
+  tot,
+  list,
+  children
+}) => {
+  return (
+    <div>
+      {/* <span>{tot}</span> */}
+      {list.length !== 0 &&
+        list.map((l, index) => {
+          const text = l.text
+            ? signAndCountToString([l.bonus]) + l.text
+            : signAndCountToString([l.bonus]);
+          return <Popup key={index} text={text} popText={l.pop} />;
+        })}
+      {children ? children : null}
+    </div>
   );
 };
 
 export const ListOfAllModifiers: React.FC<{
   total: number;
-  modifiers: AllModifiers;
-}> = ({ total, modifiers }) => {
+  modChar: ModifiedCharacter;
+}> = ({ total, modChar }) => {
   // console.log("modifiers", modifiers);
 
-  const mods = getBonusList(modifiers);
-  const modsTargets = getBonusList(modifiers, { includeOnlyWithTarget: true });
-  const modsGrapple = getBonusList(modifiers, { targetText: "Grapple" });
-  const babAndGrapple = total + mods.reduce((tot, b) => tot += b.bonus, 0) + modsGrapple.reduce((tot, b) => tot += b.bonus, 0)
-
-  // console.log("mods", mods);
-  // console.log("modsTargets", modsTargets);
-  // console.log("modsGrapple", modsGrapple);
+  const toList: TotAndBonusElement[] = createTotAndBonusElement(
+    modChar.attackRollMod ?? {},
+    true,
+    "Grapple"
+  );
+  // .filter((e) => e.pop === key)
 
   return (
     <>
       <span>{SignNumber(total)}</span>
       <span>{total}</span>
-      {mods.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
-      <span>{" / "}{babAndGrapple}</span>
-      {mods.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
-      {modsGrapple.map(m => <Popup text={signAndCountString([m.bonus])} popText={m.key} />)}
+      <TotAndBonus list={toList} />
+      {/* {mods.map((m) => (
+        <Popup text={signAndCountString([m.bonus])} popText={m.key} />
+      ))}
+      <span>
+        {" / "}
+        {babAndGrapple}
+      </span>
+      {mods.map((m) => (
+        <Popup text={signAndCountString([m.bonus])} popText={m.key} />
+      ))}
+      {modsGrapple.map((m) => (
+        <Popup text={signAndCountString([m.bonus])} popText={m.key} />
+      ))} */}
     </>
   );
 };
@@ -127,32 +206,15 @@ export const ListOfAllModifiers: React.FC<{
 export const SummaryCharArmorClass: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
+  const toList: TotAndBonusElement[] =
+                      createTotAndBonusElement(modCharacter.armorClassMod ?? {}, true)
+                      // .filter((e) => e.pop === key)
   return (
     <>
       <div>
         <p>Armor Class:</p>
       </div>
-      <div>
-        {modCharacter.armorClassMod &&
-          Object.entries(modCharacter.armorClassMod).map(
-            ([key, value], index) => {
-              const v = value.reduce((tot, r)=> tot + r.bonus, 0)
-              const text = value.map(r => r.text).join(", ")
-              return (
-              <span key={key + "." + index}>
-                <Popup
-                  key={key}
-                  text={
-                    key +
-                    " " +
-                    signAndCountString([v])
-                  }
-                  popText={text}
-                />
-              </span>
-            )}
-          )}
-      </div>
+      <TotAndBonus list={toList} />
     </>
   );
 };

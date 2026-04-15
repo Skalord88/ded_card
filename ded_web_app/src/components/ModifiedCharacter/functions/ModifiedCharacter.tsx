@@ -16,8 +16,9 @@ import {
 } from "../interface/ModifiedCharacter";
 import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
+import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
-import { getBonusResult } from "./GetBonusResult";
+import { BonusResultMap, getBonusResult } from "./GetBonusResult";
 import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
 export const modifiedCharacter = (
@@ -45,33 +46,37 @@ export const modifiedCharacter = (
     inventory
   );
 
-  const newAb = getBonusResult(allPrerequisite, "abilitys");
+  const newAb: BonusResultMap = getBonusResult(allPrerequisite, "abilitys");
 
-  console.log("newAb", newAb);
+  // console.log("newAb", newAb);
 
-  const newAbility = addModdedAbilitysToAbilitys(ability, newAb)
+  const newAbility: Abilitys = addModdedAbilitysToAbilitys(ability, newAb)
 
-  console.log("newAbility", newAbility)
+  // console.log("newAbility", newAbility)
 
-  const allPrerequisiteWithAbilities = createPrerequisiteAbility(
+  const allPrerequisiteWithAbilities: Prerequisite[] = createPrerequisiteAbility(
     allPrerequisite,
     newAbility
   );
+  const allPrerequisiteFromClasses: Prerequisite[] = createPrerequisiteFromClasses(
+    allPrerequisiteWithAbilities,
+    classPcList
+  );
 
-  const newAr = getBonusResult(allPrerequisiteWithAbilities, "attackRoll");
+  const newAr: BonusResultMap = getBonusResult(allPrerequisiteFromClasses, "attackRoll");
 
-  // console.log("newAr", newAr);
-  const newDb = getBonusResult(allPrerequisiteWithAbilities, "damageBonus");
+  console.log("newAr", newAr);
+  const newDb: BonusResultMap = getBonusResult(allPrerequisiteFromClasses, "damageBonus");
 
   // console.log("newDb", newDb);
-  const newAc = getBonusResult(allPrerequisiteWithAbilities, "armorClass");
+  const newAc: BonusResultMap = getBonusResult(allPrerequisiteFromClasses, "armorClass");
 
   const sT: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisiteWithAbilities,
+    allPrerequisiteFromClasses,
     "savingThrow"
   );
   const sS: AllModifiers = modifiersFromPrerequisite(
-    allPrerequisiteWithAbilities,
+    allPrerequisiteFromClasses,
     "skillStudy"
   );
 

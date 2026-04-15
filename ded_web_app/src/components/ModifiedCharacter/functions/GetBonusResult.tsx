@@ -8,7 +8,7 @@ export type TargetBonus = ModifierEnum | Item;
 export type BonusSource = {
   bonus: number;
   text: string;
-  source?: TargetBonus;
+  source?: ModifierEnum | Item;
 };
 
 export type BonusResultMap = {

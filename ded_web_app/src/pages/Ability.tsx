@@ -21,13 +21,19 @@ import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum"
 import { AllSkillsAxios } from "../components/Skills/Skills/Const";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { SummaryChar } from "../components/ModifiedCharacter/SummaryChar";
+import {
+  createTotAndBonusElement,
+  SummaryChar,
+  TotAndBonus,
+  TotAndBonusElement
+} from "../components/ModifiedCharacter/SummaryChar";
 import {
   ModifiedCharacter,
   ModifierAbilityResult
 } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import {
   BonusResultMap,
+  BonusSource,
   TargetBonus
 } from "../components/ModifiedCharacter/functions/GetBonusResult";
 import { validate } from "webpack";
@@ -135,29 +141,31 @@ export function Ability() {
               }}
             >
               {modChar &&
-                Object.entries(abilitys).map(
-                  ([key, value]) =>
-                    (value as number) && (
-                      <AbilityLayout
-                        key={key}
-                        abilityText={key.toUpperCase()}
-                        abilityNumber={value as number}
-                        modChar={modChar}
-                        // abilitysModifiers={modChar?.abilitysMod}
-                      >
-                        <DropdownComponent
-                          key={"drop." + key}
-                          options={addToDrop(abilitisBaseValue, "number")}
-                          onAction={(option) =>
-                            handleData(
-                              option,
-                              key as keyof Omit<Abilitys, "string">
-                            )
-                          }
-                        />
-                      </AbilityLayout>
-                    )
-                )}
+                Object.entries(abilitys).map(([key, value]) => {
+                  if (value as number) {
+                    const toList: TotAndBonusElement[] =
+                      createTotAndBonusElement(modChar.abilitysMod ?? {}, false)
+                      .filter((e) => e.pop === key)
+
+                    return (
+                      <div>
+                        <h3>{key}</h3>
+                        <TotAndBonus tot={value as number} list={toList}>
+                          <DropdownComponent
+                            key={"drop." + key}
+                            options={addToDrop(abilitisBaseValue, "number")}
+                            onAction={(option) =>
+                              handleData(
+                                option,
+                                key as keyof Omit<Abilitys, "string">
+                              )
+                            }
+                          />
+                        </TotAndBonus>
+                      </div>
+                    );
+                  }
+                })}
             </div>
           )}
           {modChar && (

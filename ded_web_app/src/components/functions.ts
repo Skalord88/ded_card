@@ -43,6 +43,16 @@ export const signAndCount = (
         number: num
     }
 }
+export const signAndCountToString = (
+    numbers: number[]
+): string => {
+    const num: number = numbers.reduce(
+        (total, n) => total + n,
+        0
+    )
+
+    return SignNumber(num) + num
+}
 
 
 export const signAndCountAbility = (
