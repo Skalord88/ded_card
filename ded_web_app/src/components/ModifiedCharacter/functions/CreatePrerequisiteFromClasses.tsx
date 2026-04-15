@@ -8,7 +8,7 @@ export const createPrerequisiteFromClasses = (
 
     let newClassPrerequisite: Prerequisite = {
         id: -1,
-        attackRoll: []
+        // attackRoll: []
     }
     classPcList.forEach((cl) => (
         newClassPrerequisite = {...newClassPrerequisite,
@@ -19,6 +19,6 @@ export const createPrerequisiteFromClasses = (
             ]
         }
     ))
-    allPrerequisite.push(newClassPrerequisite)
-    return allPrerequisite
+    allPrerequisite.push(newClassPrerequisite);
+    return allPrerequisite;
 }

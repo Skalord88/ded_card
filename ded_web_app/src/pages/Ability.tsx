@@ -143,14 +143,19 @@ export function Ability() {
               {modChar &&
                 Object.entries(abilitys).map(([key, value]) => {
                   if (value as number) {
+                    // const ab: TotAndBonusElement[] = [
+                    //   { bonus: value as number, pop: "base" }]
                     const toList: TotAndBonusElement[] =
                       createTotAndBonusElement(modChar.abilitysMod ?? {}, false)
-                      .filter((e) => e.pop === key)
+                        // .concat(ab)
+                        .filter((e) => e.pop === key);
+
+                      // const allToList = ab.concat(toList)
 
                     return (
                       <div>
                         <h3>{key}</h3>
-                        <TotAndBonus tot={value as number} list={toList}>
+                        <TotAndBonus tot={value as number} list={[{ bonus: value as number, pop: "base" }, ...toList]}>
                           <DropdownComponent
                             key={"drop." + key}
                             options={addToDrop(abilitisBaseValue, "number")}
@@ -177,64 +182,64 @@ export function Ability() {
   );
 }
 
-export type AbilityLayoutProps = {
-  abilityText?: string;
-  abilityNumber?: number;
-  modChar: ModifiedCharacter;
-  // abilitysModifiers?: BonusResultMap;
-  children?: React.ReactNode;
-};
+// export type AbilityLayoutProps = {
+//   abilityText?: string;
+//   abilityNumber?: number;
+//   modChar: ModifiedCharacter;
+//   // abilitysModifiers?: BonusResultMap;
+//   children?: React.ReactNode;
+// };
 
-export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
-  abilityText,
-  abilityNumber,
-  modChar,
-  children
-}) => {
-  const tot: string = abilityText
-    ? findAbility(modChar.abilitys, abilityText).toString()
-    : "0";
-  const bonus: string = abilityText
-    ? signAndCountString([BonusAbilities(modChar.abilitys, abilityText)])
-    : "+" + 0;
-  const ab: number = abilityNumber ? abilityNumber : 0;
+// export const AbilityLayout: React.FC<AbilityLayoutProps> = ({
+//   abilityText,
+//   abilityNumber,
+//   modChar,
+//   children
+// }) => {
+//   const tot: string = abilityText
+//     ? findAbility(modChar.abilitys, abilityText).toString()
+//     : "0";
+//   const bonus: string = abilityText
+//     ? signAndCountString([BonusAbilities(modChar.abilitys, abilityText)])
+//     : "+" + 0;
+//   const ab: number = abilityNumber ? abilityNumber : 0;
 
-  return (
-    <div className="rpgui-container-framed golden">
-      <h4>{abilityText}</h4>
-      <div>
-        <p>{bonus}</p>
-        <span style={{ color: "orange" }}>{tot}</span>
-        <span>{" : "}</span>
+//   return (
+//     <div className="rpgui-container-framed golden">
+//       <h4>{abilityText}</h4>
+//       <div>
+//         <p>{bonus}</p>
+//         <span style={{ color: "orange" }}>{tot}</span>
+//         <span>{" : "}</span>
 
-        <span style={{ color: "yellow" }}>{ab}</span>
-        {modChar.abilitysMod &&
-          Object.entries(modChar.abilitysMod).map(([key, value]) => {
-            // const tot = value.reduce((tot, v) => tot + v.bonus, 0)
-            return (
-              <>
-                {value.map((v) => {
-                  const signNum: string = signAndCountString([v.bonus]);
-                  // const text: string = ", " + (v.source as TargetBonus)? v.source
-                  if (v.text.toUpperCase() === abilityText)
-                    return (
-                      <Popup text={signNum} popText={key + ", " + v.text} />
-                    );
-                })}
-              </>
-            );
-          })}
-        {children}
-      </div>
-    </div>
-  );
-};
+//         <span style={{ color: "yellow" }}>{ab}</span>
+//         {modChar.abilitysMod &&
+//           Object.entries(modChar.abilitysMod).map(([key, value]) => {
+//             // const tot = value.reduce((tot, v) => tot + v.bonus, 0)
+//             return (
+//               <>
+//                 {value.map((v) => {
+//                   const signNum: string = signAndCountString([v.bonus]);
+//                   // const text: string = ", " + (v.source as TargetBonus)? v.source
+//                   if (v.text.toUpperCase() === abilityText)
+//                     return (
+//                       <Popup text={signNum} popText={key + ", " + v.text} />
+//                     );
+//                 })}
+//               </>
+//             );
+//           })}
+//         {children}
+//       </div>
+//     </div>
+//   );
+// };
 
-export type BaseAbilitysWithModsProps = {
-  charAb: number;
-  abText: string;
-  mods: BonusResultMap;
-};
+// export type BaseAbilitysWithModsProps = {
+//   charAb: number;
+//   abText: string;
+//   mods: BonusResultMap;
+// };
 
 // export const BaseAbilitysWithMods: React.FC<BaseAbilitysWithModsProps> = ({
 //   charAb,

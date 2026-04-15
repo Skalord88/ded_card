@@ -18,8 +18,14 @@ export const createPrerequisiteAbility = (
   const modWisdom: number = Math.floor((ability.wisdom - 10) / 2);
   const modCharisma: number = Math.floor((ability.charisma - 10) / 2);
 
+  // const baseAbilitys: Prerequisite = {
+  //   id: -1,
+  //   abilitys: ability,
+  // }
+
   const strenghtPrerequisite: Prerequisite = {
     id: -1,
+    abilitys: ability,
     text: `Strength modifiers`,
 
     attackRoll: [
@@ -86,6 +92,7 @@ export const createPrerequisiteAbility = (
   // console.log("strenghtPrerequisite", strenghtPrerequisite);
   const abilityPrerequisite: Prerequisite[] = [
   // return [
+  // baseAbilitys,
     strenghtPrerequisite,
     dexterityPrerequisite,
     constitutionPrerequisite,

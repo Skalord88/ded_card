@@ -153,16 +153,25 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   list,
   children
 }) => {
+  const total: number = list.reduce((tot, element) => tot += element.bonus, 0)
   return (
     <div>
-      {/* <span>{tot}</span> */}
+      <span style={{color: "orange"}}>{total}</span>
+      <span>{" : ("}
       {list.length !== 0 &&
         list.map((l, index) => {
+          const sign: string = index === 0? l.bonus.toString() : signAndCountToString([l.bonus])
           const text = l.text
-            ? signAndCountToString([l.bonus]) + l.text
-            : signAndCountToString([l.bonus]);
-          return <Popup key={index} text={text} popText={l.pop} />;
+            ? [sign, l.text]
+            : [sign];
+          return (
+          <>
+          <Popup key={index} text={text} popText={l.pop} />
+          {index === list.length-1? null : (<span>{" "}</span>)}
+          </>
+          );
         })}
+        {")"}</span>
       {children ? children : null}
     </div>
   );
@@ -206,15 +215,17 @@ export const ListOfAllModifiers: React.FC<{
 export const SummaryCharArmorClass: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const toList: TotAndBonusElement[] =
-                      createTotAndBonusElement(modCharacter.armorClassMod ?? {}, true)
-                      // .filter((e) => e.pop === key)
+  const toList: TotAndBonusElement[] = createTotAndBonusElement(
+    modCharacter.armorClassMod ?? {},
+    true
+  );
+  // .filter((e) => e.pop === key)
   return (
     <>
       <div>
         <p>Armor Class:</p>
       </div>
-      <TotAndBonus list={toList} />
+      <TotAndBonus list={[{bonus: 10, pop: "base"}, ...toList]} />
     </>
   );
 };
