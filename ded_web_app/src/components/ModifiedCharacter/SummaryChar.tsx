@@ -153,14 +153,14 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   list,
   children
 }) => {
-  const total: number = list.reduce((tot, element) => tot += element.bonus, 0)
+  const total: number = Math.floor(list.reduce((tot, element) => tot += element.bonus, 0))
   return (
     <div>
       <span style={{color: "orange"}}>{total}</span>
       <span>{" : ("}
       {list.length !== 0 &&
         list.map((l, index) => {
-          const sign: string = index === 0? l.bonus.toString() : signAndCountToString([l.bonus])
+          const sign: string = index === 0? l.bonus.toString() : (signAndCountToString([l.bonus]))
           const text = l.text
             ? [sign, l.text]
             : [sign];

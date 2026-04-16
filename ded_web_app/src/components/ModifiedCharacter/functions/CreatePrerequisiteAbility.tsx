@@ -25,7 +25,7 @@ export const createPrerequisiteAbility = (
 
   const strenghtPrerequisite: Prerequisite = {
     id: -1,
-    abilitys: ability,
+    // abilitys: ability,
     text: `Strength modifiers`,
 
     attackRoll: [

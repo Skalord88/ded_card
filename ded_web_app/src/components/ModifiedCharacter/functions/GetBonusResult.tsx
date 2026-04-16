@@ -86,7 +86,8 @@ export const getBonusResult = (
           createBonusResult(
             a.bonus as number,
             prer.text || "",
-            a.modifierBonus as ModifierEnum,
+            a.modifierBonus as ModifierEnum
+            // a.modifierBonus as ModifierEnum || null,
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, a.target);
@@ -94,7 +95,7 @@ export const getBonusResult = (
           createBonusResult(
             a.bonus as number,
             prer.text || "",
-            a.modifierBonus as ModifierEnum,
+            a.modifierBonus as ModifierEnum || null,
             trg
           );
         }
@@ -106,7 +107,7 @@ export const getBonusResult = (
           createBonusResult(
             d.bonus as number,
             prer.text || "",
-            d.modifierBonus as ModifierEnum,
+            d.modifierBonus as ModifierEnum || null,
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, d.target);
@@ -114,7 +115,7 @@ export const getBonusResult = (
           createBonusResult(
             d.bonus as number,
             prer.text || "",
-            d.modifierBonus as ModifierEnum,
+            d.modifierBonus as ModifierEnum || null,
             trg
           );
         }
@@ -126,7 +127,7 @@ export const getBonusResult = (
           createBonusResult(
             aR.bonus as number,
             prer.text || "",
-            aR.modifierBonus as ModifierEnum,
+            aR.modifierBonus as ModifierEnum || null,
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, aR.target);
@@ -134,7 +135,7 @@ export const getBonusResult = (
           createBonusResult(
             aR.bonus as number,
             prer.text || "",
-            aR.modifierBonus as ModifierEnum,
+            aR.modifierBonus as ModifierEnum || null,
             trg
           );
         }

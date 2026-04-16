@@ -63,6 +63,8 @@ export const modifiedCharacter = (
     classPcList
   );
 
+  console.log("allPrerequisiteFromClasses", allPrerequisiteFromClasses)
+
   const newAr: BonusResultMap = getBonusResult(allPrerequisiteFromClasses, "attackRoll");
 
   console.log("newAr", newAr);
