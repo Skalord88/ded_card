@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
+import { FormattingText } from "../Formatting/Function";
 
 export interface PopupProps {
   text: string | string[];
-  popText: string;
+  popText: ModifierEnum;
 }
 
 export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
@@ -12,8 +14,10 @@ export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
     setShowPopup(show);
   };
 
+  // console.log("pop", popText)
+
   return (
-    <p
+    <span
       className="popup"
       onMouseEnter={() => togglePopup(true)}
       onClick={() => togglePopup(false)}
@@ -29,14 +33,20 @@ export const Popup: React.FC<PopupProps> = ({ text, popText }) => {
         <span>{text}</span>
       )}
 
-      <span
-        style={{ width: 400, overflowY: "scroll" }}
-        className={`popuptext rpgui-container-framed ${
-          showPopup ? "show" : ""
-        }`}
-      >
-        {popText}
-      </span>
-    </p>
+      {popText && (
+  <span
+    className={`popuptext rpgui-container-framed ${
+      showPopup ? "show" : ""
+    }`}
+  >
+    {popText.text && (
+      <div>{FormattingText(popText.text)}</div>
+    )}
+    {popText.description && (
+      <div>{FormattingText(popText.description)}</div>
+    )}
+  </span>
+)}
+    </span>
   );
 };

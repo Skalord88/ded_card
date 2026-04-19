@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { itemInDrop } from "../functions";
+import { ItemInDrop } from "../functions";
 
-export interface DropdownProps {
-  options: itemInDrop[];
-  // change: boolean;
-  onAction: (option: any) => void;
+export interface DropdownProps<T> {
+  options: ItemInDrop<T>[];
+  onAction: (option: T) => void;
 }
 
-export const DropdownComponent: React.FC<DropdownProps> = ({
+export const DropdownComponent = <T,>({
   options,
   onAction
-}) => {
+}: DropdownProps<T>) => {
   const [selectedItem, setSelectedItem] = useState<string>("...");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -19,13 +18,12 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
     setSelectedItem("...");
   }, [options]);
 
-  const selectItem = (option: itemInDrop) => {
+  const selectItem = (option: ItemInDrop<T>) => {
     onAction(option.item);
     setSelectedItem(option.name);
     setIsOpen(false);
   };
 
-  // Chiude il dropdown cliccando fuori
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -42,14 +40,14 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
   }, []);
 
   return (
-    <div ref={dropdownRef} style={{ width: "100%", position: "relative" }}>
-      <p
+    <div ref={dropdownRef} style={{ position: "relative" }}>
+      <span
         className="rpgui-dropdown-imp rpgui-dropdown-imp-header"
         onClick={() => setIsOpen((prev) => !prev)}
       >
-        <label style={{ marginRight: "8px" }}>▼</label> {selectedItem}
-      </p>
-      <div>
+        ▼ {selectedItem}
+      </span>
+
       {isOpen && (
         <ul className="rpgui-dropdown-imp">
           {options.map((o, index) => (
@@ -59,7 +57,6 @@ export const DropdownComponent: React.FC<DropdownProps> = ({
           ))}
         </ul>
       )}
-      </div>
     </div>
   );
 };

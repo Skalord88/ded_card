@@ -388,198 +388,217 @@ export function AllSpell(
 
 
 
-export interface itemInDrop {
-    name: string
-    item: string | number | Alignment | Feat | ClassCharacter | Race | SubRace | Region | RacialRegion | Deity | Dominio | Item | Armor | Shield | Weapon | WonderousItem | Enchantment | CharacterPc | Spell | []
+export type ItemInDrop<T> = {
+  name: string;
+  item: T;
+};
+
+export function addToDrop<T>(
+  options: T[],
+  getName: (item: T) => string
+): ItemInDrop<T>[] {
+  return options.map(o => ({
+    name: getName(o),
+    item: o
+  }));
 }
 
-export const addToDrop = (options: any[], text: string): itemInDrop[] => {
+// USO
+// addToDrop(abilitisBaseValue, (n) => n.toString())
+// addToDrop(feats, (f) => f.featName)
+// addToDrop(classes, (c) => c.className)
 
-    if (text === "number") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                const nameFilter: string = o.toString()
-                const filter: number = o as number
-                return {
-                    name: nameFilter,
-                    item: filter
-                }
-            }
-        )
-        return list
-    }
+// export const addToDrop = (options: any[], text: string): itemInDrop<T>[] => {
 
-    if (text === "filter") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                const nameFilter: string = o
-                const filter: string = o as string
-                return {
-                    name: nameFilter,
-                    item: filter
-                }
-            }
-        )
-        return list
-    }
-    if (text === "feat") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: (o as Feat).featName,
-                    item: o as Feat
-                }
-            }
-        )
-        return list
-    }
-    if (text === "class") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.className,
-                    item: o as ClassCharacter
-                }
-            }
-        )
-        return list
-    }
-    if (text === "race") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.raceName,
-                    item: o as Race
-                }
-            }
-        )
-        return list
-    }
-    if (text === "subRace") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.subRacesName,
-                    item: o as SubRace
-                }
-            }
-        )
-        return list
-    }
-    if (text === "items") {
-        let list: itemInDrop[] = options.map(
+//     if (text === "number") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 const nameFilter: string = o.toString()
+//                 const filter: number = o as number
+//                 // console.log(
+//                     // nameFilter, 
+//                     // filter
+//                 // )
+//                 return {
+//                     name: nameFilter,
+//                     item: filter
+//                 }
+//             }
+//         )
+//         return list
+//     }
 
-            o => {
-                return {
-                    name: (o as Item).name,
-                    item: o as Item | Armor | Shield | Weapon | WonderousItem
-                }
-            }
-        )
-        return list
-    }
-    if (text === "enchant") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: FormattingText(o.ability),
-                    item: o as Enchantment
-                }
-            }
-        )
-        return list
-    }
-    if (text === "normal") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as WonderousItem
-                }
-            }
-        )
-        return list
-    }
-    if (text === "char") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as CharacterPc
-                }
-            }
-        )
-        return list
-    }
-    if (text === "spells") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as Spell
-                }
-            }
-        )
-        return list
-    }
-    if (text === "deity") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as Deity
-                }
-            }
-        )
-        return list
-    }
-    if (text === "domain") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.domain,
-                    item: o as Dominio
-                }
-            }
-        )
-        return list
-    }
-    if (text === "raceRegion") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.region.name,
-                    item: o as RacialRegion
-                }
-            }
-        )
-        return list
-    }
-    if (text === "region") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as Region
-                }
-            }
-        )
-        return list
-    }
-    if (text === "aligment") {
-        let list: itemInDrop[] = options.map(
-            o => {
-                return {
-                    name: o.name,
-                    item: o as Alignment
-                }
-            }
-        )
-        return list
-    }
-    return []
+//     if (text === "filter") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 const nameFilter: string = o
+//                 const filter: string = o as string
+//                 return {
+//                     name: nameFilter,
+//                     item: filter
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "feat") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: (o as Feat).featName,
+//                     item: o as Feat
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "class") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.className,
+//                     item: o as ClassCharacter
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "race") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.raceName,
+//                     item: o as Race
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "subRace") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.subRacesName,
+//                     item: o as SubRace
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "items") {
+//         let list: itemInDrop[] = options.map(
 
-}
+//             o => {
+//                 return {
+//                     name: (o as Item).name,
+//                     item: o as Item | Armor | Shield | Weapon | WonderousItem
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "enchant") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: FormattingText(o.ability),
+//                     item: o as Enchantment
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "normal") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as WonderousItem
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "char") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as CharacterPc
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "spells") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as Spell
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "deity") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as Deity
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "domain") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.domain,
+//                     item: o as Dominio
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "raceRegion") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.region.name,
+//                     item: o as RacialRegion
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "region") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as Region
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     if (text === "aligment") {
+//         let list: itemInDrop[] = options.map(
+//             o => {
+//                 return {
+//                     name: o.name,
+//                     item: o as Alignment
+//                 }
+//             }
+//         )
+//         return list
+//     }
+//     return []
+
+// }
 
 export { BonusAbilities };
 

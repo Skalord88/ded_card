@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import {
   SzithMorcaneSentryOne,
   SzithMorcaneSentryThree,
@@ -28,7 +28,7 @@ export function FightAttack() {
   };
 
   return (
-    <>
+    <Fragment>
       <p>select fighters:</p>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
@@ -100,6 +100,6 @@ export function FightAttack() {
           <></>
         )}
       </div>
-    </>
+    </Fragment>
   );
 }

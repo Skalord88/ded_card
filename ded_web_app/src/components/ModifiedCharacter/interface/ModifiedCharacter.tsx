@@ -1,6 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
-import { Weapon } from "../../interfaces";
+import { Attacks, Inventory, Weapon } from "../../interfaces";
 import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
@@ -77,4 +77,6 @@ export type ModifiedCharacter = {
   archetypes?: Archetype[];
   classPcList?: ClassPc[];
   listHitDices?: HitDiceMap;
+  inventory?: Inventory;
+  attacks?: Attacks
 };

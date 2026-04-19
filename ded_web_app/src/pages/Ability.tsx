@@ -1,43 +1,21 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  AbilitysAndModifiers,
-  findAbility
-} from "../components/Abilitys/Functions";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import {
-  addToDrop,
-  BonusAbilities,
-  signAndCount,
-  signAndCountAbility,
-  SignNumber
-} from "../components/functions";
-import { CharacterPc, SignAndNumber } from "../components/interfaces";
+import { addToDrop } from "../components/functions";
+import { CharacterPc } from "../components/interfaces";
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
-import { Popup } from "../components/Popup/Popup";
-import { ModifierEnum } from "../components/Prerequisite/interface/ModifierEnum";
-import { AllSkillsAxios } from "../components/Skills/Skills/Const";
-import { urlAb, urlChar } from "../components/url";
-import { PageLayout } from "./AppLayout";
+import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import {
   createTotAndBonusElement,
   SummaryChar,
   TotAndBonus,
   TotAndBonusElement
 } from "../components/ModifiedCharacter/SummaryChar";
-import {
-  ModifiedCharacter,
-  ModifierAbilityResult
-} from "../components/ModifiedCharacter/interface/ModifiedCharacter";
-import {
-  BonusResultMap,
-  BonusSource,
-  TargetBonus
-} from "../components/ModifiedCharacter/functions/GetBonusResult";
-import { validate } from "webpack";
-import { signAndCountString } from "../components/Sign/Function";
+import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
+import { urlAb, urlChar } from "../components/url";
+import { PageLayout } from "./AppLayout";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -75,14 +53,12 @@ export function Ability() {
 
   const handleData = (
     option: number,
-    ability: keyof Omit<Abilitys, "string">
+    ability: keyof Omit<Abilitys, "modifierBonus">
   ) => {
-    if (abilitys) {
-      setAbilitys({
-        ...abilitys,
-        [ability]: option
-      });
-    }
+    setAbilitys((prev) => ({
+      ...prev!,
+      [ability]: option
+    }));
   };
 
   const handleSubmit = () => {
@@ -115,56 +91,59 @@ export function Ability() {
           {/* <div key={"abilitisBaseValue"}> */}
           <p>
             {abilitisBaseValue.map((value, index) => (
-              <>
+              <Fragment key={value}>
                 <span
                   style={{
                     color: Object.values(abilitys).includes(value)
                       ? "yellow"
                       : "white"
                   }}
-                  key={index}
                 >
                   {value}
                 </span>
                 <span>{index < abilitisBaseValue.length - 1 ? ", " : ""}</span>
-              </>
+              </Fragment>
             ))}
           </p>
-          {/* </div> */}
           {abilitys && (
             <div
               key={"abilitys"}
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))",
-                gap: "10px"
+                gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))"
+                // , gap: "10px"
               }}
             >
               {modChar &&
-                Object.entries(abilitys).map(([key, value]) => {
-                  if (value as number) {
-                    // const ab: TotAndBonusElement[] = [
-                    //   { bonus: value as number, pop: "base" }]
+                (
+                  Object.entries(abilitys) as [
+                    keyof Omit<Abilitys, "modifierBonus">,
+                    number
+                  ][]
+                ).map(([key, value]) => {
+                  if (typeof value === "number") {
                     const toList: TotAndBonusElement[] =
-                      createTotAndBonusElement(modChar.abilitysMod ?? {}, false)
-                        // .concat(ab)
-                        .filter((e) => e.pop === key);
-
-                      // const allToList = ab.concat(toList)
+                      createTotAndBonusElement(
+                        modChar.abilitysMod ?? {},
+                        false
+                      ).filter(
+                        (e): e is TotAndBonusElement => e.pop.text === key
+                      );
 
                     return (
-                      <div>
-                        <h3>{key}</h3>
-                        <TotAndBonus tot={value as number} list={[{ bonus: value as number, pop: "base" }, ...toList]}>
-                          <DropdownComponent
-                            key={"drop." + key}
-                            options={addToDrop(abilitisBaseValue, "number")}
-                            onAction={(option) =>
-                              handleData(
-                                option,
-                                key as keyof Omit<Abilitys, "string">
-                              )
-                            }
+                      <div key={key} className="rpgui-container-framed grey">
+                        <h3>{key.toUpperCase()}</h3>
+                        <TotAndBonus
+                          tot={value}
+                          list={[{ bonus: value, pop: BASE_VALUE }, ...toList]}
+                        >
+                          <DropdownComponent<number>
+                            options={addToDrop(abilitisBaseValue, (n) =>
+                              n.toString()
+                            )}
+                            onAction={(option) => {
+                              handleData(option, key);
+                            }}
                           />
                         </TotAndBonus>
                       </div>
