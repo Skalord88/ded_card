@@ -446,18 +446,18 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="9003" />
-            <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="[{ &quot;bonus&quot; : 1, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+                value="[{ &quot;bonus&quot; : 1, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+1 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="9004" />
-            <column name="attack_roll" value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="[{ &quot;bonus&quot; : 2, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+                value="[{ &quot;bonus&quot; : 2, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+2 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -465,9 +465,9 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="9005" />
-            <column name="attack_roll" value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="[{ &quot;bonus&quot; : 3, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+                value="[{ &quot;bonus&quot; : 3, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+3 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -475,9 +475,9 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="9006" />
-            <column name="attack_roll" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="[{ &quot;bonus&quot; : 4, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+                value="[{ &quot;bonus&quot; : 4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+4 attack and damage rolls with unarmed attacks and natural weapons " />
         </insert>
@@ -485,11 +485,52 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="9007" />
-            <column name="attack_roll" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : null, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
             <column name="damage_bonus"
-                value="[{ &quot;bonus&quot; : 5, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+                value="[{ &quot;bonus&quot; : 5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
             <column name="text"
                 value="+5 attack and damage rolls with unarmed attacks and natural weapons " />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="9008" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="damage_bonus"
+                value="[{ &quot;bonus&quot; : 1, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+            <column name="text"
+                value="Enchantment bonus +1 to attack and damage rolls with enchanted weapon" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9009" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="damage_bonus"
+                value="[{ &quot;bonus&quot; : 2, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+            <column name="text"
+                value="Enchantment bonus +2 to attack and damage rolls with enchanted weapon" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9010" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="damage_bonus"
+                value="[{ &quot;bonus&quot; : 3, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+            <column name="text"
+                value="Enchantment bonus +3 to attack and damage rolls with enchanted weapon" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9011" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="damage_bonus"
+                value="[{ &quot;bonus&quot; : 4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+            <column name="text"
+                value="Enchantment bonus +4 to attack and damage rolls with enchanted weapon" />
+        </insert>
+        <insert tableName="prerequisite">
+            <column name="id" value="9012" />
+            <column name="attack_roll" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+            <column name="damage_bonus"
+                value="[{ &quot;bonus&quot; : 5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, &quot;target&quot; : [&quot;ITEM&quot;] }]" />
+            <column name="text"
+                value="Enchantment bonus +5 to attack and damage rolls with enchanted weapon" />
         </insert>
 
 
@@ -555,10 +596,9 @@
             <column name="id" value="52105" />
             <column name="armor_class" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
         </insert>
-
         <insert tableName="prerequisite">
             <column name="id" value="52201" />
-            <column name="armor_class" value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+            <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="52202" />

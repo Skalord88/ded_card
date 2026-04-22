@@ -9,6 +9,12 @@
         <where>id =
             30000</where>
         </update>
+        <update tableName="enchanted_items">
+            <!-- proca Puli +1 -->
+            <column name="modifiers_id" valueNumeric="60002" />
+        <where>id =
+            1003</where>
+        </update>
 
     </changeSet>
 </databaseChangeLog>

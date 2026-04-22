@@ -212,13 +212,13 @@ export const modifiersFromPrerequisite = (
     }
     if (bonusType === "savingThrow") {
       // SAVING THROW
-      pr.savingThrow?.forEach((st) => {
+      pr?.savingThrow?.forEach((st) => {
         if (!st.modifierBonus) return;
         applySaveModifier(pr.text ?? "", st);
       });
     }
     if (bonusType === "skillStudy") {
-      pr.skillStudy && applySkillsModifier(pr.text ?? "", pr.skillStudy);
+      pr?.skillStudy && applySkillsModifier(pr.text ?? "", pr.skillStudy);
     }
   });
 

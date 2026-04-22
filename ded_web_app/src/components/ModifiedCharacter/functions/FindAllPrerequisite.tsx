@@ -1,6 +1,6 @@
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { ClassFeats, FeatPc } from "../../Feats/Interface/FeatInterface";
-import { CharacterPc, Inventory } from "../../interfaces";
+import { Attacks, CharacterPc, Inventory, Weapon } from "../../interfaces";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SubRace, Archetype } from "../../Race/Interfaces";
 
@@ -9,7 +9,8 @@ export const findAllPrerequisite = (
   archetypes?: Archetype[],
   featsList?: FeatPc[],
   classPcList?: ClassPc[],
-  inventory?: Inventory
+  inventory?: Inventory,
+  attacks?: Attacks
 ): Prerequisite[] => {
   let allPrerequisite: Prerequisite[] = [];
 
@@ -49,6 +50,12 @@ export const findAllPrerequisite = (
     inventory.shield &&
       inventory.shield.modifiers !== null &&
       allPrerequisite.push(inventory.shield.modifiers);
+  }
+
+  if(attacks) {
+    Object.values(attacks).forEach(attack => {
+      if(attack) attack.modifiers !== null && allPrerequisite.push(attack?.modifiers as Prerequisite);
+      })
   }
 
   return allPrerequisite;

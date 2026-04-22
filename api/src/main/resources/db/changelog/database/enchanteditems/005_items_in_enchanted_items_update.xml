@@ -97,7 +97,7 @@
 
         <update tableName="enchanted_items">
             <!-- Skiprock -->
-            <column name="item_id" valueNumeric="503" />
+            <column name="item_id" valueNumeric="220" />
         <where>id =
             1006</where>
         </update>

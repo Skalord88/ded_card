@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
-import pl.kolendateam.dadcard.race.dto.SpeedDTO;
-import pl.kolendateam.dadcard.race.entity.Speed;
 
 public class MapperPrerequisiteBonus {
 

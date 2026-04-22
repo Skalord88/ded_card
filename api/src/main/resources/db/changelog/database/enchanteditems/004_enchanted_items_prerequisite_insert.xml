@@ -7,6 +7,10 @@
       <column name="id" value="60001" />
       <column name="text" value="Singing Blade, +2 Perform" />
     </insert>
+    <insert tableName="prerequisite">
+      <column name="id" value="60002" />
+      <column name="text" value="proca Puli +1" />
+    </insert>
 
   </changeSet>
 </databaseChangeLog>

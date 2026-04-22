@@ -2,10 +2,18 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
-import { Attacks, CharacterPc, Inventory } from "../../interfaces";
+import {
+  Attacks,
+  CharacterPc,
+  Inventory,
+  Item,
+  Weapon
+} from "../../interfaces";
 import {
   ABILITY_MODIFIER,
-  DEFLECTION_BONUS
+  BASE_VALUE,
+  DEFLECTION_BONUS,
+  ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import {
@@ -13,16 +21,21 @@ import {
   findAllAdjLevelInRaceAndArchetypes
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
+import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
 import {
   AllModifiers,
-  ModifiedCharacter
+  AttackElement,
+  ModifiedCharacter,
+  WeaponElement
 } from "../interface/ModifiedCharacter";
+import { TotAndBonusElement } from "../SummaryChar";
 import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
+import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
-import { BonusResultMap, getBonusResult, prerequisiteToTotAndBonusList } from "./GetBonusResult";
+import { BonusResultMap, getBonusResult } from "./GetBonusResult";
 import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
 export const modifiedCharacter = (
@@ -48,7 +61,8 @@ export const modifiedCharacter = (
     archetypes,
     featsList,
     classPcList,
-    inventory
+    inventory,
+    attacks
   );
 
   const newAb: BonusResultMap = getBonusResult(allPrerequisite, "abilitys");
@@ -67,10 +81,10 @@ export const modifiedCharacter = (
 
   // console.log("allPrerequisiteFromClasses", allPrerequisiteFromClasses)
 
-  const totNewAr = prerequisiteToTotAndBonusList(allPrerequisiteFromClasses,
-    "attackRoll")
+  // const totNewAr = prerequisiteToTotAndBonusList(allPrerequisiteFromClasses,
+  //   "attackRoll")
 
-    // console.log("totNewAr", totNewAr)
+  // console.log("totNewAr", totNewAr)
 
   const newAr: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
@@ -88,6 +102,10 @@ export const modifiedCharacter = (
     allPrerequisiteFromClasses,
     "armorClass"
   );
+
+  const toListArmorClass: TotAndBonusElement[] = [
+    { bonus: 10, pop: BASE_VALUE }
+  ].concat(createTotAndBonusElement(newAc || {}, true));
 
   const sT: AllModifiers = modifiersFromPrerequisite(
     allPrerequisiteFromClasses,
@@ -114,22 +132,127 @@ export const modifiedCharacter = (
 
   const listHitDices = createHitDiceMap(adjLevel, classPcList);
 
-  // console.log("bab", newAr, returnBab(newAr))
+  const bab: number = returnBonus(newAr);
+
+  const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
+    newAr || {},
+    true
+  );
+
+  const toListMeleeAttack: TotAndBonusElement[] = createTotAndBonusElement(
+    newAr || {},
+    true,
+    ["Melee"]
+  );
+
+  const toListRangedAttack: TotAndBonusElement[] = createTotAndBonusElement(
+    newAr || {},
+    true,
+    ["Ranged"]
+  );
+
+  const babMelee: number = returnBonusSpecific(newAr, ["Melee"]);
+
+  const babRanged: number = returnBonusSpecific(newAr, ["Ranged"]);
+
+  const listOfWeapons = [
+    attacks?.firstAttackSetOne || noneWeapon,
+    attacks?.firstAttackSetTwo || noneWeapon,
+
+    attacks?.secondAttackSetOne || noneWeapon,
+    attacks?.secondAttackSetTwo || noneWeapon,
+
+    attacks?.additionalAttackSetOne || noneWeapon,
+    attacks?.additionalAttackSetTwo || noneWeapon
+  ];
+  const firstMeleeWeapon: Weapon =
+    listOfWeapons.find((w) => !w?.type.includes("RANGED")) || noneWeapon;
+  const firstRangedWeapon: Weapon | undefined = listOfWeapons.find((w) =>
+    w?.type.includes("RANGED")
+  );
+
+  const createWeaponElement = (
+    weapon: Weapon | undefined,
+    ranged: boolean,
+    text: boolean
+  ): WeaponElement => {
+    if (!weapon) return {};
+    return {
+      weaponMelee: !ranged ? weapon : undefined,
+      weaponRanged: ranged ? weapon : undefined,
+      toListMeleeAttack:
+        !ranged
+          ? createTotAndBonusElement(newAr || {}, text, ["Melee", weapon.itemId])
+          : undefined,
+      toListMeleeDamage:
+        !ranged
+          ? createTotAndBonusElement(newDb || {}, text, ["Melee", weapon.itemId])
+          : undefined,
+      toListRangedAttack:
+        ranged
+          ? createTotAndBonusElement(newAr || {}, text, ["Ranged", weapon.itemId])
+          : undefined,
+      toListRangedDamage:
+        ranged
+          ? createTotAndBonusElement(newDb || {}, text, ["Ranged", weapon.itemId])
+          : undefined,
+      babMelee:
+        !ranged
+          ? returnBonusSpecific(newAr, ["Melee", weapon.itemId])
+          : undefined,
+      babRanged:
+        ranged
+          ? returnBonusSpecific(newAr, ["Ranged", weapon.itemId])
+          : undefined,
+      damageMelee:
+        !ranged
+          ? returnBonusSpecific(newDb, ["Melee", weapon.itemId])
+          : undefined,
+      damageRanged:
+        ranged
+          ? returnBonusSpecific(newDb, ["Ranged", weapon.itemId])
+          : undefined
+    };
+  };
+
+  const firstMelee: WeaponElement = createWeaponElement(
+    firstMeleeWeapon,
+    false,
+    true
+  );
+  const firstRanged: WeaponElement | undefined = firstRangedWeapon
+    ? createWeaponElement(firstRangedWeapon, true, true)
+    : undefined;
+
+  const newAttacksElement: AttackElement = {
+    listOfWeapons: listOfWeapons,
+    bab: bab,
+    toListBab: toListBab,
+    toListMeleeAttack: toListMeleeAttack,
+    toListRangedAttack: toListRangedAttack,
+    babMelee: babMelee,
+    babRanged: babRanged,
+    firstMelee: firstMelee,
+    firstRanged: firstRanged,
+    firstAttackSetOne: attacks?.firstAttackSetOne
+      ? createWeaponElement(
+          attacks.firstAttackSetOne,
+          attacks.firstAttackSetOne.type.includes("RANGED"),
+          false
+        )
+      : undefined
+  };
 
   return {
     title: title,
-    // abilitys
     abilitys: newAbility,
     abilitysMod: newAb,
-    // abilitys
-    // bab
-    bab: Math.floor(returnBab(newAr)),
     attackRollMod: newAr,
-    // bab
     damageBonusMod: newDb,
     savingThrowMod: sT,
     skillStudyMod: sS,
     armorClassMod: newAc,
+    toListArmorClass: toListArmorClass,
     adjLevel: adjLevel,
     totLevel: totLevel,
     race: race,
@@ -137,7 +260,7 @@ export const modifiedCharacter = (
     classPcList: classPcList,
     listHitDices: listHitDices,
     inventory: inventory,
-    attacks: attacks
+    attacks: newAttacksElement
   };
 };
 
@@ -145,25 +268,43 @@ export const isToAdd = (key: string): boolean => {
   return [ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(key);
 };
 
-export const returnBab = (ar: BonusResultMap): number => {
-  let tot: number = 0;
-  Object.keys(ar).forEach((key) => {
-    if (isToAdd(key)) {
-      ar[key].forEach((a) => (tot += !a.source ? a.bonus : 0));
-    } else {
-      ar[key].forEach((a) => (tot = !a.source ? a.bonus : tot));
-    }
-  });
+export const returnBonus = (ar: BonusResultMap): number => {
+  const tot = Object.keys(ar).reduce(
+    (tot, key) =>
+      (tot += ar[key].reduce(
+        (tot, a) =>
+          !a.source
+            ? isToAdd(key)
+              ? (tot += a.bonus)
+              : tot > a.bonus
+                ? tot
+                : a.bonus
+            : tot,
+        0
+      )),
+    0
+  );
   return tot;
 };
-
-// console.log("allPrerequisite", allPrerequisite);
-// allPrerequisite.forEach((pre) => {
-//   if (pre){
-//     Object.entries(pre).forEach(([key, value]) => {
-//       if(value && key !== "id"){
-//         console.log("id." + pre.id + ",", pre.text, key && key, value && value);
-//       }
-//     });
-//   }
-// });
+export const returnBonusSpecific = (
+  ar: BonusResultMap,
+  serch: (string | number)[] = []
+): number => {
+  const tot = Object.keys(ar).reduce((tot, key) => {
+    tot += ar[key].reduce((tot, a) => {
+      const match = serch.some(
+        (s) =>
+          (a.source as ModifierEnum)?.text === s || (a.source as Item)?.id === s
+      );
+      return match
+        ? isToAdd(key)
+          ? tot + a.bonus
+          : tot > a.bonus
+            ? tot
+            : a.bonus
+        : tot;
+    }, 0);
+    return tot;
+  }, 0);
+  return tot;
+};

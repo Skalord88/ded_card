@@ -1,18 +1,15 @@
 import { Fragment } from "react/jsx-runtime";
 import { BonusAbilities, signAndCountToString, SignNumber } from "../functions";
-import { Item } from "../interfaces";
 import { Popup } from "../Popup/Popup";
-import {
-  BASE_VALUE,
-  EMPTY_BONUS,
-  ModifierEnum,
-  modifierEnumList
-} from "../Prerequisite/interface/ModifierEnum";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountString } from "../Sign/Function";
 import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
-import { BonusResultMap } from "./functions/GetBonusResult";
-import { ModifiedCharacter } from "./interface/ModifiedCharacter";
+import { createTotAndBonusElement } from "./functions/CreateTotAndBonusElement";
+import {
+  ModifiedCharacter,
+  WeaponElement
+} from "./interface/ModifiedCharacter";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -27,13 +24,15 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
           display: "grid",
           gridTemplateColumns: "1fr 2fr",
           gap: "10px"
+          ,
+          alignItems: "start"
         }}
       >
         <div>
-          <p>Size/Type:</p>
+          <p style={{ margin: 0 }}>Size/Type:</p>
         </div>
         <div>
-          <p>
+          <p style={{ margin: 0 }}>
             {modCharacter.race?.size.size}{" "}
             {modCharacter.race?.race.raceType.raceClass.className}
           </p>
@@ -65,53 +64,6 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
 export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.attackRollMod || {},
-    true
-  );
-  const bab: number = Math.floor(
-    toListBab.reduce((tot, element) => (tot += element.bonus), 0)
-  );
-
-  const listFirstAttack = [
-    modCharacter.attacks?.firstAttackSetOne,
-    modCharacter.attacks?.firstAttackSetTwo,
-
-    modCharacter.attacks?.secondAttackSetOne,
-    modCharacter.attacks?.secondAttackSetTwo,
-
-    modCharacter.attacks?.additionalAttackSetOne,
-    modCharacter.attacks?.additionalAttackSetTwo
-  ];
-  const firstMelee = listFirstAttack.find((w) => !w?.type.includes("RANGED"));
-  const firstRanged = listFirstAttack.find((w) => w?.type.includes("RANGED"));
-
-  const toListMelee: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.attackRollMod || {},
-    true,
-    "Melee"
-  );
-  const toListRanged: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.attackRollMod || {},
-    true,
-    "Ranged"
-  );
-  const babMelee: number = Math.floor(
-    toListMelee.reduce((tot, element) => (tot += element.bonus), 0)
-  );
-  const babRanged: number = Math.floor(
-    toListRanged.reduce((tot, element) => (tot += element.bonus), 0)
-  );
-
-  const toListSpecific: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.attackRollMod || {},
-    true,
-    firstRanged?.itemId
-  );
-  const babSpecific: number = Math.floor(
-    toListSpecific.reduce((tot, element) => (tot += element.bonus), 0)
-  );
-
   return (
     <>
       <div>
@@ -120,116 +72,133 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       <div>
         <p>
           <span style={{ color: "yellow" }}>
-            {signAndCountString([babMelee])}
+            {signAndCountString([modCharacter.attacks?.bab || 0])}
           </span>
-          <span>{firstMelee?.name}</span>
-          <span>{firstMelee?.damage}</span>
+          {modCharacter.attacks?.firstMelee && (
+            <span>{modCharacter.attacks?.firstMelee?.weaponMelee?.name}</span>
+          )}
+          <span>{modCharacter.attacks?.firstMelee?.damageMelee}</span>
           {" / "}
           <span style={{ color: "yellow" }}>
-            {signAndCountString([bab + babRanged - bab + babSpecific - bab])}
+            {modCharacter.attacks?.babMelee &&
+              signAndCountString([modCharacter.attacks?.babMelee])}
           </span>
-          <span>{firstRanged?.name}</span>
-          <span>{firstRanged?.damage}</span>
+          {modCharacter.attacks?.firstRanged && (
+            <span>{modCharacter.attacks?.firstRanged?.weaponRanged?.name}</span>
+          )}
+          {modCharacter.attacks?.firstRanged && (
+            <span>{modCharacter.attacks?.firstRanged?.damageRanged}</span>
+          )}
         </p>
       </div>
       <div>
         <p>Full Attack:</p>
       </div>
-      <div></div>
+      <MapAllAttacks
+        modCharacter={modCharacter}
+        // babMelee={babMelee}
+        // babRanged={babRanged}
+        // list={listAllAttacks}
+      />
     </>
   );
+};
+
+export const mapAllAttacksAreas = (
+  elelments: (WeaponElement | undefined)[]
+): { element: WeaponElement | undefined; area: string }[] => {
+  return [
+    { element: elelments[0], area: "w1" },
+    { element: elelments[1], area: "w2" },
+    { element: elelments[2], area: "wA" },
+    { element: {}, area: "empty" },
+    { element: elelments[3], area: "w21" },
+    { element: elelments[4], area: "w22" },
+    { element: elelments[5], area: "w2A" },
+    { element: {}, area: "empty" }
+  ];
+};
+
+export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
+  const areas = mapAllAttacksAreas([
+    modCharacter.attacks?.firstAttackSetOne || undefined,
+    modCharacter.attacks?.firstAttackSetTwo || undefined,
+    modCharacter.attacks?.additionalAttackSetOne || undefined,
+    modCharacter.attacks?.secondAttackSetOne || undefined,
+    modCharacter.attacks?.secondAttackSetTwo || undefined,
+    modCharacter.attacks?.additionalAttackSetTwo || undefined
+  ]);
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateAreas: `
+      "w1 w2"
+      "wA empty"
+      "w21 w22"
+      "w2A empty"
+    `,
+        gridTemplateColumns: "1fr 1fr",
+        gridTemplateRows: "repeat(4, auto)",
+        gap: "8px",
+        width: "100%"
+      }}
+    >
+      {areas.map((area, index) => {
+        return (
+          <div key={index} style={{ border: "1px solid red" }}>
+            <div>
+              <p>
+                {area.area !== "empty" && " " + index + " "}
+                {area.element?.weaponRanged
+                  ? area.element.weaponRanged.name
+                  : area.element?.weaponMelee?.name}
+              </p>
+            </div>
+            <TotAndBonus
+              show={false}
+              list={
+                area.element?.toListMeleeAttack
+                  ? area.element.toListMeleeAttack
+                  : area.element?.toListRangedAttack || []
+              }
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export const fullAttackMap = (bab: number): number[] => {
+  return [];
 };
 
 export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.attackRollMod || {},
-    true
-  );
   const toListGrapple: TotAndBonusElement[] = createTotAndBonusElement(
     modCharacter.attackRollMod || {},
     true,
-    "Grapple"
-  );
+    ["Grapple"]
+  ).concat(modCharacter.attacks?.toListBab || []);
 
   return (
     <>
       <div>
-        <p>Base Attack:</p>
+        <p style={{ margin: 0 }}>Base Attack:</p>
       </div>
       <div>
-        <TotAndBonus list={toListBab} />
+        <TotAndBonus show={true} list={modCharacter.attacks?.toListBab || []} />
       </div>
       <div>
         <p>Grapple:</p>
       </div>
       <div>
-        <TotAndBonus list={toListGrapple} />
+        <TotAndBonus show={true} list={toListGrapple} />
       </div>
     </>
   );
-};
-
-export const createTotAndBonusElement = (
-  map: BonusResultMap,
-  testo: boolean,
-  serch?: string | number
-): TotAndBonusElement[] => {
-  let list: TotAndBonusElement[] = [];
-  Object.entries(map).map(([key, value]) => {
-    if (!serch) {
-      value.forEach((v) => {
-        if (!v.source) {
-          list.push(
-            testo
-              ? {
-                  bonus: v.bonus,
-                  text: key,
-                  pop: modifierEnumList.filter((m) => m.text === v.text)[0] || {
-                    ...EMPTY_BONUS,
-                    description: key,
-                    text: v.text
-                  }
-                }
-              : {
-                  bonus: v.bonus,
-                  pop: modifierEnumList.filter((m) => m.text === v.text)[0] || {
-                    ...EMPTY_BONUS,
-                    description: key,
-                    text: v.text
-                  }
-                }
-          );
-        }
-      });
-    }
-    if (serch) {
-      value.forEach((v) => {
-        // console.log("v", v, v.source)
-        if (
-          !v.source ||
-          serch === (v.source as Item)?.id ||
-          serch === (v.source as ModifierEnum)?.text
-        ) {
-          // const text: ModifierEnum = v.source as ModifierEnum;
-
-          // serch === "Melee" && console.log("serch", serch, text, v)
-          list.push({
-            bonus: v.bonus,
-            text: key,
-            pop: modifierEnumList.filter((m) => m.text === v.text)[0] || {
-              ...EMPTY_BONUS,
-              description: key,
-              text: v.text
-            }
-          });
-        }
-      });
-    }
-  });
-  // console.log("list", list)
-  return list;
 };
 
 export type TotAndBonusElement = {
@@ -239,19 +208,20 @@ export type TotAndBonusElement = {
 };
 
 export type TotAndBonusProps = {
-  tot?: number;
+  show: boolean;
   list: TotAndBonusElement[];
   children?: React.ReactNode;
 };
 
 export const TotAndBonus: React.FC<TotAndBonusProps> = ({
-  tot,
+  show,
   list,
   children
 }) => {
   const total: number = Math.floor(
     list.reduce((tot, element) => (tot += element.bonus), 0)
   );
+
   return (
     <div>
       <span style={{ color: "orange" }}>{total}</span>
@@ -259,9 +229,9 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
       <span>
         {" : ("}
         {list.length !== 0 &&
-          list.map((l, index) => {
+          list.map((l: TotAndBonusElement, index) => {
             const sign: string = signAndCountToString([l.bonus]);
-            const text = l.text ? [sign, l.text] : [sign];
+            const text = show && l.text ? [sign, l.text] : [sign];
 
             return (
               <Fragment key={index}>
@@ -287,7 +257,7 @@ export const ListOfAllModifiers: React.FC<{
   const toList: TotAndBonusElement[] = createTotAndBonusElement(
     modChar.attackRollMod ?? {},
     true,
-    "Grapple"
+    ["Grapple"]
   );
   // .filter((e) => e.pop === key)
 
@@ -295,7 +265,7 @@ export const ListOfAllModifiers: React.FC<{
     <>
       <span>{SignNumber(total)}</span>
       <span>{total}</span>
-      <TotAndBonus list={toList} />
+      <TotAndBonus show={true} list={toList} />
       {/* {mods.map((m) => (
         <Popup text={signAndCountString([m.bonus])} popText={m.key} />
       ))}
@@ -316,16 +286,12 @@ export const ListOfAllModifiers: React.FC<{
 export const SummaryCharArmorClass: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const toList: TotAndBonusElement[] = createTotAndBonusElement(
-    modCharacter.armorClassMod ?? {},
-    true
-  );
   return (
     <>
       <div>
         <p>Armor Class:</p>
       </div>
-      <TotAndBonus list={[{ bonus: 10, pop: BASE_VALUE }, ...toList]} />
+      <TotAndBonus show={true} list={modCharacter.toListArmorClass || []} />
     </>
   );
 };

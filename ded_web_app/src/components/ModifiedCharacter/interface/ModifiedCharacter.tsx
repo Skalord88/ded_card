@@ -7,6 +7,7 @@ import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { HitDiceMap } from "../../Vita/Functions";
 import { BonusResultMap } from "../functions/GetBonusResult";
+import { TotAndBonusElement } from "../SummaryChar";
 
 export type BonusResult = {
   key: string;
@@ -65,11 +66,14 @@ export type ModifiedCharacter = {
   title: string;
   abilitys: Abilitys;
   abilitysMod?: BonusResultMap;
-  bab: number;
+  // bab: number;
+  // babMelee: number;
+  // babRanged: number;
   attackRollMod: BonusResultMap;
   damageBonusMod?: BonusResultMap;
   savingThrowMod?: AllModifiers;
   armorClassMod?: BonusResultMap;
+  toListArmorClass?: TotAndBonusElement[];
   skillStudyMod?: AllModifiers;
   adjLevel?: number;
   totLevel?: number;
@@ -78,5 +82,38 @@ export type ModifiedCharacter = {
   classPcList?: ClassPc[];
   listHitDices?: HitDiceMap;
   inventory?: Inventory;
-  attacks?: Attacks
+  attacks?: AttackElement;
 };
+
+export type AttackElement = {
+  listOfWeapons: Weapon[];
+  bab: number;
+  toListBab: TotAndBonusElement[];
+  toListMeleeAttack: TotAndBonusElement[];
+  // toListMeleeDamage: TotAndBonusElement[];
+  toListRangedAttack?: TotAndBonusElement[];
+  // toListRangedDamage?: TotAndBonusElement[];
+  babMelee: number;
+  babRanged: number;
+  firstMelee: WeaponElement;
+  firstRanged?: WeaponElement;
+  firstAttackSetOne?: WeaponElement;
+  secondAttackSetOne?: WeaponElement;
+  additionalAttackSetOne?: WeaponElement;
+  firstAttackSetTwo?: WeaponElement;
+  secondAttackSetTwo?: WeaponElement;
+  additionalAttackSetTwo?: WeaponElement;
+}
+
+export type WeaponElement = {
+  weaponMelee?: Weapon;
+  weaponRanged?: Weapon;
+  toListMeleeAttack?: TotAndBonusElement[];
+  toListMeleeDamage?: TotAndBonusElement[];
+  toListRangedAttack?: TotAndBonusElement[];
+  toListRangedDamage?: TotAndBonusElement[];
+  babMelee?: number;
+  babRanged?: number;
+  damageMelee?: number;
+  damageRanged?: number;
+}

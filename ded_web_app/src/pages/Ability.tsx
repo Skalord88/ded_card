@@ -8,7 +8,6 @@ import { CharacterPc } from "../components/interfaces";
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import {
-  createTotAndBonusElement,
   SummaryChar,
   TotAndBonus,
   TotAndBonusElement
@@ -16,6 +15,7 @@ import {
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -134,7 +134,7 @@ export function Ability() {
                       <div key={key} className="rpgui-container-framed grey">
                         <h3>{key.toUpperCase()}</h3>
                         <TotAndBonus
-                          tot={value}
+                          show={false}
                           list={[{ bonus: value, pop: BASE_VALUE }, ...toList]}
                         >
                           <DropdownComponent<number>

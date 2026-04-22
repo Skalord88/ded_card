@@ -3,7 +3,7 @@ import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ModifierBonus } from "../../interfaces";
 import { modifyAbilitys } from "../../Prerequisite/abilitys/functions/function";
-import { ABILITY_MODIFIER, ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
+import { ABILITY_MODIFIER, EMPTY_BONUS, ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SavingThrow } from "../../Saving/interface";
 
@@ -30,7 +30,7 @@ export const createPrerequisiteAbility = (
     attackRoll: [
       {
         bonus: modStrength,
-        modifierBonus: ABILITY_MODIFIER,
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Melee and Grapple attacks", text: "Strength"} as ModifierEnum,
         target: [{ text: "Melee" } as ModifierEnum, { text: "Grapple" } as ModifierEnum]
       } as AttackRoll
     ],
@@ -38,7 +38,7 @@ export const createPrerequisiteAbility = (
     damageBonus: [
       {
         bonus: modStrength,
-        modifierBonus: ABILITY_MODIFIER,
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Melee e Thrown damage", text: "Strength"} as ModifierEnum,
         target: [{ text: "Melee" } as ModifierEnum, { text: "Thrown" } as ModifierEnum],
       } as DamageBonus
     ]
@@ -50,14 +50,14 @@ export const createPrerequisiteAbility = (
     armorClass: [
       {
         bonus: modDexterity,
-        modifierBonus: ABILITY_MODIFIER
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Armor Class", text: "Dexterity"} as ModifierEnum
       }
     ],
 
     attackRoll: [
       {
         bonus: modDexterity,
-        modifierBonus: ABILITY_MODIFIER,
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Ranged attack", text: "Dexterity"} as ModifierEnum,
         target: [{ text: "Ranged" } as ModifierEnum]
       } as AttackRoll
     ],
@@ -65,7 +65,7 @@ export const createPrerequisiteAbility = (
     savingThrow: [
       {
         reflex: modDexterity,
-        modifierBonus: ABILITY_MODIFIER,
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Reflex save", text: "Dexterity"} as ModifierEnum,
       } as SavingThrow
     ]
   } as Prerequisite;
@@ -77,7 +77,7 @@ export const createPrerequisiteAbility = (
     savingThrow: [
       {
         fortitude: modConstitution,
-        modifierBonus: ABILITY_MODIFIER
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Fortitude save", text: "Constitution"} as ModifierEnum
       } as SavingThrow
     ]
   } as Prerequisite;
@@ -89,7 +89,7 @@ export const createPrerequisiteAbility = (
     savingThrow: [
       {
         will: modWisdom,
-        modifierBonus: ABILITY_MODIFIER
+        modifierBonus: {...EMPTY_BONUS, description: "Increase Will save", text: "Wisdom"} as ModifierEnum
       } as SavingThrow
     ]
   } as Prerequisite;

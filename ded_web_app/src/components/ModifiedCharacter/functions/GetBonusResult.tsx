@@ -80,7 +80,7 @@ export const getBonusResult = (
 
   allPrerequisite.forEach((prer) => {
     if (bonusType === "attackRoll") {
-      prer.attackRoll?.forEach((a) => {
+      prer?.attackRoll?.forEach((a) => {
         // const key = a.modifierBonus
         if (!a.target) {
           createBonusResult(
@@ -105,7 +105,7 @@ export const getBonusResult = (
     // [t]
 
     if (bonusType === "damageBonus") {
-      prer.damageBonus?.forEach((d) => {
+      prer?.damageBonus?.forEach((d) => {
         if (!d.target) {
           createBonusResult(
             d.bonus as number,
@@ -125,7 +125,7 @@ export const getBonusResult = (
       });
     }
     if (bonusType === "armorClass") {
-      prer.armorClass?.forEach((aR) => {
+      prer?.armorClass?.forEach((aR) => {
         if (!aR.target) {
           createBonusResult(
             aR.bonus as number,
@@ -145,7 +145,7 @@ export const getBonusResult = (
       });
     }
     if (bonusType === "abilitys") {
-      if (prer.abilitys) {
+      if (prer && prer.abilitys) {
         const modifier = prer.abilitys.modifierBonus;
         // console.log("modifier", modifier)
         Object.entries(prer.abilitys).forEach(([ab, value]) => {
@@ -175,7 +175,7 @@ export const prerequisiteToTotAndBonusList = (
   let list: TotAndBonusElement[] = [];
   if (text === "attackRoll") {
     prerequisiteAll.map((pre) => {
-      if (pre.attackRoll) {
+      if (pre && pre.attackRoll) {
         pre.attackRoll.forEach((att) => {
           const trg = att.target;
           if (trg && trg.length > 0) {
