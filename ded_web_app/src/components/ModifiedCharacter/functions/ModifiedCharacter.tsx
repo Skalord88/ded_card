@@ -3,10 +3,12 @@ import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
+  Armor,
   Attacks,
   CharacterPc,
   Inventory,
   Item,
+  Shield,
   Weapon
 } from "../../interfaces";
 import {
@@ -142,7 +144,7 @@ export const modifiedCharacter = (
     true
   );
 
-  console.log("toListBab", toListBab);
+  // console.log("toListBab", toListBab);
 
   const toListMeleeAttack: TotAndBonusElement[] = createTotAndBonusElement(
     newAr || {},
@@ -176,17 +178,33 @@ export const modifiedCharacter = (
     w?.type.includes("RANGED")
   );
 
-  const weaponEnchantmentBonus = (weapon: Weapon): TotAndBonusElement[] => {
-    const enchantments: TotAndBonusElement[] = [];
-    if(firstMeleeWeapon?.enchantmentBonus) enchantments.push(
-      {
-    bonus: weapon.enchantmentBonus || 0,
-    text: weapon.weaponName,
-    pop: ENCHANTMENT_BONUS as ModifierEnum
-}
-    );
-    return enchantments;
+  const weaponEnchantmentBonusMap = (
+  arMap: BonusResultMap,
+  weapon: Weapon
+): BonusResultMap => {
+
+  const withEnchantments = { ...arMap };
+
+  // reset
+  withEnchantments["enchantmentBonus"] = [];
+
+  if (weapon.enchantmentBonus) {
+    withEnchantments["enchantmentBonus"].push({
+      bonus: weapon.enchantmentBonus === -1 ? 1 : weapon.enchantmentBonus,
+      text: weapon.name,
+      source: {
+        id: weapon.itemId,
+        name: weapon.name,
+        itemType: "Weapon",
+        cost: weapon.cost,
+        weight: weapon.weight,
+        description: weapon.description,
+      } as Item
+    });
   }
+
+  return withEnchantments;
+};
 
   const createWeaponElement = (
     weapon: Weapon | undefined,
@@ -194,42 +212,47 @@ export const modifiedCharacter = (
     text: boolean
   ): WeaponElement => {
     if (!weapon) return {};
+    const updatedAttacksRollMap = weaponEnchantmentBonusMap(newAr || {}, weapon);
+    const updatedDamageMap = weaponEnchantmentBonusMap(newDb || {}, weapon);
     return {
       weaponMelee: !ranged ? weapon : undefined,
       weaponRanged: ranged ? weapon : undefined,
-      toListMeleeAttack:
-        !ranged
-          ? createTotAndBonusElement(newAr || {}, text, ["Melee", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
-          : undefined,
-      toListMeleeDamage:
-        !ranged
-          ? createTotAndBonusElement(newDb || {}, text, ["Melee", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
-          : undefined,
-      toListRangedAttack:
-        ranged
-          ? createTotAndBonusElement(newAr || {}, text, ["Ranged", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
-          : undefined,
-      toListRangedDamage:
-        ranged
-          ? createTotAndBonusElement(newDb || {}, text, ["Ranged", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
-          : undefined,
-      babMelee:
-        !ranged
-          ? returnBonusSpecific(newAr, ["Melee", weapon.itemId])
-           + (weapon.enchantmentBonus || 0)
-          : undefined,
-      babRanged:
-        ranged
-          ? returnBonusSpecific(newAr, ["Ranged", weapon.itemId]) + (weapon.enchantmentBonus || 0)
-          : undefined,
-      damageMelee:
-        !ranged
-          ? returnBonusSpecific(newDb, ["Melee", weapon.itemId]) + (weapon.enchantmentBonus || 0)
-          : undefined,
-      damageRanged:
-        ranged
-          ? returnBonusSpecific(newDb, ["Ranged", weapon.itemId]) + (weapon.enchantmentBonus || 0)
-          : undefined
+      toListMeleeAttack: !ranged
+        ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
+            "Melee",
+            weapon.itemId
+          ])
+        : undefined,
+      toListMeleeDamage: !ranged
+        ? createTotAndBonusElement(updatedDamageMap || {}, text, [
+            "Melee",
+            weapon.itemId
+          ])
+        : undefined,
+      toListRangedAttack: ranged
+        ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
+            "Ranged",
+            weapon.itemId
+          ])
+        : undefined,
+      toListRangedDamage: ranged
+        ? createTotAndBonusElement(updatedDamageMap || {}, text, [
+            "Ranged",
+            weapon.itemId
+          ])
+        : undefined,
+      babMelee: !ranged && weapon
+        ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
+        : undefined,
+      babRanged: ranged && weapon
+        ? returnBonusSpecific(updatedAttacksRollMap, ["Ranged", weapon.itemId])
+        : undefined,
+      damageMelee: !ranged && weapon
+        ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])
+        : undefined,
+      damageRanged: ranged && weapon
+        ? returnBonusSpecific(updatedDamageMap, ["Ranged", weapon.itemId])
+        : undefined
     };
   };
 
@@ -310,6 +333,7 @@ export const returnBonusSpecific = (
   ar: BonusResultMap,
   serch: (string | number)[] = []
 ): number => {
+  if(ar){
   return Object.keys(ar).reduce((tot, key) => {
     return (
       tot +
@@ -323,10 +347,11 @@ export const returnBonusSpecific = (
           ? isToAdd(key)
             ? tot + a.bonus
             : tot > a.bonus
-            ? tot
-            : a.bonus
+              ? tot
+              : a.bonus
           : tot;
       }, 0)
     );
-  }, 0);
+  }, 0);}
+  return 0;
 };
