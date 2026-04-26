@@ -38,6 +38,11 @@ export const DODGE_BONUS: ModifierEnum = {
     "A dodge bonus improves Armor Class (and sometimes Reflex saves) resulting from physical skill at avoiding blows and other ill effects. Dodge bonuses are never granted by spells or magic items. Any situation or effect (except wearing armor) that negates a character's Dexterity bonus also negates any dodge bonuses the character may have. Dodge bonuses stack with all other bonuses to AC, even other dodge bonuses. Dodge bonuses apply against touch attacks.",
   text: "Dodge Bonus"
 };
+export const ENCHANTMENT_BONUS: ModifierEnum = {
+  description:
+    "An enhancement bonus represents an increase in the sturdiness and/or effectiveness of armor or natural armor, or the effectiveness of a weapon, or a general bonus to an ability score. Multiple enhancement bonuses on the same object (in the case of armor and weapons), creature (in the case of natural armor), or ability score do not stack. Only the highest enhancement bonus applies. Since enhancement bonuses to armor or natural armor effectively increase the armor or natural armor's bonus to AC, they don't apply against touch attacks.",
+  text: "Enchantment Bonus"
+};
 export const INSIGHT_BONUS: ModifierEnum = {
   description:
     "An insight bonus improves performance of a given activity by granting the character an almost precognitive knowledge of what might occur. Multiple insight bonuses on the same character or object do not stack. Only the highest insight bonus applies.",

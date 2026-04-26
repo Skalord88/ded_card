@@ -13,6 +13,7 @@ import {
   ABILITY_MODIFIER,
   BASE_VALUE,
   DEFLECTION_BONUS,
+  ENCHANTMENT_BONUS,
   ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
@@ -35,7 +36,7 @@ import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
 import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
-import { BonusResultMap, getBonusResult } from "./GetBonusResult";
+import { BonusResultMap, BonusSource, getBonusResult } from "./GetBonusResult";
 import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
 export const modifiedCharacter = (
@@ -134,10 +135,14 @@ export const modifiedCharacter = (
 
   const bab: number = returnBonus(newAr);
 
+  // console.log("newAr", newAr);
+
   const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
     newAr || {},
     true
   );
+
+  console.log("toListBab", toListBab);
 
   const toListMeleeAttack: TotAndBonusElement[] = createTotAndBonusElement(
     newAr || {},
@@ -171,6 +176,18 @@ export const modifiedCharacter = (
     w?.type.includes("RANGED")
   );
 
+  const weaponEnchantmentBonus = (weapon: Weapon): TotAndBonusElement[] => {
+    const enchantments: TotAndBonusElement[] = [];
+    if(firstMeleeWeapon?.enchantmentBonus) enchantments.push(
+      {
+    bonus: weapon.enchantmentBonus || 0,
+    text: weapon.weaponName,
+    pop: ENCHANTMENT_BONUS as ModifierEnum
+}
+    );
+    return enchantments;
+  }
+
   const createWeaponElement = (
     weapon: Weapon | undefined,
     ranged: boolean,
@@ -182,35 +199,36 @@ export const modifiedCharacter = (
       weaponRanged: ranged ? weapon : undefined,
       toListMeleeAttack:
         !ranged
-          ? createTotAndBonusElement(newAr || {}, text, ["Melee", weapon.itemId])
+          ? createTotAndBonusElement(newAr || {}, text, ["Melee", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
           : undefined,
       toListMeleeDamage:
         !ranged
-          ? createTotAndBonusElement(newDb || {}, text, ["Melee", weapon.itemId])
+          ? createTotAndBonusElement(newDb || {}, text, ["Melee", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
           : undefined,
       toListRangedAttack:
         ranged
-          ? createTotAndBonusElement(newAr || {}, text, ["Ranged", weapon.itemId])
+          ? createTotAndBonusElement(newAr || {}, text, ["Ranged", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
           : undefined,
       toListRangedDamage:
         ranged
-          ? createTotAndBonusElement(newDb || {}, text, ["Ranged", weapon.itemId])
+          ? createTotAndBonusElement(newDb || {}, text, ["Ranged", weapon.itemId]).concat(weaponEnchantmentBonus(weapon))
           : undefined,
       babMelee:
         !ranged
           ? returnBonusSpecific(newAr, ["Melee", weapon.itemId])
+           + (weapon.enchantmentBonus || 0)
           : undefined,
       babRanged:
         ranged
-          ? returnBonusSpecific(newAr, ["Ranged", weapon.itemId])
+          ? returnBonusSpecific(newAr, ["Ranged", weapon.itemId]) + (weapon.enchantmentBonus || 0)
           : undefined,
       damageMelee:
         !ranged
-          ? returnBonusSpecific(newDb, ["Melee", weapon.itemId])
+          ? returnBonusSpecific(newDb, ["Melee", weapon.itemId]) + (weapon.enchantmentBonus || 0)
           : undefined,
       damageRanged:
         ranged
-          ? returnBonusSpecific(newDb, ["Ranged", weapon.itemId])
+          ? returnBonusSpecific(newDb, ["Ranged", weapon.itemId]) + (weapon.enchantmentBonus || 0)
           : undefined
     };
   };
@@ -268,43 +286,47 @@ export const isToAdd = (key: string): boolean => {
   return [ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(key);
 };
 
+// export const ifToAddSum = (check: boolean, tot: number, bonus: number): number => {
+//   if(check) return tot + bonus;
+//   return tot > bonus ? tot : bonus;
+// }
+
 export const returnBonus = (ar: BonusResultMap): number => {
-  const tot = Object.keys(ar).reduce(
-    (tot, key) =>
-      (tot += ar[key].reduce(
-        (tot, a) =>
-          !a.source
-            ? isToAdd(key)
-              ? (tot += a.bonus)
-              : tot > a.bonus
-                ? tot
-                : a.bonus
-            : tot,
-        0
-      )),
-    0
-  );
-  return tot;
+  return Object.keys(ar).reduce((globalTot, key) => {
+    const bonuses = ar[key]
+      .filter((a: BonusSource) => !a.source)
+      .map((a: BonusSource) => a.bonus);
+
+    if (isToAdd(key)) {
+      // somma tutto
+      return globalTot + bonuses.reduce((sum, b) => sum + b, 0);
+    }
+    // console.log("key", Math.max(0, ...bonuses), "bonuses", bonuses);
+    // prende solo il bonus più alto
+    return globalTot + Math.max(0, ...bonuses);
+  }, 0);
 };
 export const returnBonusSpecific = (
   ar: BonusResultMap,
   serch: (string | number)[] = []
 ): number => {
-  const tot = Object.keys(ar).reduce((tot, key) => {
-    tot += ar[key].reduce((tot, a) => {
-      const match = serch.some(
-        (s) =>
-          (a.source as ModifierEnum)?.text === s || (a.source as Item)?.id === s
-      );
-      return match
-        ? isToAdd(key)
-          ? tot + a.bonus
-          : tot > a.bonus
+  return Object.keys(ar).reduce((tot, key) => {
+    return (
+      tot +
+      ar[key].reduce((tot, a: BonusSource) => {
+        const match = serch.some(
+          (s) =>
+            (a.source as ModifierEnum)?.text === s ||
+            (a.source as Item)?.id === s
+        );
+        return match
+          ? isToAdd(key)
+            ? tot + a.bonus
+            : tot > a.bonus
             ? tot
             : a.bonus
-        : tot;
-    }, 0);
-    return tot;
+          : tot;
+      }, 0)
+    );
   }, 0);
-  return tot;
 };

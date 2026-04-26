@@ -42,9 +42,10 @@ export function Ability() {
       }
     };
     fetchData();
-  }, []);
+  }, [charId]);
 
   useEffect(() => {
+    // console.log("useEffect");
     if (char && abilitys) {
       const newModChar: ModifiedCharacter = modifiedCharacter(char, abilitys);
       setModChar(newModChar);
@@ -55,6 +56,7 @@ export function Ability() {
     option: number,
     ability: keyof Omit<Abilitys, "modifierBonus">
   ) => {
+    // console.log("handleData");
     setAbilitys((prev) => ({
       ...prev!,
       [ability]: option

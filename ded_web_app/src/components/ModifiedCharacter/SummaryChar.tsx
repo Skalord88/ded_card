@@ -10,6 +10,7 @@ import {
   ModifiedCharacter,
   WeaponElement
 } from "./interface/ModifiedCharacter";
+import { Weapon } from "../interfaces";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -23,8 +24,7 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 2fr",
-          gap: "10px"
-          ,
+          gap: "10px",
           alignItems: "start"
         }}
       >
@@ -61,6 +61,31 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
   );
 };
 
+export type CharWeaponElementProps = {
+  weapon?: Weapon;
+  attack?: number;
+  damageBonus?: number;
+};
+
+export const CharWeaponElement: React.FC<CharWeaponElementProps> = ({
+  weapon,
+  attack,
+  damageBonus
+}) => {
+  const att = attack ? signAndCountString([Math.floor(attack)]) : undefined;
+  const w = weapon ? weapon : undefined;
+  const dmg = weapon?.damage ? weapon.damage : undefined;
+  const dmgBns = damageBonus ? signAndCountString([Math.floor(damageBonus)]) : undefined;
+  return (
+      <span>
+        {attack && <span>{att}</span>}
+        {w && <span>{" " + w?.name}</span>}
+        {dmg && <span>{" " + dmg}</span>}
+        {dmgBns && <span>{dmgBns}</span>}
+      </span>
+  );
+};
+
 export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
@@ -71,24 +96,25 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       </div>
       <div>
         <p>
-          <span style={{ color: "yellow" }}>
-            {signAndCountString([modCharacter.attacks?.bab || 0])}
-          </span>
-          {modCharacter.attacks?.firstMelee && (
-            <span>{modCharacter.attacks?.firstMelee?.weaponMelee?.name}</span>
-          )}
-          <span>{modCharacter.attacks?.firstMelee?.damageMelee}</span>
-          {" / "}
-          <span style={{ color: "yellow" }}>
-            {modCharacter.attacks?.babMelee &&
-              signAndCountString([modCharacter.attacks?.babMelee])}
-          </span>
-          {modCharacter.attacks?.firstRanged && (
-            <span>{modCharacter.attacks?.firstRanged?.weaponRanged?.name}</span>
-          )}
-          {modCharacter.attacks?.firstRanged && (
-            <span>{modCharacter.attacks?.firstRanged?.damageRanged}</span>
-          )}
+        <CharWeaponElement
+          weapon={modCharacter.attacks?.firstMelee?.weaponMelee}
+          attack={
+            (modCharacter.attacks?.bab || 0) +
+            (modCharacter.attacks?.firstMelee.babMelee || 0)
+          }
+          damageBonus={modCharacter.attacks?.firstMelee.damageMelee || 0}
+        />
+        {modCharacter.attacks?.firstRanged && (
+          <Fragment>
+              {" / "}
+          <CharWeaponElement
+            weapon={modCharacter.attacks?.firstRanged?.weaponRanged}
+            attack={
+              (modCharacter.attacks?.bab || 0) +
+              (modCharacter.attacks?.firstRanged.babRanged || 0)
+          }
+          damageBonus={modCharacter.attacks?.firstRanged.damageRanged || 0}
+        /></Fragment>)}
         </p>
       </div>
       <div>

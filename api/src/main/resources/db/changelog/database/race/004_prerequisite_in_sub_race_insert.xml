@@ -206,14 +206,7 @@
                     &quot;target&quot; : [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ]
                     , &quot;improved&quot; : null
                     , &quot;type&quot; : null
-                    },{
-                &quot;bonus&quot; : 1,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
-                    },{
-                &quot;bonus&quot; : 4,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
-                }]" />
-                <!-- prova DA CANCELLARE -->
+                    }]" />
             <column name="saving_throw"
                 value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
