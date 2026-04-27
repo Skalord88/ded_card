@@ -179,44 +179,47 @@ export const modifiedCharacter = (
   );
 
   const weaponEnchantmentBonusMap = (
-  arMap: BonusResultMap,
-  weapon: Weapon
-): BonusResultMap => {
+    arMap: BonusResultMap,
+    weapon: Weapon
+  ): BonusResultMap => {
+    const withEnchantments = { ...arMap };
 
-  const withEnchantments = { ...arMap };
+    // reset
+    withEnchantments["enchantmentBonus"] = [];
 
-  // reset
-  withEnchantments["enchantmentBonus"] = [];
+    if (weapon.enchantmentBonus) {
+      withEnchantments["enchantmentBonus"].push({
+        bonus: weapon.enchantmentBonus === -1 ? 1 : weapon.enchantmentBonus,
+        text: weapon.name,
+        source: {
+          id: weapon.itemId,
+          name: weapon.name,
+          itemType: "Weapon",
+          cost: weapon.cost,
+          weight: weapon.weight,
+          description: weapon.description
+        } as Item
+      });
+    }
 
-  if (weapon.enchantmentBonus) {
-    withEnchantments["enchantmentBonus"].push({
-      bonus: weapon.enchantmentBonus === -1 ? 1 : weapon.enchantmentBonus,
-      text: weapon.name,
-      source: {
-        id: weapon.itemId,
-        name: weapon.name,
-        itemType: "Weapon",
-        cost: weapon.cost,
-        weight: weapon.weight,
-        description: weapon.description,
-      } as Item
-    });
-  }
-
-  return withEnchantments;
-};
+    return withEnchantments;
+  };
 
   const createWeaponElement = (
     weapon: Weapon | undefined,
-    ranged: boolean,
+    // ranged: boolean,
     text: boolean
   ): WeaponElement => {
     if (!weapon) return {};
-    const updatedAttacksRollMap = weaponEnchantmentBonusMap(newAr || {}, weapon);
+    const updatedAttacksRollMap = weaponEnchantmentBonusMap(
+      newAr || {},
+      weapon
+    );
     const updatedDamageMap = weaponEnchantmentBonusMap(newDb || {}, weapon);
+    const ranged = weapon.type.includes("RANGED");
     return {
-      weaponMelee: !ranged ? weapon : undefined,
-      weaponRanged: ranged ? weapon : undefined,
+      weapon: weapon,
+      weaponRanged: ranged,
       toListMeleeAttack: !ranged
         ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
             "Melee",
@@ -241,28 +244,34 @@ export const modifiedCharacter = (
             weapon.itemId
           ])
         : undefined,
-      babMelee: !ranged && weapon
-        ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
-        : undefined,
-      babRanged: ranged && weapon
-        ? returnBonusSpecific(updatedAttacksRollMap, ["Ranged", weapon.itemId])
-        : undefined,
-      damageMelee: !ranged && weapon
-        ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])
-        : undefined,
-      damageRanged: ranged && weapon
-        ? returnBonusSpecific(updatedDamageMap, ["Ranged", weapon.itemId])
-        : undefined
+      babMelee:
+        !ranged && weapon
+          ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
+          : undefined,
+      babRanged:
+        ranged && weapon
+          ? returnBonusSpecific(updatedAttacksRollMap, [
+              "Ranged",
+              weapon.itemId
+            ])
+          : undefined,
+      damageMelee:
+        !ranged && weapon
+          ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])
+          : undefined,
+      damageRanged:
+        ranged && weapon
+          ? returnBonusSpecific(updatedDamageMap, ["Ranged", weapon.itemId])
+          : undefined
     };
   };
 
   const firstMelee: WeaponElement = createWeaponElement(
     firstMeleeWeapon,
-    false,
-    true
+    false
   );
   const firstRanged: WeaponElement | undefined = firstRangedWeapon
-    ? createWeaponElement(firstRangedWeapon, true, true)
+    ? createWeaponElement(firstRangedWeapon, true)
     : undefined;
 
   const newAttacksElement: AttackElement = {
@@ -278,8 +287,37 @@ export const modifiedCharacter = (
     firstAttackSetOne: attacks?.firstAttackSetOne
       ? createWeaponElement(
           attacks.firstAttackSetOne,
-          attacks.firstAttackSetOne.type.includes("RANGED"),
-          false
+          attacks.firstAttackSetOne.type.includes("RANGED")
+        )
+      : undefined,
+    secondAttackSetOne: attacks?.secondAttackSetOne
+      ? createWeaponElement(
+          attacks.secondAttackSetOne,
+          attacks.secondAttackSetOne.type.includes("RANGED")
+        )
+      : undefined,
+    additionalAttackSetOne: attacks?.additionalAttackSetOne
+      ? createWeaponElement(
+          attacks.additionalAttackSetOne,
+          attacks.additionalAttackSetOne.type.includes("RANGED")
+        )
+      : undefined,
+    firstAttackSetTwo: attacks?.firstAttackSetTwo
+      ? createWeaponElement(
+          attacks.firstAttackSetTwo,
+          attacks.firstAttackSetTwo.type.includes("RANGED")
+        )
+      : undefined,
+    secondAttackSetTwo: attacks?.secondAttackSetTwo
+      ? createWeaponElement(
+          attacks.secondAttackSetTwo,
+          attacks.secondAttackSetTwo.type.includes("RANGED")
+        )
+      : undefined,
+    additionalAttackSetTwo: attacks?.additionalAttackSetTwo
+      ? createWeaponElement(
+          attacks.additionalAttackSetTwo,
+          attacks.additionalAttackSetTwo.type.includes("RANGED")
         )
       : undefined
   };
@@ -333,25 +371,26 @@ export const returnBonusSpecific = (
   ar: BonusResultMap,
   serch: (string | number)[] = []
 ): number => {
-  if(ar){
-  return Object.keys(ar).reduce((tot, key) => {
-    return (
-      tot +
-      ar[key].reduce((tot, a: BonusSource) => {
-        const match = serch.some(
-          (s) =>
-            (a.source as ModifierEnum)?.text === s ||
-            (a.source as Item)?.id === s
-        );
-        return match
-          ? isToAdd(key)
-            ? tot + a.bonus
-            : tot > a.bonus
-              ? tot
-              : a.bonus
-          : tot;
-      }, 0)
-    );
-  }, 0);}
+  if (ar) {
+    return Object.keys(ar).reduce((tot, key) => {
+      return (
+        tot +
+        ar[key].reduce((tot, a: BonusSource) => {
+          const match = serch.some(
+            (s) =>
+              (a.source as ModifierEnum)?.text === s ||
+              (a.source as Item)?.id === s
+          );
+          return match
+            ? isToAdd(key)
+              ? tot + a.bonus
+              : tot > a.bonus
+                ? tot
+                : a.bonus
+            : tot;
+        }, 0)
+      );
+    }, 0);
+  }
   return 0;
 };

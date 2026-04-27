@@ -106,8 +106,9 @@ export type AttackElement = {
 }
 
 export type WeaponElement = {
-  weaponMelee?: Weapon;
-  weaponRanged?: Weapon;
+  weapon?: Weapon;
+  // weaponMelee?: boolean;
+  weaponRanged?: boolean;
   toListMeleeAttack?: TotAndBonusElement[];
   toListMeleeDamage?: TotAndBonusElement[];
   toListRangedAttack?: TotAndBonusElement[];

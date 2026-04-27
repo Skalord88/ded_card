@@ -1,10 +1,9 @@
-import { Item, ModifierBonus, Weapon } from "../../interfaces";
+import { Item } from "../../interfaces";
 import {
   EMPTY_BONUS,
   ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { AllModifiers, BonusResult } from "../interface/ModifiedCharacter";
 import { TotAndBonusElement } from "../SummaryChar";
 
 export type TargetBonus = ModifierEnum | Item;

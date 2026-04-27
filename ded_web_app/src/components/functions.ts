@@ -66,23 +66,23 @@ export const signAndCountAbility = (
     return SignNumber(num) + num
 }
 
-export function weaponLight(weapon: Weapon): boolean {
-    if (weapon === null || !weapon.type) return false;
-    return weapon.type.includes("LIGHT");
+export function weaponLight(weapon: Weapon | undefined): boolean {
+    if (!weapon || weapon?.type) return false;
+    return weapon?.type.includes("LIGHT");
 }
 
-export function weaponRanged(weapon: Weapon): boolean {
-    if (weapon === null || !weapon.type) return false;
+export function weaponRanged(weapon: Weapon | undefined): boolean {
+    if (!weapon || weapon?.type) return false;
     return weapon.type.includes("RANGED");
 }
 
-export function weaponThrown(weapon: Weapon): boolean {
-    if (weapon === null || !weapon.type) return false;
+export function weaponThrown(weapon: Weapon | undefined): boolean {
+    if (!weapon || weapon?.type) return false;
     return weapon.type.includes("THROWN");
 }
 
-export function weaponTwoHanded(weapon: Weapon): boolean {
-    if (weapon === null || !weapon.type) return false;
+export function weaponTwoHanded(weapon: Weapon | undefined): boolean {
+    if (!weapon || weapon?.type) return false;
     return weapon.type.includes("TWO_HANDED");
 }
 

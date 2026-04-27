@@ -1,5 +1,11 @@
 import { Fragment } from "react/jsx-runtime";
-import { BonusAbilities, signAndCountToString, SignNumber } from "../functions";
+import {
+  BonusAbilities,
+  signAndCountToString,
+  SignNumber,
+  weaponLight,
+  weaponTwoHanded
+} from "../functions";
 import { Popup } from "../Popup/Popup";
 import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountString } from "../Sign/Function";
@@ -75,14 +81,16 @@ export const CharWeaponElement: React.FC<CharWeaponElementProps> = ({
   const att = attack ? signAndCountString([Math.floor(attack)]) : undefined;
   const w = weapon ? weapon : undefined;
   const dmg = weapon?.damage ? weapon.damage : undefined;
-  const dmgBns = damageBonus ? signAndCountString([Math.floor(damageBonus)]) : undefined;
+  const dmgBns = damageBonus
+    ? signAndCountString([Math.floor(damageBonus)])
+    : undefined;
   return (
-      <span>
-        {attack && <span>{att}</span>}
-        {w && <span>{" " + w?.name}</span>}
-        {dmg && <span>{" " + dmg}</span>}
-        {dmgBns && <span>{dmgBns}</span>}
-      </span>
+    <span>
+      {attack && <span>{att}</span>}
+      {w && <span>{" " + w?.name}</span>}
+      {dmg && <span>{" " + dmg}</span>}
+      {dmgBns && <span>{dmgBns}</span>}
+    </span>
   );
 };
 
@@ -96,25 +104,29 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       </div>
       <div>
         <p>
-        <CharWeaponElement
-          weapon={modCharacter.attacks?.firstMelee?.weaponMelee}
-          attack={
-            (modCharacter.attacks?.bab || 0) +
-            (modCharacter.attacks?.firstMelee.babMelee || 0)
-          }
-          damageBonus={modCharacter.attacks?.firstMelee.damageMelee || 0}
-        />
-        {modCharacter.attacks?.firstRanged && (
-          <Fragment>
-              {" / "}
           <CharWeaponElement
-            weapon={modCharacter.attacks?.firstRanged?.weaponRanged}
+            weapon={modCharacter.attacks?.firstMelee?.weapon}
             attack={
               (modCharacter.attacks?.bab || 0) +
-              (modCharacter.attacks?.firstRanged.babRanged || 0)
-          }
-          damageBonus={modCharacter.attacks?.firstRanged.damageRanged || 0}
-        /></Fragment>)}
+              (modCharacter.attacks?.firstMelee.babMelee || 0)
+            }
+            damageBonus={modCharacter.attacks?.firstMelee.damageMelee || 0}
+          />
+          {modCharacter.attacks?.firstRanged && (
+            <Fragment>
+              {" / "}
+              <CharWeaponElement
+                weapon={modCharacter.attacks?.firstRanged?.weapon}
+                attack={
+                  (modCharacter.attacks?.bab || 0) +
+                  (modCharacter.attacks?.firstRanged.babRanged || 0)
+                }
+                damageBonus={
+                  modCharacter.attacks?.firstRanged.damageRanged || 0
+                }
+              />
+            </Fragment>
+          )}
         </p>
       </div>
       <div>
@@ -132,28 +144,37 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
 
 export const mapAllAttacksAreas = (
   elelments: (WeaponElement | undefined)[]
-): { element: WeaponElement | undefined; area: string }[] => {
+): { element: WeaponElement | undefined; area: string; show: boolean }[] => {
   return [
-    { element: elelments[0], area: "w1" },
-    { element: elelments[1], area: "w2" },
-    { element: elelments[2], area: "wA" },
-    { element: {}, area: "empty" },
-    { element: elelments[3], area: "w21" },
-    { element: elelments[4], area: "w22" },
-    { element: elelments[5], area: "w2A" },
-    { element: {}, area: "empty" }
+    { element: elelments[0], area: "w1", show: true },
+    {
+      element: elelments[1],
+      area: "w2",
+      show: weaponTwoHanded(elelments[0]?.weapon)
+    },
+    { element: elelments[2], area: "wA", show: true },
+    { element: {}, area: "empty", show: false },
+    { element: elelments[3], area: "w21", show: true },
+    {
+      element: elelments[4],
+      area: "w22",
+      show: weaponTwoHanded(elelments[3]?.weapon)
+    },
+    { element: elelments[5], area: "w2A", show: true },
+    { element: {}, area: "empty", show: false }
   ];
 };
 
 export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
   const areas = mapAllAttacksAreas([
     modCharacter.attacks?.firstAttackSetOne || undefined,
-    modCharacter.attacks?.firstAttackSetTwo || undefined,
-    modCharacter.attacks?.additionalAttackSetOne || undefined,
     modCharacter.attacks?.secondAttackSetOne || undefined,
+    modCharacter.attacks?.additionalAttackSetOne || undefined,
+    modCharacter.attacks?.firstAttackSetTwo || undefined,
     modCharacter.attacks?.secondAttackSetTwo || undefined,
     modCharacter.attacks?.additionalAttackSetTwo || undefined
   ]);
+
   return (
     <div
       style={{
@@ -171,26 +192,78 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
       }}
     >
       {areas.map((area, index) => {
-        return (
-          <div key={index} style={{ border: "1px solid red" }}>
-            <div>
-              <p>
-                {area.area !== "empty" && " " + index + " "}
-                {area.element?.weaponRanged
-                  ? area.element.weaponRanged.name
-                  : area.element?.weaponMelee?.name}
-              </p>
+        if (area.show) {
+          return (
+            <div key={index} style={{ border: "1px solid red" }}>
+              <div>
+                <p>
+                  {area.area !== "empty" && " " + index + " "}
+                  {area.element?.weapon?.name}
+                </p>
+              </div>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
+                {area.element?.weaponRanged && (
+                  <Fragment>
+                    <div>
+                      <span>{"melee: "}</span>
+                    </div>
+                    <div>
+                      <TotAndBonus
+                        show={false}
+                        list={
+                          area.element?.toListMeleeAttack
+                            ? area.element.toListMeleeAttack
+                            : area.element?.toListRangedAttack || []
+                        }
+                      />
+                    </div>
+                  </Fragment>
+                )}
+                <div>
+                  <span>{"ranged: "}</span>
+                </div>
+                <div>
+                  <TotAndBonus
+                    show={false}
+                    list={
+                      area.element?.toListMeleeAttack
+                        ? area.element.toListMeleeAttack
+                        : area.element?.toListRangedAttack || []
+                    }
+                  />
+                </div>
+                <div>
+                  <span>{"melee2w: "}</span>
+                </div>
+                <div>
+                  <TotAndBonus
+                    show={false}
+                    list={
+                      area.element?.toListMeleeAttack
+                        ? area.element.toListMeleeAttack
+                        : area.element?.toListRangedAttack || []
+                    }
+                  />
+                </div>
+                <div>
+                  <span>{"rnged2w: "}</span>
+                </div>
+                <div>
+                  <TotAndBonus
+                    show={false}
+                    list={
+                      area.element?.toListMeleeAttack
+                        ? area.element.toListMeleeAttack
+                        : area.element?.toListRangedAttack || []
+                    }
+                  />
+                </div>
+              </div>
             </div>
-            <TotAndBonus
-              show={false}
-              list={
-                area.element?.toListMeleeAttack
-                  ? area.element.toListMeleeAttack
-                  : area.element?.toListRangedAttack || []
-              }
-            />
-          </div>
-        );
+          );
+        } else {
+          return <div key={index} style={{ border: "1px solid red" }} />;
+        }
       })}
     </div>
   );
