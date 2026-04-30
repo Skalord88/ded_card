@@ -2,6 +2,7 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
+import { weaponLight, weaponRanged, weaponThrown, weaponTwoHanded } from "../../functions";
 import {
   Armor,
   Attacks,
@@ -216,10 +217,16 @@ export const modifiedCharacter = (
       weapon
     );
     const updatedDamageMap = weaponEnchantmentBonusMap(newDb || {}, weapon);
-    const ranged = weapon.type.includes("RANGED");
+    const light = weaponLight(weapon)
+    const ranged = weaponRanged(weapon)
+    const thrown = weaponThrown(weapon)
+    const twoHanded = weaponTwoHanded(weapon)
     return {
       weapon: weapon,
+      weaponLight: light,
       weaponRanged: ranged,
+      weaponThrown: thrown,
+      weaponTwoHanded: twoHanded,
       toListMeleeAttack: !ranged
         ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
             "Melee",
@@ -248,6 +255,10 @@ export const modifiedCharacter = (
         !ranged && weapon
           ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
           : undefined,
+      babMeleeTwo: 0,
+        // !ranged && weapon
+        //   ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
+        //   : undefined,
       babRanged:
         ranged && weapon
           ? returnBonusSpecific(updatedAttacksRollMap, [
@@ -284,42 +295,24 @@ export const modifiedCharacter = (
     babRanged: babRanged,
     firstMelee: firstMelee,
     firstRanged: firstRanged,
-    firstAttackSetOne: attacks?.firstAttackSetOne
-      ? createWeaponElement(
-          attacks.firstAttackSetOne,
-          attacks.firstAttackSetOne.type.includes("RANGED")
+    firstAttackSetOne: createWeaponElement(
+          listOfWeapons[0], false
+        ),
+    secondAttackSetOne: createWeaponElement(
+          listOfWeapons[2], false
+        ),
+    additionalAttackSetOne: createWeaponElement(
+          listOfWeapons[4], false
+        ),
+    firstAttackSetTwo: createWeaponElement(
+          listOfWeapons[1], false
+        ),
+    secondAttackSetTwo: createWeaponElement(
+          listOfWeapons[3], false
+        ),
+    additionalAttackSetTwo: createWeaponElement(
+          listOfWeapons[5], false
         )
-      : undefined,
-    secondAttackSetOne: attacks?.secondAttackSetOne
-      ? createWeaponElement(
-          attacks.secondAttackSetOne,
-          attacks.secondAttackSetOne.type.includes("RANGED")
-        )
-      : undefined,
-    additionalAttackSetOne: attacks?.additionalAttackSetOne
-      ? createWeaponElement(
-          attacks.additionalAttackSetOne,
-          attacks.additionalAttackSetOne.type.includes("RANGED")
-        )
-      : undefined,
-    firstAttackSetTwo: attacks?.firstAttackSetTwo
-      ? createWeaponElement(
-          attacks.firstAttackSetTwo,
-          attacks.firstAttackSetTwo.type.includes("RANGED")
-        )
-      : undefined,
-    secondAttackSetTwo: attacks?.secondAttackSetTwo
-      ? createWeaponElement(
-          attacks.secondAttackSetTwo,
-          attacks.secondAttackSetTwo.type.includes("RANGED")
-        )
-      : undefined,
-    additionalAttackSetTwo: attacks?.additionalAttackSetTwo
-      ? createWeaponElement(
-          attacks.additionalAttackSetTwo,
-          attacks.additionalAttackSetTwo.type.includes("RANGED")
-        )
-      : undefined
   };
 
   return {

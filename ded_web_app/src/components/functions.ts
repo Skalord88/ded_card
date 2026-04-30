@@ -44,14 +44,15 @@ export const signAndCount = (
     }
 }
 export const signAndCountToString = (
-    numbers: number[]
+    numbers: number[],
+    floor?: boolean
 ): string => {
     const num: number = numbers.reduce(
         (total, n) => total + n,
         0
     )
 
-    return SignNumber(num) + num
+    return SignNumber(num) + (floor ? Math.floor(num) : num)
 }
 
 
@@ -67,27 +68,23 @@ export const signAndCountAbility = (
 }
 
 export function weaponLight(weapon: Weapon | undefined): boolean {
-    if (!weapon || weapon?.type) return false;
-    return weapon?.type.includes("LIGHT");
+    return weapon?.type?.includes("LIGHT") ?? false;
 }
 
-export function weaponRanged(weapon: Weapon | undefined): boolean {
-    if (!weapon || weapon?.type) return false;
-    return weapon.type.includes("RANGED");
-}
+export const weaponRanged = (weapon: Weapon | undefined): boolean => {
+    return weapon?.type?.includes("RANGED") ?? false;
+};
 
 export function weaponThrown(weapon: Weapon | undefined): boolean {
-    if (!weapon || weapon?.type) return false;
-    return weapon.type.includes("THROWN");
+    return weapon?.type?.includes("THROWN") ?? false;
 }
 
 export function weaponTwoHanded(weapon: Weapon | undefined): boolean {
-    if (!weapon || weapon?.type) return false;
-    return weapon.type.includes("TWO_HANDED");
+    return weapon?.type?.includes("TWO_HANDED") ?? false;
 }
 
 export function listOneHand(weapons: Weapon[]) {
-    weapons.filter(weapon => !weaponTwoHanded(weapon))
+    return weapons.filter(weapon => !weaponTwoHanded(weapon));
 }
 
 export function AttackMelee(

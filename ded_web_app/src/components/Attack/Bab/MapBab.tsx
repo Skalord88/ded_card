@@ -8,10 +8,7 @@ import {
   weaponTwoHanded
 } from "../../functions";
 import { Position, Weapon } from "../../interfaces";
-import { ChangeCritWithFeat } from "../../Items/Functions/function";
-import { DiceModifiers, DicePopupProps } from "../../Popup/DicePopup/Interface";
-import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { AttackRoll } from "../AttackRoll/interface";
+import { DiceModifiers } from "../../Popup/DicePopup/Interface";
 import { AttackOptions } from "./AttackOptions";
 
 export type MapBabProps = {

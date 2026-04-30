@@ -105,16 +105,41 @@ export type AttackElement = {
   additionalAttackSetTwo?: WeaponElement;
 }
 
+export const attacksMapElement: TotAndBonusElement[] = [
+    {bonus: 0, pop: {text: "Two-Handed Base Bonus"}},
+    {bonus: -5, pop: {text: "Two-Handed -5 to hit"}},
+    {bonus: -10, pop: {text: "Two-Handed -10 to hit"}},
+    {bonus: -15, pop: {text: "Two-Handed -15 to hit"}}
+  ];
+
+export const attacksPositionElement = (
+  first: boolean,
+  secondLight: boolean,
+  feat: boolean
+)
+: TotAndBonusElement[] => [
+  {bonus: first?
+    secondLight? feat? -2 : -4 : -4 : -6
+    , pop: {text: "Two-Weapon Fighting Penalties"}},
+]
+
 export type WeaponElement = {
   weapon?: Weapon;
   // weaponMelee?: boolean;
+  weaponLight?: boolean;
   weaponRanged?: boolean;
+  weaponThrown?: boolean;
+  weaponTwoHanded?: boolean;
   toListMeleeAttack?: TotAndBonusElement[];
   toListMeleeDamage?: TotAndBonusElement[];
   toListRangedAttack?: TotAndBonusElement[];
   toListRangedDamage?: TotAndBonusElement[];
   babMelee?: number;
+  babMeleeTwo?: number;
   babRanged?: number;
+  babRangedTwo?: number;
   damageMelee?: number;
+  damageMeleeTwo?: number;
   damageRanged?: number;
+  damageRangedTwo?: number;
 }

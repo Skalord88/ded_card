@@ -106,7 +106,7 @@
         <!-- Rysio -->
         <update tableName="enchanted_items">
             <!-- Longbow, Holly +5 -->
-            <column name="item_id" valueNumeric="220" />
+            <column name="item_id" valueNumeric="132" />
         <where>id =
             1011</where>
         </update>
