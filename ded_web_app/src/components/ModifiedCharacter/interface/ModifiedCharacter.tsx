@@ -119,7 +119,7 @@ export const attacksPositionElement = (
 )
 : TotAndBonusElement[] => [
   {bonus: first?
-    secondLight? feat? -2 : -4 : -4 : -6
+    secondLight? feat? -2 : -4 : -4 : -6 || 0
     , pop: {text: "Two-Weapon Fighting Penalties"}},
 ]
 
@@ -131,8 +131,10 @@ export type WeaponElement = {
   weaponThrown?: boolean;
   weaponTwoHanded?: boolean;
   toListMeleeAttack?: TotAndBonusElement[];
+  toListMeleeTwoWeaponAttack?: TotAndBonusElement[];
   toListMeleeDamage?: TotAndBonusElement[];
   toListRangedAttack?: TotAndBonusElement[];
+  toListRangedTwoWeaponAttack?: TotAndBonusElement[];
   toListRangedDamage?: TotAndBonusElement[];
   babMelee?: number;
   babMeleeTwo?: number;

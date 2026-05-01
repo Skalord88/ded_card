@@ -1,9 +1,5 @@
 import { Fragment } from "react/jsx-runtime";
-import {
-  BonusAbilities,
-  signAndCountToString,
-  SignNumber
-} from "../functions";
+import { BonusAbilities, signAndCountToString, SignNumber } from "../functions";
 import { Popup } from "../Popup/Popup";
 import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountString } from "../Sign/Function";
@@ -109,8 +105,20 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
     ...(modCharacter.attacks?.firstRanged?.toListRangedDamage || [])
   ];
   const bab = signAndCountToString([modCharacter.attacks?.bab || 0]);
-  const babMelee = signAndCountToString([modCharacter.attacks?.bab || 0, modCharacter.attacks?.firstMelee?.babMelee || 0], true);
-  const babRanged = signAndCountToString([modCharacter.attacks?.bab || 0, modCharacter.attacks?.firstRanged?.babRanged || 0], true);
+  const babMelee = signAndCountToString(
+    [
+      modCharacter.attacks?.bab || 0,
+      modCharacter.attacks?.firstMelee?.babMelee || 0
+    ],
+    true
+  );
+  const babRanged = signAndCountToString(
+    [
+      modCharacter.attacks?.bab || 0,
+      modCharacter.attacks?.firstRanged?.babRanged || 0
+    ],
+    true
+  );
   return (
     <>
       <div>
@@ -142,8 +150,8 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
           <SummaryCharAttacksTemplate>
             <div style={{ display: "flex", gap: "4px" }}>
               <span style={{ color: "orange" }}>{babRanged}</span>
-            <span>{" : "}</span>
-            <span>{bab}</span>
+              <span>{" : "}</span>
+              <span>{bab}</span>
               <TotAndBonus
                 show={false}
                 firstSign={true}
@@ -212,9 +220,9 @@ export const mapAllAttacksAreas = (
 
 const attacksMap = (bab: number): number[] => {
   const babFloor = Math.floor(bab);
-  return [
-    babFloor,babFloor-5,babFloor-10,babFloor-15
-  ].filter((value) => value > 0);
+  return [babFloor, babFloor - 5, babFloor - 10, babFloor - 15].filter(
+    (value) => value > 0
+  );
 };
 
 export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
@@ -246,14 +254,33 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
     >
       {areas.map((area, index) => {
         if (area.show) {
-          const babMelee = signAndCountToString([modCharacter.attacks?.bab || 0, (area.element?.babMelee || 0)]);
-          const babRanged = signAndCountToString([modCharacter.attacks?.bab || 0, (area.element?.babRanged || 0)]);
-          const mapOfAttacksMelee = attacksMap(modCharacter.attacks?.bab || 0).map((bab) => (
-            bab + (area.element?.babMelee || 0)
-          ));
-          const mapOfAttacksRanged = attacksMap(modCharacter.attacks?.bab || 0).map((bab) => (
-            bab + (area.element?.babRanged || 0)
-          ));
+          const babMelee = signAndCountToString([
+            modCharacter.attacks?.bab || 0,
+            area.element?.babMelee || 0
+          ]);
+          const babRanged = signAndCountToString([
+            modCharacter.attacks?.bab || 0,
+            area.element?.babRanged || 0
+          ]);
+          const mapOfAttacksMelee: number[] = attacksMap(
+            modCharacter.attacks?.bab || 0
+          ).map((bab) => bab + (area.element?.babMelee || 0));
+          const mapOfAttacksRanged: number[] = attacksMap(
+            modCharacter.attacks?.bab || 0
+          ).map((bab) => bab + (area.element?.babRanged || 0));
+          const positionBonus: TotAndBonusElement[] = attacksPositionElement(
+            ["w1", "wA", "w21", "w2A"].find((a) => a === area.area)
+              ? true
+              : false,
+            ((area.area === "w1" || area.area === "wA") &&
+              areas[1].element?.babMelee) ||
+              ((area.area === "w21" || area.area === "w2A") &&
+                areas[3].element?.babMelee)
+              ? true
+              : false,
+            false
+          );
+
           return (
             <div key={index} style={{ border: "1px solid red" }}>
               <div>
@@ -268,34 +295,20 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"melee: "}</span>
                     </div>
-                    <div 
+                    <div
                     // style={{ display: "flex", gap: "4px" }}
                     >
                       {mapOfAttacksMelee.map((bab, index) => (
                         <TotAndBonus
-                        show={false}
-                        firstSign={true}
-                        list={[
-                          attacksPositionElement(
-                            ["w1", "wA", "w21", "w2A"].includes(area.area) || true,
-                            area.
-                          ),
-                          // ...(modCharacter.attacks?.toListBab || []),
-                          ...(area.element?.toListMeleeAttack || []), attacksMapElement[index]
-                        ]}
-                      />
-                        // <span key={index} style={{ color: "yellow" }}>
-                        //   {signAndCountToString([bab], true)}
-                        // </span>
+                          show={false}
+                          firstSign={true}
+                          list={[
+                            ...positionBonus,
+                            ...(area.element?.toListMeleeAttack || []),
+                            attacksMapElement[index]
+                          ]}
+                        />
                       ))}
-                      {/* <span>{babMelee}</span> */}
-                      {/* <TotAndBonus
-                        show={false}
-                        list={[
-                          // ...(modCharacter.attacks?.toListBab || []),
-                          // ...(area.element?.toListMeleeAttack || [])
-                        ]}
-                      /> */}
                     </div>
                   </Fragment>
                 )}
@@ -319,11 +332,20 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                       <span>{"melee2w: "}</span>
                     </div>
                     <div style={{ display: "flex", gap: "4px" }}>
-                      {mapOfAttacksMelee.map((bab, index) => (
+                      <TotAndBonus
+                        show={false}
+                        firstSign={true}
+                        list={[
+                          ...positionBonus,
+                          ...(area.element?.toListMeleeTwoWeaponAttack || []),
+                          attacksMapElement[index]
+                        ]}
+                      />
+                      {/* {mapOfAttacksMelee.map((bab, index) => (
                         <span key={index} style={{ color: "yellow" }}>
                           {signAndCountToString([bab], true)}
                         </span>
-                      ))}
+                      ))} */}
                     </div>
                   </Fragment>
                 )}
@@ -371,7 +393,11 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
         <p style={{ margin: 0 }}>Base Attack:</p>
       </div>
       <div>
-        <TotAndBonus show={true} firstSign={true} list={modCharacter.attacks?.toListBab || []} />
+        <TotAndBonus
+          show={true}
+          firstSign={true}
+          list={modCharacter.attacks?.toListBab || []}
+        />
       </div>
       <div>
         <p>Grapple:</p>
@@ -403,7 +429,7 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   children
 }) => {
   const total: number = Math.floor(
-    list.reduce((tot, element) => (tot += element.bonus), 0)
+    list.reduce((tot, element) => tot + (element?.bonus || 0), 0)
   );
 
   return (
@@ -416,12 +442,12 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
         {" : ("}
         {list.length !== 0 &&
           list.map((l: TotAndBonusElement, index) => {
-            const sign: string = signAndCountToString([l.bonus]);
+            const sign: string = signAndCountToString([l?.bonus || 0]);
             const text = show && l.text ? [sign, l.text] : [sign];
 
             return (
               <Fragment key={index}>
-                <Popup text={text} popText={l.pop} />
+                <Popup text={text} popText={l?.pop || ""} />
                 {index === list.length - 1 ? null : show ? (
                   <span>{", "}</span>
                 ) : (
