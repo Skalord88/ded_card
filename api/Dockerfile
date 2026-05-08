@@ -1,3 +1,15 @@
+FROM gcr.io/distroless/java21-debian12
+
+ARG JAR_FILE=target/dadcard-0.0.1-SNAPSHOT.jar
+
+WORKDIR /app
+
+COPY ${JAR_FILE} app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java","-jar","app.jar"]
+
 # FROM openjdk:17-jdk-alpine
 # ARG JAR_FILE=target/dadcard-0.0.1-SNAPSHOTjar
 # COPY ./target/dadcard-0.0.1-SNAPSHOT.jar app.jar
@@ -12,18 +24,18 @@
 # RUN mvn -f /usr/src/app/pom.xml clean package
 
 # Usa l'immagine base OpenJDK 21 su Alpine Linux
-FROM eclipse-temurin:21-jdk-alpine
+# FROM eclipse-temurin:21-jdk-alpine
 
-# COPY --from=build /usr/src/app/target/dadcard-0.0.1-SNAPSHOT.jar /usr/app/app.jar
+# # COPY --from=build /usr/src/app/target/dadcard-0.0.1-SNAPSHOT.jar /usr/app/app.jar
 
-# Definisci l'argomento per il file JAR, se necessario
-ARG JAR_FILE=target/dadcard-0.0.1-SNAPSHOT.jar
+# # Definisci l'argomento per il file JAR, se necessario
+# ARG JAR_FILE=target/dadcard-0.0.1-SNAPSHOT.jar
 
-# Copia il file JAR nel contenitore come app.jar
-COPY ${JAR_FILE} app.jar
+# # Copia il file JAR nel contenitore come app.jar
+# COPY ${JAR_FILE} app.jar
 
-# Espone la porta 8080
-EXPOSE 8080
+# # Espone la porta 8080
+# EXPOSE 8080
 
-# Definisci il comando di avvio dell'applicazione
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# # Definisci il comando di avvio dell'applicazione
+# ENTRYPOINT ["java", "-jar", "app.jar"]

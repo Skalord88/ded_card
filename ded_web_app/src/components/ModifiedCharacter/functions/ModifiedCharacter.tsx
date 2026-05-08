@@ -37,6 +37,7 @@ import {
   AttackElement,
   attacksPositionElement,
   ModifiedCharacter,
+  numberOfAttacksMap,
   WeaponElement
 } from "../interface/ModifiedCharacter";
 import { TotAndBonusElement } from "../SummaryChar";
@@ -214,9 +215,11 @@ export const modifiedCharacter = (
 
   const createWeaponElement = (
     weapon: Weapon | undefined,
-    // ranged: boolean,
     text: boolean,
-    position?: string
+    position?: string,
+    bab?: number
+    // babMelee?: number,
+    // babRanged?: number
   ): WeaponElement => {
     if (!weapon) return {};
     const updatedAttacksRollMap = weaponEnchantmentBonusMap(
@@ -224,16 +227,61 @@ export const modifiedCharacter = (
       weapon
     );
     const updatedDamageMap = weaponEnchantmentBonusMap(newDb || {}, weapon);
-    const light = weaponLight(weapon);
-    const ranged = weaponRanged(weapon);
-    const thrown = weaponThrown(weapon);
-    const twoHanded = weaponTwoHanded(weapon);
-    const toListMeleeAttack = !ranged
+    const light: boolean = weaponLight(weapon);
+    const ranged: boolean = weaponRanged(weapon);
+    const thrown: boolean = weaponThrown(weapon);
+    const twoHanded: boolean = weaponTwoHanded(weapon);
+    const toListMeleeAttack: TotAndBonusElement[] | undefined = !ranged
       ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
           "Melee",
           weapon.itemId
         ])
       : undefined;
+    const babMelee: number | undefined =
+      !ranged && weapon
+        ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
+        : undefined;
+    const toListMeleeTwoWeaponAttack =
+      toListMeleeAttack && !ranged && position
+        ? (() => {
+            const isFirstSet = ["w1", "wA"].includes(position);
+            const isSecondSet = ["w21", "w2A"].includes(position);
+            const isOffHand = ["w2", "w22"].includes(position);
+
+            if (!isFirstSet && !isSecondSet && !isOffHand) {
+              return undefined;
+            }
+
+            const isLight = isFirstSet
+              ? listOfWeapons[2].type.includes("LIGHT")
+              : isSecondSet
+                ? listOfWeapons[3].type.includes("LIGHT")
+                : light;
+
+            const isPrimary = isFirstSet || isSecondSet;
+
+            return [
+              ...toListMeleeAttack,
+              ...attacksPositionElement(
+                isPrimary,
+                isLight,
+                true // TODO talento two weapon fighting
+              )
+            ];
+          })()
+        : undefined;
+    const toListMeleeDamage: TotAndBonusElement[] | undefined = !ranged
+      ? createTotAndBonusElement(updatedDamageMap || {}, text, [
+          "Melee",
+          weapon.itemId
+        ])
+      : undefined;
+    const numberOfAllAttacksMelee
+    : TotAndBonusElement[][] = toListMeleeAttack?
+    numberOfAttacksMap(
+      bab || 0,
+      toListMeleeAttack
+    ) : [[]];
     return {
       weapon: weapon,
       weaponLight: light,
@@ -241,41 +289,8 @@ export const modifiedCharacter = (
       weaponThrown: thrown,
       weaponTwoHanded: twoHanded,
       toListMeleeAttack: toListMeleeAttack,
-      toListMeleeTwoWeaponAttack:
-  toListMeleeAttack && !ranged && position
-    ? (() => {
-        const isFirstSet = ["w1", "wA"].includes(position);
-        const isSecondSet = ["w21", "w2A"].includes(position);
-        const isOffHand = ["w2", "w22"].includes(position);
-
-        if (!isFirstSet && !isSecondSet && !isOffHand) {
-          return undefined;
-        }
-
-        const isLight = isFirstSet
-          ? listOfWeapons[2].type.includes("LIGHT")
-          : isSecondSet
-            ? listOfWeapons[3].type.includes("LIGHT")
-            : light;
-
-        const isPrimary = isFirstSet || isSecondSet;
-
-        return [
-          ...toListMeleeAttack,
-          ...attacksPositionElement(
-            isPrimary,
-            isLight,
-            true // TODO talento two weapon fighting
-          )
-        ];
-      })()
-    : undefined,
-      toListMeleeDamage: !ranged
-        ? createTotAndBonusElement(updatedDamageMap || {}, text, [
-            "Melee",
-            weapon.itemId
-          ])
-        : undefined,
+      toListMeleeTwoWeaponAttack: toListMeleeTwoWeaponAttack,
+      toListMeleeDamage: toListMeleeDamage,
       toListRangedAttack: ranged
         ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
             "Ranged",
@@ -288,14 +303,9 @@ export const modifiedCharacter = (
             weapon.itemId
           ])
         : undefined,
-      babMelee:
-        !ranged && weapon
-          ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
-          : undefined,
+      babMelee: babMelee,
       babMeleeTwo: 0,
-      // !ranged && weapon
-      //   ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
-      //   : undefined,
+      numberOfAllAttacksMelee: numberOfAllAttacksMelee,
       babRanged:
         ranged && weapon
           ? returnBonusSpecific(updatedAttacksRollMap, [
@@ -332,12 +342,42 @@ export const modifiedCharacter = (
     babRanged: babRanged,
     firstMelee: firstMelee,
     firstRanged: firstRanged,
-    firstAttackSetOne: createWeaponElement(listOfWeapons[0], false, "w1"),
-    secondAttackSetOne: createWeaponElement(listOfWeapons[2], false, "w2"),
-    additionalAttackSetOne: createWeaponElement(listOfWeapons[4], false, "wA"),
-    firstAttackSetTwo: createWeaponElement(listOfWeapons[1], false, "w21"),
-    secondAttackSetTwo: createWeaponElement(listOfWeapons[3], false, "w22"),
-    additionalAttackSetTwo: createWeaponElement(listOfWeapons[5], false, "w2A")
+    firstAttackSetOne: createWeaponElement(
+      listOfWeapons[0],
+      false,
+      "w1",
+      bab
+    ),
+    secondAttackSetOne: createWeaponElement(
+      listOfWeapons[2],
+      false,
+      "w2",
+      bab
+    ),
+    additionalAttackSetOne: createWeaponElement(
+      listOfWeapons[4],
+      false,
+      "wA",
+      bab
+    ),
+    firstAttackSetTwo: createWeaponElement(
+      listOfWeapons[1],
+      false,
+      "w21",
+      bab
+    ),
+    secondAttackSetTwo: createWeaponElement(
+      listOfWeapons[3],
+      false,
+      "w22",
+      bab
+    ),
+    additionalAttackSetTwo: createWeaponElement(
+      listOfWeapons[5],
+      false,
+      "w2A",
+      bab
+    )
   };
 
   return {

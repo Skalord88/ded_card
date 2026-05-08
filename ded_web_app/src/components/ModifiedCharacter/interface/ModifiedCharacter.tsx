@@ -1,6 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
-import { Attacks, Inventory, Weapon } from "../../interfaces";
+import { Inventory, Weapon } from "../../interfaces";
 import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
@@ -12,13 +12,10 @@ import { TotAndBonusElement } from "../SummaryChar";
 export type BonusResult = {
   key: string;
   bonus: number;
-  targets?: ModifierTarget[]
+  targets?: ModifierTarget[];
 };
 
-export type ModifierTarget =
-  | ModifierEnum
-  | string
-  | Weapon[];
+export type ModifierTarget = ModifierEnum | string | Weapon[];
 
 export type TargetEntry = {
   bonus: number;
@@ -103,25 +100,7 @@ export type AttackElement = {
   firstAttackSetTwo?: WeaponElement;
   secondAttackSetTwo?: WeaponElement;
   additionalAttackSetTwo?: WeaponElement;
-}
-
-export const attacksMapElement: TotAndBonusElement[] = [
-    {bonus: 0, pop: {text: "Two-Handed Base Bonus"}},
-    {bonus: -5, pop: {text: "Two-Handed -5 to hit"}},
-    {bonus: -10, pop: {text: "Two-Handed -10 to hit"}},
-    {bonus: -15, pop: {text: "Two-Handed -15 to hit"}}
-  ];
-
-export const attacksPositionElement = (
-  first: boolean,
-  secondLight: boolean,
-  feat: boolean
-)
-: TotAndBonusElement[] => [
-  {bonus: first?
-    secondLight? feat? -2 : -4 : -4 : -6 || 0
-    , pop: {text: "Two-Weapon Fighting Penalties"}},
-]
+};
 
 export type WeaponElement = {
   weapon?: Weapon;
@@ -138,10 +117,45 @@ export type WeaponElement = {
   toListRangedDamage?: TotAndBonusElement[];
   babMelee?: number;
   babMeleeTwo?: number;
+  numberOfAllAttacksMelee?: TotAndBonusElement[][];
   babRanged?: number;
   babRangedTwo?: number;
+  numberOfAllAttacksRangedTwo?: TotAndBonusElement[][];
   damageMelee?: number;
   damageMeleeTwo?: number;
   damageRanged?: number;
   damageRangedTwo?: number;
-}
+};
+
+export const attacksMapElement: TotAndBonusElement[] = [
+  { bonus: 0, pop: { text: "first attack" } },
+  { bonus: -5, pop: { text: "second attack -5 to hit" } },
+  { bonus: -10, pop: { text: "third attack -10 to hit" } },
+  { bonus: -15, pop: { text: "fourth attack -15 to hit" } }
+];
+
+export const attacksPositionElement = (
+  first: boolean,
+  secondLight: boolean,
+  feat: boolean
+): TotAndBonusElement[] => [
+  {
+    bonus: first ? (secondLight ? (feat ? -2 : -4) : -4) : -6 || 0,
+    pop: { text: "Two-Weapon Fighting Penalties" }
+  }
+];
+
+export const numberOfAttacksMap = (
+  bab: number,
+  toListAttack: TotAndBonusElement[]
+): TotAndBonusElement[][] => {
+  const quanteListe: TotAndBonusElement[] = attacksMapElement.filter(
+    (attack) => bab - attack.bonus > 0
+  );
+  const numberOfAttacks: TotAndBonusElement[][] = quanteListe.map(
+    (q: TotAndBonusElement, index) => {
+      return [quanteListe[index], ...toListAttack];
+    }
+  );
+  return numberOfAttacks;
+};
