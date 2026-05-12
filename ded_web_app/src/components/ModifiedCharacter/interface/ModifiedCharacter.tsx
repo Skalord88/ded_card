@@ -84,17 +84,17 @@ export type ModifiedCharacter = {
 
 export type AttackElement = {
   listOfWeapons: Weapon[];
-  bab: number;
-  toListBab: TotAndBonusElement[];
-  toListMeleeAttack: TotAndBonusElement[];
+  bab: number; // tot bab del pg
+  listBab: TotAndBonusElement[][]; // lista di tutti gli attacchi in base al bab, da 1 a 4
+  listBabMeleeGeneralBonus: TotAndBonusElement[][]; // toListBab con i bonus per il melee
   // toListMeleeDamage: TotAndBonusElement[];
-  toListRangedAttack?: TotAndBonusElement[];
+  listBabRangedGeneralBonus?: TotAndBonusElement[][]; // toListBab con i bonus per il ranged
   // toListRangedDamage?: TotAndBonusElement[];
-  babMelee: number;
-  babRanged: number;
-  firstMelee: WeaponElement;
-  firstRanged?: WeaponElement;
-  firstAttackSetOne?: WeaponElement;
+  babMelee: number; // max bab con i bonus del melee
+  babRanged: number; // max bab con i bonus del ranged
+  firstMelee: WeaponElement; // trova la migliore arma melee
+  firstRanged?: WeaponElement; // trova la migliore arma ranged
+  firstAttackSetOne?: WeaponElement; // costruisci l'elemento arma
   secondAttackSetOne?: WeaponElement;
   additionalAttackSetOne?: WeaponElement;
   firstAttackSetTwo?: WeaponElement;
@@ -103,24 +103,21 @@ export type AttackElement = {
 };
 
 export type WeaponElement = {
-  weapon?: Weapon;
-  // weaponMelee?: boolean;
-  weaponLight?: boolean;
-  weaponRanged?: boolean;
-  weaponThrown?: boolean;
-  weaponTwoHanded?: boolean;
-  toListMeleeAttack?: TotAndBonusElement[];
-  toListMeleeTwoWeaponAttack?: TotAndBonusElement[];
+  weapon?: Weapon; // che arma
+  weaponLight?: boolean; // se leggera
+  weaponRanged?: boolean; // se ranged
+  weaponThrown?: boolean; // se lanciata
+  weaponTwoHanded?: boolean; // se a 2 mani
+  listBabMeleeSpecificBonus?: TotAndBonusElement[][]; // attacco completo un arma melee
+  listBabMeleeTwoWeaponSpecificBonus?: TotAndBonusElement[][]; // attacco completo due armi melee
   toListMeleeDamage?: TotAndBonusElement[];
-  toListRangedAttack?: TotAndBonusElement[];
-  toListRangedTwoWeaponAttack?: TotAndBonusElement[];
+  listBabRangedSpecificBonus?: TotAndBonusElement[][];
+  listBabRangedTwoWeaponSpecificBonus?: TotAndBonusElement[][];
   toListRangedDamage?: TotAndBonusElement[];
   babMelee?: number;
   babMeleeTwo?: number;
-  numberOfAllAttacksMelee?: TotAndBonusElement[][];
   babRanged?: number;
   babRangedTwo?: number;
-  numberOfAllAttacksRangedTwo?: TotAndBonusElement[][];
   damageMelee?: number;
   damageMeleeTwo?: number;
   damageRanged?: number;
@@ -147,14 +144,30 @@ export const attacksPositionElement = (
 
 export const numberOfAttacksMap = (
   bab: number,
-  toListAttack: TotAndBonusElement[]
+  toListAttack: TotAndBonusElement[],
+  first?: boolean,
+  secondLight?: boolean,
+  twoAttacks?: boolean
 ): TotAndBonusElement[][] => {
-  const quanteListe: TotAndBonusElement[] = attacksMapElement.filter(
-    (attack) => bab - attack.bonus > 0
-  );
+  // console.log("attacksMapElement", attacksMapElement)
+  const quanteListe = attacksMapElement.filter(
+  attack => attack.bonus + Math.floor(bab) > 0
+);
   const numberOfAttacks: TotAndBonusElement[][] = quanteListe.map(
     (q: TotAndBonusElement, index) => {
-      return [quanteListe[index], ...toListAttack];
+      if (first === undefined && secondLight === undefined && !twoAttacks) {
+        return [quanteListe[index], ...toListAttack];
+      } else {
+        return [
+          quanteListe[index],
+          ...attacksPositionElement(
+            first || false,
+            secondLight || false,
+            true // TODO talento two weapon fighting
+          ),
+          ...toListAttack
+        ];
+      }
     }
   );
   return numberOfAttacks;

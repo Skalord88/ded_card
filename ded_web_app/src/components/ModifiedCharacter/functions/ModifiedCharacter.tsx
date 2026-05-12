@@ -9,19 +9,16 @@ import {
   weaponTwoHanded
 } from "../../functions";
 import {
-  Armor,
   Attacks,
   CharacterPc,
   Inventory,
   Item,
-  Shield,
   Weapon
 } from "../../interfaces";
 import {
   ABILITY_MODIFIER,
   BASE_VALUE,
   DEFLECTION_BONUS,
-  ENCHANTMENT_BONUS,
   ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
@@ -145,25 +142,21 @@ export const modifiedCharacter = (
 
   const bab: number = returnBonus(newAr);
 
-  // console.log("newAr", newAr);
+  // console.log("newAr", newAr, bab);
 
-  const toListBab: TotAndBonusElement[] = createTotAndBonusElement(
-    newAr || {},
-    true
+  const listBab: TotAndBonusElement[][] = numberOfAttacksMap(
+    bab,
+    createTotAndBonusElement(newAr || {}, true)
   );
 
-  // console.log("toListBab", toListBab);
-
-  const toListMeleeAttack: TotAndBonusElement[] = createTotAndBonusElement(
-    newAr || {},
-    true,
-    ["Melee"]
+  const listBabMeleeGeneralBonus: TotAndBonusElement[][] = numberOfAttacksMap(
+    bab,
+    createTotAndBonusElement(newAr || {}, true, ["Melee"])
   );
 
-  const toListRangedAttack: TotAndBonusElement[] = createTotAndBonusElement(
-    newAr || {},
-    true,
-    ["Ranged"]
+  const listBabRangedGeneralBonus: TotAndBonusElement[][] = numberOfAttacksMap(
+    bab,
+    createTotAndBonusElement(newAr || {}, true, ["Ranged"])
   );
 
   const babMelee: number = returnBonusSpecific(newAr, ["Melee"]);
@@ -213,13 +206,46 @@ export const modifiedCharacter = (
     return withEnchantments;
   };
 
+  const createToListMeleeTwoWeaponAttack = (
+    listMeleeAttack: TotAndBonusElement[] | undefined,
+    ranged: boolean,
+    position: string | undefined
+  ): TotAndBonusElement[] | undefined => {
+    return listMeleeAttack && !ranged && position
+      ? (() => {
+          const isFirstSet = ["w1", "wA"].includes(position);
+          const isSecondSet = ["w21", "w2A"].includes(position);
+          const isOffHand = ["w2", "w22"].includes(position);
+
+          if (!isFirstSet && !isSecondSet && !isOffHand && !position) {
+            return undefined;
+          }
+
+          const isLight = isFirstSet
+            ? listOfWeapons[2].type.includes("LIGHT")
+            : isSecondSet
+              ? listOfWeapons[3].type.includes("LIGHT")
+              : false;
+
+          const isPrimary = isFirstSet || isSecondSet;
+
+          return [
+            ...listMeleeAttack,
+            ...attacksPositionElement(
+              isPrimary,
+              isLight,
+              true // TODO talento two weapon fighting
+            )
+          ];
+        })()
+      : undefined;
+  };
+
   const createWeaponElement = (
     weapon: Weapon | undefined,
     text: boolean,
-    position?: string,
+    position: string,
     bab?: number
-    // babMelee?: number,
-    // babRanged?: number
   ): WeaponElement => {
     if (!weapon) return {};
     const updatedAttacksRollMap = weaponEnchantmentBonusMap(
@@ -227,76 +253,98 @@ export const modifiedCharacter = (
       weapon
     );
     const updatedDamageMap = weaponEnchantmentBonusMap(newDb || {}, weapon);
+    const isFirstSet = ["w1", "wA"].includes(position);
+    const isSecondSet = ["w21", "w2A"].includes(position);
+    const isLight = isFirstSet
+      ? listOfWeapons[2].type.includes("LIGHT")
+      : isSecondSet
+        ? listOfWeapons[3].type.includes("LIGHT")
+        : false;
+    const isPrimary = isFirstSet || isSecondSet;
     const light: boolean = weaponLight(weapon);
     const ranged: boolean = weaponRanged(weapon);
     const thrown: boolean = weaponThrown(weapon);
     const twoHanded: boolean = weaponTwoHanded(weapon);
-    const toListMeleeAttack: TotAndBonusElement[] | undefined = !ranged
-      ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
-          "Melee",
-          weapon.itemId
-        ])
+    const listBabMeleeSpecificBonus: TotAndBonusElement[][] | undefined =
+      !ranged
+        ? numberOfAttacksMap(
+            bab || 0,
+            createTotAndBonusElement(newAr || {}, true, [
+              "Melee",
+              weapon.itemId
+            ]),
+            isPrimary,
+            isLight,
+            false
+          )
+        : undefined;
+
+    const listBabMeleeTwoWeaponSpecificBonus:
+      | TotAndBonusElement[][]
+      | undefined = !ranged
+      ? numberOfAttacksMap(
+          bab || 0,
+          createTotAndBonusElement(newAr || {}, true, ["Melee", weapon.itemId]),
+          isPrimary,
+          isLight,
+          true
+        )
       : undefined;
+
     const babMelee: number | undefined =
       !ranged && weapon
         ? returnBonusSpecific(updatedAttacksRollMap, ["Melee", weapon.itemId])
         : undefined;
-    const toListMeleeTwoWeaponAttack =
-      toListMeleeAttack && !ranged && position
-        ? (() => {
-            const isFirstSet = ["w1", "wA"].includes(position);
-            const isSecondSet = ["w21", "w2A"].includes(position);
-            const isOffHand = ["w2", "w22"].includes(position);
 
-            if (!isFirstSet && !isSecondSet && !isOffHand) {
-              return undefined;
-            }
-
-            const isLight = isFirstSet
-              ? listOfWeapons[2].type.includes("LIGHT")
-              : isSecondSet
-                ? listOfWeapons[3].type.includes("LIGHT")
-                : light;
-
-            const isPrimary = isFirstSet || isSecondSet;
-
-            return [
-              ...toListMeleeAttack,
-              ...attacksPositionElement(
-                isPrimary,
-                isLight,
-                true // TODO talento two weapon fighting
-              )
-            ];
-          })()
-        : undefined;
     const toListMeleeDamage: TotAndBonusElement[] | undefined = !ranged
       ? createTotAndBonusElement(updatedDamageMap || {}, text, [
           "Melee",
           weapon.itemId
         ])
       : undefined;
-    const numberOfAllAttacksMelee
-    : TotAndBonusElement[][] = toListMeleeAttack?
-    numberOfAttacksMap(
-      bab || 0,
-      toListMeleeAttack
-    ) : [[]];
+
+    const listBabRangedSpecificBonus: TotAndBonusElement[][] | undefined =
+      ranged
+        ? numberOfAttacksMap(
+            bab || 0,
+            createTotAndBonusElement(newAr || {}, true, [
+              "Ranged",
+              weapon.itemId
+            ]),
+            isPrimary,
+            isLight,
+            false
+          )
+        : undefined;
+
+    const listBabRangedTwoWeaponSpecificBonus:
+      | TotAndBonusElement[][]
+      | undefined = ranged
+      ? numberOfAttacksMap(
+          bab || 0,
+          createTotAndBonusElement(newAr || {}, true, [
+            "Ranged",
+            weapon.itemId
+          ]),
+          isPrimary,
+          isLight,
+          true
+        )
+      : undefined;
+
     return {
+      // WeaponElement
       weapon: weapon,
       weaponLight: light,
       weaponRanged: ranged,
       weaponThrown: thrown,
       weaponTwoHanded: twoHanded,
-      toListMeleeAttack: toListMeleeAttack,
-      toListMeleeTwoWeaponAttack: toListMeleeTwoWeaponAttack,
+      listBabMeleeSpecificBonus: listBabMeleeSpecificBonus,
+      // toListMeleeAttack: toListMeleeAttack,
+      listBabMeleeTwoWeaponSpecificBonus: listBabMeleeTwoWeaponSpecificBonus,
       toListMeleeDamage: toListMeleeDamage,
-      toListRangedAttack: ranged
-        ? createTotAndBonusElement(updatedAttacksRollMap || {}, text, [
-            "Ranged",
-            weapon.itemId
-          ])
-        : undefined,
+      listBabRangedSpecificBonus: listBabRangedSpecificBonus,
+      listBabRangedTwoWeaponSpecificBonus: listBabRangedTwoWeaponSpecificBonus,
       toListRangedDamage: ranged
         ? createTotAndBonusElement(updatedDamageMap || {}, text, [
             "Ranged",
@@ -305,7 +353,7 @@ export const modifiedCharacter = (
         : undefined,
       babMelee: babMelee,
       babMeleeTwo: 0,
-      numberOfAllAttacksMelee: numberOfAllAttacksMelee,
+      // numberOfAllAttacksMelee: numberOfAllAttacksMelee,
       babRanged:
         ranged && weapon
           ? returnBonusSpecific(updatedAttacksRollMap, [
@@ -326,46 +374,32 @@ export const modifiedCharacter = (
 
   const firstMelee: WeaponElement = createWeaponElement(
     firstMeleeWeapon,
-    false
+    false,
+    "w1"
   );
   const firstRanged: WeaponElement | undefined = firstRangedWeapon
-    ? createWeaponElement(firstRangedWeapon, true)
+    ? createWeaponElement(firstRangedWeapon, true, "w1")
     : undefined;
 
   const newAttacksElement: AttackElement = {
     listOfWeapons: listOfWeapons,
     bab: bab,
-    toListBab: toListBab,
-    toListMeleeAttack: toListMeleeAttack,
-    toListRangedAttack: toListRangedAttack,
+    listBab: listBab,
+    listBabMeleeGeneralBonus: listBabMeleeGeneralBonus,
+    listBabRangedGeneralBonus: listBabRangedGeneralBonus,
     babMelee: babMelee,
     babRanged: babRanged,
     firstMelee: firstMelee,
     firstRanged: firstRanged,
-    firstAttackSetOne: createWeaponElement(
-      listOfWeapons[0],
-      false,
-      "w1",
-      bab
-    ),
-    secondAttackSetOne: createWeaponElement(
-      listOfWeapons[2],
-      false,
-      "w2",
-      bab
-    ),
+    firstAttackSetOne: createWeaponElement(listOfWeapons[0], false, "w1", bab),
+    secondAttackSetOne: createWeaponElement(listOfWeapons[2], false, "w2", bab),
     additionalAttackSetOne: createWeaponElement(
       listOfWeapons[4],
       false,
       "wA",
       bab
     ),
-    firstAttackSetTwo: createWeaponElement(
-      listOfWeapons[1],
-      false,
-      "w21",
-      bab
-    ),
+    firstAttackSetTwo: createWeaponElement(listOfWeapons[1], false, "w21", bab),
     secondAttackSetTwo: createWeaponElement(
       listOfWeapons[3],
       false,
@@ -405,11 +439,6 @@ export const isToAdd = (key: string): boolean => {
   return [ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(key);
 };
 
-// export const ifToAddSum = (check: boolean, tot: number, bonus: number): number => {
-//   if(check) return tot + bonus;
-//   return tot > bonus ? tot : bonus;
-// }
-
 export const returnBonus = (ar: BonusResultMap): number => {
   return Object.keys(ar).reduce((globalTot, key) => {
     const bonuses = ar[key]
@@ -420,7 +449,6 @@ export const returnBonus = (ar: BonusResultMap): number => {
       // somma tutto
       return globalTot + bonuses.reduce((sum, b) => sum + b, 0);
     }
-    // console.log("key", Math.max(0, ...bonuses), "bonuses", bonuses);
     // prende solo il bonus più alto
     return globalTot + Math.max(0, ...bonuses);
   }, 0);
