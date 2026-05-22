@@ -30,6 +30,7 @@ export const createPrerequisiteAbility = (
     attackRoll: [
       {
         bonus: modStrength,
+        // modifierBonus: ABILITY_MODIFIER as ModifierEnum,
         modifierBonus: {...EMPTY_BONUS, description: "Increase Melee and Grapple attacks", text: "Strength"} as ModifierEnum,
         target: [{ text: "Melee" } as ModifierEnum, { text: "Grapple" } as ModifierEnum]
       } as AttackRoll

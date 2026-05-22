@@ -1,7 +1,10 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { Inventory, Weapon } from "../../interfaces";
-import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
+import {
+  ModifierEnum,
+  STRENGTH_MODIFIER
+} from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
@@ -85,7 +88,8 @@ export type ModifiedCharacter = {
 export type AttackElement = {
   listOfWeapons: Weapon[];
   bab: number; // tot bab del pg
-  listBab: TotAndBonusElement[][]; // lista di tutti gli attacchi in base al bab, da 1 a 4
+  listBab: TotAndBonusElement[]; // lista di tutti gli attacchi in base al bab, da 1 a 4
+  summedBab: TotAndBonusElement;
   listBabMeleeGeneralBonus: TotAndBonusElement[][]; // toListBab con i bonus per il melee
   // toListMeleeDamage: TotAndBonusElement[];
   listBabRangedGeneralBonus?: TotAndBonusElement[][]; // toListBab con i bonus per il ranged
@@ -111,17 +115,15 @@ export type WeaponElement = {
   listBabMeleeSpecificBonus?: TotAndBonusElement[][]; // attacco completo un arma melee
   listBabMeleeTwoWeaponSpecificBonus?: TotAndBonusElement[][]; // attacco completo due armi melee
   toListMeleeDamage?: TotAndBonusElement[];
-  listBabRangedSpecificBonus?: TotAndBonusElement[][];
-  listBabRangedTwoWeaponSpecificBonus?: TotAndBonusElement[][];
+  toListMeleeTwoWeaponDamage?: TotAndBonusElement[];
+  listBabRangedSpecificBonus?: TotAndBonusElement[][]; // attacco completo un arma ranged
+  listBabRangedTwoWeaponSpecificBonus?: TotAndBonusElement[][]; // attacco completo due armi ranged
   toListRangedDamage?: TotAndBonusElement[];
-  babMelee?: number;
-  babMeleeTwo?: number;
-  babRanged?: number;
-  babRangedTwo?: number;
+  toListRangedTwoWeaponDamage?: TotAndBonusElement[];
+  babMelee?: number; // [bab generale , bab specifico] applicato il signAndCountToString
+  babRanged?: number; // [bab generale , bab specifico] applicato il signAndCountToString
   damageMelee?: number;
-  damageMeleeTwo?: number;
   damageRanged?: number;
-  damageRangedTwo?: number;
 };
 
 export const attacksMapElement: TotAndBonusElement[] = [
@@ -135,27 +137,71 @@ export const attacksPositionElement = (
   first: boolean,
   secondLight: boolean,
   feat: boolean
-): TotAndBonusElement[] => [
-  {
-    bonus: first ? (secondLight ? (feat ? -2 : -4) : -4) : -6 || 0,
-    pop: { text: "Two-Weapon Fighting Penalties" }
+): TotAndBonusElement[] => {
+  let total: number;
+
+  if (feat && secondLight) {
+    total = -2;
+  } else if (feat) {
+    total = -4;
+  } else if (secondLight) {
+    total = first ? -4 : -8;
+  } else {
+    total = first ? -6 : -10;
   }
-];
+
+  return [
+    {
+      bonus: total,
+      pop: { text: "Two-Weapon Fighting Penalties" }
+    }
+  ];
+};
+
+export const numberOfFirstAttacksMap = (
+  bab: number,
+  toListAttack: TotAndBonusElement[]
+): TotAndBonusElement[][] => {
+  const quanteListe: TotAndBonusElement[] = attacksMapElement.filter(
+    (attack) => attack.bonus + Math.floor(bab) > 0
+  );
+
+  if (quanteListe.length === 0) {
+    return [[]];
+  }
+
+  const numberOfAttacks: TotAndBonusElement[][] = quanteListe.map(
+    (q: TotAndBonusElement, index) => {
+      return [quanteListe[index], ...toListAttack];
+    }
+  );
+  return numberOfAttacks;
+};
 
 export const numberOfAttacksMap = (
   bab: number,
   toListAttack: TotAndBonusElement[],
+  twoAttacks: boolean,
   first?: boolean,
   secondLight?: boolean,
-  twoAttacks?: boolean
+  nAttacksSecond?: number,
+  featTwoFight?: boolean
 ): TotAndBonusElement[][] => {
-  // console.log("attacksMapElement", attacksMapElement)
-  const quanteListe = attacksMapElement.filter(
-  attack => attack.bonus + Math.floor(bab) > 0
-);
+  let quanteListe: TotAndBonusElement[] = [];
+  if (first) {
+    quanteListe = attacksMapElement.filter(
+      (attack) => attack.bonus + Math.floor(bab) > 0
+    );
+  } else if (twoAttacks === true && typeof nAttacksSecond === "number") {
+    quanteListe = attacksMapElement.slice(0, nAttacksSecond);
+  }
+
+  if (quanteListe.length === 0) {
+    return [[]];
+  }
   const numberOfAttacks: TotAndBonusElement[][] = quanteListe.map(
     (q: TotAndBonusElement, index) => {
-      if (first === undefined && secondLight === undefined && !twoAttacks) {
+      if (!twoAttacks) {
         return [quanteListe[index], ...toListAttack];
       } else {
         return [
@@ -163,7 +209,7 @@ export const numberOfAttacksMap = (
           ...attacksPositionElement(
             first || false,
             secondLight || false,
-            true // TODO talento two weapon fighting
+            featTwoFight || false
           ),
           ...toListAttack
         ];
@@ -171,4 +217,26 @@ export const numberOfAttacksMap = (
     }
   );
   return numberOfAttacks;
+};
+
+export const weaponDamagePoseAndTwoWeapon = (
+  list: TotAndBonusElement[],
+  pose: boolean,
+  twoHand: boolean
+): TotAndBonusElement[] => {
+  const newList = list
+    .map((l) => l.pop === STRENGTH_MODIFIER)
+    .map((isStrengthModifier, index) => {
+      if (isStrengthModifier) {
+        const bonus = pose
+          ? list[index].bonus / 2
+          : twoHand
+            ? list[index].bonus + Math.floor(list[index].bonus / 2)
+            : list[index].bonus;
+        return { ...list[index], bonus };
+      }
+      return list[index];
+    });
+
+  return newList;
 };

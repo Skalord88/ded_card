@@ -8,6 +8,7 @@ import { Dominio } from "./Dominio/interface";
 import { Feat } from "./Feats/Interface/FeatInterface";
 import { FormattingText } from "./Formatting/Function";
 import { Armor, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, Weapon, WonderousItem } from "./interfaces";
+import { TotAndBonusElement } from "./ModifiedCharacter/SummaryChar";
 import { Race, SubRace } from "./Race/Interfaces";
 import { RacialRegion, Region } from "./Region/interface";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
@@ -45,14 +46,26 @@ export const signAndCount = (
 }
 export const signAndCountToString = (
     numbers: number[],
-    floor?: boolean
+    floor?: boolean,
+    listMods?: TotAndBonusElement[]
 ): string => {
-    const num: number = numbers.reduce(
+
+    const num = numbers.reduce(
         (total, n) => total + n,
         0
     )
 
-    return SignNumber(num) + (floor ? Math.floor(num) : num)
+    const list = listMods && Array.isArray(listMods)
+        ? listMods.reduce(
+            (total, n) => total + n.bonus,
+            0
+        )
+        : 0
+
+    const result = num + list
+
+    return SignNumber(result) +
+        (floor ? Math.floor(result) : result)
 }
 
 

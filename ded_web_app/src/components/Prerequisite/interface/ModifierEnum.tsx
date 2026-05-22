@@ -94,13 +94,11 @@ export const SIZE_BONUS: ModifierEnum = {
   text: "Size Bonus"
 };
 export const EMPTY_BONUS: ModifierEnum = {
-  description:
-    "",
+  description: "",
   text: ""
 };
 export const BASE_VALUE: ModifierEnum = {
-  description:
-    "",
+  description: "",
   text: "Base Value"
 };
 
@@ -123,3 +121,8 @@ export const modifierEnumList: ModifierEnum[] = [
   SHIELD_BONUS,
   SIZE_BONUS
 ];
+
+export const STRENGTH_MODIFIER: ModifierEnum = {
+  description: "Strength",
+  text: "Strength modifiers"
+};

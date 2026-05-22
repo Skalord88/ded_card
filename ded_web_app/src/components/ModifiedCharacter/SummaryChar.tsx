@@ -7,14 +7,31 @@ import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
 import { createTotAndBonusElement } from "./functions/CreateTotAndBonusElement";
 import {
-  attacksMapElement,
-  attacksPositionElement,
   ModifiedCharacter,
   WeaponElement
 } from "./interface/ModifiedCharacter";
-import { text } from "node:stream/consumers";
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
+};
+
+export type SummaryCharDivTemplateProps = {
+  children: React.ReactNode;
+};
+
+export const SummaryCharDivTemplate: React.FC<SummaryCharDivTemplateProps> = ({
+  children
+}) => {
+  <div
+    style={
+      {
+        // border: "1px solid red"
+        //   display: "grid",
+        //   gridTemplateColumns: "1fr 3fr"
+      }
+    }
+  >
+    {children}
+  </div>;
 };
 
 export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
@@ -24,11 +41,10 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 3fr",
-          gap: "10px",
-          alignItems: "start"
+          gridTemplateColumns: "1fr 3fr"
         }}
       >
+        {/* <SummaryCharDivTemplate> */}
         <div>
           <p style={{ margin: 0 }}>Size/Type:</p>
         </div>
@@ -38,6 +54,7 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
             {modCharacter.race?.race.raceType.raceClass.className}
           </p>
         </div>
+        {/* </SummaryCharDivTemplate> */}
 
         <div>
           <p>Hit Dice:</p>
@@ -86,39 +103,23 @@ export const SummaryCharAttacksTemplate: React.FC<
 export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-
   const meleeAttackList: TotAndBonusElement[] = [
-    ...(modCharacter.attacks?.listBabMeleeGeneralBonus[0] || [])
+    // ...(modCharacter.attacks?.listBab || []),
+    ...(modCharacter.attacks?.firstMelee.listBabMeleeSpecificBonus?.[0] || [])
   ];
 
   const meleeDamageList: TotAndBonusElement[] =
     modCharacter.attacks?.firstMelee?.toListMeleeDamage || [];
 
-  const rangedAttackList: TotAndBonusElement[] = modCharacter.attacks
-    ?.listBabRangedGeneralBonus
-    ? [
-        ...modCharacter.attacks?.listBabRangedGeneralBonus[0]
-      ]
-    : [];
+  const rangedAttackList: TotAndBonusElement[] = [
+    // ...(modCharacter.attacks?.listBab || []),
+    ...(modCharacter.attacks?.firstRanged?.listBabRangedSpecificBonus?.[0] ||
+      [])
+  ];
 
   const rangedDamageList: TotAndBonusElement[] = [
     ...(modCharacter.attacks?.firstRanged?.toListRangedDamage || [])
   ];
-  const bab: string = signAndCountToString([modCharacter.attacks?.bab || 0]);
-  const babMelee: string = signAndCountToString(
-    [
-      modCharacter.attacks?.bab || 0,
-      modCharacter.attacks?.firstMelee?.babMelee || 0
-    ],
-    true
-  );
-  const babRanged = signAndCountToString(
-    [
-      modCharacter.attacks?.bab || 0,
-      modCharacter.attacks?.firstRanged?.babRanged || 0
-    ],
-    true
-  );
   return (
     <>
       <div>
@@ -127,21 +128,19 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       <div>
         {/* Melee */}
         <SummaryCharAttacksTemplate>
-          <div style={{ display: "flex", gap: "4px" }}>
-            <TotAndBonusAll totBab={babMelee} bab={bab}>
-              <TotAndBonus
-                show={false}
-                firstSign={true}
-                list={meleeAttackList}
-              />
-            </TotAndBonusAll>
-          </div>
+          {/* <TotAndBonusAll
+            totBab={modCharacter.attacks?.babMelee || 0}
+            bab={modCharacter.attacks?.bab || 0}
+          > */}
+          <TotAndBonus show={false} firstSign={true} list={meleeAttackList} />
+          {/* </TotAndBonusAll> */}
+          {/* </div> */}
 
           <div>
             <span>{modCharacter.attacks?.firstMelee?.weapon?.name}</span>
           </div>
 
-          <div style={{ display: "flex", gap: "4px" }}>
+          <div>
             <span>{modCharacter.attacks?.firstMelee?.weapon?.damage}</span>
 
             <TotAndBonus show={false} firstSign={true} list={meleeDamageList} />
@@ -151,29 +150,21 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
         {/* Ranged */}
         {modCharacter.attacks?.firstRanged && (
           <SummaryCharAttacksTemplate>
-            <div style={{ display: "flex", gap: "4px" }}>
-              <TotAndBonusAll totBab={babRanged} bab={bab}>
-                <TotAndBonus
-                  show={false}
-                  firstSign={true}
-                  list={rangedAttackList}
-                />
-              </TotAndBonusAll>
-              {/* <span style={{ color: "orange" }}>{babRanged}</span>
-              <span>{" : "}</span>
-              <span>{bab}</span>
+            <div>
+              {/* <TotAndBonusAll totBab={modCharacter.attacks?.babRanged || 0} bab={modCharacter.attacks?.babRanged || 0}> */}
               <TotAndBonus
                 show={false}
                 firstSign={true}
                 list={rangedAttackList}
-              /> */}
+              />
+              {/* </TotAndBonusAll> */}
             </div>
 
             <div>
               <span>{modCharacter.attacks.firstRanged.weapon?.name}</span>
             </div>
 
-            <div style={{ display: "flex", gap: "4px" }}>
+            <div>
               <span>{modCharacter.attacks?.firstRanged?.weapon?.damage}</span>
 
               <TotAndBonus
@@ -249,9 +240,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
       "w2A empty"
     `,
         gridTemplateColumns: "1fr 1fr",
-        gridTemplateRows: "repeat(4, auto)",
-        gap: "4px",
-        width: "100%"
+        gap: "4px"
       }}
     >
       {areas.map((area, index) => {
@@ -259,10 +248,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
           return (
             <div key={index} style={{ border: "1px solid red" }}>
               <div>
-                <p>
-                  {area.area !== "empty" && " " + index + " "}
-                  {area.element?.weapon?.name}
-                </p>
+                <p>{area.element?.weapon?.name}</p>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                 {!area.element?.weaponRanged && (
@@ -270,35 +256,38 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"melee: "}</span>
                     </div>
-                    <div style={{ display: "flex", gap: "4px" }}>
-                      {area.element?.toListMeleeAttack?.map((n, index) => {
-                        const totBab = signAndCountToString(
-                          [
-                            modCharacter.attacks?.bab || 0,
-                            // area.element?.babMelee || 0,
-                            n.reduce(
-                              (tot, element) => tot + (element?.bonus || 0),
-                              0
-                            )
-                          ],
-                          true
-                        );
-                        const bab = signAndCountToString([
-                          modCharacter.attacks?.bab || 0
-                        ]);
-                        return (
-                          <>
-                            <TotAndBonusAll totBab={totBab} bab={bab}>
-                              <TotAndBonus
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      {area.element?.listBabMeleeSpecificBonus &&
+                        area.element?.listBabMeleeSpecificBonus.map(
+                          (n, index) => {
+                            // if(area.element?.babMelee)
+                            return (
+                              <div
                                 key={index}
-                                show={false}
-                                firstSign={true}
-                                list={[...n]}
-                              />
-                            </TotAndBonusAll>
-                          </>
-                        );
-                      })}
+                                style={{ border: "1px solid blue" }}
+                              >
+                                {/* <TotAndBonusAll 
+                                totBab={area.element?.babMelee || 0} 
+                                bab={area.element?.babMelee || 0}> */}
+                                <TotAndBonus
+                                  key={index}
+                                  show={false}
+                                  firstSign={true}
+                                  list={[...n]}
+                                />
+                                {/* </TotAndBonusAll> */}
+                              </div>
+                            );
+                          }
+                        )}
+                      <div style={{ border: "1px solid blue" }}>
+                        <div>{area.element?.weapon?.damage}</div>
+                        <TotAndBonus
+                          show={false}
+                          firstSign={true}
+                          list={area.element?.toListMeleeDamage || []}
+                        />
+                      </div>
                     </div>
                   </Fragment>
                 )}
@@ -307,7 +296,44 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"ranged: "}</span>
                     </div>
-                    <div style={{ display: "flex", gap: "4px" }}></div>
+                    <div>
+                      {area.element?.listBabRangedSpecificBonus &&
+                        area.element?.listBabRangedSpecificBonus.map(
+                          (n, index) => {
+                            // const totBab = signAndCountToString(
+                            //   [modCharacter.attacks?.bab || 0],
+                            //   true,
+                            //   n
+                            // );
+                            // const bab = signAndCountToString([
+                            //   modCharacter.attacks?.bab || 0
+                            // ]);
+                            return (
+                              <div
+                                key={index}
+                                style={{ border: "1px solid blue" }}
+                              >
+                                {/* <TotAndBonusAll totBab={modCharacter.attacks?.babRanged || 0} bab={modCharacter.attacks?.bab || 0}> */}
+                                <TotAndBonus
+                                  key={index}
+                                  show={false}
+                                  firstSign={true}
+                                  list={[...n]}
+                                />
+                                {/* </TotAndBonusAll> */}
+                              </div>
+                            );
+                          }
+                        )}
+                      <div style={{ border: "1px solid blue" }}>
+                        <div>{area.element?.weapon?.damage}</div>
+                        <TotAndBonus
+                          show={false}
+                          firstSign={true}
+                          list={area.element?.toListMeleeDamage || []}
+                        />
+                      </div>
+                    </div>
                   </Fragment>
                 )}
                 {!area.element?.weaponRanged && (
@@ -315,7 +341,44 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"melee2w: "}</span>
                     </div>
-                    <div style={{ display: "flex", gap: "4px" }}></div>
+                    <div>
+                      {area.element?.listBabMeleeTwoWeaponSpecificBonus &&
+                        area.element?.listBabMeleeTwoWeaponSpecificBonus.map(
+                          (n, index) => {
+                            // const totBab = signAndCountToString(
+                            //   [modCharacter.attacks?.bab || 0],
+                            //   true,
+                            //   n
+                            // );
+                            // const bab = signAndCountToString([
+                            //   modCharacter.attacks?.bab || 0
+                            // ]);
+                            return (
+                              <div
+                                key={index}
+                                style={{ border: "1px solid blue" }}
+                              >
+                                {/* <TotAndBonusAll totBab={modCharacter.attacks?.babMelee || 0} bab={modCharacter.attacks?.bab || 0}> */}
+                                <TotAndBonus
+                                  key={index}
+                                  show={false}
+                                  firstSign={true}
+                                  list={[...n]}
+                                />
+                                {/* </TotAndBonusAll> */}
+                              </div>
+                            );
+                          }
+                        )}
+                      <div style={{ border: "1px solid blue" }}>
+                        <div>{area.element?.weapon?.damage}</div>
+                        <TotAndBonus
+                          show={false}
+                          firstSign={true}
+                          list={area.element?.toListRangedDamage || []}
+                        />
+                      </div>
+                    </div>
                   </Fragment>
                 )}
                 {(area.element?.weaponRanged || area.element?.weaponThrown) && (
@@ -323,7 +386,44 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"rnged2w: "}</span>
                     </div>
-                    <div style={{ display: "flex", gap: "4px" }}></div>
+                    <div>
+                      {area.element?.listBabRangedTwoWeaponSpecificBonus &&
+                        area.element?.listBabRangedTwoWeaponSpecificBonus.map(
+                          (n, index) => {
+                            // const totBab = signAndCountToString(
+                            //   [modCharacter.attacks?.bab || 0],
+                            //   true,
+                            //   n
+                            // );
+                            // const bab = signAndCountToString([
+                            //   modCharacter.attacks?.bab || 0
+                            // ]);
+                            return (
+                              <div
+                                key={index}
+                                style={{ border: "1px solid blue" }}
+                              >
+                                {/* <TotAndBonusAll totBab={modCharacter.attacks?.babRanged || 0} bab={modCharacter.attacks?.bab || 0}> */}
+                                <TotAndBonus
+                                  key={index}
+                                  show={false}
+                                  firstSign={true}
+                                  list={[...n]}
+                                />
+                                {/* </TotAndBonusAll> */}
+                              </div>
+                            );
+                          }
+                        )}
+                      <div style={{ border: "1px solid blue" }}>
+                        <div>{area.element?.weapon?.damage}</div>
+                        <TotAndBonus
+                          show={false}
+                          firstSign={true}
+                          list={area.element?.toListRangedDamage || []}
+                        />
+                      </div>
+                    </div>
                   </Fragment>
                 )}
               </div>
@@ -344,18 +444,18 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
     modCharacter.attackRollMod || {},
     true,
     ["Grapple"]
-  ).concat(modCharacter.attacks?.listBab[0] || []);
+  ).concat(modCharacter.attacks?.summedBab || []);
 
   return (
     <>
       <div>
-        <p style={{ margin: 0 }}>Base Attack:</p>
+        <p>Base Attack:</p>
       </div>
       <div>
         <TotAndBonus
           show={true}
           firstSign={true}
-          list={modCharacter.attacks?.listBab[0] || []}
+          list={modCharacter.attacks?.listBab || []}
         />
       </div>
       <div>
@@ -387,6 +487,7 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   list,
   children
 }) => {
+  // console.log(list);
   const total: number = Math.floor(
     list.reduce((tot, element) => tot + (element?.bonus || 0), 0)
   );
@@ -424,9 +525,9 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
 };
 
 export type TotAndBonusAllProps = {
-  totBab: string;
-  bab: string;
-  children: React.ReactNode;
+  totBab: number;
+  bab: number;
+  children?: React.ReactNode;
 };
 
 export const TotAndBonusAll: React.FC<TotAndBonusAllProps> = ({
@@ -434,12 +535,13 @@ export const TotAndBonusAll: React.FC<TotAndBonusAllProps> = ({
   bab,
   children
 }) => {
-  // const bab = signAndCountToString([babMods]);
+  const total: string = signAndCountToString([totBab], true);
+  const bonus: string = signAndCountToString([bab], true);
   return (
     <>
-      <span style={{ color: "orange" }}>{totBab}</span>
+      <span style={{ color: "orange" }}>{total}</span>
       <span>{" : "}</span>
-      <span>{bab}</span>
+      <span style={{ textShadow: "2px 2px 5px orange" }}>{bonus}</span>
       {children}
     </>
   );
