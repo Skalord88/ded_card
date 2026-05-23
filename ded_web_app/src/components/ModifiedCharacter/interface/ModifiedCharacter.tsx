@@ -128,9 +128,9 @@ export type WeaponElement = {
 
 export const attacksMapElement: TotAndBonusElement[] = [
   { bonus: 0, pop: { text: "first attack" } },
-  { bonus: -5, pop: { text: "second attack -5 to hit" } },
-  { bonus: -10, pop: { text: "third attack -10 to hit" } },
-  { bonus: -15, pop: { text: "fourth attack -15 to hit" } }
+  { bonus: -5, pop: { text: "second attack: -5 to hit" } },
+  { bonus: -10, pop: { text: "third attack: -10 to hit" } },
+  { bonus: -15, pop: { text: "fourth attack: -15 to hit" } }
 ];
 
 export const attacksPositionElement = (
