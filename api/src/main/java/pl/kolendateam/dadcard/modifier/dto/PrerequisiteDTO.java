@@ -53,6 +53,7 @@ public class PrerequisiteDTO {
   public AttackRollDTO[] attackRoll;
   public DamageBonusDTO[] damageBonus;
   public SpeedDTO speed;
+  public String spaceReach;
   public SavingThrowDTO[] savingThrow;
   public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
@@ -92,6 +93,7 @@ public class PrerequisiteDTO {
       pre.getSpeed() != null
         ? MapperModifierBonus.toSpeedDTO(pre.getSpeed())
         : null;
+    this.spaceReach = pre.getSpaceReach();
     this.savingThrow =
       pre.getSavingThrow() != null
         ? MapperSavingThrow.toSavingThrowDTOArray(pre.getSavingThrow())

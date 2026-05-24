@@ -19,7 +19,6 @@ import pl.kolendateam.dadcard.race.entity.Race;
 import pl.kolendateam.dadcard.race.entity.RaceType;
 import pl.kolendateam.dadcard.race.entity.RacialRegion;
 import pl.kolendateam.dadcard.race.entity.SubRace;
-import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 public class MapperRaceToDTO {
 

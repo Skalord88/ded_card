@@ -1,10 +1,10 @@
 import { Item } from "../../interfaces";
 import {
-  EMPTY_BONUS,
-  ModifierEnum
+    EMPTY_BONUS,
+    ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { TotAndBonusElement } from "../SummaryChar";
+import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 
 export type TargetBonus = ModifierEnum | Item;
 

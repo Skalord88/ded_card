@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 import { FormattingText } from "../Formatting/Function";
-import { TotAndBonusElement } from "../ModifiedCharacter/SummaryChar";
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
+import { TotAndBonusElement } from "../SummaryChar/SummaryChar";
 import { signAndCountToString } from "../functions";
 
 export interface PopupProps {

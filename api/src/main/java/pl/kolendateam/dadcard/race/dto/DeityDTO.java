@@ -8,7 +8,6 @@ import pl.kolendateam.dadcard.race.MapperRaceToDTO;
 import pl.kolendateam.dadcard.race.entity.Deity;
 import pl.kolendateam.dadcard.spells.MapperSpells;
 import pl.kolendateam.dadcard.spells.dto.DomainsDTO;
-import pl.kolendateam.dadcard.spells.repository.SpellsRepository;
 
 @NoArgsConstructor
 public class DeityDTO {

@@ -1,16 +1,8 @@
 import { BonusAbilities } from "./Abilitys/Functions";
-import { Alignment } from "./Alignment/Alignment";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
-import { ClassCharacter } from "./ClassPc/Interface/ClassPcLevel";
-import { Deity } from "./Deity/interface";
-import { Dominio } from "./Dominio/interface";
 
-import { Feat } from "./Feats/Interface/FeatInterface";
-import { FormattingText } from "./Formatting/Function";
-import { Armor, CharacterPc, Enchantment, Inventory, Item, Position, Shield, SignAndNumber, Spell, Weapon, WonderousItem } from "./interfaces";
-import { TotAndBonusElement } from "./ModifiedCharacter/SummaryChar";
-import { Race, SubRace } from "./Race/Interfaces";
-import { RacialRegion, Region } from "./Region/interface";
+import { Inventory, Position, SignAndNumber, Weapon } from "./interfaces";
+import { TotAndBonusElement } from "./SummaryChar/SummaryChar";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
 
 export function SignNumber(

@@ -9,6 +9,7 @@
             <column name="id" value="100001" />
             <!-- Dwarf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="space_reach" value="5/5" />
             <column name="armor_class" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;GIANT&quot; ], &quot;special&quot; :&quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;}]" />
             <column name="special_attacks"
                 value="{
@@ -27,6 +28,7 @@
             <column name="id" value="100002" />
             <!-- Elf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
             <column name="abilitys"
                 value="{
                 &quot;dexterity&quot; : 2,
@@ -51,6 +53,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="100003" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
             <column name="abilitys"
                 value="{
                 &quot;strength&quot; : 4,
@@ -65,7 +68,7 @@
         <!-- Gnome modif -->
         <insert tableName="prerequisite">
             <column name="id" value="100004" />
-            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="space_reach" value="5/5" />
             <column name="abilitys"
                 value="{
                 &quot;strength&quot; : -2,
@@ -78,7 +81,7 @@
         <!-- Halfling modif -->
         <insert tableName="prerequisite">
             <column name="id" value="100005" />
-            <column name="speed" value="{ &quot;foot&quot; : 20 }" />
+            <column name="space_reach" value="5/5" />
             <column name="abilitys"
                 value="{
                 &quot;strength&quot; : -2,
@@ -101,7 +104,7 @@
         <!-- Human modif -->
         <insert tableName="prerequisite">
             <column name="id" value="100006" />
-            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
             <column name="feat_type" value="[&quot;ALL&quot;]" />
             <column name="text" value="Human races modifiers" />
         </insert>
@@ -119,6 +122,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="100008" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
             <column name="text" value="Spirit Folk races modifiers" />
         </insert>
         <!-- Spirit Folk -->
@@ -126,6 +130,8 @@
         <!-- Half Elf modif -->
         <insert tableName="prerequisite">
             <column name="id" value="100009" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
             <column name="saving_throw"
                 value="[{ 
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,

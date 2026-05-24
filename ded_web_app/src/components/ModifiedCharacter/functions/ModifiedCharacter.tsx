@@ -4,7 +4,6 @@ import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { findIdsFeatsInList } from "../../Feats/FindFeatsInList";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
-  signAndCountToString,
   weaponLight,
   weaponRanged,
   weaponThrown,
@@ -29,6 +28,7 @@ import {
   findAllAdjLevelInRaceAndArchetypes
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
+import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
 import {
@@ -40,7 +40,6 @@ import {
   weaponDamagePoseAndTwoWeapon,
   WeaponElement
 } from "../interface/ModifiedCharacter";
-import { TotAndBonusElement } from "../SummaryChar";
 import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";

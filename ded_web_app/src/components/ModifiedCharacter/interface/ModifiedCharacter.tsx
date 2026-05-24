@@ -2,15 +2,15 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { Inventory, Weapon } from "../../interfaces";
 import {
-  ModifierEnum,
-  STRENGTH_MODIFIER
+    ModifierEnum,
+    STRENGTH_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { HitDiceMap } from "../../Vita/Functions";
 import { BonusResultMap } from "../functions/GetBonusResult";
-import { TotAndBonusElement } from "../SummaryChar";
 
 export type BonusResult = {
   key: string;

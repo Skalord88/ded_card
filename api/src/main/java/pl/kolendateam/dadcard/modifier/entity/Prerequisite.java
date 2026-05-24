@@ -94,6 +94,8 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   Speed speed;
 
+  String spaceReach;
+
   @JdbcTypeCode(SqlTypes.JSON)
   SavingThrow[] savingThrow;
 
@@ -184,6 +186,8 @@ public class Prerequisite implements Serializable {
     this.initiative = preDTO.initiative != null ? preDTO.initiative : null;
     this.speed =
       preDTO.speed != null ? MapperModifierBonus.toSpeed(preDTO.speed) : null;
+    this.spaceReach =
+      preDTO.spaceReach != null ? preDTO.spaceReach : null;
     this.savingThrow =
       preDTO.savingThrow != null
         ? MapperSavingThrow.toSavingThrowArray(preDTO.savingThrow)

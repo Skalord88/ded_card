@@ -5,17 +5,17 @@ import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
+import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
-import {
-  SummaryChar,
-  TotAndBonus,
-  TotAndBonusElement
-} from "../components/ModifiedCharacter/SummaryChar";
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
+import {
+    SummaryChar,
+    TotAndBonus,
+    TotAndBonusElement
+} from "../components/SummaryChar/SummaryChar";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 

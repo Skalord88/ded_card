@@ -239,6 +239,7 @@
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
         </insert>
 
         <insert tableName="prerequisite">

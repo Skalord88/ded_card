@@ -22,6 +22,7 @@ export type Prerequisite = {
   damageBonus?: DamageBonus[];
   initiative?: Number;
   speed?: Speed;
+  spaceReach?: string;
   savingThrow?: SavingThrow[];
   specialAttacks?: SpecialAttacks;
   specialAbilities?: SpecialAbilities[];

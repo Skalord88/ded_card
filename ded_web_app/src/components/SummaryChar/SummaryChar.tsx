@@ -1,15 +1,20 @@
 import { Fragment } from "react/jsx-runtime";
 import { BonusAbilities, signAndCountToString, SignNumber } from "../functions";
+import { createTotAndBonusElement } from "../ModifiedCharacter/functions/CreateTotAndBonusElement";
+import {
+  ModifiedCharacter,
+  WeaponElement
+} from "../ModifiedCharacter/interface/ModifiedCharacter";
 import { Popup } from "../Popup/Popup";
 import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountString } from "../Sign/Function";
 import { Speed } from "../Speed/interface";
 import { countTotalHitPoints } from "../Vita/Functions";
-import { createTotAndBonusElement } from "./functions/CreateTotAndBonusElement";
-import {
-  ModifiedCharacter,
-  WeaponElement
-} from "./interface/ModifiedCharacter";
+import { SummaryCharAttacks } from "./component/SummaryCharAttacks";
+import { SummaryCharSaving } from "./component/SummaryCharSaving";
+import { SummaryCharSpaceReach } from "./component/SummaryCharSpaceReach";
+import { SummaryCharSpecialAbilities } from "./component/SummaryCharSpecialAbilities";
+
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
 };
@@ -74,115 +79,11 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
         <SummaryCharArmorClass modCharacter={modCharacter} />
         <SummaryCharBaseAttack modCharacter={modCharacter} />
         <SummaryCharAttacks modCharacter={modCharacter} />
+        <SummaryCharSpaceReach modCharacter={modCharacter} />
+        <SummaryCharSpecialAbilities modCharacter={modCharacter} />
+        <SummaryCharSaving modCharacter={modCharacter} />
       </div>
     </div>
-  );
-};
-
-export type SummaryCharAttacksTemplateProps = {
-  children: React.ReactNode;
-};
-
-export const SummaryCharAttacksTemplate: React.FC<
-  SummaryCharAttacksTemplateProps
-> = ({ children }) => {
-  return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "2fr 1fr 1fr",
-        gap: "10px",
-        alignItems: "center"
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
-export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
-  modCharacter
-}) => {
-  const meleeAttackList: TotAndBonusElement[] = [
-    // ...(modCharacter.attacks?.listBab || []),
-    ...(modCharacter.attacks?.firstMelee.listBabMeleeSpecificBonus?.[0] || [])
-  ];
-
-  const meleeDamageList: TotAndBonusElement[] =
-    modCharacter.attacks?.firstMelee?.toListMeleeDamage || [];
-
-  const rangedAttackList: TotAndBonusElement[] = [
-    // ...(modCharacter.attacks?.listBab || []),
-    ...(modCharacter.attacks?.firstRanged?.listBabRangedSpecificBonus?.[0] ||
-      [])
-  ];
-
-  const rangedDamageList: TotAndBonusElement[] = [
-    ...(modCharacter.attacks?.firstRanged?.toListRangedDamage || [])
-  ];
-  return (
-    <>
-      <div>
-        <p>Attack:</p>
-      </div>
-      <div>
-        {/* Melee */}
-        <SummaryCharAttacksTemplate>
-          {/* <TotAndBonusAll
-            totBab={modCharacter.attacks?.babMelee || 0}
-            bab={modCharacter.attacks?.bab || 0}
-          > */}
-          <TotAndBonus show={false} firstSign={true} list={meleeAttackList} />
-          {/* </TotAndBonusAll> */}
-          {/* </div> */}
-
-          <div>
-            <span>{modCharacter.attacks?.firstMelee?.weapon?.name}</span>
-          </div>
-
-          <div>
-            <span>{modCharacter.attacks?.firstMelee?.weapon?.damage}</span>
-
-            <TotAndBonus show={false} firstSign={true} list={meleeDamageList} />
-          </div>
-        </SummaryCharAttacksTemplate>
-
-        {/* Ranged */}
-        {modCharacter.attacks?.firstRanged && (
-          <SummaryCharAttacksTemplate>
-            <div>
-              {/* <TotAndBonusAll totBab={modCharacter.attacks?.babRanged || 0} bab={modCharacter.attacks?.babRanged || 0}> */}
-              <TotAndBonus
-                show={false}
-                firstSign={true}
-                list={rangedAttackList}
-              />
-              {/* </TotAndBonusAll> */}
-            </div>
-
-            <div>
-              <span>{modCharacter.attacks.firstRanged.weapon?.name}</span>
-            </div>
-
-            <div>
-              <span>{modCharacter.attacks?.firstRanged?.weapon?.damage}</span>
-
-              <TotAndBonus
-                show={false}
-                firstSign={true}
-                list={rangedDamageList}
-              />
-            </div>
-          </SummaryCharAttacksTemplate>
-        )}
-      </div>
-      <div>
-        <p>Full Attack:</p>
-      </div>
-      <div>
-        <MapAllAttacks modCharacter={modCharacter} />
-      </div>
-    </>
   );
 };
 
@@ -260,8 +161,8 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                       style={{
                         display: "flex",
                         flexDirection: "row",
-                        gap: "4px",
-                        backgroundColor: "SandyBrown"
+                        gap: "8px",
+                        backgroundColor: "Brown"
                       }}
                     >
                       {area.element?.listBabMeleeSpecificBonus &&
@@ -275,7 +176,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                           }
                         )}
                       <div>
-                        <div>{area.element?.weapon?.damage}</div>
+                        <span>{area.element?.weapon?.damage}</span>
                         <TotAndBonus
                           show={false}
                           firstSign={true}
@@ -295,8 +196,8 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                         style={{
                           display: "flex",
                           flexDirection: "row",
-                          gap: "4px",
-                          backgroundColor: "DarkGoldenRod"
+                          gap: "8px",
+                          backgroundColor: "CornflowerBlue"
                         }}
                       >
                         {area.element?.listBabRangedSpecificBonus.map(
@@ -308,9 +209,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                             );
                           }
                         )}
-                        <div
-                        // style={{ border: "1px solid blue" }}
-                        >
+                        <div>
                           <span>{area.element?.weapon?.damage}</span>
                           <TotAndBonus
                             show={false}
@@ -326,22 +225,27 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"melee2w: "}</span>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "8px",
+                        backgroundColor: "DarkRed"
+                      }}
+                    >
                       {area.element?.listBabMeleeTwoWeaponSpecificBonus &&
                         area.element?.listBabMeleeTwoWeaponSpecificBonus.map(
                           (n, index) => {
                             return (
-                              <div
-                                key={index}
-                                style={{ border: "1px solid blue" }}
-                              >
+                              <div key={index}>
                                 <Popup bonusList={n} />
                               </div>
                             );
                           }
                         )}
-                      <div style={{ border: "1px solid blue" }}>
-                        <div>{area.element?.weapon?.damage}</div>
+                      <div>
+                        <span>{area.element?.weapon?.damage}</span>
+
                         <TotAndBonus
                           show={false}
                           firstSign={true}
@@ -356,22 +260,26 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                     <div>
                       <span>{"rnged2w: "}</span>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: "8px",
+                        backgroundColor: "DarkSlateGrey"
+                      }}
+                    >
                       {area.element?.listBabRangedTwoWeaponSpecificBonus &&
                         area.element?.listBabRangedTwoWeaponSpecificBonus.map(
                           (n, index) => {
                             return (
-                              <div
-                                key={index}
-                                style={{ border: "1px solid blue" }}
-                              >
+                              <div key={index}>
                                 <Popup bonusList={n} />
                               </div>
                             );
                           }
                         )}
-                      <div style={{ border: "1px solid blue" }}>
-                        <div>{area.element?.weapon?.damage}</div>
+                      <div>
+                        <span>{area.element?.weapon?.damage}</span>
                         <TotAndBonus
                           show={false}
                           firstSign={true}

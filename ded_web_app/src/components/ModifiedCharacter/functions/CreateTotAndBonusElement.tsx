@@ -1,10 +1,10 @@
 import { Item } from "../../interfaces";
 import {
-  EMPTY_BONUS,
-  ModifierEnum,
-  modifierEnumList
+    EMPTY_BONUS,
+    ModifierEnum,
+    modifierEnumList
 } from "../../Prerequisite/interface/ModifierEnum";
-import { TotAndBonusElement } from "../SummaryChar";
+import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { BonusResultMap, BonusSource } from "./GetBonusResult";
 import { isToAdd } from "./ModifiedCharacter";
 
