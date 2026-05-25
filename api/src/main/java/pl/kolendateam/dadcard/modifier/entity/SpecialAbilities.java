@@ -39,6 +39,8 @@ public class SpecialAbilities implements Serializable {
   @Enumerated(EnumType.STRING)
   ModifierEnum type;
 
+  String attackQualities;
+
   String description;
   Integer dc;
 

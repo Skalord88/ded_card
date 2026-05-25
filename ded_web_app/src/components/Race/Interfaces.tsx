@@ -1,5 +1,6 @@
 import { ClassCharacter } from "../ClassPc/Interface/ClassPcLevel"
 import { Feat } from "../Feats/Interface/FeatInterface"
+import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum"
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite"
 import { Region } from "../Region/interface"
 import { Size } from "../Size/interfaces"
@@ -21,6 +22,7 @@ export type Race = {
 
 export type SpecialAbilities = {
     specialType: number,
+    attackQualities: string,
     name: string,
     type: ModifierEnum,
     description?: string,

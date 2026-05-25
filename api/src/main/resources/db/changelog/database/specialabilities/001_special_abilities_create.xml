@@ -11,6 +11,9 @@
             <column name="special_type" type="int">
                 <constraints nullable="true" />
             </column>
+            <column name="attack_qualities" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
