@@ -199,9 +199,14 @@
     <!-- Great Fortitude [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1010" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{
             &quot;fortitude&quot; : 2
+            }]" /> -->
+      <column name="saving_throw"
+        value="[{
+            &quot;modifier&quot; : &quot;FORTITUDE&quot;,
+            &quot;bonus&quot; : 2
             }]" />
       <column name="text" value="+2 Fortitude" />
     </insert>
@@ -242,7 +247,12 @@
     <!-- Greater Weapon Focus [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1023" />
-      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+      <column name="attack_roll"
+        value="[
+        {
+        &quot;bonus&quot; :1,
+        &quot;target&quot; :[ &quot;SELECTED&quot; ]
+        }]" />
       <column name="text"
         value="You gain a +2 bonus on all damage rolls you make using the selected weapon." />
     </insert>
@@ -284,8 +294,17 @@
     <!-- Improved Critical [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1024" />
-      <column name="attack_roll" value="[{ &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :&quot;TRUE&quot;, &quot;type&quot; :null}]" />
-      <column name="text"
+      <!-- <column name="attack_roll"
+        value="[{ &quot;target&quot; :[ &quot;SELECTED&quot; ], 
+        &quot;improved&quot; :&quot;TRUE&quot;, 
+        &quot;type&quot; :null}]" /> -->
+      <column name="attack_roll"
+        value="[
+        {
+        &quot;bonus&quot; :1,
+        &quot;target&quot; :[ &quot;SELECTED&quot; ]
+        }]" />
+        <column name="text"
         value="Increment range of critical on the selected weapon." />
     </insert>
 
@@ -383,9 +402,14 @@
     <!-- Iron Will [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1013" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{
             &quot;will&quot; : 2
+            }]" /> -->
+      <column name="saving_throw"
+        value="[{
+            &quot;modifier&quot; : &quot;WILL&quot;,
+            &quot;bonus&quot; : 2
             }]" />
       <column name="text" value="+2 Will" />
     </insert>
@@ -403,9 +427,14 @@
     <!-- Lightning Reflexes [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1014" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{
             &quot;reflex&quot; : 2
+            }]" /> -->
+      <column name="saving_throw"
+        value="[{
+            &quot;modifier&quot; : &quot;REFLEX&quot;,
+            &quot;bonus&quot; : 2
             }]" />
       <column name="text" value="+2 Reflex" />
     </insert>
@@ -473,7 +502,18 @@
     <!-- Point Blank Shot [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1019" />
-      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :[&quot;RANGED&quot;]}]" />
+      <!-- <column name="attack_roll"
+        value="[{ &quot;bonus&quot; :1, 
+        &quot;modifierBonus&quot; : null, 
+        &quot;target&quot; :null, 
+        &quot;improved&quot; :null, 
+        &quot;type&quot; :[&quot;RANGED&quot;]}]" /> -->
+        <column name="attack_roll"
+        value="[
+        {
+        &quot;bonus&quot; :1,
+        &quot;target&quot; :[ &quot;RANGED&quot; ]
+        }]" />
       <column name="damage_bonus"
         value="[
           {
@@ -614,7 +654,18 @@
     <!-- Weapon Focus [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1020" />
-      <column name="attack_roll" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : null, &quot;target&quot; :[ &quot;SELECTED&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+      <!-- <column name="attack_roll"
+        value="[{ &quot;bonus&quot; :1, 
+        &quot;modifierBonus&quot; : null, 
+        &quot;target&quot; :[ &quot;SELECTED&quot; ], 
+        &quot;improved&quot; :null, 
+        &quot;type&quot; :null}]" /> -->
+        <column name="attack_roll"
+        value="[
+        {
+        &quot;bonus&quot; :1,
+        &quot;target&quot; :[ &quot;SELECTED&quot; ]
+        }]" />
       <column name="text" value="Proficiency with selected weapon, base attack bonus +1." />
     </insert>
 
@@ -657,13 +708,20 @@
     <!-- Trap Sense mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3002" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ 
         &quot;reflex&quot; : 1,
         &quot;resistance&quot; : [ {
         &quot;target&quot; : [ &quot;TRAP&quot; ]
-      } ] }]" />
-      <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}]" />
+      } ] }]" /> -->
+      <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;REFLEX&quot;,
+        &quot;bonus&quot; : 1,
+        &quot;targets&quot; : [ &quot;TRAP&quot; ]
+      }]" />
+      <column name="armor_class"
+        value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;TRAP&quot; ], &quot;special&quot; :null}]" />
       <column name="text" value="Sense for trap" />
     </insert>
 
@@ -676,27 +734,33 @@
     <!-- Resist Nature's Lure mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3004" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{
         &quot;resistance&quot; : [ {
           &quot;target&quot; : [ &quot;FEY&quot; ],
           &quot;bonus&quot; : 4,
           &quot;type&quot; : &quot;SAVING&quot;
         }]
-      }]" />
+      }]" /> -->
+      <column name="saving_throw"
+        value="[{
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;bonus&quot; : 4,
+        &quot;targets&quot; : [ &quot;FEY&quot; ]
+        }]" />
       <column name="text" value="+4 bonus on saving vs fey" />
     </insert>
 
     <!-- Venom Immunity mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3005" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{
         &quot;resistance&quot; : [ {
           &quot;target&quot; : [ &quot;POISON&quot; ],
           &quot;type&quot; : &quot;IMMUNITY&quot;
         }]
-      }]" />
+      }]" /> -->
       <column name="text" value="immunity to poison" />
     </insert>
 
@@ -718,73 +782,79 @@
     <!-- Still Mind mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3007" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
                     &quot;bonus&quot; : 2
                     } ]
-                }]" />
+                }]" /> -->
+      <column name="saving_throw"
+        value="[{
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;bonus&quot; : 2,
+        &quot;targets&quot; : [ &quot;ENCHANTMENT&quot; ]
+      }]" />
       <column name="text" value="+2 bonus on saving vs enchantment for monk" />
     </insert>
 
     <!-- Purity of Body mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3008" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
       <column name="text" value="immunity to all diseases for monk" />
     </insert>
 
     <!-- Diamond Body mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3009" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
       <column name="text" value="immunity to poisons for monk" />
     </insert>
 
     <!-- Divine Grace mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3010" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;CHARISMA&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
       <column name="text" value="Charisma bonus to saving" />
     </insert>
 
     <!-- Aura of Courage mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3011" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;FEAR&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
       <column name="text" value="Charisma bonus to saving" />
     </insert>
 
     <!-- Divine Health mod -->
     <insert tableName="prerequisite">
       <column name="id" value="3012" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
       <column name="text" value="immunity to all diseases" />
     </insert>
 
@@ -818,7 +888,8 @@
     <insert tableName="prerequisite">
       <column name="id" value="50001" />
       <column name="abilitys" value="{ &quot;constitution&quot; : 13 }" />
-      <column name="armor_class" value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+      <column name="armor_class"
+        value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
       <column name="text" value="Natural armor, Con 13." />
     </insert>
 

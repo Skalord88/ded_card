@@ -1,7 +1,10 @@
 import { Item } from "../../interfaces";
 import {
-    EMPTY_BONUS,
-    ModifierEnum
+  EMPTY_BONUS,
+  FORTITUDE_MODIFIER,
+  ModifierEnum,
+  REFLEX_MODIFIER,
+  WILL_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
@@ -19,7 +22,8 @@ export type BonusResultMap = {
 };
 export const getBonusResult = (
   allPrerequisite: Prerequisite[],
-  bonusType: string
+  bonusType: string,
+  consoleLog?: boolean
 ): BonusResultMap => {
   const allModifiers: BonusResultMap = {};
 
@@ -36,11 +40,11 @@ export const getBonusResult = (
     }
 
     if (!targets) {
-      const newBonusResult = { bonus, text };
+      const newBonusResult: BonusSource = { bonus, text };
       allModifiers[key].push(newBonusResult);
     } else {
       targets.forEach((t) => {
-        const newBonusResult = {
+        const newBonusResult: BonusSource = {
           bonus,
           text,
           source: t
@@ -80,22 +84,19 @@ export const getBonusResult = (
   allPrerequisite.forEach((prer) => {
     if (bonusType === "attackRoll") {
       prer?.attackRoll?.forEach((a) => {
-        // const key = a.modifierBonus
         if (!a.target) {
           createBonusResult(
             a.bonus as number,
             prer.text || "",
-            a.modifierBonus as ModifierEnum
-            // a.modifierBonus as ModifierEnum || null,
+            (a.modifierType as ModifierEnum) || null
           );
         } else {
-          const trg: (ModifierEnum | Item)[] = createTargets(prer, a.target);
-          // if (trg) {
-          // trg.map((t) =>
+          const trg: (ModifierEnum | Item)[] 
+          = createTargets(prer, a.target);
           createBonusResult(
             a.bonus as number,
             prer.text || "",
-            (a.modifierBonus as ModifierEnum) || null,
+            (a.modifierType as ModifierEnum) || null,
             trg
           );
         }
@@ -109,7 +110,7 @@ export const getBonusResult = (
           createBonusResult(
             d.bonus as number,
             prer.text || "",
-            (d.modifierBonus as ModifierEnum) || null
+            d.modifierBonus as ModifierEnum
           );
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, d.target);
@@ -117,7 +118,7 @@ export const getBonusResult = (
           createBonusResult(
             d.bonus as number,
             prer.text || "",
-            (d.modifierBonus as ModifierEnum) || null,
+            d.modifierBonus as ModifierEnum,
             trg
           );
         }
@@ -143,6 +144,29 @@ export const getBonusResult = (
         }
       });
     }
+    if (bonusType === "savingThrow") {
+      prer?.savingThrow?.forEach((sT) => {
+        if(!sT.target){
+        createBonusResult(
+          sT.bonus as number,
+            prer.text || "",
+            (sT.modifierType as ModifierEnum) || null
+        );} else {
+          const trg: (ModifierEnum | Item)[] = createTargets(prer, sT.target);
+
+          createBonusResult(
+            sT.bonus as number,
+            prer.text || "",
+            sT.modifierType as ModifierEnum,
+            trg
+          );
+        }
+      });
+    }
+    if (consoleLog) {
+      console.log(allModifiers);
+    }
+
     if (bonusType === "abilitys") {
       if (prer && prer.abilitys) {
         const modifier = prer.abilitys.modifierBonus;
@@ -167,38 +191,38 @@ export const getBonusResult = (
   return allModifiers;
 };
 
-export const prerequisiteToTotAndBonusList = (
-  prerequisiteAll: Prerequisite[],
-  text: string
-): TotAndBonusElement[] => {
-  let list: TotAndBonusElement[] = [];
-  if (text === "attackRoll") {
-    prerequisiteAll.map((pre) => {
-      if (pre && pre.attackRoll) {
-        pre.attackRoll.forEach((att) => {
-          const trg = att.target;
-          if (trg && trg.length > 0) {
-            trg.forEach((t) => {
-              if (t.text === "Item" && pre.items) {
-                pre.items.forEach((i) =>
-                  list.push({
-                    bonus: att.bonus as number,
-                    text: i.name,
-                    pop: att.modifierBonus || { text: "" }
-                  })
-                );
-              }
-            });
-          } else {
-            list.push({
-              bonus: att.bonus as number,
-              text: pre.text,
-              pop: att.modifierBonus || { text: "Increase" }
-            });
-          }
-        });
-      }
-    });
-  }
-  return list;
-};
+// export const prerequisiteToTotAndBonusList = (
+//   prerequisiteAll: Prerequisite[],
+//   text: string
+// ): TotAndBonusElement[] => {
+//   let list: TotAndBonusElement[] = [];
+//   if (text === "attackRoll") {
+//     prerequisiteAll.map((pre) => {
+//       if (pre && pre.attackRoll) {
+//         pre.attackRoll.forEach((att) => {
+//           const trg = att.target;
+//           if (trg && trg.length > 0) {
+//             trg.forEach((t) => {
+//               if (t.text === "Item" && pre.items) {
+//                 pre.items.forEach((i) =>
+//                   list.push({
+//                     bonus: att.bonus as number,
+//                     text: i.name,
+//                     pop: att.modifierBonus || { text: "" }
+//                   })
+//                 );
+//               }
+//             });
+//           } else {
+//             list.push({
+//               bonus: att.bonus as number,
+//               text: pre.text,
+//               pop: att.modifierBonus || { text: "Increase" }
+//             });
+//           }
+//         });
+//       }
+//     });
+//   }
+//   return list;
+// };

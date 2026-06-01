@@ -11,16 +11,20 @@ import { isToAdd } from "./ModifiedCharacter";
 export const createTotAndBonusElement = (
   map: BonusResultMap,
   testo: boolean,
-  serch?: (string | number)[]
+  serch?: (string | number)[],
+  consoleLog?: boolean
 ): TotAndBonusElement[] => {
   let list: TotAndBonusElement[] = [];
 
   Object.entries(map).forEach(([key, value]) => {
+
+    if(consoleLog) console.log("key", key, "value", value, "serch", serch)
     if (!serch) {
-      const filtered = value.filter((v: BonusSource) => !v.source);
+      const filtered: BonusSource[] = value
+      .filter((v: BonusSource) => !v.source);
 
       // Se il tipo di bonus non si somma, prendo solo il più alto
-      const valuesToUse = isToAdd(key)
+      const valuesToUse: BonusSource[] = isToAdd(key)
         ? filtered
         : filtered.length > 0
         ? [
@@ -32,6 +36,7 @@ export const createTotAndBonusElement = (
 
       valuesToUse.forEach((v: BonusSource) => {
         list.push(
+          /// testo serve a ritornare la description (falso in abilita')
           testo
             ? {
                 bonus: v.bonus,

@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.modifier.dto;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -25,10 +27,9 @@ import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
-import pl.kolendateam.dadcard.savingThrow.MapperSavingThrow;
-import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.dto.PrerequisiteSkillDTO;
 import pl.kolendateam.dadcard.spells.MapperSpells;
@@ -50,11 +51,13 @@ public class PrerequisiteDTO {
   public SpellLevel[] caster;
   public Integer bab;
   public Integer initiative;
-  public AttackRollDTO[] attackRoll;
+  // public AttackRollDTO[] attackRoll;
+  public ModifierBonusDTO[] attackRoll;
   public DamageBonusDTO[] damageBonus;
   public SpeedDTO speed;
   public String spaceReach;
-  public SavingThrowDTO[] savingThrow;
+  // public SavingThrowDTO[] savingThrow;
+  public ModifierBonusDTO[] savingThrow;
   public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
   public ArmorClassDTO[] armorClass;
@@ -87,7 +90,8 @@ public class PrerequisiteDTO {
         : null;
     this.attackRoll =
       pre.getAttackRoll() != null
-        ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())
+        // ? MapperAttackRoll.toAttackRollDTO(pre.getAttackRoll())
+        ? MapperModifierBonus.toModifiersDTO(pre.getAttackRoll())
         : null;
     this.speed =
       pre.getSpeed() != null
@@ -96,7 +100,8 @@ public class PrerequisiteDTO {
     this.spaceReach = pre.getSpaceReach();
     this.savingThrow =
       pre.getSavingThrow() != null
-        ? MapperSavingThrow.toSavingThrowDTOArray(pre.getSavingThrow())
+        // ? MapperSavingThrow.toSavingThrowDTOArray(pre.getSavingThrow())
+        ? MapperModifierBonus.toModifiersDTO(pre.getSavingThrow())
         : null;
     this.specialAttacks =
       pre.getSpecialAttacks() != null

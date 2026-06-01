@@ -1,5 +1,6 @@
 package pl.kolendateam.dadcard.savingThrow;
 
+import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.savingThrow.dto.SavingThrowDTO;
 import pl.kolendateam.dadcard.savingThrow.entity.SavingThrow;
 

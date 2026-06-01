@@ -8,7 +8,7 @@ public class SpecialAbilitiesDTO {
 
   public int id;
   public int specialType;
-  public String attackQualities;
+  public ModifierEnum attackQualities;
   public String name;
   public ModifierEnum type;
   public String description;
@@ -28,7 +28,10 @@ public class SpecialAbilitiesDTO {
     this.specialType = special.getSpecialType();
     this.name = special.getName();
     this.type = special.getType();
-    this.attackQualities = special.getAttackQualities();
+    this.attackQualities =
+      special.getAttackQualities() != null
+        ? special.getAttackQualities()
+        : null;
     this.description = special.getDescription();
     this.dc = special.getDc() != null ? special.getDc() : null;
     this.dcAbility =

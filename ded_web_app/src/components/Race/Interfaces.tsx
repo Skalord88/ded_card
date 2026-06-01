@@ -22,7 +22,7 @@ export type Race = {
 
 export type SpecialAbilities = {
     specialType: number,
-    attackQualities: string,
+    attackQualities: ModifierEnum,
     name: string,
     type: ModifierEnum,
     description?: string,

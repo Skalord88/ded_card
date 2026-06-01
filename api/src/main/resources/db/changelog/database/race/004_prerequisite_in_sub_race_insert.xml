@@ -20,8 +20,12 @@
                 &quot;dexterity&quot; : -2,
                 &quot;charisma&quot; : 2
                 }" />
+            <!-- <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ABERRATIONS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ABERRATIONS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :1,
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;target&quot; :[ &quot;ABERRATIONS&quot; ]}]" />
         </insert>
 
         <insert tableName="prerequisite">
@@ -32,7 +36,7 @@
                 value="{
                 &quot;charisma&quot; : -2
                 }" />
-            <column name="saving_throw"
+            <!-- <column name="saving_throw"
                 value="[{
                 &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
@@ -40,10 +44,14 @@
                     &quot;PARALYSIS&quot; ,
                     &quot;PHANTASMS&quot; ,
                     &quot;POISON&quot; ]
-                } ] }]" />
-            <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
-        </insert>
+                } ] }]" /> -->
+            <!-- <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
+        <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1,
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
+            </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="150004" />
@@ -55,9 +63,14 @@
             <column name="id" value="150005" />
             <!-- Savage Dwarf -->
             <column name="text" value="Savage Dwarf modifiers" />
+            <!-- <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
-            <column name="saving_throw"
+                value="[{ &quot;bonus&quot; :1,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
+            
+                <!-- <column name="saving_throw"
                 value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
@@ -68,10 +81,26 @@
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;DISEASES&quot; ],
                     &quot;bonus&quot; : 4
-                    } ] }]" />
-            <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" />
-        </insert>
+                    } ] }]" /> -->
+            <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;bonus&quot; : 3,
+        &quot;target&quot; : [ &quot;POISON&quot; ]
+    },{
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;bonus&quot; : 4,
+        &quot;target&quot; : [ &quot;DISEASES&quot; ]
+    }]" />
+            <!-- <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
+        <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
+            </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="150006" />
@@ -202,19 +231,23 @@
             <column name="attack_roll"
                 value="[{
                 &quot;bonus&quot; : 1,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
                     &quot;target&quot; : [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ]
-                    , &quot;improved&quot; : null
-                    , &quot;type&quot; : null
                     }]" />
-            <column name="saving_throw"
+            <!-- <column name="saving_throw"
                 value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;bonus&quot; : 1
                     } ]
-                    }]" />
+                    }]" /> -->
+            <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;bonus&quot; : 1
+      }]" />
         </insert>
 
         <insert tableName="prerequisite">

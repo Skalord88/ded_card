@@ -20,7 +20,10 @@ import {
   ABILITY_MODIFIER,
   BASE_VALUE,
   DEFLECTION_BONUS,
-  ModifierEnum
+  FORTITUDE_MODIFIER,
+  ModifierEnum,
+  REFLEX_MODIFIER,
+  WILL_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import {
@@ -96,8 +99,8 @@ export const modifiedCharacter = (
     createPrerequisiteFromClasses(allPrerequisiteWithAbilities, classPcList);
 
   const newAr: BonusResultMap = getBonusResult(
-    allPrerequisiteFromClasses,
-    "attackRoll"
+    allPrerequisiteFromClasses
+    ,"attackRoll"
   );
 
   const newDb: BonusResultMap = getBonusResult(
@@ -114,11 +117,26 @@ export const modifiedCharacter = (
     { bonus: 10, pop: BASE_VALUE }
   ].concat(createTotAndBonusElement(newAc || {}, true));
 
-  const sT: AllModifiers = modifiersFromPrerequisite(
+  const sT: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
     "savingThrow"
+    // , true
   );
-  const sS: AllModifiers = modifiersFromPrerequisite(
+
+  const fortitude: TotAndBonusElement[] = createTotAndBonusElement(
+    {[FORTITUDE_MODIFIER.text] : sT[FORTITUDE_MODIFIER.text] || []},
+    true, undefined, true
+  )
+  const reflex: TotAndBonusElement[] = createTotAndBonusElement(
+    {[REFLEX_MODIFIER.text] : sT[REFLEX_MODIFIER.text] || []},
+    true
+  )
+  const will: TotAndBonusElement[] = createTotAndBonusElement(
+    {[WILL_MODIFIER.text] : sT[WILL_MODIFIER.text] || []},
+    true
+  )
+
+  const sS: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
     "skillStudy"
   );
@@ -226,7 +244,7 @@ export const modifiedCharacter = (
       newDb || {},
       weapon
     );
-    // console.log("updatedDamageMap" , updatedDamageMap)
+
     const isFirstSet: boolean = ["w1", "wA"].includes(position);
     const isSecondSet: boolean = ["w21", "w2A"].includes(position);
     const isLight: boolean = isFirstSet
@@ -434,7 +452,9 @@ export const modifiedCharacter = (
     abilitysMod: newAb,
     attackRollMod: newAr,
     damageBonusMod: newDb,
-    savingThrowMod: sT,
+    fortitude: fortitude,
+    reflex: reflex,
+    will: will,
     skillStudyMod: sS,
     armorClassMod: newAc,
     toListArmorClass: toListArmorClass,
@@ -450,7 +470,13 @@ export const modifiedCharacter = (
 };
 
 export const isToAdd = (key: string): boolean => {
-  return [ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(key);
+  return [
+    FORTITUDE_MODIFIER.text,
+    REFLEX_MODIFIER.text,
+    WILL_MODIFIER.text,
+    ABILITY_MODIFIER.text,
+    DEFLECTION_BONUS.text
+  ].includes(key);
 };
 
 export const returnBonus = (ar: BonusResultMap): number => {

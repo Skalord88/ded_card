@@ -350,7 +350,6 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   list,
   children
 }) => {
-  // console.log(list);
   const total: number = Math.floor(
     list.reduce((tot, element) => tot + (element?.bonus || 0), 0)
   );

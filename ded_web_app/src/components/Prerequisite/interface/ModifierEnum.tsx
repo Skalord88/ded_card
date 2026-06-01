@@ -126,3 +126,21 @@ export const STRENGTH_MODIFIER: ModifierEnum = {
   description: "Strength",
   text: "Strength modifiers"
 };
+export const QUALITY: ModifierEnum = {
+  // description: "Strength",
+  text: "Quality"
+};
+export const ATTACK: ModifierEnum = {
+  // description: "Strength",
+  text: "Attack"
+};
+
+export const FORTITUDE_MODIFIER: ModifierEnum = {
+  text: "Fortitude"
+};
+export const REFLEX_MODIFIER: ModifierEnum = {
+  text: "Reflex"
+};
+export const WILL_MODIFIER: ModifierEnum = {
+  text: "Will"
+};

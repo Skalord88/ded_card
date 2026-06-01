@@ -18,14 +18,14 @@
                 &quot;bonus&quot; : 4,
                 &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;
                 }]" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [
                     &quot;COLD&quot; ,
                     &quot;SLEEP&quot; ,
                     &quot;PARALYSIS&quot;
-                    ] } ] }]" />
+                    ] } ] }]" /> -->
     </insert>
     <!-- Half-Dragon -->
 
@@ -44,11 +44,11 @@
       <column name="speed" value="{
                 &quot;fly&quot; : 30
                 }" />
-      <column name="saving_throw"
+      <!-- <column name="saving_throw"
         value="[{ &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ] } ]
-                    }]" />
+                    }]" /> -->
     </insert>
     <!-- Half-Fiend -->
 

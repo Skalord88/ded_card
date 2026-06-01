@@ -71,10 +71,12 @@ export type ModifiedCharacter = {
   // babRanged: number;
   attackRollMod: BonusResultMap;
   damageBonusMod?: BonusResultMap;
-  savingThrowMod?: AllModifiers;
+  fortitude?: TotAndBonusElement[];
+  reflex?: TotAndBonusElement[];
+  will?: TotAndBonusElement[];
   armorClassMod?: BonusResultMap;
   toListArmorClass?: TotAndBonusElement[];
-  skillStudyMod?: AllModifiers;
+  skillStudyMod?: BonusResultMap;
   adjLevel?: number;
   totLevel?: number;
   race?: SubRace;

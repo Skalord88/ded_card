@@ -86,8 +86,11 @@ public class Prerequisite implements Serializable {
 
   Integer bab;
 
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // AttackRoll[] attackRoll;
+
   @JdbcTypeCode(SqlTypes.JSON)
-  AttackRoll[] attackRoll;
+  ModifierBonus[] attackRoll;
 
   Integer initiative;
 
@@ -96,8 +99,10 @@ public class Prerequisite implements Serializable {
 
   String spaceReach;
 
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // SavingThrow[] savingThrow;
   @JdbcTypeCode(SqlTypes.JSON)
-  SavingThrow[] savingThrow;
+  ModifierBonus[] savingThrow;
 
   @JdbcTypeCode(SqlTypes.JSON)
   SpecialAttacks specialAttacks;
@@ -181,16 +186,17 @@ public class Prerequisite implements Serializable {
     this.bab = preDTO.bab != null ? preDTO.bab : null;
     this.attackRoll =
       preDTO.attackRoll != null
-        ? MapperAttackRoll.toAttackRoll(preDTO.attackRoll)
+        // ? MapperAttackRoll.toAttackRoll(preDTO.attackRoll)
+        ? MapperModifierBonus.toModifiers(preDTO.attackRoll)
         : null;
     this.initiative = preDTO.initiative != null ? preDTO.initiative : null;
     this.speed =
       preDTO.speed != null ? MapperModifierBonus.toSpeed(preDTO.speed) : null;
-    this.spaceReach =
-      preDTO.spaceReach != null ? preDTO.spaceReach : null;
+    this.spaceReach = preDTO.spaceReach != null ? preDTO.spaceReach : null;
     this.savingThrow =
       preDTO.savingThrow != null
-        ? MapperSavingThrow.toSavingThrowArray(preDTO.savingThrow)
+        // ? MapperSavingThrow.toSavingThrowArray(preDTO.savingThrow)
+        ? MapperModifierBonus.toModifiers(preDTO.savingThrow)
         : null;
     this.specialAttacks =
       preDTO.specialAttacks != null

@@ -382,6 +382,8 @@ public enum ModifierEnum {
   LUCK("Luck"),
   UNIVERSAL("Universal"),
 
+  QUALITY("Quality"),
+  ATTACK("Attack"),
   SUPERNATURAL("Supernatural"),
   EXTRAORDINARY("Extraordinary"),
   SPELL_LIKE("Spell Like"),

@@ -9,6 +9,7 @@ import { SpecialAbilities } from "../../Race/Interfaces";
 import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Speed } from "../../Speed/interface";
+import { ModifierBonus } from "./ModifierBonus";
 import { ModifierEnum } from "./ModifierEnum";
 
 export type Prerequisite = {
@@ -18,12 +19,12 @@ export type Prerequisite = {
   featType?: string[];
   caster?: [];
   bab?: Number;
-  attackRoll?: AttackRoll[];
+  attackRoll?: ModifierBonus[];
   damageBonus?: DamageBonus[];
   initiative?: Number;
   speed?: Speed;
   spaceReach?: string;
-  savingThrow?: SavingThrow[];
+  savingThrow?: ModifierBonus[];
   specialAttacks?: SpecialAttacks;
   specialAbilities?: SpecialAbilities[];
   skillStudy?: PrerequisiteSkills[];

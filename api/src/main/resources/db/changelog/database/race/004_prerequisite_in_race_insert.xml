@@ -34,7 +34,7 @@
                 &quot;dexterity&quot; : 2,
                 &quot;constitution&quot; : -2
                 }" />
-            <column name="saving_throw"
+            <!-- <column name="saving_throw"
                 value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
@@ -45,7 +45,14 @@
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;SLEEP&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
+            <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;bonus&quot; : 2,
+        &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
+    }]" />
             <column name="text" value="Elf races modifiers" />
         </insert>
 
@@ -87,7 +94,7 @@
                 &quot;strength&quot; : -2,
                 &quot;dexterity&quot; : 2
                 }" />
-            <column name="saving_throw"
+            <!-- <column name="saving_throw"
                 value="[
                 { 
                 &quot;modifierBonus&quot;: &quot;MORALE_MODIFIER&quot;,
@@ -96,7 +103,14 @@
                     &quot;target&quot; : [ &quot;FEAR&quot; ],
                     &quot;bonus&quot; : 2
                     } ]
-                }]" />
+                }]" /> -->
+            <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;MORALE_MODIFIER&quot;,
+        &quot;bonus&quot; : 2,
+        &quot;target&quot; : [ &quot;FEAR&quot; ]
+    }]" />
             <column name="text" value="Halfling races modifiers" />
         </insert>
         <!-- Halfling modif -->
@@ -132,7 +146,7 @@
             <column name="id" value="100009" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
             <column name="space_reach" value="5/5" />
-            <column name="saving_throw"
+            <!-- <column name="saving_throw"
                 value="[{ 
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
@@ -143,7 +157,14 @@
                     &quot;type&quot; : &quot;IMMUNITY&quot;,
                     &quot;target&quot; : [ &quot;SLEEP&quot; ]
                     } ]
-                }]" />
+                }]" /> -->
+            <column name="saving_throw"
+        value="[{ 
+        &quot;modifier&quot; : &quot;SAVING&quot;,
+        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;bonus&quot; : 2,
+        &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
+    }]" />
         </insert>
         <!-- Half Elf modif -->
 

@@ -10,7 +10,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="1" />
             <column name="special_type" value="2" />
-            <column name="attack_qualities" value="attack" />
+            <column name="attack_qualities" value="ATTACK" />
             <column name="name" value="Black Breath Weapon" />
             <column name="type" value="SUPERNATURAL" />
             <column name="description"
@@ -24,7 +24,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="10" />
             <column name="special_type" value="2" />
-            <column name="attack_qualities" value="attack" />
+            <column name="attack_qualities" value="ATTACK" />
             <column name="name" value="Breath Weapon" />
             <column name="type" value="SUPERNATURAL" />
             <column name="description"
@@ -41,7 +41,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="101" />
             <column name="special_type" value="1" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Low-light Vision" />
             <column name="type" value="SUPERNATURAL" />
             <column name="description"
@@ -51,7 +51,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="102" />
             <column name="special_type" value="1" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Darkvision" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="60" />
@@ -63,7 +63,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="103" />
             <column name="special_type" value="1" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Darkvision" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="120" />
@@ -77,7 +77,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="150" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 5" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="5" />
@@ -86,7 +86,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="151" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 10" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="10" />
@@ -95,7 +95,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="152" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 15" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="15" />
@@ -104,7 +104,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="153" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 20" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="20" />
@@ -113,7 +113,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="154" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 25" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="25" />
@@ -122,7 +122,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="155" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Acid 30" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="30" />
@@ -132,7 +132,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="160" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 5" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="5" />
@@ -141,7 +141,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="161" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 10" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="10" />
@@ -150,7 +150,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="162" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 15" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="15" />
@@ -159,7 +159,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="163" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 20" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="20" />
@@ -168,7 +168,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="164" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 25" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="25" />
@@ -177,7 +177,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="165" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Cold 30" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="30" />
@@ -187,7 +187,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="170" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 5" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="5" />
@@ -196,7 +196,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="171" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 10" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="10" />
@@ -205,7 +205,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="172" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 15" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="15" />
@@ -214,7 +214,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="173" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 20" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="20" />
@@ -223,7 +223,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="174" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 25" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="25" />
@@ -232,7 +232,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="175" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Fire 30" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="30" />
@@ -242,7 +242,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="180" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 5" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="5" />
@@ -251,7 +251,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="181" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 10" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="10" />
@@ -260,7 +260,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="182" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 15" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="15" />
@@ -269,7 +269,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="183" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 20" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="20" />
@@ -278,7 +278,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="184" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 25" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="25" />
@@ -287,7 +287,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="185" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Electricity 30" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="30" />
@@ -298,7 +298,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="190" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 5" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="5" />
@@ -307,7 +307,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="191" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 10" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="10" />
@@ -316,7 +316,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="192" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 15" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="15" />
@@ -325,7 +325,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="193" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 20" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="20" />
@@ -334,7 +334,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="194" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 25" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="25" />
@@ -343,7 +343,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="195" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Resistance To Sonic 30" />
             <column name="type" value="SUPERNATURAL" />
             <column name="value" value="30" />
@@ -354,7 +354,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="201" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 1/-" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="1" />
@@ -363,7 +363,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="202" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 2/-" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="2" />
@@ -372,7 +372,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="203" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 3/-" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="3" />
@@ -381,7 +381,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="204" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 4/-" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="4" />
@@ -390,7 +390,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="205" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/-" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -400,7 +400,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="206" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/piercing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -409,7 +409,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="207" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/piercing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -418,7 +418,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="208" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/piercing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -428,7 +428,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="209" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/bludgeoning" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -437,7 +437,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="210" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/bludgeoning" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -446,7 +446,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="211" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/bludgeoning" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -456,7 +456,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="212" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/slashing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -465,7 +465,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="213" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/slashing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -474,7 +474,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="214" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/slashing" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -484,7 +484,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="215" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/alchemical silver" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -493,7 +493,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="216" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/alchemical silver" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -502,7 +502,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="217" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/alchemical silver" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -512,7 +512,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="218" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/adamantine" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -521,7 +521,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="219" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/adamantine" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -530,7 +530,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="220" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/adamantine" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -541,7 +541,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="221" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/chaotic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -550,7 +550,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="222" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/chaotic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -559,7 +559,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="223" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/chaotic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -569,7 +569,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="224" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/evil" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -578,7 +578,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="225" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/evil" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -596,7 +596,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="227" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/good" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -605,7 +605,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="228" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/good" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -614,7 +614,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="229" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/good" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -624,7 +624,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="230" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/lawful" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -633,7 +633,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="231" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/lawful" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -642,7 +642,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="232" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/lawful" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -653,7 +653,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="251" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/magic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -662,7 +662,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="252" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/magic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -671,7 +671,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="253" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 15/magic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="15" />
@@ -683,7 +683,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="1251" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 5/magic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="5" />
@@ -694,7 +694,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="1252" />
             <column name="special_type" value="3" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Damage reduction 10/magic" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -706,7 +706,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="301" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Spell resistance" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="10" />
@@ -718,7 +718,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="302" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="name" value="Spell resistance" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="value" value="11" />
@@ -728,7 +728,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="303" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="name" value="Spell resistance" />
             <column name="value" value="13" />
@@ -737,7 +737,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="304" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="name" value="Spell resistance" />
             <column name="value" value="15" />
@@ -746,7 +746,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="305" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="name" value="Spell resistance" />
             <column name="value" value="17" />
@@ -755,7 +755,7 @@
         <insert tableName="special_abilities">
             <column name="id" value="306" />
             <column name="special_type" value="4" />
-            <column name="attack_qualities" value="qualities" />
+            <column name="attack_qualities" value="QUALITY" />
             <column name="type" value="EXTRAORDINARY" />
             <column name="name" value="Spell resistance" />
             <column name="value" value="19" />
