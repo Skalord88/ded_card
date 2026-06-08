@@ -161,8 +161,8 @@ export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
           sk.study && sk.study?.length > 0 ? (
             <>
               <SkillWithStudy
-                title={sk.skill.skillName}
-                key={`skillWithStudy-${index}-${sk.skill.skillName}`}
+                title={sk.skill.skillName.text}
+                key={`skillWithStudy-${index}-${sk.skill.skillName.text}`}
               />
               {sk.study.map((st, stIndex) => (
                 <OneStudyShow
@@ -181,7 +181,7 @@ export const SkillsTableComponent: React.FC<SkillShowComponentProps> = ({
             </>
           ) : (
             <OneSkillShow
-              key={`oneSkillShow-${index}-${sk.skill.skillName}`}
+              key={`oneSkillShow-${index}-${sk.skill.skillName.text}`}
               sk={sk}
               bonusAb={BonusAbilities(
                 char.abilitys,

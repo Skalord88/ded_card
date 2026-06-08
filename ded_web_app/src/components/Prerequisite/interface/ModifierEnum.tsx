@@ -144,3 +144,27 @@ export const REFLEX_MODIFIER: ModifierEnum = {
 export const WILL_MODIFIER: ModifierEnum = {
   text: "Will"
 };
+
+export const SAVING: ModifierEnum = {
+  text: "Saving Throw"
+}
+
+export const THROWN: ModifierEnum = {
+  text: "Thrown"
+}
+
+export const RANGED: ModifierEnum = {
+  text: "Ranged"
+}
+
+export const MELEE: ModifierEnum = {
+  text: "Melee"
+}
+
+export const DAMAGE: ModifierEnum = {
+  text: "Damage"
+}
+
+export const GRAPPLE: ModifierEnum = {
+  text: "Grapple"
+}

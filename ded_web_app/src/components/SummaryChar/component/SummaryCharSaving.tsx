@@ -7,18 +7,18 @@ export const SummaryCharSaving: React.FC<SummaryCharProps> = ({
 
   return (
     <>
-      <div>
+     <div>
         <p>Saves:</p>
       </div>
       <div>
         <div>
-          <TotAndBonus show={true} firstSign={true} list={modCharacter.fortitude || []} />
+          <div><p>fortitude</p></div><TotAndBonus show={true} firstSign={true} list={modCharacter.fortitude || []} />
         </div>
         <div>
-          <TotAndBonus show={true} firstSign={true} list={modCharacter.reflex || []} />
+          <div><p>reflex</p></div><TotAndBonus show={true} firstSign={true} list={modCharacter.reflex || []} />
         </div>
         <div>
-          <TotAndBonus show={true} firstSign={true} list={modCharacter.will || []} />
+          <div><p>will</p></div><TotAndBonus show={true} firstSign={true} list={modCharacter.will || []} />
         </div>
       </div>
     </>

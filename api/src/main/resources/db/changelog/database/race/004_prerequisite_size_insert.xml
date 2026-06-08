@@ -22,7 +22,8 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :4, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;
+                }]" />
             <column name="text" value="Fine size modifiers" />
         </insert>
 
@@ -43,7 +44,7 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :3, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;}]" />
             <column name="text" value="Diminutive size modifiers" />
         </insert>
 
@@ -64,7 +65,7 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :2, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;}]" />
             <column name="text" value="Tiny size modifiers" />
         </insert>
 
@@ -85,7 +86,7 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;}]" />
             <column name="text" value="Small size modifiers" />
         </insert>
 
@@ -111,7 +112,7 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; : -1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; : -1, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;}]" />
             <column name="text" value="Large size modifiers" />
         </insert>
 
@@ -132,7 +133,8 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; : -2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; : -2, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;
+                }]" />
             <column name="text" value="Huge size modifiers" />
         </insert>
 
@@ -153,7 +155,8 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; : -3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; : -3, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;
+                }]" />
             <column name="text" value="Gargantuan size modifiers" />
         </insert>
 
@@ -174,7 +177,8 @@
             &quot;target&quot; :[&quot;GRAPPLE&quot;]
             }]" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; : -4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; : -4, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;
+                }]" />
             <column name="text" value="Colossal size modifiers" />
         </insert>
     </changeSet>

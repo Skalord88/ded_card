@@ -10,7 +10,11 @@
             <!-- Dwarf modif -->
             <column name="speed" value="{ &quot;foot&quot; : 20 }" />
             <column name="space_reach" value="5/5" />
-            <column name="armor_class" value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;DODGE_BONUS&quot;, &quot;target&quot; :[ &quot;GIANT&quot; ], &quot;special&quot; :&quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;}]" />
+            <column name="armor_class" value="[{ &quot;bonus&quot; :4, 
+            &quot;modifierType&quot; : &quot;DODGE_BONUS&quot;, 
+            &quot;target&quot; :[ &quot;GIANT&quot; ] }]" 
+            />
+            <!--, &quot;special&quot; :&quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;  -->
             <column name="special_attacks"
                 value="{
                 &quot;vsBullRush&quot;: 4,
@@ -48,11 +52,12 @@
                 }]" /> -->
             <column name="saving_throw"
         value="[{ 
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+        
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
     }]" />
+    <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
             <column name="text" value="Elf races modifiers" />
         </insert>
 
@@ -106,7 +111,7 @@
                 }]" /> -->
             <column name="saving_throw"
         value="[{ 
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+        
         &quot;modifierType&quot;: &quot;MORALE_MODIFIER&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;FEAR&quot; ]
@@ -147,7 +152,7 @@
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
             <column name="space_reach" value="5/5" />
             <!-- <column name="saving_throw"
-                value="[{ 
+                value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
@@ -159,12 +164,12 @@
                     } ]
                 }]" /> -->
             <column name="saving_throw"
-        value="[{ 
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+        value="[{
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
     }]" />
+    <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
         </insert>
         <!-- Half Elf modif -->
 

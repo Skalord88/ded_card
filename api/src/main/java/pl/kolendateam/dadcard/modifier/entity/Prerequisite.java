@@ -43,6 +43,7 @@ import pl.kolendateam.dadcard.items.entity.Item;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
+import pl.kolendateam.dadcard.modifier.dto.ModifierBonusDTO;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteDTO;
 import pl.kolendateam.dadcard.modifier.dto.PrerequisiteFeatsDTO;
 import pl.kolendateam.dadcard.race.entity.Speed;
@@ -115,8 +116,10 @@ public class Prerequisite implements Serializable {
   )
   List<PrerequisiteSkills> prerequisiteSkillsStudy = new ArrayList<>();
 
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // ArmorClass[] armorClass;
   @JdbcTypeCode(SqlTypes.JSON)
-  ArmorClass[] armorClass;
+  ModifierBonus[] armorClass;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
@@ -135,8 +138,10 @@ public class Prerequisite implements Serializable {
   @JdbcTypeCode(SqlTypes.JSON)
   ClassPcLevel[] classPc;
 
+  // @JdbcTypeCode(SqlTypes.JSON)
+  // DamageBonus[] damageBonus;
   @JdbcTypeCode(SqlTypes.JSON)
-  DamageBonus[] damageBonus;
+  ModifierBonus[] damageBonus;
 
   @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(
@@ -208,7 +213,7 @@ public class Prerequisite implements Serializable {
         : null;
     this.armorClass =
       preDTO.armorClass != null
-        ? MapperArmorClass.toArmorClass(preDTO.armorClass)
+        ? MapperModifierBonus.toModifiers(preDTO.armorClass)
         : null;
     this.armorType = preDTO.armorType != null ? preDTO.armorType : null;
     this.weaponType = preDTO.weaponType != null ? preDTO.weaponType : null;
@@ -217,7 +222,7 @@ public class Prerequisite implements Serializable {
     this.classPc = preDTO.classPc != null ? preDTO.classPc : null;
     this.damageBonus =
       preDTO.damageBonus != null
-        ? MapperAttackRoll.toDamageBonus(preDTO.damageBonus)
+        ? MapperModifierBonus.toModifiers(preDTO.damageBonus)
         : null;
     this.items =
       preDTO.items != null

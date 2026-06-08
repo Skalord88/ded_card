@@ -1,8 +1,8 @@
 import { Item } from "../../interfaces";
 import {
-    EMPTY_BONUS,
-    ModifierEnum,
-    modifierEnumList
+  EMPTY_BONUS,
+  ModifierEnum,
+  modifierEnumList
 } from "../../Prerequisite/interface/ModifierEnum";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { BonusResultMap, BonusSource } from "./GetBonusResult";
@@ -17,22 +17,27 @@ export const createTotAndBonusElement = (
   let list: TotAndBonusElement[] = [];
 
   Object.entries(map).forEach(([key, value]) => {
+    if (consoleLog) {
+      console.log("KEY:", key, "VALUES:", value);
+      // console.log();
+      // console.log("SEARCH:", serch);
+    }
 
-    if(consoleLog) console.log("key", key, "value", value, "serch", serch)
     if (!serch) {
-      const filtered: BonusSource[] = value
-      .filter((v: BonusSource) => !v.source);
+      const filtered: BonusSource[] = value.filter(
+        (v: BonusSource) => !v.source
+      );
 
       // Se il tipo di bonus non si somma, prendo solo il più alto
       const valuesToUse: BonusSource[] = isToAdd(key)
         ? filtered
         : filtered.length > 0
-        ? [
-            filtered.reduce((max, curr) =>
-              curr.bonus > max.bonus ? curr : max
-            )
-          ]
-        : [];
+          ? [
+              filtered.reduce((max, curr) =>
+                curr.bonus > max.bonus ? curr : max
+              )
+            ]
+          : [];
 
       valuesToUse.forEach((v: BonusSource) => {
         list.push(
@@ -41,22 +46,20 @@ export const createTotAndBonusElement = (
             ? {
                 bonus: v.bonus,
                 text: key,
-                pop:
-                  modifierEnumList.filter((m) => m.text === v.text)[0] || {
-                    ...EMPTY_BONUS,
-                    description: key,
-                    text: v.text
-                  }
+                pop: modifierEnumList.filter((m) => m.text === v.text)[0] || {
+                  ...EMPTY_BONUS,
+                  description: key,
+                  text: v.text
+                }
               }
             : {
                 bonus: v.bonus,
                 text: undefined,
-                pop:
-                  modifierEnumList.filter((m) => m.text === v.text)[0] || {
-                    ...EMPTY_BONUS,
-                    description: key,
-                    text: v.text
-                  }
+                pop: modifierEnumList.filter((m) => m.text === v.text)[0] || {
+                  ...EMPTY_BONUS,
+                  description: key,
+                  text: v.text
+                }
               }
         );
       });
@@ -70,6 +73,13 @@ export const createTotAndBonusElement = (
             s === (v.source as Item)?.id ||
             s === (v.source as ModifierEnum)?.text
           ) {
+            if (consoleLog) {
+            console.log(
+              "SEARCH:",
+              s,
+              "SOURCE:", (v.source as ModifierEnum).text || (v.source as Item)?.id
+            );
+          }
             list.push({
               bonus: v.bonus,
               text: key,

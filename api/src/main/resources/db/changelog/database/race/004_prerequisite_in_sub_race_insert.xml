@@ -21,7 +21,9 @@
                 &quot;charisma&quot; : 2
                 }" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ABERRATIONS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+            &quot;target&quot; :[ &quot;ABERRATIONS&quot; ], &quot;improved&quot; :null,
+            &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
                 &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
@@ -46,12 +48,14 @@
                     &quot;POISON&quot; ]
                 } ] }]" /> -->
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
-        <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+            &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
+            :null, &quot;type&quot; :null}]" /> -->
+            <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
                 &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
                 &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
-            </insert>
+        </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="150004" />
@@ -64,13 +68,15 @@
             <!-- Savage Dwarf -->
             <column name="text" value="Savage Dwarf modifiers" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+            &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
+            :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
                 &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
                 &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
-            
-                <!-- <column name="saving_throw"
+
+            <!-- <column name="saving_throw"
                 value="[{
                 &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
@@ -82,25 +88,29 @@
                     &quot;target&quot; : [ &quot;DISEASES&quot; ],
                     &quot;bonus&quot; : 4
                     } ] }]" /> -->
+            <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
             <column name="saving_throw"
-        value="[{ 
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+                value="[{ 
+        
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 3,
         &quot;target&quot; : [ &quot;POISON&quot; ]
     },{
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+        
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 4,
         &quot;target&quot; : [ &quot;DISEASES&quot; ]
     }]" />
+            <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;, &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
-        <column name="attack_roll"
+                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+            &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
+            :null, &quot;type&quot; :null}]" /> -->
+            <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
                 &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
                 &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
-            </insert>
+        </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="150006" />
@@ -243,11 +253,12 @@
                     } ]
                     }]" /> -->
             <column name="saving_throw"
-        value="[{ 
-        &quot;modifier&quot; : &quot;SAVING&quot;,
+                value="[{
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
-        &quot;bonus&quot; : 1
+        &quot;bonus&quot; : 1,
+        &quot;target&quot; : [ &quot;SAVING&quot; ]
       }]" />
+            <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
         </insert>
 
         <insert tableName="prerequisite">
@@ -270,7 +281,9 @@
                 &quot;charisma&quot; : -2
                 }" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;NATURAL_ARMOR_BONUS&quot;, &quot;target&quot; :null, &quot;special&quot; :null}]" />
+                value="[{ &quot;bonus&quot; :2, 
+                &quot;modifierType&quot; : &quot;NATURAL_ARMOR_BONUS&quot;
+                }]" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
             <column name="space_reach" value="5/5" />
         </insert>

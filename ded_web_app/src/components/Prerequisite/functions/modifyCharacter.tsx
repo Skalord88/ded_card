@@ -32,7 +32,7 @@ import { SpecialAbilities } from "../../Race/Interfaces";
 import { CountSavingThrowFromClassPc } from "../../Saving/Functions";
 import { SavingThrow } from "../../Saving/interface";
 import { Size } from "../../Size/interfaces";
-import { createSkillsList } from "../../Skills/functions/function";
+// import { createSkillsList } from "../../Skills/functions/function";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillsInList } from "../../Skills/interface/SkillsInList";
 import { getAllSpecialAbilities } from "../../SpecialAbilities/function";
@@ -451,7 +451,8 @@ export const modifyCharacter = (
           },
     proficency: allProficency,
     skills: findSkillsPrerequisite(prer),
-    skillsList: createSkillsList(char),
+    skillsList: [],
+    //  createSkillsList(char),
     skillsPointToSpent: maxSkillPnts,
     speed: findSpeedPrerequisite(prer),
     feats: allFeats,

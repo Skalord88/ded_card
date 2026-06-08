@@ -20,7 +20,7 @@ export type Prerequisite = {
   caster?: [];
   bab?: Number;
   attackRoll?: ModifierBonus[];
-  damageBonus?: DamageBonus[];
+  damageBonus?: ModifierBonus[];
   initiative?: Number;
   speed?: Speed;
   spaceReach?: string;
@@ -28,7 +28,7 @@ export type Prerequisite = {
   specialAttacks?: SpecialAttacks;
   specialAbilities?: SpecialAbilities[];
   skillStudy?: PrerequisiteSkills[];
-  armorClass?: ArmorClass[];
+  armorClass?: ModifierBonus[];
   armorType?: ModifierEnum;
   weaponType?: ModifierEnum;
   schools?: string[];

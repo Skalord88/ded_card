@@ -13,7 +13,7 @@ import { urlChar, urlSpellsAdd, urlSpellsList } from "../components/url";
 import {} from "../components/variables";
 import { PageLayout } from "./AppLayout";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../components/functions";
+import { addToDrop } from "../components/functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { FormattingText } from "../components/Formatting/Function";

@@ -5,15 +5,18 @@ import {
 } from "../components/Buttons/Buttons";
 import { Footer } from "../components/Footer";
 import { NavRpg } from "../components/Nav";
+import { SkillProvider } from "../components/Skills/Skills/Const";
 
 export const AppLayout: React.FC = () => {
   return (
     <div className="rpgui-content rpgui-cursor-default">
+      <SkillProvider>
       <AppLayoutTemplate>
         <NavRpg />
         <Outlet />
         <Footer />
       </AppLayoutTemplate>
+      </SkillProvider>
     </div>
   );
 };

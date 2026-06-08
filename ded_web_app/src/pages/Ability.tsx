@@ -10,12 +10,13 @@ import { modifiedCharacter } from "../components/ModifiedCharacter/functions/Mod
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
 import {
-    SummaryChar,
-    TotAndBonus,
-    TotAndBonusElement
+  SummaryChar,
+  TotAndBonus,
+  TotAndBonusElement
 } from "../components/SummaryChar/SummaryChar";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { useSkills } from "../components/Skills/Skills/Const";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -26,31 +27,65 @@ export function Ability() {
   const [char, setChar] = useState<CharacterPc>();
   const [modChar, setModChar] = useState<ModifiedCharacter>();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resChar = await axios.get(urlChar + "/" + charId);
-        const charData: CharacterPc = resChar.data;
-        setAbilitys(charData.abilitys);
-        setChar(charData);
+  const { skillsFromDb, studiesFromDb, loading } = useSkills();
 
-        const modChar: ModifiedCharacter = modifiedCharacter(charData);
-        setModChar(modChar);
-        // setAbilitys(modChar.abilitys);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [charId]);
+useEffect(() => {
+  if (loading || !skillsFromDb?.length) return;
+
+  const fetchData = async () => {
+    try {
+      const resChar = await axios.get(urlChar + "/" + charId);
+      const charData: CharacterPc = resChar.data;
+
+      setAbilitys(charData.abilitys);
+      setChar(charData);
+
+      // console.log("Fetched character data:", skillsFromDb, studiesFromDb);
+
+      const modChar = modifiedCharacter(
+        charData,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        skillsFromDb,
+        studiesFromDb
+      );
+
+      setModChar(modChar);
+
+      // Se vuoi usare le ability modificate:
+      // setAbilitys(modChar.abilitys);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchData();
+}, [charId, skillsFromDb, studiesFromDb, loading]);
 
   useEffect(() => {
+    if (loading || !skillsFromDb?.length) return;
     // console.log("useEffect");
     if (char && abilitys) {
-      const newModChar: ModifiedCharacter = modifiedCharacter(char, abilitys);
+      const newModChar: ModifiedCharacter = modifiedCharacter(char, abilitys,
+       undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        skillsFromDb,
+        studiesFromDb);
       setModChar(newModChar);
     }
-  }, [char, abilitys]);
+  }, [char, abilitys, skillsFromDb, studiesFromDb, loading]);
 
   const handleData = (
     option: number,

@@ -8,6 +8,8 @@ import {
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { Skill } from "../../Skills/interface/Skill";
+import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { HitDiceMap } from "../../Vita/Functions";
 import { BonusResultMap } from "../functions/GetBonusResult";
@@ -63,20 +65,22 @@ export type AllModifiers = {
 };
 
 export type ModifiedCharacter = {
-  title: string;
-  abilitys: Abilitys;
+  title?: string;
+  abilitys?: Abilitys;
   abilitysMod?: BonusResultMap;
   // bab: number;
   // babMelee: number;
   // babRanged: number;
-  attackRollMod: BonusResultMap;
+  attackRollMod?: BonusResultMap;
   damageBonusMod?: BonusResultMap;
   fortitude?: TotAndBonusElement[];
   reflex?: TotAndBonusElement[];
   will?: TotAndBonusElement[];
   armorClassMod?: BonusResultMap;
   toListArmorClass?: TotAndBonusElement[];
-  skillStudyMod?: BonusResultMap;
+  skillsTotAndBonus?: {skill: Skill | Study, list:TotAndBonusElement[]}[]
+  // skillStudyMod?: BonusResultMap;
+  // skills?: SkillCharacter[];
   adjLevel?: number;
   totLevel?: number;
   race?: SubRace;

@@ -4,7 +4,6 @@ import { FormattingText } from "../../Formatting/Function";
 import { BonusAbilities, signAndCount } from "../../functions";
 import { D20Popup } from "../../Popup/DicePopup/D20Popup";
 import { DicePopupProps } from "../../Popup/DicePopup/Interface";
-import { CharToModify } from "../../Prerequisite/functions/modifyCharacter";
 import { PrerequisiteSkills } from "../interface/PrerequisiteSkills";
 import { Skill } from "../interface/Skill";
 import { SkillsInList } from "../interface/SkillsInList";
@@ -52,8 +51,8 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
           sk.study && sk.study?.length > 0 ? (
             <>
               <SkillWithStudy
-                title={sk.skill.skillName}
-                key={`skillWithStudy-${index}-${sk.skill.skillName}`}
+                title={sk.skill.skillName.text}
+                key={`skillWithStudy-${index}-${sk.skill.skillName.text}`}
               />
               {sk.study.map((st, stIndex) => (
                 <OneStudyShow
@@ -71,7 +70,7 @@ export const SkillShowComponent: React.FC<SkillShowComponentProps> = ({
             </>
           ) : (
             <OneSkillShow
-              key={`oneSkillShow-${index}-${sk.skill.skillName}`}
+              key={`oneSkillShow-${index}-${sk.skill.skillName.text}`}
               sk={sk}
               bonusAb={BonusAbilities(
                 char.abilitys,
@@ -162,9 +161,9 @@ export const OneSkillShow: React.FC<OneSkillShowProps> = ({
       <div className={abilityBackgroundColor(sk.classSkill, sk.skill.ability)}>
         <p>
           <ModSkillStudyInDice
-            key={sk.skill.id + "." + sk.skill.skillName}
+            key={sk.skill.id + "." + sk.skill.skillName.text}
             dice={{
-              textOrWeapon: FormattingText(sk.skill.skillName),
+              textOrWeapon: FormattingText(sk.skill.skillName.text),
               value: tot,
               modifiers: {}
             }}
@@ -253,7 +252,7 @@ export const OneStudyShow: React.FC<OneStudyShowProps> = ({
       <div className={abilityBackgroundColor(false, skill.ability)}>
         <p>
           <ModSkillStudyInDice
-            key={study.study.id + "." + skill.skillName}
+            key={study.study.id + "." + skill.skillName.text}
             dice={{
               textOrWeapon: FormattingText(name),
               value: tot,
@@ -328,16 +327,16 @@ export const SkillSummaryComponent: React.FC<SkillShowComponentProps> = ({
     const text: string =
       s.study && s.study?.length > 0
         ? s.study
-            .flatMap((st) => s.skill.skillName + " " + st.study.studyName)
+            .flatMap((st) => s.skill.skillName.text + " " + st.study.studyName)
             .join(", ")
-        : s.skill.skillName;
+        : s.skill.skillName.text;
 
     return s.classSkill ? { skillText: text } : [];
   });
   const skillsNotZero: SkillsSummary[] = char.skills.mono.flatMap((s) =>
     s.skill && s.rank > 0
       ? {
-          skillText: FormattingText(s.skill.skillName),
+          skillText: FormattingText(s.skill.skillName.text),
           sign: signAndCount([s.rank]).sign,
           value: s.rank
         }

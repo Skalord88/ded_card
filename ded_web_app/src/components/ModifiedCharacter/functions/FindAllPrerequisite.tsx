@@ -3,6 +3,7 @@ import { ClassFeats, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Attacks, CharacterPc, Inventory, Weapon } from "../../interfaces";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SubRace, Archetype } from "../../Race/Interfaces";
+import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 
 export const findAllPrerequisite = (
   race?: SubRace,
@@ -10,7 +11,8 @@ export const findAllPrerequisite = (
   featsList?: FeatPc[],
   classPcList?: ClassPc[],
   inventory?: Inventory,
-  attacks?: Attacks
+  attacks?: Attacks,
+  skills?: SkillCharacter[]
 ): Prerequisite[] => {
   let allPrerequisite: Prerequisite[] = [];
 

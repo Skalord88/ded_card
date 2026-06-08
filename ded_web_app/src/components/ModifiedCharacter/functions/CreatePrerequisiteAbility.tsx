@@ -1,27 +1,61 @@
+import {
+  AbilityEnum,
+} from "../../Abilitys/AbilityEnum";
 import { Abilitys } from "../../Abilitys/Interface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ModifierBonus } from "../../Prerequisite/interface/ModifierBonus";
 import {
+  ABILITY_MODIFIER,
   EMPTY_BONUS,
   FORTITUDE_MODIFIER,
+  GRAPPLE,
+  MELEE,
   ModifierEnum,
+  RANGED,
   REFLEX_MODIFIER,
+  THROWN,
   WILL_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SavingThrow } from "../../Saving/interface";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { Skill } from "../../Skills/interface/Skill";
+import { Study } from "../../Skills/interface/Study";
 
 export const createPrerequisiteAbility = (
   allPrerequisite: Prerequisite[],
-  ability: Abilitys
+  ability: Abilitys,
+  skillsFromDb?: Skill[],
+  studiesFromDb?: Study[]
 ): Prerequisite[] => {
+  // console.log("createPrerequisiteAbility", ability, skillsFromDb, studiesFromDb)
+
+  // console.log(STRENGTH);
+
   const modStrength: number = Math.floor((ability.strength - 10) / 2);
+  const skillsStrength =
+  skillsFromDb?.filter(
+    (skill) => skill.ability === "STRENGTH"
+  ) || [];
+
+    // console.log("skillsStrength", skillsStrength);
   const modDexterity: number = Math.floor((ability.dexterity - 10) / 2);
+  const skillsDexterity: Skill[] =
+    skillsFromDb?.filter((skill) => skill.ability === "DEXTERITY") || [];
   const modConstitution: number = Math.floor((ability.constitution - 10) / 2);
+  const skillsConstitution: Skill[] =
+    skillsFromDb?.filter((skill) => skill.ability === "CONSTITUTION") || [];
   const modIntelligence: number = Math.floor((ability.intelligence - 10) / 2);
+  const skillsIntelligence: Skill[] =
+    skillsFromDb?.filter((skill) => skill.ability === "INTELLIGENCE") || [];
+  const studiesIntelligence: Study[] = studiesFromDb || [];
   const modWisdom: number = Math.floor((ability.wisdom - 10) / 2);
+  const skillsWisdom: Skill[] =
+    skillsFromDb?.filter((skill) => skill.ability === "WISDOM") || [];
   const modCharisma: number = Math.floor((ability.charisma - 10) / 2);
+  const skillsCharisma: Skill[] =
+    skillsFromDb?.filter((skill) => skill.ability === "CHARISMA") || [];
 
   const strenghtPrerequisite: Prerequisite = {
     id: -1,
@@ -30,15 +64,10 @@ export const createPrerequisiteAbility = (
     attackRoll: [
       {
         bonus: modStrength,
-        // modifierBonus: ABILITY_MODIFIER as ModifierEnum,
-        modifierType: {
-          ...EMPTY_BONUS,
-          description: "Increase Melee and Grapple attacks",
-          text: "Strength"
-        } as ModifierEnum,
+        modifierType: ABILITY_MODIFIER,
         target: [
-          { text: "Melee" } as ModifierEnum,
-          { text: "Grapple" } as ModifierEnum
+          MELEE,
+          GRAPPLE
         ]
       } as ModifierBonus
     ],
@@ -46,17 +75,19 @@ export const createPrerequisiteAbility = (
     damageBonus: [
       {
         bonus: modStrength,
-        modifierBonus: {
-          ...EMPTY_BONUS,
-          description: "Increase Melee e Thrown damage",
-          text: "Strength"
-        } as ModifierEnum,
+        modifierType: ABILITY_MODIFIER,
         target: [
-          { text: "Melee" } as ModifierEnum,
-          { text: "Thrown" } as ModifierEnum
+          MELEE,
+          THROWN
         ]
       } as DamageBonus
-    ]
+    ],
+
+    skillStudy: skillsStrength.map((skill) => ({
+      skill:skill,
+      rank: modStrength,
+      modifierBonus: ABILITY_MODIFIER
+    })) as PrerequisiteSkills[]
   } as Prerequisite;
   const dexterityPrerequisite: Prerequisite = {
     id: -1,
@@ -65,31 +96,24 @@ export const createPrerequisiteAbility = (
     armorClass: [
       {
         bonus: modDexterity,
-        modifierBonus: {
-          ...EMPTY_BONUS,
-          description: "Increase Armor Class",
-          text: "Dexterity"
-        } as ModifierEnum
+        modifierType: ABILITY_MODIFIER
       }
     ],
 
     attackRoll: [
       {
         bonus: modDexterity,
-        modifierType: {
-          ...EMPTY_BONUS,
-          description: "Increase Ranged attack",
-          text: "Dexterity"
-        } as ModifierEnum,
-        target: [{ text: "Ranged" } as ModifierEnum]
+        modifierType: ABILITY_MODIFIER,
+        target: [RANGED, THROWN]
       } as ModifierBonus
     ],
 
     savingThrow: [
       {
-        modifier: REFLEX_MODIFIER,
-        modifierType: REFLEX_MODIFIER,
-        bonus: modDexterity
+        // modifier: REFLEX_MODIFIER,
+        modifierType: ABILITY_MODIFIER,
+        bonus: modDexterity,
+        target: [REFLEX_MODIFIER]
       } as ModifierBonus
     ]
   } as Prerequisite;
@@ -100,9 +124,10 @@ export const createPrerequisiteAbility = (
 
     savingThrow: [
       {
-        modifier: FORTITUDE_MODIFIER,
-        modifierType: FORTITUDE_MODIFIER,
-        bonus: modConstitution
+        // modifier: FORTITUDE_MODIFIER,
+        modifierType: ABILITY_MODIFIER,
+        bonus: modConstitution,
+        target: [FORTITUDE_MODIFIER]
       } as ModifierBonus
     ]
   } as Prerequisite;
@@ -113,9 +138,10 @@ export const createPrerequisiteAbility = (
 
     savingThrow: [
       {
-        modifier: WILL_MODIFIER,
-        modifierType: WILL_MODIFIER,
-        bonus: modWisdom
+        // modifier: WILL_MODIFIER,
+        modifierType: ABILITY_MODIFIER,
+        bonus: modWisdom,
+        target: [WILL_MODIFIER]
       } as ModifierBonus
     ]
   } as Prerequisite;

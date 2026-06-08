@@ -53,14 +53,16 @@ public class PrerequisiteDTO {
   public Integer initiative;
   // public AttackRollDTO[] attackRoll;
   public ModifierBonusDTO[] attackRoll;
-  public DamageBonusDTO[] damageBonus;
+  // public DamageBonusDTO[] damageBonus;
+  public ModifierBonusDTO[] damageBonus;
   public SpeedDTO speed;
   public String spaceReach;
   // public SavingThrowDTO[] savingThrow;
   public ModifierBonusDTO[] savingThrow;
   public SpecialAttacksDTO specialAttacks;
   public List<PrerequisiteSkillDTO> skillStudy;
-  public ArmorClassDTO[] armorClass;
+  // public ArmorClassDTO[] armorClass;
+  public ModifierBonusDTO[] armorClass;
   public ArmorsEnum armorType;
   public WeaponCategoriesEnum weaponType;
   public List<SchoolDTO> schools;
@@ -86,7 +88,7 @@ public class PrerequisiteDTO {
     this.bab = pre.getBab() != null ? pre.getBab() : null;
     this.damageBonus =
       pre.getDamageBonus() != null
-        ? MapperAttackRoll.toDamageBonusDTO(pre.getDamageBonus())
+        ? MapperModifierBonus.toModifiersDTO(pre.getDamageBonus())
         : null;
     this.attackRoll =
       pre.getAttackRoll() != null
@@ -113,7 +115,7 @@ public class PrerequisiteDTO {
         : null;
     this.armorClass =
       pre.getArmorClass() != null
-        ? MapperArmorClass.toArmorClassDTO(pre.getArmorClass())
+        ? MapperModifierBonus.toModifiersDTO(pre.getArmorClass())
         : null;
     this.armorType = pre.getArmorType() != null ? pre.getArmorType() : null;
     this.weaponType = pre.getWeaponType() != null ? pre.getWeaponType() : null;

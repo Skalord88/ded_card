@@ -1,4 +1,6 @@
 export const FormattingText = (text: string): string => {
+
+  if (text === undefined || text === null || text === "") return "";
   const newText: string = text.replace(/_/g, " ").toLowerCase()
 
   return newText

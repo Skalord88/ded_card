@@ -22,7 +22,9 @@ import {
   DEFLECTION_BONUS,
   FORTITUDE_MODIFIER,
   ModifierEnum,
+  RACIAL_BONUS,
   REFLEX_MODIFIER,
+  SAVING,
   WILL_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
@@ -31,6 +33,9 @@ import {
   findAllAdjLevelInRaceAndArchetypes
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
+import { Skill } from "../../Skills/interface/Skill";
+import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
+import { useSkills } from "../../Skills/Skills/Const";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
@@ -59,7 +64,10 @@ export const modifiedCharacter = (
   newFeatsList?: FeatPc[],
   newClasses?: ClassPc[],
   newInventory?: Inventory,
-  newAttacks?: Attacks
+  newAttacks?: Attacks,
+  newSkills?: SkillCharacter[],
+  skillsFromDb?: Skill[],
+  studiesFromDb?: Study[]
 ): ModifiedCharacter => {
   const ability: Abilitys = newAbilitys ?? char.abilitys;
   const race: SubRace = newRace ?? char.race;
@@ -68,6 +76,7 @@ export const modifiedCharacter = (
   const classPcList: ClassPc[] = newClasses ?? char.classPcList;
   const inventory: Inventory = newInventory ?? char.inventory;
   const attacks: Attacks = newAttacks ?? char.attacks;
+  const skills: SkillCharacter[] = newSkills ?? char.skillsCharacter;
 
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
     race,
@@ -75,10 +84,11 @@ export const modifiedCharacter = (
     featsList,
     classPcList,
     inventory,
-    attacks
+    attacks,
+    skills
   );
 
-  const nAttacksSecond = findIdsFeatsInList(
+  const nAttacksSecond: number = findIdsFeatsInList(
     allPrerequisite,
     (f) => f.feats?.map((ft) => ft.id),
     "Feat"
@@ -92,15 +102,28 @@ export const modifiedCharacter = (
 
   const newAbility: Abilitys = addModdedAbilitysToAbilitys(ability, newAb);
 
+  // console.log("skillsFromDb", skillsFromDb);
+
   const allPrerequisiteWithAbilities: Prerequisite[] =
-    createPrerequisiteAbility(allPrerequisite, newAbility);
+    createPrerequisiteAbility(
+      allPrerequisite,
+      newAbility,
+      skillsFromDb
+      // , studiesFromDb
+    );
+
+  // console.log("allPrerequisiteWithAbilities", allPrerequisiteWithAbilities)
 
   const allPrerequisiteFromClasses: Prerequisite[] =
-    createPrerequisiteFromClasses(allPrerequisiteWithAbilities, classPcList);
+    createPrerequisiteFromClasses(
+      allPrerequisiteWithAbilities,
+      classPcList
+      // , true
+    );
 
   const newAr: BonusResultMap = getBonusResult(
-    allPrerequisiteFromClasses
-    ,"attackRoll"
+    allPrerequisiteFromClasses,
+    "attackRoll"
   );
 
   const newDb: BonusResultMap = getBonusResult(
@@ -124,22 +147,40 @@ export const modifiedCharacter = (
   );
 
   const fortitude: TotAndBonusElement[] = createTotAndBonusElement(
-    {[FORTITUDE_MODIFIER.text] : sT[FORTITUDE_MODIFIER.text] || []},
-    true, undefined, true
-  )
-  const reflex: TotAndBonusElement[] = createTotAndBonusElement(
-    {[REFLEX_MODIFIER.text] : sT[REFLEX_MODIFIER.text] || []},
-    true
-  )
-  const will: TotAndBonusElement[] = createTotAndBonusElement(
-    {[WILL_MODIFIER.text] : sT[WILL_MODIFIER.text] || []},
-    true
-  )
+    sT,
+    true,
+    [FORTITUDE_MODIFIER.text, SAVING.text]
+    // , undefined, true
+  );
+  const reflex: TotAndBonusElement[] = createTotAndBonusElement(sT, true, [
+    REFLEX_MODIFIER.text,
+    SAVING.text
+  ]);
+  const will: TotAndBonusElement[] = createTotAndBonusElement(sT, true, [
+    WILL_MODIFIER.text,
+    SAVING.text
+  ]);
 
   const sS: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
     "skillStudy"
+    // , true
   );
+
+  // console.log("skillsFromDb", skillsFromDb)
+  // console.log("sS", sS)
+
+  const skillsTotAndBonus: {skill: Skill | Study, list:TotAndBonusElement[]}[] = skillsFromDb
+    ? skillsFromDb.map((skill) => {
+        // console.log("Processing skill:", skill.skillName.text);
+        return {skill, list: createTotAndBonusElement(
+          sS, true, [skill.skillName.text]
+          // , true
+        )}
+      })
+    : [];
+
+  // console.log("skillsTotAndBonus", skillsTotAndBonus)
 
   const adjLevel: number =
     !newRace && !newArchetypes
@@ -162,6 +203,8 @@ export const modifiedCharacter = (
   const listBab: TotAndBonusElement[] = createTotAndBonusElement(
     newAr || {},
     true
+    // , undefined
+    // , true
   );
 
   const listBabMeleeGeneralBonus: TotAndBonusElement[][] = numberOfAttacksMap(
@@ -455,7 +498,8 @@ export const modifiedCharacter = (
     fortitude: fortitude,
     reflex: reflex,
     will: will,
-    skillStudyMod: sS,
+    skillsTotAndBonus: skillsTotAndBonus,
+    // skills: skills,
     armorClassMod: newAc,
     toListArmorClass: toListArmorClass,
     adjLevel: adjLevel,
@@ -471,9 +515,9 @@ export const modifiedCharacter = (
 
 export const isToAdd = (key: string): boolean => {
   return [
-    FORTITUDE_MODIFIER.text,
-    REFLEX_MODIFIER.text,
-    WILL_MODIFIER.text,
+    // FORTITUDE_MODIFIER.text,
+    // REFLEX_MODIFIER.text,
+    // WILL_MODIFIER.text,
     ABILITY_MODIFIER.text,
     DEFLECTION_BONUS.text
   ].includes(key);

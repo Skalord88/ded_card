@@ -257,7 +257,7 @@ export function Skills() {
             ))
           ) : (
             <SkillStudyElement
-              key={index + "." + skill.skill.skillName}
+              key={index + "." + skill.skill.skillName.text}
               index={index}
               skill={skill}
               ability={modChar.abilitys}
@@ -312,7 +312,7 @@ export const SkillStudyElement: React.FC<SkillStudyElementProps> = ({
   const skillRank: number = (study?.rank ?? 0) + (skill?.rank ?? 0);
   const skillBonus: number = skill?.bonus ?? 0;
   const skillName: string =
-    study?.study.studyName || skill?.skill.skillName || "";
+    study?.study.studyName || skill?.skill.skillName.text || "";
   const tot: number = Math.floor(
     (skill?.rank ?? 0) +
       (skill?.bonus ?? 0) +

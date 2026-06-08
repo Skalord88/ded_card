@@ -14,6 +14,8 @@ import { SummaryCharAttacks } from "./component/SummaryCharAttacks";
 import { SummaryCharSaving } from "./component/SummaryCharSaving";
 import { SummaryCharSpaceReach } from "./component/SummaryCharSpaceReach";
 import { SummaryCharSpecialAbilities } from "./component/SummaryCharSpecialAbilities";
+import { SummaryCharAbilities } from "./component/SummaryCharAbilities";
+import { SummaryCharSkills } from "./component/SummaryCharSkills";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -71,7 +73,7 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
         </div>
         <div>
           <p>
-            {signAndCountString([BonusAbilities(modCharacter.abilitys, "DEX")])}
+            {modCharacter.abilitys && signAndCountString([BonusAbilities(modCharacter.abilitys, "DEX")])}
           </p>
         </div>
 
@@ -82,6 +84,8 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
         <SummaryCharSpaceReach modCharacter={modCharacter} />
         <SummaryCharSpecialAbilities modCharacter={modCharacter} />
         <SummaryCharSaving modCharacter={modCharacter} />
+        <SummaryCharAbilities modCharacter={modCharacter} />
+        <SummaryCharSkills modCharacter={modCharacter} />
       </div>
     </div>
   );
@@ -521,7 +525,7 @@ export const SummaryCharVita: React.FC<SummaryCharProps> = ({
                   parseInt(dice),
                   first,
                   lv,
-                  BonusAbilities(modCharacter.abilitys, "COS")
+                  modCharacter.abilitys ? BonusAbilities(modCharacter.abilitys, "COS") : 0
                 )})`
             )
             .join(", ")}
