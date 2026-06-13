@@ -7,7 +7,7 @@ import {
   ReactNode
 } from "react";
 import axios from "axios";
-import { urlSkillAll } from "../../url";
+import { urlSkillAll, urlStudyAll } from "../../url";
 import { Skill } from "../interface/Skill";
 import { Study } from "../interface/SkillsInterface";
 
@@ -32,9 +32,10 @@ export const SkillProvider = ({ children }: { children: ReactNode }) => {
     const fetchData = async () => {
       try {
         const res = await axios.get(urlSkillAll);
+        const resStudy = await axios.get(urlStudyAll);
 
         setSkillsFromDb(res.data);
-        setStudiesFromDb(res.data);
+        setStudiesFromDb(resStudy.data);
       } catch (error) {
         console.error(error);
       } finally {

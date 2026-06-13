@@ -2,7 +2,7 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { findIdsFeatsInList } from "../../Feats/FindFeatsInList";
-import { FeatPc } from "../../Feats/Interface/FeatInterface";
+import { Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
   weaponLight,
   weaponRanged,
@@ -22,7 +22,6 @@ import {
   DEFLECTION_BONUS,
   FORTITUDE_MODIFIER,
   ModifierEnum,
-  RACIAL_BONUS,
   REFLEX_MODIFIER,
   SAVING,
   WILL_MODIFIER
@@ -35,12 +34,11 @@ import {
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Skill } from "../../Skills/interface/Skill";
 import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
-import { useSkills } from "../../Skills/Skills/Const";
+import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
 import {
-  AllModifiers,
   AttackElement,
   ModifiedCharacter,
   numberOfAttacksMap,
@@ -52,9 +50,9 @@ import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
 import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
+import { createTotAndBonusElementWithSkill } from "./CreateTotAndBonusElementWithSkill";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
 import { BonusResultMap, BonusSource, getBonusResult } from "./GetBonusResult";
-import { modifiersFromPrerequisite } from "./ModifiersFromPrerequisite";
 
 export const modifiedCharacter = (
   char: CharacterPc,
@@ -109,7 +107,7 @@ export const modifiedCharacter = (
       allPrerequisite,
       newAbility,
       skillsFromDb
-      // , studiesFromDb
+      , studiesFromDb
     );
 
   // console.log("allPrerequisiteWithAbilities", allPrerequisiteWithAbilities)
@@ -161,26 +159,21 @@ export const modifiedCharacter = (
     SAVING.text
   ]);
 
+  console.log("allPrerequisiteFromClasses", allPrerequisiteFromClasses)
+
   const sS: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
     "skillStudy"
     // , true
   );
 
-  // console.log("skillsFromDb", skillsFromDb)
-  // console.log("sS", sS)
-
-  const skillsTotAndBonus: {skill: Skill | Study, list:TotAndBonusElement[]}[] = skillsFromDb
-    ? skillsFromDb.map((skill) => {
-        // console.log("Processing skill:", skill.skillName.text);
-        return {skill, list: createTotAndBonusElement(
-          sS, true, [skill.skillName.text]
-          // , true
-        )}
-      })
-    : [];
-
-  // console.log("skillsTotAndBonus", skillsTotAndBonus)
+  const skillsTotAndBonus: SkillStudyTotAndBonusElement[] =
+  createTotAndBonusElementWithSkill(
+    skillsFromDb || [],
+    studiesFromDb || [],
+    sS
+    // , true
+  )
 
   const adjLevel: number =
     !newRace && !newArchetypes
@@ -489,6 +482,10 @@ export const modifiedCharacter = (
     )
   };
 
+  const feats: Feat[] = featsList.flatMap((f) =>
+    f ? (f.feat ? f.feat : f.classFeat?.feat ? f.classFeat?.feat : []) : []
+  );
+
   return {
     title: title,
     abilitys: newAbility,
@@ -509,7 +506,8 @@ export const modifiedCharacter = (
     classPcList: classPcList,
     listHitDices: listHitDices,
     inventory: inventory,
-    attacks: newAttacksElement
+    attacks: newAttacksElement,
+    feats: feats
   };
 };
 

@@ -58,10 +58,10 @@ export const createPrerequisiteAbility = (
     skillsFromDb?.filter((skill) => skill.ability === "CHARISMA") || [];
 
   const strenghtPrerequisite: Prerequisite = {
-    id: -1,
-    text: `Strength modifiers`,
+    id: -1
+    , text: `Strength modifiers`
 
-    attackRoll: [
+    , attackRoll: [
       {
         bonus: modStrength,
         modifierType: ABILITY_MODIFIER,
@@ -70,9 +70,9 @@ export const createPrerequisiteAbility = (
           GRAPPLE
         ]
       } as ModifierBonus
-    ],
+    ]
 
-    damageBonus: [
+    , damageBonus: [
       {
         bonus: modStrength,
         modifierType: ABILITY_MODIFIER,
@@ -81,34 +81,34 @@ export const createPrerequisiteAbility = (
           THROWN
         ]
       } as DamageBonus
-    ],
+    ]
 
-    skillStudy: skillsStrength.map((skill) => ({
+    , skillStudy: skillsStrength.map((skill) => ({
       skill:skill,
       rank: modStrength,
       modifierBonus: ABILITY_MODIFIER
     })) as PrerequisiteSkills[]
   } as Prerequisite;
   const dexterityPrerequisite: Prerequisite = {
-    id: -1,
-    text: `Dexterity modifiers`,
+    id: -1
+    , text: `Dexterity modifiers`
 
-    armorClass: [
+    , armorClass: [
       {
         bonus: modDexterity,
         modifierType: ABILITY_MODIFIER
       }
-    ],
+    ]
 
-    attackRoll: [
+    , attackRoll: [
       {
         bonus: modDexterity,
         modifierType: ABILITY_MODIFIER,
         target: [RANGED, THROWN]
       } as ModifierBonus
-    ],
+    ]
 
-    savingThrow: [
+    , savingThrow: [
       {
         // modifier: REFLEX_MODIFIER,
         modifierType: ABILITY_MODIFIER,
@@ -116,6 +116,12 @@ export const createPrerequisiteAbility = (
         target: [REFLEX_MODIFIER]
       } as ModifierBonus
     ]
+
+    , skillStudy: skillsDexterity.map((skill) => ({
+      skill:skill,
+      rank: modDexterity,
+      modifierBonus: ABILITY_MODIFIER
+    })) as PrerequisiteSkills[]
   } as Prerequisite;
 
   const constitutionPrerequisite: Prerequisite = {
@@ -130,13 +136,37 @@ export const createPrerequisiteAbility = (
         target: [FORTITUDE_MODIFIER]
       } as ModifierBonus
     ]
+
+    , skillStudy: skillsConstitution.map((skill) => ({
+      skill:skill,
+      rank: modConstitution,
+      modifierBonus: ABILITY_MODIFIER
+    })) as PrerequisiteSkills[]
   } as Prerequisite;
 
-  const wisdomPrerequisite: Prerequisite = {
-    id: -1,
-    text: `Wisdom modifiers`,
+  const intelligencePrerequisite: Prerequisite = {
+    id: -1
+    , text: `Intelligence modifiers`
 
-    savingThrow: [
+    , skillStudy: [
+  ...skillsIntelligence.map((skill) => ({
+    skill,
+    rank: modIntelligence,
+    modifierBonus: ABILITY_MODIFIER
+  })),
+  ...studiesIntelligence.map((study) => ({
+    study: study,
+    rank: modIntelligence,
+    modifierBonus: ABILITY_MODIFIER
+  }))
+] as PrerequisiteSkills[]
+    } as Prerequisite;
+
+  const wisdomPrerequisite: Prerequisite = {
+    id: -1
+    , text: `Wisdom modifiers`
+
+    , savingThrow: [
       {
         // modifier: WILL_MODIFIER,
         modifierType: ABILITY_MODIFIER,
@@ -144,13 +174,32 @@ export const createPrerequisiteAbility = (
         target: [WILL_MODIFIER]
       } as ModifierBonus
     ]
+
+    , skillStudy: skillsWisdom.map((skill) => ({
+        skill:skill,
+        rank: modWisdom,
+        modifierBonus: ABILITY_MODIFIER
+      })) as PrerequisiteSkills[]
+  } as Prerequisite;
+
+  const charismaPrerequisite: Prerequisite = {
+    id: -1
+    , text: `Charisma modifiers`
+
+    , skillStudy: skillsCharisma.map((skill) => ({
+        skill:skill,
+        rank: modCharisma,
+        modifierBonus: ABILITY_MODIFIER
+      })) as PrerequisiteSkills[]
   } as Prerequisite;
 
   const abilityPrerequisite: Prerequisite[] = [
     strenghtPrerequisite,
     dexterityPrerequisite,
     constitutionPrerequisite,
-    wisdomPrerequisite
+    intelligencePrerequisite,
+    wisdomPrerequisite,
+    charismaPrerequisite
   ];
 
   return allPrerequisite.concat(abilityPrerequisite);

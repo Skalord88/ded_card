@@ -24,6 +24,8 @@ export const urlClassSell: string = url + "character-card/minus_class/";
 
 export const urlSkillAll: string = url + "skills/list";
 
+export const urlStudyAll: string = url + "skills/listStudy";
+
 export const urlSkillSet: string = url + "skills/";
 
 export const urlStudySet: string = url + "skills/study/";

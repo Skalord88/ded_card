@@ -29,22 +29,52 @@ export function Ability() {
 
   const { skillsFromDb, studiesFromDb, loading } = useSkills();
 
-useEffect(() => {
-  if (loading || !skillsFromDb?.length) return;
+  useEffect(() => {
+    if (loading || !skillsFromDb?.length || !studiesFromDb?.length) return;
 
-  const fetchData = async () => {
-    try {
-      const resChar = await axios.get(urlChar + "/" + charId);
-      const charData: CharacterPc = resChar.data;
+    const fetchData = async () => {
+      try {
+        const resChar = await axios.get(urlChar + "/" + charId);
+        const charData: CharacterPc = resChar.data;
 
-      setAbilitys(charData.abilitys);
-      setChar(charData);
+        setAbilitys(charData.abilitys);
+        setChar(charData);
 
-      // console.log("Fetched character data:", skillsFromDb, studiesFromDb);
+        // console.log("Fetched character data:", skillsFromDb, studiesFromDb);
 
-      const modChar = modifiedCharacter(
-        charData,
-        undefined,
+        const modChar = modifiedCharacter(
+          charData,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          undefined,
+          skillsFromDb,
+          studiesFromDb
+        );
+
+        setModChar(modChar);
+
+        // Se vuoi usare le ability modificate:
+        // setAbilitys(modChar.abilitys);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, [charId, skillsFromDb, studiesFromDb, loading]);
+
+  useEffect(() => {
+    if (loading || !skillsFromDb?.length || !studiesFromDb?.length) return;
+    // console.log("useEffect");
+    if (char && abilitys) {
+      const newModChar: ModifiedCharacter = modifiedCharacter(
+        char,
+        abilitys,
         undefined,
         undefined,
         undefined,
@@ -55,34 +85,6 @@ useEffect(() => {
         skillsFromDb,
         studiesFromDb
       );
-
-      setModChar(modChar);
-
-      // Se vuoi usare le ability modificate:
-      // setAbilitys(modChar.abilitys);
-
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  fetchData();
-}, [charId, skillsFromDb, studiesFromDb, loading]);
-
-  useEffect(() => {
-    if (loading || !skillsFromDb?.length) return;
-    // console.log("useEffect");
-    if (char && abilitys) {
-      const newModChar: ModifiedCharacter = modifiedCharacter(char, abilitys,
-       undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        skillsFromDb,
-        studiesFromDb);
       setModChar(newModChar);
     }
   }, [char, abilitys, skillsFromDb, studiesFromDb, loading]);
@@ -91,7 +93,6 @@ useEffect(() => {
     option: number,
     ability: keyof Omit<Abilitys, "modifierBonus">
   ) => {
-    // console.log("handleData");
     setAbilitys((prev) => ({
       ...prev!,
       [ability]: option
@@ -99,7 +100,6 @@ useEffect(() => {
   };
 
   const handleSubmit = () => {
-    // console.log(abilitys);
     axios.post(urlAb + charId, abilitys).then((response) => {
       console.log(response.data);
     });

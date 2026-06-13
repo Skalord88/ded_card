@@ -160,24 +160,29 @@ export const getBonusResult = (
     if (bonusType === "skillStudy") {
       prer?.skillStudy?.forEach((sS) => {
           if (!sS.target) {
+
+            if (consoleLog) {
+      console.log("sS", sS);
+    }
+
             createBonusResult(
               sS.rank as number,
               prer.text || "",
               (sS.modifierBonus as ModifierEnum) || null
               , [{...EMPTY_BONUS, 
-                text: sS.skill?.skillName.text || sS.study?.studyName || "" 
+                text: sS.skill?.skillName?.text || sS.study?.studyName?.text || "" 
               } as ModifierEnum]
             );
           } else {
             const trg: (ModifierEnum | Item)[] = createTargets(prer, sS.target);
 
             trg.push({...EMPTY_BONUS, 
-              text: sS.skill?.skillName.text || sS.study?.studyName || "" 
+              text: sS.skill?.skillName?.text || sS.study?.studyName?.text || "" 
             } as ModifierEnum);
 
             createBonusResult(
               sS.rank as number,
-              sS.skill?.skillName.text || sS.study?.studyName || "",
+              sS.skill?.skillName?.text || sS.study?.studyName?.text || "",
               sS.modifierBonus as ModifierEnum,
               trg
             );

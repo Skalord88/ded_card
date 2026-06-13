@@ -7,18 +7,58 @@
 
         <!-- Puli -->
         <update tableName="skills_character">
-            <!-- <column name="id" value="1000" /> -->
             <column name="character_card_id" value="100" />
-            <column name="skill_id" value="1" />
-            <!-- <column name="rank" value="10" /> -->
+            <column name="skill_id" value="2" />
+            <!-- balance  -->
             <where>id = 1000</where>
         </update>
         <update tableName="skills_character">
-            <!-- <column name="id" value="1001" /> -->
             <column name="character_card_id" value="100" />
-            <column name="skill_id" value="2" />
-            <!-- <column name="rank" value="4" /> -->
+            <column name="skill_id" value="3" /> 
+            <!-- bleff -->
             <where>id = 1001</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="4" /> 
+            <!-- climb -->
+            <where>id = 1002</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="8" /> 
+            <!-- disable deviance -->
+            <where>id = 1003</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="14" /> 
+            <!-- hide -->
+            <where>id = 1004</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="15" /> 
+            <!-- intimidate -->
+            <where>id = 1005</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="19" /> 
+            <!-- move sil -->
+            <where>id = 1006</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="skill_id" value="23" /> 
+            <!-- search -->
+            <where>id = 1007</where>
+        </update>
+        <update tableName="skills_character">
+            <column name="character_card_id" value="100" />
+            <column name="study_id" value="1" /> 
+            <!-- arcana -->
+            <where>id = 1008</where>
         </update>
 
         <!-- Rysio -->

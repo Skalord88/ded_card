@@ -5,7 +5,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 import pl.kolendateam.dadcard.skills.MapperSkill;
 import pl.kolendateam.dadcard.skills.entity.Study;
 
-@NoArgsConstructor
+// @NoArgsConstructor
 public class StudyDTO {
 
   public int id;

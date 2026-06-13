@@ -7,32 +7,32 @@
         <insert tableName="study">
             <column name="id" value="1" />
             <column name="study_name" value="ARCANA" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
         <insert tableName="study">
             <column name="id" value="2" />
             <column name="study_name" value="ARCHITECTURE" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
         <insert tableName="study">
             <column name="id" value="3" />
             <column name="study_name" value="HISTORY" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
         <insert tableName="study">
             <column name="id" value="4" />
             <column name="study_name" value="NATURE" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
         <insert tableName="study">
             <column name="id" value="5" />
             <column name="study_name" value="RELIGION" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
         <insert tableName="study">
             <column name="id" value="6" />
             <column name="study_name" value="PLANE" />
-            <!-- <column name="skill_id" value="17" /> -->
+            <column name="skill_id" value="17" />
         </insert>
     </changeSet>
 </databaseChangeLog>

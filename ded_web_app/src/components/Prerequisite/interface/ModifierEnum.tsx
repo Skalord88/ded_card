@@ -101,6 +101,10 @@ export const BASE_VALUE: ModifierEnum = {
   description: "",
   text: "Base Value"
 };
+export const RANK_VALUE: ModifierEnum = {
+  description: "Character choosen rank",
+  text: "Rank Value"
+};
 
 export const modifierEnumList: ModifierEnum[] = [
   ABILITY_MODIFIER,

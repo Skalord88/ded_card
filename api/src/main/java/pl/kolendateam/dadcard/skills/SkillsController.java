@@ -50,6 +50,12 @@ public class SkillsController {
     return MapperSkill.toSkillListDTO(listSkills);
   }
 
+  @GetMapping("/listStudy")
+  public List<StudyDTO> getStudiesList() {
+    List<Study> listStudies = studyRepository.findAll();
+    return MapperSkill.toStudyListDTO(listStudies);
+  }
+
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterDTO updateCharacterSkill(
     @PathVariable int id,

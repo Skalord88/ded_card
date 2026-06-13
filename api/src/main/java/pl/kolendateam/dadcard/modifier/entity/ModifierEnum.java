@@ -163,12 +163,12 @@ public enum ModifierEnum {
   USE_ROPE("Use Rope"),
 
   // study
-  ARCANA,
-  ARCHITECTURE,
-  HISTORY,
-  NATURE,
-  RELIGION,
-  PLANE,
+  ARCANA("", "Arcana"),
+  ARCHITECTURE("", "Architecture"),
+  HISTORY("", "History"),
+  NATURE("", "Nature"),
+  RELIGION("", "Religion"),
+  PLANE("", "Plane"),
 
   // feat
   EXTRA_FEAT,
@@ -182,13 +182,13 @@ public enum ModifierEnum {
   FORTITUDE("Fortitude"),
   REFLEX("Reflex"),
   WILL("Will"),
-  ENCHANTMENT,
+  ENCHANTMENT("Enchantment"),
   FEY("Fey"),
 
   // immunity
   IMMUNITY("Immunity"),
   RESISTANCE("Resistance"),
-  VULNERABILITY,
+  VULNERABILITY("Vulnerability"),
   FEAR("Fear"),
   DISEASES("Diseases"),
   POISON("Poison"),

@@ -16,6 +16,7 @@ import { SummaryCharSpaceReach } from "./component/SummaryCharSpaceReach";
 import { SummaryCharSpecialAbilities } from "./component/SummaryCharSpecialAbilities";
 import { SummaryCharAbilities } from "./component/SummaryCharAbilities";
 import { SummaryCharSkills } from "./component/SummaryCharSkills";
+import { SummaryCharFeats } from "./component/SummaryCharFeats";
 
 export type SummaryCharProps = {
   modCharacter: ModifiedCharacter;
@@ -86,6 +87,7 @@ export const SummaryChar: React.FC<SummaryCharProps> = ({ modCharacter }) => {
         <SummaryCharSaving modCharacter={modCharacter} />
         <SummaryCharAbilities modCharacter={modCharacter} />
         <SummaryCharSkills modCharacter={modCharacter} />
+        <SummaryCharFeats modCharacter={modCharacter} />
       </div>
     </div>
   );

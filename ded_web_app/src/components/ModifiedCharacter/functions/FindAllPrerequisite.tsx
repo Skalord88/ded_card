@@ -1,8 +1,14 @@
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { ClassFeats, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Attacks, CharacterPc, Inventory, Weapon } from "../../interfaces";
+import {
+  BASE_VALUE,
+  EMPTY_BONUS,
+  RANK_VALUE
+} from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { SubRace, Archetype } from "../../Race/Interfaces";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 
 export const findAllPrerequisite = (
@@ -54,10 +60,24 @@ export const findAllPrerequisite = (
       allPrerequisite.push(inventory.shield.modifiers);
   }
 
-  if(attacks) {
-    Object.values(attacks).forEach(attack => {
-      if(attack) attack.modifiers !== null && allPrerequisite.push(attack?.modifiers as Prerequisite);
-      })
+  if (attacks) {
+    Object.values(attacks).forEach((attack) => {
+      if (attack)
+        attack.modifiers !== null &&
+          allPrerequisite.push(attack?.modifiers as Prerequisite);
+    });
+  }
+
+  if (skills) {
+    let charSkills: PrerequisiteSkills[] = skills.map((sk) => {
+      return {
+        skill: sk.skill ?? undefined,
+        study: sk.study ?? undefined,
+        rank: sk.rank,
+        modifierBonus: RANK_VALUE
+      };
+    });
+    allPrerequisite.push({ id: -1, skillStudy: charSkills, text: "Pg skills" });
   }
 
   return allPrerequisite;

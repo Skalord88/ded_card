@@ -1,5 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { Feat } from "../../Feats/Interface/FeatInterface";
 import { Inventory, Weapon } from "../../interfaces";
 import {
     ModifierEnum,
@@ -10,6 +11,7 @@ import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Skill } from "../../Skills/interface/Skill";
 import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
+import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
 import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { HitDiceMap } from "../../Vita/Functions";
 import { BonusResultMap } from "../functions/GetBonusResult";
@@ -78,7 +80,7 @@ export type ModifiedCharacter = {
   will?: TotAndBonusElement[];
   armorClassMod?: BonusResultMap;
   toListArmorClass?: TotAndBonusElement[];
-  skillsTotAndBonus?: {skill: Skill | Study, list:TotAndBonusElement[]}[]
+  skillsTotAndBonus?: SkillStudyTotAndBonusElement[];
   // skillStudyMod?: BonusResultMap;
   // skills?: SkillCharacter[];
   adjLevel?: number;
@@ -89,6 +91,7 @@ export type ModifiedCharacter = {
   listHitDices?: HitDiceMap;
   inventory?: Inventory;
   attacks?: AttackElement;
+  feats?: Feat[];
 };
 
 export type AttackElement = {
