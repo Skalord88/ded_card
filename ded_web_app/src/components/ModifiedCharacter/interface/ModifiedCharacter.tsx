@@ -1,6 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
-import { Feat } from "../../Feats/Interface/FeatInterface";
+import { Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Inventory, Weapon } from "../../interfaces";
 import {
     ModifierEnum,
@@ -91,7 +91,7 @@ export type ModifiedCharacter = {
   listHitDices?: HitDiceMap;
   inventory?: Inventory;
   attacks?: AttackElement;
-  feats?: Feat[];
+  feats?: FeatPc[];
 };
 
 export type AttackElement = {

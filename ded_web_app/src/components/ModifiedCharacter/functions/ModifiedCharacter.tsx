@@ -482,9 +482,7 @@ export const modifiedCharacter = (
     )
   };
 
-  const feats: Feat[] = featsList.flatMap((f) =>
-    f ? (f.feat ? f.feat : f.classFeat?.feat ? f.classFeat?.feat : []) : []
-  );
+  const feats: FeatPc[] = featsList.sort((a, b) => (a.level || a.feat?.id || a.id || 0) - (b.level || b.feat?.id || b.id || 0))
 
   return {
     title: title,

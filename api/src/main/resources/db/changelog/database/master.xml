@@ -158,6 +158,7 @@
     <include file="feats/005_prerequisite_element_in_feat_pc_update.xml" relativeToChangelogFile="true"/>
     <include file="feats/005_prerequisite_in_feat_update.xml" relativeToChangelogFile="true"/>
     <include file="feats/005_prerequisite_special_abilities_insert.xml" relativeToChangelogFile="true"/>
+    <include file="feats/005_prerequisite_skill_study_in_feats_insert.xml" relativeToChangelogFile="true"/>
     <include file="inventory/005_backpack_insert.xml" relativeToChangelogFile="true"/>
     <include file="inventory/005_inventory_update.xml" relativeToChangelogFile="true"/>
     <include file="items/005_modifiers_in_items_insert.xml" relativeToChangelogFile="true"/>

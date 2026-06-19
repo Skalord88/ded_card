@@ -492,7 +492,7 @@
       <column name="id" value="1017" />
       <column name="text" value="+2 Disable Device and Sleight of Hand" />
     </insert>
-
+    
     <!-- Persuasive [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1018" />
