@@ -1,25 +1,25 @@
 import { FiltroItems } from "../../../pages/Items";
 import {
-  costOfEnchant,
-  costOfMaterial
+    costOfEnchant,
+    costOfMaterial
 } from "../../Enchantment/Functions/EnchantmentFunctions";
-import { itemInDrop } from "../../functions";
+import { ItemInDrop } from "../../functions";
 import {
-  Armor,
-  Inventory,
-  Item,
-  Shield,
-  Weapon,
-  WonderousItem
+    Armor,
+    Inventory,
+    Item,
+    Shield,
+    Weapon,
+    WonderousItem
 } from "../../interfaces";
 import { reSizeWeapon, reWeightItem } from "../../Size/function";
 import { emptyInventory, noneArmor, noneItem, noneShield, noneWeapon } from "../../variables";
 import {
-  reMaterialArmType,
-  reMaterialFailure,
-  reMaterialMaxDex,
-  reMaterialPerfectPenality,
-  reMaterialWeight
+    reMaterialArmType,
+    reMaterialFailure,
+    reMaterialMaxDex,
+    reMaterialPerfectPenality,
+    reMaterialWeight
 } from "../Material/function";
 
 export const notEmptyInventory = (inventory: Inventory) => {
@@ -334,7 +334,7 @@ export const calculateCost = (
 export const specificFilter = (
   itemIndex: number,
   filter: FiltroItems
-): itemInDrop[] => {
+): ItemInDrop[] => {
   if (!filter) return [];
 
   const indexMap: Record<number, string> = {

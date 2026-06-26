@@ -1,5 +1,6 @@
-import { itemInDrop } from "../functions";
+
 import { CharacterPc, Item, Weapon } from "../interfaces";
+import { ModifiedCharacter } from "../ModifiedCharacter/interface/ModifiedCharacter";
 import {
   CharToModify,
   FeatsFromChar
@@ -66,8 +67,8 @@ export const findPrerequisiteFeatsInFeatsList = (
 
 export const findPrerequisiteFeatsInItemDrop = (
   filter: string[],
-  lista: itemInDrop[]
-): itemInDrop[] => {
+  lista: ItemInDrop[]
+): ItemInDrop[] => {
   if (filter)
     return lista.filter(
       (f) =>
@@ -92,37 +93,28 @@ export const checkFeatPcType = (f: FeatPc): number => {
   return 0;
 };
 
-export const createClassPcBonusFeats = (newModChar: CharToModify): FeatPc[] => {
-  const quantiFeats: number =
-    Math.floor((newModChar?.adjBonus.adjLv + newModChar.classesLv) / 3) + 1;
+export const createPcBonusFeats = (
+  newModChar: ModifiedCharacter
+): FeatPc[] => {
+  const totalClassLevel =
+    newModChar.classPcList?.reduce((tot, c) => tot + c.level, 0) ?? 0;
+  const quantiFeats = Math.floor(totalClassLevel / 3) + 1;
+  const featsFromLevel = newModChar.feats?.filter((f) => f.level) ?? [];
 
-  let featsGiaPresenti: number = newModChar.feats.pcFeats.fromLevel.length;
+  return Array.from({ length: quantiFeats }, (_, i) => {
+    const level = i === 0 ? 1 : i * 3;
+    const existingFeat = featsFromLevel.find((f) => f.level === level);
 
-  let featsFromLevel: FeatPc[] = [];
-
-  for (let i = 0; i < quantiFeats; i++) {
-    if (featsGiaPresenti > 0) {
-      featsFromLevel.push({
-        id: newModChar.feats.pcFeats.fromLevel[i].id,
-        feat: newModChar.feats.pcFeats.fromLevel[i].feat,
-        level: newModChar.feats.pcFeats.fromLevel[i].level,
-        selected: newModChar.feats.pcFeats.fromLevel[i].selected
-      });
-      featsGiaPresenti--;
-    } else {
-      featsFromLevel.push({
-        id: null,
-        feat: null,
-        // level: i - 1 === 0 ? 1 : (i - 1) * 3,
-        level: i === 0 ? 1 : i * 3,
-        selected: null
-      });
-    }
-  }
-  return featsFromLevel;
+    return {
+      id: existingFeat?.id ?? null,
+      feat: existingFeat?.feat ?? null,
+      level,
+      selected: existingFeat?.selected ?? null
+    };
+  });
 };
 
-export const createClassPcClassFeats = (newModChar: CharToModify): FeatPc[] => {
+export const createClassPcClassFeats = (newModChar: ModifiedCharacter): FeatPc[] => {
 
   const quantiBonus: ClassFeats[] = newModChar.feats.classFeats.filter(
     (c: ClassFeats) =>
@@ -147,7 +139,7 @@ export const createClassPcClassFeats = (newModChar: CharToModify): FeatPc[] => {
         id: null,
         classFeat: {
           id: quantiBonus[i].id,
-          modifiers: quantiBonus[i].feat.modifiers,
+          // modifiers: quantiBonus[i].feat.modifiers,
           level: quantiBonus[i].level,
           feat: quantiBonus[i].feat,
           classId: quantiBonus[i].classId,

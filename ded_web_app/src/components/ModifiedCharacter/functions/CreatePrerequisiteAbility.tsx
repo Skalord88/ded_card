@@ -1,24 +1,17 @@
-import {
-  AbilityEnum,
-} from "../../Abilitys/AbilityEnum";
 import { Abilitys } from "../../Abilitys/Interface";
-import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ModifierBonus } from "../../Prerequisite/interface/ModifierBonus";
 import {
   ABILITY_MODIFIER,
-  EMPTY_BONUS,
   FORTITUDE_MODIFIER,
   GRAPPLE,
   MELEE,
-  ModifierEnum,
   RANGED,
   REFLEX_MODIFIER,
   THROWN,
   WILL_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Skill } from "../../Skills/interface/Skill";
 import { Study } from "../../Skills/interface/Study";
@@ -29,9 +22,6 @@ export const createPrerequisiteAbility = (
   skillsFromDb?: Skill[],
   studiesFromDb?: Study[]
 ): Prerequisite[] => {
-  // console.log("createPrerequisiteAbility", ability, skillsFromDb, studiesFromDb)
-
-  // console.log(STRENGTH);
 
   const modStrength: number = Math.floor((ability.strength - 10) / 2);
   const skillsStrength =
@@ -39,7 +29,6 @@ export const createPrerequisiteAbility = (
     (skill) => skill.ability === "STRENGTH"
   ) || [];
 
-    // console.log("skillsStrength", skillsStrength);
   const modDexterity: number = Math.floor((ability.dexterity - 10) / 2);
   const skillsDexterity: Skill[] =
     skillsFromDb?.filter((skill) => skill.ability === "DEXTERITY") || [];

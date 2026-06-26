@@ -14,7 +14,7 @@
 
             <column name="bonus" type="INTEGER" />
 
-            <column name="targets" type="JSON">
+            <column name="target" type="JSON">
                 <constraints nullable="false" unique="true" />
             </column>
         </createTable>

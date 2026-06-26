@@ -7,63 +7,64 @@ import {
   ClassPc
 } from "../components/ClassPc/Interface/ClassPcLevel";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../components/functions";
-import { CharacterPc } from "../components/interfaces";
-import { urlChar, urlClassAdd, urlClassList } from "../components/url";
+import { addToDrop, ItemInDrop } from "../components/functions";
+import { useCharacter } from "../components/ModifiedCharacter/Context/CharacterContext";
+import { SummaryChar } from "../components/SummaryChar/SummaryChar";
+import { urlClassAdd, urlClassList } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
-import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 
 export const Classes = () => {
   const { charId } = useParams();
 
-  const [char, setChar] = useState<CharacterPc>();
+  const { moddedCharacter, classes, setClasses } = useCharacter();
+
+  // const [char, setChar] = useState<CharacterPc>();
+  // const [modCharacter, setModCharacter] = useState<ModifiedCharacter>();
   const [classesList, setClassesList] = useState<ClassCharacter[]>([]);
-  const [baseClList, setBaseClList] = useState<itemInDrop[]>([]);
-  const [prestigeClList, setPrestigeClList] = useState<itemInDrop[]>([]);
-  const [charClassPc, setCharClassPc] = useState<ClassPc[]>([]);
-  const [charMod, setCharMod] = useState<ModifiedCharacter>();
+  const [baseClList, setBaseClList] = useState<ItemInDrop<ClassCharacter>[]>(
+    []
+  );
+  const [prestigeClList, setPrestigeClList] = useState<
+    ItemInDrop<ClassCharacter>[]
+  >([]);
+  const [charClassPc, setCharClassPc] = useState<ClassPc[]>();
 
   const [change, setChange] = useState<boolean>(false);
 
+  const fetchData = async () => {
+    try {
+      const resClassList = await axios.get(urlClassList);
+      setClassesList(resClassList.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resChar = await axios.get(urlChar + "/" + charId);
-        setChar(resChar.data);
-
-        const modChar = modifiedCharacter(resChar.data);
-        setCharMod(modChar);
-
-        const classi: ClassPc[] = resChar.data.classPcList;
-        if (classi && classi.length > 0) {
-          setChange(true);
-        }
-        setCharClassPc(classi);
-
-        const resClassList = await axios.get(urlClassList);
-        setClassesList(resClassList.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
     fetchData();
   }, []);
 
   useEffect(() => {
+    if(
+      (classes && classes.length > 0) ||
+      (charClassPc && charClassPc.length > 0)) setChange(true)
+  },[charClassPc, classes])
+
+  useEffect(() => {
     if (classesList) {
-      const list = classesList.filter((cl) => cl.classType === "BASE_CLASS");
-      setBaseClList(addToDrop(list, "class"));
+      const list: ClassCharacter[] = classesList.filter(
+        (cl) => cl.classType === "BASE_CLASS"
+      );
+      setBaseClList(addToDrop(list, (c) => c.className));
       const listPrestige = classesList.filter(
         (cl) => cl.classType === "PRESTIGE_CLASS"
       );
-      setPrestigeClList(addToDrop(listPrestige, "class"));
+      setPrestigeClList(addToDrop(listPrestige, (c) => c.className));
     }
   }, [classesList]);
 
   const handleNewClass = (option: ClassCharacter) => {
-    if (char?.classPcList) {
-      const newClassList = [...charClassPc]; // Crea una nuova copia di charClassPc
+    if (classes) {
+      const newClassList = [...classes]; // Crea una nuova copia di charClassPc
       const indexInClassList = newClassList.findIndex(
         (cl: ClassPc) => cl.classCharacter.id === option.id
       );
@@ -117,7 +118,6 @@ export const Classes = () => {
           firstClass: true
         };
       }
-
       setCharClassPc(newClassList);
     }
   };
@@ -144,67 +144,57 @@ export const Classes = () => {
 
   // newClassList
   useEffect(() => {
-    if (charClassPc && char) {
-      const modChar = modifiedCharacter({ ...char, classPcList: charClassPc });
-      setCharMod(modChar);
+    if (
+      charClassPc
+      //  && char
+    ) {
+      setClasses(charClassPc);
+      // const modChar = modifiedCharacter({ ...char, classPcList: charClassPc });
+      // setModCharacter(modChar);
     }
-  }, [charClassPc, char]);
+  }, [charClassPc, setClasses]);
 
   return (
     <PageLayout
       title={"Classes"}
       buttons={{
-        next: { text: "Feat", link: "/feat/" + charId, change: change },
-        back: { text: "Ability", link: "/ability/" + charId }
+        next: { text: "Feat", link: `/${charId}/feat`, change: change },
+        back: { text: "Ability", link: `/${charId}/ability` }
       }}
       onAction={handleSubmit}
     >
       <div className="rpgui-container-framed-grey">
         <p>Base Classes: </p>
-        <DropdownComponent options={baseClList} onAction={handleNewClass} />
+        <DropdownComponent
+          options={baseClList}
+          onAction={
+            // () => void
+            handleNewClass
+          }
+        />
         <p>Prestige Classes: </p>
         <DropdownComponent options={prestigeClList} onAction={handleNewClass} />
-        {char?.abilitys && (
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <AbilityLevelComponent
-              value={char?.abilitys?.strength}
-              name="STR"
-            />
-            <AbilityLevelComponent
-              value={char?.abilitys?.dexterity}
-              name="DEX"
-            />
-            <AbilityLevelComponent
-              value={char?.abilitys?.constitution}
-              name="CON"
-            />
-            <AbilityLevelComponent
-              value={char?.abilitys?.intelligence}
-              name="INT"
-            />
-            <AbilityLevelComponent value={char?.abilitys?.wisdom} name="WIS" />
-            <AbilityLevelComponent
-              value={char?.abilitys?.charisma}
-              name="CHA"
-            />
-          </div>
-        )}
         <div>
           <p>
             <span>
               Total Level:{" "}
-              {(charMod?.totLevel || 0) + (charMod?.adjLevel || 0)}
+              {/* {(charMod?.totLevel || 0) + (charMod?.adjLevel || 0)} */}
             </span>
-            {charMod?.totLevel !== 0 && (
-              <span> Classes: {charMod?.totLevel}</span>
+            {moddedCharacter && (
+              <span> Classe:
+                {moddedCharacter?.classPcList?.reduce(
+                  (tot, c) => tot + c.level,
+                  0
+                )}
+              </span>
             )}
-            {charMod?.adjLevel !== 0 && (
+            {/* {charMod?.adjLevel !== 0 && (
               <span> Racial: {charMod?.adjLevel}</span>
-            )}
+            )} */}
           </p>
         </div>
-        {charClassPc ? (
-          charClassPc.map((cl, index) => (
+        {moddedCharacter?.classPcList ? (
+          moddedCharacter?.classPcList?.map((cl, index) => (
             <div key={index}>
               <p>
                 <span>
@@ -234,63 +224,63 @@ export const Classes = () => {
           <p>add a class</p>
         )}
       </div>
-      {/* {char ? <CharSummary character={char} classPcList={charClassPc} /> : null} */}
+      {moddedCharacter && <SummaryChar modCharacter={moddedCharacter} />}
     </PageLayout>
   );
 };
 
-export type AbilityLevelComponentProps = {
-  value: number;
-  name: string;
-};
+// export type AbilityLevelComponentProps = {
+//   value: number;
+//   name: string;
+// };
 
-const AbilityLevelComponent: React.FC<AbilityLevelComponentProps> = ({
-  value,
-  name
-}) => {
-  const [abValue, setAbValue] = useState<number>(value);
-  return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <div style={{ margin: 0 }}>
-        <p>
-          {name}:{abValue}
-        </p>
-      </div>
+// const AbilityLevelComponent: React.FC<AbilityLevelComponentProps> = ({
+//   value,
+//   name
+// }) => {
+//   const [abValue, setAbValue] = useState<number>(value);
+//   return (
+//     <div style={{ position: "relative", display: "inline-block" }}>
+//       <div style={{ margin: 0 }}>
+//         <p>
+//           {name}:{abValue}
+//         </p>
+//       </div>
 
-      {/* SINISTRA (+) */}
-      <div
-        // onClick={() => console.log("plus")}
-        onClick={() => setAbValue(abValue + 1)}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "50%",
-          height: "100%",
-          // background: "rgba(0,255,0,0.3)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-          // cursor: "pointer"
-        }}
-      ></div>
+//       {/* SINISTRA (+) */}
+//       <div
+//         // onClick={() => console.log("plus")}
+//         onClick={() => setAbValue(abValue + 1)}
+//         style={{
+//           position: "absolute",
+//           top: 0,
+//           left: 0,
+//           width: "50%",
+//           height: "100%",
+//           // background: "rgba(0,255,0,0.3)",
+//           display: "flex",
+//           alignItems: "center",
+//           justifyContent: "center"
+//           // cursor: "pointer"
+//         }}
+//       ></div>
 
-      {/* DESTRA (-) */}
-      <div
-        onClick={() => setAbValue(abValue - 1)}
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          width: "50%",
-          height: "100%",
-          // background: "rgba(255,0,0,0.3)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center"
-          // cursor: "pointer"
-        }}
-      ></div>
-    </div>
-  );
-};
+//       {/* DESTRA (-) */}
+//       <div
+//         onClick={() => setAbValue(abValue - 1)}
+//         style={{
+//           position: "absolute",
+//           top: 0,
+//           right: 0,
+//           width: "50%",
+//           height: "100%",
+//           // background: "rgba(255,0,0,0.3)",
+//           display: "flex",
+//           alignItems: "center",
+//           justifyContent: "center"
+//           // cursor: "pointer"
+//         }}
+//       ></div>
+//     </div>
+//   );
+// };

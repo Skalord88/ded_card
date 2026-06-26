@@ -2,22 +2,20 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  AttackElement,
-  createAttackDisplay,
-  // getAttacksData
+    AttackElement
 } from "../components/Attack/function";
 import { DropdownComponent } from "../components/DropDown/DropDown";
+import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
 import {
-  addToDrop,
-  itemInDrop,
-  SetSetWeaponListFromDB
+    addToDrop,
+    ItemInDrop,
+    SetSetWeaponListFromDB
 } from "../components/functions";
 import { Attacks, Weapon } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { urlAttacks, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
 
 export function Attack() {
   const { charId } = useParams();
@@ -25,7 +23,7 @@ export function Attack() {
   const [modChar, setModChar] = useState<CharToModify>();
   const [attack, setAttack] = useState<Attacks>();
   const [attackElement, setAttackElement] = useState<AttackElement>();
-  const [listFromDB, setListFromDB] = useState<itemInDrop[]>([]);
+  const [listFromDB, setListFromDB] = useState<ItemInDrop[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

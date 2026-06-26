@@ -9,94 +9,28 @@ import { createTotAndBonusElement } from "../components/ModifiedCharacter/functi
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
-import {
-  SummaryChar,
-  TotAndBonus,
-  TotAndBonusElement
-} from "../components/SummaryChar/SummaryChar";
+import { SummaryChar } from "../components/SummaryChar/SummaryChar";
 import { urlAb, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { useSkills } from "../components/Skills/Skills/Const";
+// import { useSkills } from "../components/Skills/Skills/Const";
+import {
+  TotAndBonusElement,
+  TotAndBonus
+} from "../components/SummaryChar/component/TotAndBonus";
+import { useCharacter } from "../components/ModifiedCharacter/Context/CharacterContext";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
 export function Ability() {
   const { charId } = useParams();
 
-  const [abilitys, setAbilitys] = useState<Abilitys>();
-  const [char, setChar] = useState<CharacterPc>();
-  const [modChar, setModChar] = useState<ModifiedCharacter>();
-
-  const { skillsFromDb, studiesFromDb, loading } = useSkills();
-
-  useEffect(() => {
-    if (loading || !skillsFromDb?.length || !studiesFromDb?.length) return;
-
-    const fetchData = async () => {
-      try {
-        const resChar = await axios.get(urlChar + "/" + charId);
-        const charData: CharacterPc = resChar.data;
-
-        setAbilitys(charData.abilitys);
-        setChar(charData);
-
-        // console.log("Fetched character data:", skillsFromDb, studiesFromDb);
-
-        const modChar = modifiedCharacter(
-          charData,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          undefined,
-          skillsFromDb,
-          studiesFromDb
-        );
-
-        setModChar(modChar);
-
-        // Se vuoi usare le ability modificate:
-        // setAbilitys(modChar.abilitys);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, [charId, skillsFromDb, studiesFromDb, loading]);
-
-  useEffect(() => {
-    if (loading || !skillsFromDb?.length || !studiesFromDb?.length) return;
-    // console.log("useEffect");
-    if (char && abilitys) {
-      const newModChar: ModifiedCharacter = modifiedCharacter(
-        char,
-        abilitys,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        undefined,
-        skillsFromDb,
-        studiesFromDb
-      );
-      setModChar(newModChar);
-    }
-  }, [char, abilitys, skillsFromDb, studiesFromDb, loading]);
+  const { moddedCharacter, abilitys, updateAbility } = useCharacter();
 
   const handleData = (
     option: number,
     ability: keyof Omit<Abilitys, "modifierBonus">
   ) => {
-    setAbilitys((prev) => ({
-      ...prev!,
-      [ability]: option
-    }));
+    updateAbility(ability, option);
   };
 
   const handleSubmit = () => {
@@ -107,42 +41,43 @@ export function Ability() {
     // setChange(true);
   };
 
-  return (
-    <PageLayout
-      title="Abilities"
-      buttons={{
-        next: {
-          text: "Class",
-          link: "/class/" + charId,
-          change:
-            abilitys &&
-            abilitisBaseValue.every((value) =>
-              Object.values(abilitys).includes(value)
-            )
-        }
-      }}
-      onAction={handleSubmit}
-    >
-      {abilitys && (
-        <div>
-          {/* <div key={"abilitisBaseValue"}> */}
-          <p>
-            {abilitisBaseValue.map((value, index) => (
-              <Fragment key={value}>
-                <span
-                  style={{
-                    color: Object.values(abilitys).includes(value)
-                      ? "yellow"
-                      : "white"
-                  }}
-                >
-                  {value}
-                </span>
-                <span>{index < abilitisBaseValue.length - 1 ? ", " : ""}</span>
-              </Fragment>
-            ))}
-          </p>
-          {abilitys && (
+  if (moddedCharacter)
+    return (
+      <PageLayout
+        title="Abilities"
+        buttons={{
+          next: {
+            text: "Class",
+            link:  `/${charId}/class` ,
+            change:
+              abilitys &&
+              abilitisBaseValue.every((value) =>
+                Object.values(abilitys).includes(value)
+              )
+          }
+        }}
+        onAction={handleSubmit}
+      >
+        {abilitys && (
+          <div>
+            <p>
+              {abilitisBaseValue.map((value, index) => (
+                <Fragment key={value}>
+                  <span
+                    style={{
+                      color: Object.values(abilitys).includes(value)
+                        ? "yellow"
+                        : "white"
+                    }}
+                  >
+                    {value}
+                  </span>
+                  <span>
+                    {index < abilitisBaseValue.length - 1 ? ", " : ""}
+                  </span>
+                </Fragment>
+              ))}
+            </p>
             <div
               key={"abilitys"}
               style={{
@@ -151,53 +86,51 @@ export function Ability() {
                 // , gap: "10px"
               }}
             >
-              {modChar &&
-                (
-                  Object.entries(abilitys) as [
-                    keyof Omit<Abilitys, "modifierBonus">,
-                    number
-                  ][]
-                ).map(([key, value]) => {
-                  if (typeof value === "number") {
-                    const toList: TotAndBonusElement[] =
-                      createTotAndBonusElement(
-                        modChar.abilitysMod ?? {},
-                        false
-                      ).filter(
-                        (e): e is TotAndBonusElement => e.pop.text === key
-                      );
+              {(
+                Object.entries(abilitys) as [
+                  keyof Omit<Abilitys, "modifierBonus">,
+                  number
+                ][]
+              ).map(([key, value]) => {
+                if (typeof value !== "number") return null;
 
-                    return (
-                      <div key={key} className="rpgui-container-framed grey">
-                        <h3>{key.toUpperCase()}</h3>
-                        <TotAndBonus
-                          show={false}
-                          list={[{ bonus: value, pop: BASE_VALUE }, ...toList]}
-                        >
-                          <DropdownComponent<number>
-                            options={addToDrop(abilitisBaseValue, (n) =>
-                              n.toString()
-                            )}
-                            onAction={(option) => {
-                              handleData(option, key);
-                            }}
-                          />
-                        </TotAndBonus>
-                      </div>
-                    );
-                  }
-                })}
+                const toList: TotAndBonusElement[] = moddedCharacter
+                  ? createTotAndBonusElement(
+                      moddedCharacter.abilitysMod ?? {},
+                      false, [], true
+                    ).filter((e): e is TotAndBonusElement => e.pop.text === key)
+                  : [];
+
+                return (
+                  <div key={key} className="rpgui-container-framed grey">
+                    <h3>{key.toUpperCase()}</h3>
+
+                    <TotAndBonus
+                      show={false}
+                      list={[{ bonus: value, pop: BASE_VALUE }, ...toList]}
+                    >
+                      <DropdownComponent<number>
+                        options={addToDrop(abilitisBaseValue, (n) =>
+                          n.toString()
+                        )}
+                        onAction={(option) => {
+                          handleData(option, key);
+                        }}
+                      />
+                    </TotAndBonus>
+                  </div>
+                );
+              })}
             </div>
-          )}
-          {modChar && (
-            <SummaryChar modCharacter={modChar as ModifiedCharacter} />
-          )}
-        </div>
-      )}
-    </PageLayout>
-  );
+            {/* )} */}
+            {/* {moddedCharacter && ( */}
+            <SummaryChar modCharacter={moddedCharacter as ModifiedCharacter} />
+            {/* )} */}
+          </div>
+        )}
+      </PageLayout>
+    );
 }
-
 // export type AbilityLayoutProps = {
 //   abilityText?: string;
 //   abilityNumber?: number;

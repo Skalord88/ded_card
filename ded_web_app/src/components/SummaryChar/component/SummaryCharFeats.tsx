@@ -1,9 +1,30 @@
-import { Fragment } from "react/jsx-runtime";
-import { SummaryCharProps } from "../SummaryChar";
-import { Popup } from "../../Popup/Popup";
-import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
+import { FeatPc } from "../../Feats/Interface/FeatInterface";
+import { signAndCountToString } from "../../functions";
 import { Item } from "../../interfaces";
-import { signAndCountToString, SignNumber } from "../../functions";
+import { Popup } from "../../Popup/Popup";
+import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
+import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
+import { SummaryCharProps } from "../SummaryChar";
+
+export const getElelementFeats = (
+  f: FeatPc
+): (PrerequisiteSkills[] | Item[] | null)[] | undefined => {
+  return (
+    f.classFeat?.selected
+      ? [
+          f.classFeat?.selected?.skillStudy || null,
+          f.classFeat?.selected.items || null
+        ]
+      : f.feat?.modifiers
+        ? [
+            f.feat?.modifiers?.skillStudy || null,
+            f.feat?.modifiers?.items || null
+          ]
+        : f.selected
+          ? [f.selected?.skillStudy || null, f.selected?.items || null]
+          : null
+  )?.filter(Boolean);
+};
 
 export const getElementNames = (elements: unknown[]) =>
   elements
@@ -42,34 +63,15 @@ export const SummaryCharFeats: React.FC<SummaryCharProps> = ({
       <div>
         {modCharacter.feats &&
           modCharacter.feats.map((f, index) => {
-            const elements = (
-              f.classFeat?.selected
-                ? [
-                    f.classFeat?.selected?.skillStudy || null,
-                    f.classFeat?.selected.items || null
-                  ]
-                : f.feat?.modifiers
-                  ? [
-                      f.feat?.modifiers?.skillStudy || null,
-                      f.feat?.modifiers?.items || null
-                    ]
-                  : f.selected
-                    ? [
-                        f.selected?.skillStudy || null,
-                        f.selected?.items || null
-                      ]
-                    : null
-            )?.filter(Boolean);
+            const elements = getElelementFeats(f);
 
             const title: string = [
-              f.classFeat ? f.classFeat.feat.featName + ": " : null,
+              f.classFeat ? f.classFeat.feat.featName + ", " : null,
               f.feat ? f.feat.featName : null,
               f.level ? (f.level || null) + ".lv" : null
             ]
               .filter(Boolean)
               .join(" ");
-
-            // console.log("elements", elements)
 
             const description: string = [
               f.classFeat ? f.classFeat.feat.modifiers?.text : "",
@@ -82,11 +84,10 @@ export const SummaryCharFeats: React.FC<SummaryCharProps> = ({
 
             return (
               <div key={index}>
-                <p>
+                <div>
                   <Popup text={title} popText={{ text: description }} />
-                  <span>{" "}</span>
-                  <span>{list}</span>
-                </p>
+                  <span>{list !== "" ? ": " + list : null}</span>
+                </div>
               </div>
             );
           })}

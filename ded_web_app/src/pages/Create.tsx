@@ -23,7 +23,7 @@ export const Create = () => {
     axios
       .post(urlChar, namePlayer)
       .then((response) => {
-        const charId = response.data.characterId;
+        const charId = response.data.charId;
         navigate(`/race/${charId}`);
       })
       .catch((error) => {

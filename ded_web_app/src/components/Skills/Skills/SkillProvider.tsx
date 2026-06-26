@@ -14,36 +14,43 @@ import { Study } from "../interface/SkillsInterface";
 interface SkillContextType {
   skillsFromDb: Skill[];
   studiesFromDb: Study[];
-  loading: boolean;
+  loadingSkills: boolean;
+  reloadSkills: () => Promise<void>;
 }
 
 const SkillContext = createContext<SkillContextType>({
   skillsFromDb: [],
   studiesFromDb: [],
-  loading: true
+  loadingSkills: true,
+  reloadSkills: async () => {},
 });
 
 export const SkillProvider = ({ children }: { children: ReactNode }) => {
   const [skillsFromDb, setSkillsFromDb] = useState<Skill[]>([]);
   const [studiesFromDb, setStudiesFromDb] = useState<Study[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingSkills, setLoadingSkills] = useState(true);
+
+  const reloadSkills = async () => {
+    try {
+      setLoadingSkills(true);
+
+      const [res, resStudy] = await Promise.all([
+        axios.get(urlSkillAll),
+        axios.get(urlStudyAll),
+      ]);
+
+      setSkillsFromDb(res.data);
+      setStudiesFromDb(resStudy.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("skills caricate!");
+      setLoadingSkills(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(urlSkillAll);
-        const resStudy = await axios.get(urlStudyAll);
-
-        setSkillsFromDb(res.data);
-        setStudiesFromDb(resStudy.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
+    reloadSkills();
   }, []);
 
   return (
@@ -51,7 +58,8 @@ export const SkillProvider = ({ children }: { children: ReactNode }) => {
       value={{
         skillsFromDb,
         studiesFromDb,
-        loading
+        loadingSkills,
+        reloadSkills,
       }}
     >
       {children}

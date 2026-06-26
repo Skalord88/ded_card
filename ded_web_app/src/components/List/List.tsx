@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { itemInDrop } from "../functions";
+import { ItemInDrop } from "../functions";
 
 export interface ListProps {
-  items: itemInDrop[];
+  items: ItemInDrop[];
   text: string;
   onSelect: (select: any) => void;
 }
@@ -13,7 +13,7 @@ export const ListOfSomething: React.FC<ListProps> = ({
   onSelect
 }) => {
   const [selectedImp, setSelectedImp] = useState<number>();
-  const handleSelect = (item: itemInDrop, index: number) => {
+  const handleSelect = (item: ItemInDrop, index: number) => {
     setSelectedImp(index);
     onSelect(item);
   };

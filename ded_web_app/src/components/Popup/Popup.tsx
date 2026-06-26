@@ -17,6 +17,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
     setShowPopup(show);
   };
 
+  
   if (bonusList) {
     const totBonus: string = signAndCountToString([
       Math.floor(bonusList.reduce((acc, item) => acc + item.bonus, 0))
@@ -26,6 +27,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
       return `${sign}${item.bonus} ${item.pop.text}`;
     });
     return (
+      // <div>
       <span
         className="popup"
         onMouseEnter={() => togglePopup(true)}
@@ -43,9 +45,11 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
           {bonusTexts.join(", ")}
         </span>
       </span>
+      // </div>
     );
   } else if (text) {
     return (
+      // <div>
       <span
         className="popup"
         onMouseEnter={() => togglePopup(true)}
@@ -75,6 +79,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
           </span>
         )}
       </span>
+      // </div>
     );
   }
 };

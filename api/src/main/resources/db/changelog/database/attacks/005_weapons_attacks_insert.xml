@@ -7,9 +7,11 @@
         <!-- Puli -->
         <update tableName="attacks">
             <column name="attacks_id_onefirst" value="1003" />
-            <column name="attacks_id_oneadditional" value="1006" />
+            <column name="attacks_id_onesecond" value="2002" />
+            <!-- <column name="attacks_id_oneadditional" value="1006" /> -->
             <column name="attacks_id_twofirst" value="1004" />
-            <column name="attacks_id_twoadditional" value="2002" />
+            <column name="attacks_id_twosecond" value="2002" />
+            <!-- <column name="attacks_id_twoadditional" value="2002" /> -->
             <where>id = 100</where>
         </update>
 

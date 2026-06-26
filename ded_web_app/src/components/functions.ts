@@ -2,7 +2,7 @@ import { BonusAbilities } from "./Abilitys/Functions";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 
 import { Inventory, Position, SignAndNumber, Weapon } from "./interfaces";
-import { TotAndBonusElement } from "./SummaryChar/SummaryChar";
+import { TotAndBonusElement } from "./SummaryChar/component/TotAndBonus";
 import { noneWeapon, shieldHeavy, shieldLight } from "./variables";
 
 export function SignNumber(
@@ -86,6 +86,9 @@ export function weaponThrown(weapon: Weapon | undefined): boolean {
 
 export function weaponTwoHanded(weapon: Weapon | undefined): boolean {
     return weapon?.type?.includes("TWO_HANDED") ?? false;
+}
+export function weaponDouble(weapon: Weapon | undefined): boolean {
+    return weapon?.type?.includes("DOUBLE") ?? false;
 }
 
 export function listOneHand(weapons: Weapon[]) {
@@ -410,10 +413,10 @@ export function addToDrop<T>(
 // addToDrop(feats, (f) => f.featName)
 // addToDrop(classes, (c) => c.className)
 
-// export const addToDrop = (options: any[], text: string): itemInDrop<T>[] => {
+// export const addToDrop = (options: any[], text: string): ItemInDrop<T>[] => {
 
 //     if (text === "number") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 const nameFilter: string = o.toString()
 //                 const filter: number = o as number
@@ -431,7 +434,7 @@ export function addToDrop<T>(
 //     }
 
 //     if (text === "filter") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 const nameFilter: string = o
 //                 const filter: string = o as string
@@ -444,7 +447,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "feat") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: (o as Feat).featName,
@@ -455,7 +458,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "class") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.className,
@@ -466,7 +469,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "race") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.raceName,
@@ -477,7 +480,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "subRace") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.subRacesName,
@@ -488,7 +491,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "items") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 
 //             o => {
 //                 return {
@@ -500,7 +503,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "enchant") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: FormattingText(o.ability),
@@ -511,7 +514,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "normal") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,
@@ -522,7 +525,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "char") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,
@@ -533,7 +536,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "spells") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,
@@ -544,7 +547,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "deity") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,
@@ -555,7 +558,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "domain") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.domain,
@@ -566,7 +569,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "raceRegion") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.region.name,
@@ -577,7 +580,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "region") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,
@@ -588,7 +591,7 @@ export function addToDrop<T>(
 //         return list
 //     }
 //     if (text === "aligment") {
-//         let list: itemInDrop[] = options.map(
+//         let list: ItemInDrop[] = options.map(
 //             o => {
 //                 return {
 //                     name: o.name,

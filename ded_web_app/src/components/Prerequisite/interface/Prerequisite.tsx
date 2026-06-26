@@ -3,7 +3,7 @@ import { ArmorClass } from "../../Armor/interface/ArmorInterface";
 import { AttackRoll } from "../../Attack/AttackRoll/interface";
 import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { ClassPcLevel } from "../../ClassPc/Interface/ClassPcLevel";
-import { Feat } from "../../Feats/Interface/FeatInterface";
+import { Feat, FeatsTypeEnum } from "../../Feats/Interface/FeatInterface";
 import { Item, SpecialAttacks } from "../../interfaces";
 import { SpecialAbilities } from "../../Race/Interfaces";
 import { SavingThrow } from "../../Saving/interface";
@@ -16,7 +16,7 @@ export type Prerequisite = {
   id: number;
   abilitys?: Abilitys;
   feats?: Feat[];
-  featType?: string[];
+  featType?: FeatsTypeEnum[];
   caster?: [];
   bab?: Number;
   attackRoll?: ModifierBonus[];

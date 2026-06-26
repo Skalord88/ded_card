@@ -1,8 +1,8 @@
-import { itemInDrop } from "../functions";
+import { ItemInDrop } from "../functions";
 import { Armor, Enchantment, Item, Shield, Weapon, WonderousItem } from "../interfaces";
 
 export type ItemPartProps = {
-  filtro?: itemInDrop[];
+  filtro?: ItemInDrop[];
   itemName?: string;
   itemTypeItem?: string;
   materialItem?: string;

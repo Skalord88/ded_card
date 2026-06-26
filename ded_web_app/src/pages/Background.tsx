@@ -5,11 +5,11 @@ import { Alignment, AlignmentMap } from "../components/Alignment/Alignment";
 import { Deity } from "../components/Deity/interface";
 import { Dominio } from "../components/Dominio/interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../components/functions";
+import { addToDrop, ItemInDrop } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { RacialRegion, Region } from "../components/Region/interface";
+import { RacialRegion } from "../components/Region/interface";
 import { urlChar, urlRace, urlRegion } from "../components/url";
 import { PageLayout } from "./AppLayout";
 
@@ -24,13 +24,13 @@ export function Background() {
 
   const [aligment, setAligment] = useState<Alignment>();
   const [aligments, setAligments] = useState<Alignment[]>([]);
-  const [itemsAligm, setItemsAligm] = useState<itemInDrop[]>([]);
+  const [itemsAligm, setItemsAligm] = useState<ItemInDrop[]>([]);
 
   const [god, setGod] = useState<Deity>();
   const [deities, setDeities] = useState<Deity[]>([]);
-  const [itemsDei, setItemsDei] = useState<itemInDrop[]>([]);
+  const [itemsDei, setItemsDei] = useState<ItemInDrop[]>([]);
 
-  const [itemsDom, setItemsDom] = useState<itemInDrop[]>([]);
+  const [itemsDom, setItemsDom] = useState<ItemInDrop[]>([]);
   const [domains, setDomains] = useState<Dominio[]>([]);
 
   const [selected, setSelected] = useState<
@@ -101,7 +101,7 @@ export function Background() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const itemsRegioni: itemInDrop[] = addToDrop(
+  const itemsRegioni: ItemInDrop[] = addToDrop(
     regions
       .filter((reg) =>
         reg.regionalSubRaces.some(
@@ -266,7 +266,7 @@ export function Background() {
 
 export type BackgroundLayoutComponentProps = {
   title: string;
-  items?: itemInDrop[];
+  items?: ItemInDrop[];
 
   onAction?: (option: any, index?: number) => void;
   one?: RacialRegion | Deity | Dominio | Alignment | undefined;

@@ -38,17 +38,33 @@ export type ClassFeats = {
   id: number,
   // modifiers: any;
   level: number;
-  feat: Feat;
+  feat: Feat; // il feat ha i valori da filtare
   classId: number;
   className: string;
-  toSelect?: Prerequisite;
-  selected?: Prerequisite;
+  toSelect?: Prerequisite; // nel prerequisito la lista dsu cui filtrare
+  selected?: Prerequisite; // nel selected la scelta derivante dalla lista filtrata
+  // ad esempio arma 
+}
+
+export enum FeatsTypeEnum {
+  ALL = "All",
+  GENERAL = "General",
+  FIGHTER = "Fighter",
+  MAGE = "Mage",
+  MAGIC = "Magic",
+  DIVINE = "Divine",
+  SKILLS = "Skills",
+  REGIONAL = "Regional",
+  ITEM_CREATION = "Item creation",
+  METAMAGIC = "Metamagic",
+  CLASS = "Class",
+  RACIAL = "Racial",
 }
 
 export type Feat = {
   id: number;
   featName: string;
-  featType: string[];
+  featType: FeatsTypeEnum[];
   benefit: string;
   normal: string;
   special: string;

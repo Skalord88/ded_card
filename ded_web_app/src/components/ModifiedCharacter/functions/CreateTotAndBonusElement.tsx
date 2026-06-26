@@ -4,7 +4,7 @@ import {
   ModifierEnum,
   modifierEnumList
 } from "../../Prerequisite/interface/ModifierEnum";
-import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
+import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { BonusResultMap, BonusSource } from "./GetBonusResult";
 import { isToAdd } from "./ModifiedCharacter";
 
@@ -23,20 +23,27 @@ export const createTotAndBonusElement = (
       // console.log("SEARCH:", serch);
     }
 
-    if (!serch) {
+    if (!serch || serch.length <= 0) {
       const filtered: BonusSource[] = value.filter(
         (v: BonusSource) => !v.source
       );
 
       // Se il tipo di bonus non si somma, prendo solo il più alto
+      // const valuesToUse: BonusSource[] = isToAdd(key)
+      //   ? filtered
+      //   : filtered.length > 0
+      //     ? [
+      //         filtered.reduce((max, curr) => {
+      //           if(max.bonus <= 0 && curr.bonus <= 0) {return -curr.bonus < -max.bonus ? curr : max}
+      //           else { return curr.bonus > max.bonus ? curr : max}
+      //         })
+      //       ]
+      //     : [];
+
       const valuesToUse: BonusSource[] = isToAdd(key)
         ? filtered
         : filtered.length > 0
-          ? [
-              filtered.reduce((max, curr) =>
-                curr.bonus > max.bonus ? curr : max
-              )
-            ]
+          ? filtered
           : [];
 
       valuesToUse.forEach((v: BonusSource) => {
@@ -74,12 +81,13 @@ export const createTotAndBonusElement = (
             s === (v.source as ModifierEnum)?.text
           ) {
             if (consoleLog) {
-            console.log(
-              "SEARCH:",
-              s,
-              "SOURCE:", (v.source as ModifierEnum).text || (v.source as Item)?.id
-            );
-          }
+              console.log(
+                "SEARCH:",
+                s,
+                "SOURCE:",
+                (v.source as ModifierEnum).text || (v.source as Item)?.id
+              );
+            }
             list.push({
               bonus: v.bonus,
               text: key,

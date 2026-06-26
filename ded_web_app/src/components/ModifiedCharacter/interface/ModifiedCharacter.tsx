@@ -1,6 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
-import { Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
+import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Inventory, Weapon } from "../../interfaces";
 import {
     ModifierEnum,
@@ -12,7 +12,7 @@ import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Skill } from "../../Skills/interface/Skill";
 import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
-import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
+import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { HitDiceMap } from "../../Vita/Functions";
 import { BonusResultMap } from "../functions/GetBonusResult";
 
@@ -66,6 +66,11 @@ export type AllModifiers = {
     | ModifierSkillsResult[];
 };
 
+export type Proficency = {
+    armors: (ModifierEnum | number)[],
+    weapons: (ModifierEnum | number)[]
+  }
+
 export type ModifiedCharacter = {
   title?: string;
   abilitys?: Abilitys;
@@ -89,9 +94,11 @@ export type ModifiedCharacter = {
   archetypes?: Archetype[];
   classPcList?: ClassPc[];
   listHitDices?: HitDiceMap;
+  proficency?: Proficency,
   inventory?: Inventory;
   attacks?: AttackElement;
   feats?: FeatPc[];
+  classFeats?: ClassFeats[];
 };
 
 export type AttackElement = {
@@ -121,6 +128,7 @@ export type WeaponElement = {
   weaponRanged?: boolean; // se ranged
   weaponThrown?: boolean; // se lanciata
   weaponTwoHanded?: boolean; // se a 2 mani
+  double?: boolean; // se secondo attacco
   listBabMeleeSpecificBonus?: TotAndBonusElement[][]; // attacco completo un arma melee
   listBabMeleeTwoWeaponSpecificBonus?: TotAndBonusElement[][]; // attacco completo due armi melee
   toListMeleeDamage?: TotAndBonusElement[];

@@ -718,7 +718,7 @@
         value="[{ 
         &quot;modifier&quot; : &quot;REFLEX&quot;,
         &quot;bonus&quot; : 1,
-        &quot;targets&quot; : [ &quot;TRAP&quot; ]
+        &quot;target&quot; : [ &quot;TRAP&quot; ]
       }]" />
       <column name="armor_class"
         value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;DODGE_BONUS&quot;
@@ -747,7 +747,7 @@
         value="[{
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 4,
-        &quot;targets&quot; : [ &quot;FEY&quot; ]
+        &quot;target&quot; : [ &quot;FEY&quot; ]
         }]" />
       <column name="text" value="+4 bonus on saving vs fey" />
     </insert>
@@ -794,7 +794,7 @@
         value="[{
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 2,
-        &quot;targets&quot; : [ &quot;ENCHANTMENT&quot; ]
+        &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
       }]" />
       <column name="text" value="+2 bonus on saving vs enchantment for monk" />
     </insert>

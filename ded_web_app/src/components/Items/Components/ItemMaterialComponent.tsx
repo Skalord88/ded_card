@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { DropdownComponent } from "../../DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../../functions";
+import { addToDrop, ItemInDrop } from "../../functions";
 import { ItemPartProps } from "../props";
 
 export const ItemMaterialComponent: React.FC<ItemPartProps> = ({
@@ -28,7 +28,7 @@ export const ItemMaterialComponent: React.FC<ItemPartProps> = ({
 
   if (!material) return null;
 
-  const options: itemInDrop[] | undefined = metal.includes(material)? addToDrop(metal, "filter") : wood.includes(material) ? addToDrop(wood, "filter") : undefined;
+  const options: ItemInDrop<string>[] | undefined = metal.includes(material)? addToDrop(metal, (m) => m) : wood.includes(material) ? addToDrop(wood, (w) => w) : undefined;
 
   return (
     <div>

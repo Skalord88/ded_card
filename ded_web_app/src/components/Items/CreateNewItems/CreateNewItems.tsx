@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { DropdownComponent } from "../../DropDown/DropDown";
-import { addToDrop, itemInDrop } from "../../functions";
+import { addToDrop, ItemInDrop } from "../../functions";
 import {
-  Armor,
-  Enchantment,
-  ItemsList,
-  Shield,
-  Weapon
+    Armor,
+    Enchantment,
+    ItemsList,
+    Shield,
+    Weapon
 } from "../../interfaces";
 import { AddItemCreated } from "./AddItemCreated";
 
@@ -15,7 +15,7 @@ export interface CreateNewItemsProps {
 }
 
 export const CreateNewItems: React.FC<CreateNewItemsProps> = ({ options }) => {
-  const [selected, setSelected] = useState<itemInDrop[]>([]);
+  const [selected, setSelected] = useState<ItemInDrop[]>([]);
   const [item, setItem] = useState<Armor | Shield | Weapon>();
 
   const handleFilter = (list: Armor[] | Shield[] | Weapon[]) => {

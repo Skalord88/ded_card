@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { addToDrop, itemInDrop } from "../components/functions";
+import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
+import { addToDrop, ItemInDrop } from "../components/functions";
 import { InventoryIcon, InventoryIcons } from "../components/Icon/Icons";
 import {
-  Armor,
-  CharacterPc,
-  Enchantment, Item,
-  ItemsList,
-  Shield,
-  Weapon,
-  WonderousItem
+    Armor,
+    CharacterPc,
+    Enchantment, Item,
+    ItemsList,
+    Shield,
+    Weapon,
+    WonderousItem
 } from "../components/interfaces";
 import { ItemArmorTypeComponent } from "../components/Items/Components/ItemArmorTypeComponent";
 import { ItemCostComponent } from "../components/Items/Components/ItemCostComponent";
@@ -23,33 +24,32 @@ import { ItemPenalityComponent } from "../components/Items/Components/ItemPenali
 import { ItemTheItemComponent } from "../components/Items/Components/ItemTheItemComponent";
 import { ItemWeightComponent } from "../components/Items/Components/ItemWeightComponent";
 import {
-  charTresurePerLevel,
-  createItemsInInventory
+    charTresurePerLevel,
+    createItemsInInventory
 } from "../components/Items/Functions/function";
 import {
-  notEmptyInventory,
-  specificFilter
+    notEmptyInventory,
+    specificFilter
 } from "../components/Items/Inventory/function";
 import {
-  urlChar,
-  urlEnchanted,
-  urlEnchants,
-  urlItems,
-  urlItemsBuy
+    urlChar,
+    urlEnchanted,
+    urlEnchants,
+    urlItems,
+    urlItemsBuy
 } from "../components/url";
 import {
-  noneItem
+    noneItem
 } from "../components/variables";
 import { PageLayout } from "./AppLayout";
-import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
 
 export type FiltroItems = {
-  armors: itemInDrop[];
-  shields: itemInDrop[];
-  weapons: itemInDrop[];
-  wonderous: itemInDrop[];
-  enchantments: itemInDrop[];
-  magic: itemInDrop[];
+  armors: ItemInDrop[];
+  shields: ItemInDrop[];
+  weapons: ItemInDrop[];
+  wonderous: ItemInDrop[];
+  enchantments: ItemInDrop[];
+  magic: ItemInDrop[];
 };
 
 export type ItemToSend = {
@@ -459,7 +459,7 @@ export type ItemInventoryProps = {
   n: number;
   item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem;
   sizeId: number;
-  filtro: FiltroItems | itemInDrop[];
+  filtro: FiltroItems | ItemInDrop[];
   onAction?: (
     n: number,
     item: (Item | Armor | Shield | Weapon | WonderousItem) | WonderousItem,
@@ -489,7 +489,7 @@ export const ItemInventoryComponent: React.FC<ItemInventoryProps> = ({
         )
       : [];
   const specificFiltro =
-    "magic" in filtro ? specificFilter(n, filtro) : (filtro as itemInDrop[]);
+    "magic" in filtro ? specificFilter(n, filtro) : (filtro as ItemInDrop[]);
 
   const handleNewItems = (
     optionItem?: Item | Armor | Shield | Weapon | WonderousItem

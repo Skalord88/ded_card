@@ -2,9 +2,7 @@ import { Fragment } from "react/jsx-runtime";
 import { Skill } from "../../Skills/interface/Skill";
 import { Study } from "../../Skills/interface/Study";
 import {
-  SummaryCharProps,
-  TotAndBonus,
-  TotAndBonusElement
+  SummaryCharProps
 } from "../SummaryChar";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
 import {
@@ -20,6 +18,7 @@ import {
   RANK_VALUE,
   SACRED_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
+import { TotAndBonus } from "./TotAndBonus";
 
 export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
   modCharacter

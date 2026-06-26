@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { DropdownComponent } from "../components/DropDown/DropDown";
 import { character } from "../components/interfaces";
 import { urlCharList } from "../components/url";
-import { DropdownComponent } from "../components/DropDown/DropDown";
 import { PageLayoutBody } from "./AppLayout";
 
 export const List: React.FC = () => {
@@ -25,7 +25,7 @@ export const List: React.FC = () => {
             {charList.map((c: character, index: number) => {
               return (
                 <li key={index}>
-                  <Link to={"/" + c.characterId}>
+                  <Link to={"/" + c.charId}>
                     <b>{[c.characterName, c.playerName].join(", ")}</b>
                   </Link>
                 </li>

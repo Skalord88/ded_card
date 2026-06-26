@@ -1,22 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {
-  FilterAlreadyKnownSpells,
-  FilterDayByAlreadyKnownSpells,
-  FilterPerKnownSpells,
-  FilterSpellsByLevelAndClass,
-  SpellsByLevelAndClass
-} from "../components/Magic/Functions";
-import { Book, BookToSend, CharacterPc, Spell } from "../components/interfaces";
-import { urlChar, urlSpellsAdd, urlSpellsList } from "../components/url";
-import {} from "../components/variables";
-import { PageLayout } from "./AppLayout";
 import { DropdownComponent } from "../components/DropDown/DropDown";
+import { FormattingText } from "../components/Formatting/Function";
 import { addToDrop } from "../components/functions";
+import { Book, BookToSend, CharacterPc, Spell } from "../components/interfaces";
+import {
+    FilterAlreadyKnownSpells,
+    FilterDayByAlreadyKnownSpells,
+    FilterSpellsByLevelAndClass,
+    SpellsByLevelAndClass
+} from "../components/Magic/Functions";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
-import { FormattingText } from "../components/Formatting/Function";
+import { urlChar, urlSpellsAdd, urlSpellsList } from "../components/url";
+import { } from "../components/variables";
+import { PageLayout } from "./AppLayout";
 
 export function Magic() {
   const { charId } = useParams();
@@ -266,7 +265,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                           book.level,
                           spells
                         );
-                        const items: itemInDrop[] = addToDrop(
+                        const items: ItemInDrop[] = addToDrop(
                           casterSpells,
                           "spells"
                         );
@@ -338,7 +337,7 @@ export const CharacterSpells: React.FC<SpellsByLevelAndClassProps> = ({
                           spells,
                           choosenKnownSpell
                         );
-                        const items: itemInDrop[] = addToDrop(
+                        const items: ItemInDrop[] = addToDrop(
                           casterSpells,
                           "spells"
                         );

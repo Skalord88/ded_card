@@ -2,7 +2,9 @@ const url: string =
 // "http://3.76.215.24:8080/";
 'http://localhost:8080/';
 
-export const urlChar: string = url + "character-card";
+export const urlChar = (charId: string): string => {
+  return `${url}character-card/${charId}`;
+};
 
 export const urlCharList: string = urlChar + "/list";
 
@@ -18,7 +20,7 @@ export const urlRaceList: string = url + "race/sub";
 
 export const urlClassList: string = url + "class";
 
-export const urlClassAdd: string = url + "character-card/class/";
+export const urlClassAdd: string = "/character-card/class/";
 
 export const urlClassSell: string = url + "character-card/minus_class/";
 

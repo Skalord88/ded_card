@@ -2,14 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { addToDrop, itemInDrop } from "../components/functions";
+import { addToDrop, ItemInDrop } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
 import { ListOfSomething } from "../components/List/List";
 import { findIconRace } from "../components/Race/Function";
-import { Archetype, Race, SubRace } from "../components/Race/Interfaces";
+import { Race, SubRace } from "../components/Race/Interfaces";
 import { urlChar, urlRace, urlRaceList } from "../components/url";
 import { PageLayout } from "./AppLayout";
-import { Prerequisite } from "../components/Prerequisite/interface/Prerequisite";
 
 export type ChosenRace = {
   id: number;
@@ -19,9 +18,9 @@ export const Races = () => {
   const { charId } = useParams();
 
   const [char, setChar] = useState<CharacterPc>();
-  const [racePerRace, setRacePerRace] = useState<itemInDrop[]>();
-  const [subRacePerRace, setSubRacePerRace] = useState<itemInDrop[]>();
-  const [oneSubRaceList, setOneSubRaceList] = useState<itemInDrop[]>();
+  const [racePerRace, setRacePerRace] = useState<ItemInDrop[]>();
+  const [subRacePerRace, setSubRacePerRace] = useState<ItemInDrop[]>();
+  const [oneSubRaceList, setOneSubRaceList] = useState<ItemInDrop[]>();
   const [selectedRace, setSelectedRace] = useState<Race>();
   const [selectedSubRace, setSelectedSubRace] = useState<SubRace>();
   const [chosenRace, setChosenRace] = useState<ChosenRace>({
@@ -49,8 +48,8 @@ export const Races = () => {
 
         const resRaceList = await axios.get(urlRace);
         const resSubRaceList = await axios.get(urlRaceList);
-        const resRaces: itemInDrop[] = addToDrop(resRaceList.data, "race");
-        const resSubRaces: itemInDrop[] = addToDrop(
+        const resRaces: ItemInDrop[] = addToDrop(resRaceList.data, "race");
+        const resSubRaces: ItemInDrop[] = addToDrop(
           resSubRaceList.data,
           "subRace"
         );
@@ -64,7 +63,7 @@ export const Races = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleRace = (s: itemInDrop) => {
+  const handleRace = (s: ItemInDrop) => {
     const race = s.item as Race;
     setSelectedRace(s.item as Race);
     const oneSub = subRacePerRace?.filter(
@@ -73,7 +72,7 @@ export const Races = () => {
     setOneSubRaceList(oneSub);
     setSelectedSubRace(undefined);
   };
-  const handleSubRace = (s: itemInDrop) => {
+  const handleSubRace = (s: ItemInDrop) => {
     if (s.item as SubRace) setChosenRace({ id: (s.item as SubRace).id });
     setSelectedSubRace(s.item as SubRace);
     setIconRace("rpgui-icon " + findIconRace((s.item as SubRace).id));

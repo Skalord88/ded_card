@@ -26,12 +26,14 @@
         <update tableName="feat">
             <!-- Armor Proficiency (Heavy) [General] -->
             <column name="prerequisite_list_id" valueNumeric="110001" />
-        <where>id = 5</where>
+        <where>id
+            = 5</where>
         </update>
         <update tableName="feat">
             <!-- Armor Proficiency (Medium) [General] -->
             <column name="prerequisite_list_id" valueNumeric="110002" />
-        <where>id = 7</where>
+        <where>id
+            = 7</where>
         </update>
         <update tableName="feat">
             <!-- Athletic [General] -->
@@ -404,8 +406,7 @@
         <update tableName="feat">
             <!-- Simple Weapon Proficiency [General] toSel -->
             <column name="to_select_id" valueNumeric="2005" />
-            <where>id
-            = 89</where>
+            <where>id = 89</where>
         </update>
         <update tableName="feat">
             <!-- Snatch Arrows [General] pre -->
@@ -462,7 +463,8 @@
         <update tableName="feat">
             <!-- Weapon Specialization [General] sel -->
             <column name="prerequisite_list_id" valueNumeric="110054" />
-            <where>id = 108</where>
+            <where>id
+            = 108</where>
         </update>
         <update tableName="feat">
             <!-- Weapon Specialization [General] toSel -->
@@ -477,7 +479,8 @@
         <update tableName="feat">
             <!-- Whirlwind Attack [General] pre -->
             <column name="prerequisite_list_id" valueNumeric="110055" />
-            <where>id = 109</where>
+            <where>id
+            = 109</where>
         </update>
 
         <!-- classes -->
@@ -515,6 +518,12 @@
             <column name="modifiers_id" valueNumeric="3005" />
             <where>id = 4011</where>
         </update>
+        <!-- fighter -->
+        <update tableName="feat">
+            <column name="to_select_id" valueNumeric="4004" />
+            <where>id = 5001</where>
+        </update>
+        <!-- fighter -->
 
         <!-- monk -->
         <update tableName="feat">
@@ -566,29 +575,34 @@
         <update tableName="feat">
             <!-- Electricity Resistance mod -->
             <column name="modifiers_id" valueNumeric="70000" />
-            <where>id = 11701</where>
+            <where>id =
+            11701</where>
         </update>
 
         <!-- monsters -->
         <update tableName="feat">
             <!-- Improved Natural Armor [General] pre -->
             <column name="prerequisite_list_id" valueNumeric="50001" />
-            <where>id = 50003</where>
+            <where>id
+            = 50003</where>
         </update>
         <update tableName="feat">
             <!-- Eagle's Wings [Wild] pre -->
             <column name="prerequisite_list_id" valueNumeric="50002" />
-            <where>id = 50004</where>
+            <where>id
+            = 50004</where>
         </update>
         <update tableName="feat">
             <!-- Pierce the Darkness [Divine] pre -->
             <column name="prerequisite_list_id" valueNumeric="50003" />
-            <where>id = 50005</where>
+            <where>id
+            = 50005</where>
         </update>
         <update tableName="feat">
             <!-- Domain Spontaneity [Divine] pre -->
             <column name="prerequisite_list_id" valueNumeric="50004" />
-            <where>id = 50006</where>
+            <where>id
+            = 50006</where>
         </update>
     </changeSet>
 </databaseChangeLog>
