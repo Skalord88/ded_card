@@ -1,0 +1,48 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+    <changeSet id="005_prerequisite_skill_study_in_size_insert" author="oscar">
+
+        <!-- Fine size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90001" />
+            <column name="prerequisite_skill_id" value="301416" />
+        </insert>
+        <!-- Diminutive size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90002" />
+            <column name="prerequisite_skill_id" value="301412" />
+        </insert>
+        <!-- Tiny size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90003" />
+            <column name="prerequisite_skill_id" value="301408" />
+        </insert>
+        <!-- Small size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90004" />
+            <column name="prerequisite_skill_id" value="301404" />
+        </insert>
+        <!-- Large size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90006" />
+            <column name="prerequisite_skill_id" value="-301404" />
+        </insert>
+        <!-- Huge size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90007" />
+            <column name="prerequisite_skill_id" value="-301408" />
+        </insert>
+        <!-- Gargantuan size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90008" />
+            <column name="prerequisite_skill_id" value="-301412" />
+        </insert>
+        <!-- Colossal size prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="90009" />
+            <column name="prerequisite_skill_id" value="-301416" />
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

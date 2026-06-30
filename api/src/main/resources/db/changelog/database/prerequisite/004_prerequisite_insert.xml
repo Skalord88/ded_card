@@ -19,6 +19,7 @@
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 1
         }]" />
+        <column name="text" value="improve saving +1"/>
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20002" />
@@ -32,6 +33,7 @@
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 2
     }]" />
+    <column name="text" value="improve saving +2"/>
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20003" />
@@ -45,6 +47,7 @@
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 3
     }]" />
+    <column name="text" value="improve saving +3"/>
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20004" />
@@ -58,6 +61,7 @@
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 4
     }]" />
+    <column name="text" value="improve saving +4"/>
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="20005" />
@@ -71,6 +75,7 @@
         &quot;modifier&quot; : &quot;SAVING&quot;,
         &quot;bonus&quot; : 5
     }]" />
+    <column name="text" value="improve saving +5"/>
         </insert>
 
         <!--  id:20.100 -->

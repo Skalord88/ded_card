@@ -174,6 +174,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="2004" />
       <column name="weapon_type" value="EXOTIC" />
+      <column name="text" value="Exotic Weapon Proficiency."/>
     </insert>
 
     <!-- Extra Turning [General] pre -->
@@ -492,7 +493,7 @@
       <column name="id" value="1017" />
       <column name="text" value="+2 Disable Device and Sleight of Hand" />
     </insert>
-    
+
     <!-- Persuasive [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1018" />
@@ -769,6 +770,7 @@
     <insert tableName="prerequisite">
       <column name="id" value="4004" />
       <column name="feat_type" value="[&quot;FIGHTER&quot;]" />
+      <column name="text" value="select a fighter feat"/>
     </insert>
 
     <!-- Fast Movement mod -->
@@ -864,6 +866,7 @@
       <column name="id" value="3013" />
       <column name="number_of_domains"
         value="2" />
+        <column name="text" value="select 2 domains"/>
     </insert>
 
     <!-- Combat Style to_select -->
@@ -876,6 +879,7 @@
       <column name="id" value="4005" />
       <column name="feat_type"
         value="[&quot;METAMAGIC&quot; , &quot;ITEM_CREATION&quot; , &quot;MAGE&quot;]" />
+        <column name="text" value="select a wizard's bonus feat" />
     </insert>
 
     <!-- Electricity Resistance mod -->

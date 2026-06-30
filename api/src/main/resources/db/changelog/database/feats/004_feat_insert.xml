@@ -1245,7 +1245,6 @@
       <column name="special" value="null" />
     </insert>
 
-
     <insert tableName="feat">
       <column name="id" value="99" />
       <column name="feat_name" value="Stunning Fist [General]" />

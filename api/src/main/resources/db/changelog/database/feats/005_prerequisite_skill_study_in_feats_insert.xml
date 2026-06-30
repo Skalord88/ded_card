@@ -4,16 +4,179 @@
     <changeSet id="005_prerequisite_skill_study_in_feats_insert" author="oscar">
 
 <insert tableName="prerequisite_skill_study">
-      <column name="prerequisite_skill_id" value="82" />
+      <column name="prerequisite_skill_id" value="101602" />
+      <!-- JUMP -->
+      <column name="prerequisite_id" value="1001" />
+      <!-- Acrobatic [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="103102" />
+      <!-- TUMBLE -->
+      <column name="prerequisite_id" value="1001" />
+      <!-- Acrobatic [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100202" />
+      <!-- BALANCE -->
+      <column name="prerequisite_id" value="1002" />
+      <!-- Agile [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="101002" />
+      <!-- ESCAPE_ARTIST -->
+      <column name="prerequisite_id" value="1002" />
+      <!-- Agile [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="101802" />
+      <!-- LISTEN -->
+      <column name="prerequisite_id" value="1003" />
+      <!-- Alertness [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102802" />
+      <!-- SPOT -->
+      <column name="prerequisite_id" value="1003" />
+      <!-- Alertness [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="101202" />
+      <!-- HANDLE_ANIMAL -->
+      <column name="prerequisite_id" value="1004" />
+      <!-- Animal Affinity [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102202" />
+      <!-- RIDE -->
+      <column name="prerequisite_id" value="1004" />
+      <!-- Animal Affinity [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100402" />
+      <!-- CLIMB -->
+      <column name="prerequisite_id" value="1005" />
+      <!-- Athletic [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="103002" />
+      <!-- SWIM -->
+      <column name="prerequisite_id" value="1005" />
+      <!-- Athletic [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100504" />
+      <!-- CONCENTRATION -->
+      <column name="prerequisite_id" value="1006" />
+      <!-- Combat Casting [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100902" />
+      <!-- DISGUISE -->
+      <column name="prerequisite_id" value="1007" />
+      <!-- Deceitful [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102102" />
+      <!-- PROFESSION -->
+      <column name="prerequisite_id" value="1007" />
+      <!-- Deceitful [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102502" />
+      <!-- SLEIGHT_OF_HAND -->
+      <column name="prerequisite_id" value="1008" />
+      <!-- Deft Hands [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="103302" />
+      <!-- USE_ROPE -->
+      <column name="prerequisite_id" value="1008" />
+      <!-- Deft Hands [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100102" />
+      <!-- APPRAISE -->
+      <column name="prerequisite_id" value="1009" />
+      <!-- Diligent [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102101" />
+      <!-- PROFESSION -->
+      <column name="prerequisite_id" value="1009" />
+      <!-- Diligent [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="101102" />
+      <!-- GATHER_INFORMATION -->
+      <column name="prerequisite_id" value="1012" />
+      <!-- Investigator [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102302" />
+      <!-- SEARCH -->
+      <column name="prerequisite_id" value="1012" />
+      <!-- Investigator [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102702" />
+      <!-- SPELLCRAFT -->
+      <column name="prerequisite_id" value="1015" />
+      <!-- Magical Aptitude [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="103202" />
+      <!-- USE_MAGIC_DEVICE -->
+      <column name="prerequisite_id" value="1015" />
+      <!-- Magical Aptitude [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100702" />
+      <!-- DIPLOMACY -->
+      <column name="prerequisite_id" value="1016" />
+      <!-- Negotiator [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="102402" />
+      <!-- SENSE_MOTIVE -->
+      <column name="prerequisite_id" value="1016" />
+      <!-- Negotiator [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100802" />
       <!-- DISABLE_DEVICE -->
       <column name="prerequisite_id" value="1017" />
       <!-- Nimble Fingers [General] mod -->
     </insert>
     <insert tableName="prerequisite_skill_study">
-      <column name="prerequisite_skill_id" value="252" />
-      <!-- Sleight of Hand -->
+      <column name="prerequisite_skill_id" value="102502" />
+      <!-- SLEIGHT_OF_HAND -->
       <column name="prerequisite_id" value="1017" />
       <!-- Nimble Fingers [General] mod -->
+    </insert>
+
+<insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="100302" />
+      <!-- BLUFF -->
+      <column name="prerequisite_id" value="1018" />
+      <!-- Persuasive [General] mod -->
+    </insert>
+    <insert tableName="prerequisite_skill_study">
+      <column name="prerequisite_skill_id" value="101502" />
+      <!-- INTIMIDATE -->
+      <column name="prerequisite_id" value="1018" />
+      <!-- Persuasive [General] mod -->
     </insert>
 
     </changeSet>

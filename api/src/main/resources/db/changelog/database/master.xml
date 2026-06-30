@@ -125,7 +125,6 @@
     <include file="race/004_size_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_prerequisite_size_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_sub_race_insert.xml" relativeToChangelogFile="true"/>
-    <include file="skills/004_prerequisite_skills_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/004_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/004_skills_character_insert.xml" relativeToChangelogFile="true"/>
     <include file="skills/004_study_insert.xml" relativeToChangelogFile="true"/>
@@ -170,6 +169,7 @@
     <include file="race/005_prerequisite_items_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_skill_study_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
+    <include file="race/005_prerequisite_skill_study_in_size_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_prerequisite_special_abilities_in_sub_race_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/005_race_type_race_modifiers_update.xml" relativeToChangelogFile="true"/>
     <include file="race/005_racial_region_update.xml" relativeToChangelogFile="true"/>

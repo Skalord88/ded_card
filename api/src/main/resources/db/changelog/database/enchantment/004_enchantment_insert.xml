@@ -211,6 +211,7 @@
         <!-- SHADOW -->
         <insert tableName="prerequisite">
             <column name='id' value="10010" />
+            <column name='text' value="shadow special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -227,6 +228,7 @@
         <!-- SHADOW_IMPROVED -->
         <insert tableName="prerequisite">
             <column name='id' value="10011" />
+            <column name='text' value="improved shadow special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -243,6 +245,7 @@
         <!-- SHADOW_GREATER -->
         <insert tableName="prerequisite">
             <column name='id' value="10012" />
+            <column name='text' value="greater shadow special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -259,6 +262,7 @@
         <!-- SILENT_MOVES -->
         <insert tableName="prerequisite">
             <column name='id' value="10013" />
+            <column name='text' value="silent moves special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -275,6 +279,7 @@
         <!-- SILENT_MOVES_IMPROVED -->
         <insert tableName="prerequisite">
             <column name='id' value="10014" />
+            <column name='text' value="improved silent moves special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -291,6 +296,7 @@
         <!-- SILENT_MOVES_GREATER -->
         <insert tableName="prerequisite">
             <column name='id' value="10015" />
+            <column name='text' value="greater silent moves special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -307,6 +313,7 @@
         <!-- SLICK -->
         <insert tableName="prerequisite">
             <column name='id' value="10016" />
+            <column name='text' value="slick special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -323,6 +330,7 @@
         <!-- SLICK_IMPROVED -->
         <insert tableName="prerequisite">
             <column name='id' value="10017" />
+            <column name='text' value="improved slick special ability" />
         </insert>
 
         <insert tableName="enchantment">
@@ -339,6 +347,7 @@
         <!-- SLICK_GREATER -->
         <insert tableName="prerequisite">
             <column name='id' value="10018" />
+            <column name='text' value="greater slick special ability" />
         </insert>
 
         <insert tableName="enchantment">

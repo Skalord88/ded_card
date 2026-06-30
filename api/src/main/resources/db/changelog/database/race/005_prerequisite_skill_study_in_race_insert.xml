@@ -6,101 +6,86 @@
         <!-- Dwarf prerequisite_skill_study -->
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100001" />
-            <column name="prerequisite_skill_id" value="12" />
+            <column name="prerequisite_skill_id" value="200102" />
+            <!-- APPRAISE +2 -->
         </insert>
 
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100001" />
-            <column name="prerequisite_skill_id" value="62" />
+            <column name="prerequisite_skill_id" value="200602" />
+            <!-- CRAFT +2 -->
         </insert>
         <!-- Dwarf prerequisite_skill_study -->
 
         <!-- Elf prerequisite_skill_study -->
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100002" />
-            <column name="prerequisite_skill_id" value="182" />
+            <column name="prerequisite_skill_id" value="201802" />
+            <!-- LISTEN +2 -->
         </insert>
 
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100002" />
-            <column name="prerequisite_skill_id" value="232" />
+            <column name="prerequisite_skill_id" value="202302" />
+            <!-- SEARCH +2-->
         </insert>
 
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100002" />
-            <column name="prerequisite_skill_id" value="282" />
+            <column name="prerequisite_skill_id" value="202801" />
+            <!-- SPOT +2-->
         </insert>
         <!-- Elf prerequisite_skill_study -->
 
         <!-- Halfling prerequisite_skill_study -->
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100005" />
-            <column name="prerequisite_skill_id" value="42" />
+            <column name="prerequisite_skill_id" value="200402" />
+            <!-- CLIMB +2 -->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100005" />
-            <column name="prerequisite_skill_id" value="162" />
+            <column name="prerequisite_skill_id" value="201602" />
+            <!-- JUMP +2-->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100005" />
-            <column name="prerequisite_skill_id" value="192" />
+            <column name="prerequisite_skill_id" value="201902" />
+            <!-- MOVE_SILENTLY +2 -->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100005" />
-            <column name="prerequisite_skill_id" value="282" />
+            <column name="prerequisite_skill_id" value="202802" />
+            <!-- SPOT +2-->
         </insert>
         <!-- Halfling prerequisite_skill_study -->
 
         <!-- Half Elf prerequisite_skill_study -->
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100009" />
-            <column name="prerequisite_skill_id" value="181" />
+            <column name="prerequisite_skill_id" value="201801" />
+            <!-- LISTEN +1 -->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100009" />
-            <column name="prerequisite_skill_id" value="231" />
+            <column name="prerequisite_skill_id" value="202301" />
+            <!-- SEARCH +1-->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100009" />
-            <column name="prerequisite_skill_id" value="281" />
+            <column name="prerequisite_skill_id" value="202801" />
+            <!-- SPOT +1-->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100009" />
-            <column name="prerequisite_skill_id" value="72" />
+            <column name="prerequisite_skill_id" value="100702" />
+            <!-- DIPLOMACY +2 -->
         </insert>
         <insert tableName="prerequisite_skill_study">
             <column name="prerequisite_id" value="100009" />
-            <column name="prerequisite_skill_id" value="112" />
+            <column name="prerequisite_skill_id" value="201102" />
+            <!-- GATHER_INFORMATION +2-->
         </insert>
         <!-- Half Elf prerequisite_skill_study -->
-
-        <!-- Grey Dwarf prerequisite_skill_study -->
-        <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="150003" />
-            <column name="prerequisite_skill_id" value="144" />
-        </insert>
-
-        <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="150003" />
-            <column name="prerequisite_skill_id" value="181" />
-        </insert>
-
-        <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="150003" />
-            <column name="prerequisite_skill_id" value="281" />
-        </insert>
-        <!-- Grey Dwarf prerequisite_skill_study -->
-
-        <!-- Shield Dwarf prerequisite_skill_study -->
-        <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="150005" />
-            <column name="prerequisite_skill_id" value="-2" />
-        </insert>
-
-        <insert tableName="prerequisite_skill_study">
-            <column name="prerequisite_id" value="150005" />
-            <column name="prerequisite_skill_id" value="602" />
-        </insert>
-        <!-- Shield Dwarf prerequisite_skill_study -->
     </changeSet>
 </databaseChangeLog>
