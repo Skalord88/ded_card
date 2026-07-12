@@ -2,6 +2,7 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { findIdsFeatsInList } from "../../Feats/FindFeatsInList";
+import { createClassPcClassFeats, createPcBonusFeats } from "../../Feats/function";
 import { Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import {
   weaponDouble,
@@ -491,7 +492,31 @@ export const modifiedCharacter = (
     )
   };
 
-  const feats: FeatPc[] = featsList.sort((a, b) => (a.level || a.feat?.id || a.id || 0) - (b.level || b.feat?.id || b.id || 0))
+  const pcBonusFeats = createPcBonusFeats(classPcList, featsList)
+  const classPcClassFeats = createClassPcClassFeats(classPcList, featsList)
+
+ const feats: FeatPc[] = [...pcBonusFeats, ...classPcClassFeats];
+
+//  console.log("feats", feats)
+//  .sort((a, b) => {
+//   const aHasLevel = a.level != null;
+//   const bHasLevel = b.level != null;
+
+//   if (aHasLevel && bHasLevel) {
+//     return a.level! - b.level!;
+//   }
+
+//   if (aHasLevel) return -1;
+//   if (bHasLevel) return 1;
+
+//   const aFeatId = a.feat?.id ?? a.id ?? 0;
+//   const bFeatId = b.feat?.id ?? b.id ?? 0;
+
+//   return aFeatId - bFeatId;
+// });
+
+  // [...pcBonusFeats, ...classPcClassFeats].sort((a, b) => (
+  //   a.level && b.level? a.level - b.level : (a.feat?.id || a.id || 0) - (b.feat?.id || b.id || 0)))
 
   return {
     title: title,
@@ -516,6 +541,7 @@ export const modifiedCharacter = (
     inventory: inventory,
     attacks: newAttacksElement,
     feats: feats
+    // feats
   };
 };
 

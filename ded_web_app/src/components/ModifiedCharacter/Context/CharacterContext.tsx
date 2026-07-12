@@ -11,15 +11,15 @@ import {
   useState
 } from "react";
 import { Abilitys } from "../../Abilitys/Interface";
-import { ClassCharacter, ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Attacks, CharacterPc, Inventory } from "../../interfaces";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
-import { useSkills } from "../../Skills/Skills/SkillProvider";
 import { urlChar } from "../../url";
 import { modifiedCharacter } from "../functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../interface/ModifiedCharacter";
+import { useData } from "../../Context/Context";
 
 type CharacterContextValue = {
   character: CharacterPc | null;
@@ -28,6 +28,7 @@ type CharacterContextValue = {
   abilitys?: Abilitys;
   classes: ClassPc[];
   featsList?: FeatPc[],
+  featsPg?: FeatPc[],
   skills: SkillCharacter[];
 
   setAbilitys: Dispatch<SetStateAction<Abilitys | undefined>>;
@@ -66,16 +67,30 @@ export function CharacterProvider({
   const [attacks, setAttacks] = useState<Attacks | undefined>();
   const [skills, setSkills] = useState<SkillCharacter[]>([]);
 
-  const { skillsFromDb, studiesFromDb, loadingSkills } = useSkills();
+  // const { skillsFromDb, studiesFromDb, loadingSkills } = useSkills();
+
+  const { getData, loading, reload } = useData();
+
+  const dBskills = getData("skills");
+  const dBstudies = getData("studies");
+// const items = getData("items");
+// const classes = getData("classes");
+
+useEffect(() => {
+  reload("skills");
+  reload("studies");
+  // reload("items");
+  // reload("classes");
+}, [reload]);
 
   const moddedCharacter = useMemo(() => {
   if (!character) return null;
-  if (loadingSkills) return null;
+  if (!loading) return null;
 
   return modifiedCharacter(
     character,
-    skillsFromDb,
-    studiesFromDb,
+    dBskills,
+    dBstudies,
     abilitys,
     race,
     archetypes,
@@ -87,9 +102,9 @@ export function CharacterProvider({
   );
 }, [
   character,
-  loadingSkills,
-  skillsFromDb,
-  studiesFromDb,
+  loading,
+  dBskills,
+  dBstudies,
   abilitys,
   race,
   archetypes,
@@ -150,6 +165,7 @@ export function CharacterProvider({
         classes,
         featsList,
         skills,
+        featsPg: moddedCharacter?.feats,
         setAbilitys,
         setClasses,
         setFeatsList,

@@ -21,7 +21,7 @@
             <!-- <column name="feat_id" value="77" /> -->
         </insert>
         <insert tableName="feat_pc">
-            <column name="id" value="101003" />
+            <column name="id" value="101002" />
             <!-- <column name="character_card_id" value="100" /> -->
             <!-- Exotic Weapon Proficiency [General] -->
             <!-- <column name="feat_id" value="31" /> -->
@@ -29,7 +29,7 @@
             <column name="level" value="3" />
         </insert>
         <insert tableName="feat_pc">
-            <column name="id" value="101004" />
+            <column name="id" value="101003" />
             <!-- <column name="character_card_id" value="100" /> -->
             <!-- Fighter Bonus Feats -->
             <!-- <column name="class_feat_id" value="508" /> -->
@@ -37,21 +37,21 @@
             <!-- <column name="selected_id" value="110004" /> -->
         </insert>
         <insert tableName="feat_pc">
-            <column name="id" value="101005" />
+            <column name="id" value="101004" />
             <!-- <column name="character_card_id" value="100" /> -->
             <!-- Persuasive [General] -->
             <!-- <column name="feat_id" value="74" /> -->
             <column name="level" value="6" />
         </insert>
         <insert tableName="feat_pc">
-            <column name="id" value="101006" />
+            <column name="id" value="101005" />
             <!-- <column name="character_card_id" value="100" /> -->
             <!-- Combat Expertise [General] -->
             <!-- <column name="feat_id" value="14" /> -->
             <column name="level" value="9" />
         </insert>
         <insert tableName="feat_pc">
-            <column name="id" value="101007" />
+            <column name="id" value="101006" />
             <!-- <column name="character_card_id" value="100" /> -->
             <!-- Nimble Fingers [General] -->
             <!-- <column name="feat_id" value="73" /> -->

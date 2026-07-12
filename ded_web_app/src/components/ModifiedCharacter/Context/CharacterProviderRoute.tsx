@@ -1,7 +1,8 @@
 // CharacterProviderRoute.tsx
 import { Outlet, useParams } from "react-router-dom";
-import { SkillProvider } from "../../Skills/Skills/SkillProvider";
+import { SkillProvider } from "../../Skills/Context/SkillProvider";
 import { CharacterProvider } from "./CharacterContext";
+import { DataProvider } from "../../Context/Context";
 
 export function CharacterProviderRoute() {
   const { charId } = useParams();
@@ -9,10 +10,11 @@ export function CharacterProviderRoute() {
   if (!charId) return null;
 
   return (
-    <SkillProvider>
+    // <SkillProvider>
+    <DataProvider>
         <CharacterProvider charId={charId}>
           <Outlet />
         </CharacterProvider>
-    </SkillProvider>
+    </DataProvider>
   );
 }

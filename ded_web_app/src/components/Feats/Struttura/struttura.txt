@@ -1,0 +1,65 @@
+export type FeatPc = {
+  id: number | null;
+  feat?: Feat | null;
+  level?: number;
+  classFeat?: ClassFeats;
+  selected?: Prerequisite | null;
+}
+
+export type Feat = {
+  id: number;
+  featName: string;
+  featType: FeatsTypeEnum[];
+  benefit: string;
+  normal: string;
+  special: string;
+  modifiers?: Prerequisite;
+  prerequisiteList?: Prerequisite;
+  toSelect?: Prerequisite;
+  selected?: Prerequisite;
+}
+
+export type ClassFeats = {
+  id: number,
+  // modifiers: any;
+  level: number;
+  feat: Feat; // il feat ha i valori da filtare
+  classId: number;
+  className: string;
+  toSelect?: Prerequisite; // nel prerequisito la lista su cui filtrare
+  selected?: Prerequisite; // nel selected la scelta derivante dalla lista filtrata
+  // ad esempio arma
+}
+
+FeatPc da livello {
+level, feat, selected
+}
+FeatPc bonus {
+classFeat, selected
+}
+
+export type Prerequisite = {
+  id: number;
+  abilitys?: Abilitys;
+  feats?: Feat[];
+  featType?: FeatsTypeEnum[];
+  caster?: [];
+  bab?: Number;
+  attackRoll?: ModifierBonus[];
+  damageBonus?: ModifierBonus[];
+  initiative?: Number;
+  speed?: Speed;
+  spaceReach?: string;
+  savingThrow?: ModifierBonus[];
+  specialAttacks?: SpecialAttacks;
+  specialAbilities?: SpecialAbilities[];
+  skillStudy?: PrerequisiteSkills[];
+  armorClass?: ModifierBonus[];
+  armorType?: ModifierEnum;
+  weaponType?: ModifierEnum;
+  schools?: string[];
+  classPc?: ClassPcLevel[];
+  items?: Item[];
+  numberOfDomains?: number;
+  text?: string;
+};

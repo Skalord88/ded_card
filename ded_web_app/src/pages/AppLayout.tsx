@@ -56,7 +56,7 @@ export const TitlePage: React.FC = () => {
 };
 
 export type PageLayoutProps = {
-  title: string;
+  title?: string;
   buttons?: ButtonsLayoutProps;
   children?: React.ReactNode;
   onAction?: () => void;

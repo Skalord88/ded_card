@@ -6,59 +6,59 @@ export type feat = {
   characterFeatDescription: string;
 }
 
-export type serverFeat = {
-  id: number;
-  featName: string;
-  featsType: string;
-  description: string;
-}
+// export type serverFeat = {
+//   id: number;
+//   featName: string;
+//   featsType: string;
+//   description: string;
+// }
 
 export interface FeatProps {
   feats: feat[] | undefined;
   title: string;
 }
 
-export interface ServerFeatsProns {
-  feats: serverFeat[] | feat[] | undefined;
-  title: string;
-  selectFeat: (select: serverFeat) => void;
-}
+// export interface ServerFeatsProns {
+//   feats: serverFeat[] | feat[] | undefined;
+//   title: string;
+//   selectFeat: (select: serverFeat) => void;
+// }
 
-export interface ServerFeatsPronsDelete {
-  feats: serverFeat[] | undefined;
-  title: string;
-  deleteFeat: (deleted: number) => void;
-}
+// export interface ServerFeatsPronsDelete {
+//   feats: serverFeat[] | undefined;
+//   title: string;
+//   deleteFeat: (deleted: number) => void;
+// }
 
-export type SelectedFeatProps = {
-  feat: serverFeat | feat
-}
+// export type SelectedFeatProps = {
+//   feat: serverFeat | feat
+// }
 
 export type ClassFeats = {
   id: number,
   // modifiers: any;
   level: number;
-  feat: Feat; // il feat ha i valori da filtare
+  feat: Feat;
   classId: number;
   className: string;
-  toSelect?: Prerequisite; // nel prerequisito la lista dsu cui filtrare
-  selected?: Prerequisite; // nel selected la scelta derivante dalla lista filtrata
+  toSelect?: Prerequisite;
+  selected?: Prerequisite;
   // ad esempio arma 
 }
 
 export enum FeatsTypeEnum {
-  ALL = "All",
-  GENERAL = "General",
-  FIGHTER = "Fighter",
-  MAGE = "Mage",
-  MAGIC = "Magic",
-  DIVINE = "Divine",
-  SKILLS = "Skills",
-  REGIONAL = "Regional",
-  ITEM_CREATION = "Item creation",
-  METAMAGIC = "Metamagic",
-  CLASS = "Class",
-  RACIAL = "Racial",
+  ALL = "ALL",
+  GENERAL = "GENERAL",
+  FIGHTER = "FIGHTER",
+  MAGE = "MAGE",
+  MAGIC = "MAGIC",
+  DIVINE = "DIVINE",
+  SKILLS = "SKILLS",
+  REGIONAL = "REGIONAL",
+  ITEM_CREATION = "ITEM_CREATION",
+  METAMAGIC = "METAMAGIC",
+  CLASS = "CLASS",
+  RACIAL = "RACIAL"
 }
 
 export type Feat = {

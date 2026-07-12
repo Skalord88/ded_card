@@ -98,7 +98,6 @@ export type ModifiedCharacter = {
   inventory?: Inventory;
   attacks?: AttackElement;
   feats?: FeatPc[];
-  classFeats?: ClassFeats[];
 };
 
 export type AttackElement = {

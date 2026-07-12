@@ -260,25 +260,7 @@ export const emptySavingThrow: SavingThrow = {
 }
 
 export const emptyPrerequisite: Prerequisite = {
-    abilitys: undefined,
-    feats: undefined,
-    featType: undefined,
-    caster: undefined,
-    bab: undefined,
-    attackRoll: undefined,
-    damageBonus: undefined,
-    initiative: undefined,
-    speed: undefined,
-    savingThrow:undefined,
-    specialAttacks:undefined,
-    skillStudy:undefined,
-    armorClass:undefined,
-    armorType:undefined,
-    weaponType:undefined,
-    schools:undefined,
-    classPc:undefined,
-    items:undefined,
-    text:undefined
+    id: -1
 }
 
 export const characterEmpty: CharacterPc = {

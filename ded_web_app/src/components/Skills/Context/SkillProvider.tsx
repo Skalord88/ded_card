@@ -1,12 +1,12 @@
 // SkillContext.tsx
+import axios from "axios";
 import {
   createContext,
+  ReactNode,
   useContext,
   useEffect,
-  useState,
-  ReactNode
+  useState
 } from "react";
-import axios from "axios";
 import { urlSkillAll, urlStudyAll } from "../../url";
 import { Skill } from "../interface/Skill";
 import { Study } from "../interface/SkillsInterface";

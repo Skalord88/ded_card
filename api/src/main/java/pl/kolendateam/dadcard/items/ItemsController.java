@@ -53,13 +53,20 @@ public class ItemsController {
     this.enchantmentRepository = enchantmentRepository;
   }
 
-  @GetMapping("all")
+  @GetMapping("itemslist")
   public ItemsListDTO showItemsList() {
     List<Item> itemsList = this.itemsRepository.findAll();
 
     ItemsListDTO itemsDTOList = new ItemsListDTO();
 
     return itemsDTOList.createListOfItemsDTO(itemsList, itemsDTOList);
+  }
+
+  @GetMapping("all")
+  public List<Item> showItems() {
+    List<Item> itemsList = this.itemsRepository.findAll();
+
+    return itemsList;
   }
 
   @GetMapping("allEnchanted")
