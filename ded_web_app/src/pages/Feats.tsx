@@ -382,8 +382,10 @@ export function Feats() {
           );
           const toShowList: ({
             text: string;
-            drop: ItemInDrop<T>[];
+            drop: ItemInDrop<Feat | Item | Skill | Study>[];
           } | null)[] = [
+            selectedFeats ? { text: selectedFeats, drop: featsFilted } : null,
+            selectedItems ? { text: selectedItems, drop: itemsFilted } : null,
             selectedSkillsRanks
               ? { text: selectedSkillsRanks, drop: selectedSkills }
               : null
@@ -421,8 +423,14 @@ export function Feats() {
                     </PageLayoutFeatsComponent>
                   )
               )}
+              </div>
+              )
+              }}
+          </PageLayout>
+  );
+}
 
-              <PageLayoutFeats>
+              {/* <PageLayoutFeats>
                 <PageLayoutFeatsComponent></PageLayoutFeatsComponent>
               </PageLayoutFeats>
 
@@ -435,41 +443,35 @@ export function Feats() {
                 <PageLayoutFeatsComponent>
                   <DropdownComponent
                     options={itemsFilted || []}
-                    onAction={(newItem) =>
-                      changeSelected(indexF, newItem)
-                    }
+                    onAction={(newItem) => changeSelected(indexF, newItem)}
                   />
                   <p>{selectedItems}</p>
                 </PageLayoutFeatsComponent>
-              )}
+              )} */}
 
-              <p>{selectedFeats}</p>
+              {/* <p>{selectedFeats}</p> */}
               {/* {f.classFeat?.feat?.toSelect?.featType && ( */}
               <>
                 {/* {featsBonusFilted && ( */}
-                <DropdownComponent
+                {/* <DropdownComponent
                   options={featsBonusFilted || []}
-                  onAction={(newItem) =>
-                    changeSelected(indexF, newItem)
-                  }
-                />
+                  onAction={(newItem) => changeSelected(indexF, newItem)}
+                /> */}
                 {/* // )} */}
               </>
               {/* )} */}
-              <p>{selectedItems}</p>
+              {/* <p>{selectedItems}</p>
               <p>{f.selected?.weaponType?.text}</p>
               {selectedItems && (
                 <DropdownComponent
                   options={itemsFilted || []}
-                  onAction={(newItem) =>
-                    changeSelected(indexF, newItem)
-                  }
+                  onAction={(newItem) => changeSelected(indexF, newItem)}
                 />
               )}
               <p>{selectedSkillsRanks}</p>
             </div>
-          );
-        })}
+          ); */}
+        {/* })} */}
       {/* {featsList
         ?.filter((f) => f.classFeat)
         .map((f, indexF) => {
@@ -547,9 +549,7 @@ export function Feats() {
             ) : null}
           </div>
         ))} */}
-    </PageLayout>
-  );
-}
+    
 
 export const PageLayoutFeats: React.FC<React.PropsWithChildren<{}>> = ({
   children
