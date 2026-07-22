@@ -1,31 +1,36 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useData } from "../components/Context/Context";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { character } from "../components/interfaces";
+import { CharacterPc } from "../components/interfaces";
 import { urlCharList } from "../components/url";
 import { PageLayoutBody } from "./AppLayout";
 
 export const List: React.FC = () => {
-  const [charList, setCharList] = useState<character[]>([]);
+  const { getData, loading, reload } = useData();
 
   useEffect(() => {
-    axios.get<character[]>(urlCharList).then((response) => {
-      console.log("Character list:", response.data);
-      setCharList(response.data);
-    });
-  }, []);
+    reload("charList");
+  }, [reload]);
 
+  const charList = getData("charList");
+
+  if (loading.charList) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(charList);
   return (
     <PageLayoutBody>
-      {charList.length > 0 ? (
+      {charList && charList.length > 0 ? (
         <div>
           <p>list of characters:</p>
           <ol type="I" id="list">
-            {charList.map((c: character, index: number) => {
+            {charList.map((c: CharacterPc, index: number) => {
               return (
                 <li key={index}>
-                  <Link to={"/" + c.charId}>
+                  <Link to={"/" + c.id}>
                     <b>{[c.characterName, c.playerName].join(", ")}</b>
                   </Link>
                 </li>

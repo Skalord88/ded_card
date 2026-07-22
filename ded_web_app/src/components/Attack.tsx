@@ -28,7 +28,7 @@ export function FightAttack() {
   };
 
   return (
-    <Fragment>
+    <>
       <p>select fighters:</p>
       <div style={{ display: "flex" }}>
         <div style={{ flex: 1 }}>
@@ -100,6 +100,6 @@ export function FightAttack() {
           <></>
         )}
       </div>
-    </Fragment>
+    </>
   );
 }

@@ -71,7 +71,21 @@ public class CharacterController {
   }
 
   @GetMapping(value = "/list")
-  public ArrayList<CreateCharacterDTO> characterCardGet() {
+  public ArrayList<CharacterDTO> characterCardGet() {
+    List<Character> characterList = this.characterRepository.findAll();
+
+    ArrayList<CharacterDTO> characterListDTO = new ArrayList<>();
+
+    for (Character character : characterList) {
+      CharacterDTO characterDTO = new CharacterDTO(character);
+      characterListDTO.add(characterDTO);
+    }
+
+    return characterListDTO;
+  }
+
+  @GetMapping(value = "/listcreate")
+  public ArrayList<CreateCharacterDTO> characterCreateCardGet() {
     List<Character> characterList = this.characterRepository.findAll();
 
     ArrayList<CreateCharacterDTO> characterListDTO = new ArrayList<>();

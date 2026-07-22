@@ -1,12 +1,13 @@
-const url: string = 
-// "http://3.76.215.24:8080/";
-'http://localhost:8080/';
+const url: string =
+  // "http://3.76.215.24:8080/";
+  // 'http://localhost:8080/';
+  "http://192.168.0.107:8080/";
 
 export const urlChar = (charId: string): string => {
   return `${url}character-card/${charId}`;
 };
 
-export const urlCharList: string = urlChar + "/list";
+export const urlCharList: string = url + "character-card/list";
 
 export const urlAb: string = url + "ability/";
 

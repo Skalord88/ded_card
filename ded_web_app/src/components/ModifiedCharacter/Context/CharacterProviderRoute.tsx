@@ -10,11 +10,17 @@ export function CharacterProviderRoute() {
   if (!charId) return null;
 
   return (
-    // <SkillProvider>
     <DataProvider>
-        <CharacterProvider charId={charId}>
-          <Outlet />
-        </CharacterProvider>
+      <CharacterProvider charId={charId}>
+        <Outlet />
+      </CharacterProvider>
+    </DataProvider>
+  );
+}
+export function CharacterListProviderRoute() {
+  return (
+    <DataProvider>
+      <Outlet />
     </DataProvider>
   );
 }

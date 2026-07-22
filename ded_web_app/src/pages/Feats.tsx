@@ -425,7 +425,7 @@ export function Feats() {
               )}
               </div>
               )
-              }}
+              })}
           </PageLayout>
   );
 }

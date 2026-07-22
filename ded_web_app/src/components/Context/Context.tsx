@@ -8,6 +8,7 @@ import {
 } from "react";
 
 import {
+  urlCharList,
   urlClassList,
   urlFeats,
   urlItems,
@@ -18,12 +19,13 @@ import {
 import { Skill } from "../Skills/interface/Skill";
 import { Study } from "../Skills/interface/SkillsInterface";
 import { Feat } from "../Feats/Interface/FeatInterface";
-import { Item, ItemsList } from "../interfaces";
+import { CharacterPc, CreateCharacter, Item, ItemsList } from "../interfaces";
 import { ClassCharacter } from "../ClassPc/Interface/ClassPcLevel";
 
-type DbType = "skills" | "studies" | "feats" | "items" | "classes";
+type DbType = "charList" | "skills" | "studies" | "feats" | "items" | "classes";
 
 type DataMap = {
+  charList: CharacterPc;
   skills: Skill;
   studies: Study;
   feats: Feat;
@@ -33,6 +35,7 @@ type DataMap = {
 };
 
 const urls: Record<DbType, string> = {
+  charList: urlCharList,
   skills: urlSkillAll,
   studies: urlStudyAll,
   feats: urlFeats,
@@ -72,6 +75,8 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
   const getData = <T extends DbType>(type: T): DataMap[T][] => {
     return (data[type] ?? []) as DataMap[T][];
   };
+
+  // console.log("getData", getData)
 
   return (
     <DataContext.Provider value={{ getData, loading, reload }}>

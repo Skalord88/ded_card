@@ -12,6 +12,12 @@ import { RacialRegion } from "./Region/interface";
 import { SkillCharacter, SkillProps } from "./Skills/interface/SkillsInterface";
 import { HitDices } from "./Vita/Functions";
 
+export type CreateCharacter = {
+  characterId: number,
+  characterName: string,
+  playerName: string
+}
+
 export type CharacterPc = {
   id: number;
   characterName: string;
