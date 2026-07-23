@@ -60,6 +60,7 @@ import { BonusResultMap, BonusSource, getBonusResult } from "./GetBonusResult";
 
 export const modifiedCharacter = (
   char: CharacterPc,
+  nome?: string,
   skillsFromDb?: Skill[],
   studiesFromDb?: Study[],
   newAbilitys?: Abilitys,
@@ -72,6 +73,7 @@ export const modifiedCharacter = (
   newSkills?: SkillCharacter[]
 
 ): ModifiedCharacter => {
+  const name: string = nome ?? char.characterName;
   const ability: Abilitys = newAbilitys ?? char.abilitys;
   const race: SubRace = newRace ?? char.race;
   const archetypes: Archetype[] = newArchetypes ?? char.archetypes;
@@ -519,6 +521,7 @@ export const modifiedCharacter = (
   //   a.level && b.level? a.level - b.level : (a.feat?.id || a.id || 0) - (b.feat?.id || b.id || 0)))
 
   return {
+    name: name,
     title: title,
     abilitys: newAbility,
     abilitysMod: newAb,

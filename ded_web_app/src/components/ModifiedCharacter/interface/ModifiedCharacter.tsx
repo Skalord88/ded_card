@@ -72,6 +72,7 @@ export type Proficency = {
   }
 
 export type ModifiedCharacter = {
+  name?: string,
   title?: string;
   abilitys?: Abilitys;
   abilitysMod?: BonusResultMap;
