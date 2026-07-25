@@ -1,6 +1,10 @@
 import randomInteger from "random-int";
 import { Weapon } from "../interfaces";
 
+export const throwDice = (dice: number) => {
+  return randomInteger(1, dice);
+}
+
 export function ThrowDice2(): number {
   return randomInteger(1, 2);
 }
@@ -64,6 +68,30 @@ export function DiceText(dice: string): string {
       return "19-20/x4";
     default:
       return "d0";
+  }
+}
+export function DiceNumber(dice: string): number[] {
+  switch (dice) {
+    case "D2":
+      return [2];
+    case "D3":
+      return [3];
+    case "D4":
+      return [4];
+    case "DD4":
+      return [4, 4];
+    case "D6":
+      return [6];
+    case "DD6":
+      return [6, 6];
+    case "D8":
+      return [8];
+    case "D10":
+      return [10];
+    case "D12":
+      return [12];
+    default:
+      return [0];
   }
 }
 // D1("D1"),

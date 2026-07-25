@@ -24,7 +24,8 @@ export function SignNumberEnchant(
 }
 
 export const signAndCount = (
-    numbers: number[]
+    numbers: number[],
+    floor?: boolean
 ): SignAndNumber => {
     const num: number = numbers.reduce(
         (total, n) => total + n,
@@ -33,7 +34,7 @@ export const signAndCount = (
 
     return {
         sign: SignNumber(num),
-        number: num
+        number: floor ? Math.floor(num) : num 
     }
 }
 export const signAndCountToString = (
