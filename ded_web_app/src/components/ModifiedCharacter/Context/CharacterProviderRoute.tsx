@@ -1,6 +1,5 @@
 // CharacterProviderRoute.tsx
 import { Outlet, useParams } from "react-router-dom";
-import { SkillProvider } from "../../Skills/Context/SkillProvider";
 import { CharacterProvider } from "./CharacterContext";
 import { DataProvider } from "../../Context/Context";
 

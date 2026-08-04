@@ -28,6 +28,11 @@ public enum EnumClass {
   THAUMATURGIST("Thaumaturgist"),
   WARSLING_SNIPER("Warsling Sniper"),
   STORMLORD("Stormlord"),
+  ADEPT("Adept"), /// 1000
+  ARISTOCRAT("Aristocrat"), /// 1001
+  COMMONER("Commoner"), /// 1002
+  EXPERT("Export"), /// 1003
+  WARRIOR("Warrior"), /// 1004
   CLASS("Class"),
   ABBERRATION("Abberation"),
   ANIMAL("Animal"),

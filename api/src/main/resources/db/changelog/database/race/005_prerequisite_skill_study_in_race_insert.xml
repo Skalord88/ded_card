@@ -87,5 +87,15 @@
             <!-- GATHER_INFORMATION +2-->
         </insert>
         <!-- Half Elf prerequisite_skill_study -->
+
+
+        <!-- Goblinoid prerequisite_skill_study -->
+        <insert tableName="prerequisite_skill_study">
+            <column name="prerequisite_id" value="100010" />
+            <column name="prerequisite_skill_id" value="201904" />
+            <!-- MOVE_SILENTLY +4 -->
+        </insert>
+        <!-- Goblinoid prerequisite_skill_study -->
+
     </changeSet>
 </databaseChangeLog>

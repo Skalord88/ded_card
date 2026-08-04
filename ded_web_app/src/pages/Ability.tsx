@@ -97,7 +97,7 @@ export function Ability() {
                 const toList: TotAndBonusElement[] = moddedCharacter
                   ? createTotAndBonusElement(
                       moddedCharacter.abilitysMod ?? {},
-                      false, [], true
+                      false, []
                     ).filter((e): e is TotAndBonusElement => e.pop.text === key)
                   : [];
 

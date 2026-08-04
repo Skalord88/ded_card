@@ -409,9 +409,15 @@
 
         <insert tableName="prerequisite_skill">
             <column name="skill_id" value="22" />
-            <!-- RIDE -->
+            <!-- RIDE +2-->
             <column name="rank" value="2" />
             <column name="id" value="102202" />
+        </insert>
+        <insert tableName="prerequisite_skill">
+            <column name="skill_id" value="22" />
+            <!-- RIDE +4 -->
+            <column name="rank" value="4" />
+            <column name="id" value="102204" />
         </insert>
 
         <insert tableName="prerequisite_skill">

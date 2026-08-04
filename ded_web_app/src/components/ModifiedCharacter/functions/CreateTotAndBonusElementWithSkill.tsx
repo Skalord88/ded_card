@@ -1,7 +1,6 @@
 import { Skill } from "../../Skills/interface/Skill";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
 import { Study } from "../../Skills/interface/Study";
-import { TotAndBonusElement } from "../../SummaryChar/SummaryChar";
 import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
 import { BonusResultMap } from "./GetBonusResult";
 
@@ -52,7 +51,6 @@ export const createTotAndBonusElementWithSkill = (
                 sS,
                 true,
                 [skill.skillName.text]
-                // , true
               )
             };
           } else {

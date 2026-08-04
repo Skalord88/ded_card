@@ -7,8 +7,8 @@
 	display: grid;
 	justify-content: center;
 	place-self: center;
-	max-width: 1400px;
-	/* overflow-y: "auto" */
+	width: 100%;
+    max-width: 1400px;
 }
 
 @media screen and (max-width: 640px) {
@@ -26,7 +26,6 @@
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 
-	
 	background-clip: padding-box;
 	background-origin: padding-box;
 	background-position: center;

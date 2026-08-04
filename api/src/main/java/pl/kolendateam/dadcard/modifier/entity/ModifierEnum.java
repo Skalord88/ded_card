@@ -264,6 +264,7 @@ public enum ModifierEnum {
   MARTIAL("Martial"),
   EXOTIC("Exotic"),
   RANGED("Ranged"),
+  SHORT_RANGED("Short Ranged"),
 
   GAUNTLET,
   UNARMED_STRIKE,

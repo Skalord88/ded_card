@@ -16,10 +16,6 @@ import pl.kolendateam.dadcard.modifier.dto.ModifierBonusDTO;
 @Setter
 public class ModifierBonus implements Serializable {
 
-  // @Id
-  // @GeneratedValue(strategy = GenerationType.IDENTITY)
-  // int id;
-
   @Enumerated(EnumType.STRING)
   ModifierEnum modifier;
 

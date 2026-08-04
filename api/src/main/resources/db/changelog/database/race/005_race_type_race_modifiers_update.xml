@@ -73,5 +73,13 @@
         <where>id = 9</where>
         </update>
 
+        <update tableName="race">
+            <!-- Goblinoid -->
+            <column name="race_type_id" valueNumeric="1000" />
+            <column
+                name="modifiers_id" valueNumeric="100010" />
+        <where>id = 10</where>
+        </update>
+
     </changeSet>
 </databaseChangeLog>

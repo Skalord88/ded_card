@@ -75,5 +75,19 @@
             <!-- <column name="attacks_id_twosecond" value="1" /> -->
             <!-- <column name="attacks_id_twoadditional" value="2000" /> -->
         </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="1000" />
+            <!-- Gubru -->
+            <!-- <column name="attacks_id_onefirst" value="4013" /> -->
+            <!-- <column name="attacks_id_twofirst" value="4022" /> -->
+        </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="1001" />
+            <!-- Orocco -->
+            <!-- <column name="attacks_id_onefirst" value="4121" /> -->
+            <!-- <column name="attacks_id_twofirst" value="4022" /> -->
+        </insert>
     </changeSet>
 </databaseChangeLog>

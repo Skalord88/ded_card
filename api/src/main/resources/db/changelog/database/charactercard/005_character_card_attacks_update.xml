@@ -45,6 +45,18 @@
         <where>id = 106</where>
         </update>
         <!-- Mirek -->
+        <!-- Gubru -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="1000" />
+        <where>id = 1000</where>
+        </update>
+        <!-- Gubru -->
+        <!-- Orocco -->
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="1001" />
+        <where>id = 1001</where>
+        </update>
+        <!-- Orocco -->
 
     </changeSet>
 </databaseChangeLog>

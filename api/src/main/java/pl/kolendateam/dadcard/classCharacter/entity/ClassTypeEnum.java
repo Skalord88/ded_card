@@ -2,6 +2,7 @@ package pl.kolendateam.dadcard.classCharacter.entity;
 
 public enum ClassTypeEnum {
   RACE_CLASS("race class"),
+  NPC_CLASS("npc class"),
   BASE_CLASS("base class"),
   PRESTIGE_CLASS("prestige class");
 

@@ -332,8 +332,8 @@
                 value="5" />
                 <column name="modifiers_id" value="150801" />
         <where>id = 801</where>
-
         </update>
+
         <update tableName="sub_race">
             <!-- River -->
             <column name="race_id" value="8" />
@@ -342,6 +342,18 @@
                 <column name="modifiers_id" value="150802" />
         <where>id = 802</where>
         </update>
+        <!-- Spirit Folk -->
+
+        <!-- Goblin -->
+        <update tableName="sub_race">
+            <!-- Goblinoid -->
+            <column name="race_id" value="10" />
+            <column name="size_id"
+                value="4" />
+                <column name="modifiers_id" value="150901" />
+        <where>id = 901</where>
+        </update>
+        <!-- Goblin -->
 
     </changeSet>
 </databaseChangeLog>

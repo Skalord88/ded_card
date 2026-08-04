@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-    AttackElement
+    AttackElement,
+    createAttackDisplay
 } from "../components/Attack/function";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { enchantedName } from "../components/Enchantment/Functions/EnchantmentFunctions";
@@ -11,37 +12,46 @@ import {
     ItemInDrop,
     SetSetWeaponListFromDB
 } from "../components/functions";
-import { Attacks, Weapon } from "../components/interfaces";
+import { Attacks, Item, Weapon } from "../components/interfaces";
 import { createModChar } from "../components/Prerequisite/functions/modChar";
 import { CharToModify } from "../components/Prerequisite/functions/modifyCharacter";
 import { urlAttacks, urlChar } from "../components/url";
 import { PageLayout } from "./AppLayout";
+import { useCharacter } from "../components/ModifiedCharacter/Context/CharacterContext";
+import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 
 export function Attack() {
   const { charId } = useParams();
 
-  const [modChar, setModChar] = useState<CharToModify>();
-  const [attack, setAttack] = useState<Attacks>();
+  // const [modChar, setModChar] = useState<CharToModify>();
+  // const [attack, setAttack] = useState<Attacks>();
   const [attackElement, setAttackElement] = useState<AttackElement>();
-  const [listFromDB, setListFromDB] = useState<ItemInDrop[]>([]);
+  const [listFromDB, setListFromDB] = useState<ItemInDrop<Item>[]>([]);
+
+  const { moddedCharacter, attack, setAttack, reloadCharacter } = useCharacter();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const resChar = await axios.get(urlChar + "/" + charId);
+    if(attack && moddedCharacter){}
+    // setAttackElement(createAttackDisplay(getAttacksData(moddedCharacter), attack))
+  },[moddedCharacter, attack])
 
-        const moddedChar = createModChar(resChar.data);
-        setModChar(moddedChar);
-        setListFromDB(
-          addToDrop(SetSetWeaponListFromDB(moddedChar.inventory), "items")
-        );
-        setAttack(moddedChar.attacks);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const resChar = await axios.get(urlChar + "/" + charId);
+
+  //       const moddedChar = createModChar(resChar.data);
+  //       setModChar(moddedChar);
+  //       setListFromDB(
+  //         addToDrop(SetSetWeaponListFromDB(moddedChar.inventory), "items")
+  //       );
+  //       setAttack(moddedChar.attacks);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   // useEffect(() => {
   //   if (modChar && attack) {
@@ -252,3 +262,4 @@ export const AttackTemplateSubElements: React.FC<AttacksTemplateProps> = ({
     </div>
   );
 };
+

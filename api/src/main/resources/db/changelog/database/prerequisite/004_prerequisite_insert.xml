@@ -481,30 +481,17 @@
         </insert>
         <insert tableName="prerequisite">
             <column name="id" value="9002" />
-            <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :-4, 
-                &quot;modifierBonus&quot; : null, 
-                &quot;target&quot; :[&quot;MELEE&quot;], 
-                &quot;improved&quot; :null, 
-                &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[
         {
         &quot;bonus&quot; :-4,
-        &quot;target&quot; :[ &quot;MELEE&quot; ]
+        &quot;target&quot; :[ &quot;ITEM&quot;, &quot;MELEE&quot; ]
         }]" />
             <column name="text" value="melee malus for Javelin" />
         </insert>
 
         <insert tableName="prerequisite">
             <column name="id" value="9003" />
-            <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, 
-                &quot;modifierBonus&quot; : 
-                &quot;ENCHANTMENT_BONUS&quot;, 
-                &quot;target&quot; :[&quot;ITEM&quot;], 
-                &quot;improved&quot; :null, 
-                &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[
         {

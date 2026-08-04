@@ -17,7 +17,6 @@
                 &quot;wisdom&quot;: 8,
                 &quot;charisma&quot;: 10
             }" />
-            <column name="sub_race_id" value="602" />
             <column name="sub_race_id" value="502" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->
@@ -149,6 +148,50 @@
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="106" /> -->
             <!-- <column name="attacks_id" value="106" /> -->
+            <column name="experience" value="0" />
+            <column name="treasure" value="0" />
+        </insert>
+
+        <insert tableName="character_card">
+            <column name="id" value="1000" />
+            <column name="character_name" value="Gubru, Goblin" />
+            <column name="player_name" value="Gubru" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot;: 13,
+                &quot;dexterity&quot;: 11,
+                &quot;constitution&quot;: 12,
+                &quot;intelligence&quot;: 10,
+                &quot;wisdom&quot;: 9,
+                &quot;charisma&quot;: 8
+            }" />
+            <column name="sub_race_id" value="901" />
+            <column name="special_attacks" value="{}" />
+            <!-- <column name="inventory_id" value="1000" /> -->
+             <!-- <column name="attacks_id" value="1000" /> -->
+            <column name="alignment_id" value="8" />
+            <column name="experience" value="0" />
+            <column name="treasure" value="0" />
+        </insert>
+
+        <insert tableName="character_card">
+            <column name="id" value="1001" />
+            <column name="character_name" value="Orocco, Orc" />
+            <column name="player_name" value="Orocco" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot;: 13,
+                &quot;dexterity&quot;: 11,
+                &quot;constitution&quot;: 12,
+                &quot;intelligence&quot;: 10,
+                &quot;wisdom&quot;: 9,
+                &quot;charisma&quot;: 8
+            }" />
+            <column name="sub_race_id" value="402" />
+            <column name="special_attacks" value="{}" />
+            <!-- <column name="inventory_id" value="1001" /> -->
+             <!-- <column name="attacks_id" value="1001" /> -->
+            <column name="alignment_id" value="9" />
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
         </insert>

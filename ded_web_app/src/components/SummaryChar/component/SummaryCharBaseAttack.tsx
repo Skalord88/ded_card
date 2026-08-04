@@ -9,7 +9,12 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
     modCharacter.attackRollMod || {},
     true,
     ["Grapple"]
-  ).concat(modCharacter.attacks?.summedBab || []);
+  )
+
+//   console.log(
+//   "GRAPPLE MAP",
+//   JSON.stringify(modCharacter.attackRollMod, null, 2)
+// );
 
   return (
     <>

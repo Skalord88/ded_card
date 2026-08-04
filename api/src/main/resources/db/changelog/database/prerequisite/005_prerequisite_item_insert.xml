@@ -61,6 +61,11 @@
         </insert>
         <!-- Improved Shield Bash [General] selected -->
 
+        <insert tableName="prerequisite_item">
+            <column name="prerequisite_id" value="9002" />
+            <column name="item_id" value="22" />
+        </insert>
+
 
     </changeSet>
 </databaseChangeLog>

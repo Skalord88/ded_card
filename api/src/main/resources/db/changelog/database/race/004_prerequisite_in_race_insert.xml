@@ -14,7 +14,6 @@
             &quot;modifierType&quot; : &quot;DODGE_BONUS&quot;, 
             &quot;target&quot; :[ &quot;GIANT&quot; ] }]" 
             />
-            <!--, &quot;special&quot; :&quot;+4 dodge bonus to Armor Class against monsters of the giant type. Any time a creature loses its Dexterity bonus (if any) to Armor Class, such as when it’s caught flat-footed, it loses its dodge bonus, too.&quot;  -->
             <column name="special_attacks"
                 value="{
                 &quot;vsBullRush&quot;: 4,
@@ -38,26 +37,12 @@
                 &quot;dexterity&quot; : 2,
                 &quot;constitution&quot; : -2
                 }" />
-            <!-- <column name="saving_throw"
-                value="[{
-                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
-                &quot;resistance&quot; : [ {
-                    &quot;type&quot; : &quot;SAVING&quot;,
-                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
-                    &quot;bonus&quot; : 2
-                    } , {
-                    &quot;type&quot; : &quot;IMMUNITY&quot;,
-                    &quot;target&quot; : [ &quot;SLEEP&quot; ]
-                    } ]
-                }]" /> -->
             <column name="saving_throw"
-        value="[{ 
-        
+        value="[{
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
     }]" />
-    <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
             <column name="text" value="Elf races modifiers" />
         </insert>
 
@@ -99,19 +84,8 @@
                 &quot;strength&quot; : -2,
                 &quot;dexterity&quot; : 2
                 }" />
-            <!-- <column name="saving_throw"
-                value="[
-                { 
-                &quot;modifierBonus&quot;: &quot;MORALE_MODIFIER&quot;,
-                &quot;resistance&quot; : [ {
-                    &quot;type&quot; : &quot;SAVING&quot;,
-                    &quot;target&quot; : [ &quot;FEAR&quot; ],
-                    &quot;bonus&quot; : 2
-                    } ]
-                }]" /> -->
             <column name="saving_throw"
-        value="[{ 
-        
+        value="[{
         &quot;modifierType&quot;: &quot;MORALE_MODIFIER&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;FEAR&quot; ]
@@ -151,27 +125,22 @@
             <column name="id" value="100009" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
             <column name="space_reach" value="5/5" />
-            <!-- <column name="saving_throw"
-                value="[{
-                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
-                &quot;resistance&quot; : [ {
-                    &quot;type&quot; : &quot;SAVING&quot;,
-                    &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ],
-                    &quot;bonus&quot; : 2
-                    } , {
-                    &quot;type&quot; : &quot;IMMUNITY&quot;,
-                    &quot;target&quot; : [ &quot;SLEEP&quot; ]
-                    } ]
-                }]" /> -->
             <column name="saving_throw"
         value="[{
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
     }]" />
-    <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
         </insert>
         <!-- Half Elf modif -->
+
+        <!-- Goblinoid modif -->
+        <insert tableName="prerequisite">
+            <column name="id" value="100010" />
+            <column name="speed" value="{ &quot;foot&quot; : 30 }" />
+            <column name="space_reach" value="5/5" />
+        </insert>
+        <!-- Goblinoid modif -->
 
     </changeSet>
 </databaseChangeLog>

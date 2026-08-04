@@ -67,5 +67,12 @@
             <!-- <column name="modifiers_id" value="100009" /> -->
             <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/f/fd/Half-elves.jpg/revision/latest?cb=20160209050151" />
         </insert>
+
+        <insert tableName="race">
+            <column name="id" value="10" />
+            <column name="race_name" value="Goblinoid" />
+            <!-- <column name="modifiers_id" value="100010" /> -->
+            <column name="avatar_url" value="https://sfery.fandom.com/wiki/Goblinoid" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

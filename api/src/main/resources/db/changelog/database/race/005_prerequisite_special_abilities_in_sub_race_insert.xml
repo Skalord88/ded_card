@@ -189,5 +189,12 @@
             <!-- low-light vision -->
         </insert>
 
+        <insert tableName="prerequisite_special_abilities">
+            <column name="prerequisite_id" value="150901" />
+            <!-- Goblin -->
+            <column name="special_abilities_id" value="102" />
+            <!-- Darkvision -->
+        </insert>
+
     </changeSet>
 </databaseChangeLog>

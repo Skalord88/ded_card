@@ -22,12 +22,12 @@ export const findAllPrerequisite = (
 ): Prerequisite[] => {
   let allPrerequisite: Prerequisite[] = [];
 
-  if (race) {
-    race.race.modifiers !== null && allPrerequisite.push(race.race.modifiers);
+  if (race?.race) {
+    race.race.modifiers && allPrerequisite.push(race.race.modifiers);
 
-    race.size.modifiers !== null && allPrerequisite.push(race.size.modifiers);
+   race.size.modifiers && allPrerequisite.push(race.size.modifiers);
 
-    race.modifiers !== null && allPrerequisite.push(race.modifiers);
+    race?.modifiers && allPrerequisite.push(race.modifiers);
   }
 
   if (archetypes) {
@@ -36,7 +36,7 @@ export const findAllPrerequisite = (
     });
   }
 
-  if (featsList && classPcList) {
+  if (featsList && featsList.length > 0 && classPcList && classPcList.length > 0) {
     const allFeatPc: (FeatPc | ClassFeats)[] = [
       ...classPcList.flatMap((c) => c.classCharacter.classFeats),
       ...featsList

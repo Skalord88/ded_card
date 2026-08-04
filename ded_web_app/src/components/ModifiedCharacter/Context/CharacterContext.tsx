@@ -30,6 +30,7 @@ type CharacterContextValue = {
   featsList?: FeatPc[],
   featsPg?: FeatPc[],
   skills: SkillCharacter[];
+  attacks?: Attacks;
 
   setAbilitys: Dispatch<SetStateAction<Abilitys | undefined>>;
   updateAbility: (
@@ -40,6 +41,7 @@ type CharacterContextValue = {
   setClasses: (classes: ClassPc[]) => void;
   setFeatsList: (feats: FeatPc[]) => void;
   setSkills: (skills: SkillCharacter[]) => void;
+  setAttacks: (attack: Attacks) => void;
 
   reloadCharacter: () => Promise<void>;
 
@@ -89,6 +91,7 @@ useEffect(() => {
 
   return modifiedCharacter(
     character,
+    character.playerName,
     dBskills,
     dBstudies,
     abilitys,
@@ -164,12 +167,14 @@ useEffect(() => {
         abilitys,
         classes,
         featsList,
-        skills,
         featsPg: moddedCharacter?.feats,
+        skills,
+        attacks,
         setAbilitys,
         setClasses,
         setFeatsList,
         setSkills,
+        setAttacks,
 
         updateAbility,
 

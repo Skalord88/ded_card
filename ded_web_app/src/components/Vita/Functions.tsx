@@ -20,18 +20,20 @@ export const createHitDiceMap = (
       lv: adjLv
     };
   }
-  classList.forEach((cl) => {
-    const dice = cl.classCharacter.hitDice;
-    if (hitDiceMap[dice]) {
-      hitDiceMap[dice].lv += cl.level;
-      cl.firstClass && (hitDiceMap[dice].first = true);
-    } else {
-      hitDiceMap[dice] = {
-        first: cl.firstClass,
-        lv: cl.level
-      };
-    }
-  });
+  if (classList && classList.length > 0) {
+    classList.forEach((cl) => {
+      const dice = cl.classCharacter.hitDice;
+      if (hitDiceMap[dice]) {
+        hitDiceMap[dice].lv += cl.level;
+        cl.firstClass && (hitDiceMap[dice].first = true);
+      } else {
+        hitDiceMap[dice] = {
+          first: cl.firstClass,
+          lv: cl.level
+        };
+      }
+    });
+  }
 
   return hitDiceMap;
 };
@@ -47,7 +49,7 @@ export const countTotalHitPoints = (
 
   for (let i = 1; i <= lv; i++) {
     // if(dice === 4) console.log(i, hitPoints);
-    if(first && i === 1){
+    if (first && i === 1) {
       hitPoints += dice + constitutionBonus;
       // if(dice === 4) console.log(i, hitPoints);
     } else if (i % 2 === 0) {

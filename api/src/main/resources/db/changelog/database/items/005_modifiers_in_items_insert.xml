@@ -40,5 +40,56 @@
         </update>
 
 
+        
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52001" />
+            <!-- Bracers of Armor +1 -->
+            <where>id = 6043</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52002" />
+            <!-- Bracers of Armor +2 -->
+            <where>id = 6044</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52003" />
+            <!-- Bracers of Armor +3 -->
+            <where>id = 6045</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52004" />
+            <!-- Bracers of Armor +4 -->
+            <where>id = 6046</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52005" />
+            <!-- Bracers of Armor +5 -->
+            <where>id = 6047</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52006" />
+            <!-- Bracers of Armor +6 -->
+            <where>id = 6048</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52007" />
+            <!-- Bracers of Armor +7 -->
+            <where>id = 6049</where>
+        </update>
+        <update tableName="item">
+            <!-- armorBonus -->
+            <column name="modifiers_id" value="52008" />
+            <!-- Bracers of Armor +8 -->
+            <where>id = 6050</where>
+        </update>
+
+
     </changeSet>
 </databaseChangeLog>

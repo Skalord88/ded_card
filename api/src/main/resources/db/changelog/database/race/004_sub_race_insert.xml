@@ -211,5 +211,13 @@
             <column name="level_adjustment" value="0" />
             <column name="avatar_url" value="address value" />
         </insert>
+
+        <!-- Humanoid 900-->
+        <insert tableName="sub_race">
+            <column name="id" value="901" />
+            <column name="sub_race_name" value="Goblin" />
+            <column name="level_adjustment" value="0" />
+            <column name="avatar_url" value="https://forgottenrealms.fandom.com/wiki/Goblin" />
+        </insert>
     </changeSet>
 </databaseChangeLog>

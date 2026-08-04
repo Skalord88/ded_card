@@ -184,7 +184,7 @@ export function CriticalHit(critic: string): number[] {
       return [20];
   }
 }
-export function CriticalDamage(weapon: Weapon, dmg:number): number[] {
+export function CriticalDamage(weapon: Weapon, dmg: number): number[] {
   switch (weapon.critical) {
     case "X2":
       return [
@@ -216,6 +216,32 @@ export function CriticalDamage(weapon: Weapon, dmg:number): number[] {
       ];
     default:
       return [0];
-  }
-}
+  }}
 
+  export const criticalDice = (w: Weapon): number[] => {
+    const weaponCrit: string = w.damage
+    switch (w.critical){
+      case "X2":
+        return throwCriticalDice(weaponCrit, 2)
+      case "X2_1920": return throwCriticalDice(weaponCrit, 2)
+      case "X2_1820": return throwCriticalDice(weaponCrit, 2)
+      case "X3": return throwCriticalDice(weaponCrit, 3)
+      case "X4": return throwCriticalDice(weaponCrit, 4)
+      default:
+        return [0]
+    }}
+
+    export const throwCriticalDice = (weaponDamage: string, times: number): number[] => {
+      switch (times){
+        case 2: return DiceNumber(weaponDamage).map(d => throwDice(d))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        case 3: return DiceNumber(weaponDamage).map(d => throwDice(d))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        case 4: return DiceNumber(weaponDamage).map(d => throwDice(d))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        .concat(DiceNumber(weaponDamage).map(d => throwDice(d)))
+        default: return [0]
+      }
+  }

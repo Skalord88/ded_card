@@ -100,6 +100,7 @@
     <include file="attacks/004_attacks_insert.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/004_character_insert.xml" relativeToChangelogFile="true"/>
     <include file="class/004_class_character_insert.xml" relativeToChangelogFile="true"/>
+    <include file="items/004_item_insert.xml" relativeToChangelogFile="true"/>
     <include file="enchanteditems/004_enchanted_items_insert.xml" relativeToChangelogFile="true"/>
     <include file="enchanteditems/004_enchanted_items_prerequisite_insert.xml" relativeToChangelogFile="true"/>
     <include file="enchantment/004_enchantment_insert.xml" relativeToChangelogFile="true"/>
@@ -110,7 +111,6 @@
     <include file="feats/004_prerequisite_in_class_feat_insert.xml" relativeToChangelogFile="true"/>
     <include file="feats/004_prerequisite_in_feat_mod_preList_toSel_sel_insert.xml" relativeToChangelogFile="true"/>
     <include file="inventory/004_inventory_insert.xml" relativeToChangelogFile="true"/>
-    <include file="items/004_item_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_alignment_insert.xml" relativeToChangelogFile="true"/>
@@ -135,7 +135,6 @@
     <include file="spells/004_school_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/004_spells_table_insert.xml" relativeToChangelogFile="true"/>
-    <!-- <include file="modifier/004_modifier_bonus_insert.xml" relativeToChangelogFile="true"/> -->
 
     <include file="archetype/005_archetype_prerequisite_feat_insert.xml" relativeToChangelogFile="true"/>
     <include file="archetype/005_archetype_prerequisite_special_abilities_insert.xml" relativeToChangelogFile="true"/>

@@ -21,5 +21,21 @@
         <where>id = 100</where>
         </update>
 
+        <update tableName="inventory">
+            <!-- Gubru -->
+            <column name="armor_id" value="4501" /> <!-- Leather -->
+            <column name="shield_id" valueNumeric="4531" /> <!-- Shield, light wooden -->
+            <column name="weapon_id_one" value="4013" /> <!-- Morningstar -->
+            <column name="weapon_id_two" value="4022" /> <!-- Javelin -->
+        <where>id = 1000</where>
+        </update>
+        <update tableName="inventory">
+            <!-- Orocco -->
+            <column name="armor_id" value="4502" /> <!-- Studded leather -->
+            <column name="weapon_id_one" value="4121" /> <!-- Falchion -->
+            <column name="weapon_id_two" value="4022" /> <!-- Javelin -->
+        <where>id = 1001</where>
+        </update>
+
     </changeSet>
 </databaseChangeLog>

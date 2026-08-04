@@ -98,13 +98,14 @@ export const checkFeatPcType = (f: FeatPc): number => {
 export const createPcBonusFeats = (
   classPcList: ClassPc[], feats: FeatPc[]
 ): FeatPc[] => {
-  const totalClassLevel = classPcList?.reduce(
+
+  const totalClassLevel = classPcList && classPcList.length <= 0 ? 0 : classPcList?.reduce(
     (tot, c) => tot + c.level, 0) ?? 0;
   const quantiFeats = Math.floor(totalClassLevel / 3) + 1;
   const featsFromLevel = feats?.filter(
     (f) => !f.classFeat) ?? [];
 
-    console.log("featsFromLevel", feats, featsFromLevel)
+    // console.log("featsFromLevel", feats, featsFromLevel)
 
   const newList: FeatPc[] = Array.from({ length: quantiFeats }, (_, i) => {
     const level = i === 0 ? 1 : i * 3;

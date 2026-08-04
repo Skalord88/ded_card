@@ -1432,7 +1432,7 @@
             <column name="armor_name" value="HIDE" />
             <column name="cost" value="15" />
             <column name="weight" value="25" />
-            <column name="modifiers_id" value="52003" />
+            <!-- <column name="modifiers_id" value="52003" /> -->
             <!-- <column name="armor_class" value="3" /> -->
             <column name="armor_type" value="MEDIUM_ARMOR" />
             <column name="max_dex" value="4" />
@@ -3403,7 +3403,7 @@ Faint transmutation; CL 4th; Craft Wondrous Item, Craft Magic Arms and Armor; Pr
             <column name="id" value="6043" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +1" />
-            <column name="modifiers_id" value="52001" />
+            <!-- <column name="modifiers_id" value="52001" /> -->
             <column name="cost" value="1000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3416,7 +3416,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6044" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +2" />
-            <column name="modifiers_id" value="52002" />
+            <!-- <column name="modifiers_id" value="52002" /> -->
             <column name="cost" value="4000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3429,7 +3429,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6045" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +3" />
-            <column name="modifiers_id" value="52003" />
+            <!-- <column name="modifiers_id" value="52003" /> -->
             <column name="cost" value="9000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3442,7 +3442,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6046" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +4" />
-            <column name="modifiers_id" value="52004" />
+            <!-- <column name="modifiers_id" value="52004" /> -->
             <column name="cost" value="16000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3455,7 +3455,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6047" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +5" />
-            <column name="modifiers_id" value="52005" />
+            <!-- <column name="modifiers_id" value="52005" /> -->
             <column name="cost" value="25000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3468,7 +3468,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6048" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +6" />
-            <column name="modifiers_id" value="52006" />
+            <!-- <column name="modifiers_id" value="52006" /> -->
             <column name="cost" value="36000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3481,7 +3481,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6049" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +7" />
-            <column name="modifiers_id" value="52007" />
+            <!-- <column name="modifiers_id" value="52007" /> -->
             <column name="cost" value="49000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />
@@ -3494,7 +3494,7 @@ Moderate conjuration; CL 7th; Craft Wondrous Item, mage armor, creator’s caste
             <column name="id" value="6050" />
             <column name="item_type" value="WONDROUS_ITEM" />
             <column name="name" value="Bracers of Armor +8" />
-            <column name="modifiers_id" value="52008" />
+            <!-- <column name="modifiers_id" value="52008" /> -->
             <column name="cost" value="64000" />
             <column name="weight" value="1" />
             <column name="wondrous_type" value="BRACERS" />

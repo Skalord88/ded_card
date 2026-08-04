@@ -229,36 +229,18 @@
             <!-- Lightfoot Halfling -->
             <column name="text" value="Lightfoot Halfling races modifiers" />
             <column name="weapon_type" value="THROWN" />
-            <!-- prova DA CANCELLARE -->
-            <!-- <column name="abilitys"
-                value="{
-                &quot;modifierBonus&quot; : &quot;ALCHEMICAL_BONUS&quot;,
-                &quot;strength&quot; : 2,
-                &quot;constitution&quot; : 2,
-                &quot;charisma&quot; : -2
-                }" /> -->
-            <!-- prova DA CANCELLARE -->
             <column name="attack_roll"
                 value="[{
                 &quot;bonus&quot; : 1,
                 &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
                     &quot;target&quot; : [ &quot;ITEM&quot;, &quot;WEAPON_TYPE&quot; ]
                     }]" />
-            <!-- <column name="saving_throw"
-                value="[{
-                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
-                &quot;resistance&quot; : [ {
-                    &quot;type&quot; : &quot;SAVING&quot;,
-                    &quot;bonus&quot; : 1
-                    } ]
-                    }]" /> -->
             <column name="saving_throw"
                 value="[{
         &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 1,
         &quot;target&quot; : [ &quot;SAVING&quot; ]
-      }]" />
-            <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
+    }]" />
         </insert>
 
         <insert tableName="prerequisite">
@@ -281,7 +263,7 @@
                 &quot;charisma&quot; : -2
                 }" />
             <column name="armor_class"
-                value="[{ &quot;bonus&quot; :2, 
+                value="[{ &quot;bonus&quot; :2,
                 &quot;modifierType&quot; : &quot;NATURAL_ARMOR_BONUS&quot;
                 }]" />
             <column name="speed" value="{ &quot;foot&quot; : 30 }" />
@@ -297,6 +279,18 @@
             <column name="id" value="150802" />
             <!-- River Spirit Folk -->
             <column name="text" value="River Spirit Folk races modifiers" />
+        </insert>
+
+        <insert tableName="prerequisite">
+            <column name="id" value="150901" />
+            <!-- Goblin -->
+            <column name="text" value="Goblin races modifiers" />
+            <column name="abilitys"
+                value="{
+                &quot;strength&quot; : -2,
+                &quot;dexterity&quot; : 2,
+                &quot;charisma&quot; : -2
+                }" />
         </insert>
 
     </changeSet>

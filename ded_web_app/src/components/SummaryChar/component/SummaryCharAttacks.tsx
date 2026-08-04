@@ -1,20 +1,24 @@
 import { Fragment } from "react/jsx-runtime";
+import { DiceText } from "../../Dice/Functions";
+import { Weapon } from "../../interfaces";
 import { WeaponElement } from "../../ModifiedCharacter/interface/ModifiedCharacter";
 import { Popup } from "../../Popup/Popup";
-import {
-  SummaryCharProps  
-} from "../SummaryChar";
-import { TotAndBonusElement, TotAndBonus } from "./TotAndBonus";
+import { noneWeapon } from "../../variables";
+import { SummaryCharProps } from "../SummaryChar";
+import { TotAndBonus, TotAndBonusElement } from "./TotAndBonus";
+import { AttackOptionsElement } from "../../../pages/Fight";
 
 export type SummaryCharAttacksTemplateProps = {
+  borderText?: string;
   children: React.ReactNode;
 };
 
 export const SummaryCharAttacksTemplate: React.FC<
   SummaryCharAttacksTemplateProps
-> = ({ children }) => {
+> = ({ borderText, children }) => {
   return (
     <div
+      className={!borderText ? "rpgui-container-framed golden" : borderText}
       style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr 1fr",
@@ -51,46 +55,19 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
         <p>Attack:</p>
       </div>
       <div>
-        {/* Melee */}
-        <SummaryCharAttacksTemplate>
-          <TotAndBonus show={false} firstSign={true} list={meleeAttackList} />
-
-          <div>
-            <span>{modCharacter.attacks?.firstMelee?.weapon?.name}</span>
-          </div>
-
-          <div>
-            <span>{modCharacter.attacks?.firstMelee?.weapon?.damage}</span>
-
-            <TotAndBonus show={false} firstSign={true} list={meleeDamageList} />
-          </div>
-        </SummaryCharAttacksTemplate>
-
-        {/* Ranged */}
-        {modCharacter.attacks?.firstRanged && (
-          <SummaryCharAttacksTemplate>
-            <div>
-              <TotAndBonus
-                show={false}
-                firstSign={true}
-                list={rangedAttackList}
-              />
-            </div>
-
-            <div>
-              <span>{modCharacter.attacks.firstRanged.weapon?.name}</span>
-            </div>
-
-            <div>
-              <span>{modCharacter.attacks?.firstRanged?.weapon?.damage}</span>
-
-              <TotAndBonus
-                show={false}
-                firstSign={true}
-                list={rangedDamageList}
-              />
-            </div>
-          </SummaryCharAttacksTemplate>
+        <SummaryCharAttacksSingleElement
+          totAndBonusAtt={[false, true, [meleeAttackList], false]}
+          weapon={modCharacter.attacks?.firstMelee?.weapon || noneWeapon}
+          totAndBonusDmg={[false, true, meleeDamageList, false]}
+        />
+        {
+          (modCharacter.attacks?.firstRanged?.weaponRanged
+          || modCharacter.attacks?.firstRanged?.weaponThrown) && (
+          <SummaryCharAttacksSingleElement
+            totAndBonusAtt={[false, true, [rangedAttackList], false]}
+            weapon={modCharacter?.attacks?.firstRanged?.weapon || noneWeapon}
+            totAndBonusDmg={[false, true, rangedDamageList, false]}
+          />
         )}
       </div>
       <div>
@@ -102,12 +79,61 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
     </>
   );
 };
+export type SummaryCharAttacksSingleElementProps = {
+  border?: string;
+  totAndBonusAtt: [boolean, boolean, boolean];
+  element: AttackOptionsElement;
+  totAndBonusDmg: [boolean, boolean, boolean];
+};
+export const SummaryCharAttacksSingleElement: React.FC<
+  SummaryCharAttacksSingleElementProps
+> = ({ border, totAndBonusAtt, element, totAndBonusDmg }) => {
+  const attValue = element;
+  const dmgValue = totAndBonusDmg[2];
+  return (
+    <SummaryCharAttacksTemplate borderText={border}>
+      {attValue.map((a) => (
+        <TotAndBonus
+          show={totAndBonusAtt[0]}
+          firstSign={totAndBonusAtt[1]}
+          list={a}
+          onlyTot={totAndBonusAtt[2]}
+        />
+      ))}
+      <div>
+        <span>{element.element?.weapon?.name}</span>
+      </div>
+
+      <div>
+        <span>{DiceText(element.element?.weapon?.damage ?? "")}</span>
+        <span> </span>
+        <span>{DiceText(element.element?.weapon?.critical ?? "")}</span>
+
+        {Array.isArray(dmgValue) ? (
+          <TotAndBonus
+            show={totAndBonusDmg[0]}
+            firstSign={totAndBonusDmg[1]}
+            // tot={dmgValue}
+            list={dmgValue}
+            onlyTot={totAndBonusAtt[2]}
+          />
+        ) : (
+          <TotAndBonus
+            show={totAndBonusDmg[0]}
+            firstSign={totAndBonusDmg[1]}
+            tot={dmgValue ?? 0}
+            // list={dmgValue}
+            onlyTot={totAndBonusAtt[2]}
+          />
+        )}
+      </div>
+    </SummaryCharAttacksTemplate>
+  );
+};
 
 export const mapAllAttacksAreas = (
   elelments: (WeaponElement | undefined)[]
-): { element: WeaponElement | undefined; area: string; show: boolean }[] => {
-  // console.log("elelments[2]?.weaponLight", elelments[2]?.weapon?.name, elelments[2]?.weaponLight)
-  // console.log("elelments[5]?.weaponLight", elelments[5]?.weapon?.name, elelments[5]?.weaponLight)
+): { element: WeaponElement | undefined; area: string; show: boolean; selected?: boolean }[] => {
   return [
     // set1
     { element: elelments[0], area: "w1", show: true },
@@ -121,7 +147,7 @@ export const mapAllAttacksAreas = (
       area: "wA",
       show: elelments[2]?.weaponLight || false
     },
-    { element: {}, area: "empty", show: false },
+    // { element: {}, area: "empty", show: false },
     // set2
     { element: elelments[3], area: "w21", show: true },
     {
@@ -134,7 +160,7 @@ export const mapAllAttacksAreas = (
       area: "w2A",
       show: elelments[5]?.weaponLight || false
     },
-    { element: {}, area: "empty", show: false }
+    // { element: {}, area: "empty", show: false }
   ];
 };
 
@@ -150,17 +176,17 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
 
   return (
     <div
-      style={{
-        display: "grid",
-        gridTemplateAreas: `
+    style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gridTemplateAreas: `
       "w1 w2"
-      "wA empty"
+      "wA ."
       "w21 w22"
-      "w2A empty"
+      "w2A ."
     `,
-        gridTemplateColumns: "1fr 1fr",
-        gap: "4px"
-      }}
+            gap: 8
+          }}
     >
       {areas.map((area, index) => {
         if (area.show) {
@@ -194,7 +220,14 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                           }
                         )}
                       <div>
-                        <span>{area.element?.weapon?.damage}</span>
+                        <span>
+                          {DiceText(area.element?.weapon?.damage ?? "")}
+                        </span>
+                        <span> </span>
+                        <span>
+                          {DiceText(area.element?.weapon?.critical ?? "")}
+                        </span>
+                        {/* <span>{area.element?.weapon?.damage}</span> */}
                         <TotAndBonus
                           show={false}
                           firstSign={true}
@@ -228,7 +261,13 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                           }
                         )}
                         <div>
-                          <span>{area.element?.weapon?.damage}</span>
+                          <span>
+                            {DiceText(area.element?.weapon?.damage ?? "")}
+                          </span>
+                          <span> </span>
+                          <span>
+                            {DiceText(area.element?.weapon?.critical ?? "")}
+                          </span>
                           <TotAndBonus
                             show={false}
                             firstSign={true}
@@ -262,7 +301,13 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                           }
                         )}
                       <div>
-                        <span>{area.element?.weapon?.damage}</span>
+                        <span>
+                          {DiceText(area.element?.weapon?.damage ?? "")}
+                        </span>
+                        <span> </span>
+                        <span>
+                          {DiceText(area.element?.weapon?.critical ?? "")}
+                        </span>
 
                         <TotAndBonus
                           show={false}
@@ -297,7 +342,13 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
                           }
                         )}
                       <div>
-                        <span>{area.element?.weapon?.damage}</span>
+                        <span>
+                          {DiceText(area.element?.weapon?.damage ?? "")}
+                        </span>
+                        <span> </span>
+                        <span>
+                          {DiceText(area.element?.weapon?.critical ?? "")}
+                        </span>
                         <TotAndBonus
                           show={false}
                           firstSign={true}
@@ -310,9 +361,10 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
               </div>
             </div>
           );
-        } else {
-          return <div key={index} style={{ border: "1px solid red" }} />;
-        }
+        } 
+        // else {
+        //   return <div key={index} style={{ border: "1px solid red" }} />;
+        // }
       })}
     </div>
   );

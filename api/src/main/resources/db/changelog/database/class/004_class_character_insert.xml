@@ -233,6 +233,30 @@
       <column name="hit_dice" value="8" />
     </insert>
 
+    <insert tableName="class_character">
+      <column name="id" value="1000" />
+      <column name="class_type" value="NPC_CLASS" />
+      <column name="name" value="WARRIOR" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <column name="initial_gold" value="[4,D4,10]" />
+    </insert>
+
+    <insert tableName="class_character">
+      <column name="id" value="1004" />
+      <column name="class_type" value="NPC_CLASS" />
+      <column name="name" value="WARRIOR" />
+      <column name="avatar_url" value="address value" />
+      <column name="saving_throw" value="hll" />
+      <column name="class_bab" value="1" />
+      <column name="skill_points" value="2" />
+      <column name="hit_dice" value="10" />
+      <column name="initial_gold" value="[3,D4,10]" />
+    </insert>
+
     <!-- <insert tableName="class_character">  
             <column  name="class_type"  value="PRESTIGE_CLASS"/>  
             <column  name="name"  value="assassin"/>

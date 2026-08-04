@@ -19,7 +19,7 @@ import {
 import { Skill } from "../Skills/interface/Skill";
 import { Study } from "../Skills/interface/SkillsInterface";
 import { Feat } from "../Feats/Interface/FeatInterface";
-import { CharacterPc, CreateCharacter, Item, ItemsList } from "../interfaces";
+import { CharacterPc, Item } from "../interfaces";
 import { ClassCharacter } from "../ClassPc/Interface/ClassPcLevel";
 
 type DbType = "charList" | "skills" | "studies" | "feats" | "items" | "classes";
