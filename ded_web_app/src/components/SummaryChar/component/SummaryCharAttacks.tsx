@@ -34,21 +34,16 @@ export const SummaryCharAttacksTemplate: React.FC<
 export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
   modCharacter
 }) => {
-  const meleeAttackList: TotAndBonusElement[] = [
-    ...(modCharacter.attacks?.firstMelee.listBabMeleeSpecificBonus?.[0] || [])
-  ];
-
-  const meleeDamageList: TotAndBonusElement[] =
-    modCharacter.attacks?.firstMelee?.toListMeleeDamage || [];
-
-  const rangedAttackList: TotAndBonusElement[] = [
-    ...(modCharacter.attacks?.firstRanged?.listBabRangedSpecificBonus?.[0] ||
-      [])
-  ];
-
-  const rangedDamageList: TotAndBonusElement[] = [
-    ...(modCharacter.attacks?.firstRanged?.toListRangedDamage || [])
-  ];
+  const elementMelee: AttackOptionsElement = {
+    element: modCharacter.attacks?.firstMelee,
+    area: "",
+    show: true
+  };
+  const elementRanged: AttackOptionsElement = {
+    element: modCharacter.attacks?.firstRanged,
+    area: "",
+    show: true
+  };
   return (
     <>
       <div>
@@ -56,17 +51,17 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       </div>
       <div>
         <SummaryCharAttacksSingleElement
-          totAndBonusAtt={[false, true, [meleeAttackList], false]}
-          weapon={modCharacter.attacks?.firstMelee?.weapon || noneWeapon}
-          totAndBonusDmg={[false, true, meleeDamageList, false]}
+          totAndBonusAtt={[false, true, false]}
+          element={elementMelee}
+          totAndBonusDmg={[false, true, false]}
         />
         {
           (modCharacter.attacks?.firstRanged?.weaponRanged
           || modCharacter.attacks?.firstRanged?.weaponThrown) && (
           <SummaryCharAttacksSingleElement
-            totAndBonusAtt={[false, true, [rangedAttackList], false]}
-            weapon={modCharacter?.attacks?.firstRanged?.weapon || noneWeapon}
-            totAndBonusDmg={[false, true, rangedDamageList, false]}
+            totAndBonusAtt={[false, true, false]}
+            element={elementRanged}
+            totAndBonusDmg={[false, true, false]}
           />
         )}
       </div>
@@ -82,17 +77,18 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
 export type SummaryCharAttacksSingleElementProps = {
   border?: string;
   totAndBonusAtt: [boolean, boolean, boolean];
-  element: AttackOptionsElement;
+  listBab: TotAndBonusElement[][];
+  weapon: Weapon;
   totAndBonusDmg: [boolean, boolean, boolean];
 };
 export const SummaryCharAttacksSingleElement: React.FC<
   SummaryCharAttacksSingleElementProps
-> = ({ border, totAndBonusAtt, element, totAndBonusDmg }) => {
-  const attValue = element;
+> = ({ border, totAndBonusAtt, listBab, weapon, totAndBonusDmg }) => {
+  const attValue = listBab;
   const dmgValue = totAndBonusDmg[2];
   return (
     <SummaryCharAttacksTemplate borderText={border}>
-      {attValue.map((a) => (
+      {attValue && attValue.map((a) => (
         <TotAndBonus
           show={totAndBonusAtt[0]}
           firstSign={totAndBonusAtt[1]}
@@ -101,13 +97,13 @@ export const SummaryCharAttacksSingleElement: React.FC<
         />
       ))}
       <div>
-        <span>{element.element?.weapon?.name}</span>
+        <span>{weapon?.name}</span>
       </div>
 
       <div>
-        <span>{DiceText(element.element?.weapon?.damage ?? "")}</span>
+        <span>{DiceText(weapon?.damage ?? "")}</span>
         <span> </span>
-        <span>{DiceText(element.element?.weapon?.critical ?? "")}</span>
+        <span>{DiceText(weapon?.critical ?? "")}</span>
 
         {Array.isArray(dmgValue) ? (
           <TotAndBonus
@@ -121,7 +117,7 @@ export const SummaryCharAttacksSingleElement: React.FC<
           <TotAndBonus
             show={totAndBonusDmg[0]}
             firstSign={totAndBonusDmg[1]}
-            tot={dmgValue ?? 0}
+            tot={dmgValue}
             // list={dmgValue}
             onlyTot={totAndBonusAtt[2]}
           />

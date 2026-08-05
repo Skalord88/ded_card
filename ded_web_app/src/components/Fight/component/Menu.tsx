@@ -9,17 +9,17 @@
 //         default: return "empty"
 //     }
 // }
-// export const positionInIndexInMenuAFight = (clickIndex: string): number => {
-//     switch(clickIndex){
-//         case "w1": return 0
-//         case "w2": return 1
-//         case "wA": return 2
-//         case "w21": return 3
-//         case "w22": return 4
-//         case "w2A": return 5
-//         default: return 0
-//     }
-// }
+export const positionInIndexInMenuAFight = (clickIndex: string): number => {
+    switch(clickIndex){
+        case "w1": return 0
+        case "w2": return 1
+        case "wA": return 2
+        case "w21": return 3
+        case "w22": return 4
+        case "w2A": return 5
+        default: return 0
+    }
+}
 // export const positionInIndexInMenuFight = (clickIndex: string): number => {
 //     switch(clickIndex){
 //         case "w1": return 0
@@ -66,17 +66,17 @@ export const indexInPositionInMenuFight = (clickIndex: string): number | string 
         default: return 0
     }
 }
-// export const positionInIndexInMenuBFight = (clickIndex: string): number => {
-//     switch(clickIndex){
-//         case "A": return 0
-//         case "B": return 1
-//         case "C": return 2
-//         case "D": return 3
-//         case "E": return 4
-//         case "F": return 5
-//         default: return 0
-//     }
-// }
+export const positionInIndexInMenuBFight = (clickIndex: string): number => {
+    switch(clickIndex){
+        case "A": return 0
+        case "B": return 1
+        case "C": return 2
+        case "D": return 3
+        case "E": return 4
+        case "F": return 5
+        default: return 0
+    }
+}
 // export const selectionMenuFight = (clickIndex: number): number => {
 //     switch(clickIndex){
 //         case 0: return 0

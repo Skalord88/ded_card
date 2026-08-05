@@ -22,7 +22,10 @@ import {
 import { TotAndBonusElement } from "../components/SummaryChar/component/TotAndBonus";
 import { noneWeapon } from "../components/variables";
 import { PageLayoutBody } from "./AppLayout";
-import { indexInPositionInMenuFight } from "../components/Fight/component/Menu";
+import {
+  indexInPositionInMenuFight,
+  positionInIndexInMenuAFight
+} from "../components/Fight/component/Menu";
 
 export const createBorder = (
   selected: boolean
@@ -270,14 +273,6 @@ export const createElementAttackOption = (
   };
 };
 
-// export type AttackOptionsElement = {
-//   bab: number;
-//   weapon: Weapon;
-//   damage: number;
-//   area: string;
-//   listBab: [TotAndBonusElement[][] | null, TotAndBonusElement[][] | null];
-// };
-
 export type AttackOptionsElement = {
   element: WeaponElement | undefined;
   area: string;
@@ -288,12 +283,7 @@ export type AttackOptionsElement = {
 export const createAttackOptions = (
   char: ModifiedCharacter,
   optionAction?: string
-): {
-  element: WeaponElement | undefined;
-  area: string;
-  show: boolean;
-  selected?: boolean;
-}[] => {
+): AttackOptionsElement[] => {
   if (!char) return [];
   if (optionAction === "Attack") {
     // if (char.attacks) {
@@ -310,89 +300,88 @@ export const createAttackOptions = (
   }
   return [];
 };
-// listOFElement.forEach((a) => {
-//   if (a.element) {
-//     // if (!a.element.weaponRanged && !a.element.weaponThrown) {
-//     const weapon: AttackOptionsElement = {
-//       bab: !a.element.weaponRanged
-//         ? Math.floor(a.element.babMelee ?? 0)
-//         : Math.floor(a.element.babRanged ?? 0),
-//       weapon: a.element.weapon ?? noneWeapon,
-//       damage: !a.element.weaponRanged
-//         ? Math.floor(a.element.damageMelee ?? 0)
-//         : Math.floor(a.element.damageRanged ?? 0),
-//       area: a.area,
-//       listBab: a.element?.weaponThrown
-//         ? [
-//             a.element?.listBabMeleeSpecificBonus || [],
-//             a.element?.listBabRangedSpecificBonus || []
-//           ]
-//         : [
-//             !a.element?.weaponRanged
-//               ? a.element?.listBabMeleeSpecificBonus || []
-//               : null,
-//             a.element?.weaponRanged
-//               ? a.element?.listBabRangedSpecificBonus || []
-//               : null
-//           ]
-//     };
-//     sets.push(weapon);
-// }
-// if (a.element.weaponRanged && !a.element.weaponThrown) {
-//   const weapon: AttackOptionsElement = {
-//     bab: Math.floor(a.element.babRanged ?? 0),
-//     weapon: a.element.weapon ?? noneWeapon,
-//     damage: Math.floor(a.element.damageRanged ?? 0),
-//     area: a.area,
-//     listBab: [a.element?.listBabRangedSpecificBonus || [], null]
-//   };
-//   sets.push(weapon);
-// }
-// }
-// });
-// return sets;
-// } else return [];
-// } else return [];
-// };
 
-// export type ActionMenuBorderProps = {
-//   children?: React.ReactNode;
-// }
+const weaponMap = {
+  w1: { group: "I", index: 0 },
+  w2: { group: "I", index: 1 },
+  wA: { group: "I", index: 0 },
+  w21: { group: "II", index: 0 },
+  w22: { group: "II", index: 1 },
+  w2A: { group: "II", index: 0 }
+} as const;
 
-// const ActionMenuBorder: React.FC<ActionMenuBorderProps> = ({children}) => {
-//   return (
-//     <div onClick={}>{children}</div>
-//   )
-// }
+type ClickMenu = [string | null, string | null, string];
 
-const setW = ["w1", "w2", "wA", "w21", "w22", "w2A"]
-const setI = ["w1", "w2", "wA"]
-const setII = ["w21", "w22", "w2A"]
-const setTwoHand = ["w2", "w22"]
-
-const changePosition = (position: string, clickMenu: [string | null, string | null, string]):[string | null, string | null, string] => {
-  if(!setW.includes(position)) { // A B C
+const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
+  // Tab (A, B, C...)
+  if (!(position in weaponMap)) {
     return [clickMenu[0], clickMenu[1], position];
-  } else {
-    if(setI.includes(position) && [clickMenu[0], clickMenu[1]]) {
-      return !setTwoHand.includes(position) ? 
-      [position, clickMenu[1], clickMenu[2]] : 
-      [clickMenu[0], position, clickMenu[2]];
-    }
-    // if(["w2", "w22"].includes(position)) {
-    //   return [clickMenu[0], position, clickMenu[2]];
-    // }
-  } return clickMenu;
-}
+  }
+
+  const info = weaponMap[position as keyof typeof weaponMap];
+
+  let [first, second, tab] = clickMenu;
+
+  // Determina il gruppo attuale
+  let currentGroup: "I" | "II" | null = null;
+
+  if (first && first in weaponMap) {
+    currentGroup = weaponMap[first as keyof typeof weaponMap].group;
+  } else if (second && second in weaponMap) {
+    currentGroup = weaponMap[second as keyof typeof weaponMap].group;
+  }
+
+  // Cambio gruppo? Azzero la selezione
+  if (currentGroup && currentGroup !== info.group) {
+    first = null;
+    second = null;
+  }
+
+  return [first, second, tab];
+};
+
+const getMaxCounter = (
+  clickMenu: ClickMenu,
+  weapon: AttackOptionsElement
+): number => {
+  // let max = 0;
+
+  // attacco principale
+  let max = weapon.element?.weaponThrown ? 2 : 1;
+
+  // seconda arma
+  if (clickMenu[1]) {
+    if (!weapon.element?.weaponTwoHanded) max++;
+  }
+
+  return max;
+};
+
+const updateCounter = (
+  oldMenu: ClickMenu,
+  newMenu: ClickMenu,
+  counter: number,
+  max: number
+): number => {
+  const same =
+    oldMenu[0] === newMenu[0] &&
+    oldMenu[1] === newMenu[1] &&
+    oldMenu[2] === newMenu[2];
+
+  if (!same) {
+    return 0;
+  }
+
+  return (counter + 1) % (max + 1);
+};
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
   const [thrownDice, setThrownDice] = useState<{
     one: number;
     molti: number[];
   } | null>(null);
-  const [clickMenu, setClickMenu] = useState<
-  [string, string | null, string]>(["w1", null, "A"]);
-  // const [clickMenuSideA, setClickMenuSideA] = useState<[number, number, number]>([0, 0, 0]);
+  const [clickMenu, setClickMenu] = useState<ClickMenu>(["w1", null, "A"]);
+  const [selectedAttackIndex, setSelectedAttackIndex] = useState<number>(0);
 
   if (charAB && charAB.length > 0 && charAB[0] && charAB[1]) {
     const defenceOptions: FightOptions[] = createDefenceOptions(
@@ -414,22 +403,20 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
       setThrownDice(tiro);
     };
 
-    // const setSelectClickMenu = (index: number) => {
+    const setSelectClickMenu = (index: string) => {
+      const newMenu = changePosition(index, clickMenu);
 
-    //   attackOptions.map((att, attIndex) => {
-    //     if(attIndex === index) {
-    //       att.selected = true;
-    //     } else {
-    //       att.selected = false;
-    //     }
-    //   })
-    //   // if (["w1", "w2", "wA", "w21", "w22", "w2A"].includes(menuPosition)) {
-    //   //   if (!clickMenu[1][0]) {
-    //   //     setClickMenu([[clickMenu[0][0], menuPosition], clickMenu[1]]);
-    //   //   }
-    //   //   // setClickMenu(menuPosition);
-    //   //   setThrownDice(null);
-    //   };
+      const max = getMaxCounter(
+        newMenu,
+        attackOptions[positionInIndexInMenuAFight(index)]
+      );
+
+      setSelectedAttackIndex((prev) =>
+        updateCounter(clickMenu, newMenu, prev, max)
+      );
+
+      setClickMenu(newMenu);
+    };
 
     return (
       <div
@@ -456,7 +443,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             return (
               <div
                 style={{ gridArea: att.area }}
-                // onClick={() => setSelectClickMenu(indexAtt)}
+                onClick={() => setSelectClickMenu(att.area)}
               >
                 <p>{att.area}</p>
                 <SummaryCharAttacksSingleElement
@@ -499,7 +486,11 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
               <div
                 key={indexCA}
                 className={border}
-                // onClick={() => setSelectClickMenu(indexCA)}
+                onClick={() =>
+                  setSelectClickMenu(
+                    indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C"
+                  )
+                }
               >
                 <p>
                   {indexCA === 0 && <span>{"CA "}</span>}
