@@ -51,16 +51,20 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
       </div>
       <div>
         <SummaryCharAttacksSingleElement
-          totAndBonusAtt={[false, true, false]}
-          element={elementMelee}
+          totAndBonusAtt={[false, true, true, false]}
+          listBab={elementMelee.element?.listBabMeleeSpecificBonus || []}
+          weapon={elementMelee.element?.weapon || noneWeapon}
+          damage={elementMelee.element?.toListMeleeDamage || []}
+          // element={elementMelee}
           totAndBonusDmg={[false, true, false]}
         />
-        {
-          (modCharacter.attacks?.firstRanged?.weaponRanged
-          || modCharacter.attacks?.firstRanged?.weaponThrown) && (
+        {(modCharacter.attacks?.firstRanged?.weaponRanged ||
+          modCharacter.attacks?.firstRanged?.weaponThrown) && (
           <SummaryCharAttacksSingleElement
-            totAndBonusAtt={[false, true, false]}
-            element={elementRanged}
+            totAndBonusAtt={[false, true, true, false]}
+            listBab={elementRanged.element?.listBabRangedSpecificBonus || []}
+            weapon={elementRanged.element?.weapon || noneWeapon}
+            damage={elementRanged.element?.toListRangedDamage || []}
             totAndBonusDmg={[false, true, false]}
           />
         )}
@@ -76,26 +80,38 @@ export const SummaryCharAttacks: React.FC<SummaryCharProps> = ({
 };
 export type SummaryCharAttacksSingleElementProps = {
   border?: string;
-  totAndBonusAtt: [boolean, boolean, boolean];
+  totAndBonusAtt: [boolean, boolean, boolean, boolean]; //show, firstSign, firstOnList, onlyTot
   listBab: TotAndBonusElement[][];
   weapon: Weapon;
+  damage: TotAndBonusElement[];
   totAndBonusDmg: [boolean, boolean, boolean];
 };
 export const SummaryCharAttacksSingleElement: React.FC<
   SummaryCharAttacksSingleElementProps
-> = ({ border, totAndBonusAtt, listBab, weapon, totAndBonusDmg }) => {
+> = ({ border, totAndBonusAtt, listBab, weapon, damage, totAndBonusDmg }) => {
   const attValue = listBab;
-  const dmgValue = totAndBonusDmg[2];
+  const dmgValue = damage;
+  const [show, firstSign, firstOnList, onlyTot] = totAndBonusAtt;
   return (
     <SummaryCharAttacksTemplate borderText={border}>
-      {attValue && attValue.map((a) => (
-        <TotAndBonus
-          show={totAndBonusAtt[0]}
-          firstSign={totAndBonusAtt[1]}
-          list={a}
-          onlyTot={totAndBonusAtt[2]}
-        />
-      ))}
+      {firstOnList
+  ? attValue.length > 0 && (
+      <TotAndBonus
+        show={show}
+        firstSign={firstSign}
+        list={attValue[0]}
+        onlyTot={onlyTot}
+      />
+    )
+  : attValue.map((a, i) => (
+      <TotAndBonus
+        key={i}
+        show={show}
+        firstSign={firstSign}
+        list={a}
+        onlyTot={onlyTot}
+      />
+    ))}
       <div>
         <span>{weapon?.name}</span>
       </div>
@@ -129,7 +145,12 @@ export const SummaryCharAttacksSingleElement: React.FC<
 
 export const mapAllAttacksAreas = (
   elelments: (WeaponElement | undefined)[]
-): { element: WeaponElement | undefined; area: string; show: boolean; selected?: boolean }[] => {
+): {
+  element: WeaponElement | undefined;
+  area: string;
+  show: boolean;
+  selected?: boolean;
+}[] => {
   return [
     // set1
     { element: elelments[0], area: "w1", show: true },
@@ -155,7 +176,7 @@ export const mapAllAttacksAreas = (
       element: elelments[5],
       area: "w2A",
       show: elelments[5]?.weaponLight || false
-    },
+    }
     // { element: {}, area: "empty", show: false }
   ];
 };
@@ -172,17 +193,17 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
 
   return (
     <div
-    style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateAreas: `
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gridTemplateAreas: `
       "w1 w2"
       "wA ."
       "w21 w22"
       "w2A ."
     `,
-            gap: 8
-          }}
+        gap: 8
+      }}
     >
       {areas.map((area, index) => {
         if (area.show) {
@@ -357,7 +378,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
               </div>
             </div>
           );
-        } 
+        }
         // else {
         //   return <div key={index} style={{ border: "1px solid red" }} />;
         // }

@@ -301,43 +301,45 @@ export const createAttackOptions = (
   return [];
 };
 
+type ClickMenu = [string | null, string | null, string];
+
 const weaponMap = {
   w1: { group: "I", index: 0 },
   w2: { group: "I", index: 1 },
   wA: { group: "I", index: 0 },
+
   w21: { group: "II", index: 0 },
   w22: { group: "II", index: 1 },
   w2A: { group: "II", index: 0 }
 } as const;
 
-type ClickMenu = [string | null, string | null, string];
-
 const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
-  // Tab (A, B, C...)
+  // A, B, C...
   if (!(position in weaponMap)) {
     return [clickMenu[0], clickMenu[1], position];
   }
 
   const info = weaponMap[position as keyof typeof weaponMap];
 
-  let [first, second, tab] = clickMenu;
+  const currentPosition = clickMenu[0] ?? clickMenu[1];
 
-  // Determina il gruppo attuale
-  let currentGroup: "I" | "II" | null = null;
-
-  if (first && first in weaponMap) {
-    currentGroup = weaponMap[first as keyof typeof weaponMap].group;
-  } else if (second && second in weaponMap) {
-    currentGroup = weaponMap[second as keyof typeof weaponMap].group;
+  // Se sto cambiando gruppo:
+  // I -> II oppure II -> I
+  if (
+    currentPosition &&
+    weaponMap[currentPosition as keyof typeof weaponMap].group !== info.group
+  ) {
+    return info.index === 0
+      ? [position, null, clickMenu[2]]
+      : [null, position, clickMenu[2]];
   }
 
-  // Cambio gruppo? Azzero la selezione
-  if (currentGroup && currentGroup !== info.group) {
-    first = null;
-    second = null;
-  }
+  // Stesso gruppo
+  const result: ClickMenu = [clickMenu[0], clickMenu[1], clickMenu[2]];
 
-  return [first, second, tab];
+  result[info.index] = position;
+
+  return result;
 };
 
 const getMaxCounter = (
@@ -411,11 +413,27 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
         attackOptions[positionInIndexInMenuAFight(index)]
       );
 
+      console.log("index", index);
+      console.log(
+        "counter",
+        updateCounter(clickMenu, newMenu, selectedAttackIndex, max)
+      );
+      console.log("clickMenu", clickMenu);
+      console.log("newMenu", newMenu);
+
       setSelectedAttackIndex((prev) =>
         updateCounter(clickMenu, newMenu, prev, max)
       );
 
       setClickMenu(newMenu);
+    };
+
+    const deselectClickMenu = (index: string) => {
+      setClickMenu([
+        clickMenu[0] === index ? null : clickMenu[0],
+        clickMenu[1] === index ? null : clickMenu[1],
+        clickMenu[2]
+      ]);
     };
 
     return (
@@ -439,18 +457,23 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
           {attackOptions.map((att, indexAtt) => {
             // const gridArea = att.area;
             // console.log(att.area);
-            const border: string = createBorder(att.selected ?? false);
+            const border: string = createBorder(
+              clickMenu[0] === att.area || clickMenu[1] === att.area
+            );
             return (
               <div
                 style={{ gridArea: att.area }}
                 onClick={() => setSelectClickMenu(att.area)}
+                onDoubleClick={() => deselectClickMenu(att.area)}
               >
                 <p>{att.area}</p>
                 <SummaryCharAttacksSingleElement
                   key={indexAtt}
                   border={border}
-                  totAndBonusAtt={[false, true, true]}
-                  element={att}
+                  totAndBonusAtt={[false, true, false, true]}
+                  weapon={att.element?.weapon || noneWeapon}
+                  listBab={att.element?.listBabMeleeSpecificBonus || []}
+                  damage={att.element?.toListMeleeDamage || []}
                   totAndBonusDmg={[false, true, true]}
                 />
               </div>
@@ -481,7 +504,9 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
         </div>
         <div style={{ flex: 1 }}>
           {defenceOptions.map((ca, indexCA) => {
-            const border: string = createBorder(true);
+            const border: string = createBorder(
+              clickMenu[2] === (indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C")
+            );
             return (
               <div
                 key={indexCA}

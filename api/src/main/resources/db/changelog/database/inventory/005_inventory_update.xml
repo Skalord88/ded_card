@@ -8,7 +8,6 @@
             <column name="armor_id" valueNumeric="1001" />
             <column
                 name="shield_id" valueNumeric="1002" />
-            <column name="armor_id" valueNumeric="1001" />
             <column
                 name="weapon_id_one" valueNumeric="1003" />
             <column name="weapon_id_two"
