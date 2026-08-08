@@ -377,6 +377,28 @@ const updateCounter = (
   return (counter + 1) % (max + 1);
 };
 
+const showBabListOnIndex = (
+  index: number,
+  weapon: WeaponElement,
+  selectTwoWeapons: boolean
+): TotAndBonusElement[][] => {
+  const isRanged = weapon.weaponThrown || weapon.weaponRanged;
+
+  if (selectTwoWeapons) {
+    return (
+      isRanged
+        ? [weapon.listBabRangedTwoWeaponSpecificBonus]
+        : [weapon.listBabMeleeTwoWeaponSpecificBonus]
+    )?.[index] || [];
+  }
+
+  const babList = isRanged
+    ? [weapon.listBabRangedSpecificBonus || [], weapon.listBabRangedTwoWeaponSpecificBonus || []]
+    : [weapon.listBabMeleeSpecificBonus || [], weapon.listBabMeleeTwoWeaponSpecificBonus || []];
+
+  return babList[index] || [];
+};
+
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
   const [thrownDice, setThrownDice] = useState<{
     one: number;
@@ -413,13 +435,13 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
         attackOptions[positionInIndexInMenuAFight(index)]
       );
 
-      console.log("index", index);
-      console.log(
-        "counter",
-        updateCounter(clickMenu, newMenu, selectedAttackIndex, max)
-      );
-      console.log("clickMenu", clickMenu);
-      console.log("newMenu", newMenu);
+      // console.log("index", index);
+      // console.log(
+      //   "counter",
+      //   updateCounter(clickMenu, newMenu, selectedAttackIndex, max)
+      // );
+      // console.log("clickMenu", clickMenu);
+      // console.log("newMenu", newMenu);
 
       setSelectedAttackIndex((prev) =>
         updateCounter(clickMenu, newMenu, prev, max)
@@ -460,19 +482,22 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             const border: string = createBorder(
               clickMenu[0] === att.area || clickMenu[1] === att.area
             );
+            const actualBabList = showBabListOnIndex(selectedAttackIndex, att.element!, (clickMenu[0] === att.area && clickMenu[1] === att.area) || (
+              ![clickMenu[0], clickMenu[1]].includes(null)));
             return (
               <div
                 style={{ gridArea: att.area }}
                 onClick={() => setSelectClickMenu(att.area)}
                 onDoubleClick={() => deselectClickMenu(att.area)}
               >
+                <p>{selectedAttackIndex}</p>
                 <p>{att.area}</p>
                 <SummaryCharAttacksSingleElement
                   key={indexAtt}
                   border={border}
                   totAndBonusAtt={[false, true, false, true]}
                   weapon={att.element?.weapon || noneWeapon}
-                  listBab={att.element?.listBabMeleeSpecificBonus || []}
+                  listBab={actualBabList}
                   damage={att.element?.toListMeleeDamage || []}
                   totAndBonusDmg={[false, true, true]}
                 />
