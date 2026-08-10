@@ -295,8 +295,6 @@ export const createAttackOptions = (
       char.attacks?.secondAttackSetTwo || undefined,
       char.attacks?.additionalAttackSetTwo || undefined
     ]);
-    // return areas;
-    // }
   }
   return [];
 };
@@ -342,22 +340,22 @@ const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
   return result;
 };
 
-const getMaxCounter = (
-  clickMenu: ClickMenu,
-  weapon: AttackOptionsElement
-): number => {
-  // let max = 0;
+// const getMaxCounter = (
+//   clickMenu: ClickMenu,
+//   weapon: AttackOptionsElement
+// ): number => {
+//   // let max = 0;
 
-  // attacco principale
-  let max = weapon.element?.weaponThrown ? 2 : 1;
+//   // attacco principale
+//   let max = weapon.element?.weaponThrown ? 2 : 1;
 
-  // seconda arma
-  if (clickMenu[1]) {
-    if (!weapon.element?.weaponTwoHanded) max++;
-  }
+//   // seconda arma
+//   if (clickMenu[1]) {
+//     if (!weapon.element?.weaponTwoHanded) max++;
+//   }
 
-  return max;
-};
+//   return max;
+// };
 
 const updateCounter = (
   oldMenu: ClickMenu,
@@ -378,25 +376,30 @@ const updateCounter = (
 };
 
 const showBabListOnIndex = (
-  index: number,
+  // index: number,
   weapon: WeaponElement,
-  selectTwoWeapons: boolean
+  clickMenuWeapon: [string | null, string | null]
 ): TotAndBonusElement[][] => {
-  const isRanged = weapon.weaponThrown || weapon.weaponRanged;
+  const oneHandMelee = weapon.listBabMeleeSpecificBonus || [];
+  const twoHandMelee = weapon.listBabMeleeTwoWeaponSpecificBonus || [];
+  const oneHandRanged = weapon.listBabRangedSpecificBonus || [];
+  const twoHandRanged = weapon.listBabRangedTwoWeaponSpecificBonus || [];
 
-  if (selectTwoWeapons) {
-    return (
-      isRanged
-        ? [weapon.listBabRangedTwoWeaponSpecificBonus]
-        : [weapon.listBabMeleeTwoWeaponSpecificBonus]
-    )?.[index] || [];
+  // console.log("clickMenuWeapon", clickMenuWeapon, clickMenuWeapon.includes(null));
+
+  if (clickMenuWeapon.includes(null)) {
+    return weapon.weaponThrown
+      ? [...oneHandRanged, ...oneHandMelee]
+      : weapon.weaponRanged
+        ? oneHandRanged
+        : oneHandMelee;
+  } else {
+    return weapon.weaponThrown
+      ? [...twoHandRanged, ...twoHandMelee]
+      : weapon.weaponRanged
+        ? twoHandRanged
+        : twoHandMelee;
   }
-
-  const babList = isRanged
-    ? [weapon.listBabRangedSpecificBonus || [], weapon.listBabRangedTwoWeaponSpecificBonus || []]
-    : [weapon.listBabMeleeSpecificBonus || [], weapon.listBabMeleeTwoWeaponSpecificBonus || []];
-
-  return babList[index] || [];
 };
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
@@ -405,7 +408,7 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
     molti: number[];
   } | null>(null);
   const [clickMenu, setClickMenu] = useState<ClickMenu>(["w1", null, "A"]);
-  const [selectedAttackIndex, setSelectedAttackIndex] = useState<number>(0);
+  // const [selectedAttackIndex, setSelectedAttackIndex] = useState<number>(0);
 
   if (charAB && charAB.length > 0 && charAB[0] && charAB[1]) {
     const defenceOptions: FightOptions[] = createDefenceOptions(
@@ -427,25 +430,14 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
       setThrownDice(tiro);
     };
 
-    const setSelectClickMenu = (index: string) => {
+    const setSelectClickMenu = (index: string, max?: number) => {
       const newMenu = changePosition(index, clickMenu);
 
-      const max = getMaxCounter(
-        newMenu,
-        attackOptions[positionInIndexInMenuAFight(index)]
-      );
-
-      // console.log("index", index);
-      // console.log(
-      //   "counter",
-      //   updateCounter(clickMenu, newMenu, selectedAttackIndex, max)
-      // );
-      // console.log("clickMenu", clickMenu);
-      // console.log("newMenu", newMenu);
-
-      setSelectedAttackIndex((prev) =>
-        updateCounter(clickMenu, newMenu, prev, max)
-      );
+      // if (max && max > 0) {
+      //   setSelectedAttackIndex((prev) =>
+      //     updateCounter(clickMenu, newMenu, prev, max)
+      //   );
+      // }
 
       setClickMenu(newMenu);
     };
@@ -468,11 +460,11 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
             gridTemplateAreas: `
-      "w1 w2"
-      "wA ."
-      "w21 w22"
-      "w2A ."
-    `,
+              "w1 w2"
+              "wA ."
+              "w21 w22"
+              "w2A ."
+            `,
             gap: 8
           }}
         >
@@ -482,15 +474,27 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             const border: string = createBorder(
               clickMenu[0] === att.area || clickMenu[1] === att.area
             );
-            const actualBabList = showBabListOnIndex(selectedAttackIndex, att.element!, (clickMenu[0] === att.area && clickMenu[1] === att.area) || (
-              ![clickMenu[0], clickMenu[1]].includes(null)));
+            const indexOne =
+              attackOptions[positionInIndexInMenuAFight(clickMenu[1] || "")]
+                .show ? clickMenu[1] : null;
+            const actualBabList = showBabListOnIndex(
+              // selectedAttackIndex,
+              att.element!,
+              [clickMenu[0], indexOne]
+              // .find((a)=> a.area === clickMenu[1])?.area || null
+            );
+            // console.log("actualBabList", actualBabList, clickMenu);
+            if (att.show === false) return null;
             return (
               <div
                 style={{ gridArea: att.area }}
-                onClick={() => setSelectClickMenu(att.area)}
+                onClick={() =>
+                  setSelectClickMenu(att.area, actualBabList.length - 1)
+                }
                 onDoubleClick={() => deselectClickMenu(att.area)}
               >
-                <p>{selectedAttackIndex}</p>
+                {/* <p>{actualBabList.map((bab) => <span>{bab.map((v) => v.bonus).join("/ ")}</span>)}</p> */}
+                {/* <p>{actualBabList.length - 1}</p> */}
                 <p>{att.area}</p>
                 <SummaryCharAttacksSingleElement
                   key={indexAtt}
@@ -513,15 +517,38 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
           <div>
             {thrownDice && (
               <ThrowDice
-                dice={thrownDice}
-                value={
-                  attackOptions[0]
-                  // positionInIndexInMenuAFight(clickMenu[0])
-                }
-                target={
-                  // positionInIndexInMenuBFight(clickMenu[1])
-                  defenceOptions[0].number
-                }
+                dice={thrownDice} 
+                value={{
+                  weapon: undefined,
+                  weaponLight: undefined,
+                  weaponRanged: undefined,
+                  weaponThrown: undefined,
+                  weaponTwoHanded: undefined,
+                  double: undefined,
+                  listBabMeleeSpecificBonus: undefined,
+                  listBabMeleeTwoWeaponSpecificBonus: undefined,
+                  toListMeleeDamage: undefined,
+                  toListMeleeTwoWeaponDamage: undefined,
+                  listBabRangedSpecificBonus: undefined,
+                  listBabRangedTwoWeaponSpecificBonus: undefined,
+                  toListRangedDamage: undefined,
+                  toListRangedTwoWeaponDamage: undefined,
+                  babMelee: undefined,
+                  babRanged: undefined,
+                  damageMelee: undefined,
+                  damageRanged: undefined
+                }} target={0} listValue={actualBabList? actualBabList}  
+                // value={
+  //                 attackOptions[indexAtt]
+  //               }
+  // target,
+  // listValue
+                
+                
+  //               target={
+  //                 // positionInIndexInMenuBFight(clickMenu[1])
+  //                 defenceOptions[0].number
+  //               }
               />
             )}
           </div>

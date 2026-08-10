@@ -1,24 +1,31 @@
 import { AttackOptionsElement } from "../../pages/Fight";
+import { WeaponElement } from "../ModifiedCharacter/interface/ModifiedCharacter";
+import { TotAndBonusElement } from "../SummaryChar/component/TotAndBonus";
 import { criticalDice, CriticalHit, DiceNumber, throwDice } from "./Functions";
 
 export type ThrowDiceProps = {
   dice: {one: number, molti: number[]};
-  value: AttackOptionsElement;
+  value: WeaponElement;
   target: number;
-  // listValue: TotAndBonusElement[][]
+  listValue: TotAndBonusElement[][]
 };
 
 export const ThrowDice: React.FC<ThrowDiceProps> = ({
   dice,
   value,
-  target
+  target,
+  listValue
 }) => {
   return(
   <>
   {dice.molti.map(d => {
-  // if(!damage) return null;
+    
+  if(!value.weapon) return null;
+  const bab: number = listValue.reduce((tot, b) => tot + b.reduce((totB, bon) => totB + bon.bonus, 0) ,0 );
+  const tot: number = d + bab;
+  const damage: number = value.damageMelee || value.babRanged || 0
   if (![1].concat(CriticalHit(value.weapon.critical)).includes(d)) {
-    const tot: number = d + value.bab;
+    
     const result: string =
       tot >= target
         ? tot + " >= " + target + " hit!"
@@ -32,7 +39,7 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
     return (
       <div className="rpgui-container-framed golden">
         <p>
-          {d} {value.bab > 0 ? " + " : " "} {value.bab} =
+          {d} {tot > 0 ? " + " : " "} {tot} =
           <span style={{ color: "orange" }}>{" " + tot}</span>
         </p>
         <p>{result}</p>
@@ -41,17 +48,17 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
             {dicesDamage.length === 1 ? (
               <span>
                 {dicesDamage[0]}
-                {value.damage > 0 ? " + " : ""} {value.damage}
+                {damage > 0 ? " + " : ""} {damage}
                 {" = "}
-                {dicesDamage[0] + value.damage}
+                {dicesDamage[0] + damage}
               </span>
             ) : (
               <span>
                 {dicesDamage[0]} + {dicesDamage[1]}{" "}
-                {value.damage > 0 ? " + " : ""}
-                {value.damage}
+                {damage > 0 ? " + " : ""}
+                {damage}
                 {" = "}
-                {dicesDamage[0] + dicesDamage[1] + value.damage}
+                {dicesDamage[0] + dicesDamage[1] + damage}
               </span>
             )}
           </p>
@@ -70,7 +77,7 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
   }
   if (CriticalHit(value.weapon.critical).includes(d)) {
     const critConfirmation: number = throwDice(20);
-    const tot: number = critConfirmation + value.bab;
+    const tot: number = critConfirmation + bab;
     const result: string =
       tot >= target
         ? tot + " >= " + target + " crit confirmed!"
@@ -81,8 +88,8 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
       tot >= target
         ? dicesDamage.reduce((tot, d) => tot + d, 0)
         : dicesDamage.length === 1
-          ? dicesDamage[0] + value.damage
-          : dicesDamage[0] + dicesDamage[1] + value.damage;
+          ? dicesDamage[0] + damage
+          : dicesDamage[0] + dicesDamage[1] + damage;
     return (
       <div className="rpgui-container-framed golden">
         <p style={{ color: "yellow" }}>
@@ -90,16 +97,16 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
           {" on dice, crit!"}
         </p>
         <p>
-          {critConfirmation} {value.bab > 0 ? " + " : " "} {value.bab} =
+          {critConfirmation} {bab > 0 ? " + " : " "} {bab} =
           <span style={{ color: "orange" }}>{" " + tot}</span>
         </p>
         <p>{result}</p>
         <p>
           {dicesDamage.join(" + ")}
-          {value.damage < 0 ? " - " : " + "}
-          {value.damage}
+          {damage < 0 ? " - " : " + "}
+          {damage}
           {" = "}
-          {totDicesDamage + value.damage}
+          {totDicesDamage + damage}
         </p>
       </div>
     );
