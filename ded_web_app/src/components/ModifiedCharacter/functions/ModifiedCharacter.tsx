@@ -429,6 +429,9 @@ export const modifiedCharacter = (
             weapon.itemId
           ])
         : undefined;
+
+        // const damageMelee: number =
+        //   toListMeleeDamage?.reduce((tot, d) => tot + d.bonus, 0) || 0
     // babRanged && console.log("babRanged", weapon.name, babRanged)
     return {
       // WeaponElement
@@ -446,7 +449,6 @@ export const modifiedCharacter = (
       toListRangedDamage: toListRangedDamage,
       babMelee: babMelee,
       babRanged: babRanged,
-
       damageMelee:
         !ranged && weapon
           ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])

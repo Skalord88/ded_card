@@ -1,23 +1,23 @@
 import React, { useState } from "react";
 import { FormattingText } from "../Formatting/Function";
 import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
-import { TotAndBonusElement } from "../SummaryChar/SummaryChar";
 import { signAndCountToString } from "../functions";
+import { TotAndBonusElement } from "../SummaryChar/component/TotAndBonus";
 
 export interface PopupProps {
   text?: string | string[];
   popText?: ModifierEnum;
   bonusList?: TotAndBonusElement[];
+  colorResult?: boolean
 }
 
-export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
+export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorResult }) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const togglePopup = (show: boolean) => {
     setShowPopup(show);
   };
 
-  
   if (bonusList) {
     const totBonus: string = signAndCountToString([
       Math.floor(bonusList.reduce((acc, item) => acc + item.bonus, 0))
@@ -60,10 +60,10 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
           <span className="rpgui-cursor-point">
             {" "}
             <span style={{ color: "yellow" }}>{text[0]}</span>
-            <span>{text.slice(1)}</span>
+            <span style={{color: colorResult? "orange" : ""}}>{text.slice(1)}</span>
           </span>
         ) : (
-          <span>{text}</span>
+          <span style={{color: colorResult? "orange" : ""}}>{text}</span>
         )}
 
         {popText && (
@@ -72,7 +72,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList }) => {
               showPopup ? "show" : ""
             }`}
           >
-            {popText.text && <div>{FormattingText(popText.text)}</div>}
+            {popText.text && <div><p>{FormattingText(popText.text)}</p></div>}
             {popText.description && (
               <div>{FormattingText(popText.description)}</div>
             )}

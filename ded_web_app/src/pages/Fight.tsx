@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useData } from "../components/Context/Context";
 import { DiceText, throwDice } from "../components/Dice/Functions";
-import { ThrowDice } from "../components/Dice/ThrowDice";
+import { ThrowDice, ThrowDicePropsWeapon } from "../components/Dice/ThrowDice";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, signAndCountToString } from "../components/functions";
 import { CharacterPc, Weapon } from "../components/interfaces";
@@ -24,8 +24,10 @@ import { noneWeapon } from "../components/variables";
 import { PageLayoutBody } from "./AppLayout";
 import {
   indexInPositionInMenuFight,
-  positionInIndexInMenuAFight
+  positionInIndexInMenuAFight,
+  positionInIndexInMenuBFight
 } from "../components/Fight/component/Menu";
+import { BlobOptions } from "buffer";
 
 export const createBorder = (
   selected: boolean
@@ -153,15 +155,6 @@ export function Fight() {
           </div>
         </div>
       )}
-
-      {/* <div className="fullAttackSection">
-    <div style={{ gridArea: "w1", background: "red" }}>1</div>
-    <div style={{ gridArea: "w2", background: "blue" }}>2</div>
-    <div style={{ gridArea: "wA", background: "green" }}>3</div>
-    <div style={{ gridArea: "w21", background: "yellow" }}>4</div>
-    <div style={{ gridArea: "w22", background: "orange" }}>5</div>
-    <div style={{ gridArea: "w2A", background: "pink" }}>6</div>
-</div> */}
     </PageLayoutBody>
   );
 }
@@ -171,12 +164,11 @@ export type FightsProps = {
 };
 
 const FightsMenu: React.FC<FightsProps> = ({ selectOption }) => {
-  // const [option, setOption] = useState<string>("");
   const setMenuOption = (opt: string) => {
     if (selectOption) selectOption(opt);
   };
   return (
-    <div className="rpgui-container-framed golden">
+    <div className="rpgui-container-framed golden-2">
       <div>
         <p onClick={() => setMenuOption("Attack")}>Attack</p>
       </div>
@@ -286,7 +278,6 @@ export const createAttackOptions = (
 ): AttackOptionsElement[] => {
   if (!char) return [];
   if (optionAction === "Attack") {
-    // if (char.attacks) {
     return mapAllAttacksAreas([
       char.attacks?.firstAttackSetOne || undefined,
       char.attacks?.secondAttackSetOne || undefined,
@@ -340,6 +331,10 @@ const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
   return result;
 };
 
+const clickPlus = (counter: number, max: number): number => {
+  return counter + 1 === max ? 0 : counter + 1;
+};
+
 // const getMaxCounter = (
 //   clickMenu: ClickMenu,
 //   weapon: AttackOptionsElement
@@ -360,25 +355,27 @@ const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
 const updateCounter = (
   oldMenu: ClickMenu,
   newMenu: ClickMenu,
-  counter: number,
-  max: number
-): number => {
+  counter: boolean,
+  // max: number
+): boolean => {
   const same =
     oldMenu[0] === newMenu[0] &&
     oldMenu[1] === newMenu[1] &&
     oldMenu[2] === newMenu[2];
 
   if (!same) {
-    return 0;
+    return !counter;
   }
 
-  return (counter + 1) % (max + 1);
+  return counter
+  // return (counter + 1) % (max + 1);
 };
 
 const showBabListOnIndex = (
   // index: number,
   weapon: WeaponElement,
   clickMenuWeapon: [string | null, string | null]
+  // , counter: boolean
 ): TotAndBonusElement[][] => {
   const oneHandMelee = weapon.listBabMeleeSpecificBonus || [];
   const twoHandMelee = weapon.listBabMeleeTwoWeaponSpecificBonus || [];
@@ -395,196 +392,203 @@ const showBabListOnIndex = (
         : oneHandMelee;
   } else {
     return weapon.weaponThrown
-      ? [...twoHandRanged, ...twoHandMelee]
+      ? [...oneHandRanged, ...oneHandMelee]
       : weapon.weaponRanged
         ? twoHandRanged
         : twoHandMelee;
   }
 };
+const showDamageListOnIndex = (weapon: WeaponElement
+  // , counter: boolean
+): number[] => {
+  const oneHandMelee = weapon.damageMelee;
+  const oneHandRanged = weapon.damageRanged;
+
+  return weapon.weaponThrown && oneHandMelee && oneHandRanged
+    ? [oneHandRanged, oneHandMelee]
+    : weapon.weaponRanged && oneHandRanged
+      ? [oneHandRanged]
+      : oneHandMelee
+        ? [oneHandMelee]
+        : [0];
+};
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
-  const [thrownDice, setThrownDice] = useState<{
-    one: number;
-    molti: number[];
-  } | null>(null);
+
   const [clickMenu, setClickMenu] = useState<ClickMenu>(["w1", null, "A"]);
-  // const [selectedAttackIndex, setSelectedAttackIndex] = useState<number>(0);
+  const [counterClick, setCounterClick] = useState(0);
+  const [throwDiceWeapon, setThrowDiceWeapon] = useState<
+    ThrowDicePropsWeapon[]
+  >([]);
 
-  if (charAB && charAB.length > 0 && charAB[0] && charAB[1]) {
-    const defenceOptions: FightOptions[] = createDefenceOptions(
-      charAB[1],
-      optionAction
-    );
+  const defenceOptions: FightOptions[] =
+    charAB && charAB.length > 1
+      ? createDefenceOptions(charAB[1], optionAction)
+      : [];
 
-    const attackOptions: AttackOptionsElement[] = createAttackOptions(
-      charAB[0],
-      optionAction
-    );
+  const attackOptions = useMemo(
+    () =>
+      charAB && charAB.length > 0
+        ? createAttackOptions(charAB[0], optionAction)
+        : [],
+    [charAB, optionAction]
+  );
 
-    const throwAction = () => {
-      const tiro: { one: number; molti: number[] } = {
-        one: throwDice(20),
-        molti: [throwDice(20)]
-        // attackOptions[0].element?. .listBab.map((a) => throwDice(20)) || []
-      };
-      setThrownDice(tiro);
-    };
+  useEffect(() => {
+    const indexOne: number | null = clickMenu[0]
+      ? positionInIndexInMenuAFight(clickMenu[0])
+      : null;
 
-    const setSelectClickMenu = (index: string, max?: number) => {
-      const newMenu = changePosition(index, clickMenu);
+    const elementOne =
+      indexOne !== null ? attackOptions[indexOne]?.element : undefined;
 
-      // if (max && max > 0) {
-      //   setSelectedAttackIndex((prev) =>
-      //     updateCounter(clickMenu, newMenu, prev, max)
-      //   );
-      // }
+    const one: ThrowDicePropsWeapon | null = elementOne?.weapon
+      ? {
+          weapon: elementOne.weapon,
+          listBab: showBabListOnIndex(elementOne, [clickMenu[0], clickMenu[1]]),
+          listDamage: showDamageListOnIndex(elementOne)
+        }
+      : null;
 
-      setClickMenu(newMenu);
-    };
+    const indexTwo: number | null = clickMenu[1]
+      ? positionInIndexInMenuAFight(clickMenu[1])
+      : null;
 
-    const deselectClickMenu = (index: string) => {
-      setClickMenu([
-        clickMenu[0] === index ? null : clickMenu[0],
-        clickMenu[1] === index ? null : clickMenu[1],
-        clickMenu[2]
-      ]);
-    };
+    const elementTwo =
+      indexTwo !== null ? attackOptions[indexTwo]?.element : undefined;
 
-    return (
+    const two: ThrowDicePropsWeapon | null = elementTwo?.weapon
+      ? {
+          weapon: elementTwo.weapon,
+          listBab: showBabListOnIndex(elementTwo, [clickMenu[0], clickMenu[1]]),
+          listDamage: showDamageListOnIndex(elementTwo)
+        }
+      : null;
+
+    const newDiceWeapon =
+      one && two ? [one, two] : one ? [one] : two ? [two] : [];
+
+    setThrowDiceWeapon(newDiceWeapon);
+  }, [attackOptions, clickMenu, counterClick]);
+
+  const setSelectClickMenu = (index: string) => {
+    const newMenu = changePosition(index, clickMenu);
+
+    setCounterClick(updateCounter(clickMenu, newMenu, counterClick))
+
+    // const areaFind = weaponMap[index as keyof typeof weaponMap].index
+    // const w = throwDiceWeapon[areaFind].listBab.length
+
+    // console.log("w", w)
+
+    // updateCounter(clickMenu, newMenu, counterClick, w)
+    setClickMenu(newMenu);
+  };
+
+  const deselectClickMenu = (index: string) => {
+    setClickMenu([
+      clickMenu[0] === index ? null : clickMenu[0],
+      clickMenu[1] === index ? null : clickMenu[1],
+      clickMenu[2]
+    ]);
+  };
+
+  return (
+    <div
+      className="rpgui-container-framed grey"
+      style={{ flex: 3, display: "flex" }}
+    >
       <div
-        className="rpgui-container-framed grey"
-        style={{ flex: 3, display: "flex" }}
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gridTemplateAreas: `
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gridTemplateAreas: `
               "w1 w2"
               "wA ."
               "w21 w22"
               "w2A ."
             `,
-            gap: 8
-          }}
-        >
-          {attackOptions.map((att, indexAtt) => {
-            // const gridArea = att.area;
-            // console.log(att.area);
-            const border: string = createBorder(
-              clickMenu[0] === att.area || clickMenu[1] === att.area
-            );
-            const indexOne =
-              attackOptions[positionInIndexInMenuAFight(clickMenu[1] || "")]
-                .show ? clickMenu[1] : null;
-            const actualBabList = showBabListOnIndex(
-              // selectedAttackIndex,
-              att.element!,
-              [clickMenu[0], indexOne]
-              // .find((a)=> a.area === clickMenu[1])?.area || null
-            );
-            // console.log("actualBabList", actualBabList, clickMenu);
-            if (att.show === false) return null;
-            return (
-              <div
-                style={{ gridArea: att.area }}
-                onClick={() =>
-                  setSelectClickMenu(att.area, actualBabList.length - 1)
-                }
-                onDoubleClick={() => deselectClickMenu(att.area)}
-              >
-                {/* <p>{actualBabList.map((bab) => <span>{bab.map((v) => v.bonus).join("/ ")}</span>)}</p> */}
-                {/* <p>{actualBabList.length - 1}</p> */}
-                <p>{att.area}</p>
-                <SummaryCharAttacksSingleElement
-                  key={indexAtt}
-                  border={border}
-                  totAndBonusAtt={[false, true, false, true]}
-                  weapon={att.element?.weapon || noneWeapon}
-                  listBab={actualBabList}
-                  damage={att.element?.toListMeleeDamage || []}
-                  totAndBonusDmg={[false, true, true]}
-                />
-              </div>
-            );
-          })}
-        </div>
-        <div style={{ flex: 1 }} className="rpgui-container-framed grey">
-          <Button className="rpgui-button" onClick={() => throwAction()}>
-            <p>throw</p>
-          </Button>
-
-          <div>
-            {thrownDice && (
-              <ThrowDice
-                dice={thrownDice} 
-                value={{
-                  weapon: undefined,
-                  weaponLight: undefined,
-                  weaponRanged: undefined,
-                  weaponThrown: undefined,
-                  weaponTwoHanded: undefined,
-                  double: undefined,
-                  listBabMeleeSpecificBonus: undefined,
-                  listBabMeleeTwoWeaponSpecificBonus: undefined,
-                  toListMeleeDamage: undefined,
-                  toListMeleeTwoWeaponDamage: undefined,
-                  listBabRangedSpecificBonus: undefined,
-                  listBabRangedTwoWeaponSpecificBonus: undefined,
-                  toListRangedDamage: undefined,
-                  toListRangedTwoWeaponDamage: undefined,
-                  babMelee: undefined,
-                  babRanged: undefined,
-                  damageMelee: undefined,
-                  damageRanged: undefined
-                }} target={0} listValue={actualBabList? actualBabList}  
-                // value={
-  //                 attackOptions[indexAtt]
-  //               }
-  // target,
-  // listValue
-                
-                
-  //               target={
-  //                 // positionInIndexInMenuBFight(clickMenu[1])
-  //                 defenceOptions[0].number
-  //               }
+          gap: 4
+        }}
+      >
+        {attackOptions.map((att, indexAtt) => {
+          // const gridArea = att.area;
+          // console.log(att.area);
+          const border: string = createBorder(
+            clickMenu[0] === att.area || clickMenu[1] === att.area
+          );
+          const indexOne = attackOptions[
+            positionInIndexInMenuAFight(clickMenu[1] || "")
+          ].show
+            ? clickMenu[1]
+            : null;
+          const actualBabList = showBabListOnIndex(
+            att.element!,
+            [clickMenu[0], indexOne]
+          );
+          if (att.show === false) return null;
+          return (
+            <div
+              style={{ gridArea: att.area }}
+              onClick={() =>
+                setSelectClickMenu(att.area)
+              }
+              onDoubleClick={() => deselectClickMenu(att.area)}
+            >
+              <p>{att.area}</p>
+              <SummaryCharAttacksSingleElement
+                key={indexAtt}
+                border={border}
+                totAndBonusAtt={[false, true, false, true]}
+                weapon={att.element?.weapon || noneWeapon}
+                listBab={actualBabList}
+                damage={att.element?.toListMeleeDamage || []}
+                totAndBonusDmg={[false, true, true]}
               />
-            )}
-          </div>
-          {/* )} */}
-        </div>
-        <div style={{ flex: 1 }}>
-          {defenceOptions.map((ca, indexCA) => {
-            const border: string = createBorder(
-              clickMenu[2] === (indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C")
-            );
-            return (
-              <div
-                key={indexCA}
-                className={border}
-                onClick={() =>
-                  setSelectClickMenu(
-                    indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C"
-                  )
-                }
-              >
-                <p>
-                  {indexCA === 0 && <span>{"CA "}</span>}
-                  {indexCA === 1 && <span>{"touch "}</span>}
-                  {indexCA === 2 && <span>{"flat-footed "}</span>}
-                  <span>{ca.number}</span>
-                </p>
-                <p>{ca.text}</p>
-              </div>
-            );
-          })}
+            </div>
+          );
+        })}
+      </div>
+      <div style={{ flex: 1 }} className="rpgui-container-framed grey">
+
+        <div>
+          {throwDiceWeapon && (
+            <ThrowDice
+              // dice={thrownDice}
+              weapons={throwDiceWeapon}
+              target={
+                defenceOptions[positionInIndexInMenuBFight(clickMenu[2])].number
+              }
+            />
+          )}
         </div>
       </div>
-    );
-  }
+      <div style={{ flex: 1 }}>
+        {defenceOptions.map((ca, indexCA) => {
+          const border: string = createBorder(
+            clickMenu[2] === (indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C")
+          );
+          return (
+            <div
+              key={indexCA}
+              className={border}
+              onClick={() =>
+                setSelectClickMenu(
+                  indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C"
+                )
+              }
+            >
+              <p>
+                {indexCA === 0 && <span>{"CA "}</span>}
+                {indexCA === 1 && <span>{"touch "}</span>}
+                {indexCA === 2 && <span>{"flat-footed "}</span>}
+                <span>{ca.number}</span>
+              </p>
+              <p>{ca.text}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 };
-// else if (!optionAction) {
-//   return <div style={{ flex: 3 }}></div>;
-// }
-// };
