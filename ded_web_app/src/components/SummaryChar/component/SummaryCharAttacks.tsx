@@ -95,23 +95,23 @@ export const SummaryCharAttacksSingleElement: React.FC<
   return (
     <SummaryCharAttacksTemplate borderText={border}>
       {firstOnList
-  ? attValue.length > 0 && (
-      <TotAndBonus
-        show={show}
-        firstSign={firstSign}
-        list={attValue[0]}
-        onlyTot={onlyTot}
-      />
-    )
-  : attValue.map((a, i) => (
-      <TotAndBonus
-        key={i}
-        show={show}
-        firstSign={firstSign}
-        list={a}
-        onlyTot={onlyTot}
-      />
-    ))}
+        ? attValue.length > 0 && (
+            <TotAndBonus
+              show={show}
+              firstSign={firstSign}
+              list={attValue[0]}
+              onlyTot={onlyTot}
+            />
+          )
+        : attValue.map((a, i) => (
+            <TotAndBonus
+              key={i}
+              show={show}
+              firstSign={firstSign}
+              list={a}
+              onlyTot={onlyTot}
+            />
+          ))}
       <div>
         <span>{weapon?.name}</span>
       </div>

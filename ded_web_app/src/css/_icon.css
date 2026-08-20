@@ -151,3 +151,14 @@
 .rpgui-icon.dwarf-urdunir {
     background-image: url('../img/icons/dwarf-urdunir.png');
 }
+
+.rpgui-icon.selected-check-on {
+    width: 28px;
+    height: 28px;
+    background-image: url('../img/icons/radio-golden-on.png');
+}
+.rpgui-icon.selected-check-off {
+    width: 28px;
+    height: 28px;
+    background-image: url('../img/icons/radio-golden-off.png');
+}

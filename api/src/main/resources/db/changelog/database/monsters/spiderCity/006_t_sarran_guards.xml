@@ -47,7 +47,7 @@
             <!-- Sword, bastard +1 -->
             <column name="attacks_id_onesecond"
                 value="4134" />
-            <!-- Longbow, composite --> 
+            <!-- Longbow, composite -->
             <where>id = 10001</where>
         </update>
 

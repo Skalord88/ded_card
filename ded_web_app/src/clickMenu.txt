@@ -1,0 +1,10 @@
+se l'arma e' a due mani?
+-counter === 0 attacco singolo
+-altrimenti attacco completo
+
+arma da lancio
+vogliamo lanciarla?
+-se mano off libera?
+--se counter 0 ranged singolo
+--altrimenti ranged completo
+-se mano off occupata attacco completo

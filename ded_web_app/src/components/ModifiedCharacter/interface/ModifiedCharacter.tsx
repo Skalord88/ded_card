@@ -140,7 +140,9 @@ export type WeaponElement = {
   babMelee?: number; // [bab generale , bab specifico] applicato il signAndCountToString
   babRanged?: number; // [bab generale , bab specifico] applicato il signAndCountToString
   damageMelee?: number;
+  damageMeleeTwoWeapon?: number;
   damageRanged?: number;
+  damageRangedTwoWeapon?: number
 };
 
 export const attacksMapElement: TotAndBonusElement[] = [
@@ -238,19 +240,20 @@ export const numberOfAttacksMap = (
 
 export const weaponDamagePoseAndTwoWeapon = (
   list: TotAndBonusElement[],
-  pose: boolean,
+  // strength: boolean,
+  offhand: boolean,
   twoHand: boolean
 ): TotAndBonusElement[] => {
   const newList = list
     .map((l) => l.pop === STRENGTH_MODIFIER)
     .map((isStrengthModifier, index) => {
       if (isStrengthModifier) {
-        const bonus = pose
+        const bonus = offhand
           ? list[index].bonus / 2
           : twoHand
             ? list[index].bonus + Math.floor(list[index].bonus / 2)
             : list[index].bonus;
-        return { ...list[index], bonus };
+        return { ...list[index], bonus: bonus };
       }
       return list[index];
     });

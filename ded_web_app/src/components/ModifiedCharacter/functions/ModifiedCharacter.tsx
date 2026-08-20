@@ -26,7 +26,6 @@ import {
   BASE_VALUE,
   DEFLECTION_BONUS,
   FORTITUDE_MODIFIER,
-  ModifierEnum,
   REFLEX_MODIFIER,
   SAVING,
   WILL_MODIFIER
@@ -56,10 +55,10 @@ import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
 import { createCompetenceFromPrerequisites } from "./CreateCompetenceFromPrerequisites";
 import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
 import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
-import { checkBonusTarget, chooseBestBonuses, createTotAndBonusElement } from "./CreateTotAndBonusElement";
+import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
 import { createTotAndBonusElementWithSkill } from "./CreateTotAndBonusElementWithSkill";
 import { findAllPrerequisite } from "./FindAllPrerequisite";
-import { BonusResultMap, BonusSource, getBonusResult } from "./GetBonusResult";
+import { BonusResultMap, getBonusResult } from "./GetBonusResult";
 import { filterBonusMap, isGlobalBonus } from "./IsGlobalBonus";
 import { resolveBonuses } from "./ResolvesBonuses";
 
@@ -356,7 +355,17 @@ export const modifiedCharacter = (
             "Melee",
             weapon.itemId
           ]),
-          isSecondSet,
+          true,
+          twoHanded
+        )
+      : undefined;
+    const toListMeleeTwoWeaponDamage: TotAndBonusElement[] | undefined = !ranged
+      ? weaponDamagePoseAndTwoWeapon(
+          createTotAndBonusElement(updatedDamageMap || {}, text, [
+            "Melee",
+            weapon.itemId
+          ]),
+          false,
           twoHanded
         )
       : undefined;
@@ -404,7 +413,20 @@ export const modifiedCharacter = (
               "Thrown",
               weapon.itemId
             ]),
-            isSecondSet,
+            true,
+            twoHanded
+          )
+        : undefined;
+        console.log("updatedDamageMap", updatedDamageMap)
+    const toListRangedTwoWeaponDamage: TotAndBonusElement[] | undefined =
+      ranged || thrown
+        ? weaponDamagePoseAndTwoWeapon(
+            createTotAndBonusElement(updatedDamageMap || {}, text, [
+              "Ranged",
+              "Thrown",
+              weapon.itemId
+            ]),
+            false,
             twoHanded
           )
         : undefined;
@@ -430,9 +452,18 @@ export const modifiedCharacter = (
           ])
         : undefined;
 
-        // const damageMelee: number =
-        //   toListMeleeDamage?.reduce((tot, d) => tot + d.bonus, 0) || 0
-    // babRanged && console.log("babRanged", weapon.name, babRanged)
+        const damageMelee: number | undefined = !ranged && weapon
+          ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])
+          : undefined;
+        const damageMeleeTwoWeapon: number | undefined = toListMeleeTwoWeaponDamage?.reduce((tot, d) => tot + d.bonus, 0) || 0
+        const damageRanged: number | undefined = ranged && weapon
+          ? returnBonusSpecific(updatedDamageMap, [
+              "Ranged",
+              "Thrown",
+              weapon.itemId
+            ])
+          : undefined
+          const damageRangedTwoWeapon: number = toListRangedTwoWeaponDamage?.reduce((tot, d) => tot + d.bonus, 0) || 0
     return {
       // WeaponElement
       weapon: weapon,
@@ -444,23 +475,17 @@ export const modifiedCharacter = (
       listBabMeleeSpecificBonus: listBabMeleeSpecificBonus,
       listBabMeleeTwoWeaponSpecificBonus: listBabMeleeTwoWeaponSpecificBonus,
       toListMeleeDamage: toListMeleeDamage,
+      toListMeleeTwoWeaponDamage: toListMeleeTwoWeaponDamage,
       listBabRangedSpecificBonus: listBabRangedSpecificBonus,
       listBabRangedTwoWeaponSpecificBonus: listBabRangedTwoWeaponSpecificBonus,
       toListRangedDamage: toListRangedDamage,
+      toListRangedTwoWeaponDamage: toListRangedTwoWeaponDamage,
       babMelee: babMelee,
       babRanged: babRanged,
-      damageMelee:
-        !ranged && weapon
-          ? returnBonusSpecific(updatedDamageMap, ["Melee", weapon.itemId])
-          : undefined,
-      damageRanged:
-        ranged && weapon
-          ? returnBonusSpecific(updatedDamageMap, [
-              "Ranged",
-              "Thrown",
-              weapon.itemId
-            ])
-          : undefined
+      damageMelee: damageMelee,
+      damageMeleeTwoWeapon: damageMeleeTwoWeapon,
+      damageRanged: damageRanged,
+      damageRangedTwoWeapon: damageRangedTwoWeapon
     };
   };
 
@@ -512,28 +537,6 @@ export const modifiedCharacter = (
   const classPcClassFeats = createClassPcClassFeats(classPcList, featsList);
 
   const feats: FeatPc[] = [...pcBonusFeats, ...classPcClassFeats];
-
-  //  console.log("feats", feats)
-  //  .sort((a, b) => {
-  //   const aHasLevel = a.level != null;
-  //   const bHasLevel = b.level != null;
-
-  //   if (aHasLevel && bHasLevel) {
-  //     return a.level! - b.level!;
-  //   }
-
-  //   if (aHasLevel) return -1;
-  //   if (bHasLevel) return 1;
-
-  //   const aFeatId = a.feat?.id ?? a.id ?? 0;
-  //   const bFeatId = b.feat?.id ?? b.id ?? 0;
-
-  //   return aFeatId - bFeatId;
-  // });
-
-  // [...pcBonusFeats, ...classPcClassFeats].sort((a, b) => (
-  //   a.level && b.level? a.level - b.level : (a.feat?.id || a.id || 0) - (b.feat?.id || b.id || 0)))
-
   return {
     name: name,
     title: title,
@@ -582,59 +585,6 @@ export const returnBonus = (
 
 };
 
-// export const returnBonus = (map: BonusResultMap): number => {
-
-// //   return resolveBonuses(map)
-// //     .reduce((tot, bonus) => tot + bonus.bonus, 0);
-
-// // };
-// return resolveBonuses(map)
-//     .reduce((tot, b) => tot + b.bonus.bonus, 0);}
-
-// export const returnBonus = (ar: BonusResultMap): number => {
-//   return Object.keys(ar).reduce((globalTot, key) => {
-//     const bonuses = ar[key]
-//       .filter((a: BonusSource) => !a.targets)
-//       .map((a: BonusSource) => a.bonus);
-
-//     if (isToAdd(key)) {
-//       // somma tutto
-//       return globalTot + bonuses.reduce((sum, b) => sum + b, 0);
-//     }
-//     // prende solo il bonus più alto
-//     return globalTot + Math.max(0, ...bonuses);
-//   }, 0);
-// };
-// export const returnBonus = (ar: BonusResultMap): number => {
-//   return Object.entries(ar).reduce((globalTot, [key, value]) => {
-
-//     const bonuses = value.filter(isGlobalBonus);
-
-//     const selected = chooseBestBonuses(bonuses, key);
-
-//     return globalTot + selected.reduce(
-//       (sum, b) => sum + b.bonus,
-//       0
-//     );
-
-//   }, 0);
-// };
-// export const returnBonus = (ar: BonusResultMap): number => {
-//   return Object.entries(ar).reduce((globalTot, [key, value]) => {
-
-//     // prendo solo i bonus globali
-//     const bonuses = value.filter(isGlobalBonus);
-
-//     const selected = chooseBestBonuses(bonuses);
-
-//     return (
-//       globalTot +
-//       selected.reduce((sum, b) => sum + b.bonus, 0)
-//     );
-
-//   }, 0);
-// };
-
 export const returnBonusSpecific = (
   map: BonusResultMap,
   search:(string|number)[]
@@ -647,117 +597,3 @@ export const returnBonusSpecific = (
     );
 
 };
-
-// export const returnBonusSpecific = (
-//     map: BonusResultMap,
-//     search:(string|number)[]
-// ):number=>{
-
-//   return resolveBonuses(map, search)
-//     .reduce((tot, b) => tot + b.bonus.bonus, 0);
-
-//     // return resolveBonuses(map,search)
-//     //     .reduce((tot,b)=>tot+b.bonus,0);
-
-// }
-
-// export const returnBonusSpecific = (
-//   ar: BonusResultMap,
-//   serch: (string | number)[],
-//   consoleLog?: boolean
-// ): number => {
-
-//   if (!ar) return 0;
-
-//   return Object.entries(ar).reduce((globalTot, [key, value]) => {
-
-//     const specific = value.filter(
-//   (a) =>
-//     a.targets &&
-//     a.targets.length > 0 &&
-//     checkBonusTarget(a, serch)
-// );
-
-// const global = value.filter(
-//   (a) =>
-//     !a.targets ||
-//     a.targets.length === 0
-// );
-
-// const matched = specific.length > 0
-//   ? specific
-//   : global;
-
-//     // const matched = value.filter((a) =>
-//     //   checkBonusTarget(a, serch)
-//     // );
-
-//     if (consoleLog) {
-//       console.log("key", key, "matched", matched);
-//     }
-
-//     const selected = chooseBestBonuses(matched, key);
-
-//     return globalTot + selected.reduce(
-//       (sum, b) => sum + b.bonus,
-//       0
-//     );
-
-//   }, 0);
-// };
-
-// export const returnBonusSpecific = (
-//   ar: BonusResultMap,
-//   serch: (string | number)[],
-//   consoleLog?: boolean
-// ): number => {
-//   if (consoleLog) console.log("ar", ar, "serch", serch);
-
-//   if (!ar) return 0;
-
-//   return Object.keys(ar).reduce((globalTot, key) => {
-//     const bonus = ar[key].reduce((tot, a: BonusSource) => {
-
-//       const match = checkBonusTarget(a, serch);
-//       // a.targets
-//       //   ? a.targets.every((t) =>
-//       //       serch.some(
-//       //         (s) =>
-//       //           ("id" in t && t.id === s) ||
-//       //           ("text" in t && t.text === s)
-//       //       )
-//       //     )
-//       //   : true;
-
-//       if (consoleLog) {
-//         console.log("key", key, "bonus", a.bonus, "match", match);
-//       }
-
-//       if (!match) return tot;
-
-//       return isToAdd(key)
-//         ? tot + a.bonus
-//         : tot > a.bonus
-//           ? tot
-//           : a.bonus;
-
-//     }, 0);
-
-//     return globalTot + bonus;
-//   }, 0);
-// };
-
-// export const checkBonusTarget = (
-//   bonus: BonusSource,
-//   search: (string | number)[]
-// ): boolean => {
-//   if (!bonus.targets) return true;
-
-//   return bonus.targets.every((t) =>
-//     search.some(
-//       (s) =>
-//         ("id" in t && t.id === s) ||
-//         ("text" in t && t.text === s)
-//     )
-//   );
-// };

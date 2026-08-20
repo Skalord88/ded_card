@@ -67,39 +67,43 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
                 const textResult =
                   diceRoll + (bab >= 0 ? " + " : " ") + bab + " = " + tot;
 
+                const totDiceDamamge =
+                  damage + (dicesDamage?.reduce((tot, d) => tot + d, 0) ?? 0);
+
+                const textResultDamage =
+                  dicesDamage && dicesDamage.length === 1
+                    ? dicesDamage[0] +
+                      " " +
+                      (damage >= 0 ? " + " : "") +
+                      damage +
+                      " = " +
+                      totDiceDamamge
+                    : dicesDamage &&
+                      dicesDamage.join(" + ") +
+                        (damage >= 0 ? " + " : "") +
+                        damage +
+                        " = " +
+                        totDiceDamamge;
+
                 return (
                   <div
                     key={`${indexW}-${indexBab}`}
                     className="rpgui-container-framed golden"
                   >
-                    {/* <p>
-                    {textResult}
-                  </p> */}
-                    <Dices />
-                    <Popup text={"R " + tot} popText={{ text: textResult }} />
-                    <p>{result}</p>
+                    <p>
+                      <Dices />
 
-                    {/* <p>{result}</p> */}
+                      <Popup text={"R " + tot} popText={{ text: textResult }} />
+                    </p>
+                    <p>{result}</p>
 
                     {dicesDamage && (
                       <p>
-                        {dicesDamage.length === 1 ? (
-                          <span>
-                            {dicesDamage[0]}
-                            {damage >= 0 ? " + " : ""}
-                            {damage}
-                            {" = "}
-                            {dicesDamage[0] + damage}
-                          </span>
-                        ) : (
-                          <span>
-                            {dicesDamage[0]} + {dicesDamage[1]}
-                            {damage >= 0 ? " + " : ""}
-                            {damage}
-                            {" = "}
-                            {dicesDamage[0] + dicesDamage[1] + damage}
-                          </span>
-                        )}
+                        <Dices />
+                        <Popup
+                          text={"D " + totDiceDamamge}
+                          popText={{ text: textResultDamage ?? "" }}
+                        />
                       </p>
                     )}
                   </div>
@@ -123,6 +127,12 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
                 const critConfirmation = throwDice(20);
                 const critTot = critConfirmation + bab;
 
+                const critConfirmationText =
+                  critConfirmation +
+                  (bab > 0 ? " + " : " ") +
+                  bab +
+                  " = " +
+                  critTot;
                 const result =
                   critTot >= target
                     ? critTot + " >= " + target + " crit confirmed!"
@@ -140,35 +150,41 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
                       ? dicesDamage[0] + damage
                       : dicesDamage[0] + dicesDamage[1] + damage;
 
+                const textDiceDamage =
+                  dicesDamage.join(" + ") +
+                  (damage < 0 ? " - " : " + ") +
+                  damage +
+                  " = " +
+                  totDicesDamage;
+
                 return (
                   <div
                     key={`${indexW}-${indexBab}`}
                     className="rpgui-container-framed golden"
                   >
                     <p style={{ color: "yellow" }}>
-                      {diceRoll}
+                      <Dices /> {diceRoll}
                       {" on dice, crit!"}
                     </p>
 
                     <p>
-                      {critConfirmation}
-                      {bab > 0 ? " + " : " "}
-                      {bab} =
-                      <span style={{ color: "orange" }}>{" " + critTot}</span>
+                      <Dices />
+                      <Popup
+                        text={"R " + critTot}
+                        popText={{
+                          text: critConfirmationText
+                        }}
+                      />
                     </p>
 
-                    <Popup
-                      text={" " + tot}
-                      popText={{ text: result }}
-                      colorResult={true}
-                    />
+                    <p>{result}</p>
 
                     <p>
-                      {dicesDamage.join(" + ")}
-                      {damage < 0 ? " - " : " + "}
-                      {damage}
-                      {" = "}
-                      {totDicesDamage + damage}
+                      <Dices />{" "}
+                      <Popup
+                        text={"D " + totDicesDamage}
+                        popText={{ text: textDiceDamage }}
+                      />
                     </p>
                   </div>
                 );

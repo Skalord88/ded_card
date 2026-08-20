@@ -65,6 +65,14 @@
 	/* background */
 	background: url("../img/background-image-red.png") repeat repeat;
 }
+.rpgui-container-framed.golden.melee {
+	/* border */
+	border-image-source: url("../img/border-image-golden-red.png")
+}
+.rpgui-container-framed.golden.ranged {
+	/* border */
+	border-image-source: url("../img/border-image-golden-blue.png")
+}
 
 .rpgui-container-framed.strength {
 	/* background */

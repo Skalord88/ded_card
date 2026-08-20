@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
-import { Button } from "react-bootstrap";
 import { useData } from "../components/Context/Context";
-import { DiceText, throwDice } from "../components/Dice/Functions";
+import { DiceText } from "../components/Dice/Functions";
 import { ThrowDice, ThrowDicePropsWeapon } from "../components/Dice/ThrowDice";
 import { DropdownComponent } from "../components/DropDown/DropDown";
+import {
+  positionInIndexInMenuAFight,
+  positionInIndexInMenuBFight
+} from "../components/Fight/component/Menu";
 import { addToDrop, signAndCountToString } from "../components/functions";
-import { CharacterPc, Weapon } from "../components/interfaces";
+import { CharacterPc } from "../components/interfaces";
 import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import {
   ModifiedCharacter,
@@ -22,12 +25,7 @@ import {
 import { TotAndBonusElement } from "../components/SummaryChar/component/TotAndBonus";
 import { noneWeapon } from "../components/variables";
 import { PageLayoutBody } from "./AppLayout";
-import {
-  indexInPositionInMenuFight,
-  positionInIndexInMenuAFight,
-  positionInIndexInMenuBFight
-} from "../components/Fight/component/Menu";
-import { BlobOptions } from "buffer";
+import { SelectedCheck } from "../components/Icon/SelectedCheck";
 
 export const createBorder = (
   selected: boolean
@@ -55,6 +53,7 @@ export function Fight() {
   const [sideA, setSideA] = useState<ModifiedCharacter[]>([]);
   const [sideB, setSideB] = useState<ModifiedCharacter[]>([]);
   const [clickMenu, setClickMenu] = useState<[number, number]>([0, 0]);
+
   const [optionActionMenu, setActionOption] = useState<string>();
 
   const addToSide = (char: CharacterPc, side: boolean) => {
@@ -79,20 +78,16 @@ export function Fight() {
       {charList && (
         <div style={{ display: "flex" }}>
           <div style={{ flex: 1 }}>
+            <div>
+              <h3>side A</h3>
+            </div>
             <DropdownComponent
               options={charList}
               onAction={(character) => addToSide(character, true)}
             />
-            <div>
-              {/* <p>
-                {clickMenu[0]} {sideA[clickMenu[0]]?.name}
-              </p> */}
-            </div>
+            <div></div>
             {sideA.map((a, indexA) => {
-              const border: string = createBorder(
-                true
-                // clickMenu[0], indexA
-              );
+              const border: string = createBorder(clickMenu[0] === indexA);
               return (
                 <div key={indexA}>
                   <div>
@@ -126,16 +121,15 @@ export function Fight() {
           )}
 
           <div style={{ flex: 1 }}>
+            <div>
+              <h3>side B</h3>
+            </div>
             <DropdownComponent
               options={charList}
               onAction={(character) => addToSide(character, false)}
             />
-            <div>{/* <p>{clickMenu[1]}</p> */}</div>
             {sideB.map((b, indexB) => {
-              const border: string = createBorder(
-                true
-                // clickMenu[1], indexB
-              );
+              const border: string = createBorder(clickMenu[1] === indexB);
               return (
                 <div>
                   <p className={border}>
@@ -290,7 +284,12 @@ export const createAttackOptions = (
   return [];
 };
 
-type ClickMenu = [string | null, string | null, string];
+// type ClickMenu = [{position: string, counter: number} | null, {position: string, counter: number} | null, string];
+type ClickMenu = [
+  [string, number, boolean?] | null,
+  [string, number, boolean?] | null,
+  string
+];
 
 const weaponMap = {
   w1: { group: "I", index: 0 },
@@ -302,9 +301,18 @@ const weaponMap = {
   w2A: { group: "II", index: 0 }
 } as const;
 
-const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
+const changePosition = (
+  position: string,
+  clickMenu: ClickMenu,
+  counter?: number,
+  thrown?: boolean
+): ClickMenu => {
   // A, B, C...
-  if (!(position in weaponMap)) {
+  if (
+    !(position in weaponMap) &&
+    counter === undefined &&
+    thrown === undefined
+  ) {
     return [clickMenu[0], clickMenu[1], position];
   }
 
@@ -312,111 +320,133 @@ const changePosition = (position: string, clickMenu: ClickMenu): ClickMenu => {
 
   const currentPosition = clickMenu[0] ?? clickMenu[1];
 
-  // Se sto cambiando gruppo:
-  // I -> II oppure II -> I
+  // Cambio gruppo
   if (
     currentPosition &&
-    weaponMap[currentPosition as keyof typeof weaponMap].group !== info.group
+    weaponMap[currentPosition[0] as keyof typeof weaponMap].group !== info.group
   ) {
     return info.index === 0
-      ? [position, null, clickMenu[2]]
-      : [null, position, clickMenu[2]];
+      ? [[position, counter ?? 0, thrown], null, clickMenu[2]]
+      : [null, [position, counter ?? 0, thrown], clickMenu[2]];
   }
 
   // Stesso gruppo
   const result: ClickMenu = [clickMenu[0], clickMenu[1], clickMenu[2]];
 
-  result[info.index] = position;
+  if (info.index === 0) {
+    result[0] = [position, counter ?? 0, thrown];
+  } else {
+    result[1] = [position, counter ?? 0, thrown];
+  }
+
+  // console.log("changePosition:", result)
 
   return result;
 };
 
-const clickPlus = (counter: number, max: number): number => {
-  return counter + 1 === max ? 0 : counter + 1;
-};
-
-// const getMaxCounter = (
-//   clickMenu: ClickMenu,
-//   weapon: AttackOptionsElement
-// ): number => {
-//   // let max = 0;
-
-//   // attacco principale
-//   let max = weapon.element?.weaponThrown ? 2 : 1;
-
-//   // seconda arma
-//   if (clickMenu[1]) {
-//     if (!weapon.element?.weaponTwoHanded) max++;
-//   }
-
-//   return max;
-// };
-
-const updateCounter = (
-  oldMenu: ClickMenu,
-  newMenu: ClickMenu,
-  counter: boolean,
-  // max: number
-): boolean => {
-  const same =
-    oldMenu[0] === newMenu[0] &&
-    oldMenu[1] === newMenu[1] &&
-    oldMenu[2] === newMenu[2];
-
-  if (!same) {
-    return !counter;
-  }
-
-  return counter
-  // return (counter + 1) % (max + 1);
-};
-
 const showBabListOnIndex = (
-  // index: number,
   weapon: WeaponElement,
-  clickMenuWeapon: [string | null, string | null]
-  // , counter: boolean
+  hasOffHand: boolean,
+  counter: number, // 0 o 1
+  thrown: boolean | undefined
 ): TotAndBonusElement[][] => {
   const oneHandMelee = weapon.listBabMeleeSpecificBonus || [];
   const twoHandMelee = weapon.listBabMeleeTwoWeaponSpecificBonus || [];
+
   const oneHandRanged = weapon.listBabRangedSpecificBonus || [];
   const twoHandRanged = weapon.listBabRangedTwoWeaponSpecificBonus || [];
 
-  // console.log("clickMenuWeapon", clickMenuWeapon, clickMenuWeapon.includes(null));
-
-  if (clickMenuWeapon.includes(null)) {
-    return weapon.weaponThrown
-      ? [...oneHandRanged, ...oneHandMelee]
-      : weapon.weaponRanged
-        ? oneHandRanged
-        : oneHandMelee;
-  } else {
-    return weapon.weaponThrown
-      ? [...oneHandRanged, ...oneHandMelee]
-      : weapon.weaponRanged
-        ? twoHandRanged
-        : twoHandMelee;
+  if (weapon.weaponTwoHanded) {
+    // se l'arma e' a due mani
+    return counter === 0
+      ? !weapon.weaponRanged
+        ? [oneHandMelee[0]] // attacco singolo
+        : [oneHandRanged[0]] // attacco singolo
+      : !weapon.weaponRanged
+        ? oneHandMelee // attacco completo
+        : oneHandRanged; // attacco completo
   }
-};
-const showDamageListOnIndex = (weapon: WeaponElement
-  // , counter: boolean
-): number[] => {
-  const oneHandMelee = weapon.damageMelee;
-  const oneHandRanged = weapon.damageRanged;
 
-  return weapon.weaponThrown && oneHandMelee && oneHandRanged
-    ? [oneHandRanged, oneHandMelee]
-    : weapon.weaponRanged && oneHandRanged
-      ? [oneHandRanged]
-      : oneHandMelee
-        ? [oneHandMelee]
-        : [0];
+  // arma da lancio
+  if (weapon.weaponThrown) {
+    if (!hasOffHand)
+      return counter === 0
+        ? !thrown
+          ? [oneHandMelee[0]]
+          : [oneHandRanged[0]]
+        : !thrown
+          ? oneHandMelee // attacco completo
+          : oneHandRanged; // attacco completo
+    return !thrown ? twoHandMelee : twoHandRanged; // se mano off occupata
+  }
+
+  // se arma non da lancio
+  if (hasOffHand) {
+    // se mano off occupata
+    return weapon.weaponRanged
+      ? twoHandRanged // se ranged, 2 mani
+      : twoHandMelee; // se melee, 2 mani
+  }
+
+  return counter === 0
+    ? !weapon.weaponRanged
+      ? [oneHandMelee[0]] // attacco singolo
+      : [oneHandRanged[0]] // attacco singolo
+    : !weapon.weaponRanged
+      ? oneHandMelee // attacco completo
+      : oneHandRanged; // attacco completo
+};
+
+const showDamageListOnIndex = (
+  weapon: WeaponElement,
+  counter: number,
+  offHand?: boolean,
+  thrown?: boolean
+): number[] => {
+  if (offHand) {
+    return thrown && weapon.weaponRanged
+      ? [weapon.damageRangedTwoWeapon || 0]
+      : [weapon.damageMeleeTwoWeapon || 0];
+  }
+
+  return thrown || weapon.weaponRanged
+    ? [weapon.damageRanged || 0]
+    : [weapon.damageMelee || 0];
+};
+
+const getAttackColor = (
+  weapon: WeaponElement | undefined,
+  // counter: number,
+  thrown?: boolean
+): string => {
+  if (!weapon) return "";
+
+  // Thrown
+  if (thrown !== undefined) return thrown ? "ranged" : "melee";
+
+  // Ranged
+  if (weapon.weaponRanged) {
+    return "ranged";
+  }
+
+  // Melee
+  return "melee";
+};
+
+const getCounter = (
+  same: boolean,
+  counter: number,
+  thrown?: boolean
+): number => {
+  if (!same) return 0;
+  if (thrown) return thrown ? 1 : 0;
+  return counter === 0 ? 1 : 0;
 };
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
-
-  const [clickMenu, setClickMenu] = useState<ClickMenu>(["w1", null, "A"]);
-  const [counterClick, setCounterClick] = useState(0);
+  const [clickMenu, setClickMenu] = useState<ClickMenu>([["w1", 0], null, "A"]);
+  // const [thrown, setThrown] = useState<boolean>();
+  // const [counterClick, setCounterClick] = useState(0);
   const [throwDiceWeapon, setThrowDiceWeapon] = useState<
     ThrowDicePropsWeapon[]
   >([]);
@@ -434,9 +464,15 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
     [charAB, optionAction]
   );
 
+  // const indexOne = attackOptions[
+  //   positionInIndexInMenuAFight(clickMenu[1] ? clickMenu[1][0] : "")
+  // ].show
+  //   ? clickMenu[1]? clickMenu[1][0] : null
+  //   : null;
+
   useEffect(() => {
     const indexOne: number | null = clickMenu[0]
-      ? positionInIndexInMenuAFight(clickMenu[0])
+      ? positionInIndexInMenuAFight(clickMenu[0] ? clickMenu[0][0] : "")
       : null;
 
     const elementOne =
@@ -445,13 +481,21 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
     const one: ThrowDicePropsWeapon | null = elementOne?.weapon
       ? {
           weapon: elementOne.weapon,
-          listBab: showBabListOnIndex(elementOne, [clickMenu[0], clickMenu[1]]),
-          listDamage: showDamageListOnIndex(elementOne)
+          listBab: showBabListOnIndex(
+            elementOne,
+            ![clickMenu[0], clickMenu[1]].includes(null),
+            clickMenu[0] ? clickMenu[0][1] : 0,
+            clickMenu[0] ? clickMenu[0][2] : undefined
+          ),
+          listDamage: showDamageListOnIndex(
+            elementOne,
+            clickMenu[0] ? clickMenu[0][1] : 0
+          )
         }
       : null;
 
     const indexTwo: number | null = clickMenu[1]
-      ? positionInIndexInMenuAFight(clickMenu[1])
+      ? positionInIndexInMenuAFight(clickMenu[1] ? clickMenu[1][0] : "")
       : null;
 
     const elementTwo =
@@ -460,8 +504,16 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
     const two: ThrowDicePropsWeapon | null = elementTwo?.weapon
       ? {
           weapon: elementTwo.weapon,
-          listBab: showBabListOnIndex(elementTwo, [clickMenu[0], clickMenu[1]]),
-          listDamage: showDamageListOnIndex(elementTwo)
+          listBab: showBabListOnIndex(
+            elementTwo,
+            ![clickMenu[0], clickMenu[1]].includes(null),
+            clickMenu[1] ? clickMenu[1][1] : 0,
+            clickMenu[1] ? clickMenu[1][2] : undefined
+          ),
+          listDamage: showDamageListOnIndex(
+            elementTwo,
+            clickMenu[1] ? clickMenu[1][1] : 0
+          )
         }
       : null;
 
@@ -469,26 +521,21 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
       one && two ? [one, two] : one ? [one] : two ? [two] : [];
 
     setThrowDiceWeapon(newDiceWeapon);
-  }, [attackOptions, clickMenu, counterClick]);
+  }, [attackOptions, clickMenu]);
 
-  const setSelectClickMenu = (index: string) => {
-    const newMenu = changePosition(index, clickMenu);
-
-    setCounterClick(updateCounter(clickMenu, newMenu, counterClick))
-
-    // const areaFind = weaponMap[index as keyof typeof weaponMap].index
-    // const w = throwDiceWeapon[areaFind].listBab.length
-
-    // console.log("w", w)
-
-    // updateCounter(clickMenu, newMenu, counterClick, w)
+  const setSelectClickMenu = (
+    index: string,
+    counter?: number,
+    thrown?: boolean
+  ) => {
+    const newMenu = changePosition(index, clickMenu, counter, thrown);
     setClickMenu(newMenu);
   };
 
   const deselectClickMenu = (index: string) => {
     setClickMenu([
-      clickMenu[0] === index ? null : clickMenu[0],
-      clickMenu[1] === index ? null : clickMenu[1],
+      clickMenu[0] !== null && clickMenu[0][0] === index ? null : clickMenu[0],
+      clickMenu[1] !== null && clickMenu[1][0] === index ? null : clickMenu[1],
       clickMenu[2]
     ]);
   };
@@ -511,46 +558,24 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
           gap: 4
         }}
       >
+        {/* <p>{clickMenu}</p> */}
         {attackOptions.map((att, indexAtt) => {
-          // const gridArea = att.area;
-          // console.log(att.area);
-          const border: string = createBorder(
-            clickMenu[0] === att.area || clickMenu[1] === att.area
-          );
-          const indexOne = attackOptions[
-            positionInIndexInMenuAFight(clickMenu[1] || "")
-          ].show
-            ? clickMenu[1]
-            : null;
-          const actualBabList = showBabListOnIndex(
-            att.element!,
-            [clickMenu[0], indexOne]
-          );
           if (att.show === false) return null;
           return (
-            <div
-              style={{ gridArea: att.area }}
-              onClick={() =>
-                setSelectClickMenu(att.area)
-              }
-              onDoubleClick={() => deselectClickMenu(att.area)}
-            >
-              <p>{att.area}</p>
-              <SummaryCharAttacksSingleElement
-                key={indexAtt}
-                border={border}
-                totAndBonusAtt={[false, true, false, true]}
-                weapon={att.element?.weapon || noneWeapon}
-                listBab={actualBabList}
-                damage={att.element?.toListMeleeDamage || []}
-                totAndBonusDmg={[false, true, true]}
+            <div style={{ gridArea: att.area }} key={indexAtt}>
+              <OneAttackOptionsElement
+                att={att}
+                myIndex={att.area}
+                indexOne={clickMenu[0] ? clickMenu[0][0] : null}
+                indexTwo={clickMenu[1] ? clickMenu[1][0] : null}
+                onAction={(counter) => setSelectClickMenu(att.area, counter)}
+                onDeAction={() => deselectClickMenu(att.area)}
               />
             </div>
           );
         })}
       </div>
       <div style={{ flex: 1 }} className="rpgui-container-framed grey">
-
         <div>
           {throwDiceWeapon && (
             <ThrowDice
@@ -588,6 +613,93 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+export type OneAttackOptionsElementProps = {
+  att: AttackOptionsElement;
+  myIndex: string;
+  indexOne: string | null;
+  indexTwo: string | null;
+  // throwDiceWeapon: ThrowDicePropsWeapon[]
+  // clickMenu: [string | null, string | null];
+  onAction: (counter: number, thrown?: boolean) => void;
+  onDeAction: () => void;
+};
+
+const OneAttackOptionsElement: React.FC<OneAttackOptionsElementProps> = ({
+  att,
+  myIndex,
+  indexOne,
+  indexTwo,
+  // clickMenu,
+  onAction,
+  onDeAction
+  // , throwDiceWeapon
+}) => {
+  const [counter, setCounter] = useState(0);
+  const [thrown, setThrown] = useState<boolean | undefined>(
+    // att.element?.weaponThrown ? true : undefined
+  );
+  // const [finalBorder, setFinalBorder] = useState<string>();
+
+  useEffect(() => {
+    // console.log(att.element?.weapon?.weaponName, att.element?.weaponThrown)
+    setThrown(att.element?.weaponThrown ? true : undefined);
+  }, [att.element?.weaponThrown]);
+
+  const actualBabList = showBabListOnIndex(
+    att.element!,
+    ![indexOne, indexTwo].includes(null),
+    counter,
+    thrown
+  );
+  // useEffect(() => {
+  const border: string = createBorder(
+    indexOne === att.area || indexTwo === att.area
+  );
+
+  const attackColor = getAttackColor(att.element, thrown);
+
+  const finalBorder = `${border} ${attackColor}`;
+  // setFinalBorder(`${border} ${attackColor}`);
+  // }, [counter, att, indexOne, indexTwo, thrown]);
+
+  // const finalBorder = `${border} ${attackColor}`;
+
+  const clickOne = () => {
+    let newCounter: number;
+    const same = [indexOne, indexTwo].includes(myIndex);
+    newCounter = getCounter(same, counter, thrown);
+
+    setCounter(newCounter);
+    onAction(newCounter, thrown);
+  };
+
+  return (
+    <div style={{ gridArea: att.area }}>
+      <div onClick={() => clickOne()} onDoubleClick={() => onDeAction()}>
+        {/* <p>
+          counter: {counter}, {myIndex}, {indexOne}, {indexTwo}
+        </p> */}
+        <SummaryCharAttacksSingleElement
+          border={finalBorder}
+          totAndBonusAtt={[false, true, false, true]}
+          weapon={att.element?.weapon || noneWeapon}
+          listBab={actualBabList}
+          damage={att.element?.toListMeleeDamage || []}
+          totAndBonusDmg={[false, true, true]}
+        />
+      </div>
+      <div>
+        {thrown !== undefined && (
+          <p>
+            <SelectedCheck onAction={(on) => setThrown(on)} />
+            <span>{"Thrown"}</span>
+          </p>
+        )}
       </div>
     </div>
   );
