@@ -127,9 +127,9 @@ export const modifierEnumList: ModifierEnum[] = [
 ];
 
 export const STRENGTH_MODIFIER: ModifierEnum = {
-  description: "Strength",
+  description: "Ability Modifier", 
   text: "Strength modifiers"
-};
+}
 export const QUALITY: ModifierEnum = {
   // description: "Strength",
   text: "Quality"

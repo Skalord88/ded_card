@@ -2,9 +2,12 @@ import { Abilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Inventory, Weapon } from "../../interfaces";
+import { ReturnRingPosition } from "../../Items/Functions/function";
 import {
-    ModifierEnum,
-    STRENGTH_MODIFIER
+  ABILITY_MODIFIER,
+  ModifierEnum,
+  STRENGTH_MODIFIER,
+  // STRENGTH_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
@@ -67,12 +70,12 @@ export type AllModifiers = {
 };
 
 export type Proficency = {
-    armors: (ModifierEnum | number)[],
-    weapons: (ModifierEnum | number)[]
-  }
+  armors: (ModifierEnum | number)[];
+  weapons: (ModifierEnum | number)[];
+};
 
 export type ModifiedCharacter = {
-  name?: string,
+  name?: string;
   title?: string;
   abilitys?: Abilitys;
   abilitysMod?: BonusResultMap;
@@ -95,7 +98,7 @@ export type ModifiedCharacter = {
   archetypes?: Archetype[];
   classPcList?: ClassPc[];
   listHitDices?: HitDiceMap;
-  proficency?: Proficency,
+  proficency?: Proficency;
   inventory?: Inventory;
   attacks?: AttackElement;
   feats?: FeatPc[];
@@ -142,7 +145,7 @@ export type WeaponElement = {
   damageMelee?: number;
   damageMeleeTwoWeapon?: number;
   damageRanged?: number;
-  damageRangedTwoWeapon?: number
+  damageRangedTwoWeapon?: number;
 };
 
 export const attacksMapElement: TotAndBonusElement[] = [
@@ -237,6 +240,29 @@ export const numberOfAttacksMap = (
   );
   return numberOfAttacks;
 };
+// export const weaponDamagePoseAndTwoWeapon = (
+//   list: TotAndBonusElement[],
+//   // strength: boolean,
+//   offhand: boolean,
+//   twoHand: boolean
+// ): TotAndBonusElement[] => {
+//   // console.log(list
+//   // .filter(l => strength || l.pop !== STRENGTH_MODIFIER))
+// return list
+//   .map(l => l.pop === STRENGTH_MODIFIER)
+//   // .map(l => {
+//     const bonus = offhand
+//       ? Math.floor(l.bonus / 2)
+//       : twoHand
+//         ? l.bonus + Math.floor(l.bonus / 2)
+//         : l.bonus;
+
+//     return {
+//       ...l,
+//       bonus
+//     };
+//   });
+// }
 
 export const weaponDamagePoseAndTwoWeapon = (
   list: TotAndBonusElement[],
@@ -244,19 +270,22 @@ export const weaponDamagePoseAndTwoWeapon = (
   offhand: boolean,
   twoHand: boolean
 ): TotAndBonusElement[] => {
-  const newList = list
-    .map((l) => l.pop === STRENGTH_MODIFIER)
-    .map((isStrengthModifier, index) => {
-      if (isStrengthModifier) {
-        const bonus = offhand
-          ? list[index].bonus / 2
-          : twoHand
-            ? list[index].bonus + Math.floor(list[index].bonus / 2)
-            : list[index].bonus;
-        return { ...list[index], bonus: bonus };
+  return list
+    .map((l) => {
+      if (l.pop === STRENGTH_MODIFIER) {
+        return l;
       }
-      return list[index];
-    });
 
-  return newList;
+      const bonus = !offhand
+        ? Math.floor(l.bonus / 2)
+        : twoHand
+          ? l.bonus + Math.floor(l.bonus / 2)
+          : l.bonus;
+
+      return {
+        ...l,
+        bonus
+      };
+    })
+    .filter((l): l is TotAndBonusElement => l !== null);
 };

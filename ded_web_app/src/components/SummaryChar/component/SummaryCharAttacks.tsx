@@ -6,7 +6,12 @@ import { Popup } from "../../Popup/Popup";
 import { noneWeapon } from "../../variables";
 import { SummaryCharProps } from "../SummaryChar";
 import { TotAndBonus, TotAndBonusElement } from "./TotAndBonus";
-import { AttackOptionsElement } from "../../../pages/Fight";
+import {
+  AttackOptionsElement,
+  createBorder,
+  getAttackColor
+} from "../../../pages/Fight";
+import { useState } from "react";
 
 export type SummaryCharAttacksTemplateProps = {
   borderText?: string;
@@ -83,7 +88,7 @@ export type SummaryCharAttacksSingleElementProps = {
   totAndBonusAtt: [boolean, boolean, boolean, boolean]; //show, firstSign, firstOnList, onlyTot
   listBab: TotAndBonusElement[][];
   weapon: Weapon;
-  damage: TotAndBonusElement[];
+  damage: number | TotAndBonusElement[];
   totAndBonusDmg: [boolean, boolean, boolean];
 };
 export const SummaryCharAttacksSingleElement: React.FC<
@@ -206,183 +211,150 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
       }}
     >
       {areas.map((area, index) => {
-        if (area.show) {
+        if (area.show && area.element?.weapon) {
+          const listBabBonus = [
+            area.element?.listBabMeleeSpecificBonus,
+            area.element?.listBabRangedSpecificBonus,
+            area.element?.listBabMeleeTwoWeaponSpecificBonus,
+            area.element?.listBabRangedTwoWeaponSpecificBonus
+          ].filter((a) => a !== undefined);
+          const listDamage = [
+            area.element?.toListMeleeDamage,
+            area.element?.toListRangedDamage,
+            area.element?.toListMeleeTwoWeaponDamage,
+            area.element?.toListRangedTwoWeaponDamage
+          ].filter((a) => a !== undefined);
+          // console.log("listDamage", listDamage)
           return (
             <div key={index} style={{ border: "1px solid red" }}>
               <div>
                 <p>{area.element?.weapon?.name}</p>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
-                {!area.element?.weaponRanged && (
-                  <Fragment>
-                    <div>
-                      <span>{"melee: "}</span>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "8px",
-                        backgroundColor: "Brown"
-                      }}
-                    >
-                      {area.element?.listBabMeleeSpecificBonus &&
-                        area.element?.listBabMeleeSpecificBonus.map(
-                          (n, index) => {
-                            return (
-                              <div key={index}>
-                                <Popup bonusList={n} />
-                              </div>
-                            );
-                          }
-                        )}
-                      <div>
-                        <span>
-                          {DiceText(area.element?.weapon?.damage ?? "")}
-                        </span>
-                        <span> </span>
-                        <span>
-                          {DiceText(area.element?.weapon?.critical ?? "")}
-                        </span>
-                        {/* <span>{area.element?.weapon?.damage}</span> */}
-                        <TotAndBonus
-                          show={false}
-                          firstSign={true}
-                          list={area.element?.toListMeleeDamage || []}
-                        />
-                      </div>
-                    </div>
-                  </Fragment>
-                )}
-                {(area.element?.weaponRanged || area.element?.weaponThrown) &&
-                  area.element?.listBabRangedSpecificBonus && (
-                    <Fragment>
-                      <div>
-                        <span>{"ranged: "}</span>
-                      </div>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          gap: "8px",
-                          backgroundColor: "CornflowerBlue"
-                        }}
-                      >
-                        {area.element?.listBabRangedSpecificBonus.map(
-                          (n, index) => {
-                            return (
-                              <div key={index}>
-                                <Popup bonusList={n} />
-                              </div>
-                            );
-                          }
-                        )}
-                        <div>
-                          <span>
-                            {DiceText(area.element?.weapon?.damage ?? "")}
-                          </span>
-                          <span> </span>
-                          <span>
-                            {DiceText(area.element?.weapon?.critical ?? "")}
-                          </span>
-                          <TotAndBonus
-                            show={false}
-                            firstSign={true}
-                            list={area.element?.toListMeleeDamage || []}
+                {Array.from({ length: listBabBonus.length }).map(
+                  (_, indexA) => {
+                    return (
+                      <>
+                        {area.element?.weapon && (
+                          // listBabBonus[indexA] &&
+                          // listDamage[indexA] &&
+                          <MapAllAttacksElements
+                            index={indexA}
+                            clicked={true}
+                            ranged={area.element?.weaponRanged || false}
+                            thrown={area.element?.weaponThrown || false}
+                            weaponDamage={area.element?.weapon.damage}
+                            weaponCritical={area.element?.weapon.critical}
+                            listBabBonusI={listBabBonus}
+                            listDamageI={listDamage}
                           />
-                        </div>
-                      </div>
-                    </Fragment>
-                  )}
-                {!area.element?.weaponRanged && (
-                  <Fragment>
-                    <div>
-                      <span>{"melee2w: "}</span>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "8px",
-                        backgroundColor: "DarkRed"
-                      }}
-                    >
-                      {area.element?.listBabMeleeTwoWeaponSpecificBonus &&
-                        area.element?.listBabMeleeTwoWeaponSpecificBonus.map(
-                          (n, index) => {
-                            return (
-                              <div key={index}>
-                                <Popup bonusList={n} />
-                              </div>
-                            );
-                          }
                         )}
-                      <div>
-                        <span>
-                          {DiceText(area.element?.weapon?.damage ?? "")}
-                        </span>
-                        <span> </span>
-                        <span>
-                          {DiceText(area.element?.weapon?.critical ?? "")}
-                        </span>
-
-                        <TotAndBonus
-                          show={false}
-                          firstSign={true}
-                          list={area.element?.toListRangedDamage || []}
-                        />
-                      </div>
-                    </div>
-                  </Fragment>
-                )}
-                {(area.element?.weaponRanged || area.element?.weaponThrown) && (
-                  <Fragment>
-                    <div>
-                      <span>{"rnged2w: "}</span>
-                    </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        gap: "8px",
-                        backgroundColor: "DarkSlateGrey"
-                      }}
-                    >
-                      {area.element?.listBabRangedTwoWeaponSpecificBonus &&
-                        area.element?.listBabRangedTwoWeaponSpecificBonus.map(
-                          (n, index) => {
-                            return (
-                              <div key={index}>
-                                <Popup bonusList={n} />
-                              </div>
-                            );
-                          }
-                        )}
-                      <div>
-                        <span>
-                          {DiceText(area.element?.weapon?.damage ?? "")}
-                        </span>
-                        <span> </span>
-                        <span>
-                          {DiceText(area.element?.weapon?.critical ?? "")}
-                        </span>
-                        <TotAndBonus
-                          show={false}
-                          firstSign={true}
-                          list={area.element?.toListRangedDamage || []}
-                        />
-                      </div>
-                    </div>
-                  </Fragment>
+                      </>
+                    );
+                  }
                 )}
               </div>
             </div>
           );
         }
-        // else {
-        //   return <div key={index} style={{ border: "1px solid red" }} />;
-        // }
       })}
     </div>
+  );
+};
+
+export type MapAllAttacksElementsProps = {
+  index: number;
+  clicked: boolean;
+  
+  ranged: boolean;
+  thrown: boolean;
+  weaponDamage: string;
+  weaponCritical: string;
+  listBabBonusI?: TotAndBonusElement[][][];
+  listBabBonusII?: TotAndBonusElement[][];
+  listDamageI?: TotAndBonusElement[][];
+  listDamageII?: TotAndBonusElement[];
+};
+
+export const titleMapAllAttacksElements = (
+  thrown: boolean,
+  ranged: boolean
+): string[] => {
+  if (thrown) return ["melee", "ranged", "melee2H", "ranged2H"];
+  if (!ranged) {
+    return ["melee", "melee2H"];
+  } else {
+    return ["ranged", "ranged2H"];
+  }
+};
+export const backgroundColorMapAllAttacksElements = [
+  "Brown",
+  "CornflowerBlue",
+  "DarkRed",
+  "DarkSlateGrey"
+];
+
+export const MapAllAttacksElements: React.FC<MapAllAttacksElementsProps> = ({
+  index,
+  clicked,
+  ranged,
+  thrown,
+  weaponDamage,
+  weaponCritical,
+  listBabBonusI,
+  listBabBonusII,
+  listDamageI,
+  listDamageII
+}) => {
+  const border: string = createBorder(clicked);
+
+  const attackColor = getAttackColor(ranged);
+
+  const finalBorder = `${border} ${attackColor}`;
+
+  const title: string[] = titleMapAllAttacksElements(thrown, ranged);
+
+  // const actualBabList = showBabListByIndex(listBabBonus, hasOffHand)
+  return (
+    <>
+      <div>
+        <p>{title[index]}</p>
+      </div>
+      <div
+        className={finalBorder}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "8px"
+        }}
+      >
+        {listBabBonusI &&
+          listBabBonusI[index].map((n, i) => {
+            return (
+              <div key={i}>
+                <Popup bonusList={n} />
+              </div>
+            );
+          })}
+          {listBabBonusII &&
+            listBabBonusII.map((n, i) => {
+              return(
+                <div key={i}>
+                  <Popup bonusList={n}/>
+                </div>
+              )
+            })
+          }
+        <div>
+          <span>{DiceText(weaponDamage)}</span>
+          <span> </span>
+          <span>{DiceText(weaponCritical)}</span>
+          {listDamageI &&
+          <TotAndBonus show={false} firstSign={true} list={listDamageI[index]} />}
+          {listDamageII &&
+          <TotAndBonus show={false} firstSign={true} list={listDamageII} />}
+        </div>
+      </div>
+    </>
   );
 };

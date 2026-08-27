@@ -7,14 +7,15 @@ import { Popup } from "../Popup/Popup";
 import { Dices } from "lucide-react";
 
 export type ThrowDicePropsWeapon = {
+  position: string,
   weapon: Weapon;
   listBab: TotAndBonusElement[][];
-  listDamage: number[];
-  counter?: number;
+  listDamage: number;
+  // counter?: number;
 };
 export type ThrowDiceProps = {
   // dice: { one: number; molti: number[] };
-  weapons: ThrowDicePropsWeapon[];
+  weapons: [ThrowDicePropsWeapon | null, ThrowDicePropsWeapon | null];
   target: number;
 };
 
@@ -31,7 +32,7 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
 
   const throwAction = () => {
     const arrayOfDice = weapons.flatMap((w) =>
-      w.listBab.map((l) => throwDice(20))
+      w ? w.listBab.map((l) => throwDice(20)) : []
     );
     setThrownDice(arrayOfDice);
   };
@@ -44,9 +45,10 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
         </Button>
         {thrownDice &&
           weapons.map((w, indexW) => {
+            if(w)
             return w.listBab.map((babGroup, indexBab) => {
               const diceRoll = thrownDice[indexBab];
-              const damage = w.listDamage[0];
+              const damage = w.listDamage;
               const bab = babGroup.reduce((totB, bon) => totB + bon.bonus, 0);
 
               const tot = diceRoll + bab;

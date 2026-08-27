@@ -38,7 +38,7 @@ export const Show = () => {
           const charData: CharacterPc = resURL.data;
           setChar(charData);
 
-          const modChar: CharToModify = createModChar(charData);
+          // const modChar: CharToModify = createModChar(charData);
 
           // console.log(modChar);
         }
@@ -58,7 +58,9 @@ export const Show = () => {
     <PageLayoutBody>
       {modChar && window.innerWidth <= 768 ? (
         <div>
-          <DeleteButton url={urlChar} />
+          <DeleteButton url={""
+            // urlChar
+            } />
           <CharacterData char={char} />
           <AbilitysComponent abilitys={modChar.abilitys} />
           <ClassExpGold char={char} />
@@ -88,7 +90,9 @@ export const Show = () => {
                 gridRow: 1
               }}
             >
-              <DeleteButton url={urlChar} />
+              <DeleteButton url={""
+                // urlChar
+                } />
             </div>
             <div
               className="rpgui-container-framed grey"

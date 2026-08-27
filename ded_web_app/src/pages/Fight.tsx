@@ -20,12 +20,13 @@ import {
 } from "../components/Prerequisite/interface/ModifierEnum";
 import {
   mapAllAttacksAreas,
-  SummaryCharAttacksSingleElement
+  MapAllAttacksElements
 } from "../components/SummaryChar/component/SummaryCharAttacks";
 import { TotAndBonusElement } from "../components/SummaryChar/component/TotAndBonus";
-import { noneWeapon } from "../components/variables";
 import { PageLayoutBody } from "./AppLayout";
+import { count } from "node:console";
 import { SelectedCheck } from "../components/Icon/SelectedCheck";
+import { noneWeapon } from "../components/variables";
 
 export const createBorder = (
   selected: boolean
@@ -285,11 +286,7 @@ export const createAttackOptions = (
 };
 
 // type ClickMenu = [{position: string, counter: number} | null, {position: string, counter: number} | null, string];
-type ClickMenu = [
-  [string, number, boolean?] | null,
-  [string, number, boolean?] | null,
-  string
-];
+type ClickMenu = [string | null, string | null, string];
 
 const weaponMap = {
   w1: { group: "I", index: 0 },
@@ -303,15 +300,16 @@ const weaponMap = {
 
 const changePosition = (
   position: string,
-  clickMenu: ClickMenu,
-  counter?: number,
-  thrown?: boolean
+  clickMenu: ClickMenu
+  // counter?: number,
+  // thrown?: boolean
 ): ClickMenu => {
   // A, B, C...
   if (
-    !(position in weaponMap) &&
-    counter === undefined &&
-    thrown === undefined
+    !(position in weaponMap)
+    // &&
+    // counter === undefined &&
+    // thrown === undefined
   ) {
     return [clickMenu[0], clickMenu[1], position];
   }
@@ -323,20 +321,38 @@ const changePosition = (
   // Cambio gruppo
   if (
     currentPosition &&
-    weaponMap[currentPosition[0] as keyof typeof weaponMap].group !== info.group
+    weaponMap[currentPosition as keyof typeof weaponMap].group !== info.group
   ) {
     return info.index === 0
-      ? [[position, counter ?? 0, thrown], null, clickMenu[2]]
-      : [null, [position, counter ?? 0, thrown], clickMenu[2]];
+      ? [
+          position,
+          // , counter ?? 0, thrown
+          null,
+          clickMenu[2]
+        ]
+      : [
+          null,
+          // [
+          position,
+          // , counter ?? 0, thrown],
+          clickMenu[2]
+        ];
   }
 
   // Stesso gruppo
   const result: ClickMenu = [clickMenu[0], clickMenu[1], clickMenu[2]];
 
   if (info.index === 0) {
-    result[0] = [position, counter ?? 0, thrown];
+    result[0] =
+      // [
+      position;
+    // , counter ?? 0, thrown
+    // ];
   } else {
-    result[1] = [position, counter ?? 0, thrown];
+    result[1] =
+      // [
+      position;
+    // , counter ?? 0, thrown];
   }
 
   // console.log("changePosition:", result)
@@ -344,88 +360,88 @@ const changePosition = (
   return result;
 };
 
-const showBabListOnIndex = (
-  weapon: WeaponElement,
-  hasOffHand: boolean,
-  counter: number, // 0 o 1
-  thrown: boolean | undefined
-): TotAndBonusElement[][] => {
-  const oneHandMelee = weapon.listBabMeleeSpecificBonus || [];
-  const twoHandMelee = weapon.listBabMeleeTwoWeaponSpecificBonus || [];
+// const showBabListOnIndex = (
+//   weapon: WeaponElement,
+//   hasOffHand: boolean,
+//   counter: number, // 0 o 1
+//   thrown: boolean | undefined
+// ): TotAndBonusElement[][] => {
+//   const oneHandMelee = weapon.listBabMeleeSpecificBonus || [];
+//   const twoHandMelee = weapon.listBabMeleeTwoWeaponSpecificBonus || [];
 
-  const oneHandRanged = weapon.listBabRangedSpecificBonus || [];
-  const twoHandRanged = weapon.listBabRangedTwoWeaponSpecificBonus || [];
+//   const oneHandRanged = weapon.listBabRangedSpecificBonus || [];
+//   const twoHandRanged = weapon.listBabRangedTwoWeaponSpecificBonus || [];
 
-  if (weapon.weaponTwoHanded) {
-    // se l'arma e' a due mani
-    return counter === 0
-      ? !weapon.weaponRanged
-        ? [oneHandMelee[0]] // attacco singolo
-        : [oneHandRanged[0]] // attacco singolo
-      : !weapon.weaponRanged
-        ? oneHandMelee // attacco completo
-        : oneHandRanged; // attacco completo
-  }
+//   if (weapon.weaponTwoHanded) {
+//     // se l'arma e' a due mani
+//     return counter === 0
+//       ? !weapon.weaponRanged
+//         ? [oneHandMelee[0]] // attacco singolo
+//         : [oneHandRanged[0]] // attacco singolo
+//       : !weapon.weaponRanged
+//         ? oneHandMelee // attacco completo
+//         : oneHandRanged; // attacco completo
+//   }
 
-  // arma da lancio
-  if (weapon.weaponThrown) {
-    if (!hasOffHand)
-      return counter === 0
-        ? !thrown
-          ? [oneHandMelee[0]]
-          : [oneHandRanged[0]]
-        : !thrown
-          ? oneHandMelee // attacco completo
-          : oneHandRanged; // attacco completo
-    return !thrown ? twoHandMelee : twoHandRanged; // se mano off occupata
-  }
+//   // arma da lancio
+//   if (weapon.weaponThrown) {
+//     if (!hasOffHand)
+//       return counter === 0
+//         ? !thrown
+//           ? [oneHandMelee[0]]
+//           : [oneHandRanged[0]]
+//         : !thrown
+//           ? oneHandMelee // attacco completo
+//           : oneHandRanged; // attacco completo
+//     return !thrown ? twoHandMelee : twoHandRanged; // se mano off occupata
+//   }
 
-  // se arma non da lancio
-  if (hasOffHand) {
-    // se mano off occupata
-    return weapon.weaponRanged
-      ? twoHandRanged // se ranged, 2 mani
-      : twoHandMelee; // se melee, 2 mani
-  }
+//   // se arma non da lancio
+//   if (hasOffHand) {
+//     // se mano off occupata
+//     return weapon.weaponRanged
+//       ? twoHandRanged // se ranged, 2 mani
+//       : twoHandMelee; // se melee, 2 mani
+//   }
 
-  return counter === 0
-    ? !weapon.weaponRanged
-      ? [oneHandMelee[0]] // attacco singolo
-      : [oneHandRanged[0]] // attacco singolo
-    : !weapon.weaponRanged
-      ? oneHandMelee // attacco completo
-      : oneHandRanged; // attacco completo
-};
+//   return counter === 0
+//     ? !weapon.weaponRanged
+//       ? [oneHandMelee[0]] // attacco singolo
+//       : [oneHandRanged[0]] // attacco singolo
+//     : !weapon.weaponRanged
+//       ? oneHandMelee // attacco completo
+//       : oneHandRanged; // attacco completo
+// };
 
-const showDamageListOnIndex = (
-  weapon: WeaponElement,
-  counter: number,
-  offHand?: boolean,
-  thrown?: boolean
-): number[] => {
-  if (offHand) {
-    return thrown && weapon.weaponRanged
-      ? [weapon.damageRangedTwoWeapon || 0]
-      : [weapon.damageMeleeTwoWeapon || 0];
-  }
+// const showDamageListOnIndex = (
+//   weapon: WeaponElement,
+//   // counter: number,
+//   offHand?: boolean,
+//   thrown?: boolean
+// ): number => {
+//   if (offHand) {
+//     return thrown && weapon.weaponRanged
+//       ? weapon.damageRangedTwoWeapon || 0
+//       : weapon.damageMeleeTwoWeapon || 0;
+//   }
 
-  return thrown || weapon.weaponRanged
-    ? [weapon.damageRanged || 0]
-    : [weapon.damageMelee || 0];
-};
+//   return thrown || weapon.weaponRanged
+//     ? weapon.damageRanged || 0
+//     : weapon.damageMelee || 0;
+// };
 
-const getAttackColor = (
-  weapon: WeaponElement | undefined,
+export const getAttackColor = (
+  ranged: boolean,
   // counter: number,
   thrown?: boolean
 ): string => {
-  if (!weapon) return "";
+  // if (!weapon) return "";
 
   // Thrown
   if (thrown !== undefined) return thrown ? "ranged" : "melee";
 
   // Ranged
-  if (weapon.weaponRanged) {
+  if (ranged) {
     return "ranged";
   }
 
@@ -433,23 +449,43 @@ const getAttackColor = (
   return "melee";
 };
 
-const getCounter = (
-  same: boolean,
-  counter: number,
-  thrown?: boolean
-): number => {
-  if (!same) return 0;
-  if (thrown) return thrown ? 1 : 0;
-  return counter === 0 ? 1 : 0;
-};
+// const getCounter = (
+//   same: boolean,
+//   counter: number,
+//   thrown?: boolean
+// ): number => {
+//   if (!same) return 0;
+//   if (thrown) return thrown ? 1 : 0;
+//   return counter === 0 ? 1 : 0;
+// };
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
-  const [clickMenu, setClickMenu] = useState<ClickMenu>([["w1", 0], null, "A"]);
+  const [clickMenu, setClickMenu] = useState<ClickMenu>(["w1", null, "A"]);
   // const [thrown, setThrown] = useState<boolean>();
   // const [counterClick, setCounterClick] = useState(0);
   const [throwDiceWeapon, setThrowDiceWeapon] = useState<
-    ThrowDicePropsWeapon[]
-  >([]);
+    [ThrowDicePropsWeapon | null, ThrowDicePropsWeapon | null]
+  >([
+    {
+      position: "w1",
+      weapon: charAB?.[0].attacks?.firstAttackSetOne?.weapon || noneWeapon,
+
+      listBab: !charAB?.[0].attacks?.firstAttackSetOne?.weaponRanged
+        ? [
+            charAB?.[0].attacks?.firstAttackSetOne
+              ?.listBabMeleeSpecificBonus?.[0] ?? []
+          ]
+        : [
+            charAB?.[0].attacks?.firstAttackSetOne
+              ?.listBabRangedSpecificBonus?.[0] ?? []
+          ],
+
+      listDamage: !charAB?.[0].attacks?.firstAttackSetOne?.weaponRanged
+        ? (charAB?.[0].attacks?.firstAttackSetOne?.damageMelee ?? 0)
+        : (charAB?.[0].attacks?.firstAttackSetOne?.damageRanged ?? 0)
+    },
+    null
+  ]);
 
   const defenceOptions: FightOptions[] =
     charAB && charAB.length > 1
@@ -470,66 +506,91 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
   //   ? clickMenu[1]? clickMenu[1][0] : null
   //   : null;
 
-  useEffect(() => {
-    const indexOne: number | null = clickMenu[0]
-      ? positionInIndexInMenuAFight(clickMenu[0] ? clickMenu[0][0] : "")
-      : null;
+  // useEffect(() => {
+  //   const indexOne: number | null = clickMenu[0]
+  //     ? positionInIndexInMenuAFight(clickMenu[0] ? clickMenu[0][0] : "")
+  //     : null;
 
-    const elementOne =
-      indexOne !== null ? attackOptions[indexOne]?.element : undefined;
+  //   const elementOne =
+  //     indexOne !== null ? attackOptions[indexOne]?.element : undefined;
 
-    const one: ThrowDicePropsWeapon | null = elementOne?.weapon
-      ? {
-          weapon: elementOne.weapon,
-          listBab: showBabListOnIndex(
-            elementOne,
-            ![clickMenu[0], clickMenu[1]].includes(null),
-            clickMenu[0] ? clickMenu[0][1] : 0,
-            clickMenu[0] ? clickMenu[0][2] : undefined
-          ),
-          listDamage: showDamageListOnIndex(
-            elementOne,
-            clickMenu[0] ? clickMenu[0][1] : 0
-          )
-        }
-      : null;
+  //   const indexOneString: string | null = clickMenu[0] ? clickMenu[0][0] : null;
+  //   const indexTwoString: string | null = clickMenu[1] ? clickMenu[1][0] : null;
 
-    const indexTwo: number | null = clickMenu[1]
-      ? positionInIndexInMenuAFight(clickMenu[1] ? clickMenu[1][0] : "")
-      : null;
+  //   const one: ThrowDicePropsWeapon | null = elementOne?.weapon
+  //     ? {
+  //         weapon: elementOne.weapon,
+  //         listBab: showBabListOnIndex(
+  //           elementOne,
+  //           ![clickMenu[0], clickMenu[1]].includes(null),
+  //           clickMenu[0] ? clickMenu[0][1] : 0,
+  //           clickMenu[0] ? clickMenu[0][2] : undefined
+  //         ),
+  //         listDamage: showDamageListOnIndex(
+  //           elementOne,
+  //           [indexOneString, indexTwoString].includes(null),
+  //           clickMenu[0] ? clickMenu[0][2] : undefined
+  //         )
+  //       }
+  //     : null;
 
-    const elementTwo =
-      indexTwo !== null ? attackOptions[indexTwo]?.element : undefined;
+  //   const indexTwo: number | null = clickMenu[1]
+  //     ? positionInIndexInMenuAFight(clickMenu[1] ? clickMenu[1][0] : "")
+  //     : null;
 
-    const two: ThrowDicePropsWeapon | null = elementTwo?.weapon
-      ? {
-          weapon: elementTwo.weapon,
-          listBab: showBabListOnIndex(
-            elementTwo,
-            ![clickMenu[0], clickMenu[1]].includes(null),
-            clickMenu[1] ? clickMenu[1][1] : 0,
-            clickMenu[1] ? clickMenu[1][2] : undefined
-          ),
-          listDamage: showDamageListOnIndex(
-            elementTwo,
-            clickMenu[1] ? clickMenu[1][1] : 0
-          )
-        }
-      : null;
+  //   const elementTwo =
+  //     indexTwo !== null ? attackOptions[indexTwo]?.element : undefined;
 
-    const newDiceWeapon =
-      one && two ? [one, two] : one ? [one] : two ? [two] : [];
+  //   const two: ThrowDicePropsWeapon | null = elementTwo?.weapon
+  //     ? {
+  //         weapon: elementTwo.weapon,
+  //         listBab: showBabListOnIndex(
+  //           elementTwo,
+  //           ![clickMenu[0], clickMenu[1]].includes(null),
+  //           clickMenu[1] ? clickMenu[1][1] : 0,
+  //           clickMenu[1] ? clickMenu[1][2] : undefined
+  //         ),
+  //         listDamage: showDamageListOnIndex(
+  //           elementTwo,
+  //           [indexOneString, indexTwoString].includes(null),
+  //           clickMenu[1] ? clickMenu[1][2] : undefined
+  //         )
+  //       }
+  //     : null;
 
-    setThrowDiceWeapon(newDiceWeapon);
-  }, [attackOptions, clickMenu]);
+  //   const newDiceWeapon =
+  //     one && two ? [one, two] : one ? [one] : two ? [two] : [];
+
+  //   setThrowDiceWeapon(newDiceWeapon);
+  // }, [attackOptions, clickMenu]);
 
   const setSelectClickMenu = (
-    index: string,
-    counter?: number,
-    thrown?: boolean
+    element?: ThrowDicePropsWeapon,
+    indexD?: string
   ) => {
-    const newMenu = changePosition(index, clickMenu, counter, thrown);
-    setClickMenu(newMenu);
+    if (element) {
+      const newMenu = changePosition(element.position, clickMenu);
+      setClickMenu(newMenu);
+      const newWeapon: ThrowDicePropsWeapon = {
+        position: element.position,
+        weapon: element.weapon,
+        listBab: element.listBab,
+        listDamage: element.listDamage
+      };
+      const newThrowDiceWeapon: [
+        ThrowDicePropsWeapon | null,
+        ThrowDicePropsWeapon | null
+      ] = [
+        newMenu[0] === newWeapon.position ? newWeapon : throwDiceWeapon[0],
+        newMenu[1] === newWeapon.position ? newWeapon : throwDiceWeapon[1]
+      ];
+      // const new
+      setThrowDiceWeapon(newThrowDiceWeapon);
+    }
+    if (indexD) {
+      const newMenu: ClickMenu = [clickMenu[0], clickMenu[1], indexD];
+      setClickMenu(newMenu);
+    }
   };
 
   const deselectClickMenu = (index: string) => {
@@ -566,9 +627,9 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
               <OneAttackOptionsElement
                 att={att}
                 myIndex={att.area}
-                indexOne={clickMenu[0] ? clickMenu[0][0] : null}
-                indexTwo={clickMenu[1] ? clickMenu[1][0] : null}
-                onAction={(counter) => setSelectClickMenu(att.area, counter)}
+                indexOne={clickMenu[0] ? clickMenu[0] : null}
+                indexTwo={clickMenu[1] ? clickMenu[1] : null}
+                onAction={(el) => setSelectClickMenu(el)}
                 onDeAction={() => deselectClickMenu(att.area)}
               />
             </div>
@@ -597,8 +658,10 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
             <div
               key={indexCA}
               className={border}
+
               onClick={() =>
                 setSelectClickMenu(
+                  undefined,
                   indexCA === 0 ? "A" : indexCA === 1 ? "B" : "C"
                 )
               }
@@ -625,7 +688,7 @@ export type OneAttackOptionsElementProps = {
   indexTwo: string | null;
   // throwDiceWeapon: ThrowDicePropsWeapon[]
   // clickMenu: [string | null, string | null];
-  onAction: (counter: number, thrown?: boolean) => void;
+  onAction: (element: ThrowDicePropsWeapon) => void;
   onDeAction: () => void;
 };
 
@@ -640,61 +703,142 @@ const OneAttackOptionsElement: React.FC<OneAttackOptionsElementProps> = ({
   // , throwDiceWeapon
 }) => {
   const [counter, setCounter] = useState(0);
-  const [thrown, setThrown] = useState<boolean | undefined>(
-    // att.element?.weaponThrown ? true : undefined
+  const [thrown, setThrown] = useState<boolean>();
+  // const [listBabBonusII, setListBabBonusII] =
+  //   useState<TotAndBonusElement[][]>();
+  // const [listDamageII, setListDamageII] = useState<TotAndBonusElement[]>();
+
+  const newlistBabBonus = useMemo(
+    () =>
+      [
+        att.element?.listBabMeleeSpecificBonus,
+        att.element?.listBabRangedSpecificBonus,
+        att.element?.listBabMeleeTwoWeaponSpecificBonus,
+        att.element?.listBabRangedTwoWeaponSpecificBonus
+      ].filter((a) => a != null),
+    [att.element]
   );
-  // const [finalBorder, setFinalBorder] = useState<string>();
-
-  useEffect(() => {
-    // console.log(att.element?.weapon?.weaponName, att.element?.weaponThrown)
-    setThrown(att.element?.weaponThrown ? true : undefined);
-  }, [att.element?.weaponThrown]);
-
-  const actualBabList = showBabListOnIndex(
-    att.element!,
-    ![indexOne, indexTwo].includes(null),
-    counter,
-    thrown
-  );
-  // useEffect(() => {
-  const border: string = createBorder(
-    indexOne === att.area || indexTwo === att.area
+  const newlistDamage = useMemo(
+    () =>
+      [
+        att.element?.toListMeleeDamage,
+        att.element?.toListRangedDamage,
+        att.element?.toListMeleeTwoWeaponDamage,
+        att.element?.toListRangedTwoWeaponDamage
+      ].filter((a) => a !== undefined),
+    [att.element]
   );
 
-  const attackColor = getAttackColor(att.element, thrown);
+  const listBabBonusII = useMemo(
+    () =>
+      showBabListByIndex(
+        newlistBabBonus,
+        ![indexOne, indexTwo].includes(null),
+        counter,
+        att.element?.weaponRanged || false,
+        att.element?.weaponThrown || false,
+        thrown,
+        att.element?.weaponTwoHanded || false
+      ),
+    [newlistBabBonus, indexOne, indexTwo, counter, thrown, att.element]
+  );
 
-  const finalBorder = `${border} ${attackColor}`;
-  // setFinalBorder(`${border} ${attackColor}`);
-  // }, [counter, att, indexOne, indexTwo, thrown]);
+  const listDamageII = useMemo(
+    () =>
+      showDmgListByIndex(
+        newlistDamage,
+        ![indexOne, indexTwo].includes(null),
+        counter,
+        att.element?.weaponRanged || false,
+        att.element?.weaponThrown || false,
+        thrown,
+        att.element?.weaponTwoHanded || false
+      ),
+    [newlistDamage, indexOne, indexTwo, counter, thrown, att.element]
+  );
+  const clickOne = (weapon: ThrowDicePropsWeapon) => {
+    const newCounter = counter + 1 === 2 ? 0 : counter + 1;
 
-  // const finalBorder = `${border} ${attackColor}`;
+    const newBab = showBabListByIndex(
+      newlistBabBonus,
+      ![indexOne, indexTwo].includes(null),
+      newCounter,
+      att.element?.weaponRanged || false,
+      att.element?.weaponThrown || false,
+      thrown,
+      att.element?.weaponTwoHanded || false
+    );
 
-  const clickOne = () => {
-    let newCounter: number;
-    const same = [indexOne, indexTwo].includes(myIndex);
-    newCounter = getCounter(same, counter, thrown);
+    const newDamage = showDmgListByIndex(
+      newlistDamage,
+      ![indexOne, indexTwo].includes(null),
+      newCounter,
+      att.element?.weaponRanged || false,
+      att.element?.weaponThrown || false,
+      thrown,
+      att.element?.weaponTwoHanded || false
+    );
 
     setCounter(newCounter);
-    onAction(newCounter, thrown);
+
+    onAction({
+      ...weapon,
+      listBab: newBab,
+      listDamage: newDamage.reduce((tot, d) => tot + d.bonus, 0)
+    });
   };
 
   return (
     <div style={{ gridArea: att.area }}>
-      <div onClick={() => clickOne()} onDoubleClick={() => onDeAction()}>
-        {/* <p>
-          counter: {counter}, {myIndex}, {indexOne}, {indexTwo}
-        </p> */}
-        <SummaryCharAttacksSingleElement
+      <div onDoubleClick={() => onDeAction()}>
+        <p>
+          counter: {counter}, {myIndex}, {indexOne ?? "null"},{" "}
+          {indexTwo ?? "null"}
+        </p>
+        <p>{att.element?.weapon?.name}</p>
+        {Array.from({ length: 2 }).map((_, indexA) => {
+          if (indexA === counter && listBabBonusII && listDamageII)
+            return (
+              <div
+                onClick={() =>
+                  att.element &&
+                  clickOne({
+                    position: att.area,
+                    weapon: att.element.weapon || noneWeapon,
+                    listBab: listBabBonusII,
+                    listDamage: listDamageII.reduce(
+                      (tot, d) => tot + d.bonus,
+                      0
+                    )
+                  })
+                }
+              >
+                {
+                  <MapAllAttacksElements
+                    index={indexA}
+                    clicked={indexOne === att.area || indexTwo === att.area}
+                    ranged={att.element?.weaponRanged || false}
+                    thrown={att.element?.weaponThrown || false}
+                    weaponDamage={att.element?.weapon?.damage || ""}
+                    weaponCritical={att.element?.weapon?.critical || ""}
+                    listBabBonusII={listBabBonusII}
+                    listDamageII={listDamageII}
+                  />
+                }
+              </div>
+            );
+        })}
+        {/* <SummaryCharAttacksSingleElement
           border={finalBorder}
           totAndBonusAtt={[false, true, false, true]}
           weapon={att.element?.weapon || noneWeapon}
           listBab={actualBabList}
-          damage={att.element?.toListMeleeDamage || []}
+          damage={actualDamageList}
           totAndBonusDmg={[false, true, true]}
-        />
+        /> */}
       </div>
       <div>
-        {thrown !== undefined && (
+        {att.element?.weaponThrown && (
           <p>
             <SelectedCheck onAction={(on) => setThrown(on)} />
             <span>{"Thrown"}</span>
@@ -703,4 +847,77 @@ const OneAttackOptionsElement: React.FC<OneAttackOptionsElementProps> = ({
       </div>
     </div>
   );
+};
+
+export const showBabListByIndex = (
+  listBabBonus: TotAndBonusElement[][][],
+  hasOffHand: boolean,
+  counter: number, // 0 o 1 || 0,1,2,3
+  ranged: boolean,
+  thrown: boolean,
+  toThrown: boolean | undefined,
+  weaponTwoHanded: boolean
+): TotAndBonusElement[][] => {
+  const oneMelee = listBabBonus[0];
+  const oneRanged = ranged ? listBabBonus[0] : listBabBonus[1];
+
+  const oneMeleeTwo = toThrown ? listBabBonus[2] : listBabBonus[1];
+  const oneRangedTwo = toThrown ? listBabBonus[3] : listBabBonus[1];
+
+  if (weaponTwoHanded) {
+    return counter === 0
+      ? !ranged
+        ? [oneMelee[0]]
+        : [oneRanged[0]]
+      : !ranged
+        ? oneMelee
+        : oneRanged;
+  }
+
+  if (toThrown !== undefined) {
+    if (!hasOffHand) {
+      return counter === 0
+        ? !toThrown
+          ? [oneMelee[0]]
+          : [oneRanged[0]]
+        : !toThrown
+          ? oneMelee
+          : oneRanged;
+    }
+    return !toThrown ? oneMeleeTwo : oneRangedTwo;
+  }
+
+  if (hasOffHand) {
+    return !ranged ? oneMeleeTwo : oneRangedTwo;
+  }
+
+  return counter === 0 ? [oneMelee[0]] : oneMelee;
+};
+
+export const showDmgListByIndex = (
+  listBabBonus: TotAndBonusElement[][],
+  hasOffHand: boolean,
+  counter: number, // 0 o 1 || 0,1,2,3
+  ranged: boolean,
+  thrown: boolean,
+  toThrown: boolean | undefined,
+  weaponTwoHanded: boolean
+): TotAndBonusElement[] => {
+  const oneMelee = listBabBonus[0];
+  const oneRanged = !ranged ? listBabBonus[0] : listBabBonus[1];
+
+  const oneMeleeTwo = toThrown ? listBabBonus[2] : listBabBonus[1];
+  const oneRangedTwo = toThrown ? listBabBonus[3] : listBabBonus[1];
+
+  if (toThrown !== undefined) {
+    // if(!hasOffHand){
+    return !toThrown ? oneMelee : oneRanged;
+    // }
+  }
+
+  if (hasOffHand) {
+    return !ranged ? oneMeleeTwo : oneRangedTwo;
+  }
+
+  return !ranged ? oneMelee : oneRanged;
 };
