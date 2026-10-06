@@ -12,5 +12,13 @@
                 <constraints nullable="true" />
             </column>
         </createTable>
+        <createTable tableName="quiver">
+            <column name="inventory_id" type="int">
+                <constraints nullable="true" />
+            </column>
+            <column name="item_id" type="int">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
     </changeSet>
 </databaseChangeLog>

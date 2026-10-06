@@ -184,4 +184,8 @@
     <include file="spells/005_domain_spells_insert.xml" relativeToChangelogFile="true"/>
     <include file="spells/005_spells_book_insert.xml" relativeToChangelogFile="true"/>
 
+    <include file="monsters/spiderCity/006_t_sarran_guards.xml" relativeToChangelogFile="true"/>
+    <include file="monsters/spiderCity/006_cult_champion.xml" relativeToChangelogFile="true"/>
+    <include file="monsters/spiderCity/006_revenant_maerimydra_assasin.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

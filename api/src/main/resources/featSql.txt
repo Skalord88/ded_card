@@ -1,0 +1,5 @@
+INSERT INTO feat_pc (id) VALUES (1000202);
+INSERT INTO prerequisite (id) VALUES (1000202);
+INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000202, 107); -- Weapon Focus [General]
+INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000202, 131); -- Scythe [Weapon]
+UPDATE feat_pc SET character_card_id = 10002, class_feat_id = 507, selected_id = 1000202 WHERE id = 1000202; -- Bonus Feats lv.1

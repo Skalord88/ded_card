@@ -17,6 +17,9 @@
       <column name="race_type_id" type="int">
         <constraints nullable="true" />
       </column>
+      <column name="hd" type="int">
+        <constraints nullable="true" />
+      </column>
       <column name="level_adjustment" type="TINYINT">
         <constraints nullable="true" />
       </column>

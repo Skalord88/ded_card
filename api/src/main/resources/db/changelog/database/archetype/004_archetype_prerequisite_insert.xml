@@ -66,5 +66,16 @@
     </insert>
     <!-- Vampire -->
 
+    <!-- Revenant -->
+    <insert tableName="prerequisite">
+      <column name="id" value="91004" />
+      <column name="abilitys"
+        value="{
+                &quot;strength&quot; : 4,
+                &quot;charisma&quot; : 2
+                }" />
+    </insert>
+    <!-- Revenant -->
+
   </changeSet>
 </databaseChangeLog>

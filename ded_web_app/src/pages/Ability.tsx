@@ -1,23 +1,21 @@
 import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop } from "../components/functions";
-import { CharacterPc } from "../components/interfaces";
 import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
-import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
 import { SummaryChar } from "../components/SummaryChar/SummaryChar";
-import { urlAb, urlChar } from "../components/url";
+import { urlAb } from "../components/url";
 import { PageLayout } from "./AppLayout";
 // import { useSkills } from "../components/Skills/Skills/Const";
-import {
-  TotAndBonusElement,
-  TotAndBonus
-} from "../components/SummaryChar/component/TotAndBonus";
 import { useCharacter } from "../components/ModifiedCharacter/Context/CharacterContext";
+import {
+  TotAndBonus,
+  TotAndBonusElement
+} from "../components/SummaryChar/component/TotAndBonus";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -41,6 +39,8 @@ export function Ability() {
     // setChange(true);
   };
 
+  // if(moddedCharacter === null) return <div>Loading...</div>
+
   if (moddedCharacter)
     return (
       <PageLayout
@@ -48,7 +48,7 @@ export function Ability() {
         buttons={{
           next: {
             text: "Class",
-            link:  `/${charId}/class` ,
+            link: `/${charId}/class`,
             change:
               abilitys &&
               abilitisBaseValue.every((value) =>
@@ -97,7 +97,8 @@ export function Ability() {
                 const toList: TotAndBonusElement[] = moddedCharacter
                   ? createTotAndBonusElement(
                       moddedCharacter.abilitysMod ?? {},
-                      false, []
+                      false,
+                      []
                     ).filter((e): e is TotAndBonusElement => e.pop.text === key)
                   : [];
 

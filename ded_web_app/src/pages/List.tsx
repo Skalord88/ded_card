@@ -8,7 +8,7 @@ import { urlCharList } from "../components/url";
 import { PageLayoutBody } from "./AppLayout";
 
 export const List: React.FC = () => {
-  const { getData, loading, reload } = useData();
+  const { getData, reload } = useData();
 
   useEffect(() => {
     reload("charList");
@@ -16,11 +16,11 @@ export const List: React.FC = () => {
 
   const charList = getData("charList");
 
-  if (loading.charList) {
-    return <div>Loading...</div>;
-  }
+  // if (loading.charList) {
+  //   return <div>Loading...</div>;
+  // }
 
-  console.log(charList);
+  // if (loading) console.log(charList);
   return (
     <PageLayoutBody>
       {charList && charList.length > 0 ? (

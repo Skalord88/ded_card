@@ -9,7 +9,7 @@
       <column name="id" value="1" />
       <column name="archetype_name" value="Silver Half-Dragon" />
       <column name="level_adjustment" value="3" />
-      <column name="avatar_url" value="" />
+      <column name="avatar_url" value="https://64.media.tumblr.com/4a80d56233100444dfaf79284a5c59b6/tumblr_inline_ppq48ty3zf1rkapbx_540.png" />
     </insert>
     <!-- Silver Half-Dragon -->
 
@@ -18,7 +18,7 @@
       <column name="id" value="2" />
       <column name="archetype_name" value="Half-Fiend" />
       <column name="level_adjustment" value="4" />
-      <column name="avatar_url" value="" />
+      <column name="avatar_url" value="https://static.wikia.nocookie.net/forgottenrealms/images/b/b9/Half-fiend-1-.jpg/revision/latest?cb=20091227045055" />
     </insert>
     <!-- Half-Fiend -->
 
@@ -26,10 +26,21 @@
     <insert tableName="archetype">
       <column name="id" value="3" />
       <column name="archetype_name" value="Vampire" />
+      <column name="hd" value="12" />
       <column name="level_adjustment" value="8" />
-      <column name="avatar_url" value="" />
+      <column name="avatar_url" value="https://images.squarespace-cdn.com/content/v1/5bd88db093a6320f071b1a50/1572496813631-OP3J8PR46GMQ0EFZROCV/image-asset.png" />
     </insert>
     <!-- Vampire -->
+
+    <!-- Revenant -->
+    <insert tableName="archetype">
+      <column name="id" value="4" />
+      <column name="archetype_name" value="Revenant" />
+      <column name="level_adjustment" value="1" />
+      <column name="hd" value="12" />
+      <column name="avatar_url" value="https://forgottenrealms.fandom.com/wiki/Revenant" />
+    </insert>
+    <!-- Revenant -->
 
 
   </changeSet>

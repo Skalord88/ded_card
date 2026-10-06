@@ -1,0 +1,120 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+<changeSet id="006_revenant_maerimydra_assasin" author="oscar">
+
+    <insert tableName="character_card">
+        <column name="id" value="10003" />
+        <column name="character_name" value="Revenant Maerimydra Assassin" />
+        <column name="player_name" value="" />
+        <column name="abilitys"
+                value="{
+                &quot;strength&quot;: 10,
+                &quot;dexterity&quot;: 18,
+                &quot;constitution&quot;: null,
+                &quot;intelligence&quot;: 14,
+                &quot;wisdom&quot;: 14,
+                &quot;charisma&quot;: 10
+            }" />
+            <column name="sub_race_id" value="103" />
+            <column name="special_attacks" value="{}" />
+            <column name="alignment_id" value="9" />
+            <column name="experience" value="0" />
+            <column name="treasure" value="0" />
+    </insert>
+
+    <!-- Revenant Maerimydra Assassin -->
+        <insert tableName="character_archetypes">
+            <column name="character_card_id" value="10003" />
+            <column name="archetype_id" value="4" />
+            <!-- Revenant -->
+        </insert>
+
+    <insert tableName="class_pc">
+            <column name="level" value="5" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="10003" />
+            <column name="class_character_id" value="6" /> <!-- MONK -->
+        </insert>
+    <insert tableName="class_pc">
+            <column name="level" value="5" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="10003" />
+            <column name="class_character_id" value="15" /> <!-- ASSASSIN -->
+        </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="10003" />
+            <!-- Revenant Maerimydra Assassin -->
+        </insert>
+
+        <insert tableName="inventory">
+            <column name="id" value="10003" />
+            <column name="version" value="1" />
+        </insert>
+
+        <!-- Revenant Maerimydra Assassin -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="6203" />
+            <!-- Siangham +1 -->
+            <column name="attacks_id_twofirst"
+                value="4214" />
+            <!-- Crossbow, hand -->
+            <where>id = 10003</where>
+        </update>
+
+        <update tableName="inventory">
+            <!-- Revenant Maerimydra Assassin -->
+            <column
+                name="weapon_id_one" valueNumeric="6203" />
+            <!-- Siangham +1 -->
+            <column name="weapon_id_two"
+                valueNumeric="4214" />
+            <!-- Crossbow, hand -->
+            <column name="arms_id" valueNumeric="6045" />
+            <!-- Bracers of Armor +3 -->
+            <column name="ring_one_id" valueNumeric="1001" />
+            <!-- Ring of Protection +1 -->
+        <where>id = 10003</where>
+        </update>
+
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="10003" />
+        <where>id = 10003</where>
+        </update>
+
+        <update tableName="character_card">
+            <column name="inventory_id" valueNumeric="10003" />
+        <where>id = 10003</where>
+        </update>
+
+        <sql>
+
+            INSERT INTO feat_pc (id, level) VALUES (1000301, 1); -- lv.1
+            UPDATE feat_pc SET character_card_id = 10003, feat_id = 26 WHERE id = 1000301; -- Dodge [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000302);
+            INSERT INTO prerequisite (id) VALUES (1000302);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000302, 98); -- Stunning Fist [General]
+            UPDATE feat_pc SET character_card_id = 10003, class_feat_id = 601, selected_id = 1000302 WHERE id = 1000302; -- Bonus Feats lv.1
+
+            INSERT INTO feat_pc (id) VALUES (1000303);
+            INSERT INTO prerequisite (id) VALUES (1000303);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000303, 22); -- Deflect Arrows [General]
+            UPDATE feat_pc SET character_card_id = 10003, class_feat_id = 604, selected_id = 1000303 WHERE id = 1000303; -- Bonus Feats lv.2
+
+            INSERT INTO feat_pc (id, level) VALUES (1000304, 3); -- lv.3
+            UPDATE feat_pc SET character_card_id = 10003, feat_id = 68 WHERE id = 1000304; -- Mobility [General]
+
+            INSERT INTO feat_pc (id, level) VALUES (1000305, 6); -- lv.6
+            UPDATE feat_pc SET character_card_id = 10003, feat_id = 95 WHERE id = 1000305; -- Spring Attack [General]
+
+            INSERT INTO feat_pc (id, level) VALUES (1000306, 9); -- lv.9
+            UPDATE feat_pc SET character_card_id = 10003, feat_id = 96 WHERE id = 1000306; -- Stealthy [General]
+
+        </sql>
+
+</changeSet>
+</databaseChangeLog>

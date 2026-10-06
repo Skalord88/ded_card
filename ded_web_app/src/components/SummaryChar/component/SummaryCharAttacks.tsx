@@ -1,4 +1,3 @@
-import { Fragment } from "react/jsx-runtime";
 import { DiceText } from "../../Dice/Functions";
 import { Weapon } from "../../interfaces";
 import { WeaponElement } from "../../ModifiedCharacter/interface/ModifiedCharacter";
@@ -6,12 +5,9 @@ import { Popup } from "../../Popup/Popup";
 import { noneWeapon } from "../../variables";
 import { SummaryCharProps } from "../SummaryChar";
 import { TotAndBonus, TotAndBonusElement } from "./TotAndBonus";
-import {
-  AttackOptionsElement,
-  createBorder,
-  getAttackColor
-} from "../../../pages/Fight";
-import { useState } from "react";
+import { createBorder } from "../../../pages/Fight";
+import { AttackOptionsElement } from "../../Fight/function/createAttackOptions";
+import { getAttackColor } from "../../Fight/function/getAttackColor";
 
 export type SummaryCharAttacksTemplateProps = {
   borderText?: string;
@@ -224,7 +220,6 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
             area.element?.toListMeleeTwoWeaponDamage,
             area.element?.toListRangedTwoWeaponDamage
           ].filter((a) => a !== undefined);
-          // console.log("listDamage", listDamage)
           return (
             <div key={index} style={{ border: "1px solid red" }}>
               <div>
@@ -233,23 +228,27 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                 {Array.from({ length: listBabBonus.length }).map(
                   (_, indexA) => {
+
+                    if (
+                      !area.element?.weapon ||
+                      area.element?.weaponRanged === undefined ||
+                      area.element?.weaponThrown === undefined
+                    ) {
+                      return null;
+                    }
+
                     return (
-                      <>
-                        {area.element?.weapon && (
-                          // listBabBonus[indexA] &&
-                          // listDamage[indexA] &&
-                          <MapAllAttacksElements
-                            index={indexA}
-                            clicked={true}
-                            ranged={area.element?.weaponRanged || false}
-                            thrown={area.element?.weaponThrown || false}
-                            weaponDamage={area.element?.weapon.damage}
-                            weaponCritical={area.element?.weapon.critical}
-                            listBabBonusI={listBabBonus}
-                            listDamageI={listDamage}
-                          />
-                        )}
-                      </>
+                      <MapAllAttacksElements
+                        key={indexA}
+                        index={indexA}
+                        clicked={true}
+                        ranged={area.element?.weaponRanged}
+                        thrown={area.element?.weaponThrown}
+                        weaponDamage={area.element.weapon.damage}
+                        weaponCritical={area.element.weapon.critical}
+                        listBabBonusI={listBabBonus}
+                        listDamageI={listDamage}
+                      />
                     );
                   }
                 )}
@@ -265,7 +264,7 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
 export type MapAllAttacksElementsProps = {
   index: number;
   clicked: boolean;
-  
+
   ranged: boolean;
   thrown: boolean;
   weaponDamage: string;
@@ -274,6 +273,7 @@ export type MapAllAttacksElementsProps = {
   listBabBonusII?: TotAndBonusElement[][];
   listDamageI?: TotAndBonusElement[][];
   listDamageII?: TotAndBonusElement[];
+  dmgTot?: number;
 };
 
 export const titleMapAllAttacksElements = (
@@ -304,22 +304,22 @@ export const MapAllAttacksElements: React.FC<MapAllAttacksElementsProps> = ({
   listBabBonusI,
   listBabBonusII,
   listDamageI,
-  listDamageII
+  listDamageII,
+  dmgTot
 }) => {
   const border: string = createBorder(clicked);
 
-  const attackColor = getAttackColor(ranged);
+  const attackColor = getAttackColor(ranged, thrown);
 
   const finalBorder = `${border} ${attackColor}`;
 
-  const title: string[] = titleMapAllAttacksElements(thrown, ranged);
+  // const title: string[] = titleMapAllAttacksElements(thrown, ranged);
 
   // const actualBabList = showBabListByIndex(listBabBonus, hasOffHand)
   return (
     <>
-      <div>
-        <p>{title[index]}</p>
-      </div>
+      <div>{/* <p>{title[index]}</p> */}</div>
+      {/* <div><p>r: {ranged? "ranged" : "melee"} b: {finalBorder}</p></div> */}
       <div
         className={finalBorder}
         style={{
@@ -336,23 +336,34 @@ export const MapAllAttacksElements: React.FC<MapAllAttacksElementsProps> = ({
               </div>
             );
           })}
-          {listBabBonusII &&
-            listBabBonusII.map((n, i) => {
-              return(
-                <div key={i}>
-                  <Popup bonusList={n}/>
-                </div>
-              )
-            })
-          }
+        {listBabBonusII &&
+          listBabBonusII.map((n, i) => {
+            return (
+              <div key={i}>
+                <Popup bonusList={n} />
+              </div>
+            );
+          })}
         <div>
-          <span>{DiceText(weaponDamage)}</span>
+          {weaponDamage && <span>{DiceText(weaponDamage)}</span>}
+          {dmgTot && (
+            <span>
+              {dmgTot < 0 && "+"}
+              {dmgTot}
+            </span>
+          )}
           <span> </span>
-          <span>{DiceText(weaponCritical)}</span>
-          {listDamageI &&
-          <TotAndBonus show={false} firstSign={true} list={listDamageI[index]} />}
-          {listDamageII &&
-          <TotAndBonus show={false} firstSign={true} list={listDamageII} />}
+          {weaponCritical && <span>{DiceText(weaponCritical)}</span>}
+          {listDamageI && (
+            <TotAndBonus
+              show={false}
+              firstSign={true}
+              list={listDamageI[index]}
+            />
+          )}
+          {listDamageII && (
+            <TotAndBonus show={false} firstSign={true} list={listDamageII} />
+          )}
         </div>
       </div>
     </>

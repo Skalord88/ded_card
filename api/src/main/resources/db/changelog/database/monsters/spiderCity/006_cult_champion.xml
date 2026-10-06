@@ -1,0 +1,121 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+<changeSet id="006_cult_champion" author="oscar">
+
+    <insert tableName="character_card">
+        <column name="id" value="10002" />
+        <column name="character_name" value="Cult Champion" />
+        <column name="player_name" value="" />
+        <column name="abilitys"
+                value="{
+                &quot;strength&quot;: 14,
+                &quot;dexterity&quot;: 12,
+                &quot;constitution&quot;: 12,
+                &quot;intelligence&quot;: 10,
+                &quot;wisdom&quot;: 16,
+                &quot;charisma&quot;: 14
+            }" />
+            <column name="sub_race_id" value="103" />
+            <column name="special_attacks" value="{}" />
+            <column name="alignment_id" value="9" />
+            <column name="experience" value="0" />
+            <column name="treasure" value="0" />
+    </insert>
+
+    <insert tableName="class_pc">
+            <column name="level" value="4" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="10002" />
+            <column name="class_character_id" value="5" /> <!-- FIGHTER -->
+        </insert>
+    <insert tableName="class_pc">
+            <column name="level" value="8" />
+            <column name="first_class" value="true" />
+            <column name="character_card_id" value="10002" />
+            <column name="class_character_id" value="3" /> <!-- CLERIC -->
+        </insert>
+
+        <insert tableName="attacks">
+            <column name="id" value="10002" />
+            <!-- Cult Champion -->
+        </insert>
+
+        <insert tableName="inventory">
+            <column name="id" value="10002" />
+            <column name="version" value="1" />
+        </insert>
+
+        <!-- Cult Champion -->
+        <update tableName="attacks">
+            <column name="attacks_id_onefirst" value="6131" />
+            <!-- Scythe +1 -->
+            <column name="attacks_id_twofirst"
+                value="4134" />
+            <!-- Longbow, composite -->
+            <where>id = 10002</where>
+        </update>
+
+        <update tableName="inventory">
+            <!-- Cult Champion -->
+            <column name="armor_id" valueNumeric="8523" />
+            <!-- Full plate +3 -->
+            <column
+                name="weapon_id_one" valueNumeric="6131" />
+            <!-- Scythe +1 -->
+            <column name="weapon_id_two"
+                valueNumeric="4134" />
+            <!-- Longbow, composite -->
+        <where>id = 10002</where>
+        </update>
+
+        <update tableName="character_card">
+            <column name="attacks_id" valueNumeric="10002" />
+        <where>id = 10002</where>
+        </update>
+
+        <update tableName="character_card">
+            <column name="inventory_id" valueNumeric="10002" />
+        <where>id = 10002</where>
+        </update>
+
+        <sql>
+            INSERT INTO feat_pc (id, level) VALUES (1000201, 1); -- lv.1
+            UPDATE feat_pc SET character_card_id = 10002, feat_id = 3 WHERE id = 1000201; -- Alertness [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000202);
+            INSERT INTO prerequisite (id) VALUES (1000202);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000202, 107); -- Weapon Focus [General]
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000202, 131); -- Scythe [Weapon]
+            UPDATE feat_pc SET character_card_id = 10002, class_feat_id = 507, selected_id = 1000202 WHERE id = 1000202; -- Bonus Feats lv.1
+
+            INSERT INTO feat_pc (id) VALUES (1000203);
+            INSERT INTO prerequisite (id) VALUES (1000203);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000203, 10); -- Blind-Fight [General]
+            UPDATE feat_pc SET character_card_id = 10002, class_feat_id = 508, selected_id = 1000203 WHERE id = 1000203; -- Bonus Feats lv.2
+
+            INSERT INTO feat_pc (id, level) VALUES (1000204, 3); -- lv.3
+            UPDATE feat_pc SET character_card_id = 10002, feat_id = 61 WHERE id = 1000204; -- Iron Will [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000205);
+            INSERT INTO prerequisite (id) VALUES (1000205);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000205, 108); -- Weapon Specialization [General]
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000205, 131); -- Scythe [Weapon]
+            UPDATE feat_pc SET character_card_id = 10002, class_feat_id = 509, selected_id = 1000205 WHERE id = 1000205; -- Bonus Feats lv.4
+
+            INSERT INTO feat_pc (id, level) VALUES (1000206, 6); -- lv.6
+            UPDATE feat_pc SET character_card_id = 10002, feat_id = 33 WHERE id = 1000206; -- Extra Turning [General]
+
+            INSERT INTO feat_pc (id, level) VALUES (1000207, 9); -- lv.9
+            INSERT INTO prerequisite (id) VALUES (1000207);
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000207, 131); -- Scythe [Weapon]
+            UPDATE feat_pc SET character_card_id = 10002, feat_id = 46, selected_id = 1000207 WHERE id = 1000207; -- Improved Critical [General]
+
+            INSERT INTO feat_pc (id, level) VALUES (1000208, 12); -- lv.12
+            UPDATE feat_pc SET character_card_id = 10002, feat_id = 94 WHERE id = 1000208; -- Spell Penetration [General]
+        </sql>
+
+</changeSet>
+</databaseChangeLog>

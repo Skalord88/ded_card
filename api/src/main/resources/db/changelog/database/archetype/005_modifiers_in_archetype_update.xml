@@ -15,5 +15,17 @@
         <where>id = 2</where>
         </update>
         <!-- Half-Fiend -->
+        <!-- Vampire -->
+        <update tableName="archetype">
+            <column name="modifiers_id" valueNumeric="91003" />
+        <where>id = 3</where>
+        </update>
+        <!-- Vampire -->
+        <!-- Revenant -->
+        <update tableName="archetype">
+            <column name="modifiers_id" valueNumeric="91004" />
+        <where>id = 4</where>
+        </update>
+        <!-- Revenant -->
     </changeSet>
 </databaseChangeLog>

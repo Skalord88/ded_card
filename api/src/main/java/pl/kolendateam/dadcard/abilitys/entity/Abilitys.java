@@ -16,7 +16,7 @@ public class Abilitys implements Serializable {
 
   int strength;
   int dexterity;
-  int constitution;
+  Integer constitution;
   int intelligence;
   int wisdom;
   int charisma;
@@ -41,7 +41,8 @@ public class Abilitys implements Serializable {
   ) {
     abilitys.strength += jsonObjectAbilitys.strength;
     abilitys.dexterity += jsonObjectAbilitys.dexterity;
-    abilitys.constitution += jsonObjectAbilitys.constitution;
+    jsonObjectAbilitys.constitution = jsonObjectAbilitys.constitution == null || jsonObjectAbilitys.constitution == null
+    ? null : abilitys.constitution + jsonObjectAbilitys.constitution;
     abilitys.intelligence += jsonObjectAbilitys.intelligence;
     abilitys.wisdom += jsonObjectAbilitys.wisdom;
     abilitys.charisma += jsonObjectAbilitys.charisma;

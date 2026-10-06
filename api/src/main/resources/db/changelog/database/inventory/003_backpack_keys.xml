@@ -14,5 +14,15 @@
             constraintName="fk_inventory_backpack_backpack"
             referencedTableName="item"
             referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="quiver"
+            baseColumnNames="inventory_id"
+            constraintName="fk_inventory_quiver_inventory"
+            referencedTableName="item"
+            referencedColumnNames="id" />
+        <addForeignKeyConstraint baseTableName="quiver"
+            baseColumnNames="item_id"
+            constraintName="fk_inventory_quiver_quiver"
+            referencedTableName="item"
+            referencedColumnNames="id" />
         </changeSet>
 </databaseChangeLog>

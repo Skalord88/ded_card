@@ -45,7 +45,7 @@
         <update tableName="attacks">
             <column name="attacks_id_onefirst" value="6204" />
             <!-- Sword, bastard +1 -->
-            <column name="attacks_id_onesecond"
+            <column name="attacks_id_twofirst"
                 value="4134" />
             <!-- Longbow, composite -->
             <where>id = 10001</where>
@@ -63,7 +63,7 @@
             <!-- Sword, bastard +1 -->
             <column name="weapon_id_two"
                 valueNumeric="4134" />
-            <!-- Longbow, composite --> 
+            <!-- Longbow, composite -->
         <where>id = 10001</where>
         </update>
 
@@ -76,6 +76,45 @@
             <column name="inventory_id" valueNumeric="10001" />
         <where>id = 10001</where>
         </update>
+
+        <sql>
+            INSERT INTO feat_pc (id, level) VALUES (1000101, 1); -- lv.1
+            UPDATE feat_pc SET character_card_id = 10001, feat_id = 10 WHERE id = 1000101; -- Blind-Fight [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000102);
+            INSERT INTO prerequisite (id) VALUES (1000102);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000102, 15); -- Combat Reflexes [General]
+            UPDATE feat_pc SET character_card_id = 10001, class_feat_id = 507, selected_id = 1000102 WHERE id = 1000102; -- Bonus Feats lv.1
+
+            INSERT INTO feat_pc (id) VALUES (1000103);
+            INSERT INTO prerequisite (id) VALUES (1000103);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000103, 26); -- Dodge [General]
+            UPDATE feat_pc SET character_card_id = 10001, class_feat_id = 508, selected_id = 1000103 WHERE id = 1000103; -- Bonus Feats lv.2
+
+            INSERT INTO feat_pc (id, level) VALUES (1000104, 3); -- lv.3
+            INSERT INTO prerequisite (id) VALUES (1000104);
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000104, 204); -- Bastard Sword [Weapon]
+            UPDATE feat_pc SET character_card_id = 10001, feat_id = 31, selected_id = 1000104 WHERE id = 1000104; -- Exotic Weapon Proficiency [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000105);
+            INSERT INTO prerequisite (id) VALUES (1000105);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000105, 68); -- Mobility [General]
+            UPDATE feat_pc SET character_card_id = 10001, class_feat_id = 509, selected_id = 1000105 WHERE id = 1000105; -- Bonus Feats lv.4
+
+            INSERT INTO feat_pc (id, level) VALUES (1000106, 6); -- lv.6
+            INSERT INTO prerequisite (id) VALUES (1000106);
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000106, 204); -- Bastard Sword [Weapon]
+            UPDATE feat_pc SET character_card_id = 10001, feat_id = 107, selected_id = 1000106 WHERE id = 1000106; -- Weapon Focus [General]
+
+            INSERT INTO feat_pc (id) VALUES (1000107);
+            INSERT INTO prerequisite (id) VALUES (1000107);
+            INSERT INTO prerequisite_feat (prerequisite_id, feat_id) VALUES (1000107, 108); -- Weapon Specialization [General]
+            INSERT INTO prerequisite_item (prerequisite_id, item_id) VALUES (1000107, 204); -- Bastard Sword [Weapon]
+            UPDATE feat_pc SET character_card_id = 10001, class_feat_id = 510, selected_id = 1000107 WHERE id = 1000107; -- Bonus Feats lv.6
+        </sql>
+
+
+        <!-- feats -->
 
     </changeSet>
 </databaseChangeLog>

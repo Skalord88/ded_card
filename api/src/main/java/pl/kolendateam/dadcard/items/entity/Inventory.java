@@ -68,6 +68,14 @@ public class Inventory {
 
   @ManyToMany
   @JoinTable(
+    name = "quiver",
+    joinColumns = @JoinColumn(name = "inventory_id"),
+    inverseJoinColumns = @JoinColumn(name = "item_id")
+  )
+  List<WondrousItems> quiver;
+
+  @ManyToMany
+  @JoinTable(
     name = "backpack",
     joinColumns = @JoinColumn(name = "inventory_id"),
     inverseJoinColumns = @JoinColumn(name = "item_id")
@@ -124,6 +132,7 @@ public class Inventory {
     this.weaponFive = weapon;
     WondrousItems item = new WondrousItems(4);
     this.backpack = new ArrayList<WondrousItems>();
+    this.quiver = new ArrayList<WondrousItems>();
     backpack.add(item);
     this.head = item;
     this.neck = item;

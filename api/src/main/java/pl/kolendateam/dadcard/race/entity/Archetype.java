@@ -59,5 +59,7 @@ public class Archetype implements Serializable {
 
   byte levelAdjustment;
 
+  Integer hd;
+
   String avatarUrl;
 }

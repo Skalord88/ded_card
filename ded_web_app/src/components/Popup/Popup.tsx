@@ -19,13 +19,13 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
   };
 
   if (bonusList) {
-    const totBonus: string = signAndCountToString([
-      Math.floor(bonusList.reduce((acc, item) => acc + item.bonus, 0))
-    ]);
+    const totBonus: string = signAndCountToString([bonusList.reduce((acc, item) => acc + Math.floor(item.bonus), 0)]);
+    
     const bonusTexts: string[] = bonusList.map((item) => {
       const sign = item.bonus >= 0 ? "+" : "";
-      return `${sign}${item.bonus} ${item.pop.text}`;
+      return `${sign}${Math.floor(item.bonus)} ${item.pop.text}`;
     });
+    // console.log("totBonus", totBonus, "bonusTexts", bonusTexts);
     return (
       // <div>
       <span

@@ -7,10 +7,10 @@ import { Popup } from "../Popup/Popup";
 import { Dices } from "lucide-react";
 
 export type ThrowDicePropsWeapon = {
-  position: string,
+  position: string;
   weapon: Weapon;
   listBab: TotAndBonusElement[][];
-  listDamage: number;
+  listDamage: TotAndBonusElement[];
   // counter?: number;
 };
 export type ThrowDiceProps = {
@@ -31,9 +31,10 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
   }, [weapons, target]);
 
   const throwAction = () => {
-    const arrayOfDice = weapons.flatMap((w) =>
-      w ? w.listBab.map((l) => throwDice(20)) : []
+    const arrayOfDice = weapons.flatMap(
+      (w) => w?.listBab?.map(() => throwDice(20)) ?? []
     );
+
     setThrownDice(arrayOfDice);
   };
 
@@ -45,10 +46,21 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
         </Button>
         {thrownDice &&
           weapons.map((w, indexW) => {
-            if(w)
+            if (!w?.listBab) return null;
+
+            const diceOffset = weapons
+              .slice(0, indexW)
+              .reduce(
+                (total, weapon) => total + (weapon?.listBab?.length ?? 0),
+                0
+              );
+
             return w.listBab.map((babGroup, indexBab) => {
-              const diceRoll = thrownDice[indexBab];
-              const damage = w.listDamage;
+              const diceRoll = thrownDice[diceOffset + indexBab];
+              const damage = w.listDamage?.reduce(
+                (totD, dam) => totD + dam.bonus,
+                0
+              );
               const bab = babGroup.reduce((totB, bon) => totB + bon.bonus, 0);
 
               const tot = diceRoll + bab;
@@ -92,21 +104,25 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
                     key={`${indexW}-${indexBab}`}
                     className="rpgui-container-framed golden"
                   >
-                    <p>
-                      <Dices />
+                    <div>
+                      <span>
+                        <Dices />
+                      </span>
 
                       <Popup text={"R " + tot} popText={{ text: textResult }} />
-                    </p>
+                    </div>
                     <p>{result}</p>
 
                     {dicesDamage && (
-                      <p>
-                        <Dices />
+                      <div>
+                        <span>
+                          <Dices />
+                        </span>
                         <Popup
                           text={"D " + totDiceDamamge}
                           popText={{ text: textResultDamage ?? "" }}
                         />
-                      </p>
+                      </div>
                     )}
                   </div>
                 );
@@ -164,30 +180,39 @@ export const ThrowDice: React.FC<ThrowDiceProps> = ({
                     key={`${indexW}-${indexBab}`}
                     className="rpgui-container-framed golden"
                   >
-                    <p style={{ color: "yellow" }}>
-                      <Dices /> {diceRoll}
+                    <div style={{ color: "yellow" }}>
+                      <span>
+                        <Dices />
+                      </span>{" "}
+                      {diceRoll}
                       {" on dice, crit!"}
-                    </p>
+                    </div>
 
-                    <p>
-                      <Dices />
+                    <div>
+                      <span>
+                        <Dices />
+                      </span>
                       <Popup
                         text={"R " + critTot}
                         popText={{
                           text: critConfirmationText
                         }}
                       />
-                    </p>
+                    </div>
 
-                    <p>{result}</p>
+                    <div>
+                      <p>{result}</p>
+                    </div>
 
-                    <p>
-                      <Dices />{" "}
+                    <div>
+                      <span>
+                        <Dices />
+                      </span>{" "}
                       <Popup
                         text={"D " + totDicesDamage}
                         popText={{ text: textDiceDamage }}
                       />
-                    </p>
+                    </div>
                   </div>
                 );
               }

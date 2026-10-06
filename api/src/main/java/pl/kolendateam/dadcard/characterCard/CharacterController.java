@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import pl.kolendateam.dadcard.abilitys.AbilitysController;
 import pl.kolendateam.dadcard.attack.repository.AttacksRepository;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CreateCharacterDTO;
@@ -34,6 +35,7 @@ import pl.kolendateam.dadcard.spells.repository.SpellsTableRepository;
 @RequestMapping("character-card")
 public class CharacterController {
 
+  private final AbilitysController abilitysController;
   ClassRepository classRepository;
   CharacterRepository characterRepository;
   ClassPcRepository classPcRepository;
@@ -56,7 +58,8 @@ public class CharacterController {
     InventoryRepository inventoryRepository,
     AttacksRepository attacksRepository,
     ItemsRepository itemsRepository,
-    BookRepository bookRepository
+    BookRepository bookRepository,
+    AbilitysController abilitysController
   ) {
     this.characterRepository = characterRepository;
     this.classRepository = classRepository;
@@ -68,6 +71,7 @@ public class CharacterController {
     this.attacksRepository = attacksRepository;
     this.itemsRepository = itemsRepository;
     this.bookRepository = bookRepository;
+    this.abilitysController = abilitysController;
   }
 
   @GetMapping(value = "/list")
