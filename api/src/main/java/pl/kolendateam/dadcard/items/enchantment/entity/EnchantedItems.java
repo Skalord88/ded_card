@@ -99,4 +99,8 @@ public class EnchantedItems implements Serializable {
 
     System.out.println("Assigned item: " + this.item);
   }
+
+  public EnchantedItems(int itemId) {
+    this.item = new Item(itemId);
+  }
 }

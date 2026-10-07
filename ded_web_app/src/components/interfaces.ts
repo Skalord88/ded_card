@@ -222,6 +222,11 @@ export interface WonderousItem extends Item {
   modifiers: Prerequisite | null;
 }
 
+export type ItemInPack = {
+  item: EnchantedItem;
+  quantity: number;
+}
+
 export type Inventory = {
   armor: Armor; // 0
   shield: Shield; // 1
@@ -240,6 +245,7 @@ export type Inventory = {
   cloak: WonderousItem; // 14
   belt: WonderousItem; // 15
   legs: WonderousItem; // 16
+  quiver: ItemInPack[]; // 17
 
   // hands: WonderousItem[]; // 11
 }

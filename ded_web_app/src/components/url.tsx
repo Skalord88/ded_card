@@ -1,7 +1,8 @@
 const url: string =
   // "http://3.76.215.24:8080/";
   // 'http://localhost:8080/';
-  "http://192.168.0.107:8080/";
+  // "http://192.168.0.107:8080/";
+  "http://192.168.0.104:8080/";
   // "http://192.168.0.106:8080/";
 
 export const urlChar = (charId: string): string => {

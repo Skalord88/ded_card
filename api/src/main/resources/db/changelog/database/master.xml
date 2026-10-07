@@ -15,6 +15,7 @@
     <include file="feats/001_feat_create.xml" relativeToChangelogFile="true"/>
     <include file="feats/001_feat_pc_create.xml" relativeToChangelogFile="true"/>
     <include file="inventory/001_inventory_create.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/001_item_in_pack_create.xml" relativeToChangelogFile="true"/>
     <include file="items/001_item_create.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/001_prerequisite_create.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/001_prerequisite_skill_create.xml" relativeToChangelogFile="true"/>
@@ -64,6 +65,7 @@
     <include file="charactercard/003_character_archetype_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_sub_race_alignment_deity_region_keys.xml" relativeToChangelogFile="true"/>
     <include file="charactercard/003_character_domains_keys.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/003_backpack_keys.xml" relativeToChangelogFile="true"/>
     <include file="inventory/003_inventory_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_character_keys.xml" relativeToChangelogFile="true"/>
     <include file="class/003_class_pc_character_card_keys.xml" relativeToChangelogFile="true"/>
@@ -72,7 +74,6 @@
     <include file="feats/003_class_feat_keys.xml" relativeToChangelogFile="true"/>
     <include file="feats/003_feat_keys.xml" relativeToChangelogFile="true"/>
     <include file="feats/003_feat_pc_keys.xml" relativeToChangelogFile="true"/>
-    <include file="inventory/003_backpack_keys.xml" relativeToChangelogFile="true"/>
     <include file="items/003_items_spells_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_feat_keys.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/003_prerequisite_items_keys.xml" relativeToChangelogFile="true"/>
@@ -111,6 +112,7 @@
     <include file="feats/004_prerequisite_in_class_feat_insert.xml" relativeToChangelogFile="true"/>
     <include file="feats/004_prerequisite_in_feat_mod_preList_toSel_sel_insert.xml" relativeToChangelogFile="true"/>
     <include file="inventory/004_inventory_insert.xml" relativeToChangelogFile="true"/>
+    <include file="inventory/004_item_in_pack_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_insert.xml" relativeToChangelogFile="true"/>
     <include file="prerequisite/004_prerequisite_skill_insert.xml" relativeToChangelogFile="true"/>
     <include file="race/004_alignment_insert.xml" relativeToChangelogFile="true"/>

@@ -1,6 +1,4 @@
 import { Fragment } from "react/jsx-runtime";
-import { Skill } from "../../Skills/interface/Skill";
-import { Study } from "../../Skills/interface/Study";
 import {
   SummaryCharProps
 } from "../SummaryChar";
@@ -11,7 +9,6 @@ import {
   COMPETENCE_MODIFIER,
   INSIGHT_BONUS,
   LUCK_MODIFIER,
-  ModifierEnum,
   MORALE_MODIFIER,
   PROFANE_MODIFIER,
   RACIAL_BONUS,

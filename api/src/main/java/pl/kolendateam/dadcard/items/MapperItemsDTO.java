@@ -12,10 +12,12 @@ import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.InventoryDTO;
 import pl.kolendateam.dadcard.items.dto.ItemDTO;
+import pl.kolendateam.dadcard.items.dto.ItemInPackDTO;
 import pl.kolendateam.dadcard.items.enchantment.dto.EnchantedItemsDTO;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.Inventory;
 import pl.kolendateam.dadcard.items.entity.Item;
+import pl.kolendateam.dadcard.items.entity.ItemInPack;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -48,9 +50,30 @@ public class MapperItemsDTO {
     return new WondrousItemsDTO((WondrousItems) item);
   }
 
+  public static ItemInPackDTO toItemInPackDTO(ItemInPack item) {
+    if (item == null) return new ItemInPackDTO(item);
+    return new ItemInPackDTO(item);
+  }
+
   public static InventoryDTO toInventoryDTO(Inventory inventory) {
     if (inventory == null) return new InventoryDTO();
     return new InventoryDTO(inventory);
+  }
+
+  public static ArrayList<ItemInPackDTO> toListItemInPackDTO(
+    List<ItemInPack> items
+  ) {
+    ArrayList<ItemInPackDTO> itemsListDTO = new ArrayList<ItemInPackDTO>();
+
+    if (items != null) {
+      items.forEach(item -> {
+        if (item instanceof ItemInPack) {
+          itemsListDTO.add(new ItemInPackDTO((ItemInPack) item));
+        }
+      });
+    }
+
+    return itemsListDTO;
   }
 
   public static ArrayList<WondrousItemsDTO> toListWondrousItemsDTO(

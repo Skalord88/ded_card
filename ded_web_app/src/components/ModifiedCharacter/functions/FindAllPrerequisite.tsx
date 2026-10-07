@@ -58,6 +58,12 @@ export const findAllPrerequisite = (
     inventory.shield &&
       inventory.shield.modifiers !== null &&
       allPrerequisite.push(inventory.shield.modifiers);
+    inventory.head &&
+      inventory.head.modifiers !== null &&
+      allPrerequisite.push(inventory.head.modifiers);
+    inventory.neck &&
+      inventory.neck.modifiers !== null &&
+      allPrerequisite.push(inventory.neck.modifiers);
   }
 
   if (attacks) {

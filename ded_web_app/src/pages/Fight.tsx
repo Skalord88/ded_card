@@ -509,6 +509,19 @@ const ActionMenu: React.FC<ActionMenuProps> = ({ charAB, optionAction }) => {
                 listBabBonus={actualListBab}
                 listDamage={actualListDamage}
               />
+              
+              {att.element?.weaponRanged && charAB && charAB[0] && (
+                <>
+                <p>Quiver:</p>
+                  {charAB[0].inventory?.quiver?.map((q, indexQ) => (
+                    <div key={indexQ}>
+                      <p>
+                        {q.quantity}x {q.item.name}
+                      </p>
+                    </div>
+                  ))}
+                </>
+              )}
             </div>
           );
         })}

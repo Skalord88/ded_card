@@ -68,6 +68,13 @@
       <!-- <column name="item_id" value="43" /> -->
     </insert>
 
+    <!-- Arrow -->
+    <insert tableName="enchanted_items">
+      <column name="name" value="Arrow" />
+      <column name="id" value="2009" />
+      <!-- <column name="item_id" value="133" /> -->
+    </insert>
+
     <!-- Puli -->
 
     <insert tableName="enchanted_items">

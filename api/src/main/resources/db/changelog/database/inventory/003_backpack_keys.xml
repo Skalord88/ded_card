@@ -4,25 +4,34 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
     <changeSet id="003_backpack_keys" author="oscar">
-        <addForeignKeyConstraint baseTableName="backpack"
+
+        <addForeignKeyConstraint
+            baseTableName="backpack"
             baseColumnNames="inventory_id"
-            constraintName="fk_inventory_backpack_inventory"
-            referencedTableName="item"
+            constraintName="fk_backpack_inventory"
+            referencedTableName="inventory"
             referencedColumnNames="id" />
-        <addForeignKeyConstraint baseTableName="backpack"
+
+        <addForeignKeyConstraint
+            baseTableName="backpack"
             baseColumnNames="item_id"
-            constraintName="fk_inventory_backpack_backpack"
+            constraintName="fk_backpack_item"
             referencedTableName="item"
             referencedColumnNames="id" />
-        <addForeignKeyConstraint baseTableName="quiver"
+
+        <addForeignKeyConstraint
+            baseTableName="quiver"
             baseColumnNames="inventory_id"
-            constraintName="fk_inventory_quiver_inventory"
-            referencedTableName="item"
+            constraintName="fk_quiver_inventory"
+            referencedTableName="inventory"
             referencedColumnNames="id" />
-        <addForeignKeyConstraint baseTableName="quiver"
-            baseColumnNames="item_id"
-            constraintName="fk_inventory_quiver_quiver"
-            referencedTableName="item"
+
+        <addForeignKeyConstraint
+            baseTableName="quiver"
+            baseColumnNames="item_in_pack_id"
+            constraintName="fk_quiver_item_in_pack"
+            referencedTableName="item_in_pack"
             referencedColumnNames="id" />
-        </changeSet>
+
+    </changeSet>
 </databaseChangeLog>

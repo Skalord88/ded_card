@@ -86,6 +86,8 @@ export const modifiedCharacter = (
   const attacks: Attacks = newAttacks ?? char.attacks;
   const skills: SkillCharacter[] = newSkills ?? char.skillsCharacter;
 
+  // console.log("inventory", inventory)
+
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
     race,
     archetypes,

@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.items.dto;
 import java.io.Serializable;
 import java.util.ArrayList;
 import lombok.NoArgsConstructor;
+import pl.kolendateam.dadcard.items.MapperItems;
 import pl.kolendateam.dadcard.items.MapperItemsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
 import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
@@ -25,6 +26,7 @@ public class InventoryDTO implements Serializable {
   public WeaponsDTO weaponThree;
   public WeaponsDTO weaponFour;
   public WeaponsDTO weaponFive;
+  public ArrayList<ItemInPackDTO> quiver;
   public ArrayList<WondrousItemsDTO> backpack;
   public WondrousItemsDTO head;
   public WondrousItemsDTO neck;
@@ -86,8 +88,14 @@ public class InventoryDTO implements Serializable {
         ? MapperItemsDTO.toWeaponDTO(inventory.getWeaponFive())
         : null;
 
+    this.quiver =
+      inventory.getQuiver() != null && inventory.getQuiver().isEmpty() == false
+        ? MapperItemsDTO.toListItemInPackDTO(inventory.getQuiver())
+        : new ArrayList<ItemInPackDTO>();
+
     this.backpack =
-      inventory.getBackpack() != null
+      inventory.getBackpack() != null &&
+        inventory.getBackpack().isEmpty() == false
         ? MapperItemsDTO.toListWondrousItemsDTO(inventory.getBackpack())
         : new ArrayList<WondrousItemsDTO>();
 

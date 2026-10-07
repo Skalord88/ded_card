@@ -61,6 +61,13 @@
         </update>
 
         <update tableName="enchanted_items">
+            <!-- Arrow -->
+            <column name="item_id" valueNumeric="133" />
+        <where>id =
+            2009</where>
+        </update>
+
+        <update tableName="enchanted_items">
             <!-- elven chain +2 -->
             <column name="item_id" valueNumeric="503" />
         <where>id =
@@ -265,22 +272,22 @@
             <!-- Crossbow, light +1 -->
             <column name="item_id" valueNumeric="20" />
         <where>id =
-            1061</where>
+            1062</where>
         </update>
         <!-- Mirek -->
 
         <!-- Specific Armors -->
         <update tableName="enchanted_items">
             <!-- Adamantine Breastplate -->
-  <column name="item_id" valueNumeric="513" />
-  <where>id =
+        <column name="item_id" valueNumeric="513" />
+        <where>id =
             100000</where>
         </update>
 
         <update tableName="enchanted_items">
             <!-- Banded Mail of Luck -->
-  <column name="item_id" valueNumeric="521" />
-  <where>id =
+        <column name="item_id" valueNumeric="521" />
+        <where>id =
             100001</where>
         </update>
 

@@ -1,0 +1,29 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.7"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
+
+    <changeSet id="004_item_in_pack_insert" author="oscar">
+        <insert tableName="item_in_pack">
+            <!-- Rysio quiver -->
+            <column name="id" value="10101" />
+            <column name="item_id" value="2009" />
+            <!-- Arrow x4 -->
+            <column name="quantity" value="4" />
+        </insert>
+        <insert tableName="item_in_pack">
+            <!-- Rysio quiver -->
+            <column name="id" value="10102" />
+            <column name="item_id" value="6133" />
+            <!-- Arrow +1 x4 -->
+            <column name="quantity" value="4" />
+        </insert>
+        <insert tableName="item_in_pack">
+            <!-- Rysio quiver -->
+            <column name="id" value="10103" />
+            <column name="item_id" value="7133" />
+            <!-- Arrow +2 x4 -->
+            <column name="quantity" value="4" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

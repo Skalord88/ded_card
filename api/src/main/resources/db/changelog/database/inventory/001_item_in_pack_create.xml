@@ -3,20 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.7 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.7.xsd">
 
-    <changeSet id="002_backpack_create" author="oscar">
-        <createTable tableName="backpack">
-            <column name="inventory_id" type="int">
-                <constraints nullable="true" />
+    <changeSet id="001_item_in_pack_create" author="oscar">
+        <createTable tableName="item_in_pack">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false" />
             </column>
             <column name="item_id" type="int">
                 <constraints nullable="true" />
             </column>
-        </createTable>
-        <createTable tableName="quiver">
-            <column name="inventory_id" type="int">
-                <constraints nullable="true" />
-            </column>
-            <column name="item_in_pack_id" type="int">
+            <column name="quantity" type="int">
                 <constraints nullable="true" />
             </column>
         </createTable>

@@ -5,6 +5,19 @@
 
     <changeSet id="005_backpack_insert" author="oscar">
 
+        <insert tableName="quiver">
+            <column name="inventory_id" value="101" />
+            <column name="item_in_pack_id" value="10101" />
+        </insert>
+        <insert tableName="quiver">
+            <column name="inventory_id" value="101" />
+            <column name="item_in_pack_id" value="10102" />
+        </insert>
+        <insert tableName="quiver">
+            <column name="inventory_id" value="101" />
+            <column name="item_in_pack_id" value="10103" />
+        </insert>
+
         <!-- <insert tableName="backpack">
             <column name="inventory_id" value="101" />
             <column name="item_id" value="4" />

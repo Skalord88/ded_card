@@ -7,7 +7,9 @@ import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
 import pl.kolendateam.dadcard.items.armor.entity.Armors;
 import pl.kolendateam.dadcard.items.armor.entity.Shields;
 import pl.kolendateam.dadcard.items.dto.ItemDTO;
+import pl.kolendateam.dadcard.items.dto.ItemInPackDTO;
 import pl.kolendateam.dadcard.items.entity.Item;
+import pl.kolendateam.dadcard.items.entity.ItemInPack;
 import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 import pl.kolendateam.dadcard.items.wondrous_items.dto.WondrousItemsDTO;
@@ -37,6 +39,21 @@ public class MapperItems {
     WondrousItems item = new WondrousItems(itemDTO);
 
     return item;
+  }
+
+  public static List<ItemInPack> toListItemInPack(List<ItemInPackDTO> items) {
+    List<ItemInPack> itemsList = new ArrayList<ItemInPack>();
+
+    if (items != null) {
+      items.forEach(item -> {
+        if (item instanceof ItemInPackDTO) {
+          ItemInPack itemInPack = new ItemInPack(item);
+          itemsList.add(itemInPack);
+        }
+      });
+    }
+
+    return itemsList;
   }
 
   public static List<WondrousItems> toListItems(
