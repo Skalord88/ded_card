@@ -33,10 +33,7 @@ public class MapperAbilitys {
     LevelAbilitysDTO levelAbilitysDTO
   ) {
     if (levelAbilitysDTO != null) {
-      return new LevelAbilitys(
-        levelAbilitysDTO.level,
-        levelAbilitysDTO.abilitys
-      );
+      return new LevelAbilitys(levelAbilitysDTO);
     }
     return new LevelAbilitys();
   }
@@ -45,10 +42,7 @@ public class MapperAbilitys {
     LevelAbilitys levelAbilitys
   ) {
     if (levelAbilitys != null) {
-      return new LevelAbilitysDTO(
-        levelAbilitys.getLevel(),
-        levelAbilitys.getAbilitys()
-      );
+      return new LevelAbilitysDTO(levelAbilitys);
     }
     return new LevelAbilitysDTO();
   }

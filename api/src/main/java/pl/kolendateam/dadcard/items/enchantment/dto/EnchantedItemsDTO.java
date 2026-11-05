@@ -3,9 +3,16 @@ package pl.kolendateam.dadcard.items.enchantment.dto;
 import java.util.List;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import pl.kolendateam.dadcard.items.armor.dto.ArmorsDTO;
+import pl.kolendateam.dadcard.items.armor.dto.ShieldsDTO;
+import pl.kolendateam.dadcard.items.armor.entity.Armors;
+import pl.kolendateam.dadcard.items.armor.entity.Shields;
+import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.enchantment.MapperEnchantment;
 import pl.kolendateam.dadcard.items.enchantment.entity.EnchantedItems;
 import pl.kolendateam.dadcard.items.entity.MaterialEnum;
+import pl.kolendateam.dadcard.items.weapons.dto.WeaponsDTO;
+import pl.kolendateam.dadcard.items.weapons.entity.Weapons;
 
 @ToString
 @NoArgsConstructor
@@ -48,5 +55,16 @@ public class EnchantedItemsDTO {
     this.cost =
       enchantedItems.getCost() != null ? enchantedItems.getCost() : null;
     this.description = enchantedItems.getDescription();
+
+    this.item =
+      enchantedItems.getItem() != null
+        ? enchantedItems.getItem() instanceof Weapons
+          ? new WeaponsDTO((Weapons) enchantedItems.getItem())
+          : enchantedItems.getItem() instanceof Armors
+            ? new ArmorsDTO((Armors) enchantedItems.getItem())
+            : enchantedItems.getItem() instanceof Shields
+              ? new ShieldsDTO((Shields) enchantedItems.getItem())
+              : new ItemDTO(enchantedItems.getItem())
+        : null;
   }
 }

@@ -22,7 +22,8 @@
             <column name="abilitys"
                 value="{
                 &quot;constitution&quot; : 2,
-                &quot;charisma&quot; : -2
+                &quot;charisma&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="text" value="Dwarf races modifiers" />
         </insert>
@@ -35,11 +36,12 @@
             <column name="abilitys"
                 value="{
                 &quot;dexterity&quot; : 2,
-                &quot;constitution&quot; : -2
+                &quot;constitution&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="saving_throw"
         value="[{
-        &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
+        &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;ENCHANTMENT&quot; ]
     }]" />
@@ -56,7 +58,8 @@
                 &quot;strength&quot; : 4,
                 &quot;intelligence&quot; : -2,
                 &quot;wisdom&quot; : -2,
-                &quot;charisma&quot; : -2
+                &quot;charisma&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="text" value="Orc races modifiers" />
         </insert>
@@ -69,7 +72,8 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot; : -2,
-                &quot;constitution&quot; : 2
+                &quot;constitution&quot; : 2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="text" value="Gnome races modifiers" />
         </insert>
@@ -82,11 +86,12 @@
             <column name="abilitys"
                 value="{
                 &quot;strength&quot; : -2,
-                &quot;dexterity&quot; : 2
+                &quot;dexterity&quot; : 2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="saving_throw"
         value="[{
-        &quot;modifierType&quot;: &quot;MORALE_MODIFIER&quot;,
+        &quot;modifierBonus&quot;: &quot;MORALE_MODIFIER&quot;,
         &quot;bonus&quot; : 2,
         &quot;target&quot; : [ &quot;FEAR&quot; ]
     }]" />

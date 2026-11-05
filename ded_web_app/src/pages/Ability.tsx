@@ -22,13 +22,14 @@ export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 export function Ability() {
   const { charId } = useParams();
 
-  const { moddedCharacter, abilitys, updateAbility } = useCharacter();
+  const { moddedCharacter, abilitys, abilitysLv, updateAbility } =
+    useCharacter();
 
   const handleData = (
     option: number,
     ability: keyof Omit<Abilitys, "modifierBonus">
   ) => {
-    updateAbility(ability, option);
+    updateAbility(ability, option, abilitysLv);
   };
 
   const handleSubmit = () => {
@@ -78,6 +79,7 @@ export function Ability() {
                 </Fragment>
               ))}
             </p>
+
             <div
               key={"abilitys"}
               style={{
@@ -94,6 +96,8 @@ export function Ability() {
               ).map(([key, value]) => {
                 if (typeof value !== "number") return null;
 
+                // console.log("abilitys", key, value, moddedCharacter?.abilitysMod);
+
                 const toList: TotAndBonusElement[] = moddedCharacter
                   ? createTotAndBonusElement(
                       moddedCharacter.abilitysMod ?? {},
@@ -101,6 +105,8 @@ export function Ability() {
                       []
                     ).filter((e): e is TotAndBonusElement => e.pop.text === key)
                   : [];
+
+                // console.log("toList", [{ bonus: value, pop: BASE_VALUE }, ...toList]);
 
                 return (
                   <div key={key} className="rpgui-container-framed grey">

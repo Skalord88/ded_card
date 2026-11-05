@@ -1,4 +1,6 @@
-import { AttackSelection, ClickMenu } from "../../../pages/Fight";
+import {
+ } from "../../../pages/Fight";
+import { AttackSelection, ClickMenu } from "../component/ActionMenu";
 
 const weaponMap = {
   w1: { group: "I", index: 0 },

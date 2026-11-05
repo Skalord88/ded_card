@@ -17,6 +17,12 @@
                 &quot;wisdom&quot;: 8,
                 &quot;charisma&quot;: 10
             }" />
+            <column name="character_level_abilitys"
+                value="[
+                {&quot;level&quot;: 4, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}},
+                {&quot;level&quot;: 8, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}},
+                {&quot;level&quot;: 12, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}}
+            ]" />
             <column name="sub_race_id" value="502" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->
@@ -168,7 +174,7 @@
             <column name="sub_race_id" value="901" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="1000" /> -->
-             <!-- <column name="attacks_id" value="1000" /> -->
+            <!-- <column name="attacks_id" value="1000" /> -->
             <column name="alignment_id" value="8" />
             <column name="experience" value="0" />
             <column name="treasure" value="0" />
@@ -190,7 +196,7 @@
             <column name="sub_race_id" value="402" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="1001" /> -->
-             <!-- <column name="attacks_id" value="1001" /> -->
+            <!-- <column name="attacks_id" value="1001" /> -->
             <column name="alignment_id" value="9" />
             <column name="experience" value="0" />
             <column name="treasure" value="0" />

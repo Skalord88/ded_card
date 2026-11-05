@@ -1,4 +1,5 @@
-import { Abilitys } from "../../Abilitys/Interface";
+import { lvAbilityToPrerequisite } from "../../Abilitys/Functions";
+import { Abilitys, LevelAbilitys } from "../../Abilitys/Interface";
 import { getTotalClassLevel } from "../../ClassPc/Function/Function";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { findIdsFeatsInList } from "../../Feats/FindFeatsInList";
@@ -68,6 +69,7 @@ export const modifiedCharacter = (
   skillsFromDb?: Skill[],
   studiesFromDb?: Study[],
   newAbilitys?: Abilitys,
+  newLvAbility?: LevelAbilitys[],
   newRace?: SubRace,
   newArchetypes?: Archetype[],
   newFeatsList?: FeatPc[],
@@ -78,6 +80,7 @@ export const modifiedCharacter = (
 ): ModifiedCharacter => {
   const name: string = nome ?? char.characterName;
   const ability: Abilitys = newAbilitys ?? char.abilitys;
+  const lvAbility: LevelAbilitys[] = newLvAbility ?? char.characterLevelAbilitys;
   const race: SubRace = newRace ?? char.race;
   const archetypes: Archetype[] = newArchetypes ?? char.archetypes;
   const featsList: FeatPc[] = newFeatsList ?? char.featsList;
@@ -86,7 +89,11 @@ export const modifiedCharacter = (
   const attacks: Attacks = newAttacks ?? char.attacks;
   const skills: SkillCharacter[] = newSkills ?? char.skillsCharacter;
 
-  // console.log("inventory", inventory)
+  // console.log("lvAbility", lvAbility)
+
+  const lvAbToPrerequisite: Prerequisite[] = lvAbilityToPrerequisite(
+    lvAbility
+  );
 
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
     race,
@@ -110,18 +117,26 @@ export const modifiedCharacter = (
     f?.feats?.some((ft) => ft.id === 105)
   );
 
-  const newAb: BonusResultMap = getBonusResult(allPrerequisite, "abilitys");
+  const newAb: BonusResultMap = getBonusResult([...allPrerequisite, ...lvAbToPrerequisite], "abilitys");
 
+  // console.log("lvAbToPrerequisite", lvAbToPrerequisite)
   // console.log("newAb", newAb)
 
-  const newAbility: Abilitys = addModdedAbilitysToAbilitys(ability, newAb);
+  const newAbility: Abilitys = addModdedAbilitysToAbilitys(ability
+    // , lvAbility
+    , newAb);
 
   const allPrerequisiteWithAbilities: Prerequisite[] =
     createPrerequisiteAbility(
-      allPrerequisite,
+      [...allPrerequisite, ...lvAbToPrerequisite],
       newAbility,
       skillsFromDb,
       studiesFromDb
+    );
+
+    const abilitysMod: BonusResultMap = getBonusResult(
+      allPrerequisiteWithAbilities,
+      "abilitys"
     );
 
   // console.log("allPrerequisiteWithAbilities", allPrerequisiteWithAbilities)
@@ -523,7 +538,7 @@ export const modifiedCharacter = (
     name: name,
     title: title,
     abilitys: newAbility,
-    abilitysMod: newAb,
+    abilitysMod: abilitysMod,
     attackRollMod: newAr,
     damageBonusMod: newDb,
     fortitude: fortitude,
@@ -548,7 +563,7 @@ export const modifiedCharacter = (
 };
 
 export const isToAdd = (key: string): boolean => {
-  return ["Untyped", ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(
+  return ["Untyped", "Increase", ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(
     key
   );
 };

@@ -10,7 +10,7 @@ import {
   useMemo,
   useState
 } from "react";
-import { Abilitys } from "../../Abilitys/Interface";
+import { Abilitys, LevelAbilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Attacks, CharacterPc, Inventory } from "../../interfaces";
@@ -20,12 +20,14 @@ import { urlChar } from "../../url";
 import { modifiedCharacter } from "../functions/ModifiedCharacter";
 import { ModifiedCharacter } from "../interface/ModifiedCharacter";
 import { useData } from "../../Context/Context";
+import { abilityKeys } from "../functions/AddModdedAbilitysToAbilitys";
 
 type CharacterContextValue = {
   character: CharacterPc | null;
   moddedCharacter: ModifiedCharacter | null;
 
   abilitys?: Abilitys;
+  abilitysLv: LevelAbilitys[];
   classes: ClassPc[];
   featsList?: FeatPc[],
   featsPg?: FeatPc[],
@@ -33,9 +35,11 @@ type CharacterContextValue = {
   attacks?: Attacks;
 
   setAbilitys: Dispatch<SetStateAction<Abilitys | undefined>>;
+  setAbilitysLv: Dispatch<SetStateAction<LevelAbilitys[] | undefined>>;
   updateAbility: (
     ability: keyof Omit<Abilitys, "modifierBonus">,
-    value: number
+    value: number,
+    abilitysLv?: LevelAbilitys[]
   ) => void;
 
   setClasses: (classes: ClassPc[]) => void;
@@ -61,6 +65,7 @@ export function CharacterProvider({
   //   useState<ModifiedCharacter | null>(null);
 
   const [abilitys, setAbilitys] = useState<Abilitys | undefined>();
+  const [abilitysLv, setAbilitysLv] = useState<LevelAbilitys[] | undefined>();
   const [race, setRace] = useState<SubRace | undefined>();
   const [archetypes, setArchetypes] = useState<Archetype[] | undefined>([]);
   const [featsList, setFeatsList] = useState<FeatPc[] | undefined>([]);
@@ -95,6 +100,7 @@ useEffect(() => {
     dBskills,
     dBstudies,
     abilitys,
+    abilitysLv,
     race,
     archetypes,
     featsList,
@@ -109,6 +115,7 @@ useEffect(() => {
   dBskills,
   dBstudies,
   abilitys,
+  abilitysLv,
   race,
   archetypes,
   featsList,
@@ -124,8 +131,10 @@ useEffect(() => {
     const char: CharacterPc = response.data;
 
     setCharacter(char);
-
-    setAbilitys(char.abilitys);
+  // if(moddedCharacter){
+    // setAbilitys(char.abilitys);
+    setAbilitys(moddedCharacter?.abilitys ?? char.abilitys);
+    setAbilitysLv(char.characterLevelAbilitys ?? []);
     setRace(char.race);
     setArchetypes(char.archetypes ?? []);
     setFeatsList(char.featsList ?? []);
@@ -133,6 +142,7 @@ useEffect(() => {
     setInventory(char.inventory);
     setAttacks(char.attacks);
     setSkills(char.skillsCharacter ?? []);
+  // }
   } catch (error) {
     console.error(error);
   } finally {
@@ -145,18 +155,29 @@ useEffect(() => {
   }, [charId]);
 
   const updateAbility = (
-    ability: keyof Omit<Abilitys, "modifierBonus">,
-    value: number
-  ) => {
-    setAbilitys((prev) => {
-      if (!prev) return prev;
+  ability: keyof Omit<Abilitys, "modifierBonus">,
+  value: number,
+  lvAbilitys?: LevelAbilitys[]
+) => {
+  setAbilitys((prev) => {
+    if (!prev) return prev;
 
-      return {
-        ...prev,
-        [ability]: value
-      };
+    // Copia i valori base
+    const updated = {
+      ...prev,
+      [ability]: value,
+    };
+
+    // Aggiunge i bonus dei livelli
+    lvAbilitys?.forEach((lv) => {
+      abilityKeys.forEach((key) => {
+        updated[key] += lv.abilitys[key] ?? 0;
+      });
     });
-  };
+
+    return updated;
+  });
+};
 
   return (
     <CharacterContext.Provider
@@ -165,12 +186,14 @@ useEffect(() => {
         moddedCharacter,
 
         abilitys,
+        abilitysLv: abilitysLv ?? [],
         classes,
         featsList,
         featsPg: moddedCharacter?.feats,
         skills,
         attacks,
         setAbilitys,
+        setAbilitysLv,
         setClasses,
         setFeatsList,
         setSkills,

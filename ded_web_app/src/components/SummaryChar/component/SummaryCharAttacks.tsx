@@ -5,9 +5,9 @@ import { Popup } from "../../Popup/Popup";
 import { noneWeapon } from "../../variables";
 import { SummaryCharProps } from "../SummaryChar";
 import { TotAndBonus, TotAndBonusElement } from "./TotAndBonus";
-import { createBorder } from "../../../pages/Fight";
 import { AttackOptionsElement } from "../../Fight/function/createAttackOptions";
 import { getAttackColor } from "../../Fight/function/getAttackColor";
+import { createBorder } from "../../Fight/function/createBorder";
 
 export type SummaryCharAttacksTemplateProps = {
   borderText?: string;

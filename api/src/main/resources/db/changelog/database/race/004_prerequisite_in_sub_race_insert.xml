@@ -18,7 +18,8 @@
             <column name="abilitys"
                 value="{
                 &quot;dexterity&quot; : -2,
-                &quot;charisma&quot; : 2
+                &quot;charisma&quot; : 2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <!-- <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
@@ -36,7 +37,8 @@
             <column name="text" value="Grey Dwarf races modifiers" />
             <column name="abilitys"
                 value="{
-                &quot;charisma&quot; : -2
+                &quot;charisma&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <!-- <column name="saving_throw"
                 value="[{
@@ -260,7 +262,8 @@
                 value="{
                 &quot;strength&quot; : 2,
                 &quot;constitution&quot; : 2,
-                &quot;charisma&quot; : -2
+                &quot;charisma&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :2,
@@ -289,7 +292,8 @@
                 value="{
                 &quot;strength&quot; : -2,
                 &quot;dexterity&quot; : 2,
-                &quot;charisma&quot; : -2
+                &quot;charisma&quot; : -2,
+                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
         </insert>
 

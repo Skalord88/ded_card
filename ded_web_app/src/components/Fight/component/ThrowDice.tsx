@@ -1,10 +1,10 @@
-import { Button } from "react-bootstrap";
-import { Weapon } from "../interfaces";
-import { TotAndBonusElement } from "../SummaryChar/component/TotAndBonus";
-import { criticalDice, CriticalHit, DiceNumber, throwDice } from "./Functions";
-import { useEffect, useState } from "react";
-import { Popup } from "../Popup/Popup";
 import { Dices } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Button } from "react-bootstrap";
+import { criticalDice, CriticalHit, DiceNumber, throwDice } from "../../Dice/Functions";
+import { Weapon } from "../../interfaces";
+import { Popup } from "../../Popup/Popup";
+import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 
 export type ThrowDicePropsWeapon = {
   position: string;

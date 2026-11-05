@@ -1,5 +1,5 @@
 import { ItemToSend } from "../pages/Items";
-import { Abilitys } from "./Abilitys/Interface";
+import { Abilitys, LevelAbilitys } from "./Abilitys/Interface";
 import { Alignment } from "./Alignment/Alignment";
 import { ArmorClass } from "./Armor/interface/ArmorInterface";
 import { ClassPc } from "./ClassPc/Interface/ClassPcLevel";
@@ -26,6 +26,7 @@ export type CharacterPc = {
   race: SubRace;
   archetypes: Archetype[]
   abilitys: Abilitys;
+  characterLevelAbilitys: LevelAbilitys[];
   skillsCharacter: SkillCharacter[];
   featsList: FeatPc[];
   items: Item[];

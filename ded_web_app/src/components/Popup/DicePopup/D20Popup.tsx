@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ThrowDice20 } from "../../Dice/Functions";
-import { AllModifiersInThrow, DicePopupProps } from "./Interface";
-import { ThrowDice } from "../../Dice/ThrowDice";
+import { ThrowDice } from "../../Fight/component/ThrowDice";
 import { D12Popup } from "./D12Popup";
+import { AllModifiersInThrow, DicePopupProps } from "./Interface";
 
 export const D20Popup: React.FC<DicePopupProps> = ({
   textOrWeapon,

@@ -2,7 +2,6 @@ package pl.kolendateam.dadcard.modifier.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import pl.kolendateam.dadcard.items.enchantment.entity.Enchantment;
 
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ModifierEnum {

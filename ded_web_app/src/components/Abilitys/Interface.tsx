@@ -13,3 +13,8 @@ export type Abilitys = {
 export type AbilitysProps = {
   abilitys: Abilitys
 }
+
+export type LevelAbilitys = {
+  level: number;
+  abilitys: Abilitys;
+}

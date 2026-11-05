@@ -14,9 +14,12 @@ export const createPrerequisiteFromClasses = (
   classPcList: ClassPc[],
   consolog?: boolean
 ): Prerequisite[] => {
+  if(!classPcList || classPcList.length === 0) return allPrerequisite;
   const returnSaving = (save: string, level: number): number => {
     return save === "h" ? 2.5 + (level - 1) * 0.5 : 0 + (level - 1) * 0.75;
   };
+
+  // console.log("classPcList", classPcList)
 
   const prerequisiteClass: Prerequisite[] = classPcList.map((cl) => {
     const className: string = FormattingText(cl.classCharacter.className);

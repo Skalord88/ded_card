@@ -254,10 +254,10 @@ export function CountMonsterArmor(
     armor: ArmorClass
 ): number {
     return 10
-        + armor.armorBonus + armor.shieldBonus
-        + armor.sizeBonus
-        + armor.naturalArmor + armor.deflectionBonuses
-        + armor.dodgeBonus
+        // + armor.armorBonus + armor.shieldBonus
+        // + armor.sizeBonus
+        // + armor.naturalArmor + armor.deflectionBonuses
+        // + armor.dodgeBonus
 }
 
 // export function CountArmor(

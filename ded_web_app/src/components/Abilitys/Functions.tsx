@@ -1,7 +1,8 @@
 import { AttackRoll } from "../Attack/AttackRoll/interface";
 import { Item } from "../interfaces";
+import { ABILITY_MODIFIER } from "../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
-import { Abilitys } from "./Interface";
+import { Abilitys, LevelAbilitys } from "./Interface";
 
 export function abilityAbbreviation(ability: string): string {
   switch (ability) {
@@ -252,3 +253,21 @@ export function AbilitysAndModifiers(
   );
   return moddedAbilitys;
 }
+
+export const lvAbilityToPrerequisite = (lvAbility: LevelAbilitys[]): Prerequisite[] => {
+  return lvAbility.map(lv => {
+    return {
+      id: -1,
+      text: `Level ability increase lv.${lv.level}`,
+      abilitys: {
+        strength: lv.abilitys.strength,
+        dexterity: lv.abilitys.dexterity,
+        constitution: lv.abilitys.constitution,
+        intelligence: lv.abilitys.intelligence,
+        wisdom: lv.abilitys.wisdom,
+        charisma: lv.abilitys.charisma,
+        modifierBonus: ABILITY_MODIFIER
+      }
+    };
+  });
+};

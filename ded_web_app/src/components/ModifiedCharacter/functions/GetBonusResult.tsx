@@ -27,17 +27,15 @@ export type TargetBonus = ModifierEnum | Item;
 //     targets?: TargetBonus[];
 // };
 
-export type BonusSource={
+export type BonusSource = {
+  // key:string;
 
-    // key:string;
+  bonus: number;
 
-    bonus:number;
+  text: string;
 
-    text:string;
-
-    targets?:TargetBonus[];
-
-}
+  targets?: TargetBonus[];
+};
 
 export type BonusResultMap = {
   [modifier: string]: BonusSource[];
@@ -50,101 +48,99 @@ export const getBonusResult = (
   const allModifiers: BonusResultMap = {};
 
   const createBonusResult = (
-  bonus: number,
-  text: ModifierEnum | string,
-  modifier: ModifierEnum | null,
-  targets?: (ModifierEnum | Item)[]
-) => {
+    bonus: number,
+    text: ModifierEnum | string,
+    modifier: ModifierEnum | null,
+    targets?: (ModifierEnum | Item)[]
+  ) => {
+    const key = modifier?.text ?? "Untyped";
 
-  const key = modifier?.text ?? "Untyped";
+    if (!allModifiers[key]) {
+      allModifiers[key] = [];
+    }
 
-  if (!allModifiers[key]) {
-    allModifiers[key] = [];
-  }
+    const bonusText = typeof text === "string" ? text : text.text;
 
-  const bonusText =
-    typeof text === "string" ? text : text.text;
+    if (!targets) {
+      allModifiers[key].push({
+        bonus,
+        text: bonusText
+      });
+    } else {
+      allModifiers[key].push({
+        bonus,
+        text: bonusText,
+        targets
+      });
+    }
+  };
 
-  if (!targets) {
-    allModifiers[key].push({
-      bonus,
-      text: bonusText
-    });
-  } else {
-    allModifiers[key].push({
-      bonus,
-      text: bonusText,
-      targets
-    });
-  }
-};
+  //   const createBonusResult = (
+  //   bonus: number,
+  //   text: string,
+  //   modifier: ModifierEnum,
+  //   targets?: (ModifierEnum | Item)[]
+  // ) => {
+  //     // const key: string = modifier?.text;
+  //     const key: string = modifier?.text ?? "Untyped";
 
-//   const createBonusResult = (
-//   bonus: number,
-//   text: string,
-//   modifier: ModifierEnum,
-//   targets?: (ModifierEnum | Item)[]
-// ) => {
-//     // const key: string = modifier?.text;
-//     const key: string = modifier?.text ?? "Untyped";
+  // allModifiers[key].push({
+  //   bonus,
+  //   text,
+  //   modifierType: modifier,
+  //   targets
+  // });
 
-// allModifiers[key].push({
-//   bonus,
-//   text,
-//   modifierType: modifier,
-//   targets
-// });
+  //     if (!allModifiers[key]) {
+  //       allModifiers[key] = [];
+  //     }
 
-//     if (!allModifiers[key]) {
-//       allModifiers[key] = [];
-//     }
-
-//     if (!targets) {
-//       const newBonusResult: BonusSource = { bonus, text};
-//       allModifiers[key].push(newBonusResult);
-//     } else {
-//       allModifiers[key].push({
-//   bonus,
-//   text,
-//   targets
-// });
-//       // targets.forEach((t) => {
-//       //   const newBonusResult: BonusSource = {
-//       //     bonus,
-//       //     text,
-//       //     source: t
-//       //   };
-//       //   allModifiers[key].push(newBonusResult);
-//       // });
-//     }
-//   };
+  //     if (!targets) {
+  //       const newBonusResult: BonusSource = { bonus, text};
+  //       allModifiers[key].push(newBonusResult);
+  //     } else {
+  //       allModifiers[key].push({
+  //   bonus,
+  //   text,
+  //   targets
+  // });
+  //       // targets.forEach((t) => {
+  //       //   const newBonusResult: BonusSource = {
+  //       //     bonus,
+  //       //     text,
+  //       //     source: t
+  //       //   };
+  //       //   allModifiers[key].push(newBonusResult);
+  //       // });
+  //     }
+  //   };
 
   const createTargets = (
-  prer: Prerequisite,
-  targets: ModifierEnum[]
-): (ModifierEnum | Item)[] => {
-  const trg: (ModifierEnum | Item)[] = [];
+    prer: Prerequisite,
+    targets: ModifierEnum[]
+  ): (ModifierEnum | Item)[] => {
+    const trg: (ModifierEnum | Item)[] = [];
 
-  targets.forEach((t) => {
-    if (t.text === "Item") {
-      if (prer.items) {
-        trg.push(...prer.items);
+    targets.forEach((t) => {
+      if (t.text === "Item") {
+        if (prer.items) {
+          trg.push(...prer.items);
+        }
+      } else if (t.text === "Weapon Type") {
+        if (prer.weaponType) {
+          trg.push(prer.weaponType);
+        }
+      } else if (t.text === "Armor Type") {
+        if (prer.armorType) {
+          trg.push(prer.armorType);
+        }
+      } else {
+        trg.push(t);
       }
-    } else if (t.text === "Weapon Type") {
-      if (prer.weaponType) {
-        trg.push(prer.weaponType);
-      }
-    } else if (t.text === "Armor Type") {
-      if (prer.armorType) {
-        trg.push(prer.armorType);
-      }
-    } else {
-      trg.push(t);
-    }
-  });
+    });
 
-  return trg;
-};
+    return trg;
+  };
 
   // const createTargets = (
   //   prer: Prerequisite,
@@ -259,33 +255,37 @@ export const getBonusResult = (
     }
     if (bonusType === "skillStudy") {
       prer?.skillStudy?.forEach((sS) => {
-          if (!sS.target) {
+        if (!sS.target) {
+          if (consoleLog) {
+            console.log("sS", sS);
+          }
 
-            if (consoleLog) {
-      console.log("sS", sS);
-    }
+          createBonusResult(
+            sS.rank as number,
+            prer.text || "",
+            (sS.modifierBonus as ModifierEnum) || null,
+            [
+              {
+                ...EMPTY_BONUS,
+                text:
+                  sS.skill?.skillName?.text || sS.study?.studyName?.text || ""
+              } as ModifierEnum
+            ]
+          );
+        } else {
+          const trg: (ModifierEnum | Item)[] = createTargets(prer, sS.target);
 
-            createBonusResult(
-              sS.rank as number,
-              prer.text || "",
-              (sS.modifierBonus as ModifierEnum) || null
-              , [{...EMPTY_BONUS, 
-                text: sS.skill?.skillName?.text || sS.study?.studyName?.text || "" 
-              } as ModifierEnum]
-            );
-          } else {
-            const trg: (ModifierEnum | Item)[] = createTargets(prer, sS.target);
+          trg.push({
+            ...EMPTY_BONUS,
+            text: sS.skill?.skillName?.text || sS.study?.studyName?.text || ""
+          } as ModifierEnum);
 
-            trg.push({...EMPTY_BONUS, 
-              text: sS.skill?.skillName?.text || sS.study?.studyName?.text || "" 
-            } as ModifierEnum);
-
-            createBonusResult(
-              sS.rank as number,
-              sS.skill?.skillName?.text || sS.study?.studyName?.text || "",
-              sS.modifierBonus as ModifierEnum,
-              trg
-            );
+          createBonusResult(
+            sS.rank as number,
+            sS.skill?.skillName?.text || sS.study?.studyName?.text || "",
+            sS.modifierBonus as ModifierEnum,
+            trg
+          );
           // }
         }
       });
@@ -310,10 +310,11 @@ export const getBonusResult = (
         });
       }
     }
-    if (consoleLog) {
-      console.log("allModifiers", allModifiers);
-    }
   });
+
+  if (consoleLog) {
+    console.log("allModifiers", allModifiers);
+  }
 
   return allModifiers;
 };
