@@ -16,7 +16,7 @@ export type ArmorModifiers = {
   natural: number;
   dodge: number;
   deflection: number;
-  modifierBonus: ModifierEnum;
+  modifierType: ModifierEnum;
 };
 
 export type InventoryProps = {
@@ -34,7 +34,7 @@ export type ArmorClass = {
 
   bonus: number,
 
-  modifierBonus?: ModifierEnum;
+  modifierType?: ModifierEnum;
 
   target: ModifierEnum[],
 

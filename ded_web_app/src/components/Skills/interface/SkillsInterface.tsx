@@ -1,13 +1,13 @@
 import { Abilitys } from "../../Abilitys/Interface";
-import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Skill } from "./Skill";
+import { Study } from "./Study";
 
-export type Study = {
-  id: number,
-  skill: Skill,
-  studyName: ModifierEnum,
-  newStudy: string
-}
+// export type Study = {
+//   id: number,
+//   skill: Skill,
+//   studyName: ModifierType,
+//   newStudy: string
+// }
 
 export type SkillCharacter = {
   skill: Skill,

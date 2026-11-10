@@ -3,19 +3,9 @@ import {
   SummaryCharProps
 } from "../SummaryChar";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
-import {
-  ALCHEMICAL_BONUS,
-  CIRCUMSTANCE_MODIFIER,
-  COMPETENCE_MODIFIER,
-  INSIGHT_BONUS,
-  LUCK_MODIFIER,
-  MORALE_MODIFIER,
-  PROFANE_MODIFIER,
-  RACIAL_BONUS,
-  RANK_VALUE,
-  SACRED_MODIFIER
-} from "../../Prerequisite/interface/ModifierEnum";
 import { TotAndBonus } from "./TotAndBonus";
+import { listToShow } from "../../Prerequisite/interface/ModifierEnum";
+import { FormattingText } from "../../Formatting/Function";
 
 export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
   modCharacter
@@ -23,18 +13,8 @@ export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
   const skills: SkillStudyTotAndBonusElement[] =
     modCharacter.skillsTotAndBonus || [];
 
-  const listToShow: string[] = [
-    RANK_VALUE.text,
-    ALCHEMICAL_BONUS.text,
-    CIRCUMSTANCE_MODIFIER.text,
-    COMPETENCE_MODIFIER.text,
-    INSIGHT_BONUS.text,
-    LUCK_MODIFIER.text,
-    MORALE_MODIFIER.text,
-    PROFANE_MODIFIER.text,
-    RACIAL_BONUS.text,
-    SACRED_MODIFIER.text
-  ];
+    // console.log("SummaryCharSkills", skills, listToShow);
+
   return (
     <>
       <div>
@@ -47,12 +27,12 @@ export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
               !s.studies &&
               s.list &&
               s.list.length > 0 &&
-              s.list.find((l) => listToShow.includes(l.text || ""))
+              s.list.find((l) => listToShow.includes(l.pop.name || ""))
             ) {
               return (
                 <div key={index}>
                   <span>
-                    {s.skill.skillName.text + ": "}
+                    {FormattingText(s.skill.skillName.name) + ": "}
                     <TotAndBonus show={true} firstSign={true} list={s.list} />
                   </span>
                 </div>
@@ -62,16 +42,16 @@ export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
               return (
                 <div key={index}>
                   <div>
-                    <span>{s.skill.skillName.text + ": "}</span>
+                    <span>{FormattingText(s.skill.skillName.name) + ": "}</span>
                   </div>
                   <div>
                     {s.studies.map((st, indexSt) => {
-                      if (
-                        st.list.find((l) => listToShow.includes(l.text || ""))
-                      )
+                      // if (
+                      //   st.list.find((l) => listToShow.includes(l.pop.name || ""))
+                      // )
                         return (
                           <Fragment key={indexSt}>
-                            <span>{st.study.studyName.text + ": "}</span>
+                            <span>{FormattingText(st.study.studyName.name) + ": "}</span>
                             <TotAndBonus
                               show={true}
                               firstSign={true}

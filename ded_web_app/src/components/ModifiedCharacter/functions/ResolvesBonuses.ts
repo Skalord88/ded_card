@@ -6,7 +6,6 @@ export type ResolvedBonus = {
   bonus: BonusSource;
 };
 
-
 export const resolveBonuses = (
   map: BonusResultMap,
   search?: (string | number)[]
@@ -40,8 +39,8 @@ export const resolveBonuses = (
       );
     }
 
-
-    const selected = chooseBestBonuses(applicable, key);
+// console.log("key", key, "applicable", applicable);
+    const selected = chooseBestBonuses(applicable, key.toUpperCase());
 
     selected.forEach(bonus => {
       result.push({
@@ -55,60 +54,3 @@ export const resolveBonuses = (
 
   return result;
 };
-
-// export type ResolvedBonus = {
-//   key: string;
-//   bonus: BonusSource;
-// };
-
-// export const resolveBonuses = (
-//   map: BonusResultMap,
-//   search?: (string | number)[]
-// ): ResolvedBonus[] => {
-
-//   const result: ResolvedBonus[] = [];
-
-//   Object.entries(map).forEach(([key, values]) => {
-
-//     const applicable =
-//       search && search.length > 0
-//         ? values.filter(v => checkBonusTarget(v, search))
-//         : values.filter(v => !v.targets || v.targets.length === 0);
-
-//     chooseBestBonuses(applicable, key).forEach(bonus => {
-//       result.push({
-//         key,
-//         bonus
-//       });
-//     });
-
-//   });
-
-//   return result;
-// };
-
-// export const resolveBonuses = (
-//     map: BonusResultMap,
-//     search?: (string | number)[]
-// ): BonusSource[] => {
-
-//     let result: BonusSource[] = [];
-
-//     Object.entries(map).forEach(([key, values]) => {
-
-//         // scelgo i bonus applicabili
-//         const applicable =
-//             search && search.length > 0
-//                 ? values.filter(v => checkBonusTarget(v, search))
-//                 : values.filter(v => !v.targets || v.targets.length === 0);
-
-//         if (applicable.length === 0) {
-//             return;
-//         }
-
-//         result.push(...chooseBestBonuses(applicable, key));
-
-//     });
-
-//     return result;
-// };

@@ -5,8 +5,8 @@ import { addToDrop } from "../../functions";
 import { ItemInPack } from "../../interfaces";
 import { ModifiedCharacter } from "../../ModifiedCharacter/interface/ModifiedCharacter";
 import {
-  ENCHANTMENT_BONUS,
-  ModifierEnum
+  ModifierEnum,
+  ModifierType
 } from "../../Prerequisite/interface/ModifierEnum";
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { changePosition } from "../function/changePosition";
@@ -61,7 +61,7 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
     ammo: {
       bonus: number;
       text?: string;
-      pop: ModifierEnum;
+      pop: ModifierType;
     };
   } | null>(null);
 
@@ -135,8 +135,8 @@ export const ActionMenu: React.FC<ActionMenuProps> = ({
         bonus: a.item.enchantmentBonus ?? 0,
         pop:
           a.item.enchantmentBonus !== -1
-            ? ENCHANTMENT_BONUS
-            : { text: "perfect ammo" }
+            ? "ENCHANTMENT_BONUS"
+            : "PERFECT_AMMO"
       }
     });
   };

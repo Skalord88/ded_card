@@ -1,7 +1,7 @@
-import { Abilitys, LevelAbilitys } from "../../Abilitys/Interface";
+import { Abilitys } from "../../Abilitys/Interface";
 import { BonusResultMap } from "./GetBonusResult";
 
-export type AbilityKey = keyof Omit<Abilitys, "modifierBonus">;
+export type AbilityKey = keyof Omit<Abilitys, "modifierType">;
 
 export const abilityKeys: AbilityKey[] = [
   "strength",

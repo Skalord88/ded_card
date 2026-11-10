@@ -2,9 +2,9 @@ import { addTwoAbilitysModifiers } from "../../Abilitys/Functions";
 import { Abilitys } from "../../Abilitys/Interface";
 import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { SavingThrow, Resistance } from "../../Saving/interface";
+import { Resistance, SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
-import { AllModifiers, ModifierAbilityResult, AbilitysEntry, ModifierSaveResult, ModifierTarget, ModifierResult, TargetEntry, ModifierSkillsResult } from "../interface/ModifiedCharacter";
+import { AbilitysEntry, AllModifiers, ModifierAbilityResult, ModifierResult, ModifierSaveResult, ModifierSkillsResult, ModifierTarget, TargetEntry } from "../interface/ModifiedCharacter";
 
 export const modifiersFromPrerequisite = (
   allPrerequisite: Prerequisite[],
@@ -20,7 +20,7 @@ export const modifiersFromPrerequisite = (
   };
 
   const applyAbilitysModifier = (text: string, ab: Abilitys) => {
-    if (!ab.modifierBonus) {
+    if (!ab.modifierType) {
       if (!result["increase"]) {
         result["increase"] = {
           abilitys: ab,
@@ -44,13 +44,13 @@ export const modifiersFromPrerequisite = (
         entity.sources.push(source);
       }
     } else {
-      if (ab.modifierBonus && !result[ab.modifierBonus?.text]) {
-        result[ab.modifierBonus?.text] = {
+      if (ab.modifierType && !result[ab.modifierType?.text]) {
+        result[ab.modifierType?.text] = {
           abilitys: ab,
           sources: []
         } as ModifierAbilityResult;
         const entity: ModifierAbilityResult = result[
-          ab.modifierBonus?.text
+          ab.modifierType?.text
         ] as ModifierAbilityResult;
         const source: AbilitysEntry = {
           text: text,
@@ -59,9 +59,9 @@ export const modifiersFromPrerequisite = (
         entity.sources.push(source);
       }
     }
-    if (ab.modifierBonus?.text && result[ab.modifierBonus?.text]) {
+    if (ab.modifierType?.text && result[ab.modifierType?.text]) {
       const entity: ModifierAbilityResult = result[
-        ab.modifierBonus?.text
+        ab.modifierType?.text
       ] as ModifierAbilityResult;
       const source: AbilitysEntry = {
         text: text,
@@ -81,20 +81,20 @@ export const modifiersFromPrerequisite = (
     if (r && r !== 0) entity.reflex = r as number;
     if (w && w !== 0) entity.will = w as number;
     if (res && res.length > 0) entity.resistance = res as Resistance[];
-    if (st.modifierBonus === null) {
+    if (st.modifierType === null) {
       if (!result["increase"]) {
         result["increase"] = [] as ModifierSaveResult[];
         result["increase"].push(entity);
       }
     } else {
-      if (st.modifierBonus && !result[st.modifierBonus?.text]) {
-        result[st.modifierBonus?.text] = [] as ModifierSaveResult[];
-        (result[st.modifierBonus?.text] as ModifierSaveResult[]).push(
+      if (st.modifierType && !result[st.modifierType?.text]) {
+        result[st.modifierType?.text] = [] as ModifierSaveResult[];
+        (result[st.modifierType?.text] as ModifierSaveResult[]).push(
           entity as ModifierSaveResult
         );
       }
-      if (st.modifierBonus?.text && result[st.modifierBonus?.text]) {
-        (result[st.modifierBonus?.text] as ModifierSaveResult[]).push(
+      if (st.modifierType?.text && result[st.modifierType?.text]) {
+        (result[st.modifierType?.text] as ModifierSaveResult[]).push(
           entity as ModifierSaveResult
         );
       }
@@ -141,7 +141,7 @@ export const modifiersFromPrerequisite = (
 
   const applySkillsModifier = (text: string, ss: PrerequisiteSkills[]) => {
     ss.forEach((s) => {
-      if (!s.modifierBonus) {
+      if (!s.modifierType) {
         if (!result["increase"]) {
           (result["increase"] as ModifierSkillsResult) = {
             text: text,
@@ -152,13 +152,13 @@ export const modifiersFromPrerequisite = (
         // entity.text = text;
         entity.skillsStudies.push(s);
       } else {
-        if (!result[s.modifierBonus.text]) {
-          (result[s.modifierBonus.text] as ModifierSkillsResult) = {
+        if (!result[s.modifierType.text]) {
+          (result[s.modifierType.text] as ModifierSkillsResult) = {
             text: text,
             skillsStudies: []
           } as ModifierSkillsResult;
         }
-        const entity: ModifierSkillsResult = result[s.modifierBonus.text];
+        const entity: ModifierSkillsResult = result[s.modifierType.text];
         entity.skillsStudies.push(s);
       }
     });
@@ -170,10 +170,10 @@ export const modifiersFromPrerequisite = (
     }
     if (bonusType === "attackRoll") {
       pr.attackRoll?.forEach((a) => {
-        if (!a.modifierBonus) return;
+        if (!a.modifierType) return;
         const targets = findTargetsInPrerequisite(pr, a.target);
         applyModifier(
-          a.modifierBonus.text,
+          a.modifierType.text,
           (a.bonus as number) ?? 0,
           pr.text ?? "",
           targets
@@ -182,10 +182,10 @@ export const modifiersFromPrerequisite = (
     }
     if (bonusType === "damageBonus") {
       pr.damageBonus?.forEach((d) => {
-        if (!d.modifierBonus) return;
+        if (!d.modifierType) return;
         const targets = findTargetsInPrerequisite(pr, d.target);
         applyModifier(
-          d.modifierBonus.text,
+          d.modifierType.text,
           (d.bonus as number) ?? 0,
           pr.text ?? "",
           targets
@@ -195,10 +195,10 @@ export const modifiersFromPrerequisite = (
     if (bonusType === "armorClass") {
       // ARMOR CLASS
       pr.armorClass?.forEach((ac) => {
-        if (!ac.modifierBonus) return;
+        if (!ac.modifierType) return;
         const allTargets: any = findTargetsInPrerequisite(pr, ac.target);
         applyModifier(
-          ac.modifierBonus.text,
+          ac.modifierType.text,
           ac.bonus ?? 0,
           pr.text ?? "",
           allTargets
@@ -213,7 +213,7 @@ export const modifiersFromPrerequisite = (
     if (bonusType === "savingThrow") {
       // SAVING THROW
       pr?.savingThrow?.forEach((st) => {
-        if (!st.modifierBonus) return;
+        if (!st.modifierType) return;
         applySaveModifier(pr.text ?? "", st);
       });
     }

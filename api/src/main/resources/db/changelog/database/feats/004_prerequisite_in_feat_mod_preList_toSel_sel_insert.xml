@@ -503,12 +503,6 @@
     <!-- Point Blank Shot [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1019" />
-      <!-- <column name="attack_roll"
-        value="[{ &quot;bonus&quot; :1, 
-        &quot;modifierBonus&quot; : null, 
-        &quot;target&quot; :null, 
-        &quot;improved&quot; :null, 
-        &quot;type&quot; :[&quot;RANGED&quot;]}]" /> -->
         <column name="attack_roll"
         value="[
         {
@@ -655,12 +649,6 @@
     <!-- Weapon Focus [General] mod -->
     <insert tableName="prerequisite">
       <column name="id" value="1020" />
-      <!-- <column name="attack_roll"
-        value="[{ &quot;bonus&quot; :1, 
-        &quot;modifierBonus&quot; : null, 
-        &quot;target&quot; :[ &quot;SELECTED&quot; ], 
-        &quot;improved&quot; :null, 
-        &quot;type&quot; :null}]" /> -->
         <column name="attack_roll"
         value="[
         {

@@ -1,6 +1,5 @@
 import { AttackRoll } from "../Attack/AttackRoll/interface";
 import { Item } from "../interfaces";
-import { ABILITY_MODIFIER } from "../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../Prerequisite/interface/Prerequisite";
 import { Abilitys, LevelAbilitys } from "./Interface";
 
@@ -178,8 +177,8 @@ export const ifTargetInPrerequisite = (
   pre: Prerequisite
 ): (string | Item[])[] => {
   const returnList: (string | Item[])[] = [];
-  if (pre.weaponType) returnList.push(pre.weaponType);
-  if (pre.armorType) returnList.push(pre.armorType);
+  if (pre.weaponType) returnList.push(pre.weaponType.name);
+  if (pre.armorType) returnList.push(pre.armorType.name);
   if (pre.items) returnList.push(pre.items);
   return returnList;
 };
@@ -193,7 +192,7 @@ export const maxBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
     const next = list[index + 1];
     if (
       next &&
-      item.modifierBonus !== next.modifierBonus &&
+      item.modifierType !== next.modifierType &&
       item.target !== next.target &&
       item.type !== next.type
     ) {
@@ -216,7 +215,7 @@ export const addBonusInAttackRoll = (list: AttackRoll[]): AttackRoll[] => {
     const next = list[index + 1];
     if (
       next &&
-      item.modifierBonus !== next.modifierBonus &&
+      item.modifierType !== next.modifierType &&
       item.target !== next.target &&
       item.type !== next.type
     ) {
@@ -255,6 +254,7 @@ export function AbilitysAndModifiers(
 }
 
 export const lvAbilityToPrerequisite = (lvAbility: LevelAbilitys[]): Prerequisite[] => {
+  if(!lvAbility || lvAbility.length === 0) return [];
   return lvAbility.map(lv => {
     return {
       id: -1,
@@ -266,7 +266,7 @@ export const lvAbilityToPrerequisite = (lvAbility: LevelAbilitys[]): Prerequisit
         intelligence: lv.abilitys.intelligence,
         wisdom: lv.abilitys.wisdom,
         charisma: lv.abilitys.charisma,
-        modifierBonus: ABILITY_MODIFIER
+        modifierType: {name: "ABILITY_MODIFIER"}
       }
     };
   });

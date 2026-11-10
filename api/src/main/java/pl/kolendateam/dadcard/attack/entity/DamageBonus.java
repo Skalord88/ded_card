@@ -19,7 +19,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 public class DamageBonus implements Serializable {
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifierBonus; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
+  ModifierEnum modifierType; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
@@ -30,7 +30,7 @@ public class DamageBonus implements Serializable {
   Integer bonus;
 
   public DamageBonus(DamageBonusDTO dmg) {
-    this.modifierBonus = dmg.modifierBonus != null ? dmg.modifierBonus : null;
+    this.modifierType = dmg.modifierType != null ? dmg.modifierType : null;
     this.bonus = dmg.bonus;
     this.target = dmg.target != null ? dmg.target : null;
     this.type = dmg.type != null ? dmg.type : null;

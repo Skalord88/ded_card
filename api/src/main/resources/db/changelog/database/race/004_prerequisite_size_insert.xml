@@ -9,8 +9,8 @@
             <column name="id" value="90001" />
             <!-- <column name="attack_roll"
                 value="[
-            { &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+            { &quot;bonus&quot; :4, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
+            { &quot;bonus&quot; :-16, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" /> -->
             <column name="attack_roll"
                 value="[
@@ -31,8 +31,8 @@
             <column name="id" value="90002" />
             <!-- <column name="attack_roll"
                 value="[
-            { &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; : [&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+            { &quot;bonus&quot; :3, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
+            { &quot;bonus&quot; :-12, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; : [&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" /> -->
             <column name="attack_roll"
                 value="[
@@ -52,8 +52,8 @@
             <column name="id" value="90003" />
             <!-- <column name="attack_roll"
                 value="[
-            { &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-            { &quot;bonus&quot; :-8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+            { &quot;bonus&quot; :2, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
+            { &quot;bonus&quot; :-8, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" /> -->
             <column name="attack_roll"
                 value="[
@@ -73,8 +73,8 @@
             <column name="id" value="90004" />
             <!-- <column name="attack_roll"
                 value="[
-                { &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
-                { &quot;bonus&quot; :-4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+                { &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null},
+                { &quot;bonus&quot; :-4, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
             ]" /> -->
             <column name="attack_roll"
                 value="[
@@ -99,8 +99,8 @@
             <column name="id" value="90006" />
             <!-- <column name="attack_roll"
                 value="[
-                { &quot;bonus&quot; :-1, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+                { &quot;bonus&quot; :-1, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
+                ,{ &quot;bonus&quot; :4, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" /> -->
                 <column name="attack_roll"
                 value="[
@@ -118,11 +118,6 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="90007" />
-            <!-- <column name="attack_roll"
-                value="[
-                { &quot;bonus&quot; :-2, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :8, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
-                ]" /> -->
                 <column name="attack_roll"
                 value="[
             { &quot;bonus&quot; :-2,
@@ -142,8 +137,8 @@
             <column name="id" value="90008" />
             <!-- <column name="attack_roll"
                 value="[
-                { &quot;bonus&quot; :-3, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :12, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
+                { &quot;bonus&quot; :-3, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
+                ,{ &quot;bonus&quot; :12, &quot;modifierType&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
                 ]" /> -->
                 <column name="attack_roll"
                 value="[
@@ -162,11 +157,6 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="90009" />
-            <!-- <column name="attack_roll"
-                value="[
-                { &quot;bonus&quot; :-4, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :null, &quot;improved&quot; :null, &quot;type&quot; :null}
-                ,{ &quot;bonus&quot; :16, &quot;modifierBonus&quot; : &quot;SIZE_BONUS&quot;, &quot;target&quot; :[&quot;GRAPPLE&quot;], &quot;improved&quot; :null, &quot;type&quot; : null}
-                ]" /> -->
                 <column name="attack_roll"
                 value="[
             { &quot;bonus&quot; :-4,

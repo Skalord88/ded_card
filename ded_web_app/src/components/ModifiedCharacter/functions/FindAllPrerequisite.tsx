@@ -1,13 +1,9 @@
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
 import { ClassFeats, FeatPc } from "../../Feats/Interface/FeatInterface";
-import { Attacks, CharacterPc, Inventory, Weapon } from "../../interfaces";
-import {
-  BASE_VALUE,
-  EMPTY_BONUS,
-  RANK_VALUE
-} from "../../Prerequisite/interface/ModifierEnum";
+import { Attacks, Inventory } from "../../interfaces";
+import { RANK_VALUE } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
-import { SubRace, Archetype } from "../../Race/Interfaces";
+import { Archetype, SubRace } from "../../Race/Interfaces";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 
@@ -25,7 +21,7 @@ export const findAllPrerequisite = (
   if (race?.race) {
     race.race.modifiers && allPrerequisite.push(race.race.modifiers);
 
-   race.size.modifiers && allPrerequisite.push(race.size.modifiers);
+    race.size.modifiers && allPrerequisite.push(race.size.modifiers);
 
     race?.modifiers && allPrerequisite.push(race.modifiers);
   }
@@ -74,17 +70,38 @@ export const findAllPrerequisite = (
     });
   }
 
-  if (skills) {
-    let charSkills: PrerequisiteSkills[] = skills.map((sk) => {
-      return {
-        skill: sk.skill ?? undefined,
-        study: sk.study ?? undefined,
-        rank: sk.rank,
-        modifierBonus: RANK_VALUE
-      };
-    });
-    allPrerequisite.push({ id: -1, skillStudy: charSkills, text: "Pg skills" });
-  }
+if (skills && skills.length > 0) {
+  const charSkills: PrerequisiteSkills[] = skills.flatMap(
+    (sk): PrerequisiteSkills[] => {
+
+      if (!sk.skill && !sk.study) return [];
+
+      if (sk.skill) {
+        return [{
+          skill: sk.skill,
+          rank: sk.rank,
+          modifierType: RANK_VALUE
+        }];
+      }
+
+      if (sk.study) {
+        return [{
+          rank: sk.rank,
+          study: sk.study,
+          modifierType: RANK_VALUE
+        }];
+      }
+
+      return [];
+    }
+  );
+
+  allPrerequisite.push({
+    id: -1,
+    skillStudy: charSkills,
+    text: "Pg skills"
+  });
+}
 
   return allPrerequisite;
 };

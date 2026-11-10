@@ -1,7 +1,5 @@
 package pl.kolendateam.dadcard.modifier.dto;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -11,12 +9,7 @@ import lombok.Setter;
 import lombok.ToString;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
-import pl.kolendateam.dadcard.armorClass.MapperArmorClass;
-import pl.kolendateam.dadcard.armorClass.dto.ArmorClassDTO;
-import pl.kolendateam.dadcard.attack.MapperAttackRoll;
 import pl.kolendateam.dadcard.attack.MapperSpecialAttacks;
-import pl.kolendateam.dadcard.attack.dto.AttackRollDTO;
-import pl.kolendateam.dadcard.attack.dto.DamageBonusDTO;
 import pl.kolendateam.dadcard.attack.dto.SpecialAttacksDTO;
 import pl.kolendateam.dadcard.classCharacter.entity.ClassPcLevel;
 import pl.kolendateam.dadcard.feats.MapperFeats;
@@ -27,7 +20,6 @@ import pl.kolendateam.dadcard.items.dto.ItemDTO;
 import pl.kolendateam.dadcard.items.weapons.entity.WeaponCategoriesEnum;
 import pl.kolendateam.dadcard.modifier.MapperModifierBonus;
 import pl.kolendateam.dadcard.modifier.MapperSpecialAbilities;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.Prerequisite;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
 import pl.kolendateam.dadcard.skills.MapperSkill;

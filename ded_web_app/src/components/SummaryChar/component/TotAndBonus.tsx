@@ -1,7 +1,8 @@
 import { Fragment } from "react/jsx-runtime";
 import { signAndCountToString } from "../../functions";
 import { Popup } from "../../Popup/Popup";
-import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
+import { ModifierEnum, ModifierType } from "../../Prerequisite/interface/ModifierEnum";
+import { FormattingText } from "../../Formatting/Function";
 
 export type TotAndBonusElement = {
   bonus: number;
@@ -52,11 +53,11 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
           {list && list.length !== 0 &&
             list.map((l: TotAndBonusElement, index) => {
               const sign: string = signAndCountToString([l?.bonus || 0]);
-              const text = show && l.text ? [sign, l.text] : [sign];
+              const text = show && l.text ? [sign, FormattingText(l.text)] : [sign];
 
               return (
                 <Fragment key={index}>
-                  <Popup text={text} popText={l?.pop || ""} />
+                  <Popup text={text} popText={l?.pop} />
                   {index === list.length - 1 ? null : show ? (
                     <span>{", "}</span>
                   ) : (

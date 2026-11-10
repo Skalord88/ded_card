@@ -19,10 +19,10 @@
                 value="{
                 &quot;dexterity&quot; : -2,
                 &quot;charisma&quot; : 2,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
             &quot;target&quot; :[ &quot;ABERRATIONS&quot; ], &quot;improved&quot; :null,
             &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
@@ -38,7 +38,7 @@
             <column name="abilitys"
                 value="{
                 &quot;charisma&quot; : -2,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <!-- <column name="saving_throw"
                 value="[{
@@ -50,7 +50,7 @@
                     &quot;POISON&quot; ]
                 } ] }]" /> -->
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
             &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
             :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
@@ -70,17 +70,17 @@
             <!-- Savage Dwarf -->
             <column name="text" value="Savage Dwarf modifiers" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
             &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
             :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
                 &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
 
             <!-- <column name="saving_throw"
                 value="[{
-                &quot;modifierBonus&quot;: &quot;RACIAL_BONUS&quot;,
+                &quot;modifierType&quot;: &quot;RACIAL_BONUS&quot;,
                 &quot;resistance&quot; : [ {
                     &quot;type&quot; : &quot;SAVING&quot;,
                     &quot;target&quot; : [ &quot;POISON&quot; ],
@@ -103,14 +103,9 @@
         &quot;bonus&quot; : 4,
         &quot;target&quot; : [ &quot;DISEASES&quot; ]
     }]" />
-            <!-- &quot;modifier&quot; : &quot;SAVING&quot;, -->
-            <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
-            &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ], &quot;improved&quot;
-            :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :1,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;,
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;,
                 &quot;target&quot; :[ &quot;ORCS&quot; , &quot;GOBLINOIDS&quot; ]}]" />
         </insert>
 
@@ -263,7 +258,7 @@
                 &quot;strength&quot; : 2,
                 &quot;constitution&quot; : 2,
                 &quot;charisma&quot; : -2,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :2,
@@ -293,7 +288,7 @@
                 &quot;strength&quot; : -2,
                 &quot;dexterity&quot; : 2,
                 &quot;charisma&quot; : -2,
-                &quot;modifierBonus&quot; : &quot;RACIAL_BONUS&quot;
+                &quot;modifierType&quot; : &quot;RACIAL_BONUS&quot;
                 }" />
         </insert>
 

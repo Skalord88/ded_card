@@ -43,7 +43,7 @@ public class PrerequisiteSkills implements Serializable {
   int rank;
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifierBonus;
+  ModifierEnum modifierType;
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target;
@@ -51,7 +51,7 @@ public class PrerequisiteSkills implements Serializable {
   public PrerequisiteSkills(PrerequisiteSkillDTO skillDTO) {
     this.skill = skillDTO.skill.id != 0 ? new Skill(skillDTO.skill.id) : null;
     this.study = skillDTO.study.id != 0 ? new Study(skillDTO.study.id) : null;
-    this.modifierBonus = skillDTO.modifierBonus;
+    this.modifierType = skillDTO.modifierType;
     this.rank = skillDTO.rank;
     this.target = skillDTO.target != null ? skillDTO.target : null;
   }

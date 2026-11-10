@@ -2,8 +2,8 @@ package pl.kolendateam.dadcard.modifier.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
 import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
+import pl.kolendateam.dadcard.modifier.entity.ModifierType;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,7 +16,7 @@ public class ModifierBonusDTO {
   // public ModifierEnum[] selected;
   public ModifierEnum[] target;
 
-  public ModifierBonusDTO(ModifierBonus mod) {
+  public ModifierBonusDTO(ModifierType mod) {
     this.modifier = mod.getModifier() != null ? mod.getModifier() : null;
     this.bonus = mod.getBonus() != null ? mod.getBonus() : null;
     this.modifierType =

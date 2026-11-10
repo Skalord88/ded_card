@@ -3,29 +3,29 @@ package pl.kolendateam.dadcard.modifier;
 import java.util.HashSet;
 import java.util.Set;
 import pl.kolendateam.dadcard.modifier.dto.ModifierBonusDTO;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.ModifierType;
 import pl.kolendateam.dadcard.race.dto.SpeedDTO;
 import pl.kolendateam.dadcard.race.entity.Speed;
 
 public class MapperModifierBonus {
 
-  public static ModifierBonusDTO toModifierDTO(ModifierBonus mod) {
+  public static ModifierBonusDTO toModifierDTO(ModifierType mod) {
     if (mod != null) return new ModifierBonusDTO(mod);
     return new ModifierBonusDTO();
   }
 
-  public static ModifierBonus[] toModifiers(ModifierBonusDTO[] mods) {
+  public static ModifierType[] toModifiers(ModifierBonusDTO[] mods) {
     if (mods != null) {
-      ModifierBonus[] modifierArray = new ModifierBonus[mods.length];
+      ModifierType[] modifierArray = new ModifierType[mods.length];
       for (int i = 0; i < mods.length; i++) {
-        modifierArray[i] = new ModifierBonus(mods[i]);
+        modifierArray[i] = new ModifierType(mods[i]);
       }
       return modifierArray;
     }
-    return new ModifierBonus[0];
+    return new ModifierType[0];
   }
 
-  public static ModifierBonusDTO[] toModifiersDTO(ModifierBonus[] mods) {
+  public static ModifierBonusDTO[] toModifiersDTO(ModifierType[] mods) {
     if (mods != null) {
       ModifierBonusDTO[] modifierArray = new ModifierBonusDTO[mods.length];
       for (int i = 0; i < mods.length; i++) {
@@ -36,9 +36,7 @@ public class MapperModifierBonus {
     return new ModifierBonusDTO[0];
   }
 
-  public static Set<ModifierBonusDTO> toSetModifierDTO(
-    Set<ModifierBonus> mods
-  ) {
+  public static Set<ModifierBonusDTO> toSetModifierDTO(Set<ModifierType> mods) {
     Set<ModifierBonusDTO> listOfModifierDTO = new HashSet<>();
     if (mods != null) {
       mods.forEach(mod -> {
@@ -51,12 +49,12 @@ public class MapperModifierBonus {
     return listOfModifierDTO;
   }
 
-  public static Set<ModifierBonus> toListModifier(Set<ModifierBonusDTO> mods) {
-    Set<ModifierBonus> listOfModifier = new HashSet<>();
+  public static Set<ModifierType> toListModifier(Set<ModifierBonusDTO> mods) {
+    Set<ModifierType> listOfModifier = new HashSet<>();
     if (mods != null) {
       mods.forEach(mod -> {
         if (mod != null) {
-          ModifierBonus m = new ModifierBonus(mod);
+          ModifierType m = new ModifierType(mod);
           listOfModifier.add(m);
         }
       });

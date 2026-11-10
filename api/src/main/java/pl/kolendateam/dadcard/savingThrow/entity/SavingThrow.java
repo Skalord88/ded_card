@@ -21,7 +21,7 @@ public class SavingThrow implements Serializable {
   int will;
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifierBonus;
+  ModifierEnum modifierType;
 
   @JdbcTypeCode(SqlTypes.JSON)
   Resistance[] resistance;
@@ -31,8 +31,8 @@ public class SavingThrow implements Serializable {
     this.reflex = saving.reflex;
     this.will = saving.will;
     this.resistance = saving.resistance != null ? saving.resistance : null;
-    this.modifierBonus =
-      saving.modifierBonus != null ? saving.modifierBonus : null;
+    this.modifierType =
+      saving.modifierType != null ? saving.modifierType : null;
   }
 
   public boolean checkPrerequisiteST(SavingThrow savingThrow) {

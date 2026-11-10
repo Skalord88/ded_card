@@ -3,8 +3,8 @@ import {
   modifierEnumList
 } from "../../Prerequisite/interface/ModifierEnum";
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
+import { isToAdd } from "../Const/ModifiedCharacter";
 import { BonusResultMap, BonusSource } from "./GetBonusResult";
-import { isToAdd } from "./ModifiedCharacter";
 import { resolveBonuses } from "./ResolvesBonuses";
 
 export const createTotAndBonusElement = (
@@ -12,17 +12,19 @@ export const createTotAndBonusElement = (
   testo: boolean,
   search?: (string | number)[]
 ): TotAndBonusElement[] => {
+
+  // console.log("createTotAndBonusElement", map, testo, search);
   return resolveBonuses(map, search).map(({ key, bonus }) => ({
     bonus: bonus.bonus,
 
     text: testo ? key : undefined,
 
-    pop: modifierEnumList.find((m) => m.text === bonus.text) ?? {
-      ...EMPTY_BONUS,
+    pop: {
+      name: modifierEnumList.find((m) => m === key.toUpperCase()),
       description: key,
       text: bonus.text
     }
-  }));
+  }) as TotAndBonusElement);
 };
 
 export const chooseBestBonuses = (
@@ -82,7 +84,8 @@ export const checkBonusTarget = (
   }
 
   // Grapple, Melee, Ranged, ecc.
+  // if(!bonus.targets) return false;
   return bonus.targets.some((t) =>
-    search.some((s) => "text" in t && t.text === s)
+    search.some((s) => t.name === s)
   );
 };

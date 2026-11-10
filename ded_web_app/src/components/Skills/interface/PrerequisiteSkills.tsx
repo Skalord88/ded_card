@@ -3,9 +3,9 @@ import { Skill } from "./Skill";
 import { Study } from "./Study";
 
 export type PrerequisiteSkills = {
+    rank: number;
     skill?: Skill;
     study?: Study;
-    rank: number;
-    modifierBonus?: ModifierEnum;
+    modifierType?: ModifierEnum;
     target?: ModifierEnum[]
 }

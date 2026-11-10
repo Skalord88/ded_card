@@ -4,9 +4,13 @@ import { ClassFeats, Feat, FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Inventory, Weapon } from "../../interfaces";
 import { ReturnRingPosition } from "../../Items/Functions/function";
 import {
-  ABILITY_MODIFIER,
+  FIRST_ATTACK,
+  FOURTH_ATTACK,
   ModifierEnum,
+  SECOND_ATTACK,
   STRENGTH_MODIFIER,
+  THIRD_ATTACK,
+  TWO_WEAPON_FIGHTING_PENALTIES,
   // STRENGTH_MODIFIER
 } from "../../Prerequisite/interface/ModifierEnum";
 import { Archetype, SubRace } from "../../Race/Interfaces";
@@ -77,6 +81,7 @@ export type Proficency = {
 export type ModifiedCharacter = {
   name?: string;
   title?: string;
+  abilitysBase?: Abilitys;
   abilitys?: Abilitys;
   abilitysMod?: BonusResultMap;
   // bab: number;
@@ -149,10 +154,10 @@ export type WeaponElement = {
 };
 
 export const attacksMapElement: TotAndBonusElement[] = [
-  { bonus: 0, pop: { text: "first attack" } },
-  { bonus: -5, pop: { text: "second attack: -5 to hit" } },
-  { bonus: -10, pop: { text: "third attack: -10 to hit" } },
-  { bonus: -15, pop: { text: "fourth attack: -15 to hit" } }
+  { bonus: 0, pop: { name: "FIRST_ATTACK" } },
+  { bonus: -5, pop: { name: "SECOND_ATTACK" } },
+  { bonus: -10, pop: { name: "THIRD_ATTACK" } },
+  { bonus: -15, pop: { name: "FOURTH_ATTACK" } }
 ];
 
 export const attacksPositionElement = (
@@ -175,7 +180,7 @@ export const attacksPositionElement = (
   return [
     {
       bonus: total,
-      pop: { text: "Two-Weapon Fighting Penalties" }
+      pop: TWO_WEAPON_FIGHTING_PENALTIES
     }
   ];
 };

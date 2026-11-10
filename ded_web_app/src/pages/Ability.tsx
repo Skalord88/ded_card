@@ -22,21 +22,25 @@ export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 export function Ability() {
   const { charId } = useParams();
 
-  const { moddedCharacter, abilitys, abilitysLv, updateAbility } =
+  const { moddedCharacter, abilitysBase
+    // , abilitysLv
+    , updateAbilityBase } =
     useCharacter();
 
   const handleData = (
     option: number,
-    ability: keyof Omit<Abilitys, "modifierBonus">
+    ability: keyof Omit<Abilitys, "modifierType">
   ) => {
-    updateAbility(ability, option, abilitysLv);
+    updateAbilityBase(ability, option
+      // , abilitysLv
+    );
   };
 
   const handleSubmit = () => {
-    axios.post(urlAb + charId, abilitys).then((response) => {
+    axios.post(urlAb + charId, abilitysBase).then((response) => {
       console.log(response.data);
     });
-    window.location.reload();
+    // window.location.reload();
     // setChange(true);
   };
 
@@ -51,22 +55,22 @@ export function Ability() {
             text: "Class",
             link: `/${charId}/class`,
             change:
-              abilitys &&
+              abilitysBase &&
               abilitisBaseValue.every((value) =>
-                Object.values(abilitys).includes(value)
+                Object.values(abilitysBase).includes(value)
               )
           }
         }}
         onAction={handleSubmit}
       >
-        {abilitys && (
+        {abilitysBase && (
           <div>
             <p>
               {abilitisBaseValue.map((value, index) => (
                 <Fragment key={value}>
                   <span
                     style={{
-                      color: Object.values(abilitys).includes(value)
+                      color: Object.values(abilitysBase).includes(value)
                         ? "yellow"
                         : "white"
                     }}
@@ -89,14 +93,14 @@ export function Ability() {
               }}
             >
               {(
-                Object.entries(abilitys) as [
-                  keyof Omit<Abilitys, "modifierBonus">,
+                Object.entries(abilitysBase) as [
+                  keyof Omit<Abilitys, "modifierType">,
                   number
                 ][]
               ).map(([key, value]) => {
                 if (typeof value !== "number") return null;
 
-                // console.log("abilitys", key, value, moddedCharacter?.abilitysMod);
+                // console.log("abilitysMod", moddedCharacter?.abilitysMod);
 
                 const toList: TotAndBonusElement[] = moddedCharacter
                   ? createTotAndBonusElement(
@@ -106,7 +110,7 @@ export function Ability() {
                     ).filter((e): e is TotAndBonusElement => e.pop.text === key)
                   : [];
 
-                // console.log("toList", [{ bonus: value, pop: BASE_VALUE }, ...toList]);
+                // console.log("toList", toList[0], [{ bonus: value, pop: BASE_VALUE }, ...toList]);
 
                 return (
                   <div key={key} className="rpgui-container-framed grey">

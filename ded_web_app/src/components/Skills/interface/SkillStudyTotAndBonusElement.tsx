@@ -1,4 +1,5 @@
-import { TotAndBonusElement } from "../../SummaryChar/SummaryChar"
+
+import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus"
 import { Skill } from "./Skill"
 import { Study } from "./Study"
 

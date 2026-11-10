@@ -1,5 +1,5 @@
 import { AbilityEnum } from "../../Abilitys/AbilityEnum";
-import { ModifierEnum } from "../../Prerequisite/interface/ModifierEnum";
+import { ModifierEnum, ModifierType } from "../../Prerequisite/interface/ModifierEnum";
 
 export type Skill = {
     id: number;

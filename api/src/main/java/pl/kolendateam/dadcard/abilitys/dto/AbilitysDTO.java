@@ -18,5 +18,5 @@ public class AbilitysDTO {
   public int charisma;
 
   @Enumerated(EnumType.STRING)
-  public ModifierEnum modifierBonus;
+  public ModifierEnum modifierType;
 }

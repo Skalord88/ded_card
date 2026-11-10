@@ -14,7 +14,7 @@ import pl.kolendateam.dadcard.modifier.dto.ModifierBonusDTO;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ModifierBonus implements Serializable {
+public class ModifierType implements Serializable {
 
   @Enumerated(EnumType.STRING)
   ModifierEnum modifier;
@@ -27,7 +27,7 @@ public class ModifierBonus implements Serializable {
   @Enumerated(EnumType.STRING)
   ModifierEnum[] target;
 
-  public ModifierBonus(ModifierBonusDTO mod) {
+  public ModifierType(ModifierBonusDTO mod) {
     this.modifier = mod.modifier != null ? mod.modifier : null;
     this.modifierType = mod.modifierType != null ? mod.modifierType : null;
     this.bonus = mod.bonus != null ? mod.bonus : null;

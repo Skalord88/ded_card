@@ -14,7 +14,7 @@ public class ArmorClassDTO {
   public int bonus;
 
   @Enumerated(EnumType.STRING)
-  public ModifierEnum modifierBonus;
+  public ModifierEnum modifierType;
 
   // public int sizeBonus;
   // public int armorBonus;
@@ -38,8 +38,8 @@ public class ArmorClassDTO {
     // this.naturalArmor = aC.getNaturalArmor();
     // this.dodgeBonus = aC.getDodgeBonus();
     this.bonus = aC.getBonus();
-    this.modifierBonus =
-      aC.getModifierBonus() != null ? aC.getModifierBonus() : null;
+    this.modifierType =
+      aC.getModifierType() != null ? aC.getModifierType() : null;
     this.target = aC.getTarget() != null ? aC.getTarget() : null;
     this.special = aC.getSpecial() != null ? aC.getSpecial() : null;
   }

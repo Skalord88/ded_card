@@ -2,7 +2,9 @@ package pl.kolendateam.dadcard.modifier.entity;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
+// @JsonCreator
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ModifierEnum {
   ABILITY_MODIFIER(
@@ -88,12 +90,12 @@ public enum ModifierEnum {
   ARMOR_TYPE("Armor Type"),
 
   // ability
-  STRENGTH,
-  DEXTERITY,
-  CONSTITUTION,
-  INTELLIGENCE,
-  WISDOM,
-  CHARISMA,
+  STRENGTH("Strength"),
+  DEXTERITY("Dexterity"),
+  CONSTITUTION("Constitution"),
+  INTELLIGENCE("Intelligence"),
+  WISDOM("Wisdom"),
+  CHARISMA("Charisma"),
 
   // armor
   SIZE_MODIFIER, //+
@@ -128,7 +130,7 @@ public enum ModifierEnum {
   STUDY("Study"),
   EXTRA_SKILLS_POINTS("Extra Skills Points"),
   APPRAISE("Appraise"),
-  BALANCE("Balnace"),
+  BALANCE("Balance"),
   BLUFF("Bluff"),
   CLIMB("Climb"),
   CONCENTRATION("Concentration"),
@@ -391,13 +393,13 @@ public enum ModifierEnum {
   HALF_HD("Half Hit Dice"),
   RACE_HD("Race Hit Dice"),
   HALF_RACE("Half Race Bonus"),
-  HALF_COS("Half Consitution Bonus"),
+  HALF_COS("Half Constitution Bonus"),
   HALF_CHA("Half Charisma Bonus"),
   CHA("Charisma"),
-  COS("Consitution");
+  COS("Constitution");
 
-  private final String description;
   private final String text;
+  private final String description;
 
   // 🔥 Permette di ricevere "good" dal frontend
   @JsonCreator
@@ -424,25 +426,34 @@ public enum ModifierEnum {
   }
 
   ModifierEnum() {
-    this.description = "";
     this.text = "";
+    this.description = "";
+  }
+
+  @JsonProperty("name")
+  public String getName() {
+    return name();
   }
 
   ModifierEnum(String text) {
-    this.description = "";
     this.text = text;
+    this.description = "";
   }
 
   ModifierEnum(String description, String text) {
-    this.description = description;
     this.text = text;
-  }
-
-  public String getDescription() {
-    return description;
+    this.description = description;
   }
 
   public String getText() {
     return text;
   }
+
+  public String getDescription() {
+    return description;
+  }
+  // @JsonValue
+  // public String getText() {
+  //   return text;
+  // }
 }

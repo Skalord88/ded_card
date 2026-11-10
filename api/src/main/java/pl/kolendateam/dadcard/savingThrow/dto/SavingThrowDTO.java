@@ -18,7 +18,7 @@ public class SavingThrowDTO {
   public Resistance[] resistance;
 
   @Enumerated(EnumType.STRING)
-  public ModifierEnum modifierBonus;
+  public ModifierEnum modifierType;
 
   public SavingThrowDTO(SavingThrow savingThrow) {
     this.fortitude = savingThrow.getFortitude();
@@ -26,9 +26,9 @@ public class SavingThrowDTO {
     this.will = savingThrow.getWill();
     this.resistance =
       savingThrow.getResistance() != null ? savingThrow.getResistance() : null;
-    this.modifierBonus =
-      savingThrow.getModifierBonus() != null
-        ? savingThrow.getModifierBonus()
+    this.modifierType =
+      savingThrow.getModifierType() != null
+        ? savingThrow.getModifierType()
         : null;
   }
 }

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-import pl.kolendateam.dadcard.modifier.entity.ModifierBonus;
+import pl.kolendateam.dadcard.modifier.entity.ModifierType;
 
 @Entity
 @AllArgsConstructor
@@ -47,5 +47,5 @@ public class Domains implements Serializable {
   // Map<Integer, Integer> domainSpells;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  Set<ModifierBonus> modifiers;
+  Set<ModifierType> modifiers;
 }

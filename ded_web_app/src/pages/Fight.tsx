@@ -3,14 +3,14 @@ import { useData } from "../components/Context/Context";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { ActionMenu } from "../components/Fight/component/ActionMenu";
 import { FightsMenu } from "../components/Fight/component/FightsMenu";
+import { createBorder } from "../components/Fight/function/createBorder";
 import { addToDrop } from "../components/functions";
 import { CharacterPc } from "../components/interfaces";
-import { modifiedCharacter } from "../components/ModifiedCharacter/functions/ModifiedCharacter";
+import { modifiedCharacter } from "../components/ModifiedCharacter/Const/ModifiedCharacter";
 import {
-  ModifiedCharacter
+    ModifiedCharacter
 } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import { PageLayoutBody } from "./AppLayout";
-import { createBorder } from "../components/Fight/function/createBorder";
 
 
 
@@ -69,7 +69,7 @@ export function Fight() {
                         style={{ color: "orange" }}
                         onClick={() => delToSide(indexA, true)}
                       >
-                        X
+                        {"X "}
                       </span>
                       <span
                         onClick={() => setClickMenu([indexA, clickMenu[1]])}
@@ -111,7 +111,7 @@ export function Fight() {
                       style={{ color: "orange" }}
                       onClick={() => delToSide(indexB, false)}
                     >
-                      X
+                      {"X "}
                     </span>
                     <span onClick={() => setClickMenu([clickMenu[0], indexB])}>
                       {b.name + ", " + b.title}

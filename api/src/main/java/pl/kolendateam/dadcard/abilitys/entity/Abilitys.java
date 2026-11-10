@@ -22,7 +22,7 @@ public class Abilitys implements Serializable {
   int charisma;
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifierBonus;
+  ModifierEnum modifierType;
 
   public void setCharacterAbility(AbilitysDTO abilitysDTO) {
     this.strength = abilitysDTO.strength;
@@ -31,8 +31,8 @@ public class Abilitys implements Serializable {
     this.intelligence = abilitysDTO.intelligence;
     this.wisdom = abilitysDTO.wisdom;
     this.charisma = abilitysDTO.charisma;
-    this.modifierBonus =
-      abilitysDTO.modifierBonus == null ? null : abilitysDTO.modifierBonus;
+    this.modifierType =
+      abilitysDTO.modifierType == null ? null : abilitysDTO.modifierType;
   }
 
   public Abilitys addRaceAbilitys(
@@ -41,8 +41,11 @@ public class Abilitys implements Serializable {
   ) {
     abilitys.strength += jsonObjectAbilitys.strength;
     abilitys.dexterity += jsonObjectAbilitys.dexterity;
-    jsonObjectAbilitys.constitution = jsonObjectAbilitys.constitution == null || jsonObjectAbilitys.constitution == null
-    ? null : abilitys.constitution + jsonObjectAbilitys.constitution;
+    jsonObjectAbilitys.constitution =
+      jsonObjectAbilitys.constitution == null ||
+        jsonObjectAbilitys.constitution == null
+        ? null
+        : abilitys.constitution + jsonObjectAbilitys.constitution;
     abilitys.intelligence += jsonObjectAbilitys.intelligence;
     abilitys.wisdom += jsonObjectAbilitys.wisdom;
     abilitys.charisma += jsonObjectAbilitys.charisma;

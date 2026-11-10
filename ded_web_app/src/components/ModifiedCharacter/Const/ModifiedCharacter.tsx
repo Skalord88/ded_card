@@ -23,10 +23,9 @@ import {
   Weapon
 } from "../../interfaces";
 import {
-  ABILITY_MODIFIER,
   BASE_VALUE,
-  DEFLECTION_BONUS,
   FORTITUDE_MODIFIER,
+  modifierEnumListToAdd,
   REFLEX_MODIFIER,
   SAVING,
   WILL_MODIFIER
@@ -43,6 +42,16 @@ import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyT
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
+import { addModdedAbilitysToAbilitys } from "../functions/AddModdedAbilitysToAbilitys";
+import { createCompetenceFromPrerequisites } from "../functions/CreateCompetenceFromPrerequisites";
+import { createPrerequisiteAbility } from "../functions/CreatePrerequisiteAbility";
+import { createPrerequisiteFromClasses } from "../functions/CreatePrerequisiteFromClasses";
+import { createTotAndBonusElement } from "../functions/CreateTotAndBonusElement";
+import { createTotAndBonusElementWithSkill } from "../functions/CreateTotAndBonusElementWithSkill";
+import { findAllPrerequisite } from "../functions/FindAllPrerequisite";
+import { BonusResultMap, getBonusResult } from "../functions/GetBonusResult";
+import { filterBonusMap, isGlobalBonus } from "../functions/IsGlobalBonus";
+import { resolveBonuses } from "../functions/ResolvesBonuses";
 import {
   AttackElement,
   ModifiedCharacter,
@@ -52,16 +61,6 @@ import {
   weaponDamagePoseAndTwoWeapon,
   WeaponElement
 } from "../interface/ModifiedCharacter";
-import { addModdedAbilitysToAbilitys } from "./AddModdedAbilitysToAbilitys";
-import { createCompetenceFromPrerequisites } from "./CreateCompetenceFromPrerequisites";
-import { createPrerequisiteAbility } from "./CreatePrerequisiteAbility";
-import { createPrerequisiteFromClasses } from "./CreatePrerequisiteFromClasses";
-import { createTotAndBonusElement } from "./CreateTotAndBonusElement";
-import { createTotAndBonusElementWithSkill } from "./CreateTotAndBonusElementWithSkill";
-import { findAllPrerequisite } from "./FindAllPrerequisite";
-import { BonusResultMap, getBonusResult } from "./GetBonusResult";
-import { filterBonusMap, isGlobalBonus } from "./IsGlobalBonus";
-import { resolveBonuses } from "./ResolvesBonuses";
 
 export const modifiedCharacter = (
   char: CharacterPc,
@@ -117,12 +116,16 @@ export const modifiedCharacter = (
     f?.feats?.some((ft) => ft.id === 105)
   );
 
-  const newAb: BonusResultMap = getBonusResult([...allPrerequisite, ...lvAbToPrerequisite], "abilitys");
+  const newAb: BonusResultMap = getBonusResult(
+    [...allPrerequisite, ...lvAbToPrerequisite], "abilitys"
+  // , true
+  );
 
   // console.log("lvAbToPrerequisite", lvAbToPrerequisite)
   // console.log("newAb", newAb)
 
-  const newAbility: Abilitys = addModdedAbilitysToAbilitys(ability
+  const newAbility: Abilitys = addModdedAbilitysToAbilitys(
+    ability
     // , lvAbility
     , newAb);
 
@@ -175,16 +178,16 @@ export const modifiedCharacter = (
   );
 
   const fortitude: TotAndBonusElement[] = createTotAndBonusElement(sT, true, [
-    FORTITUDE_MODIFIER.text,
-    SAVING.text
+    FORTITUDE_MODIFIER.name,
+    SAVING.name
   ]);
   const reflex: TotAndBonusElement[] = createTotAndBonusElement(sT, true, [
-    REFLEX_MODIFIER.text,
-    SAVING.text
+    REFLEX_MODIFIER.name,
+    SAVING.name
   ]);
   const will: TotAndBonusElement[] = createTotAndBonusElement(sT, true, [
-    WILL_MODIFIER.text,
-    SAVING.text
+    WILL_MODIFIER.name,
+    SAVING.name
   ]);
 
   const sS: BonusResultMap = getBonusResult(
@@ -192,12 +195,17 @@ export const modifiedCharacter = (
     "skillStudy"
   );
 
+  // console.log("sS", sS, "skillsFromDb", skillsFromDb, "studiesFromDb", studiesFromDb);
+
   const skillsTotAndBonus: SkillStudyTotAndBonusElement[] =
     createTotAndBonusElementWithSkill(
       skillsFromDb || [],
       studiesFromDb || [],
       sS
+      , true
     );
+
+    // console.log("skillsTotAndBonus", skillsTotAndBonus);
 
   const adjLevel: number =
     !newRace && !newArchetypes
@@ -537,6 +545,7 @@ export const modifiedCharacter = (
   return {
     name: name,
     title: title,
+    abilitysBase: ability,
     abilitys: newAbility,
     abilitysMod: abilitysMod,
     attackRollMod: newAr,
@@ -563,7 +572,7 @@ export const modifiedCharacter = (
 };
 
 export const isToAdd = (key: string): boolean => {
-  return ["Untyped", "Increase", ABILITY_MODIFIER.text, DEFLECTION_BONUS.text].includes(
+  return ["Untyped", "Increase", ...modifierEnumListToAdd ].includes(
     key
   );
 };

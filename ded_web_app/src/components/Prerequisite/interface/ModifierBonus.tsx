@@ -1,8 +1,8 @@
-import { ModifierEnum } from "./ModifierEnum";
+import { ModifierEnum, ModifierType } from "./ModifierEnum";
 
 export type ModifierBonus = {
   modifier?: ModifierEnum;
-  bonus?: Number;
+  bonus?: number;
   modifierType?: ModifierEnum;
   target?: ModifierEnum[];
 };

@@ -467,7 +467,7 @@
             <column name="id" value="9001" />
             <!-- <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :-2, 
-                &quot;modifierBonus&quot; : null, 
+                &quot;modifierType&quot; : null, 
                 &quot;target&quot; :[&quot;RICOCHET&quot;], 
                 &quot;improved&quot; :null, 
                 &quot;type&quot; :null}]" /> -->
@@ -511,7 +511,7 @@
             <column name="id" value="9004" />
             <!-- <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :2, 
-                &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, 
+                &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;, 
                 &quot;target&quot; :[&quot;ITEM&quot;], 
                 &quot;improved&quot; :null, 
                 &quot;type&quot; :null}]" /> -->
@@ -535,7 +535,7 @@
             <column name="id" value="9005" />
             <!-- <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :3, 
-                &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;, 
+                &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;, 
                 &quot;target&quot; :[&quot;ITEM&quot;], 
                 &quot;improved&quot; :null, 
                 &quot;type&quot; :null}]" /> -->
@@ -557,10 +557,6 @@
 
         <insert tableName="prerequisite">
             <column name="id" value="9006" />
-            <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
-            &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
-            :null}]" /> -->
             <column name="attack_roll"
                 value="[
         {
@@ -580,7 +576,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9007" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :5, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -601,7 +597,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9008" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -621,7 +617,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9009" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :2, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :2, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -641,7 +637,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9010" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :3, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :3, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -661,7 +657,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9011" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :4, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :4, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -681,7 +677,7 @@
         <insert tableName="prerequisite">
             <column name="id" value="9012" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :5, &quot;modifierBonus&quot; : &quot;ENCHANTMENT_BONUS&quot;,
+                value="[{ &quot;bonus&quot; :5, &quot;modifierType&quot; : &quot;ENCHANTMENT_BONUS&quot;,
             &quot;target&quot; :[&quot;ITEM&quot;], &quot;improved&quot; :null, &quot;type&quot;
             :null}]" /> -->
             <column name="attack_roll"
@@ -705,7 +701,7 @@
             <column name="id" value="52001" />
             <!-- <column name="armor_class"
                 value="[{
-            &quot;bonus&quot; :1, &quot;modifierBonus&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; :
+            &quot;bonus&quot; :1, &quot;modifierType&quot; : &quot;ARMOR_BONUS&quot;, &quot;target&quot; :
             null, &quot;special&quot; :null}]" /> -->
             <column name="armor_class"
                 value="[{
@@ -822,7 +818,7 @@
             <column name="armor_class"
                 value="[{ &quot;bonus&quot; :4, &quot;modifierType&quot; : &quot;SHIELD_BONUS&quot;}]" />
             <!-- <column name="attack_roll"
-                value="[{ &quot;bonus&quot; :-2, &quot;modifierBonus&quot; : null, &quot;target&quot; :null,
+                value="[{ &quot;bonus&quot; :-2, &quot;modifierType&quot; : null, &quot;target&quot; :null,
             &quot;improved&quot; :null, &quot;type&quot; :null}]" /> -->
             <column name="attack_roll"
                 value="[{ &quot;bonus&quot; :-2 }]" />

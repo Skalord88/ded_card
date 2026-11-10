@@ -1,7 +1,4 @@
 import { Abilitys } from "../../Abilitys/Interface";
-import { ArmorClass } from "../../Armor/interface/ArmorInterface";
-import { AttackRoll } from "../../Attack/AttackRoll/interface";
-import { DamageBonus } from "../../Attack/DamageBonus/interface";
 import { SpecialAttacks } from "../../interfaces";
 import { SavingThrow } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
@@ -9,10 +6,7 @@ import { Speed } from "../../Speed/interface";
 import { AllPrerequisiteMap } from "../interface/AllPrerequisite";
 import { Prerequisite } from "../interface/Prerequisite";
 import {
-  ArmorClassElement,
-  AttackRollElement,
-  DamageBonusElement,
-  SkillsElement
+    SkillsElement
 } from "./modifyCharacter";
 
 export const findAllPrerequisiteModifier = (
@@ -22,9 +16,9 @@ export const findAllPrerequisiteModifier = (
 
   const keys: string[] = prerList.flatMap(
     (prer) => [
-      ...(prer.armorClass?.flatMap((ac) => ac.modifierBonus?.text ?? []) ?? []),
-      ...(prer.attackRoll?.flatMap((ar) => ar.modifierBonus?.modifier ?? []) ?? []),
-      ...(prer.damageBonus?.flatMap((db) => db.modifierBonus?.modifier ?? []) ?? [])
+      ...(prer.armorClass?.flatMap((ac) => ac.modifierType?.text ?? []) ?? []),
+      ...(prer.attackRoll?.flatMap((ar) => ar.modifierType?.modifier ?? []) ?? []),
+      ...(prer.damageBonus?.flatMap((db) => db.modifierType?.modifier ?? []) ?? [])
     ]
   );
 

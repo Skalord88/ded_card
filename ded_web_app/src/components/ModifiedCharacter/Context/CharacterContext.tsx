@@ -1,31 +1,31 @@
 // CharacterContext.tsx
 import axios from "axios";
 import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useMemo,
-  useState
+    createContext,
+    Dispatch,
+    ReactNode,
+    SetStateAction,
+    useContext,
+    useEffect,
+    useMemo,
+    useState
 } from "react";
 import { Abilitys, LevelAbilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
+import { useData } from "../../Context/Context";
 import { FeatPc } from "../../Feats/Interface/FeatInterface";
 import { Attacks, CharacterPc, Inventory } from "../../interfaces";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 import { urlChar } from "../../url";
-import { modifiedCharacter } from "../functions/ModifiedCharacter";
+import { modifiedCharacter } from "../Const/ModifiedCharacter";
 import { ModifiedCharacter } from "../interface/ModifiedCharacter";
-import { useData } from "../../Context/Context";
-import { abilityKeys } from "../functions/AddModdedAbilitysToAbilitys";
 
 type CharacterContextValue = {
   character: CharacterPc | null;
   moddedCharacter: ModifiedCharacter | null;
 
+  abilitysBase?: Abilitys;
   abilitys?: Abilitys;
   abilitysLv: LevelAbilitys[];
   classes: ClassPc[];
@@ -34,12 +34,13 @@ type CharacterContextValue = {
   skills: SkillCharacter[];
   attacks?: Attacks;
 
-  setAbilitys: Dispatch<SetStateAction<Abilitys | undefined>>;
+  setAbilitysBase: Dispatch<SetStateAction<Abilitys | undefined>>;
+  // setAbilitys: Dispatch<SetStateAction<Abilitys | undefined>>;
   setAbilitysLv: Dispatch<SetStateAction<LevelAbilitys[] | undefined>>;
-  updateAbility: (
-    ability: keyof Omit<Abilitys, "modifierBonus">,
-    value: number,
-    abilitysLv?: LevelAbilitys[]
+  updateAbilityBase: (
+    ability: keyof Omit<Abilitys, "modifierType">,
+    value: number
+    // , abilitysLv?: LevelAbilitys[]
   ) => void;
 
   setClasses: (classes: ClassPc[]) => void;
@@ -64,8 +65,9 @@ export function CharacterProvider({
   // const [moddedCharacter, setModdedCharacter] =
   //   useState<ModifiedCharacter | null>(null);
 
-  const [abilitys, setAbilitys] = useState<Abilitys | undefined>();
+  const [abilitysBase, setAbilitysBase] = useState<Abilitys | undefined>();
   const [abilitysLv, setAbilitysLv] = useState<LevelAbilitys[] | undefined>();
+  const [abilitys, setAbilitys] = useState<Abilitys | undefined>();
   const [race, setRace] = useState<SubRace | undefined>();
   const [archetypes, setArchetypes] = useState<Archetype[] | undefined>([]);
   const [featsList, setFeatsList] = useState<FeatPc[] | undefined>([]);
@@ -133,7 +135,8 @@ useEffect(() => {
     setCharacter(char);
   // if(moddedCharacter){
     // setAbilitys(char.abilitys);
-    setAbilitys(moddedCharacter?.abilitys ?? char.abilitys);
+    setAbilitysBase(char.abilitys);
+    // setAbilitys(moddedCharacter?.abilitys ?? char.abilitys);
     setAbilitysLv(char.characterLevelAbilitys ?? []);
     setRace(char.race);
     setArchetypes(char.archetypes ?? []);
@@ -154,12 +157,12 @@ useEffect(() => {
     reloadCharacter();
   }, [charId]);
 
-  const updateAbility = (
-  ability: keyof Omit<Abilitys, "modifierBonus">,
+  const updateAbilityBase = (
+  ability: keyof Omit<Abilitys, "modifierType">,
   value: number,
-  lvAbilitys?: LevelAbilitys[]
+  // lvAbilitys?: LevelAbilitys[]
 ) => {
-  setAbilitys((prev) => {
+  setAbilitysBase((prev) => {
     if (!prev) return prev;
 
     // Copia i valori base
@@ -169,11 +172,11 @@ useEffect(() => {
     };
 
     // Aggiunge i bonus dei livelli
-    lvAbilitys?.forEach((lv) => {
-      abilityKeys.forEach((key) => {
-        updated[key] += lv.abilitys[key] ?? 0;
-      });
-    });
+    // lvAbilitys?.forEach((lv) => {
+    //   abilityKeys.forEach((key) => {
+    //     updated[key] += lv.abilitys[key] ?? 0;
+    //   });
+    // });
 
     return updated;
   });
@@ -186,20 +189,22 @@ useEffect(() => {
         moddedCharacter,
 
         abilitys,
+        abilitysBase,
         abilitysLv: abilitysLv ?? [],
         classes,
         featsList,
         featsPg: moddedCharacter?.feats,
         skills,
         attacks,
-        setAbilitys,
+        setAbilitysBase,
+        // setAbilitys,
         setAbilitysLv,
         setClasses,
         setFeatsList,
         setSkills,
         setAttacks,
 
-        updateAbility,
+        updateAbilityBase,
 
         reloadCharacter
       }}

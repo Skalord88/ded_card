@@ -16,7 +16,7 @@ public class MapperAbilitys {
         abilitys.getIntelligence(),
         abilitys.getWisdom(),
         abilitys.getCharisma(),
-        abilitys.getModifierBonus()
+        abilitys.getModifierType()
       );
     }
     return null;

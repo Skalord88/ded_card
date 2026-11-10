@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FormattingText } from "../Formatting/Function";
-import { ModifierEnum } from "../Prerequisite/interface/ModifierEnum";
+import { ModifierEnum, ModifierType } from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountToString } from "../functions";
 import { TotAndBonusElement } from "../SummaryChar/component/TotAndBonus";
 
@@ -23,7 +23,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
     
     const bonusTexts: string[] = bonusList.map((item) => {
       const sign = item.bonus >= 0 ? "+" : "";
-      return `${sign}${Math.floor(item.bonus)} ${item.pop.text}`;
+      return `${sign}${Math.floor(item.bonus)} ${item.pop}`;
     });
     // console.log("totBonus", totBonus, "bonusTexts", bonusTexts);
     return (
@@ -60,7 +60,7 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
           <span className="rpgui-cursor-point">
             {" "}
             <span style={{ color: "yellow" }}>{text[0]}</span>
-            <span style={{color: colorResult? "orange" : ""}}>{text.slice(1)}</span>
+            <span style={{ color: colorResult? "orange" : "" }}>{text.slice(1)}</span>
           </span>
         ) : (
           <span style={{color: colorResult? "orange" : ""}}>{text}</span>

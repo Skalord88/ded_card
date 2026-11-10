@@ -19,7 +19,7 @@ import pl.kolendateam.dadcard.modifier.entity.ModifierEnum;
 public class AttackRoll implements Serializable {
 
   @Enumerated(EnumType.STRING)
-  ModifierEnum modifierBonus; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
+  ModifierEnum modifierType; // ex. SIZE, STR, DEX, BAB, FEAT, CLASS, SPELL, OTHER
 
   @JdbcTypeCode(SqlTypes.JSON)
   ModifierEnum[] target; // if null, bonus to all attacks, if not null, bonus to each target
@@ -32,8 +32,8 @@ public class AttackRoll implements Serializable {
   Integer bonus;
 
   public AttackRoll(AttackRollDTO attackDTO) {
-    this.modifierBonus =
-      attackDTO.modifierBonus != null ? attackDTO.modifierBonus : null;
+    this.modifierType =
+      attackDTO.modifierType != null ? attackDTO.modifierType : null;
     this.target = attackDTO.target != null ? attackDTO.target : null;
     this.type = attackDTO.type != null ? attackDTO.type : null;
     this.improved = attackDTO.improved != null ? attackDTO.improved : null;

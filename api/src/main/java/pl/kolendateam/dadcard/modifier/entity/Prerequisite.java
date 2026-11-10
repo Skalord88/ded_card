@@ -83,7 +83,7 @@ public class Prerequisite implements Serializable {
   // AttackRoll[] attackRoll;
 
   @JdbcTypeCode(SqlTypes.JSON)
-  ModifierBonus[] attackRoll;
+  ModifierType[] attackRoll;
 
   Integer initiative;
 
@@ -95,7 +95,7 @@ public class Prerequisite implements Serializable {
   // @JdbcTypeCode(SqlTypes.JSON)
   // SavingThrow[] savingThrow;
   @JdbcTypeCode(SqlTypes.JSON)
-  ModifierBonus[] savingThrow;
+  ModifierType[] savingThrow;
 
   @JdbcTypeCode(SqlTypes.JSON)
   SpecialAttacks specialAttacks;
@@ -111,7 +111,7 @@ public class Prerequisite implements Serializable {
   // @JdbcTypeCode(SqlTypes.JSON)
   // ArmorClass[] armorClass;
   @JdbcTypeCode(SqlTypes.JSON)
-  ModifierBonus[] armorClass;
+  ModifierType[] armorClass;
 
   @Enumerated(EnumType.STRING)
   ArmorsEnum armorType;
@@ -133,7 +133,7 @@ public class Prerequisite implements Serializable {
   // @JdbcTypeCode(SqlTypes.JSON)
   // DamageBonus[] damageBonus;
   @JdbcTypeCode(SqlTypes.JSON)
-  ModifierBonus[] damageBonus;
+  ModifierType[] damageBonus;
 
   @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
   @JoinTable(

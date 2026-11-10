@@ -1,4 +1,4 @@
-import { ABILITY_MODIFIER, DEFLECTION_BONUS } from "../../Prerequisite/interface/ModifierEnum";
+import { modifierEnumListToAdd, ModifierType } from "../../Prerequisite/interface/ModifierEnum";
 import { BonusResultMap, BonusSource } from "./GetBonusResult";
 
 export const isGlobalBonus = (b: BonusSource) =>
@@ -14,11 +14,8 @@ export const filterBonusMap = (
       .filter(([, bonuses]) => bonuses.length > 0)
   );
 
-  export const isStacking = (key: string) => {
-    if (key === "__UNTYPED__") return true;
+  export const isStacking = (key: ModifierType) => {
+    if (key === "UNTYPED") return true;
 
-    return [
-        ABILITY_MODIFIER.text,
-        DEFLECTION_BONUS.text
-    ].includes(key);
+    return modifierEnumListToAdd.includes(key);
 };

@@ -11,7 +11,7 @@ export type SavingThrow = {
     reflex?: Number;
     will?: Number;
     resistance?: Resistance[];
-    modifierBonus?: ModifierEnum,
+    modifierType?: ModifierEnum,
 }
 
 export type Resistance = {

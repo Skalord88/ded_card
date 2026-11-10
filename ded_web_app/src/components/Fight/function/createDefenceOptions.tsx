@@ -1,5 +1,4 @@
 import { ModifiedCharacter } from "../../ModifiedCharacter/interface/ModifiedCharacter";
-import { ARMOR_BONUS, SHIELD_BONUS } from "../../Prerequisite/interface/ModifierEnum";
 
 export type FightOptions = {
   text: string;
@@ -20,7 +19,7 @@ export const createDefenceOptions = (
   if (!char) return [];
   if (optionAction && optionAction === "Attack") {
     const touch = char.toListArmorClass?.filter(
-      (a) => ![ARMOR_BONUS.text, SHIELD_BONUS.text].includes(a.text ?? "")
+      (a) => !["ARMOR_BONUS", "SHIELD_BONUS"].includes(a.text ?? "")
     );
 
     return [
