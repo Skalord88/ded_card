@@ -1,6 +1,7 @@
 import {
   EMPTY_BONUS,
-  modifierEnumList
+  modifierEnumList,
+  ModifierType
 } from "../../Prerequisite/interface/ModifierEnum";
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { isToAdd } from "../Const/ModifiedCharacter";
@@ -10,21 +11,21 @@ import { resolveBonuses } from "./ResolvesBonuses";
 export const createTotAndBonusElement = (
   map: BonusResultMap,
   testo: boolean,
-  search?: (string | number)[]
+  search?: (string | number)[],
+  consoleLog?: boolean
 ): TotAndBonusElement[] => {
-
-  // console.log("createTotAndBonusElement", map, testo, search);
-  return resolveBonuses(map, search).map(({ key, bonus }) => ({
-    bonus: bonus.bonus,
-
-    text: testo ? key : undefined,
-
-    pop: {
-      name: modifierEnumList.find((m) => m === key.toUpperCase()),
-      description: key,
-      text: bonus.text
-    }
-  }) as TotAndBonusElement);
+  return resolveBonuses(map, search).map(
+    ({ key, bonus }) =>
+      ({
+        bonus: bonus.bonus,
+        text: testo ? key : undefined,
+        pop: {
+          name: key.toUpperCase() as ModifierType,
+          description: key,
+          text: bonus.text
+        }
+      }) as TotAndBonusElement
+  );
 };
 
 export const chooseBestBonuses = (
@@ -78,14 +79,12 @@ export const checkBonusTarget = (
     // devono essere presenti entrambi
     return bonus.targets.every((t) =>
       search.some(
-        (s) => ("id" in t && t.id === s) || ("text" in t && t.text === s)
+        (s) => ("id" in t && t.id === s) || ("name" in t && t.name === s)
       )
     );
   }
 
   // Grapple, Melee, Ranged, ecc.
   // if(!bonus.targets) return false;
-  return bonus.targets.some((t) =>
-    search.some((s) => t.name === s)
-  );
+  return bonus.targets.some((t) => search.some((s) => t.name === s));
 };

@@ -8,13 +8,8 @@ export const SummaryCharBaseAttack: React.FC<SummaryCharProps> = ({
   const toListGrapple: TotAndBonusElement[] = createTotAndBonusElement(
     modCharacter.attackRollMod || {},
     true,
-    ["Grapple"]
+    ["GRAPPLE"]
   )
-
-//   console.log(
-//   "GRAPPLE MAP",
-//   JSON.stringify(modCharacter.attackRollMod, null, 2)
-// );
 
   return (
     <>

@@ -1,14 +1,14 @@
 // CharacterContext.tsx
 import axios from "axios";
 import {
-    createContext,
-    Dispatch,
-    ReactNode,
-    SetStateAction,
-    useContext,
-    useEffect,
-    useMemo,
-    useState
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useEffect,
+  useMemo,
+  useState
 } from "react";
 import { Abilitys, LevelAbilitys } from "../../Abilitys/Interface";
 import { ClassPc } from "../../ClassPc/Interface/ClassPcLevel";
@@ -29,8 +29,8 @@ type CharacterContextValue = {
   abilitys?: Abilitys;
   abilitysLv: LevelAbilitys[];
   classes: ClassPc[];
-  featsList?: FeatPc[],
-  featsPg?: FeatPc[],
+  featsList?: FeatPc[];
+  featsPg?: FeatPc[];
   skills: SkillCharacter[];
   attacks?: Attacks;
 
@@ -49,7 +49,6 @@ type CharacterContextValue = {
   setAttacks: (attack: Attacks) => void;
 
   reloadCharacter: () => Promise<void>;
-
 };
 
 const CharacterContext = createContext<CharacterContextValue | null>(null);
@@ -82,23 +81,38 @@ export function CharacterProvider({
 
   const dBskills = getData("skills");
   const dBstudies = getData("studies");
-// const items = getData("items");
-// const classes = getData("classes");
+  // const items = getData("items");
+  // const classes = getData("classes");
 
-useEffect(() => {
-  reload("skills");
-  reload("studies");
-  // reload("items");
-  // reload("classes");
-}, [reload]);
+  useEffect(() => {
+    reload("skills");
+    reload("studies");
+    // reload("items");
+    // reload("classes");
+  }, [reload]);
 
   const moddedCharacter = useMemo(() => {
-  if (!character) return null;
-  if (!loading) return null;
+    if (!character) return null;
+    if (!loading) return null;
 
-  return modifiedCharacter(
+    return modifiedCharacter(
+      character,
+      character.playerName,
+      dBskills,
+      dBstudies,
+      abilitys,
+      abilitysLv,
+      race,
+      archetypes,
+      featsList,
+      classes,
+      inventory,
+      attacks,
+      skills
+    );
+  }, [
     character,
-    character.playerName,
+    loading,
     dBskills,
     dBstudies,
     abilitys,
@@ -110,77 +124,62 @@ useEffect(() => {
     inventory,
     attacks,
     skills
-  );
-}, [
-  character,
-  loading,
-  dBskills,
-  dBstudies,
-  abilitys,
-  abilitysLv,
-  race,
-  archetypes,
-  featsList,
-  classes,
-  inventory,
-  attacks,
-  skills,
-]);
+  ]);
 
   const reloadCharacter = async () => {
-  try {
-    const response = await axios.get(urlChar(charId));
-    const char: CharacterPc = response.data;
+    try {
+      const response = await axios.get(urlChar(charId));
+      const char: CharacterPc = response.data;
 
-    setCharacter(char);
-  // if(moddedCharacter){
-    // setAbilitys(char.abilitys);
-    setAbilitysBase(char.abilitys);
-    // setAbilitys(moddedCharacter?.abilitys ?? char.abilitys);
-    setAbilitysLv(char.characterLevelAbilitys ?? []);
-    setRace(char.race);
-    setArchetypes(char.archetypes ?? []);
-    setFeatsList(char.featsList ?? []);
-    setClasses(char.classPcList ?? []);
-    setInventory(char.inventory);
-    setAttacks(char.attacks);
-    setSkills(char.skillsCharacter ?? []);
-  // }
-  } catch (error) {
-    console.error(error);
-  } finally {
-    console.log("char caricato!");
-  }
-};
+      setCharacter(char);
+      // if(moddedCharacter){
+      // setAbilitys(char.abilitys);
+      setAbilitysBase(char.abilitys);
+      // setAbilitys(moddedCharacter?.abilitys ?? char.abilitys);
+      setAbilitysLv(char.characterLevelAbilitys ?? []);
+      setRace(char.race);
+      setArchetypes(char.archetypes ?? []);
+      setFeatsList(char.featsList ?? []);
+      setClasses(char.classPcList ?? []);
+      setInventory(char.inventory);
+      setAttacks(char.attacks);
+      setSkills(char.skillsCharacter ?? []);
+      // }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      console.log("char caricato!");
+    }
+  };
 
   useEffect(() => {
     reloadCharacter();
   }, [charId]);
 
   const updateAbilityBase = (
-  ability: keyof Omit<Abilitys, "modifierType">,
-  value: number,
-  // lvAbilitys?: LevelAbilitys[]
-) => {
-  setAbilitysBase((prev) => {
-    if (!prev) return prev;
+    ability: keyof Omit<Abilitys, "modifierType">,
+    value: number
+    // lvAbilitys?: LevelAbilitys[]
+  ) => {
+    setAbilitysBase((prev) => {
+      if (!prev) return prev;
 
-    // Copia i valori base
-    const updated = {
-      ...prev,
-      [ability]: value,
-    };
+      // Copia i valori base
+      const updated = {
+        ...prev,
+        [ability]: value
+      };
 
-    // Aggiunge i bonus dei livelli
-    // lvAbilitys?.forEach((lv) => {
-    //   abilityKeys.forEach((key) => {
-    //     updated[key] += lv.abilitys[key] ?? 0;
-    //   });
-    // });
+      // Aggiunge i bonus dei livelli
+      // lvAbilitys?.forEach((lv) => {
+      //   abilityKeys.forEach((key) => {
+      //     updated[key] += lv.abilitys[key] ?? 0;
+      //   });
+      // });
 
-    return updated;
-  });
-};
+      return updated;
+    });
+  };
 
   return (
     <CharacterContext.Provider

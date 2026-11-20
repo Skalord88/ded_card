@@ -165,38 +165,76 @@ export const getBonusResult = (
         }
       });
     }
+
     if (bonusType === "skillStudy") {
       prer?.skillStudy?.forEach((sS) => {
-        if (!sS.target) {
-          if (consoleLog) {
-            console.log("sS", sS);
-          }
+        if (consoleLog) {
+          console.log("sS", sS);
+        }
 
-          createBonusResult(
-            sS.rank as number,
-            prer.text || "",
-            (sS.modifierType as ModifierEnum) || null,
-            [
-              sS.skill?.skillName || sS.study?.studyName as ModifierEnum
-            ]
-          );
+        // const skillStudyTarget = sS.skill?.skillName || sS.study?.studyName;
+        const skillStudyTarget =
+          sS.skill?.skillName ||
+          sS.study?.studyName ||
+          sS.study?.skill?.skillName;
+        // console.log("TARGET:", skillStudyTarget?.name);
+        if (!skillStudyTarget) return;
+
+        const modifier = sS.modifierType as ModifierEnum;
+
+        if (!sS.target) {
+          createBonusResult(sS.rank as number, prer.text || "", modifier, [
+            skillStudyTarget
+          ]);
         } else {
           const trg: (ModifierEnum | Item)[] = createTargets(prer, sS.target);
 
-          trg.push(
-            sS.skill?.skillName || sS.study?.studyName as ModifierEnum
-          );
+          trg.push(skillStudyTarget);
 
           createBonusResult(
             sS.rank as number,
-            (sS.skill?.skillName || sS.study?.studyName)?.name || "",
-            sS.modifierType as ModifierEnum,
+            skillStudyTarget.name || "",
+            modifier,
             trg
           );
-          // }
         }
       });
     }
+
+    // if (bonusType === "skillStudy") {
+    //   prer?.skillStudy?.forEach((sS) => {
+    //     if (consoleLog) {
+    //         console.log("sS", sS);
+    //       }
+    //     if (!sS.target) {
+
+    //       // if (consoleLog) {console.log("skill/study", sS.skill?.skillName, sS.study?.studyName, sS.modifierType)}
+
+    //       createBonusResult(
+    //         sS.rank as number,
+    //         prer.text || "",
+    //         (sS.modifierType as ModifierEnum) || null,
+    //         [
+    //           sS.skill?.skillName || sS.study?.studyName as ModifierEnum
+    //         ]
+    //       );
+    //     } else {
+    //       const trg: (ModifierEnum | Item)[] = createTargets(prer, sS.target);
+
+    //       trg.push(
+    //         sS.skill?.skillName || sS.study?.studyName as ModifierEnum
+    //       );
+
+    //       createBonusResult(
+    //         sS.rank as number,
+    //         (sS.skill?.skillName || sS.study?.studyName)?.name || "",
+    //         sS.modifierType as ModifierEnum,
+    //         trg
+    //       );
+    //       // }
+    //     }
+    //   });
+    // }
 
     if (bonusType === "abilitys") {
       if (prer && prer.abilitys) {

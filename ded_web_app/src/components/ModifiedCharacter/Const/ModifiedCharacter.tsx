@@ -37,8 +37,9 @@ import {
 } from "../../Race/Function";
 import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Skill } from "../../Skills/interface/Skill";
-import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
+import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
+import { Study } from "../../Skills/interface/Study";
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { noneWeapon } from "../../variables";
 import { createHitDiceMap } from "../../Vita/Functions";
@@ -79,7 +80,8 @@ export const modifiedCharacter = (
 ): ModifiedCharacter => {
   const name: string = nome ?? char.characterName;
   const ability: Abilitys = newAbilitys ?? char.abilitys;
-  const lvAbility: LevelAbilitys[] = newLvAbility ?? char.characterLevelAbilitys;
+  const lvAbility: LevelAbilitys[] =
+    newLvAbility ?? char.characterLevelAbilitys;
   const race: SubRace = newRace ?? char.race;
   const archetypes: Archetype[] = newArchetypes ?? char.archetypes;
   const featsList: FeatPc[] = newFeatsList ?? char.featsList;
@@ -90,9 +92,7 @@ export const modifiedCharacter = (
 
   // console.log("lvAbility", lvAbility)
 
-  const lvAbToPrerequisite: Prerequisite[] = lvAbilityToPrerequisite(
-    lvAbility
-  );
+  const lvAbToPrerequisite: Prerequisite[] = lvAbilityToPrerequisite(lvAbility);
 
   const allPrerequisite: Prerequisite[] = findAllPrerequisite(
     race,
@@ -117,17 +117,19 @@ export const modifiedCharacter = (
   );
 
   const newAb: BonusResultMap = getBonusResult(
-    [...allPrerequisite, ...lvAbToPrerequisite], "abilitys"
-  // , true
+    [...allPrerequisite, ...lvAbToPrerequisite],
+    "abilitys"
+    // , true
   );
 
   // console.log("lvAbToPrerequisite", lvAbToPrerequisite)
   // console.log("newAb", newAb)
 
   const newAbility: Abilitys = addModdedAbilitysToAbilitys(
-    ability
+    ability,
     // , lvAbility
-    , newAb);
+    newAb
+  );
 
   const allPrerequisiteWithAbilities: Prerequisite[] =
     createPrerequisiteAbility(
@@ -137,10 +139,10 @@ export const modifiedCharacter = (
       studiesFromDb
     );
 
-    const abilitysMod: BonusResultMap = getBonusResult(
-      allPrerequisiteWithAbilities,
-      "abilitys"
-    );
+  const abilitysMod: BonusResultMap = getBonusResult(
+    allPrerequisiteWithAbilities,
+    "abilitys"
+  );
 
   // console.log("allPrerequisiteWithAbilities", allPrerequisiteWithAbilities)
 
@@ -193,6 +195,7 @@ export const modifiedCharacter = (
   const sS: BonusResultMap = getBonusResult(
     allPrerequisiteFromClasses,
     "skillStudy"
+    // , true
   );
 
   // console.log("sS", sS, "skillsFromDb", skillsFromDb, "studiesFromDb", studiesFromDb);
@@ -202,10 +205,10 @@ export const modifiedCharacter = (
       skillsFromDb || [],
       studiesFromDb || [],
       sS
-      , true
+      // , true
     );
 
-    // console.log("skillsTotAndBonus", skillsTotAndBonus);
+  // console.log("skillsTotAndBonus", skillsTotAndBonus);
 
   const adjLevel: number =
     !newRace && !newArchetypes
@@ -241,19 +244,19 @@ export const modifiedCharacter = (
 
   const listBabMeleeGeneralBonus: TotAndBonusElement[][] = numberOfAttacksMap(
     bab,
-    createTotAndBonusElement(newAr || {}, true, ["Melee"]),
+    createTotAndBonusElement(newAr || {}, true, ["MELEE"]),
     false
   );
 
   const listBabRangedGeneralBonus: TotAndBonusElement[][] = numberOfAttacksMap(
     bab,
-    createTotAndBonusElement(newAr || {}, true, ["Ranged", "Thrown"]),
+    createTotAndBonusElement(newAr || {}, true, ["RANGED", "THROWN"]),
     false
   );
 
-  const babMelee: number = returnBonusSpecific(newAr, ["Melee"]);
+  const babMelee: number = returnBonusSpecific(newAr, ["MELEE"]);
 
-  const babRanged: number = returnBonusSpecific(newAr, ["Ranged", "Thrown"]);
+  const babRanged: number = returnBonusSpecific(newAr, ["RANGED", "THROWN"]);
 
   const listOfWeapons = [
     attacks?.firstAttackSetOne || noneWeapon,
@@ -346,9 +349,9 @@ export const modifiedCharacter = (
         ? numberOfFirstAttacksMap(
             bab || 0,
             createTotAndBonusElement(updatedAttacksRollMap || {}, true, [
-              "Melee",
+              "MELEE",
               weapon.itemId
-            ]).concat(summedBab)
+            ], true).concat(summedBab)
           )
         : undefined;
 
@@ -357,7 +360,7 @@ export const modifiedCharacter = (
       ? numberOfAttacksMap(
           bab || 0,
           createTotAndBonusElement(updatedAttacksRollMap || {}, true, [
-            "Melee",
+            "MELEE",
             weapon.itemId
           ]).concat(summedBab),
           true,
@@ -371,7 +374,7 @@ export const modifiedCharacter = (
     const toListMeleeDamage: TotAndBonusElement[] | undefined = !ranged
       ? weaponDamagePoseAndTwoWeapon(
           createTotAndBonusElement(updatedDamageMap || {}, text, [
-            "Melee",
+            "MELEE",
             weapon.itemId
           ]),
           // !ranged,
@@ -382,7 +385,7 @@ export const modifiedCharacter = (
     const toListMeleeTwoWeaponDamage: TotAndBonusElement[] | undefined = !ranged
       ? weaponDamagePoseAndTwoWeapon(
           createTotAndBonusElement(updatedDamageMap || {}, text, [
-            "Melee",
+            "MELEE",
             weapon.itemId
           ]),
           // !ranged,
@@ -396,8 +399,8 @@ export const modifiedCharacter = (
         ? numberOfFirstAttacksMap(
             bab || 0,
             createTotAndBonusElement(updatedAttacksRollMap || {}, true, [
-              "Ranged",
-              "Thrown",
+              "RANGED",
+              "THROWN",
               weapon.itemId
             ]).concat(summedBab)
           )
@@ -409,8 +412,8 @@ export const modifiedCharacter = (
         ? numberOfAttacksMap(
             bab || 0,
             createTotAndBonusElement(updatedAttacksRollMap || {}, true, [
-              "Ranged",
-              "Thrown",
+              "RANGED",
+              "THROWN",
               weapon.itemId
             ]).concat(summedBab),
             true,
@@ -422,8 +425,8 @@ export const modifiedCharacter = (
         : undefined;
 
     const searchRanged: (string | number)[] = ranged
-      ? ["Ranged", weapon.itemId]
-      : ["Thrown", weapon.itemId];
+      ? ["RANGED", weapon.itemId]
+      : ["THROWN", weapon.itemId];
 
     const listRanged = createTotAndBonusElement(
       updatedDamageMap,
@@ -450,25 +453,31 @@ export const modifiedCharacter = (
         ? bab +
           returnBonusSpecific(
             updatedAttacksRollMap,
-            ["Melee", weapon.itemId]
+            ["MELEE", weapon.itemId]
             // ],
           )
         : undefined;
 
-    const babRanged: number | undefined = listBabMeleeSpecificBonus
-    ?.reduce((tot, b) => tot + b.reduce((totBab, bab) => totBab + bab.bonus, 0), 0)
+    const babRanged: number | undefined = listBabMeleeSpecificBonus?.reduce(
+      (tot, b) => tot + b.reduce((totBab, bab) => totBab + bab.bonus, 0),
+      0
+    );
 
-    const damageMelee: number | undefined = toListMeleeDamage
-    ?.reduce((tot, d) => tot + d.bonus, 0)
+    const damageMelee: number | undefined = toListMeleeDamage?.reduce(
+      (tot, d) => tot + d.bonus,
+      0
+    );
 
     const damageMeleeTwoWeapon: number | undefined =
       toListMeleeTwoWeaponDamage?.reduce((tot, d) => tot + d.bonus, 0) || 0;
 
-    const damageRanged: number | undefined = toListRangedDamage
-    ?.reduce((tot, d) => tot + d.bonus, 0)
+    const damageRanged: number | undefined = toListRangedDamage?.reduce(
+      (tot, d) => tot + d.bonus,
+      0
+    );
 
     const damageRangedTwoWeapon: number | undefined =
-      toListRangedTwoWeaponDamage?.reduce((tot, d) => tot + d.bonus, 0)
+      toListRangedTwoWeaponDamage?.reduce((tot, d) => tot + d.bonus, 0);
     return {
       // WeaponElement
       weapon: weapon,
@@ -572,9 +581,7 @@ export const modifiedCharacter = (
 };
 
 export const isToAdd = (key: string): boolean => {
-  return ["Untyped", "Increase", ...modifierEnumListToAdd ].includes(
-    key
-  );
+  return ["Untyped", "Increase", ...modifierEnumListToAdd].includes(key);
 };
 
 export const returnBonus = (map: BonusResultMap): number => {

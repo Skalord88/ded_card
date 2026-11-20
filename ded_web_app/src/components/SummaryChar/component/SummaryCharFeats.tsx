@@ -73,9 +73,9 @@ export const SummaryCharFeats: React.FC<SummaryCharProps> = ({
               .filter(Boolean)
               .join(" ");
 
-            const description: string = [
-              f.classFeat ? f.classFeat.feat.modifiers?.text : "",
-              f.feat ? f.feat.modifiers?.text : ""
+            const description: string = [ "culo",
+              f.classFeat ? f.classFeat.feat.modifiers?.text : "" +
+              f.feat ? f.feat?.modifiers?.text : ""
             ]
               .filter(Boolean)
               .join(" ");
@@ -85,7 +85,7 @@ export const SummaryCharFeats: React.FC<SummaryCharProps> = ({
             return (
               <div key={index}>
                 <div>
-                  <Popup text={title} popText={{ text: description }} />
+                  <Popup text={title} popText={description} />
                   <span>{list !== "" ? ": " + list : null}</span>
                 </div>
               </div>

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { Abilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
-import { addToDrop } from "../components/functions";
+import { addToDrop, signAndCountAbility } from "../components/functions";
 import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
 import { ModifiedCharacter } from "../components/ModifiedCharacter/interface/ModifiedCharacter";
 import { BASE_VALUE } from "../components/Prerequisite/interface/ModifierEnum";
@@ -16,22 +16,24 @@ import {
   TotAndBonus,
   TotAndBonusElement
 } from "../components/SummaryChar/component/TotAndBonus";
+import { findAbility } from "../components/Abilitys/Functions";
+import { AbilityLv } from "../components/Abilitys/components/AbilityLv";
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
 export function Ability() {
   const { charId } = useParams();
 
-  const { moddedCharacter, abilitysBase
-    // , abilitysLv
-    , updateAbilityBase } =
+  const { moddedCharacter, abilitysBase, abilitysLv, updateAbilityBase } =
     useCharacter();
 
   const handleData = (
     option: number,
     ability: keyof Omit<Abilitys, "modifierType">
   ) => {
-    updateAbilityBase(ability, option
+    updateAbilityBase(
+      ability,
+      option
       // , abilitysLv
     );
   };
@@ -100,7 +102,13 @@ export function Ability() {
               ).map(([key, value]) => {
                 if (typeof value !== "number") return null;
 
-                // console.log("abilitysMod", moddedCharacter?.abilitysMod);
+                // console.log("abilitysMod", abilitys);
+
+                const valueTot: string = moddedCharacter.abilitys
+                  ? signAndCountAbility([
+                      findAbility(moddedCharacter.abilitys, key.toUpperCase())
+                    ])
+                  : "+0";
 
                 const toList: TotAndBonusElement[] = moddedCharacter
                   ? createTotAndBonusElement(
@@ -110,11 +118,12 @@ export function Ability() {
                     ).filter((e): e is TotAndBonusElement => e.pop.text === key)
                   : [];
 
-                // console.log("toList", toList[0], [{ bonus: value, pop: BASE_VALUE }, ...toList]);
+                // console.log("toList", [{ bonus: value, pop: BASE_VALUE }, ...toList]);
 
                 return (
                   <div key={key} className="rpgui-container-framed grey">
                     <h3>{key.toUpperCase()}</h3>
+                    <h2>{valueTot}</h2>
 
                     <TotAndBonus
                       show={false}
@@ -133,6 +142,7 @@ export function Ability() {
                 );
               })}
             </div>
+            <AbilityLv times={Math.floor((moddedCharacter.totLevel || 0) / 4)} abilitysLvPc={abilitysLv} />
             {/* )} */}
             {/* {moddedCharacter && ( */}
             <SummaryChar modCharacter={moddedCharacter as ModifiedCharacter} />

@@ -1,3 +1,4 @@
+import { signAndCountAbility } from "../../functions";
 import { SummaryCharProps } from "../SummaryChar";
 
 export const SummaryCharAbilities: React.FC<SummaryCharProps> = ({
@@ -14,7 +15,7 @@ export const SummaryCharAbilities: React.FC<SummaryCharProps> = ({
             return (
               <div key={key}>
                 <p>
-                  {key}:{value as number}
+                  {key}:{value as number} {signAndCountAbility([value as number])}
                 </p>
               </div>
             );

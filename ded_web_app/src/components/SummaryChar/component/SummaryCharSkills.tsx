@@ -1,10 +1,12 @@
 import { Fragment } from "react/jsx-runtime";
-import {
-  SummaryCharProps
-} from "../SummaryChar";
+import { SummaryCharProps } from "../SummaryChar";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
-import { TotAndBonus } from "./TotAndBonus";
-import { listToShow } from "../../Prerequisite/interface/ModifierEnum";
+import { TotAndBonus, TotAndBonusElement } from "./TotAndBonus";
+import {
+  isBonusVisible,
+  listToShow,
+  ModifierType
+} from "../../Prerequisite/interface/ModifierEnum";
 import { FormattingText } from "../../Formatting/Function";
 
 export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
@@ -13,7 +15,7 @@ export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
   const skills: SkillStudyTotAndBonusElement[] =
     modCharacter.skillsTotAndBonus || [];
 
-    // console.log("SummaryCharSkills", skills, listToShow);
+  
 
   return (
     <>
@@ -22,36 +24,47 @@ export const SummaryCharSkills: React.FC<SummaryCharProps> = ({
       </div>
       <div>
         {skills &&
-          skills.map((s, index) => {
+          skills.map((skill, index) => {
             if (
-              !s.studies &&
-              s.list &&
-              s.list.length > 0 &&
-              s.list.find((l) => listToShow.includes(l.pop.name || ""))
+              !skill.studies &&
+              skill.list &&
+              skill.list.length > 0 &&
+              isBonusVisible(skill.list)
             ) {
               return (
                 <div key={index}>
                   <span>
-                    {FormattingText(s.skill.skillName.name) + ": "}
-                    <TotAndBonus show={true} firstSign={true} list={s.list} />
+                    {FormattingText(skill.skill.skillName.name) + ": "}
+                    <TotAndBonus
+                      show={true}
+                      firstSign={true}
+                      list={skill.list}
+                    />
                   </span>
                 </div>
               );
             }
-            if (s.studies && s.studies.length > 0) {
+            if (skill.studies && skill.studies.length > 0) {
               return (
                 <div key={index}>
                   <div>
-                    <span>{FormattingText(s.skill.skillName.name) + ": "}</span>
+                    <span>
+                      {FormattingText(skill.skill.skillName.name) + ": "}
+                    </span>
                   </div>
                   <div>
-                    {s.studies.map((st, indexSt) => {
-                      // if (
-                      //   st.list.find((l) => listToShow.includes(l.pop.name || ""))
-                      // )
+                    {skill.studies.map((st, indexSt) => {
+                      // const lista = st.list.flatMap((l) => [l.pop.name, l.pop.text, l.pop.description]).filter((f) => f === "ABILITY_MODIFIER");
+
+                      // console.log("lista st", st.list)
+                      // console.log("listToShow", listToShow)
+                      if (isBonusVisible(st.list))
                         return (
                           <Fragment key={indexSt}>
-                            <span>{FormattingText(st.study.studyName.name) + ": "}</span>
+                            {/* {st.list[0].pop.name} */}
+                            <span>
+                              {FormattingText(st.study.studyName.name) + ": "}
+                            </span>
                             <TotAndBonus
                               show={true}
                               firstSign={true}

@@ -1,6 +1,6 @@
 import { Abilitys } from "../../Abilitys/Interface";
 import { ModifierBonus } from "../../Prerequisite/interface/ModifierBonus";
-import { GRAPPLE, MELEE, RANGED, WILL_MODIFIER } from "../../Prerequisite/interface/ModifierEnum";
+import { GRAPPLE, MELEE, RANGED, THROWN, WILL_MODIFIER } from "../../Prerequisite/interface/ModifierEnum";
 import { Prerequisite } from "../../Prerequisite/interface/Prerequisite";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Skill } from "../../Skills/interface/Skill";
@@ -58,15 +58,15 @@ export const createPrerequisiteAbility = (
       },
       {
         bonus: modStrength,
-        modifierType: "ABILITY_MODIFIER",
-        target: ["THROWN"]
+        modifierType: {name: "ABILITY_MODIFIER"},
+        target: [THROWN]
       }
     ],
 
     skillStudy: skillsStrength.map((skill) => ({
       skill: skill,
       rank: modStrength,
-      modifierType: {name: skill.skillName}
+      modifierType: {name: "ABILITY_MODIFIER"}
     })) as PrerequisiteSkills[]
   } as Prerequisite;
   const dexterityPrerequisite: Prerequisite = {
@@ -137,12 +137,12 @@ export const createPrerequisiteAbility = (
             ...skillsIntelligence.map((skill) => ({
               skill,
               rank: modIntelligence,
-              modifierType: "ABILITY_MODIFIER"
+              modifierType: {name: "ABILITY_MODIFIER"}
             })),
             ...studiesIntelligence.map((study) => ({
               study: study,
               rank: modIntelligence,
-              modifierType: "ABILITY_MODIFIER"
+              modifierType: {name: "ABILITY_MODIFIER"}
             }))
           ]
         : ([] as PrerequisiteSkills[])
@@ -190,6 +190,3 @@ export const createPrerequisiteAbility = (
 
   return allPrerequisite.concat(abilityPrerequisite);
 };
-
-// MELEE
-// RANGED

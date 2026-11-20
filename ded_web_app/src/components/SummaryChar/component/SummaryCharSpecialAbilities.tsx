@@ -1,9 +1,7 @@
 import { Popup } from "../../Popup/Popup";
 import {
-  ATTACK,
   EMPTY_BONUS,
-  ModifierEnum,
-  QUALITY
+  ModifierEnum
 } from "../../Prerequisite/interface/ModifierEnum";
 import { SpecialAbilities } from "../../Race/Interfaces";
 import { SummaryCharProps } from "../SummaryChar";

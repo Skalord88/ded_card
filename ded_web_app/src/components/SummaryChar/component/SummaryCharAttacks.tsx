@@ -202,8 +202,8 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
       "wA ."
       "w21 w22"
       "w2A ."
-    `,
-        gap: 8
+    `
+        //, gap: 8
       }}
     >
       {areas.map((area, index) => {
@@ -221,14 +221,17 @@ export const MapAllAttacks: React.FC<SummaryCharProps> = ({ modCharacter }) => {
             area.element?.toListRangedTwoWeaponDamage
           ].filter((a) => a !== undefined);
           return (
-            <div key={index} style={{ border: "1px solid red" }}>
+            <div
+              key={index}
+              className={"rpgui-container-framed golden"}
+              // style={{ border: "1px solid red" }}
+            >
               <div>
                 <p>{area.element?.weapon?.name}</p>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr" }}>
                 {Array.from({ length: listBabBonus.length }).map(
                   (_, indexA) => {
-
                     if (
                       !area.element?.weapon ||
                       area.element?.weaponRanged === undefined ||

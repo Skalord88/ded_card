@@ -20,9 +20,9 @@
             <column name="character_level_abilitys"
                 value="[
                 {&quot;level&quot;: 4, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}},
-                {&quot;level&quot;: 8, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}},
-                {&quot;level&quot;: 12, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}}
+                {&quot;level&quot;: 8, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}}
             ]" />
+            <!-- ,{&quot;level&quot;: 12, &quot;abilitys&quot;: {&quot;dexterity&quot;: 1}} -->
             <column name="sub_race_id" value="502" />
             <column name="special_attacks" value="{}" />
             <!-- <column name="inventory_id" value="100" /> -->

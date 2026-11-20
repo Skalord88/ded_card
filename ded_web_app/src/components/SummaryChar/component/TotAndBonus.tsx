@@ -1,7 +1,10 @@
 import { Fragment } from "react/jsx-runtime";
 import { signAndCountToString } from "../../functions";
 import { Popup } from "../../Popup/Popup";
-import { ModifierEnum, ModifierType } from "../../Prerequisite/interface/ModifierEnum";
+import {
+  ModifierEnum,
+  ModifierType
+} from "../../Prerequisite/interface/ModifierEnum";
 import { FormattingText } from "../../Formatting/Function";
 
 export type TotAndBonusElement = {
@@ -14,7 +17,7 @@ export type TotAndBonusProps = {
   show: boolean;
   firstSign?: boolean;
   list?: TotAndBonusElement[];
-  tot?: number
+  tot?: number;
   onlyTot?: boolean;
   children?: React.ReactNode;
 };
@@ -28,59 +31,57 @@ export const TotAndBonus: React.FC<TotAndBonusProps> = ({
   children
 }) => {
   // if (list) {
-    const total: number = !tot && list ? Math.floor(
-      list.reduce((tot, element) => tot + (element?.bonus || 0), 0)
-    ) : tot ? tot : 0;
+  const total: number =
+    !tot && list
+      ? Math.floor(
+          list.reduce((tot, element) => tot + (element?.bonus || 0), 0)
+        )
+      : tot
+        ? tot
+        : 0;
 
-    if(onlyTot){
-      return (
-        <div>
-        <span style={{ color: "orange" }}>
-          {firstSign ? signAndCountToString([total]) : total}
-        </span>
-        </div>
-      )
-    }
-
+  if (onlyTot) {
     return (
       <div>
         <span style={{ color: "orange" }}>
           {firstSign ? signAndCountToString([total]) : total}
         </span>
-
-        <span>
-          {":("}
-          {list && list.length !== 0 &&
-            list.map((l: TotAndBonusElement, index) => {
-              const sign: string = signAndCountToString([l?.bonus || 0]);
-              const text = show && l.text ? [sign, FormattingText(l.text)] : [sign];
-
-              return (
-                <Fragment key={index}>
-                  <Popup text={text} popText={l?.pop} />
-                  {index === list.length - 1 ? null : show ? (
-                    <span>{", "}</span>
-                  ) : (
-                    <span> </span>
-                  )}
-                </Fragment>
-              );
-            })}
-          {")"}
-        </span>
-
-        {children}
       </div>
     );
-  // } else {
-  //   return (
-  //     <div>
-  //       {tot && (
-  //         <p style={{ color: "orange" }}>{signAndCountToString([tot])}</p>
-  //       )}
-  //     </div>
-  //   );
-  // }
+  }
+
+  return (
+    <div>
+      <span style={{ color: "orange" }}>
+        {firstSign ? signAndCountToString([total]) : total}
+      </span>
+
+      <span>
+        {":("}
+        {list &&
+          list.length !== 0 &&
+          list.map((l: TotAndBonusElement, index) => {
+            const sign: string = signAndCountToString([l?.bonus || 0]);
+            const text =
+              show && l.text ? [sign, FormattingText(l.text)] : [sign];
+
+            return (
+              <Fragment key={index}>
+                <Popup text={text} popText={l?.pop} />
+                {index === list.length - 1 ? null : show ? (
+                  <span>{", "}</span>
+                ) : (
+                  <span> </span>
+                )}
+              </Fragment>
+            );
+          })}
+        {")"}
+      </span>
+
+      {children}
+    </div>
+  );
 };
 
 export type TotAndBonusAllProps = {

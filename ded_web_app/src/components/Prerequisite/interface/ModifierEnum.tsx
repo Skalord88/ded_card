@@ -1,3 +1,5 @@
+import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
+
 export type ModifierType =
   | "ABILITY_MODIFIER"
   | "ALCHEMICAL_BONUS"
@@ -71,7 +73,13 @@ export type ModifierType =
   | "SWIM"
   | "TUMBLE"
   | "USE_MAGIC_DEVICE"
-  | "USE_ROPE";
+  | "USE_ROPE"
+  | "ARCANA"
+  | "ARCHITECTURE"
+  | "HISTORY"
+  | "RELIGION"
+  | "PLANE"
+  ;
 
 export type ModifierEnum = {
   name: ModifierType;
@@ -110,19 +118,19 @@ export const WILL_MODIFIER: ModifierEnum = {
 
 export const FIRST_ATTACK: ModifierEnum = {
   name: "FIRST_ATTACK",
-  text: "0 attack bonus"
+  text: "0 attack bonus", description: "First attack, 0 attack bonus"
 };
 export const SECOND_ATTACK: ModifierEnum = {
   name: "SECOND_ATTACK",
-  text: "-5 attack bonus"
+  text: "-5 attack bonus", description: "Second attack, -5 attack bonus"
 };
 export const THIRD_ATTACK: ModifierEnum = {
   name: "THIRD_ATTACK",
-  text: "-10 attack bonus"
+  text: "-10 attack bonus", description: "Third attack, -10 attack bonus"
 };
 export const FOURTH_ATTACK: ModifierEnum = {
   name: "FOURTH_ATTACK",
-  text: "-15 attack bonus"
+  text: "-15 attack bonus", description: "Fourth attack, -15 attack bonus"
 };
 export const TWO_WEAPON_FIGHTING_PENALTIES: ModifierEnum = {
   name: "TWO_WEAPON_FIGHTING_PENALTIES",
@@ -148,9 +156,10 @@ export const SAVING: ModifierEnum = {
   text: "Saving Throw"
 };
 
-// export const THROWN: ModifierEnum = {
-//   text: "Thrown"
-// }
+export const THROWN: ModifierEnum = {
+  name: "THROWN",
+  text: "Thrown"
+}
 
 export const RANGED: ModifierEnum = {
   name: "RANGED",
@@ -173,7 +182,8 @@ export const GRAPPLE: ModifierEnum = {
 
 export const modifierEnumListToAdd: ModifierType[] = [
   "ABILITY_MODIFIER",
-  "DEFLECTION_BONUS"
+  "DEFLECTION_BONUS",
+  "RACIAL_BONUS"
 ];
 
 export const modifierEnumList: ModifierType[] = [
@@ -196,7 +206,7 @@ export const modifierEnumList: ModifierType[] = [
   "SIZE_BONUS"
 ];
 
-export const listToShow: string[] = [
+export const listToShow: ModifierType[] = [
   "RANK_VALUE",
   "ALCHEMICAL_BONUS",
   "CIRCUMSTANCE_MODIFIER",
@@ -208,6 +218,14 @@ export const listToShow: string[] = [
   "RACIAL_BONUS",
   "SACRED_MODIFIER"
 ];
+
+export const isBonusVisible = (list: TotAndBonusElement[]) => {
+    return list.some((l) => {
+      const modifierType = l.pop?.name ?? l.pop?.description ?? l.text;
+
+      return listToShow.includes(modifierType as ModifierType);
+    });
+  };
 
 // export const ABILITY_MODIFIER: ModifierEnum = {
 //   description:

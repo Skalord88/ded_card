@@ -52,44 +52,48 @@ export function findAbility(charAb: Abilitys, ability: string): number {
   }
 }
 
+export const oneBonusAbility = (ab: number): number => {
+  return Math.floor((ab - 10) / 2);
+};
+
 export function BonusAbilities(ab: Abilitys, which: string) {
   switch (which) {
     case "strength":
-      return Math.floor((ab.strength - 10) / 2);
+      return oneBonusAbility(ab.strength);
     case "STRENGTH":
-      return Math.floor((ab.strength - 10) / 2);
+      return oneBonusAbility(ab.strength);
     case "STR":
-      return Math.floor((ab.strength - 10) / 2);
+      return oneBonusAbility(ab.strength);
     case "dexterity":
-      return Math.floor((ab.dexterity - 10) / 2);
+      return oneBonusAbility(ab.dexterity);
     case "DEXTERITY":
-      return Math.floor((ab.dexterity - 10) / 2);
+      return oneBonusAbility(ab.dexterity);
     case "DEX":
-      return Math.floor((ab.dexterity - 10) / 2);
+      return oneBonusAbility(ab.dexterity);
     case "constitution":
-      return Math.floor((ab.constitution - 10) / 2);
+      return oneBonusAbility(ab.constitution);
     case "CONSTITUTION":
-      return Math.floor((ab.constitution - 10) / 2);
-    case "COS":
-      return Math.floor((ab.constitution - 10) / 2);
+      return oneBonusAbility(ab.constitution);
+    case "CON":
+      return oneBonusAbility(ab.constitution);
     case "intelligence":
-      return Math.floor((ab.intelligence - 10) / 2);
+      return oneBonusAbility(ab.intelligence);
     case "INTELLIGENCE":
-      return Math.floor((ab.intelligence - 10) / 2);
+      return oneBonusAbility(ab.intelligence);
     case "INT":
-      return Math.floor((ab.intelligence - 10) / 2);
+      return oneBonusAbility(ab.intelligence);
     case "WIS":
-      return Math.floor((ab.wisdom - 10) / 2);
+      return oneBonusAbility(ab.wisdom);
     case "wisdom":
-      return Math.floor((ab.wisdom - 10) / 2);
+      return oneBonusAbility(ab.wisdom);
     case "WISDOM":
-      return Math.floor((ab.wisdom - 10) / 2);
+      return oneBonusAbility(ab.wisdom);
     case "charisma":
-      return Math.floor((ab.charisma - 10) / 2);
+      return oneBonusAbility(ab.charisma);
     case "CHARISMA":
-      return Math.floor((ab.charisma - 10) / 2);
+      return oneBonusAbility(ab.charisma);
     case "CHA":
-      return Math.floor((ab.charisma - 10) / 2);
+      return oneBonusAbility(ab.charisma);
     default:
       return 0;
   }

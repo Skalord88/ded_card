@@ -3,7 +3,7 @@ import { ItemInDrop } from "../functions";
 
 export interface DropdownProps<T> {
   options: ItemInDrop<T>[];
-  onAction: (option: T) => void;
+  onAction?: (option: T) => void;
 }
 
 export const DropdownComponent = <T,>({
@@ -19,7 +19,7 @@ export const DropdownComponent = <T,>({
   }, [options]);
 
   const selectItem = (option: ItemInDrop<T>) => {
-    onAction(option.item);
+    onAction?.(option.item);
     setSelectedItem(option.name);
     setIsOpen(false);
   };

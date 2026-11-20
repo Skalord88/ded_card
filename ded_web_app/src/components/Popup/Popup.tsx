@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { FormattingText } from "../Formatting/Function";
-import { ModifierEnum, ModifierType } from "../Prerequisite/interface/ModifierEnum";
+import {
+  ModifierEnum,
+  ModifierType
+} from "../Prerequisite/interface/ModifierEnum";
 import { signAndCountToString } from "../functions";
 import { TotAndBonusElement } from "../SummaryChar/component/TotAndBonus";
 
 export interface PopupProps {
   text?: string | string[];
-  popText?: ModifierEnum;
+  popText?: ModifierEnum | string;
   bonusList?: TotAndBonusElement[];
-  colorResult?: boolean
+  colorResult?: boolean;
 }
 
-export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorResult }) => {
+export const Popup: React.FC<PopupProps> = ({
+  text,
+  popText,
+  bonusList,
+  colorResult
+}) => {
   const [showPopup, setShowPopup] = useState(false);
 
   const togglePopup = (show: boolean) => {
@@ -19,11 +27,12 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
   };
 
   if (bonusList) {
-    const totBonus: string = signAndCountToString([bonusList.reduce((acc, item) => acc + Math.floor(item.bonus), 0)]);
-    
+    const totBonus: string = signAndCountToString([
+      bonusList.reduce((acc, item) => acc + Math.floor(item.bonus), 0)
+    ]);
     const bonusTexts: string[] = bonusList.map((item) => {
       const sign = item.bonus >= 0 ? "+" : "";
-      return `${sign}${Math.floor(item.bonus)} ${item.pop}`;
+      return `${sign}${Math.floor(item.bonus)} ${FormattingText(item.pop.name)}`;
     });
     // console.log("totBonus", totBonus, "bonusTexts", bonusTexts);
     return (
@@ -60,10 +69,12 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
           <span className="rpgui-cursor-point">
             {" "}
             <span style={{ color: "yellow" }}>{text[0]}</span>
-            <span style={{ color: colorResult? "orange" : "" }}>{text.slice(1)}</span>
+            <span style={{ color: colorResult ? "orange" : "" }}>
+              {text.slice(1)}
+            </span>
           </span>
         ) : (
-          <span style={{color: colorResult? "orange" : ""}}>{text}</span>
+          <span style={{ color: colorResult ? "orange" : "" }}>{text}</span>
         )}
 
         {popText && (
@@ -72,9 +83,23 @@ export const Popup: React.FC<PopupProps> = ({ text, popText, bonusList, colorRes
               showPopup ? "show" : ""
             }`}
           >
-            {popText.text && <div><p>{FormattingText(popText.text)}</p></div>}
-            {popText.description && (
-              <div>{FormattingText(popText.description)}</div>
+            {typeof popText === "string" ? (
+              <div>
+                <p>{FormattingText(popText)}</p>
+              </div>
+            ) : (
+              <>
+                {popText.text && (
+                  <div>
+                    <p>{FormattingText(popText.text)}</p>
+                  </div>
+                )}
+                {popText.description && (
+                  <div>
+                    <p>{FormattingText(popText.description)}</p>
+                  </div>
+                )}
+              </>
             )}
           </span>
         )}

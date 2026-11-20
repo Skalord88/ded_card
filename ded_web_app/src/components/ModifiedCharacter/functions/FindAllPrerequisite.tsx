@@ -32,7 +32,12 @@ export const findAllPrerequisite = (
     });
   }
 
-  if (featsList && featsList.length > 0 && classPcList && classPcList.length > 0) {
+  if (
+    featsList &&
+    featsList.length > 0 &&
+    classPcList &&
+    classPcList.length > 0
+  ) {
     const allFeatPc: (FeatPc | ClassFeats)[] = [
       ...classPcList.flatMap((c) => c.classCharacter.classFeats),
       ...featsList
@@ -70,38 +75,41 @@ export const findAllPrerequisite = (
     });
   }
 
-if (skills && skills.length > 0) {
-  const charSkills: PrerequisiteSkills[] = skills.flatMap(
-    (sk): PrerequisiteSkills[] => {
+  if (skills && skills.length > 0) {
+    const charSkills: PrerequisiteSkills[] = skills.flatMap(
+      (sk): PrerequisiteSkills[] => {
+        if (!sk.skill && !sk.study) return [];
 
-      if (!sk.skill && !sk.study) return [];
+        if (sk.skill) {
+          return [
+            {
+              skill: sk.skill,
+              rank: sk.rank,
+              modifierType: RANK_VALUE
+            }
+          ];
+        }
 
-      if (sk.skill) {
-        return [{
-          skill: sk.skill,
-          rank: sk.rank,
-          modifierType: RANK_VALUE
-        }];
+        if (sk.study) {
+          return [
+            {
+              rank: sk.rank,
+              study: sk.study,
+              modifierType: RANK_VALUE
+            }
+          ];
+        }
+
+        return [];
       }
+    );
 
-      if (sk.study) {
-        return [{
-          rank: sk.rank,
-          study: sk.study,
-          modifierType: RANK_VALUE
-        }];
-      }
-
-      return [];
-    }
-  );
-
-  allPrerequisite.push({
-    id: -1,
-    skillStudy: charSkills,
-    text: "Pg skills"
-  });
-}
+    allPrerequisite.push({
+      id: -1,
+      skillStudy: charSkills,
+      text: "Pg skills"
+    });
+  }
 
   return allPrerequisite;
 };

@@ -17,7 +17,7 @@ import { Archetype, SubRace } from "../../Race/Interfaces";
 import { Resistance } from "../../Saving/interface";
 import { PrerequisiteSkills } from "../../Skills/interface/PrerequisiteSkills";
 import { Skill } from "../../Skills/interface/Skill";
-import { SkillCharacter, Study } from "../../Skills/interface/SkillsInterface";
+import { SkillCharacter } from "../../Skills/interface/SkillsInterface";
 import { SkillStudyTotAndBonusElement } from "../../Skills/interface/SkillStudyTotAndBonusElement";
 import { TotAndBonusElement } from "../../SummaryChar/component/TotAndBonus";
 import { HitDiceMap } from "../../Vita/Functions";
