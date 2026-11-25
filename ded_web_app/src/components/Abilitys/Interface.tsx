@@ -8,7 +8,7 @@ export type Abilitys = {
     intelligence: number;
     wisdom: number;
     charisma: number;
-    modifierType?: ModifierEnum;
+    modifierType?: ModifierEnum | null;
   }
 
 export type AbilitysProps = {

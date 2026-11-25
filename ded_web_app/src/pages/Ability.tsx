@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
-import { Abilitys } from "../components/Abilitys/Interface";
+import { Abilitys, LevelAbilitys } from "../components/Abilitys/Interface";
 import { DropdownComponent } from "../components/DropDown/DropDown";
 import { addToDrop, signAndCountAbility } from "../components/functions";
 import { createTotAndBonusElement } from "../components/ModifiedCharacter/functions/CreateTotAndBonusElement";
@@ -16,8 +16,16 @@ import {
   TotAndBonus,
   TotAndBonusElement
 } from "../components/SummaryChar/component/TotAndBonus";
-import { findAbility } from "../components/Abilitys/Functions";
+import {
+  findAbility,
+  setModifierTypeAbilityToNull
+} from "../components/Abilitys/Functions";
 import { AbilityLv } from "../components/Abilitys/components/AbilityLv";
+
+export type AbilityToSendDTO = {
+  abilitysDTO: Abilitys;
+  lvAbilitysDTO: LevelAbilitys[];
+};
 
 export const abilitisBaseValue: number[] = [15, 14, 13, 12, 10, 8];
 
@@ -39,10 +47,23 @@ export function Ability() {
   };
 
   const handleSubmit = () => {
-    axios.post(urlAb + charId, abilitysBase).then((response) => {
-      console.log(response.data);
-    });
-    // window.location.reload();
+    if (abilitysBase) {
+      const abilityToSend: AbilityToSendDTO = {
+        abilitysDTO: setModifierTypeAbilityToNull(abilitysBase),
+        lvAbilitysDTO: abilitysLv.map((a) => ({
+          ...a,
+          abilitys: {
+            ...a.abilitys,
+            modifierType: null
+          }
+        }))
+      };
+      console.log("abilityToSend", abilityToSend);
+      axios.post(urlAb + charId, abilityToSend).then((response) => {
+        console.log(response.data);
+      });
+    }
+    window.location.reload();
     // setChange(true);
   };
 
@@ -142,7 +163,10 @@ export function Ability() {
                 );
               })}
             </div>
-            <AbilityLv times={Math.floor((moddedCharacter.totLevel || 0) / 4)} abilitysLvPc={abilitysLv} />
+            <AbilityLv
+              times={Math.floor((moddedCharacter.totLevel || 0) / 4)}
+              abilitysLvPc={abilitysLv}
+            />
             {/* )} */}
             {/* {moddedCharacter && ( */}
             <SummaryChar modCharacter={moddedCharacter as ModifiedCharacter} />

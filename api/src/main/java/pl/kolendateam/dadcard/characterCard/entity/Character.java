@@ -29,6 +29,7 @@ import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
+import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
 import pl.kolendateam.dadcard.abilitys.entity.LevelAbilitys;
@@ -590,6 +591,23 @@ public class Character implements Serializable {
       System.out.println("add dominio: " + d.getId() + " " + d.getDomain())
     );
     this.domains = newDomains;
+  }
+
+  public void changeCharacterAbilitys(
+    AbilitysDTO ab,
+    List<LevelAbilitysDTO> listAb
+  ) {
+    Abilitys abilitysDB = MapperAbilitys.toAbility(ab);
+
+    if (!abilitysDB.equals(this.abilitys)) {
+      this.abilitys = abilitysDB;
+    }
+
+    List<LevelAbilitys> listAbDB = MapperAbilitys.toListLevelAbility(listAb);
+
+    if (!listAbDB.equals(this.characterLevelAbilitys)) {
+      this.characterLevelAbilitys = listAbDB;
+    }
   }
 
   public void addLevelsAbility(List<LevelAbilitysDTO> levelAbilitis) {

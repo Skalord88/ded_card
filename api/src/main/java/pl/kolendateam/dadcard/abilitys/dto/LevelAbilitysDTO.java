@@ -1,8 +1,10 @@
 package pl.kolendateam.dadcard.abilitys.dto;
 
+import lombok.ToString;
 import pl.kolendateam.dadcard.abilitys.MapperAbilitys;
 import pl.kolendateam.dadcard.abilitys.entity.LevelAbilitys;
 
+@ToString
 public class LevelAbilitysDTO {
 
   public int level;

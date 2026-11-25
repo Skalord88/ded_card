@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import pl.kolendateam.dadcard.abilitys.dto.AbilityToSendDTO;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
+import pl.kolendateam.dadcard.abilitys.entity.LevelAbilitys;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterAbilityDTO;
 import pl.kolendateam.dadcard.characterCard.dto.CharacterDTO;
 import pl.kolendateam.dadcard.characterCard.entity.Character;
@@ -50,7 +52,7 @@ public class AbilitysController {
   @PostMapping(value = "{id}", consumes = { "application/json" })
   public CharacterAbilityDTO setCharacterAbility(
     @PathVariable int id,
-    @RequestBody AbilitysDTO abilitysDTO
+    @RequestBody AbilityToSendDTO abilitysDTO
   ) {
     Optional<Character> characterOpt = this.characterRepository.findById(id);
 
@@ -61,15 +63,25 @@ public class AbilitysController {
       );
     }
 
+    System.out.println("abilitysDTO");
+    System.out.println(abilitysDTO);
+
     Character character = characterOpt.get();
 
-    Abilitys abilitys = new Abilitys();
+    // Abilitys abilitys = new Abilitys();
 
-    abilitys.setCharacterAbility(abilitysDTO);
+    // abilitys.setCharacterAbility(abilitysDTO);
 
-    character.setAbilitys(abilitys);
+    // character.setAbilitys(MapperAbilitys.toAbility(abilitysDTO));
 
-    // character.createArmorClass();
+    // character.setCharacterLevelAbilitys(
+    //   MapperAbilitys.toListLevelAbility(lvAbilitys)
+    // );
+
+    character.changeCharacterAbilitys(
+      abilitysDTO.abilitysDTO,
+      abilitysDTO.lvAbilitysDTO
+    );
 
     this.characterRepository.save(character);
 

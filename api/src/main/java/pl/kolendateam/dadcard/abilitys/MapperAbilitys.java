@@ -1,5 +1,7 @@
 package pl.kolendateam.dadcard.abilitys;
 
+import java.util.ArrayList;
+import java.util.List;
 import pl.kolendateam.dadcard.abilitys.dto.AbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.dto.LevelAbilitysDTO;
 import pl.kolendateam.dadcard.abilitys.entity.Abilitys;
@@ -45,5 +47,20 @@ public class MapperAbilitys {
       return new LevelAbilitysDTO(levelAbilitys);
     }
     return new LevelAbilitysDTO();
+  }
+
+  public static List<LevelAbilitys> toListLevelAbility(
+    List<LevelAbilitysDTO> listLvAbilitysDTO
+  ) {
+    List<LevelAbilitys> newListLvAb = new ArrayList<LevelAbilitys>();
+    if (
+      listLvAbilitysDTO == null || listLvAbilitysDTO.isEmpty()
+    ) return newListLvAb;
+
+    listLvAbilitysDTO.forEach(a -> {
+      newListLvAb.add(new LevelAbilitys(a));
+    });
+
+    return newListLvAb;
   }
 }

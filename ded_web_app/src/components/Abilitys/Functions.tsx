@@ -275,3 +275,9 @@ export const lvAbilityToPrerequisite = (lvAbility: LevelAbilitys[]): Prerequisit
     };
   });
 };
+
+export const setModifierTypeAbilityToNull = (ab: Abilitys): Abilitys => {
+  return {...ab,
+    modifierType: null
+  }
+}

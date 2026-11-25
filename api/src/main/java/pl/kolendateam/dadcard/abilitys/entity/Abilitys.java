@@ -24,16 +24,16 @@ public class Abilitys implements Serializable {
   @Enumerated(EnumType.STRING)
   ModifierEnum modifierType;
 
-  public void setCharacterAbility(AbilitysDTO abilitysDTO) {
-    this.strength = abilitysDTO.strength;
-    this.dexterity = abilitysDTO.dexterity;
-    this.constitution = abilitysDTO.constitution;
-    this.intelligence = abilitysDTO.intelligence;
-    this.wisdom = abilitysDTO.wisdom;
-    this.charisma = abilitysDTO.charisma;
-    this.modifierType =
-      abilitysDTO.modifierType == null ? null : abilitysDTO.modifierType;
-  }
+  // public void setCharacterAbility(AbilitysDTO abilitysDTO) {
+  //   this.strength = abilitysDTO.strength;
+  //   this.dexterity = abilitysDTO.dexterity;
+  //   this.constitution = abilitysDTO.constitution;
+  //   this.intelligence = abilitysDTO.intelligence;
+  //   this.wisdom = abilitysDTO.wisdom;
+  //   this.charisma = abilitysDTO.charisma;
+  //   this.modifierType =
+  //     abilitysDTO.modifierType == null ? null : abilitysDTO.modifierType;
+  // }
 
   public Abilitys addRaceAbilitys(
     Abilitys jsonObjectAbilitys,
@@ -67,9 +67,12 @@ public class Abilitys implements Serializable {
   public Abilitys(AbilitysDTO abilitysDTO) {
     this.strength = abilitysDTO.strength;
     this.dexterity = abilitysDTO.dexterity;
-    this.constitution = abilitysDTO.constitution;
+    this.constitution =
+      abilitysDTO.constitution == null ? null : abilitysDTO.constitution;
     this.intelligence = abilitysDTO.intelligence;
     this.wisdom = abilitysDTO.wisdom;
     this.charisma = abilitysDTO.charisma;
+    this.modifierType =
+      abilitysDTO.modifierType == null ? null : abilitysDTO.modifierType;
   }
 }

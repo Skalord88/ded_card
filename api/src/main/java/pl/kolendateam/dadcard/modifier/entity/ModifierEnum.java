@@ -3,6 +3,7 @@ package pl.kolendateam.dadcard.modifier.entity;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.JsonNode;
 
 // @JsonCreator
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
@@ -452,8 +453,19 @@ public enum ModifierEnum {
   public String getDescription() {
     return description;
   }
-  // @JsonValue
-  // public String getText() {
-  //   return text;
-  // }
+
+  @JsonCreator
+  public static ModifierEnum fromJson(JsonNode node) {
+    if (node == null || node.isNull()) {
+      return null;
+    }
+
+    if (node.isObject()) {
+      String name = node.has("name") ? node.get("name").asText() : null;
+
+      return fromText(name);
+    }
+
+    return fromText(node.asText());
+  }
 }
